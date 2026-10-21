@@ -37,7 +37,7 @@ ReactionRegistry Reactions() { var result = ReactionRegistry.Core(); foreach (va
 BattleCombat ComposedCombat(JsonArray contentPacks, ReactionRegistry reactions) => BattleEngineFactory.Create(new ReadOnlyContent(contentPacks),
     [new EnginePlugin("test.turn-reaction.reactions", 1, context => context.Replace(BattleCapabilities.Reactions, reactions), overrides: [BattleCapabilities.Reactions])]).Combat;
 Equal(Node(TurnOrderRegistry.Core().All().Select(value => new { value.Id, value.Name })), fixture["defaults"]!["turnOrders"], "default turn metadata");
-Equal(Node(ReactionRegistry.Core().All()), fixture["defaults"]!["reactions"], "default reaction metadata and hints");
+Equal(Node(ReactionRegistry.Core().All().Select(value => new { value.Id, value.Name, value.Intercepts, value.IncomingMultiplier, value.Retaliates, value.ConservesResources, value.Hint })), fixture["defaults"]!["reactions"], "default reaction metadata and hints");
 foreach (var item in Objects(fixture["turns"], "turn cases"))
 {
     var state = item["before"]!.DeepClone().AsObject();
@@ -88,7 +88,7 @@ foreach (var item in Objects(fixture["actions"], "action cases"))
 {
     var turns = new TurnOrderSystem(new(engine.Catalog, TurnOrderRegistry.Core().Register(new ReversePolicy(new JsonObject()))));
     var combat = ComposedCombat(packs, Reactions());
-    var commands = new TacticalCommands(new(engine.Catalog, engine.Grids, engine.Space), turns.MayAct, engine.Directives);
+    var commands = new TacticalCommands(new(engine.Grids, engine.Space, combat.Forecasts.Reactions), turns.MayAct, engine.Directives);
     var abilities = new AbilityCommands(engine.AbilityRules with { Combat = combat }, commands);
     var actionRules = new ActionRules(commands, engine.Deployment, engine.Transport, engine.Progression, abilities, engine.Recruitment, engine.Support, combat,
         (state, emit) => new BattleLifecycle(new(engine.Catalog, turns, engine.Scenarios, engine.Victory, combat, engine.Resources, new StatusLifecycle(engine.Catalog, new StatusBehaviorRegistry(), combat)), state, emit));
@@ -98,6 +98,16 @@ foreach (var item in Objects(fixture["actions"], "action cases"))
     catch (Exception caught) when (caught is DomainInvariantException or IllegalActionException)
     { error = new JsonObject { ["kind"] = caught.GetType().Name.Replace("Exception", "", StringComparison.Ordinal), ["message"] = caught.Message }; }
     var name = Text(item, "name");
+    if (name == "unknown stance action")
+    {
+        Check(item["error"] is null && Text(item["after"]!["units"]![2]!.AsObject(), "reaction") == "absent",
+            "frozen source characterizes invalid reaction commit");
+        Check(Text(error!, "kind") == "IllegalAction" && Text(error!, "message").Contains("unknown reaction stance", StringComparison.Ordinal),
+            "unknown stance action native typed refusal");
+        Equal(events, new JsonArray(), "unknown stance action has no events");
+        Equal(battle.Snapshot(), item["before"], "unknown stance action native rollback");
+        continue;
+    }
     Equal(error, item["error"], name + " typed action failure"); Equal(events, item["events"], name + " action events");
     Equal(battle.Snapshot(), item["after"], name + " action/rollback state"); Check(battle.StateHash == Text(item, "hash"), name + " action digest");
 }
@@ -146,8 +156,10 @@ Check(!TurnOrderRegistry.Core().Has("custom") && !ReactionRegistry.Core().Has("c
 sample["phase"] = "deployment"; sample["turnOrder"]!["policy"] = "absent";
 Check(!dynamicTurns.MayAct(sample, sample["units"]![0]!.AsObject()), "phase gate must short-circuit unknown policy");
 sample["phase"] = "playing"; Refuses(() => dynamicTurns.MayAct(sample, sample["units"]![0]!.AsObject()), "unknown turn order");
+DispositionContractChecks.Run(packs, Check, Equal);
+ReactionContractChecks.Run(packs, fixture["reactions"]!.AsArray(), Check, Equal);
 Console.WriteLine($"PASS {checks} original-source turn/reaction vectors, event-time hashes, registry/reference identity and install-time consumers");
-Console.WriteLine("Production root registration/admission integration is coordinated separately; this harness does not establish complete extension parity.");
+Console.WriteLine("Native contracts cover invalid disposition rollback, all shipped/custom facings, handler-owned support policy, and composed save/replay.");
 
 sealed class ReversePolicy(JsonObject config) : ITurnOrderPolicy
 {

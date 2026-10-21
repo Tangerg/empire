@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Godot;
+using Empire.Core.State;
 
 namespace Empire.Presentation;
 
@@ -63,9 +64,9 @@ public partial class BoardView : Node2D
         _scenery.AddChild(_terrain);
     }
 
-    public void ConfigureDynamicState(JsonArray contentPacks)
+    public void ConfigureDynamicState(ReadOnlyContent content)
     {
-        _dynamicState = new DynamicStateView(_assets ?? throw new InvalidOperationException("Configure the board before its dynamic state."), contentPacks, _shadows);
+        _dynamicState = new DynamicStateView(_assets ?? throw new InvalidOperationException("Configure the board before its dynamic state."), content, _shadows);
     }
 
     public void Configure(AssetCatalog catalog, JsonObject level, AuthoredScene scene,

@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Text.Json.Nodes;
+using Empire.Core.State;
 using Godot;
 
 namespace Empire.Presentation;
@@ -19,28 +21,22 @@ public sealed class DynamicStateView
     private readonly AssetCatalog assets;
     private readonly float markerOpacity = BoardDecorationDocument.Load().MarkerOpacity;
     private readonly CandidateShadowCache? shadows;
-    private readonly Dictionary<string, JsonObject> definitions;
-    private readonly Dictionary<string, JsonObject> unitDefinitions;
+    private readonly ReadOnlyContent content;
     private const string Ink = "#28231f";
     private const string Neutral = "#918b7d";
 
-    public DynamicStateView(AssetCatalog assets, JsonArray contentPacks, CandidateShadowCache? shadows = null)
+    public DynamicStateView(AssetCatalog assets, ReadOnlyContent content, CandidateShadowCache? shadows = null)
     {
         this.assets = assets;
+        this.content = content;
         this.shadows = shadows;
-        definitions = contentPacks.OfType<JsonObject>()
-            .SelectMany(pack => (pack["structures"] as JsonArray)?.OfType<JsonObject>() ?? [])
-            .ToDictionary(definition => Text(definition, "id"), definition => (JsonObject)definition.DeepClone(), StringComparer.Ordinal);
-        unitDefinitions = contentPacks.OfType<JsonObject>()
-            .SelectMany(pack => (pack["units"] as JsonArray)?.OfType<JsonObject>() ?? [])
-            .ToDictionary(definition => Text(definition, "id"), definition => (JsonObject)definition.DeepClone(), StringComparer.Ordinal);
     }
 
     public Node2D CreateUnitBadges(string type, double hp, bool done, double capture, double captureThreshold,
         Vector2? directionVector = null)
     {
-        if (!unitDefinitions.TryGetValue(type, out var definition))
-            throw new InvalidOperationException($"Unit badges reference absent definition {type}.");
+        var definition = content.Definition("units", type)
+            ?? throw new InvalidOperationException($"Unit badges reference absent definition {type}.");
         var result = new Node2D { Name = "Badges" };
         if (directionVector is { } direction)
         {
@@ -79,8 +75,8 @@ public sealed class DynamicStateView
             {
                 var id = Text(structure, "id");
                 var type = Text(structure, "type");
-                if (!definitions.TryGetValue(type, out var definition))
-                    throw new InvalidOperationException($"Live structure {id} references absent definition {type}.");
+                var definition = content.Definition("structures", type)
+                    ?? throw new InvalidOperationException($"Live structure {id} references absent definition {type}.");
                 colors.TryGetValue(Number(structure, "owner"), out var color);
                 var node = new Node2D { Name = $"Structure_{structureCount}", Position = Contact(structure) };
                 var hp = Number(structure, "hp");
@@ -97,7 +93,7 @@ public sealed class DynamicStateView
                     if (color is not null) node.AddChild(CreateOwnerBanner(color, shadows));
                 }
                 else node.AddChild(Svg(StructureMarkup(structure, definition, color), "RuleDerivedStructure"));
-                if (asset is not null || definition["targetable"]!.GetValue<bool>())
+                if (asset is not null || definition.GetProperty("targetable").GetBoolean())
                     node.AddChild(CreateGauge(hp, maximum));
                 node.SetMeta("structure_id", id);
                 node.SetMeta("structure_type", type);
@@ -165,6 +161,8 @@ public sealed class DynamicStateView
     }
 
     private static Vector2 Contact(JsonObject at) => new((float)Number(at, "x") * 32 + 16, (float)Number(at, "y") * 32 + 31);
+    private static string Text(JsonElement value, string field) => Empire.Core.Determinism.EcmaJson.ReadString(JsonValue.Create(value.GetProperty(field)));
+    private static double Number(JsonElement value, string field) => value.GetProperty(field).GetDouble();
     private static string Text(JsonObject value, string field) => value[field]!.GetValue<string>();
     private static double Number(JsonObject value, string field) => double.Parse(value[field]!.ToJsonString(), CultureInfo.InvariantCulture);
     private static string F(double value) => (Math.Floor(value * 100 + 0.5) / 100).ToString("0.##", CultureInfo.InvariantCulture);
@@ -211,7 +209,7 @@ public sealed class DynamicStateView
         $"<path d=\"M8.1 5.6L16.6 8.1L8.1 11.1Z\" fill=\"{Shade(color, 0.1)}\" stroke=\"{Shade(color, -0.45)}\" stroke-width=\"0.55\" stroke-linejoin=\"round\"/><path d=\"M8.1 5.6L16.6 8.1L8.1 11.1Z\" fill=\"none\" stroke=\"#ffffff\" stroke-opacity=\"0.22\" stroke-width=\"0.35\"/>";
 
     // Direct translation of the original field-objects-from-rules.ts fallback; no authored art is fabricated.
-    private static string StructureMarkup(JsonObject state, JsonObject definition, string? ownerColor)
+    private static string StructureMarkup(JsonObject state, JsonElement definition, string? ownerColor)
     {
         var id = Text(state, "type");
         var maximum = Number(definition, "maxHp");
@@ -223,7 +221,7 @@ public sealed class DynamicStateView
         var top = Shade(face, 0.24); var side = Shade(face, -0.3);
         var height = Math.Min(23, 9 + raised * 4); var crown = 27 - height;
         var footing = Math.Floor((7.5 + NameHash(id, 3) * 3) * 100 + 0.5) / 100;
-        var blocks = definition["blocksMovement"]!.GetValue<bool>();
+        var blocks = definition.GetProperty("blocksMovement").GetBoolean();
         var output = new StringBuilder();
         if (blocks)
         {

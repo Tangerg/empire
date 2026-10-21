@@ -165,9 +165,9 @@ public static class DefaultAiIntents
             if (Integer(owners[tile], "owner") != context.Player) continue;
             var at = context.Board.CoordOf(tile);
             var terrain = context.Battlefield.Cell(at).Terrain;
-            var produces = Array(terrain["produces"], "produces");
-            if (produces.Count == 0 || UnitAt(context.State, at) is not null) continue;
-            var affordable = produces.Select(id => Text(id, "unit type"))
+            var produces = terrain.GetProperty("produces").EnumerateArray().ToArray();
+            if (produces.Length == 0 || UnitAt(context.State, at) is not null) continue;
+            var affordable = produces.Select(id => Text(id))
                 .Where(id => context.Rules.Resources.CanAfford(account, Array(context.Content.Get("units", id)["recruitCosts"], "recruitCosts")))
                 .Select(id => (Id: id, Score: ScoreRecruit(context, id))).ToArray();
             if (affordable.Length == 0) continue;

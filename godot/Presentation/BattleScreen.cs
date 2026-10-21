@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Nodes;
 using Godot;
+using Empire.Core.State;
 using Empire.Presentation.Feedback;
 using Empire.Presentation.Tactical;
 using Empire.Core.Determinism;
@@ -16,7 +17,7 @@ namespace Empire.Presentation;
 /// </summary>
 public partial class BattleScreen : Control
 {
-    private IBattleSession? _session;
+    private ITacticalBattleSession? _session;
     private BattleSnapshot? _snapshot;
     private JsonObject? _state;
     private readonly BoardView _board = new() { Name = "Board" };
@@ -25,11 +26,9 @@ public partial class BattleScreen : Control
     private Node2D _world = null!;
     private BattlefieldCamera? _camera;
     private BattlefieldGestures? _gestures;
-    private HashSet<string> _outsideTerrain = new(StringComparer.Ordinal);
     private Button _zoomOut = null!;
     private Button _zoomIn = null!;
     private Label _turn = null!;
-    private ITacticalBattleSession? _tacticalSession;
     private TacticalSelectionController? _tactical;
     private long _tacticalBinding;
     private bool _applicationBusy;
@@ -130,7 +129,7 @@ public partial class BattleScreen : Control
         }
     }
 
-    public void BindSession(IBattleSession session, AssetCatalog assets, JsonObject level,
+    public void BindSession(ITacticalBattleSession session, AssetCatalog assets, JsonObject level,
         AuthoredScene authoredScene, EnvironmentCatalog environment, Func<string?, bool> facesLeft, Func<string?, Vector2>? directionVector = null, string? initialLogMessage = null)
     {
         ArgumentNullException.ThrowIfNull(session);
@@ -141,7 +140,6 @@ public partial class BattleScreen : Control
         _gestures?.Dispose();
         _gestures = null;
         _camera = null;
-        _outsideTerrain.Clear();
         _restart = null;
         _restartRequest = null;
         _restartConfirmation.Hide();
@@ -153,9 +151,7 @@ public partial class BattleScreen : Control
         _board.Configure(assets, level, authoredScene, environment, facesLeft, directionVector);
         _hud.ConfigureArt(TacticalHudArt.Load(assets));
         _session = session;
-        _tacticalSession = session as ITacticalBattleSession
-            ?? throw new ArgumentException("Native battle screen requires the tactical session port.", nameof(session));
-        _tactical = new TacticalSelectionController(_tacticalSession.GetTacticalQueries(_tacticalBinding));
+        _tactical = new TacticalSelectionController(_session.GetTacticalQueries(_tacticalBinding));
         _applicationBusy = false;
         _bound = true;
         _feedback.Text = "选择单位，查看规则允许的命令。";
@@ -174,15 +170,12 @@ public partial class BattleScreen : Control
     public void ConfigureTerrain(WorldMaterialsManifest materials)
     {
         _board.ConfigureTerrain(materials);
-        _outsideTerrain = materials.TerrainTags.Where(entry =>
-            entry.Value.Intersect(materials.GroundTagFamilies["outside"], StringComparer.Ordinal).Any())
-            .Select(entry => entry.Key).ToHashSet(StringComparer.Ordinal);
         if (_state is not null) Refresh();
     }
 
-    public void ConfigureDynamicState(JsonArray contentPacks)
+    public void ConfigureDynamicState(ReadOnlyContent content)
     {
-        _board.ConfigureDynamicState(contentPacks);
+        _board.ConfigureDynamicState(content);
         if (_state is not null) Refresh();
     }
 
@@ -291,11 +284,8 @@ public partial class BattleScreen : Control
         _state = Empire.Core.Determinism.EcmaJson.Parse(_snapshot.State.GetRawText()) as JsonObject
             ?? throw new InvalidOperationException("Battle session returned a non-object state.");
         _board.RenderState(_state, _snapshot.VisibleUnitIds);
-        _overlay.ShowPublicState(_state["map"]!["width"]!.GetValue<int>(), _state["map"]!["height"]!.GetValue<int>(), _snapshot.VisibleCells, _snapshot.Incoming,
-            _state["map"]!["tiles"]!.AsArray().Select((tile, index) => (tile, index))
-                .Where(pair => !_outsideTerrain.Contains(pair.tile!.GetValue<string>()))
-                .Select(pair => new BoardCell(pair.index % _state["map"]!["width"]!.GetValue<int>(), pair.index / _state["map"]!["width"]!.GetValue<int>())).ToHashSet());
         SynchronizeTactical(next);
+        _overlay.ShowPublicState(_tactical!.InteractiveCells, _snapshot.VisibleCells, _snapshot.Incoming);
         UpdateHeader();
         UpdateTactical();
         _coverage.Text = _board.StatusText;
@@ -497,13 +487,11 @@ public partial class BattleScreen : Control
         if (IsInputBlocked || !_bound || !IsInsideTree() || _state is null) return;
         if (point.X < 0 || point.Y < 0 || point.X >= _board.FieldSize.X || point.Y >= _board.FieldSize.Y) return;
         var cell = new BoardCell((int)Math.Floor(point.X / 32), (int)Math.Floor(point.Y / 32));
-        var width = _state["map"]!["width"]!.GetValue<int>();
-        var tile = _state["map"]!["tiles"]![cell.Y * width + cell.X]!.GetValue<string>();
-        if (_outsideTerrain.Contains(tile)) return;
+        if (_tactical is null || !Current(_tactical.Stamp) || !_tactical.InteractiveCells.Contains(cell)) return;
         if (button == 0) SelectCell(cell);
         else if (button == 2)
         {
-            if (_tactical is not null && Current(_tactical.Stamp)) HandleTactical(_tactical.Back(_tactical.Stamp));
+            HandleTactical(_tactical.Back(_tactical.Stamp));
         }
     }
 

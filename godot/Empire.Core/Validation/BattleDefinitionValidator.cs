@@ -11,9 +11,9 @@ public sealed class BattleDefinitionValidator
 {
     private readonly BattleContentValidator content;
     private readonly BattleLevelValidator levels;
-    public BattleDefinitionValidator(JsonArray packs, RuleReferenceRules rules, BattleReferenceCheckRegistry referenceChecks, GridRegistry grids)
+    public BattleDefinitionValidator(RuleReferenceRules rules, BattleReferenceCheckRegistry referenceChecks, GridRegistry grids)
     {
-        content = new BattleContentValidator(packs, rules, referenceChecks);
+        content = new BattleContentValidator(rules, referenceChecks);
         levels = new BattleLevelValidator(rules, referenceChecks, grids);
     }
     public void ValidateContent() => content.Validate();

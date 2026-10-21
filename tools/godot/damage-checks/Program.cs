@@ -1,3 +1,4 @@
+using Empire.Core;
 using Empire.Core.Progression;
 using Empire.Core.Lifecycle;
 using System.Text.Json.Nodes;
@@ -14,6 +15,7 @@ var grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8G
 var damage = new BattleDamage(new ReadOnlyContent(packs), grids, new CombatEffects(new ReadOnlyContent(packs), new ThresholdRankProgressionPolicy()), DefaultUnitDepartureHandlers.Create().Seal());
 var cases = JsonNode.Parse(File.ReadAllText(oraclePath))!.AsArray();
 int passed = 0;
+int nativeRejections = 0;
 JsonObject Trace(JsonObject state) => new()
 {
     ["units"] = new JsonArray(state["units"]!.AsArray().Select(n => n!["id"]!.DeepClone()).ToArray()),
@@ -37,6 +39,21 @@ foreach (var item in cases.OfType<JsonObject>())
     void Emit(JsonObject ev) { events.Add(ev); traces.Add(Trace(state)); }
     var id = StateJson.Integer(parameters, "unit");
     JsonNode? outcome = null;
+    if (name is "damage -100" or "damage -0.5")
+    {
+        try
+        {
+            damage.Resolve(state, id, StateJson.Number(parameters["amount"], "amount"), false,
+                _ => throw new Exception("Invalid damage reached reporting"), Emit);
+            throw new Exception($"Invalid damage was accepted: {name}");
+        }
+        catch (DomainInvariantException) { }
+        Check(name, "native-events", events, new JsonArray());
+        Check(name, "native-traces", traces, new JsonArray());
+        Check(name, "native-atomic-state", state, item["initial"]);
+        nativeRejections++;
+        continue;
+    }
     switch (item["op"]!.GetValue<string>())
     {
         case "resolve":
@@ -60,4 +77,5 @@ foreach (var item in cases.OfType<JsonObject>())
     Check(name, "after", state, item["after"]);
     passed++;
 }
-Console.WriteLine($"PASS {passed} TypeScript-oracle damage/departure cases (events, intermediate traces, outcomes, complete states)");
+Console.WriteLine($"PASS {passed} TypeScript-oracle damage/departure cases (events, intermediate traces, outcomes, complete states); {nativeRejections} explicit native invalid-damage rejections");
+if (nativeRejections != 2) throw new Exception("Expected two deliberately hardened negative-damage cases");

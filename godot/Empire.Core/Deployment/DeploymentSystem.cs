@@ -17,9 +17,9 @@ public sealed class DeploymentSystem
     private readonly StateContent content;
     private readonly Func<JsonObject, int, JsonObject> ownUnit;
 
-    public DeploymentSystem(JsonArray contentPacks, Func<JsonObject, int, JsonObject> ownUnit)
+    public DeploymentSystem(ReadOnlyContent catalog, Func<JsonObject, int, JsonObject> ownUnit)
     {
-        content = new StateContent((JsonArray)contentPacks.DeepClone());
+        content = catalog.Source;
         this.ownUnit = ownUnit;
     }
 
@@ -99,9 +99,7 @@ public sealed class DeploymentSystem
         if (refusal is not null) throw new IllegalActionException(refusal);
         var from = TacticalQueries.Position(unit);
         if (from == at) return;
-        var occupant = TacticalQueries.UnitAt(state, at);
-        if (occupant is not null && StateJson.Integer(occupant, "id") != unitId) MoveTo(occupant, from);
-        MoveTo(unit, at);
+        new BattleRelocation(state).DeployUnit(unitId, at);
         emit(new JsonObject
         {
             ["type"] = "unitDeployed", ["unit"] = unitId,
@@ -121,10 +119,4 @@ public sealed class DeploymentSystem
         else beginPlaying();
     }
 
-    private static void MoveTo(JsonObject unit, Coord at)
-    {
-        unit["x"] = at.X;
-        unit["y"] = at.Y;
-        unit["capture"] = 0;
-    }
 }

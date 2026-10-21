@@ -130,6 +130,8 @@ export function appendScenarioCases({ base, clone, run, rules, original }) {
     run('revive no fallen snapshot and occupied duplicate identity skip', state, [{ type: 'reviveMarkers', selector: {} }]);
     const restore = markers(); restore.scenario.zones.rally = [{ x: 6, y: 5 }, { x: 1, y: 4 }];
     run('restore stops at full reading-order zone and resets snapshots', restore, [{ type: 'restoreWithdrawnUnits', selector: {}, zone: 'rally', owner: 2 }]);
+    const livingRestore = clone(restore); livingRestore.markers[0].fallenUnit.hp = 25;
+    run('restore living snapshots in reading-order zone and reset state', livingRestore, [{ type: 'restoreWithdrawnUnits', selector: {}, zone: 'rally', owner: 2 }]);
     const blocked = markers(); blocked.map.tiles[8] = 'water'; blocked.map.tiles[9] = 'water';
     run('restore first unlandable marker stops later markers', blocked, [{ type: 'restoreWithdrawnUnits', selector: {}, zone: 'near' }]);
     run('restore missing zone ignored with no markers', base(), [{ type: 'restoreWithdrawnUnits', selector: {}, zone: 'missing' }]);

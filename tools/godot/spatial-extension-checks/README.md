@@ -48,11 +48,11 @@ Runtime checks cover:
 - Default sibling independence for movement/threat, visibility, and board/targeting.
 - Mutable field, tile, and stop-set identity.
 - A kernel install-time consumer receives the final replacement.
-- Source tactical-plugin local grid capture: replacing the grid capability does not rebind the already-created default space; mutating that captured registry in place remains visible. No lazy lookup silently fixes the original coupling.
+- Separate producer and spatial consumer installers declare the grid dependency. The spatial installer receives the final registry replacement, preserving exact identity and live registry semantics before engine sealing. The stale TypeScript local capture is an intentional native delta, covered in the engine-composition suite.
 - 36 committed original-source movement records, 72 retained source visibility records, and 12 retained source incoming-cast records.
 - Application/AI interface edges and source threat-field forwarding.
 
-Seven compiled behavioral mutants must fail (virtual sibling calls, discarded canonical path, bypassed target policy, copied field identity, recomputed stops, and captured-registry snapshot). Three deliberately broken application edges (threat-field forwarding, explicit visibility predicate, and HUD resolved-grid queries) must fail their architecture guards.
+Seven compiled behavioral mutants must fail (virtual sibling calls, discarded canonical path, bypassed target policy, copied field identity, recomputed stops, and resolved-registry snapshot). Three deliberately broken application edges (threat-field forwarding, explicit visibility predicate, and HUD resolved-grid queries) must fail their architecture guards.
 
 ## Frozen visibility provenance
 

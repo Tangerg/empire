@@ -8,12 +8,11 @@ public static class RulesetManifest
 {
     public static string AnonymousOverrideId(string capability) => $"engine.override.{capability}";
     private static readonly string AnonymousPrefix = AnonymousOverrideId("");
-    public static JsonObject Create(JsonArray packs, IReadOnlyDictionary<string, int> plugins)
-        => Create(packs, plugins.ToDictionary(pair => pair.Key, pair => (double)pair.Value, StringComparer.Ordinal));
+    public static JsonObject Create(ReadOnlyContent catalog, IReadOnlyDictionary<string, int> plugins)
+        => Create(catalog, plugins.ToDictionary(pair => pair.Key, pair => (double)pair.Value, StringComparer.Ordinal));
 
-    public static JsonObject Create(JsonArray packs, IReadOnlyDictionary<string, double> plugins)
+    public static JsonObject Create(ReadOnlyContent catalog, IReadOnlyDictionary<string, double> plugins)
     {
-        _ = new StateContent(packs);
         var pluginVersions = new JsonObject();
         foreach (var pair in plugins.OrderBy(pair => pair.Key, StringComparer.Ordinal))
         {
@@ -23,7 +22,7 @@ public static class RulesetManifest
             pluginVersions[pair.Key] = pair.Value;
         }
         var packVersions = new JsonObject();
-        foreach (var pack in StateJson.Objects(packs, "content packs").OrderBy(pack => StateJson.Text(pack, "id"), StringComparer.Ordinal))
+        foreach (var pack in StateJson.Objects(catalog.CopyPacks(), "content packs").OrderBy(pack => StateJson.Text(pack, "id"), StringComparer.Ordinal))
             packVersions[StateJson.Text(pack, "id")] = StateJson.Required(pack, "version").DeepClone();
         return new JsonObject { ["plugins"] = pluginVersions, ["contentPacks"] = packVersions };
     }

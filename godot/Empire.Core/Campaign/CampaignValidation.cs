@@ -146,6 +146,8 @@ public static class CampaignValidation
         if (unit.ContainsKey("rank") && !(NumberEquals(unit["rank"], 0) || NumberEquals(unit["rank"], 1) || NumberEquals(unit["rank"], 2)) ||
             unit.ContainsKey("rankProgress") && (!Finite(unit["rankProgress"]) || Number(unit["rankProgress"]) < 0))
             throw new CampaignInvariantException($"campaign roster unit \"{id}\" has invalid rank progress");
+        if (unit["career"] is { } career && !Named(career))
+            throw new CampaignInvariantException($"campaign roster unit \"{id}\" has invalid career");
         foreach (var (resourceId, value) in OptionalObject(unit["resources"], "roster resources"))
         {
             var account = value as JsonObject;

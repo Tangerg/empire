@@ -16,9 +16,9 @@ public sealed class BattleTransport
     private TacticalBoard Board(JsonObject state) => new(StateJson.Object(state["map"], "map"),
         grids.Get(StateJson.Text(state["rules"]!["grid"], "grid")));
 
-    public BattleTransport(JsonArray packs, GridRegistry grids)
+    public BattleTransport(ReadOnlyContent catalog, GridRegistry grids)
     {
-        content = new StateContent(packs);
+        content = catalog.Source;
         this.grids = grids;
     }
 
@@ -93,13 +93,9 @@ public sealed class BattleTransport
         var unit = TacticalQueries.RequireUnit(state, unitId);
         var carrier = TacticalQueries.RequireUnit(state, carrierId);
         if (EmbarkRefusal(state, unit, carrier) is { } refusal) throw new IllegalActionException(refusal);
-        var snapshot = unit.DeepClone().AsObject();
+        var snapshot = new BattleRelocation(state).RemoveForEmbark(unitId);
         snapshot["done"] = true;
-        snapshot["capture"] = 0;
         StateJson.Array(state["embarkedUnits"], "embarkedUnits").Add(new JsonObject { ["carrier"] = carrierId, ["unit"] = snapshot });
-        var board = Board(state);
-        StateJson.Array(board.Map["captureProgress"], "captureProgress")[board.IndexOf(TacticalQueries.Position(unit))] = 0;
-        StateJson.Array(state["units"], "units").Remove(unit);
         emit(new JsonObject { ["type"] = "unitEmbarked", ["unit"] = unitId, ["carrier"] = carrierId });
     }
 
@@ -133,9 +129,7 @@ public sealed class BattleTransport
         var entry = passengers.OfType<JsonObject>().First(candidate => StateJson.Integer(candidate, "carrier") == carrierId &&
             StateJson.Integer(StateJson.Object(candidate["unit"], "embarked unit"), "id") == unitId);
         var unit = StateJson.Object(entry["unit"], "embarked unit");
-        unit["x"] = at.X;
-        unit["y"] = at.Y;
-        unit["capture"] = 0;
+        new BattleRelocation(state).PlaceSnapshot(unit, at);
         unit["done"] = true;
         passengers.Remove(entry);
         entry.Remove("unit");

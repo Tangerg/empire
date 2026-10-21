@@ -46,7 +46,8 @@ public sealed partial class BattleCombat
             if (reactor is not null)
             {
                 CombatForecasts.ConsumeReaction(state, reactor);
-                if (reaction.Stance == "support") Effects.AwardRankProgress(reactor, 20, emit);
+                var progress = Forecasts.Reaction(reaction.Stance).TriggeredRankProgress;
+                if (progress > 0) Effects.AwardRankProgress(reactor, progress, emit);
             }
             var value = new JsonObject { ["type"] = "reactionTriggered", ["unit"] = reaction.Unit, ["stance"] = reaction.Stance };
             if (reaction.ProtectedUnit is not null) value["protectedUnit"] = reaction.ProtectedUnit.Value;
@@ -166,8 +167,8 @@ public sealed partial class BattleCombat
         var to = path[^1];
         if (from != to)
         {
-            state["map"]!["captureProgress"]!.AsArray()[board.IndexOf(from)] = 0;
-            unit["x"] = to.X; unit["y"] = to.Y; unit["capture"] = 0; unit["facing"] = facing;
+            new BattleRelocation(state).MoveUnit(unitId, to);
+            UnitDisposition.Face(board.Grid, unit, facing);
         }
         emit(new JsonObject { ["type"] = "forcedMove", ["unit"] = unitId, ["mode"] = mode,
             ["from"] = TacticalQueries.CoordinateJson(from), ["to"] = TacticalQueries.CoordinateJson(to),

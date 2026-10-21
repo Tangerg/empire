@@ -1,9 +1,10 @@
 # Actual engine composition checks
 
 This suite exercises `BattleEngineFactory.Create`, not a kernel-only simulation or an engine wrapper.
-`GrayFlagEngine(JsonArray)` delegates to the same composition operation. The five source plugin IDs
-install all 24 typed capabilities. Their declared provisions, requirements and versions are compared
-with the original TypeScript recipe. The installed plugin manifest, never a fixed replacement map,
+`GrayFlagEngine(JsonArray)` delegates to the same composition operation. The native six-plugin recipe
+installs all 24 typed capabilities. Its explicit delta from the TypeScript recipe is checked:
+`engine.tactical-rules` is version 2, and `engine.tactical-space` version 1 consumes resolved content
+and grids after their overrides. The installed plugin manifest, never a fixed replacement map,
 is carried into saves and replay records.
 
 The root seals all 19 resolved mutable registries and passes the exact resolved instances into their
@@ -22,7 +23,7 @@ EMPIRE_TOOLCHAIN_ROOT=/path/to/existing/empire-tools bash tools/godot/engine-com
 
 The live runner type-checks and regenerates all three source oracles, compares their frozen fixtures,
 then executes the native engine. `--frozen` executes only .NET and Python; it needs neither Node nor
-TypeScript. `--verify-guard` deliberately breaks 42 independently compiled native consumers/sealing
+TypeScript. `--verify-guard` deliberately breaks 45 independently compiled native consumers/sealing
 boundaries. Live guard mode additionally mutates four original TypeScript root/consumer paths.
 Failures to compile a mutant are invalid controls, not successful rejection evidence.
 
@@ -47,10 +48,22 @@ the standalone factory overload delegates to that path with the shared core grid
 
 ## Ownership and deliberate boundaries
 
-Source default spatial construction captures the tactical plugin's local grid registry. A later grid
-capability replacement does not rebind that space. In-place mutation and replacement are different
-operations. Final sealing affects resolved registries, not displaced values. Registry clones are
-shallow entry-table copies, and caller-supplied registries are sealed in place like the source.
+The source spatial-construction fixture preserves evidence of its stale local-grid capture.
+Native composition intentionally does not reproduce it: independent tactical producers install first,
+and a separate spatial installer declares content and grids as dependencies. No deferred lookup is used.
+`InstallationContractChecks` changes square4 geometry and introduces a new grid ID. It checks exact
+resolved identity, movement costs/paths, fog visibility, command execution, recreated-engine save/resume,
+replay and retained-context misuse. Default square4 supplies a negative behavioral comparison.
+
+Installation contexts close immediately after their callback, including exception paths. Retained writes
+and consumption fail explicitly; composed capabilities remain readable. Installed rule objects are not
+made immutable by scope closure. The final root seals resolved registries; displaced registries no
+longer have runtime consumers. Registry clones remain shallow entry-table copies.
+
+The production manifest is the actual six-plugin assembly identity. Old five-plugin saves/replays are
+rejected, not upgraded. `check-support/FixtureRuleset.cs` declares the native identity only for known
+source fixture envelopes, checks the original default versions and leaves state/events/digests unchanged.
+It is not compiled into the game and cannot normalize arbitrary or already-native identities.
 
 `ReadOnlyContent` is the explicit catalog boundary. It owns normalized detached pack data and returns
 detached read values. Callback ports receive the resolved catalog object, not another catalog rebuilt

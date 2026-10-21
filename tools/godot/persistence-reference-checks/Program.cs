@@ -1,3 +1,4 @@
+using Empire.Checks;
 using System.IO.Compression;
 using System.Text.Json.Nodes;
 using Empire.Core;
@@ -49,7 +50,10 @@ JsonObject Wait(JsonObject state)
 
 foreach (var entry in oracle["cases"]!.AsArray().OfType<JsonObject>()) Check("source differential: " + entry["name"], () =>
 {
-    var save = entry["save"]!.AsObject(); var before = save.ToJsonString();
+    var sourceSave = entry["save"]!.AsObject();
+    var sourceBefore = sourceSave.ToJsonString();
+    var save = FixtureRuleset.NativeDocument(sourceSave);
+    var before = save.ToJsonString();
     var expectedError = entry["loadError"]?.GetValue<string>();
     if (expectedError is not null)
     {
@@ -84,6 +88,7 @@ foreach (var entry in oracle["cases"]!.AsArray().OfType<JsonObject>()) Check("so
         }
     }
     Assert(save.ToJsonString() == before, "load modified input document");
+    Assert(sourceSave.ToJsonString() == sourceBefore, "native identity declaration changed the source fixture");
 });
 
 foreach (var entry in oracle["catalogCases"]!.AsArray().OfType<JsonObject>()) Check("source catalog: " + entry["name"], () =>
@@ -98,7 +103,7 @@ foreach (var entry in oracle["catalogCases"]!.AsArray().OfType<JsonObject>()) Ch
     }
     else
     {
-        var custom = new GrayFlagEngine(catalogPacks); var save = entry["saved"]!.AsObject();
+        var custom = new GrayFlagEngine(catalogPacks); var save = FixtureRuleset.NativeDocument(entry["saved"]!.AsObject());
         Equal(save, custom.SaveBattle(initial, savedAt), "source catalog save differs");
         Equal(initial, custom.LoadBattle(save), "source catalog load differs");
     }

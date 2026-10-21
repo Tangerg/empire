@@ -1,3 +1,4 @@
+using System.Collections.Frozen;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Presentation;
@@ -40,9 +41,14 @@ foreach (var entry in fixture.Root.GetProperty("trace").EnumerateArray())
     Equal(overlay.Controlled, Fixture.Cells(expected.GetProperty("controlled")), "source control");
     Equal(overlay.Threat, Fixture.Cells(expected.GetProperty("threat")), "source inspected threat");
 }
+var defaultCells = fixture.InteractiveCells;
 foreach (var entry in fixture.Root.GetProperty("overlays").EnumerateArray())
 {
-    if(entry.GetProperty("hidden").GetBoolean())fixture.UnitsOverride=new[]{new TacticalUnit(1,new(0,0),true,true),new TacticalUnit(2,new(19,0),false,false)};
+    if (entry.GetProperty("hidden").GetBoolean())
+    {
+        fixture.UnitsOverride = new[] { new TacticalUnit(1, new(0,0), true, true), new TacticalUnit(2, new(19,0), false, false) };
+        fixture.InteractiveCells = Enumerable.Range(0, 40).Select(index => new BoardCell(index % 20, index / 20)).ToFrozenSet();
+    }
     controller.Bind(fixture);
     if(entry.GetProperty("picked").GetBoolean())controller.Click(controller.Stamp,new(0,0));
     controller.SetBusy(entry.GetProperty("busy").GetBoolean());
@@ -57,6 +63,7 @@ foreach (var entry in fixture.Root.GetProperty("overlays").EnumerateArray())
     Equal(overlay.Path,Fixture.Cells(expected.GetProperty("path")),"full source overlay path "+name);
     Equal(overlay.Threat,Fixture.Cells(expected.GetProperty("threat")),"full source overlay inspected threat "+name);
     fixture.UnitsOverride=null;
+    fixture.InteractiveCells = defaultCells;
 }
 controller.Bind(fixture);
 foreach (var entry in fixture.Root.GetProperty("keyboard").EnumerateArray())
@@ -194,6 +201,34 @@ Check(controller.PickDeploymentUnit(stamp,999).Status==TacticalInputStatus.Ignor
 fixture.Phase="playing";fixture.HumanTurn=true;
 Check(controller.PickDeploymentUnit(stamp,fixture.DeploymentOverride[0]).Status==TacticalInputStatus.Ignored,"playing roster pick");
 fixture.UnitsOverride=null;fixture.DeploymentOverride=null;
+// Cell eligibility is canonical even when a core movement/target query includes that cell.
+controller.Bind(fixture);
+controller.Click(stamp, new(0,0));
+fixture.InteractiveCells = defaultCells.Where(cell => cell != new BoardCell(3,0)).ToFrozenSet();
+var beforeOutside = controller.Selection;
+Check(controller.Click(stamp, new(3,0)).Status == TacticalInputStatus.Ignored, "outside click is ignored");
+Equal(controller.Selection, beforeOutside, "outside click preserves selection");
+controller.Hover(stamp, new(1,0));
+controller.Hover(stamp, new(3,0));
+Check(controller.Cursor is null && controller.InspectId != 2, "outside hover cannot inspect or retain cursor");
+controller.Hover(stamp, new(0,0));
+fixture.StepsOverride = new[] { new BoardCell(3,0), new BoardCell(1,0) };
+var boundedStep = controller.Key(stamp, "arrowright");
+Check(controller.Cursor == new BoardCell(1,0) && boundedStep.Reveal == controller.Cursor,
+    "keyboard skips ineligible direction before scoring and revealing");
+fixture.InteractiveCells = defaultCells.Where(cell => cell != new BoardCell(0,0)).ToFrozenSet();
+controller.Bind(fixture);
+var cycleOutside = controller.Key(stamp, " ");
+Check(controller.Selection.UnitId != 1 && cycleOutside.Reveal != new BoardCell(0,0), "keyboard cycle excludes outside actor");
+fixture.InteractiveCells = defaultCells;
+fixture.StepsOverride = null;
+controller.Bind(fixture);
+Check(controller.Click(stamp, new(-1,0)).Status == TacticalInputStatus.Ignored, "out-of-bounds click is ignored");
+controller.Hover(stamp, new(0,0));
+fixture.InteractiveCells = defaultCells.Where(cell => cell != new BoardCell(0,0)).ToFrozenSet();
+controller.CompleteDispatch(stamp, fixture);
+Check(controller.Cursor is null, "settled revision cannot retain an ineligible cursor");
+fixture.InteractiveCells = defaultCells;
 fixture.Stamp = stamp with { Revision=1 };
 Check(controller.Click(stamp,new(0,0)).Status==TacticalInputStatus.StaleRevision,"adapter advanced revision");
 controller.Bind(fixture);
@@ -203,7 +238,16 @@ Console.WriteLine($"Tactical selection: {checks} checks passed; real TypeScript 
 sealed class Fixture : ITacticalSelectionQueries
 {
     public JsonElement Root { get; }
-    public Fixture(JsonElement root) => Root=root;
+    public Fixture(JsonElement root)
+    {
+        Root = root;
+        InteractiveCells = root.GetProperty("steps").EnumerateObject().Select(property =>
+        {
+            var coordinate = property.Name.Split(',');
+            return new BoardCell(int.Parse(coordinate[0]), int.Parse(coordinate[1]));
+        }).ToFrozenSet();
+    }
+    public IReadOnlySet<BoardCell> InteractiveCells { get; set; }
     public TacticalStamp Stamp {get;set;} = new(1,0);
     public string Phase {get;set;}="playing";
     public bool HumanInput {get;set;}=true;

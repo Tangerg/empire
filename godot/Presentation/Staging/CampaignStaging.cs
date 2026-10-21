@@ -1,4 +1,5 @@
 using System.Globalization;
+using Empire.Localization;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core.Determinism;
@@ -14,6 +15,8 @@ public sealed record CampaignStagingRelation(string Id, string Label, string Amo
 /// <summary>Detached presentation of campaign facts and source adapter metadata, never a campaign transition.</summary>
 public sealed class CampaignStagingView
 {
+    public string ExitLabel { get; }
+    public string ProgressLabel { get; }
     public string LevelId { get; }
     public string CampaignTitle { get; }
     public string ChapterHeading { get; }
@@ -35,11 +38,12 @@ public sealed class CampaignStagingView
     public const string EmptyResources = "暂无战役资源";
     public const string EmptyRelations = "尚未形成明确阵营关系。";
 
-    internal CampaignStagingView(string levelId, string campaignTitle, string chapterHeading, string progress,
+    internal CampaignStagingView(string exitLabel, string progressLabel, string levelId, string campaignTitle, string chapterHeading, string progress,
         int completedBattles, int battleTotal, string eyebrow, string title, string description, string actionNote, string startLabel,
         CampaignStagingArt chapterArt, CampaignStagingArt? briefingArt, IEnumerable<CampaignStagingUnit> roster,
         IEnumerable<CampaignStagingResource> resources, IEnumerable<CampaignStagingRelation> relations)
     {
+        ExitLabel = exitLabel; ProgressLabel = progressLabel;
         LevelId = levelId; CampaignTitle = campaignTitle; ChapterHeading = chapterHeading; Progress = progress;
         CompletedBattles = completedBattles; BattleTotal = battleTotal;
         Eyebrow = eyebrow; Title = title; Description = description; ActionNote = actionNote; StartLabel = startLabel;
@@ -51,10 +55,10 @@ public sealed class CampaignStagingView
 
 public static class CampaignStaging
 {
-    public static CampaignStagingView Create(JsonElement state, JsonElement battleNode, JsonElement level,
+    public static CampaignStagingView Create(GameText text, JsonElement state, JsonElement battleNode, JsonElement level,
         JsonElement metadata, Func<string, string> unitTypeName, bool hasPendingRequest)
     {
-        if (metadata.GetProperty("schema").GetInt32() != 1) throw new InvalidOperationException("Unsupported campaign staging metadata schema.");
+        if (metadata.GetProperty("schema").GetInt32() != 2) throw new InvalidOperationException("Unsupported campaign staging metadata schema.");
         var id = Text(level.GetProperty("id"));
         if (Text(battleNode.GetProperty("type")) != "battle" || Text(battleNode.GetProperty("level")) != id ||
             Text(battleNode.GetProperty("id")) != Text(state.GetProperty("currentNode")))
@@ -64,6 +68,7 @@ public static class CampaignStaging
         var battleTotal = metadata.GetProperty("battleTotal").GetInt32();
         var chapter = presentation.GetProperty("chapter").GetInt32();
         var order = presentation.GetProperty("order").GetInt32();
+        var chapterKey = Text(metadata.GetProperty("chapters").GetProperty(chapter.ToString(CultureInfo.InvariantCulture)).GetProperty("titleKey"));
         var bindings = battleNode.TryGetProperty("rosterBindings", out var declared)
             ? declared.EnumerateArray().ToArray() : Array.Empty<JsonElement>();
         var joins = metadata.GetProperty("joinAfter");
@@ -92,8 +97,8 @@ public static class CampaignStaging
             return new CampaignStagingRelation(entry.Name, Label(metadata.GetProperty("relationLabels"), entry.Name),
                 (amount > 0 ? "+" : "") + Text(entry.Value), Math.Clamp((amount + 3) / 6, 0, 1));
         });
-        return new CampaignStagingView(id, Text(metadata.GetProperty("title")),
-            $"第 {Number(chapter)} 章 · {Text(presentation.GetProperty("chapterTitle"))}", $"{Number(completed)}/{Number(battleTotal)}",
+        return new CampaignStagingView(text.Format("ui.campaign.exit"), text.Format("ui.campaign.progress"), id, text.Format(Text(metadata.GetProperty("titleKey"))),
+            text.Format("ui.campaign.chapter_heading", chapter, text.Format(chapterKey)), $"{Number(completed)}/{Number(battleTotal)}",
             completed, battleTotal, $"作战准备 · {order.ToString(CultureInfo.InvariantCulture).PadLeft(2, '0')}/{Number(battleTotal)}",
             Text(level.GetProperty("name")), level.TryGetProperty("description", out var description) && description.ValueKind != JsonValueKind.Null ? Text(description) : "",
             hasPendingRequest ? "离开战场后将从本关开局重新开始。" : "进入战斗后自动保留关前存档。",

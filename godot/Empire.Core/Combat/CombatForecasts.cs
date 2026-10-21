@@ -63,18 +63,26 @@ public sealed class CombatForecasts
     public double Effectiveness(string damageType, string armorClass) =>
         matchups.GetValueOrDefault((damageType, armorClass), 1);
     public ITacticalGrid Grid(JsonObject state) => grids.Get(StateJson.Text(state["rules"]!.AsObject(), "grid"));
-    public IReadOnlyList<JsonObject> UnitWeapons(JsonObject unit) => content.Get("units", StateJson.Text(unit, "type"))["weapons"]!
-        .AsArray().Select(id => content.Get("weapons", id!.GetValue<string>())).ToArray();
-    public JsonObject PrimaryWeapon(JsonObject unit) => UnitWeapons(unit).FirstOrDefault()
-        ?? throw new DomainInvariantException($"{StateJson.Text(unit, "type")} has no weapon");
-    public JsonObject? ReadyWeapon(JsonObject state, JsonObject unit, string id) =>
-        UnitWeapons(unit).FirstOrDefault(weapon => StateJson.Text(weapon, "id") == id && IsWeaponReady(state, unit, weapon));
+    private IEnumerable<string> UnitWeaponIds(JsonObject unit) =>
+        content.Read("units", StateJson.Text(unit, "type")).GetProperty("weapons").EnumerateArray()
+            .Select(StateJson.Text);
+    public IReadOnlyList<JsonObject> UnitWeapons(JsonObject unit) =>
+        UnitWeaponIds(unit).Select(id => content.Get("weapons", id)).ToArray();
+    public JsonObject PrimaryWeapon(JsonObject unit) => UnitWeaponIds(unit).FirstOrDefault() is { } id
+        ? content.Get("weapons", id)
+        : throw new DomainInvariantException($"{StateJson.Text(unit, "type")} has no weapon");
+    public JsonObject? ReadyWeapon(JsonObject state, JsonObject unit, string id)
+    {
+        if (!UnitWeaponIds(unit).Contains(id, StringComparer.Ordinal)) return null;
+        var weapon = content.Get("weapons", id);
+        return IsWeaponReady(state, unit, weapon) ? weapon : null;
+    }
     public JsonObject RequireReadyWeapon(JsonObject state, JsonObject unit, string id) => ReadyWeapon(state, unit, id)
         ?? throw new DomainInvariantException($"{StateJson.Text(content.Get("units", StateJson.Text(unit, "type")), "name")} cannot fire weapon \"{id}\" right now");
     public bool IsWeaponReady(JsonObject state, JsonObject unit, JsonObject weapon)
     {
         var id = StateJson.Text(weapon, "id");
-        if (!UnitWeapons(unit).Any(value => StateJson.Text(value, "id") == id)) return false;
+        if (!UnitWeaponIds(unit).Contains(id, StringComparer.Ordinal)) return false;
         if (unit["weaponState"]?[id] is not JsonObject runtime || StateJson.Number(runtime, "cooldownRemaining", 0) > 0) return false;
         var context = ResourceContext(state, unit, id);
         return resources.CanAffordTransactions(context, Transactions(weapon["resourceRequirements"]!.AsArray()))

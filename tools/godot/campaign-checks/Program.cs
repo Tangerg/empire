@@ -7,7 +7,7 @@ var fixture=JsonNode.Parse(File.ReadAllText(args.Length>1?args[1]:"/tmp/empire-c
 var definition=fixture["definition"]!.AsObject();
 var packs=JsonNode.Parse(File.ReadAllText(root+"/data/content-packs.json"))!.AsArray();
 var levels=JsonNode.Parse(File.ReadAllText(root+"/data/grayflag-campaign-levels.json"))!.AsArray();
-var bridge=new CampaignBattleBridge(id=>levels.Select(l=>l!.AsObject()).First(l=>l["id"]!.GetValue<string>()==id),packs);
+var bridge=new CampaignBattleBridge(id=>levels.Select(l=>l!.AsObject()).First(l=>l["id"]!.GetValue<string>()==id),new Empire.Core.State.ReadOnlyContent(packs));
 void Equal(JsonNode? actual,JsonNode? expected,string name)
 {
  if(actual is null || expected is null ? actual is not null || expected is not null : StateDigest.Hash(actual)!=StateDigest.Hash(expected))

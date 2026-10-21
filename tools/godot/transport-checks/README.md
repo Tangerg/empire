@@ -53,7 +53,7 @@ Departure tests include commander consequences and pending casts.
 
 Native implementation:
 
-- `BattleTransport(JsonArray packs, MovementRules movement)` owns boarding,
+- `BattleTransport(ReadOnlyContent catalog, GridRegistry grids)` owns boarding,
   landing, and their eligibility queries. `PassengersOf` is static; instance
   queries are `EmbarkRefusal`, `CarrierOptions`, `DisembarkRefusal`, and
   `PassengerOptions`. Commands are `Embark(state, unitId, carrierId, emit)` and
@@ -63,7 +63,7 @@ Native implementation:
   in the dispatcher, after the landing event, exactly like the source.
 - `BattleDamage` remains the sole owner of carrier loss and passenger departure
   consequences. This slice did not modify or duplicate it.
-- `BattleUnitReturn.Restore(state, marker, UnitReturnRequest, emit)` owns the
+- `BattleUnitReturn.Restore(catalog, state, marker, UnitReturnRequest, emit)` owns the
   source return/reset transition. It preserves identity rather than allocating
   a new unit. Revival clears statuses, restores morale/reaction and waits until
   the next turn. Ordinary disembarking deliberately does none of those resets.
@@ -82,3 +82,15 @@ This suite verifies the transport slice. It does not substitute for the complete
 campaign replay gates, renderer testing, or unsupported future resurrection
 abilities/scenario effects; those must compose the shared return owner rather
 than reimplement its transitions.
+
+## Native health and ruleset contract changes (2026-10-21)
+
+The 81 direct vectors are still all exercised: 71 retain exact source parity; the ten returns requesting -5 or 999 HP now require `DomainInvariantException`, unchanged whole state and no events. `UnitHealth` validates the requested strength before rounding, requires a positive result no greater than canonical maximum, and preserves a valid positive snapshot exactly when HP is omitted. A zero-HP corpse requires an explicit revival policy; scenario revival supplies its catalog-derived health ratio. Ordinary disembarking is unaffected.
+
+At the source-save comparison/load boundary only, `check-support/FixtureRuleset.NativeDocument` declares the intentional native tactical-plugin version change. It validates the source identity, clones the document, and changes only the manifest. Source state, events and digests are never normalized; the original source document is asserted unchanged. Production does not accept or translate obsolete manifests.
+
+Boarding and landing now use the canonical `BattleRelocation` placement owner.
+The capture-reset negative control therefore mutates that isolated owner rather
+than a removed duplicate write in `BattleTransport`; it still must fail the same
+boarding emission-time hash assertion. Boarding readiness, transport admission,
+passenger membership and event policy remain in `BattleTransport`.

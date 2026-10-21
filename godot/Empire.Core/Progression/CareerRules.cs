@@ -12,17 +12,18 @@ public sealed record CareerOption(JsonObject Career, bool Eligible, bool Unlocke
 /// <summary>Career paths and transitions under an explicitly supplied content/resource ruleset.</summary>
 public sealed class CareerRules
 {
+    private readonly ReadOnlyContent catalog;
     private readonly StateContent content;
     private readonly BattleResources resources;
     private readonly CombatEffects effects;
 
-    public CareerRules(JsonArray packs, BattleResources resources, CombatEffects effects)
-    { content = new StateContent(packs); this.resources = resources; this.effects = effects; }
+    public CareerRules(ReadOnlyContent catalog, BattleResources resources, CombatEffects effects)
+    { this.catalog = catalog; content = catalog.Source; this.resources = resources; this.effects = effects; }
 
     public IReadOnlyList<string> UnitAbilityIds(JsonObject unit) =>
-        Array(content.Get("units", Text(unit, "type"))["abilities"], "abilities")
-            .Concat(Array(unit["learnedAbilities"], "learnedAbilities"))
-            .Select(value => Text(value, "ability")).Distinct(StringComparer.Ordinal).ToArray();
+        content.Read("units", Text(unit, "type")).GetProperty("abilities").EnumerateArray().Select(Text)
+            .Concat(Array(unit["learnedAbilities"], "learnedAbilities").Select(value => Text(value, "ability")))
+            .Distinct(StringComparer.Ordinal).ToArray();
 
     public double Mastery(JsonObject unit, string career) =>
         Math.Max(0, Number(Object(Object(unit["career"], "career")["mastery"], "mastery"), career, 0));
@@ -83,21 +84,19 @@ public sealed class CareerRules
             ?? throw new IllegalActionException($"无法转为当前职业或未知职业「{requested}」");
         if (!option.Eligible) throw new IllegalActionException(string.Join("；", option.Reasons));
         var career = option.Career;
+        var health = new UnitHealth(catalog, unit);
+        var nextType = Text(career, "unitType");
+        health.ValidateTypeChange(nextType);
+        var nextDefinition = content.Get("units", nextType);
+        var weaponState = InitialWeaponState(unit, nextDefinition);
         var subject = new BattleResources.Subject("player", TacticalQueries.Player(state, Integer(unit, "owner")));
         foreach (var cost in resources.SpendAll(subject, Array(career["costs"], "costs")))
             resources.Announce(subject, cost.Resource, -cost.Value, emit);
         var careerState = Object(unit["career"], "career");
         var previous = careerState["current"]?.DeepClone();
-        var fromMaximum = Number(content.Get("units", Text(unit, "type"))["maxHp"], "maxHp");
-        var nextDefinition = content.Get("units", Text(career, "unitType"));
-        var weaponState = InitialWeaponState(unit, nextDefinition);
         careerState["current"] = requested;
-        unit["type"] = nextDefinition["id"]!.DeepClone();
+        health.ChangeType(nextType);
         unit["weaponState"] = weaponState;
-        var nextMaximum = Number(nextDefinition["maxHp"], "maxHp");
-        if (fromMaximum < 1 || nextMaximum < 1) throw new DomainInvariantException("health maxima must be positive");
-        var scaled = Round(nextMaximum * Math.Clamp(Number(unit["hp"], "hp") / fromMaximum, 0, 1));
-        unit["hp"] = Math.Max(1, Math.Min(nextMaximum, scaled));
         var accounts = Object(unit["resources"], "resources");
         foreach (var (resource, account) in Object(nextDefinition["resources"], "resources"))
             if (accounts[resource] is null) accounts[resource] = account!.DeepClone();

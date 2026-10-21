@@ -22,7 +22,7 @@ public sealed partial class GrayFlagEngine
 
     private void ComposePersistence(IReadOnlyDictionary<string, double> pluginManifest)
     {
-        persistenceManifest = Manifest.Create(packs, pluginManifest);
+        persistenceManifest = Manifest.Create(Catalog, pluginManifest);
         var references = new RuleReferenceRules
         {
             Content = Catalog,
@@ -42,7 +42,7 @@ public sealed partial class GrayFlagEngine
             .Guard("transport", Transport.StoredStateIssues);
         var environment = new BattleSaveEnvironment(references, ReferenceChecks, persistenceManifest, structuralGuards);
         Persistence = new BattlePersistence(environment, Saves);
-        definitions = new BattleDefinitionValidator(packs, references, ReferenceChecks, Grids);
+        definitions = new BattleDefinitionValidator(references, ReferenceChecks, Grids);
         definitions.ValidateContent();
     }
 

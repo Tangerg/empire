@@ -12,7 +12,7 @@ from pathlib import Path
 import sys
 root, target = map(Path, sys.argv[1:])
 target.mkdir()
-for name in ['BattlefieldCamera.cs', 'BattlefieldGestures.cs', 'BattlefieldFocus.cs', 'IBattleSession.cs']:
+for name in ['BattlefieldCamera.cs', 'BattlefieldGestures.cs', 'BattlefieldFocus.cs', 'BattlePresentationModels.cs']:
     text = (root / 'godot/Presentation' / name).read_text()
     if name == 'BattlefieldGestures.cs':
         assert text.count('>= 6)') == 1
@@ -35,7 +35,7 @@ import sys
 root, target = map(Path, sys.argv[1:])
 (target / 'Presentation').mkdir(parents=True)
 (target / 'Scenes').mkdir()
-for name in ['BattlefieldCamera.cs', 'BattlefieldGestures.cs', 'BattlefieldFocus.cs', 'IBattleSession.cs', 'CameraChecks.cs']:
+for name in ['BattlefieldCamera.cs', 'BattlefieldGestures.cs', 'BattlefieldFocus.cs', 'BattlePresentationModels.cs', 'CameraChecks.cs']:
     (target / 'Presentation' / name).write_bytes((root / 'godot/Presentation' / name).read_bytes())
 (target / 'Scenes/CameraChecks.tscn').write_bytes((root / 'godot/Scenes/CameraChecks.tscn').read_bytes())
 (target / 'CameraNativeChecks.csproj').write_text('<Project Sdk="Godot.NET.Sdk/4.6.3"><PropertyGroup><TargetFramework>net8.0</TargetFramework><EnableDynamicLoading>true</EnableDynamicLoading><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><TreatWarningsAsErrors>true</TreatWarningsAsErrors></PropertyGroup></Project>')

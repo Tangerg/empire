@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text.Json.Nodes;
 using Empire.Application;
 using Empire.Core.Engine;
+using Empire.Core.Combat;
+using Empire.Core.Composition;
+using Empire.Core.State;
 using Empire.Core.Determinism;
 using Empire.Core.Geometry;
 using Empire.Presentation.Tactical;
@@ -22,6 +25,8 @@ public partial class BattleScreenChecks : Node
             Check();
             CheckPresentationTransitions();
             CheckInputContracts();
+            CheckCanonicalCellProjection();
+            CheckRegisteredReactions();
             GD.Print("Native BattleScreen real-session integration passed.");
             GetTree().Quit();
         }
@@ -29,6 +34,56 @@ public partial class BattleScreenChecks : Node
         {
             GD.PushError(error.ToString());
             GetTree().Quit(1);
+        }
+    }
+
+    private void CheckCanonicalCellProjection()
+    {
+        foreach (var canonicalOutside in new[] { false, true })
+        {
+            var level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
+            level["rules"]!["fog"] = true;
+            var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
+            var terrain = packs.OfType<JsonObject>().SelectMany(pack => pack["terrains"]?.AsArray().OfType<JsonObject>() ?? [])
+                .Single(definition => EcmaJson.ReadString(definition["id"]) == "plain");
+            if (canonicalOutside) terrain["tags"]!.AsArray().Add("outside");
+            var engine = new GrayFlagEngine(packs);
+            var session = new GrayFlagSession(engine, level);
+            var stateBefore = EcmaJson.Stringify(session.Snapshot());
+            var queries = session.GetTacticalQueries(0);
+            var actor = queries.Unit(2)!;
+            var stops = queries.MoveStops(2).ToArray();
+            var screen = new BattleScreen();
+            AddChild(screen);
+            screen.Board.AnimationsEnabled = false;
+            screen.BindSession(session, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
+            var materials = WorldMaterialsManifest.Load();
+            materials.TerrainTags["plain"] = canonicalOutside ? [] : ["outside"];
+            screen.ConfigureTerrain(materials);
+
+            screen.SelectCell(actor.At);
+            Require((screen.SelectedUnitId == actor.Id) == !canonicalOutside,
+                "Canonical terrain must govern selection when material tags disagree.");
+            screen._UnhandledKeyInput(new InputEventKey { Pressed = true, Keycode = Key.Escape });
+            screen._UnhandledKeyInput(new InputEventKey { Pressed = true, Keycode = Key.Space });
+            Require(screen.SelectedUnitId is not { } selected || queries.InteractiveCells.Contains(queries.Unit(selected)!.At),
+                "Native actor cycling cannot select a canonical outside cell.");
+
+            var overlay = (BoardOverlay)screen.FindChild("LegalTargets", true, false);
+            var visible = session.GetSnapshot().VisibleCells ?? throw new InvalidOperationException("Fog fixture has no visibility projection.");
+            var fog = overlay.RangeOrder().Where(entry => entry.Role == "fog").Select(entry => entry.Cell).ToHashSet();
+            Require(fog.SetEquals(queries.InteractiveCells.Where(cell => !visible.Contains(cell))),
+                "Rendered fog must consume the exact canonical interactive-cell projection.");
+            var state = session.Snapshot();
+            var width = state["map"]!["width"]!.GetValue<int>();
+            var unseenPlain = state["map"]!["tiles"]!.AsArray().Select((tile, index) => (tile, at: new BoardCell(index % width, index / width)))
+                .First(entry => EcmaJson.ReadString(entry.tile) == "plain" && !visible.Contains(entry.at)).at;
+            Require(fog.Contains(unseenPlain) == !canonicalOutside,
+                "Material outside metadata cannot add or remove fog from a canonical cell.");
+            Require(queries.MoveStops(2).SequenceEqual(stops) && EcmaJson.Stringify(session.Snapshot()) == stateBefore,
+                "Changing presentation metadata cannot change legality or battle state.");
+            RemoveChild(screen);
+            screen.Free();
         }
     }
 
@@ -42,15 +97,13 @@ public partial class BattleScreenChecks : Node
         void Bind(GrayFlagSession value) => screen.BindSession(value, AssetCatalog.Load(), level,
             AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
         Bind(session);
-        var order = session.GetLegalOrders(2).First(choice => choice.PresentationRole == "move"
-            && choice.Target is { } at && at != new BoardCell(5, 8));
         Require(screen.RecentMessages.SequenceEqual(new[] { session.GetSnapshot().InitialLogMessage }),
             "New battle log must contain only the original opening line.");
-        screen.SubmitOrder(order);
+        var destination = TacticalSceneInputChecks.Move(screen, session);
         Require(screen.RecentMessages.Count == 1, "Event text must wait until its animation completes.");
         Require(screen.IsPresenting && screen.Board.IsPresenting, "Accepted move must hold the presentation gate.");
         var revision = session.GetSnapshot().Revision;
-        screen.SubmitOrder(order); screen.SelectCell(new BoardCell(5, 8)); screen.Refresh();
+        screen.SelectCell(destination); screen.SelectCell(new BoardCell(5, 8)); screen.Refresh();
         Require(session.GetSnapshot().Revision == revision && screen.SelectedUnitId is null,
             "Repeated clicks and refresh must not dispatch or change selection during playback.");
         for (var step = 0; step < 100 && screen.IsPresenting; step++) screen.Board.AdvancePresentation(0.1);
@@ -65,7 +118,7 @@ public partial class BattleScreenChecks : Node
         var superseded = new GrayFlagSession(engine, level);
         var replaceable = new ReplaceableSession(superseded);
         screen.BindSession(replaceable, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
-        screen.SubmitOrder(order);
+        TacticalSceneInputChecks.Move(screen, replaceable);
         var replacement = superseded.GetSnapshot() with { Revision = 9, Transition = null };
         replaceable.Replacement = replacement;
         screen.Refresh(); screen.Board.AdvancePresentation(100);
@@ -73,11 +126,11 @@ public partial class BattleScreenChecks : Node
             "A newer transition-free snapshot must invalidate older async completion.");
         screen.Refresh();
         Require(!screen.IsPresenting, "A transition-free revision must remain consumed.");
-        var canceled = new GrayFlagSession(engine, level); Bind(canceled); screen.SubmitOrder(order);
+        var canceled = new GrayFlagSession(engine, level); Bind(canceled); TacticalSceneInputChecks.Move(screen, canceled);
         screen.Board.CancelPresentation();
         Require(!screen.IsPresenting && screen.DisplayedRevision == canceled.GetSnapshot().Revision,
             "Same-session cancellation must settle both board and controls to committed state.");
-        var fresh = new GrayFlagSession(engine, level); Bind(fresh); screen.SubmitOrder(order);
+        var fresh = new GrayFlagSession(engine, level); Bind(fresh); TacticalSceneInputChecks.Move(screen, fresh);
         Require(screen.IsPresenting, "Second timeline did not start.");
         var loaded = GrayFlagSession.FromSave(engine, fresh.Save()); Bind(loaded);
         Require(!screen.IsPresenting && !screen.Board.IsPresenting && screen.DisplayedRevision == 0,
@@ -87,7 +140,7 @@ public partial class BattleScreenChecks : Node
         Require(screen.RecentMessages.SequenceEqual(new[] { "已读取第 1 回合的存档" }), "Load must clear history and keep one load line.");
         screen.Board.AdvancePresentation(100);
         Require(screen.DisplayedRevision == 0, "Stale timeline completion overwrote the rebound view.");
-        var last = new GrayFlagSession(engine, level); Bind(last); screen.SubmitOrder(order);
+        var last = new GrayFlagSession(engine, level); Bind(last); TacticalSceneInputChecks.Move(screen, last);
         var saves = 0;
         screen.BindApplicationActions(() => saves++);
         var staleSave = Buttons(screen).Single(button => button.Text == "保存");
@@ -95,7 +148,7 @@ public partial class BattleScreenChecks : Node
         RemoveChild(screen);
         staleSave.EmitSignal(Button.SignalName.Pressed);
         Require(saves == 0, "Unmounted application callbacks must not save or load.");
-        screen.SubmitOrder(order);
+        screen.SelectCell(new BoardCell(5, 8)); screen.SelectCell(destination);
         Require(last.GetSnapshot().Revision == lastRevision, "Unmounted callbacks must not dispatch.");
         Require(!screen.IsPresenting && !screen.Board.IsPresenting, "Unmount must release all presentation waiters.");
         screen.QueueFree();
@@ -112,16 +165,16 @@ public partial class BattleScreenChecks : Node
                 Rows = section.Rows.Select(row => row with { Intent = row.Intent is { } intent ? intent with { Stamp = stamp } : null }).ToArray()
             }).ToArray() };
         }
-        public bool CanUndo => inner.CanUndo;
         public BattleDispatchResult Undo(long expectedRevision) => inner.Undo(expectedRevision);
 
         public BattleSnapshot GetSnapshot() => Replacement ?? inner.GetSnapshot();
-        public System.Collections.Generic.IReadOnlyList<BattleOrderChoice> GetLegalOrders(int? selectedUnitId) => inner.GetLegalOrders(selectedUnitId);
         public BattleDispatchResult Dispatch(System.Text.Json.JsonElement action, long expectedRevision) => inner.Dispatch(action, expectedRevision);
     }
 
     private void Check()
     {
+        Require(typeof(BattleScreen).GetMethod(nameof(BattleScreen.BindSession))!.GetParameters()[0].ParameterType == typeof(ITacticalBattleSession),
+            "BattleScreen must declare its complete consumer port rather than discover a hidden capability at runtime.");
         var level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
         var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         var engine = new GrayFlagEngine(packs);
@@ -141,7 +194,6 @@ public partial class BattleScreenChecks : Node
         var queries = session.GetTacticalQueries(0);
         var destination = queries.MoveStops(2).First(cell => cell != new BoardCell(5,8)
             && queries.CommandsAt(2,cell) is { Count: 1 } commands && commands[0].SelfTargeted);
-        var order = session.GetLegalOrders(2).First(choice => choice.Target == destination && choice.PresentationRole == "move");
         var staleTurnButton = Buttons(screen).Single(button => button.Text == "结束回合");
         screen.SelectCell(destination);
         var after = session.GetSnapshot();
@@ -155,14 +207,13 @@ public partial class BattleScreenChecks : Node
             "The real destination selection must commit the complete wait-at-destination command.");
         staleTurnButton.EmitSignal(Button.SignalName.Pressed);
         Require(session.GetSnapshot().Revision == after.Revision, "A callback rendered before dispatch cannot end the newer turn.");
-        var stale = session.Dispatch(order.Action, before.Revision);
+        var stale = session.Dispatch(after.Transition!.Action, before.Revision);
         Require(!stale.Accepted && session.GetSnapshot().Revision == after.Revision,
             "An obsolete UI revision must not replay a command.");
         Require(before.State.GetProperty("units").EnumerateArray()
                 .Single(unit => unit.GetProperty("id").GetInt32() == 2).GetProperty("x").GetInt32() == 5,
             "Earlier detached snapshots must remain immutable.");
-        var endTurn = session.GetLegalOrders(null).Single(choice => choice.PresentationRole == "turn");
-        var turnButton = Buttons(screen).Single(button => button.Text == endTurn.Label);
+        var turnButton = Buttons(screen).Single(button => button.Name == "EndTurn");
         turnButton.EmitSignal(Button.SignalName.Pressed);
         var nextTurn = session.GetSnapshot();
         Require(nextTurn.Revision == after.Revision + 1
@@ -191,10 +242,10 @@ public partial class BattleScreenChecks : Node
         var selected=screen.SelectedUnitId;
         var queries=session.GetTacticalQueries(0);
         var destination=queries.MoveStops(2).First(at=>at!=new BoardCell(5,8)&&queries.CommandsAt(2,at) is {Count:1} commands&&commands[0].SelfTargeted);
-        var order=session.GetLegalOrders(2).First(choice=>choice.Target==destination&&choice.PresentationRole=="move");
         screen.SetApplicationBusy(true);
-        screen.SelectCell(destination);screen.SubmitOrder(order);Keypress(Key.E);Keypress(Key.Escape);
-        Require(session.GetSnapshot().Revision==snapshot.Revision&&screen.SelectedUnitId==selected,"Application busy blocks board, direct action, end-turn and back input.");
+        var busyReaction = Buttons(screen).First(button => button.GetMeta("hud_key", "").AsString().StartsWith("stances/reaction:", StringComparison.Ordinal));
+        screen.SelectCell(destination);busyReaction.EmitSignal(Button.SignalName.Pressed);Keypress(Key.E);Keypress(Key.Escape);
+        Require(session.GetSnapshot().Revision==snapshot.Revision&&screen.SelectedUnitId==selected,"Application busy blocks board, HUD actions, end-turn and back input.");
         screen.SetApplicationBusy(false);
         Require(screen.SelectedUnitId==selected,"Clearing application busy preserves the valid selection.");
         screen.SelectCell(destination);
@@ -233,6 +284,47 @@ public partial class BattleScreenChecks : Node
         screen.QueueFree();
     }
 
+    private void CheckRegisteredReactions()
+    {
+        var level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
+        var reactions = ReactionRegistry.Core();
+        reactions.Replace(reactions.Get("guard") with { Name = "替换防御菜单", Hint = "来自已解析注册表" });
+        reactions.Register(new("plugin-dodge", "自定义闪避菜单", false, 0.4, false, false, "自定义提示"));
+        var engine = BattleEngineFactory.Create(new ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")),
+            [new EnginePlugin("test.native-reactions", 1, context => context.Replace(BattleCapabilities.Reactions, reactions), overrides: [BattleCapabilities.Reactions])]);
+        var session = new GrayFlagSession(engine, level);
+        var screen = new BattleScreen(); AddChild(screen); screen.Board.AnimationsEnabled = false;
+        screen.BindSession(session, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
+        var origin = session.GetTacticalQueries(0).Unit(2)!.At;
+        screen.SelectCell(origin);
+        Button Reaction(string id) => Buttons(screen).Single(button => button.GetMeta("hud_key", "").AsString() == "stances/reaction:" + id);
+        var buttons = Buttons(screen).Where(button => button.GetMeta("hud_key", "").AsString().StartsWith("stances/reaction:", StringComparison.Ordinal)).ToArray();
+        Require(buttons.Select(button => button.Text).SequenceEqual(reactions.All().Select(stance => stance.Name))
+            && buttons.Select(button => button.TooltipText).SequenceEqual(reactions.All().Select(stance => stance.Hint)),
+            "Mounted reaction controls must retain resolved registry order, replacement names and custom hints.");
+        var staleGuard = Reaction("guard");
+        Reaction("plugin-dodge").EmitSignal(Button.SignalName.Pressed);
+        Require(session.GetSnapshot().Revision == 1 && session.Snapshot()["units"]!.AsArray().OfType<JsonObject>()
+            .Single(unit => unit["id"]!.GetValue<int>() == 2)["reaction"]!.GetValue<string>() == "plugin-dodge",
+            "The actual HUD button must commit a registered reaction through the tactical session port.");
+        staleGuard.EmitSignal(Button.SignalName.Pressed);
+        Require(session.GetSnapshot().Revision == 1, "Removed reaction controls cannot replay after a HUD dispatch.");
+        screen.SelectCell(origin);
+        var staleCustom = Reaction("plugin-dodge");
+        var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+        var guard = hud.Projection!.Sections.Single(section => section.Key == "stances").Rows.Single(row => row.Key == "reaction:guard").Intent!;
+        Require(session.Dispatch(guard.Action!.Value, guard.Stamp.Revision).Accepted, "External revision fixture did not commit.");
+        staleCustom.EmitSignal(Button.SignalName.Pressed);
+        Require(session.GetSnapshot().Revision == 2 && screen.DisplayedRevision == 1 && screen.Selection?.Kind == TacticalSelectionKind.Unit
+            && session.Snapshot()["units"]!.AsArray().OfType<JsonObject>()
+            .Single(unit => unit["id"]!.GetValue<int>() == 2)["reaction"]!.GetValue<string>() == "guard",
+            "Still-mounted HUD controls cannot use stale choices after the live session revision changes.");
+        screen.Refresh(); screen.SelectCell(origin);
+        Reaction("plugin-dodge").EmitSignal(Button.SignalName.Pressed);
+        Require(session.GetSnapshot().Revision == 3, "Refreshing the stale view must restore the actual HUD action path.");
+        screen.QueueFree();
+    }
+
     private static System.Collections.Generic.IEnumerable<Button> Buttons(Node root)
     {
         foreach (var child in root.GetChildren())
@@ -253,6 +345,7 @@ public partial class BattleScreenChecks : Node
         public bool HumanInput => inner.HumanInput;
         public bool HumanTurn => inner.HumanTurn;
         public bool CanUndo => inner.CanUndo;
+        public IReadOnlySet<BoardCell> InteractiveCells => inner.InteractiveCells;
         public TacticalUnit? Unit(int id) => inner.Unit(id);
         public TacticalUnit? UnitAt(BoardCell at) => inner.UnitAt(at);
         public bool AreEnemies(int firstUnit,int secondUnit) => inner.AreEnemies(firstUnit,secondUnit);

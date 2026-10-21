@@ -73,8 +73,12 @@ function sample(name: string, change: (s: any) => void = () => { }, customLevel 
     });
 }
 sample('square4');
+// Preserve the old malformed fixture as an admission-refusal vector. Valid
+// comparisons author the tiling before unit initialization chooses its facing.
+const malformedHexState = structuredClone(cases[0].state);
+malformedHexState.rules.grid = 'hex';
 for (const grid of ['square8', 'hex'])
-    sample(grid, s => { s.rules.grid = grid; });
+    sample(grid, () => { }, { ...level, rules: { ...level.rules, grid } });
 sample('fog', s => { s.rules.fog = true; });
 sample('ai', s => s.players[0].controller = 'ai');
 sample('current AI with first human viewer', s => { s.currentPlayer = 2; s.players[1].controller = 'ai'; });
@@ -129,4 +133,4 @@ for (const name of ['square4', 'tactics', 'transport', 'deployment', 'recruit no
     const accepted = session.tryDispatch(action) !== null;
     flows.push({ name, input, action, accepted, state: session.state, events: session.log });
 }
-writeFileSync(process.argv[2], JSON.stringify({ packs, level, cases, flows }));
+writeFileSync(process.argv[2], JSON.stringify({ packs, level, cases, flows, malformedHexState }));

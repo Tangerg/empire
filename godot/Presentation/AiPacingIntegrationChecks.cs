@@ -31,11 +31,11 @@ public partial class AiPacingIntegrationChecks : Node
         try
         {
             var campaign = Field<GrayFlagCampaign>(game, "campaign");
-            while (campaign.Runtime.Node()["type"]!.GetValue<string>() != "battle")
+            while (campaign.Node()["type"]!.GetValue<string>() != "battle")
             {
-                if (campaign.Runtime.Node()["type"]!.GetValue<string>() == "choice")
-                    campaign.Runtime.Choose(campaign.Runtime.Choices()[0]!["id"]!.GetValue<string>());
-                else campaign.Runtime.Advance();
+                if (campaign.Node()["type"]!.GetValue<string>() == "choice")
+                    campaign.Choose(campaign.Choices()[0]!["id"]!.GetValue<string>());
+                else campaign.Advance();
             }
             campaign.BeginBattle();
             Invoke(game, "ShowBattle", (object?)null);

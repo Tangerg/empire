@@ -22,6 +22,7 @@ var conditions = engine.ScenarioConditions;
 var victory = engine.Victory;
 var serialization = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 var count = 0;
+var nativeHealthRejections = 0;
 var failures = new List<string>();
 void Check(string name, string key, JsonNode? actual, JsonNode? expected)
 {
@@ -64,6 +65,15 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
     }
     try
     {
+        if (name == "restore stops at full reading-order zone and resets snapshots")
+        {
+            Check(name, "native-health-error", error?["kind"], JsonValue.Create("DomainInvariant"));
+            Check(name, "native-health-events", events, new JsonArray());
+            Check(name, "native-health-hashes", hashes, new JsonArray());
+            Check(name, "native-health-state", state, item["initial"]);
+            nativeHealthRejections++;
+            continue;
+        }
         Check(name, "error", error, item["error"]);
         Check(name, "result", result, item["result"]);
         Check(name, "events", events, item["events"]);
@@ -75,6 +85,8 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
 }
 if (failures.Count > 0) throw new Exception($"{failures.Count}/{count} scenario cases diverged:\n" + string.Join("\n", failures));
 Console.WriteLine($"PASS {count} live TypeScript scenario cases: ordered events, every event-time digest, complete states, queries and typed failures");
+if (nativeHealthRejections != 1) throw new Exception("Expected one explicit native dead-snapshot return rejection");
+Console.WriteLine("PASS native dead-snapshot return rejects before events and mutation");
 if (input["effectKinds"] is JsonArray kinds) Check("supported effect IDs", "effect-kinds",
     JsonSerializer.SerializeToNode(effects.Keys().Order(StringComparer.Ordinal)), kinds);
 if (input["conditionKinds"] is JsonArray conditionKinds) Check("supported condition IDs", "condition-kinds",

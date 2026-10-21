@@ -58,6 +58,11 @@ public sealed class CampaignRuntime
     }
     public JsonObject Node() => (JsonObject)aggregate.Node().DeepClone();
     public JsonObject Snapshot() => (JsonObject)state.DeepClone();
+    public JsonObject PendingBattleRequest(CampaignBattleBridge bridge)
+    {
+        RequireActive();
+        return bridge.RestorePending(definition, state);
+    }
     public JsonObject Advance() => Transaction(() =>
     {
         RequireActive();

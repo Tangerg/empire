@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Globalization;
+using Empire.Localization;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
@@ -9,10 +11,11 @@ using Godot;
 
 namespace Empire.Presentation;
 
-/// <summary>Executes native widgets against the live TypeScript controller's projections. No desktop acceptance claim.</summary>
+/// <summary>Executes native widgets against the frozen rendered expectations and native localization contracts. No desktop acceptance claim.</summary>
 public partial class NarrativeChecks : Node
 {
     private int assertions;
+    private GameText messages = null!;
     private StoryDocument documents = null!;
     private NarrativePresentationDocument metadata = null!;
     private StoryScreen screen = null!;
@@ -23,10 +26,12 @@ public partial class NarrativeChecks : Node
     {
         try
         {
-            documents = StoryDocument.Load(); metadata = NarrativePresentationDocument.Load();
+            messages = GodotTextCatalog.LoadSimplifiedChinese();
+            documents = StoryDocument.Load(messages); metadata = NarrativePresentationDocument.Load(messages);
             oracle = PresentationJson.Load<JsonObject>(OS.GetEnvironment("EMPIRE_NARRATIVE_ORACLE"));
             screen = new StoryScreen(); AddChild(screen); await Layout();
             CheckSourceProjections();
+            CheckLocalizationBoundary();
             await CheckSourceWidgets();
             CheckNormalTransitions();
             CheckEndingTransitions();
@@ -40,7 +45,7 @@ public partial class NarrativeChecks : Node
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
     }
 
-    private NarrativeContext Context(JsonObject state) => new(metadata, state["battleHistory"]!.AsArray().Count, Text(state, "status") == "active");
+    private NarrativeContext Context(JsonObject state) => new(messages, metadata, state["battleHistory"]!.AsArray().Count, Text(state, "status") == "active");
     private StoryEntry Story(string id) => documents.Stories.Single(story => story.Id == id);
     private StoryChoice Choice(string id) => documents.Choices.Single(choice => choice.Id == id);
     private static string Text(JsonNode value, string key) => value[key]!.GetValue<string>();
@@ -56,8 +61,8 @@ public partial class NarrativeChecks : Node
             campaignTitle = view.Shell.Title, chapterHeading = view.Shell.ChapterHeading, progress = view.Shell.Progress,
             progressFraction = view.Shell.ProgressFraction, progressSegments = view.Shell.ProgressSegments,
             backdropSource = view.Shell.Art.Source, view.Kicker, view.Date, view.Location, view.Title, view.Summary,
-            mission = view.Mission is { } mission ? new[] { new { label = StoryView.ObjectiveLabel, text = mission.Objective },
-                new { label = StoryView.DangerLabel, text = mission.Danger }, new { label = StoryView.LessonLabel, text = mission.Lesson } } : null,
+            mission = view.Mission is { } mission ? new[] { new { label = view.ObjectiveLabel, text = mission.Objective },
+                new { label = view.DangerLabel, text = mission.Danger }, new { label = view.LessonLabel, text = mission.Lesson } } : null,
             view.Speaker, view.Text, portraitSource = view.Portrait?.Source, view.Narration, beatDots = view.ActiveDots,
             view.PrimaryLabel, primaryAction = view.Ending ? "finish" : "nextBeat",
         }, jsonOptions)!;
@@ -69,7 +74,7 @@ public partial class NarrativeChecks : Node
         Equal(documents.Choices.Count, 11, "Export contains every source choice");
         foreach (var item in oracle["storyCases"]!.AsArray().Select(value => value!.AsObject()))
         {
-            var view = NarrativeProjection.Story(Story(Text(item, "presentationId")), documents.Speakers,
+            var view = NarrativeProjection.Story(Story(Text(item, "presentationId")), documents.SpeakerNameKeys,
                 Context(item["state"]!.AsObject()), Number(item, "beatIndex"), Flag(item, "ending"));
             var projection = StoryProjection(view);
             foreach (var expected in item["expected"]!.AsObject())
@@ -83,7 +88,7 @@ public partial class NarrativeChecks : Node
             {
                 campaignTitle = view.Shell.Title, chapterHeading = view.Shell.ChapterHeading, progress = view.Shell.Progress,
                 progressFraction = view.Shell.ProgressFraction, progressSegments = view.Shell.ProgressSegments,
-                backdropSource = view.Shell.Art.Source, eyebrow = ChoiceView.Eyebrow, view.Prompt, view.Context, view.Options, note = ChoiceView.Note,
+                backdropSource = view.Shell.Art.Source, eyebrow = view.Eyebrow, view.Prompt, view.Context, view.Options, note = view.Note,
             }, jsonOptions)!;
             foreach (var expected in item["expected"]!.AsObject()) JsonEqual(projection[expected.Key], expected.Value, Text(item, "name") + ": " + expected.Key);
         }
@@ -93,24 +98,68 @@ public partial class NarrativeChecks : Node
         {
             var presentation = JsonSerializer.Deserialize<NarrativePresentationDocument>(item["presentation"]!.ToJsonString(), jsonOptions)!;
             var story = JsonSerializer.Deserialize<StoryEntry>(item["story"]!.ToJsonString(), jsonOptions)!;
-            var speakers = JsonSerializer.Deserialize<Dictionary<string, string>>(item["speakers"]!.ToJsonString(), jsonOptions)!;
+            var speakers = JsonSerializer.Deserialize<Dictionary<string, string>>(item["speakerNameKeys"]!.ToJsonString(), jsonOptions)!;
             var state = item["state"]!.AsObject();
-            var view = NarrativeProjection.Story(story, speakers, new NarrativeContext(presentation, state["battleHistory"]!.AsArray().Count,
-                Text(state, "status") == "active"), Number(item, "beatIndex"), Flag(item, "ending"));
+            var context = new NarrativeContext(messages, presentation, state["battleHistory"]!.AsArray().Count, Text(state, "status") == "active");
+            if (item["expectedError"] is not null)
+            {
+                Throws(() => NarrativeProjection.Story(story, speakers, context, Number(item, "beatIndex"), Flag(item, "ending")), "Unknown speaker is invalid authoring, not display text");
+                continue;
+            }
+            var view = NarrativeProjection.Story(story, speakers, context, Number(item, "beatIndex"), Flag(item, "ending"));
             var projection = StoryProjection(view);
             foreach (var expected in item["expected"]!.AsObject())
                 JsonEqual(projection[expected.Key], expected.Value, Text(item, "name") + ": " + expected.Key);
         }
         foreach (var chapter in metadata.Chapters.Keys)
         {
-            var zero = CampaignShellView.Create(new NarrativeContext(new NarrativePresentationDocument
-                { Schema = 1, Chapters = metadata.Chapters, BattleTotal = 0 }, 0, true), chapter);
+            var zero = CampaignShellView.Create(new NarrativeContext(messages, new NarrativePresentationDocument
+                { Schema = 2, TitleKey = metadata.TitleKey, Chapters = metadata.Chapters, BattleTotal = 0 }, 0, true), chapter);
             Equal(zero.ProgressFraction, 0d, "Zero battle count does not divide by zero"); Equal(zero.ProgressSegments, 1, "Zero battle count retains a segment");
         }
-        var unknown = new StoryEntry { Id = "speaker-fixture", Chapter = documents.Stories[0].Chapter, Beats = new() { new() { Speaker = "unmapped", Text = "speaker fixture" } } };
-        var unknownView = NarrativeProjection.Story(unknown, documents.Speakers, new(metadata, 0, true), 0, false);
-        Equal(unknownView.Speaker, "unmapped", "Unknown speaker falls back to its source key"); Require(unknownView.Narration, "Unmapped portrait remains narration");
-        Throws(() => NarrativeProjection.Story(new StoryEntry { Id = "empty" }, documents.Speakers, new(metadata, 0, true), 0, false), "Empty beat document is rejected explicitly");
+        var unknown = new StoryEntry { Id = "speaker-fixture", Chapter = documents.Stories[0].Chapter,
+            Beats = new() { new() { Id = "unmapped-speaker", Speaker = "unmapped", TextKey = documents.Stories[0].Beats[0].TextKey } } };
+        Throws(() => NarrativeProjection.Story(unknown, documents.SpeakerNameKeys, new(messages, metadata, 0, true), 0, false), "Unknown speaker is rejected explicitly");
+        Throws(() => NarrativeProjection.Story(new StoryEntry { Id = "empty" }, documents.SpeakerNameKeys, new(messages, metadata, 0, true), 0, false), "Empty beat document is rejected explicitly");
+    }
+
+    private void CheckLocalizationBoundary()
+    {
+        var catalog = ResourceLoader.Load<Translation>(GodotTextCatalog.ResourcePath);
+        var known = catalog.GetMessageList().ToHashSet(StringComparer.Ordinal);
+        var alternate = new GameText(key => known.Contains(key) ? catalog.GetMessage(key).ToString() + " [fixture]" : null, CultureInfo.InvariantCulture);
+        var entry = documents.Stories[0];
+        var before = JsonSerializer.Serialize(documents, jsonOptions);
+        var first = NarrativeProjection.Story(entry, documents.SpeakerNameKeys, new(messages, metadata, 0, true), 0, false);
+        var second = NarrativeProjection.Story(entry, documents.SpeakerNameKeys, new(alternate, metadata, 0, true), 0, false);
+        Equal(second.Title, first.Title + " [fixture]", "Injected catalog owns story wording");
+        Equal(second.Text, first.Text + " [fixture]", "Injected catalog owns beat wording");
+        Equal(second.Shell.ExitLabel, first.Shell.ExitLabel + " [fixture]", "Injected catalog owns shell labels");
+        screen.ShowStory(entry, documents.SpeakerNameKeys, new(alternate, metadata, 0, true), false, () => { }, () => { }, () => { });
+        Equal(Find<Label>("StoryTitle").Text, second.Title, "Actual widget renders injected catalog, not hardcoded prose");
+        Equal(Find<Button>("StoryPrimary").Text, second.PrimaryLabel, "Actual widget renders injected navigation");
+        Equal(JsonSerializer.Serialize(documents, jsonOptions), before, "Localization does not mutate authored identities or keys");
+        var reorderedJson = JsonSerializer.SerializeToNode(entry, jsonOptions)!.AsObject();
+        var original = reorderedJson["beats"]!.AsArray().Select(value => value!.DeepClone()).Reverse().ToArray();
+        reorderedJson["beats"] = new JsonArray(original);
+        var reordered = JsonSerializer.Deserialize<StoryEntry>(reorderedJson.ToJsonString(), jsonOptions)!;
+        var moved = reordered.Beats.FindIndex(beat => beat.Id == entry.Beats[0].Id);
+        Equal(NarrativeProjection.Story(reordered, documents.SpeakerNameKeys, new(messages, metadata, 0, true), moved, false).Text,
+            first.Text, "Reordering does not change semantic beat key ownership");
+        var noSceneJson = JsonSerializer.SerializeToNode(entry, jsonOptions)!.AsObject(); noSceneJson["scene"] = null;
+        var noScene = JsonSerializer.Deserialize<StoryEntry>(noSceneJson.ToJsonString(), jsonOptions)!;
+        var chapterView = NarrativeProjection.Story(noScene, documents.SpeakerNameKeys, new(messages, metadata, 0, true), 0, false);
+        Equal(chapterView.Shell.Art.Source, metadata.Chapters[entry.Chapter].Art.Source, "Null scene uses the explicitly owned chapter backdrop");
+        Equal(chapterView.Speaker, first.Speaker, "Known narrator remains localized without a scene");
+        Require(chapterView.Narration, "Known narrator without a portrait is valid authoring");
+        var missing = new GameText(key => key == entry.TitleKey ? null : known.Contains(key) ? catalog.GetMessage(key).ToString() : null, CultureInfo.InvariantCulture);
+        Throws(() => documents.Validate(missing), "A missing content message fails at load validation, before navigation");
+        var duplicate = JsonSerializer.SerializeToNode(documents, jsonOptions)!.AsObject();
+        duplicate["stories"]![0]!["beats"]![1]!["id"] = entry.Beats[0].Id;
+        Throws(() => JsonSerializer.Deserialize<StoryDocument>(duplicate.ToJsonString(), jsonOptions)!.Validate(messages), "Duplicate beat IDs are rejected");
+        var oldShape = JsonSerializer.SerializeToNode(entry, jsonOptions)!.AsObject(); oldShape["title"] = "obsolete literal";
+        try { JsonSerializer.Deserialize<StoryEntry>(oldShape.ToJsonString(), jsonOptions); throw new InvalidOperationException("Obsolete literal field accepted."); }
+        catch (JsonException) { assertions++; }
     }
 
     private async Task CheckSourceWidgets()
@@ -122,7 +171,7 @@ public partial class NarrativeChecks : Node
             if (ending && index != 0) continue;
             var entry = Story(Text(item, "presentationId")); var expected = item["expected"]!;
             var advanced = 0; var finished = 0;
-            screen.ShowStory(entry, documents.Speakers, Context(item["state"]!.AsObject()), ending, () => advanced++, () => finished++, () => { });
+            screen.ShowStory(entry, documents.SpeakerNameKeys, Context(item["state"]!.AsObject()), ending, () => advanced++, () => finished++, () => { });
             for (var beat = 0; beat < index; beat++) Press("StoryPrimary");
             await Layout();
             Equal(screen.BeatIndex, index, "Native cursor matches source visible beat"); Equal(advanced + finished, 0, "Paging does not invoke canonical callbacks");
@@ -175,7 +224,7 @@ public partial class NarrativeChecks : Node
             {
                 var node = runtime.Node();
                 if (Text(node, "type") != "story") return;
-                screen.ShowStory(Story(Text(node, "presentation")), documents.Speakers, Context(runtime.Snapshot()), false,
+                screen.ShowStory(Story(Text(node, "presentation")), documents.SpeakerNameKeys, Context(runtime.Snapshot()), false,
                     () => { runtime.Advance(); saved = CampaignSave.Load(CampaignSave.Create(definition, runtime.Snapshot()), definition)["state"]!.AsObject(); Bind(); },
                     () => throw new InvalidOperationException("Ordinary story invoked finish."), () => { });
             }
@@ -198,7 +247,7 @@ public partial class NarrativeChecks : Node
             var runtime = new CampaignRuntime(definition, item["initialState"]!.AsObject());
             if (Text(runtime.Node(), "type") != "ending") continue;
             JsonObject? saved = null; var exits = 0; var normal = 0;
-            void Bind() => screen.ShowStory(Story(Text(runtime.Node(), "presentation")), documents.Speakers, Context(runtime.Snapshot()), true,
+            void Bind() => screen.ShowStory(Story(Text(runtime.Node(), "presentation")), documents.SpeakerNameKeys, Context(runtime.Snapshot()), true,
                 () => normal++, () =>
                 {
                     if (Text(runtime.Snapshot(), "status") == "active")
@@ -226,8 +275,8 @@ public partial class NarrativeChecks : Node
     private void CheckLifecycle()
     {
         var entry = documents.Stories.First(value => value.Beats.Count > 1);
-        var context = new NarrativeContext(metadata, 0, true); var continuations = 0; var exits = 0;
-        void Bind() => screen.ShowStory(entry, documents.Speakers, context, false, () => continuations++, () => throw new Exception("Unexpected finish"), () => exits++);
+        var context = new NarrativeContext(messages, metadata, 0, true); var continuations = 0; var exits = 0;
+        void Bind() => screen.ShowStory(entry, documents.SpeakerNameKeys, context, false, () => continuations++, () => throw new Exception("Unexpected finish"), () => exits++);
         Bind(); var stalePage = Find<Button>("StoryPrimary"); stalePage.EmitSignal(Button.SignalName.Pressed);
         stalePage.EmitSignal(Button.SignalName.Pressed); Equal(screen.BeatIndex, 1, "Double press on old local button cannot skip another beat");
         var staleBinding = Find<Button>("StoryPrimary"); var staleExit = Find<Button>("CampaignExit");
@@ -260,7 +309,7 @@ public partial class NarrativeChecks : Node
     private void CheckShellLifecycle()
     {
         var shell = new CampaignShell(); AddChild(shell); var exits = 0;
-        var view = CampaignShellView.Create(new NarrativeContext(metadata, 0, true), documents.Stories[0].Chapter);
+        var view = CampaignShellView.Create(new NarrativeContext(messages, metadata, 0, true), documents.Stories[0].Chapter);
         shell.Show(view, () => exits++);
         var old = (Button)shell.FindChild("CampaignExit", true, false);
         shell.Show(view, () => exits++); old.EmitSignal(Button.SignalName.Pressed);
@@ -281,7 +330,7 @@ public partial class NarrativeChecks : Node
         var entry = documents.Stories.First(value => value.Mission is not null && value.Beats.Count > 1);
         var before = GetViewport().GetVisibleRect().Size;
         var window = GetWindow(); window.Size = new Vector2I(640, 360); await Layout();
-        screen.ShowStory(entry, documents.Speakers, new(metadata, 5, true), false, () => { }, () => { }, () => { }); await Layout();
+        screen.ShowStory(entry, documents.SpeakerNameKeys, new(messages, metadata, 5, true), false, () => { }, () => { }, () => { }); await Layout();
         Equal(Find<GridContainer>("MissionBrief").Columns, 1, "Narrow source mission layout uses one column");
         Equal(Find<GridContainer>("StoryActions").Columns, 1, "Narrow source actions use one column");
         Require(!Find<CampaignProgress>("CampaignProgress").Visible, "Narrow source breakpoint hides progress");
@@ -295,9 +344,9 @@ public partial class NarrativeChecks : Node
         Equal(Find<GridContainer>("MissionBrief").Columns, 3, "Wide mission layout returns to three columns");
         Require(Find<CampaignProgress>("CampaignProgress").Visible, "Wide layout shows campaign progress");
         var card = Find<Control>("NarrativeCard"); Require(card.Size.X <= screen.Size.X, "Wrapping does not create horizontal overflow");
-        screen.ShowStory(entry, documents.Speakers, new(metadata, 5, true), false, () => { }, () => { }, () => { }); await Layout();
+        screen.ShowStory(entry, documents.SpeakerNameKeys, new(messages, metadata, 5, true), false, () => { }, () => { }, () => { }); await Layout();
         Equal(Find<ScrollContainer>("NarrativeScroll").ScrollVertical, 0, "New caller binding begins at the top");
-        var choice = documents.Choices[0]; screen.ShowChoice(choice, choice.Options.Select(value => value.Id).ToArray(), new(metadata, 0, true), _ => { }, () => { });
+        var choice = documents.Choices[0]; screen.ShowChoice(choice, choice.Options.Select(value => value.Id).ToArray(), new(messages, metadata, 0, true), _ => { }, () => { });
         window.Size = new Vector2I(640, 360); await Layout(); Equal(Find<GridContainer>("ChoiceOptions").Columns, 1, "Narrow choice cards stack");
         window.Size = new Vector2I(1000, 500); await Layout(); Equal(Find<GridContainer>("ChoiceOptions").Columns, 2, "Wide choice cards use source two columns");
         window.Size = new Vector2I((int)before.X, (int)before.Y); await Layout();
@@ -306,11 +355,11 @@ public partial class NarrativeChecks : Node
     private void CheckMissingArt()
     {
         var entry = documents.Stories.First(story => story.Beats.Any(beat => metadata.Portraits.ContainsKey(beat.Speaker)));
-        var missing = new NarrativePresentationDocument { Schema = metadata.Schema, Title = metadata.Title, CompletionLabel = metadata.CompletionLabel,
+        var missing = new NarrativePresentationDocument { Schema = metadata.Schema, TitleKey = metadata.TitleKey, CompletionLabelKey = metadata.CompletionLabelKey,
             BattleTotal = metadata.BattleTotal, Chapters = metadata.Chapters,
             StoryScenes = metadata.StoryScenes.ToDictionary(pair => pair.Key, pair => new NarrativeArt { Source = pair.Value.Source, ResourcePath = "res://missing-narrative-art.png" }),
             Portraits = metadata.Portraits.ToDictionary(pair => pair.Key, pair => new NarrativeArt { Source = pair.Value.Source }) };
-        screen.ShowStory(entry, documents.Speakers, new(missing, 0, true), false, () => { }, () => { }, () => { });
+        screen.ShowStory(entry, documents.SpeakerNameKeys, new(messages, missing, 0, true), false, () => { }, () => { }, () => { });
         Require(screen.RenderingDiagnostics.Any(message => message.Contains("missing-narrative-art.png")), "Absent exported scene gets explicit diagnostic");
         for (var index = 0; index < entry.Beats.Count && screen.PresentedStory!.Portrait is null; index++) Press("StoryPrimary");
         Require(screen.RenderingDiagnostics.Any(message => message.Contains("portrait")), "Missing portrait export gets explicit diagnostic");

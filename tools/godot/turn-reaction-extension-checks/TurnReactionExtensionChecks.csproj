@@ -6,7 +6,7 @@
     <EmpireCoreRoot Condition="'$(EmpireCoreRoot)' == ''">$(EmpireRoot)/godot/Empire.Core</EmpireCoreRoot>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="*.cs" />
     <Compile Include="$(EmpireCoreRoot)/**/*.cs" Exclude="$(EmpireCoreRoot)/obj/**/*.cs;$(EmpireCoreRoot)/bin/**/*.cs" />
   </ItemGroup>
 </Project>

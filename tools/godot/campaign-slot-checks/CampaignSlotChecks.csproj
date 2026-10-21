@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="../../../godot/Empire.Core/Empire.Core.csproj" />
     <Compile Include="../../../godot/Application/CampaignSlotStorage.cs" Link="CampaignSlotStorage.cs" />
+    <Compile Include="../../../godot/Application/SaveFile.cs" Link="SaveFile.cs" />
     <Compile Include="../../../godot/Presentation/CampaignMenu.cs" Link="CampaignMenu.cs" />
   </ItemGroup>
 </Project>

@@ -68,7 +68,7 @@ public partial class ReleaseDiagnostics : Node
             Require(texture is not null && texture.GetWidth() > 0 && texture.GetHeight() > 0, "Cannot load runtime art: " + path);
             textures++;
         }
-        Require(StoryDocument.Load().Stories.Count > 0, "Authored story data is absent.");
+        Require(StoryDocument.Load(Empire.Localization.GodotTextCatalog.LoadSimplifiedChinese()).Stories.Count > 0, "Authored story data is absent.");
         _ = AssetCatalog.Load(); _ = WorldMaterialsManifest.Load();
     }
 
@@ -111,11 +111,13 @@ public partial class ReleaseDiagnostics : Node
         var engine = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
         var savedSession = GrayFlagSession.FromSave(engine, opening["battle"]!, opening["events"]!.AsArray());
         var openingHash = StateDigest.Hash(savedSession.Snapshot());
-        var order = savedSession.Snapshot()["units"]!.AsArray().OfType<JsonObject>()
-            .SelectMany(unit => savedSession.GetLegalOrders(unit["id"]!.GetValue<int>()))
-            .First(choice => choice.PresentationRole == "move" && choice.Action.GetProperty("path").GetArrayLength() > 1);
+        var queries = savedSession.GetTacticalQueries(0);
+        var move = queries.Actors().SelectMany(id => queries.MoveStops(id)
+            .Where(at => at != queries.Unit(id)!.At && queries.CommandsAt(id, at) is { Count: 1 } commands && commands[0].SelfTargeted)
+            .Select(at => (Origin: queries.Unit(id)!.At, Destination: at))).First();
         battle.Board.AdvanceAnimationsAutomatically = false;
-        battle.SubmitOrder(order); battle.Board.AdvancePresentation(100);
+        battle.SelectCell(move.Origin); battle.SelectCell(move.Destination);
+        battle.Board.AdvancePresentation(100);
         Require(battle.DisplayedRevision > 0 && !battle.IsInputBlocked, "Real battle move did not commit and settle.");
         Press(Button(battle, text: "保存"));
         var moved = ReadManual();

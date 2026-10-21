@@ -194,7 +194,7 @@ public partial class LightingLifetimeChecks : Node
         void Bind(GrayFlagSession session)
         {
             screen.BindSession(session, assets, level, scene, environment, facing => facing == "west");
-            screen.ConfigureDynamicState(packs);
+            screen.ConfigureDynamicState(engine.Catalog);
         }
         var session = new GrayFlagSession(engine, level); Bind(session);
         // Exercise the separate unshared field-light owners on one actual screen.

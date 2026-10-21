@@ -1,3 +1,4 @@
+using Empire.Core;
 using System.Text.Json.Nodes;
 using Empire.Application;
 using Empire.Core.Determinism;
@@ -9,7 +10,7 @@ var definition = Read("grayflag-campaign.json").AsObject();
 var levels = Read("grayflag-campaign-levels.json").AsArray();
 var packs = Read("content-packs.json").AsArray();
 var engine = new GrayFlagEngine(packs);
-GrayFlagCampaign Create() => new(definition, levels, packs, engine);
+GrayFlagCampaign Create() => new(definition, levels, engine);
 var assertions = 0;
 void Require(bool condition, string message)
 {
@@ -42,31 +43,31 @@ void Act(GrayFlagCampaign campaign)
     else Require(battle.Dispatch(EcmaJson.ToElement(action), battle.GetSnapshot().Revision).Accepted, "Native planned action was refused");
 }
 var campaign = Create();
-while (campaign.Runtime.Node()["type"]!.GetValue<string>() != "battle")
+while (campaign.Node()["type"]!.GetValue<string>() != "battle")
 {
-    if (campaign.Runtime.Node()["type"]!.GetValue<string>() == "choice") campaign.Runtime.Choose(campaign.Runtime.Choices()[0]!["id"]!.GetValue<string>());
-    else campaign.Runtime.Advance();
+    if (campaign.Node()["type"]!.GetValue<string>() == "choice") campaign.Choose(campaign.Choices()[0]!["id"]!.GetValue<string>());
+    else campaign.Advance();
 }
 var stagingSave = campaign.Save();
-var beforeBeginning = campaign.Runtime.Snapshot();
+var beforeBeginning = campaign.Snapshot();
 campaign.BeginBattle();
-var pendingRuntime = campaign.Runtime.Snapshot();
-var request = campaign.Request!.DeepClone();
+var pendingRuntime = campaign.Snapshot();
+var request = campaign.RequestSnapshot()!.DeepClone();
 var initial = campaign.Battle!.Snapshot();
 Require(!campaign.AtCamp, "Initial battle must not be marked as exited");
-Same(campaign.Runtime.Snapshot()["flags"], beforeBeginning["flags"], "Beginning battle changed prior decision flags");
+Same(campaign.Snapshot()["flags"], beforeBeginning["flags"], "Beginning battle changed prior decision flags");
 for (var step = 0; step < 8; step++) Act(campaign);
 Require(!EcmaJson.DeepEquals(campaign.Battle.Snapshot(), initial), "Test did not advance the initial battle");
 campaign.RestartBattle();
 Same(campaign.Battle.Snapshot(), initial, "Retry must restore initial canonical battle");
-Same(campaign.Runtime.Snapshot(), pendingRuntime, "Retry must not repeat campaign effects or choices");
-Same(campaign.Request, request, "Retry must retain the exact pending request");
+Same(campaign.Snapshot(), pendingRuntime, "Retry must not repeat campaign effects or choices");
+Same(campaign.RequestSnapshot(), request, "Retry must retain the exact pending request");
 Require(campaign.Battle.Events.Count == 0 && campaign.Battle.ActionLog.Count == 0, "Retry must clear battle history");
 for (var step = 0; step < 8; step++) Act(campaign);
 campaign.ExitBattle();
 Require(campaign.AtCamp, "Exit must show camp");
-Same(campaign.Runtime.Snapshot(), pendingRuntime, "Exit must not commit battle outcome or change prior decisions");
-Same(campaign.Request, request, "Exit must retain pending request identity and context");
+Same(campaign.Snapshot(), pendingRuntime, "Exit must not commit battle outcome or change prior decisions");
+Same(campaign.RequestSnapshot(), request, "Exit must retain pending request identity and context");
 Same(campaign.Battle!.Snapshot(), initial, "Exited battle must be staged from its opening");
 Require(campaign.Battle.Events.Count == 0, "Exit must not retain played event history for reentry");
 var campSave = campaign.Save();
@@ -76,22 +77,22 @@ SameSave(restored.Save(), campSave, "Camp save must round-trip all canonical fac
 restored.BeginBattle();
 Require(!restored.AtCamp, "Reentry must leave camp");
 Same(restored.Battle!.Snapshot(), initial, "Reentry must restart the same authored request from opening");
-Same(restored.Runtime.Snapshot(), pendingRuntime, "Reentry must not begin a second campaign battle");
-Same(restored.Request, request, "Reentry must preserve seeded choice context");
+Same(restored.Snapshot(), pendingRuntime, "Reentry must not begin a second campaign battle");
+Same(restored.RequestSnapshot(), request, "Reentry must preserve seeded choice context");
 Require(restored.Battle.GetSnapshot().Transition is null, "Reentry must not replay the previous battle receipt");
 var snapshotBeforeInvalid = restored.Save();
 var invalidDocuments = new List<JsonObject>();
 foreach (var bad in new JsonNode[] { JsonValue.Create("true")!, JsonValue.Create(1)!, new JsonObject(), new JsonArray() })
 {
-    var malformed = campSave.DeepClone().AsObject(); malformed["atCamp"] = bad; invalidDocuments.Add(malformed);
+    var malformed = campSave.DeepClone().AsObject(); malformed["mode"] = bad; invalidDocuments.Add(malformed);
 }
-var noRequest = stagingSave.DeepClone().AsObject(); noRequest["atCamp"] = true; invalidDocuments.Add(noRequest);
-var wrongIdentity = campSave.DeepClone().AsObject(); wrongIdentity["request"]!["id"] = "wrong"; invalidDocuments.Add(wrongIdentity);
+var noRequest = stagingSave.DeepClone().AsObject(); noRequest["mode"] = "camp"; invalidDocuments.Add(noRequest);
+var wrongIdentity = campSave.DeepClone().AsObject(); wrongIdentity["campaign"]!["state"]!["pendingBattle"]!["requestId"] = "wrong"; invalidDocuments.Add(wrongIdentity);
 foreach (var invalid in invalidDocuments)
 {
     var rejected = false;
     try { restored.Load(invalid); }
-    catch (InvalidOperationException) { rejected = true; }
+    catch (StoredDocumentException) { rejected = true; }
     Require(rejected, "Invalid camp save was accepted");
     SameSave(restored.Save(), snapshotBeforeInvalid, "Invalid camp load changed the current battle/campaign/AtCamp state");
 }
@@ -108,15 +109,15 @@ Require(outcome == "defeat", $"Defeat retry fixture requires a real loss, not {o
 var terminalSave = restored.Save();
 restored.RestartBattle();
 Same(restored.Battle.Snapshot(), initial, "Defeat retry did not restore the opening");
-Same(restored.Runtime.Snapshot(), pendingRuntime, "Defeat retry must not enter campaign-failed");
+Same(restored.Snapshot(), pendingRuntime, "Defeat retry must not enter campaign-failed");
 Require(!restored.AtCamp, "Defeat retry must return directly to battle");
 restored.Load(terminalSave); restored.ExitBattle();
 Require(restored.AtCamp, "Defeat exit must return to camp");
-Same(restored.Runtime.Snapshot(), pendingRuntime, "Defeat exit must not complete a loss or change prior choices");
-Same(restored.Request, request, "Defeat exit must retain original request");
+Same(restored.Snapshot(), pendingRuntime, "Defeat exit must not complete a loss or change prior choices");
+Same(restored.RequestSnapshot(), request, "Defeat exit must retain original request");
 var lossCampSave = restored.Save();
 var lossReloaded = Create(); lossReloaded.Load(lossCampSave); lossReloaded.BeginBattle();
 Same(lossReloaded.Battle!.Snapshot(), initial, "Reloaded defeat camp must restart original battle");
-Same(lossReloaded.Runtime.Snapshot(), pendingRuntime, "Reloaded defeat camp reentry changed campaign progress");
-Require(lossReloaded.Runtime.Snapshot()["battleHistory"]!.AsArray().Count == 0, "Retry/exit must not record defeat as a completed battle");
+Same(lossReloaded.Snapshot(), pendingRuntime, "Reloaded defeat camp reentry changed campaign progress");
+Require(lossReloaded.Snapshot()["battleHistory"]!.AsArray().Count == 0, "Retry/exit must not record defeat as a completed battle");
 Console.WriteLine($"PASS {assertions} camp-flow assertions: actual defeat after {actions} actions; retry/exit/retained choices; camp save/load/reentry; six invalid loads atomic");

@@ -10,7 +10,7 @@ public sealed record UnitReturnRequest(Coord At, int? Owner = null, double? Hp =
 /// <summary>Returns a fallen or withdrawn snapshot. Ordinary disembarking must not use these reset rules.</summary>
 public static class BattleUnitReturn
 {
-    public static JsonObject? Restore(JsonObject state, JsonObject marker, UnitReturnRequest request, Action<JsonObject> emit)
+    public static JsonObject? Restore(ReadOnlyContent catalog, JsonObject state, JsonObject marker, UnitReturnRequest request, Action<JsonObject> emit)
     {
         if (marker["fallenUnit"] is not JsonObject fallen) return null;
         if (TacticalQueries.UnitAt(state, request.At) is not null) return null;
@@ -18,12 +18,12 @@ public static class BattleUnitReturn
         var key = fallen["key"]?.GetValue<string>();
         if (StateJson.Objects(state["units"], "units").Any(unit => StateJson.Integer(unit, "id") == id ||
             !string.IsNullOrEmpty(key) && unit["key"]?.GetValue<string>() == key)) return null;
+        var owner = request.Owner ?? StateJson.Integer(fallen, "owner");
+        TacticalQueries.Player(state, owner);
         var unit = fallen.DeepClone().AsObject();
-        if (request.Owner is { } owner) unit["owner"] = owner;
-        unit["x"] = request.At.X;
-        unit["y"] = request.At.Y;
-        unit["capture"] = 0;
-        if (request.Hp is { } hp) unit["hp"] = Math.Max(1, StateJson.Round(hp));
+        new UnitHealth(catalog, unit).RestoreHealth(request.Hp);
+        unit["owner"] = owner;
+        new BattleRelocation(state).PlaceSnapshot(unit, request.At);
         unit["done"] = true;
         unit["statuses"] = new JsonArray();
         unit["morale"]!["current"] = unit["morale"]!["maximum"]!.DeepClone();

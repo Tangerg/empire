@@ -13,7 +13,7 @@ public sealed record TacticalTactic(string Commander, string Id, IReadOnlyList<B
 public sealed record TacticalPassenger(int Id, IReadOnlyList<BoardCell> Spots);
 
 /// <summary>
-/// Revision-bound, detached canonical answers. Collection order is semantically significant.
+/// Revision-bound, detached canonical answers. Ordered collections preserve canonical order.
 /// The adapter must reject a changed revision rather than mixing facts from separate snapshots.
 /// No method commits, computes presentation choices, or exposes mutable battle objects.
 /// </summary>
@@ -24,6 +24,8 @@ public interface ITacticalSelectionQueries
     bool HumanInput { get; }
     bool HumanTurn { get; }
     bool CanUndo { get; }
+    /// <summary>Immutable in-bounds cells whose canonical terrain is not tagged outside.</summary>
+    IReadOnlySet<BoardCell> InteractiveCells { get; }
     TacticalUnit? Unit(int id);
     TacticalUnit? UnitAt(BoardCell at);
     bool AreEnemies(int firstUnit, int secondUnit);

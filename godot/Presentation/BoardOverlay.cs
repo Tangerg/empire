@@ -1,4 +1,5 @@
 #nullable enable
+using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
@@ -12,7 +13,7 @@ public partial class BoardOverlay : Node2D
     private TacticalSelectionOverlay? _tactical;
     private BoardCell[] _unseen = [];
     private KeyValuePair<BoardCell, double>[] _incoming = [];
-    private IReadOnlySet<BoardCell>? _playable;
+    private FrozenSet<BoardCell> _interactiveCells = FrozenSet<BoardCell>.Empty;
     private SourceBoardDecorations? _resources;
     private BoardRangePlane? _ranges;
     internal int RangeDepth => _ranges?.ZIndex ?? -2;
@@ -41,17 +42,18 @@ public partial class BoardOverlay : Node2D
         _resources?.Dispose();
         _resources = null;
     }
-    public void ShowPublicState(int width, int height, IReadOnlySet<BoardCell>? visible,
-        IReadOnlyDictionary<BoardCell, double>? incoming, IReadOnlySet<BoardCell>? playable = null)
+    public void ShowPublicState(IReadOnlySet<BoardCell> interactiveCells, IReadOnlySet<BoardCell>? visible,
+        IReadOnlyDictionary<BoardCell, double>? incoming)
     {
-        _playable = playable ?? Enumerable.Range(0, width * height).Select(index => new BoardCell(index % width, index / width)).ToHashSet();
-        _unseen = visible is null ? [] : Enumerable.Range(0, width * height).Select(index => new BoardCell(index % width, index / width)).Where(cell => !visible.Contains(cell)).ToArray();
+        _interactiveCells = interactiveCells.ToFrozenSet();
+        _unseen = visible is null ? [] : _interactiveCells.Where(cell => !visible.Contains(cell))
+            .OrderBy(cell => cell.Y).ThenBy(cell => cell.X).ToArray();
         _incoming = incoming?.ToArray() ?? [];
         RedrawPlanes();
     }
     public void ShowTactical(TacticalSelectionOverlay projection) { _tactical = projection; RedrawPlanes(); }
     private void RedrawPlanes() { QueueRedraw(); _ranges?.QueueRedraw(); }
-    internal bool Contains(BoardCell cell) => _playable?.Contains(cell) ?? true;
+    internal bool Contains(BoardCell cell) => _interactiveCells.Contains(cell);
     internal IEnumerable<(string Role, BoardCell Cell)> RangeOrder()
     {
         if (_tactical is { } before)

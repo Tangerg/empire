@@ -39,9 +39,9 @@ public partial class CampaignShell : Control
         column.AddThemeConstantOverride("separation", 0);
         var topbar = new PanelContainer { Name = "CampaignTopbar" }; topbar.AddThemeStyleboxOverride("panel", Panel(new Color("#18120e"), 10)); column.AddChild(topbar);
         var header = new HBoxContainer(); header.AddThemeConstantOverride("separation", 12); topbar.AddChild(header);
-        var exit = new Button { Name = "CampaignExit", Text = "‹", TooltipText = CampaignShellView.ExitLabel,
+        var exit = new Button { Name = "CampaignExit", Text = "‹", TooltipText = view.ExitLabel,
             CustomMinimumSize = new Vector2(44, 44) };
-        exit.AccessibilityName = CampaignShellView.ExitLabel;
+        exit.AccessibilityName = view.ExitLabel;
         exit.Pressed += () =>
         {
             if (binding != generation || !IsInsideTree() || !exit.IsInsideTree() || exit.Disabled) return;
@@ -53,7 +53,7 @@ public partial class CampaignShell : Control
         headings.AddChild(Text(view.ChapterHeading, 18, "#f6ead2", "CampaignChapter"));
         progress = new CampaignProgress { Name = "CampaignProgress", CustomMinimumSize = new Vector2(180, 32),
             SizeFlagsVertical = SizeFlags.ShrinkCenter, Completed = view.CompletedBattles, Total = view.BattleTotal };
-        progress.AccessibilityName = CampaignShellView.ProgressLabel; header.AddChild(progress);
+        progress.AccessibilityName = view.ProgressLabel; header.AddChild(progress);
         Scroll = new ScrollContainer { Name = "NarrativeScroll", HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
             SizeFlagsVertical = SizeFlags.ExpandFill }; column.AddChild(Scroll);
         margins = new MarginContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill }; Scroll.AddChild(margins);

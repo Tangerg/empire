@@ -37,7 +37,8 @@ public sealed class SrpgMicrokernel
         foreach (var plugin in ordered)
         {
             var context = new KernelPluginContext(store, plugin.Id);
-            plugin.Install(context);
+            try { plugin.Install(context); }
+            finally { context.Close(); }
             AssertManifest(plugin, "provide", plugin.Provides, store.ProvidedBy(plugin.Id));
             AssertManifest(plugin, "override", plugin.Overrides, store.OverriddenBy(plugin.Id));
             AssertConsumption(plugin, context.Consumed);

@@ -24,7 +24,7 @@ if [[ "$frozen" == true ]]; then
 else
   ./node_modules/.bin/vite-node "$source_dir/oracle.ts" "$oracle"
 fi
-dotnet build "$scratch/CombatPolicyChecks.csproj" --configfile "$scratch/NuGet.Config" --disable-build-servers --nologo "-p:EmpireRoot=$root"
+dotnet build "$scratch/CombatPolicyChecks.csproj" --configfile "$scratch/NuGet.Config" --disable-build-servers --nologo -m:1 -p:UseSharedCompilation=false "-p:EmpireRoot=$root"
 dotnet "$scratch/bin/Debug/net8.0/CombatPolicyChecks.dll" "$oracle"
 if [[ "$guard" == true ]]; then
   python3 "$source_dir/mutants.py" "$root" "$scratch" "$oracle"

@@ -61,6 +61,7 @@ public sealed class TacticalSelectionController
     public int? InspectId { get; private set; }
     public bool Busy { get; private set; }
     public TacticalStamp Stamp => stamp;
+    public IReadOnlySet<BoardCell> InteractiveCells => queries.InteractiveCells;
     public BoardCell? HoverTarget => queries.Stamp == stamp && Cursor is { } at && Selection.Targets.Contains(at) ? at : null;
     public bool ShowTactics => !Busy && queries.Stamp == stamp && queries.HumanTurn && Selection.Kind == TacticalSelectionKind.Idle;
 
@@ -92,6 +93,7 @@ public sealed class TacticalSelectionController
         stamp = next.Stamp;
         Busy = false;
         Selection = Resting();
+        if (Cursor is { } cursor && !InteractiveCells.Contains(cursor)) Cursor = null;
         return Result();
     }
 
@@ -124,6 +126,7 @@ public sealed class TacticalSelectionController
     {
         if (expected.Binding != stamp.Binding || queries.Stamp.Binding != stamp.Binding) return Result(TacticalInputStatus.StaleBinding);
         if (expected.Revision != stamp.Revision || queries.Stamp != stamp) return Result(TacticalInputStatus.StaleRevision);
+        if (at is { } candidate && !InteractiveCells.Contains(candidate)) return Leave(expected);
         Cursor = at;
         var unit = at is { } cell ? queries.UnitAt(cell) : null;
         if (unit?.Visible == true) InspectId = unit.Id;
@@ -175,6 +178,7 @@ public sealed class TacticalSelectionController
     {
         var guard = Guard(expected);
         if (guard != TacticalInputStatus.Ready) return Result(guard);
+        if (!InteractiveCells.Contains(at)) return Result(TacticalInputStatus.Ignored);
         var selected = Selection;
         var unit = selected.UnitId is { } id ? queries.Unit(id) : null;
         switch (selected.Kind)
@@ -302,12 +306,12 @@ public sealed class TacticalSelectionController
 
     private TacticalInputResult Cycle()
     {
-        var actors = queries.Actors();
-        if (actors.Count == 0) return Result(TacticalInputStatus.Ignored);
+        var actors = queries.Actors().Where(id => queries.Unit(id) is { } unit && InteractiveCells.Contains(unit.At)).ToArray();
+        if (actors.Length == 0) return Result(TacticalInputStatus.Ignored);
         var current = Selection.Kind == TacticalSelectionKind.Unit ? Selection.UnitId : null;
         var index = -1;
-        for (var i = 0; i < actors.Count; i++) if (actors[i] == current) { index = i; break; }
-        var id = actors[(index + 1) % actors.Count];
+        for (var i = 0; i < actors.Length; i++) if (actors[i] == current) { index = i; break; }
+        var id = actors[(index + 1) % actors.Length];
         Selection = Pick(TacticalSelectionKind.Unit, id);
         InspectId = id;
         return new TacticalInputResult(TacticalInputStatus.Ready, Reveal: queries.Unit(id)?.At, Center: true);
@@ -333,6 +337,7 @@ public sealed class TacticalSelectionController
             var reach = 0;
             foreach (var to in queries.DirectionSteps(from.Value))
             {
+                if (!InteractiveCells.Contains(to)) continue;
                 var score = (to.X - from.Value.X) * direction.Item1 + (to.Y - from.Value.Y) * direction.Item2;
                 if (score <= reach) continue;
                 best = to; reach = score;

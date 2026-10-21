@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EmpireCoreProject Condition="'$(EmpireCoreProject)' == ''">../../../godot/Empire.Core/Empire.Core.csproj</EmpireCoreProject>
+  </PropertyGroup>
+  <ItemGroup><ProjectReference Include="$(EmpireCoreProject)" /></ItemGroup>
+</Project>

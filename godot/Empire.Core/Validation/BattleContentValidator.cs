@@ -11,13 +11,11 @@ namespace Empire.Core.Validation;
 /// <summary>Source catalog installation invariants, followed by actual runtime capability checks.</summary>
 public sealed class BattleContentValidator
 {
-    private readonly JsonArray packs;
     private readonly StateContent content;
     private readonly RuleReferenceRules rules;
     private readonly BattleReferenceCheckRegistry referenceChecks;
-    public BattleContentValidator(JsonArray packs, RuleReferenceRules rules, BattleReferenceCheckRegistry referenceChecks)
+    public BattleContentValidator(RuleReferenceRules rules, BattleReferenceCheckRegistry referenceChecks)
     {
-        this.packs = (JsonArray)packs.DeepClone();
         content = rules.Content.Source;
         this.rules = rules;
         this.referenceChecks = referenceChecks;
@@ -57,7 +55,7 @@ public sealed class BattleContentValidator
         // StateContent has already checked pack identity/dependencies, duplicate
         // definitions and terrain encoding. The remaining checks keep source order.
         var matchups = new HashSet<string>(StringComparer.Ordinal);
-        foreach (var pack in Objects(packs, "packs")) foreach (var matchup in Objects(pack["damageMatchups"], "damage matchups"))
+        foreach (var pack in Objects(rules.Content.CopyPacks(), "packs")) foreach (var matchup in Objects(pack["damageMatchups"], "damage matchups"))
         {
             var damage = Text(matchup, "damageType"); var armor = Text(matchup, "armorClass");
             if (!double.IsFinite(N(matchup["multiplier"])) || N(matchup["multiplier"]) <= 0)
@@ -90,11 +88,8 @@ public sealed class BattleContentValidator
             RequireId("damageTypes", Text(weapon, "damageType"), owner);
             foreach (var effect in Objects(weapon["hitEffects"], "hit effects"))
             {
-                var kind = Text(effect, "type");
-                if (kind is "addStatus" or "removeStatus") RequireId("statuses", Text(effect, "status"), owner);
-                else if (kind == "forcedMove" && (!Whole(N(effect["distance"])) || N(effect["distance"]) < 0 ||
-                    effect.ContainsKey("collisionDamage") && (!double.IsFinite(N(effect["collisionDamage"])) || N(effect["collisionDamage"]) < 0)))
-                    throw new DomainInvariantException($"{owner} has an invalid forced-movement effect");
+                if (rules.HitEffects.Has(Text(effect, "type")))
+                    rules.HitEffects.Validate(rules.Content, effect, owner);
             }
         }
         foreach (var terrain in content.All("terrains"))
@@ -137,7 +132,7 @@ public sealed class BattleContentValidator
         foreach (var overlay in content.All("terrainOverlays"))
             if (overlay["turnStartStatus"] is JsonObject status)
                 RequireId("statuses", Text(status, "id"), $"terrain overlay \"{Text(overlay, "id")}\"");
-        foreach (var pack in Objects(packs, "packs"))
+        foreach (var pack in Objects(rules.Content.CopyPacks(), "packs"))
         {
             var units = Objects(pack["units"], "units").ToArray();
             var damageTypes = Objects(pack["weapons"], "weapons").Select(weapon => Text(weapon, "damageType"))

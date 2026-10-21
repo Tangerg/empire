@@ -26,7 +26,6 @@ namespace Empire.Core.Engine;
 /// <summary>Application-facing native rules. The battle remains the transactional state writer.</summary>
 public sealed partial class GrayFlagEngine
 {
-    private readonly JsonArray packs;
     private readonly BattleStateRules stateRules;
     private readonly BattleActionRegistry actionHandlers;
     private readonly ActionExecutionPipeline actionPipeline;
@@ -77,30 +76,29 @@ public sealed partial class GrayFlagEngine
     {
         Catalog = dependencies.Content;
         Content = Catalog.Source;
-        var packs = this.packs = Catalog.CopyPacks();
         var grids = Grids = dependencies.Grids;
-        stateRules = new BattleStateRules(Catalog, Grids);
         Space = dependencies.Space;
         var resources = Resources = dependencies.Resources;
         Random = dependencies.Random;
         TurnOrders = dependencies.TurnOrders;
         Turns = new TurnOrderSystem(new TurnOrderRules(Catalog, TurnOrders));
         Reactions = dependencies.Reactions;
+        stateRules = new BattleStateRules(Catalog, Grids, Reactions);
         StatusBehaviors = dependencies.StatusBehaviors;
         RankProgression = dependencies.Progression;
         UnitDepartures = dependencies.UnitDepartures;
         ReferenceChecks = dependencies.ReferenceChecks;
         Saves = dependencies.Saves;
-        Transport = new BattleTransport(packs, grids);
+        Transport = new BattleTransport(Catalog, grids);
         Directives = dependencies.Directives;
-        Commands = new TacticalCommands(new(Catalog, grids, Space), Turns.MayAct, Directives);
-        Deployment = new DeploymentSystem(packs, Commands.OwnUnit);
+        Commands = new TacticalCommands(new(grids, Space, Reactions), Turns.MayAct, Directives);
+        Deployment = new DeploymentSystem(Catalog, Commands.OwnUnit);
         AreaShapes = dependencies.AreaShapes;
         var combat = Combat = new BattleCombat(Catalog, grids, resources, Space, AreaShapes, dependencies.CombatModifiers, dependencies.HitEffects, Reactions, RankProgression, UnitDepartures);
-        Support = new SupportOrders(packs, grids, resources, combat.Effects);
-        Recruitment = new RecruitmentOrders(packs, grids, resources, (state, type, owner, at, done) =>
+        Support = new SupportOrders(Catalog, grids, resources, combat.Effects);
+        Recruitment = new RecruitmentOrders(Catalog, grids, resources, (state, type, owner, at, done) =>
             BattleStateFactory.SpawnUnit(stateRules, state, type, owner, at, done: done));
-        Progression = new BattleProgression(packs, grids, resources, Commands, combat.Effects);
+        Progression = new BattleProgression(Catalog, grids, resources, Commands, combat.Effects);
         Abilities = dependencies.Abilities;
         AbilityRules = new(Catalog, Space, combat, Support, Progression.Careers, Abilities);
         AbilityCommands = new(AbilityRules, Commands);

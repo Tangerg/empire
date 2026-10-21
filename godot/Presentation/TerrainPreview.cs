@@ -42,7 +42,7 @@ public partial class TerrainPreview : Node2D
             _board.Configure(AssetCatalog.Load(), level, TerrainChecks.Scene(level), EnvironmentCatalog.Load(),
                 facing => facing is not null && grid.Step(new Coord(0, 0), facing).X < 0);
             _board.ConfigureTerrain(WorldMaterialsManifest.Load());
-            _board.ConfigureDynamicState(packs);
+            _board.ConfigureDynamicState(engine.Catalog);
             _board.RenderState(state);
             if (state.ToJsonString() != unchanged) throw new InvalidOperationException("Terrain preview mutated canonical state.");
             _heading = new Label { Text = $"{_levelId}  Native terrain verification | canonical initial state | no gameplay controls\n{_board.StatusText}",

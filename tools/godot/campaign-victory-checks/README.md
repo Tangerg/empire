@@ -22,8 +22,10 @@ It needs the repository's existing Node and .NET toolchains; it installs nothing
 
 C# replays player input through `GrayFlagSession.Dispatch`, independently chooses
 every opponent action, compares every ordered event sequence and state digest,
-and checks campaign requests, choices, real carryover and 14 source save/resume
-checkpoints. It refuses losses, incomplete traces and unexpected final state.
+and checks campaign requests, choices, real carryover and 14 source checkpoints.
+It reloads its own native schema-2 document at each checkpoint. The source wrapper
+is not imported: its mutable request field is intentionally absent from native
+saves, while regenerated request projections are compared exactly. It refuses losses, incomplete traces and unexpected final state.
 The source also restores its own checkpoints, so continuation is exercised by
 both implementations. Production code never reads these fixtures.
 

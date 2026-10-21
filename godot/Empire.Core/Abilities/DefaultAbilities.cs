@@ -39,19 +39,13 @@ public static class DefaultAbilities
     private static JsonObject? SelectedWeapon(AbilityRules rules, AbilityQuery query) =>
         rules.Combat.SelectedWeapon(query.State, query.Unit, query.WeaponId);
 
-    private static double MaximumHp(ReadOnlyContent content, JsonObject unit) =>
-        (content.Definition("units", StateJson.Text(unit, "type"))
-            ?? throw new DomainInvariantException("heal unit definition is missing")).GetProperty("maxHp").GetDouble();
-
     public static double HealAmount(ReadOnlyContent content, JsonObject unit) =>
-        Math.Min(30, MaximumHp(content, unit) - StateJson.Number(unit["hp"], "hp"));
+        Math.Min(30, new UnitHealth(content, unit).Missing);
 
     private static void Heal(AbilityRules rules, AbilityQuery query, Coord target, Action<JsonObject> emit)
     {
         var unit = TacticalQueries.UnitAt(query.State, target) ?? throw new DomainInvariantException("no unit to heal");
-        var hp = StateJson.Number(unit["hp"], "hp");
-        var amount = Math.Min(Math.Max(0, StateJson.Round(HealAmount(rules.Content, unit))), Math.Max(0, MaximumHp(rules.Content, unit) - hp));
-        unit["hp"] = hp + amount;
+        var amount = new UnitHealth(rules.Content, unit).Heal(HealAmount(rules.Content, unit));
         emit(new JsonObject { ["type"] = "heal", ["source"] = query.Unit["id"]!.DeepClone(), ["target"] = unit["id"]!.DeepClone(), ["amount"] = amount });
         rules.Combat.Effects.AwardRankProgress(query.Unit, Math.Max(5, amount), emit);
     }

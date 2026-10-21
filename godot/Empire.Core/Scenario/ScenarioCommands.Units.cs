@@ -24,8 +24,7 @@ public sealed partial class ScenarioCommands
             if (from == at) continue;
             // Only the destination matters for a teleport; facing, action readiness,
             // patrol cursor and intermediate cliffs deliberately remain untouched.
-            Array(battlefield.Map["captureProgress"], "captureProgress")[battlefield.IndexOf(from)] = 0;
-            unit["x"] = at.X; unit["y"] = at.Y; unit["capture"] = 0;
+            new BattleRelocation(state).MoveUnit(Integer(unit, "id"), at);
             emit(new JsonObject
             {
                 ["type"] = "forcedMove",
@@ -45,8 +44,8 @@ public sealed partial class ScenarioCommands
         foreach (var marker in ScenarioSelection.SelectMarkers(state, Object(effect["selector"], "selector")))
         {
             if (marker["fallenUnit"] is not JsonObject fallen) continue;
-            var hp = Math.Max(1, Round(Number(content.Get("units", Text(fallen, "type"))["maxHp"], "maxHp") * ratio));
-            BattleUnitReturn.Restore(state, marker, new UnitReturnRequest(TacticalQueries.Position(Object(marker["at"], "marker at")),
+            var hp = Number(content.Get("units", Text(fallen, "type"))["maxHp"], "maxHp") * ratio;
+            BattleUnitReturn.Restore(catalog, state, marker, new UnitReturnRequest(TacticalQueries.Position(Object(marker["at"], "marker at")),
                 effect["owner"] is null ? null : Integer(effect, "owner"), hp), emit);
         }
     }
@@ -59,7 +58,7 @@ public sealed partial class ScenarioCommands
             if (marker["fallenUnit"] is not JsonObject fallen) continue;
             var destination = OpenCell(state, battlefield, Text(effect, "zone"), Text(content.Get("units", Text(fallen, "type")), "movementClass"));
             if (destination is not { } at) break;
-            BattleUnitReturn.Restore(state, marker, new UnitReturnRequest(at, effect["owner"] is null ? null : Integer(effect, "owner")), emit);
+            BattleUnitReturn.Restore(catalog, state, marker, new UnitReturnRequest(at, effect["owner"] is null ? null : Integer(effect, "owner")), emit);
         }
     }
 

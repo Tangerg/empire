@@ -1,15 +1,19 @@
-# Source-driven native narrative presentation
+# Native localized narrative presentation
 
 ## Ownership and integration
 
-`StoryScreen` owns only a local beat cursor and the lifetime of its controls. It never reads or mutates a campaign runtime, performs a save, or synthesizes a battle outcome. The application supplies `NarrativeContext` (exported metadata, completed battle count, active status) and callbacks:
+`StoryScreen` owns only a local beat cursor and the lifetime of its controls. It never reads or mutates a campaign runtime, performs a save, or synthesizes a battle outcome. The application supplies `NarrativeContext` (the explicit `GameText` service, authored metadata, completed battle count, active status) and callbacks:
 
-- `ShowStory(story, speakers, context, isEnding, onContinue, onFinish, onExit)`.
+- `ShowStory(story, speakerNameKeys, context, isEnding, onContinue, onFinish, onExit)`.
 - `ShowChoice(choice, availableOptionIds, context, onChoose, onExit)`.
 
 Normal primary actions advance one local beat. Only the last normal beat invokes `onContinue`. Ending primary actions invoke `onFinish` immediately. That callback, not the screen, decides whether to advance/save/rebind or exit. Menu navigation is always `onExit`. Choice IDs are passed unchanged to the caller, in source presentation order, restricted to the canonical available option IDs.
 
-`NarrativeProjection` is a detached read model. `CampaignShell` renders its supplied title, chapter heading, segmented progress, actual backdrop, menu button and scroll body. Its display methods are reusable by staging/results without gaining campaign authority. The single metadata export remains `grayflag-staging.json`: `completionLabel`, `chapters`, `storyScenes` and `portraits` contain source-derived labels and asset references. No story/choice/scene identifiers are duplicated in C#.
+`NarrativeProjection` is a detached read model. `CampaignShell` renders its supplied title, chapter heading, segmented progress, actual backdrop, menu button and scroll body. Its display methods are reusable by staging/results without gaining campaign authority. The native `grayflag-story.json` schema 2 owns story/choice structure, speaker IDs and manually authored semantic beat IDs. It contains message references, not prose. `grayflag-staging.json` schema 2 owns shared `titleKey`, `completionLabelKey`, chapter title references and artwork. Level entries no longer repeat chapter titles. `zh_CN.po` alone owns narrative wording and the shared shell labels. No story/choice/scene identifiers are duplicated in production C#.
+
+`StoryDocument.Load(text)` validates all content keys and zero-argument formats, unique story/choice/beat/option identities and mapped speakers before navigation. Literal old fields are rejected, not adapted. The projection resolves messages into detached view models; controls render those values. The application owns the one injected service. There is no localization dependency in Core, no translated prose/key added to campaign state, and no migration for schema-1 presentation documents.
+
+`export-grayflag.ts` no longer regenerates these documents or scrapes TypeScript menu wording. It only refreshes their explicitly referenced, hash-verified artwork. Native authoring now advances independently of original browser wording. Menu-only labels and battle/domain text are not yet migrated; this slice does not claim complete game internationalization.
 
 ## The ending quirk is intentionally preserved
 
@@ -22,7 +26,7 @@ The original `packages/game-ui/src/ui/campaign-game.ts` has two distinct contrac
 
 ## Text, images and controls
 
-The screen mounts exactly one dialogue beat, with the source speaker label (or source key if absent), portrait when mapped, current and prior active beat dots, source next/continue/finish label, kicker/date/location/summary, and the original three mission labels. All 11 choice documents retain their original option number, label, detail, consequence and save-effect note.
+The screen mounts exactly one dialogue beat, with the localized speaker label (unknown speaker IDs are authoring errors), portrait when mapped, current and prior active beat dots, source next/continue/finish label, kicker/date/location/summary, and the original three mission labels. All 11 choice documents retain their original option number, label, detail, consequence and save-effect note.
 
 Null story scenes intentionally select the chapter backdrop. A missing declared scene does **not** select an unrelated substitute. A narrator/unmapped portrait stays portrait-free; missing mapped artwork produces an explicit visible diagnostic. The verification script checks actual source/export PNG bytes against every referenced SHA-256 before loading them in Godot.
 
@@ -38,18 +42,18 @@ Run:
 bash tools/godot/narrative-checks/run.sh --verify-guard
 ```
 
-The test creates a fresh `/tmp/empire-narrative.*` project and isolates `XDG_DATA_HOME`; it does not touch user saves. It copies the actual production narrative classes and the exact production JSON loader, and imports only required source-exported narrative PNGs. TypeScript executes only as a development oracle, never at game runtime.
+The test creates a fresh `/tmp/empire-narrative.*` project and isolates `XDG_DATA_HOME`; it does not touch user saves. It copies the actual production narrative classes and the exact production JSON loader, and imports only required source-exported narrative PNGs. The default gate uses frozen rendered expectations and native schema-2 fixtures, with no TypeScript runtime.
 
-The live original `StoryCampaignController`, adapter, runtime and save/load helpers produce:
+Frozen observations originally produced by `StoryCampaignController`, its adapter/runtime and save helpers cover:
 
 - 35 documents / 91 ordinary-mode beat render fixtures, plus all five ending beats under active/completed/failed status: 106 source story projections total.
 - All 11 source-rendered choice menus.
 - 48 original transition fixtures, including the deliberately unreachable nonzero ending cursors that characterize the source quirk.
 - 11 actual DOM lifetime fixtures, with three unmounted/remounted cases explicitly marked as native safety differences.
-- Four supplemental source projections: real runtime retreat history gives nonzero progress, a valid zero-battle definition, an unknown speaker with a null scene, and a known speaker with no portrait.
+- Four supplemental native inputs: real runtime retreat history gives nonzero progress, a valid zero-battle definition, an unknown speaker rejection, and a known speaker with no portrait. The unknown-speaker fallback is an intentional breaking correction; its old display expectation was removed, not silently normalized.
 
-Native checks compare every projected field against those source DOM outputs. Native widgets exercise every ordinary-mode beat fixture and each reachable beat-zero ending/status fixture. Canonical normal and ending callback sequences use the existing C# `CampaignRuntime` and `CampaignSave`; no battles or victories are fabricated. A wrong next-beat label is deliberately introduced only in the temporary project and must fail the source differential check. Source-side ending paging mutation was also rejected by the oracle.
+Native checks compare every valid projected field against frozen DOM outputs and explicitly assert the unknown-speaker rejection. Native widgets exercise every ordinary-mode beat fixture and each reachable beat-zero ending/status fixture. Canonical normal and ending callback sequences use the existing C# `CampaignRuntime` and `CampaignSave`; no battles or victories are fabricated. A wrong next-beat label is deliberately introduced only in the temporary project and must fail the source differential check. Source-side ending paging mutation was also rejected by the oracle.
 
-Final isolated native run: **4,949 assertions passed**, plus the negative-control mutation gate. The combined Godot C# project also builds with zero warnings/errors. The source oracle's focused strict TypeScript check and 36 existing campaign/storage tests passed. Repository-wide TypeScript checking still has unrelated missing candidate-02/-03 asset/document imports.
+Latest isolated native run: **4,940 assertions passed**, plus the wrong-navigation-key negative control. Native catalog/structure checks cover 452 messages and 415 content references; parser and authoring negative tests reject malformed, duplicate, missing, empty, fuzzy and obsolete data. Two independent in-memory catalogs change actual native widget wording without changing authoring identities or state. These test catalogs are not additional shipped languages.
 
-Not claimed: a victorious campaign playthrough; browser CSS blur/saturation, entrance animations, shadows or pixel-identical typography; actual native GUI acceptance; standalone distribution. The currently unresponsive desktop is a separate pending acceptance gate, and no screenshot or restart was attempted for this work.
+Not claimed: complete menu/battle/domain i18n; a victorious campaign playthrough; browser CSS effects or pixel-identical typography; physical native GUI acceptance; a newly exported standalone game. The separate foundation packaging check established native PO loading/formatting in a real exported executable; product release validation remains the integration owner's gate.

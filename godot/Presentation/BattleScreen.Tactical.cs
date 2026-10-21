@@ -19,9 +19,9 @@ public partial class BattleScreen
 
     private void SynchronizeTactical(BattleSnapshot next)
     {
-        if (_tactical is null || _tacticalSession is null) return;
+        if (_tactical is null || _session is null) return;
         if (_tactical.Stamp.Revision == next.Revision) return;
-        var queries = _tacticalSession.GetTacticalQueries(_tacticalBinding);
+        var queries = _session.GetTacticalQueries(_tacticalBinding);
         if (queries.Stamp.Revision != next.Revision)
             throw new InvalidOperationException("Tactical projection and battle snapshot must share a revision.");
         _tactical.CompleteDispatch(_tactical.Stamp, queries);
@@ -36,18 +36,18 @@ public partial class BattleScreen
 
     private void UpdateTactical()
     {
-        if (_tactical is null || _tacticalSession is null || !Current(_tactical.Stamp, true)) return;
+        if (_tactical is null || _session is null || !Current(_tactical.Stamp, true)) return;
         var stamp = _tactical.Stamp;
         _tactical.SetBusy(IsInputBlocked);
         var scroll = _hudScroll.ScrollVertical;
         var applyGeneration = ++_hudApplyGeneration;
-        _hud.Apply(_tacticalSession.ProjectHud(stamp, _tactical.Selection, _tactical.Cursor, _tactical.InspectId, IsInputBlocked));
+        _hud.Apply(_session.ProjectHud(stamp, _tactical.Selection, _tactical.Cursor, _tactical.InspectId, IsInputBlocked));
         Callable.From(() => {
             if (applyGeneration == _hudApplyGeneration && Current(stamp, true)) _hudScroll.ScrollVertical = scroll;
         }).CallDeferred();
         _overlay.ShowTactical(_tactical.Overlay());
         Clear(_globalOrders);
-        var queries = _tacticalSession.GetTacticalQueries(_tacticalBinding);
+        var queries = _session.GetTacticalQueries(_tacticalBinding);
         void Add(string name, string label, bool enabled, Action action)
         {
             Button button = null!;
@@ -106,22 +106,16 @@ public partial class BattleScreen
 
     private void DispatchTactical(TacticalRequest request)
     {
-        if (_tacticalSession is null || _tactical is null || !Current(request.Stamp)) return;
+        if (_session is null || _tactical is null || !Current(request.Stamp)) return;
         var result = request.Kind == TacticalRequestKind.Undo
-            ? _tacticalSession.Undo(request.Stamp.Revision)
-            : _tacticalSession.Dispatch(request.Action ?? throw new InvalidOperationException("Action request lacks its canonical payload."), request.Stamp.Revision);
+            ? _session.Undo(request.Stamp.Revision)
+            : _session.Dispatch(request.Action ?? throw new InvalidOperationException("Action request lacks its canonical payload."), request.Stamp.Revision);
         ShowFeedback(result.Message);
         if (!result.Accepted) AppendMessage("无法执行：" + result.Message);
         else if (request.Kind == TacticalRequestKind.Undo) AppendMessage("已撤销上一步");
         // Both accepted commands and legal refusals return to the source resting selection.
-        _tactical.CompleteDispatch(request.Stamp, _tacticalSession.GetTacticalQueries(_tacticalBinding));
+        _tactical.CompleteDispatch(request.Stamp, _session.GetTacticalQueries(_tacticalBinding));
         Refresh();
-    }
-
-    public void SubmitOrder(BattleOrderChoice order)
-    {
-        if (_tactical is null || !Current(_tactical.Stamp)) return;
-        DispatchTactical(new(_tactical.Stamp, TacticalRequestKind.Action, order.Action));
     }
 
     private void HoverField(CameraPoint? point)
@@ -131,9 +125,7 @@ public partial class BattleScreen
         if (point is { } at && at.X >= 0 && at.Y >= 0 && at.X < _board.FieldSize.X && at.Y < _board.FieldSize.Y && _state is not null)
         {
             var candidate = new BoardCell((int)Math.Floor(at.X / 32), (int)Math.Floor(at.Y / 32));
-            var width = _state["map"]!["width"]!.GetValue<int>();
-            var terrain = _state["map"]!["tiles"]![candidate.Y * width + candidate.X]!.GetValue<string>();
-            if (!_outsideTerrain.Contains(terrain)) cell = candidate;
+            if (_tactical.InteractiveCells.Contains(candidate)) cell = candidate;
         }
         if (_tactical.Cursor == cell) return;
         if (cell is { } hovered) _tactical.Hover(_tactical.Stamp, hovered);

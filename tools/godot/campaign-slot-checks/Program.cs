@@ -1,3 +1,4 @@
+using Empire.Core;
 using System.Text.Json.Nodes;
 using Empire.Application;
 using Empire.Core.Campaign;
@@ -47,7 +48,6 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
         if (item["syntax"]!.GetValue<bool>() || item["readError"]!.GetValue<bool>())
             Check(loaded.Rejected is { Length: > 0 }, $"{name}: native parser/OS failure needs a diagnostic");
         else Check(loaded.Rejected == expected["rejected"]?.GetValue<string>(), $"{name}: rejection differs: {loaded.Rejected}");
-        Check(!loaded.LegacyApplicationEnvelope, $"{name}: original envelope is not a legacy application wrapper");
     }
     if (raw is not null && !item["readError"]!.GetValue<bool>()) Check(File.ReadAllText(path) == raw, $"{name}: read mutated stored progress");
 }
@@ -95,11 +95,12 @@ var legacyPath = Slot("checkpoint-e6-clean.json");
 NewFile(legacyPath, EcmaJson.Stringify(Wrapper()));
 var legacyRaw = File.ReadAllText(legacyPath);
 var legacy = CampaignSlotStorage.Load(definition, legacyPath);
-Same(legacy.State, initial, "The e6 checkpoint's clean atCamp:false wrapper must remain readable");
-Check(legacy.LegacyApplicationEnvelope && legacy.Rejected is null, "Clean legacy classification was lost");
+Check(legacy.State is null, "Obsolete application wrappers must not become campaign autosaves");
+Check(legacy.Rejected is { Length: > 0 }, "Obsolete application wrappers require an explicit rejection");
 Check(File.ReadAllText(legacyPath) == legacyRaw, "Legacy read must not migrate or rewrite user data");
 var defectiveDefinition = (JsonObject)definition.DeepClone(); defectiveDefinition["start"] = "missing";
-try { CampaignSlotStorage.Load(defectiveDefinition, legacyPath); throw new Exception("Legacy wrapper masked a definition defect"); }
+var canonicalPath = Slot("canonical-definition-check.json"); NewFile(canonicalPath, EcmaJson.Stringify(clean));
+try { CampaignSlotStorage.Load(defectiveDefinition, canonicalPath); throw new Exception("Canonical save masked a definition defect"); }
 catch (CampaignInvariantException) { checks++; }
 
 foreach (var mode in new[] { "request", "battle", "pending", "camp", "events", "missing-request", "schema" })
@@ -127,7 +128,7 @@ Check(File.ReadAllText(legacyPath) == legacyRaw, "Definition/state defect replac
 var manualPath = Slot("manual-application-save.json");
 NewFile(manualPath, "manual battle state must remain untouched");
 CampaignSlotStorage.Save(definition, initial, legacyPath);
-Check(!CampaignSlotStorage.Load(definition, legacyPath).LegacyApplicationEnvelope, "New writes must use the original campaign envelope");
+Same(CampaignSlotStorage.Load(definition, legacyPath).State, initial, "New writes must use the canonical campaign envelope");
 CampaignSlotStorage.ClearForNewCampaign(legacyPath);
 Check(!File.Exists(legacyPath), "Caller-confirmed New must clear only its explicit autosave slot");
 CampaignSlotStorage.ClearForNewCampaign(legacyPath);

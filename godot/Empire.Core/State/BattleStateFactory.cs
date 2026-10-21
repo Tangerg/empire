@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Nodes;
+using Empire.Core.Combat;
 using Empire.Core.Geometry;
 
 namespace Empire.Core.State;
 
-public sealed record BattleStateRules(ReadOnlyContent Content, GridRegistry Grids);
+public sealed record BattleStateRules(ReadOnlyContent Content, GridRegistry Grids, ReactionRegistry Reactions);
 
 /// <summary>
 /// Constructs the plain-data, pre-lifecycle state from a parsed LevelData document.
@@ -15,10 +16,6 @@ public sealed record BattleStateRules(ReadOnlyContent Content, GridRegistry Grid
 public static class BattleStateFactory
 {
     /// <summary>Spawns through the same unit constructor used by initial levels.</summary>
-    public static JsonObject SpawnUnit(JsonArray contentPacks, GridRegistry grids, JsonObject state,
-        string type, int owner, Coord at, double? hp = null, bool done = false, JsonObject? source = null) =>
-        SpawnUnit(new BattleStateRules(new ReadOnlyContent(contentPacks), grids), state, type, owner, at, hp, done, source);
-
     public static JsonObject SpawnUnit(BattleStateRules dependencies, JsonObject state,
         string type, int owner, Coord at, double? hp = null, bool done = false, JsonObject? source = null)
     {
@@ -28,15 +25,14 @@ public static class BattleStateFactory
         if (hp is { } explicitHp) seed["hp"] = explicitHp;
         var id = StateJson.Integer(state, "nextUnitId");
         var grid = dependencies.Grids.Get(StateJson.Text(state["rules"]!["grid"], "grid"));
-        state["nextUnitId"] = checked(id + 1);
-        var unit = CreateUnit(dependencies.Content.Source, seed, id, grid.RestingFacing);
+        var nextId = checked(id + 1);
+        var units = StateJson.Array(state["units"], "units");
+        var unit = CreateUnit(dependencies, seed, id, grid);
         unit["done"] = done;
-        StateJson.Array(state["units"], "units").Add(unit);
+        units.Add(unit);
+        state["nextUnitId"] = nextId;
         return unit;
     }
-
-    public static JsonObject Create(JsonObject level, JsonArray contentPacks, uint? seed = null) =>
-        Create(new BattleStateRules(new ReadOnlyContent(contentPacks), GridRegistry.Core()), level, seed);
 
     public static JsonObject Create(BattleStateRules dependencies, JsonObject level, uint? seed = null)
     {
@@ -44,12 +40,12 @@ public static class BattleStateFactory
         var content = dependencies.Content.Source;
         var map = StateMap.Create(content, level);
         var rules = StateDefaults.Rules(level);
-        var restingFacing = dependencies.Grids.Get(StateJson.Text(rules, "grid")).RestingFacing;
+        var grid = dependencies.Grids.Get(StateJson.Text(rules, "grid"));
         var players = CreatePlayers(content, level, map);
         var units = new JsonArray();
         var nextUnitId = 1;
         foreach (var source in StateJson.Objects(StateJson.Required(level, "units"), "units"))
-            units.Add(CreateUnit(content, source, nextUnitId++, restingFacing));
+            units.Add(CreateUnit(dependencies, source, nextUnitId++, grid));
         var commanders = CreateCommanders(level, units);
         var structures = CreateStructures(content, level);
         var composites = CreateComposites(level, structures);
@@ -140,10 +136,15 @@ public static class BattleStateFactory
         return result;
     }
 
-    private static JsonObject CreateUnit(StateContent content, JsonObject source, int id, string restingFacing)
+    private static JsonObject CreateUnit(BattleStateRules dependencies, JsonObject source, int id, ITacticalGrid grid)
     {
+        var content = dependencies.Content.Source;
         var type = StateJson.Text(source, "unit");
         var definition = content.Get("units", type);
+        var reaction = StateJson.Text(source["reaction"] ?? definition["defaultReaction"], "reaction");
+        var facing = source["facing"] is { } authoredFacing ? StateJson.Text(authoredFacing, "facing") : grid.RestingFacing;
+        dependencies.Reactions.Get(reaction);
+        UnitDisposition.RequireFacing(grid, facing);
         var maximumHp = StateJson.Number(definition["maxHp"], "maxHp");
         var moraleDefinition = definition["morale"] is { } morale ? StateJson.Object(morale, "morale") : null;
         var maximumMorale = moraleDefinition is null ? 100 : StateJson.Number(moraleDefinition, "maximum", 100);
@@ -183,9 +184,9 @@ public static class BattleStateFactory
             ["rank"] = source["rank"]?.DeepClone() ?? JsonValue.Create(0),
             ["rankProgress"] = Math.Max(0, StateJson.Round(StateJson.Number(source, "rankProgress", 0))),
             ["resources"] = StateJson.MergeObjects(definition["resources"], source["resources"], "unit resources"),
-            ["reaction"] = source["reaction"]?.DeepClone() ?? StateJson.Required(definition, "defaultReaction").DeepClone(),
+            ["reaction"] = reaction,
             ["reactionUsedRound"] = -1,
-            ["facing"] = source["facing"]?.DeepClone() ?? JsonValue.Create(restingFacing),
+            ["facing"] = facing,
             ["morale"] = new JsonObject
             {
                 ["current"] = PlacedGauge(StateJson.Number(source, "morale", maximumMorale), maximumMorale),

@@ -16,6 +16,7 @@ public sealed record DamageOutcome(
 public sealed class BattleDamage
 {
     private static readonly DamageOutcome NothingToHit = new(false, 0, 0, false, true, new Coord(-1, -1));
+    private readonly ReadOnlyContent catalog;
     private readonly StateContent content;
     private readonly GridRegistry grids;
     private readonly CombatEffects effects;
@@ -23,6 +24,7 @@ public sealed class BattleDamage
 
     public BattleDamage(ReadOnlyContent catalog, GridRegistry grids, CombatEffects effects, UnitDepartureHandlerRegistry unitDepartures)
     {
+        this.catalog = catalog;
         content = catalog.Source;
         this.grids = grids;
         this.effects = effects;
@@ -37,16 +39,10 @@ public sealed class BattleDamage
         if (target is null) return NothingToHit;
 
         var at = TacticalQueries.Position(target);
-        var hp = StateJson.Number(target["hp"], "hp");
-        var amount = Math.Max(0, StateJson.Round(requested));
-        if (nonlethal) amount = Math.Min(amount, Math.Max(0, hp - 1));
-        if (amount <= 0) return new DamageOutcome(true, 0, hp, false, false, at);
-        if (!double.IsFinite(amount))
-            throw new DomainInvariantException($"damage must be a finite non-negative number, got {amount}");
-
-        amount = Math.Min(hp, amount);
-        var hpAfter = Math.Max(0, hp - amount);
-        target["hp"] = hpAfter;
+        var health = new UnitHealth(catalog, target);
+        var amount = health.Damage(requested, nonlethal);
+        var hpAfter = health.Current;
+        if (amount <= 0) return new DamageOutcome(true, 0, hpAfter, false, false, at);
         var killed = hpAfter <= 0;
         JsonObject? casualty = null;
         JsonObject? corpse = null;
@@ -54,9 +50,8 @@ public sealed class BattleDamage
         if (killed)
         {
             casualty = (JsonObject)target.DeepClone();
-            ClearCaptureAt(state, at);
             corpse = CreateMarker(state, target, "corpse", at);
-            RemoveUnit(state, target);
+            new BattleRelocation(state).RemoveUnit(unitId);
             passengerMarkers = ExtractPassengerMarkers(state, unitId, at, "transport-loss");
         }
 
@@ -128,7 +123,7 @@ public sealed class BattleDamage
         var unit = TacticalQueries.RequireUnit(state, unitId);
         var at = TacticalQueries.Position(unit);
         var marker = CreateMarker(state, unit, "surrendered", at);
-        RemoveUnit(state, unit);
+        new BattleRelocation(state).RemoveUnit(StateJson.Integer(unit, "id"));
         WithdrawPassengers(state, unitId, at, "surrendered", emit);
         AnnounceMarker(marker, emit);
         var surrendered = new JsonObject
@@ -151,7 +146,7 @@ public sealed class BattleDamage
         var at = TacticalQueries.Position(unit);
         var marker = CreateMarker(state, unit, leaveCorpse ? "corpse" : "withdrawn", at);
         AnnounceMarker(marker, emit);
-        RemoveUnit(state, unit);
+        new BattleRelocation(state).RemoveUnit(StateJson.Integer(unit, "id"));
         WithdrawPassengers(state, unitId, at, "withdrawn", emit);
         AnnounceDeparture(state, unit, emit);
         emit(new JsonObject { ["type"] = "unitWithdrawn", ["unit"] = unitId, ["at"] = Coordinate(at) });
@@ -236,7 +231,7 @@ public sealed class BattleDamage
         var id = StateJson.Integer(unit, "id");
         var at = TacticalQueries.Position(unit);
         var marker = CreateMarker(state, unit, "routed", at);
-        RemoveUnit(state, unit);
+        new BattleRelocation(state).RemoveUnit(StateJson.Integer(unit, "id"));
         WithdrawPassengers(state, id, at, "routed", emit);
         AnnounceMarker(marker, emit);
         emit(new JsonObject
@@ -263,23 +258,6 @@ public sealed class BattleDamage
         };
         StateJson.Array(state["markers"], "markers").Add(marker);
         return marker;
-    }
-
-    private static void RemoveUnit(JsonObject state, JsonObject unit)
-    {
-        var standing = TacticalQueries.UnitById(state, StateJson.Integer(unit, "id"));
-        if (standing is null) return;
-        ClearCaptureAt(state, TacticalQueries.Position(standing));
-        StateJson.Array(state["units"], "units").Remove(standing);
-    }
-
-    private static void ClearCaptureAt(JsonObject state, Coord at)
-    {
-        var map = StateJson.Object(state["map"], "map");
-        var extent = new GridExtent(StateJson.Integer(map, "width"), StateJson.Integer(map, "height"));
-        if (!GridStorage.InBounds(extent, at.X, at.Y))
-            throw new DomainInvariantException($"cell ({at.X}, {at.Y}) is outside the map");
-        StateJson.Array(map["captureProgress"], "captureProgress")[GridStorage.Index(extent, at.X, at.Y)] = 0;
     }
 
     private static IReadOnlyList<JsonObject> ExtractPassengerMarkers(

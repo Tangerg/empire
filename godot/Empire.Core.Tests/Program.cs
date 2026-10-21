@@ -2,6 +2,7 @@ using System.Text.Json.Nodes;
 using Empire.Core;
 using Empire.Core.Determinism;
 using Empire.Core.Geometry;
+using Empire.Core.Engine;
 using Empire.Core.State;
 using Empire.Core.Transactions;
 var root = Path.GetFullPath(args.Length > 0 ? args[0] : "godot/tests/oracle");
@@ -18,7 +19,8 @@ Check("independent RNG streams", () => {
 });
 Check("initial state factory", () => {
  var f=Read("grayflag-initial-raw.json");var packs=JsonNode.Parse(File.ReadAllText(Path.Combine(root,"../../data/content-packs.json")))!.AsArray();
- var actual=BattleStateFactory.Create(f["level"]!.AsObject(),packs);
+ var engine = new GrayFlagEngine(packs);
+ var actual=BattleStateFactory.Create(new BattleStateRules(engine.Catalog,engine.Grids,engine.Reactions),f["level"]!.AsObject());
  Equal(StateDigest.Hash(f["state"]!),StateDigest.Hash(actual));
 });
 Check("three tactical grids", () => {

@@ -1,68 +1,15 @@
-# Native campaign staging parity
+# Native campaign staging checks
 
-Generate current-source expectations and compare the pure native projection:
+Run `bash tools/godot/staging-checks/run.sh`. The default gate uses frozen original rendered expectations and current native schema-2 metadata, not live TypeScript regeneration. It compares 45 views, immutable rows, explicit actor bindings and original PNG hashes. The check-only catalog JSON is disposable; the shipped runtime loads native PO.
 
-    bash tools/godot/staging-checks/run.sh /tmp/empire-staging-checks
+`CampaignStaging.Create(text, state, battleNode, level, metadata, unitTypeName, hasPendingRequest)` returns an immutable view. The explicit `GameText` service localizes shared campaign/chapter titles and shell action/accessibility labels. The chapter table is their single owner; levels contain chapter IDs, not repeated chapter titles. The root still owns canonical request/start/reentry/outcome transitions.
 
-Check the native screen with the same fixture (no campaign saves or external state are changed):
+Staging-specific roster/status/resource/relation/level labels and action notes are not yet migrated to PO. Neither this suite nor the narrative slice claims full staging or game internationalization. Genuine user-authored names remain literal data; built-in content names will be resolved at their presentation boundary rather than stored as translated core facts.
 
-    source tools/godot/env.sh
-    dotnet build godot/Empire.csproj
-    "$GODOT_NET" --headless --editor --path godot --import
-    "$GODOT_NET" --headless --path godot res://Scenes/CampaignStagingChecks.tscn -- /tmp/empire-staging-checks/oracle.json
+`CampaignStagingScreen.ShowStaging(view, assets, startBattle, exitCampaign)` renders those facts inside the shared shell. Start and Exit are mutually exclusive per binding. Stale, double, detached, unmounted and remounted callbacks cannot navigate without an explicit new binding. Reentry still means restart from the same pending request, not resume.
 
-## API and ownership
+Native source documents own presentation metadata. `export-grayflag.ts` no longer writes them; it only copies declared, hash-verified narrative artwork. The shared schema has exactly `schema`, `titleKey`, `completionLabelKey`, `menu`, `menuArt`, `chapters`, `storyScenes`, `battleTotal`, `joinAfter`, `relationLabels`, `resourceLabels`, `portraits` and `levels`. `validate_narrative.py` rejects missing/extra fields and obsolete duplicated chapter labels. There is no schema-1 fallback.
 
-`CampaignStaging.Create(state, battleNode, level, metadata, unitTypeName, hasPendingRequest)` returns an immutable `CampaignStagingView`. Inputs are the canonical campaign snapshot/current battle node, the original catalog level, exported presentation metadata, and the composed engine's name query. It never starts, completes, exits, or resumes a battle.
+The frozen oracle still checks original roster filtering, HP rounding, disposition text, resource ordering, first-five nonzero relations, signs/bars, actor bindings and artwork. Native tests separately clone schema-2 metadata with unavailable art to check diagnostics and real unit-sprite fallback, then run all 45 cases against actual exported art. Missing-art diagnostics remain English diagnostic data and are still displayed by the existing missing-art widgets. A localized, player-safe artwork-error message is outside this slice.
 
-`CampaignStagingScreen.ShowStaging(view, assets, startBattle, exitCampaign)` renders supplied facts inside the shared `CampaignShell`. Start and the shell's menu exit are one mutually exclusive action per binding. Repeated clicks, detached buttons, callbacks retained from a previous binding, and callbacks after unmount/remount cannot dispatch navigation. Explicit rebinding resets the one-shot action. Canonical request ownership and initial versus reentry behavior remain in the application root.
-
-Original `StoryCampaignController.renderBattleStaging` semantics are preserved:
-
-- `joinAfter` filters roster visibility by completed battle-history count. It does not filter by disposition; fallen/routed/unavailable entries remain visible with their original disposition text.
-- Available entries show rounded HP percent and rank. Unit names come from the injected content catalog.
-- Actor-key art is used only when the current battle node explicitly binds that campaign unit. Unbound entries use the selected generic unit art.
-- Every campaign resource is shown in source property order. Relations show the first five nonzero entries in source order, with the source signed number and clamped relation bar.
-- Initial and reentry notes/buttons are distinct. Reentry explicitly says the battle restarts from its opening. It never claims to resume an exited battle.
-
-The application must keep the pending battle request on exit and construct a fresh battle from that same request on reentry, without applying the battle outcome or repeating campaign choices. The view does not enforce or implement that state transition.
-
-## Export contract
-
-The root exporter owns `godot/data/grayflag-staging.json`:
-
-    {
-      "schema": 1,
-      "title": "source campaign title",
-      "battleTotal": 16,
-      "joinAfter": { "roster id": 3 },
-      "resourceLabels": { "resource id": "source label" },
-      "relationLabels": { "relation id": "source label" },
-      "portraits": { "roster id": { "source": "original art URL", "resourcePath": null } },
-      "levels": {
-        "level id": {
-          "chapter": 1, "order": 1, "chapterTitle": "source chapter title",
-          "briefingId": "source briefing id",
-          "chapterArt": { "source": "original art URL", "resourcePath": null },
-          "briefingArt": null
-        }
-      }
-    }
-
-All map/method values come from `candidate01CampaignAdapter`; the native helper does not duplicate JOIN_AFTER, character names, labels, chapter mapping, or briefing selection. `briefingArt` is null when the source story intentionally has no scene; otherwise it has the same `{ source, resourcePath }` shape. A non-null resourcePath identifies a copied native resource, not a guessed path.
-
-Source portraits, chapter backgrounds, and briefing art are used when actually exported. Missing source art is exposed through `RenderingDiagnostics`, with the original source reference. The screen uses real selected unit sprites when a portrait is unavailable, and does not substitute geometric placeholders or invented artwork. A missing source scene/backdrop remains an explicit presentation gap, not a claim of visual parity. The diagnostics are for the application/reporting boundary, not new localized source copy.
-
-## Verification
-
-The oracle extracts and executes the actual source `shell` and `renderBattleStaging` methods using the actual candidate adapter, art, and content. It compares visible text, roster rows, resources, relation signs/bars, and original art references, rather than copying the expected formatter.
-
-The 45 source renders cover every battle's initial/reentry screen, JOIN_AFTER boundaries, unavailable-unit status, HP rounding, unknown-label fallback, resource ordering, first-five nonzero relations, empty state, and bound/unbound actors. Native tests verify the original text, actual texture identity, explicit diagnostics for unexported art, one-shot actions, stale callbacks, unmount, and remount.
-
-The final export check independently compares metadata against the live adapter and verifies copied narrative PNG bytes against both the original source and declared SHA256. Native screen checks also run all 45 views with the real exported metadata and require zero missing-art diagnostics.
-
-## Shared metadata ownership
-
-The staging oracle still compares every original staging-owned field exactly: `schema`, `title`, `battleTotal`, `joinAfter`, `resourceLabels`, `relationLabels`, `portraits`, and `levels`. The shared export now also requires five separately owned extensions: `completionLabel`, `menu`, `menuArt`, `chapters`, and `storyScenes`. This suite validates the complete union of field names, rejects unknown or missing fields, and checks the extension value shapes; it does not discard arbitrary extra metadata.
-
-The narrative suite owns completion labels, chapters, story-scene metadata and their original asset contracts. The campaign-slot/menu suite owns menu text and menu-art metadata. Their presence does not relax any staging projection, original asset byte/hash, or real-art zero-diagnostics assertion. The native staging scene also checks shared-shell exit accessibility and both directions of Start/Exit single-use, rebind, detached-button, unmount and remount behavior.
+Latest pure run passed 491 comparisons. Native scene is `res://Scenes/CampaignStagingChecks.tscn`, taking a decompressed `godot/tests/oracle/staging.json.gz` path after `--`. Run native builds/checks in the shared sequential verification lane with fresh user-data directories. Headless rendering is not physical GUI acceptance.

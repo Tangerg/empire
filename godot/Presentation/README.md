@@ -2,7 +2,7 @@
 
 `BoardView` is a read-only projection, not a battle owner. The caller must display
 `StatusText` and make `Diagnostics` available. `BattleScreen` supplies interactive
-selection and commands through an explicitly injected `IBattleSession`; the view
+selection and commands through an explicitly injected `ITacticalBattleSession`; the view
 never computes legality or mutates the canonical state.
 
 ```csharp
@@ -26,18 +26,20 @@ connects the screen to a real application session.
 `ConfigureTerrain(WorldMaterialsManifest.Load())` supplies the material metadata.
 
 - `GetSnapshot()` returns a revision and detached immutable `JsonElement`.
-- `GetLegalOrders(selectedUnitId)` returns complete canonical actions, labels,
-  visual roles and optional target cells. The same query supplies move ranges,
-  attack targets, command choices and turn controls.
-- The UI selects a unit, visual mode and target without advancing battle state.
-  A separate command button confirms the full action, including movement.
-- `Dispatch(action, expectedRevision)` owns revalidation and execution. The UI
-  forwards the supplied action unchanged and refreshes after accepted or rejected
-  commands. The application rejects stale revisions.
-- The `move` role is a full move-and-wait command, not a speculative move phase.
-  Attack choices may include different legal origins for the same target.
-- Right-click clears selection. No dummy session, prerecorded battle, local
-  damage calculation or UI-only turn transition is used by the application.
+- `GetTacticalQueries(binding)` supplies revision-bound canonical facts to the
+  `TacticalSelectionController`, the sole owner of local selection and targeting.
+- `ProjectHud(...)` returns revision-stamped content rows and intents. Native HUD
+  buttons, keyboard input and board cells use the same controller/session path.
+- Selecting a reachable destination opens its command menu, or immediately commits
+  its sole self-targeted command. Move-and-wait remains one complete action.
+- `Dispatch(action, expectedRevision)` owns revalidation and execution. The screen
+  forwards canonical controller/HUD actions and refreshes after accepted or rejected
+  commands. Both the screen and session reject stale revisions.
+- `Undo(expectedRevision)` restores through the session; availability comes from
+  the same revision-bound tactical queries, not a separate interface property.
+- Right-click and Escape follow the controller's back operation. No flat order
+  enumeration, direct test-only submission API, local damage calculation or
+  UI-only turn transition is used by the application.
 
 ## Resource contracts
 
@@ -108,6 +110,12 @@ forest coverage, native field geometry, and cached terrain.
 
 `Godot --headless --path godot res://Scenes/BattleScreenChecks.tscn` tests the real
 application session end to end: select Torren, select a queried destination,
-confirm movement plus wait, refresh state, reject a stale revision, and preserve
+commit movement plus wait, exercise custom registered reactions through real HUD
+buttons, refresh state, reject stale callbacks, and preserve
 earlier detached snapshots. These tests are not a full-scene screenshot comparison
 or a substitute for the engine's battle-rule differential tests.
+
+`bash tools/godot/battle-screen-checks/mutants.sh` builds an isolated native
+scene and proves the explicit session port, live-revision callback guard and open
+reaction registry checks reject their respective regressions. A compilation error
+or timeout never counts as a killed mutation.

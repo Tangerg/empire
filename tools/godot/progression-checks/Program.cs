@@ -1,3 +1,4 @@
+using Empire.Core;
 using Empire.Core.State;
 using Empire.Core.Lifecycle;
 using System.Text.Json;
@@ -17,9 +18,11 @@ var catalogs = input["catalogs"]!.AsArray();
 // career/formation helpers on cyclic and missing references. Production engine
 // composition correctly rejects it; keep this test at the same raw boundary.
 var engines = catalogs.Select((packs, index) => index == 2 ? null : new GrayFlagEngine(packs!.AsArray())).ToArray();
-var rawProgression = new BattleProgression(catalogs[2]!.AsArray(), engines[0]!.Grids,
-    engines[0]!.Resources, engines[0]!.Commands, new CombatEffects(new ReadOnlyContent(catalogs[2]!.AsArray()), new ThresholdRankProgressionPolicy()));
+var rawCatalog = new ReadOnlyContent(catalogs[2]!.AsArray());
+var rawProgression = new BattleProgression(rawCatalog, engines[0]!.Grids,
+    engines[0]!.Resources, engines[0]!.Commands, new CombatEffects(rawCatalog, new ThresholdRankProgressionPolicy()));
 var count = 0;
+var nativeRejections = 0;
 var kinds = new Dictionary<string, int>();
 foreach (var entry in input["cases"]!.AsArray())
 {
@@ -35,6 +38,7 @@ foreach (var entry in input["cases"]!.AsArray())
     var events = new JsonArray();
     JsonNode? value = null;
     string? error = null;
+    Exception? commandFailure = null;
     void Emit(JsonObject e) => events.Add(e);
     void CountedEmit(JsonObject e)
     {
@@ -111,7 +115,15 @@ foreach (var entry in input["cases"]!.AsArray())
             default: throw new Exception($"Unknown progression check {kind}");
         }
     }
-    catch (Exception caught) { error = caught.Message; }
+    catch (Exception caught) { commandFailure = caught; error = caught.Message; }
+    if (name is "health ratio 0" or "health ratio 200" or "health invariant direct mutation order")
+    {
+        if (commandFailure is not DomainInvariantException || events.Count != 0 ||
+            !JsonNode.DeepEquals(state, item["before"]))
+            throw new Exception($"Invalid career health must fail before resource costs, events or state mutations: {name}");
+        nativeRejections++;
+        continue;
+    }
     var actual = new JsonObject { ["value"] = value, ["error"] = error, ["events"] = events, ["after"] = state };
     var expected = new JsonObject { ["value"] = item["value"]?.DeepClone(), ["error"] = item["error"]?.DeepClone(),
         ["events"] = item["events"]!.DeepClone(), ["after"] = item["after"]!.DeepClone() };
@@ -126,5 +138,7 @@ foreach (var entry in input["cases"]!.AsArray())
     kinds[kind] = kinds.GetValueOrDefault(kind) + 1;
 }
 Console.WriteLine($"PASS {count} source progression cases: exact values, ordered events, errors and full state snapshots");
+Console.WriteLine($"PASS {nativeRejections} explicit native invalid-career-health atomic rejections");
+if (nativeRejections != 3) throw new Exception("Expected three deliberately hardened career-health cases");
 Console.WriteLine(string.Join(", ", kinds.Select(pair => $"{pair.Key}={pair.Value}")));
 JsonNode? Serialize<T>(T item) => JsonSerializer.SerializeToNode(item, options);

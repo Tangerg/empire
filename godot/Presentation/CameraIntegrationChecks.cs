@@ -165,15 +165,17 @@ public partial class CameraIntegrationChecks : Node
         var snapshot = session.GetSnapshot();
         var state = JsonNode.Parse(snapshot.State.GetRawText())!.AsObject();
         state["map"]!["tiles"]![0] = "c01.outside";
-        var projection = snapshot with { State = JsonSerializer.SerializeToElement(state) };
-        Bind(new SnapshotSession(session, projection));
-        screen.ConfigureTerrain(WorldMaterialsManifest.Load());
+        var outside = GrayFlagSession.FromSave(engine, engine.SaveBattle(state));
+        Bind(outside);
+        var materials = WorldMaterialsManifest.Load();
+        materials.TerrainTags["c01.outside"] = [];
+        screen.ConfigureTerrain(materials);
         GuiButton(MouseButton.Middle, true, new Vector2(100, 100));
         CapturedMove(new Vector2(10000, 10000));
         CapturedButton(MouseButton.Middle, false, new Vector2(10000, 10000));
         screen.SelectCell(new BoardCell(5, 8));
         GuiButton(MouseButton.Right, true, Field(new Vector2(16, 16)));
-        Require(screen.SelectedUnitId == 2, "Exported outside-ground tags exclude irregular holes from right-click cancellation");
+        Require(screen.SelectedUnitId == 2, "Canonical outside terrain excludes holes even when material tags say playable");
         GuiButton(MouseButton.Left, true, Field(new Vector2(16, 16)));
         CapturedButton(MouseButton.Left, false, Field(new Vector2(16, 16)));
         Require(screen.SelectedUnitId == 2, "Outside-ground cells cannot receive primary tactical selection");
@@ -182,7 +184,18 @@ public partial class CameraIntegrationChecks : Node
         CapturedMove(Field(new Vector2(16, 16)) + new Vector2(-20, -20));
         CapturedButton(MouseButton.Middle, false, Field(new Vector2(16, 16)));
         Require(world.Position != previous, "Irregular holes remain valid camera drag surfaces");
-        Require(session.GetSnapshot().State.GetRawText() == snapshot.State.GetRawText(), "Irregular projection test never mutates the real session");
+        Require(session.GetSnapshot().State.GetRawText() == snapshot.State.GetRawText(), "Detached fixture setup never mutates the original session");
+        Bind(session);
+        materials = WorldMaterialsManifest.Load();
+        materials.TerrainTags["plain"] = ["outside"];
+        screen.ConfigureTerrain(materials);
+        var actor = Field(new Vector2(5.5f, 8.5f) * 32);
+        GuiButton(MouseButton.Left, true, actor);
+        CapturedButton(MouseButton.Left, false, actor);
+        Require(screen.SelectedUnitId == 2, "Material outside tags cannot block primary input on canonical playable terrain");
+        GuiButton(MouseButton.Right, true, actor);
+        Require(screen.SelectedUnitId is null, "Material outside tags cannot block right-click cancellation on canonical playable terrain");
+        Require(session.GetSnapshot().State.GetRawText() == snapshot.State.GetRawText(), "Disagreeing material metadata cannot advance the session");
     }
 
     private void CheckFollowAndBusyActions()
@@ -196,22 +209,20 @@ public partial class CameraIntegrationChecks : Node
             CapturedMove(new Vector2(-10000, -10000));
             CapturedButton(MouseButton.Middle, false, new Vector2(-10000, -10000));
             var previous = world.Position;
-            var order = session.GetLegalOrders(2).First(choice => choice.PresentationRole == "move"
-                && choice.Target is { } cell && cell != new BoardCell(5, 8));
             var exits = 0; var saves = 0; var restarts = 0;
             screen.BindApplicationActions(() => saves++, null, () => restarts++, () => exits++);
             var exit = Buttons(screen).Single(button => button.Text == "战役营地");
             var save = Buttons(screen).Single(button => button.Text == "保存");
             var restart = Buttons(screen).Single(button => button.Text == "重新开始");
             GuiButton(MouseButton.Left, true, new Vector2(150, 150));
-            screen.SubmitOrder(order);
+            var destination = TacticalSceneInputChecks.Move(screen, projected);
             var during = world.Position;
             if (computer && !hidden)
             {
                 var expected = new BattlefieldCamera(new(screen.Board.FieldSize.X, screen.Board.FieldSize.Y),
                     new(74, 62, 74, 74), new(0, 0));
                 expected.Resize(new(map.Size.X, map.Size.Y));
-                expected.CenterOn(new((order.Target!.Value.X + .5) * 32, (order.Target.Value.Y + .5) * 32));
+                expected.CenterOn(new((destination.X + .5) * 32, (destination.Y + .5) * 32));
                 Near(during, new((float)expected.FieldOrigin.X, (float)expected.FieldOrigin.Y), "Visible AI command follows the canonical final path point");
             }
             else Near(during, previous, hidden ? "Hidden AI command cannot reveal its camera location" : "Human movement does not auto-follow");
@@ -227,7 +238,7 @@ public partial class CameraIntegrationChecks : Node
                 Require(session.GetSnapshot().Revision == revision && screen.SelectedUnitId is null, "Busy gestures cannot dispatch or select");
                 if (!computer)
                 {
-                    var target=order.Target!.Value;
+                    var target=destination;
                     map.EmitSignal(Control.SignalName.GuiInput,new InputEventMouseMotion { Position=Field(new Vector2(target.X+.5f,target.Y+.5f)*32) });
                     var hud=(TacticalHud)screen.FindChild("TacticalHud",true,false);
                     Require(hud.Projection!.Sections.Any(section=>section.Key=="tile") && hud.Projection.Portrait?.ActorKey=="campaign-torren",
@@ -320,20 +331,7 @@ public partial class CameraIntegrationChecks : Node
         }
         public ITacticalSelectionQueries GetTacticalQueries(long binding) => inner.GetTacticalQueries(binding);
         public TacticalHudProjection ProjectHud(TacticalStamp stamp, TacticalSelection selection, BoardCell? cursor, int? inspectId, bool busy) => inner.ProjectHud(stamp, selection, cursor, inspectId, busy);
-        public bool CanUndo => inner.CanUndo;
         public BattleDispatchResult Undo(long expectedRevision) => inner.Undo(expectedRevision);
-        public IReadOnlyList<BattleOrderChoice> GetLegalOrders(int? selectedUnitId) => inner.GetLegalOrders(selectedUnitId);
-        public BattleDispatchResult Dispatch(JsonElement action, long expectedRevision) => inner.Dispatch(action, expectedRevision);
-    }
-
-    private sealed class SnapshotSession(ITacticalBattleSession inner, BattleSnapshot snapshot) : ITacticalBattleSession
-    {
-        public BattleSnapshot GetSnapshot() => snapshot;
-        public ITacticalSelectionQueries GetTacticalQueries(long binding) => inner.GetTacticalQueries(binding);
-        public TacticalHudProjection ProjectHud(TacticalStamp stamp, TacticalSelection selection, BoardCell? cursor, int? inspectId, bool busy) => inner.ProjectHud(stamp, selection, cursor, inspectId, busy);
-        public bool CanUndo => inner.CanUndo;
-        public BattleDispatchResult Undo(long expectedRevision) => inner.Undo(expectedRevision);
-        public IReadOnlyList<BattleOrderChoice> GetLegalOrders(int? selectedUnitId) => inner.GetLegalOrders(selectedUnitId);
         public BattleDispatchResult Dispatch(JsonElement action, long expectedRevision) => inner.Dispatch(action, expectedRevision);
     }
 }

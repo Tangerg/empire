@@ -11,7 +11,7 @@ fixtures, then compares the native implementation's values, ordered events,
 exception messages and complete state snapshots. No fixtures or generated
 snapshots are committed. The output prints the temporary diagnostic directory.
 
-Current coverage: 175 cases, including 19 individual engine dispatches, 14 raw
+Current coverage: 175 cases, with 172 exact source comparisons and three explicitly native invariant rejections, including 19 individual engine dispatches, 14 raw
 handlers and three multi-action sequences. The sequences compare every step and
 include rejected-action rollback, formation changes that do not consume the
 actor, career changes that do, and switching back after turn handoffs.
@@ -38,3 +38,7 @@ acceptance by the independent content-install or save-validation gates.
 Production files are under `godot/Empire.Core/Progression`. Career progress
 reuses `CombatEffects.AwardCareerProgress`; movement/combat formation activation
 uses the same `FormationRules.InEffect` predicate as the new query/action API.
+
+## Intentional health contract change
+
+The source's `health ratio 0`, `health ratio 200`, and `health invariant direct mutation order` cases are retained, not skipped. Native career changes reject a dead/over-maximum current unit or invalid target maximum with `DomainInvariantException` before resource costs, events, career/type changes, or any state mutation. Normal fractional health, career cost order and all valid progression cases still compare to source exactly. `UnitHealth` owns the health-preserving type transition; career policy chooses the type and preflights that same invariant before announcing costs.

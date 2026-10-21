@@ -1,3 +1,4 @@
+using Empire.Checks;
 using System.Text.Json.Nodes;
 using Empire.Core;
 using Empire.Core.Composition;
@@ -7,23 +8,25 @@ using Empire.Core.Campaign;
 using Empire.Core.Persistence;
 using Empire.Core.Deployment;
 using Empire.Core.References;
+using Empire.Core.State;
 
 var fixture = EcmaJson.Parse(File.ReadAllText(args[0]))!.AsObject();
 var versionFixture = EcmaJson.Parse(File.ReadAllText(args[1]))!.AsObject();
 var versionPacks = EcmaJson.Parse(File.ReadAllText(Path.Combine(args[2], "godot/data/content-packs.json")))!.AsArray();
-var persistenceEngine = new GrayFlagEngine(versionPacks);
-var referenceRules = new RuleReferenceRules
+var versionCatalog = new ReadOnlyContent(versionPacks);
+var persistenceEngine = new Lazy<GrayFlagEngine>(() => new GrayFlagEngine(versionPacks));
+var referenceRules = new Lazy<RuleReferenceRules>(() => new RuleReferenceRules
 {
-    Content = persistenceEngine.Catalog, Grids = persistenceEngine.Grids, Abilities = persistenceEngine.Abilities,
-    HitEffects = persistenceEngine.Combat.HitEffects, Objectives = persistenceEngine.Objectives,
-    ScenarioConditions = persistenceEngine.ScenarioConditions, ScenarioEffects = persistenceEngine.ScenarioEffects,
-    Reactions = persistenceEngine.Reactions, TurnOrders = persistenceEngine.TurnOrders,
-    AreaShapes = persistenceEngine.AreaShapes, Directives = persistenceEngine.Directives,
-};
-var structuralGuards = new BattleSaveFeatures().Guard("deployment", DeploymentStateValidation.Issues)
-    .Guard("transport", persistenceEngine.Transport.StoredStateIssues);
+    Content = persistenceEngine.Value.Catalog, Grids = persistenceEngine.Value.Grids, Abilities = persistenceEngine.Value.Abilities,
+    HitEffects = persistenceEngine.Value.Combat.HitEffects, Objectives = persistenceEngine.Value.Objectives,
+    ScenarioConditions = persistenceEngine.Value.ScenarioConditions, ScenarioEffects = persistenceEngine.Value.ScenarioEffects,
+    Reactions = persistenceEngine.Value.Reactions, TurnOrders = persistenceEngine.Value.TurnOrders,
+    AreaShapes = persistenceEngine.Value.AreaShapes, Directives = persistenceEngine.Value.Directives,
+});
+var structuralGuards = new Lazy<BattleSaveFeatures>(() => new BattleSaveFeatures().Guard("deployment", DeploymentStateValidation.Issues)
+    .Guard("transport", persistenceEngine.Value.Transport.StoredStateIssues));
 BattlePersistence PersistenceFor(JsonObject manifest) => new(
-    new BattleSaveEnvironment(referenceRules, persistenceEngine.ReferenceChecks, manifest, structuralGuards), persistenceEngine.Saves);
+    new BattleSaveEnvironment(referenceRules.Value, persistenceEngine.Value.ReferenceChecks, manifest, structuralGuards.Value), persistenceEngine.Value.Saves);
 var passed = 0;
 var failed = 0;
 foreach (var item in fixture["cases"]!.AsArray().OfType<JsonObject>())
@@ -31,7 +34,24 @@ foreach (var item in fixture["cases"]!.AsArray().OfType<JsonObject>())
     var input = item["input"]!.AsObject();
     Check(input["name"]!.GetValue<string>(), () => Equal(item["expected"]!, Run(input)));
 }
-Check("failed composition, repeated composition and retained scopes", () => Equal(fixture["lifecycle"]!, Lifecycle()));
+Check("source retained-context defect remains explicitly characterized", () =>
+{
+    var sourceLifecycle = fixture["lifecycle"]!;
+    Assert(sourceLifecycle["failedScopeValue"]!.GetValue<string>() == "value-1", "source failed scope changed");
+    Equal(new JsonArray("late replacement", "base", "late addition", "base"), sourceLifecycle["first"]!);
+});
+Check("retained contexts cannot mutate or consume after successful installation", () => ContextLifetime());
+Check("failed installation closes its retained context", () => FailedContextLifetime(false));
+Check("manifest rejection closes its retained context", () => FailedContextLifetime(true));
+Check("a later callback cannot mutate an earlier installation scope", () =>
+{
+    var key = Key("test.a");
+    KernelPluginContext? retained = null;
+    var kernel = new SrpgMicrokernel()
+        .Use(new("owner", 1, context => { retained = context; context.Provide(key, "original"); }, provides: [key]))
+        .Use(new("intruder", 1, _ => retained!.Replace(key, "changed"), requires: ["owner"]));
+    Throws(() => kernel.Compose(), "engine plugin \"owner\" installation context is closed");
+});
 Check("actual composition manifest feeds persistence identity", () => Equal(fixture["persistence"]!, Persistence()));
 Check("same-ID same-type keys address one slot and preserve object identity", () =>
 {
@@ -99,8 +119,8 @@ Check("anonymous composition cannot be recorded or saved", () =>
     var result = new SrpgMicrokernel()
         .Use(new("owner", 1, c => c.Provide(key, "original"), provides: [key]))
         .Use(new("engine.override.test.a", 1, c => c.Replace(key, "changed"), overrides: [key])).Compose();
-    var packs = Packs();
-    var manifest = RulesetManifest.Create(packs, result.PluginManifest);
+    var catalog = TestCatalog();
+    var manifest = RulesetManifest.Create(catalog, result.PluginManifest);
     const string error = "ruleset contains unversioned override \"engine.override.test.a\"; persist it through a named, versioned plugin";
     Throws(() => new BattleRecorder(manifest, new JsonObject()), error);
     Throws(() => PersistenceFor(manifest).Save(new JsonObject()), error);
@@ -112,14 +132,14 @@ foreach (var item in versionFixture["cases"]!.AsArray().OfType<JsonObject>())
     {
         var version = item["version"]!.GetValue<double>();
         var composed = new SrpgMicrokernel().Use(new("test.versioned", version, _ => { })).Compose();
-        var manifest = RulesetManifest.Create(versionPacks, composed.PluginManifest);
+        var manifest = RulesetManifest.Create(versionCatalog, composed.PluginManifest);
         Equal(item["manifest"]!, manifest);
         var persistence = PersistenceFor(manifest);
         var save = persistence.Save(versionFixture["state"]!.AsObject(), versionFixture["savedAt"]!.GetValue<string>());
         Equal(item["savedRuleset"]!, save["ruleset"]!);
         var loaded = persistence.Load(save);
         Assert(StateDigest.Hash(loaded) == item["loadedStateHash"]!.GetValue<string>(), "wide version changed loaded state");
-        var changed = RulesetManifest.Create(versionPacks, new Dictionary<string, double> { ["test.versioned"] = version / 2 });
+        var changed = RulesetManifest.Create(versionCatalog, new Dictionary<string, double> { ["test.versioned"] = version / 2 });
         Equal(item["differences"]!, new JsonArray(RulesetManifest.Differences(manifest, changed).Select(value => (JsonNode)JsonValue.Create(value)!).ToArray()));
     });
 }
@@ -147,10 +167,10 @@ foreach (var item in versionFixture["idCases"]!.AsArray().OfType<JsonObject>())
         else
         {
             kernel.Use(new(id, 1, _ => { }));
-            Equal(item["manifest"]!, RulesetManifest.Create(versionPacks, kernel.Compose().PluginManifest));
+            Equal(item["manifest"]!, RulesetManifest.Create(versionCatalog, kernel.Compose().PluginManifest));
         }
         if (item["blank"]!.GetValue<bool>())
-            Throws(() => RulesetManifest.Create(versionPacks, new Dictionary<string, double> { [id] = 1 }),
+            Throws(() => RulesetManifest.Create(versionCatalog, new Dictionary<string, double> { [id] = 1 }),
                 "plugin identity requires a nonempty id and positive integer version");
         var manifest = item["manifest"]!.AsObject();
         var persistence = PersistenceFor(manifest);
@@ -173,7 +193,7 @@ foreach (var item in versionFixture["boundaryCases"]!.AsArray().OfType<JsonObjec
     Check($"source content pack and campaign level blank admission {CodeUnits(id)}", () =>
     {
         string? packError = null;
-        try { RulesetManifest.Create([new JsonObject { ["id"] = id, ["version"] = 1 }], new Dictionary<string, double>()); }
+        try { RulesetManifest.Create(new ReadOnlyContent([new JsonObject { ["id"] = id, ["version"] = 1 }]), new Dictionary<string, double>()); }
         catch (DomainInvariantException error) { packError = error.Message; }
         Assert(packError == item["packError"]?.GetValue<string>(), "content pack whitespace admission differs");
         var definition = item["definition"]!.AsObject();
@@ -186,14 +206,24 @@ foreach (var item in versionFixture["boundaryCases"]!.AsArray().OfType<JsonObjec
 Check("double manifest creation refuses invalid plugin versions", () =>
 {
     foreach (var value in new[] { double.NaN, double.PositiveInfinity, double.NegativeInfinity, 1.5, 0, -1 })
-        Throws(() => RulesetManifest.Create(Packs(), new Dictionary<string, double> { ["invalid"] = value }),
+        Throws(() => RulesetManifest.Create(TestCatalog(), new Dictionary<string, double> { ["invalid"] = value }),
             "plugin identity requires a nonempty id and positive integer version");
 });
-Check("existing default manifest and hash unchanged", () =>
+Check("native composition identity deliberately differs from source", () =>
 {
+    var sourceManifest = versionFixture["defaultManifest"]!.AsObject();
+    var original = sourceManifest.ToJsonString();
+    var expected = FixtureRuleset.ExpectedNative(sourceManifest);
     var actual = new GrayFlagEngine(versionPacks).RulesetManifest;
-    Equal(versionFixture["defaultManifest"]!, actual);
-    Assert(StateDigest.Hash(versionFixture["defaultManifest"]!) == StateDigest.Hash(actual), "default manifest hash changed");
+    Equal(expected, actual);
+    Assert(StateDigest.Hash(sourceManifest) != StateDigest.Hash(actual), "native contract changed without a new persisted identity");
+    Assert(sourceManifest.ToJsonString() == original, "fixture identity declaration changed the source oracle");
+    foreach (var invalid in new[] { (JsonObject)sourceManifest.DeepClone(), expected })
+    {
+        if (!invalid["plugins"]!.AsObject().ContainsKey("engine.tactical-space")) invalid["plugins"]!["engine.content"] = 2;
+        try { FixtureRuleset.ExpectedNative(invalid); throw new Exception("fixture declaration admitted a mismatched identity"); }
+        catch (InvalidOperationException) { }
+    }
 });
 Console.WriteLine($"Kernel contracts: {passed} passed, {failed} failed.");
 if (failed != 0) throw new Exception($"Kernel contract failures: {failed}");
@@ -300,47 +330,74 @@ static JsonObject Order(JsonObject input)
     }
     catch (Exception error) { return new JsonObject { ["error"] = error.Message, ["inputUnchanged"] = before == input["nodes"]!.ToJsonString() }; }
 }
-static JsonObject Lifecycle()
+static void AssertClosed(KernelPluginContext context, string id, CapabilityKey<string?> provided)
 {
-    var calls = 0;
-    var contexts = new List<KernelPluginContext>();
-    var a = Key("test.a");
-    var b = Key("test.b");
-    var kernel = new SrpgMicrokernel().Use(new("base", 2, context =>
-    {
-        calls++;
-        contexts.Add(context);
-        context.Provide(a, $"value-{calls}");
-        if (calls == 1) throw new Exception("first install fails");
-    }, provides: [a]));
-    var before = Manifest(kernel.PluginManifest);
-    var failure = "";
-    try { kernel.Compose(); } catch (Exception error) { failure = error.Message; }
-    var first = kernel.Compose();
-    var second = kernel.Compose();
-    contexts[1].Replace(a, "late replacement");
-    contexts[1].Provide(b, "late addition");
-    kernel.Use(new("later", 4, _ => { }));
-    var latest = kernel.Compose();
-    return new JsonObject
-    {
-        ["failure"] = failure, ["calls"] = calls, ["failedScopeValue"] = contexts[0].Require(a),
-        ["first"] = new JsonArray(first.Require(a), first.ProviderOf(a), first.Require(b), first.ProviderOf(b)),
-        ["second"] = new JsonArray(second.Require(a), second.Has(b)),
-        ["before"] = before, ["firstManifest"] = Manifest(first.PluginManifest), ["builderManifest"] = Manifest(kernel.PluginManifest),
-        ["latestManifest"] = Manifest(latest.PluginManifest),
-        ["scopeManifests"] = new JsonArray(contexts.Select(context => (JsonNode)Manifest(context.PluginManifest)).ToArray()),
-    };
+    var extra = Key("test.extra");
+    var error = $"engine plugin \"{id}\" installation context is closed";
+    Throws(() => context.Replace(provided, "late replacement"), error);
+    Throws(() => context.Provide(extra, "late addition"), error);
+    Throws(() => context.Require(provided), error);
+    Throws(() => context.Require(extra), error);
+    KernelCapabilities readView = context;
+    Throws(() => readView.Require(provided), error);
+    Assert(!context.Has(extra), "closed write changed the store");
 }
-static JsonArray Packs() => [new JsonObject { ["id"] = "z", ["version"] = 2 }, new JsonObject { ["id"] = "a", ["version"] = 1 }];
+static void ContextLifetime()
+{
+    var contexts = new List<KernelPluginContext>();
+    var key = Key("test.a");
+    var calls = 0;
+    var kernel = new SrpgMicrokernel().Use(new("owner", 2, context =>
+    {
+        contexts.Add(context);
+        context.Provide(key, $"value-{++calls}");
+        Assert(context.Require(key) == $"value-{calls}", "install-time consumption failed");
+    }, provides: [key], requiresCapabilities: [key]));
+    var before = kernel.PluginManifest;
+    var first = kernel.Compose();
+    AssertClosed(contexts[0], "owner", key);
+    var second = kernel.Compose();
+    AssertClosed(contexts[1], "owner", key);
+    Assert(first.Require(key) == "value-1" && second.Require(key) == "value-2", "composition stores were shared");
+    Assert(first.ProviderOf(key) == "owner" && first.Has(key), "composed read contract lost attribution");
+    kernel.Use(new("later", 4, _ => { }));
+    Assert(before.Count == 1 && first.PluginManifest.Count == 1, "registration changed a composed manifest");
+    Assert(kernel.Compose().PluginManifest.Count == 2, "later composition lost new plugin");
+    foreach (var context in contexts)
+    {
+        AssertClosed(context, "owner", key);
+        Assert(context.PluginManifest.Count == 0, "installation scope acquired a composed manifest");
+    }
+}
+static void FailedContextLifetime(bool failManifest)
+{
+    var key = Key("test.a");
+    KernelPluginContext? retained = null;
+    var kernel = new SrpgMicrokernel().Use(new("failed", 1, context =>
+    {
+        retained = context;
+        context.Provide(key, "value");
+        if (!failManifest) throw new InvalidOperationException("installation failed");
+    }, provides: failManifest ? [] : [key]));
+    if (failManifest)
+        Throws(() => kernel.Compose(), "engine plugin \"failed\" did provide undeclared capability \"test.a\"");
+    else
+    {
+        try { kernel.Compose(); throw new Exception("installation error disappeared"); }
+        catch (InvalidOperationException error) { Assert(error.Message == "installation failed", "installation error changed"); }
+    }
+    Assert(retained is not null, "callback never ran");
+    AssertClosed(retained!, "failed", key);
+}
+static ReadOnlyContent TestCatalog() => new([new JsonObject { ["id"] = "z", ["version"] = 2 }, new JsonObject { ["id"] = "a", ["version"] = 1 }]);
 static JsonObject Persistence()
 {
     var kernel = new SrpgMicrokernel().Use(new("z.plugin", 3, _ => { })).Use(new("a.plugin", 2, _ => { }));
-    var manifest = RulesetManifest.Create(Packs(), kernel.Compose().PluginManifest);
-    var different = RulesetManifest.Create(Packs(), new Dictionary<string, int> { ["z.plugin"] = 4, ["new.plugin"] = 1 });
+    var manifest = RulesetManifest.Create(TestCatalog(), kernel.Compose().PluginManifest);
+    var different = RulesetManifest.Create(TestCatalog(), new Dictionary<string, int> { ["z.plugin"] = 4, ["new.plugin"] = 1 });
     var errors = new JsonArray();
     const string anonymousId = "engine.override.test.a";
-    foreach (var value in new[] { RulesetManifest.Create([], new Dictionary<string, int>()), RulesetManifest.Create(Packs(), new Dictionary<string, int> { [anonymousId] = 1 }), manifest })
+    foreach (var value in new[] { RulesetManifest.Create(new ReadOnlyContent([]), new Dictionary<string, int>()), RulesetManifest.Create(TestCatalog(), new Dictionary<string, int> { [anonymousId] = 1 }), manifest })
     {
         try { RulesetManifest.RequirePersistent(value); errors.Add("accepted"); }
         catch (DomainInvariantException error) { errors.Add(error.Message); }

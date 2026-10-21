@@ -14,7 +14,7 @@ This malformed-input defect is deliberately not reproduced. Valid movement costs
 
 Native persistence reads and writes the source schema-1 battle-save and replay shapes. Saves contain only `schema`, `battle`, `ruleset`, `savedAt`, and `state`; undo history and presentation/session state are not part of a battle document. Saves, loaded states, headers, recorded actions, and emitted replay documents own detached JSON copies.
 
-The shipped-default manifest retains the five source plugin identities at version 1: `engine.ai-planning`, `engine.content`, `engine.mission-rules`, `engine.resource-economy`, and `engine.tactical-rules`. Content-pack versions come from the explicitly supplied packs. This is the identity of the compatible shipped-default rules, not a claim of universal behavior for every possible third-party plugin. Unknown/missing/version-mismatched plugins or packs are refused. Anonymous factory overrides and catalogs without versioned packs cannot be persisted.
+The native default manifest contains `engine.ai-planning`, `engine.content`, `engine.mission-rules`, `engine.resource-economy` and `engine.tactical-space` at version 1, plus `engine.tactical-rules` at version 2. Content-pack versions come from explicitly supplied packs. Separating tactical producers from the spatial consumer deliberately changes assembly identity: old five-plugin saves/replays are refused as incompatible, with no upgrade, fallback or alias. State/event/digest parity for default battles is a separate guarantee from document identity. Unknown/missing/version-mismatched plugins or packs are refused. Anonymous factory overrides and catalogs without versioned packs cannot be persisted.
 
 Semantic reference checks consume actual composed handler registries through one ordered reference owner. Optional inert payloads are admitted at the same phase as source; executing a demanded unresolved capability still fails. `BattleSaveFeatures` contains only named structural callbacks, including deployment and transport invariants. Plugin manifest identity alone does not replace actual handlers or these aggregate checks.
 
@@ -26,7 +26,57 @@ Saved timestamps are generated in UTC ISO-8601 form, and source ISO timestamps r
 
 Replay verification reproduces the source divergence index and reason for unsupported schemas, level/ruleset mismatches, initial/final digest mismatches, illegal actions, and premature battle completion. Malformed replay envelopes are refused; unexpected domain defects propagate rather than being disguised as ordinary divergence.
 
-`tools/godot/persistence-checks` exercises all three source GrayFlag saves/replays and interruption/resumption at a midbattle boundary. Production persistence does not read oracle fixtures.
+`tools/godot/persistence-checks` exercises the three source GrayFlag gameplay vectors under the explicitly declared native document identity, rejects the original source identity, and checks midbattle interruption/resumption. The test-only fixture declaration changes only ruleset metadata, never gameplay state, actions, events or digests. Production persistence neither reads oracle fixtures nor rewrites their identities.
+
+## Composition installation contracts
+
+The TypeScript default tactical installer captures its local grid registry before declared replacements.
+Native composition deliberately repairs that defect: the tactical producer provides grids and a separate
+spatial plugin declares content/grids consumption, so their overrides run before spatial construction.
+Movement and vision share that final registry. Replacing a built-in grid or adding a new ID works through
+actual engine commands, named-plugin save/load, resumed execution and replay.
+
+TypeScript also permits retained installation contexts to provide, replace and require after composition,
+bypassing manifest and dependency validation. Native contexts close when their install callback returns
+or throws. All later writes and consumption fail, including calls made from another plugin or through a
+base-class view. The completed `KernelCapabilities` retains public read access. Metadata probes do not
+consume capabilities. Closure is not rollback of callback side effects or a sandbox for rule objects.
+
+## Reaction, facing and hit-effect admission
+
+The next six-plugin native identity also includes these intentional contract repairs.
+Unknown reaction commands no longer commit an unpersistable stance: they fail with
+`IllegalActionException` before any state/event change. Facing commands similarly
+admit only directions declared by the composed tiling, including custom direction
+IDs. `UnitDisposition` owns the live writes and automatic facing transitions;
+invalid internal requests remain `DomainInvariantException`. Authored levels and
+saved field, embarked and fallen units use the same tiling direction predicate.
+Initial, recruitment and scenario unit construction also use the composed reaction
+registry and direction predicate. Invalid authored spawn seeds fail before consuming
+an ID or changing state; the raw-pack factory overloads that rebuilt defaults are removed.
+No fixed built-in direction/reaction list or invalid-state repair is retained.
+The frozen TypeScript unknown-stance vector is preserved as defect evidence, not
+counted as a native parity success.
+
+Weapon hit-effect handlers own `Validate`, `Apply` and `Describe`. Catalog admission
+and direct execution dispatch validation through the selected handler; replacing
+`forcedMove` or `addStatus` replaces payload/reference semantics as well as execution.
+The generic validator no longer interprets these kind strings. Registered kind
+references still belong to the ordered reference registry. A handler with no declared
+validation accepts opaque payloads, rather than inheriting another kind's schema.
+The default add-status handler shares the positive-integral duration invariant with
+`StatusTransitions`; malformed durations are now rejected during content admission.
+Default forced-movement admission also refuses an unknown mode. Direct effect batches
+retain per-effect ordering; a failing battle command rolls back the whole transaction.
+
+Support attack eligibility/multiplier and triggered rank progress are declared by
+`ReactionBehavior`, not inferred from the literal `support` ID. Defaults retain the
+0.6 support modifier and 20 triggered progress; custom IDs can opt in and replacements
+can remove/change these behaviors. Valid default events and state digests remain
+covered by the unchanged source vectors and the separate complete battle gate.
+`turn-reaction-extension-checks` and `combat-policy-checks` exercise these native
+contracts through composed engines, dispatch, save/load/replay and compiled bypass
+mutants. They do not claim arbitrary plugin validation or presentation correctness.
 
 ## Deployment
 

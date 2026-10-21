@@ -20,11 +20,12 @@ public class KernelCapabilities
     public string? ProviderOf(CapabilityKey key) => Store.ProviderOf(key);
 }
 
-/// <summary>Attributes installation to one plugin. As in the source, a retained context stays live.</summary>
+/// <summary>One plugin installation scope; consumption and writes end with its callback.</summary>
 public sealed class KernelPluginContext : KernelCapabilities
 {
     private readonly string providerId;
     private readonly List<string> consumed = [];
+    private bool closed;
 
     internal KernelPluginContext(KernelCapabilityStore store, string providerId) : base(store)
     {
@@ -32,13 +33,29 @@ public sealed class KernelPluginContext : KernelCapabilities
     }
 
     internal IReadOnlyList<string> Consumed => consumed;
+    internal void Close() => closed = true;
 
     public override T Require<T>(CapabilityKey<T> key)
     {
+        RequireOpen();
         if (!consumed.Contains(key.Id, StringComparer.Ordinal)) consumed.Add(key.Id);
         return base.Require(key);
     }
 
-    public void Provide<T>(CapabilityKey<T> key, T capability) => Store.Provide(providerId, key, capability);
-    public void Replace<T>(CapabilityKey<T> key, T capability) => Store.Replace(providerId, key, capability);
+    public void Provide<T>(CapabilityKey<T> key, T capability)
+    {
+        RequireOpen();
+        Store.Provide(providerId, key, capability);
+    }
+
+    public void Replace<T>(CapabilityKey<T> key, T capability)
+    {
+        RequireOpen();
+        Store.Replace(providerId, key, capability);
+    }
+
+    private void RequireOpen()
+    {
+        if (closed) throw new DomainInvariantException($"engine plugin \"{providerId}\" installation context is closed");
+    }
 }

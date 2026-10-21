@@ -14,17 +14,17 @@ dotnet build "$scratch/TransportTests.csproj" --configfile "$scratch/NuGet.Confi
 dotnet "$scratch/bin/Debug/net8.0/TransportTests.dll" "$scratch/oracle.json"
 if [[ "${1:-}" == "--verify-guard" ]]; then
   mkdir "$scratch/mutant"
-  cp "$root/godot/Empire.Core/Transport/"*.cs "$scratch/mutant/"
-  node - "$scratch/mutant/BattleTransport.cs" <<'JS'
+  cp "$root/godot/Empire.Core/Tactics/BattleRelocation.cs" "$scratch/mutant/"
+  node - "$scratch/mutant/BattleRelocation.cs" <<'JS'
 const fs = require('node:fs');
 const path = process.argv[2];
 const before = fs.readFileSync(path, 'utf8');
-const needle = 'snapshot["capture"] = 0;';
+const needle = 'unit["capture"] = 0;';
 if (!before.includes(needle)) throw new Error('Guard target no longer exists; update the explicit mutation.');
-fs.writeFileSync(path, before.replace(needle, 'snapshot["capture"] = 37;'));
+fs.writeFileSync(path, before.replace(needle, 'unit["capture"] = 37;'));
 JS
   dotnet build "$scratch/TransportTests.csproj" --configfile "$scratch/NuGet.Config" --disable-build-servers --nologo \
-    "-p:EmpireRoot=$root" "-p:EmpireTransportRoot=$scratch/mutant" "-p:OutputPath=$scratch/mutant-bin"
+    "-p:EmpireRoot=$root" "-p:EmpireRelocationSource=$scratch/mutant/BattleRelocation.cs" "-p:OutputPath=$scratch/mutant-bin"
   if dotnet "$scratch/mutant-bin/TransportTests.dll" "$scratch/oracle.json" >"$scratch/guard.log" 2>&1; then
     echo 'FAIL: deliberate boarding capture-reset defect was not detected' >&2
     exit 1

@@ -82,7 +82,7 @@ public static class DefaultCombatModifiers
 
     internal static double AttackerStrength(StateContent content, JsonObject unit)
     {
-        var maximum = StateJson.Number(content.Get("units", StateJson.Text(unit, "type")), "maxHp", 1);
+        var maximum = StateJson.Number(content.Read("units", StateJson.Text(unit, "type")), "maxHp", 1);
         return 0.5 + 0.5 * (maximum > 0 ? Math.Clamp(StateJson.Number(unit, "hp", 0) / maximum, 0, 1) : 1);
     }
 
@@ -90,7 +90,7 @@ public static class DefaultCombatModifiers
     private static IReadOnlyList<CombatModifier> Matchup(UnitDamageContext context)
     {
         var selected = context.Weapon;
-        var defenderDef = context.Battlefield.Content.Get("units", StateJson.Text(context.Defender, "type"));
+        var defenderDef = context.Battlefield.Content.Read("units", StateJson.Text(context.Defender, "type"));
         var modifiers = new List<CombatModifier>();
         void Add(string id, string label, string source, string stage, string operation, double value) =>
             modifiers.Add(new(id, label, source, stage, operation, value));
@@ -102,12 +102,12 @@ public static class DefaultCombatModifiers
     private static IReadOnlyList<CombatModifier> TargetTags(UnitDamageContext context)
     {
         var selected = context.Weapon;
-        var defenderDef = context.Battlefield.Content.Get("units", StateJson.Text(context.Defender, "type"));
+        var defenderDef = context.Battlefield.Content.Read("units", StateJson.Text(context.Defender, "type"));
         var modifiers = new List<CombatModifier>();
         void Add(string id, string label, string source, string stage, string operation, double value) =>
             modifiers.Add(new(id, label, source, stage, operation, value));
         foreach (var bonus in StateJson.Objects(selected["bonuses"], "bonuses"))
-            if (defenderDef["tags"]!.AsArray().Any(tag => tag!.GetValue<string>() == StateJson.Text(bonus, "targetTag")))
+            if (defenderDef.GetProperty("tags").EnumerateArray().Any(tag => StateJson.Text(tag) == StateJson.Text(bonus, "targetTag")))
                 Add("weapon.target-tag." + StateJson.Text(bonus, "targetTag"), StateJson.Text(bonus, "reason"), "weapon", "power", "multiply", StateJson.Number(bonus, "multiplier", 1));
         return modifiers.AsReadOnly();
     }
@@ -247,7 +247,7 @@ public static class DefaultCombatModifiers
         var to = context.DefenderAt;
         var grid = context.Board.Grid;
         var battlefield = context.Battlefield;
-        var defenderDef = context.Battlefield.Content.Get("units", StateJson.Text(context.Defender, "type"));
+        var defenderDef = context.Battlefield.Content.Read("units", StateJson.Text(context.Defender, "type"));
         var modifiers = new List<CombatModifier>();
         void Add(string id, string label, string source, string stage, string operation, double value) =>
             modifiers.Add(new(id, label, source, stage, operation, value));

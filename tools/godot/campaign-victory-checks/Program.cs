@@ -12,7 +12,7 @@ JsonNode Read(string path) => JsonNode.Parse(File.ReadAllText(Path.Combine(root,
 var packs = Read("godot/data/content-packs.json").AsArray();
 var engine = new GrayFlagEngine(packs);
 var campaign = new GrayFlagCampaign(Read("godot/data/grayflag-campaign.json").AsObject(),
-    Read("godot/data/grayflag-campaign-levels.json").AsArray(), packs, engine);
+    Read("godot/data/grayflag-campaign-levels.json").AsArray(), engine);
 var steps = 0;
 var saves = 0;
 var battles = 0;
@@ -39,22 +39,22 @@ while ((line = reader.ReadLine()) is not null)
         case "header":
             if (row["humanDriver"]?.GetValue<string>() != "staged-refugees-v2" || row["humanAggression"] is not null)
                 throw new InvalidOperationException("Unexpected test-player policy.");
-            Equal("initial campaign", campaign.Runtime.Snapshot(), row["initial"]);
+            Equal("initial campaign", campaign.Snapshot(), row["initial"]);
             break;
         case "advance":
-            campaign.Runtime.Advance();
-            Equal("advance", campaign.Runtime.Snapshot(), row["after"]);
+            campaign.Advance();
+            Equal("advance", campaign.Snapshot(), row["after"]);
             break;
         case "choose":
-            Equal("choices", new JsonArray(campaign.Runtime.Choices().Select(value => value!.DeepClone()).ToArray()), row["choices"]);
-            campaign.Runtime.Choose(row["choice"]!.GetValue<string>());
-            Equal("choice", campaign.Runtime.Snapshot(), row["after"]);
+            Equal("choices", new JsonArray(campaign.Choices().Select(value => value!.DeepClone()).ToArray()), row["choices"]);
+            campaign.Choose(row["choice"]!.GetValue<string>());
+            Equal("choice", campaign.Snapshot(), row["after"]);
             break;
         case "begin":
             campaign.BeginBattle();
             battles++;
-            Equal("request", campaign.Request, row["request"]);
-            Equal("begin campaign", campaign.Runtime.Snapshot(), row["campaign"]);
+            Equal("request", campaign.RequestSnapshot(), row["request"]);
+            Equal("begin campaign", campaign.Snapshot(), row["campaign"]);
             Equal("initial battle", JsonValue.Create(StateDigest.Hash(campaign.Battle!.Snapshot())), row["initialHash"]);
             if (args.Length == 3 && row["request"]!["levelId"]!.GetValue<string>() == "c01-02")
             {
@@ -86,12 +86,12 @@ while ((line = reader.ReadLine()) is not null)
         case "checkpoint":
             var own = campaign.Save();
             var source = row["document"]!.AsObject();
-            // Writer timestamps are metadata; states, request and event history must match exactly.
+            // Compare source facts, then resume our native document; application envelopes intentionally differ.
             Equal("saved campaign", own["campaign"]!["state"], source["campaign"]!["state"]);
-            Equal("saved request", own["request"], source["request"]);
+            Equal("saved request", campaign.RequestSnapshot(), source["request"]);
             Equal("saved events", own["events"], source["events"]);
             if (own["battle"] is not null) Equal("saved battle", own["battle"]!["state"], source["battle"]!["state"]);
-            campaign.Load(source);
+            campaign.Load(own);
             saves++;
             break;
         case "complete":
@@ -99,15 +99,15 @@ while ((line = reader.ReadLine()) is not null)
                 throw new InvalidOperationException("The actual native battle did not end in victory.");
             victories++;
             campaign.FinishBattle();
-            Equal("result campaign", campaign.Runtime.Snapshot(), row["after"]);
+            Equal("result campaign", campaign.Snapshot(), row["after"]);
             break;
         case "final":
-            Equal("final campaign", campaign.Runtime.Snapshot(), row["final"]);
+            Equal("final campaign", campaign.Snapshot(), row["final"]);
             if (battles != 2 || victories != 2 || steps != 428 || saves != 14 ||
-                campaign.Runtime.Snapshot()["currentNode"]?.GetValue<string>() != "aftermath-02")
+                campaign.Snapshot()["currentNode"]?.GetValue<string>() != "aftermath-02")
                 throw new InvalidOperationException("The required two-battle opening route was not completed.");
             complete = true;
-            Console.WriteLine($"PASS two consecutive carried-state victories: {steps} legal actions, independent opponent decisions, {saves} source save/resumes. Campaign remains active at aftermath-02; battle 2 is elimination victory, not escort completion.");
+            Console.WriteLine($"PASS two consecutive carried-state victories: {steps} legal actions, independent opponent decisions, {saves} source checkpoints/native resumes. Campaign remains active at aftermath-02; battle 2 is elimination victory, not escort completion.");
             break;
         default:
             throw new InvalidOperationException($"Unexpected source row {row["kind"]}");

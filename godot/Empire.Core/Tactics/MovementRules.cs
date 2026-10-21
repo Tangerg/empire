@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core.Combat;
 using Empire.Core.Geometry;
@@ -10,11 +11,11 @@ public sealed class MovementRules
     internal StateContent Content { get; }
     public GridRegistry Grids { get; }
 
-    public MovementRules(JsonArray contentPacks, GridRegistry grids)
+    public MovementRules(ReadOnlyContent catalog, GridRegistry grids)
     {
-        ArgumentNullException.ThrowIfNull(contentPacks);
+        ArgumentNullException.ThrowIfNull(catalog);
         ArgumentNullException.ThrowIfNull(grids);
-        Content = new StateContent((JsonArray)contentPacks.DeepClone());
+        Content = catalog.Source;
         Grids = grids;
     }
 
@@ -28,7 +29,7 @@ public sealed class MovementRules
 
     public int MovementBudget(JsonObject state, JsonObject unit)
     {
-        var definition = Content.Get("units", StateJson.Text(unit, "type"));
+        var definition = Content.Read("units", StateJson.Text(unit, "type"));
         var grid = Grid(state);
         var formation = TacticalModifiers.ActiveFormation(Content, grid, state, unit);
         var budget = Math.Max(0, StateJson.Number(definition, "movement", 0) +
@@ -40,7 +41,7 @@ public sealed class MovementRules
 
     public MoveField ComputeMoveField(JsonObject state, JsonObject unit)
     {
-        var definition = Content.Get("units", StateJson.Text(unit, "type"));
+        var definition = Content.Read("units", StateJson.Text(unit, "type"));
         var movementClass = StateJson.Text(definition, "movementClass");
         var board = Board(state);
         var battlefield = Battlefield(state);
@@ -107,7 +108,7 @@ public sealed class MovementRules
     internal static int ControlRadius(StateContent content, JsonObject state, JsonObject unit)
     {
         if (!StateJson.IsTrue(StateJson.Object(state["rules"], "rules")["zoneOfControl"])) return 0;
-        var definition = content.Get("units", StateJson.Text(unit, "type"));
+        var definition = content.Read("units", StateJson.Text(unit, "type"));
         return MovementInteger(Math.Max(0, StateJson.Round(StateJson.Number(definition, "zoneOfControl", 1))), "control radius");
     }
 
@@ -145,13 +146,19 @@ public sealed class MovementRules
         return true;
     }
 
-    public IReadOnlyList<Coord> AttackTilesFrom(JsonObject state, JsonObject unit, Coord from, JsonObject? weapon = null)
+    public IReadOnlyList<Coord> AttackTilesFrom(JsonObject state, JsonObject unit, Coord from, JsonObject? weapon = null) =>
+        weapon is null ? AttackTilesFrom(state, from, UnitWeapons(unit).First()) :
+            AttackTilesFrom(state, from, StateJson.Integer(weapon, "minRange"), StateJson.Integer(weapon, "maxRange"),
+                StateJson.Text(weapon, "lineOfSight") == "direct");
+
+    private IReadOnlyList<Coord> AttackTilesFrom(JsonObject state, Coord from, JsonElement weapon) =>
+        AttackTilesFrom(state, from, StateJson.Integer(weapon, "minRange"), StateJson.Integer(weapon, "maxRange"),
+            StateJson.Text(weapon, "lineOfSight") == "direct");
+
+    private IReadOnlyList<Coord> AttackTilesFrom(JsonObject state, Coord from, int minimum, int maximum, bool direct)
     {
-        var resolved = weapon ?? UnitWeapons(unit).First();
-        var maximum = StateJson.Integer(resolved, "maxRange");
         if (maximum <= 0) return Array.Empty<Coord>();
-        var direct = StateJson.Text(resolved, "lineOfSight") == "direct";
-        return Board(state).Ring(from, StateJson.Integer(resolved, "minRange"), maximum)
+        return Board(state).Ring(from, minimum, maximum)
             .Where(target => !direct || HasDirectLineOfSight(state, from, target)).ToArray();
     }
 
@@ -161,12 +168,12 @@ public sealed class MovementRules
         var board = Board(state);
         var weapons = UnitWeapons(unit);
         foreach (var weapon in weapons)
-            foreach (var at in AttackTilesFrom(state, unit, TacticalQueries.Position(unit), weapon))
+            foreach (var at in AttackTilesFrom(state, TacticalQueries.Position(unit), weapon))
                 result.Add(board.IndexOf(at));
         var resolvedField = field ?? ComputeMoveField(state, unit);
-        foreach (var weapon in weapons.Where(candidate => StateJson.IsTrue(candidate["moveAndAttack"])))
+        foreach (var weapon in weapons.Where(candidate => StateJson.IsTrue(candidate.GetProperty("moveAndAttack"))))
             foreach (var index in resolvedField.Stops)
-                foreach (var at in AttackTilesFrom(state, unit, board.CoordOf(index), weapon))
+                foreach (var at in AttackTilesFrom(state, board.CoordOf(index), weapon))
                     result.Add(board.IndexOf(at));
         return result;
     }
@@ -184,7 +191,7 @@ public sealed class MovementRules
                 continue;
             }
             var structure = TacticalQueries.StructureAt(state, cell);
-            if (structure is null || !StateJson.IsTrue(Content.Get("structures", StateJson.Text(structure, "type"))["targetable"]))
+            if (structure is null || !StateJson.IsTrue(Content.Read("structures", StateJson.Text(structure, "type")).GetProperty("targetable")))
                 continue;
             var structureOwner = StateJson.Integer(structure, "owner");
             if (structureOwner == 0 || TacticalQueries.AreEnemies(state, structureOwner, owner)) result.Add(cell);
@@ -202,15 +209,15 @@ public sealed class MovementRules
             var other = TacticalQueries.UnitAt(state, cell);
             if (other is null || StateJson.Integer(other, "id") == id ||
                 !TacticalQueries.AreAllies(state, StateJson.Integer(other, "owner"), owner)) continue;
-            var maximum = StateJson.Number(Content.Get("units", StateJson.Text(other, "type")), "maxHp", 0);
+            var maximum = StateJson.Number(Content.Read("units", StateJson.Text(other, "type")), "maxHp", 0);
             if (StateJson.Number(other, "hp", 0) < maximum) result.Add(other);
         }
         return result;
     }
 
-    internal IReadOnlyList<JsonObject> UnitWeapons(JsonObject unit) =>
-        StateJson.Array(Content.Get("units", StateJson.Text(unit, "type"))["weapons"], "unit weapons")
-            .Select(id => Content.Get("weapons", StateJson.Text(id, "weapon id"))).ToArray();
+    internal IReadOnlyList<JsonElement> UnitWeapons(JsonObject unit) =>
+        Content.Read("units", StateJson.Text(unit, "type")).GetProperty("weapons").EnumerateArray()
+            .Select(id => Content.Read("weapons", StateJson.Text(id))).ToArray();
 
     private static int MovementInteger(double value, string subject)
     {

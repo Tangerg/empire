@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core.Geometry;
 using Empire.Core.State;
@@ -53,14 +54,14 @@ public sealed class TacticalBattlefield
 
     public double? TraversalCost(Coord from, Coord to, string movementClass)
     {
-        var profile = Content.Get("movementProfiles", movementClass);
+        var profile = Content.Read("movementProfiles", movementClass);
         var destination = Cell(to);
         var cost = destination.MovementCost(movementClass);
         if (cost is null || destination.BlocksMovement) return null;
-        if (IsCliff(from, to) && !StateJson.IsTrue(profile["ignoresCliffs"])) return null;
+        if (IsCliff(from, to) && !(profile.TryGetProperty("ignoresCliffs", out var ignoresCliffs) && StateJson.IsTrue(ignoresCliffs))) return null;
         var delta = destination.Elevation - Cell(from).Elevation;
-        if (profile["maxClimb"] is { } maxClimb && delta > StateJson.Number(maxClimb, "maxClimb")) return null;
-        if (profile["maxDrop"] is { } maxDrop && -delta > StateJson.Number(maxDrop, "maxDrop")) return null;
+        if (profile.TryGetProperty("maxClimb", out var maxClimb) && maxClimb.ValueKind != JsonValueKind.Null && delta > StateJson.Number(maxClimb, "maxClimb")) return null;
+        if (profile.TryGetProperty("maxDrop", out var maxDrop) && maxDrop.ValueKind != JsonValueKind.Null && -delta > StateJson.Number(maxDrop, "maxDrop")) return null;
         return cost.Value + Math.Max(0, delta) * StateJson.Number(profile, "uphillCostPerLevel", 0);
     }
 }
@@ -78,28 +79,28 @@ public sealed class TacticalCell
         Index = battlefield.IndexOf(at);
     }
 
-    public JsonObject Terrain => battlefield.Content.Get("terrains",
+    public JsonElement Terrain => battlefield.Content.Read("terrains",
         StateJson.Text(StateJson.Array(battlefield.Map["tiles"], "tiles")[Index], "terrain id"));
     public double Elevation => StateJson.Number(StateJson.Array(battlefield.Map["elevation"], "elevation")[Index], "elevation");
     public JsonObject? Structure => TacticalQueries.StructureAt(battlefield.State, At);
     public JsonObject? Occupant => TacticalQueries.UnitAt(battlefield.State, At);
     public IReadOnlyList<JsonObject> OverlayStates => battlefield.OverlaysAt(At);
-    public IReadOnlyList<JsonObject> Overlays => OverlayStates
-        .Select(overlay => battlefield.Content.Get("terrainOverlays", StateJson.Text(overlay, "type"))).ToArray();
+    public IReadOnlyList<JsonElement> Overlays => OverlayStates
+        .Select(overlay => battlefield.Content.Read("terrainOverlays", StateJson.Text(overlay, "type"))).ToArray();
 
     public double? MovementCost(string movementClass)
     {
-        var cost = StateJson.Object(Terrain["cost"], "terrain cost")[movementClass];
-        if (cost is null) return null;
-        var profile = battlefield.Content.Get("movementProfiles", movementClass);
-        var tags = StateJson.Array(profile["tags"], "movement tags")
-            .Select(tag => StateJson.Text(tag, "movement tag")).ToHashSet(StringComparer.Ordinal);
+        var costs = Terrain.GetProperty("cost");
+        if (!Empire.Core.Determinism.EcmaJson.TryGetProperty(costs, movementClass, out var cost) || cost.ValueKind == JsonValueKind.Null) return null;
+        var profile = battlefield.Content.Read("movementProfiles", movementClass);
+        var tags = profile.GetProperty("tags").EnumerateArray()
+            .Select(tag => StateJson.Text(tag)).ToHashSet(StringComparer.Ordinal);
         var delta = 0.0;
         foreach (var overlay in Overlays)
         {
-            foreach (var entry in StateJson.Array(overlay["blockedMovementClasses"], "blockedMovementClasses"))
+            foreach (var entry in overlay.GetProperty("blockedMovementClasses").EnumerateArray())
             {
-                var blocked = StateJson.Text(entry, "blocked movement class");
+                var blocked = StateJson.Text(entry);
                 if (blocked == movementClass || tags.Contains(blocked)) return null;
             }
             delta += StateJson.Number(overlay, "movementCostDelta", 0);
@@ -107,15 +108,15 @@ public sealed class TacticalCell
         return Math.Max(1, StateJson.Number(cost, "terrain cost") + delta);
     }
 
-    private JsonObject? StructureDefinition => Structure is { } structure
-        ? battlefield.Content.Get("structures", StateJson.Text(structure, "type")) : null;
+    private JsonElement? StructureDefinition => Structure is { } structure
+        ? battlefield.Content.Read("structures", StateJson.Text(structure, "type")) : null;
     private double OverlaySum(string field) => Overlays.Sum(overlay => StateJson.Number(overlay, field, 0));
 
     public double ObstructionTop => Elevation + Math.Max(StateJson.Number(Terrain, "obstructionHeight", 0),
         StructureDefinition is { } definition ? StateJson.Number(definition, "obstructionHeight", 0) : 0);
-    public bool BlocksMovement => StructureDefinition is { } definition && StateJson.IsTrue(definition["blocksMovement"]);
-    public bool BlocksVision => StateJson.IsTrue(Terrain["opaque"]) ||
-        (StructureDefinition is { } definition && StateJson.IsTrue(definition["blocksVision"]));
+    public bool BlocksMovement => StructureDefinition is { } definition && StateJson.IsTrue(definition.GetProperty("blocksMovement"));
+    public bool BlocksVision => StateJson.IsTrue(Terrain.GetProperty("opaque")) ||
+        (StructureDefinition is { } definition && StateJson.IsTrue(definition.GetProperty("blocksVision")));
     public double Defense => Math.Max(0, StateJson.Number(Terrain, "defense", 0) + OverlayDefense);
     public double Vision => StateJson.Number(Terrain, "vision", 0) + OverlayVision;
     public double Heal => Math.Max(0, StateJson.Number(Terrain, "heal", 0) + OverlayHeal);

@@ -1,3 +1,4 @@
+using System.Collections.Frozen;
 using System.Text.Json.Nodes;
 using Empire.Core;
 using Empire.Core.Determinism;
@@ -19,6 +20,7 @@ public sealed partial class GrayFlagSession
         private readonly TacticalStamp stamp;
         private readonly IReadOnlySet<int> visible;
         private readonly bool canUndo;
+        private readonly FrozenSet<BoardCell> interactiveCells;
 
         public SelectionQueries(GrayFlagSession session, long binding)
         {
@@ -27,6 +29,16 @@ public sealed partial class GrayFlagSession
             state = session.battle.Snapshot();
             canUndo = session.CanUndo;
             visible = session.VisibleUnitIds(state, Viewer(state));
+            var board = session.engine.Space.Board(state);
+            interactiveCells = state["map"]!["tiles"]!.AsArray()
+                .Select((tile, index) => (Terrain: EcmaJson.ReadString(tile), At: Cell(board.CoordOf(index))))
+                .Where(cell =>
+                {
+                    var terrain = session.engine.Catalog.Definition("terrains", cell.Terrain)
+                        ?? throw new DomainInvariantException($"Unknown terrain {cell.Terrain}");
+                    return !terrain.GetProperty("tags").EnumerateArray().Any(tag => tag.ValueEquals("outside"));
+                })
+                .Select(cell => cell.At).ToFrozenSet();
             Check();
         }
 
@@ -64,6 +76,7 @@ public sealed partial class GrayFlagSession
         public bool HumanInput => Read(() => IsHuman && Text(state, "phase") != "over");
         public bool HumanTurn => Read(() => IsHuman && Text(state, "phase") == "playing");
         public bool CanUndo => Read(() => canUndo);
+        public IReadOnlySet<BoardCell> InteractiveCells => Read(() => interactiveCells);
         public TacticalUnit? Unit(int id) => Read(() => Project(TacticalQueries.UnitById(state, id)));
         public TacticalUnit? UnitAt(BoardCell at) => Read(() => Project(TacticalQueries.UnitAt(state, Coord(at))));
         public bool AreEnemies(int firstUnit, int secondUnit) => Read(() => TacticalQueries.AreEnemies(state,

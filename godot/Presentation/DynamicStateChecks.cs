@@ -17,11 +17,29 @@ public partial class DynamicStateChecks : Node
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
     }
 
+    private void CheckCatalogBinding(AssetCatalog assets, JsonArray authoringPacks)
+    {
+        var customPacks = (JsonArray)authoringPacks.DeepClone();
+        var definition = customPacks.OfType<JsonObject>()
+            .SelectMany(pack => (pack["units"] as JsonArray)?.OfType<JsonObject>() ?? [])
+            .First();
+        definition["maxHp"] = 200;
+        var type = definition["id"]!.GetValue<string>();
+        var customEngine = new GrayFlagEngine(customPacks);
+        definition["maxHp"] = 1000;
+        var view = new DynamicStateView(assets, customEngine.Catalog);
+        var badges = view.CreateUnitBadges(type, 50, false, 0, 100);
+        Require(badges.GetNode<Node2D>("HealthGauge").GetMeta("ratio").AsDouble() == .25,
+            "Badge health must use the composed immutable catalog, not retained authoring packs.");
+        badges.Free();
+    }
+
     private void Run()
     {
         var assets = AssetCatalog.Load();
         var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         var engine = new GrayFlagEngine(packs);
+        CheckCatalogBinding(assets, packs);
         var levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json");
         var environment = EnvironmentCatalog.Load();
         var total = 0;
@@ -41,7 +59,7 @@ public partial class DynamicStateChecks : Node
                 var step = engine.Grids.Get("square4").Step(new Empire.Core.Geometry.Coord(0, 0), facing);
                 return new Vector2(step.X, step.Y);
             });
-            board.ConfigureDynamicState(packs);
+            board.ConfigureDynamicState(engine.Catalog);
             var state = engine.CreateState(level);
             var before = state.ToJsonString();
             board.RenderState(state);

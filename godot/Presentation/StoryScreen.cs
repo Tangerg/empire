@@ -31,13 +31,13 @@ public partial class StoryScreen : Control
     public override void _Ready() => Resized += ResizeLayout;
     public override void _ExitTree() { generation++; submitted = true; }
 
-    public void ShowStory(StoryEntry entry, IReadOnlyDictionary<string, string> speakerNames, NarrativeContext narrative,
+    public void ShowStory(StoryEntry entry, IReadOnlyDictionary<string, string> speakerNameKeys, NarrativeContext narrative,
         bool isEnding, Action onContinue, Action onFinish, Action onExit)
     {
         ArgumentNullException.ThrowIfNull(onContinue); ArgumentNullException.ThrowIfNull(onFinish); ArgumentNullException.ThrowIfNull(onExit);
-        var first = NarrativeProjection.Story(entry, speakerNames, narrative, 0, isEnding);
+        var first = NarrativeProjection.Story(entry, speakerNameKeys, narrative, 0, isEnding);
         Reset(entry.Id, first.Shell, onExit);
-        story = entry; speakers = speakerNames; context = narrative; ending = isEnding;
+        story = entry; speakers = speakerNameKeys; context = narrative; ending = isEnding;
         continueStory = onContinue; finishStory = onFinish;
         RenderStory();
     }
@@ -49,7 +49,7 @@ public partial class StoryScreen : Control
         var view = NarrativeProjection.Choice(choice, availableOptionIds, narrative);
         Reset(choice.Id, view.Shell, onExit); PresentedChoice = view;
         var body = Card();
-        body.AddChild(CampaignShell.Text(ChoiceView.Eyebrow, 16, "#e2bb69", "ChoiceEyebrow"));
+        body.AddChild(CampaignShell.Text(view.Eyebrow, 16, "#e2bb69", "ChoiceEyebrow"));
         body.AddChild(CampaignShell.Text(view.Prompt, 32, "#f6ead2", "ChoicePrompt"));
         body.AddChild(CampaignShell.Text(view.Context, 19, "#c7b8a3", "ChoiceContext"));
         choiceGrid = new GridContainer { Name = "ChoiceOptions", Columns = 2, SizeFlagsHorizontal = SizeFlags.ExpandFill };
@@ -71,7 +71,7 @@ public partial class StoryScreen : Control
             labels.MinimumSizeChanged += () => button.CustomMinimumSize = new Vector2(0, Math.Max(190, labels.GetCombinedMinimumSize().Y + 40));
             choiceGrid.AddChild(button);
         }
-        body.AddChild(CampaignShell.Text(ChoiceView.Note, 16, "#c7b8a3", "ChoiceNote"));
+        body.AddChild(CampaignShell.Text(view.Note, 16, "#c7b8a3", "ChoiceNote"));
         ResizeLayout();
     }
 
@@ -91,9 +91,9 @@ public partial class StoryScreen : Control
         {
             missionGrid = new GridContainer { Name = "MissionBrief", Columns = 3, SizeFlagsHorizontal = SizeFlags.ExpandFill };
             missionGrid.AddThemeConstantOverride("h_separation", 18); missionGrid.AddThemeConstantOverride("v_separation", 12); body.AddChild(missionGrid);
-            MissionLine(StoryView.ObjectiveLabel, mission.Objective);
-            MissionLine(StoryView.DangerLabel, mission.Danger);
-            MissionLine(StoryView.LessonLabel, mission.Lesson);
+            MissionLine(view.ObjectiveLabel, mission.Objective);
+            MissionLine(view.DangerLabel, mission.Danger);
+            MissionLine(view.LessonLabel, mission.Lesson);
         }
         var dialogue = new HBoxContainer { Name = view.Narration ? "Narration" : "Dialogue" };
         dialogue.AddThemeConstantOverride("separation", 18); body.AddChild(dialogue);

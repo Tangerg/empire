@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core.Geometry;
 using Empire.Core.Tactics;
@@ -12,8 +13,8 @@ public sealed class TileAppraisal
     private readonly AiTurnContext context;
     private readonly JsonObject unit;
     private readonly Coord at;
-    private readonly JsonObject definition;
-    private readonly JsonObject terrain;
+    private readonly JsonElement definition;
+    private readonly JsonElement terrain;
     private readonly TacticalCell cell;
     private IReadOnlyList<JsonObject>? foes;
 
@@ -22,7 +23,7 @@ public sealed class TileAppraisal
         this.context = context;
         this.unit = unit;
         this.at = at;
-        definition = context.Content.Get("units", Text(unit, "type"));
+        definition = context.Content.Read("units", Text(unit, "type"));
         cell = context.Battlefield.Cell(at);
         terrain = cell.Terrain;
     }
@@ -31,7 +32,7 @@ public sealed class TileAppraisal
     private int UnitId => Integer(unit, "id");
     private AiAgenda Agenda => context.Agenda;
     private double Aggression => context.Aggression;
-    private bool CanCapture => AiMeasures.Includes(definition["abilities"], "capture");
+    private bool CanCapture => AiMeasures.Includes(definition.GetProperty("abilities"), "capture");
     private double ProtectedWeight => Agenda.Mission.ProtectedUnits.GetValueOrDefault(UnitId);
     private IReadOnlyList<JsonObject> Foes => foes ??= context.Enemies(Integer(unit, "owner"));
 
@@ -42,7 +43,7 @@ public sealed class TileAppraisal
             // Addition order is observable when utility scores nearly tie.
             var total = 0.0;
             total += context.Rules.Directives.Pull(context.State, unit, at, context.Board.Grid);
-            total += Number(terrain["defense"], "defense") * 90;
+            total += Number(terrain.GetProperty("defense"), "defense") * 90;
             total += cell.Elevation * 3;
             total += CaptureProspect();
             total += MissionPull();
@@ -121,12 +122,12 @@ public sealed class TileAppraisal
     }
 
     private double Exposure() => -context.Threat.GetValueOrDefault(Tile) * (0.55 - 0.25 * Aggression) *
-        (1 - Number(definition["defense"], "defense")) * (1 + ProtectedWeight * 0.15);
+        (1 - Number(definition.GetProperty("defense"), "defense")) * (1 + ProtectedWeight * 0.15);
 
     private double Recovery()
     {
         var ours = Integer(context.Board.Map["owners"]![Tile], "owner") == Integer(unit, "owner");
-        var rate = ours ? Number(terrain["heal"], "heal") : 0;
+        var rate = ours ? Number(terrain.GetProperty("heal"), "heal") : 0;
         return rate <= 0 || AiMeasures.HpRatio(context.Content, unit) >= 0.6 ? 0 : rate * 4;
     }
 

@@ -1,3 +1,4 @@
+using Empire.Checks;
 using System.IO.Compression;
 using System.Text.Json.Nodes;
 using Empire.Core.Composition;
@@ -27,7 +28,7 @@ static class StateGridChecks
             }, overrides: [Keys.Grids], requiresCapabilities: [Keys.Grids]);
             var engine = BattleEngineFactory.Create(new ReadOnlyContent(packs), [plugin]);
             check(ReferenceEquals(engine.Grids.Get(id), resolved) == vector["resolvedIdentity"]!.GetValue<bool>(), $"{id} resolved grid identity");
-            equal(engine.RulesetManifest, vector["manifest"], $"{id} named grid manifest");
+            equal(engine.RulesetManifest, FixtureRuleset.ExpectedNative(vector["manifest"]!.AsObject()), $"{id} named grid manifest");
             var level = vector["level"]!.AsObject();
             equal(engine.CreateState(level, 12345), vector["initial"], $"{id} composed initial facing");
             var battle = engine.CreateBattle(level, 12345);
@@ -46,10 +47,10 @@ static class StateGridChecks
             }).ToArray());
             equal(facings, vector["facings"], $"{id} initial/spawn default and authored facings");
             var save = engine.SaveBattle(state, "2026-10-21T00:00:00.000Z");
-            equal(save, vector["save"], $"{id} grid save");
+            equal(save, FixtureRuleset.NativeDocument(vector["save"]!.AsObject()), $"{id} grid save");
             equal(engine.LoadBattle(save), vector["loaded"], $"{id} grid load");
             var replay = recorder.Replay(state);
-            equal(replay, vector["replay"], $"{id} grid replay document");
+            equal(replay, FixtureRuleset.NativeDocument(vector["replay"]!.AsObject()), $"{id} grid replay document");
             equal(engine.ReplayBattle(level, replay).State, vector["replayed"], $"{id} grid replay state");
         }
     }

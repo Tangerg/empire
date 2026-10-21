@@ -1,3 +1,4 @@
+using Empire.Core;
 using System.Text.Json.Nodes;
 using System.Text.Json;
 using Empire.Application;
@@ -6,10 +7,10 @@ using Empire.Core.Determinism;
 var root = args.Length > 0 ? args[0] : ".";
 JsonNode Read(string file) => JsonNode.Parse(File.ReadAllText(Path.Combine(root,"godot/data",file)))!;
 var packs=Read("content-packs.json").AsArray(); var engine=new GrayFlagEngine(packs);
-GrayFlagCampaign Create()=>new(Read("grayflag-campaign.json").AsObject(),Read("grayflag-campaign-levels.json").AsArray(),packs,engine);
+GrayFlagCampaign Create()=>new(Read("grayflag-campaign.json").AsObject(),Read("grayflag-campaign-levels.json").AsArray(),engine);
 var campaign=Create();
-while(campaign.Runtime.Node()["type"]!.GetValue<string>()!="battle")
-{ if(campaign.Runtime.Node()["type"]!.GetValue<string>()=="choice")campaign.Runtime.Choose(campaign.Runtime.Choices()[0]!["id"]!.GetValue<string>());else campaign.Runtime.Advance(); }
+while(campaign.Node()["type"]!.GetValue<string>()!="battle")
+{ if(campaign.Node()["type"]!.GetValue<string>()=="choice")campaign.Choose(campaign.Choices()[0]!["id"]!.GetValue<string>());else campaign.Advance(); }
 campaign.BeginBattle();
 var initial=StateDigest.Hash(campaign.Battle!.Snapshot());
 if(campaign.Battle.GetSnapshot().Transition is not null)throw new Exception("Initial session replays history");
@@ -31,15 +32,15 @@ if(summary.Outcome!=restoredSummary.Outcome || summary.Summary.Outcome!=restored
    summary.Summary.StrikeCount!=restoredSummary.Summary.StrikeCount || !summary.Summary.Signals.SequenceEqual(restoredSummary.Summary.Signals) ||
    !summary.Summary.Fallen.SequenceEqual(restoredSummary.Summary.Fallen))throw new Exception("Postbattle summary changed after save/load");
 campaign.FinishBattle();restored.FinishBattle();
-if(StateDigest.Hash(campaign.Runtime.Snapshot())!=StateDigest.Hash(restored.Runtime.Snapshot()))throw new Exception("Campaign result divergence after save");
-var before=StateDigest.Hash(restored.Runtime.Snapshot());var invalid=saved.DeepClone().AsObject();invalid["request"]!["id"]="wrong";
-try {restored.Load(invalid);throw new Exception("Invalid save accepted");}catch(InvalidOperationException){}
-if(StateDigest.Hash(restored.Runtime.Snapshot())!=before)throw new Exception("Invalid load mutated campaign");
+if(StateDigest.Hash(campaign.Snapshot())!=StateDigest.Hash(restored.Snapshot()))throw new Exception("Campaign result divergence after save");
+var before=StateDigest.Hash(restored.Snapshot());var invalid=saved.DeepClone().AsObject();invalid["campaign"]!["state"]!["pendingBattle"]!["requestId"]="wrong";
+try {restored.Load(invalid);throw new Exception("Invalid save accepted");}catch(StoredDocumentException){}
+if(StateDigest.Hash(restored.Snapshot())!=before)throw new Exception("Invalid load mutated campaign");
 foreach (var badType in new JsonNode?[] { null, JsonValue.Create(2), JsonValue.Create(true), JsonValue.Create("") })
 {
  var malformed=saved.DeepClone().AsObject();malformed["events"]=new JsonArray(new JsonObject { ["type"]=badType?.DeepClone() });
- try {restored.Load(malformed);throw new Exception("Malformed event type accepted");}catch(InvalidOperationException){}
- if(StateDigest.Hash(restored.Runtime.Snapshot())!=before)throw new Exception("Malformed event load mutated campaign");
+ try {restored.Load(malformed);throw new Exception("Malformed event type accepted");}catch(StoredDocumentException){}
+ if(StateDigest.Hash(restored.Snapshot())!=before)throw new Exception("Malformed event load mutated campaign");
 }
 Console.WriteLine($"PASS application story/choice -> battle -> midbattle save/load -> {actions} matching actions -> campaign result; invalid load atomic");
 void Act(GrayFlagCampaign value)

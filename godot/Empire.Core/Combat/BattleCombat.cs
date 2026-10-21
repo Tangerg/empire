@@ -129,14 +129,15 @@ public sealed partial class BattleCombat : ILifecycleEffects
     {
         var candidates = StateJson.Objects(state["units"], "units").Where(candidate => StateJson.Integer(candidate, "id") != StateJson.Integer(attacker, "id")
             && TacticalQueries.AreAllies(state, StateJson.Integer(candidate, "owner"), StateJson.Integer(attacker, "owner"))
-            && StateJson.Text(candidate, "reaction") == "support" && CombatForecasts.CanReact(state, candidate)
+            && Forecasts.Reaction(StateJson.Text(candidate, "reaction")).SupportAttackMultiplier is not null && CombatForecasts.CanReact(state, candidate)
             && Forecasts.Grid(state).Distance(TacticalQueries.Position(candidate), at) == 1)
             .SelectMany(supporter => Forecasts.UnitWeapons(supporter).Where(weapon => StateJson.IsTrue(weapon["canCounter"])
                 && Forecasts.IsWeaponReady(state, supporter, weapon)
                 && Forecasts.CanReachWithWeapon(state, weapon, TacticalQueries.Position(supporter), TacticalQueries.Position(defender)))
             .Select(weapon => new { Supporter = supporter, Weapon = weapon, Damage = Forecasts.ComputeDamage(state, supporter, defender,
                 TacticalQueries.Position(supporter), TacticalQueries.Position(defender), StateJson.Text(weapon, "id"))
-                .And(new("reaction.support-attack", "援护攻击", "reaction", "final", "multiply", 0.6)) }))
+                .And(new("reaction.support-attack", "援护攻击", "reaction", "final", "multiply",
+                    Forecasts.Reaction(StateJson.Text(supporter, "reaction")).SupportAttackMultiplier!.Value)) }))
             .OrderByDescending(value => value.Damage.Damage).ThenBy(value => StateJson.Integer(value.Supporter, "id"))
             .ThenBy(value => StateJson.Text(value.Weapon, "id"), StringComparer.Ordinal).FirstOrDefault();
         if (candidates is null) return null;

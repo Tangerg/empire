@@ -1,12 +1,40 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Text.Json.Nodes;
 
 namespace Empire.Core.State;
 
 internal static class StateJson
 {
+    internal static string Text(JsonElement value) => value.ValueKind == JsonValueKind.String
+        ? Empire.Core.Determinism.EcmaJson.DecodeStringToken(value.GetRawText())
+        : throw new DomainInvariantException("JSON value must be a string");
+
+    internal static string Text(JsonElement value, string key) => Text(value.GetProperty(key));
+
+    internal static double Number(JsonElement value, string subject)
+    {
+        if (value.ValueKind == JsonValueKind.Number && value.TryGetDouble(out var result) && double.IsFinite(result))
+            return result;
+        throw new DomainInvariantException($"{subject} must be a finite number");
+    }
+
+    internal static double Number(JsonElement value, string key, double fallback) =>
+        value.TryGetProperty(key, out var property) && property.ValueKind != JsonValueKind.Null
+            ? Number(property, key) : fallback;
+
+    internal static int Integer(JsonElement value, string key)
+    {
+        var number = Number(value.GetProperty(key), key);
+        if (number != Math.Truncate(number) || number < int.MinValue || number > int.MaxValue)
+            throw new DomainInvariantException($"{key} must be an integer");
+        return (int)number;
+    }
+
+    internal static bool IsTrue(JsonElement value) => value.ValueKind == JsonValueKind.True;
+
     internal static JsonObject Object(JsonNode? value, string subject) =>
         value as JsonObject ?? throw new DomainInvariantException($"{subject} must be an object");
 

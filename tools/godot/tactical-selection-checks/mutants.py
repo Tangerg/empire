@@ -8,6 +8,9 @@ root = Path(__file__).resolve().parents[3]
 source = root / 'godot/Presentation/Tactical'
 project = root / 'tools/godot/tactical-selection-checks/TacticalSelectionChecks.csproj'
 mutants = {
+    'outside-click-admitted': ('        if (!InteractiveCells.Contains(at)) return Result(TacticalInputStatus.Ignored);', ''),
+    'outside-hover-admitted': ('        if (at is { } candidate && !InteractiveCells.Contains(candidate)) return Leave(expected);', ''),
+    'outside-keyboard-admitted': ('                if (!InteractiveCells.Contains(to)) continue;', ''),
     'noncommandable-unit-paint': ('if (unit is null || queries.HumanTurn && unit.CanAct)', 'if (true)'),
     'selected-unit-ring-dropped': ('if (unit is not null) selected = unit.At;', ''),
     'enemy-inspection-threat-dropped': ('threat.AddRange(queries.Threat(inspectedId));', ''),

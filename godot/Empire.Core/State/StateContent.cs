@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core.Determinism;
 
 namespace Empire.Core.State;
 
 /// <summary>
-/// The read-only subset of a composed content catalog needed to construct a state.
-/// It does not install combat rules or replace the engine composition root.
+/// Owns the normalized catalog. Mutable JSON never crosses this boundary by reference:
+/// readers receive detached values, including every nested definition collection.
 /// </summary>
 internal sealed class StateContent
 {
@@ -21,15 +22,21 @@ internal sealed class StateContent
         ["careers"] = "career", ["formations"] = "formation",
     };
 
+    private readonly JsonArray packs;
+    private readonly Dictionary<string, Dictionary<string, JsonElement>> snapshots = new(StringComparer.Ordinal);
     private readonly Dictionary<string, Dictionary<string, JsonObject>> definitions = new(StringComparer.Ordinal);
     private readonly Dictionary<string, string> terrainCharacters = new(StringComparer.Ordinal);
     private readonly HashSet<string> encodedTerrains = new(StringComparer.Ordinal);
     private string? defaultTerrain;
 
-    internal StateContent(JsonArray packs)
+    internal StateContent(JsonArray contentPacks)
     {
+        packs = EcmaJson.Normalize(contentPacks)!.AsArray();
         foreach (var family in Families.Keys)
+        {
             definitions[family] = new Dictionary<string, JsonObject>(StringComparer.Ordinal);
+            snapshots[family] = new Dictionary<string, JsonElement>(StringComparer.Ordinal);
+        }
         var ordered = OrderPacks(packs);
         foreach (var pack in ordered)
         {
@@ -40,6 +47,7 @@ internal sealed class StateContent
                     var id = StateJson.Text(entry, "id");
                     if (!definitions[family].TryAdd(id, entry))
                         throw new DomainInvariantException($"content {family} id already registered: \"{id}\"");
+                    snapshots[family].Add(id, EcmaJson.ToElement(entry));
                 }
             }
         }
@@ -76,12 +84,20 @@ internal sealed class StateContent
 
     internal IEnumerable<string> FamilyIds => Families.Keys;
 
-    internal JsonObject Get(string family, string id) =>
-        definitions[family].TryGetValue(id, out var entry) ? entry :
-        throw new DomainInvariantException($"unknown {Families[family]} \"{id}\"");
+    internal JsonElement Read(string family, string id) =>
+        Find(family, id) ?? throw new DomainInvariantException($"unknown {Families[family]} \"{id}\"");
+    internal JsonElement? Find(string family, string id) =>
+        snapshots[family].TryGetValue(id, out var entry) ? entry : null;
+    internal IEnumerable<JsonElement> ReadAll(string family) => snapshots[family].Values;
 
-    internal JsonObject? TryGet(string family, string id) => definitions[family].GetValueOrDefault(id);
-    internal IEnumerable<JsonObject> All(string family) => definitions[family].Values;
+    internal JsonObject Get(string family, string id) =>
+        TryGet(family, id) ?? throw new DomainInvariantException($"unknown {Families[family]} \"{id}\"");
+
+    internal JsonObject? TryGet(string family, string id) =>
+        definitions[family].TryGetValue(id, out var entry) ? (JsonObject)entry.DeepClone() : null;
+    internal IEnumerable<JsonObject> All(string family) =>
+        definitions[family].Values.Select(entry => (JsonObject)entry.DeepClone());
+    internal JsonArray CopyPacks() => (JsonArray)packs.DeepClone();
     internal string DefaultTerrain => defaultTerrain ??
         throw new DomainInvariantException("no default terrain installed; install a content pack first");
     internal string? Terrain(string character) => terrainCharacters.GetValueOrDefault(character);

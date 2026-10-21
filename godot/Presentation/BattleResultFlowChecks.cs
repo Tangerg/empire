@@ -143,11 +143,11 @@ public partial class BattleResultFlowChecks : Node
     {
         var game = new GrayFlagGame { ProcessMode = ProcessModeEnum.Disabled }; AddChild(game);
         var campaign = Field<GrayFlagCampaign>(game, "campaign");
-        while (campaign.Runtime.Node()["type"]!.GetValue<string>() != "battle")
+        while (campaign.Node()["type"]!.GetValue<string>() != "battle")
         {
-            if (campaign.Runtime.Node()["type"]!.GetValue<string>() == "choice")
-                campaign.Runtime.Choose(campaign.Runtime.Choices()[0]!["id"]!.GetValue<string>());
-            else campaign.Runtime.Advance();
+            if (campaign.Node()["type"]!.GetValue<string>() == "choice")
+                campaign.Choose(campaign.Choices()[0]!["id"]!.GetValue<string>());
+            else campaign.Advance();
         }
         campaign.BeginBattle();
         var document = campaign.Save();
@@ -164,31 +164,31 @@ public partial class BattleResultFlowChecks : Node
         }
         campaign.Load(document);
         SetField(game, "session", campaign.Battle); SetField(game, "screen", null); SetField(game, "resultOffered", false);
-        var pending = StateDigest.Hash(campaign.Runtime.Snapshot());
+        var pending = StateDigest.Hash(campaign.Snapshot());
         game._Process(0);
         var completion = Field<Control>(game, "view") as BattleResultScreen ?? throw new Exception("Game did not show a completion screen.");
         var buttons = Buttons(completion).ToDictionary(button => button.Name.ToString());
         Require(buttons.ContainsKey("Settle") == (outcome == "victory"), "Game offers settlement for a non-victory or omits victory settlement.");
         Require(!buttons.ContainsKey("Proceed") && !Descendants(completion).OfType<GridContainer>().Any(), "Game skips explicit completion and shows summary immediately.");
-        Require(campaign.Battle is not null && StateDigest.Hash(campaign.Runtime.Snapshot()) == pending, "Merely showing completion mutates the campaign.");
+        Require(campaign.Battle is not null && StateDigest.Hash(campaign.Snapshot()) == pending, "Merely showing completion mutates the campaign.");
         game._Process(1);
         Require(ReferenceEquals(Field<Control>(game, "view"), completion), "Repeated process creates duplicate completion views.");
         Press(buttons[first]);
         if (first == "Settle")
         {
-            Require(campaign.Battle is null && campaign.Request is null, "Explicit settlement did not commit and close the pending battle.");
+            Require(campaign.Battle is null && !campaign.HasPendingBattle, "Explicit settlement did not commit and close the pending battle.");
             var summary = Field<Control>(game, "view") as BattleResultScreen ?? throw new Exception("Settlement did not show the summary screen.");
             Require(!ReferenceEquals(summary, completion) && Descendants(summary).OfType<GridContainer>().Any(), "Settlement did not create a distinct metric summary.");
-            var committed = StateDigest.Hash(campaign.Runtime.Snapshot());
+            var committed = StateDigest.Hash(campaign.Snapshot());
             foreach (var button in buttons.Values) Press(button);
-            Require(StateDigest.Hash(campaign.Runtime.Snapshot()) == committed && ReferenceEquals(Field<Control>(game, "view"), summary), "Stale completion navigated or settled twice.");
+            Require(StateDigest.Hash(campaign.Snapshot()) == committed && ReferenceEquals(Field<Control>(game, "view"), summary), "Stale completion navigated or settled twice.");
             var proceed = Buttons(summary).Single(button => button.Name == "Proceed"); Press(proceed); Press(proceed);
-            Require(!ReferenceEquals(Field<Control>(game, "view"), summary) && StateDigest.Hash(campaign.Runtime.Snapshot()) == committed,
+            Require(!ReferenceEquals(Field<Control>(game, "view"), summary) && StateDigest.Hash(campaign.Snapshot()) == committed,
                 "Summary proceed must navigate once without committing the result again.");
         }
         else
         {
-            Require(campaign.Battle?.Snapshot()["phase"]?.GetValue<string>() == "playing" && StateDigest.Hash(campaign.Runtime.Snapshot()) == pending,
+            Require(campaign.Battle?.Snapshot()["phase"]?.GetValue<string>() == "playing" && StateDigest.Hash(campaign.Snapshot()) == pending,
                 "Retry/exit must restore the opening without completing the campaign battle.");
             Require(campaign.AtCamp == (first == "Exit"), "Retry/exit camp state differs.");
             Require(first == "Exit" ? Field<Control>(game, "view") is CampaignStagingScreen : Field<Control>(game, "view") is BattleScreen,
@@ -209,8 +209,7 @@ public partial class BattleResultFlowChecks : Node
         var screen = new BattleScreen(); AddChild(screen);
         screen.Board.AdvanceAnimationsAutomatically = false;
         screen.BindSession(session, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
-        var move = session.GetLegalOrders(2).First(order => order.PresentationRole == "move" && order.Target is { } at && at != new BoardCell(5, 8));
-        screen.SubmitOrder(move);
+        TacticalSceneInputChecks.Move(screen, session);
         Require(screen.IsPresenting && screen.Board.IsPresenting, "Busy-save test requires a real pending animation.");
         // The off-tree host deliberately has no campaign. Even if the Save guard
         // regresses, evaluating campaign.Save() fails before WriteAllText executes.
@@ -288,25 +287,25 @@ public partial class BattleResultFlowChecks : Node
             System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(manualPath)!);
             System.IO.File.WriteAllText(manualPath, manual);
             var manualStamp = FileStamp(manualPath);
-            while (campaign.Runtime.Node()["type"]!.GetValue<string>() != "battle")
+            while (campaign.Node()["type"]!.GetValue<string>() != "battle")
             {
-                if (campaign.Runtime.Node()["type"]!.GetValue<string>() == "choice")
-                    campaign.Runtime.Choose(campaign.Runtime.Choices()[0]!["id"]!.GetValue<string>());
-                else campaign.Runtime.Advance();
+                if (campaign.Node()["type"]!.GetValue<string>() == "choice")
+                    campaign.Choose(campaign.Choices()[0]!["id"]!.GetValue<string>());
+                else campaign.Advance();
             }
-            var clean = Empire.Core.Campaign.CampaignSave.Create(campaign.Runtime.Definition, campaign.Runtime.Snapshot());
+            var clean = campaign.Save()["campaign"]!.AsObject();
             var cleanText = StableSave(clean);
-            Require(campaign.Request is null && campaign.Battle is null && clean["state"]!["pendingBattle"] is null,
+            Require(!campaign.HasPendingBattle && campaign.Battle is null && clean["state"]!["pendingBattle"] is null,
                 "Autosave fixture must begin at a clean battle node without a pending request.");
             Invoke(game, "ShowStaging");
             var staging = Field<Control>(game, "view") as CampaignStagingScreen ?? throw new Exception("Clean battle node did not show staging.");
             var start = Buttons(staging).Single(button => button.Name == "StartBattle");
-            Require(!System.IO.File.Exists(automaticPath) && StableSave(Empire.Core.Campaign.CampaignSave.Create(campaign.Runtime.Definition, campaign.Runtime.Snapshot())) == cleanText,
+            Require(!System.IO.File.Exists(automaticPath) && StableSave(campaign.Save()["campaign"]!.AsObject()) == cleanText,
                 "Merely showing staging must not autosave or begin the battle.");
             var earliestSave = DateTimeOffset.FromUnixTimeMilliseconds(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
             Press(start);
             var latestSave = DateTimeOffset.UtcNow;
-            Require(campaign.Request is not null && campaign.Battle is not null && Field<Control>(game, "view") is BattleScreen,
+            Require(campaign.HasPendingBattle && campaign.Battle is not null && Field<Control>(game, "view") is BattleScreen,
                 "Starting from staging did not begin the pending battle.");
             Require(System.IO.File.Exists(automaticPath) && !System.IO.File.Exists(automaticPath + ".tmp"),
                 "Starting did not finish the atomic automatic-save write.");
@@ -328,7 +327,7 @@ public partial class BattleResultFlowChecks : Node
                 "Repeated stale Start restarted the battle or rewrote the automatic save.");
 
             Invoke(game, "ExitBattle");
-            Require(campaign.AtCamp && campaign.Request is not null && Field<Control>(game, "view") is CampaignStagingScreen,
+            Require(campaign.AtCamp && campaign.HasPendingBattle && Field<Control>(game, "view") is CampaignStagingScreen,
                 "Exiting the battle did not retain its request at camp.");
             var campView = Field<Control>(game, "view");
             var campSave = StableSave(campaign.Save());
@@ -337,7 +336,7 @@ public partial class BattleResultFlowChecks : Node
                 "Original stale Start navigated from the new camp binding.");
             var reenter = Buttons(campView).Single(button => button.Name == "StartBattle");
             Press(reenter);
-            Require(!campaign.AtCamp && campaign.Request is not null && campaign.Battle is not null && Field<Control>(game, "view") is BattleScreen,
+            Require(!campaign.AtCamp && campaign.HasPendingBattle && campaign.Battle is not null && Field<Control>(game, "view") is BattleScreen,
                 "Camp reentry did not resume the retained battle request.");
             Require(System.IO.File.ReadAllText(automaticPath) == automatic && FileStamp(automaticPath) == automaticStamp,
                 "Camp reentry overwrote the clean automatic save with a pending-battle document.");

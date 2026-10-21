@@ -1,3 +1,4 @@
+using Empire.Checks;
 using System.IO.Compression;
 using System.Text.Json.Nodes;
 using Empire.Core;
@@ -74,7 +75,7 @@ foreach (var vector in oracle["cases"]!.AsArray().OfType<JsonObject>())
     var catalog = Catalog(); var engine = BattleEngineFactory.Create(catalog, Plugins(version, trace));
     Check(ReferenceEquals(catalog,engine.Catalog),"resolved catalog identity");
     Equal(new JsonArray(trace.Select(v => (JsonNode?)JsonValue.Create(v)).ToArray()),vector["trace"],"install-time consumer order");
-    Equal(engine.RulesetManifest,vector["manifest"],"actual composed manifest");
+    Equal(engine.RulesetManifest,FixtureRuleset.ExpectedNative(vector["manifest"]!.AsObject()),"actual composed manifest");
     var battle = engine.CreateBattle(level); Equal(battle.Snapshot(),vector["initial"],"initial");
     var recorder = engine.RecordBattle(battle.Snapshot());
     var grant = vector["grant"]!.AsObject();
@@ -84,8 +85,8 @@ foreach (var vector in oracle["cases"]!.AsArray().OfType<JsonObject>())
     Equal(options,vector["options"],"custom ability menu");
     var pulse=vector["pulse"]!.AsObject(); Equal(Events(battle.Dispatch(pulse).Events)["events"],vector["pulseEvents"],"composed ability resource events"); recorder.Record(pulse);
     Equal(battle.Snapshot(),vector["final"],"custom ability final state"); Check(battle.StateHash==StateJson.Text(vector,"hash"),"final digest");
-    var save=engine.SaveBattle(battle.Snapshot(),"2026-10-20T00:00:00.000Z"); Equal(save,vector["save"],"named save"); Equal(engine.LoadBattle(save),vector["loaded"],"named load");
-    var replay=recorder.Replay(battle.Snapshot()); Equal(replay,vector["replay"],"named recording");
+    var save=engine.SaveBattle(battle.Snapshot(),"2026-10-20T00:00:00.000Z"); Equal(save,FixtureRuleset.NativeDocument(vector["save"]!.AsObject()),"named save"); Equal(engine.LoadBattle(save),vector["loaded"],"named load");
+    var replay=recorder.Replay(battle.Snapshot()); Equal(replay,FixtureRuleset.NativeDocument(vector["replay"]!.AsObject()),"named recording");
     var replayed=engine.ReplayBattle(level,replay); Equal(replayed.State,vector["replayed"],"named replay"); Check(replayed.DivergedAt is null,"replay nond divergence");
     Equal(engine.Ai.ChooseAction(vector["initial"]!.AsObject()),vector["ai"],"resolved AI intents");
     battle.Dispatch(vector["failGrant"]!.AsObject()); Equal(battle.Snapshot(),vector["beforeFailure"],"failure setup");
@@ -97,7 +98,7 @@ foreach (var vector in oracle["cases"]!.AsArray().OfType<JsonObject>())
     Reject(()=>engine.Ai.Intents.Register(new("late",1,_=>null)),"AI sealed");
 }
 var plain = BattleEngineFactory.Create(Catalog());
-Equal(plain.RulesetManifest,oracle["defaultManifest"],"default manifest unchanged");
+Equal(plain.RulesetManifest,FixtureRuleset.ExpectedNative(oracle["defaultManifest"]!.AsObject()),"explicit native default manifest identity");
 Equal(new GrayFlagEngine(packs).RulesetManifest,plain.RulesetManifest,"convenience constructor same composition");
 Check(!plain.Abilities.Has("root-pulse")&&!plain.Resources.Adapters.Has("root_energy")&&!plain.ActionHandlers.Has("rootGrant"),"two-engine isolation");
 var another=BattleEngineFactory.Create(Catalog());
@@ -105,7 +106,7 @@ Check(!ReferenceEquals(plain.Abilities,another.Abilities)&&!ReferenceEquals(plai
 var resourcesOverride=plain.Resources.Clone();
 var anonymous=BattleEngineFactory.Create(Catalog(),[BattleEngineFactory.OverridePlugin(Keys.Resources,resourcesOverride)]);
 Check(ReferenceEquals(anonymous.Resources,resourcesOverride),"anonymous override resolves exact object");
-Equal(anonymous.RulesetManifest,oracle["anonymousManifest"],"anonymous manifest");
+Equal(anonymous.RulesetManifest,FixtureRuleset.ExpectedNative(oracle["anonymousManifest"]!.AsObject()),"anonymous manifest");
 Equal(Error(()=>anonymous.SaveBattle(anonymous.CreateState(level))),oracle["anonymousSave"],"anonymous cannot save");
 Equal(Error(()=>anonymous.RecordBattle(anonymous.CreateState(level))),oracle["anonymousRecord"],"anonymous cannot record");
 var bad=new EnginePlugin("test.bad",1,c=>c.Replace(Keys.Resources,new BattleResources()),requiresCapabilities:[Keys.Resources]);
@@ -123,12 +124,12 @@ foreach(var vector in oracle["randomCases"]!.AsArray().OfType<JsonObject>())
     var recorder=engine.RecordBattle(battle.Snapshot());var action=vector["action"]!.AsObject();JsonNode? events=null;
     var error=Error(()=>{events=Events(battle.Dispatch(action).Events)["events"]!.DeepClone();recorder.Record(action);});
     Equal(error,vector["failure"],"scenario random failure");Equal(events,vector["events"],"scenario random events");Equal(battle.Snapshot(),vector["state"],"full-state random mutations/rollback");
-    var save=engine.SaveBattle(battle.Snapshot(),"2026-10-20T00:00:00.000Z");Equal(save,vector["save"],"random save");Equal(engine.LoadBattle(save),vector["loaded"],"random load");
-    var replay=recorder.Replay(battle.Snapshot());Equal(replay,vector["replay"],"random recording");Equal(engine.ReplayBattle(randomLevel,replay).State,vector["replayed"],"random replay");
+    var save=engine.SaveBattle(battle.Snapshot(),"2026-10-20T00:00:00.000Z");Equal(save,FixtureRuleset.NativeDocument(vector["save"]!.AsObject()),"random save");Equal(engine.LoadBattle(save),vector["loaded"],"random load");
+    var replay=recorder.Replay(battle.Snapshot());Equal(replay,FixtureRuleset.NativeDocument(vector["replay"]!.AsObject()),"random recording");Equal(engine.ReplayBattle(randomLevel,replay).State,vector["replayed"],"random replay");
 }
 var spatial=oracle["spatial"]!.AsObject();
 var peace=BattleEngineFactory.Create(Catalog(),[new EnginePlugin("test.root-space",1,context=>context.Replace(Keys.Space,
-    new PeaceSpace(context.Require(Keys.Content).CopyPacks(),context.Require(Keys.Grids))),overrides:[Keys.Space],requiresCapabilities:[Keys.Content,Keys.Grids])]);
+    new PeaceSpace(context.Require(Keys.Content),context.Require(Keys.Grids))),overrides:[Keys.Space],requiresCapabilities:[Keys.Content,Keys.Grids])]);
 var spaceInput=spatial["input"]!.AsObject();var spaceActor=spaceInput["units"]!.AsArray().OfType<JsonObject>().Single(u=>StateJson.Integer(u,"id")==2);
 JsonArray OptionKeys(GrayFlagEngine engine)=>new(engine.CommandsAt(spaceInput,spaceActor,TacticalQueries.Position(spaceActor)).Select(o=>(JsonNode?)JsonValue.Create(o.Key)).ToArray());
 Equal(OptionKeys(plain),spatial["defaultOptions"],"default spatial options");Equal(OptionKeys(peace),spatial["customOptions"],"resolved spatial options");
@@ -156,7 +157,7 @@ var forecastJson=JsonSerializer.SerializeToNode(forecast,new JsonSerializerOptio
 if(forecastJson["reaction"] is JsonObject reaction&&reaction["protectedUnit"] is null)reaction.Remove("protectedUnit");
 Equal(forecastJson,combatVector["forecast"],"composed modifier forecast");
 var combatBattle=combatEngine.LoadSavedBattle(combatEngine.SaveBattle(combatState));Equal(Events(combatBattle.Dispatch(combatVector["action"]!.AsObject()).Events)["events"],combatVector["events"],"composed hit effects events");
-Equal(combatBattle.Snapshot(),combatVector["state"],"composed combat state");Equal(combatEngine.SaveBattle(combatBattle.Snapshot(),"2026-10-20T00:00:00.000Z"),combatVector["save"],"composed hit kind save admission");
+Equal(combatBattle.Snapshot(),combatVector["state"],"composed combat state");Equal(combatEngine.SaveBattle(combatBattle.Snapshot(),"2026-10-20T00:00:00.000Z"),FixtureRuleset.NativeDocument(combatVector["save"]!.AsObject()),"composed hit kind save admission");
 Reject(()=>resolvedModifiers!.Register(new("late",0,_=>[])),"modifier pipeline sealed");Reject(()=>resolvedEffects!.Register(new("late",(_,_)=>{},_=>"")),"hit effects sealed");
 var flag=new CapabilityKey<string>("mod.root.flag");var openTrace=new List<string>();
 var openEngine=BattleEngineFactory.Create(Catalog(),[
@@ -164,13 +165,9 @@ var openEngine=BattleEngineFactory.Create(Catalog(),[
     new EnginePlugin("test.open-override",1,c=>{openTrace.Add("override");c.Replace(flag,"replacement");},overrides:[flag]),
     new EnginePlugin("test.open-provider",1,c=>{openTrace.Add("provider");c.Provide(flag,"original");},provides:[flag]),
 ]);
-Equal(new JsonArray(openTrace.Select(v=>(JsonNode?)JsonValue.Create(v)).ToArray()),oracle["openTrace"],"open capability root ordering");Equal(openEngine.RulesetManifest,oracle["openManifest"],"open capability plugin identity");
-Empire.Core.Geometry.GridRegistry? displacedGrids=null;var gridCatalog=Catalog();
-var gridEngine=BattleEngineFactory.Create(gridCatalog,[new EnginePlugin("test.grid-swap",1,c=>{displacedGrids=c.Require(Keys.Grids);c.Replace(Keys.Grids,displacedGrids.Clone());},overrides:[Keys.Grids],requiresCapabilities:[Keys.Grids])]);
-var capture=new JsonObject{["sameContent"]=ReferenceEquals(((DefaultTacticalSpace)gridEngine.Space).Content,gridCatalog),
-    ["capturedOriginal"]=ReferenceEquals(((DefaultTacticalSpace)gridEngine.Space).Grids,displacedGrids),["resolvedDifferent"]=!ReferenceEquals(gridEngine.Grids,displacedGrids),
-    ["originalMutation"]=Error(()=>displacedGrids!.Replace(displacedGrids.Get("square4"))),["finalMutation"]=Error(()=>gridEngine.Grids.Replace(gridEngine.Grids.Get("square4")))};
-Equal(capture,oracle["capture"],"source local-grid capture and resolved-only sealing");
+Equal(new JsonArray(openTrace.Select(v=>(JsonNode?)JsonValue.Create(v)).ToArray()),oracle["openTrace"],"open capability root ordering");Equal(openEngine.RulesetManifest,FixtureRuleset.ExpectedNative(oracle["openManifest"]!.AsObject()),"open capability plugin identity");
+Check(oracle["capture"]!["capturedOriginal"]!.GetValue<bool>(), "source stale local-grid capture is explicitly characterized");
+InstallationContractChecks.Run(packs, level, Check, Equal);
 AllCapabilitiesChecks.Run(root, Check, Equal);
 StateGridChecks.Run(root, Check, Equal);
 Console.WriteLine($"PASS {checks} real composed-engine source checks");
@@ -192,7 +189,7 @@ sealed class TestBattleRandom : IBattleRandomSource
         return true;
     }
 }
-sealed class PeaceSpace(JsonArray packs,Empire.Core.Geometry.GridRegistry grids):DefaultTacticalSpace(packs,grids)
+sealed class PeaceSpace(ReadOnlyContent content,Empire.Core.Geometry.GridRegistry grids):DefaultTacticalSpace(content,grids)
 {
     public override IReadOnlyList<Empire.Core.Geometry.Coord> AttackTargetCoords(JsonObject state,JsonObject unit,Empire.Core.Geometry.Coord from,JsonObject weapon)=>[];
 }

@@ -1,1100 +1,1192 @@
 {
-  "speakers": {
-    "narrator": "断冠纪事",
-    "laiya": "莱娅",
-    "roderick": "罗德里克",
-    "cain": "凯恩",
-    "mirelle": "米蕾尔",
-    "bran": "布兰",
-    "tasha": "塔莎",
-    "ivra": "伊芙拉"
+  "schema": 2,
+  "speakerNameKeys": {
+    "narrator": "speaker.narrator.name",
+    "laiya": "speaker.laiya.name",
+    "roderick": "speaker.roderick.name",
+    "cain": "speaker.cain.name",
+    "mirelle": "speaker.mirelle.name",
+    "bran": "speaker.bran.name",
+    "tasha": "speaker.tasha.name",
+    "ivra": "speaker.ivra.name"
   },
   "stories": [
     {
       "id": "c01/prologue",
       "chapter": 1,
-      "kicker": "序章",
-      "title": "一双没有补好的靴子",
-      "date": "断冠纪第 318 年 · 初夏",
-      "location": "灰境边防营地",
       "scene": "C01-CH01-S01",
-      "summary": "在战争成为地图上的箭头以前，它先是一双漏水的靴子。十八岁的莱娅第一次得到独立指挥权。",
       "beats": [
         {
           "speaker": "narrator",
-          "text": "罗德里克第三次拆开她的护腕时，天还没有亮。湿木在火心里嘶响，托伦裂开的鞋底正往外挤泥。"
+          "id": "mending-before-dawn",
+          "textKey": "story.c01.prologue.beat.mending-before-dawn.text"
         },
         {
           "speaker": "roderick",
-          "text": "旗官先看撤路，再看高地。士兵不会因为你的答案正确，就少走一里泥。"
+          "id": "retreat-before-high-ground",
+          "textKey": "story.c01.prologue.beat.retreat-before-high-ground.text"
         },
         {
           "speaker": "laiya",
-          "text": "我会把他们都带回来。"
+          "id": "promise-to-return",
+          "textKey": "story.c01.prologue.beat.promise-to-return.text"
         },
         {
           "speaker": "roderick",
-          "text": "别许一个你还不知道怎样兑现的誓。先记住他们的名字。"
+          "id": "names-before-oaths",
+          "textKey": "story.c01.prologue.beat.names-before-oaths.text"
         }
-      ]
+      ],
+      "kickerKey": "story.c01.prologue.kicker",
+      "titleKey": "story.c01.prologue.title",
+      "dateKey": "story.c01.prologue.date",
+      "locationKey": "story.c01.prologue.location",
+      "summaryKey": "story.c01.prologue.summary"
     },
     {
       "id": "c01/brief-01",
       "chapter": 1,
-      "kicker": "第一章 · 战斗 01",
-      "title": "双子丘陵",
-      "date": "第 0 年 · 初夏",
-      "location": "灰境北丘",
       "scene": "C01-CH01-S01",
-      "summary": "莱娅的第一次独立指挥。高地能赢下一场遭遇战，也能让一支脱离援护的小队死得更快。",
       "beats": [
         {
           "speaker": "roderick",
-          "text": "北丘看得见整条大道。也就是说，整条大道都看得见你。"
+          "id": "exposed-high-ground",
+          "textKey": "story.c01.brief-01.beat.exposed-high-ground.text"
         },
         {
           "speaker": "laiya",
-          "text": "帝国前锋还没站稳。现在上去，我们能先拿村庄。"
+          "id": "seize-the-village",
+          "textKey": "story.c01.brief-01.beat.seize-the-village.text"
         },
         {
           "speaker": "narrator",
-          "text": "两份互称对方先越境的军报，在同一个清晨把年轻人推向彼此。"
+          "id": "contradictory-reports",
+          "textKey": "story.c01.brief-01.beat.contradictory-reports.text"
         }
       ],
       "mission": {
-        "objective": "莱娅存活并击退维尔萨前锋。",
-        "danger": "抢占北丘会让托伦提前进入包围；罗德里克只会救场一次。",
-        "lesson": "高低差、朝向、援护与确定性伤害预测。"
-      }
+        "objectiveKey": "story.c01.brief-01.mission.objective",
+        "dangerKey": "story.c01.brief-01.mission.danger",
+        "lessonKey": "story.c01.brief-01.mission.lesson"
+      },
+      "kickerKey": "story.c01.brief-01.kicker",
+      "titleKey": "story.c01.brief-01.title",
+      "dateKey": "story.c01.brief-01.date",
+      "locationKey": "story.c01.brief-01.location",
+      "summaryKey": "story.c01.brief-01.summary"
     },
     {
       "id": "c01/aftermath-01",
       "chapter": 1,
-      "kicker": "战后",
-      "title": "相同日期的命令",
-      "date": "第 0 年 · 初夏",
-      "location": "双子丘陵中央村",
       "scene": "C01-CH01-S01",
-      "summary": "胜利没有解释战争。帝国尸体上的调令与洛恩军令在同一天签发。",
       "beats": [
         {
           "speaker": "laiya",
-          "text": "如果他们也收到“洛恩先越境”的命令呢？"
+          "id": "opposing-border-orders",
+          "textKey": "story.c01.aftermath-01.beat.opposing-border-orders.text"
         },
         {
           "speaker": "roderick",
-          "text": "怀疑可以让你再看一遍证据。不能让它替你拖延下一次决定。"
+          "id": "evidence-and-decision",
+          "textKey": "story.c01.aftermath-01.beat.evidence-and-decision.text"
         }
-      ]
+      ],
+      "kickerKey": "story.c01.aftermath-01.kicker",
+      "titleKey": "story.c01.aftermath-01.title",
+      "dateKey": "story.c01.aftermath-01.date",
+      "locationKey": "story.c01.aftermath-01.location",
+      "summaryKey": "story.c01.aftermath-01.summary"
     },
     {
       "id": "c01/brief-02",
       "chapter": 1,
-      "kicker": "第一章 · 战斗 02",
-      "title": "三桥河谷",
-      "date": "第 0 年 · 盛夏",
-      "location": "白河三桥",
       "scene": "C01-CH01-S02",
-      "summary": "三座桥把两国军队挤进同一条射线；难民又把胜负从桥面上挤开。",
       "beats": [
         {
           "speaker": "cain",
-          "text": "中桥上的弓手停火。平民通过以前，任何一次放箭都记在我的名下。"
+          "id": "cease-fire-for-civilians",
+          "textKey": "story.c01.brief-02.beat.cease-fire-for-civilians.text"
         },
         {
           "speaker": "laiya",
-          "text": "你凭什么相信我也会停？"
+          "id": "reason-to-trust",
+          "textKey": "story.c01.brief-02.beat.reason-to-trust.text"
         },
         {
           "speaker": "cain",
-          "text": "我不相信你。我只是先让我的人停下，然后承担判断错你的后果。"
+          "id": "own-the-mistake",
+          "textKey": "story.c01.brief-02.beat.own-the-mistake.text"
         }
       ],
       "mission": {
-        "objective": "护送三名平民抵达东岸，并摧毁无标记弩车。",
-        "danger": "前三回合中桥处于停火区；远处弩车不受停火约束。",
-        "lesson": "护送、狭窄桥面、临时交战规则与最小射程。"
-      }
+        "objectiveKey": "story.c01.brief-02.mission.objective",
+        "dangerKey": "story.c01.brief-02.mission.danger",
+        "lessonKey": "story.c01.brief-02.mission.lesson"
+      },
+      "kickerKey": "story.c01.brief-02.kicker",
+      "titleKey": "story.c01.brief-02.title",
+      "dateKey": "story.c01.brief-02.date",
+      "locationKey": "story.c01.brief-02.location",
+      "summaryKey": "story.c01.brief-02.summary"
     },
     {
       "id": "c01/aftermath-02",
       "chapter": 1,
-      "kicker": "战后",
-      "title": "没有道谢的停火",
-      "date": "第 0 年 · 盛夏",
-      "location": "白河东岸",
       "scene": "C01-CH01-S02",
-      "summary": "双方各守一岸，谁也没有得到可以写进军报的胜利。一个受伤孩子被帝国盾卫交到洛恩牧师手里。",
       "beats": [
         {
           "speaker": "cain",
-          "text": "弩车没有番号。查出它从哪里来，再决定下次见面时该把枪指向谁。"
+          "id": "unmarked-ballista",
+          "textKey": "story.c01.aftermath-02.beat.unmarked-ballista.text"
         },
         {
           "speaker": "laiya",
-          "text": "你可以留下来一起查。"
+          "id": "investigate-together",
+          "textKey": "story.c01.aftermath-02.beat.investigate-together.text"
         },
         {
           "speaker": "cain",
-          "text": "我的职责还没有允许我相信你。"
+          "id": "duty-before-trust",
+          "textKey": "story.c01.aftermath-02.beat.duty-before-trust.text"
         }
-      ]
+      ],
+      "kickerKey": "story.c01.aftermath-02.kicker",
+      "titleKey": "story.c01.aftermath-02.title",
+      "dateKey": "story.c01.aftermath-02.date",
+      "locationKey": "story.c01.aftermath-02.location",
+      "summaryKey": "story.c01.aftermath-02.summary"
     },
     {
       "id": "c01/brief-03",
       "chapter": 1,
-      "kicker": "第一章 · 战斗 03",
-      "title": "赤石围城",
-      "date": "第 0 年 · 长夏",
-      "location": "赤石堡垒",
       "scene": "C01-ARCH-REDSTONE",
-      "summary": "城上挂着帝国旗，城内却是失踪的洛恩士兵。夺城和救人第一次成为两个不同目标。",
       "beats": [
         {
           "speaker": "mirelle",
-          "text": "守军在重复同一句誓文。他们还活着，只是名字被塔压在命令下面。"
+          "id": "buried-names",
+          "textKey": "story.c01.brief-03.beat.buried-names.text"
         },
         {
           "speaker": "roderick",
-          "text": "我不会阻止你关闭节点。但十四回合以后，援军会把所有复杂都当成敌人处理。"
+          "id": "reinforcement-deadline",
+          "textKey": "story.c01.brief-03.beat.reinforcement-deadline.text"
         },
         {
           "speaker": "laiya",
-          "text": "那就在他们抵达以前，把复杂的人带回来。"
+          "id": "rescue-before-judgment",
+          "textKey": "story.c01.brief-03.beat.rescue-before-judgment.text"
         }
       ],
       "mission": {
-        "objective": "占领赤石城堡，或深入后方关闭控制节点。",
-        "danger": "正门有重弩和重甲；绕行更安全但会消耗回合。",
-        "lesson": "攻城、复合路线、魔法克甲与非致命胜利。"
-      }
+        "objectiveKey": "story.c01.brief-03.mission.objective",
+        "dangerKey": "story.c01.brief-03.mission.danger",
+        "lessonKey": "story.c01.brief-03.mission.lesson"
+      },
+      "kickerKey": "story.c01.brief-03.kicker",
+      "titleKey": "story.c01.brief-03.title",
+      "dateKey": "story.c01.brief-03.date",
+      "locationKey": "story.c01.brief-03.location",
+      "summaryKey": "story.c01.brief-03.summary"
     },
     {
       "id": "c01/aftermath-03",
       "chapter": 1,
-      "kicker": "战后",
-      "title": "名字归于谁",
-      "date": "第 0 年 · 长夏",
-      "location": "赤石塔下",
       "scene": "C01-ARCH-REDSTONE",
-      "summary": "控制解除后，守军只记得自己奉洛恩之命进塔。后来覆盖上去的帝国旗，成了最便宜的证词。",
       "beats": [
         {
           "speaker": "mirelle",
-          "text": "教廷在收集所有阵亡者的名字。不是为了安葬，是为了让命令可以继续使用他们。"
+          "id": "commanding-the-dead",
+          "textKey": "story.c01.aftermath-03.beat.commanding-the-dead.text"
         },
         {
           "speaker": "roderick",
-          "text": "证据封存，送往王都。莱娅，你仍然要服从眼前愿意为后果负责的人。"
+          "id": "evidence-to-the-capital",
+          "textKey": "story.c01.aftermath-03.beat.evidence-to-the-capital.text"
         }
-      ]
+      ],
+      "kickerKey": "story.c01.aftermath-03.kicker",
+      "titleKey": "story.c01.aftermath-03.title",
+      "dateKey": "story.c01.aftermath-03.date",
+      "locationKey": "story.c01.aftermath-03.location",
+      "summaryKey": "story.c01.aftermath-03.summary"
     },
     {
       "id": "c01/brief-04",
       "chapter": 1,
-      "kicker": "第一章 · 战斗 04",
-      "title": "黑旗营地",
-      "date": "第 0 年 · 初秋",
-      "location": "灰境西林",
       "scene": null,
-      "summary": "只侦察、不交战的命令，在第一名即将被处决的俘虏面前失去完整意义。",
       "beats": [
         {
           "speaker": "mirelle",
-          "text": "他们在反复抽取士兵最后一次听令的记忆。每抽一次，那个人就少一点自己。"
+          "id": "stripped-memories",
+          "textKey": "story.c01.brief-04.beat.stripped-memories.text"
         },
         {
           "speaker": "laiya",
-          "text": "三处营帐。证人和档案都带走。"
+          "id": "witnesses-and-records",
+          "textKey": "story.c01.brief-04.beat.witnesses-and-records.text"
         },
         {
           "speaker": "narrator",
-          "text": "她第一次主动把“我负责”写在一份明确违背导师命令的计划下面。"
+          "id": "signing-responsibility",
+          "textKey": "story.c01.brief-04.beat.signing-responsibility.text"
         }
       ],
       "mission": {
-        "objective": "调查三处营帐，再让莱娅与米蕾尔从西侧撤离。",
-        "danger": "调查会拉长暴露时间；撤离前不要把全队压进营地。",
-        "lesson": "阶段目标、战场变量、调查触发与撤退路线。"
-      }
+        "objectiveKey": "story.c01.brief-04.mission.objective",
+        "dangerKey": "story.c01.brief-04.mission.danger",
+        "lessonKey": "story.c01.brief-04.mission.lesson"
+      },
+      "kickerKey": "story.c01.brief-04.kicker",
+      "titleKey": "story.c01.brief-04.title",
+      "dateKey": "story.c01.brief-04.date",
+      "locationKey": "story.c01.brief-04.location",
+      "summaryKey": "story.c01.brief-04.summary"
     },
     {
       "id": "c01/aftermath-04",
       "chapter": 1,
-      "kicker": "战后",
-      "title": "违令留下的证人",
-      "date": "第 0 年 · 初秋",
-      "location": "黑旗营外",
       "scene": null,
-      "summary": "获救者记得同一份誓文模板被分别写进洛恩与维尔萨命令。证据足以让人被灭口，还不足以让国家停战。",
       "beats": [
         {
           "speaker": "mirelle",
-          "text": "档案可以复制，证人不能。今晚先记他们的名字。"
+          "id": "irreplaceable-witnesses",
+          "textKey": "story.c01.aftermath-04.beat.irreplaceable-witnesses.text"
         },
         {
           "speaker": "laiya",
-          "text": "也记下是我让他们继续冒险。不能只在成功以后才承认那道命令是我的。"
+          "id": "own-the-risky-order",
+          "textKey": "story.c01.aftermath-04.beat.own-the-risky-order.text"
         }
-      ]
+      ],
+      "kickerKey": "story.c01.aftermath-04.kicker",
+      "titleKey": "story.c01.aftermath-04.title",
+      "dateKey": "story.c01.aftermath-04.date",
+      "locationKey": "story.c01.aftermath-04.location",
+      "summaryKey": "story.c01.aftermath-04.summary"
     },
     {
       "id": "c01/brief-05",
       "chapter": 1,
-      "kicker": "第一章 · 战斗 05",
-      "title": "焚村令",
-      "date": "第 0 年 · 深秋",
-      "location": "苇草村",
       "scene": "C01-CH01-S05",
-      "summary": "王国命令焚毁“受污染”的村庄。污染是伪造的，执行命令的人却是真的。",
       "beats": [
         {
           "speaker": "roderick",
-          "text": "让开，莱娅。你还能回到队列里。"
+          "id": "return-to-the-ranks",
+          "textKey": "story.c01.brief-05.beat.return-to-the-ranks.text"
         },
         {
           "speaker": "laiya",
-          "text": "如果回去的条件是把他们留在火里，那条队列已经不是我的了。"
+          "id": "refuse-the-burning",
+          "textKey": "story.c01.brief-05.beat.refuse-the-burning.text"
         },
         {
           "speaker": "bran",
-          "text": "旗子没有颜色时最诚实。今天谁站在村口，明天我就记得谁。"
+          "id": "defenders-not-flags",
+          "textKey": "story.c01.brief-05.beat.defenders-not-flags.text"
         }
       ],
       "mission": {
-        "objective": "至少保护两名村民并坚守七回合。",
-        "danger": "净化军第四回合增援；不要让脆弱单位堵死治疗线。",
-        "lesson": "生存目标、关键单位保护、增援与军团士气。"
-      }
+        "objectiveKey": "story.c01.brief-05.mission.objective",
+        "dangerKey": "story.c01.brief-05.mission.danger",
+        "lessonKey": "story.c01.brief-05.mission.lesson"
+      },
+      "kickerKey": "story.c01.brief-05.kicker",
+      "titleKey": "story.c01.brief-05.title",
+      "dateKey": "story.c01.brief-05.date",
+      "locationKey": "story.c01.brief-05.location",
+      "summaryKey": "story.c01.brief-05.summary"
     },
     {
       "id": "c01/aftermath-05",
       "chapter": 1,
-      "kicker": "第一章终",
-      "title": "灰旗升起",
-      "date": "第 0 年 · 深秋",
-      "location": "烧毁的苇草村",
       "scene": "C01-CH01-S05",
-      "summary": "她失去军衔、补给和合法身份。烧去纹章的旗布在晨风里只剩灰色，却第一次允许人自行决定是否跟随。",
       "beats": [
         {
           "speaker": "bran",
-          "text": "我不向你宣誓。我跟你走，直到你也开始替别人决定他们该烧在哪里。"
+          "id": "conditional-allegiance",
+          "textKey": "story.c01.aftermath-05.beat.conditional-allegiance.text"
         },
         {
           "speaker": "laiya",
-          "text": "那时你要先告诉我，然后离开。不要等我批准。"
+          "id": "permission-to-leave",
+          "textKey": "story.c01.aftermath-05.beat.permission-to-leave.text"
         }
-      ]
+      ],
+      "kickerKey": "story.c01.aftermath-05.kicker",
+      "titleKey": "story.c01.aftermath-05.title",
+      "dateKey": "story.c01.aftermath-05.date",
+      "locationKey": "story.c01.aftermath-05.location",
+      "summaryKey": "story.c01.aftermath-05.summary"
     },
     {
       "id": "c01/brief-06",
       "chapter": 2,
-      "kicker": "第二章 · 战斗 06",
-      "title": "白河夜渡",
-      "date": "第 1 年 · 深冬",
-      "location": "白河南岸",
       "scene": "C01-CH02-S06",
-      "summary": "抗命只花了一夜，维持一支带着伤员和孩子的队伍却要花掉每一顿饭。",
       "beats": [
         {
           "speaker": "bran",
-          "text": "芦苇浅滩能走人，不能过马和粮车。别说全都要，河水不听演说。"
+          "id": "reed-ford-limits",
+          "textKey": "story.c01.brief-06.beat.reed-ford-limits.text"
         },
         {
           "speaker": "mirelle",
-          "text": "伤员能再撑八回合。第九回合开始，寒冷会替追兵做决定。"
+          "id": "cold-deadline",
+          "textKey": "story.c01.brief-06.beat.cold-deadline.text"
         },
         {
           "speaker": "laiya",
-          "text": "先把每一条路线写清楚，再说我们愿意失去什么。"
+          "id": "map-before-sacrifice",
+          "textKey": "story.c01.brief-06.beat.map-before-sacrifice.text"
         }
       ],
       "mission": {
-        "objective": "八回合内护送四名非战斗人员抵达北岸。",
-        "danger": "护送单位移动慢，追兵骑兵会从侧翼切入。",
-        "lesson": "多单位护送、时间压力、后卫与资源取舍。"
-      }
+        "objectiveKey": "story.c01.brief-06.mission.objective",
+        "dangerKey": "story.c01.brief-06.mission.danger",
+        "lessonKey": "story.c01.brief-06.mission.lesson"
+      },
+      "kickerKey": "story.c01.brief-06.kicker",
+      "titleKey": "story.c01.brief-06.title",
+      "dateKey": "story.c01.brief-06.date",
+      "locationKey": "story.c01.brief-06.location",
+      "summaryKey": "story.c01.brief-06.summary"
     },
     {
       "id": "c01/aftermath-06",
       "chapter": 2,
-      "kicker": "战后",
-      "title": "渡河以后仍会死人",
-      "date": "第 1 年 · 深冬",
-      "location": "白河北岸",
       "scene": "C01-CH02-S06",
-      "summary": "清点人数时，冻伤和饥饿没有因为任务完成而消失。莱娅把口粮递给伤员，被布兰推了回来。",
       "beats": [
         {
           "speaker": "bran",
-          "text": "饿死领袖只会让明天多一个要埋的人。组织不是看你肯死几次。"
+          "id": "starvation-is-not-leadership",
+          "textKey": "story.c01.aftermath-06.beat.starvation-is-not-leadership.text"
         },
         {
           "speaker": "laiya",
-          "text": "那就从今天起，口粮先按名单发，不按谁更会拒绝。"
+          "id": "rations-by-roster",
+          "textKey": "story.c01.aftermath-06.beat.rations-by-roster.text"
         }
-      ]
+      ],
+      "kickerKey": "story.c01.aftermath-06.kicker",
+      "titleKey": "story.c01.aftermath-06.title",
+      "dateKey": "story.c01.aftermath-06.date",
+      "locationKey": "story.c01.aftermath-06.location",
+      "summaryKey": "story.c01.aftermath-06.summary"
     },
     {
       "id": "c01/brief-07",
       "chapter": 2,
-      "kicker": "第二章 · 战斗 07",
-      "title": "无主之城",
-      "date": "第 1 年 · 初春",
-      "location": "自由城洛岬",
       "scene": "C01-SCENE-PUBLIC-RATIONS",
-      "summary": "领主逃走后，粮仓、城门和兵营分别属于三群无法互相信任的人。敌军不会等他们开完会议。",
       "beats": [
         {
           "speaker": "laiya",
-          "text": "我们守城，但不接管你们的钥匙。哪两处先修，由城里的人当面说。"
+          "id": "defend-without-taking-keys",
+          "textKey": "story.c01.brief-07.beat.defend-without-taking-keys.text"
         },
         {
           "speaker": "bran",
-          "text": "当面说会吵。"
+          "id": "cost-of-public-debate",
+          "textKey": "story.c01.brief-07.beat.cost-of-public-debate.text"
         },
         {
           "speaker": "laiya",
-          "text": "那就让争吵发生在敌人进城以前，而不是命令发生在他们头上。"
+          "id": "argue-before-invasion",
+          "textKey": "story.c01.brief-07.beat.argue-before-invasion.text"
         }
       ],
       "mission": {
-        "objective": "占领联合粮仓与民兵营。",
-        "danger": "荒原骑手和王国征讨军从不同方向逼近。",
-        "lesson": "多方向接敌、城市走廊、占领与防线取舍。"
-      }
+        "objectiveKey": "story.c01.brief-07.mission.objective",
+        "dangerKey": "story.c01.brief-07.mission.danger",
+        "lessonKey": "story.c01.brief-07.mission.lesson"
+      },
+      "kickerKey": "story.c01.brief-07.kicker",
+      "titleKey": "story.c01.brief-07.title",
+      "dateKey": "story.c01.brief-07.date",
+      "locationKey": "story.c01.brief-07.location",
+      "summaryKey": "story.c01.brief-07.summary"
     },
     {
       "id": "c01/aftermath-07",
       "chapter": 2,
-      "kicker": "战后",
-      "title": "谁拥有城墙",
-      "date": "第 1 年 · 初春",
-      "location": "洛岬议事厅",
       "scene": "C01-SCENE-PUBLIC-RATIONS",
-      "summary": "城守住了，钥匙仍有三串。莱娅第一次发现，胜利以后留下来处理粮价比攻下一座城更难。",
       "beats": [
         {
           "speaker": "laiya",
-          "text": "灰旗军可以提供守卫，不提供永远正确的市长。"
+          "id": "guards-not-mayors",
+          "textKey": "story.c01.aftermath-07.beat.guards-not-mayors.text"
         },
         {
           "speaker": "narrator",
-          "text": "商人、民兵与难民代表第一次坐在同一张桌边，也第一次同时对她不满。"
+          "id": "dissatisfied-at-the-table",
+          "textKey": "story.c01.aftermath-07.beat.dissatisfied-at-the-table.text"
         }
-      ]
+      ],
+      "kickerKey": "story.c01.aftermath-07.kicker",
+      "titleKey": "story.c01.aftermath-07.title",
+      "dateKey": "story.c01.aftermath-07.date",
+      "locationKey": "story.c01.aftermath-07.location",
+      "summaryKey": "story.c01.aftermath-07.summary"
     },
     {
       "id": "c01/brief-08",
       "chapter": 2,
-      "kicker": "第二章 · 战斗 08",
-      "title": "佣兵之价",
-      "date": "第 1 年 · 暮春",
-      "location": "洛岬粮道",
       "scene": "C01-SCENE-PUBLIC-RATIONS",
-      "summary": "佣兵扣住粮道索取欠饷，商人把死人从账册上删掉。真正的盗匪在争执最响时来了。",
       "beats": [
         {
           "speaker": "tasha",
-          "text": "你们这些有旗的人，总喜欢用明天的世界支付今天的死人。"
+          "id": "promises-paid-by-the-dead",
+          "textKey": "story.c01.brief-08.beat.promises-paid-by-the-dead.text"
         },
         {
           "speaker": "laiya",
-          "text": "名字、数目、日期。先把欠下的写清楚。然后一起把粮仓守住。"
+          "id": "record-the-debts",
+          "textKey": "story.c01.brief-08.beat.record-the-debts.text"
         },
         {
           "speaker": "tasha",
-          "text": "这句话值不了一枚铜币。但我愿意看你把它写进制度。"
+          "id": "write-the-system",
+          "textKey": "story.c01.brief-08.beat.write-the-system.text"
         }
       ],
       "mission": {
-        "objective": "保护塔莎并击退抢粮者。",
-        "danger": "骑手会绕过正面；塔莎是高价值的爆破单位，也是失败条件。",
-        "lesson": "关键同盟保护、侧翼机动与范围爆破。"
-      }
+        "objectiveKey": "story.c01.brief-08.mission.objective",
+        "dangerKey": "story.c01.brief-08.mission.danger",
+        "lessonKey": "story.c01.brief-08.mission.lesson"
+      },
+      "kickerKey": "story.c01.brief-08.kicker",
+      "titleKey": "story.c01.brief-08.title",
+      "dateKey": "story.c01.brief-08.date",
+      "locationKey": "story.c01.brief-08.location",
+      "summaryKey": "story.c01.brief-08.summary"
     },
     {
       "id": "c01/aftermath-08",
       "chapter": 2,
-      "kicker": "战后",
-      "title": "一份可以解除的契约",
-      "date": "第 1 年 · 暮春",
-      "location": "洛岬粮仓",
       "scene": "C01-SCENE-PUBLIC-RATIONS",
-      "summary": "塔莎没有宣誓效忠。她签下一份列明期限、欠款与退出条款的契约，并把第一份抚恤名单钉在军需处。",
       "beats": [
         {
           "speaker": "tasha",
-          "text": "我不是因为相信你才加入。我是因为这份纸允许我在不再相信你时离开。"
+          "id": "contractual-right-to-leave",
+          "textKey": "story.c01.aftermath-08.beat.contractual-right-to-leave.text"
         },
         {
           "speaker": "laiya",
-          "text": "那它比誓言更有用。"
+          "id": "contracts-over-oaths",
+          "textKey": "story.c01.aftermath-08.beat.contracts-over-oaths.text"
         }
-      ]
+      ],
+      "kickerKey": "story.c01.aftermath-08.kicker",
+      "titleKey": "story.c01.aftermath-08.title",
+      "dateKey": "story.c01.aftermath-08.date",
+      "locationKey": "story.c01.aftermath-08.location",
+      "summaryKey": "story.c01.aftermath-08.summary"
     },
     {
       "id": "c01/brief-09",
       "chapter": 2,
-      "kicker": "第二章 · 战斗 09",
-      "title": "笼中之火",
-      "date": "第 1 年 · 盛夏",
-      "location": "洛岬北部大道",
       "scene": "C01-CH02-S09",
-      "summary": "教廷运输队带着粮食、药品和一只被符文锁链束缚的幼龙。控制它是最快的解法，也是最危险的先例。",
       "beats": [
         {
           "speaker": "mirelle",
-          "text": "我可以念出绑定誓文。它会替我们作战——也会知道是我把新锁套在旧锁外面。"
+          "id": "new-lock-old-chain",
+          "textKey": "story.c01.brief-09.beat.new-lock-old-chain.text"
         },
         {
           "speaker": "tasha",
-          "text": "四个节点，拆掉三个就会失稳。慢一点，但选择仍然属于笼子里的那一方。"
+          "id": "cost-of-freedom",
+          "textKey": "story.c01.brief-09.beat.cost-of-freedom.text"
         },
         {
           "speaker": "laiya",
-          "text": "拆节点。它出来以后愿不愿意帮忙，不算在计划里。"
+          "id": "dismantle-without-bargain",
+          "textKey": "story.c01.brief-09.beat.dismantle-without-bargain.text"
         }
       ],
       "mission": {
-        "objective": "破坏四处锁链节点中的三处。",
-        "danger": "节点分散且有护卫；爆破火药的冷却需要预先规划。",
-        "lesson": "复合结构、分兵、攻城加成与非控制解法。"
-      }
+        "objectiveKey": "story.c01.brief-09.mission.objective",
+        "dangerKey": "story.c01.brief-09.mission.danger",
+        "lessonKey": "story.c01.brief-09.mission.lesson"
+      },
+      "kickerKey": "story.c01.brief-09.kicker",
+      "titleKey": "story.c01.brief-09.title",
+      "dateKey": "story.c01.brief-09.date",
+      "locationKey": "story.c01.brief-09.location",
+      "summaryKey": "story.c01.brief-09.summary"
     },
     {
       "id": "c01/aftermath-09",
       "chapter": 2,
-      "kicker": "战后",
-      "title": "它没有加入",
-      "date": "第 1 年 · 盛夏",
-      "location": "破碎的囚笼旁",
       "scene": "C01-CH02-S09",
-      "summary": "幼龙挣脱后先咬断最后一段锁链，然后飞到够不着任何命令的岩脊上。",
       "beats": [
         {
           "speaker": "ivra",
-          "text": "你们没有命令我。"
+          "id": "no-command",
+          "textKey": "story.c01.aftermath-09.beat.no-command.text"
         },
         {
           "speaker": "laiya",
-          "text": "也不会因为这件事要求你留下。"
+          "id": "no-demand-to-stay",
+          "textKey": "story.c01.aftermath-09.beat.no-demand-to-stay.text"
         },
         {
           "speaker": "narrator",
-          "text": "伊芙拉没有回答。第二天队伍出发时，云上的影子与他们保持了整整半日距离。"
+          "id": "following-at-a-distance",
+          "textKey": "story.c01.aftermath-09.beat.following-at-a-distance.text"
         }
-      ]
+      ],
+      "kickerKey": "story.c01.aftermath-09.kicker",
+      "titleKey": "story.c01.aftermath-09.title",
+      "dateKey": "story.c01.aftermath-09.date",
+      "locationKey": "story.c01.aftermath-09.location",
+      "summaryKey": "story.c01.aftermath-09.summary"
     },
     {
       "id": "c01/brief-10",
       "chapter": 2,
-      "kicker": "第二章 · 战斗 10",
-      "title": "旧旗下的追兵",
-      "date": "第 1 年 · 初秋",
-      "location": "灰境东部山口",
       "scene": null,
-      "summary": "罗德里克带着真正的赦免令追来。回去可以活，留下才要继续承担灰旗造成的后果。",
       "beats": [
         {
           "speaker": "roderick",
-          "text": "我没有伪造这份赦免。放下武器的人可以回家。你也可以。"
+          "id": "offer-of-pardon",
+          "textKey": "story.c01.brief-10.beat.offer-of-pardon.text"
         },
         {
           "speaker": "laiya",
-          "text": "回去以后，下一道焚村令由谁拒绝？"
+          "id": "refuse-the-next-burning",
+          "textKey": "story.c01.brief-10.beat.refuse-the-next-burning.text"
         },
         {
           "speaker": "roderick",
-          "text": "你把一次正确的抗命，误当成了永远正确的资格。"
+          "id": "disobedience-not-infallibility",
+          "textKey": "story.c01.brief-10.beat.disobedience-not-infallibility.text"
         }
       ],
       "mission": {
-        "objective": "让莱娅抵达东部山口，不必歼灭旧部。",
-        "danger": "罗德里克的骑兵和援护阵线正面强度极高。",
-        "lesson": "突破、士气、飞行侧翼与有限交战。"
-      }
+        "objectiveKey": "story.c01.brief-10.mission.objective",
+        "dangerKey": "story.c01.brief-10.mission.danger",
+        "lessonKey": "story.c01.brief-10.mission.lesson"
+      },
+      "kickerKey": "story.c01.brief-10.kicker",
+      "titleKey": "story.c01.brief-10.title",
+      "dateKey": "story.c01.brief-10.date",
+      "locationKey": "story.c01.brief-10.location",
+      "summaryKey": "story.c01.brief-10.summary"
     },
     {
       "id": "c01/aftermath-10",
       "chapter": 2,
-      "kicker": "第二章终",
-      "title": "允许退出的誓",
-      "date": "第 1 年 · 初秋",
-      "location": "山口外营地",
       "scene": "C01-ARCH-GRAY-CAMP",
-      "summary": "追兵没有被消灭，灰旗也没有被带回去。每一名留下的人重新听到一遍退出条款。",
       "beats": [
         {
           "speaker": "laiya",
-          "text": "今天留下，不等于明天必须留下。我们服从共同写下的规则，不服从我这个人。"
+          "id": "common-rules-not-loyalty",
+          "textKey": "story.c01.aftermath-10.beat.common-rules-not-loyalty.text"
         },
         {
           "speaker": "tasha",
-          "text": "很好。现在把“共同写下”需要几个人签字也写清楚。"
+          "id": "required-signatures",
+          "textKey": "story.c01.aftermath-10.beat.required-signatures.text"
         }
-      ]
+      ],
+      "kickerKey": "story.c01.aftermath-10.kicker",
+      "titleKey": "story.c01.aftermath-10.title",
+      "dateKey": "story.c01.aftermath-10.date",
+      "locationKey": "story.c01.aftermath-10.location",
+      "summaryKey": "story.c01.aftermath-10.summary"
     },
     {
       "id": "c01/brief-11",
       "chapter": 3,
-      "kicker": "第三章 · 战斗 11",
-      "title": "无声墓园",
-      "date": "第 2 年 · 早春",
-      "location": "圣辉领外墓园",
       "scene": "C01-ARCH-REDSTONE",
-      "summary": "同一名士兵在同一座墓前反复死亡。净化会让回声消散，读出真名才可能让他停止听令。",
       "beats": [
         {
           "speaker": "mirelle",
-          "text": "别先攻击巨像。墓碑上有三段被刮掉的姓名，先让它们重新被听见。"
+          "id": "restore-before-attacking",
+          "textKey": "story.c01.brief-11.beat.restore-before-attacking.text"
         },
         {
           "speaker": "bran",
-          "text": "我认识其中一个。他在苇草村借过盐，没还。活人的记忆也算证据。"
+          "id": "salt-debt-memory",
+          "textKey": "story.c01.brief-11.beat.salt-debt-memory.text"
         },
         {
           "speaker": "laiya",
-          "text": "分三路读碑。等米蕾尔说可以，再让巨像安息。"
+          "id": "read-and-release",
+          "textKey": "story.c01.brief-11.beat.read-and-release.text"
         }
       ],
       "mission": {
-        "objective": "读取三处真名，再击败墓园巨像。",
-        "danger": "亡灵会拖住路线；米蕾尔的断誓攻击有明显克制优势。",
-        "lesson": "阶段目标、题材克制、巨型单位与亡者标记。"
-      }
+        "objectiveKey": "story.c01.brief-11.mission.objective",
+        "dangerKey": "story.c01.brief-11.mission.danger",
+        "lessonKey": "story.c01.brief-11.mission.lesson"
+      },
+      "kickerKey": "story.c01.brief-11.kicker",
+      "titleKey": "story.c01.brief-11.title",
+      "dateKey": "story.c01.brief-11.date",
+      "locationKey": "story.c01.brief-11.location",
+      "summaryKey": "story.c01.brief-11.summary"
     },
     {
       "id": "c01/aftermath-11",
       "chapter": 3,
-      "kicker": "战后",
-      "title": "墓碑拒绝净化",
-      "date": "第 2 年 · 早春",
-      "location": "无声墓园",
       "scene": "C01-ARCH-REDSTONE",
-      "summary": "最后一个名字被读出时，石像没有爆炸，只是像终于听见休息命令的人一样跪了下去。",
       "beats": [
         {
           "speaker": "mirelle",
-          "text": "安息不该是活人替死者按下的删除键。"
+          "id": "rest-is-not-deletion",
+          "textKey": "story.c01.aftermath-11.beat.rest-is-not-deletion.text"
         },
         {
           "speaker": "bran",
-          "text": "那就保留欠盐这件事。完整的人不只剩英雄事迹。"
+          "id": "preserve-ordinary-debts",
+          "textKey": "story.c01.aftermath-11.beat.preserve-ordinary-debts.text"
         }
-      ]
+      ],
+      "kickerKey": "story.c01.aftermath-11.kicker",
+      "titleKey": "story.c01.aftermath-11.title",
+      "dateKey": "story.c01.aftermath-11.date",
+      "locationKey": "story.c01.aftermath-11.location",
+      "summaryKey": "story.c01.aftermath-11.summary"
     },
     {
       "id": "c01/brief-12",
       "chapter": 3,
-      "kicker": "第三章 · 战斗 12",
-      "title": "沉没钟塔",
-      "date": "第 2 年 · 暮春",
-      "location": "沉钟河谷",
       "scene": "C01-ARCH-THREE-BRIDGES",
-      "summary": "钟塔机构失控，河水正在上涨。凯恩带着帝国军也来关闭它；王冠碎片只会留给一方。",
       "beats": [
         {
           "speaker": "cain",
-          "text": "两处机构同时关闭，河谷才能保住。碎片归属可以在不淹死村庄以后争。"
+          "id": "close-the-mechanisms",
+          "textKey": "story.c01.brief-12.beat.close-the-mechanisms.text"
         },
         {
           "speaker": "laiya",
-          "text": "共同控制意味着你的士兵也能拒绝我的操作。"
+          "id": "shared-right-to-refuse",
+          "textKey": "story.c01.brief-12.beat.shared-right-to-refuse.text"
         },
         {
           "speaker": "cain",
-          "text": "也意味着你的人能拒绝我。这正是共同二字不方便的地方。"
+          "id": "inconvenient-shared-control",
+          "textKey": "story.c01.brief-12.beat.inconvenient-shared-control.text"
         }
       ],
       "mission": {
-        "objective": "瘫痪三处钟塔机构中的两处。",
-        "danger": "水路切断阵线，机构本身具有高耐久。",
-        "lesson": "复合设施、狭道、临时盟友与攻城分工。"
-      }
+        "objectiveKey": "story.c01.brief-12.mission.objective",
+        "dangerKey": "story.c01.brief-12.mission.danger",
+        "lessonKey": "story.c01.brief-12.mission.lesson"
+      },
+      "kickerKey": "story.c01.brief-12.kicker",
+      "titleKey": "story.c01.brief-12.title",
+      "dateKey": "story.c01.brief-12.date",
+      "locationKey": "story.c01.brief-12.location",
+      "summaryKey": "story.c01.brief-12.summary"
     },
     {
       "id": "c01/aftermath-12",
       "chapter": 3,
-      "kicker": "战后",
-      "title": "共同控制的半小时",
-      "date": "第 2 年 · 暮春",
-      "location": "沉钟塔顶",
       "scene": "C01-ARCH-THREE-BRIDGES",
-      "summary": "双方的手同时放在不同控制杆上。谁都不能单独启动钟塔，这是他们第一次真正共同拥有一项权力。",
       "beats": [
         {
           "speaker": "cain",
-          "text": "这套程序效率很低。"
+          "id": "inefficient-procedure",
+          "textKey": "story.c01.aftermath-12.beat.inefficient-procedure.text"
         },
         {
           "speaker": "laiya",
-          "text": "但你还站在这里，我也没有被你命令离开。低一点可以接受。"
+          "id": "still-here-without-orders",
+          "textKey": "story.c01.aftermath-12.beat.still-here-without-orders.text"
         }
-      ]
+      ],
+      "kickerKey": "story.c01.aftermath-12.kicker",
+      "titleKey": "story.c01.aftermath-12.title",
+      "dateKey": "story.c01.aftermath-12.date",
+      "locationKey": "story.c01.aftermath-12.location",
+      "summaryKey": "story.c01.aftermath-12.summary"
     },
     {
       "id": "c01/brief-13",
       "chapter": 3,
-      "kicker": "第三章 · 战斗 13",
-      "title": "圣城档案",
-      "date": "第 2 年 · 盛夏",
-      "location": "圣辉白塔",
       "scene": null,
-      "summary": "米蕾尔回到曾教她删除修改痕迹的地方。三组档案分别保存战争、命令与她老师的签名。",
       "beats": [
         {
           "speaker": "mirelle",
-          "text": "档案室会在第三份卷宗离架时报警。不是因为内容重要，是因为删改记录还在。"
+          "id": "archive-edit-alarm",
+          "textKey": "story.c01.brief-13.beat.archive-edit-alarm.text"
         },
         {
           "speaker": "tasha",
-          "text": "那就先规划出口。证据没长腿，拿证据的人有。"
+          "id": "evidence-needs-an-exit",
+          "textKey": "story.c01.brief-13.beat.evidence-needs-an-exit.text"
         },
         {
           "speaker": "laiya",
-          "text": "读三处，米蕾尔带原件走。其余人只负责让她还能走。"
+          "id": "protect-the-original",
+          "textKey": "story.c01.brief-13.beat.protect-the-original.text"
         }
       ],
       "mission": {
-        "objective": "读取三组档案，并护送米蕾尔到东侧出口。",
-        "danger": "阶段完成后仍需穿过警戒部队，不要过早消耗支援能力。",
-        "lesson": "连续阶段、关键携带者、城市掩体与撤离。"
-      }
+        "objectiveKey": "story.c01.brief-13.mission.objective",
+        "dangerKey": "story.c01.brief-13.mission.danger",
+        "lessonKey": "story.c01.brief-13.mission.lesson"
+      },
+      "kickerKey": "story.c01.brief-13.kicker",
+      "titleKey": "story.c01.brief-13.title",
+      "dateKey": "story.c01.brief-13.date",
+      "locationKey": "story.c01.brief-13.location",
+      "summaryKey": "story.c01.brief-13.summary"
     },
     {
       "id": "c01/aftermath-13",
       "chapter": 3,
-      "kicker": "战后",
-      "title": "保留修改痕迹",
-      "date": "第 2 年 · 盛夏",
-      "location": "圣城外旧医院",
       "scene": "C01-ARCH-FIELD-HOSPITAL",
-      "summary": "档案证明两国军令使用同一套誓文源。米蕾尔没有抹掉老师的名字，也没有替她写上原谅。",
       "beats": [
         {
           "speaker": "mirelle",
-          "text": "如果我删除她的签名，我就用同一种方法证明她错。"
+          "id": "do-not-delete-the-signature",
+          "textKey": "story.c01.aftermath-13.beat.do-not-delete-the-signature.text"
         },
         {
           "speaker": "laiya",
-          "text": "那就让名字、罪责和修改都留在同一页上。"
+          "id": "record-name-and-guilt",
+          "textKey": "story.c01.aftermath-13.beat.record-name-and-guilt.text"
         }
-      ]
+      ],
+      "kickerKey": "story.c01.aftermath-13.kicker",
+      "titleKey": "story.c01.aftermath-13.title",
+      "dateKey": "story.c01.aftermath-13.date",
+      "locationKey": "story.c01.aftermath-13.location",
+      "summaryKey": "story.c01.aftermath-13.summary"
     },
     {
       "id": "c01/brief-14",
       "chapter": 3,
-      "kicker": "第三章 · 战斗 14",
-      "title": "山炉余烬",
-      "date": "第 2 年 · 深秋",
-      "location": "山炉下层炉城",
       "scene": "C01-CH03-S14",
-      "summary": "氏族内战唤醒石魔像，熔流阀开始失控。修炉心必须使用制造王冠的同一套技术。",
       "beats": [
         {
           "speaker": "tasha",
-          "text": "技术不会替祖先认罪，也不会因为祖先有罪就自动失效。两处阀门，先关再谈。"
+          "id": "close-the-valves",
+          "textKey": "story.c01.brief-14.beat.close-the-valves.text"
         },
         {
           "speaker": "bran",
-          "text": "谈的时候别让“工具无罪”变成没人负责。"
+          "id": "tools-and-responsibility",
+          "textKey": "story.c01.brief-14.beat.tools-and-responsibility.text"
         },
         {
           "speaker": "laiya",
-          "text": "完整保存维修记录。我们用过什么，就留下什么。"
+          "id": "preserve-maintenance-records",
+          "textKey": "story.c01.brief-14.beat.preserve-maintenance-records.text"
         }
       ],
       "mission": {
-        "objective": "关闭两处熔流阀，并平息失控守卫。",
-        "danger": "熔流不可通行，石魔像会强制位移造成碰撞伤害。",
-        "lesson": "危险地貌、强制位移、重甲破防与工程路线。"
-      }
+        "objectiveKey": "story.c01.brief-14.mission.objective",
+        "dangerKey": "story.c01.brief-14.mission.danger",
+        "lessonKey": "story.c01.brief-14.mission.lesson"
+      },
+      "kickerKey": "story.c01.brief-14.kicker",
+      "titleKey": "story.c01.brief-14.title",
+      "dateKey": "story.c01.brief-14.date",
+      "locationKey": "story.c01.brief-14.location",
+      "summaryKey": "story.c01.brief-14.summary"
     },
     {
       "id": "c01/aftermath-14",
       "chapter": 3,
-      "kicker": "战后",
-      "title": "修好并不等于无罪",
-      "date": "第 2 年 · 深秋",
-      "location": "山炉记录厅",
       "scene": "C01-CH03-S14",
-      "summary": "炉心恢复，族长要求封存王冠图纸。塔莎把维修页和责任页订在同一个册子里。",
       "beats": [
         {
           "speaker": "tasha",
-          "text": "不公开全部细节，可以讨论。假装我们没用过它，不可以。"
+          "id": "withhold-details-not-history",
+          "textKey": "story.c01.aftermath-14.beat.withhold-details-not-history.text"
         },
         {
           "speaker": "laiya",
-          "text": "技术可以限制访问，责任不能限制见证。"
+          "id": "witnesses-without-restriction",
+          "textKey": "story.c01.aftermath-14.beat.witnesses-without-restriction.text"
         }
-      ]
+      ],
+      "kickerKey": "story.c01.aftermath-14.kicker",
+      "titleKey": "story.c01.aftermath-14.title",
+      "dateKey": "story.c01.aftermath-14.date",
+      "locationKey": "story.c01.aftermath-14.location",
+      "summaryKey": "story.c01.aftermath-14.summary"
     },
     {
       "id": "c01/brief-15",
       "chapter": 3,
-      "kicker": "第三章 · 战斗 15",
-      "title": "银林长梦",
-      "date": "第 3 年 · 初春",
-      "location": "银林母根",
       "scene": "C01-ARCH-SILVERWOOD",
-      "summary": "银林把森林衰亡转移给林外城市已有百年。停止转移会伤害母根，继续则会让陌生人替它死亡。",
       "beats": [
         {
           "speaker": "bran",
-          "text": "他们说代价落在看不见的地方，所以不是他们的决定。"
+          "id": "hidden-costs-still-count",
+          "textKey": "story.c01.brief-15.beat.hidden-costs-still-count.text"
         },
         {
           "speaker": "laiya",
-          "text": "保护母根，但先切断继续扩大的誓文。活下来的森林要自己承担以后。"
+          "id": "forest-chooses-its-future",
+          "textKey": "story.c01.brief-15.beat.forest-chooses-its-future.text"
         },
         {
           "speaker": "ivra",
-          "text": "不能把疼痛命名为远方。"
+          "id": "do-not-distance-the-pain",
+          "textKey": "story.c01.brief-15.beat.do-not-distance-the-pain.text"
         }
       ],
       "mission": {
-        "objective": "保护母根，击退维持代价转移的受控部队。",
-        "danger": "长弓射程远且克制伊芙拉；母根一旦被毁立即失败。",
-        "lesson": "森林视线、远程压制、对空克制与结构保护。"
-      }
+        "objectiveKey": "story.c01.brief-15.mission.objective",
+        "dangerKey": "story.c01.brief-15.mission.danger",
+        "lessonKey": "story.c01.brief-15.mission.lesson"
+      },
+      "kickerKey": "story.c01.brief-15.kicker",
+      "titleKey": "story.c01.brief-15.title",
+      "dateKey": "story.c01.brief-15.date",
+      "locationKey": "story.c01.brief-15.location",
+      "summaryKey": "story.c01.brief-15.summary"
     },
     {
       "id": "c01/aftermath-15",
       "chapter": 3,
-      "kicker": "战后",
-      "title": "森林第一次自己疼",
-      "date": "第 3 年 · 初春",
-      "location": "银林树城",
       "scene": "C01-ARCH-SILVERWOOD",
-      "summary": "转移减弱后，母根的叶片在一夜间落去三分之一。银林没有感谢灰旗，只同意让林外城市进入下一次决策。",
       "beats": [
         {
           "speaker": "laiya",
-          "text": "共同承担不会让代价变小，只会让被牺牲的人不再缺席。"
+          "id": "voices-of-the-sacrificed",
+          "textKey": "story.c01.aftermath-15.beat.voices-of-the-sacrificed.text"
         },
         {
           "speaker": "bran",
-          "text": "他们还恨你。很好，至少这次恨你的人坐在桌边。"
+          "id": "anger-at-the-table",
+          "textKey": "story.c01.aftermath-15.beat.anger-at-the-table.text"
         }
-      ]
+      ],
+      "kickerKey": "story.c01.aftermath-15.kicker",
+      "titleKey": "story.c01.aftermath-15.title",
+      "dateKey": "story.c01.aftermath-15.date",
+      "locationKey": "story.c01.aftermath-15.location",
+      "summaryKey": "story.c01.aftermath-15.summary"
     },
     {
       "id": "c01/brief-16",
       "chapter": 3,
-      "kicker": "第三章 · 战斗 16",
-      "title": "记住我的名字",
-      "date": "第 3 年 · 暮春",
-      "location": "旧帝国归名场",
       "scene": "C01-ARCH-REDSTONE",
-      "summary": "无数无名死者聚成“无旗者”。审判官要继续抽取它，莱娅必须先证明新意识有权拒绝被使用。",
       "beats": [
         {
           "speaker": "mirelle",
-          "text": "它不是任何一个死者复活。三个真名只是让它知道，组成自己的记忆曾经属于谁。"
+          "id": "origins-not-resurrection",
+          "textKey": "story.c01.brief-16.beat.origins-not-resurrection.text"
         },
         {
           "speaker": "laiya",
-          "text": "那就回应三个名字，击退审判官。不要把无旗者当成要被击杀的目标。"
+          "id": "answer-the-true-names",
+          "textKey": "story.c01.brief-16.beat.answer-the-true-names.text"
         },
         {
           "speaker": "ivra",
-          "text": "名字不是锁。名字是可以回答，也可以不回答的声音。"
+          "id": "names-not-locks",
+          "textKey": "story.c01.brief-16.beat.names-not-locks.text"
         }
       ],
       "mission": {
-        "objective": "回应三个真名，并击退抽取记忆的审判官。",
-        "danger": "墓园巨像仍会阻挡道路；任务不要求消灭它。",
-        "lesson": "非歼灭终局、战场互动、目标优先级与火力克制。"
-      }
+        "objectiveKey": "story.c01.brief-16.mission.objective",
+        "dangerKey": "story.c01.brief-16.mission.danger",
+        "lessonKey": "story.c01.brief-16.mission.lesson"
+      },
+      "kickerKey": "story.c01.brief-16.kicker",
+      "titleKey": "story.c01.brief-16.title",
+      "dateKey": "story.c01.brief-16.date",
+      "locationKey": "story.c01.brief-16.location",
+      "summaryKey": "story.c01.brief-16.summary"
     },
     {
       "id": "c01/aftermath-16",
       "chapter": 3,
-      "kicker": "第三章终",
-      "title": "一个新名字",
-      "date": "第 3 年 · 暮春",
-      "location": "归名场",
       "scene": "C01-ARCH-REDSTONE",
-      "summary": "审判官撤退后，聚忆体没有散去。它第一次用不是任何一名死者的声音，为自己选择了一个称呼。",
       "beats": [
         {
           "speaker": "mirelle",
-          "text": "我们记下它过去由谁组成，也记下它现在不等于其中任何一个人。"
+          "id": "origins-and-present-identity",
+          "textKey": "story.c01.aftermath-16.beat.origins-and-present-identity.text"
         },
         {
           "speaker": "laiya",
-          "text": "如果我们要建立一个允许退出的盟约，它也拥有同样的退出权。"
+          "id": "right-to-leave-the-pact",
+          "textKey": "story.c01.aftermath-16.beat.right-to-leave-the-pact.text"
         }
-      ]
+      ],
+      "kickerKey": "story.c01.aftermath-16.kicker",
+      "titleKey": "story.c01.aftermath-16.title",
+      "dateKey": "story.c01.aftermath-16.date",
+      "locationKey": "story.c01.aftermath-16.location",
+      "summaryKey": "story.c01.aftermath-16.summary"
     },
     {
       "id": "c01/chapter-three-ending",
       "chapter": 3,
-      "kicker": "前三章完成",
-      "title": "灰旗成为一支军队",
-      "date": "第 3 年 · 初夏",
-      "location": "洛岬晨议会",
       "scene": "C01-CH05-S26",
-      "summary": "三年以前，莱娅相信正确的人下令就足够。现在她拥有一支军队，也第一次拥有能在她错误时阻止她的人。",
       "beats": [
         {
           "speaker": "tasha",
-          "text": "十六场战斗，七份退出条款，三本公开账册。你终于开始变得没那么不可替代。"
+          "id": "less-indispensable",
+          "textKey": "story.c01.chapter-three-ending.beat.less-indispensable.text"
         },
         {
           "speaker": "cain",
-          "text": "王冠碎片正在醒来。下一次共同控制，不会只持续半小时。"
+          "id": "fragments-awakening",
+          "textKey": "story.c01.chapter-three-ending.beat.fragments-awakening.text"
         },
         {
           "speaker": "laiya",
-          "text": "那就先让每一个会被它命令的人拥有席位。第四章从这张桌子开始。"
+          "id": "a-seat-for-everyone",
+          "textKey": "story.c01.chapter-three-ending.beat.a-seat-for-everyone.text"
         },
         {
           "speaker": "narrator",
-          "text": "灰旗在晨风里没有王徽。桌边每个人仍能看见门，也仍然拥有走出去的权利。"
+          "id": "door-remains-open",
+          "textKey": "story.c01.chapter-three-ending.beat.door-remains-open.text"
         }
-      ]
+      ],
+      "kickerKey": "story.c01.chapter-three-ending.kicker",
+      "titleKey": "story.c01.chapter-three-ending.title",
+      "dateKey": "story.c01.chapter-three-ending.date",
+      "locationKey": "story.c01.chapter-three-ending.location",
+      "summaryKey": "story.c01.chapter-three-ending.summary"
     },
     {
       "id": "c01/campaign-failed",
       "chapter": 1,
-      "kicker": "战役中断",
-      "title": "灰旗倒下",
-      "date": "未定",
-      "location": "伊瑟兰",
       "scene": "C01-CH01-S05",
-      "summary": "这条时间线在这里中断。失败可以重新推演，但不会被叙事假装成没有发生。",
       "beats": [
         {
           "speaker": "narrator",
-          "text": "重新开始当前战斗，或从战役存档继续。每一次选择仍会保留它对应的代价。"
+          "id": "costs-survive-retry",
+          "textKey": "story.c01.campaign-failed.beat.costs-survive-retry.text"
         }
-      ]
+      ],
+      "kickerKey": "story.c01.campaign-failed.kicker",
+      "titleKey": "story.c01.campaign-failed.title",
+      "dateKey": "story.c01.campaign-failed.date",
+      "locationKey": "story.c01.campaign-failed.location",
+      "summaryKey": "story.c01.campaign-failed.summary"
     }
   ],
   "choices": [
     {
       "id": "c01/choice-first-command",
       "chapter": 1,
-      "prompt": "莱娅如何开始第一次指挥？",
-      "context": "北丘提供高地优势，但先遣小队会脱离罗德里克的援护。",
       "options": [
         {
           "id": "rush-north-hill",
-          "label": "抢占北丘",
-          "detail": "让托伦提前进入高地，取得位置优势但以受伤状态开局。",
-          "consequence": "提高“果断”，并真实承担救援成本。"
+          "labelKey": "choice.c01.choice-first-command.option.rush-north-hill.label",
+          "detailKey": "choice.c01.choice-first-command.option.rush-north-hill.detail",
+          "consequenceKey": "choice.c01.choice-first-command.option.rush-north-hill.consequence"
         },
         {
           "id": "steady-advance",
-          "label": "稳步推进",
-          "detail": "保持队形与援护，让帝国前锋先靠近中央村。",
-          "consequence": "提高“克制”，保留完整阵线。"
+          "labelKey": "choice.c01.choice-first-command.option.steady-advance.label",
+          "detailKey": "choice.c01.choice-first-command.option.steady-advance.detail",
+          "consequenceKey": "choice.c01.choice-first-command.option.steady-advance.consequence"
         }
-      ]
+      ],
+      "promptKey": "choice.c01.choice-first-command.prompt",
+      "contextKey": "choice.c01.choice-first-command.context"
     },
     {
       "id": "c01/choice-bridge-truce",
       "chapter": 1,
-      "prompt": "是否接受凯恩提出的中桥停火？",
-      "context": "正式承诺会约束双方三回合，也会让凯恩把你的选择记在程序里。",
       "options": [
         {
           "id": "accept-truce",
-          "label": "接受停火",
-          "detail": "中桥三回合禁止攻击，优先让平民通过。",
-          "consequence": "凯恩关系 +1。"
+          "labelKey": "choice.c01.choice-bridge-truce.option.accept-truce.label",
+          "detailKey": "choice.c01.choice-bridge-truce.option.accept-truce.detail",
+          "consequenceKey": "choice.c01.choice-bridge-truce.option.accept-truce.consequence"
         },
         {
           "id": "no-formal-promise",
-          "label": "不作承诺",
-          "detail": "仍可实际停火，但战场不会强制限制攻击。",
-          "consequence": "敌方更积极，增加独立倾向。"
+          "labelKey": "choice.c01.choice-bridge-truce.option.no-formal-promise.label",
+          "detailKey": "choice.c01.choice-bridge-truce.option.no-formal-promise.detail",
+          "consequenceKey": "choice.c01.choice-bridge-truce.option.no-formal-promise.consequence"
         }
-      ]
+      ],
+      "promptKey": "choice.c01.choice-bridge-truce.prompt",
+      "contextKey": "choice.c01.choice-bridge-truce.context"
     },
     {
       "id": "c01/choice-black-camp-plan",
       "chapter": 1,
-      "prompt": "黑旗营地同时有俘虏和档案，如何分配兵力？",
-      "context": "两种方案都违背“只侦察”的命令，差别在于把主要风险放在哪里。",
       "options": [
         {
           "id": "rescue-and-evidence",
-          "label": "救人为先",
-          "detail": "主力护送证人，米蕾尔沿途保存关键模板。",
-          "consequence": "证人数增加。"
+          "labelKey": "choice.c01.choice-black-camp-plan.option.rescue-and-evidence.label",
+          "detailKey": "choice.c01.choice-black-camp-plan.option.rescue-and-evidence.detail",
+          "consequenceKey": "choice.c01.choice-black-camp-plan.option.rescue-and-evidence.consequence"
         },
         {
           "id": "split-the-force",
-          "label": "分兵取证",
-          "detail": "同时搜索三处营帐，路线更长、信息更完整。",
-          "consequence": "证据值增加。"
+          "labelKey": "choice.c01.choice-black-camp-plan.option.split-the-force.label",
+          "detailKey": "choice.c01.choice-black-camp-plan.option.split-the-force.detail",
+          "consequenceKey": "choice.c01.choice-black-camp-plan.option.split-the-force.consequence"
         }
-      ]
+      ],
+      "promptKey": "choice.c01.choice-black-camp-plan.prompt",
+      "contextKey": "choice.c01.choice-black-camp-plan.context"
     },
     {
       "id": "c01/choice-white-river-priority",
       "chapter": 2,
-      "prompt": "白河撤离优先保住什么？",
-      "context": "河道不允许所有人、重装备和粮食同时安全通过。",
       "options": [
         {
           "id": "people-first",
-          "label": "人员优先",
-          "detail": "把可用护卫全部配给难民与伤员。",
-          "consequence": "难民关系 +2。"
+          "labelKey": "choice.c01.choice-white-river-priority.option.people-first.label",
+          "detailKey": "choice.c01.choice-white-river-priority.option.people-first.detail",
+          "consequenceKey": "choice.c01.choice-white-river-priority.option.people-first.consequence"
         },
         {
           "id": "save-supplies",
-          "label": "物资优先",
-          "detail": "保住决定后续恢复能力的粮车。",
-          "consequence": "战役补给 +3。"
+          "labelKey": "choice.c01.choice-white-river-priority.option.save-supplies.label",
+          "detailKey": "choice.c01.choice-white-river-priority.option.save-supplies.detail",
+          "consequenceKey": "choice.c01.choice-white-river-priority.option.save-supplies.consequence"
         }
-      ]
+      ],
+      "promptKey": "choice.c01.choice-white-river-priority.prompt",
+      "contextKey": "choice.c01.choice-white-river-priority.context"
     },
     {
       "id": "c01/choice-mercenary-contract",
       "chapter": 2,
-      "prompt": "如何承认佣兵欠款？",
-      "context": "现金能解决今天，制度决定下一个死者会不会再次被从账上删除。",
       "options": [
         {
           "id": "pay-what-is-owed",
-          "label": "立即补发欠款",
-          "detail": "动用有限国库，按姓名补齐现有欠款。",
-          "consequence": "国库 -2，塔莎关系 +2。"
+          "labelKey": "choice.c01.choice-mercenary-contract.option.pay-what-is-owed.label",
+          "detailKey": "choice.c01.choice-mercenary-contract.option.pay-what-is-owed.detail",
+          "consequenceKey": "choice.c01.choice-mercenary-contract.option.pay-what-is-owed.consequence"
         },
         {
           "id": "create-pension-ledger",
-          "label": "建立抚恤账册",
-          "detail": "先确立不可删除的长期债权，再分期支付。",
-          "consequence": "制度能力 +1，塔莎关系 +1。"
+          "labelKey": "choice.c01.choice-mercenary-contract.option.create-pension-ledger.label",
+          "detailKey": "choice.c01.choice-mercenary-contract.option.create-pension-ledger.detail",
+          "consequenceKey": "choice.c01.choice-mercenary-contract.option.create-pension-ledger.consequence"
         }
-      ]
+      ],
+      "promptKey": "choice.c01.choice-mercenary-contract.prompt",
+      "contextKey": "choice.c01.choice-mercenary-contract.context"
     },
     {
       "id": "c01/choice-free-ivra",
       "chapter": 2,
-      "prompt": "用什么方式解除伊芙拉的锁链？",
-      "context": "两种方式都不控制幼龙，只决定战斗中的工具与路径。",
       "options": [
         {
           "id": "mirelle-ritual",
-          "label": "断誓仪式",
-          "detail": "米蕾尔削弱节点，让每处锁链更容易摧毁。",
-          "consequence": "米蕾尔关系 +1。"
+          "labelKey": "choice.c01.choice-free-ivra.option.mirelle-ritual.label",
+          "detailKey": "choice.c01.choice-free-ivra.option.mirelle-ritual.detail",
+          "consequenceKey": "choice.c01.choice-free-ivra.option.mirelle-ritual.consequence"
         },
         {
           "id": "break-chain-nodes",
-          "label": "工兵拆解",
-          "detail": "依靠塔莎和工兵逐处爆破，保留节点结构证据。",
-          "consequence": "塔莎关系 +1。"
+          "labelKey": "choice.c01.choice-free-ivra.option.break-chain-nodes.label",
+          "detailKey": "choice.c01.choice-free-ivra.option.break-chain-nodes.detail",
+          "consequenceKey": "choice.c01.choice-free-ivra.option.break-chain-nodes.consequence"
         }
-      ]
+      ],
+      "promptKey": "choice.c01.choice-free-ivra.prompt",
+      "contextKey": "choice.c01.choice-free-ivra.context"
     },
     {
       "id": "c01/choice-old-banner-terms",
       "chapter": 2,
-      "prompt": "怎样对待仍站在旧旗之下的士兵？",
-      "context": "他们执行追捕命令，但其中许多人真心相信赦免能让同伴回家。",
       "options": [
         {
           "id": "offer-exit-right",
-          "label": "允许自行离队",
-          "detail": "公开承诺投降或脱离追兵者不会被追责。",
-          "consequence": "制度能力 +1。"
+          "labelKey": "choice.c01.choice-old-banner-terms.option.offer-exit-right.label",
+          "detailKey": "choice.c01.choice-old-banner-terms.option.offer-exit-right.detail",
+          "consequenceKey": "choice.c01.choice-old-banner-terms.option.offer-exit-right.consequence"
         },
         {
           "id": "demand-surrender",
-          "label": "必须放下武器",
-          "detail": "只有正式投降才能获得保护。",
-          "consequence": "权威倾向 +1。"
+          "labelKey": "choice.c01.choice-old-banner-terms.option.demand-surrender.label",
+          "detailKey": "choice.c01.choice-old-banner-terms.option.demand-surrender.detail",
+          "consequenceKey": "choice.c01.choice-old-banner-terms.option.demand-surrender.consequence"
         }
-      ]
+      ],
+      "promptKey": "choice.c01.choice-old-banner-terms.prompt",
+      "contextKey": "choice.c01.choice-old-banner-terms.context"
     },
     {
       "id": "c01/choice-bell-tower-control",
       "chapter": 3,
-      "prompt": "沉钟塔由谁控制？",
-      "context": "共同控制效率低，独占碎片则会重演双方互不信任的竞赛。",
       "options": [
         {
           "id": "joint-control-with-cain",
-          "label": "与凯恩共管",
-          "detail": "凯恩及其军团作为临时友军进入战场。",
-          "consequence": "凯恩关系 +2。"
+          "labelKey": "choice.c01.choice-bell-tower-control.option.joint-control-with-cain.label",
+          "detailKey": "choice.c01.choice-bell-tower-control.option.joint-control-with-cain.detail",
+          "consequenceKey": "choice.c01.choice-bell-tower-control.option.joint-control-with-cain.consequence"
         },
         {
           "id": "race-for-the-fragment",
-          "label": "争夺碎片",
-          "detail": "各自关闭机构，先完成者带走碎片。",
-          "consequence": "王冠碎片 +1。"
+          "labelKey": "choice.c01.choice-bell-tower-control.option.race-for-the-fragment.label",
+          "detailKey": "choice.c01.choice-bell-tower-control.option.race-for-the-fragment.detail",
+          "consequenceKey": "choice.c01.choice-bell-tower-control.option.race-for-the-fragment.consequence"
         }
-      ]
+      ],
+      "promptKey": "choice.c01.choice-bell-tower-control.prompt",
+      "contextKey": "choice.c01.choice-bell-tower-control.context"
     },
     {
       "id": "c01/choice-forge-record",
       "chapter": 3,
-      "prompt": "如何处理山炉的王冠技术记录？",
-      "context": "完全公开会扩散危险，完全封存会再次切断公共追责。",
       "options": [
         {
           "id": "publish-the-record",
-          "label": "公开责任记录",
-          "detail": "隐藏可复现细节，但公开参与者、用途和代价。",
-          "consequence": "制度能力 +1，山炉关系 -1。"
+          "labelKey": "choice.c01.choice-forge-record.option.publish-the-record.label",
+          "detailKey": "choice.c01.choice-forge-record.option.publish-the-record.detail",
+          "consequenceKey": "choice.c01.choice-forge-record.option.publish-the-record.consequence"
         },
         {
           "id": "seal-dangerous-pages",
-          "label": "暂时封存图纸",
-          "detail": "由多方保管完整记录，暂不向公众展示。",
-          "consequence": "山炉关系 +1。"
+          "labelKey": "choice.c01.choice-forge-record.option.seal-dangerous-pages.label",
+          "detailKey": "choice.c01.choice-forge-record.option.seal-dangerous-pages.detail",
+          "consequenceKey": "choice.c01.choice-forge-record.option.seal-dangerous-pages.consequence"
         }
-      ]
+      ],
+      "promptKey": "choice.c01.choice-forge-record.prompt",
+      "contextKey": "choice.c01.choice-forge-record.context"
     },
     {
       "id": "c01/choice-silverwood-price",
       "chapter": 3,
-      "prompt": "怎样结束银林的代价转移？",
-      "context": "立即停止会伤害母根，逐步退出仍会让林外城市继续承担一段时间。",
       "options": [
         {
           "id": "end-cost-transfer",
-          "label": "立即停止转移",
-          "detail": "让森林从本场战斗开始承担全部真实损耗。",
-          "consequence": "银林关系 -1。"
+          "labelKey": "choice.c01.choice-silverwood-price.option.end-cost-transfer.label",
+          "detailKey": "choice.c01.choice-silverwood-price.option.end-cost-transfer.detail",
+          "consequenceKey": "choice.c01.choice-silverwood-price.option.end-cost-transfer.consequence"
         },
         {
           "id": "phase-out-gradually",
-          "label": "限期逐步退出",
-          "detail": "设定公开期限和林外城市席位，降低断裂冲击。",
-          "consequence": "银林关系 +1，制度能力 +1。"
+          "labelKey": "choice.c01.choice-silverwood-price.option.phase-out-gradually.label",
+          "detailKey": "choice.c01.choice-silverwood-price.option.phase-out-gradually.detail",
+          "consequenceKey": "choice.c01.choice-silverwood-price.option.phase-out-gradually.consequence"
         }
-      ]
+      ],
+      "promptKey": "choice.c01.choice-silverwood-price.prompt",
+      "contextKey": "choice.c01.choice-silverwood-price.context"
     },
     {
       "id": "c01/choice-unflagged-personhood",
       "chapter": 3,
-      "prompt": "灰旗如何称呼“无旗者”？",
-      "context": "它由许多亡者记忆组成，却已经做出不属于任何单个亡者的新选择。",
       "options": [
         {
           "id": "recognize-a-new-person",
-          "label": "承认新人格",
-          "detail": "正式承认它拥有姓名、拒绝与离开的权利。",
-          "consequence": "归名者关系 +2。"
+          "labelKey": "choice.c01.choice-unflagged-personhood.option.recognize-a-new-person.label",
+          "detailKey": "choice.c01.choice-unflagged-personhood.option.recognize-a-new-person.detail",
+          "consequenceKey": "choice.c01.choice-unflagged-personhood.option.recognize-a-new-person.consequence"
         },
         {
           "id": "protect-until-heard",
-          "label": "先保护其表达",
-          "detail": "不急于替它定义人格，在外部威胁中保护它继续回答。",
-          "consequence": "归名者关系 +1，克制 +1。"
+          "labelKey": "choice.c01.choice-unflagged-personhood.option.protect-until-heard.label",
+          "detailKey": "choice.c01.choice-unflagged-personhood.option.protect-until-heard.detail",
+          "consequenceKey": "choice.c01.choice-unflagged-personhood.option.protect-until-heard.consequence"
         }
-      ]
+      ],
+      "promptKey": "choice.c01.choice-unflagged-personhood.prompt",
+      "contextKey": "choice.c01.choice-unflagged-personhood.context"
     }
   ]
 }

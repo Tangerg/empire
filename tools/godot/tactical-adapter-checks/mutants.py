@@ -7,6 +7,7 @@ import tempfile
 root = pathlib.Path(__file__).resolve().parents[3]
 source = (root / "godot/Application/GrayFlagSession.Tactical.cs").read_text()
 mutants = {
+    "outside terrain admitted": ('return !terrain.GetProperty("tags").EnumerateArray().Any(tag => tag.ValueEquals("outside"));', 'return true;'),
     "stale snapshot": ('if (session.revision != stamp.Revision)', 'if (false)'),
     "recruit cards collapsed into legal options": ('session.engine.Recruitment.Cards(state, Coord(at))', 'session.engine.Recruitment.Options(state, Coord(at))'),
     "lost raw terrain defense": ('terrain["defense"]!.GetValue<double>()', '0'),

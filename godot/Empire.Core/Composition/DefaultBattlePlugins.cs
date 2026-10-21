@@ -23,14 +23,10 @@ public static class DefaultBattlePlugins
     public static EnginePlugin ContentFor(ReadOnlyContent content) => new("engine.content", 1,
         context => context.Provide(Keys.Content, content), provides: [Keys.Content]);
 
-    public static EnginePlugin TacticalRules { get; } = new("engine.tactical-rules", 1, context =>
+    public static EnginePlugin TacticalRules { get; } = new("engine.tactical-rules", 2, context =>
     {
-        var content = context.Require(Keys.Content);
-        var grids = GridRegistry.Core();
-        context.Provide(Keys.Grids, grids);
+        context.Provide(Keys.Grids, GridRegistry.Core());
         context.Provide(Keys.Abilities, DefaultAbilities.Create());
-        // Source default space captures these local grids, not a later grid override.
-        context.Provide(Keys.Space, new DefaultTacticalSpace(content, grids));
         context.Provide(Keys.CombatModifiers, DefaultCombatModifiers.Create());
         context.Provide(Keys.HitEffects, DefaultWeaponHitEffects.Create());
         context.Provide(Keys.StatusBehaviors, new StatusBehaviorRegistry());
@@ -43,9 +39,13 @@ public static class DefaultBattlePlugins
         context.Provide(Keys.Directives, UnitDirectiveRegistry.Core());
         context.Provide(Keys.ReferenceChecks, BattleReferenceCheckRegistry.CreateDefault());
         context.Provide(Keys.Saves, new BattleSaveReader());
-    }, provides: [Keys.Abilities, Keys.Space, Keys.CombatModifiers, Keys.HitEffects, Keys.StatusBehaviors,
+    }, provides: [Keys.Abilities, Keys.CombatModifiers, Keys.HitEffects, Keys.StatusBehaviors,
         Keys.Progression, Keys.TurnOrders, Keys.Reactions, Keys.UnitDepartures, Keys.Random,
-        Keys.AreaShapes, Keys.Directives, Keys.ReferenceChecks, Keys.Saves, Keys.Grids], requiresCapabilities: [Keys.Content]);
+        Keys.AreaShapes, Keys.Directives, Keys.ReferenceChecks, Keys.Saves, Keys.Grids]);
+
+    public static EnginePlugin TacticalSpace { get; } = new("engine.tactical-space", 1, context =>
+        context.Provide(Keys.Space, new DefaultTacticalSpace(context.Require(Keys.Content), context.Require(Keys.Grids))),
+        provides: [Keys.Space], requiresCapabilities: [Keys.Content, Keys.Grids]);
 
     public static EnginePlugin MissionRules { get; } = new("engine.mission-rules", 1, context =>
     {
@@ -68,5 +68,5 @@ public static class DefaultBattlePlugins
         requiresCapabilities: [Keys.Content, Keys.Abilities, Keys.Space, Keys.Objectives, Keys.Resources]);
 
     public static IReadOnlyList<EnginePlugin> Rules { get; } = Array.AsReadOnly(new[]
-        { TacticalRules, MissionRules, ResourceEconomy, AiPlanning });
+        { TacticalRules, TacticalSpace, MissionRules, ResourceEconomy, AiPlanning });
 }

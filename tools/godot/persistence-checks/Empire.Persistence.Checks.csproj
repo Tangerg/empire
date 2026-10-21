@@ -9,4 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="../../../godot/Empire.Core/Empire.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="../check-support/FixtureRuleset.cs" Link="FixtureRuleset.cs" />
+  </ItemGroup>
 </Project>

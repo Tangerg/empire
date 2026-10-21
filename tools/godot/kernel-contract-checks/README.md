@@ -26,22 +26,23 @@ the negative controls, and TypeScript is not a dependency of the native runtime.
   unrelated resource-account tests.
 
 The main frozen fixture contains 63 source-evaluated cases: 10 planner cases and
-53 kernel cases. Additional differential checks cover retained scopes/repeated
-composition and persistence identity. Native contract checks exercise typed-key
+53 kernel cases. Additional checks characterize the source retained-scope defect and enforce
+native callback-scoped lifetime, repeated composition and persistence identity. Native contract checks exercise typed-key
 aliasing/conflicts and immutable snapshots. The version fixture exercises real
 source and native save/load admission for positive integral binary64 versions
 beyond Int32 and the JavaScript safe-integer limit, including the largest finite
-double. It also checks malformed stored versions and unchanged default manifest
-identity/hash. Exact trim-blank semantics cover every ECMAScript whitespace
+double. It also checks malformed stored versions and the explicit native default manifest
+identity change. Exact trim-blank semantics cover every ECMAScript whitespace
 character plus BOM, next-line, removed Unicode whitespace and unpaired surrogate
 boundaries at registration, manifest creation and stored admission. Actual source
-content-pack ID and campaign battle-level admissions also cover BOM/U+0085. The full native run currently reports 121 checks.
+content-pack ID and campaign battle-level admissions also cover BOM/U+0085. The full native run currently reports 125 checks.
 
-There are 13 actual TypeScript-owner mutants and 15 compiled native mutants.
+There are 13 actual TypeScript-owner mutants and 18 compiled native mutants.
 They remove ordering, external dependency satisfaction, cycle slicing, duplicate
 rejection, declared consumption, provides/overrides validation, introducer
 identity, override uniqueness, typed-ID safety, manifest registration order,
-wide-version admission, ECMAScript whitespace classification, or ECMAScript numeric error formatting. A native mutant
+wide-version admission, ECMAScript whitespace classification, ECMAScript numeric error formatting,
+context closure, exception-path closure, or deferred-consumption refusal. A native mutant
 must compile before a semantic test failure counts as a kill. A source mutant
 must finish oracle generation and produce a different result.
 
@@ -72,19 +73,23 @@ must finish oracle generation and produce a different result.
 - The composed `PluginManifest` is an immutable, detached registration-order
   ID/version snapshot, not installation order. Installation contexts have empty
   manifests, matching the source. Existing persistence canonicalizes the
-  ID/version map separately. Its original Int32 overload delegates to the new
-  validated double overload without changing existing default manifest hashes.
+  ID/version map separately. The Int32 manifest overload delegates to the
+  validated double overload; the native default recipe deliberately has a new identity.
 
 ## Important source boundaries
 
-**A scoped context is not a revocable lease or sandbox.** Source callbacks can
-retain their context. After installation they can still read, provide and
-replace values in that composition's store, and those later changes are not
-revalidated against the plugin's declarations. A failed composition does not
-undo callback side effects or destroy retained scopes. A subsequent `Compose`
-uses a fresh store, but callback closures and supplied capability objects are
-not deep-cloned. The suite intentionally characterizes this source behavior;
-it does not silently promise stronger immutability, rollback or isolation.
+**Native installation contexts close when their callback ends**, including callback
+exceptions and subsequent manifest rejection. Retained contexts reject `Provide`,
+`Replace` and `Require`; casting to `KernelCapabilities` does not bypass closure.
+A later installer cannot write through an earlier scope. `Has`/`ProviderOf` remain
+metadata probes. The completed `KernelCapabilities` is the public post-composition
+read surface. All declared runtime collaborators must be captured during install,
+not fetched later through a retained context.
+
+The frozen TypeScript oracle still demonstrates its original late replacement,
+late addition and failed-scope read behavior. Those are intentional native deltas,
+not compatibility promises. Closure does not roll back external callback side
+effects or deep-clone installed objects. Repeated `Compose` uses a fresh store.
 
 The public native manifest and declaration collections enforce their read-only
 contracts at runtime; TypeScript's `ReadonlyMap`/readonly arrays enforce those
@@ -93,8 +98,8 @@ contracts statically. Neither form makes the installed rule objects immutable.
 The version save checks install a named identity-only plugin into the kernel,
 then run the existing persistence owners with source-authored valid state and
 explicit feature declarations. This proves composition metadata can be saved
-and admitted without narrowing the numeric version domain. It does **not** prove
-custom rule execution or that native engine defaults already use the kernel.
+and admitted without narrowing the numeric version domain. It does **not** itself prove custom rule execution; the separate engine-composition
+suite exercises actual native default and extended engines through the kernel.
 
 `engine.override.*` names retain the source's anonymous-override semantics:
 existing persistence refuses them, including recorder and save creation.
@@ -103,7 +108,7 @@ Named plugin/version metadata identifies configuration; it cannot serialize
 arbitrary delegates or prove that two different implementations with the same
 name/version are equivalent.
 
-Default engine construction and domain-specific extension integration remain
-outside this primitive-kernel batch. Passing this suite is not end-to-end
-extension parity, and does not relax existing integer-domain restrictions on
+Default engine construction and domain-specific extension integration are covered
+by the separate engine-composition suite. Passing this primitive suite is not
+end-to-end extension parity, and does not relax existing integer-domain restrictions on
 entity IDs, coordinates or other battle data.

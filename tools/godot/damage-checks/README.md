@@ -10,11 +10,11 @@ The runner loads `tools/godot/env.sh`, generates reference results by executing 
 
 ## Verified result
 
-2026-10-20: isolated .NET 8 build passed with 0 warnings and 0 errors. All 33 cases matched the TypeScript oracle across four comparisons: emitted events, intermediate event-time state observations, returned outcomes, and the complete final state.
+2026-10-21: isolated .NET 8 build passed with 0 warnings and 0 errors. Of the 33 generated cases, 31 match the TypeScript oracle across emitted events, intermediate event-time state observations, returned outcomes, and complete final state. The two negative-damage cases intentionally require native `DomainInvariantException`, no events and unchanged state instead of the source silently clamping them to zero.
 
 Coverage:
 
-- Damage clipping, JavaScript rounding, negative/zero damage and missing targets.
+- Damage clipping, JavaScript rounding, zero damage and missing targets; atomic rejection of negative damage.
 - Nonlethal damage at 1, 8 and maximum HP.
 - Morale clamping, resilience, routing and damage-induced routs.
 - Death, capture reset and independent corpse snapshots.
@@ -25,3 +25,5 @@ Coverage:
 - StatusLifecycleContext.damage parity, including departed targets.
 
 Inputs are the checked-in content packs and initial Grayflag state. The generated cases run against the original TypeScript engine, not hard-coded expected values. This focused suite does not claim a full campaign or main-project integration pass.
+
+The canonical numeric owner is `UnitHealth`; `BattleDamage` retains multi-entity aftermath and ordered event ownership. `../health-transition-checks/run.sh --verify-guard` also exercises NaN and infinities that JSON fixtures cannot encode.

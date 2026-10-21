@@ -54,8 +54,9 @@ CombatModifierPipeline Pipeline(JsonObject config)
         if (StateJson.IsTrue(config["replace"])) registry.Replace(Provider(spec)); else registry.Register(Provider(spec));
     return new(registry, StateJson.Number(config, "cap", 0.6));
 }
-var grids = Grids(); var initial = input["initial"]!.AsObject(); var definitions = new StateContent(packs);
+var grids = Grids(); var initial = input["initial"]!.AsObject();
 var catalog = new ReadOnlyContent(packs);
+var definitions = catalog.Source;
 var forecast = new CombatForecasts(catalog, grids, new BattleResources(), DefaultCombatModifiers.Create(), ReactionRegistry.Core());
 var context = new UnitDamageContext(new(catalog, grids, forecast.Effectiveness), initial,
     initial["units"]![0]!.AsObject(), TacticalQueries.Position(initial["units"]![0]!.AsObject()), initial["units"]![1]!.AsObject(), TacticalQueries.Position(initial["units"]![1]!.AsObject()),
@@ -131,4 +132,6 @@ foreach (var item in StateJson.Objects(input["consumers"], "consumers"))
     Check(name, "error", error, item["error"]); Check(name, "result", result, item["result"]); Check(name, "descriptions", descriptions, item["descriptions"]);
     Check(name, "events", events, item["events"]); Check(name, "hashes", hashes, item["hashes"]); Check(name, "after", state, item["after"]);
 }
+var nativeChecks = HitEffectAdmissionChecks.Run(packs);
+Console.WriteLine($"PASS {nativeChecks} handler-owned admission and composed save/replay checks");
 Console.WriteLine($"PASS {input["pipelineCases"]!.AsArray().Count} pipeline + {registryChecks.Count} registry + {input["consumers"]!.AsArray().Count} canonical combat consumer cases, {assertions} assertions");

@@ -1,10 +1,15 @@
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core.Determinism;
+using Empire.Localization;
+using System.Globalization;
 using Empire.Presentation;
 
-if (args.Length is < 1 or > 2) throw new ArgumentException("Usage: StagingChecks <oracle.json> [exported-staging.json]");
+if (args.Length != 3) throw new ArgumentException("Usage: StagingChecks <oracle.json> <native-staging.json> <catalog-check-projection.json>");
 var oracle = EcmaJson.Parse(File.ReadAllText(args[0]))!.AsObject();
+var exported = EcmaJson.Parse(File.ReadAllText(args[1]))!.AsObject();
+var catalog = JsonSerializer.Deserialize<Dictionary<string, string>>(File.ReadAllText(args[2]))!;
+var messages = new GameText(key => catalog.GetValueOrDefault(key), CultureInfo.GetCultureInfo("zh-CN"));
 var serialization = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 int checks = 0;
 string Text(JsonNode? value) => EcmaJson.ReadString(value);
@@ -17,8 +22,8 @@ void Check(string name, JsonNode? actual, JsonNode? expected)
 foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
 {
     var before = EcmaJson.Stringify(item);
-    var view = CampaignStaging.Create(EcmaJson.ToElement(item["state"]), EcmaJson.ToElement(item["node"]), EcmaJson.ToElement(item["level"]),
-        EcmaJson.ToElement(oracle["metadata"]), Name, item["pending"]!.GetValue<bool>());
+    var view = CampaignStaging.Create(messages, EcmaJson.ToElement(item["state"]), EcmaJson.ToElement(item["node"]), EcmaJson.ToElement(item["level"]),
+        EcmaJson.ToElement(exported), Name, item["pending"]!.GetValue<bool>());
     var actual = new JsonObject
     {
         ["campaignTitle"] = view.CampaignTitle, ["chapterHeading"] = view.ChapterHeading, ["progress"] = view.Progress,
@@ -40,16 +45,20 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
     catch (NotSupportedException) { checks++; }
 }
 var first = oracle["cases"]![0]!;
+var alternate = new GameText(key => catalog.TryGetValue(key, out var value) ? value + " [fixture]" : null, CultureInfo.InvariantCulture);
+var alternateView = CampaignStaging.Create(alternate, EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(first["node"]),
+    EcmaJson.ToElement(first["level"]), EcmaJson.ToElement(exported), Name, false);
+Check("staging injects shared campaign wording", JsonValue.Create(alternateView.CampaignTitle),
+    JsonValue.Create(messages.Format(Text(exported["titleKey"])) + " [fixture]"));
+Check("staging injects shell action wording", JsonValue.Create(alternateView.ExitLabel), JsonValue.Create("返回主菜单 [fixture]"));
 var node = first["node"]!.DeepClone().AsObject(); node["level"] = "wrong";
 try
 {
-    CampaignStaging.Create(EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(node), EcmaJson.ToElement(first["level"]), EcmaJson.ToElement(oracle["metadata"]), Name, false);
+    CampaignStaging.Create(messages, EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(node), EcmaJson.ToElement(first["level"]), EcmaJson.ToElement(exported), Name, false);
     throw new Exception("Mismatched staging identity accepted");
 }
 catch (InvalidOperationException) { checks++; }
-if (args.Length == 2)
 {
-    var exported = EcmaJson.Parse(File.ReadAllText(args[1]))!.AsObject();
     var normalized = exported.DeepClone();
     void NormalizeArt(JsonNode? value)
     {
@@ -58,19 +67,19 @@ if (args.Length == 2)
         foreach (var entry in obj.ToArray()) NormalizeArt(entry.Value);
     }
     NormalizeArt(normalized);
-    // This shared document also carries narrative/menu contracts checked by their own source suites.
-    var narrativeMenuFields = new[] { "completionLabel", "menu", "menuArt", "chapters", "storyScenes" };
-    var stagingMetadata = oracle["metadata"]!.AsObject();
-    Check("shared metadata field ownership",
-        JsonSerializer.SerializeToNode(normalized!.AsObject().Select(pair => pair.Key).Order(StringComparer.Ordinal)),
-        JsonSerializer.SerializeToNode(stagingMetadata.Select(pair => pair.Key).Concat(narrativeMenuFields).Order(StringComparer.Ordinal)));
-    foreach (var field in narrativeMenuFields)
-        Check($"documented narrative/menu extension {field}",
-            JsonValue.Create(field == "completionLabel" ? normalized[field]?.GetValueKind() == JsonValueKind.String : normalized[field] is JsonObject),
-            JsonValue.Create(true));
-    var stagingProjection = new JsonObject(stagingMetadata.Select(pair =>
-        new KeyValuePair<string, JsonNode?>(pair.Key, normalized[pair.Key]?.DeepClone())));
-    Check("live adapter staging-owned export metadata", stagingProjection, stagingMetadata);
+    Check("native shared document schema", exported["schema"], JsonValue.Create(2));
+    Check("single campaign title owner", JsonValue.Create(messages.Format(Text(exported["titleKey"]))), oracle["metadata"]!["title"]);
+    foreach (var field in new[] { "battleTotal", "joinAfter", "relationLabels", "resourceLabels", "portraits" })
+        Check($"unchanged staging metadata {field}", normalized![field], oracle["metadata"]![field]);
+    foreach (var level in exported["levels"]!.AsObject())
+    {
+        var previous = oracle["metadata"]!["levels"]![level.Key]!;
+        Check("chapter title no longer duplicated per level", JsonValue.Create(level.Value!.AsObject().ContainsKey("chapterTitle")), JsonValue.Create(false));
+        var chapter = exported["chapters"]![level.Value!["chapter"]!.GetValue<int>().ToString(CultureInfo.InvariantCulture)]!;
+        Check("shared chapter owns staging label", JsonValue.Create(messages.Format(Text(chapter["titleKey"]))), previous["chapterTitle"]);
+        foreach (var field in new[] { "chapter", "order", "briefingId", "chapterArt", "briefingArt" })
+            Check($"unchanged level presentation {level.Key}.{field}", normalized!["levels"]![level.Key]![field], previous[field]);
+    }
     var art = exported["portraits"]!.AsObject().Select(pair => pair.Value!.AsObject()).Concat(
         exported["levels"]!.AsObject().SelectMany(pair => new[] { pair.Value!["chapterArt"], pair.Value!["briefingArt"] }.OfType<JsonObject>()));
     var directory = Path.GetDirectoryName(Path.GetFullPath(args[1]))!;
@@ -86,4 +95,4 @@ if (args.Length == 2)
         Check("original narrative asset identity", JsonValue.Create(targetHash), JsonValue.Create(sourceHash));
     }
 }
-Console.WriteLine($"PASS {checks} comparisons across {oracle["cases"]!.AsArray().Count} live-source staging renders; immutable rows and explicit actor bindings");
+Console.WriteLine($"PASS {checks} comparisons across {oracle["cases"]!.AsArray().Count} frozen staging renders with native schema-2 metadata; immutable rows and explicit actor bindings");

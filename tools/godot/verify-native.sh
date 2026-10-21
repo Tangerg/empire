@@ -2,6 +2,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 source tools/godot/env.sh
+python3 tools/godot/check-source-metadata.py
 # Bound each native process; a stalled process is a failed gate, never a PASS.
 export EMPIRE_CHECK_TIMEOUT_SECONDS="${EMPIRE_CHECK_TIMEOUT_SECONDS:-300}"
 dotnet() { command timeout --signal=TERM --kill-after=15s "$EMPIRE_CHECK_TIMEOUT_SECONDS" "$DOTNET_ROOT/dotnet" "$@"; }
@@ -27,6 +28,8 @@ bash tools/godot/scenario-extension-checks/run.sh --frozen
 bash tools/godot/persistence-reference-checks/run.sh --frozen
 bash tools/godot/level-validation-checks/run.sh --frozen
 bash tools/godot/reaction-adapter-checks/run.sh
+bash tools/godot/catalog-boundary-checks/run.sh
+bash tools/godot/application-save-checks/run.sh
 dotnet run --project tools/godot/application-checks -- .
 bash tools/godot/campaign-victory-checks/run.sh
 dotnet run --project tools/godot/persistence-checks/Empire.Persistence.Checks.csproj -- .
@@ -83,6 +86,7 @@ if [[ "${1:-}" == '--full' ]]; then
   done
   bash tools/godot/session-contract-checks/run.sh
   bash tools/godot/session-contract-checks/mutants.sh
+  bash tools/godot/battle-screen-checks/mutants.sh
   bash tools/godot/tactical-query-checks/run.sh
   bash tools/godot/tactical-selection-checks/run.sh
   python3 tools/godot/tactical-selection-checks/mutants.py
@@ -95,6 +99,7 @@ if [[ "${1:-}" == '--full' ]]; then
   bash tools/godot/campaign-slot-checks/run.sh --native --verify-guard
   bash tools/godot/camera-checks/run.sh --native --verify-guard
   bash tools/godot/lighting-checks/run.sh
+  bash tools/godot/lighting-checks/lifetime-mutants.sh
   bash tools/godot/board-decoration-checks/run.sh
   python3 tools/godot/board-decoration-checks/mutants.py
   bash tools/godot/scenery-checks/run.sh

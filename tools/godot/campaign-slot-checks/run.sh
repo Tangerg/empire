@@ -12,7 +12,7 @@ root, target = map(Path, sys.argv[1:])
 shutil.copytree(root / 'godot/Empire.Core', target / 'Core', ignore=shutil.ignore_patterns('bin', 'obj'))
 checks = target / 'checks'
 checks.mkdir()
-for source in ['godot/Application/CampaignSlotStorage.cs', 'godot/Presentation/CampaignMenu.cs', 'tools/godot/campaign-slot-checks/Program.cs']:
+for source in ['godot/Application/CampaignSlotStorage.cs', 'godot/Application/SaveFile.cs', 'godot/Presentation/CampaignMenu.cs', 'tools/godot/campaign-slot-checks/Program.cs']:
     shutil.copyfile(root / source, checks / Path(source).name)
 (checks / 'Checks.csproj').write_text('<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><TreatWarningsAsErrors>true</TreatWarningsAsErrors></PropertyGroup><ItemGroup><ProjectReference Include="../Core/Empire.Core.csproj" /></ItemGroup></Project>')
 PY
@@ -48,6 +48,7 @@ native = target / 'native'
 for name in ['CampaignMenu.cs', 'CampaignMenuScreen.cs', 'CampaignMenuChecks.cs']:
     shutil.copyfile(root / 'godot/Presentation' / name, native / 'Presentation' / name)
 shutil.copyfile(root / 'godot/Application/CampaignSlotStorage.cs', native / 'CampaignSlotStorage.cs')
+shutil.copyfile(root / 'godot/Application/SaveFile.cs', native / 'SaveFile.cs')
 shutil.copyfile(root / 'godot/Scenes/CampaignMenuChecks.tscn', native / 'Scenes/CampaignMenuChecks.tscn')
 (native / 'MenuNativeChecks.csproj').write_text('<Project Sdk="Godot.NET.Sdk/4.6.3"><PropertyGroup><TargetFramework>net8.0</TargetFramework><EnableDynamicLoading>true</EnableDynamicLoading><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><TreatWarningsAsErrors>true</TreatWarningsAsErrors></PropertyGroup><ItemGroup><ProjectReference Include="../Core/Empire.Core.csproj" /></ItemGroup></Project>')
 (native / 'project.godot').write_text('config_version=5\n[application]\nconfig/name="Campaign menu native checks"\nrun/main_scene="res://Scenes/CampaignMenuChecks.tscn"\nconfig/features=PackedStringArray("4.6", "C#", "GL Compatibility")\n[dotnet]\nproject/assembly_name="MenuNativeChecks"\n[rendering]\nrenderer/rendering_method="gl_compatibility"\n')

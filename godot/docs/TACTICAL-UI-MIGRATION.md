@@ -1,10 +1,12 @@
 # Tactical UI migration contract
 
-Audit: 2026-10-20. This is an implementation plan based on the inspected shared working tree, not an implemented-feature or GUI-acceptance claim. Only this document was changed for this audit. Scope is the original GreyFlag campaign and its native tactical interface; other themes, editor and engine-demo screens are not part of this batch.
+Original audit: 2026-10-20. The findings and proposal below record the pre-migration design, not current missing-feature or GUI-acceptance claims. Scope is the original GreyFlag campaign and its native tactical interface; other themes, editor and engine-demo screens are not part of this batch.
+
+Current boundary: `BattleScreen` explicitly consumes `ITacticalBattleSession`. `GetTacticalQueries` feeds the single `TacticalSelectionController`; `ProjectHud` supplies revision-stamped rows and intents; `Dispatch` and `Undo` commit through the same session. The obsolete flat action enumeration and test-only screen submission path have been removed. Detached snapshot/transition records live in `BattlePresentationModels.cs`. See `Presentation/README.md` for the current contract and executable native checks.
 
 ## Finding and smallest complete batch
 
-The native engine already executes the relevant actions. The missing vertical slice is the player's composition of an order and the facts needed to understand it. `GrayFlagSession.GetLegalOrders` currently expands every movement origin, command and target into complete actions. `BattleScreen` groups these by a coarse role and then asks the player to confirm one of the actions at a target. That is not the original destination-first menu. It also discards rejected support options, most content descriptions, command keys/hints, and source interaction state.
+The native engine already executes the relevant actions. The missing vertical slice is the player's composition of an order and the facts needed to understand it. The pre-migration flat order adapter expanded every movement origin, command and target into complete actions. The pre-migration `BattleScreen` grouped these by a coarse role and then asks the player to confirm one of the actions at a target. That is not the original destination-first menu. It also discards rejected support options, most content descriptions, command keys/hints, and source interaction state.
 
 Implement one cohesive **destination selection, tactical read models and undo** batch:
 
@@ -44,7 +46,7 @@ Paths below are relative to the repository. API names marked **proposed** are a 
 
 Keep `Battle` as the only owner that advances/restores battle state. Keep `GrayFlagSession` as application adapter/history owner. Keep one local tactical selection model in presentation, replacing `_selectedId`/`_target`/`_role` as independently advancing representations. A selected unit ID, chosen destination/path, chosen option key, inspection ID and cursor are interaction state, not editable battle entities.
 
-Extend `IBattleSession` with a small cohesive read contract rather than publishing mutable core objects:
+The original proposal was to replace the flat order contract with a small cohesive read contract rather than publishing mutable core objects:
 
 - **Proposed `GetTacticalView(intent)`**: returns revision, phase/input eligibility, commandable/inspected identity, ordered destination options, overlay sets/path/cursor, optional forecast, support options, recruit/deployment view, objective/player/account/cast/initiative rows and the selected content definitions. `intent` contains only selection IDs/cells/keys and hover cell. The session resolves current authoritative entities and returns detached values.
 - The read model must retain semantic facts rather than just flattened labels: command key and weapon, target set, eligibility/reasons, current/unlocked/mastered flags, actual damage recipient, ordered modifiers, account nulls and costs. Presentation applies source wording and layout to those facts. Keep original Chinese text/content and verified original assets.
@@ -115,3 +117,11 @@ Required cases:
 Include deliberate mutants: drop refusal rows, sort weapon keys differently, use defender HP instead of recipient HP, hardcode action-kind handoff, leak hidden objectives, copy rank thresholds into UI, or permit stale callback dispatch. Each guard must demonstrably fail when its protected behavior is broken.
 
 Run the affected core/application/presentation suites and exact-tree aggregate command documented by `tools/godot/verify-native.sh`; do not change canonical battle hashes to accommodate a view bug. Then perform real Godot interaction from a normal campaign entry: choose/move/back, hover forecast, use support controls, keyboard cycle/command, undo, end turn through actual AI/animation, save/load/restart, deployment and later-map objective/cast inspection. Record window sizes, fixture versus naturally reached state, actual results and remaining visual differences. No new test run or GUI acceptance was performed by this documentation audit.
+
+## Canonical cell eligibility
+
+`ITacticalSelectionQueries.InteractiveCells` is a revision-bound `FrozenSet<BoardCell>` derived from the snapshot's terrain IDs and the engine's composed terrain definitions. The canonical `outside` terrain tag excludes a cell; movement cost, terrain ID spelling and material ground-tag families do not define this UI eligibility. Blocked movement terrain can still be inspected.
+
+The selection controller uses that same immutable projection for clicks, hover, keyboard direction candidates and actor cycling. `BattleScreen` passes it unchanged to the rendered fog/range overlay and uses it for pointer cancellation. Material manifests only configure artwork. Changing their tags cannot change interaction eligibility, movement legality or battle state. This intentionally fixes the former art-dependent behavior, including holes before materials are configured and keyboard access to excluded cells.
+
+Native counterexamples deliberately disagree in both directions: canonical outside terrain with playable material tags, and canonical playable terrain with outside material tags. Controller, adapter, mounted-screen fog and native pointer checks protect the boundary. Original source-backed interaction traces remain unchanged; invalid source hex-facing fixtures are explicitly rejected before a separately corrected native comparison.

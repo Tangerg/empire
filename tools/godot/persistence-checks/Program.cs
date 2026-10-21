@@ -1,3 +1,4 @@
+using Empire.Checks;
 using System.Text.Json.Nodes;
 using Empire.Core;
 using Empire.Core.Combat;
@@ -13,7 +14,7 @@ var engine = new GrayFlagEngine(packs);
 var manifest = engine.RulesetManifest;
 var persistence = engine.Persistence;
 var fixture = Read("godot/tests/oracle/grayflag-0.58.json").AsObject();
-var good = fixture["finalSave"]!.AsObject();
+var good = FixtureRuleset.NativeDocument(fixture["finalSave"]!.AsObject());
 var initial = fixture["initialState"]!.AsObject();
 var passed = 0;
 var failed = 0;
@@ -63,7 +64,9 @@ void AdmitMetadata(string name, Action<JsonObject> edit)
 }
 JsonObject LiveSave() => persistence.Save(initial, "2026-01-01T00:00:00.000Z");
 
-Check("source manifest identity", () => Equal(good["ruleset"]!, manifest, "manifest"));
+Check("declared native assembly identity", () => Equal(good["ruleset"]!, manifest, "manifest"));
+Check("obsolete source assembly identity is rejected", () =>
+    Throws<StoredDocumentException>(() => persistence.Load(fixture["finalSave"])));
 foreach (var level in Read("godot/data/grayflag-campaign-levels.json").AsArray().OfType<JsonObject>())
 {
     Check($"campaign opening save {level["id"]}", () =>
@@ -76,6 +79,8 @@ foreach (var level in Read("godot/data/grayflag-campaign-levels.json").AsArray()
 foreach (var aggression in new[] { "0.35", "0.58", "0.8" })
 {
     var oracle = Read($"godot/tests/oracle/grayflag-{aggression}.json").AsObject();
+    oracle["finalSave"] = FixtureRuleset.NativeDocument(oracle["finalSave"]!.AsObject());
+    oracle["replay"] = FixtureRuleset.NativeDocument(oracle["replay"]!.AsObject());
     Check($"source final save {aggression}", () =>
     {
         Equal(oracle["finalSave"]!["state"]!, persistence.Load(oracle["finalSave"]), "loaded final state");
@@ -228,7 +233,7 @@ void Divergence(string name, Action<JsonObject> edit, int at, string reason)
 {
     Check(name, () =>
     {
-        var replay = (JsonObject)fixture["replay"]!.DeepClone();
+        var replay = FixtureRuleset.NativeDocument(fixture["replay"]!.AsObject());
         edit(replay);
         var result = BattleReplayVerifier.Verify(manifest, fixture["level"]!.AsObject(), replay,
             (level, seed) => engine.CreateBattle(level, seed));

@@ -14,6 +14,7 @@ JsonNode Read(string path) => JsonNode.Parse(File.ReadAllText(Path.Combine(root,
 var packs = Read("godot/data/content-packs.json").AsArray();
 var vectors = Read("tools/godot/deployment-checks/vectors.json").AsObject();
 var engine = new GrayFlagEngine(packs);
+var stateRules = new BattleStateRules(engine.Catalog, engine.Grids, engine.Reactions);
 var passed = 0;
 var failed = 0;
 void Check(string name, Action run)
@@ -90,7 +91,7 @@ foreach (var fixture in vectors["cases"]!.AsArray().OfType<JsonObject>())
     var rawHash = fixture["rawStateHash"]!.GetValue<string>();
     Check($"{name} state construction", () =>
     {
-        if (StateDigest.Hash(BattleStateFactory.Create(level, packs)) != rawHash) throw new Exception("Raw initial state differs");
+        if (StateDigest.Hash(BattleStateFactory.Create(stateRules, level)) != rawHash) throw new Exception("Raw initial state differs");
     });
     Check($"{name} roster", () =>
     {
@@ -152,7 +153,7 @@ foreach (var fixture in vectors["cases"]!.AsArray().OfType<JsonObject>())
 foreach (var fixture in vectors["invalidLevels"]!.AsArray().OfType<JsonObject>())
     Check($"construction refusal {fixture["name"]}", () =>
     {
-        try { BattleStateFactory.Create(fixture["level"]!.AsObject(), packs); throw new Exception("Expected construction refusal"); }
+        try { BattleStateFactory.Create(stateRules, fixture["level"]!.AsObject()); throw new Exception("Expected construction refusal"); }
         catch (DomainInvariantException error)
         {
             if (error.Message != fixture["error"]!.GetValue<string>()) throw new Exception($"Unexpected refusal: {error.Message}");

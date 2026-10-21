@@ -3,9 +3,11 @@
 <Compile Include="$(EmpireRoot)/godot/Empire.Core/Registries/*.cs" />
 <Compile Include="$(EmpireRoot)/godot/Empire.Core/Determinism/*.cs" />
 <Compile Include="$(EmpireRoot)/godot/Empire.Core/State/StateJson.cs" />
+<Compile Include="$(EmpireRoot)/godot/Empire.Core/State/UnitHealth.cs" />
 <Compile Include="$(EmpireRoot)/godot/Empire.Core/State/StateContent.cs" />
 <Compile Include="$(EmpireRoot)/godot/Empire.Core/Geometry/*.cs" Exclude="$(EmpireRoot)/godot/Empire.Core/Geometry/TileArtVariation.cs" />
 <Compile Include="$(EmpireRoot)/godot/Empire.Core/Tactics/TacticalQueries.cs" />
+<Compile Include="$(EmpireRoot)/godot/Empire.Core/Tactics/BattleRelocation.cs" />
 <Compile Include="$(EmpireRoot)/godot/Empire.Core/Combat/CombatEffects.cs" />
 <Compile Include="$(EmpireRoot)/godot/Empire.Core/Combat/BattleDamage.cs" />
 <Compile Include="$(EmpireRoot)/godot/Empire.Core/Progression/RankProgressionPolicy.cs" />

@@ -60,6 +60,33 @@ public static class EcmaJson
         return document.RootElement.Clone();
     }
 
+    /// <summary>Reads an immutable object's UTF-16 key without transcoding an unpaired code unit.</summary>
+    public static bool TryGetProperty(JsonElement value, string key, out JsonElement property)
+    {
+        ArgumentNullException.ThrowIfNull(key);
+        for (var index = 0; index < key.Length; index++)
+        {
+            if (!char.IsSurrogate(key[index])) continue;
+            if (char.IsHighSurrogate(key[index]) && index + 1 < key.Length && char.IsLowSurrogate(key[index + 1]))
+            {
+                index++;
+                continue;
+            }
+
+            // JsonElement's string-key lookup requires valid UTF-8. The canonical
+            // JSON model permits every UTF-16 key, so decode those objects here.
+            var obj = Parse(value.GetRawText())!.AsObject();
+            if (obj.TryGetPropertyValue(key, out var node))
+            {
+                property = ToElement(node);
+                return true;
+            }
+            property = default;
+            return false;
+        }
+        return value.TryGetProperty(key, out property);
+    }
+
     public static bool DeepEquals(JsonNode? left, JsonNode? right)
     {
         if (left is null || right is null) return left is null && right is null;
@@ -109,7 +136,7 @@ public static class EcmaJson
             case JsonTokenType.String: return JsonValue.Create(ReadToken(ref reader));
             case JsonTokenType.Number:
                 var number = reader.GetDouble();
-                if (!double.IsFinite(number)) throw new DomainInvariantException("Canonical JSON cannot contain a non-finite number");
+                if (!double.IsFinite(number)) throw new JsonException("JSON number is outside the finite binary64 range.");
                 // Keep JsonElement-backed numeric access (GetValue<int>, double, etc.) while
                 // rounding through binary64 exactly once, as JSON.parse does.
                 return JsonValue.Create(JsonSerializer.SerializeToElement(number));

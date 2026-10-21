@@ -17,9 +17,9 @@ public sealed class RecruitmentOrders
         grids.Get(StateJson.Text(state["rules"]!["grid"], "grid")));
     private readonly BattleResources resources;
     private readonly Func<JsonObject, string, int, Coord, bool, JsonObject> spawn;
-    public RecruitmentOrders(JsonArray packs, GridRegistry grids, BattleResources resources,
+    public RecruitmentOrders(ReadOnlyContent catalog, GridRegistry grids, BattleResources resources,
         Func<JsonObject, string, int, Coord, bool, JsonObject> spawn)
-    { content = new StateContent(packs); this.grids = grids; this.resources = resources; this.spawn = spawn; }
+    { content = catalog.Source; this.grids = grids; this.resources = resources; this.spawn = spawn; }
 
     public string? Refusal(JsonObject state, string type, Coord at)
     {

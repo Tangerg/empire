@@ -8,7 +8,6 @@ namespace Empire.Core.Terrain;
 public sealed class BattleOverlays
 {
     private readonly StateContent content;
-    public BattleOverlays(JsonArray packs) => content = new StateContent(packs);
     public BattleOverlays(ReadOnlyContent catalog) => content = catalog.Source;
 
     public void Add(JsonObject state, JsonObject overlay, Action<JsonObject> emit)

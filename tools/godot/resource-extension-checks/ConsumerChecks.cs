@@ -37,7 +37,7 @@ internal static class ResourceConsumerChecks
             var combat = new BattleCombat(catalog, baseline.Grids, resources, baseline.Space, baseline.AreaShapes,
                 DefaultCombatModifiers.Create(), DefaultWeaponHitEffects.Create(), baseline.Reactions,
                 baseline.RankProgression, baseline.UnitDepartures);
-            var support = new SupportOrders(packs, baseline.Grids, resources, combat.Effects);
+            var support = new SupportOrders(catalog, baseline.Grids, resources, combat.Effects);
             var rules = baseline.AbilityRules with { Content = catalog, Combat = combat, Support = support };
             var commands = new AbilityCommands(rules, baseline.Commands);
             var state = item["initial"]!.DeepClone().AsObject();

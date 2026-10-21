@@ -59,7 +59,7 @@ foreach (var pair in oracle["unitNames"]!.AsObject()) Check("canonical unit labe
 foreach (var pair in oracle["careerNames"]!.AsObject()) Check("canonical career label " + pair.Key, JsonValue.Create(engine.CareerName(pair.Key)), pair.Value);
 foreach (var pair in oracle["resourceNames"]!.AsObject()) Check("canonical resource label " + pair.Key, JsonValue.Create(engine.Resources.Name(pair.Key)), pair.Value);
 Check("unknown resource label query", JsonValue.Create(engine.Resources.Name("plugin.custom")), null);
-var bridge = new CampaignBattleBridge(_ => level, packs);
+var bridge = new CampaignBattleBridge(_ => level, new Empire.Core.State.ReadOnlyContent(packs));
 foreach (var item in oracle["summaries"]!.AsArray().OfType<JsonObject>())
 {
     var state = item["state"]!.AsObject();

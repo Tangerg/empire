@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Nodes;
 using Empire.Core.Determinism;
+using Empire.Localization;
 using Godot;
 
 namespace Empire.Presentation;
@@ -18,9 +19,17 @@ public partial class CampaignStagingChecks : Node
             if (arguments.Length != 1) throw new ArgumentException("Pass staging source oracle JSON after --");
             var oracle = EcmaJson.Parse(System.IO.File.ReadAllText(arguments[0]))!.AsObject();
             var item = oracle["cases"]!.AsArray().OfType<JsonObject>().First();
-            var metadata = oracle["metadata"]!.AsObject();
+            var messages = GodotTextCatalog.LoadSimplifiedChinese();
+            var metadata = PresentationJson.Load<JsonObject>("res://data/grayflag-staging.json");
+            void RemoveArt(JsonNode? value)
+            {
+                if (value is not JsonObject obj) return;
+                if (obj.ContainsKey("source") && obj.ContainsKey("resourcePath")) obj["resourcePath"] = null;
+                foreach (var child in obj.ToArray()) RemoveArt(child.Value);
+            }
+            RemoveArt(metadata);
             string UnitName(string id) => EcmaJson.ReadString(oracle["unitNames"]![id]);
-            CampaignStagingView View(bool pending) => CampaignStaging.Create(EcmaJson.ToElement(item["state"]),
+            CampaignStagingView View(bool pending) => CampaignStaging.Create(messages, EcmaJson.ToElement(item["state"]),
                 EcmaJson.ToElement(item["node"]), EcmaJson.ToElement(item["level"]), EcmaJson.ToElement(metadata), UnitName, pending);
             var assets = AssetCatalog.Load();
             var view = View(false);
@@ -46,7 +55,7 @@ public partial class CampaignStagingChecks : Node
                 Require(screen.RenderingDiagnostics.Any(value => value.Contains($"portrait {unit.Id}", StringComparison.Ordinal)), "Missing authored portrait must be reported");
             var oldButton = NavigationButton(screen, "StartBattle");
             var oldExit = NavigationButton(screen, "CampaignExit");
-            Require(oldExit.AccessibilityName == CampaignShellView.ExitLabel, "Shared shell exit must retain the source accessible label");
+            Require(oldExit.AccessibilityName == view.ExitLabel, "Shared shell exit must retain the source accessible label");
             Require(oldButton.Text == view.StartLabel, "First entry label must match source");
             oldButton.EmitSignal(Button.SignalName.Pressed); oldButton.EmitSignal(Button.SignalName.Pressed);
             Require(starts == 1 && oldButton.Disabled && oldExit.Disabled, "Start callback must run once and disable sibling exit");
@@ -86,7 +95,7 @@ public partial class CampaignStagingChecks : Node
             metadata = PresentationJson.Load<JsonObject>("res://data/grayflag-staging.json");
             foreach (var sourceCase in oracle["cases"]!.AsArray().OfType<JsonObject>())
             {
-                var live = CampaignStaging.Create(EcmaJson.ToElement(sourceCase["state"]), EcmaJson.ToElement(sourceCase["node"]),
+                var live = CampaignStaging.Create(messages, EcmaJson.ToElement(sourceCase["state"]), EcmaJson.ToElement(sourceCase["node"]),
                     EcmaJson.ToElement(sourceCase["level"]), EcmaJson.ToElement(metadata), UnitName, sourceCase["pending"]!.GetValue<bool>());
                 screen.ShowStaging(live, assets, () => starts++, () => exits++);
                 Require(screen.RenderingDiagnostics.Count == 0, $"Real exported staging art is incomplete: {string.Join("; ", screen.RenderingDiagnostics)}");

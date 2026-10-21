@@ -22,10 +22,24 @@ mutants = [
      'StateJson.Text(candidate, "reaction") == "support"', 'custom interceptor takes damage not own multiplier complete forecast'),
     ('custom-resource-conservation', 'Combat/CombatForecasts.cs', 'stance.ConservesResources &&',
      'stance.Id == "conserve" &&', 'custom thrift rejects cooldown weapon complete forecast'),
-    ('unknown-stance-prevalidation', 'Actions/DefaultActionHandlers.cs', 'unit["reaction"] = stance;',
-     'context.Rules.Combat.Forecasts.Reaction(stance); unit["reaction"] = stance;', 'unknown stance action typed action failure'),
-    ('support-identity', 'Combat/BattleCombat.Execution.cs', 'reaction.Stance == "support"',
-     'Forecasts.Reaction(reaction.Stance).Intercepts', 'ward execution ordered events'),
+    ('missing-command-reaction-admission', 'Tactics/TacticalCommands.cs', 'if (!rules.Reactions.Has(stance))',
+     'if (string.IsNullOrEmpty("mutant"))', 'unknown stance action native typed refusal'),
+    ('missing-command-facing-admission', 'Tactics/TacticalCommands.cs', 'if (!UnitDisposition.AdmitsFacing(grid, facing))',
+     'if (string.IsNullOrEmpty("mutant"))', 'invalid disposition'),
+    ('missing-disposition-reaction-invariant', 'State/UnitDisposition.cs', '        reactions.Get(stance);',
+     '        _ = reactions;', 'invalid internal reaction accepted'),
+    ('missing-disposition-facing-invariant', 'State/UnitDisposition.cs', 'if (!AdmitsFacing(grid, facing))',
+     'if (string.IsNullOrEmpty("mutant"))', 'invalid internal facing accepted'),
+    ('missing-saved-facing-admission', 'Persistence/BattleSaveReader.References.cs', 'if (!UnitDisposition.AdmitsFacing(grid, StateJson.Text(unit, "facing")))',
+     'if (string.IsNullOrEmpty("mutant"))', 'invalid saved disposition accepted'),
+    ('closed-facing-list', 'State/UnitDisposition.cs', 'grid.Directions.Any(direction => direction.Id == facing)',
+     'new Square4Grid().Directions.Any(direction => direction.Id == facing)', 'square8'),
+    ('support-id-selection', 'Combat/BattleCombat.cs', 'Forecasts.Reaction(StateJson.Text(candidate, "reaction")).SupportAttackMultiplier is not null',
+     'Forecasts.Reaction(StateJson.Text(candidate, "reaction")).SupportAttackMultiplier is not null && StateJson.Text(candidate, "reaction") == "support"', 'test.support registered support attack selection'),
+    ('support-id-progress', 'Combat/BattleCombat.Execution.cs', 'Forecasts.Reaction(reaction.Stance).TriggeredRankProgress',
+     'reaction.Stance == "support" ? 20 : 0', 'support registry-owned triggered rank progress'),
+    ('support-fixed-modifier', 'Combat/BattleCombat.cs', '.And(new("reaction.support-attack", "援护攻击", "reaction", "final", "multiply",\n                    Forecasts.Reaction(StateJson.Text(supporter, "reaction")).SupportAttackMultiplier!.Value))',
+     '.And(new("reaction.support-attack", "援护攻击", "reaction", "final", "multiply", 0.6))', 'support registered support attack modifier'),
 ]
 for name, relative, before, after, expected in mutants:
     directory = scratch / ('mutant-' + name)
@@ -37,7 +51,7 @@ for name, relative, before, after, expected in mutants:
         raise RuntimeError(f'{name}: guard target must match exactly once')
     path.write_text(source.replace(before, after))
     build = subprocess.run(['dotnet', 'build', str(scratch / 'TurnReactionExtensionChecks.csproj'),
-        '--configfile', str(scratch / 'NuGet.Config'), '--disable-build-servers', '--nologo',
+        '--configfile', str(scratch / 'NuGet.Config'), '--disable-build-servers', '--nologo', '-m:1', '-p:UseSharedCompilation=false',
         f'-p:EmpireRoot={root}', f'-p:EmpireCoreRoot={core}', f'-p:OutputPath={directory / "bin"}'], capture_output=True, text=True)
     (scratch / f'{name}-build.log').write_text(build.stdout + build.stderr)
     if build.returncode:

@@ -1,3 +1,4 @@
+using Empire.Checks;
 using System.Reflection;
 using Empire.Core.Progression;
 using Empire.Core.Lifecycle;
@@ -27,6 +28,7 @@ void Check(string name, string key, JsonNode? actual, JsonNode? expected)
     throw new Exception($"Mismatch in {name}: {key}");
 }
 var passed = 0;
+var nativeRejections = 0;
 foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
 {
     var name = item["name"]!.GetValue<string>();
@@ -40,8 +42,9 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
     }
     var state = item["initial"]!.DeepClone().AsObject();
     var grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid());
-    var transport = new BattleTransport(packs, grids);
-    var damage = new BattleDamage(new ReadOnlyContent(packs), grids, new CombatEffects(new ReadOnlyContent(packs), new ThresholdRankProgressionPolicy()), DefaultUnitDepartureHandlers.Create().Seal());
+    var catalog = new ReadOnlyContent(packs);
+    var transport = new BattleTransport(catalog, grids);
+    var damage = new BattleDamage(catalog, grids, new CombatEffects(catalog, new ThresholdRankProgressionPolicy()), DefaultUnitDepartureHandlers.Create().Seal());
     var events = new JsonArray();
     var hashes = new JsonArray();
     void Emit(JsonObject value) { events.Add(value); hashes.Add(StateDigest.Hash(state)); }
@@ -77,7 +80,7 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
                 case "withdraw": damage.Withdraw(state, IntegerOr(step, "unit", 2), StateJson.IsTrue(step["leaveCorpse"]), Emit); break;
                 case "return":
                     var marker = step["externalMarker"]?.AsObject() ?? state["markers"]!.AsArray().OfType<JsonObject>().First(entry => StateJson.Integer(entry, "id") == StateJson.Integer(step, "marker"));
-                    result = BattleUnitReturn.Restore(state, marker, new UnitReturnRequest(At(),
+                    result = BattleUnitReturn.Restore(catalog, state, marker, new UnitReturnRequest(At(),
                         step["owner"] is null ? null : StateJson.Integer(step, "owner"), step["hp"] is null ? null : StateJson.Number(step["hp"], "hp")), Emit);
                     break;
                 case "embarkClone":
@@ -99,6 +102,19 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
     {
         error = new JsonObject { ["kind"] = caught.GetType().Name.Replace("Exception", "", StringComparison.Ordinal), ["message"] = caught.Message };
     }
+    var returnStep = item["steps"]!.AsArray().OfType<JsonObject>().SingleOrDefault(step =>
+        StateJson.Text(step, "op") == "return" && step["hp"] is not null &&
+        (StateJson.Number(step["hp"], "hp") == -5 || StateJson.Number(step["hp"], "hp") == 999));
+    if (returnStep is not null)
+    {
+        Check(name, "native-error-kind", error?["kind"], JsonValue.Create("DomainInvariant"));
+        Check(name, "native-result", Snapshot(result), null);
+        Check(name, "native-events", events, new JsonArray());
+        Check(name, "native-hashes", hashes, new JsonArray());
+        Check(name, "native-atomic-state", state, item["initial"]);
+        nativeRejections++;
+        continue;
+    }
     Check(name, "error", error, item["error"]);
     Check(name, "result", Snapshot(result), item["result"]);
     Check(name, "events", events, item["events"]);
@@ -107,6 +123,8 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
     passed++;
 }
 Console.WriteLine($"PASS {passed} live TypeScript transport/departure/return cases: queries, refusals, results, events, every emission-time hash and complete states");
+Console.WriteLine($"PASS {nativeRejections} explicit native invalid-return-health rejections before any event or mutation");
+if (nativeRejections != 10) throw new Exception("Expected ten deliberately hardened return-strength cases");
 var engine = new GrayFlagEngine(oracle["packs"]!.AsArray());
 // These source fixtures intentionally include invalid save states, such as deployment
 // without a deployment payload. Reuse the engine's resolved dispatcher and pipeline;
@@ -145,9 +163,12 @@ var saveCount = 0;
 foreach (var item in oracle["saveCases"]!.AsArray().OfType<JsonObject>())
 {
     var name = StateJson.Text(item, "name");
-    var document = item["document"]!.AsObject();
+    var sourceDocument = item["document"]!.AsObject();
+    var sourceBefore = sourceDocument.DeepClone();
+    var document = FixtureRuleset.NativeDocument(sourceDocument);
     Check(name, "save-document", engine.SaveBattle(document["state"]!.AsObject(), StateJson.Text(document, "savedAt")), document);
     var battle = engine.LoadSavedBattle(JsonNode.Parse(document.ToJsonString()));
+    Check(name, "source-document-unchanged", sourceDocument, sourceBefore);
     foreach (var expected in item["receipts"]!.AsArray().OfType<JsonObject>())
     {
         Check(name, "resumed-before", battle.Snapshot(), expected["before"]);
@@ -159,7 +180,7 @@ foreach (var item in oracle["saveCases"]!.AsArray().OfType<JsonObject>())
     }
 }
 Console.WriteLine($"PASS {oracle["saveCases"]!.AsArray().Count} source-authored transport saves and {saveCount} resumed dispatch steps");
-var validSave = oracle["saveCases"]![0]!["document"]!.AsObject();
+var validSave = FixtureRuleset.NativeDocument(oracle["saveCases"]![0]!["document"]!.AsObject());
 var hardening = new (string Name, Action<JsonObject> Mutate)[]
 {
     ("missing carrier", state => state["embarkedUnits"]![0]!["carrier"] = 999),

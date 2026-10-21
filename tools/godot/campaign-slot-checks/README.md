@@ -25,8 +25,8 @@ not identical error text.
 
 Coverage includes absent/empty/malformed saves, invalid envelopes and state,
 active/completed/failed states, battle progress, pending battles, read/write
-failures, propagated definition defects, canonical writes, the e6 clean legacy
-wrapper, refusal of full manual battle wrappers, UTF-16 preservation, non-mutating
+failures, propagated definition defects, canonical writes, explicit rejection of
+obsolete application wrappers (including the former clean legacy wrapper), UTF-16 preservation, non-mutating
 reads, failed-write preservation, caller-requested clearing, independent manual
 files and concurrent readers during atomic replacement. Progressed/terminal states
 are controlled presentation fixtures, not evidence of a victorious playthrough.

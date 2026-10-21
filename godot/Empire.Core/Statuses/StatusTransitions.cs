@@ -5,10 +5,15 @@ namespace Empire.Core.Statuses;
 
 public static class StatusTransitions
 {
-    public static void Add(ReadOnlyContent content, JsonObject unit, string id, double duration, int? sourceUnitId, Action<JsonObject>? emit)
+    internal static void RequireDuration(double duration)
     {
         if (!double.IsFinite(duration) || duration < 1 || duration != Math.Truncate(duration))
             throw new DomainInvariantException("status duration must be >= 1");
+    }
+
+    public static void Add(ReadOnlyContent content, JsonObject unit, string id, double duration, int? sourceUnitId, Action<JsonObject>? emit)
+    {
+        RequireDuration(duration);
         var definition = content.Source.Get("statuses", id);
         var statuses = unit["statuses"]!.AsArray();
         var carried = statuses.OfType<JsonObject>().FirstOrDefault(value => StateJson.Text(value, "id") == id);

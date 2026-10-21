@@ -396,6 +396,63 @@
 
 以上连同依赖注入约定都有架构适应度测试守着（见 `architecture-boundaries.test.ts`）。
 
+## Native Godot health ownership
+
+The owner table above describes the original TypeScript engine. In the native
+C# engine, live-unit health has one owner: `Empire.Core.State.UnitHealth`, backed
+by the existing serializable unit `JsonObject` and the engine's canonical
+`ReadOnlyContent`. It owns finite non-negative damage/heal inputs, canonical
+health bounds, restore strength, and health-preserving type changes. This is not
+a blanket replacement of the TypeScript `UnitEntity` mapping: native relocation,
+disposition and the other unit fields have separate owners and scope.
+
+- `BattleDamage` asks `UnitHealth.Damage` for the numerical transition, then owns
+  death, markers, passenger/commander/cast aftermath and ordered events.
+- Registered healing abilities and `BattleLifecycle` use `UnitHealth.Heal`.
+  `TacticalCell.Heal` owns the battlefield's terrain/overlay healing read fact.
+- `CareerRules` selects the new type and preflights `UnitHealth` before spending
+  resources; the same owner applies the health-preserving type change.
+- `BattleUnitReturn` owns identity/reset/return events and uses
+  `UnitHealth.RestoreHealth`. Explicit strength must be finite, positive and no
+  greater than the catalog maximum before rounding. Omitted strength preserves
+  a valid living snapshot exactly. Scenario revival supplies its canonical
+  maximum-health ratio explicitly; withdrawn returns preserve their snapshot.
+
+Invalid negative/non-finite damage, invalid return strength, dead/over-maximum
+career health and invalid type maxima now fail rather than inheriting source
+clamping or partial mutation. These are intentional native contract changes,
+not compatibility adapters. Valid gameplay still uses exact source-oracle state
+and event comparisons. Seeds, campaign-to-level projections and detached combat
+forecasts are not live-unit transition writers.
+
+Reproduce the external-consumer/invariant checks and four compiling semantic
+negative controls with `bash tools/godot/health-transition-checks/run.sh --verify-guard`.
+Affected source parity suites are `damage-checks`, `lifecycle-checks`,
+`progression-checks`, `transport-checks` and `scenario-checks` under `tools/godot`.
+Full campaign/all-level replay remains the integration gate.
+
+## Native Godot relocation ownership
+
+`Empire.Core.Tactics.BattleRelocation` is the native owner of unit placement and
+capture invalidation. `MoveUnit` validates an on-field occupant's origin and
+destination before clearing origin tile capture and changing position/unit
+capture. `RemoveUnit` invalidates origin capture without rewriting the historical
+unit snapshot; `RemoveForEmbark` creates a detached boarding snapshot with unit
+capture reset. `BattleDamage` retains departure aftermath and event ordering.
+
+Voluntary movement, forced movement and teleport use the same live transition.
+Their callers still explicitly own facing, readiness, patrol advancement,
+parting shots and events. Deployment swaps and return/passenger snapshot entry
+use distinct placement operations: they reset unit capture but must not erase
+map capture at a snapshot's old location. The original TypeScript owners remain
+`BattleAggregate` and `UnitEntity`; this native boundary is not a compatibility
+wrapper or a second gameplay path.
+
+`bash tools/godot/relocation-checks/run.sh --verify-guard` exercises the external
+aggregate contract and all canonical callers, with four compiling semantic
+negative controls. Tactical, deployment, combat, damage, transport and scenario
+source comparisons preserve normal gameplay and event-time snapshots.
+
 ## 工程质量
 
 | 能力 | 状态 | 说明 |

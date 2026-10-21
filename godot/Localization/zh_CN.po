@@ -1,0 +1,1369 @@
+msgid ""
+msgstr ""
+"Language: zh_CN\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "ui.common.cancel"
+msgstr "取消"
+
+msgid "ui.battle.save"
+msgstr "保存"
+
+msgid "ui.battle.load"
+msgstr "读取"
+
+msgid "ui.battle.restart"
+msgstr "重新开始"
+
+msgid "ui.battle.camp"
+msgstr "战役营地"
+
+msgid "ui.battle.end_turn"
+msgstr "结束回合"
+
+msgid "ui.battle.finish_deployment"
+msgstr "确认部署"
+
+msgid "ui.battle.undo"
+msgstr "撤销"
+
+msgid "feedback.battle.undo_completed"
+msgstr "已撤销上一步"
+
+#. {0}: completed event count (integer).
+#, csharp-format
+msgid "feedback.battle.command_completed"
+msgstr "命令完成 · {0} 条战斗事件"
+
+#. {0}: saved round number (integer).
+#, csharp-format
+msgid "feedback.save.round_saved"
+msgstr "已保存第 {0} 回合的进度"
+
+#. {0}: restored round number (integer).
+#, csharp-format
+msgid "feedback.save.round_loaded"
+msgstr "已读取第 {0} 回合的存档"
+
+msgid "feedback.save.completed"
+msgstr "战役和战斗进度已保存。F9 可读取。"
+
+msgid "feedback.load.completed"
+msgstr "已读取存档。"
+
+msgid "error.action.stale_revision"
+msgstr "战场已变化，请重新选择命令。"
+
+msgid "error.action.cannot_undo"
+msgstr "当前无法撤销。"
+
+msgid "error.action.computer_turn"
+msgstr "正在执行敌方回合。"
+
+msgid "error.save.failed"
+msgstr "保存失败，当前窗口中的进度仍然保留。"
+
+msgid "error.load.failed_unchanged"
+msgstr "读取失败，当前进度未变。"
+
+msgid "error.load.unsupported_version"
+msgstr "此存档版本不受支持。原存档已保留，未载入。"
+
+msgid "error.load.invalid_document"
+msgstr "存档无法读取。原存档已保留，未载入。"
+
+msgid "error.load.presentation_failed"
+msgstr "存档已恢复，但画面加载失败。"
+
+msgid "error.campaign.start_failed"
+msgstr "无法开始战役。"
+
+msgid "error.campaign.autosave_before_battle_failed"
+msgstr "自动保存失败，尚未进入战斗。"
+
+msgid "error.campaign.settlement_save_failed"
+msgstr "战果已在当前战役中结算，但自动保存失败。请保留窗口并使用 F5 保存。"
+
+msgid "error.campaign.continuation_save_failed"
+msgstr "战役已继续，但自动保存失败。当前进度仍保留在窗口中，请使用 F5 保存。"
+
+msgid "error.presentation.playback_failed"
+msgstr "战斗表现播放失败。"
+
+msgid "speaker.narrator.name"
+msgstr "断冠纪事"
+
+msgid "speaker.laiya.name"
+msgstr "莱娅"
+
+msgid "speaker.roderick.name"
+msgstr "罗德里克"
+
+msgid "speaker.cain.name"
+msgstr "凯恩"
+
+msgid "speaker.mirelle.name"
+msgstr "米蕾尔"
+
+msgid "speaker.bran.name"
+msgstr "布兰"
+
+msgid "speaker.tasha.name"
+msgstr "塔莎"
+
+msgid "speaker.ivra.name"
+msgstr "伊芙拉"
+
+msgid "story.c01.prologue.kicker"
+msgstr "序章"
+
+msgid "story.c01.prologue.title"
+msgstr "一双没有补好的靴子"
+
+msgid "story.c01.prologue.date"
+msgstr "断冠纪第 318 年 · 初夏"
+
+msgid "story.c01.prologue.location"
+msgstr "灰境边防营地"
+
+msgid "story.c01.prologue.summary"
+msgstr "在战争成为地图上的箭头以前，它先是一双漏水的靴子。十八岁的莱娅第一次得到独立指挥权。"
+
+msgid "story.c01.prologue.beat.mending-before-dawn.text"
+msgstr "罗德里克第三次拆开她的护腕时，天还没有亮。湿木在火心里嘶响，托伦裂开的鞋底正往外挤泥。"
+
+msgid "story.c01.prologue.beat.retreat-before-high-ground.text"
+msgstr "旗官先看撤路，再看高地。士兵不会因为你的答案正确，就少走一里泥。"
+
+msgid "story.c01.prologue.beat.promise-to-return.text"
+msgstr "我会把他们都带回来。"
+
+msgid "story.c01.prologue.beat.names-before-oaths.text"
+msgstr "别许一个你还不知道怎样兑现的誓。先记住他们的名字。"
+
+msgid "story.c01.brief-01.kicker"
+msgstr "第一章 · 战斗 01"
+
+msgid "story.c01.brief-01.title"
+msgstr "双子丘陵"
+
+msgid "story.c01.brief-01.date"
+msgstr "第 0 年 · 初夏"
+
+msgid "story.c01.brief-01.location"
+msgstr "灰境北丘"
+
+msgid "story.c01.brief-01.summary"
+msgstr "莱娅的第一次独立指挥。高地能赢下一场遭遇战，也能让一支脱离援护的小队死得更快。"
+
+msgid "story.c01.brief-01.beat.exposed-high-ground.text"
+msgstr "北丘看得见整条大道。也就是说，整条大道都看得见你。"
+
+msgid "story.c01.brief-01.beat.seize-the-village.text"
+msgstr "帝国前锋还没站稳。现在上去，我们能先拿村庄。"
+
+msgid "story.c01.brief-01.beat.contradictory-reports.text"
+msgstr "两份互称对方先越境的军报，在同一个清晨把年轻人推向彼此。"
+
+msgid "story.c01.brief-01.mission.objective"
+msgstr "莱娅存活并击退维尔萨前锋。"
+
+msgid "story.c01.brief-01.mission.danger"
+msgstr "抢占北丘会让托伦提前进入包围；罗德里克只会救场一次。"
+
+msgid "story.c01.brief-01.mission.lesson"
+msgstr "高低差、朝向、援护与确定性伤害预测。"
+
+msgid "story.c01.aftermath-01.kicker"
+msgstr "战后"
+
+msgid "story.c01.aftermath-01.title"
+msgstr "相同日期的命令"
+
+msgid "story.c01.aftermath-01.date"
+msgstr "第 0 年 · 初夏"
+
+msgid "story.c01.aftermath-01.location"
+msgstr "双子丘陵中央村"
+
+msgid "story.c01.aftermath-01.summary"
+msgstr "胜利没有解释战争。帝国尸体上的调令与洛恩军令在同一天签发。"
+
+msgid "story.c01.aftermath-01.beat.opposing-border-orders.text"
+msgstr "如果他们也收到“洛恩先越境”的命令呢？"
+
+msgid "story.c01.aftermath-01.beat.evidence-and-decision.text"
+msgstr "怀疑可以让你再看一遍证据。不能让它替你拖延下一次决定。"
+
+msgid "story.c01.brief-02.kicker"
+msgstr "第一章 · 战斗 02"
+
+msgid "story.c01.brief-02.title"
+msgstr "三桥河谷"
+
+msgid "story.c01.brief-02.date"
+msgstr "第 0 年 · 盛夏"
+
+msgid "story.c01.brief-02.location"
+msgstr "白河三桥"
+
+msgid "story.c01.brief-02.summary"
+msgstr "三座桥把两国军队挤进同一条射线；难民又把胜负从桥面上挤开。"
+
+msgid "story.c01.brief-02.beat.cease-fire-for-civilians.text"
+msgstr "中桥上的弓手停火。平民通过以前，任何一次放箭都记在我的名下。"
+
+msgid "story.c01.brief-02.beat.reason-to-trust.text"
+msgstr "你凭什么相信我也会停？"
+
+msgid "story.c01.brief-02.beat.own-the-mistake.text"
+msgstr "我不相信你。我只是先让我的人停下，然后承担判断错你的后果。"
+
+msgid "story.c01.brief-02.mission.objective"
+msgstr "护送三名平民抵达东岸，并摧毁无标记弩车。"
+
+msgid "story.c01.brief-02.mission.danger"
+msgstr "前三回合中桥处于停火区；远处弩车不受停火约束。"
+
+msgid "story.c01.brief-02.mission.lesson"
+msgstr "护送、狭窄桥面、临时交战规则与最小射程。"
+
+msgid "story.c01.aftermath-02.kicker"
+msgstr "战后"
+
+msgid "story.c01.aftermath-02.title"
+msgstr "没有道谢的停火"
+
+msgid "story.c01.aftermath-02.date"
+msgstr "第 0 年 · 盛夏"
+
+msgid "story.c01.aftermath-02.location"
+msgstr "白河东岸"
+
+msgid "story.c01.aftermath-02.summary"
+msgstr "双方各守一岸，谁也没有得到可以写进军报的胜利。一个受伤孩子被帝国盾卫交到洛恩牧师手里。"
+
+msgid "story.c01.aftermath-02.beat.unmarked-ballista.text"
+msgstr "弩车没有番号。查出它从哪里来，再决定下次见面时该把枪指向谁。"
+
+msgid "story.c01.aftermath-02.beat.investigate-together.text"
+msgstr "你可以留下来一起查。"
+
+msgid "story.c01.aftermath-02.beat.duty-before-trust.text"
+msgstr "我的职责还没有允许我相信你。"
+
+msgid "story.c01.brief-03.kicker"
+msgstr "第一章 · 战斗 03"
+
+msgid "story.c01.brief-03.title"
+msgstr "赤石围城"
+
+msgid "story.c01.brief-03.date"
+msgstr "第 0 年 · 长夏"
+
+msgid "story.c01.brief-03.location"
+msgstr "赤石堡垒"
+
+msgid "story.c01.brief-03.summary"
+msgstr "城上挂着帝国旗，城内却是失踪的洛恩士兵。夺城和救人第一次成为两个不同目标。"
+
+msgid "story.c01.brief-03.beat.buried-names.text"
+msgstr "守军在重复同一句誓文。他们还活着，只是名字被塔压在命令下面。"
+
+msgid "story.c01.brief-03.beat.reinforcement-deadline.text"
+msgstr "我不会阻止你关闭节点。但十四回合以后，援军会把所有复杂都当成敌人处理。"
+
+msgid "story.c01.brief-03.beat.rescue-before-judgment.text"
+msgstr "那就在他们抵达以前，把复杂的人带回来。"
+
+msgid "story.c01.brief-03.mission.objective"
+msgstr "占领赤石城堡，或深入后方关闭控制节点。"
+
+msgid "story.c01.brief-03.mission.danger"
+msgstr "正门有重弩和重甲；绕行更安全但会消耗回合。"
+
+msgid "story.c01.brief-03.mission.lesson"
+msgstr "攻城、复合路线、魔法克甲与非致命胜利。"
+
+msgid "story.c01.aftermath-03.kicker"
+msgstr "战后"
+
+msgid "story.c01.aftermath-03.title"
+msgstr "名字归于谁"
+
+msgid "story.c01.aftermath-03.date"
+msgstr "第 0 年 · 长夏"
+
+msgid "story.c01.aftermath-03.location"
+msgstr "赤石塔下"
+
+msgid "story.c01.aftermath-03.summary"
+msgstr "控制解除后，守军只记得自己奉洛恩之命进塔。后来覆盖上去的帝国旗，成了最便宜的证词。"
+
+msgid "story.c01.aftermath-03.beat.commanding-the-dead.text"
+msgstr "教廷在收集所有阵亡者的名字。不是为了安葬，是为了让命令可以继续使用他们。"
+
+msgid "story.c01.aftermath-03.beat.evidence-to-the-capital.text"
+msgstr "证据封存，送往王都。莱娅，你仍然要服从眼前愿意为后果负责的人。"
+
+msgid "story.c01.brief-04.kicker"
+msgstr "第一章 · 战斗 04"
+
+msgid "story.c01.brief-04.title"
+msgstr "黑旗营地"
+
+msgid "story.c01.brief-04.date"
+msgstr "第 0 年 · 初秋"
+
+msgid "story.c01.brief-04.location"
+msgstr "灰境西林"
+
+msgid "story.c01.brief-04.summary"
+msgstr "只侦察、不交战的命令，在第一名即将被处决的俘虏面前失去完整意义。"
+
+msgid "story.c01.brief-04.beat.stripped-memories.text"
+msgstr "他们在反复抽取士兵最后一次听令的记忆。每抽一次，那个人就少一点自己。"
+
+msgid "story.c01.brief-04.beat.witnesses-and-records.text"
+msgstr "三处营帐。证人和档案都带走。"
+
+msgid "story.c01.brief-04.beat.signing-responsibility.text"
+msgstr "她第一次主动把“我负责”写在一份明确违背导师命令的计划下面。"
+
+msgid "story.c01.brief-04.mission.objective"
+msgstr "调查三处营帐，再让莱娅与米蕾尔从西侧撤离。"
+
+msgid "story.c01.brief-04.mission.danger"
+msgstr "调查会拉长暴露时间；撤离前不要把全队压进营地。"
+
+msgid "story.c01.brief-04.mission.lesson"
+msgstr "阶段目标、战场变量、调查触发与撤退路线。"
+
+msgid "story.c01.aftermath-04.kicker"
+msgstr "战后"
+
+msgid "story.c01.aftermath-04.title"
+msgstr "违令留下的证人"
+
+msgid "story.c01.aftermath-04.date"
+msgstr "第 0 年 · 初秋"
+
+msgid "story.c01.aftermath-04.location"
+msgstr "黑旗营外"
+
+msgid "story.c01.aftermath-04.summary"
+msgstr "获救者记得同一份誓文模板被分别写进洛恩与维尔萨命令。证据足以让人被灭口，还不足以让国家停战。"
+
+msgid "story.c01.aftermath-04.beat.irreplaceable-witnesses.text"
+msgstr "档案可以复制，证人不能。今晚先记他们的名字。"
+
+msgid "story.c01.aftermath-04.beat.own-the-risky-order.text"
+msgstr "也记下是我让他们继续冒险。不能只在成功以后才承认那道命令是我的。"
+
+msgid "story.c01.brief-05.kicker"
+msgstr "第一章 · 战斗 05"
+
+msgid "story.c01.brief-05.title"
+msgstr "焚村令"
+
+msgid "story.c01.brief-05.date"
+msgstr "第 0 年 · 深秋"
+
+msgid "story.c01.brief-05.location"
+msgstr "苇草村"
+
+msgid "story.c01.brief-05.summary"
+msgstr "王国命令焚毁“受污染”的村庄。污染是伪造的，执行命令的人却是真的。"
+
+msgid "story.c01.brief-05.beat.return-to-the-ranks.text"
+msgstr "让开，莱娅。你还能回到队列里。"
+
+msgid "story.c01.brief-05.beat.refuse-the-burning.text"
+msgstr "如果回去的条件是把他们留在火里，那条队列已经不是我的了。"
+
+msgid "story.c01.brief-05.beat.defenders-not-flags.text"
+msgstr "旗子没有颜色时最诚实。今天谁站在村口，明天我就记得谁。"
+
+msgid "story.c01.brief-05.mission.objective"
+msgstr "至少保护两名村民并坚守七回合。"
+
+msgid "story.c01.brief-05.mission.danger"
+msgstr "净化军第四回合增援；不要让脆弱单位堵死治疗线。"
+
+msgid "story.c01.brief-05.mission.lesson"
+msgstr "生存目标、关键单位保护、增援与军团士气。"
+
+msgid "story.c01.aftermath-05.kicker"
+msgstr "第一章终"
+
+msgid "story.c01.aftermath-05.title"
+msgstr "灰旗升起"
+
+msgid "story.c01.aftermath-05.date"
+msgstr "第 0 年 · 深秋"
+
+msgid "story.c01.aftermath-05.location"
+msgstr "烧毁的苇草村"
+
+msgid "story.c01.aftermath-05.summary"
+msgstr "她失去军衔、补给和合法身份。烧去纹章的旗布在晨风里只剩灰色，却第一次允许人自行决定是否跟随。"
+
+msgid "story.c01.aftermath-05.beat.conditional-allegiance.text"
+msgstr "我不向你宣誓。我跟你走，直到你也开始替别人决定他们该烧在哪里。"
+
+msgid "story.c01.aftermath-05.beat.permission-to-leave.text"
+msgstr "那时你要先告诉我，然后离开。不要等我批准。"
+
+msgid "story.c01.brief-06.kicker"
+msgstr "第二章 · 战斗 06"
+
+msgid "story.c01.brief-06.title"
+msgstr "白河夜渡"
+
+msgid "story.c01.brief-06.date"
+msgstr "第 1 年 · 深冬"
+
+msgid "story.c01.brief-06.location"
+msgstr "白河南岸"
+
+msgid "story.c01.brief-06.summary"
+msgstr "抗命只花了一夜，维持一支带着伤员和孩子的队伍却要花掉每一顿饭。"
+
+msgid "story.c01.brief-06.beat.reed-ford-limits.text"
+msgstr "芦苇浅滩能走人，不能过马和粮车。别说全都要，河水不听演说。"
+
+msgid "story.c01.brief-06.beat.cold-deadline.text"
+msgstr "伤员能再撑八回合。第九回合开始，寒冷会替追兵做决定。"
+
+msgid "story.c01.brief-06.beat.map-before-sacrifice.text"
+msgstr "先把每一条路线写清楚，再说我们愿意失去什么。"
+
+msgid "story.c01.brief-06.mission.objective"
+msgstr "八回合内护送四名非战斗人员抵达北岸。"
+
+msgid "story.c01.brief-06.mission.danger"
+msgstr "护送单位移动慢，追兵骑兵会从侧翼切入。"
+
+msgid "story.c01.brief-06.mission.lesson"
+msgstr "多单位护送、时间压力、后卫与资源取舍。"
+
+msgid "story.c01.aftermath-06.kicker"
+msgstr "战后"
+
+msgid "story.c01.aftermath-06.title"
+msgstr "渡河以后仍会死人"
+
+msgid "story.c01.aftermath-06.date"
+msgstr "第 1 年 · 深冬"
+
+msgid "story.c01.aftermath-06.location"
+msgstr "白河北岸"
+
+msgid "story.c01.aftermath-06.summary"
+msgstr "清点人数时，冻伤和饥饿没有因为任务完成而消失。莱娅把口粮递给伤员，被布兰推了回来。"
+
+msgid "story.c01.aftermath-06.beat.starvation-is-not-leadership.text"
+msgstr "饿死领袖只会让明天多一个要埋的人。组织不是看你肯死几次。"
+
+msgid "story.c01.aftermath-06.beat.rations-by-roster.text"
+msgstr "那就从今天起，口粮先按名单发，不按谁更会拒绝。"
+
+msgid "story.c01.brief-07.kicker"
+msgstr "第二章 · 战斗 07"
+
+msgid "story.c01.brief-07.title"
+msgstr "无主之城"
+
+msgid "story.c01.brief-07.date"
+msgstr "第 1 年 · 初春"
+
+msgid "story.c01.brief-07.location"
+msgstr "自由城洛岬"
+
+msgid "story.c01.brief-07.summary"
+msgstr "领主逃走后，粮仓、城门和兵营分别属于三群无法互相信任的人。敌军不会等他们开完会议。"
+
+msgid "story.c01.brief-07.beat.defend-without-taking-keys.text"
+msgstr "我们守城，但不接管你们的钥匙。哪两处先修，由城里的人当面说。"
+
+msgid "story.c01.brief-07.beat.cost-of-public-debate.text"
+msgstr "当面说会吵。"
+
+msgid "story.c01.brief-07.beat.argue-before-invasion.text"
+msgstr "那就让争吵发生在敌人进城以前，而不是命令发生在他们头上。"
+
+msgid "story.c01.brief-07.mission.objective"
+msgstr "占领联合粮仓与民兵营。"
+
+msgid "story.c01.brief-07.mission.danger"
+msgstr "荒原骑手和王国征讨军从不同方向逼近。"
+
+msgid "story.c01.brief-07.mission.lesson"
+msgstr "多方向接敌、城市走廊、占领与防线取舍。"
+
+msgid "story.c01.aftermath-07.kicker"
+msgstr "战后"
+
+msgid "story.c01.aftermath-07.title"
+msgstr "谁拥有城墙"
+
+msgid "story.c01.aftermath-07.date"
+msgstr "第 1 年 · 初春"
+
+msgid "story.c01.aftermath-07.location"
+msgstr "洛岬议事厅"
+
+msgid "story.c01.aftermath-07.summary"
+msgstr "城守住了，钥匙仍有三串。莱娅第一次发现，胜利以后留下来处理粮价比攻下一座城更难。"
+
+msgid "story.c01.aftermath-07.beat.guards-not-mayors.text"
+msgstr "灰旗军可以提供守卫，不提供永远正确的市长。"
+
+msgid "story.c01.aftermath-07.beat.dissatisfied-at-the-table.text"
+msgstr "商人、民兵与难民代表第一次坐在同一张桌边，也第一次同时对她不满。"
+
+msgid "story.c01.brief-08.kicker"
+msgstr "第二章 · 战斗 08"
+
+msgid "story.c01.brief-08.title"
+msgstr "佣兵之价"
+
+msgid "story.c01.brief-08.date"
+msgstr "第 1 年 · 暮春"
+
+msgid "story.c01.brief-08.location"
+msgstr "洛岬粮道"
+
+msgid "story.c01.brief-08.summary"
+msgstr "佣兵扣住粮道索取欠饷，商人把死人从账册上删掉。真正的盗匪在争执最响时来了。"
+
+msgid "story.c01.brief-08.beat.promises-paid-by-the-dead.text"
+msgstr "你们这些有旗的人，总喜欢用明天的世界支付今天的死人。"
+
+msgid "story.c01.brief-08.beat.record-the-debts.text"
+msgstr "名字、数目、日期。先把欠下的写清楚。然后一起把粮仓守住。"
+
+msgid "story.c01.brief-08.beat.write-the-system.text"
+msgstr "这句话值不了一枚铜币。但我愿意看你把它写进制度。"
+
+msgid "story.c01.brief-08.mission.objective"
+msgstr "保护塔莎并击退抢粮者。"
+
+msgid "story.c01.brief-08.mission.danger"
+msgstr "骑手会绕过正面；塔莎是高价值的爆破单位，也是失败条件。"
+
+msgid "story.c01.brief-08.mission.lesson"
+msgstr "关键同盟保护、侧翼机动与范围爆破。"
+
+msgid "story.c01.aftermath-08.kicker"
+msgstr "战后"
+
+msgid "story.c01.aftermath-08.title"
+msgstr "一份可以解除的契约"
+
+msgid "story.c01.aftermath-08.date"
+msgstr "第 1 年 · 暮春"
+
+msgid "story.c01.aftermath-08.location"
+msgstr "洛岬粮仓"
+
+msgid "story.c01.aftermath-08.summary"
+msgstr "塔莎没有宣誓效忠。她签下一份列明期限、欠款与退出条款的契约，并把第一份抚恤名单钉在军需处。"
+
+msgid "story.c01.aftermath-08.beat.contractual-right-to-leave.text"
+msgstr "我不是因为相信你才加入。我是因为这份纸允许我在不再相信你时离开。"
+
+msgid "story.c01.aftermath-08.beat.contracts-over-oaths.text"
+msgstr "那它比誓言更有用。"
+
+msgid "story.c01.brief-09.kicker"
+msgstr "第二章 · 战斗 09"
+
+msgid "story.c01.brief-09.title"
+msgstr "笼中之火"
+
+msgid "story.c01.brief-09.date"
+msgstr "第 1 年 · 盛夏"
+
+msgid "story.c01.brief-09.location"
+msgstr "洛岬北部大道"
+
+msgid "story.c01.brief-09.summary"
+msgstr "教廷运输队带着粮食、药品和一只被符文锁链束缚的幼龙。控制它是最快的解法，也是最危险的先例。"
+
+msgid "story.c01.brief-09.beat.new-lock-old-chain.text"
+msgstr "我可以念出绑定誓文。它会替我们作战——也会知道是我把新锁套在旧锁外面。"
+
+msgid "story.c01.brief-09.beat.cost-of-freedom.text"
+msgstr "四个节点，拆掉三个就会失稳。慢一点，但选择仍然属于笼子里的那一方。"
+
+msgid "story.c01.brief-09.beat.dismantle-without-bargain.text"
+msgstr "拆节点。它出来以后愿不愿意帮忙，不算在计划里。"
+
+msgid "story.c01.brief-09.mission.objective"
+msgstr "破坏四处锁链节点中的三处。"
+
+msgid "story.c01.brief-09.mission.danger"
+msgstr "节点分散且有护卫；爆破火药的冷却需要预先规划。"
+
+msgid "story.c01.brief-09.mission.lesson"
+msgstr "复合结构、分兵、攻城加成与非控制解法。"
+
+msgid "story.c01.aftermath-09.kicker"
+msgstr "战后"
+
+msgid "story.c01.aftermath-09.title"
+msgstr "它没有加入"
+
+msgid "story.c01.aftermath-09.date"
+msgstr "第 1 年 · 盛夏"
+
+msgid "story.c01.aftermath-09.location"
+msgstr "破碎的囚笼旁"
+
+msgid "story.c01.aftermath-09.summary"
+msgstr "幼龙挣脱后先咬断最后一段锁链，然后飞到够不着任何命令的岩脊上。"
+
+msgid "story.c01.aftermath-09.beat.no-command.text"
+msgstr "你们没有命令我。"
+
+msgid "story.c01.aftermath-09.beat.no-demand-to-stay.text"
+msgstr "也不会因为这件事要求你留下。"
+
+msgid "story.c01.aftermath-09.beat.following-at-a-distance.text"
+msgstr "伊芙拉没有回答。第二天队伍出发时，云上的影子与他们保持了整整半日距离。"
+
+msgid "story.c01.brief-10.kicker"
+msgstr "第二章 · 战斗 10"
+
+msgid "story.c01.brief-10.title"
+msgstr "旧旗下的追兵"
+
+msgid "story.c01.brief-10.date"
+msgstr "第 1 年 · 初秋"
+
+msgid "story.c01.brief-10.location"
+msgstr "灰境东部山口"
+
+msgid "story.c01.brief-10.summary"
+msgstr "罗德里克带着真正的赦免令追来。回去可以活，留下才要继续承担灰旗造成的后果。"
+
+msgid "story.c01.brief-10.beat.offer-of-pardon.text"
+msgstr "我没有伪造这份赦免。放下武器的人可以回家。你也可以。"
+
+msgid "story.c01.brief-10.beat.refuse-the-next-burning.text"
+msgstr "回去以后，下一道焚村令由谁拒绝？"
+
+msgid "story.c01.brief-10.beat.disobedience-not-infallibility.text"
+msgstr "你把一次正确的抗命，误当成了永远正确的资格。"
+
+msgid "story.c01.brief-10.mission.objective"
+msgstr "让莱娅抵达东部山口，不必歼灭旧部。"
+
+msgid "story.c01.brief-10.mission.danger"
+msgstr "罗德里克的骑兵和援护阵线正面强度极高。"
+
+msgid "story.c01.brief-10.mission.lesson"
+msgstr "突破、士气、飞行侧翼与有限交战。"
+
+msgid "story.c01.aftermath-10.kicker"
+msgstr "第二章终"
+
+msgid "story.c01.aftermath-10.title"
+msgstr "允许退出的誓"
+
+msgid "story.c01.aftermath-10.date"
+msgstr "第 1 年 · 初秋"
+
+msgid "story.c01.aftermath-10.location"
+msgstr "山口外营地"
+
+msgid "story.c01.aftermath-10.summary"
+msgstr "追兵没有被消灭，灰旗也没有被带回去。每一名留下的人重新听到一遍退出条款。"
+
+msgid "story.c01.aftermath-10.beat.common-rules-not-loyalty.text"
+msgstr "今天留下，不等于明天必须留下。我们服从共同写下的规则，不服从我这个人。"
+
+msgid "story.c01.aftermath-10.beat.required-signatures.text"
+msgstr "很好。现在把“共同写下”需要几个人签字也写清楚。"
+
+msgid "story.c01.brief-11.kicker"
+msgstr "第三章 · 战斗 11"
+
+msgid "story.c01.brief-11.title"
+msgstr "无声墓园"
+
+msgid "story.c01.brief-11.date"
+msgstr "第 2 年 · 早春"
+
+msgid "story.c01.brief-11.location"
+msgstr "圣辉领外墓园"
+
+msgid "story.c01.brief-11.summary"
+msgstr "同一名士兵在同一座墓前反复死亡。净化会让回声消散，读出真名才可能让他停止听令。"
+
+msgid "story.c01.brief-11.beat.restore-before-attacking.text"
+msgstr "别先攻击巨像。墓碑上有三段被刮掉的姓名，先让它们重新被听见。"
+
+msgid "story.c01.brief-11.beat.salt-debt-memory.text"
+msgstr "我认识其中一个。他在苇草村借过盐，没还。活人的记忆也算证据。"
+
+msgid "story.c01.brief-11.beat.read-and-release.text"
+msgstr "分三路读碑。等米蕾尔说可以，再让巨像安息。"
+
+msgid "story.c01.brief-11.mission.objective"
+msgstr "读取三处真名，再击败墓园巨像。"
+
+msgid "story.c01.brief-11.mission.danger"
+msgstr "亡灵会拖住路线；米蕾尔的断誓攻击有明显克制优势。"
+
+msgid "story.c01.brief-11.mission.lesson"
+msgstr "阶段目标、题材克制、巨型单位与亡者标记。"
+
+msgid "story.c01.aftermath-11.kicker"
+msgstr "战后"
+
+msgid "story.c01.aftermath-11.title"
+msgstr "墓碑拒绝净化"
+
+msgid "story.c01.aftermath-11.date"
+msgstr "第 2 年 · 早春"
+
+msgid "story.c01.aftermath-11.location"
+msgstr "无声墓园"
+
+msgid "story.c01.aftermath-11.summary"
+msgstr "最后一个名字被读出时，石像没有爆炸，只是像终于听见休息命令的人一样跪了下去。"
+
+msgid "story.c01.aftermath-11.beat.rest-is-not-deletion.text"
+msgstr "安息不该是活人替死者按下的删除键。"
+
+msgid "story.c01.aftermath-11.beat.preserve-ordinary-debts.text"
+msgstr "那就保留欠盐这件事。完整的人不只剩英雄事迹。"
+
+msgid "story.c01.brief-12.kicker"
+msgstr "第三章 · 战斗 12"
+
+msgid "story.c01.brief-12.title"
+msgstr "沉没钟塔"
+
+msgid "story.c01.brief-12.date"
+msgstr "第 2 年 · 暮春"
+
+msgid "story.c01.brief-12.location"
+msgstr "沉钟河谷"
+
+msgid "story.c01.brief-12.summary"
+msgstr "钟塔机构失控，河水正在上涨。凯恩带着帝国军也来关闭它；王冠碎片只会留给一方。"
+
+msgid "story.c01.brief-12.beat.close-the-mechanisms.text"
+msgstr "两处机构同时关闭，河谷才能保住。碎片归属可以在不淹死村庄以后争。"
+
+msgid "story.c01.brief-12.beat.shared-right-to-refuse.text"
+msgstr "共同控制意味着你的士兵也能拒绝我的操作。"
+
+msgid "story.c01.brief-12.beat.inconvenient-shared-control.text"
+msgstr "也意味着你的人能拒绝我。这正是共同二字不方便的地方。"
+
+msgid "story.c01.brief-12.mission.objective"
+msgstr "瘫痪三处钟塔机构中的两处。"
+
+msgid "story.c01.brief-12.mission.danger"
+msgstr "水路切断阵线，机构本身具有高耐久。"
+
+msgid "story.c01.brief-12.mission.lesson"
+msgstr "复合设施、狭道、临时盟友与攻城分工。"
+
+msgid "story.c01.aftermath-12.kicker"
+msgstr "战后"
+
+msgid "story.c01.aftermath-12.title"
+msgstr "共同控制的半小时"
+
+msgid "story.c01.aftermath-12.date"
+msgstr "第 2 年 · 暮春"
+
+msgid "story.c01.aftermath-12.location"
+msgstr "沉钟塔顶"
+
+msgid "story.c01.aftermath-12.summary"
+msgstr "双方的手同时放在不同控制杆上。谁都不能单独启动钟塔，这是他们第一次真正共同拥有一项权力。"
+
+msgid "story.c01.aftermath-12.beat.inefficient-procedure.text"
+msgstr "这套程序效率很低。"
+
+msgid "story.c01.aftermath-12.beat.still-here-without-orders.text"
+msgstr "但你还站在这里，我也没有被你命令离开。低一点可以接受。"
+
+msgid "story.c01.brief-13.kicker"
+msgstr "第三章 · 战斗 13"
+
+msgid "story.c01.brief-13.title"
+msgstr "圣城档案"
+
+msgid "story.c01.brief-13.date"
+msgstr "第 2 年 · 盛夏"
+
+msgid "story.c01.brief-13.location"
+msgstr "圣辉白塔"
+
+msgid "story.c01.brief-13.summary"
+msgstr "米蕾尔回到曾教她删除修改痕迹的地方。三组档案分别保存战争、命令与她老师的签名。"
+
+msgid "story.c01.brief-13.beat.archive-edit-alarm.text"
+msgstr "档案室会在第三份卷宗离架时报警。不是因为内容重要，是因为删改记录还在。"
+
+msgid "story.c01.brief-13.beat.evidence-needs-an-exit.text"
+msgstr "那就先规划出口。证据没长腿，拿证据的人有。"
+
+msgid "story.c01.brief-13.beat.protect-the-original.text"
+msgstr "读三处，米蕾尔带原件走。其余人只负责让她还能走。"
+
+msgid "story.c01.brief-13.mission.objective"
+msgstr "读取三组档案，并护送米蕾尔到东侧出口。"
+
+msgid "story.c01.brief-13.mission.danger"
+msgstr "阶段完成后仍需穿过警戒部队，不要过早消耗支援能力。"
+
+msgid "story.c01.brief-13.mission.lesson"
+msgstr "连续阶段、关键携带者、城市掩体与撤离。"
+
+msgid "story.c01.aftermath-13.kicker"
+msgstr "战后"
+
+msgid "story.c01.aftermath-13.title"
+msgstr "保留修改痕迹"
+
+msgid "story.c01.aftermath-13.date"
+msgstr "第 2 年 · 盛夏"
+
+msgid "story.c01.aftermath-13.location"
+msgstr "圣城外旧医院"
+
+msgid "story.c01.aftermath-13.summary"
+msgstr "档案证明两国军令使用同一套誓文源。米蕾尔没有抹掉老师的名字，也没有替她写上原谅。"
+
+msgid "story.c01.aftermath-13.beat.do-not-delete-the-signature.text"
+msgstr "如果我删除她的签名，我就用同一种方法证明她错。"
+
+msgid "story.c01.aftermath-13.beat.record-name-and-guilt.text"
+msgstr "那就让名字、罪责和修改都留在同一页上。"
+
+msgid "story.c01.brief-14.kicker"
+msgstr "第三章 · 战斗 14"
+
+msgid "story.c01.brief-14.title"
+msgstr "山炉余烬"
+
+msgid "story.c01.brief-14.date"
+msgstr "第 2 年 · 深秋"
+
+msgid "story.c01.brief-14.location"
+msgstr "山炉下层炉城"
+
+msgid "story.c01.brief-14.summary"
+msgstr "氏族内战唤醒石魔像，熔流阀开始失控。修炉心必须使用制造王冠的同一套技术。"
+
+msgid "story.c01.brief-14.beat.close-the-valves.text"
+msgstr "技术不会替祖先认罪，也不会因为祖先有罪就自动失效。两处阀门，先关再谈。"
+
+msgid "story.c01.brief-14.beat.tools-and-responsibility.text"
+msgstr "谈的时候别让“工具无罪”变成没人负责。"
+
+msgid "story.c01.brief-14.beat.preserve-maintenance-records.text"
+msgstr "完整保存维修记录。我们用过什么，就留下什么。"
+
+msgid "story.c01.brief-14.mission.objective"
+msgstr "关闭两处熔流阀，并平息失控守卫。"
+
+msgid "story.c01.brief-14.mission.danger"
+msgstr "熔流不可通行，石魔像会强制位移造成碰撞伤害。"
+
+msgid "story.c01.brief-14.mission.lesson"
+msgstr "危险地貌、强制位移、重甲破防与工程路线。"
+
+msgid "story.c01.aftermath-14.kicker"
+msgstr "战后"
+
+msgid "story.c01.aftermath-14.title"
+msgstr "修好并不等于无罪"
+
+msgid "story.c01.aftermath-14.date"
+msgstr "第 2 年 · 深秋"
+
+msgid "story.c01.aftermath-14.location"
+msgstr "山炉记录厅"
+
+msgid "story.c01.aftermath-14.summary"
+msgstr "炉心恢复，族长要求封存王冠图纸。塔莎把维修页和责任页订在同一个册子里。"
+
+msgid "story.c01.aftermath-14.beat.withhold-details-not-history.text"
+msgstr "不公开全部细节，可以讨论。假装我们没用过它，不可以。"
+
+msgid "story.c01.aftermath-14.beat.witnesses-without-restriction.text"
+msgstr "技术可以限制访问，责任不能限制见证。"
+
+msgid "story.c01.brief-15.kicker"
+msgstr "第三章 · 战斗 15"
+
+msgid "story.c01.brief-15.title"
+msgstr "银林长梦"
+
+msgid "story.c01.brief-15.date"
+msgstr "第 3 年 · 初春"
+
+msgid "story.c01.brief-15.location"
+msgstr "银林母根"
+
+msgid "story.c01.brief-15.summary"
+msgstr "银林把森林衰亡转移给林外城市已有百年。停止转移会伤害母根，继续则会让陌生人替它死亡。"
+
+msgid "story.c01.brief-15.beat.hidden-costs-still-count.text"
+msgstr "他们说代价落在看不见的地方，所以不是他们的决定。"
+
+msgid "story.c01.brief-15.beat.forest-chooses-its-future.text"
+msgstr "保护母根，但先切断继续扩大的誓文。活下来的森林要自己承担以后。"
+
+msgid "story.c01.brief-15.beat.do-not-distance-the-pain.text"
+msgstr "不能把疼痛命名为远方。"
+
+msgid "story.c01.brief-15.mission.objective"
+msgstr "保护母根，击退维持代价转移的受控部队。"
+
+msgid "story.c01.brief-15.mission.danger"
+msgstr "长弓射程远且克制伊芙拉；母根一旦被毁立即失败。"
+
+msgid "story.c01.brief-15.mission.lesson"
+msgstr "森林视线、远程压制、对空克制与结构保护。"
+
+msgid "story.c01.aftermath-15.kicker"
+msgstr "战后"
+
+msgid "story.c01.aftermath-15.title"
+msgstr "森林第一次自己疼"
+
+msgid "story.c01.aftermath-15.date"
+msgstr "第 3 年 · 初春"
+
+msgid "story.c01.aftermath-15.location"
+msgstr "银林树城"
+
+msgid "story.c01.aftermath-15.summary"
+msgstr "转移减弱后，母根的叶片在一夜间落去三分之一。银林没有感谢灰旗，只同意让林外城市进入下一次决策。"
+
+msgid "story.c01.aftermath-15.beat.voices-of-the-sacrificed.text"
+msgstr "共同承担不会让代价变小，只会让被牺牲的人不再缺席。"
+
+msgid "story.c01.aftermath-15.beat.anger-at-the-table.text"
+msgstr "他们还恨你。很好，至少这次恨你的人坐在桌边。"
+
+msgid "story.c01.brief-16.kicker"
+msgstr "第三章 · 战斗 16"
+
+msgid "story.c01.brief-16.title"
+msgstr "记住我的名字"
+
+msgid "story.c01.brief-16.date"
+msgstr "第 3 年 · 暮春"
+
+msgid "story.c01.brief-16.location"
+msgstr "旧帝国归名场"
+
+msgid "story.c01.brief-16.summary"
+msgstr "无数无名死者聚成“无旗者”。审判官要继续抽取它，莱娅必须先证明新意识有权拒绝被使用。"
+
+msgid "story.c01.brief-16.beat.origins-not-resurrection.text"
+msgstr "它不是任何一个死者复活。三个真名只是让它知道，组成自己的记忆曾经属于谁。"
+
+msgid "story.c01.brief-16.beat.answer-the-true-names.text"
+msgstr "那就回应三个名字，击退审判官。不要把无旗者当成要被击杀的目标。"
+
+msgid "story.c01.brief-16.beat.names-not-locks.text"
+msgstr "名字不是锁。名字是可以回答，也可以不回答的声音。"
+
+msgid "story.c01.brief-16.mission.objective"
+msgstr "回应三个真名，并击退抽取记忆的审判官。"
+
+msgid "story.c01.brief-16.mission.danger"
+msgstr "墓园巨像仍会阻挡道路；任务不要求消灭它。"
+
+msgid "story.c01.brief-16.mission.lesson"
+msgstr "非歼灭终局、战场互动、目标优先级与火力克制。"
+
+msgid "story.c01.aftermath-16.kicker"
+msgstr "第三章终"
+
+msgid "story.c01.aftermath-16.title"
+msgstr "一个新名字"
+
+msgid "story.c01.aftermath-16.date"
+msgstr "第 3 年 · 暮春"
+
+msgid "story.c01.aftermath-16.location"
+msgstr "归名场"
+
+msgid "story.c01.aftermath-16.summary"
+msgstr "审判官撤退后，聚忆体没有散去。它第一次用不是任何一名死者的声音，为自己选择了一个称呼。"
+
+msgid "story.c01.aftermath-16.beat.origins-and-present-identity.text"
+msgstr "我们记下它过去由谁组成，也记下它现在不等于其中任何一个人。"
+
+msgid "story.c01.aftermath-16.beat.right-to-leave-the-pact.text"
+msgstr "如果我们要建立一个允许退出的盟约，它也拥有同样的退出权。"
+
+msgid "story.c01.chapter-three-ending.kicker"
+msgstr "前三章完成"
+
+msgid "story.c01.chapter-three-ending.title"
+msgstr "灰旗成为一支军队"
+
+msgid "story.c01.chapter-three-ending.date"
+msgstr "第 3 年 · 初夏"
+
+msgid "story.c01.chapter-three-ending.location"
+msgstr "洛岬晨议会"
+
+msgid "story.c01.chapter-three-ending.summary"
+msgstr "三年以前，莱娅相信正确的人下令就足够。现在她拥有一支军队，也第一次拥有能在她错误时阻止她的人。"
+
+msgid "story.c01.chapter-three-ending.beat.less-indispensable.text"
+msgstr "十六场战斗，七份退出条款，三本公开账册。你终于开始变得没那么不可替代。"
+
+msgid "story.c01.chapter-three-ending.beat.fragments-awakening.text"
+msgstr "王冠碎片正在醒来。下一次共同控制，不会只持续半小时。"
+
+msgid "story.c01.chapter-three-ending.beat.a-seat-for-everyone.text"
+msgstr "那就先让每一个会被它命令的人拥有席位。第四章从这张桌子开始。"
+
+msgid "story.c01.chapter-three-ending.beat.door-remains-open.text"
+msgstr "灰旗在晨风里没有王徽。桌边每个人仍能看见门，也仍然拥有走出去的权利。"
+
+msgid "story.c01.campaign-failed.kicker"
+msgstr "战役中断"
+
+msgid "story.c01.campaign-failed.title"
+msgstr "灰旗倒下"
+
+msgid "story.c01.campaign-failed.date"
+msgstr "未定"
+
+msgid "story.c01.campaign-failed.location"
+msgstr "伊瑟兰"
+
+msgid "story.c01.campaign-failed.summary"
+msgstr "这条时间线在这里中断。失败可以重新推演，但不会被叙事假装成没有发生。"
+
+msgid "story.c01.campaign-failed.beat.costs-survive-retry.text"
+msgstr "重新开始当前战斗，或从战役存档继续。每一次选择仍会保留它对应的代价。"
+
+msgid "choice.c01.choice-first-command.prompt"
+msgstr "莱娅如何开始第一次指挥？"
+
+msgid "choice.c01.choice-first-command.context"
+msgstr "北丘提供高地优势，但先遣小队会脱离罗德里克的援护。"
+
+msgid "choice.c01.choice-first-command.option.rush-north-hill.label"
+msgstr "抢占北丘"
+
+msgid "choice.c01.choice-first-command.option.rush-north-hill.detail"
+msgstr "让托伦提前进入高地，取得位置优势但以受伤状态开局。"
+
+msgid "choice.c01.choice-first-command.option.rush-north-hill.consequence"
+msgstr "提高“果断”，并真实承担救援成本。"
+
+msgid "choice.c01.choice-first-command.option.steady-advance.label"
+msgstr "稳步推进"
+
+msgid "choice.c01.choice-first-command.option.steady-advance.detail"
+msgstr "保持队形与援护，让帝国前锋先靠近中央村。"
+
+msgid "choice.c01.choice-first-command.option.steady-advance.consequence"
+msgstr "提高“克制”，保留完整阵线。"
+
+msgid "choice.c01.choice-bridge-truce.prompt"
+msgstr "是否接受凯恩提出的中桥停火？"
+
+msgid "choice.c01.choice-bridge-truce.context"
+msgstr "正式承诺会约束双方三回合，也会让凯恩把你的选择记在程序里。"
+
+msgid "choice.c01.choice-bridge-truce.option.accept-truce.label"
+msgstr "接受停火"
+
+msgid "choice.c01.choice-bridge-truce.option.accept-truce.detail"
+msgstr "中桥三回合禁止攻击，优先让平民通过。"
+
+msgid "choice.c01.choice-bridge-truce.option.accept-truce.consequence"
+msgstr "凯恩关系 +1。"
+
+msgid "choice.c01.choice-bridge-truce.option.no-formal-promise.label"
+msgstr "不作承诺"
+
+msgid "choice.c01.choice-bridge-truce.option.no-formal-promise.detail"
+msgstr "仍可实际停火，但战场不会强制限制攻击。"
+
+msgid "choice.c01.choice-bridge-truce.option.no-formal-promise.consequence"
+msgstr "敌方更积极，增加独立倾向。"
+
+msgid "choice.c01.choice-black-camp-plan.prompt"
+msgstr "黑旗营地同时有俘虏和档案，如何分配兵力？"
+
+msgid "choice.c01.choice-black-camp-plan.context"
+msgstr "两种方案都违背“只侦察”的命令，差别在于把主要风险放在哪里。"
+
+msgid "choice.c01.choice-black-camp-plan.option.rescue-and-evidence.label"
+msgstr "救人为先"
+
+msgid "choice.c01.choice-black-camp-plan.option.rescue-and-evidence.detail"
+msgstr "主力护送证人，米蕾尔沿途保存关键模板。"
+
+msgid "choice.c01.choice-black-camp-plan.option.rescue-and-evidence.consequence"
+msgstr "证人数增加。"
+
+msgid "choice.c01.choice-black-camp-plan.option.split-the-force.label"
+msgstr "分兵取证"
+
+msgid "choice.c01.choice-black-camp-plan.option.split-the-force.detail"
+msgstr "同时搜索三处营帐，路线更长、信息更完整。"
+
+msgid "choice.c01.choice-black-camp-plan.option.split-the-force.consequence"
+msgstr "证据值增加。"
+
+msgid "choice.c01.choice-white-river-priority.prompt"
+msgstr "白河撤离优先保住什么？"
+
+msgid "choice.c01.choice-white-river-priority.context"
+msgstr "河道不允许所有人、重装备和粮食同时安全通过。"
+
+msgid "choice.c01.choice-white-river-priority.option.people-first.label"
+msgstr "人员优先"
+
+msgid "choice.c01.choice-white-river-priority.option.people-first.detail"
+msgstr "把可用护卫全部配给难民与伤员。"
+
+msgid "choice.c01.choice-white-river-priority.option.people-first.consequence"
+msgstr "难民关系 +2。"
+
+msgid "choice.c01.choice-white-river-priority.option.save-supplies.label"
+msgstr "物资优先"
+
+msgid "choice.c01.choice-white-river-priority.option.save-supplies.detail"
+msgstr "保住决定后续恢复能力的粮车。"
+
+msgid "choice.c01.choice-white-river-priority.option.save-supplies.consequence"
+msgstr "战役补给 +3。"
+
+msgid "choice.c01.choice-mercenary-contract.prompt"
+msgstr "如何承认佣兵欠款？"
+
+msgid "choice.c01.choice-mercenary-contract.context"
+msgstr "现金能解决今天，制度决定下一个死者会不会再次被从账上删除。"
+
+msgid "choice.c01.choice-mercenary-contract.option.pay-what-is-owed.label"
+msgstr "立即补发欠款"
+
+msgid "choice.c01.choice-mercenary-contract.option.pay-what-is-owed.detail"
+msgstr "动用有限国库，按姓名补齐现有欠款。"
+
+msgid "choice.c01.choice-mercenary-contract.option.pay-what-is-owed.consequence"
+msgstr "国库 -2，塔莎关系 +2。"
+
+msgid "choice.c01.choice-mercenary-contract.option.create-pension-ledger.label"
+msgstr "建立抚恤账册"
+
+msgid "choice.c01.choice-mercenary-contract.option.create-pension-ledger.detail"
+msgstr "先确立不可删除的长期债权，再分期支付。"
+
+msgid "choice.c01.choice-mercenary-contract.option.create-pension-ledger.consequence"
+msgstr "制度能力 +1，塔莎关系 +1。"
+
+msgid "choice.c01.choice-free-ivra.prompt"
+msgstr "用什么方式解除伊芙拉的锁链？"
+
+msgid "choice.c01.choice-free-ivra.context"
+msgstr "两种方式都不控制幼龙，只决定战斗中的工具与路径。"
+
+msgid "choice.c01.choice-free-ivra.option.mirelle-ritual.label"
+msgstr "断誓仪式"
+
+msgid "choice.c01.choice-free-ivra.option.mirelle-ritual.detail"
+msgstr "米蕾尔削弱节点，让每处锁链更容易摧毁。"
+
+msgid "choice.c01.choice-free-ivra.option.mirelle-ritual.consequence"
+msgstr "米蕾尔关系 +1。"
+
+msgid "choice.c01.choice-free-ivra.option.break-chain-nodes.label"
+msgstr "工兵拆解"
+
+msgid "choice.c01.choice-free-ivra.option.break-chain-nodes.detail"
+msgstr "依靠塔莎和工兵逐处爆破，保留节点结构证据。"
+
+msgid "choice.c01.choice-free-ivra.option.break-chain-nodes.consequence"
+msgstr "塔莎关系 +1。"
+
+msgid "choice.c01.choice-old-banner-terms.prompt"
+msgstr "怎样对待仍站在旧旗之下的士兵？"
+
+msgid "choice.c01.choice-old-banner-terms.context"
+msgstr "他们执行追捕命令，但其中许多人真心相信赦免能让同伴回家。"
+
+msgid "choice.c01.choice-old-banner-terms.option.offer-exit-right.label"
+msgstr "允许自行离队"
+
+msgid "choice.c01.choice-old-banner-terms.option.offer-exit-right.detail"
+msgstr "公开承诺投降或脱离追兵者不会被追责。"
+
+msgid "choice.c01.choice-old-banner-terms.option.offer-exit-right.consequence"
+msgstr "制度能力 +1。"
+
+msgid "choice.c01.choice-old-banner-terms.option.demand-surrender.label"
+msgstr "必须放下武器"
+
+msgid "choice.c01.choice-old-banner-terms.option.demand-surrender.detail"
+msgstr "只有正式投降才能获得保护。"
+
+msgid "choice.c01.choice-old-banner-terms.option.demand-surrender.consequence"
+msgstr "权威倾向 +1。"
+
+msgid "choice.c01.choice-bell-tower-control.prompt"
+msgstr "沉钟塔由谁控制？"
+
+msgid "choice.c01.choice-bell-tower-control.context"
+msgstr "共同控制效率低，独占碎片则会重演双方互不信任的竞赛。"
+
+msgid "choice.c01.choice-bell-tower-control.option.joint-control-with-cain.label"
+msgstr "与凯恩共管"
+
+msgid "choice.c01.choice-bell-tower-control.option.joint-control-with-cain.detail"
+msgstr "凯恩及其军团作为临时友军进入战场。"
+
+msgid "choice.c01.choice-bell-tower-control.option.joint-control-with-cain.consequence"
+msgstr "凯恩关系 +2。"
+
+msgid "choice.c01.choice-bell-tower-control.option.race-for-the-fragment.label"
+msgstr "争夺碎片"
+
+msgid "choice.c01.choice-bell-tower-control.option.race-for-the-fragment.detail"
+msgstr "各自关闭机构，先完成者带走碎片。"
+
+msgid "choice.c01.choice-bell-tower-control.option.race-for-the-fragment.consequence"
+msgstr "王冠碎片 +1。"
+
+msgid "choice.c01.choice-forge-record.prompt"
+msgstr "如何处理山炉的王冠技术记录？"
+
+msgid "choice.c01.choice-forge-record.context"
+msgstr "完全公开会扩散危险，完全封存会再次切断公共追责。"
+
+msgid "choice.c01.choice-forge-record.option.publish-the-record.label"
+msgstr "公开责任记录"
+
+msgid "choice.c01.choice-forge-record.option.publish-the-record.detail"
+msgstr "隐藏可复现细节，但公开参与者、用途和代价。"
+
+msgid "choice.c01.choice-forge-record.option.publish-the-record.consequence"
+msgstr "制度能力 +1，山炉关系 -1。"
+
+msgid "choice.c01.choice-forge-record.option.seal-dangerous-pages.label"
+msgstr "暂时封存图纸"
+
+msgid "choice.c01.choice-forge-record.option.seal-dangerous-pages.detail"
+msgstr "由多方保管完整记录，暂不向公众展示。"
+
+msgid "choice.c01.choice-forge-record.option.seal-dangerous-pages.consequence"
+msgstr "山炉关系 +1。"
+
+msgid "choice.c01.choice-silverwood-price.prompt"
+msgstr "怎样结束银林的代价转移？"
+
+msgid "choice.c01.choice-silverwood-price.context"
+msgstr "立即停止会伤害母根，逐步退出仍会让林外城市继续承担一段时间。"
+
+msgid "choice.c01.choice-silverwood-price.option.end-cost-transfer.label"
+msgstr "立即停止转移"
+
+msgid "choice.c01.choice-silverwood-price.option.end-cost-transfer.detail"
+msgstr "让森林从本场战斗开始承担全部真实损耗。"
+
+msgid "choice.c01.choice-silverwood-price.option.end-cost-transfer.consequence"
+msgstr "银林关系 -1。"
+
+msgid "choice.c01.choice-silverwood-price.option.phase-out-gradually.label"
+msgstr "限期逐步退出"
+
+msgid "choice.c01.choice-silverwood-price.option.phase-out-gradually.detail"
+msgstr "设定公开期限和林外城市席位，降低断裂冲击。"
+
+msgid "choice.c01.choice-silverwood-price.option.phase-out-gradually.consequence"
+msgstr "银林关系 +1，制度能力 +1。"
+
+msgid "choice.c01.choice-unflagged-personhood.prompt"
+msgstr "灰旗如何称呼“无旗者”？"
+
+msgid "choice.c01.choice-unflagged-personhood.context"
+msgstr "它由许多亡者记忆组成，却已经做出不属于任何单个亡者的新选择。"
+
+msgid "choice.c01.choice-unflagged-personhood.option.recognize-a-new-person.label"
+msgstr "承认新人格"
+
+msgid "choice.c01.choice-unflagged-personhood.option.recognize-a-new-person.detail"
+msgstr "正式承认它拥有姓名、拒绝与离开的权利。"
+
+msgid "choice.c01.choice-unflagged-personhood.option.recognize-a-new-person.consequence"
+msgstr "归名者关系 +2。"
+
+msgid "choice.c01.choice-unflagged-personhood.option.protect-until-heard.label"
+msgstr "先保护其表达"
+
+msgid "choice.c01.choice-unflagged-personhood.option.protect-until-heard.detail"
+msgstr "不急于替它定义人格，在外部威胁中保护它继续回答。"
+
+msgid "choice.c01.choice-unflagged-personhood.option.protect-until-heard.consequence"
+msgstr "归名者关系 +1，克制 +1。"
+
+msgid "campaign.grayflag.title"
+msgstr "断冠之誓"
+
+msgid "campaign.grayflag.completion"
+msgstr "完成前三章"
+
+msgid "campaign.grayflag.chapter.1.title"
+msgstr "边境之火"
+
+msgid "campaign.grayflag.chapter.2.title"
+msgstr "灰旗流亡"
+
+msgid "campaign.grayflag.chapter.3.title"
+msgstr "古老诸族"
+
+msgid "ui.campaign.exit"
+msgstr "返回主菜单"
+
+msgid "ui.campaign.progress"
+msgstr "战役进度"
+
+#. {0}: chapter number (integer); {1}: localized chapter title (string).
+msgid "ui.campaign.chapter_heading"
+msgstr "第 {0} 章 · {1}"
+
+msgid "ui.story.objective"
+msgstr "胜利目标"
+
+msgid "ui.story.danger"
+msgstr "战场风险"
+
+msgid "ui.story.lesson"
+msgstr "机制主题"
+
+msgid "ui.story.continue"
+msgstr "继续 →"
+
+msgid "ui.story.next_beat"
+msgstr "下一段 →"
+
+msgid "ui.choice.eyebrow"
+msgstr "需要作出决定"
+
+msgid "ui.choice.note"
+msgstr "选择会写入战役存档，并在后续关卡、关系或资源中兑现。"

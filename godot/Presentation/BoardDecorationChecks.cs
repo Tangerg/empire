@@ -66,7 +66,8 @@ public partial class BoardDecorationChecks : Node
         for (var cycle = 0; cycle < 3; cycle++)
         {
             AddChild(overlay);
-            overlay.ShowPublicState(3, 3, new HashSet<BoardCell>(), new Dictionary<BoardCell, double> { [cell] = 2, [outside] = 1 }, new HashSet<BoardCell> { cell });
+            overlay.ShowPublicState(new HashSet<BoardCell> { cell }, new HashSet<BoardCell>(),
+                new Dictionary<BoardCell, double> { [cell] = 2, [outside] = 1 });
             overlay.ShowTactical(new(cell, cell, new[] { cell, outside }, new[] { cell }, new[] { cell }, new[] { cell }, new[] { cell, new BoardCell(2, 1) }, outside, new[] { cell, outside }));
             Require(overlay.RangeOrder().Select(item => item.Role).SequenceEqual(new[] { "threat", "controlled", "incoming", "heal", "attack", "fog" }), "Source range ordering, move/attack exclusion and outside containment");
             Require(overlay.RangeOrder().All(item => item.Cell == cell), "No outside ground decorations");

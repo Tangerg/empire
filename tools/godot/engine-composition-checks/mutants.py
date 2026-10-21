@@ -10,8 +10,11 @@ def mutate(file,old,new):
     if text.count(old)!=1: raise SystemExit(f'Expected exactly one anchor in {file}: {old}')
     file.write_text(text.replace(old,new));return text
 native=[
- ('state-grid-consumer-bypass','Engine/GrayFlagEngine.cs','stateRules = new BattleStateRules(Catalog, Grids);','stateRules = new BattleStateRules(Catalog, GridRegistry.Core());'),
- ('state-grid-facing-bypass','State/BattleStateFactory.cs','var restingFacing = dependencies.Grids.Get(StateJson.Text(rules, "grid")).RestingFacing;','var restingFacing = "south";'),
+ ('spatial-grid-install-bypass','Composition/DefaultBattlePlugins.cs','new DefaultTacticalSpace(context.Require(Keys.Content), context.Require(Keys.Grids))','new DefaultTacticalSpace(context.Require(Keys.Content), GridRegistry.Core())'),
+ ('spatial-grid-undeclared','Composition/DefaultBattlePlugins.cs','provides: [Keys.Space], requiresCapabilities: [Keys.Content, Keys.Grids]','provides: [Keys.Space], requiresCapabilities: [Keys.Content]'),
+ ('retained-context-lifetime','Composition/KernelCapabilities.cs','internal void Close() => closed = true;','internal void Close() => closed = false;'),
+ ('state-grid-consumer-bypass','Engine/GrayFlagEngine.cs','stateRules = new BattleStateRules(Catalog, Grids, Reactions);','stateRules = new BattleStateRules(Catalog, GridRegistry.Core(), Reactions);'),
+ ('state-grid-facing-bypass','State/BattleStateFactory.cs','StateJson.Text(authoredFacing, "facing") : grid.RestingFacing;','StateJson.Text(authoredFacing, "facing") : "south";'),
  ('ignore-custom-plugins','Composition/BattleEngineFactory.cs','kernel.UseAll(plugins);','kernel.UseAll(plugins.Where(_ => false));'),
  ('resource-default-bypass','Engine/GrayFlagEngine.cs','Resources = dependencies.Resources','Resources = new BattleResources()'),
  ('ability-default-bypass','Engine/GrayFlagEngine.cs','Abilities = dependencies.Abilities;','Abilities = DefaultAbilities.Create().Seal();'),
@@ -20,7 +23,7 @@ native=[
  ('action-pipeline-bypass','Engine/GrayFlagEngine.cs','new(CreateState(level, seed), actionHandlers, actionPipeline)','new(CreateState(level, seed), actionHandlers)'),
  ('restored-pipeline-bypass','Engine/GrayFlagEngine.cs','new(state, actionHandlers, actionPipeline)','new(state, actionHandlers)'),
  ('omit-seal','Composition/BattleEngineFactory.cs','dependencies.Abilities.Seal();',''),
- ('manifest-default-bypass','Engine/GrayFlagEngine.Persistence.cs','Manifest.Create(packs, pluginManifest)','Manifest.Create(packs, pluginManifest.Where(p => p.Key.StartsWith("engine.")).ToDictionary(p => p.Key,p => p.Value))'),
+ ('manifest-default-bypass','Engine/GrayFlagEngine.Persistence.cs','Manifest.Create(Catalog, pluginManifest)','Manifest.Create(Catalog, pluginManifest.Where(p => p.Key.StartsWith("engine.")).ToDictionary(p => p.Key,p => p.Value))'),
  ('modifier-default-bypass','Engine/GrayFlagEngine.cs','dependencies.CombatModifiers, dependencies.HitEffects','DefaultCombatModifiers.Create(), dependencies.HitEffects'),
  ('hit-effect-default-bypass','Engine/GrayFlagEngine.cs','dependencies.CombatModifiers, dependencies.HitEffects','dependencies.CombatModifiers, DefaultWeaponHitEffects.Create()'),
  ('catalog-identity-bypass','Combat/CombatForecasts.cs','modifierRules = new(catalog, grids, Effectiveness);','modifierRules = new(new ReadOnlyContent(packs), grids, Effectiveness);'),
@@ -44,7 +47,7 @@ for name,path,old,new in [
  ('turn-consumer-bypass','Engine/GrayFlagEngine.cs','new TurnOrderRules(Catalog, TurnOrders)','new TurnOrderRules(Catalog, TurnOrderRegistry.Core())'),
  ('reaction-consumer-bypass','Engine/GrayFlagEngine.cs','Reactions, RankProgression, UnitDepartures','ReactionRegistry.Core(), RankProgression, UnitDepartures'),
  ('departure-consumer-bypass','Engine/GrayFlagEngine.cs','Reactions, RankProgression, UnitDepartures','Reactions, RankProgression, DefaultUnitDepartureHandlers.Create()'),
- ('reference-consumer-bypass','Engine/GrayFlagEngine.Persistence.cs','new BattleDefinitionValidator(packs, references, ReferenceChecks, Grids)','new BattleDefinitionValidator(packs, references, BattleReferenceCheckRegistry.CreateDefault(), Grids)'),
+ ('reference-consumer-bypass','Engine/GrayFlagEngine.Persistence.cs','new BattleDefinitionValidator(references, ReferenceChecks, Grids)','new BattleDefinitionValidator(references, BattleReferenceCheckRegistry.CreateDefault(), Grids)'),
  ('reader-consumer-bypass','Engine/GrayFlagEngine.Persistence.cs','new BattlePersistence(environment, Saves)','new BattlePersistence(environment, new BattleSaveReader())'),
  ('condition-consumer-bypass','Engine/GrayFlagEngine.cs','new ScenarioRules(Catalog, ScenarioConditions, ScenarioEffects, ScenarioCommands)','new ScenarioRules(Catalog, DefaultScenarioConditions.Create(Random), ScenarioEffects, ScenarioCommands)'),
  ('effect-consumer-bypass','Engine/GrayFlagEngine.cs','new ScenarioRules(Catalog, ScenarioConditions, ScenarioEffects, ScenarioCommands)','new ScenarioRules(Catalog, ScenarioConditions, DefaultScenarioEffects.Create(), ScenarioCommands)'),
@@ -58,7 +61,7 @@ if len(sys.argv)>4:
     native=[entry for entry in native if sys.argv[4] in entry[0]]
 with tempfile.TemporaryDirectory(prefix='empire-root-native-') as temp:
     target=Path(temp)
-    for folder in ['godot/Empire.Core','tools/godot/engine-composition-checks']:
+    for folder in ['godot/Empire.Core','tools/godot/engine-composition-checks','tools/godot/check-support']:
         shutil.copytree(root/folder,target/folder,ignore=shutil.ignore_patterns('bin','obj'))
     project=target/'tools/godot/engine-composition-checks/EngineCompositionChecks.csproj'
     for name,path,old,new in native:

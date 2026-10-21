@@ -29,13 +29,13 @@ public sealed class CombatEffects
         var cannotCapture = false;
         foreach (var instance in StateJson.Objects(unit["statuses"], "statuses"))
         {
-            var modifiers = content.Get("statuses", StateJson.Text(instance, "id"))["modifiers"]!.AsObject();
+            var modifiers = content.Read("statuses", StateJson.Text(instance, "id")).GetProperty("modifiers");
             var stacks = Math.Max(1, StateJson.Number(instance, "stacks", 1));
-            if (modifiers["attackMultiplier"] is not null)
+            if (modifiers.TryGetProperty("attackMultiplier", out var multiplier) && multiplier.ValueKind != System.Text.Json.JsonValueKind.Null)
                 attack *= Math.Pow(StateJson.Number(modifiers, "attackMultiplier", 1), stacks);
             defense += StateJson.Number(modifiers, "defenseDelta", 0) * stacks;
             movement += StateJson.Number(modifiers, "movementDelta", 0) * stacks;
-            cannotCapture |= StateJson.IsTrue(modifiers["cannotCapture"]);
+            cannotCapture |= modifiers.TryGetProperty("cannotCapture", out var blocked) && StateJson.IsTrue(blocked);
         }
         return new StatusModifiers(attack, defense, movement, cannotCapture);
     }
@@ -46,8 +46,8 @@ public sealed class CombatEffects
         foreach (var instance in StateJson.Objects(unit["statuses"], "statuses"))
         {
             var id = StateJson.Text(instance, "id");
-            if (content.Get("statuses", id)["blockedAbilityTags"]!.AsArray()
-                .Any(value => requested.Contains(value!.GetValue<string>()))) return id;
+            if (content.Read("statuses", id).GetProperty("blockedAbilityTags").EnumerateArray()
+                .Any(value => requested.Contains(StateJson.Text(value)))) return id;
         }
         return null;
     }

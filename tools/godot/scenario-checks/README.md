@@ -28,3 +28,14 @@ Direct rule failures compare any partial mutation and already-emitted events bec
 ## Verified checkpoint
 
 2026-10-20: all 466 direct comparisons, 29 persisted integration steps, and three non-finite API guards passed, with zero build warnings or errors. The deliberately delayed overlay-expiry mutant was rejected by the intended event assertion. This is focused source differential coverage, not an exhaustive proof for every combination of scenario effects or a campaign victory claim.
+
+## Native health contract (2026-10-21)
+
+The original `restore stops at full reading-order zone and resets snapshots`
+vector returns a corpse at zero HP without a revival policy. It remains tested
+as an explicit native `DomainInvariantException`, with no events and unchanged
+whole state. A new positive-snapshot version preserves exact source coverage of
+reading-order placement, a full zone, and return resets. The suite now generates
+467 vectors: 466 source comparisons and one native health-invariant assertion.
+Explicit `reviveMarkers` still restores corpses through its canonical health-ratio
+policy; valid withdrawn snapshots retain their exact HP.

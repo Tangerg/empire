@@ -19,14 +19,12 @@ public static class DefaultActionHandlers
         .Register("reaction", (context, action) =>
         {
             var unit = context.Rules.Commands.CommandableUnit(context.State, StateJson.Integer(action, "unit"), "调整反应姿态");
-            var stance = StateJson.Text(action, "stance");
-            unit["reaction"] = stance;
-            context.Emit(new JsonObject { ["type"] = "reactionChanged", ["unit"] = unit["id"]!.DeepClone(), ["stance"] = stance });
+            context.Rules.Commands.ChangeReaction(unit, StateJson.Text(action, "stance"), context.Emit);
         })
         .Register("face", (context, action) =>
         {
             var unit = context.Rules.Commands.CommandableUnit(context.State, StateJson.Integer(action, "unit"), "调整朝向");
-            TacticalCommands.TurnToFace(unit, StateJson.Text(action, "facing"), context.Emit);
+            context.Rules.Commands.TurnToFace(context.State, unit, StateJson.Text(action, "facing"), context.Emit);
         })
         .Register("changeCareer", (context, action) => context.Rules.Progression.ChangeCareer(context.State,
             StateJson.Integer(action, "unit"), StateJson.Text(action, "career"), context.Emit))

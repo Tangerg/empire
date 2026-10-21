@@ -23,7 +23,7 @@ public sealed class BattleVision(MovementRules movement)
             var owner = Integer(unit, "owner");
             if (owner != viewer && !TacticalQueries.AreAllies(state, owner, viewer)) continue;
             var at = TacticalQueries.Position(unit);
-            var radius = Number(movement.Content.Get("units", Text(unit, "type"))["vision"], "vision") + battlefield.Cell(at).Vision;
+            var radius = Number(movement.Content.Read("units", Text(unit, "type")).GetProperty("vision"), "vision") + battlefield.Cell(at).Vision;
             if (radius != Math.Truncate(radius) || radius < int.MinValue || radius > int.MaxValue)
                 throw new DomainInvariantException("vision radius must be an integer");
             foreach (var cell in board.Ring(at, 0, (int)radius)) seen.Add(board.IndexOf(cell));
@@ -42,7 +42,7 @@ public sealed class BattleVision(MovementRules movement)
         var at = TacticalQueries.Position(unit);
         if (!(seen ?? VisibleTiles(state, viewer)).Contains(board.IndexOf(at))) return false;
         // Source cover concealment uses terrain opacity, not structures' line-of-sight blocking.
-        if (!IsTrue(movement.Battlefield(state).Cell(at).Terrain["opaque"])) return true;
+        if (!IsTrue(movement.Battlefield(state).Cell(at).Terrain.GetProperty("opaque"))) return true;
         return Objects(state["units"], "units").Any(other =>
             (Integer(other, "owner") == viewer || TacticalQueries.AreAllies(state, Integer(other, "owner"), viewer)) &&
             board.Distance(TacticalQueries.Position(other), at) == 1);

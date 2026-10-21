@@ -13,8 +13,6 @@ import { COMMON_CONTENT_PACK } from '../../packages/content-common/src/index';
 import { ANCIENT_EMPIRES_CONTENT_PACK } from '../../packages/content-ancient-empires/src/index';
 import { CANDIDATE_01_CONTENT_PACK, CANDIDATE_01_LEVELS, CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN, candidate01Level } from '../../packages/story-candidate-01/src/index';
 import { candidateMaterial, CANDIDATE_FOREST_FLOOR, CANDIDATE_SETTLEMENT_LIFE, CANDIDATE_RIVER_STONES, CANDIDATE_SHORE_DECALS, CANDIDATE_SHORE, CANDIDATE_VERTICAL_CROSSINGS, CANDIDATE_FOUNDATIONS, CANDIDATE_SURFACE_FIT } from '../../packages/story-candidate-01/src/presentation/candidate-01-terrain-materials';
-import { candidate01Story, candidate01Choice, CANDIDATE_01_SPEAKER_NAMES } from '../../packages/story-candidate-01/src/story';
-import { candidate01CampaignAdapter, CANDIDATE_01_MENU_ART } from '../../packages/story-candidate-01/src/presentation/index';
 import * as bindings from '../../packages/story-candidate-01/src/presentation/candidate-01-bindings';
 const assetRoot = resolve('packages/story-candidate-01/assets/final-fantasy-v1');
 const output = resolve('godot');
@@ -35,12 +33,6 @@ write('data/grayflag-level.json', level); write('data/content-packs.json', packs
 const campaign = CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN;
 write('data/grayflag-campaign.json', campaign);
 write('data/grayflag-campaign-levels.json', CANDIDATE_01_LEVELS);
-write('data/grayflag-story.json', {
-  speakers: CANDIDATE_01_SPEAKER_NAMES,
-  stories: campaign.nodes.filter(node => node.type === 'story' || node.type === 'ending').map(node => candidate01Story(node.presentation)),
-  choices: campaign.nodes.filter(node => node.type === 'choice').map(node => candidate01Choice(node.presentation)),
-});
-
 write('tests/oracle/grayflag-initial-raw.json', { level, state: raw });
 const actorSource = ts.createSourceFile('actors.ts', readFileSync('packages/story-candidate-01/src/presentation/candidate-01-actor-art.ts', 'utf8'), ts.ScriptTarget.Latest, true);
 function literal(node: ts.Node): unknown {
@@ -149,52 +141,24 @@ function copy(png: string): { resourcePath: string; sha256: string } {
   const destination = resolve(output, 'assets', png); mkdirSync(dirname(destination), { recursive: true });
   copyFileSync(source, destination, constants.COPYFILE_FICLONE); return { resourcePath: `res://assets/${png}`, sha256: hash(readFileSync(source)) };
 }
-// Narrative presentation remains sourced from the original campaign adapter.
-const campaignAdapter = candidate01CampaignAdapter();
-function narrativeArt(source: string) {
-  const prefix = '/packages/story-candidate-01/assets/final-fantasy-v1/';
-  if (!source.startsWith(prefix)) throw new Error(`Unknown narrative asset root: ${source}`);
-  const relative = source.slice(prefix.length);
-  return { source, ...copy(relative) };
+// Native narrative documents and PO own structure and wording. This importer only
+// refreshes the exact assets they reference; it never regenerates those documents.
+const narrativeMetadata = JSON.parse(readFileSync(resolve(output, 'data/grayflag-staging.json'), 'utf8'));
+function copyNarrativeAssets(value: unknown): void {
+  if (!value || typeof value !== 'object') return;
+  if ('source' in value && 'resourcePath' in value && 'sha256' in value) {
+    const art = value as { source: string; resourcePath: string; sha256: string };
+    const prefix = '/packages/story-candidate-01/assets/final-fantasy-v1/';
+    if (!art.source.startsWith(prefix)) throw new Error(`Unknown narrative asset root: ${art.source}`);
+    const relative = art.source.slice(prefix.length);
+    const source = resolve(assetRoot, relative);
+    if (!source.startsWith(assetRoot + '/') || art.resourcePath !== `res://assets/${relative}` || hash(readFileSync(source)) !== art.sha256)
+      throw new Error(`Native narrative asset contract mismatch: ${art.source}`);
+    copy(relative);
+  }
+  for (const child of Object.values(value)) copyNarrativeAssets(child);
 }
-const menuSource = readFileSync('apps/game/src/main.ts', 'utf8');
-function menuText(pattern: RegExp, field: string): string {
-  const value = pattern.exec(menuSource)?.[1];
-  if (!value) throw new Error(`Original menu text contract changed: ${field}`);
-  return value;
-}
-const menu = {
-  title: menuText(/<h1>([^<]+)<\/h1>/, 'title'),
-  kicker: menuText(/class="title-kicker">([^<]+)</, 'kicker'),
-  description: menuText(/class="title-sub">([^<]+)</, 'description'),
-  artAlt: menuText(/class="title-art"[^>]*alt="([^"]+)"/, 'artAlt'),
-  continueLabel: menuText(/\$\{icon\('flag'\)\} ([^`]+)`/, 'continueLabel'),
-  restartLabel: menuText(/campaignSave \? '([^']+)' : '开始战役'/, 'restartLabel'),
-  newLabel: menuText(/campaignSave \? '重新开始战役' : '([^']+)'/, 'newLabel'),
-  replacePrompt: menuText(/confirm\('(重新开始会[^']+)'\)/, 'replacePrompt'),
-};
-write('data/grayflag-staging.json', {
-  schema: 1, title: campaignAdapter.title,
-  completionLabel: campaignAdapter.completionLabel, menu,
-  menuArt: narrativeArt(CANDIDATE_01_MENU_ART),
-  chapters: Object.fromEntries([...new Set(CANDIDATE_01_LEVELS.map(level => campaignAdapter.chapterOf(level)))].map(chapter =>
-    [chapter, { title: campaignAdapter.chapterTitle(chapter), art: narrativeArt(campaignAdapter.chapterArt(chapter)) }])),
-  storyScenes: Object.fromEntries([...new Set(campaign.nodes.filter(node => node.type === 'story' || node.type === 'ending')
-    .map(node => candidate01Story(node.presentation).scene).filter((scene): scene is string => scene != null))]
-    .map(scene => [scene, narrativeArt(campaignAdapter.storyArt(scene))])),
-  battleTotal: campaign.nodes.filter(node => node.type === 'battle').length,
-  joinAfter: campaignAdapter.joinAfter, relationLabels: campaignAdapter.relationLabels,
-  resourceLabels: campaignAdapter.resourceLabels,
-  portraits: Object.fromEntries(Object.entries(campaignAdapter.portraits).map(([id, path]) => [id, narrativeArt(path)])),
-  levels: Object.fromEntries(CANDIDATE_01_LEVELS.map(level => {
-    const chapter = campaignAdapter.chapterOf(level), order = campaignAdapter.levelOrder(level);
-    const briefingId = campaignAdapter.briefingId(level);
-    const scene = campaignAdapter.story(briefingId).scene;
-    return [level.id, { chapter, order, chapterTitle: campaignAdapter.chapterTitle(chapter), briefingId,
-      chapterArt: narrativeArt(campaignAdapter.chapterArt(chapter)),
-      briefingArt: scene ? narrativeArt(campaignAdapter.storyArt(scene)) : null }];
-  })),
-});
+copyNarrativeAssets(narrativeMetadata);
 for (const asset of assets) Object.assign(asset, copy(asset.png));
 write('data/selected-assets.json', { schema: 1, logicalTileSize: 32, assets });
 const environment = read('environment-builder-v1/manifest-environment-builder-v1.json');

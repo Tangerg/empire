@@ -60,7 +60,7 @@ public partial class ConnectorDecorationChecks : Node
                 await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             }
             var state = JsonNode.Parse("""{"players":[],"structures":[],"markers":[{"id":1,"kind":"fallen_corpse","owner":1,"at":{"x":2,"y":3}}]}""")!.AsObject();
-            var markerView = new DynamicStateView(AssetCatalog.Load(), PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+            var markerView = new DynamicStateView(AssetCatalog.Load(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")));
             var markers = markerView.Create(state);
             try
             {

@@ -19,11 +19,12 @@ internal static class StateContractChecks
         numericSchema["schema"] = 2.0;
         LevelNormalizer.Normalize(numericSchema);
         var packs = JsonNode.Parse(File.ReadAllText(Path.Combine(root, "../../data/content-packs.json")))!.AsArray();
-        var grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid()).Seal();
+        var engine = new GrayFlagEngine(packs);
+        var rules = new BattleStateRules(engine.Catalog, engine.Grids, engine.Reactions);
         foreach (var item in fixture["spawns"]!.AsArray())
         {
             var state = item!["before"]!.DeepClone().AsObject();
-            var unit = BattleStateFactory.SpawnUnit(packs, grids, state, item["type"]!.GetValue<string>(),
+            var unit = BattleStateFactory.SpawnUnit(rules, state, item["type"]!.GetValue<string>(),
                 item["owner"]!.GetValue<int>(), new Coord(item["at"]!["x"]!.GetValue<int>(), item["at"]!["y"]!.GetValue<int>()),
                 item["hp"]!.GetValue<double>(), item["done"]!.GetValue<bool>(), item["source"]!.AsObject());
             if (StateDigest.Hash(unit) != StateDigest.Hash(item["unit"]!)) throw new Exception("Spawn unit differs");

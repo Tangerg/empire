@@ -46,7 +46,7 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
     }
     var content = new ReadOnlyContent(packs);
     var grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid());
-    var space = new TestSpace(packs, grids, config);
+    var space = new TestSpace(content, grids, config);
     var resources = new BattleResources();
     if (config["aiWeight"] is { } weight) resources.Adapters.Replace(resources.Adapters.Get("command_points") with { AiWeight = Number(weight, "aiWeight") });
     if (config["fundsAvailable"] is { } funds) resources.Adapters.Replace(resources.Adapters.Get("funds") with
@@ -59,11 +59,12 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
     resources.Subjects.Register(new("squad", (context, _) => new("squad", context.Player!), subject => new JsonObject { ["kind"] = "squad", ["id"] = subject.Holder["id"]!.DeepClone() }));
     var directives = UnitDirectiveRegistry.Core();
     var turns = new TurnOrderSystem(new(content, TurnOrderRegistry.Core()));
-    var commands = new TacticalCommands(new(content, grids, space), turns.MayAct, directives);
+    var reactions = ReactionRegistry.Core();
+    var commands = new TacticalCommands(new(grids, space, reactions), turns.MayAct, directives);
     var combat = new BattleCombat(content, grids, resources, space, WeaponAreaRegistry.Core(), DefaultCombatModifiers.Create(),
-        DefaultWeaponHitEffects.Create(), ReactionRegistry.Core(), new ThresholdRankProgressionPolicy(), DefaultUnitDepartureHandlers.Create());
-    var support = new SupportOrders(packs, grids, resources, combat.Effects);
-    var careers = new CareerRules(packs, resources, combat.Effects);
+        DefaultWeaponHitEffects.Create(), reactions, new ThresholdRankProgressionPolicy(), DefaultUnitDepartureHandlers.Create());
+    var support = new SupportOrders(content, grids, resources, combat.Effects);
+    var careers = new CareerRules(content, resources, combat.Effects);
     var abilities = DefaultAbilities.Create()
         .Register(new("pulse", "Pulse") { Usable = (_, _) => !IsTrue(config["disableAbility"]) })
         .Register(new("charge", "Charge")
@@ -91,7 +92,7 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
 }
 Console.WriteLine($"PASS {checks / 6} original source AI planning dependency cases, {checks} exact assertions");
 
-sealed class TestSpace(JsonArray packs, GridRegistry grids, JsonObject config) : DefaultTacticalSpace(packs, grids)
+sealed class TestSpace(ReadOnlyContent content, GridRegistry grids, JsonObject config) : DefaultTacticalSpace(content, grids)
 {
     public override MoveField ComputeMoveField(JsonObject state, JsonObject unit)
     {

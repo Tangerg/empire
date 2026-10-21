@@ -13,7 +13,7 @@ public sealed class FormationRules
 {
     private readonly StateContent content;
     private readonly GridRegistry grids;
-    public FormationRules(JsonArray packs, GridRegistry grids) { content = new StateContent(packs); this.grids = grids; }
+    public FormationRules(ReadOnlyContent catalog, GridRegistry grids) { content = catalog.Source; this.grids = grids; }
     private ITacticalGrid Grid(JsonObject state) => grids.Get(Text(Object(state["rules"], "rules"), "grid"));
     public JsonObject? InEffect(JsonObject state, JsonObject unit, string? formation) => InEffect(content, Grid(state), state, unit, formation);
     public JsonObject? Active(JsonObject state, JsonObject unit) => InEffect(state, unit, unit["formation"]?.GetValue<string>());

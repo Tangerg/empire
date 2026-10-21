@@ -1,7 +1,5 @@
 {
-  "schema": 1,
-  "title": "断冠之誓",
-  "completionLabel": "完成前三章",
+  "schema": 2,
   "menu": {
     "title": "远古帝国",
     "kicker": "剧情战役型 SRPG · 确定性战斗预测",
@@ -19,28 +17,28 @@
   },
   "chapters": {
     "1": {
-      "title": "边境之火",
       "art": {
         "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-three-bridges.png",
         "resourcePath": "res://assets/runtime-hd/narrative-static/arch-three-bridges.png",
         "sha256": "9d5347d2af5dc5ff4e42884a7c63ed9e2ddfc1e6b31097e5106e177217bf9bec"
-      }
+      },
+      "titleKey": "campaign.grayflag.chapter.1.title"
     },
     "2": {
-      "title": "灰旗流亡",
       "art": {
         "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-redstone.png",
         "resourcePath": "res://assets/runtime-hd/narrative-static/arch-redstone.png",
         "sha256": "e437a17cdaa4681084428d401c7be284d6bd46300625e48a6794acbe1efa80ec"
-      }
+      },
+      "titleKey": "campaign.grayflag.chapter.2.title"
     },
     "3": {
-      "title": "古老诸族",
       "art": {
         "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-silverwood.png",
         "resourcePath": "res://assets/runtime-hd/narrative-static/arch-silverwood.png",
         "sha256": "b567fe9c11e1caa082698bdc8cef0e06334083977eb82ce6ca81f3cd247c236d"
-      }
+      },
+      "titleKey": "campaign.grayflag.chapter.3.title"
     }
   },
   "storyScenes": {
@@ -171,7 +169,6 @@
     "c01-01": {
       "chapter": 1,
       "order": 1,
-      "chapterTitle": "边境之火",
       "briefingId": "c01/brief-01",
       "chapterArt": {
         "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-three-bridges.png",
@@ -187,7 +184,6 @@
     "c01-02": {
       "chapter": 1,
       "order": 2,
-      "chapterTitle": "边境之火",
       "briefingId": "c01/brief-02",
       "chapterArt": {
         "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-three-bridges.png",
@@ -203,7 +199,6 @@
     "c01-03": {
       "chapter": 1,
       "order": 3,
-      "chapterTitle": "边境之火",
       "briefingId": "c01/brief-03",
       "chapterArt": {
         "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-three-bridges.png",
@@ -219,7 +214,6 @@
     "c01-04": {
       "chapter": 1,
       "order": 4,
-      "chapterTitle": "边境之火",
       "briefingId": "c01/brief-04",
       "chapterArt": {
         "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-three-bridges.png",
@@ -231,7 +225,6 @@
     "c01-05": {
       "chapter": 1,
       "order": 5,
-      "chapterTitle": "边境之火",
       "briefingId": "c01/brief-05",
       "chapterArt": {
         "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-three-bridges.png",
@@ -247,7 +240,6 @@
     "c01-06": {
       "chapter": 2,
       "order": 6,
-      "chapterTitle": "灰旗流亡",
       "briefingId": "c01/brief-06",
       "chapterArt": {
         "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-redstone.png",
@@ -263,7 +255,6 @@
     "c01-07": {
       "chapter": 2,
       "order": 7,
-      "chapterTitle": "灰旗流亡",
       "briefingId": "c01/brief-07",
       "chapterArt": {
         "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-redstone.png",
@@ -279,7 +270,6 @@
     "c01-08": {
       "chapter": 2,
       "order": 8,
-      "chapterTitle": "灰旗流亡",
       "briefingId": "c01/brief-08",
       "chapterArt": {
         "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-redstone.png",
@@ -295,7 +285,6 @@
     "c01-09": {
       "chapter": 2,
       "order": 9,
-      "chapterTitle": "灰旗流亡",
       "briefingId": "c01/brief-09",
       "chapterArt": {
         "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-redstone.png",
@@ -311,7 +300,6 @@
     "c01-10": {
       "chapter": 2,
       "order": 10,
-      "chapterTitle": "灰旗流亡",
       "briefingId": "c01/brief-10",
       "chapterArt": {
         "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-redstone.png",
@@ -323,7 +311,6 @@
     "c01-11": {
       "chapter": 3,
       "order": 11,
-      "chapterTitle": "古老诸族",
       "briefingId": "c01/brief-11",
       "chapterArt": {
         "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-silverwood.png",
@@ -339,7 +326,6 @@
     "c01-12": {
       "chapter": 3,
       "order": 12,
-      "chapterTitle": "古老诸族",
       "briefingId": "c01/brief-12",
       "chapterArt": {
         "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-silverwood.png",
@@ -355,7 +341,6 @@
     "c01-13": {
       "chapter": 3,
       "order": 13,
-      "chapterTitle": "古老诸族",
       "briefingId": "c01/brief-13",
       "chapterArt": {
         "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-silverwood.png",
@@ -367,7 +352,6 @@
     "c01-14": {
       "chapter": 3,
       "order": 14,
-      "chapterTitle": "古老诸族",
       "briefingId": "c01/brief-14",
       "chapterArt": {
         "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-silverwood.png",
@@ -383,7 +367,6 @@
     "c01-15": {
       "chapter": 3,
       "order": 15,
-      "chapterTitle": "古老诸族",
       "briefingId": "c01/brief-15",
       "chapterArt": {
         "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-silverwood.png",
@@ -399,7 +382,6 @@
     "c01-16": {
       "chapter": 3,
       "order": 16,
-      "chapterTitle": "古老诸族",
       "briefingId": "c01/brief-16",
       "chapterArt": {
         "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-silverwood.png",
@@ -412,5 +394,7 @@
         "sha256": "e437a17cdaa4681084428d401c7be284d6bd46300625e48a6794acbe1efa80ec"
       }
     }
-  }
+  },
+  "titleKey": "campaign.grayflag.title",
+  "completionLabelKey": "campaign.grayflag.completion"
 }

@@ -2,6 +2,7 @@ using System.Text.Json.Nodes;
 using Empire.Core.Resources;
 using Empire.Core.State;
 using Empire.Core.Statuses;
+using Empire.Core.Tactics;
 using static Empire.Core.State.StateJson;
 using static Empire.Core.Lifecycle.TurnOrderSystem;
 
@@ -173,16 +174,12 @@ public sealed class BattleLifecycle
         if (!Objects(state["pendingCasts"], "pendingCasts").Any(cast => Integer(cast, "caster") == Integer(unit, "id"))) unit["done"] = false;
         var rules = Object(state["rules"], "rules");
         if (!IsTrue(rules["healOnOwnedBuilding"])) return;
-        var map = Object(state["map"], "map");
-        var index = Integer(unit, "y") * Integer(map, "width") + Integer(unit, "x");
-        if (Integer(Array(map["owners"], "owners")[index], "owner") != owner) return;
-        var terrain = content.Get("terrains", Text(Array(map["tiles"], "tiles")[index], "terrain"));
-        var rate = Math.Max(0, Number(terrain["heal"], "heal") + OverlaysAt(unit).Sum(overlay => Number(content.Get("terrainOverlays", Text(overlay, "type"))["healDelta"], "heal delta")));
+        var battlefield = new TacticalBattlefield(state, content);
+        var cell = battlefield.Cell(TacticalQueries.Position(unit));
+        if (Integer(Array(battlefield.Map["owners"], "owners")[cell.Index], "owner") != owner) return;
+        var rate = cell.Heal;
         if (rate <= 0) return;
-        var hp = Number(unit["hp"], "hp");
-        var maximum = Number(content.Get("units", Text(unit, "type"))["maxHp"], "maxHp");
-        var healed = Math.Min(Math.Max(0, Round(rate)), Math.Max(0, maximum - hp));
-        unit["hp"] = hp + healed;
+        var healed = new UnitHealth(catalog, unit).Heal(rate);
         if (healed > 0) emit(new JsonObject { ["type"] = "regen", ["unit"] = Integer(unit, "id"), ["amount"] = healed });
     }
 

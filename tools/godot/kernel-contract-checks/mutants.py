@@ -29,6 +29,9 @@ source_mutants = [
     ('registration-manifest-order', 'kernel.ts', '[...this.plugins.values()].map', '[...this.plugins.values()].reverse().map'),
 ]
 native_mutants = [
+    ('retained-context-writes', 'KernelCapabilities.cs', 'internal void Close() => closed = true;', 'internal void Close() => closed = false;'),
+    ('failed-install-context', 'SrpgMicrokernel.cs', 'try { plugin.Install(context); }\n            finally { context.Close(); }', 'plugin.Install(context); context.Close();'),
+    ('deferred-context-consumption', 'KernelCapabilities.cs', 'RequireOpen();\n        if (!consumed.Contains', 'if (!consumed.Contains'),
     ('ECMAScript-whitespace', '../Determinism/EcmaText.cs', 'return value.All(IsWhitespace);', 'return string.IsNullOrWhiteSpace(value);'),
     ('dependency-order', 'DependencyOrder.cs', 'return ordered.AsReadOnly();', 'ordered.Reverse(); return ordered.AsReadOnly();'),
     ('external-dependency', 'DependencyOrder.cs', 'options.IsSatisfiedExternally?.Invoke(dependency) != true', 'dependency is not null'),
@@ -83,7 +86,7 @@ with tempfile.TemporaryDirectory(prefix='empire-kernel-source-') as temporary:
 
 with tempfile.TemporaryDirectory(prefix='empire-kernel-native-') as temporary:
     target = Path(temporary)
-    for folder in ['godot/Empire.Core', 'tools/godot/kernel-contract-checks']:
+    for folder in ['godot/Empire.Core', 'tools/godot/kernel-contract-checks', 'tools/godot/check-support']:
         shutil.copytree(root / folder, target / folder, ignore=shutil.ignore_patterns('bin', 'obj'))
     project = target / 'tools/godot/kernel-contract-checks/KernelContractChecks.csproj'
     for name, filename, old, new in native_mutants:

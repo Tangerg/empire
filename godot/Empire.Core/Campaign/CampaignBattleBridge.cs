@@ -7,6 +7,20 @@ using static Empire.Core.State.StateJson;
 
 namespace Empire.Core.Campaign;
 
+public sealed class PendingBattleIdentityException(string expectedRequestId, string actualRequestId)
+    : DomainInvariantException("pending battle identity does not match the campaign sequence and node")
+{
+    public string ExpectedRequestId { get; } = expectedRequestId;
+    public string ActualRequestId { get; } = actualRequestId;
+}
+
+public sealed class CampaignRosterContentException(string campaignUnitId, string unitTypeId)
+    : DomainInvariantException($"campaign roster unit \"{campaignUnitId}\" references unknown unit type \"{unitTypeId}\"")
+{
+    public string CampaignUnitId { get; } = campaignUnitId;
+    public string UnitTypeId { get; } = unitTypeId;
+}
+
 /// <summary>Projects persistent roster state to and from the canonical battle snapshot.</summary>
 public sealed class CampaignBattleBridge
 {
@@ -14,21 +28,37 @@ public sealed class CampaignBattleBridge
     private readonly Func<JsonObject, JsonObject> normalizeLevel;
     private readonly StateContent content;
     private readonly IReadOnlyDictionary<string, string> dispositions;
-    public CampaignBattleBridge(Func<string, JsonObject> resolveLevel, JsonArray contentPacks,
+    public CampaignBattleBridge(Func<string, JsonObject> resolveLevel, ReadOnlyContent catalog,
         Func<JsonObject, JsonObject>? normalizeLevel = null, IReadOnlyDictionary<string, string>? markerDispositions = null)
     {
         this.resolveLevel = resolveLevel; this.normalizeLevel = normalizeLevel ?? LevelNormalizer.Normalize;
-        content = new StateContent(contentPacks);
+        content = catalog.Source;
         dispositions = markerDispositions is null ? new Dictionary<string, string>(StringComparer.Ordinal)
         { ["corpse"] = "fallen", ["transport-loss"] = "fallen", ["routed"] = "routed", ["surrendered"] = "surrendered", ["withdrawn"] = "missing" }
             : new Dictionary<string, string>(markerDispositions, StringComparer.Ordinal);
     }
     public JsonObject Prepare(JsonObject definition, JsonObject state)
     {
+        if (state["pendingBattle"] is JsonObject pending) throw new CampaignActionException($"campaign already has pending battle \"{Text(pending, "requestId")}\"");
+        return ProjectRequest(definition, state, Number(state["battleSequence"], "battleSequence") + 1);
+    }
+
+    internal JsonObject RestorePending(JsonObject definition, JsonObject state)
+    {
+        var pending = state["pendingBattle"] as JsonObject
+            ?? throw new CampaignActionException("campaign has no pending battle");
+        var request = ProjectRequest(definition, state, Number(state["battleSequence"], "battleSequence"));
+        if (Text(pending, "requestId") != Text(request, "id") || Text(pending, "node") != Text(request, "node") ||
+            Text(pending, "level") != Text(request, "levelId"))
+            throw new PendingBattleIdentityException(Text(request, "id"), Text(pending, "requestId"));
+        return request;
+    }
+
+    private JsonObject ProjectRequest(JsonObject definition, JsonObject state, double sequence)
+    {
         var id = Text(state, "currentNode");
         var node = Objects(definition["nodes"], "nodes").FirstOrDefault(candidate => Text(candidate, "id") == id);
         if (node is null || Text(node, "type") != "battle") throw new CampaignInvariantException($"campaign node \"{id}\" is not a battle");
-        if (state["pendingBattle"] is JsonObject pending) throw new CampaignActionException($"campaign already has pending battle \"{Text(pending, "requestId")}\"");
         var level = normalizeLevel((JsonObject)resolveLevel(Text(node, "level")).DeepClone());
         var declared = Objects(node["rosterBindings"], "rosterBindings").Select(binding => (JsonObject)binding.DeepClone()).ToArray();
         foreach (var binding in declared)
@@ -40,7 +70,7 @@ public sealed class CampaignBattleBridge
         var bindings = declared.Where(binding => Text(Object(state["roster"]![Text(binding, "campaignUnit")], "roster unit"), "disposition") == "available");
         return new JsonObject
         {
-            ["id"] = $"{Text(definition, "id")}:{Text(node, "id")}:{EcmaNumber.Format(Number(state["battleSequence"], "battleSequence") + 1)}",
+            ["id"] = $"{Text(definition, "id")}:{Text(node, "id")}:{EcmaNumber.Format(sequence)}",
             ["campaignId"] = definition["id"]!.DeepClone(), ["node"] = node["id"]!.DeepClone(),
             ["levelId"] = node["level"]!.DeepClone(), ["perspectivePlayer"] = node["perspectivePlayer"]?.DeepClone() ?? JsonValue.Create(1),
             ["level"] = level, ["rosterBindings"] = new JsonArray(bindings.Select(binding => (JsonNode)binding).ToArray()),
@@ -53,7 +83,8 @@ public sealed class CampaignBattleBridge
         var unit = Objects(units, "units").FirstOrDefault(candidate => candidate["key"]?.GetValue<string>() == key)
             ?? throw new CampaignInvariantException($"level \"{Text(level, "id")}\" has no unit key \"{key}\"");
         if (Text(campaign, "disposition") != "available") { units.Remove(unit); return; }
-        var definition = content.Get("units", Text(campaign, "unitType"));
+        var type = Text(campaign, "unitType");
+        var definition = content.TryGet("units", type) ?? throw new CampaignRosterContentException(Text(campaign, "id"), type);
         unit["unit"] = campaign["unitType"]!.DeepClone(); unit["owner"] = campaign["owner"]!.DeepClone();
         unit["hp"] = Math.Max(1, Round(Number(definition["maxHp"], "maxHp") * Number(campaign["hpRatio"], "hpRatio")));
         unit["morale"] = Math.Max(1, Round((definition["morale"]?["maximum"] is { } maximum ? Number(maximum, "maximum") : 100) * Number(campaign["moraleRatio"], "moraleRatio")));

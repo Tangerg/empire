@@ -1,5 +1,6 @@
 using System.Text.Json.Nodes;
 using Empire.Core.Geometry;
+using Empire.Core.Combat;
 using Empire.Core.State;
 
 namespace Empire.Core.Tactics;
@@ -13,7 +14,7 @@ public sealed record ValidatedMovement(
 public delegate void PartingShotResolver(
     JsonObject state, JsonObject unit, Coord from, Coord to, Action<JsonObject> emit);
 
-public sealed record TacticalCommandRules(ReadOnlyContent Content, GridRegistry Grids, ITacticalSpace Space);
+public sealed record TacticalCommandRules(GridRegistry Grids, ITacticalSpace Space, ReactionRegistry Reactions);
 
 public sealed class TacticalCommands
 {
@@ -34,8 +35,11 @@ public sealed class TacticalCommands
     private TacticalBoard Board(JsonObject state) => new(StateJson.Object(state["map"], "map"),
         rules.Grids.Get(StateJson.Text(state["rules"]!["grid"], "grid")));
 
-    public void TurnToward(JsonObject state, JsonObject unit, Coord from, Coord target, Action<JsonObject> emit) =>
-        TurnToFace(unit, Board(state).Grid.Toward(from, target), emit);
+    public void TurnToward(JsonObject state, JsonObject unit, Coord from, Coord target, Action<JsonObject> emit)
+    {
+        var grid = Board(state).Grid;
+        UnitDisposition.Face(grid, unit, grid.Toward(from, target), emit);
+    }
 
     public JsonObject OwnUnit(JsonObject state, int unitId)
     {
@@ -91,13 +95,10 @@ public sealed class TacticalCommands
         if (StateJson.IsTrue(StateJson.Object(state["rules"], "rules")["zoneOfControl"]) && partingShots is null)
             throw new DomainInvariantException("voluntary movement with zone of control requires a parting-shot resolver");
         var board = Board(state);
-        StateJson.Array(board.Map["captureProgress"], "captureProgress")[board.IndexOf(validated.Origin)] = 0;
-        unit["x"] = validated.Destination.X;
-        unit["y"] = validated.Destination.Y;
-        unit["capture"] = 0;
+        new BattleRelocation(state).MoveUnit(validated.UnitId, validated.Destination);
         directives.ArriveAt(unit, validated.Destination);
         if (validated.Path.Count > 1)
-            TurnToFace(unit, board.Grid.Toward(validated.Path[^2], validated.Destination), emit);
+            UnitDisposition.Face(board.Grid, unit, board.Grid.Toward(validated.Path[^2], validated.Destination), emit);
         emit(new JsonObject
         {
             ["type"] = "move",
@@ -108,18 +109,19 @@ public sealed class TacticalCommands
         return TacticalQueries.UnitById(state, validated.UnitId);
     }
 
-    public static void TurnToFace(JsonObject unit, string facing, Action<JsonObject> emit)
+    public void ChangeReaction(JsonObject unit, string stance, Action<JsonObject> emit)
     {
-        var previous = StateJson.Text(unit, "facing");
-        unit["facing"] = facing;
-        if (previous == facing) return;
-        emit(new JsonObject
-        {
-            ["type"] = "facingChanged",
-            ["unit"] = StateJson.Required(unit, "id").DeepClone(),
-            ["from"] = previous,
-            ["to"] = facing,
-        });
+        if (!rules.Reactions.Has(stance))
+            throw new IllegalActionException($"unknown reaction stance \"{stance}\"");
+        UnitDisposition.React(rules.Reactions, unit, stance, emit);
+    }
+
+    public void TurnToFace(JsonObject state, JsonObject unit, string facing, Action<JsonObject> emit)
+    {
+        var grid = Board(state).Grid;
+        if (!UnitDisposition.AdmitsFacing(grid, facing))
+            throw new IllegalActionException($"grid \"{grid.Id}\" has no direction \"{facing}\"");
+        UnitDisposition.Face(grid, unit, facing, emit);
     }
 
     public static void FinishCommand(JsonObject state, int unitId)

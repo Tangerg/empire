@@ -16,7 +16,7 @@ public static class DefaultAbilityAiEvaluators
         registry.Register(new("capture", context =>
         {
             var terrain = context.Turn.Battlefield.Cell(context.At).Terrain;
-            var prize = IsTrue(terrain["hq"]) ? 4000 : Array(terrain["produces"], "produces").Count > 0 ? 900 : 600;
+            var prize = IsTrue(terrain.GetProperty("hq")) ? 4000 : terrain.GetProperty("produces").GetArrayLength() > 0 ? 900 : 600;
             return context.TileValue * 0.3 + prize;
         }));
         registry.Register(new("heal", context =>

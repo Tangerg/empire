@@ -1,3 +1,4 @@
+using Empire.Checks;
 using System.IO.Compression;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -31,7 +32,20 @@ static class AllCapabilitiesChecks
             ["provides"]=new JsonArray(plugin.Provides.Select(key=>(JsonNode?)JsonValue.Create(key.Id)).ToArray()),
             ["requiresCapabilities"]=new JsonArray(plugin.RequiresCapabilities.Select(key=>(JsonNode?)JsonValue.Create(key.Id)).ToArray()),
         }).ToArray());
-        equal(recipe,oracle["recipe"],"exact five-plugin 24-capability source recipe");
+        var expectedRecipe = (JsonArray)oracle["recipe"]!.DeepClone();
+        var tactical = expectedRecipe.OfType<JsonObject>().Single(plugin => StateJson.Text(plugin, "id") == "engine.tactical-rules");
+        check(StateJson.Integer(tactical, "version") == 1, "source tactical recipe version");
+        tactical["version"] = 2;
+        var provides = tactical["provides"]!.AsArray();
+        provides.Remove(provides.Single(key => key!.GetValue<string>() == "space"));
+        equal(tactical["requiresCapabilities"], new JsonArray("content"), "source tactical content capture");
+        tactical["requiresCapabilities"] = new JsonArray();
+        expectedRecipe.Insert(expectedRecipe.IndexOf(tactical) + 1, new JsonObject
+        {
+            ["id"] = "engine.tactical-space", ["version"] = 1,
+            ["provides"] = new JsonArray("space"), ["requiresCapabilities"] = new JsonArray("content", "grids"),
+        });
+        equal(recipe,expectedRecipe,"explicit native six-plugin 24-capability installation recipe");
         JsonObject? Error(Action action) { try { action(); return null; } catch(Exception error) { return new() { ["name"]=error.GetType().Name,["message"]=error.Message }; } }
         foreach(var vector in vectors)
         {
@@ -90,7 +104,7 @@ static class AllCapabilitiesChecks
                 ["referenceChecks"]=ReferenceEquals(engine.ReferenceChecks,references),["saves"]=ReferenceEquals(engine.Saves,reader),["scenarioConditions"]=ReferenceEquals(engine.ScenarioConditions,conditions),
                 ["scenarioEffects"]=ReferenceEquals(engine.ScenarioEffects,effects),["objectives"]=ReferenceEquals(engine.Objectives,objectives),
             };
-            equal(identity,vector["identity"],"all capability resolved identity");equal(engine.RulesetManifest,vector["manifest"],"all capability actual manifest");
+            equal(identity,vector["identity"],"all capability resolved identity");equal(engine.RulesetManifest,FixtureRuleset.ExpectedNative(vector["manifest"]!.AsObject()),"all capability actual manifest");
             var level=vector["level"]!.AsObject();var battle=engine.CreateBattle(level);equal(battle.Snapshot(),vector["initial"],"custom turn start");
             var forecastState=battle.Snapshot();var forecastUnits=forecastState["units"]!.AsArray().OfType<JsonObject>().ToArray();var defender=forecastUnits.Single(u=>StateJson.Integer(u,"id")==2);defender["reaction"]="root-guard";
             var forecast=engine.Combat.Forecasts.Forecast(forecastState,forecastUnits.First(u=>StateJson.Integer(u,"owner")==2),defender);
@@ -104,8 +118,8 @@ static class AllCapabilitiesChecks
                 var failure=Error(()=>{events=new JsonArray(battle.Dispatch(action).Events.Select(v=>v.DeepClone()).ToArray());recorder.Record(action);});
                 equal(failure,step["failure"],"all capability step error");equal(events,step["events"],"all capability step events");equal(battle.Snapshot(),step["after"],"all capability step state/rollback");
             }
-            var save=engine.SaveBattle(battle.Snapshot(),"2026-10-20T00:00:00.000Z");equal(save,vector["save"],"all capability live save");equal(engine.LoadBattle(save),vector["loaded"],"all capability load");
-            var replay=recorder.Replay(battle.Snapshot());equal(replay,vector["replay"],"all capability replay document");equal(engine.ReplayBattle(level,replay).State,vector["replayed"],"all capability replay state");
+            var save=engine.SaveBattle(battle.Snapshot(),"2026-10-20T00:00:00.000Z");equal(save,FixtureRuleset.NativeDocument(vector["save"]!.AsObject()),"all capability live save");equal(engine.LoadBattle(save),vector["loaded"],"all capability load");
+            var replay=recorder.Replay(battle.Snapshot());equal(replay,FixtureRuleset.NativeDocument(vector["replay"]!.AsObject()),"all capability replay document");equal(engine.ReplayBattle(level,replay).State,vector["replayed"],"all capability replay state");
             var invalidLevel=(JsonObject)level.DeepClone();invalidLevel["scenario"]!["variables"]!["rootCheck"]="missing";equal(Error(()=>engine.CreateState(invalidLevel)),vector["levelFailure"],"composed level reference admission");
             var invalidState=battle.Snapshot();invalidState["scenario"]!["variables"]!["rootCheck"]="missing";equal(Error(()=>engine.SaveBattle(invalidState)),vector["stateFailure"],"composed live state reference admission");
             var refused=(JsonObject)save.DeepClone();refused["state"]!["scenario"]!["variables"]!["failRead"]=true;equal(Error(()=>engine.LoadBattle(refused)),vector["readFailure"],"composed reader refusal");

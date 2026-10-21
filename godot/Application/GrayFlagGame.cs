@@ -1,9 +1,12 @@
 using Godot;
 using System.Text.Json.Nodes;
 using Empire.Core.Engine;
+using Empire.Core;
+using Empire.Core.Campaign;
 using Empire.Core.Geometry;
 using Empire.Presentation;
 using Empire.Presentation.Feedback;
+using Empire.Localization;
 
 namespace Empire.Application;
 
@@ -11,6 +14,7 @@ namespace Empire.Application;
 public partial class GrayFlagGame : Node
 {
     private GrayFlagEngine engine = null!;
+    private GameText text = null!;
     private JsonArray packs = null!;
     private GrayFlagCampaign campaign = null!;
     private StoryDocument stories = null!;
@@ -37,14 +41,16 @@ public partial class GrayFlagGame : Node
     public override void _Ready()
     {
         if (GetParent() == GetTree().Root && PackageChecks.StartRequestedCheck(GetTree())) return;
+        TranslationServer.SetLocale(GodotTextCatalog.Locale);
+        text = GodotTextCatalog.LoadSimplifiedChinese();
         packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         engine = new GrayFlagEngine(packs);
         definition = PresentationJson.Load<JsonObject>("res://data/grayflag-campaign.json");
         levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json");
         presentation = PresentationJson.Load<JsonObject>("res://data/grayflag-staging.json");
-        narrative = NarrativePresentationDocument.Load();
+        narrative = NarrativePresentationDocument.Load(text);
         campaign = NewCampaign();
-        stories = StoryDocument.Load();
+        stories = StoryDocument.Load(text);
         ShowMenu();
     }
 
@@ -67,7 +73,6 @@ public partial class GrayFlagGame : Node
         {
             if (!resultOffered)
             {
-                resultOffered = true;
                 var expectedSession = session;
                 var report = campaign.BattleSummary();
                 var result = new BattleResultScreen();
@@ -81,8 +86,8 @@ public partial class GrayFlagGame : Node
                         campaign.FinishBattle(); session = null;
                         var saved = TryPersistCampaign();
                         var summary = new BattleResultScreen(); SetView(summary);
-                        var stateAfter = campaign.Runtime.Snapshot();
-                        var summaryShell = CampaignShellView.Create(new NarrativeContext(narrative,
+                        var stateAfter = campaign.Snapshot();
+                        var summaryShell = CampaignShellView.Create(new NarrativeContext(text, narrative,
                             stateAfter["battleHistory"]!.AsArray().Count, stateAfter["status"]!.GetValue<string>() == "active"), report.Summary.Chapter);
                         summary.ShowResult("victory", report.Summary, () => { if (ReferenceEquals(view, summary)) ShowNode(); },
                             summaryShell, () => { if (ReferenceEquals(view, summary)) ShowMenu(); });
@@ -93,6 +98,7 @@ public partial class GrayFlagGame : Node
                         campaign.RestartBattle(); resultOffered = false; ShowBattle("");
                     },
                     () => { if (ReferenceEquals(session, expectedSession) && ReferenceEquals(view, result)) ExitBattle(); });
+                resultOffered = true;
             }
             return;
         }
@@ -114,12 +120,12 @@ public partial class GrayFlagGame : Node
         view = next; AddChild(next);
     }
 
-    private GrayFlagCampaign NewCampaign(JsonObject? state = null) => new(definition, levels, packs, engine, state);
+    private GrayFlagCampaign NewCampaign(JsonObject? state = null) => new(definition, levels, engine, state);
 
     private bool TryPersistCampaign()
     {
-        try { CampaignSlotStorage.Save(definition, campaign.Runtime.Snapshot(), ProjectSettings.GlobalizePath(CampaignSavePath)); return true; }
-        catch (Exception error) { GD.PushWarning("Campaign autosave failed: " + error.Message); return false; }
+        try { CampaignSlotStorage.Save(definition, campaign.Snapshot(), ProjectSettings.GlobalizePath(CampaignSavePath)); return true; }
+        catch (SaveStorageException error) { GD.PushWarning(error.ToString()); return false; }
     }
 
     private void ShowMenu()
@@ -134,7 +140,7 @@ public partial class GrayFlagGame : Node
         {
             if (!CurrentMenu()) return;
             try { CampaignSlotStorage.ClearForNewCampaign(ProjectSettings.GlobalizePath(CampaignSavePath)); campaign = NewCampaign(); ShowNode(); }
-            catch (Exception error) { ShowMenu(); Notify("无法开始战役：" + error.Message); }
+            catch (SaveStorageException error) { ShowMenu(); Notify("无法开始战役：" + error.Message); }
         }
         menu.ShowMenu(projection, () => {
             if (!CurrentMenu() || loaded.State is null) return;
@@ -154,61 +160,93 @@ public partial class GrayFlagGame : Node
     private void AdvanceCampaign(Action transition)
     {
         try { transition(); }
-        catch (Exception error) { ShowNode(); Notify("战役操作失败：" + error.Message); return; }
+        catch (CampaignActionException error) { ShowNode(); Notify("战役操作失败：" + error.Message); return; }
         var saved = TryPersistCampaign();
         ShowNode();
         if (!saved) Notify("战役已继续，但自动保存失败。当前进度仍保留在窗口中，请使用 F5 保存。");
     }
 
-    private void ShowNode(string? battleLogMessage = null)
+    private sealed record PreparedCampaignView(Control View, BattleScreen? Screen = null, GrayFlagSession? Session = null);
+
+    private bool CurrentView(GrayFlagCampaign owner, Control control) => IsInsideTree() &&
+        control.IsInsideTree() && ReferenceEquals(campaign, owner) && ReferenceEquals(view, control);
+
+    private T PrepareMounted<T>(T next, Action<T> configure) where T : Control
     {
-        screen = null; session = null; resultOffered = false;
-        var node = campaign.Runtime.Node();
-        var type = node["type"]!.GetValue<string>();
-        if (type == "battle")
+        next.Visible = false;
+        next.ProcessMode = ProcessModeEnum.Disabled;
+        AddChild(next);
+        try { configure(next); return next; }
+        catch
         {
-            if (campaign.Battle is null || campaign.AtCamp) ShowStaging();
-            else ShowBattle(battleLogMessage);
-            return;
+            RemoveChild(next);
+            next.Free();
+            throw;
         }
-        var story = new StoryScreen(); SetView(story);
-        var presentation = node["presentation"]?.GetValue<string>();
-        var state = campaign.Runtime.Snapshot();
-        var context = new NarrativeContext(narrative, state["battleHistory"]!.AsArray().Count, state["status"]!.GetValue<string>() == "active");
-        bool Current() => ReferenceEquals(view, story);
-        if (type == "choice")
-            story.ShowChoice(stories.Choices.Single(value => value.Id == presentation),
-                campaign.Runtime.Choices().Select(value => value!["id"]!.GetValue<string>()).ToArray(), context,
-                id => { if (Current()) AdvanceCampaign(() => campaign.Runtime.Choose(id)); },
-                () => { if (Current()) ShowMenu(); });
-        else
-            story.ShowStory(stories.Stories.Single(value => value.Id == presentation), stories.Speakers, context, type == "ending",
-                () => { if (Current()) AdvanceCampaign(() => campaign.Runtime.Advance()); },
-                () => {
-                    if (!Current()) return;
-                    if (campaign.Runtime.Snapshot()["status"]!.GetValue<string>() == "active") AdvanceCampaign(() => campaign.Runtime.Advance());
-                    else ShowMenu();
-                }, () => { if (Current()) ShowMenu(); });
     }
 
-    private void ShowStaging()
+    private void Activate(GrayFlagCampaign owner, PreparedCampaignView prepared)
     {
-        screen = null; session = null; resultOffered = false;
-        var staging = new CampaignStagingScreen(); SetView(staging);
-        var metadata = PresentationJson.Load<JsonObject>("res://data/grayflag-staging.json");
-        var projection = CampaignStaging.Create(Empire.Core.Determinism.EcmaJson.ToElement(campaign.Runtime.Snapshot()),
-            Empire.Core.Determinism.EcmaJson.ToElement(campaign.Runtime.Node()),
-            Empire.Core.Determinism.EcmaJson.ToElement(campaign.BattleLevel()),
-            Empire.Core.Determinism.EcmaJson.ToElement(metadata), engine.UnitTypeName, campaign.Request is not null);
-        staging.ShowStaging(projection, AssetCatalog.Load(), () => {
-            if (!ReferenceEquals(view, staging)) return;
-            if (campaign.Request is null)
+        computerPacer.Cancel();
+        if (view is BattleScreen previousBattle) previousBattle.SetApplicationBusy(false);
+        if (view is not null) { RemoveChild(view); view.QueueFree(); }
+        campaign = owner;
+        view = prepared.View;
+        screen = prepared.Screen;
+        session = prepared.Session;
+        resultOffered = false;
+        view.ProcessMode = ProcessModeEnum.Inherit;
+        view.Visible = true;
+    }
+
+    private void ShowNode(string? battleLogMessage = null) => Activate(campaign, PrepareNode(campaign, battleLogMessage));
+
+    private PreparedCampaignView PrepareNode(GrayFlagCampaign owner, string? battleLogMessage = null)
+    {
+        var node = owner.Node();
+        var type = node["type"]!.GetValue<string>();
+        if (type == "battle")
+            return !owner.HasPendingBattle || owner.AtCamp ? PrepareStaging(owner) : PrepareBattle(owner, battleLogMessage);
+        var story = PrepareMounted(new StoryScreen(), next => {
+            var presentation = node["presentation"]?.GetValue<string>();
+            var state = owner.Snapshot();
+            var context = new NarrativeContext(text, narrative, state["battleHistory"]!.AsArray().Count, state["status"]!.GetValue<string>() == "active");
+            bool Current() => CurrentView(owner, next);
+            if (type == "choice")
+                next.ShowChoice(stories.Choices.Single(value => value.Id == presentation),
+                    owner.Choices().Select(value => value!["id"]!.GetValue<string>()).ToArray(), context,
+                    id => { if (Current()) AdvanceCampaign(() => owner.Choose(id)); },
+                    () => { if (Current()) ShowMenu(); });
+            else
+                next.ShowStory(stories.Stories.Single(value => value.Id == presentation), stories.SpeakerNameKeys, context, type == "ending",
+                    () => { if (Current()) AdvanceCampaign(owner.Advance); },
+                    () => {
+                        if (!Current()) return;
+                        if (owner.Snapshot()["status"]!.GetValue<string>() == "active") AdvanceCampaign(owner.Advance);
+                        else ShowMenu();
+                    }, () => { if (Current()) ShowMenu(); });
+        });
+        return new(story);
+    }
+
+    private void ShowStaging() => Activate(campaign, PrepareStaging(campaign));
+
+    private PreparedCampaignView PrepareStaging(GrayFlagCampaign owner)
+    {
+        var projection = CampaignStaging.Create(text, Empire.Core.Determinism.EcmaJson.ToElement(owner.Snapshot()),
+            Empire.Core.Determinism.EcmaJson.ToElement(owner.Node()),
+            Empire.Core.Determinism.EcmaJson.ToElement(owner.BattleLevel()),
+            Empire.Core.Determinism.EcmaJson.ToElement(presentation), engine.UnitTypeName, owner.HasPendingBattle);
+        var staging = PrepareMounted(new CampaignStagingScreen(), next => next.ShowStaging(projection, AssetCatalog.Load(), () => {
+            if (!CurrentView(owner, next)) return;
+            if (!owner.HasPendingBattle)
             {
-                try { CampaignSlotStorage.Save(definition, campaign.Runtime.Snapshot(), ProjectSettings.GlobalizePath(CampaignSavePath)); }
-                catch (Exception error) { ShowStaging(); Notify("自动保存失败，尚未进入战斗：" + error.Message); return; }
+                try { CampaignSlotStorage.Save(definition, owner.Snapshot(), ProjectSettings.GlobalizePath(CampaignSavePath)); }
+                catch (SaveStorageException error) { ShowStaging(); Notify("自动保存失败，尚未进入战斗：" + error.Message); return; }
             }
-            campaign.BeginBattle(); ShowBattle();
-        }, () => { if (ReferenceEquals(view, staging)) ShowMenu(); });
+            owner.BeginBattle(); ShowBattle();
+        }, () => { if (CurrentView(owner, next)) ShowMenu(); }));
+        return new(staging);
     }
 
     private void ExitBattle()
@@ -216,10 +254,12 @@ public partial class GrayFlagGame : Node
         campaign.ExitBattle(); ShowStaging();
     }
 
-    private void ShowBattle(string? initialLogMessage = null)
+    private void ShowBattle(string? initialLogMessage = null) => Activate(campaign, PrepareBattle(campaign, initialLogMessage));
+
+    private PreparedCampaignView PrepareBattle(GrayFlagCampaign owner, string? initialLogMessage = null)
     {
-        session = campaign.Battle!;
-        var level = campaign.Request!["level"]!.AsObject();
+        var boundSession = owner.Battle ?? throw new CampaignInvariantException("No battle session exists for the active campaign.");
+        var level = owner.BattleLevel();
         var id = level["id"]!.GetValue<string>();
         var scenePath = $"res://data/scenes/{id}.json";
         var scene = Godot.FileAccess.FileExists(scenePath) ? AuthoredScene.Load(scenePath) : new AuthoredScene
@@ -227,29 +267,22 @@ public partial class GrayFlagGame : Node
             LevelId = id, MapSize = new[] { level["width"]!.GetValue<int>(), level["height"]!.GetValue<int>() },
             RuntimeReady = false, Title = "此关卡尚无恢复的手工场景布局"
         };
-        screen = new BattleScreen(); SetView(screen);
         var grid = engine.Grids.Get(level["rules"]?["grid"]?.GetValue<string>() ?? "square4");
-        screen.BindSession(session, AssetCatalog.Load(), level, scene, EnvironmentCatalog.Load(),
-            facing => facing is not null && grid.Step(new Coord(0, 0), facing).X < 0,
-            facing => { if (facing is null) return Vector2.Zero; var origin = grid.Center(new Coord(0, 0)); var point = grid.Center(grid.Step(new Coord(0, 0), facing)); return new Vector2((float)(point.X - origin.X), (float)(point.Y - origin.Y)); }, initialLogMessage);
-        screen.ConfigureTerrain(WorldMaterialsManifest.Load());
-        screen.ConfigureDynamicState(packs);
-        var boundSession = session;
-        var boundScreen = screen;
-        var boundGeneration = lifecycleGeneration;
-        bool CurrentBattle() => IsInsideTree() && boundGeneration == lifecycleGeneration &&
-            ReferenceEquals(session, boundSession) && ReferenceEquals(screen, boundScreen);
-        screen.BindApplicationActions(() => { if (CurrentBattle()) Save(); }, () => { if (CurrentBattle()) Load(); }, () => {
-            if (!CurrentBattle() || boundScreen.IsInputBlocked) return;
-            campaign.RestartBattle(); resultOffered = false; ShowBattle("");
-        }, () => { if (CurrentBattle() && !boundScreen.IsInputBlocked) ExitBattle(); });
-    }
-
-    private void WriteSave(string resourcePath)
-    {
-        var path = ProjectSettings.GlobalizePath(resourcePath);
-        System.IO.File.WriteAllText(path + ".tmp", Empire.Core.Determinism.EcmaJson.Stringify(campaign.Save()));
-        System.IO.File.Move(path + ".tmp", path, true);
+        var nextScreen = PrepareMounted(new BattleScreen(), next => {
+            next.BindSession(boundSession, AssetCatalog.Load(), level, scene, EnvironmentCatalog.Load(),
+                facing => facing is not null && grid.Step(new Coord(0, 0), facing).X < 0,
+                facing => { if (facing is null) return Vector2.Zero; var origin = grid.Center(new Coord(0, 0)); var point = grid.Center(grid.Step(new Coord(0, 0), facing)); return new Vector2((float)(point.X - origin.X), (float)(point.Y - origin.Y)); }, initialLogMessage);
+            next.ConfigureTerrain(WorldMaterialsManifest.Load());
+            next.ConfigureDynamicState(engine.Catalog);
+            var boundGeneration = lifecycleGeneration;
+            bool CurrentBattle() => boundGeneration == lifecycleGeneration && CurrentView(owner, next) &&
+                ReferenceEquals(session, boundSession) && ReferenceEquals(screen, next);
+            next.BindApplicationActions(() => { if (CurrentBattle()) Save(); }, () => { if (CurrentBattle()) Load(); }, () => {
+                if (!CurrentBattle() || next.IsInputBlocked) return;
+                owner.RestartBattle(); ShowBattle("");
+            }, () => { if (CurrentBattle() && !next.IsInputBlocked) ExitBattle(); });
+        });
+        return new(nextScreen, nextScreen, boundSession);
     }
 
     private void Save()
@@ -257,23 +290,27 @@ public partial class GrayFlagGame : Node
         if (!IsInsideTree() || computerPacer.IsRunning || screen?.IsInputBlocked == true) return;
         try
         {
-            WriteSave(SavePath);
+            SaveFile.WriteDocument(ProjectSettings.GlobalizePath(SavePath), campaign.Save());
             if (session is not null) screen?.AppendMessage($"已保存第 {session.Snapshot()["turn"]} 回合的进度");
             Notify("战役和战斗进度已保存。F9 可读取。");
         }
-        catch (Exception error) { Notify("保存失败：" + error.Message); }
+        catch (SaveStorageException error) { Notify("保存失败：" + error.Message); }
     }
 
     private void Load()
     {
         if (!IsInsideTree() || computerPacer.IsRunning || screen?.IsInputBlocked == true) return;
-        try
+        var candidate = NewCampaign();
+        try { candidate.Load(SaveFile.ReadDocument(ProjectSettings.GlobalizePath(SavePath))); }
+        catch (Exception error) when (error is SaveStorageException or StoredDocumentException)
         {
-            campaign.Load(Empire.Core.Determinism.EcmaJson.Parse(System.IO.File.ReadAllText(ProjectSettings.GlobalizePath(SavePath)))!.AsObject());
+            screen?.AppendMessage("无法读取存档：" + error.Message);
+            Notify("读取失败，当前进度未变：" + error.Message);
+            return;
         }
-        catch (Exception error) { screen?.AppendMessage("无法读取存档：" + error.Message); Notify("读取失败，当前进度未变：" + error.Message); return; }
-        try { ShowNode(campaign.Battle is null ? null : $"已读取第 {campaign.Battle.Snapshot()["turn"]} 回合的存档"); Notify("已读取存档。"); }
-        catch (Exception error) { Notify("存档已恢复，但画面加载失败：" + error.Message); }
+        var prepared = PrepareNode(candidate, candidate.Battle is null ? null : $"已读取第 {candidate.Battle.Snapshot()["turn"]} 回合的存档");
+        Activate(candidate, prepared);
+        Notify("已读取存档。");
     }
 
     private void Notify(string message)

@@ -98,7 +98,7 @@ public sealed class BattleLevelValidator
         }
         private bool HasContent(string family, string id) => content.TryGet(family, id) is not null;
         private bool Has(string family, string id) => declarations[family].Contains(id);
-        private bool AdmitsFacing(string direction) => grid is null || grid.Directions.Any(facing => facing.Id == direction);
+        private bool AdmitsFacing(string direction) => grid is null || UnitDisposition.AdmitsFacing(grid, direction);
         private void Error(string message)
         {
             if (said.Add(message)) found.Add(message);

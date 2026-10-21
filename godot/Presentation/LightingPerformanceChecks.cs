@@ -140,7 +140,7 @@ public partial class LightingPerformanceChecks : Node
             var before = GC.GetAllocatedBytesForCurrentThread(); var timer = Stopwatch.StartNew();
             board.Configure(assets, fixture["level"]!.AsObject(), scene, EnvironmentCatalog.Load(), facing => facing == "west");
             board.ConfigureTerrain(WorldMaterialsManifest.Load());
-            board.ConfigureDynamicState(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+            board.ConfigureDynamicState(new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")));
             board.RenderState(state);
             cache = board.LightingResources;
             GD.Print($"GrayFlag first board: {timer.Elapsed.TotalMilliseconds:F3}ms, {GC.GetAllocatedBytesForCurrentThread()-before} managed bytes, {cache.TextureCount} textures.");

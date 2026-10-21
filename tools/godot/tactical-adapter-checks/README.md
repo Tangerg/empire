@@ -6,4 +6,15 @@ Run `bash tools/godot/tactical-adapter-checks/run.sh` from the repository root. 
 
 Coverage includes all three tilings and direction ties, movement/path/threat/control/commands, raw terrain defense and splash/counter forecast facts, fog and hidden guessed-ID rejection, viewer allegiance across allied owners, AI turns and no-human fallback, detached mutation and stale viewer rejection, human/AI/terminal gates, deployment, actual embarked passengers, ordered tactics, authored unpaired UTF-16 strings, recruitment cards despite poverty/caps, and occupied/foreign recruitment sites. Controller-produced attack, tactic, disembark, deployment and recruit requests are dispatched through the canonical session and compared with source state and event results; rejected orders reset selection without altering the state. Wait/undo, stale reads/actions and immutable collections are checked directly.
 
-Six isolated compiled mutants must fail behaviorally: stale reads, legal-options substituted for recruitment cards, zero terrain defense, reversed direction order hidden-unit exposure, and using the current player instead of the first human viewer. Tests do not modify production sources. These are headless behavioral checks, not a GUI acceptance claim.
+Seven isolated compiled mutants must fail behaviorally: stale reads, legal-options substituted for recruitment cards, zero terrain defense, reversed direction order, hidden-unit exposure, using the current player instead of the first human viewer, and admitting outside terrain. Tests do not modify production sources. These are headless behavioral checks, not a GUI acceptance claim.
+
+
+Native additions exercise `InteractiveCells` across two differently composed
+catalogs, immutable collection exposure, storage bounds, unchanged movement
+legality/state and stale-revision rejection. The outside-tag mutant must fail.
+The original hex fixture changed grids after unit initialization, leaving
+square-grid facings. That exact malformed state remains an admission-refusal
+vector. The valid source oracle authors its hex tiling before `GameSession`
+initializes units using the source grid's resting facing, then computes forecasts.
+The native comparison loads that same input unchanged. No expected forecast is
+derived from native code, and no production save normalization is used.
