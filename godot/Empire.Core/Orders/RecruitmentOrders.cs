@@ -21,23 +21,23 @@ public sealed class RecruitmentOrders
         Func<JsonObject, string, int, Coord, bool, JsonObject> spawn)
     { content = catalog.Source; this.grids = grids; this.resources = resources; this.spawn = spawn; }
 
-    public string? Refusal(JsonObject state, string type, Coord at)
+    public ActionRefusal? Refusal(JsonObject state, string type, Coord at)
     {
         var board = Board(state);
-        if (!board.Contains(at)) return $"目标格 {at.X},{at.Y} 不在战场内";
+        if (!board.Contains(at)) return new("tactics.target_outside", new() { ["x"] = at.X, ["y"] = at.Y });
         var index = board.IndexOf(at);
         var terrain = content.Get("terrains", StateJson.Text(state["map"]!["tiles"]![index], "terrain"));
         if (!StateJson.Array(terrain["produces"], "produces").Any(value => StateJson.Text(value,"unit") == type))
-            return $"{StateJson.Text(terrain,"name")} 无法生产该兵种";
+            return new("recruitment.terrain_incompatible", new() { ["terrainId"] = StateJson.Text(terrain, "id"), ["unitType"] = type });
         var owner = StateJson.Integer(state,"currentPlayer");
-        if (state["map"]!["owners"]![index] is not { } tileOwner || StateJson.Integer(tileOwner,"owner") != owner) return "该建筑不属于你";
-        if (TacticalQueries.UnitAt(state,at) is not null) return "建筑上已有单位";
+        if (state["map"]!["owners"]![index] is not { } tileOwner || StateJson.Integer(tileOwner,"owner") != owner) return new("recruitment.not_owner");
+        if (TacticalQueries.UnitAt(state,at) is not null) return new("recruitment.occupied");
         var definition = content.Get("units",type);
         var subject = new BattleResources.Subject("player",TacticalQueries.Player(state,owner));
-        if (!resources.CanAfford(subject,StateJson.Array(definition["recruitCosts"],"recruitCosts"))) return "招募资源不足";
+        if (!resources.CanAfford(subject,StateJson.Array(definition["recruitCosts"],"recruitCosts"))) return new("recruitment.insufficient_resources");
         var cap = state["rules"]!["maxUnitsPerPlayer"];
         if (cap is not null && StateJson.Objects(state["units"],"units").Count(unit => StateJson.Integer(unit,"owner") == owner) >= StateJson.Number(cap,"unit cap"))
-            return $"单位数量已达上限 {cap}";
+            return new("recruitment.unit_limit", new() { ["limit"] = StateJson.Number(cap, "unit cap") });
         return null;
     }
 

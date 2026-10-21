@@ -6,6 +6,8 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Empire.Application;
+using Empire.Presentation.Feedback;
+using Empire.Localization;
 using Empire.Core.Engine;
 using Empire.Presentation.Tactical;
 using Godot;
@@ -19,6 +21,8 @@ public partial class CameraIntegrationChecks : Node
     private JsonObject level = null!;
     private JsonArray packs = null!;
     private GrayFlagEngine engine = null!;
+    private GameText text = null!;
+    private ActionRefusalText refusals = null!;
     private BattleScreen screen = null!;
     private Control map = null!;
     private Node2D world = null!;
@@ -30,9 +34,11 @@ public partial class CameraIntegrationChecks : Node
             level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
             packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
             engine = new GrayFlagEngine(packs);
+            text = GodotTextCatalog.LoadSimplifiedChinese();
+            refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
             screen = new BattleScreen(); AddChild(screen);
             screen.Board.AdvanceAnimationsAutomatically = false;
-            Bind(new GrayFlagSession(engine, level));
+            Bind(new GrayFlagSession(engine, level, text, refusals));
             await Layout();
             map = (Control)screen.FindChild("MapArea", true, false);
             world = map.GetNode<Node2D>("World");
@@ -95,7 +101,7 @@ public partial class CameraIntegrationChecks : Node
 
     private void CheckZoomAndResize()
     {
-        Bind(new GrayFlagSession(engine, level));
+        Bind(new GrayFlagSession(engine, level, text, refusals));
         GuiButton(MouseButton.Middle, true, new Vector2(250, 200));
         CapturedMove(new Vector2(150, 150));
         CapturedButton(MouseButton.Middle, false, new Vector2(150, 150));
@@ -129,14 +135,14 @@ public partial class CameraIntegrationChecks : Node
 
     private void CheckCancellation()
     {
-        Bind(new GrayFlagSession(engine, level));
+        Bind(new GrayFlagSession(engine, level, text, refusals));
         var at = Field(new Vector2(5.5f, 8.5f) * 32);
         GuiButton(MouseButton.Left, true, at);
         screen._Notification((int)Node.NotificationWMWindowFocusOut);
         GuiButton(MouseButton.Left, false, at);
         Require(screen.SelectedUnitId is null, "Window focus loss cancels a pending click");
         GuiButton(MouseButton.Left, true, at);
-        Bind(new GrayFlagSession(engine, level));
+        Bind(new GrayFlagSession(engine, level, text, refusals));
         GuiButton(MouseButton.Left, false, at);
         Require(screen.SelectedUnitId is null, "Session rebind cancels a pending click");
         Near(world.Scale, Vector2.One * 1.25f, "A new binding starts at the source initial zoom");
@@ -161,11 +167,11 @@ public partial class CameraIntegrationChecks : Node
 
     private void CheckOutsideTerrain()
     {
-        var session = new GrayFlagSession(engine, level);
+        var session = new GrayFlagSession(engine, level, text, refusals);
         var snapshot = session.GetSnapshot();
         var state = JsonNode.Parse(snapshot.State.GetRawText())!.AsObject();
         state["map"]!["tiles"]![0] = "c01.outside";
-        var outside = GrayFlagSession.FromSave(engine, engine.SaveBattle(state));
+        var outside = GrayFlagSession.FromSave(engine, engine.SaveBattle(state), text, refusals);
         Bind(outside);
         var materials = WorldMaterialsManifest.Load();
         materials.TerrainTags["c01.outside"] = [];
@@ -202,7 +208,7 @@ public partial class CameraIntegrationChecks : Node
     {
         foreach (var (computer, hidden) in new[] { (false, false), (true, false), (true, true) })
         {
-            var session = new GrayFlagSession(engine, level);
+            var session = new GrayFlagSession(engine, level, text, refusals);
             var projected = new ProjectedSession(session, computer, hidden);
             Bind(projected);
             GuiButton(MouseButton.Middle, true, new Vector2(100, 100));
@@ -256,7 +262,7 @@ public partial class CameraIntegrationChecks : Node
             Require(screen.SelectedUnitId is null, "Presentation start canceled the pre-existing pointer gesture");
             exit.EmitSignal(Button.SignalName.Pressed);
             Require(exits == 1, "Settled camp exit invokes once through the current mounted binding");
-            Bind(new GrayFlagSession(engine, level));
+            Bind(new GrayFlagSession(engine, level, text, refusals));
             exit.EmitSignal(Button.SignalName.Pressed);
             Require(exits == 1, "An old-binding camp button cannot invoke after a rebind");
         }
@@ -264,14 +270,14 @@ public partial class CameraIntegrationChecks : Node
 
     private void CheckUnmountAndRebind()
     {
-        Bind(new GrayFlagSession(engine, level));
+        Bind(new GrayFlagSession(engine, level, text, refusals));
         var exits = 0; var restarts = 0;
         screen.BindApplicationActions(onRestart: () => restarts++, onExit: () => exits++);
         var exit = Buttons(screen).Single(button => button.Text == "战役营地");
         var restart = Buttons(screen).Single(button => button.Text == "重新开始");
         restart.EmitSignal(Button.SignalName.Pressed);
         var confirmation = screen.GetChildren().OfType<ConfirmationDialog>().Single();
-        Bind(new GrayFlagSession(engine, level));
+        Bind(new GrayFlagSession(engine, level, text, refusals));
         screen.BindApplicationActions(onRestart: () => restarts += 100, onExit: () => exits += 100);
         confirmation.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
         Require(restarts == 0, "A superseded restart dialog cannot invoke the newer binding's callback");
@@ -280,7 +286,7 @@ public partial class CameraIntegrationChecks : Node
         exit.EmitSignal(Button.SignalName.Pressed);
         screen._Input(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = false });
         Require(exits == 0, "Unmounted application callback cannot exit camp");
-        AddChild(screen); Bind(new GrayFlagSession(engine, level));
+        AddChild(screen); Bind(new GrayFlagSession(engine, level, text, refusals));
         GuiButton(MouseButton.Left, false, Field(new Vector2(5.5f, 8.5f) * 32));
         Require(screen.SelectedUnitId is null, "Reattached screen cannot replay an old held gesture");
         Near(world.Scale, Vector2.One * 1.25f, "Explicit rebind after reattach restores a usable camera");

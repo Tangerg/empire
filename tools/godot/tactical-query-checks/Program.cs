@@ -67,7 +67,7 @@ var duplicate = oracle["duplicate"]!;
 var duplicateEngine = new GrayFlagEngine(duplicate["packs"]!.AsArray());
 var duplicateState = duplicate["state"]!.AsObject();
 Equal(duplicateEngine.Recruitment.Cards(duplicateState, new Coord(0, 0)), duplicate["cards"], "duplicate cost cards preserve individual affordability");
-if (duplicateEngine.Recruitment.Refusal(duplicateState, "soldier", new Coord(0, 0)) != "招募资源不足") throw new Exception("duplicate cost dispatch must aggregate costs");
+if (duplicateEngine.Recruitment.Refusal(duplicateState, "soldier", new Coord(0, 0))?.Code != "recruitment.insufficient_resources") throw new Exception("duplicate cost dispatch must aggregate costs");
 foreach (var item in oracle["inspectErrors"]!.AsArray())
 {
     var kind = item!["kind"]!.GetValue<string>();

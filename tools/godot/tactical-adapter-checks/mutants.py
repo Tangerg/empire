@@ -22,7 +22,7 @@ with tempfile.TemporaryDirectory(prefix="empire-adapter-mutants-") as directory:
         path.write_text(source.replace(old, new))
         result = subprocess.run([
             "dotnet", "run", "--project", str(root / "tools/godot/tactical-adapter-checks"),
-            "-p:AdapterSource=" + str(path), "--", sys.argv[1],
+            "-p:AdapterSource=" + str(path), "--", sys.argv[1], sys.argv[2],
         ], cwd=root, capture_output=True, text=True)
         output = result.stdout + result.stderr
         if result.returncode == 0 or "error CS" in output or "error MSB" in output:

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json.Nodes;
 using Empire.Application;
+using Empire.Localization;
 using Empire.Core.Determinism;
 using Empire.Core.Engine;
 using Empire.Presentation.Feedback;
@@ -204,8 +205,10 @@ public partial class BattleResultFlowChecks : Node
     {
         var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         var engine = new GrayFlagEngine(packs);
+        var text = GodotTextCatalog.LoadSimplifiedChinese();
+        var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
         var level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
-        var session = new GrayFlagSession(engine, level);
+        var session = new GrayFlagSession(engine, level, text, refusals);
         var screen = new BattleScreen(); AddChild(screen);
         screen.Board.AdvanceAnimationsAutomatically = false;
         screen.BindSession(session, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);

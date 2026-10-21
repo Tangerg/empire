@@ -30,7 +30,7 @@ public partial class CampaignStagingScreen : Control
         shell = new CampaignShell(); AddChild(shell);
         Button? startButton = null;
         shell.Show(new CampaignShellView(view.CampaignTitle, view.ChapterHeading, view.CompletedBattles, view.BattleTotal,
-            new NarrativeArt { Source = view.ChapterArt.Source, ResourcePath = view.ChapterArt.ResourcePath }, view.ExitLabel, view.ProgressLabel), () => {
+            new NarrativeArt { Source = view.ChapterArt.Source, ResourcePath = view.ChapterArt.ResourcePath }, view.ExitLabel, view.ProgressLabel, view.ArtworkFailureLabel), () => {
             if (submitted || currentGeneration != generation || !IsInsideTree()) return;
             submitted = true; shell.DisableNavigation();
             if (startButton is not null) startButton.Disabled = true;
@@ -47,7 +47,7 @@ public partial class CampaignStagingScreen : Control
         briefingText.AddChild(Text(view.Eyebrow, 16, "#d5bc7f")); briefingText.AddChild(Text(view.Title, 32, "#f1e4c0"));
         briefingText.AddChild(Text(view.Description, 19, "#d4d9cd"));
         var panels = new HBoxContainer(); panels.AddThemeConstantOverride("separation", 40); body.AddChild(panels);
-        var roster = Panel(panels, CampaignStagingView.RosterHeading);
+        var roster = Panel(panels, view.RosterHeading);
         foreach (var unit in view.Roster)
         {
             var row = new HBoxContainer { Name = "Roster_" + unit.Id }; row.AddThemeConstantOverride("separation", 14); roster.AddChild(row);
@@ -70,11 +70,11 @@ public partial class CampaignStagingScreen : Control
             var labels = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill }; row.AddChild(labels);
             labels.AddChild(Text(unit.Name, 20, "#eee5cf")); labels.AddChild(Text(unit.Status, 15, "#bbc8b9"));
         }
-        var status = Panel(panels, CampaignStagingView.StateHeading);
-        if (view.Resources.Count == 0) status.AddChild(Text(CampaignStagingView.EmptyResources, 18, "#bbc8b9"));
+        var status = Panel(panels, view.StateHeading);
+        if (view.Resources.Count == 0) status.AddChild(Text(view.EmptyResources, 18, "#bbc8b9"));
         foreach (var resource in view.Resources) status.AddChild(ValueRow(resource.Label, resource.Amount));
         status.AddChild(new HSeparator());
-        if (view.Relations.Count == 0) status.AddChild(Text(CampaignStagingView.EmptyRelations, 18, "#bbc8b9"));
+        if (view.Relations.Count == 0) status.AddChild(Text(view.EmptyRelations, 18, "#bbc8b9"));
         foreach (var relation in view.Relations)
         {
             status.AddChild(ValueRow(relation.Label, relation.Amount));
@@ -90,6 +90,7 @@ public partial class CampaignStagingScreen : Control
             submitted = true; button.Disabled = true; shell.DisableNavigation(); startBattle();
         };
         footer.AddChild(button);
+        if (diagnostics.Count > 0 && shell.RenderingDiagnostics.Count == 0) column.AddChild(Text(view.ArtworkFailureLabel, 16, "#efb76c"));
     }
 
     private Texture2D? Texture(CampaignStagingArt art, string purpose)

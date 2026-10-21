@@ -6,7 +6,7 @@ using static Empire.Core.State.StateJson;
 
 namespace Empire.Core.Progression;
 
-public sealed record FormationOption(JsonObject Formation, bool Current, bool Eligible, IReadOnlyList<string> Reasons);
+public sealed record FormationOption(JsonObject Formation, bool Current, bool Eligible, IReadOnlyList<ActionRefusal> Reasons);
 
 /// <summary>The spatial invariant shared by formation menus, orders, movement and combat.</summary>
 public sealed class FormationRules
@@ -34,19 +34,26 @@ public sealed class FormationRules
         {
             var id = Text(node, "formation");
             if (content.TryGet("formations", id) is not { } definition) continue;
-            var eligible = InEffect(state, unit, id) is not null;
-            result.Add(new FormationOption((JsonObject)definition.DeepClone(), unit["formation"]?.GetValue<string>() == id, eligible,
-                eligible ? System.Array.Empty<string>() : new[] { $"需要 {Empire.Core.Determinism.EcmaNumber.Format(Number(definition["minimumAdjacentAllies"], "minimumAdjacentAllies"))} 名相邻友军" }));
+            var refusal = Refusal(state, unit, id);
+            result.Add(new FormationOption((JsonObject)definition.DeepClone(), unit["formation"]?.GetValue<string>() == id,
+                refusal is null, refusal is null ? System.Array.Empty<ActionRefusal>() : System.Array.AsReadOnly(new[] { refusal })));
         }
         return result;
     }
-    public void ValidateChange(JsonObject state, JsonObject unit, string? formation)
+    public ActionRefusal? Refusal(JsonObject state, JsonObject unit, string? formation)
     {
-        if (formation is null) return;
+        if (formation is null) return null;
         var allowed = content.Get("units", Text(unit, "type"))["formations"] as JsonArray ?? new JsonArray();
         if (!allowed.Any(value => Text(value, "formation") == formation))
-            throw new IllegalActionException($"unit {Integer(unit, "id")} cannot use formation \"{formation}\"");
-        if (InEffect(state, unit, formation) is null) throw new IllegalActionException($"formation \"{formation}\" lacks adjacent allied units");
+            return new("formation.unsupported", new() { ["unitId"] = Integer(unit, "id"), ["formationId"] = formation });
+        if (InEffect(state, unit, formation) is not null) return null;
+        var definition = content.Get("formations", formation);
+        return new("formation.adjacent_allies", new()
+        { ["formationId"] = formation, ["required"] = Number(definition["minimumAdjacentAllies"], "minimumAdjacentAllies") });
+    }
+    public void ValidateChange(JsonObject state, JsonObject unit, string? formation)
+    {
+        if (Refusal(state, unit, formation) is { } refusal) throw new IllegalActionException(refusal);
     }
     public double MovementDelta(JsonObject state, JsonObject unit) => Active(state, unit) is { } active ? Number(active["movementDelta"], "movementDelta") : 0;
 }

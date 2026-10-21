@@ -31,7 +31,7 @@ Check("three tactical grids", () => {
 });
 Check("tile art floating products",()=>{Equal(0.19186,TileArtVariation.Hash(1,1));Equal(0.67636,TileArtVariation.Hash(-1,-1));Equal(0.39852,TileArtVariation.Hash(7,9,13));Equal(0.22755,TileArtVariation.Hash(2147483647,-2147483648,17));Equal(0.83593,TileArtVariation.Hash(0.5,-0.5,2));});
 Check("transaction rollback",()=>{
- var r=new BattleActionRegistry();r.Register("fail",(s,_,emit)=>{s["x"]=2;emit(new JsonObject{["type"]="partial"});throw new IllegalActionException("refused");});var b=new Battle(new JsonObject{["x"]=1},r);var before=b.StateHash;Throws<IllegalActionException>(()=>b.Dispatch(new JsonObject{["kind"]="fail"}));Equal(before,b.StateHash);
+ var r=new BattleActionRegistry();r.Register("fail",(s,_,emit)=>{s["x"]=2;emit(new JsonObject{["type"]="partial"});throw new IllegalActionException(new ActionRefusal("test.refused"));});var b=new Battle(new JsonObject{["x"]=1},r);var before=b.StateHash;Throws<IllegalActionException>(()=>b.Dispatch(new JsonObject{["kind"]="fail"}));Equal(before,b.StateHash);
 });
 Check("detached committed state and events",()=>{
  JsonObject? retained=null;var emitted=new JsonObject{["n"]=2};var r=new BattleActionRegistry();r.Register("go",(s,a,emit)=>{retained=s;s["n"]=2;a["kind"]="changed";emit(emitted);});var b=new Battle(new JsonObject{["n"]=1},r);var action=new JsonObject{["kind"]="go"};var receipt=b.Dispatch(action);retained!["n"]=3;emitted["n"]=4;receipt.Before["n"]=5;var snapshot=b.Snapshot();snapshot["n"]=6;Equal(2,b.Snapshot()["n"]!.GetValue<int>());Equal(2,receipt.Events[0]["n"]!.GetValue<int>());Equal("go",action["kind"]!.GetValue<string>());

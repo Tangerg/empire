@@ -1,3 +1,5 @@
+using Empire.Presentation.Feedback;
+using Empire.Checks;
 using System.IO.Compression;
 using System.Text.Json.Nodes;
 using Empire.Application;
@@ -9,6 +11,10 @@ using Empire.Core.State;
 using Empire.Presentation;
 using Empire.Presentation.Tactical;
 
+if (args.Length != 2) throw new ArgumentException("Usage: ReactionAdapterChecks <oracle.json.gz> <catalog.json>");
+var gameText = FixtureText.Load(args[^1]);
+ActionRefusalText Refusals(GrayFlagEngine value) => ActionRefusalText.CreateDefault(gameText, value.Catalog, value.Abilities).Seal();
+
 using var source = new GZipStream(File.OpenRead(args[0]), CompressionMode.Decompress);
 var fixture = JsonNode.Parse(source)!.AsObject();
 var reactions = ReactionRegistry.Core();
@@ -17,7 +23,7 @@ reactions.Register(new("plugin-dodge", "自定义闪避菜单", false, 0.4, fals
 var engine = BattleEngineFactory.Create(new ReadOnlyContent(fixture["packs"]!.AsArray()),
     [new EnginePlugin("test.reaction-adapter", 1, context => context.Replace(BattleCapabilities.Reactions, reactions), overrides: [BattleCapabilities.Reactions])]);
 var state = fixture["turns"]![0]!["before"]!.DeepClone().AsObject();
-var session = GrayFlagSession.FromSave(engine, engine.SaveBattle(state));
+var session = GrayFlagSession.FromSave(engine, engine.SaveBattle(state), gameText, Refusals(engine));
 var actor = session.Snapshot()["units"]!.AsArray().OfType<JsonObject>().First(unit => engine.Turns.MayAct(state, unit));
 var id = actor["id"]!.GetValue<int>();
 var before = EcmaJson.Stringify(session.Snapshot());

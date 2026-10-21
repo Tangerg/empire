@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.Json.Nodes;
 using Empire.Core.Determinism;
 using Empire.Localization;
+using System.Globalization;
 using Godot;
 
 namespace Empire.Presentation;
@@ -19,8 +20,18 @@ public partial class CampaignStagingChecks : Node
             if (arguments.Length != 1) throw new ArgumentException("Pass staging source oracle JSON after --");
             var oracle = EcmaJson.Parse(System.IO.File.ReadAllText(arguments[0]))!.AsObject();
             var item = oracle["cases"]!.AsArray().OfType<JsonObject>().First();
-            var messages = GodotTextCatalog.LoadSimplifiedChinese();
-            var metadata = PresentationJson.Load<JsonObject>("res://data/grayflag-staging.json");
+            var nativeCatalog = ResourceLoader.Load<Translation>(GodotTextCatalog.ResourcePath);
+            var catalog = nativeCatalog.GetMessageList().ToDictionary(key => key, key => nativeCatalog.GetMessage(key).ToString(), StringComparer.Ordinal);
+            foreach (var message in oracle["testMessages"]!.AsObject()) catalog.Add(message.Key, message.Value!.GetValue<string>());
+            var messages = new GameText(key => catalog.GetValueOrDefault(key), CultureInfo.GetCultureInfo("zh-CN"));
+            JsonObject FixtureMetadata()
+            {
+                var value = PresentationJson.Load<JsonObject>("res://data/grayflag-staging.json");
+                foreach (var (target, fixture) in new[] { ("resourceLabelKeys", "testResourceLabelKeys"), ("relationLabelKeys", "testRelationLabelKeys") })
+                    foreach (var label in oracle[fixture]!.AsObject()) value[target]![label.Key] = label.Value!.DeepClone();
+                return value;
+            }
+            var metadata = FixtureMetadata();
             void RemoveArt(JsonNode? value)
             {
                 if (value is not JsonObject obj) return;
@@ -38,7 +49,7 @@ public partial class CampaignStagingChecks : Node
             screen.ShowStaging(view, assets, () => starts++, () => exits++);
             var text = string.Join("\n", Descendants(screen).OfType<Label>().Select(label => label.Text));
             foreach (var value in new[] { view.Title, view.Description, view.Eyebrow, view.ChapterHeading, view.Progress,
-                CampaignStagingView.RosterHeading, CampaignStagingView.StateHeading, view.ActionNote })
+                view.RosterHeading, view.StateHeading, view.ActionNote })
                 Require(text.Contains(value, StringComparison.Ordinal), $"Staging omitted source text: {value}");
             foreach (var unit in view.Roster)
             {
@@ -50,7 +61,10 @@ public partial class CampaignStagingChecks : Node
                 Require(((AtlasTexture)picture.Texture).Atlas.ResourcePath == expected.ResourcePath,
                     "Roster fallback must respect the explicit actor binding and its source texture");
             }
-            Require(screen.RenderingDiagnostics.Any(value => value.Contains("campaign backdrop", StringComparison.Ordinal)), "Missing source chapter art must be reported");
+            Require(screen.RenderingDiagnostics.Any(value => value.Contains("campaign backdrop", StringComparison.Ordinal)) &&
+                text.Contains(view.ArtworkFailureLabel, StringComparison.Ordinal) &&
+                !screen.RenderingDiagnostics.Any(value => text.Contains(value, StringComparison.Ordinal)),
+                "Missing staging art must retain precise diagnostics while showing only the localized failure notice");
             foreach (var unit in view.Roster.Where(unit => unit.Portrait is not null))
                 Require(screen.RenderingDiagnostics.Any(value => value.Contains($"portrait {unit.Id}", StringComparison.Ordinal)), "Missing authored portrait must be reported");
             var oldButton = NavigationButton(screen, "StartBattle");
@@ -92,7 +106,7 @@ public partial class CampaignStagingChecks : Node
             Require(exits == 1 && starts == 1, "A new staging binding revived previously submitted navigation");
             NavigationButton(screen, "StartBattle").EmitSignal(Button.SignalName.Pressed);
             Require(starts == 2 && exits == 1, "Remounted and explicitly rebound screen must accept one new action");
-            metadata = PresentationJson.Load<JsonObject>("res://data/grayflag-staging.json");
+            metadata = FixtureMetadata();
             foreach (var sourceCase in oracle["cases"]!.AsArray().OfType<JsonObject>())
             {
                 var live = CampaignStaging.Create(messages, EcmaJson.ToElement(sourceCase["state"]), EcmaJson.ToElement(sourceCase["node"]),

@@ -59,24 +59,24 @@ public sealed class DeploymentSystem
         return new(player, units.AsReadOnly(), zone.AsReadOnly());
     }
 
-    public string? Refusal(JsonObject state, JsonObject unit, Coord at)
+    public ActionRefusal? Refusal(JsonObject state, JsonObject unit, Coord at)
     {
         if (StateJson.Text(state, "phase") != "deployment" || state["deployment"] is not JsonObject)
-            return "当前不在战前部署阶段";
+            return new("deployment.wrong_phase");
         var zone = AssignedZone(state, unit);
-        if (zone is null) return "该单位不在当前部署编组中";
-        if (!zone.Contains(at)) return "目标格不在该单位的部署区域内";
+        if (zone is null) return new("deployment.unassigned", new() { ["unitId"] = StateJson.Integer(unit, "id") });
+        if (!zone.Contains(at)) return new("deployment.outside_zone", new() { ["x"] = at.X, ["y"] = at.Y });
         var battlefield = new TacticalBattlefield(state, content);
         var occupant = TacticalQueries.UnitAt(state, at);
         var swapping = occupant is not null && StateJson.Integer(occupant, "id") != StateJson.Integer(unit, "id");
-        if (swapping && AssignedZone(state, occupant!) is null) return "目标格已被其他单位占据";
+        if (swapping && AssignedZone(state, occupant!) is null) return new("deployment.occupied", new() { ["x"] = at.X, ["y"] = at.Y });
         var movementClass = StateJson.Text(content.Get("units", StateJson.Text(unit, "type")), "movementClass");
-        if (!battlefield.Cell(at).Admits(movementClass)) return "该单位无法部署到目标格";
+        if (!battlefield.Cell(at).Admits(movementClass)) return new("deployment.impassable", new() { ["x"] = at.X, ["y"] = at.Y });
         if (!swapping) return null;
         var from = TacticalQueries.Position(unit);
-        if (AssignedZone(state, occupant!)?.Contains(from) != true) return "交换后会使另一单位离开部署区域";
+        if (AssignedZone(state, occupant!)?.Contains(from) != true) return new("deployment.swap_outside_zone");
         var displacedMovement = StateJson.Text(content.Get("units", StateJson.Text(occupant!, "type")), "movementClass");
-        return battlefield.Cell(from).Admits(displacedMovement) ? null : "交换后另一单位无法站在腾出的格子上";
+        return battlefield.Cell(from).Admits(displacedMovement) ? null : new("deployment.swap_impassable");
     }
 
     public IReadOnlyList<DeploymentSpot> Spots(JsonObject state, JsonObject unit)
@@ -110,7 +110,7 @@ public sealed class DeploymentSystem
     public void Confirm(JsonObject state, Action beginPlaying, Action<JsonObject> emit)
     {
         if (StateJson.Text(state, "phase") != "deployment" || state["deployment"] is not JsonObject deployment)
-            throw new IllegalActionException("当前不在战前部署阶段");
+            throw new IllegalActionException(new ActionRefusal("deployment.wrong_phase"));
         emit(new JsonObject { ["type"] = "deploymentConfirmed", ["player"] = state["currentPlayer"]!.DeepClone() });
         var next = StateJson.Integer(deployment, "currentIndex") + 1;
         deployment["currentIndex"] = next;

@@ -5,6 +5,7 @@ using Empire.Core.Engine;
 using Empire.Core.Combat;
 using Empire.Core.Determinism;
 using Empire.Presentation.Feedback;
+using Empire.Localization;
 
 namespace Empire.Application;
 
@@ -13,6 +14,8 @@ public sealed class GrayFlagCampaign
 {
     private readonly JsonObject definition;
     private readonly GrayFlagEngine engine;
+    private readonly GameText text;
+    private readonly ActionRefusalText refusals;
     private readonly CampaignBattleBridge bridge;
     private readonly IReadOnlyDictionary<string, JsonObject> levels;
     private CampaignRuntime runtime;
@@ -30,10 +33,12 @@ public sealed class GrayFlagCampaign
     public void Advance() => runtime.Advance();
     public void Choose(string id) => runtime.Choose(id);
 
-    public GrayFlagCampaign(JsonObject definition, JsonArray levels, GrayFlagEngine engine, JsonObject? initialState = null)
+    public GrayFlagCampaign(JsonObject definition, JsonArray levels, GrayFlagEngine engine, GameText text, ActionRefusalText refusals, JsonObject? initialState = null)
     {
         this.definition = EcmaJson.Normalize(definition)!.AsObject();
         this.engine = engine;
+        this.text = text;
+        this.refusals = refusals;
         this.levels = levels.OfType<JsonObject>().ToDictionary(level => level["id"]!.GetValue<string>(),
             level => (JsonObject)level.DeepClone(), StringComparer.Ordinal);
         bridge = new CampaignBattleBridge(id => this.levels.TryGetValue(id, out var level) ? (JsonObject)level.DeepClone()
@@ -53,7 +58,7 @@ public sealed class GrayFlagCampaign
         }
         var nextRuntime = new CampaignRuntime(definition, runtime.Snapshot());
         var request = Candidate01CampaignPolicy.ApplyBattleContext(nextRuntime.BeginBattle(bridge), nextRuntime.Snapshot());
-        var next = new PendingBattle(request, new GrayFlagSession(engine, request["level"]!.AsObject()), false);
+        var next = new PendingBattle(request, new GrayFlagSession(engine, request["level"]!.AsObject(), text, refusals), false);
         runtime = nextRuntime;
         pending = next;
     }
@@ -87,7 +92,7 @@ public sealed class GrayFlagCampaign
     private void ResetBattle(bool atCamp)
     {
         var current = pending ?? throw new CampaignActionException("No battle to restart.");
-        pending = new(current.Request, new GrayFlagSession(engine, current.Request["level"]!.AsObject()), atCamp);
+        pending = new(current.Request, new GrayFlagSession(engine, current.Request["level"]!.AsObject(), text, refusals), atCamp);
     }
 
     private PendingBattle RequireConcludedBattle()
@@ -121,10 +126,10 @@ public sealed class GrayFlagCampaign
             catch (CampaignRosterContentException error)
             { throw new StoredDocumentException("Saved campaign roster references unknown content.", error); }
             request = Candidate01CampaignPolicy.ApplyBattleContext(request, nextRuntime.Snapshot());
-            var opening = new GrayFlagSession(engine, request["level"]!.AsObject());
+            var opening = new GrayFlagSession(engine, request["level"]!.AsObject(), text, refusals);
             var session = saved.Location == CampaignLocation.Camp
                 ? opening
-                : GrayFlagSession.FromSave(engine, saved.Battle!, saved.Events);
+                : GrayFlagSession.FromSave(engine, saved.Battle!, text, refusals, saved.Events);
             var state = session.Snapshot();
             if (state["levelId"]?.GetValue<string>() != request["levelId"]!.GetValue<string>() ||
                 !EcmaJson.DeepEquals(state["map"]?["width"], request["level"]!["width"]) ||

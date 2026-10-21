@@ -1,3 +1,5 @@
+using Empire.Presentation.Feedback;
+using Empire.Checks;
 using System.IO.Compression;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -5,14 +7,17 @@ using Empire.Application;
 using Empire.Core.Determinism;
 using Empire.Core.Engine;
 
-if (args.Length is < 2 or > 3)
-    throw new ArgumentException("Usage: CampaignVictoryChecks <repository> <trace.jsonl[.gz]> [native-opening-save.json]");
+
+if (args.Length is < 3 or > 4)
+    throw new ArgumentException("Usage: CampaignVictoryChecks <repository> <trace.jsonl[.gz]> <catalog.json> [native-opening-save.json]");
+var gameText = FixtureText.Load(args[2]);
+ActionRefusalText Refusals(GrayFlagEngine value) => ActionRefusalText.CreateDefault(gameText, value.Catalog, value.Abilities).Seal();
+
 var root = args[0];
 JsonNode Read(string path) => JsonNode.Parse(File.ReadAllText(Path.Combine(root, path)))!;
 var packs = Read("godot/data/content-packs.json").AsArray();
 var engine = new GrayFlagEngine(packs);
-var campaign = new GrayFlagCampaign(Read("godot/data/grayflag-campaign.json").AsObject(),
-    Read("godot/data/grayflag-campaign-levels.json").AsArray(), engine);
+var campaign = new GrayFlagCampaign(Read("godot/data/grayflag-campaign.json").AsObject(), Read("godot/data/grayflag-campaign-levels.json").AsArray(), engine, gameText, Refusals(engine));
 var steps = 0;
 var saves = 0;
 var battles = 0;
@@ -56,10 +61,10 @@ while ((line = reader.ReadLine()) is not null)
             Equal("request", campaign.RequestSnapshot(), row["request"]);
             Equal("begin campaign", campaign.Snapshot(), row["campaign"]);
             Equal("initial battle", JsonValue.Create(StateDigest.Hash(campaign.Battle!.Snapshot())), row["initialHash"]);
-            if (args.Length == 3 && row["request"]!["levelId"]!.GetValue<string>() == "c01-02")
+            if (args.Length == 4 && row["request"]!["levelId"]!.GetValue<string>() == "c01-02")
             {
-                File.WriteAllText(args[2], campaign.Save().ToJsonString(new JsonSerializerOptions { WriteIndented = true }));
-                Console.WriteLine($"CAPTURE native opening c01-02 after {steps} verified actions and {saves} save/resumes: {args[2]}");
+                File.WriteAllText(args[3], campaign.Save().ToJsonString(new JsonSerializerOptions { WriteIndented = true }));
+                Console.WriteLine($"CAPTURE native opening c01-02 after {steps} verified actions and {saves} save/resumes: {args[3]}");
             }
             break;
         case "step":

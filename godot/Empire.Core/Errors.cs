@@ -12,9 +12,12 @@ public class DomainInvariantException : Exception
 
 public sealed class IllegalActionException : Exception
 {
-    public IllegalActionException(string message)
-        : base(message)
+    public ActionRefusal Refusal { get; }
+
+    public IllegalActionException(ActionRefusal refusal)
+        : base($"Action refused: {refusal?.Code ?? throw new ArgumentNullException(nameof(refusal))}")
     {
+        Refusal = refusal;
     }
 }
 

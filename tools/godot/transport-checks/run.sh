@@ -8,7 +8,7 @@ source tools/godot/env.sh
 scratch="$(mktemp -d "${TMPDIR:-/tmp}/empire-transport.XXXXXXXX")"
 # Keep artifacts for inspection; this verifier never deletes files.
 echo "Transport verification artifacts: $scratch"
-cp "$source_dir/Program.cs" "$source_dir/TransportTests.csproj" "$source_dir/NuGet.Config" "$scratch/"
+cp "$source_dir/Program.cs" "$source_dir/TransportTests.csproj" "$source_dir/NuGet.Config" "$source_dir/native-refusals.json" "$scratch/"
 EMPIRE_TRANSPORT_ORACLE_OUTPUT="$scratch/oracle.json" ./node_modules/.bin/vite-node "$source_dir/generate-oracle.mjs"
 dotnet build "$scratch/TransportTests.csproj" --configfile "$scratch/NuGet.Config" --disable-build-servers --nologo "-p:EmpireRoot=$root"
 dotnet "$scratch/bin/Debug/net8.0/TransportTests.dll" "$scratch/oracle.json"

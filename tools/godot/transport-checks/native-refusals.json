@@ -1,0 +1,664 @@
+{
+  "cases": {
+    "base carrier options state order": {
+      "error": null,
+      "carrierReasons": [
+        {
+          "carrier": 2,
+          "reasons": []
+        },
+        {
+          "carrier": 4,
+          "reasons": []
+        }
+      ]
+    },
+    "carrier options preserve state order not coordinate order": {
+      "error": null,
+      "carrierReasons": [
+        {
+          "carrier": 4,
+          "reasons": []
+        },
+        {
+          "carrier": 2,
+          "reasons": []
+        }
+      ]
+    },
+    "allied other owner included in queries": {
+      "error": null,
+      "carrierReasons": [
+        {
+          "carrier": 4,
+          "reasons": []
+        },
+        {
+          "carrier": 2,
+          "reasons": []
+        },
+        {
+          "carrier": 5,
+          "reasons": []
+        }
+      ]
+    },
+    "embark self": {
+      "error": {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "transport.self",
+          "details": {}
+        }
+      }
+    },
+    "embark noncarrier": {
+      "error": {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "transport.not_carrier",
+          "details": {
+            "unitType": "c01.archer"
+          }
+        }
+      }
+    },
+    "embark enemy": {
+      "error": {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "transport.not_allies",
+          "details": {}
+        }
+      }
+    },
+    "embark not adjacent": {
+      "error": {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "transport.not_adjacent",
+          "details": {}
+        }
+      }
+    },
+    "embark missing passenger": {
+      "error": {
+        "kind": "DomainInvariant",
+        "message": "no unit with id 99"
+      }
+    },
+    "embark missing carrier": {
+      "error": {
+        "kind": "DomainInvariant",
+        "message": "no unit with id 99"
+      }
+    },
+    "embark refuses adjacent carrier passenger": {
+      "error": {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "transport.carrier_passenger",
+          "details": {}
+        }
+      }
+    },
+    "boarding ordinary passenger": {
+      "error": null
+    },
+    "boarding then landing preserves carrier readiness": {
+      "error": null
+    },
+    "board second passenger and ordered passenger queries": {
+      "error": null,
+      "carrierReasons": []
+    },
+    "full carrier refusal precedes carrier passenger refusal": {
+      "error": {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "transport.full",
+          "details": {}
+        }
+      }
+    },
+    "profile allowed mismatch": {
+      "error": {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "transport.incompatible_tags",
+          "details": {}
+        }
+      },
+      "carrierReasons": [
+        {
+          "carrier": 2,
+          "reasons": [
+            {
+              "code": "transport.incompatible_tags",
+              "details": {}
+            }
+          ]
+        },
+        {
+          "carrier": 4,
+          "reasons": [
+            {
+              "code": "transport.incompatible_tags",
+              "details": {}
+            }
+          ]
+        }
+      ]
+    },
+    "profile forbidden overrides allowed": {
+      "error": {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "transport.forbidden_tags",
+          "details": {}
+        }
+      },
+      "carrierReasons": [
+        {
+          "carrier": 2,
+          "reasons": [
+            {
+              "code": "transport.forbidden_tags",
+              "details": {}
+            }
+          ]
+        },
+        {
+          "carrier": 4,
+          "reasons": [
+            {
+              "code": "transport.forbidden_tags",
+              "details": {}
+            }
+          ]
+        }
+      ]
+    },
+    "profile empty allow list accepts": {
+      "error": null,
+      "carrierReasons": [
+        {
+          "carrier": 2,
+          "reasons": []
+        },
+        {
+          "carrier": 4,
+          "reasons": []
+        }
+      ]
+    },
+    "transport rule leaves entitlement to dispatcher": {
+      "error": null
+    },
+    "boarding deeply isolates passenger snapshot": {
+      "error": null
+    },
+    "square4 embark and passenger spots": {
+      "error": null,
+      "carrierReasons": [
+        {
+          "carrier": 2,
+          "reasons": []
+        }
+      ]
+    },
+    "square4 diagonal boarding": {
+      "error": {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "transport.not_adjacent",
+          "details": {}
+        }
+      }
+    },
+    "square4 landing edge clipping": {
+      "error": null,
+      "carrierReasons": []
+    },
+    "square8 embark and passenger spots": {
+      "error": null,
+      "carrierReasons": [
+        {
+          "carrier": 2,
+          "reasons": []
+        }
+      ]
+    },
+    "square8 diagonal boarding": {
+      "error": null
+    },
+    "square8 landing edge clipping": {
+      "error": null,
+      "carrierReasons": []
+    },
+    "hex embark and passenger spots": {
+      "error": null,
+      "carrierReasons": [
+        {
+          "carrier": 2,
+          "reasons": []
+        }
+      ]
+    },
+    "hex diagonal boarding": {
+      "error": null
+    },
+    "hex landing edge clipping": {
+      "error": null,
+      "carrierReasons": []
+    },
+    "landing query missing carrier": {
+      "error": null,
+      "result": {
+        "code": "transport.carrier_missing",
+        "details": {
+          "carrierId": 99
+        }
+      }
+    },
+    "landing commit missing carrier": {
+      "error": {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "transport.carrier_missing",
+          "details": {
+            "carrierId": 99
+          }
+        }
+      }
+    },
+    "landing query noncarrier": {
+      "error": null,
+      "result": {
+        "code": "transport.carrier_missing",
+        "details": {
+          "carrierId": 3
+        }
+      }
+    },
+    "landing commit noncarrier": {
+      "error": {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "transport.carrier_missing",
+          "details": {
+            "carrierId": 3
+          }
+        }
+      }
+    },
+    "landing query wrong carrier": {
+      "error": null,
+      "result": {
+        "code": "transport.not_aboard",
+        "details": {}
+      }
+    },
+    "landing commit wrong carrier": {
+      "error": {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "transport.not_aboard",
+          "details": {}
+        }
+      }
+    },
+    "landing query missing passenger": {
+      "error": null,
+      "result": {
+        "code": "transport.not_aboard",
+        "details": {}
+      }
+    },
+    "landing commit missing passenger": {
+      "error": {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "transport.not_aboard",
+          "details": {}
+        }
+      }
+    },
+    "landing query outside board": {
+      "error": null,
+      "result": {
+        "code": "transport.disembark_not_adjacent",
+        "details": {}
+      }
+    },
+    "landing commit outside board": {
+      "error": {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "transport.disembark_not_adjacent",
+          "details": {}
+        }
+      }
+    },
+    "landing query not adjacent": {
+      "error": null,
+      "result": {
+        "code": "transport.disembark_not_adjacent",
+        "details": {}
+      }
+    },
+    "landing commit not adjacent": {
+      "error": {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "transport.disembark_not_adjacent",
+          "details": {}
+        }
+      }
+    },
+    "landing query occupied": {
+      "error": null,
+      "result": {
+        "code": "transport.disembark_occupied",
+        "details": {}
+      }
+    },
+    "landing commit occupied": {
+      "error": {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "transport.disembark_occupied",
+          "details": {}
+        }
+      }
+    },
+    "landing query valid": {
+      "error": null,
+      "result": null
+    },
+    "landing commit valid": {
+      "error": null
+    },
+    "landing blocked terrain": {
+      "error": {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "transport.disembark_impassable",
+          "details": {}
+        }
+      }
+    },
+    "landing blocked structure": {
+      "error": {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "transport.disembark_impassable",
+          "details": {}
+        }
+      }
+    },
+    "landing ignores intermediate elevation and cliffs": {
+      "error": null
+    },
+    "landing does not transfer passenger allegiance": {
+      "error": null
+    },
+    "disembark preserves morale status and spent reaction": {
+      "error": null
+    },
+    "carrier damage canonical passenger departure": {
+      "error": null
+    },
+    "carrier morale canonical passenger departure": {
+      "error": null
+    },
+    "carrier surrender canonical passenger departure": {
+      "error": null
+    },
+    "carrier withdraw canonical passenger departure": {
+      "error": null
+    },
+    "withdraw carrier corpse still withdraws passengers alive": {
+      "error": null
+    },
+    "carrier commander death uses canonical aftermath": {
+      "error": null
+    },
+    "return corpse hp=undefined": {
+      "error": null
+    },
+    "return corpse hp=-5": {
+      "error": null
+    },
+    "return corpse hp=0.5": {
+      "error": null
+    },
+    "return corpse hp=999": {
+      "error": null
+    },
+    "return transport-loss hp=undefined": {
+      "error": null
+    },
+    "return transport-loss hp=-5": {
+      "error": null
+    },
+    "return transport-loss hp=0.5": {
+      "error": null
+    },
+    "return transport-loss hp=999": {
+      "error": null
+    },
+    "return withdrawn hp=undefined": {
+      "error": null
+    },
+    "return withdrawn hp=-5": {
+      "error": null
+    },
+    "return withdrawn hp=0.5": {
+      "error": null
+    },
+    "return withdrawn hp=999": {
+      "error": null
+    },
+    "return routed hp=undefined": {
+      "error": null
+    },
+    "return routed hp=-5": {
+      "error": null
+    },
+    "return routed hp=0.5": {
+      "error": null
+    },
+    "return routed hp=999": {
+      "error": null
+    },
+    "return surrendered hp=undefined": {
+      "error": null
+    },
+    "return surrendered hp=-5": {
+      "error": null
+    },
+    "return surrendered hp=0.5": {
+      "error": null
+    },
+    "return surrendered hp=999": {
+      "error": null
+    },
+    "return advances next identity": {
+      "error": null
+    },
+    "return occupied tile refuses without changes": {
+      "error": null
+    },
+    "return duplicate identity refuses": {
+      "error": null
+    },
+    "return duplicate key refuses": {
+      "error": null
+    },
+    "return marker without unit refuses": {
+      "error": null
+    },
+    "return external marker matches source removal behavior": {
+      "error": null
+    }
+  },
+  "dispatchCases": {
+    "full dispatch board land wait and next turn": [
+      null,
+      null,
+      null
+    ],
+    "full dispatch second landing forbidden after carrier done": [
+      null,
+      null,
+      null,
+      {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "tactics.already_acted",
+          "details": {
+            "unitId": 2
+          }
+        }
+      }
+    ],
+    "passenger done": [
+      {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "tactics.already_acted",
+          "details": {
+            "unitId": 1
+          }
+        }
+      }
+    ],
+    "carrier done boarding is allowed": [
+      null
+    ],
+    "enemy passenger": [
+      {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "tactics.not_owner",
+          "details": {
+            "unitId": 1
+          }
+        }
+      }
+    ],
+    "allied other owner carrier refused by dispatcher": [
+      {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "tactics.not_owner",
+          "details": {
+            "unitId": 2
+          }
+        }
+      }
+    ],
+    "deployment rejects transport": [
+      {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "action.deployment_required",
+          "details": {}
+        }
+      }
+    ],
+    "over rejects transport": [
+      {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "action.over",
+          "details": {}
+        }
+      }
+    ],
+    "blocked passenger on initiative order": [
+      {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "tactics.not_actor",
+          "details": {
+            "unitId": 1
+          }
+        }
+      }
+    ],
+    "done carrier cannot land": [
+      {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "tactics.already_acted",
+          "details": {
+            "unitId": 2
+          }
+        }
+      }
+    ],
+    "enemy carrier cannot land": [
+      {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "tactics.not_owner",
+          "details": {
+            "unitId": 2
+          }
+        }
+      }
+    ],
+    "occupied landing rolls back all state": [
+      {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "transport.disembark_occupied",
+          "details": {}
+        }
+      }
+    ],
+    "missing carrier dispatch precedence": [
+      {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "tactics.unit_missing",
+          "details": {
+            "unitId": 99
+          }
+        }
+      }
+    ],
+    "missing passenger dispatch precedence": [
+      {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "tactics.unit_missing",
+          "details": {
+            "unitId": 99
+          }
+        }
+      }
+    ],
+    "initiative actor boarding and handoff": [
+      null,
+      null
+    ],
+    "initiative carrier landing and handoff": [
+      null,
+      null
+    ],
+    "initiative inactive carrier cannot land": [
+      {
+        "kind": "IllegalAction",
+        "refusal": {
+          "code": "tactics.not_actor",
+          "details": {
+            "unitId": 2
+          }
+        }
+      }
+    ]
+  }
+}

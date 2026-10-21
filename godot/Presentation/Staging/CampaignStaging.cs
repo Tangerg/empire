@@ -33,17 +33,21 @@ public sealed class CampaignStagingView
     public IReadOnlyList<CampaignStagingUnit> Roster { get; }
     public IReadOnlyList<CampaignStagingResource> Resources { get; }
     public IReadOnlyList<CampaignStagingRelation> Relations { get; }
-    public const string RosterHeading = "出战名册";
-    public const string StateHeading = "战役状态";
-    public const string EmptyResources = "暂无战役资源";
-    public const string EmptyRelations = "尚未形成明确阵营关系。";
+    public string RosterHeading { get; }
+    public string StateHeading { get; }
+    public string EmptyResources { get; }
+    public string EmptyRelations { get; }
+    public string ArtworkFailureLabel { get; }
 
-    internal CampaignStagingView(string exitLabel, string progressLabel, string levelId, string campaignTitle, string chapterHeading, string progress,
+    internal CampaignStagingView(GameText text, string levelId, string campaignTitle, string chapterHeading, string progress,
         int completedBattles, int battleTotal, string eyebrow, string title, string description, string actionNote, string startLabel,
         CampaignStagingArt chapterArt, CampaignStagingArt? briefingArt, IEnumerable<CampaignStagingUnit> roster,
         IEnumerable<CampaignStagingResource> resources, IEnumerable<CampaignStagingRelation> relations)
     {
-        ExitLabel = exitLabel; ProgressLabel = progressLabel;
+        ExitLabel = text.Format("ui.campaign.exit"); ProgressLabel = text.Format("ui.campaign.progress");
+        RosterHeading = text.Format("ui.staging.roster_heading"); StateHeading = text.Format("ui.staging.state_heading");
+        EmptyResources = text.Format("ui.staging.empty_resources"); EmptyRelations = text.Format("ui.staging.empty_relations");
+        ArtworkFailureLabel = text.Format("error.presentation.artwork_unavailable");
         LevelId = levelId; CampaignTitle = campaignTitle; ChapterHeading = chapterHeading; Progress = progress;
         CompletedBattles = completedBattles; BattleTotal = battleTotal;
         Eyebrow = eyebrow; Title = title; Description = description; ActionNote = actionNote; StartLabel = startLabel;
@@ -81,35 +85,40 @@ public static class CampaignStaging
             if (joins.TryGetProperty(unitId, out var after) && after.GetDouble() > completed) continue;
             var type = Text(unit.GetProperty("unitType"));
             var disposition = Text(unit.GetProperty("disposition"));
-            var rank = unit.TryGetProperty("rank", out var rawRank) && rawRank.ValueKind != JsonValueKind.Null ? Text(rawRank) : "0";
+            var rank = unit.TryGetProperty("rank", out var rawRank) && rawRank.ValueKind != JsonValueKind.Null ? rawRank.GetDouble() : 0;
             var status = disposition == "available"
-                ? $"生命 {Number(Math.Floor(unit.GetProperty("hpRatio").GetDouble() * 100 + 0.5))}% · 军衔 {rank}" : disposition;
+                ? text.Format("ui.staging.available_status", Math.Floor(unit.GetProperty("hpRatio").GetDouble() * 100 + 0.5), rank)
+                : text.Format($"ui.staging.disposition.{disposition}");
             var binding = bindings.FirstOrDefault(candidate => Text(candidate.GetProperty("campaignUnit")) == unitId);
             roster.Add(new CampaignStagingUnit(unitId, type, unitTypeName(type), status,
                 binding.ValueKind == JsonValueKind.Undefined ? null : Text(binding.GetProperty("levelUnitKey")),
                 portraits.TryGetProperty(unitId, out var portrait) ? Art(portrait) : null));
         }
         var resources = state.GetProperty("resources").EnumerateObject().Select(entry =>
-            new CampaignStagingResource(entry.Name, Label(metadata.GetProperty("resourceLabels"), entry.Name), Text(entry.Value)));
+            new CampaignStagingResource(entry.Name, Label(text, metadata.GetProperty("resourceLabelKeys"), entry.Name), Text(entry.Value)));
         var relations = state.GetProperty("relations").EnumerateObject().Where(entry => entry.Value.GetDouble() != 0).Take(5).Select(entry =>
         {
             var amount = entry.Value.GetDouble();
-            return new CampaignStagingRelation(entry.Name, Label(metadata.GetProperty("relationLabels"), entry.Name),
+            return new CampaignStagingRelation(entry.Name, Label(text, metadata.GetProperty("relationLabelKeys"), entry.Name),
                 (amount > 0 ? "+" : "") + Text(entry.Value), Math.Clamp((amount + 3) / 6, 0, 1));
         });
-        return new CampaignStagingView(text.Format("ui.campaign.exit"), text.Format("ui.campaign.progress"), id, text.Format(Text(metadata.GetProperty("titleKey"))),
+        return new CampaignStagingView(text, id, text.Format(Text(metadata.GetProperty("titleKey"))),
             text.Format("ui.campaign.chapter_heading", chapter, text.Format(chapterKey)), $"{Number(completed)}/{Number(battleTotal)}",
-            completed, battleTotal, $"作战准备 · {order.ToString(CultureInfo.InvariantCulture).PadLeft(2, '0')}/{Number(battleTotal)}",
+            completed, battleTotal, text.Format("ui.staging.eyebrow", order, battleTotal),
             Text(level.GetProperty("name")), level.TryGetProperty("description", out var description) && description.ValueKind != JsonValueKind.Null ? Text(description) : "",
-            hasPendingRequest ? "离开战场后将从本关开局重新开始。" : "进入战斗后自动保留关前存档。",
-            (hasPendingRequest ? "重新进入战斗" : "开始战斗") + " →",
+            text.Format(hasPendingRequest ? "ui.staging.reentry_note" : "ui.staging.initial_note"),
+            text.Format(hasPendingRequest ? "ui.staging.reenter" : "ui.staging.start"),
             Art(presentation.GetProperty("chapterArt")), presentation.GetProperty("briefingArt").ValueKind == JsonValueKind.Null ? null : Art(presentation.GetProperty("briefingArt")),
             roster, resources, relations);
     }
 
     private static CampaignStagingArt Art(JsonElement value) => new(Text(value.GetProperty("source")),
         value.GetProperty("resourcePath").ValueKind == JsonValueKind.Null ? null : Text(value.GetProperty("resourcePath")));
-    private static string Label(JsonElement labels, string id) => labels.TryGetProperty(id, out var value) ? Text(value) : id;
+    private static string Label(GameText text, JsonElement keys, string id)
+    {
+        if (!keys.TryGetProperty(id, out var key)) throw new InvalidOperationException($"Campaign label is not authored: {id}.");
+        return text.Format(Text(key));
+    }
     private static string Text(JsonElement value) => value.ValueKind == JsonValueKind.String
         ? EcmaJson.ReadString(EcmaJson.Parse(value.GetRawText())) : EcmaJson.Stringify(EcmaJson.Parse(value.GetRawText()));
     private static string Number(double value) => EcmaJson.Stringify(JsonValue.Create(value));

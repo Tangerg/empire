@@ -3,7 +3,9 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
 cd "$ROOT"
 source tools/godot/env.sh
-dotnet run --project tools/godot/application-save-checks/ApplicationSaveChecks.csproj -- "$ROOT"
+WORK="$(mktemp -d /tmp/empire-application-save-catalog.XXXXXXXX)"
+python3 tools/godot/localization-checks/validate_catalog.py godot/Localization/zh_CN.po --output "$WORK/catalog.json"
+dotnet run --project tools/godot/application-save-checks/ApplicationSaveChecks.csproj -- "$ROOT" "$WORK/catalog.json"
 
 if [[ "${1:-}" == "--verify-guard" ]]; then
   scratch="$(mktemp -d /tmp/empire-application-save-mutant.XXXXXXXX)"
@@ -15,7 +17,8 @@ for directory in ['godot/Empire.Core', 'godot/Presentation/Feedback', 'tools/god
     shutil.copytree(root / directory, target / directory, ignore=shutil.ignore_patterns('bin', 'obj'))
 for source in ['godot/Application/GrayFlagCampaign.cs', 'godot/Application/ApplicationSaveDocument.cs',
                'godot/Application/SaveFile.cs', 'godot/Application/CampaignSlotStorage.cs',
-               'godot/Application/GrayFlagSession.cs', 'godot/Presentation/BattlePresentationModels.cs']:
+               'godot/Application/GrayFlagSession.cs', 'godot/Presentation/BattlePresentationModels.cs',
+               'godot/Localization/GameText.cs', 'tools/godot/check-support/FixtureText.cs']:
     path = target / source
     path.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(root / source, path)
@@ -25,7 +28,7 @@ original = 'public JsonObject? RequestSnapshot() => pending?.Request.DeepClone()
 assert source.count(original) == 1
 path.write_text(source.replace(original, 'public JsonObject? RequestSnapshot() => pending?.Request;'))
 PY_MUTANT
-  if dotnet run --project "$scratch/tools/godot/application-save-checks/ApplicationSaveChecks.csproj" -- "$ROOT" > "$scratch/mutant.log" 2>&1; then
+  if dotnet run --project "$scratch/tools/godot/application-save-checks/ApplicationSaveChecks.csproj" -- "$ROOT" "$WORK/catalog.json" > "$scratch/mutant.log" 2>&1; then
     echo 'ERROR: mutable request ownership escaped detection.' >&2; exit 1
   fi
   grep -q 'A request read model mutated the authoritative pending battle' "$scratch/mutant.log"

@@ -11,3 +11,9 @@ Reaction tests exercise custom mitigation, interception, retaliation and resourc
 Seventeen compiled semantic mutants must fail their targeted source or native assertions, covering turn-policy selection, command entitlement, consumer identity, reaction/facing admission, internal transition invariants, saved-facing admission, custom tiling directions and registry-owned support selection/modifiers/progress.
 
 Native regressions use real named plugins and engines. They cover every declared direction in square4, square8, hex and a custom renamed-direction tiling; authored/saved rejection; accepted command save/load/replay; automatic facing; and new/replaced support behavior through actual attacks. Application choice/HUD stance lists enumerate the resolved registry, but arbitrary custom presentation and complete default campaign parity remain separate gates.
+
+Native action refusals use explicit named-case `code`/`details` expectations,
+including unknown reaction and invalid facing parameters. The eight frozen source
+action cases retain their original outcome data; no formatter converts native
+refusals back to source prose. Complete case coverage, rollback, event ordering,
+state/hash parity and the intentional unknown-stance rejection remain enforced.

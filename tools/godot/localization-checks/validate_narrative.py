@@ -39,7 +39,7 @@ def validate(root):
 
     shape(story, ["schema", "speakerNameKeys", "stories", "choices"])
     shape(staging, ["schema", "titleKey", "completionLabelKey", "menu", "menuArt", "chapters", "storyScenes",
-                    "battleTotal", "joinAfter", "relationLabels", "resourceLabels", "portraits", "levels"])
+                    "battleTotal", "joinAfter", "relationLabelKeys", "resourceLabelKeys", "portraits", "levels"])
     if story["schema"] != 2 or staging["schema"] != 2:
         raise CatalogError("Native narrative documents require schema 2")
     identities(story["stories"] + story["choices"], "narrative")
@@ -77,6 +77,11 @@ def validate(root):
     references(story)
     message(staging["titleKey"])
     message(staging["completionLabelKey"])
+    shape(staging["menu"], ["titleKey", "kickerKey", "descriptionKey", "artAltKey", "continueLabelKey", "restartLabelKey", "newLabelKey", "replacePromptKey"])
+    references(staging["menu"])
+    for field in ["resourceLabelKeys", "relationLabelKeys"]:
+        for key in staging[field].values():
+            message(key)
     for chapter in staging["chapters"].values():
         shape(chapter, ["titleKey", "art"])
         message(chapter["titleKey"])

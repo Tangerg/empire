@@ -7,7 +7,7 @@ using static Empire.Core.State.StateJson;
 
 namespace Empire.Core.Progression;
 
-public sealed record CareerOption(JsonObject Career, bool Eligible, bool Unlocked, bool Mastered, IReadOnlyList<string> Reasons);
+public sealed record CareerOption(JsonObject Career, bool Eligible, bool Unlocked, bool Mastered, IReadOnlyList<ActionRefusal> Reasons);
 
 /// <summary>Career paths and transitions under an explicitly supplied content/resource ruleset.</summary>
 public sealed class CareerRules
@@ -45,22 +45,22 @@ public sealed class CareerRules
             var unlocked = Unlocked(id);
             if (!unlocked && (currentRoots.Count == 0 ? Text(career, "unitType") != Text(unit, "type") :
                     !RootsOf(career, new HashSet<string>(StringComparer.Ordinal)).Overlaps(currentRoots))) continue;
-            var reasons = new List<string>();
+            var reasons = new List<ActionRefusal>();
             if (!unlocked)
             {
                 var from = Array(career["from"], "from");
                 if (from.Count == 0 && (current is not null || Text(career, "unitType") != Text(unit, "type")))
-                    reasons.Add("不能跨越到另一棵职业树的根职业");
+                    reasons.Add(new("career.root_mismatch"));
                 else if (from.Count > 0 && (string.IsNullOrEmpty(current) || !from.Any(value => Text(value, "career") == current)))
-                    reasons.Add("当前职业不在可转职路径上");
+                    reasons.Add(new("career.path_mismatch"));
                 var minimumRank = Number(career["minimumRank"], "minimumRank");
                 var minimumMastery = Number(career["minimumMastery"], "minimumMastery");
-                if (Number(unit["rank"], "rank") < minimumRank) reasons.Add($"需要军衔 {Empire.Core.Determinism.EcmaNumber.Format(minimumRank)}");
-                if (currentMastery < minimumMastery) reasons.Add($"需要当前职业熟练度 {Empire.Core.Determinism.EcmaNumber.Format(minimumMastery)}");
+                if (Number(unit["rank"], "rank") < minimumRank) reasons.Add(new("career.minimum_rank", new() { ["required"] = minimumRank }));
+                if (currentMastery < minimumMastery) reasons.Add(new("career.minimum_mastery", new() { ["required"] = minimumMastery }));
             }
-            if (!resources.CanAfford(owner, Array(career["costs"], "costs"))) reasons.Add("转职资源不足");
+            if (!resources.CanAfford(owner, Array(career["costs"], "costs"))) reasons.Add(new("career.insufficient_resources"));
             result.Add(new CareerOption((JsonObject)career.DeepClone(), reasons.Count == 0, unlocked,
-                Mastery(unit, id) >= Number(career["masteryThreshold"], "masteryThreshold"), reasons));
+                Mastery(unit, id) >= Number(career["masteryThreshold"], "masteryThreshold"), reasons.AsReadOnly()));
         }
         return result.OrderBy(option => Number(option.Career["tier"], "tier"))
             .ThenBy(option => Text(option.Career, "id"), StringComparer.Ordinal).ToArray();
@@ -81,8 +81,9 @@ public sealed class CareerRules
     public void Change(JsonObject state, JsonObject unit, string requested, Action<JsonObject> emit)
     {
         var option = Options(state, unit).FirstOrDefault(candidate => Text(candidate.Career, "id") == requested)
-            ?? throw new IllegalActionException($"无法转为当前职业或未知职业「{requested}」");
-        if (!option.Eligible) throw new IllegalActionException(string.Join("；", option.Reasons));
+            ?? throw new IllegalActionException(new ActionRefusal("career.unavailable", new() { ["careerId"] = requested }));
+        if (!option.Eligible) throw new IllegalActionException(new ActionRefusal("career.requirements", new()
+        { ["reasons"] = System.Text.Json.JsonSerializer.SerializeToNode(option.Reasons) }));
         var career = option.Career;
         var health = new UnitHealth(catalog, unit);
         var nextType = Text(career, "unitType");

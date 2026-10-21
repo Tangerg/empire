@@ -8,8 +8,9 @@ bash tools/godot/progression-checks/run.sh
 
 The runner invokes the original TypeScript implementations to generate temporary
 fixtures, then compares the native implementation's values, ordered events,
-exception messages and complete state snapshots. No fixtures or generated
-snapshots are committed. The output prints the temporary diagnostic directory.
+domain-invariant diagnostics and complete state snapshots. Native illegal-action
+codes/details and ordered option reasons are declared in `native-refusals.json`;
+source snapshots remain generated and unmodified. The output prints the temporary diagnostic directory.
 
 Current coverage: 175 cases, with 172 exact source comparisons and three explicitly native invariant rejections, including 19 individual engine dispatches, 14 raw
 handlers and three multi-action sequences. The sequences compare every step and
@@ -42,3 +43,15 @@ uses the same `FormationRules.InEffect` predicate as the new query/action API.
 ## Intentional health contract change
 
 The source's `health ratio 0`, `health ratio 200`, and `health invariant direct mutation order` cases are retained, not skipped. Native career changes reject a dead/over-maximum current unit or invalid target maximum with `DomainInvariantException` before resource costs, events, career/type changes, or any state mutation. Normal fractional health, career cost order and all valid progression cases still compare to source exactly. `UnitHealth` owns the health-preserving type transition; career policy chooses the type and preflights that same invariant before announcing costs.
+
+## Native refusal contract
+
+`native-refusals.json` declares the intentional native API break for the existing
+source cases: illegal orders and refusal-bearing queries expose exact semantic
+`code`/`details`, not localized prose. The runner checks the complete ordered case
+inventory and each affected query/action slot before substituting only those
+expectation fields on detached copies. Missing or stale entries fail. Acceptance,
+reason order, invariant failures, state, events and hashes keep their existing
+assertions. Original source fixtures and generators are unchanged; regeneration
+that changes these boundaries requires a reviewed update to this independent
+expectation data. No native rule or presentation formatter produces expectations.

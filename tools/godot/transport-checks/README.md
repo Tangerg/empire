@@ -94,3 +94,15 @@ The capture-reset negative control therefore mutates that isolated owner rather
 than a removed duplicate write in `BattleTransport`; it still must fail the same
 boarding emission-time hash assertion. Boarding readiness, transport admission,
 passenger membership and event policy remain in `BattleTransport`.
+
+## Native refusal contract
+
+`native-refusals.json` declares the intentional native API break for the existing
+source cases: illegal orders and refusal-bearing queries expose exact semantic
+`code`/`details`, not localized prose. The runner checks the complete ordered case
+inventory and each affected query/action slot before substituting only those
+expectation fields on detached copies. Missing or stale entries fail. Acceptance,
+reason order, invariant failures, state, events and hashes keep their existing
+assertions. Original source fixtures and generators are unchanged; regeneration
+that changes these boundaries requires a reviewed update to this independent
+expectation data. No native rule or presentation formatter produces expectations.

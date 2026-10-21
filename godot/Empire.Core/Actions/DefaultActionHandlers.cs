@@ -18,12 +18,12 @@ public static class DefaultActionHandlers
             action["target"] is JsonObject target ? TacticalQueries.Position(target) : null, context.Emit))
         .Register("reaction", (context, action) =>
         {
-            var unit = context.Rules.Commands.CommandableUnit(context.State, StateJson.Integer(action, "unit"), "调整反应姿态");
+            var unit = context.Rules.Commands.CommandableUnit(context.State, StateJson.Integer(action, "unit"));
             context.Rules.Commands.ChangeReaction(unit, StateJson.Text(action, "stance"), context.Emit);
         })
         .Register("face", (context, action) =>
         {
-            var unit = context.Rules.Commands.CommandableUnit(context.State, StateJson.Integer(action, "unit"), "调整朝向");
+            var unit = context.Rules.Commands.CommandableUnit(context.State, StateJson.Integer(action, "unit"));
             context.Rules.Commands.TurnToFace(context.State, unit, StateJson.Text(action, "facing"), context.Emit);
         })
         .Register("changeCareer", (context, action) => context.Rules.Progression.ChangeCareer(context.State,
@@ -32,13 +32,13 @@ public static class DefaultActionHandlers
             StateJson.Integer(action, "unit"), action["formation"]?.GetValue<string>(), context.Emit))
         .Register("embark", (context, action) =>
         {
-            var passenger = context.Rules.Commands.CommandableUnit(context.State, StateJson.Integer(action, "unit"), "登载");
+            var passenger = context.Rules.Commands.CommandableUnit(context.State, StateJson.Integer(action, "unit"));
             var carrier = context.Rules.Commands.OwnUnit(context.State, StateJson.Integer(action, "carrier"));
             context.Rules.Transport.Embark(context.State, StateJson.Integer(passenger, "id"), StateJson.Integer(carrier, "id"), context.Emit);
         })
         .Register("disembark", (context, action) =>
         {
-            var carrier = context.Rules.Commands.CommandableUnit(context.State, StateJson.Integer(action, "carrier"), "卸载");
+            var carrier = context.Rules.Commands.CommandableUnit(context.State, StateJson.Integer(action, "carrier"));
             context.Rules.Transport.Disembark(context.State, StateJson.Integer(carrier, "id"), StateJson.Integer(action, "unit"),
                 TacticalQueries.Position(action["at"]!.AsObject()), context.Emit);
             TacticalCommands.FinishCommand(context.State, StateJson.Integer(carrier, "id"));

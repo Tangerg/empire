@@ -1,13 +1,19 @@
+using Empire.Presentation.Feedback;
+using Empire.Checks;
 using Empire.Core;
 using System.Text.Json.Nodes;
 using System.Text.Json;
 using Empire.Application;
 using Empire.Core.Engine;
 using Empire.Core.Determinism;
+
+if (args.Length != 2) throw new ArgumentException("Usage: ApplicationChecks <repository> <catalog.json>");
+var gameText = FixtureText.Load(args[^1]);
+ActionRefusalText Refusals(GrayFlagEngine value) => ActionRefusalText.CreateDefault(gameText, value.Catalog, value.Abilities).Seal();
 var root = args.Length > 0 ? args[0] : ".";
 JsonNode Read(string file) => JsonNode.Parse(File.ReadAllText(Path.Combine(root,"godot/data",file)))!;
 var packs=Read("content-packs.json").AsArray(); var engine=new GrayFlagEngine(packs);
-GrayFlagCampaign Create()=>new(Read("grayflag-campaign.json").AsObject(),Read("grayflag-campaign-levels.json").AsArray(),engine);
+GrayFlagCampaign Create()=>new(Read("grayflag-campaign.json").AsObject(),Read("grayflag-campaign-levels.json").AsArray(),engine, gameText, Refusals(engine));
 var campaign=Create();
 while(campaign.Node()["type"]!.GetValue<string>()!="battle")
 { if(campaign.Node()["type"]!.GetValue<string>()=="choice")campaign.Choose(campaign.Choices()[0]!["id"]!.GetValue<string>());else campaign.Advance(); }

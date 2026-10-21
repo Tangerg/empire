@@ -68,15 +68,15 @@ public sealed class SupportOrders
     {
         var commander = StateJson.Objects(state["commanders"], "commanders")
             .FirstOrDefault(candidate => StateJson.Text(candidate, "id") == commanderId)
-            ?? throw new IllegalActionException($"unknown commander \"{commanderId}\"");
+            ?? throw new IllegalActionException(new ActionRefusal("support.commander_unknown", new() { ["commanderId"] = commanderId }));
         var ownerId = StateJson.Integer(commander, "owner");
-        if (ownerId != StateJson.Integer(state, "currentPlayer")) throw new IllegalActionException("commander does not belong to current player");
+        if (ownerId != StateJson.Integer(state, "currentPlayer")) throw new IllegalActionException(new ActionRefusal("support.commander_not_owner", new() { ["commanderId"] = commanderId }));
         var option = Tactics(state, commanderId).FirstOrDefault(candidate => candidate.Id == tacticId)
-            ?? throw new IllegalActionException($"tactic \"{tacticId}\" is not available");
+            ?? throw new IllegalActionException(new ActionRefusal("support.tactic_unavailable", new() { ["tacticId"] = tacticId }));
         var leader = Units(state).First(unit => StateJson.Integer(unit, "id") == StateJson.Integer(commander, "unitId"));
         var tactic = content.Get("tactics", tacticId);
         var target = StateJson.Text(tactic, "target") == "self" ? Position(leader) : requested;
-        if (target is not { } at || !option.Targets.Contains(at)) throw new IllegalActionException("illegal tactic target");
+        if (target is not { } at || !option.Targets.Contains(at)) throw new IllegalActionException(new ActionRefusal("support.target_invalid", new() { ["tacticId"] = tacticId }));
         var owner = Player(state, ownerId);
         var subject = new BattleResources.Subject("player", owner);
         var spent = resources.SpendAll(subject, StateJson.Array(tactic["costs"], "costs"));
@@ -108,7 +108,7 @@ public sealed class SupportOrders
 
     public void Capture(JsonObject state, JsonObject unit, Coord at, Action<JsonObject> emit)
     {
-        if (!CanCapture(state, unit, at)) throw new IllegalActionException("此处无法使用「占领」");
+        if (!CanCapture(state, unit, at)) throw new IllegalActionException(new ActionRefusal("ability.unusable", new() { ["abilityId"] = "capture" }));
         var map = StateJson.Object(state["map"], "map");
         var rules = StateJson.Object(state["rules"], "rules");
         var index = at.Y * StateJson.Integer(map, "width") + at.X;

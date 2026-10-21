@@ -45,6 +45,7 @@ public partial class CampaignMenuScreen : Control
         if (view.CanContinue) AddButton("ContinueCampaign", view.ContinueLabel, view.Progress, true, continueCampaign);
         AddButton("NewCampaign", view.NewLabel, null, view.NewPrimary, newCampaignRequested);
         if (view.RejectedNotice is { } notice) column.AddChild(Text(notice, 18));
+        if (diagnostics.Count > 0) column.AddChild(Text(view.ArtworkFailureLabel, 18));
 
         void AddButton(string name, string label, string? note, bool primary, Action callback)
         {

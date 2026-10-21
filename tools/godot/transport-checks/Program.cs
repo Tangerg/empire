@@ -17,6 +17,15 @@ using Empire.Core.Engine;
 if (args.Length != 1) throw new ArgumentException("Usage: TransportTests <oracle.json>");
 var oraclePath = args[0];
 var oracle = JsonNode.Parse(File.ReadAllText(oraclePath))!.AsObject();
+using var nativeStream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("NativeRefusals")
+    ?? throw new Exception("Missing explicit native refusal expectations");
+var nativeRefusals = JsonNode.Parse(nativeStream)!.AsObject();
+var nativeCases = nativeRefusals["cases"]!.AsObject();
+if (!oracle["cases"]!.AsArray().Select(item => item!["name"]!.GetValue<string>()).SequenceEqual(nativeCases.Select(pair => pair.Key)))
+    throw new Exception("Native refusal expectation cases are missing or stale");
+var nativeDispatch = nativeRefusals["dispatchCases"]!.AsObject();
+if (!oracle["dispatchCases"]!.AsArray().Select(item => item!["name"]!.GetValue<string>()).SequenceEqual(nativeDispatch.Select(pair => pair.Key)))
+    throw new Exception("Native dispatch expectation cases are missing or stale");
 var serialization = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 JsonNode? Snapshot(object? value) => JsonSerializer.SerializeToNode(value, serialization);
 int IntegerOr(JsonObject value, string key, int fallback) => value[key] is null ? fallback : StateJson.Integer(value, key);
@@ -27,11 +36,16 @@ void Check(string name, string key, JsonNode? actual, JsonNode? expected)
         new JsonObject { ["actual"] = actual?.DeepClone(), ["expected"] = expected?.DeepClone() }.ToJsonString());
     throw new Exception($"Mismatch in {name}: {key}");
 }
+JsonObject Failure(Exception error) => error is IllegalActionException illegal
+    ? new JsonObject { ["kind"] = "IllegalAction", ["refusal"] = Snapshot(illegal.Refusal) }
+    : new JsonObject { ["kind"] = "DomainInvariant", ["message"] = error.Message };
 var passed = 0;
 var nativeRejections = 0;
 foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
 {
     var name = item["name"]!.GetValue<string>();
+    var native = nativeCases[name]!.AsObject();
+    if (!native.ContainsKey("error")) throw new Exception("Missing native transport error expectation: " + name);
     var packs = oracle["packs"]!.DeepClone().AsArray();
     foreach (var patch in item["patches"]!.AsArray().OfType<JsonObject>())
     {
@@ -100,7 +114,7 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
     }
     catch (Exception caught) when (caught is DomainInvariantException or IllegalActionException)
     {
-        error = new JsonObject { ["kind"] = caught.GetType().Name.Replace("Exception", "", StringComparison.Ordinal), ["message"] = caught.Message };
+        error = Failure(caught);
     }
     var returnStep = item["steps"]!.AsArray().OfType<JsonObject>().SingleOrDefault(step =>
         StateJson.Text(step, "op") == "return" && step["hp"] is not null &&
@@ -115,8 +129,29 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
         nativeRejections++;
         continue;
     }
-    Check(name, "error", error, item["error"]);
-    Check(name, "result", Snapshot(result), item["result"]);
+    if ((item["error"] is null) != (native["error"] is null)) throw new Exception("Native transport expectation changed refusal acceptance: " + name);
+    Check(name, "error", error, native["error"]);
+    var expectedResult = item["result"]?.DeepClone();
+    if (item["steps"]!.AsArray()[^1]!["op"]!.GetValue<string>() is "embarkRefusal" or "disembarkRefusal")
+    {
+        if (!native.ContainsKey("result") || (expectedResult is null) != (native["result"] is null))
+            throw new Exception("Missing or stale native query refusal: " + name);
+        expectedResult = native["result"]?.DeepClone();
+    }
+    if (expectedResult is JsonObject query && query["carriers"] is JsonArray carriers)
+    {
+        var reasons = native["carrierReasons"]!.AsArray();
+        if (carriers.Count != reasons.Count) throw new Exception("Missing or stale native carrier options: " + name);
+        for (var index = 0; index < carriers.Count; index++)
+        {
+            var option = carriers[index]!.AsObject(); var expectedReasons = reasons[index]!.AsObject();
+            if (StateJson.Integer(option["carrier"]!.AsObject(), "id") != StateJson.Integer(expectedReasons, "carrier") ||
+                option["reasons"]!.AsArray().Count != expectedReasons["reasons"]!.AsArray().Count)
+                throw new Exception("Native carrier refusal order/coverage changed: " + name);
+            option["reasons"] = expectedReasons["reasons"]!.DeepClone();
+        }
+    }
+    Check(name, "result", Snapshot(result), expectedResult);
     Check(name, "events", events, item["events"]);
     Check(name, "hashes", hashes, item["hashes"]);
     Check(name, "after", state, item["after"]);
@@ -136,7 +171,10 @@ foreach (var item in oracle["dispatchCases"]!.AsArray().OfType<JsonObject>())
 {
     var name = StateJson.Text(item, "name");
     var battle = (Battle)restoreBattle.Invoke(engine, new object[] { item["initial"]!.AsObject() })!;
-    foreach (var expected in item["receipts"]!.AsArray().OfType<JsonObject>())
+    var expectedErrors = nativeDispatch[name]!.AsArray();
+    if (expectedErrors.Count != item["receipts"]!.AsArray().Count)
+        throw new Exception("Missing or stale native transport dispatch slots: " + name);
+    foreach (var (expected, index) in item["receipts"]!.AsArray().OfType<JsonObject>().Select((value, index) => (value, index)))
     {
         Check(name, "dispatch-before", battle.Snapshot(), expected["before"]);
         var events = new JsonArray();
@@ -149,9 +187,11 @@ foreach (var item in oracle["dispatchCases"]!.AsArray().OfType<JsonObject>())
         }
         catch (Exception caught) when (caught is DomainInvariantException or IllegalActionException)
         {
-            error = new JsonObject { ["kind"] = caught.GetType().Name.Replace("Exception", "", StringComparison.Ordinal), ["message"] = caught.Message };
+            error = Failure(caught);
         }
-        Check(name, "dispatch-error", error, expected["error"]);
+        if ((expected["error"] is null) != (expectedErrors[index] is null))
+            throw new Exception("Native transport dispatch expectation changed refusal acceptance: " + name);
+        Check(name, "dispatch-error", error, expectedErrors[index]);
         Check(name, "dispatch-events", events, expected["events"]);
         Check(name, "dispatch-after", battle.Snapshot(), expected["after"]);
         Check(name, "dispatch-hash", JsonValue.Create(battle.StateHash), expected["hash"]);

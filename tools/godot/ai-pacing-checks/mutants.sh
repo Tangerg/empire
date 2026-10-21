@@ -14,11 +14,13 @@ mutations = {
     'early-handoff-pause': ('godot/Application/AiTurnPacer.cs', '? 120 : 90', '? 119 : 90'),
     'initial-pre-delay': ('godot/Application/AiTurnPacer.cs', 'setBusy(true);', 'setBusy(true); resumeAt = nowMilliseconds + 90;'),
     'fallback-metadata': ('godot/Application/GrayFlagSession.cs', 'handsOffTurn(attempted)', 'handsOffTurn(new JsonObject { ["kind"] = "endTurn" })'),
-    'swallowed-invariant': ('godot/Application/GrayFlagSession.cs', 'catch (IllegalActionException error)', 'catch (Exception error)'),
+    'swallowed-invariant': ('godot/Application/GrayFlagSession.cs',
+        'catch (IllegalActionException error)\n        {\n            onRefusal?.Invoke(error.Refusal);',
+        'catch (Exception error) when (error is IllegalActionException or DomainInvariantException)\n        {\n            onRefusal?.Invoke(error is IllegalActionException illegal ? illegal.Refusal : new ActionRefusal("test.refused"));'),
 }
 for name, (filename, old, new) in mutations.items():
     destination = work / name
-    for folder in ['godot/Empire.Core', 'godot/Application', 'godot/Presentation', 'tools/godot/ai-pacing-checks']:
+    for folder in ['godot/Empire.Core', 'godot/Application', 'godot/Presentation', 'godot/Localization', 'tools/godot/ai-pacing-checks']:
         shutil.copytree(root / folder, destination / folder, ignore=shutil.ignore_patterns('bin', 'obj'), dirs_exist_ok=True)
     target = destination / filename
     source = target.read_text()

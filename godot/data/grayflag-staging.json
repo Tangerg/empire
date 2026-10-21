@@ -1,14 +1,14 @@
 {
   "schema": 2,
   "menu": {
-    "title": "远古帝国",
-    "kicker": "剧情战役型 SRPG · 确定性战斗预测",
-    "description": "《断冠之誓》从十八岁的边境见习旗官开始，经历灰旗流亡与诸族远征。16 场连续战斗，选择、关系、补给与伤亡跨关保留。",
-    "artAlt": "灰旗立在烧毁的边境村庄",
-    "continueLabel": "继续战役",
-    "restartLabel": "重新开始战役",
-    "newLabel": "开始战役",
-    "replacePrompt": "重新开始会覆盖当前《断冠之誓》战役进度。继续吗？"
+    "titleKey": "ui.menu.title",
+    "kickerKey": "ui.menu.kicker",
+    "descriptionKey": "ui.menu.description",
+    "artAltKey": "ui.menu.art_alt",
+    "continueLabelKey": "ui.menu.continue",
+    "restartLabelKey": "ui.menu.restart",
+    "newLabelKey": "ui.menu.new",
+    "replacePromptKey": "ui.menu.replace_prompt"
   },
   "menuArt": {
     "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch01-s05.png",
@@ -114,19 +114,6 @@
     "bran": 4,
     "tasha": 7,
     "ivra": 9
-  },
-  "relationLabels": {
-    "cain": "凯恩",
-    "mirelle": "米蕾尔",
-    "tasha": "塔莎",
-    "refugees": "灰境难民",
-    "silverwood": "银林",
-    "mountain-forge": "山炉氏族",
-    "named-dead": "归名者"
-  },
-  "resourceLabels": {
-    "supplies": "补给",
-    "treasury": "国库"
   },
   "portraits": {
     "laiya": {
@@ -396,5 +383,18 @@
     }
   },
   "titleKey": "campaign.grayflag.title",
-  "completionLabelKey": "campaign.grayflag.completion"
+  "completionLabelKey": "campaign.grayflag.completion",
+  "resourceLabelKeys": {
+    "supplies": "campaign.grayflag.resource.supplies.name",
+    "treasury": "campaign.grayflag.resource.treasury.name"
+  },
+  "relationLabelKeys": {
+    "cain": "speaker.cain.name",
+    "mirelle": "speaker.mirelle.name",
+    "tasha": "speaker.tasha.name",
+    "refugees": "campaign.grayflag.relation.refugees.name",
+    "silverwood": "campaign.grayflag.relation.silverwood.name",
+    "mountain-forge": "campaign.grayflag.relation.mountain-forge.name",
+    "named-dead": "campaign.grayflag.relation.named-dead.name"
+  }
 }

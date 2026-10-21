@@ -19,10 +19,10 @@ function record(operation: string, action?: Action) {
     ...(action && accepted ? { handsOff: engine.actionHandlers.handsOffTurn(action) } : {}) });
 }
 const first = session.state.units.find(unit => unit.owner === session.state.currentPlayer)!;
-record('dispatch', { kind: 'face', unit: first.id, facing: 'n' });
-record('dispatch', { kind: 'face', unit: first.id, facing: 'e' });
+record('dispatch', { kind: 'face', unit: first.id, facing: 'north' });
+record('dispatch', { kind: 'face', unit: first.id, facing: 'east' });
 record('undo');
-record('dispatch', { kind: 'face', unit: 999999, facing: 'n' });
+record('dispatch', { kind: 'face', unit: 999999, facing: 'north' });
 record('undo');
 record('undo');
 for (let i = 0; i < 45; i++) {
@@ -34,14 +34,14 @@ for (let i = 0; i < 45; i++) {
 }
 record('load'); record('undo');
 const actor = session.state.units.find(unit => unit.owner === session.state.currentPlayer && !unit.done)!;
-if (actor) record('dispatch', { kind: 'face', unit: actor.id, facing: 'n' });
+if (actor) record('dispatch', { kind: 'face', unit: actor.id, facing: 'north' });
 record('restart'); record('undo');
 // A renamed/replaced handler is the negative control for name-based handoff inference.
 const original = engine.actionHandlers.get('face');
 const customHandlers = engine.actionHandlers.clone();
 customHandlers.replace({ ...original, kind: 'face', handsOffTurn: true, execute: original.execute.bind(original) });
 const custom = new GameSession(level, Object.create(engine, { actionHandlers: { value: customHandlers } }));
-custom.dispatch({ kind: 'face', unit: first.id, facing: 'n' });
+custom.dispatch({ kind: 'face', unit: first.id, facing: 'north' });
 if (custom.canUndo) throw new Error('Source handoff metadata mutant was not detected');
 const extraCases: object[] = [];
 const smallLevel = {

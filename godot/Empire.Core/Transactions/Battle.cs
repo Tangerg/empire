@@ -61,7 +61,7 @@ public sealed class Battle
         if (_dispatching) throw new DomainInvariantException("Battle dispatch cannot be reentrant");
         action = EcmaJson.Normalize(action)!.AsObject();
         var kind = action["kind"]?.GetValue<string>() ?? throw new DomainInvariantException("Action requires a kind");
-        if (!_handlers.TryGetValue(kind, out var registration) && pipeline is null) throw new IllegalActionException($"没有处理行动类型「{kind}」的规则策略");
+        if (!_handlers.TryGetValue(kind, out var registration) && pipeline is null) throw new IllegalActionException(new ActionRefusal("action.unsupported", new() { ["kind"] = kind }));
         var before = Snapshot();
         var draft = Snapshot();
         var events = new List<JsonObject>();

@@ -1,11 +1,14 @@
 using Empire.Core;
+using Empire.Localization;
+using System.Globalization;
+using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Application;
 using Empire.Core.Campaign;
 using Empire.Core.Determinism;
 using Empire.Presentation;
 
-if (args.Length != 2) throw new ArgumentException("Pass a source oracle and exported presentation metadata.");
+if (args.Length != 3) throw new ArgumentException("Pass a frozen oracle, native presentation metadata and check-only catalog projection.");
 var oraclePath = Path.GetFullPath(args[0]);
 if (!oraclePath.StartsWith("/tmp/empire-campaign-slot.", StringComparison.Ordinal))
     throw new InvalidOperationException("Tests only run in a fresh /tmp/empire-campaign-slot.* directory.");
@@ -15,6 +18,8 @@ Directory.CreateDirectory(root);
 var oracle = EcmaJson.Parse(File.ReadAllText(oraclePath))!.AsObject();
 var metadata = oracle["metadata"]!.AsObject();
 var exported = EcmaJson.Parse(File.ReadAllText(args[1]))!.AsObject();
+var catalog = JsonSerializer.Deserialize<Dictionary<string, string>>(File.ReadAllText(args[2]))!;
+var messages = new GameText(key => catalog.GetValueOrDefault(key), CultureInfo.GetCultureInfo("zh-CN"));
 var definition = oracle["definition"]!.AsObject();
 var initial = oracle["initial"]!.AsObject();
 var pending = oracle["pending"]!.AsObject();
@@ -156,7 +161,7 @@ foreach (var item in oracle["menuCases"]!.AsArray().OfType<JsonObject>())
     var loaded = new LoadedCampaign(item["state"] as JsonObject, item["rejected"]?.GetValue<string>());
     foreach (var data in new[] { metadata, exported })
     {
-        var view = CampaignMenu.Create(loaded, EcmaJson.ToElement(data));
+        var view = CampaignMenu.Create(messages, loaded, EcmaJson.ToElement(data));
         var expected = item["expected"]!.AsObject();
         Check(view.Title == expected["title"]!.GetValue<string>(), "Menu title source mismatch");
         Check(view.Kicker == expected["kicker"]!.GetValue<string>() && view.Description == expected["description"]!.GetValue<string>(), "Menu prose mismatch");
@@ -165,7 +170,7 @@ foreach (var item in oracle["menuCases"]!.AsArray().OfType<JsonObject>())
         if (view.CanContinue) Check(view.ContinueLabel == expected["continueLabel"]!.GetValue<string>(), "Continue text changed with status");
         Check(view.NewLabel == expected["newLabel"]!.GetValue<string>() && view.NewPrimary == expected["newPrimary"]!.GetValue<bool>(), "New/restart label/primary mismatch");
         Check(view.Progress == expected["progress"]?.GetValue<string>(), "Continue battle progress mismatch");
-        Check(view.RejectedNotice == expected["notice"]?.GetValue<string>(), "Unreadable-save notice must preserve exact source text, not HTML entities");
+        Check(view.RejectedNotice == expected["notice"]?.GetValue<string>(), "Unreadable-save notice must be localized without exposing diagnostic details");
         if (item["prompt"] is not null) Check(view.ReplacePrompt == item["prompt"]!.GetValue<string>(), "Replacement confirmation is not the source prompt");
     }
     var needsConfirmation = loaded.State is not null;
@@ -175,7 +180,7 @@ foreach (var item in oracle["menuCases"]!.AsArray().OfType<JsonObject>())
     if (needsConfirmation) Check(item["continuedOriginalState"]!.GetValue<bool>(), "Live source Continue must use loaded state");
 }
 var changedMetadata = (JsonObject)metadata.DeepClone(); changedMetadata["battleTotal"] = 27;
-Check(CampaignMenu.Create(new(initial, null), EcmaJson.ToElement(changedMetadata)).Progress == "0/27", "Projection hardcodes the shipped battle count instead of metadata");
+Check(CampaignMenu.Create(messages, new(initial, null), EcmaJson.ToElement(changedMetadata)).Progress == "0/27", "Projection hardcodes the shipped battle count instead of metadata");
 var atomicPath = Slot("atomic-reader.json"); CampaignSlotStorage.Save(definition, initial, atomicPath);
 var reading = true;
 var reader = Task.Run(() =>

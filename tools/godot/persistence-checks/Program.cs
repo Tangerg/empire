@@ -246,7 +246,16 @@ Divergence("replay schema", replay => replay["schema"] = 7, 0, "schema 7");
 Divergence("replay level", replay => replay["levelId"] = "other", 0, "不匹配");
 Divergence("replay manifest", replay => replay["ruleset"]!["plugins"]!["engine.content"] = 2, 0, "version");
 Divergence("replay initial hash", replay => replay["initialStateHash"] = "00000000", 0, "初始状态");
-Divergence("replay illegal action", replay => replay["actions"]![0]!["kind"] = "unknown", 0, "行动类型");
+Check("replay illegal action retains semantic refusal", () =>
+{
+    var replay = FixtureRuleset.NativeDocument(fixture["replay"]!.AsObject());
+    replay["actions"]![0]!["kind"] = "unknown";
+    var result = BattleReplayVerifier.Verify(manifest, fixture["level"]!.AsObject(), replay,
+        (level, seed) => engine.CreateBattle(level, seed));
+    if (result.DivergedAt != 0 || result.Refusal?.Code != "action.unsupported" ||
+        result.Refusal.Details.GetProperty("kind").GetString() != "unknown")
+        throw new Exception("Replay flattened or changed semantic action refusal");
+});
 Divergence("replay final hash", replay => replay["finalStateHash"] = "00000000", actionCount, "最终状态");
 Divergence("replay early end", replay => replay["actions"]!.AsArray().Add(new JsonObject { ["kind"] = "endTurn" }), actionCount, "提前结束");
 Check("replay invariant failures are not disguised as divergence", () =>

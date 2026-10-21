@@ -84,14 +84,29 @@ internal static class ResourceConsumerChecks
                 else if (operation == "tactic-execute") support.ExecuteTactic(state, "resource-commander", "rally", null, value => events.Add(value));
                 else if (operation != "tactic-options") throw new Exception("Unknown consumer operation");
             }
-            catch (Exception fault) when (fault is DomainInvariantException or IllegalActionException)
+            catch (IllegalActionException fault)
+            { error = new JsonObject { ["kind"] = "IllegalAction", ["refusal"] = Serialize(fault.Refusal) }; }
+            catch (DomainInvariantException fault)
             {
                 error = new JsonObject { ["kind"] = fault.GetType().Name.Replace("Exception", ""), ["message"] = fault.Message };
             }
             if (battle is not null) state = battle.Snapshot();
             check(name + " menus", menus, item["menus"]);
             check(name + " result", result, item["result"]);
-            check(name + " error", error, item["error"]);
+            JsonNode? expectedError = item["error"];
+            if (expectedError?["kind"]?.GetValue<string>() == "IllegalAction")
+            {
+                var expected = name switch
+                {
+                    "custom squad unaffordable command" or "custom squad unavailable command" or "separate requirement blocks command" =>
+                        new ActionRefusal("ability.unusable", new() { ["abilityId"] = "attack" }),
+                    "supplied resource insufficient tactic tactic-execute" =>
+                        new ActionRefusal("support.tactic_unavailable", new() { ["tacticId"] = "rally" }),
+                    _ => throw new Exception("Unspecified semantic refusal expectation: " + name),
+                };
+                expectedError = new JsonObject { ["kind"] = "IllegalAction", ["refusal"] = Serialize(expected) };
+            }
+            check(name + " error", error, expectedError);
             check(name + " events", events, item["events"]);
             check(name + " state", state, item["after"]);
             check(name + " digest", JsonValue.Create(StateDigest.Hash(state)), item["hash"]);

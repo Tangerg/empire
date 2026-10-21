@@ -127,6 +127,6 @@ for (const [name, state, rejection] of [
     artAlt: expected.artAlt, continueLabel: expected.continueLabel, newLabel, restartLabel: expected.newLabel, replacePrompt: prompt };
 }
 writeFileSync(output, JSON.stringify({ definition, initial, pending, cases, writeCases, menuCases,
-  metadata: { schema: 2, battleTotal: definition.nodes.filter(node => node.type === 'battle').length,
+  metadata: { schema: 1, battleTotal: definition.nodes.filter(node => node.type === 'battle').length,
     menuArt: { source: CANDIDATE_01_MENU_ART, resourcePath: null }, menu: menuText } }) + '\n', { flag: 'wx' });
 console.log(`SOURCE ${cases.length} storage cases, ${writeCases.length} writes and ${menuCases.length} real title-menu renders/confirmation flows.`);

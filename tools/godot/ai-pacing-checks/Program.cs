@@ -25,13 +25,13 @@ foreach (var fixture in cases.OfType<JsonObject>())
         var definition = sourceAction;
         registry.Register(definition["kind"]!.GetValue<string>(), (_, _, _) => {
             if (definition["invariant"]?.GetValue<bool>() == true) throw new DomainInvariantException("broken rule");
-            if (definition["refuse"]?.GetValue<bool>() == true) throw new IllegalActionException("refused");
+            if (definition["refuse"]?.GetValue<bool>() == true) throw new IllegalActionException(new ActionRefusal("test.refused"));
             committed++;
             if (definition["human"]?.GetValue<bool>() == true || definition["terminal"]?.GetValue<bool>() == true) computer = false;
         }, definition["handsOff"]?.GetValue<bool>() ?? false);
     }
     registry.Register("endTurn", (_, _, _) => {
-        if (fixture["fallbackRefuses"]!.GetValue<bool>()) throw new IllegalActionException("refused");
+        if (fixture["fallbackRefuses"]!.GetValue<bool>()) throw new IllegalActionException(new ActionRefusal("test.refused"));
         committed++; computer = false;
     }, handsOffTurn: true);
     var battle = new Battle(new JsonObject(), registry);
@@ -41,7 +41,7 @@ foreach (var fixture in cases.OfType<JsonObject>())
         var now = sample["at"]!.GetValue<double>();
         try {
             pacer.Tick(now, computer, selected > 0 && now < settlement,
-                () => ComputerActionExecution.Execute(actions[selected++], Dispatch, registry.HandsOffTurn, logs.Add),
+                () => ComputerActionExecution.Execute(actions[selected++], Dispatch, registry.HandsOffTurn, refusal => { Require(refusal.Code == "test.refused" && !refusal.Details.EnumerateObject().Any(), "AI refusal facts changed"); logs.Add(refusal.Code); }),
                 () => now < settlement, value => busy = value);
         }
         catch (DomainInvariantException) { thrown = true; }
@@ -50,7 +50,9 @@ foreach (var fixture in cases.OfType<JsonObject>())
             ["attempts"] = new JsonArray(attempts.Select(value => (JsonNode)JsonValue.Create(value)!).ToArray()),
             ["logs"] = new JsonArray(logs.Select(value => (JsonNode)JsonValue.Create(value)!).ToArray()), ["thrown"] = thrown,
         };
-        Require(EcmaJson.DeepEquals(actual, sample), $"{fixture["name"]} at {now}: {actual} != {sample}");
+        var expected = sample.DeepClone().AsObject();
+        expected["logs"] = new JsonArray(sample["logs"]!.AsArray().Select(_ => (JsonNode?)JsonValue.Create("test.refused")).ToArray());
+        Require(EcmaJson.DeepEquals(actual, expected), $"{fixture["name"]} at {now}: {actual} != {sample}");
         sampleCount++;
     }
 }
@@ -93,7 +95,7 @@ Require(guardedCalls == oracle["guardCalls"]!.GetValue<int>() && !guarded.IsRunn
 
 // Invariants from the fallback are not swallowed either.
 var failureRegistry = new BattleActionRegistry();
-failureRegistry.Register("bad", (_, _, _) => throw new IllegalActionException("refused"));
+failureRegistry.Register("bad", (_, _, _) => throw new IllegalActionException(new ActionRefusal("test.refused")));
 failureRegistry.Register("endTurn", (_, _, _) => throw new DomainInvariantException("fallback defect"));
 var failureBattle = new Battle(new JsonObject(), failureRegistry);
 var propagated = false;

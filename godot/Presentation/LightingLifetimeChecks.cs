@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Empire.Application;
+using Empire.Presentation.Feedback;
+using Empire.Localization;
 using Empire.Core.Determinism;
 using Empire.Core.Engine;
 using Empire.Core.Geometry;
@@ -188,6 +190,8 @@ public partial class LightingLifetimeChecks : Node
         var level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
         var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         var engine = new GrayFlagEngine(packs);
+        var text = GodotTextCatalog.LoadSimplifiedChinese();
+        var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
         var assets = AssetCatalog.Load(); var environment = EnvironmentCatalog.Load(); var scene = AuthoredScene.Load();
         var screen = new BattleScreen(); AddChild(screen);
         screen.Board.AdvanceAnimationsAutomatically = false;
@@ -196,7 +200,7 @@ public partial class LightingLifetimeChecks : Node
             screen.BindSession(session, assets, level, scene, environment, facing => facing == "west");
             screen.ConfigureDynamicState(engine.Catalog);
         }
-        var session = new GrayFlagSession(engine, level); Bind(session);
+        var session = new GrayFlagSession(engine, level, text, refusals); Bind(session);
         // Exercise the separate unshared field-light owners on one actual screen.
         if (cycle == 0) screen.ConfigureTerrain(WorldMaterialsManifest.Load());
         var cache = screen.Board.LightingResources;
@@ -210,7 +214,7 @@ public partial class LightingLifetimeChecks : Node
         Require(ReferenceEquals(contactTexture, replacementContact.Texture), "Reprojection lost shared contact identity.");
         TacticalSceneInputChecks.Move(screen, session);
         Require(screen.Board.IsPresenting, "Real legal order did not start the cancellation fixture.");
-        var loaded = GrayFlagSession.FromSave(engine, EcmaJson.Parse(EcmaJson.Stringify(session.Save()))!);
+        var loaded = GrayFlagSession.FromSave(engine, EcmaJson.Parse(EcmaJson.Stringify(session.Save()))!, text, refusals);
         Bind(loaded);
         Require(cache.IsDisposed && !GodotObject.IsInstanceValid(contactTexture), "Load/rebind did not release the old board resources.");
         var loadedCache = screen.Board.LightingResources;
@@ -218,7 +222,7 @@ public partial class LightingLifetimeChecks : Node
         Require(!screen.Board.IsPresenting && screen.DisplayedRevision == 0 && !loadedCache.IsDisposed,
             "Old playback callback resurrected/released the loaded view.");
         // Restart is a new canonical session, not a fake state rewind.
-        var restarted = new GrayFlagSession(engine, level);
+        var restarted = new GrayFlagSession(engine, level, text, refusals);
         Bind(restarted);
         Require(loadedCache.IsDisposed && !screen.Board.LightingResources.IsDisposed, "Restart did not replace exactly one resource owner.");
         screen.ConfigureTerrain(WorldMaterialsManifest.Load());

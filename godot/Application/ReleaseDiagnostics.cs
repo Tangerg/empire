@@ -109,7 +109,9 @@ public partial class ReleaseDiagnostics : Node
         JsonObject ReadManual() => EcmaJson.Parse(File.ReadAllText(manual))!.AsObject();
         var opening = ReadManual();
         var engine = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
-        var savedSession = GrayFlagSession.FromSave(engine, opening["battle"]!, opening["events"]!.AsArray());
+        var text = Empire.Localization.GodotTextCatalog.LoadSimplifiedChinese();
+        var refusals = Empire.Presentation.Feedback.ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
+        var savedSession = GrayFlagSession.FromSave(engine, opening["battle"]!, text, refusals, opening["events"]!.AsArray());
         var openingHash = StateDigest.Hash(savedSession.Snapshot());
         var queries = savedSession.GetTacticalQueries(0);
         var move = queries.Actors().SelectMany(id => queries.MoveStops(id)

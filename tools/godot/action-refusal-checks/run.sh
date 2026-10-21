@@ -20,7 +20,7 @@ if [[ "${1:-}" == "--verify-guard" ]]; then
 const fs = require('node:fs'), root = process.argv[2];
 const edits = [
   ['announcement-mutant/BattleResources.cs', 'var current = Balance(subject, resource);\n        if (amount == 0 || current is null) return;', 'if (amount == 0) return;\n        var current = Balance(subject, resource);\n        if (current is null) return;'],
-  ['ability-mutant/AbilityCommands.cs', 'if (target is null) throw new IllegalActionException($"「{ability.Name}」需要指定目标");', 'if (target is null) throw new IllegalActionException("目标不合法");'],
+  ['ability-mutant/AbilityCommands.cs', 'if (target is null) throw new IllegalActionException(new ActionRefusal("ability.target_required", new() { ["abilityId"] = ability.Id }));', 'if (target is null) throw new IllegalActionException(new ActionRefusal("ability.target_invalid", new() { ["abilityId"] = ability.Id }));'],
   ['resource-mutant/BattleResources.cs', 'var current = Balance(subject, resource);\n        var amount = Normalize(resource, requested);\n        return current is null || current >= amount;', 'return Balance(subject, resource) is not { } current || current >= Normalize(resource, requested);'],
 ];
 for (const [file, before, after] of edits) { const path = `${root}/${file}`, text = fs.readFileSync(path, 'utf8'); if (!text.includes(before)) throw new Error(`Explicit guard target changed: ${file}`); fs.writeFileSync(path, text.replace(before, after)); }

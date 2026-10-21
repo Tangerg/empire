@@ -3,6 +3,8 @@ using System;
 using System.Linq;
 using System.Text.Json.Nodes;
 using Empire.Application;
+using Empire.Presentation.Feedback;
+using Empire.Localization;
 using Empire.Core.Engine;
 using Empire.Core.Combat;
 using Empire.Core.Composition;
@@ -48,7 +50,9 @@ public partial class BattleScreenChecks : Node
                 .Single(definition => EcmaJson.ReadString(definition["id"]) == "plain");
             if (canonicalOutside) terrain["tags"]!.AsArray().Add("outside");
             var engine = new GrayFlagEngine(packs);
-            var session = new GrayFlagSession(engine, level);
+            var text = GodotTextCatalog.LoadSimplifiedChinese();
+            var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
+            var session = new GrayFlagSession(engine, level, text, refusals);
             var stateBefore = EcmaJson.Stringify(session.Snapshot());
             var queries = session.GetTacticalQueries(0);
             var actor = queries.Unit(2)!;
@@ -91,7 +95,9 @@ public partial class BattleScreenChecks : Node
     {
         var level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
         var engine = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
-        var session = new GrayFlagSession(engine, level);
+        var text = GodotTextCatalog.LoadSimplifiedChinese();
+        var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
+        var session = new GrayFlagSession(engine, level, text, refusals);
         var screen = new BattleScreen(); AddChild(screen);
         screen.Board.AdvanceAnimationsAutomatically = false;
         void Bind(GrayFlagSession value) => screen.BindSession(value, AssetCatalog.Load(), level,
@@ -115,7 +121,7 @@ public partial class BattleScreenChecks : Node
         Require(screen.RecentMessages.SequenceEqual(expectedLog.Recent()), "Descriptions must append once in receipt order after presentation.");
         screen.Refresh();
         Require(!screen.IsPresenting && screen.RecentMessages.SequenceEqual(expectedLog.Recent()), "Refreshing a settled revision must not replay it.");
-        var superseded = new GrayFlagSession(engine, level);
+        var superseded = new GrayFlagSession(engine, level, text, refusals);
         var replaceable = new ReplaceableSession(superseded);
         screen.BindSession(replaceable, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
         TacticalSceneInputChecks.Move(screen, replaceable);
@@ -126,13 +132,13 @@ public partial class BattleScreenChecks : Node
             "A newer transition-free snapshot must invalidate older async completion.");
         screen.Refresh();
         Require(!screen.IsPresenting, "A transition-free revision must remain consumed.");
-        var canceled = new GrayFlagSession(engine, level); Bind(canceled); TacticalSceneInputChecks.Move(screen, canceled);
+        var canceled = new GrayFlagSession(engine, level, text, refusals); Bind(canceled); TacticalSceneInputChecks.Move(screen, canceled);
         screen.Board.CancelPresentation();
         Require(!screen.IsPresenting && screen.DisplayedRevision == canceled.GetSnapshot().Revision,
             "Same-session cancellation must settle both board and controls to committed state.");
-        var fresh = new GrayFlagSession(engine, level); Bind(fresh); TacticalSceneInputChecks.Move(screen, fresh);
+        var fresh = new GrayFlagSession(engine, level, text, refusals); Bind(fresh); TacticalSceneInputChecks.Move(screen, fresh);
         Require(screen.IsPresenting, "Second timeline did not start.");
-        var loaded = GrayFlagSession.FromSave(engine, fresh.Save()); Bind(loaded);
+        var loaded = GrayFlagSession.FromSave(engine, fresh.Save(), text, refusals); Bind(loaded);
         Require(!screen.IsPresenting && !screen.Board.IsPresenting && screen.DisplayedRevision == 0,
             "Rebinding a loaded session must cancel old playback without replaying its history.");
         screen.BindSession(loaded, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false,
@@ -140,7 +146,7 @@ public partial class BattleScreenChecks : Node
         Require(screen.RecentMessages.SequenceEqual(new[] { "已读取第 1 回合的存档" }), "Load must clear history and keep one load line.");
         screen.Board.AdvancePresentation(100);
         Require(screen.DisplayedRevision == 0, "Stale timeline completion overwrote the rebound view.");
-        var last = new GrayFlagSession(engine, level); Bind(last); TacticalSceneInputChecks.Move(screen, last);
+        var last = new GrayFlagSession(engine, level, text, refusals); Bind(last); TacticalSceneInputChecks.Move(screen, last);
         var saves = 0;
         screen.BindApplicationActions(() => saves++);
         var staleSave = Buttons(screen).Single(button => button.Text == "保存");
@@ -178,7 +184,9 @@ public partial class BattleScreenChecks : Node
         var level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
         var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         var engine = new GrayFlagEngine(packs);
-        var session = new GrayFlagSession(engine, level);
+        var text = GodotTextCatalog.LoadSimplifiedChinese();
+        var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
+        var session = new GrayFlagSession(engine, level, text, refusals);
         var screen = new BattleScreen();
         screen.Board.AnimationsEnabled = false; // This suite isolates synchronous binding, not timeline behavior.
         AddChild(screen);
@@ -226,7 +234,9 @@ public partial class BattleScreenChecks : Node
     {
         var level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
         var engine = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
-        var session = new GrayFlagSession(engine,level);
+        var text = GodotTextCatalog.LoadSimplifiedChinese();
+        var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
+        var session = new GrayFlagSession(engine, level, text, refusals);
         var screen = new BattleScreen();AddChild(screen);screen.Board.AnimationsEnabled=false;
         screen.BindSession(session,AssetCatalog.Load(),level,AuthoredScene.Load(),EnvironmentCatalog.Load(),_=>false);
         void Keypress(Key key) => screen._UnhandledKeyInput(new InputEventKey { Pressed=true,Keycode=key });
@@ -265,7 +275,7 @@ public partial class BattleScreenChecks : Node
         var cells=new JsonArray(own.Select(unit=>(JsonNode)new JsonObject { ["x"]=unit["x"]!.GetValue<int>(),["y"]=unit["y"]!.GetValue<int>() }).ToArray());
         deploymentLevel["scenario"]!.AsObject()["zones"]=new JsonArray(new JsonObject { ["id"]="selection-check-zone",["cells"]=cells });
         deploymentLevel["deployment"]=new JsonObject { ["order"]=new JsonArray(1),["zones"]=new JsonArray(new JsonObject { ["player"]=1,["zone"]="selection-check-zone" }) };
-        var deployment=new GrayFlagSession(engine,deploymentLevel);
+        var deployment=new GrayFlagSession(engine, deploymentLevel, text, refusals);
         screen.BindSession(deployment,AssetCatalog.Load(),deploymentLevel,AuthoredScene.Load(),EnvironmentCatalog.Load(),_=>false);
         var roster=deployment.GetTacticalQueries(0).DeploymentUnits();
         var hud=(TacticalHud)screen.FindChild("TacticalHud",true,false);
@@ -292,7 +302,9 @@ public partial class BattleScreenChecks : Node
         reactions.Register(new("plugin-dodge", "自定义闪避菜单", false, 0.4, false, false, "自定义提示"));
         var engine = BattleEngineFactory.Create(new ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")),
             [new EnginePlugin("test.native-reactions", 1, context => context.Replace(BattleCapabilities.Reactions, reactions), overrides: [BattleCapabilities.Reactions])]);
-        var session = new GrayFlagSession(engine, level);
+        var text = GodotTextCatalog.LoadSimplifiedChinese();
+        var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
+        var session = new GrayFlagSession(engine, level, text, refusals);
         var screen = new BattleScreen(); AddChild(screen); screen.Board.AnimationsEnabled = false;
         screen.BindSession(session, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
         var origin = session.GetTacticalQueries(0).Unit(2)!.At;

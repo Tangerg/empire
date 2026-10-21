@@ -15,6 +15,7 @@ public partial class GrayFlagGame : Node
 {
     private GrayFlagEngine engine = null!;
     private GameText text = null!;
+    private ActionRefusalText refusals = null!;
     private JsonArray packs = null!;
     private GrayFlagCampaign campaign = null!;
     private StoryDocument stories = null!;
@@ -45,6 +46,7 @@ public partial class GrayFlagGame : Node
         text = GodotTextCatalog.LoadSimplifiedChinese();
         packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         engine = new GrayFlagEngine(packs);
+        refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
         definition = PresentationJson.Load<JsonObject>("res://data/grayflag-campaign.json");
         levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json");
         presentation = PresentationJson.Load<JsonObject>("res://data/grayflag-staging.json");
@@ -91,7 +93,7 @@ public partial class GrayFlagGame : Node
                             stateAfter["battleHistory"]!.AsArray().Count, stateAfter["status"]!.GetValue<string>() == "active"), report.Summary.Chapter);
                         summary.ShowResult("victory", report.Summary, () => { if (ReferenceEquals(view, summary)) ShowNode(); },
                             summaryShell, () => { if (ReferenceEquals(view, summary)) ShowMenu(); });
-                        if (!saved) Notify("战果已在当前战役中结算，但自动保存失败。请保留窗口并使用 F5 保存。");
+                        if (!saved) Notify(text.Format("error.campaign.settlement_save_failed"));
                     },
                     () => {
                         if (!ReferenceEquals(session, expectedSession) || !ReferenceEquals(view, result)) return;
@@ -120,7 +122,7 @@ public partial class GrayFlagGame : Node
         view = next; AddChild(next);
     }
 
-    private GrayFlagCampaign NewCampaign(JsonObject? state = null) => new(definition, levels, engine, state);
+    private GrayFlagCampaign NewCampaign(JsonObject? state = null) => new(definition, levels, engine, text, refusals, state);
 
     private bool TryPersistCampaign()
     {
@@ -132,7 +134,8 @@ public partial class GrayFlagGame : Node
     {
         screen = null; session = null; resultOffered = false;
         var loaded = CampaignSlotStorage.Load(definition, ProjectSettings.GlobalizePath(CampaignSavePath));
-        var projection = CampaignMenu.Create(loaded, Empire.Core.Determinism.EcmaJson.ToElement(presentation));
+        if (loaded.Rejected is { } rejection) GD.PushWarning($"Campaign autosave rejected: {rejection}");
+        var projection = CampaignMenu.Create(text, loaded, Empire.Core.Determinism.EcmaJson.ToElement(presentation));
         var menu = new CampaignMenuScreen(); SetView(menu);
         var generation = lifecycleGeneration;
         bool CurrentMenu() => generation == lifecycleGeneration && IsInsideTree() && menu.IsInsideTree() && ReferenceEquals(view, menu);
@@ -140,7 +143,7 @@ public partial class GrayFlagGame : Node
         {
             if (!CurrentMenu()) return;
             try { CampaignSlotStorage.ClearForNewCampaign(ProjectSettings.GlobalizePath(CampaignSavePath)); campaign = NewCampaign(); ShowNode(); }
-            catch (SaveStorageException error) { ShowMenu(); Notify("无法开始战役：" + error.Message); }
+            catch (SaveStorageException error) { GD.PushWarning(error.ToString()); ShowMenu(); Notify(text.Format("error.campaign.start_failed")); }
         }
         menu.ShowMenu(projection, () => {
             if (!CurrentMenu() || loaded.State is null) return;
@@ -148,7 +151,9 @@ public partial class GrayFlagGame : Node
         }, () => {
             if (!CurrentMenu()) return;
             if (loaded.State is null) { StartNew(); return; }
-            var dialog = new ConfirmationDialog { Title = "重新开始战役", DialogText = projection.ReplacePrompt };
+            var dialog = new ConfirmationDialog { Title = text.Format("ui.menu.restart"), DialogText = projection.ReplacePrompt };
+            dialog.GetOkButton().Text = text.Format("ui.menu.confirm_restart");
+            dialog.GetCancelButton().Text = text.Format("ui.common.cancel");
             var handled = false;
             dialog.Confirmed += () => { if (handled) return; handled = true; dialog.QueueFree(); StartNew(); };
             void Cancel() { if (handled) return; handled = true; dialog.QueueFree(); if (CurrentMenu()) ShowMenu(); }
@@ -160,10 +165,10 @@ public partial class GrayFlagGame : Node
     private void AdvanceCampaign(Action transition)
     {
         try { transition(); }
-        catch (CampaignActionException error) { ShowNode(); Notify("战役操作失败：" + error.Message); return; }
+        catch (CampaignActionException error) { GD.PushWarning(error.ToString()); ShowNode(); Notify(text.Format("error.campaign.action_failed")); return; }
         var saved = TryPersistCampaign();
         ShowNode();
-        if (!saved) Notify("战役已继续，但自动保存失败。当前进度仍保留在窗口中，请使用 F5 保存。");
+        if (!saved) Notify(text.Format("error.campaign.continuation_save_failed"));
     }
 
     private sealed record PreparedCampaignView(Control View, BattleScreen? Screen = null, GrayFlagSession? Session = null);
@@ -242,7 +247,7 @@ public partial class GrayFlagGame : Node
             if (!owner.HasPendingBattle)
             {
                 try { CampaignSlotStorage.Save(definition, owner.Snapshot(), ProjectSettings.GlobalizePath(CampaignSavePath)); }
-                catch (SaveStorageException error) { ShowStaging(); Notify("自动保存失败，尚未进入战斗：" + error.Message); return; }
+                catch (SaveStorageException error) { GD.PushWarning(error.ToString()); ShowStaging(); Notify(text.Format("error.campaign.autosave_before_battle_failed")); return; }
             }
             owner.BeginBattle(); ShowBattle();
         }, () => { if (CurrentView(owner, next)) ShowMenu(); }));
@@ -292,9 +297,9 @@ public partial class GrayFlagGame : Node
         {
             SaveFile.WriteDocument(ProjectSettings.GlobalizePath(SavePath), campaign.Save());
             if (session is not null) screen?.AppendMessage($"已保存第 {session.Snapshot()["turn"]} 回合的进度");
-            Notify("战役和战斗进度已保存。F9 可读取。");
+            Notify(text.Format("feedback.save.completed"));
         }
-        catch (SaveStorageException error) { Notify("保存失败：" + error.Message); }
+        catch (SaveStorageException error) { GD.PushWarning(error.ToString()); Notify(text.Format("error.save.failed")); }
     }
 
     private void Load()
@@ -304,13 +309,13 @@ public partial class GrayFlagGame : Node
         try { candidate.Load(SaveFile.ReadDocument(ProjectSettings.GlobalizePath(SavePath))); }
         catch (Exception error) when (error is SaveStorageException or StoredDocumentException)
         {
-            screen?.AppendMessage("无法读取存档：" + error.Message);
-            Notify("读取失败，当前进度未变：" + error.Message);
+            GD.PushWarning(error.ToString());
+            Notify(text.Format("error.load.failed_unchanged"));
             return;
         }
         var prepared = PrepareNode(candidate, candidate.Battle is null ? null : $"已读取第 {candidate.Battle.Snapshot()["turn"]} 回合的存档");
         Activate(candidate, prepared);
-        Notify("已读取存档。");
+        Notify(text.Format("feedback.load.completed"));
     }
 
     private void Notify(string message)

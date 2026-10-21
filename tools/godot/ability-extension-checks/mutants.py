@@ -24,8 +24,8 @@ mutants = [
      'if (surviving is null) { ability.Execute(rules, query, target, emit); return; }', 'death during movement suppresses custom effect: events'),
     ('legacy-attack-tags', 'DefaultAbilities.cs', 'rules.Combat.CanUseWeapon(query.State, query.Unit, query.Moved, query.WeaponId)',
      'rules.Combat.CanUseAttack(query.State, query.Unit, query.At, query.Moved, query.WeaponId)', 'replaced attack tags do not retain legacy hardcoded tag: menus'),
-    ('target-validation', 'AbilityCommands.cs', 'if (!Targets(ability, query).Contains(target.Value)) throw new IllegalActionException("目标不合法");',
-     'if (target is null) throw new IllegalActionException("目标不合法");', 'no-attacks attack player 1: events'),
+    ('target-validation', 'AbilityCommands.cs', 'if (!Targets(ability, query).Contains(target.Value)) throw new IllegalActionException(new ActionRefusal("ability.target_invalid", new() { ["abilityId"] = ability.Id }));',
+     'if (target is null) throw new IllegalActionException(new ActionRefusal("ability.target_invalid", new() { ["abilityId"] = ability.Id }));', 'no-attacks attack player 1: events'),
 ]
 for name, file, before, after, expected in mutants:
     target = scratch / ('mutant-' + name)

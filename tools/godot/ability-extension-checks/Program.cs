@@ -97,6 +97,27 @@ AbilityRegistry Abilities(JsonObject config)
         registry.Replace(registry.Get("attack") with { Tags = tags.Select(tag => StateJson.Text(tag, "tag")).ToArray() });
     return registry.Seal();
 }
+JsonNode? ExpectedError(JsonObject item)
+{
+    if (item["error"]?["kind"]?.GetValue<string>() != "IllegalAction") return item["error"];
+    var name = StateJson.Text(item, "name");
+    var command = item["command"]!["command"]!.AsObject();
+    var code = name switch
+    {
+        "custom soldier unoffered weapon" or "custom mage unoffered weapon" or "default wait rejects selected weapon" => "ability.weapon_unavailable",
+        "second weapon ability blocked by selected weapon tags" or "replaced attack tags enter central status gate" or
+        "custom ability tag blocks menu and execution" or "default attack tag is blocked" or "custom usable denial" => "ability.unusable",
+        "no-attacks attack player 1" or "no-hostile-actions attack player 1" or "no-hostile-actions hostile-action player 1" or
+        "custom targeted ability forbidden target" => "ability.target_invalid",
+        "custom targeted ability missing target" => "ability.target_required",
+        "ability not learned rejected" => "ability.not_owned",
+        _ => throw new Exception("Unspecified semantic refusal expectation: " + name),
+    };
+    var details = new JsonObject { ["abilityId"] = command["ability"]!.DeepClone() };
+    if (code == "ability.not_owned") details["unitType"] = item["initial"]!["units"]![0]!["type"]!.DeepClone();
+    if (code == "ability.weapon_unavailable") details["weaponId"] = command["weapon"]!.DeepClone();
+    return new JsonObject { ["kind"] = "IllegalAction", ["refusal"] = new JsonObject { ["code"] = code, ["details"] = details } };
+}
 foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
 {
     var name = StateJson.Text(item, "name");
@@ -127,10 +148,10 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
     {
         try { receipt = battle.Dispatch(action); foreach (var value in receipt.Events) events.Add(value.DeepClone()); }
         catch (DomainInvariantException fault) { error = new JsonObject { ["kind"] = "DomainInvariant", ["message"] = fault.Message }; }
-        catch (IllegalActionException fault) { error = new JsonObject { ["kind"] = "IllegalAction", ["message"] = fault.Message }; }
+        catch (IllegalActionException fault) { error = new JsonObject { ["kind"] = "IllegalAction", ["refusal"] = Node(fault.Refusal) }; }
     }
     Check(name, "events", events, item["events"]);
-    Check(name, "error", error, item["error"]);
+    Check(name, "error", error, ExpectedError(item));
     Check(name, "state", battle.Snapshot(), item["after"]);
     Check(name, "digest", JsonValue.Create(battle.StateHash), item["hash"]);
     if (receipt is not null)

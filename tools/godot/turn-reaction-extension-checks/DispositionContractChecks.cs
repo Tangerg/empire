@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core;
 using Empire.Core.Combat;
@@ -55,7 +56,14 @@ static class DispositionContractChecks
                 var before = battle.Snapshot(); var hash = battle.StateHash;
                 try { battle.Dispatch(invalid); throw new Exception("invalid disposition command committed"); }
                 catch (Exception error) when (error is IllegalActionException or DomainInvariantException)
-                { check(error is IllegalActionException, "invalid disposition is an illegal action"); }
+                {
+                    check(error is IllegalActionException, "invalid disposition is an illegal action");
+                    var expectedRefusal = StateJson.Text(invalid, "kind") == "reaction"
+                        ? new ActionRefusal("tactics.reaction_unknown", new() { ["stance"] = invalid["stance"]!.DeepClone() })
+                        : new ActionRefusal("tactics.facing_invalid", new() { ["grid"] = grid.Id, ["facing"] = invalid["facing"]!.DeepClone() });
+                    equal(JsonSerializer.SerializeToNode(((IllegalActionException)error).Refusal),
+                        JsonSerializer.SerializeToNode(expectedRefusal), "invalid disposition semantic code and details");
+                }
                 equal(battle.Snapshot(), before, "invalid disposition atomic state and event counters");
                 check(battle.StateHash == hash, "invalid disposition atomic digest");
             }

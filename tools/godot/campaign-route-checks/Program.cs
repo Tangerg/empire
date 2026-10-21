@@ -1,15 +1,21 @@
+using Empire.Presentation.Feedback;
+using Empire.Checks;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Application;
 using Empire.Core.Engine;
 using Empire.Core.Determinism;
 
-if(args.Length!=2) throw new ArgumentException("Usage: CampaignRouteChecks <repository> <source-route.jsonl>");
+
+if(args.Length!=3) throw new ArgumentException("Usage: CampaignRouteChecks <repository> <source-route.jsonl> <catalog.json>");
+var gameText = FixtureText.Load(args[^1]);
+ActionRefusalText Refusals(GrayFlagEngine value) => ActionRefusalText.CreateDefault(gameText, value.Catalog, value.Abilities).Seal();
+
 var root=args[0];
 JsonNode Read(string path)=>JsonNode.Parse(File.ReadAllText(Path.Combine(root,path)))!;
 var packs=Read("godot/data/content-packs.json").AsArray();
 var engine=new GrayFlagEngine(packs);
-var campaign=new GrayFlagCampaign(Read("godot/data/grayflag-campaign.json").AsObject(),Read("godot/data/grayflag-campaign-levels.json").AsArray(),engine);
+var campaign=new GrayFlagCampaign(Read("godot/data/grayflag-campaign.json").AsObject(), Read("godot/data/grayflag-campaign-levels.json").AsArray(), engine, gameText, Refusals(engine));
 var steps=0;var saves=0;var battles=0;
 void Equal(string label,JsonNode? actual,JsonNode? expected)
 {

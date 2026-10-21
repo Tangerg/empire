@@ -9,7 +9,11 @@ if (args.Length != 3) throw new ArgumentException("Usage: StagingChecks <oracle.
 var oracle = EcmaJson.Parse(File.ReadAllText(args[0]))!.AsObject();
 var exported = EcmaJson.Parse(File.ReadAllText(args[1]))!.AsObject();
 var catalog = JsonSerializer.Deserialize<Dictionary<string, string>>(File.ReadAllText(args[2]))!;
+foreach (var item in oracle["testMessages"]!.AsObject()) catalog.Add(item.Key, item.Value!.GetValue<string>());
 var messages = new GameText(key => catalog.GetValueOrDefault(key), CultureInfo.GetCultureInfo("zh-CN"));
+var fixtureMetadata = (JsonObject)exported.DeepClone();
+foreach (var (target, fixture) in new[] { ("resourceLabelKeys", "testResourceLabelKeys"), ("relationLabelKeys", "testRelationLabelKeys") })
+    foreach (var item in oracle[fixture]!.AsObject()) fixtureMetadata[target]![item.Key] = item.Value!.DeepClone();
 var serialization = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 int checks = 0;
 string Text(JsonNode? value) => EcmaJson.ReadString(value);
@@ -23,7 +27,7 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
 {
     var before = EcmaJson.Stringify(item);
     var view = CampaignStaging.Create(messages, EcmaJson.ToElement(item["state"]), EcmaJson.ToElement(item["node"]), EcmaJson.ToElement(item["level"]),
-        EcmaJson.ToElement(exported), Name, item["pending"]!.GetValue<bool>());
+        EcmaJson.ToElement(fixtureMetadata), Name, item["pending"]!.GetValue<bool>());
     var actual = new JsonObject
     {
         ["campaignTitle"] = view.CampaignTitle, ["chapterHeading"] = view.ChapterHeading, ["progress"] = view.Progress,
@@ -47,14 +51,14 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
 var first = oracle["cases"]![0]!;
 var alternate = new GameText(key => catalog.TryGetValue(key, out var value) ? value + " [fixture]" : null, CultureInfo.InvariantCulture);
 var alternateView = CampaignStaging.Create(alternate, EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(first["node"]),
-    EcmaJson.ToElement(first["level"]), EcmaJson.ToElement(exported), Name, false);
+    EcmaJson.ToElement(first["level"]), EcmaJson.ToElement(fixtureMetadata), Name, false);
 Check("staging injects shared campaign wording", JsonValue.Create(alternateView.CampaignTitle),
     JsonValue.Create(messages.Format(Text(exported["titleKey"])) + " [fixture]"));
 Check("staging injects shell action wording", JsonValue.Create(alternateView.ExitLabel), JsonValue.Create("返回主菜单 [fixture]"));
 var node = first["node"]!.DeepClone().AsObject(); node["level"] = "wrong";
 try
 {
-    CampaignStaging.Create(messages, EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(node), EcmaJson.ToElement(first["level"]), EcmaJson.ToElement(exported), Name, false);
+    CampaignStaging.Create(messages, EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(node), EcmaJson.ToElement(first["level"]), EcmaJson.ToElement(fixtureMetadata), Name, false);
     throw new Exception("Mismatched staging identity accepted");
 }
 catch (InvalidOperationException) { checks++; }
@@ -69,8 +73,11 @@ catch (InvalidOperationException) { checks++; }
     NormalizeArt(normalized);
     Check("native shared document schema", exported["schema"], JsonValue.Create(2));
     Check("single campaign title owner", JsonValue.Create(messages.Format(Text(exported["titleKey"]))), oracle["metadata"]!["title"]);
-    foreach (var field in new[] { "battleTotal", "joinAfter", "relationLabels", "resourceLabels", "portraits" })
+    foreach (var field in new[] { "battleTotal", "joinAfter", "portraits" })
         Check($"unchanged staging metadata {field}", normalized![field], oracle["metadata"]![field]);
+    foreach (var kind in new[] { "resource", "relation" })
+        foreach (var label in oracle["metadata"]![kind + "Labels"]!.AsObject())
+            Check($"localized {kind} label {label.Key}", JsonValue.Create(messages.Format(Text(exported[kind + "LabelKeys"]![label.Key]))), label.Value);
     foreach (var level in exported["levels"]!.AsObject())
     {
         var previous = oracle["metadata"]!["levels"]![level.Key]!;

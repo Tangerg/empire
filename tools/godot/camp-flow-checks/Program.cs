@@ -1,8 +1,14 @@
+using Empire.Presentation.Feedback;
+using Empire.Checks;
 using Empire.Core;
 using System.Text.Json.Nodes;
 using Empire.Application;
 using Empire.Core.Determinism;
 using Empire.Core.Engine;
+
+if (args.Length != 2) throw new ArgumentException("Usage: CampFlowChecks <repository> <catalog.json>");
+var gameText = FixtureText.Load(args[^1]);
+ActionRefusalText Refusals(GrayFlagEngine value) => ActionRefusalText.CreateDefault(gameText, value.Catalog, value.Abilities).Seal();
 
 var root = args.Length > 0 ? args[0] : ".";
 JsonNode Read(string file) => EcmaJson.Parse(File.ReadAllText(Path.Combine(root, "godot/data", file)))!;
@@ -10,7 +16,7 @@ var definition = Read("grayflag-campaign.json").AsObject();
 var levels = Read("grayflag-campaign-levels.json").AsArray();
 var packs = Read("content-packs.json").AsArray();
 var engine = new GrayFlagEngine(packs);
-GrayFlagCampaign Create() => new(definition, levels, engine);
+GrayFlagCampaign Create() => new(definition, levels, engine, gameText, Refusals(engine));
 var assertions = 0;
 void Require(bool condition, string message)
 {

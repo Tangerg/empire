@@ -80,12 +80,23 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
                 default: throw new Exception($"unknown operation {kind}");
             }
         }
-        catch (Exception caught) when (caught is DomainInvariantException or IllegalActionException or StoredDocumentException)
+        catch (IllegalActionException caught)
+        {
+            error = new JsonObject { ["kind"] = "IllegalAction", ["refusal"] = System.Text.Json.JsonSerializer.SerializeToNode(caught.Refusal) };
+        }
+        catch (Exception caught) when (caught is DomainInvariantException or StoredDocumentException)
         {
             error = new JsonObject { ["kind"] = caught.GetType().Name.Replace("Exception", "", StringComparison.Ordinal),
                 ["message"] = caught.Message };
         }
-        Check(name, "error", error, stage["error"]);
+        JsonNode? expectedError = stage["error"];
+        if (expectedError?["kind"]?.GetValue<string>() == "IllegalAction")
+        {
+            if (name != "duplicate cast is illegal and unchanged") throw new Exception("Unspecified semantic refusal expectation: " + name);
+            expectedError = new JsonObject { ["kind"] = "IllegalAction", ["refusal"] = new JsonObject
+            { ["code"] = "combat.already_casting", ["details"] = new JsonObject { ["unitId"] = StateJson.Integer(operation, "caster") } } };
+        }
+        Check(name, "error", error, expectedError);
         Check(name, "events", events, stage["events"]);
         Check(name, "event-hashes", eventHashes, stage["eventHashes"]);
         Check(name, "returned", returned, stage["returned"]);

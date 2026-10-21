@@ -84,6 +84,9 @@ foreach (var item in Objects(fixture["reactions"], "reaction cases"))
     Equal(state, item["after"], name + " full state");
     Check(StateDigest.Hash(state) == Text(item, "hash"), name + " final state digest");
 }
+Check(fixture["actions"]!.AsArray().Count == 8 &&
+    Objects(fixture["actions"], "action cases").Select(item => Text(item, "name")).Distinct(StringComparer.Ordinal).Count() == 8,
+    "native action refusal expectation coverage");
 foreach (var item in Objects(fixture["actions"], "action cases"))
 {
     var turns = new TurnOrderSystem(new(engine.Catalog, TurnOrderRegistry.Core().Register(new ReversePolicy(new JsonObject()))));
@@ -96,19 +99,33 @@ foreach (var item in Objects(fixture["actions"], "action cases"))
     var events = new JsonArray(); JsonObject? error = null;
     try { foreach (var value in battle.Dispatch(item["action"]!.AsObject()).Events) events.Add(value.DeepClone()); }
     catch (Exception caught) when (caught is DomainInvariantException or IllegalActionException)
-    { error = new JsonObject { ["kind"] = caught.GetType().Name.Replace("Exception", "", StringComparison.Ordinal), ["message"] = caught.Message }; }
+    {
+        error = caught is IllegalActionException illegal
+            ? new JsonObject { ["kind"] = "IllegalAction", ["refusal"] = Node(illegal.Refusal) }
+            : new JsonObject { ["kind"] = "DomainInvariant", ["message"] = caught.Message };
+    }
     var name = Text(item, "name");
+    ActionRefusal? expectedRefusal = name switch
+    {
+        "custom refused same-owner wait" or "custom refused same-owner stance" => new("tactics.not_actor", new() { ["unitId"] = 2 }),
+        "unknown stance action" => new("tactics.reaction_unknown", new() { ["stance"] = "absent" }),
+        "deployment cannot wait" => new("action.deployment_required"),
+        "over ignores command" => new("action.over"),
+        "custom permitted wait" or "custom stance action" or "custom end-turn action" => null,
+        _ => throw new Exception("Missing native action refusal expectation: " + name),
+    };
+    var expectedError = expectedRefusal is null ? null : new JsonObject { ["kind"] = "IllegalAction", ["refusal"] = Node(expectedRefusal) };
     if (name == "unknown stance action")
     {
         Check(item["error"] is null && Text(item["after"]!["units"]![2]!.AsObject(), "reaction") == "absent",
             "frozen source characterizes invalid reaction commit");
-        Check(Text(error!, "kind") == "IllegalAction" && Text(error!, "message").Contains("unknown reaction stance", StringComparison.Ordinal),
-            "unknown stance action native typed refusal");
+        Equal(error, expectedError, "unknown stance action native typed refusal");
         Equal(events, new JsonArray(), "unknown stance action has no events");
         Equal(battle.Snapshot(), item["before"], "unknown stance action native rollback");
         continue;
     }
-    Equal(error, item["error"], name + " typed action failure"); Equal(events, item["events"], name + " action events");
+    Check((item["error"] is null) == (expectedError is null), name + " refusal acceptance unchanged");
+    Equal(error, expectedError, name + " semantic action failure"); Equal(events, item["events"], name + " action events");
     Equal(battle.Snapshot(), item["after"], name + " action/rollback state"); Check(battle.StateHash == Text(item, "hash"), name + " action digest");
 }
 var turnsRegistry = TurnOrderRegistry.Core(); var originalSide = turnsRegistry.Get("side");

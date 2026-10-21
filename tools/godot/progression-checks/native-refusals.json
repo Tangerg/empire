@@ -1,0 +1,3740 @@
+{
+  "cases": {
+    "career default options": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": []
+        },
+        {
+          "id": "ranger",
+          "reasons": []
+        },
+        {
+          "id": "shadow",
+          "reasons": []
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career roots null": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "cycle-a",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            }
+          ]
+        },
+        {
+          "id": "militia",
+          "reasons": []
+        },
+        {
+          "id": "orphan",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            }
+          ]
+        },
+        {
+          "id": "root-z",
+          "reasons": []
+        }
+      ]
+    },
+    "career roots ": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "cycle-a",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            }
+          ]
+        },
+        {
+          "id": "militia",
+          "reasons": []
+        },
+        {
+          "id": "orphan",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            }
+          ]
+        },
+        {
+          "id": "root-z",
+          "reasons": [
+            {
+              "code": "career.root_mismatch",
+              "details": {}
+            }
+          ]
+        }
+      ]
+    },
+    "career roots unknown": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "cycle-a",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            }
+          ]
+        },
+        {
+          "id": "militia",
+          "reasons": []
+        },
+        {
+          "id": "orphan",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            }
+          ]
+        },
+        {
+          "id": "root-z",
+          "reasons": [
+            {
+              "code": "career.root_mismatch",
+              "details": {}
+            }
+          ]
+        }
+      ]
+    },
+    "career roots ranger": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "militia",
+          "reasons": []
+        },
+        {
+          "id": "acolyte",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "branch-a",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 200
+              }
+            }
+          ]
+        },
+        {
+          "id": "shadow",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career roots militia": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": []
+        },
+        {
+          "id": "branch-a",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 200
+              }
+            }
+          ]
+        },
+        {
+          "id": "ranger",
+          "reasons": []
+        },
+        {
+          "id": "shadow",
+          "reasons": []
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career roots root-z": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "militia",
+          "reasons": []
+        },
+        {
+          "id": "branch-a",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 200
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career roots cycle-a": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "militia",
+          "reasons": []
+        }
+      ]
+    },
+    "career roots cycle-b": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "militia",
+          "reasons": []
+        }
+      ]
+    },
+    "career roots orphan": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "cycle-a",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            }
+          ]
+        },
+        {
+          "id": "militia",
+          "reasons": []
+        },
+        {
+          "id": "root-z",
+          "reasons": [
+            {
+              "code": "career.root_mismatch",
+              "details": {}
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 0 mastery -2": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "ranger",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "shadow",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 0 mastery 0": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "ranger",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "shadow",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 0 mastery 119": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "ranger",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "shadow",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 0 mastery 120": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "ranger",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "shadow",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 0 mastery 219": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "ranger",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "shadow",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 0 mastery 220": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "ranger",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "shadow",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 0 mastery 400": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "ranger",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "shadow",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 1 mastery -2": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "ranger",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "shadow",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 1 mastery 0": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "ranger",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "shadow",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 1 mastery 119": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "ranger",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "shadow",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 1 mastery 120": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": []
+        },
+        {
+          "id": "ranger",
+          "reasons": []
+        },
+        {
+          "id": "shadow",
+          "reasons": []
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 1 mastery 219": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": []
+        },
+        {
+          "id": "ranger",
+          "reasons": []
+        },
+        {
+          "id": "shadow",
+          "reasons": []
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 1 mastery 220": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": []
+        },
+        {
+          "id": "ranger",
+          "reasons": []
+        },
+        {
+          "id": "shadow",
+          "reasons": []
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 1 mastery 400": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": []
+        },
+        {
+          "id": "ranger",
+          "reasons": []
+        },
+        {
+          "id": "shadow",
+          "reasons": []
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 2 mastery -2": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "ranger",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "shadow",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 2 mastery 0": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "ranger",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "shadow",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 2 mastery 119": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "ranger",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "shadow",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 2 mastery 120": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": []
+        },
+        {
+          "id": "ranger",
+          "reasons": []
+        },
+        {
+          "id": "shadow",
+          "reasons": []
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 2 mastery 219": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": []
+        },
+        {
+          "id": "ranger",
+          "reasons": []
+        },
+        {
+          "id": "shadow",
+          "reasons": []
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 2 mastery 220": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": []
+        },
+        {
+          "id": "ranger",
+          "reasons": []
+        },
+        {
+          "id": "shadow",
+          "reasons": []
+        },
+        {
+          "id": "knight-order",
+          "reasons": []
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            }
+          ]
+        }
+      ]
+    },
+    "career rank 2 mastery 400": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": []
+        },
+        {
+          "id": "ranger",
+          "reasons": []
+        },
+        {
+          "id": "shadow",
+          "reasons": []
+        },
+        {
+          "id": "knight-order",
+          "reasons": []
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            }
+          ]
+        }
+      ]
+    },
+    "unlocked bypasses paths rank and mastery": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "ogre-warrior",
+          "reasons": []
+        },
+        {
+          "id": "acolyte",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "ranger",
+          "reasons": []
+        },
+        {
+          "id": "shadow",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 1
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "dragon-lord",
+          "reasons": []
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "mastered option flags": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": []
+        },
+        {
+          "id": "ranger",
+          "reasons": []
+        },
+        {
+          "id": "shadow",
+          "reasons": []
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "cost aggregation 0": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": []
+        },
+        {
+          "id": "ranger",
+          "reasons": [
+            {
+              "code": "career.insufficient_resources",
+              "details": {}
+            }
+          ]
+        },
+        {
+          "id": "shadow",
+          "reasons": []
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "cost aggregation 39": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": []
+        },
+        {
+          "id": "ranger",
+          "reasons": [
+            {
+              "code": "career.insufficient_resources",
+              "details": {}
+            }
+          ]
+        },
+        {
+          "id": "shadow",
+          "reasons": []
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "cost aggregation 40": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": []
+        },
+        {
+          "id": "ranger",
+          "reasons": []
+        },
+        {
+          "id": "shadow",
+          "reasons": []
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "cost aggregation 41": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": []
+        },
+        {
+          "id": "ranger",
+          "reasons": []
+        },
+        {
+          "id": "shadow",
+          "reasons": []
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "cost aggregation 200": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": []
+        },
+        {
+          "id": "ranger",
+          "reasons": []
+        },
+        {
+          "id": "shadow",
+          "reasons": []
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "missing cost account": {
+      "error": "resource \"command_points\" is not available for this player"
+    },
+    "uncapped cost account": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "acolyte",
+          "reasons": []
+        },
+        {
+          "id": "ranger",
+          "reasons": []
+        },
+        {
+          "id": "shadow",
+          "reasons": []
+        },
+        {
+          "id": "knight-order",
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "siege-engineer",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": "war-mage",
+          "reasons": [
+            {
+              "code": "career.path_mismatch",
+              "details": {}
+            },
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "mastery -1": {
+      "error": null
+    },
+    "mastery 0": {
+      "error": null
+    },
+    "mastery 3": {
+      "error": null
+    },
+    "mastery 220": {
+      "error": null
+    },
+    "mastery missing": {
+      "error": null
+    },
+    "ability stable deduplication": {
+      "error": null
+    },
+    "direct change militia": {
+      "error": {
+        "code": "career.unavailable",
+        "details": {
+          "careerId": "militia"
+        }
+      }
+    },
+    "direct change unknown": {
+      "error": {
+        "code": "career.unavailable",
+        "details": {
+          "careerId": "unknown"
+        }
+      }
+    },
+    "direct change ogre-warrior": {
+      "error": {
+        "code": "career.unavailable",
+        "details": {
+          "careerId": "ogre-warrior"
+        }
+      }
+    },
+    "direct change ranger": {
+      "error": null
+    },
+    "direct change knight-order": {
+      "error": {
+        "code": "career.requirements",
+        "details": {
+          "reasons": [
+            {
+              "code": "career.minimum_rank",
+              "details": {
+                "required": 2
+              }
+            },
+            {
+              "code": "career.minimum_mastery",
+              "details": {
+                "required": 220
+              }
+            }
+          ]
+        }
+      }
+    },
+    "health ratio 0": {
+      "error": null
+    },
+    "health ratio 0.1": {
+      "error": null
+    },
+    "health ratio 1": {
+      "error": null
+    },
+    "health ratio 49": {
+      "error": null
+    },
+    "health ratio 50": {
+      "error": null
+    },
+    "health ratio 99": {
+      "error": null
+    },
+    "health ratio 100": {
+      "error": null
+    },
+    "health ratio 200": {
+      "error": null
+    },
+    "career preserves history and compatible inventory": {
+      "error": null
+    },
+    "insufficient direct change preserves state": {
+      "error": {
+        "code": "career.requirements",
+        "details": {
+          "reasons": [
+            {
+              "code": "career.insufficient_resources",
+              "details": {}
+            }
+          ]
+        }
+      }
+    },
+    "health invariant direct mutation order": {
+      "error": "health maxima must be positive"
+    },
+    "awardCareer -3": {
+      "error": null
+    },
+    "awardCareer -0.5": {
+      "error": null
+    },
+    "awardCareer 0": {
+      "error": null
+    },
+    "awardCareer 0.49": {
+      "error": null
+    },
+    "awardCareer 0.5": {
+      "error": null
+    },
+    "awardCareer 1": {
+      "error": null
+    },
+    "awardCareer 119": {
+      "error": null
+    },
+    "awardCareer 120": {
+      "error": null
+    },
+    "awardCareer 200": {
+      "error": null
+    },
+    "awardCareer 1000": {
+      "error": null
+    },
+    "awardRank -3": {
+      "error": null
+    },
+    "awardRank -0.5": {
+      "error": null
+    },
+    "awardRank 0": {
+      "error": null
+    },
+    "awardRank 0.49": {
+      "error": null
+    },
+    "awardRank 0.5": {
+      "error": null
+    },
+    "awardRank 1": {
+      "error": null
+    },
+    "awardRank 119": {
+      "error": null
+    },
+    "awardRank 120": {
+      "error": null
+    },
+    "awardRank 200": {
+      "error": null
+    },
+    "awardRank 1000": {
+      "error": null
+    },
+    "career award absent null": {
+      "error": null
+    },
+    "career award absent ": {
+      "error": null
+    },
+    "career award absent unknown": {
+      "error": null
+    },
+    "negative mastery award clamps first": {
+      "error": null
+    },
+    "mastery repeated crossing has no second reward": {
+      "error": null
+    },
+    "known mastery abilities excluded": {
+      "error": null
+    },
+    "rank never downgrades": {
+      "error": null
+    },
+    "rank zero award still normalizes progress": {
+      "error": null
+    },
+    "formation options square4 diagonal false ally false": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "formation-line",
+          "reasons": [
+            {
+              "code": "formation.adjacent_allies",
+              "details": {
+                "formationId": "formation-line",
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "formation-defensive",
+          "reasons": [
+            {
+              "code": "formation.adjacent_allies",
+              "details": {
+                "formationId": "formation-defensive",
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "formation-loose",
+          "reasons": []
+        }
+      ]
+    },
+    "formation derived square4 diagonal false ally false": {
+      "error": null
+    },
+    "formation options square4 diagonal false ally true": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "formation-line",
+          "reasons": []
+        },
+        {
+          "id": "formation-defensive",
+          "reasons": []
+        },
+        {
+          "id": "formation-loose",
+          "reasons": []
+        }
+      ]
+    },
+    "formation derived square4 diagonal false ally true": {
+      "error": null
+    },
+    "formation options square4 diagonal true ally false": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "formation-line",
+          "reasons": [
+            {
+              "code": "formation.adjacent_allies",
+              "details": {
+                "formationId": "formation-line",
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "formation-defensive",
+          "reasons": [
+            {
+              "code": "formation.adjacent_allies",
+              "details": {
+                "formationId": "formation-defensive",
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "formation-loose",
+          "reasons": []
+        }
+      ]
+    },
+    "formation derived square4 diagonal true ally false": {
+      "error": null
+    },
+    "formation options square4 diagonal true ally true": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "formation-line",
+          "reasons": [
+            {
+              "code": "formation.adjacent_allies",
+              "details": {
+                "formationId": "formation-line",
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "formation-defensive",
+          "reasons": [
+            {
+              "code": "formation.adjacent_allies",
+              "details": {
+                "formationId": "formation-defensive",
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "formation-loose",
+          "reasons": []
+        }
+      ]
+    },
+    "formation derived square4 diagonal true ally true": {
+      "error": null
+    },
+    "formation options square8 diagonal false ally false": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "formation-line",
+          "reasons": [
+            {
+              "code": "formation.adjacent_allies",
+              "details": {
+                "formationId": "formation-line",
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "formation-defensive",
+          "reasons": [
+            {
+              "code": "formation.adjacent_allies",
+              "details": {
+                "formationId": "formation-defensive",
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "formation-loose",
+          "reasons": []
+        }
+      ]
+    },
+    "formation derived square8 diagonal false ally false": {
+      "error": null
+    },
+    "formation options square8 diagonal false ally true": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "formation-line",
+          "reasons": []
+        },
+        {
+          "id": "formation-defensive",
+          "reasons": []
+        },
+        {
+          "id": "formation-loose",
+          "reasons": []
+        }
+      ]
+    },
+    "formation derived square8 diagonal false ally true": {
+      "error": null
+    },
+    "formation options square8 diagonal true ally false": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "formation-line",
+          "reasons": [
+            {
+              "code": "formation.adjacent_allies",
+              "details": {
+                "formationId": "formation-line",
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "formation-defensive",
+          "reasons": [
+            {
+              "code": "formation.adjacent_allies",
+              "details": {
+                "formationId": "formation-defensive",
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "formation-loose",
+          "reasons": []
+        }
+      ]
+    },
+    "formation derived square8 diagonal true ally false": {
+      "error": null
+    },
+    "formation options square8 diagonal true ally true": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "formation-line",
+          "reasons": []
+        },
+        {
+          "id": "formation-defensive",
+          "reasons": []
+        },
+        {
+          "id": "formation-loose",
+          "reasons": []
+        }
+      ]
+    },
+    "formation derived square8 diagonal true ally true": {
+      "error": null
+    },
+    "formation options hex diagonal false ally false": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "formation-line",
+          "reasons": [
+            {
+              "code": "formation.adjacent_allies",
+              "details": {
+                "formationId": "formation-line",
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "formation-defensive",
+          "reasons": [
+            {
+              "code": "formation.adjacent_allies",
+              "details": {
+                "formationId": "formation-defensive",
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "formation-loose",
+          "reasons": []
+        }
+      ]
+    },
+    "formation derived hex diagonal false ally false": {
+      "error": null
+    },
+    "formation options hex diagonal false ally true": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "formation-line",
+          "reasons": []
+        },
+        {
+          "id": "formation-defensive",
+          "reasons": []
+        },
+        {
+          "id": "formation-loose",
+          "reasons": []
+        }
+      ]
+    },
+    "formation derived hex diagonal false ally true": {
+      "error": null
+    },
+    "formation options hex diagonal true ally false": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "formation-line",
+          "reasons": [
+            {
+              "code": "formation.adjacent_allies",
+              "details": {
+                "formationId": "formation-line",
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "formation-defensive",
+          "reasons": [
+            {
+              "code": "formation.adjacent_allies",
+              "details": {
+                "formationId": "formation-defensive",
+                "required": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "formation-loose",
+          "reasons": []
+        }
+      ]
+    },
+    "formation derived hex diagonal true ally false": {
+      "error": null
+    },
+    "formation options hex diagonal true ally true": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "formation-line",
+          "reasons": []
+        },
+        {
+          "id": "formation-defensive",
+          "reasons": []
+        },
+        {
+          "id": "formation-loose",
+          "reasons": []
+        }
+      ]
+    },
+    "formation derived hex diagonal true ally true": {
+      "error": null
+    },
+    "formation in effect null": {
+      "error": null
+    },
+    "formation validation null": {
+      "error": null
+    },
+    "formation isolated validation null": {
+      "error": null
+    },
+    "formation in effect ": {
+      "error": null
+    },
+    "formation validation ": {
+      "error": {
+        "code": "formation.unsupported",
+        "details": {
+          "unitId": 1,
+          "formationId": ""
+        }
+      }
+    },
+    "formation isolated validation ": {
+      "error": {
+        "code": "formation.unsupported",
+        "details": {
+          "unitId": 1,
+          "formationId": ""
+        }
+      }
+    },
+    "formation in effect missing": {
+      "error": null
+    },
+    "formation validation missing": {
+      "error": {
+        "code": "formation.unsupported",
+        "details": {
+          "unitId": 1,
+          "formationId": "missing"
+        }
+      }
+    },
+    "formation isolated validation missing": {
+      "error": {
+        "code": "formation.unsupported",
+        "details": {
+          "unitId": 1,
+          "formationId": "missing"
+        }
+      }
+    },
+    "formation in effect formation-line": {
+      "error": null
+    },
+    "formation validation formation-line": {
+      "error": null
+    },
+    "formation isolated validation formation-line": {
+      "error": {
+        "code": "formation.adjacent_allies",
+        "details": {
+          "formationId": "formation-line",
+          "required": 1
+        }
+      }
+    },
+    "formation in effect formation-defensive": {
+      "error": null
+    },
+    "formation validation formation-defensive": {
+      "error": null
+    },
+    "formation isolated validation formation-defensive": {
+      "error": {
+        "code": "formation.adjacent_allies",
+        "details": {
+          "formationId": "formation-defensive",
+          "required": 1
+        }
+      }
+    },
+    "formation in effect formation-loose": {
+      "error": null
+    },
+    "formation validation formation-loose": {
+      "error": null
+    },
+    "formation isolated validation formation-loose": {
+      "error": null
+    },
+    "same-team different owner supports formation": {
+      "error": null
+    },
+    "same-id neighbor excluded": {
+      "error": null
+    },
+    "dead neighbor follows source array membership": {
+      "error": null
+    },
+    "formation options preserve declared order and duplicate": {
+      "error": null,
+      "optionReasons": [
+        {
+          "id": "formation-loose",
+          "reasons": []
+        },
+        {
+          "id": "formation-line",
+          "reasons": []
+        },
+        {
+          "id": "formation-loose",
+          "reasons": []
+        }
+      ]
+    },
+    "formation active need not be allowed by type": {
+      "error": null
+    },
+    "formation delta isolated": {
+      "error": null
+    },
+    "rawAction career success": {
+      "error": null
+    },
+    "rawAction career done": {
+      "error": {
+        "code": "tactics.already_acted",
+        "details": {
+          "unitId": 1
+        }
+      }
+    },
+    "rawAction career wrong owner": {
+      "error": {
+        "code": "tactics.not_owner",
+        "details": {
+          "unitId": 1
+        }
+      }
+    },
+    "rawAction career missing": {
+      "error": {
+        "code": "tactics.unit_missing",
+        "details": {
+          "unitId": 99999
+        }
+      }
+    },
+    "rawAction career initiative not actor": {
+      "error": {
+        "code": "tactics.not_actor",
+        "details": {
+          "unitId": 1
+        }
+      }
+    },
+    "rawAction formation success": {
+      "error": null
+    },
+    "rawAction formation done": {
+      "error": {
+        "code": "tactics.already_acted",
+        "details": {
+          "unitId": 1
+        }
+      }
+    },
+    "rawAction formation wrong owner": {
+      "error": {
+        "code": "tactics.not_owner",
+        "details": {
+          "unitId": 1
+        }
+      }
+    },
+    "rawAction formation missing": {
+      "error": {
+        "code": "tactics.unit_missing",
+        "details": {
+          "unitId": 99999
+        }
+      }
+    },
+    "rawAction formation initiative not actor": {
+      "error": {
+        "code": "tactics.not_actor",
+        "details": {
+          "unitId": 1
+        }
+      }
+    },
+    "dispatch career success": {
+      "error": null
+    },
+    "dispatch career done": {
+      "error": {
+        "code": "tactics.already_acted",
+        "details": {
+          "unitId": 1
+        }
+      }
+    },
+    "dispatch career wrong owner": {
+      "error": {
+        "code": "tactics.not_owner",
+        "details": {
+          "unitId": 1
+        }
+      }
+    },
+    "dispatch career missing": {
+      "error": {
+        "code": "tactics.unit_missing",
+        "details": {
+          "unitId": 99999
+        }
+      }
+    },
+    "dispatch career initiative not actor": {
+      "error": {
+        "code": "tactics.not_actor",
+        "details": {
+          "unitId": 1
+        }
+      }
+    },
+    "dispatch formation success": {
+      "error": null
+    },
+    "dispatch formation done": {
+      "error": {
+        "code": "tactics.already_acted",
+        "details": {
+          "unitId": 1
+        }
+      }
+    },
+    "dispatch formation wrong owner": {
+      "error": {
+        "code": "tactics.not_owner",
+        "details": {
+          "unitId": 1
+        }
+      }
+    },
+    "dispatch formation missing": {
+      "error": {
+        "code": "tactics.unit_missing",
+        "details": {
+          "unitId": 99999
+        }
+      }
+    },
+    "dispatch formation initiative not actor": {
+      "error": {
+        "code": "tactics.not_actor",
+        "details": {
+          "unitId": 1
+        }
+      }
+    },
+    "same formation null": {
+      "error": null
+    },
+    "same formation formation-line": {
+      "error": null
+    },
+    "same formation formation-loose": {
+      "error": null
+    },
+    "same invalid formation still rejects": {
+      "error": {
+        "code": "formation.adjacent_allies",
+        "details": {
+          "formationId": "formation-line",
+          "required": 1
+        }
+      }
+    },
+    "career paid action": {
+      "error": null
+    },
+    "career denied action atomic": {
+      "error": {
+        "code": "career.requirements",
+        "details": {
+          "reasons": [
+            {
+              "code": "career.insufficient_resources",
+              "details": {}
+            }
+          ]
+        }
+      }
+    },
+    "career post-action derived profile": {
+      "error": null
+    },
+    "raw career phase over": {
+      "error": {
+        "code": "tactics.not_actor",
+        "details": {
+          "unitId": 1
+        }
+      }
+    },
+    "raw career phase deployment": {
+      "error": {
+        "code": "tactics.not_actor",
+        "details": {
+          "unitId": 1
+        }
+      }
+    },
+    "raw formation phase over": {
+      "error": {
+        "code": "tactics.not_actor",
+        "details": {
+          "unitId": 1
+        }
+      }
+    },
+    "raw formation phase deployment": {
+      "error": {
+        "code": "tactics.not_actor",
+        "details": {
+          "unitId": 1
+        }
+      }
+    },
+    "dispatch career battle over": {
+      "error": {
+        "code": "action.over",
+        "details": {}
+      }
+    },
+    "dispatch formation battle over": {
+      "error": {
+        "code": "action.over",
+        "details": {}
+      }
+    },
+    "formation edit career consumption and rejected order rollback": {
+      "error": null,
+      "stepErrors": [
+        null,
+        null,
+        {
+          "code": "tactics.already_acted",
+          "details": {
+            "unitId": 1
+          }
+        }
+      ]
+    },
+    "career switch back retains progress and returns health ratio": {
+      "error": null,
+      "stepErrors": [
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "insufficient payment action rollback then legal formation": {
+      "error": null,
+      "stepErrors": [
+        {
+          "code": "career.requirements",
+          "details": {
+            "reasons": [
+              {
+                "code": "career.insufficient_resources",
+                "details": {}
+              }
+            ]
+          }
+        },
+        null
+      ]
+    },
+    "original shipped type rejects undeclared formation": {
+      "error": {
+        "code": "formation.unsupported",
+        "details": {
+          "unitId": 1,
+          "formationId": "formation-line"
+        }
+      }
+    }
+  }
+}

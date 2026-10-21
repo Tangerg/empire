@@ -5,7 +5,7 @@ using Empire.Core.Transactions;
 
 namespace Empire.Core.Persistence;
 
-public sealed record ReplayOutcome(JsonObject State, int? DivergedAt, string Reason);
+public sealed record ReplayOutcome(JsonObject State, int? DivergedAt, string Reason, ActionRefusal? Refusal = null);
 
 public static class BattleReplayVerifier
 {
@@ -41,7 +41,7 @@ public static class BattleReplayVerifier
             if (actions[index] is not JsonObject action)
                 throw new StoredDocumentException($"battle replay action {index} must be an object");
             try { battle.Dispatch(action); }
-            catch (IllegalActionException error) { return new(battle.Snapshot(), index, error.Message); }
+            catch (IllegalActionException error) { return new(battle.Snapshot(), index, "Action refused during replay.", error.Refusal); }
             if (StateJson.Text(battle.Snapshot(), "phase") != "over") continue;
             if (index != actions.Count - 1) return new(battle.Snapshot(), index + 1, "对局提前结束");
             return battle.StateHash == expectedHash

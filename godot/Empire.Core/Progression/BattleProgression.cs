@@ -16,10 +16,10 @@ public sealed class BattleProgression
         TacticalCommands commands, CombatEffects effects)
     { Careers = new CareerRules(catalog, resources, effects); Formations = new FormationRules(catalog, grids); this.commands = commands; }
     public void ChangeCareer(JsonObject state, int unitId, string career, Action<JsonObject> emit) =>
-        Careers.Change(state, commands.CommandableUnit(state, unitId, "转职"), career, emit);
+        Careers.Change(state, commands.CommandableUnit(state, unitId), career, emit);
     public void ChangeFormation(JsonObject state, int unitId, string? formation, Action<JsonObject> emit)
     {
-        var unit = commands.CommandableUnit(state, unitId, "调整阵形");
+        var unit = commands.CommandableUnit(state, unitId);
         Formations.ValidateChange(state, unit, formation);
         var previous = unit["formation"]?.GetValue<string>();
         if (previous == formation) return;

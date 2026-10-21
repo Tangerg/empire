@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Text.Json.Nodes;
 using Empire.Application;
+using Empire.Presentation.Feedback;
 using Empire.Core.Campaign;
 using Empire.Core.Engine;
 using Empire.Localization;
@@ -237,7 +238,8 @@ public partial class CampaignNavigationChecks : Node
     {
         ResetAutosave(); const string malformed = "{not a campaign save"; File.WriteAllText(automaticPath, malformed);
         var stamp = Stamp(automaticPath); var game = MountGame(); var menu = View<CampaignMenuScreen>(game);
-        Require(!menu.Presented!.CanContinue && menu.Presented.RejectedNotice is not null && Labels(menu).Any(text => text.Contains("进度已保留但未载入", StringComparison.Ordinal)), "Malformed slot did not produce a visible non-destructive notice.");
+        var notice = Field<GameText>(game, "text").Format("error.campaign.save_rejected");
+        Require(!menu.Presented!.CanContinue && menu.Presented.RejectedNotice == notice && Labels(menu).Any(label => label == notice), "Malformed slot did not produce a visible localized non-destructive notice.");
         Require(File.ReadAllText(automaticPath) == malformed && Stamp(automaticPath) == stamp, "Reading an invalid save changed or deleted it.");
         Press(Button(menu, "NewCampaign"));
         Require(View<Control>(game) is StoryScreen && !File.Exists(automaticPath), "Explicit New did not replace the rejected slot as in the source menu.");
@@ -382,8 +384,10 @@ public partial class CampaignNavigationChecks : Node
         {
             var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
             var engine = new GrayFlagEngine(packs);
+            var text = GodotTextCatalog.LoadSimplifiedChinese();
+            var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
             var levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json");
-            var candidate = new GrayFlagCampaign(definition, levels, engine, battleNodeState);
+            var candidate = new GrayFlagCampaign(definition, levels, engine, text, refusals, battleNodeState);
             candidate.BeginBattle();
             var invalid = candidate.Save();
             var obsoleteRequest = candidate.RequestSnapshot()!;
@@ -401,7 +405,7 @@ public partial class CampaignNavigationChecks : Node
                 dialog.Hide();
                 dialog.Free();
             }
-            var opening = new GrayFlagCampaign(definition, levels, engine);
+            var opening = new GrayFlagCampaign(definition, levels, engine, text, refusals);
             SaveFile.WriteDocument(manualPath, opening.Save());
             var children = game.GetChildCount();
             SetField(game, "stories", new StoryDocument());

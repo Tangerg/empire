@@ -92,7 +92,7 @@ public partial class CampaignShell : Control
     {
         if (!IsInstanceValid(diagnosticsBox)) return;
         foreach (var child in diagnosticsBox.GetChildren()) { diagnosticsBox.RemoveChild(child); child.QueueFree(); }
-        foreach (var message in diagnostics) diagnosticsBox.AddChild(Text(message, 13, "#efb76c"));
+        if (diagnostics.Count > 0) diagnosticsBox.AddChild(Text(Presented!.ArtworkFailureLabel, 13, "#efb76c"));
         diagnosticsBox.Visible = diagnostics.Count > 0;
     }
     public static TextureRect Picture(Texture2D texture) => new() { Texture = texture, ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,

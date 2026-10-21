@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core;
 using Empire.Core.Determinism;
@@ -13,6 +14,12 @@ var root = Path.GetFullPath(args.Length > 0 ? args[0] : ".");
 JsonNode Read(string path) => JsonNode.Parse(File.ReadAllText(Path.Combine(root, path)))!;
 var packs = Read("godot/data/content-packs.json").AsArray();
 var vectors = Read("tools/godot/deployment-checks/vectors.json").AsObject();
+using var nativeStream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("NativeRefusals")
+    ?? throw new Exception("Missing explicit native refusal expectations");
+var nativeRefusals = JsonNode.Parse(nativeStream)!.AsObject();
+var nativeCases = nativeRefusals["cases"]!.AsObject();
+if (!vectors["cases"]!.AsArray().Select(item => item!["name"]!.GetValue<string>()).SequenceEqual(nativeCases.Select(pair => pair.Key)))
+    throw new Exception("Native refusal expectation cases are missing or stale");
 var engine = new GrayFlagEngine(packs);
 var stateRules = new BattleStateRules(engine.Catalog, engine.Grids, engine.Reactions);
 var passed = 0;
@@ -30,22 +37,22 @@ void Equal(JsonNode? expected, JsonNode? actual, string subject)
 }
 Coord Position(JsonNode at) => new(at["x"]!.GetValue<int>(), at["y"]!.GetValue<int>());
 JsonObject Coordinate(Coord at) => new() { ["x"] = at.X, ["y"] = at.Y };
-void Outcome(Battle battle, JsonObject expected)
+void Outcome(Battle battle, JsonObject expected, JsonNode? nativeRefusal = null)
 {
     var action = expected["action"]!.AsObject();
     var before = battle.StateHash;
-    if (expected["error"] is JsonObject refusal)
+    if (expected["error"] is JsonObject)
     {
         try { battle.Dispatch(action); throw new Exception("Expected action refusal"); }
         catch (IllegalActionException error)
         {
-            if (error.Message != refusal["message"]!.GetValue<string>())
-                throw new Exception($"Refusal mismatch: {error.Message} != {refusal["message"]}");
+            Equal(nativeRefusal, JsonSerializer.SerializeToNode(error.Refusal), "semantic action refusal");
         }
         if (before != battle.StateHash) throw new Exception("Refused action changed state");
     }
     else
     {
+        if (nativeRefusal is not null) throw new Exception("Native expectation rejects an accepted source action");
         var receipt = battle.Dispatch(action);
         Equal(expected["events"], new JsonArray(receipt.Events.Select(item => (JsonNode)item.DeepClone()).ToArray()), "events");
     }
@@ -62,10 +69,10 @@ Battle Isolated(JsonObject initial)
     {
         var phase = state["phase"]!.GetValue<string>();
         var kind = action["kind"]!.GetValue<string>();
-        if (phase == "over") throw new IllegalActionException("对局已结束");
+        if (phase == "over") throw new IllegalActionException(new ActionRefusal("action.over"));
         var deploying = kind is "deployUnit" or "finishDeployment";
-        if (phase == "deployment" && !deploying) throw new IllegalActionException("请先完成战前部署");
-        if (phase == "playing" && deploying) throw new IllegalActionException("战斗开始后不能重新部署");
+        if (phase == "deployment" && !deploying) throw new IllegalActionException(new ActionRefusal("action.deployment_required"));
+        if (phase == "playing" && deploying) throw new IllegalActionException(new ActionRefusal("action.deployment_finished"));
         void Emit(JsonObject value)
         {
             var counts = state["scenario"]!["eventCounts"]!.AsObject();
@@ -86,6 +93,11 @@ Battle Isolated(JsonObject initial)
 foreach (var fixture in vectors["cases"]!.AsArray().OfType<JsonObject>())
 {
     var name = fixture["name"]!.GetValue<string>();
+    var native = nativeCases[name]!.AsObject();
+    var nativeQueries = native["queries"]!.AsArray();
+    if (!fixture["queries"]!.AsArray().Select(query => query!["unit"]!.GetValue<int>())
+        .SequenceEqual(nativeQueries.Select(query => query!["unit"]!.GetValue<int>())))
+        throw new Exception("Native deployment query expectations are missing or stale: " + name);
     var level = fixture["level"]!.AsObject();
     var state = fixture["state"]!.AsObject();
     var rawHash = fixture["rawStateHash"]!.GetValue<string>();
@@ -110,6 +122,9 @@ foreach (var fixture in vectors["cases"]!.AsArray().OfType<JsonObject>())
     {
         var id = query["unit"]!.GetValue<int>();
         var unit = state["units"]!.AsArray().OfType<JsonObject>().Single(item => item["id"]!.GetValue<int>() == id);
+        var expectedRefusals = nativeQueries.OfType<JsonObject>().Single(query => query["unit"]!.GetValue<int>() == id)["refusals"]!.AsArray();
+        if (expectedRefusals.Count != query["refusals"]!.AsArray().Count)
+            throw new Exception("Native deployment refusal slots are missing or stale: " + name);
         Check($"{name} unit {id} spots", () =>
         {
             var before = StateDigest.Hash(state);
@@ -118,21 +133,27 @@ foreach (var fixture in vectors["cases"]!.AsArray().OfType<JsonObject>())
             Equal(query["spots"], spots, "spots");
             if (StateDigest.Hash(state) != before) throw new Exception("Spots query changed state");
         });
-        foreach (var refusal in query["refusals"]!.AsArray().OfType<JsonObject>())
+        foreach (var (refusal, index) in query["refusals"]!.AsArray().OfType<JsonObject>().Select((value, index) => (value, index)))
             Check($"{name} unit {id} refusal {refusal["at"]}", () =>
             {
                 var actual = engine.Deployment.Refusal(state, unit, Position(refusal["at"]!));
-                if (actual != refusal["reason"]?.GetValue<string>()) throw new Exception($"Unexpected refusal: {actual}");
+                if ((refusal["reason"] is null) != (expectedRefusals[index] is null))
+                    throw new Exception("Native deployment query changed refusal acceptance");
+                Equal(expectedRefusals[index], JsonSerializer.SerializeToNode(actual), "semantic deployment query refusal");
             });
     }
     var production = StateDigest.Hash(state) == rawHash;
     Battle Open() => production ? engine.CreateBattle(level) : Isolated(state);
-    foreach (var attempt in fixture["attempts"]!.AsArray().OfType<JsonObject>())
-        Check($"{name} {(production ? "engine" : "isolated")} action {attempt["action"]}", () => Outcome(Open(), attempt));
+    if (native["attempts"]!.AsArray().Count != fixture["attempts"]!.AsArray().Count ||
+        native["confirmations"]!.AsArray().Count != fixture["confirmations"]!.AsArray().Count)
+        throw new Exception("Native deployment action slots are missing or stale: " + name);
+    foreach (var (attempt, index) in fixture["attempts"]!.AsArray().OfType<JsonObject>().Select((value, index) => (value, index)))
+        Check($"{name} {(production ? "engine" : "isolated")} action {attempt["action"]}", () => Outcome(Open(), attempt, native["attempts"]![index]));
     Check($"{name} sequential confirmation", () =>
     {
         var battle = Open();
-        foreach (var confirmation in fixture["confirmations"]!.AsArray().OfType<JsonObject>()) Outcome(battle, confirmation);
+        foreach (var (confirmation, index) in fixture["confirmations"]!.AsArray().OfType<JsonObject>().Select((value, index) => (value, index)))
+            Outcome(battle, confirmation, native["confirmations"]![index]);
     });
     if (production) Check($"{name} persisted deployment resumes through battle start", () =>
     {

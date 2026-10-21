@@ -7,4 +7,5 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup><ProjectReference Include="../../../godot/Empire.Core/Empire.Core.csproj" /></ItemGroup>
+  <ItemGroup><EmbeddedResource Include="native-refusals.json" LogicalName="NativeRefusals" /></ItemGroup>
 </Project>

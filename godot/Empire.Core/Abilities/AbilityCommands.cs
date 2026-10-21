@@ -65,19 +65,16 @@ public sealed class AbilityCommands(AbilityRules rules, TacticalCommands command
         var weapon = command["weapon"]?.GetValue<string>();
         var query = new AbilityQuery(state, unit, movement.Destination, movement.Moved, weapon);
         if (!rules.Careers.UnitAbilityIds(unit).Contains(ability.Id))
-        {
-            var definition = rules.Content.Definition("units", StateJson.Text(unit, "type"))
-                ?? throw new DomainInvariantException("command unit definition is missing");
-            throw new IllegalActionException($"{definition.GetProperty("name").GetString()} 没有「{ability.Name}」");
-        }
+            throw new IllegalActionException(new ActionRefusal("ability.not_owned", new()
+            { ["unitType"] = StateJson.Text(unit, "type"), ["abilityId"] = ability.Id }));
         if (!string.IsNullOrEmpty(weapon) && !ability.WeaponChoices(rules, query).Any(choice => StateJson.Text(choice, "id") == weapon))
-            throw new IllegalActionException($"「{ability.Name}」无法使用「{weapon}」");
-        if (!CanUse(ability, query)) throw new IllegalActionException($"此处无法使用「{ability.Name}」");
+            throw new IllegalActionException(new ActionRefusal("ability.weapon_unavailable", new() { ["abilityId"] = ability.Id, ["weaponId"] = weapon }));
+        if (!CanUse(ability, query)) throw new IllegalActionException(new ActionRefusal("ability.unusable", new() { ["abilityId"] = ability.Id }));
         Coord? target = command["target"] is JsonObject location ? TacticalQueries.Position(location) : null;
         if (!ability.SelfTargeted)
         {
-            if (target is null) throw new IllegalActionException($"「{ability.Name}」需要指定目标");
-            if (!Targets(ability, query).Contains(target.Value)) throw new IllegalActionException("目标不合法");
+            if (target is null) throw new IllegalActionException(new ActionRefusal("ability.target_required", new() { ["abilityId"] = ability.Id }));
+            if (!Targets(ability, query).Contains(target.Value)) throw new IllegalActionException(new ActionRefusal("ability.target_invalid", new() { ["abilityId"] = ability.Id }));
         }
         var surviving = commands.ApplyMovement(state, movement, emit, rules.Combat.ResolvePartingShots);
         if (surviving is null) return;

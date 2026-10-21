@@ -18,7 +18,7 @@ public sealed partial class BattleCombat
             throw new DomainInvariantException($"weapon \"{StateJson.Text(weapon, "id")}\" resolves immediately and cannot be charged");
         var casts = state["pendingCasts"]!.AsArray();
         var id = StateJson.Integer(caster, "id");
-        if (casts.OfType<JsonObject>().Any(value => StateJson.Integer(value, "caster") == id)) throw new IllegalActionException("该单位已经在咏唱中");
+        if (casts.OfType<JsonObject>().Any(value => StateJson.Integer(value, "caster") == id)) throw new IllegalActionException(new ActionRefusal("combat.already_casting", new() { ["unitId"] = id }));
         var declared = StateJson.Number(state, "actorTurns", 0);
         var duration = Math.Max(1, StateJson.Round(castTurns));
         var cast = new JsonObject { ["caster"] = id, ["owner"] = caster["owner"]!.DeepClone(), ["ability"] = ability,

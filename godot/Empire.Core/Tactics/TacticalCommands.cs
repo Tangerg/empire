@@ -44,19 +44,19 @@ public sealed class TacticalCommands
     public JsonObject OwnUnit(JsonObject state, int unitId)
     {
         var unit = TacticalQueries.UnitById(state, unitId)
-            ?? throw new IllegalActionException($"单位 {unitId} 不在场上");
+            ?? throw new IllegalActionException(new ActionRefusal("tactics.unit_missing", new() { ["unitId"] = unitId }));
         if (StateJson.Integer(unit, "owner") != StateJson.Integer(state, "currentPlayer"))
-            throw new IllegalActionException("不是你的单位");
+            throw new IllegalActionException(new ActionRefusal("tactics.not_owner", new() { ["unitId"] = unitId }));
         return unit;
     }
 
-    public JsonObject CommandableUnit(JsonObject state, int unitId, string order = "行动")
+    public JsonObject CommandableUnit(JsonObject state, int unitId)
     {
         var unit = OwnUnit(state, unitId);
         if (StateJson.IsTrue(unit["done"]))
-            throw new IllegalActionException($"已行动单位不能{order}");
+            throw new IllegalActionException(new ActionRefusal("tactics.already_acted", new() { ["unitId"] = unitId }));
         if (!mayAct(state, unit))
-            throw new IllegalActionException($"该单位当前没有行动权，不能{order}");
+            throw new IllegalActionException(new ActionRefusal("tactics.not_actor", new() { ["unitId"] = unitId }));
         return unit;
     }
 
@@ -65,19 +65,19 @@ public sealed class TacticalCommands
         var unitId = StateJson.Integer(action, "unit");
         var unit = CommandableUnit(state, unitId);
         var requested = StateJson.Array(action["path"], "action path");
-        if (requested.Count == 0) throw new IllegalActionException("路径为空");
+        if (requested.Count == 0) throw new IllegalActionException(new ActionRefusal("tactics.path_empty"));
         var origin = TacticalQueries.Position(unit);
         if (TacticalQueries.Position(StateJson.Object(requested[0], "path origin")) != origin)
-            throw new IllegalActionException("路径起点与单位位置不符");
+            throw new IllegalActionException(new ActionRefusal("tactics.path_origin_mismatch", new() { ["unitId"] = unitId }));
         var destination = TacticalQueries.Position(StateJson.Object(requested[^1], "path destination"));
         if (!Board(state).Contains(destination))
-            throw new IllegalActionException($"目标格 {destination.X},{destination.Y} 不在战场内");
+            throw new IllegalActionException(new ActionRefusal("tactics.target_outside", new() { ["x"] = destination.X, ["y"] = destination.Y }));
         if (requested.Count == 1) return new(unitId, origin, destination, new[] { origin });
         var field = rules.Space.ComputeMoveField(state, unit);
         var canonical = rules.Space.PathTo(field, state, destination)
-            ?? throw new IllegalActionException($"目标格 {destination.X},{destination.Y} 不在移动范围内");
+            ?? throw new IllegalActionException(new ActionRefusal("tactics.target_unreachable", new() { ["x"] = destination.X, ["y"] = destination.Y }));
         if (!field.Stops.Contains(Board(state).IndexOf(destination)))
-            throw new IllegalActionException("目标格已被占据");
+            throw new IllegalActionException(new ActionRefusal("tactics.target_occupied", new() { ["x"] = destination.X, ["y"] = destination.Y }));
         return new(unitId, origin, destination, canonical);
     }
 
@@ -112,7 +112,7 @@ public sealed class TacticalCommands
     public void ChangeReaction(JsonObject unit, string stance, Action<JsonObject> emit)
     {
         if (!rules.Reactions.Has(stance))
-            throw new IllegalActionException($"unknown reaction stance \"{stance}\"");
+            throw new IllegalActionException(new ActionRefusal("tactics.reaction_unknown", new() { ["stance"] = stance }));
         UnitDisposition.React(rules.Reactions, unit, stance, emit);
     }
 
@@ -120,7 +120,7 @@ public sealed class TacticalCommands
     {
         var grid = Board(state).Grid;
         if (!UnitDisposition.AdmitsFacing(grid, facing))
-            throw new IllegalActionException($"grid \"{grid.Id}\" has no direction \"{facing}\"");
+            throw new IllegalActionException(new ActionRefusal("tactics.facing_invalid", new() { ["grid"] = grid.Id, ["facing"] = facing }));
         UnitDisposition.Face(grid, unit, facing, emit);
     }
 

@@ -20,7 +20,7 @@ mutants = [
  ('after-action', 'Actions/ActionExecutionPipeline.cs', 'context.Lifecycle.AfterAction();', '{}'),
  ('deployment-after-action', 'Actions/ActionExecutionPipeline.cs', '&& !deployment)', ')'),
  ('over-phase', 'Actions/ActionExecutionPipeline.cs', 'if (phase == "over")', 'if (phase == "never")'),
- ('unknown-precedence', 'Actions/ActionExecutionPipeline.cs', 'var phase = StateJson.Text(state, "phase");', 'if (registration is null) throw new IllegalActionException("early unknown"); var phase = StateJson.Text(state, "phase");'),
+ ('unknown-precedence', 'Actions/ActionExecutionPipeline.cs', 'var phase = StateJson.Text(state, "phase");', 'if (registration is null) throw new IllegalActionException(new ActionRefusal("test.early_unknown")); var phase = StateJson.Text(state, "phase");'),
 ]
 for name, relative, before, after in mutants:
     path = core / relative

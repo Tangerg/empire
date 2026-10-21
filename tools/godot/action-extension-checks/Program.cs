@@ -41,12 +41,12 @@ foreach (var entry in fixture["cases"]!.AsArray().OfType<JsonObject>())
         context.State["scenario"]!["variables"]!["testOrder"] = 7;
         context.Emit(new JsonObject { ["type"] = "scenarioSignal", ["signal"] = "test.order" });
         context.Emit(new JsonObject { ["type"] = "scenarioSignal", ["signal"] = "test.order.again" });
-        if (mode == "fail") throw new IllegalActionException("test refusal");
+        if (mode == "fail") throw new IllegalActionException(new ActionRefusal("test.refused"));
         if (mode == "finish") context.State["phase"] = "over";
         if (mode == "begin") context.State["phase"] = "playing";
     }, handsOffTurn: true, duringDeployment: entry["during"]!.GetValue<bool>());
     var battle = new Battle(entry["before"]!.AsObject(), handlers, pipeline);
-    string? error = null;
+    ActionRefusal? error = null;
     var events = new JsonArray();
     try
     {
@@ -55,9 +55,19 @@ foreach (var entry in fixture["cases"]!.AsArray().OfType<JsonObject>())
         if (!receipt.HandsOffTurn) throw new Exception("custom handoff metadata lost");
         count++;
     }
-    catch (IllegalActionException caught) { error = caught.Message; }
+    catch (IllegalActionException caught) { error = caught.Refusal; }
     var name = $"{entry["phase"]}/{entry["during"]}/{mode}";
-    Equal(JsonValue.Create(error), entry["error"], name + "/error");
+    var phase = entry["phase"]!.GetValue<string>();
+    var during = entry["during"]!.GetValue<bool>();
+    var expectedCode = phase == "over" ? "action.over"
+        : phase == "deployment" && (mode == "unknown" || !during) ? "action.deployment_required"
+        : mode == "unknown" ? "action.unsupported"
+        : phase == "playing" && during ? "action.deployment_finished"
+        : mode == "fail" ? "test.refused" : null;
+    if ((entry["error"] is null) != (expectedCode is null)) throw new Exception(name + "/source refusal status");
+    Equal(JsonValue.Create(error?.Code), JsonValue.Create(expectedCode), name + "/error");
+    Equal(error is null ? null : EcmaJson.Parse(error.Details.GetRawText()), expectedCode is null ? null :
+        expectedCode == "action.unsupported" ? new JsonObject { ["kind"] = "missing-order" } : new JsonObject(), name + "/details");
     Equal(events, entry["events"], name + "/events");
     Equal(battle.Snapshot(), entry["after"], name + "/state");
     Equal(JsonValue.Create(battle.StateHash), entry["hash"], name + "/hash");

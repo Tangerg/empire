@@ -7,6 +7,7 @@ using Empire.Core.Tactics;
 using Empire.Core.Transactions;
 using Empire.Presentation;
 using Empire.Presentation.Feedback;
+using Empire.Localization;
 
 namespace Empire.Application;
 
@@ -14,6 +15,8 @@ namespace Empire.Application;
 public sealed partial class GrayFlagSession
 {
     private readonly GrayFlagEngine engine;
+    private readonly GameText text;
+    private readonly ActionRefusalText refusals;
     private readonly Battle battle;
     private long revision;
     private BattlePresentationTransition? transition;
@@ -31,8 +34,8 @@ public sealed partial class GrayFlagSession
 
     public BattleDispatchResult Undo(long expectedRevision)
     {
-        if (expectedRevision != revision) return new(false, "战场已变化，请重新选择命令。");
-        if (!CanUndo) return new(false, "当前无法撤销。");
+        if (expectedRevision != revision) return new(false, text.Format("error.session.revision_changed"));
+        if (!CanUndo) return new(false, text.Format("error.session.undo_unavailable"));
         var checkpoint = undo.Peek();
         battle.Restore(checkpoint.Receipt);
         undo.Pop();
@@ -41,21 +44,23 @@ public sealed partial class GrayFlagSession
         revision++;
         transition = null;
         LastActionHandsOffTurn = null;
-        return new(true, "已撤销上一步");
+        return new(true, text.Format("feedback.session.undone"));
     }
 
-    public GrayFlagSession(GrayFlagEngine engine, JsonObject level)
+    public GrayFlagSession(GrayFlagEngine engine, JsonObject level, GameText text, ActionRefusalText refusals)
     {
         this.engine = engine;
+        this.text = text;
+        this.refusals = refusals;
         battle = engine.CreateBattle(level);
     }
 
-    private GrayFlagSession(GrayFlagEngine engine, Battle battle)
-    { this.engine = engine; this.battle = battle; }
+    private GrayFlagSession(GrayFlagEngine engine, Battle battle, GameText text, ActionRefusalText refusals)
+    { this.engine = engine; this.battle = battle; this.text = text; this.refusals = refusals; }
 
-    public static GrayFlagSession FromSave(GrayFlagEngine engine, JsonNode save, JsonArray? recordedEvents = null)
+    public static GrayFlagSession FromSave(GrayFlagEngine engine, JsonNode save, GameText text, ActionRefusalText refusals, JsonArray? recordedEvents = null)
     {
-        var restored = new GrayFlagSession(engine, engine.LoadSavedBattle(save));
+        var restored = new GrayFlagSession(engine, engine.LoadSavedBattle(save), text, refusals);
         if (recordedEvents is not null) restored.events.AddRange(recordedEvents.OfType<JsonObject>().Select(value => (JsonObject)value.DeepClone()));
         return restored;
     }
@@ -79,7 +84,8 @@ public sealed partial class GrayFlagSession
     {
         if (!IsComputerTurn) return null;
         var attempted = engine.Ai.ChooseAction(battle.Snapshot());
-        return ComputerActionExecution.Execute(attempted, Commit, engine.HandsOffTurn, onRefusal);
+        return ComputerActionExecution.Execute(attempted, Commit, engine.HandsOffTurn,
+            refusal => onRefusal?.Invoke(refusals.DescribeComputer(refusal)));
     }
 
     public BattleSnapshot GetSnapshot()
@@ -108,16 +114,16 @@ public sealed partial class GrayFlagSession
 
     public BattleDispatchResult Dispatch(JsonElement action, long expectedRevision)
     {
-        if (expectedRevision != revision) return new(false, "战场已变化，请重新选择命令。");
-        if (IsComputerTurn) return new(false, "正在执行敌方回合。");
+        if (expectedRevision != revision) return new(false, text.Format("error.session.revision_changed"));
+        if (IsComputerTurn) return new(false, text.Format("error.session.computer_turn"));
         var command = Empire.Core.Determinism.EcmaJson.Parse(action.GetRawText()) as JsonObject;
-        if (command is null) return new(false, "命令必须是对象。");
+        if (command is null) return new(false, text.Format("error.session.command_shape"));
         try
         {
             var receipt = Commit(command);
-            return new(true, $"命令完成 · {receipt.Events.Count} 条战斗事件");
+            return new(true, text.Format("feedback.session.command_completed", receipt.Events.Count));
         }
-        catch (IllegalActionException error) { return new(false, error.Message); }
+        catch (IllegalActionException error) { return new(false, refusals.Describe(error.Refusal)); }
     }
 
     private BattleReceipt Commit(JsonObject command)
@@ -159,13 +165,13 @@ public readonly record struct ComputerStepResult(bool Committed, bool AttemptedH
 internal static class ComputerActionExecution
 {
     internal static ComputerStepResult Execute(JsonObject attempted, Func<JsonObject, BattleReceipt> dispatch,
-        Func<JsonObject, bool> handsOffTurn, Action<string>? onRefusal)
+        Func<JsonObject, bool> handsOffTurn, Action<ActionRefusal>? onRefusal)
     {
         var committed = false;
         try { dispatch(attempted); committed = true; }
         catch (IllegalActionException error)
         {
-            onRefusal?.Invoke($"AI 的行动被拒绝：{error.Message}");
+            onRefusal?.Invoke(error.Refusal);
             try { dispatch(new JsonObject { ["kind"] = "endTurn" }); committed = true; }
             catch (IllegalActionException) { /* The source settles an empty event list after a refused fallback. */ }
         }

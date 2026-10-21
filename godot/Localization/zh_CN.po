@@ -29,14 +29,6 @@ msgstr "确认部署"
 msgid "ui.battle.undo"
 msgstr "撤销"
 
-msgid "feedback.battle.undo_completed"
-msgstr "已撤销上一步"
-
-#. {0}: completed event count (integer).
-#, csharp-format
-msgid "feedback.battle.command_completed"
-msgstr "命令完成 · {0} 条战斗事件"
-
 #. {0}: saved round number (integer).
 #, csharp-format
 msgid "feedback.save.round_saved"
@@ -52,15 +44,6 @@ msgstr "战役和战斗进度已保存。F9 可读取。"
 
 msgid "feedback.load.completed"
 msgstr "已读取存档。"
-
-msgid "error.action.stale_revision"
-msgstr "战场已变化，请重新选择命令。"
-
-msgid "error.action.cannot_undo"
-msgstr "当前无法撤销。"
-
-msgid "error.action.computer_turn"
-msgstr "正在执行敌方回合。"
 
 msgid "error.save.failed"
 msgstr "保存失败，当前窗口中的进度仍然保留。"
@@ -78,7 +61,7 @@ msgid "error.load.presentation_failed"
 msgstr "存档已恢复，但画面加载失败。"
 
 msgid "error.campaign.start_failed"
-msgstr "无法开始战役。"
+msgstr "无法开始战役，请检查存储空间后重试。"
 
 msgid "error.campaign.autosave_before_battle_failed"
 msgstr "自动保存失败，尚未进入战斗。"
@@ -1367,3 +1350,356 @@ msgstr "需要作出决定"
 
 msgid "ui.choice.note"
 msgstr "选择会写入战役存档，并在后续关卡、关系或资源中兑现。"
+
+msgid "ui.menu.title"
+msgstr "远古帝国"
+
+msgid "ui.menu.kicker"
+msgstr "剧情战役型 SRPG · 确定性战斗预测"
+
+#. {0}: localized campaign title (string); {1}: total battles (integer).
+msgid "ui.menu.description"
+msgstr "《{0}》从十八岁的边境见习旗官开始，经历灰旗流亡与诸族远征。{1} 场连续战斗，选择、关系、补给与伤亡跨关保留。"
+
+msgid "ui.menu.art_alt"
+msgstr "灰旗立在烧毁的边境村庄"
+
+msgid "ui.menu.continue"
+msgstr "继续战役"
+
+msgid "ui.menu.restart"
+msgstr "重新开始战役"
+
+msgid "ui.menu.new"
+msgstr "开始战役"
+
+#. {0}: localized campaign title (string).
+msgid "ui.menu.replace_prompt"
+msgstr "重新开始会覆盖当前《{0}》战役进度。继续吗？"
+
+msgid "campaign.grayflag.resource.supplies.name"
+msgstr "补给"
+
+msgid "campaign.grayflag.resource.treasury.name"
+msgstr "国库"
+
+msgid "campaign.grayflag.relation.refugees.name"
+msgstr "灰境难民"
+
+msgid "campaign.grayflag.relation.silverwood.name"
+msgstr "银林"
+
+msgid "campaign.grayflag.relation.mountain-forge.name"
+msgstr "山炉氏族"
+
+msgid "campaign.grayflag.relation.named-dead.name"
+msgstr "归名者"
+
+msgid "ui.menu.confirm_restart"
+msgstr "重新开始"
+
+msgid "error.campaign.save_rejected"
+msgstr "战役存档无法载入，原有文件已保留。"
+
+msgid "error.presentation.artwork_unavailable"
+msgstr "部分画面资源无法载入。"
+
+msgid "ui.staging.roster_heading"
+msgstr "出战名册"
+
+msgid "ui.staging.state_heading"
+msgstr "战役状态"
+
+msgid "ui.staging.empty_resources"
+msgstr "暂无战役资源"
+
+msgid "ui.staging.empty_relations"
+msgstr "尚未形成明确阵营关系。"
+
+#. {0}: rounded health percent (number); {1}: rank (number).
+msgid "ui.staging.available_status"
+msgstr "生命 {0}% · 军衔 {1}"
+
+msgid "ui.staging.disposition.fallen"
+msgstr "阵亡"
+
+msgid "ui.staging.disposition.routed"
+msgstr "溃退"
+
+msgid "ui.staging.disposition.surrendered"
+msgstr "投降"
+
+msgid "ui.staging.disposition.missing"
+msgstr "失踪"
+
+#. {0}: battle order (integer); {1}: total battles (integer).
+msgid "ui.staging.eyebrow"
+msgstr "作战准备 · {0:00}/{1}"
+
+msgid "ui.staging.initial_note"
+msgstr "进入战斗后自动保留关前存档。"
+
+msgid "ui.staging.reentry_note"
+msgstr "离开战场后将从本关开局重新开始。"
+
+msgid "ui.staging.start"
+msgstr "开始战斗 →"
+
+msgid "ui.staging.reenter"
+msgstr "重新进入战斗 →"
+
+msgid "error.action.over"
+msgstr "对局已结束。"
+
+msgid "error.action.deployment_required"
+msgstr "请先完成战前部署。"
+
+msgid "error.action.deployment_finished"
+msgstr "战斗开始后不能重新部署。"
+
+#. {0}: semantic kind (string).
+#, csharp-format
+msgid "error.action.unsupported"
+msgstr "无法执行此类行动（{0}）。"
+
+#. {0}: refusal unitId (number).
+#, csharp-format
+msgid "error.tactics.unit_missing"
+msgstr "单位 {0} 不在场上。"
+
+msgid "error.tactics.not_owner"
+msgstr "不是你的单位。"
+
+msgid "error.tactics.already_acted"
+msgstr "该单位已行动，无法执行此命令。"
+
+msgid "error.tactics.not_actor"
+msgstr "该单位当前没有行动权，无法执行此命令。"
+
+msgid "error.tactics.path_empty"
+msgstr "移动路径为空。"
+
+msgid "error.tactics.path_origin_mismatch"
+msgstr "路径起点与单位位置不符。"
+
+#. {0}: refusal x (number).
+#. {1}: refusal y (number).
+#, csharp-format
+msgid "error.tactics.target_outside"
+msgstr "目标格 {0},{1} 不在战场内。"
+
+#. {0}: refusal x (number).
+#. {1}: refusal y (number).
+#, csharp-format
+msgid "error.tactics.target_unreachable"
+msgstr "目标格 {0},{1} 不在移动范围内。"
+
+msgid "error.tactics.target_occupied"
+msgstr "目标格已被占据。"
+
+#. {0}: semantic stance (string).
+#, csharp-format
+msgid "error.tactics.reaction_unknown"
+msgstr "无法使用此反应姿态（{0}）。"
+
+#. {0}: semantic facing (string).
+#, csharp-format
+msgid "error.tactics.facing_invalid"
+msgstr "无法使用此朝向（{0}）。"
+
+msgid "error.deployment.wrong_phase"
+msgstr "当前不在战前部署阶段。"
+
+msgid "error.deployment.unassigned"
+msgstr "该单位不在当前部署编组中。"
+
+msgid "error.deployment.outside_zone"
+msgstr "目标格不在该单位的部署区域内。"
+
+msgid "error.deployment.occupied"
+msgstr "目标格已被其他单位占据。"
+
+msgid "error.deployment.impassable"
+msgstr "该单位无法部署到目标格。"
+
+msgid "error.deployment.swap_outside_zone"
+msgstr "交换后会使另一单位离开部署区域。"
+
+msgid "error.deployment.swap_impassable"
+msgstr "交换后另一单位无法站在腾出的格子上。"
+
+#. {0}: Name("terrains", S(d, "terrainId")).
+#, csharp-format
+msgid "error.recruitment.terrain_incompatible"
+msgstr "{0} 无法生产该兵种。"
+
+msgid "error.recruitment.not_owner"
+msgstr "该建筑不属于你。"
+
+msgid "error.recruitment.occupied"
+msgstr "建筑上已有单位。"
+
+msgid "error.recruitment.insufficient_resources"
+msgstr "招募资源不足。"
+
+#. {0}: refusal limit (number).
+#, csharp-format
+msgid "error.recruitment.unit_limit"
+msgstr "单位数量已达上限 {0}。"
+
+msgid "error.transport.self"
+msgstr "载具不能登载自己。"
+
+#. {0}: Name("units", S(d, "unitType")).
+#, csharp-format
+msgid "error.transport.not_carrier"
+msgstr "{0} 不是载具。"
+
+msgid "error.transport.not_allies"
+msgstr "载具与乘员不是友军。"
+
+msgid "error.transport.not_adjacent"
+msgstr "乘员必须与载具相邻。"
+
+msgid "error.transport.full"
+msgstr "载具已满。"
+
+msgid "error.transport.carrier_passenger"
+msgstr "载具不能登载载具。"
+
+msgid "error.transport.incompatible_tags"
+msgstr "该载具不接受这个兵种。"
+
+msgid "error.transport.forbidden_tags"
+msgstr "该载具拒载这个兵种。"
+
+#. {0}: refusal carrierId (number).
+#, csharp-format
+msgid "error.transport.carrier_missing"
+msgstr "载具 {0} 不在场上。"
+
+msgid "error.transport.not_aboard"
+msgstr "该单位不在这辆载具上。"
+
+msgid "error.transport.disembark_not_adjacent"
+msgstr "卸载格必须与载具相邻。"
+
+msgid "error.transport.disembark_occupied"
+msgstr "卸载格已被占据。"
+
+msgid "error.transport.disembark_impassable"
+msgstr "该乘员无法进入卸载格。"
+
+msgid "error.career.root_mismatch"
+msgstr "不能跨越到另一棵职业树的根职业。"
+
+msgid "error.career.path_mismatch"
+msgstr "当前职业不在可转职路径上。"
+
+#. {0}: refusal required (number).
+#, csharp-format
+msgid "error.career.minimum_rank"
+msgstr "需要军衔 {0}。"
+
+#. {0}: refusal required (number).
+#, csharp-format
+msgid "error.career.minimum_mastery"
+msgstr "需要当前职业熟练度 {0}。"
+
+msgid "error.career.insufficient_resources"
+msgstr "转职资源不足。"
+
+#. {0}: semantic careerId (string).
+#, csharp-format
+msgid "error.career.unavailable"
+msgstr "无法转为当前职业或未知职业（{0}）。"
+
+#. {0}: presenter.DescribeNested(d.GetProperty("reasons")).
+#, csharp-format
+msgid "error.career.requirements"
+msgstr "转职条件未满足：{0}"
+
+#. {0}: semantic formationId (string).
+#, csharp-format
+msgid "error.formation.unsupported"
+msgstr "该单位不能使用此阵形（{0}）。"
+
+#. {0}: refusal required (number).
+#, csharp-format
+msgid "error.formation.adjacent_allies"
+msgstr "需要 {0} 名相邻友军。"
+
+#. {0}: semantic commanderId (string).
+#, csharp-format
+msgid "error.support.commander_unknown"
+msgstr "无法找到此指挥官（{0}）。"
+
+msgid "error.support.commander_not_owner"
+msgstr "此指挥官不属于当前玩家。"
+
+#. {0}: semantic tacticId (string).
+#, csharp-format
+msgid "error.support.tactic_unavailable"
+msgstr "无法使用此战术（{0}）。"
+
+msgid "error.support.target_invalid"
+msgstr "战术目标不合法。"
+
+#. {0}: Name("units", S(d, "unitType")).
+#. {1}: abilities.Get(S(d, "abilityId")).Name.
+#, csharp-format
+msgid "error.ability.not_owned"
+msgstr "{0} 没有「{1}」。"
+
+#. {0}: abilities.Get(S(d, "abilityId")).Name.
+#. {1}: semantic weaponId (string).
+#, csharp-format
+msgid "error.ability.weapon_unavailable"
+msgstr "「{0}」无法使用指定武器（{1}）。"
+
+#. {0}: abilities.Get(S(d, "abilityId")).Name.
+#, csharp-format
+msgid "error.ability.unusable"
+msgstr "此处无法使用「{0}」。"
+
+#. {0}: abilities.Get(S(d, "abilityId")).Name.
+#, csharp-format
+msgid "error.ability.target_required"
+msgstr "「{0}」需要指定目标。"
+
+msgid "error.ability.target_invalid"
+msgstr "目标不合法。"
+
+msgid "error.combat.already_casting"
+msgstr "该单位已经在咏唱中。"
+
+msgid "error.action.reason_separator"
+msgstr "；"
+
+#. {0}: localized refusal string.
+#, csharp-format
+msgid "error.action.computer_refused"
+msgstr "AI 的行动被拒绝：{0}"
+
+msgid "error.session.revision_changed"
+msgstr "战场已变化，请重新选择命令。"
+
+msgid "error.session.computer_turn"
+msgstr "正在执行敌方回合。"
+
+msgid "error.session.command_shape"
+msgstr "命令必须是对象。"
+
+msgid "error.session.undo_unavailable"
+msgstr "当前无法撤销。"
+
+msgid "feedback.session.undone"
+msgstr "已撤销上一步"
+
+#. {0}: eventCount: integer.
+#, csharp-format
+msgid "feedback.session.command_completed"
+msgstr "命令完成 · {0} 条战斗事件"
+
+msgid "error.campaign.action_failed"
+msgstr "战役操作失败，当前进度已保留。"

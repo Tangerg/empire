@@ -1,3 +1,5 @@
+using Empire.Presentation.Feedback;
+using Empire.Checks;
 using System.Text.Json.Nodes;
 using Empire.Application;
 using Empire.Core;
@@ -5,14 +7,18 @@ using Empire.Core.Campaign;
 using Empire.Core.Determinism;
 using Empire.Core.Engine;
 
-var root = args.Length == 1 ? Path.GetFullPath(args[0]) : throw new ArgumentException("Pass the repository root.");
+
+var root = args.Length == 2 ? Path.GetFullPath(args[0]) : throw new ArgumentException("Pass the repository root and catalog.json.");
+var gameText = FixtureText.Load(args[^1]);
+ActionRefusalText Refusals(GrayFlagEngine value) => ActionRefusalText.CreateDefault(gameText, value.Catalog, value.Abilities).Seal();
+
 JsonNode Read(string name) => EcmaJson.Parse(File.ReadAllText(Path.Combine(root, "godot", "data", name)))!;
 var definition = Read("grayflag-campaign.json").AsObject();
 var levels = Read("grayflag-campaign-levels.json").AsArray();
 var engine = new GrayFlagEngine(Read("content-packs.json").AsArray());
 var battleNode = definition["nodes"]!.AsArray().OfType<JsonObject>().First(node => node["type"]!.GetValue<string>() == "battle");
 battleNode["effects"] = new JsonArray(new JsonObject { ["type"] = "addVariable", ["key"] = "saveAdmissionCount", ["amount"] = 1 });
-GrayFlagCampaign Create() => new(definition, levels, engine);
+GrayFlagCampaign Create() => new(definition, levels, engine, gameText, Refusals(engine));
 var assertions = 0;
 void Require(bool value, string message) { assertions++; if (!value) throw new Exception(message); }
 void Same(JsonNode? actual, JsonNode? expected, string message) => Require(EcmaJson.DeepEquals(actual, expected), message);

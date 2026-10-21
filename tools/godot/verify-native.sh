@@ -3,12 +3,14 @@ set -euo pipefail
 cd "$(dirname "$0")/../.."
 source tools/godot/env.sh
 python3 tools/godot/check-source-metadata.py
+CHECK_DATA="$(mktemp -d "${TMPDIR:-/tmp}/empire-native-checks.XXXXXX")"
+python3 tools/godot/localization-checks/validate_catalog.py godot/Localization/zh_CN.po --output "$CHECK_DATA/catalog.json"
 # Bound each native process; a stalled process is a failed gate, never a PASS.
 export EMPIRE_CHECK_TIMEOUT_SECONDS="${EMPIRE_CHECK_TIMEOUT_SECONDS:-300}"
 dotnet() { command timeout --signal=TERM --kill-after=15s "$EMPIRE_CHECK_TIMEOUT_SECONDS" "$DOTNET_ROOT/dotnet" "$@"; }
 export -f dotnet
 # No installation, publication or user-save mutation. Native checks use fixture sessions.
-dotnet build godot/Empire.csproj
+dotnet build godot/Empire.csproj --disable-build-servers -m:1 -p:UseSharedCompilation=false
 dotnet run --project godot/Empire.Core.Tests -- godot/tests/oracle
 # Frozen original-source contracts: these paths require .NET, not a TypeScript runtime.
 bash tools/godot/registry-checks/run.sh --frozen
@@ -30,7 +32,7 @@ bash tools/godot/level-validation-checks/run.sh --frozen
 bash tools/godot/reaction-adapter-checks/run.sh
 bash tools/godot/catalog-boundary-checks/run.sh
 bash tools/godot/application-save-checks/run.sh
-dotnet run --project tools/godot/application-checks -- .
+dotnet run --project tools/godot/application-checks -- . "$CHECK_DATA/catalog.json"
 bash tools/godot/campaign-victory-checks/run.sh
 dotnet run --project tools/godot/persistence-checks/Empire.Persistence.Checks.csproj -- .
 timeout --signal=TERM --kill-after=15s "$EMPIRE_CHECK_TIMEOUT_SECONDS" "$GODOT_NET" --headless --editor --path godot --import
@@ -60,11 +62,11 @@ ORACLE_DATA="$(mktemp -d "${TMPDIR:-/tmp}/empire-native-oracles.XXXXXX")"
 for fixture in narrative campaign-menu staging session-contracts tactical-queries tactical-selection tactical-adapter tactical-hud ai-pacing; do
   gzip -dc "godot/tests/oracle/$fixture.json.gz" > "$ORACLE_DATA/$fixture.json"
 done
-dotnet run --project tools/godot/session-contract-checks/SessionContractChecks.csproj -- "$ORACLE_DATA/session-contracts.json" "$PWD"
+dotnet run --project tools/godot/session-contract-checks/SessionContractChecks.csproj -- "$ORACLE_DATA/session-contracts.json" "$PWD" "$CHECK_DATA/catalog.json"
 dotnet run --project tools/godot/tactical-query-checks/TacticalQueryChecks.csproj -- "$ORACLE_DATA/tactical-queries.json"
 dotnet run --project tools/godot/tactical-selection-checks/TacticalSelectionChecks.csproj -- "$ORACLE_DATA/tactical-selection.json"
-dotnet run --project tools/godot/tactical-adapter-checks/TacticalAdapterChecks.csproj -- "$ORACLE_DATA/tactical-adapter.json"
-dotnet run --project tools/godot/tactical-hud-checks/TacticalHudChecks.csproj -- "$ORACLE_DATA/tactical-hud.json"
+dotnet run --project tools/godot/tactical-adapter-checks/TacticalAdapterChecks.csproj -- "$ORACLE_DATA/tactical-adapter.json" "$CHECK_DATA/catalog.json"
+dotnet run --project tools/godot/tactical-hud-checks/TacticalHudChecks.csproj -- "$ORACLE_DATA/tactical-hud.json" "$CHECK_DATA/catalog.json"
 dotnet run --project tools/godot/ai-pacing-checks/AiPacingChecks.csproj -- "$ORACLE_DATA/ai-pacing.json"
 export EMPIRE_NARRATIVE_ORACLE="$ORACLE_DATA/narrative.json"
 run_scene NarrativeChecks
