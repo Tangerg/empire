@@ -76,7 +76,7 @@ public partial class PresentationChecks : Node
         }
 
         var environment = EnvironmentCatalog.Load();
-        var scene = AuthoredScene.Load();
+        var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
         var placement = environment.ResolveCell("temperate-hill-cap");
         var propSprite = environment.CreateSprite(placement.Id, 0.82f, true);
         try
@@ -152,13 +152,13 @@ public partial class PresentationChecks : Node
             "Source art-review metadata must remain in diagnostics without leaking into player-facing status.");
         var ground = terrain.GetNode<Node2D>("ComposedTerrain/Ground");
         var field = ground.GetNode<Polygon2D>("WorldField");
-        Require(field.Texture is not null && field.Polygon.Length == AuthoredScene.Load().GroundOutline.Length,
+        Require(field.Texture is not null && field.Polygon.Length == AuthoredScene.Load("res://data/scenes/c01-01.json").GroundOutline.Length,
             "World field must use the authored polygon and original texture.");
         var road = ground.GetNode<Sprite2D>("RoadCorridor");
         using var roadMask = road.Texture.GetImage();
         Require(roadMask.GetWidth() == 27 * 64 && roadMask.GetHeight() == 17 * 64,
             "Road technical mask must preserve the logical map extent at density two.");
-        foreach (var cell in AuthoredScene.Load().RoadCorridor!.ProtectedCells)
+        foreach (var cell in AuthoredScene.Load("res://data/scenes/c01-01.json").RoadCorridor!.ProtectedCells)
             Require(roadMask.GetPixel(cell[0] * 64 + 32, cell[1] * 64 + 32).A == 0,
                 "Reviewed protected road notch must remain unpainted.");
         var tiles = state["map"]!["tiles"]!.AsArray();

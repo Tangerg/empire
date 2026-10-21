@@ -153,7 +153,7 @@ public partial class LightingPerformanceChecks : Node
         var fixture = PresentationJson.Load<JsonObject>("res://tests/oracle/grayflag-initial-raw.json");
         var state = fixture["state"]!.AsObject();
         var assets = AssetCatalog.Load();
-        var scene = AuthoredScene.Load();
+        var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
         var board = new BoardView { AdvanceAnimationsAutomatically = false };
         AddChild(board);
         var cache = board.LightingResources;

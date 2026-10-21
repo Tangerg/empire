@@ -7,7 +7,7 @@ never computes legality or mutates the canonical state.
 
 ```csharp
 var assets = AssetCatalog.Load();
-var scene = AuthoredScene.Load();
+var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
 var environment = EnvironmentCatalog.Load();
 board.Configure(assets, level, scene, environment, facesLeft);
 board.ConfigureTerrain(WorldMaterialsManifest.Load());
@@ -119,3 +119,14 @@ or a substitute for the engine's battle-rule differential tests.
 scene and proves the explicit session port, live-revision callback guard and open
 reaction registry checks reject their respective regressions. A compilation error
 or timeout never counts as a killed mutation.
+
+## Native authored scene ownership
+
+`data/scenes/<levelId>.json` is the sole native authored scene for a level.
+Callers pass that path explicitly; no first-level alias or default scene exists.
+The TypeScript exporter records its original scenes only under
+`tests/oracle/source-v1/scenes/` and reads native scenes for asset dependency
+selection. It does not overwrite native layout. Levels without authored scenery
+keep the existing explicit unauthored-level presentation path. Scene outlines and
+decorations do not define playable cells or collision; those remain domain level
+data.

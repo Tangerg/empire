@@ -173,7 +173,7 @@ public partial class LightingLifetimeChecks : Node
             var terrain = new TerrainView();
             try
             {
-                terrain.Configure(materials, AuthoredScene.Load(), EnvironmentCatalog.Load());
+                terrain.Configure(materials, AuthoredScene.Load("res://data/scenes/c01-01.json"), EnvironmentCatalog.Load());
                 if (missing)
                 {
                     terrain.Render(failureTiles, new(width, height));
@@ -208,7 +208,7 @@ public partial class LightingLifetimeChecks : Node
         var battleText = presentation.Battle;
         var assets = AssetCatalog.Load();
         var environment = EnvironmentCatalog.Load();
-        var scene = AuthoredScene.Load();
+        var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
         var screen = new BattleScreen();
         AddChild(screen);
         screen.Board.AdvanceAnimationsAutomatically = false;

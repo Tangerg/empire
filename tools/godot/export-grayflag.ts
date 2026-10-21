@@ -65,12 +65,17 @@ function visitPresentation(node: ts.Node): void {
 visitPresentation(presentationSource);
 if (!healFx) throw new Error('Missing source heal FX binding');
 write('data/art-bindings.json', { ...bindings, CANDIDATE_01_ACTOR_ART: actors, CANDIDATE_01_HEAL_FX: healFx });
-const scene = read('environment-builder-v1/scenes/c01-01.scene.json');
-write('data/grayflag-authored-scene.json', scene);
-const scenes = CANDIDATE_01_LEVELS.map(candidate => {
+for (const candidate of CANDIDATE_01_LEVELS) {
   const path = `environment-builder-v1/scenes/${candidate.id}.scene.json`;
-  if (!existsSync(resolve(assetRoot, path))) return null;
-  const authored = read(path); write(`data/scenes/${candidate.id}.json`, authored); return authored;
+  if (existsSync(resolve(assetRoot, path))) write(`tests/oracle/source-v1/scenes/${candidate.id}.json`, read(path));
+}
+// Native scenes own composition; historical exports may not overwrite their authored layout.
+const scenes = CANDIDATE_01_LEVELS.map(candidate => {
+  const path = resolve(output, `data/scenes/${candidate.id}.json`);
+  if (!existsSync(path)) return null;
+  const authored = JSON.parse(readFileSync(path, 'utf8'));
+  if (authored.levelId !== candidate.id) throw new Error(`Native scene identity disagrees with its path: ${path}`);
+  return authored;
 }).filter(Boolean);
 const campaignStates = CANDIDATE_01_LEVELS.map(candidate => createState(engine.rules, candidate));
 const terrainIds = [...new Set(campaignStates.flatMap(state => state.map.tiles))];
@@ -169,7 +174,7 @@ function copyNarrativeAssets(value: unknown): void {
 }
 copyNarrativeAssets(narrativeMetadata);
 for (const asset of assets) Object.assign(asset, copy(asset.png));
-write('data/selected-assets.json', { schema: 1, logicalTileSize: 32, assets });
+write('tests/oracle/source-v1/selected-assets.json', { schema: 1, logicalTileSize: 32, assets });
 const environment = read('environment-builder-v1/manifest-environment-builder-v1.json');
 const ids = new Set(scenes.flatMap(scene => [...scene.placements, ...(scene.framePlacements ?? [])]).map((entry: { id: string }) => entry.id));
 const terrainBindings = Object.fromEntries(terrainIds.map(id => [id, candidateMaterial(content, id)]));
@@ -187,7 +192,7 @@ const mask = read('world-materials-v1/manifest-forest-blend-masks-v1.json').atla
 const geometryAtlas = environment.atlases.find((atlas: { id: string }) => atlas.id === mask.id);
 function maskRecords(file: string) { return read(`world-materials-v1/${file}`).atlases.map((mask: { id: string; png2x?: string; png: string }) => ({ ...environment.atlases.find((atlas: { id: string }) => atlas.id === mask.id), ...mask, ...copy(`world-materials-v1/${mask.png2x ?? mask.png}`) })); }
 function crossing(file: string) { const spec = read(`registered-crossings-v1/${file}`); return { ...spec, ...(spec.png ? copy(`registered-crossings-v1/${spec.png2x ?? spec.png}`) : {}) }; }
-write('data/world-materials.json', { edgeDecorationsResourcePath: 'res://data/edge-decorations.json', foundations: CANDIDATE_FOUNDATIONS, surfaceFit: CANDIDATE_SURFACE_FIT, shoreBlend: CANDIDATE_SHORE,
+write('tests/oracle/source-v1/world-materials.json', { edgeDecorationsResourcePath: 'res://data/edge-decorations.json', foundations: CANDIDATE_FOUNDATIONS, surfaceFit: CANDIDATE_SURFACE_FIT, shoreBlend: CANDIDATE_SHORE,
   earthMask: maskRecords('manifest-earth-blend-masks-v1.json')[0],
   connectorMasks: Object.fromEntries(maskRecords('manifest-stone-connectors-v1.json').map((value: { id: string }) => [value.id, value])),
   crossings: { horizontal: crossing('manifest-crossing-v1.json'), vertical: crossing('manifest-crossing-vertical-v1.json'), junction: crossing('manifest-junction-v1.json'), verticalLegacyIds: CANDIDATE_VERTICAL_CROSSINGS }, schema: 1, materials, groundTagFamilies: GROUND_TAGS,

@@ -65,3 +65,36 @@ Roderick's story portrait was inspected at 1180 × 812 and a manually resized
 narrative/staging scenes passed with exact alpha-region and non-cropping guards,
 and their normal teardown emitted no errors. The beige backgrounds are still
 present; any generated alpha replacement is a separate art decision.
+
+## Transparent portraits and first-battle spacing
+
+Leia and Roderick's approved generated transparent revisions replace their native
+portrait resources. They were inspected at actual roster/dialogue sizes before
+integration; they are redraws rather than lossless extraction. Five other opaque
+portraits remain unchanged. Provenance is in `data/portrait-revisions.json`.
+
+The first playable scene now has one authoring owner, `data/scenes/c01-01.json`.
+The duplicate first-scene file and implicit loader default are removed. Native
+`selected-assets.json` and `world-materials.json` own presentation scale/density;
+the historical TS exporter writes its corresponding observations only under
+`tests/oracle/source-v1`, never over these native documents.
+
+At the same 1180 × 812 window and camera, actors render at 0.62 of their previous
+visual scale, preserving frame geometry, contact anchors and tactical footprints.
+Forest edge canopy density is 0.52, its placement scale is 0.62, and the first
+scene's perimeter clusters fall from 28 to 13. Its road corridor is 20 logical
+pixels instead of 32. Canonical level data, collision, deployment and objectives
+are unchanged. Actual manual reload restored the same saved battle; selecting a
+smaller swordsman still showed its full selection ring and legal-cell overlays.
+
+This is an intermediate composition improvement, not final terrain approval.
+Road fills remain too smooth, square forest-floor islands are visible, and the
+highlands still read as isolated props. These are the next surface/elevation
+work, not hidden by adding foliage or changing camera zoom.
+
+The spacing checkpoint compiled without warnings/errors and passed the existing
+native resource contract scene, including all 16 level projections. A manual
+swordsman move completed on the revised first scene. Gameplay document bytes and
+all sprite fields except presentation scale were compared unchanged. This is
+functional verification and a visual candidate, not user acceptance of 0.62 as
+the final art direction. No updated export or Mac run is claimed.

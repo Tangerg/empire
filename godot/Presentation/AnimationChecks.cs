@@ -51,7 +51,7 @@ public partial class AnimationChecks : Node
     {
         var board = new BoardView { AdvanceAnimationsAutomatically = false };
         AddChild(board);
-        board.Configure(new(assets, EnvironmentCatalog.Load(), facing => facing == "west", null), level, AuthoredScene.Load());
+        board.Configure(new(assets, EnvironmentCatalog.Load(), facing => facing == "west", null), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
         board.ConfigureDynamicState(new Empire.Core.State.ReadOnlyContent(packs));
         board.RenderState(initial);
         return board;
@@ -464,7 +464,7 @@ public partial class AnimationChecks : Node
         RemoveChild(board);
         Require(!await second && !board.IsPresenting, "ExitTree cancels without waiting for another process frame");
         AddChild(board);
-        board.Configure(new(assets, EnvironmentCatalog.Load(), facing => facing == "west", null), level, AuthoredScene.Load());
+        board.Configure(new(assets, EnvironmentCatalog.Load(), facing => facing == "west", null), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
         board.ConfigureDynamicState(new Empire.Core.State.ReadOnlyContent(packs));
         var reattached = board.PresentTransitionAsync(transition);
         Require(board.IsPresenting && !reattached.IsCompleted, "Explicit reattach and reconfigure restores the presentation lifecycle");

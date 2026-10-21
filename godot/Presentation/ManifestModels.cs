@@ -264,7 +264,7 @@ public sealed class AuthoredScene
     }
     public List<AuthoredZone> Zones { get; init; } = new();
 
-    public static AuthoredScene Load(string path = "res://data/grayflag-authored-scene.json") =>
+    public static AuthoredScene Load(string path) =>
         PresentationJson.Load<AuthoredScene>(path);
 }
 

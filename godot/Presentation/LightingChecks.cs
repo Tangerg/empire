@@ -42,7 +42,7 @@ public partial class LightingChecks : Node
         var state = fixture["state"]!.AsObject();
         var before = EcmaJson.Stringify(state);
         var assets = AssetCatalog.Load();
-        var scene = AuthoredScene.Load();
+        var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
         var board = new BoardView { AdvanceAnimationsAutomatically = false };
         AddChild(board);
         try
