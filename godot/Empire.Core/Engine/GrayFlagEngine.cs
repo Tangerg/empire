@@ -66,9 +66,6 @@ public sealed partial class GrayFlagEngine
     public ScenarioSystem Scenarios { get; }
     public BattleResources Resources { get; }
 
-    public string UnitTypeName(string id) => StateJson.Text(Content.Get("units", id), "name");
-    public string CareerName(string id) => StateJson.Text(Content.Get("careers", id), "name");
-
     public GrayFlagEngine(JsonArray contentPacks)
         : this(BattleEngineFactory.Compose(new ReadOnlyContent(contentPacks))) { }
 
@@ -105,9 +102,9 @@ public sealed partial class GrayFlagEngine
         ScenarioConditions = dependencies.ScenarioConditions;
         ScenarioEffects = dependencies.ScenarioEffects;
         Objectives = dependencies.Objectives;
-        ScenarioCommands = new ScenarioCommands(Catalog, combat, resources, (state, source, done) =>
+        ScenarioCommands = new ScenarioCommands(new ScenarioCommandRules(Catalog, combat, resources, (state, source, done) =>
             BattleStateFactory.SpawnUnit(stateRules, state, StateJson.Text(source, "unit"),
-                StateJson.Integer(source, "owner"), TacticalQueries.Position(source), done: done, source: source));
+                StateJson.Integer(source, "owner"), TacticalQueries.Position(source), done: done, source: source)));
         var scenarios = Scenarios = new ScenarioSystem(new ScenarioRules(Catalog, ScenarioConditions, ScenarioEffects, ScenarioCommands));
         var victory = Victory = new VictorySystem(new ObjectiveRules(Catalog, ScenarioConditions), Objectives);
         Ai = new AiPlanner(new AiPlanningDependencies(new AiRules(Catalog, grids, Space, AbilityCommands, combat, Support, resources, Directives, Turns, Objectives), dependencies.AbilityAiEvaluators, dependencies.AiObjectiveAdvisors), dependencies.AiIntents);

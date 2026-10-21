@@ -37,6 +37,17 @@ public sealed class BattleEventText
     public string Describe(BattleLogContext context, JsonElement value) =>
         entries.TryGetValue(FeedbackJson.Text(value.GetProperty("type")), out var describe) ? describe(context, value) : "";
 
+    public IReadOnlyList<string> DescribeAll(BattleLogContext context, IReadOnlyList<JsonElement> events)
+    {
+        var descriptions = new List<string>(events.Count);
+        foreach (var value in events)
+        {
+            context.Observe(value);
+            descriptions.Add(Describe(context, value));
+        }
+        return descriptions.AsReadOnly();
+    }
+
     private void RequireMutable()
     {
         if (sealedRegistry) throw new InvalidOperationException("battle event text registry is sealed after composition");
@@ -70,7 +81,8 @@ public sealed class BattleEventText
             .Register("areaAttackStructure", (_, value) => text.Format("battle.event.area_structure", Number(value, "damage"), Casualty(value, "destroyed", "battle.event.structure_destroyed")))
             .Register("death", (_, _) => "")
             .Register("heal", (context, value) => text.Format("battle.event.heal", context.UnitName(Id(value, "source")), Number(value, "amount")))
-            .Register("recruit", (context, value) => text.Format("battle.event.recruit", context.PlayerName(context.State.GetProperty("currentPlayer").GetDouble()), context.UnitName(Id(value, "unit"))))
+            .Register("recruit", (context, value) => text.Format("battle.event.recruit",
+                context.PlayerName(Id(value, "owner")), context.UnitName(Id(value, "unit"))))
             .Register("capture", (context, value) => value.GetProperty("captured").GetBoolean()
                 ? text.Format("battle.event.capture", context.PlayerName(Id(value, "player")), Number(value.GetProperty("at"), "x"), Number(value.GetProperty("at"), "y"))
                 : text.Format("battle.event.capture_progress"))

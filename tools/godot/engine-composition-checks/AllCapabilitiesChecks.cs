@@ -66,7 +66,7 @@ static class AllCapabilitiesChecks
                 }));context.Replace(Keys.StatusBehaviors,statuses);
                 progression=new ThresholdRankProgressionPolicy(1,3);context.Replace(Keys.Progression,progression);
                 turns=context.Require(Keys.TurnOrders).Clone().Register(new RootTurns(Same));context.Replace(Keys.TurnOrders,turns);
-                reactions=context.Require(Keys.Reactions).Clone().Register(new("root-guard","root guard",false,0.25,false,false,"root"));context.Replace(Keys.Reactions,reactions);
+                reactions=context.Require(Keys.Reactions).Clone().Register(new("root-guard",false,0.25,false,false));context.Replace(Keys.Reactions,reactions);
                 departures=context.Require(Keys.UnitDepartures).Clone().Register(new("root.departure",context=>
                 {
                     Same(context.Rules.Content);var variables=context.State["scenario"]!["variables"]!.AsObject();variables["departed"]=context.Unit["id"]!.DeepClone();
@@ -167,7 +167,7 @@ static class AllCapabilitiesChecks
     private sealed class RootTurns(Action<ReadOnlyContent> same):ITurnOrderPolicy
     {
         private readonly SideTurnOrder defaults=new();
-        public string Id=>"root-turn";public string Name=>"root turns";
+        public string Id=>"root-turn";
         public JsonObject InitialState(JsonObject state,ReadOnlyContent content)
         {same(content);state["scenario"]!["variables"]!["turnInitial"]=1;return new(){["policy"]=Id,["activeUnit"]=null,["data"]=new JsonObject()};}
         public TurnHandoff Begin(JsonObject state,TurnOrderContext context)

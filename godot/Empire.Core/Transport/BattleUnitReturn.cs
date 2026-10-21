@@ -19,19 +19,17 @@ public static class BattleUnitReturn
         if (StateJson.Objects(state["units"], "units").Any(unit => StateJson.Integer(unit, "id") == id ||
             !string.IsNullOrEmpty(key) && unit["key"]?.GetValue<string>() == key)) return null;
         var owner = request.Owner ?? StateJson.Integer(fallen, "owner");
-        TacticalQueries.Player(state, owner);
         var unit = fallen.DeepClone().AsObject();
         new UnitHealth(catalog, unit).RestoreHealth(request.Hp);
-        unit["owner"] = owner;
         new BattleRelocation(state).PlaceSnapshot(unit, request.At);
         unit["done"] = true;
         unit["statuses"] = new JsonArray();
         unit["morale"]!["current"] = unit["morale"]!["maximum"]!.DeepClone();
         unit["reactionUsedRound"] = -1;
+        var nextUnitId = Math.Max(StateJson.Integer(state, "nextUnitId"), id + 1);
+        new BattleUnitOwnership(state).Assign(new[] { unit }, owner);
         StateJson.Array(state["units"], "units").Add(unit);
-        state["nextUnitId"] = Math.Max(StateJson.Integer(state, "nextUnitId"), id + 1);
-        var commander = StateJson.Objects(state["commanders"], "commanders").FirstOrDefault(value => StateJson.Integer(value, "unitId") == id);
-        if (commander is not null) commander["owner"] = unit["owner"]!.DeepClone();
+        state["nextUnitId"] = nextUnitId;
         StateJson.Array(state["markers"], "markers").Remove(marker);
         emit(new JsonObject { ["type"] = "markerRemoved", ["marker"] = marker["id"]!.DeepClone(),
             ["kind"] = marker["kind"]!.DeepClone(), ["at"] = marker["at"]!.DeepClone() });

@@ -5,7 +5,6 @@
     "movementProfiles": [
       {
         "id": "foot",
-        "name": "步行",
         "tags": [
           "ground"
         ],
@@ -16,7 +15,6 @@
       },
       {
         "id": "mounted",
-        "name": "骑乘",
         "tags": [
           "ground",
           "fast"
@@ -28,7 +26,6 @@
       },
       {
         "id": "heavy",
-        "name": "重装",
         "tags": [
           "ground",
           "heavy"
@@ -40,7 +37,6 @@
       },
       {
         "id": "flying",
-        "name": "飞行",
         "tags": [
           "air"
         ],
@@ -51,7 +47,6 @@
       },
       {
         "id": "naval",
-        "name": "水军",
         "tags": [
           "water"
         ],
@@ -62,7 +57,6 @@
       },
       {
         "id": "amphibious",
-        "name": "两栖",
         "tags": [
           "ground",
           "water"
@@ -83,7 +77,6 @@
           "damage-over-time"
         ],
         "id": "poisoned",
-        "name": "中毒",
         "periodic": {
           "timing": "ownerTurnStart",
           "maxHpFraction": 0.05,
@@ -100,8 +93,7 @@
         "tags": [
           "debuff"
         ],
-        "id": "armor_down",
-        "name": "破甲"
+        "id": "armor_down"
       },
       {
         "stackMode": "refresh",
@@ -116,8 +108,7 @@
           "morale",
           "debuff"
         ],
-        "id": "shaken",
-        "name": "动摇"
+        "id": "shaken"
       },
       {
         "stackMode": "refresh",
@@ -130,8 +121,7 @@
           "morale",
           "buff"
         ],
-        "id": "inspired",
-        "name": "鼓舞"
+        "id": "inspired"
       },
       {
         "stackMode": "refresh",
@@ -145,8 +135,7 @@
           "control",
           "debuff"
         ],
-        "id": "silenced",
-        "name": "沉默"
+        "id": "silenced"
       }
     ],
     "structures": [
@@ -163,8 +152,7 @@
           "building",
           "gate"
         ],
-        "id": "gate",
-        "name": "城门"
+        "id": "gate"
       },
       {
         "maxHp": 100,
@@ -179,8 +167,7 @@
           "building",
           "node"
         ],
-        "id": "command_node",
-        "name": "指挥节点"
+        "id": "command_node"
       },
       {
         "maxHp": 90,
@@ -195,8 +182,7 @@
           "building",
           "supply"
         ],
-        "id": "depot",
-        "name": "补给设施"
+        "id": "depot"
       },
       {
         "maxHp": 120,
@@ -210,8 +196,7 @@
         "tags": [
           "blocking"
         ],
-        "id": "bulkhead",
-        "name": "隔断"
+        "id": "bulkhead"
       },
       {
         "maxHp": 180,
@@ -226,8 +211,7 @@
           "boss",
           "part"
         ],
-        "id": "boss_part",
-        "name": "大型目标部位"
+        "id": "boss_part"
       }
     ],
     "terrainOverlays": [
@@ -243,8 +227,7 @@
           "water",
           "weather"
         ],
-        "id": "flooded",
-        "name": "洪水"
+        "id": "flooded"
       },
       {
         "movementCostDelta": 1,
@@ -257,7 +240,6 @@
           "hazard"
         ],
         "id": "fire_field",
-        "name": "火场",
         "turnStartStatus": {
           "id": "poisoned",
           "duration": 2
@@ -274,7 +256,6 @@
           "hazard"
         ],
         "id": "vacuum",
-        "name": "真空区",
         "turnStartStatus": {
           "id": "shaken",
           "duration": 2
@@ -289,8 +270,7 @@
         "tags": [
           "gravity"
         ],
-        "id": "low_gravity",
-        "name": "低重力区"
+        "id": "low_gravity"
       },
       {
         "movementCostDelta": 1,
@@ -303,7 +283,6 @@
           "interference"
         ],
         "id": "signal_storm",
-        "name": "干扰风暴",
         "turnStartStatus": {
           "id": "shaken",
           "duration": 2
@@ -313,7 +292,6 @@
     "tactics": [
       {
         "id": "rally",
-        "name": "集结号令",
         "costs": [
           {
             "resource": "command_points",
@@ -337,7 +315,6 @@
       },
       {
         "id": "steady",
-        "name": "稳住阵线",
         "costs": [
           {
             "resource": "command_points",
@@ -362,7 +339,6 @@
     "formations": [
       {
         "id": "formation-line",
-        "name": "线列",
         "attackMultiplier": 1.05,
         "defenseDelta": 0.02,
         "movementDelta": -1,
@@ -374,7 +350,6 @@
       },
       {
         "id": "formation-defensive",
-        "name": "防御阵",
         "attackMultiplier": 0.9,
         "defenseDelta": 0.12,
         "movementDelta": -1,
@@ -386,7 +361,6 @@
       },
       {
         "id": "formation-loose",
-        "name": "散阵",
         "attackMultiplier": 1,
         "defenseDelta": 0,
         "movementDelta": 0,
@@ -406,28 +380,24 @@
     "damageTypes": [
       {
         "id": "slash",
-        "name": "斩击",
         "tags": [
           "physical"
         ]
       },
       {
         "id": "pierce",
-        "name": "穿刺",
         "tags": [
           "physical"
         ]
       },
       {
         "id": "blunt",
-        "name": "钝击",
         "tags": [
           "physical"
         ]
       },
       {
         "id": "magic",
-        "name": "魔法",
         "tags": [
           "arcane"
         ]
@@ -436,21 +406,18 @@
     "armorClasses": [
       {
         "id": "unarmored",
-        "name": "无甲",
         "tags": [
           "unarmored"
         ]
       },
       {
         "id": "light",
-        "name": "轻甲",
         "tags": [
           "armored"
         ]
       },
       {
         "id": "heavy",
-        "name": "重甲",
         "tags": [
           "armored",
           "heavy"
@@ -458,7 +425,6 @@
       },
       {
         "id": "flying",
-        "name": "飞行",
         "tags": [
           "air"
         ]
@@ -560,7 +526,6 @@
         "hq": false,
         "tags": [],
         "id": "plain",
-        "name": "平原",
         "cost": {
           "foot": 1,
           "mounted": 1,
@@ -585,7 +550,6 @@
           "road"
         ],
         "id": "road",
-        "name": "道路",
         "cost": {
           "foot": 1,
           "mounted": 1,
@@ -610,7 +574,6 @@
           "road"
         ],
         "id": "bridge",
-        "name": "桥梁",
         "cost": {
           "foot": 1,
           "mounted": 1,
@@ -635,7 +598,6 @@
           "rough"
         ],
         "id": "forest",
-        "name": "森林",
         "cost": {
           "foot": 2,
           "mounted": 3,
@@ -661,7 +623,6 @@
           "high"
         ],
         "id": "hill",
-        "name": "丘陵",
         "cost": {
           "foot": 2,
           "mounted": 3,
@@ -687,7 +648,6 @@
           "high"
         ],
         "id": "mountain",
-        "name": "山地",
         "cost": {
           "foot": 3,
           "mounted": null,
@@ -712,7 +672,6 @@
           "water"
         ],
         "id": "water",
-        "name": "水域",
         "cost": {
           "foot": null,
           "mounted": null,
@@ -737,7 +696,6 @@
           "blocking"
         ],
         "id": "wall",
-        "name": "城墙",
         "cost": {
           "foot": null,
           "mounted": null,
@@ -767,7 +725,6 @@
           "building"
         ],
         "id": "village",
-        "name": "村庄",
         "cost": {
           "foot": 1,
           "mounted": 1,
@@ -803,7 +760,6 @@
           "production"
         ],
         "id": "barracks",
-        "name": "兵营",
         "cost": {
           "foot": 1,
           "mounted": 1,
@@ -845,7 +801,6 @@
           "hq"
         ],
         "id": "castle",
-        "name": "城堡",
         "cost": {
           "foot": 1,
           "mounted": 1,
@@ -890,7 +845,6 @@
         ],
         "damageType": "slash",
         "id": "soldier_sword",
-        "name": "长剑",
         "power": 38
       },
       {
@@ -925,7 +879,6 @@
         ],
         "damageType": "pierce",
         "id": "soldier_javelin",
-        "name": "投枪",
         "power": 26
       },
       {
@@ -944,7 +897,7 @@
           {
             "targetTag": "flying",
             "multiplier": 1.4,
-            "reason": "弓箭对空"
+            "id": "anti-air"
           }
         ],
         "hitEffects": [],
@@ -954,7 +907,6 @@
         ],
         "damageType": "pierce",
         "id": "archer_bow",
-        "name": "短弓",
         "power": 34
       },
       {
@@ -973,12 +925,12 @@
           {
             "targetTag": "support",
             "multiplier": 1.3,
-            "reason": "刺杀辅助单位"
+            "id": "assassination"
           },
           {
             "targetTag": "ranged",
             "multiplier": 1.25,
-            "reason": "切入远程后排"
+            "id": "backline-strike"
           }
         ],
         "hitEffects": [
@@ -993,7 +945,6 @@
         ],
         "damageType": "pierce",
         "id": "rogue_blades",
-        "name": "淬毒双刃",
         "power": 46
       },
       {
@@ -1015,7 +966,6 @@
         ],
         "damageType": "blunt",
         "id": "cleric_staff",
-        "name": "法杖",
         "power": 18
       },
       {
@@ -1038,7 +988,6 @@
         ],
         "damageType": "magic",
         "id": "mage_bolt",
-        "name": "魔法弹",
         "power": 42
       },
       {
@@ -1068,7 +1017,6 @@
         ],
         "damageType": "magic",
         "id": "mage_overcharge",
-        "name": "奥术过载",
         "power": 56
       },
       {
@@ -1093,7 +1041,6 @@
         ],
         "damageType": "magic",
         "id": "mage_meteor",
-        "name": "陨石术",
         "power": 92
       },
       {
@@ -1116,7 +1063,6 @@
         ],
         "damageType": "slash",
         "id": "knight_sword",
-        "name": "骑士剑",
         "power": 48
       },
       {
@@ -1141,7 +1087,6 @@
         ],
         "damageType": "slash",
         "id": "knight_charge",
-        "name": "骑士冲锋",
         "power": 60
       },
       {
@@ -1178,7 +1123,6 @@
         ],
         "damageType": "slash",
         "id": "heroic_breakthrough",
-        "name": "战意裂阵",
         "power": 72
       },
       {
@@ -1201,7 +1145,6 @@
         ],
         "damageType": "blunt",
         "id": "ogre_club",
-        "name": "巨棒",
         "power": 52
       },
       {
@@ -1220,7 +1163,7 @@
           {
             "targetTag": "building",
             "multiplier": 1.5,
-            "reason": "攻城武器"
+            "id": "siege"
           }
         ],
         "hitEffects": [],
@@ -1230,7 +1173,6 @@
         ],
         "damageType": "pierce",
         "id": "ballista_bolt",
-        "name": "重弩",
         "power": 58
       },
       {
@@ -1253,7 +1195,6 @@
         ],
         "damageType": "magic",
         "id": "dragon_breath",
-        "name": "龙息",
         "power": 62
       }
     ],
@@ -1274,7 +1215,6 @@
         "tags": [
           "infantry"
         ],
-        "blurb": "廉价的战线核心，能占领城镇。",
         "movementClass": "foot",
         "armorClass": "light",
         "value": 100,
@@ -1285,7 +1225,6 @@
           }
         ],
         "id": "soldier",
-        "name": "剑士",
         "weapons": [
           "soldier_sword",
           "soldier_javelin"
@@ -1308,7 +1247,6 @@
           "infantry",
           "ranged"
         ],
-        "blurb": "隔一格射击不吃近战反击，克制飞行单位。",
         "movementClass": "foot",
         "armorClass": "unarmored",
         "value": 150,
@@ -1319,7 +1257,6 @@
           }
         ],
         "id": "archer",
-        "name": "弓箭手",
         "weapons": [
           "archer_bow"
         ]
@@ -1340,7 +1277,6 @@
         "tags": [
           "infantry"
         ],
-        "blurb": "机动极高，专杀无甲的法师与弓手。",
         "movementClass": "foot",
         "armorClass": "unarmored",
         "value": 200,
@@ -1351,7 +1287,6 @@
           }
         ],
         "id": "rogue",
-        "name": "刺客",
         "weapons": [
           "rogue_blades"
         ]
@@ -1374,7 +1309,6 @@
           "infantry",
           "support"
         ],
-        "blurb": "治疗相邻友军 30 点生命，自身脆弱。",
         "movementClass": "foot",
         "armorClass": "unarmored",
         "value": 250,
@@ -1385,7 +1319,6 @@
           }
         ],
         "id": "cleric",
-        "name": "牧师",
         "weapons": [
           "cleric_staff"
         ]
@@ -1407,7 +1340,6 @@
           "infantry",
           "ranged"
         ],
-        "blurb": "魔法伤害无视重甲，是攻城的答案；陨石术需要咏唱两个行动轮。",
         "movementClass": "foot",
         "armorClass": "unarmored",
         "value": 300,
@@ -1418,7 +1350,6 @@
           }
         ],
         "id": "mage",
-        "name": "法师",
         "weapons": [
           "mage_bolt",
           "mage_overcharge",
@@ -1440,7 +1371,6 @@
         "tags": [
           "cavalry"
         ],
-        "blurb": "六格突进的重锤，无法占领城镇，怕魔法。",
         "movementClass": "mounted",
         "armorClass": "heavy",
         "value": 350,
@@ -1451,7 +1381,6 @@
           }
         ],
         "id": "knight",
-        "name": "骑士",
         "weapons": [
           "knight_sword",
           "knight_charge",
@@ -1473,7 +1402,6 @@
         "tags": [
           "monster"
         ],
-        "blurb": "血厚甲厚的攻坚肉盾，走不上山地。",
         "movementClass": "heavy",
         "armorClass": "heavy",
         "value": 400,
@@ -1484,7 +1412,6 @@
           }
         ],
         "id": "ogre",
-        "name": "巨魔",
         "weapons": [
           "ogre_club"
         ]
@@ -1505,7 +1432,6 @@
           "siege",
           "ranged"
         ],
-        "blurb": "攻城器械：必须静止开火，绝不会被反击。",
         "movementClass": "heavy",
         "armorClass": "light",
         "value": 350,
@@ -1516,7 +1442,6 @@
           }
         ],
         "id": "ballista",
-        "name": "弩车",
         "weapons": [
           "ballista_bolt"
         ]
@@ -1537,7 +1462,6 @@
           "monster",
           "flying"
         ],
-        "blurb": "无视地形飞行，唯一弱点是弓箭。",
         "movementClass": "flying",
         "armorClass": "flying",
         "value": 700,
@@ -1548,7 +1472,6 @@
           }
         ],
         "id": "dragon",
-        "name": "巨龙",
         "weapons": [
           "dragon_breath"
         ]
@@ -1565,7 +1488,6 @@
         "masteryAbilities": [],
         "tags": [],
         "id": "militia",
-        "name": "民兵",
         "unitType": "soldier"
       },
       {
@@ -1580,7 +1502,6 @@
         "masteryAbilities": [],
         "tags": [],
         "id": "ranger",
-        "name": "游侠",
         "unitType": "archer"
       },
       {
@@ -1595,7 +1516,6 @@
         "masteryAbilities": [],
         "tags": [],
         "id": "shadow",
-        "name": "影刃",
         "unitType": "rogue"
       },
       {
@@ -1612,7 +1532,6 @@
         ],
         "tags": [],
         "id": "acolyte",
-        "name": "侍祭",
         "unitType": "cleric"
       },
       {
@@ -1628,7 +1547,6 @@
         "masteryAbilities": [],
         "tags": [],
         "id": "knight-order",
-        "name": "骑士",
         "unitType": "knight"
       },
       {
@@ -1643,7 +1561,6 @@
         "masteryAbilities": [],
         "tags": [],
         "id": "war-mage",
-        "name": "战斗法师",
         "unitType": "mage"
       },
       {
@@ -1658,7 +1575,6 @@
         "masteryAbilities": [],
         "tags": [],
         "id": "siege-engineer",
-        "name": "攻城技师",
         "unitType": "ballista"
       },
       {
@@ -1671,7 +1587,6 @@
         "masteryAbilities": [],
         "tags": [],
         "id": "ogre-warrior",
-        "name": "巨魔战士",
         "unitType": "ogre"
       },
       {
@@ -1686,7 +1601,6 @@
         "masteryAbilities": [],
         "tags": [],
         "id": "dragon-lord",
-        "name": "龙骑领主",
         "unitType": "dragon"
       }
     ]
@@ -1714,7 +1628,6 @@
           "outside"
         ],
         "id": "c01.outside",
-        "name": "地图之外",
         "cost": {
           "foot": null,
           "mounted": null,
@@ -1740,7 +1653,6 @@
           "burned"
         ],
         "id": "c01.scorched",
-        "name": "焦土农田",
         "cost": {
           "foot": 2,
           "mounted": 3,
@@ -1766,7 +1678,6 @@
           "wet"
         ],
         "id": "c01.riverbank",
-        "name": "泥泞河岸",
         "cost": {
           "foot": 2,
           "mounted": 4,
@@ -1792,7 +1703,6 @@
           "urban"
         ],
         "id": "c01.street",
-        "name": "王都石街",
         "cost": {
           "foot": 1,
           "mounted": 1,
@@ -1818,7 +1728,6 @@
           "hazard"
         ],
         "id": "c01.oathway",
-        "name": "受控誓文",
         "cost": {
           "foot": 2,
           "mounted": 2,
@@ -1844,7 +1753,6 @@
           "urban"
         ],
         "id": "c01.forge",
-        "name": "山炉石台",
         "cost": {
           "foot": 1,
           "mounted": 2,
@@ -1870,7 +1778,6 @@
           "rough"
         ],
         "id": "c01.graveyard",
-        "name": "无声墓园",
         "cost": {
           "foot": 2,
           "mounted": 3,
@@ -1896,7 +1803,6 @@
           "molten"
         ],
         "id": "c01.molten",
-        "name": "熔流沟渠",
         "cost": {
           "foot": null,
           "mounted": null,
@@ -1922,7 +1828,6 @@
           "rough"
         ],
         "id": "c01.mother-root",
-        "name": "银林母根",
         "cost": {
           "foot": 2,
           "mounted": null,
@@ -1948,7 +1853,6 @@
           "outpost"
         ],
         "id": "c01.outpost",
-        "name": "战役据点",
         "cost": {
           "foot": 1,
           "mounted": 1,
@@ -1974,7 +1878,6 @@
           "outpost"
         ],
         "id": "c01.field-post",
-        "name": "临时军营",
         "cost": {
           "foot": 1,
           "mounted": 1,
@@ -2000,7 +1903,6 @@
           "hq"
         ],
         "id": "c01.keep",
-        "name": "战役主堡",
         "cost": {
           "foot": 1,
           "mounted": 1,
@@ -2045,7 +1947,6 @@
         ],
         "damageType": "slash",
         "id": "c01.border-blade",
-        "name": "边境长剑",
         "power": 39
       },
       {
@@ -2067,7 +1968,6 @@
         ],
         "damageType": "blunt",
         "id": "c01.civilian-tool",
-        "name": "随身工具",
         "power": 8
       },
       {
@@ -2097,7 +1997,6 @@
         ],
         "damageType": "slash",
         "id": "c01.gray-oath",
-        "name": "灰誓裂阵",
         "power": 52
       },
       {
@@ -2120,7 +2019,6 @@
         ],
         "damageType": "pierce",
         "id": "c01.guard-spear",
-        "name": "灰旗长枪",
         "power": 37
       },
       {
@@ -2139,7 +2037,7 @@
           {
             "targetTag": "cavalry",
             "multiplier": 1.35,
-            "reason": "拒马枪阵"
+            "id": "anti-charge"
           }
         ],
         "hitEffects": [],
@@ -2150,7 +2048,6 @@
         ],
         "damageType": "pierce",
         "id": "c01.legion-spear",
-        "name": "军团拒马枪",
         "power": 42
       },
       {
@@ -2173,7 +2070,6 @@
         ],
         "damageType": "pierce",
         "id": "c01.knight-lance",
-        "name": "骑士战枪",
         "power": 50
       },
       {
@@ -2204,7 +2100,6 @@
         ],
         "damageType": "slash",
         "id": "c01.knight-charge",
-        "name": "破阵冲锋",
         "power": 60
       },
       {
@@ -2223,7 +2118,7 @@
           {
             "targetTag": "flying",
             "multiplier": 1.4,
-            "reason": "银木对空箭"
+            "id": "anti-air"
           }
         ],
         "hitEffects": [],
@@ -2233,7 +2128,6 @@
         ],
         "damageType": "pierce",
         "id": "c01.longbow",
-        "name": "银木长弓",
         "power": 38
       },
       {
@@ -2257,7 +2151,6 @@
         ],
         "damageType": "pierce",
         "id": "c01.ranger-bow",
-        "name": "灰境猎弓",
         "power": 35
       },
       {
@@ -2280,7 +2173,6 @@
         ],
         "damageType": "magic",
         "id": "c01.lantern-staff",
-        "name": "守墓灯杖",
         "power": 24
       },
       {
@@ -2299,12 +2191,12 @@
           {
             "targetTag": "undead",
             "multiplier": 1.4,
-            "reason": "归还亡者姓名"
+            "id": "last-rites"
           },
           {
             "targetTag": "oathbound",
             "multiplier": 1.3,
-            "reason": "切断控制誓文"
+            "id": "oath-severing"
           }
         ],
         "hitEffects": [
@@ -2320,7 +2212,6 @@
         ],
         "damageType": "magic",
         "id": "c01.oath-dispel",
-        "name": "断誓灯火",
         "power": 43
       },
       {
@@ -2343,7 +2234,6 @@
         ],
         "damageType": "blunt",
         "id": "c01.engineer-hammer",
-        "name": "工兵锤",
         "power": 32
       },
       {
@@ -2362,7 +2252,7 @@
           {
             "targetTag": "building",
             "multiplier": 1.6,
-            "reason": "工兵爆破"
+            "id": "demolition"
           }
         ],
         "hitEffects": [],
@@ -2373,7 +2263,6 @@
         ],
         "damageType": "blunt",
         "id": "c01.satchel-charge",
-        "name": "破门火药",
         "power": 56
       },
       {
@@ -2396,7 +2285,6 @@
         ],
         "damageType": "blunt",
         "id": "c01.rune-hammer",
-        "name": "山炉符文锤",
         "power": 44
       },
       {
@@ -2425,7 +2313,6 @@
         ],
         "damageType": "magic",
         "id": "c01.forge-burst",
-        "name": "炉心震击",
         "power": 50
       },
       {
@@ -2448,7 +2335,6 @@
         ],
         "damageType": "pierce",
         "id": "c01.wolf-spear",
-        "name": "荒原骑矛",
         "power": 45
       },
       {
@@ -2471,7 +2357,6 @@
         ],
         "damageType": "slash",
         "id": "c01.undead-blade",
-        "name": "回声残刃",
         "power": 34
       },
       {
@@ -2494,7 +2379,6 @@
         ],
         "damageType": "magic",
         "id": "c01.ghost-touch",
-        "name": "失名之触",
         "power": 36
       },
       {
@@ -2523,7 +2407,6 @@
         ],
         "damageType": "magic",
         "id": "c01.inquisitor-flame",
-        "name": "审判誓火",
         "power": 44
       },
       {
@@ -2553,7 +2436,6 @@
         ],
         "damageType": "blunt",
         "id": "c01.golem-slam",
-        "name": "石躯重击",
         "power": 49
       },
       {
@@ -2572,7 +2454,7 @@
           {
             "targetTag": "building",
             "multiplier": 1.45,
-            "reason": "攻城重弩"
+            "id": "siege"
           }
         ],
         "hitEffects": [],
@@ -2582,7 +2464,6 @@
         ],
         "damageType": "pierce",
         "id": "c01.ballista",
-        "name": "城防重弩",
         "power": 55
       },
       {
@@ -2605,7 +2486,6 @@
         ],
         "damageType": "magic",
         "id": "c01.oath-bolt",
-        "name": "誓火弹",
         "power": 41
       },
       {
@@ -2629,7 +2509,6 @@
         ],
         "damageType": "magic",
         "id": "c01.dragon-breath",
-        "name": "盟约龙息",
         "power": 58
       },
       {
@@ -2653,7 +2532,6 @@
         ],
         "damageType": "blunt",
         "id": "c01.colossus-sweep",
-        "name": "墓园横扫",
         "power": 54
       }
     ],
@@ -2680,7 +2558,6 @@
           "commander",
           "infantry"
         ],
-        "blurb": "从见习旗官开始学习让他人也能说“不”的年轻指挥官。",
         "movementClass": "foot",
         "armorClass": "light",
         "value": 420,
@@ -2695,7 +2572,6 @@
           "resilience": 0.35
         },
         "id": "c01.laiya",
-        "name": "莱娅",
         "weapons": [
           "c01.border-blade",
           "c01.gray-oath"
@@ -2721,7 +2597,6 @@
           "commander",
           "cavalry"
         ],
-        "blurb": "可靠而强硬的王国骑士，莱娅的导师。",
         "movementClass": "mounted",
         "armorClass": "heavy",
         "value": 560,
@@ -2736,7 +2611,6 @@
           "resilience": 0.1
         },
         "id": "c01.roderick",
-        "name": "罗德里克",
         "weapons": [
           "c01.knight-lance",
           "c01.knight-charge"
@@ -2763,7 +2637,6 @@
           "commander",
           "infantry"
         ],
-        "blurb": "相信程序与秩序可以减少任性伤亡的帝国军官。",
         "movementClass": "foot",
         "armorClass": "heavy",
         "value": 520,
@@ -2778,7 +2651,6 @@
           "resilience": 0.1
         },
         "id": "c01.cain",
-        "name": "凯恩",
         "weapons": [
           "c01.legion-spear",
           "c01.knight-charge"
@@ -2803,7 +2675,6 @@
           "scout",
           "infantry"
         ],
-        "blurb": "先记脚印、伤口和姓名，再谈旗帜的灰境猎人。",
         "movementClass": "foot",
         "armorClass": "unarmored",
         "value": 360,
@@ -2818,7 +2689,6 @@
           "resilience": 0.1
         },
         "id": "c01.bran",
-        "name": "布兰",
         "weapons": [
           "c01.ranger-bow",
           "c01.border-blade"
@@ -2845,7 +2715,6 @@
           "gravekeeper",
           "infantry"
         ],
-        "blurb": "坚持让每一段亡者记忆保有姓名与修改痕迹的守墓人。",
         "movementClass": "foot",
         "armorClass": "unarmored",
         "value": 390,
@@ -2860,7 +2729,6 @@
           "resilience": 0.1
         },
         "id": "c01.mirelle",
-        "name": "米蕾尔",
         "weapons": [
           "c01.lantern-staff",
           "c01.oath-dispel"
@@ -2887,7 +2755,6 @@
           "engineer",
           "infantry"
         ],
-        "blurb": "用账目、契约和工程把理想变成可维护组织的佣兵首领。",
         "movementClass": "foot",
         "armorClass": "light",
         "value": 400,
@@ -2902,7 +2769,6 @@
           "resilience": 0.1
         },
         "id": "c01.tasha",
-        "name": "塔莎",
         "weapons": [
           "c01.engineer-hammer",
           "c01.satchel-charge"
@@ -2926,7 +2792,6 @@
           "monster",
           "flying"
         ],
-        "blurb": "只接受平等盟约、始终保有离开权的幼龙。",
         "movementClass": "flying",
         "armorClass": "flying",
         "value": 680,
@@ -2941,7 +2806,6 @@
           "resilience": 0.35
         },
         "id": "c01.ivra",
-        "name": "伊芙拉",
         "weapons": [
           "c01.dragon-breath"
         ]
@@ -2965,7 +2829,6 @@
         "tags": [
           "infantry"
         ],
-        "blurb": "可靠的近战与占领骨干。",
         "movementClass": "foot",
         "armorClass": "light",
         "value": 120,
@@ -2980,7 +2843,6 @@
           "resilience": 0.1
         },
         "id": "c01.swordsman",
-        "name": "边境剑士",
         "weapons": [
           "c01.border-blade"
         ]
@@ -3005,7 +2867,6 @@
           "infantry",
           "guard"
         ],
-        "blurb": "以援护和阵线保护灰旗同伴。",
         "movementClass": "foot",
         "armorClass": "light",
         "value": 170,
@@ -3020,7 +2881,6 @@
           "resilience": 0.1
         },
         "id": "c01.banner-guard",
-        "name": "灰旗卫士",
         "weapons": [
           "c01.guard-spear"
         ]
@@ -3042,7 +2902,6 @@
           "infantry",
           "ranged"
         ],
-        "blurb": "适应丘陵与林地的轻装射手。",
         "movementClass": "foot",
         "armorClass": "unarmored",
         "value": 160,
@@ -3057,7 +2916,6 @@
           "resilience": 0.1
         },
         "id": "c01.archer",
-        "name": "边境弓手",
         "weapons": [
           "c01.ranger-bow"
         ]
@@ -3077,7 +2935,6 @@
         "tags": [
           "cavalry"
         ],
-        "blurb": "长距离冲锋的重装骑兵。",
         "movementClass": "mounted",
         "armorClass": "heavy",
         "value": 340,
@@ -3092,7 +2949,6 @@
           "resilience": 0.1
         },
         "id": "c01.knight",
-        "name": "王国骑士",
         "weapons": [
           "c01.knight-lance",
           "c01.knight-charge"
@@ -3118,7 +2974,6 @@
           "infantry",
           "guard"
         ],
-        "blurb": "帝国军团的稳固盾墙。",
         "movementClass": "foot",
         "armorClass": "heavy",
         "value": 230,
@@ -3133,7 +2988,6 @@
           "resilience": 0.1
         },
         "id": "c01.legion-shield",
-        "name": "军团盾卫",
         "weapons": [
           "c01.legion-spear"
         ]
@@ -3158,7 +3012,6 @@
           "arcane",
           "gravekeeper"
         ],
-        "blurb": "治疗盟友并压制誓文亡灵。",
         "movementClass": "foot",
         "armorClass": "unarmored",
         "value": 260,
@@ -3173,7 +3026,6 @@
           "resilience": 0.1
         },
         "id": "c01.gravekeeper",
-        "name": "守墓人",
         "weapons": [
           "c01.lantern-staff",
           "c01.oath-dispel"
@@ -3194,7 +3046,6 @@
           "support",
           "transport"
         ],
-        "blurb": "把步兵送过开阔地的灰旗补给车，不载骑手与器械。",
         "movementClass": "heavy",
         "armorClass": "light",
         "value": 210,
@@ -3209,7 +3060,6 @@
           "resilience": 0.1
         },
         "id": "c01.supply-wagon",
-        "name": "灰旗辎重车",
         "weapons": [
           "c01.border-blade"
         ],
@@ -3237,7 +3087,6 @@
           "infantry",
           "engineer"
         ],
-        "blurb": "擅长拆除结构与打开战场缺口。",
         "movementClass": "foot",
         "armorClass": "light",
         "value": 250,
@@ -3252,7 +3101,6 @@
           "resilience": 0.1
         },
         "id": "c01.engineer",
-        "name": "工兵",
         "weapons": [
           "c01.engineer-hammer",
           "c01.satchel-charge"
@@ -3275,7 +3123,6 @@
           "cavalry",
           "wasteland"
         ],
-        "blurb": "高机动侧击单位，不适合正面硬拼。",
         "movementClass": "mounted",
         "armorClass": "light",
         "value": 300,
@@ -3290,7 +3137,6 @@
           "resilience": 0.1
         },
         "id": "c01.wolf-rider",
-        "name": "荒原狼骑",
         "weapons": [
           "c01.wolf-spear"
         ]
@@ -3313,7 +3159,6 @@
           "oathbound",
           "infantry"
         ],
-        "blurb": "被誓文反复拉回战场的亡者回声。",
         "movementClass": "foot",
         "armorClass": "light",
         "value": 140,
@@ -3328,7 +3173,6 @@
           "resilience": 0.5
         },
         "id": "c01.skeleton-guard",
-        "name": "骸骨守卫",
         "weapons": [
           "c01.undead-blade"
         ]
@@ -3350,7 +3194,6 @@
           "oathbound",
           "flying"
         ],
-        "blurb": "失去姓名后无法安息的记忆。",
         "movementClass": "flying",
         "armorClass": "unarmored",
         "value": 200,
@@ -3365,7 +3208,6 @@
           "resilience": 0.1
         },
         "id": "c01.ghost",
-        "name": "失名幽魂",
         "weapons": [
           "c01.ghost-touch"
         ]
@@ -3389,7 +3231,6 @@
           "arcane",
           "oathbound"
         ],
-        "blurb": "用群体誓火压制异议的教廷军官。",
         "movementClass": "foot",
         "armorClass": "heavy",
         "value": 330,
@@ -3404,7 +3245,6 @@
           "resilience": 0.1
         },
         "id": "c01.inquisitor",
-        "name": "圣辉审判官",
         "weapons": [
           "c01.inquisitor-flame"
         ]
@@ -3429,7 +3269,6 @@
           "guard",
           "oathbound"
         ],
-        "blurb": "以重甲和誓火推进净化命令的教廷卫队。",
         "movementClass": "foot",
         "armorClass": "heavy",
         "value": 360,
@@ -3444,7 +3283,6 @@
           "resilience": 0.1
         },
         "id": "c01.templar",
-        "name": "圣辉圣殿骑士",
         "weapons": [
           "c01.legion-spear",
           "c01.inquisitor-flame"
@@ -3466,7 +3304,6 @@
           "siege",
           "ranged"
         ],
-        "blurb": "射程极远但无法移动后射击。",
         "movementClass": "heavy",
         "armorClass": "light",
         "value": 330,
@@ -3481,7 +3318,6 @@
           "resilience": 0.1
         },
         "id": "c01.ballista",
-        "name": "城防弩车",
         "weapons": [
           "c01.ballista"
         ]
@@ -3504,7 +3340,6 @@
           "ranged",
           "arcane"
         ],
-        "blurb": "以魔法穿透重甲的阵地单位。",
         "movementClass": "foot",
         "armorClass": "unarmored",
         "value": 290,
@@ -3519,7 +3354,6 @@
           "resilience": 0.1
         },
         "id": "c01.battle-mage",
-        "name": "战斗法师",
         "weapons": [
           "c01.oath-bolt"
         ]
@@ -3544,7 +3378,6 @@
           "guard",
           "forge"
         ],
-        "blurb": "山炉氏族极难撼动的防守核心。",
         "movementClass": "heavy",
         "armorClass": "heavy",
         "value": 270,
@@ -3559,7 +3392,6 @@
           "resilience": 0.1
         },
         "id": "c01.rune-shield",
-        "name": "符文盾卫",
         "weapons": [
           "c01.rune-hammer"
         ]
@@ -3583,7 +3415,6 @@
           "arcane",
           "forge"
         ],
-        "blurb": "用符文破甲并维护古代机械。",
         "movementClass": "foot",
         "armorClass": "heavy",
         "value": 320,
@@ -3598,7 +3429,6 @@
           "resilience": 0.1
         },
         "id": "c01.rune-artificer",
-        "name": "符文工匠",
         "weapons": [
           "c01.rune-hammer",
           "c01.forge-burst"
@@ -3621,7 +3451,6 @@
           "construct",
           "forge"
         ],
-        "blurb": "缓慢、坚固，能把敌人推出阵线。",
         "movementClass": "heavy",
         "armorClass": "heavy",
         "value": 430,
@@ -3636,7 +3465,6 @@
           "resilience": 0.7
         },
         "id": "c01.stone-golem",
-        "name": "石魔像",
         "weapons": [
           "c01.golem-slam"
         ]
@@ -3659,7 +3487,6 @@
           "ranged",
           "silverwood"
         ],
-        "blurb": "远射和对空能力兼备的银林守军。",
         "movementClass": "foot",
         "armorClass": "unarmored",
         "value": 250,
@@ -3674,7 +3501,6 @@
           "resilience": 0.1
         },
         "id": "c01.silver-longbow",
-        "name": "银林长弓",
         "weapons": [
           "c01.longbow"
         ]
@@ -3698,7 +3524,6 @@
           "scout",
           "silverwood"
         ],
-        "blurb": "借森林掩护快速转移的游击者。",
         "movementClass": "foot",
         "armorClass": "light",
         "value": 280,
@@ -3713,7 +3538,6 @@
           "resilience": 0.1
         },
         "id": "c01.woodland-walker",
-        "name": "林地行者",
         "weapons": [
           "c01.ranger-bow",
           "c01.border-blade"
@@ -3739,7 +3563,6 @@
           "arcane",
           "silverwood"
         ],
-        "blurb": "维持母根循环的森林施法者。",
         "movementClass": "foot",
         "armorClass": "unarmored",
         "value": 300,
@@ -3754,7 +3577,6 @@
           "resilience": 0.1
         },
         "id": "c01.druid",
-        "name": "银林德鲁伊",
         "weapons": [
           "c01.oath-bolt"
         ]
@@ -3776,7 +3598,6 @@
           "undead",
           "oathbound"
         ],
-        "blurb": "由无数无名记忆聚成的战争残响。",
         "movementClass": "heavy",
         "armorClass": "heavy",
         "value": 620,
@@ -3791,7 +3612,6 @@
           "resilience": 0.75
         },
         "id": "c01.cemetery-colossus",
-        "name": "墓园巨像",
         "weapons": [
           "c01.colossus-sweep"
         ]
@@ -3811,7 +3631,6 @@
           "civilian",
           "escort"
         ],
-        "blurb": "必须安全带离战区的非战斗人员。",
         "movementClass": "foot",
         "armorClass": "unarmored",
         "value": 20,
@@ -3821,7 +3640,6 @@
           "resilience": 0
         },
         "id": "c01.refugee",
-        "name": "边境难民",
         "weapons": [
           "c01.civilian-tool"
         ]
@@ -3842,7 +3660,6 @@
           "engineer",
           "escort"
         ],
-        "blurb": "能把一座桥或炉心从崩溃边缘拉回来的普通工匠。",
         "movementClass": "foot",
         "armorClass": "unarmored",
         "value": 35,
@@ -3852,7 +3669,6 @@
           "resilience": 0.1
         },
         "id": "c01.laborer",
-        "name": "随军工匠",
         "weapons": [
           "c01.civilian-tool"
         ]
@@ -3874,14 +3690,12 @@
           "debuff",
           "oathbound"
         ],
-        "id": "c01.oath-controlled",
-        "name": "誓文控制"
+        "id": "c01.oath-controlled"
       }
     ],
     "tactics": [
       {
         "id": "c01.gray-rally",
-        "name": "灰旗集结",
         "costs": [
           {
             "resource": "command_points",
@@ -3910,7 +3724,6 @@
       },
       {
         "id": "c01.hold-the-line",
-        "name": "守住退路",
         "costs": [
           {
             "resource": "command_points",
@@ -3933,7 +3746,6 @@
       },
       {
         "id": "c01.name-the-dead",
-        "name": "归还真名",
         "costs": [
           {
             "resource": "command_points",
@@ -3970,8 +3782,7 @@
           "silverwood",
           "sacred"
         ],
-        "id": "c01.mother-root",
-        "name": "银林母根"
+        "id": "c01.mother-root"
       }
     ]
   }

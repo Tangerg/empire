@@ -4,7 +4,7 @@ internal static class GridDirections
 {
     internal static readonly IReadOnlyList<DirectionDef> Square = Array.AsReadOnly(new DirectionDef[]
     {
-        new("north", "北"), new("east", "东"), new("south", "南"), new("west", "西"),
+        new("north"), new("east"), new("south"), new("west"),
     });
 
     internal static string Opposite(string grid, string direction) => direction switch

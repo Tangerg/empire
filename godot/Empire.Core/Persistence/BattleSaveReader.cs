@@ -54,9 +54,10 @@ internal sealed partial class BattleSaveInspection
 
     internal static JsonObject RequireHeader(JsonObject save)
     {
+        if (save["battle"] is JsonObject legacy && legacy.ContainsKey("levelName"))
+            throw new StoredDocumentException("Level titles belong to presentation metadata, not battle headers.");
         if (save["battle"] is not JsonObject header ||
             !StoredSchema.Matches(header["levelId"], StoredKind.String) ||
-            !StoredSchema.Matches(header["levelName"], StoredKind.String) ||
             !StoredSchema.Matches(header["turn"], StoredKind.Integer) ||
             StateJson.Number(header["turn"], "turn") < 1 ||
             !StoredSchema.Matches(header["phase"], StoredKind.String) ||
@@ -84,7 +85,7 @@ internal sealed partial class BattleSaveInspection
         if (!StoredSchema.ValidTimestamp(StateJson.Text(save, "savedAt"))) StoredSchema.Reject("保存时间缺失或损坏");
         var header = RequireHeader(save);
         var state = State(save);
-        foreach (var key in new[] { "levelId", "levelName", "turn", "phase" })
+        foreach (var key in new[] { "levelId", "turn", "phase" })
             if (!Empire.Core.Determinism.EcmaJson.DeepEquals(header[key], state[key])) StoredSchema.Reject("战斗摘要与战斗状态不一致");
     }
 

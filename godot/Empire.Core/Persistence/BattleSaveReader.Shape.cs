@@ -11,8 +11,10 @@ internal sealed partial class BattleSaveInspection
         StoredSchema.Require(save, "存档",
             ("schema", StoredKind.Number), ("battle", StoredKind.Object), ("ruleset", StoredKind.Object), ("savedAt", StoredKind.String), ("state", StoredKind.Object));
         var state = State(save);
+        if (state.ContainsKey("levelName"))
+            StoredSchema.Reject("Level titles belong to presentation metadata, not battle state.");
         StoredSchema.Require(state, "战斗",
-            ("levelId", StoredKind.String), ("levelName", StoredKind.String), ("map", StoredKind.Object), ("units", StoredKind.Array),
+            ("levelId", StoredKind.String), ("map", StoredKind.Object), ("units", StoredKind.Array),
             ("structures", StoredKind.Array), ("composites", StoredKind.Array), ("embarkedUnits", StoredKind.Array), ("markers", StoredKind.Array),
             ("commanders", StoredKind.Array), ("players", StoredKind.Array), ("rules", StoredKind.Object), ("turn", StoredKind.Number),
             ("currentPlayer", StoredKind.Number), ("phase", StoredKind.String), ("conclusion", StoredKind.NullableObject),
@@ -130,8 +132,8 @@ internal sealed partial class BattleSaveInspection
             StateJson.Objects(state["embarkedUnits"], "embarkedUnits").Select(entry => StateJson.Object(entry["unit"], "embarked unit")));
         foreach (var unit in livingUnits)
         {
-            if (StateJson.Integer(unit, "id") < 1 || !ids.Add(StateJson.Integer(unit, "id")) || !owners.Contains(StateJson.Integer(unit, "owner")))
-                StoredSchema.Reject("单位标识或所属玩家不合法");
+            if (StateJson.Integer(unit, "id") < 1 || !ids.Add(StateJson.Integer(unit, "id")))
+                StoredSchema.Reject("单位标识不合法");
             if (unit["key"] is { } key && StateJson.Text(key, "unit key") is { Length: > 0 } text && !keys.Add(text))
                 StoredSchema.Reject("存活单位的键重复");
             if (StateJson.Number(unit["hp"], "hp") <= 0) StoredSchema.Reject("存活单位生命值不合法");

@@ -51,7 +51,7 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
     if (config["aiWeight"] is { } weight) resources.Adapters.Replace(resources.Adapters.Get("command_points") with { AiWeight = Number(weight, "aiWeight") });
     if (config["fundsAvailable"] is { } funds) resources.Adapters.Replace(resources.Adapters.Get("funds") with
     { Account = _ => new(() => new(Number(funds, "fundsAvailable"), null), _ => { }) });
-    resources.Adapters.Register(new("charge", "Charge", "squad", true, 1, subject =>
+    resources.Adapters.Register(new("charge", "squad", true, 1, subject =>
     {
         var account = subject.Holder["resources"]!["charge"]!.AsObject();
         return new(() => new(Number(account["current"], "current"), Number(account["capacity"], "capacity")), current => account["current"] = current);

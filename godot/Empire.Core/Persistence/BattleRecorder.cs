@@ -6,7 +6,7 @@ namespace Empire.Core.Persistence;
 
 public sealed class BattleRecorder
 {
-    public const int Schema = 2;
+    public const int Schema = 3;
     private readonly JsonArray actions = new();
     private readonly JsonObject ruleset;
     private readonly string levelId;

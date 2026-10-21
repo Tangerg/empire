@@ -86,6 +86,11 @@ public sealed class RecruitmentOrders
         foreach (var cost in resources.SpendAll(subject,StateJson.Array(content.Get("units",type)["recruitCosts"],"recruitCosts")))
             resources.Announce(subject,cost.Resource,-cost.Value,emit);
         var unit = spawn(state,type,owner,at,!StateJson.IsTrue(state["rules"]!["recruitsActImmediately"]));
-        emit(new JsonObject { ["type"]="recruit",["unit"]=unit["id"]!.DeepClone(),["at"]=TacticalQueries.CoordinateJson(at) });
+        emit(new JsonObject
+        {
+            ["type"] = "recruit", ["unit"] = unit["id"]!.DeepClone(),
+            ["unitType"] = unit["type"]!.DeepClone(), ["owner"] = unit["owner"]!.DeepClone(),
+            ["at"] = TacticalQueries.CoordinateJson(at),
+        });
     }
 }

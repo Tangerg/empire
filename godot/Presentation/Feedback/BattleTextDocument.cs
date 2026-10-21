@@ -3,11 +3,15 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core.Determinism;
 using Empire.Core.Objectives;
+using Empire.Core.Scenario;
 using Empire.Localization;
 
 namespace Empire.Presentation.Feedback;
 
-/// <summary>Validated presentation metadata, addressed only by canonical level, player, and objective identities.</summary>
+public sealed record BattleTextDefinitions(JsonArray Levels, ObjectiveHandlerRegistry Objectives,
+    ScenarioEffectHandlerRegistry ScenarioEffects);
+
+/// <summary>Validated presentation metadata addressed only by canonical battle identities.</summary>
 public sealed class BattleTextDocument
 {
     private sealed record TextEntry(string? Key, string? Literal, bool Generated = false)
@@ -17,23 +21,31 @@ public sealed class BattleTextDocument
 
     private sealed record PlayerEntry(TextEntry Name, IReadOnlyDictionary<string, TextEntry> Objectives);
 
-    private readonly IReadOnlyDictionary<string, IReadOnlyDictionary<int, PlayerEntry>> levels;
+    private sealed record LevelEntry(TextEntry Title, TextEntry Description,
+        IReadOnlyDictionary<string, TextEntry> Signals, IReadOnlyDictionary<int, PlayerEntry> Players);
+
+    private readonly IReadOnlyDictionary<string, LevelEntry> levels;
     private readonly ObjectiveHandlerRegistry handlers;
 
-    private BattleTextDocument(IReadOnlyDictionary<string, IReadOnlyDictionary<int, PlayerEntry>> levels,
+    private BattleTextDocument(IReadOnlyDictionary<string, LevelEntry> levels,
         ObjectiveHandlerRegistry handlers)
     {
         this.levels = levels;
         this.handlers = handlers.Clone().Seal();
     }
 
-    public static BattleTextDocument Parse(string json, JsonArray levels, ObjectiveHandlerRegistry handlers)
+    public static BattleTextDocument Parse(BattleTextDefinitions definitions, string json)
     {
+        ArgumentNullException.ThrowIfNull(definitions);
         ArgumentNullException.ThrowIfNull(json);
+        var levels = definitions.Levels;
+        var handlers = definitions.Objectives;
+        var effects = definitions.ScenarioEffects;
         ArgumentNullException.ThrowIfNull(levels);
         ArgumentNullException.ThrowIfNull(handlers);
+        ArgumentNullException.ThrowIfNull(effects);
         var root = Fields(EcmaJson.Parse(json, rejectDuplicateProperties: true), "battle text document", "schema", "levels");
-        if (Integer(root["schema"], "battle text metadata schema") != 1)
+        if (Integer(root["schema"], "battle text metadata schema") != 2)
             throw new LocalizationException("Unsupported battle text metadata schema.");
         var declaredLevels = Properties(root["levels"], "battle text levels");
         var canonicalLevels = new Dictionary<string, JsonObject>(StringComparer.Ordinal);
@@ -45,10 +57,22 @@ public sealed class BattleTextDocument
         }
         RequireSameKeys(canonicalLevels.Keys, declaredLevels.Keys, "levels");
 
-        var result = new Dictionary<string, IReadOnlyDictionary<int, PlayerEntry>>(StringComparer.Ordinal);
+        var result = new Dictionary<string, LevelEntry>(StringComparer.Ordinal);
         foreach (var (levelId, level) in canonicalLevels)
         {
-            var declaredPlayers = Properties(Fields(declaredLevels[levelId], $"level '{levelId}'", "players")["players"], $"players for '{levelId}'");
+            var declaredLevel = Fields(declaredLevels[levelId], $"level '{levelId}'", "title", "description", "signals", "players");
+            var title = Entry(declaredLevel["title"], $"level title '{levelId}'", allowGenerated: false);
+            var description = Entry(declaredLevel["description"], $"level description '{levelId}'", allowGenerated: false);
+            var declaredSignals = Properties(declaredLevel["signals"], $"signals for '{levelId}'");
+            var signalIds = new HashSet<string>(StringComparer.Ordinal);
+            if (level["scenario"]?["triggers"] is { } triggers)
+                foreach (var trigger in Array(triggers, $"triggers for '{levelId}'"))
+                    foreach (var effect in Array(Object(trigger, "trigger")["effects"], "trigger effects"))
+                        signalIds.UnionWith(effects.Signals(Object(effect, "scenario effect")));
+            RequireSameKeys(signalIds, declaredSignals.Keys, $"signals for '{levelId}'");
+            var signals = declaredSignals.ToDictionary(pair => pair.Key,
+                pair => Entry(pair.Value, $"signal '{levelId}/{pair.Key}'", allowGenerated: false), StringComparer.Ordinal);
+            var declaredPlayers = Properties(declaredLevel["players"], $"players for '{levelId}'");
             var canonicalPlayers = new Dictionary<string, JsonObject>(StringComparer.Ordinal);
             foreach (var raw in Array(level["players"], $"players for '{levelId}'"))
             {
@@ -82,7 +106,7 @@ public sealed class BattleTextDocument
                     foreach (var child in handlers.Children(objective)) Visit(child);
                 }
             }
-            result.Add(levelId, playerEntries);
+            result.Add(levelId, new(title, description, signals, playerEntries));
         }
         return new BattleTextDocument(result, handlers);
     }
@@ -91,11 +115,18 @@ public sealed class BattleTextDocument
 
     internal void ValidateKeys(GameText text)
     {
-        var entries = levels.Values.SelectMany(players => players.Values)
-            .SelectMany(player => player.Objectives.Values.Prepend(player.Name)).ToArray();
+        var entries = levels.Values.SelectMany(level => level.Players.Values
+            .SelectMany(player => player.Objectives.Values.Prepend(player.Name))
+            .Concat(level.Signals.Values).Append(level.Title).Append(level.Description)).ToArray();
         text.ValidateKeys(entries.Where(entry => entry.Key is not null).Select(entry => entry.Key!));
         foreach (var entry in entries.Where(entry => !entry.Generated)) _ = entry.Resolve(text);
     }
+
+    internal string LevelTitle(GameText text, string levelId) => Level(levelId).Title.Resolve(text)!;
+    internal string LevelDescription(GameText text, string levelId) => Level(levelId).Description.Resolve(text)!;
+    internal string SignalName(GameText text, string levelId, string signalId) =>
+        Level(levelId).Signals.TryGetValue(signalId, out var entry) ? entry.Resolve(text)!
+            : throw new LocalizationException($"Missing signal presentation '{levelId}/{signalId}'.");
 
     internal string PlayerName(GameText text, string levelId, int playerId) => Player(levelId, playerId).Name.Resolve(text)!;
 
@@ -109,10 +140,12 @@ public sealed class BattleTextDocument
     internal IReadOnlyList<JsonElement> Children(JsonElement definition) => handlers.Children(Object(EcmaJson.Parse(definition.GetRawText()), "objective"))
         .Select(EcmaJson.ToElement).ToArray();
 
+    private LevelEntry Level(string levelId) => levels.TryGetValue(levelId, out var level) ? level
+        : throw new LocalizationException($"Missing level presentation '{levelId}'.");
+
     private PlayerEntry Player(string levelId, int playerId)
     {
-        if (!levels.TryGetValue(levelId, out var players)) throw new LocalizationException($"Missing level presentation '{levelId}'.");
-        return players.TryGetValue(playerId, out var player) ? player
+        return Level(levelId).Players.TryGetValue(playerId, out var player) ? player
             : throw new LocalizationException($"Missing player presentation '{levelId}/{playerId}'.");
     }
 

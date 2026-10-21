@@ -122,7 +122,7 @@ internal static class ResourceConsumerChecks
     {
         var resources = new BattleResources();
         foreach (var (id, subjectKind) in new[] { ("charge", "squad"), ("favor", "player") })
-            resources.Adapters.Register(new(id, id, subjectKind, id == "charge" && StateJson.IsTrue(config["integer"]), 0.5, subject =>
+            resources.Adapters.Register(new(id, subjectKind, id == "charge" && StateJson.IsTrue(config["integer"]), 0.5, subject =>
             {
                 if (subject.Holder["resources"]?[id] is not JsonObject state) return null;
                 return new ResourceAccount(() => new(

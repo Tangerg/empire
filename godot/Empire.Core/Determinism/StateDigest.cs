@@ -14,11 +14,11 @@ public static class StateDigest
     {
         ArgumentNullException.ThrowIfNull(state);
         var text = new StringBuilder();
-        AppendCanonical(text, state, new List<string>());
+        AppendCanonical(text, state);
         return Utf16Hash.Hash(text.ToString()).ToString("x8", CultureInfo.InvariantCulture);
     }
 
-    private static void AppendCanonical(StringBuilder text, JsonNode? value, List<string> path)
+    private static void AppendCanonical(StringBuilder text, JsonNode? value)
     {
         switch (value)
         {
@@ -30,28 +30,23 @@ public static class StateDigest
                 for (var index = 0; index < array.Count; index++)
                 {
                     if (index != 0) text.Append(',');
-                    path.Add(index.ToString(CultureInfo.InvariantCulture));
-                    AppendCanonical(text, array[index], path);
-                    path.RemoveAt(path.Count - 1);
+                    AppendCanonical(text, array[index]);
                 }
                 text.Append(']');
                 return;
             case JsonObject obj:
-                // The TypeScript canonical form is an array of [key, value]
-                // pairs, not a JSON object with sorted property insertion order.
+                // Pair arrays preserve ordinal key ordering even for numeric-looking keys;
+                // JSON object serialization would apply its own property ordering.
                 text.Append('[');
                 var first = true;
                 foreach (var property in obj.OrderBy(pair => pair.Key, StringComparer.Ordinal))
                 {
-                    if (IgnoredPath(path, property.Key)) continue;
                     if (!first) text.Append(',');
                     first = false;
                     text.Append('[');
                     EcmaJson.AppendString(text, property.Key);
                     text.Append(',');
-                    path.Add(property.Key);
-                    AppendCanonical(text, property.Value, path);
-                    path.RemoveAt(path.Count - 1);
+                    AppendCanonical(text, property.Value);
                     text.Append(']');
                 }
                 text.Append(']');
@@ -62,14 +57,6 @@ public static class StateDigest
             default:
                 throw new DomainInvariantException("state digest requires plain JSON values");
         }
-    }
-
-    private static bool IgnoredPath(IReadOnlyList<string> path, string key)
-    {
-        if (path.Count == 0 && key == "levelName") return true;
-        return path.Count == 2 && path[0] == "players"
-            && path[1].Length != 0 && path[1].All(character => character is >= '0' and <= '9')
-            && key == "controller";
     }
 
     private static void AppendPrimitive(StringBuilder text, JsonValue value)

@@ -7,12 +7,15 @@ namespace Empire.Core.Engine;
 /// <summary>Native level document defaults, separate from battle state construction.</summary>
 public static class LevelNormalizer
 {
+    public const int Schema = 3;
     public static JsonObject Normalize(JsonNode? raw)
     {
         if (raw is not JsonObject source) throw new StoredDocumentException("关卡数据不是对象");
         var loaded = (JsonObject)source.DeepClone();
-        if (loaded["schema"] is not JsonValue schema || StateJson.Number(schema, "schema") != 2)
-            throw new StoredDocumentException($"关卡 schema 必须是 2，收到 {loaded["schema"]}");
+        if (loaded["schema"] is not JsonValue schema || StateJson.Number(schema, "schema") != Schema)
+            throw new StoredDocumentException($"Unsupported level schema: expected {Schema}, received {loaded["schema"]}.");
+        if (loaded.ContainsKey("name") || loaded.ContainsKey("description") || loaded.ContainsKey("levelName"))
+            throw new StoredDocumentException("Level wording belongs to presentation metadata, not gameplay definitions.");
         if (loaded["terrain"] is not JsonArray terrain) throw new StoredDocumentException("缺少 terrain");
         var height = loaded["height"]?.DeepClone() ?? JsonValue.Create(terrain.Count)!;
         var width = loaded["width"]?.DeepClone() ?? JsonValue.Create(terrain.FirstOrDefault()?.GetValue<string>().Length ?? 0)!;
@@ -27,9 +30,7 @@ public static class LevelNormalizer
             for (var index = 0; index < StateJson.Integer(width, "width") * StateJson.Integer(height, "height"); index++) elevation.Add(0);
         var result = new JsonObject
         {
-            ["schema"] = 2, ["id"] = loaded["id"]?.DeepClone() ?? JsonValue.Create("untitled"),
-            ["name"] = loaded["name"]?.DeepClone() ?? JsonValue.Create("未命名关卡"),
-            ["description"] = loaded["description"]?.DeepClone() ?? JsonValue.Create(""),
+            ["schema"] = Schema, ["id"] = loaded["id"]?.DeepClone() ?? JsonValue.Create("untitled"),
             ["width"] = width, ["height"] = height, ["terrain"] = terrain.DeepClone(), ["elevation"] = elevation,
             ["cliffs"] = loaded["cliffs"] is JsonArray cliffs ? cliffs.DeepClone() : new JsonArray(),
             ["directionalCover"] = loaded["directionalCover"] is JsonArray cover ? cover.DeepClone() : new JsonArray(),

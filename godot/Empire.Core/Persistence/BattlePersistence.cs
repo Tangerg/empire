@@ -6,7 +6,7 @@ namespace Empire.Core.Persistence;
 
 public sealed class BattlePersistence
 {
-    public const int Schema = 2;
+    public const int Schema = 3;
     private readonly BattleSaveEnvironment environment;
     private readonly IBattleSaveReader reader;
 
@@ -29,7 +29,7 @@ public sealed class BattlePersistence
             ["schema"] = Schema,
             ["battle"] = new JsonObject
             {
-                ["levelId"] = state["levelId"]?.DeepClone(), ["levelName"] = state["levelName"]?.DeepClone(),
+                ["levelId"] = state["levelId"]?.DeepClone(),
                 ["turn"] = state["turn"]?.DeepClone(), ["phase"] = state["phase"]?.DeepClone(),
             },
             ["ruleset"] = environment.RulesetManifest.DeepClone(), ["savedAt"] = savedAt, ["state"] = state.DeepClone(),

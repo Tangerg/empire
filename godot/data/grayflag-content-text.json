@@ -1,0 +1,610 @@
+{
+  "schema": 1,
+  "content": {
+    "movementProfiles": {
+      "foot": {
+        "name": "content.movement_profiles.foot.name"
+      },
+      "mounted": {
+        "name": "content.movement_profiles.mounted.name"
+      },
+      "heavy": {
+        "name": "content.movement_profiles.heavy.name"
+      },
+      "flying": {
+        "name": "content.movement_profiles.flying.name"
+      },
+      "naval": {
+        "name": "content.movement_profiles.naval.name"
+      },
+      "amphibious": {
+        "name": "content.movement_profiles.amphibious.name"
+      }
+    },
+    "damageTypes": {
+      "slash": {
+        "name": "content.damage_types.slash.name"
+      },
+      "pierce": {
+        "name": "content.damage_types.pierce.name"
+      },
+      "blunt": {
+        "name": "content.damage_types.blunt.name"
+      },
+      "magic": {
+        "name": "content.damage_types.magic.name"
+      }
+    },
+    "armorClasses": {
+      "unarmored": {
+        "name": "content.armor_classes.unarmored.name"
+      },
+      "light": {
+        "name": "content.armor_classes.light.name"
+      },
+      "heavy": {
+        "name": "content.armor_classes.heavy.name"
+      },
+      "flying": {
+        "name": "content.armor_classes.flying.name"
+      }
+    },
+    "terrains": {
+      "plain": {
+        "name": "content.terrains.plain.name"
+      },
+      "road": {
+        "name": "content.terrains.road.name"
+      },
+      "bridge": {
+        "name": "content.terrains.bridge.name"
+      },
+      "forest": {
+        "name": "content.terrains.forest.name"
+      },
+      "hill": {
+        "name": "content.terrains.hill.name"
+      },
+      "mountain": {
+        "name": "content.terrains.mountain.name"
+      },
+      "water": {
+        "name": "content.terrains.water.name"
+      },
+      "wall": {
+        "name": "content.terrains.wall.name"
+      },
+      "village": {
+        "name": "content.terrains.village.name"
+      },
+      "barracks": {
+        "name": "content.terrains.barracks.name"
+      },
+      "castle": {
+        "name": "content.terrains.castle.name"
+      },
+      "c01.outside": {
+        "name": "content.terrains.c01.outside.name"
+      },
+      "c01.scorched": {
+        "name": "content.terrains.c01.scorched.name"
+      },
+      "c01.riverbank": {
+        "name": "content.terrains.c01.riverbank.name"
+      },
+      "c01.street": {
+        "name": "content.terrains.c01.street.name"
+      },
+      "c01.oathway": {
+        "name": "content.terrains.c01.oathway.name"
+      },
+      "c01.forge": {
+        "name": "content.terrains.c01.forge.name"
+      },
+      "c01.graveyard": {
+        "name": "content.terrains.c01.graveyard.name"
+      },
+      "c01.molten": {
+        "name": "content.terrains.c01.molten.name"
+      },
+      "c01.mother-root": {
+        "name": "content.terrains.c01.mother-root.name"
+      },
+      "c01.outpost": {
+        "name": "content.terrains.c01.outpost.name"
+      },
+      "c01.field-post": {
+        "name": "content.terrains.c01.field-post.name"
+      },
+      "c01.keep": {
+        "name": "content.terrains.c01.keep.name"
+      }
+    },
+    "weapons": {
+      "soldier_sword": {
+        "name": "content.weapons.soldier_sword.name"
+      },
+      "soldier_javelin": {
+        "name": "content.weapons.soldier_javelin.name"
+      },
+      "archer_bow": {
+        "name": "content.weapons.archer_bow.name",
+        "bonuses": {
+          "anti-air": "content.weapons.archer_bow.bonuses.anti-air"
+        }
+      },
+      "rogue_blades": {
+        "name": "content.weapons.rogue_blades.name",
+        "bonuses": {
+          "assassination": "content.weapons.rogue_blades.bonuses.assassination",
+          "backline-strike": "content.weapons.rogue_blades.bonuses.backline-strike"
+        }
+      },
+      "cleric_staff": {
+        "name": "content.weapons.cleric_staff.name"
+      },
+      "mage_bolt": {
+        "name": "content.weapons.mage_bolt.name"
+      },
+      "mage_overcharge": {
+        "name": "content.weapons.mage_overcharge.name"
+      },
+      "mage_meteor": {
+        "name": "content.weapons.mage_meteor.name"
+      },
+      "knight_sword": {
+        "name": "content.weapons.knight_sword.name"
+      },
+      "knight_charge": {
+        "name": "content.weapons.knight_charge.name"
+      },
+      "heroic_breakthrough": {
+        "name": "content.weapons.heroic_breakthrough.name"
+      },
+      "ogre_club": {
+        "name": "content.weapons.ogre_club.name"
+      },
+      "ballista_bolt": {
+        "name": "content.weapons.ballista_bolt.name",
+        "bonuses": {
+          "siege": "content.weapons.ballista_bolt.bonuses.siege"
+        }
+      },
+      "dragon_breath": {
+        "name": "content.weapons.dragon_breath.name"
+      },
+      "c01.border-blade": {
+        "name": "content.weapons.c01.border-blade.name"
+      },
+      "c01.civilian-tool": {
+        "name": "content.weapons.c01.civilian-tool.name"
+      },
+      "c01.gray-oath": {
+        "name": "content.weapons.c01.gray-oath.name"
+      },
+      "c01.guard-spear": {
+        "name": "content.weapons.c01.guard-spear.name"
+      },
+      "c01.legion-spear": {
+        "name": "content.weapons.c01.legion-spear.name",
+        "bonuses": {
+          "anti-charge": "content.weapons.c01.legion-spear.bonuses.anti-charge"
+        }
+      },
+      "c01.knight-lance": {
+        "name": "content.weapons.c01.knight-lance.name"
+      },
+      "c01.knight-charge": {
+        "name": "content.weapons.c01.knight-charge.name"
+      },
+      "c01.longbow": {
+        "name": "content.weapons.c01.longbow.name",
+        "bonuses": {
+          "anti-air": "content.weapons.c01.longbow.bonuses.anti-air"
+        }
+      },
+      "c01.ranger-bow": {
+        "name": "content.weapons.c01.ranger-bow.name"
+      },
+      "c01.lantern-staff": {
+        "name": "content.weapons.c01.lantern-staff.name"
+      },
+      "c01.oath-dispel": {
+        "name": "content.weapons.c01.oath-dispel.name",
+        "bonuses": {
+          "last-rites": "content.weapons.c01.oath-dispel.bonuses.last-rites",
+          "oath-severing": "content.weapons.c01.oath-dispel.bonuses.oath-severing"
+        }
+      },
+      "c01.engineer-hammer": {
+        "name": "content.weapons.c01.engineer-hammer.name"
+      },
+      "c01.satchel-charge": {
+        "name": "content.weapons.c01.satchel-charge.name",
+        "bonuses": {
+          "demolition": "content.weapons.c01.satchel-charge.bonuses.demolition"
+        }
+      },
+      "c01.rune-hammer": {
+        "name": "content.weapons.c01.rune-hammer.name"
+      },
+      "c01.forge-burst": {
+        "name": "content.weapons.c01.forge-burst.name"
+      },
+      "c01.wolf-spear": {
+        "name": "content.weapons.c01.wolf-spear.name"
+      },
+      "c01.undead-blade": {
+        "name": "content.weapons.c01.undead-blade.name"
+      },
+      "c01.ghost-touch": {
+        "name": "content.weapons.c01.ghost-touch.name"
+      },
+      "c01.inquisitor-flame": {
+        "name": "content.weapons.c01.inquisitor-flame.name"
+      },
+      "c01.golem-slam": {
+        "name": "content.weapons.c01.golem-slam.name"
+      },
+      "c01.ballista": {
+        "name": "content.weapons.c01.ballista.name",
+        "bonuses": {
+          "siege": "content.weapons.c01.ballista.bonuses.siege"
+        }
+      },
+      "c01.oath-bolt": {
+        "name": "content.weapons.c01.oath-bolt.name"
+      },
+      "c01.dragon-breath": {
+        "name": "content.weapons.c01.dragon-breath.name"
+      },
+      "c01.colossus-sweep": {
+        "name": "content.weapons.c01.colossus-sweep.name"
+      }
+    },
+    "units": {
+      "soldier": {
+        "name": "content.units.soldier.name",
+        "blurb": "content.units.soldier.blurb"
+      },
+      "archer": {
+        "name": "content.units.archer.name",
+        "blurb": "content.units.archer.blurb"
+      },
+      "rogue": {
+        "name": "content.units.rogue.name",
+        "blurb": "content.units.rogue.blurb"
+      },
+      "cleric": {
+        "name": "content.units.cleric.name",
+        "blurb": "content.units.cleric.blurb"
+      },
+      "mage": {
+        "name": "content.units.mage.name",
+        "blurb": "content.units.mage.blurb"
+      },
+      "knight": {
+        "name": "content.units.knight.name",
+        "blurb": "content.units.knight.blurb"
+      },
+      "ogre": {
+        "name": "content.units.ogre.name",
+        "blurb": "content.units.ogre.blurb"
+      },
+      "ballista": {
+        "name": "content.units.ballista.name",
+        "blurb": "content.units.ballista.blurb"
+      },
+      "dragon": {
+        "name": "content.units.dragon.name",
+        "blurb": "content.units.dragon.blurb"
+      },
+      "c01.laiya": {
+        "name": "content.units.c01.laiya.name",
+        "blurb": "content.units.c01.laiya.blurb"
+      },
+      "c01.roderick": {
+        "name": "content.units.c01.roderick.name",
+        "blurb": "content.units.c01.roderick.blurb"
+      },
+      "c01.cain": {
+        "name": "content.units.c01.cain.name",
+        "blurb": "content.units.c01.cain.blurb"
+      },
+      "c01.bran": {
+        "name": "content.units.c01.bran.name",
+        "blurb": "content.units.c01.bran.blurb"
+      },
+      "c01.mirelle": {
+        "name": "content.units.c01.mirelle.name",
+        "blurb": "content.units.c01.mirelle.blurb"
+      },
+      "c01.tasha": {
+        "name": "content.units.c01.tasha.name",
+        "blurb": "content.units.c01.tasha.blurb"
+      },
+      "c01.ivra": {
+        "name": "content.units.c01.ivra.name",
+        "blurb": "content.units.c01.ivra.blurb"
+      },
+      "c01.swordsman": {
+        "name": "content.units.c01.swordsman.name",
+        "blurb": "content.units.c01.swordsman.blurb"
+      },
+      "c01.banner-guard": {
+        "name": "content.units.c01.banner-guard.name",
+        "blurb": "content.units.c01.banner-guard.blurb"
+      },
+      "c01.archer": {
+        "name": "content.units.c01.archer.name",
+        "blurb": "content.units.c01.archer.blurb"
+      },
+      "c01.knight": {
+        "name": "content.units.c01.knight.name",
+        "blurb": "content.units.c01.knight.blurb"
+      },
+      "c01.legion-shield": {
+        "name": "content.units.c01.legion-shield.name",
+        "blurb": "content.units.c01.legion-shield.blurb"
+      },
+      "c01.gravekeeper": {
+        "name": "content.units.c01.gravekeeper.name",
+        "blurb": "content.units.c01.gravekeeper.blurb"
+      },
+      "c01.supply-wagon": {
+        "name": "content.units.c01.supply-wagon.name",
+        "blurb": "content.units.c01.supply-wagon.blurb"
+      },
+      "c01.engineer": {
+        "name": "content.units.c01.engineer.name",
+        "blurb": "content.units.c01.engineer.blurb"
+      },
+      "c01.wolf-rider": {
+        "name": "content.units.c01.wolf-rider.name",
+        "blurb": "content.units.c01.wolf-rider.blurb"
+      },
+      "c01.skeleton-guard": {
+        "name": "content.units.c01.skeleton-guard.name",
+        "blurb": "content.units.c01.skeleton-guard.blurb"
+      },
+      "c01.ghost": {
+        "name": "content.units.c01.ghost.name",
+        "blurb": "content.units.c01.ghost.blurb"
+      },
+      "c01.inquisitor": {
+        "name": "content.units.c01.inquisitor.name",
+        "blurb": "content.units.c01.inquisitor.blurb"
+      },
+      "c01.templar": {
+        "name": "content.units.c01.templar.name",
+        "blurb": "content.units.c01.templar.blurb"
+      },
+      "c01.ballista": {
+        "name": "content.units.c01.ballista.name",
+        "blurb": "content.units.c01.ballista.blurb"
+      },
+      "c01.battle-mage": {
+        "name": "content.units.c01.battle-mage.name",
+        "blurb": "content.units.c01.battle-mage.blurb"
+      },
+      "c01.rune-shield": {
+        "name": "content.units.c01.rune-shield.name",
+        "blurb": "content.units.c01.rune-shield.blurb"
+      },
+      "c01.rune-artificer": {
+        "name": "content.units.c01.rune-artificer.name",
+        "blurb": "content.units.c01.rune-artificer.blurb"
+      },
+      "c01.stone-golem": {
+        "name": "content.units.c01.stone-golem.name",
+        "blurb": "content.units.c01.stone-golem.blurb"
+      },
+      "c01.silver-longbow": {
+        "name": "content.units.c01.silver-longbow.name",
+        "blurb": "content.units.c01.silver-longbow.blurb"
+      },
+      "c01.woodland-walker": {
+        "name": "content.units.c01.woodland-walker.name",
+        "blurb": "content.units.c01.woodland-walker.blurb"
+      },
+      "c01.druid": {
+        "name": "content.units.c01.druid.name",
+        "blurb": "content.units.c01.druid.blurb"
+      },
+      "c01.cemetery-colossus": {
+        "name": "content.units.c01.cemetery-colossus.name",
+        "blurb": "content.units.c01.cemetery-colossus.blurb"
+      },
+      "c01.refugee": {
+        "name": "content.units.c01.refugee.name",
+        "blurb": "content.units.c01.refugee.blurb"
+      },
+      "c01.laborer": {
+        "name": "content.units.c01.laborer.name",
+        "blurb": "content.units.c01.laborer.blurb"
+      }
+    },
+    "statuses": {
+      "poisoned": {
+        "name": "content.statuses.poisoned.name"
+      },
+      "armor_down": {
+        "name": "content.statuses.armor_down.name"
+      },
+      "shaken": {
+        "name": "content.statuses.shaken.name"
+      },
+      "inspired": {
+        "name": "content.statuses.inspired.name"
+      },
+      "silenced": {
+        "name": "content.statuses.silenced.name"
+      },
+      "c01.oath-controlled": {
+        "name": "content.statuses.c01.oath-controlled.name"
+      }
+    },
+    "structures": {
+      "gate": {
+        "name": "content.structures.gate.name"
+      },
+      "command_node": {
+        "name": "content.structures.command_node.name"
+      },
+      "depot": {
+        "name": "content.structures.depot.name"
+      },
+      "bulkhead": {
+        "name": "content.structures.bulkhead.name"
+      },
+      "boss_part": {
+        "name": "content.structures.boss_part.name"
+      },
+      "c01.mother-root": {
+        "name": "content.structures.c01.mother-root.name"
+      }
+    },
+    "terrainOverlays": {
+      "flooded": {
+        "name": "content.terrain_overlays.flooded.name"
+      },
+      "fire_field": {
+        "name": "content.terrain_overlays.fire_field.name"
+      },
+      "vacuum": {
+        "name": "content.terrain_overlays.vacuum.name"
+      },
+      "low_gravity": {
+        "name": "content.terrain_overlays.low_gravity.name"
+      },
+      "signal_storm": {
+        "name": "content.terrain_overlays.signal_storm.name"
+      }
+    },
+    "tactics": {
+      "rally": {
+        "name": "content.tactics.rally.name"
+      },
+      "steady": {
+        "name": "content.tactics.steady.name"
+      },
+      "c01.gray-rally": {
+        "name": "content.tactics.c01.gray-rally.name"
+      },
+      "c01.hold-the-line": {
+        "name": "content.tactics.c01.hold-the-line.name"
+      },
+      "c01.name-the-dead": {
+        "name": "content.tactics.c01.name-the-dead.name"
+      }
+    },
+    "careers": {
+      "militia": {
+        "name": "content.careers.militia.name"
+      },
+      "ranger": {
+        "name": "content.careers.ranger.name"
+      },
+      "shadow": {
+        "name": "content.careers.shadow.name"
+      },
+      "acolyte": {
+        "name": "content.careers.acolyte.name"
+      },
+      "knight-order": {
+        "name": "content.careers.knight-order.name"
+      },
+      "war-mage": {
+        "name": "content.careers.war-mage.name"
+      },
+      "siege-engineer": {
+        "name": "content.careers.siege-engineer.name"
+      },
+      "ogre-warrior": {
+        "name": "content.careers.ogre-warrior.name"
+      },
+      "dragon-lord": {
+        "name": "content.careers.dragon-lord.name"
+      }
+    },
+    "formations": {
+      "formation-line": {
+        "name": "content.formations.formation-line.name"
+      },
+      "formation-defensive": {
+        "name": "content.formations.formation-defensive.name"
+      },
+      "formation-loose": {
+        "name": "content.formations.formation-loose.name"
+      }
+    }
+  },
+  "abilities": {
+    "attack": {
+      "name": "content.abilities.attack.name",
+      "hint": "content.abilities.attack.hint"
+    },
+    "heal": {
+      "name": "content.abilities.heal.name",
+      "hint": "content.abilities.heal.hint"
+    },
+    "capture": {
+      "name": "content.abilities.capture.name",
+      "hint": "content.abilities.capture.hint"
+    },
+    "wait": {
+      "name": "content.abilities.wait.name",
+      "hint": "content.abilities.wait.hint"
+    }
+  },
+  "reactions": {
+    "counter": {
+      "name": "content.reactions.counter.name",
+      "hint": "content.reactions.counter.hint"
+    },
+    "guard": {
+      "name": "content.reactions.guard.name",
+      "hint": "content.reactions.guard.hint"
+    },
+    "support": {
+      "name": "content.reactions.support.name",
+      "hint": "content.reactions.support.hint"
+    },
+    "conserve": {
+      "name": "content.reactions.conserve.name",
+      "hint": "content.reactions.conserve.hint"
+    }
+  },
+  "resources": {
+    "funds": "content.resources.funds.name",
+    "command_points": "content.resources.command_points.name",
+    "momentum": "content.resources.momentum.name",
+    "weapon_uses": "content.resources.weapon_uses.name"
+  },
+  "directions": {
+    "square4": {
+      "north": "content.directions.square4.north",
+      "east": "content.directions.square4.east",
+      "south": "content.directions.square4.south",
+      "west": "content.directions.square4.west"
+    },
+    "square8": {
+      "north": "content.directions.square8.north",
+      "east": "content.directions.square8.east",
+      "south": "content.directions.square8.south",
+      "west": "content.directions.square8.west",
+      "northeast": "content.directions.square8.northeast",
+      "southeast": "content.directions.square8.southeast",
+      "southwest": "content.directions.square8.southwest",
+      "northwest": "content.directions.square8.northwest"
+    },
+    "hex": {
+      "hexNortheast": "content.directions.hex.hex_northeast",
+      "hexEast": "content.directions.hex.hex_east",
+      "hexSoutheast": "content.directions.hex.hex_southeast",
+      "hexSouthwest": "content.directions.hex.hex_southwest",
+      "hexWest": "content.directions.hex.hex_west",
+      "hexNorthwest": "content.directions.hex.hex_northwest"
+    }
+  }
+}

@@ -54,6 +54,7 @@ internal sealed record ApplicationSaveDocument(JsonObject CampaignState, Campaig
                 if (eventType == "scenarioSignal" && (value["signal"] is not JsonValue signal ||
                     !signal.TryGetValue<string>(out var signalName) || EcmaText.IsBlank(signalName)))
                     throw new StoredDocumentException("Saved scenario signal is missing or invalid.");
+                if (eventType is "unitSpawned" or "recruit") ValidateCreationEvent(value, eventType);
                 if (eventType != "gameOver") continue;
                 if (hasGameOver || value.Count != 2 || !value.ContainsKey("conclusion"))
                     throw new StoredDocumentException("Saved game-over event does not match the current native format.");
@@ -71,4 +72,20 @@ internal sealed record ApplicationSaveDocument(JsonObject CampaignState, Campaig
         return new((JsonObject)state.DeepClone(), location, document["battle"]?.DeepClone() as JsonObject,
             (JsonArray)events.DeepClone());
     }
+    private static void ValidateCreationEvent(JsonObject value, string kind)
+    {
+        var fields = kind == "recruit"
+            ? new[] { "type", "unit", "unitType", "owner", "at" }
+            : new[] { "type", "unit", "unitType", "owner", "at", "reason" };
+        if (value.Count != fields.Length || fields.Any(field => !value.ContainsKey(field)) ||
+            value["unit"] is not JsonValue unit || !unit.TryGetValue<int>(out var id) || id <= 0 ||
+            value["owner"] is not JsonValue owner || !owner.TryGetValue<int>(out _) ||
+            value["unitType"] is not JsonValue type || !type.TryGetValue<string>(out var unitType) || EcmaText.IsBlank(unitType))
+            throw new StoredDocumentException("Saved unit creation event is missing canonical identity facts.");
+        if (value["at"] is not JsonObject at || at.Count != 2 ||
+            at["x"] is not JsonValue x || !x.TryGetValue<int>(out _) ||
+            at["y"] is not JsonValue y || !y.TryGetValue<int>(out _))
+            throw new StoredDocumentException("Saved unit creation event has an invalid cell.");
+    }
+
 }

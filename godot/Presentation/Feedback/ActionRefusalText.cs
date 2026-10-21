@@ -1,12 +1,12 @@
 using System.Text.Json;
 using Empire.Core;
-using Empire.Core.Abilities;
 using Empire.Core.Determinism;
 using Empire.Core.Registries;
-using Empire.Core.State;
 using Empire.Localization;
 
 namespace Empire.Presentation.Feedback;
+
+public sealed record ActionRefusalTextRules(GameText Messages, ContentText Content);
 
 public sealed record ActionRefusalMessage(string Code, string MessageKey,
     Func<ActionRefusalText, JsonElement, object?[]> Arguments);
@@ -47,10 +47,10 @@ public sealed class ActionRefusalText : KeyedRegistry<ActionRefusalMessage, Acti
     }
     private static double N(JsonElement details, string key) => details.GetProperty(key).GetDouble();
 
-    public static ActionRefusalText CreateDefault(GameText text, ReadOnlyContent content, AbilityRegistry abilities)
+    public static ActionRefusalText CreateDefault(ActionRefusalTextRules rules)
     {
-        string Name(string family, string id) => FeedbackJson.Text((content.Definition(family, id)
-            ?? throw new LocalizationException($"Refusal refers to unknown {family} definition '{id}'.")).GetProperty("name"));
+        var text = rules.Messages;
+        var content = rules.Content;
         return new ActionRefusalText(text)
             .Register(new("action.over", "error.action.over", (_, _) => []))
             .Register(new("action.deployment_required", "error.action.deployment_required", (_, _) => []))
@@ -74,13 +74,13 @@ public sealed class ActionRefusalText : KeyedRegistry<ActionRefusalMessage, Acti
             .Register(new("deployment.impassable", "error.deployment.impassable", (_, _) => []))
             .Register(new("deployment.swap_outside_zone", "error.deployment.swap_outside_zone", (_, _) => []))
             .Register(new("deployment.swap_impassable", "error.deployment.swap_impassable", (_, _) => []))
-            .Register(new("recruitment.terrain_incompatible", "error.recruitment.terrain_incompatible", (_, d) => [Name("terrains", S(d, "terrainId"))]))
+            .Register(new("recruitment.terrain_incompatible", "error.recruitment.terrain_incompatible", (_, d) => [content.Name(ContentTextKind.Terrain, S(d, "terrainId"))]))
             .Register(new("recruitment.not_owner", "error.recruitment.not_owner", (_, _) => []))
             .Register(new("recruitment.occupied", "error.recruitment.occupied", (_, _) => []))
             .Register(new("recruitment.insufficient_resources", "error.recruitment.insufficient_resources", (_, _) => []))
             .Register(new("recruitment.unit_limit", "error.recruitment.unit_limit", (_, d) => [N(d, "limit")]))
             .Register(new("transport.self", "error.transport.self", (_, _) => []))
-            .Register(new("transport.not_carrier", "error.transport.not_carrier", (_, d) => [Name("units", S(d, "unitType"))]))
+            .Register(new("transport.not_carrier", "error.transport.not_carrier", (_, d) => [content.UnitName( S(d, "unitType"))]))
             .Register(new("transport.not_allies", "error.transport.not_allies", (_, _) => []))
             .Register(new("transport.not_adjacent", "error.transport.not_adjacent", (_, _) => []))
             .Register(new("transport.full", "error.transport.full", (_, _) => []))
@@ -105,10 +105,10 @@ public sealed class ActionRefusalText : KeyedRegistry<ActionRefusalMessage, Acti
             .Register(new("support.commander_not_owner", "error.support.commander_not_owner", (_, _) => []))
             .Register(new("support.tactic_unavailable", "error.support.tactic_unavailable", (_, d) => [S(d, "tacticId")]))
             .Register(new("support.target_invalid", "error.support.target_invalid", (_, _) => []))
-            .Register(new("ability.not_owned", "error.ability.not_owned", (_, d) => [Name("units", S(d, "unitType")), abilities.Get(S(d, "abilityId")).Name]))
-            .Register(new("ability.weapon_unavailable", "error.ability.weapon_unavailable", (_, d) => [abilities.Get(S(d, "abilityId")).Name, S(d, "weaponId")]))
-            .Register(new("ability.unusable", "error.ability.unusable", (_, d) => [abilities.Get(S(d, "abilityId")).Name]))
-            .Register(new("ability.target_required", "error.ability.target_required", (_, d) => [abilities.Get(S(d, "abilityId")).Name]))
+            .Register(new("ability.not_owned", "error.ability.not_owned", (_, d) => [content.UnitName( S(d, "unitType")), content.AbilityName(S(d, "abilityId"))]))
+            .Register(new("ability.weapon_unavailable", "error.ability.weapon_unavailable", (_, d) => [content.AbilityName(S(d, "abilityId"))]))
+            .Register(new("ability.unusable", "error.ability.unusable", (_, d) => [content.AbilityName(S(d, "abilityId"))]))
+            .Register(new("ability.target_required", "error.ability.target_required", (_, d) => [content.AbilityName(S(d, "abilityId"))]))
             .Register(new("ability.target_invalid", "error.ability.target_invalid", (_, _) => []))
             .Register(new("combat.already_casting", "error.combat.already_casting", (_, _) => []));
     }

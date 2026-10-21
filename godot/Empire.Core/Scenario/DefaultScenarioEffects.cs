@@ -41,7 +41,8 @@ public static class DefaultScenarioEffects
         .Register(new("damageStructure", (context, effect) => context.Rules.Commands.DamageStructure(context.State, effect, context.Emit)) { References = effect => new PayloadReferences().Structure(Text(effect, "id")) })
         .Register(new("repairStructure", (context, effect) => context.Rules.Commands.RepairStructure(context.State, effect, context.Emit)) { References = effect => new PayloadReferences().Structure(Text(effect, "id")) })
         .Register(new("moveComposite", (context, effect) => context.Rules.Commands.MoveComposite(context.State, effect, context.Emit)) { References = effect => new PayloadReferences().Composite(Text(effect, "id")) })
-        .Register(new("emitSignal", (context, effect) => context.Emit(new JsonObject { ["type"] = "scenarioSignal", ["signal"] = Text(effect, "signal") })));
+        .Register(new("emitSignal", (context, effect) => context.Emit(new JsonObject { ["type"] = "scenarioSignal", ["signal"] = Text(effect, "signal") }))
+        { Signals = effect => new[] { Text(effect, "signal") } });
     private static PayloadReferences Selector(JsonObject effect) => new PayloadReferences().Selector(Object(effect["selector"], "selector"));
     private static PayloadReferences WholeDistance(PayloadReferences references, JsonNode? distance) =>
         DefaultScenarioConditions.Whole(distance, 0) ? references : references.Fault("强制位移距离必须是非负整数");

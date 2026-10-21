@@ -55,6 +55,10 @@ public sealed class BattleLevelValidator
 
         internal IReadOnlyList<string> Run()
         {
+            if (!StoredSchema.Matches(level["schema"], StoredKind.Integer) || StateJson.Number(level["schema"], "schema") != Empire.Core.Engine.LevelNormalizer.Schema)
+                Error($"Unsupported level schema; expected {Empire.Core.Engine.LevelNormalizer.Schema}.");
+            if (level.ContainsKey("name") || level.ContainsKey("description") || level.ContainsKey("levelName"))
+                Error("Level wording belongs to presentation metadata, not gameplay definitions.");
             if (RulePayloadReferences.Blank(OptionalText(level["id"]))) Error("关卡缺少 id");
             CheckCliffs();
             CheckDirectionalCover();
@@ -236,7 +240,7 @@ public sealed class BattleLevelValidator
                 var terrain = TerrainOn((int)tile);
                 var definition = content.TryGet("units", type);
                 if (definition is not null && terrain["cost"]?[S(definition, "movementClass")] is null)
-                    Error($"{S(definition, "name")} 无法站在 {S(terrain, "name")} 上（{At(unit)}）");
+                    Error($"Unit type \"{S(definition, "id")}\" cannot stand on terrain \"{S(terrain, "id")}\" at {At(unit)}.");
             }
         }
 

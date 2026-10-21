@@ -111,11 +111,11 @@ public partial class ReleaseDiagnostics : Node
         var opening = ReadManual();
         var engine = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
         var text = Empire.Localization.GodotTextCatalog.LoadSimplifiedChinese();
-        var refusals = Empire.Presentation.Feedback.ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
-        var battleText = new BattleText(text, BattleTextDocument.Parse(
+        var presentationText = SessionPresentationText.Compose(new SessionTextRules(engine, text),
+            PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json"),
             Godot.FileAccess.GetFileAsString("res://data/grayflag-battle-text.json"),
-            PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json"), engine.Objectives), ObjectiveText.CreateDefault(text).Seal());
-        var savedSession = GrayFlagSession.FromSave(engine, opening["battle"]!, text, refusals, battleText, opening["events"]!.AsArray());
+            Godot.FileAccess.GetFileAsString("res://data/grayflag-content-text.json"));
+        var savedSession = GrayFlagSession.FromSave(engine, presentationText, opening["battle"]!, opening["events"]!.AsArray());
         var openingHash = StateDigest.Hash(savedSession.Snapshot());
         var queries = savedSession.GetTacticalQueries(0);
         var move = queries.Actors().SelectMany(id => queries.MoveStops(id)

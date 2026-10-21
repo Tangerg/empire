@@ -4,6 +4,8 @@ using Empire.Core.Determinism;
 using Empire.Localization;
 using System.Globalization;
 using Empire.Presentation;
+using Empire.Presentation.Feedback;
+using Empire.Core.Engine;
 
 if (args.Length != 3) throw new ArgumentException("Usage: StagingChecks <oracle.json> <native-staging.json> <catalog-check-projection.json>");
 var oracle = EcmaJson.Parse(File.ReadAllText(args[0]))!.AsObject();
@@ -18,6 +20,16 @@ var serialization = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamin
 int checks = 0;
 string Text(JsonNode? value) => EcmaJson.ReadString(value);
 string Name(string id) => Text(oracle["unitNames"]![id]);
+var dataDirectory = Path.GetDirectoryName(Path.GetFullPath(args[1]))!;
+var nativeLevels = EcmaJson.Parse(File.ReadAllText(Path.Combine(dataDirectory, "grayflag-campaign-levels.json")))!.AsArray();
+var levelById = nativeLevels.OfType<JsonObject>().ToDictionary(level => Text(level["id"]), StringComparer.Ordinal);
+var engine = new GrayFlagEngine(EcmaJson.Parse(File.ReadAllText(Path.Combine(dataDirectory, "content-packs.json")))!.AsArray());
+var battleDocument = BattleTextDocument.Parse(new BattleTextDefinitions(nativeLevels, engine.Objectives, engine.ScenarioEffects),
+    File.ReadAllText(Path.Combine(dataDirectory, "grayflag-battle-text.json")));
+CampaignStagingText Presentation(GameText text) => new(text,
+    new BattleText(text, battleDocument, ObjectiveText.CreateDefault(text).Seal()), Name);
+var presentation = Presentation(messages);
+JsonElement NativeLevel(JsonNode item) => EcmaJson.ToElement(levelById[Text(item["level"]!["id"])]);
 void Check(string name, JsonNode? actual, JsonNode? expected)
 {
     checks++;
@@ -26,8 +38,8 @@ void Check(string name, JsonNode? actual, JsonNode? expected)
 foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
 {
     var before = EcmaJson.Stringify(item);
-    var view = CampaignStaging.Create(messages, EcmaJson.ToElement(item["state"]), EcmaJson.ToElement(item["node"]), EcmaJson.ToElement(item["level"]),
-        EcmaJson.ToElement(fixtureMetadata), Name, item["pending"]!.GetValue<bool>());
+    var view = CampaignStaging.Create(presentation, EcmaJson.ToElement(item["state"]), EcmaJson.ToElement(item["node"]), NativeLevel(item),
+        EcmaJson.ToElement(fixtureMetadata), item["pending"]!.GetValue<bool>());
     var actual = new JsonObject
     {
         ["campaignTitle"] = view.CampaignTitle, ["chapterHeading"] = view.ChapterHeading, ["progress"] = view.Progress,
@@ -50,15 +62,15 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
 }
 var first = oracle["cases"]![0]!;
 var alternate = new GameText(key => catalog.TryGetValue(key, out var value) ? value + " [fixture]" : null, CultureInfo.InvariantCulture);
-var alternateView = CampaignStaging.Create(alternate, EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(first["node"]),
-    EcmaJson.ToElement(first["level"]), EcmaJson.ToElement(fixtureMetadata), Name, false);
+var alternateView = CampaignStaging.Create(Presentation(alternate), EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(first["node"]),
+    NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false);
 Check("staging injects shared campaign wording", JsonValue.Create(alternateView.CampaignTitle),
     JsonValue.Create(messages.Format(Text(exported["titleKey"])) + " [fixture]"));
 Check("staging injects shell action wording", JsonValue.Create(alternateView.ExitLabel), JsonValue.Create("返回主菜单 [fixture]"));
 var node = first["node"]!.DeepClone().AsObject(); node["level"] = "wrong";
 try
 {
-    CampaignStaging.Create(messages, EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(node), EcmaJson.ToElement(first["level"]), EcmaJson.ToElement(fixtureMetadata), Name, false);
+    CampaignStaging.Create(presentation, EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(node), NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false);
     throw new Exception("Mismatched staging identity accepted");
 }
 catch (InvalidOperationException) { checks++; }

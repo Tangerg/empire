@@ -1,4 +1,6 @@
 using System.Text.Json.Nodes;
+using System.Text.Json;
+using Empire.Core.Determinism;
 using Empire.Core.Geometry;
 using Empire.Core.Resources;
 using Empire.Core.State;
@@ -6,7 +8,27 @@ using Empire.Core.Tactics;
 
 namespace Empire.Core.Combat;
 
-public sealed record CombatModifier(string Id, string Label, string Source, string Stage, string Operation, double Value);
+public sealed record CombatModifier
+{
+    public string Id { get; }
+    public string Kind { get; }
+    public string Source { get; }
+    public string Stage { get; }
+    public string Operation { get; }
+    public double Value { get; }
+    public JsonElement Facts { get; }
+
+    public CombatModifier(string id, string kind, string source, string stage, string operation, double value, JsonObject? facts = null)
+    {
+        Id = id;
+        Kind = kind;
+        Source = source;
+        Stage = stage;
+        Operation = operation;
+        Value = value;
+        Facts = EcmaJson.ToElement(facts ?? new JsonObject());
+    }
+}
 public sealed record DamageBreakdown(string Weapon, string DamageType, double Base, double Mitigation,
     IReadOnlyList<CombatModifier> Modifiers, double Damage)
 {
@@ -34,6 +56,7 @@ public sealed record CombatForecastRules(
 
 public sealed class CombatForecasts
 {
+    private const string IncomingReactionKind = "reaction.incoming";
     private readonly StateContent content;
     private readonly GridRegistry grids;
     private readonly BattleResources resources;
@@ -41,6 +64,7 @@ public sealed class CombatForecasts
     public ReactionRegistry Reactions { get; }
     private readonly CombatModifierRules modifierRules;
     public CombatModifierPipeline Modifiers { get; }
+    public IReadOnlyList<string> ModifierKinds => Array.AsReadOnly(Modifiers.ProviderIds.Append(IncomingReactionKind).ToArray());
     public CombatForecasts(CombatForecastRules rules)
     {
         var packs = rules.Content.CopyPacks();
@@ -84,7 +108,7 @@ public sealed class CombatForecasts
         return IsWeaponReady(state, unit, weapon) ? weapon : null;
     }
     public JsonObject RequireReadyWeapon(JsonObject state, JsonObject unit, string id) => ReadyWeapon(state, unit, id)
-        ?? throw new DomainInvariantException($"{StateJson.Text(content.Get("units", StateJson.Text(unit, "type")), "name")} cannot fire weapon \"{id}\" right now");
+        ?? throw new DomainInvariantException($"unit type \"{StateJson.Text(unit, "type")}\" cannot fire weapon \"{id}\" right now");
     public bool IsWeaponReady(JsonObject state, JsonObject unit, JsonObject weapon)
     {
         var id = StateJson.Text(weapon, "id");
@@ -173,7 +197,8 @@ public sealed class CombatForecasts
         if (interceptor is not null) reaction = new(StateJson.Integer(interceptor, "id"), StateJson.Text(interceptor, "reaction"), StateJson.Integer(defender, "id"));
         else if (stance.IncomingMultiplier != 1 && CanReact(state, defender))
         {
-            strike = strike.And(new("reaction." + stance.Id, stance.Name, "reaction", "final", "multiply", stance.IncomingMultiplier));
+            strike = strike.And(new("reaction." + stance.Id, IncomingReactionKind, "reaction", "final", "multiply", stance.IncomingMultiplier,
+                new JsonObject { ["reactionId"] = stance.Id }));
             reaction = new(StateJson.Integer(defender, "id"), stance.Id);
         }
         var recipientHp = Math.Max(0, StateJson.Number(recipient, "hp", 0) - strike.Damage);

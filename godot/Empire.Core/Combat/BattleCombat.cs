@@ -22,11 +22,13 @@ public sealed record BattleCombatRules(
 
 public sealed partial class BattleCombat : ILifecycleEffects
 {
+    private const string SupportReactionKind = "reaction.support";
     private readonly StateContent content;
     private readonly BattleResources resources;
     private readonly ITacticalSpace space;
     private TacticalBoard Board(JsonObject state) => new(StateJson.Object(state["map"], "map"), Forecasts.Grid(state));
     public CombatForecasts Forecasts { get; }
+    public IReadOnlyList<string> ModifierKinds => Array.AsReadOnly(Forecasts.ModifierKinds.Append(SupportReactionKind).ToArray());
     public BattleDamage Damage { get; }
     public CombatEffects Effects { get; }
     public WeaponAreaRegistry AreaShapes { get; }
@@ -147,8 +149,9 @@ public sealed partial class BattleCombat : ILifecycleEffects
                 && Forecasts.CanReachWithWeapon(state, weapon, TacticalQueries.Position(supporter), TacticalQueries.Position(defender)))
             .Select(weapon => new { Supporter = supporter, Weapon = weapon, Damage = Forecasts.ComputeDamage(state, supporter, defender,
                 TacticalQueries.Position(supporter), TacticalQueries.Position(defender), StateJson.Text(weapon, "id"))
-                .And(new("reaction.support-attack", "援护攻击", "reaction", "final", "multiply",
-                    Forecasts.Reaction(StateJson.Text(supporter, "reaction")).SupportAttackMultiplier!.Value)) }))
+                .And(new("reaction.support-attack", SupportReactionKind, "reaction", "final", "multiply",
+                    Forecasts.Reaction(StateJson.Text(supporter, "reaction")).SupportAttackMultiplier!.Value,
+                    new JsonObject { ["reactionId"] = StateJson.Text(supporter, "reaction") })) }))
             .OrderByDescending(value => value.Damage.Damage).ThenBy(value => StateJson.Integer(value.Supporter, "id"))
             .ThenBy(value => StateJson.Text(value.Weapon, "id"), StringComparer.Ordinal).FirstOrDefault();
         if (candidates is null) return null;

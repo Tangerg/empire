@@ -386,7 +386,10 @@ public partial class CampaignNavigationChecks : Node
         var originalStamp = File.GetLastWriteTimeUtc(manualPath);
         var game = MountGame();
         Press(Button(View<Control>(game), "ContinueCampaign"));
+        Press(Button(View<Control>(game), "StartBattle"));
         var activeCampaign = Campaign(game);
+        var activeSession = activeCampaign.Battle ?? throw new InvalidOperationException("Manual admission fixture did not enter battle.");
+        var battleBefore = Digest(activeSession.Snapshot());
         var activeView = View<Control>(game);
         var before = State(game);
         var stories = Field<StoryDocument>(game, "stories");
@@ -395,10 +398,9 @@ public partial class CampaignNavigationChecks : Node
             var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
             var engine = new GrayFlagEngine(packs);
             var text = GodotTextCatalog.LoadSimplifiedChinese();
-            var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
-            var battleText = BattleTextChecks.Load(engine, text);
+            var presentationText = BattleTextChecks.Session(engine, text);
             var levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json");
-            var candidate = new GrayFlagCampaign(definition, levels, engine, text, refusals, battleText, battleNodeState);
+            var candidate = new GrayFlagCampaign(definition, levels, engine, presentationText, battleNodeState);
             candidate.BeginBattle();
             var invalid = candidate.Save();
             var obsoleteRequest = candidate.RequestSnapshot()!;
@@ -408,7 +410,7 @@ public partial class CampaignNavigationChecks : Node
             game._UnhandledKeyInput(new InputEventKey { Pressed = true, Keycode = Key.F9 });
             Require(ReferenceEquals(Campaign(game), activeCampaign) && ReferenceEquals(View<Control>(game), activeView) && State(game) == before,
                 "Malformed manual request replaced the campaign or visible screen.");
-            Require(Descendants(game).OfType<AcceptDialog>().Any(dialog => dialog.DialogText.Contains("读取失败，当前进度未变", StringComparison.Ordinal)),
+            Require(Labels(activeView).Contains(text.Format("error.load.failed_unchanged")),
                 "Rejected manual document did not report a recoverable input failure.");
             DismissNotices(game);
 
@@ -423,8 +425,56 @@ public partial class CampaignNavigationChecks : Node
             Require(File.ReadAllBytes(manualPath).SequenceEqual(obsoleteBytes) && Stamp(manualPath) == obsoleteStamp,
                 "Rejecting an unsupported application save rewrote or deleted its original bytes.");
 
+            foreach (var obsoletePart in new[] { "schema", "battle", "state" })
+            {
+                DismissNotices(game);
+                var obsoleteBattle = candidate.Save();
+                if (obsoletePart == "schema") obsoleteBattle["battle"]!["schema"] = 2;
+                else obsoleteBattle["battle"]![obsoletePart]!["levelName"] = "Obsolete persisted title";
+                SaveFile.WriteDocument(manualPath, obsoleteBattle);
+                var bytes = File.ReadAllBytes(manualPath);
+                var stamp = Stamp(manualPath);
+                game._UnhandledKeyInput(new InputEventKey { Pressed = true, Keycode = Key.F9 });
+                Require(ReferenceEquals(Campaign(game), activeCampaign) && ReferenceEquals(View<Control>(game), activeView) && State(game) == before,
+                    "Obsolete battle title/schema replaced the active campaign or screen.");
+                Require(File.ReadAllBytes(manualPath).SequenceEqual(bytes) && Stamp(manualPath) == stamp,
+                    "Obsolete battle title/schema rejection changed the original file.");
+            }
+            var creationOpening = candidate.Save();
+            foreach (var kind in new[] { "unitSpawned", "recruit" })
+            {
+                var complete = creationOpening.DeepClone().AsObject();
+                var unit = complete["battle"]!["state"]!["units"]!.AsArray().OfType<JsonObject>().First();
+                var creation = new JsonObject
+                {
+                    ["type"] = kind, ["unit"] = unit["id"]!.DeepClone(),
+                    ["unitType"] = unit["type"]!.DeepClone(), ["owner"] = unit["owner"]!.DeepClone(),
+                    ["at"] = new JsonObject { ["x"] = unit["x"]!.DeepClone(), ["y"] = unit["y"]!.DeepClone() },
+                };
+                if (kind == "unitSpawned") creation["reason"] = "reinforcement";
+                complete["events"]!.AsArray().Add(creation);
+                candidate.Load(complete);
+                foreach (var field in new[] { "unitType", "owner" })
+                {
+                    DismissNotices(game);
+                    View<BattleScreen>(game).ShowFeedback("");
+                    var malformed = complete.DeepClone().AsObject();
+                    malformed["events"]!.AsArray().Last()!.AsObject().Remove(field);
+                    SaveFile.WriteDocument(manualPath, malformed);
+                    var bytes = File.ReadAllBytes(manualPath);
+                    var stamp = Stamp(manualPath);
+                    game._UnhandledKeyInput(new InputEventKey { Pressed = true, Keycode = Key.F9 });
+                    Require(ReferenceEquals(Campaign(game), activeCampaign) && ReferenceEquals(activeCampaign.Battle, activeSession) &&
+                        ReferenceEquals(View<Control>(game), activeView) && State(game) == before && Digest(activeSession.Snapshot()) == battleBefore,
+                        $"Saved {kind} missing {field} changed the active campaign, session, battle or screen.");
+                    Require(File.ReadAllBytes(manualPath).SequenceEqual(bytes) && Stamp(manualPath) == stamp,
+                        $"Rejecting saved {kind} missing {field} changed the original file.");
+                    Require(Labels(activeView).Contains(text.Format("error.load.failed_unchanged")),
+                        $"Saved {kind} missing {field} did not report a recoverable input failure.");
+                }
+            }
             DismissNotices(game);
-            var opening = new GrayFlagCampaign(definition, levels, engine, text, refusals, battleText);
+            var opening = new GrayFlagCampaign(definition, levels, engine, presentationText);
             SaveFile.WriteDocument(manualPath, opening.Save());
             var children = game.GetChildCount();
             SetField(game, "stories", new StoryDocument());

@@ -54,6 +54,10 @@ public sealed class BattleContentValidator
     {
         // StateContent has already checked pack identity/dependencies, duplicate
         // definitions and terrain encoding. The remaining checks keep source order.
+        foreach (var family in rules.Content.Families)
+            foreach (var definition in content.All(family))
+                if (definition.ContainsKey("name") || definition.ContainsKey("blurb"))
+                    throw new DomainInvariantException($"content {family} \"{Text(definition, "id")}\" contains obsolete presentation text");
         var matchups = new HashSet<string>(StringComparer.Ordinal);
         foreach (var pack in Objects(rules.Content.CopyPacks(), "packs")) foreach (var matchup in Objects(pack["damageMatchups"], "damage matchups"))
         {
@@ -84,6 +88,15 @@ public sealed class BattleContentValidator
         foreach (var weapon in content.All("weapons"))
         {
             var owner = $"weapon \"{Text(weapon, "id")}\"";
+            var bonusIds = new HashSet<string>(StringComparer.Ordinal);
+            foreach (var bonus in Objects(weapon["bonuses"], "weapon bonuses"))
+            {
+                var id = Text(bonus, "id");
+                if (RulePayloadReferences.Blank(id) || !bonusIds.Add(id))
+                    throw new DomainInvariantException($"{owner} bonus identities must be nonempty and unique");
+                if (bonus.ContainsKey("reason"))
+                    throw new DomainInvariantException($"{owner} bonus \"{id}\" contains obsolete presentation text");
+            }
             Accounts(weapon["resources"], owner); Amounts(weapon["resourceRequirements"], owner + " requirement"); Amounts(weapon["resourceCosts"], owner + " cost");
             RequireId("damageTypes", Text(weapon, "damageType"), owner);
             foreach (var effect in Objects(weapon["hitEffects"], "hit effects"))

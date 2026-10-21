@@ -3,7 +3,6 @@ namespace Empire.Core.Geometry;
 public abstract class SquareTiling : ITacticalGrid
 {
     public abstract string Id { get; }
-    public abstract string Name { get; }
     public abstract IReadOnlyList<DirectionDef> Directions { get; }
     public string RestingFacing => "south";
     public abstract int Distance(Coord a, Coord b);
@@ -79,7 +78,6 @@ public abstract class SquareTiling : ITacticalGrid
 public sealed class Square4Grid : SquareTiling
 {
     public override string Id => "square4";
-    public override string Name => "四方格";
     public override IReadOnlyList<DirectionDef> Directions => GridDirections.Square;
 
     public override int Distance(Coord a, Coord b) =>
@@ -91,8 +89,8 @@ public sealed class Square8Grid : SquareTiling
     private static readonly IReadOnlyList<DirectionDef> Facings =
         Array.AsReadOnly(GridDirections.Square.Concat(new DirectionDef[]
         {
-            new("northeast", "东北"), new("southeast", "东南"),
-            new("southwest", "西南"), new("northwest", "西北"),
+            new("northeast"), new("southeast"),
+            new("southwest"), new("northwest"),
         }).ToArray());
 
     private static readonly string[] Sectors =
@@ -101,7 +99,6 @@ public sealed class Square8Grid : SquareTiling
     };
 
     public override string Id => "square8";
-    public override string Name => "八方格";
     public override IReadOnlyList<DirectionDef> Directions => Facings;
 
     public override int Distance(Coord a, Coord b) =>

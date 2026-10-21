@@ -2,6 +2,7 @@
 using System;
 using Godot;
 using Empire.Presentation.Feedback;
+using Empire.Localization;
 
 namespace Empire.Presentation;
 
@@ -14,13 +15,13 @@ public partial class BattleResultScreen : Control
     public System.Collections.Generic.IReadOnlyList<string> RenderingDiagnostics => shell?.RenderingDiagnostics ?? Array.Empty<string>();
     public override void _ExitTree() { generation++; handled = true; }
 
-    public void ShowCompletion(string heading, string reason, bool victory, Action settle, Action retry, Action exit)
+    public void ShowCompletion(GameText text, string heading, string reason, bool victory, Action settle, Action retry, Action exit)
     {
         var column = Begin();
         Line(column, heading, 36); Line(column, reason);
-        if (victory) ActionButton(column, "Settle", "结算战果", settle);
-        ActionButton(column, "Retry", "再来一次", retry);
-        ActionButton(column, "Exit", "战役营地", exit);
+        if (victory) ActionButton(column, "Settle", text.Format("ui.result.settle"), settle);
+        ActionButton(column, "Retry", text.Format("ui.result.retry"), retry);
+        ActionButton(column, "Exit", text.Format("ui.result.camp"), exit);
     }
 
     private VBoxContainer Begin(CampaignShellView? shellView = null, Action? onExit = null)
@@ -74,21 +75,17 @@ public partial class BattleResultScreen : Control
     {
         if (outcome != "victory") throw new ArgumentException("Only committed victories have a campaign result summary.", nameof(outcome));
         var column = Begin(shellView, onExit);
-        var victory = true;
         void Line(string text, int size = 20) => BattleResultScreen.Line(column, text, size);
-        Line(victory ? CampaignBattleSummary.Heading : "战斗结束", 24);
+        Line(summary.Heading, 24);
         Line(summary.Title, 36); Line(summary.Outcome);
-        if (victory)
+        var metrics = new GridContainer { Columns = 2 }; column.AddChild(metrics);
+        foreach (var metric in summary.Metrics)
         {
-            var metrics = new GridContainer { Columns = 2 }; column.AddChild(metrics);
-            foreach (var metric in summary.Metrics)
-            {
-                metrics.AddChild(new Label { Text = metric.Label, CustomMinimumSize = new Vector2(170, 32) });
-                metrics.AddChild(new Label { Text = metric.Value.ToString(System.Globalization.CultureInfo.InvariantCulture) });
-            }
-            Line(CampaignBattleSummary.FallenLabel + "\n" + summary.FallenText);
-            Line(CampaignBattleSummary.SignalsLabel + "\n" + summary.SignalsText);
+            metrics.AddChild(new Label { Text = metric.Label, CustomMinimumSize = new Vector2(170, 32) });
+            metrics.AddChild(new Label { Text = metric.Value.ToString(System.Globalization.CultureInfo.InvariantCulture) });
         }
-        ActionButton(column, "Proceed", CampaignBattleSummary.ContinueLabel, proceed);
+        Line(summary.FallenLabel + "\n" + summary.FallenText);
+        Line(summary.SignalsLabel + "\n" + summary.SignalsText);
+        ActionButton(column, "Proceed", summary.ContinueLabel, proceed);
     }
 }

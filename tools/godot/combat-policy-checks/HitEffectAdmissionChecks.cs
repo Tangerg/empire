@@ -37,8 +37,7 @@ static class HitEffectAdmissionChecks
             var validated = 0;
             var handler = new WeaponHitEffectHandler(kind,
                 (context, effect) => context.Rules.Effects.AddStatus(context.Target, StateJson.Text(effect, "profile"),
-                    StateJson.Number(effect, "rounds", 0), StateJson.Integer(context.Attacker, "id"), context.Emit),
-                effect => "Mark " + StateJson.Text(effect, "profile"))
+                    StateJson.Number(effect, "rounds", 0), StateJson.Integer(context.Attacker, "id"), context.Emit))
             {
                 Validate = (content, effect, owner) =>
                 {
@@ -60,7 +59,7 @@ static class HitEffectAdmissionChecks
             }, overrides: [Keys.HitEffects], requiresCapabilities: [Keys.HitEffects]);
             var engine = BattleEngineFactory.Create(catalog, [plugin]);
             Check(validated > 0, kind + " handler validates content at composition");
-            Check(engine.Combat.HitEffects.Describe(payload) == "Mark armor_down", kind + " handler owns description");
+            Check(ReferenceEquals(engine.Combat.HitEffects.Get(kind), handler), kind + " retains composed handler identity");
             foreach (var malformed in new[]
             {
                 new JsonObject { ["type"] = kind, ["rounds"] = 2 },

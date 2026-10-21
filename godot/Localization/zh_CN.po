@@ -1655,7 +1655,7 @@ msgstr "{0} 没有「{1}」。"
 #. {1}: semantic weaponId (string).
 #, csharp-format
 msgid "error.ability.weapon_unavailable"
-msgstr "「{0}」无法使用指定武器（{1}）。"
+msgstr "「{0}」无法使用所选武器。"
 
 #. {0}: abilities.Get(S(d, "abilityId")).Name.
 #, csharp-format
@@ -2558,3 +2558,993 @@ msgstr "无法执行：{0}"
 
 msgid "battle.objective.heading"
 msgstr "作战目标"
+
+msgid "content.movement_profiles.foot.name"
+msgstr "步行"
+
+msgid "content.movement_profiles.mounted.name"
+msgstr "骑乘"
+
+msgid "content.movement_profiles.heavy.name"
+msgstr "重装"
+
+msgid "content.movement_profiles.flying.name"
+msgstr "飞行"
+
+msgid "content.movement_profiles.naval.name"
+msgstr "水军"
+
+msgid "content.movement_profiles.amphibious.name"
+msgstr "两栖"
+
+msgid "content.statuses.poisoned.name"
+msgstr "中毒"
+
+msgid "content.statuses.armor_down.name"
+msgstr "破甲"
+
+msgid "content.statuses.shaken.name"
+msgstr "动摇"
+
+msgid "content.statuses.inspired.name"
+msgstr "鼓舞"
+
+msgid "content.statuses.silenced.name"
+msgstr "沉默"
+
+msgid "content.structures.gate.name"
+msgstr "城门"
+
+msgid "content.structures.command_node.name"
+msgstr "指挥节点"
+
+msgid "content.structures.depot.name"
+msgstr "补给设施"
+
+msgid "content.structures.bulkhead.name"
+msgstr "隔断"
+
+msgid "content.structures.boss_part.name"
+msgstr "大型目标部位"
+
+msgid "content.terrain_overlays.flooded.name"
+msgstr "洪水"
+
+msgid "content.terrain_overlays.fire_field.name"
+msgstr "火场"
+
+msgid "content.terrain_overlays.vacuum.name"
+msgstr "真空区"
+
+msgid "content.terrain_overlays.low_gravity.name"
+msgstr "低重力区"
+
+msgid "content.terrain_overlays.signal_storm.name"
+msgstr "干扰风暴"
+
+msgid "content.tactics.rally.name"
+msgstr "集结号令"
+
+msgid "content.tactics.steady.name"
+msgstr "稳住阵线"
+
+msgid "content.formations.formation-line.name"
+msgstr "线列"
+
+msgid "content.formations.formation-defensive.name"
+msgstr "防御阵"
+
+msgid "content.formations.formation-loose.name"
+msgstr "散阵"
+
+msgid "content.damage_types.slash.name"
+msgstr "斩击"
+
+msgid "content.damage_types.pierce.name"
+msgstr "穿刺"
+
+msgid "content.damage_types.blunt.name"
+msgstr "钝击"
+
+msgid "content.damage_types.magic.name"
+msgstr "魔法"
+
+msgid "content.armor_classes.unarmored.name"
+msgstr "无甲"
+
+msgid "content.armor_classes.light.name"
+msgstr "轻甲"
+
+msgid "content.armor_classes.heavy.name"
+msgstr "重甲"
+
+msgid "content.armor_classes.flying.name"
+msgstr "飞行"
+
+msgid "content.terrains.plain.name"
+msgstr "平原"
+
+msgid "content.terrains.road.name"
+msgstr "道路"
+
+msgid "content.terrains.bridge.name"
+msgstr "桥梁"
+
+msgid "content.terrains.forest.name"
+msgstr "森林"
+
+msgid "content.terrains.hill.name"
+msgstr "丘陵"
+
+msgid "content.terrains.mountain.name"
+msgstr "山地"
+
+msgid "content.terrains.water.name"
+msgstr "水域"
+
+msgid "content.terrains.wall.name"
+msgstr "城墙"
+
+msgid "content.terrains.village.name"
+msgstr "村庄"
+
+msgid "content.terrains.barracks.name"
+msgstr "兵营"
+
+msgid "content.terrains.castle.name"
+msgstr "城堡"
+
+msgid "content.weapons.soldier_sword.name"
+msgstr "长剑"
+
+msgid "content.weapons.soldier_javelin.name"
+msgstr "投枪"
+
+msgid "content.weapons.archer_bow.name"
+msgstr "短弓"
+
+msgid "content.weapons.archer_bow.bonuses.anti-air"
+msgstr "弓箭对空"
+
+msgid "content.weapons.rogue_blades.name"
+msgstr "淬毒双刃"
+
+msgid "content.weapons.rogue_blades.bonuses.assassination"
+msgstr "刺杀辅助单位"
+
+msgid "content.weapons.rogue_blades.bonuses.backline-strike"
+msgstr "切入远程后排"
+
+msgid "content.weapons.cleric_staff.name"
+msgstr "法杖"
+
+msgid "content.weapons.mage_bolt.name"
+msgstr "魔法弹"
+
+msgid "content.weapons.mage_overcharge.name"
+msgstr "奥术过载"
+
+msgid "content.weapons.mage_meteor.name"
+msgstr "陨石术"
+
+msgid "content.weapons.knight_sword.name"
+msgstr "骑士剑"
+
+msgid "content.weapons.knight_charge.name"
+msgstr "骑士冲锋"
+
+msgid "content.weapons.heroic_breakthrough.name"
+msgstr "战意裂阵"
+
+msgid "content.weapons.ogre_club.name"
+msgstr "巨棒"
+
+msgid "content.weapons.ballista_bolt.name"
+msgstr "重弩"
+
+msgid "content.weapons.ballista_bolt.bonuses.siege"
+msgstr "攻城武器"
+
+msgid "content.weapons.dragon_breath.name"
+msgstr "龙息"
+
+msgid "content.units.soldier.name"
+msgstr "剑士"
+
+msgid "content.units.soldier.blurb"
+msgstr "廉价的战线核心，能占领城镇。"
+
+msgid "content.units.archer.name"
+msgstr "弓箭手"
+
+msgid "content.units.archer.blurb"
+msgstr "隔一格射击不吃近战反击，克制飞行单位。"
+
+msgid "content.units.rogue.name"
+msgstr "刺客"
+
+msgid "content.units.rogue.blurb"
+msgstr "机动极高，专杀无甲的法师与弓手。"
+
+msgid "content.units.cleric.name"
+msgstr "牧师"
+
+msgid "content.units.cleric.blurb"
+msgstr "治疗相邻友军 30 点生命，自身脆弱。"
+
+msgid "content.units.mage.name"
+msgstr "法师"
+
+msgid "content.units.mage.blurb"
+msgstr "魔法伤害无视重甲，是攻城的答案；陨石术需要咏唱两个行动轮。"
+
+msgid "content.units.knight.name"
+msgstr "骑士"
+
+msgid "content.units.knight.blurb"
+msgstr "六格突进的重锤，无法占领城镇，怕魔法。"
+
+msgid "content.units.ogre.name"
+msgstr "巨魔"
+
+msgid "content.units.ogre.blurb"
+msgstr "血厚甲厚的攻坚肉盾，走不上山地。"
+
+msgid "content.units.ballista.name"
+msgstr "弩车"
+
+msgid "content.units.ballista.blurb"
+msgstr "攻城器械：必须静止开火，绝不会被反击。"
+
+msgid "content.units.dragon.name"
+msgstr "巨龙"
+
+msgid "content.units.dragon.blurb"
+msgstr "无视地形飞行，唯一弱点是弓箭。"
+
+msgid "content.careers.militia.name"
+msgstr "民兵"
+
+msgid "content.careers.ranger.name"
+msgstr "游侠"
+
+msgid "content.careers.shadow.name"
+msgstr "影刃"
+
+msgid "content.careers.acolyte.name"
+msgstr "侍祭"
+
+msgid "content.careers.knight-order.name"
+msgstr "骑士"
+
+msgid "content.careers.war-mage.name"
+msgstr "战斗法师"
+
+msgid "content.careers.siege-engineer.name"
+msgstr "攻城技师"
+
+msgid "content.careers.ogre-warrior.name"
+msgstr "巨魔战士"
+
+msgid "content.careers.dragon-lord.name"
+msgstr "龙骑领主"
+
+msgid "content.terrains.c01.outside.name"
+msgstr "地图之外"
+
+msgid "content.terrains.c01.scorched.name"
+msgstr "焦土农田"
+
+msgid "content.terrains.c01.riverbank.name"
+msgstr "泥泞河岸"
+
+msgid "content.terrains.c01.street.name"
+msgstr "王都石街"
+
+msgid "content.terrains.c01.oathway.name"
+msgstr "受控誓文"
+
+msgid "content.terrains.c01.forge.name"
+msgstr "山炉石台"
+
+msgid "content.terrains.c01.graveyard.name"
+msgstr "无声墓园"
+
+msgid "content.terrains.c01.molten.name"
+msgstr "熔流沟渠"
+
+msgid "content.terrains.c01.mother-root.name"
+msgstr "银林母根"
+
+msgid "content.terrains.c01.outpost.name"
+msgstr "战役据点"
+
+msgid "content.terrains.c01.field-post.name"
+msgstr "临时军营"
+
+msgid "content.terrains.c01.keep.name"
+msgstr "战役主堡"
+
+msgid "content.weapons.c01.border-blade.name"
+msgstr "边境长剑"
+
+msgid "content.weapons.c01.civilian-tool.name"
+msgstr "随身工具"
+
+msgid "content.weapons.c01.gray-oath.name"
+msgstr "灰誓裂阵"
+
+msgid "content.weapons.c01.guard-spear.name"
+msgstr "灰旗长枪"
+
+msgid "content.weapons.c01.legion-spear.name"
+msgstr "军团拒马枪"
+
+msgid "content.weapons.c01.legion-spear.bonuses.anti-charge"
+msgstr "拒马枪阵"
+
+msgid "content.weapons.c01.knight-lance.name"
+msgstr "骑士战枪"
+
+msgid "content.weapons.c01.knight-charge.name"
+msgstr "破阵冲锋"
+
+msgid "content.weapons.c01.longbow.name"
+msgstr "银木长弓"
+
+msgid "content.weapons.c01.longbow.bonuses.anti-air"
+msgstr "银木对空箭"
+
+msgid "content.weapons.c01.ranger-bow.name"
+msgstr "灰境猎弓"
+
+msgid "content.weapons.c01.lantern-staff.name"
+msgstr "守墓灯杖"
+
+msgid "content.weapons.c01.oath-dispel.name"
+msgstr "断誓灯火"
+
+msgid "content.weapons.c01.oath-dispel.bonuses.last-rites"
+msgstr "归还亡者姓名"
+
+msgid "content.weapons.c01.oath-dispel.bonuses.oath-severing"
+msgstr "切断控制誓文"
+
+msgid "content.weapons.c01.engineer-hammer.name"
+msgstr "工兵锤"
+
+msgid "content.weapons.c01.satchel-charge.name"
+msgstr "破门火药"
+
+msgid "content.weapons.c01.satchel-charge.bonuses.demolition"
+msgstr "工兵爆破"
+
+msgid "content.weapons.c01.rune-hammer.name"
+msgstr "山炉符文锤"
+
+msgid "content.weapons.c01.forge-burst.name"
+msgstr "炉心震击"
+
+msgid "content.weapons.c01.wolf-spear.name"
+msgstr "荒原骑矛"
+
+msgid "content.weapons.c01.undead-blade.name"
+msgstr "回声残刃"
+
+msgid "content.weapons.c01.ghost-touch.name"
+msgstr "失名之触"
+
+msgid "content.weapons.c01.inquisitor-flame.name"
+msgstr "审判誓火"
+
+msgid "content.weapons.c01.golem-slam.name"
+msgstr "石躯重击"
+
+msgid "content.weapons.c01.ballista.name"
+msgstr "城防重弩"
+
+msgid "content.weapons.c01.ballista.bonuses.siege"
+msgstr "攻城重弩"
+
+msgid "content.weapons.c01.oath-bolt.name"
+msgstr "誓火弹"
+
+msgid "content.weapons.c01.dragon-breath.name"
+msgstr "盟约龙息"
+
+msgid "content.weapons.c01.colossus-sweep.name"
+msgstr "墓园横扫"
+
+msgid "content.units.c01.laiya.name"
+msgstr "莱娅"
+
+msgid "content.units.c01.laiya.blurb"
+msgstr "从见习旗官开始学习让他人也能说“不”的年轻指挥官。"
+
+msgid "content.units.c01.roderick.name"
+msgstr "罗德里克"
+
+msgid "content.units.c01.roderick.blurb"
+msgstr "可靠而强硬的王国骑士，莱娅的导师。"
+
+msgid "content.units.c01.cain.name"
+msgstr "凯恩"
+
+msgid "content.units.c01.cain.blurb"
+msgstr "相信程序与秩序可以减少任性伤亡的帝国军官。"
+
+msgid "content.units.c01.bran.name"
+msgstr "布兰"
+
+msgid "content.units.c01.bran.blurb"
+msgstr "先记脚印、伤口和姓名，再谈旗帜的灰境猎人。"
+
+msgid "content.units.c01.mirelle.name"
+msgstr "米蕾尔"
+
+msgid "content.units.c01.mirelle.blurb"
+msgstr "坚持让每一段亡者记忆保有姓名与修改痕迹的守墓人。"
+
+msgid "content.units.c01.tasha.name"
+msgstr "塔莎"
+
+msgid "content.units.c01.tasha.blurb"
+msgstr "用账目、契约和工程把理想变成可维护组织的佣兵首领。"
+
+msgid "content.units.c01.ivra.name"
+msgstr "伊芙拉"
+
+msgid "content.units.c01.ivra.blurb"
+msgstr "只接受平等盟约、始终保有离开权的幼龙。"
+
+msgid "content.units.c01.swordsman.name"
+msgstr "边境剑士"
+
+msgid "content.units.c01.swordsman.blurb"
+msgstr "可靠的近战与占领骨干。"
+
+msgid "content.units.c01.banner-guard.name"
+msgstr "灰旗卫士"
+
+msgid "content.units.c01.banner-guard.blurb"
+msgstr "以援护和阵线保护灰旗同伴。"
+
+msgid "content.units.c01.archer.name"
+msgstr "边境弓手"
+
+msgid "content.units.c01.archer.blurb"
+msgstr "适应丘陵与林地的轻装射手。"
+
+msgid "content.units.c01.knight.name"
+msgstr "王国骑士"
+
+msgid "content.units.c01.knight.blurb"
+msgstr "长距离冲锋的重装骑兵。"
+
+msgid "content.units.c01.legion-shield.name"
+msgstr "军团盾卫"
+
+msgid "content.units.c01.legion-shield.blurb"
+msgstr "帝国军团的稳固盾墙。"
+
+msgid "content.units.c01.gravekeeper.name"
+msgstr "守墓人"
+
+msgid "content.units.c01.gravekeeper.blurb"
+msgstr "治疗盟友并压制誓文亡灵。"
+
+msgid "content.units.c01.supply-wagon.name"
+msgstr "灰旗辎重车"
+
+msgid "content.units.c01.supply-wagon.blurb"
+msgstr "把步兵送过开阔地的灰旗补给车，不载骑手与器械。"
+
+msgid "content.units.c01.engineer.name"
+msgstr "工兵"
+
+msgid "content.units.c01.engineer.blurb"
+msgstr "擅长拆除结构与打开战场缺口。"
+
+msgid "content.units.c01.wolf-rider.name"
+msgstr "荒原狼骑"
+
+msgid "content.units.c01.wolf-rider.blurb"
+msgstr "高机动侧击单位，不适合正面硬拼。"
+
+msgid "content.units.c01.skeleton-guard.name"
+msgstr "骸骨守卫"
+
+msgid "content.units.c01.skeleton-guard.blurb"
+msgstr "被誓文反复拉回战场的亡者回声。"
+
+msgid "content.units.c01.ghost.name"
+msgstr "失名幽魂"
+
+msgid "content.units.c01.ghost.blurb"
+msgstr "失去姓名后无法安息的记忆。"
+
+msgid "content.units.c01.inquisitor.name"
+msgstr "圣辉审判官"
+
+msgid "content.units.c01.inquisitor.blurb"
+msgstr "用群体誓火压制异议的教廷军官。"
+
+msgid "content.units.c01.templar.name"
+msgstr "圣辉圣殿骑士"
+
+msgid "content.units.c01.templar.blurb"
+msgstr "以重甲和誓火推进净化命令的教廷卫队。"
+
+msgid "content.units.c01.ballista.name"
+msgstr "城防弩车"
+
+msgid "content.units.c01.ballista.blurb"
+msgstr "射程极远但无法移动后射击。"
+
+msgid "content.units.c01.battle-mage.name"
+msgstr "战斗法师"
+
+msgid "content.units.c01.battle-mage.blurb"
+msgstr "以魔法穿透重甲的阵地单位。"
+
+msgid "content.units.c01.rune-shield.name"
+msgstr "符文盾卫"
+
+msgid "content.units.c01.rune-shield.blurb"
+msgstr "山炉氏族极难撼动的防守核心。"
+
+msgid "content.units.c01.rune-artificer.name"
+msgstr "符文工匠"
+
+msgid "content.units.c01.rune-artificer.blurb"
+msgstr "用符文破甲并维护古代机械。"
+
+msgid "content.units.c01.stone-golem.name"
+msgstr "石魔像"
+
+msgid "content.units.c01.stone-golem.blurb"
+msgstr "缓慢、坚固，能把敌人推出阵线。"
+
+msgid "content.units.c01.silver-longbow.name"
+msgstr "银林长弓"
+
+msgid "content.units.c01.silver-longbow.blurb"
+msgstr "远射和对空能力兼备的银林守军。"
+
+msgid "content.units.c01.woodland-walker.name"
+msgstr "林地行者"
+
+msgid "content.units.c01.woodland-walker.blurb"
+msgstr "借森林掩护快速转移的游击者。"
+
+msgid "content.units.c01.druid.name"
+msgstr "银林德鲁伊"
+
+msgid "content.units.c01.druid.blurb"
+msgstr "维持母根循环的森林施法者。"
+
+msgid "content.units.c01.cemetery-colossus.name"
+msgstr "墓园巨像"
+
+msgid "content.units.c01.cemetery-colossus.blurb"
+msgstr "由无数无名记忆聚成的战争残响。"
+
+msgid "content.units.c01.refugee.name"
+msgstr "边境难民"
+
+msgid "content.units.c01.refugee.blurb"
+msgstr "必须安全带离战区的非战斗人员。"
+
+msgid "content.units.c01.laborer.name"
+msgstr "随军工匠"
+
+msgid "content.units.c01.laborer.blurb"
+msgstr "能把一座桥或炉心从崩溃边缘拉回来的普通工匠。"
+
+msgid "content.statuses.c01.oath-controlled.name"
+msgstr "誓文控制"
+
+msgid "content.structures.c01.mother-root.name"
+msgstr "银林母根"
+
+msgid "content.tactics.c01.gray-rally.name"
+msgstr "灰旗集结"
+
+msgid "content.tactics.c01.hold-the-line.name"
+msgstr "守住退路"
+
+msgid "content.tactics.c01.name-the-dead.name"
+msgstr "归还真名"
+
+msgid "content.abilities.attack.name"
+msgstr "攻击"
+
+msgid "content.abilities.attack.hint"
+msgstr "对射程内的敌人造成伤害；若对方也能打到你，会遭到反击。"
+
+msgid "content.abilities.heal.name"
+msgstr "治疗"
+
+msgid "content.abilities.heal.hint"
+msgstr "恢复相邻友军的生命值。"
+
+msgid "content.abilities.capture.name"
+msgstr "占领"
+
+msgid "content.abilities.capture.hint"
+msgstr "占下城镇、兵营或城堡；只有人类步兵可以占领。"
+
+msgid "content.abilities.wait.name"
+msgstr "待机"
+
+msgid "content.abilities.wait.hint"
+msgstr "结束该单位的行动。"
+
+msgid "content.reactions.counter.name"
+msgstr "反击"
+
+msgid "content.reactions.counter.hint"
+msgstr "被攻击时用射程覆盖得到的最强武器还击。"
+
+msgid "content.reactions.guard.name"
+msgstr "防御"
+
+msgid "content.reactions.guard.hint"
+msgstr "减少受到的伤害，但放弃还击。"
+
+msgid "content.reactions.support.name"
+msgstr "援护"
+
+msgid "content.reactions.support.hint"
+msgstr "替相邻友军挡下攻击，每轮一次。"
+
+msgid "content.reactions.conserve.name"
+msgstr "节制"
+
+msgid "content.reactions.conserve.hint"
+msgstr "只用无消耗的武器还击，保留弹药与冷却。"
+
+msgid "content.resources.funds.name"
+msgstr "资金"
+
+msgid "content.resources.command_points.name"
+msgstr "指挥点"
+
+msgid "content.resources.momentum.name"
+msgstr "气势"
+
+msgid "content.resources.weapon_uses.name"
+msgstr "武器次数"
+
+msgid "content.directions.square4.north"
+msgstr "北"
+
+msgid "content.directions.square4.east"
+msgstr "东"
+
+msgid "content.directions.square4.south"
+msgstr "南"
+
+msgid "content.directions.square4.west"
+msgstr "西"
+
+msgid "content.directions.square8.north"
+msgstr "北"
+
+msgid "content.directions.square8.east"
+msgstr "东"
+
+msgid "content.directions.square8.south"
+msgstr "南"
+
+msgid "content.directions.square8.west"
+msgstr "西"
+
+msgid "content.directions.square8.northeast"
+msgstr "东北"
+
+msgid "content.directions.square8.southeast"
+msgstr "东南"
+
+msgid "content.directions.square8.southwest"
+msgstr "西南"
+
+msgid "content.directions.square8.northwest"
+msgstr "西北"
+
+msgid "content.directions.hex.hex_northeast"
+msgstr "东北"
+
+msgid "content.directions.hex.hex_east"
+msgstr "东"
+
+msgid "content.directions.hex.hex_southeast"
+msgstr "东南"
+
+msgid "content.directions.hex.hex_southwest"
+msgstr "西南"
+
+msgid "content.directions.hex.hex_west"
+msgstr "西"
+
+msgid "content.directions.hex.hex_northwest"
+msgstr "西北"
+
+msgid "command.name.weapon"
+msgstr "{0} · {1}"
+
+msgid "command.hint.range"
+msgstr "{0} 射程 {1}-{2}"
+
+msgid "combat.modifier.row"
+msgstr "{0} {1}"
+
+msgid "combat.modifier.label"
+msgstr "{0} {1}"
+
+msgid "combat.modifier.multiply"
+msgstr "×{0:F2}"
+
+msgid "combat.modifier.add"
+msgstr "{0:+0.00;-0.00;+0.00}"
+
+msgid "combat.modifier.mitigation"
+msgstr "防御 {0:+0%;-0%;+0%}"
+
+msgid "combat.modifier.matchup"
+msgstr "伤害类型与护甲克制"
+
+msgid "combat.modifier.hp_strength"
+msgstr "攻击者剩余生命"
+
+msgid "combat.modifier.attacker_status"
+msgstr "攻击方状态"
+
+msgid "combat.modifier.attacker_command"
+msgstr "攻击方指挥光环"
+
+msgid "combat.modifier.rank"
+msgstr "{0}军衔"
+
+msgid "combat.modifier.elevation"
+msgstr "高地优势（高 {0} 级）"
+
+msgid "combat.modifier.back"
+msgstr "背刺"
+
+msgid "combat.modifier.side"
+msgstr "侧击"
+
+msgid "combat.modifier.flank"
+msgstr "夹击"
+
+msgid "combat.modifier.full_cover"
+msgstr "全掩体"
+
+msgid "combat.modifier.half_cover"
+msgstr "半掩体"
+
+msgid "combat.modifier.terrain_defense"
+msgstr "地形防御"
+
+msgid "combat.modifier.unit_defense"
+msgstr "单位防御"
+
+msgid "level.c01_01.title"
+msgstr "01 · 双子丘陵"
+
+msgid "level.c01_01.description"
+msgstr "第一次指挥：夺取高地，也承担冒进的后果。"
+
+msgid "battle.signal.found_matching_orders"
+msgstr "发现相同军令"
+
+msgid "level.c01_02.title"
+msgstr "02 · 三桥河谷"
+
+msgid "level.c01_02.description"
+msgstr "短暂停火，把六军之争让给过桥的平民。"
+
+msgid "battle.signal.accepted_bridge_truce"
+msgstr "接受桥头停战"
+
+msgid "level.c01_03.title"
+msgstr "03 · 赤石围城"
+
+msgid "level.c01_03.description"
+msgstr "城堡可以夺下，被控制的名字却未必救得回来。"
+
+msgid "battle.signal.redstone_node_disabled"
+msgstr "关闭赤石节点"
+
+msgid "battle.signal.redstone_gate_chain_broken"
+msgstr "破坏赤石城门锁链"
+
+msgid "battle.signal.redstone_sappers_cut_chain"
+msgstr "工兵切断城门锁链"
+
+msgid "level.c01_04.title"
+msgstr "04 · 黑旗营地"
+
+msgid "level.c01_04.description"
+msgstr "侦察命令结束之处，是救人和取证必须开始的地方。"
+
+msgid "battle.signal.found_prisoners"
+msgstr "找到被囚者"
+
+msgid "battle.signal.found_oath_template"
+msgstr "找到誓约模板"
+
+msgid "battle.signal.saved_witnesses"
+msgstr "救下证人"
+
+msgid "level.c01_05.title"
+msgstr "05 · 焚村令"
+
+msgid "level.c01_05.description"
+msgstr "保护苇草村；灰旗第一次不是军令，而是一项选择。"
+
+msgid "battle.signal.gray_banner_raised"
+msgstr "升起灰旗"
+
+msgid "level.c01_06.title"
+msgstr "06 · 白河夜渡"
+
+msgid "level.c01_06.description"
+msgstr "人、粮车和后卫，没有一项损失会在结算画面外消失。"
+
+msgid "battle.signal.white_river_pursuit_arrived"
+msgstr "白河追兵抵达"
+
+msgid "battle.signal.white_river_bridge_damaged"
+msgstr "白河桥受损"
+
+msgid "level.c01_07.title"
+msgstr "07 · 无主之城"
+
+msgid "level.c01_07.description"
+msgstr "城墙属于谁，要由谁先得到保护来回答。"
+
+msgid "level.c01_08.title"
+msgstr "08 · 佣兵之价"
+
+msgid "level.c01_08.description"
+msgstr "名字、数目、日期——先结清死人留下的账。"
+
+msgid "battle.signal.mercenary_dead_paid"
+msgstr "支付佣兵抚恤"
+
+msgid "level.c01_09.title"
+msgstr "09 · 笼中之火"
+
+msgid "level.c01_09.description"
+msgstr "拆掉锁链，不用新的命令替代旧的命令。"
+
+msgid "level.c01_10.title"
+msgstr "10 · 旧旗下的追兵"
+
+msgid "level.c01_10.description"
+msgstr "导师站在旧旗之下；活着离开，比赢下争论更重要。"
+
+msgid "battle.signal.ivra_chose_to_help"
+msgstr "伊芙拉决定相助"
+
+msgid "level.c01_11.title"
+msgstr "11 · 无声墓园"
+
+msgid "level.c01_11.description"
+msgstr "同一名士兵反复死亡，直到有人读出墓碑上的名字。"
+
+msgid "battle.signal.named_old_soldier"
+msgstr "记下老兵的名字"
+
+msgid "battle.signal.named_border_child"
+msgstr "记下边境孩子的名字"
+
+msgid "battle.signal.named_royal_deserter"
+msgstr "记下王军逃兵的名字"
+
+msgid "level.c01_12.title"
+msgstr "12 · 沉没钟塔"
+
+msgid "level.c01_12.description"
+msgstr "河水上涨时，暂时共同控制比抢走碎片更难。"
+
+msgid "battle.signal.bell_tower_flood_rising"
+msgstr "钟楼洪水上涨"
+
+msgid "level.c01_13.title"
+msgstr "13 · 圣城档案"
+
+msgid "level.c01_13.description"
+msgstr "把被删除的战争带出白塔，让档案仍然留下修改痕迹。"
+
+msgid "battle.signal.found_deleted_war"
+msgstr "发现被抹去的战争"
+
+msgid "battle.signal.mirelle_kept_revision_marks"
+msgstr "米蕾尔保留修订痕迹"
+
+msgid "level.c01_14.title"
+msgstr "14 · 山炉余烬"
+
+msgid "level.c01_14.description"
+msgstr "技术不是无罪的借口，修好炉心也不是替祖先赎罪。"
+
+msgid "battle.signal.forge_valve_a_closed"
+msgstr "关闭熔炉甲阀"
+
+msgid "battle.signal.forge_valve_b_closed"
+msgstr "关闭熔炉乙阀"
+
+msgid "level.c01_15.title"
+msgstr "15 · 银林长梦"
+
+msgid "level.c01_15.description"
+msgstr "森林延续的代价，不能继续转嫁给林外城市。"
+
+msgid "level.c01_16.title"
+msgstr "16 · 记住我的名字"
+
+msgid "level.c01_16.description"
+msgstr "无旗者不是需要被消灭的怪物，而是需要被听见的新意识。"
+
+msgid "battle.signal.unflagged_name_one"
+msgstr "记下第一位无旗者的名字"
+
+msgid "battle.signal.unflagged_name_two"
+msgstr "记下第二位无旗者的名字"
+
+msgid "battle.signal.unflagged_name_three"
+msgstr "记下第三位无旗者的名字"
+
+msgid "ui.result.settle"
+msgstr "结算战果"
+
+msgid "ui.result.retry"
+msgstr "再来一次"
+
+msgid "ui.result.camp"
+msgstr "战役营地"
+
+msgid "ui.result.summary_heading"
+msgstr "战斗胜利"
+
+msgid "ui.result.fallen_heading"
+msgstr "本关倒下"
+
+msgid "ui.result.signals_heading"
+msgstr "关键战场记录"
+
+msgid "ui.result.continue"
+msgstr "查看战后剧情 →"
+
+msgid "ui.result.turns"
+msgstr "回合"
+
+msgid "ui.result.allies_remaining"
+msgstr "我方存续"
+
+msgid "ui.result.enemies_remaining"
+msgstr "敌方存续"
+
+msgid "ui.result.strikes"
+msgstr "交战次数"
+
+msgid "ui.result.none_fallen"
+msgstr "无人倒下"
+
+msgid "ui.result.no_signals"
+msgstr "目标按计划完成"
+
+msgid "ui.result.fallen_separator"
+msgstr "、"
+
+msgid "ui.result.signal_separator"
+msgstr " · "
+
+msgid "ui.application.title"
+msgstr "灰旗"
+
+msgid "combat.modifier.support"
+msgstr "{0}援护攻击"

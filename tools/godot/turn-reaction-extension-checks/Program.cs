@@ -32,12 +32,17 @@ void Refuses(Action operation, string message)
     try { operation(); } catch (DomainInvariantException error) { Check(error.Message.Contains(message, StringComparison.Ordinal), "wrong error: " + error.Message); return; }
     throw new Exception("Expected rejection: " + message);
 }
-ReactionBehavior Definition(JsonObject value) => new(Text(value, "id"), Text(value, "name"), IsTrue(value["intercepts"]), Number(value, "incomingMultiplier", 1), IsTrue(value["retaliates"]), IsTrue(value["conservesResources"]), Text(value, "hint"));
+ReactionBehavior Definition(JsonObject value) => new(Text(value, "id"), IsTrue(value["intercepts"]), Number(value, "incomingMultiplier", 1), IsTrue(value["retaliates"]), IsTrue(value["conservesResources"]));
 ReactionRegistry Reactions() { var result = ReactionRegistry.Core(); foreach (var item in Objects(fixture["customReactions"], "custom reactions")) result.Register(Definition(item)); return result; }
 BattleCombat ComposedCombat(JsonArray contentPacks, ReactionRegistry reactions) => BattleEngineFactory.Create(new ReadOnlyContent(contentPacks),
     [new EnginePlugin("test.turn-reaction.reactions", 1, context => context.Replace(BattleCapabilities.Reactions, reactions), overrides: [BattleCapabilities.Reactions])]).Combat;
-Equal(Node(TurnOrderRegistry.Core().All().Select(value => new { value.Id, value.Name })), fixture["defaults"]!["turnOrders"], "default turn metadata");
-Equal(Node(ReactionRegistry.Core().All().Select(value => new { value.Id, value.Name, value.Intercepts, value.IncomingMultiplier, value.Retaliates, value.ConservesResources, value.Hint })), fixture["defaults"]!["reactions"], "default reaction metadata and hints");
+Equal(Node(TurnOrderRegistry.Core().All().Select(value => value.Id)), Node(Objects(fixture["defaults"]!["turnOrders"], "turn orders").Select(value => Text(value, "id"))), "default turn identities");
+Equal(Node(ReactionRegistry.Core().All().Select(value => new { value.Id, value.Intercepts, value.IncomingMultiplier, value.Retaliates, value.ConservesResources })),
+    Node(Objects(fixture["defaults"]!["reactions"], "reactions").Select(value => new
+    {
+        Id = Text(value, "id"), Intercepts = IsTrue(value["intercepts"]), IncomingMultiplier = Number(value, "incomingMultiplier", 1),
+        Retaliates = IsTrue(value["retaliates"]), ConservesResources = IsTrue(value["conservesResources"]),
+    })), "default reaction behavior");
 foreach (var item in Objects(fixture["turns"], "turn cases"))
 {
     var state = item["before"]!.DeepClone().AsObject();
@@ -51,9 +56,16 @@ foreach (var item in Objects(fixture["turns"], "turn cases"))
     switch (Text(item, "operation")) { case "start": life.Start(); break; case "beginPlaying": life.BeginPlaying(); break; case "advance": life.AdvanceTurn(); break; }
     var name = Text(item, "name"); var beforeQueries = StateDigest.Hash(state);
     var policy = turns.Active(state); var units = Objects(state["units"], "units").ToArray();
-    var query = Node(new { Active = policy.Id, policy.Name, CanAct = units.Select(unit => turns.CanAct(state, unit)), MayAct = units.Select(unit => turns.MayAct(state, unit)), Actors = turns.Actors(state).Select(unit => Integer(unit, "id")), Preview = turns.Preview(state, config["count"] is null ? 5 : Integer(config, "count")) });
+    var query = Node(new { Active = policy.Id, CanAct = units.Select(unit => turns.CanAct(state, unit)), MayAct = units.Select(unit => turns.MayAct(state, unit)), Actors = turns.Actors(state).Select(unit => Integer(unit, "id")), Preview = turns.Preview(state, config["count"] is null ? 5 : Integer(config, "count")) });
     Check(StateDigest.Hash(state) == beforeQueries, name + " queries mutated state");
-    Equal(query, item["query"], name + " policy queries");
+    var sourceQuery = item["query"]!.AsObject();
+    var expectedQuery = new JsonObject
+    {
+        ["active"] = sourceQuery["active"]!.DeepClone(), ["canAct"] = sourceQuery["canAct"]!.DeepClone(),
+        ["mayAct"] = sourceQuery["mayAct"]!.DeepClone(), ["actors"] = sourceQuery["actors"]!.DeepClone(),
+        ["preview"] = sourceQuery["preview"]!.DeepClone(),
+    };
+    Equal(query, expectedQuery, name + " policy queries");
     Equal(events, item["events"], name + " ordered events");
     Equal(hashes, item["hashes"], name + " event-time state digests");
     Equal(state, item["after"], name + " full state");
@@ -65,7 +77,7 @@ foreach (var item in Objects(fixture["reactions"], "reaction cases"))
     var customPacks = packs.DeepClone().AsArray();
     if (IsTrue(config["weaponCost"])) Objects(customPacks, "packs").SelectMany(pack => Objects(pack["weapons"], "weapons")).Single(weapon => Text(weapon, "id") == "soldier_sword")["cooldown"] = 2;
     var registry = Reactions();
-    if (IsTrue(config["replaceGuard"])) registry.Replace(registry.Get("guard") with { Name = "替换防御", IncomingMultiplier = 0.25, Retaliates = true });
+    if (IsTrue(config["replaceGuard"])) registry.Replace(registry.Get("guard") with { IncomingMultiplier = 0.25, Retaliates = true });
     var combat = ComposedCombat(customPacks, registry);
     var attacker = state["units"]![0]!.AsObject(); var defender = state["units"]![1]!.AsObject();
     var name = Text(item, "name"); var beforeForecast = StateDigest.Hash(state);
@@ -181,7 +193,6 @@ Console.WriteLine("Native contracts cover invalid disposition rollback, all ship
 sealed class ReversePolicy(JsonObject config) : ITurnOrderPolicy
 {
     public string Id => config["id"]?.GetValue<string>() ?? "reverse";
-    public string Name => "倒序自定义";
     private static JsonObject[] Units(JsonObject state) => Objects(state["units"], "units").ToArray();
     public JsonObject InitialState(JsonObject state, ReadOnlyContent content) => new() { ["policy"] = IsTrue(config["switchToSide"]) ? "side" : Id, ["activeUnit"] = null,
         ["data"] = new JsonObject { ["step"] = 0, ["movement"] = content.Definition("units", Text(Units(state)[0], "type"))!.Value.GetProperty("movement").GetDouble() } };

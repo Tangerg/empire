@@ -466,7 +466,22 @@ campaign result admission. `BattleTextDocument`, `ObjectiveText` and `BattleText
 own authored display metadata and formatting outside Core state and hashes.
 Native authored text and its PO catalog, not the frozen TypeScript oracle, own
 production wording. See `godot/docs/OBJECTIVE-OUTCOME-SCHEMA.md` for the explicit
-save/replay/application schema break and remaining content-name localization scope.
+save/replay/application schema boundaries and validation evidence.
+
+`ContentTextDocument` owns immutable presentation bindings for content families and
+composed ability, reaction, resource and direction identities. `ContentText` resolves
+those bindings, never gameplay definitions or raw identifiers as wording fallbacks.
+Combat modifier providers own semantic kinds/facts; `BattleCombat.ModifierKinds`
+declares required formatter coverage and `CombatModifierText` owns its open
+presentation registry. `SessionPresentationText.Compose` is the sole default text
+assembly, receiving explicit native documents and the composed engine.
+Scenario effect handlers declare their emitted signal identities; `BattleTextDocument`
+validates corresponding presentation bindings without interpreting effect kinds.
+
+`StateDigest` covers every serialized field, including controller identity. Native
+battle save and replay schema 3 make this all-field hash contract explicit; display
+text lives outside state instead of relying on digest exclusions. The application
+envelope remains schema 3 and admits only its current nested battle format.
 
 ## Native Godot health ownership
 
@@ -562,3 +577,17 @@ source comparisons preserve normal gameplay and event-time snapshots.
 - [关卡数据格式](./level-format.md)
 - [关卡编辑器](./editor-guide.md)
 - [战场表现系统](./presentation-system.md)
+
+## Native live unit ownership
+
+`State.BattleUnitOwnership` owns live allegiance changes and the attached
+commander's owner projection. It resolves the destination player and preflights
+the complete unit/commander set before writing. Scenario transfer retains its
+own readiness and event policy; returned-unit restoration retains its own health,
+placement and reset policy. Detached spawned units pass the same ownership
+admission before insertion and `nextUnitId` advancement. Initial campaign/level
+seeds, cast/marker snapshots and neutral structure ownership are distinct facts,
+not alternate live unit transfer paths.
+
+Synchronizing an attached commander's owner on a scenario transfer intentionally
+repairs the previous split state; it is not claimed equivalent to that old defect.

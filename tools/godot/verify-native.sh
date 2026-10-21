@@ -15,7 +15,7 @@ export -f dotnet
 dotnet build godot/Empire.csproj --disable-build-servers -m:1 -p:UseSharedCompilation=false
 dotnet build godot/Empire.Core.Tests --disable-build-servers -m:1 -p:UseSharedCompilation=false
 dotnet godot/Empire.Core.Tests/bin/Debug/net8.0/Empire.Core.Tests.dll godot/tests/oracle
-# Native schema 2/3 intentionally rejects the old prose-bearing source inputs.
+# Native battle/replay schema 3 rejects obsolete prose-bearing and partial-digest inputs.
 # Historical suites remain development evidence, not an implicit current-schema gate.
 bash tools/godot/objective-outcome-checks/run.sh
 bash tools/godot/catalog-boundary-checks/run.sh

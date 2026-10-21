@@ -5,7 +5,7 @@ using Empire.Core.Tactics;
 
 namespace Empire.Core.Combat;
 
-public sealed record ActiveCast(int Caster, int Owner, string Weapon, string Name, Coord Origin, Coord Target,
+public sealed record ActiveCast(int Caster, int Owner, string Weapon, Coord Origin, Coord Target,
     double DeclaredAt, double ResolveAt, double Remaining, double Progress);
 
 public sealed partial class BattleCombat
@@ -21,9 +21,9 @@ public sealed partial class BattleCombat
             var resolve = StateJson.Number(cast, "resolveAt", 0);
             if (resolve <= declared) throw new DomainInvariantException($"a cast must resolve after it is declared, got {declared} -> {resolve}");
             var weaponId = StateJson.Text(cast, "weapon");
-            var weapon = content.Get("weapons", weaponId);
+            content.Get("weapons", weaponId);
             var now = StateJson.Number(state, "actorTurns", 0);
-            result.Add(new(caster, StateJson.Integer(cast, "owner"), weaponId, StateJson.Text(weapon, "name"),
+            result.Add(new(caster, StateJson.Integer(cast, "owner"), weaponId,
                 TacticalQueries.Position(cast["origin"]!.AsObject()), TacticalQueries.Position(cast["target"]!.AsObject()),
                 declared, resolve, Math.Max(0, resolve - now), Math.Clamp((now - declared) / (resolve - declared), 0, 1)));
         }

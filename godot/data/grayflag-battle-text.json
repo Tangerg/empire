@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "levels": {
     "c01-01": {
       "players": {
@@ -25,6 +25,17 @@
               "key": "objective.c01_01.p2.route"
             }
           }
+        }
+      },
+      "title": {
+        "key": "level.c01_01.title"
+      },
+      "description": {
+        "key": "level.c01_01.description"
+      },
+      "signals": {
+        "found_matching_orders": {
+          "key": "battle.signal.found_matching_orders"
         }
       }
     },
@@ -58,6 +69,17 @@
               "key": "objective.c01_02.p2.route"
             }
           }
+        }
+      },
+      "title": {
+        "key": "level.c01_02.title"
+      },
+      "description": {
+        "key": "level.c01_02.description"
+      },
+      "signals": {
+        "accepted_bridge_truce": {
+          "key": "battle.signal.accepted_bridge_truce"
         }
       }
     },
@@ -95,6 +117,23 @@
             }
           }
         }
+      },
+      "title": {
+        "key": "level.c01_03.title"
+      },
+      "description": {
+        "key": "level.c01_03.description"
+      },
+      "signals": {
+        "redstone_node_disabled": {
+          "key": "battle.signal.redstone_node_disabled"
+        },
+        "redstone_gate_chain_broken": {
+          "key": "battle.signal.redstone_gate_chain_broken"
+        },
+        "redstone_sappers_cut_chain": {
+          "key": "battle.signal.redstone_sappers_cut_chain"
+        }
       }
     },
     "c01-04": {
@@ -127,6 +166,23 @@
               "key": "objective.c01_04.p2.route"
             }
           }
+        }
+      },
+      "title": {
+        "key": "level.c01_04.title"
+      },
+      "description": {
+        "key": "level.c01_04.description"
+      },
+      "signals": {
+        "found_prisoners": {
+          "key": "battle.signal.found_prisoners"
+        },
+        "found_oath_template": {
+          "key": "battle.signal.found_oath_template"
+        },
+        "saved_witnesses": {
+          "key": "battle.signal.saved_witnesses"
         }
       }
     },
@@ -161,6 +217,17 @@
             }
           }
         }
+      },
+      "title": {
+        "key": "level.c01_05.title"
+      },
+      "description": {
+        "key": "level.c01_05.description"
+      },
+      "signals": {
+        "gray_banner_raised": {
+          "key": "battle.signal.gray_banner_raised"
+        }
       }
     },
     "c01-06": {
@@ -187,6 +254,20 @@
               "key": "objective.c01_06.p2.route"
             }
           }
+        }
+      },
+      "title": {
+        "key": "level.c01_06.title"
+      },
+      "description": {
+        "key": "level.c01_06.description"
+      },
+      "signals": {
+        "white_river_pursuit_arrived": {
+          "key": "battle.signal.white_river_pursuit_arrived"
+        },
+        "white_river_bridge_damaged": {
+          "key": "battle.signal.white_river_bridge_damaged"
         }
       }
     },
@@ -221,7 +302,14 @@
             }
           }
         }
-      }
+      },
+      "title": {
+        "key": "level.c01_07.title"
+      },
+      "description": {
+        "key": "level.c01_07.description"
+      },
+      "signals": {}
     },
     "c01-08": {
       "players": {
@@ -250,6 +338,17 @@
               "key": "objective.c01_08.p2.route"
             }
           }
+        }
+      },
+      "title": {
+        "key": "level.c01_08.title"
+      },
+      "description": {
+        "key": "level.c01_08.description"
+      },
+      "signals": {
+        "mercenary_dead_paid": {
+          "key": "battle.signal.mercenary_dead_paid"
         }
       }
     },
@@ -291,7 +390,14 @@
             }
           }
         }
-      }
+      },
+      "title": {
+        "key": "level.c01_09.title"
+      },
+      "description": {
+        "key": "level.c01_09.description"
+      },
+      "signals": {}
     },
     "c01-10": {
       "players": {
@@ -317,6 +423,17 @@
               "key": "objective.c01_10.p2.route"
             }
           }
+        }
+      },
+      "title": {
+        "key": "level.c01_10.title"
+      },
+      "description": {
+        "key": "level.c01_10.description"
+      },
+      "signals": {
+        "ivra_chose_to_help": {
+          "key": "battle.signal.ivra_chose_to_help"
         }
       }
     },
@@ -351,6 +468,23 @@
             }
           }
         }
+      },
+      "title": {
+        "key": "level.c01_11.title"
+      },
+      "description": {
+        "key": "level.c01_11.description"
+      },
+      "signals": {
+        "named_old_soldier": {
+          "key": "battle.signal.named_old_soldier"
+        },
+        "named_border_child": {
+          "key": "battle.signal.named_border_child"
+        },
+        "named_royal_deserter": {
+          "key": "battle.signal.named_royal_deserter"
+        }
       }
     },
     "c01-12": {
@@ -377,6 +511,17 @@
               "key": "objective.c01_12.p2.route"
             }
           }
+        }
+      },
+      "title": {
+        "key": "level.c01_12.title"
+      },
+      "description": {
+        "key": "level.c01_12.description"
+      },
+      "signals": {
+        "bell_tower_flood_rising": {
+          "key": "battle.signal.bell_tower_flood_rising"
         }
       }
     },
@@ -411,6 +556,23 @@
             }
           }
         }
+      },
+      "title": {
+        "key": "level.c01_13.title"
+      },
+      "description": {
+        "key": "level.c01_13.description"
+      },
+      "signals": {
+        "found_deleted_war": {
+          "key": "battle.signal.found_deleted_war"
+        },
+        "found_matching_orders": {
+          "key": "battle.signal.found_matching_orders"
+        },
+        "mirelle_kept_revision_marks": {
+          "key": "battle.signal.mirelle_kept_revision_marks"
+        }
       }
     },
     "c01-14": {
@@ -443,6 +605,20 @@
               "key": "objective.c01_14.p2.route"
             }
           }
+        }
+      },
+      "title": {
+        "key": "level.c01_14.title"
+      },
+      "description": {
+        "key": "level.c01_14.description"
+      },
+      "signals": {
+        "forge_valve_a_closed": {
+          "key": "battle.signal.forge_valve_a_closed"
+        },
+        "forge_valve_b_closed": {
+          "key": "battle.signal.forge_valve_b_closed"
         }
       }
     },
@@ -490,7 +666,14 @@
             }
           }
         }
-      }
+      },
+      "title": {
+        "key": "level.c01_15.title"
+      },
+      "description": {
+        "key": "level.c01_15.description"
+      },
+      "signals": {}
     },
     "c01-16": {
       "players": {
@@ -522,6 +705,23 @@
               "key": "objective.c01_16.p2.route"
             }
           }
+        }
+      },
+      "title": {
+        "key": "level.c01_16.title"
+      },
+      "description": {
+        "key": "level.c01_16.description"
+      },
+      "signals": {
+        "unflagged_name_one": {
+          "key": "battle.signal.unflagged_name_one"
+        },
+        "unflagged_name_two": {
+          "key": "battle.signal.unflagged_name_two"
+        },
+        "unflagged_name_three": {
+          "key": "battle.signal.unflagged_name_three"
         }
       }
     }

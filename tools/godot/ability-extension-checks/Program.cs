@@ -28,9 +28,9 @@ JsonNode? Node<T>(T value) => JsonSerializer.SerializeToNode(value, serializatio
 AbilityRegistry Abilities(JsonObject config)
 {
     var registry = DefaultAbilities.Create();
-    registry.Register(new("test-charge", "蓄能")
+    registry.Register(new("test-charge")
     {
-        Hint = "把一件武器充能到下一击。", Priority = 12.5,
+        Priority = 12.5,
         WeaponFor = (rules, query) => query.WeaponId is { } id
             ? rules.Combat.Forecasts.UnitWeapons(query.Unit).FirstOrDefault(weapon => StateJson.Text(weapon, "id") == id)
                 ?? throw new DomainInvariantException($"unknown weapon \"{id}\"") : null,
@@ -48,9 +48,9 @@ AbilityRegistry Abilities(JsonObject config)
             emit(new JsonObject { ["type"] = "scenarioSignal", ["signal"] = "charge:" + (query.WeaponId ?? "") });
         },
     });
-    registry.Register(new("test-pulse", "脉冲")
+    registry.Register(new("test-pulse")
     {
-        Hint = "自定义效果", Priority = 12.25, Tags = ["command"],
+        Priority = 12.25, Tags = ["command"],
         Usable = (_, query) => !StateJson.IsTrue(query.State["scenario"]!["variables"]!["disabled"]),
         Execute = (_, query, _, emit) =>
         {
@@ -60,7 +60,7 @@ AbilityRegistry Abilities(JsonObject config)
             if (StateJson.IsTrue(variables["fail"])) throw new DomainInvariantException("custom ability failed");
         },
     });
-    registry.Register(new("test-mark", "标记")
+    registry.Register(new("test-mark")
     {
         SelfTargeted = StateJson.IsTrue(config["markSelf"]), Priority = 12.25,
         Engagement = config["engagement"]?.GetValue<string>() ?? "hostile-action", Targets = (_, _) => [new(3, 3)],
@@ -70,7 +70,7 @@ AbilityRegistry Abilities(JsonObject config)
             emit(new JsonObject { ["type"] = "scenarioSignal", ["signal"] = "mark" });
         },
     });
-    registry.Register(new("test-replace", "替身")
+    registry.Register(new("test-replace")
     {
         Execute = (_, query, _, emit) =>
         {
@@ -82,7 +82,7 @@ AbilityRegistry Abilities(JsonObject config)
             emit(new JsonObject { ["type"] = "scenarioSignal", ["signal"] = "actor-replaced" });
         },
     });
-    registry.Register(new("test-sacrifice", "献身")
+    registry.Register(new("test-sacrifice")
     {
         Execute = (rules, query, _, emit) =>
         {
@@ -92,7 +92,7 @@ AbilityRegistry Abilities(JsonObject config)
         },
     });
     foreach (var (id, priority) in new[] { ("test-😀", 12.25), ("test-\ue000", 12.25), ("test-low", 12.1) })
-        registry.Register(new(id, id) { Priority = priority });
+        registry.Register(new(id) { Priority = priority });
     if (config["attackTags"] is JsonArray tags)
         registry.Replace(registry.Get("attack") with { Tags = tags.Select(tag => StateJson.Text(tag, "tag")).ToArray() });
     return registry.Seal();
@@ -124,13 +124,26 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
     var initial = item["initial"]!.DeepClone().AsObject();
     var rules = engine.AbilityRules with { Abilities = Abilities(item["config"]!.AsObject()) };
     var commands = new AbilityCommands(rules, engine.Commands);
-    var options = Node(commands.Options(initial, initial["units"]![0]!.AsObject(), TacticalQueries.Position(item["at"]!.AsObject())))!.AsArray();
+    var commandOptions = commands.Options(initial, initial["units"]![0]!.AsObject(), TacticalQueries.Position(item["at"]!.AsObject()));
+    var options = Node(commandOptions.Select(option => new
+    {
+        option.Key, option.Ability, option.Weapon, option.SelfTargeted, option.Targets,
+    }))!.AsArray();
     foreach (var option in options.OfType<JsonObject>())
     {
-        option.Remove("engagement");
         if (option["weapon"] is null) option.Remove("weapon");
     }
-    Check(name, "menus", options, item["menus"]);
+    var expectedOptions = new JsonArray(item["menus"]!.AsArray().OfType<JsonObject>().Select(option =>
+    {
+        var facts = new JsonObject
+        {
+            ["key"] = option["key"]!.DeepClone(), ["ability"] = option["ability"]!.DeepClone(),
+            ["selfTargeted"] = option["selfTargeted"]!.DeepClone(), ["targets"] = option["targets"]!.DeepClone(),
+        };
+        if (option["weapon"] is { } weapon) facts["weapon"] = weapon.DeepClone();
+        return (JsonNode?)facts;
+    }).ToArray());
+    Check(name, "menus", options, expectedOptions);
     var battle = new Battle(initial, new BattleActionRegistry().Register("command", (state, action, emit) =>
     {
         void Emit(JsonObject value)
@@ -160,13 +173,42 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
         Check(name, "undo", battle.Snapshot(), item["initial"]);
     }
 }
+var rangeState = input["cases"]![0]!["initial"]!.DeepClone().AsObject();
+var rangeUnit = rangeState["units"]![0]!.AsObject();
+rangeUnit["learnedAbilities"] = new JsonArray("test-range", "wait");
+var selectedRangeWeapon = new JsonObject
+{
+    ["id"] = "range-source", ["tags"] = new JsonArray(), ["minRange"] = 0.25, ["maxRange"] = 4.75,
+};
+var weaponQueries = 0;
+var rangeAbilities = DefaultAbilities.Create().Register(new("test-range")
+{
+    WeaponChoices = (_, _) => [selectedRangeWeapon],
+    WeaponFor = (_, _) =>
+    {
+        weaponQueries++;
+        return new JsonObject { ["tags"] = new JsonArray(), ["minRange"] = 90, ["maxRange"] = 99 };
+    },
+});
+var rangeCommands = new AbilityCommands(engine.AbilityRules with { Abilities = rangeAbilities }, engine.Commands)
+    .Options(rangeState, rangeUnit, TacticalQueries.Position(rangeUnit));
+var ranged = rangeCommands.Single(option => option.Ability == "test-range");
+Check("semantic command range", "selected choice range", Node(ranged.Range), Node(new CommandRange(0.25, 4.75)));
+Check("semantic command range", "selected choice identity", Node(ranged.Weapon), Node("range-source"));
+Check("semantic command range", "no extra weapon query", Node(weaponQueries), Node(1));
+Check("semantic command range", "no weapon has no range", Node(rangeCommands.Single(option => option.Ability == "wait").Range), null);
+selectedRangeWeapon["minRange"] = 100;
+Check("semantic command range", "detached range facts", Node(ranged.Range), Node(new CommandRange(0.25, 4.75)));
+
 var tagsSource = new[] { "original" };
-var entry = new AbilityDefinition("probe", "Probe") { Tags = tagsSource };
+var entry = new AbilityDefinition("probe") { Tags = tagsSource };
 tagsSource[0] = "outside";
 Check("immutable tags", "tags", Node(entry.Tags), Node(new[] { "original" }));
 var originalRegistry = new AbilityRegistry().Register(entry).Seal();
-var cloned = originalRegistry.Clone().Replace(entry with { Name = "Changed" }).Register(new("second", "Second"));
+var cloned = originalRegistry.Clone().Replace(entry with { Priority = 25 }).Register(new("second"));
 Check("registry isolation", "keys", Node(originalRegistry.Keys()), Node(new[] { "probe" }));
 Check("registry replacement", "keys", Node(cloned.Keys()), Node(new[] { "probe", "second" }));
+Check("registry replacement", "original priority", Node(originalRegistry.Get("probe").Priority), Node(50d));
+Check("registry replacement", "cloned priority", Node(cloned.Get("probe").Priority), Node(25d));
 Check("default isolation", "keys", Node(engine.Abilities.Keys()), Node(new[] { "attack", "heal", "capture", "wait" }));
 Console.WriteLine($"PASS {input["cases"]!.AsArray().Count} source command cases / {checks} assertions (menus, errors, events, state, digest, undo, immutable definitions).");

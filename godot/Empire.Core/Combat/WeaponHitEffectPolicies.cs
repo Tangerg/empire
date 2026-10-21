@@ -1,6 +1,5 @@
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using Empire.Core.Determinism;
 using Empire.Core.Geometry;
 using Empire.Core.Registries;
 using Empire.Core.State;
@@ -22,8 +21,7 @@ public sealed record WeaponHitEffectContext(WeaponHitEffectRules Rules, JsonObje
     public ReadOnlyContent Content => Rules.Content;
 }
 
-public sealed record WeaponHitEffectHandler(string Kind, Action<WeaponHitEffectContext, JsonObject> Apply,
-    Func<JsonObject, string> Describe)
+public sealed record WeaponHitEffectHandler(string Kind, Action<WeaponHitEffectContext, JsonObject> Apply)
 {
     public Action<ReadOnlyContent, JsonObject, string> Validate { get; init; } = (_, _, _) => { };
 }
@@ -46,15 +44,13 @@ public sealed class WeaponHitEffectHandlerRegistry : KeyedRegistry<WeaponHitEffe
             Get(StateJson.Text(effect, "type")).Apply(context, effect);
         }
     }
-    public string Describe(JsonObject effect) => Get(StateJson.Text(effect, "type")).Describe(effect);
 }
 
 public static class DefaultWeaponHitEffects
 {
     private static readonly WeaponHitEffectHandlerRegistry defaults = new WeaponHitEffectHandlerRegistry()
         .Register(new("addStatus", (context, effect) => context.Rules.Effects.AddStatus(context.Target,
-            StateJson.Text(effect, "status"), StateJson.Number(effect, "duration", 0), StateJson.Integer(context.Attacker, "id"), context.Emit),
-            effect => $"施加 {StateJson.Text(effect, "status")}（{EcmaNumber.Format(StateJson.Number(effect, "duration", 0))} 回合）")
+            StateJson.Text(effect, "status"), StateJson.Number(effect, "duration", 0), StateJson.Integer(context.Attacker, "id"), context.Emit))
         {
             Validate = (content, effect, owner) =>
             {
@@ -63,14 +59,13 @@ public static class DefaultWeaponHitEffects
             },
         })
         .Register(new("removeStatus", (context, effect) => context.Rules.Effects.RemoveStatus(context.Target,
-            StateJson.Text(effect, "status"), context.Emit), effect => $"移除 {StateJson.Text(effect, "status")}")
+            StateJson.Text(effect, "status"), context.Emit))
         {
             Validate = RequireStatus,
         })
         .Register(new("forcedMove", (context, effect) => context.Rules.ForceMove(context.State,
             StateJson.Integer(context.Target, "id"), TacticalQueries.Position(context.Attacker), StateJson.Text(effect, "mode"),
-            StateJson.Number(effect, "distance", 0), StateJson.Number(effect, "collisionDamage", 0), context.Emit),
-            effect => $"{(StateJson.Text(effect, "mode") == "push" ? "击退" : "拉拽")} {EcmaNumber.Format(StateJson.Number(effect, "distance", 0))} 格")
+            StateJson.Number(effect, "distance", 0), StateJson.Number(effect, "collisionDamage", 0), context.Emit))
         {
             Validate = (_, effect, owner) =>
             {

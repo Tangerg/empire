@@ -3,9 +3,10 @@
     <OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EmpireRoot Condition="'$(EmpireRoot)' == ''">../../..</EmpireRoot>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
-    <Compile Include="$(EmpireRoot)/godot/Empire.Core/**/*.cs" Exclude="$(EmpireRoot)/godot/Empire.Core/obj/**/*.cs;$(EmpireRoot)/godot/Empire.Core/bin/**/*.cs" />
+    <ProjectReference Include="$(EmpireRoot)/godot/Empire.Core/Empire.Core.csproj" />
   </ItemGroup>
 </Project>

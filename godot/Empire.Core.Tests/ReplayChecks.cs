@@ -3,6 +3,10 @@ using Empire.Core.Determinism;
 using Empire.Core.Engine;
 using Empire.Core.Lifecycle;
 using Empire.Core.Transactions;
+using Empire.Core;
+using Empire.Core.State;
+using Empire.Core.Tactics;
+using Empire.Core.Transport;
 
 internal static class ReplayChecks
 {
@@ -66,6 +70,74 @@ internal static class ReplayChecks
             VerifyPersistence(engine, level, battle, recorder.Replay(battle.Snapshot()));
             Console.WriteLine($"  {level["id"]}: {count} legal native actions, exact save/replay round trip (independent level, not carried-state campaign victory).");
         }
+    }
+
+    public static void OwnershipAdmission(string oracleRoot)
+    {
+        var engine = Engine(oracleRoot);
+        var state = engine.CreateState(Levels(oracleRoot).First());
+        var commander = state["commanders"]!.AsArray().OfType<JsonObject>().First();
+        var unit = TacticalQueries.RequireUnit(state, commander["unitId"]!.GetValue<int>());
+        var owner = state["players"]!.AsArray().OfType<JsonObject>()
+            .Select(player => player["id"]!.GetValue<int>()).First(id => id != unit["owner"]!.GetValue<int>());
+        var invalidOwner = state["players"]!.AsArray().OfType<JsonObject>()
+            .Max(player => player["id"]!.GetValue<int>()) + 1;
+        var effect = new JsonObject
+        {
+            ["owner"] = invalidOwner,
+            ["selector"] = new JsonObject { ["ids"] = new JsonArray(unit["id"]!.DeepClone()) },
+        };
+        var events = new List<JsonObject>();
+        var before = state.DeepClone();
+        Reject(() => new BattleUnitOwnership(state).Assign(new[] { unit.DeepClone().AsObject() }, owner));
+        Equal(before, state, "detached live-unit ownership subject rejection");
+        var duplicateCommanders = state.DeepClone().AsObject();
+        duplicateCommanders["commanders"]!.AsArray().Add(commander.DeepClone());
+        Reject(() => new BattleUnitOwnership(duplicateCommanders).Validate());
+        Reject(() => BattleStateFactory.SpawnUnit(
+            new BattleStateRules(engine.Catalog, engine.Grids, engine.Reactions), state,
+            unit["type"]!.GetValue<string>(), invalidOwner, TacticalQueries.Position(unit)));
+        Equal(before, state, "rejected spawned-unit ownership");
+        if (events.Count != 0) throw new Exception("Rejected spawn emitted an event.");
+        Reject(() => engine.ScenarioCommands.ChangeUnitOwner(state, effect, events.Add));
+        Equal(before, state, "rejected direct ownership command");
+        if (events.Count != 0) throw new Exception("Rejected owner emitted an event.");
+        effect["owner"] = owner;
+        engine.ScenarioCommands.ChangeUnitOwner(state, effect, events.Add);
+        if (unit["owner"]!.GetValue<int>() != owner || commander["owner"]!.GetValue<int>() != owner)
+            throw new Exception("Live unit and commander ownership diverged.");
+        engine.SaveBattle(state, "2026-10-21T00:00:00Z");
+        var invalidProjection = state.DeepClone().AsObject();
+        invalidProjection["commanders"]![0]!["owner"] = before["commanders"]![0]!["owner"]!.DeepClone();
+        Reject(() => engine.SaveBattle(invalidProjection, "2026-10-21T00:00:00Z"));
+
+        var at = TacticalQueries.Position(unit);
+        var marker = new JsonObject
+        {
+            ["id"] = 99999, ["kind"] = "corpse", ["owner"] = owner,
+            ["at"] = TacticalQueries.CoordinateJson(at), ["fallenUnit"] = unit.DeepClone(),
+        };
+        state["units"]!.AsArray().Remove(unit);
+        state["markers"]!.AsArray().Add(marker);
+        before = state.DeepClone();
+        events.Clear();
+        Reject(() => BattleUnitReturn.Restore(engine.Catalog, state, marker,
+            new UnitReturnRequest(at, Owner: invalidOwner), events.Add));
+        Equal(before, state, "rejected returned-unit ownership");
+        if (events.Count != 0) throw new Exception("Rejected return emitted an event.");
+        var returned = BattleUnitReturn.Restore(engine.Catalog, state, marker,
+            new UnitReturnRequest(at, Owner: 1), events.Add)
+            ?? throw new Exception("Admitted unit did not return.");
+        if (returned["owner"]!.GetValue<int>() != 1 || commander["owner"]!.GetValue<int>() != 1)
+            throw new Exception("Returned unit and commander ownership diverged.");
+        engine.SaveBattle(state, "2026-10-21T00:00:00Z");
+    }
+
+    private static void Reject(Action action)
+    {
+        try { action(); }
+        catch (DomainInvariantException) { return; }
+        throw new Exception("Invalid ownership was accepted.");
     }
 
     private static void VerifyPersistence(GrayFlagEngine engine, JsonObject level, Battle battle, JsonObject replay)

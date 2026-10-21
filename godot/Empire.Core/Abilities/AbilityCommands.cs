@@ -1,6 +1,5 @@
 using System.Text.Json.Nodes;
 using Empire.Core.Combat;
-using Empire.Core.Determinism;
 using Empire.Core.Geometry;
 using Empire.Core.State;
 using Empire.Core.Tactics;
@@ -49,10 +48,11 @@ public sealed class AbilityCommands(AbilityRules rules, TacticalCommands command
             var targets = Targets(ability, order);
             if (!ability.SelfTargeted && targets.Count == 0) return;
             var id = weapon is null ? null : StateJson.Text(weapon, "id");
+            var range = weapon is null ? null : new CommandRange(
+                StateJson.Number(weapon["minRange"], "minRange"),
+                StateJson.Number(weapon["maxRange"], "maxRange"));
             options.Add(new(id is null ? ability.Id : $"{ability.Id}:{id}", ability.Id, id,
-                weapon is null ? ability.Name : $"{ability.Name} · {StateJson.Text(weapon, "name")}",
-                weapon is null ? ability.Hint : $"{ability.Hint} 射程 {EcmaNumber.Format(StateJson.Number(weapon["minRange"], "minRange"))}-{EcmaNumber.Format(StateJson.Number(weapon["maxRange"], "maxRange"))}",
-                ability.SelfTargeted, targets, ability.Engagement));
+                ability.SelfTargeted, targets, ability.Engagement, range));
         }
     }
 

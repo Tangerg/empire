@@ -38,7 +38,7 @@ BattleResources Policies(List<string> trace)
 {
     var adapters = DefaultResourcePolicies.Adapters.Clone();
     foreach (var (id, integer, weight) in new[] { ("supply", true, 3.5), ("fuel", false, 0.25), ("big", true, 1.0) })
-        adapters.Register(new(id, id.ToUpperInvariant(), "squad", integer, weight, subject =>
+        adapters.Register(new(id, "squad", integer, weight, subject =>
         {
             trace.Add("account:" + id);
             if (subject.Holder["stores"]?[id] is not JsonObject state) return null;
@@ -111,11 +111,17 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
             case "ref": return resources.RefOf(subject);
             case "subject": return resources.RefOf(resources.SubjectFor(Context(data["context"]!.AsObject()), Transaction(data["transaction"]!.AsObject())));
             case "transactions": return resources.CanAffordTransactions(Context(data["context"]!.AsObject()), data["transactions"]!.AsArray().OfType<JsonObject>().Select(Transaction));
-            case "accounts": return resources.Accounts(subject).Select(account => new { resource = account.Resource, name = account.Name, current = account.Current, capacity = account.Capacity }).ToArray();
+            case "accounts": return resources.Accounts(subject).Select(account => new { resource = account.Resource, current = account.Current, capacity = account.Capacity }).ToArray();
             default: throw new Exception("Unknown fixture operation");
         }
     });
-    Check(name + " result", result["result"], item["result"]);
+    var expectedResult = FixtureText(data, "operation") == "accounts"
+        ? new JsonArray(item["result"]!.AsArray().OfType<JsonObject>().Select(account => (JsonNode?)new JsonObject
+        {
+            ["resource"] = account["resource"]!.DeepClone(), ["current"] = account["current"]?.DeepClone(),
+            ["capacity"] = account["capacity"]?.DeepClone(),
+        }).ToArray()) : item["result"];
+    Check(name + " result", result["result"], expectedResult);
     Check(name + " error", result["error"], item["error"]);
     Check(name + " holder", data["holder"], item["after"]);
     Check(name + " context", data["context"], item["contextAfter"]);
@@ -123,7 +129,7 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
     Check(name + " trace", Node(trace), item["trace"]);
 }
 
-ResourceAdapter Dummy(string id) => new(id, id, "player", true, 1, _ => null);
+ResourceAdapter Dummy(string id) => new(id, "player", true, 3, _ => null);
 ResourceSubjectResolver Resolver(string kind) => new(kind, (_, _) => null!, _ => null!);
 foreach (var item in input["registries"]!.AsArray().OfType<JsonObject>())
 {
@@ -168,17 +174,31 @@ foreach (var item in input["registries"]!.AsArray().OfType<JsonObject>())
                     originalSealed = original.Adapters.IsSealed && original.Subjects.IsSealed,
                     cloneSealed = cloned.Adapters.IsSealed || cloned.Subjects.IsSealed, adapterIdentity, resolverIdentity,
                     originalAdapters = original.Adapters.Keys(), clonedAdapters = cloned.Adapters.Keys(),
-                    originalSubjects = original.Subjects.Keys(), clonedSubjects = cloned.Subjects.Keys(), originalFundsName = original.Adapters.Get("funds").Name,
+                    originalSubjects = original.Subjects.Keys(), clonedSubjects = cloned.Subjects.Keys(),
+                    originalFundsWeight = original.Adapters.Get("funds").AiWeight, clonedFundsWeight = cloned.Adapters.Get("funds").AiWeight,
                 };
             case "default resource independence":
                 var left = new BattleResources();
                 var right = new BattleResources();
                 left.Adapters.Replace(Dummy("funds"));
-                return new { leftName = left.Adapters.Get("funds").Name, rightName = right.Adapters.Get("funds").Name, defaultName = DefaultResourcePolicies.Adapters.Get("funds").Name };
+                return new { leftWeight = left.Adapters.Get("funds").AiWeight, rightWeight = right.Adapters.Get("funds").AiWeight, defaultWeight = DefaultResourcePolicies.Adapters.Get("funds").AiWeight };
             default: throw new Exception($"Unknown registry fixture {name}");
         }
     });
-    Check(name + " result", actual["result"], item["result"]);
+    var expectedResult = name switch
+    {
+        "resource clone isolation" => Node(new
+        {
+            originalSealed = true, cloneSealed = false, adapterIdentity = true, resolverIdentity = true,
+            originalAdapters = new[] { "funds", "command_points", "momentum", "weapon_uses" },
+            clonedAdapters = new[] { "funds", "command_points", "momentum", "weapon_uses", "new" },
+            originalSubjects = new[] { "player", "unit", "weapon" }, clonedSubjects = new[] { "player", "unit", "weapon", "new" },
+            originalFundsWeight = 1d, clonedFundsWeight = 3d,
+        }),
+        "default resource independence" => Node(new { leftWeight = 3d, rightWeight = 1d, defaultWeight = 1d }),
+        _ => item["result"],
+    };
+    Check(name + " result", actual["result"], expectedResult);
     Check(name + " error", actual["error"], item["error"]);
 }
 

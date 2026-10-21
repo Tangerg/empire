@@ -6,6 +6,7 @@ using Empire.Core.Geometry;
 using Empire.Core.Resources;
 using Empire.Core.Tactics;
 using Empire.Presentation;
+using Empire.Presentation.Feedback;
 using Empire.Presentation.Tactical;
 
 namespace Empire.Application;
@@ -30,15 +31,15 @@ public sealed partial class GrayFlagSession
         TacticalHudRow Action(string key, string label, JsonObject action, string hint = "", bool enabled = true, bool active = false) =>
             new(key, label, hint, enabled, active, new(stamp, TacticalHudIntentKind.Action, Action: EcmaJson.ToElement(action)));
         TacticalHudPortrait UnitIcon(JsonObject unit) => new(S(unit,"type"),unit["key"] is null ? null : S(unit,"key"),state["players"]!.AsArray().OfType<JsonObject>().FirstOrDefault(player => N(player,"id") == N(unit,"owner")) is { } team ? S(team,"color") : "#999999");
-        string Name(JsonObject unit) => S(Definition("units", S(unit, "type")), "name");
+        string Name(JsonObject unit) => contentText.UnitName(S(unit, "type"));
         string Accounts(string kind, JsonObject holder, string? weapon = null) => string.Join(" · ", engine.Resources.Accounts(new(kind, holder, weapon)).Select(account =>
-            $"{account.Name} {(account.Current is null ? "∞" : account.Capacity is null ? F(account.Current.Value) : $"{F(account.Current.Value)}/{F(account.Capacity.Value)}")}"));
-        string Costs(IEnumerable<BattleResources.Cost> costs) { var amounts = string.Join(" · ", costs.Select(cost => $"{engine.Resources.Name(cost.Resource) ?? cost.Resource} {F(cost.Amount)}")); return amounts.Length == 0 ? text.Format("ui.hud.none") : amounts; }
+            $"{contentText.ResourceName(account.Resource)} {(account.Current is null ? "∞" : account.Capacity is null ? F(account.Current.Value) : $"{F(account.Current.Value)}/{F(account.Capacity.Value)}")}"));
+        string Costs(IEnumerable<BattleResources.Cost> costs) { var amounts = string.Join(" · ", costs.Select(cost => $"{contentText.ResourceName(cost.Resource)} {F(cost.Amount)}")); return amounts.Length == 0 ? text.Format("ui.hud.none") : amounts; }
         string Amounts(JsonNode? amounts) => Costs((amounts as JsonArray ?? new()).OfType<JsonObject>().Select(cost => new BattleResources.Cost(S(cost,"resource"), D(cost,"amount"))));
-        Section("crown", S(state,"levelName"), new[] { new TacticalHudRow("turn", text.Format("ui.hud.turn", state["rules"]?["turnLimit"] is { } limit && limit.GetValue<double>() != 0 ? text.Format("ui.hud.turn_limit", D(state,"turn"), limit.GetValue<double>()) : F(D(state,"turn")), battleText.PlayerName(S(state,"levelId"), N(current,"id")), text.Format(human ? "ui.hud.human_turn" : "ui.hud.computer_turn"))), new("accounts", Accounts("player",current)) });
+        Section("crown", battleText.LevelTitle(S(state,"levelId")), new[] { new TacticalHudRow("turn", text.Format("ui.hud.turn", state["rules"]?["turnLimit"] is { } limit && limit.GetValue<double>() != 0 ? text.Format("ui.hud.turn_limit", D(state,"turn"), limit.GetValue<double>()) : F(D(state,"turn")), battleText.PlayerName(S(state,"levelId"), N(current,"id")), text.Format(human ? "ui.hud.human_turn" : "ui.hud.computer_turn"))), new("accounts", Accounts("player",current)) });
         if (state["turnOrder"]?["activeUnit"] is not null)
             Section("initiative",text.Format("ui.hud.initiative"), engine.Turns.Preview(state,6).Select((id,index) => new TacticalHudRow($"actor:{index}", Name(TacticalQueries.UnitById(state,id)!), Selected:index == 0 && id == N(state["turnOrder"]!.AsObject(),"activeUnit"), UnitIcon:UnitIcon(TacticalQueries.UnitById(state,id)!))));
-        Section("casts",text.Format("ui.hud.casts"), engine.Combat.ActiveCasts(state).Select((cast,index) => new TacticalHudRow($"cast:{index}", text.Format("ui.hud.cast", cast.Name, cast.Target.X, cast.Target.Y, cast.Remaining), text.Format("ui.hud.progress", Pct(cast.Progress)),Gauge:new(cast.Progress,1))));
+        Section("casts",text.Format("ui.hud.casts"), engine.Combat.ActiveCasts(state).Select((cast,index) => new TacticalHudRow($"cast:{index}", text.Format("ui.hud.cast", contentText.Name(ContentTextKind.Weapon,cast.Weapon), cast.Target.X, cast.Target.Y, cast.Remaining), text.Format("ui.hud.progress", Pct(cast.Progress)),Gauge:new(cast.Progress,1))));
         Section("objectives", text.Format("battle.objective.heading"), engine.Victory.Objectives(state,N(state["players"]!.AsArray().OfType<JsonObject>().FirstOrDefault(player => S(player,"controller") == "human") ?? state["players"]![0]!.AsObject(),"id")).Select(objective => new TacticalHudRow(objective.Id,text.Format("battle.objective.row", battleText.ObjectiveDescription(S(state,"levelId"), Viewer(state), objective), battleText.ObjectiveProgress(objective)))));
         Section("roster",text.Format("ui.hud.roster"), state["players"]!.AsArray().OfType<JsonObject>().Select(player => new TacticalHudRow($"player:{player["id"]}",text.Format("ui.hud.player_forces", battleText.PlayerName(S(state,"levelId"), N(player,"id")), state["units"]!.AsArray().OfType<JsonObject>().Count(unit => N(unit,"owner") == N(player,"id")), Accounts("player",player)))));
         if (S(state,"phase") == "deployment" && human)
@@ -52,9 +53,9 @@ public sealed partial class GrayFlagSession
         }
         else if (selection.Kind is TacticalSelectionKind.Target or TacticalSelectionKind.Tactic or TacticalSelectionKind.Disembark) Section("target",text.Format("ui.hud.choose_target"),new[] {Pick("cancel",text.Format("ui.hud.cancel_shortcut"),TacticalHudIntentKind.Back)});
         else if (!busy && selection.Kind == TacticalSelectionKind.Destination && selected is not null && selection.Destination is { } destination)
-            Section("commands",text.Format("ui.hud.commands"),engine.CommandsAt(state,selected,new(destination.X,destination.Y)).Select(command => Pick(command.Key,command.Name,TacticalHudIntentKind.Command,command.Key,hint:command.Hint) with { Icon = command.Weapon is { } id ? "weapon:" + id : "ability:" + command.Ability }).Append(Pick("cancel",text.Format("ui.hud.cancel_shortcut"),TacticalHudIntentKind.Back)));
+            Section("commands",text.Format("ui.hud.commands"),engine.CommandsAt(state,selected,new(destination.X,destination.Y)).Select(command => Pick(command.Key,contentText.CommandName(command),TacticalHudIntentKind.Command,command.Key,hint:contentText.CommandHint(command)) with { Icon = command.Weapon is { } id ? "weapon:" + id : "ability:" + command.Ability }).Append(Pick("cancel",text.Format("ui.hud.cancel_shortcut"),TacticalHudIntentKind.Back)));
         if (!busy && human && selection.Kind == TacticalSelectionKind.Idle && S(state,"phase") == "playing")
-            Section("tactics",text.Format("ui.hud.tactics"),state["commanders"]!.AsArray().OfType<JsonObject>().SelectMany(commander => engine.Support.Tactics(state,S(commander,"id")).Select(tactic => Pick($"{S(commander,"id")}:{tactic.Id}",$"{tactic.Name} · {Costs(tactic.Costs)}",TacticalHudIntentKind.Tactic,$"{S(commander,"id")}:{tactic.Id}"))));
+            Section("tactics",text.Format("ui.hud.tactics"),state["commanders"]!.AsArray().OfType<JsonObject>().SelectMany(commander => engine.Support.Tactics(state,S(commander,"id")).Select(tactic => Pick($"{S(commander,"id")}:{tactic.Id}",$"{contentText.Name(ContentTextKind.Tactic,tactic.Id)} · {Costs(tactic.Costs)}",TacticalHudIntentKind.Tactic,$"{S(commander,"id")}:{tactic.Id}"))));
         if (selection.Kind == TacticalSelectionKind.Target && selected is not null && selection.Weapon is { } weapon && cursor is { } target && selection.Targets.Contains(target) && selection.Destination is { } from)
         {
             var defender = TacticalQueries.UnitAt(state,new(target.X,target.Y));
@@ -66,12 +67,12 @@ public sealed partial class GrayFlagSession
                     var recipient = TacticalQueries.UnitById(state,exchange.DamageRecipient) ?? defender;
                     var rows = new List<TacticalHudRow> { new("exchange",$"{Name(selected)} → {Name(defender)}") };
                     if (exchange.Interceptor is not null) rows.Add(new("interceptor",text.Format("ui.hud.interception", Name(recipient))));
-                    else if (exchange.Reaction is { } reaction) rows.Add(new("reaction",text.Format("ui.hud.target_reaction", engine.Combat.Forecasts.Reaction(reaction.Stance).Name)));
+                    else if (exchange.Reaction is { } reaction) rows.Add(new("reaction",text.Format("ui.hud.target_reaction", contentText.ReactionName(reaction.Stance))));
                     if (plan.UnitHits.Count + plan.StructureHits.Count > 1) rows.Add(new("collateral",text.Format("ui.hud.collateral", plan.UnitHits.Count - 1, plan.StructureHits.Count)));
                     if (plan.SupportAttack is { } support) rows.Add(new("support",text.Format("ui.hud.support_damage", support.Damage.Damage)));
                     rows.Add(new("strike",text.Format("ui.hud.strike", exchange.Strike.Damage, D(recipient,"hp"), exchange.RecipientHpAfter),Gauge:new(exchange.RecipientHpAfter,D(Definition("units",S(recipient,"type")),"maxHp"))));
                     rows.Add(new("counter",text.Format("ui.hud.counter", exchange.Counter is null ? text.Format("ui.hud.none") : F(exchange.Counter.Damage), D(selected,"hp"), exchange.AttackerHpAfter),Gauge:new(exchange.AttackerHpAfter,D(Definition("units",S(selected,"type")),"maxHp"))));
-                    rows.Add(new("damage-type",text.Format("ui.hud.damage_chain", S(Definition("damageTypes",exchange.Strike.DamageType),"name"), S(Definition("armorClasses",S(Definition("units",S(recipient,"type")),"armorClass")),"name"))));
+                    rows.Add(new("damage-type",text.Format("ui.hud.damage_chain", contentText.Name(ContentTextKind.DamageType,exchange.Strike.DamageType), contentText.Name(ContentTextKind.ArmorClass,S(Definition("units",S(recipient,"type")),"armorClass")))));
                     rows.AddRange(exchange.Strike.Modifiers.Select((modifier,index) => new TacticalHudRow($"strike-mod:{index}",ModifierLabel(modifier))));
                     rows.Add(new("mitigation",text.Format("ui.hud.mitigation", Pct(exchange.Strike.Mitigation))));
                     if (exchange.RecipientDies) rows.Add(new("recipient-dies",text.Format("ui.hud.recipient_dies")));
@@ -87,39 +88,39 @@ public sealed partial class GrayFlagSession
             var weapons = definition["weapons"]!.AsArray().Select(id => Definition("weapons",EcmaJson.ReadString(id))).ToArray();
             var owner = state["players"]!.AsArray().OfType<JsonObject>().FirstOrDefault(player => N(player,"id") == N(inspect,"owner"));
             var rows = new List<TacticalHudRow> {
-                new("owner",owner is null ? text.Format("ui.hud.neutral") : battleText.PlayerName(S(state,"levelId"), N(owner,"id"))), new("hp",text.Format("ui.hud.health", D(inspect,"hp"), D(definition,"maxHp")), Gauge:new(D(inspect,"hp"),D(definition,"maxHp"))), new("blurb",S(definition,"blurb")),
+                new("owner",owner is null ? text.Format("ui.hud.neutral") : battleText.PlayerName(S(state,"levelId"), N(owner,"id"))), new("hp",text.Format("ui.hud.health", D(inspect,"hp"), D(definition,"maxHp")), Gauge:new(D(inspect,"hp"),D(definition,"maxHp"))), new("blurb",contentText.UnitBlurb(S(definition,"id"))),
                 new("power",text.Format("ui.hud.power", Power(weapons))),
                 new("defense",text.Format("ui.hud.defense", Pct(D(definition,"defense")))), new("movement",text.Format("ui.hud.movement", D(definition,"movement"))),
-                new("range",text.Format("ui.hud.range", Range(weapons))), new("damage",text.Format("ui.hud.damage", string.Join(" / ",weapons.Select(value => S(Definition("damageTypes",S(value,"damageType")),"name")).Distinct()))),
-                new("armor",text.Format("ui.hud.armor", S(Definition("armorClasses",S(definition,"armorClass")),"name"))),
-                new("movement-type",text.Format("ui.hud.movement_type", S(Definition("movementProfiles",S(definition,"movementClass")),"name"))), new("value",text.Format("ui.hud.value", D(definition,"value"))) };
+                new("range",text.Format("ui.hud.range", Range(weapons))), new("damage",text.Format("ui.hud.damage", string.Join(" / ",weapons.Select(value => contentText.Name(ContentTextKind.DamageType,S(value,"damageType"))).Distinct()))),
+                new("armor",text.Format("ui.hud.armor", contentText.Name(ContentTextKind.ArmorClass,S(definition,"armorClass")))),
+                new("movement-type",text.Format("ui.hud.movement_type", contentText.Name(ContentTextKind.MovementProfile,S(definition,"movementClass")))), new("value",text.Format("ui.hud.value", D(definition,"value"))) };
             if (!weapons.Any(value => B(value,"moveAndAttack"))) rows.Add(new("stationary",text.Format("ui.hud.stationary_attack")));
             rows.Add(new("capture",definition["abilities"]!.AsArray().Any(id => EcmaJson.ReadString(id) == "capture") ? text.Format("ui.hud.can_capture") : text.Format("ui.hud.cannot_capture")));
             if (definition["abilities"]!.AsArray().Any(id => EcmaJson.ReadString(id) == "heal")) rows.Add(new("heal",text.Format("ui.hud.can_heal")));
-            rows.Add(new("reaction",text.Format("ui.hud.reaction", engine.Combat.Forecasts.Reaction(S(inspect,"reaction")).Name)));
+            rows.Add(new("reaction",text.Format("ui.hud.reaction", contentText.ReactionName(S(inspect,"reaction")))));
             if (B(inspect,"done")) rows.Add(new("done",text.Format("ui.hud.acted")));
             foreach (var arm in weapons)
             {
                 var id = S(arm,"id"); var stock = Accounts("weapon",inspect,id);
                 var cooldown = D(inspect["weaponState"]![id]!.AsObject(),"cooldownRemaining");
-                rows.Add(new($"weapon:{id}",text.Format("ui.hud.weapon", S(arm,"name"), S(Definition("damageTypes",S(arm,"damageType")),"name"), D(arm,"power"), Range(new[] {arm}), stock.Length > 0 ? stock : text.Format("ui.hud.unlimited"), cooldown > 0 ? text.Format("ui.hud.weapon_cooldown", cooldown) : "", arm["resourceRequirements"]!.AsArray().Count > 0 ? text.Format("ui.hud.weapon_requirements", Amounts(arm["resourceRequirements"])) : "", arm["resourceCosts"]!.AsArray().Count > 0 ? text.Format("ui.hud.weapon_costs", Amounts(arm["resourceCosts"])) : ""), Icon:"weapon:" + id));
+                rows.Add(new($"weapon:{id}",text.Format("ui.hud.weapon", contentText.Name(ContentTextKind.Weapon,id), contentText.Name(ContentTextKind.DamageType,S(arm,"damageType")), D(arm,"power"), Range(new[] {arm}), stock.Length > 0 ? stock : text.Format("ui.hud.unlimited"), cooldown > 0 ? text.Format("ui.hud.weapon_cooldown", cooldown) : "", arm["resourceRequirements"]!.AsArray().Count > 0 ? text.Format("ui.hud.weapon_requirements", Amounts(arm["resourceRequirements"])) : "", arm["resourceCosts"]!.AsArray().Count > 0 ? text.Format("ui.hud.weapon_costs", Amounts(arm["resourceCosts"])) : ""), Icon:"weapon:" + id));
             }
             var statuses = inspect["statuses"]!.AsArray().OfType<JsonObject>().ToArray();
             if (statuses.Length == 0) rows.Add(new("status:none",text.Format("ui.hud.no_status")));
-            rows.AddRange(statuses.Select((status,index) => new TacticalHudRow($"status:{index}",text.Format("ui.hud.status", S(Definition("statuses",S(status,"id")),"name"), D(status,"remaining"), D(status,"stacks") > 1 ? text.Format("ui.hud.status_stacks", D(status,"stacks")) : ""), Icon:"status:" + S(status,"id"))));
+            rows.AddRange(statuses.Select((status,index) => new TacticalHudRow($"status:{index}",text.Format("ui.hud.status", contentText.Name(ContentTextKind.Status,S(status,"id")), D(status,"remaining"), D(status,"stacks") > 1 ? text.Format("ui.hud.status_stacks", D(status,"stacks")) : ""), Icon:"status:" + S(status,"id"))));
             var threshold = engine.Combat.Effects.NextRankThreshold(N(inspect,"rank"));
             rows.Add(new("rank",text.Format("ui.hud.rank", text.Format(new[] { "ui.rank.recruit", "ui.rank.veteran", "ui.rank.elite" }[N(inspect,"rank")]), threshold is { } next ? text.Format("ui.hud.rank_progress", D(inspect,"rankProgress"), next) : "")));
             rows.Add(new("facing",text.Format("ui.hud.facing", Facing(state,S(inspect,"facing")))));
             if (inspect["career"]?["current"] is { } careerId)
             {
                 var id = EcmaJson.ReadString(careerId); var career = Definition("careers",id);
-                rows.Add(new("career",text.Format("ui.hud.career", S(career,"name"), inspect["career"]?["mastery"]?[id]?.GetValue<double>() ?? 0, D(career,"masteryThreshold"))));
+                rows.Add(new("career",text.Format("ui.hud.career", contentText.CareerName(S(career,"id")), inspect["career"]?["mastery"]?[id]?.GetValue<double>() ?? 0, D(career,"masteryThreshold"))));
             }
             if (inspect["formation"] is { } formationId)
             {
                 // Preserve source: holding is read from commandable, not inspected, options.
                 var holds = formations.Any(option => option.Current && option.Eligible);
-                rows.Add(new("formation",text.Format("ui.hud.formation", S(Definition("formations",EcmaJson.ReadString(formationId)),"name"), holds ? "" : text.Format("ui.hud.formation_inactive"))));
+                rows.Add(new("formation",text.Format("ui.hud.formation", contentText.Name(ContentTextKind.Formation,EcmaJson.ReadString(formationId)), holds ? "" : text.Format("ui.hud.formation_inactive"))));
             }
             var account = Accounts("unit",inspect); if (account.Length > 0) rows.Add(new("unit-resources",text.Format("ui.hud.unit_resources", account)));
             var commander = state["commanders"]!.AsArray().OfType<JsonObject>().FirstOrDefault(value => S(value,"id") == S(inspect,"commanderId"));
@@ -128,13 +129,13 @@ public sealed partial class GrayFlagSession
             if (commandable is not null && N(commandable,"id") == N(inspect,"id"))
             {
                 var id = N(commandable,"id");
-                Section("stances",text.Format("ui.hud.stances"),engine.Combat.Forecasts.Reactions.All().Select(stance => Action($"reaction:{stance.Id}",stance.Name,new() { ["kind"]="reaction",["unit"]=id,["stance"]=stance.Id },hint:stance.Hint,active:S(commandable,"reaction") == stance.Id))
+                Section("stances",text.Format("ui.hud.stances"),engine.Combat.Forecasts.Reactions.All().Select(stance => Action($"reaction:{stance.Id}",contentText.ReactionName(stance.Id),new() { ["kind"]="reaction",["unit"]=id,["stance"]=stance.Id },hint:contentText.ReactionHint(stance.Id),active:S(commandable,"reaction") == stance.Id))
                     .Concat(RuleGrid(state).Directions.Select(direction => Action($"face:{direction.Id}",Facing(state,direction.Id),new() { ["kind"]="face",["unit"]=id,["facing"]=direction.Id },active:S(commandable,"facing") == direction.Id))));
-                Section("formations",text.Format("ui.hud.formations"),formations.Select(option => Action($"formation:{S(option.Formation,"id")}",text.Format("ui.hud.formation_option", S(option.Formation,"name"), option.Current ? text.Format("ui.hud.formation_clear") : ""),new() { ["kind"]="changeFormation",["unit"]=id,["formation"]=option.Current ? null : option.Formation["id"]!.DeepClone() },
+                Section("formations",text.Format("ui.hud.formations"),formations.Select(option => Action($"formation:{S(option.Formation,"id")}",text.Format("ui.hud.formation_option", contentText.Name(ContentTextKind.Formation,S(option.Formation,"id")), option.Current ? text.Format("ui.hud.formation_clear") : ""),new() { ["kind"]="changeFormation",["unit"]=id,["formation"]=option.Current ? null : option.Formation["id"]!.DeepClone() },
                     option.Reasons.Count > 0 ? refusals.DescribeMany(option.Reasons) : text.Format("ui.hud.formation_effect", D(option.Formation,"attackMultiplier"), Signed(D(option.Formation,"defenseDelta")), Signed(D(option.Formation,"movementDelta"))),option.Eligible || option.Current,option.Current)));
                 Section("carriers",text.Format("ui.hud.embark"),engine.Transport.CarrierOptions(state,commandable).Select(option => Action($"carrier:{option.Carrier["id"]}",Name(option.Carrier),new() { ["kind"]="embark",["unit"]=id,["carrier"]=option.Carrier["id"]!.DeepClone() },option.Reasons.Count > 0 ? refusals.DescribeMany(option.Reasons) : text.Format("ui.hud.embark_hint"),option.Eligible)));
                 Section("passengers",text.Format("ui.hud.disembark"),engine.Transport.PassengerOptions(state,commandable).Select(option => Pick($"passenger:{option.Unit["id"]}",Name(option.Unit),TacticalHudIntentKind.Disembark,unit:N(option.Unit,"id"),hint:option.Spots.Count > 0 ? text.Format("ui.hud.disembark_spots", option.Spots.Count) : text.Format("ui.hud.no_disembark_spot"),enabled:option.Spots.Count > 0)));
-                Section("careers",text.Format("ui.hud.careers"),engine.Progression.Careers.Options(state,commandable).Select(option => Action($"career:{S(option.Career,"id")}",text.Format("ui.hud.career_option", S(option.Career,"name"), D(option.Career,"tier"), option.Mastered ? text.Format("ui.hud.career_mastered") : option.Unlocked ? text.Format("ui.hud.career_unlocked") : ""),new() { ["kind"]="changeCareer",["unit"]=id,["career"]=option.Career["id"]!.DeepClone() },option.Reasons.Count > 0 ? refusals.DescribeMany(option.Reasons) : option.Mastered ? text.Format("ui.hud.career_mastered_hint") : option.Unlocked ? text.Format("ui.hud.career_unlocked_hint") : text.Format("ui.hud.career_eligible_hint"),option.Eligible)));
+                Section("careers",text.Format("ui.hud.careers"),engine.Progression.Careers.Options(state,commandable).Select(option => Action($"career:{S(option.Career,"id")}",text.Format("ui.hud.career_option", contentText.CareerName(S(option.Career,"id")), D(option.Career,"tier"), option.Mastered ? text.Format("ui.hud.career_mastered") : option.Unlocked ? text.Format("ui.hud.career_unlocked") : ""),new() { ["kind"]="changeCareer",["unit"]=id,["career"]=option.Career["id"]!.DeepClone() },option.Reasons.Count > 0 ? refusals.DescribeMany(option.Reasons) : option.Mastered ? text.Format("ui.hud.career_mastered_hint") : option.Unlocked ? text.Format("ui.hud.career_unlocked_hint") : text.Format("ui.hud.career_eligible_hint"),option.Eligible)));
             }
         }
         if (cursor is { } tile && engine.Space.Board(state).Contains(new(tile.X,tile.Y)))
@@ -145,8 +146,8 @@ public sealed partial class GrayFlagSession
             if (B(terrain,"capturable")) rows.Add(new("owner",state["players"]!.AsArray().OfType<JsonObject>().FirstOrDefault(player => player["id"]!.ToJsonString() == state["map"]!["owners"]![index]?.ToJsonString()) is { } holder ? battleText.PlayerName(S(state,"levelId"), N(holder,"id")) : text.Format("ui.hud.neutral")));
             if (D(terrain,"heal") != 0) rows.Add(new("heal",text.Format("ui.hud.terrain_heal", D(terrain,"heal"))));
             if (terrain["ownerTurnGrants"]!.AsArray().Count > 0) rows.Add(new("grants",text.Format("ui.hud.production", Amounts(terrain["ownerTurnGrants"]))));
-            rows.Add(new("movement-costs",string.Join(" · ",engine.Catalog.Definitions("movementProfiles").Select(value => EcmaJson.Parse(value.GetRawText())!.AsObject()).Select(profile => $"{S(profile,"name")} {terrain["cost"]?[S(profile,"id")]?.ToString() ?? "—"}"))));
-            Section("tile",S(terrain,"name"),rows);
+            rows.Add(new("movement-costs",string.Join(" · ",engine.Catalog.Definitions("movementProfiles").Select(value => EcmaJson.Parse(value.GetRawText())!.AsObject()).Select(profile => $"{contentText.Name(ContentTextKind.MovementProfile,S(profile,"id"))} {terrain["cost"]?[S(profile,"id")]?.ToString() ?? "—"}"))));
+            Section("tile",contentText.Name(ContentTextKind.Terrain,S(terrain,"id")),rows);
             var structure = state["structures"]!.AsArray().OfType<JsonObject>().FirstOrDefault(value => TacticalQueries.Position(value) == new Coord(tile.X,tile.Y));
             if (structure is not null)
             {
@@ -158,13 +159,13 @@ public sealed partial class GrayFlagSession
                 if (S(def,"cover") is "full" or "half") facts.Add(new("cover",Cover(S(def,"cover"))));
                 if (!B(def,"targetable")) facts.Add(new("targetable",text.Format("ui.hud.untargetable")));
                 if (B(structure,"disabled")) facts.Add(new("disabled",text.Format("ui.hud.disabled")));
-                Section("structure",S(def,"name"),facts);
+                Section("structure",contentText.Name(ContentTextKind.Structure,S(def,"id")),facts);
             }
         }
         if (selection.Kind == TacticalSelectionKind.Recruit && selection.Destination is { } recruitAt)
             Section("recruit",text.Format("ui.hud.recruit"),new[] {new TacticalHudRow("accounts",Accounts("player",current)),Pick("cancel",text.Format("ui.common.close"),TacticalHudIntentKind.Back)}.Concat(engine.Recruitment.Cards(state,new(recruitAt.X,recruitAt.Y)).Select(card => {
                 var def = Definition("units",card.Unit); var weapons = def["weapons"]!.AsArray().Select(id => Definition("weapons",EcmaJson.ReadString(id))).ToArray();
-                return Pick(card.Unit,$"{S(def,"name")} · {Costs(card.Costs)}",TacticalHudIntentKind.Recruit,card.Unit,hint:text.Format("ui.hud.recruit_hint", Power(weapons), D(def,"maxHp"), D(def,"movement"), Range(weapons), S(def,"blurb")),enabled:card.Affordable) with { UnitIcon = new(card.Unit,null,S(current,"color")) };
+                return Pick(card.Unit,$"{contentText.UnitName(card.Unit)} · {Costs(card.Costs)}",TacticalHudIntentKind.Recruit,card.Unit,hint:text.Format("ui.hud.recruit_hint", Power(weapons), D(def,"maxHp"), D(def,"movement"), Range(weapons), contentText.UnitBlurb(card.Unit)),enabled:card.Affordable) with { UnitIcon = new(card.Unit,null,S(current,"color")) };
             })));
         if (stamp.Revision != revision) throw new DomainInvariantException("Battle changed during HUD projection.");
         return new(stamp,S(state,"phase") == "over" ? text.Format("ui.hud.battle_over") : !human ? text.Format("ui.hud.computer_thinking") : SelectionHint(selection.Kind),System.Array.AsReadOnly(sections.ToArray()), inspect is null ? null : new(S(inspect,"type"),inspect["key"] is null ? null : S(inspect,"key"),state["players"]!.AsArray().OfType<JsonObject>().FirstOrDefault(player => N(player,"id") == N(inspect,"owner")) is { } team ? S(team,"color") : "#999999"),busy);
@@ -205,14 +206,9 @@ public sealed partial class GrayFlagSession
     }
     private string Facing(JsonObject state,string facing)
     {
-        var name = RuleGrid(state).Directions.Where(direction => direction.Id == facing).Select(direction => direction.Name).FirstOrDefault() ?? facing;
+        var name = contentText.DirectionName(RuleGrid(state).Id, facing);
         var arrow = facing switch { "north" => "↑", "east" or "hexEast" => "→", "south" => "↓", "west" or "hexWest" => "←", "northeast" or "hexNortheast" => "↗", "southeast" or "hexSoutheast" => "↘", "southwest" or "hexSouthwest" => "↙", "northwest" or "hexNorthwest" => "↖", _ => "" };
         return name + (arrow.Length > 0 ? " " + arrow : "");
     }
-    private string ModifierLabel(CombatModifier modifier)
-    {
-        var source = modifier.Source switch { "weapon" => text.Format("ui.hud.modifier_source.weapon"), "matchup" => text.Format("ui.hud.modifier_source.matchup"), "unit" => text.Format("ui.hud.modifier_source.unit"), "status" => text.Format("ui.hud.modifier_source.status"), "commander" => text.Format("ui.hud.modifier_source.commander"), "terrain" => text.Format("ui.hud.modifier_source.terrain"), "reaction" => text.Format("ui.hud.modifier_source.reaction"), "elevation" => text.Format("ui.hud.modifier_source.elevation"), "position" => text.Format("ui.hud.modifier_source.position"), "cover" => text.Format("ui.hud.modifier_source.cover"), "formation" => text.Format("ui.hud.modifier_source.formation"), "extension" => text.Format("ui.hud.modifier_source.extension"), _ => modifier.Source };
-        var value = modifier.Stage == "mitigation" ? text.Format("ui.hud.modifier_mitigation", (modifier.Value >= 0 ? "+" : "") + Pct(modifier.Value)) : modifier.Operation == "multiply" ? "×" + modifier.Value.ToString("F2",System.Globalization.CultureInfo.InvariantCulture) : (modifier.Value >= 0 ? "+" : "") + modifier.Value.ToString("F2",System.Globalization.CultureInfo.InvariantCulture);
-        return $"{source} {modifier.Label} {value}";
-    }
+    private string ModifierLabel(CombatModifier modifier) => modifierText.Describe(modifier);
 }

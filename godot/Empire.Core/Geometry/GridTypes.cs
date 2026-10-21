@@ -6,7 +6,7 @@ public readonly record struct TilePoint(double X, double Y);
 
 public readonly record struct GridExtent(int Width, int Height);
 
-public readonly record struct DirectionDef(string Id, string Name);
+public readonly record struct DirectionDef(string Id);
 
 /// <summary>
 /// Owns both tactical geometry and the corresponding tile-space presentation.
@@ -15,7 +15,6 @@ public readonly record struct DirectionDef(string Id, string Name);
 public interface ITacticalGrid
 {
     string Id { get; }
-    string Name { get; }
     IReadOnlyList<DirectionDef> Directions { get; }
     string RestingFacing { get; }
     int Distance(Coord a, Coord b);

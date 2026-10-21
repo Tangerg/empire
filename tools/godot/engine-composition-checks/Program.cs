@@ -30,9 +30,9 @@ EnginePlugin[] Plugins(double version, List<string> trace) => [
     {
         trace.Add("extension");
         var resources = context.Require(Keys.Resources);
-        context.Replace(Keys.Abilities, context.Require(Keys.Abilities).Clone().Register(new("root-pulse", "组合脉冲")
+        context.Replace(Keys.Abilities, context.Require(Keys.Abilities).Clone().Register(new("root-pulse")
         {
-            Priority = 12.5, Hint = "使用组合资源", Execute = (_, query, _, emit) =>
+            Priority = 12.5, Execute = (_, query, _, emit) =>
             {
                 var subject = new BattleResources.Subject("unit", query.Unit);
                 var amount = resources.Spend(subject, "root_energy", 1.5);
@@ -56,7 +56,7 @@ EnginePlugin[] Plugins(double version, List<string> trace) => [
     {
         trace.Add("resources");
         var resources = context.Require(Keys.Resources).Clone();
-        resources.Adapters.Register(new("root_energy", "组合能量", "unit", false, 0.25, subject =>
+        resources.Adapters.Register(new("root_energy", "unit", false, 0.25, subject =>
             subject.Holder["resources"]?["root_energy"] is JsonObject account ? new ResourceAccount(
                 () => new(StateJson.Number(account,"current",0), StateJson.Number(account,"capacity",0)), value => account["current"] = value) : null));
         context.Replace(Keys.Resources, resources);
@@ -93,8 +93,8 @@ foreach (var vector in oracle["cases"]!.AsArray().OfType<JsonObject>())
     Equal(Error(()=>battle.Dispatch(pulse)),vector["failure"],"custom refusal"); Equal(battle.Snapshot(),vector["afterFailure"],"rollback custom side effects/events");
     var resumed=engine.LoadSavedBattle(save); resumed.Dispatch(vector["failGrant"]!.AsObject()); Equal(resumed.Snapshot(),vector["beforeFailure"],"restored battle uses resolved handlers/pipeline");
     if(vector["wrongVersion"] is not null) Equal(Error(()=>BattleEngineFactory.Create(Catalog(),Plugins(version+1,[])).LoadBattle(save)),vector["wrongVersion"],"version mismatch");
-    Reject(()=>engine.Abilities.Register(new("late","late")),"abilities sealed"); Reject(()=>engine.ActionHandlers.Register("late",(_,_)=>{}),"actions sealed");
-    Reject(()=>engine.Resources.Adapters.Register(new("late","late","unit",true,1,_=>null)),"resources sealed");
+    Reject(()=>engine.Abilities.Register(new("late")),"abilities sealed"); Reject(()=>engine.ActionHandlers.Register("late",(_,_)=>{}),"actions sealed");
+    Reject(()=>engine.Resources.Adapters.Register(new("late","unit",true,1,_=>null)),"resources sealed");
     Reject(()=>engine.Ai.Intents.Register(new("late",1,_=>null)),"AI sealed");
 }
 var plain = BattleEngineFactory.Create(Catalog());
@@ -142,13 +142,13 @@ var combatEngine=BattleEngineFactory.Create(combatCatalog,[new EnginePlugin("tes
     resolvedModifiers=context.Require(Keys.CombatModifiers).Register(new("root-bonus",999,query=>
     {
         Check(ReferenceEquals(query.Content,catalog),"modifier resolved catalog identity");
-        return [new("root-bonus","root bonus","root","final","add",7)];
+        return [new("root-bonus","root-bonus","root","final","add",7)];
     }));context.Replace(Keys.CombatModifiers,resolvedModifiers);
     resolvedEffects=context.Require(Keys.HitEffects).Clone().Register(new("rootMark",(query,_)=>
     {
         Check(ReferenceEquals(query.Content,catalog),"hit-effect resolved catalog identity");
         query.State["scenario"]!["variables"]!["rootHit"]=query.Target["id"]!.DeepClone();query.Emit(new(){["type"]="scenarioSignal",["signal"]="root-hit"});
-    },_=>"root mark"));context.Replace(Keys.HitEffects,resolvedEffects);
+    }));context.Replace(Keys.HitEffects,resolvedEffects);
 },overrides:[Keys.CombatModifiers,Keys.HitEffects],requiresCapabilities:[Keys.Content,Keys.CombatModifiers,Keys.HitEffects])]);
 Check(ReferenceEquals(resolvedModifiers,combatEngine.Combat.Forecasts.Modifiers)&&ReferenceEquals(resolvedEffects,combatEngine.Combat.HitEffects),"resolved combat policy identity");
 var combatState=combatVector["input"]!.AsObject();var combatUnits=combatState["units"]!.AsArray().OfType<JsonObject>().ToArray();
@@ -158,7 +158,7 @@ if(forecastJson["reaction"] is JsonObject reaction&&reaction["protectedUnit"] is
 Equal(forecastJson,combatVector["forecast"],"composed modifier forecast");
 var combatBattle=combatEngine.LoadSavedBattle(combatEngine.SaveBattle(combatState));Equal(Events(combatBattle.Dispatch(combatVector["action"]!.AsObject()).Events)["events"],combatVector["events"],"composed hit effects events");
 Equal(combatBattle.Snapshot(),combatVector["state"],"composed combat state");Equal(combatEngine.SaveBattle(combatBattle.Snapshot(),"2026-10-20T00:00:00.000Z"),FixtureRuleset.NativeDocument(combatVector["save"]!.AsObject()),"composed hit kind save admission");
-Reject(()=>resolvedModifiers!.Register(new("late",0,_=>[])),"modifier pipeline sealed");Reject(()=>resolvedEffects!.Register(new("late",(_,_)=>{},_=>"")),"hit effects sealed");
+Reject(()=>resolvedModifiers!.Register(new("late",0,_=>[])),"modifier pipeline sealed");Reject(()=>resolvedEffects!.Register(new("late",(_,_)=>{})),"hit effects sealed");
 var flag=new CapabilityKey<string>("mod.root.flag");var openTrace=new List<string>();
 var openEngine=BattleEngineFactory.Create(Catalog(),[
     new EnginePlugin("test.open-consumer",1,c=>openTrace.Add($"consumer:{c.Require(flag)}"),requiresCapabilities:[flag]),

@@ -41,10 +41,10 @@ double Numeric(JsonNode node) => node.GetValueKind() == JsonValueKind.String
     ? double.Parse(node.GetValue<string>(), CultureInfo.InvariantCulture) : node.GetValue<double>();
 CombatModifierProvider Provider(JsonObject spec) => new(StateJson.Text(spec, "id"), Numeric(spec["priority"]!), context =>
 {
-    if (StateJson.IsTrue(spec["context"])) return new[] { new CombatModifier(StateJson.Text(spec, "id"), "shared projection", "plugin.context", "power", "add",
+    if (StateJson.IsTrue(spec["context"])) return new[] { new CombatModifier(StateJson.Text(spec, "id"), StateJson.Text(spec, "id"), "plugin.context", "power", "add",
         context.Board.Grid.Distance(context.AttackerAt, context.DefenderAt) + context.Battlefield.Cell(context.DefenderAt).Elevation
         + context.Content.Definition("units", StateJson.Text(context.Attacker, "type"))!.Value.GetProperty("maxHp").GetDouble() / 100) };
-    return StateJson.Objects(spec["modifiers"], "modifiers").Select(value => new CombatModifier(StateJson.Text(value, "id"), StateJson.Text(value, "label"),
+    return StateJson.Objects(spec["modifiers"], "modifiers").Select(value => new CombatModifier(StateJson.Text(value, "id"), StateJson.Text(spec, "id"),
         StateJson.Text(value, "source"), StateJson.Text(value, "stage"), StateJson.Text(value, "operation"), StateJson.Number(value, "value", 0))).ToArray();
 });
 CombatModifierPipeline Pipeline(JsonObject config)
@@ -74,9 +74,9 @@ registryChecks["shallow"] = ReferenceEquals(registry.Clone().Get("a"), a); regis
 string? Fault(Action action) { try { action(); return null; } catch (DomainInvariantException error) { return error.Message; } }
 registryChecks["duplicate"] = Fault(() => copy.Register(copy.Get("a"))); registryChecks["sealed"] = Fault(() => registry.Replace(a)); registryChecks["unknown"] = Fault(() => registry.Get("absent")); registryChecks["pipelineSealed"] = Fault(() => new CombatModifierPipeline(copy).Seal().Register(a));
 var hits = DefaultWeaponHitEffects.Create(); var hitSnapshot = hits.Keys(); var hitClone = hits.Seal().Clone();
-hitClone.Replace(new("custom", (_, _) => { }, _ => "custom"));
+hitClone.Replace(new("custom", (_, _) => { }));
 registryChecks["hitKeys"] = Serialize(hitSnapshot); registryChecks["hitClone"] = Serialize(hitClone.Keys()); registryChecks["hitShallow"] = ReferenceEquals(hits.Get("addStatus"), hitClone.Get("addStatus")); registryChecks["hitCloneMutable"] = !hitClone.IsSealed;
-registryChecks["hitSealed"] = Fault(() => hits.Register(hitClone.Get("custom"))); registryChecks["hitUnknown"] = Fault(() => hitClone.Describe(new JsonObject { ["type"] = "absent" }));
+registryChecks["hitSealed"] = Fault(() => hits.Register(hitClone.Get("custom"))); registryChecks["hitUnknown"] = Fault(() => hitClone.Get("absent"));
 Check("registry contracts", "registry", registryChecks, input["registryChecks"]);
 
 WeaponHitEffectHandlerRegistry HitRegistry(JsonObject config)
@@ -91,15 +91,14 @@ WeaponHitEffectHandlerRegistry HitRegistry(JsonObject config)
             ["distance"] = effectContext.Rules.Grids.Get(StateJson.Text(effectContext.State["rules"]!.AsObject(), "grid")).Distance(TacticalQueries.Position(effectContext.Attacker), TacticalQueries.Position(target)),
             ["maxHp"] = effectContext.Content.Definition("units", StateJson.Text(target, "type"))!.Value.GetProperty("maxHp").GetDouble() });
         previous = effectContext;
-    }, effect => $"Observe {EcmaNumber.Format(StateJson.Number(effect, "amount", 0))}"));
+    }));
     result.Register(new("pulse", (effectContext, effect) => effectContext.Rules.Damage.Resolve(effectContext.State,
         StateJson.Integer(effectContext.Target, "id"), StateJson.Number(effect, "amount", 0), StateJson.IsTrue(effect["nonlethal"]),
         blow => new JsonObject { ["type"] = "extensionDamage", ["unit"] = StateJson.Integer(effectContext.Target, "id"),
-            ["amount"] = blow.Amount, ["hpAfter"] = blow.HpAfter, ["killed"] = blow.Killed }, effectContext.Emit),
-        effect => $"Pulse {EcmaNumber.Format(StateJson.Number(effect, "amount", 0))}"));
+            ["amount"] = blow.Amount, ["hpAfter"] = blow.HpAfter, ["killed"] = blow.Killed }, effectContext.Emit)));
     if (StateJson.IsTrue(config["replaceHit"])) result.Replace(new("addStatus", (effectContext, effect) =>
         effectContext.Rules.Effects.AddStatus(effectContext.Target, "armor_down", StateJson.Number(effect, "duration", 0) + 1,
-            StateJson.Integer(effectContext.Attacker, "id"), effectContext.Emit), _ => "Replacement status"));
+            StateJson.Integer(effectContext.Attacker, "id"), effectContext.Emit)));
     return result;
 }
 foreach (var item in StateJson.Objects(input["consumers"], "consumers"))
@@ -126,10 +125,7 @@ foreach (var item in StateJson.Objects(input["consumers"], "consumers"))
     }
     catch (Exception caught) when (caught is DomainInvariantException or IllegalActionException)
     { error = new JsonObject { ["kind"] = caught.GetType().Name.Replace("Exception", ""), ["message"] = caught.Message }; }
-    var descriptions = new JsonArray();
-    foreach (var effect in StateJson.Objects(config["effects"], "effects"))
-        try { descriptions.Add(hitEffects.Describe(effect)); } catch (DomainInvariantException) { descriptions.Add((JsonNode?)null); }
-    Check(name, "error", error, item["error"]); Check(name, "result", result, item["result"]); Check(name, "descriptions", descriptions, item["descriptions"]);
+    Check(name, "error", error, item["error"]); Check(name, "result", result, item["result"]);
     Check(name, "events", events, item["events"]); Check(name, "hashes", hashes, item["hashes"]); Check(name, "after", state, item["after"]);
 }
 var nativeChecks = HitEffectAdmissionChecks.Run(packs);

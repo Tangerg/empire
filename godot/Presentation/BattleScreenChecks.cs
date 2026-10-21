@@ -52,9 +52,9 @@ public partial class BattleScreenChecks : Node
             if (canonicalOutside) terrain["tags"]!.AsArray().Add("outside");
             var engine = new GrayFlagEngine(packs);
             var text = GodotTextCatalog.LoadSimplifiedChinese();
-            var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
-            var battleText = BattleTextChecks.Load(engine, text);
-            var session = new GrayFlagSession(engine, level, text, refusals, battleText);
+            var presentation = BattleTextChecks.Session(engine, text);
+            var battleText = presentation.Battle;
+            var session = new GrayFlagSession(engine, presentation, level);
             var stateBefore = EcmaJson.Stringify(session.Snapshot());
             var queries = session.GetTacticalQueries(0);
             var actor = queries.Unit(2)!;
@@ -98,9 +98,9 @@ public partial class BattleScreenChecks : Node
         var level = BattleTextChecks.OpeningLevel();
         var engine = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
         var text = GodotTextCatalog.LoadSimplifiedChinese();
-        var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
-        var battleText = BattleTextChecks.Load(engine, text);
-        var session = new GrayFlagSession(engine, level, text, refusals, battleText);
+        var presentation = BattleTextChecks.Session(engine, text);
+        var battleText = presentation.Battle;
+        var session = new GrayFlagSession(engine, presentation, level);
         var screen = new BattleScreen(); AddChild(screen);
         screen.Board.AdvanceAnimationsAutomatically = false;
         void Bind(GrayFlagSession value) => screen.BindSession(text, battleText, value, AssetCatalog.Load(), level,
@@ -124,7 +124,7 @@ public partial class BattleScreenChecks : Node
         Require(screen.RecentMessages.SequenceEqual(expectedLog.Recent()), "Descriptions must append once in receipt order after presentation.");
         screen.Refresh();
         Require(!screen.IsPresenting && screen.RecentMessages.SequenceEqual(expectedLog.Recent()), "Refreshing a settled revision must not replay it.");
-        var superseded = new GrayFlagSession(engine, level, text, refusals, battleText);
+        var superseded = new GrayFlagSession(engine, presentation, level);
         var replaceable = new ReplaceableSession(superseded);
         screen.BindSession(text, battleText, replaceable, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
         TacticalSceneInputChecks.Move(screen, replaceable);
@@ -135,13 +135,13 @@ public partial class BattleScreenChecks : Node
             "A newer transition-free snapshot must invalidate older async completion.");
         screen.Refresh();
         Require(!screen.IsPresenting, "A transition-free revision must remain consumed.");
-        var canceled = new GrayFlagSession(engine, level, text, refusals, battleText); Bind(canceled); TacticalSceneInputChecks.Move(screen, canceled);
+        var canceled = new GrayFlagSession(engine, presentation, level); Bind(canceled); TacticalSceneInputChecks.Move(screen, canceled);
         screen.Board.CancelPresentation();
         Require(!screen.IsPresenting && screen.DisplayedRevision == canceled.GetSnapshot().Revision,
             "Same-session cancellation must settle both board and controls to committed state.");
-        var fresh = new GrayFlagSession(engine, level, text, refusals, battleText); Bind(fresh); TacticalSceneInputChecks.Move(screen, fresh);
+        var fresh = new GrayFlagSession(engine, presentation, level); Bind(fresh); TacticalSceneInputChecks.Move(screen, fresh);
         Require(screen.IsPresenting, "Second timeline did not start.");
-        var loaded = GrayFlagSession.FromSave(engine, fresh.Save(), text, refusals, battleText); Bind(loaded);
+        var loaded = GrayFlagSession.FromSave(engine, presentation, fresh.Save()); Bind(loaded);
         Require(!screen.IsPresenting && !screen.Board.IsPresenting && screen.DisplayedRevision == 0,
             "Rebinding a loaded session must cancel old playback without replaying its history.");
         screen.BindSession(text, battleText, loaded, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false,
@@ -149,7 +149,7 @@ public partial class BattleScreenChecks : Node
         Require(screen.RecentMessages.SequenceEqual(new[] { "已读取第 1 回合的存档" }), "Load must clear history and keep one load line.");
         screen.Board.AdvancePresentation(100);
         Require(screen.DisplayedRevision == 0, "Stale timeline completion overwrote the rebound view.");
-        var last = new GrayFlagSession(engine, level, text, refusals, battleText); Bind(last); TacticalSceneInputChecks.Move(screen, last);
+        var last = new GrayFlagSession(engine, presentation, level); Bind(last); TacticalSceneInputChecks.Move(screen, last);
         var saves = 0;
         screen.BindApplicationActions(() => saves++);
         var staleSave = Buttons(screen).Single(button => button.Text == "保存");
@@ -188,9 +188,9 @@ public partial class BattleScreenChecks : Node
         var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         var engine = new GrayFlagEngine(packs);
         var text = GodotTextCatalog.LoadSimplifiedChinese();
-        var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
-        var battleText = BattleTextChecks.Load(engine, text);
-        var session = new GrayFlagSession(engine, level, text, refusals, battleText);
+        var presentation = BattleTextChecks.Session(engine, text);
+        var battleText = presentation.Battle;
+        var session = new GrayFlagSession(engine, presentation, level);
         var screen = new BattleScreen();
         screen.Board.AnimationsEnabled = false; // This suite isolates synchronous binding, not timeline behavior.
         AddChild(screen);
@@ -239,9 +239,9 @@ public partial class BattleScreenChecks : Node
         var level = BattleTextChecks.OpeningLevel();
         var engine = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
         var text = GodotTextCatalog.LoadSimplifiedChinese();
-        var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
-        var battleText = BattleTextChecks.Load(engine, text);
-        var session = new GrayFlagSession(engine, level, text, refusals, battleText);
+        var presentation = BattleTextChecks.Session(engine, text);
+        var battleText = presentation.Battle;
+        var session = new GrayFlagSession(engine, presentation, level);
         var screen = new BattleScreen();AddChild(screen);screen.Board.AnimationsEnabled=false;
         screen.BindSession(text, battleText, session,AssetCatalog.Load(),level,AuthoredScene.Load(),EnvironmentCatalog.Load(),_=>false);
         void Keypress(Key key) => screen._UnhandledKeyInput(new InputEventKey { Pressed=true,Keycode=key });
@@ -280,7 +280,7 @@ public partial class BattleScreenChecks : Node
         var cells=new JsonArray(own.Select(unit=>(JsonNode)new JsonObject { ["x"]=unit["x"]!.GetValue<int>(),["y"]=unit["y"]!.GetValue<int>() }).ToArray());
         deploymentLevel["scenario"]!.AsObject()["zones"]=new JsonArray(new JsonObject { ["id"]="selection-check-zone",["cells"]=cells });
         deploymentLevel["deployment"]=new JsonObject { ["order"]=new JsonArray(1),["zones"]=new JsonArray(new JsonObject { ["player"]=1,["zone"]="selection-check-zone" }) };
-        var deployment=new GrayFlagSession(engine, deploymentLevel, text, refusals, battleText);
+        var deployment=new GrayFlagSession(engine, presentation, deploymentLevel);
         screen.BindSession(text, battleText, deployment,AssetCatalog.Load(),deploymentLevel,AuthoredScene.Load(),EnvironmentCatalog.Load(),_=>false);
         var roster=deployment.GetTacticalQueries(0).DeploymentUnits();
         var hud=(TacticalHud)screen.FindChild("TacticalHud",true,false);
@@ -303,23 +303,39 @@ public partial class BattleScreenChecks : Node
     {
         var level = BattleTextChecks.OpeningLevel();
         var reactions = ReactionRegistry.Core();
-        reactions.Replace(reactions.Get("guard") with { Name = "替换防御菜单", Hint = "来自已解析注册表" });
-        reactions.Register(new("plugin-dodge", "自定义闪避菜单", false, 0.4, false, false, "自定义提示"));
+        reactions.Register(new("plugin-dodge", false, 0.4, false, false));
         var engine = BattleEngineFactory.Create(new ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")),
             [new EnginePlugin("test.native-reactions", 1, context => context.Replace(BattleCapabilities.Reactions, reactions), overrides: [BattleCapabilities.Reactions])]);
-        var text = GodotTextCatalog.LoadSimplifiedChinese();
-        var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
-        var battleText = BattleTextChecks.Load(engine, text);
-        var session = new GrayFlagSession(engine, level, text, refusals, battleText);
+        var translation = ResourceLoader.Load<Translation>(GodotTextCatalog.ResourcePath);
+        var messages = translation.GetMessageList().ToDictionary(key => key, key => translation.GetMessage(key).ToString(), StringComparer.Ordinal);
+        messages["test.reactions.guard.name"] = "替换防御菜单";
+        messages["test.reactions.guard.hint"] = "来自显式表现元数据";
+        messages["test.reactions.plugin-dodge.name"] = "自定义闪避菜单";
+        messages["test.reactions.plugin-dodge.hint"] = "自定义提示";
+        var text = new GameText(key => messages.GetValueOrDefault(key), System.Globalization.CultureInfo.GetCultureInfo("zh-CN"));
+        var metadata = PresentationJson.Load<JsonObject>("res://data/grayflag-content-text.json");
+        metadata["reactions"]!["guard"] = new JsonObject {
+            ["name"] = "test.reactions.guard.name", ["hint"] = "test.reactions.guard.hint"
+        };
+        metadata["reactions"]!["plugin-dodge"] = new JsonObject {
+            ["name"] = "test.reactions.plugin-dodge.name", ["hint"] = "test.reactions.plugin-dodge.hint"
+        };
+        var presentation = SessionPresentationText.Compose(new(engine, text),
+            PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json"),
+            Godot.FileAccess.GetFileAsString("res://data/grayflag-battle-text.json"), EcmaJson.Stringify(metadata));
+        var battleText = presentation.Battle;
+        var session = new GrayFlagSession(engine, presentation, level);
         var screen = new BattleScreen(); AddChild(screen); screen.Board.AnimationsEnabled = false;
         screen.BindSession(text, battleText, session, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
         var origin = session.GetTacticalQueries(0).Unit(2)!.At;
         screen.SelectCell(origin);
         Button Reaction(string id) => Buttons(screen).Single(button => button.GetMeta("hud_key", "").AsString() == "stances/reaction:" + id);
         var buttons = Buttons(screen).Where(button => button.GetMeta("hud_key", "").AsString().StartsWith("stances/reaction:", StringComparison.Ordinal)).ToArray();
-        Require(buttons.Select(button => button.Text).SequenceEqual(reactions.All().Select(stance => stance.Name))
-            && buttons.Select(button => button.TooltipText).SequenceEqual(reactions.All().Select(stance => stance.Hint)),
-            "Mounted reaction controls must retain resolved registry order, replacement names and custom hints.");
+        Require(buttons.Select(button => button.Text).SequenceEqual(reactions.All().Select(stance => presentation.Content.ReactionName(stance.Id)))
+            && buttons.Select(button => button.TooltipText).SequenceEqual(reactions.All().Select(stance => presentation.Content.ReactionHint(stance.Id)))
+            && Reaction("guard").Text == messages["test.reactions.guard.name"]
+            && Reaction("plugin-dodge").TooltipText == messages["test.reactions.plugin-dodge.hint"],
+            "Mounted reaction controls retain resolved registry order and explicitly supplied names and hints.");
         var staleGuard = Reaction("guard");
         Reaction("plugin-dodge").EmitSignal(Button.SignalName.Pressed);
         Require(session.GetSnapshot().Revision == 1 && session.Snapshot()["units"]!.AsArray().OfType<JsonObject>()
@@ -346,6 +362,10 @@ public partial class BattleScreenChecks : Node
     private void CheckLocalizedInteraction()
     {
         var level = BattleTextChecks.OpeningLevel();
+        // Bring one authored enemy into preview range without dispatching a setup action.
+        var defender = level["units"]!.AsArray().OfType<JsonObject>().First(unit => unit["owner"]!.GetValue<int>() == 2);
+        defender["x"] = 6;
+        defender["y"] = 8;
         var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         var engine = new GrayFlagEngine(packs);
         var translation = ResourceLoader.Load<Translation>(GodotTextCatalog.ResourcePath);
@@ -359,13 +379,22 @@ public partial class BattleScreenChecks : Node
                 ["ui.battle.undo"] = variant + " undo",
                 ["feedback.session.undone"] = variant + " restored",
                 ["ui.battle.artwork_issues"] = variant + " artwork unavailable: {0}",
+                ["content.units.c01.swordsman.name"] = variant + " swordsman",
+                ["content.units.c01.swordsman.blurb"] = variant + " swordsman description",
+                ["content.reactions.guard.name"] = variant + " guard",
+                ["content.reactions.guard.hint"] = variant + " guard hint",
+                ["content.abilities.attack.name"] = variant + " attack",
+                ["content.abilities.attack.hint"] = variant + " attack hint",
+                ["content.weapons.c01.border-blade.name"] = variant + " border blade",
+                ["combat.modifier.row"] = variant + " modifier {0} {1}",
+                ["combat.modifier.matchup"] = variant + " matchup",
             };
             var text = new GameText(key => replacements.TryGetValue(key, out var replacement) ? replacement
                 : keys.Contains(key) ? translation.GetMessage(key).ToString() : null,
                 System.Globalization.CultureInfo.GetCultureInfo("zh-CN"));
-            var battleText = BattleTextChecks.Load(engine, text);
-            var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
-            var session = new GrayFlagSession(engine, level, text, refusals, battleText);
+            var presentation = BattleTextChecks.Session(engine, text);
+            var battleText = presentation.Battle;
+            var session = new GrayFlagSession(engine, presentation, level);
             var initial = EcmaJson.Stringify(session.Snapshot());
             var bindings = PresentationJson.Load<ArtBindings>("res://data/art-bindings.json");
             bindings.Actors.Clear();
@@ -381,14 +410,40 @@ public partial class BattleScreenChecks : Node
                 "The actual board notice uses injected wording and never exposes raw resource diagnostics in a tooltip.");
             var origin = session.GetTacticalQueries(0).Unit(2)!.At;
             screen.SelectCell(origin);
-            var hud = ((TacticalHud)screen.FindChild("TacticalHud", true, false)).Projection!;
+            var nativeHud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+            var hud = nativeHud.Projection!;
             var unitRows = hud.Sections.Single(section => section.Key == "unit").Rows;
             Require(hud.Hint == replacements["ui.hud.selection.unit"] && unitRows.Single(row => row.Key == "hp").Label.StartsWith(variant + " health", StringComparison.Ordinal),
                 "Mounted selection help and numeric unit facts use the injected catalog.");
+            var guard = Buttons(screen).Single(button => button.GetMeta("hud_key", "").AsString() == "stances/reaction:guard");
+            Require(hud.Sections.Single(section => section.Key == "unit").Title == replacements["content.units.c01.swordsman.name"]
+                && unitRows.Single(row => row.Key == "blurb").Label == replacements["content.units.c01.swordsman.blurb"]
+                && guard.Text == replacements["content.reactions.guard.name"] && guard.TooltipText == replacements["content.reactions.guard.hint"],
+                "Mounted unit content and reaction labels and hints use supplied presentation text, not canonical definitions.");
+            screen.SelectCell(origin);
+            var attack = Buttons(screen).Single(button => button.GetMeta("hud_key", "").AsString() == "commands/attack:c01.border-blade");
+            Require(attack.Text.Contains(replacements["content.abilities.attack.name"], StringComparison.Ordinal)
+                && attack.Text.Contains(replacements["content.weapons.c01.border-blade.name"], StringComparison.Ordinal)
+                && attack.TooltipText.Contains(replacements["content.abilities.attack.hint"], StringComparison.Ordinal),
+                "Mounted weapon command names and range hints compose supplied ability and weapon text.");
+            screen.SelectCell(new BoardCell(6, 8));
+            Require(screen.Selection?.Kind == TacticalSelectionKind.Target,
+                "Selecting the adjacent authored enemy must arm a real attack preview without dispatching.");
+            using var hoverTarget = new InputEventKey { Keycode = Key.Right, Pressed = true };
+            screen._UnhandledKeyInput(hoverTarget);
+            var modifierRows = nativeHud.Projection!.Sections.Single(section => section.Key == "forecast").Rows
+                .Where(row => row.Key.StartsWith("strike-mod:", StringComparison.Ordinal)).ToArray();
+            Require(modifierRows.Length > 0 && modifierRows.All(row => row.Label.StartsWith(variant + " modifier ", StringComparison.Ordinal))
+                && modifierRows.Any(row => row.Label.Contains(replacements["combat.modifier.matchup"], StringComparison.Ordinal))
+                && modifierRows.All(row => Descendants(nativeHud).OfType<Label>().Any(label => label.Text == row.Label)),
+                "Real attack-preview modifiers render through supplied formatter text in the mounted native HUD.");
             using var cancel = new InputEventKey { Keycode = Key.Escape, Pressed = true };
             screen._UnhandledKeyInput(cancel);
-            Require(screen.Selection?.Kind == TacticalSelectionKind.Idle && session.GetSnapshot().Revision == 0,
-                "Cancel returns to resting selection without changing domain state.");
+            screen._UnhandledKeyInput(cancel);
+            screen._UnhandledKeyInput(cancel);
+            Require(screen.Selection?.Kind == TacticalSelectionKind.Idle && session.GetSnapshot().Revision == 0
+                && EcmaJson.Stringify(session.Snapshot()) == initial && session.Events.Count == 0,
+                "Content inspection and attack preview cancel without changing domain state or emitting events.");
             TacticalSceneInputChecks.Move(screen, session);
             var state = EcmaJson.Stringify(session.Snapshot());
             var events = EcmaJson.Stringify(new JsonArray(session.Events.Select(value => (JsonNode?)value).ToArray()));
@@ -409,12 +464,13 @@ public partial class BattleScreenChecks : Node
             RemoveChild(screen); screen.Free();
         }
 
+        level = BattleTextChecks.OpeningLevel();
         foreach (var expectedArtFailure in new[] { true, false })
         {
             var text = GodotTextCatalog.LoadSimplifiedChinese();
-            var battleText = BattleTextChecks.Load(engine, text);
-            var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
-            var session = new GrayFlagSession(engine, level, text, refusals, battleText);
+            var presentation = BattleTextChecks.Session(engine, text);
+            var battleText = presentation.Battle;
+            var session = new GrayFlagSession(engine, presentation, level);
             var screen = new BattleScreen(); AddChild(screen); screen.Board.AnimationsEnabled = false;
             screen.BindSession(text, battleText, session, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
             Exception fault = expectedArtFailure ? new MissingArtResourceException("res://test-missing-art", "test missing art diagnostic")

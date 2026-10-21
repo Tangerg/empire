@@ -1,6 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core;
+using Empire.Core.Determinism;
 using Empire.Core.Engine;
 using Empire.Core.Geometry;
 using Empire.Core.Tactics;
@@ -18,6 +19,8 @@ public sealed partial class GrayFlagSession
     private readonly GameText text;
     private readonly ActionRefusalText refusals;
     private readonly BattleText battleText;
+    private readonly ContentText contentText;
+    private readonly CombatModifierText modifierText;
     private readonly Battle battle;
     private long revision;
     private BattlePresentationTransition? transition;
@@ -48,22 +51,33 @@ public sealed partial class GrayFlagSession
         return new(true, text.Format("feedback.session.undone"));
     }
 
-    public GrayFlagSession(GrayFlagEngine engine, JsonObject level, GameText text, ActionRefusalText refusals, BattleText battleText)
+    public GrayFlagSession(GrayFlagEngine engine, SessionPresentationText presentation, JsonObject level)
     {
         this.engine = engine;
-        this.text = text;
-        this.refusals = refusals;
-        this.battleText = battleText;
+        text = presentation.Messages;
+        refusals = presentation.Refusals;
+        battleText = presentation.Battle;
+        contentText = presentation.Content;
+        modifierText = presentation.Modifiers;
         eventText = BattleEventText.CreateDefault(text, battleText).Seal();
         battle = engine.CreateBattle(level);
     }
 
-    private GrayFlagSession(GrayFlagEngine engine, Battle battle, GameText text, ActionRefusalText refusals, BattleText battleText)
-    { this.engine = engine; this.battle = battle; this.text = text; this.refusals = refusals; this.battleText = battleText; eventText = BattleEventText.CreateDefault(text, battleText).Seal(); }
-
-    public static GrayFlagSession FromSave(GrayFlagEngine engine, JsonNode save, GameText text, ActionRefusalText refusals, BattleText battleText, JsonArray? recordedEvents = null)
+    private GrayFlagSession(GrayFlagEngine engine, SessionPresentationText presentation, Battle battle)
     {
-        var restored = new GrayFlagSession(engine, engine.LoadSavedBattle(save), text, refusals, battleText);
+        this.engine = engine;
+        this.battle = battle;
+        text = presentation.Messages;
+        refusals = presentation.Refusals;
+        battleText = presentation.Battle;
+        contentText = presentation.Content;
+        modifierText = presentation.Modifiers;
+        eventText = BattleEventText.CreateDefault(text, battleText).Seal();
+    }
+
+    public static GrayFlagSession FromSave(GrayFlagEngine engine, SessionPresentationText presentation, JsonNode save, JsonArray? recordedEvents = null)
+    {
+        var restored = new GrayFlagSession(engine, presentation, engine.LoadSavedBattle(save));
         if (recordedEvents is not null) restored.events.AddRange(recordedEvents.OfType<JsonObject>().Select(value => (JsonObject)value.DeepClone()));
         return restored;
     }
@@ -104,12 +118,7 @@ public sealed partial class GrayFlagSession
             cells = seen.Select(index => engine.Space.Board(state).CoordOf(index)).Select(at => new BoardCell(at.X, at.Y)).ToHashSet();
         }
         var incoming = engine.Combat.IncomingCasts(state).ToDictionary(pair => new BoardCell(pair.Key.X, pair.Key.Y), pair => pair.Value);
-        var objectives = state["composites"]!.AsArray().OfType<JsonObject>().Select(composite => {
-            var id = composite["id"]!.GetValue<string>();
-            var status = Empire.Core.Scenario.CompositeRules.Status(state, id);
-            return $"{id}：{status.Neutralized}/{composite["parts"]!.AsArray().Count} · {status.State}";
-        });
-        return new BattleSnapshot(revision, Empire.Core.Determinism.EcmaJson.ToElement(state), visible, cells, incoming, string.Join("\n", objectives), transition,
+        return new BattleSnapshot(revision, Empire.Core.Determinism.EcmaJson.ToElement(state), visible, cells, incoming, transition,
             state["phase"]?.GetValue<string>() == "deployment" ? text.Format("battle.opening.deployment")
                 : text.Format("battle.opening.turn", battleText.PlayerName(state["levelId"]!.GetValue<string>(), Viewer(state))));
     }
@@ -148,13 +157,13 @@ public sealed partial class GrayFlagSession
         revision++;
         var after = Empire.Core.Determinism.EcmaJson.ToElement(battle.Snapshot());
         var eventValues = receipt.Events.Select(Empire.Core.Determinism.EcmaJson.ToElement).ToArray();
-        var logContext = new BattleLogContext(after, engine.UnitTypeName, engine.CareerName, id => engine.Resources.Name(id) ?? id,
-            id => battleText.PlayerName(levelId: after.GetProperty("levelId").GetString()!, playerId: id));
+        var logContext = new BattleLogContext(new BattleLogNames(contentText.UnitName, contentText.CareerName, contentText.ResourceName,
+            id => battleText.PlayerName(levelId: after.GetProperty("levelId").GetString()!, playerId: id)), EcmaJson.ToElement(receipt.Before), after);
         transition = new BattlePresentationTransition(revision,
             Empire.Core.Determinism.EcmaJson.ToElement(receipt.Before),
             Empire.Core.Determinism.EcmaJson.ToElement(command),
             eventValues, after, computer, beforeVisible,
-            eventValues.Select(value => eventText.Describe(logContext, value)).ToArray());
+            eventText.DescribeAll(logContext, eventValues));
         return receipt;
     }
 

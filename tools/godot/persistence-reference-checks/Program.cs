@@ -230,7 +230,7 @@ Check("custom hit effect owns opaque status-named payload", () =>
     var customPacks = packs.DeepClone().AsArray();
     var weapon = customPacks.OfType<JsonObject>().SelectMany(pack => pack["weapons"]?.AsArray().OfType<JsonObject>() ?? []).First(value => value["id"]!.GetValue<string>() == "soldier_sword");
     weapon["hitEffects"] = new JsonArray(new JsonObject { ["type"] = "test.opaque", ["status"] = "not-a-status-id" });
-    var effects = engine.Combat.HitEffects.Clone().Register(new("test.opaque", (_, _) => { }, _ => "opaque"));
+    var effects = engine.Combat.HitEffects.Clone().Register(new("test.opaque", (_, _) => { }));
     var custom = BattleEngineFactory.Create(new ReadOnlyContent(customPacks), [new("test.opaque-hit-effect", 1,
         context => context.Replace(Keys.HitEffects, effects), overrides: [Keys.HitEffects])]);
     var save = custom.SaveBattle(initial, savedAt); Equal(initial, custom.LoadBattle(save), "opaque payload was treated as builtin status semantics");

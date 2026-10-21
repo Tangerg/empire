@@ -29,6 +29,7 @@ public static class BattleStateFactory
         var units = StateJson.Array(state["units"], "units");
         var unit = CreateUnit(dependencies, seed, id, grid);
         unit["done"] = done;
+        new BattleUnitOwnership(state).Assign(new[] { unit }, StateJson.Integer(unit, "owner"));
         units.Add(unit);
         state["nextUnitId"] = nextId;
         return unit;
@@ -37,6 +38,8 @@ public static class BattleStateFactory
     public static JsonObject Create(BattleStateRules dependencies, JsonObject level, uint? seed = null)
     {
         ArgumentNullException.ThrowIfNull(level);
+        if (level.ContainsKey("name") || level.ContainsKey("description") || level.ContainsKey("levelName"))
+            throw new DomainInvariantException("Level wording belongs to presentation metadata, not gameplay definitions.");
         var content = dependencies.Content.Source;
         var map = StateMap.Create(content, level);
         var rules = StateDefaults.Rules(level);
@@ -58,7 +61,6 @@ public static class BattleStateFactory
         return new JsonObject
         {
             ["levelId"] = StateJson.Required(level, "id").DeepClone(),
-            ["levelName"] = StateJson.Required(level, "name").DeepClone(),
             ["map"] = map,
             ["units"] = units,
             ["structures"] = structures,

@@ -16,4 +16,7 @@
     <Compile Include="../check-support/FixtureText.cs" Link="Checks/FixtureText.cs" />
     <Compile Include="../check-support/FixtureBattleText.cs" Link="Checks/FixtureBattleText.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="../../../godot/Application/SessionPresentationText.cs" Link="Application/SessionPresentationText.cs" />
+  </ItemGroup>
 </Project>

@@ -7,7 +7,7 @@ using Empire.Core.Tactics;
 
 namespace Empire.Core.Orders;
 
-public sealed record TacticOption(string Id, string Name, IReadOnlyList<Coord> Targets, IReadOnlyList<BattleResources.Cost> Costs);
+public sealed record TacticOption(string Id, IReadOnlyList<Coord> Targets, IReadOnlyList<BattleResources.Cost> Costs);
 
 /// <summary>Commander orders and site capture, using shared account and effect writers.</summary>
 public sealed record SupportOrderRules(
@@ -65,7 +65,7 @@ public sealed class SupportOrders
                         if (Grid(state).Distance(Position(leader), new Coord(x, y)) <= StateJson.Number(tactic["range"], "range"))
                             targets.Add(new Coord(x, y));
             }
-            result.Add(new TacticOption(id, StateJson.Text(tactic, "name"), targets, BattleResources.CopyCosts(StateJson.Array(tactic["costs"], "costs"))));
+            result.Add(new TacticOption(id, targets, BattleResources.CopyCosts(StateJson.Array(tactic["costs"], "costs"))));
         }
         return result;
     }

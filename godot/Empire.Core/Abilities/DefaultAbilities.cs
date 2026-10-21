@@ -8,9 +8,8 @@ namespace Empire.Core.Abilities;
 public static class DefaultAbilities
 {
     public static AbilityRegistry Create() => new AbilityRegistry()
-        .Register(new("attack", "攻击")
+        .Register(new("attack")
         {
-            Hint = "对射程内的敌人造成伤害；若对方也能打到你，会遭到反击。",
             SelfTargeted = false, Priority = 10, Tags = ["attack"], Engagement = "attack",
             WeaponFor = SelectedWeapon,
             WeaponChoices = (rules, query) => rules.Combat.Forecasts.UnitWeapons(query.Unit),
@@ -20,21 +19,21 @@ public static class DefaultAbilities
             Execute = (rules, query, target, emit) => rules.Combat.ExecuteAttack(query.State, query.Unit, query.At,
                 target ?? throw new DomainInvariantException("attack requires a target"), query.WeaponId, emit),
         })
-        .Register(new("heal", "治疗")
+        .Register(new("heal")
         {
-            Hint = "恢复相邻友军的生命值。", SelfTargeted = false, Priority = 20, Tags = ["healing"],
+            SelfTargeted = false, Priority = 20, Tags = ["healing"],
             Targets = (rules, query) => rules.Space.HealTargetsFrom(query.State, query.Unit, query.At)
                 .Select(TacticalQueries.Position).ToArray(),
             Execute = (rules, query, target, emit) => Heal(rules, query,
                 target ?? throw new DomainInvariantException("heal requires a target"), emit),
         })
-        .Register(new("capture", "占领")
+        .Register(new("capture")
         {
-            Hint = "占下城镇、兵营或城堡；只有人类步兵可以占领。", Priority = 5,
+            Priority = 5,
             Usable = (rules, query) => rules.Support.CanCapture(query.State, query.Unit, query.At),
             Execute = (rules, query, _, emit) => rules.Support.Capture(query.State, query.Unit, query.At, emit),
         })
-        .Register(new("wait", "待机") { Hint = "结束该单位的行动。", Priority = 90 });
+        .Register(new("wait") { Priority = 90 });
 
     private static JsonObject? SelectedWeapon(AbilityRules rules, AbilityQuery query) =>
         rules.Combat.SelectedWeapon(query.State, query.Unit, query.WeaponId);

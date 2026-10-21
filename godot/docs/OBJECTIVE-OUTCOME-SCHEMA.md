@@ -116,3 +116,56 @@ Manual desktop acceptance and rebuilt exports are not established by those
 headless checks. Existing pre-schema-change packages are historical artifacts,
 not builds of this checkpoint. Built-in content names, computed descriptions,
 level titles and remaining summary wording are tracked as the next i18n slice.
+
+## All-field digest revision
+
+The next native contract removes both historical digest exclusions: levelName and
+players[*].controller. Native gameplay state no longer contains a level title,
+and every remaining serialized field participates in the digest. Changing a
+controller therefore changes the digest; changing an injected wording catalog
+still cannot change state, events or the digest. Replay schema3 identifies this
+hash contract; battle save3 also rejects obsolete levelName in its state/header.
+
+`tools/godot/native-digest-vectors.mjs` independently authors the current numeric,
+UTF-16 and all-field vectors with ECMAScript built-ins and the specified 32-bit
+hash. It is development fixture generation only, not a runtime TypeScript bridge.
+The old ignored-field vectors remain historical evidence and are not counted as
+current-contract passes. No source state is stripped or normalized to recover its
+old digest.
+
+### Creation-event identity facts
+
+The current native `unitSpawned` and `recruit` contracts carry `unitType` and
+`owner` copied from the created unit, in addition to the existing unit ID. These
+are detached semantic facts, not localized labels. The log projection observes
+creation events in order, so a unit spawned, changed and removed within one
+committed action can still be described without inventing an identity or retaining
+it in gameplay state. Application event admission requires the current shape.
+
+This is an intentional event-contract change. The frozen 119-action opening has
+neither event kind, so its nonterminal event comparison remains exact and needs
+no field-stripping adapter. Native replay/save checks use the complete new state
+and event contract; the focused transient-unit flow checks the emitted identities.
+
+### Content, identity and all-field checkpoint verification
+
+The final production build is clean. The focused external-consumer check covers
+content metadata, semantic modifier formatting, locale independence and an actual
+transient-unit scenario. Native Godot checks passed battle interaction, result
+flow, staging and navigation, including four malformed creation-event loads that
+preserve the active battle and original file bytes/timestamps. All processes exited
+cleanly. These are actual scene executions, not manual window/visual acceptance.
+
+All 16 independently initialized native levels completed legal play with exact
+full-state save/replay round trips. The opening retained 119 source-matched legal
+actions and unchanged nonterminal events. All-field digest vectors and catalog
+isolation passed. The first ownership regression expected the wrong exception
+layer from SaveBattle; production correctly rejected invalid live ownership. Its
+expectation was corrected and that named check passed without repeating the
+already-completed full-level runs. The normal verification command still runs
+all checks; `Empire.Core.Tests ... --only <exact-check-name>` supports bounded
+reruns and rejects unknown names. No valid assertion was removed.
+
+Remaining work is explicit: inject the event presenter through the session
+composition port, complete the API/readability/formatting pass, and verify the
+current exported package. Manual desktop interaction remains infrastructure-blocked.

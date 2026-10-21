@@ -31,6 +31,10 @@ public sealed class BattleText
         });
     }
 
+    public string LevelTitle(string levelId) => document.LevelTitle(text, levelId);
+    public string LevelDescription(string levelId) => document.LevelDescription(text, levelId);
+    public string SignalName(string levelId, string signalId) => document.SignalName(text, levelId, signalId);
+
     public string PlayerName(string levelId, int playerId) => document.PlayerName(text, levelId, playerId);
 
     public string ObjectiveDescription(string levelId, int playerId, ObjectiveProgress objective)

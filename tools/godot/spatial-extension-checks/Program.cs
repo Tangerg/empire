@@ -233,7 +233,6 @@ sealed class TeleportSpace(ReadOnlyContent content, GridRegistry grids, bool sto
 sealed class DiagonalSquare4 : SquareTiling
 {
     public override string Id => "square4";
-    public override string Name => "test diagonal";
     public override IReadOnlyList<DirectionDef> Directions => new Square8Grid().Directions;
     public override int Distance(Coord a, Coord b) => Math.Max(Math.Abs(a.X - b.X), Math.Abs(a.Y - b.Y));
 }

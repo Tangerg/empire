@@ -61,7 +61,13 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
     var firstUnit = state["units"]![0]!.AsObject();
     var subjects = new List<BattleResources.Subject> { new("player", state["players"]![0]!.AsObject()), new("unit", firstUnit) };
     subjects.AddRange(firstUnit["weaponState"]!.AsObject().Select(pair => new BattleResources.Subject("weapon", firstUnit, pair.Key)));
-    Equal(subjects.Select(subject => engine.Resources.Accounts(subject)).ToArray(), item["accounts"], name + " accounts");
+    var expectedAccounts = new JsonArray(item["accounts"]!.AsArray().Select(accounts => (JsonNode?)new JsonArray(
+        accounts!.AsArray().OfType<JsonObject>().Select(account => (JsonNode?)new JsonObject
+        {
+            ["resource"] = account["resource"]!.DeepClone(), ["current"] = account["current"]?.DeepClone(),
+            ["capacity"] = account["capacity"]?.DeepClone(),
+        }).ToArray())).ToArray());
+    Equal(subjects.Select(subject => engine.Resources.Accounts(subject)).ToArray(), expectedAccounts, name + " account facts");
     Equal(Capture(() => engine.Recruitment.Cards(state, new Coord(0, 0))), item["cards"], name + " cards");
     foreach (var objective in item["objectives"]!.AsArray().OfType<JsonObject>())
     {
@@ -102,7 +108,21 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
             historicalProseAssertions += 2;
         }
     }
-    Equal(Capture(() => engine.Combat.ActiveCasts(state)), item["casts"], name + " casts");
+    var sourceCasts = item["casts"]!.AsObject();
+    var expectedCasts = sourceCasts.ContainsKey("error")
+        ? new JsonObject { ["error"] = sourceCasts["error"]!.DeepClone() }
+        : new JsonObject
+        {
+            ["value"] = new JsonArray(sourceCasts["value"]!.AsArray().OfType<JsonObject>().Select(cast => (JsonNode?)new JsonObject
+            {
+                ["caster"] = cast["caster"]!.DeepClone(), ["owner"] = cast["owner"]!.DeepClone(),
+                ["weapon"] = cast["weapon"]!.DeepClone(), ["origin"] = cast["origin"]!.DeepClone(),
+                ["target"] = cast["target"]!.DeepClone(), ["declaredAt"] = cast["declaredAt"]!.DeepClone(),
+                ["resolveAt"] = cast["resolveAt"]!.DeepClone(), ["remaining"] = cast["remaining"]!.DeepClone(),
+                ["progress"] = cast["progress"]!.DeepClone(),
+            }).ToArray()),
+        };
+    Equal(Capture(() => engine.Combat.ActiveCasts(state)), expectedCasts, name + " cast facts");
     Equal(Capture(() => engine.Combat.IncomingCasts(state).Select(pair => new { pair.Key.X, pair.Key.Y, Remaining = pair.Value }).ToArray()), item["incoming"], name + " incoming");
     var grid = engine.Grids.Get(state["rules"]!["grid"]!.GetValue<string>());
     var commanders = state["commanders"]!.AsArray().OfType<JsonObject>().Select(commander => new
@@ -110,7 +130,15 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
         Leader = TacticalModifiers.CommanderUnit(state, commander),
         Tactics = engine.Support.Tactics(state, commander["id"]!.GetValue<string>()),
     }).ToArray();
-    Equal(commanders, item["commanders"], name + " commanders");
+    var expectedCommanders = new JsonArray(item["commanders"]!.AsArray().OfType<JsonObject>().Select(commander => (JsonNode?)new JsonObject
+    {
+        ["leader"] = commander["leader"]?.DeepClone(),
+        ["tactics"] = new JsonArray(commander["tactics"]!.AsArray().OfType<JsonObject>().Select(tactic => (JsonNode?)new JsonObject
+        {
+            ["id"] = tactic["id"]!.DeepClone(), ["targets"] = tactic["targets"]!.DeepClone(), ["costs"] = tactic["costs"]!.DeepClone(),
+        }).ToArray()),
+    }).ToArray());
+    Equal(commanders, expectedCommanders, name + " commander tactic facts");
     Equal(state["units"]!.AsArray().OfType<JsonObject>().Select(unit => new
     {
         Commander = TacticalModifiers.ActiveCommanderFor(grid, state, unit),
@@ -155,7 +183,14 @@ var unicodeDefinition = unicodeEngine.Catalog.Definition("units", "soldier")!.Va
 if (!EcmaJson.DeepEquals(EcmaJson.Parse(unicodeDefinition.GetRawText()), oracle["unicode"]!["definition"])) throw new Exception("UTF-16 catalog projection lost code units");
 var detached = EcmaJson.Parse(unicodeDefinition.GetRawText())!; detached["name"] = "mutated";
 if (!EcmaJson.DeepEquals(EcmaJson.Parse(unicodeEngine.Catalog.Definition("units", "soldier")!.Value.GetRawText()), oracle["unicode"]!["definition"])) throw new Exception("catalog alias");
-Equal(oracle["reactions"]!.AsArray().Select(reaction => engine.Combat.Forecasts.Reaction(reaction!["id"]!.GetValue<string>())).ToArray(), oracle["reactions"], "reaction definitions including hints");
+Equal(oracle["reactions"]!.AsArray().Select(reaction => engine.Combat.Forecasts.Reaction(reaction!["id"]!.GetValue<string>()))
+    .Select(reaction => new { reaction.Id, reaction.Intercepts, reaction.IncomingMultiplier, reaction.Retaliates, reaction.ConservesResources }).ToArray(),
+    new JsonArray(oracle["reactions"]!.AsArray().OfType<JsonObject>().Select(reaction => (JsonNode?)new JsonObject
+    {
+        ["id"] = reaction["id"]!.DeepClone(), ["intercepts"] = reaction["intercepts"]!.DeepClone(),
+        ["incomingMultiplier"] = reaction["incomingMultiplier"]!.DeepClone(), ["retaliates"] = reaction["retaliates"]!.DeepClone(),
+        ["conservesResources"] = reaction["conservesResources"]!.DeepClone(),
+    }).ToArray()), "reaction behavior facts");
 var seenAbilities = new HashSet<string>();
 foreach (var row in oracle["commandLabels"]!.AsArray())
 {
@@ -164,9 +199,12 @@ foreach (var row in oracle["commandLabels"]!.AsArray())
     var at = new Coord(row["at"]!["x"]!.GetValue<int>(), row["at"]!["y"]!.GetValue<int>());
     var options = engine.CommandsAt(state, actor, at);
     foreach (var option in options) seenAbilities.Add(option.Ability);
-    Equal(options.Select(option => new { option.Key, option.Name, option.Hint }).ToArray(), row["options"], "command labels " + actor["type"]);
+    Equal(options.Select(option => option.Key).ToArray(),
+        new JsonArray(row["options"]!.AsArray().Select(option => option!["key"]!.DeepClone()).ToArray()),
+        "command identities " + actor["type"]);
+    historicalProseAssertions += options.Count * 2;
 }
 if (!seenAbilities.SetEquals(new[] { "attack", "capture", "heal", "wait" })) throw new Exception("command label fixture failed to exercise every ability");
 if (historicalProseAssertions > 0)
-    throw new InvalidOperationException($"PENDING historical schema migration: {historicalProseAssertions} source objective prose assertions are not native semantic facts. {checks} unchanged source and native projection assertions completed; this is not full suite acceptance.");
+    throw new InvalidOperationException($"PENDING historical schema migration: {historicalProseAssertions} source display-prose assertions are not native semantic facts. {checks} unchanged source and native projection assertions completed; this is not full suite acceptance.");
 Console.WriteLine($"PASS {checks} tactical semantic query comparisons; detached and read-only guards");

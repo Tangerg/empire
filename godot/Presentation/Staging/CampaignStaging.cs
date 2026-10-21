@@ -1,5 +1,6 @@
 using System.Globalization;
 using Empire.Localization;
+using Empire.Presentation.Feedback;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core.Determinism;
@@ -57,11 +58,14 @@ public sealed class CampaignStagingView
     }
 }
 
+public sealed record CampaignStagingText(GameText Messages, BattleText Battle, Func<string, string> UnitTypeName);
+
 public static class CampaignStaging
 {
-    public static CampaignStagingView Create(GameText text, JsonElement state, JsonElement battleNode, JsonElement level,
-        JsonElement metadata, Func<string, string> unitTypeName, bool hasPendingRequest)
+    public static CampaignStagingView Create(CampaignStagingText presentationText, JsonElement state, JsonElement battleNode, JsonElement level,
+        JsonElement metadata, bool hasPendingRequest)
     {
+        var text = presentationText.Messages;
         if (metadata.GetProperty("schema").GetInt32() != 2) throw new InvalidOperationException("Unsupported campaign staging metadata schema.");
         var id = Text(level.GetProperty("id"));
         if (Text(battleNode.GetProperty("type")) != "battle" || Text(battleNode.GetProperty("level")) != id ||
@@ -90,7 +94,7 @@ public static class CampaignStaging
                 ? text.Format("ui.staging.available_status", Math.Floor(unit.GetProperty("hpRatio").GetDouble() * 100 + 0.5), rank)
                 : text.Format($"ui.staging.disposition.{disposition}");
             var binding = bindings.FirstOrDefault(candidate => Text(candidate.GetProperty("campaignUnit")) == unitId);
-            roster.Add(new CampaignStagingUnit(unitId, type, unitTypeName(type), status,
+            roster.Add(new CampaignStagingUnit(unitId, type, presentationText.UnitTypeName(type), status,
                 binding.ValueKind == JsonValueKind.Undefined ? null : Text(binding.GetProperty("levelUnitKey")),
                 portraits.TryGetProperty(unitId, out var portrait) ? Art(portrait) : null));
         }
@@ -105,7 +109,7 @@ public static class CampaignStaging
         return new CampaignStagingView(text, id, text.Format(Text(metadata.GetProperty("titleKey"))),
             text.Format("ui.campaign.chapter_heading", chapter, text.Format(chapterKey)), $"{Number(completed)}/{Number(battleTotal)}",
             completed, battleTotal, text.Format("ui.staging.eyebrow", order, battleTotal),
-            Text(level.GetProperty("name")), level.TryGetProperty("description", out var description) && description.ValueKind != JsonValueKind.Null ? Text(description) : "",
+            presentationText.Battle.LevelTitle(id), presentationText.Battle.LevelDescription(id),
             text.Format(hasPendingRequest ? "ui.staging.reentry_note" : "ui.staging.initial_note"),
             text.Format(hasPendingRequest ? "ui.staging.reenter" : "ui.staging.start"),
             Art(presentation.GetProperty("chapterArt")), presentation.GetProperty("briefingArt").ValueKind == JsonValueKind.Null ? null : Art(presentation.GetProperty("briefingArt")),

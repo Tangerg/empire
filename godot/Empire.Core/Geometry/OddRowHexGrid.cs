@@ -5,15 +5,14 @@ public sealed class OddRowHexGrid : ITacticalGrid
 {
     private static readonly IReadOnlyList<DirectionDef> Facings = Array.AsReadOnly(new DirectionDef[]
     {
-        new("hexNortheast", "东北"), new("hexEast", "东"), new("hexSoutheast", "东南"),
-        new("hexSouthwest", "西南"), new("hexWest", "西"), new("hexNorthwest", "西北"),
+        new("hexNortheast"), new("hexEast"), new("hexSoutheast"),
+        new("hexSouthwest"), new("hexWest"), new("hexNorthwest"),
     });
 
     private static readonly double RowSpacing = Math.Sqrt(3) / 2;
     private static readonly double Radius = 1 / Math.Sqrt(3);
 
     public string Id => "hex";
-    public string Name => "六边格";
     public string RestingFacing => "hexSoutheast";
     public IReadOnlyList<DirectionDef> Directions => Facings;
 

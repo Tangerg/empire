@@ -10,7 +10,7 @@ public sealed class BattleResources
     public sealed record Subject(string Kind, JsonObject Holder, string? Weapon = null);
     public sealed record Amount(string Resource, double Value);
     public sealed record Cost(string Resource, double Amount);
-    public sealed record AccountSnapshot(string Resource, string Name, double? Current, double? Capacity);
+    public sealed record AccountSnapshot(string Resource, double? Current, double? Capacity);
 
     public ResourceAdapterRegistry Adapters { get; }
     public ResourceSubjectResolverRegistry Subjects { get; }
@@ -43,13 +43,11 @@ public sealed class BattleResources
     public AccountSnapshot Inspect(Subject subject, string resource)
     {
         var snapshot = RequireAccount(subject, resource).Account.Read();
-        return new(resource, Adapters.Get(resource).Name, snapshot.Current, snapshot.Capacity);
+        return new(resource, snapshot.Current, snapshot.Capacity);
     }
 
     public IReadOnlyList<AccountSnapshot> Accounts(Subject subject) => System.Array.AsReadOnly(
         Adapters.Keys().Where(resource => HasAccount(subject, resource)).Select(resource => Inspect(subject, resource)).ToArray());
-
-    public string? Name(string resource) => Adapters.TryGet(resource)?.Name;
 
     public bool HasAccount(Subject subject, string resource)
     {

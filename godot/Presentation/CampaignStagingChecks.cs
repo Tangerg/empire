@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Nodes;
 using Empire.Core.Determinism;
+using Empire.Core.Engine;
+using Empire.Presentation.Feedback;
 using Empire.Localization;
 using System.Globalization;
 using Godot;
@@ -40,8 +42,14 @@ public partial class CampaignStagingChecks : Node
             }
             RemoveArt(metadata);
             string UnitName(string id) => EcmaJson.ReadString(oracle["unitNames"]![id]);
-            CampaignStagingView View(bool pending) => CampaignStaging.Create(messages, EcmaJson.ToElement(item["state"]),
-                EcmaJson.ToElement(item["node"]), EcmaJson.ToElement(item["level"]), EcmaJson.ToElement(metadata), UnitName, pending);
+            var engine = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+            var presentationText = new CampaignStagingText(messages, BattleTextChecks.Load(engine, messages), UnitName);
+            var nativeLevels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+                .ToDictionary(level => level["id"]!.GetValue<string>(), StringComparer.Ordinal);
+            System.Text.Json.JsonElement NativeLevel(JsonNode fixture) =>
+                EcmaJson.ToElement(nativeLevels[fixture["level"]!["id"]!.GetValue<string>()]);
+            CampaignStagingView View(bool pending) => CampaignStaging.Create(presentationText, EcmaJson.ToElement(item["state"]),
+                EcmaJson.ToElement(item["node"]), NativeLevel(item), EcmaJson.ToElement(metadata), pending);
             var assets = AssetCatalog.Load();
             var view = View(false);
             var screen = new CampaignStagingScreen(); AddChild(screen);
@@ -109,8 +117,8 @@ public partial class CampaignStagingChecks : Node
             metadata = FixtureMetadata();
             foreach (var sourceCase in oracle["cases"]!.AsArray().OfType<JsonObject>())
             {
-                var live = CampaignStaging.Create(messages, EcmaJson.ToElement(sourceCase["state"]), EcmaJson.ToElement(sourceCase["node"]),
-                    EcmaJson.ToElement(sourceCase["level"]), EcmaJson.ToElement(metadata), UnitName, sourceCase["pending"]!.GetValue<bool>());
+                var live = CampaignStaging.Create(presentationText, EcmaJson.ToElement(sourceCase["state"]), EcmaJson.ToElement(sourceCase["node"]),
+                    NativeLevel(sourceCase), EcmaJson.ToElement(metadata), sourceCase["pending"]!.GetValue<bool>());
                 screen.ShowStaging(live, assets, () => starts++, () => exits++);
                 Require(screen.RenderingDiagnostics.Count == 0, $"Real exported staging art is incomplete: {string.Join("; ", screen.RenderingDiagnostics)}");
                 foreach (var unit in live.Roster.Where(unit => unit.Portrait is not null))

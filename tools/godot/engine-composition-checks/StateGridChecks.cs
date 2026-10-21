@@ -58,7 +58,6 @@ static class StateGridChecks
     private sealed class NorthGrid(ITacticalGrid geometry, string id) : ITacticalGrid
     {
         public string Id => id;
-        public string Name => "root north";
         public IReadOnlyList<DirectionDef> Directions => geometry.Directions;
         public string RestingFacing => "north";
         public int Distance(Coord a, Coord b) => geometry.Distance(a, b);

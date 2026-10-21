@@ -41,8 +41,19 @@ public sealed class CombatModifierPipeline
     public CombatModifierPipeline Register(CombatModifierProvider provider) { providers.Register(provider); return this; }
     public CombatModifierPipeline Replace(CombatModifierProvider provider) { providers.Replace(provider); return this; }
     public CombatModifierPipeline Seal() { providers.Seal(); return this; }
-    public IReadOnlyList<CombatModifier> Collect(UnitDamageContext context) =>
-        Array.AsReadOnly(providers.Ordered().SelectMany(provider => provider.Provide(context)).ToArray());
+    public IReadOnlyList<string> ProviderIds => providers.Keys();
+    public IReadOnlyList<CombatModifier> Collect(UnitDamageContext context)
+    {
+        var result = new List<CombatModifier>();
+        foreach (var provider in providers.Ordered())
+            foreach (var modifier in provider.Provide(context))
+            {
+                if (modifier.Kind != provider.Id)
+                    throw new DomainInvariantException($"Combat modifier provider '{provider.Id}' emitted undeclared kind '{modifier.Kind}'.");
+                result.Add(modifier);
+            }
+        return Array.AsReadOnly(result.ToArray());
+    }
     public ModifierPipelineResult Evaluate(double @base, UnitDamageContext context)
     {
         var modifiers = Collect(context);
@@ -92,9 +103,9 @@ public static class DefaultCombatModifiers
         var selected = context.Weapon;
         var defenderDef = context.Battlefield.Content.Read("units", StateJson.Text(context.Defender, "type"));
         var modifiers = new List<CombatModifier>();
-        void Add(string id, string label, string source, string stage, string operation, double value) =>
-            modifiers.Add(new(id, label, source, stage, operation, value));
-        Add("matchup.effectiveness", "伤害类型与护甲克制", "matchup", "power", "multiply",
+        void Add(string id, string source, string stage, string operation, double value, JsonObject? facts = null) =>
+            modifiers.Add(new(id, "core.matchup", source, stage, operation, value, facts));
+        Add("matchup.effectiveness", "matchup", "power", "multiply",
             context.Rules.Effectiveness(StateJson.Text(selected, "damageType"), StateJson.Text(defenderDef, "armorClass")));
         return modifiers.AsReadOnly();
     }
@@ -104,11 +115,12 @@ public static class DefaultCombatModifiers
         var selected = context.Weapon;
         var defenderDef = context.Battlefield.Content.Read("units", StateJson.Text(context.Defender, "type"));
         var modifiers = new List<CombatModifier>();
-        void Add(string id, string label, string source, string stage, string operation, double value) =>
-            modifiers.Add(new(id, label, source, stage, operation, value));
+        void Add(string id, string source, string stage, string operation, double value, JsonObject? facts = null) =>
+            modifiers.Add(new(id, "core.weapon-target-tags", source, stage, operation, value, facts));
         foreach (var bonus in StateJson.Objects(selected["bonuses"], "bonuses"))
             if (defenderDef.GetProperty("tags").EnumerateArray().Any(tag => StateJson.Text(tag) == StateJson.Text(bonus, "targetTag")))
-                Add("weapon.target-tag." + StateJson.Text(bonus, "targetTag"), StateJson.Text(bonus, "reason"), "weapon", "power", "multiply", StateJson.Number(bonus, "multiplier", 1));
+                Add("weapon.bonus." + StateJson.Text(selected, "id") + "." + StateJson.Text(bonus, "id"), "weapon", "power", "multiply", StateJson.Number(bonus, "multiplier", 1),
+                    new JsonObject { ["weaponId"] = StateJson.Text(selected, "id"), ["bonusId"] = StateJson.Text(bonus, "id") });
         return modifiers.AsReadOnly();
     }
 
@@ -117,9 +129,9 @@ public static class DefaultCombatModifiers
         var content = context.Battlefield.Content;
         var attacker = context.Attacker;
         var modifiers = new List<CombatModifier>();
-        void Add(string id, string label, string source, string stage, string operation, double value) =>
-            modifiers.Add(new(id, label, source, stage, operation, value));
-        Add("unit.hp-strength", "攻击者剩余生命", "unit", "power", "multiply", AttackerStrength(content, attacker));
+        void Add(string id, string source, string stage, string operation, double value, JsonObject? facts = null) =>
+            modifiers.Add(new(id, "core.attacker-strength", source, stage, operation, value, facts));
+        Add("unit.hp-strength", "unit", "power", "multiply", AttackerStrength(content, attacker));
         return modifiers.AsReadOnly();
     }
 
@@ -127,10 +139,10 @@ public static class DefaultCombatModifiers
     {
         var attacker = context.Attacker;
         var modifiers = new List<CombatModifier>();
-        void Add(string id, string label, string source, string stage, string operation, double value) =>
-            modifiers.Add(new(id, label, source, stage, operation, value));
+        void Add(string id, string source, string stage, string operation, double value, JsonObject? facts = null) =>
+            modifiers.Add(new(id, "core.rank", source, stage, operation, value, facts));
         var rank = StateJson.Integer(attacker, "rank");
-        Add("rank.attack", rank == 0 ? "新兵军衔" : rank == 1 ? "老兵军衔" : "精英军衔", "unit", "power", "multiply", 1 + rank * 0.04);
+        Add("rank.attack", "unit", "power", "multiply", 1 + rank * 0.04, new JsonObject { ["rank"] = rank });
         return modifiers.AsReadOnly();
     }
 
@@ -139,9 +151,9 @@ public static class DefaultCombatModifiers
         var content = context.Battlefield.Content;
         var attacker = context.Attacker;
         var modifiers = new List<CombatModifier>();
-        void Add(string id, string label, string source, string stage, string operation, double value) =>
-            modifiers.Add(new(id, label, source, stage, operation, value));
-        Add("status.attack", "攻击方状态", "status", "power", "multiply", CombatEffects.CalculateModifiers(content, attacker).AttackMultiplier);
+        void Add(string id, string source, string stage, string operation, double value, JsonObject? facts = null) =>
+            modifiers.Add(new(id, "core.status", source, stage, operation, value, facts));
+        Add("status.attack", "status", "power", "multiply", CombatEffects.CalculateModifiers(content, attacker).AttackMultiplier);
         return modifiers.AsReadOnly();
     }
 
@@ -151,9 +163,9 @@ public static class DefaultCombatModifiers
         var attacker = context.Attacker;
         var grid = context.Board.Grid;
         var modifiers = new List<CombatModifier>();
-        void Add(string id, string label, string source, string stage, string operation, double value) =>
-            modifiers.Add(new(id, label, source, stage, operation, value));
-        Add("commander.attack", "攻击方指挥光环", "commander", "power", "multiply", TacticalModifiers.CommanderAura(grid, state, attacker).AttackMultiplier);
+        void Add(string id, string source, string stage, string operation, double value, JsonObject? facts = null) =>
+            modifiers.Add(new(id, "core.commander", source, stage, operation, value, facts));
+        Add("commander.attack", "commander", "power", "multiply", TacticalModifiers.CommanderAura(grid, state, attacker).AttackMultiplier);
         return modifiers.AsReadOnly();
     }
 
@@ -164,11 +176,12 @@ public static class DefaultCombatModifiers
         var attacker = context.Attacker;
         var grid = context.Board.Grid;
         var modifiers = new List<CombatModifier>();
-        void Add(string id, string label, string source, string stage, string operation, double value) =>
-            modifiers.Add(new(id, label, source, stage, operation, value));
+        void Add(string id, string source, string stage, string operation, double value, JsonObject? facts = null) =>
+            modifiers.Add(new(id, "core.formation-attack", source, stage, operation, value, facts));
         var formation = TacticalModifiers.ActiveFormation(content, grid, state, attacker);
         if (formation is not null && StateJson.Number(formation, "attackMultiplier", 1) != 1)
-            Add("formation.attack." + StateJson.Text(formation, "id"), StateJson.Text(formation, "name"), "formation", "power", "multiply", StateJson.Number(formation, "attackMultiplier", 1));
+            Add("formation.attack." + StateJson.Text(formation, "id"), "formation", "power", "multiply", StateJson.Number(formation, "attackMultiplier", 1),
+                new JsonObject { ["formationId"] = StateJson.Text(formation, "id") });
         return modifiers.AsReadOnly();
     }
 
@@ -179,11 +192,12 @@ public static class DefaultCombatModifiers
         var battlefield = context.Battlefield;
         var rules = context.State["rules"]!.AsObject();
         var modifiers = new List<CombatModifier>();
-        void Add(string id, string label, string source, string stage, string operation, double value) =>
-            modifiers.Add(new(id, label, source, stage, operation, value));
+        void Add(string id, string source, string stage, string operation, double value, JsonObject? facts = null) =>
+            modifiers.Add(new(id, "core.elevation", source, stage, operation, value, facts));
         var elevationDelta = battlefield.Cell(from).Elevation - battlefield.Cell(to).Elevation;
         if (elevationDelta >= StateJson.Number(rules, "highGroundThreshold", 0))
-            Add("elevation.high-ground", $"高地优势（高 {elevationDelta} 级）", "elevation", "power", "multiply", StateJson.Number(rules, "highGroundDamageMultiplier", 1));
+            Add("elevation.high-ground", "elevation", "power", "multiply", StateJson.Number(rules, "highGroundDamageMultiplier", 1),
+                new JsonObject { ["delta"] = elevationDelta });
         return modifiers.AsReadOnly();
     }
 
@@ -197,19 +211,19 @@ public static class DefaultCombatModifiers
         var grid = context.Board.Grid;
         var rules = context.State["rules"]!.AsObject();
         var modifiers = new List<CombatModifier>();
-        void Add(string id, string label, string source, string stage, string operation, double value) =>
-            modifiers.Add(new(id, label, source, stage, operation, value));
+        void Add(string id, string source, string stage, string operation, double value, JsonObject? facts = null) =>
+            modifiers.Add(new(id, "core.position", source, stage, operation, value, facts));
         var defenderPosition = TacticalQueries.Position(defender);
         if (grid.Distance(from, defenderPosition) == 1 && (selected["tags"]!.AsArray().Any(tag => tag!.GetValue<string>() == "melee") || StateJson.Number(selected, "maxRange", 1) <= 1))
         {
             var incoming = grid.Toward(defenderPosition, from);
             var facing = StateJson.Text(defender, "facing");
-            if (incoming == grid.Opposite(facing)) Add("position.back-attack", "背刺", "position", "power", "multiply", StateJson.Number(rules, "backAttackMultiplier", 1));
-            else if (incoming != facing) Add("position.side-attack", "侧击", "position", "power", "multiply", StateJson.Number(rules, "sideAttackMultiplier", 1));
+            if (incoming == grid.Opposite(facing)) Add("position.back-attack", "position", "power", "multiply", StateJson.Number(rules, "backAttackMultiplier", 1), new JsonObject { ["position"] = "back" });
+            else if (incoming != facing) Add("position.side-attack", "position", "power", "multiply", StateJson.Number(rules, "sideAttackMultiplier", 1), new JsonObject { ["position"] = "side" });
             var behind = grid.Step(defenderPosition, grid.Opposite(incoming));
             var flanker = TacticalQueries.UnitAt(state, behind);
             if (flanker is not null && StateJson.Integer(flanker, "id") != StateJson.Integer(attacker, "id") && TacticalQueries.AreAllies(state, StateJson.Integer(flanker, "owner"), StateJson.Integer(attacker, "owner")))
-                Add("position.flank", "夹击", "position", "power", "multiply", StateJson.Number(rules, "flankAttackMultiplier", 1));
+                Add("position.flank", "position", "power", "multiply", StateJson.Number(rules, "flankAttackMultiplier", 1), new JsonObject { ["position"] = "flank" });
         }
         return modifiers.AsReadOnly();
     }
@@ -224,8 +238,8 @@ public static class DefaultCombatModifiers
         var rules = context.State["rules"]!.AsObject();
         var elevationDelta = context.Battlefield.Cell(context.AttackerAt).Elevation - context.Battlefield.Cell(context.DefenderAt).Elevation;
         var modifiers = new List<CombatModifier>();
-        void Add(string id, string label, string source, string stage, string operation, double value) =>
-            modifiers.Add(new(id, label, source, stage, operation, value));
+        void Add(string id, string source, string stage, string operation, double value, JsonObject? facts = null) =>
+            modifiers.Add(new(id, "core.cover", source, stage, operation, value, facts));
         if (grid.Distance(from, to) > 1 && StateJson.Text(selected, "lineOfSight") != "arc" && !selected["tags"]!.AsArray().Any(tag => tag!.GetValue<string>() == "ignores-cover"))
         {
             var cell = battlefield.Cell(to);
@@ -234,7 +248,7 @@ public static class DefaultCombatModifiers
             var cover = Score(directional) > Score(cell.Cover) ? directional : cell.Cover;
             if (elevationDelta >= StateJson.Number(rules, "highGroundThreshold", 0)) cover = cover == "full" ? "half" : "none";
             var value = cover == "full" ? StateJson.Number(rules, "fullCoverDefense", 0) : cover == "half" ? StateJson.Number(rules, "halfCoverDefense", 0) : 0;
-            if (value > 0) Add("cover." + cover, cover == "full" ? "全掩体" : "半掩体", "cover", "mitigation", "add", value);
+            if (value > 0) Add("cover." + cover, "cover", "mitigation", "add", value, new JsonObject { ["cover"] = cover });
         }
         return modifiers.AsReadOnly();
     }
@@ -249,15 +263,15 @@ public static class DefaultCombatModifiers
         var battlefield = context.Battlefield;
         var defenderDef = context.Battlefield.Content.Read("units", StateJson.Text(context.Defender, "type"));
         var modifiers = new List<CombatModifier>();
-        void Add(string id, string label, string source, string stage, string operation, double value) =>
-            modifiers.Add(new(id, label, source, stage, operation, value));
+        void Add(string id, string source, string stage, string operation, double value, JsonObject? facts = null) =>
+            modifiers.Add(new(id, "core.defense", source, stage, operation, value, facts));
         var defenderStatus = CombatEffects.CalculateModifiers(content, defender);
         var defenderCommand = TacticalModifiers.CommanderAura(grid, state, defender);
         var defenderFormation = TacticalModifiers.ActiveFormation(content, grid, state, defender);
         var defense = Math.Max(0, StateJson.Number(defenderDef, "defense", 0) + StateJson.Number(defender, "rank", 0) * 0.02
             + defenderStatus.DefenseDelta + defenderCommand.DefenseDelta + (defenderFormation is null ? 0 : StateJson.Number(defenderFormation, "defenseDelta", 0)));
-        Add("defense.terrain", "地形防御", "terrain", "mitigation", "add", battlefield.Cell(to).Defense);
-        Add("defense.unit", "单位防御", "unit", "mitigation", "add", defense);
+        Add("defense.terrain", "terrain", "mitigation", "add", battlefield.Cell(to).Defense, new JsonObject { ["component"] = "terrain" });
+        Add("defense.unit", "unit", "mitigation", "add", defense, new JsonObject { ["component"] = "unit" });
         return modifiers.AsReadOnly();
     }
 }

@@ -54,6 +54,7 @@ public sealed class ScenarioEffectContext(ScenarioRules rules, JsonObject state,
 
 public sealed record ScenarioEffectHandler(string Kind, Action<ScenarioEffectContext, JsonObject> Apply)
 {
+    public Func<JsonObject, IReadOnlyList<string>> Signals { get; init; } = _ => Array.Empty<string>();
     public Func<JsonObject, PayloadReferences>? References { get; init; }
 }
 
@@ -62,6 +63,21 @@ public sealed class ScenarioEffectHandlerRegistry() : KeyedRegistry<ScenarioEffe
     protected override string KeyOf(ScenarioEffectHandler handler) => handler.Kind;
     public void Apply(ScenarioRules rules, JsonObject state, JsonObject effect, Action<JsonObject> emit) =>
         Get(StateJson.Text(effect, "type")).Apply(new(rules, state, emit), effect);
-    public PayloadReferences References(JsonObject effect) => TryGet(StateJson.Text(effect, "type"))?.References?.Invoke(effect) ?? new();
+    public IReadOnlyList<string> Signals(JsonObject effect)
+    {
+        var signals = Get(StateJson.Text(effect, "type")).Signals(effect).ToArray();
+        if (signals.Any(string.IsNullOrWhiteSpace))
+            throw new DomainInvariantException("Authored scenario signal identities must be nonempty.");
+        return Array.AsReadOnly(signals);
+    }
+    public PayloadReferences References(JsonObject effect)
+    {
+        var handler = TryGet(StateJson.Text(effect, "type"));
+        if (handler is null) return new();
+        var references = handler.References?.Invoke(effect) ?? new();
+        if (handler.Signals(effect).Any(string.IsNullOrWhiteSpace))
+            references.Fault("Authored scenario signal identities must be nonempty.");
+        return references;
+    }
     public ScenarioEffectHandlerRegistry Clone() => CopyInto(new ScenarioEffectHandlerRegistry());
 }

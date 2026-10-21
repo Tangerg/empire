@@ -20,8 +20,8 @@ public partial class BattleResultFlowChecks : Node
 {
     private int assertions;
     private readonly List<string> failures = new();
-    private static readonly CampaignBattleSummary Summary = new("Fixture battle", 1, "Fixture victory", 4, 3, 0,
-        new[] { "Fixture ally" }, new[] { "fixture.signal" }, 7);
+    private GameText messages = null!;
+    private CampaignBattleSummary Summary = null!;
 
     public override void _Ready()
     {
@@ -31,6 +31,9 @@ public partial class BattleResultFlowChecks : Node
             Require(!System.IO.Directory.Exists(userData) || System.IO.Directory.EnumerateFileSystemEntries(userData)
                 .All(entry => System.IO.Path.GetFileName(entry) == "logs"),
                 "Result-flow checks refuse pre-existing user data before mounting any game; use a fresh generated directory.");
+            messages = GodotTextCatalog.LoadSimplifiedChinese();
+            Summary = new CampaignBattleSummary(messages, "Fixture battle", 1, "Fixture victory", 4, 3, 0,
+                new[] { "Fixture ally" }, new[] { "Fixture battlefield record" }, 7);
         }
         catch (Exception error) { GD.PushError("Result-flow safety guard: " + error); GetTree().Quit(1); return; }
         Check("isolated clean prebattle autosave", CheckPrebattleAutosave);
@@ -62,7 +65,7 @@ public partial class BattleResultFlowChecks : Node
             {
                 var screen = new BattleResultScreen(); AddChild(screen);
                 var calls = new List<string>();
-                screen.ShowCompletion(victory ? "胜利" : "战败", "Fixture reason", victory,
+                screen.ShowCompletion(messages, victory ? "胜利" : "战败", "Fixture reason", victory,
                     () => calls.Add("Settle"), () => calls.Add("Retry"), () => calls.Add("Exit"));
                 var buttons = Buttons(screen).ToDictionary(button => button.Name.ToString());
                 Require(buttons.Keys.Order().SequenceEqual((victory ? new[] { "Exit", "Retry", "Settle" } : new[] { "Exit", "Retry" }).Order()), "Completion button family differs by outcome.");
@@ -80,7 +83,7 @@ public partial class BattleResultFlowChecks : Node
     {
         var screen = new BattleResultScreen(); AddChild(screen);
         var settled = 0; var proceeded = 0;
-        screen.ShowCompletion("胜利", "Fixture reason", true, () => {
+        screen.ShowCompletion(messages, "胜利", "Fixture reason", true, () => {
             settled++; screen.ShowResult("victory", Summary, () => proceeded++);
         }, () => throw new Exception("Unexpected retry"), () => throw new Exception("Unexpected exit"));
         var old = Buttons(screen).ToArray();
@@ -88,8 +91,8 @@ public partial class BattleResultFlowChecks : Node
         Press(old.Single(button => button.Name == "Settle"));
         Require(settled == 1 && Labels(screen).Contains(Summary.Title), "Explicit settle did not show the victory summary.");
         Require(Descendants(screen).OfType<GridContainer>().Single().GetChildCount() == Summary.Metrics.Count * 2, "Victory summary metrics are incomplete.");
-        Require(Labels(screen).Contains(CampaignBattleSummary.FallenLabel + "\n" + Summary.FallenText) &&
-            Labels(screen).Contains(CampaignBattleSummary.SignalsLabel + "\n" + Summary.SignalsText), "Victory summary facts are missing.");
+        Require(Labels(screen).Contains(Summary.FallenLabel + "\n" + Summary.FallenText) &&
+            Labels(screen).Contains(Summary.SignalsLabel + "\n" + Summary.SignalsText), "Victory summary facts are missing.");
         foreach (var button in old) Press(button);
         Require(settled == 1 && proceeded == 0, "Stale completion button navigated after summary rebind.");
         var proceed = Buttons(screen).Single();
@@ -104,6 +107,19 @@ public partial class BattleResultFlowChecks : Node
             catch (ArgumentException) { refused = true; }
             Require(refused && Labels(screen).SequenceEqual(before), "Non-victory summary must reject without rebinding the current view.");
         }
+        var alternate = new GameText(key => "Alternate: " + messages.Format(key), System.Globalization.CultureInfo.InvariantCulture);
+        screen.ShowCompletion(alternate, "Heading", "Reason", true, () => { }, () => { }, () => { });
+        var translated = Buttons(screen).ToDictionary(button => button.Name.ToString(), button => button.Text);
+        Require(translated["Settle"] == alternate.Format("ui.result.settle") &&
+            translated["Retry"] == alternate.Format("ui.result.retry") && translated["Exit"] == alternate.Format("ui.result.camp"),
+            "Completion buttons ignored the injected wording catalog.");
+        var alternateSummary = new CampaignBattleSummary(alternate, Summary.Title, Summary.Chapter, Summary.Outcome,
+            Summary.Turns, Summary.AlliesRemaining, Summary.EnemiesRemaining, Summary.Fallen, Summary.Signals, Summary.StrikeCount);
+        screen.ShowResult("victory", alternateSummary, () => { });
+        Require(Labels(screen).Contains(alternateSummary.Heading) &&
+            Buttons(screen).Single().Text == alternateSummary.ContinueLabel &&
+            alternateSummary.Metrics.Select(metric => metric.Value).SequenceEqual(Summary.Metrics.Select(metric => metric.Value)),
+            "Result labels did not change independently of the canonical result facts.");
         Retire(screen);
     }
 
@@ -111,10 +127,10 @@ public partial class BattleResultFlowChecks : Node
     {
         var screen = new BattleResultScreen(); AddChild(screen);
         var oldCalls = 0; var newCalls = 0;
-        void BindOld() => screen.ShowCompletion("Old", "Old reason", true,
+        void BindOld() => screen.ShowCompletion(messages, "Old", "Old reason", true,
             () => oldCalls++, () => oldCalls++, () => oldCalls++);
         BindOld(); var old = Buttons(screen).ToArray();
-        screen.ShowCompletion("New", "New reason", false, () => newCalls++, () => newCalls++, () => newCalls++);
+        screen.ShowCompletion(messages, "New", "New reason", false, () => newCalls++, () => newCalls++, () => newCalls++);
         foreach (var button in old) Press(button);
         Require(oldCalls == 0 && newCalls == 0, "Old callback survived a completion rebind.");
         Press(Buttons(screen).Single(button => button.Name == "Retry"));
@@ -228,13 +244,12 @@ public partial class BattleResultFlowChecks : Node
         var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         var engine = new GrayFlagEngine(packs);
         var text = GodotTextCatalog.LoadSimplifiedChinese();
-        var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
-        var battleText = BattleTextChecks.Load(engine, text);
+        var presentationText = BattleTextChecks.Session(engine, text);
         var level = BattleTextChecks.OpeningLevel();
-        var session = new GrayFlagSession(engine, level, text, refusals, battleText);
+        var session = new GrayFlagSession(engine, presentationText, level);
         var screen = new BattleScreen(); AddChild(screen);
         screen.Board.AdvanceAnimationsAutomatically = false;
-        screen.BindSession(text, battleText, session, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
+        screen.BindSession(text, presentationText.Battle, session, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
         TacticalSceneInputChecks.Move(screen, session);
         Require(screen.IsPresenting && screen.Board.IsPresenting, "Busy-save test requires a real pending animation.");
         // The off-tree host deliberately has no campaign. Even if the Save guard

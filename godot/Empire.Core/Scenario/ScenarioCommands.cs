@@ -9,6 +9,12 @@ using static Empire.Core.State.StateJson;
 
 namespace Empire.Core.Scenario;
 
+public sealed record ScenarioCommandRules(
+    ReadOnlyContent Content,
+    BattleCombat Combat,
+    BattleResources Resources,
+    Func<JsonObject, JsonObject, bool, JsonObject> SpawnUnit);
+
 /// <summary>Canonical scenario writers; payload dispatch belongs to the effect registry.</summary>
 public sealed partial class ScenarioCommands
 {
@@ -19,15 +25,14 @@ public sealed partial class ScenarioCommands
     private readonly Empire.Core.Terrain.BattleOverlays overlays;
     private readonly Func<JsonObject, JsonObject, bool, JsonObject> spawnUnit;
 
-    public ScenarioCommands(ReadOnlyContent catalog, BattleCombat combat, BattleResources resources,
-        Func<JsonObject, JsonObject, bool, JsonObject> spawnUnit)
+    public ScenarioCommands(ScenarioCommandRules rules)
     {
-        content = catalog.Source;
-        this.catalog = catalog;
-        this.combat = combat;
-        this.resources = resources;
-        overlays = new Empire.Core.Terrain.BattleOverlays(catalog);
-        this.spawnUnit = spawnUnit;
+        content = rules.Content.Source;
+        catalog = rules.Content;
+        combat = rules.Combat;
+        resources = rules.Resources;
+        overlays = new Empire.Core.Terrain.BattleOverlays(rules.Content);
+        spawnUnit = rules.SpawnUnit;
     }
 
     public void SetVariable(JsonObject state, JsonObject effect, Action<JsonObject> emit)
@@ -50,16 +55,20 @@ public sealed partial class ScenarioCommands
     public void ChangeUnitOwner(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
         var owner = Integer(effect, "owner");
-        foreach (var unit in Select(state, effect))
+        var changes = new BattleUnitOwnership(state).Assign(Select(state, effect), owner);
+        foreach (var change in changes)
         {
-            var previous = Integer(unit, "owner");
-            if (previous == owner) continue;
-            unit["owner"] = owner;
-            unit["done"] = true;
-            emit(new JsonObject { ["type"] = "unitOwnerChanged", ["unit"] = unit["id"]!.DeepClone(), ["from"] = previous, ["to"] = owner });
+            TacticalQueries.RequireUnit(state, change.Unit)["done"] = true;
+            emit(new JsonObject
+            {
+                ["type"] = "unitOwnerChanged",
+                ["unit"] = change.Unit,
+                ["from"] = change.PreviousOwner,
+                ["to"] = change.Owner,
+            });
         }
-        return;
     }
+
     public void RemoveEngagementRule(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
         var scenario = Object(state["scenario"], "scenario");
@@ -196,6 +205,8 @@ public sealed partial class ScenarioCommands
             {
                 ["type"] = "unitSpawned",
                 ["unit"] = unit["id"]!.DeepClone(),
+                ["unitType"] = unit["type"]!.DeepClone(),
+                ["owner"] = unit["owner"]!.DeepClone(),
                 ["at"] = TacticalQueries.CoordinateJson(TacticalQueries.Position(unit)),
                 ["reason"] = effect["reason"]?.DeepClone() ?? JsonValue.Create("reinforcement")
             });

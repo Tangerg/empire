@@ -112,7 +112,6 @@ static class InstallationContractChecks
     {
         private readonly Square8Grid geometry = new();
         public override string Id => id;
-        public override string Name => "diagonal test grid";
         public override IReadOnlyList<DirectionDef> Directions => geometry.Directions;
         public override int Distance(Coord a, Coord b) => geometry.Distance(a, b);
         public override string Toward(Coord from, Coord to) => geometry.Toward(from, to);

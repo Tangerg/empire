@@ -9,7 +9,6 @@ public sealed class InitiativeTurnOrder : ITurnOrderPolicy
 {
     public const int Threshold = 100;
     public string Id => "initiative";
-    public string Name => "个体行动序";
     public JsonObject InitialState(JsonObject state, ReadOnlyContent content)
     {
         var data = new JsonObject();

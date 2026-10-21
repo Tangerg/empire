@@ -33,7 +33,7 @@ static class DispositionContractChecks
         {
             context.Replace(Keys.Grids, context.Require(Keys.Grids).Clone().Register(new RenamedGrid()));
             context.Replace(Keys.Reactions, context.Require(Keys.Reactions).Clone().Register(
-                new("test.stance", "Test", false, 1, false, false, "Test")));
+                new("test.stance", false, 1, false, false)));
         }, overrides: [Keys.Grids, Keys.Reactions], requiresCapabilities: [Keys.Grids, Keys.Reactions]);
         var engine = BattleEngineFactory.Create(catalog, [plugin]);
         foreach (var grid in engine.Grids.All())
@@ -172,10 +172,9 @@ static class DispositionContractChecks
     {
         private readonly Square4Grid square = new();
         public string Id => "test.renamed-grid";
-        public string Name => "Renamed directions";
         private static string Encode(string value) => "test." + value;
         private static string Decode(string value) => value[5..];
-        public IReadOnlyList<DirectionDef> Directions => square.Directions.Select(value => new DirectionDef(Encode(value.Id), value.Name)).ToArray();
+        public IReadOnlyList<DirectionDef> Directions => square.Directions.Select(value => new DirectionDef(Encode(value.Id))).ToArray();
         public string RestingFacing => Encode(square.RestingFacing);
         public int Distance(Coord a, Coord b) => square.Distance(a, b);
         public Coord Step(Coord at, string direction) => square.Step(at, Decode(direction));

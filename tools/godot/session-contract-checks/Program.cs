@@ -11,16 +11,15 @@ using Empire.Core.Transactions;
 
 if (args.Length != 3) throw new ArgumentException("Usage: SessionContractChecks <oracle.json> <repository> <catalog.json>");
 var gameText = FixtureText.Load(args[^1]);
-ActionRefusalText Refusals(GrayFlagEngine value) => ActionRefusalText.CreateDefault(gameText, value.Catalog, value.Abilities).Seal();
 
 // Historical source-v1 custom levels and runtime states still require explicit semantic-schema migration.
 var oracle = JsonNode.Parse(File.ReadAllText(args[0]))!.AsObject();
 var root = args[1];
 var packs = JsonNode.Parse(File.ReadAllText(Path.Combine(root, "godot/data/content-packs.json")))!.AsArray();
 var engine = new GrayFlagEngine(packs);
-var battleText = FixtureBattleText.Load(root, engine, gameText);
+var presentation = FixtureBattleText.Session(root, engine, gameText);
 var level = oracle["level"]!.AsObject();
-var session = new GrayFlagSession(engine, level, gameText, Refusals(engine), battleText);
+var session = new GrayFlagSession(engine, presentation, level);
 var count = 0;
 foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
 {
@@ -33,8 +32,8 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
     {
         case "dispatch": accepted = session.Dispatch(EcmaJson.ToElement(item["action"]!), beforeRevision).Accepted; break;
         case "undo": accepted = session.Undo(beforeRevision).Accepted; break;
-        case "load": session = GrayFlagSession.FromSave(engine, session.Save(), gameText, Refusals(engine), battleText); accepted = true; break;
-        case "restart": session = new GrayFlagSession(engine, level, gameText, Refusals(engine), battleText); accepted = true; break;
+        case "load": session = GrayFlagSession.FromSave(engine, presentation, session.Save()); accepted = true; break;
+        case "restart": session = new GrayFlagSession(engine, presentation, level); accepted = true; break;
     }
     Require(accepted == item["accepted"]!.GetValue<bool>(), $"{count} {operation}: acceptance");
     Require(session.CanUndo == item["canUndo"]!.GetValue<bool>(), $"{count}: canUndo");
@@ -55,7 +54,7 @@ foreach (var metadata in oracle["metadata"]!.AsArray().OfType<JsonObject>())
 Require(!engine.HandsOffTurn(new JsonObject { ["kind"] = "unknown" }), "unknown kind hands off");
 foreach (var fixture in oracle["extraCases"]!.AsArray().OfType<JsonObject>())
 {
-    var extra = new GrayFlagSession(engine, fixture["level"]!.AsObject(), gameText, Refusals(engine), battleText);
+    var extra = new GrayFlagSession(engine, presentation, fixture["level"]!.AsObject());
     var steps = fixture["steps"] is JsonArray sequence ? sequence.OfType<JsonObject>() : new[] { fixture };
     foreach (var step in steps)
     {
@@ -69,9 +68,9 @@ foreach (var fixture in oracle["extraCases"]!.AsArray().OfType<JsonObject>())
 }
 
 // Native persisted semantic history intentionally survives resume, unlike standalone TS load.
-var initial = new GrayFlagSession(engine, level, gameText, Refusals(engine), battleText);
+var initial = new GrayFlagSession(engine, presentation, level);
 var marker = new JsonObject { ["type"] = "priorCampaignEvent" };
-var resumed = GrayFlagSession.FromSave(engine, initial.Save(), gameText, Refusals(engine), battleText, new JsonArray(marker));
+var resumed = GrayFlagSession.FromSave(engine, presentation, initial.Save(), new JsonArray(marker));
 var actor = resumed.Snapshot()["units"]!.AsArray().OfType<JsonObject>().First(u => u["owner"]!.GetValue<int>() == resumed.Snapshot()["currentPlayer"]!.GetValue<int>());
 var face = new JsonObject { ["kind"] = "face", ["unit"] = actor["id"]!.DeepClone(), ["facing"] = "north" };
 Require(!resumed.CanUndo && resumed.LastActionHandsOffTurn is null, "resume retained undo metadata");
@@ -83,7 +82,7 @@ Require(resumed.Dispatch(EcmaJson.ToElement(face), 2).Accepted, "fresh callback 
 
 var computerLevel = (JsonObject)level.DeepClone();
 computerLevel["players"]![0]!["controller"] = "ai";
-var computerSession = new GrayFlagSession(engine, computerLevel, gameText, Refusals(engine), battleText);
+var computerSession = new GrayFlagSession(engine, presentation, computerLevel);
 Require(computerSession.AdvanceComputer(), "computer fixture did not advance");
 Require(!computerSession.CanUndo && !computerSession.Undo(computerSession.GetSnapshot().Revision).Accepted, "computer-controlled undo permitted");
 
@@ -172,8 +171,8 @@ var alternateRefusals = new ActionRefusalText(alternateText)
     .Register(new("action.unsupported", "test.action.unsupported", (_, details) => [details.GetProperty("kind").GetString()]))
     .Seal();
 // Hold other presentation fixed while changing only the injected refusal wording.
-var localized = new GrayFlagSession(engine, level, gameText, Refusals(engine), battleText);
-var reworded = new GrayFlagSession(engine, level, gameText, alternateRefusals, battleText);
+var localized = new GrayFlagSession(engine, presentation, level);
+var reworded = new GrayFlagSession(engine, presentation with { Refusals = alternateRefusals }, level);
 var unknownAction = EcmaJson.ToElement(new JsonObject { ["kind"] = "plugin.command" });
 var beforeRefusal = StateDigest.Hash(localized.Snapshot());
 var originalResult = localized.Dispatch(unknownAction, 0);

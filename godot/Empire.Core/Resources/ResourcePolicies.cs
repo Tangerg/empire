@@ -7,7 +7,7 @@ namespace Empire.Core.Resources;
 
 public sealed record ResourceSnapshot(double? Current, double? Capacity);
 public sealed record ResourceAccount(Func<ResourceSnapshot> Read, Action<double> Write);
-public sealed record ResourceAdapter(string Id, string Name, string SubjectKind, bool Integer,
+public sealed record ResourceAdapter(string Id, string SubjectKind, bool Integer,
     double AiWeight, Func<BattleResources.Subject, ResourceAccount?> Account);
 public sealed record ResourceTransaction(string Subject, string Resource, double Amount);
 public sealed record ResourceTransactionContext(JsonObject Unit, string Weapon, JsonObject? Player = null);
@@ -38,10 +38,10 @@ public sealed class ResourceSubjectResolverRegistry : KeyedRegistry<ResourceSubj
 public static class DefaultResourcePolicies
 {
     public static ResourceAdapterRegistry Adapters { get; } = new ResourceAdapterRegistry()
-        .Register(Stored("funds", "资金", "player", 1, subject => subject.Holder["resources"]))
-        .Register(Stored("command_points", "指挥点", "player", 8, subject => subject.Holder["resources"]))
-        .Register(Stored("momentum", "气势", "unit", 2, subject => subject.Holder["resources"]))
-        .Register(Stored("weapon_uses", "武器次数", "weapon", 20,
+        .Register(Stored("funds", "player", 1, subject => subject.Holder["resources"]))
+        .Register(Stored("command_points", "player", 8, subject => subject.Holder["resources"]))
+        .Register(Stored("momentum", "unit", 2, subject => subject.Holder["resources"]))
+        .Register(Stored("weapon_uses", "weapon", 20,
             subject => subject.Holder["weaponState"]?[subject.Weapon ?? ""]?["resources"]))
         .Seal();
 
@@ -62,8 +62,8 @@ public static class DefaultResourcePolicies
         ["kind"] = subject.Kind, ["id"] = subject.Holder["id"]!.DeepClone(),
     };
 
-    private static ResourceAdapter Stored(string id, string name, string kind, double aiWeight,
-        Func<BattleResources.Subject, JsonNode?> accounts) => new(id, name, kind, true, aiWeight, subject =>
+    private static ResourceAdapter Stored(string id, string kind, double aiWeight,
+        Func<BattleResources.Subject, JsonNode?> accounts) => new(id, kind, true, aiWeight, subject =>
     {
         if (accounts(subject)?[id] is not JsonObject state) return null;
         return new ResourceAccount(() => new ResourceSnapshot(

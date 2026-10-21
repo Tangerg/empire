@@ -19,15 +19,16 @@ void Check(string name, JsonNode? actual, JsonNode? expected)
         throw new Exception($"Mismatch {name}\nactual: {EcmaJson.Stringify(actual)}\nexpected: {EcmaJson.Stringify(expected)}");
 }
 string Text(JsonNode? value) => EcmaJson.ReadString(value);
-string UnitName(string id) => Text(oracle["unitNames"]![id]);
-string CareerName(string id) => Text(oracle["careerNames"]![id]);
-string ResourceName(string id) => oracle["resourceNames"]![id] is { } name ? Text(name) : id;
 JsonNode? Serialize<T>(T value) => JsonSerializer.SerializeToNode(value, serialization);
 // Historical prose-bearing fixtures are not converted into current native state.
 var packs = EcmaJson.Parse(File.ReadAllText(Path.Combine(root, "godot/data/content-packs.json")))!.AsArray();
 var engine = new Empire.Core.Engine.GrayFlagEngine(packs);
 var text = FixtureText.Load(args[2]);
-var battleText = FixtureBattleText.Load(root, engine, text);
+var presentationText = FixtureBattleText.Session(root, engine, text);
+var battleText = presentationText.Battle;
+string UnitName(string id) => presentationText.Content.UnitName(id);
+BattleLogNames Names(JsonNode state) => new(presentationText.Content.UnitName, presentationText.Content.CareerName,
+    presentationText.Content.ResourceName, PlayerNames(state));
 Func<int, string> PlayerNames(JsonNode state) => player => battleText.PlayerName(Text(state["levelId"]), player);
 var presenters = BattleEventText.CreateDefault(text, battleText);
 Check("registered presenter keys", Serialize(presenters.Keys()), oracle["presenterKeys"]);
@@ -35,7 +36,7 @@ var priorCulture = CultureInfo.CurrentCulture;
 CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("fr-FR");
 foreach (var item in oracle["formatCases"]!.AsArray().OfType<JsonObject>())
 {
-    var context = new BattleLogContext(EcmaJson.ToElement(item["state"]), UnitName, CareerName, ResourceName, PlayerNames(item["state"]!));
+    var context = new BattleLogContext(Names(item["state"]!), EcmaJson.ToElement(item["state"]), EcmaJson.ToElement(item["state"]));
     var before = EcmaJson.Stringify(item);
     Check(Text(item["name"]), JsonValue.Create(presenters.Describe(context, EcmaJson.ToElement(item["event"]))), item["expected"]);
     if (EcmaJson.Stringify(item) != before) throw new Exception("Formatter mutated its input");
@@ -60,10 +61,13 @@ foreach (var item in oracle["logCases"]!.AsArray().OfType<JsonObject>())
 var strikeEvents = oracle["strikes"]!["events"]!.AsArray().OfType<JsonObject>().ToArray();
 Check("canonical strike payload shape", JsonValue.Create(BattleEventFacts.StrikeCount(strikeEvents)), oracle["strikes"]!["expected"]);
 var level = EcmaJson.Parse(File.ReadAllText(Path.Combine(root, "godot/tests/oracle/source-v1/grayflag-level.json")))!.AsObject();
-foreach (var pair in oracle["unitNames"]!.AsObject()) Check("canonical unit label " + pair.Key, JsonValue.Create(engine.UnitTypeName(pair.Key)), pair.Value);
-foreach (var pair in oracle["careerNames"]!.AsObject()) Check("canonical career label " + pair.Key, JsonValue.Create(engine.CareerName(pair.Key)), pair.Value);
-foreach (var pair in oracle["resourceNames"]!.AsObject()) Check("canonical resource label " + pair.Key, JsonValue.Create(engine.Resources.Name(pair.Key)), pair.Value);
-Check("unknown resource label query", JsonValue.Create(engine.Resources.Name("plugin.custom")), null);
+foreach (var pair in oracle["unitNames"]!.AsObject()) Check("canonical unit label " + pair.Key, JsonValue.Create(presentationText.Content.UnitName(pair.Key)), pair.Value);
+foreach (var pair in oracle["careerNames"]!.AsObject()) Check("canonical career label " + pair.Key, JsonValue.Create(presentationText.Content.CareerName(pair.Key)), pair.Value);
+foreach (var pair in oracle["resourceNames"]!.AsObject()) Check("canonical resource label " + pair.Key, JsonValue.Create(presentationText.Content.ResourceName(pair.Key)), pair.Value);
+var missingResourceRejected = false;
+try { presentationText.Content.ResourceName("plugin.custom"); }
+catch (Empire.Localization.LocalizationException) { missingResourceRejected = true; }
+Check("unknown resource presentation rejects missing metadata", JsonValue.Create(missingResourceRejected), JsonValue.Create(true));
 var bridge = new CampaignBattleBridge(_ => level, new Empire.Core.State.ReadOnlyContent(packs));
 foreach (var item in oracle["summaries"]!.AsArray().OfType<JsonObject>())
 {
@@ -76,16 +80,17 @@ foreach (var item in oracle["summaries"]!.AsArray().OfType<JsonObject>())
     Check($"{Text(item["name"])} canonical strikes", JsonValue.Create(count), item["strikeCount"]);
     var signals = result["signals"]!.AsArray().Select(Text).ToArray();
     var before = EcmaJson.Stringify(item);
-    var summary = CampaignBattleSummary.Create(battleText, Text(item["title"]), item["chapter"]!.GetValue<int>(), item["perspectivePlayer"]!.GetValue<int>(),
-        EcmaJson.ToElement(state), UnitName, signals, count);
+    // Historical expected signal IDs/title fields remain source evidence, not a native localized-summary oracle.
+    var summary = CampaignBattleSummary.Create(new CampaignSummaryText(text, battleText, UnitName), item["chapter"]!.GetValue<int>(), item["perspectivePlayer"]!.GetValue<int>(),
+        EcmaJson.ToElement(state), signals, count);
     var actual = new JsonObject
     {
         ["title"] = summary.Title, ["chapter"] = summary.Chapter, ["outcome"] = summary.Outcome, ["turns"] = summary.Turns,
         ["alliesRemaining"] = summary.AlliesRemaining, ["enemiesRemaining"] = summary.EnemiesRemaining,
         ["fallen"] = Serialize(summary.Fallen), ["signals"] = Serialize(summary.Signals), ["strikeCount"] = summary.StrikeCount,
-        ["metrics"] = Serialize(summary.Metrics), ["heading"] = CampaignBattleSummary.Heading,
-        ["fallenLabel"] = CampaignBattleSummary.FallenLabel, ["signalsLabel"] = CampaignBattleSummary.SignalsLabel,
-        ["fallenText"] = summary.FallenText, ["signalsText"] = summary.SignalsText, ["continueLabel"] = CampaignBattleSummary.ContinueLabel,
+        ["metrics"] = Serialize(summary.Metrics), ["heading"] = summary.Heading,
+        ["fallenLabel"] = summary.FallenLabel, ["signalsLabel"] = summary.SignalsLabel,
+        ["fallenText"] = summary.FallenText, ["signalsText"] = summary.SignalsText, ["continueLabel"] = summary.ContinueLabel,
     };
     Check(Text(item["name"]), actual, item["expected"]);
     if (EcmaJson.Stringify(item) != before) throw new Exception("Summary mutated canonical state or events");
@@ -96,7 +101,7 @@ foreach (var item in oracle["summaries"]!.AsArray().OfType<JsonObject>())
     }
 }
 var fixture = oracle["formatCases"]![0]!;
-var customContext = new BattleLogContext(EcmaJson.ToElement(fixture["state"]), UnitName, CareerName, ResourceName, PlayerNames(fixture["state"]!));
+var customContext = new BattleLogContext(Names(fixture["state"]!), EcmaJson.ToElement(fixture["state"]), EcmaJson.ToElement(fixture["state"]));
 var cloned = presenters.Clone().Register("plugin.custom", (_, _) => "custom line").Replace("attack", (_, _) => "replaced").Seal();
 Check("registry custom", JsonValue.Create(cloned.Describe(customContext, EcmaJson.ToElement(new JsonObject { ["type"] = "plugin.custom" }))), JsonValue.Create("custom line"));
 Check("registry replacement", JsonValue.Create(cloned.Describe(customContext, EcmaJson.ToElement(fixture["event"]))), JsonValue.Create("replaced"));
@@ -107,7 +112,7 @@ try { presenters.Clone().Register("attack", (_, _) => ""); throw new Exception("
 catch (InvalidOperationException) { }
 using (var document = JsonDocument.Parse(EcmaJson.Stringify(fixture["state"])))
 {
-    customContext = new BattleLogContext(document.RootElement, UnitName, CareerName, ResourceName, PlayerNames(fixture["state"]!));
+    customContext = new BattleLogContext(Names(fixture["state"]!), document.RootElement, document.RootElement);
 }
 Check("context survives input document disposal", JsonValue.Create(presenters.Describe(customContext, EcmaJson.ToElement(fixture["event"]))), fixture["expected"]);
 Console.WriteLine($"PASS {checkedValues} source comparisons: {oracle["formatCases"]!.AsArray().Count} event descriptions, {oracle["logCases"]!.AsArray().Count} log sequences, {oracle["summaries"]!.AsArray().Count} summaries, canonical strike/signal facts; {oracle["replaySteps"]} real replay actions");

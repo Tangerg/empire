@@ -39,11 +39,13 @@ Relevant exact requirements:
 | P01 | `DynamicStateView.Svg` and `TerrainView.Masked` create procedural textures without the explicit exclusive-ownership teardown used by `OwnedProceduralSprite`. | Trace actual managed/native ownership and prove the leak/teardown behavior before choosing one appropriate procedural-resource owner. Never dispose shared imported textures as if exclusive. | Committed in 1e1e1f7a: exclusive texture/material ownership and transactional configuration cleanup; native lifecycle and direct construction-failure evidence accepted by independent review |
 | P02 | DynamicStateView independently reads unit/structure definitions from original raw packs rather than the composed engine catalog. | Pass catalog-derived narrow presentation definitions; do not construct another catalog or allow the renderer to advance definitions. | Renderer consumes the composed immutable catalog; focused changed-catalog rendering and published f26ee926 native integration passed |
 | P03 | BattleScreen uses material-manifest outside tags to decide which cells accept input. Art projections thereby own an input-eligibility fact. | Obtain interactive-cell facts from the canonical session/battlefield projection; keep material bindings visual-only. | Canonical revision-bound interactive-cell projection implemented across input and fog; real native screen/camera/decoration checks passed with clean exits |
-| I01 | Player-facing UI, application refusals, feedback and narrative contain embedded display strings without an owned localization pipeline. | Add stable semantic keys and parameterized Simplified Chinese messages using the agreed native translation boundary. Keep event identity, saved data and hashes language-independent; classify developer diagnostics separately. | Native translation, narrative, menu/staging and semantic refusal consumers implemented; actual native application flow passed. Semantic objective/outcome, battle HUD/control wording and strict native display metadata implemented; focused and actual native scene checks pass. Built-in content/registry names, computed hints/modifiers and remaining summary copy are still open |
+| I01 | Player-facing UI, application refusals, feedback and narrative contain embedded display strings without an owned localization pipeline. | Add stable semantic keys and parameterized Simplified Chinese messages using the agreed native translation boundary. Keep event identity, saved data and hashes language-independent; classify developer diagnostics separately. | Native translation, narrative, menu/staging and semantic refusal consumers implemented; actual native application flow passed. Semantic objective/outcome, battle HUD/control wording and strict native display metadata implemented; focused and actual native scene checks pass. Built-in content/registry names, computed hints/modifiers, level/signal text and summary copy are now separated in source; focused content/transient-identity checks and native battle/result/navigation/staging passed. The additional native malformed-creation-event preservation gate also passed. Final literal coverage and packaged resource acceptance remain open |
 | R01 | Metadata policy is inconsistent: early `.uid`/`.import` companions are committed, later generated companions are untracked. Scratch probe files also remain untracked. | Preserve source UID/import metadata with its source, ignore reproducible caches, keep identified scratch outside production commits, and mechanically verify companion consistency. Never call “tracked clean” a fully clean working directory. | Source companion policy and metadata guard are established; f26ee926 includes matching source companions and excludes retired orphan metadata; later source additions require the same check |
 | R02 | Dense one-line declarations/methods and repeated JSON indexing impede local reasoning; no native formatter gate is established. | First repair ownership/contracts, then apply a scoped host-language formatter and enforce it mechanically. Do not obscure semantic fixes in a giant style-only change. | Scoped .editorconfig and official SDK formatter command prepared; baseline correctly fails dense existing code; apply only after semantic owner freeze |
 | R03 | Generic native engine is named GrayFlagEngine and production renderer types retain Candidate/Source prototype terminology. | Review actual responsibilities after ownership changes; remove misleading historical names where they obscure current contracts, without indiscriminate cosmetic renaming. Update all consumers/docs directly, no obsolete aliases. | Parent-requested API/readability pass pending |
 | R04 | Several standalone verification projects link and recompile Core source, while some frozen source checks previously protected intentionally rejected behavior. | Consolidate genuinely duplicated build ownership with the canonical Core project reference and existing runners where practical. Preserve meaningful external-consumer, contract and actual application checks; remove obsolete compatibility expectations rather than adding a new framework. | Canonical Core references replace duplicated registry/composition compilation. Current aggregate gate is scoped to native contracts, replay/save, catalog boundary and actual application scenes; historical prose-era suites are not treated as current-schema passes. Final formatting and broader tooling cleanup remain open |
+
+| A05 | `GrayFlagSession` assembles default `BattleEventText` internally although event presenters are an open registry. Custom resource-subject event presentation cannot reach a session through its current injected port. | Move the event presenter into the session's consumer port and assemble defaults once in `SessionPresentationText.Compose`; update direct constructors and callers without a second default path. | Confirmed during the content-text gate; next bounded composition/API cleanup, not claimed resolved by this checkpoint |
 
 ## Scope and evidence discipline
 
@@ -56,20 +58,33 @@ name an independent reason to change or a guarantee the new boundary owns.
 
 No native check will be weakened merely to preserve a source defect that violates
 an explicit repository architecture contract. Such intentional corrections require
-new behavioral regression tests and a documented compatibility delta. Existing
-shipped default battle event/hash streams remain the regression baseline.
+new behavioral regression tests and a documented compatibility delta. Unchanged shipped gameplay transitions remain the regression baseline. Explicit
+semantic/schema changes are characterized separately; obsolete prose-bearing
+whole-state hashes are not asserted equal to current native hashes.
 
 Required final integration gates: focused boundary regressions and negative
-controls; complete native aggregate with normal teardown; all 16 independent
-battle action/event/hash comparisons; reviewed diff and verified incremental push.
+controls; complete native aggregate with normal teardown; all 16 independent native battle replay/save checks and representative independent
+source gameplay comparisons; reviewed diff and verified incremental push.
 Actual GUI appearance, Mac execution and missing authored scenery remain separate
 acceptance scopes, not evidence that these architecture findings are resolved.
 
 ## Current verification boundary
 
-Composition identity changes are declared in test-only `FixtureRuleset`: the source
-manifest remains frozen, the native manifest adds the spatial consumer plugin and
-bumps the tactical producer version. Only explicit save/replay document identities
-are projected; battle state, events and digests are not normalized. Persistence
-checks passed 97 assertions and reference/admission checks passed 145 on the
-working tree. These results do not certify concurrent unverified edits.
+The published semantic-outcome checkpoint has exact native save/replay checks for
+all 16 independently initialized levels, plus the unchanged opening gameplay
+trace. Historical TypeScript manifests and prose-bearing save inputs remain
+frozen evidence, not accepted current-native documents. The current content and
+level text extraction adds a new all-field digest and native save/replay schema 3;
+its focused and actual application checks passed the serial integration gate.
+
+### Live ownership follow-through
+
+The final write inventory found direct scenario transfers could admit an unknown
+player and leave an attached commander under the old owner. The same transition
+now owns scenario transfer and returned-unit allegiance, and admits detached
+spawned owners before insertion. Campaign/level seeds and neutral structures are
+explicitly separate. Independent source review accepted canonical live/embarked subject admission and
+shared commander cardinality validation. Direct-command, return and spawn atomic
+rejection checks passed, including detached-clone rejection and a valid-player
+commander mismatch. The first run expected the wrong save exception layer; only
+that expectation was corrected, then the ownership check passed on rerun.

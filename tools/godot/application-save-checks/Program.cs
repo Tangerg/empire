@@ -10,16 +10,15 @@ using Empire.Core.Engine;
 
 var root = args.Length == 2 ? Path.GetFullPath(args[0]) : throw new ArgumentException("Pass the repository root and catalog.json.");
 var gameText = FixtureText.Load(args[^1]);
-ActionRefusalText Refusals(GrayFlagEngine value) => ActionRefusalText.CreateDefault(gameText, value.Catalog, value.Abilities).Seal();
 
 JsonNode Read(string name) => EcmaJson.Parse(File.ReadAllText(Path.Combine(root, "godot", "data", name)))!;
 var definition = Read("grayflag-campaign.json").AsObject();
 var levels = Read("grayflag-campaign-levels.json").AsArray();
 var engine = new GrayFlagEngine(Read("content-packs.json").AsArray());
-var battleText = FixtureBattleText.Load(root, engine, gameText);
+var presentationText = FixtureBattleText.Session(root, engine, gameText);
 var battleNode = definition["nodes"]!.AsArray().OfType<JsonObject>().First(node => node["type"]!.GetValue<string>() == "battle");
 battleNode["effects"] = new JsonArray(new JsonObject { ["type"] = "addVariable", ["key"] = "saveAdmissionCount", ["amount"] = 1 });
-GrayFlagCampaign Create() => new(definition, levels, engine, gameText, Refusals(engine), battleText);
+GrayFlagCampaign Create() => new(definition, levels, engine, presentationText);
 var assertions = 0;
 void Require(bool value, string message) { assertions++; if (!value) throw new Exception(message); }
 void Same(JsonNode? actual, JsonNode? expected, string message) => Require(EcmaJson.DeepEquals(actual, expected), message);
@@ -89,6 +88,13 @@ Reject(null, "null application document");
 Reject(new JsonArray(), "array application document");
 var oldFormat = played.DeepClone().AsObject(); oldFormat["schema"] = 1;
 Reject(oldFormat, "obsolete application schema");
+var oldBattle = played.DeepClone().AsObject(); oldBattle["battle"]!["schema"] = 2;
+Reject(oldBattle, "obsolete nested battle schema");
+foreach (var owner in new[] { "battle", "state" })
+{
+    var prose = played.DeepClone().AsObject(); prose["battle"]![owner]!["levelName"] = "Obsolete persisted title";
+    Reject(prose, "obsolete levelName in battle " + owner);
+}
 foreach (var field in new[] { "schema", "campaign", "mode", "battle", "events" })
 {
     var invalid = played.DeepClone().AsObject(); invalid.Remove(field); Reject(invalid, "missing " + field);
@@ -139,6 +145,22 @@ foreach (var bad in new JsonNode?[] { null, JsonValue.Create(1), JsonValue.Creat
     invalid = played.DeepClone().AsObject(); invalid["events"] = new JsonArray(new JsonObject { ["type"] = "scenarioSignal", ["signal"] = bad?.DeepClone() });
     Reject(invalid, "invalid settlement signal");
 }
+foreach (var kind in new[] { "unitSpawned", "recruit" })
+{
+    foreach (var field in new[] { "unitType", "owner" })
+    {
+        var invalid = played.DeepClone().AsObject();
+        var creation = new JsonObject { ["type"] = kind, ["unit"] = 999, ["unitType"] = "soldier", ["owner"] = 1,
+            ["at"] = new JsonObject { ["x"] = 0, ["y"] = 0 } };
+        if (kind == "unitSpawned") creation["reason"] = "reinforcement";
+        creation.Remove(field);
+        invalid["events"]!.AsArray().Add(creation);
+        Reject(invalid, "current-schema " + kind + " event missing " + field);
+    }
+}
+var unknownSignal = played.DeepClone().AsObject();
+unknownSignal["events"]!.AsArray().Add(new JsonObject { ["type"] = "scenarioSignal", ["signal"] = "undeclared_signal" });
+Reject(unknownSignal, "undeclared saved scenario signal");
 restored.ExitBattle();
 var camp = restored.Save();
 Require(camp["mode"]!.GetValue<string>() == "camp" && camp["battle"] is null && camp["events"]!.AsArray().Count == 0,

@@ -8,7 +8,6 @@ namespace Empire.Core.Lifecycle;
 public sealed class SideTurnOrder : ITurnOrderPolicy
 {
     public string Id => "side";
-    public string Name => "阵营回合";
     public JsonObject InitialState(JsonObject state, ReadOnlyContent content) => new() { ["policy"] = Id, ["activeUnit"] = null, ["data"] = new JsonObject() };
     public TurnHandoff Begin(JsonObject state, TurnOrderContext context) => new(Players(state).FirstOrDefault(p => IsTrue(p["alive"])) is { } alive
         ? Integer(alive, "id") : Players(state).FirstOrDefault() is { } first ? Integer(first, "id") : 1, null, false);

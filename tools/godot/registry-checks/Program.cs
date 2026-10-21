@@ -225,7 +225,6 @@ sealed class TestPriorities : PriorityRegistry<RuleEntry, TestPriorities>
 sealed class RegistryGrid(string id) : SquareTiling
 {
     public override string Id => id;
-    public override string Name => id;
     public override IReadOnlyList<DirectionDef> Directions => Array.Empty<DirectionDef>();
     public override int Distance(Coord a, Coord b) => Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y);
 }

@@ -1,10 +1,8 @@
 [
   {
-    "schema": 2,
+    "schema": 3,
     "id": "c01-01",
-    "name": "01 · 双子丘陵",
     "author": "《断冠之誓》战役",
-    "description": "第一次指挥：夺取高地，也承担冒进的后果。",
     "width": 27,
     "height": 17,
     "terrain": [
@@ -817,11 +815,9 @@
     }
   },
   {
-    "schema": 2,
+    "schema": 3,
     "id": "c01-02",
-    "name": "02 · 三桥河谷",
     "author": "《断冠之誓》战役",
-    "description": "短暂停火，把六军之争让给过桥的平民。",
     "width": 36,
     "height": 24,
     "terrain": [
@@ -2159,11 +2155,9 @@
     }
   },
   {
-    "schema": 2,
+    "schema": 3,
     "id": "c01-03",
-    "name": "03 · 赤石围城",
     "author": "《断冠之誓》战役",
-    "description": "城堡可以夺下，被控制的名字却未必救得回来。",
     "width": 22,
     "height": 15,
     "terrain": [
@@ -3047,11 +3041,9 @@
     }
   },
   {
-    "schema": 2,
+    "schema": 3,
     "id": "c01-04",
-    "name": "04 · 黑旗营地",
     "author": "《断冠之誓》战役",
-    "description": "侦察命令结束之处，是救人和取证必须开始的地方。",
     "width": 20,
     "height": 14,
     "terrain": [
@@ -3850,11 +3842,9 @@
     }
   },
   {
-    "schema": 2,
+    "schema": 3,
     "id": "c01-05",
-    "name": "05 · 焚村令",
     "author": "《断冠之誓》战役",
-    "description": "保护苇草村；灰旗第一次不是军令，而是一项选择。",
     "width": 21,
     "height": 15,
     "terrain": [
@@ -4608,11 +4598,9 @@
     }
   },
   {
-    "schema": 2,
+    "schema": 3,
     "id": "c01-06",
-    "name": "06 · 白河夜渡",
     "author": "《断冠之誓》战役",
-    "description": "人、粮车和后卫，没有一项损失会在结算画面外消失。",
     "width": 24,
     "height": 14,
     "terrain": [
@@ -5374,11 +5362,9 @@
     }
   },
   {
-    "schema": 2,
+    "schema": 3,
     "id": "c01-07",
-    "name": "07 · 无主之城",
     "author": "《断冠之誓》战役",
-    "description": "城墙属于谁，要由谁先得到保护来回答。",
     "width": 23,
     "height": 15,
     "terrain": [
@@ -6139,11 +6125,9 @@
     }
   },
   {
-    "schema": 2,
+    "schema": 3,
     "id": "c01-08",
-    "name": "08 · 佣兵之价",
     "author": "《断冠之誓》战役",
-    "description": "名字、数目、日期——先结清死人留下的账。",
     "width": 22,
     "height": 14,
     "terrain": [
@@ -6879,11 +6863,9 @@
     }
   },
   {
-    "schema": 2,
+    "schema": 3,
     "id": "c01-09",
-    "name": "09 · 笼中之火",
     "author": "《断冠之誓》战役",
-    "description": "拆掉锁链，不用新的命令替代旧的命令。",
     "width": 21,
     "height": 15,
     "terrain": [
@@ -7657,11 +7639,9 @@
     }
   },
   {
-    "schema": 2,
+    "schema": 3,
     "id": "c01-10",
-    "name": "10 · 旧旗下的追兵",
     "author": "《断冠之誓》战役",
-    "description": "导师站在旧旗之下；活着离开，比赢下争论更重要。",
     "width": 25,
     "height": 14,
     "terrain": [
@@ -8428,7 +8408,7 @@
                 "owner": 2
               },
               "amount": -18,
-              "reason": "幼龙截断追兵"
+              "reason": "young_dragon_cuts_off_pursuit"
             },
             {
               "type": "emitSignal",
@@ -8451,11 +8431,9 @@
     }
   },
   {
-    "schema": 2,
+    "schema": 3,
     "id": "c01-11",
-    "name": "11 · 无声墓园",
     "author": "《断冠之誓》战役",
-    "description": "同一名士兵反复死亡，直到有人读出墓碑上的名字。",
     "width": 22,
     "height": 16,
     "terrain": [
@@ -9297,11 +9275,9 @@
     }
   },
   {
-    "schema": 2,
+    "schema": 3,
     "id": "c01-12",
-    "name": "12 · 沉没钟塔",
     "author": "《断冠之誓》战役",
-    "description": "河水上涨时，暂时共同控制比抢走碎片更难。",
     "width": 23,
     "height": 15,
     "terrain": [
@@ -10072,11 +10048,9 @@
     }
   },
   {
-    "schema": 2,
+    "schema": 3,
     "id": "c01-13",
-    "name": "13 · 圣城档案",
     "author": "《断冠之誓》战役",
-    "description": "把被删除的战争带出白塔，让档案仍然留下修改痕迹。",
     "width": 26,
     "height": 16,
     "terrain": [
@@ -11031,11 +11005,9 @@
     }
   },
   {
-    "schema": 2,
+    "schema": 3,
     "id": "c01-14",
-    "name": "14 · 山炉余烬",
     "author": "《断冠之誓》战役",
-    "description": "技术不是无罪的借口，修好炉心也不是替祖先赎罪。",
     "width": 22,
     "height": 16,
     "terrain": [
@@ -11830,11 +11802,9 @@
     }
   },
   {
-    "schema": 2,
+    "schema": 3,
     "id": "c01-15",
-    "name": "15 · 银林长梦",
     "author": "《断冠之誓》战役",
-    "description": "森林延续的代价，不能继续转嫁给林外城市。",
     "width": 24,
     "height": 16,
     "terrain": [
@@ -12664,11 +12634,9 @@
     }
   },
   {
-    "schema": 2,
+    "schema": 3,
     "id": "c01-16",
-    "name": "16 · 记住我的名字",
     "author": "《断冠之誓》战役",
-    "description": "无旗者不是需要被消灭的怪物，而是需要被听见的新意识。",
     "width": 25,
     "height": 17,
     "terrain": [

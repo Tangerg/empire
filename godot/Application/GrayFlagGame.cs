@@ -15,7 +15,7 @@ public partial class GrayFlagGame : Node
 {
     private GrayFlagEngine engine = null!;
     private GameText text = null!;
-    private ActionRefusalText refusals = null!;
+    private SessionPresentationText presentationText = null!;
     private BattleText battleText = null!;
     private JsonArray packs = null!;
     private GrayFlagCampaign campaign = null!;
@@ -48,13 +48,12 @@ public partial class GrayFlagGame : Node
         text = GodotTextCatalog.LoadSimplifiedChinese();
         packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         engine = new GrayFlagEngine(packs);
-        refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
         definition = PresentationJson.Load<JsonObject>("res://data/grayflag-campaign.json");
         levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json");
-        var objectiveText = ObjectiveText.CreateDefault(text);
-        objectiveText.ValidateCoverage(engine.Objectives.Keys());
-        battleText = new BattleText(text, BattleTextDocument.Parse(
-            Godot.FileAccess.GetFileAsString("res://data/grayflag-battle-text.json"), levels, engine.Objectives), objectiveText.Seal());
+        presentationText = SessionPresentationText.Compose(new SessionTextRules(engine, text), levels,
+            Godot.FileAccess.GetFileAsString("res://data/grayflag-battle-text.json"),
+            Godot.FileAccess.GetFileAsString("res://data/grayflag-content-text.json"));
+        battleText = presentationText.Battle;
         presentation = PresentationJson.Load<JsonObject>("res://data/grayflag-staging.json");
         narrative = NarrativePresentationDocument.Load(text);
         campaign = NewCampaign();
@@ -87,7 +86,7 @@ public partial class GrayFlagGame : Node
                 screen = null;
                 SetView(result);
                 var state = expectedSession.Snapshot();
-                result.ShowCompletion(text.Format(state["conclusion"]!["team"] is null ? "battle.result.draw" : report.Outcome == "victory" ? "battle.result.victory" : "battle.result.defeat"),
+                result.ShowCompletion(text, text.Format(state["conclusion"]!["team"] is null ? "battle.result.draw" : report.Outcome == "victory" ? "battle.result.victory" : "battle.result.defeat"),
                     battleText.DescribeConclusion(Empire.Core.Determinism.EcmaJson.ToElement(state)), report.Outcome == "victory",
                     () => {
                         if (!ReferenceEquals(session, expectedSession) || !ReferenceEquals(view, result)) return;
@@ -128,7 +127,7 @@ public partial class GrayFlagGame : Node
         view = next; AddChild(next);
     }
 
-    private GrayFlagCampaign NewCampaign(JsonObject? state = null) => new(definition, levels, engine, text, refusals, battleText, state);
+    private GrayFlagCampaign NewCampaign(JsonObject? state = null) => new(definition, levels, engine, presentationText, state);
 
     private bool TryPersistCampaign()
     {
@@ -244,10 +243,11 @@ public partial class GrayFlagGame : Node
 
     private PreparedCampaignView PrepareStaging(GrayFlagCampaign owner)
     {
-        var projection = CampaignStaging.Create(text, Empire.Core.Determinism.EcmaJson.ToElement(owner.Snapshot()),
+        var projection = CampaignStaging.Create(new CampaignStagingText(text, battleText, presentationText.Content.UnitName),
+            Empire.Core.Determinism.EcmaJson.ToElement(owner.Snapshot()),
             Empire.Core.Determinism.EcmaJson.ToElement(owner.Node()),
             Empire.Core.Determinism.EcmaJson.ToElement(owner.BattleLevel()),
-            Empire.Core.Determinism.EcmaJson.ToElement(presentation), engine.UnitTypeName, owner.HasPendingBattle);
+            Empire.Core.Determinism.EcmaJson.ToElement(presentation), owner.HasPendingBattle);
         var staging = PrepareMounted(new CampaignStagingScreen(), next => next.ShowStaging(projection, AssetCatalog.Load(), () => {
             if (!CurrentView(owner, next)) return;
             if (!owner.HasPendingBattle)
@@ -302,7 +302,7 @@ public partial class GrayFlagGame : Node
         try
         {
             SaveFile.WriteDocument(ProjectSettings.GlobalizePath(SavePath), campaign.Save());
-            if (session is not null) screen?.AppendMessage($"已保存第 {session.Snapshot()["turn"]} 回合的进度");
+            if (session is not null) screen?.AppendMessage(text.Format("feedback.save.round_saved", session.Snapshot()["turn"]!.GetValue<int>()));
             Notify(text.Format("feedback.save.completed"));
         }
         catch (SaveStorageException error) { GD.PushWarning(error.ToString()); Notify(text.Format("error.save.failed")); }
@@ -319,7 +319,7 @@ public partial class GrayFlagGame : Node
             Notify(text.Format("error.load.failed_unchanged"));
             return;
         }
-        var prepared = PrepareNode(candidate, candidate.Battle is null ? null : $"已读取第 {candidate.Battle.Snapshot()["turn"]} 回合的存档");
+        var prepared = PrepareNode(candidate, candidate.Battle is null ? null : text.Format("feedback.save.round_loaded", candidate.Battle.Snapshot()["turn"]!.GetValue<int>()));
         Activate(candidate, prepared);
         Notify(text.Format("feedback.load.completed"));
     }
@@ -327,7 +327,7 @@ public partial class GrayFlagGame : Node
     private void Notify(string message)
     {
         if (screen is not null) { screen.ShowFeedback(message); return; }
-        var dialog = new AcceptDialog { Title = "灰旗", DialogText = message };
+        var dialog = new AcceptDialog { Title = text.Format("ui.application.title"), DialogText = message };
         dialog.Confirmed += dialog.QueueFree;
         dialog.CloseRequested += dialog.QueueFree;
         AddChild(dialog); dialog.PopupCentered();

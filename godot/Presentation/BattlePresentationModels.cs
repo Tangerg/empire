@@ -40,7 +40,7 @@ public sealed record BattlePresentationTransition
 
 /// <summary>State must be a detached JsonElement.Clone(); its JSON is immutable to the view.</summary>
 public sealed record BattleSnapshot(long Revision, JsonElement State, IReadOnlySet<int>? VisibleUnitIds = null,
-    IReadOnlySet<BoardCell>? VisibleCells = null, IReadOnlyDictionary<BoardCell, double>? Incoming = null, string? ObjectiveSummary = null,
+    IReadOnlySet<BoardCell>? VisibleCells = null, IReadOnlyDictionary<BoardCell, double>? Incoming = null,
     BattlePresentationTransition? Transition = null, string? InitialLogMessage = null);
 
 public sealed record BattleDispatchResult(bool Accepted, string Message);
