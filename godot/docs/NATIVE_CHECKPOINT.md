@@ -2,6 +2,12 @@
 
 This is a working migration checkpoint, not full visual or feature completion.
 
+## Genuine carried-state campaign opening
+
+A legal test-player route now wins the first two battles with real roster carryover, without modifying rules, unit statistics, opponent policy or outcomes. Native independently selects opponent actions and matches the original source through 428 accepted actions, ordered events/state hashes and 14 source save/resumes. The campaign remains active at aftermath-02. Battle 2 uses the source engine's elimination fallback with all three refugees alive; it is not escort-objective completion or a full victorious campaign.
+
+The deterministic compressed trace and source regeneration script are in `tools/godot/campaign-victory-checks`; the frozen runner is included in `verify-native.sh`. An intentionally corrupted first-action digest is rejected. The native opening-battle-2 manual save used for river visual checks is captured only after replaying the genuine first victory, not by injecting progression.
+
 ## Actual Linux desktop check and player-facing status
 
 The v4 release was exercised on the cloud desktop at 1180×812: title, Chinese story/choice, staging, terrain/actors/HUD, a legal knight move, Save, confirmed Restart and Load restoring the moved position all passed. The original screenshots are retained separately as release proof. An apparent movement-cost clipping issue was rechecked and withdrawn: the costs wrap correctly; the next line had been below the scroll viewport. No speculative layout change was made.

@@ -28,6 +28,7 @@ bash tools/godot/persistence-reference-checks/run.sh --frozen
 bash tools/godot/level-validation-checks/run.sh --frozen
 bash tools/godot/reaction-adapter-checks/run.sh
 dotnet run --project tools/godot/application-checks -- .
+bash tools/godot/campaign-victory-checks/run.sh
 dotnet run --project tools/godot/persistence-checks/Empire.Persistence.Checks.csproj -- .
 timeout --signal=TERM --kill-after=15s "$EMPIRE_CHECK_TIMEOUT_SECONDS" "$GODOT_NET" --headless --editor --path godot --import
 # Each save-mutating scene owns a fresh temporary namespace. A PASS line before

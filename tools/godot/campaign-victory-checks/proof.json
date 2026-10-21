@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "scope": "Two consecutive real carried-state campaign battles, not a complete winning campaign.",
+  "baselineCommit": "b98d219507feceb2d16224b68770fc60672ef98e",
+  "originalSourceRevision": "bfe9334a29630351ba4f46fd4c195cb3a72c36d9",
+  "choices": [
+    "steady-advance",
+    "accept-truce"
+  ],
+  "humanDriver": "staged-refugees-v2",
+  "opponentPolicy": "Original authored engine AI, independently chosen on native replay.",
+  "comparison": {
+    "actions": 428,
+    "sourceSaveResumes": 14,
+    "events": "Exact ordered equality after every action",
+    "states": "Exact state digest equality after every action",
+    "campaign": "Exact requests, choices, roster carryover, saves and outcomes"
+  },
+  "results": [
+    {
+      "level": "c01-01",
+      "outcome": "victory",
+      "turn": 8,
+      "actions": 136
+    },
+    {
+      "level": "c01-02",
+      "outcome": "victory",
+      "turn": 15,
+      "actions": 292
+    }
+  ],
+  "caveat": "Battle 2 uses the canonical only-one-living-team elimination victory. All three refugees survive at full HP west of the river; the escort objective is not completed.",
+  "endingNode": "aftermath-02",
+  "endingStatus": "active",
+  "trace": {
+    "file": "godot/tests/oracle/campaign-victory-opening.jsonl.gz",
+    "sha256": "1ae8229327562187e320ed9480f4d98c573d67cf30faf74a4df1be231af59b83",
+    "uncompressedSha256": "22ec31c094ab210846545b13a036951ca3266dc03fa276d5fdb998452567d695"
+  },
+  "dataSha256": {
+    "content-packs.json": "462267a869d1b24fd766f572a2940ec765d953cd4ba67efa4dc44dec96e7440d",
+    "grayflag-campaign.json": "02e22bda14a163092b8650600f06f346bd6970a834441f09c05942b023d4d14c",
+    "grayflag-campaign-levels.json": "931cb2d92428295553efb349685522bfd44c5c77ee4bfd6d7ed0a3a7383a7eab"
+  }
+}
