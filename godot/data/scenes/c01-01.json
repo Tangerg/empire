@@ -8,20 +8,11 @@
     "width": 20,
     "maxTangentCut": 16,
     "maxPlainOverhang": 0,
-    "protectedCells": [
-      [
-        11,
-        8
-      ],
-      [
-        12,
-        8
-      ]
-    ]
+    "protectedCells": []
   },
   "mapSize": [
-    27,
-    17
+    36,
+    24
   ],
   "selection": {
     "allowAtlases": [
@@ -55,20 +46,20 @@
     {
       "id": "gray-camp",
       "bounds": [
-        0,
-        7,
-        7,
-        13
+        2,
+        10,
+        11,
+        18
       ],
       "role": "player-camp"
     },
     {
       "id": "north-hill",
       "bounds": [
-        6,
-        2,
-        11,
-        6
+        10,
+        3,
+        18,
+        9
       ],
       "role": "elevation-2",
       "authoredTerrainScenery": [
@@ -83,20 +74,20 @@
     {
       "id": "central-village",
       "bounds": [
-        10,
-        6,
-        17,
-        11
+        15,
+        9,
+        25,
+        16
       ],
       "role": "neutral-village"
     },
     {
       "id": "east-hill",
       "bounds": [
-        16,
-        11,
-        22,
-        15
+        21,
+        15,
+        29,
+        21
       ],
       "role": "elevation-2",
       "authoredTerrainScenery": [
@@ -111,10 +102,10 @@
     {
       "id": "vilsa-camp",
       "bounds": [
-        21,
-        4,
-        26,
-        11
+        27,
+        7,
+        34,
+        15
       ],
       "role": "enemy-vanguard"
     }
@@ -139,251 +130,251 @@
   "placements": [
     {
       "id": "gray-camp-ground",
-      "x": 2.5,
-      "y": 10.6,
+      "x": 5.5,
+      "y": 15.6,
       "layer": "foundation",
       "scale": 0.8
     },
     {
       "id": "village-square-foundation",
-      "x": 13.2,
-      "y": 8.9,
+      "x": 19.2,
+      "y": 11.9,
       "layer": "foundation",
       "scale": 0.82
     },
     {
       "id": "vilsa-camp-ground",
-      "x": 24.1,
-      "y": 8.3,
+      "x": 31.1,
+      "y": 12.3,
       "layer": "foundation",
       "scale": 0.8
     },
     {
       "id": "grain-drying-mat-linen",
-      "x": 11.2,
-      "y": 10.7,
+      "x": 17.2,
+      "y": 13.7,
       "layer": "foundation",
       "scale": 0.6
     },
     {
       "id": "grain-drying-mat-earth",
-      "x": 16.1,
-      "y": 9.9,
+      "x": 22.1,
+      "y": 12.9,
       "layer": "foundation",
       "scale": 0.55
     },
     {
       "id": "temperate-hill-cap",
-      "x": 8.55,
-      "y": 3.6,
+      "x": 14.05,
+      "y": 5.1,
       "layer": "under-units",
       "scale": 0.82
     },
     {
       "id": "temperate-cliff-straight-south",
-      "x": 8.8,
-      "y": 5.65,
+      "x": 14.3,
+      "y": 7.15,
       "layer": "under-units",
       "scale": 0.82
     },
     {
       "id": "temperate-cliff-convex-corner",
-      "x": 6.75,
-      "y": 4.8,
+      "x": 12.25,
+      "y": 6.3,
       "layer": "under-units",
       "scale": 0.7
     },
     {
       "id": "temperate-ramp-level-2",
-      "x": 10.4,
-      "y": 5.8,
+      "x": 15.9,
+      "y": 7.3,
       "layer": "under-units",
       "scale": 0.7
     },
     {
       "id": "temperate-hill-cap",
-      "x": 19.5,
-      "y": 11.9,
+      "x": 25.5,
+      "y": 16.9,
       "layer": "under-units",
       "scale": 0.86,
       "flip": true
     },
     {
       "id": "temperate-cliff-straight-south",
-      "x": 18.6,
-      "y": 14.5,
+      "x": 24.6,
+      "y": 19.5,
       "layer": "under-units",
       "scale": 0.86
     },
     {
       "id": "temperate-cliff-convex-corner",
-      "x": 17.25,
-      "y": 13.65,
+      "x": 23.25,
+      "y": 18.65,
       "layer": "under-units",
       "scale": 0.75,
       "flip": true
     },
     {
       "id": "temperate-ramp-level-2",
-      "x": 22.5,
-      "y": 12.4,
+      "x": 28.5,
+      "y": 17.4,
       "layer": "under-units",
       "scale": 0.65,
       "flip": true
     },
     {
       "id": "field-tent-cluster",
-      "x": 1.45,
-      "y": 11.2,
+      "x": 4.45,
+      "y": 16.2,
       "layer": "under-units",
       "scale": 0.6
     },
     {
       "topicId": "C01-STRUCT-WOUNDED-SHELTER",
-      "x": 3.8,
-      "y": 12.8,
+      "x": 6.8,
+      "y": 17.8,
       "layer": "under-units",
       "scale": 0.5
     },
     {
       "topicId": "C01-BPROP-LOGISTICS-1",
-      "x": 0.8,
-      "y": 11.1,
+      "x": 3.8,
+      "y": 16.1,
       "layer": "under-units",
       "scale": 0.45
     },
     {
       "topicId": "C01-BPROP-FACTION-2",
-      "x": 1,
-      "y": 7.6,
+      "x": 4,
+      "y": 12.6,
       "layer": "under-units",
       "scale": 0.45
     },
     {
       "id": "wheat-sheaves",
-      "x": 11,
-      "y": 7.6,
+      "x": 17,
+      "y": 10.6,
       "layer": "under-units",
       "scale": 0.5
     },
     {
       "id": "grain-sacks-baskets",
-      "x": 16,
-      "y": 8.6,
+      "x": 22,
+      "y": 11.6,
       "layer": "under-units",
       "scale": 0.5
     },
     {
       "id": "frontier-granary",
-      "x": 16.7,
-      "y": 7.2,
+      "x": 22.7,
+      "y": 10.2,
       "layer": "under-units",
       "scale": 0.5
     },
     {
       "id": "frontier-farmhouse",
-      "x": 11.8,
-      "y": 10,
+      "x": 17.8,
+      "y": 13,
       "layer": "under-units",
       "scale": 0.55
     },
     {
       "id": "stone-well",
-      "x": 14.2,
-      "y": 6.1,
+      "x": 20.2,
+      "y": 9.1,
       "layer": "under-units",
       "scale": 0.42
     },
     {
       "id": "wheat-drying-rack",
-      "x": 13.8,
-      "y": 10,
+      "x": 19.8,
+      "y": 13,
       "layer": "under-units",
       "scale": 0.45
     },
     {
       "id": "farm-fence-straight",
-      "x": 10.2,
-      "y": 11.4,
+      "x": 16.2,
+      "y": 14.4,
       "layer": "under-units",
       "scale": 0.45
     },
     {
       "id": "farm-fence-corner",
-      "x": 16.3,
-      "y": 9.6,
+      "x": 22.3,
+      "y": 12.6,
       "layer": "under-units",
       "scale": 0.45
     },
     {
       "id": "supply-tent-workyard",
-      "x": 24,
-      "y": 9,
+      "x": 31,
+      "y": 13,
       "layer": "under-units",
       "scale": 0.6,
       "flip": true
     },
     {
       "topicId": "C01-BPROP-COVER-2",
-      "x": 23.2,
-      "y": 10.9,
+      "x": 30.2,
+      "y": 14.9,
       "layer": "under-units",
       "scale": 0.45
     },
     {
       "topicId": "C01-BPROP-LOGISTICS-3",
-      "x": 25,
-      "y": 8.6,
+      "x": 32,
+      "y": 12.6,
       "layer": "under-units",
       "scale": 0.45
     },
     {
       "topicId": "C01-BPROP-FACTION-3",
-      "x": 25,
-      "y": 6.5,
+      "x": 32,
+      "y": 10.5,
       "layer": "under-units",
       "scale": 0.45
     },
     {
       "id": "bootprints",
-      "x": 19.7,
-      "y": 7.1,
+      "x": 25.7,
+      "y": 10.1,
       "layer": "ground-decal",
       "scale": 0.6
     },
     {
       "id": "cart-ruts",
-      "x": 8.6,
-      "y": 8.2,
+      "x": 14.6,
+      "y": 11.2,
       "layer": "ground-decal",
       "scale": 0.7
     },
     {
       "id": "stone-cluster-b",
-      "x": 6.2,
-      "y": 5.2,
+      "x": 9.2,
+      "y": 10.2,
       "layer": "ground-decal",
       "scale": 0.6
     },
     {
       "id": "fallen-leaves",
-      "x": 12.8,
-      "y": 4.9,
+      "x": 18.8,
+      "y": 7.9,
       "layer": "ground-decal",
       "scale": 0.5
     },
     {
       "topicId": "C01-MISSION-BORDER-FARMER",
-      "x": 11.5,
-      "y": 8.65,
+      "x": 17.5,
+      "y": 11.65,
       "layer": "under-units",
       "scale": 0.7,
       "opacity": 0.9
     },
     {
       "topicId": "C01-MISSION-BORDER-FARMER",
-      "x": 16.4,
-      "y": 9.15,
+      "x": 22.4,
+      "y": 12.15,
       "layer": "under-units",
       "scale": 0.68,
       "opacity": 0.88,
@@ -404,15 +395,16 @@
     "2026-10-19 布局重构：保留27×17方格规则，采用错位高地、弯折村道与南侧迂回。",
     "两个丘陵区域由显式构件负责立体轮廓，禁用区域内逐格叠加的重复岩柱；地形与高度不变。",
     "外围树林采用不规则团簇，保留西侧与东侧入口；村民与外围锚点统一在场景文档中维护。",
-    "2026-10-21 原生场景：道路收窄为20逻辑像素，外围树群由28处减为13处并留出入口；规则地形、部署、碰撞和镜头保持不变。"
+    "2026-10-21 原生场景：道路收窄为20逻辑像素，外围树群由28处减为13处并留出入口；规则地形、部署、碰撞和镜头保持不变。",
+    "2026-10-21 首关改为36×24存储、704可玩格的不规则山口；outside边界完全来自原生关卡，场景不再另绘groundOutline。营地、村落与两处高地同步重新定位；19名初始单位不增。"
   ],
   "framePlacements": [
     {
       "region": "northwest",
       "id": "oak-grove-dense",
       "contact": [
-        -0.7,
-        1.2
+        5,
+        3
       ],
       "scale": 0.736,
       "flip": true
@@ -421,8 +413,8 @@
       "region": "northwest",
       "id": "mixed-forest-dense",
       "contact": [
-        2.5,
-        -0.2
+        8,
+        1.5
       ],
       "scale": 0.832,
       "flip": true
@@ -431,8 +423,8 @@
       "region": "northwest",
       "id": "oak-grove-dense",
       "contact": [
-        -1.15,
-        3.5
+        1,
+        8
       ],
       "scale": 0.736,
       "flip": false
@@ -441,8 +433,8 @@
       "region": "north",
       "id": "pine-cluster",
       "contact": [
-        12.3,
-        -0.6
+        15,
+        -0.1
       ],
       "scale": 0.624,
       "flip": false
@@ -451,8 +443,8 @@
       "region": "north",
       "id": "mixed-forest-edge",
       "contact": [
-        17.8,
-        -0.8
+        20,
+        -0.2
       ],
       "scale": 0.768,
       "flip": true
@@ -461,8 +453,8 @@
       "region": "northeast",
       "id": "mixed-forest-dense",
       "contact": [
-        24.9,
-        -0.1
+        28,
+        2
       ],
       "scale": 0.672,
       "flip": false
@@ -471,8 +463,8 @@
       "region": "northeast",
       "id": "oak-ancient",
       "contact": [
-        27.5,
-        3.5
+        33,
+        7
       ],
       "scale": 0.736,
       "flip": false
@@ -481,8 +473,8 @@
       "region": "southeast",
       "id": "oak-grove-dense",
       "contact": [
-        27,
-        12.8
+        34,
+        14
       ],
       "scale": 0.768,
       "flip": true
@@ -491,8 +483,8 @@
       "region": "southeast",
       "id": "mixed-forest-dense",
       "contact": [
-        24.8,
-        17.5
+        30,
+        21
       ],
       "scale": 0.624,
       "flip": true
@@ -501,8 +493,8 @@
       "region": "southwest",
       "id": "mixed-forest-dense",
       "contact": [
-        -0.7,
-        13.8
+        4,
+        20
       ],
       "scale": 0.768,
       "flip": true
@@ -511,8 +503,8 @@
       "region": "southwest",
       "id": "oak-ancient",
       "contact": [
-        2.8,
-        17.3
+        9,
+        23
       ],
       "scale": 0.624,
       "flip": true
@@ -521,8 +513,8 @@
       "region": "south",
       "id": "oak-grove-dense",
       "contact": [
-        10.5,
-        17.7
+        16,
+        24
       ],
       "scale": 0.736,
       "flip": false
@@ -531,117 +523,12 @@
       "region": "south",
       "id": "mixed-forest-dense",
       "contact": [
-        14.4,
-        17.7
+        27,
+        23
       ],
       "scale": 0.832,
       "flip": false
     }
   ],
-  "groundOutline": [
-    [
-      -1.6,
-      -0.8
-    ],
-    [
-      3.2,
-      -1.1
-    ],
-    [
-      7.4,
-      -0.65
-    ],
-    [
-      10.2,
-      -1
-    ],
-    [
-      13.5,
-      -0.6
-    ],
-    [
-      18.8,
-      -1.25
-    ],
-    [
-      22.5,
-      -0.65
-    ],
-    [
-      27.6,
-      -0.8
-    ],
-    [
-      28.15,
-      2
-    ],
-    [
-      27.8,
-      4.8
-    ],
-    [
-      28.55,
-      7.1
-    ],
-    [
-      28.15,
-      10.3
-    ],
-    [
-      28.65,
-      14.2
-    ],
-    [
-      28,
-      17.8
-    ],
-    [
-      24.5,
-      18.35
-    ],
-    [
-      20.8,
-      17.8
-    ],
-    [
-      17.4,
-      18.3
-    ],
-    [
-      13.2,
-      18.4
-    ],
-    [
-      9.1,
-      17.8
-    ],
-    [
-      4.2,
-      18.25
-    ],
-    [
-      -1.5,
-      17.65
-    ],
-    [
-      -1.9,
-      14.1
-    ],
-    [
-      -1.1,
-      11.8
-    ],
-    [
-      -1.85,
-      9.4
-    ],
-    [
-      -1.25,
-      6
-    ],
-    [
-      -1.9,
-      3.1
-    ]
-  ]
+  "groundOutline": []
 }

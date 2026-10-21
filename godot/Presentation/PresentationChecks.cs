@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Text.Json.Nodes;
 using Godot;
+using Empire.Core.Engine;
 
 namespace Empire.Presentation;
 
@@ -88,9 +89,9 @@ public partial class PresentationChecks : Node
         }
         finally { propSprite.Free(); }
 
-        var fixture = PresentationJson.Load<JsonObject>("res://tests/oracle/grayflag-initial-raw.json");
-        var level = fixture["level"] as JsonObject ?? throw new InvalidOperationException("Fixture level absent.");
-        var state = fixture["state"] as JsonObject ?? throw new InvalidOperationException("Fixture state absent.");
+        var level = BattleTextChecks.OpeningLevel();
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var state = engine.CreateBattle(level).Snapshot();
         var before = state.ToJsonString();
         var board = new BoardView();
         AddChild(board);
@@ -107,7 +108,7 @@ public partial class PresentationChecks : Node
         var unit = board.GetNode<Node2D>("CanonicalProjection/Unit_2");
         Require(unit.GetMeta("actor_key").AsString() == "campaign-torren",
             "Canonical actor key must survive projection.");
-        Require(unit.Position.IsEqualApprox(new Vector2(5 * 32 + 16, 8 * 32 + 31)),
+        Require(unit.Position.IsEqualApprox(new Vector2(9 * 32 + 16, 12 * 32 + 31)),
             "Actor contact must preserve CELL_FOOT.");
         Require(!board.SurfaceReady,
             "Incomplete compositor must never be described as the complete scene.");
@@ -136,6 +137,8 @@ public partial class PresentationChecks : Node
 
     private static void CheckTerrain(BoardView board, JsonObject state)
     {
+        var width = state["map"]!["width"]!.GetValue<int>();
+        var height = state["map"]!["height"]!.GetValue<int>();
         var materials = WorldMaterialsManifest.Load();
         Require(Enumerable.Range(0, 256).Select(TerrainView.CanonicalBlobMask).Distinct().Count() == 47,
             "Canonical diagonal suppression must produce exactly Blob47.");
@@ -151,27 +154,32 @@ public partial class PresentationChecks : Node
             && board.RenderingIssueCount == board.Diagnostics.Count(message => !message.Contains("runtimeReady=false", StringComparison.Ordinal)),
             "Source art-review metadata must remain in diagnostics without leaking into player-facing status.");
         var ground = terrain.GetNode<Node2D>("ComposedTerrain/Ground");
-        var field = ground.GetNode<Polygon2D>("WorldField");
-        Require(field.Texture is not null && field.Polygon.Length == AuthoredScene.Load("res://data/scenes/c01-01.json").GroundOutline.Length,
-            "World field must use the authored polygon and original texture.");
+        var field = ground.GetNode<Sprite2D>("WorldField");
+        using var fieldMask = field.Texture.GetImage();
+        var tiles = state["map"]!["tiles"]!.AsArray();
+        for (var index = 0; index < tiles.Count; index++)
+            Require((fieldMask.GetPixel(index % width * 64 + 32, index / width * 64 + 32).A > .99)
+                == (tiles[index]!.GetValue<string>() != "c01.outside"),
+                "Field coverage must derive from canonical playable cells, not a second outline.");
         var road = ground.GetNode<Sprite2D>("RoadCorridor");
         using var roadMask = road.Texture.GetImage();
-        Require(roadMask.GetWidth() == 27 * 64 && roadMask.GetHeight() == 17 * 64,
+        Require(roadMask.GetWidth() == width * 64 && roadMask.GetHeight() == height * 64,
             "Road technical mask must preserve the logical map extent at density two.");
         foreach (var cell in AuthoredScene.Load("res://data/scenes/c01-01.json").RoadCorridor!.ProtectedCells)
             Require(roadMask.GetPixel(cell[0] * 64 + 32, cell[1] * 64 + 32).A == 0,
                 "Reviewed protected road notch must remain unpainted.");
-        var tiles = state["map"]!["tiles"]!.AsArray();
         for (var index = 0; index < tiles.Count; index++)
         {
             if (tiles[index]!.GetValue<string>() != "road")
                 continue;
-            Require(roadMask.GetPixel(index % 27 * 64 + 32, index / 27 * 64 + 32).A > 0.99,
-                $"Road center must have actual native coverage at {index % 27},{index / 27}.");
+            Require(roadMask.GetPixel(index % width * 64 + 32, index / width * 64 + 32).A > 0.99,
+                $"Road center must have actual native coverage at {index % width},{index / width}.");
         }
         var forest = ground.GetNode<Sprite2D>("ForestFloor");
         using var forestMask = forest.Texture.GetImage();
-        Require(forestMask.GetPixel(32, 32).A > 0.99, "Original forest alpha must reach the first forest cell center.");
+        var firstForest = Enumerable.Range(0, tiles.Count).First(index => tiles[index]!.GetValue<string>() == "forest");
+        Require(forestMask.GetPixel(firstForest % width * 64 + 32, firstForest / width * 64 + 32).A > .99,
+            "Forest alpha must reach a canonical forest cell center.");
         var cachedLayer = terrain.GetChild(0);
         board.RenderState(state);
         Require(terrain.GetChildCount() == 1 && terrain.GetChild(0) == cachedLayer,
