@@ -54,7 +54,12 @@ public partial class CampaignStagingScreen : Control
                     startButton.Disabled = true;
                 exitCampaign();
             });
-        var body = shell.Body;
+        var card = new PanelContainer { Name = "StagingCard", SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        card.AddThemeStyleboxOverride("panel", CampaignShell.Panel(new Color(.08f, .07f, .055f, .96f), 24));
+        shell.Body.AddChild(card);
+        var body = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        body.AddThemeConstantOverride("separation", 24);
+        card.AddChild(body);
         var column = body;
         var hero = new HBoxContainer();
         hero.AddThemeConstantOverride("separation", 24);

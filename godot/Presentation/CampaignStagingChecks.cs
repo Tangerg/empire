@@ -63,6 +63,11 @@ public partial class CampaignStagingChecks : Node
             var starts = 0;
             var exits = 0;
             screen.ShowStaging(view, assets, () => starts++, () => exits++);
+            var card = Descendants(screen).OfType<PanelContainer>().Single(node => node.Name == "StagingCard");
+            Require(card.GetThemeStylebox("panel") is StyleBoxFlat { BgColor.A: >= .95f } &&
+                Descendants(card).OfType<Label>().Any(label => label.Text == view.RosterHeading) &&
+                Descendants(card).OfType<Label>().Any(label => label.Text == view.StateHeading),
+                "Staging facts must remain on a readable surface independent of the illustration beneath them.");
             var text = string.Join("\n", Descendants(screen).OfType<Label>().Select(label => label.Text));
             foreach (var value in new[] { view.Title, view.Description, view.Eyebrow, view.ChapterHeading, view.Progress,
                 view.RosterHeading, view.StateHeading, view.ActionNote })

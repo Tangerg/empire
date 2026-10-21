@@ -15,6 +15,12 @@ Normal primary actions advance one local beat. Only the last normal beat invokes
 
 `export-grayflag.ts` no longer regenerates these documents or scrapes TypeScript menu wording. It only refreshes their explicitly referenced, hash-verified artwork. Native authoring now advances independently of original browser wording. Menu/staging labels and semantic-refusal presentation also use the catalog. Built-in level/unit names and remaining battle/outcome/progress text are not yet migrated; these slices do not claim complete game internationalization.
 
+## Campaign-relative dates
+
+The original `story.ts` mixes the prologue's world date, `断冠纪第 318 年`, with the campaign's year-zero timeline. The source campaign README pairs years 0–3 with Laiya's ages 18–21; these are relative story years, not a reset of the world calendar. Native PO wording now labels all 34 dated stories `战役第 … 年`, and the prologue retains the world-date anchor in parentheses. Numbers and seasons are unchanged; the failed ending remains `未定`. No calendar conversion, runtime clock or save field is introduced. The original chapter-two outline spans deep winter into the following autumn, so no absolute-year boundary is inferred from its relative labels.
+
+`NarrativeChecks.NativeStoryDates` explicitly names all 35 expected dates and verifies both projections and actual widgets. Date wording is the intentional native departure from the unchanged historical oracle; all other valid projected fields retain their frozen source comparisons.
+
 ## The ending quirk is intentionally preserved
 
 The original `packages/game-ui/src/ui/campaign-game.ts` has two distinct contracts:
@@ -52,7 +58,7 @@ Frozen observations originally produced by `StoryCampaignController`, its adapte
 - 11 actual DOM lifetime fixtures, with three unmounted/remounted cases explicitly marked as native safety differences.
 - Four supplemental native inputs: real runtime retreat history gives nonzero progress, a valid zero-battle definition, an unknown speaker rejection, and a known speaker with no portrait. The unknown-speaker fallback is an intentional breaking correction; its old display expectation was removed, not silently normalized.
 
-Native checks compare every valid projected field against frozen DOM outputs and explicitly assert the unknown-speaker rejection. Native widgets exercise every ordinary-mode beat fixture and each reachable beat-zero ending/status fixture. Canonical normal and ending callback sequences use the existing C# `CampaignRuntime` and `CampaignSave`; no battles or victories are fabricated. A wrong next-beat label is deliberately introduced only in the temporary project and must fail the source differential check. Source-side ending paging mutation was also rejected by the oracle.
+Native checks compare every valid projected field against frozen DOM outputs except the explicitly asserted native dates above, and explicitly assert the unknown-speaker rejection. Native widgets exercise every ordinary-mode beat fixture and each reachable beat-zero ending/status fixture. Canonical normal and ending callback sequences use the existing C# `CampaignRuntime` and `CampaignSave`; no battles or victories are fabricated. A wrong next-beat label is deliberately introduced only in the temporary project and must fail the source differential check. Source-side ending paging mutation was also rejected by the oracle.
 
 The completed narrative-only checkpoint passed its native widget/projection checks and wrong-navigation-key negative control. That checkpoint covered 452 catalog messages and 415 content references, before the subsequent menu/staging/refusal additions; it is not merged-game acceptance. Parser and authoring checks reject malformed, duplicate, missing, empty, fuzzy and obsolete data. Two independent in-memory catalogs change actual native widget wording without changing authoring identities or state. These test catalogs are not additional shipped languages.
 

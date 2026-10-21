@@ -14,6 +14,46 @@ namespace Empire.Presentation;
 /// <summary>Executes native widgets against the frozen rendered expectations and native localization contracts. No desktop acceptance claim.</summary>
 public partial class NarrativeChecks : Node
 {
+    // These authored campaign dates intentionally clarify the frozen source's mixed calendars.
+    private static readonly IReadOnlyDictionary<string, string> NativeStoryDates = new Dictionary<string, string>(StringComparer.Ordinal)
+    {
+        ["c01/prologue"] = "战役第 0 年 · 初夏（断冠纪第 318 年）",
+        ["c01/brief-01"] = "战役第 0 年 · 初夏",
+        ["c01/aftermath-01"] = "战役第 0 年 · 初夏",
+        ["c01/brief-02"] = "战役第 0 年 · 盛夏",
+        ["c01/aftermath-02"] = "战役第 0 年 · 盛夏",
+        ["c01/brief-03"] = "战役第 0 年 · 长夏",
+        ["c01/aftermath-03"] = "战役第 0 年 · 长夏",
+        ["c01/brief-04"] = "战役第 0 年 · 初秋",
+        ["c01/aftermath-04"] = "战役第 0 年 · 初秋",
+        ["c01/brief-05"] = "战役第 0 年 · 深秋",
+        ["c01/aftermath-05"] = "战役第 0 年 · 深秋",
+        ["c01/brief-06"] = "战役第 1 年 · 深冬",
+        ["c01/aftermath-06"] = "战役第 1 年 · 深冬",
+        ["c01/brief-07"] = "战役第 1 年 · 初春",
+        ["c01/aftermath-07"] = "战役第 1 年 · 初春",
+        ["c01/brief-08"] = "战役第 1 年 · 暮春",
+        ["c01/aftermath-08"] = "战役第 1 年 · 暮春",
+        ["c01/brief-09"] = "战役第 1 年 · 盛夏",
+        ["c01/aftermath-09"] = "战役第 1 年 · 盛夏",
+        ["c01/brief-10"] = "战役第 1 年 · 初秋",
+        ["c01/aftermath-10"] = "战役第 1 年 · 初秋",
+        ["c01/brief-11"] = "战役第 2 年 · 早春",
+        ["c01/aftermath-11"] = "战役第 2 年 · 早春",
+        ["c01/brief-12"] = "战役第 2 年 · 暮春",
+        ["c01/aftermath-12"] = "战役第 2 年 · 暮春",
+        ["c01/brief-13"] = "战役第 2 年 · 盛夏",
+        ["c01/aftermath-13"] = "战役第 2 年 · 盛夏",
+        ["c01/brief-14"] = "战役第 2 年 · 深秋",
+        ["c01/aftermath-14"] = "战役第 2 年 · 深秋",
+        ["c01/brief-15"] = "战役第 3 年 · 初春",
+        ["c01/aftermath-15"] = "战役第 3 年 · 初春",
+        ["c01/brief-16"] = "战役第 3 年 · 暮春",
+        ["c01/aftermath-16"] = "战役第 3 年 · 暮春",
+        ["c01/chapter-three-ending"] = "战役第 3 年 · 初夏",
+        ["c01/campaign-failed"] = "未定",
+    };
+
     private int assertions;
     private GameText messages = null!;
     private StoryDocument documents = null!;
@@ -87,18 +127,26 @@ public partial class NarrativeChecks : Node
             primaryAction = view.Ending ? "finish" : "nextBeat",
         }, jsonOptions)!;
 
+    private void CheckStoryProjection(string id, StoryView view, JsonObject expected, string name)
+    {
+        Equal(view.Date, NativeStoryDates[id], name + ": native authored date");
+        var projection = StoryProjection(view);
+        foreach (var field in expected.Where(field => field.Key != "date"))
+            JsonEqual(projection[field.Key], field.Value, name + ": " + field.Key);
+    }
+
     private void CheckSourceProjections()
     {
         Equal(documents.Stories.Count, 35, "Export contains every source story");
+        Require(NativeStoryDates.Keys.ToHashSet(StringComparer.Ordinal).SetEquals(documents.Stories.Select(story => story.Id)),
+            "Every native story has exactly one explicit date expectation");
         Equal(documents.Stories.Sum(story => story.Beats.Count), 91, "Export contains every source beat");
         Equal(documents.Choices.Count, 11, "Export contains every source choice");
         foreach (var item in oracle["storyCases"]!.AsArray().Select(value => value!.AsObject()))
         {
             var view = NarrativeProjection.Story(Story(Text(item, "presentationId")), documents.SpeakerNameKeys,
                 Context(item["state"]!.AsObject()), Number(item, "beatIndex"), Flag(item, "ending"));
-            var projection = StoryProjection(view);
-            foreach (var expected in item["expected"]!.AsObject())
-                JsonEqual(projection[expected.Key], expected.Value, Text(item, "name") + ": " + expected.Key);
+            CheckStoryProjection(Text(item, "presentationId"), view, item["expected"]!.AsObject(), Text(item, "name"));
         }
         foreach (var item in oracle["choiceCases"]!.AsArray().Select(value => value!.AsObject()))
         {
@@ -136,9 +184,7 @@ public partial class NarrativeChecks : Node
                 continue;
             }
             var view = NarrativeProjection.Story(story, speakers, context, Number(item, "beatIndex"), Flag(item, "ending"));
-            var projection = StoryProjection(view);
-            foreach (var expected in item["expected"]!.AsObject())
-                JsonEqual(projection[expected.Key], expected.Value, Text(item, "name") + ": " + expected.Key);
+            CheckStoryProjection(story.Id, view, item["expected"]!.AsObject(), Text(item, "name"));
         }
         foreach (var chapter in metadata.Chapters.Keys)
         {
@@ -172,10 +218,12 @@ public partial class NarrativeChecks : Node
         var first = NarrativeProjection.Story(entry, documents.SpeakerNameKeys, new(messages, metadata, 0, true), 0, false);
         var second = NarrativeProjection.Story(entry, documents.SpeakerNameKeys, new(alternate, metadata, 0, true), 0, false);
         Equal(second.Title, first.Title + " [fixture]", "Injected catalog owns story wording");
+        Equal(second.Date, first.Date + " [fixture]", "Injected catalog owns date wording");
         Equal(second.Text, first.Text + " [fixture]", "Injected catalog owns beat wording");
         Equal(second.Shell.ExitLabel, first.Shell.ExitLabel + " [fixture]", "Injected catalog owns shell labels");
         screen.ShowStory(entry, documents.SpeakerNameKeys, new(alternate, metadata, 0, true), false, () => { }, () => { }, () => { });
         Equal(Find<Label>("StoryTitle").Text, second.Title, "Actual widget renders injected catalog, not hardcoded prose");
+        Equal(Find<Label>("StoryDate").Text, second.Date, "Actual widget renders the injected date");
         Equal(Find<Button>("StoryPrimary").Text, second.PrimaryLabel, "Actual widget renders injected navigation");
         Equal(JsonSerializer.Serialize(documents, jsonOptions), before, "Localization does not mutate authored identities or keys");
         var reorderedJson = JsonSerializer.SerializeToNode(entry, jsonOptions)!.AsObject();
@@ -226,7 +274,8 @@ public partial class NarrativeChecks : Node
             await Layout();
             Equal(screen.BeatIndex, index, "Native cursor matches source visible beat");
             Equal(advanced + finished, 0, "Paging does not invoke canonical callbacks");
-            foreach (var (name, property) in new[] { ("StoryKicker", "kicker"), ("StoryDate", "date"), ("StoryLocation", "location"),
+            Equal(Find<Label>("StoryDate").Text, NativeStoryDates[entry.Id], $"Native {entry.Id} widget date matches the authored timeline");
+            foreach (var (name, property) in new[] { ("StoryKicker", "kicker"), ("StoryLocation", "location"),
                 ("StoryTitle", "title"), ("StorySummary", "summary"), ("StorySpeaker", "speaker"), ("StoryBeat", "text"),
                 ("CampaignTitle", "campaignTitle"), ("CampaignChapter", "chapterHeading"), ("ProgressCount", "progress") })
                 Equal(Find<Label>(name).Text, Text(expected, property), $"Native {name} equals source DOM");
