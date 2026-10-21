@@ -1,5 +1,16 @@
 # GreyFlag source-to-native feature inventory
 
+## Current acceptance overlay, 2026-10-21
+
+The detailed rows below retain their historical audit timing; this overlay supersedes their pending implementation and GUI statuses where stated. The actual plugin composition root, injected policies, custom engine/save/replay lifecycle and source-admitted inert metadata are implemented and verified at `50b99ff3`. The frozen native aggregate and all 16 independent battles (2,983 actions) passed. See `extension-checkpoint-validation.json` for exact trees and limits; mixed-NaN ordering and structural hardening remain explicit compatibility boundaries.
+
+The self-contained Linux release passed 185 runtime checks, including actual exported resources, story/choice, legal movement, save/load/restart and clean teardown. Actual desktop v4 verified the same save/restart/load position loop. Rebuilt v5 (runtime source `80011d27`) visually verified title, Chinese story/choice, staging, first battle and a loaded genuine carried-state river scene with three bridges and working zoom. These observations do not approve every screen, tactical control or campaign branch. Water uses the source-backed renderer but remains visually simple.
+
+A differential opening route proves two real carried-state victories through 428 actions and 14 save/resumes. Separate bounded continuation proves four victories followed by the same battle-5 defeat as the source. The first two victories use elimination fallback; no full victorious campaign or escort completion is claimed. Nine recovered levels still lack authored scene documents, and no replacement scenery has been invented. Actual macOS execution, broader manual campaign acceptance and GitHub publication remain unverified. Other themes and the editor remain outside the GreyFlag-first scope.
+
+## Historical detailed audit
+
+
 **Audit snapshot: 2026-10-20, 23:13 UTC. Not a completion certificate.** The committed baseline is **`041abb24`**, including source tactical controller/HUD/AI pacing after canonical queries/undo `2ea32bd0`, narrative/menu/autosave `87da7282`, camera/bounded lighting `27cf0d79` and feedback/camp `e6e18036`. Its corrected exact staged aggregate passed with clean process exits. Renderer paths and first-phase optimization are now committed at `16e05c4d`, after the full immutable aggregate and repeated clean teardown gate. Exact-output performance is committed at `5593b1b6`. The extension foundation has now passed its immutable native aggregate and all 16 default battles; real plugin root assembly and remaining policy injection are still in progress. Source-backed and headless native contracts are not GUI acceptance.
 
 Scope: the original first-three-chapter GreyFlag campaign, its native battle experience, persistence and required extension contracts. Other story themes, editor and engine-demo applications are not acceptance targets here. No production files were changed by this inventory.

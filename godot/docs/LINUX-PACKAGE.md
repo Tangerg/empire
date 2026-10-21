@@ -4,12 +4,15 @@
 
 Extract the entire archive into one directory, then run `./Empire.x86_64`.
 Keep `Empire.pck` and `data_Empire_linuxbsd_x86_64/` next to the executable.
+Keep THIRD-PARTY-NOTICES/ with the package; it preserves vendor notices, not a
+legal audit or license for Empire itself.
 The directory includes the .NET runtime. Running the package does not require
 the editor, .NET SDK, Node, TypeScript, or the source checkout.
 
 This build targets Linux x86_64. A graphical desktop and OpenGL compatibility
 support are required for normal play. Headless checks are not visual acceptance.
-No macOS or Windows package or platform test is claimed.
+This package is not for macOS or Windows. A separate macOS cross-export is
+explicitly untested; see MACOS-PACKAGE.md in the source checkout.
 
 Saves live outside this package under the normal Godot user-data directory,
 usually `~/.local/share/godot/app_userdata/Empire GrayFlag Migration/`.

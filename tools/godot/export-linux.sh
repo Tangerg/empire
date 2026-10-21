@@ -25,6 +25,9 @@ templates="$XDG_DATA_HOME/godot/export_templates/4.6.3.stable.mono"
 for file in linux_release.x86_64 icudt_godot.dat version.txt; do
   test -f "$templates/$file" || { printf 'Missing matching export dependency: %s\n' "$templates/$file" >&2; exit 1; }
 done
+for notice in README.txt manifest.json GODOT-LICENSE.txt GODOT-COPYRIGHT.txt DOTNET-LICENSE.txt DOTNET-THIRD-PARTY-NOTICES.txt; do
+  test -s "distribution/notices/$notice" || { printf 'Missing distribution notice: %s\n' "$notice" >&2; exit 1; }
+done
 mkdir -p "$output/package" "$output/logs"
 timeout --signal=TERM --kill-after=30s 20m dotnet build godot/Empire.csproj --nologo 2>&1 | tee "$output/logs/build.log"
 timeout --signal=TERM --kill-after=30s 15m "$GODOT_NET" --headless --editor --path godot --import 2>&1 | tee "$output/logs/import.log"
@@ -41,6 +44,7 @@ test -s "$output/package/data_Empire_linuxbsd_x86_64/Empire.dll"
 test -s "$output/package/data_Empire_linuxbsd_x86_64/libcoreclr.so"
 bash tools/godot/smoke-linux-package.sh "$output/package/Empire.x86_64" 2>&1 | tee "$output/logs/package-smoke.log"
 cp godot/docs/LINUX-PACKAGE.md "$output/package/README.md"
+cp -R distribution/notices "$output/package/THIRD-PARTY-NOTICES"
 tar -czf "$output/Empire-linux-x86_64.tar.gz" -C "$output/package" .
 sha256sum "$output/Empire-linux-x86_64.tar.gz" | tee "$output/SHA256SUMS"
 printf 'Linux x86_64 export and packaged smoke passed: %s\n' "$output"

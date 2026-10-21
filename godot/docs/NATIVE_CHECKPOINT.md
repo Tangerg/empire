@@ -2,6 +2,14 @@
 
 This is a working migration checkpoint, not full visual or feature completion.
 
+## Final distribution evidence
+
+Runtime source remains `80011d27`; subsequent opening-route changes are test-only. Final packaging adds complete Godot/GodotSharp and .NET notices beside the executable/app, not inside the signed macOS bundle. Notice manifest hashes and shell syntax pass; seven macOS archive-guard negative controls pass. These notices preserve vendor attribution and are not a legal audit or a new license for project artwork/story/source.
+
+The final Linux package retains byte-identical v5 runtime files and passed the production smoke again, including 185 resource/lifecycle assertions and clean exits. The Universal 2 macOS cross-export passed ZIP CRC/path/mode checks, all 381 app-file byte comparisons, two executable slices and both self-contained .NET 8.0.32 runtimes. These are static Linux-host checks only: no Mac launch, Apple signature validation, notarization, Gatekeeper, GPU or input acceptance. The failed completed direct-ZIP workflow was rejected; the deliverable uses a completed `.app` export followed by normal ZIP creation, with no engine-binary surgery.
+
+See `LINUX-PACKAGE.md` and `MACOS-PACKAGE.md` for reproduction and platform limits. Actual final archive hashes are external packaging evidence; a source checkpoint is not a GitHub publication claim.
+
 ## Genuine carried-state campaign opening
 
 A legal test-player route now wins the first two battles with real roster carryover, without modifying rules, unit statistics, opponent policy or outcomes. Native independently selects opponent actions and matches the original source through 428 accepted actions, ordered events/state hashes and 14 source save/resumes. The campaign remains active at aftermath-02. Battle 2 uses the source engine's elimination fallback with all three refugees alive; it is not escort-objective completion or a full victorious campaign.
@@ -12,7 +20,7 @@ The deterministic compressed trace and source regeneration script are in `tools/
 
 The v4 release was exercised on the cloud desktop at 1180×812: title, Chinese story/choice, staging, terrain/actors/HUD, a legal knight move, Save, confirmed Restart and Load restoring the moved position all passed. The original screenshots are retained separately as release proof. An apparent movement-cost clipping issue was rechecked and withdrawn: the costs wrap correctly; the next line had been below the scroll viewport. No speculative layout change was made.
 
-The confirmed English developer footer is removed from player-facing status. The two initial warnings were unchanged source art-review metadata (`runtimeReady=false`), not missing imported textures. Those flags remain in complete diagnostics, logs and tests; real missing-resource warnings remain player-visible. Updated presentation resource and real-session BattleScreen checks passed with clean teardown. The rebuilt release still requires fresh screenshot verification. Water, broader tactical controls, full campaign victory and macOS execution remain separate gates.
+The confirmed English developer footer is removed from player-facing status. The two initial warnings were unchanged source art-review metadata (`runtimeReady=false`), not missing imported textures. Those flags remain in complete diagnostics, logs and tests; real missing-resource warnings remain player-visible. Updated presentation resource and real-session BattleScreen checks passed with clean teardown. The rebuilt v5 release (runtime source `80011d27`) passed fresh desktop inspection: title, Chinese story/choice, staging and first battle; the developer footer is absent. A genuine carried-state c01-02 save was then loaded to inspect river terrain, all three stone bridges, actors, villages, HUD and zoom. This is loaded-fixture visual evidence, not manual campaign completion. Water remains visually simpler than the detailed sprites. Broader tactical controls, full campaign victory and macOS execution remain separate gates.
 
 ## Linux release package milestone
 

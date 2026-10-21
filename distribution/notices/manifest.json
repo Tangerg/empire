@@ -1,0 +1,144 @@
+{
+  "schema": 1,
+  "scope": "Technical preservation of notices for actual Godot/.NET desktop components; not legal clearance.",
+  "collected_on": "2026-10-21",
+  "components": [
+    {
+      "name": "Godot Engine",
+      "version": "4.6.3.stable.mono.official.7d41c59c4",
+      "source_revision": "7d41c59c457bd5a245092b4e7eb2d833e3b3f8c3",
+      "shipped_paths": [
+        "Empire.x86_64",
+        "Empire.app/Contents/MacOS/Empire GrayFlag Migration"
+      ],
+      "notice_files": [
+        "GODOT-LICENSE.txt",
+        "GODOT-COPYRIGHT.txt",
+        "GODOT-AUTHORS.md"
+      ],
+      "evidence": "Official 4.6.3 .NET toolchain/template manifests; Engine.get_version_info(). MIT notice is byte-identical to Engine.get_license_text(). All 19 full copyright-table license bodies match Engine.get_license_info(), allowing whitespace and one FTL copyright-sign encoding discrepancy in the engine API output."
+    },
+    {
+      "name": "GodotSharp",
+      "version": "4.6.3",
+      "shipped_paths": [
+        "data_Empire_linuxbsd_x86_64/GodotSharp.dll",
+        "Empire.app/Contents/Resources/data_Empire_macos_x86_64/GodotSharp.dll",
+        "Empire.app/Contents/Resources/data_Empire_macos_arm64/GodotSharp.dll"
+      ],
+      "notice_files": [
+        "GODOTSHARP-NOTICE.txt",
+        "GODOT-LICENSE.txt",
+        "GODOT-COPYRIGHT.txt"
+      ],
+      "evidence": "Official GodotSharp.nuspec; Linux assembly byte-identical to the official package. Godot.SourceGenerators is a build-time dependency, not a separately shipped assembly."
+    },
+    {
+      "name": "Microsoft.NETCore.App.Runtime",
+      "version": "8.0.32",
+      "runtime_identifiers": [
+        "linux-x64",
+        "osx-x64",
+        "osx-arm64"
+      ],
+      "source_revision": "b9a49e4a6d3a444a3685e318c74a7892d01873f7",
+      "shipped_paths": [
+        "data_Empire_linuxbsd_x86_64/",
+        "Empire.app/Contents/Resources/data_Empire_macos_x86_64/",
+        "Empire.app/Contents/Resources/data_Empire_macos_arm64/"
+      ],
+      "notice_files": [
+        "DOTNET-LICENSE.txt",
+        "DOTNET-THIRD-PARTY-NOTICES.txt",
+        "DOTNET-PACKAGE-NOTICE.txt"
+      ],
+      "evidence": "Empire.runtimeconfig.json and Empire.deps.json identify the self-contained runtime; 182 Linux runtime files byte-match the corresponding runtime pack. The three runtime packs have identical full notice files. Native macOS files may change through code signing; byte identity of signed native files is not asserted."
+    }
+  ],
+  "project_assets": {
+    "separate_font_assets_found": 0,
+    "inspected_linux_pck_entry_count": 565,
+    "source_png_assets": 159,
+    "source_png_assets_byte_identical_to_repository_originals": 159,
+    "source_directory": "packages/story-candidate-01/assets/final-fantasy-v1/",
+    "godot_directory": "godot/assets/",
+    "existing_provenance_paths": [
+      "godot/data/source-provenance.json",
+      "godot/data/selected-assets.json",
+      "godot/data/tactical-hud-art.json",
+      "packages/story-candidate-01/assets/final-fantasy-v1/masters/approved-v5/**/request-provenance.json"
+    ],
+    "limitation": "Lineage and generation records are not a comprehensive authorship or redistribution-rights determination. No extra font attribution or third-party reference-screenshot redistribution permission is invented."
+  },
+  "files": [
+    {
+      "path": "DOTNET-LICENSE.txt",
+      "bytes": 1116,
+      "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310",
+      "source": "EMPIRE_TOOLCHAIN_ROOT/nuget/microsoft.netcore.app.runtime.linux-x64/8.0.32/LICENSE.TXT",
+      "version": "8.0.32",
+      "preservation": "byte-for-byte upstream file"
+    },
+    {
+      "path": "DOTNET-PACKAGE-NOTICE.txt",
+      "bytes": 697,
+      "sha256": "edc616ab6889a02c0a564c424e39672399c59869e230de3204d7abd62d0fb441",
+      "source": "EMPIRE_TOOLCHAIN_ROOT/nuget/microsoft.netcore.app.runtime.{linux-x64,osx-x64,osx-arm64}/8.0.32/microsoft.netcore.app.runtime.{rid}.nuspec",
+      "version": "8.0.32",
+      "preservation": "exact attribution fields plus explanatory source mapping"
+    },
+    {
+      "path": "DOTNET-THIRD-PARTY-NOTICES.txt",
+      "bytes": 67638,
+      "sha256": "97c1a7b3da6a4c6ad516448719f45114b41a4d4c5aa300a944476e2e4f5da438",
+      "source": "EMPIRE_TOOLCHAIN_ROOT/nuget/microsoft.netcore.app.runtime.linux-x64/8.0.32/THIRD-PARTY-NOTICES.TXT",
+      "version": "8.0.32",
+      "preservation": "byte-for-byte upstream file"
+    },
+    {
+      "path": "GODOT-AUTHORS.md",
+      "bytes": 10696,
+      "sha256": "2eb271244aea70a5818c6c004892a74eecc129aed84e97656d5563be3769f560",
+      "source": "https://raw.githubusercontent.com/godotengine/godot/4.6.3-stable/AUTHORS.md",
+      "version": "4.6.3-stable",
+      "preservation": "byte-for-byte upstream file"
+    },
+    {
+      "path": "GODOT-COPYRIGHT.txt",
+      "bytes": 99790,
+      "sha256": "b3330849267d56ddd3d62a513817506606c2195034411fe05859f0140bff9d8a",
+      "source": "https://raw.githubusercontent.com/godotengine/godot/4.6.3-stable/COPYRIGHT.txt",
+      "version": "4.6.3-stable",
+      "preservation": "byte-for-byte upstream file"
+    },
+    {
+      "path": "GODOT-LICENSE.txt",
+      "bytes": 1149,
+      "sha256": "b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80",
+      "source": "https://raw.githubusercontent.com/godotengine/godot/4.6.3-stable/LICENSE.txt",
+      "version": "4.6.3-stable",
+      "preservation": "byte-for-byte upstream file"
+    },
+    {
+      "path": "GODOTSHARP-NOTICE.txt",
+      "bytes": 541,
+      "sha256": "8b33540aeba76dfed47c5bec96dbbb54f888ef7aefb6d397104f0c8fd286e0b9",
+      "source": "EMPIRE_TOOLCHAIN_ROOT/nuget/godotsharp/4.6.3/godotsharp.nuspec",
+      "version": "4.6.3",
+      "preservation": "exact attribution fields plus explanatory source mapping"
+    },
+    {
+      "path": "README.txt",
+      "bytes": 2532,
+      "sha256": "ebefd4ceec96af89049ead2feb1b282eb72f70f84a796a8467282d5ce79e3803",
+      "source": "Empire distribution documentation",
+      "preservation": "project-authored scope/index text; not upstream license text"
+    }
+  ],
+  "packaging": {
+    "source_directory": "distribution/notices",
+    "destination_directory": "THIRD-PARTY-NOTICES",
+    "linux": "Copy beside Empire.x86_64 before archive creation and hashing.",
+    "macos": "Copy beside Empire.app, outside the signed bundle, before archive creation and hashing."
+  }
+}
