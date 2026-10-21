@@ -17,12 +17,18 @@ public sealed record BattleProgressionRules(
 public sealed class BattleProgression
 {
     private readonly TacticalCommands commands;
-    public CareerRules Careers { get; }
-    public FormationRules Formations { get; }
+    public CareerRules Careers
+    {
+        get;
+    }
+    public FormationRules Formations
+    {
+        get;
+    }
     public BattleProgression(BattleProgressionRules rules)
     {
-        Careers = new CareerRules(rules.Content, rules.Resources, rules.Effects);
-        Formations = new FormationRules(rules.Content, rules.Grids);
+        Careers = new CareerRules(new CareerRuleServices(rules.Content, rules.Resources, rules.Effects));
+        Formations = new FormationRules(new FormationRuleServices(rules.Content, rules.Grids));
         commands = rules.Commands;
     }
     public void ChangeCareer(JsonObject state, int unitId, string career, Action<JsonObject> emit) =>
@@ -32,7 +38,8 @@ public sealed class BattleProgression
         var unit = commands.CommandableUnit(state, unitId);
         Formations.ValidateChange(state, unit, formation);
         var previous = unit["formation"]?.GetValue<string>();
-        if (previous == formation) return;
+        if (previous == formation)
+            return;
         unit["formation"] = formation;
         emit(new JsonObject { ["type"] = "formationChanged", ["unit"] = unit["id"]!.DeepClone(), ["from"] = previous, ["to"] = formation });
     }

@@ -22,7 +22,9 @@ internal static class UnitDisposition
         unit["reaction"] = stance;
         emit(new JsonObject
         {
-            ["type"] = "reactionChanged", ["unit"] = unit["id"]!.DeepClone(), ["stance"] = stance,
+            ["type"] = "reactionChanged",
+            ["unit"] = unit["id"]!.DeepClone(),
+            ["stance"] = stance,
         });
     }
 
@@ -31,11 +33,14 @@ internal static class UnitDisposition
         RequireFacing(grid, facing);
         var previous = StateJson.Text(unit, "facing");
         unit["facing"] = facing;
-        if (previous == facing) return;
+        if (previous == facing)
+            return;
         emit?.Invoke(new JsonObject
         {
-            ["type"] = "facingChanged", ["unit"] = unit["id"]!.DeepClone(),
-            ["from"] = previous, ["to"] = facing,
+            ["type"] = "facingChanged",
+            ["unit"] = unit["id"]!.DeepClone(),
+            ["from"] = previous,
+            ["to"] = facing,
         });
     }
 }

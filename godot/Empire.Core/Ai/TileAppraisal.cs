@@ -61,7 +61,8 @@ public sealed class TileAppraisal
 
     private double CaptureProspect()
     {
-        if (!CanCapture || Agenda.CaptureTargets.Count == 0) return 0;
+        if (!CanCapture || Agenda.CaptureTargets.Count == 0)
+            return 0;
         var best = 0.0;
         foreach (var target in Agenda.CaptureTargets)
             best = Math.Max(best, target.Weight * 120 / (1 + context.Distance(at, target.At)));
@@ -73,8 +74,10 @@ public sealed class TileAppraisal
         var strongest = 0.0;
         foreach (var destination in Agenda.Mission.Destinations)
         {
-            if (destination.UnitIds is not null && !destination.UnitIds.Contains(UnitId)) continue;
-            if (destination.CaptureOnly && !CanCapture) continue;
+            if (destination.UnitIds is not null && !destination.UnitIds.Contains(UnitId))
+                continue;
+            if (destination.CaptureOnly && !CanCapture)
+                continue;
             strongest = Math.Max(strongest, destination.Weight * 180 / (1 + context.Distance(at, destination.At)));
         }
         return strongest;
@@ -82,7 +85,8 @@ public sealed class TileAppraisal
 
     private double EscortPull()
     {
-        if (ProtectedWeight != 0 || Agenda.Mission.ProtectedUnits.Count == 0) return 0;
+        if (ProtectedWeight != 0 || Agenda.Mission.ProtectedUnits.Count == 0)
+            return 0;
         var strongest = 0.0;
         foreach (var (id, weight) in Agenda.Mission.ProtectedUnits)
             if (UnitById(context.State, id) is { } charge)
@@ -92,7 +96,8 @@ public sealed class TileAppraisal
 
     private double EngagementRange()
     {
-        if (Foes.Count == 0) return 0;
+        if (Foes.Count == 0)
+            return 0;
         var nearest = context.NearestDistance(at, Foes.Select(Position));
         var ideal = AiMeasures.PreferredEngagementRange(context.Content, unit);
         var wants = context.Rules.Directives.Engagement(unit);
@@ -101,13 +106,18 @@ public sealed class TileAppraisal
 
     private double CoverFromNearestFoe()
     {
-        if (Foes.Count == 0) return 0;
+        if (Foes.Count == 0)
+            return 0;
         var nearest = Foes.OrderBy(foe => context.Distance(at, Position(foe))).First();
         var facing = cell.DirectionalCoverFrom(context.Board.Grid, Position(nearest));
-        if (facing == "full") return 36;
-        if (facing == "half") return 18;
-        if (cell.Cover == "full") return 28;
-        if (cell.Cover == "half") return 14;
+        if (facing == "full")
+            return 36;
+        if (facing == "half")
+            return 18;
+        if (cell.Cover == "full")
+            return 28;
+        if (cell.Cover == "half")
+            return 14;
         return 0;
     }
 
@@ -116,7 +126,8 @@ public sealed class TileAppraisal
 
     private double HomeDefencePull()
     {
-        if (Agenda.MyHqs.Count == 0) return 0;
+        if (Agenda.MyHqs.Count == 0)
+            return 0;
         var threatened = Agenda.MyHqs.Any(keep => Foes.Any(foe => context.Distance(Position(foe), keep) <= 5));
         return threatened ? -context.NearestDistance(at, Agenda.MyHqs) * 14 * (1 - Aggression * 0.5) : 0;
     }
@@ -133,9 +144,11 @@ public sealed class TileAppraisal
 
     private double CommandLink()
     {
-        if (unit["commanderId"] is not JsonValue id || string.IsNullOrEmpty(id.GetValue<string>())) return 0;
+        if (unit["commanderId"] is not JsonValue id || string.IsNullOrEmpty(id.GetValue<string>()))
+            return 0;
         var commander = Objects(context.State["commanders"], "commanders").FirstOrDefault(candidate => Text(candidate, "id") == id.GetValue<string>());
-        if (commander is null || UnitById(context.State, Integer(commander, "unitId")) is not { } leader) return 0;
+        if (commander is null || UnitById(context.State, Integer(commander, "unitId")) is not { } leader)
+            return 0;
         var distance = context.Distance(at, Position(leader));
         var radius = Number(commander["radius"], "radius");
         return distance <= radius ? 45 : -Math.Max(0, distance - radius) * 18;

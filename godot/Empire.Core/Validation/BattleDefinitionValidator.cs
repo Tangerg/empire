@@ -1,20 +1,19 @@
 using System.Text.Json.Nodes;
-using Empire.Core.Geometry;
 using Empire.Core.Engine;
-using Empire.Core.Persistence;
-using Empire.Core.References;
 
 namespace Empire.Core.Validation;
+
+public sealed record BattleDefinitionValidationRules(BattleContentValidator Content, BattleLevelValidator Levels);
 
 /// <summary>Explicit catalog and authored-level admission boundary for a composed native engine.</summary>
 public sealed class BattleDefinitionValidator
 {
     private readonly BattleContentValidator content;
     private readonly BattleLevelValidator levels;
-    public BattleDefinitionValidator(RuleReferenceRules rules, BattleReferenceCheckRegistry referenceChecks, GridRegistry grids)
+    public BattleDefinitionValidator(BattleDefinitionValidationRules rules)
     {
-        content = new BattleContentValidator(rules, referenceChecks);
-        levels = new BattleLevelValidator(rules, referenceChecks, grids);
+        content = rules.Content;
+        levels = rules.Levels;
     }
     public void ValidateContent() => content.Validate();
     public void ValidateLevel(JsonObject level)

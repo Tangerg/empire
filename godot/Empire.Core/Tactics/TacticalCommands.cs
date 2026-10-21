@@ -14,7 +14,9 @@ public sealed record ValidatedMovement(
 public delegate void PartingShotResolver(
     JsonObject state, JsonObject unit, Coord from, Coord to, Action<JsonObject> emit);
 
-public sealed record TacticalCommandRules(GridRegistry Grids, ITacticalSpace Space, ReactionRegistry Reactions);
+public sealed record TacticalCommandRules(
+    GridRegistry Grids, ITacticalSpace Space, ReactionRegistry Reactions,
+    Func<JsonObject, JsonObject, bool> MayAct, UnitDirectiveRegistry Directives);
 
 public sealed class TacticalCommands
 {
@@ -22,18 +24,14 @@ public sealed class TacticalCommands
     private readonly Func<JsonObject, JsonObject, bool> mayAct;
     private readonly UnitDirectiveRegistry directives;
 
-    public TacticalCommands(
-        TacticalCommandRules rules,
-        Func<JsonObject, JsonObject, bool> mayAct,
-        UnitDirectiveRegistry directives)
+    public TacticalCommands(TacticalCommandRules rules)
     {
         this.rules = rules;
-        this.mayAct = mayAct;
-        this.directives = directives;
+        mayAct = rules.MayAct;
+        directives = rules.Directives;
     }
 
-    private TacticalBoard Board(JsonObject state) => new(StateJson.Object(state["map"], "map"),
-        rules.Grids.Get(StateJson.Text(state["rules"]!["grid"], "grid")));
+    private TacticalBoard Board(JsonObject state) => new(rules.Grids.Get(StateJson.Text(state["rules"]!["grid"], "grid")), StateJson.Object(state["map"], "map"));
 
     public void TurnToward(JsonObject state, JsonObject unit, Coord from, Coord target, Action<JsonObject> emit)
     {
@@ -44,9 +42,15 @@ public sealed class TacticalCommands
     public JsonObject OwnUnit(JsonObject state, int unitId)
     {
         var unit = TacticalQueries.UnitById(state, unitId)
-            ?? throw new IllegalActionException(new ActionRefusal("tactics.unit_missing", new() { ["unitId"] = unitId }));
+            ?? throw new IllegalActionException(new ActionRefusal("tactics.unit_missing", new()
+            {
+                ["unitId"] = unitId
+            }));
         if (StateJson.Integer(unit, "owner") != StateJson.Integer(state, "currentPlayer"))
-            throw new IllegalActionException(new ActionRefusal("tactics.not_owner", new() { ["unitId"] = unitId }));
+            throw new IllegalActionException(new ActionRefusal("tactics.not_owner", new()
+            {
+                ["unitId"] = unitId
+            }));
         return unit;
     }
 
@@ -54,9 +58,15 @@ public sealed class TacticalCommands
     {
         var unit = OwnUnit(state, unitId);
         if (StateJson.IsTrue(unit["done"]))
-            throw new IllegalActionException(new ActionRefusal("tactics.already_acted", new() { ["unitId"] = unitId }));
+            throw new IllegalActionException(new ActionRefusal("tactics.already_acted", new()
+            {
+                ["unitId"] = unitId
+            }));
         if (!mayAct(state, unit))
-            throw new IllegalActionException(new ActionRefusal("tactics.not_actor", new() { ["unitId"] = unitId }));
+            throw new IllegalActionException(new ActionRefusal("tactics.not_actor", new()
+            {
+                ["unitId"] = unitId
+            }));
         return unit;
     }
 
@@ -65,19 +75,36 @@ public sealed class TacticalCommands
         var unitId = StateJson.Integer(action, "unit");
         var unit = CommandableUnit(state, unitId);
         var requested = StateJson.Array(action["path"], "action path");
-        if (requested.Count == 0) throw new IllegalActionException(new ActionRefusal("tactics.path_empty"));
+        if (requested.Count == 0)
+            throw new IllegalActionException(new ActionRefusal("tactics.path_empty"));
         var origin = TacticalQueries.Position(unit);
         if (TacticalQueries.Position(StateJson.Object(requested[0], "path origin")) != origin)
-            throw new IllegalActionException(new ActionRefusal("tactics.path_origin_mismatch", new() { ["unitId"] = unitId }));
+            throw new IllegalActionException(new ActionRefusal("tactics.path_origin_mismatch", new()
+            {
+                ["unitId"] = unitId
+            }));
         var destination = TacticalQueries.Position(StateJson.Object(requested[^1], "path destination"));
         if (!Board(state).Contains(destination))
-            throw new IllegalActionException(new ActionRefusal("tactics.target_outside", new() { ["x"] = destination.X, ["y"] = destination.Y }));
-        if (requested.Count == 1) return new(unitId, origin, destination, new[] { origin });
+            throw new IllegalActionException(new ActionRefusal("tactics.target_outside", new()
+            {
+                ["x"] = destination.X,
+                ["y"] = destination.Y
+            }));
+        if (requested.Count == 1)
+            return new(unitId, origin, destination, new[] { origin });
         var field = rules.Space.ComputeMoveField(state, unit);
         var canonical = rules.Space.PathTo(field, state, destination)
-            ?? throw new IllegalActionException(new ActionRefusal("tactics.target_unreachable", new() { ["x"] = destination.X, ["y"] = destination.Y }));
+            ?? throw new IllegalActionException(new ActionRefusal("tactics.target_unreachable", new()
+            {
+                ["x"] = destination.X,
+                ["y"] = destination.Y
+            }));
         if (!field.Stops.Contains(Board(state).IndexOf(destination)))
-            throw new IllegalActionException(new ActionRefusal("tactics.target_occupied", new() { ["x"] = destination.X, ["y"] = destination.Y }));
+            throw new IllegalActionException(new ActionRefusal("tactics.target_occupied", new()
+            {
+                ["x"] = destination.X,
+                ["y"] = destination.Y
+            }));
         return new(unitId, origin, destination, canonical);
     }
 
@@ -91,7 +118,8 @@ public sealed class TacticalCommands
         var unit = TacticalQueries.RequireUnit(state, validated.UnitId);
         if (TacticalQueries.Position(unit) != validated.Origin)
             throw new DomainInvariantException("unit moved after its command path was validated");
-        if (!validated.Moved) return unit;
+        if (!validated.Moved)
+            return unit;
         if (StateJson.IsTrue(StateJson.Object(state["rules"], "rules")["zoneOfControl"]) && partingShots is null)
             throw new DomainInvariantException("voluntary movement with zone of control requires a parting-shot resolver");
         var board = Board(state);
@@ -112,7 +140,10 @@ public sealed class TacticalCommands
     public void ChangeReaction(JsonObject unit, string stance, Action<JsonObject> emit)
     {
         if (!rules.Reactions.Has(stance))
-            throw new IllegalActionException(new ActionRefusal("tactics.reaction_unknown", new() { ["stance"] = stance }));
+            throw new IllegalActionException(new ActionRefusal("tactics.reaction_unknown", new()
+            {
+                ["stance"] = stance
+            }));
         UnitDisposition.React(rules.Reactions, unit, stance, emit);
     }
 
@@ -120,19 +151,25 @@ public sealed class TacticalCommands
     {
         var grid = Board(state).Grid;
         if (!UnitDisposition.AdmitsFacing(grid, facing))
-            throw new IllegalActionException(new ActionRefusal("tactics.facing_invalid", new() { ["grid"] = grid.Id, ["facing"] = facing }));
+            throw new IllegalActionException(new ActionRefusal("tactics.facing_invalid", new()
+            {
+                ["grid"] = grid.Id,
+                ["facing"] = facing
+            }));
         UnitDisposition.Face(grid, unit, facing, emit);
     }
 
     public static void FinishCommand(JsonObject state, int unitId)
     {
         var unit = TacticalQueries.UnitById(state, unitId);
-        if (unit is not null) FinishCommand(state, unit);
+        if (unit is not null)
+            FinishCommand(state, unit);
     }
 
     public static void FinishCommand(JsonObject state, JsonObject actor)
     {
         // An ability can replace the stored object; the accepted order still owns its captured actor.
-        if (TacticalQueries.UnitById(state, StateJson.Integer(actor, "id")) is not null) actor["done"] = true;
+        if (TacticalQueries.UnitById(state, StateJson.Integer(actor, "id")) is not null)
+            actor["done"] = true;
     }
 }

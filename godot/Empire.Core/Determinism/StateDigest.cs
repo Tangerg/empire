@@ -29,7 +29,8 @@ public static class StateDigest
                 text.Append('[');
                 for (var index = 0; index < array.Count; index++)
                 {
-                    if (index != 0) text.Append(',');
+                    if (index != 0)
+                        text.Append(',');
                     AppendCanonical(text, array[index]);
                 }
                 text.Append(']');
@@ -41,7 +42,8 @@ public static class StateDigest
                 var first = true;
                 foreach (var property in obj.OrderBy(pair => pair.Key, StringComparer.Ordinal))
                 {
-                    if (!first) text.Append(',');
+                    if (!first)
+                        text.Append(',');
                     first = false;
                     text.Append('[');
                     EcmaJson.AppendString(text, property.Key);

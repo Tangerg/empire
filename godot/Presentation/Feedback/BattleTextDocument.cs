@@ -53,7 +53,8 @@ public sealed class BattleTextDocument
         {
             var level = Object(raw, "level");
             var id = RequiredString(level["id"], "level id");
-            if (!canonicalLevels.TryAdd(id, level)) throw new LocalizationException($"Duplicate canonical level identity '{id}'.");
+            if (!canonicalLevels.TryAdd(id, level))
+                throw new LocalizationException($"Duplicate canonical level identity '{id}'.");
         }
         RequireSameKeys(canonicalLevels.Keys, declaredLevels.Keys, "levels");
 
@@ -78,7 +79,8 @@ public sealed class BattleTextDocument
             {
                 var player = Object(raw, "player");
                 var playerId = Integer(player["id"], "player id").ToString(CultureInfo.InvariantCulture);
-                if (!canonicalPlayers.TryAdd(playerId, player)) throw new LocalizationException($"Duplicate player identity '{levelId}/{playerId}'.");
+                if (!canonicalPlayers.TryAdd(playerId, player))
+                    throw new LocalizationException($"Duplicate player identity '{levelId}/{playerId}'.");
             }
             RequireSameKeys(canonicalPlayers.Keys, declaredPlayers.Keys, $"players for '{levelId}'");
             var playerEntries = new Dictionary<int, PlayerEntry>();
@@ -91,7 +93,8 @@ public sealed class BattleTextDocument
                 var objectiveIds = new HashSet<string>(StringComparer.Ordinal);
                 var authored = player["objectives"] is { } rawObjectives ? Array(rawObjectives, $"objectives for '{path}'") : null;
                 var effective = authored is { Count: > 0 } ? authored : Array(level["victory"], $"victory for '{levelId}'");
-                foreach (var raw in effective) Visit(Object(raw, "objective"));
+                foreach (var raw in effective)
+                    Visit(Object(raw, "objective"));
                 RequireSameKeys(objectiveIds, declaredObjectives.Keys, $"objectives for '{path}'");
                 var descriptions = declaredObjectives.ToDictionary(pair => pair.Key,
                     pair => Entry(pair.Value, $"objective '{path}/{pair.Key}'", allowGenerated: true), StringComparer.Ordinal);
@@ -100,10 +103,13 @@ public sealed class BattleTextDocument
                 void Visit(JsonObject objective)
                 {
                     var id = RequiredString(objective["id"], $"objective id for '{path}'");
-                    if (!objectiveIds.Add(id)) throw new LocalizationException($"Duplicate objective identity '{path}/{id}'.");
+                    if (!objectiveIds.Add(id))
+                        throw new LocalizationException($"Duplicate objective identity '{path}/{id}'.");
                     var kind = RequiredString(objective["type"], $"objective kind for '{path}/{id}'");
-                    if (!handlers.Has(kind)) throw new LocalizationException($"Unknown objective kind '{kind}' for '{path}/{id}'.");
-                    foreach (var child in handlers.Children(objective)) Visit(child);
+                    if (!handlers.Has(kind))
+                        throw new LocalizationException($"Unknown objective kind '{kind}' for '{path}/{id}'.");
+                    foreach (var child in handlers.Children(objective))
+                        Visit(child);
                 }
             }
             result.Add(levelId, new(title, description, signals, playerEntries));
@@ -119,7 +125,8 @@ public sealed class BattleTextDocument
             .SelectMany(player => player.Objectives.Values.Prepend(player.Name))
             .Concat(level.Signals.Values).Append(level.Title).Append(level.Description)).ToArray();
         text.ValidateKeys(entries.Where(entry => entry.Key is not null).Select(entry => entry.Key!));
-        foreach (var entry in entries.Where(entry => !entry.Generated)) _ = entry.Resolve(text);
+        foreach (var entry in entries.Where(entry => !entry.Generated))
+            _ = entry.Resolve(text);
     }
 
     internal string LevelTitle(GameText text, string levelId) => Level(levelId).Title.Resolve(text)!;
@@ -176,8 +183,10 @@ public sealed class BattleTextDocument
         var result = new Dictionary<string, JsonNode?>(StringComparer.Ordinal);
         foreach (var (key, property) in Object(value, path))
         {
-            if (string.IsNullOrWhiteSpace(key)) throw new LocalizationException($"{path} contains an empty identity.");
-            if (!result.TryAdd(key, property)) throw new LocalizationException($"Duplicate field or identity '{key}' in {path}.");
+            if (string.IsNullOrWhiteSpace(key))
+                throw new LocalizationException($"{path} contains an empty identity.");
+            if (!result.TryAdd(key, property))
+                throw new LocalizationException($"Duplicate field or identity '{key}' in {path}.");
         }
         return result;
     }
@@ -194,9 +203,11 @@ public sealed class BattleTextDocument
 
     private static string RequiredString(JsonElement value, string path)
     {
-        if (value.ValueKind != JsonValueKind.String) throw new LocalizationException($"{path} must be a nonempty string.");
+        if (value.ValueKind != JsonValueKind.String)
+            throw new LocalizationException($"{path} must be a nonempty string.");
         var text = EcmaJson.ReadString(EcmaJson.Parse(value.GetRawText()));
-        if (string.IsNullOrWhiteSpace(text)) throw new LocalizationException($"{path} must be a nonempty string.");
+        if (string.IsNullOrWhiteSpace(text))
+            throw new LocalizationException($"{path} must be a nonempty string.");
         return text;
     }
 
@@ -205,7 +216,8 @@ public sealed class BattleTextDocument
 
     private static int Integer(JsonNode? value, string path)
     {
-        if (value is null) throw new LocalizationException($"Missing {path}.");
+        if (value is null)
+            throw new LocalizationException($"Missing {path}.");
         var element = EcmaJson.ToElement(value);
         if (element.ValueKind != JsonValueKind.Number || !element.TryGetInt32(out var result))
             throw new LocalizationException($"{path} must be an integer.");

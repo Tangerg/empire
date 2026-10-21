@@ -10,7 +10,7 @@ using Empire.Core.Persistence;
 var root = Path.GetFullPath(args.Length > 0 ? args[0] : ".");
 JsonNode Read(string path) => JsonNode.Parse(File.ReadAllText(Path.Combine(root, path)))!;
 var packs = Read("godot/data/content-packs.json").AsArray();
-var engine = new GrayFlagEngine(packs);
+var engine = new BattleEngine(packs);
 var manifest = engine.RulesetManifest;
 var persistence = engine.Persistence;
 var fixture = Read("godot/tests/oracle/grayflag-0.58.json").AsObject();
@@ -21,7 +21,11 @@ var failed = 0;
 
 void Check(string name, Action test)
 {
-    try { test(); passed++; }
+    try
+    {
+        test();
+        passed++;
+    }
     catch (Exception error) { failed++; Console.Error.WriteLine($"FAIL {name}: {error}"); }
 }
 void Equal(JsonNode expected, JsonNode actual, string subject)
@@ -31,7 +35,10 @@ void Equal(JsonNode expected, JsonNode actual, string subject)
 }
 void Throws<T>(Action test, string? contains = null) where T : Exception
 {
-    try { test(); }
+    try
+    {
+        test();
+    }
     catch (T error)
     {
         if (contains is not null && !error.Message.Contains(contains, StringComparison.Ordinal))
@@ -48,18 +55,22 @@ void Reject(string name, Action<JsonObject> edit, string? message = null)
         edit(corrupt);
         var original = StateDigest.Hash(corrupt);
         Throws<StoredDocumentException>(() => persistence.Load(corrupt), message);
-        if (StateDigest.Hash(corrupt) != original) throw new Exception("rejected load mutated its input");
+        if (StateDigest.Hash(corrupt) != original)
+            throw new Exception("rejected load mutated its input");
     });
 }
 void AdmitMetadata(string name, Action<JsonObject> edit)
 {
     Check(name, () =>
     {
-        var save = (JsonObject)good.DeepClone(); edit(save); var before = save.ToJsonString();
+        var save = (JsonObject)good.DeepClone();
+        edit(save);
+        var before = save.ToJsonString();
         var loaded = persistence.Load(save);
         Equal(save["state"]!, loaded, "accepted metadata load");
         Equal(save, persistence.Save(loaded, save["savedAt"]!.GetValue<string>()), "accepted metadata roundtrip");
-        if (save.ToJsonString() != before) throw new Exception("accepted metadata load mutated input");
+        if (save.ToJsonString() != before)
+            throw new Exception("accepted metadata load mutated input");
     });
 }
 JsonObject LiveSave() => persistence.Save(initial, "2026-01-01T00:00:00.000Z");
@@ -92,10 +103,12 @@ foreach (var aggression in new[] { "0.35", "0.58", "0.8" })
         var level = oracle["level"]!.AsObject();
         var replay = oracle["replay"]!.AsObject();
         var result = engine.ReplayBattle(level, replay);
-        if (result.DivergedAt is not null) throw new Exception($"Diverged at {result.DivergedAt}: {result.Reason}");
+        if (result.DivergedAt is not null)
+            throw new Exception($"Diverged at {result.DivergedAt}: {result.Reason}");
         Equal(oracle["finalSave"]!["state"]!, result.State, "replayed final state");
         var recorder = new BattleRecorder(manifest, oracle["initialState"]!.AsObject());
-        foreach (var action in replay["actions"]!.AsArray().OfType<JsonObject>()) recorder.Record(action);
+        foreach (var action in replay["actions"]!.AsArray().OfType<JsonObject>())
+            recorder.Record(action);
         Equal(replay, recorder.Replay(result.State), "source recorder document");
     });
     Check($"midbattle resume {aggression}", () =>
@@ -104,7 +117,8 @@ foreach (var aggression in new[] { "0.35", "0.58", "0.8" })
         var original = engine.CreateBattle(oracle["level"]!.AsObject(), replay["seed"]!.GetValue<uint>());
         var actions = replay["actions"]!.AsArray().OfType<JsonObject>().ToArray();
         var split = actions.Length / 2;
-        foreach (var action in actions.Take(split)) original.Dispatch(action);
+        foreach (var action in actions.Take(split))
+            original.Dispatch(action);
         var document = engine.SaveBattle(original.Snapshot(), "2026-01-01T00:00:00.000Z");
         var resumed = engine.LoadSavedBattle(JsonNode.Parse(document.ToJsonString()));
         Equal(original.Snapshot(), resumed.Snapshot(), "resumed midpoint");
@@ -112,7 +126,8 @@ foreach (var aggression in new[] { "0.35", "0.58", "0.8" })
         {
             original.Dispatch(action);
             resumed.Dispatch(action);
-            if (original.StateHash != resumed.StateHash) throw new Exception("resume diverged after an action");
+            if (original.StateHash != resumed.StateHash)
+                throw new Exception("resume diverged after an action");
         }
         Equal(oracle["finalSave"]!["state"]!, resumed.Snapshot(), "resumed final state");
     });
@@ -124,14 +139,17 @@ Check("save, load and header own detached data", () =>
     var save = persistence.Save(state, "2026-01-01T00:00:00.000Z");
     var hash = StateDigest.Hash(save);
     state["units"]![0]!["hp"] = 1;
-    if (StateDigest.Hash(save) != hash) throw new Exception("live state mutated save");
+    if (StateDigest.Hash(save) != hash)
+        throw new Exception("live state mutated save");
     var loaded = persistence.Load(save);
     loaded["units"]![0]!["hp"] = 2;
     var header = persistence.Header(save);
     header["turn"] = 999;
-    if (StateDigest.Hash(save) != hash) throw new Exception("loaded state/header mutated save");
+    if (StateDigest.Hash(save) != hash)
+        throw new Exception("loaded state/header mutated save");
     save["state"]!["units"]![0]!["hp"] = 3;
-    if (loaded["units"]![0]!["hp"]!.GetValue<int>() != 2) throw new Exception("save mutated loaded state");
+    if (loaded["units"]![0]!["hp"]!.GetValue<int>() != 2)
+        throw new Exception("save mutated loaded state");
 });
 Check("save exact top-level ownership", () =>
 {

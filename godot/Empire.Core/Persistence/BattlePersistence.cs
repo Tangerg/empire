@@ -4,16 +4,21 @@ using Empire.Core.State;
 
 namespace Empire.Core.Persistence;
 
+public sealed record BattlePersistenceRules(BattleSaveEnvironment Environment, IBattleSaveReader Reader);
+
 public sealed class BattlePersistence
 {
     public const int Schema = 3;
     private readonly BattleSaveEnvironment environment;
     private readonly IBattleSaveReader reader;
 
-    public BattlePersistence(BattleSaveEnvironment environment, IBattleSaveReader reader)
+    public BattlePersistence(BattlePersistenceRules rules)
     {
-        this.environment = environment with { RulesetManifest = (JsonObject)environment.RulesetManifest.DeepClone() };
-        this.reader = reader;
+        environment = rules.Environment with
+        {
+            RulesetManifest = (JsonObject)rules.Environment.RulesetManifest.DeepClone()
+        };
+        reader = rules.Reader;
     }
 
     public JsonObject Header(JsonNode? raw) => reader.Header(raw);
@@ -30,13 +35,21 @@ public sealed class BattlePersistence
             ["battle"] = new JsonObject
             {
                 ["levelId"] = state["levelId"]?.DeepClone(),
-                ["turn"] = state["turn"]?.DeepClone(), ["phase"] = state["phase"]?.DeepClone(),
+                ["turn"] = state["turn"]?.DeepClone(),
+                ["phase"] = state["phase"]?.DeepClone(),
             },
-            ["ruleset"] = environment.RulesetManifest.DeepClone(), ["savedAt"] = savedAt, ["state"] = state.DeepClone(),
+            ["ruleset"] = environment.RulesetManifest.DeepClone(),
+            ["savedAt"] = savedAt,
+            ["state"] = state.DeepClone(),
         };
-        try { return reader.Load(document, environment); }
+        try
+        {
+            return reader.Load(document, environment);
+        }
         catch (StoredDocumentException error)
-        { throw new DomainInvariantException($"cannot save invalid live battle: {error.Message}", error); }
+        {
+            throw new DomainInvariantException($"cannot save invalid live battle: {error.Message}", error);
+        }
     }
 
     public JsonObject Load(JsonNode? raw)

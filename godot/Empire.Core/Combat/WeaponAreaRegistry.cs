@@ -22,7 +22,8 @@ public sealed class WeaponAreaRegistry : KeyedRegistry<WeaponAreaShape, WeaponAr
         var seen = new HashSet<int>();
         var cells = new List<Coord>();
         foreach (var cell in Get(area).Cells(board, from, target))
-            if (board.Contains(cell) && seen.Add(board.IndexOf(cell))) cells.Add(cell);
+            if (board.Contains(cell) && seen.Add(board.IndexOf(cell)))
+                cells.Add(cell);
         return cells.AsReadOnly();
     }
 

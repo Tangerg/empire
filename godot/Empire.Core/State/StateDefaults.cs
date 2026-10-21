@@ -36,9 +36,11 @@ internal static class StateDefaults
             ["baseResourceGrants"] = new JsonArray(),
             ["siteResourceOverrides"] = new JsonObject(),
         };
-        if (level["rules"] is not { } authoredRules) return result;
+        if (level["rules"] is not { } authoredRules)
+            return result;
         var overrides = StateJson.Object(authoredRules, "rules");
-        foreach (var pair in overrides) result[pair.Key] = pair.Value?.DeepClone();
+        foreach (var pair in overrides)
+            result[pair.Key] = pair.Value?.DeepClone();
         result["baseResourceGrants"] = StateJson.CopyArray(overrides["baseResourceGrants"], "baseResourceGrants");
         result["siteResourceOverrides"] = StateJson.CopyObject(overrides["siteResourceOverrides"], "siteResourceOverrides");
         return result;

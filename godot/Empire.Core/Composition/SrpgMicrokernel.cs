@@ -10,7 +10,8 @@ public sealed class SrpgMicrokernel
 
     public SrpgMicrokernel Use(EnginePlugin plugin)
     {
-        if (EcmaText.IsBlank(plugin.Id)) throw new DomainInvariantException("engine plugin id cannot be empty");
+        if (EcmaText.IsBlank(plugin.Id))
+            throw new DomainInvariantException("engine plugin id cannot be empty");
         if (!double.IsFinite(plugin.Version) || Math.Truncate(plugin.Version) != plugin.Version || plugin.Version < 1)
             throw new DomainInvariantException($"engine plugin \"{plugin.Id}\" version must be a positive integer");
         if (plugins.TryGetValue(plugin.Id, out var installed))
@@ -23,7 +24,8 @@ public sealed class SrpgMicrokernel
 
     public SrpgMicrokernel UseAll(IEnumerable<EnginePlugin> additions)
     {
-        foreach (var plugin in additions) Use(plugin);
+        foreach (var plugin in additions)
+            Use(plugin);
         return this;
     }
 
@@ -37,7 +39,10 @@ public sealed class SrpgMicrokernel
         foreach (var plugin in ordered)
         {
             var context = new KernelPluginContext(store, plugin.Id);
-            try { plugin.Install(context); }
+            try
+            {
+                plugin.Install(context);
+            }
             finally { context.Close(); }
             AssertManifest(plugin, "provide", plugin.Provides, store.ProvidedBy(plugin.Id));
             AssertManifest(plugin, "override", plugin.Overrides, store.OverriddenBy(plugin.Id));
@@ -74,7 +79,8 @@ public sealed class SrpgMicrokernel
         var overriders = new Dictionary<string, List<string>>(StringComparer.Ordinal);
         foreach (var plugin in batch)
         {
-            foreach (var key in plugin.Provides.Concat(plugin.Overrides).Concat(plugin.RequiresCapabilities)) store.CheckKey(key);
+            foreach (var key in plugin.Provides.Concat(plugin.Overrides).Concat(plugin.RequiresCapabilities))
+                store.CheckKey(key);
             foreach (var capability in plugin.Provides)
             {
                 if (introducers.TryGetValue(capability.Id, out var provider) && provider != plugin.Id)

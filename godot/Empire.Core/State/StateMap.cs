@@ -96,9 +96,14 @@ internal static class StateMap
         }
         return new JsonObject
         {
-            ["width"] = width, ["height"] = height, ["tiles"] = tiles,
-            ["owners"] = owners, ["captureProgress"] = StateJson.Zeros(size),
-            ["elevation"] = elevation, ["cliffs"] = cliffs, ["directionalCover"] = directionalCover,
+            ["width"] = width,
+            ["height"] = height,
+            ["tiles"] = tiles,
+            ["owners"] = owners,
+            ["captureProgress"] = StateJson.Zeros(size),
+            ["elevation"] = elevation,
+            ["cliffs"] = cliffs,
+            ["directionalCover"] = directionalCover,
         };
     }
 

@@ -14,19 +14,25 @@ var fixture = EcmaJson.Parse(File.ReadAllText(args[0]))!.AsObject();
 var versionFixture = EcmaJson.Parse(File.ReadAllText(args[1]))!.AsObject();
 var versionPacks = EcmaJson.Parse(File.ReadAllText(Path.Combine(args[2], "godot/data/content-packs.json")))!.AsArray();
 var versionCatalog = new ReadOnlyContent(versionPacks);
-var persistenceEngine = new Lazy<GrayFlagEngine>(() => new GrayFlagEngine(versionPacks));
+var persistenceEngine = new Lazy<BattleEngine>(() => new BattleEngine(versionPacks));
 var referenceRules = new Lazy<RuleReferenceRules>(() => new RuleReferenceRules
 {
-    Content = persistenceEngine.Value.Catalog, Grids = persistenceEngine.Value.Grids, Abilities = persistenceEngine.Value.Abilities,
-    HitEffects = persistenceEngine.Value.Combat.HitEffects, Objectives = persistenceEngine.Value.Objectives,
-    ScenarioConditions = persistenceEngine.Value.ScenarioConditions, ScenarioEffects = persistenceEngine.Value.ScenarioEffects,
-    Reactions = persistenceEngine.Value.Reactions, TurnOrders = persistenceEngine.Value.TurnOrders,
-    AreaShapes = persistenceEngine.Value.AreaShapes, Directives = persistenceEngine.Value.Directives,
+    Content = persistenceEngine.Value.Catalog,
+    Grids = persistenceEngine.Value.Grids,
+    Abilities = persistenceEngine.Value.Abilities,
+    HitEffects = persistenceEngine.Value.Combat.HitEffects,
+    Objectives = persistenceEngine.Value.Objectives,
+    ScenarioConditions = persistenceEngine.Value.ScenarioConditions,
+    ScenarioEffects = persistenceEngine.Value.ScenarioEffects,
+    Reactions = persistenceEngine.Value.Reactions,
+    TurnOrders = persistenceEngine.Value.TurnOrders,
+    AreaShapes = persistenceEngine.Value.AreaShapes,
+    Directives = persistenceEngine.Value.Directives,
 });
 var structuralGuards = new Lazy<BattleSaveFeatures>(() => new BattleSaveFeatures().Guard("deployment", DeploymentStateValidation.Issues)
     .Guard("transport", persistenceEngine.Value.Transport.StoredStateIssues));
-BattlePersistence PersistenceFor(JsonObject manifest) => new(
-    new BattleSaveEnvironment(referenceRules.Value, persistenceEngine.Value.ReferenceChecks, manifest, structuralGuards.Value), persistenceEngine.Value.Saves);
+BattlePersistence PersistenceFor(JsonObject manifest) => new(new BattlePersistenceRules(
+    new BattleSaveEnvironment(referenceRules.Value, persistenceEngine.Value.ReferenceChecks, manifest, structuralGuards.Value), persistenceEngine.Value.Saves));
 var passed = 0;
 var failed = 0;
 foreach (var item in fixture["cases"]!.AsArray().OfType<JsonObject>())
@@ -98,7 +104,11 @@ Check("manifest is a detached immutable registration-order snapshot", () =>
     Assert(before.Count == 1 && result.PluginManifest.Count == 1, "manifest changed with builder");
     Assert(kernel.PluginManifest.Keys.SequenceEqual(new[] { "z", "a" }), "manifest globally sorted");
     var dictionary = (IDictionary<string, double>)result.PluginManifest;
-    try { dictionary.Add("intruder", 4); throw new Exception("manifest allowed mutation"); }
+    try
+    {
+        dictionary.Add("intruder", 4);
+        throw new Exception("manifest allowed mutation");
+    }
     catch (NotSupportedException) { }
     Assert(!kernel.PluginManifest.ContainsKey("intruder"), "manifest mutation changed builder");
 });
@@ -110,7 +120,11 @@ Check("plugin declarations snapshot caller arrays", () =>
     declarations[0] = new CapabilityKey<int>("changed");
     var result = new SrpgMicrokernel().Use(plugin).Compose();
     Assert(result.Require(key) == "value", "external declaration array changed composition");
-    try { ((IList<CapabilityKey>)plugin.Provides)[0] = declarations[0]; throw new Exception("plugin manifest allowed mutation"); }
+    try
+    {
+        ((IList<CapabilityKey>)plugin.Provides)[0] = declarations[0];
+        throw new Exception("plugin manifest allowed mutation");
+    }
     catch (NotSupportedException) { }
 });
 Check("anonymous composition cannot be recorded or saved", () =>
@@ -151,7 +165,11 @@ foreach (var item in versionFixture["errors"]!.AsArray().OfType<JsonObject>())
         var persistence = PersistenceFor(goodManifest);
         var save = persistence.Save(versionFixture["state"]!.AsObject(), versionFixture["savedAt"]!.GetValue<string>());
         save["ruleset"]!["plugins"]!["test.versioned"] = Version(item["version"]);
-        try { persistence.Load(save); throw new Exception("invalid stored version accepted"); }
+        try
+        {
+            persistence.Load(save);
+            throw new Exception("invalid stored version accepted");
+        }
         catch (StoredDocumentException error) { Assert(error.Message == item["error"]!.GetValue<string>(), $"Wrong stored-version error: {error.Message}"); }
     });
 }
@@ -181,9 +199,15 @@ foreach (var item in versionFixture["idCases"]!.AsArray().OfType<JsonObject>())
             Assert(StateDigest.Hash(persistence.Load(save)) == item["loadedStateHash"]!.GetValue<string>(), "ID changed stored state");
         else
         {
-            try { persistence.Load(save); throw new Exception("invalid stored ID accepted"); }
+            try
+            {
+                persistence.Load(save);
+                throw new Exception("invalid stored ID accepted");
+            }
             catch (StoredDocumentException error)
-            { Assert(error.Message == EcmaJson.ReadString(item["error"]), "Wrong stored-ID error"); }
+            {
+                Assert(error.Message == EcmaJson.ReadString(item["error"]), "Wrong stored-ID error");
+            }
         }
     });
 }
@@ -193,12 +217,18 @@ foreach (var item in versionFixture["boundaryCases"]!.AsArray().OfType<JsonObjec
     Check($"source content pack and campaign level blank admission {CodeUnits(id)}", () =>
     {
         string? packError = null;
-        try { RulesetManifest.Create(new ReadOnlyContent([new JsonObject { ["id"] = id, ["version"] = 1 }]), new Dictionary<string, double>()); }
+        try
+        {
+            RulesetManifest.Create(new ReadOnlyContent([new JsonObject { ["id"] = id, ["version"] = 1 }]), new Dictionary<string, double>());
+        }
         catch (DomainInvariantException error) { packError = error.Message; }
         Assert(packError == item["packError"]?.GetValue<string>(), "content pack whitespace admission differs");
         var definition = item["definition"]!.AsObject();
         string? battleError = null;
-        try { CampaignNodeRegistry.Core().Validate(new CampaignNodeInspection(definition), definition["nodes"]![0]!.AsObject()); }
+        try
+        {
+            CampaignNodeRegistry.Core().Validate(new CampaignNodeInspection(definition), definition["nodes"]![0]!.AsObject());
+        }
         catch (CampaignInvariantException error) { battleError = error.Message; }
         Assert(battleError == item["battleError"]?.GetValue<string>(), "campaign level whitespace admission differs");
     });
@@ -214,14 +244,19 @@ Check("native composition identity deliberately differs from source", () =>
     var sourceManifest = versionFixture["defaultManifest"]!.AsObject();
     var original = sourceManifest.ToJsonString();
     var expected = FixtureRuleset.ExpectedNative(sourceManifest);
-    var actual = new GrayFlagEngine(versionPacks).RulesetManifest;
+    var actual = new BattleEngine(versionPacks).RulesetManifest;
     Equal(expected, actual);
     Assert(StateDigest.Hash(sourceManifest) != StateDigest.Hash(actual), "native contract changed without a new persisted identity");
     Assert(sourceManifest.ToJsonString() == original, "fixture identity declaration changed the source oracle");
     foreach (var invalid in new[] { (JsonObject)sourceManifest.DeepClone(), expected })
     {
-        if (!invalid["plugins"]!.AsObject().ContainsKey("engine.tactical-space")) invalid["plugins"]!["engine.content"] = 2;
-        try { FixtureRuleset.ExpectedNative(invalid); throw new Exception("fixture declaration admitted a mismatched identity"); }
+        if (!invalid["plugins"]!.AsObject().ContainsKey("engine.tactical-space"))
+            invalid["plugins"]!["engine.content"] = 2;
+        try
+        {
+            FixtureRuleset.ExpectedNative(invalid);
+            throw new Exception("fixture declaration admitted a mismatched identity");
+        }
         catch (InvalidOperationException) { }
     }
 });
@@ -230,16 +265,24 @@ if (failed != 0) throw new Exception($"Kernel contract failures: {failed}");
 
 void Check(string name, Action run)
 {
-    try { run(); passed++; }
+    try
+    {
+        run();
+        passed++;
+    }
     catch (Exception error) { failed++; Console.Error.WriteLine($"FAIL {name}: {error}"); }
 }
 static void Assert(bool condition, string message)
 {
-    if (!condition) throw new Exception(message);
+    if (!condition)
+        throw new Exception(message);
 }
 static void Throws(Action action, string message)
 {
-    try { action(); }
+    try
+    {
+        action();
+    }
     catch (DomainInvariantException error)
     {
         Assert(error.Message == message, $"Unexpected invariant error: {error.Message}");
@@ -254,9 +297,16 @@ static void Equal(JsonNode expected, JsonNode actual)
 }
 static double Version(JsonNode? value)
 {
-    if (value is null) return 1;
+    if (value is null)
+        return 1;
     if (value is JsonValue scalar && scalar.TryGetValue<string>(out var special))
-        return special switch { "NaN" => double.NaN, "Infinity" => double.PositiveInfinity, "-Infinity" => double.NegativeInfinity, _ => throw new Exception("Unknown version encoding") };
+        return special switch
+        {
+            "NaN" => double.NaN,
+            "Infinity" => double.PositiveInfinity,
+            "-Infinity" => double.NegativeInfinity,
+            _ => throw new Exception("Unknown version encoding")
+        };
     return value.GetValue<double>();
 }
 static string CodeUnits(string value) => value.Length == 0 ? "(empty)" : string.Join(" ", value.Select(unit => $"U+{(int)unit:X4}"));
@@ -266,7 +316,8 @@ static IEnumerable<CapabilityKey> Keys(JsonNode? values) => Strings(values).Sele
 static JsonArray Manifest(IReadOnlyDictionary<string, double> manifest) => new(manifest.Select(pair => (JsonNode)new JsonArray(pair.Key, pair.Value)).ToArray());
 static JsonObject Run(JsonObject input)
 {
-    if (input["kind"]!.GetValue<string>() == "dependency") return Order(input);
+    if (input["kind"]!.GetValue<string>() == "dependency")
+        return Order(input);
     var trace = new JsonArray();
     try
     {
@@ -280,18 +331,34 @@ static JsonObject Run(JsonObject input)
                 foreach (var operation in spec["ops"]?.AsArray().OfType<JsonObject>() ?? [])
                 {
                     var op = operation["op"]!.GetValue<string>();
-                    if (op == "manifest") { trace.Add(new JsonArray("manifest", Manifest(context.PluginManifest))); continue; }
-                    if (op == "fail") throw new Exception(operation["value"]!.GetValue<string>());
+                    if (op == "manifest")
+                    {
+                        trace.Add(new JsonArray("manifest", Manifest(context.PluginManifest)));
+                        continue;
+                    }
+                    if (op == "fail")
+                        throw new Exception(operation["value"]!.GetValue<string>());
                     var key = Key(operation["key"]!.GetValue<string>());
                     var value = operation["value"]?.GetValue<string>();
                     switch (op)
                     {
-                        case "provide": context.Provide(key, value); break;
-                        case "replace": context.Replace(key, value); break;
-                        case "require": trace.Add(new JsonArray("require", key.Id, context.Require(key))); break;
-                        case "has": trace.Add(new JsonArray("has", key.Id, context.Has(key))); break;
-                        case "provider": trace.Add(new JsonArray("provider", key.Id, context.ProviderOf(key))); break;
-                        default: throw new Exception($"Unknown harness operation: {op}");
+                        case "provide":
+                            context.Provide(key, value);
+                            break;
+                        case "replace":
+                            context.Replace(key, value);
+                            break;
+                        case "require":
+                            trace.Add(new JsonArray("require", key.Id, context.Require(key)));
+                            break;
+                        case "has":
+                            trace.Add(new JsonArray("has", key.Id, context.Has(key)));
+                            break;
+                        case "provider":
+                            trace.Add(new JsonArray("provider", key.Id, context.ProviderOf(key)));
+                            break;
+                        default:
+                            throw new Exception($"Unknown harness operation: {op}");
                     }
                 }
             }, provides: Keys(spec["provides"]), overrides: Keys(spec["overrides"]),
@@ -377,13 +444,18 @@ static void FailedContextLifetime(bool failManifest)
     {
         retained = context;
         context.Provide(key, "value");
-        if (!failManifest) throw new InvalidOperationException("installation failed");
+        if (!failManifest)
+            throw new InvalidOperationException("installation failed");
     }, provides: failManifest ? [] : [key]));
     if (failManifest)
         Throws(() => kernel.Compose(), "engine plugin \"failed\" did provide undeclared capability \"test.a\"");
     else
     {
-        try { kernel.Compose(); throw new Exception("installation error disappeared"); }
+        try
+        {
+            kernel.Compose();
+            throw new Exception("installation error disappeared");
+        }
         catch (InvalidOperationException error) { Assert(error.Message == "installation failed", "installation error changed"); }
     }
     Assert(retained is not null, "callback never ran");
@@ -399,7 +471,11 @@ static JsonObject Persistence()
     const string anonymousId = "engine.override.test.a";
     foreach (var value in new[] { RulesetManifest.Create(new ReadOnlyContent([]), new Dictionary<string, int>()), RulesetManifest.Create(TestCatalog(), new Dictionary<string, int> { [anonymousId] = 1 }), manifest })
     {
-        try { RulesetManifest.RequirePersistent(value); errors.Add("accepted"); }
+        try
+        {
+            RulesetManifest.RequirePersistent(value);
+            errors.Add("accepted");
+        }
         catch (DomainInvariantException error) { errors.Add(error.Message); }
     }
     return new JsonObject

@@ -7,9 +7,18 @@ namespace Empire.Core.Tactics;
 
 public sealed class TacticalBattlefield
 {
-    internal StateContent Content { get; }
-    public JsonObject State { get; }
-    public JsonObject Map { get; }
+    internal StateContent Content
+    {
+        get;
+    }
+    public JsonObject State
+    {
+        get;
+    }
+    public JsonObject Map
+    {
+        get;
+    }
     private readonly GridExtent extent;
 
     internal TacticalBattlefield(JsonObject state, StateContent content)
@@ -25,7 +34,8 @@ public sealed class TacticalBattlefield
 
     public TacticalCell Cell(Coord at)
     {
-        if (!Contains(at)) throw new DomainInvariantException($"battlefield cell out of bounds: {at.X},{at.Y}");
+        if (!Contains(at))
+            throw new DomainInvariantException($"battlefield cell out of bounds: {at.X},{at.Y}");
         return new TacticalCell(this, at);
     }
 
@@ -57,11 +67,15 @@ public sealed class TacticalBattlefield
         var profile = Content.Read("movementProfiles", movementClass);
         var destination = Cell(to);
         var cost = destination.MovementCost(movementClass);
-        if (cost is null || destination.BlocksMovement) return null;
-        if (IsCliff(from, to) && !(profile.TryGetProperty("ignoresCliffs", out var ignoresCliffs) && StateJson.IsTrue(ignoresCliffs))) return null;
+        if (cost is null || destination.BlocksMovement)
+            return null;
+        if (IsCliff(from, to) && !(profile.TryGetProperty("ignoresCliffs", out var ignoresCliffs) && StateJson.IsTrue(ignoresCliffs)))
+            return null;
         var delta = destination.Elevation - Cell(from).Elevation;
-        if (profile.TryGetProperty("maxClimb", out var maxClimb) && maxClimb.ValueKind != JsonValueKind.Null && delta > StateJson.Number(maxClimb, "maxClimb")) return null;
-        if (profile.TryGetProperty("maxDrop", out var maxDrop) && maxDrop.ValueKind != JsonValueKind.Null && -delta > StateJson.Number(maxDrop, "maxDrop")) return null;
+        if (profile.TryGetProperty("maxClimb", out var maxClimb) && maxClimb.ValueKind != JsonValueKind.Null && delta > StateJson.Number(maxClimb, "maxClimb"))
+            return null;
+        if (profile.TryGetProperty("maxDrop", out var maxDrop) && maxDrop.ValueKind != JsonValueKind.Null && -delta > StateJson.Number(maxDrop, "maxDrop"))
+            return null;
         return cost.Value + Math.Max(0, delta) * StateJson.Number(profile, "uphillCostPerLevel", 0);
     }
 }
@@ -69,8 +83,14 @@ public sealed class TacticalBattlefield
 public sealed class TacticalCell
 {
     private readonly TacticalBattlefield battlefield;
-    public Coord At { get; }
-    public int Index { get; }
+    public Coord At
+    {
+        get;
+    }
+    public int Index
+    {
+        get;
+    }
 
     internal TacticalCell(TacticalBattlefield battlefield, Coord at)
     {
@@ -91,7 +111,8 @@ public sealed class TacticalCell
     public double? MovementCost(string movementClass)
     {
         var costs = Terrain.GetProperty("cost");
-        if (!Empire.Core.Determinism.EcmaJson.TryGetProperty(costs, movementClass, out var cost) || cost.ValueKind == JsonValueKind.Null) return null;
+        if (!Empire.Core.Determinism.EcmaJson.TryGetProperty(costs, movementClass, out var cost) || cost.ValueKind == JsonValueKind.Null)
+            return null;
         var profile = battlefield.Content.Read("movementProfiles", movementClass);
         var tags = profile.GetProperty("tags").EnumerateArray()
             .Select(tag => StateJson.Text(tag)).ToHashSet(StringComparer.Ordinal);
@@ -101,7 +122,8 @@ public sealed class TacticalCell
             foreach (var entry in overlay.GetProperty("blockedMovementClasses").EnumerateArray())
             {
                 var blocked = StateJson.Text(entry);
-                if (blocked == movementClass || tags.Contains(blocked)) return null;
+                if (blocked == movementClass || tags.Contains(blocked))
+                    return null;
             }
             delta += StateJson.Number(overlay, "movementCostDelta", 0);
         }

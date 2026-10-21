@@ -28,8 +28,14 @@ public sealed class EnvironmentCatalog
     private readonly Dictionary<string, RuntimeEnvironmentAtlas> _atlases = new(StringComparer.Ordinal);
     private readonly RasterResources _rasters = new();
 
-    public int LogicalTileSize { get; }
-    public bool RuntimeReady { get; }
+    public int LogicalTileSize
+    {
+        get;
+    }
+    public bool RuntimeReady
+    {
+        get;
+    }
 
     public EnvironmentCatalog(EnvironmentManifest manifest,
         string resourceRoot = "res://assets/environment-builder-v1/")
@@ -104,14 +110,18 @@ public sealed class EnvironmentCatalog
             spec.CellWidth, spec.CellHeight, spec.Columns, index, atlas.PixelDensity);
         var region = frame.Region.Grow(-(float)inset * atlas.PixelDensity);
         var texture = new AtlasTexture { Atlas = frame.Atlas, Region = region, FilterClip = true };
-        return new Sprite2D { Texture = texture, Centered = false,
+        return new Sprite2D
+        {
+            Texture = texture,
+            Centered = false,
             Position = Vector2.One * -(float)bleed,
             Scale = Vector2.One * (float)((32 + bleed * 2) / (32 - inset * 2) / atlas.PixelDensity),
-            TextureFilter = CanvasItem.TextureFilterEnum.Nearest };
+            TextureFilter = CanvasItem.TextureFilterEnum.Nearest
+        };
     }
 
     public Sprite2D CreateSprite(string id, float placementScale = 1, bool flip = false, float opacity = 1,
-        CandidateShadowCache? shadows = null, CandidateShadowKind shadowKind = CandidateShadowKind.Environment)
+        ShadowCache? shadows = null, ShadowKind shadowKind = ShadowKind.Environment)
     {
         RasterResources.Positive(placementScale, $"placement scale of {id}");
         if (!float.IsFinite(opacity) || opacity < 0 || opacity > 1)
@@ -127,10 +137,11 @@ public sealed class EnvironmentCatalog
         sprite.FlipH = flip;
         sprite.Modulate = new Color(1, 1, 1, opacity);
         if (shadows is not null)
-            sprite.AddChild(CandidateSpriteShadows.Create(sprite, shadowKind, cell.PixelDensity, shadows));
+            sprite.AddChild(SpriteShadows.Create(sprite, shadowKind, cell.PixelDensity, shadows));
         sprite.SetMeta("environment_cell", cell.Id);
         sprite.SetMeta("atlas_id", cell.AtlasId);
-        if (cell.Footprint is { } footprint) sprite.SetMeta("visual_footprint", footprint);
+        if (cell.Footprint is { } footprint)
+            sprite.SetMeta("visual_footprint", footprint);
         return sprite;
     }
 }

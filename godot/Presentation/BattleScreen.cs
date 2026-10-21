@@ -12,6 +12,9 @@ using Empire.Localization;
 
 namespace Empire.Presentation;
 
+public sealed record BattleScreenRules(GameText Messages, BattleText BattleText,
+    ITacticalBattleSession Session, BoardViewRules Board);
+
 /// <summary>
 /// Thin interactive view. Selection and target mode are local UI state; all legal
 /// choices and committed state transitions are owned by the injected session.
@@ -84,14 +87,17 @@ public partial class BattleScreen : Control
 
     public override void _Process(double delta)
     {
-        if (!_built) return;
+        if (!_built)
+            return;
         _zoomOut.Disabled = _zoomIn.Disabled = !_bound || IsInputBlocked;
-        if (_bound && _camera?.ApplyPendingZoom() == true) ApplyCamera();
+        if (_bound && _camera?.ApplyPendingZoom() == true)
+            ApplyCamera();
     }
 
     public override void _Notification(int what)
     {
-        if (what == NotificationWMWindowFocusOut || what == NotificationApplicationFocusOut) _gestures?.Cancel();
+        if (what == NotificationWMWindowFocusOut || what == NotificationApplicationFocusOut)
+            _gestures?.Cancel();
     }
 
     public override void _Input(InputEvent input)
@@ -103,7 +109,8 @@ public partial class BattleScreen : Control
             _UnhandledKeyInput(input);
             return;
         }
-        if (!_bound || IsInputBlocked || _gestures?.ActivePointerId is null) return;
+        if (!_bound || IsInputBlocked || _gestures?.ActivePointerId is null)
+            return;
         // An active board gesture owns its release even after crossing a HUD panel.
         switch (input)
         {
@@ -114,7 +121,8 @@ public partial class BattleScreen : Control
             case InputEventMouseButton mouse when _gestures.ActivePointerId == 0:
                 if (mouse.ButtonIndex is MouseButton.WheelUp or MouseButton.WheelDown or MouseButton.WheelLeft or MouseButton.WheelRight)
                     MapInput(mouse);
-                else if (mouse.Canceled) _gestures.Cancel(0);
+                else if (mouse.Canceled)
+                    _gestures.Cancel(0);
                 else if (!mouse.Pressed && SourceButton(mouse.ButtonIndex) is { } button)
                     _gestures.PointerUp(0, button, ViewportToMap(mouse.Position));
                 GetViewport().SetInputAsHandled();
@@ -124,16 +132,20 @@ public partial class BattleScreen : Control
                 GetViewport().SetInputAsHandled();
                 break;
             case InputEventScreenTouch touch when _gestures.ActivePointerId == touch.Index + 1:
-                if (touch.Canceled) _gestures.Cancel(touch.Index + 1);
-                else if (!touch.Pressed) _gestures.PointerUp(touch.Index + 1, 0, ViewportToMap(touch.Position));
+                if (touch.Canceled)
+                    _gestures.Cancel(touch.Index + 1);
+                else if (!touch.Pressed)
+                    _gestures.PointerUp(touch.Index + 1, 0, ViewportToMap(touch.Position));
                 GetViewport().SetInputAsHandled();
                 break;
         }
     }
 
-    public void BindSession(GameText text, BattleText battleText, ITacticalBattleSession session, AssetCatalog assets, JsonObject level,
-        AuthoredScene authoredScene, EnvironmentCatalog environment, Func<string?, bool> facesLeft, Func<string?, Vector2>? directionVector = null, string? initialLogMessage = null)
+    public void BindSession(BattleScreenRules rules, JsonObject level, AuthoredScene authoredScene, string? initialLogMessage = null)
     {
+        var text = rules.Messages;
+        var battleText = rules.BattleText;
+        var session = rules.Session;
         ArgumentNullException.ThrowIfNull(session);
         _text = text;
         _battleText = battleText;
@@ -153,8 +165,8 @@ public partial class BattleScreen : Control
         _board.CancelPresentation();
         _snapshot = null;
         _presentedRevision = session.GetSnapshot().Revision;
-        _board.Configure(assets, level, authoredScene, environment, facesLeft, directionVector);
-        _hud.ConfigureArt(TacticalHudArt.Load(assets));
+        _board.Configure(rules.Board, level, authoredScene);
+        _hud.ConfigureArt(TacticalHudArt.Load(rules.Board.Assets));
         _session = session;
         _tactical = new TacticalSelectionController(_session.GetTacticalQueries(_tacticalBinding));
         _applicationBusy = false;
@@ -167,21 +179,22 @@ public partial class BattleScreen : Control
         var fallback = new CameraPoint(_board.FieldSize.X / 2, _board.FieldSize.Y / 2);
         var focus = BattlefieldFocus.Initial(state, CellCenter, fallback);
         _camera = new BattlefieldCamera(new(_board.FieldSize.X, _board.FieldSize.Y), new(74, 62, 74, 74), focus);
-        _gestures = new BattlefieldGestures(point => _camera?.HasViewport == true ? _camera.ToField(point) : null,
-            PressField, HoverField, () => HoverField(null), delta => { _camera?.Pan(delta); ApplyCamera(); }, notches => QueueZoom(notches * .1));
+        _gestures = new BattlefieldGestures(new(point => _camera?.HasViewport == true ? _camera.ToField(point) : null, PressField, HoverField, () => HoverField(null), delta => { _camera?.Pan(delta); ApplyCamera(); }, notches => QueueZoom(notches * .1)));
         ResizeCamera();
     }
 
     public void ConfigureTerrain(WorldMaterialsManifest materials)
     {
         _board.ConfigureTerrain(materials);
-        if (_state is not null) Refresh();
+        if (_state is not null)
+            Refresh();
     }
 
     public void ConfigureDynamicState(ReadOnlyContent content)
     {
         _board.ConfigureDynamicState(content);
-        if (_state is not null) Refresh();
+        if (_state is not null)
+            Refresh();
     }
 
     public void BindApplicationActions(Action? onSave = null, Action? onLoad = null, Action? onRestart = null, Action? onExit = null)
@@ -202,13 +215,18 @@ public partial class BattleScreen : Control
             button.CustomMinimumSize = new Vector2(90, 38);
             _applicationActions.AddChild(button);
         }
-        if (onSave is not null) AddAction(_text.Format("ui.battle.save"), onSave);
-        if (onLoad is not null) AddAction(_text.Format("ui.battle.load"), onLoad);
-        if (onRestart is not null) AddAction(_text.Format("ui.battle.restart"), () => {
-            _restartRequest = _restart;
-            _restartConfirmation.PopupCentered();
-        }, true);
-        if (onExit is not null) AddAction(_text.Format("ui.battle.camp"), onExit, true);
+        if (onSave is not null)
+            AddAction(_text.Format("ui.battle.save"), onSave);
+        if (onLoad is not null)
+            AddAction(_text.Format("ui.battle.load"), onLoad);
+        if (onRestart is not null)
+            AddAction(_text.Format("ui.battle.restart"), () =>
+            {
+                _restartRequest = _restart;
+                _restartConfirmation.PopupCentered();
+            }, true);
+        if (onExit is not null)
+            AddAction(_text.Format("ui.battle.camp"), onExit, true);
     }
 
     public void AppendMessage(string message)
@@ -228,9 +246,11 @@ public partial class BattleScreen : Control
     /// <summary>Allows the application root to refresh after an external session transition.</summary>
     public void Refresh()
     {
-        if (!_bound || _session is null || !IsInsideTree()) return;
+        if (!_bound || _session is null || !IsInsideTree())
+            return;
         var next = _session.GetSnapshot();
-        if (_presenting && next.Revision == _presentedRevision) return;
+        if (_presenting && next.Revision == _presentedRevision)
+            return;
         if (next.Transition is { } transition && transition.Revision == next.Revision && next.Revision > _presentedRevision)
         {
             _presentedRevision = next.Revision;
@@ -264,26 +284,33 @@ public partial class BattleScreen : Control
         try
         {
             var settled = await _board.PresentTransitionAsync(transition, next.VisibleUnitIds);
-            if (generation != _presentationGeneration || !IsInsideTree() || !ReferenceEquals(_session, session)) return;
+            if (generation != _presentationGeneration || !IsInsideTree() || !ReferenceEquals(_session, session))
+                return;
             var current = session!.GetSnapshot();
             ApplySnapshot(settled && current.Revision == next.Revision ? next : current);
         }
         catch (MissingArtResourceException error)
         {
-            if (generation != _presentationGeneration || !IsInsideTree() || !ReferenceEquals(_session, session)) return;
+            if (generation != _presentationGeneration || !IsInsideTree() || !ReferenceEquals(_session, session))
+                return;
             ApplySnapshot(next);
             ShowFeedback(_text.Format("error.presentation.playback_failed"));
             GD.PushWarning(error.ToString());
         }
         finally
         {
-            if (generation == _presentationGeneration) { _presenting = false; UpdateTactical(); }
+            if (generation == _presentationGeneration)
+            {
+                _presenting = false;
+                UpdateTactical();
+            }
         }
     }
 
     private void ApplySnapshot(BattleSnapshot next)
     {
-        if (_session is null) return;
+        if (_session is null)
+            return;
         _snapshot = next;
         _presentedRevision = next.Revision;
         _state = Empire.Core.Determinism.EcmaJson.Parse(_snapshot.State.GetRawText()) as JsonObject
@@ -300,8 +327,10 @@ public partial class BattleScreen : Control
 
     private void BuildInterface()
     {
-        if (_built) return;
-        if (_text is null) throw new InvalidOperationException("Bind the battle text dependencies before building the screen.");
+        if (_built)
+            return;
+        if (_text is null)
+            throw new InvalidOperationException("Bind the battle text dependencies before building the screen.");
         _built = true;
         _board.EventPresented += (transition, index) =>
         {
@@ -310,17 +339,24 @@ public partial class BattleScreen : Control
         };
         _board.PresentationRepaintRequested += () =>
         {
-            if (!_presenting || !_bound || _session is null || !IsInsideTree()) return;
+            if (!_presenting || !_bound || _session is null || !IsInsideTree())
+                return;
             var current = _session.GetSnapshot();
-            if (current.Revision != _presentedRevision) return;
+            if (current.Revision != _presentedRevision)
+                return;
             _state = Empire.Core.Determinism.EcmaJson.Parse(current.State.GetRawText())!.AsObject();
             UpdateHeader();
 
         };
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         // Material layers use negative world depths; a default-Z UI backdrop would cover them.
-        var background = new ColorRect { Name = "Backdrop", Color = new Color("#091712"),
-            ZIndex = -4096, MouseFilter = MouseFilterEnum.Ignore };
+        var background = new ColorRect
+        {
+            Name = "Backdrop",
+            Color = new Color("#091712"),
+            ZIndex = -4096,
+            MouseFilter = MouseFilterEnum.Ignore
+        };
         background.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         AddChild(background);
         var margins = new MarginContainer { Name = "Content" };
@@ -339,31 +375,46 @@ public partial class BattleScreen : Control
         var cameraControls = new HBoxContainer { Name = "CameraControls" };
         _zoomOut = Button("−", () => QueueZoom(-.15));
         _zoomIn = Button("+", () => QueueZoom(.15));
-        _zoomOut.Name = "ZoomOut"; _zoomIn.Name = "ZoomIn";
+        _zoomOut.Name = "ZoomOut";
+        _zoomIn.Name = "ZoomIn";
         _zoomOut.CustomMinimumSize = _zoomIn.CustomMinimumSize = new Vector2(38, 38);
-        _zoomOut.TooltipText = _text.Format("ui.battle.zoom_out"); _zoomIn.TooltipText = _text.Format("ui.battle.zoom_in");
-        cameraControls.AddChild(_zoomOut); cameraControls.AddChild(_zoomIn);
+        _zoomOut.TooltipText = _text.Format("ui.battle.zoom_out");
+        _zoomIn.TooltipText = _text.Format("ui.battle.zoom_in");
+        cameraControls.AddChild(_zoomOut);
+        cameraControls.AddChild(_zoomIn);
         heading.AddChild(cameraControls);
         _applicationActions = new HBoxContainer { Name = "ApplicationActions" };
         heading.AddChild(_applicationActions);
         _turn = Text(_text.Format("ui.battle.unbound"), 18, new Color("#d1cfbc"));
         heading.AddChild(_turn);
-        _restartConfirmation = new ConfirmationDialog {
-            Title = _text.Format("ui.battle.restart_title"), DialogText = _text.Format("ui.battle.restart_warning"),
-            OkButtonText = _text.Format("ui.battle.restart"), CancelButtonText = _text.Format("ui.common.cancel") };
-        _restartConfirmation.Confirmed += () => {
+        _restartConfirmation = new ConfirmationDialog
+        {
+            Title = _text.Format("ui.battle.restart_title"),
+            DialogText = _text.Format("ui.battle.restart_warning"),
+            OkButtonText = _text.Format("ui.battle.restart"),
+            CancelButtonText = _text.Format("ui.common.cancel")
+        };
+        _restartConfirmation.Confirmed += () =>
+        {
             var request = _restartRequest;
             _restartRequest = null;
-            if (_bound && IsInsideTree()) request?.Invoke();
+            if (_bound && IsInsideTree())
+                request?.Invoke();
         };
         _restartConfirmation.Canceled += () => _restartRequest = null;
         AddChild(_restartConfirmation);
         var body = new HBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
         body.AddThemeConstantOverride("separation", 20);
         column.AddChild(body);
-        _mapArea = new Control { Name = "MapArea", SizeFlagsHorizontal = SizeFlags.ExpandFill,
-            SizeFlagsVertical = SizeFlags.ExpandFill, ClipContents = true, MouseFilter = MouseFilterEnum.Stop,
-            TooltipText = _text.Format("ui.battle.camera_hint") };
+        _mapArea = new Control
+        {
+            Name = "MapArea",
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+            SizeFlagsVertical = SizeFlags.ExpandFill,
+            ClipContents = true,
+            MouseFilter = MouseFilterEnum.Stop,
+            TooltipText = _text.Format("ui.battle.camera_hint")
+        };
         body.AddChild(_mapArea);
         _world = new Node2D { Name = "World" };
         _mapArea.AddChild(_world);
@@ -374,18 +425,32 @@ public partial class BattleScreen : Control
         _mapArea.MouseExited += () => _gestures?.PointerLeave();
 
         var panel = new PanelContainer { CustomMinimumSize = new Vector2(340, 0) };
-        panel.AddThemeStyleboxOverride("panel", new StyleBoxFlat {
-            BgColor = new Color("#14251f"), BorderColor = new Color("#465348"),
-            BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1,
-            ContentMarginLeft = 16, ContentMarginRight = 16, ContentMarginTop = 16, ContentMarginBottom = 16 });
+        panel.AddThemeStyleboxOverride("panel", new StyleBoxFlat
+        {
+            BgColor = new Color("#14251f"),
+            BorderColor = new Color("#465348"),
+            BorderWidthLeft = 1,
+            BorderWidthTop = 1,
+            BorderWidthRight = 1,
+            BorderWidthBottom = 1,
+            ContentMarginLeft = 16,
+            ContentMarginRight = 16,
+            ContentMarginTop = 16,
+            ContentMarginBottom = 16
+        });
         body.AddChild(panel);
         var side = new VBoxContainer { CustomMinimumSize = new Vector2(308, 0) };
         side.AddThemeConstantOverride("separation", 12);
         panel.AddChild(side);
         side.AddChild(Text(_text.Format("ui.battle.orders"), 21, new Color("#eee1bd")));
 
-        var scroll = new ScrollContainer { Name = "CommandScroll", SizeFlagsVertical = SizeFlags.ExpandFill,
-            CustomMinimumSize = new Vector2(0, 60), HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
+        var scroll = new ScrollContainer
+        {
+            Name = "CommandScroll",
+            SizeFlagsVertical = SizeFlags.ExpandFill,
+            CustomMinimumSize = new Vector2(0, 60),
+            HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled
+        };
         _hudScroll = scroll;
         side.AddChild(scroll);
         _hud = new TacticalHud { Name = "TacticalHud", SizeFlagsHorizontal = SizeFlags.ExpandFill };
@@ -413,7 +478,8 @@ public partial class BattleScreen : Control
 
     private void ResizeCamera()
     {
-        if (!_built || _camera is null) return;
+        if (!_built || _camera is null)
+            return;
         // MapArea already excludes the native HUD. Reserving the source overlay bands again would double-pad it.
         _camera.Resize(new(_mapArea.Size.X, _mapArea.Size.Y));
         ApplyCamera();
@@ -421,19 +487,22 @@ public partial class BattleScreen : Control
 
     private void ApplyCamera()
     {
-        if (_camera is null || !_camera.HasViewport) return;
+        if (_camera is null || !_camera.HasViewport)
+            return;
         _world.Scale = Vector2.One * (float)_camera.Zoom;
         _world.Position = new Vector2((float)_camera.FieldOrigin.X, (float)_camera.FieldOrigin.Y);
     }
 
     private void QueueZoom(double delta)
     {
-        if (_bound && IsInsideTree() && !IsInputBlocked) _camera?.QueueZoom(delta);
+        if (_bound && IsInsideTree() && !IsInputBlocked)
+            _camera?.QueueZoom(delta);
     }
 
     private void MapInput(InputEvent input)
     {
-        if (!_bound || !IsInsideTree() || _gestures is null || _camera is null) return;
+        if (!_bound || !IsInsideTree() || _gestures is null || _camera is null)
+            return;
         if (IsInputBlocked)
         {
             // Inspection/cursor projection remains read-only while actions settle.
@@ -446,7 +515,8 @@ public partial class BattleScreen : Control
             case InputEventMouseButton mouse:
                 if (mouse.ButtonIndex is MouseButton.WheelUp or MouseButton.WheelDown or MouseButton.WheelLeft or MouseButton.WheelRight)
                 {
-                    if (!mouse.Pressed) return;
+                    if (!mouse.Pressed)
+                        return;
                     var vertical = mouse.ButtonIndex is MouseButton.WheelUp or MouseButton.WheelDown;
                     var sign = mouse.ButtonIndex is MouseButton.WheelUp or MouseButton.WheelLeft ? -1 : 1;
                     if (!_gestures.Wheel(vertical ? sign : 0, mouse.CtrlPressed, mouse.MetaPressed))
@@ -459,19 +529,26 @@ public partial class BattleScreen : Control
                     AcceptEvent();
                     return;
                 }
-                if (SourceButton(mouse.ButtonIndex) is not { } button) return;
-                if (mouse.Canceled) _gestures.Cancel(0);
-                else if (mouse.Pressed) _gestures.PointerDown(0, button, new(mouse.Position.X, mouse.Position.Y));
-                else _gestures.PointerUp(0, button, new(mouse.Position.X, mouse.Position.Y));
+                if (SourceButton(mouse.ButtonIndex) is not { } button)
+                    return;
+                if (mouse.Canceled)
+                    _gestures.Cancel(0);
+                else if (mouse.Pressed)
+                    _gestures.PointerDown(0, button, new(mouse.Position.X, mouse.Position.Y));
+                else
+                    _gestures.PointerUp(0, button, new(mouse.Position.X, mouse.Position.Y));
                 AcceptEvent();
                 break;
             case InputEventMouseMotion motion:
                 _gestures.PointerMove(0, new(motion.Position.X, motion.Position.Y));
                 break;
             case InputEventScreenTouch touch:
-                if (touch.Canceled) _gestures.Cancel(touch.Index + 1);
-                else if (touch.Pressed) _gestures.PointerDown(touch.Index + 1, 0, new(touch.Position.X, touch.Position.Y), touch.Index == 0);
-                else _gestures.PointerUp(touch.Index + 1, 0, new(touch.Position.X, touch.Position.Y));
+                if (touch.Canceled)
+                    _gestures.Cancel(touch.Index + 1);
+                else if (touch.Pressed)
+                    _gestures.PointerDown(touch.Index + 1, 0, new(touch.Position.X, touch.Position.Y), touch.Index == 0);
+                else
+                    _gestures.PointerUp(touch.Index + 1, 0, new(touch.Position.X, touch.Position.Y));
                 AcceptEvent();
                 break;
             case InputEventScreenDrag drag:
@@ -491,11 +568,15 @@ public partial class BattleScreen : Control
 
     private void PressField(CameraPoint point, int button)
     {
-        if (IsInputBlocked || !_bound || !IsInsideTree() || _state is null) return;
-        if (point.X < 0 || point.Y < 0 || point.X >= _board.FieldSize.X || point.Y >= _board.FieldSize.Y) return;
+        if (IsInputBlocked || !_bound || !IsInsideTree() || _state is null)
+            return;
+        if (point.X < 0 || point.Y < 0 || point.X >= _board.FieldSize.X || point.Y >= _board.FieldSize.Y)
+            return;
         var cell = new BoardCell((int)Math.Floor(point.X / 32), (int)Math.Floor(point.Y / 32));
-        if (_tactical is null || !Current(_tactical.Stamp) || !_tactical.InteractiveCells.Contains(cell)) return;
-        if (button == 0) SelectCell(cell);
+        if (_tactical is null || !Current(_tactical.Stamp) || !_tactical.InteractiveCells.Contains(cell))
+            return;
+        if (button == 0)
+            SelectCell(cell);
         else if (button == 2)
         {
             HandleTactical(_tactical.Back(_tactical.Stamp));
@@ -510,23 +591,29 @@ public partial class BattleScreen : Control
     private static CameraPoint CellCenter(CameraPoint cell) => new((cell.X + .5) * 32, (cell.Y + .5) * 32);
     private static int? SourceButton(MouseButton button) => button switch
     {
-        MouseButton.Left => 0, MouseButton.Middle => 1, MouseButton.Right => 2, _ => null,
+        MouseButton.Left => 0,
+        MouseButton.Middle => 1,
+        MouseButton.Right => 2,
+        _ => null,
     };
 
     /// <summary>Cell interaction entry point also used by native contract checks.</summary>
     public void SelectCell(BoardCell cell)
     {
-        if (_tactical is null || !Current(_tactical.Stamp)) return;
+        if (_tactical is null || !Current(_tactical.Stamp))
+            return;
         HandleTactical(_tactical.Click(_tactical.Stamp, cell));
     }
 
     private void UpdateHeader()
     {
-        if (_state is null) return;
+        if (_state is null)
+            return;
         var over = _state["phase"]!.GetValue<string>() == "over";
         _turn.Text = over ? _text.Format("battle.header.finished") : _text.Format("battle.header.turn",
             _state["turn"]!.GetValue<int>(), _battleText.PlayerName(_state["levelId"]!.GetValue<string>(), _state["currentPlayer"]!.GetValue<int>()));
-        if (over) _feedback.Text = _battleText.DescribeConclusion(EcmaJson.ToElement(_state));
+        if (over)
+            _feedback.Text = _battleText.DescribeConclusion(EcmaJson.ToElement(_state));
     }
 
     // Tactical intent integration lives in BattleScreen.Tactical.cs.
@@ -538,12 +625,20 @@ public partial class BattleScreen : Control
         label.AddThemeColorOverride("font_color", color);
         return label;
     }
-    private static Label Wrapped(string text) => new() { Text = text,
-        AutowrapMode = TextServer.AutowrapMode.WordSmart, SizeFlagsHorizontal = SizeFlags.ExpandFill };
+    private static Label Wrapped(string text) => new()
+    {
+        Text = text,
+        AutowrapMode = TextServer.AutowrapMode.WordSmart,
+        SizeFlagsHorizontal = SizeFlags.ExpandFill
+    };
     private static Button Button(string text, Action action)
     {
-        var button = new Button { Text = text, CustomMinimumSize = new Vector2(0, 38),
-            AutowrapMode = TextServer.AutowrapMode.WordSmart };
+        var button = new Button
+        {
+            Text = text,
+            CustomMinimumSize = new Vector2(0, 38),
+            AutowrapMode = TextServer.AutowrapMode.WordSmart
+        };
         button.Pressed += action;
         return button;
     }

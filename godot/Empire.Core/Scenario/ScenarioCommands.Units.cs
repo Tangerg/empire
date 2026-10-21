@@ -19,9 +19,11 @@ public sealed partial class ScenarioCommands
         foreach (var unit in Select(state, effect))
         {
             var destination = OpenCell(state, battlefield, Text(effect, "zone"), Text(content.Get("units", Text(unit, "type")), "movementClass"));
-            if (destination is not { } at) continue;
+            if (destination is not { } at)
+                continue;
             var from = TacticalQueries.Position(unit);
-            if (from == at) continue;
+            if (from == at)
+                continue;
             // Only the destination matters for a teleport; facing, action readiness,
             // patrol cursor and intermediate cliffs deliberately remain untouched.
             new BattleRelocation(state).MoveUnit(Integer(unit, "id"), at);
@@ -43,7 +45,8 @@ public sealed partial class ScenarioCommands
         var ratio = Math.Max(0.01, Math.Min(1, Number(effect, "hpPercent", 0.5)));
         foreach (var marker in ScenarioSelection.SelectMarkers(state, Object(effect["selector"], "selector")))
         {
-            if (marker["fallenUnit"] is not JsonObject fallen) continue;
+            if (marker["fallenUnit"] is not JsonObject fallen)
+                continue;
             var hp = Number(content.Get("units", Text(fallen, "type"))["maxHp"], "maxHp") * ratio;
             BattleUnitReturn.Restore(catalog, state, marker, new UnitReturnRequest(TacticalQueries.Position(Object(marker["at"], "marker at")),
                 effect["owner"] is null ? null : Integer(effect, "owner"), hp), emit);
@@ -55,9 +58,11 @@ public sealed partial class ScenarioCommands
         var battlefield = new TacticalBattlefield(state, content);
         foreach (var marker in ScenarioSelection.SelectMarkers(state, Object(effect["selector"], "selector")))
         {
-            if (marker["fallenUnit"] is not JsonObject fallen) continue;
+            if (marker["fallenUnit"] is not JsonObject fallen)
+                continue;
             var destination = OpenCell(state, battlefield, Text(effect, "zone"), Text(content.Get("units", Text(fallen, "type")), "movementClass"));
-            if (destination is not { } at) break;
+            if (destination is not { } at)
+                break;
             BattleUnitReturn.Restore(catalog, state, marker, new UnitReturnRequest(at, effect["owner"] is null ? null : Integer(effect, "owner")), emit);
         }
     }
@@ -69,8 +74,10 @@ public sealed partial class ScenarioCommands
         var player = TacticalQueries.Player(state, owner);
         var objective = Object(player["objectiveStates"], "objectiveStates")[id] as JsonObject
             ?? throw new DomainInvariantException($"unknown objective \"{id}\" for player {owner}");
-        if (status is not null) objective["status"] = status;
-        if (hidden is not null) objective["hidden"] = hidden.Value;
+        if (status is not null)
+            objective["status"] = status;
+        if (hidden is not null)
+            objective["hidden"] = hidden.Value;
         emit(new JsonObject
         {
             ["type"] = "objectiveChanged",
@@ -84,7 +91,8 @@ public sealed partial class ScenarioCommands
     private void ChangeResource(JsonObject unit, string resource, double requested, Action<JsonObject> emit)
     {
         var subject = new BattleResources.Subject("unit", unit);
-        if (!resources.HasAccount(subject, resource) || requested == 0) return;
+        if (!resources.HasAccount(subject, resource) || requested == 0)
+            return;
         var balance = resources.Balance(subject, resource);
         var amount = requested > 0 ? resources.Credit(subject, resource, requested)
             : -resources.Spend(subject, resource, Math.Min(-requested, balance ?? 0));
@@ -95,7 +103,8 @@ public sealed partial class ScenarioCommands
     {
         var scenario = Object(state["scenario"], "scenario");
         var zone = Text(rule, "zone");
-        if (Object(scenario["zones"], "zones")[zone] is null) throw new DomainInvariantException($"unknown scenario zone \"{zone}\"");
+        if (Object(scenario["zones"], "zones")[zone] is null)
+            throw new DomainInvariantException($"unknown scenario zone \"{zone}\"");
         var rules = Array(scenario["engagementRules"], "engagementRules");
         var id = Text(rule, "id");
         if (Objects(rules, "engagementRules").Any(candidate => Text(candidate, "id") == id))

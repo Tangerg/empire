@@ -47,7 +47,8 @@ public static class TacticalQueries
     public static JsonArray PathJson(IEnumerable<Coord> path)
     {
         var result = new JsonArray();
-        foreach (var at in path) result.Add(CoordinateJson(at));
+        foreach (var at in path)
+            result.Add(CoordinateJson(at));
         return result;
     }
 }

@@ -13,7 +13,7 @@ using Empire.Core.Tactics;
 
 var oracle = EcmaJson.Parse(File.ReadAllText(args[0]))!.AsObject();
 var packs = oracle["packs"]!.AsArray();
-var engine = new GrayFlagEngine(packs);
+var engine = new BattleEngine(packs);
 var victory = engine.Victory;
 var serializer = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 var checks = 0;
@@ -23,23 +23,39 @@ var historicalProseAssertions = 0;
 void Equal(object? actual, JsonNode? expected, string name)
 {
     var node = actual is JsonNode json ? json : JsonSerializer.SerializeToNode(actual, serializer);
-    if (!JsonNode.DeepEquals(node, expected)) throw new Exception($"{name}:\nactual {node}\nexpected {expected}");
+    if (!JsonNode.DeepEquals(node, expected))
+        throw new Exception($"{name}:\nactual {node}\nexpected {expected}");
     checks++;
 }
 JsonObject Capture(Func<object?> query)
 {
-    try { return new JsonObject { ["value"] = JsonSerializer.SerializeToNode(query(), serializer) }; }
+    try
+    {
+        return new JsonObject { ["value"] = JsonSerializer.SerializeToNode(query(), serializer) };
+    }
     catch (DomainInvariantException error) { return new JsonObject { ["error"] = error.Message }; }
 }
 JsonObject Finite(double value) => new() { ["kind"] = "finite", ["value"] = value };
 var scoreFacts = new Dictionary<string, JsonObject>(StringComparer.Ordinal)
 {
-    ["null"] = Finite(0), ["false"] = Finite(0), ["true"] = Finite(1),
-    ["\"\""] = Finite(0), ["\"  \""] = Finite(0), ["\"bad\""] = new() { ["kind"] = "nan" },
-    ["4"] = Finite(4), ["\"0xff\""] = Finite(255), ["\"0b11\""] = Finite(3), ["\"0o10\""] = Finite(8),
-    ["\"Infinity\""] = new() { ["kind"] = "positiveInfinity" }, ["\"-Infinity\""] = new() { ["kind"] = "negativeInfinity" },
-    ["\"infinity\""] = new() { ["kind"] = "nan" }, ["\"1e-7\""] = Finite(1e-7), ["\"1e21\""] = Finite(1e21),
-    ["\"1e999\""] = new() { ["kind"] = "positiveInfinity" }, ["\"-0\""] = Finite(0), ["\"+0x1\""] = new() { ["kind"] = "nan" },
+    ["null"] = Finite(0),
+    ["false"] = Finite(0),
+    ["true"] = Finite(1),
+    ["\"\""] = Finite(0),
+    ["\"  \""] = Finite(0),
+    ["\"bad\""] = new() { ["kind"] = "nan" },
+    ["4"] = Finite(4),
+    ["\"0xff\""] = Finite(255),
+    ["\"0b11\""] = Finite(3),
+    ["\"0o10\""] = Finite(8),
+    ["\"Infinity\""] = new() { ["kind"] = "positiveInfinity" },
+    ["\"-Infinity\""] = new() { ["kind"] = "negativeInfinity" },
+    ["\"infinity\""] = new() { ["kind"] = "nan" },
+    ["\"1e-7\""] = Finite(1e-7),
+    ["\"1e21\""] = Finite(1e21),
+    ["\"1e999\""] = new() { ["kind"] = "positiveInfinity" },
+    ["\"-0\""] = Finite(0),
+    ["\"+0x1\""] = new() { ["kind"] = "nan" },
 };
 void AssertProjection(ObjectiveProgress progress, JsonObject definition, JsonObject owner, string name)
 {
@@ -48,10 +64,12 @@ void AssertProjection(ObjectiveProgress progress, JsonObject definition, JsonObj
     Equal(EcmaJson.Parse(progress.Definition.GetRawText()), definition, name + " detached definition");
     var runtime = owner["objectiveStates"]![progress.Id];
     Equal(progress.Status, runtime?["status"] ?? JsonValue.Create("active"), name + " projected status");
-    if (progress.Status != "active") Equal(EcmaJson.Parse(progress.Facts.GetRawText()), new JsonObject(), name + " terminal facts");
+    if (progress.Status != "active")
+        Equal(EcmaJson.Parse(progress.Facts.GetRawText()), new JsonObject(), name + " terminal facts");
     var children = engine.Objectives.Children(definition);
     Equal(progress.Children.Count, JsonValue.Create(children.Count), name + " projected child count");
-    for (var index = 0; index < children.Count; index++) AssertProjection(progress.Children[index], children[index], owner, name + " child " + index);
+    for (var index = 0; index < children.Count; index++)
+        AssertProjection(progress.Children[index], children[index], owner, name + " child " + index);
 }
 foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
 {
@@ -64,7 +82,8 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
     var expectedAccounts = new JsonArray(item["accounts"]!.AsArray().Select(accounts => (JsonNode?)new JsonArray(
         accounts!.AsArray().OfType<JsonObject>().Select(account => (JsonNode?)new JsonObject
         {
-            ["resource"] = account["resource"]!.DeepClone(), ["current"] = account["current"]?.DeepClone(),
+            ["resource"] = account["resource"]!.DeepClone(),
+            ["current"] = account["current"]?.DeepClone(),
             ["capacity"] = account["capacity"]?.DeepClone(),
         }).ToArray())).ToArray());
     Equal(subjects.Select(subject => engine.Resources.Accounts(subject)).ToArray(), expectedAccounts, name + " account facts");
@@ -77,7 +96,8 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
         var progress = engine.Objectives.Project(victory.Rules, state, ownerId, definition);
         AssertProjection(progress, definition, owner, name);
         historicalProseAssertions++;
-        if (ownerId != 1 || progress.Status != "active") continue;
+        if (ownerId != 1 || progress.Status != "active")
+            continue;
         JsonObject? expectedFacts = name switch
         {
             "objective kind surviveTurns" => new() { ["current"] = 1, ["target"] = 3 },
@@ -89,8 +109,13 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
         };
         const string coercion = "score coercion ";
         if (name.StartsWith(coercion, StringComparison.Ordinal))
-            expectedFacts = new() { ["current"] = scoreFacts[name[coercion.Length..]].DeepClone(), ["target"] = 8 };
-        if (expectedFacts is not null) Equal(EcmaJson.Parse(progress.Facts.GetRawText()), expectedFacts, name + " independently specified native facts");
+            expectedFacts = new()
+            {
+                ["current"] = scoreFacts[name[coercion.Length..]].DeepClone(),
+                ["target"] = 8
+            };
+        if (expectedFacts is not null)
+            Equal(EcmaJson.Parse(progress.Facts.GetRawText()), expectedFacts, name + " independently specified native facts");
     }
     var players = state["players"]!.AsArray().OfType<JsonObject>().ToArray();
     var expectedVisible = item["visibleObjectives"]!.AsArray();
@@ -115,10 +140,14 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
         {
             ["value"] = new JsonArray(sourceCasts["value"]!.AsArray().OfType<JsonObject>().Select(cast => (JsonNode?)new JsonObject
             {
-                ["caster"] = cast["caster"]!.DeepClone(), ["owner"] = cast["owner"]!.DeepClone(),
-                ["weapon"] = cast["weapon"]!.DeepClone(), ["origin"] = cast["origin"]!.DeepClone(),
-                ["target"] = cast["target"]!.DeepClone(), ["declaredAt"] = cast["declaredAt"]!.DeepClone(),
-                ["resolveAt"] = cast["resolveAt"]!.DeepClone(), ["remaining"] = cast["remaining"]!.DeepClone(),
+                ["caster"] = cast["caster"]!.DeepClone(),
+                ["owner"] = cast["owner"]!.DeepClone(),
+                ["weapon"] = cast["weapon"]!.DeepClone(),
+                ["origin"] = cast["origin"]!.DeepClone(),
+                ["target"] = cast["target"]!.DeepClone(),
+                ["declaredAt"] = cast["declaredAt"]!.DeepClone(),
+                ["resolveAt"] = cast["resolveAt"]!.DeepClone(),
+                ["remaining"] = cast["remaining"]!.DeepClone(),
                 ["progress"] = cast["progress"]!.DeepClone(),
             }).ToArray()),
         };
@@ -135,7 +164,9 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
         ["leader"] = commander["leader"]?.DeepClone(),
         ["tactics"] = new JsonArray(commander["tactics"]!.AsArray().OfType<JsonObject>().Select(tactic => (JsonNode?)new JsonObject
         {
-            ["id"] = tactic["id"]!.DeepClone(), ["targets"] = tactic["targets"]!.DeepClone(), ["costs"] = tactic["costs"]!.DeepClone(),
+            ["id"] = tactic["id"]!.DeepClone(),
+            ["targets"] = tactic["targets"]!.DeepClone(),
+            ["costs"] = tactic["costs"]!.DeepClone(),
         }).ToArray()),
     }).ToArray());
     Equal(commanders, expectedCommanders, name + " commander tactic facts");
@@ -144,17 +175,22 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
         Commander = TacticalModifiers.ActiveCommanderFor(grid, state, unit),
         Aura = TacticalModifiers.CommanderAura(grid, state, unit),
     }).ToArray(), item["auras"], name + " auras");
-    if (state.ToJsonString() != before) throw new Exception(name + " query mutated state");
+    if (state.ToJsonString() != before)
+        throw new Exception(name + " query mutated state");
     // Query projections are detached even when a caller modifies a returned JSON copy.
-    foreach (var commander in commanders) if (commander.Leader is { } leader) leader["hp"] = -999;
+    foreach (var commander in commanders)
+        if (commander.Leader is { } leader)
+            leader["hp"] = -999;
     foreach (var unit in state["units"]!.AsArray().OfType<JsonObject>())
-        if (TacticalModifiers.ActiveCommanderFor(grid, state, unit) is { } commander) commander["radius"] = -999;
-    if (state.ToJsonString() != before) throw new Exception(name + " commander projection aliases state");
+        if (TacticalModifiers.ActiveCommanderFor(grid, state, unit) is { } commander)
+            commander["radius"] = -999;
+    if (state.ToJsonString() != before)
+        throw new Exception(name + " commander projection aliases state");
 }
 foreach (var item in oracle["thresholds"]!.AsArray()) Equal(engine.Combat.Effects.NextRankThreshold(item!["rank"]!.GetValue<int>()), item["next"], "threshold");
 foreach (var item in oracle["ranks"]!.AsArray()) Equal(engine.Combat.Effects.RankFor(item!["progress"]!.GetValue<double>()), item["rank"], "rank");
 var duplicate = oracle["duplicate"]!;
-var duplicateEngine = new GrayFlagEngine(duplicate["packs"]!.AsArray());
+var duplicateEngine = new BattleEngine(duplicate["packs"]!.AsArray());
 var duplicateState = duplicate["state"]!.AsObject();
 Equal(duplicateEngine.Recruitment.Cards(duplicateState, new Coord(0, 0)), duplicate["cards"], "duplicate cost cards preserve individual affordability");
 if (duplicateEngine.Recruitment.Refusal(duplicateState, "soldier", new Coord(0, 0))?.Code != "recruitment.insufficient_resources") throw new Exception("duplicate cost dispatch must aggregate costs");
@@ -178,17 +214,20 @@ foreach (var family in oracle["catalog"]!.AsObject())
         checks++;
     }
 }
-var unicodeEngine = new GrayFlagEngine(oracle["unicode"]!["packs"]!.AsArray());
+var unicodeEngine = new BattleEngine(oracle["unicode"]!["packs"]!.AsArray());
 var unicodeDefinition = unicodeEngine.Catalog.Definition("units", "soldier")!.Value;
 if (!EcmaJson.DeepEquals(EcmaJson.Parse(unicodeDefinition.GetRawText()), oracle["unicode"]!["definition"])) throw new Exception("UTF-16 catalog projection lost code units");
-var detached = EcmaJson.Parse(unicodeDefinition.GetRawText())!; detached["name"] = "mutated";
+var detached = EcmaJson.Parse(unicodeDefinition.GetRawText())!;
+detached["name"] = "mutated";
 if (!EcmaJson.DeepEquals(EcmaJson.Parse(unicodeEngine.Catalog.Definition("units", "soldier")!.Value.GetRawText()), oracle["unicode"]!["definition"])) throw new Exception("catalog alias");
 Equal(oracle["reactions"]!.AsArray().Select(reaction => engine.Combat.Forecasts.Reaction(reaction!["id"]!.GetValue<string>()))
     .Select(reaction => new { reaction.Id, reaction.Intercepts, reaction.IncomingMultiplier, reaction.Retaliates, reaction.ConservesResources }).ToArray(),
     new JsonArray(oracle["reactions"]!.AsArray().OfType<JsonObject>().Select(reaction => (JsonNode?)new JsonObject
     {
-        ["id"] = reaction["id"]!.DeepClone(), ["intercepts"] = reaction["intercepts"]!.DeepClone(),
-        ["incomingMultiplier"] = reaction["incomingMultiplier"]!.DeepClone(), ["retaliates"] = reaction["retaliates"]!.DeepClone(),
+        ["id"] = reaction["id"]!.DeepClone(),
+        ["intercepts"] = reaction["intercepts"]!.DeepClone(),
+        ["incomingMultiplier"] = reaction["incomingMultiplier"]!.DeepClone(),
+        ["retaliates"] = reaction["retaliates"]!.DeepClone(),
         ["conservesResources"] = reaction["conservesResources"]!.DeepClone(),
     }).ToArray()), "reaction behavior facts");
 var seenAbilities = new HashSet<string>();
@@ -198,7 +237,8 @@ foreach (var row in oracle["commandLabels"]!.AsArray())
     var actor = state["units"]!.AsArray().OfType<JsonObject>().Single(unit => unit["id"]!.GetValue<int>() == row["actor"]!.GetValue<int>());
     var at = new Coord(row["at"]!["x"]!.GetValue<int>(), row["at"]!["y"]!.GetValue<int>());
     var options = engine.CommandsAt(state, actor, at);
-    foreach (var option in options) seenAbilities.Add(option.Ability);
+    foreach (var option in options)
+        seenAbilities.Add(option.Ability);
     Equal(options.Select(option => option.Key).ToArray(),
         new JsonArray(row["options"]!.AsArray().Select(option => option!["key"]!.DeepClone()).ToArray()),
         "command identities " + actor["type"]);

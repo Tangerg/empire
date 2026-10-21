@@ -20,40 +20,54 @@ using var reader = args[0].EndsWith(".gz", StringComparison.Ordinal)
     ? new StreamReader(new GZipStream(inputFile, CompressionMode.Decompress)) : new StreamReader(inputFile);
 var oracle = EcmaJson.Parse(reader.ReadToEnd())!.AsObject();
 var packs = oracle["packs"]!.AsArray();
-var engine = new GrayFlagEngine(packs);
+var engine = new BattleEngine(packs);
 var catalog = engine.Catalog;
 var commands = engine.ScenarioCommands;
 var baseConditions = DefaultScenarioConditions.Create(new DefaultBattleRandomSource());
 var baseEffects = DefaultScenarioEffects.Create();
 var baseObjectives = DefaultObjectives.Create();
 var conditions = baseConditions.Clone().Register(new("testGate", (context, value) => context.Evaluate(Object(value["child"], "child")))
-{ Children = value => [Object(value["child"], "child")], References = value => new PayloadReferences().Zone(Text(value, "zone")) });
+{
+    Children = value => [Object(value["child"], "child")],
+    References = value => new PayloadReferences().Zone(Text(value, "zone"))
+});
 var effects = baseEffects.Clone().Replace(new("setVariable", (context, value) => context.State["scenario"]!["variables"]![Text(value, "key")] = Number(value["value"], "value") * 2))
     .Register(new("testAward", (context, value) =>
     {
         context.Rules.ScenarioEffects.Apply(context.Rules, context.State,
             new JsonObject { ["type"] = "setVariable", ["key"] = "score", ["value"] = value["amount"]!.DeepClone() }, context.Emit);
         context.Emit(new JsonObject { ["type"] = "scenarioSignal", ["signal"] = "awarded" });
-    }) { References = value => new PayloadReferences().Zone(Text(value, "zone")) });
+    })
+    {
+        References = value => new PayloadReferences().Zone(Text(value, "zone"))
+    });
 var objectives = baseObjectives.Clone().Register(new("testGoal", (context, _) =>
 {
     var current = Number(context.State["scenario"]!["variables"]!.AsObject(), "score", 0);
     return new ObjectiveAssessment(current >= 12 ? "success" : "pending", new JsonObject { ["current"] = current, ["target"] = 12 });
 })
-{ Role = "optional", References = value => new PayloadReferences().Zone(Text(value, "zone")) })
+{
+    Role = "optional",
+    References = value => new PayloadReferences().Zone(Text(value, "zone"))
+})
     .Register(new("testSelf", (_, _) => new ObjectiveAssessment("pending", new()))
-    { Children = value => Objects(value["objectives"], "objectives").ToArray() });
+    {
+        Children = value => Objects(value["objectives"], "objectives").ToArray()
+    });
 var rules = new ScenarioRules(catalog, conditions, effects, commands);
 var scenarios = new ScenarioSystem(rules);
 var victory = new VictorySystem(new(catalog, conditions), objectives);
 var state = oracle["initial"]!.DeepClone().AsObject();
-var events = new JsonArray(); var hashes = new JsonArray();
+var events = new JsonArray();
+var hashes = new JsonArray();
 void Emit(JsonObject value) { events.Add(value); hashes.Add(StateDigest.Hash(state)); }
 var goal = state["players"]![0]!["objectives"]![0]!.AsObject();
 var self = state["players"]![0]!["objectives"]![1]!.AsObject();
 var beforeProgress = objectives.Project(victory.Rules, state, 1, goal);
-scenarios.Run(state, "afterAction", Emit); victory.RefreshObjectiveStates(state, Emit);
-scenarios.Run(state, "afterAction", Emit); victory.RefreshObjectiveStates(state, Emit);
+scenarios.Run(state, "afterAction", Emit);
+victory.RefreshObjectiveStates(state, Emit);
+scenarios.Run(state, "afterAction", Emit);
+victory.RefreshObjectiveStates(state, Emit);
 var serialization = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 JsonNode? Node<T>(T value) => JsonSerializer.SerializeToNode(value, serialization);
 var metadata = new JsonObject
@@ -62,7 +76,8 @@ var metadata = new JsonObject
     ["conditionReferences"] = Node(conditions.References(state["scenario"]!["triggers"]![1]!["condition"]!.AsObject())),
     ["effectReferences"] = Node(effects.References(state["scenario"]!["triggers"]![1]!["effects"]![0]!.AsObject())),
     ["objectiveReferences"] = Node(objectives.References(goal)),
-    ["role"] = objectives.Role(goal), ["refresh"] = objectives.RefreshMode(self),
+    ["role"] = objectives.Role(goal),
+    ["refresh"] = objectives.RefreshMode(self),
 };
 var checks = 0;
 // Source descriptions/progress strings are historical presentation assertions, not Core facts.
@@ -70,13 +85,18 @@ var checks = 0;
 var historicalProseAssertions = 3;
 void Equal(string name, JsonNode? actual, JsonNode? expected)
 {
-    if (!EcmaJson.DeepEquals(actual, expected)) throw new Exception($"Mismatch: {name}\nactual={actual}\nexpected={expected}");
+    if (!EcmaJson.DeepEquals(actual, expected))
+        throw new Exception($"Mismatch: {name}\nactual={actual}\nexpected={expected}");
     checks++;
 }
 void Require(string name, bool condition) { if (!condition) throw new Exception("Failed: " + name); checks++; }
 void Reject(string name, Action action)
 {
-    try { action(); } catch (DomainInvariantException) { checks++; return; }
+    try
+    {
+        action();
+    }
+    catch (DomainInvariantException) { checks++; return; }
     throw new Exception("Expected domain rejection: " + name);
 }
 Equal("custom scenario events", events, oracle["events"]);
@@ -100,9 +120,15 @@ foreach (var item in oracle["metadataCases"]!.AsArray().OfType<JsonObject>())
 {
     var payload = item["payload"]!.AsObject();
     var family = Text(item, "family");
-    IRulePayloadRegistry registry = family switch { "condition" => baseConditions, "objective" => baseObjectives, _ => baseEffects };
+    IRulePayloadRegistry registry = family switch
+    {
+        "condition" => baseConditions,
+        "objective" => baseObjectives,
+        _ => baseEffects
+    };
     Equal($"default {family} references", Node(registry.References(payload)), item["references"]);
-    if (registry is IRuleTreeRegistry tree) Equal($"default {family} children", Node(tree.Children(payload)), item["children"]);
+    if (registry is IRuleTreeRegistry tree)
+        Equal($"default {family} children", Node(tree.Children(payload)), item["children"]);
     if (family == "objective")
     {
         Equal("default objective role", Node(baseObjectives.Role(payload)), item["role"]);
@@ -113,14 +139,16 @@ foreach (var item in oracle["metadataCases"]!.AsArray().OfType<JsonObject>())
 foreach (var edge in oracle["edgeConditions"]!.AsArray().OfType<JsonObject>())
 {
     var edgeState = oracle["initial"]!.DeepClone().AsObject();
-    edgeState["units"] = new JsonArray(edgeState["units"]![0]!.DeepClone()); edgeState["units"]![0]!["hp"] = edge["hp"]!.DeepClone();
+    edgeState["units"] = new JsonArray(edgeState["units"]![0]!.DeepClone());
+    edgeState["units"]![0]!["hp"] = edge["hp"]!.DeepClone();
     Equal("unitHealth clamps", Node(baseConditions.Evaluate(edgeState, edge["condition"]!.AsObject(), catalog)), edge["result"]);
 }
 foreach (var edge in oracle["edgeMaxima"]!.AsArray().OfType<JsonObject>())
 {
     var edgePacks = packs.DeepClone().AsArray();
     foreach (var pack in edgePacks.OfType<JsonObject>())
-        foreach (var unit in (pack["units"] as JsonArray ?? new JsonArray()).OfType<JsonObject>()) unit["maxHp"] = edge["maximum"]!.DeepClone();
+        foreach (var unit in (pack["units"] as JsonArray ?? new JsonArray()).OfType<JsonObject>())
+            unit["maxHp"] = edge["maximum"]!.DeepClone();
     Equal("unitHealth nonpositive maximum is whole", Node(baseConditions.Evaluate(oracle["initial"]!.AsObject(), edge["condition"]!.AsObject(), new ReadOnlyContent(edgePacks))), edge["result"]);
 }
 var unknown = new JsonObject { ["type"] = "missing" };
@@ -150,7 +178,9 @@ Require("built-in condition replacement", !replacedCondition.Evaluate(state, new
 var random = new ObservingRandom();
 var randomConditions = baseConditions.Clone(random);
 Require("random sees full state", randomConditions.Evaluate(state, new JsonObject { ["type"] = "chance", ["percent"] = 99, ["stream"] = "custom" }, catalog) && ReferenceEquals(random.Seen, state));
-baseConditions.Seal(); baseEffects.Seal(); baseObjectives.Seal();
+baseConditions.Seal();
+baseEffects.Seal();
+baseObjectives.Seal();
 Reject("sealed conditions", () => baseConditions.Replace(baseConditions.Get("chance")));
 Reject("sealed effects", () => baseEffects.Replace(baseEffects.Get("emitSignal")));
 Reject("sealed objectives", () => baseObjectives.Replace(baseObjectives.Get("score")));
@@ -161,9 +191,16 @@ Console.WriteLine($"PASS {checks} scenario/objective semantic extension checks")
 
 sealed class ObservingRandom : IBattleRandomSource
 {
-    public JsonObject? Seen { get; private set; }
+    public JsonObject? Seen
+    {
+        get; private set;
+    }
     public string Id => "observing";
-    public bool Chance(JsonObject state, string stream, double percent) { Seen = state; return stream == "custom" && percent == 99; }
+    public bool Chance(JsonObject state, string stream, double percent)
+    {
+        Seen = state;
+        return stream == "custom" && percent == 99;
+    }
     public double Next(JsonObject state, string stream) => throw new NotSupportedException();
     public double Peek(JsonObject state, string stream) => throw new NotSupportedException();
     public double Int(JsonObject state, string stream, double bound) => throw new NotSupportedException();

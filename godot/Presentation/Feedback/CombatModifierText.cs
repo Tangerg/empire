@@ -26,7 +26,8 @@ public sealed class CombatModifierText : KeyedRegistry<CombatModifierFormatter, 
     protected override string KeyOf(CombatModifierFormatter entry) => entry.Kind;
     protected override void ValidateEntry(CombatModifierFormatter entry)
     {
-        if (string.IsNullOrWhiteSpace(entry.Kind)) throw new LocalizationException("A combat formatter kind must not be empty.");
+        if (string.IsNullOrWhiteSpace(entry.Kind))
+            throw new LocalizationException("A combat formatter kind must not be empty.");
         ArgumentNullException.ThrowIfNull(entry.Describe);
         text.ValidateKeys(entry.MessageKeys);
     }
@@ -34,7 +35,8 @@ public sealed class CombatModifierText : KeyedRegistry<CombatModifierFormatter, 
     public void ValidateCoverage(IEnumerable<string> kinds)
     {
         foreach (var kind in kinds)
-            if (!Has(kind)) throw new LocalizationException($"No combat presentation is registered for '{kind}'.");
+            if (!Has(kind))
+                throw new LocalizationException($"No combat presentation is registered for '{kind}'.");
     }
     public string Describe(CombatModifier modifier)
     {
@@ -59,17 +61,31 @@ public sealed class CombatModifierText : KeyedRegistry<CombatModifierFormatter, 
         result.Register(new("core.rank", ["ui.hud.modifier_source.unit", "combat.modifier.rank", "ui.rank.recruit", "ui.rank.veteran", "ui.rank.elite"],
             (rules, facts) => Label(rules.Messages, "ui.hud.modifier_source.unit", rules.Messages.Format("combat.modifier.rank",
                 rules.Messages.Format(facts.GetProperty("rank").GetInt32() switch
-                { 0 => "ui.rank.recruit", 1 => "ui.rank.veteran", 2 => "ui.rank.elite", _ => throw new LocalizationException("Invalid modifier rank fact.") })))));
+                {
+                    0 => "ui.rank.recruit",
+                    1 => "ui.rank.veteran",
+                    2 => "ui.rank.elite",
+                    _ => throw new LocalizationException("Invalid modifier rank fact.")
+                })))));
         result.Register(new("core.formation-attack", ["ui.hud.modifier_source.formation"], (rules, facts) =>
             Label(rules.Messages, "ui.hud.modifier_source.formation", rules.Content.Name(ContentTextKind.Formation, S(facts, "formationId")))));
         result.Register(new("core.elevation", ["ui.hud.modifier_source.elevation", "combat.modifier.elevation"], (rules, facts) =>
             Label(rules.Messages, "ui.hud.modifier_source.elevation", rules.Messages.Format("combat.modifier.elevation", facts.GetProperty("delta").GetDouble()))));
         result.Register(new("core.position", ["ui.hud.modifier_source.position", "combat.modifier.back", "combat.modifier.side", "combat.modifier.flank"],
             (rules, facts) => Label(rules.Messages, "ui.hud.modifier_source.position", rules.Messages.Format(S(facts, "position") switch
-            { "back" => "combat.modifier.back", "side" => "combat.modifier.side", "flank" => "combat.modifier.flank", _ => throw new LocalizationException("Invalid modifier position fact.") }))));
+            {
+                "back" => "combat.modifier.back",
+                "side" => "combat.modifier.side",
+                "flank" => "combat.modifier.flank",
+                _ => throw new LocalizationException("Invalid modifier position fact.")
+            }))));
         result.Register(new("core.cover", ["ui.hud.modifier_source.cover", "combat.modifier.full_cover", "combat.modifier.half_cover"],
             (rules, facts) => Label(rules.Messages, "ui.hud.modifier_source.cover", rules.Messages.Format(S(facts, "cover") switch
-            { "full" => "combat.modifier.full_cover", "half" => "combat.modifier.half_cover", _ => throw new LocalizationException("Invalid modifier cover fact.") }))));
+            {
+                "full" => "combat.modifier.full_cover",
+                "half" => "combat.modifier.half_cover",
+                _ => throw new LocalizationException("Invalid modifier cover fact.")
+            }))));
         result.Register(new("core.defense", ["ui.hud.modifier_source.terrain", "ui.hud.modifier_source.unit", "combat.modifier.terrain_defense", "combat.modifier.unit_defense"],
             (rules, facts) => S(facts, "component") switch
             {

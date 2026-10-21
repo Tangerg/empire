@@ -24,8 +24,14 @@ public sealed record AbilityDefinition(string Id)
     private readonly IReadOnlyList<string> tags = Array.Empty<string>();
     public bool SelfTargeted { get; init; } = true;
     public double Priority { get; init; } = 50;
-    public IReadOnlyList<string> Tags { get => tags; init => tags = Array.AsReadOnly(value.ToArray()); }
-    public string? Engagement { get; init; }
+    public IReadOnlyList<string> Tags
+    {
+        get => tags; init => tags = Array.AsReadOnly(value.ToArray());
+    }
+    public string? Engagement
+    {
+        get; init;
+    }
     public Func<AbilityRules, AbilityQuery, JsonObject?> WeaponFor { get; init; } = (_, _) => null;
     public Func<AbilityRules, AbilityQuery, IReadOnlyList<JsonObject>> WeaponChoices { get; init; } = (_, _) => [];
     public Func<AbilityRules, AbilityQuery, IReadOnlyList<Coord>> Targets { get; init; } = (_, _) => [];

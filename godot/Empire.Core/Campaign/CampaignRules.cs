@@ -28,9 +28,12 @@ public sealed class CampaignConditionRegistry : KeyedRegistry<CampaignConditionH
     internal static bool Contains(JsonNode? array, string value) => Array(array, "values").Any(item => Text(item, "value") == value);
     private static bool Compare(JsonNode? left, string operation, JsonNode? right)
     {
-        if (operation == "eq") return Empire.Core.Determinism.EcmaJson.DeepEquals(left, right);
-        if (operation == "neq") return !Empire.Core.Determinism.EcmaJson.DeepEquals(left, right);
-        if (left?.GetValueKind() != System.Text.Json.JsonValueKind.Number || right?.GetValueKind() != System.Text.Json.JsonValueKind.Number) return false;
+        if (operation == "eq")
+            return Empire.Core.Determinism.EcmaJson.DeepEquals(left, right);
+        if (operation == "neq")
+            return !Empire.Core.Determinism.EcmaJson.DeepEquals(left, right);
+        if (left?.GetValueKind() != System.Text.Json.JsonValueKind.Number || right?.GetValueKind() != System.Text.Json.JsonValueKind.Number)
+            return false;
         return operation == "gte" ? Number(left, "left") >= Number(right, "right") : Number(left, "left") <= Number(right, "right");
     }
 }
@@ -48,28 +51,42 @@ public sealed class CampaignEffectRegistry : KeyedRegistry<CampaignEffectHandler
         registry.Register(new("setVariable", (state, effect) => state["variables"]![Text(effect, "key")] = effect["value"]?.DeepClone()));
         registry.Register(new("addVariable", (state, effect) =>
         {
-            var key = Text(effect, "key"); var current = state["variables"]![key];
+            var key = Text(effect, "key");
+            var current = state["variables"]![key];
             if (current is not null && current.GetValueKind() != System.Text.Json.JsonValueKind.Number)
                 throw new CampaignInvariantException($"campaign variable \"{key}\" is not numeric");
             state["variables"]![key] = (current is null ? 0 : Number(current, key)) + Number(effect["amount"], "amount");
         }));
         registry.Register(new("setFlag", (state, effect) =>
-        { var flag = Text(effect, "flag"); if (!CampaignConditionRegistry.Contains(state["flags"], flag)) Array(state["flags"], "flags").Add(flag); }));
+        {
+            var flag = Text(effect, "flag");
+            if (!CampaignConditionRegistry.Contains(state["flags"], flag))
+                Array(state["flags"], "flags").Add(flag);
+        }));
         registry.Register(new("clearFlag", (state, effect) => state["flags"] = Without(state["flags"], Text(effect, "flag"))));
         registry.Register(new("addResource", (state, effect) =>
-        { var id = Text(effect, "resource"); state["resources"]![id] = Number(Object(state["resources"], "resources"), id, 0) + Number(effect["amount"], "amount"); }));
+        {
+            var id = Text(effect, "resource");
+            state["resources"]![id] = Number(Object(state["resources"], "resources"), id, 0) + Number(effect["amount"], "amount");
+        }));
         registry.Register(new("changeRelation", (state, effect) =>
-        { var id = Text(effect, "faction"); state["relations"]![id] = Number(Object(state["relations"], "relations"), id, 0) + Number(effect["amount"], "amount"); }));
+        {
+            var id = Text(effect, "faction");
+            state["relations"]![id] = Number(Object(state["relations"], "relations"), id, 0) + Number(effect["amount"], "amount");
+        }));
         registry.Register(new("setFeature", (state, effect) =>
         {
             var id = Text(effect, "feature");
-            if (!IsTrue(effect["enabled"])) state["features"] = Without(state["features"], id);
-            else state["features"] = new JsonArray(Array(state["features"], "features").Select(value => Text(value, "feature")).Append(id).Distinct(StringComparer.Ordinal).Select(value => (JsonNode?)JsonValue.Create(value)).ToArray());
+            if (!IsTrue(effect["enabled"]))
+                state["features"] = Without(state["features"], id);
+            else
+                state["features"] = new JsonArray(Array(state["features"], "features").Select(value => Text(value, "feature")).Append(id).Distinct(StringComparer.Ordinal).Select(value => (JsonNode?)JsonValue.Create(value)).ToArray());
         }));
         registry.Register(new("setRosterDisposition", (state, effect) =>
         {
             var id = Text(effect, "unit");
-            if (state["roster"]![id] is not JsonObject unit) throw new CampaignInvariantException($"unknown campaign roster unit \"{id}\"");
+            if (state["roster"]![id] is not JsonObject unit)
+                throw new CampaignInvariantException($"unknown campaign roster unit \"{id}\"");
             unit["disposition"] = effect["disposition"]!.DeepClone();
         }));
         return registry;
@@ -84,9 +101,12 @@ public sealed record CampaignRules(CampaignConditionRegistry Conditions, Campaig
         new(conditions ?? CampaignConditionRegistry.Core(), effects ?? CampaignEffectRegistry.Core(), nodes ?? CampaignNodeRegistry.Core());
     internal CampaignRules FrozenClone()
     {
-        var conditions = Conditions.Clone(); conditions.Seal();
-        var effects = Effects.Clone(); effects.Seal();
-        var nodes = Nodes.Clone(); nodes.Seal();
+        var conditions = Conditions.Clone();
+        conditions.Seal();
+        var effects = Effects.Clone();
+        effects.Seal();
+        var nodes = Nodes.Clone();
+        nodes.Seal();
         return new(conditions, effects, nodes);
     }
 }

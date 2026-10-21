@@ -14,7 +14,7 @@ mutants = [
     ('bypass-target-policy', 'Abilities/AbilityCommands.cs', 'var targets = ability.Targets(rules, query);', 'IReadOnlyList<Coord> targets = new[] { new Coord(2, 1) };'),
     ('copy-move-field-identity', 'Tactics/MoveField.cs', 'Tiles = tiles;', 'Tiles = new Dictionary<int, ReachableTile>(tiles);'),
     ('recompute-custom-stops', 'Tactics/MoveField.cs', 'Stops = stops ?? tiles.Values', 'Stops = tiles.Values'),
-    ('snapshot-resolved-grids', 'Tactics/DefaultTacticalSpace.cs', 'new MovementRules(content, grids)', 'new MovementRules(content, grids.Clone())'),
+    ('snapshot-resolved-grids', 'Tactics/DefaultTacticalSpace.cs', 'new MovementRules(new MovementRuleServices(rules.Content, rules.Grids))', 'new MovementRules(new MovementRuleServices(rules.Content, rules.Grids.Clone()))'),
 ]
 for name, relative, old, new in mutants:
     mutated = artifacts / name

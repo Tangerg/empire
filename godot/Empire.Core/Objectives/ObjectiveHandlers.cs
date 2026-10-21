@@ -14,8 +14,14 @@ public sealed record ObjectiveRules(ReadOnlyContent Content, ScenarioConditionHa
 
 public sealed class ObjectiveAssessment
 {
-    public string Outcome { get; }
-    public JsonElement Facts { get; }
+    public string Outcome
+    {
+        get;
+    }
+    public JsonElement Facts
+    {
+        get;
+    }
 
     public ObjectiveAssessment(string outcome, JsonObject facts)
     {
@@ -29,13 +35,34 @@ public sealed class ObjectiveAssessment
 /// <summary>Detached immutable projection; only the handler computes progress facts.</summary>
 public sealed class ObjectiveProgress
 {
-    public string Id { get; }
-    public string Kind { get; }
-    public string Status { get; }
-    public string Role { get; }
-    public JsonElement Definition { get; }
-    public JsonElement Facts { get; }
-    public IReadOnlyList<ObjectiveProgress> Children { get; }
+    public string Id
+    {
+        get;
+    }
+    public string Kind
+    {
+        get;
+    }
+    public string Status
+    {
+        get;
+    }
+    public string Role
+    {
+        get;
+    }
+    public JsonElement Definition
+    {
+        get;
+    }
+    public JsonElement Facts
+    {
+        get;
+    }
+    public IReadOnlyList<ObjectiveProgress> Children
+    {
+        get;
+    }
 
     internal ObjectiveProgress(JsonObject objective, string status, string role, JsonElement facts, IEnumerable<ObjectiveProgress> children)
     {
@@ -65,8 +92,14 @@ public sealed record ObjectiveHandler(string Kind, Func<ObjectiveEvaluationConte
 {
     public string Role { get; init; } = "primary";
     public string Refresh { get; init; } = "self";
-    public Func<JsonObject, IReadOnlyList<JsonObject>>? Children { get; init; }
-    public Func<JsonObject, PayloadReferences>? References { get; init; }
+    public Func<JsonObject, IReadOnlyList<JsonObject>>? Children
+    {
+        get; init;
+    }
+    public Func<JsonObject, PayloadReferences>? References
+    {
+        get; init;
+    }
 }
 
 public sealed class ObjectiveHandlerRegistry() : KeyedRegistry<ObjectiveHandler, ObjectiveHandlerRegistry>("objective handler"), IRuleTreeRegistry

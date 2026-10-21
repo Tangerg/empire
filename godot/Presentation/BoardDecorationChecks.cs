@@ -18,11 +18,11 @@ public partial class BoardDecorationChecks : Node
         {
             var data = BoardDecorationDocument.Load();
             var oracle = PresentationJson.Load<JsonObject>("res://data/board-decorations.json");
-            using var resources = new SourceBoardDecorations(data);
+            using var resources = new BoardDecorations(data);
             foreach (var path in oracle["paths"]!.AsArray().OfType<JsonObject>())
             {
                 var points = path["points"]!.AsArray().OfType<JsonObject>().Select(point => new BoardCell(point["x"]!.GetValue<int>(), point["y"]!.GetValue<int>())).ToArray();
-                Require(SourceBoardDecorations.PathData(points) == path["d"]!.GetValue<string>(), "Actual source cubic path");
+                Require(BoardDecorations.PathData(points) == path["d"]!.GetValue<string>(), "Actual source cubic path");
                 var drawing = resources.Path(points)!;
                 Require(drawing.Bounds.HasPoint(new(points[^1].X * 32 + 16, points[^1].Y * 32 + 16)), "Arrow remains in path bounds");
                 Require(ReferenceEquals(drawing, resources.Path(points)), "Identical path uses same owned texture");
@@ -50,7 +50,11 @@ public partial class BoardDecorationChecks : Node
             resources.Dispose();
             Require(resources.TextureCount == 0, "All owned decoration textures released");
             resources.Dispose();
-            try { resources.Spot("move"); throw new Exception("Disposed cache resurrected"); }
+            try
+            {
+                resources.Spot("move");
+                throw new Exception("Disposed cache resurrected");
+            }
             catch (ObjectDisposedException) { assertions++; }
             await Planes();
             RouteCells();
@@ -61,7 +65,8 @@ public partial class BoardDecorationChecks : Node
     }
     private async Task Planes()
     {
-        var cell = new BoardCell(1, 1); var outside = new BoardCell(0, 0);
+        var cell = new BoardCell(1, 1);
+        var outside = new BoardCell(0, 0);
         var overlay = new BoardOverlay();
         for (var cycle = 0; cycle < 3; cycle++)
         {
@@ -87,7 +92,7 @@ public partial class BoardDecorationChecks : Node
         mask.FillRect(new Rect2I(0, 0, 64, 64), Colors.White);
         using var material = Image.CreateEmpty(4, 4, false, Image.Format.Rgba8);
         material.Fill(Colors.Red);
-        var raster = CandidateRouteComposition.Compose(mask, new(0, 0, 64, 64), material, new(128, 128), Vector2.Zero);
+        var raster = RouteComposition.Compose(mask, new(0, 0, 64, 64), material, new(128, 128), Vector2.Zero);
         using (raster.Image)
         {
             var centre = (new Vector2(16, 16) - raster.Origin) * 2;
@@ -97,16 +102,20 @@ public partial class BoardDecorationChecks : Node
             var shadow = (new Vector2(16, 33.25f) - raster.Origin) * 2;
             Require(raster.Image.GetPixel((int)shadow.X, (int)shadow.Y).A > 0, "Route warm one-pixel filter remains outside cell before overlap");
         }
-        using var cache = new CandidateShadowCache();
-        var a = CandidateRouteComposition.Create(mask, new(0, 0, 64, 64), material, new(128, 128), Vector2.Zero, "same", cache);
-        var b = CandidateRouteComposition.Create(mask, new(0, 0, 64, 64), material, new(128, 128), Vector2.Zero, "same", cache);
+        using var cache = new ShadowCache();
+        var a = RouteComposition.Create(mask, new(0, 0, 64, 64), material, new(128, 128), Vector2.Zero, "same", cache);
+        var b = RouteComposition.Create(mask, new(0, 0, 64, 64), material, new(128, 128), Vector2.Zero, "same", cache);
         Require(ReferenceEquals(a.Texture, b.Texture) && cache.TextureCount == 1, "Repeated route phase shares board-owned filtered frame");
-        var texture = a.Texture; a.Free(); b.Free(); cache.Dispose();
+        var texture = a.Texture;
+        a.Free();
+        b.Free();
+        cache.Dispose();
         Require(!GodotObject.IsInstanceValid(texture), "Route cache disposal releases texture after nodes");
     }
     private void Require(bool value, string message)
     {
         assertions++;
-        if (!value) throw new InvalidOperationException(message);
+        if (!value)
+            throw new InvalidOperationException(message);
     }
 }

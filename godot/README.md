@@ -66,16 +66,25 @@ capabilities before gameplay. See `tools/godot/scenario-checks` and
 ## Scope and remaining migration work
 
 This is a playable-level integration checkpoint, not the finished migration.
-The story/choice/battle/result and validated save/load flow is integrated. Source-backed water, structures, markers, owner/HP/action badges, fog and cast telegraphs are integrated and headless-tested. Remaining work includes authored scenery for nine levels absent from the recovered source, lighting/shadows, camera follow/panning, full extension-registry parity, and native packaged desktop exports. These presentation omissions must not be mistaken for gameplay-rule completion. Other story themes remain unported.
+The story/choice/battle/result and non-destructive save/load flow is integrated.
+Water, structures, markers, fog, camera controls, lighting and shadows have native
+implementations and runtime checks. Manual acceptance of the latest build remains
+pending. Nine levels still lack authored scenery in the recovered source, other
+story themes remain unported, and older exported packages do not represent the
+latest source. Extension and localization contracts are documented in the native
+capability map and quality audit, not inferred from screenshots.
 See `docs/RECOVERY.md` for evidence and `docs/COMPATIBILITY.md` for explicit
 malformed-input hardening differences. Original source and art are preserved.
 
 ## Reproducible verification
 
 From the repository root in the configured local toolchain environment, run
-`bash tools/godot/verify-native.sh` for compilation, core/application/persistence
-checks and native scene contracts. Add `--full` for source-oracle comparisons,
-all 16 independent battles and two real campaign choice routes. The full route
-tests preserve natural AI losses; they do not manufacture victories. Original
-TypeScript and installed development dependencies are needed only for those oracle
-tools, never for the running game. These checks do not alter the user's save.
+`bash tools/godot/verify-native.sh` for formatting, compilation, current native
+contracts, all 16 independent level save/replays, the opening gameplay comparison,
+and actual headless battle/result/navigation scenes. These checks use isolated
+save locations. Manual GUI and current exported-package acceptance are separate.
+
+Historical TypeScript source-v1 oracle suites are retained as development evidence;
+they are not a current-schema acceptance mode. See
+`docs/OBJECTIVE-OUTCOME-SCHEMA.md` before using them. Their regeneration requires
+the original repository and locked Node dependencies; the native runtime does not.

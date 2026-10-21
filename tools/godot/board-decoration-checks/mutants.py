@@ -8,14 +8,14 @@ import tempfile
 root = Path.cwd()
 source = root / 'godot'
 mutants = {
-    'straightened-cubic-policy': ('SourceBoardDecorations.cs', ' / 6d', ' / 5d', 'Actual source cubic path'),
-    'missing-filter-spill': ('SourceBoardDecorations.cs', 'var filtered = CandidateShadowRaster.Filter(source, new[] { drop.ToDrop() }, density);', 'var filtered = (Image: (Image)source.Duplicate(), Padding: 0);', 'Action filter has source spill'),
-    'ring-opacity-order': ('SourceBoardDecorations.cs', 'return new(ImageTexture.CreateFromImage(filtered.Image), bounds.Grow(padding), opacity);', 'return new(ImageTexture.CreateFromImage(filtered.Image), bounds.Grow(padding), 1);', 'Selection opacity is post-filter'),
-    'replaced-path-leaks': ('SourceBoardDecorations.cs', 'pathDrawing?.Texture.Dispose();\n        pathDrawing = null;', 'pathDrawing = null;', 'Replaced path texture is disposed'),
+    'straightened-cubic-policy': ('BoardDecorations.cs', ' / 6d', ' / 5d', 'Actual source cubic path'),
+    'missing-filter-spill': ('BoardDecorations.cs', 'var filtered = ShadowRaster.Filter(source, new[] { drop.ToDrop() }, density);', 'var filtered = (Image: (Image)source.Duplicate(), Padding: 0);', 'Action filter has source spill'),
+    'ring-opacity-order': ('BoardDecorations.cs', 'return new(ImageTexture.CreateFromImage(filtered.Image), bounds.Grow(padding), opacity);', 'return new(ImageTexture.CreateFromImage(filtered.Image), bounds.Grow(padding), 1);', 'Selection opacity is post-filter'),
+    'replaced-path-leaks': ('BoardDecorations.cs', 'pathDrawing?.Texture.Dispose();\n        pathDrawing = null;', 'pathDrawing = null;', 'Replaced path texture is disposed'),
     'ranges-over-actors': ('BoardOverlay.cs', 'ZIndex = -2 }', 'ZIndex = 3000 }', 'Source ranges/path below actors'),
     'outside-spots': ('BoardOverlay.cs', '_playable?.Contains(cell) ?? true', 'true', 'Source range ordering'),
     'missing-attack-exclusion': ('BoardOverlay.cs', ' && !tactical.Attack.Contains(cell)', '', 'Source range ordering'),
-    'route-no-bleed': ('CandidateRouteComposition.cs', 'local.X >= 32.5f', 'local.X >= 32f', 'Per-cell source mask bleeds'),
+    'route-no-bleed': ('RouteComposition.cs', 'local.X >= 32.5f', 'local.X >= 32f', 'Per-cell source mask bleeds'),
 }
 with tempfile.TemporaryDirectory(prefix='empire-decoration-mutants-') as temporary:
     project = Path(temporary) / 'godot'

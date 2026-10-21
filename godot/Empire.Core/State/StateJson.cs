@@ -96,26 +96,30 @@ internal static class StateJson
 
     internal static void CopyIfPresent(JsonObject source, JsonObject destination, string key)
     {
-        if (source.TryGetPropertyValue(key, out var value)) destination[key] = value?.DeepClone();
+        if (source.TryGetPropertyValue(key, out var value))
+            destination[key] = value?.DeepClone();
     }
 
     internal static JsonObject MergeObjects(JsonNode? first, JsonNode? second, string subject)
     {
         var result = CopyObject(first, subject);
         if (second is not null)
-            foreach (var pair in Object(second, subject)) result[pair.Key] = pair.Value?.DeepClone();
+            foreach (var pair in Object(second, subject))
+                result[pair.Key] = pair.Value?.DeepClone();
         return result;
     }
 
     internal static JsonArray UniqueStrings(JsonNode? value, string subject)
     {
         var result = new JsonArray();
-        if (value is null) return result;
+        if (value is null)
+            return result;
         var seen = new HashSet<string>(StringComparer.Ordinal);
         foreach (var entry in Array(value, subject))
         {
             var text = Text(entry, subject);
-            if (seen.Add(text)) result.Add(text);
+            if (seen.Add(text))
+                result.Add(text);
         }
         return result;
     }
@@ -130,7 +134,8 @@ internal static class StateJson
     internal static JsonArray Zeros(int count)
     {
         var result = new JsonArray();
-        for (var index = 0; index < count; index++) result.Add(0);
+        for (var index = 0; index < count; index++)
+            result.Add(0);
         return result;
     }
 }

@@ -6,7 +6,10 @@ namespace Empire.Core.Lifecycle;
 
 public interface ITurnOrderPolicy
 {
-    string Id { get; }
+    string Id
+    {
+        get;
+    }
     JsonObject InitialState(JsonObject state, ReadOnlyContent content);
     TurnHandoff Begin(JsonObject state, TurnOrderContext context);
     TurnHandoff Advance(JsonObject state, TurnOrderContext context);

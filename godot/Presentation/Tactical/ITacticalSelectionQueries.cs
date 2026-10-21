@@ -19,13 +19,31 @@ public sealed record TacticalPassenger(int Id, IReadOnlyList<BoardCell> Spots);
 /// </summary>
 public interface ITacticalSelectionQueries
 {
-    TacticalStamp Stamp { get; }
-    string Phase { get; }
-    bool HumanInput { get; }
-    bool HumanTurn { get; }
-    bool CanUndo { get; }
+    TacticalStamp Stamp
+    {
+        get;
+    }
+    string Phase
+    {
+        get;
+    }
+    bool HumanInput
+    {
+        get;
+    }
+    bool HumanTurn
+    {
+        get;
+    }
+    bool CanUndo
+    {
+        get;
+    }
     /// <summary>Immutable in-bounds cells whose canonical terrain is not tagged outside.</summary>
-    IReadOnlySet<BoardCell> InteractiveCells { get; }
+    IReadOnlySet<BoardCell> InteractiveCells
+    {
+        get;
+    }
     TacticalUnit? Unit(int id);
     TacticalUnit? UnitAt(BoardCell at);
     bool AreEnemies(int firstUnit, int secondUnit);

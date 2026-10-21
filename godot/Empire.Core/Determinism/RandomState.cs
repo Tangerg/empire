@@ -7,12 +7,18 @@ namespace Empire.Core.Determinism;
 public sealed class RandomState
 {
     [JsonPropertyName("seed")]
-    public uint Seed { get; set; }
+    public uint Seed
+    {
+        get; set;
+    }
 
     // JavaScript counters are doubles, not uints: wrapping a saved counter at
     // 2^32 would preserve the next draw but change the structural state digest.
     [JsonPropertyName("counters")]
-    public Dictionary<string, double> Counters { get; }
+    public Dictionary<string, double> Counters
+    {
+        get;
+    }
 
     [JsonConstructor]
     public RandomState(uint seed, Dictionary<string, double>? counters = null)

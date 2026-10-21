@@ -19,15 +19,20 @@ void NormalizeOptionalProperties(JsonNode? node)
 {
     if (node is JsonObject obj)
     {
-        if (obj.ContainsKey("protectedUnit") && obj["protectedUnit"] is null) obj.Remove("protectedUnit");
-        foreach (var child in obj.ToArray()) NormalizeOptionalProperties(child.Value);
+        if (obj.ContainsKey("protectedUnit") && obj["protectedUnit"] is null)
+            obj.Remove("protectedUnit");
+        foreach (var child in obj.ToArray())
+            NormalizeOptionalProperties(child.Value);
     }
-    else if (node is JsonArray array) foreach (var child in array) NormalizeOptionalProperties(child);
+    else if (node is JsonArray array)
+        foreach (var child in array)
+            NormalizeOptionalProperties(child);
 }
 void Check(string name, string key, JsonNode? actual, JsonNode? expected)
 {
     actual = JsonNode.Parse(actual?.ToJsonString() ?? "null");
-    if (JsonNode.DeepEquals(actual, expected)) return;
+    if (JsonNode.DeepEquals(actual, expected))
+        return;
     var destination = Path.Combine(Path.GetDirectoryName(args[0])!, $"failed-{key}.json");
     File.WriteAllText(destination, new JsonObject { ["name"] = name, ["actual"] = actual, ["expected"] = expected?.DeepClone() }.ToJsonString(new JsonSerializerOptions { WriteIndented = true }));
     throw new Exception($"Mismatch in {name}: {key}; inspect {destination}");
@@ -40,14 +45,16 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
     var packs = originalPacks.DeepClone().AsArray();
     foreach (var patch in item["patches"]!.AsArray().OfType<JsonObject>())
     {
-        var family = StateJson.Text(patch, "family"); var id = StateJson.Text(patch, "id");
+        var family = StateJson.Text(patch, "family");
+        var id = StateJson.Text(patch, "id");
         var definition = packs.OfType<JsonObject>().SelectMany(pack => (pack[family] as JsonArray ?? new JsonArray()).OfType<JsonObject>())
             .Single(entry => StateJson.Text(entry, "id") == id);
-        foreach (var value in patch["values"]!.AsObject()) definition[value.Key] = value.Value?.DeepClone();
+        foreach (var value in patch["values"]!.AsObject())
+            definition[value.Key] = value.Value?.DeepClone();
     }
     var grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid());
     var catalog = new ReadOnlyContent(packs);
-    var movement = new DefaultTacticalSpace(catalog, grids);
+    var movement = new DefaultTacticalSpace(new TacticalSpaceRules(catalog, grids));
     var areaShapes = WeaponAreaRegistry.Core();
     foreach (var area in item["areas"]!.AsArray().OfType<JsonObject>())
     {
@@ -55,11 +62,16 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
         areaShapes.Replace(new(StateJson.Text(area, "id"), StateJson.IsTrue(area["needsOccupant"]),
             (_, _, targetAt) => offsets.Select(offset => new Coord(targetAt.X + offset.X, targetAt.Y + offset.Y)).ToArray()));
     }
-    var combat = new BattleCombat(new BattleCombatRules(catalog, grids, new BattleResources(), movement, areaShapes.Seal(),
+    var combat = new BattleCombat(new BattleCombatRules(catalog, grids, new BattleResources(new BattleResourceRules(DefaultResourcePolicies.Adapters.Clone(), DefaultResourcePolicies.Subjects.Clone())), movement, areaShapes.Seal(),
         DefaultCombatModifiers.Create(), DefaultWeaponHitEffects.Create(), ReactionRegistry.Core().Seal(),
         new Empire.Core.Progression.ThresholdRankProgressionPolicy(), Empire.Core.Lifecycle.DefaultUnitDepartureHandlers.Create()));
-    var events = new JsonArray(); var hashes = new JsonArray();
-    void Emit(JsonObject ev) { events.Add(ev); hashes.Add(StateDigest.Hash(state)); }
+    var events = new JsonArray();
+    var hashes = new JsonArray();
+    void Emit(JsonObject ev)
+    {
+        events.Add(ev);
+        hashes.Add(StateDigest.Hash(state));
+    }
     var attacker = TacticalQueries.UnitById(state, parameters["unit"] is null ? 1 : StateJson.Integer(parameters, "unit"));
     var from = parameters["from"] is JsonObject explicitFrom ? TacticalQueries.Position(explicitFrom) : attacker is null ? new Coord(0, 0) : TacticalQueries.Position(attacker);
     var target = parameters["target"] is JsonObject explicitTarget ? TacticalQueries.Position(explicitTarget) : new Coord(3, 3);
@@ -72,37 +84,56 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
             case "forecast":
             case "attack":
                 var plan = combat.Forecast(state, attacker!, target, from, weapon);
-                result = Serialize(plan); NormalizeOptionalProperties(result);
-                if (StateJson.Text(item, "op") == "attack") combat.ExecutePlan(state, plan, Emit);
+                result = Serialize(plan);
+                NormalizeOptionalProperties(result);
+                if (StateJson.Text(item, "op") == "attack")
+                    combat.ExecutePlan(state, plan, Emit);
                 break;
-            case "query": result = new JsonObject
+            case "query":
+                result = new JsonObject
                 {
                     ["usable"] = combat.CanUseAttack(state, attacker!, StateJson.IsTrue(parameters["moved"]), weapon),
                     ["targets"] = Serialize(combat.AttackTargets(state, attacker!, from, weapon)),
-                }; break;
-            case "cast": combat.ExecuteAttack(state, attacker!, from, target, weapon, Emit); break;
-            case "due": combat.ResolveDueCasts(state, Emit); break;
-            case "force": result = Serialize(combat.ForceMove(state, StateJson.Integer(attacker!, "id"), TacticalQueries.Position(parameters["source"]!.AsObject()),
-                StateJson.Text(parameters, "mode"), StateJson.Number(parameters["distance"], "distance"), StateJson.Number(parameters, "collisionDamage", 0), Emit)); break;
-            case "parting": combat.ResolvePartingShots(state, attacker!, from, TacticalQueries.Position(parameters["to"]!.AsObject()), Emit); break;
+                };
+                break;
+            case "cast":
+                combat.ExecuteAttack(state, attacker!, from, target, weapon, Emit);
+                break;
+            case "due":
+                combat.ResolveDueCasts(state, Emit);
+                break;
+            case "force":
+                result = Serialize(combat.ForceMove(state, StateJson.Integer(attacker!, "id"), TacticalQueries.Position(parameters["source"]!.AsObject()),
+                StateJson.Text(parameters, "mode"), StateJson.Number(parameters["distance"], "distance"), StateJson.Number(parameters, "collisionDamage", 0), Emit));
+                break;
+            case "parting":
+                combat.ResolvePartingShots(state, attacker!, from, TacticalQueries.Position(parameters["to"]!.AsObject()), Emit);
+                break;
             case "structure":
                 var raw = parameters["raw"]!.GetValueKind() == JsonValueKind.String ? double.NaN : StateJson.Number(parameters["raw"], "raw");
-                result = JsonValue.Create(combat.DamageStructure(state, StateJson.Text(parameters, "id"), raw, Emit)); break;
-            case "coverage": result = Serialize(combat.Coverage(state, from, target, StateJson.Text(parameters, "area"))); break;
+                result = JsonValue.Create(combat.DamageStructure(state, StateJson.Text(parameters, "id"), raw, Emit));
+                break;
+            case "coverage":
+                result = Serialize(combat.Coverage(state, from, target, StateJson.Text(parameters, "area")));
+                break;
             case "status":
                 foreach (var step in parameters["steps"]!.AsArray().OfType<JsonObject>())
                 {
                     var id = StateJson.Text(step, "id");
-                    if (StateJson.IsTrue(step["remove"])) combat.Effects.RemoveStatus(attacker!, id, Emit);
-                    else combat.Effects.AddStatus(attacker!, id, StateJson.Integer(step, "duration"),
+                    if (StateJson.IsTrue(step["remove"]))
+                        combat.Effects.RemoveStatus(attacker!, id, Emit);
+                    else
+                        combat.Effects.AddStatus(attacker!, id, StateJson.Integer(step, "duration"),
                         step["source"] is null ? null : StateJson.Integer(step, "source"), Emit);
                 }
-                result = Serialize(combat.Effects.Modifiers(attacker!)); break;
+                result = Serialize(combat.Effects.Modifiers(attacker!));
+                break;
             case "progress":
                 foreach (var amount in parameters["amounts"]!.AsArray())
                     combat.Effects.AwardRankProgress(attacker!, StateJson.Number(amount, "amount"), Emit);
                 break;
-            default: throw new Exception("Unknown test operation");
+            default:
+                throw new Exception("Unknown test operation");
         }
     }
     catch (IllegalActionException caught)
@@ -116,9 +147,17 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
     JsonNode? expectedError = item["error"];
     if (expectedError?["kind"]?.GetValue<string>() == "IllegalAction")
     {
-        if (name != "duplicate cast refused") throw new Exception("Unspecified semantic refusal expectation: " + name);
-        expectedError = new JsonObject { ["kind"] = "IllegalAction", ["refusal"] = new JsonObject
-        { ["code"] = "combat.already_casting", ["details"] = new JsonObject { ["unitId"] = StateJson.Integer(attacker!, "id") } } };
+        if (name != "duplicate cast refused")
+            throw new Exception("Unspecified semantic refusal expectation: " + name);
+        expectedError = new JsonObject
+        {
+            ["kind"] = "IllegalAction",
+            ["refusal"] = new JsonObject
+            {
+                ["code"] = "combat.already_casting",
+                ["details"] = new JsonObject { ["unitId"] = StateJson.Integer(attacker!, "id") }
+            }
+        };
     }
     Check(name, "error", error, expectedError);
     Check(name, "result", result, item["result"]);
@@ -132,7 +171,10 @@ var registry = WeaponAreaRegistry.Core();
 if (!registry.Keys().SequenceEqual(new[] { "single", "cross1", "ring1", "line" })) throw new Exception("Area key order changed");
 void MustRefuse(Action operation)
 {
-    try { operation(); }
+    try
+    {
+        operation();
+    }
     catch (DomainInvariantException) { return; }
     throw new Exception("Area registry failed to reject invalid mutation");
 }

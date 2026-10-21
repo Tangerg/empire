@@ -44,10 +44,15 @@ internal sealed partial class BattleSaveInspection
             ("checkRuleReferences", CheckRuleReferences), ("checkNativeState", CheckNativeState),
         })
         {
-            try { check.Apply(save); }
+            try
+            {
+                check.Apply(save);
+            }
             catch (StoredDocumentException) { throw; }
             catch (Exception error)
-            { throw new StoredDocumentException($"战斗存档无法读取：校验「{check.Id}」时遇到损坏数据", error); }
+            {
+                throw new StoredDocumentException($"战斗存档无法读取：校验「{check.Id}」时遇到损坏数据", error);
+            }
         }
         return save;
     }
@@ -70,23 +75,27 @@ internal sealed partial class BattleSaveInspection
 
     private void RequireContent(string family, string id, string owner)
     {
-        if (content.TryGet(family, id) is null) StoredSchema.Reject($"{owner} 引用了目录里没有的「{id}」");
+        if (content.TryGet(family, id) is null)
+            StoredSchema.Reject($"{owner} 引用了目录里没有的「{id}」");
     }
 
     private void CheckRuleset(JsonObject save)
     {
         RulesetManifest.ValidateStored(save["ruleset"]);
         var differences = RulesetManifest.Differences(manifest, save["ruleset"]!.AsObject());
-        if (differences.Count > 0) StoredSchema.Reject(string.Join("；", differences));
+        if (differences.Count > 0)
+            StoredSchema.Reject(string.Join("；", differences));
     }
 
     private static void CheckMetadata(JsonObject save)
     {
-        if (!StoredSchema.ValidTimestamp(StateJson.Text(save, "savedAt"))) StoredSchema.Reject("保存时间缺失或损坏");
+        if (!StoredSchema.ValidTimestamp(StateJson.Text(save, "savedAt")))
+            StoredSchema.Reject("保存时间缺失或损坏");
         var header = RequireHeader(save);
         var state = State(save);
         foreach (var key in new[] { "levelId", "turn", "phase" })
-            if (!Empire.Core.Determinism.EcmaJson.DeepEquals(header[key], state[key])) StoredSchema.Reject("战斗摘要与战斗状态不一致");
+            if (!Empire.Core.Determinism.EcmaJson.DeepEquals(header[key], state[key]))
+                StoredSchema.Reject("战斗摘要与战斗状态不一致");
     }
 
     private void CheckMap(JsonObject save)
@@ -97,7 +106,8 @@ internal sealed partial class BattleSaveInspection
             StoredSchema.Reject("地图尺寸不合法");
         var width = StateJson.Integer(map, "width");
         var height = StateJson.Integer(map, "height");
-        if ((long)width * height != map["tiles"]!.AsArray().Count) StoredSchema.Reject("地图格数与尺寸不符");
+        if ((long)width * height != map["tiles"]!.AsArray().Count)
+            StoredSchema.Reject("地图格数与尺寸不符");
         foreach (var terrain in map["tiles"]!.AsArray())
             RequireContent("terrains", StateJson.Text(terrain, "terrain"), "地图");
         foreach (var key in new[] { "owners", "captureProgress", "elevation" })

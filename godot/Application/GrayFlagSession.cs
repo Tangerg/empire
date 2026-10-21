@@ -12,10 +12,12 @@ using Empire.Localization;
 
 namespace Empire.Application;
 
+public sealed record BattleSessionRules(BattleEngine Engine, SessionPresentationText Presentation);
+
 /// <summary>Thin application adapter. All choices come from the same core that dispatches them.</summary>
 public sealed partial class GrayFlagSession
 {
-    private readonly GrayFlagEngine engine;
+    private readonly BattleEngine engine;
     private readonly GameText text;
     private readonly ActionRefusalText refusals;
     private readonly BattleText battleText;
@@ -33,13 +35,18 @@ public sealed partial class GrayFlagSession
     private HashSet<int> VisibleUnitIds(JsonObject state, int viewer, IReadOnlySet<int>? seen = null) =>
         state["units"]!.AsArray().OfType<JsonObject>().Where(unit => engine.Space.IsUnitVisible(state, viewer, unit, seen))
             .Select(unit => unit["id"]!.GetValue<int>()).ToHashSet();
-    public bool? LastActionHandsOffTurn { get; private set; }
+    public bool? LastActionHandsOffTurn
+    {
+        get; private set;
+    }
     public bool CanUndo => undo.Count > 0 && !IsComputerTurn && battle.Snapshot()["phase"]?.GetValue<string>() != "over";
 
     public BattleDispatchResult Undo(long expectedRevision)
     {
-        if (expectedRevision != revision) return new(false, text.Format("error.session.revision_changed"));
-        if (!CanUndo) return new(false, text.Format("error.session.undo_unavailable"));
+        if (expectedRevision != revision)
+            return new(false, text.Format("error.session.revision_changed"));
+        if (!CanUndo)
+            return new(false, text.Format("error.session.undo_unavailable"));
         var checkpoint = undo.Peek();
         battle.Restore(checkpoint.Receipt);
         undo.Pop();
@@ -51,20 +58,24 @@ public sealed partial class GrayFlagSession
         return new(true, text.Format("feedback.session.undone"));
     }
 
-    public GrayFlagSession(GrayFlagEngine engine, SessionPresentationText presentation, JsonObject level)
+    public GrayFlagSession(BattleSessionRules rules, JsonObject level)
     {
+        var engine = rules.Engine;
+        var presentation = rules.Presentation;
         this.engine = engine;
         text = presentation.Messages;
         refusals = presentation.Refusals;
         battleText = presentation.Battle;
         contentText = presentation.Content;
         modifierText = presentation.Modifiers;
-        eventText = BattleEventText.CreateDefault(text, battleText).Seal();
+        eventText = presentation.Events;
         battle = engine.CreateBattle(level);
     }
 
-    private GrayFlagSession(GrayFlagEngine engine, SessionPresentationText presentation, Battle battle)
+    private GrayFlagSession(BattleSessionRules rules, Battle battle)
     {
+        var engine = rules.Engine;
+        var presentation = rules.Presentation;
         this.engine = engine;
         this.battle = battle;
         text = presentation.Messages;
@@ -72,13 +83,14 @@ public sealed partial class GrayFlagSession
         battleText = presentation.Battle;
         contentText = presentation.Content;
         modifierText = presentation.Modifiers;
-        eventText = BattleEventText.CreateDefault(text, battleText).Seal();
+        eventText = presentation.Events;
     }
 
-    public static GrayFlagSession FromSave(GrayFlagEngine engine, SessionPresentationText presentation, JsonNode save, JsonArray? recordedEvents = null)
+    public static GrayFlagSession FromSave(BattleSessionRules rules, JsonNode save, JsonArray? recordedEvents = null)
     {
-        var restored = new GrayFlagSession(engine, presentation, engine.LoadSavedBattle(save));
-        if (recordedEvents is not null) restored.events.AddRange(recordedEvents.OfType<JsonObject>().Select(value => (JsonObject)value.DeepClone()));
+        var restored = new GrayFlagSession(rules, rules.Engine.LoadSavedBattle(save));
+        if (recordedEvents is not null)
+            restored.events.AddRange(recordedEvents.OfType<JsonObject>().Select(value => (JsonObject)value.DeepClone()));
         return restored;
     }
     public JsonObject Snapshot() => battle.Snapshot();
@@ -99,7 +111,8 @@ public sealed partial class GrayFlagSession
 
     public ComputerStepResult? AdvanceComputerStep(Action<string>? onRefusal = null)
     {
-        if (!IsComputerTurn) return null;
+        if (!IsComputerTurn)
+            return null;
         var attempted = engine.Ai.ChooseAction(battle.Snapshot());
         return ComputerActionExecution.Execute(attempted, Commit, engine.HandsOffTurn,
             refusal => onRefusal?.Invoke(refusals.DescribeComputer(refusal)));
@@ -126,10 +139,13 @@ public sealed partial class GrayFlagSession
 
     public BattleDispatchResult Dispatch(JsonElement action, long expectedRevision)
     {
-        if (expectedRevision != revision) return new(false, text.Format("error.session.revision_changed"));
-        if (IsComputerTurn) return new(false, text.Format("error.session.computer_turn"));
+        if (expectedRevision != revision)
+            return new(false, text.Format("error.session.revision_changed"));
+        if (IsComputerTurn)
+            return new(false, text.Format("error.session.computer_turn"));
         var command = Empire.Core.Determinism.EcmaJson.Parse(action.GetRawText()) as JsonObject;
-        if (command is null) return new(false, text.Format("error.session.command_shape"));
+        if (command is null)
+            return new(false, text.Format("error.session.command_shape"));
         try
         {
             var receipt = Commit(command);
@@ -149,8 +165,10 @@ public sealed partial class GrayFlagSession
             beforeVisible = VisibleUnitIds(before, viewer);
         }
         var receipt = battle.Dispatch(command);
-        if (receipt.HandsOffTurn) undo.Clear();
-        else undo.Push(new(receipt, actions.Count, events.Count));
+        if (receipt.HandsOffTurn)
+            undo.Clear();
+        else
+            undo.Push(new(receipt, actions.Count, events.Count));
         LastActionHandsOffTurn = receipt.HandsOffTurn;
         actions.Add((JsonObject)command.DeepClone());
         events.AddRange(receipt.Events.Select(value => (JsonObject)value.DeepClone()));
@@ -181,11 +199,19 @@ internal static class ComputerActionExecution
         Func<JsonObject, bool> handsOffTurn, Action<ActionRefusal>? onRefusal)
     {
         var committed = false;
-        try { dispatch(attempted); committed = true; }
+        try
+        {
+            dispatch(attempted);
+            committed = true;
+        }
         catch (IllegalActionException error)
         {
             onRefusal?.Invoke(error.Refusal);
-            try { dispatch(new JsonObject { ["kind"] = "endTurn" }); committed = true; }
+            try
+            {
+                dispatch(new JsonObject { ["kind"] = "endTurn" });
+                committed = true;
+            }
             catch (IllegalActionException) { /* The source settles an empty event list after a refused fallback. */ }
         }
         return new(committed, handsOffTurn(attempted));

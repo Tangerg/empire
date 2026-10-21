@@ -12,12 +12,14 @@ internal static class TacticalSceneInputChecks
         var controller = new TacticalSelectionController(queries);
         foreach (var destination in queries.MoveStops(unitId))
         {
-            if (destination == origin) continue;
+            if (destination == origin)
+                continue;
             controller.Bind(queries);
             controller.Click(controller.Stamp, origin);
             var result = controller.Click(controller.Stamp, destination);
             if (result.Request?.Action is not { } action || action.GetProperty("kind").GetString() != "command"
-                || action.GetProperty("command").GetProperty("ability").GetString() != "wait") continue;
+                || action.GetProperty("command").GetProperty("ability").GetString() != "wait")
+                continue;
             screen.SelectCell(origin);
             screen.SelectCell(destination);
             return destination;

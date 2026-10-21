@@ -22,7 +22,7 @@ The native contract checks also exercise:
 
 ## Runtime API and ownership
 
-`BattleActionRegistry.Register/Replace(kind, handler, handsOffTurn = false)` stores metadata with the handler. `HandsOffTurn(action)` returns false for unknown kinds. `GrayFlagEngine.HandsOffTurn(action)` delegates to the same composed registry used by its battles, so an attempted AI action can be queried before dispatch. Only the native registrations for `endTurn` and `finishDeployment` declare true, matching the source handlers.
+`BattleActionRegistry.Register/Replace(kind, handler, handsOffTurn = false)` stores metadata with the handler. `HandsOffTurn(action)` returns false for unknown kinds. `BattleEngine.HandsOffTurn(action)` delegates to the same composed registry used by its battles, so an attempted AI action can be queried before dispatch. Only the native registrations for `endTurn` and `finishDeployment` declare true, matching the source handlers.
 
 `BattleReceipt` is created only by `Battle`, exposes detached `Before`/`Events`, and carries `StateHash` and `HandsOffTurn`. `Battle.Restore(receipt)` accepts only the current trusted non-handoff receipt issued by that battle. Successful restore consumes that checkpoint and exposes its predecessor. Handoff clears the chain. No client-provided JSON is accepted as a restoration checkpoint; snapshots remain read projections, not writers.
 

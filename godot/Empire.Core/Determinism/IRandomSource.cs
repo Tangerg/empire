@@ -4,7 +4,10 @@ namespace Empire.Core.Determinism;
 
 public interface IRandomSource
 {
-    string Id { get; }
+    string Id
+    {
+        get;
+    }
     double Next(RandomState state, string stream);
     double Peek(RandomState state, string stream);
     int Int(RandomState state, string stream, int bound);

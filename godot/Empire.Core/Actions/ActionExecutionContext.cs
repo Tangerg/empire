@@ -7,13 +7,19 @@ namespace Empire.Core.Actions;
 public sealed class ActionExecutionContext
 {
     private readonly ActionRules? rules;
-    public JsonObject State { get; }
-    public Action<JsonObject> Emit { get; }
+    public JsonObject State
+    {
+        get;
+    }
+    public Action<JsonObject> Emit
+    {
+        get;
+    }
     public ActionRules Rules => rules ?? throw new DomainInvariantException("Battle action requires composed rule services");
     private readonly BattleLifecycle? lifecycle;
     public BattleLifecycle Lifecycle => lifecycle ?? throw new DomainInvariantException("Battle action requires composed lifecycle services");
 
-    public ActionExecutionContext(JsonObject state, ActionRules rules, Action<JsonObject> output)
+    public ActionExecutionContext(ActionRules rules, JsonObject state, Action<JsonObject> output)
     {
         State = state;
         this.rules = rules;

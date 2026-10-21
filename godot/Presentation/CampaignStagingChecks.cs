@@ -19,30 +19,36 @@ public partial class CampaignStagingChecks : Node
         try
         {
             var arguments = OS.GetCmdlineUserArgs();
-            if (arguments.Length != 1) throw new ArgumentException("Pass staging source oracle JSON after --");
+            if (arguments.Length != 1)
+                throw new ArgumentException("Pass staging source oracle JSON after --");
             var oracle = EcmaJson.Parse(System.IO.File.ReadAllText(arguments[0]))!.AsObject();
             var item = oracle["cases"]!.AsArray().OfType<JsonObject>().First();
             var nativeCatalog = ResourceLoader.Load<Translation>(GodotTextCatalog.ResourcePath);
             var catalog = nativeCatalog.GetMessageList().ToDictionary(key => key, key => nativeCatalog.GetMessage(key).ToString(), StringComparer.Ordinal);
-            foreach (var message in oracle["testMessages"]!.AsObject()) catalog.Add(message.Key, message.Value!.GetValue<string>());
+            foreach (var message in oracle["testMessages"]!.AsObject())
+                catalog.Add(message.Key, message.Value!.GetValue<string>());
             var messages = new GameText(key => catalog.GetValueOrDefault(key), CultureInfo.GetCultureInfo("zh-CN"));
             JsonObject FixtureMetadata()
             {
                 var value = PresentationJson.Load<JsonObject>("res://data/grayflag-staging.json");
                 foreach (var (target, fixture) in new[] { ("resourceLabelKeys", "testResourceLabelKeys"), ("relationLabelKeys", "testRelationLabelKeys") })
-                    foreach (var label in oracle[fixture]!.AsObject()) value[target]![label.Key] = label.Value!.DeepClone();
+                    foreach (var label in oracle[fixture]!.AsObject())
+                        value[target]![label.Key] = label.Value!.DeepClone();
                 return value;
             }
             var metadata = FixtureMetadata();
             void RemoveArt(JsonNode? value)
             {
-                if (value is not JsonObject obj) return;
-                if (obj.ContainsKey("source") && obj.ContainsKey("resourcePath")) obj["resourcePath"] = null;
-                foreach (var child in obj.ToArray()) RemoveArt(child.Value);
+                if (value is not JsonObject obj)
+                    return;
+                if (obj.ContainsKey("source") && obj.ContainsKey("resourcePath"))
+                    obj["resourcePath"] = null;
+                foreach (var child in obj.ToArray())
+                    RemoveArt(child.Value);
             }
             RemoveArt(metadata);
             string UnitName(string id) => EcmaJson.ReadString(oracle["unitNames"]![id]);
-            var engine = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+            var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
             var presentationText = new CampaignStagingText(messages, BattleTextChecks.Load(engine, messages), UnitName);
             var nativeLevels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
                 .ToDictionary(level => level["id"]!.GetValue<string>(), StringComparer.Ordinal);
@@ -52,8 +58,10 @@ public partial class CampaignStagingChecks : Node
                 EcmaJson.ToElement(item["node"]), NativeLevel(item), EcmaJson.ToElement(metadata), pending);
             var assets = AssetCatalog.Load();
             var view = View(false);
-            var screen = new CampaignStagingScreen(); AddChild(screen);
-            var starts = 0; var exits = 0;
+            var screen = new CampaignStagingScreen();
+            AddChild(screen);
+            var starts = 0;
+            var exits = 0;
             screen.ShowStaging(view, assets, () => starts++, () => exits++);
             var text = string.Join("\n", Descendants(screen).OfType<Label>().Select(label => label.Text));
             foreach (var value in new[] { view.Title, view.Description, view.Eyebrow, view.ChapterHeading, view.Progress,
@@ -79,13 +87,15 @@ public partial class CampaignStagingChecks : Node
             var oldExit = NavigationButton(screen, "CampaignExit");
             Require(oldExit.AccessibilityName == view.ExitLabel, "Shared shell exit must retain the source accessible label");
             Require(oldButton.Text == view.StartLabel, "First entry label must match source");
-            oldButton.EmitSignal(Button.SignalName.Pressed); oldButton.EmitSignal(Button.SignalName.Pressed);
+            oldButton.EmitSignal(Button.SignalName.Pressed);
+            oldButton.EmitSignal(Button.SignalName.Pressed);
             Require(starts == 1 && oldButton.Disabled && oldExit.Disabled, "Start callback must run once and disable sibling exit");
             oldExit.EmitSignal(Button.SignalName.Pressed);
             Require(exits == 0, "Shared-shell exit escaped a submitted Start action");
             var reentry = View(true);
             screen.ShowStaging(reentry, assets, () => starts++, () => exits++);
-            oldButton.EmitSignal(Button.SignalName.Pressed); oldExit.EmitSignal(Button.SignalName.Pressed);
+            oldButton.EmitSignal(Button.SignalName.Pressed);
+            oldExit.EmitSignal(Button.SignalName.Pressed);
             Require(starts == 1 && exits == 0, "Stale Start/Exit callbacks after rebind must not navigate");
             var newButton = NavigationButton(screen, "StartBattle");
             var newExit = NavigationButton(screen, "CampaignExit");
@@ -97,20 +107,29 @@ public partial class CampaignStagingChecks : Node
             newButton.EmitSignal(Button.SignalName.Pressed);
             Require(starts == 1, "Detached Start button must not act on campaign state while its screen stays mounted");
             buttonParent.AddChild(newButton);
-            var exitParent = newExit.GetParent(); exitParent.RemoveChild(newExit);
+            var exitParent = newExit.GetParent();
+            exitParent.RemoveChild(newExit);
             newExit.EmitSignal(Button.SignalName.Pressed);
             Require(exits == 0, "Detached shared-shell Exit must not navigate while its screen stays mounted");
             exitParent.AddChild(newExit);
-            RemoveChild(screen); newButton.EmitSignal(Button.SignalName.Pressed); newExit.EmitSignal(Button.SignalName.Pressed);
+            RemoveChild(screen);
+            newButton.EmitSignal(Button.SignalName.Pressed);
+            newExit.EmitSignal(Button.SignalName.Pressed);
             Require(starts == 1 && exits == 0, "Unmounted Start/Exit callbacks must not act on campaign state");
-            AddChild(screen); newButton.EmitSignal(Button.SignalName.Pressed); newExit.EmitSignal(Button.SignalName.Pressed);
+            AddChild(screen);
+            newButton.EmitSignal(Button.SignalName.Pressed);
+            newExit.EmitSignal(Button.SignalName.Pressed);
             Require(starts == 1 && exits == 0, "Remount alone must not revive stale Start/Exit callbacks");
             screen.ShowStaging(view, assets, () => starts++, () => exits++);
-            var reboundStart = NavigationButton(screen, "StartBattle"); var reboundExit = NavigationButton(screen, "CampaignExit");
-            reboundExit.EmitSignal(Button.SignalName.Pressed); reboundExit.EmitSignal(Button.SignalName.Pressed); reboundStart.EmitSignal(Button.SignalName.Pressed);
+            var reboundStart = NavigationButton(screen, "StartBattle");
+            var reboundExit = NavigationButton(screen, "CampaignExit");
+            reboundExit.EmitSignal(Button.SignalName.Pressed);
+            reboundExit.EmitSignal(Button.SignalName.Pressed);
+            reboundStart.EmitSignal(Button.SignalName.Pressed);
             Require(exits == 1 && starts == 1 && reboundExit.Disabled && reboundStart.Disabled, "Exit must be single-use and block sibling Start");
             screen.ShowStaging(view, assets, () => starts++, () => exits++);
-            reboundExit.EmitSignal(Button.SignalName.Pressed); reboundStart.EmitSignal(Button.SignalName.Pressed);
+            reboundExit.EmitSignal(Button.SignalName.Pressed);
+            reboundStart.EmitSignal(Button.SignalName.Pressed);
             Require(exits == 1 && starts == 1, "A new staging binding revived previously submitted navigation");
             NavigationButton(screen, "StartBattle").EmitSignal(Button.SignalName.Pressed);
             Require(starts == 2 && exits == 1, "Remounted and explicitly rebound screen must accept one new action");
@@ -128,7 +147,8 @@ public partial class CampaignStagingChecks : Node
                         "Exported named portrait must be used instead of the unit-sprite fallback");
                 }
             }
-            RemoveChild(screen); screen.QueueFree();
+            RemoveChild(screen);
+            screen.QueueFree();
             GD.Print($"Campaign staging native checks passed: {assertions} assertions.");
             GetTree().Quit();
         }
@@ -140,12 +160,14 @@ public partial class CampaignStagingChecks : Node
         foreach (var child in root.GetChildren())
         {
             yield return child;
-            foreach (var descendant in Descendants(child)) yield return descendant;
+            foreach (var descendant in Descendants(child))
+                yield return descendant;
         }
     }
     private void Require(bool condition, string message)
     {
         assertions++;
-        if (!condition) throw new Exception(message);
+        if (!condition)
+            throw new Exception(message);
     }
 }

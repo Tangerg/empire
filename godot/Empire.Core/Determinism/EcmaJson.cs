@@ -22,9 +22,11 @@ public static class EcmaJson
         // Escape before UTF-8 transcoding, which would otherwise replace that unit.
         var bytes = StrictUtf8.GetBytes(EscapeLoneUnits(json));
         var reader = new Utf8JsonReader(bytes);
-        if (!reader.Read()) throw new JsonException("Expected a JSON value.");
+        if (!reader.Read())
+            throw new JsonException("Expected a JSON value.");
         var value = ReadValue(ref reader, rejectDuplicateProperties);
-        if (reader.Read()) throw new JsonException("Only one top-level JSON value is permitted.");
+        if (reader.Read())
+            throw new JsonException("Only one top-level JSON value is permitted.");
         return value;
     }
 
@@ -41,7 +43,8 @@ public static class EcmaJson
         {
             if (scalar.TryGetValue<JsonElement>(out var element) && element.ValueKind == JsonValueKind.String)
                 return DecodeStringToken(element.GetRawText());
-            if (scalar.TryGetValue<string>(out var text)) return text;
+            if (scalar.TryGetValue<string>(out var text))
+                return text;
         }
         throw new DomainInvariantException("JSON value must be a string");
     }
@@ -66,7 +69,8 @@ public static class EcmaJson
         ArgumentNullException.ThrowIfNull(key);
         for (var index = 0; index < key.Length; index++)
         {
-            if (!char.IsSurrogate(key[index])) continue;
+            if (!char.IsSurrogate(key[index]))
+                continue;
             if (char.IsHighSurrogate(key[index]) && index + 1 < key.Length && char.IsLowSurrogate(key[index + 1]))
             {
                 index++;
@@ -89,7 +93,8 @@ public static class EcmaJson
 
     public static bool DeepEquals(JsonNode? left, JsonNode? right)
     {
-        if (left is null || right is null) return left is null && right is null;
+        if (left is null || right is null)
+            return left is null && right is null;
         if (left is JsonObject leftObject && right is JsonObject rightObject)
         {
             var first = Properties(leftObject);
@@ -98,7 +103,8 @@ public static class EcmaJson
         }
         if (left is JsonArray leftArray && right is JsonArray rightArray)
             return leftArray.Count == rightArray.Count && leftArray.Select((value, index) => DeepEquals(value, rightArray[index])).All(value => value);
-        if (left is not JsonValue a || right is not JsonValue b || a.GetValueKind() != b.GetValueKind()) return false;
+        if (left is not JsonValue a || right is not JsonValue b || a.GetValueKind() != b.GetValueKind())
+            return false;
         return a.GetValueKind() switch
         {
             JsonValueKind.String => StringComparer.Ordinal.Equals(ReadString(a), ReadString(b)),
@@ -117,10 +123,13 @@ public static class EcmaJson
                 var obj = new JsonObject();
                 while (reader.Read())
                 {
-                    if (reader.TokenType == JsonTokenType.EndObject) return obj;
-                    if (reader.TokenType != JsonTokenType.PropertyName) throw new JsonException("Expected an object property.");
+                    if (reader.TokenType == JsonTokenType.EndObject)
+                        return obj;
+                    if (reader.TokenType != JsonTokenType.PropertyName)
+                        throw new JsonException("Expected an object property.");
                     var name = ReadToken(ref reader);
-                    if (!reader.Read()) throw new JsonException("Expected a property value.");
+                    if (!reader.Read())
+                        throw new JsonException("Expected a property value.");
                     if (rejectDuplicateProperties && obj.ContainsKey(name))
                         throw new JsonException($"Duplicate JSON property: {name}.");
                     // JSON.parse gives the last duplicate its value, retaining the key's insertion position.
@@ -131,21 +140,28 @@ public static class EcmaJson
                 var array = new JsonArray();
                 while (reader.Read())
                 {
-                    if (reader.TokenType == JsonTokenType.EndArray) return array;
+                    if (reader.TokenType == JsonTokenType.EndArray)
+                        return array;
                     array.Add(ReadValue(ref reader, rejectDuplicateProperties));
                 }
                 throw new JsonException("Unterminated JSON array.");
-            case JsonTokenType.String: return JsonValue.Create(ReadToken(ref reader));
+            case JsonTokenType.String:
+                return JsonValue.Create(ReadToken(ref reader));
             case JsonTokenType.Number:
                 var number = reader.GetDouble();
-                if (!double.IsFinite(number)) throw new JsonException("JSON number is outside the finite binary64 range.");
+                if (!double.IsFinite(number))
+                    throw new JsonException("JSON number is outside the finite binary64 range.");
                 // Keep JsonElement-backed numeric access (GetValue<int>, double, etc.) while
                 // rounding through binary64 exactly once, as JSON.parse does.
                 return JsonValue.Create(JsonSerializer.SerializeToElement(number));
-            case JsonTokenType.True: return JsonValue.Create(true);
-            case JsonTokenType.False: return JsonValue.Create(false);
-            case JsonTokenType.Null: return null;
-            default: throw new JsonException("Expected a JSON value.");
+            case JsonTokenType.True:
+                return JsonValue.Create(true);
+            case JsonTokenType.False:
+                return JsonValue.Create(false);
+            case JsonTokenType.Null:
+                return null;
+            default:
+                throw new JsonException("Expected a JSON value.");
         }
     }
 
@@ -154,7 +170,10 @@ public static class EcmaJson
 
     private static KeyValuePair<string, JsonNode?>[] Properties(JsonObject obj)
     {
-        try { return obj.ToArray(); }
+        try
+        {
+            return obj.ToArray();
+        }
         catch (InvalidOperationException error)
         {
             throw new DomainInvariantException("Cannot materialize this System.Text.Json lazy object without losing UTF-16 keys. Use EcmaJson.Parse on its original JSON text.", error);
@@ -165,36 +184,52 @@ public static class EcmaJson
     {
         switch (value)
         {
-            case null: text.Append("null"); return;
+            case null:
+                text.Append("null");
+                return;
             case JsonObject obj:
                 text.Append('{');
                 var first = true;
                 // JavaScript enumerates array-index keys first, then other strings in insertion order.
                 foreach (var property in Properties(obj).OrderBy(pair => ArrayIndex(pair.Key)))
                 {
-                    if (!first) text.Append(',');
+                    if (!first)
+                        text.Append(',');
                     first = false;
                     AppendString(text, property.Key);
                     text.Append(':');
                     AppendValue(text, property.Value);
                 }
-                text.Append('}'); return;
+                text.Append('}');
+                return;
             case JsonArray array:
                 text.Append('[');
                 for (var index = 0; index < array.Count; index++)
                 {
-                    if (index != 0) text.Append(',');
+                    if (index != 0)
+                        text.Append(',');
                     AppendValue(text, array[index]);
                 }
-                text.Append(']'); return;
+                text.Append(']');
+                return;
             case JsonValue scalar:
                 switch (scalar.GetValueKind())
                 {
-                    case JsonValueKind.String: AppendString(text, ReadString(scalar)); return;
-                    case JsonValueKind.Number: text.Append(EcmaNumber.Format(Number(scalar))); return;
-                    case JsonValueKind.True: text.Append("true"); return;
-                    case JsonValueKind.False: text.Append("false"); return;
-                    case JsonValueKind.Null: text.Append("null"); return;
+                    case JsonValueKind.String:
+                        AppendString(text, ReadString(scalar));
+                        return;
+                    case JsonValueKind.Number:
+                        text.Append(EcmaNumber.Format(Number(scalar)));
+                        return;
+                    case JsonValueKind.True:
+                        text.Append("true");
+                        return;
+                    case JsonValueKind.False:
+                        text.Append("false");
+                        return;
+                    case JsonValueKind.Null:
+                        text.Append("null");
+                        return;
                 }
                 break;
         }
@@ -207,11 +242,15 @@ public static class EcmaJson
     private static double Number(JsonValue value)
     {
         double number;
-        if (value.TryGetValue<double>(out number)) { }
-        else if (value.TryGetValue<float>(out var single)) number = single;
+        if (value.TryGetValue<double>(out number))
+        {
+        }
+        else if (value.TryGetValue<float>(out var single))
+            number = single;
         else if (!double.TryParse(value.ToJsonString(), NumberStyles.Float, CultureInfo.InvariantCulture, out number))
             throw new DomainInvariantException("Canonical JSON requires a binary64 number");
-        if (!double.IsFinite(number)) throw new DomainInvariantException("Canonical JSON cannot contain a non-finite number");
+        if (!double.IsFinite(number))
+            throw new DomainInvariantException("Canonical JSON cannot contain a non-finite number");
         return number;
     }
 
@@ -223,7 +262,11 @@ public static class EcmaJson
             var unit = json[index];
             if (char.IsHighSurrogate(unit) && index + 1 < json.Length && char.IsLowSurrogate(json[index + 1]))
             {
-                if (escaped is not null) { escaped.Append(unit); escaped.Append(json[index + 1]); }
+                if (escaped is not null)
+                {
+                    escaped.Append(unit);
+                    escaped.Append(json[index + 1]);
+                }
                 index++;
             }
             else if (char.IsSurrogate(unit))
@@ -231,12 +274,15 @@ public static class EcmaJson
                 // Escaping an invalid character after a single JSON backslash would
                 // accidentally turn malformed input into a valid escaped backslash.
                 var precedingSlashes = 0;
-                for (var previous = index - 1; previous >= 0 && json[previous] == '\\'; previous--) precedingSlashes++;
-                if (precedingSlashes % 2 != 0) throw new JsonException("Invalid escape before an unpaired UTF-16 code unit.");
+                for (var previous = index - 1; previous >= 0 && json[previous] == '\\'; previous--)
+                    precedingSlashes++;
+                if (precedingSlashes % 2 != 0)
+                    throw new JsonException("Invalid escape before an unpaired UTF-16 code unit.");
                 escaped ??= new StringBuilder(json.Length + 8).Append(json.AsSpan(0, index));
                 escaped.Append("\\u").Append(((int)unit).ToString("x4", CultureInfo.InvariantCulture));
             }
-            else escaped?.Append(unit);
+            else
+                escaped?.Append(unit);
         }
         return escaped?.ToString() ?? json;
     }
@@ -255,14 +301,30 @@ public static class EcmaJson
 
             switch (token[++index])
             {
-                case '"': value.Append('"'); break;
-                case '\\': value.Append('\\'); break;
-                case '/': value.Append('/'); break;
-                case 'b': value.Append('\b'); break;
-                case 'f': value.Append('\f'); break;
-                case 'n': value.Append('\n'); break;
-                case 'r': value.Append('\r'); break;
-                case 't': value.Append('\t'); break;
+                case '"':
+                    value.Append('"');
+                    break;
+                case '\\':
+                    value.Append('\\');
+                    break;
+                case '/':
+                    value.Append('/');
+                    break;
+                case 'b':
+                    value.Append('\b');
+                    break;
+                case 'f':
+                    value.Append('\f');
+                    break;
+                case 'n':
+                    value.Append('\n');
+                    break;
+                case 'r':
+                    value.Append('\r');
+                    break;
+                case 't':
+                    value.Append('\t');
+                    break;
                 case 'u':
                     value.Append((char)ushort.Parse(token.AsSpan(index + 1, 4),
                         NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture));
@@ -283,13 +345,27 @@ public static class EcmaJson
             var codeUnit = value[index];
             switch (codeUnit)
             {
-                case '"': text.Append("\\\""); break;
-                case '\\': text.Append("\\\\"); break;
-                case '\b': text.Append("\\b"); break;
-                case '\f': text.Append("\\f"); break;
-                case '\n': text.Append("\\n"); break;
-                case '\r': text.Append("\\r"); break;
-                case '\t': text.Append("\\t"); break;
+                case '"':
+                    text.Append("\\\"");
+                    break;
+                case '\\':
+                    text.Append("\\\\");
+                    break;
+                case '\b':
+                    text.Append("\\b");
+                    break;
+                case '\f':
+                    text.Append("\\f");
+                    break;
+                case '\n':
+                    text.Append("\\n");
+                    break;
+                case '\r':
+                    text.Append("\\r");
+                    break;
+                case '\t':
+                    text.Append("\\t");
+                    break;
                 default:
                     if (codeUnit < 0x20 || char.IsLowSurrogate(codeUnit)
                         || (char.IsHighSurrogate(codeUnit)
@@ -303,7 +379,8 @@ public static class EcmaJson
                         // JSON.stringify leaves non-ASCII (including U+2028/29)
                         // and valid surrogate pairs intact; default JSON encoders do not.
                         text.Append(codeUnit);
-                        if (char.IsHighSurrogate(codeUnit)) text.Append(value[++index]);
+                        if (char.IsHighSurrogate(codeUnit))
+                            text.Append(value[++index]);
                     }
                     break;
             }

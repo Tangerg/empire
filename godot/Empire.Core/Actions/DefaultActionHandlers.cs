@@ -10,8 +10,8 @@ public static class DefaultActionHandlers
     public static BattleActionRegistry Create() => new BattleActionRegistry()
         .Register("deployUnit", (context, action) => context.Rules.Deployment.Deploy(context.State,
             StateJson.Integer(action, "unit"), TacticalQueries.Position(action["at"]!.AsObject()), context.Emit), duringDeployment: true)
-        .Register("finishDeployment", (context, _) => context.Rules.Deployment.Confirm(context.State,
-            context.Lifecycle.BeginPlaying, context.Emit), handsOffTurn: true, duringDeployment: true)
+        .Register("finishDeployment", (context, _) => context.Rules.Deployment.Confirm(context.Lifecycle.BeginPlaying,
+            context.State, context.Emit), handsOffTurn: true, duringDeployment: true)
         .Register("command", (context, action) => context.Rules.Abilities.Execute(context.State, action, context.Emit))
         .Register("tactic", (context, action) => context.Rules.Support.ExecuteTactic(context.State,
             StateJson.Text(action, "commander"), StateJson.Text(action, "tactic"),

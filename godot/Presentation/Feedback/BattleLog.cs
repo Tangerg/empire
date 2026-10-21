@@ -6,18 +6,23 @@ public sealed class BattleLog
     private readonly int depth;
     private readonly List<(string Line, int Times)> entries = new();
 
-    public BattleLog(int depth = 60) { this.depth = depth; }
+    public BattleLog(int depth = 60)
+    {
+        this.depth = depth;
+    }
 
     public void Add(string line)
     {
-        if (line.Length == 0) return;
+        if (line.Length == 0)
+            return;
         if (entries.Count > 0 && entries[^1].Line == line)
         {
             entries[^1] = (line, entries[^1].Times + 1);
             return;
         }
         entries.Add((line, 1));
-        if (entries.Count > depth) entries.RemoveRange(0, Math.Min(entries.Count, entries.Count - depth));
+        if (entries.Count > depth)
+            entries.RemoveRange(0, Math.Min(entries.Count, entries.Count - depth));
     }
 
     public void Clear() => entries.Clear();

@@ -8,10 +8,10 @@ using Godot;
 namespace Empire.Presentation;
 
 /// <summary>Source scene-frame and illustrated cover projections; no terrain or cover rules.</summary>
-internal static class CandidateBoardScenery
+internal static class BoardScenery
 {
     internal sealed record Placement(string Id, double X, double Y, double Scale, bool Flip,
-        double Opacity, CandidateShadowKind Shadow);
+        double Opacity, ShadowKind Shadow);
     private static readonly string[] Trees = { "pine-tall", "pine-mature-a", "pine-mature-b", "pine-mature-c",
         "pine-cluster", "pine-pair", "oak-ancient", "mixed-forest-dense" };
 
@@ -26,8 +26,8 @@ internal static class CandidateBoardScenery
         for (var i = 0; i < horizontalCount; i++)
         {
             var x = -18 + i * (sceneWidth + 36.0) / Math.Max(1, horizontalCount - 1);
-            foreach (var (seed, y, shadow) in new[] { (1200, 82.0, CandidateShadowKind.Foreground),
-                (1300, sceneHeight + 20.0, CandidateShadowKind.FrameEdge) })
+            foreach (var (seed, y, shadow) in new[] { (1200, 82.0, ShadowKind.Foreground),
+                (1300, sceneHeight + 20.0, ShadowKind.FrameEdge) })
                 result.Add(new(Trees[(int)Math.Floor(TileArtVariation.Hash(i, seed, 1) * Trees.Length)],
                     x + (TileArtVariation.Hash(i, seed, 2) - .5) * 18 - 74, y - 62,
                     .86 + TileArtVariation.Hash(i, seed, 3) * .2, TileArtVariation.Hash(i, seed, 4) > .5, 1, shadow));
@@ -38,15 +38,15 @@ internal static class CandidateBoardScenery
             foreach (var (seed, x) in new[] { (1400, -26.0), (1500, width * 32 + 28.0) })
                 result.Add(new(Trees[(int)Math.Floor(TileArtVariation.Hash(i, seed, 1) * Trees.Length)],
                     x, y + 32 - 62, .86 + TileArtVariation.Hash(i, seed, 3) * .18,
-                    TileArtVariation.Hash(i, seed, 4) > .5, 1, CandidateShadowKind.FrameEdge));
+                    TileArtVariation.Hash(i, seed, 4) > .5, 1, ShadowKind.FrameEdge));
         }
-        result.Add(new("boulder-large", -5, 82, 1.05, false, .96, CandidateShadowKind.Foreground));
-        result.Add(new("fallen-hollow-log", 92, sceneHeight + 4 - 62, .9, true, .96, CandidateShadowKind.Foreground));
+        result.Add(new("boulder-large", -5, 82, 1.05, false, .96, ShadowKind.Foreground));
+        result.Add(new("fallen-hollow-log", 92, sceneHeight + 4 - 62, .9, true, .96, ShadowKind.Foreground));
         return result;
     }
 
     internal static int AddPerimeter(Node2D parent, EnvironmentCatalog environment, int width, int height,
-        CandidateShadowCache shadows, List<string> diagnostics)
+        ShadowCache shadows, List<string> diagnostics)
     {
         var count = 0;
         foreach (var placement in Perimeter(width, height))
@@ -66,7 +66,7 @@ internal static class CandidateBoardScenery
     }
 
     internal static int AddCover(Node2D parent, JsonObject map, AssetCatalog assets,
-        CandidateShadowCache shadows, List<string> diagnostics)
+        ShadowCache shadows, List<string> diagnostics)
     {
         var covers = map["directionalCover"] as JsonArray
             ?? throw new InvalidOperationException("Canonical directional cover is absent.");
@@ -79,11 +79,15 @@ internal static class CandidateBoardScenery
             foreach (var side in sides)
             {
                 var level = side.Value?.GetValue<string>();
-                if (string.IsNullOrEmpty(level)) continue;
-                if (level is not ("half" or "full")) throw new InvalidOperationException("Invalid canonical cover presentation level.");
-                if (strongest != "full") strongest = level;
+                if (string.IsNullOrEmpty(level))
+                    continue;
+                if (level is not ("half" or "full"))
+                    throw new InvalidOperationException("Invalid canonical cover presentation level.");
+                if (strongest != "full")
+                    strongest = level;
             }
-            if (strongest is null) continue;
+            if (strongest is null)
+                continue;
             var topic = strongest == "full" ? "C01-BPROP-COVER-2" : "C01-BPROP-COVER-1";
             try
             {
@@ -92,7 +96,7 @@ internal static class CandidateBoardScenery
                 sprite.Name = $"Cover_{count}";
                 var at = cover["at"]!;
                 sprite.Position = new(at["x"]!.GetValue<int>() * 32 + 16, at["y"]!.GetValue<int>() * 32 + 31);
-                sprite.AddChild(CandidateSpriteShadows.Create(sprite, CandidateShadowKind.BattleProp, 1 / sprite.Scale.X, shadows));
+                sprite.AddChild(SpriteShadows.Create(sprite, ShadowKind.BattleProp, 1 / sprite.Scale.X, shadows));
                 sprite.SetMeta("cover_level", strongest);
                 parent.AddChild(sprite);
                 count++;

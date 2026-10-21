@@ -36,20 +36,23 @@ internal static class CatalogBenchmark
         Measure("replay-12-actions", 5, () =>
         {
             var result = engine.ReplayBattle(level, replay);
-            if (result.DivergedAt is not null) throw new InvalidOperationException("Benchmark replay diverged.");
+            if (result.DivergedAt is not null)
+                throw new InvalidOperationException("Benchmark replay diverged.");
         });
         Console.WriteLine($"initialHash={StateDigest.Hash(state)} finalHash={battle.StateHash} units={units.Length}");
     }
 
     private static void Measure(string name, int iterations, Action action)
     {
-        for (var iteration = 0; iteration < 3; iteration++) action();
+        for (var iteration = 0; iteration < 3; iteration++)
+            action();
         GC.Collect();
         GC.WaitForPendingFinalizers();
         GC.Collect();
         var allocated = GC.GetAllocatedBytesForCurrentThread();
         var watch = Stopwatch.StartNew();
-        for (var iteration = 0; iteration < iterations; iteration++) action();
+        for (var iteration = 0; iteration < iterations; iteration++)
+            action();
         watch.Stop();
         var bytesPerCall = (GC.GetAllocatedBytesForCurrentThread() - allocated) / iterations;
         Console.WriteLine($"{name}: iterations={iterations} totalMs={watch.Elapsed.TotalMilliseconds:F2} bytesPerCall={bytesPerCall}");

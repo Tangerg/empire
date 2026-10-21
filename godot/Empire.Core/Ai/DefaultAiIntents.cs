@@ -27,7 +27,8 @@ public static class DefaultAiIntents
         foreach (var unit in context.Actors())
         {
             var candidate = BestCommandFor(context, unit);
-            if (candidate is not null && (best is null || candidate.Score > best.Score)) best = candidate;
+            if (candidate is not null && (best is null || candidate.Score > best.Score))
+                best = candidate;
         }
         return best?.Action;
     }
@@ -40,24 +41,35 @@ public static class DefaultAiIntents
         {
             var at = context.Board.CoordOf(stop);
             var path = field.TracePath(stop);
-            if (path is null) continue;
+            if (path is null)
+                continue;
             var tileValue = new TileAppraisal(context, unit, at).Value;
             foreach (var option in context.Rules.Commands.Options(context.State, unit, at))
             {
-                if (context.AbilityEvaluators.TryGet(option.Ability) is not { } evaluator) continue;
+                if (context.AbilityEvaluators.TryGet(option.Ability) is not { } evaluator)
+                    continue;
                 IEnumerable<Coord?> targets = option.SelfTargeted ? new Coord?[] { null } : option.Targets.Select(target => (Coord?)target);
                 foreach (var target in targets)
                 {
                     var score = evaluator.Score(new(context, unit, at, option, target, tileValue));
-                    if (score is null || !double.IsFinite(score.Value)) continue;
+                    if (score is null || !double.IsFinite(score.Value))
+                        continue;
                     var withdrawing = option.Engagement is not null ? context.Rules.Directives.FightPenalty(unit) : 0;
                     var command = new JsonObject { ["ability"] = option.Ability };
-                    if (option.Weapon is not null) command["weapon"] = option.Weapon;
-                    if (target is { } targetAt) command["target"] = CoordinateJson(targetAt);
-                    var action = new JsonObject { ["kind"] = "command", ["unit"] = Integer(unit, "id"),
-                        ["path"] = PathJson(path), ["command"] = command };
+                    if (option.Weapon is not null)
+                        command["weapon"] = option.Weapon;
+                    if (target is { } targetAt)
+                        command["target"] = CoordinateJson(targetAt);
+                    var action = new JsonObject
+                    {
+                        ["kind"] = "command",
+                        ["unit"] = Integer(unit, "id"),
+                        ["path"] = PathJson(path),
+                        ["command"] = command
+                    };
                     var candidate = new ScoredAction(action, score.Value + withdrawing);
-                    if (best is null || candidate.Score > best.Score) best = candidate;
+                    if (best is null || candidate.Score > best.Score)
+                        best = candidate;
                 }
             }
         }
@@ -68,27 +80,33 @@ public static class DefaultAiIntents
     {
         ScoredAction? best = null;
         foreach (var commander in Objects(context.State["commanders"], "commanders").Where(entry => Integer(entry, "owner") == context.Player))
-        foreach (var option in context.Rules.Support.Tactics(context.State, Text(commander, "id")))
-        {
-            var tactic = context.Content.Get("tactics", option.Id);
-            foreach (var target in option.Targets)
+            foreach (var option in context.Rules.Support.Tactics(context.State, Text(commander, "id")))
             {
-                var affected = UnitsOf(context.State, context.Player)
-                    .Where(unit => context.Distance(Position(unit), target) <= Number(tactic["radius"], "radius")).ToArray();
-                var score = 0.0;
-                foreach (var effect in Objects(tactic["effects"], "effects"))
+                var tactic = context.Content.Get("tactics", option.Id);
+                foreach (var target in option.Targets)
                 {
-                    var status = Text(effect, "status");
-                    score += Text(effect, "type") == "addStatus"
-                        ? affected.Count(unit => !AiMeasures.HasStatus(unit, status)) * 30
-                        : affected.Count(unit => AiMeasures.HasStatus(unit, status)) * 35;
+                    var affected = UnitsOf(context.State, context.Player)
+                        .Where(unit => context.Distance(Position(unit), target) <= Number(tactic["radius"], "radius")).ToArray();
+                    var score = 0.0;
+                    foreach (var effect in Objects(tactic["effects"], "effects"))
+                    {
+                        var status = Text(effect, "status");
+                        score += Text(effect, "type") == "addStatus"
+                            ? affected.Count(unit => !AiMeasures.HasStatus(unit, status)) * 30
+                            : affected.Count(unit => AiMeasures.HasStatus(unit, status)) * 35;
+                    }
+                    score -= context.Rules.Resources.PlanningValue(Array(tactic["costs"], "costs"));
+                    if (score <= 0 || best is not null && score <= best.Score)
+                        continue;
+                    best = new(new JsonObject
+                    {
+                        ["kind"] = "tactic",
+                        ["commander"] = Text(commander, "id"),
+                        ["tactic"] = option.Id,
+                        ["target"] = CoordinateJson(target)
+                    }, score);
                 }
-                score -= context.Rules.Resources.PlanningValue(Array(tactic["costs"], "costs"));
-                if (score <= 0 || best is not null && score <= best.Score) continue;
-                best = new(new JsonObject { ["kind"] = "tactic", ["commander"] = Text(commander, "id"),
-                    ["tactic"] = option.Id, ["target"] = CoordinateJson(target) }, score);
             }
-        }
         return best?.Action;
     }
 
@@ -111,12 +129,14 @@ public static class DefaultAiIntents
             context.Distance(Position(unit), Position(enemy)) <=
             Number(context.Content.Get("units", Text(enemy, "type"))["movement"], "movement") +
             AiMeasures.MaximumWeaponRange(context.Content, Text(enemy, "type")));
-        if (AiMeasures.HpRatio(context.Content, unit) < 0.35 || protectedWeight >= 4 && enemyNear) return "guard";
+        if (AiMeasures.HpRatio(context.Content, unit) < 0.35 || protectedWeight >= 4 && enemyNear)
+            return "guard";
         var adjacentAlly = Objects(context.State["units"], "units").Any(candidate =>
             Integer(candidate, "id") != Integer(unit, "id") &&
             AreAllies(context.State, Integer(candidate, "owner"), Integer(unit, "owner")) &&
             context.Distance(Position(candidate), Position(unit)) == 1);
-        if (adjacentAlly && (AiMeasures.Includes(definition["tags"], "support") || AiMeasures.Includes(definition["tags"], "monster"))) return "support";
+        if (adjacentAlly && (AiMeasures.Includes(definition["tags"], "support") || AiMeasures.Includes(definition["tags"], "monster")))
+            return "support";
         var scarce = AiMeasures.Includes(definition["tags"], "ranged") && context.Rules.Combat.Forecasts.UnitWeapons(unit).Any(weapon =>
             AiMeasures.Includes(weapon["tags"], "ranged") &&
             (Number(weapon["cooldown"], "cooldown") > 0 || Array(weapon["resourceCosts"], "resourceCosts").Count > 0));
@@ -147,7 +167,8 @@ public static class DefaultAiIntents
             Number(definition["movement"], "movement") * 12) /
             Math.Max(0.1, context.Rules.Resources.PlanningValue(Array(definition["recruitCosts"], "recruitCosts")) / 100);
         var infantry = mine.Count(unit => AiMeasures.Includes(content.Get("units", Text(unit, "type"))["abilities"], "capture"));
-        if (AiMeasures.Includes(definition["abilities"], "capture") && infantry < 2) score *= 1.6;
+        if (AiMeasures.Includes(definition["abilities"], "capture") && infantry < 2)
+            score *= 1.6;
         var composition = mine.Count(unit => Text(unit, "type") == type);
         score *= 1 - Math.Min(0.4, composition * 0.08);
         return score;
@@ -157,20 +178,24 @@ public static class DefaultAiIntents
     {
         var account = new BattleResources.Subject("player", Player(context.State, context.Player));
         var cap = context.State["rules"]!["maxUnitsPerPlayer"];
-        if (cap is not null && UnitsOf(context.State, context.Player).Count >= Integer(cap, "maxUnitsPerPlayer")) return null;
+        if (cap is not null && UnitsOf(context.State, context.Player).Count >= Integer(cap, "maxUnitsPerPlayer"))
+            return null;
         var map = context.Board.Map;
         var owners = Array(map["owners"], "owners");
         for (var tile = 0; tile < owners.Count; tile++)
         {
-            if (Integer(owners[tile], "owner") != context.Player) continue;
+            if (Integer(owners[tile], "owner") != context.Player)
+                continue;
             var at = context.Board.CoordOf(tile);
             var terrain = context.Battlefield.Cell(at).Terrain;
             var produces = terrain.GetProperty("produces").EnumerateArray().ToArray();
-            if (produces.Length == 0 || UnitAt(context.State, at) is not null) continue;
+            if (produces.Length == 0 || UnitAt(context.State, at) is not null)
+                continue;
             var affordable = produces.Select(id => Text(id))
                 .Where(id => context.Rules.Resources.CanAfford(account, Array(context.Content.Get("units", id)["recruitCosts"], "recruitCosts")))
                 .Select(id => (Id: id, Score: ScoreRecruit(context, id))).ToArray();
-            if (affordable.Length == 0) continue;
+            if (affordable.Length == 0)
+                continue;
             // JS sort treats a NaN comparison as equality. Preserve that and stable content order.
             var ranked = affordable.Select((entry, index) => (entry.Id, entry.Score, Index: index)).ToList();
             ranked.Sort((left, right) =>

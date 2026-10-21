@@ -16,7 +16,7 @@ internal static class ResourceConsumerChecks
     public static void Run(JsonObject input, Action<string, JsonNode?, JsonNode?> check)
     {
         var originalPacks = input["consumerPacks"]!.AsArray();
-        var baseline = new GrayFlagEngine(originalPacks);
+        var baseline = new BattleEngine(originalPacks);
         var serialization = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
         JsonNode? Serialize(object? value) => JsonSerializer.SerializeToNode(value, serialization);
         foreach (var item in input["consumers"]!.AsArray().OfType<JsonObject>())
@@ -30,7 +30,8 @@ internal static class ResourceConsumerChecks
                 var id = StateJson.Text(definition, "id");
                 var target = packs.OfType<JsonObject>().SelectMany(pack => StateJson.Objects(pack[family], family))
                     .Single(value => StateJson.Text(value, "id") == id);
-                foreach (var (field, value) in definition) target[field] = value?.DeepClone();
+                foreach (var (field, value) in definition)
+                    target[field] = value?.DeepClone();
             }
             var resources = Policies(item["config"]!.AsObject());
             var catalog = new ReadOnlyContent(packs);
@@ -38,7 +39,12 @@ internal static class ResourceConsumerChecks
                 DefaultCombatModifiers.Create(), DefaultWeaponHitEffects.Create(), baseline.Reactions,
                 baseline.RankProgression, baseline.UnitDepartures));
             var support = new SupportOrders(new SupportOrderRules(catalog, baseline.Grids, resources, combat.Effects));
-            var rules = baseline.AbilityRules with { Content = catalog, Combat = combat, Support = support };
+            var rules = baseline.AbilityRules with
+            {
+                Content = catalog,
+                Combat = combat,
+                Support = support
+            };
             var commands = new AbilityCommands(rules, baseline.Commands);
             var state = item["initial"]!.DeepClone().AsObject();
             var actor = state["units"]![0]!.AsObject();
@@ -49,12 +55,16 @@ internal static class ResourceConsumerChecks
                 foreach (var option in menus!.AsArray().OfType<JsonObject>())
                 {
                     option.Remove("engagement");
-                    if (option["weapon"] is null) option.Remove("weapon");
+                    if (option["weapon"] is null)
+                        option.Remove("weapon");
                 }
             }
             else if (operation.StartsWith("tactic", StringComparison.Ordinal))
             {
-                try { menus = Serialize(support.Tactics(state, "resource-commander")); }
+                try
+                {
+                    menus = Serialize(support.Tactics(state, "resource-commander"));
+                }
                 catch (DomainInvariantException fault) { throw new Exception(name + " menus: " + fault.Message, fault); }
             }
             JsonNode? result = null;
@@ -64,11 +74,13 @@ internal static class ResourceConsumerChecks
             BattleReceipt? receipt = null;
             try
             {
-                if (operation == "ready") result = JsonValue.Create(combat.Forecasts.IsWeaponReady(state, actor, item["weapon"]!.AsObject()));
-                else if (operation == "consume") combat.Forecasts.ConsumeWeapon(state, actor, "soldier_sword", value => events.Add(value));
+                if (operation == "ready")
+                    result = JsonValue.Create(combat.Forecasts.IsWeaponReady(state, actor, item["weapon"]!.AsObject()));
+                else if (operation == "consume")
+                    combat.Forecasts.ConsumeWeapon(state, actor, "soldier_sword", value => events.Add(value));
                 else if (operation == "command")
                 {
-                    battle = new Battle(state, new BattleActionRegistry().Register("command", (draft, action, emit) =>
+                    battle = new Battle(new BattleTransactionRules(new BattleActionRegistry().Register("command", (draft, action, emit) =>
                     {
                         commands.Execute(draft, action, value =>
                         {
@@ -77,20 +89,26 @@ internal static class ResourceConsumerChecks
                             var type = StateJson.Text(value, "type");
                             counts[type] = StateJson.Number(counts, type, 0) + 1;
                         });
-                    }));
+                    }), null), state);
                     receipt = battle.Dispatch(EcmaJson.Parse("{\"kind\":\"command\",\"unit\":1,\"path\":[{\"x\":2,\"y\":3}],\"command\":{\"ability\":\"attack\",\"weapon\":\"soldier_sword\",\"target\":{\"x\":3,\"y\":3}}}")!.AsObject());
-                    foreach (var value in receipt.Events) events.Add(value.DeepClone());
+                    foreach (var value in receipt.Events)
+                        events.Add(value.DeepClone());
                 }
-                else if (operation == "tactic-execute") support.ExecuteTactic(state, "resource-commander", "rally", null, value => events.Add(value));
-                else if (operation != "tactic-options") throw new Exception("Unknown consumer operation");
+                else if (operation == "tactic-execute")
+                    support.ExecuteTactic(state, "resource-commander", "rally", null, value => events.Add(value));
+                else if (operation != "tactic-options")
+                    throw new Exception("Unknown consumer operation");
             }
             catch (IllegalActionException fault)
-            { error = new JsonObject { ["kind"] = "IllegalAction", ["refusal"] = Serialize(fault.Refusal) }; }
+            {
+                error = new JsonObject { ["kind"] = "IllegalAction", ["refusal"] = Serialize(fault.Refusal) };
+            }
             catch (DomainInvariantException fault)
             {
                 error = new JsonObject { ["kind"] = fault.GetType().Name.Replace("Exception", ""), ["message"] = fault.Message };
             }
-            if (battle is not null) state = battle.Snapshot();
+            if (battle is not null)
+                state = battle.Snapshot();
             check(name + " menus", menus, item["menus"]);
             check(name + " result", result, item["result"]);
             JsonNode? expectedError = item["error"];
@@ -99,9 +117,15 @@ internal static class ResourceConsumerChecks
                 var expected = name switch
                 {
                     "custom squad unaffordable command" or "custom squad unavailable command" or "separate requirement blocks command" =>
-                        new ActionRefusal("ability.unusable", new() { ["abilityId"] = "attack" }),
+                        new ActionRefusal("ability.unusable", new()
+                        {
+                            ["abilityId"] = "attack"
+                        }),
                     "supplied resource insufficient tactic tactic-execute" =>
-                        new ActionRefusal("support.tactic_unavailable", new() { ["tacticId"] = "rally" }),
+                        new ActionRefusal("support.tactic_unavailable", new()
+                        {
+                            ["tacticId"] = "rally"
+                        }),
                     _ => throw new Exception("Unspecified semantic refusal expectation: " + name),
                 };
                 expectedError = new JsonObject { ["kind"] = "IllegalAction", ["refusal"] = Serialize(expected) };
@@ -120,11 +144,12 @@ internal static class ResourceConsumerChecks
 
     private static BattleResources Policies(JsonObject config)
     {
-        var resources = new BattleResources();
+        var resources = new BattleResources(new BattleResourceRules(DefaultResourcePolicies.Adapters.Clone(), DefaultResourcePolicies.Subjects.Clone()));
         foreach (var (id, subjectKind) in new[] { ("charge", "squad"), ("favor", "player") })
             resources.Adapters.Register(new(id, subjectKind, id == "charge" && StateJson.IsTrue(config["integer"]), 0.5, subject =>
             {
-                if (subject.Holder["resources"]?[id] is not JsonObject state) return null;
+                if (subject.Holder["resources"]?[id] is not JsonObject state)
+                    return null;
                 return new ResourceAccount(() => new(
                     state["current"] is { } current ? StateJson.Number(current, "current") : null,
                     state["capacity"] is { } capacity ? StateJson.Number(capacity, "capacity") : null),
@@ -132,7 +157,9 @@ internal static class ResourceConsumerChecks
             }));
         resources.Subjects.Register(new("squad", (context, _) => new("squad", context.Player!), subject => new JsonObject
         {
-            ["kind"] = "squad", ["id"] = "squad-" + StateJson.Integer(subject.Holder, "id"), ["slot"] = "reserve",
+            ["kind"] = "squad",
+            ["id"] = "squad-" + StateJson.Integer(subject.Holder, "id"),
+            ["slot"] = "reserve",
         }));
         return resources;
     }

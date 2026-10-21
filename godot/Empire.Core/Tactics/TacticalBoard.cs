@@ -6,11 +6,20 @@ namespace Empire.Core.Tactics;
 
 public sealed class TacticalBoard
 {
-    public JsonObject Map { get; }
-    public ITacticalGrid Grid { get; }
-    public GridExtent Extent { get; }
+    public JsonObject Map
+    {
+        get;
+    }
+    public ITacticalGrid Grid
+    {
+        get;
+    }
+    public GridExtent Extent
+    {
+        get;
+    }
 
-    public TacticalBoard(JsonObject map, ITacticalGrid grid)
+    public TacticalBoard(ITacticalGrid grid, JsonObject map)
     {
         Map = map;
         Grid = grid;
@@ -24,7 +33,8 @@ public sealed class TacticalBoard
     public double NearestDistance(Coord from, IReadOnlyList<Coord> places)
     {
         var nearest = double.PositiveInfinity;
-        foreach (var place in places) nearest = Math.Min(nearest, Distance(from, place));
+        foreach (var place in places)
+            nearest = Math.Min(nearest, Distance(from, place));
         return nearest;
     }
     public IReadOnlyList<Coord> Neighbours(Coord at) => Grid.Adjacent(at).Where(Contains).ToArray();

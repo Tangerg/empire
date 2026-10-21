@@ -20,18 +20,23 @@ var nativeRefusals = JsonNode.Parse(nativeStream)!.AsObject();
 var nativeCases = nativeRefusals["cases"]!.AsObject();
 if (!vectors["cases"]!.AsArray().Select(item => item!["name"]!.GetValue<string>()).SequenceEqual(nativeCases.Select(pair => pair.Key)))
     throw new Exception("Native refusal expectation cases are missing or stale");
-var engine = new GrayFlagEngine(packs);
+var engine = new BattleEngine(packs);
 var stateRules = new BattleStateRules(engine.Catalog, engine.Grids, engine.Reactions);
 var passed = 0;
 var failed = 0;
 void Check(string name, Action run)
 {
-    try { run(); passed++; }
+    try
+    {
+        run();
+        passed++;
+    }
     catch (Exception error) { failed++; Console.Error.WriteLine($"FAIL {name}: {error}"); }
 }
 void Equal(JsonNode? expected, JsonNode? actual, string subject)
 {
-    if (expected is null && actual is null) return;
+    if (expected is null && actual is null)
+        return;
     if (expected is null || actual is null || StateDigest.Hash(expected) != StateDigest.Hash(actual))
         throw new Exception($"{subject}: expected {expected?.ToJsonString() ?? "null"}; got {actual?.ToJsonString() ?? "null"}");
 }
@@ -43,16 +48,22 @@ void Outcome(Battle battle, JsonObject expected, JsonNode? nativeRefusal = null)
     var before = battle.StateHash;
     if (expected["error"] is JsonObject)
     {
-        try { battle.Dispatch(action); throw new Exception("Expected action refusal"); }
+        try
+        {
+            battle.Dispatch(action);
+            throw new Exception("Expected action refusal");
+        }
         catch (IllegalActionException error)
         {
             Equal(nativeRefusal, JsonSerializer.SerializeToNode(error.Refusal), "semantic action refusal");
         }
-        if (before != battle.StateHash) throw new Exception("Refused action changed state");
+        if (before != battle.StateHash)
+            throw new Exception("Refused action changed state");
     }
     else
     {
-        if (nativeRefusal is not null) throw new Exception("Native expectation rejects an accepted source action");
+        if (nativeRefusal is not null)
+            throw new Exception("Native expectation rejects an accepted source action");
         var receipt = battle.Dispatch(action);
         Equal(expected["events"], new JsonArray(receipt.Events.Select(item => (JsonNode)item.DeepClone()).ToArray()), "events");
     }
@@ -69,10 +80,13 @@ Battle Isolated(JsonObject initial)
     {
         var phase = state["phase"]!.GetValue<string>();
         var kind = action["kind"]!.GetValue<string>();
-        if (phase == "over") throw new IllegalActionException(new ActionRefusal("action.over"));
+        if (phase == "over")
+            throw new IllegalActionException(new ActionRefusal("action.over"));
         var deploying = kind is "deployUnit" or "finishDeployment";
-        if (phase == "deployment" && !deploying) throw new IllegalActionException(new ActionRefusal("action.deployment_required"));
-        if (phase == "playing" && deploying) throw new IllegalActionException(new ActionRefusal("action.deployment_finished"));
+        if (phase == "deployment" && !deploying)
+            throw new IllegalActionException(new ActionRefusal("action.deployment_required"));
+        if (phase == "playing" && deploying)
+            throw new IllegalActionException(new ActionRefusal("action.deployment_finished"));
         void Emit(JsonObject value)
         {
             var counts = state["scenario"]!["eventCounts"]!.AsObject();
@@ -82,12 +96,16 @@ Battle Isolated(JsonObject initial)
         }
         var lifecycle = new BattleLifecycle(new(engine.Catalog, engine.Turns, engine.Scenarios, engine.Victory, engine.Combat, engine.Resources,
             new StatusLifecycle(engine.Catalog, new StatusBehaviorRegistry().Seal(), engine.Combat)), state, Emit);
-        if (kind == "deployUnit") engine.Deployment.Deploy(state, action["unit"]!.GetValue<int>(), Position(action["at"]!), Emit);
-        else if (kind == "finishDeployment") engine.Deployment.Confirm(state, lifecycle.BeginPlaying, Emit);
-        else throw new Exception("Non-deployment action unexpectedly passed phase gate");
+        if (kind == "deployUnit")
+            engine.Deployment.Deploy(state, action["unit"]!.GetValue<int>(), Position(action["at"]!), Emit);
+        else if (kind == "finishDeployment")
+            engine.Deployment.Confirm(lifecycle.BeginPlaying, state, Emit);
+        else
+            throw new Exception("Non-deployment action unexpectedly passed phase gate");
     }
-    foreach (var kind in new[] { "deployUnit", "finishDeployment", "endTurn" }) registry.Register(kind, Dispatch);
-    return new Battle(initial, registry);
+    foreach (var kind in new[] { "deployUnit", "finishDeployment", "endTurn" })
+        registry.Register(kind, Dispatch);
+    return new Battle(new BattleTransactionRules(registry, null), initial);
 }
 
 foreach (var fixture in vectors["cases"]!.AsArray().OfType<JsonObject>())
@@ -103,7 +121,8 @@ foreach (var fixture in vectors["cases"]!.AsArray().OfType<JsonObject>())
     var rawHash = fixture["rawStateHash"]!.GetValue<string>();
     Check($"{name} state construction", () =>
     {
-        if (StateDigest.Hash(BattleStateFactory.Create(stateRules, level)) != rawHash) throw new Exception("Raw initial state differs");
+        if (StateDigest.Hash(BattleStateFactory.Create(stateRules, level)) != rawHash)
+            throw new Exception("Raw initial state differs");
     });
     Check($"{name} roster", () =>
     {
@@ -116,7 +135,8 @@ foreach (var fixture in vectors["cases"]!.AsArray().OfType<JsonObject>())
             ["zone"] = new JsonArray(roster.Zone.Select(at => (JsonNode)Coordinate(at)).ToArray()),
         };
         Equal(fixture["roster"], actual, "roster");
-        if (StateDigest.Hash(state) != before) throw new Exception("Roster query changed state");
+        if (StateDigest.Hash(state) != before)
+            throw new Exception("Roster query changed state");
     });
     foreach (var query in fixture["queries"]!.AsArray().OfType<JsonObject>())
     {
@@ -129,9 +149,13 @@ foreach (var fixture in vectors["cases"]!.AsArray().OfType<JsonObject>())
         {
             var before = StateDigest.Hash(state);
             var spots = new JsonArray(engine.Deployment.Spots(state, unit).Select(spot => (JsonNode)new JsonObject
-            { ["at"] = Coordinate(spot.At), ["swaps"] = spot.Swaps?["id"]?.DeepClone() }).ToArray());
+            {
+                ["at"] = Coordinate(spot.At),
+                ["swaps"] = spot.Swaps?["id"]?.DeepClone()
+            }).ToArray());
             Equal(query["spots"], spots, "spots");
-            if (StateDigest.Hash(state) != before) throw new Exception("Spots query changed state");
+            if (StateDigest.Hash(state) != before)
+                throw new Exception("Spots query changed state");
         });
         foreach (var (refusal, index) in query["refusals"]!.AsArray().OfType<JsonObject>().Select((value, index) => (value, index)))
             Check($"{name} unit {id} refusal {refusal["at"]}", () =>
@@ -155,29 +179,37 @@ foreach (var fixture in vectors["cases"]!.AsArray().OfType<JsonObject>())
         foreach (var (confirmation, index) in fixture["confirmations"]!.AsArray().OfType<JsonObject>().Select((value, index) => (value, index)))
             Outcome(battle, confirmation, native["confirmations"]![index]);
     });
-    if (production) Check($"{name} persisted deployment resumes through battle start", () =>
+    if (production)
+        Check($"{name} persisted deployment resumes through battle start", () =>
     {
         var battle = engine.CreateBattle(level);
         var saved = engine.SaveBattle(battle.Snapshot(), "2026-01-01T00:00:00.000Z");
         var resumed = engine.LoadSavedBattle(JsonNode.Parse(saved.ToJsonString()));
-        if (battle.StateHash != resumed.StateHash) throw new Exception("Deployment save round trip differs");
+        if (battle.StateHash != resumed.StateHash)
+            throw new Exception("Deployment save round trip differs");
         foreach (var confirmation in fixture["confirmations"]!.AsArray().OfType<JsonObject>())
         {
             Outcome(battle, confirmation);
             Outcome(resumed, confirmation);
             // Exercise the next deployment player's index and the final retired aggregate too.
             resumed = engine.LoadSavedBattle(engine.SaveBattle(resumed.Snapshot(), "2026-01-01T00:00:00.000Z"));
-            if (battle.StateHash != resumed.StateHash) throw new Exception("Mid-deployment resume differs");
+            if (battle.StateHash != resumed.StateHash)
+                throw new Exception("Mid-deployment resume differs");
         }
     });
 }
 foreach (var fixture in vectors["invalidLevels"]!.AsArray().OfType<JsonObject>())
     Check($"construction refusal {fixture["name"]}", () =>
     {
-        try { BattleStateFactory.Create(stateRules, fixture["level"]!.AsObject()); throw new Exception("Expected construction refusal"); }
+        try
+        {
+            BattleStateFactory.Create(stateRules, fixture["level"]!.AsObject());
+            throw new Exception("Expected construction refusal");
+        }
         catch (DomainInvariantException error)
         {
-            if (error.Message != fixture["error"]!.GetValue<string>()) throw new Exception($"Unexpected refusal: {error.Message}");
+            if (error.Message != fixture["error"]!.GetValue<string>())
+                throw new Exception($"Unexpected refusal: {error.Message}");
         }
     });
 var firstLevel = vectors["cases"]![0]!["level"]!.AsObject();
@@ -189,9 +221,14 @@ void RejectDeployment(string name, Action<JsonObject> edit)
         var damaged = (JsonObject)validSave.DeepClone();
         edit(damaged["state"]!.AsObject());
         var before = StateDigest.Hash(damaged);
-        try { engine.LoadSavedBattle(damaged); throw new Exception("Expected damaged deployment refusal"); }
+        try
+        {
+            engine.LoadSavedBattle(damaged);
+            throw new Exception("Expected damaged deployment refusal");
+        }
         catch (StoredDocumentException) { }
-        if (StateDigest.Hash(damaged) != before) throw new Exception("Rejected load mutated its document");
+        if (StateDigest.Hash(damaged) != before)
+            throw new Exception("Rejected load mutated its document");
     });
 }
 RejectDeployment("missing aggregate", state => state["deployment"] = null);
@@ -220,13 +257,15 @@ Check("relocation save retains full unit state and resumes", () =>
         item["action"]!["unit"]!.GetValue<int>() == 1 && Position(item["action"]!["at"]!) == new Coord(1, 0));
     Outcome(battle, move);
     var reloaded = engine.LoadSavedBattle(engine.SaveBattle(battle.Snapshot(), "2026-01-01T00:00:00.000Z"));
-    if (battle.StateHash != reloaded.StateHash) throw new Exception("Relocation state differs after reload");
+    if (battle.StateHash != reloaded.StateHash)
+        throw new Exception("Relocation state differs after reload");
     for (var side = 0; side < 2; side++)
     {
         var command = new JsonObject { ["kind"] = "finishDeployment" };
         var expected = battle.Dispatch(command);
         var actual = reloaded.Dispatch(command);
-        if (expected.StateHash != actual.StateHash) throw new Exception("Resumed initiative handoff differs");
+        if (expected.StateHash != actual.StateHash)
+            throw new Exception("Resumed initiative handoff differs");
         Equal(new JsonArray(expected.Events.Select(item => (JsonNode)item.DeepClone()).ToArray()),
             new JsonArray(actual.Events.Select(item => (JsonNode)item.DeepClone()).ToArray()), "resumed handoff events");
     }

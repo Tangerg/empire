@@ -22,9 +22,11 @@ public sealed class ScenarioSystem(ScenarioRules rules)
             foreach (var trigger in triggers)
             {
                 var id = Text(trigger, "id");
-                if (fired.Contains(id) || !Due(state, trigger, timing, occurrence) || !ConditionMet(state, Object(trigger["condition"], "condition"))) continue;
+                if (fired.Contains(id) || !Due(state, trigger, timing, occurrence) || !ConditionMet(state, Object(trigger["condition"], "condition")))
+                    continue;
                 fired.Add(id);
-                if (trigger["repeat"] is null) Array(scenario["firedTriggerIds"], "firedTriggerIds").Add(id);
+                if (trigger["repeat"] is null)
+                    Array(scenario["firedTriggerIds"], "firedTriggerIds").Add(id);
                 else
                 {
                     var runtime = Object(scenario["triggerRuntime"], "triggerRuntime");
@@ -37,14 +39,16 @@ public sealed class ScenarioSystem(ScenarioRules rules)
                 }
                 changed = true;
             }
-            if (!changed) return;
+            if (!changed)
+                return;
         }
         throw new DomainInvariantException($"scenario trigger loop did not stabilise at {timing}");
     }
 
     private static bool Due(JsonObject state, JsonObject trigger, string timing, string occurrence)
     {
-        if (Text(trigger, "timing") != timing) return false;
+        if (Text(trigger, "timing") != timing)
+            return false;
         var scenario = Object(state["scenario"], "scenario");
         var id = Text(trigger, "id");
         if (trigger["repeat"] is not JsonObject repeat)
@@ -53,7 +57,8 @@ public sealed class ScenarioSystem(ScenarioRules rules)
         var turn = Number(state["turn"], "turn");
         var start = Number(repeat, "startTurn", 1);
         if (cadence < 1 || cadence != Math.Truncate(cadence) || turn < start ||
-            repeat["endTurn"] is { } end && turn > Number(end, "endTurn") || (turn - start) % cadence != 0) return false;
+            repeat["endTurn"] is { } end && turn > Number(end, "endTurn") || (turn - start) % cadence != 0)
+            return false;
         var runtime = Object(scenario["triggerRuntime"], "triggerRuntime")[id] as JsonObject;
         var count = runtime is null ? 0 : Number(runtime, "count", 0);
         return (repeat["maxFirings"] is null || count < Number(repeat["maxFirings"], "maxFirings")) &&

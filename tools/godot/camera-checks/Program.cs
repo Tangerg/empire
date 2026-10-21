@@ -13,13 +13,26 @@ foreach (var test in document.RootElement.GetProperty("cameraCases").EnumerateAr
     {
         switch (operation.GetProperty("kind").GetString())
         {
-            case "resize": camera.Resize(Point(operation.GetProperty("viewport")), Insets(operation.GetProperty("padding"))); break;
-            case "center": camera.CenterOn(Point(operation.GetProperty("point"))); break;
-            case "pan": camera.Pan(Point(operation.GetProperty("delta"))); break;
-            case "reveal": camera.Reveal(Point(operation.GetProperty("point")), operation.GetProperty("margin").GetDouble()); break;
-            case "queueZoom": camera.QueueZoom(operation.GetProperty("delta").GetDouble()); break;
-            case "applyZoom": camera.ApplyPendingZoom(); break;
-            default: throw new Exception("Unknown camera operation.");
+            case "resize":
+                camera.Resize(Point(operation.GetProperty("viewport")), Insets(operation.GetProperty("padding")));
+                break;
+            case "center":
+                camera.CenterOn(Point(operation.GetProperty("point")));
+                break;
+            case "pan":
+                camera.Pan(Point(operation.GetProperty("delta")));
+                break;
+            case "reveal":
+                camera.Reveal(Point(operation.GetProperty("point")), operation.GetProperty("margin").GetDouble());
+                break;
+            case "queueZoom":
+                camera.QueueZoom(operation.GetProperty("delta").GetDouble());
+                break;
+            case "applyZoom":
+                camera.ApplyPendingZoom();
+                break;
+            default:
+                throw new Exception("Unknown camera operation.");
         }
         var expected = test.GetProperty("expected")[index++];
         var context = $"{test.GetProperty("name").GetString()} operation {index}";
@@ -43,19 +56,15 @@ foreach (var test in document.RootElement.GetProperty("pointerCases").EnumerateA
     {
         var width = box.GetProperty("width").GetDouble();
         var height = box.GetProperty("height").GetDouble();
-        if (width <= 0 || height <= 0) return null;
+        if (width <= 0 || height <= 0)
+            return null;
         var scale = Math.Min(width / scene.GetProperty("width").GetDouble(), height / scene.GetProperty("height").GetDouble());
         var left = (width - scene.GetProperty("width").GetDouble() * scale) / 2;
         var top = (height - scene.GetProperty("height").GetDouble() * scale) / 2;
         return new CameraPoint((point.X - box.GetProperty("left").GetDouble() - left) / scale,
             (point.Y - box.GetProperty("top").GetDouble() - top) / scale);
     }
-    using var gestures = new BattlefieldGestures(Project,
-        (point, button) => callbacks.Add(new JsonObject { ["kind"] = "press", ["point"] = JsonPoint(point), ["button"] = button }),
-        point => callbacks.Add(new JsonObject { ["kind"] = "move", ["point"] = point is { } p ? JsonPoint(p) : null }),
-        () => callbacks.Add(new JsonObject { ["kind"] = "leave" }),
-        delta => callbacks.Add(new JsonObject { ["kind"] = "pan", ["delta"] = JsonPoint(delta) }),
-        notches => callbacks.Add(new JsonObject { ["kind"] = "scale", ["notches"] = notches }));
+    using var gestures = new BattlefieldGestures(new(Project, (point, button) => callbacks.Add(new JsonObject { ["kind"] = "press", ["point"] = JsonPoint(point), ["button"] = button }), point => callbacks.Add(new JsonObject { ["kind"] = "move", ["point"] = point is { } p ? JsonPoint(p) : null }), () => callbacks.Add(new JsonObject { ["kind"] = "leave" }), delta => callbacks.Add(new JsonObject { ["kind"] = "pan", ["delta"] = JsonPoint(delta) }), notches => callbacks.Add(new JsonObject { ["kind"] = "scale", ["notches"] = notches })));
     var index = 0;
     foreach (var operation in test.GetProperty("operations").EnumerateArray())
     {
@@ -66,15 +75,33 @@ foreach (var test in document.RootElement.GetProperty("pointerCases").EnumerateA
         var point = operation.TryGetProperty("point", out var at) ? Point(at) : default;
         switch (operation.GetProperty("kind").GetString())
         {
-            case "down": prevented = gestures.PointerDown(id, button, point, !operation.TryGetProperty("isPrimary", out var primary) || primary.GetBoolean()); break;
-            case "move": prevented = gestures.PointerMove(id, point); break;
-            case "up": prevented = gestures.PointerUp(id, button, point); break;
-            case "leave": gestures.PointerLeave(); break;
-            case "cancel": case "lostCapture": gestures.Cancel(id); break;
-            case "wheel": prevented = gestures.Wheel(operation.GetProperty("deltaY").GetDouble(), Flag(operation, "ctrlKey"), Flag(operation, "metaKey")); break;
-            case "dispose": gestures.Dispose(); break;
-            case "setBox": box = operation.GetProperty("box"); break;
-            default: throw new Exception("Unknown pointer operation.");
+            case "down":
+                prevented = gestures.PointerDown(id, button, point, !operation.TryGetProperty("isPrimary", out var primary) || primary.GetBoolean());
+                break;
+            case "move":
+                prevented = gestures.PointerMove(id, point);
+                break;
+            case "up":
+                prevented = gestures.PointerUp(id, button, point);
+                break;
+            case "leave":
+                gestures.PointerLeave();
+                break;
+            case "cancel":
+            case "lostCapture":
+                gestures.Cancel(id);
+                break;
+            case "wheel":
+                prevented = gestures.Wheel(operation.GetProperty("deltaY").GetDouble(), Flag(operation, "ctrlKey"), Flag(operation, "metaKey"));
+                break;
+            case "dispose":
+                gestures.Dispose();
+                break;
+            case "setBox":
+                box = operation.GetProperty("box");
+                break;
+            default:
+                throw new Exception("Unknown pointer operation.");
         }
         var expected = test.GetProperty("expected")[index++];
         var context = $"{test.GetProperty("name").GetString()} operation {index}";
@@ -132,14 +159,20 @@ void CheckBoundaries()
     Throws(() => camera.Resize(new(double.PositiveInfinity, 10)), "nonfinite viewport rejected");
     Throws(() => camera.Reveal(new(0, 0), -1), "negative reveal margin rejected");
     var clicks = 0;
-    using var gestures = new BattlefieldGestures(p => p, (_, _) => clicks++, _ => { }, () => { }, _ => { }, _ => { });
-    gestures.PointerDown(5, 0, new(0, 0)); gestures.Cancel(); gestures.PointerUp(5, 0, new(0, 0));
+    using var gestures = new BattlefieldGestures(new(p => p, (_, _) => clicks++, _ => { }, () => { }, _ => { }, _ => { }));
+    gestures.PointerDown(5, 0, new(0, 0));
+    gestures.Cancel();
+    gestures.PointerUp(5, 0, new(0, 0));
     Require(clicks == 0 && gestures.ActivePointerId is null, "screen cancellation suppresses pending click");
 }
 
 void Throws(Action action, string context)
 {
-    try { action(); } catch (ArgumentOutOfRangeException) { assertions++; return; }
+    try
+    {
+        action();
+    }
+    catch (ArgumentOutOfRangeException) { assertions++; return; }
     throw new Exception(context);
 }
 void EqualJson(JsonElement actual, JsonElement expected, string context)
@@ -149,25 +182,33 @@ void EqualJson(JsonElement actual, JsonElement expected, string context)
     {
         case JsonValueKind.Array:
             Require(actual.GetArrayLength() == expected.GetArrayLength(), context + " length");
-            for (var i = 0; i < actual.GetArrayLength(); i++) EqualJson(actual[i], expected[i], context + $"[{i}]");
+            for (var i = 0; i < actual.GetArrayLength(); i++)
+                EqualJson(actual[i], expected[i], context + $"[{i}]");
             break;
         case JsonValueKind.Object:
             Require(actual.EnumerateObject().Count() == expected.EnumerateObject().Count(), context + " properties");
-            foreach (var property in expected.EnumerateObject()) EqualJson(actual.GetProperty(property.Name), property.Value, context + "." + property.Name);
+            foreach (var property in expected.EnumerateObject())
+                EqualJson(actual.GetProperty(property.Name), property.Value, context + "." + property.Name);
             break;
-        case JsonValueKind.Number: Near(actual.GetDouble(), expected.GetDouble(), context); break;
-        default: Require(actual.GetRawText() == expected.GetRawText(), context); break;
+        case JsonValueKind.Number:
+            Near(actual.GetDouble(), expected.GetDouble(), context);
+            break;
+        default:
+            Require(actual.GetRawText() == expected.GetRawText(), context);
+            break;
     }
 }
 void EqualPoint(CameraPoint actual, CameraPoint expected, string context)
 {
-    Near(actual.X, expected.X, context + " x"); Near(actual.Y, expected.Y, context + " y");
+    Near(actual.X, expected.X, context + " x");
+    Near(actual.Y, expected.Y, context + " y");
 }
 void Near(double actual, double expected, string context) => Require(Math.Abs(actual - expected) <= 1e-8, $"{context}: expected {expected:R}, actual {actual:R}");
 void Require(bool condition, string context)
 {
     assertions++;
-    if (!condition) throw new Exception(context);
+    if (!condition)
+        throw new Exception(context);
 }
 CameraPoint Point(JsonElement p) => new(p.GetProperty("x").GetDouble(), p.GetProperty("y").GetDouble());
 CameraInsets Insets(JsonElement p) => new(p.GetProperty("left").GetDouble(), p.GetProperty("top").GetDouble(), p.GetProperty("right").GetDouble(), p.GetProperty("bottom").GetDouble());

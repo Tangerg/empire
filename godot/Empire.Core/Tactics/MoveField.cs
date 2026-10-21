@@ -14,10 +14,22 @@ public sealed record ReachableTile(int Index, int X, int Y, int Cost, int From, 
 
 public sealed class MoveField
 {
-    public Coord Origin { get; set; }
-    public int Unit { get; set; }
-    public Dictionary<int, ReachableTile> Tiles { get; set; }
-    public HashSet<int> Stops { get; set; }
+    public Coord Origin
+    {
+        get; set;
+    }
+    public int Unit
+    {
+        get; set;
+    }
+    public Dictionary<int, ReachableTile> Tiles
+    {
+        get; set;
+    }
+    public HashSet<int> Stops
+    {
+        get; set;
+    }
 
     public MoveField(Coord origin, int unit, Dictionary<int, ReachableTile> tiles, HashSet<int>? stops = null)
     {
@@ -29,13 +41,15 @@ public sealed class MoveField
 
     public IReadOnlyList<Coord>? TracePath(int target)
     {
-        if (!Tiles.ContainsKey(target)) return null;
+        if (!Tiles.ContainsKey(target))
+            return null;
         var path = new List<Coord>();
         var current = target;
         var guard = Tiles.Count + 2;
         for (var count = 0; count <= guard; count++)
         {
-            if (!Tiles.TryGetValue(current, out var node)) return null;
+            if (!Tiles.TryGetValue(current, out var node))
+                return null;
             path.Add(new(node.X, node.Y));
             if (node.From == -1)
             {

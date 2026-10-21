@@ -13,15 +13,19 @@ using Empire.Core.Transactions;
 using var inputStream = File.OpenRead(args[0]);
 using var reader = args[0].EndsWith(".gz", StringComparison.Ordinal) ? new StreamReader(new GZipStream(inputStream, CompressionMode.Decompress)) : new StreamReader(inputStream);
 var input = EcmaJson.Parse(reader.ReadToEnd())!.AsObject();
-var engine = new GrayFlagEngine(input["packs"]!.AsArray());
+var engine = new BattleEngine(input["packs"]!.AsArray());
 var serialization = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 var checks = 0;
 void Check(string name, string subject, JsonNode? actual, JsonNode? expected)
 {
     checks++;
-    if (EcmaJson.DeepEquals(actual, expected)) return;
+    if (EcmaJson.DeepEquals(actual, expected))
+        return;
     var destination = Path.Combine(Path.GetDirectoryName(args[0])!, "failed-ability-" + subject + ".json");
-    File.WriteAllText(destination, new JsonObject { ["case"] = name, ["actual"] = actual?.DeepClone(), ["expected"] = expected?.DeepClone() }.ToJsonString(new() { WriteIndented = true }));
+    File.WriteAllText(destination, new JsonObject { ["case"] = name, ["actual"] = actual?.DeepClone(), ["expected"] = expected?.DeepClone() }.ToJsonString(new()
+    {
+        WriteIndented = true
+    }));
     throw new Exception($"Mismatch in {name}: {subject}; inspect {destination}");
 }
 JsonNode? Node<T>(T value) => JsonSerializer.SerializeToNode(value, serialization);
@@ -50,20 +54,24 @@ AbilityRegistry Abilities(JsonObject config)
     });
     registry.Register(new("test-pulse")
     {
-        Priority = 12.25, Tags = ["command"],
+        Priority = 12.25,
+        Tags = ["command"],
         Usable = (_, query) => !StateJson.IsTrue(query.State["scenario"]!["variables"]!["disabled"]),
         Execute = (_, query, _, emit) =>
         {
             var variables = query.State["scenario"]!["variables"]!.AsObject();
             variables["pulses"] = StateJson.Number(variables, "pulses", 0) + 1;
             emit(new JsonObject { ["type"] = "scenarioSignal", ["signal"] = "pulse" });
-            if (StateJson.IsTrue(variables["fail"])) throw new DomainInvariantException("custom ability failed");
+            if (StateJson.IsTrue(variables["fail"]))
+                throw new DomainInvariantException("custom ability failed");
         },
     });
     registry.Register(new("test-mark")
     {
-        SelfTargeted = StateJson.IsTrue(config["markSelf"]), Priority = 12.25,
-        Engagement = config["engagement"]?.GetValue<string>() ?? "hostile-action", Targets = (_, _) => [new(3, 3)],
+        SelfTargeted = StateJson.IsTrue(config["markSelf"]),
+        Priority = 12.25,
+        Engagement = config["engagement"]?.GetValue<string>() ?? "hostile-action",
+        Targets = (_, _) => [new(3, 3)],
         Execute = (_, query, target, emit) =>
         {
             query.State["scenario"]!["variables"]!["marked"] = $"{target!.Value.X},{target.Value.Y}";
@@ -92,14 +100,21 @@ AbilityRegistry Abilities(JsonObject config)
         },
     });
     foreach (var (id, priority) in new[] { ("test-😀", 12.25), ("test-\ue000", 12.25), ("test-low", 12.1) })
-        registry.Register(new(id) { Priority = priority });
+        registry.Register(new(id)
+        {
+            Priority = priority
+        });
     if (config["attackTags"] is JsonArray tags)
-        registry.Replace(registry.Get("attack") with { Tags = tags.Select(tag => StateJson.Text(tag, "tag")).ToArray() });
+        registry.Replace(registry.Get("attack") with
+        {
+            Tags = tags.Select(tag => StateJson.Text(tag, "tag")).ToArray()
+        });
     return registry.Seal();
 }
 JsonNode? ExpectedError(JsonObject item)
 {
-    if (item["error"]?["kind"]?.GetValue<string>() != "IllegalAction") return item["error"];
+    if (item["error"]?["kind"]?.GetValue<string>() != "IllegalAction")
+        return item["error"];
     var name = StateJson.Text(item, "name");
     var command = item["command"]!["command"]!.AsObject();
     var code = name switch
@@ -114,37 +129,50 @@ JsonNode? ExpectedError(JsonObject item)
         _ => throw new Exception("Unspecified semantic refusal expectation: " + name),
     };
     var details = new JsonObject { ["abilityId"] = command["ability"]!.DeepClone() };
-    if (code == "ability.not_owned") details["unitType"] = item["initial"]!["units"]![0]!["type"]!.DeepClone();
-    if (code == "ability.weapon_unavailable") details["weaponId"] = command["weapon"]!.DeepClone();
+    if (code == "ability.not_owned")
+        details["unitType"] = item["initial"]!["units"]![0]!["type"]!.DeepClone();
+    if (code == "ability.weapon_unavailable")
+        details["weaponId"] = command["weapon"]!.DeepClone();
     return new JsonObject { ["kind"] = "IllegalAction", ["refusal"] = new JsonObject { ["code"] = code, ["details"] = details } };
 }
 foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
 {
     var name = StateJson.Text(item, "name");
     var initial = item["initial"]!.DeepClone().AsObject();
-    var rules = engine.AbilityRules with { Abilities = Abilities(item["config"]!.AsObject()) };
+    var rules = engine.AbilityRules with
+    {
+        Abilities = Abilities(item["config"]!.AsObject())
+    };
     var commands = new AbilityCommands(rules, engine.Commands);
     var commandOptions = commands.Options(initial, initial["units"]![0]!.AsObject(), TacticalQueries.Position(item["at"]!.AsObject()));
     var options = Node(commandOptions.Select(option => new
     {
-        option.Key, option.Ability, option.Weapon, option.SelfTargeted, option.Targets,
+        option.Key,
+        option.Ability,
+        option.Weapon,
+        option.SelfTargeted,
+        option.Targets,
     }))!.AsArray();
     foreach (var option in options.OfType<JsonObject>())
     {
-        if (option["weapon"] is null) option.Remove("weapon");
+        if (option["weapon"] is null)
+            option.Remove("weapon");
     }
     var expectedOptions = new JsonArray(item["menus"]!.AsArray().OfType<JsonObject>().Select(option =>
     {
         var facts = new JsonObject
         {
-            ["key"] = option["key"]!.DeepClone(), ["ability"] = option["ability"]!.DeepClone(),
-            ["selfTargeted"] = option["selfTargeted"]!.DeepClone(), ["targets"] = option["targets"]!.DeepClone(),
+            ["key"] = option["key"]!.DeepClone(),
+            ["ability"] = option["ability"]!.DeepClone(),
+            ["selfTargeted"] = option["selfTargeted"]!.DeepClone(),
+            ["targets"] = option["targets"]!.DeepClone(),
         };
-        if (option["weapon"] is { } weapon) facts["weapon"] = weapon.DeepClone();
+        if (option["weapon"] is { } weapon)
+            facts["weapon"] = weapon.DeepClone();
         return (JsonNode?)facts;
     }).ToArray());
     Check(name, "menus", options, expectedOptions);
-    var battle = new Battle(initial, new BattleActionRegistry().Register("command", (state, action, emit) =>
+    var battle = new Battle(new BattleTransactionRules(new BattleActionRegistry().Register("command", (state, action, emit) =>
     {
         void Emit(JsonObject value)
         {
@@ -154,12 +182,18 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
             counts[type] = StateJson.Number(counts, type, 0) + 1;
         }
         commands.Execute(state, action, Emit);
-    }));
-    var events = new JsonArray(); JsonNode? error = null;
+    }), null), initial);
+    var events = new JsonArray();
+    JsonNode? error = null;
     BattleReceipt? receipt = null;
     if (item["command"] is JsonObject action)
     {
-        try { receipt = battle.Dispatch(action); foreach (var value in receipt.Events) events.Add(value.DeepClone()); }
+        try
+        {
+            receipt = battle.Dispatch(action);
+            foreach (var value in receipt.Events)
+                events.Add(value.DeepClone());
+        }
         catch (DomainInvariantException fault) { error = new JsonObject { ["kind"] = "DomainInvariant", ["message"] = fault.Message }; }
         catch (IllegalActionException fault) { error = new JsonObject { ["kind"] = "IllegalAction", ["refusal"] = Node(fault.Refusal) }; }
     }
@@ -178,7 +212,10 @@ var rangeUnit = rangeState["units"]![0]!.AsObject();
 rangeUnit["learnedAbilities"] = new JsonArray("test-range", "wait");
 var selectedRangeWeapon = new JsonObject
 {
-    ["id"] = "range-source", ["tags"] = new JsonArray(), ["minRange"] = 0.25, ["maxRange"] = 4.75,
+    ["id"] = "range-source",
+    ["tags"] = new JsonArray(),
+    ["minRange"] = 0.25,
+    ["maxRange"] = 4.75,
 };
 var weaponQueries = 0;
 var rangeAbilities = DefaultAbilities.Create().Register(new("test-range")
@@ -190,7 +227,10 @@ var rangeAbilities = DefaultAbilities.Create().Register(new("test-range")
         return new JsonObject { ["tags"] = new JsonArray(), ["minRange"] = 90, ["maxRange"] = 99 };
     },
 });
-var rangeCommands = new AbilityCommands(engine.AbilityRules with { Abilities = rangeAbilities }, engine.Commands)
+var rangeCommands = new AbilityCommands(engine.AbilityRules with
+{
+    Abilities = rangeAbilities
+}, engine.Commands)
     .Options(rangeState, rangeUnit, TacticalQueries.Position(rangeUnit));
 var ranged = rangeCommands.Single(option => option.Ability == "test-range");
 Check("semantic command range", "selected choice range", Node(ranged.Range), Node(new CommandRange(0.25, 4.75)));

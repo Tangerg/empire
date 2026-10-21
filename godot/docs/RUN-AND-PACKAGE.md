@@ -38,8 +38,9 @@ On another desktop, install the official .NET 8 SDK and Godot 4.6.3 **.NET** edi
 Open `godot/project.godot`, build its C# project and run the main scene. The source
 archive contains `godot` and `tools/godot`, but not the original TypeScript tree,
 Node dependencies or the toolchain. Native build/gameplay needs no TypeScript;
-`--full` oracle verification requires the preserved full repository and its
-locked development dependencies.
+Historical source-v1 oracle regeneration requires the preserved full repository
+and its locked development dependencies. It is not part of current-schema acceptance;
+see `OBJECTIVE-OUTCOME-SCHEMA.md`.
 
 ## Tactical controls
 

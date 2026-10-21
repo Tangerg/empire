@@ -3,7 +3,10 @@ namespace Empire.Application;
 /// <summary>Post-settlement pacing only; battle state and action selection stay in the session.</summary>
 public sealed class AiTurnPacer
 {
-    public bool IsRunning { get; private set; }
+    public bool IsRunning
+    {
+        get; private set;
+    }
     private bool awaitingSettlement;
     private double? resumeAt;
     private int pauseMilliseconds;
@@ -24,8 +27,13 @@ public sealed class AiTurnPacer
     {
         if (!IsRunning)
         {
-            if (!computerTurn) { exhausted = false; return; }
-            if (presenting || exhausted) return;
+            if (!computerTurn)
+            {
+                exhausted = false;
+                return;
+            }
+            if (presenting || exhausted)
+                return;
             IsRunning = true;
             steps = 0;
             setBusy(true);
@@ -34,22 +42,35 @@ public sealed class AiTurnPacer
         {
             if (awaitingSettlement)
             {
-                if (presenting) return;
+                if (presenting)
+                    return;
                 awaitingSettlement = false;
                 resumeAt = nowMilliseconds + pauseMilliseconds;
             }
             if (resumeAt is { } deadline)
             {
-                if (nowMilliseconds < deadline) return;
+                if (nowMilliseconds < deadline)
+                    return;
                 resumeAt = null;
             }
-            if (!computerTurn) { Finish(setBusy); return; }
-            if (presenting) return;
-            if (++steps > 2000) { exhausted = true; Finish(setBusy); return; }
+            if (!computerTurn)
+            {
+                Finish(setBusy);
+                return;
+            }
+            if (presenting)
+                return;
+            if (++steps > 2000)
+            {
+                exhausted = true;
+                Finish(setBusy);
+                return;
+            }
             var result = advance();
             pauseMilliseconds = result.AttemptedHandsOffTurn ? 120 : 90;
             awaitingSettlement = present();
-            if (!awaitingSettlement) resumeAt = nowMilliseconds + pauseMilliseconds;
+            if (!awaitingSettlement)
+                resumeAt = nowMilliseconds + pauseMilliseconds;
         }
         catch
         {

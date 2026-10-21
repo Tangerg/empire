@@ -29,24 +29,34 @@ public sealed class GameText
         var format = RequireFormat(key);
         if (arguments.Length != format.MinimumArgumentCount)
             throw new LocalizationException($"Message '{key}' requires {format.MinimumArgumentCount} arguments; received {arguments.Length}.");
-        try { return string.Format(culture, format, arguments); }
+        try
+        {
+            return string.Format(culture, format, arguments);
+        }
         catch (FormatException error) { throw new LocalizationException($"Message '{key}' has an incompatible argument format.", error); }
     }
 
     public void ValidateKeys(IEnumerable<string> requiredKeys)
     {
         ArgumentNullException.ThrowIfNull(requiredKeys);
-        foreach (var key in requiredKeys) RequireFormat(key);
+        foreach (var key in requiredKeys)
+            RequireFormat(key);
     }
 
     private CompositeFormat RequireFormat(string key)
     {
-        if (string.IsNullOrWhiteSpace(key)) throw new LocalizationException("A message key must not be empty.");
-        if (formats.TryGetValue(key, out var cached)) return cached;
+        if (string.IsNullOrWhiteSpace(key))
+            throw new LocalizationException("A message key must not be empty.");
+        if (formats.TryGetValue(key, out var cached))
+            return cached;
         var value = lookup(key) ?? throw new LocalizationException($"Missing localization key '{key}'.");
-        if (string.IsNullOrWhiteSpace(value)) throw new LocalizationException($"Localization key '{key}' has an empty value.");
+        if (string.IsNullOrWhiteSpace(value))
+            throw new LocalizationException($"Localization key '{key}' has an empty value.");
         CompositeFormat format;
-        try { format = CompositeFormat.Parse(value); }
+        try
+        {
+            format = CompositeFormat.Parse(value);
+        }
         catch (FormatException error) { throw new LocalizationException($"Localization key '{key}' has a malformed composite format.", error); }
         ValidateArgumentSet(key, format);
         formats.Add(key, format);

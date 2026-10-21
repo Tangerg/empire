@@ -18,7 +18,8 @@ internal sealed class PresentationTimeline
 
     public Task<bool> TweenAsync(double milliseconds, Action<double> step)
     {
-        if (cancelled) return Task.FromResult(false);
+        if (cancelled)
+            return Task.FromResult(false);
         if (!MotionEnabled || milliseconds <= 0)
         {
             step(1);
@@ -33,20 +34,26 @@ internal sealed class PresentationTimeline
 
     public void Advance(double seconds)
     {
-        if (!double.IsFinite(seconds) || seconds < 0) throw new ArgumentOutOfRangeException(nameof(seconds));
+        if (!double.IsFinite(seconds) || seconds < 0)
+            throw new ArgumentOutOfRangeException(nameof(seconds));
         time += seconds;
         foreach (var tween in waiting.ToArray())
         {
-            if (!waiting.Contains(tween)) continue;
+            if (!waiting.Contains(tween))
+                continue;
             var progress = Math.Min(1, (time - tween.Started) / tween.Duration);
-            try { tween.Step(progress); }
+            try
+            {
+                tween.Step(progress);
+            }
             catch (Exception error)
             {
                 waiting.Remove(tween);
                 tween.Completion.TrySetException(error);
                 continue;
             }
-            if (progress < 1) continue;
+            if (progress < 1)
+                continue;
             waiting.Remove(tween);
             tween.Completion.TrySetResult(true);
         }
@@ -54,10 +61,12 @@ internal sealed class PresentationTimeline
 
     public void Cancel()
     {
-        if (cancelled) return;
+        if (cancelled)
+            return;
         cancelled = true;
         var pending = waiting.ToArray();
         waiting.Clear();
-        foreach (var tween in pending) tween.Completion.TrySetResult(false);
+        foreach (var tween in pending)
+            tween.Completion.TrySetResult(false);
     }
 }

@@ -23,10 +23,10 @@ var catalogs = input["catalogs"]!.AsArray();
 // Catalog 2 deliberately bypasses the original installer to characterize raw
 // career/formation helpers on cyclic and missing references. Production engine
 // composition correctly rejects it; keep this test at the same raw boundary.
-var engines = catalogs.Select((packs, index) => index == 2 ? null : new GrayFlagEngine(packs!.AsArray())).ToArray();
+var engines = catalogs.Select((packs, index) => index == 2 ? null : new BattleEngine(packs!.AsArray())).ToArray();
 var rawCatalog = new ReadOnlyContent(catalogs[2]!.AsArray());
 var rawProgression = new BattleProgression(new BattleProgressionRules(rawCatalog, engines[0]!.Grids,
-    engines[0]!.Resources, engines[0]!.Commands, new CombatEffects(rawCatalog, new ThresholdRankProgressionPolicy())));
+    engines[0]!.Resources, engines[0]!.Commands, new CombatEffects(new CombatEffectRules(rawCatalog, new ThresholdRankProgressionPolicy()))));
 var count = 0;
 var nativeRejections = 0;
 var kinds = new Dictionary<string, int>();
@@ -35,7 +35,8 @@ foreach (var entry in input["cases"]!.AsArray())
     var item = entry!.AsObject();
     var name = item["name"]!.GetValue<string>();
     var native = nativeCases[name]!.AsObject();
-    if (!native.ContainsKey("error")) throw new Exception("Missing native error expectation: " + name);
+    if (!native.ContainsKey("error"))
+        throw new Exception("Missing native error expectation: " + name);
     var kind = item["operation"]!.GetValue<string>();
     var catalog = item["catalog"]!.GetValue<int>();
     var engine = engines[catalog] ?? engines[0]!;
@@ -60,29 +61,51 @@ foreach (var entry in input["cases"]!.AsArray())
         var formation = parameters["formation"]?.GetValue<string>();
         switch (kind)
         {
-            case "careerOptions": value = Serialize(progression.Careers.Options(state, unit)); break;
-            case "abilities": value = Serialize(progression.Careers.UnitAbilityIds(unit)); break;
-            case "mastery": value = Serialize(progression.Careers.Mastery(unit, parameters["career"]!.GetValue<string>())); break;
-            case "changeCareer": progression.Careers.Change(state, unit, parameters["career"]!.GetValue<string>(), Emit); break;
-            case "awardCareer": progression.Careers.AwardProgress(unit, parameters["amount"]!.GetValue<double>(), Emit); break;
-            case "awardRank": engine.Combat.Effects.AwardRankProgress(unit, parameters["amount"]!.GetValue<double>(), Emit); break;
-            case "formationOptions": value = Serialize(progression.Formations.Options(state, unit)); break;
-            case "formation": value = progression.Formations.InEffect(state, unit, formation)?.DeepClone(); break;
-            case "validateFormation": progression.Formations.ValidateChange(state, unit, formation); break;
-            case "delta": value = Serialize(progression.Formations.MovementDelta(state, unit)); break;
+            case "careerOptions":
+                value = Serialize(progression.Careers.Options(state, unit));
+                break;
+            case "abilities":
+                value = Serialize(progression.Careers.UnitAbilityIds(unit));
+                break;
+            case "mastery":
+                value = Serialize(progression.Careers.Mastery(unit, parameters["career"]!.GetValue<string>()));
+                break;
+            case "changeCareer":
+                progression.Careers.Change(state, unit, parameters["career"]!.GetValue<string>(), Emit);
+                break;
+            case "awardCareer":
+                progression.Careers.AwardProgress(unit, parameters["amount"]!.GetValue<double>(), Emit);
+                break;
+            case "awardRank":
+                engine.Combat.Effects.AwardRankProgress(unit, parameters["amount"]!.GetValue<double>(), Emit);
+                break;
+            case "formationOptions":
+                value = Serialize(progression.Formations.Options(state, unit));
+                break;
+            case "formation":
+                value = progression.Formations.InEffect(state, unit, formation)?.DeepClone();
+                break;
+            case "validateFormation":
+                progression.Formations.ValidateChange(state, unit, formation);
+                break;
+            case "delta":
+                value = Serialize(progression.Formations.MovementDelta(state, unit));
+                break;
             case "rawAction":
                 var action = parameters["action"]!.AsObject();
                 var unitId = action["unit"]!.GetValue<int>();
                 if (action["kind"]!.GetValue<string>() == "changeCareer")
                     progression.ChangeCareer(state, unitId, action["career"]!.GetValue<string>(), CountedEmit);
-                else progression.ChangeFormation(state, unitId, action["formation"]?.GetValue<string>(), CountedEmit);
+                else
+                    progression.ChangeFormation(state, unitId, action["formation"]?.GetValue<string>(), CountedEmit);
                 break;
             case "dispatch":
                 var battle = engine.LoadSavedBattle(engine.SaveBattle(state));
                 try
                 {
                     var receipt = battle.Dispatch(parameters["action"]!.AsObject());
-                    foreach (var e in receipt.Events) events.Add(e.DeepClone());
+                    foreach (var e in receipt.Events)
+                        events.Add(e.DeepClone());
                 }
                 finally { state = battle.Snapshot(); }
                 break;
@@ -91,18 +114,29 @@ foreach (var entry in input["cases"]!.AsArray())
                 var steps = new JsonArray();
                 foreach (var next in parameters["actions"]!.AsArray())
                 {
-                    var emitted = new JsonArray(); JsonNode? failure = null;
+                    var emitted = new JsonArray();
+                    JsonNode? failure = null;
                     try
                     {
                         var receipt = sequenceBattle.Dispatch(next!.AsObject());
-                        foreach (var e in receipt.Events) { emitted.Add(e.DeepClone()); events.Add(e.DeepClone()); }
+                        foreach (var e in receipt.Events)
+                        {
+                            emitted.Add(e.DeepClone());
+                            events.Add(e.DeepClone());
+                        }
                     }
                     catch (IllegalActionException caught) { failure = Serialize(caught.Refusal); }
                     catch (DomainInvariantException caught) { failure = JsonValue.Create(caught.Message); }
-                    steps.Add(new JsonObject { ["action"] = next!.DeepClone(), ["events"] = emitted,
-                        ["error"] = failure, ["after"] = sequenceBattle.Snapshot() });
+                    steps.Add(new JsonObject
+                    {
+                        ["action"] = next!.DeepClone(),
+                        ["events"] = emitted,
+                        ["error"] = failure,
+                        ["after"] = sequenceBattle.Snapshot()
+                    });
                 }
-                state = sequenceBattle.Snapshot(); value = steps;
+                state = sequenceBattle.Snapshot();
+                value = steps;
                 break;
             case "derived":
                 var field = engine.Space.ComputeMoveField(state, unit);
@@ -113,7 +147,8 @@ foreach (var entry in input["cases"]!.AsArray())
                     ["movementDelta"] = Serialize(progression.Formations.MovementDelta(state, unit)),
                     ["move"] = new JsonObject
                     {
-                        ["origin"] = Serialize(field.Origin), ["unit"] = field.Unit,
+                        ["origin"] = Serialize(field.Origin),
+                        ["unit"] = field.Unit,
                         ["tiles"] = new JsonArray(field.Tiles.Select(pair => (JsonNode)new JsonArray(JsonValue.Create(pair.Key), Serialize(pair.Value))).ToArray()),
                         ["stops"] = Serialize(field.Stops),
                     },
@@ -121,7 +156,8 @@ foreach (var entry in input["cases"]!.AsArray())
                         state["units"]!.AsArray().Select(n => n!.AsObject()).First(candidate => candidate["owner"]!.GetValue<int>() == 2))),
                 };
                 break;
-            default: throw new Exception($"Unknown progression check {kind}");
+            default:
+                throw new Exception($"Unknown progression check {kind}");
         }
     }
     catch (Exception caught) when (caught is DomainInvariantException or IllegalActionException)
@@ -144,11 +180,13 @@ foreach (var entry in input["cases"]!.AsArray())
     if ((kind is "careerOptions" or "formationOptions") && expectedValue is JsonArray optionValues)
     {
         var reasons = native["optionReasons"]!.AsArray();
-        if (reasons.Count != optionValues.Count) throw new Exception("Missing or stale native option expectations: " + name);
+        if (reasons.Count != optionValues.Count)
+            throw new Exception("Missing or stale native option expectations: " + name);
         var family = kind == "careerOptions" ? "career" : "formation";
         for (var index = 0; index < optionValues.Count; index++)
         {
-            var option = optionValues[index]!.AsObject(); var expectedReasons = reasons[index]!.AsObject();
+            var option = optionValues[index]!.AsObject();
+            var expectedReasons = reasons[index]!.AsObject();
             if (option[family]!["id"]!.GetValue<string>() != expectedReasons["id"]!.GetValue<string>() ||
                 option["reasons"]!.AsArray().Count != expectedReasons["reasons"]!.AsArray().Count)
                 throw new Exception("Native option reason order/coverage changed: " + name);
@@ -157,8 +195,10 @@ foreach (var entry in input["cases"]!.AsArray())
     }
     if (kind == "sequence")
     {
-        var steps = expectedValue!.AsArray(); var errors = native["stepErrors"]!.AsArray();
-        if (steps.Count != errors.Count) throw new Exception("Missing or stale native sequence expectations: " + name);
+        var steps = expectedValue!.AsArray();
+        var errors = native["stepErrors"]!.AsArray();
+        if (steps.Count != errors.Count)
+            throw new Exception("Missing or stale native sequence expectations: " + name);
         for (var index = 0; index < steps.Count; index++)
         {
             if ((steps[index]!["error"] is null) != (errors[index] is null))
@@ -166,8 +206,13 @@ foreach (var entry in input["cases"]!.AsArray())
             steps[index]!["error"] = errors[index]?.DeepClone();
         }
     }
-    var expected = new JsonObject { ["value"] = expectedValue, ["error"] = native["error"]?.DeepClone(),
-        ["events"] = item["events"]!.DeepClone(), ["after"] = item["after"]!.DeepClone() };
+    var expected = new JsonObject
+    {
+        ["value"] = expectedValue,
+        ["error"] = native["error"]?.DeepClone(),
+        ["events"] = item["events"]!.DeepClone(),
+        ["after"] = item["after"]!.DeepClone()
+    };
     // Compare full snapshots, not a digest with presentation fields omitted.
     if (StateDigest.Hash(new JsonArray(actual.DeepClone())) != StateDigest.Hash(new JsonArray(expected.DeepClone())))
     {

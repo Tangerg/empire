@@ -29,7 +29,10 @@ internal static class CanonicalChecks
             Require(EcmaJson.DeepEquals(loaded, EcmaJson.Parse(EcmaJson.ToElement(loaded).GetRawText())), "Immutable element transfer changed state.");
             var literal = "\"" + string.Concat(stream.Select(unit => unit switch
             {
-                '\\' => "\\\\", '"' => "\\\"", < ' ' => "\\u" + ((int)unit).ToString("x4"), _ => unit.ToString(),
+                '\\' => "\\\\",
+                '"' => "\\\"",
+                < ' ' => "\\u" + ((int)unit).ToString("x4"),
+                _ => unit.ToString(),
             })) + "\"";
             Require(EcmaJson.ReadString(EcmaJson.Parse(literal)) == stream,
                 "Direct UTF-16 JSON source text changed code units.");
@@ -56,12 +59,16 @@ internal static class CanonicalChecks
         catch (DomainInvariantException error) when (error.Message.Contains("EcmaJson.Parse", StringComparison.Ordinal)) { }
         foreach (var bad in new[] { "", "1 2", "{\"a\":}", "[1,]", "\"\\q\"", "{}{}", "\"\\" + '\ud800' + "\"", "\"\\" + '\udfff' + "\"" })
         {
-            try { EcmaJson.Parse(bad); throw new Exception("Malformed JSON accepted: " + bad); }
+            try
+            {
+                EcmaJson.Parse(bad);
+                throw new Exception("Malformed JSON accepted: " + bad);
+            }
             catch (JsonException) { }
         }
         var packs = EcmaJson.Parse(File.ReadAllText(Path.Combine(root, "godot/data/content-packs.json")))!.AsArray();
         var level = EcmaJson.Parse(File.ReadAllText(Path.Combine(root, "godot/tests/oracle/source-v1/grayflag-level.json")))!.AsObject();
-        var engine = new GrayFlagEngine(packs);
+        var engine = new BattleEngine(packs);
         var original = engine.CreateState(level);
         foreach (var stream in new[] { "\ud800", "\udfff", "script.骰子💥", "\ud800X\udfff" })
         {
@@ -74,5 +81,9 @@ internal static class CanonicalChecks
         Require(StateDigest.Hash(restored) == before && EcmaJson.DeepEquals(original, restored), "Real battle save/load did not preserve lone strings and counter keys.");
         Console.WriteLine($"PASS {count} live-source UTF-16/number vectors: parse, DeepClone, RNG writes, stringify, parse, digest; immutable snapshots, explicit lazy-key rejection and real battle save/load.");
     }
-    private static void Require(bool value, string message) { if (!value) throw new Exception(message); }
+    private static void Require(bool value, string message)
+    {
+        if (!value)
+            throw new Exception(message);
+    }
 }

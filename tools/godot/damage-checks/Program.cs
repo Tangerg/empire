@@ -12,7 +12,7 @@ var root = args[0];
 var oraclePath = args[1];
 var packs = JsonNode.Parse(File.ReadAllText(root + "/godot/data/content-packs.json"))!.AsArray();
 var grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid());
-var damage = new BattleDamage(new BattleDamageRules(new ReadOnlyContent(packs), grids, new CombatEffects(new ReadOnlyContent(packs), new ThresholdRankProgressionPolicy()), DefaultUnitDepartureHandlers.Create().Seal()));
+var damage = new BattleDamage(new BattleDamageRules(new ReadOnlyContent(packs), grids, new CombatEffects(new CombatEffectRules(new ReadOnlyContent(packs), new ThresholdRankProgressionPolicy())), DefaultUnitDepartureHandlers.Create().Seal()));
 var cases = JsonNode.Parse(File.ReadAllText(oraclePath))!.AsArray();
 int passed = 0;
 int nativeRejections = 0;
@@ -26,7 +26,8 @@ JsonObject Trace(JsonObject state) => new()
 };
 void Check(string name, string key, JsonNode? actual, JsonNode? expected)
 {
-    if (JsonNode.DeepEquals(JsonNode.Parse(actual?.ToJsonString() ?? "null"), expected)) return;
+    if (JsonNode.DeepEquals(JsonNode.Parse(actual?.ToJsonString() ?? "null"), expected))
+        return;
     File.WriteAllText(Path.Combine(Path.GetDirectoryName(oraclePath)!, $"failed-{key}.json"), new JsonObject { ["actual"] = actual?.DeepClone(), ["expected"] = expected?.DeepClone() }.ToJsonString());
     throw new Exception($"Mismatch in {name}: {key}");
 }
@@ -35,8 +36,13 @@ foreach (var item in cases.OfType<JsonObject>())
     var name = item["name"]!.GetValue<string>();
     var state = item["initial"]!.DeepClone().AsObject();
     var parameters = item["args"]!.AsObject();
-    var events = new JsonArray(); var traces = new JsonArray();
-    void Emit(JsonObject ev) { events.Add(ev); traces.Add(Trace(state)); }
+    var events = new JsonArray();
+    var traces = new JsonArray();
+    void Emit(JsonObject ev)
+    {
+        events.Add(ev);
+        traces.Add(Trace(state));
+    }
     var id = StateJson.Integer(parameters, "unit");
     JsonNode? outcome = null;
     if (name is "damage -100" or "damage -0.5")
@@ -59,17 +65,32 @@ foreach (var item in cases.OfType<JsonObject>())
         case "resolve":
             var blow = damage.Resolve(state, id, StateJson.Number(parameters["amount"], "amount"), StateJson.IsTrue(parameters["nonlethal"]),
                 result => new JsonObject { ["type"] = "statusTick", ["unit"] = id, ["status"] = "poisoned", ["amount"] = result.Amount, ["hpAfter"] = result.HpAfter }, Emit);
-            outcome = new JsonObject { ["landed"] = blow.Landed, ["amount"] = blow.Amount, ["hpAfter"] = blow.HpAfter,
-                ["killed"] = blow.Killed, ["leftField"] = blow.LeftField, ["at"] = TacticalQueries.CoordinateJson(blow.At) };
+            outcome = new JsonObject
+            {
+                ["landed"] = blow.Landed,
+                ["amount"] = blow.Amount,
+                ["hpAfter"] = blow.HpAfter,
+                ["killed"] = blow.Killed,
+                ["leftField"] = blow.LeftField,
+                ["at"] = TacticalQueries.CoordinateJson(blow.At)
+            };
             break;
         case "status":
-            var subject = state["units"]![0]!.DeepClone().AsObject(); subject["id"] = id;
-            outcome = JsonValue.Create(damage.DamageStatus(state, subject, new JsonObject { ["id"] = "poisoned", ["remaining"] = 1, ["stacks"] = 1 }, StateJson.Number(parameters["amount"],"amount"), StateJson.IsTrue(parameters["nonlethal"]), Emit));
+            var subject = state["units"]![0]!.DeepClone().AsObject();
+            subject["id"] = id;
+            outcome = JsonValue.Create(damage.DamageStatus(state, subject, new JsonObject { ["id"] = "poisoned", ["remaining"] = 1, ["stacks"] = 1 }, StateJson.Number(parameters["amount"], "amount"), StateJson.IsTrue(parameters["nonlethal"]), Emit));
             break;
-        case "morale": outcome = JsonValue.Create(damage.ChangeMorale(state, id, StateJson.Number(parameters["amount"], "amount"), "test", Emit)); break;
-        case "surrender": outcome = damage.Surrender(state, id, parameters["to"] is null ? null : StateJson.Integer(parameters,"to"), Emit); break;
-        case "withdraw": damage.Withdraw(state, id, StateJson.IsTrue(parameters["leaveCorpse"]), Emit); break;
-        default: throw new Exception("Unknown operation");
+        case "morale":
+            outcome = JsonValue.Create(damage.ChangeMorale(state, id, StateJson.Number(parameters["amount"], "amount"), "test", Emit));
+            break;
+        case "surrender":
+            outcome = damage.Surrender(state, id, parameters["to"] is null ? null : StateJson.Integer(parameters, "to"), Emit);
+            break;
+        case "withdraw":
+            damage.Withdraw(state, id, StateJson.IsTrue(parameters["leaveCorpse"]), Emit);
+            break;
+        default:
+            throw new Exception("Unknown operation");
     }
     Check(name, "events", events, item["events"]);
     Check(name, "traces", traces, item["traces"]);

@@ -5,7 +5,10 @@ public sealed class BattleEngineConfigurationException : DomainInvariantExceptio
     public BattleEngineConfigurationException(IReadOnlyList<string> issues)
         : base("invalid battle engine configuration:\n" + string.Join("\n", issues.Select(issue => "- " + issue))) =>
         Issues = Array.AsReadOnly(issues.ToArray());
-    public IReadOnlyList<string> Issues { get; }
+    public IReadOnlyList<string> Issues
+    {
+        get;
+    }
 }
 
 public sealed class BattleLevelException : StoredDocumentException
@@ -16,6 +19,12 @@ public sealed class BattleLevelException : StoredDocumentException
         LevelId = levelId;
         Issues = Array.AsReadOnly(issues.ToArray());
     }
-    public string LevelId { get; }
-    public IReadOnlyList<string> Issues { get; }
+    public string LevelId
+    {
+        get;
+    }
+    public IReadOnlyList<string> Issues
+    {
+        get;
+    }
 }

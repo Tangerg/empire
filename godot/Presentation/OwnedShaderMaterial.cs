@@ -31,7 +31,8 @@ internal partial class OwnedShaderMaterial : Node
 
     public override void _Notification(int what)
     {
-        if (what != NotificationPredelete || _material is null) return;
+        if (what != NotificationPredelete || _material is null)
+            return;
         if (GodotObject.IsInstanceValid(_sprite) && ReferenceEquals(_sprite!.Material, _material))
             _sprite.Material = null;
         _material.Shader = null;

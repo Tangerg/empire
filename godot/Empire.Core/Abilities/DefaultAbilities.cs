@@ -10,7 +10,10 @@ public static class DefaultAbilities
     public static AbilityRegistry Create() => new AbilityRegistry()
         .Register(new("attack")
         {
-            SelfTargeted = false, Priority = 10, Tags = ["attack"], Engagement = "attack",
+            SelfTargeted = false,
+            Priority = 10,
+            Tags = ["attack"],
+            Engagement = "attack",
             WeaponFor = SelectedWeapon,
             WeaponChoices = (rules, query) => rules.Combat.Forecasts.UnitWeapons(query.Unit),
             Targets = (rules, query) => SelectedWeapon(rules, query) is { } weapon
@@ -21,7 +24,9 @@ public static class DefaultAbilities
         })
         .Register(new("heal")
         {
-            SelfTargeted = false, Priority = 20, Tags = ["healing"],
+            SelfTargeted = false,
+            Priority = 20,
+            Tags = ["healing"],
             Targets = (rules, query) => rules.Space.HealTargetsFrom(query.State, query.Unit, query.At)
                 .Select(TacticalQueries.Position).ToArray(),
             Execute = (rules, query, target, emit) => Heal(rules, query,
@@ -33,7 +38,10 @@ public static class DefaultAbilities
             Usable = (rules, query) => rules.Support.CanCapture(query.State, query.Unit, query.At),
             Execute = (rules, query, _, emit) => rules.Support.Capture(query.State, query.Unit, query.At, emit),
         })
-        .Register(new("wait") { Priority = 90 });
+        .Register(new("wait")
+        {
+            Priority = 90
+        });
 
     private static JsonObject? SelectedWeapon(AbilityRules rules, AbilityQuery query) =>
         rules.Combat.SelectedWeapon(query.State, query.Unit, query.WeaponId);

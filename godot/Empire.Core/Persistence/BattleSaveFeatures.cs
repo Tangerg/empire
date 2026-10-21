@@ -9,13 +9,15 @@ public sealed class BattleSaveFeatures
 
     public BattleSaveFeatures Guard(string id, Func<JsonObject, IEnumerable<string>> inspect)
     {
-        if (!guards.TryAdd(id, inspect)) throw new DomainInvariantException($"save feature guard already registered: \"{id}\"");
+        if (!guards.TryAdd(id, inspect))
+            throw new DomainInvariantException($"save feature guard already registered: \"{id}\"");
         return this;
     }
 
     internal IEnumerable<string> StateIssues(JsonObject state)
     {
         foreach (var guard in guards)
-            foreach (var issue in guard.Value(state)) yield return $"{guard.Key}: {issue}";
+            foreach (var issue in guard.Value(state))
+                yield return $"{guard.Key}: {issue}";
     }
 }

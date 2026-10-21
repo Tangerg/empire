@@ -4,6 +4,8 @@ using Empire.Core.State;
 
 namespace Empire.Core.Resources;
 
+public sealed record BattleResourceRules(ResourceAdapterRegistry Adapters, ResourceSubjectResolverRegistry Subjects);
+
 /// <summary>Canonical account arithmetic; adapters expose storage and resolvers identify holders.</summary>
 public sealed class BattleResources
 {
@@ -12,18 +14,22 @@ public sealed class BattleResources
     public sealed record Cost(string Resource, double Amount);
     public sealed record AccountSnapshot(string Resource, double? Current, double? Capacity);
 
-    public ResourceAdapterRegistry Adapters { get; }
-    public ResourceSubjectResolverRegistry Subjects { get; }
-
-    public BattleResources() : this(DefaultResourcePolicies.Adapters.Clone(), DefaultResourcePolicies.Subjects.Clone()) { }
-
-    public BattleResources(ResourceAdapterRegistry adapters, ResourceSubjectResolverRegistry subjects)
+    public ResourceAdapterRegistry Adapters
     {
-        Adapters = adapters;
-        Subjects = subjects;
+        get;
+    }
+    public ResourceSubjectResolverRegistry Subjects
+    {
+        get;
     }
 
-    public BattleResources Clone() => new(Adapters.Clone(), Subjects.Clone());
+    public BattleResources(BattleResourceRules rules)
+    {
+        Adapters = rules.Adapters;
+        Subjects = rules.Subjects;
+    }
+
+    public BattleResources Clone() => new(new BattleResourceRules(Adapters.Clone(), Subjects.Clone()));
     public BattleResources Seal()
     {
         Adapters.Seal();
@@ -68,7 +74,8 @@ public sealed class BattleResources
 
     private static double Normalize(ResourceAdapter adapter, double requested)
     {
-        if (!double.IsFinite(requested)) throw new DomainInvariantException($"resource \"{adapter.Id}\" amount must be finite");
+        if (!double.IsFinite(requested))
+            throw new DomainInvariantException($"resource \"{adapter.Id}\" amount must be finite");
         var amount = Math.Max(0, requested);
         return adapter.Integer ? StateJson.Round(amount) : amount;
     }
@@ -121,7 +128,8 @@ public sealed class BattleResources
         foreach (var cost in totals)
             if (!CanSpend(subject, cost.Resource, cost.Value))
                 throw new DomainInvariantException($"insufficient resource \"{cost.Resource}\": need {EcmaNumber.Format(cost.Value)}");
-        foreach (var cost in totals) Spend(subject, cost.Resource, cost.Value);
+        foreach (var cost in totals)
+            Spend(subject, cost.Resource, cost.Value);
         return totals;
     }
 
@@ -130,7 +138,8 @@ public sealed class BattleResources
         var (adapter, account) = RequireAccount(subject, resource);
         var amount = Normalize(adapter, requested);
         var snapshot = account.Read();
-        if (snapshot.Current is not { } current || amount <= 0) return 0;
+        if (snapshot.Current is not { } current || amount <= 0)
+            return 0;
         var next = snapshot.Capacity is { } capacity ? Math.Min(capacity, current + amount) : current + amount;
         account.Write(next);
         return next - current;
@@ -140,8 +149,10 @@ public sealed class BattleResources
     {
         var (adapter, account) = RequireAccount(subject, resource);
         var amount = Normalize(adapter, requested);
-        if (account.Read().Current is not { } current || amount <= 0) return 0;
-        if (current < amount) throw new DomainInvariantException($"insufficient resource \"{resource}\": need {EcmaNumber.Format(amount)}");
+        if (account.Read().Current is not { } current || amount <= 0)
+            return 0;
+        if (current < amount)
+            throw new DomainInvariantException($"insufficient resource \"{resource}\": need {EcmaNumber.Format(amount)}");
         account.Write(current - amount);
         return amount;
     }
@@ -149,8 +160,15 @@ public sealed class BattleResources
     public void Announce(Subject subject, string resource, double amount, Action<JsonObject> emit)
     {
         var current = Balance(subject, resource);
-        if (amount == 0 || current is null) return;
-        emit(new JsonObject { ["type"] = "resourceChanged", ["resource"] = resource,
-            ["subject"] = RefOf(subject), ["amount"] = amount, ["current"] = current.Value });
+        if (amount == 0 || current is null)
+            return;
+        emit(new JsonObject
+        {
+            ["type"] = "resourceChanged",
+            ["resource"] = resource,
+            ["subject"] = RefOf(subject),
+            ["amount"] = amount,
+            ["current"] = current.Value
+        });
     }
 }

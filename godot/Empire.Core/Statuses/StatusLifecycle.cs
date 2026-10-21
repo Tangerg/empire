@@ -21,10 +21,12 @@ public sealed class StatusLifecycle(ReadOnlyContent content, StatusBehaviorRegis
                     var maximum = Number(content.Source.Get("units", Text(unit, "type")), "maxHp", 0);
                     var requested = Math.Max(1, Round(maximum * Number(periodic["maxHpFraction"], "maxHpFraction") * Number(instance["stacks"], "stacks")));
                     context.Damage(requested, IsTrue(periodic["nonlethal"]));
-                    if (!Present()) break;
+                    if (!Present())
+                        break;
                 }
                 behaviors.OwnerTurnStart(context);
-                if (!Present()) break;
+                if (!Present())
+                    break;
                 instance["remaining"] = Number(instance["remaining"], "remaining") - 1;
                 if (Number(instance["remaining"], "remaining") <= 0 && Present())
                     StatusTransitions.Remove(unit, Text(instance, "id"), emit);

@@ -17,8 +17,10 @@ internal static class TerrainChecks
         var path = $"res://data/scenes/{id}.json";
         return Godot.FileAccess.FileExists(path) ? AuthoredScene.Load(path) : new AuthoredScene
         {
-            LevelId = id, MapSize = [level["width"]!.GetValue<int>(), level["height"]!.GetValue<int>()],
-            RuntimeReady = false, Title = "No recovered authored scene; canonical terrain projection only."
+            LevelId = id,
+            MapSize = [level["width"]!.GetValue<int>(), level["height"]!.GetValue<int>()],
+            RuntimeReady = false,
+            Title = "No recovered authored scene; canonical terrain projection only."
         };
     }
 
@@ -27,7 +29,7 @@ internal static class TerrainChecks
         var materials = WorldMaterialsManifest.Load();
         var environment = EnvironmentCatalog.Load();
         var levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json");
-        var engine = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
         var riverChecked = false;
         foreach (var level in levels.OfType<JsonObject>())
         {
@@ -90,7 +92,8 @@ internal static class TerrainChecks
         Require(bridges.GetChildCount() > 0, "The c01-02 bridge must use a native source sprite.");
         foreach (var bridge in bridges.GetChildren().OfType<Sprite2D>())
         {
-            if (bridge.GetMeta("axis").AsString() != "horizontal") continue;
+            if (bridge.GetMeta("axis").AsString() != "horizontal")
+                continue;
             var source = materials.Crossings!.Horizontal;
             Require((bridge.Texture.GetSize() * bridge.Scale).IsEqualApprox(new Vector2((float)source.SourceSize[0], (float)source.SourceSize[1])
                 * (float)source.LogicalPerSourcePixel), "Registered crossing must preserve its full original canvas, not stretch by run length.");
@@ -105,9 +108,9 @@ internal static class TerrainChecks
         image.Convert(Image.Format.Rgba8);
         var pixels = image.GetData();
         for (var y = 0; y < size.Y * 64; y++)
-        for (var x = 0; x < size.X * 64; x++)
-            if (!allowed(y / 64 * size.X + x / 64) && pixels[(y * size.X * 64 + x) * 4 + 3] != 0)
-                throw new InvalidOperationException($"{message} Pixel {x},{y}.");
+            for (var x = 0; x < size.X * 64; x++)
+                if (!allowed(y / 64 * size.X + x / 64) && pixels[(y * size.X * 64 + x) * 4 + 3] != 0)
+                    throw new InvalidOperationException($"{message} Pixel {x},{y}.");
     }
 
     private static void CheckOccupancy(Node parent, WorldMaterialsManifest materials, EnvironmentCatalog environment)
@@ -116,7 +119,8 @@ internal static class TerrainChecks
         var waterId = materials.TerrainBindings.First(pair => pair.Value.Connected is { } connection
             && connection.Atlas == replacement.Atlas && connection.Mask == replacement.Mask).Key;
         var tiles = Enumerable.Repeat("plain", 9).ToArray();
-        tiles[4] = waterId; tiles[2] = waterId; // NE-only neighbor: raw mask 2, deliberately not canonical Blob47 mask 0.
+        tiles[4] = waterId;
+        tiles[2] = waterId; // NE-only neighbor: raw mask 2, deliberately not canonical Blob47 mask 0.
         var view = new TerrainView();
         parent.AddChild(view);
         try
@@ -125,8 +129,10 @@ internal static class TerrainChecks
             view.Render(tiles, new Vector2I(3, 3));
             using var actual = view.GetNode<Sprite2D>("ComposedTerrain/Ground/AreaWater").Texture.GetImage();
             using var source = ResourceLoader.Load<Texture2D>(materials.Materials["water-material"].Occupancy!.ResourcePath).GetImage();
-            if (source.IsCompressed()) Require(source.Decompress() == Error.Ok, "Occupancy PNG decompression failed.");
-            actual.Convert(Image.Format.Rgba8); source.Convert(Image.Format.Rgba8);
+            if (source.IsCompressed())
+                Require(source.Decompress() == Error.Ok, "Occupancy PNG decompression failed.");
+            actual.Convert(Image.Format.Rgba8);
+            source.Convert(Image.Format.Rgba8);
             using var center = actual.GetRegion(new Rect2I(64, 64, 64, 64));
             using var expected = source.GetRegion(new Rect2I(2 * 64, 0, 64, 64));
             Require(center.GetData().SequenceEqual(expected.GetData()), "Water must preserve all eight raw neighbor bits and original source alpha.");
@@ -146,8 +152,13 @@ internal static class TerrainChecks
         try
         {
             var source = materials.Crossings!;
-            var forceRegisteredStone = new CrossingManifest { Horizontal = source.Horizontal, Vertical = source.Vertical,
-                Junction = source.Junction, VerticalLegacyIds = ["stone-bridge-vertical"] };
+            var forceRegisteredStone = new CrossingManifest
+            {
+                Horizontal = source.Horizontal,
+                Vertical = source.Vertical,
+                Junction = source.Junction,
+                VerticalLegacyIds = ["stone-bridge-vertical"]
+            };
             var diagnostics = new List<string>();
             CrossingRenderer.Add(parent, forceRegisteredStone, environment, path => ResourceLoader.Load<Texture2D>(path), topology, diagnostics);
             Require(diagnostics.Count == 0 && parent.GetChildCount() == 1 && parent.GetChild(0).GetChildCount() == 2,
@@ -173,8 +184,8 @@ internal static class TerrainChecks
                 path => { requested = true; return ResourceLoader.Load<Texture2D>(path); }, new List<string>());
             Require(count == 0 && !requested, "Changed local terrain must disable authored overlays before loading art.");
             for (var y = 0; y < placement.TerrainSupport.Rows.Length; y++)
-            for (var x = 0; x < placement.TerrainSupport.Rows[y].Length; x++)
-                tiles[(placement.TerrainSupport.Origin[1] + y) * 36 + placement.TerrainSupport.Origin[0] + x] = placement.TerrainSupport.Rows[y][x];
+                for (var x = 0; x < placement.TerrainSupport.Rows[y].Length; x++)
+                    tiles[(placement.TerrainSupport.Origin[1] + y) * 36 + placement.TerrainSupport.Origin[0] + x] = placement.TerrainSupport.Rows[y][x];
             count = EdgeDecorationRenderer.Add(root, manifest, scene.LevelId, new Vector2I(36, 24), tiles,
                 path => ResourceLoader.Load<Texture2D>(path), new List<string>());
             Require(count > 0 && root.HasNode(placement.Id), "An exactly supported source overlay must render.");
@@ -201,5 +212,9 @@ internal static class TerrainChecks
         }
         catch (InvalidOperationException error) when (error.Message.StartsWith("River requires", StringComparison.Ordinal)) { }
     }
-    private static void Require(bool value, string message) { if (!value) throw new InvalidOperationException(message); }
+    private static void Require(bool value, string message)
+    {
+        if (!value)
+            throw new InvalidOperationException(message);
+    }
 }

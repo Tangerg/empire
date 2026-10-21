@@ -30,8 +30,10 @@ public sealed class SplitMixRandom : IRandomSource
 
     public bool Chance(RandomState state, string stream, double percent)
     {
-        if (percent <= 0) return false;
-        if (percent >= 100) return true;
+        if (percent <= 0)
+            return false;
+        if (percent >= 100)
+            return true;
         return Next(state, stream) * 100 < percent;
     }
 

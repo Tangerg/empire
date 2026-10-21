@@ -9,29 +9,83 @@ public sealed record CampaignSummaryText(GameText Messages, BattleText Battle, F
 /// <summary>Detached result-screen projection, never a victory decision or a campaign transition.</summary>
 public sealed class CampaignBattleSummary
 {
-    public string Title { get; }
-    public int Chapter { get; }
-    public string Outcome { get; }
-    public int Turns { get; }
-    public int AlliesRemaining { get; }
-    public int EnemiesRemaining { get; }
-    public IReadOnlyList<string> Fallen { get; }
-    public IReadOnlyList<string> Signals { get; }
-    public int StrikeCount { get; }
-    public string Heading { get; }
-    public string FallenLabel { get; }
-    public string SignalsLabel { get; }
-    public string ContinueLabel { get; }
-    public IReadOnlyList<BattleResultMetric> Metrics { get; }
-    public string FallenText { get; }
-    public string SignalsText { get; }
+    public string Title
+    {
+        get;
+    }
+    public int Chapter
+    {
+        get;
+    }
+    public string Outcome
+    {
+        get;
+    }
+    public int Turns
+    {
+        get;
+    }
+    public int AlliesRemaining
+    {
+        get;
+    }
+    public int EnemiesRemaining
+    {
+        get;
+    }
+    public IReadOnlyList<string> Fallen
+    {
+        get;
+    }
+    public IReadOnlyList<string> Signals
+    {
+        get;
+    }
+    public int StrikeCount
+    {
+        get;
+    }
+    public string Heading
+    {
+        get;
+    }
+    public string FallenLabel
+    {
+        get;
+    }
+    public string SignalsLabel
+    {
+        get;
+    }
+    public string ContinueLabel
+    {
+        get;
+    }
+    public IReadOnlyList<BattleResultMetric> Metrics
+    {
+        get;
+    }
+    public string FallenText
+    {
+        get;
+    }
+    public string SignalsText
+    {
+        get;
+    }
 
     public CampaignBattleSummary(GameText text, string title, int chapter, string outcome, int turns,
         int alliesRemaining, int enemiesRemaining, IEnumerable<string> fallen, IEnumerable<string> signals, int strikeCount)
     {
-        Title = title; Chapter = chapter; Outcome = outcome; Turns = turns;
-        AlliesRemaining = alliesRemaining; EnemiesRemaining = enemiesRemaining; StrikeCount = strikeCount;
-        Fallen = Array.AsReadOnly(fallen.ToArray()); Signals = Array.AsReadOnly(signals.ToArray());
+        Title = title;
+        Chapter = chapter;
+        Outcome = outcome;
+        Turns = turns;
+        AlliesRemaining = alliesRemaining;
+        EnemiesRemaining = enemiesRemaining;
+        StrikeCount = strikeCount;
+        Fallen = Array.AsReadOnly(fallen.ToArray());
+        Signals = Array.AsReadOnly(signals.ToArray());
         Heading = text.Format("ui.result.summary_heading");
         FallenLabel = text.Format("ui.result.fallen_heading");
         SignalsLabel = text.Format("ui.result.signals_heading");

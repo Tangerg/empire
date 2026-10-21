@@ -6,24 +6,32 @@ using Empire.Core.State;
 
 namespace Empire.Core.Tactics;
 
+public sealed record MovementRuleServices(ReadOnlyContent Content, GridRegistry Grids);
+
 public sealed class MovementRules
 {
-    internal StateContent Content { get; }
-    public GridRegistry Grids { get; }
-
-    public MovementRules(ReadOnlyContent catalog, GridRegistry grids)
+    internal StateContent Content
     {
-        ArgumentNullException.ThrowIfNull(catalog);
-        ArgumentNullException.ThrowIfNull(grids);
-        Content = catalog.Source;
-        Grids = grids;
+        get;
+    }
+    public GridRegistry Grids
+    {
+        get;
+    }
+
+    public MovementRules(MovementRuleServices rules)
+    {
+        ArgumentNullException.ThrowIfNull(rules.Content);
+        ArgumentNullException.ThrowIfNull(rules.Grids);
+        Content = rules.Content.Source;
+        Grids = rules.Grids;
     }
 
     public ITacticalGrid Grid(JsonObject state) =>
         Grids.Get(StateJson.Text(StateJson.Object(state["rules"], "rules"), "grid"));
 
     public TacticalBoard Board(JsonObject state) =>
-        new(StateJson.Object(state["map"], "map"), Grid(state));
+        new(Grid(state), StateJson.Object(state["map"], "map"));
 
     public TacticalBattlefield Battlefield(JsonObject state) => new(state, Content);
 
@@ -57,34 +65,42 @@ public sealed class MovementRules
             [start] = new(start, origin.X, origin.Y, 0, -1, true),
         };
         var buckets = new List<int>[checked(budget + 1)];
-        for (var index = 0; index < buckets.Length; index++) buckets[index] = new List<int>();
+        for (var index = 0; index < buckets.Length; index++)
+            buckets[index] = new List<int>();
         buckets[0].Add(start);
         for (var cost = 0; cost <= budget; cost++)
         {
             for (var queueIndex = 0; queueIndex < buckets[cost].Count; queueIndex++)
             {
-                if (!tiles.TryGetValue(buckets[cost][queueIndex], out var node) || node.Cost != cost) continue;
+                if (!tiles.TryGetValue(buckets[cost][queueIndex], out var node) || node.Cost != cost)
+                    continue;
                 var from = board.CoordOf(node.Index);
                 foreach (var next in board.Neighbours(from))
                 {
                     var index = board.IndexOf(next);
                     var traversal = battlefield.TraversalCost(from, next, movementClass);
-                    if (traversal is null) continue;
+                    if (traversal is null)
+                        continue;
                     var blocker = TacticalQueries.UnitAt(state, next);
                     if (blocker is not null && StateJson.Integer(blocker, "id") != unitId)
                     {
                         if (TacticalQueries.AreEnemies(state, StateJson.Integer(blocker, "owner"), owner))
                         {
-                            if (StateJson.IsTrue(rules["enemiesBlockMovement"])) continue;
+                            if (StateJson.IsTrue(rules["enemiesBlockMovement"]))
+                                continue;
                         }
-                        else if (!StateJson.IsTrue(rules["friendlyPassThrough"])) continue;
+                        else if (!StateJson.IsTrue(rules["friendlyPassThrough"]))
+                            continue;
                     }
                     var nextCost = checked(cost + MovementInteger(traversal.Value, "traversal cost"));
-                    if (nextCost > budget) continue;
-                    if (tiles.TryGetValue(index, out var previous) && previous.Cost <= nextCost) continue;
+                    if (nextCost > budget)
+                        continue;
+                    if (tiles.TryGetValue(index, out var previous) && previous.Cost <= nextCost)
+                        continue;
                     tiles[index] = new(index, next.X, next.Y, nextCost, node.Index,
                         blocker is null || StateJson.Integer(blocker, "id") == unitId);
-                    if (!controlled.Contains(index)) buckets[nextCost].Add(index);
+                    if (!controlled.Contains(index))
+                        buckets[nextCost].Add(index);
                 }
             }
         }
@@ -94,20 +110,23 @@ public sealed class MovementRules
     public IReadOnlyList<Coord>? PathTo(MoveField field, JsonObject state, Coord to)
     {
         var board = Board(state);
-        if (!board.Contains(to)) return null;
+        if (!board.Contains(to))
+            return null;
         return field.TracePath(board.IndexOf(to));
     }
 
     public int? MoveCostOf(MoveField field, JsonObject state, Coord to)
     {
         var board = Board(state);
-        if (!board.Contains(to)) return null;
+        if (!board.Contains(to))
+            return null;
         return field.Tiles.TryGetValue(board.IndexOf(to), out var tile) ? tile.Cost : null;
     }
 
     internal static int ControlRadius(StateContent content, JsonObject state, JsonObject unit)
     {
-        if (!StateJson.IsTrue(StateJson.Object(state["rules"], "rules")["zoneOfControl"])) return 0;
+        if (!StateJson.IsTrue(StateJson.Object(state["rules"], "rules")["zoneOfControl"]))
+            return 0;
         var definition = content.Read("units", StateJson.Text(unit, "type"));
         return MovementInteger(Math.Max(0, StateJson.Round(StateJson.Number(definition, "zoneOfControl", 1))), "control radius");
     }
@@ -115,14 +134,17 @@ public sealed class MovementRules
     public IReadOnlySet<int> HostileControlZone(JsonObject state, JsonObject unit)
     {
         var controlled = new HashSet<int>();
-        if (!StateJson.IsTrue(StateJson.Object(state["rules"], "rules")["zoneOfControl"])) return controlled;
+        if (!StateJson.IsTrue(StateJson.Object(state["rules"], "rules")["zoneOfControl"]))
+            return controlled;
         var board = Board(state);
         var owner = StateJson.Integer(unit, "owner");
         foreach (var other in StateJson.Objects(state["units"], "units"))
         {
-            if (!TacticalQueries.AreEnemies(state, StateJson.Integer(other, "owner"), owner)) continue;
+            if (!TacticalQueries.AreEnemies(state, StateJson.Integer(other, "owner"), owner))
+                continue;
             var radius = ControlRadius(Content, state, other);
-            if (radius <= 0) continue;
+            if (radius <= 0)
+                continue;
             foreach (var at in board.Ring(TacticalQueries.Position(other), 1, radius))
                 controlled.Add(board.IndexOf(at));
         }
@@ -138,10 +160,12 @@ public sealed class MovementRules
         for (var index = 1; index < trace.Count - 1; index++)
         {
             var cell = battlefield.Cell(trace[index]);
-            if (!cell.BlocksVision) continue;
+            if (!cell.BlocksVision)
+                continue;
             var progress = (double)index / (trace.Count - 1);
             var rayHeight = fromEye + (targetEye - fromEye) * progress;
-            if (cell.ObstructionTop >= rayHeight) return false;
+            if (cell.ObstructionTop >= rayHeight)
+                return false;
         }
         return true;
     }
@@ -157,7 +181,8 @@ public sealed class MovementRules
 
     private IReadOnlyList<Coord> AttackTilesFrom(JsonObject state, Coord from, int minimum, int maximum, bool direct)
     {
-        if (maximum <= 0) return Array.Empty<Coord>();
+        if (maximum <= 0)
+            return Array.Empty<Coord>();
         return Board(state).Ring(from, minimum, maximum)
             .Where(target => !direct || HasDirectLineOfSight(state, from, target)).ToArray();
     }
@@ -194,7 +219,8 @@ public sealed class MovementRules
             if (structure is null || !StateJson.IsTrue(Content.Read("structures", StateJson.Text(structure, "type")).GetProperty("targetable")))
                 continue;
             var structureOwner = StateJson.Integer(structure, "owner");
-            if (structureOwner == 0 || TacticalQueries.AreEnemies(state, structureOwner, owner)) result.Add(cell);
+            if (structureOwner == 0 || TacticalQueries.AreEnemies(state, structureOwner, owner))
+                result.Add(cell);
         }
         return result;
     }
@@ -208,9 +234,11 @@ public sealed class MovementRules
         {
             var other = TacticalQueries.UnitAt(state, cell);
             if (other is null || StateJson.Integer(other, "id") == id ||
-                !TacticalQueries.AreAllies(state, StateJson.Integer(other, "owner"), owner)) continue;
+                !TacticalQueries.AreAllies(state, StateJson.Integer(other, "owner"), owner))
+                continue;
             var maximum = StateJson.Number(Content.Read("units", StateJson.Text(other, "type")), "maxHp", 0);
-            if (StateJson.Number(other, "hp", 0) < maximum) result.Add(other);
+            if (StateJson.Number(other, "hp", 0) < maximum)
+                result.Add(other);
         }
         return result;
     }

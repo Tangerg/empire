@@ -26,7 +26,8 @@ public sealed class BattlefieldCamera
     public BattlefieldCamera(CameraPoint fieldSize, CameraInsets sceneInsets, CameraPoint initialFocus)
     {
         RequirePoint(fieldSize, nameof(fieldSize));
-        if (fieldSize.X <= 0 || fieldSize.Y <= 0) throw new ArgumentOutOfRangeException(nameof(fieldSize));
+        if (fieldSize.X <= 0 || fieldSize.Y <= 0)
+            throw new ArgumentOutOfRangeException(nameof(fieldSize));
         RequireInsets(sceneInsets, nameof(sceneInsets));
         RequirePoint(initialFocus, nameof(initialFocus));
         this.fieldSize = fieldSize;
@@ -35,8 +36,14 @@ public sealed class BattlefieldCamera
     }
 
     public double Zoom { get; private set; } = InitialZoom;
-    public CameraPoint Scroll { get; private set; }
-    public bool HasViewport { get; private set; }
+    public CameraPoint Scroll
+    {
+        get; private set;
+    }
+    public bool HasViewport
+    {
+        get; private set;
+    }
     public CameraPoint FieldOrigin => new(
         SceneOrigin.X + sceneInsets.Left * Zoom - Scroll.X,
         SceneOrigin.Y + sceneInsets.Top * Zoom - Scroll.Y);
@@ -57,10 +64,12 @@ public sealed class BattlefieldCamera
     {
         RequirePoint(viewportSize, nameof(viewportSize));
         RequireInsets(viewportPadding, nameof(viewportPadding));
-        if (viewportSize.X <= 0 || viewportSize.Y <= 0) return;
+        if (viewportSize.X <= 0 || viewportSize.Y <= 0)
+            return;
         viewport = viewportSize;
         padding = viewportPadding;
-        if (HasViewport) ScrollTo(Scroll);
+        if (HasViewport)
+            ScrollTo(Scroll);
         else
         {
             HasViewport = true;
@@ -71,7 +80,8 @@ public sealed class BattlefieldCamera
     public void CenterOn(CameraPoint fieldPoint)
     {
         RequirePoint(fieldPoint, nameof(fieldPoint));
-        if (!HasViewport) return;
+        if (!HasViewport)
+            return;
         ScrollTo(new CameraPoint(
             SceneOrigin.X + (fieldPoint.X + sceneInsets.Left) * Zoom - UsefulCenter.X,
             SceneOrigin.Y + (fieldPoint.Y + sceneInsets.Top) * Zoom - UsefulCenter.Y));
@@ -80,7 +90,8 @@ public sealed class BattlefieldCamera
     public void Pan(CameraPoint screenDelta)
     {
         RequirePoint(screenDelta, nameof(screenDelta));
-        if (HasViewport) ScrollTo(new CameraPoint(Scroll.X - screenDelta.X, Scroll.Y - screenDelta.Y));
+        if (HasViewport)
+            ScrollTo(new CameraPoint(Scroll.X - screenDelta.X, Scroll.Y - screenDelta.Y));
     }
 
     public void Reveal(CameraPoint fieldPoint, double screenMargin)
@@ -88,7 +99,8 @@ public sealed class BattlefieldCamera
         RequirePoint(fieldPoint, nameof(fieldPoint));
         if (!double.IsFinite(screenMargin) || screenMargin < 0)
             throw new ArgumentOutOfRangeException(nameof(screenMargin));
-        if (!HasViewport) return;
+        if (!HasViewport)
+            return;
         var x = FieldOrigin.X + fieldPoint.X * Zoom;
         var y = FieldOrigin.Y + fieldPoint.Y * Zoom;
         var right = viewport.X - padding.Right;
@@ -97,7 +109,8 @@ public sealed class BattlefieldCamera
         var marginY = Math.Min(screenMargin, Math.Max(0, (bottom - padding.Top) / 2));
         var dx = x - Math.Max(padding.Left + marginX, Math.Min(x, right - marginX));
         var dy = y - Math.Max(padding.Top + marginY, Math.Min(y, bottom - marginY));
-        if (dx != 0 || dy != 0) ScrollTo(new CameraPoint(Scroll.X + dx, Scroll.Y + dy));
+        if (dx != 0 || dy != 0)
+            ScrollTo(new CameraPoint(Scroll.X + dx, Scroll.Y + dy));
     }
 
     public void QueueZoom(double delta)
@@ -113,10 +126,12 @@ public sealed class BattlefieldCamera
         var step = pendingZoom;
         pendingZoom = 0;
         var next = Math.Clamp(Zoom + step, MinimumZoom, MaximumZoom);
-        if (next == Zoom) return false;
+        if (next == Zoom)
+            return false;
         var center = Position;
         Zoom = next;
-        if (HasViewport) CenterOn(center);
+        if (HasViewport)
+            CenterOn(center);
         return true;
     }
 
@@ -133,7 +148,8 @@ public sealed class BattlefieldCamera
 
     private static void RequirePoint(CameraPoint point, string name)
     {
-        if (!double.IsFinite(point.X) || !double.IsFinite(point.Y)) throw new ArgumentOutOfRangeException(name);
+        if (!double.IsFinite(point.X) || !double.IsFinite(point.Y))
+            throw new ArgumentOutOfRangeException(name);
     }
 
     private static void RequireInsets(CameraInsets value, string name)

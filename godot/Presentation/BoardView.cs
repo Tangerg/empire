@@ -10,6 +10,9 @@ using Empire.Core.State;
 
 namespace Empire.Presentation;
 
+public sealed record BoardViewRules(AssetCatalog Assets, EnvironmentCatalog Environment,
+    Func<string?, bool> FacesLeft, Func<string?, Vector2>? DirectionVector);
+
 /// <summary>
 /// Read-only projection of the canonical battle. This node never dispatches an order,
 /// computes legality, advances a turn, or changes a supplied JSON object.
@@ -27,7 +30,7 @@ public partial class BoardView : Node2D
     private DynamicStateView? _dynamicState;
     private AuthoredScene? _scene;
     private EnvironmentCatalog? _environment;
-    private CandidateShadowCache _shadows = new();
+    private ShadowCache _shadows = new();
     private readonly List<StandingEntry> _authoredStanding = new();
     private readonly List<StandingEntry> _standing = new();
     private readonly List<string> _sceneDiagnostics = new();
@@ -39,13 +42,34 @@ public partial class BoardView : Node2D
         "Authored scene is marked runtimeReady=false in the source document." and not
         "Environment catalog is marked runtimeReady=false in the source document.");
     public Vector2 FieldSize => new Vector2(_mapSize.X, _mapSize.Y) * (_assets?.LogicalTileSize ?? 0);
-    public int RenderedUnitCount { get; private set; }
-    public int ProjectionUnitCount { get; private set; }
-    public int RenderedAuthoredPlacementCount { get; private set; }
-    public int RenderedPerimeterPlacementCount { get; private set; }
-    public int RenderedCoverPropCount { get; private set; }
-    public int RenderedStructureCount { get; private set; }
-    public int RenderedMarkerCount { get; private set; }
+    public int RenderedUnitCount
+    {
+        get; private set;
+    }
+    public int ProjectionUnitCount
+    {
+        get; private set;
+    }
+    public int RenderedAuthoredPlacementCount
+    {
+        get; private set;
+    }
+    public int RenderedPerimeterPlacementCount
+    {
+        get; private set;
+    }
+    public int RenderedCoverPropCount
+    {
+        get; private set;
+    }
+    public int RenderedStructureCount
+    {
+        get; private set;
+    }
+    public int RenderedMarkerCount
+    {
+        get; private set;
+    }
     public bool SurfaceReady => _terrain is not null;
 
     public void ConfigureTerrain(WorldMaterialsManifest materials)
@@ -64,12 +88,15 @@ public partial class BoardView : Node2D
 
     public void ConfigureDynamicState(ReadOnlyContent content)
     {
-        _dynamicState = new DynamicStateView(_assets ?? throw new InvalidOperationException("Configure the board before its dynamic state."), content, _shadows);
+        _dynamicState = new DynamicStateView(new(_assets ?? throw new InvalidOperationException("Configure the board before its dynamic state."), content, _shadows));
     }
 
-    public void Configure(AssetCatalog catalog, JsonObject level, AuthoredScene scene,
-        EnvironmentCatalog environment, Func<string?, bool> facesLeft, Func<string?, Vector2>? directionVector = null)
+    public void Configure(BoardViewRules rules, JsonObject level, AuthoredScene scene)
     {
+        var catalog = rules.Assets;
+        var environment = rules.Environment;
+        var facesLeft = rules.FacesLeft;
+        var directionVector = rules.DirectionVector;
         CancelPresentation();
         ArgumentNullException.ThrowIfNull(facesLeft);
         var width = Integer(level, "width");
@@ -89,7 +116,7 @@ public partial class BoardView : Node2D
         staging.AddChild(standing);
         staging.AddChild(frame);
         var entries = new List<StandingEntry>();
-        var shadows = new CandidateShadowCache();
+        var shadows = new ShadowCache();
         var diagnostics = new List<string>();
         var rendered = 0;
         var perimeter = 0;
@@ -105,9 +132,9 @@ public partial class BoardView : Node2D
                         ? CreateTopicPlacement(catalog, topic, placement)
                         : environment.CreateSprite(placement.Id!, (float)placement.Scale,
                             placement.Flip, (float)placement.Opacity, shadows,
-                            placement.StandingShadow ? CandidateShadowKind.Standing : CandidateShadowKind.Environment);
+                            placement.StandingShadow ? ShadowKind.Standing : ShadowKind.Environment);
                     if (placement.TopicId is { } topicId)
-                        sprite.AddChild(CandidateSpriteShadows.Create(sprite, CandidateShadowKind.Topic, catalog.ResolveTopic(topicId).PixelDensity, shadows));
+                        sprite.AddChild(SpriteShadows.Create(sprite, ShadowKind.Topic, catalog.ResolveTopic(topicId).PixelDensity, shadows));
                     sprite.Name = $"Placement_{index}";
                     sprite.Position = new Vector2((float)placement.X * catalog.LogicalTileSize,
                         ((float)placement.Y + 1) * catalog.LogicalTileSize);
@@ -143,7 +170,7 @@ public partial class BoardView : Node2D
                     // Authored frame placements emit is-scene-frame, not the generated
                     // is-frame-left/right/bottom classes. Region names do not select CSS.
                     var sprite = environment.CreateSprite(placement.Id, (float)placement.Scale, placement.Flip,
-                        shadows: shadows, shadowKind: CandidateShadowKind.Foreground);
+                        shadows: shadows, shadowKind: ShadowKind.Foreground);
                     sprite.Name = $"Frame_{index}";
                     sprite.Position = contact * catalog.LogicalTileSize;
                     frame.AddChild(sprite);
@@ -155,7 +182,7 @@ public partial class BoardView : Node2D
                 }
             }
             if (!scene.HasAuthoredFramePlacements)
-                perimeter = CandidateBoardScenery.AddPerimeter(frame, environment, width, height, shadows, diagnostics);
+                perimeter = BoardScenery.AddPerimeter(frame, environment, width, height, shadows, diagnostics);
             if (!scene.RuntimeReady)
                 diagnostics.Add("Authored scene is marked runtimeReady=false in the source document.");
             if (!environment.RuntimeReady)
@@ -186,7 +213,8 @@ public partial class BoardView : Node2D
         _authoredStanding.AddRange(entries);
         _sceneDiagnostics.Clear();
         _sceneDiagnostics.AddRange(diagnostics);
-        foreach (var message in diagnostics) GD.Print($"Scene diagnostic: {message}");
+        foreach (var message in diagnostics)
+            GD.Print($"Scene diagnostic: {message}");
         _diagnostics = diagnostics.AsReadOnly();
         RenderedAuthoredPlacementCount = rendered;
         RenderedPerimeterPlacementCount = perimeter;
@@ -221,14 +249,15 @@ public partial class BoardView : Node2D
             for (var index = 0; index < snapshot.Tiles.Length; index++)
             {
                 var terrain = snapshot.Tiles[index];
-                if (!assets.HasMapStructureBinding(terrain)) continue;
+                if (!assets.HasMapStructureBinding(terrain))
+                    continue;
                 try
                 {
                     var asset = assets.ResolveMapStructure(terrain);
                     var sprite = assets.CreateSprite(asset, snapshot.Owners[index] == 0 ? "normal" : "captured");
                     sprite.Name = "AuthoredSprite";
                     var structure = new Node2D { Name = $"MapStructure_{index}", Position = CellContact(index % _mapSize.X, index / _mapSize.X) };
-                    structure.AddChild(CandidateBoardLighting.CreateStructureContact(new(asset.FrameWidth, asset.FrameHeight), asset.PresentationScale, _shadows));
+                    structure.AddChild(BoardLighting.CreateStructureContact(new(asset.FrameWidth, asset.FrameHeight), asset.PresentationScale, _shadows));
                     structure.AddChild(sprite);
                     if (snapshot.Owners[index] != 0)
                         structure.AddChild(DynamicStateView.CreateOwnerBanner("#" + snapshot.Colors[snapshot.Owners[index]].ToHtml(false), _shadows));
@@ -252,10 +281,11 @@ public partial class BoardView : Node2D
             }
             var cover = new Node2D { Name = "IllustratedCover", ZIndex = -3 };
             staging.AddChild(cover);
-            renderedCover = CandidateBoardScenery.AddCover(cover, canonicalState["map"]!.AsObject(), assets, _shadows, diagnostics);
+            renderedCover = BoardScenery.AddCover(cover, canonicalState["map"]!.AsObject(), assets, _shadows, diagnostics);
             foreach (var unit in snapshot.Units)
             {
-                if (visibleUnitIds is not null && !visibleUnitIds.Contains(unit.Id)) continue;
+                if (visibleUnitIds is not null && !visibleUnitIds.Contains(unit.Id))
+                    continue;
                 try
                 {
                     var asset = assets.ResolveUnit(unit.Type, unit.Key);
@@ -263,15 +293,17 @@ public partial class BoardView : Node2D
                     var actor = new CanvasGroup { Name = $"Unit_{unit.Id}", Position = CellContact(unit.X, unit.Y) };
                     sprite.Name = "AuthoredSprite";
                     // Actor mirroring is around the canonical foot, not the sheet's center.
-                    if (facesLeft(unit.Facing)) sprite.Scale = new Vector2(-sprite.Scale.X, sprite.Scale.Y);
-                    sprite.AddChild(CandidateSpriteShadows.CreateFigure(sprite, snapshot.Colors[unit.Owner], _shadows));
+                    if (facesLeft(unit.Facing))
+                        sprite.Scale = new Vector2(-sprite.Scale.X, sprite.Scale.Y);
+                    sprite.AddChild(SpriteShadows.CreateFigure(sprite, snapshot.Colors[unit.Owner], _shadows));
                     actor.AddChild(sprite);
                     if (_dynamicState is not null)
                         actor.AddChild(_dynamicState.CreateUnitBadges(unit.Type, unit.Hp, unit.Done,
                             snapshot.CaptureProgress[unit.Y * _mapSize.X + unit.X], snapshot.CaptureThreshold,
                             _directionVector?.Invoke(unit.Facing)));
                     actor.SetMeta("unit_id", unit.Id);
-                    if (unit.Key is not null) actor.SetMeta("actor_key", unit.Key);
+                    if (unit.Key is not null)
+                        actor.SetMeta("actor_key", unit.Key);
                     actor.SetMeta("unit_type", unit.Type);
                     actor.SetMeta("owner", unit.Owner);
                     actor.SetMeta("hp", unit.Hp);
@@ -362,7 +394,8 @@ public partial class BoardView : Node2D
         var sprite = catalog.CreateSpriteAtFrame(asset, 0);
         // Topic placements own their authored scale; base presentationScale belongs to map structures.
         sprite.Scale = Vector2.One * ((float)placement.Scale / asset.PixelDensity);
-        if (placement.Flip) sprite.Scale = new Vector2(-sprite.Scale.X, sprite.Scale.Y);
+        if (placement.Flip)
+            sprite.Scale = new Vector2(-sprite.Scale.X, sprite.Scale.Y);
         sprite.Modulate = new Color(1, 1, 1, (float)placement.Opacity);
         return sprite;
     }
@@ -384,13 +417,16 @@ public partial class BoardView : Node2D
         entries.Sort((a, b) =>
         {
             var y = a.Contact.Y.CompareTo(b.Contact.Y);
-            if (y != 0) return y;
+            if (y != 0)
+                return y;
             var x = a.Contact.X.CompareTo(b.Contact.X);
-            if (x != 0) return x;
+            if (x != 0)
+                return x;
             var layer = a.Layer.CompareTo(b.Layer);
             return layer != 0 ? layer : a.Index.CompareTo(b.Index);
         });
-        for (var index = 0; index < entries.Count; index++) entries[index].Node.ZIndex = index;
+        for (var index = 0; index < entries.Count; index++)
+            entries[index].Node.ZIndex = index;
     }
 
     private void ReplaceChild(ref Node2D? previous, Node2D? next)
@@ -401,7 +437,8 @@ public partial class BoardView : Node2D
             previous.QueueFree();
         }
         previous = next;
-        if (next is not null) AddChild(next);
+        if (next is not null)
+            AddChild(next);
     }
 
     private static string Text(JsonObject value, string field) =>
@@ -413,7 +450,8 @@ public partial class BoardView : Node2D
     {
         if (value is not JsonValue scalar || scalar.GetValueKind() != JsonValueKind.Number)
             throw new InvalidOperationException($"Canonical field must be an integer: {field}");
-        if (scalar.TryGetValue<int>(out var integer)) return integer;
+        if (scalar.TryGetValue<int>(out var integer))
+            return integer;
         // Parsed JSON and in-memory factory values may have different CLR numeric types.
         var number = scalar.TryGetValue<double>(out var numeric)
             ? numeric : JsonSerializer.Deserialize<double>(scalar.ToJsonString());
@@ -428,7 +466,8 @@ public partial class BoardView : Node2D
         if (value is not JsonValue scalar || scalar.GetValueKind() != JsonValueKind.Number)
             throw new InvalidOperationException($"Canonical field must be numeric: {field}");
         var number = scalar.TryGetValue<double>(out var numeric) ? numeric : JsonSerializer.Deserialize<double>(scalar.ToJsonString());
-        if (!double.IsFinite(number)) throw new InvalidOperationException($"Canonical field must be finite: {field}");
+        if (!double.IsFinite(number))
+            throw new InvalidOperationException($"Canonical field must be finite: {field}");
         return number;
     }
 

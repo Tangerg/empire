@@ -20,7 +20,7 @@ public partial class CameraIntegrationChecks : Node
     private int assertions;
     private JsonObject level = null!;
     private JsonArray packs = null!;
-    private GrayFlagEngine engine = null!;
+    private BattleEngine engine = null!;
     private GameText text = null!;
     private SessionPresentationText presentation = null!;
     private BattleText battleText = null!;
@@ -34,13 +34,14 @@ public partial class CameraIntegrationChecks : Node
         {
             level = BattleTextChecks.OpeningLevel();
             packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
-            engine = new GrayFlagEngine(packs);
+            engine = new BattleEngine(packs);
             text = GodotTextCatalog.LoadSimplifiedChinese();
             presentation = BattleTextChecks.Session(engine, text);
             battleText = presentation.Battle;
-            screen = new BattleScreen(); AddChild(screen);
+            screen = new BattleScreen();
+            AddChild(screen);
             screen.Board.AdvanceAnimationsAutomatically = false;
-            Bind(new GrayFlagSession(engine, presentation, level));
+            Bind(new GrayFlagSession(new(engine, presentation), level));
             await Layout();
             map = (Control)screen.FindChild("MapArea", true, false);
             world = map.GetNode<Node2D>("World");
@@ -56,8 +57,7 @@ public partial class CameraIntegrationChecks : Node
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
     }
 
-    private void Bind(ITacticalBattleSession session) => screen.BindSession(text, battleText, session, AssetCatalog.Load(), level,
-        AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
+    private void Bind(ITacticalBattleSession session) => screen.BindSession(new(text, battleText, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), _ => false, null)), level, AuthoredScene.Load());
     private async Task Layout()
     {
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
@@ -103,7 +103,7 @@ public partial class CameraIntegrationChecks : Node
 
     private void CheckZoomAndResize()
     {
-        Bind(new GrayFlagSession(engine, presentation, level));
+        Bind(new GrayFlagSession(new(engine, presentation), level));
         GuiButton(MouseButton.Middle, true, new Vector2(250, 200));
         CapturedMove(new Vector2(150, 150));
         CapturedButton(MouseButton.Middle, false, new Vector2(150, 150));
@@ -129,22 +129,26 @@ public partial class CameraIntegrationChecks : Node
         Near(world.Position, before + new Vector2(0, -32), "Native ordinary wheel scrolls one tile-sized screen notch");
         Wheel(MouseButton.WheelRight);
         Near(world.Position, before + new Vector2(-32, -32), "Horizontal wheel scrolls horizontally");
-        for (var i = 0; i < 30; i++) Wheel(MouseButton.WheelUp, ctrl: true);
-        screen._Process(0); Near(world.Scale, Vector2.One * 2.2f, "Maximum zoom clamp");
-        for (var i = 0; i < 40; i++) Wheel(MouseButton.WheelDown, ctrl: true);
-        screen._Process(0); Near(world.Scale, Vector2.One * .5f, "Minimum zoom clamp");
+        for (var i = 0; i < 30; i++)
+            Wheel(MouseButton.WheelUp, ctrl: true);
+        screen._Process(0);
+        Near(world.Scale, Vector2.One * 2.2f, "Maximum zoom clamp");
+        for (var i = 0; i < 40; i++)
+            Wheel(MouseButton.WheelDown, ctrl: true);
+        screen._Process(0);
+        Near(world.Scale, Vector2.One * .5f, "Minimum zoom clamp");
     }
 
     private void CheckCancellation()
     {
-        Bind(new GrayFlagSession(engine, presentation, level));
+        Bind(new GrayFlagSession(new(engine, presentation), level));
         var at = Field(new Vector2(5.5f, 8.5f) * 32);
         GuiButton(MouseButton.Left, true, at);
         screen._Notification((int)Node.NotificationWMWindowFocusOut);
         GuiButton(MouseButton.Left, false, at);
         Require(screen.SelectedUnitId is null, "Window focus loss cancels a pending click");
         GuiButton(MouseButton.Left, true, at);
-        Bind(new GrayFlagSession(engine, presentation, level));
+        Bind(new GrayFlagSession(new(engine, presentation), level));
         GuiButton(MouseButton.Left, false, at);
         Require(screen.SelectedUnitId is null, "Session rebind cancels a pending click");
         Near(world.Scale, Vector2.One * 1.25f, "A new binding starts at the source initial zoom");
@@ -169,11 +173,11 @@ public partial class CameraIntegrationChecks : Node
 
     private void CheckOutsideTerrain()
     {
-        var session = new GrayFlagSession(engine, presentation, level);
+        var session = new GrayFlagSession(new(engine, presentation), level);
         var snapshot = session.GetSnapshot();
         var state = JsonNode.Parse(snapshot.State.GetRawText())!.AsObject();
         state["map"]!["tiles"]![0] = "c01.outside";
-        var outside = GrayFlagSession.FromSave(engine, presentation, engine.SaveBattle(state));
+        var outside = GrayFlagSession.FromSave(new(engine, presentation), engine.SaveBattle(state));
         Bind(outside);
         var materials = WorldMaterialsManifest.Load();
         materials.TerrainTags["c01.outside"] = [];
@@ -210,14 +214,16 @@ public partial class CameraIntegrationChecks : Node
     {
         foreach (var (computer, hidden) in new[] { (false, false), (true, false), (true, true) })
         {
-            var session = new GrayFlagSession(engine, presentation, level);
+            var session = new GrayFlagSession(new(engine, presentation), level);
             var projected = new ProjectedSession(session, computer, hidden);
             Bind(projected);
             GuiButton(MouseButton.Middle, true, new Vector2(100, 100));
             CapturedMove(new Vector2(-10000, -10000));
             CapturedButton(MouseButton.Middle, false, new Vector2(-10000, -10000));
             var previous = world.Position;
-            var exits = 0; var saves = 0; var restarts = 0;
+            var exits = 0;
+            var saves = 0;
+            var restarts = 0;
             screen.BindApplicationActions(() => saves++, null, () => restarts++, () => exits++);
             var exit = Buttons(screen).Single(button => button.Text == "战役营地");
             var save = Buttons(screen).Single(button => button.Text == "保存");
@@ -233,29 +239,32 @@ public partial class CameraIntegrationChecks : Node
                 expected.CenterOn(new((destination.X + .5) * 32, (destination.Y + .5) * 32));
                 Near(during, new((float)expected.FieldOrigin.X, (float)expected.FieldOrigin.Y), "Visible AI command follows the canonical final path point");
             }
-            else Near(during, previous, hidden ? "Hidden AI command cannot reveal its camera location" : "Human movement does not auto-follow");
+            else
+                Near(during, previous, hidden ? "Hidden AI command cannot reveal its camera location" : "Human movement does not auto-follow");
             if (screen.IsPresenting)
             {
                 var revision = session.GetSnapshot().Revision;
-                exit.EmitSignal(Button.SignalName.Pressed); restart.EmitSignal(Button.SignalName.Pressed);
+                exit.EmitSignal(Button.SignalName.Pressed);
+                restart.EmitSignal(Button.SignalName.Pressed);
                 save.EmitSignal(Button.SignalName.Pressed);
                 Require(exits == 0 && restarts == 0 && saves == 1, "Busy exit/restart are blocked while save remains available");
-                Wheel(MouseButton.WheelUp, ctrl: true); screen._Process(0);
+                Wheel(MouseButton.WheelUp, ctrl: true);
+                screen._Process(0);
                 GuiButton(MouseButton.Left, false, new Vector2(150, 150));
                 Near(world.Position, during, "Busy map input cannot move the camera");
                 Require(session.GetSnapshot().Revision == revision && screen.SelectedUnitId is null, "Busy gestures cannot dispatch or select");
                 if (!computer)
                 {
-                    var target=destination;
-                    map.EmitSignal(Control.SignalName.GuiInput,new InputEventMouseMotion { Position=Field(new Vector2(target.X+.5f,target.Y+.5f)*32) });
-                    var hud=(TacticalHud)screen.FindChild("TacticalHud",true,false);
-                    Require(hud.Projection!.Sections.Any(section=>section.Key=="tile") && hud.Projection.Portrait?.ActorKey=="campaign-torren",
+                    var target = destination;
+                    map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = Field(new Vector2(target.X + .5f, target.Y + .5f) * 32) });
+                    var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+                    Require(hud.Projection!.Sections.Any(section => section.Key == "tile") && hud.Projection.Portrait?.ActorKey == "campaign-torren",
                         "Busy pointer motion projects hovered terrain and visible inspection without tactical selection.");
-                    var portrait=hud.Projection.Portrait;
+                    var portrait = hud.Projection.Portrait;
                     map.EmitSignal(Control.SignalName.MouseExited);
-                    Require(!hud.Projection!.Sections.Any(section=>section.Key=="tile")&&hud.Projection.Portrait==portrait,
+                    Require(!hud.Projection!.Sections.Any(section => section.Key == "tile") && hud.Projection.Portrait == portrait,
                         "Busy mouse leave clears cursor terrain but preserves source inspection.");
-                    Require(session.GetSnapshot().Revision==revision&&screen.SelectedUnitId is null,"Busy hover and leave never commit or arm a unit.");
+                    Require(session.GetSnapshot().Revision == revision && screen.SelectedUnitId is null, "Busy hover and leave never commit or arm a unit.");
                 }
 
             }
@@ -264,7 +273,7 @@ public partial class CameraIntegrationChecks : Node
             Require(screen.SelectedUnitId is null, "Presentation start canceled the pre-existing pointer gesture");
             exit.EmitSignal(Button.SignalName.Pressed);
             Require(exits == 1, "Settled camp exit invokes once through the current mounted binding");
-            Bind(new GrayFlagSession(engine, presentation, level));
+            Bind(new GrayFlagSession(new(engine, presentation), level));
             exit.EmitSignal(Button.SignalName.Pressed);
             Require(exits == 1, "An old-binding camp button cannot invoke after a rebind");
         }
@@ -272,14 +281,15 @@ public partial class CameraIntegrationChecks : Node
 
     private void CheckUnmountAndRebind()
     {
-        Bind(new GrayFlagSession(engine, presentation, level));
-        var exits = 0; var restarts = 0;
+        Bind(new GrayFlagSession(new(engine, presentation), level));
+        var exits = 0;
+        var restarts = 0;
         screen.BindApplicationActions(onRestart: () => restarts++, onExit: () => exits++);
         var exit = Buttons(screen).Single(button => button.Text == "战役营地");
         var restart = Buttons(screen).Single(button => button.Text == "重新开始");
         restart.EmitSignal(Button.SignalName.Pressed);
         var confirmation = screen.GetChildren().OfType<ConfirmationDialog>().Single();
-        Bind(new GrayFlagSession(engine, presentation, level));
+        Bind(new GrayFlagSession(new(engine, presentation), level));
         screen.BindApplicationActions(onRestart: () => restarts += 100, onExit: () => exits += 100);
         confirmation.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
         Require(restarts == 0, "A superseded restart dialog cannot invoke the newer binding's callback");
@@ -288,7 +298,8 @@ public partial class CameraIntegrationChecks : Node
         exit.EmitSignal(Button.SignalName.Pressed);
         screen._Input(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = false });
         Require(exits == 0, "Unmounted application callback cannot exit camp");
-        AddChild(screen); Bind(new GrayFlagSession(engine, presentation, level));
+        AddChild(screen);
+        Bind(new GrayFlagSession(new(engine, presentation), level));
         GuiButton(MouseButton.Left, false, Field(new Vector2(5.5f, 8.5f) * 32));
         Require(screen.SelectedUnitId is null, "Reattached screen cannot replay an old held gesture");
         Near(world.Scale, Vector2.One * 1.25f, "Explicit rebind after reattach restores a usable camera");
@@ -297,7 +308,8 @@ public partial class CameraIntegrationChecks : Node
 
     private void Settle()
     {
-        for (var i = 0; i < 100 && screen.IsPresenting; i++) screen.Board.AdvancePresentation(.1);
+        for (var i = 0; i < 100 && screen.IsPresenting; i++)
+            screen.Board.AdvancePresentation(.1);
         Require(!screen.IsPresenting, "Presentation settles before the next order");
     }
     private Vector2 Field(Vector2 point) => world.Position + point * world.Scale;
@@ -308,14 +320,23 @@ public partial class CameraIntegrationChecks : Node
         new InputEventMouseButton { ButtonIndex = button, Pressed = pressed, Position = Global(point) });
     private void CapturedMove(Vector2 point) => screen._Input(new InputEventMouseMotion { Position = Global(point) });
     private void Wheel(MouseButton button, bool ctrl = false, bool meta = false, float factor = 1) =>
-        map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseButton { ButtonIndex = button, Pressed = true,
-            Position = new Vector2(13, 17), CtrlPressed = ctrl, MetaPressed = meta, Factor = factor });
+        map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseButton
+        {
+            ButtonIndex = button,
+            Pressed = true,
+            Position = new Vector2(13, 17),
+            CtrlPressed = ctrl,
+            MetaPressed = meta,
+            Factor = factor
+        });
     private static IEnumerable<Button> Buttons(Node node)
     {
         foreach (var child in node.GetChildren())
         {
-            if (child is Button button) yield return button;
-            foreach (var descendant in Buttons(child)) yield return descendant;
+            if (child is Button button)
+                yield return button;
+            foreach (var descendant in Buttons(child))
+                yield return descendant;
         }
     }
     private void Near(Vector2 actual, Vector2 expected, string message) => Require(actual.DistanceTo(expected) < .002f,
@@ -323,7 +344,8 @@ public partial class CameraIntegrationChecks : Node
     private void Require(bool condition, string message)
     {
         assertions++;
-        if (!condition) throw new InvalidOperationException(message);
+        if (!condition)
+            throw new InvalidOperationException(message);
     }
 
     private sealed class ProjectedSession(GrayFlagSession inner, bool computer, bool hidden) : ITacticalBattleSession
@@ -331,11 +353,15 @@ public partial class CameraIntegrationChecks : Node
         public BattleSnapshot GetSnapshot()
         {
             var snapshot = inner.GetSnapshot();
-            if (snapshot.Transition is not { } original) return snapshot;
+            if (snapshot.Transition is not { } original)
+                return snapshot;
             var transition = new BattlePresentationTransition(original.Revision, original.Before, original.Action,
                 original.Events, original.After, computer, hidden ? new HashSet<int>() : original.BeforeVisibleUnitIds,
                 original.EventDescriptions);
-            return snapshot with { Transition = transition };
+            return snapshot with
+            {
+                Transition = transition
+            };
         }
         public ITacticalSelectionQueries GetTacticalQueries(long binding) => inner.GetTacticalQueries(binding);
         public TacticalHudProjection ProjectHud(TacticalStamp stamp, TacticalSelection selection, BoardCell? cursor, int? inspectId, bool busy) => inner.ProjectHud(stamp, selection, cursor, inspectId, busy);

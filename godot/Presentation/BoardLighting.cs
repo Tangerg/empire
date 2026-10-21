@@ -8,14 +8,14 @@ using Godot;
 namespace Empire.Presentation;
 
 /// <summary>Unpositioned source scenery pieces. The caller owns board depth and lifetime.</summary>
-public sealed record CandidateFieldLighting(Node2D Hearths, Sprite2D Sunlight);
+public sealed record FieldLighting(Node2D Hearths, Sprite2D Sunlight);
 
 /// <summary>Procedural presentation from candidate-01-map-scene.ts, without world-light simulation.</summary>
-public static class CandidateBoardLighting
+public static class BoardLighting
 {
     internal sealed record Pool(Vector2 Centre, float Size, float Strength);
 
-    public static CandidateFieldLighting CreateField(Vector2I mapSize, IReadOnlyList<string> tiles,
+    public static FieldLighting CreateField(Vector2I mapSize, IReadOnlyList<string> tiles,
         WorldMaterialsManifest materials, Texture2D? playableShape = null)
     {
         var pools = Pools(mapSize, tiles, materials);
@@ -35,7 +35,8 @@ public static class CandidateBoardLighting
             }
             var size = new Vector2(mapSize.X * 32, mapSize.Y * 32);
             sunlight = Svg(SunlightMarkup(size), size, "SourceFieldSunlight");
-            if (playableShape is not null) GroundClipper.Apply(sunlight, playableShape, size);
+            if (playableShape is not null)
+                GroundClipper.Apply(sunlight, playableShape, size);
             return new(hearths, sunlight);
         }
         catch { hearths.Free(); sunlight?.Free(); throw; }
@@ -49,42 +50,48 @@ public static class CandidateBoardLighting
         {
             var sprite = OwnedProceduralSprite.Create(contact.Image);
             sprite.Name = "SourceUnitContact";
-            sprite.Centered = false; sprite.ShowBehindParent = true;
-            sprite.Position = contact.Origin; sprite.Scale = Vector2.One / contact.Density;
+            sprite.Centered = false;
+            sprite.ShowBehindParent = true;
+            sprite.Position = contact.Origin;
+            sprite.Scale = Vector2.One / contact.Density;
             sprite.TextureFilter = CanvasItem.TextureFilterEnum.Linear;
             return sprite;
         }
     }
 
-    private static CandidateFilterComposition.Raster UnitContact()
+    private static LayerFilterComposition.Raster UnitContact()
     {
         // CSS overrides the presentation attribute .48 with .62.
-        var contact = CandidateShadowRaster.Ellipse(new Vector2(12.5f, 4.2f), new Color("#0b100d"), .62f, .55f, 2);
+        var contact = ShadowRaster.Ellipse(new Vector2(12.5f, 4.2f), new Color("#0b100d"), .62f, .55f, 2);
         return new(contact.Image, new Vector2(0, -1.8f) - contact.Centre / 2, 2);
     }
 
-    internal static CandidateFilterComposition.Raster UnitBody(Color team)
+    internal static LayerFilterComposition.Raster UnitBody(Color team)
     {
         var contact = UnitContact();
         using var ring = new Image();
         // The source body is an unclipped group. Its ring extends below the 32px
         // tile, so the raster canvas must contain the stroke, not clip it at y=32.
         var error = ring.LoadSvgFromString($"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"36\"><ellipse cx=\"16\" cy=\"29.5\" rx=\"11\" ry=\"2.25\" fill=\"none\" stroke=\"#{team.ToHtml(false)}\" stroke-width=\"1.45\" opacity=\".72\"/></svg>", 2);
-        if (error != Error.Ok) { contact.Image.Dispose(); throw new InvalidOperationException($"Source team ring SVG failed: {error}"); }
+        if (error != Error.Ok)
+        {
+            contact.Image.Dispose();
+            throw new InvalidOperationException($"Source team ring SVG failed: {error}");
+        }
         using (contact.Image)
-            return CandidateFilterComposition.Compose(new[] {
-                new CandidateFilterComposition.Layer(contact.Image, new(contact.Origin, new Vector2(contact.Image.GetWidth(), contact.Image.GetHeight()) / contact.Density)),
-                new CandidateFilterComposition.Layer(ring, new(new Vector2(-16, -31), new Vector2(32, 36))),
+            return LayerFilterComposition.Compose(new[] {
+                new LayerFilterComposition.Layer(contact.Image, new(contact.Origin, new Vector2(contact.Image.GetWidth(), contact.Image.GetHeight()) / contact.Density)),
+                new LayerFilterComposition.Layer(ring, new(new Vector2(-16, -31), new Vector2(32, 36))),
             }, 2);
     }
 
-    public static Sprite2D CreateStructureContact(Vector2 frameSize, float presentationScale, CandidateShadowCache? cache = null)
+    public static Sprite2D CreateStructureContact(Vector2 frameSize, float presentationScale, ShadowCache? cache = null)
     {
         if (!frameSize.IsFinite() || frameSize.X <= 0 || frameSize.Y <= 0 || !float.IsFinite(presentationScale) || presentationScale <= 0)
             throw new ArgumentOutOfRangeException(nameof(frameSize));
-        CandidateFilterComposition.Raster Raster()
+        LayerFilterComposition.Raster Raster()
         {
-            var image = CandidateShadowRaster.Ellipse(frameSize * presentationScale * new Vector2(.32f, .055f), new Color("#28231f"), .22f, 0, 2);
+            var image = ShadowRaster.Ellipse(frameSize * presentationScale * new Vector2(.32f, .055f), new Color("#28231f"), .22f, 0, 2);
             return new(image.Image, -image.Centre / 2, 2);
         }
         Sprite2D sprite;
@@ -96,11 +103,14 @@ public static class CandidateBoardLighting
         else
         {
             var raster = Raster();
-            using (raster.Image) sprite = OwnedProceduralSprite.Create(raster.Image);
-            sprite.Position = raster.Origin; sprite.Scale = Vector2.One / raster.Density;
+            using (raster.Image)
+                sprite = OwnedProceduralSprite.Create(raster.Image);
+            sprite.Position = raster.Origin;
+            sprite.Scale = Vector2.One / raster.Density;
         }
         sprite.Name = "SourceStructureContact";
-        sprite.Centered = false; sprite.ShowBehindParent = true;
+        sprite.Centered = false;
+        sprite.ShowBehindParent = true;
         sprite.TextureFilter = CanvasItem.TextureFilterEnum.Linear;
         return sprite;
     }
@@ -112,15 +122,17 @@ public static class CandidateBoardLighting
         if (!materials.GroundTagFamilies.TryGetValue("settlement", out var settlement))
             throw new InvalidOperationException("Settlement tag family is absent from the material export.");
         var pools = new List<Pool>();
-        for (var y = 0; y < size.Y; y++) for (var x = 0; x < size.X; x++)
-        {
-            var id = tiles[y * size.X + x];
-            if (!materials.TerrainTags.TryGetValue(id, out var tags))
-                throw new InvalidOperationException($"Terrain tags are absent for {id}.");
-            var living = tags.Intersect(settlement, StringComparer.Ordinal).Any();
-            var bridgeHead = id == "bridge" && (y == 0 || tiles[(y - 1) * size.X + x] != "bridge");
-            if (living || bridgeHead) pools.Add(new(new Vector2((x + .5f) * 32, (y + .62f) * 32), living ? 3 : 2, living ? .26f : .18f));
-        }
+        for (var y = 0; y < size.Y; y++)
+            for (var x = 0; x < size.X; x++)
+            {
+                var id = tiles[y * size.X + x];
+                if (!materials.TerrainTags.TryGetValue(id, out var tags))
+                    throw new InvalidOperationException($"Terrain tags are absent for {id}.");
+                var living = tags.Intersect(settlement, StringComparer.Ordinal).Any();
+                var bridgeHead = id == "bridge" && (y == 0 || tiles[(y - 1) * size.X + x] != "bridge");
+                if (living || bridgeHead)
+                    pools.Add(new(new Vector2((x + .5f) * 32, (y + .62f) * 32), living ? 3 : 2, living ? .26f : .18f));
+            }
         return pools;
     }
 
@@ -131,10 +143,13 @@ public static class CandidateBoardLighting
     {
         using var image = new Image();
         var error = image.LoadSvgFromString($"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{F(size.X)}\" height=\"{F(size.Y)}\" viewBox=\"0 0 {F(size.X)} {F(size.Y)}\">{body}</svg>", 2);
-        if (error != Error.Ok) throw new InvalidOperationException($"Source lighting SVG failed: {error}");
+        if (error != Error.Ok)
+            throw new InvalidOperationException($"Source lighting SVG failed: {error}");
         var sprite = OwnedProceduralSprite.Create(image);
-        sprite.Name = name; sprite.Centered = false;
-        sprite.Scale = Vector2.One / 2; sprite.TextureFilter = CanvasItem.TextureFilterEnum.Linear;
+        sprite.Name = name;
+        sprite.Centered = false;
+        sprite.Scale = Vector2.One / 2;
+        sprite.TextureFilter = CanvasItem.TextureFilterEnum.Linear;
         return sprite;
     }
 

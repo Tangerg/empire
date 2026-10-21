@@ -101,20 +101,28 @@ internal sealed partial class BattleSaveInspection
                 ("resources", StoredKind.Object), ("objectives", StoredKind.Array), ("objectiveStates", StoredKind.Object), ("ai", StoredKind.Object));
         foreach (var player in players)
         {
-            if (player.ContainsKey("name")) StoredSchema.Reject("Player names belong to presentation metadata, not battle state.");
+            if (player.ContainsKey("name"))
+                StoredSchema.Reject("Player names belong to presentation metadata, not battle state.");
             RequireAccounts(player["resources"], $"玩家 {player["id"]}");
-            foreach (var objective in StateJson.Objects(player["objectives"], "objectives")) RequireNativeObjective(objective);
+            foreach (var objective in StateJson.Objects(player["objectives"], "objectives"))
+                RequireNativeObjective(objective);
         }
         var owners = players.Select(player => StateJson.Integer(player, "id")).ToHashSet();
         if (owners.Count != players.Length || !owners.Contains(StateJson.Integer(state, "currentPlayer")))
             StoredSchema.Reject("玩家标识或当前玩家不合法");
-        try { _ = BattleConclusion.FromState(state); }
+        try
+        {
+            _ = BattleConclusion.FromState(state);
+        }
         catch (DomainInvariantException error)
-        { throw new StoredDocumentException("Saved battle conclusion is invalid.", error); }
+        {
+            throw new StoredDocumentException("Saved battle conclusion is invalid.", error);
+        }
         if (StateJson.Text(state["rules"]!.AsObject(), "turnOrder") != StateJson.Text(state["turnOrder"]!.AsObject(), "policy"))
             StoredSchema.Reject("行动顺序与关卡规则不一致");
         var seed = StateJson.Number(state["random"]!["seed"], "seed");
-        if (seed < 0 || seed > uint.MaxValue || seed != Math.Truncate(seed)) StoredSchema.Reject("随机流种子不合法");
+        if (seed < 0 || seed > uint.MaxValue || seed != Math.Truncate(seed))
+            StoredSchema.Reject("随机流种子不合法");
         foreach (var counter in state["random"]!["counters"]!.AsObject())
             if (!StoredSchema.Matches(counter.Value, StoredKind.Integer) || StateJson.Number(counter.Value, "counter") < 0)
                 StoredSchema.Reject("随机流计数器不合法");
@@ -136,7 +144,8 @@ internal sealed partial class BattleSaveInspection
                 StoredSchema.Reject("单位标识不合法");
             if (unit["key"] is { } key && StateJson.Text(key, "unit key") is { Length: > 0 } text && !keys.Add(text))
                 StoredSchema.Reject("存活单位的键重复");
-            if (StateJson.Number(unit["hp"], "hp") <= 0) StoredSchema.Reject("存活单位生命值不合法");
+            if (StateJson.Number(unit["hp"], "hp") <= 0)
+                StoredSchema.Reject("存活单位生命值不合法");
         }
         foreach (var pending in StateJson.Objects(state["pendingCasts"], "pendingCasts"))
         {
@@ -146,13 +155,16 @@ internal sealed partial class BattleSaveInspection
                 StoredSchema.Reject("咏唱结算时刻不合法");
         }
         var limitations = environment.StructuralGuards.StateIssues(state).ToArray();
-        if (limitations.Length > 0) StoredSchema.Reject(string.Join("；", limitations));
+        if (limitations.Length > 0)
+            StoredSchema.Reject(string.Join("；", limitations));
     }
 
     private void RequireNativeObjective(JsonObject objective)
     {
         var faults = environment.Rules.Objectives.References(objective).Faults;
-        if (faults.Count > 0) StoredSchema.Reject(string.Join("；", faults));
-        foreach (var child in environment.Rules.Objectives.Children(objective)) RequireNativeObjective(child);
+        if (faults.Count > 0)
+            StoredSchema.Reject(string.Join("；", faults));
+        foreach (var child in environment.Rules.Objectives.Children(objective))
+            RequireNativeObjective(child);
     }
 }

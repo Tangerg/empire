@@ -31,7 +31,7 @@ output="$1"
 mkdir -p "$output/logs" "$output/tmp" "$output/cache" "$output/package"
 # Own the export temporary directory. Do not touch another build or any user save.
 export TMPDIR="$output/tmp" XDG_CACHE_HOME="$output/cache"
-timeout --signal=TERM --kill-after=30s 20m dotnet build godot/Empire.csproj --nologo 2>&1 | tee "$output/logs/build.log"
+timeout --signal=TERM --kill-after=30s 20m dotnet build godot/Empire.csproj --nologo --disable-build-servers -m:1 -p:UseSharedCompilation=false 2>&1 | tee "$output/logs/build.log"
 timeout --signal=TERM --kill-after=30s 15m "$GODOT_NET" --headless --editor --path godot --import 2>&1 | tee "$output/logs/import.log"
 archive="$output/Empire-macos-universal-UNTESTED.zip"
 timeout --signal=TERM --kill-after=30s 30m "$GODOT_NET" --headless --path godot --export-release 'macOS Universal (UNTESTED)' "$output/package/Empire.app" 2>&1 | tee "$output/logs/export.log"

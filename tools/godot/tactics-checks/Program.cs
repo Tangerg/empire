@@ -10,7 +10,7 @@ var root = Path.GetFullPath(args.Length > 0 ? args[0] : ".");
 JsonNode Read(string path) => JsonNode.Parse(File.ReadAllText(Path.Combine(root, path)))!;
 var packs = Read("godot/data/content-packs.json").AsArray();
 var engine = BattleEngineFactory.Create(new ReadOnlyContent(packs));
-var movement = new MovementRules(engine.Catalog, engine.Grids);
+var movement = new MovementRules(new MovementRuleServices(engine.Catalog, engine.Grids));
 var directives = engine.Directives;
 var cases = Read("godot/tests/oracle/action-cases.json").AsArray();
 var passed = 0;
@@ -18,27 +18,37 @@ var failed = 0;
 
 void Check(string name, Action test)
 {
-    try { test(); passed++; }
+    try
+    {
+        test();
+        passed++;
+    }
     catch (Exception error) { failed++; Console.Error.WriteLine($"FAIL {name}: {error}"); }
 }
 
 void EqualJson(JsonNode? expected, JsonNode? actual, string subject)
 {
-    if (expected is null && actual is null) return;
+    if (expected is null && actual is null)
+        return;
     if (expected is null || actual is null || StateDigest.Hash(expected) != StateDigest.Hash(actual))
         throw new Exception($"{subject} mismatch\nExpected: {expected}\nActual: {actual}");
 }
 
 void Throws<T>(Action action) where T : Exception
 {
-    try { action(); } catch (T) { return; }
+    try
+    {
+        action();
+    }
+    catch (T) { return; }
     throw new Exception($"Expected {typeof(T).Name}");
 }
 
 JsonArray Integers(IEnumerable<int> values)
 {
     var result = new JsonArray();
-    foreach (var value in values) result.Add(value);
+    foreach (var value in values)
+        result.Add(value);
     return result;
 }
 
@@ -81,8 +91,12 @@ foreach (var vector in vectors.OfType<JsonObject>())
         foreach (var tile in field.Tiles.Values)
             tiles.Add(new JsonObject
             {
-                ["index"] = tile.Index, ["x"] = tile.X, ["y"] = tile.Y,
-                ["cost"] = tile.Cost, ["from"] = tile.From, ["free"] = tile.Free,
+                ["index"] = tile.Index,
+                ["x"] = tile.X,
+                ["y"] = tile.Y,
+                ["cost"] = tile.Cost,
+                ["from"] = tile.From,
+                ["free"] = tile.Free,
             });
         EqualJson(vector["tiles"], tiles, "ordered reachable tiles");
         EqualJson(vector["stops"], Integers(field.Stops), "ordered stopping points");
@@ -102,7 +116,8 @@ foreach (var vector in vectors.OfType<JsonObject>())
         foreach (var sight in vector["lineOfSight"]!.AsArray().OfType<JsonObject>())
             if (movement.HasDirectLineOfSight(state, origin, Point(sight["at"]!)) != sight["visible"]!.GetValue<bool>())
                 throw new Exception("line of sight mismatch");
-        if (StateDigest.Hash(state) != before) throw new Exception("tactical query mutated state");
+        if (StateDigest.Hash(state) != before)
+            throw new Exception("tactical query mutated state");
     });
 }
 Console.WriteLine($"Checked {vectors.Count} ordered movement, targeting, sight and threat vectors.");
@@ -121,8 +136,10 @@ foreach (var vector in directiveVectors.OfType<JsonObject>())
         if (directives.Engagement(unit) != vector["engagement"]!.GetValue<double>() ||
             directives.FightPenalty(unit) != vector["fightPenalty"]!.GetValue<double>())
             throw new Exception("directive combat factors mismatch");
-        if (StateDigest.Hash(state) != before) throw new Exception("directive appraisal mutated state");
-        foreach (var at in vector["arrivalPath"]!.AsArray()) directives.ArriveAt(unit, Point(at!));
+        if (StateDigest.Hash(state) != before)
+            throw new Exception("directive appraisal mutated state");
+        foreach (var at in vector["arrivalPath"]!.AsArray())
+            directives.ArriveAt(unit, Point(at!));
         EqualJson(vector["afterDirective"], unit["directive"], "directive arrival");
     });
 }
@@ -139,9 +156,13 @@ Check("directive registry extension, replacement, clone and seal", () =>
         registry.Engagement(unit) != 0.5 || registry.FightPenalty(unit) != -20)
         throw new Exception("custom directive not dispatched");
     registry.ArriveAt(unit, new Coord(3, 0));
-    if (unit["capture"]!.GetValue<int>() != 3) throw new Exception("custom arrival not dispatched");
+    if (unit["capture"]!.GetValue<int>() != 3)
+        throw new Exception("custom arrival not dispatched");
     Throws<DomainInvariantException>(() => registry.Register(custom));
-    registry.Replace(custom with { Engagement = 0.8 });
+    registry.Replace(custom with
+    {
+        Engagement = 0.8
+    });
     if (registry.Engagement(unit) != 0.8 || directives.Has(custom.Id))
         throw new Exception("registry replacement or clone isolation failed");
     registry.Seal();
@@ -183,7 +204,8 @@ Check("wait replacement uses the composed ability owner", () =>
     var before = StateDigest.Hash(state);
     Throws<IllegalActionException>(() => customized.AbilityCommands.Execute(state, action,
         _ => throw new Exception("rejected wait emitted an event")));
-    if (StateDigest.Hash(state) != before) throw new Exception("rejected wait mutated state");
+    if (StateDigest.Hash(state) != before)
+        throw new Exception("rejected wait mutated state");
 });
 void Reject(string name, Action<JsonObject, JsonObject> edit)
 {
@@ -194,7 +216,8 @@ void Reject(string name, Action<JsonObject, JsonObject> edit)
         edit(state, action);
         var before = StateDigest.Hash(state);
         Throws<IllegalActionException>(() => engine.AbilityCommands.Execute(state, action, _ => throw new Exception("rejection emitted an event")));
-        if (StateDigest.Hash(state) != before) throw new Exception("rejection mutated state");
+        if (StateDigest.Hash(state) != before)
+            throw new Exception("rejection mutated state");
     });
 }
 Reject("empty path", (_, action) => action["path"] = new JsonArray());
@@ -251,7 +274,8 @@ Check("off-board destination cannot alias a reachable flattened index", () =>
             ["command"] = new JsonObject { ["ability"] = "wait" },
         };
         Throws<IllegalActionException>(() => engine.AbilityCommands.Execute(state, action, _ => throw new Exception("rejection emitted an event")));
-        if (StateDigest.Hash(state) != before) throw new Exception("off-board rejection mutated state");
+        if (StateDigest.Hash(state) != before)
+            throw new Exception("off-board rejection mutated state");
     }
 });
 Console.WriteLine($"Tactical checks: {passed} passed, {failed} failed.");

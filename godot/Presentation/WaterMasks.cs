@@ -12,7 +12,8 @@ internal static class WaterMasks
 {
     internal static Image Rasterize(int width, int height, string geometry)
     {
-        if (width <= 0 || height <= 0) throw new InvalidOperationException("Mask extent must be positive.");
+        if (width <= 0 || height <= 0)
+            throw new InvalidOperationException("Mask extent must be positive.");
         var image = new Image();
         var error = image.LoadSvgFromString($"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{width * 32}\" height=\"{height * 32}\">{geometry}</svg>", 2);
         if (error != Error.Ok)
@@ -30,11 +31,13 @@ internal static class WaterMasks
         var cells = new List<BoardCell>();
         var allowed = new List<BoardCell>();
         for (var y = 0; y < height; y++)
-        for (var x = 0; x < width; x++)
-        {
-            if (occupied(x, y)) cells.Add(new BoardCell(x, y));
-            if (bank ? bankAllowed(x, y) : occupied(x, y)) allowed.Add(new BoardCell(x, y));
-        }
+            for (var x = 0; x < width; x++)
+            {
+                if (occupied(x, y))
+                    cells.Add(new BoardCell(x, y));
+                if (bank ? bankAllowed(x, y) : occupied(x, y))
+                    allowed.Add(new BoardCell(x, y));
+            }
         var rim = (profile.BankWidth - profile.Width) / 2;
         var limits = string.Concat(cells.Select(cell => $"<rect x=\"{N(cell.X * 32 - rim)}\" y=\"{N(cell.Y * 32 - rim)}\" width=\"{N(32 + rim * 2)}\" height=\"{N(32 + rim * 2)}\" rx=\"{N(rim)}\"/>"));
         var path = profile.Widths is { } widths
@@ -55,8 +58,10 @@ internal static class WaterMasks
             for (var x = 0; x <= width; x++)
             {
                 var filled = x < width && !outside(x, y);
-                if (filled && start is null) start = x;
-                if (filled || start is not { } first) continue;
+                if (filled && start is null)
+                    start = x;
+                if (filled || start is not { } first)
+                    continue;
                 var left = first * 32;
                 var right = x * 32;
                 var top = y * 32;

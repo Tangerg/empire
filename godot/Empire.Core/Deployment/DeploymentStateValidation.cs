@@ -11,10 +11,12 @@ public static class DeploymentStateValidation
         var deploying = StateJson.Text(state, "phase") == "deployment";
         if (state["deployment"] is null)
         {
-            if (deploying) yield return "部署阶段缺少部署状态";
+            if (deploying)
+                yield return "部署阶段缺少部署状态";
             yield break;
         }
-        if (!deploying) yield return "战斗开始后仍有部署状态";
+        if (!deploying)
+            yield return "战斗开始后仍有部署状态";
         var deployment = StateJson.Object(state["deployment"], "deployment");
         var order = StateJson.Array(deployment["order"], "deployment order")
             .Select(id => StateJson.Integer(id, "deployment player")).ToArray();
@@ -35,21 +37,25 @@ public static class DeploymentStateValidation
         {
             var player = StateJson.Integer(assignment, "player");
             assignedPlayers.Add(player);
-            if (!players.Contains(player)) yield return "部署编组引用未知玩家";
+            if (!players.Contains(player))
+                yield return "部署编组引用未知玩家";
             var zoneId = StateJson.Text(assignment, "zone");
-            if (zones[zoneId] is not JsonArray zone) yield return $"部署区域「{zoneId}」缺失或损坏";
+            if (zones[zoneId] is not JsonArray zone)
+                yield return $"部署区域「{zoneId}」缺失或损坏";
             else
                 foreach (var cell in StateJson.Objects(zone, "deployment zone"))
                 {
                     var x = StateJson.Integer(cell, "x");
                     var y = StateJson.Integer(cell, "y");
-                    if (x < 0 || y < 0 || x >= width || y >= height) yield return $"部署区域「{zoneId}」越界";
+                    if (x < 0 || y < 0 || x >= width || y >= height)
+                        yield return $"部署区域「{zoneId}」越界";
                 }
             foreach (var id in StateJson.Array(assignment["unitIds"], "deployment unit IDs").Select(id => StateJson.Integer(id, "unit ID")))
                 if (!assigned.Add(id) || !units.TryGetValue(id, out var unit) || StateJson.Integer(unit, "owner") != player)
                     yield return $"部署单位 {id} 重复、缺失或所属玩家不符";
         }
-        if (order.Any(player => !assignedPlayers.Contains(player))) yield return "部署顺序中的玩家没有部署编组";
+        if (order.Any(player => !assignedPlayers.Contains(player)))
+            yield return "部署顺序中的玩家没有部署编组";
         // Empty assignments, overlapping zones and units initially outside their zones are all source-valid.
     }
 }

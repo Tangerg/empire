@@ -27,7 +27,7 @@ void Equal(JsonNode? actual, JsonNode? expected, string name)
 foreach (var item in fixture["cases"]!.AsArray().OfType<JsonObject>())
 {
     var mode = item["mode"]!.GetValue<string>();
-    var engine = new GrayFlagEngine(packs);
+    var engine = new BattleEngine(packs);
     var hooks = new StatusBehaviorRegistry().Register(new("test-hook", context =>
     {
         context.State["scenario"]!["variables"]!["sameContent"] = ReferenceEquals(context.Content, engine.Catalog);
@@ -37,14 +37,17 @@ foreach (var item in fixture["cases"]!.AsArray().OfType<JsonObject>())
             var amount = context.Damage(mode is "kill" or "nonlethal" ? 100000 : mode == "zero" ? 0 : mode == "negative" ? -3 : 3, mode == "nonlethal");
             context.State["scenario"]!["variables"]!["damageResult"] = amount;
         }
-        if (mode == "remove") StatusTransitions.Remove(context.Unit, "test-hook", context.Emit);
+        if (mode == "remove")
+            StatusTransitions.Remove(context.Unit, "test-hook", context.Emit);
         if (mode == "replace-status")
         {
             StatusTransitions.Remove(context.Unit, "test-hook", context.Emit);
             StatusTransitions.Add(engine.Catalog, context.Unit, "test-hook", 7, null, context.Emit);
         }
-        if (mode == "append-status") StatusTransitions.Add(engine.Catalog, context.Unit, "test-next", 4, null, context.Emit);
-        if (mode == "remove-later") StatusTransitions.Remove(context.Unit, "test-next", context.Emit);
+        if (mode == "append-status")
+            StatusTransitions.Add(engine.Catalog, context.Unit, "test-next", 4, null, context.Emit);
+        if (mode == "remove-later")
+            StatusTransitions.Remove(context.Unit, "test-next", context.Emit);
         if (mode == "replace-unit")
         {
             var units = context.State["units"]!.AsArray();
@@ -53,10 +56,14 @@ foreach (var item in fixture["cases"]!.AsArray().OfType<JsonObject>())
             units[index]!["hp"] = 20;
         }
     })).Register(new("test-next", context => context.Emit(new JsonObject
-    { ["type"] = "scenarioSignal", ["signal"] = $"next:{context.Status["remaining"]!.GetValue<double>()}" })));
+    {
+        ["type"] = "scenarioSignal",
+        ["signal"] = $"next:{context.Status["remaining"]!.GetValue<double>()}"
+    })));
     var statuses = new StatusLifecycle(engine.Catalog, hooks, engine.Combat);
     var state = item["before"]!.DeepClone().AsObject();
-    var events = new JsonArray(); string? error = null;
+    var events = new JsonArray();
+    string? error = null;
     void Emit(JsonObject value) => events.Add(value.DeepClone());
     try
     {
@@ -65,8 +72,9 @@ foreach (var item in fixture["cases"]!.AsArray().OfType<JsonObject>())
             var rules = new ActionRules(engine.Commands, engine.Deployment, engine.Transport, engine.Progression,
                 engine.AbilityCommands, engine.Recruitment, engine.Support, engine.Combat,
                 (draft, emit) => new BattleLifecycle(new BattleLifecycleRules(engine.Catalog, engine.Turns, engine.Scenarios, engine.Victory, engine.Combat, engine.Resources, statuses), draft, emit));
-            var battle = new Battle(state, DefaultActionHandlers.Create(), new ActionExecutionPipeline(rules));
-            foreach (var value in battle.Dispatch(new JsonObject { ["kind"] = "endTurn" }).Events) Emit(value);
+            var battle = new Battle(new BattleTransactionRules(DefaultActionHandlers.Create(), new ActionExecutionPipeline(rules)), state);
+            foreach (var value in battle.Dispatch(new JsonObject { ["kind"] = "endTurn" }).Events)
+                Emit(value);
             state = battle.Snapshot();
         }
         else

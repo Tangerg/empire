@@ -5,10 +5,11 @@ namespace Empire.Presentation;
 
 public partial class BoardView
 {
-    internal CandidateShadowCache LightingResources => _shadows;
+    internal ShadowCache LightingResources => _shadows;
 
     public override void _Notification(int what)
     {
-        if (what == NotificationPredelete) _shadows.Dispose();
+        if (what == NotificationPredelete)
+            _shadows.Dispose();
     }
 }

@@ -9,7 +9,10 @@ namespace Empire.Presentation;
 
 public sealed class MissingArtResourceException : InvalidOperationException
 {
-    public string Resource { get; }
+    public string Resource
+    {
+        get;
+    }
 
     public MissingArtResourceException(string resource, string message) : base(message) =>
         Resource = resource;
@@ -48,7 +51,10 @@ public sealed class AssetCatalog
     private readonly string? _healEffect;
     private readonly RasterResources _rasters = new();
 
-    public int LogicalTileSize { get; }
+    public int LogicalTileSize
+    {
+        get;
+    }
 
     public AssetCatalog(AssetManifest manifest, ArtBindings bindings)
     {
@@ -149,20 +155,23 @@ public sealed class AssetCatalog
             asset.Anchor, asset.PixelDensity, asset.PresentationScale);
         sprite.SetMeta("art_identity", asset.Identity);
         sprite.SetMeta("topic_id", asset.TopicId);
-        if (asset.Footprint is { } footprint) sprite.SetMeta("visual_footprint", footprint);
+        if (asset.Footprint is { } footprint)
+            sprite.SetMeta("visual_footprint", footprint);
         return sprite;
     }
 
     public static int FrameIndex(RuntimeAsset asset, string frameRole)
     {
         for (var index = 0; index < asset.FrameOrder.Count; index++)
-            if (asset.FrameOrder[index] == frameRole) return index;
+            if (asset.FrameOrder[index] == frameRole)
+                return index;
         throw new InvalidOperationException($"Asset {asset.Identity} has no declared '{frameRole}' frame.");
     }
 
     private RuntimeAsset ResolveBinding(string topicId, string? variantId)
     {
-        if (variantId is null) return ResolveTopic(topicId);
+        if (variantId is null)
+            return ResolveTopic(topicId);
         if (!_variants.TryGetValue(variantId, out var asset))
             throw new MissingArtResourceException(variantId,
                 $"Named art variant not included in selected-assets.json: {variantId} ({topicId})");
@@ -241,7 +250,8 @@ internal sealed class RasterResources
         if (texture.GetWidth() != physicalWidth || texture.GetHeight() != physicalHeight)
             throw new InvalidOperationException($"Texture dimensions differ from manifest: {path}; expected {physicalWidth}x{physicalHeight}, got {texture.GetWidth()}x{texture.GetHeight()}.");
         var key = (path, index, width, height, columns, density);
-        if (_frames.TryGetValue(key, out var cached)) return cached;
+        if (_frames.TryGetValue(key, out var cached))
+            return cached;
         var frame = new AtlasTexture
         {
             Atlas = texture,
@@ -273,7 +283,8 @@ internal sealed class RasterResources
 
     public static Vector2I? Footprint(int[]? values, string identity)
     {
-        if (values is null) return null;
+        if (values is null)
+            return null;
         if (values.Length != 2 || values.Any(value => value <= 0))
             throw new InvalidOperationException($"Invalid visual footprint: {identity}");
         return new Vector2I(values[0], values[1]);

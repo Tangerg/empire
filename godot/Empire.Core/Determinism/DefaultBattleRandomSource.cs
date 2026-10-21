@@ -23,7 +23,8 @@ public sealed class DefaultBattleRandomSource : IBattleRandomSource
         var result = query(stream);
         stored["seed"] = stream.Seed;
         counters.Clear();
-        foreach (var counter in stream.Counters) counters[counter.Key] = counter.Value;
+        foreach (var counter in stream.Counters)
+            counters[counter.Key] = counter.Value;
         return result;
     }
 }

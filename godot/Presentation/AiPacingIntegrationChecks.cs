@@ -35,7 +35,8 @@ public partial class AiPacingIntegrationChecks : Node
             {
                 if (campaign.Node()["type"]!.GetValue<string>() == "choice")
                     campaign.Choose(campaign.Choices()[0]!["id"]!.GetValue<string>());
-                else campaign.Advance();
+                else
+                    campaign.Advance();
             }
             campaign.BeginBattle();
             Invoke(game, "ShowBattle", (object?)null);
@@ -53,7 +54,8 @@ public partial class AiPacingIntegrationChecks : Node
             var pacer = Field<AiTurnPacer>(game, "computerPacer");
             Require(pacer.IsRunning && screen.IsInputBlocked, "Actual AI did not establish application busy.");
             var hadAnimation = screen.IsPresenting;
-            for (var i = 0; i < 500 && screen.IsPresenting; i++) screen.Board.AdvancePresentation(0.1);
+            for (var i = 0; i < 500 && screen.IsPresenting; i++)
+                screen.Board.AdvancePresentation(0.1);
             Require(!screen.IsPresenting && screen.IsInputBlocked, "Settled animation released AI-loop busy too early.");
             var pause = session.LastActionHandsOffTurn == true ? 120 : 90;
             var settlement = hadAnimation ? 1000d : 0d;
@@ -62,8 +64,10 @@ public partial class AiPacingIntegrationChecks : Node
                 "Settlement did not begin the separate post-animation pause.");
             var messages = screen.RecentMessages.ToArray();
             var feedback = Field<Label>(screen, "_feedback").Text;
-            foreach (var name in new[] { "Save", "Load" }) Invoke(game, name);
-            foreach (var key in new[] { Key.F5, Key.F9 }) game._UnhandledKeyInput(new InputEventKey { Pressed = true, Keycode = key });
+            foreach (var name in new[] { "Save", "Load" })
+                Invoke(game, name);
+            foreach (var key in new[] { Key.F5, Key.F9 })
+                game._UnhandledKeyInput(new InputEventKey { Pressed = true, Keycode = key });
             foreach (var button in Descendants(screen).OfType<Button>().Where(button => button.Text is "保存" or "读取"))
                 button.EmitSignal(Button.SignalName.Pressed);
             Require(SaveStamps().SequenceEqual(saved), "Save/Load changed files during post-settlement pause.");
@@ -83,7 +87,8 @@ public partial class AiPacingIntegrationChecks : Node
             Invoke(game, "ShowBattle", (object?)null);
             Require(!pacer.IsRunning && !Field<BattleScreen>(game, "screen").IsInputBlocked, "Rebinding retained previous AI busy/deadline.");
             var replacement = campaign.Battle!;
-            foreach (var button in staleButtons) button.EmitSignal(Button.SignalName.Pressed);
+            foreach (var button in staleButtons)
+                button.EmitSignal(Button.SignalName.Pressed);
             Invoke(game, "ProcessBattle", settlement + 10000);
             Require(session.GetSnapshot().Revision == oldRevision && replacement.GetSnapshot().Revision == 0
                 && ReferenceEquals(campaign.Battle, replacement) && SaveStamps().SequenceEqual(saved), "Stale AI/view callback affected replacement or saves.");
@@ -120,15 +125,26 @@ public partial class AiPacingIntegrationChecks : Node
         Require(SaveStamps().All(value => value == "absent"), "Refusing existing manual/autosave files.");
     }
     private static string[] SaveStamps() => new[] { "grayflag-campaign-save.json", "grayflag-campaign-autosave.json" }
-        .SelectMany(name => new[] { name, name + ".tmp" }).Select(name => {
+        .SelectMany(name => new[] { name, name + ".tmp" }).Select(name =>
+        {
             var path = ProjectSettings.GlobalizePath("user://" + name);
             return System.IO.File.Exists(path) ? System.IO.File.ReadAllText(path) + ":" + System.IO.File.GetLastWriteTimeUtc(path).Ticks : "absent";
         }).ToArray();
-    private void Require(bool condition, string message) { assertions++; if (!condition) throw new InvalidOperationException(message); }
+    private void Require(bool condition, string message)
+    {
+        assertions++;
+        if (!condition)
+            throw new InvalidOperationException(message);
+    }
     private static T Field<T>(object instance, string name) => (T)instance.GetType().GetField(name, BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(instance)!;
     private static void Invoke(object instance, string name, params object?[] args) => instance.GetType().GetMethod(name, BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(instance, args);
     private static IEnumerable<Node> Descendants(Node root)
     {
-        foreach (var child in root.GetChildren()) { yield return child; foreach (var descendant in Descendants(child)) yield return descendant; }
+        foreach (var child in root.GetChildren())
+        {
+            yield return child;
+            foreach (var descendant in Descendants(child))
+                yield return descendant;
+        }
     }
 }

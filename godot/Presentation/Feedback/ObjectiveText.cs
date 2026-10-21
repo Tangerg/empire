@@ -30,7 +30,8 @@ public sealed class ObjectiveText : KeyedRegistry<ObjectiveTextFormatter, Object
 
     protected override void ValidateEntry(ObjectiveTextFormatter entry)
     {
-        if (string.IsNullOrWhiteSpace(entry.Kind)) throw new LocalizationException("An objective formatter kind must not be empty.");
+        if (string.IsNullOrWhiteSpace(entry.Kind))
+            throw new LocalizationException("An objective formatter kind must not be empty.");
         ArgumentNullException.ThrowIfNull(entry.MessageKeys);
         ArgumentNullException.ThrowIfNull(entry.Description);
         ArgumentNullException.ThrowIfNull(entry.Progress);
@@ -43,7 +44,8 @@ public sealed class ObjectiveText : KeyedRegistry<ObjectiveTextFormatter, Object
     {
         ArgumentNullException.ThrowIfNull(kinds);
         foreach (var kind in kinds)
-            if (!Has(kind)) throw new LocalizationException($"No presentation is registered for objective kind '{kind}'.");
+            if (!Has(kind))
+                throw new LocalizationException($"No presentation is registered for objective kind '{kind}'.");
     }
 
     public string Describe(ObjectiveProgress objective, Func<ObjectiveProgress, string>? describeChild = null)

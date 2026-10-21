@@ -15,11 +15,18 @@ internal sealed class StateContent
 {
     private static readonly Dictionary<string, string> Families = new(StringComparer.Ordinal)
     {
-        ["movementProfiles"] = "movement profile", ["damageTypes"] = "damage type",
-        ["armorClasses"] = "armor class", ["terrains"] = "terrain", ["weapons"] = "weapon",
-        ["units"] = "unit", ["statuses"] = "status", ["structures"] = "structure",
-        ["terrainOverlays"] = "terrain overlay", ["tactics"] = "tactic",
-        ["careers"] = "career", ["formations"] = "formation",
+        ["movementProfiles"] = "movement profile",
+        ["damageTypes"] = "damage type",
+        ["armorClasses"] = "armor class",
+        ["terrains"] = "terrain",
+        ["weapons"] = "weapon",
+        ["units"] = "unit",
+        ["statuses"] = "status",
+        ["structures"] = "structure",
+        ["terrainOverlays"] = "terrain overlay",
+        ["tactics"] = "tactic",
+        ["careers"] = "career",
+        ["formations"] = "formation",
     };
 
     private readonly JsonArray packs;
@@ -109,7 +116,8 @@ internal sealed class StateContent
         {
             var pack = StateJson.Object(node, "content pack");
             var id = StateJson.Text(pack, "id");
-            if (EcmaText.IsBlank(id)) throw new DomainInvariantException("content pack id cannot be empty");
+            if (EcmaText.IsBlank(id))
+                throw new DomainInvariantException("content pack id cannot be empty");
             var version = StateJson.Number(pack["version"], "content pack version");
             if (version < 1 || version != Math.Truncate(version))
                 throw new DomainInvariantException($"content pack \"{id}\" version must be a positive integer");
@@ -122,7 +130,8 @@ internal sealed class StateContent
         void Visit(JsonObject pack)
         {
             var id = StateJson.Text(pack, "id");
-            if (visited.Contains(id)) return;
+            if (visited.Contains(id))
+                return;
             var cycleStart = path.IndexOf(id);
             if (cycleStart >= 0)
                 throw new DomainInvariantException($"cyclic content pack dependency: {string.Join(" -> ", path.Skip(cycleStart).Append(id))}");
@@ -141,7 +150,8 @@ internal sealed class StateContent
             visited.Add(id);
             result.Add(pack);
         }
-        foreach (var pack in byId.Values) Visit(pack);
+        foreach (var pack in byId.Values)
+            Visit(pack);
         return result;
     }
 }

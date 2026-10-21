@@ -36,7 +36,8 @@ internal static class GroundClipper
             sprite.RemoveMeta("ground_clipped");
         }
         foreach (var child in ground.GetChildren())
-            if (child is Node2D child2D) Remove(child2D);
+            if (child is Node2D child2D)
+                Remove(child2D);
     }
 
     internal static void Apply(Node2D ground, Texture2D shape, Vector2 boardSize)
@@ -49,7 +50,8 @@ internal static class GroundClipper
                 // Full-board material sprites already know their world UVs; preserve the RGB material shader.
                 if (sprite.Material is ShaderMaterial material && sprite.HasMeta("world_material"))
                 {
-                    if (sprite.Name == "WorldField") return; // Its own alpha is the shape; don't square antialias coverage.
+                    if (sprite.Name == "WorldField")
+                        return; // Its own alpha is the shape; don't square antialias coverage.
                     material.SetShaderParameter("has_playable_shape", true);
                     material.SetShaderParameter("playable_shape", shape);
                 }
@@ -68,7 +70,8 @@ internal static class GroundClipper
                 }
             }
             foreach (var child in node.GetChildren())
-                if (child is Node2D child2D) Visit(child2D, transform);
+                if (child is Node2D child2D)
+                    Visit(child2D, transform);
         }
         Visit(ground, Transform2D.Identity);
     }

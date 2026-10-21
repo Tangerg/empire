@@ -591,3 +591,21 @@ not alternate live unit transfer paths.
 
 Synchronizing an attached commander's owner on a scenario transfer intentionally
 repairs the previous split state; it is not claimed equivalent to that old defect.
+
+## Native dependency and presentation composition
+
+`Engine.BattleEngine` is the generic native rules facade;
+`Campaign.GrayFlagCampaignPolicy` owns only GrayFlag campaign policy. Consumer-owned
+ports declare actual dependencies for combat, tactical commands, movement, deployment,
+resources, persistence, validation, AI and campaign projections. Resource defaults
+are explicit at composition, not installed by a parameterless library constructor.
+
+`Application.SessionPresentationText.Compose` owns the default text assembly,
+including the open `BattleEventText` registry. Both fresh and restored sessions
+consume that same injected registry. `BattleSessionRules`, `CampaignApplicationRules`
+and `BattleScreenRules` declare their real consumers' dependencies; the screen's
+session is statically `ITacticalBattleSession`, without a runtime cast or alias.
+
+`tools/godot/format-native.sh --check` enforces the repository C# whitespace policy.
+`verify-native.sh` is the current native acceptance command; the repository CI
+remains a separate TypeScript check, not evidence of a native CI pass.

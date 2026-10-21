@@ -14,7 +14,8 @@ public static class BattleReplayVerifier
         Func<JsonObject, uint, Battle> createBattle)
     {
         RulesetManifest.RequirePersistent(manifest);
-        if (raw is not JsonObject original) throw new StoredDocumentException("battle replay must be an object");
+        if (raw is not JsonObject original)
+            throw new StoredDocumentException("battle replay must be an object");
         var replay = (JsonObject)original.DeepClone();
         RequireShape(replay);
         var seedValue = StateJson.Number(replay["seed"], "seed");
@@ -24,13 +25,16 @@ public static class BattleReplayVerifier
         Battle Create() => createBattle((JsonObject)level.DeepClone(), seed);
         ReplayOutcome Refuse(string reason) => new(Create().Snapshot(), 0, reason);
         var schema = StateJson.Number(replay["schema"], "schema");
-        if (schema != BattleRecorder.Schema) return Refuse($"不支持回放 schema {replay["schema"]!.ToJsonString()}");
+        if (schema != BattleRecorder.Schema)
+            return Refuse($"不支持回放 schema {replay["schema"]!.ToJsonString()}");
         var levelId = StateJson.Text(level, "id");
         var replayLevel = StateJson.Text(replay, "levelId");
-        if (replayLevel != levelId) return Refuse($"回放关卡 {replayLevel} 与 {levelId} 不匹配");
+        if (replayLevel != levelId)
+            return Refuse($"回放关卡 {replayLevel} 与 {levelId} 不匹配");
         RulesetManifest.ValidateStored(replay["ruleset"]);
         var differences = RulesetManifest.Differences(manifest, replay["ruleset"]!.AsObject());
-        if (differences.Count > 0) return Refuse(string.Join("；", differences));
+        if (differences.Count > 0)
+            return Refuse(string.Join("；", differences));
         var battle = Create();
         if (battle.StateHash != StateJson.Text(replay, "initialStateHash"))
             return new(battle.Snapshot(), 0, "回放初始状态摘要不匹配");
@@ -40,10 +44,15 @@ public static class BattleReplayVerifier
         {
             if (actions[index] is not JsonObject action)
                 throw new StoredDocumentException($"battle replay action {index} must be an object");
-            try { battle.Dispatch(action); }
+            try
+            {
+                battle.Dispatch(action);
+            }
             catch (IllegalActionException error) { return new(battle.Snapshot(), index, "Action refused during replay.", error.Refusal); }
-            if (StateJson.Text(battle.Snapshot(), "phase") != "over") continue;
-            if (index != actions.Count - 1) return new(battle.Snapshot(), index + 1, "对局提前结束");
+            if (StateJson.Text(battle.Snapshot(), "phase") != "over")
+                continue;
+            if (index != actions.Count - 1)
+                return new(battle.Snapshot(), index + 1, "对局提前结束");
             return battle.StateHash == expectedHash
                 ? new(battle.Snapshot(), null, "")
                 : new(battle.Snapshot(), actions.Count, "回放最终状态摘要不匹配");

@@ -8,19 +8,28 @@ namespace Empire.Presentation;
 /// <summary>Native presentation metadata; neither a save nor a second campaign definition.</summary>
 public sealed class NarrativePresentationDocument
 {
-    public int Schema { get; init; }
+    public int Schema
+    {
+        get; init;
+    }
     public string TitleKey { get; init; } = "";
     public string CompletionLabelKey { get; init; } = "";
-    public int BattleTotal { get; init; }
+    public int BattleTotal
+    {
+        get; init;
+    }
     public Dictionary<int, NarrativeChapter> Chapters { get; init; } = new();
     public Dictionary<string, NarrativeArt> StoryScenes { get; init; } = new(StringComparer.Ordinal);
     public Dictionary<string, NarrativeArt> Portraits { get; init; } = new(StringComparer.Ordinal);
     public static NarrativePresentationDocument Load(GameText text, string path = "res://data/grayflag-staging.json")
     {
         var document = PresentationJson.Load<NarrativePresentationDocument>(path);
-        if (document.Schema != 2) throw new InvalidOperationException("Unsupported narrative presentation metadata schema.");
-        text.Format(document.TitleKey); text.Format(document.CompletionLabelKey);
-        foreach (var chapter in document.Chapters.Values) text.Format(chapter.TitleKey);
+        if (document.Schema != 2)
+            throw new InvalidOperationException("Unsupported narrative presentation metadata schema.");
+        text.Format(document.TitleKey);
+        text.Format(document.CompletionLabelKey);
+        foreach (var chapter in document.Chapters.Values)
+            text.Format(chapter.TitleKey);
         return document;
     }
 }
@@ -34,8 +43,14 @@ public sealed class NarrativeChapter
 public sealed class NarrativeArt
 {
     public string Source { get; init; } = "";
-    public string? ResourcePath { get; init; }
-    public string? Sha256 { get; init; }
+    public string? ResourcePath
+    {
+        get; init;
+    }
+    public string? Sha256
+    {
+        get; init;
+    }
 }
 
 /// <summary>Caller-owned campaign facts and text service, passed explicitly to a read-only presentation.</summary>
@@ -51,7 +66,8 @@ public sealed record CampaignShellView(string Title, string ChapterHeading, int 
     public static CampaignShellView Create(NarrativeContext context, int chapter, string? sceneTopic = null)
     {
         var metadata = context.Presentation;
-        if (metadata.Schema != 2) throw new InvalidOperationException("Unsupported narrative presentation metadata schema.");
+        if (metadata.Schema != 2)
+            throw new InvalidOperationException("Unsupported narrative presentation metadata schema.");
         if (!metadata.Chapters.TryGetValue(chapter, out var entry))
             throw new InvalidOperationException($"Narrative chapter metadata is not authored: {chapter}.");
         var art = sceneTopic is null ? entry.Art : metadata.StoryScenes.TryGetValue(sceneTopic, out var scene)
@@ -81,8 +97,10 @@ public static class NarrativeProjection
     public static StoryView Story(StoryEntry story, IReadOnlyDictionary<string, string> speakerNameKeys,
         NarrativeContext context, int beatIndex, bool ending)
     {
-        if (story.Beats.Count == 0) throw new InvalidOperationException($"Narrative has no beats: {story.Id}.");
-        if (beatIndex < 0) throw new ArgumentOutOfRangeException(nameof(beatIndex));
+        if (story.Beats.Count == 0)
+            throw new InvalidOperationException($"Narrative has no beats: {story.Id}.");
+        if (beatIndex < 0)
+            throw new ArgumentOutOfRangeException(nameof(beatIndex));
         var beat = story.Beats[Math.Min(beatIndex, story.Beats.Count - 1)];
         if (!speakerNameKeys.TryGetValue(beat.Speaker, out var speakerKey))
             throw new InvalidOperationException($"Unknown narrative speaker {beat.Speaker} in {story.Id}/{beat.Id}.");

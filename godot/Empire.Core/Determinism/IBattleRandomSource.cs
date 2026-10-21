@@ -4,7 +4,10 @@ namespace Empire.Core.Determinism;
 
 public interface IBattleRandomSource
 {
-    string Id { get; }
+    string Id
+    {
+        get;
+    }
     double Next(JsonObject state, string stream);
     double Peek(JsonObject state, string stream);
     double Int(JsonObject state, string stream, double bound);

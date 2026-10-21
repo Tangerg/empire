@@ -7,10 +7,22 @@ namespace Empire.Core.Lifecycle;
 /// <summary>The semantic outcome of a concluded battle, independent of presentation.</summary>
 public sealed record BattleConclusion
 {
-    public string Kind { get; }
-    public int? Team { get; }
-    public int? Player { get; }
-    public string? Objective { get; }
+    public string Kind
+    {
+        get;
+    }
+    public int? Team
+    {
+        get;
+    }
+    public int? Player
+    {
+        get;
+    }
+    public string? Objective
+    {
+        get;
+    }
 
     private BattleConclusion(string kind, int? team, int? player = null, string? objective = null)
     {
@@ -77,11 +89,13 @@ public sealed record BattleConclusion
 
     public void ValidateReferences(JsonObject state)
     {
-        if (Team is null) return;
+        if (Team is null)
+            return;
         var players = Objects(Array(state["players"], "players"), "players").ToArray();
         if (!players.Any(player => Integer(player, "team") == Team))
             throw new DomainInvariantException("battle conclusion references an unknown team");
-        if (Kind != "objectiveCompleted") return;
+        if (Kind != "objectiveCompleted")
+            return;
         var owners = players.Where(player => Integer(player, "id") == Player).ToArray();
         if (owners.Length != 1 || Integer(owners[0], "team") != Team)
             throw new DomainInvariantException("battle conclusion player is not a member of its winning team");

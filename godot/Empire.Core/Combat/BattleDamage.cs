@@ -42,13 +42,15 @@ public sealed class BattleDamage
         Func<DamageOutcome, JsonObject> report, Action<JsonObject> emit)
     {
         var target = TacticalQueries.UnitById(state, unitId);
-        if (target is null) return NothingToHit;
+        if (target is null)
+            return NothingToHit;
 
         var at = TacticalQueries.Position(target);
         var health = new UnitHealth(catalog, target);
         var amount = health.Damage(requested, nonlethal);
         var hpAfter = health.Current;
-        if (amount <= 0) return new DamageOutcome(true, 0, hpAfter, false, false, at);
+        if (amount <= 0)
+            return new DamageOutcome(true, 0, hpAfter, false, false, at);
         var killed = hpAfter <= 0;
         JsonObject? casualty = null;
         JsonObject? corpse = null;
@@ -67,7 +69,8 @@ public sealed class BattleDamage
         {
             emit(new JsonObject { ["type"] = "death", ["unit"] = unitId, ["at"] = Coordinate(at) });
             AnnounceMarker(corpse, emit);
-            foreach (var marker in passengerMarkers) AnnounceMarker(marker, emit);
+            foreach (var marker in passengerMarkers)
+                AnnounceMarker(marker, emit);
             if (passengerMarkers.Count > 0)
             {
                 var passengers = new JsonArray();
@@ -75,8 +78,10 @@ public sealed class BattleDamage
                     passengers.Add(StateJson.Integer(StateJson.Object(marker["fallenUnit"], "fallenUnit"), "id"));
                 emit(new JsonObject
                 {
-                    ["type"] = "transportLost", ["carrier"] = unitId,
-                    ["passengers"] = passengers, ["at"] = Coordinate(at),
+                    ["type"] = "transportLost",
+                    ["carrier"] = unitId,
+                    ["passengers"] = passengers,
+                    ["at"] = Coordinate(at),
                 });
             }
             AnnounceDeparture(state, casualty, emit);
@@ -86,7 +91,10 @@ public sealed class BattleDamage
         {
             SufferDamageShock(state, target, amount, emit);
         }
-        return blow with { LeftField = TacticalQueries.UnitById(state, unitId) is null };
+        return blow with
+        {
+            LeftField = TacticalQueries.UnitById(state, unitId) is null
+        };
     }
 
     public double DamageStatus(
@@ -96,8 +104,11 @@ public sealed class BattleDamage
         var id = StateJson.Integer(unit, "id");
         return Resolve(state, id, requested, nonlethal, blow => new JsonObject
         {
-            ["type"] = "statusTick", ["unit"] = id, ["status"] = StateJson.Text(status, "id"),
-            ["amount"] = blow.Amount, ["hpAfter"] = blow.HpAfter,
+            ["type"] = "statusTick",
+            ["unit"] = id,
+            ["status"] = StateJson.Text(status, "id"),
+            ["amount"] = blow.Amount,
+            ["hpAfter"] = blow.HpAfter,
         }, emit).Amount;
     }
 
@@ -116,8 +127,11 @@ public sealed class BattleDamage
         if (applied != 0)
             emit(new JsonObject
             {
-                ["type"] = "moraleChanged", ["unit"] = unitId,
-                ["amount"] = applied, ["current"] = after, ["reason"] = reason,
+                ["type"] = "moraleChanged",
+                ["unit"] = unitId,
+                ["amount"] = applied,
+                ["current"] = after,
+                ["reason"] = reason,
             });
         if (MoraleEnabled(state) && after <= 0 && TacticalQueries.UnitById(state, unitId) is not null)
             Route(state, unit, emit);
@@ -134,10 +148,13 @@ public sealed class BattleDamage
         AnnounceMarker(marker, emit);
         var surrendered = new JsonObject
         {
-            ["type"] = "unitSurrendered", ["unit"] = unitId,
-            ["marker"] = StateJson.Integer(marker, "id"), ["at"] = Coordinate(at),
+            ["type"] = "unitSurrendered",
+            ["unit"] = unitId,
+            ["marker"] = StateJson.Integer(marker, "id"),
+            ["at"] = Coordinate(at),
         };
-        if (to is not null) surrendered["to"] = to.Value;
+        if (to is not null)
+            surrendered["to"] = to.Value;
         emit(surrendered);
         AnnounceDeparture(state, unit, emit);
         return marker;
@@ -170,21 +187,26 @@ public sealed class BattleDamage
     {
         var casts = StateJson.Array(state["pendingCasts"], "pendingCasts");
         var cast = casts.OfType<JsonObject>().FirstOrDefault(candidate => StateJson.Integer(candidate, "caster") == unitId);
-        if (cast is null) return;
+        if (cast is null)
+            return;
         casts.Remove(cast);
         emit(new JsonObject
         {
-            ["type"] = "castCancelled", ["unit"] = StateJson.Integer(cast, "caster"),
-            ["weapon"] = StateJson.Text(cast, "weapon"), ["at"] = cast["target"]!.DeepClone(),
+            ["type"] = "castCancelled",
+            ["unit"] = StateJson.Integer(cast, "caster"),
+            ["weapon"] = StateJson.Text(cast, "weapon"),
+            ["at"] = cast["target"]!.DeepClone(),
             ["reason"] = "casterLost",
         });
     }
 
     private void SufferDamageShock(JsonObject state, JsonObject target, double damage, Action<JsonObject> emit)
     {
-        if (!MoraleEnabled(state)) return;
+        if (!MoraleEnabled(state))
+            return;
         var id = StateJson.Integer(target, "id");
-        if (TacticalQueries.UnitById(state, id) is null) return;
+        if (TacticalQueries.UnitById(state, id) is null)
+            return;
         var maximumHp = StateJson.Number(content.Get("units", StateJson.Text(target, "type"))["maxHp"], "maxHp");
         var morale = StateJson.Object(target["morale"], "morale");
         var rules = StateJson.Object(state["rules"], "rules");
@@ -196,7 +218,8 @@ public sealed class BattleDamage
 
     private void MournFallen(JsonObject state, JsonObject fallen, Coord at, Action<JsonObject> emit)
     {
-        if (!MoraleEnabled(state)) return;
+        if (!MoraleEnabled(state))
+            return;
         var rules = StateJson.Object(state["rules"], "rules");
         var grid = grids.Get(StateJson.Text(rules, "grid"));
         var radius = StateJson.Number(rules["moraleDefeatShockRadius"], "moraleDefeatShockRadius");
@@ -213,7 +236,8 @@ public sealed class BattleDamage
     {
         var commander = StateJson.Objects(state["commanders"], "commanders")
             .FirstOrDefault(candidate => StateJson.Integer(candidate, "unitId") == unitId);
-        if (commander is null) return;
+        if (commander is null)
+            return;
         var commanderId = StateJson.Text(commander, "id");
         var owner = StateJson.Integer(commander, "owner");
         emit(new JsonObject { ["type"] = "commanderDefeated", ["commander"] = commanderId, ["unit"] = unitId });
@@ -242,8 +266,10 @@ public sealed class BattleDamage
         AnnounceMarker(marker, emit);
         emit(new JsonObject
         {
-            ["type"] = "unitRouted", ["unit"] = id,
-            ["marker"] = StateJson.Integer(marker, "id"), ["at"] = Coordinate(at),
+            ["type"] = "unitRouted",
+            ["unit"] = id,
+            ["marker"] = StateJson.Integer(marker, "id"),
+            ["at"] = Coordinate(at),
         });
         AnnounceDeparture(state, unit, emit);
     }
@@ -259,8 +285,11 @@ public sealed class BattleDamage
         state["nextMarkerId"] = id + 1;
         var marker = new JsonObject
         {
-            ["id"] = id, ["kind"] = kind, ["at"] = Coordinate(at),
-            ["owner"] = StateJson.Integer(unit, "owner"), ["fallenUnit"] = unit.DeepClone(),
+            ["id"] = id,
+            ["kind"] = kind,
+            ["at"] = Coordinate(at),
+            ["owner"] = StateJson.Integer(unit, "owner"),
+            ["fallenUnit"] = unit.DeepClone(),
         };
         StateJson.Array(state["markers"], "markers").Add(marker);
         return marker;
@@ -278,7 +307,8 @@ public sealed class BattleDamage
             var unit = StateJson.Object(entry["unit"], "embarked unit");
             markers.Add(CreateMarker(state, unit, kind, at));
         }
-        foreach (var entry in entries) embarked.Remove(entry);
+        foreach (var entry in entries)
+            embarked.Remove(entry);
         return markers;
     }
 
@@ -293,12 +323,15 @@ public sealed class BattleDamage
             var unit = StateJson.Object(entry["unit"], "embarked unit");
             AnnounceMarker(CreateMarker(state, unit, kind, at), emit);
         }
-        foreach (var entry in entries) embarked.Remove(entry);
+        foreach (var entry in entries)
+            embarked.Remove(entry);
     }
 
     private static void AnnounceMarker(JsonObject marker, Action<JsonObject> emit) => emit(new JsonObject
     {
-        ["type"] = "markerAdded", ["marker"] = StateJson.Integer(marker, "id"),
-        ["kind"] = StateJson.Text(marker, "kind"), ["at"] = marker["at"]!.DeepClone(),
+        ["type"] = "markerAdded",
+        ["marker"] = StateJson.Integer(marker, "id"),
+        ["kind"] = StateJson.Text(marker, "kind"),
+        ["at"] = marker["at"]!.DeepClone(),
     });
 }

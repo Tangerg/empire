@@ -10,13 +10,34 @@ namespace Empire.Core.Combat;
 
 public sealed record CombatModifier
 {
-    public string Id { get; }
-    public string Kind { get; }
-    public string Source { get; }
-    public string Stage { get; }
-    public string Operation { get; }
-    public double Value { get; }
-    public JsonElement Facts { get; }
+    public string Id
+    {
+        get;
+    }
+    public string Kind
+    {
+        get;
+    }
+    public string Source
+    {
+        get;
+    }
+    public string Stage
+    {
+        get;
+    }
+    public string Operation
+    {
+        get;
+    }
+    public double Value
+    {
+        get;
+    }
+    public JsonElement Facts
+    {
+        get;
+    }
 
     public CombatModifier(string id, string kind, string source, string stage, string operation, double value, JsonObject? facts = null)
     {
@@ -61,9 +82,15 @@ public sealed class CombatForecasts
     private readonly GridRegistry grids;
     private readonly BattleResources resources;
     private readonly Dictionary<(string Damage, string Armor), double> matchups = new();
-    public ReactionRegistry Reactions { get; }
+    public ReactionRegistry Reactions
+    {
+        get;
+    }
     private readonly CombatModifierRules modifierRules;
-    public CombatModifierPipeline Modifiers { get; }
+    public CombatModifierPipeline Modifiers
+    {
+        get;
+    }
     public IReadOnlyList<string> ModifierKinds => Array.AsReadOnly(Modifiers.ProviderIds.Append(IncomingReactionKind).ToArray());
     public CombatForecasts(CombatForecastRules rules)
     {
@@ -79,9 +106,14 @@ public sealed class CombatForecasts
             {
                 var key = (Damage: StateJson.Text(entry, "damageType"), Armor: StateJson.Text(entry, "armorClass"));
                 double multiplier;
-                try { multiplier = StateJson.Number(entry, "multiplier", 1); }
+                try
+                {
+                    multiplier = StateJson.Number(entry, "multiplier", 1);
+                }
                 catch (DomainInvariantException)
-                { throw new DomainInvariantException($"damage matchup \"{key.Damage}\" -> \"{key.Armor}\" must be > 0"); }
+                {
+                    throw new DomainInvariantException($"damage matchup \"{key.Damage}\" -> \"{key.Armor}\" must be > 0");
+                }
                 if (multiplier <= 0)
                     throw new DomainInvariantException($"damage matchup \"{key.Damage}\" -> \"{key.Armor}\" must be > 0");
                 if (!matchups.TryAdd(key, multiplier))
@@ -103,7 +135,8 @@ public sealed class CombatForecasts
         : throw new DomainInvariantException($"{StateJson.Text(unit, "type")} has no weapon");
     public JsonObject? ReadyWeapon(JsonObject state, JsonObject unit, string id)
     {
-        if (!UnitWeaponIds(unit).Contains(id, StringComparer.Ordinal)) return null;
+        if (!UnitWeaponIds(unit).Contains(id, StringComparer.Ordinal))
+            return null;
         var weapon = content.Get("weapons", id);
         return IsWeaponReady(state, unit, weapon) ? weapon : null;
     }
@@ -112,8 +145,10 @@ public sealed class CombatForecasts
     public bool IsWeaponReady(JsonObject state, JsonObject unit, JsonObject weapon)
     {
         var id = StateJson.Text(weapon, "id");
-        if (!UnitWeaponIds(unit).Contains(id, StringComparer.Ordinal)) return false;
-        if (unit["weaponState"]?[id] is not JsonObject runtime || StateJson.Number(runtime, "cooldownRemaining", 0) > 0) return false;
+        if (!UnitWeaponIds(unit).Contains(id, StringComparer.Ordinal))
+            return false;
+        if (unit["weaponState"]?[id] is not JsonObject runtime || StateJson.Number(runtime, "cooldownRemaining", 0) > 0)
+            return false;
         var context = ResourceContext(state, unit, id);
         return resources.CanAffordTransactions(context, Transactions(weapon["resourceRequirements"]!.AsArray()))
             && resources.CanAffordTransactions(context, Transactions(weapon["resourceCosts"]!.AsArray()));
@@ -154,7 +189,7 @@ public sealed class CombatForecasts
         var selected = RequireReadyWeapon(state, attacker, weapon ?? StateJson.Text(PrimaryWeapon(attacker), "id"));
         var battlefield = new TacticalBattlefield(state, content);
         var context = new UnitDamageContext(modifierRules, state, attacker, from, defender, to, selected,
-            battlefield, new TacticalBoard(state["map"]!.AsObject(), Grid(state)));
+            battlefield, new TacticalBoard(Grid(state), state["map"]!.AsObject()));
         var result = Modifiers.Evaluate(StateJson.Number(selected, "power", 0), context);
         return new(StateJson.Text(selected, "id"), StateJson.Text(selected, "damageType"),
             StateJson.Number(selected, "power", 0), result.Mitigation, result.Modifiers, result.Damage);
@@ -194,7 +229,8 @@ public sealed class CombatForecasts
         var strike = ComputeDamage(state, attacker, recipient, origin, TacticalQueries.Position(recipient), weapon);
         var stance = Reaction(StateJson.Text(defender, "reaction"));
         CombatReaction? reaction = null;
-        if (interceptor is not null) reaction = new(StateJson.Integer(interceptor, "id"), StateJson.Text(interceptor, "reaction"), StateJson.Integer(defender, "id"));
+        if (interceptor is not null)
+            reaction = new(StateJson.Integer(interceptor, "id"), StateJson.Text(interceptor, "reaction"), StateJson.Integer(defender, "id"));
         else if (stance.IncomingMultiplier != 1 && CanReact(state, defender))
         {
             strike = strike.And(new("reaction." + stance.Id, IncomingReactionKind, "reaction", "final", "multiply", stance.IncomingMultiplier,
@@ -207,10 +243,13 @@ public sealed class CombatForecasts
         var attackerHp = StateJson.Number(attacker, "hp", 0);
         if (defenderHp > 0 && stance.Retaliates && StateJson.IsTrue(state["rules"]!["counterAttack"]))
         {
-            var source = (JsonObject)defender.DeepClone(); source["hp"] = defenderHp;
-            var target = (JsonObject)attacker.DeepClone(); target["facing"] = Grid(state).Toward(origin, defenderAt);
+            var source = (JsonObject)defender.DeepClone();
+            source["hp"] = defenderHp;
+            var target = (JsonObject)attacker.DeepClone();
+            target["facing"] = Grid(state).Toward(origin, defenderAt);
             counter = BestReactiveStrike(state, source, defenderAt, target, origin, stance)?.Damage;
-            if (counter is not null) attackerHp = Math.Max(0, attackerHp - counter.Damage);
+            if (counter is not null)
+                attackerHp = Math.Max(0, attackerHp - counter.Damage);
         }
         return new(StateJson.Integer(attacker, "id"), StateJson.Integer(defender, "id"), strike,
             StateJson.Integer(recipient, "id"), interceptor is null ? null : StateJson.Integer(interceptor, "id"), reaction,

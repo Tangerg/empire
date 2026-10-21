@@ -15,7 +15,8 @@ public sealed class VictorySystem(ObjectiveRules rules, ObjectiveHandlerRegistry
         RefreshObjectiveStates(state, emit);
         foreach (var owner in Players(state))
         {
-            if (!IsTrue(owner["alive"])) continue;
+            if (!IsTrue(owner["alive"]))
+                continue;
             var id = Integer(owner, "id");
             if (!Units(state).Any(unit => Integer(unit, "owner") == id) && !OwnedTerrains(state, id).Any(terrain => Array(terrain["produces"], "produces").Count > 0))
                 owner["alive"] = false;
@@ -23,14 +24,16 @@ public sealed class VictorySystem(ObjectiveRules rules, ObjectiveHandlerRegistry
                 owner["alive"] = false;
         }
         var living = Players(state).Where(owner => IsTrue(owner["alive"])).ToArray();
-        if (living.Length == 0) return BattleConclusion.AllDefeated();
+        if (living.Length == 0)
+            return BattleConclusion.AllDefeated();
         if (living.Select(owner => Integer(owner, "team")).Distinct().Count() == 1)
             return BattleConclusion.LastTeamRemaining(Integer(living[0], "team"));
         foreach (var owner in living)
         {
             var completed = Objects(owner["objectives"], "objectives").FirstOrDefault(objective =>
                 Handlers.Role(objective) != "optional" && Status(state, Integer(owner, "id"), objective) == "completed");
-            if (completed is not null) return BattleConclusion.ObjectiveCompleted(Integer(owner, "team"), Integer(owner, "id"), Text(completed, "id"));
+            if (completed is not null)
+                return BattleConclusion.ObjectiveCompleted(Integer(owner, "team"), Integer(owner, "id"), Text(completed, "id"));
         }
         var limit = Object(state["rules"], "rules")["turnLimit"];
         return limit is not null && Number(state["turn"], "turn") > Number(limit, "turn limit")
@@ -40,25 +43,31 @@ public sealed class VictorySystem(ObjectiveRules rules, ObjectiveHandlerRegistry
     public void RefreshObjectiveStates(JsonObject state, Action<JsonObject> emit)
     {
         foreach (var owner in Players(state))
-            foreach (var objective in Objects(owner["objectives"], "objectives")) RefreshOne(state, Integer(owner, "id"), objective, emit);
+            foreach (var objective in Objects(owner["objectives"], "objectives"))
+                RefreshOne(state, Integer(owner, "id"), objective, emit);
     }
 
     private void RefreshOne(JsonObject state, int owner, JsonObject objective, Action<JsonObject> emit)
     {
-        if (Status(state, owner, objective) != "active") return;
+        if (Status(state, owner, objective) != "active")
+            return;
         var mode = Handlers.RefreshMode(objective);
         foreach (var child in mode == "self" ? [] : Handlers.Children(objective))
         {
             var status = Status(state, owner, child);
-            if (mode == "sequence" && (status == "completed" || status == "cancelled")) continue;
+            if (mode == "sequence" && (status == "completed" || status == "cancelled"))
+                continue;
             RefreshOne(state, owner, child, emit);
-            if (mode == "sequence" && Status(state, owner, child) != "completed") break;
+            if (mode == "sequence" && Status(state, owner, child) != "completed")
+                break;
         }
         var outcome = Outcome(state, owner, objective);
-        if (outcome == "pending") return;
+        if (outcome == "pending")
+            return;
         var id = Text(objective, "id");
         var runtime = Object(Object(Player(state, owner)["objectiveStates"], "objective states")[id], $"objective {id}");
-        if (Text(runtime, "status") != "active") return;
+        if (Text(runtime, "status") != "active")
+            return;
         runtime["status"] = outcome == "success" ? "completed" : "failed";
         emit(new JsonObject
         {
@@ -78,8 +87,11 @@ public sealed class VictorySystem(ObjectiveRules rules, ObjectiveHandlerRegistry
             .Select(objective => Handlers.Project(Rules, state, owner, objective)).ToArray();
     private IEnumerable<JsonObject> OwnedTerrains(JsonObject state, int owner)
     {
-        var map = Object(state["map"], "map"); var owners = Array(map["owners"], "owners"); var tiles = Array(map["tiles"], "tiles");
+        var map = Object(state["map"], "map");
+        var owners = Array(map["owners"], "owners");
+        var tiles = Array(map["tiles"], "tiles");
         for (var index = 0; index < owners.Count; index++)
-            if (Integer(owners[index], "owner") == owner) yield return Rules.Content.Source.Get("terrains", Text(tiles[index], "terrain"));
+            if (Integer(owners[index], "owner") == owner)
+                yield return Rules.Content.Source.Get("terrains", Text(tiles[index], "terrain"));
     }
 }

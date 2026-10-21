@@ -16,10 +16,12 @@ public sealed partial class BattleCombat
         foreach (var cast in StateJson.Objects(state["pendingCasts"], "pending casts"))
         {
             var caster = StateJson.Integer(cast, "caster");
-            if (TacticalQueries.UnitById(state, caster) is null) continue;
+            if (TacticalQueries.UnitById(state, caster) is null)
+                continue;
             var declared = StateJson.Number(cast, "declaredAt", 0);
             var resolve = StateJson.Number(cast, "resolveAt", 0);
-            if (resolve <= declared) throw new DomainInvariantException($"a cast must resolve after it is declared, got {declared} -> {resolve}");
+            if (resolve <= declared)
+                throw new DomainInvariantException($"a cast must resolve after it is declared, got {declared} -> {resolve}");
             var weaponId = StateJson.Text(cast, "weapon");
             content.Get("weapons", weaponId);
             var now = StateJson.Number(state, "actorTurns", 0);
@@ -37,7 +39,8 @@ public sealed partial class BattleCombat
         var board = space.Board(state);
         foreach (var cast in ActiveCasts(state))
             foreach (var cell in AreaShapes.Coverage(board, cast.Origin, cast.Target,
-                StateJson.Text(content.Get("weapons", cast.Weapon), "area"))) result[cell] = cast.Remaining;
+                StateJson.Text(content.Get("weapons", cast.Weapon), "area")))
+                result[cell] = cast.Remaining;
         return result;
     }
 }

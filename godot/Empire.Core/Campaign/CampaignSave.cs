@@ -50,9 +50,14 @@ public static class CampaignSave
         if (!CampaignValidation.Same(state["definitionId"], definition["id"]) ||
             !CampaignValidation.Same(state["definitionVersion"], definition["version"]))
             Reject("state identity/version mismatch");
-        try { CampaignValidation.ValidateState(definition, state); }
+        try
+        {
+            CampaignValidation.ValidateState(definition, state);
+        }
         catch (CampaignInvariantException error)
-        { throw new StoredDocumentException($"campaign save state is invalid: {error.Message}", error); }
+        {
+            throw new StoredDocumentException($"campaign save state is invalid: {error.Message}", error);
+        }
         return save;
     }
 
@@ -61,7 +66,8 @@ public static class CampaignSave
         Require(save, "save", ("schema", StoredKind.Integer), ("campaign", StoredKind.Object),
             ("contentPacks", StoredKind.Object), ("savedAt", StoredKind.String), ("state", StoredKind.Object));
         Require(save["campaign"], "campaign", ("id", StoredKind.String), ("version", StoredKind.Integer));
-        if (!StoredSchema.ValidTimestamp(save["savedAt"]!.GetValue<string>())) Reject("savedAt is invalid");
+        if (!StoredSchema.ValidTimestamp(save["savedAt"]!.GetValue<string>()))
+            Reject("savedAt is invalid");
         var state = save["state"]!.AsObject();
         Require(state, "state", ("definitionId", StoredKind.String), ("definitionVersion", StoredKind.Integer),
             ("currentNode", StoredKind.String), ("status", StoredKind.String), ("flags", StoredKind.Array),
@@ -101,21 +107,25 @@ public static class CampaignSave
 
     private static void Require(JsonNode? value, string owner, params (string Field, StoredKind Kind)[] shape)
     {
-        if (value is not JsonObject aggregate) Reject($"{owner} must be an object");
-        else foreach (var (field, kind) in shape)
-            if (!aggregate.ContainsKey(field) || !StoredSchema.Matches(aggregate[field], kind))
-                Reject($"{owner}.{field} is missing or invalid");
+        if (value is not JsonObject aggregate)
+            Reject($"{owner} must be an object");
+        else
+            foreach (var (field, kind) in shape)
+                if (!aggregate.ContainsKey(field) || !StoredSchema.Matches(aggregate[field], kind))
+                    Reject($"{owner}.{field} is missing or invalid");
     }
 
     private static void RequireStringArray(JsonArray value, string owner)
     {
-        if (value.Any(entry => !StoredSchema.Matches(entry, StoredKind.String))) Reject($"{owner} must contain strings");
+        if (value.Any(entry => !StoredSchema.Matches(entry, StoredKind.String)))
+            Reject($"{owner} must contain strings");
     }
 
     private static void RequireFiniteRecord(JsonObject value, string owner)
     {
         foreach (var (key, entry) in value)
-            if (!CampaignValidation.Named(key) || !CampaignValidation.Finite(entry)) Reject($"{owner}.{key} is invalid");
+            if (!CampaignValidation.Named(key) || !CampaignValidation.Finite(entry))
+                Reject($"{owner}.{key} is invalid");
     }
 
     private static void Reject(string message) => throw new StoredDocumentException($"campaign save {message}");

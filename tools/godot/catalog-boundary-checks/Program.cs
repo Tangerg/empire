@@ -24,7 +24,8 @@ var checks = 0;
 void Check(bool value, string label)
 {
     checks++;
-    if (!value) throw new InvalidOperationException(label);
+    if (!value)
+        throw new InvalidOperationException(label);
 }
 void Equal(JsonNode? actual, JsonNode? expected, string label) => Check(EcmaJson.DeepEquals(actual, expected), label);
 JsonObject Entry(string family, string id) => source.OfType<JsonObject>()
@@ -38,7 +39,9 @@ var statusId = source.OfType<JsonObject>().SelectMany(pack => pack["statuses"]?.
 authoredWeapon["power"] = 1;
 authoredWeapon["hitEffects"] = new JsonArray(new JsonObject
 {
-    ["type"] = "addStatus", ["status"] = statusId, ["duration"] = 2,
+    ["type"] = "addStatus",
+    ["status"] = statusId,
+    ["duration"] = 2,
     ["probe"] = new JsonObject { ["values"] = new JsonArray("original") },
 });
 authoredWeapon["utf16Probe"] = new JsonObject { ["\ud800"] = "\udc00" };
@@ -72,11 +75,14 @@ var plugin = new EnginePlugin("test.catalog-boundaries", 1, context =>
     })));
     var effects = context.Require(Keys.HitEffects).Clone();
     var original = effects.Get("addStatus");
-    effects.Replace(original with { Apply = (query, effect) =>
+    effects.Replace(original with
+    {
+        Apply = (query, effect) =>
     {
         callbackEffect = effect;
         original.Apply(query, effect);
-    } });
+    }
+    });
     context.Replace(Keys.HitEffects, effects);
 }, overrides: [Keys.CombatModifiers, Keys.HitEffects], requiresCapabilities: [Keys.HitEffects]);
 var engine = BattleEngineFactory.Create(catalog, [plugin]);
@@ -133,19 +139,21 @@ Check(catalog.Definition("weapons", weaponId)!.Value.GetRawText() == canonical, 
 
 var utf16Catalog = new ReadOnlyContent(new JsonArray(new JsonObject
 {
-    ["id"] = "test.utf16-keys", ["version"] = 1,
+    ["id"] = "test.utf16-keys",
+    ["version"] = 1,
     ["movementProfiles"] = new JsonArray(new JsonObject { ["id"] = "\ud800", ["tags"] = new JsonArray() }),
     ["terrains"] = new JsonArray(new JsonObject
     {
-        ["id"] = "test.terrain", ["cost"] = new JsonObject { ["\ud800"] = 1 },
+        ["id"] = "test.terrain",
+        ["cost"] = new JsonObject { ["\ud800"] = 1 },
     }),
 }));
 var utf16State = state.DeepClone().AsObject();
 utf16State["map"]!["tiles"]![0] = "test.terrain";
-Check(new MovementRules(utf16Catalog, engine.Grids).Battlefield(utf16State).Cell(new(0, 0)).MovementCost("\ud800") == 1,
+Check(new MovementRules(new MovementRuleServices(utf16Catalog, engine.Grids)).Battlefield(utf16State).Cell(new(0, 0)).MovementCost("\ud800") == 1,
     "immutable movement reads preserve lone-surrogate content keys");
 
-var movement = new MovementRules(catalog, engine.Grids);
+var movement = new MovementRules(new MovementRuleServices(catalog, engine.Grids));
 var cell = movement.Battlefield(state).Cell(TacticalQueries.Position(actor));
 var terrain = cell.Terrain;
 var terrainId = terrain.GetProperty("id").GetString()!;
@@ -156,7 +164,9 @@ Check(cell.Terrain.GetRawText() == catalog.Definition("terrains", terrainId)!.Va
 var overlayState = state.DeepClone().AsObject();
 overlayState["scenario"]!["overlays"]!.AsArray().Add(new JsonObject
 {
-    ["id"] = "test.overlay", ["type"] = "flooded", ["cells"] = new JsonArray(TacticalQueries.CoordinateJson(TacticalQueries.Position(actor))),
+    ["id"] = "test.overlay",
+    ["type"] = "flooded",
+    ["cells"] = new JsonArray(TacticalQueries.CoordinateJson(TacticalQueries.Position(actor))),
     ["remainingRounds"] = null,
 });
 var overlayCell = movement.Battlefield(overlayState).Cell(TacticalQueries.Position(actor));
@@ -167,8 +177,11 @@ Check(overlayCell.Overlays.Single().GetProperty("blockedMovementClasses").GetArr
 var formationState = state.DeepClone().AsObject();
 var formationActor = formationState["units"]!.AsArray().OfType<JsonObject>().First(unit => unit["id"]!.GetValue<int>() == actor["id"]!.GetValue<int>());
 var ally = formationState["units"]!.AsArray().OfType<JsonObject>().First(unit => unit != formationActor && unit["owner"]!.GetValue<int>() == formationActor["owner"]!.GetValue<int>());
-formationActor["x"] = 1; formationActor["y"] = 1; formationActor["formation"] = "formation-line";
-ally["x"] = 1; ally["y"] = 2;
+formationActor["x"] = 1;
+formationActor["y"] = 1;
+formationActor["formation"] = "formation-line";
+ally["x"] = 1;
+ally["y"] = 2;
 foreach (var definition in new[]
 {
     engine.Progression.Formations.InEffect(formationState, formationActor, "formation-line"),

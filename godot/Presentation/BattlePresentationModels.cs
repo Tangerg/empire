@@ -12,14 +12,38 @@ public readonly record struct BoardCell(int X, int Y);
 /// <summary>Detached committed facts, not an instruction to recompute or apply an action.</summary>
 public sealed record BattlePresentationTransition
 {
-    public long Revision { get; }
-    public JsonElement Before { get; }
-    public JsonElement Action { get; }
-    public IReadOnlyList<JsonElement> Events { get; }
-    public JsonElement After { get; }
-    public bool IsComputerAction { get; init; }
-    public IReadOnlySet<int>? BeforeVisibleUnitIds { get; }
-    public IReadOnlyList<string> EventDescriptions { get; }
+    public long Revision
+    {
+        get;
+    }
+    public JsonElement Before
+    {
+        get;
+    }
+    public JsonElement Action
+    {
+        get;
+    }
+    public IReadOnlyList<JsonElement> Events
+    {
+        get;
+    }
+    public JsonElement After
+    {
+        get;
+    }
+    public bool IsComputerAction
+    {
+        get; init;
+    }
+    public IReadOnlySet<int>? BeforeVisibleUnitIds
+    {
+        get;
+    }
+    public IReadOnlyList<string> EventDescriptions
+    {
+        get;
+    }
 
     public BattlePresentationTransition(long Revision, JsonElement Before, JsonElement Action,
         IReadOnlyList<JsonElement> Events, JsonElement After, bool IsComputerAction,

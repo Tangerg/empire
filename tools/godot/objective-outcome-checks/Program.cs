@@ -28,11 +28,15 @@ var checks = 0;
 void Check(bool value, string label)
 {
     checks++;
-    if (!value) throw new InvalidOperationException(label);
+    if (!value)
+        throw new InvalidOperationException(label);
 }
 void Reject<T>(Action operation, string label) where T : Exception
 {
-    try { operation(); }
+    try
+    {
+        operation();
+    }
     catch (T) { Check(true, label); return; }
     Check(false, label);
 }
@@ -101,7 +105,7 @@ const string metadata = """
 """;
 
 var assessments = 0;
-GrayFlagEngine Compose() => BattleEngineFactory.Create(new ReadOnlyContent(packs),
+BattleEngine Compose() => BattleEngineFactory.Create(new ReadOnlyContent(packs),
 [
     new EnginePlugin("test.objective-outcomes", 1, context =>
         context.Replace(Keys.Objectives, context.Require(Keys.Objectives).Clone().Register(
@@ -163,8 +167,8 @@ var secondCatalog = Catalog(true);
 var firstFormatters = Formatters(firstCatalog);
 var secondFormatters = Formatters(secondCatalog);
 var textDocument = BattleTextDocument.Parse(new(new JsonArray(level.DeepClone()), engine.Objectives, engine.ScenarioEffects), metadata);
-var firstText = new BattleText(firstCatalog, textDocument, firstFormatters);
-var secondText = new BattleText(secondCatalog, textDocument, secondFormatters);
+var firstText = new BattleText(new(firstCatalog, firstFormatters), textDocument);
+var secondText = new BattleText(new(secondCatalog, secondFormatters), textDocument);
 Check(firstText.LevelTitle("test.objective-outcomes") == "Semantic objective fixture" &&
     secondText.LevelTitle("test.objective-outcomes") == "Alternate mission" &&
     firstText.LevelDescription("test.objective-outcomes") != secondText.LevelDescription("test.objective-outcomes"),
@@ -172,18 +176,21 @@ Check(firstText.LevelTitle("test.objective-outcomes") == "Semantic objective fix
 var declaredSignalLevel = Copy(level);
 declaredSignalLevel["scenario"]!["triggers"] = new JsonArray(new JsonObject
 {
-    ["id"] = "test.record", ["condition"] = new JsonObject { ["type"] = "turnAtLeast", ["turn"] = 99 },
+    ["id"] = "test.record",
+    ["condition"] = new JsonObject { ["type"] = "turnAtLeast", ["turn"] = 99 },
     ["effects"] = new JsonArray(new JsonObject { ["type"] = "test.record", ["signal"] = "archive_found" }),
 });
 var signalHandlers = engine.ScenarioEffects.Clone().Register(new ScenarioEffectHandler("test.record", (context, effect) =>
     context.Emit(new JsonObject { ["type"] = "scenarioSignal", ["signal"] = effect["signal"]!.DeepClone() }))
-    { Signals = effect => new[] { effect["signal"]!.GetValue<string>() } }).Seal();
+{
+    Signals = effect => new[] { effect["signal"]!.GetValue<string>() }
+}).Seal();
 Reject<LocalizationException>(() => BattleTextDocument.Parse(new(new JsonArray(declaredSignalLevel.DeepClone()), engine.Objectives, signalHandlers), metadata),
     "extension-declared signal requires presentation metadata without a built-in effect-kind switch");
 var signalMetadata = EcmaJson.Parse(metadata)!.AsObject();
 signalMetadata["levels"]!["test.objective-outcomes"]!["signals"]!["archive_found"] = new JsonObject { ["key"] = "test.signal.found" };
 var signalDocument = BattleTextDocument.Parse(new(new JsonArray(declaredSignalLevel.DeepClone()), engine.Objectives, signalHandlers), EcmaJson.Stringify(signalMetadata));
-var signalText = new BattleText(firstCatalog, signalDocument, firstFormatters);
+var signalText = new BattleText(new(firstCatalog, firstFormatters), signalDocument);
 Check(signalText.SignalName("test.objective-outcomes", "archive_found") == "Archive discovered", "semantic signal renders through its registered metadata");
 Reject<LocalizationException>(() => signalText.SignalName("test.objective-outcomes", "undeclared"), "unknown signal never leaks a raw identifier to the result screen");
 
@@ -336,11 +343,13 @@ RejectSave(document => document["schema"] = 1, "old save schema 1 is rejected wi
 RejectSave(document => document["schema"] = 2, "previous native battle save schema is rejected without migration");
 RejectSave(document => document["battle"]!["levelName"] = "Obsolete title", "save header rejects obsolete title even under the current schema");
 RejectSave(document => document["state"]!["levelName"] = "Obsolete title", "save state rejects obsolete title even under the current schema");
-var obsoleteLevel = Copy(level); obsoleteLevel["name"] = "Obsolete title";
+var obsoleteLevel = Copy(level);
+obsoleteLevel["name"] = "Obsolete title";
 Reject<StoredDocumentException>(() => LevelNormalizer.Normalize(obsoleteLevel), "level normalizer rejects superseded wording fields");
 Reject<BattleLevelException>(() => engine.CreateBattle(obsoleteLevel), "direct battle admission rejects superseded wording fields");
 Check(!final.ContainsKey("levelName") && !save["battle"]!.AsObject().ContainsKey("levelName"), "no title is persisted in native battle facts");
-var extraField = Copy(final); extraField["levelName"] = "Unexpected fact";
+var extraField = Copy(final);
+extraField["levelName"] = "Unexpected fact";
 Check(StateDigest.Hash(extraField) != StateDigest.Hash(final), "digest no longer silently ignores a field named levelName");
 RejectSave(document => document["state"]!["endReason"] = "旧的胜利描述", "current save shape rejects legacy outcome prose");
 RejectSave(document => Player(document["state"]!.AsObject(), 1)["name"] = "旧的玩家名称",
@@ -361,9 +370,9 @@ var campaignDefinition = EcmaJson.Parse("""
   ]
 }
 """)!.AsObject();
-var campaign = new CampaignRuntime(campaignDefinition);
-var bridge = new CampaignBattleBridge(levelId => levelId == "test.objective-outcomes" ? Copy(level)
-    : throw new InvalidOperationException("Unknown fixture level."), engine.Catalog);
+var campaign = new CampaignRuntime(CampaignRules.Create(), campaignDefinition);
+var bridge = new CampaignBattleBridge(new CampaignBattleBridgeRules(levelId => levelId == "test.objective-outcomes" ? Copy(level)
+    : throw new InvalidOperationException("Unknown fixture level."), engine.Catalog, Empire.Core.Engine.LevelNormalizer.Normalize, GrayFlagCampaignPolicy.MarkerDispositions));
 var request = campaign.BeginBattle(bridge);
 var pendingCampaign = campaign.Snapshot();
 var campaignBattle = engine.CreateBattle(request["level"]!.AsObject(), 2048);
@@ -376,13 +385,16 @@ Check(completedCampaign["status"]!.GetValue<string>() == "completed"
     && completedCampaign["battleHistory"]!.AsArray().Count == 1
     && completedCampaign["battleHistory"]![0]!["outcome"]!.GetValue<string>() == "victory",
     "campaign accepts the actual bridge result from its requested concluded native battle");
-var rejectingCampaign = new CampaignRuntime(campaignDefinition, pendingCampaign);
+var rejectingCampaign = new CampaignRuntime(CampaignRules.Create(), campaignDefinition, pendingCampaign);
 var beforeRejectedResult = rejectingCampaign.Snapshot();
 var obsoleteResult = Copy(battleResult);
 obsoleteResult["reason"] = "旧的胜利描述";
 obsoleteResult["winnerTeam"] = 1;
 var rejectedResult = false;
-try { rejectingCampaign.CompleteBattle(obsoleteResult); }
+try
+{
+    rejectingCampaign.CompleteBattle(obsoleteResult);
+}
 catch (CampaignInvariantException) { rejectedResult = true; }
 Check(rejectedResult && EcmaJson.DeepEquals(beforeRejectedResult, rejectingCampaign.Snapshot())
     && StateDigest.Hash(beforeRejectedResult) == StateDigest.Hash(rejectingCampaign.Snapshot()),
@@ -405,7 +417,7 @@ Sword(contentPacks)["bonuses"] = new JsonArray(
     new JsonObject { ["id"] = "first", ["targetTag"] = "infantry", ["multiplier"] = 1.5 },
     new JsonObject { ["id"] = "second", ["targetTag"] = "infantry", ["multiplier"] = 2 });
 var modifierEvaluations = 0;
-GrayFlagEngine ComposeContent(JsonArray source) => BattleEngineFactory.Create(new ReadOnlyContent(source),
+BattleEngine ComposeContent(JsonArray source) => BattleEngineFactory.Create(new ReadOnlyContent(source),
 [
     new EnginePlugin("test.content-presentation", 1, context =>
     {
@@ -421,7 +433,10 @@ var contentMetadata = EcmaJson.Parse(File.ReadAllText(Path.Combine(root, "godot/
 contentMetadata["content"]!["units"]!["soldier"]!["name"] = "test.content.unit";
 contentMetadata["content"]!["weapons"]!["soldier_sword"]!["name"] = "test.content.weapon";
 contentMetadata["content"]!["weapons"]!["soldier_sword"]!["bonuses"] = new JsonObject
-    { ["first"] = "test.content.bonus.first", ["second"] = "test.content.bonus.second" };
+{
+    ["first"] = "test.content.bonus.first",
+    ["second"] = "test.content.bonus.second"
+};
 contentMetadata["abilities"]!["attack"] = new JsonObject { ["name"] = "test.content.ability", ["hint"] = "test.content.hint" };
 Reject<LocalizationException>(() => ContentTextDocument.Parse(contentDefinitions, EcmaJson.Stringify(contentMetadata)),
     "metadata coverage follows the composed ability registry, including external additions");
@@ -512,18 +527,26 @@ Sword(duplicateBonusPacks)["bonuses"]![1]!["id"] = "first";
 var duplicateBonusContent = new ReadOnlyContent(duplicateBonusPacks);
 var duplicateBonusRules = new RuleReferenceRules
 {
-    Content = duplicateBonusContent, Grids = contentEngine.Grids, Abilities = contentEngine.Abilities,
-    HitEffects = contentEngine.Combat.HitEffects, Objectives = contentEngine.Objectives,
-    ScenarioConditions = contentEngine.ScenarioConditions, ScenarioEffects = contentEngine.ScenarioEffects,
-    Reactions = contentEngine.Reactions, TurnOrders = contentEngine.TurnOrders,
-    AreaShapes = contentEngine.AreaShapes, Directives = contentEngine.Directives,
+    Content = duplicateBonusContent,
+    Grids = contentEngine.Grids,
+    Abilities = contentEngine.Abilities,
+    HitEffects = contentEngine.Combat.HitEffects,
+    Objectives = contentEngine.Objectives,
+    ScenarioConditions = contentEngine.ScenarioConditions,
+    ScenarioEffects = contentEngine.ScenarioEffects,
+    Reactions = contentEngine.Reactions,
+    TurnOrders = contentEngine.TurnOrders,
+    AreaShapes = contentEngine.AreaShapes,
+    Directives = contentEngine.Directives,
 };
-Reject<DomainInvariantException>(() => new BattleContentValidator(duplicateBonusRules, contentEngine.ReferenceChecks).Validate(),
+Reject<DomainInvariantException>(() => new BattleContentValidator(new BattleContentValidationRules(duplicateBonusRules, contentEngine.ReferenceChecks)).Validate(),
     "BattleContentValidator owns duplicate weapon bonus identity rejection");
 
 var logState = Copy(contentState);
-var embarked = Copy(attacker); embarked["id"] = 101;
-var fallen = Copy(defender); fallen["id"] = 102;
+var embarked = Copy(attacker);
+embarked["id"] = 101;
+var fallen = Copy(defender);
+fallen["id"] = 102;
 logState["embarkedUnits"] = new JsonArray(new JsonObject { ["unit"] = embarked });
 logState["markers"] = new JsonArray(new JsonObject { ["fallenUnit"] = fallen });
 var logNames = new BattleLogNames(firstContentText.UnitName, firstContentText.CareerName, firstContentText.ResourceName,
@@ -569,7 +592,7 @@ Check(creation["unitType"]!.GetValue<string>() == "soldier" && creation["owner"]
 var resourceIndex = transientReceipt.Events.ToList().FindIndex(value => value["type"]!.GetValue<string>() == "resourceChanged"
     && value["subject"]?["id"]?.GetValue<int>() == transientId);
 Check(resourceIndex > transientReceipt.Events.ToList().IndexOf(creation), "creation precedes its transient actor-bearing resource event");
-var eventText = BattleEventText.CreateDefault(firstCatalog, firstText);
+var eventText = BattleEventText.CreateDefault(new(firstCatalog, firstText));
 BattleLogContext TransientContext() => new(logNames, EcmaJson.ToElement(transientBefore), EcmaJson.ToElement(transientAfter));
 var eventValues = transientReceipt.Events.Select(EcmaJson.ToElement).ToArray();
 var eventLines = eventText.DescribeAll(TransientContext(), eventValues);

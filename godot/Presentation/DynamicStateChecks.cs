@@ -13,7 +13,12 @@ public partial class DynamicStateChecks : Node
     private int assertions;
     public override void _Ready()
     {
-        try { Run(); GD.Print($"Dynamic state presentation checks passed: {assertions} assertions."); GetTree().Quit(); }
+        try
+        {
+            Run();
+            GD.Print($"Dynamic state presentation checks passed: {assertions} assertions.");
+            GetTree().Quit();
+        }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
     }
 
@@ -25,9 +30,9 @@ public partial class DynamicStateChecks : Node
             .First();
         definition["maxHp"] = 200;
         var type = definition["id"]!.GetValue<string>();
-        var customEngine = new GrayFlagEngine(customPacks);
+        var customEngine = new BattleEngine(customPacks);
         definition["maxHp"] = 1000;
-        var view = new DynamicStateView(assets, customEngine.Catalog);
+        var view = new DynamicStateView(new(assets, customEngine.Catalog, null));
         var badges = view.CreateUnitBadges(type, 50, false, 0, 100);
         Require(badges.GetNode<Node2D>("HealthGauge").GetMeta("ratio").AsDouble() == .25,
             "Badge health must use the composed immutable catalog, not retained authoring packs.");
@@ -38,7 +43,7 @@ public partial class DynamicStateChecks : Node
     {
         var assets = AssetCatalog.Load();
         var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
-        var engine = new GrayFlagEngine(packs);
+        var engine = new BattleEngine(packs);
         CheckCatalogBinding(assets, packs);
         var levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json");
         var environment = EnvironmentCatalog.Load();
@@ -49,16 +54,19 @@ public partial class DynamicStateChecks : Node
             var path = $"res://data/scenes/{id}.json";
             var scene = Godot.FileAccess.FileExists(path) ? AuthoredScene.Load(path) : new AuthoredScene
             {
-                LevelId = id, MapSize = [level["width"]!.GetValue<int>(), level["height"]!.GetValue<int>()], RuntimeReady = false,
+                LevelId = id,
+                MapSize = [level["width"]!.GetValue<int>(), level["height"]!.GetValue<int>()],
+                RuntimeReady = false,
             };
             var board = new BoardView();
             AddChild(board);
-            board.Configure(assets, level, scene, environment, facing => facing == "west", facing =>
+            board.Configure(new(assets, environment, facing => facing == "west", facing =>
             {
-                if (facing is null) return Vector2.Zero;
+                if (facing is null)
+                    return Vector2.Zero;
                 var step = engine.Grids.Get("square4").Step(new Empire.Core.Geometry.Coord(0, 0), facing);
                 return new Vector2(step.X, step.Y);
-            });
+            }), level, scene);
             board.ConfigureDynamicState(engine.Catalog);
             var state = engine.CreateState(level);
             var before = state.ToJsonString();
@@ -76,7 +84,8 @@ public partial class DynamicStateChecks : Node
                 using var image = texture.GetImage();
                 Require(image.GetUsedRect().HasArea(), $"{id}: structure texture cannot be transparent");
             }
-            if (id == "c01-03") CheckStructureTransitions(board, state, scene);
+            if (id == "c01-03")
+                CheckStructureTransitions(board, state, scene);
             if (id == "c01-09")
             {
                 Require(count == 4 && DynamicNodes(board).Count(node => node.HasMeta("structure_id")) == 4,
@@ -127,20 +136,25 @@ public partial class DynamicStateChecks : Node
         Require(Current().GetMeta("visual_state").AsString() == "damaged", "Exactly half HP selects damaged frame");
         Require(Math.Abs(Current().GetNode<Node2D>("HealthGauge").GetMeta("ratio").AsDouble() - 0.5) < 0.0001,
             "HP gauge must refresh to canonical damage");
-        structure["hp"] = 100; structure["disabled"] = true;
+        structure["hp"] = 100;
+        structure["disabled"] = true;
         board.RenderState(state);
         Require(Current().GetMeta("visual_state").AsString() == "damaged", "Disabled healthy structure remains damaged");
-        structure["disabled"] = false; structure["owner"] = 0; structure["x"] = structure["x"]!.GetValue<int>() + 1;
+        structure["disabled"] = false;
+        structure["owner"] = 0;
+        structure["x"] = structure["x"]!.GetValue<int>() + 1;
         board.RenderState(state);
         Require(Current().GetMeta("visual_state").AsString() == "normal" && Current().Position == old + new Vector2(32, 0),
             "Ownership and location must refresh without stale objects");
         var before = state.ToJsonString();
-        board.RenderState(state); board.RenderState(state);
+        board.RenderState(state);
+        board.RenderState(state);
         Require(state.ToJsonString() == before && DynamicNodes(board).Count(node => node.HasMeta("structure_id")) == 1,
             "Repeated snapshots must neither mutate state nor duplicate a structure");
         Require(board.GetNode<Node2D>("AuthoredScene/AuthoredStanding").GetChildCount() == scene.Placements.Count,
             "Existing authored decoration must remain one independent layer");
-        structure["hp"] = 0; structure["disabled"] = true;
+        structure["hp"] = 0;
+        structure["disabled"] = true;
         board.RenderState(state);
         Require(board.RenderedStructureCount == 1 && Current().GetMeta("visual_state").AsString() == "damaged" &&
             Current().GetNode<Node2D>("HealthGauge").GetMeta("ratio").AsDouble() == 0,
@@ -156,17 +170,24 @@ public partial class DynamicStateChecks : Node
         foreach (var (kind, topic, id) in new[] { ("fallen_corpse", "C01-BPROP-AFTERMATH-2", 1),
             ("transport_wreck", "C01-BPROP-AFTERMATH-3", 2), ("routed", "C01-BPROP-EVIDENCE-1", 3) })
         {
-            state["markers"]!.AsArray().Add(new JsonObject { ["id"] = id, ["kind"] = kind, ["owner"] = 1,
-                ["at"] = new JsonObject { ["x"] = id + 3, ["y"] = 8 } });
+            state["markers"]!.AsArray().Add(new JsonObject
+            {
+                ["id"] = id,
+                ["kind"] = kind,
+                ["owner"] = 1,
+                ["at"] = new JsonObject { ["x"] = id + 3, ["y"] = 8 }
+            });
             board.RenderState(state);
             var marker = DynamicNodes(board).Single(node => node.HasMeta("marker_id") && node.GetMeta("marker_id").AsInt32() == id);
             Require(marker.GetNode<Sprite2D>("AuthoredMarker").GetMeta("topic_id").AsString() == topic,
                 $"Marker {kind} must use its actual source topic");
         }
         Require(board.RenderedMarkerCount == 3, "All canonical markers must render");
-        var before = state.ToJsonString(); board.RenderState(state);
+        var before = state.ToJsonString();
+        board.RenderState(state);
         Require(state.ToJsonString() == before && board.RenderedMarkerCount == 3, "Repeated markers must be detached and nonduplicated");
-        state["markers"]!.AsArray().Clear(); board.RenderState(state);
+        state["markers"]!.AsArray().Clear();
+        board.RenderState(state);
         Require(board.RenderedMarkerCount == 0 && !DynamicNodes(board).Any(node => node.HasMeta("marker_id")),
             "Marker removal must remove its node");
     }
@@ -175,8 +196,10 @@ public partial class DynamicStateChecks : Node
     {
         var unit = state["units"]![0]!.AsObject();
         var id = unit["id"]!.GetValue<int>();
-        var x = unit["x"]!.GetValue<int>(); var y = unit["y"]!.GetValue<int>();
-        unit["hp"] = 20; unit["done"] = true;
+        var x = unit["x"]!.GetValue<int>();
+        var y = unit["y"]!.GetValue<int>();
+        unit["hp"] = 20;
+        unit["done"] = true;
         unit["facing"] = "south";
         unit["capture"] = 0;
         var threshold = double.Parse(state["rules"]!["captureThreshold"]!.ToJsonString(), System.Globalization.CultureInfo.InvariantCulture);
@@ -218,7 +241,8 @@ public partial class DynamicStateChecks : Node
         board.GetNode<Node2D>("CanonicalProjection/DynamicState").GetChildren().OfType<Node2D>().ToArray();
     private void Require(bool condition, string message)
     {
-        if (!condition) throw new InvalidOperationException(message);
+        if (!condition)
+            throw new InvalidOperationException(message);
         assertions++;
     }
 }

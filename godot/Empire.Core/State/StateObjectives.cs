@@ -30,12 +30,14 @@ internal static class StateObjectives
             };
             if (objective["objectives"] is JsonArray children)
             {
-                foreach (var nested in children) Visit(StateJson.Object(nested, "child objective"));
+                foreach (var nested in children)
+                    Visit(StateJson.Object(nested, "child objective"));
             }
             else if (objective["objective"] is JsonObject child)
                 Visit(child);
         }
-        foreach (var objective in objectives) Visit(StateJson.Object(objective, "objective"));
+        foreach (var objective in objectives)
+            Visit(StateJson.Object(objective, "objective"));
         return result;
     }
 

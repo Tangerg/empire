@@ -12,15 +12,23 @@ using var inputStream = File.OpenRead(args[0]);
 using var reader = args[0].EndsWith(".gz", StringComparison.Ordinal)
     ? new StreamReader(new GZipStream(inputStream, CompressionMode.Decompress)) : new StreamReader(inputStream);
 var input = EcmaJson.Parse(reader.ReadToEnd())!.AsObject();
-var engine = new GrayFlagEngine(input["packs"]!.AsArray());
+var engine = new BattleEngine(input["packs"]!.AsArray());
 var checks = 0;
 void Check(string name, string subject, JsonNode? actual, JsonNode? expected)
 {
     checks++;
-    if (EcmaJson.DeepEquals(actual, expected)) return;
+    if (EcmaJson.DeepEquals(actual, expected))
+        return;
     var destination = Path.Combine(Path.GetDirectoryName(args[0])!, "failed-casting-" + subject + ".json");
-    File.WriteAllText(destination, new JsonObject { ["case"] = name, ["actual"] = actual?.DeepClone(),
-        ["expected"] = expected?.DeepClone() }.ToJsonString(new() { WriteIndented = true }));
+    File.WriteAllText(destination, new JsonObject
+    {
+        ["case"] = name,
+        ["actual"] = actual?.DeepClone(),
+        ["expected"] = expected?.DeepClone()
+    }.ToJsonString(new()
+    {
+        WriteIndented = true
+    }));
     throw new Exception($"Mismatch in {name}: {subject}; inspect {destination}");
 }
 foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
@@ -31,9 +39,17 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
     {
         var operation = stage["operation"]!.AsObject();
         var kind = StateJson.Text(operation, "type");
-        var events = new JsonArray(); var eventHashes = new JsonArray(); JsonNode? error = null; JsonNode? returned = null;
-        JsonNode? sameStoredObject = null; JsonNode? savedState = null;
-        void Emit(JsonObject value) { events.Add(value); eventHashes.Add(StateDigest.Hash(state)); }
+        var events = new JsonArray();
+        var eventHashes = new JsonArray();
+        JsonNode? error = null;
+        JsonNode? returned = null;
+        JsonNode? sameStoredObject = null;
+        JsonNode? savedState = null;
+        void Emit(JsonObject value)
+        {
+            events.Add(value);
+            eventHashes.Add(StateDigest.Hash(state));
+        }
         try
         {
             switch (kind)
@@ -45,10 +61,15 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
                         TacticalQueries.Position(operation["origin"]!.AsObject())), Emit);
                     sameStoredObject = ReferenceEquals(cast, state["pendingCasts"]!.AsArray().Last());
                     returned = cast.DeepClone();
-                    if (StateJson.IsTrue(operation["mutateEvent"])) events.Last()!["at"]!["x"] = -888;
+                    if (StateJson.IsTrue(operation["mutateEvent"]))
+                        events.Last()!["at"]!["x"] = -888;
                     break;
-                case "clock": state["actorTurns"] = operation["at"]!.DeepClone(); break;
-                case "resolve": engine.Combat.ResolveDueCasts(state, Emit); break;
+                case "clock":
+                    state["actorTurns"] = operation["at"]!.DeepClone();
+                    break;
+                case "resolve":
+                    engine.Combat.ResolveDueCasts(state, Emit);
+                    break;
                 case "saveLoad":
                     var before = state.DeepClone();
                     var save = engine.SaveBattle(state, "2026-10-20T00:00:00.000Z");
@@ -60,24 +81,39 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
                     // The native load owns a detached copy. Reading it must not normalize metadata.
                     Check(name, "loaded-state", state, savedState);
                     break;
-                case "cooldown": state["units"]![0]!["weaponState"]!["mage_meteor"]!["cooldownRemaining"] = 3; break;
-                case "vacate": state["units"]![1]!["x"] = 6; state["units"]![1]!["y"] = 0; break;
-                case "moveCaster": state["units"]![0]!["x"] = 0; state["units"]![0]!["y"] = 0; break;
+                case "cooldown":
+                    state["units"]![0]!["weaponState"]!["mage_meteor"]!["cooldownRemaining"] = 3;
+                    break;
+                case "vacate":
+                    state["units"]![1]!["x"] = 6;
+                    state["units"]![1]!["y"] = 0;
+                    break;
+                case "moveCaster":
+                    state["units"]![0]!["x"] = 0;
+                    state["units"]![0]!["y"] = 0;
+                    break;
                 case "protect":
                     state["scenario"]!["zones"]!["sanctuary"] = new JsonArray(operation["at"]!.DeepClone());
-                    state["scenario"]!["engagementRules"]!.AsArray().Add(new JsonObject { ["id"] = "truce", ["zone"] = "sanctuary",
-                        ["mode"] = "no-attacks", ["players"] = new JsonArray(1) });
+                    state["scenario"]!["engagementRules"]!.AsArray().Add(new JsonObject
+                    {
+                        ["id"] = "truce",
+                        ["zone"] = "sanctuary",
+                        ["mode"] = "no-attacks",
+                        ["players"] = new JsonArray(1)
+                    });
                     break;
                 case "depart":
                     var departing = state["units"]![0]!.AsObject();
                     state["units"]!.AsArray().Remove(departing);
-                    if (StateJson.IsTrue(operation["announce"])) engine.Combat.Damage.AnnounceDeparture(state, departing, Emit);
+                    if (StateJson.IsTrue(operation["announce"]))
+                        engine.Combat.Damage.AnnounceDeparture(state, departing, Emit);
                     break;
                 case "reverse":
                     var reversed = state["pendingCasts"]!.AsArray().Reverse().Select(value => value!.DeepClone()).ToArray();
                     state["pendingCasts"] = new JsonArray(reversed);
                     break;
-                default: throw new Exception($"unknown operation {kind}");
+                default:
+                    throw new Exception($"unknown operation {kind}");
             }
         }
         catch (IllegalActionException caught)
@@ -86,15 +122,26 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
         }
         catch (Exception caught) when (caught is DomainInvariantException or StoredDocumentException)
         {
-            error = new JsonObject { ["kind"] = caught.GetType().Name.Replace("Exception", "", StringComparison.Ordinal),
-                ["message"] = caught.Message };
+            error = new JsonObject
+            {
+                ["kind"] = caught.GetType().Name.Replace("Exception", "", StringComparison.Ordinal),
+                ["message"] = caught.Message
+            };
         }
         JsonNode? expectedError = stage["error"];
         if (expectedError?["kind"]?.GetValue<string>() == "IllegalAction")
         {
-            if (name != "duplicate cast is illegal and unchanged") throw new Exception("Unspecified semantic refusal expectation: " + name);
-            expectedError = new JsonObject { ["kind"] = "IllegalAction", ["refusal"] = new JsonObject
-            { ["code"] = "combat.already_casting", ["details"] = new JsonObject { ["unitId"] = StateJson.Integer(operation, "caster") } } };
+            if (name != "duplicate cast is illegal and unchanged")
+                throw new Exception("Unspecified semantic refusal expectation: " + name);
+            expectedError = new JsonObject
+            {
+                ["kind"] = "IllegalAction",
+                ["refusal"] = new JsonObject
+                {
+                    ["code"] = "combat.already_casting",
+                    ["details"] = new JsonObject { ["unitId"] = StateJson.Integer(operation, "caster") }
+                }
+            };
         }
         Check(name, "error", error, expectedError);
         Check(name, "events", events, stage["events"]);
@@ -124,9 +171,14 @@ foreach (var edit in new Action<JsonObject>[]
     save => save["state"]!["pendingCasts"] = new JsonObject(),
 })
 {
-    var invalid = validSave.DeepClone().AsObject(); edit(invalid);
+    var invalid = validSave.DeepClone().AsObject();
+    edit(invalid);
     var before = invalid.DeepClone();
-    try { engine.LoadBattle(invalid); throw new Exception("native cast structure guard accepted invalid data"); }
+    try
+    {
+        engine.LoadBattle(invalid);
+        throw new Exception("native cast structure guard accepted invalid data");
+    }
     catch (StoredDocumentException) { }
     Check("native structural guard", "input-unchanged", invalid, before);
     nativeGuards++;

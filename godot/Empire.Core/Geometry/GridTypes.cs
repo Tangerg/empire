@@ -14,9 +14,18 @@ public readonly record struct DirectionDef(string Id);
 /// </summary>
 public interface ITacticalGrid
 {
-    string Id { get; }
-    IReadOnlyList<DirectionDef> Directions { get; }
-    string RestingFacing { get; }
+    string Id
+    {
+        get;
+    }
+    IReadOnlyList<DirectionDef> Directions
+    {
+        get;
+    }
+    string RestingFacing
+    {
+        get;
+    }
     int Distance(Coord a, Coord b);
     Coord Step(Coord at, string direction);
     string Opposite(string direction);

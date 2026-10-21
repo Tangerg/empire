@@ -23,7 +23,10 @@ static class StateGridChecks
             {
                 var grids = context.Require(Keys.Grids).Clone();
                 resolved = new NorthGrid(grids.Get("square4"), id);
-                if (grids.Has(id)) grids.Replace(resolved); else grids.Register(resolved);
+                if (grids.Has(id))
+                    grids.Replace(resolved);
+                else
+                    grids.Register(resolved);
                 context.Replace(Keys.Grids, grids);
             }, overrides: [Keys.Grids], requiresCapabilities: [Keys.Grids]);
             var engine = BattleEngineFactory.Create(new ReadOnlyContent(packs), [plugin]);
@@ -42,7 +45,8 @@ static class StateGridChecks
             var facings = new JsonArray(state["units"]!.AsArray().OfType<JsonObject>().Select(unit =>
             {
                 var value = new JsonObject { ["id"] = unit["id"]!.DeepClone(), ["facing"] = unit["facing"]!.DeepClone() };
-                if (unit["key"] is { } key) value["key"] = key.DeepClone();
+                if (unit["key"] is { } key)
+                    value["key"] = key.DeepClone();
                 return (JsonNode?)value;
             }).ToArray());
             equal(facings, vector["facings"], $"{id} initial/spawn default and authored facings");

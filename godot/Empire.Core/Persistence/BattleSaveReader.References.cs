@@ -8,11 +8,17 @@ internal sealed partial class BattleSaveInspection
     private void CheckRuleReferences(JsonObject save)
     {
         var issues = environment.ReferenceChecks.StateIssues(environment.Rules, State(save));
-        if (issues.Count > 0) StoredSchema.Reject(string.Join("；", issues));
+        if (issues.Count > 0)
+            StoredSchema.Reject(string.Join("；", issues));
         var state = State(save);
-        try { new BattleUnitOwnership(state).Validate(); }
+        try
+        {
+            new BattleUnitOwnership(state).Validate();
+        }
         catch (DomainInvariantException error)
-        { throw new StoredDocumentException("Saved unit ownership is invalid.", error); }
+        {
+            throw new StoredDocumentException("Saved unit ownership is invalid.", error);
+        }
         var grid = environment.Rules.Grids.Get(StateJson.Text(state["rules"]!["grid"], "grid"));
         foreach (var (unit, owner) in AllUnits(state))
             if (!UnitDisposition.AdmitsFacing(grid, StateJson.Text(unit, "facing")))

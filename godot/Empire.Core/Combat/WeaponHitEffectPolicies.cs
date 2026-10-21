@@ -79,9 +79,12 @@ public static class DefaultWeaponHitEffects
         .Seal();
     private static double Number(JsonNode? raw)
     {
-        if (raw is not JsonValue value) return double.NaN;
-        if (value.TryGetValue<double>(out var number)) return number;
-        if (value.TryGetValue<float>(out var single)) return single;
+        if (raw is not JsonValue value)
+            return double.NaN;
+        if (value.TryGetValue<double>(out var number))
+            return number;
+        if (value.TryGetValue<float>(out var single))
+            return single;
         return value.GetValueKind() == JsonValueKind.Number && double.TryParse(value.ToJsonString(),
             System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out number)
             ? number : double.NaN;

@@ -26,7 +26,7 @@ public partial class ConnectorDecorationChecks : Node
             foreach (var field in oracle["fields"]!.AsArray().OfType<JsonObject>())
             {
                 var id = field["id"]!.GetValue<string>();
-                using var cache = new CandidateShadowCache();
+                using var cache = new ShadowCache();
                 var terrain = new TerrainView();
                 AddChild(terrain);
                 try
@@ -38,7 +38,8 @@ public partial class ConnectorDecorationChecks : Node
                     Check(actual.Length == expected.Length, $"{id} connector count {actual.Length}/{expected.Length}");
                     for (var index = 0; index < expected.Length; index++)
                     {
-                        var sprite = actual[index]; var source = expected[index];
+                        var sprite = actual[index];
+                        var source = expected[index];
                         Check(sprite.GetMeta("route_cell_x").AsInt32() * 32 == source["x"]!.GetValue<int>() && sprite.GetMeta("route_cell_y").AsInt32() * 32 == source["y"]!.GetValue<int>(), $"{id}/{index} source row-major route/edge position");
                         var markup = XElement.Parse(source["markup"]!.GetValue<string>());
                         var atlas = sprite.GetMeta("route_atlas").AsString();
@@ -51,7 +52,7 @@ public partial class ConnectorDecorationChecks : Node
                         var y = double.Parse(image.Attribute("y")!.Value, System.Globalization.CultureInfo.InvariantCulture);
                         var cellIndex = (int)(-y / 32) * spec.Columns + (int)(-x / 32);
                         Check(sprite.GetMeta("route_index").AsInt32() == cellIndex, $"{id}/{index} source mask/variant index");
-                        Check(sprite.HasMeta("route_filter_scope") || sprite.GetChildren().OfType<CandidateSpriteShadows>().Any(child => child.GetMeta("shadow_kind").AsString() == "Route"), $"{id}/{index} filter applied to individual cell before composition");
+                        Check(sprite.HasMeta("route_filter_scope") || sprite.GetChildren().OfType<SpriteShadows>().Any(child => child.GetMeta("shadow_kind").AsString() == "Route"), $"{id}/{index} filter applied to individual cell before composition");
                     }
                     Check(!terrain.Diagnostics.Any(message => message.StartsWith("Connected terrain", StringComparison.Ordinal)), $"{id} no silently skipped route cells");
                     GD.Print($"Connector source/native {id}: {actual.Length} ordered cells.");
@@ -60,7 +61,7 @@ public partial class ConnectorDecorationChecks : Node
                 await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             }
             var state = JsonNode.Parse("""{"players":[],"structures":[],"markers":[{"id":1,"kind":"fallen_corpse","owner":1,"at":{"x":2,"y":3}}]}""")!.AsObject();
-            var markerView = new DynamicStateView(AssetCatalog.Load(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")));
+            var markerView = new DynamicStateView(new(AssetCatalog.Load(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")), null));
             var markers = markerView.Create(state);
             try
             {
@@ -74,6 +75,11 @@ public partial class ConnectorDecorationChecks : Node
             GetTree().Quit();
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
-        void Check(bool value, string message) { assertions++; if (!value) throw new InvalidOperationException(message); }
+        void Check(bool value, string message)
+        {
+            assertions++;
+            if (!value)
+                throw new InvalidOperationException(message);
+        }
     }
 }

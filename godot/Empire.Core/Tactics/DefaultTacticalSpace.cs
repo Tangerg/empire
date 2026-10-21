@@ -4,20 +4,28 @@ using Empire.Core.State;
 
 namespace Empire.Core.Tactics;
 
+public sealed record TacticalSpaceRules(ReadOnlyContent Content, GridRegistry Grids);
+
 /// <summary>Default spatial policy, composed from the canonical movement and vision owners.</summary>
 public class DefaultTacticalSpace : ITacticalSpace
 {
     private readonly MovementRules movement;
     private readonly BattleVision vision;
-    public ReadOnlyContent Content { get; }
-    public GridRegistry Grids { get; }
-
-    public DefaultTacticalSpace(ReadOnlyContent content, GridRegistry grids)
+    public ReadOnlyContent Content
     {
-        movement = new MovementRules(content, grids);
+        get;
+    }
+    public GridRegistry Grids
+    {
+        get;
+    }
+
+    public DefaultTacticalSpace(TacticalSpaceRules rules)
+    {
+        movement = new MovementRules(new MovementRuleServices(rules.Content, rules.Grids));
         vision = new BattleVision(movement);
-        Content = content;
-        Grids = grids;
+        Content = rules.Content;
+        Grids = rules.Grids;
     }
 
     // Source defaults call their underlying rule functions, not virtual sibling methods.

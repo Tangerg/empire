@@ -11,7 +11,7 @@ namespace Empire.Application;
 /// <summary>Packaged runtime-content and real application lifecycle smoke, without source-test fixtures.</summary>
 public partial class ReleaseDiagnostics : Node
 {
-    private readonly List<CandidateShadowCache> lighting = new();
+    private readonly List<ShadowCache> lighting = new();
     private int assertions;
     private int documents;
     private int textures;
@@ -27,16 +27,23 @@ public partial class ReleaseDiagnostics : Node
             await CheckApplication();
         }
         catch (Exception error) { GD.PushError(error.ToString()); failed = true; }
-        foreach (var child in GetChildren()) { RemoveChild(child); child.QueueFree(); }
+        foreach (var child in GetChildren())
+        {
+            RemoveChild(child);
+            child.QueueFree();
+        }
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-        GC.Collect(); GC.WaitForPendingFinalizers(); GC.Collect();
+        GC.Collect();
+        GC.WaitForPendingFinalizers();
+        GC.Collect();
         if (lighting.Any(cache => !cache.IsDisposed || cache.TextureCount != 0))
         {
             GD.PushError("A battle lighting cache survived queued scene teardown.");
             failed = true;
         }
-        if (!failed) GD.Print($"RELEASE_DIAGNOSTICS_OK {assertions} assertions; {documents} runtime JSON documents; {textures} textures; real story/choice/battle/move/save/load/restart/camp lifecycle and clean teardown. Not visual or campaign-outcome acceptance.");
+        if (!failed)
+            GD.Print($"RELEASE_DIAGNOSTICS_OK {assertions} assertions; {documents} runtime JSON documents; {textures} textures; real story/choice/battle/move/save/load/restart/camp lifecycle and clean teardown. Not visual or campaign-outcome acceptance.");
         GetTree().Quit(failed ? 1 : 0);
     }
 
@@ -45,18 +52,25 @@ public partial class ReleaseDiagnostics : Node
         var paths = new HashSet<string>(StringComparer.Ordinal);
         void Collect(JsonNode? node)
         {
-            if (node is JsonObject obj) foreach (var entry in obj) Collect(entry.Value);
-            else if (node is JsonArray array) foreach (var value in array) Collect(value);
+            if (node is JsonObject obj)
+                foreach (var entry in obj)
+                    Collect(entry.Value);
+            else if (node is JsonArray array)
+                foreach (var value in array)
+                    Collect(value);
             else if (node is JsonValue scalar && scalar.TryGetValue<string>(out var text)
-                && text.StartsWith("res://assets/", StringComparison.Ordinal) && text.EndsWith(".png", StringComparison.Ordinal)) paths.Add(text);
+                && text.StartsWith("res://assets/", StringComparison.Ordinal) && text.EndsWith(".png", StringComparison.Ordinal))
+                paths.Add(text);
         }
         void ReadDirectory(string path)
         {
             foreach (var name in DirAccess.GetFilesAt(path).Where(name => name.EndsWith(".json", StringComparison.Ordinal)))
             {
-                Collect(PresentationJson.Load<JsonNode>(path + "/" + name)); documents++;
+                Collect(PresentationJson.Load<JsonNode>(path + "/" + name));
+                documents++;
             }
-            foreach (var name in DirAccess.GetDirectoriesAt(path)) ReadDirectory(path + "/" + name);
+            foreach (var name in DirAccess.GetDirectoriesAt(path))
+                ReadDirectory(path + "/" + name);
         }
         ReadDirectory("res://data");
         // The authored catalog also records unshipped candidate/holdout atlas specs.
@@ -70,7 +84,8 @@ public partial class ReleaseDiagnostics : Node
             textures++;
         }
         Require(StoryDocument.Load(Empire.Localization.GodotTextCatalog.LoadSimplifiedChinese()).Stories.Count > 0, "Authored story data is absent.");
-        _ = AssetCatalog.Load(); _ = WorldMaterialsManifest.Load();
+        _ = AssetCatalog.Load();
+        _ = WorldMaterialsManifest.Load();
     }
 
     private async Task CheckApplication()
@@ -81,7 +96,8 @@ public partial class ReleaseDiagnostics : Node
         Require(menu.Presented is { CanContinue: false }, "Fresh package unexpectedly offered Continue.");
         Require(menu.RenderingDiagnostics.Count == 0, "Title art did not resolve: " + string.Join("; ", menu.RenderingDiagnostics));
         Press(Button(menu, "NewCampaign"));
-        var beats = 0; var choices = 0;
+        var beats = 0;
+        var choices = 0;
         while (View<Control>(game) is StoryScreen story && beats + choices < 128)
         {
             Require(story.RenderingDiagnostics.Count == 0, "Story art did not resolve: " + string.Join("; ", story.RenderingDiagnostics));
@@ -90,7 +106,11 @@ public partial class ReleaseDiagnostics : Node
                 Press(Descendants(story).OfType<Button>().First(button => button.Name.ToString().StartsWith("Choice_", StringComparison.Ordinal)));
                 choices++;
             }
-            else { Press(Button(story, "StoryPrimary")); beats++; }
+            else
+            {
+                Press(Button(story, "StoryPrimary"));
+                beats++;
+            }
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         }
         var staging = View<CampaignStagingScreen>(game);
@@ -109,20 +129,21 @@ public partial class ReleaseDiagnostics : Node
         Press(Button(battle, text: "保存"));
         JsonObject ReadManual() => EcmaJson.Parse(File.ReadAllText(manual))!.AsObject();
         var opening = ReadManual();
-        var engine = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
         var text = Empire.Localization.GodotTextCatalog.LoadSimplifiedChinese();
         var presentationText = SessionPresentationText.Compose(new SessionTextRules(engine, text),
             PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json"),
             Godot.FileAccess.GetFileAsString("res://data/grayflag-battle-text.json"),
             Godot.FileAccess.GetFileAsString("res://data/grayflag-content-text.json"));
-        var savedSession = GrayFlagSession.FromSave(engine, presentationText, opening["battle"]!, opening["events"]!.AsArray());
+        var savedSession = GrayFlagSession.FromSave(new(engine, presentationText), opening["battle"]!, opening["events"]!.AsArray());
         var openingHash = StateDigest.Hash(savedSession.Snapshot());
         var queries = savedSession.GetTacticalQueries(0);
         var move = queries.Actors().SelectMany(id => queries.MoveStops(id)
             .Where(at => at != queries.Unit(id)!.At && queries.CommandsAt(id, at) is { Count: 1 } commands && commands[0].SelfTargeted)
             .Select(at => (Origin: queries.Unit(id)!.At, Destination: at))).First();
         battle.Board.AdvanceAnimationsAutomatically = false;
-        battle.SelectCell(move.Origin); battle.SelectCell(move.Destination);
+        battle.SelectCell(move.Origin);
+        battle.SelectCell(move.Destination);
         battle.Board.AdvancePresentation(100);
         Require(battle.DisplayedRevision > 0 && !battle.IsInputBlocked, "Real battle move did not commit and settle.");
         Press(Button(battle, text: "保存"));
@@ -162,8 +183,18 @@ public partial class ReleaseDiagnostics : Node
         .Single(button => name is not null ? button.Name == name : button.Text == text);
     private static IEnumerable<Node> Descendants(Node root)
     {
-        foreach (var child in root.GetChildren()) { yield return child; foreach (var next in Descendants(child)) yield return next; }
+        foreach (var child in root.GetChildren())
+        {
+            yield return child;
+            foreach (var next in Descendants(child))
+                yield return next;
+        }
     }
     private static void Press(Button button) => button.EmitSignal(Godot.Button.SignalName.Pressed);
-    private void Require(bool condition, string message) { assertions++; if (!condition) throw new InvalidOperationException(message); }
+    private void Require(bool condition, string message)
+    {
+        assertions++;
+        if (!condition)
+            throw new InvalidOperationException(message);
+    }
 }

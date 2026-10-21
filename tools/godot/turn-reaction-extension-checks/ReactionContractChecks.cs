@@ -14,7 +14,12 @@ static class ReactionContractChecks
         foreach (var renamed in new[] { false, true })
         {
             var id = renamed ? "test.support" : "support";
-            var behavior = support with { Id = id, TriggeredRankProgress = 37, SupportAttackMultiplier = 0.25 };
+            var behavior = support with
+            {
+                Id = id,
+                TriggeredRankProgress = 37,
+                SupportAttackMultiplier = 0.25
+            };
             var plugin = new EnginePlugin("test.support-policy", 1, context => context.Replace(Keys.Reactions,
                 context.Require(Keys.Reactions).Clone().Replace(behavior)), overrides: [Keys.Reactions], requiresCapabilities: [Keys.Reactions]);
             var engine = BattleEngineFactory.Create(new ReadOnlyContent(packs), [plugin]);
@@ -34,11 +39,16 @@ static class ReactionContractChecks
             level["units"]!.AsArray().Add(new JsonObject { ["unit"] = "soldier", ["owner"] = 1, ["x"] = 2, ["y"] = 4, ["reaction"] = id });
             var battle = engine.CreateBattle(level, 321);
             state = battle.Snapshot();
-            var attacker = state["units"]![0]!.AsObject(); var defender = state["units"]![1]!.AsObject();
+            var attacker = state["units"]![0]!.AsObject();
+            var defender = state["units"]![1]!.AsObject();
             var plan = engine.Combat.Forecast(state, attacker, TacticalQueries.Position(defender));
             check(plan.SupportAttack is not null, id + " registered support attack selection");
             check(plan.SupportAttack!.Damage.Modifiers.Any(modifier => modifier.Id == "reaction.support-attack" && modifier.Value == 0.25), id + " registered support attack modifier");
-            var disabled = behavior with { SupportAttackMultiplier = null, TriggeredRankProgress = 0 };
+            var disabled = behavior with
+            {
+                SupportAttackMultiplier = null,
+                TriggeredRankProgress = 0
+            };
             var disabledEngine = BattleEngineFactory.Create(engine.Catalog, [new EnginePlugin("test.disable-support", 1,
                 context => context.Replace(Keys.Reactions, context.Require(Keys.Reactions).Clone().Replace(disabled)),
                 overrides: [Keys.Reactions], requiresCapabilities: [Keys.Reactions])]);
@@ -48,7 +58,8 @@ static class ReactionContractChecks
             var recorder = engine.RecordBattle(state);
             var action = new JsonObject
             {
-                ["kind"] = "command", ["unit"] = 1,
+                ["kind"] = "command",
+                ["unit"] = 1,
                 ["path"] = new JsonArray(new JsonObject { ["x"] = 2, ["y"] = 3 }),
                 ["command"] = new JsonObject { ["ability"] = "attack", ["target"] = new JsonObject { ["x"] = 3, ["y"] = 3 }, ["weapon"] = "soldier_sword" },
             };

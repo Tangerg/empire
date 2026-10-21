@@ -30,8 +30,11 @@ public partial class LightingLifetimeChecks : Node
             }
             StandaloneOwners();
             FailedTerrainConstruction();
-            for (var cycle = 0; cycle < 3; cycle++) await ScreenLifetime(cycle);
-            GC.Collect(); GC.WaitForPendingFinalizers(); GC.Collect();
+            for (var cycle = 0; cycle < 3; cycle++)
+                await ScreenLifetime(cycle);
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             GD.Print($"Lighting lifetime checks passed: {_checks} assertions, 3 real-session load/restart/scene-change cycles.");
             GetTree().Quit();
@@ -43,13 +46,14 @@ public partial class LightingLifetimeChecks : Node
     {
         for (var index = 0; index < 20; index++)
         {
-            var contact = CandidateBoardLighting.CreateStructureContact(new(80, 96), .8f);
+            var contact = BoardLighting.CreateStructureContact(new(80, 96), .8f);
             var texture = contact.Texture;
             Require(GodotObject.IsInstanceValid(texture), "Standalone contact texture was not created.");
             contact.Free();
             Require(!GodotObject.IsInstanceValid(texture), "Standalone contact must explicitly dispose its managed texture wrapper before shutdown.");
         }
-        var unit = CandidateBoardLighting.CreateUnitContact(); var unitTexture = unit.Texture;
+        var unit = BoardLighting.CreateUnitContact();
+        var unitTexture = unit.Texture;
         unit.Free();
         Require(!GodotObject.IsInstanceValid(unitTexture), "Standalone unit contact lacks deterministic texture ownership.");
         var gauge = (Sprite2D)DynamicStateView.CreateGauge(40, 100);
@@ -79,24 +83,30 @@ public partial class LightingLifetimeChecks : Node
         Require(GodotObject.IsInstanceValid(borrowedTexture), "Sprite teardown must preserve borrowed texture ownership.");
         var materials = WorldMaterialsManifest.Load();
         var level = BattleTextChecks.OpeningLevel();
-        var state = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json")).CreateBattle(level).Snapshot();
+        var state = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json")).CreateBattle(level).Snapshot();
         var map = state["map"]!.AsObject();
-        var lights = CandidateBoardLighting.CreateField(new(map["width"]!.GetValue<int>(), map["height"]!.GetValue<int>()),
+        var lights = BoardLighting.CreateField(new(map["width"]!.GetValue<int>(), map["height"]!.GetValue<int>()),
             map["tiles"]!.AsArray().Select(EcmaJson.ReadString).ToArray(), materials);
         var textures = lights.Hearths.GetChildren().OfType<Sprite2D>().Select(sprite => sprite.Texture).Append(lights.Sunlight.Texture).ToArray();
-        lights.Hearths.Free(); lights.Sunlight.Free();
+        lights.Hearths.Free();
+        lights.Sunlight.Free();
         Require(textures.All(texture => !GodotObject.IsInstanceValid(texture)), "Unshared field lights must release every texture wrapper deterministically.");
-        using var cache = new CandidateShadowCache();
-        var first = CandidateBoardLighting.CreateStructureContact(new(80, 96), .8f, cache);
-        var second = CandidateBoardLighting.CreateStructureContact(new(80, 96), .8f, cache);
+        using var cache = new ShadowCache();
+        var first = BoardLighting.CreateStructureContact(new(80, 96), .8f, cache);
+        var second = BoardLighting.CreateStructureContact(new(80, 96), .8f, cache);
         var shared = first.Texture;
         Require(ReferenceEquals(shared, second.Texture) && cache.TextureCount == 1, "Equal contacts must reuse one board-owned texture.");
         first.Free();
         Require(GodotObject.IsInstanceValid(shared), "A shared contact node must not dispose its board-owned texture.");
-        second.Free(); cache.Dispose(); cache.Dispose();
+        second.Free();
+        cache.Dispose();
+        cache.Dispose();
         Require(cache.IsDisposed && cache.TextureCount == 0 && !GodotObject.IsInstanceValid(shared), "Board resource disposal must be complete and idempotent.");
         var rejected = false;
-        try { CandidateBoardLighting.CreateStructureContact(new(80, 96), .8f, cache); }
+        try
+        {
+            BoardLighting.CreateStructureContact(new(80, 96), .8f, cache);
+        }
         catch (ObjectDisposedException) { rejected = true; }
         Require(rejected, "A queued caller must not resurrect a released board resource owner.");
     }
@@ -140,7 +150,7 @@ public partial class LightingLifetimeChecks : Node
         var level = BattleTextChecks.OpeningLevel();
         var width = level["width"]!.GetValue<int>();
         var height = level["height"]!.GetValue<int>();
-        var engine = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
         var tiles = engine.CreateState(level)["map"]!["tiles"]!.AsArray().Select(EcmaJson.ReadString).ToArray();
         foreach (var missing in new[] { false, true })
         {
@@ -173,7 +183,10 @@ public partial class LightingLifetimeChecks : Node
                 else
                 {
                     var rejected = false;
-                    try { terrain.Render(failureTiles, new(width, height)); }
+                    try
+                    {
+                        terrain.Render(failureTiles, new(width, height));
+                    }
                     catch (InvalidOperationException error) when (error.Message.StartsWith("Invalid world material geometry:", StringComparison.Ordinal))
                     {
                         rejected = true;
@@ -189,33 +202,40 @@ public partial class LightingLifetimeChecks : Node
     {
         var level = BattleTextChecks.OpeningLevel();
         var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
-        var engine = new GrayFlagEngine(packs);
+        var engine = new BattleEngine(packs);
         var text = GodotTextCatalog.LoadSimplifiedChinese();
         var presentation = BattleTextChecks.Session(engine, text);
         var battleText = presentation.Battle;
-        var assets = AssetCatalog.Load(); var environment = EnvironmentCatalog.Load(); var scene = AuthoredScene.Load();
-        var screen = new BattleScreen(); AddChild(screen);
+        var assets = AssetCatalog.Load();
+        var environment = EnvironmentCatalog.Load();
+        var scene = AuthoredScene.Load();
+        var screen = new BattleScreen();
+        AddChild(screen);
         screen.Board.AdvanceAnimationsAutomatically = false;
         void Bind(GrayFlagSession session)
         {
-            screen.BindSession(text, battleText, session, assets, level, scene, environment, facing => facing == "west");
+            screen.BindSession(new(text, battleText, session, new(assets, environment, facing => facing == "west", null)), level, scene);
             screen.ConfigureDynamicState(engine.Catalog);
         }
-        var session = new GrayFlagSession(engine, presentation, level); Bind(session);
+        var session = new GrayFlagSession(new(engine, presentation), level);
+        Bind(session);
         // Exercise the separate unshared field-light owners on one actual screen.
-        if (cycle == 0) screen.ConfigureTerrain(WorldMaterialsManifest.Load());
+        if (cycle == 0)
+            screen.ConfigureTerrain(WorldMaterialsManifest.Load());
         var cache = screen.Board.LightingResources;
         var contact = screen.Board.GetNode<Node2D>("CanonicalProjection").GetChildren().OfType<Node2D>()
             .Select(node => node.GetNodeOrNull<Sprite2D>("SourceStructureContact")).First(sprite => sprite is not null)!;
-        var contactTexture = contact.Texture; var count = cache.TextureCount;
-        for (var index = 0; index < 8; index++) screen.Board.RenderState(session.Snapshot());
+        var contactTexture = contact.Texture;
+        var count = cache.TextureCount;
+        for (var index = 0; index < 8; index++)
+            screen.Board.RenderState(session.Snapshot());
         Require(cache.TextureCount == count, "Repeated canonical projections grew the lighting cache.");
         var replacementContact = screen.Board.GetNode<Node2D>("CanonicalProjection").GetChildren().OfType<Node2D>()
             .Select(node => node.GetNodeOrNull<Sprite2D>("SourceStructureContact")).First(sprite => sprite is not null)!;
         Require(ReferenceEquals(contactTexture, replacementContact.Texture), "Reprojection lost shared contact identity.");
         TacticalSceneInputChecks.Move(screen, session);
         Require(screen.Board.IsPresenting, "Real legal order did not start the cancellation fixture.");
-        var loaded = GrayFlagSession.FromSave(engine, presentation, EcmaJson.Parse(EcmaJson.Stringify(session.Save()))!);
+        var loaded = GrayFlagSession.FromSave(new(engine, presentation), EcmaJson.Parse(EcmaJson.Stringify(session.Save()))!);
         Bind(loaded);
         Require(cache.IsDisposed && !GodotObject.IsInstanceValid(contactTexture), "Load/rebind did not release the old board resources.");
         var loadedCache = screen.Board.LightingResources;
@@ -223,7 +243,7 @@ public partial class LightingLifetimeChecks : Node
         Require(!screen.Board.IsPresenting && screen.DisplayedRevision == 0 && !loadedCache.IsDisposed,
             "Old playback callback resurrected/released the loaded view.");
         // Restart is a new canonical session, not a fake state rewind.
-        var restarted = new GrayFlagSession(engine, presentation, level);
+        var restarted = new GrayFlagSession(new(engine, presentation), level);
         Bind(restarted);
         Require(loadedCache.IsDisposed && !screen.Board.LightingResources.IsDisposed, "Restart did not replace exactly one resource owner.");
         screen.ConfigureTerrain(WorldMaterialsManifest.Load());
@@ -232,7 +252,8 @@ public partial class LightingLifetimeChecks : Node
         Require(exclusiveTextures.Length > 0 && generatedMaterials.Length > 0,
             "The real board lifecycle must exercise procedural terrain and generated materials.");
         var exitingCache = screen.Board.LightingResources;
-        var saves = 0; screen.BindApplicationActions(onSave: () => saves++);
+        var saves = 0;
+        screen.BindApplicationActions(onSave: () => saves++);
         var staleSave = Buttons(screen).Single(button => button.Text == "保存");
         TacticalSceneInputChecks.Move(screen, restarted);
         Require(screen.Board.IsPresenting, "Restarted view did not start a live queued transition.");
@@ -247,7 +268,9 @@ public partial class LightingLifetimeChecks : Node
             "Queued board teardown retained exclusive procedural textures before GC.");
         Require(generatedMaterials.All(material => !GodotObject.IsInstanceValid(material)),
             "Queued board teardown retained exclusive generated materials before GC.");
-        GC.Collect(); GC.WaitForPendingFinalizers(); GC.Collect();
+        GC.Collect();
+        GC.WaitForPendingFinalizers();
+        GC.Collect();
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         GD.Print($"Lighting lifecycle cycle {cycle + 1}: load/rebind/restart/queued exit released resources.");
     }
@@ -256,5 +279,10 @@ public partial class LightingLifetimeChecks : Node
         .SelectMany(child => new[] { child }.Concat(Descendants(child)));
     private static System.Collections.Generic.IEnumerable<Button> Buttons(Node node) => node.GetChildren()
         .SelectMany(child => (child is Button button ? new[] { button } : Array.Empty<Button>()).Concat(Buttons(child)));
-    private void Require(bool condition, string message) { _checks++; if (!condition) throw new InvalidOperationException(message); }
+    private void Require(bool condition, string message)
+    {
+        _checks++;
+        if (!condition)
+            throw new InvalidOperationException(message);
+    }
 }

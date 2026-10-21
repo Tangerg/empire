@@ -6,6 +6,7 @@ if [[ $# -ne 0 ]]; then
   printf "Usage: %s\n" "$0" >&2
   exit 2
 fi
+bash tools/godot/format-native.sh --check
 python3 tools/godot/check-source-metadata.py
 # Bound each native process; a stalled process is a failed gate, never a PASS.
 export EMPIRE_CHECK_TIMEOUT_SECONDS="${EMPIRE_CHECK_TIMEOUT_SECONDS:-300}"

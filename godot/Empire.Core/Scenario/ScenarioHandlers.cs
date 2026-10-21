@@ -20,8 +20,14 @@ public sealed class ScenarioConditionContext(JsonObject state, ScenarioCondition
 
 public sealed record ScenarioConditionHandler(string Kind, Func<ScenarioConditionContext, JsonObject, bool> Evaluate)
 {
-    public Func<JsonObject, IReadOnlyList<JsonObject>>? Children { get; init; }
-    public Func<JsonObject, PayloadReferences>? References { get; init; }
+    public Func<JsonObject, IReadOnlyList<JsonObject>>? Children
+    {
+        get; init;
+    }
+    public Func<JsonObject, PayloadReferences>? References
+    {
+        get; init;
+    }
 }
 
 public sealed class ScenarioConditionHandlerRegistry(IBattleRandomSource random)
@@ -48,14 +54,18 @@ public sealed class ScenarioEffectContext(ScenarioRules rules, JsonObject state,
     public IEnumerable<JsonObject> Standing(JsonObject selector)
     {
         foreach (var unit in Select(selector))
-            if (Tactics.TacticalQueries.UnitById(State, StateJson.Integer(unit, "id")) is not null) yield return unit;
+            if (Tactics.TacticalQueries.UnitById(State, StateJson.Integer(unit, "id")) is not null)
+                yield return unit;
     }
 }
 
 public sealed record ScenarioEffectHandler(string Kind, Action<ScenarioEffectContext, JsonObject> Apply)
 {
     public Func<JsonObject, IReadOnlyList<string>> Signals { get; init; } = _ => Array.Empty<string>();
-    public Func<JsonObject, PayloadReferences>? References { get; init; }
+    public Func<JsonObject, PayloadReferences>? References
+    {
+        get; init;
+    }
 }
 
 public sealed class ScenarioEffectHandlerRegistry() : KeyedRegistry<ScenarioEffectHandler, ScenarioEffectHandlerRegistry>("scenario effect handler"), IRulePayloadRegistry
@@ -73,7 +83,8 @@ public sealed class ScenarioEffectHandlerRegistry() : KeyedRegistry<ScenarioEffe
     public PayloadReferences References(JsonObject effect)
     {
         var handler = TryGet(StateJson.Text(effect, "type"));
-        if (handler is null) return new();
+        if (handler is null)
+            return new();
         var references = handler.References?.Invoke(effect) ?? new();
         if (handler.Signals(effect).Any(string.IsNullOrWhiteSpace))
             references.Fault("Authored scenario signal identities must be nonempty.");

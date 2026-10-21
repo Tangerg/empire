@@ -9,9 +9,15 @@ namespace Empire.Core;
 public sealed record ActionRefusal
 {
     [JsonPropertyName("code")]
-    public string Code { get; }
+    public string Code
+    {
+        get;
+    }
     [JsonPropertyName("details")]
-    public JsonElement Details { get; }
+    public JsonElement Details
+    {
+        get;
+    }
 
     public ActionRefusal(string code, JsonObject? details = null)
     {

@@ -13,8 +13,11 @@ static class DispositionContractChecks
 {
     internal static JsonObject Level(string grid) => new()
     {
-        ["schema"] = 2, ["id"] = "native.disposition", ["name"] = "Disposition contracts",
-        ["width"] = 7, ["height"] = 7,
+        ["schema"] = 2,
+        ["id"] = "native.disposition",
+        ["name"] = "Disposition contracts",
+        ["width"] = 7,
+        ["height"] = 7,
         ["terrain"] = new JsonArray(Enumerable.Repeat(".......", 7).Select(row => (JsonNode?)JsonValue.Create(row)).ToArray()),
         ["players"] = new JsonArray(
             new JsonObject { ["id"] = 1, ["name"] = "One", ["team"] = 1, ["controller"] = "human", ["color"] = "#ffffff" },
@@ -53,14 +56,26 @@ static class DispositionContractChecks
                 new JsonObject { ["kind"] = "face", ["unit"] = 1, ["facing"] = grid.Id == "hex" ? "north" : "hexEast" },
             })
             {
-                var before = battle.Snapshot(); var hash = battle.StateHash;
-                try { battle.Dispatch(invalid); throw new Exception("invalid disposition command committed"); }
+                var before = battle.Snapshot();
+                var hash = battle.StateHash;
+                try
+                {
+                    battle.Dispatch(invalid);
+                    throw new Exception("invalid disposition command committed");
+                }
                 catch (Exception error) when (error is IllegalActionException or DomainInvariantException)
                 {
                     check(error is IllegalActionException, "invalid disposition is an illegal action");
                     var expectedRefusal = StateJson.Text(invalid, "kind") == "reaction"
-                        ? new ActionRefusal("tactics.reaction_unknown", new() { ["stance"] = invalid["stance"]!.DeepClone() })
-                        : new ActionRefusal("tactics.facing_invalid", new() { ["grid"] = grid.Id, ["facing"] = invalid["facing"]!.DeepClone() });
+                        ? new ActionRefusal("tactics.reaction_unknown", new()
+                        {
+                            ["stance"] = invalid["stance"]!.DeepClone()
+                        })
+                        : new ActionRefusal("tactics.facing_invalid", new()
+                        {
+                            ["grid"] = grid.Id,
+                            ["facing"] = invalid["facing"]!.DeepClone()
+                        });
                     equal(JsonSerializer.SerializeToNode(((IllegalActionException)error).Refusal),
                         JsonSerializer.SerializeToNode(expectedRefusal), "invalid disposition semantic code and details");
                 }
@@ -89,11 +104,19 @@ static class DispositionContractChecks
             {
                 var corrupt = (JsonObject)saved.DeepClone();
                 corrupt["state"]!["units"]![0]![key] = "absent";
-                try { engine.LoadBattle(corrupt); throw new Exception("invalid saved disposition accepted"); }
+                try
+                {
+                    engine.LoadBattle(corrupt);
+                    throw new Exception("invalid saved disposition accepted");
+                }
                 catch (StoredDocumentException error) { check(error.Message.Length > 0, "invalid saved " + key + " rejected"); }
                 var invalidLevel = (JsonObject)level.DeepClone();
                 invalidLevel["units"]![0]![key] = "absent";
-                try { engine.CreateBattle(invalidLevel); throw new Exception("invalid authored disposition accepted"); }
+                try
+                {
+                    engine.CreateBattle(invalidLevel);
+                    throw new Exception("invalid authored disposition accepted");
+                }
                 catch (BattleLevelException error) { check(error.Message.Length > 0, "invalid authored " + key + " rejected"); }
             }
             foreach (var container in new[] { "embarkedUnits", "markers" })
@@ -110,31 +133,51 @@ static class DispositionContractChecks
                 var archivedSave = engine.SaveBattle(archived, "2026-10-21T00:00:00.000Z");
                 var snapshot = archivedSave["state"]![container]![0]![container == "embarkedUnits" ? "unit" : "fallenUnit"]!.AsObject();
                 snapshot["facing"] = "absent";
-                try { engine.LoadBattle(archivedSave); throw new Exception("invalid archived facing accepted"); }
+                try
+                {
+                    engine.LoadBattle(archivedSave);
+                    throw new Exception("invalid archived facing accepted");
+                }
                 catch (StoredDocumentException error)
-                { check(error.Message.Contains("has a facing not admitted", StringComparison.Ordinal), container + " uses canonical facing admission"); }
+                {
+                    check(error.Message.Contains("has a facing not admitted", StringComparison.Ordinal), container + " uses canonical facing admission");
+                }
             }
-            var state = battle.Snapshot(); var actor = state["units"]![0]!.AsObject(); var events = new JsonArray();
+            var state = battle.Snapshot();
+            var actor = state["units"]![0]!.AsObject();
+            var events = new JsonArray();
             engine.Commands.TurnToward(state, actor, new(2, 3), new(2, 2), value => events.Add(value));
             check(StateJson.Text(actor, "facing") == grid.Toward(new(2, 3), new(2, 2)), grid.Id + " automatic facing uses composed tiling");
             var beforeInternal = (JsonObject)state.DeepClone();
-            try { UnitDisposition.Face(grid, actor, "absent", value => events.Add(value)); throw new Exception("invalid internal facing accepted"); }
+            try
+            {
+                UnitDisposition.Face(grid, actor, "absent", value => events.Add(value));
+                throw new Exception("invalid internal facing accepted");
+            }
             catch (DomainInvariantException error) { check(error.Message.Contains("no direction", StringComparison.Ordinal), "internal facing invariant failure"); }
             equal(state, beforeInternal, "internal invalid facing has no write");
-            try { UnitDisposition.React(engine.Reactions, actor, "absent", value => events.Add(value)); throw new Exception("invalid internal reaction accepted"); }
+            try
+            {
+                UnitDisposition.React(engine.Reactions, actor, "absent", value => events.Add(value));
+                throw new Exception("invalid internal reaction accepted");
+            }
             catch (DomainInvariantException error) { check(error.Message.Contains("unknown reaction stance", StringComparison.Ordinal), "internal reaction invariant failure"); }
             equal(state, beforeInternal, "internal invalid reaction has no write");
             CheckSpawns(engine, level, grid, check, equal);
         }
     }
 
-    private static void CheckSpawns(GrayFlagEngine engine, JsonObject level, ITacticalGrid grid,
+    private static void CheckSpawns(BattleEngine engine, JsonObject level, ITacticalGrid grid,
         Action<bool, string> check, Action<JsonNode?, JsonNode?, string> equal)
     {
         var seed = new JsonObject
         {
-            ["unit"] = "soldier", ["owner"] = 1, ["x"] = 1, ["y"] = 1,
-            ["reaction"] = "test.stance", ["facing"] = grid.Directions[0].Id,
+            ["unit"] = "soldier",
+            ["owner"] = 1,
+            ["x"] = 1,
+            ["y"] = 1,
+            ["reaction"] = "test.stance",
+            ["facing"] = grid.Directions[0].Id,
         };
         var state = engine.CreateState(level, 123);
         var initial = (JsonObject)state.DeepClone();

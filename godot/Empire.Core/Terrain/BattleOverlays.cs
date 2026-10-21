@@ -31,7 +31,8 @@ public sealed class BattleOverlays
     {
         var overlays = Array(Object(state["scenario"], "scenario")["overlays"], "overlays");
         var found = Objects(overlays, "overlays").FirstOrDefault(overlay => Text(overlay, "id") == id);
-        if (found is null) return false;
+        if (found is null)
+            return false;
         overlays.Remove(found);
         emit(new JsonObject { ["type"] = "overlayRemoved", ["overlay"] = id });
         return true;
@@ -41,10 +42,12 @@ public sealed class BattleOverlays
     {
         foreach (var overlay in Objects(Object(state["scenario"], "scenario")["overlays"], "overlays").ToArray())
         {
-            if (overlay["remainingRounds"] is null) continue;
+            if (overlay["remainingRounds"] is null)
+                continue;
             var remaining = Number(overlay["remainingRounds"], "remainingRounds") - 1;
             overlay["remainingRounds"] = remaining;
-            if (remaining <= 0) Remove(state, Text(overlay, "id"), emit);
+            if (remaining <= 0)
+                Remove(state, Text(overlay, "id"), emit);
         }
     }
 }

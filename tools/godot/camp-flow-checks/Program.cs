@@ -14,14 +14,15 @@ JsonNode Read(string file) => EcmaJson.Parse(File.ReadAllText(Path.Combine(root,
 var definition = Read("grayflag-campaign.json").AsObject();
 var levels = Read("grayflag-campaign-levels.json").AsArray();
 var packs = Read("content-packs.json").AsArray();
-var engine = new GrayFlagEngine(packs);
+var engine = new BattleEngine(packs);
 var presentationText = FixtureBattleText.Session(root, engine, gameText);
 GrayFlagCampaign Create() => new(definition, levels, engine, presentationText);
 var assertions = 0;
 void Require(bool condition, string message)
 {
     assertions++;
-    if (!condition) throw new Exception(message);
+    if (!condition)
+        throw new Exception(message);
 }
 void Same(JsonNode? actual, JsonNode? expected, string message)
 {
@@ -45,14 +46,18 @@ void Act(GrayFlagCampaign campaign)
 {
     var battle = campaign.Battle!;
     var action = engine.Ai.ChooseAction(battle.Snapshot());
-    if (battle.IsComputerTurn) Require(battle.AdvanceComputer(), "Computer action was not advanced");
-    else Require(battle.Dispatch(EcmaJson.ToElement(action), battle.GetSnapshot().Revision).Accepted, "Native planned action was refused");
+    if (battle.IsComputerTurn)
+        Require(battle.AdvanceComputer(), "Computer action was not advanced");
+    else
+        Require(battle.Dispatch(EcmaJson.ToElement(action), battle.GetSnapshot().Revision).Accepted, "Native planned action was refused");
 }
 var campaign = Create();
 while (campaign.Node()["type"]!.GetValue<string>() != "battle")
 {
-    if (campaign.Node()["type"]!.GetValue<string>() == "choice") campaign.Choose(campaign.Choices()[0]!["id"]!.GetValue<string>());
-    else campaign.Advance();
+    if (campaign.Node()["type"]!.GetValue<string>() == "choice")
+        campaign.Choose(campaign.Choices()[0]!["id"]!.GetValue<string>());
+    else
+        campaign.Advance();
 }
 var stagingSave = campaign.Save();
 var beforeBeginning = campaign.Snapshot();
@@ -77,7 +82,8 @@ Same(campaign.RequestSnapshot(), request, "Exit must retain pending request iden
 Same(campaign.Battle!.Snapshot(), initial, "Exited battle must be staged from its opening");
 Require(campaign.Battle.Events.Count == 0, "Exit must not retain played event history for reentry");
 var campSave = campaign.Save();
-var restored = Create(); restored.Load(campSave);
+var restored = Create();
+restored.Load(campSave);
 Require(restored.AtCamp, "Camp save/load must preserve the camp screen");
 SameSave(restored.Save(), campSave, "Camp save must round-trip all canonical facts");
 restored.BeginBattle();
@@ -90,14 +96,23 @@ var snapshotBeforeInvalid = restored.Save();
 var invalidDocuments = new List<JsonObject>();
 foreach (var bad in new JsonNode[] { JsonValue.Create("true")!, JsonValue.Create(1)!, new JsonObject(), new JsonArray() })
 {
-    var malformed = campSave.DeepClone().AsObject(); malformed["mode"] = bad; invalidDocuments.Add(malformed);
+    var malformed = campSave.DeepClone().AsObject();
+    malformed["mode"] = bad;
+    invalidDocuments.Add(malformed);
 }
-var noRequest = stagingSave.DeepClone().AsObject(); noRequest["mode"] = "camp"; invalidDocuments.Add(noRequest);
-var wrongIdentity = campSave.DeepClone().AsObject(); wrongIdentity["campaign"]!["state"]!["pendingBattle"]!["requestId"] = "wrong"; invalidDocuments.Add(wrongIdentity);
+var noRequest = stagingSave.DeepClone().AsObject();
+noRequest["mode"] = "camp";
+invalidDocuments.Add(noRequest);
+var wrongIdentity = campSave.DeepClone().AsObject();
+wrongIdentity["campaign"]!["state"]!["pendingBattle"]!["requestId"] = "wrong";
+invalidDocuments.Add(wrongIdentity);
 foreach (var invalid in invalidDocuments)
 {
     var rejected = false;
-    try { restored.Load(invalid); }
+    try
+    {
+        restored.Load(invalid);
+    }
     catch (StoredDocumentException) { rejected = true; }
     Require(rejected, "Invalid camp save was accepted");
     SameSave(restored.Save(), snapshotBeforeInvalid, "Invalid camp load changed the current battle/campaign/AtCamp state");
@@ -105,9 +120,12 @@ foreach (var invalid in invalidDocuments)
 var actions = 0;
 while (restored.Battle.Snapshot()["phase"]!.GetValue<string>() != "over")
 {
-    if (++actions > 5000) throw new Exception("Real battle failed to terminate within diagnostic guard; not a pass");
-    if (restored.Battle.IsComputerTurn) Require(restored.Battle.AdvanceComputer(), "Enemy AI did not advance");
-    else Require(restored.Battle.Dispatch(EcmaJson.ToElement(new JsonObject { ["kind"] = "endTurn" }),
+    if (++actions > 5000)
+        throw new Exception("Real battle failed to terminate within diagnostic guard; not a pass");
+    if (restored.Battle.IsComputerTurn)
+        Require(restored.Battle.AdvanceComputer(), "Enemy AI did not advance");
+    else
+        Require(restored.Battle.Dispatch(EcmaJson.ToElement(new JsonObject { ["kind"] = "endTurn" }),
         restored.Battle.GetSnapshot().Revision).Accepted, "Passive human fixture must use legal end-turn orders");
 }
 var outcome = restored.BattleSummary().Outcome;
@@ -117,12 +135,15 @@ restored.RestartBattle();
 Same(restored.Battle.Snapshot(), initial, "Defeat retry did not restore the opening");
 Same(restored.Snapshot(), pendingRuntime, "Defeat retry must not enter campaign-failed");
 Require(!restored.AtCamp, "Defeat retry must return directly to battle");
-restored.Load(terminalSave); restored.ExitBattle();
+restored.Load(terminalSave);
+restored.ExitBattle();
 Require(restored.AtCamp, "Defeat exit must return to camp");
 Same(restored.Snapshot(), pendingRuntime, "Defeat exit must not complete a loss or change prior choices");
 Same(restored.RequestSnapshot(), request, "Defeat exit must retain original request");
 var lossCampSave = restored.Save();
-var lossReloaded = Create(); lossReloaded.Load(lossCampSave); lossReloaded.BeginBattle();
+var lossReloaded = Create();
+lossReloaded.Load(lossCampSave);
+lossReloaded.BeginBattle();
 Same(lossReloaded.Battle!.Snapshot(), initial, "Reloaded defeat camp must restart original battle");
 Same(lossReloaded.Snapshot(), pendingRuntime, "Reloaded defeat camp reentry changed campaign progress");
 Require(lossReloaded.Snapshot()["battleHistory"]!.AsArray().Count == 0, "Retry/exit must not record defeat as a completed battle");

@@ -15,21 +15,23 @@ public sealed record DynamicStanding(Node2D Node, int Layer, int Index);
 public sealed record DynamicStateProjection(Node2D Root, IReadOnlyList<DynamicStanding> Standing,
     IReadOnlyList<string> Diagnostics, int Structures, int Markers);
 
+public sealed record DynamicStateRules(AssetCatalog Assets, ReadOnlyContent Content, ShadowCache? Shadows);
+
 /// <summary>Read-only, replaceable view of live field objects. Authored scenery is never a state owner.</summary>
 public sealed class DynamicStateView
 {
     private readonly AssetCatalog assets;
     private readonly float markerOpacity = BoardDecorationDocument.Load().MarkerOpacity;
-    private readonly CandidateShadowCache? shadows;
+    private readonly ShadowCache? shadows;
     private readonly ReadOnlyContent content;
     private const string Ink = "#28231f";
     private const string Neutral = "#918b7d";
 
-    public DynamicStateView(AssetCatalog assets, ReadOnlyContent content, CandidateShadowCache? shadows = null)
+    public DynamicStateView(DynamicStateRules rules)
     {
-        this.assets = assets;
-        this.content = content;
-        this.shadows = shadows;
+        assets = rules.Assets;
+        content = rules.Content;
+        shadows = rules.Shadows;
     }
 
     public Node2D CreateUnitBadges(string type, double hp, bool done, double capture, double captureThreshold,
@@ -40,7 +42,8 @@ public sealed class DynamicStateView
         var result = new Node2D { Name = "Badges" };
         if (directionVector is { } direction)
         {
-            if (!direction.IsFinite()) throw new InvalidOperationException("Facing vector must be finite.");
+            if (!direction.IsFinite())
+                throw new InvalidOperationException("Facing vector must be finite.");
             var angle = Math.Atan2(direction.Y, direction.X);
             var facing = Svg(direction == Vector2.Zero
                 ? $"<circle cx=\"16\" cy=\"29.5\" r=\"1.5\" fill=\"{Ink}\" opacity=\"0.8\"/>"
@@ -49,7 +52,8 @@ public sealed class DynamicStateView
             result.AddChild(facing);
         }
         var maximum = Number(definition, "maxHp");
-        if (maximum > 0 && hp < maximum) result.AddChild(CreateGauge(hp, maximum));
+        if (maximum > 0 && hp < maximum)
+            result.AddChild(CreateGauge(hp, maximum));
         if (capture > 0)
         {
             var ratio = Math.Min(1, capture / captureThreshold);
@@ -57,7 +61,8 @@ public sealed class DynamicStateView
             gauge.SetMeta("ratio", ratio);
             result.AddChild(gauge);
         }
-        if (done) result.AddChild(Svg($"<rect width=\"32\" height=\"32\" fill=\"{Ink}\" opacity=\"0.35\"/>", "DoneShade"));
+        if (done)
+            result.AddChild(Svg($"<rect width=\"32\" height=\"32\" fill=\"{Ink}\" opacity=\"0.35\"/>", "DoneShade"));
         return result;
     }
 
@@ -84,15 +89,20 @@ public sealed class DynamicStateView
                 var disabled = structure["disabled"]!.GetValue<bool>();
                 var frame = hp <= maximum * 0.5 || disabled ? "damaged" : color is null ? "normal" : "captured";
                 RuntimeAsset? asset = null;
-                try { asset = assets.ResolveStructure(type); }
+                try
+                {
+                    asset = assets.ResolveStructure(type);
+                }
                 catch (MissingArtResourceException error) { diagnostics.Add($"Structure {id}: {error.Message}; using source rule-derived drawing."); }
                 if (asset is not null)
                 {
                     node.AddChild(assets.CreateSprite(asset, frame));
-                    node.AddChild(CandidateBoardLighting.CreateStructureContact(new(asset.FrameWidth, asset.FrameHeight), asset.PresentationScale, shadows));
-                    if (color is not null) node.AddChild(CreateOwnerBanner(color, shadows));
+                    node.AddChild(BoardLighting.CreateStructureContact(new(asset.FrameWidth, asset.FrameHeight), asset.PresentationScale, shadows));
+                    if (color is not null)
+                        node.AddChild(CreateOwnerBanner(color, shadows));
                 }
-                else node.AddChild(Svg(StructureMarkup(structure, definition, color), "RuleDerivedStructure"));
+                else
+                    node.AddChild(Svg(StructureMarkup(structure, definition, color), "RuleDerivedStructure"));
                 if (asset is not null || definition.GetProperty("targetable").GetBoolean())
                     node.AddChild(CreateGauge(hp, maximum));
                 node.SetMeta("structure_id", id);
@@ -120,7 +130,9 @@ public sealed class DynamicStateView
                     var sprite = new Sprite2D
                     {
                         Modulate = new Color(1, 1, 1, markerOpacity),
-                        Name = "AuthoredMarker", Texture = assets.CreateFrameTexture(asset, 0), Position = new Vector2(0, -15),
+                        Name = "AuthoredMarker",
+                        Texture = assets.CreateFrameTexture(asset, 0),
+                        Position = new Vector2(0, -15),
                         Scale = Vector2.One * (48f / Math.Max(asset.FrameWidth, asset.FrameHeight) / asset.PixelDensity),
                         TextureFilter = CanvasItem.TextureFilterEnum.Linear,
                     };
@@ -152,11 +164,12 @@ public sealed class DynamicStateView
         return node;
     }
 
-    public static Sprite2D CreateOwnerBanner(string color, CandidateShadowCache? shadows = null)
+    public static Sprite2D CreateOwnerBanner(string color, ShadowCache? shadows = null)
     {
         var banner = Svg(OwnerBanner(color), "OwnerBanner", new Rect2(-24, -8, 80, 60), shadows);
         banner.SetMeta("owner_color", color);
-        if (shadows is not null) banner.AddChild(CandidateSpriteShadows.Create(banner, CandidateShadowKind.OwnerBanner, 2, shadows));
+        if (shadows is not null)
+            banner.AddChild(SpriteShadows.Create(banner, ShadowKind.OwnerBanner, 2, shadows));
         return banner;
     }
 
@@ -169,7 +182,8 @@ public sealed class DynamicStateView
     private static double NameHash(string name, int salt)
     {
         var hash = 0x811c9dc5u ^ (uint)salt;
-        foreach (var letter in name) hash = unchecked((hash ^ letter) * 0x01000193u);
+        foreach (var letter in name)
+            hash = unchecked((hash ^ letter) * 0x01000193u);
         return (hash >> 8) / 16777216.0;
     }
     private static string Shade(string hex, double amount)
@@ -178,7 +192,7 @@ public sealed class DynamicStateView
         int Mix(float channel) => (int)Math.Clamp(Math.Floor((amount < 0 ? channel * 255 * (1 + amount) : channel * 255 + (255 - channel * 255) * amount) + 0.5), 0, 255);
         return $"#{Mix(color.R):x2}{Mix(color.G):x2}{Mix(color.B):x2}";
     }
-    private static Sprite2D Svg(string markup, string name, Rect2? bounds = null, CandidateShadowCache? cache = null)
+    private static Sprite2D Svg(string markup, string name, Rect2? bounds = null, ShadowCache? cache = null)
     {
         var view = bounds ?? new Rect2(0, 0, 32, 32);
         var source = $"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{F(view.Size.X)}\" height=\"{F(view.Size.Y)}\" viewBox=\"{F(view.Position.X)} {F(view.Position.Y)} {F(view.Size.X)} {F(view.Size.Y)}\">{markup}</svg>";
@@ -214,12 +228,19 @@ public sealed class DynamicStateView
         var id = Text(state, "type");
         var maximum = Number(definition, "maxHp");
         var ratio = maximum <= 0 ? 1 : Math.Clamp(Number(state, "hp") / maximum, 0, 1);
-        var raised = Math.Max(Number(definition, "obstructionHeight"), Text(definition, "cover") switch { "half" => 1.4, "full" => 2.8, _ => 0 });
+        var raised = Math.Max(Number(definition, "obstructionHeight"), Text(definition, "cover") switch
+        {
+            "half" => 1.4,
+            "full" => 2.8,
+            _ => 0
+        });
         var tones = new[] { "#85837d", "#77786f", "#948d80", "#6f7370", "#9c948a" };
         var disabled = state["disabled"]!.GetValue<bool>();
         var face = Shade(tones[(int)Math.Floor(NameHash(id, 0) * tones.Length) % tones.Length], disabled ? -0.32 : 0);
-        var top = Shade(face, 0.24); var side = Shade(face, -0.3);
-        var height = Math.Min(23, 9 + raised * 4); var crown = 27 - height;
+        var top = Shade(face, 0.24);
+        var side = Shade(face, -0.3);
+        var height = Math.Min(23, 9 + raised * 4);
+        var crown = 27 - height;
         var footing = Math.Floor((7.5 + NameHash(id, 3) * 3) * 100 + 0.5) / 100;
         var blocks = definition.GetProperty("blocksMovement").GetBoolean();
         var output = new StringBuilder();
@@ -230,7 +251,8 @@ public sealed class DynamicStateView
             for (var row = 0; row < courses; row++)
             {
                 var y = crown + 3.4 + row * (height - 4) / courses;
-                if (y > 26) continue;
+                if (y > 26)
+                    continue;
                 output.Append($"<path d=\"M3 {F(y)}h26\" stroke=\"{side}\" stroke-width=\"0.8\" opacity=\"0.6\"/><path d=\"M{(row % 2 == 0 ? 9 : 16)} {F(y)}v{F((height - 4) / courses)}\" stroke=\"{side}\" stroke-width=\"0.8\" opacity=\"0.5\"/>");
             }
         }
@@ -242,7 +264,8 @@ public sealed class DynamicStateView
         output.Append($"<rect x=\"2\" y=\"{F(Math.Min(24, crown + height - 6))}\" width=\"28\" height=\"2.4\" fill=\"{ownerColor ?? Neutral}\" opacity=\"{(blocks ? "0.85" : "0")}\"/>");
         for (var index = 0; index < Math.Floor((1 - ratio) * 3 + 0.5); index++)
             output.Append($"<path d=\"M{F(7 + NameHash(id, 40 + index) * 18)} {F(9 + NameHash(id, 50 + index) * 12)}l{F(1.5 - NameHash(id, 60 + index) * 3)} 4l2 3\" stroke=\"{Ink}\" stroke-width=\"1\" fill=\"none\" opacity=\"0.55\"/>");
-        if (disabled) output.Append($"<path d=\"M8 {F(crown + 3)}l16 16m0-16-16 16\" stroke=\"{Ink}\" stroke-width=\"2\" opacity=\"0.5\"/>");
+        if (disabled)
+            output.Append($"<path d=\"M8 {F(crown + 3)}l16 16m0-16-16 16\" stroke=\"{Ink}\" stroke-width=\"2\" opacity=\"0.5\"/>");
         return output.ToString();
     }
 

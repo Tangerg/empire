@@ -19,15 +19,24 @@ public static class CampaignSlotStorage
     {
         SaveFile.RequireAbsolutePath(path);
         string raw;
-        try { raw = File.ReadAllText(path, new UTF8Encoding(false, true)); }
+        try
+        {
+            raw = File.ReadAllText(path, new UTF8Encoding(false, true));
+        }
         catch (FileNotFoundException) { return new(null, null); }
         catch (DirectoryNotFoundException) { return new(null, null); }
         catch (Exception error) when (error is IOException or UnauthorizedAccessException or SecurityException or DecoderFallbackException)
-        { return new(null, error.Message); }
-        if (raw.Length == 0) return new(null, null);
+        {
+            return new(null, error.Message);
+        }
+        if (raw.Length == 0)
+            return new(null, null);
 
         JsonNode? document;
-        try { document = EcmaJson.Parse(raw); }
+        try
+        {
+            document = EcmaJson.Parse(raw);
+        }
         catch (JsonException error) { return new(null, error.Message); }
         try
         {

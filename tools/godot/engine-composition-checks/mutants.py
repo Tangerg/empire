@@ -10,22 +10,22 @@ def mutate(file,old,new):
     if text.count(old)!=1: raise SystemExit(f'Expected exactly one anchor in {file}: {old}')
     file.write_text(text.replace(old,new));return text
 native=[
- ('spatial-grid-install-bypass','Composition/DefaultBattlePlugins.cs','new DefaultTacticalSpace(context.Require(Keys.Content), context.Require(Keys.Grids))','new DefaultTacticalSpace(context.Require(Keys.Content), GridRegistry.Core())'),
+ ('spatial-grid-install-bypass','Composition/DefaultBattlePlugins.cs','new DefaultTacticalSpace(new TacticalSpaceRules(context.Require(Keys.Content), context.Require(Keys.Grids)))','new DefaultTacticalSpace(new TacticalSpaceRules(context.Require(Keys.Content), GridRegistry.Core()))'),
  ('spatial-grid-undeclared','Composition/DefaultBattlePlugins.cs','provides: [Keys.Space], requiresCapabilities: [Keys.Content, Keys.Grids]','provides: [Keys.Space], requiresCapabilities: [Keys.Content]'),
  ('retained-context-lifetime','Composition/KernelCapabilities.cs','internal void Close() => closed = true;','internal void Close() => closed = false;'),
- ('state-grid-consumer-bypass','Engine/GrayFlagEngine.cs','stateRules = new BattleStateRules(Catalog, Grids, Reactions);','stateRules = new BattleStateRules(Catalog, GridRegistry.Core(), Reactions);'),
+ ('state-grid-consumer-bypass','Engine/BattleEngine.cs','stateRules = new BattleStateRules(Catalog, Grids, Reactions);','stateRules = new BattleStateRules(Catalog, GridRegistry.Core(), Reactions);'),
  ('state-grid-facing-bypass','State/BattleStateFactory.cs','StateJson.Text(authoredFacing, "facing") : grid.RestingFacing;','StateJson.Text(authoredFacing, "facing") : "south";'),
  ('ignore-custom-plugins','Composition/BattleEngineFactory.cs','kernel.UseAll(plugins);','kernel.UseAll(plugins.Where(_ => false));'),
- ('resource-default-bypass','Engine/GrayFlagEngine.cs','Resources = dependencies.Resources','Resources = new BattleResources()'),
- ('ability-default-bypass','Engine/GrayFlagEngine.cs','Abilities = dependencies.Abilities;','Abilities = DefaultAbilities.Create().Seal();'),
- ('space-default-bypass','Engine/GrayFlagEngine.cs','Space = dependencies.Space;','Space = new DefaultTacticalSpace(Catalog, grids);'),
- ('random-default-bypass','Engine/GrayFlagEngine.cs','Random = dependencies.Random;','Random = new DefaultBattleRandomSource();'),
- ('action-pipeline-bypass','Engine/GrayFlagEngine.cs','new(CreateState(level, seed), actionHandlers, actionPipeline)','new(CreateState(level, seed), actionHandlers)'),
- ('restored-pipeline-bypass','Engine/GrayFlagEngine.cs','new(state, actionHandlers, actionPipeline)','new(state, actionHandlers)'),
+ ('resource-default-bypass','Engine/BattleEngine.cs','Resources = dependencies.Resources','Resources = new BattleResources(new BattleResourceRules(DefaultResourcePolicies.Adapters.Clone(), DefaultResourcePolicies.Subjects.Clone()))'),
+ ('ability-default-bypass','Engine/BattleEngine.cs','Abilities = dependencies.Abilities;','Abilities = DefaultAbilities.Create().Seal();'),
+ ('space-default-bypass','Engine/BattleEngine.cs','Space = dependencies.Space;','Space = new DefaultTacticalSpace(new TacticalSpaceRules(Catalog, grids));'),
+ ('random-default-bypass','Engine/BattleEngine.cs','Random = dependencies.Random;','Random = new DefaultBattleRandomSource();'),
+ ('action-pipeline-bypass','Engine/BattleEngine.cs','new(new BattleTransactionRules(actionHandlers, actionPipeline), CreateState(level, seed))','new(new BattleTransactionRules(actionHandlers, null), CreateState(level, seed))'),
+ ('restored-pipeline-bypass','Engine/BattleEngine.cs','new(new BattleTransactionRules(actionHandlers, actionPipeline), state)','new(new BattleTransactionRules(actionHandlers, null), state)'),
  ('omit-seal','Composition/BattleEngineFactory.cs','dependencies.Abilities.Seal();',''),
- ('manifest-default-bypass','Engine/GrayFlagEngine.Persistence.cs','Manifest.Create(Catalog, pluginManifest)','Manifest.Create(Catalog, pluginManifest.Where(p => p.Key.StartsWith("engine.")).ToDictionary(p => p.Key,p => p.Value))'),
- ('modifier-default-bypass','Engine/GrayFlagEngine.cs','dependencies.CombatModifiers, dependencies.HitEffects','DefaultCombatModifiers.Create(), dependencies.HitEffects'),
- ('hit-effect-default-bypass','Engine/GrayFlagEngine.cs','dependencies.CombatModifiers, dependencies.HitEffects','dependencies.CombatModifiers, DefaultWeaponHitEffects.Create()'),
+ ('manifest-default-bypass','Engine/BattleEngine.Persistence.cs','Manifest.Create(Catalog, pluginManifest)','Manifest.Create(Catalog, pluginManifest.Where(p => p.Key.StartsWith("engine.")).ToDictionary(p => p.Key,p => p.Value))'),
+ ('modifier-default-bypass','Engine/BattleEngine.cs','dependencies.CombatModifiers, dependencies.HitEffects','DefaultCombatModifiers.Create(), dependencies.HitEffects'),
+ ('hit-effect-default-bypass','Engine/BattleEngine.cs','dependencies.CombatModifiers, dependencies.HitEffects','dependencies.CombatModifiers, DefaultWeaponHitEffects.Create()'),
  ('catalog-identity-bypass','Combat/CombatForecasts.cs','modifierRules = new(catalog, grids, Effectiveness);','modifierRules = new(new ReadOnlyContent(packs), grids, Effectiveness);'),
 ]
 for name,old,new in [
@@ -40,18 +40,18 @@ for name,old,new in [
  ('effect-default-bypass','ScenarioEffects = dependencies.ScenarioEffects;','ScenarioEffects = DefaultScenarioEffects.Create();'),
  ('objective-default-bypass','Objectives = dependencies.Objectives;','Objectives = DefaultObjectives.Create();'),
 ]:
-    native.append((name,'Engine/GrayFlagEngine.cs',old,new))
+    native.append((name,'Engine/BattleEngine.cs',old,new))
 for name,path,old,new in [
- ('status-consumer-bypass','Engine/GrayFlagEngine.cs','new StatusLifecycle(Catalog, StatusBehaviors, combat)','new StatusLifecycle(Catalog, new StatusBehaviorRegistry(), combat)'),
- ('progression-consumer-bypass','Engine/GrayFlagEngine.cs','Reactions, RankProgression, UnitDepartures','Reactions, new ThresholdRankProgressionPolicy(), UnitDepartures'),
- ('turn-consumer-bypass','Engine/GrayFlagEngine.cs','new TurnOrderRules(Catalog, TurnOrders)','new TurnOrderRules(Catalog, TurnOrderRegistry.Core())'),
- ('reaction-consumer-bypass','Engine/GrayFlagEngine.cs','Reactions, RankProgression, UnitDepartures','ReactionRegistry.Core(), RankProgression, UnitDepartures'),
- ('departure-consumer-bypass','Engine/GrayFlagEngine.cs','Reactions, RankProgression, UnitDepartures','Reactions, RankProgression, DefaultUnitDepartureHandlers.Create()'),
- ('reference-consumer-bypass','Engine/GrayFlagEngine.Persistence.cs','new BattleDefinitionValidator(references, ReferenceChecks, Grids)','new BattleDefinitionValidator(references, BattleReferenceCheckRegistry.CreateDefault(), Grids)'),
- ('reader-consumer-bypass','Engine/GrayFlagEngine.Persistence.cs','new BattlePersistence(environment, Saves)','new BattlePersistence(environment, new BattleSaveReader())'),
- ('condition-consumer-bypass','Engine/GrayFlagEngine.cs','new ScenarioRules(Catalog, ScenarioConditions, ScenarioEffects, ScenarioCommands)','new ScenarioRules(Catalog, DefaultScenarioConditions.Create(Random), ScenarioEffects, ScenarioCommands)'),
- ('effect-consumer-bypass','Engine/GrayFlagEngine.cs','new ScenarioRules(Catalog, ScenarioConditions, ScenarioEffects, ScenarioCommands)','new ScenarioRules(Catalog, ScenarioConditions, DefaultScenarioEffects.Create(), ScenarioCommands)'),
- ('objective-consumer-bypass','Engine/GrayFlagEngine.cs','new VictorySystem(new ObjectiveRules(Catalog, ScenarioConditions), Objectives)','new VictorySystem(new ObjectiveRules(Catalog, ScenarioConditions), DefaultObjectives.Create())'),
+ ('status-consumer-bypass','Engine/BattleEngine.cs','new StatusLifecycle(Catalog, StatusBehaviors, combat)','new StatusLifecycle(Catalog, new StatusBehaviorRegistry(), combat)'),
+ ('progression-consumer-bypass','Engine/BattleEngine.cs','Reactions, RankProgression, UnitDepartures','Reactions, new ThresholdRankProgressionPolicy(), UnitDepartures'),
+ ('turn-consumer-bypass','Engine/BattleEngine.cs','new TurnOrderRules(Catalog, TurnOrders)','new TurnOrderRules(Catalog, TurnOrderRegistry.Core())'),
+ ('reaction-consumer-bypass','Engine/BattleEngine.cs','Reactions, RankProgression, UnitDepartures','ReactionRegistry.Core(), RankProgression, UnitDepartures'),
+ ('departure-consumer-bypass','Engine/BattleEngine.cs','Reactions, RankProgression, UnitDepartures','Reactions, RankProgression, DefaultUnitDepartureHandlers.Create()'),
+ ('reference-consumer-bypass','Engine/BattleEngine.Persistence.cs','new BattleContentValidationRules(references, ReferenceChecks)),\n            new BattleLevelValidator(new BattleLevelValidationRules(references, ReferenceChecks, Grids))','new BattleContentValidationRules(references, BattleReferenceCheckRegistry.CreateDefault())),\n            new BattleLevelValidator(new BattleLevelValidationRules(references, BattleReferenceCheckRegistry.CreateDefault(), Grids))'),
+ ('reader-consumer-bypass','Engine/BattleEngine.Persistence.cs','new BattlePersistence(new BattlePersistenceRules(environment, Saves))','new BattlePersistence(new BattlePersistenceRules(environment, new BattleSaveReader()))'),
+ ('condition-consumer-bypass','Engine/BattleEngine.cs','new ScenarioRules(Catalog, ScenarioConditions, ScenarioEffects, ScenarioCommands)','new ScenarioRules(Catalog, DefaultScenarioConditions.Create(Random), ScenarioEffects, ScenarioCommands)'),
+ ('effect-consumer-bypass','Engine/BattleEngine.cs','new ScenarioRules(Catalog, ScenarioConditions, ScenarioEffects, ScenarioCommands)','new ScenarioRules(Catalog, ScenarioConditions, DefaultScenarioEffects.Create(), ScenarioCommands)'),
+ ('objective-consumer-bypass','Engine/BattleEngine.cs','new VictorySystem(new ObjectiveRules(Catalog, ScenarioConditions), Objectives)','new VictorySystem(new ObjectiveRules(Catalog, ScenarioConditions), DefaultObjectives.Create())'),
 ]:
     native.append((name,path,old,new))
 for name in ['StatusBehaviors','TurnOrders','Reactions','UnitDepartures','ReferenceChecks','ScenarioConditions','ScenarioEffects','Objectives']:

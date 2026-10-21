@@ -1,5 +1,8 @@
 # Native quality checkpoint: canonical ownership and initial localization
 
+This is the historical `f26ee926` checkpoint, not the latest acceptance inventory.
+Later semantic/i18n and API work is recorded in [FINAL-QUALITY-ACCEPTANCE.md](FINAL-QUALITY-ACCEPTANCE.md).
+
 This checkpoint addresses the six reproduced engine ownership defects from the
 AGENTS/PROJECT_RULES audit, plus the obsolete application port, atomic save
 admission, canonical tactical input projection, and the first localization slice.

@@ -3,7 +3,7 @@
 Run `bash tools/godot/content-validation-checks/run.sh` from the repository root.
 
 The generator runs the original TypeScript content installer and default battle
-engine. The native runner composes a fresh `GrayFlagEngine` for every fixture and
+engine. The native runner composes a fresh `BattleEngine` for every fixture and
 compares the exact diagnostic or acceptance, while ensuring input packs are
 unchanged. Coverage includes catalog references, account/cost arithmetic, morale,
 transport capacity, hit-effect payloads, careers and cycles, formations, tactics,

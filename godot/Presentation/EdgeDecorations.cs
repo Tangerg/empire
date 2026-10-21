@@ -8,8 +8,14 @@ namespace Empire.Presentation;
 
 public sealed class EdgeDecorationManifest
 {
-    public int SchemaVersion { get; init; }
-    public int MeaningfulAlphaMin { get; init; }
+    public int SchemaVersion
+    {
+        get; init;
+    }
+    public int MeaningfulAlphaMin
+    {
+        get; init;
+    }
     public EdgeDecorationAsset[] Assets { get; init; } = Array.Empty<EdgeDecorationAsset>();
     public EdgeDecorationScene[] Scenes { get; init; } = Array.Empty<EdgeDecorationScene>();
 }
@@ -20,8 +26,14 @@ public sealed class EdgeDecorationAsset
     public double[] SourceSize { get; init; } = Array.Empty<double>();
     public double[] SourceAnchor { get; init; } = Array.Empty<double>();
     public double[] MeaningfulSourceBounds { get; init; } = Array.Empty<double>();
-    public double LogicalPerSourcePixel { get; init; }
-    public int SourcePadding { get; init; }
+    public double LogicalPerSourcePixel
+    {
+        get; init;
+    }
+    public int SourcePadding
+    {
+        get; init;
+    }
 }
 public sealed class EdgeDecorationScene
 {
@@ -34,9 +46,18 @@ public sealed class EdgeDecorationPlacement
     public string Id { get; init; } = "";
     public string AssetId { get; init; } = "";
     public double[] Center { get; init; } = Array.Empty<double>();
-    public double Scale { get; init; }
-    public bool FlipX { get; init; }
-    public bool FlipY { get; init; }
+    public double Scale
+    {
+        get; init;
+    }
+    public bool FlipX
+    {
+        get; init;
+    }
+    public bool FlipY
+    {
+        get; init;
+    }
     public EdgeTerrainSupport TerrainSupport { get; init; } = new();
 }
 public sealed class EdgeTerrainSupport
@@ -94,7 +115,8 @@ internal static class EdgeDecorationRenderer
                     var anchor = (asset.SourceAnchor[axis] + asset.SourcePadding) * asset.LogicalPerSourcePixel;
                     var sign = (axis == 0 ? placement.FlipX : placement.FlipY) ? -1 : 1;
                     var ends = new[] { 0.0, size }.Select(value => placement.Center[axis] + (value - anchor) * placement.Scale * sign).ToArray();
-                    var minimum = ends.Min(); var maximum = ends.Max();
+                    var minimum = ends.Min();
+                    var maximum = ends.Max();
                     var supportEnd = origin[axis] + (axis == 0 ? width : rows.Length);
                     if (minimum < 0 || maximum > scene.MapSize[axis] * 32
                         || origin[axis] > Math.Max(0, Math.Floor(minimum / 32) - 1)
@@ -110,13 +132,15 @@ internal static class EdgeDecorationRenderer
     {
         var scene = manifest.Scenes.SingleOrDefault(scene => scene.LevelId == levelId
             && scene.MapSize.SequenceEqual(new[] { size.X, size.Y }));
-        if (scene is null) return 0;
+        if (scene is null)
+            return 0;
         var count = 0;
         foreach (var placement in scene.Placements)
         {
             var support = placement.TerrainSupport;
             if (!support.Rows.SelectMany((row, y) => row.Select((tile, x) =>
-                tiles[(support.Origin[1] + y) * size.X + support.Origin[0] + x] == tile)).All(value => value)) continue;
+                tiles[(support.Origin[1] + y) * size.X + support.Origin[0] + x] == tile)).All(value => value))
+                continue;
             var asset = manifest.Assets.Single(asset => asset.Id == placement.AssetId);
             try
             {
@@ -126,10 +150,16 @@ internal static class EdgeDecorationRenderer
                 var logicalAnchor = (RasterResources.Pair(asset.SourceAnchor, asset.Id) + Vector2.One * asset.SourcePadding)
                     * (float)asset.LogicalPerSourcePixel;
                 var rasterScale = logicalSize / image.GetSize();
-                var sprite = new Sprite2D { Name = placement.Id, Texture = image, Centered = false,
-                    Position = RasterResources.Pair(placement.Center, placement.Id), Offset = -logicalAnchor / rasterScale,
+                var sprite = new Sprite2D
+                {
+                    Name = placement.Id,
+                    Texture = image,
+                    Centered = false,
+                    Position = RasterResources.Pair(placement.Center, placement.Id),
+                    Offset = -logicalAnchor / rasterScale,
                     Scale = rasterScale * (float)placement.Scale * new Vector2(placement.FlipX ? -1 : 1, placement.FlipY ? -1 : 1),
-                    TextureFilter = CanvasItem.TextureFilterEnum.Linear };
+                    TextureFilter = CanvasItem.TextureFilterEnum.Linear
+                };
                 sprite.SetMeta("edge_asset", asset.Id);
                 parent.AddChild(sprite);
                 count++;

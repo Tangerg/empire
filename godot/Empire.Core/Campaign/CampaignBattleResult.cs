@@ -9,10 +9,22 @@ namespace Empire.Core.Campaign;
 public sealed class CampaignBattleResult
 {
     private readonly JsonObject document;
-    public string RequestId { get; }
-    public string Outcome { get; }
-    public BattleConclusion? Conclusion { get; }
-    public int Turns { get; }
+    public string RequestId
+    {
+        get;
+    }
+    public string Outcome
+    {
+        get;
+    }
+    public BattleConclusion? Conclusion
+    {
+        get;
+    }
+    public int Turns
+    {
+        get;
+    }
 
     private CampaignBattleResult(JsonObject document)
     {
@@ -38,7 +50,9 @@ public sealed class CampaignBattleResult
             Conclusion = document["conclusion"] is { } value ? BattleConclusion.Parse(value) : null;
         }
         catch (DomainInvariantException error)
-        { throw new CampaignInvariantException("campaign battle result data is invalid", error); }
+        {
+            throw new CampaignInvariantException("campaign battle result data is invalid", error);
+        }
         if ((Outcome == "retreat") != (Conclusion is null))
             throw new CampaignInvariantException("campaign battle result retreat and conclusion disagree");
         if (Outcome == "victory" && Conclusion?.Team is null)

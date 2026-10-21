@@ -11,10 +11,15 @@ public abstract class KeyedRegistry<TEntry, TRegistry> : IKeyedRegistryView
 
     protected KeyedRegistry(string subject) => this.subject = subject;
     protected abstract string KeyOf(TEntry entry);
-    protected virtual void ValidateEntry(TEntry entry) { }
+    protected virtual void ValidateEntry(TEntry entry)
+    {
+    }
 
     public int Count => entries.Count;
-    public bool IsSealed { get; private set; }
+    public bool IsSealed
+    {
+        get; private set;
+    }
 
     public virtual TRegistry Register(TEntry entry)
     {
@@ -34,7 +39,8 @@ public abstract class KeyedRegistry<TEntry, TRegistry> : IKeyedRegistryView
         ArgumentNullException.ThrowIfNull(entry);
         ValidateEntry(entry);
         var key = KeyOf(entry);
-        if (!entries.ContainsKey(key)) order.Add(key);
+        if (!entries.ContainsKey(key))
+            order.Add(key);
         entries[key] = entry;
         return (TRegistry)this;
     }
@@ -55,7 +61,8 @@ public abstract class KeyedRegistry<TEntry, TRegistry> : IKeyedRegistryView
 
     protected TRegistry CopyInto(TRegistry target)
     {
-        foreach (var key in order) target.Register(entries[key]);
+        foreach (var key in order)
+            target.Register(entries[key]);
         return target;
     }
 

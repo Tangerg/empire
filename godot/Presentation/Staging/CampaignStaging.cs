@@ -16,44 +16,126 @@ public sealed record CampaignStagingRelation(string Id, string Label, string Amo
 /// <summary>Detached presentation of campaign facts and source adapter metadata, never a campaign transition.</summary>
 public sealed class CampaignStagingView
 {
-    public string ExitLabel { get; }
-    public string ProgressLabel { get; }
-    public string LevelId { get; }
-    public string CampaignTitle { get; }
-    public string ChapterHeading { get; }
-    public string Progress { get; }
-    public int CompletedBattles { get; }
-    public int BattleTotal { get; }
-    public string Eyebrow { get; }
-    public string Title { get; }
-    public string Description { get; }
-    public string ActionNote { get; }
-    public string StartLabel { get; }
-    public CampaignStagingArt ChapterArt { get; }
-    public CampaignStagingArt? BriefingArt { get; }
-    public IReadOnlyList<CampaignStagingUnit> Roster { get; }
-    public IReadOnlyList<CampaignStagingResource> Resources { get; }
-    public IReadOnlyList<CampaignStagingRelation> Relations { get; }
-    public string RosterHeading { get; }
-    public string StateHeading { get; }
-    public string EmptyResources { get; }
-    public string EmptyRelations { get; }
-    public string ArtworkFailureLabel { get; }
+    public string ExitLabel
+    {
+        get;
+    }
+    public string ProgressLabel
+    {
+        get;
+    }
+    public string LevelId
+    {
+        get;
+    }
+    public string CampaignTitle
+    {
+        get;
+    }
+    public string ChapterHeading
+    {
+        get;
+    }
+    public string Progress
+    {
+        get;
+    }
+    public int CompletedBattles
+    {
+        get;
+    }
+    public int BattleTotal
+    {
+        get;
+    }
+    public string Eyebrow
+    {
+        get;
+    }
+    public string Title
+    {
+        get;
+    }
+    public string Description
+    {
+        get;
+    }
+    public string ActionNote
+    {
+        get;
+    }
+    public string StartLabel
+    {
+        get;
+    }
+    public CampaignStagingArt ChapterArt
+    {
+        get;
+    }
+    public CampaignStagingArt? BriefingArt
+    {
+        get;
+    }
+    public IReadOnlyList<CampaignStagingUnit> Roster
+    {
+        get;
+    }
+    public IReadOnlyList<CampaignStagingResource> Resources
+    {
+        get;
+    }
+    public IReadOnlyList<CampaignStagingRelation> Relations
+    {
+        get;
+    }
+    public string RosterHeading
+    {
+        get;
+    }
+    public string StateHeading
+    {
+        get;
+    }
+    public string EmptyResources
+    {
+        get;
+    }
+    public string EmptyRelations
+    {
+        get;
+    }
+    public string ArtworkFailureLabel
+    {
+        get;
+    }
 
     internal CampaignStagingView(GameText text, string levelId, string campaignTitle, string chapterHeading, string progress,
         int completedBattles, int battleTotal, string eyebrow, string title, string description, string actionNote, string startLabel,
         CampaignStagingArt chapterArt, CampaignStagingArt? briefingArt, IEnumerable<CampaignStagingUnit> roster,
         IEnumerable<CampaignStagingResource> resources, IEnumerable<CampaignStagingRelation> relations)
     {
-        ExitLabel = text.Format("ui.campaign.exit"); ProgressLabel = text.Format("ui.campaign.progress");
-        RosterHeading = text.Format("ui.staging.roster_heading"); StateHeading = text.Format("ui.staging.state_heading");
-        EmptyResources = text.Format("ui.staging.empty_resources"); EmptyRelations = text.Format("ui.staging.empty_relations");
+        ExitLabel = text.Format("ui.campaign.exit");
+        ProgressLabel = text.Format("ui.campaign.progress");
+        RosterHeading = text.Format("ui.staging.roster_heading");
+        StateHeading = text.Format("ui.staging.state_heading");
+        EmptyResources = text.Format("ui.staging.empty_resources");
+        EmptyRelations = text.Format("ui.staging.empty_relations");
         ArtworkFailureLabel = text.Format("error.presentation.artwork_unavailable");
-        LevelId = levelId; CampaignTitle = campaignTitle; ChapterHeading = chapterHeading; Progress = progress;
-        CompletedBattles = completedBattles; BattleTotal = battleTotal;
-        Eyebrow = eyebrow; Title = title; Description = description; ActionNote = actionNote; StartLabel = startLabel;
-        ChapterArt = chapterArt; BriefingArt = briefingArt;
-        Roster = Array.AsReadOnly(roster.ToArray()); Resources = Array.AsReadOnly(resources.ToArray());
+        LevelId = levelId;
+        CampaignTitle = campaignTitle;
+        ChapterHeading = chapterHeading;
+        Progress = progress;
+        CompletedBattles = completedBattles;
+        BattleTotal = battleTotal;
+        Eyebrow = eyebrow;
+        Title = title;
+        Description = description;
+        ActionNote = actionNote;
+        StartLabel = startLabel;
+        ChapterArt = chapterArt;
+        BriefingArt = briefingArt;
+        Roster = Array.AsReadOnly(roster.ToArray());
+        Resources = Array.AsReadOnly(resources.ToArray());
         Relations = Array.AsReadOnly(relations.ToArray());
     }
 }
@@ -66,7 +148,8 @@ public static class CampaignStaging
         JsonElement metadata, bool hasPendingRequest)
     {
         var text = presentationText.Messages;
-        if (metadata.GetProperty("schema").GetInt32() != 2) throw new InvalidOperationException("Unsupported campaign staging metadata schema.");
+        if (metadata.GetProperty("schema").GetInt32() != 2)
+            throw new InvalidOperationException("Unsupported campaign staging metadata schema.");
         var id = Text(level.GetProperty("id"));
         if (Text(battleNode.GetProperty("type")) != "battle" || Text(battleNode.GetProperty("level")) != id ||
             Text(battleNode.GetProperty("id")) != Text(state.GetProperty("currentNode")))
@@ -86,7 +169,8 @@ public static class CampaignStaging
         {
             var unit = entry.Value;
             var unitId = Text(unit.GetProperty("id"));
-            if (joins.TryGetProperty(unitId, out var after) && after.GetDouble() > completed) continue;
+            if (joins.TryGetProperty(unitId, out var after) && after.GetDouble() > completed)
+                continue;
             var type = Text(unit.GetProperty("unitType"));
             var disposition = Text(unit.GetProperty("disposition"));
             var rank = unit.TryGetProperty("rank", out var rawRank) && rawRank.ValueKind != JsonValueKind.Null ? rawRank.GetDouble() : 0;
@@ -120,7 +204,8 @@ public static class CampaignStaging
         value.GetProperty("resourcePath").ValueKind == JsonValueKind.Null ? null : Text(value.GetProperty("resourcePath")));
     private static string Label(GameText text, JsonElement keys, string id)
     {
-        if (!keys.TryGetProperty(id, out var key)) throw new InvalidOperationException($"Campaign label is not authored: {id}.");
+        if (!keys.TryGetProperty(id, out var key))
+            throw new InvalidOperationException($"Campaign label is not authored: {id}.");
         return text.Format(Text(key));
     }
     private static string Text(JsonElement value) => value.ValueKind == JsonValueKind.String

@@ -12,12 +12,17 @@ internal static class RulePayloadReferences
 
     internal static IEnumerable<string> ScheduleFaults(JsonObject trigger)
     {
-        if (trigger["repeat"] is not JsonObject repeat) yield break;
-        if (!Whole(repeat["everyRounds"], 1)) yield return "循环间隔必须是正整数";
-        if (repeat.ContainsKey("startTurn") && Number(repeat["startTurn"]) < 1) yield return "起始回合必须 >= 1";
+        if (trigger["repeat"] is not JsonObject repeat)
+            yield break;
+        if (!Whole(repeat["everyRounds"], 1))
+            yield return "循环间隔必须是正整数";
+        if (repeat.ContainsKey("startTurn") && Number(repeat["startTurn"]) < 1)
+            yield return "起始回合必须 >= 1";
         if (repeat.ContainsKey("endTurn") && repeat.ContainsKey("startTurn") &&
-            Number(repeat["endTurn"]) < Number(repeat["startTurn"])) yield return "结束回合早于起始回合";
-        if (repeat.ContainsKey("maxFirings") && !Whole(repeat["maxFirings"], 1)) yield return "最大触发次数必须是正整数";
+            Number(repeat["endTurn"]) < Number(repeat["startTurn"]))
+            yield return "结束回合早于起始回合";
+        if (repeat.ContainsKey("maxFirings") && !Whole(repeat["maxFirings"], 1))
+            yield return "最大触发次数必须是正整数";
     }
 
     internal static double Number(JsonNode? value)

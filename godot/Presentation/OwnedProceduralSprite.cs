@@ -32,7 +32,8 @@ internal partial class OwnedProceduralSprite : Sprite2D
 
     public override void _Notification(int what)
     {
-        if (what != NotificationPredelete || _ownedTexture is null) return;
+        if (what != NotificationPredelete || _ownedTexture is null)
+            return;
         Texture = null;
         _ownedTexture.Dispose();
         _ownedTexture = null;

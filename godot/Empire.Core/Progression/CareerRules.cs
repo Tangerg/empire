@@ -9,6 +9,8 @@ namespace Empire.Core.Progression;
 
 public sealed record CareerOption(JsonObject Career, bool Eligible, bool Unlocked, bool Mastered, IReadOnlyList<ActionRefusal> Reasons);
 
+public sealed record CareerRuleServices(ReadOnlyContent Content, BattleResources Resources, CombatEffects Effects);
+
 /// <summary>Career paths and transitions under an explicitly supplied content/resource ruleset.</summary>
 public sealed class CareerRules
 {
@@ -17,8 +19,13 @@ public sealed class CareerRules
     private readonly BattleResources resources;
     private readonly CombatEffects effects;
 
-    public CareerRules(ReadOnlyContent catalog, BattleResources resources, CombatEffects effects)
-    { this.catalog = catalog; content = catalog.Source; this.resources = resources; this.effects = effects; }
+    public CareerRules(CareerRuleServices rules)
+    {
+        catalog = rules.Content;
+        content = rules.Content.Source;
+        resources = rules.Resources;
+        effects = rules.Effects;
+    }
 
     public IReadOnlyList<string> UnitAbilityIds(JsonObject unit) =>
         content.Read("units", Text(unit, "type")).GetProperty("abilities").EnumerateArray().Select(Text)
@@ -41,10 +48,12 @@ public sealed class CareerRules
         foreach (var career in content.All("careers"))
         {
             var id = Text(career, "id");
-            if (id == current) continue;
+            if (id == current)
+                continue;
             var unlocked = Unlocked(id);
             if (!unlocked && (currentRoots.Count == 0 ? Text(career, "unitType") != Text(unit, "type") :
-                    !RootsOf(career, new HashSet<string>(StringComparer.Ordinal)).Overlaps(currentRoots))) continue;
+                    !RootsOf(career, new HashSet<string>(StringComparer.Ordinal)).Overlaps(currentRoots)))
+                continue;
             var reasons = new List<ActionRefusal>();
             if (!unlocked)
             {
@@ -55,10 +64,19 @@ public sealed class CareerRules
                     reasons.Add(new("career.path_mismatch"));
                 var minimumRank = Number(career["minimumRank"], "minimumRank");
                 var minimumMastery = Number(career["minimumMastery"], "minimumMastery");
-                if (Number(unit["rank"], "rank") < minimumRank) reasons.Add(new("career.minimum_rank", new() { ["required"] = minimumRank }));
-                if (currentMastery < minimumMastery) reasons.Add(new("career.minimum_mastery", new() { ["required"] = minimumMastery }));
+                if (Number(unit["rank"], "rank") < minimumRank)
+                    reasons.Add(new("career.minimum_rank", new()
+                    {
+                        ["required"] = minimumRank
+                    }));
+                if (currentMastery < minimumMastery)
+                    reasons.Add(new("career.minimum_mastery", new()
+                    {
+                        ["required"] = minimumMastery
+                    }));
             }
-            if (!resources.CanAfford(owner, Array(career["costs"], "costs"))) reasons.Add(new("career.insufficient_resources"));
+            if (!resources.CanAfford(owner, Array(career["costs"], "costs")))
+                reasons.Add(new("career.insufficient_resources"));
             result.Add(new CareerOption((JsonObject)career.DeepClone(), reasons.Count == 0, unlocked,
                 Mastery(unit, id) >= Number(career["masteryThreshold"], "masteryThreshold"), reasons.AsReadOnly()));
         }
@@ -68,8 +86,10 @@ public sealed class CareerRules
 
     private HashSet<string> RootsOf(JsonObject career, HashSet<string> visiting)
     {
-        var id = Text(career, "id"); var from = Array(career["from"], "from");
-        if (from.Count == 0 || visiting.Contains(id)) return new HashSet<string>(StringComparer.Ordinal) { id };
+        var id = Text(career, "id");
+        var from = Array(career["from"], "from");
+        if (from.Count == 0 || visiting.Contains(id))
+            return new HashSet<string>(StringComparer.Ordinal) { id };
         visiting.Add(id);
         var roots = new HashSet<string>(StringComparer.Ordinal);
         foreach (var predecessor in from)
@@ -81,9 +101,15 @@ public sealed class CareerRules
     public void Change(JsonObject state, JsonObject unit, string requested, Action<JsonObject> emit)
     {
         var option = Options(state, unit).FirstOrDefault(candidate => Text(candidate.Career, "id") == requested)
-            ?? throw new IllegalActionException(new ActionRefusal("career.unavailable", new() { ["careerId"] = requested }));
-        if (!option.Eligible) throw new IllegalActionException(new ActionRefusal("career.requirements", new()
-        { ["reasons"] = System.Text.Json.JsonSerializer.SerializeToNode(option.Reasons) }));
+            ?? throw new IllegalActionException(new ActionRefusal("career.unavailable", new()
+            {
+                ["careerId"] = requested
+            }));
+        if (!option.Eligible)
+            throw new IllegalActionException(new ActionRefusal("career.requirements", new()
+            {
+                ["reasons"] = System.Text.Json.JsonSerializer.SerializeToNode(option.Reasons)
+            }));
         var career = option.Career;
         var health = new UnitHealth(catalog, unit);
         var nextType = Text(career, "unitType");
@@ -100,19 +126,29 @@ public sealed class CareerRules
         unit["weaponState"] = weaponState;
         var accounts = Object(unit["resources"], "resources");
         foreach (var (resource, account) in Object(nextDefinition["resources"], "resources"))
-            if (accounts[resource] is null) accounts[resource] = account!.DeepClone();
+            if (accounts[resource] is null)
+                accounts[resource] = account!.DeepClone();
         var unlocked = Array(careerState["unlocked"], "unlocked");
-        if (!unlocked.Any(value => Text(value, "career") == requested)) unlocked.Add(requested);
+        if (!unlocked.Any(value => Text(value, "career") == requested))
+            unlocked.Add(requested);
         var mastery = Object(careerState["mastery"], "mastery");
-        if (!mastery.ContainsKey(requested)) mastery[requested] = 0;
+        if (!mastery.ContainsKey(requested))
+            mastery[requested] = 0;
         unit["done"] = true;
-        emit(new JsonObject { ["type"] = "careerChanged", ["unit"] = unit["id"]!.DeepClone(), ["from"] = previous,
-            ["to"] = requested, ["unitType"] = career["unitType"]!.DeepClone() });
+        emit(new JsonObject
+        {
+            ["type"] = "careerChanged",
+            ["unit"] = unit["id"]!.DeepClone(),
+            ["from"] = previous,
+            ["to"] = requested,
+            ["unitType"] = career["unitType"]!.DeepClone()
+        });
     }
 
     private JsonObject InitialWeaponState(JsonObject unit, JsonObject nextDefinition)
     {
-        var result = new JsonObject(); var existing = Object(unit["weaponState"], "weaponState");
+        var result = new JsonObject();
+        var existing = Object(unit["weaponState"], "weaponState");
         foreach (var node in Array(nextDefinition["weapons"], "weapons"))
         {
             var id = Text(node, "weapon");

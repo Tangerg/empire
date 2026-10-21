@@ -98,10 +98,12 @@ internal static class ReplayChecks
             new BattleStateRules(engine.Catalog, engine.Grids, engine.Reactions), state,
             unit["type"]!.GetValue<string>(), invalidOwner, TacticalQueries.Position(unit)));
         Equal(before, state, "rejected spawned-unit ownership");
-        if (events.Count != 0) throw new Exception("Rejected spawn emitted an event.");
+        if (events.Count != 0)
+            throw new Exception("Rejected spawn emitted an event.");
         Reject(() => engine.ScenarioCommands.ChangeUnitOwner(state, effect, events.Add));
         Equal(before, state, "rejected direct ownership command");
-        if (events.Count != 0) throw new Exception("Rejected owner emitted an event.");
+        if (events.Count != 0)
+            throw new Exception("Rejected owner emitted an event.");
         effect["owner"] = owner;
         engine.ScenarioCommands.ChangeUnitOwner(state, effect, events.Add);
         if (unit["owner"]!.GetValue<int>() != owner || commander["owner"]!.GetValue<int>() != owner)
@@ -114,8 +116,11 @@ internal static class ReplayChecks
         var at = TacticalQueries.Position(unit);
         var marker = new JsonObject
         {
-            ["id"] = 99999, ["kind"] = "corpse", ["owner"] = owner,
-            ["at"] = TacticalQueries.CoordinateJson(at), ["fallenUnit"] = unit.DeepClone(),
+            ["id"] = 99999,
+            ["kind"] = "corpse",
+            ["owner"] = owner,
+            ["at"] = TacticalQueries.CoordinateJson(at),
+            ["fallenUnit"] = unit.DeepClone(),
         };
         state["units"]!.AsArray().Remove(unit);
         state["markers"]!.AsArray().Add(marker);
@@ -124,7 +129,8 @@ internal static class ReplayChecks
         Reject(() => BattleUnitReturn.Restore(engine.Catalog, state, marker,
             new UnitReturnRequest(at, Owner: invalidOwner), events.Add));
         Equal(before, state, "rejected returned-unit ownership");
-        if (events.Count != 0) throw new Exception("Rejected return emitted an event.");
+        if (events.Count != 0)
+            throw new Exception("Rejected return emitted an event.");
         var returned = BattleUnitReturn.Restore(engine.Catalog, state, marker,
             new UnitReturnRequest(at, Owner: 1), events.Add)
             ?? throw new Exception("Admitted unit did not return.");
@@ -135,12 +141,15 @@ internal static class ReplayChecks
 
     private static void Reject(Action action)
     {
-        try { action(); }
+        try
+        {
+            action();
+        }
         catch (DomainInvariantException) { return; }
         throw new Exception("Invalid ownership was accepted.");
     }
 
-    private static void VerifyPersistence(GrayFlagEngine engine, JsonObject level, Battle battle, JsonObject replay)
+    private static void VerifyPersistence(BattleEngine engine, JsonObject level, Battle battle, JsonObject replay)
     {
         var state = battle.Snapshot();
         Equal(state, engine.LoadBattle(engine.SaveBattle(state, "2026-10-21T00:00:00Z")), "native save round trip");
@@ -152,12 +161,13 @@ internal static class ReplayChecks
             throw new Exception("Native replay changed the canonical digest.");
     }
 
-    private static GrayFlagEngine Engine(string root) => new(Read(Path.Combine(root, "../../data/content-packs.json")).AsArray());
+    private static BattleEngine Engine(string root) => new(Read(Path.Combine(root, "../../data/content-packs.json")).AsArray());
     private static IEnumerable<JsonObject> Levels(string root) =>
         Read(Path.Combine(root, "../../data/grayflag-campaign-levels.json")).AsArray().OfType<JsonObject>();
     private static JsonNode Read(string path) => EcmaJson.Parse(File.ReadAllText(path))!;
     private static void Equal(JsonNode expected, JsonNode actual, string subject)
     {
-        if (!EcmaJson.DeepEquals(expected, actual)) throw new Exception(subject + " differs.");
+        if (!EcmaJson.DeepEquals(expected, actual))
+            throw new Exception(subject + " differs.");
     }
 }

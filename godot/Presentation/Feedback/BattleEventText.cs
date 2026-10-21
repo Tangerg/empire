@@ -3,6 +3,8 @@ using Empire.Localization;
 
 namespace Empire.Presentation.Feedback;
 
+public sealed record BattleEventTextRules(GameText Messages, BattleText Battle);
+
 /// <summary>The descriptive half of the source event presenters, with no animation or rule transitions.</summary>
 public sealed class BattleEventText
 {
@@ -13,7 +15,8 @@ public sealed class BattleEventText
     {
         RequireMutable();
         ArgumentNullException.ThrowIfNull(describe);
-        if (!entries.TryAdd(type, describe)) throw new InvalidOperationException($"battle event text already registered: \"{type}\"");
+        if (!entries.TryAdd(type, describe))
+            throw new InvalidOperationException($"battle event text already registered: \"{type}\"");
         return this;
     }
 
@@ -26,11 +29,16 @@ public sealed class BattleEventText
     }
 
     public IReadOnlyList<string> Keys() => entries.Keys.ToArray();
-    public BattleEventText Seal() { sealedRegistry = true; return this; }
+    public BattleEventText Seal()
+    {
+        sealedRegistry = true;
+        return this;
+    }
     public BattleEventText Clone()
     {
         var result = new BattleEventText();
-        foreach (var entry in entries) result.Register(entry.Key, entry.Value);
+        foreach (var entry in entries)
+            result.Register(entry.Key, entry.Value);
         return result;
     }
 
@@ -50,14 +58,17 @@ public sealed class BattleEventText
 
     private void RequireMutable()
     {
-        if (sealedRegistry) throw new InvalidOperationException("battle event text registry is sealed after composition");
+        if (sealedRegistry)
+            throw new InvalidOperationException("battle event text registry is sealed after composition");
     }
 
     private static double Number(JsonElement value, string key) => value.GetProperty(key).GetDouble();
     private static double Id(JsonElement value, string key) => Number(value, key);
 
-    public static BattleEventText CreateDefault(GameText text, BattleText battleText)
+    public static BattleEventText CreateDefault(BattleEventTextRules rules)
     {
+        var text = rules.Messages;
+        var battleText = rules.Battle;
         text.ValidateKeys(new[] { "battle.event.attack", "battle.event.counter", "battle.event.support", "battle.event.parting",
             "battle.event.area", "battle.event.structure", "battle.event.area_structure", "battle.event.target_killed",
             "battle.event.ally_killed", "battle.event.structure_destroyed", "battle.event.heal", "battle.event.recruit",
@@ -68,7 +79,9 @@ public sealed class BattleEventText
             value.GetProperty(field).GetBoolean() ? text.Format(key) : "";
         string Rank(double value) => text.Format(value switch
         {
-            0 => "ui.rank.recruit", 1 => "ui.rank.veteran", 2 => "ui.rank.elite",
+            0 => "ui.rank.recruit",
+            1 => "ui.rank.veteran",
+            2 => "ui.rank.elite",
             _ => throw new InvalidOperationException($"Unknown rank in committed event: {value}."),
         });
         return new BattleEventText()

@@ -14,17 +14,17 @@ internal static class BattleTextChecks
         .Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
         .Single(level => level["id"]!.GetValue<string>() == "c01-01").DeepClone();
 
-    internal static BattleText Load(GrayFlagEngine engine, GameText text)
+    internal static BattleText Load(BattleEngine engine, GameText text)
     {
         var levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json");
         var objectives = ObjectiveText.CreateDefault(text);
         objectives.ValidateCoverage(engine.Objectives.Keys());
         var document = BattleTextDocument.Parse(new BattleTextDefinitions(levels, engine.Objectives, engine.ScenarioEffects),
             Godot.FileAccess.GetFileAsString("res://data/grayflag-battle-text.json"));
-        return new BattleText(text, document, objectives.Seal());
+        return new BattleText(new(text, objectives.Seal()), document);
     }
 
-    internal static SessionPresentationText Session(GrayFlagEngine engine, GameText text) =>
+    internal static SessionPresentationText Session(BattleEngine engine, GameText text) =>
         SessionPresentationText.Compose(new SessionTextRules(engine, text),
             PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json"),
             Godot.FileAccess.GetFileAsString("res://data/grayflag-battle-text.json"),

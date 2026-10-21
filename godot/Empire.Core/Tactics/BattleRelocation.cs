@@ -13,7 +13,8 @@ public sealed class BattleRelocation(JsonObject state)
         var origin = TacticalQueries.Position(unit);
         var capture = CaptureAt(origin);
         ValidateVacant(destination, unitId);
-        if (origin == destination) return unit;
+        if (origin == destination)
+            return unit;
         capture.Progress[capture.Index] = 0;
         Place(unit, destination);
         return unit;
@@ -22,7 +23,8 @@ public sealed class BattleRelocation(JsonObject state)
     public void RemoveUnit(int unitId)
     {
         var unit = TacticalQueries.UnitById(state, unitId);
-        if (unit is null) return;
+        if (unit is null)
+            return;
         var capture = CaptureAt(TacticalQueries.Position(unit));
         capture.Progress[capture.Index] = 0;
         StateJson.Array(state["units"], "units").Remove(unit);
@@ -43,9 +45,11 @@ public sealed class BattleRelocation(JsonObject state)
         var origin = TacticalQueries.Position(unit);
         CaptureAt(origin);
         CaptureAt(destination);
-        if (origin == destination) return;
+        if (origin == destination)
+            return;
         var displaced = TacticalQueries.UnitAt(state, destination);
-        if (displaced is not null) Place(displaced, origin);
+        if (displaced is not null)
+            Place(displaced, origin);
         Place(unit, destination);
     }
 
@@ -89,7 +93,8 @@ public sealed class BattleRelocation(JsonObject state)
     {
         var index = ValidateCell(at);
         var progress = StateJson.Array(StateJson.Object(state["map"], "map")["captureProgress"], "captureProgress");
-        if (index >= progress.Count) throw new DomainInvariantException("capture progress does not cover the unit's origin");
+        if (index >= progress.Count)
+            throw new DomainInvariantException("capture progress does not cover the unit's origin");
         return (progress, index);
     }
 }

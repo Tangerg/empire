@@ -45,7 +45,8 @@ public sealed class ContentText
     {
         ArgumentNullException.ThrowIfNull(command);
         var hint = AbilityHint(command.Ability);
-        if (command.Weapon is { } weapon) _ = document.NameKey(ContentTextKind.Weapon, weapon);
+        if (command.Weapon is { } weapon)
+            _ = document.NameKey(ContentTextKind.Weapon, weapon);
         return command.Range is { } range ? text.Format("command.hint.range", hint, range.Min, range.Max) : hint;
     }
 }

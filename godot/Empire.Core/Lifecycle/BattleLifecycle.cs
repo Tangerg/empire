@@ -21,9 +21,18 @@ public sealed class BattleLifecycle
     private readonly ILifecycleEffects effects;
     private readonly BattleResources resources;
     private readonly StatusLifecycle statuses;
-    public TurnOrderSystem Turns { get; }
-    public ScenarioSystem Scenarios { get; }
-    public VictorySystem Victory { get; }
+    public TurnOrderSystem Turns
+    {
+        get;
+    }
+    public ScenarioSystem Scenarios
+    {
+        get;
+    }
+    public VictorySystem Victory
+    {
+        get;
+    }
 
     public BattleLifecycle(BattleLifecycleRules rules, JsonObject state, Action<JsonObject> emit)
     {
@@ -48,7 +57,8 @@ public sealed class BattleLifecycle
     {
         state["deployment"] = null;
         state["phase"] = "playing";
-        foreach (var unit in Units(state)) unit["done"] = false;
+        foreach (var unit in Units(state))
+            unit["done"] = false;
         Start();
         emit(new JsonObject { ["type"] = "battleStarted", ["player"] = Integer(state, "currentPlayer"), ["turn"] = Integer(state, "turn") });
     }
@@ -61,7 +71,8 @@ public sealed class BattleLifecycle
         if (handoff.Exhausted)
         {
             ConcludeIfDecided();
-            if (Text(state, "phase") != "over") Conclude(BattleConclusion.NoActors());
+            if (Text(state, "phase") != "over")
+                Conclude(BattleConclusion.NoActors());
             return;
         }
         if (handoff.RoundAdvanced)
@@ -76,19 +87,23 @@ public sealed class BattleLifecycle
 
     public void AfterAction()
     {
-        if (Text(state, "phase") != "playing") return;
+        if (Text(state, "phase") != "playing")
+            return;
         Scenarios.Run(state, "afterAction", emit);
         ConcludeIfDecided();
     }
 
     public void ConcludeIfDecided()
     {
-        if (BattleConclusion.FromState(state) is not null) return;
+        if (BattleConclusion.FromState(state) is not null)
+            return;
         var contenders = Players(state).Where(candidate => IsTrue(candidate["alive"])).Select(candidate => Integer(candidate, "id")).ToArray();
         var result = Victory.Evaluate(state, emit);
         foreach (var id in contenders)
-            if (!IsTrue(Player(state, id)["alive"])) emit(new JsonObject { ["type"] = "defeat", ["player"] = id });
-        if (result is not null) Conclude(result);
+            if (!IsTrue(Player(state, id)["alive"]))
+                emit(new JsonObject { ["type"] = "defeat", ["player"] = id });
+        if (result is not null)
+            Conclude(result);
     }
 
     private void Claim(TurnHandoff handoff)
@@ -113,14 +128,18 @@ public sealed class BattleLifecycle
         var active = Object(state["turnOrder"], "turnOrder")["activeUnit"];
         var scope = Units(state).Where(unit => active is null ? Integer(unit, "owner") == owner : Integer(unit, "id") == Integer(active, "activeUnit")).ToArray();
         var started = new JsonObject { ["type"] = "turnStart", ["player"] = owner, ["turn"] = Integer(state, "turn") };
-        if (active is not null) started["activeUnit"] = active.DeepClone();
+        if (active is not null)
+            started["activeUnit"] = active.DeepClone();
         emit(started);
         ApplyOverlayStatuses(scope);
         ResolveStatuses(scope);
-        if (active is null) OpenRoundFor(owner);
+        if (active is null)
+            OpenRoundFor(owner);
         else if (roundAdvanced)
-            foreach (var player in Players(state).Where(player => IsTrue(player["alive"]))) OpenRoundFor(Integer(player, "id"));
-        foreach (var unit in scope) RefreshActor(unit, owner);
+            foreach (var player in Players(state).Where(player => IsTrue(player["alive"])))
+                OpenRoundFor(Integer(player, "id"));
+        foreach (var unit in scope)
+            RefreshActor(unit, owner);
         Scenarios.Run(state, "turnStart", emit);
     }
 
@@ -133,7 +152,8 @@ public sealed class BattleLifecycle
         foreach (var commander in commanders)
         {
             commander["usedTactics"] = new JsonArray();
-            foreach (var grant in Array(commander["turnGrants"], "commander turn grants")) commanderGrants.Add(grant?.DeepClone());
+            foreach (var grant in Array(commander["turnGrants"], "commander turn grants"))
+                commanderGrants.Add(grant?.DeepClone());
         }
         Grant(subject, commanderGrants);
         var rules = Object(state["rules"], "rules");
@@ -144,7 +164,8 @@ public sealed class BattleLifecycle
         var overrides = Object(rules["siteResourceOverrides"], "siteResourceOverrides");
         for (var index = 0; index < owners.Count; index++)
         {
-            if (Integer(owners[index], "owner") != owner) continue;
+            if (Integer(owners[index], "owner") != owner)
+                continue;
             var terrain = content.Get("terrains", Text(tiles[index], "terrain"));
             foreach (var grant in Objects(terrain["ownerTurnGrants"], "owner turn grants"))
             {
@@ -159,7 +180,8 @@ public sealed class BattleLifecycle
     {
         foreach (var grant in resources.Totals(grants))
         {
-            if (!resources.HasAccount(subject, grant.Resource)) continue;
+            if (!resources.HasAccount(subject, grant.Resource))
+                continue;
             var amount = resources.Credit(subject, grant.Resource, grant.Value);
             resources.Announce(subject, grant.Resource, amount, emit);
         }
@@ -172,16 +194,21 @@ public sealed class BattleLifecycle
             var runtime = Object(pair.Value, "weapon runtime");
             runtime["cooldownRemaining"] = Math.Max(0, Number(runtime["cooldownRemaining"], "cooldown") - 1);
         }
-        if (!Objects(state["pendingCasts"], "pendingCasts").Any(cast => Integer(cast, "caster") == Integer(unit, "id"))) unit["done"] = false;
+        if (!Objects(state["pendingCasts"], "pendingCasts").Any(cast => Integer(cast, "caster") == Integer(unit, "id")))
+            unit["done"] = false;
         var rules = Object(state["rules"], "rules");
-        if (!IsTrue(rules["healOnOwnedBuilding"])) return;
+        if (!IsTrue(rules["healOnOwnedBuilding"]))
+            return;
         var battlefield = new TacticalBattlefield(state, content);
         var cell = battlefield.Cell(TacticalQueries.Position(unit));
-        if (Integer(Array(battlefield.Map["owners"], "owners")[cell.Index], "owner") != owner) return;
+        if (Integer(Array(battlefield.Map["owners"], "owners")[cell.Index], "owner") != owner)
+            return;
         var rate = cell.Heal;
-        if (rate <= 0) return;
+        if (rate <= 0)
+            return;
         var healed = new UnitHealth(catalog, unit).Heal(rate);
-        if (healed > 0) emit(new JsonObject { ["type"] = "regen", ["unit"] = Integer(unit, "id"), ["amount"] = healed });
+        if (healed > 0)
+            emit(new JsonObject { ["type"] = "regen", ["unit"] = Integer(unit, "id"), ["amount"] = healed });
     }
 
     private void AdvanceOverlayRound() => Empire.Core.Terrain.BattleOverlays.AdvanceRound(state, emit);

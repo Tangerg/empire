@@ -7,6 +7,8 @@ using Empire.Localization;
 
 namespace Empire.Presentation.Feedback;
 
+public sealed record BattleTextRules(GameText Messages, ObjectiveText Objectives);
+
 /// <summary>Renders battle identities and semantic conclusions using explicitly composed presentation metadata.</summary>
 public sealed class BattleText
 {
@@ -14,8 +16,10 @@ public sealed class BattleText
     private readonly BattleTextDocument document;
     private readonly ObjectiveText objectiveText;
 
-    public BattleText(GameText text, BattleTextDocument document, ObjectiveText objectiveText)
+    public BattleText(BattleTextRules rules, BattleTextDocument document)
     {
+        var text = rules.Messages;
+        var objectiveText = rules.Objectives;
         ArgumentNullException.ThrowIfNull(text);
         ArgumentNullException.ThrowIfNull(document);
         ArgumentNullException.ThrowIfNull(objectiveText);
@@ -84,7 +88,8 @@ public sealed class BattleText
     private string DescribeDefinition(string levelId, int playerId, JsonElement objective)
     {
         var authored = document.ObjectiveDescription(text, levelId, playerId, FeedbackJson.Text(objective.GetProperty("id")));
-        if (authored is not null) return authored;
+        if (authored is not null)
+            return authored;
         var children = document.Children(objective);
         return objectiveText.Describe(objective, index => DescribeDefinition(levelId, playerId, children[index]));
     }

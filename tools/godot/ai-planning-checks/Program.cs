@@ -21,16 +21,22 @@ var checks = 0;
 void Check(string name, string part, JsonNode? actual, JsonNode? expected)
 {
     checks++;
-    if (EcmaJson.DeepEquals(actual, expected)) return;
+    if (EcmaJson.DeepEquals(actual, expected))
+        return;
     var path = Path.Combine(Path.GetDirectoryName(args[0])!, "failed-ai-planning.json");
-    File.WriteAllText(path, new JsonObject { ["case"] = name, ["part"] = part, ["actual"] = actual?.DeepClone(), ["expected"] = expected?.DeepClone() }.ToJsonString(new() { WriteIndented = true }));
+    File.WriteAllText(path, new JsonObject { ["case"] = name, ["part"] = part, ["actual"] = actual?.DeepClone(), ["expected"] = expected?.DeepClone() }.ToJsonString(new()
+    {
+        WriteIndented = true
+    }));
     throw new Exception($"Mismatch in {name}: {part}; inspect {path}");
 }
 foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
 {
     var name = Text(item, "name");
-    if (args.Length > 1 && name != args[1]) continue;
-    var config = item["config"]!.AsObject(); var state = item["state"]!.DeepClone().AsObject();
+    if (args.Length > 1 && name != args[1])
+        continue;
+    var config = item["config"]!.AsObject();
+    var state = item["state"]!.DeepClone().AsObject();
     var packs = input["packs"]!.DeepClone().AsArray();
     JsonObject Definition(string family, string id) => packs.OfType<JsonObject>().SelectMany(pack => pack[family]?.AsArray().OfType<JsonObject>() ?? []).First(value => Text(value, "id") == id);
     if (IsTrue(config["resourceWeapon"]))
@@ -41,16 +47,25 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
     }
     if (IsTrue(config["tactic"]))
     {
-        var tactic = Definition("tactics", "rally"); tactic["target"] = "self"; tactic["radius"] = 0;
+        var tactic = Definition("tactics", "rally");
+        tactic["target"] = "self";
+        tactic["radius"] = 0;
         tactic["costs"] = JsonNode.Parse("[{\"resource\":\"command_points\",\"amount\":2}]");
     }
     var content = new ReadOnlyContent(packs);
     var grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid());
-    var space = new TestSpace(content, grids, config);
-    var resources = new BattleResources();
-    if (config["aiWeight"] is { } weight) resources.Adapters.Replace(resources.Adapters.Get("command_points") with { AiWeight = Number(weight, "aiWeight") });
-    if (config["fundsAvailable"] is { } funds) resources.Adapters.Replace(resources.Adapters.Get("funds") with
-    { Account = _ => new(() => new(Number(funds, "fundsAvailable"), null), _ => { }) });
+    var space = new TestSpace(new TacticalSpaceRules(content, grids), config);
+    var resources = new BattleResources(new BattleResourceRules(DefaultResourcePolicies.Adapters.Clone(), DefaultResourcePolicies.Subjects.Clone()));
+    if (config["aiWeight"] is { } weight)
+        resources.Adapters.Replace(resources.Adapters.Get("command_points") with
+        {
+            AiWeight = Number(weight, "aiWeight")
+        });
+    if (config["fundsAvailable"] is { } funds)
+        resources.Adapters.Replace(resources.Adapters.Get("funds") with
+        {
+            Account = _ => new(() => new(Number(funds, "fundsAvailable"), null), _ => { })
+        });
     resources.Adapters.Register(new("charge", "squad", true, 1, subject =>
     {
         var account = subject.Holder["resources"]!["charge"]!.AsObject();
@@ -60,13 +75,16 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
     var directives = UnitDirectiveRegistry.Core();
     var turns = new TurnOrderSystem(new(content, TurnOrderRegistry.Core()));
     var reactions = ReactionRegistry.Core();
-    var commands = new TacticalCommands(new(grids, space, reactions), turns.MayAct, directives);
+    var commands = new TacticalCommands(new(grids, space, reactions, turns.MayAct, directives));
     var combat = new BattleCombat(new BattleCombatRules(content, grids, resources, space, WeaponAreaRegistry.Core(), DefaultCombatModifiers.Create(),
         DefaultWeaponHitEffects.Create(), reactions, new ThresholdRankProgressionPolicy(), DefaultUnitDepartureHandlers.Create()));
     var support = new SupportOrders(new SupportOrderRules(content, grids, resources, combat.Effects));
-    var careers = new CareerRules(content, resources, combat.Effects);
+    var careers = new CareerRules(new CareerRuleServices(content, resources, combat.Effects));
     var abilities = DefaultAbilities.Create()
-        .Register(new("pulse", "Pulse") { Usable = (_, _) => !IsTrue(config["disableAbility"]) })
+        .Register(new("pulse", "Pulse")
+        {
+            Usable = (_, _) => !IsTrue(config["disableAbility"])
+        })
         .Register(new("charge", "Charge")
         {
             WeaponFor = (rules, query) => query.WeaponId is { } id ? rules.Combat.Forecasts.UnitWeapons(query.Unit).First(weapon => Text(weapon, "id") == id) : null,
@@ -78,11 +96,12 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
         .Register(new("charge", context => context.Option.Weapon == "soldier_javelin" ? 2000 : 1000));
     var rules = new AiRules(content, grids, space, abilityCommands, combat, support, resources, directives, turns, Empire.Core.Objectives.DefaultObjectives.Create());
     var planning = new AiPlanningDependencies(rules, evaluators, DefaultAiObjectiveAdvisors.Create());
-    var planner = new AiPlanner(planning, DefaultAiIntents.Create());
+    var planner = new AiPlanner(new AiPlannerRules(planning, DefaultAiIntents.Create()));
     if (!ReferenceEquals(planner.Planning.Rules, rules) || !ReferenceEquals(planner.Abilities, evaluators) || !ReferenceEquals(rules.Space, space) || !ReferenceEquals(rules.Resources, resources))
         throw new Exception("AI dependencies lost resolved identity");
     var context = new AiTurnContext(planning, state, 1, 0.58);
-    var actor = state["units"]![0]!.AsObject(); var expected = item["expected"]!.AsObject();
+    var actor = state["units"]![0]!.AsObject();
+    var expected = item["expected"]!.AsObject();
     Check(name, "action", planner.ChooseAction(state, 0.58), expected["action"]);
     Check(name, "threat", JsonSerializer.SerializeToNode(context.Threat.Select(pair => new object[] { pair.Key, pair.Value })), expected["threat"]);
     Check(name, "appraisals", JsonSerializer.SerializeToNode(new[] { new Coord(2, 3), new Coord(4, 3) }.Select(at => new TileAppraisal(context, actor, at).Value)), expected["appraisals"]);
@@ -92,13 +111,17 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
 }
 Console.WriteLine($"PASS {checks / 6} original source AI planning dependency cases, {checks} exact assertions");
 
-sealed class TestSpace(ReadOnlyContent content, GridRegistry grids, JsonObject config) : DefaultTacticalSpace(content, grids)
+sealed class TestSpace(TacticalSpaceRules rules, JsonObject config) : DefaultTacticalSpace(rules)
 {
     public override MoveField ComputeMoveField(JsonObject state, JsonObject unit)
     {
         var field = base.ComputeMoveField(state, unit);
-        if (config["stop"] is { } stop) field.Stops = [Integer(stop, "stop")];
-        if (IsTrue(config["brokenParents"])) foreach (var tile in field.Tiles.Values) if (tile.From != -1) tile.From = tile.Index;
+        if (config["stop"] is { } stop)
+            field.Stops = [Integer(stop, "stop")];
+        if (IsTrue(config["brokenParents"]))
+            foreach (var tile in field.Tiles.Values)
+                if (tile.From != -1)
+                    tile.From = tile.Index;
         return field;
     }
     public override IReadOnlyList<Coord>? PathTo(MoveField field, JsonObject state, Coord destination) => IsTrue(config["rejectPath"]) ? null : base.PathTo(field, state, destination);

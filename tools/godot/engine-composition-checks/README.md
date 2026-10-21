@@ -1,7 +1,7 @@
 # Actual engine composition checks
 
 This suite exercises `BattleEngineFactory.Create`, not a kernel-only simulation or an engine wrapper.
-`GrayFlagEngine(JsonArray)` delegates to the same composition operation. The native six-plugin recipe
+`BattleEngine(JsonArray)` delegates to the same composition operation. The native six-plugin recipe
 installs all 24 typed capabilities. Its explicit delta from the TypeScript recipe is checked:
 `engine.tactical-rules` is version 2, and `engine.tactical-space` version 1 consumes resolved content
 and grids after their overrides. The installed plugin manifest, never a fixed replacement map,

@@ -57,7 +57,10 @@ internal static class CampaignRegistryChecks
 
         Check("empty registry", () => new
         {
-            count = registry.Count, keys = registry.Keys(), all = registry.All().Select(kind), @sealed = registry.IsSealed,
+            count = registry.Count,
+            keys = registry.Keys(),
+            all = registry.All().Select(kind),
+            @sealed = registry.IsSealed,
         });
         Check("register preserves insertion order", () =>
         {
@@ -68,8 +71,10 @@ internal static class CampaignRegistryChecks
         Check("duplicate rejects", () => registry.Register(handler("z")));
         Check("lookup distinguishes query and demand", () => new
         {
-            present = registry.Has("a"), absent = registry.Has("missing"),
-            optional = registry.TryGet("missing"), found = kind(registry.Get("a")),
+            present = registry.Has("a"),
+            absent = registry.Has("missing"),
+            optional = registry.TryGet("missing"),
+            found = kind(registry.Get("a")),
         });
         Check("unknown lookup rejects", () => registry.Get("missing"));
         Check("replace existing and introduce new", () =>
@@ -90,8 +95,11 @@ internal static class CampaignRegistryChecks
             copied.Register(handler("clone-only"));
             return new
             {
-                original = registry.Keys(), cloned = copied.Keys(), originalSealed = registry.IsSealed,
-                cloneSealed = copied.IsSealed, count = copied.Count,
+                original = registry.Keys(),
+                cloned = copied.Keys(),
+                originalSealed = registry.IsSealed,
+                cloneSealed = copied.IsSealed,
+                count = copied.Count,
             };
         });
         return checks;
@@ -116,7 +124,7 @@ internal static class CampaignRegistryChecks
         definition["nodes"]![1]!["choices"]![1]!["condition"] = JsonNode.Parse("""
             {"type":"all","conditions":[{"type":"test.threshold","minimum":15},{"type":"not","condition":{"type":"flag","flag":"absent"}}]}
             """);
-        var runtime = new CampaignRuntime(definition, rules: rules);
+        var runtime = new CampaignRuntime(rules, definition);
         rules.Conditions.Replace(new("test.threshold", (_, _, _) => false));
         rules.Effects.Replace(new("test.bonus", (_, _) => throw new Exception("mutated external effect")));
         rules.Nodes.Replace(new("test.camp", (_, _) => throw new Exception("mutated external node")));
@@ -125,10 +133,10 @@ internal static class CampaignRegistryChecks
 
         var badDefinition = (JsonObject)definition.DeepClone();
         badDefinition["nodes"]![0]!["next"] = "missing";
-        var replacedHandler = Observe(() => { _ = new CampaignRuntime(badDefinition, rules: rules); return null; });
+        var replacedHandler = Observe(() => { _ = new CampaignRuntime(rules, badDefinition); return null; });
         var validating = CampaignRules.Create();
         validating.Nodes.Register(new("test.camp", (_, _) => { }, ValidateCamp));
-        var validation = Observe(() => { _ = new CampaignRuntime(badDefinition, rules: validating); return null; });
+        var validation = Observe(() => { _ = new CampaignRuntime(validating, badDefinition); return null; });
         return new JsonObject
         {
             ["checks"] = checks,
@@ -141,12 +149,16 @@ internal static class CampaignRegistryChecks
     private static void ValidateCamp(CampaignNodeInspection inspection, JsonObject node)
     {
         var next = node["next"]!.GetValue<string>();
-        if (!inspection.HasNode(next)) inspection.Reject($"camp target \"{next}\" is absent");
+        if (!inspection.HasNode(next))
+            inspection.Reject($"camp target \"{next}\" is absent");
     }
 
     private static JsonObject Observe(Func<object?> operation)
     {
-        try { return new JsonObject { ["value"] = JsonSerializer.SerializeToNode(operation()), ["error"] = null }; }
+        try
+        {
+            return new JsonObject { ["value"] = JsonSerializer.SerializeToNode(operation()), ["error"] = null };
+        }
         catch (Exception error)
         {
             var name = error switch

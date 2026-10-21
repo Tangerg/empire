@@ -6,7 +6,7 @@ namespace Empire.Core.Composition;
 
 public static class BattleEngineFactory
 {
-    public static GrayFlagEngine Create(ReadOnlyContent content, IEnumerable<EnginePlugin>? plugins = null) =>
+    public static BattleEngine Create(ReadOnlyContent content, IEnumerable<EnginePlugin>? plugins = null) =>
         new(Compose(content, plugins));
 
     public static EnginePlugin OverridePlugin<T>(CapabilityKey<T> capability, T value) => new(
@@ -15,7 +15,8 @@ public static class BattleEngineFactory
     internal static BattleEngineDependencies Compose(ReadOnlyContent content, IEnumerable<EnginePlugin>? plugins = null)
     {
         var kernel = new SrpgMicrokernel().Use(DefaultBattlePlugins.ContentFor(content)).UseAll(DefaultBattlePlugins.Rules);
-        if (plugins is not null) kernel.UseAll(plugins);
+        if (plugins is not null)
+            kernel.UseAll(plugins);
         var capabilities = kernel.Compose();
         var dependencies = new BattleEngineDependencies
         {

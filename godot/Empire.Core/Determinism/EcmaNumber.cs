@@ -7,9 +7,11 @@ internal static class EcmaNumber
 {
     internal static uint ToUint32(double value)
     {
-        if (!double.IsFinite(value) || value == 0) return 0;
+        if (!double.IsFinite(value) || value == 0)
+            return 0;
         var remainder = Math.Truncate(value) % 4294967296.0;
-        if (remainder < 0) remainder += 4294967296.0;
+        if (remainder < 0)
+            remainder += 4294967296.0;
         return (uint)remainder;
     }
 
@@ -18,14 +20,17 @@ internal static class EcmaNumber
         // Unlike JSON.stringify's lossy null substitution, reject invalid state.
         if (!double.IsFinite(value))
             throw new DomainInvariantException("state digest cannot contain a non-finite number");
-        if (value == 0) return "0";
-        if (value < 0) return "-" + Format(-value);
+        if (value == 0)
+            return "0";
+        if (value < 0)
+            return "-" + Format(-value);
 
         // Modern .NET's R format supplies shortest-roundtrip significant digits.
         // ECMAScript has different fixed/scientific cutoffs and exponent spelling.
         var shortest = value.ToString("R", CultureInfo.InvariantCulture);
         var exponentAt = shortest.IndexOf('E');
-        if (exponentAt < 0) exponentAt = shortest.IndexOf('e');
+        if (exponentAt < 0)
+            exponentAt = shortest.IndexOf('e');
         var mantissa = exponentAt < 0 ? shortest : shortest[..exponentAt];
         var exponent = exponentAt < 0 ? 0
             : int.Parse(shortest[(exponentAt + 1)..], CultureInfo.InvariantCulture);

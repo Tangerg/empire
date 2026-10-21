@@ -30,41 +30,47 @@ internal static class LightingCompositionReference
             var start = (Vector2I)((layer.Bounds.Position - origin) * density).Floor();
             var end = (Vector2I)((layer.Bounds.End - origin) * density).Ceil();
             for (var y = Math.Max(0, start.Y); y < Math.Min(size.Y, end.Y); y++)
-            for (var x = Math.Max(0, start.X); x < Math.Min(size.X, end.X); x++)
-            {
-                var point = origin + new Vector2(x + .5f, y + .5f) / density;
-                var coverage = Coverage(layer, origin + new Vector2(x, y) / density, 1 / density);
-                if (coverage == 0) continue;
-                var uv = (point - layer.Bounds.Position) / layer.Bounds.Size;
-                var sample = Sample(layer.Image, uv * new Vector2(layer.Image.GetWidth(), layer.Image.GetHeight()) - Vector2.One / 2) * coverage;
-                pixels[y * size.X + x] = sample + pixels[y * size.X + x] * (1 - sample.A);
-            }
+                for (var x = Math.Max(0, start.X); x < Math.Min(size.X, end.X); x++)
+                {
+                    var point = origin + new Vector2(x + .5f, y + .5f) / density;
+                    var coverage = Coverage(layer, origin + new Vector2(x, y) / density, 1 / density);
+                    if (coverage == 0)
+                        continue;
+                    var uv = (point - layer.Bounds.Position) / layer.Bounds.Size;
+                    var sample = Sample(layer.Image, uv * new Vector2(layer.Image.GetWidth(), layer.Image.GetHeight()) - Vector2.One / 2) * coverage;
+                    pixels[y * size.X + x] = sample + pixels[y * size.X + x] * (1 - sample.A);
+                }
         }
         var output = Image.CreateEmpty(size.X, size.Y, false, Image.Format.Rgba8);
-        for (var y = 0; y < size.Y; y++) for (var x = 0; x < size.X; x++)
-        {
-            var color = pixels[y * size.X + x];
-            output.SetPixel(x, y, color.A == 0 ? Colors.Transparent : new Color(color.R / color.A, color.G / color.A, color.B / color.A, color.A));
-        }
+        for (var y = 0; y < size.Y; y++)
+            for (var x = 0; x < size.X; x++)
+            {
+                var color = pixels[y * size.X + x];
+                output.SetPixel(x, y, color.A == 0 ? Colors.Transparent : new Color(color.R / color.A, color.G / color.A, color.B / color.A, color.A));
+            }
         return new(output, origin, density);
     }
 
     private static float Coverage(Layer layer, Vector2 topLeft, float size)
     {
         var hits = 0;
-        for (var y = 0; y < 4; y++) for (var x = 0; x < 4; x++)
-        {
-            var point = topLeft + new Vector2(x + .5f, y + .5f) * (size / 4);
-            if (!layer.Bounds.HasPoint(point)) continue;
-            if (layer.Cutouts is not null && layer.Cutouts.Any(cut => cut.HasPoint(point))) continue;
-            hits++;
-        }
+        for (var y = 0; y < 4; y++)
+            for (var x = 0; x < 4; x++)
+            {
+                var point = topLeft + new Vector2(x + .5f, y + .5f) * (size / 4);
+                if (!layer.Bounds.HasPoint(point))
+                    continue;
+                if (layer.Cutouts is not null && layer.Cutouts.Any(cut => cut.HasPoint(point)))
+                    continue;
+                hits++;
+            }
         return hits / 16f;
     }
 
     private static Color Sample(Image image, Vector2 point)
     {
-        var left = (int)MathF.Floor(point.X); var top = (int)MathF.Floor(point.Y);
+        var left = (int)MathF.Floor(point.X);
+        var top = (int)MathF.Floor(point.Y);
         Color Pixel(int x, int y)
         {
             // Image edge clamps within its declared canvas; geometry coverage owns the boundary.

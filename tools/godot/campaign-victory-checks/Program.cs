@@ -15,9 +15,9 @@ var gameText = FixtureText.Load(args[2]);
 var root = args[0];
 JsonNode Read(string path) => JsonNode.Parse(File.ReadAllText(Path.Combine(root, path)))!;
 var packs = Read("godot/data/content-packs.json").AsArray();
-var engine = new GrayFlagEngine(packs);
+var engine = new BattleEngine(packs);
 var presentationText = FixtureBattleText.Session(root, engine, gameText);
-var campaign = new GrayFlagCampaign(Read("godot/data/grayflag-campaign.json").AsObject(), Read("godot/data/grayflag-campaign-levels.json").AsArray(), engine, presentationText);
+var campaign = new GrayFlagCampaign(new(engine, presentationText), Read("godot/data/grayflag-campaign.json").AsObject(), Read("godot/data/grayflag-campaign-levels.json").AsArray());
 var steps = 0;
 var saves = 0;
 var battles = 0;
@@ -26,7 +26,8 @@ var complete = false;
 
 void Equal(string label, JsonNode? actual, JsonNode? expected)
 {
-    if (JsonNode.DeepEquals(actual, expected)) return;
+    if (JsonNode.DeepEquals(actual, expected))
+        return;
     throw new InvalidOperationException($"Route mismatch {label} after {steps} actions\nactual: {actual}\nexpected: {expected}");
 }
 
@@ -38,7 +39,8 @@ using var reader = new StreamReader(stream);
 string? line;
 while ((line = reader.ReadLine()) is not null)
 {
-    if (complete) throw new InvalidOperationException("Unexpected data after final route checkpoint.");
+    if (complete)
+        throw new InvalidOperationException("Unexpected data after final route checkpoint.");
     var row = JsonNode.Parse(line)!.AsObject();
     switch (row["kind"]!.GetValue<string>())
     {
@@ -77,13 +79,15 @@ while ((line = reader.ReadLine()) is not null)
             if (session.IsComputerTurn)
             {
                 Equal("independently chosen opponent action", engine.Ai.ChooseAction(session.Snapshot()), action);
-                if (!session.AdvanceComputer()) throw new InvalidOperationException("Computer did not act.");
+                if (!session.AdvanceComputer())
+                    throw new InvalidOperationException("Computer did not act.");
             }
             else
             {
                 // Recorded player input still passes through the native transactional legality boundary.
                 var result = session.Dispatch(JsonSerializer.SerializeToElement(action), session.GetSnapshot().Revision);
-                if (!result.Accepted) throw new InvalidOperationException(result.Message);
+                if (!result.Accepted)
+                    throw new InvalidOperationException(result.Message);
             }
             Equal("events", new JsonArray(session.Events.Skip(before).Select(value => (JsonNode)value.DeepClone()).ToArray()), row["events"]);
             Equal("state", JsonValue.Create(StateDigest.Hash(session.Snapshot())), row["hash"]);
@@ -96,7 +100,8 @@ while ((line = reader.ReadLine()) is not null)
             Equal("saved campaign", own["campaign"]!["state"], source["campaign"]!["state"]);
             Equal("saved request", campaign.RequestSnapshot(), source["request"]);
             Equal("saved events", own["events"], source["events"]);
-            if (own["battle"] is not null) Equal("saved battle", own["battle"]!["state"], source["battle"]!["state"]);
+            if (own["battle"] is not null)
+                Equal("saved battle", own["battle"]!["state"], source["battle"]!["state"]);
             campaign.Load(own);
             saves++;
             break;

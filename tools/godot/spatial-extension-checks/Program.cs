@@ -21,11 +21,12 @@ JsonNode Read(string path)
 }
 var fixture = Read(args[0]).AsObject();
 var packs = fixture["packs"]!.AsArray();
-var engine = new GrayFlagEngine(packs);
+var engine = new BattleEngine(packs);
 var checks = 0;
 void Check(bool condition, string name)
 {
-    if (!condition) throw new Exception(name);
+    if (!condition)
+        throw new Exception(name);
     checks++;
 }
 void Equal(JsonNode? actual, JsonNode? expected, string name) => Check(EcmaJson.DeepEquals(actual, expected), name + $"\nactual: {actual}\nexpected: {expected}");
@@ -36,38 +37,46 @@ JsonObject State(string type) => fixture["commandLabels"]!.AsArray().OfType<Json
     .First(row => StateJson.Text(Unit(row["state"]!.AsObject()), "type") == type)["state"]!.DeepClone().AsObject();
 JsonObject Order(JsonObject unit, string ability, Coord? target = null, Coord? destination = null) => new()
 {
-    ["kind"] = "command", ["unit"] = unit["id"]!.DeepClone(),
+    ["kind"] = "command",
+    ["unit"] = unit["id"]!.DeepClone(),
     ["path"] = TacticalQueries.PathJson(destination is { } to ? [TacticalQueries.Position(unit), to] : [TacticalQueries.Position(unit)]),
     ["command"] = new JsonObject { ["ability"] = ability, ["target"] = target is { } at ? TacticalQueries.CoordinateJson(at) : null },
 };
 (AbilityCommands Commands, BattleCombat Combat) Consumers(ITacticalSpace space)
 {
-    var movement = new TacticalCommands(new(engine.Grids, space, engine.Reactions), engine.Turns.MayAct, engine.Directives);
+    var movement = new TacticalCommands(new(engine.Grids, space, engine.Reactions, engine.Turns.MayAct, engine.Directives));
     var combat = new BattleCombat(new BattleCombatRules(engine.Catalog, engine.Grids, engine.Resources, space, engine.AreaShapes,
         DefaultCombatModifiers.Create(), DefaultWeaponHitEffects.Create(), engine.Reactions, engine.RankProgression, engine.UnitDepartures));
-    return (new(engine.AbilityRules with { Space = space, Combat = combat }, movement), combat);
+    return (new(engine.AbilityRules with
+    {
+        Space = space,
+        Combat = combat
+    }, movement), combat);
 }
 void Refused(AbilityCommands commands, JsonObject state, JsonObject action, string name)
 {
-    var battle = new Battle(state, new BattleActionRegistry().Register("command", commands.Execute));
+    var battle = new Battle(new BattleTransactionRules(new BattleActionRegistry().Register("command", commands.Execute), null), state);
     var before = battle.Snapshot();
     var refused = false;
-    try { battle.Dispatch(action); }
+    try
+    {
+        battle.Dispatch(action);
+    }
     catch (IllegalActionException) { refused = true; }
     Check(refused, name + " was accepted");
     Equal(battle.Snapshot(), before, name + " leaked state");
 }
 
 Check(typeof(ITacticalSpace).GetMethods().Length == 10, "spatial contract grew non-source methods");
-Check(typeof(GrayFlagEngine).GetProperty("Space")!.PropertyType == typeof(ITacticalSpace), "engine binds concrete spatial policy");
+Check(typeof(BattleEngine).GetProperty("Space")!.PropertyType == typeof(ITacticalSpace), "engine binds concrete spatial policy");
 Check(typeof(AbilityRules).GetProperty("Space")!.PropertyType == typeof(ITacticalSpace), "abilities bind concrete spatial policy");
-var defaults = new DefaultTacticalSpace(engine.Catalog, engine.Grids);
+var defaults = new DefaultTacticalSpace(new TacticalSpaceRules(engine.Catalog, engine.Grids));
 var soldier = State("soldier");
 var actor = Unit(soldier);
 var at = TacticalQueries.Position(actor);
 var baseline = Consumers(defaults);
 Check(baseline.Commands.Options(soldier, actor, at).Any(option => option.Ability == "attack"), "pacifist fixture has no default attack");
-var pacifist = new PacifistSpace(engine.Catalog, engine.Grids);
+var pacifist = new PacifistSpace(new TacticalSpaceRules(engine.Catalog, engine.Grids));
 var pacifistConsumers = Consumers(pacifist);
 Check(!pacifistConsumers.Commands.Options(soldier, actor, at).Any(option => option.Ability == "attack"), "pacifist menu bypass");
 Check(pacifistConsumers.Combat.AttackTargets(soldier, actor, at).Count == 0, "combat query bypass");
@@ -80,7 +89,7 @@ Check(baseline.Commands.Options(cleric, healer, TacticalQueries.Position(healer)
 Check(!pacifistConsumers.Commands.Options(cleric, healer, TacticalQueries.Position(healer)).Any(option => option.Ability == "heal"), "custom heal menu bypass");
 Refused(pacifistConsumers.Commands, cleric, Order(healer, "heal", new(1, 2)), "custom heal execution");
 
-var isolated = new IndependentOverrides(engine.Catalog, engine.Grids);
+var isolated = new IndependentOverrides(new TacticalSpaceRules(engine.Catalog, engine.Grids));
 Check(isolated.ComputeMoveField(soldier, actor).Tiles.Count == 0, "move field override did not execute");
 Check(isolated.ThreatTiles(soldier, actor).SetEquals(defaults.ThreatTiles(soldier, actor)), "inherited threat called overridden move field");
 Check(isolated.VisibleTiles(soldier, 1).Count == 0, "visible tiles override did not execute");
@@ -109,18 +118,18 @@ field.Stops = new();
 Check(field.Origin == new Coord(5, 6) && field.Unit == 73 && field.Tiles.Count == 0 && field.Stops.Count == 0,
     "MoveField introduced readonly restrictions absent from source data contract");
 
-var teleport = new TeleportSpace(engine.Catalog, engine.Grids);
+var teleport = new TeleportSpace(new TacticalSpaceRules(engine.Catalog, engine.Grids));
 var teleportConsumers = Consumers(teleport);
 soldier["rules"]!["zoneOfControl"] = false;
 var destination = new Coord(0, 0);
-var movementBattle = new Battle(soldier, new BattleActionRegistry().Register("command", teleportConsumers.Commands.Execute));
+var movementBattle = new Battle(new BattleTransactionRules(new BattleActionRegistry().Register("command", teleportConsumers.Commands.Execute), null), soldier);
 var movementReceipt = movementBattle.Dispatch(Order(actor, "wait", destination: destination));
 Check(TacticalQueries.Position(Unit(movementBattle.Snapshot())) == destination, "custom move field did not reach execution");
 var move = movementReceipt.Events.Single(value => StateJson.Text(value, "type") == "move");
 Equal(move["path"], TacticalQueries.PathJson([at, new(0, 1), destination]), "custom canonical path discarded");
 Check(teleport.MoveCalls == 1 && teleport.PathCalls == 1, "movement validation recomputed default policy");
 Refused(Consumers(isolated).Commands, soldier, Order(actor, "wait", destination: destination), "empty replacement move field");
-var noStop = new TeleportSpace(engine.Catalog, engine.Grids, stop: false);
+var noStop = new TeleportSpace(new TacticalSpaceRules(engine.Catalog, engine.Grids), stop: false);
 Refused(Consumers(noStop).Commands, soldier, Order(actor, "wait", destination: destination), "custom independent stop set");
 
 var gridsKey = new CapabilityKey<GridRegistry>("grids");
@@ -131,7 +140,7 @@ var replacementGrids = new GridRegistry().Register(new DiagonalSquare4());
 var captured = new SrpgMicrokernel()
     .Use(new("consumer", 1, c => c.Provide(consumerKey, c.Require(spaceKey)), provides: [consumerKey], requiresCapabilities: [spaceKey]))
     .Use(new("replace-grids", 1, c => c.Replace(gridsKey, replacementGrids), overrides: [gridsKey]))
-    .Use(new("space", 1, c => c.Provide<ITacticalSpace>(spaceKey, new DefaultTacticalSpace(engine.Catalog, c.Require(gridsKey))),
+    .Use(new("space", 1, c => c.Provide<ITacticalSpace>(spaceKey, new DefaultTacticalSpace(new TacticalSpaceRules(engine.Catalog, c.Require(gridsKey)))),
         provides: [spaceKey], requiresCapabilities: [gridsKey]))
     .Use(new("grids", 1, c => c.Provide(gridsKey, originalGrids), provides: [gridsKey]))
     .Compose();
@@ -140,7 +149,7 @@ Check(captured.Require(consumerKey).Board(soldier).Distance(new(0, 0), new(1, 1)
 Check(ReferenceEquals(((DefaultTacticalSpace)captured.Require(consumerKey)).Grids, replacementGrids), "spatial installer copied the resolved registry");
 replacementGrids.Replace(new Square4Grid());
 Check(captured.Require(consumerKey).Board(soldier).Distance(new(0, 0), new(1, 1)) == 2, "resolved registry reference became snapshot");
-var replacement = new TeleportSpace(engine.Catalog, engine.Grids);
+var replacement = new TeleportSpace(new TacticalSpaceRules(engine.Catalog, engine.Grids));
 var fullReplacement = new SrpgMicrokernel()
     .Use(new("consumer", 1, c => c.Provide(consumerKey, c.Require(spaceKey)), provides: [consumerKey], requiresCapabilities: [spaceKey]))
     .Use(new("space-replacement", 1, c => c.Replace<ITacticalSpace>(spaceKey, replacement), overrides: [spaceKey]))
@@ -186,7 +195,7 @@ Check(whole.HostileControlZone(soldier, actor).SetEquals(new[] { 23 }), "plain i
 Check(whole.VisibleTiles(soldier, 1).SetEquals(new[] { 11 }), "plain interface tile visibility replacement");
 Check(whole.VisibleUnits(soldier, 1).Count == 1 && ReferenceEquals(whole.VisibleUnits(soldier, 1)[0], actor), "plain interface actor visibility identity");
 Check(!whole.IsUnitVisible(soldier, 2, actor), "plain interface visibility predicate replacement");
-var wholeBattle = new Battle(soldier, new BattleActionRegistry().Register("command", wholeConsumers.Commands.Execute));
+var wholeBattle = new Battle(new BattleTransactionRules(new BattleActionRegistry().Register("command", wholeConsumers.Commands.Execute), null), soldier);
 wholeBattle.Dispatch(Order(actor, "wait", destination: destination));
 Check(TacticalQueries.Position(Unit(wholeBattle.Snapshot())) == destination, "plain interface movement/path replacement");
 var projected = visibility["casts"]![0]!["state"]!.AsObject();
@@ -203,26 +212,35 @@ Equal(Node(boardPolicy.IncomingCasts(projected).Select(pair => new { pair.Key.X,
 Console.WriteLine($"PASS {checks} spatial contract, consumer, rollback, independent-default, resolved-grid, and recorded source comparisons");
 Console.WriteLine("These checks establish spatial consumer behavior; engine composition and save/replay integration have separate suites.");
 
-sealed class PacifistSpace(ReadOnlyContent content, GridRegistry grids) : DefaultTacticalSpace(content, grids)
+sealed class PacifistSpace(TacticalSpaceRules rules) : DefaultTacticalSpace(rules)
 {
     public override IReadOnlyList<Coord> AttackTargetCoords(JsonObject state, JsonObject unit, Coord from, JsonObject weapon) => [];
     public override IReadOnlyList<JsonObject> HealTargetsFrom(JsonObject state, JsonObject unit, Coord from) => [];
 }
-sealed class IndependentOverrides(ReadOnlyContent content, GridRegistry grids) : DefaultTacticalSpace(content, grids)
+sealed class IndependentOverrides(TacticalSpaceRules rules) : DefaultTacticalSpace(rules)
 {
     public override MoveField ComputeMoveField(JsonObject state, JsonObject unit) => new(TacticalQueries.Position(unit), StateJson.Integer(unit, "id"), []);
     public override IReadOnlySet<int> VisibleTiles(JsonObject state, int viewer) => new HashSet<int>();
     public override bool IsUnitVisible(JsonObject state, int viewer, JsonObject unit, IReadOnlySet<int>? seen = null) => false;
-    public override TacticalBoard Board(JsonObject state) => new(state["map"]!.AsObject(), new Square8Grid());
+    public override TacticalBoard Board(JsonObject state) => new(new Square8Grid(), state["map"]!.AsObject());
 }
-sealed class TeleportSpace(ReadOnlyContent content, GridRegistry grids, bool stop = true) : DefaultTacticalSpace(content, grids)
+sealed class TeleportSpace(TacticalSpaceRules rules, bool stop = true) : DefaultTacticalSpace(rules)
 {
-    public int MoveCalls { get; private set; }
-    public int PathCalls { get; private set; }
+    public int MoveCalls
+    {
+        get; private set;
+    }
+    public int PathCalls
+    {
+        get; private set;
+    }
     public override MoveField ComputeMoveField(JsonObject state, JsonObject unit)
     {
         MoveCalls++;
-        return new(TacticalQueries.Position(unit), StateJson.Integer(unit, "id"), new() { [0] = new(0, 0, 0, 0, -1, true) }, stop ? [0] : []);
+        return new(TacticalQueries.Position(unit), StateJson.Integer(unit, "id"), new()
+        {
+            [0] = new(0, 0, 0, 0, -1, true)
+        }, stop ? [0] : []);
     }
     public override IReadOnlyList<Coord>? PathTo(MoveField field, JsonObject state, Coord destination)
     {

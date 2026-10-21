@@ -10,8 +10,14 @@ public abstract class CapabilityKey
         ValueType = valueType;
     }
 
-    public string Id { get; }
-    public Type ValueType { get; }
+    public string Id
+    {
+        get;
+    }
+    public Type ValueType
+    {
+        get;
+    }
     public override string ToString() => Id;
 }
 

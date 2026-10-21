@@ -21,8 +21,10 @@ public static class BattleStateFactory
     {
         var seed = new JsonObject { ["x"] = at.X, ["y"] = at.Y, ["unit"] = type, ["owner"] = owner };
         if (source is not null)
-            foreach (var pair in source) seed[pair.Key] = pair.Value?.DeepClone();
-        if (hp is { } explicitHp) seed["hp"] = explicitHp;
+            foreach (var pair in source)
+                seed[pair.Key] = pair.Value?.DeepClone();
+        if (hp is { } explicitHp)
+            seed["hp"] = explicitHp;
         var id = StateJson.Integer(state, "nextUnitId");
         var grid = dependencies.Grids.Get(StateJson.Text(state["rules"]!["grid"], "grid"));
         var nextId = checked(id + 1);
@@ -113,7 +115,8 @@ public static class BattleStateFactory
             var tiles = (JsonArray)map["tiles"]!;
             for (var index = 0; index < owners.Count; index++)
             {
-                if (StateJson.Integer(owners[index], "tile owner") != id) continue;
+                if (StateJson.Integer(owners[index], "tile owner") != id)
+                    continue;
                 if (StateJson.IsTrue(content.Get("terrains", StateJson.Text(tiles[index], "terrain"))["hq"]))
                 {
                     ownsHq = true;
@@ -224,7 +227,8 @@ public static class BattleStateFactory
         var mastery = new JsonObject();
         if (!string.IsNullOrEmpty(current))
         {
-            if (!unlocked.Any(entry => StateJson.Text(entry, "career id") == current)) unlocked.Add(current);
+            if (!unlocked.Any(entry => StateJson.Text(entry, "career id") == current))
+                unlocked.Add(current);
             mastery[current] = Math.Max(0, StateJson.Round(StateJson.Number(source, "rankProgress", 0)));
         }
         if (source["careerMastery"] is { } authoredMastery)
@@ -244,7 +248,8 @@ public static class BattleStateFactory
                 unit["key"] is JsonValue key && key.TryGetValue<string>(out var text) && text == unitKey);
             if (leader is null)
                 throw new DomainInvariantException($"commander {id} references unknown unit key \"{unitKey}\"");
-            if (leader["commanderId"] is null) leader["commanderId"] = id;
+            if (leader["commanderId"] is null)
+                leader["commanderId"] = id;
             var aura = source["aura"] is { } authoredAura ? StateJson.Object(authoredAura, "aura") : new JsonObject();
             result.Add(new JsonObject
             {
@@ -346,8 +351,10 @@ public static class BattleStateFactory
         {
             var copy = (JsonObject)rule.DeepClone();
             // `rule.players?.slice()` serializes neither an absent nor an explicit null list.
-            if (rule["players"] is null) copy.Remove("players");
-            else copy["players"] = StateJson.CopyArray(rule["players"], "engagement rule players");
+            if (rule["players"] is null)
+                copy.Remove("players");
+            else
+                copy["players"] = StateJson.CopyArray(rule["players"], "engagement rule players");
             engagementRules.Add(copy);
         }
         return new JsonObject
@@ -366,17 +373,20 @@ public static class BattleStateFactory
 
     private static JsonObject? CreateDeployment(JsonObject level, JsonArray players, JsonArray units, JsonObject zones)
     {
-        if (level["deployment"] is null) return null;
+        if (level["deployment"] is null)
+            return null;
         var source = StateJson.Object(level["deployment"], "deployment");
         var declarations = StateJson.Objects(StateJson.Required(source, "zones"), "deployment zones").ToList();
         var orderValues = source["order"] is { } authoredOrder
             ? StateJson.Array(authoredOrder, "deployment order").Select(entry => StateJson.Integer(entry, "deployment player"))
             : declarations.Select(entry => StateJson.Integer(entry, "player"));
         var order = orderValues.Distinct().ToList();
-        if (order.Count == 0) throw new DomainInvariantException("deployment must include at least one player");
+        if (order.Count == 0)
+            throw new DomainInvariantException("deployment must include at least one player");
         var playerIds = players.OfType<JsonObject>().Select(player => StateJson.Integer(player, "id")).ToHashSet();
         foreach (var owner in order)
-            if (!playerIds.Contains(owner)) throw new DomainInvariantException($"deployment references unknown player {owner}");
+            if (!playerIds.Contains(owner))
+                throw new DomainInvariantException($"deployment references unknown player {owner}");
         var assignments = new JsonArray();
         var assigned = new HashSet<int>();
         foreach (var entry in declarations)
@@ -391,7 +401,8 @@ public static class BattleStateFactory
             var unitIds = new JsonArray();
             foreach (var unit in units.OfType<JsonObject>())
             {
-                if (StateJson.Integer(unit, "owner") != owner) continue;
+                if (StateJson.Integer(unit, "owner") != owner)
+                    continue;
                 if (keys is not null)
                 {
                     if (unit["key"] is not JsonValue keyValue || !keyValue.TryGetValue<string>(out var key) ||
@@ -415,7 +426,8 @@ public static class BattleStateFactory
             if (!assignments.OfType<JsonObject>().Any(entry => StateJson.Integer(entry, "player") == owner))
                 throw new DomainInvariantException($"deployment player {owner} has no deployment zone");
         var orderArray = new JsonArray();
-        foreach (var owner in order) orderArray.Add(owner);
+        foreach (var owner in order)
+            orderArray.Add(owner);
         return new JsonObject { ["order"] = orderArray, ["currentIndex"] = 0, ["assignments"] = assignments };
     }
 }

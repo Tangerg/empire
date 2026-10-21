@@ -10,7 +10,8 @@ internal static class PackageChecks
     {
         const string prefix = "--package-check=";
         var arguments = OS.GetCmdlineUserArgs().Where(value => value.StartsWith(prefix, StringComparison.Ordinal)).ToArray();
-        if (arguments.Length == 0) return false;
+        if (arguments.Length == 0)
+            return false;
         var scene = arguments.Length == 1 ? arguments[0][prefix.Length..] switch
         {
             "release" => "ReleaseDiagnostics",
@@ -22,7 +23,10 @@ internal static class PackageChecks
             tree.Quit(2);
             return true;
         }
-        try { RequireFreshTemporaryData(); }
+        try
+        {
+            RequireFreshTemporaryData();
+        }
         catch (Exception error)
         {
             GD.PushError("Refusing packaged diagnostics: " + error.Message);
@@ -34,7 +38,8 @@ internal static class PackageChecks
         Callable.From(() =>
         {
             var error = tree.ChangeSceneToFile($"res://Scenes/{scene}.tscn");
-            if (error == Error.Ok) return;
+            if (error == Error.Ok)
+                return;
             GD.PushError($"Cannot start packaged diagnostic {scene}: {error}");
             tree.Quit(1);
         }).CallDeferred();

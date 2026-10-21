@@ -8,7 +8,10 @@ using System.Text;
 static string Units(string value) => string.Join(" ", value.Select(c => ((int)c).ToString("x4")));
 static void Probe(string name, Func<string> test)
 {
-    try { Console.WriteLine(name + ": " + test()); }
+    try
+    {
+        Console.WriteLine(name + ": " + test());
+    }
     catch (Exception e) { Console.WriteLine(name + ": THROWS " + e.GetType().Name + ": " + e.Message); }
 }
 if (args.Length == 2) { CanonicalChecks.Run(args[0], args[1]); return; }
@@ -43,12 +46,12 @@ Probe("custom scalar DeepClone GetValue", () => Units(custom.DeepClone().GetValu
 Probe("custom scalar DeepClone ToJsonString", () => custom.DeepClone().ToJsonString());
 Probe("custom object key ToJsonString", () => new JsonObject { ["\ud800"] = custom }.ToJsonString(convertOptions));
 Probe("reader raw property bytes", () => { var reader = new Utf8JsonReader(Encoding.UTF8.GetBytes("{\"\\ud800\":1}")); reader.Read(); reader.Read(); return Encoding.UTF8.GetString(reader.ValueSpan); });
-Probe("writer raw scalar", () => { using var stream = new MemoryStream(); using (var writer = new Utf8JsonWriter(stream)) { writer.WriteRawValue(raw, skipInputValidation:false); } return Encoding.UTF8.GetString(stream.ToArray()); });
+Probe("writer raw scalar", () => { using var stream = new MemoryStream(); using (var writer = new Utf8JsonWriter(stream)) { writer.WriteRawValue(raw, skipInputValidation: false); } return Encoding.UTF8.GetString(stream.ToArray()); });
 
-Probe("DeepEquals lone vs replacement", () => JsonNode.DeepEquals(JsonValue.Create("\ud800"),JsonValue.Create("\ufffd")).ToString());
-Probe("DeepEquals high vs low", () => JsonNode.DeepEquals(JsonValue.Create("\ud800"),JsonValue.Create("\udfff")).ToString());
-Probe("DeepEquals lone object vs replacement object", () => JsonNode.DeepEquals(new JsonObject {["\ud800"] = 1},new JsonObject {["\ufffd"] = 1}).ToString());
-Probe("DeepEquals literal vs parsed escaped lone", () => JsonNode.DeepEquals(literal,parsed).ToString());
+Probe("DeepEquals lone vs replacement", () => JsonNode.DeepEquals(JsonValue.Create("\ud800"), JsonValue.Create("\ufffd")).ToString());
+Probe("DeepEquals high vs low", () => JsonNode.DeepEquals(JsonValue.Create("\ud800"), JsonValue.Create("\udfff")).ToString());
+Probe("DeepEquals lone object vs replacement object", () => JsonNode.DeepEquals(new JsonObject { ["\ud800"] = 1 }, new JsonObject { ["\ufffd"] = 1 }).ToString());
+Probe("DeepEquals literal vs parsed escaped lone", () => JsonNode.DeepEquals(literal, parsed).ToString());
 Probe("Parse direct lone scalar", () => Units(JsonNode.Parse("\"\ud800\"")!.GetValue<string>()));
 Probe("Parsed object GetValue<JsonElement>", () => parsedObj.GetValue<JsonElement>().GetRawText());
 

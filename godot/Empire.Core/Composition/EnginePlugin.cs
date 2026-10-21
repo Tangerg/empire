@@ -17,11 +17,32 @@ public sealed class EnginePlugin
         Requires = Array.AsReadOnly(requires?.ToArray() ?? []);
     }
 
-    public string Id { get; }
-    public double Version { get; }
-    public IReadOnlyList<CapabilityKey> Provides { get; }
-    public IReadOnlyList<CapabilityKey> Overrides { get; }
-    public IReadOnlyList<CapabilityKey> RequiresCapabilities { get; }
-    public IReadOnlyList<string> Requires { get; }
-    public Action<KernelPluginContext> Install { get; }
+    public string Id
+    {
+        get;
+    }
+    public double Version
+    {
+        get;
+    }
+    public IReadOnlyList<CapabilityKey> Provides
+    {
+        get;
+    }
+    public IReadOnlyList<CapabilityKey> Overrides
+    {
+        get;
+    }
+    public IReadOnlyList<CapabilityKey> RequiresCapabilities
+    {
+        get;
+    }
+    public IReadOnlyList<string> Requires
+    {
+        get;
+    }
+    public Action<KernelPluginContext> Install
+    {
+        get;
+    }
 }

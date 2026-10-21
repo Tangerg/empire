@@ -2,8 +2,14 @@ namespace Empire.Core.Registries;
 
 public interface IPrioritizedEntry
 {
-    string Id { get; }
-    double Priority { get; }
+    string Id
+    {
+        get;
+    }
+    double Priority
+    {
+        get;
+    }
 }
 
 /// <summary>Rules consulted by numeric priority, then ordinal UTF-16 identity.</summary>

@@ -6,18 +6,36 @@ namespace Empire.Presentation;
 
 public sealed class WorldMaterialsManifest
 {
-    public int Schema { get; init; }
+    public int Schema
+    {
+        get; init;
+    }
     public Dictionary<string, WorldMaterialRecord> Materials { get; init; } = new(StringComparer.Ordinal);
     public ForestMaskRecord ForestMask { get; init; } = new();
-    public ForestMaskRecord? EarthMask { get; init; }
+    public ForestMaskRecord? EarthMask
+    {
+        get; init;
+    }
     public Dictionary<string, ForestMaskRecord> ConnectorMasks { get; init; } = new(StringComparer.Ordinal);
-    public string? ShoreBlend { get; init; }
+    public string? ShoreBlend
+    {
+        get; init;
+    }
     public Dictionary<string, string> Foundations { get; init; } = new(StringComparer.Ordinal);
     public MaterialFit SurfaceFit { get; init; } = new();
-    public CrossingManifest? Crossings { get; init; }
-    public string? EdgeDecorationsResourcePath { get; init; }
+    public CrossingManifest? Crossings
+    {
+        get; init;
+    }
+    public string? EdgeDecorationsResourcePath
+    {
+        get; init;
+    }
     [System.Text.Json.Serialization.JsonIgnore]
-    public EdgeDecorationManifest? EdgeDecorations { get; private set; }
+    public EdgeDecorationManifest? EdgeDecorations
+    {
+        get; private set;
+    }
     public Dictionary<string, TerrainMaterialBinding> TerrainBindings { get; init; } = new(StringComparer.Ordinal);
     public Dictionary<string, string[]> TerrainTags { get; init; } = new(StringComparer.Ordinal);
     public Dictionary<string, string[]> GroundTagFamilies { get; init; } = new(StringComparer.Ordinal);
@@ -38,7 +56,10 @@ public sealed class WorldMaterialsManifest
 
 public sealed class WorldMaterialRecord
 {
-    public int SchemaVersion { get; init; }
+    public int SchemaVersion
+    {
+        get; init;
+    }
     public string Id { get; init; } = "";
     public string ResourcePath { get; init; } = "";
     public int[] LogicalSize { get; init; } = Array.Empty<int>();
@@ -46,58 +67,149 @@ public sealed class WorldMaterialRecord
     public double[] WorldOrigin { get; init; } = Array.Empty<double>();
     public MaterialFit Fit { get; init; } = new();
     public MaterialReplacement Replaces { get; init; } = new();
-    public OccupancyMaskRecord? Occupancy { get; init; }
+    public OccupancyMaskRecord? Occupancy
+    {
+        get; init;
+    }
 }
-public sealed class MaterialFit { public double Inset { get; init; } public double Bleed { get; init; } }
+public sealed class MaterialFit
+{
+    public double Inset
+    {
+        get; init;
+    }
+    public double Bleed
+    {
+        get; init;
+    }
+}
 public sealed class MaterialReplacement
 {
     public string Atlas { get; init; } = "";
-    public string? Mask { get; init; }
-    public string? Edge { get; init; }
-    public int? Tone { get; init; }
+    public string? Mask
+    {
+        get; init;
+    }
+    public string? Edge
+    {
+        get; init;
+    }
+    public int? Tone
+    {
+        get; init;
+    }
 }
 public sealed class ForestMaskRecord
 {
     public string Id { get; init; } = "";
     public string ResourcePath { get; init; } = "";
-    public int Columns { get; init; }
-    public int Rows { get; init; }
-    public int CellWidth { get; init; }
-    public int CellHeight { get; init; }
-    public int CellWidth2x { get; init; }
-    public int CellHeight2x { get; init; }
+    public int Columns
+    {
+        get; init;
+    }
+    public int Rows
+    {
+        get; init;
+    }
+    public int CellWidth
+    {
+        get; init;
+    }
+    public int CellHeight
+    {
+        get; init;
+    }
+    public int CellWidth2x
+    {
+        get; init;
+    }
+    public int CellHeight2x
+    {
+        get; init;
+    }
     public int[] MaskOrder { get; init; } = Array.Empty<int>();
     public int VariantsPerMask { get; init; } = 1;
     public string TileMode { get; init; } = "";
-    public string? CellIndex { get; init; }
+    public string? CellIndex
+    {
+        get; init;
+    }
 }
 public sealed class TerrainMaterialBinding
 {
-    public string? Surface { get; init; }
-    public string? Blend { get; init; }
-    public int? Tone { get; init; }
-    public MaterialReplacement? Connected { get; init; }
-    public ScenerySpecification? Scenery { get; init; }
-    public ScenerySpecification? Decals { get; init; }
+    public string? Surface
+    {
+        get; init;
+    }
+    public string? Blend
+    {
+        get; init;
+    }
+    public int? Tone
+    {
+        get; init;
+    }
+    public MaterialReplacement? Connected
+    {
+        get; init;
+    }
+    public ScenerySpecification? Scenery
+    {
+        get; init;
+    }
+    public ScenerySpecification? Decals
+    {
+        get; init;
+    }
 }
 public sealed class ScenerySpecifications
 {
-    public ScenerySpecification? ForestFloor { get; init; }
-    public ScenerySpecification? SettlementLife { get; init; }
-    public ScenerySpecification? RiverStones { get; init; }
-    public ScenerySpecification? ShoreDecals { get; init; }
+    public ScenerySpecification? ForestFloor
+    {
+        get; init;
+    }
+    public ScenerySpecification? SettlementLife
+    {
+        get; init;
+    }
+    public ScenerySpecification? RiverStones
+    {
+        get; init;
+    }
+    public ScenerySpecification? ShoreDecals
+    {
+        get; init;
+    }
 }
 public sealed class ScenerySpecification
 {
     public string[] Ids { get; init; } = Array.Empty<string>();
-    public double Scale { get; init; }
-    public double? Chance { get; init; }
-    public double Jitter { get; init; }
+    public double Scale
+    {
+        get; init;
+    }
+    public double? Chance
+    {
+        get; init;
+    }
+    public double Jitter
+    {
+        get; init;
+    }
 }
 public sealed class RoadCorridorProfile
 {
-    public double Width { get; init; }
-    public double MaxTangentCut { get; init; }
-    public double MaxPlainOverhang { get; init; }
+    public double Width
+    {
+        get; init;
+    }
+    public double MaxTangentCut
+    {
+        get; init;
+    }
+    public double MaxPlainOverhang
+    {
+        get; init;
+    }
     public int[][] ProtectedCells { get; init; } = Array.Empty<int[]>();
 }

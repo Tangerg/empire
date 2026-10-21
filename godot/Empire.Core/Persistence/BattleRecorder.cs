@@ -31,9 +31,13 @@ public sealed class BattleRecorder
             throw new DomainInvariantException($"cannot finish replay for \"{levelId}\" with state from \"{finalLevel}\"");
         return new JsonObject
         {
-            ["schema"] = Schema, ["levelId"] = levelId, ["seed"] = seed.DeepClone(),
-            ["ruleset"] = ruleset.DeepClone(), ["initialStateHash"] = initialStateHash,
-            ["actions"] = actions.DeepClone(), ["finalStateHash"] = StateDigest.Hash(finalState),
+            ["schema"] = Schema,
+            ["levelId"] = levelId,
+            ["seed"] = seed.DeepClone(),
+            ["ruleset"] = ruleset.DeepClone(),
+            ["initialStateHash"] = initialStateHash,
+            ["actions"] = actions.DeepClone(),
+            ["finalStateHash"] = StateDigest.Hash(finalState),
         };
     }
 }

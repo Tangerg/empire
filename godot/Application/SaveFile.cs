@@ -7,7 +7,10 @@ using Empire.Core.Determinism;
 
 namespace Empire.Application;
 
-public enum SaveFileOperation { Read, Write, Clear }
+public enum SaveFileOperation
+{
+    Read, Write, Clear
+}
 
 public sealed class SaveStorageException(SaveFileOperation operation, string filePath, Exception cause)
     : IOException($"Save file {operation.ToString().ToLowerInvariant()} failed: {cause.Message}", cause)
@@ -23,10 +26,16 @@ public static class SaveFile
     {
         RequireAbsolutePath(path);
         string text;
-        try { text = File.ReadAllText(path, new UTF8Encoding(false, true)); }
+        try
+        {
+            text = File.ReadAllText(path, new UTF8Encoding(false, true));
+        }
         catch (DecoderFallbackException error) { throw new StoredDocumentException("Save file is not valid UTF-8.", error); }
         catch (Exception error) when (IsAccessFailure(error)) { throw new SaveStorageException(SaveFileOperation.Read, path, error); }
-        try { return EcmaJson.Parse(text); }
+        try
+        {
+            return EcmaJson.Parse(text);
+        }
         catch (JsonException error) { throw new StoredDocumentException("Save file is not valid JSON.", error); }
     }
 
@@ -53,14 +62,20 @@ public static class SaveFile
         }
         catch (Exception error)
         {
-            try { if (created) File.Delete(temporary); }
+            try
+            {
+                if (created)
+                    File.Delete(temporary);
+            }
             catch (Exception cleanupError) when (IsAccessFailure(cleanupError))
             {
                 var failures = new AggregateException("Save write and temporary-file cleanup both failed.", error, cleanupError);
-                if (IsAccessFailure(error)) throw new SaveStorageException(SaveFileOperation.Write, path, failures);
+                if (IsAccessFailure(error))
+                    throw new SaveStorageException(SaveFileOperation.Write, path, failures);
                 throw failures;
             }
-            if (IsAccessFailure(error)) throw new SaveStorageException(SaveFileOperation.Write, path, error);
+            if (IsAccessFailure(error))
+                throw new SaveStorageException(SaveFileOperation.Write, path, error);
             throw;
         }
     }
@@ -68,7 +83,10 @@ public static class SaveFile
     public static void Clear(string path)
     {
         RequireAbsolutePath(path);
-        try { File.Delete(path); }
+        try
+        {
+            File.Delete(path);
+        }
         catch (Exception error) when (IsAccessFailure(error)) { throw new SaveStorageException(SaveFileOperation.Clear, path, error); }
     }
 

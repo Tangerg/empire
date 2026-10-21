@@ -29,12 +29,18 @@ public sealed class ContentTextDocument
     private static readonly FrozenDictionary<ContentTextKind, string> Families =
         new Dictionary<ContentTextKind, string>
         {
-            [ContentTextKind.MovementProfile] = "movementProfiles", [ContentTextKind.DamageType] = "damageTypes",
-            [ContentTextKind.ArmorClass] = "armorClasses", [ContentTextKind.Terrain] = "terrains",
-            [ContentTextKind.Weapon] = "weapons", [ContentTextKind.Unit] = "units",
-            [ContentTextKind.Status] = "statuses", [ContentTextKind.Structure] = "structures",
-            [ContentTextKind.TerrainOverlay] = "terrainOverlays", [ContentTextKind.Tactic] = "tactics",
-            [ContentTextKind.Career] = "careers", [ContentTextKind.Formation] = "formations",
+            [ContentTextKind.MovementProfile] = "movementProfiles",
+            [ContentTextKind.DamageType] = "damageTypes",
+            [ContentTextKind.ArmorClass] = "armorClasses",
+            [ContentTextKind.Terrain] = "terrains",
+            [ContentTextKind.Weapon] = "weapons",
+            [ContentTextKind.Unit] = "units",
+            [ContentTextKind.Status] = "statuses",
+            [ContentTextKind.Structure] = "structures",
+            [ContentTextKind.TerrainOverlay] = "terrainOverlays",
+            [ContentTextKind.Tactic] = "tactics",
+            [ContentTextKind.Career] = "careers",
+            [ContentTextKind.Formation] = "formations",
         }.ToFrozenDictionary();
 
     private readonly FrozenDictionary<ContentTextKind, FrozenDictionary<string, Entry>> content;
@@ -108,7 +114,8 @@ public sealed class ContentTextDocument
             .Concat(abilities.Values.Concat(reactions.Values).SelectMany(entry => new[] { entry.Name, entry.Hint }))
             .Concat(resources.Values).Concat(directions.Values.SelectMany(entries => entries.Values)).ToArray();
         text.ValidateKeys(keys);
-        foreach (var key in keys) _ = text.Format(key);
+        foreach (var key in keys)
+            _ = text.Format(key);
     }
 
     internal string NameKey(ContentTextKind kind, string id) => ContentEntry(kind, id).Name;
@@ -132,8 +139,10 @@ public sealed class ContentTextDocument
     {
         var fields = Properties(value, path);
         var allowed = new HashSet<string>(StringComparer.Ordinal) { "name" };
-        if (kind == ContentTextKind.Unit) allowed.Add("blurb");
-        if (kind == ContentTextKind.Weapon) allowed.Add("bonuses");
+        if (kind == ContentTextKind.Unit)
+            allowed.Add("blurb");
+        if (kind == ContentTextKind.Weapon)
+            allowed.Add("bonuses");
         var unknown = fields.Keys.Except(allowed).ToArray();
         if (!fields.ContainsKey("name") || unknown.Length != 0)
             throw new LocalizationException($"Invalid {path}: a name key is required; unknown fields [{string.Join(", ", unknown)}].");
@@ -145,7 +154,8 @@ public sealed class ContentTextDocument
             foreach (var bonus in bonuses.EnumerateArray())
             {
                 var id = Identity(bonus, $"bonus for '{path}'");
-                if (!bonusIds.Add(id)) throw new LocalizationException($"Duplicate canonical bonus identity '{path}/{id}'.");
+                if (!bonusIds.Add(id))
+                    throw new LocalizationException($"Duplicate canonical bonus identity '{path}/{id}'.");
             }
         }
         var bonusKeys = fields.TryGetValue("bonuses", out var rawBonuses)
@@ -182,12 +192,15 @@ public sealed class ContentTextDocument
 
     private static Dictionary<string, JsonNode?> Properties(JsonNode? value, string path)
     {
-        if (value is not JsonObject obj) throw new LocalizationException($"{path} must be an object.");
+        if (value is not JsonObject obj)
+            throw new LocalizationException($"{path} must be an object.");
         var fields = new Dictionary<string, JsonNode?>(StringComparer.Ordinal);
         foreach (var (key, property) in obj)
         {
-            if (string.IsNullOrWhiteSpace(key)) throw new LocalizationException($"{path} contains an empty identity.");
-            if (!fields.TryAdd(key, property)) throw new LocalizationException($"Duplicate identity '{key}' in {path}.");
+            if (string.IsNullOrWhiteSpace(key))
+                throw new LocalizationException($"{path} contains an empty identity.");
+            if (!fields.TryAdd(key, property))
+                throw new LocalizationException($"Duplicate identity '{key}' in {path}.");
         }
         return fields;
     }
@@ -212,7 +225,8 @@ public sealed class ContentTextDocument
         if (value is not JsonValue || EcmaJson.ToElement(value).ValueKind != JsonValueKind.String)
             throw new LocalizationException($"{path} must be a nonempty string.");
         var text = EcmaJson.ReadString(value);
-        if (string.IsNullOrWhiteSpace(text)) throw new LocalizationException($"{path} must be a nonempty string.");
+        if (string.IsNullOrWhiteSpace(text))
+            throw new LocalizationException($"{path} must be a nonempty string.");
         return text;
     }
 }

@@ -33,7 +33,7 @@ public partial class TerrainView : Node2D
     private WorldMaterialsManifest _manifest = null!;
     private AuthoredScene _scene = null!;
     private EnvironmentCatalog _environment = null!;
-    private CandidateShadowCache? _shadows;
+    private ShadowCache? _shadows;
     private string[]? _tiles;
     private Vector2I _renderedSize;
     private Texture2D? _groundShape;
@@ -44,11 +44,15 @@ public partial class TerrainView : Node2D
     public IReadOnlyList<string> Diagnostics => _diagnostics;
     public IReadOnlyList<Node2D> Standing => _standing;
     public int RenderedSceneryCount => _standing.Count;
-    public int RenderedEdgeDecorationCount { get; private set; }
-
-    public void Configure(WorldMaterialsManifest manifest, AuthoredScene scene, EnvironmentCatalog environment, CandidateShadowCache? shadows = null)
+    public int RenderedEdgeDecorationCount
     {
-        if (manifest.Schema != 1) throw new InvalidOperationException("Unsupported world materials schema.");
+        get; private set;
+    }
+
+    public void Configure(WorldMaterialsManifest manifest, AuthoredScene scene, EnvironmentCatalog environment, ShadowCache? shadows = null)
+    {
+        if (manifest.Schema != 1)
+            throw new InvalidOperationException("Unsupported world materials schema.");
         _manifest = manifest;
         _scene = scene;
         _environment = environment;
@@ -59,8 +63,10 @@ public partial class TerrainView : Node2D
 
     public void Render(string[] tiles, Vector2I size)
     {
-        if (_tiles is not null && _renderedSize == size && _tiles.SequenceEqual(tiles)) return;
-        if (tiles.Length != size.X * size.Y) throw new InvalidOperationException("Terrain size differs from map.");
+        if (_tiles is not null && _renderedSize == size && _tiles.SequenceEqual(tiles))
+            return;
+        if (tiles.Length != size.X * size.Y)
+            throw new InvalidOperationException("Terrain size differs from map.");
         foreach (var tile in tiles.Distinct())
             if (!_manifest.TerrainBindings.ContainsKey(tile))
                 throw new InvalidOperationException($"No exported presentation material for terrain: {tile}");
@@ -74,7 +80,8 @@ public partial class TerrainView : Node2D
         TerrainMaterialBinding? At(int x, int y) => TileAt(x, y) is { } tile ? _manifest.TerrainBindings[tile] : null;
         bool Tagged(int x, int y, string family)
         {
-            if (TileAt(x, y) is not { } tile) return false;
+            if (TileAt(x, y) is not { } tile)
+                return false;
             if (!_manifest.TerrainTags.TryGetValue(tile, out var tags)
                 || !_manifest.GroundTagFamilies.TryGetValue(family, out var familyTags))
                 throw new InvalidOperationException($"Terrain semantic export missing: {tile}/{family}");
@@ -101,22 +108,25 @@ public partial class TerrainView : Node2D
                     Tone: At(cell.X, cell.Y)!.Tone ?? field.Replaces.Tone ?? 0));
             foreach (var surface in surfaces)
             {
-                if (surface.Key.Atlas == field.Replaces.Atlas && surface.Key.Tone == field.Replaces.Tone) continue;
+                if (surface.Key.Atlas == field.Replaces.Atlas && surface.Key.Tone == field.Replaces.Tone)
+                    continue;
                 var world = _manifest.Materials.Values.SingleOrDefault(material => material.Replaces.Atlas == surface.Key.Atlas
                     && material.Replaces.Tone == surface.Key.Tone);
-                TryLayer($"Surface {surface.Key.Atlas}/{surface.Key.Tone}", () => {
+                TryLayer($"Surface {surface.Key.Atlas}/{surface.Key.Tone}", () =>
+                {
                     if (world is not null)
                     {
                         using var mask = SolidMask(size, surface);
                         ground.AddChild(Masked($"Surface_{world.Id}", mask, world, size));
                     }
-                    else foreach (var cell in surface)
-                    {
-                        var sprite = _environment.CreateGroundTile(surface.Key.Atlas, surface.Key.Tone,
-                            _manifest.SurfaceFit.Inset, _manifest.SurfaceFit.Bleed);
-                        sprite.Position += new Vector2(cell.X, cell.Y) * 32;
-                        ground.AddChild(sprite);
-                    }
+                    else
+                        foreach (var cell in surface)
+                        {
+                            var sprite = _environment.CreateGroundTile(surface.Key.Atlas, surface.Key.Tone,
+                                _manifest.SurfaceFit.Inset, _manifest.SurfaceFit.Bleed);
+                            sprite.Position += new Vector2(cell.X, cell.Y) * 32;
+                            ground.AddChild(sprite);
+                        }
                 }, diagnostics);
             }
 
@@ -138,7 +148,8 @@ public partial class TerrainView : Node2D
                 }
                 var spec = blend == _manifest.ForestMask.Id ? _manifest.ForestMask
                     : blend == _manifest.EarthMask?.Id ? _manifest.EarthMask : null;
-                TryLayer($"Blend {blend}", () => {
+                TryLayer($"Blend {blend}", () =>
+                {
                     if (spec is not null)
                     {
                         using var mask = AtlasMask(size, spec, Owns, (x, y) => Index(x, y, spec));
@@ -153,7 +164,8 @@ public partial class TerrainView : Node2D
                         {
                             var bits = NeighborMask(cell.X, cell.Y, (x, y) => Joins(x, y, At(cell.X, cell.Y)!.Blend is null));
                             var index = Array.IndexOf(atlas.MaskOrder, CanonicalBlobMask(bits));
-                            if (index < 0) throw new InvalidOperationException($"Blob mask is absent from {blend}.");
+                            if (index < 0)
+                                throw new InvalidOperationException($"Blob mask is absent from {blend}.");
                             var sprite = _environment.CreateGroundTile(blend, index);
                             sprite.Position += new Vector2(cell.X, cell.Y) * 32;
                             ground.AddChild(sprite);
@@ -163,7 +175,8 @@ public partial class TerrainView : Node2D
             }
 
             if (cells.Any(cell => Water(cell.X, cell.Y)))
-                TryLayer("Water material", () => {
+                TryLayer("Water material", () =>
+                {
                     if (_scene.River is { } river)
                     {
                         using var bank = WaterMasks.River(size.X, size.Y, river, Water,
@@ -183,13 +196,15 @@ public partial class TerrainView : Node2D
             foreach (var cell in cells)
             {
                 var binding = At(cell.X, cell.Y)!.Connected;
-                if (binding is null || Water(cell.X, cell.Y) || _scene.RoadCorridor is not null && Road(cell.X, cell.Y)) continue;
+                if (binding is null || Water(cell.X, cell.Y) || _scene.RoadCorridor is not null && Road(cell.X, cell.Y))
+                    continue;
                 var mask = 0;
                 for (var bit = 0; bit < Cardinal.Length; bit++)
                 {
                     var neighbor = new BoardCell(cell.X + Cardinal[bit].X, cell.Y + Cardinal[bit].Y);
                     if (binding.Mask == "route" ? Route(neighbor.X, neighbor.Y)
-                        : At(neighbor.X, neighbor.Y)?.Connected?.Atlas == binding.Atlas) mask |= 1 << bit;
+                        : At(neighbor.X, neighbor.Y)?.Connected?.Atlas == binding.Atlas)
+                        mask |= 1 << bit;
                 }
                 var index = _environment.ConnectedIndex(binding.Atlas, mask, (int)Math.Floor(TileArtVariation.Hash(cell.X, cell.Y, 1102) * 4));
                 foreach (var id in new[] { binding.Atlas, binding.Edge }.Where(id => id is not null).Cast<string>())
@@ -202,7 +217,8 @@ public partial class TerrainView : Node2D
             var routeImages = new Dictionary<string, Image>(StringComparer.Ordinal);
             Image RouteImage(string key, Texture2D texture)
             {
-                if (routeImages.TryGetValue(key, out var cached)) return cached;
+                if (routeImages.TryGetValue(key, out var cached))
+                    return cached;
                 var image = texture.GetImage();
                 PrepareImage(image);
                 routeImages.Add(key, image);
@@ -211,7 +227,8 @@ public partial class TerrainView : Node2D
             try
             {
                 foreach (var (atlasId, cell, index) in connectors)
-                    TryLayer($"Connected terrain {atlasId}", () => {
+                    TryLayer($"Connected terrain {atlasId}", () =>
+                    {
                         Sprite2D sprite;
                         var position = new Vector2(cell.X, cell.Y) * 32;
                         if (_manifest.ConnectorMasks.TryGetValue(atlasId, out var spec))
@@ -220,7 +237,7 @@ public partial class TerrainView : Node2D
                             var maskTexture = Texture(spec.ResourcePath, spec.Columns * 64, spec.Rows * 64);
                             var materialTexture = MaterialTexture(material);
                             var period = new Vector2(material.LogicalSize[0], material.LogicalSize[1]);
-                            sprite = CandidateRouteComposition.Create(RouteImage(spec.ResourcePath, maskTexture),
+                            sprite = RouteComposition.Create(RouteImage(spec.ResourcePath, maskTexture),
                                 new Rect2I(index % spec.Columns * 64, index / spec.Columns * 64, 64, 64),
                                 RouteImage(material.ResourcePath, materialTexture), period, position,
                                 ("route-cell", maskTexture, materialTexture, index, position.X % period.X, position.Y % period.Y), _shadows);
@@ -231,11 +248,11 @@ public partial class TerrainView : Node2D
                             sprite.Position += position;
                             var density = 1 / System.Math.Abs(sprite.Scale.X);
                             if (_shadows is not null)
-                                sprite.AddChild(CandidateSpriteShadows.Create(sprite, CandidateShadowKind.Route, density, _shadows));
+                                sprite.AddChild(SpriteShadows.Create(sprite, ShadowKind.Route, density, _shadows));
                             else
                             {
-                                using var input = CandidateSpriteShadows.ReadFrame(sprite.Texture);
-                                var filtered = CandidateShadowRaster.Filter(input, CandidateSpriteShadows.Drops(CandidateShadowKind.Route), density);
+                                using var input = SpriteShadows.ReadFrame(sprite.Texture);
+                                var filtered = ShadowRaster.Filter(input, SpriteShadows.Drops(ShadowKind.Route), density);
                                 using (filtered.Image)
                                 {
                                     var effect = OwnedProceduralSprite.Create(filtered.Image);
@@ -257,7 +274,8 @@ public partial class TerrainView : Node2D
             finally { foreach (var image in routeImages.Values) image.Dispose(); }
 
             if (_scene.RoadCorridor is { } corridor)
-                TryLayer("Road material", () => {
+                TryLayer("Road material", () =>
+                {
                     using var mask = RoadCorridorMask.Create(size.X, size.Y, corridor, Road, Route, (x, y) => TileAt(x, y) == "plain");
                     ground.AddChild(Masked("RoadCorridor", mask, MaterialRecord("road-material"), size));
                 }, diagnostics);
@@ -276,7 +294,8 @@ public partial class TerrainView : Node2D
             if (_manifest.EdgeDecorations is { } decoration)
                 edgeCount = EdgeDecorationRenderer.Add(edges, decoration, _scene.LevelId, size, tiles,
                     path => Texture(path), diagnostics);
-            else diagnostics.Add("Authored edge decoration dependency is not supplied.");
+            else
+                diagnostics.Add("Authored edge decoration dependency is not supplied.");
             var scenery = new Node2D { Name = "TerrainScenery" };
             staging.AddChild(scenery);
             foreach (var cell in cells)
@@ -285,7 +304,8 @@ public partial class TerrainView : Node2D
                 var material = At(x, y)!;
                 var tile = TileAt(x, y)!;
                 if (_manifest.Foundations.TryGetValue(tile, out var foundation))
-                    TryLayer($"Foundation ({x},{y}) {foundation}", () => {
+                    TryLayer($"Foundation ({x},{y}) {foundation}", () =>
+                    {
                         var sprite = _environment.CreateSprite(foundation, 0.3f, shadows: _shadows);
                         sprite.Position = new Vector2((x + 0.5f) * 32, (y + 1) * 32);
                         detail.AddChild(sprite);
@@ -295,26 +315,31 @@ public partial class TerrainView : Node2D
                 if (decal is { Chance: { } chance } && TileArtVariation.Hash(x, y, 1103) < chance)
                 {
                     var id = Pick(decal, x, y, 1104);
-                    TryLayer($"Terrain decal ({x},{y}) {id}", () => {
+                    TryLayer($"Terrain decal ({x},{y}) {id}", () =>
+                    {
                         var sprite = _environment.CreateSprite(id, (float)decal.Scale,
                             TileArtVariation.Hash(x, y, 1105) > 0.5, 0.72f, _shadows);
                         sprite.Position = new Vector2((x + 0.5f) * 32, (y + 1) * 32);
                         detail.AddChild(sprite);
                     }, diagnostics);
                 }
-                if (tile == "bridge" || Authored(tile, x, y, surface: false)) continue;
+                if (tile == "bridge" || Authored(tile, x, y, surface: false))
+                    continue;
                 var enclosed = material.Blend is not null && Cardinal.All(delta => At(x + delta.X, y + delta.Y)?.Blend == material.Blend);
                 var spec = enclosed ? _manifest.Scenery.ForestFloor
                     : material.Scenery ?? (Cardinal.Any(delta => Tagged(x + delta.X, y + delta.Y, "settlement"))
                         ? _manifest.Scenery.SettlementLife : null);
-                if (enclosed && spec is null) diagnostics.Add("Forest understory specification is not exported.");
-                if (spec is null || spec.Chance is { } density && TileArtVariation.Hash(x, y, 1119) > density) continue;
+                if (enclosed && spec is null)
+                    diagnostics.Add("Forest understory specification is not exported.");
+                if (spec is null || spec.Chance is { } density && TileArtVariation.Hash(x, y, 1119) > density)
+                    continue;
                 var pick = Pick(spec, x, y, 1120);
-                TryLayer($"Terrain scenery ({x},{y}) {pick}", () => {
+                TryLayer($"Terrain scenery ({x},{y}) {pick}", () =>
+                {
                     var sprite = _environment.CreateSprite(pick,
                         (float)(spec.Scale + TileArtVariation.Hash(x, y, 1121) * 0.12),
                         TileArtVariation.Hash(x, y, 1123) > 0.52, enclosed ? 0.9f : 1, _shadows,
-                        enclosed ? CandidateShadowKind.Environment : CandidateShadowKind.Standing);
+                        enclosed ? ShadowKind.Environment : ShadowKind.Standing);
                     sprite.Position = new Vector2((float)((x + 0.5) * 32
                         + (TileArtVariation.Hash(x, y, 1122) - 0.5) * spec.Jitter), (y + 1.18f) * 32);
                     sprite.Name = $"Scenery_{x}_{y}";
@@ -324,14 +349,18 @@ public partial class TerrainView : Node2D
             }
         }
         catch { staging.Free(); throw; }
-        foreach (var child in GetChildren()) { RemoveChild(child); child.QueueFree(); }
+        foreach (var child in GetChildren())
+        {
+            RemoveChild(child);
+            child.QueueFree();
+        }
         AddChild(staging);
         _groundShape = ground.GetNodeOrNull<Sprite2D>("WorldField")?.Texture;
         _groundSize = new Vector2(size.X * 32, size.Y * 32);
         ApplyGroundClip(ground);
         ApplyGroundClip(staging.GetNode<Node2D>("TerrainDecals"));
         ApplyGroundClip(staging.GetNode<Node2D>("EdgeDecorations"));
-        var lighting = CandidateBoardLighting.CreateField(size, tiles, _manifest, _groundShape);
+        var lighting = BoardLighting.CreateField(size, tiles, _manifest, _groundShape);
         lighting.Hearths.ZIndex = -30;
         lighting.Sunlight.ZIndex = -20;
         staging.AddChild(lighting.Hearths);
@@ -344,12 +373,14 @@ public partial class TerrainView : Node2D
                 var density = deck.HasMeta("environment_cell")
                     ? _environment.ResolveCell(deck.GetMeta("environment_cell").AsString()).PixelDensity
                     : 1 / Math.Abs(deck.Scale.X);
-                deck.AddChild(CandidateSpriteShadows.Create(deck, CandidateShadowKind.Standing, density, _shadows));
+                deck.AddChild(SpriteShadows.Create(deck, ShadowKind.Standing, density, _shadows));
             }
         }
         RenderedEdgeDecorationCount = edgeCount;
-        _standing.Clear(); _standing.AddRange(standing);
-        _diagnostics.Clear(); _diagnostics.AddRange(diagnostics.Distinct(StringComparer.Ordinal));
+        _standing.Clear();
+        _standing.AddRange(standing);
+        _diagnostics.Clear();
+        _diagnostics.AddRange(diagnostics.Distinct(StringComparer.Ordinal));
         _tiles = tiles.ToArray();
         _renderedSize = size;
     }
@@ -357,8 +388,10 @@ public partial class TerrainView : Node2D
     /// <summary>Apply the same terrain-owned silhouette to externally authored ground sprites.</summary>
     public void ApplyGroundClip(Node2D ground)
     {
-        if (_groundShape is not null) GroundClipper.Apply(ground, _groundShape, _groundSize);
-        else GroundClipper.Remove(ground);
+        if (_groundShape is not null)
+            GroundClipper.Apply(ground, _groundShape, _groundSize);
+        else
+            GroundClipper.Remove(ground);
     }
 
     private Node2D CreateField(Vector2I size, Func<int, int, bool> outside)
@@ -373,10 +406,18 @@ public partial class TerrainView : Node2D
         var polygon = _scene.GroundOutline.Length > 0
             ? _scene.GroundOutline.Select(pair => RasterResources.Pair(pair, "ground outline") * 32).ToArray()
             : new[] { Vector2.Zero, new Vector2(size.X * 32, 0), new Vector2(size.X * 32, size.Y * 32), new Vector2(0, size.Y * 32) };
-        if (polygon.Length < 3) throw new InvalidOperationException("Authored ground outline has fewer than three points.");
-        return new Polygon2D { Name = "WorldField", Polygon = polygon, Texture = texture,
+        if (polygon.Length < 3)
+            throw new InvalidOperationException("Authored ground outline has fewer than three points.");
+        return new Polygon2D
+        {
+            Name = "WorldField",
+            Polygon = polygon,
+            Texture = texture,
             UV = polygon.Select(point => point * texture.GetSize() / new Vector2(material.LogicalSize[0], material.LogicalSize[1])).ToArray(),
-            TextureRepeat = TextureRepeatEnum.Enabled, TextureFilter = TextureFilterEnum.Linear, Antialiased = true };
+            TextureRepeat = TextureRepeatEnum.Enabled,
+            TextureFilter = TextureFilterEnum.Linear,
+            Antialiased = true
+        };
     }
 
     private Image WaterOccupancy(Vector2I size, Func<int, int, bool> occupied)
@@ -390,13 +431,14 @@ public partial class TerrainView : Node2D
         PrepareImage(source);
         var mask = Image.CreateEmpty(size.X * 64, size.Y * 64, false, Image.Format.Rgba8);
         for (var y = 0; y < size.Y; y++)
-        for (var x = 0; x < size.X; x++)
-        {
-            if (!occupied(x, y)) continue;
-            // Water uses all 256 raw masks, not canonical Blob47 diagonal suppression.
-            var index = NeighborMask(x, y, occupied);
-            mask.BlitRect(source, new Rect2I(index % 16 * 64, index / 16 * 64, 64, 64), new Vector2I(x * 64, y * 64));
-        }
+            for (var x = 0; x < size.X; x++)
+            {
+                if (!occupied(x, y))
+                    continue;
+                // Water uses all 256 raw masks, not canonical Blob47 diagonal suppression.
+                var index = NeighborMask(x, y, occupied);
+                mask.BlitRect(source, new Rect2I(index % 16 * 64, index / 16 * 64, 64, 64), new Vector2I(x * 64, y * 64));
+            }
         return mask;
     }
     private Image AtlasMask(Vector2I size, ForestMaskRecord spec, Func<int, int, bool> occupied, Func<int, int, int> indexAt)
@@ -407,27 +449,31 @@ public partial class TerrainView : Node2D
         PrepareImage(source);
         var mask = Image.CreateEmpty(size.X * 64, size.Y * 64, false, Image.Format.Rgba8);
         for (var y = 0; y < size.Y; y++)
-        for (var x = 0; x < size.X; x++)
-        {
-            if (!occupied(x, y)) continue;
-            var index = indexAt(x, y);
-            if (index < 0 || index >= spec.Columns * spec.Rows) throw new InvalidOperationException($"Mask index outside {spec.Id}: {index}");
-            // Source runtimeTileMarkup expands mask cells by half a logical pixel.
-            using var cell = source.GetRegion(new Rect2I(index % spec.Columns * 64, index / spec.Columns * 64, 64, 64));
-            cell.Resize(66, 66, Image.Interpolation.Bilinear);
-            mask.BlendRect(cell, new Rect2I(0, 0, 66, 66), new Vector2I(x * 64 - 1, y * 64 - 1));
-        }
+            for (var x = 0; x < size.X; x++)
+            {
+                if (!occupied(x, y))
+                    continue;
+                var index = indexAt(x, y);
+                if (index < 0 || index >= spec.Columns * spec.Rows)
+                    throw new InvalidOperationException($"Mask index outside {spec.Id}: {index}");
+                // Source runtimeTileMarkup expands mask cells by half a logical pixel.
+                using var cell = source.GetRegion(new Rect2I(index % spec.Columns * 64, index / spec.Columns * 64, 64, 64));
+                cell.Resize(66, 66, Image.Interpolation.Bilinear);
+                mask.BlendRect(cell, new Rect2I(0, 0, 66, 66), new Vector2I(x * 64 - 1, y * 64 - 1));
+            }
         return mask;
     }
     private static Image SolidMask(Vector2I size, IEnumerable<BoardCell> cells)
     {
         var mask = Image.CreateEmpty(size.X * 64, size.Y * 64, false, Image.Format.Rgba8);
-        foreach (var cell in cells) mask.FillRect(new Rect2I(cell.X * 64 - 1, cell.Y * 64 - 1, 66, 66), Colors.White);
+        foreach (var cell in cells)
+            mask.FillRect(new Rect2I(cell.X * 64 - 1, cell.Y * 64 - 1, 66, 66), Colors.White);
         return mask;
     }
     private static void PrepareImage(Image image)
     {
-        if (image.IsCompressed() && image.Decompress() != Error.Ok) throw new InvalidOperationException("Cannot decompress terrain mask.");
+        if (image.IsCompressed() && image.Decompress() != Error.Ok)
+            throw new InvalidOperationException("Cannot decompress terrain mask.");
         image.Convert(Image.Format.Rgba8);
     }
     private Sprite2D Masked(string name, Image mask, WorldMaterialRecord material, Vector2I size)
@@ -462,10 +508,12 @@ public partial class TerrainView : Node2D
     }
     private Texture2D Texture(string path, int width = 0, int height = 0)
     {
-        if (_textures.TryGetValue(path, out var cached)) return cached;
+        if (_textures.TryGetValue(path, out var cached))
+            return cached;
         if (!path.StartsWith("res://assets/", StringComparison.Ordinal) || path.Contains("..", StringComparison.Ordinal))
             throw new InvalidOperationException($"World material resource escaped assets: {path}");
-        if (!ResourceLoader.Exists(path)) throw new MissingArtResourceException(path, $"Missing world material resource: {path}");
+        if (!ResourceLoader.Exists(path))
+            throw new MissingArtResourceException(path, $"Missing world material resource: {path}");
         var texture = ResourceLoader.Load<Texture2D>(path);
         if (texture is null || width > 0 && texture.GetWidth() != width || height > 0 && texture.GetHeight() != height)
             throw new InvalidOperationException($"World material physical dimensions differ: {path}, expected {width}×{height}.");
@@ -477,7 +525,8 @@ public partial class TerrainView : Node2D
         && (surface ? zone.AuthoredTerrainSurface : zone.AuthoredTerrainScenery).Contains(tile));
     private static string Pick(ScenerySpecification spec, int x, int y, int salt)
     {
-        if (spec.Ids.Length == 0) throw new InvalidOperationException("Empty scenery selection.");
+        if (spec.Ids.Length == 0)
+            throw new InvalidOperationException("Empty scenery selection.");
         return spec.Ids[(int)Math.Floor(TileArtVariation.Hash(x, y, salt) * spec.Ids.Length)];
     }
     private static int NeighborMask(int x, int y, Func<int, int, bool> joins) => Around.Select((delta, bit) =>
@@ -485,15 +534,22 @@ public partial class TerrainView : Node2D
     internal static int CanonicalBlobMask(int mask)
     {
         mask &= 255;
-        if ((mask & 0x05) != 0x05) mask &= ~0x02;
-        if ((mask & 0x14) != 0x14) mask &= ~0x08;
-        if ((mask & 0x50) != 0x50) mask &= ~0x20;
-        if ((mask & 0x41) != 0x41) mask &= ~0x80;
+        if ((mask & 0x05) != 0x05)
+            mask &= ~0x02;
+        if ((mask & 0x14) != 0x14)
+            mask &= ~0x08;
+        if ((mask & 0x50) != 0x50)
+            mask &= ~0x20;
+        if ((mask & 0x41) != 0x41)
+            mask &= ~0x80;
         return mask;
     }
     private static void TryLayer(string description, Action render, List<string> diagnostics)
     {
-        try { render(); }
+        try
+        {
+            render();
+        }
         catch (MissingArtResourceException error) { diagnostics.Add($"{description}: {error.Message}"); }
     }
 }

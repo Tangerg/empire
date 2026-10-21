@@ -38,9 +38,21 @@ public sealed class CombatModifierPipeline
         this.providers = providers;
         this.mitigationCap = mitigationCap;
     }
-    public CombatModifierPipeline Register(CombatModifierProvider provider) { providers.Register(provider); return this; }
-    public CombatModifierPipeline Replace(CombatModifierProvider provider) { providers.Replace(provider); return this; }
-    public CombatModifierPipeline Seal() { providers.Seal(); return this; }
+    public CombatModifierPipeline Register(CombatModifierProvider provider)
+    {
+        providers.Register(provider);
+        return this;
+    }
+    public CombatModifierPipeline Replace(CombatModifierProvider provider)
+    {
+        providers.Replace(provider);
+        return this;
+    }
+    public CombatModifierPipeline Seal()
+    {
+        providers.Seal();
+        return this;
+    }
     public IReadOnlyList<string> ProviderIds => providers.Keys();
     public IReadOnlyList<CombatModifier> Collect(UnitDamageContext context)
     {
@@ -61,10 +73,17 @@ public sealed class CombatModifierPipeline
         double mitigation = 0, finalMultiplier = 1, finalOffset = 0;
         foreach (var modifier in modifiers)
         {
-            if (modifier.Stage == "power") power = modifier.Operation == "multiply" ? power * modifier.Value : power + modifier.Value;
-            else if (modifier.Stage == "mitigation") mitigation = modifier.Operation == "multiply" ? mitigation * modifier.Value : mitigation + modifier.Value;
-            else if (modifier.Operation == "multiply") { finalMultiplier *= modifier.Value; finalOffset *= modifier.Value; }
-            else finalOffset += modifier.Value;
+            if (modifier.Stage == "power")
+                power = modifier.Operation == "multiply" ? power * modifier.Value : power + modifier.Value;
+            else if (modifier.Stage == "mitigation")
+                mitigation = modifier.Operation == "multiply" ? mitigation * modifier.Value : mitigation + modifier.Value;
+            else if (modifier.Operation == "multiply")
+            {
+                finalMultiplier *= modifier.Value;
+                finalOffset *= modifier.Value;
+            }
+            else
+                finalOffset += modifier.Value;
         }
         mitigation = Math.Max(0, Math.Min(mitigationCap, mitigation));
         var damage = Math.Max(1, StateJson.Round(power * (1 - mitigation) * finalMultiplier + finalOffset));
@@ -218,8 +237,10 @@ public static class DefaultCombatModifiers
         {
             var incoming = grid.Toward(defenderPosition, from);
             var facing = StateJson.Text(defender, "facing");
-            if (incoming == grid.Opposite(facing)) Add("position.back-attack", "position", "power", "multiply", StateJson.Number(rules, "backAttackMultiplier", 1), new JsonObject { ["position"] = "back" });
-            else if (incoming != facing) Add("position.side-attack", "position", "power", "multiply", StateJson.Number(rules, "sideAttackMultiplier", 1), new JsonObject { ["position"] = "side" });
+            if (incoming == grid.Opposite(facing))
+                Add("position.back-attack", "position", "power", "multiply", StateJson.Number(rules, "backAttackMultiplier", 1), new JsonObject { ["position"] = "back" });
+            else if (incoming != facing)
+                Add("position.side-attack", "position", "power", "multiply", StateJson.Number(rules, "sideAttackMultiplier", 1), new JsonObject { ["position"] = "side" });
             var behind = grid.Step(defenderPosition, grid.Opposite(incoming));
             var flanker = TacticalQueries.UnitAt(state, behind);
             if (flanker is not null && StateJson.Integer(flanker, "id") != StateJson.Integer(attacker, "id") && TacticalQueries.AreAllies(state, StateJson.Integer(flanker, "owner"), StateJson.Integer(attacker, "owner")))
@@ -246,9 +267,11 @@ public static class DefaultCombatModifiers
             static int Score(string value) => value == "full" ? 2 : value == "half" ? 1 : 0;
             var directional = cell.DirectionalCoverFrom(grid, from);
             var cover = Score(directional) > Score(cell.Cover) ? directional : cell.Cover;
-            if (elevationDelta >= StateJson.Number(rules, "highGroundThreshold", 0)) cover = cover == "full" ? "half" : "none";
+            if (elevationDelta >= StateJson.Number(rules, "highGroundThreshold", 0))
+                cover = cover == "full" ? "half" : "none";
             var value = cover == "full" ? StateJson.Number(rules, "fullCoverDefense", 0) : cover == "half" ? StateJson.Number(rules, "halfCoverDefense", 0) : 0;
-            if (value > 0) Add("cover." + cover, "cover", "mitigation", "add", value, new JsonObject { ["cover"] = cover });
+            if (value > 0)
+                Add("cover." + cover, "cover", "mitigation", "add", value, new JsonObject { ["cover"] = cover });
         }
         return modifiers.AsReadOnly();
     }

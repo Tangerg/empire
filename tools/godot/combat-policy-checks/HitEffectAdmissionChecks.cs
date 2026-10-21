@@ -14,12 +14,17 @@ static class HitEffectAdmissionChecks
         var checks = 0;
         void Check(bool condition, string name)
         {
-            if (!condition) throw new Exception("Mismatch in native hit-effect admission: " + name);
+            if (!condition)
+                throw new Exception("Mismatch in native hit-effect admission: " + name);
             checks++;
         }
         void Refuses(Action action, string reason)
         {
-            try { action(); throw new Exception("Mismatch in native hit-effect admission: missing refusal " + reason); }
+            try
+            {
+                action();
+                throw new Exception("Mismatch in native hit-effect admission: missing refusal " + reason);
+            }
             catch (DomainInvariantException error) { Check(error.Message.Contains(reason, StringComparison.Ordinal), "owner-specific refusal: " + error.Message); }
         }
         foreach (var kind in new[] { "forcedMove", "addStatus", "test.mark" })
@@ -32,7 +37,8 @@ static class HitEffectAdmissionChecks
             foreach (var weapon in packs.OfType<JsonObject>().SelectMany(pack => pack["weapons"]?.AsArray().OfType<JsonObject>() ?? []))
                 if (weapon["hitEffects"] is JsonArray effects)
                     for (var index = 0; index < effects.Count; index++)
-                        if (StateJson.Text(effects[index]!.AsObject(), "type") == kind) effects[index] = payload.DeepClone();
+                        if (StateJson.Text(effects[index]!.AsObject(), "type") == kind)
+                            effects[index] = payload.DeepClone();
             var catalog = new ReadOnlyContent(packs);
             var validated = 0;
             var handler = new WeaponHitEffectHandler(kind,
@@ -54,7 +60,10 @@ static class HitEffectAdmissionChecks
             var plugin = new EnginePlugin("test.handler-admission." + kind, 1, context =>
             {
                 var effects = context.Require(Keys.HitEffects).Clone();
-                if (effects.Has(kind)) effects.Replace(handler); else effects.Register(handler);
+                if (effects.Has(kind))
+                    effects.Replace(handler);
+                else
+                    effects.Register(handler);
                 context.Replace(Keys.HitEffects, effects);
             }, overrides: [Keys.HitEffects], requiresCapabilities: [Keys.HitEffects]);
             var engine = BattleEngineFactory.Create(catalog, [plugin]);
@@ -74,7 +83,8 @@ static class HitEffectAdmissionChecks
                     Validate = (content, effect, owner) =>
                     {
                         Check(ReferenceEquals(content, brokenCatalog), kind + " invalid content validation identity");
-                        if (effect["profile"] is null) throw new DomainInvariantException(owner + " requires mark profile");
+                        if (effect["profile"] is null)
+                            throw new DomainInvariantException(owner + " requires mark profile");
                         if (content.Definition("statuses", StateJson.Text(effect, "profile")) is null)
                             throw new DomainInvariantException(owner + " references missing mark profile");
                     },
@@ -86,14 +96,16 @@ static class HitEffectAdmissionChecks
             var level = Level();
             var battle = engine.CreateBattle(level, 789);
             var initial = battle.Snapshot();
-            var direct = (JsonObject)initial.DeepClone(); var events = new JsonArray();
+            var direct = (JsonObject)initial.DeepClone();
+            var events = new JsonArray();
             var invalid = new JsonObject { ["type"] = kind, ["profile"] = "missing", ["rounds"] = 2 };
             Refuses(() => engine.Combat.ApplyHitEffects(direct, direct["units"]![0]!.AsObject(), direct["units"]![1]!.AsObject(), [invalid], value => events.Add(value)), "missing mark profile");
             Check(EcmaJson.DeepEquals(direct, initial) && events.Count == 0, kind + " direct apply validates before execution");
             var recorder = engine.RecordBattle(initial);
             var action = new JsonObject
             {
-                ["kind"] = "command", ["unit"] = 1,
+                ["kind"] = "command",
+                ["unit"] = 1,
                 ["path"] = new JsonArray(new JsonObject { ["x"] = 2, ["y"] = 3 }),
                 ["command"] = new JsonObject { ["ability"] = "attack", ["weapon"] = "soldier_sword", ["target"] = new JsonObject { ["x"] = 3, ["y"] = 3 } },
             };
@@ -106,7 +118,7 @@ static class HitEffectAdmissionChecks
             var replay = restored.ReplayBattle(level, recorder.Replay(battle.Snapshot()));
             Check(replay.DivergedAt is null && EcmaJson.DeepEquals(replay.State, battle.Snapshot()), kind + " custom handler replay");
         }
-        var defaults = new GrayFlagEngine(sourcePacks);
+        var defaults = new BattleEngine(sourcePacks);
         foreach (var invalid in new[]
         {
             new JsonObject { ["type"] = "forcedMove", ["mode"] = "push", ["distance"] = -1 },
@@ -115,13 +127,17 @@ static class HitEffectAdmissionChecks
             new JsonObject { ["type"] = "removeStatus", ["status"] = "absent" },
         })
         {
-            var state = defaults.CreateState(Level()); var before = (JsonObject)state.DeepClone(); var events = new JsonArray();
+            var state = defaults.CreateState(Level());
+            var before = (JsonObject)state.DeepClone();
+            var events = new JsonArray();
             Refuses(() => defaults.Combat.ApplyHitEffects(state, state["units"]![0]!.AsObject(), state["units"]![1]!.AsObject(), [invalid], value => events.Add(value)), StateJson.Text(invalid, "type") == "addStatus" ? "status duration" : "weapon hit effect");
             Check(EcmaJson.DeepEquals(state, before) && events.Count == 0, "default handler refuses malformed payload before writes");
         }
         foreach (var duration in new[] { 0, -1, 1.5, double.NaN, double.PositiveInfinity, double.NegativeInfinity })
         {
-            var state = defaults.CreateState(Level()); var before = (JsonObject)state.DeepClone(); var events = new JsonArray();
+            var state = defaults.CreateState(Level());
+            var before = (JsonObject)state.DeepClone();
+            var events = new JsonArray();
             var invalid = new JsonObject { ["type"] = "addStatus", ["status"] = "armor_down", ["duration"] = duration };
             Refuses(() => defaults.Combat.ApplyHitEffects(state, state["units"]![0]!.AsObject(), state["units"]![1]!.AsObject(), [invalid], value => events.Add(value)), "status duration");
             Check(EcmaJson.DeepEquals(state, before) && events.Count == 0, "non-domain duration direct apply has no write");
@@ -132,13 +148,15 @@ static class HitEffectAdmissionChecks
             var packs = (JsonArray)sourcePacks.DeepClone();
             packs.OfType<JsonObject>().SelectMany(pack => pack["weapons"]?.AsArray().OfType<JsonObject>() ?? [])
                 .Single(value => StateJson.Text(value, "id") == "soldier_sword")["hitEffects"] = new JsonArray(invalid.DeepClone());
-            Refuses(() => new GrayFlagEngine(packs), "status duration");
+            Refuses(() => new BattleEngine(packs), "status duration");
             var engine = BattleEngineFactory.Create(defaults.Catalog, [new EnginePlugin("test.invalid-status-duration", 1,
                 context => context.Replace(Keys.ActionHandlers, context.Require(Keys.ActionHandlers).Clone().Register("test.invalid-duration", (context, _) =>
                     context.Rules.Combat.ApplyHitEffects(context.State, context.State["units"]![0]!.AsObject(), context.State["units"]![1]!.AsObject(),
                         [new JsonObject { ["type"] = "addStatus", ["status"] = "armor_down", ["duration"] = 2 }, invalid], context.Emit))),
                 overrides: [Keys.ActionHandlers], requiresCapabilities: [Keys.ActionHandlers])]);
-            var battle = engine.CreateBattle(Level()); var before = battle.Snapshot(); var hash = battle.StateHash;
+            var battle = engine.CreateBattle(Level());
+            var before = battle.Snapshot();
+            var hash = battle.StateHash;
             Refuses(() => battle.Dispatch(new JsonObject { ["kind"] = "test.invalid-duration" }), "status duration");
             Check(EcmaJson.DeepEquals(before, battle.Snapshot()) && battle.StateHash == hash, "invalid-duration dispatch rolls back preceding status and emitted event counters");
         }
@@ -147,7 +165,11 @@ static class HitEffectAdmissionChecks
 
     private static JsonObject Level() => new()
     {
-        ["schema"] = 2, ["id"] = "native.hit-effects", ["name"] = "Hit effect contracts", ["width"] = 7, ["height"] = 7,
+        ["schema"] = 2,
+        ["id"] = "native.hit-effects",
+        ["name"] = "Hit effect contracts",
+        ["width"] = 7,
+        ["height"] = 7,
         ["terrain"] = new JsonArray(Enumerable.Repeat(".......", 7).Select(row => (JsonNode?)JsonValue.Create(row)).ToArray()),
         ["players"] = new JsonArray(
             new JsonObject { ["id"] = 1, ["name"] = "One", ["team"] = 1, ["controller"] = "human", ["color"] = "#ffffff" },

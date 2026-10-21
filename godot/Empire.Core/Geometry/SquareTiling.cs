@@ -2,8 +2,14 @@ namespace Empire.Core.Geometry;
 
 public abstract class SquareTiling : ITacticalGrid
 {
-    public abstract string Id { get; }
-    public abstract IReadOnlyList<DirectionDef> Directions { get; }
+    public abstract string Id
+    {
+        get;
+    }
+    public abstract IReadOnlyList<DirectionDef> Directions
+    {
+        get;
+    }
     public string RestingFacing => "south";
     public abstract int Distance(Coord a, Coord b);
 
@@ -39,14 +45,16 @@ public abstract class SquareTiling : ITacticalGrid
     public IReadOnlyList<Coord> Within(Coord at, int min, int max)
     {
         var result = new List<Coord>();
-        if (max < 0) return result;
+        if (max < 0)
+            return result;
         for (var dy = -(long)max; dy <= max; dy++)
         {
             for (var dx = -(long)max; dx <= max; dx++)
             {
                 var cell = new Coord(checked((int)(at.X + dx)), checked((int)(at.Y + dy)));
                 var steps = Distance(at, cell);
-                if (steps >= min && steps <= max) result.Add(cell);
+                if (steps >= min && steps <= max)
+                    result.Add(cell);
             }
         }
         return result;
@@ -56,7 +64,8 @@ public abstract class SquareTiling : ITacticalGrid
     {
         var dx = (long)to.X - from.X;
         var dy = (long)to.Y - from.Y;
-        if (Math.Abs(dx) > Math.Abs(dy)) return dx >= 0 ? "east" : "west";
+        if (Math.Abs(dx) > Math.Abs(dy))
+            return dx >= 0 ? "east" : "west";
         return dy >= 0 ? "south" : "north";
     }
 
@@ -108,7 +117,8 @@ public sealed class Square8Grid : SquareTiling
     {
         var dx = (double)to.X - from.X;
         var dy = (double)to.Y - from.Y;
-        if (dx == 0 && dy == 0) return "south";
+        if (dx == 0 && dy == 0)
+            return "south";
         var sector = ((int)GridDirections.Round(Math.Atan2(dy, dx) / (Math.PI / 4)) % 8 + 8) % 8;
         return Sectors[sector];
     }

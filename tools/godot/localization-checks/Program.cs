@@ -6,12 +6,16 @@ var assertions = 0;
 void Check(bool condition, string message)
 {
     assertions++;
-    if (!condition) throw new Exception(message);
+    if (!condition)
+        throw new Exception(message);
 }
 void Reject(Action action, string diagnostic)
 {
     assertions++;
-    try { action(); }
+    try
+    {
+        action();
+    }
     catch (LocalizationException error) when (error.Message.Contains(diagnostic, StringComparison.Ordinal)) { return; }
     throw new Exception("Expected localization rejection: " + diagnostic);
 }

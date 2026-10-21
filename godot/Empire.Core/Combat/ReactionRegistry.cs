@@ -4,8 +4,14 @@ namespace Empire.Core.Combat;
 
 public sealed record ReactionBehavior(string Id, bool Intercepts, double IncomingMultiplier, bool Retaliates, bool ConservesResources)
 {
-    public double? SupportAttackMultiplier { get; init; }
-    public double TriggeredRankProgress { get; init; }
+    public double? SupportAttackMultiplier
+    {
+        get; init;
+    }
+    public double TriggeredRankProgress
+    {
+        get; init;
+    }
 }
 
 public sealed class ReactionRegistry() : KeyedRegistry<ReactionBehavior, ReactionRegistry>("reaction stance")

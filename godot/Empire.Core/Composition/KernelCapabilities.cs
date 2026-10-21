@@ -14,7 +14,10 @@ public class KernelCapabilities
             : new Dictionary<string, double>(pluginManifest, StringComparer.Ordinal));
     }
 
-    public IReadOnlyDictionary<string, double> PluginManifest { get; }
+    public IReadOnlyDictionary<string, double> PluginManifest
+    {
+        get;
+    }
     public bool Has(CapabilityKey key) => Store.Has(key);
     public virtual T Require<T>(CapabilityKey<T> key) => Store.Require(key);
     public string? ProviderOf(CapabilityKey key) => Store.ProviderOf(key);
@@ -38,7 +41,8 @@ public sealed class KernelPluginContext : KernelCapabilities
     public override T Require<T>(CapabilityKey<T> key)
     {
         RequireOpen();
-        if (!consumed.Contains(key.Id, StringComparer.Ordinal)) consumed.Add(key.Id);
+        if (!consumed.Contains(key.Id, StringComparer.Ordinal))
+            consumed.Add(key.Id);
         return base.Require(key);
     }
 
@@ -56,6 +60,7 @@ public sealed class KernelPluginContext : KernelCapabilities
 
     private void RequireOpen()
     {
-        if (closed) throw new DomainInvariantException($"engine plugin \"{providerId}\" installation context is closed");
+        if (closed)
+            throw new DomainInvariantException($"engine plugin \"{providerId}\" installation context is closed");
     }
 }

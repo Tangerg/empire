@@ -12,7 +12,9 @@ public sealed class AiIntentRegistry : PriorityRegistry<AiIntent, AiIntentRegist
     public IReadOnlyList<string> Ids() => Ordered().Select(intent => intent.Id).ToArray();
     public JsonObject? Choose(AiTurnContext context)
     {
-        foreach (var intent in Ordered()) if (intent.Propose(context) is { } action) return action;
+        foreach (var intent in Ordered())
+            if (intent.Propose(context) is { } action)
+                return action;
         return null;
     }
     public AiIntentRegistry Clone() => CopyInto(new AiIntentRegistry());

@@ -34,10 +34,11 @@ public static class GridStorage
         var sx = from.X < to.X ? 1 : -1;
         var sy = from.Y < to.Y ? 1 : -1;
         var error = dx - dy;
-        for (;;)
+        for (; ; )
         {
             result.Add(new Coord(x, y));
-            if (x == to.X && y == to.Y) return result;
+            if (x == to.X && y == to.Y)
+                return result;
             var twice = error * 2;
             if (twice > -dy)
             {

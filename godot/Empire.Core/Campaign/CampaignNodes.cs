@@ -8,7 +8,10 @@ namespace Empire.Core.Campaign;
 public sealed record CampaignNodeAdvance(Action<JsonArray?> Apply, Action<string> MoveTo, Action<string> Settle, Action<string> Needs);
 public sealed class CampaignNodeInspection
 {
-    public JsonObject Definition { get; }
+    public JsonObject Definition
+    {
+        get;
+    }
     private readonly HashSet<string> nodes;
     private readonly HashSet<string> roster;
     public CampaignNodeInspection(JsonObject definition)
@@ -31,7 +34,8 @@ public sealed class CampaignNodeRegistry : KeyedRegistry<CampaignNodeHandler, Ca
     public void Validate(CampaignNodeInspection inspection, JsonObject node)
     {
         var handler = TryGet(Text(node, "type"));
-        if (handler is null) throw new CampaignInvariantException($"campaign node \"{Text(node, "id")}\" has unknown type \"{Text(node, "type")}\"");
+        if (handler is null)
+            throw new CampaignInvariantException($"campaign node \"{Text(node, "id")}\" has unknown type \"{Text(node, "type")}\"");
         handler.Validate?.Invoke(inspection, node);
     }
     public CampaignNodeRegistry Clone() => CopyInto(new CampaignNodeRegistry());
@@ -43,32 +47,43 @@ public sealed class CampaignNodeRegistry : KeyedRegistry<CampaignNodeHandler, Ca
         registry.Register(new("choice", (context, _) => context.Needs("choose()"), (inspection, node) =>
         {
             var choices = Array(node["choices"], "choices");
-            if (choices.Count == 0) inspection.Reject($"choice node \"{Text(node, "id")}\" has no choices");
+            if (choices.Count == 0)
+                inspection.Reject($"choice node \"{Text(node, "id")}\" has no choices");
             var seen = new HashSet<string>(StringComparer.Ordinal);
             foreach (var choice in Objects(choices, "choices"))
             {
                 var id = Text(choice, "id");
-                if (!seen.Add(id)) inspection.Reject($"duplicate choice \"{Text(node, "id")}:{id}\"");
+                if (!seen.Add(id))
+                    inspection.Reject($"duplicate choice \"{Text(node, "id")}:{id}\"");
                 RequireNext(inspection, $"{Text(node, "id")}:{id}", Text(choice, "next"));
             }
         }));
         registry.Register(new("battle", (context, _) => context.Needs("beginBattle()"), (inspection, node) =>
         {
             var id = Text(node, "id");
-            if (EcmaText.IsBlank(Text(node, "level"))) inspection.Reject($"battle node \"{id}\" has no level");
+            if (EcmaText.IsBlank(Text(node, "level")))
+                inspection.Reject($"battle node \"{id}\" has no level");
             foreach (var pair in Object(node["next"], "next"))
-                if (pair.Value is not null && !string.IsNullOrEmpty(Text(pair.Value, "next"))) RequireNext(inspection, id, Text(pair.Value, "next"));
-            var roster = new HashSet<string>(StringComparer.Ordinal); var keys = new HashSet<string>(StringComparer.Ordinal);
+                if (pair.Value is not null && !string.IsNullOrEmpty(Text(pair.Value, "next")))
+                    RequireNext(inspection, id, Text(pair.Value, "next"));
+            var roster = new HashSet<string>(StringComparer.Ordinal);
+            var keys = new HashSet<string>(StringComparer.Ordinal);
             foreach (var binding in Objects(node["rosterBindings"], "rosterBindings"))
             {
-                var unit = Text(binding, "campaignUnit"); var key = Text(binding, "levelUnitKey");
-                if (!roster.Add(unit) || !keys.Add(key)) inspection.Reject($"battle node \"{id}\" has duplicate roster binding");
-                if (!inspection.HasRosterUnit(unit)) inspection.Reject($"battle node \"{id}\" binds unknown roster unit \"{unit}\"");
+                var unit = Text(binding, "campaignUnit");
+                var key = Text(binding, "levelUnitKey");
+                if (!roster.Add(unit) || !keys.Add(key))
+                    inspection.Reject($"battle node \"{id}\" has duplicate roster binding");
+                if (!inspection.HasRosterUnit(unit))
+                    inspection.Reject($"battle node \"{id}\" binds unknown roster unit \"{unit}\"");
             }
         }));
         registry.Register(new("ending", (context, node) => { context.Apply(node["effects"] as JsonArray); context.Settle(Text(node, "outcome")); }));
         return registry;
     }
     private static void RequireNext(CampaignNodeInspection inspection, string source, string next)
-    { if (!inspection.HasNode(next)) inspection.Reject($"{source} references unknown campaign node \"{next}\""); }
+    {
+        if (!inspection.HasNode(next))
+            inspection.Reject($"{source} references unknown campaign node \"{next}\"");
+    }
 }

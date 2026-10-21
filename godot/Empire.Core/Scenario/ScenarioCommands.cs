@@ -74,40 +74,48 @@ public sealed partial class ScenarioCommands
         var scenario = Object(state["scenario"], "scenario");
         var rules = Array(scenario["engagementRules"], "engagementRules");
         var removed = rules.OfType<JsonObject>().FirstOrDefault(rule => Text(rule, "id") == Text(effect, "id"));
-        if (removed is not null) rules.Remove(removed);
+        if (removed is not null)
+            rules.Remove(removed);
         return;
     }
     public void DamageStructure(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
-        combat.DamageStructure(state, Text(effect, "id"), Number(effect["amount"], "amount"), emit); return;
+        combat.DamageStructure(state, Text(effect, "id"), Number(effect["amount"], "amount"), emit);
+        return;
     }
     public void RepairStructure(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
-        combat.RepairStructure(state, Text(effect, "id"), Number(effect["amount"], "amount"), emit); return;
+        combat.RepairStructure(state, Text(effect, "id"), Number(effect["amount"], "amount"), emit);
+        return;
     }
     public void AddStatus(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
-        foreach (var unit in Select(state, effect)) combat.Effects.AddStatus(unit, Text(effect, "status"), Number(effect["duration"], "duration"), null, emit);
+        foreach (var unit in Select(state, effect))
+            combat.Effects.AddStatus(unit, Text(effect, "status"), Number(effect["duration"], "duration"), null, emit);
         return;
     }
     public void RemoveStatus(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
-        foreach (var unit in Select(state, effect)) combat.Effects.RemoveStatus(unit, Text(effect, "status"), emit);
+        foreach (var unit in Select(state, effect))
+            combat.Effects.RemoveStatus(unit, Text(effect, "status"), emit);
         return;
     }
     public void WithdrawUnits(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
-        foreach (var unit in Select(state, effect)) combat.Damage.Withdraw(state, unit, IsTrue(effect["leaveCorpse"]), emit);
+        foreach (var unit in Select(state, effect))
+            combat.Damage.Withdraw(state, unit, IsTrue(effect["leaveCorpse"]), emit);
         return;
     }
     public void SurrenderUnits(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
-        foreach (var unit in Standing(state, effect)) combat.Damage.Surrender(state, Integer(unit, "id"), effect["to"] is null ? null : Integer(effect, "to"), emit);
+        foreach (var unit in Standing(state, effect))
+            combat.Damage.Surrender(state, Integer(unit, "id"), effect["to"] is null ? null : Integer(effect, "to"), emit);
         return;
     }
     public void ForceMove(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
-        foreach (var unit in Standing(state, effect)) combat.ForceMove(state, Integer(unit, "id"), TacticalQueries.Position(Object(effect["source"], "source")),
+        foreach (var unit in Standing(state, effect))
+            combat.ForceMove(state, Integer(unit, "id"), TacticalQueries.Position(Object(effect["source"], "source")),
                     Text(effect, "mode"), Number(effect["distance"], "distance"), Number(effect, "collisionDamage", 0), emit);
         return;
     }
@@ -125,39 +133,47 @@ public sealed partial class ScenarioCommands
         var player = TacticalQueries.Player(state, Integer(effect, "player"));
         var from = Integer(player, "team");
         var team = Integer(effect, "team");
-        if (from == team) return;
+        if (from == team)
+            return;
         player["team"] = team;
         emit(new JsonObject { ["type"] = "playerTeamChanged", ["player"] = player["id"]!.DeepClone(), ["from"] = from, ["to"] = team });
         return;
     }
     public void ActivateObjective(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
-        ChangeObjective(state, effect, "active", null, emit); return;
+        ChangeObjective(state, effect, "active", null, emit);
+        return;
     }
     public void CancelObjective(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
-        ChangeObjective(state, effect, "cancelled", null, emit); return;
+        ChangeObjective(state, effect, "cancelled", null, emit);
+        return;
     }
     public void CompleteObjective(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
-        ChangeObjective(state, effect, "completed", null, emit); return;
+        ChangeObjective(state, effect, "completed", null, emit);
+        return;
     }
     public void RevealObjective(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
-        ChangeObjective(state, effect, null, false, emit); return;
+        ChangeObjective(state, effect, null, false, emit);
+        return;
     }
     public void ChangeUnitResource(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
-        foreach (var unit in Select(state, effect)) ChangeResource(unit, Text(effect, "resource"), Number(effect["amount"], "amount"), emit);
+        foreach (var unit in Select(state, effect))
+            ChangeResource(unit, Text(effect, "resource"), Number(effect["amount"], "amount"), emit);
         return;
     }
     public void AddEngagementRule(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
-        AddEngagementRule(state, Object(effect["rule"], "rule")); return;
+        AddEngagementRule(state, Object(effect["rule"], "rule"));
+        return;
     }
     public void RemoveOverlay(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
-        Empire.Core.Terrain.BattleOverlays.Remove(state, Text(effect, "id"), emit); return;
+        Empire.Core.Terrain.BattleOverlays.Remove(state, Text(effect, "id"), emit);
+        return;
     }
     public void ChangeMorale(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
@@ -169,7 +185,8 @@ public sealed partial class ScenarioCommands
     }
     public void MoveComposite(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
-        CompositeRules.Move(state, Text(effect, "id"), Number(effect["dx"], "dx"), Number(effect["dy"], "dy"), emit); return;
+        CompositeRules.Move(state, Text(effect, "id"), Number(effect["dx"], "dx"), Number(effect["dy"], "dy"), emit);
+        return;
     }
 
     private IReadOnlyList<JsonObject> Select(JsonObject state, JsonObject effect) =>
@@ -178,7 +195,8 @@ public sealed partial class ScenarioCommands
     private IEnumerable<JsonObject> Standing(JsonObject state, JsonObject effect)
     {
         foreach (var unit in Select(state, effect))
-            if (TacticalQueries.UnitById(state, Integer(unit, "id")) is not null) yield return unit;
+            if (TacticalQueries.UnitById(state, Integer(unit, "id")) is not null)
+                yield return unit;
     }
 
     public void Spawn(JsonObject state, JsonObject effect, Action<JsonObject> emit)
@@ -188,7 +206,8 @@ public sealed partial class ScenarioCommands
         {
             TacticalQueries.Player(state, Integer(source, "owner"));
             var at = TacticalQueries.Position(source);
-            if (!battlefield.Contains(at)) throw new DomainInvariantException($"spawn cell out of bounds: {at.X},{at.Y}");
+            if (!battlefield.Contains(at))
+                throw new DomainInvariantException($"spawn cell out of bounds: {at.X},{at.Y}");
             var key = source["key"]?.GetValue<string>();
             if (!string.IsNullOrEmpty(key) && Objects(state["units"], "units").Any(unit => unit["key"]?.GetValue<string>() == key))
                 throw new DomainInvariantException($"unit key already exists: \"{key}\"");
@@ -199,7 +218,8 @@ public sealed partial class ScenarioCommands
             var cell = battlefield.Cell(at);
             if (!cell.Admits(Text(definition, "movementClass")))
                 throw new DomainInvariantException($"unit \"{type}\" cannot spawn at {at.X},{at.Y}");
-            if (cell.Occupant is not null) continue;
+            if (cell.Occupant is not null)
+                continue;
             var unit = spawnUnit(state, source, !IsTrue(effect["ready"]));
             emit(new JsonObject
             {
@@ -227,7 +247,8 @@ public sealed partial class ScenarioCommands
                 ["waypoints"] = requested["waypoints"]?.DeepClone() ?? new JsonArray(),
                 ["cursor"] = Math.Max(0, Round(Number(requested, "cursor", 0)))
             };
-            if (requested.ContainsKey("zone")) directive["zone"] = requested["zone"]?.DeepClone();
+            if (requested.ContainsKey("zone"))
+                directive["zone"] = requested["zone"]?.DeepClone();
             unit["directive"] = directive;
             emit(new JsonObject { ["type"] = "directiveChanged", ["unit"] = unit["id"]!.DeepClone(), ["mode"] = directive["mode"]!.DeepClone() });
         }

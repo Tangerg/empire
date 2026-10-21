@@ -9,9 +9,18 @@ public readonly record struct RuleReference(string By, string Name);
 public sealed record RuleReferenceCheck(string Id, string Subject,
     Func<RuleReferenceRules, IEnumerable<string>> Known)
 {
-    public Func<ReadOnlyContent, IEnumerable<RuleReference>>? InContent { get; init; }
-    public Func<JsonObject, RuleReferenceRules, IEnumerable<RuleReference>>? InLevel { get; init; }
-    public Func<JsonObject, RuleReferenceRules, IEnumerable<RuleReference>>? InState { get; init; }
+    public Func<ReadOnlyContent, IEnumerable<RuleReference>>? InContent
+    {
+        get; init;
+    }
+    public Func<JsonObject, RuleReferenceRules, IEnumerable<RuleReference>>? InLevel
+    {
+        get; init;
+    }
+    public Func<JsonObject, RuleReferenceRules, IEnumerable<RuleReference>>? InState
+    {
+        get; init;
+    }
 }
 
 /// <summary>Ordered, replaceable checks shared by catalog, level, and saved-state admission.</summary>
@@ -31,13 +40,16 @@ public sealed class BattleReferenceCheckRegistry : KeyedRegistry<RuleReferenceCh
         foreach (var check in All())
         {
             var references = referencesOf(check);
-            if (references is null) continue;
+            if (references is null)
+                continue;
             var known = check.Known(rules).ToHashSet(StringComparer.Ordinal);
             foreach (var reference in references)
             {
-                if (known.Contains(reference.Name)) continue;
+                if (known.Contains(reference.Name))
+                    continue;
                 var issue = $"{reference.By} 引用了未注册的{check.Subject}「{reference.Name}」";
-                if (seen.Add(issue)) found.Add(issue);
+                if (seen.Add(issue))
+                    found.Add(issue);
             }
         }
         return found;

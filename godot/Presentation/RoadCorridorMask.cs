@@ -21,8 +21,9 @@ internal static class RoadCorridorMask
             throw new InvalidOperationException("Road corridor requires the reviewed 32/22/2 or 20/16/0 profile.");
         var cells = new List<BoardCell>();
         for (var x = 0; x < width; x++)
-        for (var y = 0; y < height; y++)
-            if (painted(x, y)) cells.Add(new BoardCell(x, y));
+            for (var y = 0; y < height; y++)
+                if (painted(x, y))
+                    cells.Add(new BoardCell(x, y));
         var occupied = cells.ToHashSet();
         var protectedCells = profile.ProtectedCells.Select(pair => pair.Length == 2
             ? new BoardCell(pair[0], pair[1]) : throw new InvalidOperationException("Invalid protected road cell.")).ToHashSet();
@@ -34,20 +35,22 @@ internal static class RoadCorridorMask
         var visited = new HashSet<(BoardCell, BoardCell)>();
         var paths = new List<string>();
         foreach (var start in cells.OrderBy(cell => Neighbors(cell).Length == 2).ThenBy(cell => cell.X).ThenBy(cell => cell.Y))
-        foreach (var next in Neighbors(start))
-        {
-            if (!visited.Add(Edge(start, next))) continue;
-            var chain = new List<BoardCell> { start, next };
-            var current = next;
-            while (Neighbors(current).Length == 2)
+            foreach (var next in Neighbors(start))
             {
-                var after = Neighbors(current).First(cell => cell != chain[^2]);
-                if (!visited.Add(Edge(current, after))) break;
-                chain.Add(after);
-                current = after;
+                if (!visited.Add(Edge(start, next)))
+                    continue;
+                var chain = new List<BoardCell> { start, next };
+                var current = next;
+                while (Neighbors(current).Length == 2)
+                {
+                    var after = Neighbors(current).First(cell => cell != chain[^2]);
+                    if (!visited.Add(Edge(current, after)))
+                        break;
+                    chain.Add(after);
+                    current = after;
+                }
+                paths.Add(Rounded(chain, (float)profile.MaxTangentCut));
             }
-            paths.Add(Rounded(chain, (float)profile.MaxTangentCut));
-        }
         var filled = new List<string>();
         var limits = new List<string>();
         foreach (var cell in cells)
@@ -70,16 +73,17 @@ internal static class RoadCorridorMask
             if (overhang > 0)
                 limits.Add(Rect(cell.X * 32 - overhang, cell.Y * 32 - overhang,
                     32 + overhang * 2, 32 + overhang * 2, $" rx=\"{N(overhang)}\""));
-            else limits.Add(Rect(cell.X * 32, cell.Y * 32, 32, 32));
+            else
+                limits.Add(Rect(cell.X * 32, cell.Y * 32, 32, 32));
         }
         var allowed = new List<string>();
         for (var y = 0; y < height; y++)
-        for (var x = 0; x < width; x++)
-        {
-            var cell = new BoardCell(x, y);
-            if (!protectedCells.Contains(cell) && (occupied.Contains(cell) || plain(x, y)))
-                allowed.Add(Rect(x * 32, y * 32, 32, 32));
-        }
+            for (var x = 0; x < width; x++)
+            {
+                var cell = new BoardCell(x, y);
+                if (!protectedCells.Contains(cell) && (occupied.Contains(cell) || plain(x, y)))
+                    allowed.Add(Rect(x * 32, y * 32, 32, 32));
+            }
         // Godot's SVG rasterizer creates only technical coverage; source RGB remains a native texture.
         var svg = $"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{width * 32}\" height=\"{height * 32}\">"
             + $"<defs><clipPath id=\"limits\">{string.Concat(limits)}</clipPath>"
@@ -90,7 +94,8 @@ internal static class RoadCorridorMask
             + $"<g fill=\"white\">{string.Concat(filled)}</g></g></g></svg>";
         var image = new Image();
         var error = image.LoadSvgFromString(svg, 2);
-        if (error != Error.Ok) throw new InvalidOperationException($"Native road alpha rasterization failed: {error}");
+        if (error != Error.Ok)
+            throw new InvalidOperationException($"Native road alpha rasterization failed: {error}");
         return image;
     }
 
@@ -115,7 +120,8 @@ internal static class RoadCorridorMask
             return (end, $"L {Point(start)} Q {Point(b)} {Point(end)}");
         }
         var parts = new List<string> { $"M {Point(closed ? Corner(0).End : simple[0])}" };
-        for (var index = 1; index < simple.Length - (closed ? 0 : 1); index++) parts.Add(Corner(index).Command);
+        for (var index = 1; index < simple.Length - (closed ? 0 : 1); index++)
+            parts.Add(Corner(index).Command);
         parts.Add(closed ? Corner(0).Command + " Z" : $"L {Point(simple[^1])}");
         return string.Join(" ", parts);
     }

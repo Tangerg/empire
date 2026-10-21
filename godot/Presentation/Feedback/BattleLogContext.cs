@@ -16,9 +16,18 @@ public sealed class BattleLogContext
     private readonly Func<int, string> playerName;
     private readonly JsonElement before;
     private readonly Dictionary<int, (string Type, int Owner)> created = new();
-    public JsonElement State { get; }
-    public Func<string, string> CareerName { get; }
-    public Func<string, string> ResourceName { get; }
+    public JsonElement State
+    {
+        get;
+    }
+    public Func<string, string> CareerName
+    {
+        get;
+    }
+    public Func<string, string> ResourceName
+    {
+        get;
+    }
 
     public BattleLogContext(BattleLogNames names, JsonElement before, JsonElement after)
     {
@@ -33,7 +42,8 @@ public sealed class BattleLogContext
     internal void Observe(JsonElement value)
     {
         var kind = FeedbackJson.Text(value.GetProperty("type"));
-        if (kind is not ("unitSpawned" or "recruit")) return;
+        if (kind is not ("unitSpawned" or "recruit"))
+            return;
         var id = value.GetProperty("unit").GetInt32();
         var unitType = value.GetProperty("unitType");
         if (unitType.ValueKind != JsonValueKind.String)
@@ -52,7 +62,8 @@ public sealed class BattleLogContext
     {
         if (!double.IsFinite(id) || id != Math.Truncate(id) || id <= 0 || id > int.MaxValue)
             throw new LocalizationException("Committed event unit identity must be a positive integer.");
-        if (created.TryGetValue((int)id, out var identity)) return unitTypeName(identity.Type);
+        if (created.TryGetValue((int)id, out var identity))
+            return unitTypeName(identity.Type);
         foreach (var unit in UnitRecords(State).Concat(UnitRecords(before)))
             if (unit.GetProperty("id").GetDouble() == id)
                 return unitTypeName(FeedbackJson.Text(unit.GetProperty("type")));
@@ -61,10 +72,13 @@ public sealed class BattleLogContext
 
     private static IEnumerable<JsonElement> UnitRecords(JsonElement state)
     {
-        foreach (var unit in state.GetProperty("units").EnumerateArray()) yield return unit;
-        foreach (var entry in state.GetProperty("embarkedUnits").EnumerateArray()) yield return entry.GetProperty("unit");
+        foreach (var unit in state.GetProperty("units").EnumerateArray())
+            yield return unit;
+        foreach (var entry in state.GetProperty("embarkedUnits").EnumerateArray())
+            yield return entry.GetProperty("unit");
         foreach (var marker in state.GetProperty("markers").EnumerateArray())
-            if (marker.TryGetProperty("fallenUnit", out var fallen)) yield return fallen;
+            if (marker.TryGetProperty("fallenUnit", out var fallen))
+                yield return fallen;
     }
 
     public string PlayerName(double id) => playerName(checked((int)id));

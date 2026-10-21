@@ -8,8 +8,14 @@ public interface IRankProgressionPolicy
 
 public sealed class ThresholdRankProgressionPolicy : IRankProgressionPolicy
 {
-    public double VeteranThreshold { get; }
-    public double EliteThreshold { get; }
+    public double VeteranThreshold
+    {
+        get;
+    }
+    public double EliteThreshold
+    {
+        get;
+    }
 
     public ThresholdRankProgressionPolicy(double veteranThreshold = 120, double eliteThreshold = 320)
     {

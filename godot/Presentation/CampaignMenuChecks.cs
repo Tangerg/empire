@@ -25,18 +25,24 @@ public partial class CampaignMenuChecks : Node
             Require(!Godot.FileAccess.FileExists(missingArtPath), "The deliberately missing-art fixture unexpectedly exists");
             missingArtMetadata["menuArt"]!["resourcePath"] = missingArtPath;
             var metadata = EcmaJson.ToElement(missingArtMetadata);
-            var screen = new CampaignMenuScreen(); AddChild(screen);
-            var continued = 0; var requested = 0;
+            var screen = new CampaignMenuScreen();
+            AddChild(screen);
+            var continued = 0;
+            var requested = 0;
             foreach (var item in oracle["menuCases"]!.AsArray().OfType<JsonObject>())
             {
                 var loaded = new LoadedCampaign(item["state"] as JsonObject, item["rejected"]?.GetValue<string>());
                 var view = CampaignMenu.Create(messages, loaded, metadata);
                 var sourceView = CampaignMenu.Create(messages, loaded, sourceMetadata);
-                Require(view with { ArtResourcePath = sourceView.ArtResourcePath } == sourceView,
+                Require(view with
+                {
+                    ArtResourcePath = sourceView.ArtResourcePath
+                } == sourceView,
                     "Missing-art fixture changed a source projection field other than resource path");
                 screen.ShowMenu(view, () => continued++, () => requested++);
                 var labels = Descendants(screen).OfType<Label>().Select(label => label.Text).ToArray();
-                foreach (var text in new[] { view.Title, view.Kicker, view.Description }) Require(labels.Contains(text), "Native menu omitted source prose");
+                foreach (var text in new[] { view.Title, view.Kicker, view.Description })
+                    Require(labels.Contains(text), "Native menu omitted source prose");
                 Require((Button(screen, "ContinueCampaign") is not null) == view.CanContinue, "Native Continue visibility changed");
                 Require(Button(screen, "NewCampaign")!.Text == view.NewLabel, "Native New/Restart label changed");
                 Require(view.RejectedNotice is null || labels.Contains(view.RejectedNotice), "Native title must report unusable saved progress");
@@ -47,7 +53,8 @@ public partial class CampaignMenuChecks : Node
                     "Missing original title art must not be replaced with unrelated imagery");
                 var oldNew = Button(screen, "NewCampaign")!;
                 var before = requested;
-                oldNew.EmitSignal(Godot.Button.SignalName.Pressed); oldNew.EmitSignal(Godot.Button.SignalName.Pressed);
+                oldNew.EmitSignal(Godot.Button.SignalName.Pressed);
+                oldNew.EmitSignal(Godot.Button.SignalName.Pressed);
                 Require(requested == before + 1 && oldNew.Disabled, "New intent must be single-use while caller confirmation is pending");
                 Button(screen, "ContinueCampaign")?.EmitSignal(Godot.Button.SignalName.Pressed);
                 Require(continued == 0, "A second menu action must not escape the pending intent guard");
@@ -56,19 +63,23 @@ public partial class CampaignMenuChecks : Node
                 oldNew.EmitSignal(Godot.Button.SignalName.Pressed);
                 Require(requested == before + 1, "Rebound menu accepted a stale callback");
                 var fresh = Button(screen, "NewCampaign")!;
-                var row = fresh.GetParent(); row.RemoveChild(fresh);
+                var row = fresh.GetParent();
+                row.RemoveChild(fresh);
                 fresh.EmitSignal(Godot.Button.SignalName.Pressed);
                 Require(requested == before + 1, "Detached menu button acted while its screen stayed mounted");
                 row.AddChild(fresh);
-                RemoveChild(screen); fresh.EmitSignal(Godot.Button.SignalName.Pressed);
+                RemoveChild(screen);
+                fresh.EmitSignal(Godot.Button.SignalName.Pressed);
                 Require(requested == before + 1, "Unmounted menu acted on caller state");
-                AddChild(screen); fresh.EmitSignal(Godot.Button.SignalName.Pressed);
+                AddChild(screen);
+                fresh.EmitSignal(Godot.Button.SignalName.Pressed);
                 Require(requested == before + 1, "Remount without an explicit new binding must not revive old callbacks");
             }
             var active = CampaignMenu.Create(messages, new(oracle["initial"]!.AsObject(), null), metadata);
             screen.ShowMenu(active, () => continued++, () => requested++);
             var continuation = Button(screen, "ContinueCampaign")!;
-            continuation.EmitSignal(Godot.Button.SignalName.Pressed); continuation.EmitSignal(Godot.Button.SignalName.Pressed);
+            continuation.EmitSignal(Godot.Button.SignalName.Pressed);
+            continuation.EmitSignal(Godot.Button.SignalName.Pressed);
             Require(continued == 1 && continuation.Disabled, "Continue must signal exactly once per binding");
             var snapshot = EcmaJson.Stringify(oracle["initial"]);
             var awaiting = false;
@@ -85,7 +96,10 @@ public partial class CampaignMenuChecks : Node
                 var loaded = new LoadedCampaign(oracle["initial"]!.AsObject(), null);
                 var sourceView = CampaignMenu.Create(messages, loaded, sourceMetadata);
                 var exportedView = CampaignMenu.Create(messages, loaded, EcmaJson.ToElement(exported));
-                Require(exportedView with { ArtResourcePath = sourceView.ArtResourcePath } == sourceView,
+                Require(exportedView with
+                {
+                    ArtResourcePath = sourceView.ArtResourcePath
+                } == sourceView,
                     "Exported menu prose, source art identity or progress disagrees with the frozen native menu expectations");
                 Require(exportedView.ArtResourcePath is not null && Godot.FileAccess.FileExists(exportedView.ArtResourcePath),
                     "The actual exported original menu art is missing");
@@ -99,8 +113,10 @@ public partial class CampaignMenuChecks : Node
                     "The actual native menu did not load its exported original texture");
                 Require(picture.TooltipText == sourceView.ArtAlt, "The actual native menu lost its source art description");
             }
-            RemoveChild(screen); screen.QueueFree();
-            GD.Print($"Campaign menu native checks passed: {assertions} assertions ({(isolatedArtFixture ? "explicit isolated missing-art fixture; exported-art integration not run" : "including actual exported-menu art identity")})."); GetTree().Quit();
+            RemoveChild(screen);
+            screen.QueueFree();
+            GD.Print($"Campaign menu native checks passed: {assertions} assertions ({(isolatedArtFixture ? "explicit isolated missing-art fixture; exported-art integration not run" : "including actual exported-menu art identity")}).");
+            GetTree().Quit();
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
     }
@@ -110,8 +126,14 @@ public partial class CampaignMenuChecks : Node
         foreach (var child in root.GetChildren())
         {
             yield return child;
-            foreach (var descendant in Descendants(child)) yield return descendant;
+            foreach (var descendant in Descendants(child))
+                yield return descendant;
         }
     }
-    private void Require(bool value, string message) { assertions++; if (!value) throw new Exception(message); }
+    private void Require(bool value, string message)
+    {
+        assertions++;
+        if (!value)
+            throw new Exception(message);
+    }
 }

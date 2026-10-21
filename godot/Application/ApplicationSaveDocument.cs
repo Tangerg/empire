@@ -6,7 +6,10 @@ using Empire.Core.Lifecycle;
 
 namespace Empire.Application;
 
-internal enum CampaignLocation { Campaign, Battle, Camp }
+internal enum CampaignLocation
+{
+    Campaign, Battle, Camp
+}
 
 internal sealed record ApplicationSaveDocument(JsonObject CampaignState, CampaignLocation Location,
     JsonObject? Battle, JsonArray Events)
@@ -42,9 +45,14 @@ internal sealed record ApplicationSaveDocument(JsonObject CampaignState, Campaig
             if (document["battle"] is not JsonObject battle || battle["state"] is not JsonObject battleState)
                 throw new StoredDocumentException("An active battle save requires its battle document.");
             BattleConclusion? conclusion;
-            try { conclusion = BattleConclusion.FromState(battleState); }
+            try
+            {
+                conclusion = BattleConclusion.FromState(battleState);
+            }
             catch (DomainInvariantException error)
-            { throw new StoredDocumentException("Saved battle conclusion is invalid.", error); }
+            {
+                throw new StoredDocumentException("Saved battle conclusion is invalid.", error);
+            }
             var hasGameOver = false;
             foreach (var entry in events)
             {
@@ -54,14 +62,21 @@ internal sealed record ApplicationSaveDocument(JsonObject CampaignState, Campaig
                 if (eventType == "scenarioSignal" && (value["signal"] is not JsonValue signal ||
                     !signal.TryGetValue<string>(out var signalName) || EcmaText.IsBlank(signalName)))
                     throw new StoredDocumentException("Saved scenario signal is missing or invalid.");
-                if (eventType is "unitSpawned" or "recruit") ValidateCreationEvent(value, eventType);
-                if (eventType != "gameOver") continue;
+                if (eventType is "unitSpawned" or "recruit")
+                    ValidateCreationEvent(value, eventType);
+                if (eventType != "gameOver")
+                    continue;
                 if (hasGameOver || value.Count != 2 || !value.ContainsKey("conclusion"))
                     throw new StoredDocumentException("Saved game-over event does not match the current native format.");
                 BattleConclusion eventConclusion;
-                try { eventConclusion = BattleConclusion.Parse(value["conclusion"]); }
+                try
+                {
+                    eventConclusion = BattleConclusion.Parse(value["conclusion"]);
+                }
                 catch (DomainInvariantException error)
-                { throw new StoredDocumentException("Saved game-over event conclusion is invalid.", error); }
+                {
+                    throw new StoredDocumentException("Saved game-over event conclusion is invalid.", error);
+                }
                 if (eventConclusion != conclusion)
                     throw new StoredDocumentException("Saved game-over event and battle conclusion disagree.");
                 hasGameOver = true;

@@ -37,7 +37,10 @@ public sealed class ResourceSubjectResolverRegistry : KeyedRegistry<ResourceSubj
 
 public static class DefaultResourcePolicies
 {
-    public static ResourceAdapterRegistry Adapters { get; } = new ResourceAdapterRegistry()
+    public static ResourceAdapterRegistry Adapters
+    {
+        get;
+    } = new ResourceAdapterRegistry()
         .Register(Stored("funds", "player", 1, subject => subject.Holder["resources"]))
         .Register(Stored("command_points", "player", 8, subject => subject.Holder["resources"]))
         .Register(Stored("momentum", "unit", 2, subject => subject.Holder["resources"]))
@@ -45,7 +48,10 @@ public static class DefaultResourcePolicies
             subject => subject.Holder["weaponState"]?[subject.Weapon ?? ""]?["resources"]))
         .Seal();
 
-    public static ResourceSubjectResolverRegistry Subjects { get; } = new ResourceSubjectResolverRegistry()
+    public static ResourceSubjectResolverRegistry Subjects
+    {
+        get;
+    } = new ResourceSubjectResolverRegistry()
         .Register(new("player", (context, transaction) => new("player", context.Player ??
             throw new DomainInvariantException($"resource \"{transaction.Resource}\" requires a player context")), Reference))
         .Register(new("unit", (context, _) => new("unit", context.Unit), Reference))
@@ -59,13 +65,15 @@ public static class DefaultResourcePolicies
 
     private static JsonObject Reference(BattleResources.Subject subject) => new()
     {
-        ["kind"] = subject.Kind, ["id"] = subject.Holder["id"]!.DeepClone(),
+        ["kind"] = subject.Kind,
+        ["id"] = subject.Holder["id"]!.DeepClone(),
     };
 
     private static ResourceAdapter Stored(string id, string kind, double aiWeight,
         Func<BattleResources.Subject, JsonNode?> accounts) => new(id, kind, true, aiWeight, subject =>
     {
-        if (accounts(subject)?[id] is not JsonObject state) return null;
+        if (accounts(subject)?[id] is not JsonObject state)
+            return null;
         return new ResourceAccount(() => new ResourceSnapshot(
             state["current"] is { } current ? StateJson.Number(current, "current") : null,
             state["capacity"] is { } capacity ? StateJson.Number(capacity, "capacity") : null),

@@ -29,7 +29,7 @@ for notice in README.txt manifest.json GODOT-LICENSE.txt GODOT-COPYRIGHT.txt DOT
   test -s "distribution/notices/$notice" || { printf 'Missing distribution notice: %s\n' "$notice" >&2; exit 1; }
 done
 mkdir -p "$output/package" "$output/logs"
-timeout --signal=TERM --kill-after=30s 20m dotnet build godot/Empire.csproj --nologo 2>&1 | tee "$output/logs/build.log"
+timeout --signal=TERM --kill-after=30s 20m dotnet build godot/Empire.csproj --nologo --disable-build-servers -m:1 -p:UseSharedCompilation=false 2>&1 | tee "$output/logs/build.log"
 timeout --signal=TERM --kill-after=30s 15m "$GODOT_NET" --headless --editor --path godot --import 2>&1 | tee "$output/logs/import.log"
 timeout --signal=TERM --kill-after=30s 30m "$GODOT_NET" --headless --path godot --export-release 'Linux x86_64' "$output/package/Empire.x86_64" 2>&1 | tee "$output/logs/export.log"
 for log in build import export; do

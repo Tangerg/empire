@@ -21,17 +21,24 @@ public sealed class UnitDepartureHandlerRegistry : KeyedRegistry<UnitDepartureHa
 
     public void Announce(UnitDeparture departure)
     {
-        foreach (var handler in All()) handler.Handle(departure);
+        foreach (var handler in All())
+            handler.Handle(departure);
     }
 }
 
 public static class DefaultUnitDepartureHandlers
 {
-    public static UnitDepartureHandler CommanderDefeat { get; } = new("commander.defeat", departure =>
+    public static UnitDepartureHandler CommanderDefeat
+    {
+        get;
+    } = new("commander.defeat", departure =>
         departure.Rules.Damage.HandleCommanderDefeat(departure.State,
             StateJson.Integer(departure.Unit, "id"), departure.Emit));
 
-    public static UnitDepartureHandler CastingCancellation { get; } = new("casting.cancel", departure =>
+    public static UnitDepartureHandler CastingCancellation
+    {
+        get;
+    } = new("casting.cancel", departure =>
         departure.Rules.Damage.CancelCastOf(departure.State,
             StateJson.Integer(departure.Unit, "id"), departure.Emit));
 

@@ -51,7 +51,7 @@ public partial class AnimationChecks : Node
     {
         var board = new BoardView { AdvanceAnimationsAutomatically = false };
         AddChild(board);
-        board.Configure(assets, level, AuthoredScene.Load(), EnvironmentCatalog.Load(), facing => facing == "west");
+        board.Configure(new(assets, EnvironmentCatalog.Load(), facing => facing == "west", null), level, AuthoredScene.Load());
         board.ConfigureDynamicState(new Empire.Core.State.ReadOnlyContent(packs));
         board.RenderState(initial);
         return board;
@@ -79,7 +79,10 @@ public partial class AnimationChecks : Node
             Require(BoardView.StripFrame(asset, 0) == 0 && BoardView.StripFrame(asset, 84) == 1
                 && BoardView.StripFrame(asset, 167) == 2 && BoardView.StripFrame(asset, 250) == 3
                 && BoardView.StripFrame(asset, 600) == 3, "Nonlooping source strips hold their last frame");
-            Require(BoardView.StripFrame(asset with { Loop = true }, 500) == 2,
+            Require(BoardView.StripFrame(asset with
+            {
+                Loop = true
+            }, 500) == 2,
                 "Source loop metadata repeats numeric frames when explicitly enabled");
         }
         Require(assets.ResolveWeaponEffect("c01.border-blade")?.TopicId == "C01-FX-01"
@@ -127,7 +130,11 @@ public partial class AnimationChecks : Node
         var broken = new PresentationTimeline();
         var failed = broken.TweenAsync(10, _ => throw new InvalidOperationException("test step defect"));
         broken.Advance(0.010);
-        try { await failed; throw new Exception("Step error was swallowed"); }
+        try
+        {
+            await failed;
+            throw new Exception("Step error was swallowed");
+        }
         catch (InvalidOperationException error) { Require(error.Message == "test step defect", "Clock errors must reach the playback boundary"); }
     }
 
@@ -137,22 +144,33 @@ public partial class AnimationChecks : Node
         var values = new List<JsonElement> { doc.RootElement };
         var visible = new HashSet<int> { 1, 2 };
         var transition = new BattlePresentationTransition(9, doc.RootElement, doc.RootElement, values, doc.RootElement, false, visible);
-        values.Clear(); visible.Clear(); doc.Dispose();
+        values.Clear();
+        visible.Clear();
+        doc.Dispose();
         Require(transition.Events.Count == 1 && transition.BeforeVisibleUnitIds!.SetEquals(new[] { 1, 2 }),
             "Transition collections must not retain caller-owned mutable lists or sets");
         Require(transition.Before.GetProperty("type").GetString() == "gameOver" && transition.After.GetProperty("type").GetString() == "gameOver"
             && transition.Action.GetProperty("type").GetString() == "gameOver" && transition.Events[0].GetProperty("type").GetString() == "gameOver",
             "Every transition JsonElement remains valid after the caller disposes its JsonDocument");
-        try { ((IList<JsonElement>)transition.Events).Clear(); throw new Exception("Events remained mutable"); }
+        try
+        {
+            ((IList<JsonElement>)transition.Events).Clear();
+            throw new Exception("Events remained mutable");
+        }
         catch (NotSupportedException) { Require(transition.Events.Count == 1, "Downcasting cannot mutate the transition event list"); }
         Require(transition.BeforeVisibleUnitIds is not HashSet<int>, "Transition visibility is a frozen set, not a mutable set behind a read-only interface");
     }
 
     private async Task CheckMovement(BoardView board)
     {
-        var before = Copy(); var after = Copy(); var unit = after["units"]![0]!.AsObject();
-        var id = Int(unit, "id"); var x = Int(unit, "x"); var y = Int(unit, "y");
-        unit["x"] = x + 2; unit["done"] = true;
+        var before = Copy();
+        var after = Copy();
+        var unit = after["units"]![0]!.AsObject();
+        var id = Int(unit, "id");
+        var x = Int(unit, "x");
+        var y = Int(unit, "y");
+        unit["x"] = x + 2;
+        unit["done"] = true;
         var path = new JsonArray(At(x, y), At(x + 1, y), At(x + 2, y));
         var action = new JsonObject { ["kind"] = "command", ["unit"] = id, ["path"] = path.DeepClone(), ["command"] = new JsonObject { ["ability"] = "wait" } };
         var transition = Transition(before, after, action, [new JsonObject { ["type"] = "move", ["unit"] = id, ["path"] = path }]);
@@ -171,7 +189,10 @@ public partial class AnimationChecks : Node
         Require(Actor(board, id).Position == new Vector2((x + 2) * 32 + 16, y * 32 + 31), "Settled actor uses committed destination");
         Require(input == transition.Before.GetRawText() + transition.After.GetRawText() + transition.Action.GetRawText(), "Animation cannot mutate detached transition JSON");
 
-        var ai = transition with { IsComputerAction = true };
+        var ai = transition with
+        {
+            IsComputerAction = true
+        };
         task = board.PresentTransitionAsync(ai);
         actor = Actor(board, id);
         await Tick(board, 0.0325);
@@ -184,13 +205,17 @@ public partial class AnimationChecks : Node
 
     private async Task CheckStrikeAndDeath(BoardView board)
     {
-        var before = Copy(); var after = Copy();
-        var attacker = before["units"]![0]!.AsObject(); var target = before["units"]!.AsArray().Last()!.AsObject();
-        var aid = Int(attacker, "id"); var did = Int(target, "id");
+        var before = Copy();
+        var after = Copy();
+        var attacker = before["units"]![0]!.AsObject();
+        var target = before["units"]!.AsArray().Last()!.AsObject();
+        var aid = Int(attacker, "id");
+        var did = Int(target, "id");
         var at = new Vector2(Int(target, "x") * 32 + 16, Int(target, "y") * 32 + 16);
         var attack = Strike("attack", aid, did);
         var task = board.PresentTransitionAsync(Transition(before, after, IdleAction(), [attack]));
-        var actor = Actor(board, aid); var origin = actor.Position;
+        var actor = Actor(board, aid);
+        var origin = actor.Position;
         Require(Frame(actor) == 2, "Strike selects the declared source attack frame");
         await Tick(board, 0.075);
         var direction = new Vector2(Math.Sign(Int(target, "x") - Int(attacker, "x")), Math.Sign(Int(target, "y") - Int(attacker, "y")));
@@ -210,9 +235,11 @@ public partial class AnimationChecks : Node
         foreach (var kind in new[] { "areaAttack", "partingShot", "counter", "supportAttack" })
         {
             var item = Strike(kind, aid, did);
-            if (kind == "partingShot") item["at"] = At(1, 2);
+            if (kind == "partingShot")
+                item["at"] = At(1, 2);
             task = board.PresentTransitionAsync(Transition(before, after, IdleAction(), [item]));
-            if (kind != "areaAttack") await Tick(board, 0.151);
+            if (kind != "areaAttack")
+                await Tick(board, 0.151);
             hit = board.GetNode<Node2D>("BattleEffects/Hit");
             Require(hit.Position == (kind == "partingShot" ? new Vector2(48, 80) : at),
                 $"{kind}: source impact target and area no-extra-wind-up contract");
@@ -243,7 +270,10 @@ public partial class AnimationChecks : Node
 
     private async Task CheckHealAndSpawn(BoardView board)
     {
-        var before = Copy(); var after = Copy(); var target = before["units"]![0]!.AsObject(); var id = Int(target, "id");
+        var before = Copy();
+        var after = Copy();
+        var target = before["units"]![0]!.AsObject();
+        var id = Int(target, "id");
         var task = board.PresentTransitionAsync(Transition(before, after, IdleAction(),
             [new JsonObject { ["type"] = "heal", ["source"] = id, ["target"] = id, ["amount"] = 20 }]));
         var heal = board.GetNode<Node2D>("BattleEffects/Heal");
@@ -255,9 +285,14 @@ public partial class AnimationChecks : Node
         await Tick(board, 0.251);
         Require(await task, "Heal completes without a synthetic attack wind-up");
 
-        var spawned = (JsonObject)target.DeepClone(); spawned["id"] = 1000; spawned["key"] = "animation-recruit"; spawned["x"] = 1; spawned["y"] = 1;
+        var spawned = (JsonObject)target.DeepClone();
+        spawned["id"] = 1000;
+        spawned["key"] = "animation-recruit";
+        spawned["x"] = 1;
+        spawned["y"] = 1;
         after["units"]!.AsArray().Add(spawned);
-        var repaints = 0; void Repaint() => repaints++;
+        var repaints = 0;
+        void Repaint() => repaints++;
         board.PresentationRepaintRequested += Repaint;
         task = board.PresentTransitionAsync(Transition(before, after, IdleAction(),
             [new JsonObject { ["type"] = "recruit", ["unit"] = 1000, ["at"] = At(1, 1) }]));
@@ -274,23 +309,44 @@ public partial class AnimationChecks : Node
 
     private async Task CheckSourceLookupBoundaries(BoardView board)
     {
-        var before = Copy(); var after = Copy();
-        var attacker = before["units"]![0]!.AsObject(); var target = before["units"]!.AsArray().Last()!.AsObject();
-        var aid = Int(attacker, "id"); var did = Int(target, "id");
+        var before = Copy();
+        var after = Copy();
+        var attacker = before["units"]![0]!.AsObject();
+        var target = before["units"]!.AsArray().Last()!.AsObject();
+        var aid = Int(attacker, "id");
+        var did = Int(target, "id");
         after["units"]!.AsArray().RemoveAt(0);
         var task = board.PresentTransitionAsync(Transition(before, after, IdleAction(), [Strike("attack", aid, did)]));
         Require(board.GetNodeOrNull("BattleEffects/Hit") is not null,
             "Source skips wind-up when the acting unit was killed later in the committed transaction, but still paints its emitted hit");
         await Drain(board, task);
 
-        before = Copy(); after = Copy();
-        var structure = new JsonObject { ["id"] = "animation-node", ["type"] = "command_node", ["owner"] = 2,
-            ["x"] = 1, ["y"] = 2, ["hp"] = 100, ["disabled"] = false };
+        before = Copy();
+        after = Copy();
+        var structure = new JsonObject
+        {
+            ["id"] = "animation-node",
+            ["type"] = "command_node",
+            ["owner"] = 2,
+            ["x"] = 1,
+            ["y"] = 2,
+            ["hp"] = 100,
+            ["disabled"] = false
+        };
         before["structures"]!.AsArray().Add(structure);
-        var destroyed = (JsonObject)structure.DeepClone(); destroyed["hp"] = 0; destroyed["disabled"] = true;
+        var destroyed = (JsonObject)structure.DeepClone();
+        destroyed["hp"] = 0;
+        destroyed["disabled"] = true;
         after["structures"]!.AsArray().Add(destroyed);
-        var impact = new JsonObject { ["type"] = "attackStructure", ["attacker"] = aid,
-            ["structure"] = "animation-node", ["weapon"] = "c01.border-blade", ["damage"] = 100, ["destroyed"] = true };
+        var impact = new JsonObject
+        {
+            ["type"] = "attackStructure",
+            ["attacker"] = aid,
+            ["structure"] = "animation-node",
+            ["weapon"] = "c01.border-blade",
+            ["damage"] = 100,
+            ["destroyed"] = true
+        };
         task = board.PresentTransitionAsync(Transition(before, after, IdleAction(), [impact]));
         await Tick(board, 0.151);
         Require(board.GetNode<Node2D>("BattleEffects/Hit").Position == new Vector2(48, 80),
@@ -299,7 +355,8 @@ public partial class AnimationChecks : Node
 
         after["structures"]!.AsArray().Clear();
         task = board.PresentTransitionAsync(Transition(before, after, IdleAction(), [impact]));
-        var actor = Actor(board, aid); var origin = actor.Position;
+        var actor = Actor(board, aid);
+        var origin = actor.Position;
         await Tick(board, 0.075);
         Require(Frame(actor) == 2 && actor.Position == origin,
             "An actually absent structure gives source wind-up toward self, not an invented last-seen structure location");
@@ -314,14 +371,17 @@ public partial class AnimationChecks : Node
             Strike("attack", aid, did)]));
         Require(Frame(Actor(board, aid)) == 2 && board.GetNode<Node2D>("BattleEffects").GetChildCount() == 0,
             "castResolved does not produce a duplicate impact before the actual attack presenter");
-        await Tick(board, 0.151); await Tick(board, 0.421);
+        await Tick(board, 0.151);
+        await Tick(board, 0.421);
         Require(task.IsCompleted && await task, "Delayed cast resolution takes exactly the ordinary strike-plus-hit sequence");
     }
 
     private async Task CheckAnnouncements(BoardView board)
     {
-        var after = Copy(); after["turn"] = 3;
-        var repaints = 0; void Repaint() => repaints++;
+        var after = Copy();
+        after["turn"] = 3;
+        var repaints = 0;
+        void Repaint() => repaints++;
         board.PresentationRepaintRequested += Repaint;
         var task = board.PresentTransitionAsync(Transition(Copy(), after, IdleAction(),
             [new JsonObject { ["type"] = "turnStart", ["player"] = 1, ["turn"] = 3 }, new JsonObject { ["type"] = "gameOver", ["team"] = 1, ["reason"] = "fixture" }]));
@@ -339,7 +399,10 @@ public partial class AnimationChecks : Node
 
     private async Task CheckUnhandledAndVisibility(BoardView board)
     {
-        var before = Copy(); var after = Copy(); var unit = before["units"]![0]!.AsObject(); var id = Int(unit, "id");
+        var before = Copy();
+        var after = Copy();
+        var unit = before["units"]![0]!.AsObject();
+        var id = Int(unit, "id");
         var kinds = new[] { "move", "castBegan", "castResolved", "castCancelled", "forcedMove", "collisionDamage", "statusTick", "regen",
             "unitWithdrawn", "unitEmbarked", "unitDisembarked", "unitRouted", "unitSurrendered", "unitSpawned", "unitRevived", "structureDamaged", "structureDestroyed", "structureRepaired" };
         foreach (var kind in kinds)
@@ -348,7 +411,8 @@ public partial class AnimationChecks : Node
             Require(task.IsCompleted && await task && !board.IsPresenting && board.GetNodeOrNull("BattleEffects") is null,
                 $"Source-unhandled {kind} must not invent a visual event or delay");
         }
-        var defender = before["units"]!.AsArray().Last()!.AsObject(); var did = Int(defender, "id");
+        var defender = before["units"]!.AsArray().Last()!.AsObject();
+        var did = Int(defender, "id");
         var hidden = Transition(before, after, IdleAction(), [Strike("attack", id, did)], new HashSet<int> { id });
         var hiddenTask = board.PresentTransitionAsync(hidden, new HashSet<int> { id });
         Require(hiddenTask.IsCompleted && await hiddenTask && board.RenderedUnitCount == 1,
@@ -362,11 +426,13 @@ public partial class AnimationChecks : Node
 
     private async Task CheckCancellation(BoardView board)
     {
-        var before = Copy(); var after = Copy();
+        var before = Copy();
+        var after = Copy();
         var aid = Int(before["units"]![0]!.AsObject(), "id");
         var did = Int(before["units"]!.AsArray().Last()!.AsObject(), "id");
         after["units"]!.AsArray().RemoveAt(after["units"]!.AsArray().Count - 1);
-        var attack = Strike("attack", aid, did); attack["killed"] = true;
+        var attack = Strike("attack", aid, did);
+        attack["killed"] = true;
         var fatal = Transition(before, after, IdleAction(), [attack, new JsonObject { ["type"] = "death", ["unit"] = did, ["at"] = At(0, 0) }]);
         var interrupted = board.PresentTransitionAsync(fatal);
         await Tick(board, 0.151);
@@ -376,14 +442,21 @@ public partial class AnimationChecks : Node
             && board.GetNodeOrNull($"CanonicalProjection/Unit_{did}") is null,
             "Cancelling mid-impact removes FX and ghost while leaving the committed death settled");
         interrupted = board.PresentTransitionAsync(fatal);
-        await Tick(board, 0.151); await Tick(board, 0.421); await Tick(board, 0.041); await Tick(board, 0.05);
+        await Tick(board, 0.151);
+        await Tick(board, 0.421);
+        await Tick(board, 0.041);
+        await Tick(board, 0.05);
         board.CancelPresentation();
         Require(!await interrupted && board.GetNodeOrNull($"CanonicalProjection/Unit_{did}") is null,
             "Cancelling a partial death cannot leave a shrunken stale actor");
 
         var transition = Transition(Copy(), Copy(), IdleAction(), [new JsonObject { ["type"] = "gameOver", ["reason"] = "fixture", ["team"] = 1 }]);
         var first = board.PresentTransitionAsync(transition);
-        try { await board.PresentTransitionAsync(transition); throw new Exception("Concurrent playback accepted"); }
+        try
+        {
+            await board.PresentTransitionAsync(transition);
+            throw new Exception("Concurrent playback accepted");
+        }
         catch (InvalidOperationException) { Require(board.IsPresenting, "A second presentation cannot replace the active sequence"); }
         board.CancelPresentation();
         Require(!await first, "Explicit cancellation resolves the active presentation");
@@ -391,7 +464,7 @@ public partial class AnimationChecks : Node
         RemoveChild(board);
         Require(!await second && !board.IsPresenting, "ExitTree cancels without waiting for another process frame");
         AddChild(board);
-        board.Configure(assets, level, AuthoredScene.Load(), EnvironmentCatalog.Load(), facing => facing == "west");
+        board.Configure(new(assets, EnvironmentCatalog.Load(), facing => facing == "west", null), level, AuthoredScene.Load());
         board.ConfigureDynamicState(new Empire.Core.State.ReadOnlyContent(packs));
         var reattached = board.PresentTransitionAsync(transition);
         Require(board.IsPresenting && !reattached.IsCompleted, "Explicit reattach and reconfigure restores the presentation lifecycle");
@@ -404,24 +477,45 @@ public partial class AnimationChecks : Node
     private BattlePresentationTransition Transition(JsonObject before, JsonObject after, JsonObject action, IReadOnlyList<JsonObject> events,
         IReadOnlySet<int>? visible = null) =>
         new(++revision, EcmaJson.ToElement(before), EcmaJson.ToElement(action), events.Select(EcmaJson.ToElement).ToArray(), EcmaJson.ToElement(after), false, visible);
-    private async Task Tick(BoardView board, double seconds) { board.AdvancePresentation(seconds); await Task.Yield(); }
+    private async Task Tick(BoardView board, double seconds)
+    {
+        board.AdvancePresentation(seconds);
+        await Task.Yield();
+    }
     private async Task Drain(BoardView board, Task<bool> task)
     {
-        for (var index = 0; !task.IsCompleted && index < 20; index++) await Tick(board, 1);
+        for (var index = 0; !task.IsCompleted && index < 20; index++)
+            await Tick(board, 1);
         Require(task.IsCompleted && await task, "Playback must reach its final state under a bounded deterministic clock");
     }
     private JsonObject Copy() => (JsonObject)initial.DeepClone();
     private static JsonObject At(int x, int y) => new() { ["x"] = x, ["y"] = y };
     private static JsonObject IdleAction() => new() { ["kind"] = "endTurn" };
-    private static JsonObject Strike(string kind, int attacker, int defender) => new() {
-        ["type"] = kind, ["attacker"] = attacker, ["defender"] = defender, ["weapon"] = "c01.border-blade", ["damage"] = 12, ["killed"] = false };
+    private static JsonObject Strike(string kind, int attacker, int defender) => new()
+    {
+        ["type"] = kind,
+        ["attacker"] = attacker,
+        ["defender"] = defender,
+        ["weapon"] = "c01.border-blade",
+        ["damage"] = 12,
+        ["killed"] = false
+    };
     private static int Int(JsonObject value, string key) => value[key]!.GetValue<int>();
     private static Node2D Actor(BoardView board, int id) => board.GetNode<Node2D>($"CanonicalProjection/Unit_{id}");
     private static int Frame(Node2D actor) => actor.GetNode<Sprite2D>("AuthoredSprite").GetMeta("frame").AsInt32();
-    private void Require(bool condition, string message) { assertions++; if (!condition) throw new InvalidOperationException(message); }
+    private void Require(bool condition, string message)
+    {
+        assertions++;
+        if (!condition)
+            throw new InvalidOperationException(message);
+    }
     private void Throws(Action action, string message)
     {
-        try { action(); } catch (InvalidOperationException) { assertions++; return; }
+        try
+        {
+            action();
+        }
+        catch (InvalidOperationException) { assertions++; return; }
         throw new InvalidOperationException(message);
     }
 }

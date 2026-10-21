@@ -41,12 +41,14 @@ public partial class NativeCapture : Node
 
     public override void _Input(InputEvent input)
     {
-        if (input is InputEventKey { Pressed: true, Echo: false, Keycode: Key.F12 }) Capture();
+        if (input is InputEventKey { Pressed: true, Echo: false, Keycode: Key.F12 })
+            Capture();
     }
 
     private async void Capture()
     {
-        if (_capturing || _directory.Length == 0) return;
+        if (_capturing || _directory.Length == 0)
+            return;
         _capturing = true;
         try
         {
@@ -54,7 +56,8 @@ public partial class NativeCapture : Node
             using var image = GetViewport().GetTexture().GetImage();
             var path = Path.Combine(_directory, $"native-{++_sequence:000}.png");
             var error = image.SavePng(path);
-            if (error != Error.Ok) throw new IOException($"Native capture failed: {path}, {error}");
+            if (error != Error.Ok)
+                throw new IOException($"Native capture failed: {path}, {error}");
             GD.Print($"Native viewport captured: {path} ({image.GetWidth()}×{image.GetHeight()}).");
         }
         catch (Exception error) { GD.PushError(error.ToString()); }

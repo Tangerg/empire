@@ -32,9 +32,14 @@ public sealed class AbilityCommands(AbilityRules rules, TacticalCommands command
         {
             var ability = rules.Abilities.Get(id);
             var choices = ability.WeaponChoices(rules, query);
-            if (choices.Count == 0) Add(ability, query, null);
-            else foreach (var weapon in choices)
-                Add(ability, query with { WeaponId = StateJson.Text(weapon, "id") }, weapon);
+            if (choices.Count == 0)
+                Add(ability, query, null);
+            else
+                foreach (var weapon in choices)
+                    Add(ability, query with
+                    {
+                        WeaponId = StateJson.Text(weapon, "id")
+                    }, weapon);
         }
         return options.OrderBy(option => option, Comparer<CommandOption>.Create((left, right) =>
         {
@@ -44,9 +49,11 @@ public sealed class AbilityCommands(AbilityRules rules, TacticalCommands command
 
         void Add(AbilityDefinition ability, AbilityQuery order, JsonObject? weapon)
         {
-            if (!CanUse(ability, order)) return;
+            if (!CanUse(ability, order))
+                return;
             var targets = Targets(ability, order);
-            if (!ability.SelfTargeted && targets.Count == 0) return;
+            if (!ability.SelfTargeted && targets.Count == 0)
+                return;
             var id = weapon is null ? null : StateJson.Text(weapon, "id");
             var range = weapon is null ? null : new CommandRange(
                 StateJson.Number(weapon["minRange"], "minRange"),
@@ -66,19 +73,40 @@ public sealed class AbilityCommands(AbilityRules rules, TacticalCommands command
         var query = new AbilityQuery(state, unit, movement.Destination, movement.Moved, weapon);
         if (!rules.Careers.UnitAbilityIds(unit).Contains(ability.Id))
             throw new IllegalActionException(new ActionRefusal("ability.not_owned", new()
-            { ["unitType"] = StateJson.Text(unit, "type"), ["abilityId"] = ability.Id }));
+            {
+                ["unitType"] = StateJson.Text(unit, "type"),
+                ["abilityId"] = ability.Id
+            }));
         if (!string.IsNullOrEmpty(weapon) && !ability.WeaponChoices(rules, query).Any(choice => StateJson.Text(choice, "id") == weapon))
-            throw new IllegalActionException(new ActionRefusal("ability.weapon_unavailable", new() { ["abilityId"] = ability.Id, ["weaponId"] = weapon }));
-        if (!CanUse(ability, query)) throw new IllegalActionException(new ActionRefusal("ability.unusable", new() { ["abilityId"] = ability.Id }));
+            throw new IllegalActionException(new ActionRefusal("ability.weapon_unavailable", new()
+            {
+                ["abilityId"] = ability.Id,
+                ["weaponId"] = weapon
+            }));
+        if (!CanUse(ability, query))
+            throw new IllegalActionException(new ActionRefusal("ability.unusable", new()
+            {
+                ["abilityId"] = ability.Id
+            }));
         Coord? target = command["target"] is JsonObject location ? TacticalQueries.Position(location) : null;
         if (!ability.SelfTargeted)
         {
-            if (target is null) throw new IllegalActionException(new ActionRefusal("ability.target_required", new() { ["abilityId"] = ability.Id }));
-            if (!Targets(ability, query).Contains(target.Value)) throw new IllegalActionException(new ActionRefusal("ability.target_invalid", new() { ["abilityId"] = ability.Id }));
+            if (target is null)
+                throw new IllegalActionException(new ActionRefusal("ability.target_required", new()
+                {
+                    ["abilityId"] = ability.Id
+                }));
+            if (!Targets(ability, query).Contains(target.Value))
+                throw new IllegalActionException(new ActionRefusal("ability.target_invalid", new()
+                {
+                    ["abilityId"] = ability.Id
+                }));
         }
         var surviving = commands.ApplyMovement(rules.Combat.ResolvePartingShots, state, movement, emit);
-        if (surviving is null) return;
-        if (target is { } at) commands.TurnToward(state, surviving, movement.Destination, at, emit);
+        if (surviving is null)
+            return;
+        if (target is { } at)
+            commands.TurnToward(state, surviving, movement.Destination, at, emit);
         ability.Execute(rules, query, target, emit);
         TacticalCommands.FinishCommand(state, unit);
     }

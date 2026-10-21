@@ -35,60 +35,68 @@ internal static class CrossingRenderer
         var visited = new HashSet<BoardCell>();
         var components = new List<CrossingComponent>();
         for (var y = 0; y < height; y++)
-        for (var x = 0; x < width; x++)
-        {
-            var start = new BoardCell(x, y);
-            if (!Inside(x, y) || !visited.Add(start)) continue;
-            var queue = new List<BoardCell> { start };
-            for (var index = 0; index < queue.Count; index++)
-            foreach (var delta in Directions)
+            for (var x = 0; x < width; x++)
             {
-                var next = new BoardCell(queue[index].X + delta.X, queue[index].Y + delta.Y);
-                if (Inside(next.X, next.Y) && visited.Add(next)) queue.Add(next);
+                var start = new BoardCell(x, y);
+                if (!Inside(x, y) || !visited.Add(start))
+                    continue;
+                var queue = new List<BoardCell> { start };
+                for (var index = 0; index < queue.Count; index++)
+                    foreach (var delta in Directions)
+                    {
+                        var next = new BoardCell(queue[index].X + delta.X, queue[index].Y + delta.Y);
+                        if (Inside(next.X, next.Y) && visited.Add(next))
+                            queue.Add(next);
+                    }
+                queue.Sort((a, b) => a.Y != b.Y ? a.Y.CompareTo(b.Y) : a.X.CompareTo(b.X));
+                var cells = queue.Select(cell => (cell, Directions.Select((delta, bit) =>
+                    Inside(cell.X + delta.X, cell.Y + delta.Y) ? 1 << bit : 0).Aggregate(0, (a, b) => a | b))).ToArray();
+                var runs = new List<CrossingRun>();
+                foreach (var cell in queue)
+                {
+                    var horizontal = route(cell.X - 1, cell.Y) || route(cell.X + 1, cell.Y)
+                        || !(route(cell.X, cell.Y - 1) || route(cell.X, cell.Y + 1))
+                            && (Inside(cell.X - 1, cell.Y) || Inside(cell.X + 1, cell.Y));
+                    if (horizontal ? Inside(cell.X - 1, cell.Y) : Inside(cell.X, cell.Y - 1))
+                        continue;
+                    var length = 1;
+                    while (horizontal ? Inside(cell.X + length, cell.Y) : Inside(cell.X, cell.Y + length))
+                        length++;
+                    runs.Add(new CrossingRun(horizontal, cell, length, horizontal
+                        ? new Vector2((cell.X + length / 2f) * 32, (cell.Y + 0.5f) * 32)
+                        : new Vector2((cell.X + 0.5f) * 32, (cell.Y + length / 2f) * 32)));
+                }
+                components.Add(new CrossingComponent(cells, runs));
             }
-            queue.Sort((a, b) => a.Y != b.Y ? a.Y.CompareTo(b.Y) : a.X.CompareTo(b.X));
-            var cells = queue.Select(cell => (cell, Directions.Select((delta, bit) =>
-                Inside(cell.X + delta.X, cell.Y + delta.Y) ? 1 << bit : 0).Aggregate(0, (a, b) => a | b))).ToArray();
-            var runs = new List<CrossingRun>();
-            foreach (var cell in queue)
-            {
-                var horizontal = route(cell.X - 1, cell.Y) || route(cell.X + 1, cell.Y)
-                    || !(route(cell.X, cell.Y - 1) || route(cell.X, cell.Y + 1))
-                        && (Inside(cell.X - 1, cell.Y) || Inside(cell.X + 1, cell.Y));
-                if (horizontal ? Inside(cell.X - 1, cell.Y) : Inside(cell.X, cell.Y - 1)) continue;
-                var length = 1;
-                while (horizontal ? Inside(cell.X + length, cell.Y) : Inside(cell.X, cell.Y + length)) length++;
-                runs.Add(new CrossingRun(horizontal, cell, length, horizontal
-                    ? new Vector2((cell.X + length / 2f) * 32, (cell.Y + 0.5f) * 32)
-                    : new Vector2((cell.X + 0.5f) * 32, (cell.Y + length / 2f) * 32)));
-            }
-            components.Add(new CrossingComponent(cells, runs));
-        }
         return components;
     }
 
     internal static Vector2? Junction(CrossingComponent component)
     {
-        if (component.Cells.Count != 5 || component.Runs.Count != 2) return null;
+        if (component.Cells.Count != 5 || component.Runs.Count != 2)
+            return null;
         var centers = component.Cells.Where(cell => cell.Mask == 15).ToArray();
-        if (centers.Length != 1) return null;
+        if (centers.Length != 1)
+            return null;
         var center = centers[0].Cell;
         var expected = new[] { (center, 15), (new BoardCell(center.X, center.Y - 1), 4),
             (new BoardCell(center.X + 1, center.Y), 8), (new BoardCell(center.X, center.Y + 1), 1),
             (new BoardCell(center.X - 1, center.Y), 2) };
-        if (!expected.All(cell => component.Cells.Contains(cell))) return null;
+        if (!expected.All(cell => component.Cells.Contains(cell)))
+            return null;
         var pivot = new Vector2((center.X + 0.5f) * 32, (center.Y + 0.5f) * 32);
         foreach (var horizontal in new[] { true, false })
         {
             var run = component.Runs.SingleOrDefault(run => run.Horizontal == horizontal);
             if (run is null || run.Length != 3 || run.Pivot != pivot
-                || run.Start != new BoardCell(center.X - (horizontal ? 1 : 0), center.Y - (horizontal ? 0 : 1))) return null;
+                || run.Start != new BoardCell(center.X - (horizontal ? 1 : 0), center.Y - (horizontal ? 0 : 1)))
+                return null;
         }
         return pivot;
     }
 
     internal static void Add(Node2D parent, CrossingManifest manifest, EnvironmentCatalog environment,
-        Func<string, Texture2D> texture, IReadOnlyList<CrossingComponent> components, List<string> diagnostics, CandidateShadowCache? shadows = null)
+        Func<string, Texture2D> texture, IReadOnlyList<CrossingComponent> components, List<string> diagnostics, ShadowCache? shadows = null)
     {
         if (manifest.VerticalLegacyIds.Length == 0)
             throw new InvalidOperationException("Vertical crossing source choices are not exported.");
@@ -109,7 +117,8 @@ internal static class CrossingRenderer
                         var verticalSource = Registered(manifest.Vertical, "vertical", texture, manifest.Junction.Vertical.Cutouts);
                         node.AddChild(horizontalSource);
                         node.AddChild(verticalSource);
-                        if (shadows is not null) node.AddChild(CandidateCrossingLighting.Compose(manifest, horizontalSource, verticalSource, shadows));
+                        if (shadows is not null)
+                            node.AddChild(CrossingLighting.Compose(manifest, horizontalSource, verticalSource, shadows));
                         parent.AddChild(node);
                     }
                     catch { node.Free(); throw; }
@@ -122,7 +131,8 @@ internal static class CrossingRenderer
                 try
                 {
                     Sprite2D sprite;
-                    if (run.Horizontal) sprite = Registered(manifest.Horizontal, "horizontal", texture);
+                    if (run.Horizontal)
+                        sprite = Registered(manifest.Horizontal, "horizontal", texture);
                     else
                     {
                         var id = Vertical(run);
@@ -155,11 +165,18 @@ internal static class CrossingRenderer
         var logicalSize = size * (float)source.LogicalPerSourcePixel;
         var anchor = foot * (float)source.LogicalPerSourcePixel;
         var scale = logicalSize / image.GetSize();
-        var sprite = new Sprite2D { Texture = image, Centered = false, Scale = scale,
-            Offset = -anchor / scale, TextureFilter = CanvasItem.TextureFilterEnum.Nearest };
+        var sprite = new Sprite2D
+        {
+            Texture = image,
+            Centered = false,
+            Scale = scale,
+            Offset = -anchor / scale,
+            TextureFilter = CanvasItem.TextureFilterEnum.Nearest
+        };
         if (cuts is not null)
         {
-            if (cuts.Length != 2 || cuts.Any(cut => cut.Length != 4)) throw new InvalidOperationException("Junction requires two registered openings per axis.");
+            if (cuts.Length != 2 || cuts.Any(cut => cut.Length != 4))
+                throw new InvalidOperationException("Junction requires two registered openings per axis.");
             var shader = new ShaderMaterial { Shader = new Shader { Code = CutoutShader } };
             shader.SetShaderParameter("logical_size", logicalSize);
             shader.SetShaderParameter("logical_anchor", anchor);
@@ -181,10 +198,12 @@ internal static class CrossingRenderer
             var size = RasterResources.Pair(source.SourceSize, "junction canvas") * (float)source.LogicalPerSourcePixel;
             var anchor = RasterResources.Pair(source.SourceFoot, "junction anchor") * (float)source.LogicalPerSourcePixel;
             var ports = new[] { Vector2.Zero, new Vector2(0, -48), new Vector2(48, 0), new Vector2(0, 48), new Vector2(-48, 0) };
-            if (windows.Length != 2) throw new InvalidOperationException("Junction requires two rail windows per axis.");
+            if (windows.Length != 2)
+                throw new InvalidOperationException("Junction requires two rail windows per axis.");
             foreach (var window in windows)
             {
-                if (window.Length != 4 || window.Any(value => !double.IsFinite(value))) throw new InvalidOperationException("Invalid junction window.");
+                if (window.Length != 4 || window.Any(value => !double.IsFinite(value)))
+                    throw new InvalidOperationException("Invalid junction window.");
                 var rect = new Rect2((float)window[0], (float)window[1], (float)window[2], (float)window[3]);
                 if (rect.Size.X <= 0 || rect.Size.Y <= 0 || rect.Position.X < -anchor.X || rect.Position.Y < -anchor.Y
                     || rect.End.X > size.X - anchor.X || rect.End.Y > size.Y - anchor.Y
@@ -192,8 +211,10 @@ internal static class CrossingRenderer
                     throw new InvalidOperationException("Junction windows must preserve source canvas, center and outer ports.");
             }
         }
-        var north = junction.Horizontal.Cutouts[0]; var south = junction.Horizontal.Cutouts[1];
-        var west = junction.Vertical.Cutouts[0]; var east = junction.Vertical.Cutouts[1];
+        var north = junction.Horizontal.Cutouts[0];
+        var south = junction.Horizontal.Cutouts[1];
+        var west = junction.Vertical.Cutouts[0];
+        var east = junction.Vertical.Cutouts[1];
         if (north[0] != south[0] || north[2] != south[2] || north[0] >= 0 || north[0] + north[2] <= 0
             || north[1] + north[3] >= 0 || south[1] <= 0 || west[0] + west[2] >= 0 || east[0] <= 0
             || west[1] != east[1] || west[3] != east[3] || west[1] != north[1] + north[3]

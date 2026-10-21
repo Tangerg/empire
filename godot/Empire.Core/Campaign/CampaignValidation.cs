@@ -11,7 +11,8 @@ public static class CampaignValidation
     {
         if (!NumberEquals(definition["schema"], 1))
             throw new CampaignInvariantException($"unsupported campaign schema {Display(definition, "schema")}");
-        if (!Named(definition["id"])) throw new CampaignInvariantException("campaign id cannot be empty");
+        if (!Named(definition["id"]))
+            throw new CampaignInvariantException("campaign id cannot be empty");
         if (!Integer(definition["version"]) || Number(definition["version"]) < 1)
             throw new CampaignInvariantException("campaign version must be positive");
         foreach (var (id, version) in Object(definition["contentPacks"], "contentPacks"))
@@ -21,9 +22,11 @@ public static class CampaignValidation
         foreach (var value in Array(definition["nodes"], "nodes"))
         {
             var node = Object(value, "campaign node");
-            if (!Named(node["id"])) throw new CampaignInvariantException("campaign node id cannot be empty");
+            if (!Named(node["id"]))
+                throw new CampaignInvariantException("campaign node id cannot be empty");
             var id = Text(node["id"]);
-            if (!nodes.Add(id)) throw new CampaignInvariantException($"duplicate campaign node \"{id}\"");
+            if (!nodes.Add(id))
+                throw new CampaignInvariantException($"duplicate campaign node \"{id}\"");
         }
         if (!nodes.Contains(Text(definition["start"])))
             throw new CampaignInvariantException($"unknown campaign start node \"{Display(definition, "start")}\"");
@@ -173,7 +176,8 @@ public static class CampaignValidation
         var result = new JsonArray();
         var seen = new HashSet<string>(StringComparer.Ordinal);
         foreach (var value in OptionalArray(values, "campaign names"))
-            if (seen.Add(Text(value))) result.Add(value!.DeepClone());
+            if (seen.Add(Text(value)))
+                result.Add(value!.DeepClone());
         return result;
     }
 
@@ -199,8 +203,10 @@ public static class CampaignValidation
     private static bool TryNumber(JsonNode? value, out double number)
     {
         number = 0;
-        if (value is not JsonValue scalar) return false;
-        if (scalar.TryGetValue<double>(out number)) return double.IsFinite(number);
+        if (value is not JsonValue scalar)
+            return false;
+        if (scalar.TryGetValue<double>(out number))
+            return double.IsFinite(number);
         if (scalar.TryGetValue<float>(out var single))
         {
             number = single;

@@ -71,14 +71,16 @@ public sealed class OddRowHexGrid : ITacticalGrid
     public IReadOnlyList<Coord> Within(Coord at, int min, int max)
     {
         var result = new List<Coord>();
-        if (max < 0) return result;
+        if (max < 0)
+            return result;
         var origin = ToCube(at);
         for (var dq = -(long)max; dq <= max; dq++)
         {
             for (var dr = Math.Max(-(long)max, -dq - max); dr <= Math.Min(max, -dq + max); dr++)
             {
                 var steps = Math.Max(Math.Abs(dq), Math.Max(Math.Abs(dr), Math.Abs(-dq - dr)));
-                if (steps < min || steps > max) continue;
+                if (steps < min || steps > max)
+                    continue;
                 result.Add(FromCube(new Cube(origin.Q + dq, origin.R + dr, origin.S - dq - dr)));
             }
         }
@@ -88,7 +90,8 @@ public sealed class OddRowHexGrid : ITacticalGrid
     public IReadOnlyList<Coord> Line(Coord from, Coord to)
     {
         var steps = Distance(from, to);
-        if (steps == 0) return new[] { from };
+        if (steps == 0)
+            return new[] { from };
         var start = ToCube(from);
         var end = ToCube(to);
         var result = new List<Coord>();
@@ -154,9 +157,12 @@ public sealed class OddRowHexGrid : ITacticalGrid
         var dq = Math.Abs(rq - q);
         var dr = Math.Abs(rr - r);
         var ds = Math.Abs(rs - s);
-        if (dq > dr && dq > ds) rq = -rr - rs;
-        else if (dr > ds) rr = -rq - rs;
-        else rs = -rq - rr;
+        if (dq > dr && dq > ds)
+            rq = -rr - rs;
+        else if (dr > ds)
+            rr = -rq - rs;
+        else
+            rs = -rq - rr;
         return new Cube(rq, rr, rs);
     }
 }

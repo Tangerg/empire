@@ -2,7 +2,7 @@ using System.Text.Json.Nodes;
 using Empire.Core;
 using Empire.Core.Engine;
 using Empire.Core.Determinism;
-var engine = new GrayFlagEngine(JsonNode.Parse(File.ReadAllText("godot/data/content-packs.json"))!.AsArray());
+var engine = new BattleEngine(JsonNode.Parse(File.ReadAllText("godot/data/content-packs.json"))!.AsArray());
 var count = 0;
 foreach (var item in JsonNode.Parse(File.ReadAllText(args[0]))!.AsArray().OfType<JsonObject>())
 {
@@ -10,7 +10,11 @@ foreach (var item in JsonNode.Parse(File.ReadAllText(args[0]))!.AsArray().OfType
     var battle = engine.LoadSavedBattle(engine.SaveBattle(before));
     var events = new JsonArray();
     ActionRefusal? refusal = null;
-    try { foreach (var value in battle.Dispatch(item["action"]!.AsObject()).Events) events.Add(value.DeepClone()); }
+    try
+    {
+        foreach (var value in battle.Dispatch(item["action"]!.AsObject()).Events)
+            events.Add(value.DeepClone());
+    }
     catch (IllegalActionException error) { refusal = error.Refusal; }
     var expected = item["name"]!.GetValue<string>() switch
     {
@@ -32,8 +36,10 @@ foreach (var item in JsonNode.Parse(File.ReadAllText(args[0]))!.AsArray().OfType
     if ((item["error"] is null) != (expected is null) || refusal?.Code != expected?.Code ||
         (refusal is not null && !EcmaJson.DeepEquals(EcmaJson.Parse(refusal.Details.GetRawText()), EcmaJson.Parse(expected!.Details.GetRawText()))))
         throw new Exception($"{item["name"]}: semantic refusal differs");
-    if (StateDigest.Hash(events) != StateDigest.Hash(item["events"]!)) throw new Exception($"{item["name"]}: events differ");
-    if (StateDigest.Hash(battle.Snapshot()) != StateDigest.Hash(item["after"]!)) throw new Exception($"{item["name"]}: state differs");
+    if (StateDigest.Hash(events) != StateDigest.Hash(item["events"]!))
+        throw new Exception($"{item["name"]}: events differ");
+    if (StateDigest.Hash(battle.Snapshot()) != StateDigest.Hash(item["after"]!))
+        throw new Exception($"{item["name"]}: state differs");
     count++;
 }
 Console.WriteLine($"PASS {count} source recruitment action/event/state cases with semantic refusals");

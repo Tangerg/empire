@@ -34,7 +34,7 @@ Run the existing source oracle and repeated resource-exit gates too:
 `bash tools/godot/lighting-checks/run.sh`
 `bash tools/godot/lighting-checks/check-lifetimes.sh [absolute-godot-project-directory]`
 
-Timing comparisons must use frozen identical trees except CandidateShadowRaster.cs, the
+Timing comparisons must use frozen identical trees except ShadowRaster.cs, the
 same official toolchain/build mode, and sequential uncontented processes. New board
 features change the workload and must not be credited as raster speedups. A deliberately
 perturbed convolution was rejected by the bitwise guard before benchmark execution.
@@ -43,7 +43,7 @@ perturbed convolution was rejected by the bitwise guard before benchmark executi
 
 Three alternating baseline/optimized fresh-process pairs ran with other local native
 suites paused. Both used the same frozen GrayFlag source/art snapshot, Debug build and
-Godot 4.6.3 Mono toolchain; only `CandidateShadowRaster.cs` changed.
+Godot 4.6.3 Mono toolchain; only `ShadowRaster.cs` changed.
 
 - First board baseline: 5442, 5392, 4936 ms; optimized: 4015, 4017, 3778 ms.
   Each paired run improved by 23.5–26.2%. These are load/composition times, not frame rates.
@@ -61,9 +61,9 @@ Godot 4.6.3 Mono toolchain; only `CandidateShadowRaster.cs` changed.
 Baseline raster SHA256:
 `8cb8fab5a5d2032d26bb1f88df631a4435f74b5a0b8930322f33a3cf8ea1186f`.
 The frozen composition/cache inputs were unchanged between paired launches:
-`CandidateFilterComposition.cs` SHA256
+`LayerFilterComposition.cs` SHA256
 `f327e0950bfa7c811de11114fe0843a9011760acdfa5d86ed20d06195086e052`, and
-`CandidateSpriteShadows.cs` SHA256
+`SpriteShadows.cs` SHA256
 `76952aaae4062ea47fb0ae7f43264314d3bd5f94b6f9566090ce08086f5d31c9`.
 
 Initial contended diagnostic profiling identified 81 shadow bakes covering 5,011,409
@@ -104,7 +104,7 @@ is not evidence of exercising the scalar path.
 
 ### Exactness and ownership
 
-- `CandidateRasterPixels` takes a temporary RGBA8 byte snapshot once per input image.
+- `RasterPixels` takes a temporary RGBA8 byte snapshot once per input image.
   Other formats retain native `GetPixel`; no source image is converted or mutated.
   Writes preserve Godot's double-precision multiply by 255.0, clamp and truncate,
   rather than float multiplication or rounding. This matches the official

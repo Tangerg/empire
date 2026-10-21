@@ -32,7 +32,8 @@ static class InstallationContractChecks
                 new JsonObject { ["unit"] = "c01.swordsman", ["owner"] = 2, ["x"] = 4, ["y"] = 4 });
             var objectives = new JsonArray(new JsonObject { ["id"] = "route", ["type"] = "routEnemies", ["label"] = "route" });
             level["victory"] = objectives.DeepClone();
-            foreach (var player in level["players"]!.AsArray().OfType<JsonObject>()) player["objectives"] = objectives.DeepClone();
+            foreach (var player in level["players"]!.AsArray().OfType<JsonObject>())
+                player["objectives"] = objectives.DeepClone();
             level["rules"]!["grid"] = gridId;
             level["rules"]!["fog"] = true;
             level["rules"]!["zoneOfControl"] = false;
@@ -50,7 +51,11 @@ static class InstallationContractChecks
             check(ReferenceEquals(space.Content, catalog), $"{gridId}: spatial content identity");
             check(ReferenceEquals(space.Grids, engine.Grids) && !ReferenceEquals(space.Grids, displaced), $"{gridId}: replacement captured before spatial installation");
             displaced!.Replace(new Square4Grid());
-            try { engine.Grids.Replace(new DiagonalGrid(gridId)); throw new Exception("resolved grid registry remained writable"); }
+            try
+            {
+                engine.Grids.Replace(new DiagonalGrid(gridId));
+                throw new Exception("resolved grid registry remained writable");
+            }
             catch (DomainInvariantException error)
             {
                 check(error.Message == "tactical grid registry is sealed after composition", $"{gridId}: resolved registry sealing");
@@ -73,7 +78,8 @@ static class InstallationContractChecks
             }
             var move = new JsonObject
             {
-                ["kind"] = "command", ["unit"] = actor["id"]!.DeepClone(),
+                ["kind"] = "command",
+                ["unit"] = actor["id"]!.DeepClone(),
                 ["path"] = new JsonArray(new JsonObject { ["x"] = 1, ["y"] = 1 }, new JsonObject { ["x"] = 2, ["y"] = 2 }),
                 ["command"] = new JsonObject { ["ability"] = "wait" },
             };
@@ -101,7 +107,11 @@ static class InstallationContractChecks
                 () => retained!.Require(Keys.Resources),
             })
             {
-                try { misuse(); throw new Exception("retained engine context remained usable"); }
+                try
+                {
+                    misuse();
+                    throw new Exception("retained engine context remained usable");
+                }
                 catch (DomainInvariantException error) { check(error.Message.EndsWith("installation context is closed", StringComparison.Ordinal), "closed engine context fails explicitly"); }
             }
             equal(engine.SaveBattle(initial, "2026-10-21T00:00:00.000Z")["ruleset"], engine.RulesetManifest, "retained context cannot corrupt persisted composition identity");

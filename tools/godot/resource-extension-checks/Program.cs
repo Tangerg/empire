@@ -22,16 +22,29 @@ void Assert(string name, bool condition) => Check(name, JsonValue.Create(conditi
 JsonNode? Node(object? value) => value is JsonNode node ? node.DeepClone() : JsonSerializer.SerializeToNode(value);
 JsonObject Observe(Func<object?> action)
 {
-    try { return new() { ["result"] = Node(action()), ["error"] = null }; }
+    try
+    {
+        return new()
+        {
+            ["result"] = Node(action()),
+            ["error"] = null
+        };
+    }
     catch (DomainInvariantException error)
     {
-        return new() { ["result"] = null, ["error"] = new JsonObject { ["kind"] = "DomainInvariant", ["message"] = error.Message } };
+        return new()
+        {
+            ["result"] = null,
+            ["error"] = new JsonObject { ["kind"] = "DomainInvariant", ["message"] = error.Message }
+        };
     }
 }
 string FixtureText(JsonObject value, string key) => StateJson.Text(value, key);
 double FixtureNumber(JsonNode? value) => value is JsonValue item && item.TryGetValue<string>(out var symbolic) ? symbolic switch
 {
-    "NaN" => double.NaN, "Infinity" => double.PositiveInfinity, "-Infinity" => double.NegativeInfinity,
+    "NaN" => double.NaN,
+    "Infinity" => double.PositiveInfinity,
+    "-Infinity" => double.NegativeInfinity,
     _ => throw new Exception($"Unknown fixture number {symbolic}"),
 } : StateJson.Number(value, "number");
 BattleResources Policies(List<string> trace)
@@ -41,7 +54,8 @@ BattleResources Policies(List<string> trace)
         adapters.Register(new(id, "squad", integer, weight, subject =>
         {
             trace.Add("account:" + id);
-            if (subject.Holder["stores"]?[id] is not JsonObject state) return null;
+            if (subject.Holder["stores"]?[id] is not JsonObject state)
+                return null;
             return new ResourceAccount(() =>
             {
                 trace.Add("read:" + id);
@@ -56,7 +70,12 @@ BattleResources Policies(List<string> trace)
     }, subject =>
     {
         trace.Add("ref:squad");
-        return new() { ["kind"] = "squad", ["id"] = subject.Holder["code"]!.DeepClone(), ["slot"] = subject.Holder["location"]!.DeepClone() };
+        return new()
+        {
+            ["kind"] = "squad",
+            ["id"] = subject.Holder["code"]!.DeepClone(),
+            ["slot"] = subject.Holder["location"]!.DeepClone()
+        };
     }));
     return new(adapters, subjects);
 }
@@ -85,11 +104,17 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
     if (data["swapOnAccount"]?.GetValue<bool>() == true)
     {
         var adapter = resources.Adapters.Get(FixtureText(data, "resource"));
-        resources.Adapters.Replace(adapter with { Account = holder =>
+        resources.Adapters.Replace(adapter with
         {
-            resources.Adapters.Replace(adapter with { Integer = false });
+            Account = holder =>
+        {
+            resources.Adapters.Replace(adapter with
+            {
+                Integer = false
+            });
             return adapter.Account(holder);
-        } });
+        }
+        });
     }
     var result = Observe(() =>
     {
@@ -98,27 +123,47 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
         {
             case "inspect":
                 var snapshot = resources.Inspect(subject, resource);
-                return new { current = snapshot.Current, capacity = snapshot.Capacity };
-            case "balance": return resources.Balance(subject, resource);
-            case "has": return resources.HasAccount(subject, resource);
-            case "canSpend": return resources.CanSpend(subject, resource, FixtureNumber(data["requested"]));
-            case "credit": return resources.Credit(subject, resource, FixtureNumber(data["requested"]));
-            case "spend": return resources.Spend(subject, resource, FixtureNumber(data["requested"]));
-            case "afford": return resources.CanAfford(subject, data["costs"]!.AsArray());
-            case "spendAll": return resources.SpendAll(subject, data["costs"]!.AsArray()).Select(amount => new { resource = amount.Resource, amount = amount.Value }).ToArray();
-            case "value": return resources.PlanningValue(data["costs"]!.AsArray());
-            case "announce": resources.Announce(subject, resource, FixtureNumber(data["amount"]), value => events.Add(value)); return null;
-            case "ref": return resources.RefOf(subject);
-            case "subject": return resources.RefOf(resources.SubjectFor(Context(data["context"]!.AsObject()), Transaction(data["transaction"]!.AsObject())));
-            case "transactions": return resources.CanAffordTransactions(Context(data["context"]!.AsObject()), data["transactions"]!.AsArray().OfType<JsonObject>().Select(Transaction));
-            case "accounts": return resources.Accounts(subject).Select(account => new { resource = account.Resource, current = account.Current, capacity = account.Capacity }).ToArray();
-            default: throw new Exception("Unknown fixture operation");
+                return new
+                {
+                    current = snapshot.Current,
+                    capacity = snapshot.Capacity
+                };
+            case "balance":
+                return resources.Balance(subject, resource);
+            case "has":
+                return resources.HasAccount(subject, resource);
+            case "canSpend":
+                return resources.CanSpend(subject, resource, FixtureNumber(data["requested"]));
+            case "credit":
+                return resources.Credit(subject, resource, FixtureNumber(data["requested"]));
+            case "spend":
+                return resources.Spend(subject, resource, FixtureNumber(data["requested"]));
+            case "afford":
+                return resources.CanAfford(subject, data["costs"]!.AsArray());
+            case "spendAll":
+                return resources.SpendAll(subject, data["costs"]!.AsArray()).Select(amount => new { resource = amount.Resource, amount = amount.Value }).ToArray();
+            case "value":
+                return resources.PlanningValue(data["costs"]!.AsArray());
+            case "announce":
+                resources.Announce(subject, resource, FixtureNumber(data["amount"]), value => events.Add(value));
+                return null;
+            case "ref":
+                return resources.RefOf(subject);
+            case "subject":
+                return resources.RefOf(resources.SubjectFor(Context(data["context"]!.AsObject()), Transaction(data["transaction"]!.AsObject())));
+            case "transactions":
+                return resources.CanAffordTransactions(Context(data["context"]!.AsObject()), data["transactions"]!.AsArray().OfType<JsonObject>().Select(Transaction));
+            case "accounts":
+                return resources.Accounts(subject).Select(account => new { resource = account.Resource, current = account.Current, capacity = account.Capacity }).ToArray();
+            default:
+                throw new Exception("Unknown fixture operation");
         }
     });
     var expectedResult = FixtureText(data, "operation") == "accounts"
         ? new JsonArray(item["result"]!.AsArray().OfType<JsonObject>().Select(account => (JsonNode?)new JsonObject
         {
-            ["resource"] = account["resource"]!.DeepClone(), ["current"] = account["current"]?.DeepClone(),
+            ["resource"] = account["resource"]!.DeepClone(),
+            ["current"] = account["current"]?.DeepClone(),
             ["capacity"] = account["capacity"]?.DeepClone(),
         }).ToArray()) : item["result"];
     Check(name + " result", result["result"], expectedResult);
@@ -140,30 +185,52 @@ foreach (var item in input["registries"]!.AsArray().OfType<JsonObject>())
             return new ResourceAdapterRegistry().Register(Dummy(EcmaJson.Parse(name[12..])!.GetValue<string>())).Keys();
         switch (name)
         {
-            case "default adapter keys": return DefaultResourcePolicies.Adapters.Keys();
-            case "default subject keys": return DefaultResourcePolicies.Subjects.Keys();
-            case "adapter duplicate": return new ResourceAdapterRegistry().Register(Dummy("a")).Register(Dummy("a"));
-            case "subject duplicate": return new ResourceSubjectResolverRegistry().Register(Resolver("a")).Register(Resolver("a"));
-            case "adapter unknown": return new ResourceAdapterRegistry().Get("missing");
-            case "subject unknown": return new ResourceSubjectResolverRegistry().Get("missing");
-            case "adapter ask missing": return new ResourceAdapterRegistry().TryGet("missing");
-            case "subject ask missing": return new ResourceSubjectResolverRegistry().TryGet("missing");
-            case "blank replace permitted": return new ResourceAdapterRegistry().Replace(Dummy(" ")).Keys();
-            case "blank clone rejected": return new ResourceAdapterRegistry().Replace(Dummy(" ")).Clone();
-            case "blank register precedes sealed rejection": return new ResourceAdapterRegistry().Seal().Register(Dummy(" "));
-            case "sealed adapter register": return new ResourceAdapterRegistry().Seal().Register(Dummy("a"));
-            case "sealed adapter replace": return new ResourceAdapterRegistry().Seal().Replace(Dummy("a"));
-            case "sealed subject register": return new ResourceSubjectResolverRegistry().Seal().Register(Resolver("a"));
-            case "sealed subject replace": return new ResourceSubjectResolverRegistry().Seal().Replace(Resolver("a"));
-            case "adapter replace ordering": return new ResourceAdapterRegistry().Register(Dummy("b")).Register(Dummy("a")).Replace(Dummy("b")).Replace(Dummy("c")).Keys();
-            case "subject replace ordering": return new ResourceSubjectResolverRegistry().Register(Resolver("b")).Register(Resolver("a")).Replace(Resolver("b")).Replace(Resolver("c")).Keys();
+            case "default adapter keys":
+                return DefaultResourcePolicies.Adapters.Keys();
+            case "default subject keys":
+                return DefaultResourcePolicies.Subjects.Keys();
+            case "adapter duplicate":
+                return new ResourceAdapterRegistry().Register(Dummy("a")).Register(Dummy("a"));
+            case "subject duplicate":
+                return new ResourceSubjectResolverRegistry().Register(Resolver("a")).Register(Resolver("a"));
+            case "adapter unknown":
+                return new ResourceAdapterRegistry().Get("missing");
+            case "subject unknown":
+                return new ResourceSubjectResolverRegistry().Get("missing");
+            case "adapter ask missing":
+                return new ResourceAdapterRegistry().TryGet("missing");
+            case "subject ask missing":
+                return new ResourceSubjectResolverRegistry().TryGet("missing");
+            case "blank replace permitted":
+                return new ResourceAdapterRegistry().Replace(Dummy(" ")).Keys();
+            case "blank clone rejected":
+                return new ResourceAdapterRegistry().Replace(Dummy(" ")).Clone();
+            case "blank register precedes sealed rejection":
+                return new ResourceAdapterRegistry().Seal().Register(Dummy(" "));
+            case "sealed adapter register":
+                return new ResourceAdapterRegistry().Seal().Register(Dummy("a"));
+            case "sealed adapter replace":
+                return new ResourceAdapterRegistry().Seal().Replace(Dummy("a"));
+            case "sealed subject register":
+                return new ResourceSubjectResolverRegistry().Seal().Register(Resolver("a"));
+            case "sealed subject replace":
+                return new ResourceSubjectResolverRegistry().Seal().Replace(Resolver("a"));
+            case "adapter replace ordering":
+                return new ResourceAdapterRegistry().Register(Dummy("b")).Register(Dummy("a")).Replace(Dummy("b")).Replace(Dummy("c")).Keys();
+            case "subject replace ordering":
+                return new ResourceSubjectResolverRegistry().Register(Resolver("b")).Register(Resolver("a")).Replace(Resolver("b")).Replace(Resolver("c")).Keys();
             case "detached keys and all":
                 var registry = new ResourceAdapterRegistry().Register(Dummy("a"));
                 ((string[])registry.Keys())[0] = "outside";
                 ((ResourceAdapter[])registry.All())[0] = Dummy("outside");
-                return new { keys = registry.Keys(), size = registry.Count, has = registry.Has("a") };
+                return new
+                {
+                    keys = registry.Keys(),
+                    size = registry.Count,
+                    has = registry.Has("a")
+                };
             case "resource clone isolation":
-                var original = new BattleResources().Seal().Seal();
+                var original = new BattleResources(new BattleResourceRules(DefaultResourcePolicies.Adapters.Clone(), DefaultResourcePolicies.Subjects.Clone())).Seal().Seal();
                 var cloned = original.Clone();
                 var adapterIdentity = ReferenceEquals(cloned.Adapters.Get("funds"), original.Adapters.Get("funds"));
                 var resolverIdentity = ReferenceEquals(cloned.Subjects.Get("player"), original.Subjects.Get("player"));
@@ -172,28 +239,44 @@ foreach (var item in input["registries"]!.AsArray().OfType<JsonObject>())
                 return new
                 {
                     originalSealed = original.Adapters.IsSealed && original.Subjects.IsSealed,
-                    cloneSealed = cloned.Adapters.IsSealed || cloned.Subjects.IsSealed, adapterIdentity, resolverIdentity,
-                    originalAdapters = original.Adapters.Keys(), clonedAdapters = cloned.Adapters.Keys(),
-                    originalSubjects = original.Subjects.Keys(), clonedSubjects = cloned.Subjects.Keys(),
-                    originalFundsWeight = original.Adapters.Get("funds").AiWeight, clonedFundsWeight = cloned.Adapters.Get("funds").AiWeight,
+                    cloneSealed = cloned.Adapters.IsSealed || cloned.Subjects.IsSealed,
+                    adapterIdentity,
+                    resolverIdentity,
+                    originalAdapters = original.Adapters.Keys(),
+                    clonedAdapters = cloned.Adapters.Keys(),
+                    originalSubjects = original.Subjects.Keys(),
+                    clonedSubjects = cloned.Subjects.Keys(),
+                    originalFundsWeight = original.Adapters.Get("funds").AiWeight,
+                    clonedFundsWeight = cloned.Adapters.Get("funds").AiWeight,
                 };
             case "default resource independence":
-                var left = new BattleResources();
-                var right = new BattleResources();
+                var left = new BattleResources(new BattleResourceRules(DefaultResourcePolicies.Adapters.Clone(), DefaultResourcePolicies.Subjects.Clone()));
+                var right = new BattleResources(new BattleResourceRules(DefaultResourcePolicies.Adapters.Clone(), DefaultResourcePolicies.Subjects.Clone()));
                 left.Adapters.Replace(Dummy("funds"));
-                return new { leftWeight = left.Adapters.Get("funds").AiWeight, rightWeight = right.Adapters.Get("funds").AiWeight, defaultWeight = DefaultResourcePolicies.Adapters.Get("funds").AiWeight };
-            default: throw new Exception($"Unknown registry fixture {name}");
+                return new
+                {
+                    leftWeight = left.Adapters.Get("funds").AiWeight,
+                    rightWeight = right.Adapters.Get("funds").AiWeight,
+                    defaultWeight = DefaultResourcePolicies.Adapters.Get("funds").AiWeight
+                };
+            default:
+                throw new Exception($"Unknown registry fixture {name}");
         }
     });
     var expectedResult = name switch
     {
         "resource clone isolation" => Node(new
         {
-            originalSealed = true, cloneSealed = false, adapterIdentity = true, resolverIdentity = true,
+            originalSealed = true,
+            cloneSealed = false,
+            adapterIdentity = true,
+            resolverIdentity = true,
             originalAdapters = new[] { "funds", "command_points", "momentum", "weapon_uses" },
             clonedAdapters = new[] { "funds", "command_points", "momentum", "weapon_uses", "new" },
-            originalSubjects = new[] { "player", "unit", "weapon" }, clonedSubjects = new[] { "player", "unit", "weapon", "new" },
-            originalFundsWeight = 1d, clonedFundsWeight = 3d,
+            originalSubjects = new[] { "player", "unit", "weapon" },
+            clonedSubjects = new[] { "player", "unit", "weapon", "new" },
+            originalFundsWeight = 1d,
+            clonedFundsWeight = 3d,
         }),
         "default resource independence" => Node(new { leftWeight = 3d, rightWeight = 1d, defaultWeight = 1d }),
         _ => item["result"],
@@ -213,9 +296,10 @@ var actions = new BattleActionRegistry().Register("charge", (draft, action, emit
     var subject = isolatedResources.SubjectFor(context, new("squad", "supply", 2));
     var amount = isolatedResources.Spend(subject, "supply", 2);
     isolatedResources.Announce(subject, "supply", -amount, emit);
-    if (action["fail"]?.GetValue<bool>() == true) throw new DomainInvariantException("reject after resource write");
+    if (action["fail"]?.GetValue<bool>() == true)
+        throw new DomainInvariantException("reject after resource write");
 });
-var battle = new Battle(initial, actions);
+var battle = new Battle(new BattleTransactionRules(actions, null), initial);
 var before = battle.Snapshot();
 var hash = battle.StateHash;
 var refused = Observe(() => battle.Dispatch(new JsonObject { ["kind"] = "charge", ["fail"] = true }));

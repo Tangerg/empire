@@ -25,14 +25,14 @@ mutants = [(name, 'Resources', 'EmpireResourcesRoot', 'BattleResources.cs', befo
            for name, before, after, expected in resource_mutants] + [
     ('resolved-readiness', 'Combat', 'EmpireCombatRoot', 'CombatForecasts.cs',
      'return resources.CanAffordTransactions(context, Transactions(weapon["resourceRequirements"]!.AsArray()))',
-     'return new BattleResources().CanAffordTransactions(context, Transactions(weapon["resourceRequirements"]!.AsArray()))',
+     'return new BattleResources(new BattleResourceRules(DefaultResourcePolicies.Adapters.Clone(), DefaultResourcePolicies.Subjects.Clone())).CanAffordTransactions(context, Transactions(weapon["resourceRequirements"]!.AsArray()))',
      'custom squad fractional ready result'),
     ('resolved-consumption', 'Combat', 'EmpireCombatRoot', 'CombatForecasts.cs',
      'var subject = resources.SubjectFor(context, cost);',
      'var subject = new BattleResources.Subject("player", context.Player!);',
      'custom squad fractional consume error'),
     ('injected-support-resource', 'Orders', 'EmpireOrdersRoot', 'SupportOrders.cs',
-     'resources = rules.Resources;', 'resources = new BattleResources();',
+     'resources = rules.Resources;', 'resources = new BattleResources(new BattleResourceRules(DefaultResourcePolicies.Adapters.Clone(), DefaultResourcePolicies.Subjects.Clone()));',
      'supplied resource tactic tactic-options menus'),
 ]
 for name, directory, property_name, filename, before, after, expected in mutants:

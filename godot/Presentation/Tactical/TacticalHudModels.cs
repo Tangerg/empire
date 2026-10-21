@@ -4,7 +4,10 @@ using System.Text.Json;
 
 namespace Empire.Presentation.Tactical;
 
-public enum TacticalHudIntentKind { Command, Tactic, Recruit, DeployPick, Disembark, Back, Action }
+public enum TacticalHudIntentKind
+{
+    Command, Tactic, Recruit, DeployPick, Disembark, Back, Action
+}
 public sealed record TacticalHudIntent(TacticalStamp Stamp, TacticalHudIntentKind Kind, string? Key = null,
     int? Unit = null, JsonElement? Action = null);
 public sealed record TacticalHudRow(string Key, string Label, string Hint = "", bool Enabled = true,

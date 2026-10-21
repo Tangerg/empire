@@ -19,7 +19,11 @@ public sealed class SideTurnOrder : ITurnOrderPolicy
         var roundAdvanced = false;
         for (var step = 0; step < players.Length; step++)
         {
-            if (++cursor >= players.Length) { cursor = 0; roundAdvanced = true; }
+            if (++cursor >= players.Length)
+            {
+                cursor = 0;
+                roundAdvanced = true;
+            }
             if (IsTrue(players[cursor]["alive"]))
                 return new TurnHandoff(Integer(players[cursor], "id"), null, roundAdvanced);
         }

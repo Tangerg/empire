@@ -5,6 +5,8 @@ using Empire.Core.Statuses;
 
 namespace Empire.Core.Combat;
 
+public sealed record CombatEffectRules(ReadOnlyContent Content, IRankProgressionPolicy Progression);
+
 public sealed record StatusModifiers(
     double AttackMultiplier, double DefenseDelta, double MovementDelta, bool CannotCapture);
 
@@ -13,11 +15,11 @@ public sealed class CombatEffects
     private readonly StateContent content;
     private readonly ReadOnlyContent catalog;
     private readonly IRankProgressionPolicy progression;
-    public CombatEffects(ReadOnlyContent catalog, IRankProgressionPolicy progression)
+    public CombatEffects(CombatEffectRules rules)
     {
-        this.catalog = catalog;
-        content = catalog.Source;
-        this.progression = progression;
+        catalog = rules.Content;
+        content = rules.Content.Source;
+        progression = rules.Progression;
     }
 
     public StatusModifiers Modifiers(JsonObject unit) => CalculateModifiers(content, unit);
@@ -47,7 +49,8 @@ public sealed class CombatEffects
         {
             var id = StateJson.Text(instance, "id");
             if (content.Read("statuses", id).GetProperty("blockedAbilityTags").EnumerateArray()
-                .Any(value => requested.Contains(StateJson.Text(value)))) return id;
+                .Any(value => requested.Contains(StateJson.Text(value))))
+                return id;
         }
         return null;
     }
@@ -65,17 +68,29 @@ public sealed class CombatEffects
     {
         var gained = Math.Max(0, StateJson.Round(requested));
         unit["rankProgress"] = StateJson.Number(unit, "rankProgress", 0) + gained;
-        if (gained <= 0) return;
+        if (gained <= 0)
+            return;
         AwardCareerProgress(unit, gained, emit);
-        emit(new JsonObject { ["type"] = "rankProgressChanged", ["unit"] = unit["id"]!.DeepClone(),
-            ["amount"] = gained, ["current"] = unit["rankProgress"]!.DeepClone() });
+        emit(new JsonObject
+        {
+            ["type"] = "rankProgressChanged",
+            ["unit"] = unit["id"]!.DeepClone(),
+            ["amount"] = gained,
+            ["current"] = unit["rankProgress"]!.DeepClone()
+        });
         var progress = StateJson.Number(unit, "rankProgress", 0);
         var next = RankFor(progress);
         var previous = StateJson.Integer(unit, "rank");
-        if (next <= previous) return;
+        if (next <= previous)
+            return;
         unit["rank"] = next;
-        emit(new JsonObject { ["type"] = "rankChanged", ["unit"] = unit["id"]!.DeepClone(),
-            ["from"] = previous, ["to"] = next });
+        emit(new JsonObject
+        {
+            ["type"] = "rankChanged",
+            ["unit"] = unit["id"]!.DeepClone(),
+            ["from"] = previous,
+            ["to"] = next
+        });
     }
 
     public void AwardCombatProgress(JsonObject unit, double damage, bool defeated, Action<JsonObject> emit) =>
@@ -85,23 +100,38 @@ public sealed class CombatEffects
     {
         var career = unit["career"]!.AsObject();
         var current = career["current"]?.GetValue<string>();
-        if (current is null || content.TryGet("careers", current) is not { } definition) return;
+        if (current is null || content.TryGet("careers", current) is not { } definition)
+            return;
         var gained = Math.Max(0, StateJson.Round(amount));
-        if (gained == 0) return;
+        if (gained == 0)
+            return;
         var mastery = career["mastery"]!.AsObject();
         var before = Math.Max(0, StateJson.Number(mastery, current, 0));
         var after = before + gained;
         mastery[current] = after;
-        emit(new JsonObject { ["type"] = "careerProgressChanged", ["unit"] = unit["id"]!.DeepClone(),
-            ["career"] = current, ["amount"] = gained, ["current"] = after });
+        emit(new JsonObject
+        {
+            ["type"] = "careerProgressChanged",
+            ["unit"] = unit["id"]!.DeepClone(),
+            ["career"] = current,
+            ["amount"] = gained,
+            ["current"] = after
+        });
         var threshold = StateJson.Number(definition, "masteryThreshold", 0);
-        if (before >= threshold || after < threshold) return;
+        if (before >= threshold || after < threshold)
+            return;
         var known = unit["learnedAbilities"]!.AsArray();
         var learned = definition["masteryAbilities"]!.AsArray()
             .Select(value => value!.GetValue<string>())
             .Where(value => !known.Any(existing => existing!.GetValue<string>() == value)).ToArray();
-        foreach (var ability in learned) known.Add(ability);
-        emit(new JsonObject { ["type"] = "careerMastered", ["unit"] = unit["id"]!.DeepClone(),
-            ["career"] = current, ["abilities"] = new JsonArray(learned.Select(value => (JsonNode?)JsonValue.Create(value)).ToArray()) });
+        foreach (var ability in learned)
+            known.Add(ability);
+        emit(new JsonObject
+        {
+            ["type"] = "careerMastered",
+            ["unit"] = unit["id"]!.DeepClone(),
+            ["career"] = current,
+            ["abilities"] = new JsonArray(learned.Select(value => (JsonNode?)JsonValue.Create(value)).ToArray())
+        });
     }
 }

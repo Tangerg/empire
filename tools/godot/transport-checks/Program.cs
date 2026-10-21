@@ -31,7 +31,8 @@ JsonNode? Snapshot(object? value) => JsonSerializer.SerializeToNode(value, seria
 int IntegerOr(JsonObject value, string key, int fallback) => value[key] is null ? fallback : StateJson.Integer(value, key);
 void Check(string name, string key, JsonNode? actual, JsonNode? expected)
 {
-    if (JsonNode.DeepEquals(JsonNode.Parse(actual?.ToJsonString() ?? "null"), expected)) return;
+    if (JsonNode.DeepEquals(JsonNode.Parse(actual?.ToJsonString() ?? "null"), expected))
+        return;
     File.WriteAllText(Path.Combine(Path.GetDirectoryName(oraclePath)!, $"failed-{key}.json"),
         new JsonObject { ["actual"] = actual?.DeepClone(), ["expected"] = expected?.DeepClone() }.ToJsonString());
     throw new Exception($"Mismatch in {name}: {key}");
@@ -45,23 +46,29 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
 {
     var name = item["name"]!.GetValue<string>();
     var native = nativeCases[name]!.AsObject();
-    if (!native.ContainsKey("error")) throw new Exception("Missing native transport error expectation: " + name);
+    if (!native.ContainsKey("error"))
+        throw new Exception("Missing native transport error expectation: " + name);
     var packs = oracle["packs"]!.DeepClone().AsArray();
     foreach (var patch in item["patches"]!.AsArray().OfType<JsonObject>())
     {
         var family = StateJson.Text(patch, "family");
         var definition = packs.OfType<JsonObject>().SelectMany(pack => pack[family]?.AsArray().OfType<JsonObject>() ?? [])
             .First(entry => StateJson.Text(entry, "id") == StateJson.Text(patch, "id"));
-        foreach (var property in patch["values"]!.AsObject()) definition[property.Key] = property.Value?.DeepClone();
+        foreach (var property in patch["values"]!.AsObject())
+            definition[property.Key] = property.Value?.DeepClone();
     }
     var state = item["initial"]!.DeepClone().AsObject();
     var grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid());
     var catalog = new ReadOnlyContent(packs);
-    var transport = new BattleTransport(catalog, grids);
-    var damage = new BattleDamage(new BattleDamageRules(catalog, grids, new CombatEffects(catalog, new ThresholdRankProgressionPolicy()), DefaultUnitDepartureHandlers.Create().Seal()));
+    var transport = new BattleTransport(new BattleTransportRules(catalog, grids));
+    var damage = new BattleDamage(new BattleDamageRules(catalog, grids, new CombatEffects(new CombatEffectRules(catalog, new ThresholdRankProgressionPolicy())), DefaultUnitDepartureHandlers.Create().Seal()));
     var events = new JsonArray();
     var hashes = new JsonArray();
-    void Emit(JsonObject value) { events.Add(value); hashes.Add(StateDigest.Hash(state)); }
+    void Emit(JsonObject value)
+    {
+        events.Add(value);
+        hashes.Add(StateDigest.Hash(state));
+    }
     object? result = null;
     JsonObject? error = null;
     try
@@ -76,22 +83,46 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
             switch (StateJson.Text(step, "op"))
             {
                 case "query":
-                    result = new { passengers = BattleTransport.PassengersOf(state, carrierId),
-                        carriers = transport.CarrierOptions(state, unit!), passengersOptions = transport.PassengerOptions(state, carrier!) };
+                    result = new
+                    {
+                        passengers = BattleTransport.PassengersOf(state, carrierId),
+                        carriers = transport.CarrierOptions(state, unit!),
+                        passengersOptions = transport.PassengerOptions(state, carrier!)
+                    };
                     break;
-                case "embarkRefusal": result = transport.EmbarkRefusal(state, unit!, carrier!); break;
-                case "disembarkRefusal": result = transport.DisembarkRefusal(state, carrierId, unitId, At()); break;
-                case "embark": transport.Embark(state, unitId, carrierId, Emit); break;
-                case "disembark": transport.Disembark(state, carrierId, unitId, At(), Emit); break;
+                case "embarkRefusal":
+                    result = transport.EmbarkRefusal(state, unit!, carrier!);
+                    break;
+                case "disembarkRefusal":
+                    result = transport.DisembarkRefusal(state, carrierId, unitId, At());
+                    break;
+                case "embark":
+                    transport.Embark(state, unitId, carrierId, Emit);
+                    break;
+                case "disembark":
+                    transport.Disembark(state, carrierId, unitId, At(), Emit);
+                    break;
                 case "damage":
                     var victim = IntegerOr(step, "unit", 2);
                     result = damage.Resolve(state, victim, StateJson.Number(step["amount"], "amount"), false,
-                        blow => new JsonObject { ["type"] = "statusTick", ["unit"] = victim, ["status"] = "poisoned",
-                            ["amount"] = blow.Amount, ["hpAfter"] = blow.HpAfter }, Emit);
+                        blow => new JsonObject
+                        {
+                            ["type"] = "statusTick",
+                            ["unit"] = victim,
+                            ["status"] = "poisoned",
+                            ["amount"] = blow.Amount,
+                            ["hpAfter"] = blow.HpAfter
+                        }, Emit);
                     break;
-                case "morale": result = damage.ChangeMorale(state, IntegerOr(step, "unit", 2), StateJson.Number(step["amount"], "amount"), "test", Emit); break;
-                case "surrender": result = damage.Surrender(state, IntegerOr(step, "unit", 2), step["to"] is null ? null : StateJson.Integer(step, "to"), Emit); break;
-                case "withdraw": damage.Withdraw(state, IntegerOr(step, "unit", 2), StateJson.IsTrue(step["leaveCorpse"]), Emit); break;
+                case "morale":
+                    result = damage.ChangeMorale(state, IntegerOr(step, "unit", 2), StateJson.Number(step["amount"], "amount"), "test", Emit);
+                    break;
+                case "surrender":
+                    result = damage.Surrender(state, IntegerOr(step, "unit", 2), step["to"] is null ? null : StateJson.Integer(step, "to"), Emit);
+                    break;
+                case "withdraw":
+                    damage.Withdraw(state, IntegerOr(step, "unit", 2), StateJson.IsTrue(step["leaveCorpse"]), Emit);
+                    break;
                 case "return":
                     var marker = step["externalMarker"]?.AsObject() ?? state["markers"]!.AsArray().OfType<JsonObject>().First(entry => StateJson.Integer(entry, "id") == StateJson.Integer(step, "marker"));
                     result = BattleUnitReturn.Restore(catalog, state, marker, new UnitReturnRequest(At(),
@@ -100,7 +131,8 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
                 case "embarkClone":
                     transport.Embark(state, unitId, carrierId, Emit);
                     var snapshot = BattleTransport.PassengersOf(state, carrierId).First(entry => StateJson.Integer(entry, "id") == unitId);
-                    snapshot["morale"]!["current"] = 1; snapshot["statuses"]![0]!["remaining"] = 99;
+                    snapshot["morale"]!["current"] = 1;
+                    snapshot["statuses"]![0]!["remaining"] = 99;
                     snapshot["resources"]!["momentum"]!["current"] = 2;
                     snapshot["weaponState"]!["c01.border-blade"]!["cooldownRemaining"] = 3;
                     snapshot["career"]!["mastery"]!["test"] = 100;
@@ -108,7 +140,8 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
                     snapshot["learnedAbilities"]!.AsArray().Add("heal");
                     result = unit;
                     break;
-                default: throw new Exception("Unknown test operation");
+                default:
+                    throw new Exception("Unknown test operation");
             }
         }
     }
@@ -129,7 +162,8 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
         nativeRejections++;
         continue;
     }
-    if ((item["error"] is null) != (native["error"] is null)) throw new Exception("Native transport expectation changed refusal acceptance: " + name);
+    if ((item["error"] is null) != (native["error"] is null))
+        throw new Exception("Native transport expectation changed refusal acceptance: " + name);
     Check(name, "error", error, native["error"]);
     var expectedResult = item["result"]?.DeepClone();
     if (item["steps"]!.AsArray()[^1]!["op"]!.GetValue<string>() is "embarkRefusal" or "disembarkRefusal")
@@ -141,10 +175,12 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
     if (expectedResult is JsonObject query && query["carriers"] is JsonArray carriers)
     {
         var reasons = native["carrierReasons"]!.AsArray();
-        if (carriers.Count != reasons.Count) throw new Exception("Missing or stale native carrier options: " + name);
+        if (carriers.Count != reasons.Count)
+            throw new Exception("Missing or stale native carrier options: " + name);
         for (var index = 0; index < carriers.Count; index++)
         {
-            var option = carriers[index]!.AsObject(); var expectedReasons = reasons[index]!.AsObject();
+            var option = carriers[index]!.AsObject();
+            var expectedReasons = reasons[index]!.AsObject();
             if (StateJson.Integer(option["carrier"]!.AsObject(), "id") != StateJson.Integer(expectedReasons, "carrier") ||
                 option["reasons"]!.AsArray().Count != expectedReasons["reasons"]!.AsArray().Count)
                 throw new Exception("Native carrier refusal order/coverage changed: " + name);
@@ -160,11 +196,11 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
 Console.WriteLine($"PASS {passed} live TypeScript transport/departure/return cases: queries, refusals, results, events, every emission-time hash and complete states");
 Console.WriteLine($"PASS {nativeRejections} explicit native invalid-return-health rejections before any event or mutation");
 if (nativeRejections != 10) throw new Exception("Expected ten deliberately hardened return-strength cases");
-var engine = new GrayFlagEngine(oracle["packs"]!.AsArray());
+var engine = new BattleEngine(oracle["packs"]!.AsArray());
 // These source fixtures intentionally include invalid save states, such as deployment
 // without a deployment payload. Reuse the engine's resolved dispatcher and pipeline;
 // do not weaken public save validation or re-create action legality for this test.
-var restoreBattle = typeof(GrayFlagEngine).GetMethod("RestoreBattle", BindingFlags.Instance | BindingFlags.NonPublic)
+var restoreBattle = typeof(BattleEngine).GetMethod("RestoreBattle", BindingFlags.Instance | BindingFlags.NonPublic)
     ?? throw new Exception("The engine restore test binding needs to be updated.");
 var dispatchCount = 0;
 foreach (var item in oracle["dispatchCases"]!.AsArray().OfType<JsonObject>())
@@ -183,7 +219,8 @@ foreach (var item in oracle["dispatchCases"]!.AsArray().OfType<JsonObject>())
         {
             var receipt = battle.Dispatch(expected["action"]!.AsObject());
             Check(name, "receipt-before", receipt.Before, expected["before"]);
-            foreach (var ev in receipt.Events) events.Add(ev.DeepClone());
+            foreach (var ev in receipt.Events)
+                events.Add(ev.DeepClone());
         }
         catch (Exception caught) when (caught is DomainInvariantException or IllegalActionException)
         {
@@ -239,7 +276,11 @@ foreach (var test in hardening)
     var malformed = validSave.DeepClone().AsObject();
     test.Mutate(malformed["state"]!.AsObject());
     var before = malformed.DeepClone();
-    try { engine.LoadSavedBattle(malformed); throw new Exception($"Malformed transport save accepted: {test.Name}"); }
+    try
+    {
+        engine.LoadSavedBattle(malformed);
+        throw new Exception($"Malformed transport save accepted: {test.Name}");
+    }
     catch (StoredDocumentException) { }
     Check(test.Name, "reader-does-not-mutate", malformed, before);
 }

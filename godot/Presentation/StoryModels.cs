@@ -11,7 +11,10 @@ namespace Empire.Presentation;
 [JsonUnmappedMemberHandling(JsonUnmappedMemberHandling.Disallow)]
 public sealed class StoryDocument
 {
-    public int Schema { get; init; }
+    public int Schema
+    {
+        get; init;
+    }
     public Dictionary<string, string> SpeakerNameKeys { get; init; } = new(StringComparer.Ordinal);
     public List<StoryEntry> Stories { get; init; } = new();
     public List<StoryChoice> Choices { get; init; } = new();
@@ -25,14 +28,18 @@ public sealed class StoryDocument
 
     public void Validate(GameText text)
     {
-        if (Schema != 2) throw new InvalidOperationException("Unsupported story document schema.");
+        if (Schema != 2)
+            throw new InvalidOperationException("Unsupported story document schema.");
         Unique(Stories.Select(story => story.Id).Concat(Choices.Select(choice => choice.Id)), "narrative");
-        foreach (var nameKey in SpeakerNameKeys.Values) text.Format(nameKey);
+        foreach (var nameKey in SpeakerNameKeys.Values)
+            text.Format(nameKey);
         foreach (var story in Stories)
         {
-            if (story.Beats.Count == 0) throw new InvalidOperationException($"Narrative has no beats: {story.Id}.");
+            if (story.Beats.Count == 0)
+                throw new InvalidOperationException($"Narrative has no beats: {story.Id}.");
             Unique(story.Beats.Select(beat => beat.Id), $"beat in {story.Id}");
-            foreach (var key in new[] { story.KickerKey, story.TitleKey, story.DateKey, story.LocationKey, story.SummaryKey }) text.Format(key);
+            foreach (var key in new[] { story.KickerKey, story.TitleKey, story.DateKey, story.LocationKey, story.SummaryKey })
+                text.Format(key);
             foreach (var beat in story.Beats)
             {
                 if (!SpeakerNameKeys.ContainsKey(beat.Speaker))
@@ -40,14 +47,17 @@ public sealed class StoryDocument
                 text.Format(beat.TextKey);
             }
             if (story.Mission is { } mission)
-                foreach (var key in new[] { mission.ObjectiveKey, mission.DangerKey, mission.LessonKey }) text.Format(key);
+                foreach (var key in new[] { mission.ObjectiveKey, mission.DangerKey, mission.LessonKey })
+                    text.Format(key);
         }
         foreach (var choice in Choices)
         {
             Unique(choice.Options.Select(option => option.Id), $"option in {choice.Id}");
-            text.Format(choice.PromptKey); text.Format(choice.ContextKey);
+            text.Format(choice.PromptKey);
+            text.Format(choice.ContextKey);
             foreach (var option in choice.Options)
-                foreach (var key in new[] { option.LabelKey, option.DetailKey, option.ConsequenceKey }) text.Format(key);
+                foreach (var key in new[] { option.LabelKey, option.DetailKey, option.ConsequenceKey })
+                    text.Format(key);
         }
     }
 
@@ -64,15 +74,24 @@ public sealed class StoryDocument
 public sealed class StoryEntry
 {
     public string Id { get; init; } = "";
-    public int Chapter { get; init; }
+    public int Chapter
+    {
+        get; init;
+    }
     public string KickerKey { get; init; } = "";
     public string TitleKey { get; init; } = "";
     public string DateKey { get; init; } = "";
     public string LocationKey { get; init; } = "";
-    public string? Scene { get; init; }
+    public string? Scene
+    {
+        get; init;
+    }
     public string SummaryKey { get; init; } = "";
     public List<StoryBeat> Beats { get; init; } = new();
-    public StoryMission? Mission { get; init; }
+    public StoryMission? Mission
+    {
+        get; init;
+    }
 }
 [JsonUnmappedMemberHandling(JsonUnmappedMemberHandling.Disallow)]
 public sealed class StoryBeat
@@ -92,7 +111,10 @@ public sealed class StoryMission
 public sealed class StoryChoice
 {
     public string Id { get; init; } = "";
-    public int Chapter { get; init; }
+    public int Chapter
+    {
+        get; init;
+    }
     public string PromptKey { get; init; } = "";
     public string ContextKey { get; init; } = "";
     public List<StoryChoiceOption> Options { get; init; } = new();

@@ -12,7 +12,8 @@ public sealed class InitiativeTurnOrder : ITurnOrderPolicy
     public JsonObject InitialState(JsonObject state, ReadOnlyContent content)
     {
         var data = new JsonObject();
-        foreach (var unit in Units(state)) data[ChargeKey(Integer(unit, "id"))] = Speed(content, unit) % 37;
+        foreach (var unit in Units(state))
+            data[ChargeKey(Integer(unit, "id"))] = Speed(content, unit) % 37;
         return new JsonObject { ["policy"] = Id, ["activeUnit"] = null, ["data"] = data };
     }
     public TurnHandoff Begin(JsonObject state, TurnOrderContext context) => AdvanceInitiative(state, context.Content, false);
@@ -28,7 +29,8 @@ public sealed class InitiativeTurnOrder : ITurnOrderPolicy
             var ready = Ready(ticker);
             if (ready.Length == 0)
             {
-                foreach (var id in ticker.Keys.ToArray()) ticker[id] = (ticker[id].Charge + ticker[id].Speed, ticker[id].Speed);
+                foreach (var id in ticker.Keys.ToArray())
+                    ticker[id] = (ticker[id].Charge + ticker[id].Speed, ticker[id].Speed);
                 continue;
             }
             var first = ready[0];
@@ -44,7 +46,8 @@ public sealed class InitiativeTurnOrder : ITurnOrderPolicy
         var data = Object(order["data"], "turn order data");
         var live = Units(state).Select(unit => ChargeKey(Integer(unit, "id"))).ToHashSet(StringComparer.Ordinal);
         foreach (var key in data.Select(pair => pair.Key).ToArray())
-            if (key.StartsWith("charge.", StringComparison.Ordinal) && !live.Contains(key)) data.Remove(key);
+            if (key.StartsWith("charge.", StringComparison.Ordinal) && !live.Contains(key))
+                data.Remove(key);
         if (order["activeUnit"] is { } active && !Units(state).Any(u => Integer(u, "id") == Integer(active, "activeUnit")))
             order["activeUnit"] = null;
         if (spendActive && order["activeUnit"] is { } spent)
@@ -56,7 +59,8 @@ public sealed class InitiativeTurnOrder : ITurnOrderPolicy
         for (var guard = 0; guard <= Threshold * 4; guard++)
         {
             var ticker = Ticker(content, state);
-            if (ticker.Count == 0) break;
+            if (ticker.Count == 0)
+                break;
             var ready = Ready(ticker);
             if (ready.Length > 0)
             {
@@ -67,7 +71,8 @@ public sealed class InitiativeTurnOrder : ITurnOrderPolicy
                     return new TurnHandoff(Integer(actor, "owner"), Integer(actor, "id"), advanced);
                 }
             }
-            foreach (var pair in ticker) data[ChargeKey(pair.Key)] = pair.Value.Charge + pair.Value.Speed;
+            foreach (var pair in ticker)
+                data[ChargeKey(pair.Key)] = pair.Value.Charge + pair.Value.Speed;
             advanced = true;
         }
         order["activeUnit"] = null;
@@ -80,7 +85,8 @@ public sealed class InitiativeTurnOrder : ITurnOrderPolicy
         var data = Object(Order(state)["data"], "turn order data");
         foreach (var unit in Units(state))
         {
-            if (!IsTrue(Player(state, Integer(unit, "owner"))["alive"])) continue;
+            if (!IsTrue(Player(state, Integer(unit, "owner"))["alive"]))
+                continue;
             var id = Integer(unit, "id");
             result[id] = (Number(data, ChargeKey(id), 0), Speed(content, unit));
         }

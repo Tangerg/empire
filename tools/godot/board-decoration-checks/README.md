@@ -10,8 +10,8 @@ Source owners:
 - `candidate-01-map-scene.ts` and `candidate-01-world-material.ts`: ordered route/edge cells, individual-cell filtering, atlas bleed and world-phase material masks.
 
 Native owners:
-- `BoardOverlay` owns one read-only session projection and feeds two draw planes. `SourceBoardDecorations` owns nine shared static drawings and at most one replaceable path texture. Detach clears draw commands before disposing textures; reattach creates a fresh resource owner.
-- `TerrainView` preserves source row-major route-then-edge order. `CandidateRouteComposition` composes each material mask separately before filtering. Equal atlas index/material phase uses the existing board shadow cache; standalone nodes own their texture explicitly.
+- `BoardOverlay` owns one read-only session projection and feeds two draw planes. `BoardDecorations` owns nine shared static drawings and at most one replaceable path texture. Detach clears draw commands before disposing textures; reattach creates a fresh resource owner.
+- `TerrainView` preserves source row-major route-then-edge order. `RouteComposition` composes each material mask separately before filtering. Equal atlas index/material phase uses the existing board shadow cache; standalone nodes own their texture explicitly.
 - `DynamicStateView` applies the exported .78 opacity only to authored marker art; source fallback drawings keep their own semantics.
 
 The checks cover actual source markup, exact cubic path strings, source range order, outside cells, layer depths, mounted rebind/teardown, route bleed/filter/cache ownership and all 2,298 source connector cells across 16 fields. The latter test compares the real native terrain tree, not an alternate test projection.

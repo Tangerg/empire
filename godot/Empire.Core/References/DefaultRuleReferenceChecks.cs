@@ -13,22 +13,26 @@ internal static class DefaultRuleReferenceChecks
         .Select(unit => (unit, $"单位 {Text(unit["key"] ?? unit["unit"], "unit")}"));
     private static IEnumerable<(JsonObject Unit, string By)> StateUnits(JsonObject state)
     {
-        foreach (var unit in Objects(state["units"], "units")) yield return (unit, $"单位 {unit["key"] ?? unit["id"]}");
+        foreach (var unit in Objects(state["units"], "units"))
+            yield return (unit, $"单位 {unit["key"] ?? unit["id"]}");
         foreach (var entry in Objects(state["embarkedUnits"], "embarkedUnits"))
         {
             var unit = Object(entry["unit"], "passenger");
             yield return (unit, $"载具乘员 {unit["key"] ?? unit["id"]}");
         }
         foreach (var marker in Objects(state["markers"], "markers"))
-            if (marker["fallenUnit"] is JsonObject unit) yield return (unit, $"离场单位 {unit["key"] ?? marker["id"]}");
+            if (marker["fallenUnit"] is JsonObject unit)
+                yield return (unit, $"离场单位 {unit["key"] ?? marker["id"]}");
     }
     private static IEnumerable<JsonObject> Tree(IRuleTreeRegistry registry, IEnumerable<JsonObject> roots)
     {
         foreach (var root in roots)
         {
             yield return root;
-            if (!registry.Has(Id(root))) continue;
-            foreach (var child in Tree(registry, registry.Children(root))) yield return child;
+            if (!registry.Has(Id(root)))
+                continue;
+            foreach (var child in Tree(registry, registry.Children(root)))
+                yield return child;
         }
     }
     private static IEnumerable<JsonObject> Objectives(JsonObject level) => Objects(level["players"], "players")
@@ -37,7 +41,8 @@ internal static class DefaultRuleReferenceChecks
     private static IEnumerable<RuleReference> LevelDirectives(JsonObject level, RuleReferenceRules rules)
     {
         foreach (var (unit, by) in LevelUnits(level))
-            if (unit["directive"] is JsonObject directive) yield return new(by, Text(directive, "mode"));
+            if (unit["directive"] is JsonObject directive)
+                yield return new(by, Text(directive, "mode"));
         foreach (var trigger in Triggers(level))
             foreach (var effect in Objects(trigger["effects"], "effects"))
                 foreach (var name in rules.ScenarioEffects.References(effect).Directives)

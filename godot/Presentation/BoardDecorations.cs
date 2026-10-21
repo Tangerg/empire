@@ -13,29 +13,50 @@ namespace Empire.Presentation;
 
 public sealed class BoardDecorationDocument
 {
-    public int Schema { get; init; }
-    public int TileSize { get; init; }
+    public int Schema
+    {
+        get; init;
+    }
+    public int TileSize
+    {
+        get; init;
+    }
     public Dictionary<string, string> Spots { get; init; } = new(StringComparer.Ordinal);
     public Dictionary<string, string> Rings { get; init; } = new(StringComparer.Ordinal);
     public DecorationDrop ActionDrop { get; init; } = new();
     public DecorationDrop RouteDrop { get; init; } = new();
-    public float MarkerOpacity { get; init; }
+    public float MarkerOpacity
+    {
+        get; init;
+    }
     public string PathTemplate { get; init; } = "";
     public string ArrowTemplate { get; init; } = "";
     public static BoardDecorationDocument Load() => PresentationJson.Load<BoardDecorationDocument>("res://data/board-decorations.json");
 }
 public sealed class DecorationDrop
 {
-    public float X { get; init; }
-    public float Y { get; init; }
-    public float Sigma { get; init; }
+    public float X
+    {
+        get; init;
+    }
+    public float Y
+    {
+        get; init;
+    }
+    public float Sigma
+    {
+        get; init;
+    }
     public string Color { get; init; } = "";
-    public float Opacity { get; init; }
-    internal CandidateSpriteShadows.Drop ToDrop() => new(new(X, Y), Sigma, new Color(Color, Opacity));
+    public float Opacity
+    {
+        get; init;
+    }
+    internal SpriteShadows.Drop ToDrop() => new(new(X, Y), Sigma, new Color(Color, Opacity));
 }
 
 /// <summary>Exact source markup plus bounded native resources. No gameplay facts are derived here.</summary>
-internal sealed class SourceBoardDecorations : IDisposable
+internal sealed class BoardDecorations : IDisposable
 {
     internal sealed record Drawing(ImageTexture Texture, Rect2 Bounds, float Opacity);
     private readonly BoardDecorationDocument document;
@@ -44,9 +65,10 @@ internal sealed class SourceBoardDecorations : IDisposable
     private string? pathKey;
     private bool disposed;
     internal int TextureCount => staticDrawings.Count + (pathDrawing is null ? 0 : 1);
-    internal SourceBoardDecorations(BoardDecorationDocument document)
+    internal BoardDecorations(BoardDecorationDocument document)
     {
-        if (document.Schema != 1 || document.TileSize != 32) throw new InvalidOperationException("Unsupported source board decoration contract.");
+        if (document.Schema != 1 || document.TileSize != 32)
+            throw new InvalidOperationException("Unsupported source board decoration contract.");
         this.document = document;
     }
 
@@ -55,7 +77,8 @@ internal sealed class SourceBoardDecorations : IDisposable
     private Drawing Static(string key, string markup)
     {
         ObjectDisposedException.ThrowIf(disposed, this);
-        if (staticDrawings.TryGetValue(key, out var cached)) return cached;
+        if (staticDrawings.TryGetValue(key, out var cached))
+            return cached;
         // Element opacity is a post-filter group operation; fill/stroke opacity is not.
         var xml = new XmlDocument { XmlResolver = null };
         xml.LoadXml(markup);
@@ -71,13 +94,16 @@ internal sealed class SourceBoardDecorations : IDisposable
     {
         ObjectDisposedException.ThrowIf(disposed, this);
         var key = string.Join(";", points.Select(point => $"{point.X},{point.Y}"));
-        if (key == pathKey) return pathDrawing;
+        if (key == pathKey)
+            return pathDrawing;
         pathDrawing?.Texture.Dispose();
         pathDrawing = null;
         pathKey = key;
-        if (points.Count < 2) return null;
+        if (points.Count < 2)
+            return null;
         var path = PathData(points);
-        var end = points[^1]; var previous = points[^2];
+        var end = points[^1];
+        var previous = points[^2];
         var angle = Math.Atan2(end.Y - previous.Y, end.X - previous.X) * 180 / Math.PI;
         var arrow = document.ArrowTemplate.Replace("{angle}", Number(angle), StringComparison.Ordinal);
         var markup = document.PathTemplate.Replace("{path}", path, StringComparison.Ordinal)
@@ -93,13 +119,16 @@ internal sealed class SourceBoardDecorations : IDisposable
 
     internal static string PathData(IReadOnlyList<BoardCell> points)
     {
-        if (points.Count == 0) throw new ArgumentException("A source path needs an origin.");
+        if (points.Count == 0)
+            throw new ArgumentException("A source path needs an origin.");
         var spots = points.Select(point => new Vector2(point.X * 32 + 16, point.Y * 32 + 16)).ToArray();
         var value = new StringBuilder($"M{Number(spots[0].X)} {Number(spots[0].Y)}");
         for (var index = 0; index < spots.Length - 1; index++)
         {
-            var p0 = spots[Math.Max(0, index - 1)]; var p1 = spots[index];
-            var p2 = spots[index + 1]; var p3 = spots[Math.Min(spots.Length - 1, index + 2)];
+            var p0 = spots[Math.Max(0, index - 1)];
+            var p1 = spots[index];
+            var p2 = spots[index + 1];
+            var p3 = spots[Math.Min(spots.Length - 1, index + 2)];
             value.Append($" C{Fixed(p1.X + (p2.X - p0.X) / 6d)} {Fixed(p1.Y + (p2.Y - p0.Y) / 6d)} {Fixed(p2.X - (p3.X - p1.X) / 6d)} {Fixed(p2.Y - (p3.Y - p1.Y) / 6d)} {Number(p2.X)} {Number(p2.Y)}");
         }
         return value.ToString();
@@ -107,7 +136,8 @@ internal sealed class SourceBoardDecorations : IDisposable
     private static IEnumerable<Vector2> ControlPoints(IReadOnlyList<BoardCell> points)
     {
         var spots = points.Select(point => new Vector2(point.X * 32 + 16, point.Y * 32 + 16)).ToArray();
-        foreach (var point in spots) yield return point;
+        foreach (var point in spots)
+            yield return point;
         for (var index = 0; index < spots.Length - 1; index++)
         {
             yield return spots[index] + (spots[index + 1] - spots[Math.Max(0, index - 1)]) / 6;
@@ -123,9 +153,11 @@ internal sealed class SourceBoardDecorations : IDisposable
         using var source = new Image();
         var svg = $"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{Number(bounds.Size.X)}\" height=\"{Number(bounds.Size.Y)}\" viewBox=\"{Number(bounds.Position.X)} {Number(bounds.Position.Y)} {Number(bounds.Size.X)} {Number(bounds.Size.Y)}\">{markup}</svg>";
         var error = source.LoadSvgFromString(svg, density);
-        if (error != Error.Ok) throw new InvalidOperationException($"Source decoration SVG failed: {error}");
-        if (drop is null) return new(ImageTexture.CreateFromImage(source), bounds, opacity);
-        var filtered = CandidateShadowRaster.Filter(source, new[] { drop.ToDrop() }, density);
+        if (error != Error.Ok)
+            throw new InvalidOperationException($"Source decoration SVG failed: {error}");
+        if (drop is null)
+            return new(ImageTexture.CreateFromImage(source), bounds, opacity);
+        var filtered = ShadowRaster.Filter(source, new[] { drop.ToDrop() }, density);
         using (filtered.Image)
         {
             var padding = filtered.Padding / density;
@@ -134,10 +166,14 @@ internal sealed class SourceBoardDecorations : IDisposable
     }
     public void Dispose()
     {
-        if (disposed) return;
+        if (disposed)
+            return;
         disposed = true;
-        foreach (var value in staticDrawings.Values) value.Texture.Dispose();
+        foreach (var value in staticDrawings.Values)
+            value.Texture.Dispose();
         staticDrawings.Clear();
-        pathDrawing?.Texture.Dispose(); pathDrawing = null; pathKey = null;
+        pathDrawing?.Texture.Dispose();
+        pathDrawing = null;
+        pathKey = null;
     }
 }

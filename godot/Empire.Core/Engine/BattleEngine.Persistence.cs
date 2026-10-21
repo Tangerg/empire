@@ -13,7 +13,7 @@ using Manifest = Empire.Core.Persistence.RulesetManifest;
 
 namespace Empire.Core.Engine;
 
-public sealed partial class GrayFlagEngine
+public sealed partial class BattleEngine
 {
     private JsonObject persistenceManifest = null!;
     private BattleDefinitionValidator definitions = null!;
@@ -41,8 +41,10 @@ public sealed partial class GrayFlagEngine
             .Guard("deployment", DeploymentStateValidation.Issues)
             .Guard("transport", Transport.StoredStateIssues);
         var environment = new BattleSaveEnvironment(references, ReferenceChecks, persistenceManifest, structuralGuards);
-        Persistence = new BattlePersistence(environment, Saves);
-        definitions = new BattleDefinitionValidator(references, ReferenceChecks, Grids);
+        Persistence = new BattlePersistence(new BattlePersistenceRules(environment, Saves));
+        definitions = new BattleDefinitionValidator(new BattleDefinitionValidationRules(
+            new BattleContentValidator(new BattleContentValidationRules(references, ReferenceChecks)),
+            new BattleLevelValidator(new BattleLevelValidationRules(references, ReferenceChecks, Grids))));
         definitions.ValidateContent();
     }
 

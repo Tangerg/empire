@@ -64,7 +64,10 @@ public partial class PresentationChecks : Node
         const string missingPath = "res://assets/not-exported-contract-check.png";
         try
         {
-            assets.CreateFrameTexture(torren with { ResourcePath = missingPath }, 0);
+            assets.CreateFrameTexture(torren with
+            {
+                ResourcePath = missingPath
+            }, 0);
             throw new InvalidOperationException("Missing physical art must not produce a placeholder texture.");
         }
         catch (MissingArtResourceException error)
@@ -91,7 +94,7 @@ public partial class PresentationChecks : Node
         var before = state.ToJsonString();
         var board = new BoardView();
         AddChild(board);
-        board.Configure(assets, level, scene, environment, facing => facing == "west");
+        board.Configure(new(assets, environment, facing => facing == "west", null), level, scene);
         board.RenderState(state);
         Require(state.ToJsonString() == before, "Rendering must not mutate canonical state.");
         Require(board.RenderedUnitCount == board.ProjectionUnitCount && board.ProjectionUnitCount == 19,
@@ -124,7 +127,7 @@ public partial class PresentationChecks : Node
             && board.Diagnostics.Any(message => message.Contains("not-exported-unit", StringComparison.Ordinal))
             && board.RenderingIssueCount > 0,
             "Unavailable art must be explicitly diagnosed without substituting another actor.");
-        board.Configure(assets, level, scene, environment, facing => facing == "west");
+        board.Configure(new(assets, environment, facing => facing == "west", null), level, scene);
         board.RenderState(state);
         Require(board.GetChildCount() == 2, "Repeated configuration must not duplicate scene layers.");
         CheckTerrain(board, state);
@@ -161,7 +164,8 @@ public partial class PresentationChecks : Node
         var tiles = state["map"]!["tiles"]!.AsArray();
         for (var index = 0; index < tiles.Count; index++)
         {
-            if (tiles[index]!.GetValue<string>() != "road") continue;
+            if (tiles[index]!.GetValue<string>() != "road")
+                continue;
             Require(roadMask.GetPixel(index % 27 * 64 + 32, index / 27 * 64 + 32).A > 0.99,
                 $"Road center must have actual native coverage at {index % 27},{index / 27}.");
         }
@@ -176,12 +180,16 @@ public partial class PresentationChecks : Node
 
     private static void Require(bool condition, string message)
     {
-        if (!condition) throw new InvalidOperationException(message);
+        if (!condition)
+            throw new InvalidOperationException(message);
     }
 
     private static void Throws<T>(Action action, string message) where T : Exception
     {
-        try { action(); }
+        try
+        {
+            action();
+        }
         catch (T) { return; }
         throw new InvalidOperationException(message);
     }
