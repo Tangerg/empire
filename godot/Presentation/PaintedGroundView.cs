@@ -18,7 +18,9 @@ public partial class PaintedGroundView : BoardGroundView
     public override IReadOnlyList<string> Diagnostics => Array.Empty<string>();
     private readonly List<(Polygon2D Node, Coord Cell, Vector2[] Pixels, Vector2 Front, Coord? Selection)> _standing = new();
     private readonly List<TerrainDepthEntry> _depthEntries = new();
+    private readonly HashSet<Coord> _mapStructureBodies = new();
     public override IReadOnlyList<TerrainDepthEntry> DepthEntries => _depthEntries;
+    public override bool OwnsMapStructureBody(Coord cell) => _mapStructureBodies.Contains(cell);
 
     public static PaintedGroundView Create(PaintedGroundDocument document, Texture2D borrowedTexture, JsonObject registeredMap)
     {
@@ -52,6 +54,8 @@ public partial class PaintedGroundView : BoardGroundView
                     throw new InvalidOperationException("Painted occluders require unique identities.");
                 var cell = Cell(layer.ContactCell);
                 Coord? selection = layer.SelectionCell is null ? null : Cell(layer.SelectionCell);
+                if (layer.OwnsMapStructureBody && (selection is not { } structureCell || !view._mapStructureBodies.Add(structureCell)))
+                    throw new InvalidOperationException($"Painted map-structure bodies require unique selection cells: {layer.Id}.");
                 var front = SpriteGroundContact.Read(layer.GroundFrontPixels, document.PixelSize[0], document.PixelSize[1], layer.Id);
                 if (layer.PolygonPixels is null || layer.PolygonPixels.Length < 3)
                     throw new InvalidOperationException($"Painted occluder polygon is absent: {layer.Id}.");

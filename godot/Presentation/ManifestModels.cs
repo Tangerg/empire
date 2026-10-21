@@ -291,6 +291,10 @@ public sealed class AuthoredScene
         get; init;
     }
     public int[] MapSize { get; init; } = Array.Empty<int>();
+    public string? PaintedGroundPath
+    {
+        get; init;
+    }
     public int[]? OpeningFocus
     {
         get; init;

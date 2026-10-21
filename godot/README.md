@@ -26,7 +26,11 @@ launches using the configured workspace-local toolchain. See
 [run and package instructions](docs/RUN-AND-PACKAGE.md) for portable setup and
 the explicitly pending stand-alone export/visual acceptance gates.
 
-## Verified behavior (2026-10-20)
+## Historical migration evidence (2026-10-20)
+
+These earlier migration results are not a claim that the current full gate is green.
+The c01-02 reconstruction and its current verification limits are recorded in
+[Formal Three Bridges](docs/FORMAL-THREE-BRIDGES.md).
 
 Three complete native battles reproduce TypeScript's independently generated
 142, 119 and 135 action streams, ordered events and every intermediate state
@@ -46,7 +50,7 @@ godot --headless --path godot res://Scenes/BattleScreenChecks.tscn
 All 16 original levels also pass 2,983 independently selected native actions against the TypeScript oracle, including every event and state hash. This is independent-level execution, not proof of every campaign branch played end-to-end. Persistence has 96 focused checks. The application test covers story/choice, battle, midbattle save/load, 127 remaining matching actions and identical campaign result, plus atomic rejection of an invalid save.
 
 ```sh
-dotnet run --project tools/godot/application-checks -- .
+bash tools/godot/application-checks/run.sh
 dotnet run --project tools/godot/persistence-checks/Empire.Persistence.Checks.csproj -- .
 bash tools/godot/campaign-battle-checks/run.sh
 ```
@@ -88,3 +92,9 @@ Historical TypeScript source-v1 oracle suites are retained as development eviden
 they are not a current-schema acceptance mode. See
 `docs/OBJECTIVE-OUTCOME-SCHEMA.md` before using them. Their regeneration requires
 the original repository and locked Node dependencies; the native runtime does not.
+
+## Formal painted second level
+
+See [the c01-02 reconstruction contract](docs/FORMAL-THREE-BRIDGES.md) for the
+explicit scene registration, four interactive houses, preserved campaign behavior,
+three-round truce semantics, and validation boundaries.

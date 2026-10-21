@@ -19,6 +19,7 @@ public abstract partial class BoardGroundView : Node2D
     {
         get;
     }
+    public abstract bool OwnsMapStructureBody(Coord cell);
     public abstract void ConfigureAuthoredGround(Node2D authoredGround);
     public abstract Node2D DetachAuthoredGround();
     public abstract void Render(BoardProjection projection, string[] tiles, int[] elevation, Vector2I size);

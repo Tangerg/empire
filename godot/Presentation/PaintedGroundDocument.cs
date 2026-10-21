@@ -1,6 +1,9 @@
 #nullable enable
 using System;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.Json.Nodes;
+using Empire.Core.Determinism;
 using Godot;
 
 namespace Empire.Presentation;
@@ -43,6 +46,15 @@ public sealed class PaintedGroundDocument
     public required PaintedOccluder[] Occluders
     {
         get; init;
+    }
+
+    public void ValidateLevel(JsonObject level)
+    {
+        if (EcmaJson.ReadString(level["id"]) != LevelId)
+            throw new InvalidOperationException("Painted ground and canonical level identities differ.");
+        var sourceHash = Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(EcmaJson.Stringify(level)))).ToLowerInvariant();
+        if (sourceHash != LevelSourceSha256)
+            throw new InvalidOperationException("Painted scene registration does not match its reviewed canonical level source.");
     }
 
     public BoardPlane CreatePlane(Vector2 logicalSize, int minimumHeight, int maximumHeight)
@@ -98,6 +110,10 @@ public sealed class PaintedOccluder
         get; init;
     }
     public int[]? SelectionCell
+    {
+        get; init;
+    }
+    public bool OwnsMapStructureBody
     {
         get; init;
     }

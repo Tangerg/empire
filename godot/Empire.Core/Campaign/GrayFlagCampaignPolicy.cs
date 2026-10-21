@@ -45,7 +45,12 @@ public static class GrayFlagCampaignPolicy
                 }
                 break;
             case "c01-02" when Flag("bridge_no_promise") && level["scenario"] is JsonObject scenario:
-                scenario["engagementRules"] = new JsonArray();
+                var engagementRules = Array(scenario["engagementRules"], "engagement rules");
+                var truce = Objects(engagementRules, "engagement rules").Single(rule => Text(rule, "id") == "bridge-truce");
+                engagementRules.Remove(truce);
+                var triggers = Array(scenario["triggers"], "scenario triggers");
+                var truceKept = Objects(triggers, "scenario triggers").Single(trigger => Text(trigger, "id") == "truce-kept");
+                triggers.Remove(truceKept);
                 var enemy = Objects(level["players"], "players").FirstOrDefault(candidate => Integer(candidate, "id") == 2);
                 if (enemy?["ai"] is JsonObject ai)
                     ai["aggression"] = 0.68;

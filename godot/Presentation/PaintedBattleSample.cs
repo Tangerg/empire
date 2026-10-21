@@ -1,7 +1,5 @@
 #nullable enable
 using System;
-using System.Security.Cryptography;
-using System.Text;
 using System.Text.Json.Nodes;
 using Empire.Application;
 using Empire.Core;
@@ -44,9 +42,7 @@ public partial class PaintedBattleSample : Control
                 || _definition.OpeningFocus[1] >= _level["height"]!.GetValue<int>())
                 throw new InvalidOperationException("Painted battle opening focus lies outside its canonical level.");
             _art = PresentationJson.Load<PaintedGroundDocument>(_definition.GroundPath);
-            var sourceHash = Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(source))).ToLowerInvariant();
-            if (sourceHash != _art.LevelSourceSha256)
-                throw new InvalidOperationException("Painted scene registration does not match its reviewed canonical level source.");
+            _art.ValidateLevel(_level);
             var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
             foreach (var path in _definition.AdditionalContentPaths)
                 packs.Add(PresentationJson.Load<JsonObject>(path));

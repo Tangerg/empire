@@ -27,6 +27,7 @@ public partial class CampaignNavigationChecks : Node
     private string manualStamp = "";
     private JsonObject definition = null!;
     private JsonObject battleNodeState = null!;
+    private GrayFlagGame? paintedCaptureGame;
 
     public override async void _Ready()
     {
@@ -60,10 +61,42 @@ public partial class CampaignNavigationChecks : Node
                 try
                 {
                     test();
+                    if (paintedCaptureGame is not null)
+                    {
+                        // Navigation fixtures suppress processing; this live interaction must run real animation frames.
+                        paintedCaptureGame.ProcessMode = ProcessModeEnum.Inherit;
+                        var screen = View<BattleScreen>(paintedCaptureGame);
+                        var civilian = Campaign(paintedCaptureGame).Battle!.Snapshot()["units"]!.AsArray().OfType<JsonObject>()
+                            .Single(unit => unit["key"]!.GetValue<string>() == "refugee-2");
+                        screen.SelectCell(new(13, 12));
+                        Require(screen.SelectedUnitId == civilian["id"]!.GetValue<int>(), "The formal escort actor could not be selected on its open-road starting cell.");
+                        screen.SelectCell(new(13, 13));
+                        while (screen.IsInputBlocked)
+                            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                        var moved = Campaign(paintedCaptureGame).Battle!.Snapshot()["units"]!.AsArray().OfType<JsonObject>()
+                            .Single(unit => unit["key"]!.GetValue<string>() == "refugee-2");
+                        Require(moved["x"]!.GetValue<int>() == 13 && moved["y"]!.GetValue<int>() == 13 && moved["done"]!.GetValue<bool>(),
+                            "The real destination callback did not commit the civilian's first escort move.");
+                        CheckFormalSaveLoad(paintedCaptureGame);
+                        var captureArgument = OS.GetCmdlineUserArgs().SingleOrDefault(value => value.StartsWith("--capture-c01-02=", StringComparison.Ordinal));
+                        if (captureArgument is not null)
+                        {
+                            var path = captureArgument["--capture-c01-02=".Length..];
+                            Require(Path.IsPathFullyQualified(path) && DisplayServer.GetName() != "headless",
+                                "Formal battle capture requires an absolute output path and a real display.");
+                            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                            await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
+                            using var image = GetViewport().GetTexture().GetImage();
+                            Require(image.SavePng(path) == Error.Ok, "Formal battle viewport capture failed.");
+                            GD.Print("Formal c01-02 viewport captured: " + path);
+                        }
+                    }
                     CheckManualUnchanged();
                     GD.Print("Campaign navigation group passed: " + name);
                 }
                 catch (Exception error) { failures.Add(name + ": " + error); }
+                paintedCaptureGame = null;
                 foreach (var child in GetChildren())
                     Retire(child);
                 await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
@@ -476,6 +509,11 @@ public partial class CampaignNavigationChecks : Node
                         Press(button);
                     }
                     Require(ReferenceEquals(View<Control>(game), next) && State(game) == committed && File.ReadAllText(automaticPath) == saved, "Stale summary siblings navigated or rewrote committed progress.");
+                    if (action == "Proceed")
+                    {
+                        CheckFormalPaintedBattle(game);
+                        paintedCaptureGame = game;
+                    }
                 }
             }
             finally
@@ -485,9 +523,86 @@ public partial class CampaignNavigationChecks : Node
                     Directory.Delete(automaticPath);
                     File.WriteAllText(automaticPath, previous);
                 }
-                Retire(game);
+                if (!ReferenceEquals(game, paintedCaptureGame))
+                    Retire(game);
             }
         }
+    }
+
+    private void CheckFormalPaintedBattle(GrayFlagGame game)
+    {
+        var campaign = Campaign(game);
+        foreach (var node in new[] { "aftermath-01", "brief-02" })
+        {
+            Require(campaign.Node()["id"]!.GetValue<string>() == node, "First-level settlement skipped the authored bridge approach.");
+            CompleteStory(game);
+        }
+        Require(campaign.Node()["id"]!.GetValue<string>() == "choice-bridge-truce", "Bridge approach did not expose its actual truce choice.");
+        var relation = EcmaJson.ToElement(campaign.Snapshot()["relations"]!["cain"]!).GetDouble();
+        Press(Button(View<StoryScreen>(game), "Choice_accept-truce"));
+        Require(campaign.Node()["id"]!.GetValue<string>() == "battle-02"
+            && EcmaJson.ToElement(campaign.Snapshot()["relations"]!["cain"]!).GetDouble() == relation + 1,
+            "Accepting the bridge truce did not reach second-level staging with its relation effect.");
+        var roster = campaign.Snapshot()["roster"]!.DeepClone().AsObject();
+        Press(Button(View<CampaignStagingScreen>(game), "StartBattle"));
+        var battle = campaign.Battle!.Snapshot();
+        Require(battle["levelId"]!.GetValue<string>() == "c01-02" && battle["units"]!.AsArray().Count == 20,
+            "Formal second-level staging did not launch all twenty canonical actors.");
+        var bindings = campaign.RequestSnapshot()!["rosterBindings"]!.AsArray().OfType<JsonObject>().ToArray();
+        Require(bindings.Length == 3, "Formal bridge battle lost the three campaign roster bindings.");
+        var engine = Field<BattleEngine>(game, "engine");
+        foreach (var binding in bindings)
+        {
+            var persistent = roster[binding["campaignUnit"]!.GetValue<string>()]!;
+            var unit = battle["units"]!.AsArray().OfType<JsonObject>().Single(value => value["key"]!.GetValue<string>() == binding["levelUnitKey"]!.GetValue<string>());
+            var type = persistent["unitType"]!.GetValue<string>();
+            var maximum = engine.Catalog.Definition("units", type)!.Value.GetProperty("maxHp").GetDouble();
+            var expectedHp = Math.Max(1, Math.Floor(maximum * EcmaJson.ToElement(persistent["hpRatio"]!).GetDouble() + .5));
+            Require(unit["type"]!.GetValue<string>() == type && EcmaJson.ToElement(unit["hp"]!).GetDouble() == expectedHp
+                && EcmaJson.ToElement(unit["rank"]!).GetDouble() == EcmaJson.ToElement(persistent["rank"]!).GetDouble(),
+                "Formal bridge launch did not inherit roster type, health and rank.");
+        }
+        CheckPaintedBoard(View<BattleScreen>(game).Board);
+    }
+
+    private void CheckFormalSaveLoad(GrayFlagGame game)
+    {
+        var campaign = Campaign(game);
+        var battle = campaign.Battle!.Snapshot();
+        var originalManual = File.ReadAllText(manualPath);
+        var originalStamp = File.GetLastWriteTimeUtc(manualPath);
+        try
+        {
+            var before = Digest(battle);
+            var campaignBefore = State(game);
+            game._UnhandledKeyInput(new InputEventKey { Pressed = true, Keycode = Key.F5 });
+            Require(File.ReadAllText(manualPath) != originalManual, "Formal bridge F5 did not write the live battle.");
+            game._UnhandledKeyInput(new InputEventKey { Pressed = true, Keycode = Key.F9 });
+            Require(!ReferenceEquals(Campaign(game), campaign) && State(game) == campaignBefore
+                && Digest(Campaign(game).Battle!.Snapshot()) == before,
+                "Formal bridge F9 changed canonical state or failed to replace the loaded session atomically.");
+            CheckPaintedBoard(View<BattleScreen>(game).Board);
+        }
+        finally
+        {
+            File.WriteAllText(manualPath, originalManual);
+            File.SetLastWriteTimeUtc(manualPath, originalStamp);
+        }
+    }
+
+    private void CheckPaintedBoard(BoardView board)
+    {
+        var ground = Descendants(board).OfType<PaintedGroundView>().Single();
+        Require(!Descendants(board).OfType<TerrainView>().Any() && board.RenderedUnitCount == 20 && board.RenderingIssueCount == 0,
+            "Formal bridge rendering must use its painted ground and all twenty actors without rendering errors.");
+        var houses = ground.DepthEntries.Where(entry => entry.SelectionCell is not null).ToArray();
+        Require(houses.Length == 4 && houses.All(entry => ground.OwnsMapStructureBody(entry.SelectionCell!.Value)),
+            "The four painted houses must own their selectable map-structure bodies.");
+        Require(!Descendants(board).Any(node => node.Name.ToString().StartsWith("MapStructure_", StringComparison.Ordinal)),
+            "Formal bridge houses were duplicated by dynamic map-structure sprites.");
+        var banners = Descendants(board).Where(node => node.HasMeta("owner_color")).ToArray();
+        Require(banners.Length == 2 && banners.Select(node => node.GetMeta("owner_color").AsString()).Distinct(StringComparer.Ordinal).Count() == 2,
+            "The two owned outposts must retain exactly two dynamic ownership flags.");
     }
 
     private void CheckReadDeleteFailure()
@@ -666,8 +781,11 @@ public partial class CampaignNavigationChecks : Node
         Require(userData.StartsWith(root + Path.DirectorySeparatorChar, StringComparison.Ordinal), "Godot ignored isolated user data.");
         for (var directory = new System.IO.DirectoryInfo(userData); directory is not null && directory.FullName != temporary; directory = directory.Parent)
             Require(!directory.Exists || (directory.Attributes & System.IO.FileAttributes.ReparsePoint) == 0, "Refusing symlinked user-data ancestors.");
-        // Godot itself creates logs before _Ready. Nothing else may predate this fixture owner.
-        Require(!Directory.Exists(userData) || Directory.EnumerateFileSystemEntries(userData).All(entry => Path.GetFileName(entry) == "logs"), "Refusing pre-existing user data; use a fresh generated directory.");
+        // Godot creates logs and, with a real renderer, shader caches before _Ready.
+        Require(!Directory.Exists(userData) || Directory.EnumerateFileSystemEntries(userData).All(entry =>
+            (Path.GetFileName(entry) is "logs" or "shader_cache") && Directory.Exists(entry)
+            && (File.GetAttributes(entry) & FileAttributes.ReparsePoint) == 0),
+            "Refusing pre-existing user data; use a fresh generated directory.");
         automaticPath = SavePath("CampaignSavePath");
         manualPath = SavePath("SavePath");
         Require(!File.Exists(automaticPath) && !Directory.Exists(automaticPath) && !File.Exists(manualPath) && !File.Exists(manualPath + ".tmp"), "Fixture save paths are not fresh.");

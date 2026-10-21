@@ -1,6 +1,6 @@
 {
   "levelId": "grayflag-three-bridges",
-  "levelSourceSha256": "2e2d229fda2f87d667dfab6ba107ba36ecd43dc666e553a5be46ad6aa2b3f9b7",
+  "levelSourceSha256": "fc21bb60184e51c911bca7f1e9e3b6b29e64c9b955e7c9a667ba118d96d11537",
   "resourcePath": "res://assets/native/scenes/three-bridges.png",
   "pixelSize": [
     1672,
@@ -115,7 +115,8 @@
       "selectionCell": [
         7,
         9
-      ]
+      ],
+      "ownsMapStructureBody": true
     },
     {
       "id": "EastAidHouse",
@@ -212,7 +213,8 @@
       "selectionCell": [
         35,
         24
-      ]
+      ],
+      "ownsMapStructureBody": true
     },
     {
       "id": "NorthBridgeFrontWest",

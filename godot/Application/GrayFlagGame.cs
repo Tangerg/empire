@@ -423,13 +423,19 @@ public partial class GrayFlagGame : Node
         var level = owner.BattleLevel();
         var id = level["id"]!.GetValue<string>();
         var scenePath = $"res://data/scenes/{id}.json";
-        var scene = Godot.FileAccess.FileExists(scenePath) ? AuthoredScene.Load(scenePath) : new AuthoredScene
+        var scene = AuthoredScene.Load(scenePath);
+        BoardPlaneFactory plane = BoardPlane.Dimetric;
+        BoardGroundFactory ground;
+        if (scene.PaintedGroundPath is { } paintedGroundPath)
         {
-            LevelId = id,
-            MapSize = new[] { level["width"]!.GetValue<int>(), level["height"]!.GetValue<int>() },
-            RuntimeReady = false,
-            Title = "此关卡尚无恢复的手工场景布局"
-        };
+            var art = PresentationJson.Load<PaintedGroundDocument>(paintedGroundPath);
+            var registeredLevel = levels.OfType<JsonObject>().Single(value => value["id"]!.GetValue<string>() == id);
+            art.ValidateLevel(registeredLevel);
+            plane = art.CreatePlane;
+            ground = art.Factory(engine.CreateState(registeredLevel)["map"]!.AsObject());
+        }
+        else
+            ground = TerrainView.Factory(WorldMaterialsManifest.Load());
         var grid = engine.Grids.Get(level["rules"]?["grid"]?.GetValue<string>() ?? "square4");
         var nextScreen = PrepareMounted(new BattleScreen(), next =>
         {
@@ -438,11 +444,11 @@ public partial class GrayFlagGame : Node
                     AssetCatalog.Load(),
                     EnvironmentCatalog.Load(),
                     grid,
-                    engine.Catalog, BoardPlane.Dimetric)),
+                    engine.Catalog, plane)),
                 level,
                 scene,
                 initialLogMessage);
-            next.ConfigureGround(TerrainView.Factory(WorldMaterialsManifest.Load()));
+            next.ConfigureGround(ground);
             next.ConfigureDynamicState();
             var boundGeneration = lifecycleGeneration;
             bool CurrentBattle() => boundGeneration == lifecycleGeneration && CurrentView(owner, next) &&

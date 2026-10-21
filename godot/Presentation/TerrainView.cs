@@ -51,6 +51,7 @@ public partial class TerrainView : BoardGroundView
     public override IReadOnlyList<string> Diagnostics => _diagnostics;
     public IReadOnlyList<Node2D> Standing => _standing;
     public override IReadOnlyList<TerrainDepthEntry> DepthEntries => _depthEntries;
+    public override bool OwnsMapStructureBody(Coord cell) => false;
     public int RenderedSceneryCount => _standing.Count;
     public int RenderedEdgeDecorationCount
     {

@@ -6,6 +6,7 @@ using System.Text.Json;
 using Empire.Application;
 using Empire.Core.Engine;
 using Empire.Core.Determinism;
+using Empire.Core.Campaign;
 
 if (args.Length != 2) throw new ArgumentException("Usage: ApplicationChecks <repository> <catalog.json>");
 var gameText = FixtureText.Load(args[^1]);
@@ -14,7 +15,8 @@ JsonNode Read(string file) => JsonNode.Parse(File.ReadAllText(Path.Combine(root,
 var packs = Read("content-packs.json").AsArray();
 var engine = new BattleEngine(packs);
 var presentationText = FixtureBattleText.Session(root, engine, gameText);
-GrayFlagCampaign Create() => new(Read("grayflag-campaign.json").AsObject(), Read("grayflag-campaign-levels.json").AsArray(), engine, presentationText);
+GrayFlagCampaign Create() => new(new(engine, presentationText), Read("grayflag-campaign.json").AsObject(), Read("grayflag-campaign-levels.json").AsArray());
+CheckBridgeTruce();
 var campaign = Create();
 while (campaign.Node()["type"]!.GetValue<string>() != "battle")
 {
@@ -73,6 +75,40 @@ foreach (var badType in new JsonNode?[] { null, JsonValue.Create(2), JsonValue.C
         throw new Exception("Malformed event load mutated campaign");
 }
 Console.WriteLine($"PASS application story/choice -> battle -> midbattle save/load -> {actions} matching actions -> campaign result; invalid load atomic");
+void CheckBridgeTruce()
+{
+    var level = Read("grayflag-campaign-levels.json").AsArray().OfType<JsonObject>().Single(candidate => candidate["id"]!.GetValue<string>() == "c01-02");
+    var request = new JsonObject { ["levelId"] = "c01-02", ["level"] = level.DeepClone() };
+    var original = StateDigest.Hash(request);
+    foreach (var promised in new[] { true, false })
+    {
+        var context = new JsonObject
+        {
+            ["resources"] = new JsonObject { ["supplies"] = 0, ["treasury"] = 0 },
+            ["flags"] = promised ? new JsonArray() : new JsonArray("bridge_no_promise")
+        };
+        var prepared = GrayFlagCampaignPolicy.ApplyBattleContext(request, context);
+        if (StateDigest.Hash(request) != original)
+            throw new Exception("Bridge choice changed the authored battle request");
+        var battle = engine.CreateBattle(prepared["level"]!.AsObject(), 17);
+        var signals = 0;
+        for (var step = 0; step < 8; step++)
+        {
+            var state = battle.Snapshot();
+            if (state["turn"]!.GetValue<int>() != step / 2 + 1 || state["currentPlayer"]!.GetValue<int>() != step % 2 + 1)
+                throw new Exception("Bridge truce check lost the authored two-side round order");
+            var truceActive = state["scenario"]!["engagementRules"]!.AsArray().Any(rule => rule!["id"]!.GetValue<string>() == "bridge-truce");
+            if (truceActive != (promised && step < 6))
+                throw new Exception("Bridge truce did not cover exactly the first three complete rounds");
+            var receipt = battle.Dispatch(new JsonObject { ["kind"] = "endTurn" });
+            signals += receipt.Events.Count(item => item["type"]!.GetValue<string>() == "scenarioSignal" && item["signal"]!.GetValue<string>() == "accepted_bridge_truce");
+            if (signals != (promised && step >= 5 ? 1 : 0))
+                throw new Exception("Bridge truce signal occurred early, late, repeatedly, or without a promise");
+        }
+    }
+    Console.WriteLine("PASS bridge promise covers three full rounds and emits once; no-promise emits no truce signal");
+}
+
 void Act(GrayFlagCampaign value)
 {
     var battle = value.Battle!;

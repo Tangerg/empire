@@ -305,7 +305,8 @@ public partial class BoardView : Node2D
             for (var index = 0; index < snapshot.Tiles.Length; index++)
             {
                 var terrain = snapshot.Tiles[index];
-                if (!assets.HasMapStructureBinding(terrain))
+                var cell = new Coord(index % _mapSize.X, index / _mapSize.X);
+                if (_terrain?.OwnsMapStructureBody(cell) == true || !assets.HasMapStructureBinding(terrain))
                     continue;
                 try
                 {
