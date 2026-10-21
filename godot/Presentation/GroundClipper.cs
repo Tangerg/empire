@@ -32,7 +32,7 @@ internal static class GroundClipper
     {
         if (ground is Sprite2D sprite && sprite.HasMeta("ground_clipped"))
         {
-            sprite.Material = null;
+            sprite.GetNode<OwnedShaderMaterial>("GeneratedMaterialOwner").Free();
             sprite.RemoveMeta("ground_clipped");
         }
         foreach (var child in ground.GetChildren())
@@ -57,7 +57,7 @@ internal static class GroundClipper
                 {
                     if (sprite.Material is not null && !sprite.HasMeta("ground_clipped"))
                         throw new InvalidOperationException($"Ground clip requires an explicit shader composition: {sprite.Name}");
-                    var shader = sprite.Material as ShaderMaterial ?? new ShaderMaterial { Shader = new Shader { Code = ShaderSource } };
+                    var shader = sprite.Material as ShaderMaterial ?? OwnedShaderMaterial.Attach(sprite, ShaderSource).Value;
                     shader.SetShaderParameter("playable_shape", shape);
                     shader.SetShaderParameter("board_size", boardSize);
                     shader.SetShaderParameter("basis_x", transform.X);

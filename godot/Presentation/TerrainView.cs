@@ -238,7 +238,7 @@ public partial class TerrainView : Node2D
                                 var filtered = CandidateShadowRaster.Filter(input, CandidateSpriteShadows.Drops(CandidateShadowKind.Route), density);
                                 using (filtered.Image)
                                 {
-                                    var effect = OwnedLightingSprite.Create(filtered.Image);
+                                    var effect = OwnedProceduralSprite.Create(filtered.Image);
                                     effect.Centered = sprite.Centered;
                                     effect.Offset = sprite.Offset - (sprite.Centered ? Vector2.Zero : Vector2.One * filtered.Padding);
                                     effect.TextureFilter = TextureFilterEnum.Linear;
@@ -432,14 +432,19 @@ public partial class TerrainView : Node2D
     }
     private Sprite2D Masked(string name, Image mask, WorldMaterialRecord material, Vector2I size)
     {
-        var shader = new ShaderMaterial { Shader = new Shader { Code = MaskedMaterialShader } };
-        shader.SetShaderParameter("fill_texture", MaterialTexture(material));
-        shader.SetShaderParameter("world_size", new Vector2(size.X * 32, size.Y * 32));
-        shader.SetShaderParameter("material_period", new Vector2(material.LogicalSize[0], material.LogicalSize[1]));
-        var sprite = new Sprite2D { Name = name, Texture = ImageTexture.CreateFromImage(mask),
-            Centered = false, Scale = Vector2.One / 2, Material = shader, TextureFilter = TextureFilterEnum.Linear };
-        sprite.SetMeta("world_material", true);
-        return sprite;
+        var materialTexture = MaterialTexture(material);
+        return OwnedProceduralSprite.Create(mask, sprite =>
+        {
+            sprite.Name = name;
+            sprite.Centered = false;
+            sprite.Scale = Vector2.One / 2;
+            sprite.TextureFilter = TextureFilterEnum.Linear;
+            var shader = OwnedShaderMaterial.Attach(sprite, MaskedMaterialShader).Value;
+            shader.SetShaderParameter("fill_texture", materialTexture);
+            shader.SetShaderParameter("world_size", new Vector2(size.X * 32, size.Y * 32));
+            shader.SetShaderParameter("material_period", new Vector2(material.LogicalSize[0], material.LogicalSize[1]));
+            sprite.SetMeta("world_material", true);
+        });
     }
     private static bool Matches(TerrainMaterialBinding? binding, MaterialReplacement replacement) =>
         binding?.Connected is { } connected && connected.Atlas == replacement.Atlas && connected.Mask == replacement.Mask;

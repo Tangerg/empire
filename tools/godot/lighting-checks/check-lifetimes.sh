@@ -6,11 +6,11 @@ project="${1:-$root/godot}"
 project="$(cd "$project" && pwd)"
 output="$(mktemp -d /tmp/empire-lighting-exits.XXXXXX)"
 printf 'Lighting exit verification output: %s\n' "$output"
-dotnet build "$project/Empire.csproj" --nologo --no-restore > "$output/build.log" 2>&1
+timeout --signal=TERM --kill-after=15s "${EMPIRE_CHECK_TIMEOUT_SECONDS:-300}" dotnet build "$project/Empire.csproj" --nologo --no-restore --disable-build-servers -m:1 -p:UseSharedCompilation=false > "$output/build.log" 2>&1
 run() {
   local scene="$1" label="$2" status=0
   shift 2
-  "$GODOT_NET" --headless --path "$project" "res://Scenes/$scene.tscn" "$@" > "$output/$label.log" 2>&1 || status=$?
+  XDG_DATA_HOME="$(mktemp -d /tmp/empire-lighting-userdata.XXXXXX)" timeout --signal=TERM --kill-after=15s "${EMPIRE_CHECK_TIMEOUT_SECONDS:-300}" "$GODOT_NET" --headless --path "$project" "res://Scenes/$scene.tscn" "$@" > "$output/$label.log" 2>&1 || status=$?
   printf '%s\texit=%s\n' "$label" "$status" | tee -a "$output/exits.tsv"
   # A PASS line is not completion: Godot may report native resource leaks or crash
   # during shutdown afterward. Both the actual process result and diagnostics gate it.

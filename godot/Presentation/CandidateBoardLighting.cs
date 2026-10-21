@@ -47,7 +47,7 @@ public static class CandidateBoardLighting
         var contact = UnitContact();
         using (contact.Image)
         {
-            var sprite = OwnedLightingSprite.Create(contact.Image);
+            var sprite = OwnedProceduralSprite.Create(contact.Image);
             sprite.Name = "SourceUnitContact";
             sprite.Centered = false; sprite.ShowBehindParent = true;
             sprite.Position = contact.Origin; sprite.Scale = Vector2.One / contact.Density;
@@ -96,7 +96,7 @@ public static class CandidateBoardLighting
         else
         {
             var raster = Raster();
-            using (raster.Image) sprite = OwnedLightingSprite.Create(raster.Image);
+            using (raster.Image) sprite = OwnedProceduralSprite.Create(raster.Image);
             sprite.Position = raster.Origin; sprite.Scale = Vector2.One / raster.Density;
         }
         sprite.Name = "SourceStructureContact";
@@ -132,7 +132,7 @@ public static class CandidateBoardLighting
         using var image = new Image();
         var error = image.LoadSvgFromString($"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{F(size.X)}\" height=\"{F(size.Y)}\" viewBox=\"0 0 {F(size.X)} {F(size.Y)}\">{body}</svg>", 2);
         if (error != Error.Ok) throw new InvalidOperationException($"Source lighting SVG failed: {error}");
-        var sprite = OwnedLightingSprite.Create(image);
+        var sprite = OwnedProceduralSprite.Create(image);
         sprite.Name = name; sprite.Centered = false;
         sprite.Scale = Vector2.One / 2; sprite.TextureFilter = CanvasItem.TextureFilterEnum.Linear;
         return sprite;

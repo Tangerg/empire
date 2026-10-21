@@ -37,6 +37,35 @@ correct source filter parameters alone do not establish responsive presentation.
 
 ## Shutdown regression gate
 
-A combined checkpoint once printed `Animation presentation checks passed` and then emitted four unsafe `ImageTexture` references and crashed during shutdown. Identity tracing matched all four IDs to the final uncached structure-contact textures, not figure filters or CanvasGroup buffers. Those textures now have explicit board ownership; standalone procedural light nodes use `OwnedLightingSprite` and detach/dispose their own texture wrappers before deletion.
+A combined checkpoint once printed `Animation presentation checks passed` and then emitted four unsafe `ImageTexture` references and crashed during shutdown. Identity tracing matched all four IDs to the final uncached structure-contact textures, not figure filters or CanvasGroup buffers. Those textures now have explicit board ownership; standalone procedural light nodes use `OwnedProceduralSprite` and detach/dispose their own texture wrappers before deletion.
 
 Run `bash tools/godot/lighting-checks/check-lifetimes.sh [absolute-godot-project-directory]`. The optional project path supports an isolated exact-tree copy without changing the source tree. It records actual process exit codes and rejects any resource-leak/error diagnostics even after a success marker. It runs AnimationChecks six times, LightingLifetimeChecks three times, existing real-session screen binding checks, and the lighting oracle contracts. Lifecycle checks cover actual save→JSON→load, repeated projection, rebind during movement, a new-session restart, stale callbacks after unmount, queued scene deletion, cache release ordering, explicit disposal of standalone lights and forced managed finalization. Native visual acceptance remains separate.
+
+## Procedural resource ownership
+
+Generated SVG badges and terrain masks now use `OwnedProceduralSprite`; cache-backed
+sprites continue borrowing their board-owned texture. `OwnedShaderMaterial` owns
+only its generated material and shader, never texture parameters borrowed from
+terrain or imported resources. Removing a ground clip or deleting its sprite
+releases those wrappers explicitly. Capture banners retain their existing visual
+composition and now dispose their exclusive texture through the same owner.
+
+`LightingLifetimeChecks` additionally checks gauges, banners, ground-clip removal,
+borrowed-texture survival, and real terrain/material teardown before managed GC.
+Run `bash tools/godot/lighting-checks/lifetime-mutants.sh` to prove the lifetime
+assertions reject removed texture disposal, removed material disposal, and an SVG
+path that bypasses its owner. The isolated runner requires a clean baseline;
+compilation failures and process timeouts are not successful mutations.
+
+Construction is also transactional: borrowed material inputs are validated before
+allocation, and the procedural sprite factory frees its node and exclusive
+resources if configuration fails. A focused native check retains the failed
+instances and verifies invalidation, borrowed-input survival and propagation of
+the original exception. `lifetime-mutants.sh construction` runs that baseline and
+one deliberate missing-cleanup regression, without repeating the full lifecycle
+matrix. It does not rely on global orphan counters.
+
+These checks establish resource ownership, not completion of the broader native
+quality audit. Catalog/composition, live-unit invariant ownership, application
+admission, localization, metadata consistency and formatter enforcement are
+separate work in progress.

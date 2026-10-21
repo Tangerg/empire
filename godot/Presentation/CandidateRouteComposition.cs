@@ -60,7 +60,7 @@ internal static class CandidateRouteComposition
         if (cache is null)
         {
             var raster = Compose(mask, sourceCell, material, logicalPeriod, worldOrigin);
-            using (raster.Image) sprite = OwnedLightingSprite.Create(raster.Image);
+            using (raster.Image) sprite = OwnedProceduralSprite.Create(raster.Image);
             origin = raster.Origin;
         }
         else

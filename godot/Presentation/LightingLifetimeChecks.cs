@@ -19,7 +19,15 @@ public partial class LightingLifetimeChecks : Node
     {
         try
         {
+            if (OS.GetCmdlineUserArgs().Contains("--construction-only", StringComparer.Ordinal))
+            {
+                FailedTerrainConstruction();
+                GD.Print($"Lighting lifetime checks passed: {_checks} construction assertions.");
+                GetTree().Quit();
+                return;
+            }
             StandaloneOwners();
+            FailedTerrainConstruction();
             for (var cycle = 0; cycle < 3; cycle++) await ScreenLifetime(cycle);
             GC.Collect(); GC.WaitForPendingFinalizers(); GC.Collect();
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
@@ -42,6 +50,31 @@ public partial class LightingLifetimeChecks : Node
         var unit = CandidateBoardLighting.CreateUnitContact(); var unitTexture = unit.Texture;
         unit.Free();
         Require(!GodotObject.IsInstanceValid(unitTexture), "Standalone unit contact lacks deterministic texture ownership.");
+        var gauge = (Sprite2D)DynamicStateView.CreateGauge(40, 100);
+        var gaugeTexture = gauge.Texture;
+        gauge.Free();
+        Require(!GodotObject.IsInstanceValid(gaugeTexture), "Replaced health gauges must release their exclusive procedural texture without GC.");
+        var banner = DynamicStateView.CreateOwnerBanner("#aabbcc");
+        var bannerTexture = banner.Texture;
+        banner.Free();
+        Require(!GodotObject.IsInstanceValid(bannerTexture), "Uncached owner banners must release their exclusive procedural texture without GC.");
+        using var borrowedImage = Image.CreateEmpty(2, 2, false, Image.Format.Rgba8);
+        using var borrowedTexture = ImageTexture.CreateFromImage(borrowedImage);
+        var clipped = new Sprite2D { Texture = borrowedTexture };
+        GroundClipper.Apply(clipped, borrowedTexture, new Vector2(2, 2));
+        var clipMaterial = clipped.Material as ShaderMaterial ?? throw new InvalidOperationException("Clip material was not assigned.");
+        var clipShader = clipMaterial.Shader;
+        GroundClipper.Remove(clipped);
+        Require(clipped.Material is null && !GodotObject.IsInstanceValid(clipMaterial)
+            && !GodotObject.IsInstanceValid(clipShader), "Removing a ground clip must release its exclusive material and shader.");
+        Require(GodotObject.IsInstanceValid(borrowedTexture), "Ground clipping must not dispose borrowed imported or board-owned textures.");
+        GroundClipper.Apply(clipped, borrowedTexture, new Vector2(2, 2));
+        var replacementMaterial = clipped.Material as ShaderMaterial ?? throw new InvalidOperationException("Replacement clip material was not assigned.");
+        var replacementShader = replacementMaterial.Shader;
+        clipped.Free();
+        Require(!GodotObject.IsInstanceValid(replacementMaterial) && !GodotObject.IsInstanceValid(replacementShader),
+            "Deleting a clipped sprite must release generated shader resources without GC.");
+        Require(GodotObject.IsInstanceValid(borrowedTexture), "Sprite teardown must preserve borrowed texture ownership.");
         var materials = WorldMaterialsManifest.Load();
         var level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
         var state = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json")).CreateBattle(level).Snapshot();
@@ -64,6 +97,90 @@ public partial class LightingLifetimeChecks : Node
         try { CandidateBoardLighting.CreateStructureContact(new(80, 96), .8f, cache); }
         catch (ObjectDisposedException) { rejected = true; }
         Require(rejected, "A queued caller must not resurrect a released board resource owner.");
+    }
+
+    private void FailedTerrainConstruction()
+    {
+        using var source = Image.CreateEmpty(2, 2, false, Image.Format.Rgba8);
+        using var borrowed = ImageTexture.CreateFromImage(source);
+        OwnedProceduralSprite? failedSprite = null;
+        Texture2D? failedTexture = null;
+        ShaderMaterial? failedMaterial = null;
+        Shader? failedShader = null;
+        var failure = new InvalidOperationException("Deliberate configuration failure.");
+        var propagated = false;
+        try
+        {
+            OwnedProceduralSprite.Create(source, sprite =>
+            {
+                failedSprite = sprite;
+                failedTexture = sprite.Texture;
+                failedMaterial = OwnedShaderMaterial.Attach(sprite,
+                    "shader_type canvas_item; uniform sampler2D borrowed_texture;").Value;
+                failedShader = failedMaterial.Shader;
+                failedMaterial.SetShaderParameter("borrowed_texture", borrowed);
+                throw failure;
+            });
+        }
+        catch (InvalidOperationException error) when (ReferenceEquals(error, failure))
+        {
+            propagated = true;
+        }
+        Require(propagated, "Construction must propagate the original configuration failure.");
+        Require(failedSprite is not null && !GodotObject.IsInstanceValid(failedSprite),
+            "Failed configuration must free its unattached procedural owner.");
+        Require(failedTexture is not null && !GodotObject.IsInstanceValid(failedTexture)
+            && failedMaterial is not null && !GodotObject.IsInstanceValid(failedMaterial)
+            && failedShader is not null && !GodotObject.IsInstanceValid(failedShader),
+            "Failed configuration must release exclusive texture, material and shader wrappers.");
+        Require(GodotObject.IsInstanceValid(borrowed),
+            "Failed configuration must preserve borrowed texture inputs.");
+        var level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
+        var width = level["width"]!.GetValue<int>();
+        var height = level["height"]!.GetValue<int>();
+        var engine = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var tiles = engine.CreateState(level)["map"]!["tiles"]!.AsArray().Select(EcmaJson.ReadString).ToArray();
+        foreach (var missing in new[] { false, true })
+        {
+            var materials = WorldMaterialsManifest.Load();
+            var failureTiles = tiles.ToArray();
+            failureTiles[0] = materials.TerrainTags.Single(pair => pair.Value.Contains("outside", StringComparer.Ordinal)).Key;
+            var original = materials.Materials["field-material"];
+            materials.Materials["field-material"] = new WorldMaterialRecord
+            {
+                Id = original.Id,
+                SchemaVersion = missing ? original.SchemaVersion : -1,
+                ResourcePath = missing ? "res://assets/missing-lifetime-fixture.png" : original.ResourcePath,
+                LogicalSize = original.LogicalSize,
+                RasterSize = original.RasterSize,
+                WorldOrigin = original.WorldOrigin,
+                Fit = original.Fit,
+                Replaces = original.Replaces,
+                Occupancy = original.Occupancy
+            };
+            var terrain = new TerrainView();
+            try
+            {
+                terrain.Configure(materials, AuthoredScene.Load(), EnvironmentCatalog.Load());
+                if (missing)
+                {
+                    terrain.Render(failureTiles, new(width, height));
+                    Require(terrain.Diagnostics.Any(message => message.Contains("missing-lifetime-fixture", StringComparison.Ordinal)),
+                        "Missing material fixture must exercise the expected art diagnostic boundary.");
+                }
+                else
+                {
+                    var rejected = false;
+                    try { terrain.Render(failureTiles, new(width, height)); }
+                    catch (InvalidOperationException error) when (error.Message.StartsWith("Invalid world material geometry:", StringComparison.Ordinal))
+                    {
+                        rejected = true;
+                    }
+                    Require(rejected, "Malformed material geometry must fail before resource construction.");
+                }
+            }
+            finally { terrain.Free(); }
+        }
     }
 
     private async Task ScreenLifetime(int cycle)
@@ -91,10 +208,7 @@ public partial class LightingLifetimeChecks : Node
         var replacementContact = screen.Board.GetNode<Node2D>("CanonicalProjection").GetChildren().OfType<Node2D>()
             .Select(node => node.GetNodeOrNull<Sprite2D>("SourceStructureContact")).First(sprite => sprite is not null)!;
         Require(ReferenceEquals(contactTexture, replacementContact.Texture), "Reprojection lost shared contact identity.");
-        var unit = session.Snapshot()["units"]!.AsArray().OfType<JsonObject>().Single(value => value["id"]!.GetValue<int>() == 2);
-        var origin = new BoardCell(unit["x"]!.GetValue<int>(), unit["y"]!.GetValue<int>());
-        var order = session.GetLegalOrders(2).First(choice => choice.PresentationRole == "move" && choice.Target is { } at && at != origin);
-        screen.SubmitOrder(order);
+        TacticalSceneInputChecks.Move(screen, session);
         Require(screen.Board.IsPresenting, "Real legal order did not start the cancellation fixture.");
         var loaded = GrayFlagSession.FromSave(engine, EcmaJson.Parse(EcmaJson.Stringify(session.Save()))!);
         Bind(loaded);
@@ -104,12 +218,18 @@ public partial class LightingLifetimeChecks : Node
         Require(!screen.Board.IsPresenting && screen.DisplayedRevision == 0 && !loadedCache.IsDisposed,
             "Old playback callback resurrected/released the loaded view.");
         // Restart is a new canonical session, not a fake state rewind.
-        Bind(new GrayFlagSession(engine, level));
+        var restarted = new GrayFlagSession(engine, level);
+        Bind(restarted);
         Require(loadedCache.IsDisposed && !screen.Board.LightingResources.IsDisposed, "Restart did not replace exactly one resource owner.");
+        screen.ConfigureTerrain(WorldMaterialsManifest.Load());
+        var exclusiveTextures = Descendants(screen).OfType<OwnedProceduralSprite>().Select(sprite => sprite.Texture).ToArray();
+        var generatedMaterials = Descendants(screen).OfType<OwnedShaderMaterial>().Select(owner => owner.Value).ToArray();
+        Require(exclusiveTextures.Length > 0 && generatedMaterials.Length > 0,
+            "The real board lifecycle must exercise procedural terrain and generated materials.");
         var exitingCache = screen.Board.LightingResources;
         var saves = 0; screen.BindApplicationActions(onSave: () => saves++);
         var staleSave = Buttons(screen).Single(button => button.Text == "保存");
-        screen.SubmitOrder(order);
+        TacticalSceneInputChecks.Move(screen, restarted);
         Require(screen.Board.IsPresenting, "Restarted view did not start a live queued transition.");
         RemoveChild(screen); // The same unmount boundary used by application scene changes.
         staleSave.EmitSignal(Button.SignalName.Pressed);
@@ -118,11 +238,17 @@ public partial class LightingLifetimeChecks : Node
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         Require(exitingCache.IsDisposed && exitingCache.TextureCount == 0, "Queued scene teardown did not dispose its cache.");
+        Require(exclusiveTextures.All(texture => !GodotObject.IsInstanceValid(texture)),
+            "Queued board teardown retained exclusive procedural textures before GC.");
+        Require(generatedMaterials.All(material => !GodotObject.IsInstanceValid(material)),
+            "Queued board teardown retained exclusive generated materials before GC.");
         GC.Collect(); GC.WaitForPendingFinalizers(); GC.Collect();
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         GD.Print($"Lighting lifecycle cycle {cycle + 1}: load/rebind/restart/queued exit released resources.");
     }
 
+    private static System.Collections.Generic.IEnumerable<Node> Descendants(Node node) => node.GetChildren()
+        .SelectMany(child => new[] { child }.Concat(Descendants(child)));
     private static System.Collections.Generic.IEnumerable<Button> Buttons(Node node) => node.GetChildren()
         .SelectMany(child => (child is Button button ? new[] { button } : Array.Empty<Button>()).Concat(Buttons(child)));
     private void Require(bool condition, string message) { _checks++; if (!condition) throw new InvalidOperationException(message); }

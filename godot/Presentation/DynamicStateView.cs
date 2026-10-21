@@ -184,17 +184,25 @@ public sealed class DynamicStateView
     {
         var view = bounds ?? new Rect2(0, 0, 32, 32);
         var source = $"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{F(view.Size.X)}\" height=\"{F(view.Size.Y)}\" viewBox=\"{F(view.Position.X)} {F(view.Position.Y)} {F(view.Size.X)} {F(view.Size.Y)}\">{markup}</svg>";
-        ImageTexture texture;
-        if (cache is not null) texture = cache.SvgSource(source, 2);
+        Sprite2D sprite;
+        if (cache is not null)
+        {
+            sprite = new Sprite2D { Texture = cache.SvgSource(source, 2) };
+        }
         else
         {
             using var image = new Image();
             var error = image.LoadSvgFromString(source, 2);
-            if (error != Error.Ok) throw new InvalidOperationException($"Dynamic source drawing failed: {name}, {error}");
-            texture = ImageTexture.CreateFromImage(image);
+            if (error != Error.Ok)
+                throw new InvalidOperationException($"Dynamic source drawing failed: {name}, {error}");
+            sprite = OwnedProceduralSprite.Create(image);
         }
-        return new Sprite2D { Name = name, Texture = texture, Centered = false,
-            Offset = (view.Position - new Vector2(16, 31)) * 2, Scale = Vector2.One / 2, TextureFilter = CanvasItem.TextureFilterEnum.Nearest };
+        sprite.Name = name;
+        sprite.Centered = false;
+        sprite.Offset = (view.Position - new Vector2(16, 31)) * 2;
+        sprite.Scale = Vector2.One / 2;
+        sprite.TextureFilter = CanvasItem.TextureFilterEnum.Nearest;
+        return sprite;
     }
 
     private static string OwnerBanner(string color) =>
