@@ -76,7 +76,7 @@ public sealed class AbilityCommands(AbilityRules rules, TacticalCommands command
             if (target is null) throw new IllegalActionException(new ActionRefusal("ability.target_required", new() { ["abilityId"] = ability.Id }));
             if (!Targets(ability, query).Contains(target.Value)) throw new IllegalActionException(new ActionRefusal("ability.target_invalid", new() { ["abilityId"] = ability.Id }));
         }
-        var surviving = commands.ApplyMovement(state, movement, emit, rules.Combat.ResolvePartingShots);
+        var surviving = commands.ApplyMovement(rules.Combat.ResolvePartingShots, state, movement, emit);
         if (surviving is null) return;
         if (target is { } at) commands.TurnToward(state, surviving, movement.Destination, at, emit);
         ability.Execute(rules, query, target, emit);

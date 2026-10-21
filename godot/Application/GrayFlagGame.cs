@@ -16,6 +16,7 @@ public partial class GrayFlagGame : Node
     private GrayFlagEngine engine = null!;
     private GameText text = null!;
     private ActionRefusalText refusals = null!;
+    private BattleText battleText = null!;
     private JsonArray packs = null!;
     private GrayFlagCampaign campaign = null!;
     private StoryDocument stories = null!;
@@ -42,6 +43,7 @@ public partial class GrayFlagGame : Node
     public override void _Ready()
     {
         if (GetParent() == GetTree().Root && PackageChecks.StartRequestedCheck(GetTree())) return;
+        AutoTranslateMode = AutoTranslateModeEnum.Disabled;
         TranslationServer.SetLocale(GodotTextCatalog.Locale);
         text = GodotTextCatalog.LoadSimplifiedChinese();
         packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
@@ -49,6 +51,10 @@ public partial class GrayFlagGame : Node
         refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
         definition = PresentationJson.Load<JsonObject>("res://data/grayflag-campaign.json");
         levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json");
+        var objectiveText = ObjectiveText.CreateDefault(text);
+        objectiveText.ValidateCoverage(engine.Objectives.Keys());
+        battleText = new BattleText(text, BattleTextDocument.Parse(
+            Godot.FileAccess.GetFileAsString("res://data/grayflag-battle-text.json"), levels, engine.Objectives), objectiveText.Seal());
         presentation = PresentationJson.Load<JsonObject>("res://data/grayflag-staging.json");
         narrative = NarrativePresentationDocument.Load(text);
         campaign = NewCampaign();
@@ -81,8 +87,8 @@ public partial class GrayFlagGame : Node
                 screen = null;
                 SetView(result);
                 var state = expectedSession.Snapshot();
-                result.ShowCompletion(state["winnerTeam"] is null ? "平局" : report.Outcome == "victory" ? "胜利" : "战败",
-                    state["endReason"]?.GetValue<string>() ?? "", report.Outcome == "victory",
+                result.ShowCompletion(text.Format(state["conclusion"]!["team"] is null ? "battle.result.draw" : report.Outcome == "victory" ? "battle.result.victory" : "battle.result.defeat"),
+                    battleText.DescribeConclusion(Empire.Core.Determinism.EcmaJson.ToElement(state)), report.Outcome == "victory",
                     () => {
                         if (!ReferenceEquals(session, expectedSession) || !ReferenceEquals(view, result)) return;
                         campaign.FinishBattle(); session = null;
@@ -122,7 +128,7 @@ public partial class GrayFlagGame : Node
         view = next; AddChild(next);
     }
 
-    private GrayFlagCampaign NewCampaign(JsonObject? state = null) => new(definition, levels, engine, text, refusals, state);
+    private GrayFlagCampaign NewCampaign(JsonObject? state = null) => new(definition, levels, engine, text, refusals, battleText, state);
 
     private bool TryPersistCampaign()
     {
@@ -274,7 +280,7 @@ public partial class GrayFlagGame : Node
         };
         var grid = engine.Grids.Get(level["rules"]?["grid"]?.GetValue<string>() ?? "square4");
         var nextScreen = PrepareMounted(new BattleScreen(), next => {
-            next.BindSession(boundSession, AssetCatalog.Load(), level, scene, EnvironmentCatalog.Load(),
+            next.BindSession(text, battleText, boundSession, AssetCatalog.Load(), level, scene, EnvironmentCatalog.Load(),
                 facing => facing is not null && grid.Step(new Coord(0, 0), facing).X < 0,
                 facing => { if (facing is null) return Vector2.Zero; var origin = grid.Center(new Coord(0, 0)); var point = grid.Center(grid.Step(new Coord(0, 0), facing)); return new Vector2((float)(point.X - origin.X), (float)(point.Y - origin.Y)); }, initialLogMessage);
             next.ConfigureTerrain(WorldMaterialsManifest.Load());

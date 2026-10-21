@@ -25,7 +25,12 @@ if [[ "$FROZEN" == false ]]; then
   done
 fi
 python3 tools/godot/engine-composition-checks/architecture.py "$ROOT"
-dotnet run --project tools/godot/engine-composition-checks -- "$ROOT/tools/godot/engine-composition-checks/source-oracle.json.gz" "$ROOT"
+timeout --signal=TERM --kill-after=10s "${EMPIRE_CHECK_TIMEOUT_SECONDS:-180}" \
+  dotnet build tools/godot/engine-composition-checks/EngineCompositionChecks.csproj \
+  --disable-build-servers --nologo -m:1 -p:UseSharedCompilation=false
+timeout --signal=TERM --kill-after=10s "${EMPIRE_CHECK_TIMEOUT_SECONDS:-180}" \
+  dotnet tools/godot/engine-composition-checks/bin/Debug/net8.0/EngineCompositionChecks.dll \
+  "$ROOT/tools/godot/engine-composition-checks/source-oracle.json.gz" "$ROOT"
 if [[ "$GUARDS" == true ]]; then
   python3 tools/godot/engine-composition-checks/mutants.py "$ROOT/tools/godot/engine-composition-checks/source-oracle.json.gz" "$WORK/mutants" "$FROZEN"
 fi

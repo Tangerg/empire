@@ -101,14 +101,14 @@ foreach (var target in new[] { new Coord(-1, 1), new Coord(999, 0), new Coord(2,
 {
     var state = State(); var events = new List<JsonObject>(); var partingShots = 0;
     state["rules"]!["zoneOfControl"] = true;
-    engine.Commands.ApplyMovement(state, new JsonObject { ["unit"] = 1,
-        ["path"] = new JsonArray(Point(1, 1), Point(1, 2)) }, events.Add, (draft, unit, from, to, emit) =>
+    engine.Commands.ApplyMovement((draft, unit, from, to, emit) =>
     {
         partingShots++;
         Check(from == origin && to == destination && Capture(draft, origin) == 0 && TacticalQueries.Position(unit) == destination,
             "parting-shot policy sees completed relocation");
         Check(events[^1]["type"]!.GetValue<string>() == "move", "movement event precedes parting shots");
-        emit(new JsonObject { ["type"] = "parting-observation" });
+        emit(new JsonObject { ["type"] = "parting-observation" }, state, new JsonObject { ["unit"] = 1,
+        ["path"] = new JsonArray(Point(1, 1), Point(1, 2)) }, events.Add);
     });
     Check(partingShots == 1 && Unit(state)["directive"]!["cursor"]!.GetValue<int>() == 1 &&
         Unit(state)["facing"]!.GetValue<string>() == "south" && !Unit(state)["done"]!.GetValue<bool>(),

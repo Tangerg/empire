@@ -28,7 +28,7 @@ try {
   index++;
  }
  if(!ended)throw new Exception("source fixture incomplete, terminal result not observed");
- Console.WriteLine($"PASS native {id}: {index} independently chosen actions and exact events/state, winner {battle.Snapshot()["winnerTeam"]}");
+ Console.WriteLine($"PASS native {id}: {index} independently chosen actions and exact events/state, conclusion {battle.Snapshot()["conclusion"]}");
  File.WriteAllText(Path.Combine(diagnostics,id+".native-pass"),$"{index}\n");
 } catch(Exception error) {
  var failure=new JsonObject{["level"]=id,["index"]=index,["phase"]=phase,["message"]=error.Message,["actualAction"]=action?.DeepClone(),["stateHash"]=battle?.StateHash};

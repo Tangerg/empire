@@ -17,12 +17,6 @@ Check("independent RNG streams", () => {
  var rng = new SplitMixRandom();
  foreach(var v in Read("random-vectors.json").AsArray()) { var r=RandomState.Create(v!["seed"]!.GetValue<uint>()); var stream=v["stream"]!.GetValue<string>(); foreach(var n in v["draws"]!.AsArray()) { Equal(n!.GetValue<double>(),rng.Peek(r,stream));Equal(n.GetValue<double>(),rng.Next(r,stream)); } }
 });
-Check("initial state factory", () => {
- var f=Read("grayflag-initial-raw.json");var packs=JsonNode.Parse(File.ReadAllText(Path.Combine(root,"../../data/content-packs.json")))!.AsArray();
- var engine = new GrayFlagEngine(packs);
- var actual=BattleStateFactory.Create(new BattleStateRules(engine.Catalog,engine.Grids,engine.Reactions),f["level"]!.AsObject());
- Equal(StateDigest.Hash(f["state"]!),StateDigest.Hash(actual));
-});
 Check("three tactical grids", () => {
  var grids=new Dictionary<string,ITacticalGrid>{{"square4",new Square4Grid()},{"square8",new Square8Grid()},{"hex",new OddRowHexGrid()}};
  Coord Point(JsonNode n)=>new(n["x"]!.GetValue<int>(),n["y"]!.GetValue<int>());
@@ -36,9 +30,7 @@ Check("transaction rollback",()=>{
 Check("detached committed state and events",()=>{
  JsonObject? retained=null;var emitted=new JsonObject{["n"]=2};var r=new BattleActionRegistry();r.Register("go",(s,a,emit)=>{retained=s;s["n"]=2;a["kind"]="changed";emit(emitted);});var b=new Battle(new JsonObject{["n"]=1},r);var action=new JsonObject{["kind"]="go"};var receipt=b.Dispatch(action);retained!["n"]=3;emitted["n"]=4;receipt.Before["n"]=5;var snapshot=b.Snapshot();snapshot["n"]=6;Equal(2,b.Snapshot()["n"]!.GetValue<int>());Equal(2,receipt.Events[0]["n"]!.GetValue<int>());Equal("go",action["kind"]!.GetValue<string>());
 });
-Check("six TS tactic action snapshots", () => SupportChecks.Tactics(root));
 Check("resource clamping and atomic costs", SupportChecks.Resources);
-foreach (var aggression in new[] { "0.35", "0.58", "0.8" })
-    Check($"full native replay {aggression}", () => ReplayChecks.Run(root, aggression));
-Check("level normalization and canonical spawn", () => StateContractChecks.Run(root));
+Check("opening unchanged gameplay and native persistence", () => ReplayChecks.OpeningGameplay(root));
+Check("shipped native full-level replay/save", () => ReplayChecks.ShippedLevels(root));
 Console.WriteLine($"{passed} passed; {failed} failed");return failed==0?0:1;

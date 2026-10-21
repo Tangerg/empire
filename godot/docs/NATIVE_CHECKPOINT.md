@@ -1,6 +1,13 @@
 # Native campaign checkpoint, 2026-10-21
 
-This is a working migration checkpoint, not full visual or feature completion.
+This document records historical migration evidence through the prose-bearing
+prototype contract. Its package, source-hash and assertion results apply only to
+the named checkpoints, not automatically to the current source. Current semantic
+outcome contracts and their breaking save formats are documented in
+[OBJECTIVE-OUTCOME-SCHEMA.md](OBJECTIVE-OUTCOME-SCHEMA.md).
+`tools/godot/verify-native.sh` is the current native acceptance entry point.
+It does not claim obsolete whole-state TypeScript hashes remain equal. This is
+not full visual, localization or feature completion.
 
 ## Final distribution evidence
 
@@ -14,7 +21,7 @@ See `LINUX-PACKAGE.md` and `MACOS-PACKAGE.md` for reproduction and platform limi
 
 A legal test-player route now wins the first two battles with real roster carryover, without modifying rules, unit statistics, opponent policy or outcomes. Native independently selects opponent actions and matches the original source through 428 accepted actions, ordered events/state hashes and 14 source save/resumes. The campaign remains active at aftermath-02. Battle 2 uses the source engine's elimination fallback with all three refugees alive; it is not escort-objective completion or a full victorious campaign.
 
-The deterministic compressed trace and source regeneration script are in `tools/godot/campaign-victory-checks`; the frozen runner is included in `verify-native.sh`. An intentionally corrupted first-action digest is rejected. The native opening-battle-2 manual save used for river visual checks is captured only after replaying the genuine first victory, not by injecting progression.
+The deterministic compressed trace and source regeneration script are in `tools/godot/campaign-victory-checks`; the frozen runner remains historical evidence, outside the current schema gate. An intentionally corrupted first-action digest is rejected. The native opening-battle-2 manual save used for river visual checks is captured only after replaying the genuine first victory, not by injecting progression.
 
 ## Actual Linux desktop check and player-facing status
 
@@ -263,7 +270,7 @@ observations, the 2000-action guard and disposal, with five rejected mutants.
 Twenty mounted Game assertions verify actual AI-selected commits, post-animation
 Save/Load blocking, deadline timing and lifecycle cancellation. Result-flow150
 and application127 still pass. Frozen gzip fixtures run without Node; live-source
-and mutation checks are available through verify-native.sh --full. The final
+and mutation checks were available in the historical aggregate runner. The final
 exact-index aggregate is the next gate; focused passes alone are not that gate.
 
 No new GUI acceptance is claimed. Remaining required work includes original

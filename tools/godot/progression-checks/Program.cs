@@ -25,8 +25,8 @@ var catalogs = input["catalogs"]!.AsArray();
 // composition correctly rejects it; keep this test at the same raw boundary.
 var engines = catalogs.Select((packs, index) => index == 2 ? null : new GrayFlagEngine(packs!.AsArray())).ToArray();
 var rawCatalog = new ReadOnlyContent(catalogs[2]!.AsArray());
-var rawProgression = new BattleProgression(rawCatalog, engines[0]!.Grids,
-    engines[0]!.Resources, engines[0]!.Commands, new CombatEffects(rawCatalog, new ThresholdRankProgressionPolicy()));
+var rawProgression = new BattleProgression(new BattleProgressionRules(rawCatalog, engines[0]!.Grids,
+    engines[0]!.Resources, engines[0]!.Commands, new CombatEffects(rawCatalog, new ThresholdRankProgressionPolicy())));
 var count = 0;
 var nativeRejections = 0;
 var kinds = new Dictionary<string, int>();

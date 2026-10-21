@@ -5,6 +5,7 @@ using Empire.Application;
 using Empire.Presentation.Feedback;
 using Empire.Core.Campaign;
 using Empire.Core.Engine;
+using Empire.Core.Lifecycle;
 using Empire.Localization;
 using Empire.Core.Determinism;
 using Godot;
@@ -236,14 +237,17 @@ public partial class CampaignNavigationChecks : Node
 
     private void CheckInvalidSave()
     {
-        ResetAutosave(); const string malformed = "{not a campaign save"; File.WriteAllText(automaticPath, malformed);
-        var stamp = Stamp(automaticPath); var game = MountGame(); var menu = View<CampaignMenuScreen>(game);
-        var notice = Field<GameText>(game, "text").Format("error.campaign.save_rejected");
-        Require(!menu.Presented!.CanContinue && menu.Presented.RejectedNotice == notice && Labels(menu).Any(label => label == notice), "Malformed slot did not produce a visible localized non-destructive notice.");
-        Require(File.ReadAllText(automaticPath) == malformed && Stamp(automaticPath) == stamp, "Reading an invalid save changed or deleted it.");
-        Press(Button(menu, "NewCampaign"));
-        Require(View<Control>(game) is StoryScreen && !File.Exists(automaticPath), "Explicit New did not replace the rejected slot as in the source menu.");
-        Retire(game);
+        foreach (var rejected in new[] { "{not a campaign save", "{\"schema\":0}" })
+        {
+            ResetAutosave(); File.WriteAllText(automaticPath, rejected);
+            var stamp = Stamp(automaticPath); var game = MountGame(); var menu = View<CampaignMenuScreen>(game);
+            var notice = Field<GameText>(game, "text").Format("error.campaign.save_rejected");
+            Require(!menu.Presented!.CanContinue && menu.Presented.RejectedNotice == notice && Labels(menu).Any(label => label == notice), "Malformed or unsupported slot did not produce a visible localized non-destructive notice.");
+            Require(File.ReadAllText(automaticPath) == rejected && Stamp(automaticPath) == stamp, "Reading a malformed or unsupported save changed or deleted it.");
+            Press(Button(menu, "NewCampaign"));
+            Require(View<Control>(game) is StoryScreen && !File.Exists(automaticPath), "Explicit New did not replace the rejected slot.");
+            Retire(game);
+        }
     }
 
     private void CheckEndingFixtures()
@@ -312,15 +316,21 @@ public partial class CampaignNavigationChecks : Node
 
     private void CheckVictorySettlement()
     {
-        // The preserved source terminal state drives UI only; its envelope is written by the current native owner.
+        // Explicit current-native terminal fixtures drive UI only, not a claimed victorious gameplay route.
         foreach (var action in new[] { "Proceed", "CampaignExit", "failed-write" })
         {
             WriteFixture(battleNodeState); var game = MountGame(); Press(Button(View<Control>(game), "ContinueCampaign"));
             Press(Button(View<Control>(game), "StartBattle")); var campaign = Campaign(game);
-            var document = campaign.Save(); var oracle = PresentationJson.Load<JsonObject>("res://tests/oracle/grayflag-0.58.json");
-            document["battle"] = Field<GrayFlagEngine>(game, "engine").SaveBattle(oracle["finalSave"]!["state"]!.AsObject());
-            document["events"] = new JsonArray(oracle["steps"]!.AsArray().OfType<JsonObject>()
-                .SelectMany(step => step["events"]!.AsArray()).Select(value => value!.DeepClone()).ToArray());
+            var document = campaign.Save();
+            var terminal = campaign.Battle!.Snapshot();
+            var conclusion = BattleConclusion.LastTeamRemaining(1);
+            foreach (var player in terminal["players"]!.AsArray().OfType<JsonObject>())
+                player["alive"] = player["team"]!.GetValue<int>() == conclusion.Team;
+            terminal["phase"] = "over";
+            terminal["conclusion"] = conclusion.ToJson();
+            terminal["scenario"]!["eventCounts"]!["gameOver"] = 1;
+            document["battle"] = Field<GrayFlagEngine>(game, "engine").SaveBattle(terminal);
+            document["events"] = new JsonArray(new JsonObject { ["type"] = "gameOver", ["conclusion"] = conclusion.ToJson() });
             campaign.Load(document); SetField(game, "session", campaign.Battle); SetField(game, "screen", null); SetField(game, "resultOffered", false);
             game._Process(0); var completion = View<BattleResultScreen>(game);
             var previous = File.ReadAllText(automaticPath); var before = State(game);
@@ -386,8 +396,9 @@ public partial class CampaignNavigationChecks : Node
             var engine = new GrayFlagEngine(packs);
             var text = GodotTextCatalog.LoadSimplifiedChinese();
             var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
+            var battleText = BattleTextChecks.Load(engine, text);
             var levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json");
-            var candidate = new GrayFlagCampaign(definition, levels, engine, text, refusals, battleNodeState);
+            var candidate = new GrayFlagCampaign(definition, levels, engine, text, refusals, battleText, battleNodeState);
             candidate.BeginBattle();
             var invalid = candidate.Save();
             var obsoleteRequest = candidate.RequestSnapshot()!;
@@ -399,13 +410,21 @@ public partial class CampaignNavigationChecks : Node
                 "Malformed manual request replaced the campaign or visible screen.");
             Require(Descendants(game).OfType<AcceptDialog>().Any(dialog => dialog.DialogText.Contains("读取失败，当前进度未变", StringComparison.Ordinal)),
                 "Rejected manual document did not report a recoverable input failure.");
+            DismissNotices(game);
 
-            foreach (var dialog in Descendants(game).OfType<AcceptDialog>().ToArray())
-            {
-                dialog.Hide();
-                dialog.Free();
-            }
-            var opening = new GrayFlagCampaign(definition, levels, engine, text, refusals);
+            var obsolete = candidate.Save();
+            obsolete["schema"] = 2;
+            SaveFile.WriteDocument(manualPath, obsolete);
+            var obsoleteBytes = File.ReadAllBytes(manualPath);
+            var obsoleteStamp = Stamp(manualPath);
+            game._UnhandledKeyInput(new InputEventKey { Pressed = true, Keycode = Key.F9 });
+            Require(ReferenceEquals(Campaign(game), activeCampaign) && ReferenceEquals(View<Control>(game), activeView) && State(game) == before,
+                "Unsupported application save version replaced the active campaign or screen.");
+            Require(File.ReadAllBytes(manualPath).SequenceEqual(obsoleteBytes) && Stamp(manualPath) == obsoleteStamp,
+                "Rejecting an unsupported application save rewrote or deleted its original bytes.");
+
+            DismissNotices(game);
+            var opening = new GrayFlagCampaign(definition, levels, engine, text, refusals, battleText);
             SaveFile.WriteDocument(manualPath, opening.Save());
             var children = game.GetChildCount();
             SetField(game, "stories", new StoryDocument());
@@ -436,6 +455,14 @@ public partial class CampaignNavigationChecks : Node
         var saved = ReadSave();
         Require(saved.ContainsKey("state") && saved.ContainsKey("savedAt") && !saved.ContainsKey("request") && !saved.ContainsKey("battle") && !saved.ContainsKey("events") && !saved.ContainsKey("atCamp"), "Autosave is not the canonical campaign-only envelope.");
         Require(Digest(CampaignSave.Load(saved, definition)["state"]!.AsObject()) == State(game) && saved["state"]!["pendingBattle"] is null, "Autosave does not represent the exact clean canonical campaign state.");
+    }
+    private static void DismissNotices(GrayFlagGame game)
+    {
+        foreach (var dialog in Descendants(game).OfType<AcceptDialog>().ToArray())
+        {
+            dialog.Hide();
+            dialog.Free();
+        }
     }
     private void CheckManualUnchanged()
     {

@@ -11,7 +11,7 @@ const packs: ContentPack[] = JSON.parse(readFileSync('godot/data/content-packs.j
 const content = createContentCatalog();
 new ContentPackInstaller(content).install(...packs);
 const engine = createBattleEngine({ content });
-const level: LevelData = JSON.parse(readFileSync('godot/data/grayflag-level.json', 'utf8'));
+const level: LevelData = JSON.parse(readFileSync('godot/tests/oracle/source-v1/grayflag-level.json', 'utf8'));
 const state = engine.createState(level);
 const features = {
   abilities: engine.rules.abilities.keys(), reactions: engine.rules.reactions.keys(), directives: engine.rules.directives.keys(),

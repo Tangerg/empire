@@ -7,7 +7,7 @@ import { runScenarioTriggers } from '../../../packages/battle-engine/src/scenari
 const root=resolve('godot');
 const packs=JSON.parse(readFileSync(root+'/data/content-packs.json','utf8'));
 const content=createContentCatalog(); new ContentPackInstaller(content).install(...packs);
-const engine=createBattleEngine({content}); const level=JSON.parse(readFileSync(root+'/data/grayflag-level.json','utf8'));
+const engine=createBattleEngine({content}); const level=JSON.parse(readFileSync(root+'/tests/oracle/source-v1/grayflag-level.json','utf8'));
 type Operation='start'|'advanceTurn'|'afterAction'|'beginPlaying';
 interface LifecycleCase {
  name:string;

@@ -47,7 +47,7 @@ public static class DefaultBattlePlugins
         context.Provide(Keys.Space, new DefaultTacticalSpace(context.Require(Keys.Content), context.Require(Keys.Grids))),
         provides: [Keys.Space], requiresCapabilities: [Keys.Content, Keys.Grids]);
 
-    public static EnginePlugin MissionRules { get; } = new("engine.mission-rules", 1, context =>
+    public static EnginePlugin MissionRules { get; } = new("engine.mission-rules", 2, context =>
     {
         context.Provide(Keys.ActionHandlers, DefaultActionHandlers.Create());
         context.Provide(Keys.ScenarioConditions, DefaultScenarioConditions.Create(context.Require(Keys.Random)));

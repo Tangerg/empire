@@ -59,13 +59,13 @@ public partial class BattleScreen
             _globalOrders.AddChild(button);
         }
         if (queries.Phase == "deployment")
-            Add("FinishDeployment", "确认部署", queries.HumanInput,
+            Add("FinishDeployment", _text.Format("ui.battle.finish_deployment"), queries.HumanInput,
                 () => DispatchTactical(new(stamp, TacticalRequestKind.Action, EcmaJson.ToElement(new JsonObject { ["kind"] = "finishDeployment" }))));
         else if (queries.Phase != "over")
         {
-            Add("EndTurn", "结束回合", queries.HumanTurn,
+            Add("EndTurn", _text.Format("ui.battle.end_turn"), queries.HumanTurn,
                 () => HandleTactical(_tactical.Key(stamp, "e")));
-            Add("Undo", "撤销", queries.HumanTurn && queries.CanUndo,
+            Add("Undo", _text.Format("ui.battle.undo"), queries.HumanTurn && queries.CanUndo,
                 () => HandleTactical(_tactical.Key(stamp, "u")));
         }
     }
@@ -111,8 +111,8 @@ public partial class BattleScreen
             ? _session.Undo(request.Stamp.Revision)
             : _session.Dispatch(request.Action ?? throw new InvalidOperationException("Action request lacks its canonical payload."), request.Stamp.Revision);
         ShowFeedback(result.Message);
-        if (!result.Accepted) AppendMessage("无法执行：" + result.Message);
-        else if (request.Kind == TacticalRequestKind.Undo) AppendMessage("已撤销上一步");
+        if (!result.Accepted) AppendMessage(_text.Format("feedback.battle.refused", result.Message));
+        else if (request.Kind == TacticalRequestKind.Undo) AppendMessage(_text.Format("feedback.session.undone"));
         // Both accepted commands and legal refusals return to the source resting selection.
         _tactical.CompleteDispatch(request.Stamp, _session.GetTacticalQueries(_tacticalBinding));
         Refresh();

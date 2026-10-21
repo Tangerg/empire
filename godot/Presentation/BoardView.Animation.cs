@@ -74,7 +74,7 @@ public partial class BoardView
             for (var index = 0; index < events.Length; index++)
             {
                 if (!ReferenceEquals(_playback, playback)) return false;
-                if (!await PresentEvent(playback, events[index])) return false;
+                if (!await PresentEvent(playback, events[index], transition.EventDescriptions[index])) return false;
                 if (!ReferenceEquals(_playback, playback)) return false;
                 EventPresented?.Invoke(transition, index);
             }
@@ -92,7 +92,7 @@ public partial class BoardView
         }
     }
 
-    private async Task<bool> PresentEvent(Playback playback, JsonObject item)
+    private async Task<bool> PresentEvent(Playback playback, JsonObject item, string description)
     {
         switch (Text(item, "type"))
         {
@@ -132,7 +132,7 @@ public partial class BoardView
                 var player = Objects(playback.After, "players").FirstOrDefault(value => Integer(value, "id") == Integer(item, "player"));
                 if (player is null) return true;
                 Repaint(playback);
-                return await Announce(playback, $"{Text(player, "name")} · 第 {Integer(item, "turn")} 回合", Color.FromHtml(Text(player, "color")));
+                return await Announce(playback, description, Color.FromHtml(Text(player, "color")));
             }
             case "gameOver":
                 return await playback.Clock.WaitAsync(220);

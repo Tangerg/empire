@@ -29,9 +29,9 @@ public sealed class CampaignAggregate
         if (!CampaignConditionRegistry.Contains(state["completedNodes"], completed)) Array(state["completedNodes"], "completedNodes").Add(completed);
         state["currentNode"] = next;
     }
-    public void ProjectBattleResult(JsonObject result)
+    public void ProjectBattleResult(CampaignBattleResult result)
     {
-        foreach (var value in Objects(result["units"], "units"))
+        foreach (var value in Objects(result.ToJson()["units"], "units"))
         {
             if (state["roster"]![Text(value, "campaignUnit")] is not JsonObject unit) continue;
             foreach (var key in new[] { "disposition", "hpRatio", "moraleRatio", "unitType", "rank", "rankProgress", "resources", "career", "unlockedCareers", "careerMastery", "learnedAbilities" })
@@ -105,9 +105,11 @@ public sealed class CampaignRuntime
     {
         RequireActive(); var node = aggregate.Node();
         if (state["pendingBattle"] is not JsonObject pending || Text(node, "type") != "battle") throw new CampaignActionException("campaign has no pending battle");
+        var admitted = CampaignBattleResult.Parse(result);
+        result = admitted.ToJson();
         if (Text(pending, "requestId") != Text(result, "requestId") || Text(pending, "node") != Text(node, "id"))
             throw new CampaignActionException("battle result does not match pending request");
-        aggregate.ProjectBattleResult(result);
+        aggregate.ProjectBattleResult(admitted);
         var outcome = Text(result, "outcome");
         aggregate.Apply(node["outcomeEffects"]?[outcome] as JsonArray);
         Array(state["battleHistory"], "battleHistory").Add(new JsonObject { ["requestId"] = result["requestId"]!.DeepClone(),

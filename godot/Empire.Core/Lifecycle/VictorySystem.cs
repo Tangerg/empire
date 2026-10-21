@@ -5,15 +5,12 @@ using static Empire.Core.Lifecycle.TurnOrderSystem;
 
 namespace Empire.Core.Lifecycle;
 
-public readonly record struct VictoryResult(int? Team, string Reason);
-public sealed record ObjectiveProgress(string Id, string Description, string Status, string Progress, string Role);
-
 /// <summary>Owns objective transitions and defeat ordering; handlers own objective policy.</summary>
 public sealed class VictorySystem(ObjectiveRules rules, ObjectiveHandlerRegistry handlers)
 {
     public ObjectiveRules Rules { get; } = rules;
     public ObjectiveHandlerRegistry Handlers { get; } = handlers;
-    public VictoryResult Evaluate(JsonObject state, Action<JsonObject> emit)
+    public BattleConclusion? Evaluate(JsonObject state, Action<JsonObject> emit)
     {
         RefreshObjectiveStates(state, emit);
         foreach (var owner in Players(state))
@@ -26,18 +23,18 @@ public sealed class VictorySystem(ObjectiveRules rules, ObjectiveHandlerRegistry
                 owner["alive"] = false;
         }
         var living = Players(state).Where(owner => IsTrue(owner["alive"])).ToArray();
-        if (living.Length == 0) return new VictoryResult(null, "全员覆灭");
+        if (living.Length == 0) return BattleConclusion.AllDefeated();
         if (living.Select(owner => Integer(owner, "team")).Distinct().Count() == 1)
-            return new VictoryResult(Integer(living[0], "team"), "敌军已被全歼");
+            return BattleConclusion.LastTeamRemaining(Integer(living[0], "team"));
         foreach (var owner in living)
         {
             var completed = Objects(owner["objectives"], "objectives").FirstOrDefault(objective =>
                 Handlers.Role(objective) != "optional" && Status(state, Integer(owner, "id"), objective) == "completed");
-            if (completed is not null) return new VictoryResult(Integer(owner, "team"), $"{Text(owner, "name")} 完成目标：{Handlers.Describe(completed)}");
+            if (completed is not null) return BattleConclusion.ObjectiveCompleted(Integer(owner, "team"), Integer(owner, "id"), Text(completed, "id"));
         }
         var limit = Object(state["rules"], "rules")["turnLimit"];
         return limit is not null && Number(state["turn"], "turn") > Number(limit, "turn limit")
-            ? new VictoryResult(null, "回合数耗尽，平局") : new VictoryResult(null, "");
+            ? BattleConclusion.TurnLimitReached() : null;
     }
 
     public void RefreshObjectiveStates(JsonObject state, Action<JsonObject> emit)
@@ -74,14 +71,11 @@ public sealed class VictorySystem(ObjectiveRules rules, ObjectiveHandlerRegistry
     }
 
     public string Outcome(JsonObject state, int owner, JsonObject objective) => Handlers.Evaluate(Rules, state, owner, objective);
-    public string Describe(JsonObject objective) => Handlers.Describe(objective);
-    public string Progress(JsonObject state, int owner, JsonObject objective) => Handlers.Progress(Rules, state, owner, objective);
     public static string Status(JsonObject state, int owner, JsonObject objective) => ObjectiveHandlerRegistry.Status(state, owner, objective);
     public IReadOnlyList<ObjectiveProgress> Objectives(JsonObject state, int owner) =>
         Objects(Player(state, owner)["objectives"], "objectives")
             .Where(objective => !IsTrue(Player(state, owner)["objectiveStates"]?[Text(objective, "id")]?["hidden"]))
-            .Select(objective => new ObjectiveProgress(Text(objective, "id"), objective["label"] is { } label ? Text(label, "label") : Describe(objective),
-                Status(state, owner, objective), Progress(state, owner, objective), Handlers.Role(objective))).ToArray();
+            .Select(objective => Handlers.Project(Rules, state, owner, objective)).ToArray();
     private IEnumerable<JsonObject> OwnedTerrains(JsonObject state, int owner)
     {
         var map = Object(state["map"], "map"); var owners = Array(map["owners"], "owners"); var tiles = Array(map["tiles"], "tiles");

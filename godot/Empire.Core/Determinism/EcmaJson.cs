@@ -15,7 +15,7 @@ public static class EcmaJson
 {
     private static readonly Encoding StrictUtf8 = new UTF8Encoding(false, true);
 
-    public static JsonNode? Parse(string json)
+    public static JsonNode? Parse(string json, bool rejectDuplicateProperties = false)
     {
         ArgumentNullException.ThrowIfNull(json);
         // JSON.parse also accepts a literal unpaired code unit in a CLR/JS string.
@@ -23,7 +23,7 @@ public static class EcmaJson
         var bytes = StrictUtf8.GetBytes(EscapeLoneUnits(json));
         var reader = new Utf8JsonReader(bytes);
         if (!reader.Read()) throw new JsonException("Expected a JSON value.");
-        var value = ReadValue(ref reader);
+        var value = ReadValue(ref reader, rejectDuplicateProperties);
         if (reader.Read()) throw new JsonException("Only one top-level JSON value is permitted.");
         return value;
     }
@@ -109,7 +109,7 @@ public static class EcmaJson
         };
     }
 
-    private static JsonNode? ReadValue(ref Utf8JsonReader reader)
+    private static JsonNode? ReadValue(ref Utf8JsonReader reader, bool rejectDuplicateProperties)
     {
         switch (reader.TokenType)
         {
@@ -121,8 +121,10 @@ public static class EcmaJson
                     if (reader.TokenType != JsonTokenType.PropertyName) throw new JsonException("Expected an object property.");
                     var name = ReadToken(ref reader);
                     if (!reader.Read()) throw new JsonException("Expected a property value.");
+                    if (rejectDuplicateProperties && obj.ContainsKey(name))
+                        throw new JsonException($"Duplicate JSON property: {name}.");
                     // JSON.parse gives the last duplicate its value, retaining the key's insertion position.
-                    obj[name] = ReadValue(ref reader);
+                    obj[name] = ReadValue(ref reader, rejectDuplicateProperties);
                 }
                 throw new JsonException("Unterminated JSON object.");
             case JsonTokenType.StartArray:
@@ -130,7 +132,7 @@ public static class EcmaJson
                 while (reader.Read())
                 {
                     if (reader.TokenType == JsonTokenType.EndArray) return array;
-                    array.Add(ReadValue(ref reader));
+                    array.Add(ReadValue(ref reader, rejectDuplicateProperties));
                 }
                 throw new JsonException("Unterminated JSON array.");
             case JsonTokenType.String: return JsonValue.Create(ReadToken(ref reader));

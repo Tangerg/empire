@@ -82,11 +82,11 @@ public sealed class TacticalCommands
     }
 
     public JsonObject? ApplyMovement(
-        JsonObject state, JsonObject action, Action<JsonObject> emit, PartingShotResolver? partingShots = null) =>
-        ApplyMovement(state, ValidateMovement(state, action), emit, partingShots);
+        PartingShotResolver? partingShots, JsonObject state, JsonObject action, Action<JsonObject> emit) =>
+        ApplyMovement(partingShots, state, ValidateMovement(state, action), emit);
 
     public JsonObject? ApplyMovement(
-        JsonObject state, ValidatedMovement validated, Action<JsonObject> emit, PartingShotResolver? partingShots = null)
+        PartingShotResolver? partingShots, JsonObject state, ValidatedMovement validated, Action<JsonObject> emit)
     {
         var unit = TacticalQueries.RequireUnit(state, validated.UnitId);
         if (TacticalQueries.Position(unit) != validated.Origin)

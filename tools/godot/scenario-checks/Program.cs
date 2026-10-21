@@ -23,6 +23,7 @@ var victory = engine.Victory;
 var serialization = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 var count = 0;
 var nativeHealthRejections = 0;
+var historicalProseAssertions = 0;
 var failures = new List<string>();
 void Check(string name, string key, JsonNode? actual, JsonNode? expected)
 {
@@ -48,11 +49,15 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
         if (item["condition"] is JsonObject condition) result = JsonValue.Create(scenarios.ConditionMet(state, condition));
         if (item["condition"] is JsonArray conditionList) result = new JsonArray(conditionList.OfType<JsonObject>().Select(condition => (JsonNode?)JsonValue.Create(scenarios.ConditionMet(state, condition))).ToArray());
         if (item["composite"] is { } composite) result = JsonSerializer.SerializeToNode(CompositeRules.Status(state, composite.GetValue<string>()), serialization);
-        if (item["objective"] is JsonObject objective) result = new JsonObject
+        if (item["objective"] is JsonObject objective)
         {
-            ["outcome"] = victory.Outcome(state, 1, objective),
-            ["description"] = victory.Describe(objective),
-        };
+            var assessment = engine.Objectives.Assess(victory.Rules, state, 1, objective);
+            result = new JsonObject
+            {
+                ["outcome"] = assessment.Outcome,
+                ["facts"] = EcmaJson.Parse(assessment.Facts.GetRawText()),
+            };
+        }
         if (StateJson.IsTrue(item["victory"])) result = JsonSerializer.SerializeToNode(victory.Evaluate(state, Emit), serialization);
     }
     catch (Exception caught) when (caught is DomainInvariantException or IllegalActionException or ArgumentOutOfRangeException)
@@ -75,7 +80,14 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
             continue;
         }
         Check(name, "error", error, item["error"]);
-        Check(name, "result", result, item["result"]);
+        if (item["objective"] is JsonObject && error is null)
+        {
+            // Keep the unchanged source outcome assertion. Its description is historical presentation,
+            // not a native Core result; do not synthesize a description from semantic facts.
+            Check(name, "objective-outcome", result?["outcome"], item["result"]?["outcome"]);
+            historicalProseAssertions++;
+        }
+        else Check(name, "result", result, item["result"]);
         Check(name, "events", events, item["events"]);
         Check(name, "hashes", hashes, item["hashes"]);
         Check(name, "after", state, item["after"]);
@@ -84,7 +96,7 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
     count++;
 }
 if (failures.Count > 0) throw new Exception($"{failures.Count}/{count} scenario cases diverged:\n" + string.Join("\n", failures));
-Console.WriteLine($"PASS {count} live TypeScript scenario cases: ordered events, every event-time digest, complete states, queries and typed failures");
+Console.WriteLine($"Completed {count} historical scenario case comparisons: unchanged events, event-time digests, state, outcomes and typed failures; {historicalProseAssertions} objective description assertions remain pending schema migration.");
 if (nativeHealthRejections != 1) throw new Exception("Expected one explicit native dead-snapshot return rejection");
 Console.WriteLine("PASS native dead-snapshot return rejects before events and mutation");
 if (input["effectKinds"] is JsonArray kinds) Check("supported effect IDs", "effect-kinds",
@@ -128,3 +140,5 @@ foreach (var duration in new[] { double.NaN, double.PositiveInfinity, double.Neg
     if (!rejected || !EcmaJson.DeepEquals(unit, before)) throw new Exception("Non-finite status duration must reject before mutation");
 }
 Console.WriteLine("PASS 3 native public-API non-finite status-duration guards (outside JSON's finite-number boundary)");
+if (historicalProseAssertions > 0)
+    throw new InvalidOperationException($"PENDING historical schema migration: {historicalProseAssertions} source objective description assertions have no Core prose API; this is not full suite acceptance.");

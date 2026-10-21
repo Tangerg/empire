@@ -10,7 +10,7 @@ packs.flatMap((p: any) => p.terrains ?? []).find((t: any) => t.id === 'plain').n
 const content = createContentCatalog();
 new ContentPackInstaller(content).install(...packs);
 const engine = createBattleEngine({ content });
-const original = JSON.parse(readFileSync('godot/data/grayflag-level.json', 'utf8'));
+const original = JSON.parse(readFileSync('godot/tests/oracle/source-v1/grayflag-level.json', 'utf8'));
 const level: any = { schema: 2, id: 'adapter', name: 'Adapter', width: 7, height: 4, terrain: ['.......', '.......', '.......', '.......'], owners: [], rules: {}, victory: [{ type: 'routEnemies' }], players: original.players.map((p: any) => ({ ...p, controller: 'human', objectives: undefined })), units: [{ key: 'ally', unit: 'soldier', owner: 1, x: 1, y: 1 }, { key: 'enemy', unit: 'soldier', owner: 2, x: 2, y: 1 }, { key: 'remote', unit: 'soldier', owner: 2, x: 6, y: 3 }] };
 const cases: any[] = [];
 function sample(name: string, change: (s: any) => void = () => { }, customLevel = level) {

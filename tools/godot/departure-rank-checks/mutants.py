@@ -10,8 +10,8 @@ damage = 'Combat/BattleDamage.cs'
 departures = 'Lifecycle/UnitDepartureHandlers.cs'
 mutants = [
     ('recreate-departure-catalog', damage,
-     'departureRules = new(catalog, grids, this, unitDepartures);',
-     'departureRules = new(new ReadOnlyContent(catalog.CopyPacks()), grids, this, unitDepartures);',
+     'departureRules = new(rules.Content, rules.Grids, this, rules.UnitDepartures);',
+     'departureRules = new(new ReadOnlyContent(rules.Content.CopyPacks()), rules.Grids, this, rules.UnitDepartures);',
      'departure dependencies: exact injected identity'),
     ('hardcoded-rank-policy', effects,
      'public int RankFor(double progress) => progression.RankFor(progress);',

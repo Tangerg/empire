@@ -4,7 +4,7 @@ import {activeCasts} from '../../../packages/battle-engine/src/casting';
 import {SpellCastEntity} from '../../../packages/battle-engine/src/domain/spell-cast';
 import {visibleTiles,visibleUnits,isUnitVisible} from '../../../packages/battle-engine/src/vision';
 const packs=JSON.parse(readFileSync('godot/data/content-packs.json','utf8'));
-const level:LevelData=JSON.parse(readFileSync('godot/data/grayflag-level.json','utf8'));
+const level:LevelData=JSON.parse(readFileSync('godot/tests/oracle/source-v1/grayflag-level.json','utf8'));
 const content=createContentCatalog();new ContentPackInstaller(content).install(...packs);
 const engine=createBattleEngine({content});const cases=[];
 for(const grid of ['square4','square8','hex'])for(const fog of [false,true])for(const variation of [0,1,2,3]) {

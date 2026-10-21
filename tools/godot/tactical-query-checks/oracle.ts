@@ -8,7 +8,7 @@ import { commanderUnit, activeCommanderFor, commanderAuraFor, tacticOptions } fr
 const packs = JSON.parse(readFileSync('godot/data/content-packs.json', 'utf8'));
 const content = createContentCatalog(); new ContentPackInstaller(content).install(...packs);
 const engine = createBattleEngine({ content });
-const base = engine.createState(JSON.parse(readFileSync('godot/data/grayflag-level.json', 'utf8')));
+const base = engine.createState(JSON.parse(readFileSync('godot/tests/oracle/source-v1/grayflag-level.json', 'utf8')));
 const cases: unknown[] = [];
 const visibleObjectives = (state:any) => state.players.map((player:any) => player.objectives.filter((o:any) => !player.objectiveStates[o.id]?.hidden).map((o:any) => ({id:o.id,description:o.label ?? engine.rules.objectives.describe(o),status:player.objectiveStates[o.id]?.status ?? 'active',progress:engine.rules.objectives.progress(engine.rules,state,player.id,o),role:engine.rules.objectives.role(o)})));
 function capture(fn: () => unknown) { try { return { value: fn() }; } catch (error) { return { error: (error as Error).message }; } }

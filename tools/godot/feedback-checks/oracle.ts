@@ -17,7 +17,7 @@ const packs: ContentPack[] = JSON.parse(readFileSync('godot/data/content-packs.j
 const content = createContentCatalog();
 new ContentPackInstaller(content).install(...packs);
 const engine = createBattleEngine({ content });
-const level: LevelData = normaliseLevel(JSON.parse(readFileSync('godot/data/grayflag-level.json', 'utf8')));
+const level: LevelData = normaliseLevel(JSON.parse(readFileSync('godot/tests/oracle/source-v1/grayflag-level.json', 'utf8')));
 const initial = engine.createState(level);
 
 // Evaluate the actual private projection methods without booting a browser controller.

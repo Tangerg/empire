@@ -29,6 +29,7 @@ public partial class BattleScreenChecks : Node
             CheckInputContracts();
             CheckCanonicalCellProjection();
             CheckRegisteredReactions();
+            CheckLocalizedInteraction();
             GD.Print("Native BattleScreen real-session integration passed.");
             GetTree().Quit();
         }
@@ -43,7 +44,7 @@ public partial class BattleScreenChecks : Node
     {
         foreach (var canonicalOutside in new[] { false, true })
         {
-            var level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
+            var level = BattleTextChecks.OpeningLevel();
             level["rules"]!["fog"] = true;
             var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
             var terrain = packs.OfType<JsonObject>().SelectMany(pack => pack["terrains"]?.AsArray().OfType<JsonObject>() ?? [])
@@ -52,7 +53,8 @@ public partial class BattleScreenChecks : Node
             var engine = new GrayFlagEngine(packs);
             var text = GodotTextCatalog.LoadSimplifiedChinese();
             var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
-            var session = new GrayFlagSession(engine, level, text, refusals);
+            var battleText = BattleTextChecks.Load(engine, text);
+            var session = new GrayFlagSession(engine, level, text, refusals, battleText);
             var stateBefore = EcmaJson.Stringify(session.Snapshot());
             var queries = session.GetTacticalQueries(0);
             var actor = queries.Unit(2)!;
@@ -60,7 +62,7 @@ public partial class BattleScreenChecks : Node
             var screen = new BattleScreen();
             AddChild(screen);
             screen.Board.AnimationsEnabled = false;
-            screen.BindSession(session, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
+            screen.BindSession(text, battleText, session, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
             var materials = WorldMaterialsManifest.Load();
             materials.TerrainTags["plain"] = canonicalOutside ? [] : ["outside"];
             screen.ConfigureTerrain(materials);
@@ -93,14 +95,15 @@ public partial class BattleScreenChecks : Node
 
     private void CheckPresentationTransitions()
     {
-        var level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
+        var level = BattleTextChecks.OpeningLevel();
         var engine = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
         var text = GodotTextCatalog.LoadSimplifiedChinese();
         var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
-        var session = new GrayFlagSession(engine, level, text, refusals);
+        var battleText = BattleTextChecks.Load(engine, text);
+        var session = new GrayFlagSession(engine, level, text, refusals, battleText);
         var screen = new BattleScreen(); AddChild(screen);
         screen.Board.AdvanceAnimationsAutomatically = false;
-        void Bind(GrayFlagSession value) => screen.BindSession(value, AssetCatalog.Load(), level,
+        void Bind(GrayFlagSession value) => screen.BindSession(text, battleText, value, AssetCatalog.Load(), level,
             AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
         Bind(session);
         Require(screen.RecentMessages.SequenceEqual(new[] { session.GetSnapshot().InitialLogMessage }),
@@ -121,9 +124,9 @@ public partial class BattleScreenChecks : Node
         Require(screen.RecentMessages.SequenceEqual(expectedLog.Recent()), "Descriptions must append once in receipt order after presentation.");
         screen.Refresh();
         Require(!screen.IsPresenting && screen.RecentMessages.SequenceEqual(expectedLog.Recent()), "Refreshing a settled revision must not replay it.");
-        var superseded = new GrayFlagSession(engine, level, text, refusals);
+        var superseded = new GrayFlagSession(engine, level, text, refusals, battleText);
         var replaceable = new ReplaceableSession(superseded);
-        screen.BindSession(replaceable, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
+        screen.BindSession(text, battleText, replaceable, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
         TacticalSceneInputChecks.Move(screen, replaceable);
         var replacement = superseded.GetSnapshot() with { Revision = 9, Transition = null };
         replaceable.Replacement = replacement;
@@ -132,21 +135,21 @@ public partial class BattleScreenChecks : Node
             "A newer transition-free snapshot must invalidate older async completion.");
         screen.Refresh();
         Require(!screen.IsPresenting, "A transition-free revision must remain consumed.");
-        var canceled = new GrayFlagSession(engine, level, text, refusals); Bind(canceled); TacticalSceneInputChecks.Move(screen, canceled);
+        var canceled = new GrayFlagSession(engine, level, text, refusals, battleText); Bind(canceled); TacticalSceneInputChecks.Move(screen, canceled);
         screen.Board.CancelPresentation();
         Require(!screen.IsPresenting && screen.DisplayedRevision == canceled.GetSnapshot().Revision,
             "Same-session cancellation must settle both board and controls to committed state.");
-        var fresh = new GrayFlagSession(engine, level, text, refusals); Bind(fresh); TacticalSceneInputChecks.Move(screen, fresh);
+        var fresh = new GrayFlagSession(engine, level, text, refusals, battleText); Bind(fresh); TacticalSceneInputChecks.Move(screen, fresh);
         Require(screen.IsPresenting, "Second timeline did not start.");
-        var loaded = GrayFlagSession.FromSave(engine, fresh.Save(), text, refusals); Bind(loaded);
+        var loaded = GrayFlagSession.FromSave(engine, fresh.Save(), text, refusals, battleText); Bind(loaded);
         Require(!screen.IsPresenting && !screen.Board.IsPresenting && screen.DisplayedRevision == 0,
             "Rebinding a loaded session must cancel old playback without replaying its history.");
-        screen.BindSession(loaded, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false,
+        screen.BindSession(text, battleText, loaded, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false,
             initialLogMessage: "已读取第 1 回合的存档");
         Require(screen.RecentMessages.SequenceEqual(new[] { "已读取第 1 回合的存档" }), "Load must clear history and keep one load line.");
         screen.Board.AdvancePresentation(100);
         Require(screen.DisplayedRevision == 0, "Stale timeline completion overwrote the rebound view.");
-        var last = new GrayFlagSession(engine, level, text, refusals); Bind(last); TacticalSceneInputChecks.Move(screen, last);
+        var last = new GrayFlagSession(engine, level, text, refusals, battleText); Bind(last); TacticalSceneInputChecks.Move(screen, last);
         var saves = 0;
         screen.BindApplicationActions(() => saves++);
         var staleSave = Buttons(screen).Single(button => button.Text == "保存");
@@ -179,18 +182,19 @@ public partial class BattleScreenChecks : Node
 
     private void Check()
     {
-        Require(typeof(BattleScreen).GetMethod(nameof(BattleScreen.BindSession))!.GetParameters()[0].ParameterType == typeof(ITacticalBattleSession),
+        Require(typeof(BattleScreen).GetMethod(nameof(BattleScreen.BindSession))!.GetParameters()[2].ParameterType == typeof(ITacticalBattleSession),
             "BattleScreen must declare its complete consumer port rather than discover a hidden capability at runtime.");
-        var level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
+        var level = BattleTextChecks.OpeningLevel();
         var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         var engine = new GrayFlagEngine(packs);
         var text = GodotTextCatalog.LoadSimplifiedChinese();
         var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
-        var session = new GrayFlagSession(engine, level, text, refusals);
+        var battleText = BattleTextChecks.Load(engine, text);
+        var session = new GrayFlagSession(engine, level, text, refusals, battleText);
         var screen = new BattleScreen();
         screen.Board.AnimationsEnabled = false; // This suite isolates synchronous binding, not timeline behavior.
         AddChild(screen);
-        screen.BindSession(session, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(),
+        screen.BindSession(text, battleText, session, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(),
             facing => facing is not null && engine.Grids.Get("square4").Step(new Coord(0, 0), facing).X < 0);
         screen.ConfigureTerrain(WorldMaterialsManifest.Load());
         Require(screen.GetNode<ColorRect>("Backdrop").ZIndex < -300,
@@ -232,13 +236,14 @@ public partial class BattleScreenChecks : Node
     }
     private void CheckInputContracts()
     {
-        var level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
+        var level = BattleTextChecks.OpeningLevel();
         var engine = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
         var text = GodotTextCatalog.LoadSimplifiedChinese();
         var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
-        var session = new GrayFlagSession(engine, level, text, refusals);
+        var battleText = BattleTextChecks.Load(engine, text);
+        var session = new GrayFlagSession(engine, level, text, refusals, battleText);
         var screen = new BattleScreen();AddChild(screen);screen.Board.AnimationsEnabled=false;
-        screen.BindSession(session,AssetCatalog.Load(),level,AuthoredScene.Load(),EnvironmentCatalog.Load(),_=>false);
+        screen.BindSession(text, battleText, session,AssetCatalog.Load(),level,AuthoredScene.Load(),EnvironmentCatalog.Load(),_=>false);
         void Keypress(Key key) => screen._UnhandledKeyInput(new InputEventKey { Pressed=true,Keycode=key });
         var snapshot = session.GetSnapshot();
         var staleSameRevision = Buttons(screen).Single(button=>button.Text=="结束回合");
@@ -275,8 +280,8 @@ public partial class BattleScreenChecks : Node
         var cells=new JsonArray(own.Select(unit=>(JsonNode)new JsonObject { ["x"]=unit["x"]!.GetValue<int>(),["y"]=unit["y"]!.GetValue<int>() }).ToArray());
         deploymentLevel["scenario"]!.AsObject()["zones"]=new JsonArray(new JsonObject { ["id"]="selection-check-zone",["cells"]=cells });
         deploymentLevel["deployment"]=new JsonObject { ["order"]=new JsonArray(1),["zones"]=new JsonArray(new JsonObject { ["player"]=1,["zone"]="selection-check-zone" }) };
-        var deployment=new GrayFlagSession(engine, deploymentLevel, text, refusals);
-        screen.BindSession(deployment,AssetCatalog.Load(),deploymentLevel,AuthoredScene.Load(),EnvironmentCatalog.Load(),_=>false);
+        var deployment=new GrayFlagSession(engine, deploymentLevel, text, refusals, battleText);
+        screen.BindSession(text, battleText, deployment,AssetCatalog.Load(),deploymentLevel,AuthoredScene.Load(),EnvironmentCatalog.Load(),_=>false);
         var roster=deployment.GetTacticalQueries(0).DeploymentUnits();
         var hud=(TacticalHud)screen.FindChild("TacticalHud",true,false);
         Button RosterButton(int id)
@@ -296,7 +301,7 @@ public partial class BattleScreenChecks : Node
 
     private void CheckRegisteredReactions()
     {
-        var level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
+        var level = BattleTextChecks.OpeningLevel();
         var reactions = ReactionRegistry.Core();
         reactions.Replace(reactions.Get("guard") with { Name = "替换防御菜单", Hint = "来自已解析注册表" });
         reactions.Register(new("plugin-dodge", "自定义闪避菜单", false, 0.4, false, false, "自定义提示"));
@@ -304,9 +309,10 @@ public partial class BattleScreenChecks : Node
             [new EnginePlugin("test.native-reactions", 1, context => context.Replace(BattleCapabilities.Reactions, reactions), overrides: [BattleCapabilities.Reactions])]);
         var text = GodotTextCatalog.LoadSimplifiedChinese();
         var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
-        var session = new GrayFlagSession(engine, level, text, refusals);
+        var battleText = BattleTextChecks.Load(engine, text);
+        var session = new GrayFlagSession(engine, level, text, refusals, battleText);
         var screen = new BattleScreen(); AddChild(screen); screen.Board.AnimationsEnabled = false;
-        screen.BindSession(session, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
+        screen.BindSession(text, battleText, session, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
         var origin = session.GetTacticalQueries(0).Unit(2)!.At;
         screen.SelectCell(origin);
         Button Reaction(string id) => Buttons(screen).Single(button => button.GetMeta("hud_key", "").AsString() == "stances/reaction:" + id);
@@ -335,6 +341,118 @@ public partial class BattleScreenChecks : Node
         Reaction("plugin-dodge").EmitSignal(Button.SignalName.Pressed);
         Require(session.GetSnapshot().Revision == 3, "Refreshing the stale view must restore the actual HUD action path.");
         screen.QueueFree();
+    }
+
+    private void CheckLocalizedInteraction()
+    {
+        var level = BattleTextChecks.OpeningLevel();
+        var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
+        var engine = new GrayFlagEngine(packs);
+        var translation = ResourceLoader.Load<Translation>(GodotTextCatalog.ResourcePath);
+        var keys = translation.GetMessageList().ToHashSet(StringComparer.Ordinal);
+        string? baselineState = null, baselineEvents = null, baselineSave = null;
+        foreach (var variant in new[] { "A", "B" })
+        {
+            var replacements = new Dictionary<string, string>(StringComparer.Ordinal) {
+                ["ui.hud.selection.unit"] = variant + " select destination",
+                ["ui.hud.health"] = variant + " health {0}/{1}",
+                ["ui.battle.undo"] = variant + " undo",
+                ["feedback.session.undone"] = variant + " restored",
+                ["ui.battle.artwork_issues"] = variant + " artwork unavailable: {0}",
+            };
+            var text = new GameText(key => replacements.TryGetValue(key, out var replacement) ? replacement
+                : keys.Contains(key) ? translation.GetMessage(key).ToString() : null,
+                System.Globalization.CultureInfo.GetCultureInfo("zh-CN"));
+            var battleText = BattleTextChecks.Load(engine, text);
+            var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
+            var session = new GrayFlagSession(engine, level, text, refusals, battleText);
+            var initial = EcmaJson.Stringify(session.Snapshot());
+            var bindings = PresentationJson.Load<ArtBindings>("res://data/art-bindings.json");
+            bindings.Actors.Clear();
+            bindings.Units.Remove("c01.archer");
+            var assets = new AssetCatalog(PresentationJson.Load<AssetManifest>("res://data/selected-assets.json"), bindings);
+            var screen = new BattleScreen(); AddChild(screen); screen.Board.AnimationsEnabled = false;
+            screen.BindSession(text, battleText, session, assets, level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
+            screen.ConfigureTerrain(WorldMaterialsManifest.Load());
+            Require(screen.Board.RenderingIssueCount > 0 && screen.Board.Diagnostics.Any(value => value.Contains("c01.archer", StringComparison.Ordinal)),
+                "Unavailable actor art remains explicitly diagnosed without changing canonical units.");
+            Require(Descendants(screen).OfType<Label>().Any(label => label.Text == text.Format("ui.battle.artwork_issues", screen.Board.RenderingIssueCount))
+                && !Descendants(screen).OfType<Control>().Any(control => control.TooltipText.Contains("c01.archer", StringComparison.Ordinal)),
+                "The actual board notice uses injected wording and never exposes raw resource diagnostics in a tooltip.");
+            var origin = session.GetTacticalQueries(0).Unit(2)!.At;
+            screen.SelectCell(origin);
+            var hud = ((TacticalHud)screen.FindChild("TacticalHud", true, false)).Projection!;
+            var unitRows = hud.Sections.Single(section => section.Key == "unit").Rows;
+            Require(hud.Hint == replacements["ui.hud.selection.unit"] && unitRows.Single(row => row.Key == "hp").Label.StartsWith(variant + " health", StringComparison.Ordinal),
+                "Mounted selection help and numeric unit facts use the injected catalog.");
+            using var cancel = new InputEventKey { Keycode = Key.Escape, Pressed = true };
+            screen._UnhandledKeyInput(cancel);
+            Require(screen.Selection?.Kind == TacticalSelectionKind.Idle && session.GetSnapshot().Revision == 0,
+                "Cancel returns to resting selection without changing domain state.");
+            TacticalSceneInputChecks.Move(screen, session);
+            var state = EcmaJson.Stringify(session.Snapshot());
+            var events = EcmaJson.Stringify(new JsonArray(session.Events.Select(value => (JsonNode?)value).ToArray()));
+            var actualSave = session.Save();
+            Require(EcmaJson.DeepEquals(actualSave, engine.SaveBattle(session.Snapshot(), actualSave["savedAt"]!.GetValue<string>())),
+                "The real session save uses the canonical complete document contract.");
+            var save = EcmaJson.Stringify(engine.SaveBattle(session.Snapshot(), "2026-10-21T00:00:00.000Z"));
+            Require(session.GetSnapshot().Revision == 1, "Localized controls still commit the real movement command.");
+            if (baselineState is null) { baselineState = state; baselineEvents = events; baselineSave = save; }
+            else Require(state == baselineState && events == baselineEvents && save == baselineSave,
+                "Changing only catalog wording cannot change the battle state, event stream or saved document.");
+            var undo = Buttons(screen).Single(button => button.Name == "Undo");
+            Require(undo.Text == replacements["ui.battle.undo"], "The mounted undo button uses injected wording.");
+            undo.EmitSignal(Button.SignalName.Pressed);
+            Require(EcmaJson.Stringify(session.Snapshot()) == initial && session.GetSnapshot().Revision == 2
+                && screen.RecentMessages.Contains(replacements["feedback.session.undone"]),
+                "The real localized undo restores the canonical state and formats its feedback independently.");
+            RemoveChild(screen); screen.Free();
+        }
+
+        foreach (var expectedArtFailure in new[] { true, false })
+        {
+            var text = GodotTextCatalog.LoadSimplifiedChinese();
+            var battleText = BattleTextChecks.Load(engine, text);
+            var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
+            var session = new GrayFlagSession(engine, level, text, refusals, battleText);
+            var screen = new BattleScreen(); AddChild(screen); screen.Board.AnimationsEnabled = false;
+            screen.BindSession(text, battleText, session, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
+            Exception fault = expectedArtFailure ? new MissingArtResourceException("res://test-missing-art", "test missing art diagnostic")
+                : new InvalidOperationException("test presentation programming defect");
+            screen.Board.EventPresented += (_, _) => throw fault;
+            var previous = System.Threading.SynchronizationContext.Current;
+            var capture = new PresentationFaultContext();
+            System.Threading.SynchronizationContext.SetSynchronizationContext(capture);
+            try { TacticalSceneInputChecks.Move(screen, session); }
+            finally { System.Threading.SynchronizationContext.SetSynchronizationContext(previous); }
+            var playerNotice = text.Format("error.presentation.playback_failed");
+            Require(expectedArtFailure ? capture.Fault is null : ReferenceEquals(capture.Fault, fault),
+                "Only expected missing-art failures are recovered; programming faults escape the async UI boundary unchanged.");
+            Require(Descendants(screen).OfType<Label>().Any(label => label.Text == playerNotice) == expectedArtFailure,
+                "A programming defect must not be converted into a recoverable player notice.");
+            Require(!screen.IsPresenting && !screen.Board.IsPresenting && session.GetSnapshot().Revision == 1,
+                "Failure cleanup releases playback gates without undoing the already committed domain action.");
+            RemoveChild(screen); screen.Free();
+        }
+    }
+
+    private sealed class PresentationFaultContext : System.Threading.SynchronizationContext
+    {
+        public Exception? Fault { get; private set; }
+        public override void Post(System.Threading.SendOrPostCallback callback, object? state)
+        {
+            try { callback(state); }
+            catch (Exception error) { Fault = error; }
+        }
+    }
+
+    private static IEnumerable<Node> Descendants(Node root)
+    {
+        foreach (var child in root.GetChildren())
+        {
+            yield return child;
+            foreach (var descendant in Descendants(child)) yield return descendant;
+        }
     }
 
     private static System.Collections.Generic.IEnumerable<Button> Buttons(Node root)

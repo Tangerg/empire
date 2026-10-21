@@ -1,44 +1,8 @@
 using System.Text.Json.Nodes;
-using Empire.Core.Combat;
-using Empire.Core.Determinism;
-using Empire.Core.Geometry;
-using Empire.Core.Orders;
 using Empire.Core.Resources;
 
 internal static class SupportChecks
 {
-    public static void Tactics(string root)
-    {
-        var packs = JsonNode.Parse(File.ReadAllText(Path.Combine(root, "../../data/content-packs.json")))!.AsArray();
-        var engine = new Empire.Core.Engine.GrayFlagEngine(packs);
-        var orders = engine.Support;
-        using var archive = File.OpenRead(Path.Combine(root, "action-cases.json.gz"));
-        using var decompressed = new System.IO.Compression.GZipStream(archive, System.IO.Compression.CompressionMode.Decompress);
-        var cases = JsonNode.Parse(decompressed)!.AsArray();
-        var checkedCount = 0;
-        foreach (var entry in cases)
-        {
-            var action = entry!["action"]!.AsObject();
-            if (action["kind"]!.GetValue<string>() != "tactic") continue;
-            var state = entry["before"]!.DeepClone().AsObject();
-            var events = new JsonArray();
-            void Emit(JsonObject value)
-            {
-                events.Add(value.DeepClone());
-                var type = value["type"]!.GetValue<string>();
-                var counts = state["scenario"]!["eventCounts"]!.AsObject();
-                counts[type] = (counts[type]?.GetValue<int>() ?? 0) + 1;
-            }
-            var target = action["target"] is { } at
-                ? new Coord(at["x"]!.GetValue<int>(), at["y"]!.GetValue<int>()) : (Coord?)null;
-            orders.ExecuteTactic(state, action["commander"]!.GetValue<string>(), action["tactic"]!.GetValue<string>(), target, Emit);
-            if (StateDigest.Hash(events) != StateDigest.Hash(entry["events"]!)) throw new Exception($"Tactic events differ at case {checkedCount}");
-            if (StateDigest.Hash(state) != StateDigest.Hash(entry["after"]!)) throw new Exception($"Tactic state differs at case {checkedCount}");
-            checkedCount++;
-        }
-        if (checkedCount != 6) throw new Exception($"Expected six tactic cases, saw {checkedCount}");
-    }
-
     public static void Resources()
     {
         var player = JsonNode.Parse("{\"id\":1,\"resources\":{\"funds\":{\"current\":5,\"capacity\":10}}}")!.AsObject();

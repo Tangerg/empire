@@ -7,5 +7,7 @@
     <ProjectReference Include="../../../godot/Empire.Core/Empire.Core.csproj" />
     <Compile Include="../../../godot/Presentation/Feedback/*.cs" Link="Feedback/%(Filename)%(Extension)" />
     <Compile Include="../../../godot/Localization/GameText.cs" Link="Localization/GameText.cs" />
+    <Compile Include="../check-support/FixtureText.cs" Link="FixtureText.cs" />
+    <Compile Include="../check-support/FixtureBattleText.cs" Link="FixtureBattleText.cs" />
   </ItemGroup>
 </Project>

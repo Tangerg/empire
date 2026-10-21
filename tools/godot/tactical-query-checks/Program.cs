@@ -5,6 +5,7 @@ using Empire.Core.Engine;
 using Empire.Core.Determinism;
 using Empire.Core.Geometry;
 using Empire.Core.Lifecycle;
+using Empire.Core.Objectives;
 using Empire.Core.Resources;
 using Empire.Core.Scenario;
 using Empire.Core.State;
@@ -16,6 +17,9 @@ var engine = new GrayFlagEngine(packs);
 var victory = engine.Victory;
 var serializer = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 var checks = 0;
+// Old objective prose remains historical schema evidence. Native projection facts are specified below,
+// not recovered from those strings or presented as source-v1 state/hash parity.
+var historicalProseAssertions = 0;
 void Equal(object? actual, JsonNode? expected, string name)
 {
     var node = actual is JsonNode json ? json : JsonSerializer.SerializeToNode(actual, serializer);
@@ -26,6 +30,28 @@ JsonObject Capture(Func<object?> query)
 {
     try { return new JsonObject { ["value"] = JsonSerializer.SerializeToNode(query(), serializer) }; }
     catch (DomainInvariantException error) { return new JsonObject { ["error"] = error.Message }; }
+}
+JsonObject Finite(double value) => new() { ["kind"] = "finite", ["value"] = value };
+var scoreFacts = new Dictionary<string, JsonObject>(StringComparer.Ordinal)
+{
+    ["null"] = Finite(0), ["false"] = Finite(0), ["true"] = Finite(1),
+    ["\"\""] = Finite(0), ["\"  \""] = Finite(0), ["\"bad\""] = new() { ["kind"] = "nan" },
+    ["4"] = Finite(4), ["\"0xff\""] = Finite(255), ["\"0b11\""] = Finite(3), ["\"0o10\""] = Finite(8),
+    ["\"Infinity\""] = new() { ["kind"] = "positiveInfinity" }, ["\"-Infinity\""] = new() { ["kind"] = "negativeInfinity" },
+    ["\"infinity\""] = new() { ["kind"] = "nan" }, ["\"1e-7\""] = Finite(1e-7), ["\"1e21\""] = Finite(1e21),
+    ["\"1e999\""] = new() { ["kind"] = "positiveInfinity" }, ["\"-0\""] = Finite(0), ["\"+0x1\""] = new() { ["kind"] = "nan" },
+};
+void AssertProjection(ObjectiveProgress progress, JsonObject definition, JsonObject owner, string name)
+{
+    Equal(progress.Id, definition["id"], name + " projected identity");
+    Equal(progress.Kind, definition["type"], name + " projected kind");
+    Equal(EcmaJson.Parse(progress.Definition.GetRawText()), definition, name + " detached definition");
+    var runtime = owner["objectiveStates"]![progress.Id];
+    Equal(progress.Status, runtime?["status"] ?? JsonValue.Create("active"), name + " projected status");
+    if (progress.Status != "active") Equal(EcmaJson.Parse(progress.Facts.GetRawText()), new JsonObject(), name + " terminal facts");
+    var children = engine.Objectives.Children(definition);
+    Equal(progress.Children.Count, JsonValue.Create(children.Count), name + " projected child count");
+    for (var index = 0; index < children.Count; index++) AssertProjection(progress.Children[index], children[index], owner, name + " child " + index);
 }
 foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
 {
@@ -38,8 +64,44 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
     Equal(subjects.Select(subject => engine.Resources.Accounts(subject)).ToArray(), item["accounts"], name + " accounts");
     Equal(Capture(() => engine.Recruitment.Cards(state, new Coord(0, 0))), item["cards"], name + " cards");
     foreach (var objective in item["objectives"]!.AsArray().OfType<JsonObject>())
-        Equal(Capture(() => victory.Progress(state, objective["owner"]!.GetValue<int>(), objective["objective"]!.AsObject())), objective["value"], name + " progress");
-    Equal(state["players"]!.AsArray().OfType<JsonObject>().Select(player => victory.Objectives(state, player["id"]!.GetValue<int>())).ToArray(), item["visibleObjectives"], name + " visible objectives");
+    {
+        var ownerId = objective["owner"]!.GetValue<int>();
+        var definition = objective["objective"]!.AsObject();
+        var owner = state["players"]!.AsArray().OfType<JsonObject>().Single(player => player["id"]!.GetValue<int>() == ownerId);
+        var progress = engine.Objectives.Project(victory.Rules, state, ownerId, definition);
+        AssertProjection(progress, definition, owner, name);
+        historicalProseAssertions++;
+        if (ownerId != 1 || progress.Status != "active") continue;
+        JsonObject? expectedFacts = name switch
+        {
+            "objective kind surviveTurns" => new() { ["current"] = 1, ["target"] = 3 },
+            "objective kind destroy" => new() { ["remaining"] = 0 },
+            "objective kind score" => new() { ["current"] = Finite(3), ["target"] = 8 },
+            "objective kind interact" or "nested optional" or "nested failOn" => new(),
+            "nested all" or "nested any" or "nested sequence" => new() { ["completed"] = 1, ["total"] = 2 },
+            _ => null,
+        };
+        const string coercion = "score coercion ";
+        if (name.StartsWith(coercion, StringComparison.Ordinal))
+            expectedFacts = new() { ["current"] = scoreFacts[name[coercion.Length..]].DeepClone(), ["target"] = 8 };
+        if (expectedFacts is not null) Equal(EcmaJson.Parse(progress.Facts.GetRawText()), expectedFacts, name + " independently specified native facts");
+    }
+    var players = state["players"]!.AsArray().OfType<JsonObject>().ToArray();
+    var expectedVisible = item["visibleObjectives"]!.AsArray();
+    Equal(players.Length, JsonValue.Create(expectedVisible.Count), name + " visible player count");
+    for (var playerIndex = 0; playerIndex < players.Length; playerIndex++)
+    {
+        var visible = victory.Objectives(state, players[playerIndex]["id"]!.GetValue<int>());
+        var expected = expectedVisible[playerIndex]!.AsArray();
+        Equal(visible.Count, JsonValue.Create(expected.Count), name + " visible objective count");
+        for (var index = 0; index < visible.Count; index++)
+        {
+            Equal(visible[index].Id, expected[index]!["id"], name + " unchanged visible identity");
+            Equal(visible[index].Status, expected[index]!["status"], name + " unchanged visible status");
+            Equal(visible[index].Role, expected[index]!["role"], name + " unchanged visible role");
+            historicalProseAssertions += 2;
+        }
+    }
     Equal(Capture(() => engine.Combat.ActiveCasts(state)), item["casts"], name + " casts");
     Equal(Capture(() => engine.Combat.IncomingCasts(state).Select(pair => new { pair.Key.X, pair.Key.Y, Remaining = pair.Value }).ToArray()), item["incoming"], name + " incoming");
     var grid = engine.Grids.Get(state["rules"]!["grid"]!.GetValue<string>());
@@ -105,4 +167,6 @@ foreach (var row in oracle["commandLabels"]!.AsArray())
     Equal(options.Select(option => new { option.Key, option.Name, option.Hint }).ToArray(), row["options"], "command labels " + actor["type"]);
 }
 if (!seenAbilities.SetEquals(new[] { "attack", "capture", "heal", "wait" })) throw new Exception("command label fixture failed to exercise every ability");
-Console.WriteLine($"PASS {checks} live source tactical query comparisons; detached and read-only guards");
+if (historicalProseAssertions > 0)
+    throw new InvalidOperationException($"PENDING historical schema migration: {historicalProseAssertions} source objective prose assertions are not native semantic facts. {checks} unchanged source and native projection assertions completed; this is not full suite acceptance.");
+Console.WriteLine($"PASS {checks} tactical semantic query comparisons; detached and read-only guards");

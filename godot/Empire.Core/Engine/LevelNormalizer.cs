@@ -4,7 +4,7 @@ using Empire.Core.State;
 
 namespace Empire.Core.Engine;
 
-/// <summary>Source-compatible level document normalization, separate from battle state construction.</summary>
+/// <summary>Native level document defaults, separate from battle state construction.</summary>
 public static class LevelNormalizer
 {
     public static JsonObject Normalize(JsonNode? raw)
@@ -45,12 +45,12 @@ public static class LevelNormalizer
 
     public static JsonArray DefaultPlayers() => new()
     {
-        DefaultPlayer(1, "蓝军", "#3f7fd8", "human"), DefaultPlayer(2, "红军", "#d8483f", "ai")
+        DefaultPlayer(1, "#3f7fd8", "human"), DefaultPlayer(2, "#d8483f", "ai")
     };
 
-    private static JsonObject DefaultPlayer(int id, string name, string color, string controller) => new()
+    private static JsonObject DefaultPlayer(int id, string color, string controller) => new()
     {
-        ["id"] = id, ["name"] = name, ["team"] = id, ["color"] = color, ["controller"] = controller,
+        ["id"] = id, ["team"] = id, ["color"] = color, ["controller"] = controller,
         ["resources"] = new JsonObject
         {
             ["funds"] = new JsonObject { ["current"] = 0, ["capacity"] = null },

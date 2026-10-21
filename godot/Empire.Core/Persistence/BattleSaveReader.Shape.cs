@@ -1,4 +1,5 @@
 using System.Text.Json.Nodes;
+using Empire.Core.Lifecycle;
 using Empire.Core.State;
 
 namespace Empire.Core.Persistence;
@@ -14,7 +15,7 @@ internal sealed partial class BattleSaveInspection
             ("levelId", StoredKind.String), ("levelName", StoredKind.String), ("map", StoredKind.Object), ("units", StoredKind.Array),
             ("structures", StoredKind.Array), ("composites", StoredKind.Array), ("embarkedUnits", StoredKind.Array), ("markers", StoredKind.Array),
             ("commanders", StoredKind.Array), ("players", StoredKind.Array), ("rules", StoredKind.Object), ("turn", StoredKind.Number),
-            ("currentPlayer", StoredKind.Number), ("phase", StoredKind.String), ("winnerTeam", StoredKind.NullableNumber), ("endReason", StoredKind.String),
+            ("currentPlayer", StoredKind.Number), ("phase", StoredKind.String), ("conclusion", StoredKind.NullableObject),
             ("nextUnitId", StoredKind.Number), ("nextMarkerId", StoredKind.Number), ("deployment", StoredKind.NullableObject),
             ("scenario", StoredKind.Object), ("turnOrder", StoredKind.Object), ("actorTurns", StoredKind.Number), ("pendingCasts", StoredKind.Array), ("random", StoredKind.Object));
         StoredSchema.Require(state["map"], "地图",
@@ -96,10 +97,18 @@ internal sealed partial class BattleSaveInspection
         foreach (var player in players)
             StoredSchema.Require(player, "玩家", ("id", StoredKind.Integer), ("team", StoredKind.Integer), ("alive", StoredKind.Boolean),
                 ("resources", StoredKind.Object), ("objectives", StoredKind.Array), ("objectiveStates", StoredKind.Object), ("ai", StoredKind.Object));
-        foreach (var player in players) RequireAccounts(player["resources"], $"玩家 {player["id"]}");
+        foreach (var player in players)
+        {
+            if (player.ContainsKey("name")) StoredSchema.Reject("Player names belong to presentation metadata, not battle state.");
+            RequireAccounts(player["resources"], $"玩家 {player["id"]}");
+            foreach (var objective in StateJson.Objects(player["objectives"], "objectives")) RequireNativeObjective(objective);
+        }
         var owners = players.Select(player => StateJson.Integer(player, "id")).ToHashSet();
         if (owners.Count != players.Length || !owners.Contains(StateJson.Integer(state, "currentPlayer")))
             StoredSchema.Reject("玩家标识或当前玩家不合法");
+        try { _ = BattleConclusion.FromState(state); }
+        catch (DomainInvariantException error)
+        { throw new StoredDocumentException("Saved battle conclusion is invalid.", error); }
         if (StateJson.Text(state["rules"]!.AsObject(), "turnOrder") != StateJson.Text(state["turnOrder"]!.AsObject(), "policy"))
             StoredSchema.Reject("行动顺序与关卡规则不一致");
         var seed = StateJson.Number(state["random"]!["seed"], "seed");
@@ -136,5 +145,12 @@ internal sealed partial class BattleSaveInspection
         }
         var limitations = environment.StructuralGuards.StateIssues(state).ToArray();
         if (limitations.Length > 0) StoredSchema.Reject(string.Join("；", limitations));
+    }
+
+    private void RequireNativeObjective(JsonObject objective)
+    {
+        var faults = environment.Rules.Objectives.References(objective).Faults;
+        if (faults.Count > 0) StoredSchema.Reject(string.Join("；", faults));
+        foreach (var child in environment.Rules.Objectives.Children(objective)) RequireNativeObjective(child);
     }
 }

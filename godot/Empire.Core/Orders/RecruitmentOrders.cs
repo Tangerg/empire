@@ -9,6 +9,12 @@ namespace Empire.Core.Orders;
 public sealed record RecruitCard(string Unit, IReadOnlyList<BattleResources.Cost> Costs, bool Affordable);
 
 /// <summary>Recruitment cards and authoritative command validation.</summary>
+public sealed record RecruitmentRules(
+    ReadOnlyContent Content,
+    GridRegistry Grids,
+    BattleResources Resources,
+    Func<JsonObject, string, int, Coord, bool, JsonObject> Spawn);
+
 public sealed class RecruitmentOrders
 {
     private readonly StateContent content;
@@ -17,9 +23,13 @@ public sealed class RecruitmentOrders
         grids.Get(StateJson.Text(state["rules"]!["grid"], "grid")));
     private readonly BattleResources resources;
     private readonly Func<JsonObject, string, int, Coord, bool, JsonObject> spawn;
-    public RecruitmentOrders(ReadOnlyContent catalog, GridRegistry grids, BattleResources resources,
-        Func<JsonObject, string, int, Coord, bool, JsonObject> spawn)
-    { content = catalog.Source; this.grids = grids; this.resources = resources; this.spawn = spawn; }
+    public RecruitmentOrders(RecruitmentRules rules)
+    {
+        content = rules.Content.Source;
+        grids = rules.Grids;
+        resources = rules.Resources;
+        spawn = rules.Spawn;
+    }
 
     public ActionRefusal? Refusal(JsonObject state, string type, Coord at)
     {

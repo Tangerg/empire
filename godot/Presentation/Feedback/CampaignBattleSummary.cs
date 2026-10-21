@@ -24,7 +24,7 @@ public sealed record CampaignBattleSummary(
 
     /// <param name="signals">Ordered signals from the canonical CampaignBattleBridge result.</param>
     /// <param name="strikeCount">Count from the canonical combat event facts owner.</param>
-    public static CampaignBattleSummary Create(string title, int chapter, int perspectivePlayer,
+    public static CampaignBattleSummary Create(BattleText battleText, string title, int chapter, int perspectivePlayer,
         JsonElement state, Func<string, string> unitTypeName, IEnumerable<string> signals, int strikeCount)
     {
         var players = state.GetProperty("players").EnumerateArray().ToArray();
@@ -38,7 +38,7 @@ public sealed record CampaignBattleSummary(
             .ToArray();
         var enemies = units.Count(unit => !players.Any(player =>
             player.GetProperty("id").GetInt32() == unit.GetProperty("owner").GetInt32() && player.GetProperty("team").GetInt32() == team));
-        return new CampaignBattleSummary(title, chapter, FeedbackJson.Text(state.GetProperty("endReason")),
+        return new CampaignBattleSummary(title, chapter, battleText.DescribeConclusion(state),
             state.GetProperty("turn").GetInt32(), units.Count(unit => unit.GetProperty("owner").GetInt32() == perspectivePlayer),
             enemies, Array.AsReadOnly(fallen), Array.AsReadOnly(signals.ToArray()), strikeCount);
     }

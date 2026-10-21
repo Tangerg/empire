@@ -396,9 +396,81 @@
 
 以上连同依赖注入约定都有架构适应度测试守着（见 `architecture-boundaries.test.ts`）。
 
+## Native Godot capability and transition owners
+
+The preceding TypeScript capability descriptions remain authoritative for the
+original applications. This table maps the native C# implementation separately;
+it does not claim that its GUI, localization or release acceptance is complete.
+The native audit status is tracked in
+[the native quality inventory](../godot/docs/CODE-QUALITY-AUDIT.md).
+
+`Empire.Core.Composition.BattleEngineFactory` is the sole assembly root.
+`SrpgMicrokernel` validates capability declarations and override ordering;
+`KernelPluginContext` is writable only during its installation scope.
+`BattleCapabilities` owns capability identity, while each implementation below
+owns its rule. The engine facade consumes these resolved collaborators rather
+than creating a second installation path.
+
+| Native capability | Authoritative implementation / extension owner |
+| --- | --- |
+| `content` | `State.ReadOnlyContent` / private normalized `StateContent`; returned mutable definitions are detached |
+| `grids` | `Geometry.GridRegistry`; each tiling owns adjacency, distance, placement and facings |
+| `space` | `Tactics.ITacticalSpace` / `DefaultTacticalSpace`, installed after resolved content and grids |
+| `abilities` | `Abilities.AbilityRegistry` and registered ability handlers |
+| `combatModifiers` | `Combat.CombatModifierPipeline` and registered modifier policies |
+| `hitEffects` | `Combat.WeaponHitEffectHandlerRegistry`; each handler owns payload admission and execution |
+| `statusBehaviors` | `Statuses.StatusBehaviorRegistry` |
+| `progression` | `Progression.IRankProgressionPolicy` |
+| `turnOrders` | `Lifecycle.TurnOrderRegistry` |
+| `reactions` | `Combat.ReactionRegistry`; registered behavior owns reaction support semantics |
+| `unitDepartures` | `Lifecycle.UnitDepartureHandlerRegistry` |
+| `random` | `Determinism.IBattleRandomSource`; stream counter remains in battle state |
+| `areaShapes` | `Combat.WeaponAreaRegistry` |
+| `directives` | `Tactics.UnitDirectiveRegistry` |
+| `referenceChecks` | `References.BattleReferenceCheckRegistry`, consuming actual composed catalog/registry owners |
+| `saves` | `Persistence.IBattleSaveReader` / `BattleSaveReader`; document admission precedes activation |
+| `actionHandlers` | `Transactions.BattleActionRegistry`; handlers own action execution and turn-handoff metadata |
+| `scenarioConditions` | `Scenario.ScenarioConditionHandlerRegistry` |
+| `scenarioEffects` | `Scenario.ScenarioEffectHandlerRegistry` |
+| `objectives` | `Objectives.ObjectiveHandlerRegistry`; registered handlers own assessment and progress facts |
+| `resources` | `Resources.BattleResources` |
+| `aiObjectiveAdvisors` | `Ai.AiObjectiveAdvisorRegistry` |
+| `abilityAiEvaluators` | `Ai.AbilityAiEvaluatorRegistry` |
+| `aiIntents` | `Ai.AiIntentRegistry`; `AiPlanner` composes decisions from those registered policies |
+
+Combat, forecast, damage, progression, recruitment and support consumers declare
+`BattleCombatRules`, `CombatForecastRules`, `BattleDamageRules`,
+`BattleProgressionRules`, `RecruitmentRules` and `SupportOrderRules` respectively.
+Each contains only the collaborators that consumer reads; these are dependency
+contracts, not an ambient all-engine service container. Movement receives its
+parting-shot resolver explicitly before its subjects, with the event channel last.
+
+Capabilities do not replace aggregate ownership. `Transactions.Battle` owns
+transaction commit/rollback; `UnitHealth` owns health invariants and
+`BattleRelocation` owns placement/capture invalidation, as detailed below.
+`BattleLifecycle` owns phase and terminal battle transitions. `BattleStateFactory`
+uses explicitly composed `BattleStateRules` for initial and spawned unit admission.
+`CampaignRuntime` advances campaign state; application sessions own active-session
+revision and atomic view/save activation, not a second set of battle rules.
+
+Presentation receives immutable/detached query projections. `ActionRefusal` carries
+semantic rejection facts; `ActionRefusalText` and injected `GameText` own wording.
+The revision-bound tactical interactive-cell projection is authoritative for input
+and fog; asset manifests cannot independently decide gameplay eligibility.
+Registered objective handlers own immutable `ObjectiveAssessment` facts and outcomes;
+`ObjectiveHandlerRegistry` projects `ObjectiveProgress` without recomputing those rules.
+`VictorySystem` selects a `BattleConclusion`; `BattleLifecycle` alone commits it.
+`BattleConclusion` owns the strict semantic codec and allowed field combinations.
+`CampaignBattleResult` owns the detached result contract used by both the bridge and
+campaign result admission. `BattleTextDocument`, `ObjectiveText` and `BattleText`
+own authored display metadata and formatting outside Core state and hashes.
+Native authored text and its PO catalog, not the frozen TypeScript oracle, own
+production wording. See `godot/docs/OBJECTIVE-OUTCOME-SCHEMA.md` for the explicit
+save/replay/application schema break and remaining content-name localization scope.
+
 ## Native Godot health ownership
 
-The owner table above describes the original TypeScript engine. In the native
+The earlier TypeScript tables retain their original scope. In the native
 C# engine, live-unit health has one owner: `Empire.Core.State.UnitHealth`, backed
 by the existing serializable unit `JsonObject` and the engine's canonical
 `ReadOnlyContent`. It owns finite non-negative damage/heal inputs, canonical

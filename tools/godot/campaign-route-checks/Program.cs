@@ -15,13 +15,15 @@ var root=args[0];
 JsonNode Read(string path)=>JsonNode.Parse(File.ReadAllText(Path.Combine(root,path)))!;
 var packs=Read("godot/data/content-packs.json").AsArray();
 var engine=new GrayFlagEngine(packs);
-var campaign=new GrayFlagCampaign(Read("godot/data/grayflag-campaign.json").AsObject(), Read("godot/data/grayflag-campaign-levels.json").AsArray(), engine, gameText, Refusals(engine));
+var battleText = FixtureBattleText.Load(root, engine, gameText);
+var campaign=new GrayFlagCampaign(Read("godot/data/grayflag-campaign.json").AsObject(), Read("godot/data/grayflag-campaign-levels.json").AsArray(), engine, gameText, Refusals(engine), battleText);
 var steps=0;var saves=0;var battles=0;
 void Equal(string label,JsonNode? actual,JsonNode? expected)
 {
  if(JsonNode.DeepEquals(actual,expected)) return;
  throw new Exception($"Route mismatch {label} after {steps} actions\nactual: {actual}\nexpected: {expected}");
 }
+// Historical source-v1 battle hashes, conclusions, and names require a semantic-schema oracle migration.
 foreach(var line in File.ReadLines(args[1]))
 {
  var row=JsonNode.Parse(line)!.AsObject();var kind=row["kind"]!.GetValue<string>();

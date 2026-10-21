@@ -57,7 +57,7 @@ CombatModifierPipeline Pipeline(JsonObject config)
 var grids = Grids(); var initial = input["initial"]!.AsObject();
 var catalog = new ReadOnlyContent(packs);
 var definitions = catalog.Source;
-var forecast = new CombatForecasts(catalog, grids, new BattleResources(), DefaultCombatModifiers.Create(), ReactionRegistry.Core());
+var forecast = new CombatForecasts(new CombatForecastRules(catalog, grids, new BattleResources(), DefaultCombatModifiers.Create(), ReactionRegistry.Core()));
 var context = new UnitDamageContext(new(catalog, grids, forecast.Effectiveness), initial,
     initial["units"]![0]!.AsObject(), TacticalQueries.Position(initial["units"]![0]!.AsObject()), initial["units"]![1]!.AsObject(), TacticalQueries.Position(initial["units"]![1]!.AsObject()),
     definitions.Get("weapons", "c01.border-blade"), new TacticalBattlefield(initial, definitions), new TacticalBoard(initial["map"]!.AsObject(), grids.Get("square4")));
@@ -110,9 +110,9 @@ foreach (var item in StateJson.Objects(input["consumers"], "consumers"))
     foreach (var property in item["weapon"]!.AsObject()) weapon[property.Key] = property.Value?.DeepClone();
     var localGrids = Grids(); var pipeline = Pipeline(config["pipeline"]?.AsObject() ?? new JsonObject { ["defaults"] = true }); var hitEffects = HitRegistry(config);
     var customCatalog = new ReadOnlyContent(customPacks);
-    var combat = new BattleCombat(customCatalog, localGrids, new BattleResources(), new DefaultTacticalSpace(customCatalog, localGrids),
+    var combat = new BattleCombat(new BattleCombatRules(customCatalog, localGrids, new BattleResources(), new DefaultTacticalSpace(customCatalog, localGrids),
         WeaponAreaRegistry.Core(), pipeline, hitEffects, ReactionRegistry.Core(),
-        new Empire.Core.Progression.ThresholdRankProgressionPolicy(), Empire.Core.Lifecycle.DefaultUnitDepartureHandlers.Create());
+        new Empire.Core.Progression.ThresholdRankProgressionPolicy(), Empire.Core.Lifecycle.DefaultUnitDepartureHandlers.Create()));
     if (!ReferenceEquals(pipeline, combat.Forecasts.Modifiers) || !ReferenceEquals(hitEffects, combat.HitEffects)) throw new Exception("Supplied policy identity not retained");
     pipeline.Seal(); hitEffects.Seal();
     var events = new JsonArray(); var hashes = new JsonArray();

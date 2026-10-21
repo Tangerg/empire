@@ -194,7 +194,11 @@ public sealed class BattleLevelValidator
 
         private void CheckPlayers()
         {
-            foreach (var player in Entries("players")) CheckResourceAccounts(player["resources"], $"玩家 {F(N(player["id"]))}");
+            foreach (var player in Entries("players"))
+            {
+                CheckResourceAccounts(player["resources"], $"玩家 {F(N(player["id"]))}");
+                if (player.ContainsKey("name")) Error("Player names belong to presentation metadata, not gameplay definitions.");
+            }
             if (Entries("players").Count() < 2) Error("至少需要两名玩家");
         }
 
@@ -438,7 +442,7 @@ public sealed class BattleLevelValidator
                 var hasUnits = Entries("units").Any(unit => N(unit["owner"]) == id);
                 var hasProduction = Values(map["owners"]).Select((owner, tile) => (owner, tile))
                     .Any(entry => N(entry.owner) == id && Values(TerrainOn(entry.tile)["produces"]).Any());
-                if (!hasUnits && !hasProduction) Error($"玩家 {F(id)}（{S(player, "name")}）既没有单位也没有生产建筑，开局即败");
+                if (!hasUnits && !hasProduction) Error($"玩家 {F(id)}既没有单位也没有生产建筑，开局即败");
             }
         }
 

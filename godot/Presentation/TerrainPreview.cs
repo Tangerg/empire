@@ -45,7 +45,7 @@ public partial class TerrainPreview : Node2D
             _board.ConfigureDynamicState(engine.Catalog);
             _board.RenderState(state);
             if (state.ToJsonString() != unchanged) throw new InvalidOperationException("Terrain preview mutated canonical state.");
-            _heading = new Label { Text = $"{_levelId}  Native terrain verification | canonical initial state | no gameplay controls\n{_board.StatusText}",
+            _heading = new Label { Text = $"{_levelId}  Native terrain verification | canonical initial state | no gameplay controls\nSurface ready: {_board.SurfaceReady}; rendering issues: {_board.RenderingIssueCount}",
                 Position = new Vector2(18, 12), ZIndex = 4095 };
             _heading.AddThemeFontSizeOverride("font_size", 15);
             AddChild(_heading);

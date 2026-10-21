@@ -6,6 +6,7 @@ namespace Empire.Core.Persistence;
 
 public sealed class BattleRecorder
 {
+    public const int Schema = 2;
     private readonly JsonArray actions = new();
     private readonly JsonObject ruleset;
     private readonly string levelId;
@@ -30,7 +31,7 @@ public sealed class BattleRecorder
             throw new DomainInvariantException($"cannot finish replay for \"{levelId}\" with state from \"{finalLevel}\"");
         return new JsonObject
         {
-            ["schema"] = 1, ["levelId"] = levelId, ["seed"] = seed.DeepClone(),
+            ["schema"] = Schema, ["levelId"] = levelId, ["seed"] = seed.DeepClone(),
             ["ruleset"] = ruleset.DeepClone(), ["initialStateHash"] = initialStateHash,
             ["actions"] = actions.DeepClone(), ["finalStateHash"] = StateDigest.Hash(finalState),
         };

@@ -28,20 +28,6 @@ public sealed record TacticalSelection
     public bool Hostile { get; init; }
     public string? Commander { get; init; }
     public int? Passenger { get; init; }
-    public string Hint => Kind switch
-    {
-        TacticalSelectionKind.Idle => "点击你的单位开始行动；点击自己的城堡/兵营可以征募（空格切换待命单位，方向键走格、回车确认）。",
-        TacticalSelectionKind.Unit => "点击蓝色格移动，点击敌人直接发起攻击。",
-        TacticalSelectionKind.Destination => "选择要下的指令；右键或 Esc 退回上一步。",
-        TacticalSelectionKind.Target => "点击高亮格中的目标；右键或 Esc 取消。",
-        TacticalSelectionKind.Deploying => "战前部署：点击你的单位，再点高亮格调整站位；确认部署后开始战斗。",
-        TacticalSelectionKind.DeploymentUnit => "点击高亮格摆放；落在同伴身上就与它换位。",
-        TacticalSelectionKind.Disembark => "点击高亮格让这名乘员下车；右键或 Esc 取消。",
-        TacticalSelectionKind.Tactic => "点击高亮格施用这条战术；右键或 Esc 取消。",
-        TacticalSelectionKind.Recruit => "在名册里挑一个兵种，或关掉名册回到战场。",
-        _ => "",
-    };
-    public string? TargetingLabel => Kind == TacticalSelectionKind.Disembark ? "卸载" : Ability;
 }
 
 public sealed record TacticalSelectionOverlay(BoardCell? Selected, BoardCell? Cursor,

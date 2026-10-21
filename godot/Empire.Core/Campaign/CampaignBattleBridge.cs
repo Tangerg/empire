@@ -3,6 +3,7 @@ using Empire.Core.State;
 using Empire.Core.Engine;
 using Empire.Core.Determinism;
 using Empire.Core.Tactics;
+using Empire.Core.Lifecycle;
 using static Empire.Core.State.StateJson;
 
 namespace Empire.Core.Campaign;
@@ -96,17 +97,18 @@ public sealed class CampaignBattleBridge
             if (campaign[name] is { } value) unit[name] = value.DeepClone(); else unit.Remove(name);
         unit["careerMastery"] = campaign["careerMastery"]?.DeepClone() ?? new JsonObject();
     }
-    public JsonObject Result(JsonObject request, JsonObject state, IEnumerable<JsonObject> events, string? outcome = null)
+    public JsonObject Result(JsonObject request, JsonObject state, IEnumerable<JsonObject> events)
     {
-        outcome ??= Text(state, "phase") != "over" ? "retreat" :
-            state["winnerTeam"] is { } winner && Integer(winner, "winnerTeam") == TacticalQueries.TeamOf(state, Integer(request, "perspectivePlayer")) ? "victory" : "defeat";
+        var conclusion = BattleConclusion.FromState(state);
+        var outcome = conclusion is null ? "retreat" :
+            conclusion.Team == TacticalQueries.TeamOf(state, Integer(request, "perspectivePlayer")) ? "victory" : "defeat";
         var signals = new JsonArray();
         foreach (var value in events)
             if (Text(value, "type") == "scenarioSignal") signals.Add(value["signal"]!.DeepClone());
-        return new JsonObject { ["requestId"] = request["id"]!.DeepClone(), ["outcome"] = outcome,
-            ["winnerTeam"] = state["winnerTeam"]?.DeepClone(), ["reason"] = state["endReason"]!.DeepClone(), ["turns"] = state["turn"]!.DeepClone(),
-            ["units"] = new JsonArray(Objects(request["rosterBindings"], "rosterBindings").Select(binding => (JsonNode)ProjectUnit(state, Text(binding, "campaignUnit"), Text(binding, "levelUnitKey"))).ToArray()),
-            ["signals"] = signals, ["eventCounts"] = state["scenario"]!["eventCounts"]!.DeepClone() };
+        var units = new JsonArray(Objects(request["rosterBindings"], "rosterBindings")
+            .Select(binding => (JsonNode)ProjectUnit(state, Text(binding, "campaignUnit"), Text(binding, "levelUnitKey"))).ToArray());
+        return CampaignBattleResult.Create(Text(request, "id"), outcome, conclusion, Integer(state, "turn"),
+            units, signals, Object(state["scenario"]!["eventCounts"], "event counts")).ToJson();
     }
     private JsonObject ProjectUnit(JsonObject state, string campaignUnit, string key)
     {

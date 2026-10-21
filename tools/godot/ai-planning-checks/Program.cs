@@ -61,9 +61,9 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
     var turns = new TurnOrderSystem(new(content, TurnOrderRegistry.Core()));
     var reactions = ReactionRegistry.Core();
     var commands = new TacticalCommands(new(grids, space, reactions), turns.MayAct, directives);
-    var combat = new BattleCombat(content, grids, resources, space, WeaponAreaRegistry.Core(), DefaultCombatModifiers.Create(),
-        DefaultWeaponHitEffects.Create(), reactions, new ThresholdRankProgressionPolicy(), DefaultUnitDepartureHandlers.Create());
-    var support = new SupportOrders(content, grids, resources, combat.Effects);
+    var combat = new BattleCombat(new BattleCombatRules(content, grids, resources, space, WeaponAreaRegistry.Core(), DefaultCombatModifiers.Create(),
+        DefaultWeaponHitEffects.Create(), reactions, new ThresholdRankProgressionPolicy(), DefaultUnitDepartureHandlers.Create()));
+    var support = new SupportOrders(new SupportOrderRules(content, grids, resources, combat.Effects));
     var careers = new CareerRules(content, resources, combat.Effects);
     var abilities = DefaultAbilities.Create()
         .Register(new("pulse", "Pulse") { Usable = (_, _) => !IsTrue(config["disableAbility"]) })

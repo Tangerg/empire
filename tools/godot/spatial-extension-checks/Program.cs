@@ -43,8 +43,8 @@ JsonObject Order(JsonObject unit, string ability, Coord? target = null, Coord? d
 (AbilityCommands Commands, BattleCombat Combat) Consumers(ITacticalSpace space)
 {
     var movement = new TacticalCommands(new(engine.Grids, space, engine.Reactions), engine.Turns.MayAct, engine.Directives);
-    var combat = new BattleCombat(engine.Catalog, engine.Grids, engine.Resources, space, engine.AreaShapes,
-        DefaultCombatModifiers.Create(), DefaultWeaponHitEffects.Create(), engine.Reactions, engine.RankProgression, engine.UnitDepartures);
+    var combat = new BattleCombat(new BattleCombatRules(engine.Catalog, engine.Grids, engine.Resources, space, engine.AreaShapes,
+        DefaultCombatModifiers.Create(), DefaultWeaponHitEffects.Create(), engine.Reactions, engine.RankProgression, engine.UnitDepartures));
     return (new(engine.AbilityRules with { Space = space, Combat = combat }, movement), combat);
 }
 void Refused(AbilityCommands commands, JsonObject state, JsonObject action, string name)

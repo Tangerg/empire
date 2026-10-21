@@ -13,7 +13,8 @@ ActionRefusalText Refusals(GrayFlagEngine value) => ActionRefusalText.CreateDefa
 var root = args.Length > 0 ? args[0] : ".";
 JsonNode Read(string file) => JsonNode.Parse(File.ReadAllText(Path.Combine(root,"godot/data",file)))!;
 var packs=Read("content-packs.json").AsArray(); var engine=new GrayFlagEngine(packs);
-GrayFlagCampaign Create()=>new(Read("grayflag-campaign.json").AsObject(),Read("grayflag-campaign-levels.json").AsArray(),engine, gameText, Refusals(engine));
+var battleText = FixtureBattleText.Load(root, engine, gameText);
+GrayFlagCampaign Create()=>new(Read("grayflag-campaign.json").AsObject(),Read("grayflag-campaign-levels.json").AsArray(),engine, gameText, Refusals(engine), battleText);
 var campaign=Create();
 while(campaign.Node()["type"]!.GetValue<string>()!="battle")
 { if(campaign.Node()["type"]!.GetValue<string>()=="choice")campaign.Choose(campaign.Choices()[0]!["id"]!.GetValue<string>());else campaign.Advance(); }

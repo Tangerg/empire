@@ -9,17 +9,19 @@ namespace Empire.Presentation.Feedback;
 public sealed class BattleLogContext
 {
     private readonly Func<string, string> unitTypeName;
+    private readonly Func<int, string> playerName;
     public JsonElement State { get; }
     public Func<string, string> CareerName { get; }
     public Func<string, string> ResourceName { get; }
 
     public BattleLogContext(JsonElement state, Func<string, string> unitTypeName,
-        Func<string, string> careerName, Func<string, string> resourceName)
+        Func<string, string> careerName, Func<string, string> resourceName, Func<int, string> playerName)
     {
         State = state.Clone();
         this.unitTypeName = unitTypeName;
         CareerName = careerName;
         ResourceName = resourceName;
+        this.playerName = playerName;
     }
 
     public string UnitName(double id)
@@ -30,13 +32,7 @@ public sealed class BattleLogContext
         return "单位";
     }
 
-    public string PlayerName(double id)
-    {
-        foreach (var player in State.GetProperty("players").EnumerateArray())
-            if (player.GetProperty("id").GetDouble() == id)
-                return FeedbackJson.Text(player.GetProperty("name"));
-        return "？";
-    }
+    public string PlayerName(double id) => playerName(checked((int)id));
 
     internal string HolderName(JsonElement subject)
     {

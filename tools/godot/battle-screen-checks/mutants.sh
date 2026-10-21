@@ -28,7 +28,7 @@ excluded = {
     "BattleResultScreen.cs", "CampaignMenu.cs", "CampaignMenuScreen.cs", "CampaignShell.cs",
     "CampaignStagingScreen.cs", "StoryScreen.cs", "NativeCapture.cs", "TerrainPreview.cs",
 }
-checks = {"BattleScreenChecks.cs", "TacticalSceneInputChecks.cs"}
+checks = {"BattleScreenChecks.cs", "TacticalSceneInputChecks.cs", "BattleTextChecks.cs"}
 mutants = {
     "canonical-fog-replaced-by-storage": (
         "Presentation/BattleScreen.cs",
@@ -36,7 +36,7 @@ mutants = {
         "Rendered fog must consume the exact canonical interactive-cell projection"),
     "hidden-port": (
         "Presentation/BattleScreen.cs",
-        [("public void BindSession(ITacticalBattleSession session,", "public void BindSession(object candidate,"),
+        [("public void BindSession(GameText text, BattleText battleText, ITacticalBattleSession session,", "public void BindSession(GameText text, BattleText battleText, object candidate,"),
          ("        ArgumentNullException.ThrowIfNull(session);", "        var session = (ITacticalBattleSession)candidate;\n        ArgumentNullException.ThrowIfNull(session);")],
         "BattleScreen must declare its complete consumer port"),
     "stale-live-revision": (
@@ -67,6 +67,9 @@ with tempfile.TemporaryDirectory(prefix="empire-screen-mutants-") as directory:
         if path.name in excluded or path.name.endswith("Checks.cs") and path.name not in checks:
             continue
         copy(path)
+    for path in (source / "Localization").iterdir():
+        if path.is_file():
+            copy(path)
     copy(source / "Scenes/BattleScreenChecks.tscn")
     for name in ["assets", "data"]:
         (project / name).symlink_to(source / name, target_is_directory=True)
@@ -107,7 +110,7 @@ project/assembly_name="Empire"
                 modified = modified.replace(old, new)
             target.write_text(modified)
         try:
-            build = run([dotnet, "build", project / "Empire.csproj", "--nologo", "--disable-build-servers"])
+            build = run([dotnet, "build", project / "Empire.csproj", "--nologo", "--disable-build-servers", "-m:1", "-p:UseSharedCompilation=false"])
             if build.returncode:
                 raise SystemExit(f"Compilation failure is not a killed mutant: {name}\n" + build.stdout + build.stderr)
             environment = os.environ.copy()

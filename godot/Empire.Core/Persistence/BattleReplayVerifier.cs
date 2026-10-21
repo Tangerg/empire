@@ -24,7 +24,7 @@ public static class BattleReplayVerifier
         Battle Create() => createBattle((JsonObject)level.DeepClone(), seed);
         ReplayOutcome Refuse(string reason) => new(Create().Snapshot(), 0, reason);
         var schema = StateJson.Number(replay["schema"], "schema");
-        if (schema != 1) return Refuse($"不支持回放 schema {replay["schema"]!.ToJsonString()}");
+        if (schema != BattleRecorder.Schema) return Refuse($"不支持回放 schema {replay["schema"]!.ToJsonString()}");
         var levelId = StateJson.Text(level, "id");
         var replayLevel = StateJson.Text(replay, "levelId");
         if (replayLevel != levelId) return Refuse($"回放关卡 {replayLevel} 与 {levelId} 不匹配");

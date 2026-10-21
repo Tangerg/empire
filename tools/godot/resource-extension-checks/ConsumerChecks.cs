@@ -34,10 +34,10 @@ internal static class ResourceConsumerChecks
             }
             var resources = Policies(item["config"]!.AsObject());
             var catalog = new ReadOnlyContent(packs);
-            var combat = new BattleCombat(catalog, baseline.Grids, resources, baseline.Space, baseline.AreaShapes,
+            var combat = new BattleCombat(new BattleCombatRules(catalog, baseline.Grids, resources, baseline.Space, baseline.AreaShapes,
                 DefaultCombatModifiers.Create(), DefaultWeaponHitEffects.Create(), baseline.Reactions,
-                baseline.RankProgression, baseline.UnitDepartures);
-            var support = new SupportOrders(catalog, baseline.Grids, resources, combat.Effects);
+                baseline.RankProgression, baseline.UnitDepartures));
+            var support = new SupportOrders(new SupportOrderRules(catalog, baseline.Grids, resources, combat.Effects));
             var rules = baseline.AbilityRules with { Content = catalog, Combat = combat, Support = support };
             var commands = new AbilityCommands(rules, baseline.Commands);
             var state = item["initial"]!.DeepClone().AsObject();

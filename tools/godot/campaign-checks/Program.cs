@@ -38,7 +38,12 @@ foreach(var entry in fixture["results"]!.AsArray())
 {
  var item=entry!.AsObject();JsonObject value;
  if(item["prepare"]?.GetValue<bool>()==true)value=bridge.Prepare(definition,item["state"]!.AsObject());
- else value=bridge.Result(item["request"]!.AsObject(),item["state"]!.AsObject(),item["events"]!.AsArray().Select(e=>e!.AsObject()),item["outcome"]?.GetValue<string>());
+ else
+ {
+  if(item["outcome"] is not null)
+   throw new InvalidOperationException("Historical source outcome-override bridge case is pending migration to a native semantic conclusion; native outcomes cannot be supplied by the caller.");
+  value=bridge.Result(item["request"]!.AsObject(),item["state"]!.AsObject(),item["events"]!.AsArray().Select(e=>e!.AsObject()));
+ }
  Equal(value,item["expected"],"bridge mismatch");
 }
 Console.WriteLine($"PASS {fixture["results"]!.AsArray().Count} source roster bridge projection cases");

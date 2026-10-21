@@ -41,6 +41,8 @@ internal static class StateObjectives
 
     private static JsonObject AssignChildren(JsonObject objective, string id)
     {
+        if (objective.ContainsKey("label"))
+            throw new DomainInvariantException("Objective labels belong to presentation metadata, not gameplay definitions.");
         var copy = (JsonObject)objective.DeepClone();
         if (objective["objectives"] is JsonArray children)
             copy["objectives"] = AssignIds(children, id);

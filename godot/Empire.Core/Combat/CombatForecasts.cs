@@ -25,6 +25,13 @@ public sealed record StructureCombatForecast(int Attacker, string Structure, str
     double CommanderAttackMultiplier, double TargetBonusMultiplier, double RawDamage, double Damage, double HpAfter, bool Destroyed);
 public sealed record ReactiveStrike(JsonObject Weapon, DamageBreakdown Damage);
 
+public sealed record CombatForecastRules(
+    ReadOnlyContent Content,
+    GridRegistry Grids,
+    BattleResources Resources,
+    CombatModifierPipeline Modifiers,
+    ReactionRegistry Reactions);
+
 public sealed class CombatForecasts
 {
     private readonly StateContent content;
@@ -34,16 +41,15 @@ public sealed class CombatForecasts
     public ReactionRegistry Reactions { get; }
     private readonly CombatModifierRules modifierRules;
     public CombatModifierPipeline Modifiers { get; }
-    public CombatForecasts(ReadOnlyContent catalog, GridRegistry grids, BattleResources resources,
-        CombatModifierPipeline modifiers, ReactionRegistry reactions)
+    public CombatForecasts(CombatForecastRules rules)
     {
-        var packs = catalog.CopyPacks();
-        content = catalog.Source;
-        this.grids = grids;
-        this.resources = resources;
-        Modifiers = modifiers;
-        Reactions = reactions;
-        modifierRules = new(catalog, grids, Effectiveness);
+        var packs = rules.Content.CopyPacks();
+        content = rules.Content.Source;
+        grids = rules.Grids;
+        resources = rules.Resources;
+        Modifiers = rules.Modifiers;
+        Reactions = rules.Reactions;
+        modifierRules = new(rules.Content, rules.Grids, Effectiveness);
         foreach (var pack in StateJson.Objects(packs, "packs"))
             foreach (var entry in StateJson.Objects(pack["damageMatchups"], "damageMatchups"))
             {

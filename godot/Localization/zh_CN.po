@@ -1703,3 +1703,858 @@ msgstr "命令完成 · {0} 条战斗事件"
 
 msgid "error.campaign.action_failed"
 msgstr "战役操作失败，当前进度已保留。"
+
+msgid "battle.player.gray_flag"
+msgstr "灰旗军"
+
+msgid "battle.player.enemy"
+msgstr "敌对部队"
+
+msgid "battle.player.neutral"
+msgstr "中立方"
+
+msgid "objective.c01_01.p1.primary"
+msgstr "莱娅存活并击退维尔萨前锋"
+
+msgid "objective.c01_01.p1.route"
+msgstr "击退维尔萨前锋"
+
+msgid "objective.c01_01.p2.route"
+msgstr "击退敌军"
+
+msgid "objective.c01_02.p1.primary"
+msgstr "护送平民并阻止无标记弩车"
+
+msgid "objective.c01_02.p1.bridge_all"
+msgstr "护送平民并摧毁无标记弩车"
+
+msgid "objective.c01_02.p1.escort_east_safety"
+msgstr "护送三名平民抵达东岸"
+
+msgid "objective.c01_02.p1.eliminate_unmarked_ballista"
+msgstr "摧毁向平民开火的无标记弩车"
+
+msgid "objective.c01_02.p2.route"
+msgstr "击退敌军"
+
+msgid "objective.c01_03.p1.primary"
+msgstr "在十八回合内夺取赤石或切断控制链"
+
+msgid "objective.c01_03.p1.redstone_path"
+msgstr "夺城或关闭誓文节点"
+
+msgid "objective.c01_03.p1.disable_node"
+msgstr "深入后方关闭控制节点"
+
+msgid "objective.c01_03.p1.capture_redstone"
+msgstr "强攻并占领赤石城堡"
+
+msgid "objective.c01_03.p1.score_gate_breached"
+msgstr "击溃门卫并切断城门誓文链"
+
+msgid "objective.c01_03.p2.route"
+msgstr "击退敌军"
+
+msgid "objective.c01_04.p1.primary"
+msgstr "调查黑旗营地并带证人撤离"
+
+msgid "objective.c01_04.p1.black_camp_sequence"
+msgstr "调查营帐后带证据撤离"
+
+msgid "objective.c01_04.p1.score_evidence"
+msgstr "调查三处营帐"
+
+msgid "objective.c01_04.p1.escort_west_exit"
+msgstr "至少一名证据携带者撤离"
+
+msgid "objective.c01_04.p2.route"
+msgstr "击退敌军"
+
+msgid "objective.c01_05.p1.primary"
+msgstr "拒绝焚村令并保护苇草村"
+
+msgid "objective.c01_05.p1.save_village"
+msgstr "保护村民直至净化军撤退"
+
+msgid "objective.c01_05.p1.protect_villagers"
+msgstr "至少两名村民存活"
+
+msgid "objective.c01_05.p1.hold_seven"
+msgstr "坚守七回合"
+
+msgid "objective.c01_05.p2.route"
+msgstr "击退敌军"
+
+msgid "objective.c01_06.p1.primary"
+msgstr "在八回合内完成白河撤离"
+
+msgid "objective.c01_06.p1.escort_north_bank"
+msgstr "护送四名非战斗人员渡河"
+
+msgid "objective.c01_06.p2.route"
+msgstr "击退敌军"
+
+msgid "objective.c01_07.p1.primary"
+msgstr "在两路敌军夹击下稳定洛岬"
+
+msgid "objective.c01_07.p1.city_control"
+msgstr "夺回粮仓与民兵营"
+
+msgid "objective.c01_07.p1.granary"
+msgstr "控制联合粮仓"
+
+msgid "objective.c01_07.p1.militia_barracks"
+msgstr "控制民兵营"
+
+msgid "objective.c01_07.p2.route"
+msgstr "击退敌军"
+
+msgid "objective.c01_08.p1.primary"
+msgstr "承认欠款并与塔莎共同保护粮道"
+
+msgid "objective.c01_08.p1.protect_tasha"
+msgstr "保护塔莎并恢复粮道"
+
+msgid "objective.c01_08.p1.route"
+msgstr "击退抢粮者并保护三座粮仓"
+
+msgid "objective.c01_08.p2.route"
+msgstr "击退敌军"
+
+msgid "objective.c01_09.p1.primary"
+msgstr "不用控制誓文释放伊芙拉"
+
+msgid "objective.c01_09.p1.break_chains"
+msgstr "破坏三处锁链节点"
+
+msgid "objective.c01_09.p2.route"
+msgstr "击退敌军"
+
+msgid "objective.c01_09.p3.primary"
+msgstr "不用控制誓文释放伊芙拉"
+
+msgid "objective.c01_09.p3.break_chains"
+msgstr "破坏三处锁链节点"
+
+msgid "objective.c01_10.p1.primary"
+msgstr "不与旧部死战，带灰旗军脱离包围"
+
+msgid "objective.c01_10.p1.escort_east_pass"
+msgstr "莱娅抵达东部山口"
+
+msgid "objective.c01_10.p2.route"
+msgstr "击退敌军"
+
+msgid "objective.c01_11.p1.primary"
+msgstr "记录真名并终止墓园循环"
+
+msgid "objective.c01_11.p1.grave_sequence"
+msgstr "归还三段真名后击败巨像"
+
+msgid "objective.c01_11.p1.score_names"
+msgstr "读取三块拒绝净化的墓碑"
+
+msgid "objective.c01_11.p1.eliminate_colossus"
+msgstr "让墓园巨像安息"
+
+msgid "objective.c01_11.p2.route"
+msgstr "击退敌军"
+
+msgid "objective.c01_12.p1.primary"
+msgstr "在塔底崩塌前关闭钟塔机构"
+
+msgid "objective.c01_12.p1.bell_mechanism"
+msgstr "关闭两处失控钟塔机构"
+
+msgid "objective.c01_12.p2.route"
+msgstr "击退敌军"
+
+msgid "objective.c01_13.p1.primary"
+msgstr "让米蕾尔把战争档案带出圣城"
+
+msgid "objective.c01_13.p1.archive_sequence"
+msgstr "取得三份档案并护送米蕾尔离开"
+
+msgid "objective.c01_13.p1.score_archives"
+msgstr "读取三组被删除的档案"
+
+msgid "objective.c01_13.p1.escort_archive_exit"
+msgstr "米蕾尔携档案撤离"
+
+msgid "objective.c01_13.p2.route"
+msgstr "击退敌军"
+
+msgid "objective.c01_14.p1.primary"
+msgstr "阻止炉心爆炸并留下完整技术记录"
+
+msgid "objective.c01_14.p1.forge_all"
+msgstr "关闭熔流阀并平息失控守卫"
+
+msgid "objective.c01_14.p1.score_valves"
+msgstr "关闭两处熔流阀"
+
+msgid "objective.c01_14.p1.route"
+msgstr "平息失控的山炉守卫"
+
+msgid "objective.c01_14.p2.route"
+msgstr "击退敌军"
+
+msgid "objective.c01_15.p1.primary"
+msgstr "保住银林母根，同时结束代价转移"
+
+msgid "objective.c01_15.p1.protect_root"
+msgstr "保护母根并解除誓文守军"
+
+msgid "objective.c01_15.p1.eliminate_oath_forces"
+msgstr "击退控制母根的誓文部队"
+
+msgid "objective.c01_15.p2.route"
+msgstr "击退敌军"
+
+msgid "objective.c01_15.p3.primary"
+msgstr "保住银林母根，同时结束代价转移"
+
+msgid "objective.c01_15.p3.protect_root"
+msgstr "保护母根并解除誓文守军"
+
+msgid "objective.c01_15.p3.eliminate_oath_forces"
+msgstr "击退控制母根的誓文部队"
+
+msgid "objective.c01_16.p1.primary"
+msgstr "让无旗者保有名字与选择"
+
+msgid "objective.c01_16.p1.true_name_all"
+msgstr "确认三个真名并终止聚忆暴走"
+
+msgid "objective.c01_16.p1.score_true_names"
+msgstr "让三个真名得到回应"
+
+msgid "objective.c01_16.p1.eliminate_memory_inquisitor"
+msgstr "击退继续抽取记忆的审判官"
+
+msgid "objective.c01_16.p2.route"
+msgstr "击退敌军"
+
+msgid "objective.description.rout_enemies"
+msgstr "歼灭所有敌军"
+
+msgid "objective.description.capture_hq"
+msgstr "攻占敌方城堡"
+
+msgid "objective.description.hold_all_villages"
+msgstr "控制全部据点"
+
+msgid "objective.description.survive_turns"
+msgstr "坚守 {0} 回合"
+
+msgid "objective.description.eliminate"
+msgstr "消灭指定目标"
+
+msgid "objective.description.destroy"
+msgstr "摧毁指定结构"
+
+msgid "objective.description.neutralize_composite"
+msgstr "瘫痪复合战场目标"
+
+msgid "objective.description.protect"
+msgstr "保护目标至第 {0} 回合"
+
+msgid "objective.description.escort"
+msgstr "护送目标抵达区域"
+
+msgid "objective.description.control"
+msgstr "控制指定区域"
+
+msgid "objective.description.score"
+msgstr "达成计数 {0}"
+
+msgid "objective.description.interact"
+msgstr "完成战场交互"
+
+msgid "objective.description.all"
+msgstr "完成全部目标"
+
+msgid "objective.description.any"
+msgstr "完成任一目标"
+
+msgid "objective.description.sequence"
+msgstr "完成阶段目标"
+
+msgid "objective.description.optional"
+msgstr "额外：{0}"
+
+msgid "objective.progress.rout_enemies"
+msgstr "剩余敌军 {0}"
+
+msgid "objective.progress.capture_hq"
+msgstr "敌方城堡 {0}"
+
+msgid "objective.progress.hold_all_villages"
+msgstr "{0}/{1} 据点"
+
+msgid "objective.progress.turns"
+msgstr "{0}/{1} 回合"
+
+msgid "objective.progress.eliminate"
+msgstr "剩余 {0}"
+
+msgid "objective.progress.destroy"
+msgstr "剩余结构 {0}"
+
+msgid "objective.progress.neutralize_composite"
+msgstr "{0}/{1} 部件"
+
+msgid "objective.progress.protect"
+msgstr "{0}/{1} 存活"
+
+msgid "objective.progress.escort"
+msgstr "{0}/{1} 抵达"
+
+msgid "objective.progress.control"
+msgstr "{0}/{1} 区域格"
+
+msgid "objective.progress.score"
+msgstr "{0}/{1}"
+
+msgid "objective.progress.interact"
+msgstr "进行中"
+
+msgid "objective.progress.stages"
+msgstr "{0}/{1} 阶段"
+
+msgid "objective.status.completed"
+msgstr "已完成"
+
+msgid "objective.status.failed"
+msgstr "已失败"
+
+msgid "objective.status.inactive"
+msgstr "未激活"
+
+msgid "objective.status.cancelled"
+msgstr "已取消"
+
+msgid "objective.number.nan"
+msgstr "NaN"
+
+msgid "objective.number.positive_infinity"
+msgstr "Infinity"
+
+msgid "objective.number.negative_infinity"
+msgstr "-Infinity"
+
+msgid "battle.conclusion.all_defeated"
+msgstr "全员覆灭"
+
+msgid "battle.conclusion.last_team_remaining"
+msgstr "敌军已被全歼"
+
+msgid "battle.conclusion.objective_completed"
+msgstr "{0} 完成目标：{1}"
+
+msgid "battle.conclusion.turn_limit_reached"
+msgstr "回合数耗尽，平局"
+
+msgid "battle.conclusion.no_actors"
+msgstr "无人可行动"
+
+msgid "battle.opening.deployment"
+msgstr "战前部署 · 调整站位后确认部署"
+
+msgid "battle.opening.turn"
+msgstr "第 1 回合 · {0} 开始行动"
+
+msgid "battle.objective.row"
+msgstr "{0} · {1}"
+
+msgid "battle.header.finished"
+msgstr "战斗结束"
+
+msgid "battle.header.turn"
+msgstr "回合 {0}  ·  {1}"
+
+msgid "battle.result.draw"
+msgstr "平局"
+
+msgid "battle.result.victory"
+msgstr "胜利"
+
+msgid "battle.result.defeat"
+msgstr "战败"
+
+msgid "battle.event.attack"
+msgstr "{0} 造成 {1} 点伤害{2}"
+
+msgid "battle.event.counter"
+msgstr "反击造成 {0} 点伤害{1}"
+
+msgid "battle.event.support"
+msgstr "{0} 援护攻击造成 {1} 点伤害{2}"
+
+msgid "battle.event.parting"
+msgstr "{0} 借机攻击造成 {1} 点伤害{2}"
+
+msgid "battle.event.area"
+msgstr "范围攻击对 {0} 造成 {1} 点伤害{2}"
+
+msgid "battle.event.structure"
+msgstr "对结构造成 {0} 点伤害{1}"
+
+msgid "battle.event.area_structure"
+msgstr "范围攻击对结构造成 {0} 点伤害{1}"
+
+msgid "battle.event.target_killed"
+msgstr "，目标阵亡"
+
+msgid "battle.event.ally_killed"
+msgstr "，我方阵亡"
+
+msgid "battle.event.structure_destroyed"
+msgstr "，结构被摧毁"
+
+msgid "battle.event.heal"
+msgstr "{0} 治疗了 {1} 点生命"
+
+msgid "battle.event.recruit"
+msgstr "{0} 征募了 {1}"
+
+msgid "battle.event.capture"
+msgstr "{0} 占领了 ({1}, {2})"
+
+msgid "battle.event.capture_progress"
+msgstr "占领进度提升"
+
+msgid "battle.event.turn"
+msgstr "第 {0} 回合 · {1}"
+
+msgid "battle.event.resource"
+msgstr "{0} {1} {2}{3}（{4}）"
+
+msgid "battle.event.rank"
+msgstr "{0} 晋升为 {1}"
+
+msgid "battle.event.career"
+msgstr "{0} 转职为 {1}"
+
+msgid "battle.event.facing"
+msgstr "{0} 调整了朝向"
+
+msgid "battle.event.defeat"
+msgstr "{0} 已被击败"
+
+msgid "ui.hud.not_applicable"
+msgstr "不适用"
+
+msgid "ui.hud.initiative"
+msgstr "行动序"
+
+msgid "ui.hud.casts"
+msgstr "咏唱中"
+
+msgid "ui.hud.roster"
+msgstr "双方兵力"
+
+msgid "ui.hud.deployment"
+msgstr "战前部署"
+
+msgid "ui.hud.deployment_swap"
+msgstr "部署换位"
+
+msgid "ui.hud.choose_target"
+msgstr "选择目标"
+
+msgid "ui.hud.commands"
+msgstr "指令"
+
+msgid "ui.hud.tactics"
+msgstr "指挥战术"
+
+msgid "ui.hud.forecast"
+msgstr "战斗预测"
+
+msgid "ui.hud.stances"
+msgstr "反应与朝向"
+
+msgid "ui.hud.formations"
+msgstr "阵形"
+
+msgid "ui.hud.embark"
+msgstr "登载"
+
+msgid "ui.hud.disembark"
+msgstr "卸载"
+
+msgid "ui.hud.careers"
+msgstr "职业树与转职"
+
+msgid "ui.hud.recruit"
+msgstr "征募单位"
+
+msgid "ui.hud.cancel_shortcut"
+msgstr "取消 Esc"
+
+msgid "ui.hud.none"
+msgstr "无"
+
+msgid "ui.hud.neutral"
+msgstr "中立"
+
+msgid "ui.hud.stationary_attack"
+msgstr "移动后无法攻击"
+
+msgid "ui.hud.can_capture"
+msgstr "可占领"
+
+msgid "ui.hud.cannot_capture"
+msgstr "不可占领"
+
+msgid "ui.hud.can_heal"
+msgstr "可治疗"
+
+msgid "ui.hud.acted"
+msgstr "已行动"
+
+msgid "ui.hud.unlimited"
+msgstr "无限制"
+
+msgid "ui.hud.no_status"
+msgstr "无状态效果"
+
+msgid "ui.hud.embark_hint"
+msgstr "登上这辆载具"
+
+msgid "ui.hud.no_disembark_spot"
+msgstr "周围没有可以卸载的格子"
+
+msgid "ui.hud.career_mastered_hint"
+msgstr "已精通，转职后可用该职业的精通技能"
+
+msgid "ui.hud.career_unlocked_hint"
+msgstr "已解锁，可自由切换"
+
+msgid "ui.hud.career_eligible_hint"
+msgstr "满足进阶条件"
+
+msgid "ui.hud.untargetable"
+msgstr "不可被攻击"
+
+msgid "ui.hud.disabled"
+msgstr "已失效"
+
+msgid "ui.common.close"
+msgstr "关闭"
+
+msgid "ui.hud.recipient_dies"
+msgstr "可以击杀伤害承担者"
+
+msgid "ui.hud.attacker_dies"
+msgstr "反击会导致我方阵亡"
+
+msgid "ui.hud.battle_over"
+msgstr "对局结束。"
+
+msgid "ui.hud.computer_thinking"
+msgstr "AI 正在思考…"
+
+msgid "ui.hud.cast"
+msgstr "{0} · 目标 {1},{2} · 还有 {3} 个行动轮"
+
+msgid "ui.hud.progress"
+msgstr "进度 {0}"
+
+msgid "ui.hud.swap_hint"
+msgstr "落在此格：与{0}换位"
+
+msgid "ui.hud.interception"
+msgstr "{0} 将进行援护并承受伤害"
+
+msgid "ui.hud.target_reaction"
+msgstr "目标将触发「{0}」姿态"
+
+msgid "ui.hud.collateral"
+msgstr "范围攻击还将波及 {0} 个单位、{1} 个结构"
+
+msgid "ui.hud.support_damage"
+msgstr "援护攻击预计追加 {0} 点伤害"
+
+msgid "ui.hud.strike"
+msgstr "造成伤害 {0} · {1} → {2}"
+
+msgid "ui.hud.counter"
+msgstr "遭到反击 {0} · {1} → {2}"
+
+msgid "ui.hud.damage_chain"
+msgstr "攻击修正链 · {0} → {1}"
+
+msgid "ui.hud.mitigation"
+msgstr "最终减伤上限后 {0}"
+
+msgid "ui.hud.counter_modifier"
+msgstr "反击 · {0}"
+
+msgid "ui.hud.health"
+msgstr "生命 {0} / {1}"
+
+msgid "ui.hud.power"
+msgstr "最高威力 {0}"
+
+msgid "ui.hud.defense"
+msgstr "减伤 {0}"
+
+msgid "ui.hud.movement"
+msgstr "移动 {0}"
+
+msgid "ui.hud.range"
+msgstr "射程 {0}"
+
+msgid "ui.hud.damage"
+msgstr "伤害 {0}"
+
+msgid "ui.hud.armor"
+msgstr "护甲 {0}"
+
+msgid "ui.hud.movement_type"
+msgstr "移动型 {0}"
+
+msgid "ui.hud.value"
+msgstr "战力价值 {0}"
+
+msgid "ui.hud.reaction"
+msgstr "反应：{0}"
+
+msgid "ui.hud.facing"
+msgstr "朝向 {0}"
+
+msgid "ui.hud.career"
+msgstr "职业 {0} · 熟练度 {1}/{2}"
+
+msgid "ui.hud.unit_resources"
+msgstr "单位资源 {0}"
+
+msgid "ui.hud.disembark_spots"
+msgstr "可在 {0} 格卸载"
+
+msgid "ui.hud.terrain_defense"
+msgstr "防御 {0}"
+
+msgid "ui.hud.elevation"
+msgstr "海拔 {0}"
+
+msgid "ui.hud.terrain_heal"
+msgstr "治疗 {0}/回合"
+
+msgid "ui.hud.production"
+msgstr "产出 {0}"
+
+msgid "ui.hud.turn"
+msgstr "第 {0} 回合 · {1} · {2}"
+
+msgid "ui.hud.turn_limit"
+msgstr "{0} / {1}"
+
+msgid "ui.hud.human_turn"
+msgstr "你的回合"
+
+msgid "ui.hud.computer_turn"
+msgstr "AI 行动中"
+
+msgid "ui.hud.player_forces"
+msgstr "{0} · {1} 单位 · {2}"
+
+msgid "ui.hud.weapon"
+msgstr "{0} · {1} {2} · 射程 {3} · {4}{5}{6}{7}"
+
+msgid "ui.hud.weapon_cooldown"
+msgstr " · 冷却 {0}"
+
+msgid "ui.hud.weapon_requirements"
+msgstr " · 需要 {0}"
+
+msgid "ui.hud.weapon_costs"
+msgstr " · 消耗 {0}"
+
+msgid "ui.hud.status"
+msgstr "{0} · {1} 回合{2}"
+
+msgid "ui.hud.status_stacks"
+msgstr " · {0} 层"
+
+msgid "ui.hud.rank"
+msgstr "军衔 {0}{1}"
+
+msgid "ui.rank.recruit"
+msgstr "新兵"
+
+msgid "ui.rank.veteran"
+msgstr "老兵"
+
+msgid "ui.rank.elite"
+msgstr "精英"
+
+msgid "ui.hud.rank_progress"
+msgstr " · {0}/{1}"
+
+msgid "ui.hud.formation"
+msgstr "阵形 {0}{1}"
+
+msgid "ui.hud.formation_inactive"
+msgstr " · 缺少相邻友军"
+
+msgid "ui.hud.commander"
+msgstr "编队 {0} · {1}"
+
+msgid "ui.hud.commander_absent"
+msgstr "指挥官已离场"
+
+msgid "ui.hud.commander_out_of_range"
+msgstr "超出指挥范围"
+
+msgid "ui.hud.commander_active"
+msgstr "光环生效"
+
+msgid "ui.hud.formation_option"
+msgstr "{0}{1}"
+
+msgid "ui.hud.formation_clear"
+msgstr " · 解除"
+
+msgid "ui.hud.formation_effect"
+msgstr "攻击 ×{0} · 防御 {1} · 移动 {2}"
+
+msgid "ui.hud.career_option"
+msgstr "{0} · T{1}{2}"
+
+msgid "ui.hud.career_mastered"
+msgstr " · 精通"
+
+msgid "ui.hud.career_unlocked"
+msgstr " · 已解锁"
+
+msgid "ui.hud.recruit_hint"
+msgstr "{0} · 生命 {1} · 移动 {2} · 射程 {3} · {4}"
+
+msgid "ui.hud.blocks_movement"
+msgstr "阻挡通行"
+
+msgid "ui.hud.blocks_vision"
+msgstr "阻挡视线"
+
+msgid "ui.hud.repairable"
+msgstr "可修复"
+
+msgid "ui.hud.cover_full"
+msgstr "全掩体"
+
+msgid "ui.hud.cover_half"
+msgstr "半掩体"
+
+msgid "ui.hud.cover_none"
+msgstr "无掩体"
+
+msgid "ui.hud.modifier_source.weapon"
+msgstr "武器"
+
+msgid "ui.hud.modifier_source.matchup"
+msgstr "克制"
+
+msgid "ui.hud.modifier_source.unit"
+msgstr "单位"
+
+msgid "ui.hud.modifier_source.status"
+msgstr "状态"
+
+msgid "ui.hud.modifier_source.commander"
+msgstr "指挥"
+
+msgid "ui.hud.modifier_source.terrain"
+msgstr "地形"
+
+msgid "ui.hud.modifier_source.reaction"
+msgstr "反应"
+
+msgid "ui.hud.modifier_source.elevation"
+msgstr "高低差"
+
+msgid "ui.hud.modifier_source.position"
+msgstr "方位"
+
+msgid "ui.hud.modifier_source.cover"
+msgstr "掩体"
+
+msgid "ui.hud.modifier_source.formation"
+msgstr "阵形"
+
+msgid "ui.hud.modifier_source.extension"
+msgstr "扩展"
+
+msgid "ui.hud.modifier_mitigation"
+msgstr "{0} 减伤"
+
+msgid "ui.hud.selection.idle"
+msgstr "点击你的单位开始行动；点击自己的城堡/兵营可以征募（空格切换待命单位，方向键走格、回车确认）。"
+
+msgid "ui.hud.selection.unit"
+msgstr "点击蓝色格移动，点击敌人直接发起攻击。"
+
+msgid "ui.hud.selection.destination"
+msgstr "选择要下的指令；右键或 Esc 退回上一步。"
+
+msgid "ui.hud.selection.target"
+msgstr "点击高亮格中的目标；右键或 Esc 取消。"
+
+msgid "ui.hud.selection.deploying"
+msgstr "战前部署：点击你的单位，再点高亮格调整站位；确认部署后开始战斗。"
+
+msgid "ui.hud.selection.deployment_unit"
+msgstr "点击高亮格摆放；落在同伴身上就与它换位。"
+
+msgid "ui.hud.selection.disembark"
+msgstr "点击高亮格让这名乘员下车；右键或 Esc 取消。"
+
+msgid "ui.hud.selection.tactic"
+msgstr "点击高亮格施用这条战术；右键或 Esc 取消。"
+
+msgid "ui.hud.selection.recruit"
+msgstr "在名册里挑一个兵种，或关掉名册回到战场。"
+
+msgid "ui.battle.choose_unit"
+msgstr "选择单位，查看规则允许的命令。"
+
+msgid "ui.battle.title"
+msgstr "EMPIRE  /  灰旗"
+
+msgid "ui.battle.zoom_out"
+msgstr "缩小战场"
+
+msgid "ui.battle.zoom_in"
+msgstr "放大战场"
+
+msgid "ui.battle.unbound"
+msgstr "尚未绑定战斗"
+
+msgid "ui.battle.restart_title"
+msgstr "重新开始？"
+
+msgid "ui.battle.restart_warning"
+msgstr "当前未保存的战斗进度将丢失。"
+
+msgid "ui.battle.camera_hint"
+msgstr "拖动平移战场 · 滚轮平移 · Ctrl/⌘ + 滚轮缩放"
+
+msgid "ui.battle.orders"
+msgstr "战场指令"
+
+msgid "ui.battle.not_connected"
+msgstr "战斗尚未连接，不能提交命令。"
+
+msgid "ui.battle.surface_pending"
+msgstr "地表显示尚未就绪。"
+
+msgid "ui.battle.artwork_issues"
+msgstr "部分场景资源未能显示（{0} 项）。"
+
+msgid "feedback.battle.refused"
+msgstr "无法执行：{0}"
+
+msgid "battle.objective.heading"
+msgstr "作战目标"

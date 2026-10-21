@@ -26,6 +26,7 @@ public partial class BattleResultScreen : Control
     private VBoxContainer Begin(CampaignShellView? shellView = null, Action? onExit = null)
     {
         generation++; handled = false;
+        AutoTranslateMode = AutoTranslateModeEnum.Disabled;
         foreach (Node child in GetChildren()) { RemoveChild(child); child.QueueFree(); }
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         shell = null;

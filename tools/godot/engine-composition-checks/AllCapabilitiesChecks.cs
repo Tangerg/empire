@@ -85,7 +85,12 @@ static class AllCapabilitiesChecks
                     Same(context.Content);var variables=context.State["scenario"]!["variables"]!.AsObject();variables["effectCalls"]=StateJson.Number(variables,"effectCalls",0)+1;
                     context.Emit(new(){["type"]="scenarioSignal",["signal"]="root-effect"});
                 }));context.Replace(Keys.ScenarioEffects,effects);
-                objectives=context.Require(Keys.Objectives).Clone().Register(new("rootHold","root hold",(context,_)=>{Same(context.Content);return "pending";},(_,_)=>"root progress"));context.Replace(Keys.Objectives,objectives);
+                // Objective extensions own semantic assessments; their labels/progress prose belong to presentation.
+                objectives=context.Require(Keys.Objectives).Clone().Register(new("rootHold",(context,_)=>
+                {
+                    Same(context.Content);
+                    return new ObjectiveAssessment("pending", new JsonObject { ["remaining"] = 1 });
+                }));context.Replace(Keys.Objectives,objectives);
                 context.Replace(Keys.ActionHandlers,context.Require(Keys.ActionHandlers).Clone().Register("rootPrepare",(context,_)=>
                 {
                     var units=context.State["units"]!.AsArray().OfType<JsonObject>().ToArray();var unit=units.Single(u=>StateJson.Integer(u,"id")==2);
@@ -106,6 +111,16 @@ static class AllCapabilitiesChecks
             };
             equal(identity,vector["identity"],"all capability resolved identity");equal(engine.RulesetManifest,FixtureRuleset.ExpectedNative(vector["manifest"]!.AsObject()),"all capability actual manifest");
             var level=vector["level"]!.AsObject();var battle=engine.CreateBattle(level);equal(battle.Snapshot(),vector["initial"],"custom turn start");
+            var semanticState = battle.Snapshot();
+            var semanticObjective = new JsonObject { ["id"] = "root-hold-probe", ["type"] = "rootHold" };
+            var ownerId = semanticState["players"]![0]!["id"]!.GetValue<int>();
+            var assessment = engine.Objectives.Assess(engine.Victory.Rules, semanticState, ownerId, semanticObjective);
+            var progress = engine.Objectives.Project(engine.Victory.Rules, semanticState, ownerId, semanticObjective);
+            check(assessment.Outcome == "pending" && progress.Status == "active" && progress.Kind == "rootHold", "resolved custom objective semantic assessment");
+            equal(EcmaJson.Parse(assessment.Facts.GetRawText()), new JsonObject { ["remaining"] = 1 }, "resolved custom objective facts");
+            equal(EcmaJson.Parse(progress.Facts.GetRawText()), new JsonObject { ["remaining"] = 1 }, "resolved custom objective projected facts");
+            semanticObjective["type"] = "changed";
+            check(EcmaJson.ReadString(EcmaJson.Parse(progress.Definition.GetRawText())!["type"]) == "rootHold", "objective projection detaches definition");
             var forecastState=battle.Snapshot();var forecastUnits=forecastState["units"]!.AsArray().OfType<JsonObject>().ToArray();var defender=forecastUnits.Single(u=>StateJson.Integer(u,"id")==2);defender["reaction"]="root-guard";
             var forecast=engine.Combat.Forecasts.Forecast(forecastState,forecastUnits.First(u=>StateJson.Integer(u,"owner")==2),defender);
             var forecastJson=JsonSerializer.SerializeToNode(forecast,new JsonSerializerOptions{PropertyNamingPolicy=JsonNamingPolicy.CamelCase})!;

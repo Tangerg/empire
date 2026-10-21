@@ -55,9 +55,9 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
         areaShapes.Replace(new(StateJson.Text(area, "id"), StateJson.IsTrue(area["needsOccupant"]),
             (_, _, targetAt) => offsets.Select(offset => new Coord(targetAt.X + offset.X, targetAt.Y + offset.Y)).ToArray()));
     }
-    var combat = new BattleCombat(catalog, grids, new BattleResources(), movement, areaShapes.Seal(),
+    var combat = new BattleCombat(new BattleCombatRules(catalog, grids, new BattleResources(), movement, areaShapes.Seal(),
         DefaultCombatModifiers.Create(), DefaultWeaponHitEffects.Create(), ReactionRegistry.Core().Seal(),
-        new Empire.Core.Progression.ThresholdRankProgressionPolicy(), Empire.Core.Lifecycle.DefaultUnitDepartureHandlers.Create());
+        new Empire.Core.Progression.ThresholdRankProgressionPolicy(), Empire.Core.Lifecycle.DefaultUnitDepartureHandlers.Create()));
     var events = new JsonArray(); var hashes = new JsonArray();
     void Emit(JsonObject ev) { events.Add(ev); hashes.Add(StateDigest.Hash(state)); }
     var attacker = TacticalQueries.UnitById(state, parameters["unit"] is null ? 1 : StateJson.Integer(parameters, "unit"));
@@ -77,7 +77,7 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
                 break;
             case "query": result = new JsonObject
                 {
-                    ["usable"] = combat.CanUseAttack(state, attacker!, from, StateJson.IsTrue(parameters["moved"]), weapon),
+                    ["usable"] = combat.CanUseAttack(state, attacker!, StateJson.IsTrue(parameters["moved"]), weapon),
                     ["targets"] = Serialize(combat.AttackTargets(state, attacker!, from, weapon)),
                 }; break;
             case "cast": combat.ExecuteAttack(state, attacker!, from, target, weapon, Emit); break;

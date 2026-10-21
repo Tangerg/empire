@@ -29,10 +29,11 @@ const packs = [COMMON_CONTENT_PACK, ANCIENT_EMPIRES_CONTENT_PACK, CANDIDATE_01_C
 const content = createContentCatalog(); new ContentPackInstaller(content).install(...packs);
 const engine = createBattleEngine({ content }); const level = candidate01Level('c01-01');
 const raw = createState(engine.rules, level);
-write('data/grayflag-level.json', level); write('data/content-packs.json', packs);
+// Native gameplay documents are authored independently; these exports are historical source evidence.
+write('tests/oracle/source-v1/grayflag-level.json', level); write('tests/oracle/source-v1/content-packs.json', packs);
 const campaign = CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN;
-write('data/grayflag-campaign.json', campaign);
-write('data/grayflag-campaign-levels.json', CANDIDATE_01_LEVELS);
+write('tests/oracle/source-v1/grayflag-campaign.json', campaign);
+write('tests/oracle/source-v1/grayflag-campaign-levels.json', CANDIDATE_01_LEVELS);
 write('tests/oracle/grayflag-initial-raw.json', { level, state: raw });
 const actorSource = ts.createSourceFile('actors.ts', readFileSync('packages/story-candidate-01/src/presentation/candidate-01-actor-art.ts', 'utf8'), ts.ScriptTarget.Latest, true);
 function literal(node: ts.Node): unknown {

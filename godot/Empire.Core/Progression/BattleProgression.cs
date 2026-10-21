@@ -7,14 +7,24 @@ using Empire.Core.Tactics;
 
 namespace Empire.Core.Progression;
 
+public sealed record BattleProgressionRules(
+    ReadOnlyContent Content,
+    GridRegistry Grids,
+    BattleResources Resources,
+    TacticalCommands Commands,
+    CombatEffects Effects);
+
 public sealed class BattleProgression
 {
     private readonly TacticalCommands commands;
     public CareerRules Careers { get; }
     public FormationRules Formations { get; }
-    public BattleProgression(ReadOnlyContent catalog, GridRegistry grids, BattleResources resources,
-        TacticalCommands commands, CombatEffects effects)
-    { Careers = new CareerRules(catalog, resources, effects); Formations = new FormationRules(catalog, grids); this.commands = commands; }
+    public BattleProgression(BattleProgressionRules rules)
+    {
+        Careers = new CareerRules(rules.Content, rules.Resources, rules.Effects);
+        Formations = new FormationRules(rules.Content, rules.Grids);
+        commands = rules.Commands;
+    }
     public void ChangeCareer(JsonObject state, int unitId, string career, Action<JsonObject> emit) =>
         Careers.Change(state, commands.CommandableUnit(state, unitId), career, emit);
     public void ChangeFormation(JsonObject state, int unitId, string? formation, Action<JsonObject> emit)

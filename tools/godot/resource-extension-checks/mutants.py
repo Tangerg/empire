@@ -32,7 +32,7 @@ mutants = [(name, 'Resources', 'EmpireResourcesRoot', 'BattleResources.cs', befo
      'var subject = new BattleResources.Subject("player", context.Player!);',
      'custom squad fractional consume error'),
     ('injected-support-resource', 'Orders', 'EmpireOrdersRoot', 'SupportOrders.cs',
-     'this.resources = resources;', 'this.resources = new BattleResources();',
+     'resources = rules.Resources;', 'resources = new BattleResources();',
      'supplied resource tactic tactic-options menus'),
 ]
 for name, directory, property_name, filename, before, after, expected in mutants:

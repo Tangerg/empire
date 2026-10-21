@@ -58,7 +58,7 @@ const levelCases:any[]=[];
 oldLevelCases((name:string,level:any,legacyAccepted:boolean)=>{let error:string|null=null;let errorName:string|null=null;let state:any=null;
  try{state=engine.createState(level,{seed:99});}catch(e){error=(e as Error).message;errorName=(e as Error).name;}
  levelCases.push({name,level,error,errorName,state,legacyAccepted,category:errorName==='DomainInvariantError'?'source-fails-when-used':error?'source-rejects-now':'source-accepts-inert'});
-},JSON.parse(readFileSync('godot/data/grayflag-level.json','utf8')));
+},JSON.parse(readFileSync('godot/tests/oracle/source-v1/grayflag-level.json','utf8')));
 const result={cases,catalogCases,levelCases};writeFileSync(process.argv[3],gzipSync(JSON.stringify(result)));
 for(const entry of cases as any[]) console.log(JSON.stringify({name:entry.name,loadError:entry.loadError,actionError:entry.actionError,atomic:entry.atomic}));
 

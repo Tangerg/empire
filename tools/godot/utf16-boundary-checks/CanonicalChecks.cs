@@ -60,7 +60,7 @@ internal static class CanonicalChecks
             catch (JsonException) { }
         }
         var packs = EcmaJson.Parse(File.ReadAllText(Path.Combine(root, "godot/data/content-packs.json")))!.AsArray();
-        var level = EcmaJson.Parse(File.ReadAllText(Path.Combine(root, "godot/data/grayflag-level.json")))!.AsObject();
+        var level = EcmaJson.Parse(File.ReadAllText(Path.Combine(root, "godot/tests/oracle/source-v1/grayflag-level.json")))!.AsObject();
         var engine = new GrayFlagEngine(packs);
         var original = engine.CreateState(level);
         foreach (var stream in new[] { "\ud800", "\udfff", "script.骰子💥", "\ud800X\udfff" })

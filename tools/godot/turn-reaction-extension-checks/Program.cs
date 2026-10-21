@@ -148,7 +148,7 @@ var sample = fixture["turns"]![0]!["before"]!.DeepClone().AsObject();
 mutable.Replace(new ReversePolicy(new JsonObject { ["id"] = "side", ["independent"] = true }));
 Check(dynamicTurns.Preview(sample, 7).SequenceEqual(new[] { 3, 7, 1 }), "turn consumer snapshotted registry");
 Check(ReferenceEquals(dynamicTurns.Actors(sample)[0], sample["units"]![1]), "actor query lost unit identity");
-var mutableReactions = ReactionRegistry.Core(); var dynamicForecast = new CombatForecasts(engine.Catalog, engine.Grids, engine.Resources, engine.Combat.Forecasts.Modifiers, mutableReactions);
+var mutableReactions = ReactionRegistry.Core(); var dynamicForecast = new CombatForecasts(new CombatForecastRules(engine.Catalog, engine.Grids, engine.Resources, engine.Combat.Forecasts.Modifiers, mutableReactions));
 var replacement = originalGuard with { IncomingMultiplier = 0.17 }; mutableReactions.Replace(replacement);
 Check(ReferenceEquals(dynamicForecast.Reaction("guard"), replacement), "forecast consumer snapshotted registry");
 Check(ReferenceEquals(dynamicForecast.Reactions, mutableReactions), "forecast lost supplied registry identity");

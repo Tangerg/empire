@@ -8,6 +8,18 @@ using Empire.Core.Tactics;
 
 namespace Empire.Core.Combat;
 
+public sealed record BattleCombatRules(
+    ReadOnlyContent Content,
+    GridRegistry Grids,
+    BattleResources Resources,
+    ITacticalSpace Space,
+    WeaponAreaRegistry AreaShapes,
+    CombatModifierPipeline Modifiers,
+    WeaponHitEffectHandlerRegistry HitEffects,
+    ReactionRegistry Reactions,
+    IRankProgressionPolicy Progression,
+    UnitDepartureHandlerRegistry UnitDepartures);
+
 public sealed partial class BattleCombat : ILifecycleEffects
 {
     private readonly StateContent content;
@@ -20,19 +32,18 @@ public sealed partial class BattleCombat : ILifecycleEffects
     public WeaponAreaRegistry AreaShapes { get; }
     public WeaponHitEffectHandlerRegistry HitEffects { get; }
     private readonly WeaponHitEffectRules hitEffectRules;
-    public BattleCombat(ReadOnlyContent catalog, GridRegistry grids, BattleResources resources, ITacticalSpace space,
-        WeaponAreaRegistry areaShapes, CombatModifierPipeline modifiers, WeaponHitEffectHandlerRegistry hitEffects,
-        ReactionRegistry reactions, IRankProgressionPolicy progression, UnitDepartureHandlerRegistry unitDepartures)
+    public BattleCombat(BattleCombatRules rules)
     {
-        content = catalog.Source;
-        this.resources = resources;
-        this.space = space;
-        AreaShapes = areaShapes;
-        Forecasts = new CombatForecasts(catalog, grids, resources, modifiers, reactions);
-        Effects = new CombatEffects(catalog, progression);
-        Damage = new BattleDamage(catalog, grids, Effects, unitDepartures);
-        HitEffects = hitEffects;
-        hitEffectRules = new(catalog, grids, Effects, Damage, ForceMove);
+        content = rules.Content.Source;
+        resources = rules.Resources;
+        space = rules.Space;
+        AreaShapes = rules.AreaShapes;
+        Forecasts = new CombatForecasts(new CombatForecastRules(rules.Content, rules.Grids, rules.Resources,
+            rules.Modifiers, rules.Reactions));
+        Effects = new CombatEffects(rules.Content, rules.Progression);
+        Damage = new BattleDamage(new BattleDamageRules(rules.Content, rules.Grids, Effects, rules.UnitDepartures));
+        HitEffects = rules.HitEffects;
+        hitEffectRules = new(rules.Content, rules.Grids, Effects, Damage, ForceMove);
     }
     public JsonObject? SelectedWeapon(JsonObject state, JsonObject unit, string? weapon = null)
     {
@@ -41,7 +52,7 @@ public sealed partial class BattleCombat : ILifecycleEffects
     }
     public bool CanUseWeapon(JsonObject state, JsonObject unit, bool moved, string? weapon = null) =>
         SelectedWeapon(state, unit, weapon) is { } selected && (!moved || StateJson.IsTrue(selected["moveAndAttack"]));
-    public bool CanUseAttack(JsonObject state, JsonObject unit, Coord at, bool moved, string? weapon = null)
+    public bool CanUseAttack(JsonObject state, JsonObject unit, bool moved, string? weapon = null)
     {
         var selected = SelectedWeapon(state, unit, weapon);
         return selected is not null && CanUseWeapon(state, unit, moved, weapon)

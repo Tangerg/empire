@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Empire.Localization;
 
 namespace Empire.Presentation.Feedback;
 
@@ -41,44 +42,46 @@ public sealed class BattleEventText
         if (sealedRegistry) throw new InvalidOperationException("battle event text registry is sealed after composition");
     }
 
-    private static string Number(JsonElement value, string key) => FeedbackJson.Text(value.GetProperty(key));
-    private static double Id(JsonElement value, string key) => value.GetProperty(key).GetDouble();
-    private static string Casualty(JsonElement value, string key = "killed", string phrasing = "，目标阵亡") =>
-        value.GetProperty(key).GetBoolean() ? phrasing : "";
+    private static double Number(JsonElement value, string key) => value.GetProperty(key).GetDouble();
+    private static double Id(JsonElement value, string key) => Number(value, key);
 
-    public static BattleEventText CreateDefault() => new BattleEventText()
-        .Register("attack", (context, value) =>
-            $"{context.UnitName(Id(value, "attacker"))} 造成 {Number(value, "damage")} 点伤害{Casualty(value)}")
-        .Register("counter", (_, value) =>
-            $"反击造成 {Number(value, "damage")} 点伤害{Casualty(value, phrasing: "，我方阵亡")}")
-        .Register("supportAttack", (context, value) =>
-            $"{context.UnitName(Id(value, "attacker"))} 援护攻击造成 {Number(value, "damage")} 点伤害{Casualty(value)}")
-        .Register("partingShot", (context, value) =>
-            $"{context.UnitName(Id(value, "attacker"))} 借机攻击造成 {Number(value, "damage")} 点伤害{Casualty(value)}")
-        .Register("areaAttack", (context, value) =>
-            $"范围攻击对 {context.UnitName(Id(value, "defender"))} 造成 {Number(value, "damage")} 点伤害{Casualty(value)}")
-        .Register("attackStructure", (_, value) =>
-            $"对结构造成 {Number(value, "damage")} 点伤害{Casualty(value, "destroyed", "，结构被摧毁")}")
-        .Register("areaAttackStructure", (_, value) =>
-            $"范围攻击对结构造成 {Number(value, "damage")} 点伤害{Casualty(value, "destroyed", "，结构被摧毁")}")
-        .Register("death", (_, _) => "")
-        .Register("heal", (context, value) =>
-            $"{context.UnitName(Id(value, "source"))} 治疗了 {Number(value, "amount")} 点生命")
-        .Register("recruit", (context, value) =>
-            $"{context.PlayerName(context.State.GetProperty("currentPlayer").GetDouble())} 征募了 {context.UnitName(Id(value, "unit"))}")
-        .Register("capture", (context, value) => value.GetProperty("captured").GetBoolean()
-            ? $"{context.PlayerName(Id(value, "player"))} 占领了 ({Number(value.GetProperty("at"), "x")}, {Number(value.GetProperty("at"), "y")})" : "占领进度提升")
-        .Register("turnStart", (context, value) => $"第 {Number(value, "turn")} 回合 · {context.PlayerName(Id(value, "player"))}")
-        .Register("resourceChanged", (context, value) =>
-            $"{context.HolderName(value.GetProperty("subject"))} {context.ResourceName(FeedbackJson.Text(value.GetProperty("resource")))} {(value.GetProperty("amount").GetDouble() >= 0 ? "+" : "")}{Number(value, "amount")}（{Number(value, "current")}）")
-        .Register("rankChanged", (context, value) =>
-            $"{context.UnitName(Id(value, "unit"))} 晋升为 {RankName(Id(value, "to"))}")
-        .Register("careerChanged", (context, value) =>
-            $"{context.UnitName(Id(value, "unit"))} 转职为 {context.CareerName(FeedbackJson.Text(value.GetProperty("to")))}")
-        .Register("facingChanged", (context, value) => $"{context.UnitName(Id(value, "unit"))} 调整了朝向")
-        .Register("defeat", (context, value) => $"{context.PlayerName(Id(value, "player"))} 已被击败")
-        .Register("gameOver", (_, value) => FeedbackJson.Text(value.GetProperty("reason")))
-        .Seal();
-
-    private static string RankName(double rank) => rank switch { 0 => "新兵", 1 => "老兵", 2 => "精英", _ => "undefined" };
+    public static BattleEventText CreateDefault(GameText text, BattleText battleText)
+    {
+        text.ValidateKeys(new[] { "battle.event.attack", "battle.event.counter", "battle.event.support", "battle.event.parting",
+            "battle.event.area", "battle.event.structure", "battle.event.area_structure", "battle.event.target_killed",
+            "battle.event.ally_killed", "battle.event.structure_destroyed", "battle.event.heal", "battle.event.recruit",
+            "battle.event.capture", "battle.event.capture_progress", "battle.event.turn", "battle.event.resource",
+            "battle.event.rank", "battle.event.career", "battle.event.facing", "battle.event.defeat",
+            "ui.rank.recruit", "ui.rank.veteran", "ui.rank.elite" });
+        string Casualty(JsonElement value, string field = "killed", string key = "battle.event.target_killed") =>
+            value.GetProperty(field).GetBoolean() ? text.Format(key) : "";
+        string Rank(double value) => text.Format(value switch
+        {
+            0 => "ui.rank.recruit", 1 => "ui.rank.veteran", 2 => "ui.rank.elite",
+            _ => throw new InvalidOperationException($"Unknown rank in committed event: {value}."),
+        });
+        return new BattleEventText()
+            .Register("attack", (context, value) => text.Format("battle.event.attack", context.UnitName(Id(value, "attacker")), Number(value, "damage"), Casualty(value)))
+            .Register("counter", (_, value) => text.Format("battle.event.counter", Number(value, "damage"), Casualty(value, key: "battle.event.ally_killed")))
+            .Register("supportAttack", (context, value) => text.Format("battle.event.support", context.UnitName(Id(value, "attacker")), Number(value, "damage"), Casualty(value)))
+            .Register("partingShot", (context, value) => text.Format("battle.event.parting", context.UnitName(Id(value, "attacker")), Number(value, "damage"), Casualty(value)))
+            .Register("areaAttack", (context, value) => text.Format("battle.event.area", context.UnitName(Id(value, "defender")), Number(value, "damage"), Casualty(value)))
+            .Register("attackStructure", (_, value) => text.Format("battle.event.structure", Number(value, "damage"), Casualty(value, "destroyed", "battle.event.structure_destroyed")))
+            .Register("areaAttackStructure", (_, value) => text.Format("battle.event.area_structure", Number(value, "damage"), Casualty(value, "destroyed", "battle.event.structure_destroyed")))
+            .Register("death", (_, _) => "")
+            .Register("heal", (context, value) => text.Format("battle.event.heal", context.UnitName(Id(value, "source")), Number(value, "amount")))
+            .Register("recruit", (context, value) => text.Format("battle.event.recruit", context.PlayerName(context.State.GetProperty("currentPlayer").GetDouble()), context.UnitName(Id(value, "unit"))))
+            .Register("capture", (context, value) => value.GetProperty("captured").GetBoolean()
+                ? text.Format("battle.event.capture", context.PlayerName(Id(value, "player")), Number(value.GetProperty("at"), "x"), Number(value.GetProperty("at"), "y"))
+                : text.Format("battle.event.capture_progress"))
+            .Register("turnStart", (context, value) => text.Format("battle.event.turn", Number(value, "turn"), context.PlayerName(Id(value, "player"))))
+            .Register("resourceChanged", (context, value) => text.Format("battle.event.resource", context.HolderName(value.GetProperty("subject")),
+                context.ResourceName(FeedbackJson.Text(value.GetProperty("resource"))), Number(value, "amount") >= 0 ? "+" : "", Number(value, "amount"), Number(value, "current")))
+            .Register("rankChanged", (context, value) => text.Format("battle.event.rank", context.UnitName(Id(value, "unit")), Rank(Id(value, "to"))))
+            .Register("careerChanged", (context, value) => text.Format("battle.event.career", context.UnitName(Id(value, "unit")), context.CareerName(FeedbackJson.Text(value.GetProperty("to")))))
+            .Register("facingChanged", (context, value) => text.Format("battle.event.facing", context.UnitName(Id(value, "unit"))))
+            .Register("defeat", (context, value) => text.Format("battle.event.defeat", context.PlayerName(Id(value, "player"))))
+            .Register("gameOver", (context, value) => battleText.DescribeConclusion(context.State, value.GetProperty("conclusion")))
+            .Seal();
+    }
 }

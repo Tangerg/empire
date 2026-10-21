@@ -8,16 +8,21 @@ using Empire.Core.Engine;
 using Empire.Presentation;
 using Empire.Presentation.Tactical;
 
-if (args.Length != 2) throw new ArgumentException("Usage: TacticalHudChecks <oracle.json> <catalog.json>");
+if (args.Length != 3) throw new ArgumentException("Usage: TacticalHudChecks <oracle.json> <repository> <catalog.json>");
 var gameText = FixtureText.Load(args[^1]);
 ActionRefusalText Refusals(GrayFlagEngine value) => ActionRefusalText.CreateDefault(gameText, value.Catalog, value.Abilities).Seal();
+var root = args[1];
+// Historical source-v1 custom levels and runtime states still require explicit semantic-schema migration.
 var fixture=EcmaJson.Parse(File.ReadAllText(args[0]))!.AsObject();
 var engine=new GrayFlagEngine(fixture["packs"]!.AsArray());int checks=0;var failures=new List<string>();
+var battleText = FixtureBattleText.Load(root, engine, gameText);
 void Require(bool condition,string name){if(!condition)failures.Add(name);checks++;}
 string Text(JsonNode? n)=>n is null?"":EcmaJson.ReadString(n);
 string Clean(string value)=>Regex.Replace(value,@"\s+"," ").Trim();
 foreach(var test in fixture["cases"]!.AsArray().OfType<JsonObject>()){
- var name=Text(test["name"]);var state=test["state"]!.AsObject();var caseEngine=test["packs"] is JsonArray casePacks?new GrayFlagEngine(casePacks):engine;var session=GrayFlagSession.FromSave(caseEngine, caseEngine.SaveBattle(state), gameText, Refusals(caseEngine));
+ var name=Text(test["name"]);var state=test["state"]!.AsObject();var caseEngine=test["packs"] is JsonArray casePacks?new GrayFlagEngine(casePacks):engine;
+ var caseBattleText = ReferenceEquals(caseEngine, engine) ? battleText : FixtureBattleText.Load(root, caseEngine, gameText);
+ var session=GrayFlagSession.FromSave(caseEngine, caseEngine.SaveBattle(state), gameText, Refusals(caseEngine), caseBattleText);
  var before=EcmaJson.Stringify(session.Snapshot());var at=new BoardCell(test["tile"]!["x"]!.GetValue<int>(),test["tile"]!["y"]!.GetValue<int>());
  var selection=new TacticalSelection{Kind=Enum.Parse<TacticalSelectionKind>(Text(test["kind"])),UnitId=test["unit"]?.GetValue<int>(),Destination=at,Weapon=test["weapon"] is null?null:Text(test["weapon"]),Ability=test["ability"] is null?null:Text(test["ability"]),Targets=test["target"] is JsonObject target?new[]{new BoardCell(target["x"]!.GetValue<int>(),target["y"]!.GetValue<int>())}:[]};
  var projection=session.ProjectHud(new(19,0),selection,test["cursor"] is JsonObject aimed?new BoardCell(aimed["x"]!.GetValue<int>(),aimed["y"]!.GetValue<int>()):null,test["inspect"]?.GetValue<int>(),test["busy"]?.GetValue<bool>()??false);
@@ -82,6 +87,6 @@ var fogState=fixture["cases"]![1]!["state"]!.DeepClone().AsObject();fogState["ru
 var visible=engine.Space.VisibleUnits(fogState,1).Select(unit=>unit["id"]!.GetValue<int>()).ToHashSet();
 var hidden=fogState["units"]!.AsArray().OfType<JsonObject>().FirstOrDefault(unit=>!visible.Contains(unit["id"]!.GetValue<int>()));
 Require(hidden is not null,"Hidden forged selection witness");
-if(hidden is not null){var session=GrayFlagSession.FromSave(engine, engine.SaveBattle(fogState), gameText, Refusals(engine));var id=hidden["id"]!.GetValue<int>();var forged=session.ProjectHud(new(5,0),new(){Kind=TacticalSelectionKind.Destination,UnitId=id,Destination=new(hidden["x"]!.GetValue<int>(),hidden["y"]!.GetValue<int>())},null,id,false);Require(!forged.Sections.Any(section=>section.Key is "unit" or "forecast" or "commands"),"Hidden forged selected/inspect IDs expose no private unit/menu/forecast");}
+if(hidden is not null){var session=GrayFlagSession.FromSave(engine, engine.SaveBattle(fogState), gameText, Refusals(engine), battleText);var id=hidden["id"]!.GetValue<int>();var forged=session.ProjectHud(new(5,0),new(){Kind=TacticalSelectionKind.Destination,UnitId=id,Destination=new(hidden["x"]!.GetValue<int>(),hidden["y"]!.GetValue<int>())},null,id,false);Require(!forged.Sections.Any(section=>section.Key is "unit" or "forecast" or "commands"),"Hidden forged selected/inspect IDs expose no private unit/menu/forecast");}
 if(failures.Count>0)throw new Exception(string.Join("\n",failures));
 Console.WriteLine($"HUD actual-source DOM differential: {checks} assertions passed.");

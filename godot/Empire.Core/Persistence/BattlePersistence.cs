@@ -6,7 +6,7 @@ namespace Empire.Core.Persistence;
 
 public sealed class BattlePersistence
 {
-    public const int Schema = 1;
+    public const int Schema = 2;
     private readonly BattleSaveEnvironment environment;
     private readonly IBattleSaveReader reader;
 

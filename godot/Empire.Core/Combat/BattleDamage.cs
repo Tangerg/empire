@@ -13,6 +13,12 @@ public sealed record DamageOutcome(
 /// Owns a blow and its complete aftermath, including departures caused by morale.
 /// Callers report the cause; this owner reports and settles every consequence.
 /// </summary>
+public sealed record BattleDamageRules(
+    ReadOnlyContent Content,
+    GridRegistry Grids,
+    CombatEffects Effects,
+    UnitDepartureHandlerRegistry UnitDepartures);
+
 public sealed class BattleDamage
 {
     private static readonly DamageOutcome NothingToHit = new(false, 0, 0, false, true, new Coord(-1, -1));
@@ -22,13 +28,13 @@ public sealed class BattleDamage
     private readonly CombatEffects effects;
     private readonly UnitDepartureRules departureRules;
 
-    public BattleDamage(ReadOnlyContent catalog, GridRegistry grids, CombatEffects effects, UnitDepartureHandlerRegistry unitDepartures)
+    public BattleDamage(BattleDamageRules rules)
     {
-        this.catalog = catalog;
-        content = catalog.Source;
-        this.grids = grids;
-        this.effects = effects;
-        departureRules = new(catalog, grids, this, unitDepartures);
+        catalog = rules.Content;
+        content = rules.Content.Source;
+        grids = rules.Grids;
+        effects = rules.Effects;
+        departureRules = new(rules.Content, rules.Grids, this, rules.UnitDepartures);
     }
 
     public DamageOutcome Resolve(

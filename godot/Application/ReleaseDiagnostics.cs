@@ -2,6 +2,7 @@ using System.Text.Json.Nodes;
 using Empire.Core.Determinism;
 using Empire.Core.Engine;
 using Empire.Presentation;
+using Empire.Presentation.Feedback;
 using Godot;
 using File = System.IO.File;
 
@@ -111,7 +112,10 @@ public partial class ReleaseDiagnostics : Node
         var engine = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
         var text = Empire.Localization.GodotTextCatalog.LoadSimplifiedChinese();
         var refusals = Empire.Presentation.Feedback.ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
-        var savedSession = GrayFlagSession.FromSave(engine, opening["battle"]!, text, refusals, opening["events"]!.AsArray());
+        var battleText = new BattleText(text, BattleTextDocument.Parse(
+            Godot.FileAccess.GetFileAsString("res://data/grayflag-battle-text.json"),
+            PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json"), engine.Objectives), ObjectiveText.CreateDefault(text).Seal());
+        var savedSession = GrayFlagSession.FromSave(engine, opening["battle"]!, text, refusals, battleText, opening["events"]!.AsArray());
         var openingHash = StateDigest.Hash(savedSession.Snapshot());
         var queries = savedSession.GetTacticalQueries(0);
         var move = queries.Actors().SelectMany(id => queries.MoveStops(id)

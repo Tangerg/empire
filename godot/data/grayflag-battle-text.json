@@ -1,0 +1,529 @@
+{
+  "schema": 1,
+  "levels": {
+    "c01-01": {
+      "players": {
+        "1": {
+          "name": {
+            "key": "battle.player.gray_flag"
+          },
+          "objectives": {
+            "primary": {
+              "key": "objective.c01_01.p1.primary"
+            },
+            "route": {
+              "key": "objective.c01_01.p1.route"
+            }
+          }
+        },
+        "2": {
+          "name": {
+            "key": "battle.player.enemy"
+          },
+          "objectives": {
+            "route": {
+              "key": "objective.c01_01.p2.route"
+            }
+          }
+        }
+      }
+    },
+    "c01-02": {
+      "players": {
+        "1": {
+          "name": {
+            "key": "battle.player.gray_flag"
+          },
+          "objectives": {
+            "primary": {
+              "key": "objective.c01_02.p1.primary"
+            },
+            "bridge-all": {
+              "key": "objective.c01_02.p1.bridge_all"
+            },
+            "escort-east-safety": {
+              "key": "objective.c01_02.p1.escort_east_safety"
+            },
+            "eliminate-unmarked-ballista": {
+              "key": "objective.c01_02.p1.eliminate_unmarked_ballista"
+            }
+          }
+        },
+        "2": {
+          "name": {
+            "key": "battle.player.enemy"
+          },
+          "objectives": {
+            "route": {
+              "key": "objective.c01_02.p2.route"
+            }
+          }
+        }
+      }
+    },
+    "c01-03": {
+      "players": {
+        "1": {
+          "name": {
+            "key": "battle.player.gray_flag"
+          },
+          "objectives": {
+            "primary": {
+              "key": "objective.c01_03.p1.primary"
+            },
+            "redstone-path": {
+              "key": "objective.c01_03.p1.redstone_path"
+            },
+            "disable-node": {
+              "key": "objective.c01_03.p1.disable_node"
+            },
+            "capture-redstone": {
+              "key": "objective.c01_03.p1.capture_redstone"
+            },
+            "score-gate_breached": {
+              "key": "objective.c01_03.p1.score_gate_breached"
+            }
+          }
+        },
+        "2": {
+          "name": {
+            "key": "battle.player.enemy"
+          },
+          "objectives": {
+            "route": {
+              "key": "objective.c01_03.p2.route"
+            }
+          }
+        }
+      }
+    },
+    "c01-04": {
+      "players": {
+        "1": {
+          "name": {
+            "key": "battle.player.gray_flag"
+          },
+          "objectives": {
+            "primary": {
+              "key": "objective.c01_04.p1.primary"
+            },
+            "black-camp-sequence": {
+              "key": "objective.c01_04.p1.black_camp_sequence"
+            },
+            "score-evidence": {
+              "key": "objective.c01_04.p1.score_evidence"
+            },
+            "escort-west-exit": {
+              "key": "objective.c01_04.p1.escort_west_exit"
+            }
+          }
+        },
+        "2": {
+          "name": {
+            "key": "battle.player.enemy"
+          },
+          "objectives": {
+            "route": {
+              "key": "objective.c01_04.p2.route"
+            }
+          }
+        }
+      }
+    },
+    "c01-05": {
+      "players": {
+        "1": {
+          "name": {
+            "key": "battle.player.gray_flag"
+          },
+          "objectives": {
+            "primary": {
+              "key": "objective.c01_05.p1.primary"
+            },
+            "save-village": {
+              "key": "objective.c01_05.p1.save_village"
+            },
+            "protect-villagers": {
+              "key": "objective.c01_05.p1.protect_villagers"
+            },
+            "hold-seven": {
+              "key": "objective.c01_05.p1.hold_seven"
+            }
+          }
+        },
+        "2": {
+          "name": {
+            "key": "battle.player.enemy"
+          },
+          "objectives": {
+            "route": {
+              "key": "objective.c01_05.p2.route"
+            }
+          }
+        }
+      }
+    },
+    "c01-06": {
+      "players": {
+        "1": {
+          "name": {
+            "key": "battle.player.gray_flag"
+          },
+          "objectives": {
+            "primary": {
+              "key": "objective.c01_06.p1.primary"
+            },
+            "escort-north-bank": {
+              "key": "objective.c01_06.p1.escort_north_bank"
+            }
+          }
+        },
+        "2": {
+          "name": {
+            "key": "battle.player.enemy"
+          },
+          "objectives": {
+            "route": {
+              "key": "objective.c01_06.p2.route"
+            }
+          }
+        }
+      }
+    },
+    "c01-07": {
+      "players": {
+        "1": {
+          "name": {
+            "key": "battle.player.gray_flag"
+          },
+          "objectives": {
+            "primary": {
+              "key": "objective.c01_07.p1.primary"
+            },
+            "city-control": {
+              "key": "objective.c01_07.p1.city_control"
+            },
+            "granary": {
+              "key": "objective.c01_07.p1.granary"
+            },
+            "militia-barracks": {
+              "key": "objective.c01_07.p1.militia_barracks"
+            }
+          }
+        },
+        "2": {
+          "name": {
+            "key": "battle.player.enemy"
+          },
+          "objectives": {
+            "route": {
+              "key": "objective.c01_07.p2.route"
+            }
+          }
+        }
+      }
+    },
+    "c01-08": {
+      "players": {
+        "1": {
+          "name": {
+            "key": "battle.player.gray_flag"
+          },
+          "objectives": {
+            "primary": {
+              "key": "objective.c01_08.p1.primary"
+            },
+            "protect-tasha": {
+              "key": "objective.c01_08.p1.protect_tasha"
+            },
+            "route": {
+              "key": "objective.c01_08.p1.route"
+            }
+          }
+        },
+        "2": {
+          "name": {
+            "key": "battle.player.enemy"
+          },
+          "objectives": {
+            "route": {
+              "key": "objective.c01_08.p2.route"
+            }
+          }
+        }
+      }
+    },
+    "c01-09": {
+      "players": {
+        "1": {
+          "name": {
+            "key": "battle.player.gray_flag"
+          },
+          "objectives": {
+            "primary": {
+              "key": "objective.c01_09.p1.primary"
+            },
+            "break-chains": {
+              "key": "objective.c01_09.p1.break_chains"
+            }
+          }
+        },
+        "2": {
+          "name": {
+            "key": "battle.player.enemy"
+          },
+          "objectives": {
+            "route": {
+              "key": "objective.c01_09.p2.route"
+            }
+          }
+        },
+        "3": {
+          "name": {
+            "key": "battle.player.neutral"
+          },
+          "objectives": {
+            "primary": {
+              "key": "objective.c01_09.p3.primary"
+            },
+            "break-chains": {
+              "key": "objective.c01_09.p3.break_chains"
+            }
+          }
+        }
+      }
+    },
+    "c01-10": {
+      "players": {
+        "1": {
+          "name": {
+            "key": "battle.player.gray_flag"
+          },
+          "objectives": {
+            "primary": {
+              "key": "objective.c01_10.p1.primary"
+            },
+            "escort-east-pass": {
+              "key": "objective.c01_10.p1.escort_east_pass"
+            }
+          }
+        },
+        "2": {
+          "name": {
+            "key": "battle.player.enemy"
+          },
+          "objectives": {
+            "route": {
+              "key": "objective.c01_10.p2.route"
+            }
+          }
+        }
+      }
+    },
+    "c01-11": {
+      "players": {
+        "1": {
+          "name": {
+            "key": "battle.player.gray_flag"
+          },
+          "objectives": {
+            "primary": {
+              "key": "objective.c01_11.p1.primary"
+            },
+            "grave-sequence": {
+              "key": "objective.c01_11.p1.grave_sequence"
+            },
+            "score-names": {
+              "key": "objective.c01_11.p1.score_names"
+            },
+            "eliminate-colossus": {
+              "key": "objective.c01_11.p1.eliminate_colossus"
+            }
+          }
+        },
+        "2": {
+          "name": {
+            "key": "battle.player.enemy"
+          },
+          "objectives": {
+            "route": {
+              "key": "objective.c01_11.p2.route"
+            }
+          }
+        }
+      }
+    },
+    "c01-12": {
+      "players": {
+        "1": {
+          "name": {
+            "key": "battle.player.gray_flag"
+          },
+          "objectives": {
+            "primary": {
+              "key": "objective.c01_12.p1.primary"
+            },
+            "bell-mechanism": {
+              "key": "objective.c01_12.p1.bell_mechanism"
+            }
+          }
+        },
+        "2": {
+          "name": {
+            "key": "battle.player.enemy"
+          },
+          "objectives": {
+            "route": {
+              "key": "objective.c01_12.p2.route"
+            }
+          }
+        }
+      }
+    },
+    "c01-13": {
+      "players": {
+        "1": {
+          "name": {
+            "key": "battle.player.gray_flag"
+          },
+          "objectives": {
+            "primary": {
+              "key": "objective.c01_13.p1.primary"
+            },
+            "archive-sequence": {
+              "key": "objective.c01_13.p1.archive_sequence"
+            },
+            "score-archives": {
+              "key": "objective.c01_13.p1.score_archives"
+            },
+            "escort-archive-exit": {
+              "key": "objective.c01_13.p1.escort_archive_exit"
+            }
+          }
+        },
+        "2": {
+          "name": {
+            "key": "battle.player.enemy"
+          },
+          "objectives": {
+            "route": {
+              "key": "objective.c01_13.p2.route"
+            }
+          }
+        }
+      }
+    },
+    "c01-14": {
+      "players": {
+        "1": {
+          "name": {
+            "key": "battle.player.gray_flag"
+          },
+          "objectives": {
+            "primary": {
+              "key": "objective.c01_14.p1.primary"
+            },
+            "forge-all": {
+              "key": "objective.c01_14.p1.forge_all"
+            },
+            "score-valves": {
+              "key": "objective.c01_14.p1.score_valves"
+            },
+            "route": {
+              "key": "objective.c01_14.p1.route"
+            }
+          }
+        },
+        "2": {
+          "name": {
+            "key": "battle.player.enemy"
+          },
+          "objectives": {
+            "route": {
+              "key": "objective.c01_14.p2.route"
+            }
+          }
+        }
+      }
+    },
+    "c01-15": {
+      "players": {
+        "1": {
+          "name": {
+            "key": "battle.player.gray_flag"
+          },
+          "objectives": {
+            "primary": {
+              "key": "objective.c01_15.p1.primary"
+            },
+            "protect-root": {
+              "key": "objective.c01_15.p1.protect_root"
+            },
+            "eliminate-oath-forces": {
+              "key": "objective.c01_15.p1.eliminate_oath_forces"
+            }
+          }
+        },
+        "2": {
+          "name": {
+            "key": "battle.player.enemy"
+          },
+          "objectives": {
+            "route": {
+              "key": "objective.c01_15.p2.route"
+            }
+          }
+        },
+        "3": {
+          "name": {
+            "key": "battle.player.neutral"
+          },
+          "objectives": {
+            "primary": {
+              "key": "objective.c01_15.p3.primary"
+            },
+            "protect-root": {
+              "key": "objective.c01_15.p3.protect_root"
+            },
+            "eliminate-oath-forces": {
+              "key": "objective.c01_15.p3.eliminate_oath_forces"
+            }
+          }
+        }
+      }
+    },
+    "c01-16": {
+      "players": {
+        "1": {
+          "name": {
+            "key": "battle.player.gray_flag"
+          },
+          "objectives": {
+            "primary": {
+              "key": "objective.c01_16.p1.primary"
+            },
+            "true-name-all": {
+              "key": "objective.c01_16.p1.true_name_all"
+            },
+            "score-true_names": {
+              "key": "objective.c01_16.p1.score_true_names"
+            },
+            "eliminate-memory-inquisitor": {
+              "key": "objective.c01_16.p1.eliminate_memory_inquisitor"
+            }
+          }
+        },
+        "2": {
+          "name": {
+            "key": "battle.player.enemy"
+          },
+          "objectives": {
+            "route": {
+              "key": "objective.c01_16.p2.route"
+            }
+          }
+        }
+      }
+    }
+  }
+}

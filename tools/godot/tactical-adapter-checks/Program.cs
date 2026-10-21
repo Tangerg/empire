@@ -9,12 +9,15 @@ using Empire.Core.Engine;
 using Empire.Presentation;
 using Empire.Presentation.Tactical;
 
-if (args.Length != 2) throw new ArgumentException("Usage: TacticalAdapterChecks <oracle.json> <catalog.json>");
+if (args.Length != 3) throw new ArgumentException("Usage: TacticalAdapterChecks <oracle.json> <repository> <catalog.json>");
 var gameText = FixtureText.Load(args[^1]);
 ActionRefusalText Refusals(GrayFlagEngine value) => ActionRefusalText.CreateDefault(gameText, value.Catalog, value.Abilities).Seal();
 
+var root = args[1];
+// Historical source-v1 custom levels and runtime states still require explicit semantic-schema migration.
 var oracle = EcmaJson.Parse(File.ReadAllText(args[0]))!.AsObject();
 var engine = new GrayFlagEngine(oracle["packs"]!.AsArray());
+var battleText = FixtureBattleText.Load(root, engine, gameText);
 var count = 0;
 var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 void Same<T>(T actual, JsonNode? expected, string context)
@@ -26,7 +29,7 @@ void Same<T>(T actual, JsonNode? expected, string context)
 void Require(bool ok, string context) { if (!ok) throw new Exception(context); count++; }
 BoardCell Cell(JsonNode node) => new(node["x"]!.GetValue<int>(), node["y"]!.GetValue<int>());
 // Native contract: only composed terrain semantics determine the immutable cell projection.
-var normal = new GrayFlagSession(engine, oracle["level"]!.AsObject(), gameText, Refusals(engine));
+var normal = new GrayFlagSession(engine, oracle["level"]!.AsObject(), gameText, Refusals(engine), battleText);
 var normalQueries = normal.GetTacticalQueries(40);
 var normalState = normal.Snapshot();
 var terrainId = EcmaJson.ReadString(normalState["map"]!["tiles"]![0]);
@@ -35,7 +38,8 @@ var definition = outsidePacks.OfType<JsonObject>().SelectMany(pack => pack["terr
     .Single(terrain => EcmaJson.ReadString(terrain["id"]) == terrainId);
 definition["tags"]!.AsArray().Add("outside");
 var outsideEngine = new GrayFlagEngine(outsidePacks);
-var outside = new GrayFlagSession(outsideEngine, oracle["level"]!.AsObject(), gameText, Refusals(outsideEngine));
+var outsideBattleText = FixtureBattleText.Load(root, outsideEngine, gameText);
+var outside = new GrayFlagSession(outsideEngine, oracle["level"]!.AsObject(), gameText, Refusals(outsideEngine), outsideBattleText);
 var outsideQueries = outside.GetTacticalQueries(40);
 Require(normalQueries.InteractiveCells.Count == 28 && outsideQueries.InteractiveCells.Count == 0,
     "interactive cells follow each engine's canonical terrain, not ids or movement costs");
@@ -59,7 +63,7 @@ catch (DomainInvariantException error) when (error.Message.Contains("facing not 
 foreach (var fixture in oracle["cases"]!.AsArray().OfType<JsonObject>())
 {
     var name = fixture["name"]!.GetValue<string>();
-    var session = GrayFlagSession.FromSave(engine, engine.SaveBattle(fixture["state"]!.AsObject()), gameText, Refusals(engine));
+    var session = GrayFlagSession.FromSave(engine, engine.SaveBattle(fixture["state"]!.AsObject()), gameText, Refusals(engine), battleText);
     var digest = EcmaJson.Stringify(session.Snapshot());
     var q = session.GetTacticalQueries(41);
     Same(q.HumanInput, fixture["humanInput"], name + " input");
@@ -124,7 +128,7 @@ foreach (var flow in oracle["flows"]!.AsArray().OfType<JsonObject>())
 {
     var name = EcmaJson.ReadString(flow["name"]);
     var fixture = oracle["cases"]!.AsArray().OfType<JsonObject>().Single(c => EcmaJson.ReadString(c["name"]) == name);
-    var session = GrayFlagSession.FromSave(engine, engine.SaveBattle(fixture["state"]!.AsObject()), gameText, Refusals(engine));
+    var session = GrayFlagSession.FromSave(engine, engine.SaveBattle(fixture["state"]!.AsObject()), gameText, Refusals(engine), battleText);
     var q = session.GetTacticalQueries(50);
     var control = new TacticalSelectionController(q);
     var at = control.Stamp;
@@ -166,7 +170,7 @@ foreach (var flow in oracle["flows"]!.AsArray().OfType<JsonObject>())
 }
 
 // Real controller intent goes through the revision-checked canonical dispatcher, never fake legality.
-var live = new GrayFlagSession(engine, oracle["level"]!.AsObject(), gameText, Refusals(engine));
+var live = new GrayFlagSession(engine, oracle["level"]!.AsObject(), gameText, Refusals(engine), battleText);
 var before = live.Snapshot();
 var queries = live.GetTacticalQueries(42);
 var controller = new TacticalSelectionController(queries);

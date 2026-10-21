@@ -71,8 +71,7 @@ public static class BattleStateFactory
             ["turn"] = 1,
             ["currentPlayer"] = currentPlayer,
             ["phase"] = deployment is null ? "playing" : "deployment",
-            ["winnerTeam"] = null,
-            ["endReason"] = "",
+            ["conclusion"] = null,
             ["nextUnitId"] = nextUnitId,
             ["nextMarkerId"] = 1,
             ["deployment"] = deployment,
@@ -99,6 +98,8 @@ public static class BattleStateFactory
         var players = StateJson.Objects(StateJson.Required(level, "players"), "players");
         foreach (var source in players.OrderBy(player => StateJson.Number(player["id"], "player id")))
         {
+            if (source.ContainsKey("name"))
+                throw new DomainInvariantException("Player names belong to presentation metadata, not gameplay definitions.");
             var id = StateJson.Integer(source, "id");
             var authoredObjectives = source["objectives"] as JsonArray;
             var declarations = authoredObjectives is { Count: > 0 }
@@ -121,7 +122,6 @@ public static class BattleStateFactory
             result.Add(new JsonObject
             {
                 ["id"] = id,
-                ["name"] = StateJson.Required(source, "name").DeepClone(),
                 ["team"] = source["team"]?.DeepClone() ?? JsonValue.Create(id),
                 ["color"] = StateJson.Required(source, "color").DeepClone(),
                 ["controller"] = StateJson.Required(source, "controller").DeepClone(),

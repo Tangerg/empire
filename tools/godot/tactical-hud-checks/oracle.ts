@@ -11,7 +11,7 @@ import {ArtDirection} from '../../../packages/game-ui/src/art/direction';
 const document=new JSDOM('<html></html>').window.document;Object.assign(globalThis,{document});
 const packs=JSON.parse(readFileSync('godot/data/content-packs.json','utf8'));
 const content=createContentCatalog();new ContentPackInstaller(content).install(...packs);const engine=createBattleEngine({content});
-const level=JSON.parse(readFileSync('godot/data/grayflag-level.json','utf8')); const base=engine.createState(level);const cases:any[]=[];
+const level=JSON.parse(readFileSync('godot/tests/oracle/source-v1/grayflag-level.json','utf8')); const base=engine.createState(level);const cases:any[]=[];
 const actions=['command','tactic','reaction','facing','career','formation','embark','disembark','deploy-pick','recruit','cancel'];
 const clean=(s:string)=>s.replace(/\s+/g,' ').trim();
 function test(name:string,kind:string,mutate:(s:any)=>void=()=>{},other:any={}){

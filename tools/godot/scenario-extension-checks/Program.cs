@@ -35,11 +35,13 @@ var effects = baseEffects.Clone().Replace(new("setVariable", (context, value) =>
             new JsonObject { ["type"] = "setVariable", ["key"] = "score", ["value"] = value["amount"]!.DeepClone() }, context.Emit);
         context.Emit(new JsonObject { ["type"] = "scenarioSignal", ["signal"] = "awarded" });
     }) { References = value => new PayloadReferences().Zone(Text(value, "zone")) });
-var objectives = baseObjectives.Clone().Register(new("testGoal", "Custom goal",
-    (context, _) => Number(context.State["scenario"]!["variables"]!.AsObject(), "score", 0) >= 12 ? "success" : "pending",
-    (context, _) => $"score={Number(context.State["scenario"]!["variables"]!.AsObject(), "score", 0)}")
+var objectives = baseObjectives.Clone().Register(new("testGoal", (context, _) =>
+{
+    var current = Number(context.State["scenario"]!["variables"]!.AsObject(), "score", 0);
+    return new ObjectiveAssessment(current >= 12 ? "success" : "pending", new JsonObject { ["current"] = current, ["target"] = 12 });
+})
 { Role = "optional", References = value => new PayloadReferences().Zone(Text(value, "zone")) })
-    .Register(new("testSelf", "Self only", (_, _) => "pending", (_, _) => "self")
+    .Register(new("testSelf", (_, _) => new ObjectiveAssessment("pending", new()))
     { Children = value => Objects(value["objectives"], "objectives").ToArray() });
 var rules = new ScenarioRules(catalog, conditions, effects, commands);
 var scenarios = new ScenarioSystem(rules);
@@ -49,7 +51,7 @@ var events = new JsonArray(); var hashes = new JsonArray();
 void Emit(JsonObject value) { events.Add(value); hashes.Add(StateDigest.Hash(state)); }
 var goal = state["players"]![0]!["objectives"]![0]!.AsObject();
 var self = state["players"]![0]!["objectives"]![1]!.AsObject();
-var beforeProgress = victory.Progress(state, 1, goal);
+var beforeProgress = objectives.Project(victory.Rules, state, 1, goal);
 scenarios.Run(state, "afterAction", Emit); victory.RefreshObjectiveStates(state, Emit);
 scenarios.Run(state, "afterAction", Emit); victory.RefreshObjectiveStates(state, Emit);
 var serialization = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
@@ -59,11 +61,13 @@ var metadata = new JsonObject
     ["conditionChildren"] = Node(conditions.Children(state["scenario"]!["triggers"]![1]!["condition"]!.AsObject())),
     ["conditionReferences"] = Node(conditions.References(state["scenario"]!["triggers"]![1]!["condition"]!.AsObject())),
     ["effectReferences"] = Node(effects.References(state["scenario"]!["triggers"]![1]!["effects"]![0]!.AsObject())),
-    ["objectiveReferences"] = Node(objectives.References(goal)), ["description"] = objectives.Describe(goal),
+    ["objectiveReferences"] = Node(objectives.References(goal)),
     ["role"] = objectives.Role(goal), ["refresh"] = objectives.RefreshMode(self),
-    ["beforeProgress"] = beforeProgress, ["afterProgress"] = victory.Progress(state, 1, goal),
 };
 var checks = 0;
+// Source descriptions/progress strings are historical presentation assertions, not Core facts.
+// The supplied state/hash comparisons remain exact historical evidence; no native admission or schema parity is implied.
+var historicalProseAssertions = 3;
 void Equal(string name, JsonNode? actual, JsonNode? expected)
 {
     if (!EcmaJson.DeepEquals(actual, expected)) throw new Exception($"Mismatch: {name}\nactual={actual}\nexpected={expected}");
@@ -78,7 +82,17 @@ void Reject(string name, Action action)
 Equal("custom scenario events", events, oracle["events"]);
 Equal("custom scenario event-time hashes", hashes, oracle["hashes"]);
 Equal("custom scenario full state", state, oracle["after"]);
-Equal("handler-owned metadata", metadata, oracle["metadata"]);
+foreach (var field in metadata) Equal("unchanged handler metadata " + field.Key, field.Value, oracle["metadata"]![field.Key]);
+Require("native custom objective projection identity", beforeProgress.Id == "goal" && beforeProgress.Kind == "testGoal" &&
+    beforeProgress.Status == "active" && beforeProgress.Role == "optional" && beforeProgress.Children.Count == 0);
+Equal("native custom objective initial facts", EcmaJson.Parse(beforeProgress.Facts.GetRawText()), new JsonObject { ["current"] = 0, ["target"] = 12 });
+Equal("native custom objective definition", EcmaJson.Parse(beforeProgress.Definition.GetRawText()), goal);
+var afterProgress = objectives.Project(victory.Rules, state, 1, goal);
+Require("native custom objective completed status", afterProgress.Status == "completed");
+Equal("native terminal progress has no live facts", EcmaJson.Parse(afterProgress.Facts.GetRawText()), new JsonObject());
+Equal("native projection remains detached after transitions", EcmaJson.Parse(beforeProgress.Facts.GetRawText()), new JsonObject { ["current"] = 0, ["target"] = 12 });
+var selfProgress = objectives.Project(victory.Rules, state, 1, self);
+Require("native self-refresh preserves child status", selfProgress.Status == "active" && selfProgress.Children.Count == 1 && selfProgress.Children[0].Status == "active");
 Equal("ordered condition keys", Node(baseConditions.Keys()), oracle["keys"]!["conditions"]);
 Equal("ordered effect keys", Node(baseEffects.Keys()), oracle["keys"]!["effects"]);
 Equal("ordered objective keys", Node(baseObjectives.Keys()), oracle["keys"]!["objectives"]);
@@ -93,7 +107,7 @@ foreach (var item in oracle["metadataCases"]!.AsArray().OfType<JsonObject>())
     {
         Equal("default objective role", Node(baseObjectives.Role(payload)), item["role"]);
         Equal("default objective refresh", Node(baseObjectives.RefreshMode(payload)), item["refresh"]);
-        Equal("default objective description", Node(baseObjectives.Describe(payload)), item["description"]);
+        historicalProseAssertions++;
     }
 }
 foreach (var edge in oracle["edgeConditions"]!.AsArray().OfType<JsonObject>())
@@ -123,9 +137,14 @@ Require("clones do not leak custom kinds", !baseConditions.Has("testGate") && !b
 Reject("duplicate conditions", () => conditions.Register(conditions.Get("testGate")));
 Reject("duplicate effects", () => effects.Register(effects.Get("testAward")));
 Reject("duplicate objectives", () => objectives.Register(objectives.Get("testGoal")));
-var replacement = baseObjectives.Clone().Replace(new("score", "Replacement score", (_, _) => "failure", (_, _) => "replacement-progress") { Role = "critical" });
-var score = new JsonObject { ["type"] = "score", ["variable"] = "score", ["atLeast"] = 1 };
-Require("built-in objective replacement", replacement.Evaluate(victory.Rules, state, 1, score) == "failure" && replacement.Role(score) == "critical" && replacement.Progress(victory.Rules, state, 1, score) == "replacement-progress" && replacement.Describe(score) == "Replacement score");
+var replacement = baseObjectives.Clone().Replace(new("score", (_, _) => new ObjectiveAssessment("failure", new JsonObject { ["count"] = 42 })) { Role = "critical" });
+var score = new JsonObject { ["id"] = "replacement-score", ["type"] = "score", ["variable"] = "score", ["atLeast"] = 1 };
+var replacementAssessment = replacement.Assess(victory.Rules, state, 1, score);
+var replacementProgress = replacement.Project(victory.Rules, state, 1, score);
+Require("built-in objective replacement", replacementAssessment.Outcome == "failure" && replacementProgress.Kind == "score" &&
+    replacementProgress.Role == "critical" && replacementProgress.Status == "active");
+Equal("replacement assessment facts", EcmaJson.Parse(replacementAssessment.Facts.GetRawText()), new JsonObject { ["count"] = 42 });
+Equal("replacement immutable projection facts", EcmaJson.Parse(replacementProgress.Facts.GetRawText()), new JsonObject { ["count"] = 42 });
 var replacedCondition = baseConditions.Clone().Replace(new("turnAtLeast", (_, _) => false));
 Require("built-in condition replacement", !replacedCondition.Evaluate(state, new JsonObject { ["type"] = "all", ["conditions"] = new JsonArray(new JsonObject { ["type"] = "turnAtLeast", ["turn"] = 1 }) }, catalog));
 var random = new ObservingRandom();
@@ -136,7 +155,9 @@ Reject("sealed conditions", () => baseConditions.Replace(baseConditions.Get("cha
 Reject("sealed effects", () => baseEffects.Replace(baseEffects.Get("emitSignal")));
 Reject("sealed objectives", () => baseObjectives.Replace(baseObjectives.Get("score")));
 Require("sealed clones remain independently extendable", !baseConditions.Clone().IsSealed && !baseEffects.Clone().IsSealed && !baseObjectives.Clone().IsSealed);
-Console.WriteLine($"PASS {checks} scenario/objective extension checks: live source differential, ordered keys 16/34/17, metadata, open composition, random injection, self-refresh and failures");
+if (historicalProseAssertions > 0)
+    throw new InvalidOperationException($"PENDING historical schema migration: {historicalProseAssertions} source objective description/progress assertions have no Core prose API. {checks} unchanged source and native semantic assertions completed; this is not full suite acceptance.");
+Console.WriteLine($"PASS {checks} scenario/objective semantic extension checks");
 
 sealed class ObservingRandom : IBattleRandomSource
 {

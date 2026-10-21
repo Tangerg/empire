@@ -58,7 +58,7 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
     var grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid());
     var catalog = new ReadOnlyContent(packs);
     var transport = new BattleTransport(catalog, grids);
-    var damage = new BattleDamage(catalog, grids, new CombatEffects(catalog, new ThresholdRankProgressionPolicy()), DefaultUnitDepartureHandlers.Create().Seal());
+    var damage = new BattleDamage(new BattleDamageRules(catalog, grids, new CombatEffects(catalog, new ThresholdRankProgressionPolicy()), DefaultUnitDepartureHandlers.Create().Seal()));
     var events = new JsonArray();
     var hashes = new JsonArray();
     void Emit(JsonObject value) { events.Add(value); hashes.Add(StateDigest.Hash(state)); }

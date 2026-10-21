@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.IO.Compression;
 using System.Text.Json.Nodes;
 using Empire.Core.Composition;
 using Empire.Core.Determinism;
@@ -10,9 +9,9 @@ internal static class CatalogBenchmark
     internal static void Run(string root)
     {
         var packs = EcmaJson.Parse(File.ReadAllText(Path.Combine(root, "godot/data/content-packs.json")))!.AsArray();
-        using var file = File.OpenRead(Path.Combine(root, "tools/godot/engine-composition-checks/source-oracle.json.gz"));
-        using var gzip = new GZipStream(file, CompressionMode.Decompress);
-        var level = JsonNode.Parse(gzip)!["level"]!.AsObject();
+        var level = EcmaJson.Parse(File.ReadAllText(Path.Combine(root,
+            "godot/data/grayflag-campaign-levels.json")))!.AsArray().OfType<JsonObject>()
+            .Single(item => item["id"]!.GetValue<string>() == "c01-01");
         var catalog = new ReadOnlyContent(packs);
         var engine = BattleEngineFactory.Create(catalog);
         var state = engine.CreateState(level);

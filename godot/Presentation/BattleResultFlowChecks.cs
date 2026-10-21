@@ -6,8 +6,10 @@ using System.Reflection;
 using System.Text.Json.Nodes;
 using Empire.Application;
 using Empire.Localization;
+using Empire.Core;
 using Empire.Core.Determinism;
 using Empire.Core.Engine;
+using Empire.Core.Lifecycle;
 using Empire.Presentation.Feedback;
 using Godot;
 
@@ -35,6 +37,7 @@ public partial class BattleResultFlowChecks : Node
         Check("completion one-shot navigation", CheckCompletionButtons);
         Check("result summary and invalid outcomes", CheckSummary);
         Check("stale rebind and unmount callbacks", CheckStaleButtons);
+        Check("historical battle save remains rejected", CheckHistoricalBattleSaveRejected);
         foreach (var outcome in new[] { "victory", "defeat", "draw" })
             foreach (var action in outcome == "victory" ? new[] { "Settle", "Retry", "Exit" } : new[] { "Retry", "Exit" })
                 Check($"game {outcome}/{action}", () => CheckGameFlow(outcome, action));
@@ -152,17 +155,23 @@ public partial class BattleResultFlowChecks : Node
         }
         campaign.BeginBattle();
         var document = campaign.Save();
-        var oracle = PresentationJson.Load<JsonObject>("res://tests/oracle/grayflag-0.58.json");
-        document["battle"] = oracle["finalSave"]!.DeepClone();
-        document["events"] = new JsonArray(oracle["steps"]!.AsArray().OfType<JsonObject>()
-            .SelectMany(step => step["events"]!.AsArray()).Select(value => value!.DeepClone()).ToArray());
         // All three outcomes are terminal UI fixtures, not native gameplay or route-parity claims.
-        // Victory reuses an actual original-engine final save; defeat/draw alter its terminal fields.
-        if (outcome != "victory")
+        var terminal = campaign.Battle!.Snapshot();
+        var conclusion = outcome == "draw" ? BattleConclusion.TurnLimitReached()
+            : BattleConclusion.LastTeamRemaining(outcome == "victory" ? 1 : 2);
+        if (conclusion.Team is { } team)
+            foreach (var player in terminal["players"]!.AsArray().OfType<JsonObject>())
+                player["alive"] = player["team"]!.GetValue<int>() == team;
+        else
         {
-            document["battle"]!["state"]!["winnerTeam"] = outcome == "draw" ? null : JsonValue.Create(2);
-            document["battle"]!["state"]!["endReason"] = "Fixture " + outcome;
+            terminal["rules"]!["turnLimit"] = terminal["turn"]!.DeepClone();
+            terminal["turn"] = terminal["turn"]!.GetValue<int>() + 1;
         }
+        terminal["phase"] = "over";
+        terminal["conclusion"] = conclusion.ToJson();
+        terminal["scenario"]!["eventCounts"]!["gameOver"] = 1;
+        document["battle"] = Field<GrayFlagEngine>(game, "engine").SaveBattle(terminal);
+        document["events"] = new JsonArray(new JsonObject { ["type"] = "gameOver", ["conclusion"] = conclusion.ToJson() });
         campaign.Load(document);
         SetField(game, "session", campaign.Battle); SetField(game, "screen", null); SetField(game, "resultOffered", false);
         var pending = StateDigest.Hash(campaign.Snapshot());
@@ -201,17 +210,31 @@ public partial class BattleResultFlowChecks : Node
         Retire(game);
     }
 
+    private void CheckHistoricalBattleSaveRejected()
+    {
+        var engine = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var oracle = PresentationJson.Load<JsonObject>("res://tests/oracle/grayflag-0.58.json");
+        var historical = oracle["finalSave"]!;
+        var before = EcmaJson.Stringify(historical);
+        var rejected = false;
+        try { engine.LoadSavedBattle(historical); }
+        catch (StoredDocumentException error) when (error.Message == "unsupported battle save schema 1") { rejected = true; }
+        Require(rejected && EcmaJson.Stringify(historical) == before,
+            "Historical battle saves must be rejected without migrating their schema or payload.");
+    }
+
     private void CheckBusySaveLoad()
     {
         var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         var engine = new GrayFlagEngine(packs);
         var text = GodotTextCatalog.LoadSimplifiedChinese();
         var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
-        var level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
-        var session = new GrayFlagSession(engine, level, text, refusals);
+        var battleText = BattleTextChecks.Load(engine, text);
+        var level = BattleTextChecks.OpeningLevel();
+        var session = new GrayFlagSession(engine, level, text, refusals, battleText);
         var screen = new BattleScreen(); AddChild(screen);
         screen.Board.AdvanceAnimationsAutomatically = false;
-        screen.BindSession(session, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
+        screen.BindSession(text, battleText, session, AssetCatalog.Load(), level, AuthoredScene.Load(), EnvironmentCatalog.Load(), _ => false);
         TacticalSceneInputChecks.Move(screen, session);
         Require(screen.IsPresenting && screen.Board.IsPresenting, "Busy-save test requires a real pending animation.");
         // The off-tree host deliberately has no campaign. Even if the Save guard

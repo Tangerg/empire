@@ -8,6 +8,7 @@ using Empire.Core.State;
 using Empire.Presentation.Feedback;
 using Empire.Presentation.Tactical;
 using Empire.Core.Determinism;
+using Empire.Localization;
 
 namespace Empire.Presentation;
 
@@ -18,6 +19,8 @@ namespace Empire.Presentation;
 public partial class BattleScreen : Control
 {
     private ITacticalBattleSession? _session;
+    private GameText _text = null!;
+    private BattleText _battleText = null!;
     private BattleSnapshot? _snapshot;
     private JsonObject? _state;
     private readonly BoardView _board = new() { Name = "Board" };
@@ -76,7 +79,6 @@ public partial class BattleScreen : Control
 
     public override void _Ready()
     {
-        BuildInterface();
         ResizeCamera();
     }
 
@@ -129,10 +131,13 @@ public partial class BattleScreen : Control
         }
     }
 
-    public void BindSession(ITacticalBattleSession session, AssetCatalog assets, JsonObject level,
+    public void BindSession(GameText text, BattleText battleText, ITacticalBattleSession session, AssetCatalog assets, JsonObject level,
         AuthoredScene authoredScene, EnvironmentCatalog environment, Func<string?, bool> facesLeft, Func<string?, Vector2>? directionVector = null, string? initialLogMessage = null)
     {
         ArgumentNullException.ThrowIfNull(session);
+        _text = text;
+        _battleText = battleText;
+        AutoTranslateMode = AutoTranslateModeEnum.Disabled;
         BuildInterface();
         _bindingGeneration++;
         _tacticalBinding++;
@@ -154,7 +159,7 @@ public partial class BattleScreen : Control
         _tactical = new TacticalSelectionController(_session.GetTacticalQueries(_tacticalBinding));
         _applicationBusy = false;
         _bound = true;
-        _feedback.Text = "选择单位，查看规则允许的命令。";
+        _feedback.Text = _text.Format("ui.battle.choose_unit");
         _messages.Clear();
         AppendMessage(initialLogMessage ?? session.GetSnapshot().InitialLogMessage ?? "");
         Refresh();
@@ -197,13 +202,13 @@ public partial class BattleScreen : Control
             button.CustomMinimumSize = new Vector2(90, 38);
             _applicationActions.AddChild(button);
         }
-        if (onSave is not null) AddAction("保存", onSave);
-        if (onLoad is not null) AddAction("读取", onLoad);
-        if (onRestart is not null) AddAction("重新开始", () => {
+        if (onSave is not null) AddAction(_text.Format("ui.battle.save"), onSave);
+        if (onLoad is not null) AddAction(_text.Format("ui.battle.load"), onLoad);
+        if (onRestart is not null) AddAction(_text.Format("ui.battle.restart"), () => {
             _restartRequest = _restart;
             _restartConfirmation.PopupCentered();
         }, true);
-        if (onExit is not null) AddAction("战役营地", onExit, true);
+        if (onExit is not null) AddAction(_text.Format("ui.battle.camp"), onExit, true);
     }
 
     public void AppendMessage(string message)
@@ -263,12 +268,12 @@ public partial class BattleScreen : Control
             var current = session!.GetSnapshot();
             ApplySnapshot(settled && current.Revision == next.Revision ? next : current);
         }
-        catch (Exception error)
+        catch (MissingArtResourceException error)
         {
             if (generation != _presentationGeneration || !IsInsideTree() || !ReferenceEquals(_session, session)) return;
             ApplySnapshot(next);
-            ShowFeedback($"表现播放失败：{error.Message}");
-            GD.PushError(error.ToString());
+            ShowFeedback(_text.Format("error.presentation.playback_failed"));
+            GD.PushWarning(error.ToString());
         }
         finally
         {
@@ -288,13 +293,15 @@ public partial class BattleScreen : Control
         _overlay.ShowPublicState(_tactical!.InteractiveCells, _snapshot.VisibleCells, _snapshot.Incoming);
         UpdateHeader();
         UpdateTactical();
-        _coverage.Text = _board.StatusText;
-        _coverage.TooltipText = string.Join("\n", _board.PlayerDiagnostics);
+        _coverage.Text = !_board.SurfaceReady ? _text.Format("ui.battle.surface_pending")
+            : _board.RenderingIssueCount > 0 ? _text.Format("ui.battle.artwork_issues", _board.RenderingIssueCount) : "";
+        _coverage.TooltipText = "";
     }
 
     private void BuildInterface()
     {
         if (_built) return;
+        if (_text is null) throw new InvalidOperationException("Bind the battle text dependencies before building the screen.");
         _built = true;
         _board.EventPresented += (transition, index) =>
         {
@@ -326,7 +333,7 @@ public partial class BattleScreen : Control
         margins.AddChild(column);
         var heading = new HBoxContainer();
         column.AddChild(heading);
-        var title = Text("EMPIRE  /  灰旗", 26, new Color("#eee1bd"));
+        var title = Text(_text.Format("ui.battle.title"), 26, new Color("#eee1bd"));
         title.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         heading.AddChild(title);
         var cameraControls = new HBoxContainer { Name = "CameraControls" };
@@ -334,16 +341,16 @@ public partial class BattleScreen : Control
         _zoomIn = Button("+", () => QueueZoom(.15));
         _zoomOut.Name = "ZoomOut"; _zoomIn.Name = "ZoomIn";
         _zoomOut.CustomMinimumSize = _zoomIn.CustomMinimumSize = new Vector2(38, 38);
-        _zoomOut.TooltipText = "缩小战场"; _zoomIn.TooltipText = "放大战场";
+        _zoomOut.TooltipText = _text.Format("ui.battle.zoom_out"); _zoomIn.TooltipText = _text.Format("ui.battle.zoom_in");
         cameraControls.AddChild(_zoomOut); cameraControls.AddChild(_zoomIn);
         heading.AddChild(cameraControls);
         _applicationActions = new HBoxContainer { Name = "ApplicationActions" };
         heading.AddChild(_applicationActions);
-        _turn = Text("尚未绑定战斗", 18, new Color("#d1cfbc"));
+        _turn = Text(_text.Format("ui.battle.unbound"), 18, new Color("#d1cfbc"));
         heading.AddChild(_turn);
         _restartConfirmation = new ConfirmationDialog {
-            Title = "重新开始？", DialogText = "当前未保存的战斗进度将丢失。",
-            OkButtonText = "重新开始", CancelButtonText = "取消" };
+            Title = _text.Format("ui.battle.restart_title"), DialogText = _text.Format("ui.battle.restart_warning"),
+            OkButtonText = _text.Format("ui.battle.restart"), CancelButtonText = _text.Format("ui.common.cancel") };
         _restartConfirmation.Confirmed += () => {
             var request = _restartRequest;
             _restartRequest = null;
@@ -356,7 +363,7 @@ public partial class BattleScreen : Control
         column.AddChild(body);
         _mapArea = new Control { Name = "MapArea", SizeFlagsHorizontal = SizeFlags.ExpandFill,
             SizeFlagsVertical = SizeFlags.ExpandFill, ClipContents = true, MouseFilter = MouseFilterEnum.Stop,
-            TooltipText = "拖动平移战场 · 滚轮平移 · Ctrl/⌘ + 滚轮缩放" };
+            TooltipText = _text.Format("ui.battle.camera_hint") };
         body.AddChild(_mapArea);
         _world = new Node2D { Name = "World" };
         _mapArea.AddChild(_world);
@@ -375,7 +382,7 @@ public partial class BattleScreen : Control
         var side = new VBoxContainer { CustomMinimumSize = new Vector2(308, 0) };
         side.AddThemeConstantOverride("separation", 12);
         panel.AddChild(side);
-        side.AddChild(Text("战场指令", 21, new Color("#eee1bd")));
+        side.AddChild(Text(_text.Format("ui.battle.orders"), 21, new Color("#eee1bd")));
 
         var scroll = new ScrollContainer { Name = "CommandScroll", SizeFlagsVertical = SizeFlags.ExpandFill,
             CustomMinimumSize = new Vector2(0, 60), HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
@@ -389,7 +396,7 @@ public partial class BattleScreen : Control
         side.AddChild(_modeHint);
         _globalOrders = new VBoxContainer();
         side.AddChild(_globalOrders);
-        _feedback = Wrapped("战斗尚未连接，不能提交命令。");
+        _feedback = Wrapped(_text.Format("ui.battle.not_connected"));
         _feedback.MaxLinesVisible = 4;
         _feedback.AddThemeColorOverride("font_color", new Color("#f1d99f"));
         side.AddChild(_feedback);
@@ -398,7 +405,7 @@ public partial class BattleScreen : Control
         _eventLog.AddThemeFontSizeOverride("font_size", 14);
         _eventLog.MaxLinesVisible = 8;
         side.AddChild(_eventLog);
-        _coverage = Wrapped("Native C# migration");
+        _coverage = Wrapped("");
         _coverage.AddThemeFontSizeOverride("font_size", 12);
         _coverage.AddThemeColorOverride("font_color", new Color("#aab6a5"));
         column.AddChild(_coverage);
@@ -516,19 +523,10 @@ public partial class BattleScreen : Control
     private void UpdateHeader()
     {
         if (_state is null) return;
-        var active = _state["currentPlayer"]?.ToJsonString() ?? "?";
-        var player = (_state["players"] as JsonArray)?.OfType<JsonObject>()
-            .FirstOrDefault(item => item["id"]?.ToJsonString() == active);
-        var name = player?["name"]?.GetValue<string>() ?? $"玩家 {active}";
-        var round = _state["turn"]?.ToJsonString() ?? "?";
-        var phase = _state["phase"]?.GetValue<string>();
-        _turn.Text = phase == "over" ? "战斗结束" : $"回合 {round}  ·  {name}";
-        if (phase == "over")
-        {
-            var winner = _state["winnerTeam"]?.ToJsonString();
-            _feedback.Text = (winner is null ? "战斗结束" : $"队伍 {winner} 获胜")
-                + (_state["endReason"]?.GetValue<string>() is { } reason ? $"\n{reason}" : "");
-        }
+        var over = _state["phase"]!.GetValue<string>() == "over";
+        _turn.Text = over ? _text.Format("battle.header.finished") : _text.Format("battle.header.turn",
+            _state["turn"]!.GetValue<int>(), _battleText.PlayerName(_state["levelId"]!.GetValue<string>(), _state["currentPlayer"]!.GetValue<int>()));
+        if (over) _feedback.Text = _battleText.DescribeConclusion(EcmaJson.ToElement(_state));
     }
 
     // Tactical intent integration lives in BattleScreen.Tactical.cs.

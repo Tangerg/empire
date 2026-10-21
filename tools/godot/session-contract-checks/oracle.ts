@@ -5,7 +5,7 @@ import { hashState } from '../../../packages/battle-engine/src/replay';
 const content = createContentCatalog();
 new ContentPackInstaller(content).install(...JSON.parse(readFileSync('godot/data/content-packs.json', 'utf8')));
 const engine = createBattleEngine({ content });
-const level = JSON.parse(readFileSync('godot/data/grayflag-level.json', 'utf8'));
+const level = JSON.parse(readFileSync('godot/tests/oracle/source-v1/grayflag-level.json', 'utf8'));
 for (const player of level.players) player.controller = 'human';
 const session = new GameSession(level, engine);
 const cases: object[] = [];

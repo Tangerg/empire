@@ -61,7 +61,7 @@ public sealed class BattleLifecycle
         if (handoff.Exhausted)
         {
             ConcludeIfDecided();
-            if (Text(state, "phase") != "over") Conclude(null, "无人可行动");
+            if (Text(state, "phase") != "over") Conclude(BattleConclusion.NoActors());
             return;
         }
         if (handoff.RoundAdvanced)
@@ -83,11 +83,12 @@ public sealed class BattleLifecycle
 
     public void ConcludeIfDecided()
     {
+        if (BattleConclusion.FromState(state) is not null) return;
         var contenders = Players(state).Where(candidate => IsTrue(candidate["alive"])).Select(candidate => Integer(candidate, "id")).ToArray();
         var result = Victory.Evaluate(state, emit);
         foreach (var id in contenders)
             if (!IsTrue(Player(state, id)["alive"])) emit(new JsonObject { ["type"] = "defeat", ["player"] = id });
-        if (result.Team is not null || result.Reason.Length > 0) Conclude(result.Team, result.Reason);
+        if (result is not null) Conclude(result);
     }
 
     private void Claim(TurnHandoff handoff)
@@ -97,12 +98,12 @@ public sealed class BattleLifecycle
         state["actorTurns"] = Integer(state, "actorTurns") + 1;
     }
 
-    private void Conclude(int? team, string reason)
+    private void Conclude(BattleConclusion conclusion)
     {
+        conclusion.ValidateReferences(state);
         state["phase"] = "over";
-        state["winnerTeam"] = team;
-        state["endReason"] = reason;
-        emit(new JsonObject { ["type"] = "gameOver", ["team"] = team, ["reason"] = reason });
+        state["conclusion"] = conclusion.ToJson();
+        emit(new JsonObject { ["type"] = "gameOver", ["conclusion"] = conclusion.ToJson() });
     }
 
     private void BeginActorTurn(bool roundAdvanced)

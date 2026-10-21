@@ -94,11 +94,11 @@ public sealed partial class GrayFlagEngine
         Commands = new TacticalCommands(new(grids, Space, Reactions), Turns.MayAct, Directives);
         Deployment = new DeploymentSystem(Catalog, Commands.OwnUnit);
         AreaShapes = dependencies.AreaShapes;
-        var combat = Combat = new BattleCombat(Catalog, grids, resources, Space, AreaShapes, dependencies.CombatModifiers, dependencies.HitEffects, Reactions, RankProgression, UnitDepartures);
-        Support = new SupportOrders(Catalog, grids, resources, combat.Effects);
-        Recruitment = new RecruitmentOrders(Catalog, grids, resources, (state, type, owner, at, done) =>
-            BattleStateFactory.SpawnUnit(stateRules, state, type, owner, at, done: done));
-        Progression = new BattleProgression(Catalog, grids, resources, Commands, combat.Effects);
+        var combat = Combat = new BattleCombat(new BattleCombatRules(Catalog, grids, resources, Space, AreaShapes, dependencies.CombatModifiers, dependencies.HitEffects, Reactions, RankProgression, UnitDepartures));
+        Support = new SupportOrders(new SupportOrderRules(Catalog, grids, resources, combat.Effects));
+        Recruitment = new RecruitmentOrders(new RecruitmentRules(Catalog, grids, resources, (state, type, owner, at, done) =>
+            BattleStateFactory.SpawnUnit(stateRules, state, type, owner, at, done: done)));
+        Progression = new BattleProgression(new BattleProgressionRules(Catalog, grids, resources, Commands, combat.Effects));
         Abilities = dependencies.Abilities;
         AbilityRules = new(Catalog, Space, combat, Support, Progression.Careers, Abilities);
         AbilityCommands = new(AbilityRules, Commands);

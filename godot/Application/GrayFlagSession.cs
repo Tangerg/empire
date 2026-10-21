@@ -17,10 +17,11 @@ public sealed partial class GrayFlagSession
     private readonly GrayFlagEngine engine;
     private readonly GameText text;
     private readonly ActionRefusalText refusals;
+    private readonly BattleText battleText;
     private readonly Battle battle;
     private long revision;
     private BattlePresentationTransition? transition;
-    private readonly BattleEventText eventText = BattleEventText.CreateDefault().Seal();
+    private readonly BattleEventText eventText;
     private readonly List<JsonObject> actions = new();
     private readonly List<JsonObject> events = new();
     private readonly Stack<UndoCheckpoint> undo = new();
@@ -47,20 +48,22 @@ public sealed partial class GrayFlagSession
         return new(true, text.Format("feedback.session.undone"));
     }
 
-    public GrayFlagSession(GrayFlagEngine engine, JsonObject level, GameText text, ActionRefusalText refusals)
+    public GrayFlagSession(GrayFlagEngine engine, JsonObject level, GameText text, ActionRefusalText refusals, BattleText battleText)
     {
         this.engine = engine;
         this.text = text;
         this.refusals = refusals;
+        this.battleText = battleText;
+        eventText = BattleEventText.CreateDefault(text, battleText).Seal();
         battle = engine.CreateBattle(level);
     }
 
-    private GrayFlagSession(GrayFlagEngine engine, Battle battle, GameText text, ActionRefusalText refusals)
-    { this.engine = engine; this.battle = battle; this.text = text; this.refusals = refusals; }
+    private GrayFlagSession(GrayFlagEngine engine, Battle battle, GameText text, ActionRefusalText refusals, BattleText battleText)
+    { this.engine = engine; this.battle = battle; this.text = text; this.refusals = refusals; this.battleText = battleText; eventText = BattleEventText.CreateDefault(text, battleText).Seal(); }
 
-    public static GrayFlagSession FromSave(GrayFlagEngine engine, JsonNode save, GameText text, ActionRefusalText refusals, JsonArray? recordedEvents = null)
+    public static GrayFlagSession FromSave(GrayFlagEngine engine, JsonNode save, GameText text, ActionRefusalText refusals, BattleText battleText, JsonArray? recordedEvents = null)
     {
-        var restored = new GrayFlagSession(engine, engine.LoadSavedBattle(save), text, refusals);
+        var restored = new GrayFlagSession(engine, engine.LoadSavedBattle(save), text, refusals, battleText);
         if (recordedEvents is not null) restored.events.AddRange(recordedEvents.OfType<JsonObject>().Select(value => (JsonObject)value.DeepClone()));
         return restored;
     }
@@ -107,8 +110,8 @@ public sealed partial class GrayFlagSession
             return $"{id}：{status.Neutralized}/{composite["parts"]!.AsArray().Count} · {status.State}";
         });
         return new BattleSnapshot(revision, Empire.Core.Determinism.EcmaJson.ToElement(state), visible, cells, incoming, string.Join("\n", objectives), transition,
-            state["phase"]?.GetValue<string>() == "deployment" ? "战前部署 · 调整站位后确认部署"
-                : $"第 1 回合 · {state["players"]!.AsArray().OfType<JsonObject>().FirstOrDefault(player => player["controller"]?.GetValue<string>() == "human")?["name"]?.GetValue<string>() ?? ""} 开始行动");
+            state["phase"]?.GetValue<string>() == "deployment" ? text.Format("battle.opening.deployment")
+                : text.Format("battle.opening.turn", battleText.PlayerName(state["levelId"]!.GetValue<string>(), Viewer(state))));
     }
     public IReadOnlyList<JsonObject> ActionLog => actions.Select(action => (JsonObject)action.DeepClone()).ToArray();
 
@@ -145,7 +148,8 @@ public sealed partial class GrayFlagSession
         revision++;
         var after = Empire.Core.Determinism.EcmaJson.ToElement(battle.Snapshot());
         var eventValues = receipt.Events.Select(Empire.Core.Determinism.EcmaJson.ToElement).ToArray();
-        var logContext = new BattleLogContext(after, engine.UnitTypeName, engine.CareerName, id => engine.Resources.Name(id) ?? id);
+        var logContext = new BattleLogContext(after, engine.UnitTypeName, engine.CareerName, id => engine.Resources.Name(id) ?? id,
+            id => battleText.PlayerName(levelId: after.GetProperty("levelId").GetString()!, playerId: id));
         transition = new BattlePresentationTransition(revision,
             Empire.Core.Determinism.EcmaJson.ToElement(receipt.Before),
             Empire.Core.Determinism.EcmaJson.ToElement(command),

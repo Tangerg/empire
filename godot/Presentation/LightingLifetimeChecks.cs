@@ -78,7 +78,7 @@ public partial class LightingLifetimeChecks : Node
             "Deleting a clipped sprite must release generated shader resources without GC.");
         Require(GodotObject.IsInstanceValid(borrowedTexture), "Sprite teardown must preserve borrowed texture ownership.");
         var materials = WorldMaterialsManifest.Load();
-        var level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
+        var level = BattleTextChecks.OpeningLevel();
         var state = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json")).CreateBattle(level).Snapshot();
         var map = state["map"]!.AsObject();
         var lights = CandidateBoardLighting.CreateField(new(map["width"]!.GetValue<int>(), map["height"]!.GetValue<int>()),
@@ -137,7 +137,7 @@ public partial class LightingLifetimeChecks : Node
             "Failed configuration must release exclusive texture, material and shader wrappers.");
         Require(GodotObject.IsInstanceValid(borrowed),
             "Failed configuration must preserve borrowed texture inputs.");
-        var level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
+        var level = BattleTextChecks.OpeningLevel();
         var width = level["width"]!.GetValue<int>();
         var height = level["height"]!.GetValue<int>();
         var engine = new GrayFlagEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
@@ -187,20 +187,21 @@ public partial class LightingLifetimeChecks : Node
 
     private async Task ScreenLifetime(int cycle)
     {
-        var level = PresentationJson.Load<JsonObject>("res://data/grayflag-level.json");
+        var level = BattleTextChecks.OpeningLevel();
         var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         var engine = new GrayFlagEngine(packs);
         var text = GodotTextCatalog.LoadSimplifiedChinese();
         var refusals = ActionRefusalText.CreateDefault(text, engine.Catalog, engine.Abilities).Seal();
+        var battleText = BattleTextChecks.Load(engine, text);
         var assets = AssetCatalog.Load(); var environment = EnvironmentCatalog.Load(); var scene = AuthoredScene.Load();
         var screen = new BattleScreen(); AddChild(screen);
         screen.Board.AdvanceAnimationsAutomatically = false;
         void Bind(GrayFlagSession session)
         {
-            screen.BindSession(session, assets, level, scene, environment, facing => facing == "west");
+            screen.BindSession(text, battleText, session, assets, level, scene, environment, facing => facing == "west");
             screen.ConfigureDynamicState(engine.Catalog);
         }
-        var session = new GrayFlagSession(engine, level, text, refusals); Bind(session);
+        var session = new GrayFlagSession(engine, level, text, refusals, battleText); Bind(session);
         // Exercise the separate unshared field-light owners on one actual screen.
         if (cycle == 0) screen.ConfigureTerrain(WorldMaterialsManifest.Load());
         var cache = screen.Board.LightingResources;
@@ -214,7 +215,7 @@ public partial class LightingLifetimeChecks : Node
         Require(ReferenceEquals(contactTexture, replacementContact.Texture), "Reprojection lost shared contact identity.");
         TacticalSceneInputChecks.Move(screen, session);
         Require(screen.Board.IsPresenting, "Real legal order did not start the cancellation fixture.");
-        var loaded = GrayFlagSession.FromSave(engine, EcmaJson.Parse(EcmaJson.Stringify(session.Save()))!, text, refusals);
+        var loaded = GrayFlagSession.FromSave(engine, EcmaJson.Parse(EcmaJson.Stringify(session.Save()))!, text, refusals, battleText);
         Bind(loaded);
         Require(cache.IsDisposed && !GodotObject.IsInstanceValid(contactTexture), "Load/rebind did not release the old board resources.");
         var loadedCache = screen.Board.LightingResources;
@@ -222,7 +223,7 @@ public partial class LightingLifetimeChecks : Node
         Require(!screen.Board.IsPresenting && screen.DisplayedRevision == 0 && !loadedCache.IsDisposed,
             "Old playback callback resurrected/released the loaded view.");
         // Restart is a new canonical session, not a fake state rewind.
-        var restarted = new GrayFlagSession(engine, level, text, refusals);
+        var restarted = new GrayFlagSession(engine, level, text, refusals, battleText);
         Bind(restarted);
         Require(loadedCache.IsDisposed && !screen.Board.LightingResources.IsDisposed, "Restart did not replace exactly one resource owner.");
         screen.ConfigureTerrain(WorldMaterialsManifest.Load());

@@ -16,7 +16,8 @@ var definition = Read("grayflag-campaign.json").AsObject();
 var levels = Read("grayflag-campaign-levels.json").AsArray();
 var packs = Read("content-packs.json").AsArray();
 var engine = new GrayFlagEngine(packs);
-GrayFlagCampaign Create() => new(definition, levels, engine, gameText, Refusals(engine));
+var battleText = FixtureBattleText.Load(root, engine, gameText);
+GrayFlagCampaign Create() => new(definition, levels, engine, gameText, Refusals(engine), battleText);
 var assertions = 0;
 void Require(bool condition, string message)
 {

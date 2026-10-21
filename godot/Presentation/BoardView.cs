@@ -35,7 +35,7 @@ public partial class BoardView : Node2D
 
     public ReadOnlyCollection<string> Diagnostics => _diagnostics;
     // Source art-review metadata remains diagnostic evidence, not player-facing acceptance prose.
-    public IEnumerable<string> PlayerDiagnostics => Diagnostics.Where(message => message is not
+    public int RenderingIssueCount => Diagnostics.Count(message => message is not
         "Authored scene is marked runtimeReady=false in the source document." and not
         "Environment catalog is marked runtimeReady=false in the source document.");
     public Vector2 FieldSize => new Vector2(_mapSize.X, _mapSize.Y) * (_assets?.LogicalTileSize ?? 0);
@@ -46,9 +46,7 @@ public partial class BoardView : Node2D
     public int RenderedCoverPropCount { get; private set; }
     public int RenderedStructureCount { get; private set; }
     public int RenderedMarkerCount { get; private set; }
-    public string StatusText => _terrain is null
-        ? "地表显示尚未就绪。"
-        : PlayerDiagnostics.Any() ? $"场景提示：{PlayerDiagnostics.Count()} 项（悬停查看）" : "";
+    public bool SurfaceReady => _terrain is not null;
 
     public void ConfigureTerrain(WorldMaterialsManifest materials)
     {

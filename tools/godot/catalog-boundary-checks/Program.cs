@@ -1,4 +1,3 @@
-using System.IO.Compression;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core.Abilities;
@@ -13,10 +12,9 @@ using Keys = Empire.Core.Composition.BattleCapabilities;
 
 var root = Path.GetFullPath(args.Length == 0 ? "../../.." : args[0]);
 var source = EcmaJson.Parse(File.ReadAllText(Path.Combine(root, "godot/data/content-packs.json")))!.AsArray();
-using var oracleStream = new GZipStream(File.OpenRead(Path.Combine(root,
-    "tools/godot/engine-composition-checks/source-oracle.json.gz")), CompressionMode.Decompress);
-using var oracleReader = new StreamReader(oracleStream);
-var level = EcmaJson.Parse(oracleReader.ReadToEnd())!["level"]!.AsObject();
+var level = EcmaJson.Parse(File.ReadAllText(Path.Combine(root,
+    "godot/data/grayflag-campaign-levels.json")))!.AsArray().OfType<JsonObject>()
+    .Single(item => item["id"]!.GetValue<string>() == "c01-01");
 if (args.Contains("--benchmark-only", StringComparer.Ordinal))
 {
     CatalogBenchmark.Run(root);

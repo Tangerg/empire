@@ -4,7 +4,7 @@ import { AiTurnContext, TileAppraisal } from '../../../packages/battle-engine/sr
 const content = createContentCatalog();
 new ContentPackInstaller(content).install(...JSON.parse(readFileSync('godot/data/content-packs.json','utf8')));
 const engine = createBattleEngine({ content });
-const level = JSON.parse(readFileSync('godot/data/grayflag-level.json','utf8'));
+const level = JSON.parse(readFileSync('godot/tests/oracle/source-v1/grayflag-level.json','utf8'));
 const initial = engine.createState(level);
 const planning = { rules: engine.rules, objectiveAdvisors: engine.aiObjectiveAdvisors, abilityEvaluators: engine.abilityAiEvaluators };
 const cases: unknown[] = [];

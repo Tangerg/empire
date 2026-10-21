@@ -23,7 +23,7 @@ for name,(old,new) in mutations.items():
  if old not in source: raise SystemExit('Mutation no longer applies: '+name)
  with tempfile.TemporaryDirectory(prefix='hud-mutant-') as folder:
   Path(folder,'GrayFlagSession.Hud.cs').write_text(source.replace(old,new))
-  result=subprocess.run(['dotnet','run','--project','tools/godot/tactical-hud-checks','-p:HudRoot='+folder,'--',sys.argv[1],sys.argv[2]],capture_output=True,text=True)
+  result=subprocess.run(['dotnet','run','--project','tools/godot/tactical-hud-checks','-p:HudRoot='+folder,'--',sys.argv[1],str(root),sys.argv[2]],capture_output=True,text=True)
   if result.returncode==0: raise SystemExit('SURVIVED '+name)
   if 'error CS' in result.stdout+result.stderr: raise SystemExit('Compile failure is not a killed mutant: '+name+'\n'+result.stdout+result.stderr)
   print('KILLED '+name)

@@ -10,6 +10,12 @@ namespace Empire.Core.Orders;
 public sealed record TacticOption(string Id, string Name, IReadOnlyList<Coord> Targets, IReadOnlyList<BattleResources.Cost> Costs);
 
 /// <summary>Commander orders and site capture, using shared account and effect writers.</summary>
+public sealed record SupportOrderRules(
+    ReadOnlyContent Content,
+    GridRegistry Grids,
+    BattleResources Resources,
+    CombatEffects Effects);
+
 public sealed class SupportOrders
 {
     public static IReadOnlyList<string> SupportedTacticEffects { get; } = System.Array.AsReadOnly(new[] { "addStatus", "removeStatus" });
@@ -18,12 +24,12 @@ public sealed class SupportOrders
     private readonly CombatEffects effects;
     private readonly BattleResources resources;
 
-    public SupportOrders(ReadOnlyContent catalog, GridRegistry grids, BattleResources resources, CombatEffects effects)
+    public SupportOrders(SupportOrderRules rules)
     {
-        content = catalog.Source;
-        this.resources = resources;
-        this.effects = effects;
-        this.grids = grids;
+        content = rules.Content.Source;
+        resources = rules.Resources;
+        effects = rules.Effects;
+        grids = rules.Grids;
     }
 
     private ITacticalGrid Grid(JsonObject state) => grids.Get(StateJson.Text(state["rules"]!["grid"], "grid"));
