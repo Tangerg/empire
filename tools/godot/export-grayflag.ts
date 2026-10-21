@@ -149,6 +149,14 @@ function copyNarrativeAssets(value: unknown): void {
   if (!value || typeof value !== 'object') return;
   if ('source' in value && 'resourcePath' in value && 'sha256' in value) {
     const art = value as { source: string; resourcePath: string; sha256: string };
+    if (art.source.startsWith('/godot/assets/')) {
+      const relative = art.source.slice('/godot/'.length);
+      const nativeSource = resolve(output, relative);
+      if (!nativeSource.startsWith(resolve(output, 'assets') + '/') || art.resourcePath !== `res://${relative}`
+        || hash(readFileSync(nativeSource)) !== art.sha256)
+        throw new Error(`Native-owned narrative asset contract mismatch: ${art.source}`);
+      return;
+    }
     const prefix = '/packages/story-candidate-01/assets/final-fantasy-v1/';
     if (!art.source.startsWith(prefix)) throw new Error(`Unknown narrative asset root: ${art.source}`);
     const relative = art.source.slice(prefix.length);

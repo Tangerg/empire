@@ -152,7 +152,10 @@ public partial class CampaignStagingChecks : Node
                 foreach (var unit in live.Roster.Where(unit => unit.Portrait is not null))
                 {
                     var row = Descendants(screen).OfType<HBoxContainer>().Single(node => node.Name == "Roster_" + unit.Id);
-                    Require(row.GetNode<TextureRect>("Avatar").Texture.ResourcePath == unit.Portrait!.ResourcePath,
+                    var texture = row.GetNode<TextureRect>("Avatar").Texture;
+                    if (texture is AtlasTexture framed)
+                        texture = framed.Atlas;
+                    Require(texture.ResourcePath == unit.Portrait!.ResourcePath,
                         "Exported named portrait must be used instead of the unit-sprite fallback");
                 }
             }

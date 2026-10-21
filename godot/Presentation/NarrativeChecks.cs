@@ -127,12 +127,19 @@ public partial class NarrativeChecks : Node
             primaryAction = view.Ending ? "finish" : "nextBeat",
         }, jsonOptions)!;
 
-    private void CheckStoryProjection(string id, StoryView view, JsonObject expected, string name)
+    private void CheckStoryProjection(string id, StoryView view, JsonObject expected, string name, bool currentArtwork)
     {
         Equal(view.Date, NativeStoryDates[id], name + ": native authored date");
         var projection = StoryProjection(view);
         foreach (var field in expected.Where(field => field.Key != "date"))
-            JsonEqual(projection[field.Key], field.Value, name + ": " + field.Key);
+        {
+            if (currentArtwork && field.Key == "portraitSource" && field.Value?.GetValue<string>() is { } source &&
+                (source.EndsWith("/char-leia-01.png", StringComparison.Ordinal) || source.EndsWith("/char-roderick-01.png", StringComparison.Ordinal)))
+                Equal(view.Portrait!.Source, "/godot/assets/runtime/narrative-static/" + System.IO.Path.GetFileName(source),
+                    name + ": accepted native transparent portrait revision");
+            else
+                JsonEqual(projection[field.Key], field.Value, name + ": " + field.Key);
+        }
     }
 
     private void CheckSourceProjections()
@@ -146,7 +153,7 @@ public partial class NarrativeChecks : Node
         {
             var view = NarrativeProjection.Story(Story(Text(item, "presentationId")), documents.SpeakerNameKeys,
                 Context(item["state"]!.AsObject()), Number(item, "beatIndex"), Flag(item, "ending"));
-            CheckStoryProjection(Text(item, "presentationId"), view, item["expected"]!.AsObject(), Text(item, "name"));
+            CheckStoryProjection(Text(item, "presentationId"), view, item["expected"]!.AsObject(), Text(item, "name"), true);
         }
         foreach (var item in oracle["choiceCases"]!.AsArray().Select(value => value!.AsObject()))
         {
@@ -184,7 +191,7 @@ public partial class NarrativeChecks : Node
                 continue;
             }
             var view = NarrativeProjection.Story(story, speakers, context, Number(item, "beatIndex"), Flag(item, "ending"));
-            CheckStoryProjection(story.Id, view, item["expected"]!.AsObject(), Text(item, "name"));
+            CheckStoryProjection(story.Id, view, item["expected"]!.AsObject(), Text(item, "name"), false);
         }
         foreach (var chapter in metadata.Chapters.Keys)
         {
@@ -288,7 +295,10 @@ public partial class NarrativeChecks : Node
             Equal(screen.FindChild("StoryPortrait", true, false) is not null, expected["portraitSource"] is not null, "Narrator has no invented portrait");
             if (screen.PresentedStory!.Portrait is { } portrait)
             {
-                Equal(Find<TextureRect>("StoryPortrait").Texture.ResourcePath, portrait.ResourcePath!, "Original portrait texture is mounted");
+                var texture = Find<TextureRect>("StoryPortrait").Texture;
+                if (texture is AtlasTexture framed)
+                    texture = framed.Atlas;
+                Equal(texture.ResourcePath, portrait.ResourcePath!, "The declared portrait texture is mounted without substitution");
                 Equal(Find<TextureRect>("StoryPortrait").StretchMode, TextureRect.StretchModeEnum.KeepAspectCentered,
                     "Dialogue preserves the full portrait instead of cropping to the layout aspect ratio");
             }

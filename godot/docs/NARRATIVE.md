@@ -63,3 +63,25 @@ Native checks compare every valid projected field against frozen DOM outputs exc
 The completed narrative-only checkpoint passed its native widget/projection checks and wrong-navigation-key negative control. That checkpoint covered 452 catalog messages and 415 content references, before the subsequent menu/staging/refusal additions; it is not merged-game acceptance. Parser and authoring checks reject malformed, duplicate, missing, empty, fuzzy and obsolete data. Two independent in-memory catalogs change actual native widget wording without changing authoring identities or state. These test catalogs are not additional shipped languages.
 
 Not claimed: complete built-in-content/battle/outcome i18n; a victorious campaign playthrough; browser CSS effects or pixel-identical typography; physical native GUI acceptance; a newly exported standalone game. The separate foundation packaging check established native PO loading/formatting in a real exported executable; product release validation remains the integration owner's gate.
+
+## Native portrait revisions
+
+Leia and Roderick now use generated transparent revisions of their original
+full-body illustrations. These are enlarged, redrawn image-generation edits, not
+lossless pixel extraction. `data/portrait-revisions.json` records original paths
+and hashes, current hashes, and the operation. The original TypeScript assets are
+unchanged. The remaining five character portraits retain their original opaque
+backgrounds.
+
+The two current narrative and HUD records explicitly name `/godot/assets/...` as
+their authored source; the resource at the matching `res://assets/...` path is the
+single native image owner. The importer validates that path and hash but never
+copies an old TypeScript image over it. Other original-source records continue to
+require matching source/export bytes. This is an authoring-location contract, not
+a filename exception or runtime fallback.
+
+Both revisions were inspected in an isolated real application before integration:
+Leia at roster size and both characters in dialogue on dark panels. No obvious
+background halo remained at those actual display sizes. Detail changes from the
+generative edit are intentional; original identity, pose, weapons and palette
+remain recognizable.
