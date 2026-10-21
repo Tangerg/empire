@@ -3,13 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using Empire.Core.Geometry;
 
 namespace Empire.Presentation;
 
 public sealed record TerrainDepthEntry(Node2D Node, Vector2 LogicalContact, int Layer, Sprite2D? GroundSprite = null);
 
 /// <summary>Owns the logical ground viewport; projected polygons only borrow its texture.</summary>
-internal sealed record CliffSurfaceMaterial(Texture2D Texture, Vector2 Period);
+internal sealed record CliffSurfaceMaterial(Texture2D Texture, Vector2 Period, IReadOnlySet<Coord> FieldTopCells);
 internal sealed record GroundSurfaceRules(BoardProjection Projection, CliffSurfaceMaterial? Cliff);
 
 internal partial class ProjectedGround : Node2D
@@ -125,16 +126,19 @@ internal partial class ProjectedGround : Node2D
                 polygon.ZIndex = projection.LayerAtDepth(strip.StartDepth, BoardDepthLayer.Surface);
             }
             if (_cliff is { } cliff)
-                foreach (var group in projection.Faces.SelectMany(face => projection.FacePatches(face)
-                    .Select(patch => (Face: face, Patch: patch))).GroupBy(item => item.Patch.Depth))
+                foreach (var group in projection.Faces.SelectMany(face => CliffLayers(face, cliff.FieldTopCells.Contains(face.HigherCell))
+                    .SelectMany(layer => projection.FacePatches(layer.Geometry)
+                        .Select(patch => (Face: face, Patch: patch, layer.Tint)))).GroupBy(item => item.Patch.Depth))
                 {
                     var vertices = new List<Vector2>();
                     var uv = new List<Vector2>();
                     var indices = new Godot.Collections.Array();
-                    foreach (var (face, patch) in group)
+                    var colors = new List<Color>();
+                    foreach (var (face, patch, tint) in group)
                     {
                         indices.Add(Enumerable.Range(vertices.Count, patch.Vertices.Count).ToArray());
                         vertices.AddRange(patch.Vertices.Select(vertex => vertex.Projected));
+                        colors.AddRange(Enumerable.Repeat(tint, patch.Vertices.Count));
                         var edge = face.LogicalB - face.LogicalA;
                         uv.AddRange(patch.Vertices.Select(vertex =>
                         {
@@ -149,6 +153,7 @@ internal partial class ProjectedGround : Node2D
                     polygon.Polygons = indices;
                     polygon.UV = uv.ToArray();
                     polygon.Texture = cliff.Texture;
+                    polygon.VertexColors = colors.ToArray();
                     polygon.TextureRepeat = CanvasItem.TextureRepeatEnum.Enabled;
                     polygon.ZIndex = projection.LayerAtDepth(group.Key, BoardDepthLayer.Surface);
                 }
@@ -169,6 +174,43 @@ internal partial class ProjectedGround : Node2D
             AddChild(surface);
             _surfaces.Add(surface);
         }
+    }
+
+    private static IEnumerable<(BoardSurfaceFace Geometry, Color Tint)> CliffLayers(BoardSurfaceFace face, bool fieldTop)
+    {
+        var normal = new Vector2(face.LowerCell.X - face.HigherCell.X,
+            face.LowerCell.Y - face.HigherCell.Y).Normalized();
+        var light = new Vector2(-0.4f, -0.6f).Normalized();
+        var brightness = 0.88f + 0.16f * normal.Dot(light);
+        if (!fieldTop)
+        {
+            yield return (face, new Color(brightness, brightness, brightness));
+            yield break;
+        }
+        var grassA = face.ProjectedA + Vector2.Down * Math.Min(1.2f, face.ProjectedD.Y - face.ProjectedA.Y);
+        var grassB = face.ProjectedB + Vector2.Down * Math.Min(1.2f, face.ProjectedC.Y - face.ProjectedB.Y);
+        var soilA = face.ProjectedA + Vector2.Down * Math.Min(3f, face.ProjectedD.Y - face.ProjectedA.Y);
+        var soilB = face.ProjectedB + Vector2.Down * Math.Min(3f, face.ProjectedC.Y - face.ProjectedB.Y);
+        yield return (face with
+        {
+            ProjectedA = soilA,
+            ProjectedB = soilB
+        },
+            new Color(brightness, brightness, brightness));
+        yield return (face with
+        {
+            ProjectedA = grassA,
+            ProjectedB = grassB,
+            ProjectedC = soilB,
+            ProjectedD = soilA
+        },
+            new Color(0.65f, 0.49f, 0.30f));
+        yield return (face with
+        {
+            ProjectedC = grassB,
+            ProjectedD = grassA
+        },
+            new Color(0.75f, 0.83f, 0.43f));
     }
 
     private void ClearSurfaces()

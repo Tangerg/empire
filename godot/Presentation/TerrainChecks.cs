@@ -94,7 +94,7 @@ internal static class TerrainChecks
         var movement = new MovementRules(new(engine.Catalog, engine.Grids));
         var battlefield = movement.Battlefield(state);
         var board = engine.Space.Board(state);
-        Require(state["map"]!["cliffs"]!.AsArray().Count == 6, "The north hill must have six authored cliff edges, not a closed ring.");
+        Require(state["map"]!["cliffs"]!.AsArray().Count == 8, "The north hill must have eight authored cliff edges, not a closed ring.");
         var withoutCliffs = state.DeepClone().AsObject();
         withoutCliffs["map"]!["cliffs"] = new JsonArray();
         var openBattlefield = movement.Battlefield(withoutCliffs);
@@ -116,11 +116,11 @@ internal static class TerrainChecks
                 $"North cliff {x} must block an otherwise legal foot descent, not merely exceed the climb limit.");
         }
 
-        foreach (var y in new[] { 7, 8 })
+        foreach (var y in new[] { 5, 6, 7, 8 })
         {
             var upper = new Coord(16, y);
             var lower = new Coord(17, y);
-            Require(battlefield.Cell(upper).Elevation == 2 && battlefield.Cell(lower).Elevation == 1,
+            Require(battlefield.Cell(upper).Elevation == 2 && battlefield.Cell(lower).Elevation == 0,
                 "The east return must join the authored upper platform and lower slope.");
             Require(battlefield.TraversalCost(upper, lower, "foot") is null
                 && battlefield.TraversalCost(lower, upper, "foot") is null

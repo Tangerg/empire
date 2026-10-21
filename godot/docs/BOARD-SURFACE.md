@@ -71,7 +71,7 @@ No new macOS package or macOS runtime acceptance is claimed by this checkpoint.
 ## Dimetric ground and north-hill authoring
 
 The native first level deliberately changes its terrain design: four south-facing
-cliff edges and two east return edges define the north platform, while two west
+cliff edges and four east return edges define the north platform, while two west
 ramp columns retain a traversable 0→1→2 sequence. These are canonical level edges,
 not scenery collision. Foot traversal is blocked across cliffs; flight can cross.
 The actual starting scout can descend and ascend the ramp within its turn budget,
@@ -136,3 +136,23 @@ is not retained as a runtime alternative.
 The new ground direction is a coherent spatial foundation, not final landscape
 acceptance: legacy composite castle scale and the north platform's short silhouette
 still need art/level refinement. No new macOS execution or package is claimed.
+
+
+## North platform material edge
+
+The north summit now contains a connected five-by-four height-two area, with a
+four-edge east return to its lower apron. The west two-cell-wide ramp remains
+0→1→2; the south hill is unchanged. This is a native authored terrain change, not
+a visual-only collision overlay. Foot, flight, actual scout path/budget and all
+starting ground-unit connectivity checks pass after the change.
+
+`TerrainView` supplies the set of actual field-material top cells to the cliff
+renderer. `ProjectedGround` divides only those existing canonical faces into a
+1.2-world-unit grass edge, 1.8-unit soil edge and remaining rock. Non-field tops do
+not acquire a green edge. These layers preserve the original face endpoints and
+use the same depth clipping and texture submission; no second outline or mask is
+authorable. Rock brightness follows its face direction. No extra per-edge nodes
+are introduced. The actual window was inspected at opening and close zoom; all
+campaign resource projections and teardown pass. This thin cut is a readable
+foundation, not final natural terrain art. The large-scale field texture remains
+the next visible mismatch; it is not hidden with decorative grass or shadows.

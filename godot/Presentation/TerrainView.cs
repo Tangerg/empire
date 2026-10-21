@@ -439,7 +439,11 @@ public partial class TerrainView : Node2D
                 var period = new Vector2(material.LogicalSize[0], material.LogicalSize[1]);
                 if (!Mathf.IsEqualApprox(texture.GetSize().X / texture.GetSize().Y, period.X / period.Y))
                     throw new InvalidOperationException("Cliff material repeat must preserve source aspect ratio.");
-                cliff = new CliffSurfaceMaterial(texture, period);
+                var fieldAtlas = MaterialRecord("field-material").Replaces.Atlas;
+                var fieldTops = cells.Where(cell => Authored(TileAt(cell.X, cell.Y)!, cell.X, cell.Y, surface: true)
+                    || (At(cell.X, cell.Y)!.Surface ?? fieldAtlas) == fieldAtlas)
+                    .Select(cell => new Coord(cell.X, cell.Y)).ToHashSet();
+                cliff = new CliffSurfaceMaterial(texture, period, fieldTops);
             }
             projected = ProjectedGround.Create(new(projection, cliff), logical, size);
             staging.AddChild(projected);
