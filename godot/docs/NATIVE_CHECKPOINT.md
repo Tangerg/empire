@@ -1,6 +1,22 @@
-# Native campaign checkpoint, 2026-10-20
+# Native campaign checkpoint, 2026-10-21
 
 This is a working migration checkpoint, not full visual or feature completion.
+
+## Actual extension composition milestone
+
+One factory now composes the original five plugin recipes and all 24 typed capabilities into real runtime consumers. Named nondefault plugins participate in create/dispatch/save/load/replay, with actual manifest identity and rollback. Initial state and scenario/recruitment spawns share resolved catalog/grids; replacing a grid changes unauthored initial facing rather than falling through a fixed switch. Runtime TypeScript is not used.
+
+Focused evidence includes 326 root source assertions and 42 compiled root/grid bypass mutants (plus 4 actual TypeScript controls); AI 23/138; combat 80 cases/189 assertions and 11 mutants; departure 48/337 and 16 mutants; turn/reaction 481 and 10 mutants; status 26/104 and 10 mutants; scenario/objectives 597 and 10 mutants; level 222 plus 246 ordered metadata vectors and 11 mutants; reference/save 145, persistence 96 and 4 reader mutants; custom reaction UI 6. Earlier default suites remain, including resource 1895 and ability 307 assertions. These counts refer to distinct focused suites, not an additive universal coverage percentage.
+
+Admission follows actual handler-owned semantic references and source evaluation phases. All 94 earlier future-reference tests remain named and source-derived, with 25 additional source observations;59 old expected decisions were corrected because native had rejected source-admitted inert metadata. Unresolved metadata fails when the source resolves it, atomically. Structural safeguards and numeric/timestamp restrictions remain explicit in COMPATIBILITY.md. Source issue order, explicit null, ECMAScript blank IDs and actual reader replacement have negative controls.
+
+The coherent pre-freeze integration passed all 48 standalone project builds, the complete native aggregate with clean teardown, and all 16 independent battles/2983 exact chosen actions/events/states. Final immutable tree `f4d491c2980e3edb164885cc05679f570b7289e1` passed the bounded native aggregate (exit 0) with Node execution blocked, then all 16 battles and 2,983 independent actions (exit 0). Only validation documentation changed afterward. The 42 root bypass mutants passed on predecessor tree `eeea0e3c091d77b21e0de86636e748bc44771d42`; the later dead-API cleanup passed 162 focused tactics checks. See `extension-checkpoint-validation.json` for the evidence split. The four autosave-obstruction warnings in navigation tests are deliberate failure fixtures, not real save failures.
+
+The independent source-owner audit removed two inactive legacy APIs: a duplicate wait-command implementation and a static default-only hit-effect list. The tactics harness now uses composed AbilityCommands, preserves all original fixtures and adds named replacement-wait execution/refusal checks (162 checks passed). The campaign comparison harness now creates its diagnostics directory before writing results.
+
+Manual GUI acceptance has not been renewed. Latest tactical/animation/lighting pixels, full victorious campaign playthrough, standalone distribution and platform acceptance remain separate gates. Nine authored scenery files are absent from the recovered source. Publication is not claimed by this local checkpoint.
+
+## Earlier preserved checkpoints
 
 ## Freshly rerun
 

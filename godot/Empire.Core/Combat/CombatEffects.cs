@@ -1,5 +1,7 @@
 using System.Text.Json.Nodes;
 using Empire.Core.State;
+using Empire.Core.Progression;
+using Empire.Core.Statuses;
 
 namespace Empire.Core.Combat;
 
@@ -9,7 +11,14 @@ public sealed record StatusModifiers(
 public sealed class CombatEffects
 {
     private readonly StateContent content;
-    public CombatEffects(JsonArray packs) => content = new StateContent(packs);
+    private readonly ReadOnlyContent catalog;
+    private readonly IRankProgressionPolicy progression;
+    public CombatEffects(ReadOnlyContent catalog, IRankProgressionPolicy progression)
+    {
+        this.catalog = catalog;
+        content = catalog.Source;
+        this.progression = progression;
+    }
 
     public StatusModifiers Modifiers(JsonObject unit) => CalculateModifiers(content, unit);
     public bool CannotCapture(JsonObject unit) => Modifiers(unit).CannotCapture;
@@ -43,55 +52,14 @@ public sealed class CombatEffects
         return null;
     }
 
-    public void AddStatus(JsonObject unit, string id, double duration, int? sourceUnitId, Action<JsonObject>? emit)
-    {
-        if (!double.IsFinite(duration) || duration < 1 || duration != Math.Truncate(duration))
-            throw new DomainInvariantException("status duration must be >= 1");
-        var definition = content.Get("statuses", id);
-        var statuses = unit["statuses"]!.AsArray();
-        var carried = statuses.OfType<JsonObject>().FirstOrDefault(value => StateJson.Text(value, "id") == id);
-        if (carried is null)
-        {
-            carried = new JsonObject { ["id"] = id, ["remaining"] = duration, ["stacks"] = 1 };
-            if (sourceUnitId is not null) carried["sourceUnitId"] = sourceUnitId.Value;
-            statuses.Add(carried);
-        }
-        else
-        {
-            var remaining = StateJson.Number(carried, "remaining", 0);
-            switch (StateJson.Text(definition, "stackMode"))
-            {
-                case "refresh": carried["remaining"] = Math.Max(remaining, duration); break;
-                case "extend": carried["remaining"] = remaining + duration; break;
-                case "stack":
-                    carried["stacks"] = Math.Min(StateJson.Number(definition, "maxStacks", 1),
-                        StateJson.Number(carried, "stacks", 1) + 1);
-                    carried["remaining"] = Math.Max(remaining, duration);
-                    break;
-                default: throw new DomainInvariantException($"unknown status stack mode for \"{id}\"");
-            }
-            if (sourceUnitId is not null) carried["sourceUnitId"] = sourceUnitId.Value;
-        }
-        emit?.Invoke(new JsonObject
-        {
-            ["type"] = "statusApplied", ["unit"] = unit["id"]!.DeepClone(), ["status"] = id,
-            ["remaining"] = carried["remaining"]!.DeepClone(), ["stacks"] = carried["stacks"]!.DeepClone(),
-        });
-    }
+    public void AddStatus(JsonObject unit, string id, double duration, int? sourceUnitId, Action<JsonObject>? emit) =>
+        StatusTransitions.Add(catalog, unit, id, duration, sourceUnitId, emit);
 
-    public bool RemoveStatus(JsonObject unit, string id, Action<JsonObject>? emit)
-    {
-        var statuses = unit["statuses"]!.AsArray();
-        var instance = statuses.OfType<JsonObject>().FirstOrDefault(value => StateJson.Text(value, "id") == id);
-        if (instance is null) return false;
-        statuses.Remove(instance);
-        emit?.Invoke(new JsonObject { ["type"] = "statusRemoved", ["unit"] = unit["id"]!.DeepClone(), ["status"] = id });
-        return true;
-    }
+    public bool RemoveStatus(JsonObject unit, string id, Action<JsonObject>? emit) =>
+        StatusTransitions.Remove(unit, id, emit);
 
-    private static readonly double[] RankThresholds = [120, 320];
-    public double? NextRankThreshold(int rank) => rank >= 0 && rank < RankThresholds.Length ? RankThresholds[rank] : null;
-    public int RankFor(double progress) => progress >= RankThresholds[1] ? 2 : progress >= RankThresholds[0] ? 1 : 0;
+    public double? NextRankThreshold(int rank) => progression.NextThreshold(rank);
+    public int RankFor(double progress) => progression.RankFor(progress);
 
     public void AwardRankProgress(JsonObject unit, double requested, Action<JsonObject> emit)
     {

@@ -5,6 +5,7 @@ using Empire.Core.Lifecycle;
 using Empire.Core.Orders;
 using Empire.Core.Persistence;
 using Empire.Core.Resources;
+using Empire.Core.References;
 using Empire.Core.Scenario;
 using Empire.Core.Transactions;
 using Empire.Core.Validation;
@@ -19,34 +20,29 @@ public sealed partial class GrayFlagEngine
     public JsonObject RulesetManifest => (JsonObject)persistenceManifest.DeepClone();
     public BattlePersistence Persistence { get; private set; } = null!;
 
-    private void ComposePersistence()
+    private void ComposePersistence(IReadOnlyDictionary<string, double> pluginManifest)
     {
-        persistenceManifest = Manifest.Create(packs, new Dictionary<string, int>
+        persistenceManifest = Manifest.Create(packs, pluginManifest);
+        var references = new RuleReferenceRules
         {
-            ["engine.ai-planning"] = 1,
-            ["engine.content"] = 1,
-            ["engine.mission-rules"] = 1,
-            ["engine.resource-economy"] = 1,
-            ["engine.tactical-rules"] = 1,
-        });
-        var features = new BattleSaveFeatures()
-            .Register("abilities", Abilities.Keys())
-            .Register("reactions", Combat.Forecasts.ReactionIds)
-            .Register("directives", Directives.Keys())
-            .Register("turnOrders", TurnOrderSystem.SupportedPolicies)
-            .Register("grids", Grids.Keys())
-            .Register("objectives", VictorySystem.SupportedObjectives.Concat(CompositeRules.SupportedObjectives))
-            .Register("scenarioConditions", ScenarioSystem.SupportedConditions.Concat(ScenarioExtensions.SupportedConditions))
-            .Register("scenarioEffects", ScenarioSystem.SupportedEffects.Concat(ScenarioExtensions.SupportedEffects))
-            .Register("areaShapes", AreaShapes.Keys())
-            .Register("hitEffects", BattleCombat.SupportedHitEffects)
-            .Register("resources", Resources.Adapters.Keys())
-            .Register("tacticEffects", SupportOrders.SupportedTacticEffects)
-            .Register("stateFeatures", new[] { "composites", "deployment", "embarkedUnits" })
+            Content = Catalog,
+            Grids = Grids,
+            Abilities = Abilities,
+            HitEffects = Combat.HitEffects,
+            Objectives = Objectives,
+            ScenarioConditions = ScenarioConditions,
+            ScenarioEffects = ScenarioEffects,
+            Reactions = Reactions,
+            TurnOrders = TurnOrders,
+            AreaShapes = AreaShapes,
+            Directives = Directives,
+        };
+        var structuralGuards = new BattleSaveFeatures()
             .Guard("deployment", DeploymentStateValidation.Issues)
             .Guard("transport", Transport.StoredStateIssues);
-        Persistence = new BattlePersistence(packs, persistenceManifest, features);
-        definitions = new BattleDefinitionValidator(packs, features, Grids);
+        var environment = new BattleSaveEnvironment(references, ReferenceChecks, persistenceManifest, structuralGuards);
+        Persistence = new BattlePersistence(environment, Saves);
+        definitions = new BattleDefinitionValidator(packs, references, ReferenceChecks, Grids);
         definitions.ValidateContent();
     }
 

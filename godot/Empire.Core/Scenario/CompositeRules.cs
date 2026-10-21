@@ -11,10 +11,7 @@ public sealed record CompositeStatus(int Neutralized, string State);
 /// <summary>Composite status and atomic translation share the same surviving-part semantics.</summary>
 public static class CompositeRules
 {
-    public static IReadOnlyList<string> SupportedObjectives { get; } =
-        System.Array.AsReadOnly(new[] { "neutralizeComposite" });
-
-    private static JsonObject Require(JsonObject state, string id) => Objects(state["composites"], "composites")
+    internal static JsonObject Require(JsonObject state, string id) => Objects(state["composites"], "composites")
         .FirstOrDefault(composite => Text(composite, "id") == id) ?? throw new DomainInvariantException($"unknown composite \"{id}\"");
 
     public static CompositeStatus Status(JsonObject state, string id)
@@ -29,28 +26,6 @@ public static class CompositeRules
         return new(neutralized, neutralized >= Number(composite["minimumNeutralized"], "minimumNeutralized")
             ? "neutralized" : neutralized > 0 ? "damaged" : "intact");
     }
-
-    public static string ObjectiveOutcome(JsonObject state, int owner, JsonObject objective)
-    {
-        if (Text(objective, "type") != "neutralizeComposite")
-            throw new DomainInvariantException($"unknown objective handler \"{Text(objective, "type")}\"");
-        var id = Text(objective, "composite");
-        var composite = Require(state, id);
-        var threshold = objective["minimumNeutralized"] ?? composite["minimumNeutralized"];
-        return Status(state, id).Neutralized >= Number(threshold, "minimumNeutralized") ? "success" : "pending";
-    }
-
-    public static string ObjectiveProgress(JsonObject state, int owner, JsonObject objective)
-    {
-        if (Text(objective, "type") != "neutralizeComposite")
-            throw new DomainInvariantException($"unknown objective handler \"{Text(objective, "type")}\"");
-        var id = Text(objective, "composite");
-        var composite = Require(state, id);
-        return $"{Status(state, id).Neutralized}/{Number(objective["minimumNeutralized"] ?? composite["minimumNeutralized"], "minimumNeutralized")} 部件";
-    }
-
-    public static string DescribeObjective(JsonObject objective) => Text(objective, "type") == "neutralizeComposite"
-        ? "瘫痪复合战场目标" : throw new DomainInvariantException($"unknown objective handler \"{Text(objective, "type")}\"");
 
     public static void Move(JsonObject state, string id, double dx, double dy, Action<JsonObject> emit)
     {
@@ -84,8 +59,13 @@ public static class CompositeRules
             var to = new Coord((int)destination.X, (int)destination.Y);
             destination.Part["x"] = to.X;
             destination.Part["y"] = to.Y;
-            emit(new JsonObject { ["type"] = "structureMoved", ["structure"] = destination.Part["id"]!.DeepClone(),
-                ["from"] = TacticalQueries.CoordinateJson(destination.From), ["to"] = TacticalQueries.CoordinateJson(to) });
+            emit(new JsonObject
+            {
+                ["type"] = "structureMoved",
+                ["structure"] = destination.Part["id"]!.DeepClone(),
+                ["from"] = TacticalQueries.CoordinateJson(destination.From),
+                ["to"] = TacticalQueries.CoordinateJson(to)
+            });
         }
     }
 }

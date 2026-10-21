@@ -1,0 +1,810 @@
+[
+  {
+    "phase": "save",
+    "name": "ordinary load roundtrip and wait",
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "unknown player account is inert",
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "unknown unit account is inert",
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "unknown weapon account is inert",
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "unused site upkeep override is inert",
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "unknown base upkeep admitted then resolved",
+    "category": "source-fails-when-used",
+    "error": "unknown resource adapter \"unknown\""
+  },
+  {
+    "phase": "save",
+    "name": "unknown commander upkeep admitted then resolved",
+    "category": "source-fails-when-used",
+    "error": "unknown resource adapter \"unknown\""
+  },
+  {
+    "phase": "save",
+    "name": "future unknown directive remains dormant",
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "future unknown status remains dormant",
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "future unknown status resolves at execution",
+    "category": "source-fails-when-used",
+    "error": "unknown status \"unknown\""
+  },
+  {
+    "phase": "save",
+    "name": "future unknown spawn remains dormant",
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "unknown current learned ability rejected",
+    "category": "source-rejects-now",
+    "error": "战斗存档无法读取：单位 campaign-laiya 引用了未注册的能力「unknown」"
+  },
+  {
+    "phase": "save",
+    "name": "unknown current reaction rejected",
+    "category": "source-rejects-now",
+    "error": "战斗存档无法读取：单位 campaign-laiya 引用了未注册的反应姿态「unknown」"
+  },
+  {
+    "phase": "save",
+    "name": "unknown current directive rejected",
+    "category": "source-rejects-now",
+    "error": "战斗存档无法读取：单位 campaign-laiya 引用了未注册的常驻命令「unknown」"
+  },
+  {
+    "phase": "save",
+    "name": "unknown objective rejected",
+    "category": "source-rejects-now",
+    "error": "战斗存档无法读取：作战目标 引用了未注册的目标类型「unknown」"
+  },
+  {
+    "phase": "save",
+    "name": "unknown nested condition rejected",
+    "category": "source-rejects-now",
+    "error": "战斗存档无法读取：触发条件 引用了未注册的场景条件「unknown」"
+  },
+  {
+    "phase": "save",
+    "name": "unknown effect rejected",
+    "category": "source-rejects-now",
+    "error": "战斗存档无法读取：触发器 reference-reader-probe 引用了未注册的场景效果「unknown」"
+  },
+  {
+    "phase": "save",
+    "name": "reference phase order and first seen dedupe",
+    "category": "source-rejects-now",
+    "error": "战斗存档无法读取：单位 campaign-laiya 引用了未注册的能力「z」；单位 campaign-laiya 引用了未注册的能力「a」；单位 campaign-laiya 引用了未注册的反应姿态「missing」；单位 campaign-laiya 引用了未注册的常驻命令「missing」"
+  },
+  {
+    "phase": "save",
+    "name": "unknown failOn condition admitted then evaluated",
+    "category": "source-fails-when-used",
+    "error": "unknown scenario condition handler \"unknown\""
+  },
+  {
+    "phase": "save",
+    "name": "future unknown directive becomes current after execution",
+    "category": "source-fails-when-used",
+    "error": "cannot save invalid live battle: 战斗存档无法读取：单位 campaign-laiya 引用了未注册的常驻命令「unknown」"
+  },
+  {
+    "phase": "save",
+    "name": "unknown future directive",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "unknown future directive zone",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "offboard waypoint",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "fractional waypoint",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "damaged waypoint list",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "missing mode",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "supported assault",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "supported guard",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "supported patrol",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "supported retreat",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "selector missing zone",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "changeUnitOwner selector missing zone",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "changeMorale selector missing zone",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "neutral and absent selector targets remain valid",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "empty declared zone",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "future unit type absent",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "future owner absent",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "future neutral owner absent",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "future cell offboard",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "future cell fractional",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "future learned ability",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "future reaction",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "future directive",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "future directive zone",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "future formation",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "future career",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "future account adapter",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "valid future default unit",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "future occupancy and key collision not pre-judged",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "missing former structure remains valid no-op target",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "removing absent engagement remains valid no-op",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "unsupported effect still rejected",
+    "legacyAccepted": false,
+    "category": "source-rejects-now",
+    "error": "战斗存档无法读取：触发器 reference-probe 引用了未注册的场景效果「unknown-effect」"
+  },
+  {
+    "phase": "save",
+    "name": "addStatus unknown status",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "addStatus known status",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "removeStatus unknown status",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "removeStatus known status",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "teleportUnits unknown zone",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "teleportUnits known empty zone",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "restoreWithdrawnUnits unknown zone",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "restoreWithdrawnUnits known empty zone",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "replaceTerrain unknown zone",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "replaceTerrain known empty zone",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "addOverlay unknown zone",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "addOverlay known empty zone",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "setElevation unknown zone",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "setElevation known empty zone",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "addElevation unknown zone",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "addElevation known empty zone",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "replaceTerrain unknown content",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "addOverlay unknown content",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "setElevation fractional value",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "addElevation fractional value",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "forced move valid source",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "forced move offboard source",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "forced move fractional distance",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "cliff adjacent edge",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "cliff nonadjacent edge",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "cover offboard cell",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "repair missing structure rejected",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "move missing composite rejected",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "activateObjective unknown objective",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "activateObjective known nested objective",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "cancelObjective unknown objective",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "cancelObjective known nested objective",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "completeObjective unknown objective",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "completeObjective known nested objective",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "revealObjective unknown objective",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "revealObjective known nested objective",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "unknown resource adapter",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "known resource adapter",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "team unknown player",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "nested unknown condition",
+    "legacyAccepted": false,
+    "category": "source-rejects-now",
+    "error": "战斗存档无法读取：触发条件 引用了未注册的场景条件「unknown-condition」"
+  },
+  {
+    "phase": "save",
+    "name": "nested condition missing zone",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "removed structure condition remains valid",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "fractional cycle rejected",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "save",
+    "name": "active unknown scenario resource resolves atomically",
+    "category": "source-fails-when-used",
+    "error": "unknown resource adapter \"unknown\""
+  },
+  {
+    "phase": "save",
+    "name": "active unknown spawn resolves atomically",
+    "category": "source-fails-when-used",
+    "error": "unknown unit \"unknown\""
+  },
+  {
+    "phase": "save",
+    "name": "active unknown directive zone resolves atomically",
+    "category": "source-fails-when-used",
+    "error": "unknown scenario zone \"unknown-zone\""
+  },
+  {
+    "phase": "save",
+    "name": "active unknown spawn owner resolves atomically",
+    "category": "source-fails-when-used",
+    "error": "no player with id 999"
+  },
+  {
+    "phase": "save",
+    "name": "active offboard spawn resolves atomically",
+    "category": "source-fails-when-used",
+    "error": "spawn cell out of bounds: -1,0"
+  },
+  {
+    "phase": "catalog",
+    "name": "future type ability",
+    "legacyAccepted": false,
+    "category": "source-rejects-now",
+    "error": "invalid battle engine configuration:\n- 兵种 future-unit 引用了未注册的能力「unknown-ability」"
+  },
+  {
+    "phase": "catalog",
+    "name": "future default reaction",
+    "legacyAccepted": false,
+    "category": "source-rejects-now",
+    "error": "invalid battle engine configuration:\n- 兵种 future-unit 引用了未注册的反应姿态「unknown-reaction」"
+  },
+  {
+    "phase": "catalog",
+    "name": "future weapon area",
+    "legacyAccepted": false,
+    "category": "source-rejects-now",
+    "error": "invalid battle engine configuration:\n- 武器 future-weapon 引用了未注册的爆炸形状「unknown-area」"
+  },
+  {
+    "phase": "catalog",
+    "name": "future weapon effect",
+    "legacyAccepted": false,
+    "category": "source-rejects-now",
+    "error": "invalid battle engine configuration:\n- 武器 future-weapon 引用了未注册的命中效果「unknown-effect」"
+  },
+  {
+    "phase": "catalog",
+    "name": "future weapon account",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "catalog",
+    "name": "future weapon cost",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "catalog",
+    "name": "future unit account",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "catalog",
+    "name": "future mastered ability",
+    "legacyAccepted": false,
+    "category": "source-rejects-now",
+    "error": "invalid battle engine configuration:\n- 职业 future-career 引用了未注册的能力「unknown-ability」"
+  },
+  {
+    "phase": "catalog",
+    "name": "valid prospective content",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "level",
+    "name": "unknown nested failOn condition",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "level",
+    "name": "unknown future learned ability",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "level",
+    "name": "unknown future reaction",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "level",
+    "name": "unknown future directive",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "level",
+    "name": "unknown future resource",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "level",
+    "name": "supported future overrides",
+    "legacyAccepted": true,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "level",
+    "name": "unknown initial resource",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "level",
+    "name": "unknown player resource",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "level",
+    "name": "unknown base resource grant",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  },
+  {
+    "phase": "level",
+    "name": "unknown scenario resource adapter",
+    "legacyAccepted": false,
+    "category": "source-accepts-inert",
+    "error": null
+  }
+]

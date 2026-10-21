@@ -14,15 +14,12 @@ using Empire.Core.Tactics;
 if (args.Length != 1) throw new ArgumentException("Usage: ScenarioTests <oracle.json>");
 var input = EcmaJson.Parse(File.ReadAllText(args[0]))!.AsObject();
 var packs = input["packs"]!.AsArray();
-var grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid()).Seal();
-var movement = new DefaultTacticalSpace(packs, grids);
-var resources = new BattleResources();
-var combat = new BattleCombat(packs, grids, resources, movement, WeaponAreaRegistry.Core().Seal());
-var extensions = new ScenarioExtensions(packs, combat, resources, (state, source, done) =>
-    BattleStateFactory.SpawnUnit(packs, grids, state, StateJson.Text(source, "unit"), StateJson.Integer(source, "owner"),
-        TacticalQueries.Position(source), done: done, source: source));
-var scenarios = new ScenarioSystem(packs, extensions.ConditionMet, extensions.Apply);
-var victory = new VictorySystem(packs, scenarios, CompositeRules.ObjectiveOutcome, CompositeRules.DescribeObjective);
+var engine = new GrayFlagEngine(packs);
+var combat = engine.Combat;
+var scenarios = engine.Scenarios;
+var effects = engine.ScenarioEffects;
+var conditions = engine.ScenarioConditions;
+var victory = engine.Victory;
 var serialization = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 var count = 0;
 var failures = new List<string>();
@@ -44,17 +41,16 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
     {
         foreach (var effect in item["effects"]!.AsArray().OfType<JsonObject>())
         {
-            if (StateJson.Text(effect, "type") == "emitSignal") Emit(new JsonObject { ["type"] = "scenarioSignal", ["signal"] = effect["signal"]!.DeepClone() });
-            else extensions.Apply(state, effect, Emit);
+            effects.Apply(scenarios.Rules, state, effect, Emit);
         }
         for (var round = 0; round < StateJson.Number(item, "overlayRounds", 0); round++) Empire.Core.Terrain.BattleOverlays.AdvanceRound(state, Emit);
         if (item["condition"] is JsonObject condition) result = JsonValue.Create(scenarios.ConditionMet(state, condition));
-        if (item["condition"] is JsonArray conditions) result = new JsonArray(conditions.OfType<JsonObject>().Select(condition => (JsonNode?)JsonValue.Create(scenarios.ConditionMet(state, condition))).ToArray());
+        if (item["condition"] is JsonArray conditionList) result = new JsonArray(conditionList.OfType<JsonObject>().Select(condition => (JsonNode?)JsonValue.Create(scenarios.ConditionMet(state, condition))).ToArray());
         if (item["composite"] is { } composite) result = JsonSerializer.SerializeToNode(CompositeRules.Status(state, composite.GetValue<string>()), serialization);
         if (item["objective"] is JsonObject objective) result = new JsonObject
         {
             ["outcome"] = victory.Outcome(state, 1, objective),
-            ["description"] = VictorySystem.Describe(objective, CompositeRules.DescribeObjective),
+            ["description"] = victory.Describe(objective),
         };
         if (StateJson.IsTrue(item["victory"])) result = JsonSerializer.SerializeToNode(victory.Evaluate(state, Emit), serialization);
     }
@@ -80,10 +76,9 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
 if (failures.Count > 0) throw new Exception($"{failures.Count}/{count} scenario cases diverged:\n" + string.Join("\n", failures));
 Console.WriteLine($"PASS {count} live TypeScript scenario cases: ordered events, every event-time digest, complete states, queries and typed failures");
 if (input["effectKinds"] is JsonArray kinds) Check("supported effect IDs", "effect-kinds",
-    JsonSerializer.SerializeToNode(ScenarioSystem.SupportedEffects.Concat(ScenarioExtensions.SupportedEffects).Order(StringComparer.Ordinal)), kinds);
+    JsonSerializer.SerializeToNode(effects.Keys().Order(StringComparer.Ordinal)), kinds);
 if (input["conditionKinds"] is JsonArray conditionKinds) Check("supported condition IDs", "condition-kinds",
-    JsonSerializer.SerializeToNode(ScenarioSystem.SupportedConditions.Concat(ScenarioExtensions.SupportedConditions).Order(StringComparer.Ordinal)), conditionKinds);
-var engine = new GrayFlagEngine(packs);
+    JsonSerializer.SerializeToNode(conditions.Keys().Order(StringComparer.Ordinal)), conditionKinds);
 var dispatchCount = 0;
 foreach (var item in input["integrationCases"]!.AsArray().OfType<JsonObject>())
 {

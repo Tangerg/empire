@@ -1,6 +1,8 @@
+using System.Reflection;
+using Empire.Core.Progression;
+using Empire.Core.Lifecycle;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using System.Reflection;
 using Empire.Core;
 using Empire.Core.Combat;
 using Empire.Core.Determinism;
@@ -39,7 +41,7 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
     var state = item["initial"]!.DeepClone().AsObject();
     var grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid());
     var transport = new BattleTransport(packs, grids);
-    var damage = new BattleDamage(packs, grids);
+    var damage = new BattleDamage(new ReadOnlyContent(packs), grids, new CombatEffects(new ReadOnlyContent(packs), new ThresholdRankProgressionPolicy()), DefaultUnitDepartureHandlers.Create().Seal());
     var events = new JsonArray();
     var hashes = new JsonArray();
     void Emit(JsonObject value) { events.Add(value); hashes.Add(StateDigest.Hash(state)); }
@@ -106,14 +108,16 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
 }
 Console.WriteLine($"PASS {passed} live TypeScript transport/departure/return cases: queries, refusals, results, events, every emission-time hash and complete states");
 var engine = new GrayFlagEngine(oracle["packs"]!.AsArray());
-// Test-only access composes the real dispatcher around deliberately adversarial snapshots,
-// without weakening the public save reader or adding a production restore bypass.
-var registry = typeof(GrayFlagEngine).GetMethod("Registry", BindingFlags.Instance | BindingFlags.NonPublic)!;
+// These source fixtures intentionally include invalid save states, such as deployment
+// without a deployment payload. Reuse the engine's resolved dispatcher and pipeline;
+// do not weaken public save validation or re-create action legality for this test.
+var restoreBattle = typeof(GrayFlagEngine).GetMethod("RestoreBattle", BindingFlags.Instance | BindingFlags.NonPublic)
+    ?? throw new Exception("The engine restore test binding needs to be updated.");
 var dispatchCount = 0;
 foreach (var item in oracle["dispatchCases"]!.AsArray().OfType<JsonObject>())
 {
     var name = StateJson.Text(item, "name");
-    var battle = new Battle(item["initial"]!.AsObject(), (BattleActionRegistry)registry.Invoke(engine, null)!);
+    var battle = (Battle)restoreBattle.Invoke(engine, new object[] { item["initial"]!.AsObject() })!;
     foreach (var expected in item["receipts"]!.AsArray().OfType<JsonObject>())
     {
         Check(name, "dispatch-before", battle.Snapshot(), expected["before"]);

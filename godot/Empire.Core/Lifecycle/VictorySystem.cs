@@ -1,48 +1,18 @@
 using System.Text.Json.Nodes;
-using Empire.Core.State;
+using Empire.Core.Objectives;
 using static Empire.Core.State.StateJson;
 using static Empire.Core.Lifecycle.TurnOrderSystem;
 
 namespace Empire.Core.Lifecycle;
 
 public readonly record struct VictoryResult(int? Team, string Reason);
+public sealed record ObjectiveProgress(string Id, string Description, string Status, string Progress, string Role);
 
-/// <summary>Source objective resolution and defeat ordering, including GrayFlag's critical survivor objective.</summary>
-public sealed partial class VictorySystem
+/// <summary>Owns objective transitions and defeat ordering; handlers own objective policy.</summary>
+public sealed class VictorySystem(ObjectiveRules rules, ObjectiveHandlerRegistry handlers)
 {
-    public static IReadOnlyList<string> SupportedObjectives { get; } = System.Array.AsReadOnly(new[]
-    {
-        "routEnemies", "failOn", "optional", "all", "any", "sequence", "captureHQ", "holdAllVillages",
-        "surviveTurns", "eliminate", "protect", "destroy", "escort", "control", "score", "interact",
-    });
-    private readonly StateContent content;
-    private readonly ScenarioSystem scenarios;
-    private readonly Func<JsonObject, int, JsonObject, string>? extraObjective;
-    private readonly Func<JsonObject, string>? extraObjectiveDescription;
-    private readonly Func<JsonObject, int, JsonObject, string>? extraObjectiveProgress;
-    public VictorySystem(JsonArray packs, ScenarioSystem? scenarios = null,
-        Func<JsonObject, int, JsonObject, string>? extraObjective = null,
-        Func<JsonObject, string>? extraObjectiveDescription = null,
-        Func<JsonObject, int, JsonObject, string>? extraObjectiveProgress = null)
-    {
-        content = new StateContent(packs);
-        this.scenarios = scenarios ?? new ScenarioSystem(content);
-        this.extraObjective = extraObjective;
-        this.extraObjectiveDescription = extraObjectiveDescription;
-        this.extraObjectiveProgress = extraObjectiveProgress;
-    }
-    internal VictorySystem(StateContent content, ScenarioSystem scenarios,
-        Func<JsonObject, int, JsonObject, string>? extraObjective = null,
-        Func<JsonObject, string>? extraObjectiveDescription = null,
-        Func<JsonObject, int, JsonObject, string>? extraObjectiveProgress = null)
-    {
-        this.content = content;
-        this.scenarios = scenarios;
-        this.extraObjective = extraObjective;
-        this.extraObjectiveDescription = extraObjectiveDescription;
-        this.extraObjectiveProgress = extraObjectiveProgress;
-    }
-
+    public ObjectiveRules Rules { get; } = rules;
+    public ObjectiveHandlerRegistry Handlers { get; } = handlers;
     public VictoryResult Evaluate(JsonObject state, Action<JsonObject> emit)
     {
         RefreshObjectiveStates(state, emit);
@@ -52,7 +22,7 @@ public sealed partial class VictorySystem
             var id = Integer(owner, "id");
             if (!Units(state).Any(unit => Integer(unit, "owner") == id) && !OwnedTerrains(state, id).Any(terrain => Array(terrain["produces"], "produces").Count > 0))
                 owner["alive"] = false;
-            if (Objects(owner["objectives"], "objectives").Any(objective => Role(objective) == "critical" && Status(state, id, objective) == "failed"))
+            if (Objects(owner["objectives"], "objectives").Any(objective => Handlers.Role(objective) == "critical" && Status(state, id, objective) == "failed"))
                 owner["alive"] = false;
         }
         var living = Players(state).Where(owner => IsTrue(owner["alive"])).ToArray();
@@ -62,8 +32,8 @@ public sealed partial class VictorySystem
         foreach (var owner in living)
         {
             var completed = Objects(owner["objectives"], "objectives").FirstOrDefault(objective =>
-                Role(objective) != "optional" && Status(state, Integer(owner, "id"), objective) == "completed");
-            if (completed is not null) return new VictoryResult(Integer(owner, "team"), $"{Text(owner, "name")} 完成目标：{Describe(completed, extraObjectiveDescription)}");
+                Handlers.Role(objective) != "optional" && Status(state, Integer(owner, "id"), objective) == "completed");
+            if (completed is not null) return new VictoryResult(Integer(owner, "team"), $"{Text(owner, "name")} 完成目标：{Handlers.Describe(completed)}");
         }
         var limit = Object(state["rules"], "rules")["turnLimit"];
         return limit is not null && Number(state["turn"], "turn") > Number(limit, "turn limit")
@@ -79,8 +49,8 @@ public sealed partial class VictorySystem
     private void RefreshOne(JsonObject state, int owner, JsonObject objective, Action<JsonObject> emit)
     {
         if (Status(state, owner, objective) != "active") return;
-        var mode = RefreshMode(objective);
-        foreach (var child in Children(objective))
+        var mode = Handlers.RefreshMode(objective);
+        foreach (var child in mode == "self" ? [] : Handlers.Children(objective))
         {
             var status = Status(state, owner, child);
             if (mode == "sequence" && (status == "completed" || status == "cancelled")) continue;
@@ -93,91 +63,29 @@ public sealed partial class VictorySystem
         var runtime = Object(Object(Player(state, owner)["objectiveStates"], "objective states")[id], $"objective {id}");
         if (Text(runtime, "status") != "active") return;
         runtime["status"] = outcome == "success" ? "completed" : "failed";
-        emit(new JsonObject { ["type"] = "objectiveChanged", ["player"] = owner, ["objective"] = id,
-            ["status"] = runtime["status"]!.DeepClone(), ["hidden"] = runtime["hidden"]!.DeepClone() });
-    }
-
-    public string Outcome(JsonObject state, int owner, JsonObject objective)
-    {
-        var terminal = Status(state, owner, objective);
-        if (terminal == "completed") return "success";
-        if (terminal == "failed") return "failure";
-        if (terminal is "inactive" or "cancelled") return "pending";
-        bool Enemy(int id) => id != 0 && owner != 0 && Team(state, id) != Team(state, owner);
-        string Decide(bool success) => success ? "success" : "pending";
-        switch (Text(objective, "type"))
+        emit(new JsonObject
         {
-            case "routEnemies": return Decide(Players(state).Where(candidate => Enemy(Integer(candidate, "id"))).All(candidate => !Units(state).Any(unit => Integer(unit, "owner") == Integer(candidate, "id"))));
-            case "failOn": return scenarios.ConditionMet(state, Object(objective["condition"], "condition")) ? "failure" : Outcome(state, owner, Object(objective["objective"], "objective"));
-            case "optional": return Outcome(state, owner, Object(objective["objective"], "objective"));
-            case "all": case "any": case "sequence":
-                var children = Children(objective).Where(child => Role(child) != "optional" && Status(state, owner, child) is not ("inactive" or "cancelled")).ToArray();
-                if (children.Length == 0) return "pending";
-                var outcomes = children.Select(child => Outcome(state, owner, child)).ToArray();
-                if (Text(objective, "type") == "any") return outcomes.Contains("success") ? "success" : outcomes.All(value => value == "failure") ? "failure" : "pending";
-                return outcomes.Contains("failure") ? "failure" : outcomes.All(value => value == "success") ? "success" : "pending";
-            case "captureHQ":
-                var contenders = Players(state).Where(candidate => Enemy(Integer(candidate, "id")) && IsTrue(candidate["startedWithHQ"])).ToArray();
-                return Decide(contenders.Length > 0 && contenders.All(candidate => !OwnedTerrains(state, Integer(candidate, "id")).Any(terrain => IsTrue(terrain["hq"]))));
-            case "holdAllVillages":
-                var map = Object(state["map"], "map");
-                var tiles = Array(map["tiles"], "tiles");
-                var sites = Enumerable.Range(0, tiles.Count).Where(index => IsTrue(content.Get("terrains", Text(tiles[index], "terrain"))["capturable"])).ToArray();
-                return Decide(sites.Length > 0 && sites.All(index => Integer(Array(map["owners"], "owners")[index], "owner") == owner));
-            case "surviveTurns": return Decide(Number(state["turn"], "turn") > Number(objective["turns"], "turns"));
-            case "eliminate": return Decide(scenarios.SelectUnits(state, Object(objective["selector"], "selector")).Count == 0);
-            case "protect":
-                if (scenarios.SelectUnits(state, Object(objective["selector"], "selector")).Count < Number(objective["minimumAlive"], "minimumAlive")) return "failure";
-                return Decide(Number(state["turn"], "turn") > Number(objective["untilTurn"], "untilTurn"));
-            case "destroy": return Decide(Array(objective["structures"], "structures").All(id =>
-                Objects(state["structures"], "structures").FirstOrDefault(s => Text(s, "id") == Text(id, "structure id")) is not { } structure || Number(structure["hp"], "hp") <= 0));
-            case "escort":
-                var zone = ObjectiveZone(state, Text(objective, "zone")).ToArray();
-                return Decide(scenarios.SelectUnits(state, Object(objective["selector"], "selector")).Count(unit => zone.Any(cell => ScenarioSystem.SameCell(cell, unit))) >= Number(objective["count"], "count"));
-            case "control":
-                var cells = ObjectiveZone(state, Text(objective, "zone")).ToArray();
-                var field = Object(state["map"], "map");
-                return Decide(cells.Length > 0 && cells.All(cell => Integer(Array(field["owners"], "owners")[Integer(cell, "y") * Integer(field, "width") + Integer(cell, "x")], "owner") == owner));
-            case "score": return ScenarioSystem.Compare(Object(Object(state["scenario"], "scenario")["variables"], "variables")[Text(objective, "variable")], "gte", objective["atLeast"]) ? "success" : "pending";
-            case "interact": return Decide(ScenarioSystem.Compare(Object(Object(state["scenario"], "scenario")["variables"], "variables")[Text(objective, "variable")], "eq", objective["equals"]));
-            default: return extraObjective?.Invoke(state, owner, objective)
-                ?? throw new DomainInvariantException($"Unsupported objective \"{Text(objective, "type")}\"");
-        }
+            ["type"] = "objectiveChanged",
+            ["player"] = owner,
+            ["objective"] = id,
+            ["status"] = runtime["status"]!.DeepClone(),
+            ["hidden"] = runtime["hidden"]!.DeepClone()
+        });
     }
 
-    public static string Status(JsonObject state, int owner, JsonObject objective) => objective["id"] is { } id &&
-        Object(Player(state, owner)["objectiveStates"], "objective states")[Text(id, "objective id")] is JsonObject runtime ? Text(runtime, "status") : "active";
-
-    public static string Describe(JsonObject objective, Func<JsonObject, string>? extraDescription = null)
-    {
-        if (objective["label"] is JsonValue label && label.TryGetValue<string>(out var text) && text.Length > 0) return text;
-        return Text(objective, "type") switch
-        {
-            "routEnemies" => "歼灭所有敌军", "captureHQ" => "攻占敌方城堡", "holdAllVillages" => "控制全部据点",
-            "surviveTurns" => $"坚守 {Number(objective["turns"], "turns")} 回合", "eliminate" => "消灭指定目标", "destroy" => "摧毁指定结构",
-            "protect" => $"保护目标至第 {Number(objective["untilTurn"], "untilTurn")} 回合", "escort" => "护送目标抵达区域", "control" => "控制指定区域",
-            "score" => $"达成计数 {Number(objective["atLeast"], "atLeast")}", "interact" => "完成战场交互", "all" => "完成全部目标", "any" => "完成任一目标", "sequence" => "完成阶段目标",
-            "optional" => $"额外：{Describe(Object(objective["objective"], "objective"), extraDescription)}",
-            "failOn" => Describe(Object(objective["objective"], "objective"), extraDescription),
-            var type => extraDescription?.Invoke(objective) ?? throw new DomainInvariantException($"Unsupported objective \"{type}\""),
-        };
-    }
-    public static string Role(JsonObject objective) => Text(objective, "type") switch { "optional" => "optional", "failOn" => "critical", _ => "primary" };
-    public static string RefreshMode(JsonObject objective) => Text(objective, "type") == "sequence" ? "sequence" : "parallel";
-    public static IEnumerable<JsonObject> Children(JsonObject objective) => Text(objective, "type") switch
-    {
-        "all" or "any" or "sequence" => Objects(objective["objectives"], "objectives"),
-        "optional" or "failOn" => new[] { Object(objective["objective"], "objective") },
-        _ => Enumerable.Empty<JsonObject>(),
-    };
+    public string Outcome(JsonObject state, int owner, JsonObject objective) => Handlers.Evaluate(Rules, state, owner, objective);
+    public string Describe(JsonObject objective) => Handlers.Describe(objective);
+    public string Progress(JsonObject state, int owner, JsonObject objective) => Handlers.Progress(Rules, state, owner, objective);
+    public static string Status(JsonObject state, int owner, JsonObject objective) => ObjectiveHandlerRegistry.Status(state, owner, objective);
+    public IReadOnlyList<ObjectiveProgress> Objectives(JsonObject state, int owner) =>
+        Objects(Player(state, owner)["objectives"], "objectives")
+            .Where(objective => !IsTrue(Player(state, owner)["objectiveStates"]?[Text(objective, "id")]?["hidden"]))
+            .Select(objective => new ObjectiveProgress(Text(objective, "id"), objective["label"] is { } label ? Text(label, "label") : Describe(objective),
+                Status(state, owner, objective), Progress(state, owner, objective), Handlers.Role(objective))).ToArray();
     private IEnumerable<JsonObject> OwnedTerrains(JsonObject state, int owner)
     {
-        var map = Object(state["map"], "map");
-        var owners = Array(map["owners"], "owners");
-        var tiles = Array(map["tiles"], "tiles");
+        var map = Object(state["map"], "map"); var owners = Array(map["owners"], "owners"); var tiles = Array(map["tiles"], "tiles");
         for (var index = 0; index < owners.Count; index++)
-            if (Integer(owners[index], "owner") == owner) yield return content.Get("terrains", Text(tiles[index], "terrain"));
+            if (Integer(owners[index], "owner") == owner) yield return Rules.Content.Source.Get("terrains", Text(tiles[index], "terrain"));
     }
-    private static IEnumerable<JsonObject> ObjectiveZone(JsonObject state, string id) => Objects(Object(Object(state["scenario"], "scenario")["zones"], "zones")[id], "zone");
-    private static int Team(JsonObject state, int id) => Players(state).FirstOrDefault(player => Integer(player, "id") == id) is { } found ? Integer(found, "team") : -id;
 }

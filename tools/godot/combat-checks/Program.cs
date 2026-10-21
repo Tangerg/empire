@@ -46,7 +46,8 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
         foreach (var value in patch["values"]!.AsObject()) definition[value.Key] = value.Value?.DeepClone();
     }
     var grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid());
-    var movement = new DefaultTacticalSpace(packs, grids);
+    var catalog = new ReadOnlyContent(packs);
+    var movement = new DefaultTacticalSpace(catalog, grids);
     var areaShapes = WeaponAreaRegistry.Core();
     foreach (var area in item["areas"]!.AsArray().OfType<JsonObject>())
     {
@@ -54,7 +55,9 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
         areaShapes.Replace(new(StateJson.Text(area, "id"), StateJson.IsTrue(area["needsOccupant"]),
             (_, _, targetAt) => offsets.Select(offset => new Coord(targetAt.X + offset.X, targetAt.Y + offset.Y)).ToArray()));
     }
-    var combat = new BattleCombat(packs, grids, new BattleResources(), movement, areaShapes.Seal());
+    var combat = new BattleCombat(catalog, grids, new BattleResources(), movement, areaShapes.Seal(),
+        DefaultCombatModifiers.Create(), DefaultWeaponHitEffects.Create(), ReactionRegistry.Core().Seal(),
+        new Empire.Core.Progression.ThresholdRankProgressionPolicy(), Empire.Core.Lifecycle.DefaultUnitDepartureHandlers.Create());
     var events = new JsonArray(); var hashes = new JsonArray();
     void Emit(JsonObject ev) { events.Add(ev); hashes.Add(StateDigest.Hash(state)); }
     var attacker = TacticalQueries.UnitById(state, parameters["unit"] is null ? 1 : StateJson.Integer(parameters, "unit"));

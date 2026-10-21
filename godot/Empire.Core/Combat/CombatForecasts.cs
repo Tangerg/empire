@@ -17,7 +17,6 @@ public sealed record DamageBreakdown(string Weapon, string DamageType, double Ba
         Damage = Math.Max(1, StateJson.Round(Damage * modifier.Value)),
     };
 }
-public sealed record ReactionBehavior(string Id, string Name, bool Intercepts, double IncomingMultiplier, bool Retaliates, bool ConservesResources, string Hint);
 public sealed record CombatReaction(int Unit, string Stance, int? ProtectedUnit = null);
 public sealed record CombatForecast(int Attacker, int Defender, DamageBreakdown Strike, int DamageRecipient,
     int? Interceptor, CombatReaction? Reaction, double RecipientHpAfter, bool RecipientDies,
@@ -32,13 +31,19 @@ public sealed class CombatForecasts
     private readonly GridRegistry grids;
     private readonly BattleResources resources;
     private readonly Dictionary<(string Damage, string Armor), double> matchups = new();
-    private readonly Dictionary<string, ReactionBehavior> reactions = new(StringComparer.Ordinal);
-    public CombatForecasts(JsonArray packs, GridRegistry grids, BattleResources resources,
-        IEnumerable<ReactionBehavior>? reactionDefinitions = null)
+    public ReactionRegistry Reactions { get; }
+    private readonly CombatModifierRules modifierRules;
+    public CombatModifierPipeline Modifiers { get; }
+    public CombatForecasts(ReadOnlyContent catalog, GridRegistry grids, BattleResources resources,
+        CombatModifierPipeline modifiers, ReactionRegistry reactions)
     {
-        content = new StateContent(packs);
+        var packs = catalog.CopyPacks();
+        content = catalog.Source;
         this.grids = grids;
         this.resources = resources;
+        Modifiers = modifiers;
+        Reactions = reactions;
+        modifierRules = new(catalog, grids, Effectiveness);
         foreach (var pack in StateJson.Objects(packs, "packs"))
             foreach (var entry in StateJson.Objects(pack["damageMatchups"], "damageMatchups"))
             {
@@ -52,19 +57,9 @@ public sealed class CombatForecasts
                 if (!matchups.TryAdd(key, multiplier))
                     throw new DomainInvariantException($"damage matchup already registered: \"{key.Damage}\" -> \"{key.Armor}\"");
             }
-        foreach (var reaction in reactionDefinitions ?? DefaultReactions())
-            if (!reactions.TryAdd(reaction.Id, reaction)) throw new DomainInvariantException($"duplicate reaction {reaction.Id}");
     }
-    public static IReadOnlyList<ReactionBehavior> DefaultReactions() => new[]
-    {
-        new ReactionBehavior("counter", "反击", false, 1, true, false, "被攻击时用射程覆盖得到的最强武器还击。"),
-        new ReactionBehavior("guard", "防御", false, 0.7, false, false, "减少受到的伤害，但放弃还击。"),
-        new ReactionBehavior("support", "援护", true, 1, true, false, "替相邻友军挡下攻击，每轮一次。"),
-        new ReactionBehavior("conserve", "节制", false, 1, true, true, "只用无消耗的武器还击，保留弹药与冷却。"),
-    };
-    public ReactionBehavior Reaction(string id) => reactions.TryGetValue(id, out var value) ? value
-        : throw new DomainInvariantException($"unknown reaction stance \"{id}\"");
-    public IReadOnlyList<string> ReactionIds => reactions.Keys.ToArray();
+    public ReactionBehavior Reaction(string id) => Reactions.Get(id);
+    public IReadOnlyList<string> ReactionIds => Reactions.Keys();
     public double Effectiveness(string damageType, string armorClass) =>
         matchups.GetValueOrDefault((damageType, armorClass), 1);
     public ITacticalGrid Grid(JsonObject state) => grids.Get(StateJson.Text(state["rules"]!.AsObject(), "grid"));
@@ -112,11 +107,6 @@ public sealed class CombatForecasts
     }
     public static bool CanReact(JsonObject state, JsonObject unit) => StateJson.Number(unit, "reactionUsedRound", -1) != StateJson.Number(state, "turn", 0);
     public static void ConsumeReaction(JsonObject state, JsonObject unit) => unit["reactionUsedRound"] = state["turn"]!.DeepClone();
-    private double Strength(JsonObject unit)
-    {
-        var maximum = StateJson.Number(content.Get("units", StateJson.Text(unit, "type")), "maxHp", 1);
-        return 0.5 + 0.5 * (maximum > 0 ? Math.Clamp(StateJson.Number(unit, "hp", 0) / maximum, 0, 1) : 1);
-    }
 
     public DamageBreakdown ComputeDamage(JsonObject state, JsonObject attacker, JsonObject defender,
         Coord? attackerAt = null, Coord? defenderAt = null, string? weapon = null)
@@ -124,70 +114,12 @@ public sealed class CombatForecasts
         var from = attackerAt ?? TacticalQueries.Position(attacker);
         var to = defenderAt ?? TacticalQueries.Position(defender);
         var selected = RequireReadyWeapon(state, attacker, weapon ?? StateJson.Text(PrimaryWeapon(attacker), "id"));
-        var grid = Grid(state);
         var battlefield = new TacticalBattlefield(state, content);
-        var rules = state["rules"]!.AsObject();
-        var defenderDef = content.Get("units", StateJson.Text(defender, "type"));
-        var modifiers = new List<CombatModifier>();
-        void Add(string id, string label, string source, string stage, string operation, double value) =>
-            modifiers.Add(new(id, label, source, stage, operation, value));
-        Add("matchup.effectiveness", "伤害类型与护甲克制", "matchup", "power", "multiply",
-            Effectiveness(StateJson.Text(selected, "damageType"), StateJson.Text(defenderDef, "armorClass")));
-        foreach (var bonus in StateJson.Objects(selected["bonuses"], "bonuses"))
-            if (defenderDef["tags"]!.AsArray().Any(tag => tag!.GetValue<string>() == StateJson.Text(bonus, "targetTag")))
-                Add("weapon.target-tag." + StateJson.Text(bonus, "targetTag"), StateJson.Text(bonus, "reason"), "weapon", "power", "multiply", StateJson.Number(bonus, "multiplier", 1));
-        Add("unit.hp-strength", "攻击者剩余生命", "unit", "power", "multiply", Strength(attacker));
-        var rank = StateJson.Integer(attacker, "rank");
-        Add("rank.attack", rank == 0 ? "新兵军衔" : rank == 1 ? "老兵军衔" : "精英军衔", "unit", "power", "multiply", 1 + rank * 0.04);
-        Add("status.attack", "攻击方状态", "status", "power", "multiply", CombatEffects.CalculateModifiers(content, attacker).AttackMultiplier);
-        Add("commander.attack", "攻击方指挥光环", "commander", "power", "multiply", TacticalModifiers.CommanderAura(grid, state, attacker).AttackMultiplier);
-        var formation = TacticalModifiers.ActiveFormation(content, grid, state, attacker);
-        if (formation is not null && StateJson.Number(formation, "attackMultiplier", 1) != 1)
-            Add("formation.attack." + StateJson.Text(formation, "id"), StateJson.Text(formation, "name"), "formation", "power", "multiply", StateJson.Number(formation, "attackMultiplier", 1));
-        var elevationDelta = battlefield.Cell(from).Elevation - battlefield.Cell(to).Elevation;
-        if (elevationDelta >= StateJson.Number(rules, "highGroundThreshold", 0))
-            Add("elevation.high-ground", $"高地优势（高 {elevationDelta} 级）", "elevation", "power", "multiply", StateJson.Number(rules, "highGroundDamageMultiplier", 1));
-        var defenderPosition = TacticalQueries.Position(defender);
-        if (grid.Distance(from, defenderPosition) == 1 && (selected["tags"]!.AsArray().Any(tag => tag!.GetValue<string>() == "melee") || StateJson.Number(selected, "maxRange", 1) <= 1))
-        {
-            var incoming = grid.Toward(defenderPosition, from);
-            var facing = StateJson.Text(defender, "facing");
-            if (incoming == grid.Opposite(facing)) Add("position.back-attack", "背刺", "position", "power", "multiply", StateJson.Number(rules, "backAttackMultiplier", 1));
-            else if (incoming != facing) Add("position.side-attack", "侧击", "position", "power", "multiply", StateJson.Number(rules, "sideAttackMultiplier", 1));
-            var behind = grid.Step(defenderPosition, grid.Opposite(incoming));
-            var flanker = TacticalQueries.UnitAt(state, behind);
-            if (flanker is not null && StateJson.Integer(flanker, "id") != StateJson.Integer(attacker, "id") && TacticalQueries.AreAllies(state, StateJson.Integer(flanker, "owner"), StateJson.Integer(attacker, "owner")))
-                Add("position.flank", "夹击", "position", "power", "multiply", StateJson.Number(rules, "flankAttackMultiplier", 1));
-        }
-        if (grid.Distance(from, to) > 1 && StateJson.Text(selected, "lineOfSight") != "arc" && !selected["tags"]!.AsArray().Any(tag => tag!.GetValue<string>() == "ignores-cover"))
-        {
-            var cell = battlefield.Cell(to);
-            static int Score(string value) => value == "full" ? 2 : value == "half" ? 1 : 0;
-            var directional = cell.DirectionalCoverFrom(grid, from);
-            var cover = Score(directional) > Score(cell.Cover) ? directional : cell.Cover;
-            if (elevationDelta >= StateJson.Number(rules, "highGroundThreshold", 0)) cover = cover == "full" ? "half" : "none";
-            var value = cover == "full" ? StateJson.Number(rules, "fullCoverDefense", 0) : cover == "half" ? StateJson.Number(rules, "halfCoverDefense", 0) : 0;
-            if (value > 0) Add("cover." + cover, cover == "full" ? "全掩体" : "半掩体", "cover", "mitigation", "add", value);
-        }
-        var defenderStatus = CombatEffects.CalculateModifiers(content, defender);
-        var defenderCommand = TacticalModifiers.CommanderAura(grid, state, defender);
-        var defenderFormation = TacticalModifiers.ActiveFormation(content, grid, state, defender);
-        var defense = Math.Max(0, StateJson.Number(defenderDef, "defense", 0) + StateJson.Number(defender, "rank", 0) * 0.02
-            + defenderStatus.DefenseDelta + defenderCommand.DefenseDelta + (defenderFormation is null ? 0 : StateJson.Number(defenderFormation, "defenseDelta", 0)));
-        Add("defense.terrain", "地形防御", "terrain", "mitigation", "add", battlefield.Cell(to).Defense);
-        Add("defense.unit", "单位防御", "unit", "mitigation", "add", defense);
-        var power = StateJson.Number(selected, "power", 0);
-        double mitigation = 0, finalMultiplier = 1, finalOffset = 0;
-        foreach (var modifier in modifiers)
-        {
-            if (modifier.Stage == "power") power = modifier.Operation == "multiply" ? power * modifier.Value : power + modifier.Value;
-            else if (modifier.Stage == "mitigation") mitigation = modifier.Operation == "multiply" ? mitigation * modifier.Value : mitigation + modifier.Value;
-            else if (modifier.Operation == "multiply") { finalMultiplier *= modifier.Value; finalOffset *= modifier.Value; }
-            else finalOffset += modifier.Value;
-        }
-        mitigation = Math.Clamp(mitigation, 0, 0.6);
-        var damage = Math.Max(1, StateJson.Round(power * (1 - mitigation) * finalMultiplier + finalOffset));
-        return new(StateJson.Text(selected, "id"), StateJson.Text(selected, "damageType"), StateJson.Number(selected, "power", 0), mitigation, modifiers.AsReadOnly(), damage);
+        var context = new UnitDamageContext(modifierRules, state, attacker, from, defender, to, selected,
+            battlefield, new TacticalBoard(state["map"]!.AsObject(), Grid(state)));
+        var result = Modifiers.Evaluate(StateJson.Number(selected, "power", 0), context);
+        return new(StateJson.Text(selected, "id"), StateJson.Text(selected, "damageType"),
+            StateJson.Number(selected, "power", 0), result.Mitigation, result.Modifiers, result.Damage);
     }
 
     public StructureCombatForecast ForecastStructure(JsonObject state, JsonObject attacker, JsonObject structure, string? weapon = null)
@@ -198,7 +130,7 @@ public sealed class CombatForecasts
         var bonus = StateJson.Objects(selected["bonuses"], "bonuses").Where(value => definition["tags"]!.AsArray()
             .Any(tag => tag!.GetValue<string>() == StateJson.Text(value, "targetTag"))).Aggregate(1.0, (result, value) => result * StateJson.Number(value, "multiplier", 1));
         var power = StateJson.Number(selected, "power", 0);
-        var raw = Math.Max(1, StateJson.Round(power * Strength(attacker) * CombatEffects.CalculateModifiers(content, attacker).AttackMultiplier * commander * bonus));
+        var raw = Math.Max(1, StateJson.Round(power * DefaultCombatModifiers.AttackerStrength(content, attacker) * CombatEffects.CalculateModifiers(content, attacker).AttackMultiplier * commander * bonus));
         var hp = StateJson.Number(structure, "hp", 0);
         var damage = Math.Min(hp, Math.Max(1, StateJson.Round(raw * (1 - StateJson.Number(definition, "defense", 0)))));
         var after = Math.Max(0, hp - damage);

@@ -1,6 +1,7 @@
 using System.Text.Json.Nodes;
 using Empire.Core.Geometry;
 using Empire.Core.Lifecycle;
+using Empire.Core.Scenario;
 using static Empire.Core.State.StateJson;
 using static Empire.Core.Tactics.TacticalQueries;
 
@@ -36,9 +37,9 @@ public sealed record AiAgenda(IReadOnlyList<CaptureTarget> CaptureTargets, IRead
         void Visit(JsonObject objective, double inheritedWeight)
         {
             if (VictorySystem.Status(context.State, context.Player, objective) != "active") return;
-            var weight = inheritedWeight * (VictorySystem.Role(objective) switch { "critical" => 1.4, "optional" => 0.55, _ => 1 });
-            var pending = VictorySystem.Children(objective).Where(child => VictorySystem.Status(context.State, context.Player, child) is not ("completed" or "failed" or "cancelled" or "inactive"));
-            var children = (VictorySystem.RefreshMode(objective) == "sequence" ? pending.Take(1) : pending).ToArray();
+            var weight = inheritedWeight * (context.Rules.Objectives.Role(objective) switch { "critical" => 1.4, "optional" => 0.55, _ => 1 });
+            var pending = context.Rules.Objectives.Children(objective).Where(child => VictorySystem.Status(context.State, context.Player, child) is not ("completed" or "failed" or "cancelled" or "inactive"));
+            var children = (context.Rules.Objectives.RefreshMode(objective) == "sequence" ? pending.Take(1) : pending).ToArray();
             if (children.Length > 0) { foreach (var child in children) Visit(child, weight); return; }
             var advisor = context.ObjectiveAdvisors.TryGet(Text(objective, "type"));
             if (advisor is null) return;
@@ -70,7 +71,7 @@ public sealed class AiObjectiveAdviceContext
     public void PriorityStructure(string id, double weight) => PriorityStructures[id] = Math.Max(PriorityStructures.GetValueOrDefault(id), weight * Weight);
     public void Protect(int id, double weight) => ProtectedUnits[id] = Math.Max(ProtectedUnits.GetValueOrDefault(id), weight * Weight);
     internal IEnumerable<Coord> Zone(string id) => Objects(Object(Object(State["scenario"], "scenario")["zones"], "zones")[id], "zone").Select(Position);
-    internal IReadOnlyList<JsonObject> Select(JsonObject selector) => new ScenarioSystem(Turn.Content).SelectUnits(State, selector);
+    internal IReadOnlyList<JsonObject> Select(JsonObject selector) => ScenarioSelection.SelectUnits(Turn.Rules.Content, State, selector);
 }
 
 public static class DefaultAiObjectiveAdvisors

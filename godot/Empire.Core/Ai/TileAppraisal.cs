@@ -41,7 +41,7 @@ public sealed class TileAppraisal
         {
             // Addition order is observable when utility scores nearly tie.
             var total = 0.0;
-            total += context.Engine.Directives.Pull(context.State, unit, at, context.Board.Grid);
+            total += context.Rules.Directives.Pull(context.State, unit, at, context.Board.Grid);
             total += Number(terrain["defense"], "defense") * 90;
             total += cell.Elevation * 3;
             total += CaptureProspect();
@@ -94,7 +94,7 @@ public sealed class TileAppraisal
         if (Foes.Count == 0) return 0;
         var nearest = context.NearestDistance(at, Foes.Select(Position));
         var ideal = AiMeasures.PreferredEngagementRange(context.Content, unit);
-        var wants = context.Engine.Directives.Engagement(unit);
+        var wants = context.Rules.Directives.Engagement(unit);
         return -Math.Abs(nearest - ideal) * 16 * (0.5 + Aggression) * wants;
     }
 

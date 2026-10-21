@@ -8,10 +8,10 @@ const careers=(packs:ContentPack[])=>packs.flatMap(p=>p.careers??[]);
 const soldier=(packs:ContentPack[])=>units(packs).find(u=>u.id==='soldier')!;
 const sword=(packs:ContentPack[])=>weapons(packs).find(w=>w.id==='soldier_sword')!;
 const militia=(packs:ContentPack[])=>careers(packs).find(c=>c.id==='militia')!;
-function record(name:string,edit:(p:ContentPack[])=>void=()=>{},nativeGuard:string|null=null){
+function record(name:string,edit:(p:ContentPack[])=>void=()=>{}){
  const packs=structuredClone(original);edit(packs);let error:string|null=null;
  try{const content=createContentCatalog();new ContentPackInstaller(content).install(...packs);createBattleEngine({content});}catch(caught){error=(caught as Error).message;}
- cases.push({name,packs,error,nativeGuard});
+ cases.push({name,packs,error});
 }
 record('original exported catalog');
 record('unit ability unsupported',p=>soldier(p).abilities.push('unknown-ability'));
@@ -63,10 +63,10 @@ record('overlay missing status',p=>p.flatMap(pack=>pack.terrainOverlays??[])[0].
 for (const value of [0,-1,Number.NaN,Number.POSITIVE_INFINITY])record(`damage matchup ${String(value)}`,p=>p.flatMap(pack=>pack.damageMatchups??[])[0].multiplier=value);
 record('damage matchup duplicate',p=>{const pack=p.find(pack=>(pack.damageMatchups?.length??0)>0)!;pack.damageMatchups=[...(pack.damageMatchups??[]),structuredClone(pack.damageMatchups![0])];});
 record('damage matchup coverage',p=>{for(const pack of p)if(pack.damageMatchups)pack.damageMatchups=pack.damageMatchups.filter(m=>!(m.damageType===sword(p).damageType&&m.armorClass===soldier(p).armorClass));});
-record('unknown account adapter native gate',p=>soldier(p).resources['unknown-resource']={current:1,capacity:3},'资源');
-record('unknown recruit resource native gate',p=>soldier(p).recruitCosts=[{resource:'unknown-resource',amount:1}],'资源');
-record('unknown mastery cost native gate',p=>militia(p).costs=[{resource:'unknown-resource',amount:1}],'资源');
-record('unknown tactic kind native gate',p=>Object.assign(p.flatMap(pack=>pack.tactics??[])[0].effects[0],{type:'unknown-tactic'}),'战术效果');
+record('unknown account adapter native gate',p=>soldier(p).resources['unknown-resource']={current:1,capacity:3});
+record('unknown recruit resource native gate',p=>soldier(p).recruitCosts=[{resource:'unknown-resource',amount:1}]);
+record('unknown mastery cost native gate',p=>militia(p).costs=[{resource:'unknown-resource',amount:1}]);
+record('unknown tactic kind native gate',p=>Object.assign(p.flatMap(pack=>pack.tactics??[])[0].effects[0],{type:'unknown-tactic'}));
 record('source allows fractional vision',p=>soldier(p).vision=1.5);
 writeFileSync(process.argv[2]??'/tmp/empire-content-validation.json',JSON.stringify(cases));
 console.log(`Generated ${cases.length} content admission fixtures`);

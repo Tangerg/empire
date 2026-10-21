@@ -7,7 +7,7 @@ namespace Empire.Core.Lifecycle;
 public interface ILifecycleEffects
 {
     void ResolveDueCasts(JsonObject state, Action<JsonObject> emit);
-    void DamageStatus(JsonObject state, JsonObject unit, JsonObject status, double requested, bool nonlethal, Action<JsonObject> emit);
+    double DamageStatus(JsonObject state, JsonObject unit, JsonObject status, double requested, bool nonlethal, Action<JsonObject> emit);
 }
 
 /// <summary>Refuses combat features that have not been composed instead of silently dropping them.</summary>
@@ -19,6 +19,6 @@ public sealed class StrictLifecycleEffects : ILifecycleEffects
             throw new DomainInvariantException("Due spell casts require an ILifecycleEffects combat resolver");
     }
 
-    public void DamageStatus(JsonObject state, JsonObject unit, JsonObject status, double requested, bool nonlethal, Action<JsonObject> emit) =>
+    public double DamageStatus(JsonObject state, JsonObject unit, JsonObject status, double requested, bool nonlethal, Action<JsonObject> emit) =>
         throw new DomainInvariantException($"Periodic status \"{Text(status, "id")}\" requires an ILifecycleEffects damage resolver");
 }

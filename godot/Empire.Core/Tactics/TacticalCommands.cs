@@ -133,28 +133,4 @@ public sealed class TacticalCommands
         // An ability can replace the stored object; the accepted order still owns its captured actor.
         if (TacticalQueries.UnitById(state, StateJson.Integer(actor, "id")) is not null) actor["done"] = true;
     }
-
-    public void ExecuteWait(
-        JsonObject state, JsonObject action, Action<JsonObject> emit, PartingShotResolver? partingShots = null)
-    {
-        var validated = ValidateMovement(state, action);
-        var unit = TacticalQueries.RequireUnit(state, validated.UnitId);
-        var command = StateJson.Object(action["command"], "command");
-        if (StateJson.Text(command, "ability") != "wait")
-            throw new DomainInvariantException("wait handler received a different ability");
-        var definition = Empire.Core.Determinism.EcmaJson.Parse((rules.Content.Definition("units", StateJson.Text(unit, "type"))
-            ?? throw new DomainInvariantException("command unit definition is missing")).GetRawText())!.AsObject();
-        var abilities = StateJson.Array(definition["abilities"], "unit abilities")
-            .Concat(StateJson.Array(unit["learnedAbilities"], "learnedAbilities"));
-        if (!abilities.Any(ability => StateJson.Text(ability, "ability") == "wait"))
-            throw new IllegalActionException($"{StateJson.Text(definition, "name")} 没有「待机」");
-        if (command["weapon"] is { } requestedWeapon && StateJson.Text(requestedWeapon, "weapon").Length > 0)
-            throw new IllegalActionException($"「待机」无法使用「{StateJson.Text(requestedWeapon, "weapon")}」");
-        var surviving = ApplyMovement(state, validated, emit, partingShots);
-        if (surviving is null) return;
-        if (command["target"] is JsonObject target)
-            TurnToFace(surviving, Board(state).Grid.Toward(validated.Destination, TacticalQueries.Position(target)), emit);
-        // The core wait ability has no effect or event; finishing the actor is the command's responsibility.
-        FinishCommand(state, validated.UnitId);
-    }
 }

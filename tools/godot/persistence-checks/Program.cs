@@ -50,6 +50,17 @@ void Reject(string name, Action<JsonObject> edit, string? message = null)
         if (StateDigest.Hash(corrupt) != original) throw new Exception("rejected load mutated its input");
     });
 }
+void AdmitMetadata(string name, Action<JsonObject> edit)
+{
+    Check(name, () =>
+    {
+        var save = (JsonObject)good.DeepClone(); edit(save); var before = save.ToJsonString();
+        var loaded = persistence.Load(save);
+        Equal(save["state"]!, loaded, "accepted metadata load");
+        Equal(save, persistence.Save(loaded, save["savedAt"]!.GetValue<string>()), "accepted metadata roundtrip");
+        if (save.ToJsonString() != before) throw new Exception("accepted metadata load mutated input");
+    });
+}
 JsonObject LiveSave() => persistence.Save(initial, "2026-01-01T00:00:00.000Z");
 
 Check("source manifest identity", () => Equal(good["ruleset"]!, manifest, "manifest"));
@@ -150,7 +161,7 @@ Reject("unknown learned ability", save => save["state"]!["units"]![0]!["learnedA
 Reject("unknown grid", save => save["state"]!["rules"]!["grid"] = "unknown", "棋盘几何");
 Reject("unknown turn policy", save => save["state"]!["turnOrder"]!["policy"] = "unknown", "行动顺序策略");
 Reject("unknown objective", save => save["state"]!["players"]![0]!["objectives"]![0]!["type"] = "unknown", "目标类型");
-Reject("unknown nested condition", save => save["state"]!["players"]![0]!["objectives"]![0]!["condition"]!["type"] = "unknown", "场景条件");
+AdmitMetadata("unknown nested condition stays stored until evaluated", save => save["state"]!["players"]![0]!["objectives"]![0]!["condition"]!["type"] = "unknown");
 Reject("unknown scenario effect", save => save["state"]!["scenario"]!["triggers"]![0]!["effects"]![0]!["type"] = "unknown", "场景效果");
 Reject("wrong pack version", save => save["ruleset"]!["contentPacks"]!["empire.common"] = 999, "content pack \"empire.common\" version");
 Reject("unknown plugin", save => save["ruleset"]!["plugins"]!["other"] = 1, "not part of the current ruleset");
@@ -161,10 +172,10 @@ Reject("bad row-major array length", save => save["state"]!["map"]!["owners"]!.A
 Reject("negative random counter", save => save["state"]!["random"]!["counters"]!["bad"] = -1, "计数器");
 Reject("fractional actor clock", save => save["state"]!["actorTurns"] = 1.5, "actorTurns");
 Reject("next unit id collision", save => save["state"]!["nextUnitId"] = 1, "后续标识");
-Reject("unknown resource account", save => save["state"]!["players"]![0]!["resources"]!["unknown"] =
-    new JsonObject { ["current"] = 1, ["capacity"] = null }, "资源");
-Reject("unknown upkeep resource", save => save["state"]!["rules"]!["baseResourceGrants"]!.AsArray().Add(
-    new JsonObject { ["resource"] = "unknown", ["amount"] = 1 }), "资源");
+AdmitMetadata("unknown resource account remains inert", save => save["state"]!["players"]![0]!["resources"]!["unknown"] =
+    new JsonObject { ["current"] = 1, ["capacity"] = null });
+AdmitMetadata("unknown upkeep resource stays stored until granted", save => save["state"]!["rules"]!["baseResourceGrants"]!.AsArray().Add(
+    new JsonObject { ["resource"] = "unknown", ["amount"] = 1 }));
 Reject("negative resource balance", save => save["state"]!["players"]![0]!["resources"]!["funds"]!["current"] = -1, "资源数值");
 Reject("stale deployment after battle start", save =>
 {

@@ -41,7 +41,7 @@ if(args.Length>1)
  foreach(var item in focused)
  {
   var state=item!["state"]!.AsObject();
-  var context=new AiTurnContext(engine,state,state["currentPlayer"]!.GetValue<int>(),item["aggression"]!.GetValue<double>(),planner.Abilities,planner.Objectives);
+  var context=new AiTurnContext(planner.Planning,state,state["currentPlayer"]!.GetValue<int>(),item["aggression"]!.GetValue<double>());
   var agenda=context.Agenda;
   var projection=new {
    captureTargets=agenda.CaptureTargets.Select(t=>new{at=TacticalQueries.CoordinateJson(t.At),weight=t.Weight}),

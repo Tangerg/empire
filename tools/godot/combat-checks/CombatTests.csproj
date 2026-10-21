@@ -17,5 +17,8 @@
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/Resources/*.cs" />
     <Compile Include="$(EmpireCombatRoot)/*.cs" />
     <Compile Include="$(EmpireRoot)/godot/Empire.Core/Lifecycle/ILifecycleEffects.cs" />
-  </ItemGroup>
+  <Compile Include="$(EmpireRoot)/godot/Empire.Core/Statuses/StatusTransitions.cs" />
+<Compile Include="$(EmpireRoot)/godot/Empire.Core/Progression/RankProgressionPolicy.cs" />
+<Compile Include="$(EmpireRoot)/godot/Empire.Core/Lifecycle/UnitDepartureHandlers.cs" />
+</ItemGroup>
 </Project>

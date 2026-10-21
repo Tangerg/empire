@@ -1,5 +1,6 @@
 using System.Text.Json.Nodes;
 using Empire.Core.Geometry;
+using Empire.Core.Lifecycle;
 using Empire.Core.State;
 using Empire.Core.Tactics;
 
@@ -18,12 +19,14 @@ public sealed class BattleDamage
     private readonly StateContent content;
     private readonly GridRegistry grids;
     private readonly CombatEffects effects;
+    private readonly UnitDepartureRules departureRules;
 
-    public BattleDamage(JsonArray packs, GridRegistry grids)
+    public BattleDamage(ReadOnlyContent catalog, GridRegistry grids, CombatEffects effects, UnitDepartureHandlerRegistry unitDepartures)
     {
-        content = new StateContent(packs);
+        content = catalog.Source;
         this.grids = grids;
-        effects = new CombatEffects(packs);
+        this.effects = effects;
+        departureRules = new(catalog, grids, this, unitDepartures);
     }
 
     public DamageOutcome Resolve(
@@ -159,10 +162,11 @@ public sealed class BattleDamage
     /// Settles a departure already performed by a caller. Default handlers run in
     /// source registration order, so commander-induced routs precede cast cancellation.
     /// </summary>
-    public void AnnounceDeparture(JsonObject state, JsonObject unit, Action<JsonObject> emit)
+    public void AnnounceDeparture(JsonObject state, JsonObject unit, Action<JsonObject> emit) =>
+        departureRules.UnitDepartures.Announce(new(departureRules, state, unit, emit));
+
+    internal void CancelCastOf(JsonObject state, int unitId, Action<JsonObject> emit)
     {
-        var unitId = StateJson.Integer(unit, "id");
-        HandleCommanderDefeat(state, unitId, emit);
         var casts = StateJson.Array(state["pendingCasts"], "pendingCasts");
         var cast = casts.OfType<JsonObject>().FirstOrDefault(candidate => StateJson.Integer(candidate, "caster") == unitId);
         if (cast is null) return;
@@ -204,7 +208,7 @@ public sealed class BattleDamage
                 -StateJson.Number(rules["moraleAllyDefeatLoss"], "moraleAllyDefeatLoss"), "ally-defeated", emit);
     }
 
-    private void HandleCommanderDefeat(JsonObject state, int unitId, Action<JsonObject> emit)
+    internal void HandleCommanderDefeat(JsonObject state, int unitId, Action<JsonObject> emit)
     {
         var commander = StateJson.Objects(state["commanders"], "commanders")
             .FirstOrDefault(candidate => StateJson.Integer(candidate, "unitId") == unitId);

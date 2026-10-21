@@ -1,7 +1,9 @@
 using System.Text.Json.Nodes;
 using Empire.Core.Combat;
-using Empire.Core.Abilities;
 using Empire.Core.Actions;
+using Empire.Core.Composition;
+using Empire.Core.Determinism;
+using Empire.Core.Abilities;
 using Empire.Core.Scenario;
 using Empire.Core.Deployment;
 using Empire.Core.Transport;
@@ -11,18 +13,26 @@ using Empire.Core.Geometry;
 using Empire.Core.Lifecycle;
 using Empire.Core.Orders;
 using Empire.Core.Resources;
+using Empire.Core.References;
+using Empire.Core.Persistence;
+using Empire.Core.Objectives;
+using Empire.Core.Statuses;
 using Empire.Core.State;
 using Empire.Core.Tactics;
 using Empire.Core.Transactions;
 
 namespace Empire.Core.Engine;
 
-/// <summary>Native composition root. The battle owns state; nodes never own gameplay rules.</summary>
+/// <summary>Application-facing native rules. The battle remains the transactional state writer.</summary>
 public sealed partial class GrayFlagEngine
 {
     private readonly JsonArray packs;
+    private readonly BattleStateRules stateRules;
     private readonly BattleActionRegistry actionHandlers;
     private readonly ActionExecutionPipeline actionPipeline;
+    private readonly Func<JsonObject, Action<JsonObject>, BattleLifecycle> createLifecycle;
+    public BattleActionRegistry ActionHandlers => actionHandlers;
+    public IBattleRandomSource Random { get; }
     public bool HandsOffTurn(JsonObject action) => actionHandlers.HandsOffTurn(action);
     internal StateContent Content { get; }
     public ReadOnlyContent Catalog { get; }
@@ -43,65 +53,89 @@ public sealed partial class GrayFlagEngine
     public AbilityCommands AbilityCommands { get; }
     public WeaponAreaRegistry AreaShapes { get; }
     public AiPlanner Ai { get; }
-    public ScenarioExtensions ScenarioEffects { get; }
+    public StatusBehaviorRegistry StatusBehaviors { get; }
+    public IRankProgressionPolicy RankProgression { get; }
+    public TurnOrderRegistry TurnOrders { get; }
+    public ReactionRegistry Reactions { get; }
+    public UnitDepartureHandlerRegistry UnitDepartures { get; }
+    public BattleReferenceCheckRegistry ReferenceChecks { get; }
+    public IBattleSaveReader Saves { get; }
+    public ScenarioConditionHandlerRegistry ScenarioConditions { get; }
+    public ScenarioEffectHandlerRegistry ScenarioEffects { get; }
+    public ObjectiveHandlerRegistry Objectives { get; }
+    public ScenarioCommands ScenarioCommands { get; }
     public ScenarioSystem Scenarios { get; }
-    public BattleResources Resources { get; } = new();
+    public BattleResources Resources { get; }
 
     public string UnitTypeName(string id) => StateJson.Text(Content.Get("units", id), "name");
     public string CareerName(string id) => StateJson.Text(Content.Get("careers", id), "name");
 
     public GrayFlagEngine(JsonArray contentPacks)
+        : this(BattleEngineFactory.Compose(new ReadOnlyContent(contentPacks))) { }
+
+    internal GrayFlagEngine(BattleEngineDependencies dependencies)
     {
-        packs = Empire.Core.Determinism.EcmaJson.Normalize(contentPacks)!.AsArray();
-        Content = new StateContent(packs);
-        Catalog = new ReadOnlyContent(Content);
-        Grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid()).Seal();
-        Space = new DefaultTacticalSpace(packs, Grids);
-        Turns = new TurnOrderSystem(packs);
-        Transport = new BattleTransport(packs, Grids);
-        Directives = UnitDirectiveRegistry.Core().Seal();
-        Commands = new TacticalCommands(new(Catalog, Grids, Space), Turns.MayAct, Directives);
+        Catalog = dependencies.Content;
+        Content = Catalog.Source;
+        var packs = this.packs = Catalog.CopyPacks();
+        var grids = Grids = dependencies.Grids;
+        stateRules = new BattleStateRules(Catalog, Grids);
+        Space = dependencies.Space;
+        var resources = Resources = dependencies.Resources;
+        Random = dependencies.Random;
+        TurnOrders = dependencies.TurnOrders;
+        Turns = new TurnOrderSystem(new TurnOrderRules(Catalog, TurnOrders));
+        Reactions = dependencies.Reactions;
+        StatusBehaviors = dependencies.StatusBehaviors;
+        RankProgression = dependencies.Progression;
+        UnitDepartures = dependencies.UnitDepartures;
+        ReferenceChecks = dependencies.ReferenceChecks;
+        Saves = dependencies.Saves;
+        Transport = new BattleTransport(packs, grids);
+        Directives = dependencies.Directives;
+        Commands = new TacticalCommands(new(Catalog, grids, Space), Turns.MayAct, Directives);
         Deployment = new DeploymentSystem(packs, Commands.OwnUnit);
-        AreaShapes = WeaponAreaRegistry.Core().Seal();
-        Combat = new BattleCombat(packs, Grids, Resources, Space, AreaShapes);
-        Support = new SupportOrders(packs, Grids, Resources, Combat.Effects);
-        Recruitment = new RecruitmentOrders(packs, Grids, Resources, (state, type, owner, at, done) =>
-            BattleStateFactory.SpawnUnit(packs, Grids, state, type, owner, at, done: done));
-        Progression = new BattleProgression(packs, Grids, Resources, Commands, Combat.Effects);
-        Abilities = DefaultAbilities.Create().Seal();
-        AbilityRules = new(Catalog, Space, Combat, Support, Progression.Careers, Abilities);
+        AreaShapes = dependencies.AreaShapes;
+        var combat = Combat = new BattleCombat(Catalog, grids, resources, Space, AreaShapes, dependencies.CombatModifiers, dependencies.HitEffects, Reactions, RankProgression, UnitDepartures);
+        Support = new SupportOrders(packs, grids, resources, combat.Effects);
+        Recruitment = new RecruitmentOrders(packs, grids, resources, (state, type, owner, at, done) =>
+            BattleStateFactory.SpawnUnit(stateRules, state, type, owner, at, done: done));
+        Progression = new BattleProgression(packs, grids, resources, Commands, combat.Effects);
+        Abilities = dependencies.Abilities;
+        AbilityRules = new(Catalog, Space, combat, Support, Progression.Careers, Abilities);
         AbilityCommands = new(AbilityRules, Commands);
-        ScenarioEffects = new ScenarioExtensions(packs, Combat, Resources, (state, source, done) =>
-            BattleStateFactory.SpawnUnit(packs, Grids, state, StateJson.Text(source, "unit"),
+        ScenarioConditions = dependencies.ScenarioConditions;
+        ScenarioEffects = dependencies.ScenarioEffects;
+        Objectives = dependencies.Objectives;
+        ScenarioCommands = new ScenarioCommands(Catalog, combat, resources, (state, source, done) =>
+            BattleStateFactory.SpawnUnit(stateRules, state, StateJson.Text(source, "unit"),
                 StateJson.Integer(source, "owner"), TacticalQueries.Position(source), done: done, source: source));
-        Scenarios = new ScenarioSystem(packs, ScenarioEffects.ConditionMet, ScenarioEffects.Apply);
-        Victory = new VictorySystem(Content, Scenarios, CompositeRules.ObjectiveOutcome,
-            CompositeRules.DescribeObjective, CompositeRules.ObjectiveProgress);
-        Ai = new AiPlanner(this, DefaultAiIntents.Create(), DefaultAbilityAiEvaluators.Create(), DefaultAiObjectiveAdvisors.Create());
-        ComposePersistence();
-        actionHandlers = DefaultActionHandlers.Create().Seal();
-        actionPipeline = new(new(Commands, Deployment, Transport, Progression, AbilityCommands,
-            Recruitment, Support, Combat, Lifecycle));
+        var scenarios = Scenarios = new ScenarioSystem(new ScenarioRules(Catalog, ScenarioConditions, ScenarioEffects, ScenarioCommands));
+        var victory = Victory = new VictorySystem(new ObjectiveRules(Catalog, ScenarioConditions), Objectives);
+        Ai = new AiPlanner(new AiPlanningDependencies(new AiRules(Catalog, grids, Space, AbilityCommands, combat, Support, resources, Directives, Turns, Objectives), dependencies.AbilityAiEvaluators, dependencies.AiObjectiveAdvisors), dependencies.AiIntents);
+        var lifecycleRules = new BattleLifecycleRules(Catalog, Turns, scenarios, victory, combat, resources,
+            new StatusLifecycle(Catalog, StatusBehaviors, combat));
+        createLifecycle = (state, emit) => new BattleLifecycle(lifecycleRules, state, emit);
+        actionHandlers = dependencies.ActionHandlers;
+        actionPipeline = new(new ActionRules(Commands, Deployment, Transport, Progression, AbilityCommands,
+            Recruitment, Support, combat, createLifecycle));
+        ComposePersistence(dependencies.PluginManifest);
     }
 
     public JsonObject CreateState(JsonObject level, uint? seed = null)
     {
         level = Empire.Core.Determinism.EcmaJson.Normalize(level)!.AsObject();
         definitions.ValidateLevel(level);
-        var state = BattleStateFactory.Create(level, packs, seed);
-        if (StateJson.Text(state, "phase") == "playing") Lifecycle(state, _ => { }).Start();
+        var state = BattleStateFactory.Create(stateRules, level, seed);
+        if (StateJson.Text(state, "phase") == "playing") createLifecycle(state, _ => { }).Start();
         return state;
     }
 
     public Battle CreateBattle(JsonObject level, uint? seed = null) => new(CreateState(level, seed), actionHandlers, actionPipeline);
     private Battle RestoreBattle(JsonObject state) => new(state, actionHandlers, actionPipeline);
 
-    private BattleLifecycle Lifecycle(JsonObject state, Action<JsonObject> emit) => new(state, packs, emit,
-        Combat, Resources, Scenarios, CompositeRules.ObjectiveOutcome, CompositeRules.DescribeObjective,
-        CompositeRules.ObjectiveProgress, Victory);
-
     public IReadOnlyList<CommandOption> CommandsAt(JsonObject state, JsonObject unit, Coord at) =>
         AbilityCommands.Options(state, unit, at);
 
-    public double HealAmount(JsonObject unit) => DefaultAbilities.HealAmount(AbilityRules, unit);
+    public double HealAmount(JsonObject unit) => DefaultAbilities.HealAmount(Catalog, unit);
 }

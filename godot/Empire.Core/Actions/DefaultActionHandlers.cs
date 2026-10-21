@@ -20,7 +20,6 @@ public static class DefaultActionHandlers
         {
             var unit = context.Rules.Commands.CommandableUnit(context.State, StateJson.Integer(action, "unit"), "调整反应姿态");
             var stance = StateJson.Text(action, "stance");
-            context.Rules.Combat.Forecasts.Reaction(stance);
             unit["reaction"] = stance;
             context.Emit(new JsonObject { ["type"] = "reactionChanged", ["unit"] = unit["id"]!.DeepClone(), ["stance"] = stance });
         })

@@ -2,6 +2,7 @@ using System.Text.Json.Nodes;
 using Empire.Core.Determinism;
 using Empire.Core.Geometry;
 using Empire.Core.Persistence;
+using Empire.Core.References;
 using Empire.Core.State;
 
 namespace Empire.Core.Validation;
@@ -10,22 +11,25 @@ namespace Empire.Core.Validation;
 public sealed class BattleLevelValidator
 {
     private readonly StateContent content;
-    private readonly BattleSaveFeatures features;
+    private readonly RuleReferenceRules rules;
+    private readonly BattleReferenceCheckRegistry referenceChecks;
     private readonly GridRegistry grids;
 
-    public BattleLevelValidator(JsonArray packs, BattleSaveFeatures features, GridRegistry grids)
+    public BattleLevelValidator(RuleReferenceRules rules, BattleReferenceCheckRegistry referenceChecks, GridRegistry grids)
     {
-        content = new StateContent((JsonArray)packs.DeepClone());
-        this.features = features.Snapshot();
+        content = rules.Content.Source;
+        this.rules = rules;
+        this.referenceChecks = referenceChecks;
         this.grids = grids;
     }
 
-    public IReadOnlyList<string> Issues(JsonObject level) => new Inspection(content, features, grids, level).Run();
+    public IReadOnlyList<string> Issues(JsonObject level) => new Inspection(content, rules, referenceChecks, grids, level).Run();
 
     private sealed class Inspection
     {
         private readonly StateContent content;
-        private readonly BattleSaveFeatures features;
+        private readonly RuleReferenceRules rules;
+        private readonly BattleReferenceCheckRegistry referenceChecks;
         private readonly JsonObject level;
         private readonly JsonObject? map;
         private readonly ITacticalGrid? grid;
@@ -36,10 +40,11 @@ public sealed class BattleLevelValidator
         private readonly Dictionary<string, HashSet<string>> declarations = new(StringComparer.Ordinal);
         private readonly Dictionary<double, HashSet<string>> objectives = new();
 
-        internal Inspection(StateContent content, BattleSaveFeatures features, GridRegistry grids, JsonObject level)
+        internal Inspection(StateContent content, RuleReferenceRules rules, BattleReferenceCheckRegistry referenceChecks, GridRegistry grids, JsonObject level)
         {
             this.content = content;
-            this.features = features;
+            this.rules = rules;
+            this.referenceChecks = referenceChecks;
             this.level = level;
             var gridId = level["rules"]?["grid"] is { } namedGrid ? S(namedGrid) : "square4";
             grid = grids.TryGet(gridId);
@@ -355,7 +360,7 @@ public sealed class BattleLevelValidator
             }
         }
 
-        private void CheckReferences(string by, RulePayloadReferences cited)
+        private void CheckReferences(string by, PayloadReferences cited)
         {
             void Unknown(string subject, string name) => Error($"{by} 引用了未知{subject} {name}");
             foreach (var id in cited.Zones) if (!Has("zones", id)) Unknown("区域", id);
@@ -387,8 +392,8 @@ public sealed class BattleLevelValidator
         private void CheckObjective(JsonObject objective)
         {
             var named = S(objective["id"] ?? objective["type"]);
-            if (features.Has("objectives", S(objective, "type")))
-                CheckReferences($"目标 {named}", RulePayloadReferences.ForObjective(objective));
+            if (rules.Objectives.Has(S(objective, "type")))
+                CheckReferences($"目标 {named}", rules.Objectives.References(objective));
             var children = RulePayloadReferences.DeclaredObjectiveChildren(objective).ToArray();
             if (objective["objectives"] is JsonArray && children.Length == 0) Error($"组合目标 {named} 不能为空");
             foreach (var child in children) CheckObjective(child);
@@ -401,8 +406,8 @@ public sealed class BattleLevelValidator
                 var by = $"触发器 {S(trigger, "id")}";
                 CheckCondition(by, O(trigger["condition"]));
                 foreach (var effect in Objects(trigger["effects"]))
-                    if (features.Has("scenarioEffects", S(effect, "type")))
-                        CheckReferences($"{by} 的效果 {S(effect, "type")}", RulePayloadReferences.ForEffect(effect));
+                    if (rules.ScenarioEffects.Has(S(effect, "type")))
+                        CheckReferences($"{by} 的效果 {S(effect, "type")}", rules.ScenarioEffects.References(effect));
                 foreach (var fault in RulePayloadReferences.ScheduleFaults(trigger)) Error($"{by} 的{fault}");
             }
         }
@@ -410,9 +415,9 @@ public sealed class BattleLevelValidator
         private void CheckCondition(string by, JsonObject condition)
         {
             var type = S(condition, "type");
-            if (!features.Has("scenarioConditions", type)) return;
-            CheckReferences($"{by} 的条件 {type}", RulePayloadReferences.ForCondition(condition));
-            foreach (var child in RulePayloadReferences.ConditionChildren(condition)) CheckCondition(by, child);
+            if (!rules.ScenarioConditions.Has(type)) return;
+            CheckReferences($"{by} 的条件 {type}", rules.ScenarioConditions.References(condition));
+            foreach (var child in rules.ScenarioConditions.Children(condition)) CheckCondition(by, child);
         }
 
         private void CheckTileOwners()
@@ -437,40 +442,9 @@ public sealed class BattleLevelValidator
             }
         }
 
-        private void Missing(string family, string subject, string by, string name)
-        {
-            if (!features.Has(family, name)) Error($"{by} 引用了未注册的{subject}「{name}」");
-        }
-
         private void CheckRuleReferences()
         {
-            foreach (var unit in Entries("units"))
-                foreach (var name in Values(unit["learnedAbilities"]).Select(S)) Missing("abilities", "能力", $"单位 {S(unit["key"] ?? unit["unit"])}", name);
-            foreach (var unit in Entries("units"))
-                if (OptionalText(unit["reaction"]) is { Length: > 0 } reaction) Missing("reactions", "反应姿态", $"单位 {S(unit["key"] ?? unit["unit"])}", reaction);
-            foreach (var unit in Entries("units"))
-                if (unit["directive"] is JsonObject directive) Missing("directives", "常驻命令", $"单位 {S(unit["key"] ?? unit["unit"])}", S(directive, "mode"));
-            foreach (var trigger in ScenarioEntries("triggers"))
-                foreach (var effect in Objects(trigger["effects"]))
-                    if (features.Has("scenarioEffects", S(effect, "type")))
-                        foreach (var name in RulePayloadReferences.ForEffect(effect).Directives)
-                            Missing("directives", "常驻命令", $"触发器 {S(trigger, "id")}", name);
-            if (OptionalText(level["rules"]?["turnOrder"]) is { Length: > 0 } turnOrder) Missing("turnOrders", "行动顺序策略", "关卡规则", turnOrder);
-            if (OptionalText(level["rules"]?["grid"]) is { Length: > 0 } namedGrid) Missing("grids", "棋盘几何", "关卡规则", namedGrid);
-            void ObjectiveTree(JsonObject objective)
-            {
-                var type = S(objective, "type"); Missing("objectives", "目标类型", "作战目标", type);
-                if (features.Has("objectives", type)) foreach (var child in RulePayloadReferences.ObjectiveChildren(objective)) ObjectiveTree(child);
-            }
-            foreach (var player in Entries("players")) foreach (var objective in ObjectivesOf(level, player)) ObjectiveTree(objective);
-            void ConditionTree(JsonObject condition)
-            {
-                var type = S(condition, "type"); Missing("scenarioConditions", "场景条件", "触发条件", type);
-                if (features.Has("scenarioConditions", type)) foreach (var child in RulePayloadReferences.ConditionChildren(condition)) ConditionTree(child);
-            }
-            foreach (var trigger in ScenarioEntries("triggers")) ConditionTree(O(trigger["condition"]));
-            foreach (var trigger in ScenarioEntries("triggers")) foreach (var effect in Objects(trigger["effects"]))
-                Missing("scenarioEffects", "场景效果", $"触发器 {S(trigger, "id")}", S(effect, "type"));
+            foreach (var issue in referenceChecks.LevelIssues(rules, level)) Error(issue);
         }
     }
 }

@@ -94,23 +94,7 @@ public sealed class MovementRules
     {
         var board = Board(state);
         if (!board.Contains(to)) return null;
-        var target = board.IndexOf(to);
-        if (!field.Tiles.ContainsKey(target)) return null;
-        var path = new List<Coord>();
-        var current = target;
-        var guard = field.Tiles.Count + 2;
-        for (var count = 0; count <= guard; count++)
-        {
-            if (!field.Tiles.TryGetValue(current, out var node)) return null;
-            path.Add(new(node.X, node.Y));
-            if (node.From == -1)
-            {
-                path.Reverse();
-                return path;
-            }
-            current = node.From;
-        }
-        return null;
+        return field.TracePath(board.IndexOf(to));
     }
 
     public int? MoveCostOf(MoveField field, JsonObject state, Coord to)

@@ -1,6 +1,8 @@
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core.Persistence;
+using Empire.Core.Engine;
+using Empire.Core.References;
 using Empire.Core.State;
 using static Empire.Core.State.StateJson;
 
@@ -11,12 +13,14 @@ public sealed class BattleContentValidator
 {
     private readonly JsonArray packs;
     private readonly StateContent content;
-    private readonly BattleSaveFeatures features;
-    public BattleContentValidator(JsonArray packs, BattleSaveFeatures features)
+    private readonly RuleReferenceRules rules;
+    private readonly BattleReferenceCheckRegistry referenceChecks;
+    public BattleContentValidator(JsonArray packs, RuleReferenceRules rules, BattleReferenceCheckRegistry referenceChecks)
     {
         this.packs = (JsonArray)packs.DeepClone();
-        content = new StateContent(this.packs);
-        this.features = features.Snapshot();
+        content = rules.Content.Source;
+        this.rules = rules;
+        this.referenceChecks = referenceChecks;
     }
     private static double N(JsonNode? raw) => raw is not null && raw.GetValueKind() == JsonValueKind.Number &&
         double.TryParse(raw.ToJsonString(), System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var value)
@@ -143,37 +147,8 @@ public sealed class BattleContentValidator
                 if (!matchups.Contains(damage + "\0" + armor)) throw new DomainInvariantException($"missing damage matchup: \"{damage}\" -> \"{armor}\"");
         }
         var issues = CapabilityIssues();
-        if (issues.Count > 0) throw new DomainInvariantException("invalid battle engine configuration:\n" + string.Join("\n", issues.Select(issue => "- " + issue)));
+        if (issues.Count > 0) throw new BattleEngineConfigurationException(issues);
     }
 
-    public IReadOnlyList<string> CapabilityIssues()
-    {
-        var issues = new List<string>();
-        void Reference(string family, string subject, string id, string owner)
-        { if (!features.Has(family, id)) issues.Add($"{owner} 引用了未注册的{subject}「{id}」"); }
-        foreach (var unit in content.All("units")) foreach (var ability in Array(unit["abilities"], "abilities"))
-            Reference("abilities", "能力", Text(ability, "ability"), $"兵种 {Text(unit, "id")}");
-        foreach (var career in content.All("careers")) foreach (var ability in Array(career["masteryAbilities"], "masteryAbilities"))
-            Reference("abilities", "能力", Text(ability, "ability"), $"职业 {Text(career, "id")}");
-        foreach (var weapon in content.All("weapons")) foreach (var effect in Objects(weapon["hitEffects"], "hit effects"))
-            Reference("hitEffects", "命中效果", Text(effect, "type"), $"武器 {Text(weapon, "id")}");
-        foreach (var weapon in content.All("weapons")) Reference("areaShapes", "爆炸形状", Text(weapon, "area"), $"武器 {Text(weapon, "id")}");
-        foreach (var unit in content.All("units")) Reference("reactions", "反应姿态", Text(unit, "defaultReaction"), $"兵种 {Text(unit, "id")}");
-        // Additional native admission guards: resource/tactic adapters cannot be
-        // inferred from a pack manifest or from currently materialized units.
-        void ResourceAccounts(JsonNode? raw, string owner)
-        { foreach (var account in Object(raw, "accounts")) Reference("resources", "资源", account.Key, owner); }
-        void Transactions(JsonNode? raw, string owner)
-        { foreach (var amount in Objects(raw, "transactions")) Reference("resources", "资源", Text(amount, "resource"), owner); }
-        foreach (var unit in content.All("units")) { var owner = $"兵种 {Text(unit, "id")}"; ResourceAccounts(unit["resources"], owner); Transactions(unit["recruitCosts"], owner); }
-        foreach (var weapon in content.All("weapons")) { var owner = $"武器 {Text(weapon, "id")}"; ResourceAccounts(weapon["resources"], owner); Transactions(weapon["resourceCosts"], owner); Transactions(weapon["resourceRequirements"], owner); }
-        foreach (var terrain in content.All("terrains")) Transactions(terrain["ownerTurnGrants"], $"地形 {Text(terrain, "id")}");
-        foreach (var career in content.All("careers")) Transactions(career["costs"], $"职业 {Text(career, "id")}");
-        foreach (var tactic in content.All("tactics"))
-        {
-            var owner = $"战术 {Text(tactic, "id")}"; Transactions(tactic["costs"], owner);
-            foreach (var effect in Objects(tactic["effects"], "effects")) Reference("tacticEffects", "战术效果", Text(effect, "type"), owner);
-        }
-        return issues.Distinct(StringComparer.Ordinal).ToArray();
-    }
+    public IReadOnlyList<string> CapabilityIssues() => referenceChecks.ContentIssues(rules);
 }

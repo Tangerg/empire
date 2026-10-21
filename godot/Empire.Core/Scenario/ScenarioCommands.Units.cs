@@ -7,13 +7,13 @@ using static Empire.Core.State.StateJson;
 
 namespace Empire.Core.Scenario;
 
-public sealed partial class ScenarioExtensions
+public sealed partial class ScenarioCommands
 {
     private Coord? OpenCell(JsonObject state, TacticalBattlefield battlefield, string zone, string movementClass) =>
-        Lifecycle.ScenarioSystem.Zone(state, zone).Select(TacticalQueries.Position).OrderBy(at => at.Y).ThenBy(at => at.X)
+        ScenarioSelection.Zone(state, zone).Select(TacticalQueries.Position).OrderBy(at => at.Y).ThenBy(at => at.X)
             .Cast<Coord?>().FirstOrDefault(at => battlefield.Cell(at!.Value).CanReceive(movementClass));
 
-    private void TeleportSelected(JsonObject state, JsonObject effect, Action<JsonObject> emit)
+    public void TeleportSelected(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
         var battlefield = new TacticalBattlefield(state, content);
         foreach (var unit in Select(state, effect))
@@ -26,16 +26,23 @@ public sealed partial class ScenarioExtensions
             // patrol cursor and intermediate cliffs deliberately remain untouched.
             Array(battlefield.Map["captureProgress"], "captureProgress")[battlefield.IndexOf(from)] = 0;
             unit["x"] = at.X; unit["y"] = at.Y; unit["capture"] = 0;
-            emit(new JsonObject { ["type"] = "forcedMove", ["unit"] = unit["id"]!.DeepClone(), ["mode"] = "teleport",
-                ["from"] = TacticalQueries.CoordinateJson(from), ["to"] = TacticalQueries.CoordinateJson(at),
-                ["path"] = TacticalQueries.PathJson(new[] { from, at }), ["collided"] = false });
+            emit(new JsonObject
+            {
+                ["type"] = "forcedMove",
+                ["unit"] = unit["id"]!.DeepClone(),
+                ["mode"] = "teleport",
+                ["from"] = TacticalQueries.CoordinateJson(from),
+                ["to"] = TacticalQueries.CoordinateJson(at),
+                ["path"] = TacticalQueries.PathJson(new[] { from, at }),
+                ["collided"] = false
+            });
         }
     }
 
-    private void ReviveMarkers(JsonObject state, JsonObject effect, Action<JsonObject> emit)
+    public void ReviveMarkers(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
         var ratio = Math.Max(0.01, Math.Min(1, Number(effect, "hpPercent", 0.5)));
-        foreach (var marker in selection.SelectMarkers(state, Object(effect["selector"], "selector")))
+        foreach (var marker in ScenarioSelection.SelectMarkers(state, Object(effect["selector"], "selector")))
         {
             if (marker["fallenUnit"] is not JsonObject fallen) continue;
             var hp = Math.Max(1, Round(Number(content.Get("units", Text(fallen, "type"))["maxHp"], "maxHp") * ratio));
@@ -44,10 +51,10 @@ public sealed partial class ScenarioExtensions
         }
     }
 
-    private void RestoreWithdrawn(JsonObject state, JsonObject effect, Action<JsonObject> emit)
+    public void RestoreWithdrawn(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
         var battlefield = new TacticalBattlefield(state, content);
-        foreach (var marker in selection.SelectMarkers(state, Object(effect["selector"], "selector")))
+        foreach (var marker in ScenarioSelection.SelectMarkers(state, Object(effect["selector"], "selector")))
         {
             if (marker["fallenUnit"] is not JsonObject fallen) continue;
             var destination = OpenCell(state, battlefield, Text(effect, "zone"), Text(content.Get("units", Text(fallen, "type")), "movementClass"));
@@ -65,8 +72,14 @@ public sealed partial class ScenarioExtensions
             ?? throw new DomainInvariantException($"unknown objective \"{id}\" for player {owner}");
         if (status is not null) objective["status"] = status;
         if (hidden is not null) objective["hidden"] = hidden.Value;
-        emit(new JsonObject { ["type"] = "objectiveChanged", ["player"] = owner, ["objective"] = id,
-            ["status"] = objective["status"]!.DeepClone(), ["hidden"] = objective["hidden"]!.DeepClone() });
+        emit(new JsonObject
+        {
+            ["type"] = "objectiveChanged",
+            ["player"] = owner,
+            ["objective"] = id,
+            ["status"] = objective["status"]!.DeepClone(),
+            ["hidden"] = objective["hidden"]!.DeepClone()
+        });
     }
 
     private void ChangeResource(JsonObject unit, string resource, double requested, Action<JsonObject> emit)

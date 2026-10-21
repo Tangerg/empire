@@ -8,4 +8,6 @@ public sealed class GridRegistry : KeyedRegistry<ITacticalGrid, GridRegistry>
     public GridRegistry() : base("tactical grid") { }
     protected override string KeyOf(ITacticalGrid entry) => entry.Id;
     public GridRegistry Clone() => CopyInto(new GridRegistry());
+    public static GridRegistry Core() => new GridRegistry()
+        .Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid());
 }

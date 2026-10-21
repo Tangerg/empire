@@ -1,0 +1,57 @@
+{
+  "codeTree": "f4d491c2980e3edb164885cc05679f570b7289e1",
+  "nativeAggregate": {
+    "command": "bash tools/godot/verify-native.sh",
+    "exitCode": 0,
+    "nodeRuntime": "blocked by failing PATH shim",
+    "processTimeoutSeconds": 300,
+    "overallTimeoutSeconds": 1500,
+    "logSha256": "a6f08ccf8bbd1c374bf16f1ce8e8454ac27cde4ebe87a91b119822120ba97a00",
+    "expectedAutosaveObstructionWarnings": 4
+  },
+  "rootMutationControls": {
+    "codeTree": "eeea0e3c091d77b21e0de86636e748bc44771d42",
+    "compiledMutantsKilled": 42,
+    "exitCode": 0,
+    "sourceMutationControls": "Previously verified separately; not rerun in frozen mode"
+  },
+  "auditCleanup": {
+    "focusedTacticsChecks": 162,
+    "exitCode": 0,
+    "removed": [
+      "TacticalCommands.ExecuteWait",
+      "BattleCombat.SupportedHitEffects"
+    ]
+  },
+  "pending": [
+    "Linux release resource/application smoke",
+    "Renewed manual GUI acceptance",
+    "Full victorious campaign route",
+    "Nine absent authored scenery documents",
+    "GitHub publication"
+  ],
+  "independentBattles": {
+    "exitCode": 0,
+    "count": 16,
+    "actions": 2983,
+    "perLevel": {
+      "c01-14": 220,
+      "c01-09": 105,
+      "c01-11": 262,
+      "c01-02": 217,
+      "c01-04": 93,
+      "c01-01": 126,
+      "c01-10": 186,
+      "c01-12": 118,
+      "c01-03": 288,
+      "c01-08": 167,
+      "c01-16": 344,
+      "c01-15": 252,
+      "c01-13": 198,
+      "c01-07": 118,
+      "c01-05": 161,
+      "c01-06": 128
+    },
+    "comparison": "Independently selected actions, ordered events and intermediate state digest"
+  }
+}

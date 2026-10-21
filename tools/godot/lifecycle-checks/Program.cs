@@ -1,11 +1,16 @@
 using System.Text.Json.Nodes;
 using System.IO.Compression;
 using Empire.Core.Lifecycle;
+using Empire.Core.Engine;
+using Empire.Core.Statuses;
 using Empire.Core.Determinism;
 var root = args.Length > 0 ? Path.GetFullPath(args[0]) : Path.GetFullPath("godot");
 var fixture = args.Length > 1 ? args[1] : "/tmp/empire-lifecycle-oracle.json";
 var diagnostics = Path.GetDirectoryName(Path.GetFullPath(fixture))!;
 var packs = JsonNode.Parse(File.ReadAllText(root + "/data/content-packs.json"))!.AsArray();
+var engine = new GrayFlagEngine(packs);
+var lifecycleRules = new BattleLifecycleRules(engine.Catalog, engine.Turns, engine.Scenarios, engine.Victory, engine.Combat, engine.Resources,
+    new StatusLifecycle(engine.Catalog, new StatusBehaviorRegistry().Seal(), engine.Combat));
 var casePath = root + "/tests/oracle/action-cases.json";
 JsonArray cases;
 if (File.Exists(casePath)) cases = JsonNode.Parse(File.ReadAllText(casePath))!.AsArray();
@@ -17,7 +22,7 @@ foreach (var item in cases)
     var state = (JsonObject)item["before"]!.DeepClone();
     var events = new JsonArray();
     void Emit(JsonObject e) { events.Add(e); var counts=state["scenario"]!["eventCounts"]!.AsObject(); var type=e["type"]!.GetValue<string>(); counts[type]=(counts[type]?.GetValue<int>() ?? 0)+1; }
-    var lifecycle = new BattleLifecycle(state, packs, Emit);
+    var lifecycle = new BattleLifecycle(lifecycleRules, state, Emit);
     lifecycle.AdvanceTurn(); lifecycle.AfterAction();
     if (StateDigest.Hash(state) != StateDigest.Hash(item["after"]!))
     {
@@ -34,7 +39,7 @@ foreach(var item in focused)
 {
     var state=(JsonObject)item!["before"]!.DeepClone();var events=new JsonArray();
     void Emit(JsonObject e) { events.Add(e);var counts=state["scenario"]!["eventCounts"]!.AsObject();var type=e["type"]!.GetValue<string>();counts[type]=(counts[type]?.GetValue<int>()??0)+1; }
-    var life=new BattleLifecycle(state,packs,Emit);
+    var life=new BattleLifecycle(lifecycleRules,state,Emit);
     switch(item["operation"]!.GetValue<string>()){case "start":life.Start();break;case "advanceTurn":life.AdvanceTurn();break;case "afterAction":life.AfterAction();break;case "beginPlaying":life.BeginPlaying();break;}
     if(StateDigest.Hash(state)!=StateDigest.Hash(item["after"]!) || StateDigest.Hash(events)!=StateDigest.Hash(item["events"]!))
     { File.WriteAllText(Path.Combine(diagnostics, "actual.json"),state.ToJsonString());File.WriteAllText(Path.Combine(diagnostics, "expected.json"),item["after"]!.ToJsonString()); throw new Exception($"Focused mismatch {item["name"]}: events {events} / {item["events"]}"); }

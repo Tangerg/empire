@@ -2,6 +2,10 @@
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 source tools/godot/env.sh
+# Bound each native process; a stalled process is a failed gate, never a PASS.
+export EMPIRE_CHECK_TIMEOUT_SECONDS="${EMPIRE_CHECK_TIMEOUT_SECONDS:-300}"
+dotnet() { command timeout --signal=TERM --kill-after=15s "$EMPIRE_CHECK_TIMEOUT_SECONDS" "$DOTNET_ROOT/dotnet" "$@"; }
+export -f dotnet
 # No installation, publication or user-save mutation. Native checks use fixture sessions.
 dotnet build godot/Empire.csproj
 dotnet run --project godot/Empire.Core.Tests -- godot/tests/oracle
@@ -13,17 +17,27 @@ bash tools/godot/ability-extension-checks/run.sh --frozen
 bash tools/godot/spatial-extension-checks/run.sh
 bash tools/godot/casting-declaration-checks/run.sh --frozen
 bash tools/godot/action-extension-checks/run.sh --frozen
+bash tools/godot/engine-composition-checks/run.sh --frozen
+bash tools/godot/ai-planning-checks/run.sh --frozen
+bash tools/godot/combat-policy-checks/run.sh --frozen
+bash tools/godot/departure-rank-checks/run.sh --frozen
+bash tools/godot/turn-reaction-extension-checks/run.sh
+bash tools/godot/status-extension-checks/run.sh --frozen
+bash tools/godot/scenario-extension-checks/run.sh --frozen
+bash tools/godot/persistence-reference-checks/run.sh --frozen
+bash tools/godot/level-validation-checks/run.sh --frozen
+bash tools/godot/reaction-adapter-checks/run.sh
 dotnet run --project tools/godot/application-checks -- .
 dotnet run --project tools/godot/persistence-checks/Empire.Persistence.Checks.csproj -- .
-"$GODOT_NET" --headless --editor --path godot --import
+timeout --signal=TERM --kill-after=15s "$EMPIRE_CHECK_TIMEOUT_SECONDS" "$GODOT_NET" --headless --editor --path godot --import
 # Each save-mutating scene owns a fresh temporary namespace. A PASS line before
 # native shutdown is not sufficient: check the exit code and teardown diagnostics.
 run_scene() {
   local scene="$1" data log status=0
   shift
-  data="$(mktemp -d /tmp/empire-native-check-data.XXXXXX)"
+  data="$(mktemp -d "${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX")"
   log="$data/native.log"
-  XDG_DATA_HOME="$data" "$GODOT_NET" --headless --path godot "res://Scenes/$scene.tscn" "$@" > "$log" 2>&1 || status=$?
+  XDG_DATA_HOME="$data" timeout --signal=TERM --kill-after=15s "$EMPIRE_CHECK_TIMEOUT_SECONDS" "$GODOT_NET" --headless --path godot "res://Scenes/$scene.tscn" "$@" > "$log" 2>&1 || status=$?
   cat "$log"
   if [[ "$status" != 0 ]] || grep -Eiq '(^ERROR:|leaked|segmentation fault|unhandled exception)' "$log"; then
     printf 'Native process/teardown gate failed: %s (exit %s); %s\n' "$scene" "$status" "$log" >&2
@@ -38,7 +52,7 @@ DOTNET_EnableHWIntrinsic=0 run_scene LightingPerformanceChecks
 run_scene SceneryChecks -- --scenery-oracle=res://tests/oracle/board-scenery.json.gz
 run_scene ConnectorDecorationChecks -- --connectors="$PWD/godot/tests/oracle/board-connectors.json.gz"
 run_scene LightingChecks -- --lighting-oracle="$PWD/godot/tests/oracle/lighting.json"
-ORACLE_DATA="$(mktemp -d /tmp/empire-native-oracles.XXXXXX)"
+ORACLE_DATA="$(mktemp -d "${TMPDIR:-/tmp}/empire-native-oracles.XXXXXX")"
 for fixture in narrative campaign-menu staging session-contracts tactical-queries tactical-selection tactical-adapter tactical-hud ai-pacing; do
   gzip -dc "godot/tests/oracle/$fixture.json.gz" > "$ORACLE_DATA/$fixture.json"
 done

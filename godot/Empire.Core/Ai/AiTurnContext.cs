@@ -1,5 +1,4 @@
 using System.Text.Json.Nodes;
-using Empire.Core.Engine;
 using Empire.Core.Geometry;
 using Empire.Core.State;
 using Empire.Core.Tactics;
@@ -10,13 +9,13 @@ namespace Empire.Core.Ai;
 
 public sealed class AiTurnContext
 {
-    public GrayFlagEngine Engine { get; }
+    public AiRules Rules { get; }
     public JsonObject State { get; }
     public int Player { get; }
     public double Aggression { get; }
     public AbilityAiEvaluatorRegistry AbilityEvaluators { get; }
     public AiObjectiveAdvisorRegistry ObjectiveAdvisors { get; }
-    internal StateContent Content => Engine.Content;
+    internal StateContent Content => Rules.Content.Source;
     private AiAgenda? agenda;
     private Dictionary<int, double>? threat;
     private TacticalBattlefield? battlefield;
@@ -24,12 +23,11 @@ public sealed class AiTurnContext
     public AiAgenda Agenda => agenda ??= AiAgenda.Read(this);
     public IReadOnlyDictionary<int, double> Threat => threat ??= AiMeasures.ThreatMap(this);
     public TacticalBattlefield Battlefield => battlefield ??= new TacticalBattlefield(State, Content);
-    public TacticalBoard Board => board ??= new TacticalBoard(Object(State["map"], "map"), Engine.Grids.Get(Text(State["rules"]!["grid"], "grid")));
+    public TacticalBoard Board => board ??= new TacticalBoard(Object(State["map"], "map"), Rules.Grids.Get(Text(State["rules"]!["grid"], "grid")));
 
-    public AiTurnContext(GrayFlagEngine engine, JsonObject state, int player, double aggression,
-        AbilityAiEvaluatorRegistry abilities, AiObjectiveAdvisorRegistry objectives)
-    { Engine = engine; State = state; Player = player; Aggression = aggression; AbilityEvaluators = abilities; ObjectiveAdvisors = objectives; }
-    public IReadOnlyList<JsonObject> Actors() => Engine.Turns.Actors(State).Where(unit => !IsTrue(unit["done"])).ToArray();
+    public AiTurnContext(AiPlanningDependencies planning, JsonObject state, int player, double aggression)
+    { Rules = planning.Rules; State = state; Player = player; Aggression = aggression; AbilityEvaluators = planning.AbilityEvaluators; ObjectiveAdvisors = planning.ObjectiveAdvisors; }
+    public IReadOnlyList<JsonObject> Actors() => Rules.Turns.Actors(State).Where(unit => !IsTrue(unit["done"])).ToArray();
     public int Distance(Coord left, Coord right) => Board.Grid.Distance(left, right);
     public double NearestDistance(Coord from, IEnumerable<Coord> places)
     { var best = double.PositiveInfinity; foreach (var place in places) best = Math.Min(best, Distance(from, place)); return best; }
@@ -60,13 +58,13 @@ internal static class AiMeasures
         foreach (var foe in context.Enemies(context.Player))
         {
             var weight = MaximumWeaponPower(context.Content, Text(foe, "type")) * (0.5 + 0.5 * HpRatio(context.Content, foe));
-            foreach (var tile in context.Engine.Space.ThreatTiles(context.State, foe)) threat[tile] = threat.GetValueOrDefault(tile) + weight;
+            foreach (var tile in context.Rules.Space.ThreatTiles(context.State, foe)) threat[tile] = threat.GetValueOrDefault(tile) + weight;
         }
         foreach (var cast in Objects(context.State["pendingCasts"], "pendingCasts"))
         {
             if (Integer(cast, "owner") == context.Player || UnitById(context.State, Integer(cast, "caster")) is null) continue;
             var weapon = context.Content.Get("weapons", Text(cast, "weapon"));
-            foreach (var cell in context.Engine.Combat.Coverage(context.State, Position(Object(cast["origin"], "origin")), Position(Object(cast["target"], "target")), Text(weapon, "area")))
+            foreach (var cell in context.Rules.Combat.Coverage(context.State, Position(Object(cast["origin"], "origin")), Position(Object(cast["target"], "target")), Text(weapon, "area")))
             {
                 var tile = context.Board.IndexOf(cell);
                 threat[tile] = threat.GetValueOrDefault(tile) + Number(weapon["power"], "power") * 1.5;

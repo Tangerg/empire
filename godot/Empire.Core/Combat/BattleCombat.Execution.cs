@@ -8,9 +8,6 @@ namespace Empire.Core.Combat;
 
 public sealed partial class BattleCombat
 {
-    public static IReadOnlyList<string> SupportedHitEffects { get; } =
-        Array.AsReadOnly(new[] { "addStatus", "removeStatus", "forcedMove" });
-
     private void ChangeMomentum(JsonObject unit, double requested, Action<JsonObject> emit)
     {
         var subject = new BattleResources.Subject("unit", unit);
@@ -144,18 +141,8 @@ public sealed partial class BattleCombat
         }
     }
     public void ApplyHitEffects(JsonObject state, JsonObject attacker, JsonObject target,
-        IReadOnlyList<JsonObject> effects, Action<JsonObject> emit)
-    {
-        foreach (var effect in effects)
-            switch (StateJson.Text(effect, "type"))
-            {
-                case "addStatus": Effects.AddStatus(target, StateJson.Text(effect, "status"), StateJson.Integer(effect, "duration"), StateJson.Integer(attacker, "id"), emit); break;
-                case "removeStatus": Effects.RemoveStatus(target, StateJson.Text(effect, "status"), emit); break;
-                case "forcedMove": ForceMove(state, StateJson.Integer(target, "id"), TacticalQueries.Position(attacker),
-                    StateJson.Text(effect, "mode"), StateJson.Number(effect, "distance", 0), StateJson.Number(effect, "collisionDamage", 0), emit); break;
-                default: throw new DomainInvariantException($"unknown weapon hit effect \"{StateJson.Text(effect, "type")}\"");
-            }
-    }
+        IReadOnlyList<JsonObject> effects, Action<JsonObject> emit) =>
+        HitEffects.Apply(hitEffectRules, state, attacker, target, effects, emit);
     public ForcedMovementResult ForceMove(JsonObject state, int unitId, Coord source, string mode,
         double distance, double collisionDamage, Action<JsonObject> emit)
     {

@@ -1,3 +1,5 @@
+using Empire.Core.State;
+using Empire.Core.Lifecycle;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core.Engine;
@@ -16,7 +18,7 @@ var catalogs = input["catalogs"]!.AsArray();
 // composition correctly rejects it; keep this test at the same raw boundary.
 var engines = catalogs.Select((packs, index) => index == 2 ? null : new GrayFlagEngine(packs!.AsArray())).ToArray();
 var rawProgression = new BattleProgression(catalogs[2]!.AsArray(), engines[0]!.Grids,
-    engines[0]!.Resources, engines[0]!.Commands, new CombatEffects(catalogs[2]!.AsArray()));
+    engines[0]!.Resources, engines[0]!.Commands, new CombatEffects(new ReadOnlyContent(catalogs[2]!.AsArray()), new ThresholdRankProgressionPolicy()));
 var count = 0;
 var kinds = new Dictionary<string, int>();
 foreach (var entry in input["cases"]!.AsArray())

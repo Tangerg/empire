@@ -166,7 +166,7 @@ public sealed partial class GrayFlagSession : IBattleSession
                 foreach (var spot in passenger.Spots)
                     choices.Add(Choice($"卸载单位 {passenger.Unit["id"]}", "command", spot,
                         new JsonObject { ["kind"]="disembark", ["carrier"]=selectedUnitId, ["unit"]=passenger.Unit["id"]!.DeepClone(), ["at"]=TacticalQueries.CoordinateJson(spot) }));
-            foreach (var stance in Empire.Core.Combat.CombatForecasts.DefaultReactions())
+            foreach (var stance in engine.Combat.Forecasts.Reactions.All())
                 choices.Add(Choice($"反应：{stance.Name}", "command", null,
                     new JsonObject { ["kind"] = "reaction", ["unit"] = selectedUnitId, ["stance"] = stance.Id }));
         }

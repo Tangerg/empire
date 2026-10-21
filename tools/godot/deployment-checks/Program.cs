@@ -5,6 +5,7 @@ using Empire.Core.Engine;
 using Empire.Core.Geometry;
 using Empire.Core.Lifecycle;
 using Empire.Core.State;
+using Empire.Core.Statuses;
 using Empire.Core.Tactics;
 using Empire.Core.Transactions;
 
@@ -71,7 +72,8 @@ Battle Isolated(JsonObject initial)
             counts[type] = (counts[type]?.GetValue<int>() ?? 0) + 1;
             output(value);
         }
-        var lifecycle = new BattleLifecycle(state, packs, Emit, engine.Combat, engine.Resources, engine.Scenarios);
+        var lifecycle = new BattleLifecycle(new(engine.Catalog, engine.Turns, engine.Scenarios, engine.Victory, engine.Combat, engine.Resources,
+            new StatusLifecycle(engine.Catalog, new StatusBehaviorRegistry().Seal(), engine.Combat)), state, Emit);
         if (kind == "deployUnit") engine.Deployment.Deploy(state, action["unit"]!.GetValue<int>(), Position(action["at"]!), Emit);
         else if (kind == "finishDeployment") engine.Deployment.Confirm(state, lifecycle.BeginPlaying, Emit);
         else throw new Exception("Non-deployment action unexpectedly passed phase gate");

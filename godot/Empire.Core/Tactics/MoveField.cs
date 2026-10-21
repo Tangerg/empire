@@ -26,4 +26,24 @@ public sealed class MoveField
         Tiles = tiles;
         Stops = stops ?? tiles.Values.Where(tile => tile.Free).Select(tile => tile.Index).ToHashSet();
     }
+
+    public IReadOnlyList<Coord>? TracePath(int target)
+    {
+        if (!Tiles.ContainsKey(target)) return null;
+        var path = new List<Coord>();
+        var current = target;
+        var guard = Tiles.Count + 2;
+        for (var count = 0; count <= guard; count++)
+        {
+            if (!Tiles.TryGetValue(current, out var node)) return null;
+            path.Add(new(node.X, node.Y));
+            if (node.From == -1)
+            {
+                path.Reverse();
+                return path;
+            }
+            current = node.From;
+        }
+        return null;
+    }
 }

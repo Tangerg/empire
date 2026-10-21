@@ -6,6 +6,8 @@ namespace Empire.Core.Persistence;
 
 public static class RulesetManifest
 {
+    public static string AnonymousOverrideId(string capability) => $"engine.override.{capability}";
+    private static readonly string AnonymousPrefix = AnonymousOverrideId("");
     public static JsonObject Create(JsonArray packs, IReadOnlyDictionary<string, int> plugins)
         => Create(packs, plugins.ToDictionary(pair => pair.Key, pair => (double)pair.Value, StringComparer.Ordinal));
 
@@ -32,7 +34,7 @@ public static class RulesetManifest
         var plugins = StateJson.Object(manifest["plugins"], "plugins");
         if (packs.Count == 0) throw new DomainInvariantException(
             "ruleset has no versioned content pack; install authored content through ContentPackInstaller before persisting");
-        var anonymous = plugins.Select(pair => pair.Key).FirstOrDefault(id => id.StartsWith("engine.override.", StringComparison.Ordinal));
+        var anonymous = plugins.Select(pair => pair.Key).FirstOrDefault(id => id.StartsWith(AnonymousPrefix, StringComparison.Ordinal));
         if (anonymous is not null) throw new DomainInvariantException(
             $"ruleset contains unversioned override \"{anonymous}\"; persist it through a named, versioned plugin");
     }

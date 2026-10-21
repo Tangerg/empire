@@ -1,6 +1,8 @@
 using System.Text.Json.Nodes;
 using Empire.Core.Geometry;
+using Empire.Core.Engine;
 using Empire.Core.Persistence;
+using Empire.Core.References;
 
 namespace Empire.Core.Validation;
 
@@ -9,20 +11,16 @@ public sealed class BattleDefinitionValidator
 {
     private readonly BattleContentValidator content;
     private readonly BattleLevelValidator levels;
-    private readonly BattleLevelCapabilities capabilities;
-    public BattleDefinitionValidator(JsonArray packs, BattleSaveFeatures features, GridRegistry grids)
+    public BattleDefinitionValidator(JsonArray packs, RuleReferenceRules rules, BattleReferenceCheckRegistry referenceChecks, GridRegistry grids)
     {
-        content = new BattleContentValidator(packs, features);
-        levels = new BattleLevelValidator(packs, features, grids);
-        capabilities = new BattleLevelCapabilities(features);
+        content = new BattleContentValidator(packs, rules, referenceChecks);
+        levels = new BattleLevelValidator(rules, referenceChecks, grids);
     }
     public void ValidateContent() => content.Validate();
     public void ValidateLevel(JsonObject level)
     {
         var issues = levels.Issues(level);
-        if (issues.Count == 0) issues = capabilities.Issues(level);
         if (issues.Count > 0)
-            throw new StoredDocumentException($"invalid battle level \"{level["id"]?.GetValue<string>()}\":\n" +
-                string.Join("\n", issues.Select(issue => "- " + issue)));
+            throw new BattleLevelException(level["id"]?.GetValue<string>() ?? "", issues);
     }
 }

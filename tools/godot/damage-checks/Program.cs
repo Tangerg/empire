@@ -1,3 +1,5 @@
+using Empire.Core.Progression;
+using Empire.Core.Lifecycle;
 using System.Text.Json.Nodes;
 using Empire.Core.Combat;
 using Empire.Core.Geometry;
@@ -9,7 +11,7 @@ var root = args[0];
 var oraclePath = args[1];
 var packs = JsonNode.Parse(File.ReadAllText(root + "/godot/data/content-packs.json"))!.AsArray();
 var grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid());
-var damage = new BattleDamage(packs, grids);
+var damage = new BattleDamage(new ReadOnlyContent(packs), grids, new CombatEffects(new ReadOnlyContent(packs), new ThresholdRankProgressionPolicy()), DefaultUnitDepartureHandlers.Create().Seal());
 var cases = JsonNode.Parse(File.ReadAllText(oraclePath))!.AsArray();
 int passed = 0;
 JsonObject Trace(JsonObject state) => new()

@@ -1,7 +1,7 @@
 namespace Empire.Core.Registries;
 
 /// <summary>Ordered, per-composition rule storage. Cloning copies the table, not its rule objects.</summary>
-public abstract class KeyedRegistry<TEntry, TRegistry>
+public abstract class KeyedRegistry<TEntry, TRegistry> : IKeyedRegistryView
     where TEntry : class
     where TRegistry : KeyedRegistry<TEntry, TRegistry>
 {

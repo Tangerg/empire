@@ -5,6 +5,7 @@ using Empire.Core.Transactions;
 var root=Path.GetFullPath(args.Length>0?args[0]:"godot");
 if(args.Length<2)throw new ArgumentException("Pass a source JSONL fixture");
 var fixture=Path.GetFullPath(args[1]);var diagnostics=args.Length>2?args[2]:Path.GetDirectoryName(fixture)!;
+Directory.CreateDirectory(diagnostics);
 var engine=new GrayFlagEngine(JsonNode.Parse(File.ReadAllText(root+"/data/content-packs.json"))!.AsArray());
 using var reader=File.OpenText(fixture);
 var header=JsonNode.Parse(reader.ReadLine()!)!.AsObject();

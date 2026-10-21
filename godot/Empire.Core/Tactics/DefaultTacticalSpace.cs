@@ -12,11 +12,13 @@ public class DefaultTacticalSpace : ITacticalSpace
     public ReadOnlyContent Content { get; }
     public GridRegistry Grids { get; }
 
-    public DefaultTacticalSpace(JsonArray contentPacks, GridRegistry grids)
+    public DefaultTacticalSpace(JsonArray contentPacks, GridRegistry grids) : this(new ReadOnlyContent(contentPacks), grids) { }
+
+    public DefaultTacticalSpace(ReadOnlyContent content, GridRegistry grids)
     {
-        movement = new MovementRules(contentPacks, grids);
+        movement = new MovementRules(content.CopyPacks(), grids);
         vision = new BattleVision(movement);
-        Content = new ReadOnlyContent(movement.Content);
+        Content = content;
         Grids = grids;
     }
 

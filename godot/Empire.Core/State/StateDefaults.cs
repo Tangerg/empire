@@ -50,13 +50,6 @@ internal static class StateDefaults
         new JsonObject { ["type"] = "captureHQ" },
     };
 
-    internal static string RestingFacing(JsonObject rules) => StateJson.Text(rules, "grid") switch
-    {
-        "square4" or "square8" => "south",
-        "hex" => "hexSoutheast",
-        var id => throw new DomainInvariantException($"unknown tactical grid \"{id}\""),
-    };
-
     internal static uint LevelSeed(string id)
     {
         var hash = 0x811c9dc5u;

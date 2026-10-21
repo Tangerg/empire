@@ -14,9 +14,9 @@ This malformed-input defect is deliberately not reproduced. Valid movement costs
 
 Native persistence reads and writes the source schema-1 battle-save and replay shapes. Saves contain only `schema`, `battle`, `ruleset`, `savedAt`, and `state`; undo history and presentation/session state are not part of a battle document. Saves, loaded states, headers, recorded actions, and emitted replay documents own detached JSON copies.
 
-The shipped-default manifest retains the five source plugin identities at version 1: `engine.ai-planning`, `engine.content`, `engine.mission-rules`, `engine.resource-economy`, and `engine.tactical-rules`. Content-pack versions come from the explicitly supplied packs. This is the identity of the compatible shipped-default rules, not a claim that every source extension registry has been migrated. Unknown/missing/version-mismatched plugins or packs are refused. Anonymous factory overrides and catalogs without versioned packs cannot be persisted.
+The shipped-default manifest retains the five source plugin identities at version 1: `engine.ai-planning`, `engine.content`, `engine.mission-rules`, `engine.resource-economy`, and `engine.tactical-rules`. Content-pack versions come from the explicitly supplied packs. This is the identity of the compatible shipped-default rules, not a claim of universal behavior for every possible third-party plugin. Unknown/missing/version-mismatched plugins or packs are refused. Anonymous factory overrides and catalogs without versioned packs cannot be persisted.
 
-`BattleSaveFeatures` declares the actual native capabilities separately. The composition root supplies supported IDs from the rule owners. The loader checks learned and unit-definition abilities, reactions, directives, turn policies, grids, objectives, nested conditions, scenario effects, referenced weapon areas/hit effects, pending-cast abilities, resource adapters, and tactic effects. Deployment, embarked-unit, and composite state require explicit `stateFeatures` entries; a manifest alone cannot enable them. The current engine enables these three features after composing their handlers. Additional named state guards enforce deployment and transport invariants.
+Semantic reference checks consume actual composed handler registries through one ordered reference owner. Optional inert payloads are admitted at the same phase as source; executing a demanded unresolved capability still fails. `BattleSaveFeatures` contains only named structural callbacks, including deployment and transport invariants. Plugin manifest identity alone does not replace actual handlers or these aggregate checks.
 
 The reader preserves the original top-level and aggregate schema checks and content-reference checks. It additionally rejects malformed unit shapes, inconsistent row-major map-array lengths, off-board/overlapping field units, duplicate living-unit IDs or nonempty keys across field and embarked units, unknown owners/current player, nonpositive living HP, inconsistent turn-order policy, invalid random seed/counters, negative resource balances, invalid actor clocks or colliding next IDs, and casts that resolve before or at declaration. These are intentional fail-closed checks, not compatibility promises for malformed source documents.
 
@@ -44,26 +44,16 @@ vision. This is input hardening, not exact behavior for arbitrary numeric radii.
 
 ## Definition and deferred payload admission
 
-Engine composition validates the complete supplied catalog, not only definitions
-already used by living units. The original content invariants and default-rule
-references therefore cover future recruitment, unused weapons, and unlearned
-career mastery abilities before a battle starts. Authored levels pass the
-source-compatible structural/reference checks before state construction.
-Capability IDs come from the actual composed rule owners via `BattleSaveFeatures`,
-not a GrayFlag content whitelist or a plugin name.
+The real composition root resolves all 24 capabilities and uses one ordered ten-check reference registry for content, levels and saved state. Handler-owned reference/children metadata and the actual resolved registries determine semantic IDs. `BattleSaveFeatures` contains aggregate structural guards only; it is not an ID whitelist. A named replacement save reader is invoked by both Save and Load, with the actual composition manifest and reference owners.
 
-Native admission additionally refuses unregistered resource adapters and tactic
-effect kinds, condition kinds nested in `failOn` objectives, and unsupported
-ability/reaction/directive/resource overrides in future spawn declarations. These
-are explicit fail-closed unsupported-extension guards: the source admission code
-does not catch every one of these declarations before its handlers encounter it.
-`BattleLevelValidator.Issues` preserves the source error-level checks; the extra
-execution-capability guard is a separate composition step. Source linter warnings
-and arbitrary plugin-defined payload validation are not claimed.
+Source-admitted inert metadata remains inert. Unknown unused resource accounts, future spawn declarations and `failOn` payloads are not rejected merely because an invented native whitelist cannot interpret them. If the source resolves a declaration only when it executes, native resolves it at that boundary too; transaction failure restores the prior state. The reference suite retains all 94 former future-reference cases under their original names and derives their expected decisions from TypeScript rather than relaxing assertions by hand. Its classification map records each corrected earlier native restriction.
 
-Saved scenario payloads also validate their declared catalog, zone, objective,
-map-cell/edge, directive, resource, and composite references. They do not pre-run
-selectors or future occupancy/placement legality. Neutral selector owners and
-currently absent selected IDs remain valid; missing former structures remain
-valid for damage/destroy checks where source behavior is a no-op or successful
-absence. Save/load rejection remains atomic and does not mutate the supplied JSON.
+Source reference issue order and first-seen deduplication are significant. In particular, teleport/return destination zones precede selector zones; explicit null is not the same as an absent threshold; blank IDs use ECMAScript whitespace rather than .NET Trim. Unknown handler reference metadata is empty where the source says so; executing or traversing a demanded unknown handler still fails.
+
+Structural safety differences remain explicit: native validates nested state shapes, nonnegative accounts and finite live grant amounts, map-array dimensions, integer clocks/generated IDs, generated-ID monotonicity, player/current-player consistency, matching stored turn-order policy, uint RNG seeds and nonnegative integer counters, in-bounds/nonoverlapping living positions, living-ID/key uniqueness, existing owners and positive live HP. Pending casts retain structural and resolve-after-declaration timing checks. Deployment/transport consistency remains with their aggregate owners. These checks do not guess custom payload semantics or reintroduce fixed resource/type lists. Timestamp syntax still uses .NET DateTimeOffset rather than arbitrary JS Date.parse compatibility.
+
+See `tools/godot/persistence-reference-checks/compatibility-map.json` and the frozen level/metadata suite for the exact tested admission boundaries. Source linter warnings, arbitrary plugin correctness and custom presentation are not claimed by these engine contracts.
+
+## Non-transitive priority comparators
+
+Native registries retain accepted double priorities, including NaN, and ordinary finite/fractional ordering follows the source. Mixed NaN priorities can make the original comparator non-transitive. Native stable sorting preserves its comparator semantics but does not promise V8-specific permutations for inconsistent comparisons. The registry suite characterizes 20 such mixed-NaN orders separately from its exact ordinary-order assertions; those 20 differ and are not counted as parity passes.

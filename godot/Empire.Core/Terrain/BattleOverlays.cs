@@ -9,6 +9,7 @@ public sealed class BattleOverlays
 {
     private readonly StateContent content;
     public BattleOverlays(JsonArray packs) => content = new StateContent(packs);
+    public BattleOverlays(ReadOnlyContent catalog) => content = catalog.Source;
 
     public void Add(JsonObject state, JsonObject overlay, Action<JsonObject> emit)
     {
@@ -18,8 +19,13 @@ public sealed class BattleOverlays
             throw new DomainInvariantException($"duplicate terrain overlay id \"{id}\"");
         content.Get("terrainOverlays", Text(overlay, "type"));
         overlays.Add(overlay.DeepClone());
-        emit(new JsonObject { ["type"] = "overlayAdded", ["overlay"] = id, ["overlayType"] = overlay["type"]!.DeepClone(),
-            ["cells"] = overlay["cells"]!.DeepClone() });
+        emit(new JsonObject
+        {
+            ["type"] = "overlayAdded",
+            ["overlay"] = id,
+            ["overlayType"] = overlay["type"]!.DeepClone(),
+            ["cells"] = overlay["cells"]!.DeepClone()
+        });
     }
 
     public static bool Remove(JsonObject state, string id, Action<JsonObject> emit)

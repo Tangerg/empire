@@ -8,4 +8,8 @@
 <Compile Include="$(EmpireRoot)/godot/Empire.Core/Tactics/TacticalQueries.cs" />
 <Compile Include="$(EmpireRoot)/godot/Empire.Core/Combat/CombatEffects.cs" />
 <Compile Include="$(EmpireRoot)/godot/Empire.Core/Combat/BattleDamage.cs" />
+<Compile Include="$(EmpireRoot)/godot/Empire.Core/Progression/RankProgressionPolicy.cs" />
+<Compile Include="$(EmpireRoot)/godot/Empire.Core/Lifecycle/UnitDepartureHandlers.cs" />
+<Compile Include="$(EmpireRoot)/godot/Empire.Core/State/ReadOnlyContent.cs" />
+<Compile Include="$(EmpireRoot)/godot/Empire.Core/Statuses/StatusTransitions.cs" />
 </ItemGroup></Project>

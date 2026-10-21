@@ -2,18 +2,16 @@ using System.Text.Json.Nodes;
 using Empire.Core;
 using Empire.Core.Determinism;
 using Empire.Core.Geometry;
-using Empire.Core.Lifecycle;
+using Empire.Core.Composition;
+using Empire.Core.State;
 using Empire.Core.Tactics;
 
 var root = Path.GetFullPath(args.Length > 0 ? args[0] : ".");
 JsonNode Read(string path) => JsonNode.Parse(File.ReadAllText(Path.Combine(root, path)))!;
 var packs = Read("godot/data/content-packs.json").AsArray();
-var grids = new GridRegistry().Register(new Square4Grid()).Register(new Square8Grid()).Register(new OddRowHexGrid());
-var movement = new MovementRules(packs, grids);
-var turns = new TurnOrderSystem(packs);
-var directives = UnitDirectiveRegistry.Core().Seal();
-var space = new DefaultTacticalSpace(packs, grids);
-var commands = new TacticalCommands(new(space.Content, grids, space), turns.MayAct, directives);
+var engine = BattleEngineFactory.Create(new ReadOnlyContent(packs));
+var movement = new MovementRules(packs, engine.Grids);
+var directives = engine.Directives;
 var cases = Read("godot/tests/oracle/action-cases.json").AsArray();
 var passed = 0;
 var failed = 0;
@@ -63,7 +61,7 @@ foreach (var entry in waitCases)
     {
         var state = (JsonObject)entry["before"]!.DeepClone();
         var events = new JsonArray();
-        commands.ExecuteWait(state, entry["action"]!.AsObject(), RecordingEmit(state, events));
+        engine.AbilityCommands.Execute(state, entry["action"]!.AsObject(), RecordingEmit(state, events));
         EqualJson(entry["after"], state, "after state");
         EqualJson(entry["events"], events, "events");
     });
@@ -152,6 +150,41 @@ Check("directive registry extension, replacement, clone and seal", () =>
 });
 
 var sample = waitCases[0];
+Check("wait replacement uses the composed ability owner", () =>
+{
+    var customized = BattleEngineFactory.Create(new ReadOnlyContent(packs),
+    [
+        new EnginePlugin("test.wait-owner", 1, context =>
+        {
+            var abilities = context.Require(BattleCapabilities.Abilities).Clone();
+            abilities.Replace(abilities.Get("wait") with
+            {
+                Usable = (_, query) => query.State["scenario"]!["variables"]!["blockCustomWait"]?.GetValue<bool>() != true,
+                Execute = (_, query, _, emit) =>
+                {
+                    query.State["scenario"]!["variables"]!["customWaitExecuted"] = true;
+                    emit(new JsonObject { ["type"] = "scenarioSignal", ["signal"] = "custom-wait" });
+                },
+            });
+            context.Replace(BattleCapabilities.Abilities, abilities);
+        }, overrides: [BattleCapabilities.Abilities], requiresCapabilities: [BattleCapabilities.Abilities]),
+    ]);
+    var state = (JsonObject)sample["before"]!.DeepClone();
+    var action = (JsonObject)sample["action"]!.DeepClone();
+    var events = new JsonArray();
+    customized.AbilityCommands.Execute(state, action, RecordingEmit(state, events));
+    if (state["scenario"]!["variables"]!["customWaitExecuted"]?.GetValue<bool>() != true ||
+        !events.OfType<JsonObject>().Any(value => value["signal"]?.GetValue<string>() == "custom-wait"))
+        throw new Exception("wait replacement did not execute");
+    if (TacticalQueries.RequireUnit(state, action["unit"]!.GetValue<int>())["done"]?.GetValue<bool>() != true)
+        throw new Exception("custom wait did not finish its actor");
+    state = (JsonObject)sample["before"]!.DeepClone();
+    state["scenario"]!["variables"]!["blockCustomWait"] = true;
+    var before = StateDigest.Hash(state);
+    Throws<IllegalActionException>(() => customized.AbilityCommands.Execute(state, action,
+        _ => throw new Exception("rejected wait emitted an event")));
+    if (StateDigest.Hash(state) != before) throw new Exception("rejected wait mutated state");
+});
 void Reject(string name, Action<JsonObject, JsonObject> edit)
 {
     Check(name, () =>
@@ -160,7 +193,7 @@ void Reject(string name, Action<JsonObject, JsonObject> edit)
         var action = (JsonObject)sample["action"]!.DeepClone();
         edit(state, action);
         var before = StateDigest.Hash(state);
-        Throws<IllegalActionException>(() => commands.ExecuteWait(state, action, _ => throw new Exception("rejection emitted an event")));
+        Throws<IllegalActionException>(() => engine.AbilityCommands.Execute(state, action, _ => throw new Exception("rejection emitted an event")));
         if (StateDigest.Hash(state) != before) throw new Exception("rejection mutated state");
     });
 }
@@ -188,7 +221,7 @@ Check("client path interior is nonauthoritative", () =>
     var action = (JsonObject)sample["action"]!.DeepClone();
     action["path"]![1] = new JsonObject { ["x"] = -999, ["y"] = 999 };
     var events = new JsonArray();
-    commands.ExecuteWait(state, action, RecordingEmit(state, events));
+    engine.AbilityCommands.Execute(state, action, RecordingEmit(state, events));
     EqualJson(sample["after"], state, "canonical rerouting");
     EqualJson(sample["events"], events, "canonical rerouting events");
 });
@@ -217,7 +250,7 @@ Check("off-board destination cannot alias a reachable flattened index", () =>
             ["path"] = TacticalQueries.PathJson(new[] { origin, outside }),
             ["command"] = new JsonObject { ["ability"] = "wait" },
         };
-        Throws<IllegalActionException>(() => commands.ExecuteWait(state, action, _ => throw new Exception("rejection emitted an event")));
+        Throws<IllegalActionException>(() => engine.AbilityCommands.Execute(state, action, _ => throw new Exception("rejection emitted an event")));
         if (StateDigest.Hash(state) != before) throw new Exception("off-board rejection mutated state");
     }
 });

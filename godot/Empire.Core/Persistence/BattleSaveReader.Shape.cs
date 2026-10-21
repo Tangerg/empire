@@ -3,7 +3,7 @@ using Empire.Core.State;
 
 namespace Empire.Core.Persistence;
 
-public sealed partial class BattlePersistence
+internal sealed partial class BattleSaveInspection
 {
     private static void CheckShape(JsonObject save)
     {
@@ -30,6 +30,24 @@ public sealed partial class BattlePersistence
             StoredSchema.Require(state["deployment"], "部署", ("order", StoredKind.Array), ("currentIndex", StoredKind.Number), ("assignments", StoredKind.Array));
     }
 
+    private static void RequireAccounts(JsonNode? raw, string owner)
+    {
+        foreach (var account in StateJson.Object(raw, "resources"))
+        {
+            StoredSchema.Require(account.Value, $"{owner}的资源",
+                ("current", StoredKind.NullableNumber), ("capacity", StoredKind.NullableNumber));
+            foreach (var field in new[] { "current", "capacity" })
+                if (account.Value![field] is { } value && StateJson.Number(value, field) < 0)
+                    StoredSchema.Reject($"{owner}的资源数值不合法");
+        }
+    }
+
+    private static void RequireGrants(JsonNode? raw, string owner)
+    {
+        foreach (var grant in StateJson.Objects(raw, "resource grants"))
+            StoredSchema.Require(grant, owner, ("resource", StoredKind.String), ("amount", StoredKind.Number));
+    }
+
     private static void RequireUnitShape(JsonObject unit, string owner)
     {
         StoredSchema.Require(unit, owner,
@@ -46,13 +64,21 @@ public sealed partial class BattlePersistence
         StoredSchema.Require(unit["morale"], $"{owner}的士气", ("current", StoredKind.Number), ("maximum", StoredKind.Number), ("resilience", StoredKind.Number));
         foreach (var status in StateJson.Objects(unit["statuses"], "statuses"))
             StoredSchema.Require(status, $"{owner}的状态", ("id", StoredKind.String), ("stacks", StoredKind.Number), ("remaining", StoredKind.Number));
+        RequireAccounts(unit["resources"], owner);
         foreach (var weapon in unit["weaponState"]!.AsObject())
+        {
             StoredSchema.Require(weapon.Value, $"{owner}的武器", ("cooldownRemaining", StoredKind.Number), ("resources", StoredKind.Object));
+            RequireAccounts(weapon.Value!["resources"], $"{owner}的武器 {weapon.Key}");
+        }
     }
 
     private void CheckNativeState(JsonObject save)
     {
         var state = State(save);
+        RequireGrants(state["rules"]!["baseResourceGrants"], "关卡资源发放");
+        _ = StateJson.Object(state["rules"]!["siteResourceOverrides"], "siteResourceOverrides");
+        foreach (var commander in StateJson.Objects(state["commanders"], "commanders"))
+            RequireGrants(commander["turnGrants"], "指挥官资源发放");
         var map = state["map"]!.AsObject();
         var width = StateJson.Integer(map, "width");
         var height = StateJson.Integer(map, "height");
@@ -70,6 +96,7 @@ public sealed partial class BattlePersistence
         foreach (var player in players)
             StoredSchema.Require(player, "玩家", ("id", StoredKind.Integer), ("team", StoredKind.Integer), ("alive", StoredKind.Boolean),
                 ("resources", StoredKind.Object), ("objectives", StoredKind.Array), ("objectiveStates", StoredKind.Object), ("ai", StoredKind.Object));
+        foreach (var player in players) RequireAccounts(player["resources"], $"玩家 {player["id"]}");
         var owners = players.Select(player => StateJson.Integer(player, "id")).ToHashSet();
         if (owners.Count != players.Length || !owners.Contains(StateJson.Integer(state, "currentPlayer")))
             StoredSchema.Reject("玩家标识或当前玩家不合法");
@@ -107,7 +134,7 @@ public sealed partial class BattlePersistence
             if (StateJson.Number(pending["resolveAt"], "resolveAt") <= StateJson.Number(pending["declaredAt"], "declaredAt"))
                 StoredSchema.Reject("咏唱结算时刻不合法");
         }
-        var limitations = features.StateIssues(state).ToArray();
+        var limitations = environment.StructuralGuards.StateIssues(state).ToArray();
         if (limitations.Length > 0) StoredSchema.Reject(string.Join("；", limitations));
     }
 }

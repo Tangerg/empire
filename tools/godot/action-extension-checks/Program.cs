@@ -6,6 +6,7 @@ using Empire.Core.Determinism;
 using Empire.Core.Engine;
 using Empire.Core.Lifecycle;
 using Empire.Core.State;
+using Empire.Core.Statuses;
 using Empire.Core.Scenario;
 using Empire.Core.Transactions;
 
@@ -17,8 +18,8 @@ var packs = fixture["packs"]!.AsArray();
 var engine = new GrayFlagEngine(packs);
 var rules = new ActionRules(engine.Commands, engine.Deployment, engine.Transport, engine.Progression,
     engine.AbilityCommands, engine.Recruitment, engine.Support, engine.Combat,
-    (state, emit) => new BattleLifecycle(state, packs, emit, engine.Combat, engine.Resources, engine.Scenarios,
-        CompositeRules.ObjectiveOutcome, CompositeRules.DescribeObjective, CompositeRules.ObjectiveProgress, engine.Victory));
+    (state, emit) => new BattleLifecycle(new(engine.Catalog, engine.Turns, engine.Scenarios, engine.Victory, engine.Combat, engine.Resources,
+        new StatusLifecycle(engine.Catalog, new StatusBehaviorRegistry().Seal(), engine.Combat)), state, emit));
 var pipeline = new ActionExecutionPipeline(rules);
 var count = 0;
 void Equal(JsonNode? actual, JsonNode? expected, string name)

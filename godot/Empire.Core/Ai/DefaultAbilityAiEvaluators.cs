@@ -1,4 +1,5 @@
 using System.Text.Json.Nodes;
+using Empire.Core.Abilities;
 using Empire.Core.Combat;
 using Empire.Core.State;
 using static Empire.Core.State.StateJson;
@@ -22,7 +23,7 @@ public static class DefaultAbilityAiEvaluators
         {
             if (context.Target is not { } target || UnitAt(context.Turn.State, target) is not { } ally) return null;
             var definition = context.Turn.Content.Get("units", Text(ally, "type"));
-            var healed = context.Turn.Engine.HealAmount(ally);
+            var healed = DefaultAbilities.HealAmount(context.Turn.Rules.Content, ally);
             return context.TileValue * 0.3 + healed / Number(definition["maxHp"], "maxHp") * Number(definition["value"], "value") * 0.9;
         }));
         registry.Register(new("attack", Attack));
@@ -38,7 +39,7 @@ public static class DefaultAbilityAiEvaluators
         if (Number(content.Get("weapons", weapon)["castTurns"], "castTurns") > 0) return null;
         var foe = UnitAt(turn.State, target);
         if (foe is not null && !AreEnemies(turn.State, Integer(foe, "owner"), Integer(context.Unit, "owner"))) return null;
-        var plan = turn.Engine.Combat.Forecast(turn.State, context.Unit, target, context.At, weapon);
+        var plan = turn.Rules.Combat.Forecast(turn.State, context.Unit, target, context.At, weapon);
         var mission = turn.Agenda.Mission;
         if (foe is null)
         {
@@ -60,7 +61,7 @@ public static class DefaultAbilityAiEvaluators
             if (forecast.AttackerDies) score -= AiMeasures.UnitWorth(content, context.Unit) * 0.9;
         }
         if (AiMeasures.Includes(foeDefinition["tags"], "support") ||
-            turn.Engine.Combat.Forecasts.UnitWeapons(foe).All(candidate => Number(candidate["minRange"], "minRange") > 1)) score *= 1.1;
+            turn.Rules.Combat.Forecasts.UnitWeapons(foe).All(candidate => Number(candidate["minRange"], "minRange") > 1)) score *= 1.1;
         score += mission.PriorityUnits.GetValueOrDefault(Integer(foe, "id")) * 260;
         foreach (var (id, weight) in mission.ProtectedUnits)
             if (UnitById(turn.State, id) is { } protectedUnit)

@@ -1,44 +1,46 @@
 using System.Text.Json.Nodes;
 using Empire.Core.Resources;
 using Empire.Core.State;
+using Empire.Core.Statuses;
 using static Empire.Core.State.StateJson;
 using static Empire.Core.Lifecycle.TurnOrderSystem;
 
 namespace Empire.Core.Lifecycle;
 
+public sealed record BattleLifecycleRules(ReadOnlyContent Content, TurnOrderSystem Turns, ScenarioSystem Scenarios,
+    VictorySystem Victory, ILifecycleEffects Effects, BattleResources Resources, StatusLifecycle Statuses);
+
 /// <summary>Owns phase, round and actor-turn transitions. The caller's emitter owns event counting.</summary>
 public sealed class BattleLifecycle
 {
     private readonly JsonObject state;
+    private readonly ReadOnlyContent catalog;
     private readonly StateContent content;
     private readonly Action<JsonObject> emit;
     private readonly ILifecycleEffects effects;
     private readonly BattleResources resources;
+    private readonly StatusLifecycle statuses;
     public TurnOrderSystem Turns { get; }
     public ScenarioSystem Scenarios { get; }
     public VictorySystem Victory { get; }
 
-    public BattleLifecycle(JsonObject state, JsonArray contentPacks, Action<JsonObject> emit,
-        ILifecycleEffects? effects = null, BattleResources? resources = null, ScenarioSystem? scenarios = null,
-        Func<JsonObject, int, JsonObject, string>? extraObjective = null,
-        Func<JsonObject, string>? extraObjectiveDescription = null,
-        Func<JsonObject, int, JsonObject, string>? extraObjectiveProgress = null,
-        VictorySystem? victory = null)
+    public BattleLifecycle(BattleLifecycleRules rules, JsonObject state, Action<JsonObject> emit)
     {
         this.state = state;
-        content = new StateContent(contentPacks);
+        catalog = rules.Content;
+        content = rules.Content.Source;
         this.emit = emit;
-        this.effects = effects ?? new StrictLifecycleEffects();
-        this.resources = resources ?? new BattleResources();
-        Turns = new TurnOrderSystem(content);
-        Scenarios = scenarios ?? new ScenarioSystem(content);
-        Victory = victory ?? new VictorySystem(content, Scenarios, extraObjective, extraObjectiveDescription, extraObjectiveProgress);
+        effects = rules.Effects;
+        resources = rules.Resources;
+        statuses = rules.Statuses;
+        Turns = rules.Turns;
+        Scenarios = rules.Scenarios;
+        Victory = rules.Victory;
     }
 
     public void Start()
     {
-        state["turnOrder"] = Turns.InitialState(state);
-        Claim(Turns.Begin(state));
+        Claim(Turns.Start(state, emit));
     }
 
     public void BeginPlaying()
@@ -54,7 +56,7 @@ public sealed class BattleLifecycle
     {
         emit(new JsonObject { ["type"] = "turnEnd", ["player"] = Integer(state, "currentPlayer") });
         Scenarios.Run(state, "turnEnd", emit);
-        var handoff = Turns.Advance(state);
+        var handoff = Turns.Advance(state, emit);
         if (handoff.Exhausted)
         {
             ConcludeIfDecided();
@@ -187,7 +189,7 @@ public sealed class BattleLifecycle
     private void AdvanceOverlayRound() => Empire.Core.Terrain.BattleOverlays.AdvanceRound(state, emit);
 
     private IEnumerable<JsonObject> OverlaysAt(JsonObject unit) => Objects(Object(state["scenario"], "scenario")["overlays"], "overlays")
-        .Where(overlay => Objects(overlay["cells"], "overlay cells").Any(cell => ScenarioSystem.SameCell(cell, unit)));
+        .Where(overlay => Objects(overlay["cells"], "overlay cells").Any(cell => Empire.Core.Scenario.ScenarioSelection.SameCell(cell, unit)));
 
     private void ApplyOverlayStatuses(IEnumerable<JsonObject> scope)
     {
@@ -197,51 +199,8 @@ public sealed class BattleLifecycle
                     AddStatus(unit, Text(effect, "id"), Integer(effect, "duration"));
     }
 
-    private void AddStatus(JsonObject unit, string id, int duration)
-    {
-        if (duration < 1) throw new DomainInvariantException("status duration must be >= 1");
-        var definition = content.Get("statuses", id);
-        var statuses = Array(unit["statuses"], "statuses");
-        var existing = Objects(statuses, "statuses").FirstOrDefault(status => Text(status, "id") == id);
-        var carried = existing ?? new JsonObject { ["id"] = id, ["remaining"] = duration, ["stacks"] = 1 };
-        if (existing is null) statuses.Add(carried);
-        else switch (Text(definition, "stackMode"))
-        {
-            case "refresh": carried["remaining"] = Math.Max(Number(carried["remaining"], "remaining"), duration); break;
-            case "extend": carried["remaining"] = Number(carried["remaining"], "remaining") + duration; break;
-            case "stack":
-                carried["stacks"] = Math.Min(Number(definition["maxStacks"], "maxStacks"), Number(carried["stacks"], "stacks") + 1);
-                carried["remaining"] = Math.Max(Number(carried["remaining"], "remaining"), duration); break;
-            default: throw new DomainInvariantException($"unknown status stack mode \"{Text(definition, "stackMode")}\"");
-        }
-        emit(new JsonObject { ["type"] = "statusApplied", ["unit"] = Integer(unit, "id"), ["status"] = id,
-            ["remaining"] = carried["remaining"]!.DeepClone(), ["stacks"] = carried["stacks"]!.DeepClone() });
-    }
+    private void AddStatus(JsonObject unit, string id, int duration) =>
+        StatusTransitions.Add(catalog, unit, id, duration, null, emit);
 
-    private void ResolveStatuses(IEnumerable<JsonObject> scope)
-    {
-        foreach (var unit in scope)
-        {
-            var statuses = Array(unit["statuses"], "statuses");
-            foreach (var instance in Objects(statuses, "statuses").ToArray())
-            {
-                var definition = content.Get("statuses", Text(instance, "id"));
-                if (definition["periodic"] is JsonObject periodic && Text(periodic, "timing") == "ownerTurnStart")
-                {
-                    var maximum = Number(content.Get("units", Text(unit, "type"))["maxHp"], "maxHp");
-                    var requested = Math.Max(1, Round(maximum * Number(periodic["maxHpFraction"], "maxHpFraction") * Number(instance["stacks"], "stacks")));
-                    effects.DamageStatus(state, unit, instance, requested, IsTrue(periodic["nonlethal"]), emit);
-                    if (!Units(state).Any(candidate => Integer(candidate, "id") == Integer(unit, "id"))) break;
-                }
-                // The shipped TypeScript status behavior registry has no imperative hooks.
-                var remaining = Number(instance["remaining"], "remaining") - 1;
-                instance["remaining"] = remaining;
-                if (remaining <= 0 && Units(state).Any(candidate => Integer(candidate, "id") == Integer(unit, "id")))
-                {
-                    statuses.Remove(instance);
-                    emit(new JsonObject { ["type"] = "statusRemoved", ["unit"] = Integer(unit, "id"), ["status"] = Text(instance, "id") });
-                }
-            }
-        }
-    }
+    private void ResolveStatuses(IReadOnlyList<JsonObject> scope) => statuses.Resolve(state, scope, emit);
 }

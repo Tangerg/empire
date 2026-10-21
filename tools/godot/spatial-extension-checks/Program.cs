@@ -43,7 +43,8 @@ JsonObject Order(JsonObject unit, string ability, Coord? target = null, Coord? d
 (AbilityCommands Commands, BattleCombat Combat) Consumers(ITacticalSpace space)
 {
     var movement = new TacticalCommands(new(engine.Catalog, engine.Grids, space), engine.Turns.MayAct, engine.Directives);
-    var combat = new BattleCombat(packs, engine.Grids, engine.Resources, space, engine.AreaShapes);
+    var combat = new BattleCombat(engine.Catalog, engine.Grids, engine.Resources, space, engine.AreaShapes,
+        DefaultCombatModifiers.Create(), DefaultWeaponHitEffects.Create(), engine.Reactions, engine.RankProgression, engine.UnitDepartures);
     return (new(engine.AbilityRules with { Space = space, Combat = combat }, movement), combat);
 }
 void Refused(AbilityCommands commands, JsonObject state, JsonObject action, string name)
@@ -197,7 +198,7 @@ foreach (var cast in boardPolicy.ActiveCasts(projected))
 Equal(Node(boardPolicy.IncomingCasts(projected).Select(pair => new { pair.Key.X, pair.Key.Y, Remaining = pair.Value })),
     Node(expectedProjection.Select(pair => new { pair.Key.X, pair.Key.Y, Remaining = pair.Value })), "incoming projection bypassed spatial board policy");
 Console.WriteLine($"PASS {checks} spatial contract, consumer, rollback, independent-default, captured-grid, and recorded source comparisons");
-Console.WriteLine("The engine kernel composition root is not integrated. These checks establish the spatial slice, not arbitrary extension parity.");
+Console.WriteLine("These checks establish spatial consumer behavior; engine composition and save/replay integration have separate suites.");
 
 sealed class PacifistSpace(JsonArray packs, GridRegistry grids) : DefaultTacticalSpace(packs, grids)
 {

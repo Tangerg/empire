@@ -5,8 +5,25 @@ using Empire.Core.Determinism;
 using Empire.Core.Engine;
 using Empire.Core.Campaign;
 using Empire.Core.Persistence;
+using Empire.Core.Deployment;
+using Empire.Core.References;
 
 var fixture = EcmaJson.Parse(File.ReadAllText(args[0]))!.AsObject();
+var versionFixture = EcmaJson.Parse(File.ReadAllText(args[1]))!.AsObject();
+var versionPacks = EcmaJson.Parse(File.ReadAllText(Path.Combine(args[2], "godot/data/content-packs.json")))!.AsArray();
+var persistenceEngine = new GrayFlagEngine(versionPacks);
+var referenceRules = new RuleReferenceRules
+{
+    Content = persistenceEngine.Catalog, Grids = persistenceEngine.Grids, Abilities = persistenceEngine.Abilities,
+    HitEffects = persistenceEngine.Combat.HitEffects, Objectives = persistenceEngine.Objectives,
+    ScenarioConditions = persistenceEngine.ScenarioConditions, ScenarioEffects = persistenceEngine.ScenarioEffects,
+    Reactions = persistenceEngine.Reactions, TurnOrders = persistenceEngine.TurnOrders,
+    AreaShapes = persistenceEngine.AreaShapes, Directives = persistenceEngine.Directives,
+};
+var structuralGuards = new BattleSaveFeatures().Guard("deployment", DeploymentStateValidation.Issues)
+    .Guard("transport", persistenceEngine.Transport.StoredStateIssues);
+BattlePersistence PersistenceFor(JsonObject manifest) => new(
+    new BattleSaveEnvironment(referenceRules, persistenceEngine.ReferenceChecks, manifest, structuralGuards), persistenceEngine.Saves);
 var passed = 0;
 var failed = 0;
 foreach (var item in fixture["cases"]!.AsArray().OfType<JsonObject>())
@@ -86,12 +103,9 @@ Check("anonymous composition cannot be recorded or saved", () =>
     var manifest = RulesetManifest.Create(packs, result.PluginManifest);
     const string error = "ruleset contains unversioned override \"engine.override.test.a\"; persist it through a named, versioned plugin";
     Throws(() => new BattleRecorder(manifest, new JsonObject()), error);
-    Throws(() => new BattlePersistence(packs, manifest, new BattleSaveFeatures()).Save(new JsonObject()), error);
+    Throws(() => PersistenceFor(manifest).Save(new JsonObject()), error);
 });
-var versionFixture = EcmaJson.Parse(File.ReadAllText(args[1]))!.AsObject();
-var versionPacks = EcmaJson.Parse(File.ReadAllText(Path.Combine(args[2], "godot/data/content-packs.json")))!.AsArray();
-var features = new BattleSaveFeatures();
-foreach (var pair in versionFixture["features"]!.AsObject()) features.Register(pair.Key, Strings(pair.Value));
+
 foreach (var item in versionFixture["cases"]!.AsArray().OfType<JsonObject>())
 {
     Check($"source numeric version save/load {item["version"]}", () =>
@@ -100,7 +114,7 @@ foreach (var item in versionFixture["cases"]!.AsArray().OfType<JsonObject>())
         var composed = new SrpgMicrokernel().Use(new("test.versioned", version, _ => { })).Compose();
         var manifest = RulesetManifest.Create(versionPacks, composed.PluginManifest);
         Equal(item["manifest"]!, manifest);
-        var persistence = new BattlePersistence(versionPacks, manifest, features);
+        var persistence = PersistenceFor(manifest);
         var save = persistence.Save(versionFixture["state"]!.AsObject(), versionFixture["savedAt"]!.GetValue<string>());
         Equal(item["savedRuleset"]!, save["ruleset"]!);
         var loaded = persistence.Load(save);
@@ -114,7 +128,7 @@ foreach (var item in versionFixture["errors"]!.AsArray().OfType<JsonObject>())
     Check($"source malformed stored version {item["version"]}", () =>
     {
         var goodManifest = versionFixture["cases"]![0]!["manifest"]!.AsObject();
-        var persistence = new BattlePersistence(versionPacks, goodManifest, features);
+        var persistence = PersistenceFor(goodManifest);
         var save = persistence.Save(versionFixture["state"]!.AsObject(), versionFixture["savedAt"]!.GetValue<string>());
         save["ruleset"]!["plugins"]!["test.versioned"] = Version(item["version"]);
         try { persistence.Load(save); throw new Exception("invalid stored version accepted"); }
@@ -139,8 +153,8 @@ foreach (var item in versionFixture["idCases"]!.AsArray().OfType<JsonObject>())
             Throws(() => RulesetManifest.Create(versionPacks, new Dictionary<string, double> { [id] = 1 }),
                 "plugin identity requires a nonempty id and positive integer version");
         var manifest = item["manifest"]!.AsObject();
-        var persistence = new BattlePersistence(versionPacks, manifest, features);
-        var initialPersistence = new BattlePersistence(versionPacks, versionFixture["cases"]![0]!["manifest"]!.AsObject(), features);
+        var persistence = PersistenceFor(manifest);
+        var initialPersistence = PersistenceFor(versionFixture["cases"]![0]!["manifest"]!.AsObject());
         var save = initialPersistence.Save(versionFixture["state"]!.AsObject(), versionFixture["savedAt"]!.GetValue<string>());
         save["ruleset"] = manifest.DeepClone();
         if (item["error"] is null)

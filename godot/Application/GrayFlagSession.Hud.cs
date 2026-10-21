@@ -128,7 +128,7 @@ public sealed partial class GrayFlagSession
             if (commandable is not null && N(commandable,"id") == N(inspect,"id"))
             {
                 var id = N(commandable,"id");
-                Section("stances","反应与朝向",engine.Combat.Forecasts.ReactionIds.Select(stance => Action($"reaction:{stance}",engine.Combat.Forecasts.Reaction(stance).Name,new() { ["kind"]="reaction",["unit"]=id,["stance"]=stance },hint:engine.Combat.Forecasts.Reaction(stance).Hint,active:S(commandable,"reaction") == stance))
+                Section("stances","反应与朝向",engine.Combat.Forecasts.Reactions.All().Select(stance => Action($"reaction:{stance.Id}",stance.Name,new() { ["kind"]="reaction",["unit"]=id,["stance"]=stance.Id },hint:stance.Hint,active:S(commandable,"reaction") == stance.Id))
                     .Concat(RuleGrid(state).Directions.Select(direction => Action($"face:{direction.Id}",Facing(state,direction.Id),new() { ["kind"]="face",["unit"]=id,["facing"]=direction.Id },active:S(commandable,"facing") == direction.Id))));
                 Section("formations","阵形",formations.Select(option => Action($"formation:{S(option.Formation,"id")}",$"{S(option.Formation,"name")}{(option.Current ? " · 解除" : "")}",new() { ["kind"]="changeFormation",["unit"]=id,["formation"]=option.Current ? null : option.Formation["id"]!.DeepClone() },
                     option.Reasons.Count > 0 ? string.Join("；",option.Reasons) : $"攻击 ×{option.Formation["attackMultiplier"]} · 防御 {Signed(D(option.Formation,"defenseDelta"))} · 移动 {Signed(D(option.Formation,"movementDelta"))}",option.Eligible || option.Current,option.Current)));

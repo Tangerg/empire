@@ -6,6 +6,8 @@ using Empire.Core.Geometry;
 
 namespace Empire.Core.State;
 
+public sealed record BattleStateRules(ReadOnlyContent Content, GridRegistry Grids);
+
 /// <summary>
 /// Constructs the plain-data, pre-lifecycle state from a parsed LevelData document.
 /// This does not start the first actor turn, evaluate objectives, or execute triggers.
@@ -14,6 +16,10 @@ public static class BattleStateFactory
 {
     /// <summary>Spawns through the same unit constructor used by initial levels.</summary>
     public static JsonObject SpawnUnit(JsonArray contentPacks, GridRegistry grids, JsonObject state,
+        string type, int owner, Coord at, double? hp = null, bool done = false, JsonObject? source = null) =>
+        SpawnUnit(new BattleStateRules(new ReadOnlyContent(contentPacks), grids), state, type, owner, at, hp, done, source);
+
+    public static JsonObject SpawnUnit(BattleStateRules dependencies, JsonObject state,
         string type, int owner, Coord at, double? hp = null, bool done = false, JsonObject? source = null)
     {
         var seed = new JsonObject { ["x"] = at.X, ["y"] = at.Y, ["unit"] = type, ["owner"] = owner };
@@ -21,22 +27,24 @@ public static class BattleStateFactory
             foreach (var pair in source) seed[pair.Key] = pair.Value?.DeepClone();
         if (hp is { } explicitHp) seed["hp"] = explicitHp;
         var id = StateJson.Integer(state, "nextUnitId");
-        var grid = grids.Get(StateJson.Text(state["rules"]!["grid"], "grid"));
+        var grid = dependencies.Grids.Get(StateJson.Text(state["rules"]!["grid"], "grid"));
         state["nextUnitId"] = checked(id + 1);
-        var unit = CreateUnit(new StateContent(contentPacks), seed, id, grid.RestingFacing);
+        var unit = CreateUnit(dependencies.Content.Source, seed, id, grid.RestingFacing);
         unit["done"] = done;
         StateJson.Array(state["units"], "units").Add(unit);
         return unit;
     }
 
-    public static JsonObject Create(JsonObject level, JsonArray contentPacks, uint? seed = null)
+    public static JsonObject Create(JsonObject level, JsonArray contentPacks, uint? seed = null) =>
+        Create(new BattleStateRules(new ReadOnlyContent(contentPacks), GridRegistry.Core()), level, seed);
+
+    public static JsonObject Create(BattleStateRules dependencies, JsonObject level, uint? seed = null)
     {
         ArgumentNullException.ThrowIfNull(level);
-        ArgumentNullException.ThrowIfNull(contentPacks);
-        var content = new StateContent(contentPacks);
+        var content = dependencies.Content.Source;
         var map = StateMap.Create(content, level);
         var rules = StateDefaults.Rules(level);
-        var restingFacing = StateDefaults.RestingFacing(rules);
+        var restingFacing = dependencies.Grids.Get(StateJson.Text(rules, "grid")).RestingFacing;
         var players = CreatePlayers(content, level, map);
         var units = new JsonArray();
         var nextUnitId = 1;

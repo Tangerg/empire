@@ -1,6 +1,7 @@
 using System.Text.Json.Nodes;
 using Empire.Core.Geometry;
 using Empire.Core.Lifecycle;
+using Empire.Core.Progression;
 using Empire.Core.Resources;
 using Empire.Core.State;
 using Empire.Core.Tactics;
@@ -17,16 +18,21 @@ public sealed partial class BattleCombat : ILifecycleEffects
     public BattleDamage Damage { get; }
     public CombatEffects Effects { get; }
     public WeaponAreaRegistry AreaShapes { get; }
-    public BattleCombat(JsonArray packs, GridRegistry grids, BattleResources resources, ITacticalSpace space,
-        WeaponAreaRegistry areaShapes)
+    public WeaponHitEffectHandlerRegistry HitEffects { get; }
+    private readonly WeaponHitEffectRules hitEffectRules;
+    public BattleCombat(ReadOnlyContent catalog, GridRegistry grids, BattleResources resources, ITacticalSpace space,
+        WeaponAreaRegistry areaShapes, CombatModifierPipeline modifiers, WeaponHitEffectHandlerRegistry hitEffects,
+        ReactionRegistry reactions, IRankProgressionPolicy progression, UnitDepartureHandlerRegistry unitDepartures)
     {
-        content = new StateContent(packs);
+        content = catalog.Source;
         this.resources = resources;
         this.space = space;
         AreaShapes = areaShapes;
-        Forecasts = new CombatForecasts(packs, grids, resources);
-        Damage = new BattleDamage(packs, grids);
-        Effects = new CombatEffects(packs);
+        Forecasts = new CombatForecasts(catalog, grids, resources, modifiers, reactions);
+        Effects = new CombatEffects(catalog, progression);
+        Damage = new BattleDamage(catalog, grids, Effects, unitDepartures);
+        HitEffects = hitEffects;
+        hitEffectRules = new(catalog, grids, Effects, Damage, ForceMove);
     }
     public JsonObject? SelectedWeapon(JsonObject state, JsonObject unit, string? weapon = null)
     {
@@ -144,6 +150,6 @@ public sealed partial class BattleCombat : ILifecycleEffects
         if (StateJson.Number(selected, "castTurns", 0) > 0) { BeginCast(state, new(unit, "attack", selected, target, at), emit); return; }
         ExecutePlan(state, Forecast(state, unit, target, at, StateJson.Text(selected, "id")), emit);
     }
-    public void DamageStatus(JsonObject state, JsonObject unit, JsonObject status, double requested, bool nonlethal, Action<JsonObject> emit) =>
+    public double DamageStatus(JsonObject state, JsonObject unit, JsonObject status, double requested, bool nonlethal, Action<JsonObject> emit) =>
         Damage.DamageStatus(state, unit, status, requested, nonlethal, emit);
 }
