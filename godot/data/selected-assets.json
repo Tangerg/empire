@@ -1090,41 +1090,38 @@
       ]
     },
     {
-      "assetId": "C01-FFV1-STRUCT-LORNE-KEEP",
+      "assetId": "C01-NATIVE-FRONTIER-GATEHOUSE",
       "topicId": "C01-STRUCT-LORNE-KEEP",
       "label": "洛恩堡垒据点",
       "category": "interactive-structure",
-      "png": "runtime-approved-v5/structure/struct-lorne-keep@2x.png",
-      "width": 480,
-      "height": 160,
+      "width": 1254,
+      "height": 1254,
       "runtimeReady": true,
-      "qualityTier": "approved-chunky-v5-export-verified",
-      "frameWidth": 160,
-      "frameHeight": 160,
-      "frames": 3,
+      "qualityTier": "native-generated-scale-reviewed",
+      "frameWidth": 1254,
+      "frameHeight": 1254,
+      "frames": 1,
       "stateOrder": [
-        "normal",
-        "damaged",
-        "captured"
+        "normal"
       ],
       "anchor": [
-        80.60847880299252,
-        140.21945137157107
+        490,
+        1024
+      ],
+      "groundFront": [
+        772,
+        1142
       ],
       "footprint": [
         2,
         2
       ],
-      "presentationScale": 0.65,
-      "physicalWidth": 960,
-      "physicalHeight": 320,
-      "pixelDensity": 2,
-      "resourcePath": "res://assets/runtime-approved-v5/structure/struct-lorne-keep@2x.png",
-      "sha256": "528f43450a05841646585fae42fb6b4c80aacb239f8f517f14c29a0b7e824fc0",
-      "groundFront": [
-        80.60847880299252,
-        140.21945137157107
-      ]
+      "presentationScale": 0.125,
+      "physicalWidth": 1254,
+      "physicalHeight": 1254,
+      "pixelDensity": 1,
+      "resourcePath": "res://assets/native/structure/frontier-gatehouse.png",
+      "sha256": "0c9306d44b5c379d91fe0b2abe6c0851394506fbcdcdbf760a81e7a0fe34e191"
     },
     {
       "assetId": "C01-FFV1-STRUCT-MERCENARY-DEPOT",

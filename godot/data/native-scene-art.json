@@ -48,6 +48,21 @@
         32
       ],
       "review": "Reserved for canonically authored cliff faces. The shipped first level has no cliff edges and does not display this material; its hills remain traversable shared grass slopes. General cliff picking is checked synthetically, not claimed visually accepted campaign scenery."
+    },
+    {
+      "id": "frontier-gatehouse",
+      "resourcePath": "res://assets/native/structure/frontier-gatehouse.png",
+      "sha256": "0c9306d44b5c379d91fe0b2abe6c0851394506fbcdcdbf760a81e7a0fe34e191",
+      "method": "Generated single-building replacement, visually reviewed in the actual first-level scene; not a crop or lossless edit.",
+      "sourceOwner": "Native selected-assets.json",
+      "visualContract": "Single stone-and-timber gatehouse with one normal frame. No baked ownership or compound courtyard; the canonical owner banner supplies allegiance. Door threshold and front foundation contact are separately authored.",
+      "generationDate": "2026-10-21",
+      "targetDoorHeightWorldUnits": 39,
+      "imageDimensions": [
+        1254,
+        1254
+      ],
+      "review": "Visible body height approximately 120 world units; doorway approximately 39 against ordinary infantry about 30. Real first-level window verified door selection at (5,13), neighboring hero selection and ground contact. Removed ten first-level miniature compound/tent/prop placements; other levels retain their authored scenery. Shared topic resource projections checked across all 16 levels."
     }
   ]
 }
