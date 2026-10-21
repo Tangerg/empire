@@ -156,3 +156,21 @@ are introduced. The actual window was inspected at opening and close zoom; all
 campaign resource projections and teardown pass. This thin cut is a readable
 foundation, not final natural terrain art. The large-scale field texture remains
 the next visible mismatch; it is not hidden with decorative grass or shadows.
+
+## Distant woodland frame
+
+`framePlacements` is the single authoring list for scene-border foliage. Every
+placement declares `layer: "foreground"` or `layer: "distant"`; omitted or unknown
+layers are rejected rather than inferred from the descriptive region name.
+Existing authored frames in the first two scenes explicitly retain foreground
+semantics. The first scene adds a limited north/east distant woodland band.
+
+Distant sprites borrow the same environment catalog textures and use the same
+`BoardProjection.Project` contact mapping. Their separate draw layer is below
+all tactical surfaces, with subdued color and no ground shadow. They are not
+standing tactical objects, do not enter body picking, and never define cells,
+passability, camera bounds, or terrain height. Where a distant root overlaps the
+playable surface, the actual ground occludes it. This prevents roots floating in
+the background without extending grass or introducing a second map boundary.
+The southern edge remains visibly bounded; this is not a claim that every map
+border has received final scenery art.

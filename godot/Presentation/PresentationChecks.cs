@@ -165,6 +165,18 @@ public partial class PresentationChecks : Node
             "All GrayFlag actors must resolve to real resources.");
         Require(board.RenderedAuthoredPlacementCount == scene.Placements.Count + scene.FramePlacements.Count,
             "Every authored placement must resolve to a real resource.");
+        var distantFrame = board.GetNode<Node2D>("AuthoredScene/DistantFrame");
+        Require(distantFrame.GetChildCount() == scene.FramePlacements.Count(placement => placement.Layer == "distant"),
+            "Distant foliage must use the single authored placement list.");
+        Require(distantFrame.ZIndex < board.Projection.DepthPatches.Min(patch =>
+                board.Projection.LayerAtDepth(patch.Depth, BoardDepthLayer.Surface)),
+            "Distant foliage must remain behind every playable surface.");
+        foreach (var sprite in distantFrame.GetChildren().OfType<Sprite2D>())
+        {
+            Require(sprite.GetChildCount() == 0, "Distant foliage must not cast a playable-ground shadow.");
+            Require(sprite.Modulate.R < 0.4f && sprite.Modulate.G < 0.4f && sprite.Modulate.B < 0.4f,
+                "Distant foliage must remain visually subordinate to tactical subjects.");
+        }
         Require(!board.Diagnostics.Any(message => message.Contains("Missing", StringComparison.Ordinal)
             || message.Contains("not included", StringComparison.Ordinal)),
             "The current fixture must not silently omit selected art.");

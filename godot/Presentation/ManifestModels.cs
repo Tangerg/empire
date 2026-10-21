@@ -321,6 +321,10 @@ public sealed class AuthoredPlacement
 
 public sealed class FramePlacement
 {
+    public required string Layer
+    {
+        get; init;
+    }
     public string Id { get; init; } = "";
     public double[] Contact { get; init; } = Array.Empty<double>();
     public double Scale { get; init; } = 1;

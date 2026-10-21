@@ -117,9 +117,11 @@ public partial class BoardView : Node2D
         var ground = new Node2D { Name = "AuthoredGround", ZIndex = -100 };
         var standing = new Node2D { Name = "AuthoredStanding" };
         var frame = new Node2D { Name = "AuthoredFrame", ZIndex = 2048 };
+        var distant = new Node2D { Name = "DistantFrame", ZIndex = -4095 };
         staging.AddChild(ground);
         staging.AddChild(standing);
         staging.AddChild(frame);
+        staging.AddChild(distant);
         var entries = new List<StandingEntry>();
         var shadows = new ShadowCache();
         var diagnostics = new List<string>();
@@ -170,16 +172,19 @@ public partial class BoardView : Node2D
                 var placement = scene.FramePlacements[index];
                 var contact = RasterResources.Pair(placement.Contact, $"frame contact {index}");
                 RasterResources.Positive(placement.Scale, $"frame scale {index}");
+                if (placement.Layer is not ("foreground" or "distant"))
+                    throw new InvalidOperationException($"Unknown frame layer: {placement.Layer}");
                 try
                 {
-                    // Authored frame placements emit is-scene-frame, not the generated
-                    // is-frame-left/right/bottom classes. Region names do not select CSS.
+                    var isDistant = placement.Layer == "distant";
                     var sprite = environment.CreateSprite(placement.Id, (float)placement.Scale, placement.Flip,
-                        shadows: shadows, shadowKind: ShadowKind.Foreground);
+                        shadows: isDistant ? null : shadows, shadowKind: ShadowKind.Foreground);
+                    if (isDistant)
+                        sprite.Modulate = new Color(0.24f, 0.32f, 0.28f);
                     sprite.Name = $"Frame_{index}";
                     sprite.Position = contact * catalog.LogicalTileSize;
                     sprite.SetMeta("logical_contact", sprite.Position);
-                    frame.AddChild(sprite);
+                    (isDistant ? distant : frame).AddChild(sprite);
                     rendered++;
                 }
                 catch (MissingArtResourceException error)
@@ -245,7 +250,8 @@ public partial class BoardView : Node2D
             _surface = new BoardProjection(_grid!, map, playable);
         foreach (var entry in _authoredStanding)
             entry.Node.Position = Projection.Project(entry.Contact);
-        foreach (var node in _scenery!.GetNode<Node2D>("AuthoredFrame").GetChildren().OfType<Node2D>())
+        foreach (var node in new[] { "AuthoredFrame", "DistantFrame" }
+            .SelectMany(name => _scenery!.GetNode<Node2D>(name).GetChildren().OfType<Node2D>()))
         {
             if (!node.HasMeta("logical_contact"))
                 node.SetMeta("logical_contact", node.Position);
