@@ -10,6 +10,7 @@ namespace Empire.Presentation;
 /// <summary>Native technical alpha port of candidate-01-road-corridor.ts. No movement rules.</summary>
 internal static class RoadCorridorMask
 {
+    private const float PixelDensity = 2;
     private static readonly BoardCell[] Directions = [new(-1, 0), new(0, -1), new(0, 1), new(1, 0)];
 
     public static Image Create(int width, int height, RoadCorridorProfile profile,
@@ -92,11 +93,38 @@ internal static class RoadCorridorMask
             + $"<g fill=\"none\" stroke=\"white\" stroke-width=\"{N(profile.Width)}\" stroke-linecap=\"round\" stroke-linejoin=\"round\">"
             + string.Concat(paths.Select(path => $"<path d=\"{path}\"/>")) + "</g>"
             + $"<g fill=\"white\">{string.Concat(filled)}</g></g></g></svg>";
-        var image = new Image();
-        var error = image.LoadSvgFromString(svg, 2);
+        using var image = new Image();
+        var error = image.LoadSvgFromString(svg, PixelDensity);
         if (error != Error.Ok)
             throw new InvalidOperationException($"Native road alpha rasterization failed: {error}");
-        return image;
+        return SoftenShoulder(image);
+    }
+
+    private static Image SoftenShoulder(Image coverage)
+    {
+        var pixels = new RasterPixels(coverage);
+        var alpha = new float[checked(pixels.Width * pixels.Height)];
+        for (var y = 0; y < pixels.Height; y++)
+            for (var x = 0; x < pixels.Width; x++)
+                alpha[y * pixels.Width + x] = pixels.Alpha(x, y);
+        var softened = ShadowRaster.Blur(alpha, pixels.Width, pixels.Height, 1.4f * PixelDensity);
+        var rgba = new byte[checked(alpha.Length * 4)];
+        for (var y = 0; y < pixels.Height; y++)
+            for (var x = 0; x < pixels.Width; x++)
+            {
+                var index = y * pixels.Width + x;
+                if (alpha[index] == 0)
+                    continue;
+                var worldX = (x + .5f) / PixelDensity;
+                var worldY = (y + .5f) / PixelDensity;
+                var shoulder = .5f + .09f * MathF.Sin(worldX * .056f + worldY * .034f)
+                    + .05f * MathF.Sin(worldX * .031f - worldY * .075f);
+                // Vary only the inward shoulder. Original coverage still owns every
+                // permitted pixel, including protected cells and zero-overhang joins.
+                var opacity = alpha[index] * Mathf.SmoothStep(shoulder, .98f, softened[index]);
+                RasterPixels.Write(rgba, index, new Color(1, 1, 1, opacity));
+            }
+        return Image.CreateFromData(pixels.Width, pixels.Height, false, Image.Format.Rgba8, rgba);
     }
 
     private static string Rounded(IReadOnlyList<BoardCell> chain, float cut)

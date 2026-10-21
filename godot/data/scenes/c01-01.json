@@ -79,7 +79,12 @@
         25,
         16
       ],
-      "role": "neutral-village"
+      "role": "neutral-village",
+      "authoredTerrainScenery": [
+        "plain",
+        "road",
+        "village"
+      ]
     },
     {
       "id": "east-hill",
@@ -136,32 +141,11 @@
       "scale": 0.8
     },
     {
-      "id": "village-square-foundation",
-      "x": 19.2,
-      "y": 11.9,
-      "layer": "foundation",
-      "scale": 0.82
-    },
-    {
       "id": "vilsa-camp-ground",
       "x": 31.1,
       "y": 12.3,
       "layer": "foundation",
       "scale": 0.8
-    },
-    {
-      "id": "grain-drying-mat-linen",
-      "x": 17.2,
-      "y": 13.7,
-      "layer": "foundation",
-      "scale": 0.6
-    },
-    {
-      "id": "grain-drying-mat-earth",
-      "x": 22.1,
-      "y": 12.9,
-      "layer": "foundation",
-      "scale": 0.55
     },
     {
       "id": "temperate-hill-cap",
@@ -251,48 +235,6 @@
       "scale": 0.45
     },
     {
-      "id": "wheat-sheaves",
-      "x": 17,
-      "y": 10.6,
-      "layer": "under-units",
-      "scale": 0.5
-    },
-    {
-      "id": "grain-sacks-baskets",
-      "x": 22,
-      "y": 11.6,
-      "layer": "under-units",
-      "scale": 0.5
-    },
-    {
-      "id": "frontier-granary",
-      "x": 22.7,
-      "y": 10.2,
-      "layer": "under-units",
-      "scale": 0.5
-    },
-    {
-      "id": "frontier-farmhouse",
-      "x": 17.8,
-      "y": 13,
-      "layer": "under-units",
-      "scale": 0.55
-    },
-    {
-      "id": "stone-well",
-      "x": 20.2,
-      "y": 9.1,
-      "layer": "under-units",
-      "scale": 0.42
-    },
-    {
-      "id": "wheat-drying-rack",
-      "x": 19.8,
-      "y": 13,
-      "layer": "under-units",
-      "scale": 0.45
-    },
-    {
       "id": "farm-fence-straight",
       "x": 16.2,
       "y": 14.4,
@@ -362,23 +304,6 @@
       "y": 7.9,
       "layer": "ground-decal",
       "scale": 0.5
-    },
-    {
-      "topicId": "C01-MISSION-BORDER-FARMER",
-      "x": 17.5,
-      "y": 11.65,
-      "layer": "under-units",
-      "scale": 0.7,
-      "opacity": 0.9
-    },
-    {
-      "topicId": "C01-MISSION-BORDER-FARMER",
-      "x": 22.4,
-      "y": 12.15,
-      "layer": "under-units",
-      "scale": 0.68,
-      "opacity": 0.88,
-      "flip": true
     }
   ],
   "populationBindings": [

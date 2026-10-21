@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "assets": [
+    {
+      "id": "frontier-house",
+      "resourcePath": "res://assets/native/structure/frontier-house.png",
+      "sha256": "864f4f28504c1387e6b7c5892e74f6bc0bbe470f46378998841287d73c8cb53e",
+      "method": "Generated single-building replacement using the approved GrayFlag architecture reference; not a crop or lossless edit.",
+      "sourceOwner": "Native selected-assets.json",
+      "visualContract": "One stone-and-timber building, transparent background, no baked ownership, people or courtyard. Door contact is the authored anchor; map ownership is rendered only by the canonical owner banner.",
+      "generationDate": "2026-10-21",
+      "targetDoorHeightWorldUnits": 36,
+      "imageDimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "road-earth-fine",
+      "resourcePath": "res://assets/native/terrain/road-earth-fine.png",
+      "sha256": "3b1b367a13e35d3a5ecf872968b28147521584aa3cf660b8d3c35be9b1dda370",
+      "method": "Generated low-contrast earth texture; no authored path silhouette.",
+      "sourceOwner": "Native world-materials.json",
+      "generationDate": "2026-10-21",
+      "imageDimensions": [
+        1254,
+        1254
+      ],
+      "logicalRepeat": [
+        256,
+        256
+      ],
+      "review": "No visible repeat seam at actual first-level camera. Fine-grain realism remains an explicitly provisional style choice; path coverage comes only from canonical road cells."
+    }
+  ]
+}

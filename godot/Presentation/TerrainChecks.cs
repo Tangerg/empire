@@ -60,6 +60,7 @@ internal static class TerrainChecks
         CheckOccupancy(parent, materials, environment);
         CheckCrossings(materials, environment);
         CheckRiverGeometry();
+        CheckRoadShoulder();
         CheckEdgeSupport(materials);
         GD.Print("Terrain checks passed: 16 canonical resource projections, c01-02 river permissions/shape/bridge registration, raw diagonal occupancy, river width validation and junction topology.");
     }
@@ -212,6 +213,25 @@ internal static class TerrainChecks
         }
         catch (InvalidOperationException error) when (error.Message.StartsWith("River requires", StringComparison.Ordinal)) { }
     }
+    private static void CheckRoadShoulder()
+    {
+        bool Road(int x, int y) => y == 1 && x >= 1 && x <= 5 || x == 5 && y == 2;
+        bool Connected(int x, int y) => Road(x, y) || x == 0 && y == 1;
+        var profile = new RoadCorridorProfile { Width = 20, MaxTangentCut = 16, MaxPlainOverhang = 0, ProtectedCells = [[0, 1]] };
+        using var mask = RoadCorridorMask.Create(7, 4, profile, Road, Connected, (_, _) => true);
+        using var repeated = RoadCorridorMask.Create(7, 4, profile, Road, Connected, (_, _) => true);
+        Require(mask.GetData().SequenceEqual(repeated.GetData()), "Road shoulder must be stable across identical projections.");
+        RequireAlphaOnly(mask, new Vector2I(7, 4), index => Road(index % 7, index / 7),
+            "Zero-overhang road shoulder escaped its canonical cells.");
+        for (var x = 1; x <= 5; x++)
+            Require(mask.GetPixel(x * 64 + 32, 96).A > .99f, "Road softening removed a connected center, including its corner.");
+        Require(mask.GetPixel(352, 160).A > .99f, "Road softening removed the endpoint center.");
+        Require(Enumerable.Range(76, 10).Count(y => mask.GetPixel(160, y).A is > .02f and < .98f) >= 4,
+            "Road shoulder must feather inward across several pixels, not remain a hard raster edge.");
+        Require(Math.Abs(mask.GetPixel(128, 78).A - mask.GetPixel(256, 78).A) > .05f,
+            "Straight road shoulder should have modest coherent width variation rather than uniform tape edges.");
+    }
+
     private static void Require(bool value, string message)
     {
         if (!value)

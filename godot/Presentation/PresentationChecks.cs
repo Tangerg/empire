@@ -112,6 +112,15 @@ public partial class PresentationChecks : Node
             "Actor contact must preserve CELL_FOOT.");
         Require(!board.SurfaceReady,
             "Incomplete compositor must never be described as the complete scene.");
+        var villageIndex = Enumerable.Range(0, state["map"]!["tiles"]!.AsArray().Count)
+            .First(index => state["map"]!["tiles"]![index]!.GetValue<string>() == "village");
+        var ownedVillage = state.DeepClone().AsObject();
+        ownedVillage["map"]!["owners"]![villageIndex] = 1;
+        board.RenderState(ownedVillage);
+        var village = board.GetNode<Node2D>($"CanonicalProjection/MapStructure_{villageIndex}");
+        Require(village.HasNode("OwnerBanner"), "Canonical ownership must produce its separate map banner.");
+        Require(((AtlasTexture)village.GetNode<Sprite2D>("AuthoredSprite").Texture).Region.Position == Vector2.Zero,
+            "Ownership must not demand a duplicated captured building frame.");
         board.RenderState(state);
         Require(board.GetChildCount() == 2, "Repeated projection must not duplicate visual layers.");
         var changed = (JsonObject)state.DeepClone();

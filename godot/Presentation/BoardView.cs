@@ -254,7 +254,7 @@ public partial class BoardView : Node2D
                 try
                 {
                     var asset = assets.ResolveMapStructure(terrain);
-                    var sprite = assets.CreateSprite(asset, snapshot.Owners[index] == 0 ? "normal" : "captured");
+                    var sprite = assets.CreateSprite(asset, "normal");
                     sprite.Name = "AuthoredSprite";
                     var structure = new Node2D { Name = $"MapStructure_{index}", Position = CellContact(index % _mapSize.X, index / _mapSize.X) };
                     structure.AddChild(BoardLighting.CreateStructureContact(new(asset.FrameWidth, asset.FrameHeight), asset.PresentationScale, _shadows));

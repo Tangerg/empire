@@ -948,37 +948,34 @@
       "presentationScale": 0.62
     },
     {
-      "assetId": "C01-FFV1-STRUCT-JOINT-GRANARY",
+      "assetId": "C01-NATIVE-FRONTIER-HOUSE",
       "topicId": "C01-STRUCT-JOINT-GRANARY",
       "label": "三方共管粮仓",
       "category": "interactive-structure",
-      "png": "runtime-approved-v5/structure/struct-joint-granary@2x.png",
-      "width": 516,
-      "height": 172,
+      "width": 1254,
+      "height": 1254,
       "runtimeReady": true,
-      "qualityTier": "approved-chunky-v5-export-verified",
-      "frameWidth": 172,
-      "frameHeight": 172,
-      "frames": 3,
+      "qualityTier": "native-generated-scale-reviewed",
+      "frameWidth": 1254,
+      "frameHeight": 1254,
+      "frames": 1,
       "stateOrder": [
-        "normal",
-        "damaged",
-        "captured"
+        "normal"
       ],
       "anchor": [
-        87.44827586206897,
-        154.97931034482758
+        495,
+        1055
       ],
       "footprint": [
         2,
         2
       ],
-      "presentationScale": 0.6,
-      "physicalWidth": 1032,
-      "physicalHeight": 344,
-      "pixelDensity": 2,
-      "resourcePath": "res://assets/runtime-approved-v5/structure/struct-joint-granary@2x.png",
-      "sha256": "daf3305d61dcdc799b9ee17131f3f4586ce38ee21c17d747d990e879d985fe29"
+      "presentationScale": 0.12,
+      "physicalWidth": 1254,
+      "physicalHeight": 1254,
+      "pixelDensity": 1,
+      "resourcePath": "res://assets/native/structure/frontier-house.png",
+      "sha256": "864f4f28504c1387e6b7c5892e74f6bc0bbe470f46378998841287d73c8cb53e"
     },
     {
       "assetId": "C01-FFV1-STRUCT-LORNE-KEEP",

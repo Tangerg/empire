@@ -1,7 +1,6 @@
 {
   "edgeDecorationsResourcePath": "res://data/edge-decorations.json",
   "foundations": {
-    "village": "village-square-foundation",
     "barracks": "gray-camp-ground",
     "castle": "keep-foundation",
     "c01.outpost": "watch-post-ground",
@@ -320,15 +319,15 @@
         "atlas": "route-dirt-road",
         "mask": "route"
       },
-      "source": "masters/approved-v5/earth-material/revision-2/master.png",
-      "sourceSha256": "9afeebdb434aed8fe30459db2dbf457173c3b0d49fad2a966dbb8837718dbd53",
+      "source": "/godot/assets/native/terrain/road-earth-fine.png",
+      "sourceSha256": "3b1b367a13e35d3a5ecf872968b28147521584aa3cf660b8d3c35be9b1dda370",
       "logicalSize": [
-        1024,
-        1024
+        256,
+        256
       ],
       "rasterSize": [
-        512,
-        512
+        627,
+        627
       ],
       "worldOrigin": [
         0,
@@ -338,8 +337,6 @@
         "inset": 0,
         "bleed": 0
       },
-      "png": "runtime/road-earth.png",
-      "png2x": "runtime/road-earth@2x.png",
       "occupancy": {
         "tileSize": 32,
         "columns": 16,
@@ -363,8 +360,8 @@
         "resourcePath": "res://assets/world-materials-v1/runtime/road-masks@2x.png",
         "sha256": "aa10a0fe5713819c0a9c0a77d9c4fe685a7b95a3fed88a9ff14b80b67fe4db80"
       },
-      "resourcePath": "res://assets/world-materials-v1/runtime/road-earth@2x.png",
-      "sha256": "bbdae871cfd2ce1e54c441d47f4bfa12d3929a21b116c63861d6174146727879"
+      "resourcePath": "res://assets/native/terrain/road-earth-fine.png",
+      "sha256": "3b1b367a13e35d3a5ecf872968b28147521584aa3cf660b8d3c35be9b1dda370"
     },
     "forest-floor": {
       "schemaVersion": 2,
