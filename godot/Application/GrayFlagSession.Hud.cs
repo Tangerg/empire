@@ -74,9 +74,9 @@ public sealed partial class GrayFlagSession
             battleText.LevelTitle(S(state, "levelId")),
             new[] { new TacticalHudRow("turn",
                 text.Format("ui.hud.turn",
-                    state["rules"]?["turnLimit"] is { } limit && limit.GetValue<double>() != 0 ? text.Format("ui.hud.turn_limit",
+                    state["rules"]?["turnLimit"] is { } limit && Number(limit) != 0 ? text.Format("ui.hud.turn_limit",
                         D(state, "turn"),
-                        limit.GetValue<double>()) : F(D(state, "turn")),
+                        Number(limit)) : F(D(state, "turn")),
                     battleText.PlayerName(S(state, "levelId"), N(current, "id")),
                     text.Format(human ? "ui.hud.human_turn" : "ui.hud.computer_turn"))),
                 new("accounts", Accounts("player", current)) });
@@ -272,7 +272,7 @@ public sealed partial class GrayFlagSession
                 rows.Add(new("career",
                     text.Format("ui.hud.career",
                         contentText.CareerName(S(career, "id")),
-                        inspect["career"]?["mastery"]?[id]?.GetValue<double>() ?? 0,
+                        Number(inspect["career"]?["mastery"]?[id]),
                         D(career, "masteryThreshold"))));
             }
             if (inspect["formation"] is { } formationId)
@@ -393,7 +393,7 @@ public sealed partial class GrayFlagSession
             var terrain = Definition("terrains", EcmaJson.ReadString(state["map"]!["tiles"]![index]));
             var rows = new List<TacticalHudRow> { new("coordinate", $"{tile.X}, {tile.Y}"),
                 new("defense", text.Format("ui.hud.terrain_defense", Pct(D(terrain, "defense")))),
-                new("elevation", text.Format("ui.hud.elevation", state["map"]!["elevation"]![index]!.GetValue<double>())),
+                new("elevation", text.Format("ui.hud.elevation", Number(state["map"]!["elevation"]![index]))),
                 new("cover", Cover(S(terrain, "cover"))) };
             if (B(terrain, "capturable"))
             {
@@ -498,7 +498,8 @@ public sealed partial class GrayFlagSession
         ? EcmaJson.Parse(value.GetRawText())!.AsObject() : throw new DomainInvariantException($"Unknown {family} definition {id}.");
     private static string S(JsonObject value, string key) => value[key] is { } node ? EcmaJson.ReadString(node) : "";
     private static int N(JsonObject value, string key) => value[key]!.GetValue<int>();
-    private static double D(JsonObject value, string key) => value[key]?.GetValue<double>() ?? 0;
+    private static double D(JsonObject value, string key) => Number(value[key]);
+    private static double Number(JsonNode? value) => value is null ? 0 : EcmaJson.ToElement(value).GetDouble();
     private static bool B(JsonObject value, string key) => value[key]?.GetValue<bool>() == true;
     private static string F(double value) => EcmaJson.Stringify(JsonValue.Create(value));
     private static string Signed(double value) => (value >= 0 ? "+" : "") + F(value);

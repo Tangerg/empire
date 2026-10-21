@@ -437,6 +437,8 @@ public partial class GrayFlagGame : Node
                 new(text, battleText, boundSession, new(
                     AssetCatalog.Load(),
                     EnvironmentCatalog.Load(),
+                    grid,
+                    engine.Catalog,
                     facing => facing is not null && grid.Step(new Coord(0, 0), facing).X < 0,
                     facing =>
                     {
@@ -450,7 +452,7 @@ public partial class GrayFlagGame : Node
                 scene,
                 initialLogMessage);
             next.ConfigureTerrain(WorldMaterialsManifest.Load());
-            next.ConfigureDynamicState(engine.Catalog);
+            next.ConfigureDynamicState();
             var boundGeneration = lifecycleGeneration;
             bool CurrentBattle() => boundGeneration == lifecycleGeneration && CurrentView(owner, next) &&
                 ReferenceEquals(session, boundSession) && ReferenceEquals(screen, next);

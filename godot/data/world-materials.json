@@ -682,6 +682,28 @@
       "sourceSha256": "79ebc9aa69129cd424892264571f55bfaff599a20d12360bcc383988ab92be74",
       "resourcePath": "res://assets/world-materials-v1/runtime/wasteland-scree@2x.png",
       "sha256": "a5e5f25a345b6e848fbce77f2434fb778f6b4953af285e388641c7bca5c52975"
+    },
+    "cliff-front": {
+      "schemaVersion": 2,
+      "id": "cliff-front",
+      "logicalSize": [
+        96,
+        32
+      ],
+      "rasterSize": [
+        1086,
+        362
+      ],
+      "worldOrigin": [
+        0,
+        0
+      ],
+      "replaces": {
+        "atlas": "native-elevation-face"
+      },
+      "resourcePath": "res://assets/native/terrain/cliff-front-rock.png",
+      "source": "/godot/assets/native/terrain/cliff-front-rock.png",
+      "sha256": "ff4b698392305137ce988fbfb20ca5da24236b45288bc0a3a53aad42c1049f1d"
     }
   },
   "groundTagFamilies": {
@@ -944,7 +966,8 @@
           "mossy-boulder"
         ],
         "chance": 0.3,
-        "scale": 0.58
+        "scale": 0.58,
+        "interiorChance": 0.035
       }
     },
     "hill": {

@@ -11,7 +11,7 @@ using Godot;
 
 namespace Empire.Presentation;
 
-public sealed record DynamicStanding(Node2D Node, int Layer, int Index);
+public sealed record DynamicStanding(Node2D Node, int Layer, int Index, Sprite2D? GroundSprite = null);
 public sealed record DynamicStateProjection(Node2D Root, IReadOnlyList<DynamicStanding> Standing,
     IReadOnlyList<string> Diagnostics, int Structures, int Markers);
 
@@ -89,6 +89,7 @@ public sealed class DynamicStateView
                 var disabled = structure["disabled"]!.GetValue<bool>();
                 var frame = hp <= maximum * 0.5 || disabled ? "damaged" : color is null ? "normal" : "captured";
                 RuntimeAsset? asset = null;
+                Sprite2D? groundSprite = null;
                 try
                 {
                     asset = assets.ResolveStructure(type);
@@ -96,7 +97,8 @@ public sealed class DynamicStateView
                 catch (MissingArtResourceException error) { diagnostics.Add($"Structure {id}: {error.Message}; using source rule-derived drawing."); }
                 if (asset is not null)
                 {
-                    node.AddChild(assets.CreateSprite(asset, frame));
+                    groundSprite = assets.CreateSprite(asset, frame);
+                    node.AddChild(groundSprite);
                     node.AddChild(BoardLighting.CreateStructureContact(new(asset.FrameWidth, asset.FrameHeight), asset.PresentationScale, shadows));
                     if (color is not null)
                         node.AddChild(CreateOwnerBanner(color, shadows));
@@ -114,7 +116,7 @@ public sealed class DynamicStateView
                 node.SetMeta("visual_state", frame);
                 node.SetMeta("rule_derived", asset is null);
                 root.AddChild(node);
-                standing.Add(new(node, 3, structureCount++));
+                standing.Add(new(node, 3, structureCount++, groundSprite));
             }
             foreach (var marker in state["markers"]!.AsArray().OfType<JsonObject>())
             {
@@ -147,6 +149,7 @@ public sealed class DynamicStateView
                 node.SetMeta("marker_id", (int)Number(marker, "id"));
                 node.SetMeta("marker_kind", kind);
                 root.AddChild(node);
+                standing.Add(new(node, 0, markerCount));
                 markerCount++;
             }
             return new(root, standing.AsReadOnly(), diagnostics.AsReadOnly(), structureCount, markerCount);

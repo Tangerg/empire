@@ -48,9 +48,9 @@ public partial class LightingChecks : Node
         try
         {
             var clock = System.Diagnostics.Stopwatch.StartNew();
-            board.Configure(new(assets, EnvironmentCatalog.Load(), facing => facing == "west", null), level, scene);
+            board.Configure(new(assets, EnvironmentCatalog.Load(), new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")), facing => facing == "west", null), level, scene);
             board.ConfigureTerrain(WorldMaterialsManifest.Load());
-            board.ConfigureDynamicState(new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")));
+            board.ConfigureDynamicState();
             board.RenderState(state);
             GD.Print($"Integrated source-lighting board first projection: {clock.ElapsedMilliseconds}ms.");
             var terrain = board.GetNode<TerrainView>("AuthoredScene/Terrain");

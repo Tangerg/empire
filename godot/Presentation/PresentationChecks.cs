@@ -28,6 +28,7 @@ public partial class PresentationChecks : Node
 
     private void Check()
     {
+        CheckDepthBands();
         var assets = AssetCatalog.Load();
         var generic = assets.ResolveUnit("c01.swordsman");
         var torren = assets.ResolveUnit("c01.swordsman", "campaign-torren");
@@ -77,6 +78,27 @@ public partial class PresentationChecks : Node
         }
 
         var environment = EnvironmentCatalog.Load();
+        var house = assets.ResolveMapStructure("village");
+        var houseSprite = assets.CreateSprite(house, "normal");
+        try
+        {
+            Require(SpriteGroundContact.Offset(houseSprite).IsEqualApprox(
+                (house.GroundFront - house.Anchor) * house.PresentationScale),
+                "Foreground depth contact must be distinct from the house placement anchor.");
+            Require(SpriteGroundContact.Offset(houseSprite).Y > 8,
+                "House foundation must sort after its threshold, not be clipped by flat ground.");
+        }
+        finally { houseSprite.Free(); }
+        var fence = environment.ResolveCell("farm-fence-straight");
+        var fenceSprite = environment.CreateSprite(fence.Id, 0.75f, true);
+        try
+        {
+            var expected = new Vector2(fence.CellWidth - fence.GroundFront.X, fence.GroundFront.Y)
+                - fence.Anchor;
+            Require(SpriteGroundContact.Offset(fenceSprite).IsEqualApprox(expected * fence.PresentationScale * 0.75f),
+                "Reflected fence foreground contact must use frame-local reflection and placement scale exactly once.");
+        }
+        finally { fenceSprite.Free(); }
         var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
         var placement = environment.ResolveCell("temperate-hill-cap");
         var propSprite = environment.CreateSprite(placement.Id, 0.82f, true);
@@ -95,7 +117,7 @@ public partial class PresentationChecks : Node
         var before = state.ToJsonString();
         var board = new BoardView();
         AddChild(board);
-        board.Configure(new(assets, environment, facing => facing == "west", null), level, scene);
+        board.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog, facing => facing == "west", null), level, scene);
         board.RenderState(state);
         Require(state.ToJsonString() == before, "Rendering must not mutate canonical state.");
         Require(board.RenderedUnitCount == board.ProjectionUnitCount && board.ProjectionUnitCount == 19,
@@ -108,8 +130,8 @@ public partial class PresentationChecks : Node
         var unit = board.GetNode<Node2D>("CanonicalProjection/Unit_2");
         Require(unit.GetMeta("actor_key").AsString() == "campaign-torren",
             "Canonical actor key must survive projection.");
-        Require(unit.Position.IsEqualApprox(new Vector2(9 * 32 + 16, 12 * 32 + 31)),
-            "Actor contact must preserve CELL_FOOT.");
+        Require(unit.Position.IsEqualApprox(board.Projection.CellContact(new Empire.Core.Geometry.Coord(9, 12))),
+            "Actor contact must sample the shared terrain surface at CELL_FOOT.");
         Require(!board.SurfaceReady,
             "Incomplete compositor must never be described as the complete scene.");
         var villageIndex = Enumerable.Range(0, state["map"]!["tiles"]!.AsArray().Count)
@@ -122,11 +144,24 @@ public partial class PresentationChecks : Node
         Require(((AtlasTexture)village.GetNode<Sprite2D>("AuthoredSprite").Texture).Region.Position == Vector2.Zero,
             "Ownership must not demand a duplicated captured building frame.");
         board.RenderState(state);
+        var captureTransition = new BattlePresentationTransition(1,
+            Empire.Core.Determinism.EcmaJson.ToElement(state),
+            Empire.Core.Determinism.EcmaJson.ToElement(new JsonObject { ["kind"] = "capture" }),
+            new[] { Empire.Core.Determinism.EcmaJson.ToElement(new JsonObject { ["type"] = "capture", ["captured"] = true }) },
+            Empire.Core.Determinism.EcmaJson.ToElement(ownedVillage), false);
+        var capturePlayback = board.PresentTransitionAsync(captureTransition);
+        Require(capturePlayback.IsCompletedSuccessfully && capturePlayback.Result,
+            "Capture playback must update the owner banner without requesting a baked owner frame.");
+        Require(board.GetNode<Node2D>($"CanonicalProjection/MapStructure_{villageIndex}").HasNode("OwnerBanner"),
+            "Capture playback must preserve the declared structure image and show canonical ownership.");
+        board.RenderState(state);
         Require(board.GetChildCount() == 2, "Repeated projection must not duplicate visual layers.");
+        var stableSurface = board.Projection;
         var changed = (JsonObject)state.DeepClone();
         changed["units"]!.AsArray()[1]!["x"] = 6;
         changed["units"]!.AsArray()[1]!["hp"] = 98.0d;
         board.RenderState(changed);
+        Require(ReferenceEquals(stableSurface, board.Projection), "Unit-only changes must retain the terrain projection and viewport cache.");
         Require(board.GetNode<Node2D>("CanonicalProjection/Unit_2").Position.X == 6 * 32 + 16,
             "New canonical position must replace, not append to, the old projection.");
         Require(state.ToJsonString() == before, "Rendering another projection must leave the original intact.");
@@ -137,11 +172,54 @@ public partial class PresentationChecks : Node
             && board.Diagnostics.Any(message => message.Contains("not-exported-unit", StringComparison.Ordinal))
             && board.RenderingIssueCount > 0,
             "Unavailable art must be explicitly diagnosed without substituting another actor.");
-        board.Configure(new(assets, environment, facing => facing == "west", null), level, scene);
+        board.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog, facing => facing == "west", null), level, scene);
         board.RenderState(state);
         Require(board.GetChildCount() == 2, "Repeated configuration must not duplicate scene layers.");
         CheckTerrain(board, state);
         board.QueueFree();
+    }
+
+    private static void CheckDepthBands()
+    {
+        var projection = TerrainChecks.FlatProjection(["plain"], [0], new Vector2I(1, 1));
+        projection.PrepareDepthPartitions([20f], Array.Empty<float>());
+        var source = projection.Triangles.Single(triangle => triangle.LogicalB.Y == 32 && triangle.LogicalC.Y == 32);
+        var patches = projection.DepthPatches.Where(patch => patch.Source == source).ToArray();
+        var area = 0f;
+        foreach (var patch in patches)
+        {
+            var partition = projection.DepthPartitions.Single(value => value.StartDepth == patch.Depth);
+            foreach (var vertex in patch.Vertices)
+            {
+                Require(vertex.Logical.Y >= patch.Depth - 0.0001f && vertex.Logical.Y <= partition.EndDepthExclusive + 0.0001f,
+                    "A ground partition must not paint across a required contact boundary.");
+                Require(vertex.Projected.IsEqualApprox(source.ProjectedA * vertex.SourceWeights.X
+                    + source.ProjectedB * vertex.SourceWeights.Y + source.ProjectedC * vertex.SourceWeights.Z),
+                    "Depth bands must interpolate the original surface, not invent another projection.");
+            }
+            for (var index = 1; index + 1 < patch.Vertices.Count; index++)
+                area += Math.Abs((patch.Vertices[index].Logical - patch.Vertices[0].Logical)
+                    .Cross(patch.Vertices[index + 1].Logical - patch.Vertices[0].Logical)) / 2;
+            var groundDepth = projection.DrawDepth(new Vector2(0, patch.Depth), BoardDepthLayer.Surface);
+            var actorDepth = projection.DrawDepth(new Vector2(0, 20), BoardDepthLayer.Standing);
+            Require(patch.Depth <= 20 ? groundDepth < actorDepth : groundDepth > actorDepth,
+                "Ground behind a contact must stay behind; genuine foreground ground must still occlude.");
+        }
+        Require(Mathf.IsEqualApprox(area, 256), "Depth clipping must preserve the full source triangle area.");
+        projection.PrepareDepthPartitions([20f], Array.Empty<float>());
+        Require(projection.DepthPartitions.Count < 8, "An injective single cell must batch empty depth space rather than create one node per pixel.");
+        Require(projection.DepthPartitions.All(partition => !(partition.StartDepth < 21 && partition.EndDepthExclusive > 21)),
+            "No combined terrain partition may cross a standing foreground boundary.");
+        var cliffMap = JsonNode.Parse("""
+            {"width":1,"height":2,"tiles":["plain","plain"],"elevation":[1,0],
+             "cliffs":[{"from":{"x":0,"y":0},"to":{"x":0,"y":1}}]}
+            """)!.AsObject();
+        var cliff = new BoardProjection(new Empire.Core.Geometry.Square4Grid(), cliffMap,
+            new System.Collections.Generic.HashSet<Empire.Core.Geometry.Coord> { new(0, 0), new(0, 1) });
+        Require(cliff.Faces.Count > 0, "An actual canonical cliff must expose its camera-facing connection.");
+        foreach (var face in cliff.Faces)
+            Require(cliff.Pick((face.ProjectedA + face.ProjectedB + face.ProjectedC + face.ProjectedD) / 4) is null,
+                "A visible cliff face must not pick a hidden top cell behind it.");
     }
 
     private static void CheckTerrain(BoardView board, JsonObject state)
@@ -162,7 +240,7 @@ public partial class PresentationChecks : Node
         Require(board.Diagnostics.Any(message => message.Contains("runtimeReady=false", StringComparison.Ordinal))
             && board.RenderingIssueCount == board.Diagnostics.Count(message => !message.Contains("runtimeReady=false", StringComparison.Ordinal)),
             "Source art-review metadata must remain in diagnostics without leaking into player-facing status.");
-        var ground = terrain.GetNode<Node2D>("ComposedTerrain/Ground");
+        var ground = terrain.GetNode<Node2D>("ComposedTerrain/ProjectedGround/LogicalGround/ComposedTerrain/Ground");
         var field = ground.GetNode<Sprite2D>("WorldField");
         using var fieldMask = field.Texture.GetImage();
         var tiles = state["map"]!["tiles"]!.AsArray();
@@ -193,6 +271,23 @@ public partial class PresentationChecks : Node
         board.RenderState(state);
         Require(terrain.GetChildCount() == 1 && terrain.GetChild(0) == cachedLayer,
             "Unchanged canonical terrain must retain one native composition, not append duplicate layers.");
+        var raised = state.DeepClone().AsObject();
+        var elevation = raised["map"]!["elevation"]!.AsArray();
+        var changedCell = Enumerable.Range(0, tiles.Count).First(index =>
+            tiles[index]!.GetValue<string>() == "plain" && elevation[index]!.GetValue<int>() == 0);
+        elevation[changedCell] = 1;
+        var raisedBefore = raised.ToJsonString();
+        var contactBefore = board.GetNode<Node2D>("CanonicalProjection/Unit_2").Position;
+        board.RenderState(raised);
+        Require(terrain.GetChild(0) != cachedLayer,
+            "An elevation-only change must invalidate the terrain composition cache.");
+        var changedCoord = new Empire.Core.Geometry.Coord(changedCell % width, changedCell / width);
+        var raisedCenter = board.Projection.CellCenter(changedCoord);
+        Require(board.Projection.Pick(raisedCenter) == changedCoord,
+            "Raised surface center and inverse picking must refer to the same canonical cell.");
+        Require(raised.ToJsonString() == raisedBefore,
+            "Height projection must never advance canonical state.");
+        board.RenderState(state);
     }
 
     private static void Require(bool condition, string message)

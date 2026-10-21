@@ -51,8 +51,8 @@ public partial class AnimationChecks : Node
     {
         var board = new BoardView { AdvanceAnimationsAutomatically = false };
         AddChild(board);
-        board.Configure(new(assets, EnvironmentCatalog.Load(), facing => facing == "west", null), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
-        board.ConfigureDynamicState(new Empire.Core.State.ReadOnlyContent(packs));
+        board.Configure(new(assets, EnvironmentCatalog.Load(), new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")), facing => facing == "west", null), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
+        board.ConfigureDynamicState();
         board.RenderState(initial);
         return board;
     }
@@ -464,8 +464,8 @@ public partial class AnimationChecks : Node
         RemoveChild(board);
         Require(!await second && !board.IsPresenting, "ExitTree cancels without waiting for another process frame");
         AddChild(board);
-        board.Configure(new(assets, EnvironmentCatalog.Load(), facing => facing == "west", null), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
-        board.ConfigureDynamicState(new Empire.Core.State.ReadOnlyContent(packs));
+        board.Configure(new(assets, EnvironmentCatalog.Load(), new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")), facing => facing == "west", null), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
+        board.ConfigureDynamicState();
         var reattached = board.PresentTransitionAsync(transition);
         Require(board.IsPresenting && !reattached.IsCompleted, "Explicit reattach and reconfigure restores the presentation lifecycle");
         await Tick(board, 0.221);

@@ -31,9 +31,12 @@ public partial class ConnectorDecorationChecks : Node
                 AddChild(terrain);
                 try
                 {
-                    terrain.Configure(materials, TerrainChecks.Scene(levels[id]), environment, cache);
-                    terrain.Render(field["tiles"]!.AsArray().Select(value => value!.GetValue<string>()).ToArray(), new(field["width"]!.GetValue<int>(), field["height"]!.GetValue<int>()));
-                    var actual = terrain.GetNode<Node2D>("ComposedTerrain/Ground").GetChildren().OfType<Sprite2D>().Where(sprite => sprite.HasMeta("route_atlas")).ToArray();
+                    terrain.Configure(new(environment, new Empire.Core.Geometry.Square4Grid(), cache), materials, TerrainChecks.Scene(levels[id]));
+                    var size = new Vector2I(field["width"]!.GetValue<int>(), field["height"]!.GetValue<int>());
+                    var tiles = field["tiles"]!.AsArray().Select(value => value!.GetValue<string>()).ToArray();
+                    var heights = new int[tiles.Length];
+                    terrain.Render(TerrainChecks.FlatProjection(tiles, heights, size), tiles, heights, size);
+                    var actual = terrain.GetNode<Node2D>("ComposedTerrain/ProjectedGround/LogicalGround/ComposedTerrain/Ground").GetChildren().OfType<Sprite2D>().Where(sprite => sprite.HasMeta("route_atlas")).ToArray();
                     var expected = field["connectors"]!.AsArray().OfType<JsonObject>().ToArray();
                     Check(actual.Length == expected.Length, $"{id} connector count {actual.Length}/{expected.Length}");
                     for (var index = 0; index < expected.Length; index++)

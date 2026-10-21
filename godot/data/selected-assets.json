@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "logicalTileSize": 32,
   "assets": [
     {
@@ -35,7 +35,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-archer@2x.png",
       "sha256": "8ccebc08eeffa4087b22b9ec1261173e70a60a048a4ea39bdabe18b5f5d2d867",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        52.38987341772152,
+        54.68354430379747
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-BALLISTA",
@@ -70,7 +74,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-ballista@2x.png",
       "sha256": "78a24015d823536e9f8151ea7fab3aa03ce9e3add3506458c743af821c911b36",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        54.43605036447978,
+        53.50828363154407
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-BANNER-GUARD",
@@ -105,7 +113,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png",
       "sha256": "0bc3c803872b9cc415a20ef4c2b1d4eacd4de4a5472ac2cc1fb6f638e1ace40a",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        49.09179926560588,
+        56.83231334149327
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-BATTLE-MAGE",
@@ -140,7 +152,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-battle-mage@2x.png",
       "sha256": "a0baa90bf2fba5804b282d8f7561f36ff9e99ea66cdbd87022e0837569aa6778",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        46.18589025755879,
+        50.9070548712206
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-CEMETERY-COLOSSUS",
@@ -175,7 +191,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-cemetery-colossus@2x.png",
       "sha256": "aaa49b440b930ea108a16d44b03e10e6cf1c6556e02a1ea62b49fe77f6014877",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        64.10478359908885,
+        68.64692482915717
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-DRUID",
@@ -210,7 +230,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-druid@2x.png",
       "sha256": "6949527913cb9b598b51fafcd8b0b6ffa3ef0c067e48b20511795cd473b4e34e",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        44.766142159522516,
+        50.124796527400974
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-ENGINEER",
@@ -245,7 +269,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-engineer@2x.png",
       "sha256": "2c30680ecc832843b39fab73d84e5606d80a235d1a4b849295ef1a2a26a2e999",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        47.38360655737705,
+        50.35628415300547
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-GHOST",
@@ -280,7 +308,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-ghost@2x.png",
       "sha256": "d1b1d21357aae89f342ad3dd60c3242146c0b7a98984b6f6c507c3b56b73835e",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        47.443365695792885,
+        49.51887810140238
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-GRAVEKEEPER",
@@ -315,7 +347,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-gravekeeper@2x.png",
       "sha256": "d9c2e0af04b8bee2440bebc21f8c69b38cd9d47843f35db74a12ca086ccafa86",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        48.81159420289855,
+        52.02229654403567
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-HEAVY-KNIGHT",
@@ -350,7 +386,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-heavy-knight@2x.png",
       "sha256": "493e95a84ad64e784d8336f3a6b1bede188ad7d24842f894b550683098cf2ca0",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        47.69849246231156,
+        52.29145728643216
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-INQUISITOR",
@@ -385,7 +425,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-inquisitor@2x.png",
       "sha256": "eb2034b791f5b0f9298466749f8ef15eee44a962a82a80e169ae6a87b7983ade",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        45.50084889643463,
+        52.95529145444256
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-IVRA-GROWTH",
@@ -420,7 +464,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-ivra-growth@2x.png",
       "sha256": "b11f59c346ff2888af9ac43766a8994ec1d83345c56856d266b04afcde6331ad",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        72.56286165176223,
+        63.91478169384534
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-KNIGHT",
@@ -455,7 +503,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-knight@2x.png",
       "sha256": "b908fc8b74ec665a9a66f449132a587fd5782a1e65959a3fe9ea3785ce415bba",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        47.7908787541713,
+        50.93659621802002
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-LEGION-SHIELD",
@@ -490,7 +542,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-legion-shield@2x.png",
       "sha256": "9b6aa970d75115f18c90da743222e2e2c12d62b07a4833cdd86a1582afd17a76",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        45.44474986256184,
+        50.975261132490374
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-RANGER",
@@ -525,7 +581,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-ranger@2x.png",
       "sha256": "27d13b44ade8852fd8551953b6ec55066ec9eae0349f3dc00181388f4cac1145",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        48.95248998282771,
+        51.80309101316543
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-RUNE-ARTIFICER",
@@ -560,7 +620,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-rune-artificer@2x.png",
       "sha256": "ca96c7555ee47328d8d6199640fa2a4cec0767411578f79131ee76029dd0d36d",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        46.608315098468275,
+        50.74398249452954
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-RUNE-SHIELD",
@@ -595,7 +659,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-rune-shield@2x.png",
       "sha256": "7a2748d8cef0235137d4461171b281e205306e2c66adaef09f7ca05c2025b1ca",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        45.943615257048094,
+        51.3322277501382
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-SILVER-LONGBOW",
@@ -630,7 +698,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-silver-longbow@2x.png",
       "sha256": "12d2d9649672634337ab8057903f70ee0c139818a840b7f12c7136d742844f3d",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        50.10526315789473,
+        54.315789473684205
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-SKELETON-GUARD",
@@ -665,7 +737,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-skeleton-guard@2x.png",
       "sha256": "65afc66a4ebfdda0681f4dee79463286e5fe574d9e3d9e6583d25815284e5572",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        51.13023255813953,
+        54.08837209302325
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-STONE-GOLEM",
@@ -700,7 +776,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-stone-golem@2x.png",
       "sha256": "75fed81f7f665d328b541a0df1d19cd8cfa7e5a8b09bc47e61b9219e2971abdb",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        68.78064943671305,
+        86.03711066931743
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-SWORDSMAN",
@@ -735,7 +815,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-swordsman@2x.png",
       "sha256": "cdfd851f2c7f81e2e4564c3af43cc9ec3a1c8229105402c4814dfd20c5c8fe0a",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        48.44444444444444,
+        53.27777777777778
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-TEMPLAR",
@@ -770,7 +854,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-templar@2x.png",
       "sha256": "72fdc284c88bdd42e386ab70eb3dcdad1fa133564e56be858f70b6d0e82ed344",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        43.0788777130757,
+        49.3276866066702
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-WOLF-RIDER",
@@ -805,7 +893,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-wolf-rider@2x.png",
       "sha256": "e801d786e50d20cd4c734070f57a8d88c405c7a9a6ac379cc9d4c37970428682",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        61.549420209828824,
+        61.70403092214246
+      ]
     },
     {
       "assetId": "C01-FFV1-UNIT-WOODLAND-WALKER",
@@ -840,7 +932,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-woodland-walker@2x.png",
       "sha256": "63d19ef7e59ec001072efe67d39c37770dc5f2b93031b9bccacffd6da2940be9",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        48.164904862579284,
+        51.215644820295985
+      ]
     },
     {
       "assetId": "C01-FFV1-MISSION-BORDER-FARMER",
@@ -875,7 +971,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/mission-unit/mission-border-farmer@2x.png",
       "sha256": "2d77679f07911b244cad28027dd7534641d01f88f2e567e0b37a4d0f17db371e",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        44.584664536741215,
+        49.68690095846646
+      ]
     },
     {
       "assetId": "C01-FFV1-MISSION-BRIDGE-LABORER",
@@ -910,7 +1010,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/mission-unit/mission-bridge-laborer@2x.png",
       "sha256": "97e88d5832bd6bfceb206986d9b1cf287c489ac87ebe15704ec2e5e302115dd1",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        44.93514644351465,
+        49.10460251046025
+      ]
     },
     {
       "assetId": "C01-FFV1-MISSION-REFUGEE-ADULT",
@@ -945,7 +1049,11 @@
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/mission-unit/mission-refugee-adult@2x.png",
       "sha256": "987f85ee8cf92fce82b5fe767c54dd1c5adb97ffb2d978ab4595b7921b0fecc5",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        47.34117647058824,
+        49.83529411764706
+      ]
     },
     {
       "assetId": "C01-NATIVE-FRONTIER-HOUSE",
@@ -975,7 +1083,11 @@
       "physicalHeight": 1254,
       "pixelDensity": 1,
       "resourcePath": "res://assets/native/structure/frontier-house.png",
-      "sha256": "864f4f28504c1387e6b7c5892e74f6bc0bbe470f46378998841287d73c8cb53e"
+      "sha256": "864f4f28504c1387e6b7c5892e74f6bc0bbe470f46378998841287d73c8cb53e",
+      "groundFront": [
+        800,
+        1132
+      ]
     },
     {
       "assetId": "C01-FFV1-STRUCT-LORNE-KEEP",
@@ -1008,7 +1120,11 @@
       "physicalHeight": 320,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/structure/struct-lorne-keep@2x.png",
-      "sha256": "528f43450a05841646585fae42fb6b4c80aacb239f8f517f14c29a0b7e824fc0"
+      "sha256": "528f43450a05841646585fae42fb6b4c80aacb239f8f517f14c29a0b7e824fc0",
+      "groundFront": [
+        80.60847880299252,
+        140.21945137157107
+      ]
     },
     {
       "assetId": "C01-FFV1-STRUCT-MERCENARY-DEPOT",
@@ -1040,7 +1156,11 @@
       "physicalHeight": 256,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/interactive-structure/struct-mercenary-depot@2x.png",
-      "sha256": "964856ec633d1a50ca01ab43dc249ee7b6499b2e380c54e2accc539465b1ee0b"
+      "sha256": "964856ec633d1a50ca01ab43dc249ee7b6499b2e380c54e2accc539465b1ee0b",
+      "groundFront": [
+        62.13245033112583,
+        113.40397350993378
+      ]
     },
     {
       "assetId": "C01-FFV1-STRUCT-OATH-TOWER-CONSOLE",
@@ -1072,7 +1192,11 @@
       "physicalHeight": 224,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/interactive-structure/struct-oath-tower-console@2x.png",
-      "sha256": "7cbf51570e465c109cb3d3cacc7bf9eb070203289ccdd9f52aac07d3cc5a9fea"
+      "sha256": "7cbf51570e465c109cb3d3cacc7bf9eb070203289ccdd9f52aac07d3cc5a9fea",
+      "groundFront": [
+        55.44615384615385,
+        94.91282051282052
+      ]
     },
     {
       "assetId": "C01-FFV1-STRUCT-REFUGEE-SHELTER",
@@ -1105,7 +1229,11 @@
       "physicalHeight": 320,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/interactive-structure/struct-refugee-shelter@2x.png",
-      "sha256": "801f1c31a90cead562dc8c679774e2cc849f726ccbab8be0b908094e38faaee7"
+      "sha256": "801f1c31a90cead562dc8c679774e2cc849f726ccbab8be0b908094e38faaee7",
+      "groundFront": [
+        78.12807881773399,
+        134.99507389162562
+      ]
     },
     {
       "assetId": "C01-FFV1-STRUCT-REPAIRABLE-GATE",
@@ -1137,7 +1265,11 @@
       "physicalHeight": 320,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/structure/struct-repairable-gate@2x.png",
-      "sha256": "18a8bd60945f20671e2b737e95f3f84ec7686bf1152dff14e452f55631fdf341"
+      "sha256": "18a8bd60945f20671e2b737e95f3f84ec7686bf1152dff14e452f55631fdf341",
+      "groundFront": [
+        79.5253112033195,
+        139.87385892116183
+      ]
     },
     {
       "assetId": "C01-FFV1-STRUCT-SUNKEN-BELL-SLUICE",
@@ -1169,7 +1301,11 @@
       "physicalHeight": 256,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/interactive-structure/struct-sunken-bell-sluice@2x.png",
-      "sha256": "fc511c10f580b297f4454aeb51b0f00902d8eb567abadba7ccc387411b0c1d93"
+      "sha256": "fc511c10f580b297f4454aeb51b0f00902d8eb567abadba7ccc387411b0c1d93",
+      "groundFront": [
+        61.7025472473295,
+        112.22678718159409
+      ]
     },
     {
       "assetId": "C01-FFV1-STRUCT-WASTELAND-CHEVAUX",
@@ -1201,7 +1337,11 @@
       "physicalHeight": 256,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/interactive-structure/struct-wasteland-chevaux@2x.png",
-      "sha256": "170cb10a9cec9289588c56fbdb1aa0f453491940af2c63e5b0ce968928410f08"
+      "sha256": "170cb10a9cec9289588c56fbdb1aa0f453491940af2c63e5b0ce968928410f08",
+      "groundFront": [
+        58.935130581297386,
+        95.12047177759057
+      ]
     },
     {
       "assetId": "C01-FFV1-STRUCT-WOUNDED-SHELTER",
@@ -1233,7 +1373,11 @@
       "physicalHeight": 256,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-approved-v5/interactive-structure/struct-wounded-shelter@2x.png",
-      "sha256": "e5a52afe0a2bc5cd862701029ba3e45088921380f3b9e0af23df9ca9cdc3d5a9"
+      "sha256": "e5a52afe0a2bc5cd862701029ba3e45088921380f3b9e0af23df9ca9cdc3d5a9",
+      "groundFront": [
+        61.419460343417825,
+        107.11692559280458
+      ]
     },
     {
       "assetId": "C01-FFV1-BPROP-AFTERMATH-2",
@@ -1253,7 +1397,11 @@
       "physicalHeight": 128,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-hd/battle-prop/bprop-aftermath-2.png",
-      "sha256": "30d5c5474231bc97f75ecf8973e3c8316999ca00cf844961f1674651fc6c1be2"
+      "sha256": "30d5c5474231bc97f75ecf8973e3c8316999ca00cf844961f1674651fc6c1be2",
+      "groundFront": [
+        32,
+        32
+      ]
     },
     {
       "assetId": "C01-FFV1-BPROP-AFTERMATH-3",
@@ -1273,7 +1421,11 @@
       "physicalHeight": 128,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-hd/battle-prop/bprop-aftermath-3.png",
-      "sha256": "74af01c6275aa9fce96dde908a2032190271a6d9f9b2a56d9cb0d53721b4a4ac"
+      "sha256": "74af01c6275aa9fce96dde908a2032190271a6d9f9b2a56d9cb0d53721b4a4ac",
+      "groundFront": [
+        32,
+        32
+      ]
     },
     {
       "assetId": "C01-FFV1-BPROP-COVER-1",
@@ -1294,7 +1446,11 @@
       "physicalHeight": 128,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-hd/battle-prop/bprop-cover-1.png",
-      "sha256": "cd3ba2ff023a53d7473dfc4c042d88bc1520371aca52362a28f7bfcb455277f1"
+      "sha256": "cd3ba2ff023a53d7473dfc4c042d88bc1520371aca52362a28f7bfcb455277f1",
+      "groundFront": [
+        32,
+        58
+      ]
     },
     {
       "assetId": "C01-FFV1-BPROP-COVER-2",
@@ -1315,7 +1471,11 @@
       "physicalHeight": 128,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-hd/battle-prop/bprop-cover-2.png",
-      "sha256": "6a71345b1ccecbee95c217d3dcabdff174ffdb18ecd8d9f0c8149a36ea68474a"
+      "sha256": "6a71345b1ccecbee95c217d3dcabdff174ffdb18ecd8d9f0c8149a36ea68474a",
+      "groundFront": [
+        32,
+        49
+      ]
     },
     {
       "assetId": "C01-FFV1-BPROP-EVIDENCE-1",
@@ -1335,7 +1495,11 @@
       "physicalHeight": 128,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-hd/battle-prop/bprop-evidence-1.png",
-      "sha256": "617959c1215ca2a16cbf60a54f191009c9ad8d9ff15740aac75edd052f04478f"
+      "sha256": "617959c1215ca2a16cbf60a54f191009c9ad8d9ff15740aac75edd052f04478f",
+      "groundFront": [
+        32,
+        32
+      ]
     },
     {
       "assetId": "C01-FFV1-BPROP-FACTION-2",
@@ -1355,7 +1519,11 @@
       "physicalHeight": 128,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-hd/battle-prop/bprop-faction-2.png",
-      "sha256": "ec4783d974488459b3a8477d7926aeb6c017b35dad672c8a4d3091d3c816c12c"
+      "sha256": "ec4783d974488459b3a8477d7926aeb6c017b35dad672c8a4d3091d3c816c12c",
+      "groundFront": [
+        32,
+        32
+      ]
     },
     {
       "assetId": "C01-FFV1-BPROP-FACTION-3",
@@ -1375,7 +1543,11 @@
       "physicalHeight": 128,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-hd/battle-prop/bprop-faction-3.png",
-      "sha256": "9e40ba16dad381e8fc9d1fbabc7ff265a272770c8e3d45b8d5c42f0421477bc4"
+      "sha256": "9e40ba16dad381e8fc9d1fbabc7ff265a272770c8e3d45b8d5c42f0421477bc4",
+      "groundFront": [
+        32,
+        32
+      ]
     },
     {
       "assetId": "C01-FFV1-BPROP-LOGISTICS-1",
@@ -1395,7 +1567,11 @@
       "physicalHeight": 128,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-hd/battle-prop/bprop-logistics-1.png",
-      "sha256": "110469b5ba0cda64ffd1dd2507cffe71670bc50d0fb33c2460137fcda6b7c14f"
+      "sha256": "110469b5ba0cda64ffd1dd2507cffe71670bc50d0fb33c2460137fcda6b7c14f",
+      "groundFront": [
+        32,
+        32
+      ]
     },
     {
       "assetId": "C01-FFV1-BPROP-LOGISTICS-3",
@@ -1415,7 +1591,11 @@
       "physicalHeight": 128,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-hd/battle-prop/bprop-logistics-3.png",
-      "sha256": "b688b8790ba6ffc6ac58bde65067b4691c3e3d747a8ee44b83726b9e83bdc735"
+      "sha256": "b688b8790ba6ffc6ac58bde65067b4691c3e3d747a8ee44b83726b9e83bdc735",
+      "groundFront": [
+        32,
+        32
+      ]
     },
     {
       "assetId": "C01-FFV1-FX-01",
@@ -1441,7 +1621,11 @@
       "physicalHeight": 64,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-hd/fx/fx-01.png",
-      "sha256": "7da3e52bbb03cc8d43243a4ff694c1a397c68f939d9dd054f5a880d5b41b76bd"
+      "sha256": "7da3e52bbb03cc8d43243a4ff694c1a397c68f939d9dd054f5a880d5b41b76bd",
+      "groundFront": [
+        16,
+        16
+      ]
     },
     {
       "assetId": "C01-FFV1-FX-02",
@@ -1467,7 +1651,11 @@
       "physicalHeight": 64,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-hd/fx/fx-02.png",
-      "sha256": "a910161ccf0fdada2255321023404708476eacd573d59f4883d762dc9348206d"
+      "sha256": "a910161ccf0fdada2255321023404708476eacd573d59f4883d762dc9348206d",
+      "groundFront": [
+        16,
+        16
+      ]
     },
     {
       "assetId": "C01-FFV1-FX-03",
@@ -1493,7 +1681,11 @@
       "physicalHeight": 64,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-hd/fx/fx-03.png",
-      "sha256": "6ffc9ce5fb350f81ebe4f3be8d168536af43752bd5922d28c3fdbbc8aec871a0"
+      "sha256": "6ffc9ce5fb350f81ebe4f3be8d168536af43752bd5922d28c3fdbbc8aec871a0",
+      "groundFront": [
+        16,
+        16
+      ]
     },
     {
       "assetId": "C01-FFV1-FX-04",
@@ -1519,7 +1711,11 @@
       "physicalHeight": 64,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-hd/fx/fx-04.png",
-      "sha256": "f0c061c57c39f04420252f1881446165f30c67c9f0866621ab06035232e584cc"
+      "sha256": "f0c061c57c39f04420252f1881446165f30c67c9f0866621ab06035232e584cc",
+      "groundFront": [
+        16,
+        16
+      ]
     },
     {
       "assetId": "C01-FFV1-FX-05",
@@ -1545,7 +1741,11 @@
       "physicalHeight": 64,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-hd/fx/fx-05.png",
-      "sha256": "2bdce4292a68bf245e52f7929bfd0b5434196606c08fcc4bab6d712f8627a156"
+      "sha256": "2bdce4292a68bf245e52f7929bfd0b5434196606c08fcc4bab6d712f8627a156",
+      "groundFront": [
+        16,
+        16
+      ]
     },
     {
       "assetId": "C01-FFV1-FX-06",
@@ -1571,7 +1771,11 @@
       "physicalHeight": 64,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-hd/fx/fx-06.png",
-      "sha256": "f158c6411ded2f6339a7a4b4d110f4caab4dde0cf69f7f3b2c7dc1c02301eb66"
+      "sha256": "f158c6411ded2f6339a7a4b4d110f4caab4dde0cf69f7f3b2c7dc1c02301eb66",
+      "groundFront": [
+        16,
+        16
+      ]
     },
     {
       "assetId": "C01-FFV1-FX-07",
@@ -1597,7 +1801,11 @@
       "physicalHeight": 64,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-hd/fx/fx-07.png",
-      "sha256": "a28158ad21019548ffb41d0bb8704f47c1741b1bad49f794ca9d2a6547a6e9da"
+      "sha256": "a28158ad21019548ffb41d0bb8704f47c1741b1bad49f794ca9d2a6547a6e9da",
+      "groundFront": [
+        16,
+        16
+      ]
     },
     {
       "assetId": "C01-FFV1-FX-08",
@@ -1623,7 +1831,11 @@
       "physicalHeight": 64,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-hd/fx/fx-08.png",
-      "sha256": "76da1809cc8ce37d0277ecff35389d470e934b7aedc587430901bfa96a6e99be"
+      "sha256": "76da1809cc8ce37d0277ecff35389d470e934b7aedc587430901bfa96a6e99be",
+      "groundFront": [
+        16,
+        16
+      ]
     },
     {
       "assetId": "C01-FFV1-FX-17",
@@ -1649,7 +1861,11 @@
       "physicalHeight": 64,
       "pixelDensity": 2,
       "resourcePath": "res://assets/runtime-hd/fx/fx-17.png",
-      "sha256": "3d25f4cc15d78de1ba8f06014deb1d10ee44fc2c8698f5c2bcc03fb67dd45d27"
+      "sha256": "3d25f4cc15d78de1ba8f06014deb1d10ee44fc2c8698f5c2bcc03fb67dd45d27",
+      "groundFront": [
+        16,
+        16
+      ]
     },
     {
       "id": "laiya-stage01",
@@ -1676,7 +1892,11 @@
       "physicalHeight": 128,
       "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/laiya-stage01@2x.png",
       "sha256": "e1e53f78fb7ccdb275add9322e9e7d23559af4538f0919904981999665805a57",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        55.33163265306123,
+        59.28061224489796
+      ]
     },
     {
       "id": "roderick-stage01",
@@ -1703,7 +1923,11 @@
       "physicalHeight": 160,
       "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/roderick-stage01@2x.png",
       "sha256": "215fc2c3d3206fc5319ea6d5cbd9042453c422e6c677d73d588c655364b4dbdf",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        60.2428722280887,
+        63.65575501583949
+      ]
     },
     {
       "id": "mirelle-stage01",
@@ -1730,7 +1954,11 @@
       "physicalHeight": 128,
       "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/mirelle-stage01@2x.png",
       "sha256": "4aa82bcc86b6d330fc89c31f3a5fc41c25abe6ede20b12f2a4c5d336bb3cc131",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        44.291621327529924,
+        50.29815016322089
+      ]
     },
     {
       "id": "torren-stage01",
@@ -1757,7 +1985,11 @@
       "physicalHeight": 128,
       "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/torren-stage01@2x.png",
       "sha256": "456d29121b7e597f05c00a3f00ef529de638eca0da32160d4dad7979db5205c3",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        44.51901565995526,
+        51.44519015659955
+      ]
     },
     {
       "id": "cain-stage01",
@@ -1784,7 +2016,11 @@
       "physicalHeight": 128,
       "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/cain-stage01@2x.png",
       "sha256": "0967c3364daa06890b5c9791b1131ffb8f312e851e3f7611141267e425d6d01f",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        40.8372602739726,
+        50.579726027397264
+      ]
     },
     {
       "id": "bran-stage01",
@@ -1811,7 +2047,11 @@
       "physicalHeight": 128,
       "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/bran-stage01@2x.png",
       "sha256": "b5c49999ff7bb96b122a989ca1d8b197f6b4b81f3aca2f7c52fc3d693db524f8",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        42.81419624217119,
+        49.102296450939455
+      ]
     },
     {
       "id": "tasha-stage01",
@@ -1838,7 +2078,11 @@
       "physicalHeight": 128,
       "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/tasha-stage01@2x.png",
       "sha256": "59dd5a4bd43270234e9c51ae7672a58c6bdd06d4a9708ba801e0df1f49465423",
-      "presentationScale": 0.62
+      "presentationScale": 0.62,
+      "groundFront": [
+        42.89891135303266,
+        49.117677553136346
+      ]
     },
     {
       "id": "field-post-compact",
@@ -1868,7 +2112,11 @@
       "physicalWidth": 384,
       "physicalHeight": 128,
       "resourcePath": "res://assets/runtime-approved-v5/map-structure-presentation/field-post-compact@2x.png",
-      "sha256": "568733cd8d49377641b5543d49e9bd98da7285fdd30f6b0ed72e5f030e311b23"
+      "sha256": "568733cd8d49377641b5543d49e9bd98da7285fdd30f6b0ed72e5f030e311b23",
+      "groundFront": [
+        32,
+        53.00000000000001
+      ]
     }
   ]
 }

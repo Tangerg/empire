@@ -79,6 +79,10 @@ public sealed class AssetRecord
     {
         get; init;
     }
+    public double[]? GroundFront
+    {
+        get; init;
+    }
     public int[]? Footprint
     {
         get; init;
@@ -217,6 +221,10 @@ public sealed class EnvironmentCellRecord
         get; init;
     }
     public double[]? Anchor
+    {
+        get; init;
+    }
+    public double[]? GroundFront
     {
         get; init;
     }

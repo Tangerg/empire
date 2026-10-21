@@ -115,23 +115,6 @@
       "role": "enemy-vanguard"
     }
   ],
-  "elevationBindings": [
-    {
-      "source": "GameMap.elevation",
-      "value": 0,
-      "visual": "ground"
-    },
-    {
-      "source": "GameMap.elevation",
-      "value": 1,
-      "visual": "temperate-low-ledge"
-    },
-    {
-      "source": "GameMap.elevation",
-      "value": 2,
-      "visual": "temperate-cliff-straight-south"
-    }
-  ],
   "placements": [
     {
       "id": "gray-camp-ground",
@@ -146,65 +129,6 @@
       "y": 12.3,
       "layer": "foundation",
       "scale": 0.8
-    },
-    {
-      "id": "temperate-hill-cap",
-      "x": 14.05,
-      "y": 5.1,
-      "layer": "under-units",
-      "scale": 0.82
-    },
-    {
-      "id": "temperate-cliff-straight-south",
-      "x": 14.3,
-      "y": 7.15,
-      "layer": "under-units",
-      "scale": 0.82
-    },
-    {
-      "id": "temperate-cliff-convex-corner",
-      "x": 12.25,
-      "y": 6.3,
-      "layer": "under-units",
-      "scale": 0.7
-    },
-    {
-      "id": "temperate-ramp-level-2",
-      "x": 15.9,
-      "y": 7.3,
-      "layer": "under-units",
-      "scale": 0.7
-    },
-    {
-      "id": "temperate-hill-cap",
-      "x": 25.5,
-      "y": 16.9,
-      "layer": "under-units",
-      "scale": 0.86,
-      "flip": true
-    },
-    {
-      "id": "temperate-cliff-straight-south",
-      "x": 24.6,
-      "y": 19.5,
-      "layer": "under-units",
-      "scale": 0.86
-    },
-    {
-      "id": "temperate-cliff-convex-corner",
-      "x": 23.25,
-      "y": 18.65,
-      "layer": "under-units",
-      "scale": 0.75,
-      "flip": true
-    },
-    {
-      "id": "temperate-ramp-level-2",
-      "x": 28.5,
-      "y": 17.4,
-      "layer": "under-units",
-      "scale": 0.65,
-      "flip": true
     },
     {
       "id": "field-tent-cluster",

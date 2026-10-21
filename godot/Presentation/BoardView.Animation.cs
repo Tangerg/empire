@@ -183,6 +183,14 @@ public partial class BoardView
             return true;
         var asset = UnitAsset(unit);
         var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
+        var movingEntry = _standing.Single(entry => entry.Node == actor);
+        var frontOffset = StandingDepthContact(movingEntry).Y - movingEntry.Contact.Y;
+        var pathDepths = path.Select(point => LogicalContact(Coordinate(point!).X, Coordinate(point!).Y).Y + frontOffset).ToArray();
+        var firstDepth = (int)Math.Floor(pathDepths.Min());
+        var lastDepth = (int)Math.Ceiling(pathDepths.Max());
+        Projection.PrepareDepthPartitions(_standing.Where(entry => entry.Layer != 0)
+            .Select(entry => StandingDepthContact(entry).Y),
+            Enumerable.Range(firstDepth, lastDepth - firstDepth + 1).Select(depth => (float)depth));
         var walk = new[] { AssetCatalog.FrameIndex(asset, "walk-a"), AssetCatalog.FrameIndex(asset, "walk-b") };
         var duration = playback.Transition.IsComputerAction ? 65.0 : 85.0;
         var elapsed = 0.0;
@@ -193,11 +201,13 @@ public partial class BoardView
             var to = Coordinate(path[index]!);
             if (to.X != from.X)
                 Face(sprite, to.X < from.X);
-            var start = CellContact(from.X, from.Y);
-            var end = CellContact(to.X, to.Y);
+            var start = LogicalContact(from.X, from.Y);
+            var end = LogicalContact(to.X, to.Y);
             if (!await playback.Clock.TweenAsync(duration, t =>
             {
-                actor.Position = start.Lerp(end, (float)Ease(t)) - new Vector2(0, (float)(Math.Sin(Math.PI * t) * 2.5));
+                var logical = start.Lerp(end, (float)Ease(t));
+                actor.SetMeta("logical_contact", logical);
+                actor.Position = Projection.Project(logical) - new Vector2(0, (float)(Math.Sin(Math.PI * t) * 2.5));
                 SetFrame(sprite, asset, walk[(int)Math.Floor((elapsed + t * duration) * 6.25 / 1000) % 2]);
                 SortAnimatedStanding();
             }))
@@ -374,19 +384,16 @@ public partial class BoardView
             return;
         var map = (JsonObject)playback.After["map"]!;
         var owners = (JsonArray)map["owners"]!;
-        var tiles = (JsonArray)map["tiles"]!;
         foreach (var site in _projection.GetChildren().OfType<Node2D>().Where(node => node.Name.ToString().StartsWith("MapStructure_", StringComparison.Ordinal)))
         {
             var index = int.Parse(site.Name.ToString()[13..], CultureInfo.InvariantCulture);
             var owner = Integer(owners[index], "site owner");
-            var asset = _assets!.ResolveMapStructure(tiles[index]!.GetValue<string>());
-            site.GetNode<Sprite2D>("AuthoredSprite").Texture = _assets.CreateFrameTexture(asset, AssetCatalog.FrameIndex(asset, owner == 0 ? "normal" : "captured"));
             if (site.GetNodeOrNull<Node2D>("OwnerBanner") is { } old)
                 RemoveEffect(old);
             if (owner != 0)
             {
                 var player = Objects(playback.After, "players").Single(value => Integer(value, "id") == owner);
-                site.AddChild(DynamicStateView.CreateOwnerBanner(Text(player, "color")));
+                site.AddChild(DynamicStateView.CreateOwnerBanner(Text(player, "color"), _shadows));
             }
         }
     }
@@ -399,7 +406,7 @@ public partial class BoardView
     private static JsonObject ReadState(JsonElement value) => Empire.Core.Determinism.EcmaJson.Parse(value.GetRawText()) as JsonObject
         ?? throw new InvalidOperationException("Presentation transition requires JSON objects.");
     private static Vector2I Coordinate(JsonNode value) => new(Integer(value["x"], "x"), Integer(value["y"], "y"));
-    private static Vector2 CellCentre(Vector2I at) => new(at.X * 32 + 16, at.Y * 32 + 16);
+    private Vector2 CellCentre(Vector2I at) => Projection.CellCenter(new Empire.Core.Geometry.Coord(at.X, at.Y));
     private static Vector2I? ImpactOn(Playback playback, int id)
     {
         var unit = FindUnit(playback.After, id) ?? FindUnit(playback.Before, id);
@@ -419,7 +426,7 @@ public partial class BoardView
         return asset.Loop ? frame % asset.FrameCount : Math.Min(frame, asset.FrameCount - 1);
     }
     private void SortAnimatedStanding() => OrderStanding(_standing.Where(entry => GodotObject.IsInstanceValid(entry.Node) && !entry.Node.IsQueuedForDeletion())
-        .Select(entry => entry with { Contact = entry.Node.Position }).ToList());
+        .Select(entry => entry.Node.HasMeta("logical_contact") ? entry with { Contact = entry.Node.GetMeta("logical_contact").AsVector2() } : entry).ToList());
     private static void SwellActor(Node2D actor, Vector2 contact, float scale)
     {
         actor.Scale = Vector2.One * scale;

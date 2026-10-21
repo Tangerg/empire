@@ -31,6 +31,23 @@
         256
       ],
       "review": "No visible repeat seam at actual first-level camera. Fine-grain realism remains an explicitly provisional style choice; path coverage comes only from canonical road cells."
+    },
+    {
+      "id": "cliff-front-rock",
+      "resourcePath": "res://assets/native/terrain/cliff-front-rock.png",
+      "sha256": "ff4b698392305137ce988fbfb20ca5da24236b45288bc0a3a53aad42c1049f1d",
+      "method": "Generated opaque stylized front-facing rock fill, with one style correction. Geometry and alpha are not part of the texture.",
+      "sourceOwner": "Native world-materials.json",
+      "generationDate": "2026-10-21",
+      "imageDimensions": [
+        2172,
+        724
+      ],
+      "logicalRepeat": [
+        96,
+        32
+      ],
+      "review": "Reserved for canonically authored cliff faces. The shipped first level has no cliff edges and does not display this material; its hills remain traversable shared grass slopes. General cliff picking is checked synthetically, not claimed visually accepted campaign scenery."
     }
   ]
 }

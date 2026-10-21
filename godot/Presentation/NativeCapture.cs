@@ -45,6 +45,16 @@ public partial class NativeCapture : Node
             Capture();
     }
 
+    private static BoardView? FindBoard(Node root)
+    {
+        if (root is BoardView board)
+            return board;
+        foreach (var child in root.GetChildren())
+            if (FindBoard(child) is { } found)
+                return found;
+        return null;
+    }
+
     private async void Capture()
     {
         if (_capturing || _directory.Length == 0)
@@ -53,12 +63,21 @@ public partial class NativeCapture : Node
         try
         {
             await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
+            var fps = Performance.GetMonitor(Performance.Monitor.TimeFps);
+            var processMilliseconds = Performance.GetMonitor(Performance.Monitor.TimeProcess) * 1000;
+            var drawCalls = Performance.GetMonitor(Performance.Monitor.RenderTotalDrawCallsInFrame);
+            var nodes = Performance.GetMonitor(Performance.Monitor.ObjectNodeCount);
             using var image = GetViewport().GetTexture().GetImage();
             var path = Path.Combine(_directory, $"native-{++_sequence:000}.png");
             var error = image.SavePng(path);
             if (error != Error.Ok)
                 throw new IOException($"Native capture failed: {path}, {error}");
             GD.Print($"Native viewport captured: {path} ({image.GetWidth()}×{image.GetHeight()}).");
+            GD.Print($"Native frame observation before readback: {fps:F1} FPS, process {processMilliseconds:F2} ms, "
+                + $"draw calls {drawCalls}, scene nodes {nodes}.");
+            if (FindBoard(this) is { ProjectionUnitCount: > 0 } board)
+                GD.Print($"Native surface geometry: {board.Projection.Triangles.Count} source triangles, "
+                    + $"{board.Projection.DepthPatches.Count} clipped patches, {board.Projection.DepthPartitions.Count} depth partitions.");
         }
         catch (Exception error) { GD.PushError(error.ToString()); }
         finally { _capturing = false; }

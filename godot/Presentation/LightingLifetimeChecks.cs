@@ -173,10 +173,10 @@ public partial class LightingLifetimeChecks : Node
             var terrain = new TerrainView();
             try
             {
-                terrain.Configure(materials, AuthoredScene.Load("res://data/scenes/c01-01.json"), EnvironmentCatalog.Load());
+                terrain.Configure(new(EnvironmentCatalog.Load(), engine.Grids.Get("square4"), null), materials, AuthoredScene.Load("res://data/scenes/c01-01.json"));
                 if (missing)
                 {
-                    terrain.Render(failureTiles, new(width, height));
+                    terrain.Render(TerrainChecks.FlatProjection(failureTiles, new int[width * height], new(width, height)), failureTiles, new int[width * height], new(width, height));
                     Require(terrain.Diagnostics.Any(message => message.Contains("missing-lifetime-fixture", StringComparison.Ordinal)),
                         "Missing material fixture must exercise the expected art diagnostic boundary.");
                 }
@@ -185,7 +185,7 @@ public partial class LightingLifetimeChecks : Node
                     var rejected = false;
                     try
                     {
-                        terrain.Render(failureTiles, new(width, height));
+                        terrain.Render(TerrainChecks.FlatProjection(failureTiles, new int[width * height], new(width, height)), failureTiles, new int[width * height], new(width, height));
                     }
                     catch (InvalidOperationException error) when (error.Message.StartsWith("Invalid world material geometry:", StringComparison.Ordinal))
                     {
@@ -214,8 +214,8 @@ public partial class LightingLifetimeChecks : Node
         screen.Board.AdvanceAnimationsAutomatically = false;
         void Bind(GrayFlagSession session)
         {
-            screen.BindSession(new(text, battleText, session, new(assets, environment, facing => facing == "west", null)), level, scene);
-            screen.ConfigureDynamicState(engine.Catalog);
+            screen.BindSession(new(text, battleText, session, new(assets, environment, engine.Grids.Get("square4"), engine.Catalog, facing => facing == "west", null)), level, scene);
+            screen.ConfigureDynamicState();
         }
         var session = new GrayFlagSession(new(engine, presentation), level);
         Bind(session);

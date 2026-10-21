@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "environment-builder-v1.1",
+  "schemaVersion": "environment-builder-v1.2",
   "campaignId": "candidate-01",
   "packId": "environment-builder-v1.1",
   "title": "剧本一 · 通用西幻 SRPG 地图建造包 V1.1",
@@ -1190,7 +1190,11 @@
             109.18979266347688
           ],
           "obstructionHeight": 1,
-          "passable": false
+          "passable": false,
+          "groundFront": [
+            65.28548644338119,
+            109.18979266347688
+          ]
         },
         {
           "id": "temperate-cliff-end-west",
@@ -1203,7 +1207,11 @@
             115.22169059011165
           ],
           "obstructionHeight": 1,
-          "passable": false
+          "passable": false,
+          "groundFront": [
+            58.85805422647528,
+            115.22169059011165
+          ]
         },
         {
           "id": "temperate-cliff-end-east",
@@ -1216,7 +1224,11 @@
             110.27751196172248
           ],
           "obstructionHeight": 1,
-          "passable": false
+          "passable": false,
+          "groundFront": [
+            75.96491228070175,
+            110.27751196172248
+          ]
         },
         {
           "id": "temperate-cliff-concave-corner",
@@ -1229,7 +1241,11 @@
             96.73046251993621
           ],
           "obstructionHeight": 1,
-          "passable": false
+          "passable": false,
+          "groundFront": [
+            64,
+            96.73046251993621
+          ]
         },
         {
           "id": "temperate-hill-cap",
@@ -1242,7 +1258,11 @@
             102.26794258373205
           ],
           "obstructionHeight": 1,
-          "passable": false
+          "passable": false,
+          "groundFront": [
+            64,
+            102.26794258373205
+          ]
         },
         {
           "id": "temperate-ramp-level-1",
@@ -1256,7 +1276,11 @@
           ],
           "heightDelta": 1,
           "obstructionHeight": 0,
-          "passable": true
+          "passable": true,
+          "groundFront": [
+            64,
+            111.7511961722488
+          ]
         },
         {
           "id": "temperate-ramp-level-2",
@@ -1270,7 +1294,11 @@
           ],
           "heightDelta": 2,
           "obstructionHeight": 0,
-          "passable": true
+          "passable": true,
+          "groundFront": [
+            64,
+            114.33173843700159
+          ]
         },
         {
           "id": "temperate-mountain-pass",
@@ -1284,7 +1312,11 @@
           ],
           "heightDelta": 1,
           "obstructionHeight": 0,
-          "passable": true
+          "passable": true,
+          "groundFront": [
+            68.35087719298245,
+            100.09250398724083
+          ]
         },
         {
           "id": "temperate-cliff-convex-corner",
@@ -1297,7 +1329,11 @@
             104.83891547049441
           ],
           "obstructionHeight": 1,
-          "passable": false
+          "passable": false,
+          "groundFront": [
+            64,
+            104.83891547049441
+          ]
         },
         {
           "id": "temperate-broken-ledge",
@@ -1310,7 +1346,11 @@
             109.48644338118022
           ],
           "obstructionHeight": 1,
-          "passable": false
+          "passable": false,
+          "groundFront": [
+            64,
+            109.48644338118022
+          ]
         },
         {
           "id": "temperate-low-ledge",
@@ -1323,7 +1363,11 @@
             110.87081339712918
           ],
           "obstructionHeight": 1,
-          "passable": false
+          "passable": false,
+          "groundFront": [
+            68.25199362041467,
+            110.87081339712918
+          ]
         },
         {
           "id": "temperate-talus-foot",
@@ -1336,7 +1380,11 @@
             111.56299840510367
           ],
           "obstructionHeight": 0,
-          "passable": true
+          "passable": true,
+          "groundFront": [
+            64,
+            111.56299840510367
+          ]
         },
         {
           "id": "temperate-pillar-wide",
@@ -1349,7 +1397,11 @@
             119.47368421052632
           ],
           "obstructionHeight": 2,
-          "passable": false
+          "passable": false,
+          "groundFront": [
+            70.82296650717703,
+            119.47368421052632
+          ]
         },
         {
           "id": "temperate-pillar-narrow",
@@ -1362,7 +1414,11 @@
             116.21052631578948
           ],
           "obstructionHeight": 2,
-          "passable": false
+          "passable": false,
+          "groundFront": [
+            54.90271132376395,
+            116.21052631578948
+          ]
         },
         {
           "id": "temperate-ledge-end",
@@ -1375,7 +1431,11 @@
             107.90430622009569
           ],
           "obstructionHeight": 1,
-          "passable": false
+          "passable": false,
+          "groundFront": [
+            63.802232854864435,
+            107.90430622009569
+          ]
         },
         {
           "id": "temperate-plateau-cap",
@@ -1388,7 +1448,11 @@
             111.76076555023923
           ],
           "obstructionHeight": 1,
-          "passable": false
+          "passable": false,
+          "groundFront": [
+            68.25199362041467,
+            111.76076555023923
+          ]
         }
       ],
       "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/cliff-modules-temperate@2x.png",
@@ -1536,7 +1600,11 @@
             84.896331738437
           ],
           "obstructionHeight": 2,
-          "presentationScale": 1.2
+          "presentationScale": 1.2,
+          "groundFront": [
+            48.89154704944178,
+            84.896331738437
+          ]
         },
         {
           "id": "pine-pair",
@@ -1549,7 +1617,11 @@
             77.00956937799043
           ],
           "obstructionHeight": 2,
-          "presentationScale": 1.4
+          "presentationScale": 1.4,
+          "groundFront": [
+            49.577352472089316,
+            77.00956937799043
+          ]
         },
         {
           "id": "pine-cluster",
@@ -1562,7 +1634,11 @@
             78.03827751196172
           ],
           "obstructionHeight": 2,
-          "presentationScale": 1.5
+          "presentationScale": 1.5,
+          "groundFront": [
+            48.548644338118024,
+            78.03827751196172
+          ]
         },
         {
           "id": "pine-sapling",
@@ -1575,7 +1651,11 @@
             79.40988835725678
           ],
           "obstructionHeight": 1,
-          "presentationScale": 0.7
+          "presentationScale": 0.7,
+          "groundFront": [
+            49.165869218500795,
+            79.40988835725678
+          ]
         },
         {
           "id": "pine-underbrush-a",
@@ -1588,7 +1668,11 @@
             74.26634768740031
           ],
           "obstructionHeight": 0,
-          "presentationScale": 0.8
+          "presentationScale": 0.8,
+          "groundFront": [
+            48.75438596491228,
+            74.26634768740031
+          ]
         },
         {
           "id": "pine-underbrush-b",
@@ -1601,7 +1685,11 @@
             67.68261562998404
           ],
           "obstructionHeight": 0,
-          "presentationScale": 0.65
+          "presentationScale": 0.65,
+          "groundFront": [
+            47.65709728867623,
+            67.68261562998404
+          ]
         },
         {
           "id": "pine-underbrush-c",
@@ -1614,7 +1702,11 @@
             68.57416267942584
           ],
           "obstructionHeight": 0,
-          "presentationScale": 1
+          "presentationScale": 1,
+          "groundFront": [
+            46.834130781499205,
+            68.57416267942584
+          ]
         },
         {
           "id": "pine-underbrush-d",
@@ -1627,7 +1719,11 @@
             65.62519936204146
           ],
           "obstructionHeight": 0,
-          "presentationScale": 0.75
+          "presentationScale": 0.75,
+          "groundFront": [
+            46.696969696969695,
+            65.62519936204146
+          ]
         },
         {
           "id": "pine-dead",
@@ -1640,7 +1736,11 @@
             80.91866028708134
           ],
           "obstructionHeight": 2,
-          "presentationScale": 1.2
+          "presentationScale": 1.2,
+          "groundFront": [
+            49.920255183413076,
+            80.91866028708134
+          ]
         },
         {
           "id": "pine-mature-a",
@@ -1653,7 +1753,11 @@
             81.67304625199363
           ],
           "obstructionHeight": 2,
-          "presentationScale": 1.5
+          "presentationScale": 1.5,
+          "groundFront": [
+            48.20574162679426,
+            81.67304625199363
+          ]
         },
         {
           "id": "pine-mature-b",
@@ -1666,7 +1770,11 @@
             78.9298245614035
           ],
           "obstructionHeight": 2,
-          "presentationScale": 1.65
+          "presentationScale": 1.65,
+          "groundFront": [
+            48.75438596491228,
+            78.9298245614035
+          ]
         },
         {
           "id": "pine-mature-c",
@@ -1679,7 +1787,11 @@
             81.53588516746412
           ],
           "obstructionHeight": 2,
-          "presentationScale": 1.25
+          "presentationScale": 1.25,
+          "groundFront": [
+            49.09728867623605,
+            81.53588516746412
+          ]
         },
         {
           "id": "pine-low-shrub",
@@ -1692,7 +1804,11 @@
             67.6140350877193
           ],
           "obstructionHeight": 0,
-          "presentationScale": 0.62
+          "presentationScale": 0.62,
+          "groundFront": [
+            46.834130781499205,
+            67.6140350877193
+          ]
         },
         {
           "id": "pine-fallen-log",
@@ -1705,7 +1821,11 @@
             60.89314194577352
           ],
           "obstructionHeight": 1,
-          "presentationScale": 0.7
+          "presentationScale": 0.7,
+          "groundFront": [
+            48.548644338118024,
+            60.89314194577352
+          ]
         },
         {
           "id": "pine-stump",
@@ -1718,7 +1838,11 @@
             65.28229665071771
           ],
           "obstructionHeight": 0,
-          "presentationScale": 0.68
+          "presentationScale": 0.68,
+          "groundFront": [
+            49.02870813397129,
+            65.28229665071771
+          ]
         },
         {
           "id": "pine-mossy-rock",
@@ -1731,7 +1855,11 @@
             67.7511961722488
           ],
           "obstructionHeight": 1,
-          "presentationScale": 0.67
+          "presentationScale": 0.67,
+          "groundFront": [
+            48.20574162679426,
+            67.7511961722488
+          ]
         }
       ],
       "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/forest-existing@2x.png",
@@ -1785,7 +1913,11 @@
             83.8676236044657
           ],
           "obstructionHeight": 2,
-          "presentationScale": 1.375
+          "presentationScale": 1.375,
+          "groundFront": [
+            48.89154704944178,
+            83.8676236044657
+          ]
         },
         {
           "id": "mixed-forest-autumn",
@@ -1798,7 +1930,11 @@
             79.75279106858054
           ],
           "obstructionHeight": 2,
-          "presentationScale": 1.5
+          "presentationScale": 1.5,
+          "groundFront": [
+            48.89154704944178,
+            79.75279106858054
+          ]
         },
         {
           "id": "mixed-forest-dense",
@@ -1811,7 +1947,11 @@
             83.52472089314195
           ],
           "obstructionHeight": 2,
-          "presentationScale": 1.4375
+          "presentationScale": 1.4375,
+          "groundFront": [
+            48.89154704944178,
+            83.52472089314195
+          ]
         },
         {
           "id": "oak-grove-dense",
@@ -1824,7 +1964,11 @@
             79.75279106858054
           ],
           "obstructionHeight": 2,
-          "presentationScale": 1.625
+          "presentationScale": 1.625,
+          "groundFront": [
+            47.8628389154705,
+            79.75279106858054
+          ]
         },
         {
           "id": "mixed-forest-edge",
@@ -1837,7 +1981,11 @@
             80.43859649122807
           ],
           "obstructionHeight": 2,
-          "presentationScale": 1.5
+          "presentationScale": 1.5,
+          "groundFront": [
+            48.89154704944178,
+            80.43859649122807
+          ]
         },
         {
           "id": "sapling-rock-cluster",
@@ -1850,7 +1998,11 @@
             77.69537480063796
           ],
           "obstructionHeight": 1,
-          "presentationScale": 0.9
+          "presentationScale": 0.9,
+          "groundFront": [
+            49.577352472089316,
+            77.69537480063796
+          ]
         },
         {
           "id": "bramble-dark",
@@ -1863,7 +2015,11 @@
             72.89473684210526
           ],
           "obstructionHeight": 0,
-          "presentationScale": 0.8
+          "presentationScale": 0.8,
+          "groundFront": [
+            47.8628389154705,
+            72.89473684210526
+          ]
         },
         {
           "id": "fern-bed",
@@ -1876,7 +2032,11 @@
             70.49441786283892
           ],
           "obstructionHeight": 0,
-          "presentationScale": 0.65
+          "presentationScale": 0.65,
+          "groundFront": [
+            47.8628389154705,
+            70.49441786283892
+          ]
         },
         {
           "id": "bramble-berries",
@@ -1889,7 +2049,11 @@
             70.83732057416267
           ],
           "obstructionHeight": 0,
-          "presentationScale": 0.85
+          "presentationScale": 0.85,
+          "groundFront": [
+            47.8628389154705,
+            70.83732057416267
+          ]
         },
         {
           "id": "stump-low",
@@ -1902,7 +2066,11 @@
             65.35087719298247
           ],
           "obstructionHeight": 0,
-          "presentationScale": 0.8
+          "presentationScale": 0.8,
+          "groundFront": [
+            48,
+            65.35087719298247
+          ]
         },
         {
           "id": "stump-hollow",
@@ -1915,7 +2083,11 @@
             73.23763955342903
           ],
           "obstructionHeight": 0,
-          "presentationScale": 0.75
+          "presentationScale": 0.75,
+          "groundFront": [
+            47.8628389154705,
+            73.23763955342903
+          ]
         },
         {
           "id": "fallen-hollow-log",
@@ -1928,7 +2100,11 @@
             65.00797448165869
           ],
           "obstructionHeight": 1,
-          "presentationScale": 0.7
+          "presentationScale": 0.7,
+          "groundFront": [
+            48.89154704944178,
+            65.00797448165869
+          ]
         },
         {
           "id": "leaf-pile",
@@ -1941,7 +2117,11 @@
             51.634768740031895
           ],
           "obstructionHeight": 0,
-          "presentationScale": 0.4
+          "presentationScale": 0.4,
+          "groundFront": [
+            48.068580542264755,
+            51.634768740031895
+          ]
         },
         {
           "id": "boulder-large",
@@ -1954,7 +2134,11 @@
             76.87240829346092
           ],
           "obstructionHeight": 1,
-          "presentationScale": 0.6
+          "presentationScale": 0.6,
+          "groundFront": [
+            48.89154704944178,
+            76.87240829346092
+          ]
         },
         {
           "id": "boulder-ferns",
@@ -1967,7 +2151,11 @@
             74.60925039872409
           ],
           "obstructionHeight": 1,
-          "presentationScale": 0.65
+          "presentationScale": 0.65,
+          "groundFront": [
+            47.8628389154705,
+            74.60925039872409
+          ]
         },
         {
           "id": "forest-floor-cluster",
@@ -1980,7 +2168,11 @@
             56.43540669856459
           ],
           "obstructionHeight": 0,
-          "presentationScale": 0.65
+          "presentationScale": 0.65,
+          "groundFront": [
+            48.068580542264755,
+            56.43540669856459
+          ]
         }
       ],
       "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/forest-temperate@2x.png",
@@ -2034,7 +2226,11 @@
             82.63317384370016
           ],
           "obstructionHeight": 2,
-          "presentationScale": 1.1
+          "presentationScale": 1.1,
+          "groundFront": [
+            48.96012759170654,
+            82.63317384370016
+          ]
         },
         {
           "id": "snow-bare-shrub",
@@ -2047,7 +2243,11 @@
             75.63795853269538
           ],
           "obstructionHeight": 1,
-          "presentationScale": 0.7
+          "presentationScale": 0.7,
+          "groundFront": [
+            47.931419457735245,
+            75.63795853269538
+          ]
         },
         {
           "id": "ice-boulder-cluster",
@@ -2060,7 +2260,11 @@
             76.52950558213716
           ],
           "obstructionHeight": 1,
-          "presentationScale": 0.9
+          "presentationScale": 0.9,
+          "groundFront": [
+            48.27432216905901,
+            76.52950558213716
+          ]
         },
         {
           "id": "snowdrift-rock",
@@ -2073,7 +2277,11 @@
             71.72886762360447
           ],
           "obstructionHeight": 0,
-          "presentationScale": 0.8
+          "presentationScale": 0.8,
+          "groundFront": [
+            49.09728867623605,
+            71.72886762360447
+          ]
         },
         {
           "id": "wasteland-bramble",
@@ -2086,7 +2294,11 @@
             74.60925039872409
           ],
           "obstructionHeight": 1,
-          "presentationScale": 0.8
+          "presentationScale": 0.8,
+          "groundFront": [
+            47.931419457735245,
+            74.60925039872409
+          ]
         },
         {
           "id": "wasteland-rock-spire",
@@ -2099,7 +2311,11 @@
             78.38118022328548
           ],
           "obstructionHeight": 1,
-          "presentationScale": 1.4
+          "presentationScale": 1.4,
+          "groundFront": [
+            49.09728867623605,
+            78.38118022328548
+          ]
         },
         {
           "id": "wasteland-dry-grass",
@@ -2112,7 +2328,11 @@
             76.3237639553429
           ],
           "obstructionHeight": 0,
-          "presentationScale": 0.7
+          "presentationScale": 0.7,
+          "groundFront": [
+            48.27432216905901,
+            76.3237639553429
+          ]
         },
         {
           "id": "wasteland-broken-standard",
@@ -2125,7 +2345,11 @@
             80.78149920255183
           ],
           "obstructionHeight": 1,
-          "presentationScale": 1
+          "presentationScale": 1,
+          "groundFront": [
+            48.89154704944178,
+            80.78149920255183
+          ]
         },
         {
           "id": "grave-cross-cluster",
@@ -2138,7 +2362,11 @@
             75.63795853269538
           ],
           "obstructionHeight": 1,
-          "presentationScale": 1.4
+          "presentationScale": 1.4,
+          "groundFront": [
+            47.8628389154705,
+            75.63795853269538
+          ]
         },
         {
           "id": "grave-signboards",
@@ -2151,7 +2379,11 @@
             77.69537480063796
           ],
           "obstructionHeight": 1,
-          "presentationScale": 1.2
+          "presentationScale": 1.2,
+          "groundFront": [
+            53.006379585326954,
+            77.69537480063796
+          ]
         },
         {
           "id": "grave-dead-tree",
@@ -2164,7 +2396,11 @@
             79.06698564593302
           ],
           "obstructionHeight": 2,
-          "presentationScale": 2
+          "presentationScale": 2,
+          "groundFront": [
+            47.8628389154705,
+            79.06698564593302
+          ]
         },
         {
           "id": "grave-marker-lantern",
@@ -2177,7 +2413,11 @@
             77.35247208931419
           ],
           "obstructionHeight": 1,
-          "presentationScale": 1.25
+          "presentationScale": 1.25,
+          "groundFront": [
+            49.577352472089316,
+            77.35247208931419
+          ]
         },
         {
           "id": "forge-coal-pile",
@@ -2190,7 +2430,11 @@
             71.2488038277512
           ],
           "obstructionHeight": 1,
-          "presentationScale": 1.1
+          "presentationScale": 1.1,
+          "groundFront": [
+            47.931419457735245,
+            71.2488038277512
+          ]
         },
         {
           "id": "forge-coal-sacks",
@@ -2203,7 +2447,11 @@
             73.5805422647528
           ],
           "obstructionHeight": 1,
-          "presentationScale": 1.6
+          "presentationScale": 1.6,
+          "groundFront": [
+            48.548644338118024,
+            73.5805422647528
+          ]
         },
         {
           "id": "forge-ember-pile",
@@ -2216,7 +2464,11 @@
             68.36842105263159
           ],
           "obstructionHeight": 1,
-          "presentationScale": 1.1
+          "presentationScale": 1.1,
+          "groundFront": [
+            48.548644338118024,
+            68.36842105263159
+          ]
         },
         {
           "id": "forge-charcoal-kiln",
@@ -2229,7 +2481,11 @@
             73.5805422647528
           ],
           "obstructionHeight": 2,
-          "presentationScale": 1.7
+          "presentationScale": 1.7,
+          "groundFront": [
+            47.931419457735245,
+            73.5805422647528
+          ]
         }
       ],
       "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/scenery-regional@2x.png",
@@ -2282,7 +2538,11 @@
             48,
             91
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            48,
+            91
+          ]
         },
         {
           "id": "wood-bridge-vertical",
@@ -2294,7 +2554,11 @@
             48,
             91
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            48,
+            91
+          ]
         },
         {
           "id": "stone-bridge-horizontal",
@@ -2306,7 +2570,11 @@
             48,
             91
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            48,
+            91
+          ]
         },
         {
           "id": "stone-bridge-vertical",
@@ -2318,7 +2586,11 @@
             48,
             91
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            48,
+            91
+          ]
         },
         {
           "id": "wood-bridgehead-west",
@@ -2330,7 +2602,11 @@
             48,
             91
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            48,
+            91
+          ]
         },
         {
           "id": "wood-bridgehead-east",
@@ -2342,7 +2618,11 @@
             48,
             91
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            48,
+            91
+          ]
         },
         {
           "id": "palisade-straight",
@@ -2354,7 +2634,11 @@
             48,
             73.16427432216906
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            48,
+            73.16427432216906
+          ]
         },
         {
           "id": "palisade-corner",
@@ -2366,7 +2650,11 @@
             48,
             78.29984051036682
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            48,
+            78.29984051036682
+          ]
         },
         {
           "id": "palisade-gate",
@@ -2378,7 +2666,11 @@
             48,
             82.70175438596492
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            48,
+            82.70175438596492
+          ]
         },
         {
           "id": "palisade-breach",
@@ -2390,7 +2682,11 @@
             48,
             75.51196172248804
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            48,
+            75.51196172248804
+          ]
         },
         {
           "id": "stone-wall-straight",
@@ -2402,7 +2698,11 @@
             48,
             64.3604465709729
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            48,
+            64.3604465709729
+          ]
         },
         {
           "id": "stone-wall-corner",
@@ -2414,7 +2714,11 @@
             41.47049441786284,
             76.68580542264753
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            41.47049441786284,
+            76.68580542264753
+          ]
         },
         {
           "id": "stone-gatehouse",
@@ -2426,7 +2730,11 @@
             48,
             80.28070175438596
           ],
-          "obstructionHeight": 2
+          "obstructionHeight": 2,
+          "groundFront": [
+            48,
+            80.28070175438596
+          ]
         },
         {
           "id": "stone-wall-breach",
@@ -2438,7 +2746,11 @@
             48,
             91
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            48,
+            91
+          ]
         },
         {
           "id": "watchtower-wood",
@@ -2450,7 +2762,11 @@
             48,
             91
           ],
-          "obstructionHeight": 2
+          "obstructionHeight": 2,
+          "groundFront": [
+            48,
+            91
+          ]
         },
         {
           "id": "wood-barricade",
@@ -2462,7 +2778,11 @@
             48,
             91
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            48,
+            91
+          ]
         }
       ],
       "bridgeCells": [
@@ -2536,7 +2856,11 @@
             72,
             121.76076555023923
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            72,
+            121.76076555023923
+          ]
         },
         {
           "id": "vilsa-camp-ground",
@@ -2548,7 +2872,11 @@
             72,
             119.58373205741627
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            72,
+            119.58373205741627
+          ]
         },
         {
           "id": "keep-foundation",
@@ -2560,7 +2888,11 @@
             72,
             126.01116427432217
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            72,
+            126.01116427432217
+          ]
         },
         {
           "id": "village-square-foundation",
@@ -2572,7 +2904,11 @@
             72,
             119.79106858054226
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            72,
+            119.79106858054226
+          ]
         },
         {
           "id": "field-tent-cluster",
@@ -2584,7 +2920,11 @@
             72,
             110.66826156299841
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            72,
+            110.66826156299841
+          ]
         },
         {
           "id": "supply-tent-workyard",
@@ -2596,7 +2936,11 @@
             72,
             109.73524720893143
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            72,
+            109.73524720893143
+          ]
         },
         {
           "id": "field-kitchen",
@@ -2608,7 +2952,11 @@
             72,
             122.27910685805422
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            72,
+            122.27910685805422
+          ]
         },
         {
           "id": "wounded-shelter-ground",
@@ -2620,7 +2968,11 @@
             72,
             125.59649122807018
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            72,
+            125.59649122807018
+          ]
         },
         {
           "id": "forge-workyard",
@@ -2632,7 +2984,11 @@
             72,
             121.34609250398724
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            72,
+            121.34609250398724
+          ]
         },
         {
           "id": "livestock-pen",
@@ -2644,7 +3000,11 @@
             76.45773524720893,
             121.55342902711324
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            76.45773524720893,
+            121.55342902711324
+          ]
         },
         {
           "id": "supply-yard",
@@ -2656,7 +3016,11 @@
             72,
             121.76076555023923
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            72,
+            121.76076555023923
+          ]
         },
         {
           "id": "watch-post-ground",
@@ -2668,7 +3032,11 @@
             75.93939393939394,
             128.70653907496012
           ],
-          "obstructionHeight": 2
+          "obstructionHeight": 2,
+          "groundFront": [
+            75.93939393939394,
+            128.70653907496012
+          ]
         },
         {
           "id": "border-gate-ground",
@@ -2680,7 +3048,11 @@
             72,
             125.49282296650718
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            72,
+            125.49282296650718
+          ]
         },
         {
           "id": "abandoned-cart-stop",
@@ -2692,7 +3064,11 @@
             72,
             116.26634768740031
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            72,
+            116.26634768740031
+          ]
         },
         {
           "id": "ruined-foundation",
@@ -2704,7 +3080,11 @@
             72,
             118.33971291866028
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            72,
+            118.33971291866028
+          ]
         },
         {
           "id": "memorial-ground",
@@ -2716,7 +3096,11 @@
             72,
             122.59011164274322
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            72,
+            122.59011164274322
+          ]
         }
       ],
       "footprintRange": [
@@ -2780,7 +3164,11 @@
             80,
             146.54545454545453
           ],
-          "obstructionHeight": 2
+          "obstructionHeight": 2,
+          "groundFront": [
+            80,
+            146.54545454545453
+          ]
         },
         {
           "id": "lorne-stone-castle",
@@ -2792,7 +3180,11 @@
             85.45454545454545,
             149.93939393939394
           ],
-          "obstructionHeight": 3
+          "obstructionHeight": 3,
+          "groundFront": [
+            85.45454545454545,
+            149.93939393939394
+          ]
         },
         {
           "id": "vilsa-stone-castle",
@@ -2804,7 +3196,11 @@
             80,
             148.84848484848484
           ],
-          "obstructionHeight": 3
+          "obstructionHeight": 3,
+          "groundFront": [
+            80,
+            148.84848484848484
+          ]
         },
         {
           "id": "mountain-gate-fort",
@@ -2816,7 +3212,11 @@
             80,
             147.5151515151515
           ],
-          "obstructionHeight": 3
+          "obstructionHeight": 3,
+          "groundFront": [
+            80,
+            147.5151515151515
+          ]
         },
         {
           "id": "frontier-longhall",
@@ -2828,7 +3228,11 @@
             80,
             143.03030303030303
           ],
-          "obstructionHeight": 2
+          "obstructionHeight": 2,
+          "groundFront": [
+            80,
+            143.03030303030303
+          ]
         },
         {
           "id": "walled-trade-town",
@@ -2840,7 +3244,11 @@
             80,
             144
           ],
-          "obstructionHeight": 3
+          "obstructionHeight": 3,
+          "groundFront": [
+            80,
+            144
+          ]
         },
         {
           "id": "field-hospital-compound",
@@ -2852,7 +3260,11 @@
             80,
             144
           ],
-          "obstructionHeight": 2
+          "obstructionHeight": 2,
+          "groundFront": [
+            80,
+            144
+          ]
         },
         {
           "id": "fortified-armory",
@@ -2864,7 +3276,11 @@
             80,
             139.3939393939394
           ],
-          "obstructionHeight": 2
+          "obstructionHeight": 2,
+          "groundFront": [
+            80,
+            139.3939393939394
+          ]
         },
         {
           "id": "border-chapel",
@@ -2876,7 +3292,11 @@
             80,
             147.5151515151515
           ],
-          "obstructionHeight": 2
+          "obstructionHeight": 2,
+          "groundFront": [
+            80,
+            147.5151515151515
+          ]
         },
         {
           "id": "watch-keep",
@@ -2888,7 +3308,11 @@
             80,
             148.36363636363637
           ],
-          "obstructionHeight": 3
+          "obstructionHeight": 3,
+          "groundFront": [
+            80,
+            148.36363636363637
+          ]
         },
         {
           "id": "market-gate-compound",
@@ -2900,7 +3324,11 @@
             80,
             143.27272727272728
           ],
-          "obstructionHeight": 2
+          "obstructionHeight": 2,
+          "groundFront": [
+            80,
+            143.27272727272728
+          ]
         },
         {
           "id": "ruined-gatehouse",
@@ -2912,7 +3340,11 @@
             80,
             145.57575757575756
           ],
-          "obstructionHeight": 3
+          "obstructionHeight": 3,
+          "groundFront": [
+            80,
+            145.57575757575756
+          ]
         },
         {
           "id": "cemetery-chapel-compound",
@@ -2924,7 +3356,11 @@
             80,
             145.57575757575756
           ],
-          "obstructionHeight": 2
+          "obstructionHeight": 2,
+          "groundFront": [
+            80,
+            145.57575757575756
+          ]
         },
         {
           "id": "river-gate-fort",
@@ -2936,7 +3372,11 @@
             80,
             147.87878787878788
           ],
-          "obstructionHeight": 3
+          "obstructionHeight": 3,
+          "groundFront": [
+            80,
+            147.87878787878788
+          ]
         },
         {
           "id": "guildhall-market",
@@ -2948,7 +3388,11 @@
             80,
             145.0909090909091
           ],
-          "obstructionHeight": 2
+          "obstructionHeight": 2,
+          "groundFront": [
+            80,
+            145.0909090909091
+          ]
         },
         {
           "id": "black-oath-fortress",
@@ -2960,7 +3404,11 @@
             80,
             146.54545454545453
           ],
-          "obstructionHeight": 3
+          "obstructionHeight": 3,
+          "groundFront": [
+            80,
+            146.54545454545453
+          ]
         }
       ],
       "footprintRange": [
@@ -3030,7 +3478,11 @@
             32.30622009569378,
             43.0622009569378
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            32.30622009569378,
+            43.0622009569378
+          ]
         },
         {
           "id": "grass-tuft-b",
@@ -3042,7 +3494,11 @@
             32.57416267942584,
             45.39712918660287
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            32.57416267942584,
+            45.39712918660287
+          ]
         },
         {
           "id": "grass-tuft-c",
@@ -3054,7 +3510,11 @@
             32.248803827751196,
             44.55502392344498
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            32.248803827751196,
+            44.55502392344498
+          ]
         },
         {
           "id": "stone-cluster-a",
@@ -3066,7 +3526,11 @@
             32,
             42.066985645933016
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            32,
+            42.066985645933016
+          ]
         },
         {
           "id": "stone-cluster-b",
@@ -3078,7 +3542,11 @@
             32.11483253588517,
             39.34928229665071
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            32.11483253588517,
+            39.34928229665071
+          ]
         },
         {
           "id": "stone-cluster-c",
@@ -3090,7 +3558,11 @@
             32.109375,
             40.75
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            32.109375,
+            40.75
+          ]
         },
         {
           "id": "mud-patch",
@@ -3102,7 +3574,11 @@
             32.11483253588517,
             42.2200956937799
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            32.11483253588517,
+            42.2200956937799
+          ]
         },
         {
           "id": "dry-crack",
@@ -3114,7 +3590,11 @@
             32.0625,
             42.71875
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            32.0625,
+            42.71875
+          ]
         },
         {
           "id": "cart-ruts",
@@ -3126,7 +3606,11 @@
             32.61244019138756,
             48.76555023923445
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            32.61244019138756,
+            48.76555023923445
+          ]
         },
         {
           "id": "bootprints",
@@ -3138,7 +3622,11 @@
             32.057416267942585,
             47.08133971291866
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            32.057416267942585,
+            47.08133971291866
+          ]
         },
         {
           "id": "animal-tracks",
@@ -3150,7 +3638,11 @@
             32.65071770334929,
             44.40191387559808
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            32.65071770334929,
+            44.40191387559808
+          ]
         },
         {
           "id": "fallen-leaves",
@@ -3162,7 +3654,11 @@
             32.40191387559808,
             45.282296650717704
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            32.40191387559808,
+            45.282296650717704
+          ]
         },
         {
           "id": "burned-twigs",
@@ -3174,7 +3670,11 @@
             32.19138755980861,
             40.30622009569378
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            32.19138755980861,
+            40.30622009569378
+          ]
         },
         {
           "id": "exposed-roots",
@@ -3186,7 +3686,11 @@
             32.535885167464116,
             43.21531100478469
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            32.535885167464116,
+            43.21531100478469
+          ]
         },
         {
           "id": "stump-small",
@@ -3198,7 +3702,11 @@
             32.038277511961724,
             45.74162679425837
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            32.038277511961724,
+            45.74162679425837
+          ]
         },
         {
           "id": "branch-fallen",
@@ -3210,7 +3718,11 @@
             31.961722488038276,
             43.63636363636363
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            31.961722488038276,
+            43.63636363636363
+          ]
         },
         {
           "id": "firewood-stack",
@@ -3222,7 +3734,11 @@
             32.995215311004785,
             48.688995215311
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            32.995215311004785,
+            48.688995215311
+          ]
         },
         {
           "id": "mossy-boulder",
@@ -3234,7 +3750,11 @@
             33.72248803827751,
             45.7799043062201
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            33.72248803827751,
+            45.7799043062201
+          ]
         },
         {
           "id": "boulder-mossy-large",
@@ -3246,7 +3766,11 @@
             32,
             48.535885167464116
           ],
-          "obstructionHeight": 1
+          "obstructionHeight": 1,
+          "groundFront": [
+            32,
+            48.535885167464116
+          ]
         },
         {
           "id": "broken-planks",
@@ -3258,7 +3782,11 @@
             32.057416267942585,
             46.430622009569376
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            32.057416267942585,
+            46.430622009569376
+          ]
         },
         {
           "id": "abandoned-tools",
@@ -3270,7 +3798,11 @@
             32.01913875598086,
             49.301435406698566
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            32.01913875598086,
+            49.301435406698566
+          ]
         },
         {
           "id": "rope-coil",
@@ -3282,7 +3814,11 @@
             32.688995215311,
             48.8421052631579
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            32.688995215311,
+            48.8421052631579
+          ]
         },
         {
           "id": "folded-canvas",
@@ -3294,7 +3830,11 @@
             31.980861244019138,
             48
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            31.980861244019138,
+            48
+          ]
         },
         {
           "id": "ash-scorch",
@@ -3306,7 +3846,11 @@
             32.61244019138756,
             43.98086124401914
           ],
-          "obstructionHeight": 0
+          "obstructionHeight": 0,
+          "groundFront": [
+            32.61244019138756,
+            43.98086124401914
+          ]
         }
       ],
       "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/decals-small@2x.png",
@@ -3360,7 +3904,11 @@
             86.69856459330144
           ],
           "obstructionHeight": 0,
-          "renderLayer": "foundation"
+          "renderLayer": "foundation",
+          "groundFront": [
+            57.22488038277512,
+            86.69856459330144
+          ]
         },
         {
           "id": "grain-drying-mat-linen",
@@ -3373,7 +3921,11 @@
             87.92344497607655
           ],
           "obstructionHeight": 0,
-          "renderLayer": "foundation"
+          "renderLayer": "foundation",
+          "groundFront": [
+            56.07655502392345,
+            87.92344497607655
+          ]
         },
         {
           "id": "grain-drying-mat-earth",
@@ -3386,7 +3938,11 @@
             86.39234449760765
           ],
           "obstructionHeight": 0,
-          "renderLayer": "foundation"
+          "renderLayer": "foundation",
+          "groundFront": [
+            56.07655502392345,
+            86.39234449760765
+          ]
         },
         {
           "id": "threshing-floor",
@@ -3399,7 +3955,11 @@
             86.85167464114832
           ],
           "obstructionHeight": 0,
-          "renderLayer": "foundation"
+          "renderLayer": "foundation",
+          "groundFront": [
+            56,
+            86.85167464114832
+          ]
         },
         {
           "id": "wheat-sheaves",
@@ -3412,7 +3972,11 @@
             85.32057416267942
           ],
           "obstructionHeight": 1,
-          "renderLayer": "under-units"
+          "renderLayer": "under-units",
+          "groundFront": [
+            56.229665071770334,
+            85.32057416267942
+          ]
         },
         {
           "id": "wheat-bundles",
@@ -3425,7 +3989,11 @@
             87.46411483253588
           ],
           "obstructionHeight": 1,
-          "renderLayer": "under-units"
+          "renderLayer": "under-units",
+          "groundFront": [
+            57.07177033492823,
+            87.46411483253588
+          ]
         },
         {
           "id": "grain-sacks-baskets",
@@ -3438,7 +4006,11 @@
             85.32057416267942
           ],
           "obstructionHeight": 1,
-          "renderLayer": "under-units"
+          "renderLayer": "under-units",
+          "groundFront": [
+            55.92344497607655,
+            85.32057416267942
+          ]
         },
         {
           "id": "wheat-drying-rack",
@@ -3451,7 +4023,11 @@
             78.66028708133972
           ],
           "obstructionHeight": 1,
-          "renderLayer": "under-units"
+          "renderLayer": "under-units",
+          "groundFront": [
+            49.72248803827751,
+            78.66028708133972
+          ]
         },
         {
           "id": "frontier-granary",
@@ -3464,7 +4040,11 @@
             92.21052631578948
           ],
           "obstructionHeight": 2,
-          "renderLayer": "under-units"
+          "renderLayer": "under-units",
+          "groundFront": [
+            55.84688995215311,
+            92.21052631578948
+          ]
         },
         {
           "id": "frontier-farmhouse",
@@ -3477,7 +4057,11 @@
             85.93301435406698
           ],
           "obstructionHeight": 2,
-          "renderLayer": "under-units"
+          "renderLayer": "under-units",
+          "groundFront": [
+            56.535885167464116,
+            85.93301435406698
+          ]
         },
         {
           "id": "stone-well",
@@ -3490,7 +4074,11 @@
             92.5933014354067
           ],
           "obstructionHeight": 1,
-          "renderLayer": "under-units"
+          "renderLayer": "under-units",
+          "groundFront": [
+            56.07655502392345,
+            92.5933014354067
+          ]
         },
         {
           "id": "livestock-pen-small",
@@ -3504,7 +4092,11 @@
           ],
           "obstructionHeight": 1,
           "renderLayer": "under-units",
-          "presentationScale": 1.5
+          "presentationScale": 1.5,
+          "groundFront": [
+            59.44497607655502,
+            90.29665071770334
+          ]
         },
         {
           "id": "farm-fence-straight",
@@ -3517,7 +4109,11 @@
             73.76076555023923
           ],
           "obstructionHeight": 1,
-          "renderLayer": "under-units"
+          "renderLayer": "under-units",
+          "groundFront": [
+            90,
+            108
+          ]
         },
         {
           "id": "farm-fence-corner",
@@ -3530,7 +4126,11 @@
             83.71291866028709
           ],
           "obstructionHeight": 1,
-          "renderLayer": "under-units"
+          "renderLayer": "under-units",
+          "groundFront": [
+            56,
+            106
+          ]
         },
         {
           "id": "farm-handcart-tools",
@@ -3543,7 +4143,11 @@
             76.89952153110048
           ],
           "obstructionHeight": 1,
-          "renderLayer": "under-units"
+          "renderLayer": "under-units",
+          "groundFront": [
+            53.933014354066984,
+            76.89952153110048
+          ]
         },
         {
           "id": "roadside-waystation",
@@ -3556,7 +4160,11 @@
             87.61722488038278
           ],
           "obstructionHeight": 2,
-          "renderLayer": "under-units"
+          "renderLayer": "under-units",
+          "groundFront": [
+            56.61244019138756,
+            87.61722488038278
+          ]
         }
       ],
       "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/rural-life@2x.png",

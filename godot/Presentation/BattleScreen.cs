@@ -190,9 +190,9 @@ public partial class BattleScreen : Control
             Refresh();
     }
 
-    public void ConfigureDynamicState(ReadOnlyContent content)
+    public void ConfigureDynamicState()
     {
-        _board.ConfigureDynamicState(content);
+        _board.ConfigureDynamicState();
         if (_state is not null)
             Refresh();
     }
@@ -317,7 +317,7 @@ public partial class BattleScreen : Control
             ?? throw new InvalidOperationException("Battle session returned a non-object state.");
         _board.RenderState(_state, _snapshot.VisibleUnitIds);
         SynchronizeTactical(next);
-        _overlay.ShowPublicState(_tactical!.InteractiveCells, _snapshot.VisibleCells, _snapshot.Incoming);
+        _overlay.ShowPublicState(_board.Projection, _tactical!.InteractiveCells, _snapshot.VisibleCells, _snapshot.Incoming);
         UpdateHeader();
         UpdateTactical();
         _coverage.Text = !_board.SurfaceReady ? _text.Format("ui.battle.surface_pending")
@@ -572,7 +572,9 @@ public partial class BattleScreen : Control
             return;
         if (point.X < 0 || point.Y < 0 || point.X >= _board.FieldSize.X || point.Y >= _board.FieldSize.Y)
             return;
-        var cell = new BoardCell((int)Math.Floor(point.X / 32), (int)Math.Floor(point.Y / 32));
+        if (_board.Projection.Pick(new Vector2((float)point.X, (float)point.Y)) is not { } picked)
+            return;
+        var cell = new BoardCell(picked.X, picked.Y);
         if (_tactical is null || !Current(_tactical.Stamp) || !_tactical.InteractiveCells.Contains(cell))
             return;
         if (button == 0)
@@ -588,7 +590,11 @@ public partial class BattleScreen : Control
         var local = _mapArea.GetGlobalTransformWithCanvas().AffineInverse() * point;
         return new(local.X, local.Y);
     }
-    private static CameraPoint CellCenter(CameraPoint cell) => new((cell.X + .5) * 32, (cell.Y + .5) * 32);
+    private CameraPoint CellCenter(CameraPoint cell)
+    {
+        var point = _board.Projection.CellCenter(new Empire.Core.Geometry.Coord((int)cell.X, (int)cell.Y));
+        return new(point.X, point.Y);
+    }
     private static int? SourceButton(MouseButton button) => button switch
     {
         MouseButton.Left => 0,

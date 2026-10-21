@@ -192,6 +192,10 @@ public sealed class ScenerySpecification
     {
         get; init;
     }
+    public double? InteriorChance
+    {
+        get; init;
+    }
     public double Jitter
     {
         get; init;

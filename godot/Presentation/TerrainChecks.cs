@@ -24,6 +24,20 @@ internal static class TerrainChecks
         };
     }
 
+    internal static BoardProjection FlatProjection(string[] tiles, int[] elevation, Vector2I size)
+    {
+        var map = new JsonObject
+        {
+            ["width"] = size.X,
+            ["height"] = size.Y,
+            ["tiles"] = new JsonArray(tiles.Select(value => (JsonNode?)JsonValue.Create(value)).ToArray()),
+            ["elevation"] = new JsonArray(elevation.Select(value => (JsonNode?)JsonValue.Create(value)).ToArray()),
+            ["cliffs"] = new JsonArray()
+        };
+        var cells = Enumerable.Range(0, tiles.Length).Select(index => new Empire.Core.Geometry.Coord(index % size.X, index / size.X)).ToHashSet();
+        return new BoardProjection(new Empire.Core.Geometry.Square4Grid(), map, cells);
+    }
+
     internal static void Run(Node parent)
     {
         var materials = WorldMaterialsManifest.Load();
@@ -42,8 +56,14 @@ internal static class TerrainChecks
             parent.AddChild(view);
             try
             {
-                view.Configure(materials, scene, environment);
-                view.Render(tiles, size);
+                view.Configure(new(environment, engine.Grids.Get(level["rules"]?["grid"]?.GetValue<string>() ?? "square4"), null), materials, scene);
+                var heights = state["map"]!["elevation"]!.AsArray().Select(node => node!.GetValue<int>()).ToArray();
+                var grid = engine.Grids.Get(level["rules"]?["grid"]?.GetValue<string>() ?? "square4");
+                var playable = Enumerable.Range(0, tiles.Length)
+                    .Where(index => !engine.Catalog.Definition("terrains", tiles[index])!.Value
+                        .GetProperty("tags").EnumerateArray().Any(tag => tag.GetString() == "outside"))
+                    .Select(index => new Empire.Core.Geometry.Coord(index % size.X, index / size.X)).ToHashSet();
+                view.Render(new BoardProjection(grid, state["map"]!.AsObject(), playable), tiles, heights, size);
                 Require(!view.Diagnostics.Any(message => message.Contains("Missing", StringComparison.Ordinal)),
                     $"{scene.LevelId}: {string.Join("; ", view.Diagnostics)}");
                 Require(state.ToJsonString() == unchanged, "Terrain composition changed the canonical state.");
@@ -67,7 +87,7 @@ internal static class TerrainChecks
 
     private static void CheckRiver(TerrainView view, WorldMaterialsManifest materials, AuthoredScene scene, string[] tiles, Vector2I size)
     {
-        var ground = view.GetNode<Node2D>("ComposedTerrain/Ground");
+        var ground = view.GetNode<Node2D>("ComposedTerrain/ProjectedGround/LogicalGround/ComposedTerrain/Ground");
         using var river = ground.GetNode<Sprite2D>("RiverWater").Texture.GetImage();
         using var bank = ground.GetNode<Sprite2D>("RiverBank").Texture.GetImage();
         using var shape = ground.GetNode<Sprite2D>("WorldField").Texture.GetImage();
@@ -87,9 +107,9 @@ internal static class TerrainChecks
         var surface = ground.GetNode<Sprite2D>("Surface_meadow-stony");
         Require(surface.Material is ShaderMaterial clipped && clipped.GetShaderParameter("has_playable_shape").AsBool(),
             "Irregular boundary must clip hill/ground materials, not just the field underneath.");
-        foreach (var edge in view.GetNode<Node2D>("ComposedTerrain/EdgeDecorations").GetChildren().OfType<Sprite2D>())
+        foreach (var edge in view.GetNode<Node2D>("ComposedTerrain/ProjectedGround/LogicalGround/ComposedTerrain/EdgeDecorations").GetChildren().OfType<Sprite2D>())
             Require(edge.HasMeta("ground_clipped"), "Authored edge overlays must share the playable ground silhouette.");
-        var bridges = view.GetNode<Node2D>("ComposedTerrain/Crossings");
+        var bridges = view.GetNode<Node2D>("ComposedTerrain/ProjectedGround/LogicalGround/ComposedTerrain/Crossings");
         Require(bridges.GetChildCount() > 0, "The c01-02 bridge must use a native source sprite.");
         foreach (var bridge in bridges.GetChildren().OfType<Sprite2D>())
         {
@@ -126,9 +146,9 @@ internal static class TerrainChecks
         parent.AddChild(view);
         try
         {
-            view.Configure(materials, new AuthoredScene { LevelId = "alpha-contract", MapSize = [3, 3] }, environment);
-            view.Render(tiles, new Vector2I(3, 3));
-            using var actual = view.GetNode<Sprite2D>("ComposedTerrain/Ground/AreaWater").Texture.GetImage();
+            view.Configure(new(environment, new Empire.Core.Geometry.Square4Grid(), null), materials, new AuthoredScene { LevelId = "alpha-contract", MapSize = [3, 3] });
+            view.Render(FlatProjection(tiles, new int[9], new(3, 3)), tiles, new int[9], new Vector2I(3, 3));
+            using var actual = view.GetNode<Sprite2D>("ComposedTerrain/ProjectedGround/LogicalGround/ComposedTerrain/Ground/AreaWater").Texture.GetImage();
             using var source = ResourceLoader.Load<Texture2D>(materials.Materials["water-material"].Occupancy!.ResourcePath).GetImage();
             if (source.IsCompressed())
                 Require(source.Decompress() == Error.Ok, "Occupancy PNG decompression failed.");
@@ -213,6 +233,7 @@ internal static class TerrainChecks
         }
         catch (InvalidOperationException error) when (error.Message.StartsWith("River requires", StringComparison.Ordinal)) { }
     }
+
     private static void CheckRoadShoulder()
     {
         bool Road(int x, int y) => y == 1 && x >= 1 && x <= 5 || x == 5 && y == 2;

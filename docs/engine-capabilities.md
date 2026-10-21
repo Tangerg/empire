@@ -609,3 +609,21 @@ session is statically `ITacticalBattleSession`, without a runtime cast or alias.
 `tools/godot/format-native.sh --check` enforces the repository C# whitespace policy.
 `verify-native.sh` is the current native acceptance command; the repository CI
 remains a separate TypeScript check, not evidence of a native CI pass.
+
+## Native board surface and visual contacts
+
+`Presentation.BoardProjection` owns the detached rendering surface derived from the
+composed grid, canonical elevation, cliff edges and playable cells. Ground meshes,
+standing contacts, movement animation, tactical overlays, camera targets and pointer
+picking consume that projection. It does not change movement or author new cliffs.
+Visible surface triangles and their one-logical-pixel depth patches share the same
+geometry. Contact-dependent partitions batch empty depth intervals without losing
+interleaving; movement prepares its crossed depths once before animation. backfacing surface fans remain available for logical contact projection,
+but are not rendered or picked. `ProjectedGround` owns the temporary ground viewport
+and its meshes borrow the viewport texture until teardown.
+
+`AssetCatalog` and `EnvironmentCatalog` own authored placement anchors and visual
+foreground contacts. These are distinct art facts, not tactical occupancy. The
+shared `SpriteGroundContact` transforms the foreground point for painter depth;
+`BoardView` orders terrain, actors and props against the same surface bands. See
+[asset contact contract](../godot/docs/ASSET-GROUND-CONTACT.md).

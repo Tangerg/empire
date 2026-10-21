@@ -180,7 +180,7 @@ const ids = new Set(scenes.flatMap(scene => [...scene.placements, ...(scene.fram
 const terrainBindings = Object.fromEntries(terrainIds.map(id => [id, candidateMaterial(content, id)]));
 const bindingText = JSON.stringify([terrainBindings, CANDIDATE_RIVER_STONES, CANDIDATE_SHORE_DECALS, CANDIDATE_FOUNDATIONS, CANDIDATE_VERTICAL_CROSSINGS]);
 for (const atlas of environment.atlases) if (bindingText.includes(JSON.stringify(atlas.id)) || (atlas.cells ?? []).some((cell: { id: string }) => ids.has(cell.id) || bindingText.includes(JSON.stringify(cell.id)))) Object.assign(atlas, copy(`environment-builder-v1/${atlas.png2x ?? atlas.png}`));
-write('data/environment-catalog.json', environment);
+write('tests/oracle/source-v1/environment-catalog.json', environment);
 const edgeDecorations = read('edge-decoration-v1/manifest-edge-decoration-v1.json');
 for (const asset of edgeDecorations.assets) Object.assign(asset, copy(`edge-decoration-v1/${asset.png2x ?? asset.png}`));
 write('data/edge-decorations.json', edgeDecorations);

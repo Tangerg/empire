@@ -16,6 +16,7 @@ public sealed record RuntimeEnvironmentCell(
     int CellHeight,
     float PixelDensity,
     Vector2 Anchor,
+    Vector2 GroundFront,
     Vector2I? Footprint,
     float PresentationScale);
 
@@ -40,7 +41,7 @@ public sealed class EnvironmentCatalog
     public EnvironmentCatalog(EnvironmentManifest manifest,
         string resourceRoot = "res://assets/environment-builder-v1/")
     {
-        if (manifest.SchemaVersion != "environment-builder-v1.1" || manifest.LogicalTileSize <= 0)
+        if (manifest.SchemaVersion != "environment-builder-v1.2" || manifest.LogicalTileSize <= 0)
             throw new InvalidOperationException("Unsupported environment catalog schema or tile size.");
         LogicalTileSize = manifest.LogicalTileSize;
         RuntimeReady = manifest.RuntimeReady;
@@ -68,10 +69,11 @@ public sealed class EnvironmentCatalog
                     ?? new[] { atlas.CellWidth / 2.0, (double)atlas.CellHeight }, $"anchor of {cell.Id}");
                 if (anchor.X < 0 || anchor.X > atlas.CellWidth || anchor.Y < 0 || anchor.Y > atlas.CellHeight)
                     throw new InvalidOperationException($"Environment anchor outside cell: {cell.Id}");
+                var groundFront = SpriteGroundContact.Read(cell.GroundFront, atlas.CellWidth, atlas.CellHeight, cell.Id);
                 RasterResources.Positive(cell.PresentationScale, $"presentation scale of {cell.Id}");
                 var resolved = new RuntimeEnvironmentCell(cell.Id, atlas.Id, path, index,
                     atlas.Columns, atlas.Rows, atlas.CellWidth, atlas.CellHeight, (float)density,
-                    anchor, RasterResources.Footprint(cell.Footprint, cell.Id), (float)cell.PresentationScale);
+                    anchor, groundFront, RasterResources.Footprint(cell.Footprint, cell.Id), (float)cell.PresentationScale);
                 if (!_cells.TryAdd(cell.Id, resolved))
                     throw new InvalidOperationException($"Duplicate authored environment cell: {cell.Id}");
             }
@@ -133,6 +135,7 @@ public sealed class EnvironmentCatalog
             cell.CellWidth, cell.CellHeight, cell.Columns, cell.Index, cell.PixelDensity);
         var sprite = RasterResources.Sprite(texture, cell.Anchor, cell.PixelDensity,
             cell.PresentationScale * placementScale);
+        SpriteGroundContact.Attach(sprite, cell.GroundFront * cell.PixelDensity);
         // Authored environment flips mirror inside the original frame, not around the foot.
         sprite.FlipH = flip;
         sprite.Modulate = new Color(1, 1, 1, opacity);

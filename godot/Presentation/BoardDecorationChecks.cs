@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Empire.Presentation.Tactical;
+using Empire.Core.Geometry;
 using System.Text.Json.Nodes;
 using Godot;
 
@@ -68,16 +69,28 @@ public partial class BoardDecorationChecks : Node
         var cell = new BoardCell(1, 1);
         var outside = new BoardCell(0, 0);
         var overlay = new BoardOverlay();
+        var map = new JsonObject
+        {
+            ["width"] = 3,
+            ["height"] = 3,
+            ["tiles"] = new JsonArray(Enumerable.Repeat("plain", 9).Select(value => (JsonNode?)JsonValue.Create(value)).ToArray()),
+            ["elevation"] = new JsonArray(Enumerable.Repeat(0, 9).Select(value => (JsonNode?)JsonValue.Create(value)).ToArray()),
+            ["cliffs"] = new JsonArray(),
+        };
+        var projection = new BoardProjection(new Square4Grid(), map, new HashSet<Coord> { new(1, 1) });
         for (var cycle = 0; cycle < 3; cycle++)
         {
             AddChild(overlay);
-            overlay.ShowPublicState(new HashSet<BoardCell> { cell }, new HashSet<BoardCell>(),
+            overlay.ShowPublicState(projection, new HashSet<BoardCell> { cell }, new HashSet<BoardCell>(),
                 new Dictionary<BoardCell, double> { [cell] = 2, [outside] = 1 });
             overlay.ShowTactical(new(cell, cell, new[] { cell, outside }, new[] { cell }, new[] { cell }, new[] { cell }, new[] { cell, new BoardCell(2, 1) }, outside, new[] { cell, outside }));
             Require(overlay.RangeOrder().Select(item => item.Role).SequenceEqual(new[] { "threat", "controlled", "incoming", "heal", "attack", "fog" }), "Source range ordering, move/attack exclusion and outside containment");
             Require(overlay.RangeOrder().All(item => item.Cell == cell), "No outside ground decorations");
-            Require(overlay.RangeDepth < -1 && overlay.RangeDepth > -90 && overlay.ZIndex > 2500, "Source ranges/path below actors; cursor above effects");
-            Require(!overlay.GetNode<Node2D>("SourceRangeAndPath").ZAsRelative, "Parent cursor depth cannot lift ranges above actors");
+            var centroid = new Vector2(0, projection.DepthPatches.Min(patch => patch.Depth));
+            Require(overlay.RangeDepth > projection.DrawDepth(centroid, BoardDepthLayer.Surface)
+                && overlay.RangeDepth < projection.DrawDepth(centroid, BoardDepthLayer.Standing)
+                && overlay.ZIndex > 2500, "Ranges follow their surface depth below standing objects; cursor stays above effects");
+            Require(overlay.GetChildren().OfType<BoardRangePlane>().All(plane => !plane.ZAsRelative), "Parent cursor depth cannot lift ranges above actors");
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             Require(overlay.OwnedTextureCount > 0 && overlay.OwnedTextureCount <= 10, "Mounted drawing uses bounded textures");

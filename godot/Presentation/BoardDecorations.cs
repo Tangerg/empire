@@ -72,6 +72,67 @@ internal sealed class BoardDecorations : IDisposable
         this.document = document;
     }
 
+    private readonly record struct SurfaceVertex(Vector2 Logical, Vector2 Projected);
+
+    internal static void DrawProjected(Node2D canvas, Drawing drawing, Vector2 offset, IReadOnlyList<BoardSurfacePatch> patches)
+    {
+        var bounds = new Rect2(drawing.Bounds.Position + offset, drawing.Bounds.Size);
+        foreach (var patch in patches)
+        {
+            var logicalBounds = new Rect2(patch.Vertices[0].Logical, Vector2.Zero);
+            foreach (var vertex in patch.Vertices)
+                logicalBounds = logicalBounds.Expand(vertex.Logical);
+            if (!logicalBounds.Intersects(bounds))
+                continue;
+            var polygon = patch.Vertices.Select(vertex => new SurfaceVertex(vertex.Logical, vertex.Projected)).ToList();
+            polygon = Clip(polygon, point => point.X - bounds.Position.X);
+            polygon = Clip(polygon, point => bounds.End.X - point.X);
+            polygon = Clip(polygon, point => point.Y - bounds.Position.Y);
+            polygon = Clip(polygon, point => bounds.End.Y - point.Y);
+            polygon = polygon.Distinct().ToList();
+            if (polygon.Count < 3)
+                continue;
+            var area = 0f;
+            for (var index = 0; index < polygon.Count; index++)
+            {
+                var a = polygon[index].Projected;
+                var b = polygon[(index + 1) % polygon.Count].Projected;
+                area += a.X * b.Y - a.Y * b.X;
+            }
+            if (Math.Abs(area) <= 0.0001f)
+                continue;
+            // DrawPolygon takes normalized UVs (unlike Polygon2D's pixel UVs).
+            // Clipping both positions together keeps cliff seams on their own side.
+            canvas.DrawPolygon(polygon.Select(vertex => vertex.Projected).ToArray(),
+                new[] { new Color(1, 1, 1, drawing.Opacity) },
+                polygon.Select(vertex => (vertex.Logical - bounds.Position) / bounds.Size).ToArray(), drawing.Texture);
+        }
+    }
+
+    private static List<SurfaceVertex> Clip(List<SurfaceVertex> polygon, Func<Vector2, float> signedDistance)
+    {
+        var output = new List<SurfaceVertex>();
+        if (polygon.Count == 0)
+            return output;
+        var previous = polygon[^1];
+        var previousDistance = signedDistance(previous.Logical);
+        foreach (var current in polygon)
+        {
+            var distance = signedDistance(current.Logical);
+            if ((distance > 0 && previousDistance < 0) || (distance < 0 && previousDistance > 0))
+            {
+                var fraction = previousDistance / (previousDistance - distance);
+                output.Add(new SurfaceVertex(previous.Logical.Lerp(current.Logical, fraction),
+                    previous.Projected.Lerp(current.Projected, fraction)));
+            }
+            if (distance >= 0)
+                output.Add(current);
+            previous = current;
+            previousDistance = distance;
+        }
+        return output;
+    }
+
     internal Drawing Spot(string role) => Static("spot:" + role, document.Spots[role]);
     internal Drawing Ring(string role) => Static("ring:" + role, document.Rings[role]);
     private Drawing Static(string key, string markup)

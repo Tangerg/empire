@@ -11,12 +11,15 @@ namespace Empire.Presentation;
 public partial class BoardOverlay : Node2D
 {
     private TacticalSelectionOverlay? _tactical;
+    private BoardProjection? _projection;
     private BoardCell[] _unseen = [];
     private KeyValuePair<BoardCell, double>[] _incoming = [];
     private FrozenSet<BoardCell> _interactiveCells = FrozenSet<BoardCell>.Empty;
     private BoardDecorations? _resources;
-    private BoardRangePlane? _ranges;
-    internal int RangeDepth => _ranges?.ZIndex ?? -2;
+    private readonly List<BoardRangePlane> _ranges = new();
+    private readonly Dictionary<int, BoardSurfacePatch[]> _rangePatches = new();
+    private readonly Dictionary<int, (int Start, int End)> _rangeIntervals = new();
+    internal int RangeDepth => _ranges.Count == 0 ? -2 : _ranges[0].ZIndex;
     internal int OwnedTextureCount => _resources?.TextureCount ?? 0;
 
     public override void _EnterTree()
@@ -24,27 +27,33 @@ public partial class BoardOverlay : Node2D
         _resources = new(BoardDecorationDocument.Load());
         ZIndex = 3000;
         TextureFilter = TextureFilterEnum.Linear;
-        _ranges = new BoardRangePlane { Name = "SourceRangeAndPath", OwnerOverlay = this, ZAsRelative = false, ZIndex = -2 };
-        AddChild(_ranges);
+        if (_projection is not null)
+            _projection.DepthPartitionsChanged += RebuildRangePlanes;
+        RebuildRangePlanes();
     }
     public override void _ExitTree()
     {
         // Clear retained draw commands before releasing the textures they reference.
         RenderingServer.CanvasItemClear(GetCanvasItem());
-        if (_ranges is not null)
-        {
-            RenderingServer.CanvasItemClear(_ranges.GetCanvasItem());
-            _ranges.OwnerOverlay = null;
-            RemoveChild(_ranges);
-            _ranges.Free();
-            _ranges = null;
-        }
+        if (_projection is not null)
+            _projection.DepthPartitionsChanged -= RebuildRangePlanes;
+        ClearRangePlanes();
         _resources?.Dispose();
         _resources = null;
     }
-    public void ShowPublicState(IReadOnlySet<BoardCell> interactiveCells, IReadOnlySet<BoardCell>? visible,
+    public void ShowPublicState(BoardProjection projection, IReadOnlySet<BoardCell> interactiveCells, IReadOnlySet<BoardCell>? visible,
         IReadOnlyDictionary<BoardCell, double>? incoming)
     {
+        var changed = !ReferenceEquals(_projection, projection);
+        System.ArgumentNullException.ThrowIfNull(projection);
+        if (changed && IsInsideTree() && _projection is not null)
+            _projection.DepthPartitionsChanged -= RebuildRangePlanes;
+        _projection = projection;
+        if (changed && IsInsideTree())
+        {
+            _projection.DepthPartitionsChanged += RebuildRangePlanes;
+            RebuildRangePlanes();
+        }
         _interactiveCells = interactiveCells.ToFrozenSet();
         _unseen = visible is null ? [] : _interactiveCells.Where(cell => !visible.Contains(cell))
             .OrderBy(cell => cell.Y).ThenBy(cell => cell.X).ToArray();
@@ -59,7 +68,64 @@ public partial class BoardOverlay : Node2D
     private void RedrawPlanes()
     {
         QueueRedraw();
-        _ranges?.QueueRedraw();
+        foreach (var plane in _ranges)
+            plane.QueueRedraw();
+    }
+    private void ClearRangePlanes()
+    {
+        foreach (var plane in _ranges)
+        {
+            RenderingServer.CanvasItemClear(plane.GetCanvasItem());
+            plane.OwnerOverlay = null;
+            RemoveChild(plane);
+            plane.Free();
+        }
+        _ranges.Clear();
+        _rangePatches.Clear();
+        _rangeIntervals.Clear();
+    }
+    private void RebuildRangePlanes()
+    {
+        if (_projection is null)
+        {
+            ClearRangePlanes();
+            return;
+        }
+        var planes = new List<BoardRangePlane>();
+        var candidates = new Dictionary<int, BoardSurfacePatch[]>();
+        var intervals = new Dictionary<int, (int Start, int End)>();
+        try
+        {
+            foreach (var partition in _projection.DepthPartitions)
+            {
+                var depth = _projection.DrawDepth(new Vector2(0, partition.StartDepth), BoardDepthLayer.Range);
+                candidates.Add(depth, partition.Patches.ToArray());
+                intervals.Add(depth, (partition.StartDepth, partition.EndDepthExclusive));
+                planes.Add(new BoardRangePlane
+                {
+                    Name = $"SourceRangeAndPath_{depth}",
+                    OwnerOverlay = this,
+                    ZAsRelative = false,
+                    ZIndex = depth,
+                });
+            }
+        }
+        catch
+        {
+            foreach (var plane in planes)
+                plane.Free();
+            throw;
+        }
+        ClearRangePlanes();
+        foreach (var pair in candidates)
+            _rangePatches.Add(pair.Key, pair.Value);
+        foreach (var pair in intervals)
+            _rangeIntervals.Add(pair.Key, pair.Value);
+        foreach (var plane in planes)
+        {
+            _ranges.Add(plane);
+            AddChild(plane);
+        }
     }
     internal bool Contains(BoardCell cell) => _interactiveCells.Contains(cell);
     internal IEnumerable<(string Role, BoardCell Cell)> RangeOrder()
@@ -87,17 +153,18 @@ public partial class BoardOverlay : Node2D
     }
     internal void DrawRanges(Node2D canvas)
     {
-        if (_resources is null)
+        if (_resources is null || _projection is null)
             return;
         foreach (var (role, cell) in RangeOrder())
         {
             DrawDecoration(canvas, _resources.Spot(role), new(cell.X * 32, cell.Y * 32));
-            if (role == "incoming")
+            if (role == "incoming" && cell.Y * 32 + 16 >= _rangeIntervals[canvas.ZIndex].Start
+                && cell.Y * 32 + 16 < _rangeIntervals[canvas.ZIndex].End)
             {
                 var text = _incoming.First(pair => pair.Key == cell).Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
                 var font = ThemeDB.FallbackFont;
                 var width = font.GetStringSize(text, fontSize: 11).X;
-                canvas.DrawString(font, new(cell.X * 32 + 16 - width / 2, cell.Y * 32 + 20), text, fontSize: 11, modulate: new Color("#2a1a00"));
+                canvas.DrawString(font, _projection.Project(new(cell.X * 32 + 16, cell.Y * 32 + 20)) - new Vector2(width / 2, 0), text, fontSize: 11, modulate: new Color("#2a1a00"));
             }
         }
         if (_tactical is { Path.Count: >= 2 } tactical && _resources.Path(tactical.Path) is { } path)
@@ -105,13 +172,17 @@ public partial class BoardOverlay : Node2D
     }
     public override void _Draw()
     {
-        if (_resources is null)
+        if (_resources is null || _projection is null)
             return;
         if (_tactical?.Selected is { } selected && Contains(selected))
             DrawDecoration(this, _resources.Ring("selection"), new(selected.X * 32, selected.Y * 32));
         if (_tactical?.Cursor is { } cursor && Contains(cursor))
             DrawDecoration(this, _resources.Ring("cursor"), new(cursor.X * 32, cursor.Y * 32));
     }
-    private static void DrawDecoration(Node2D canvas, BoardDecorations.Drawing drawing, Vector2 offset) =>
-        canvas.DrawTextureRect(drawing.Texture, new(drawing.Bounds.Position + offset, drawing.Bounds.Size), false, new Color(1, 1, 1, drawing.Opacity));
+    private void DrawDecoration(Node2D canvas, BoardDecorations.Drawing drawing, Vector2 offset)
+    {
+        if (_projection is not null)
+            BoardDecorations.DrawProjected(canvas, drawing, offset,
+                canvas == this ? _projection.DepthPatches : _rangePatches[canvas.ZIndex]);
+    }
 }

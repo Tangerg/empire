@@ -60,14 +60,14 @@ public partial class DynamicStateChecks : Node
             };
             var board = new BoardView();
             AddChild(board);
-            board.Configure(new(assets, environment, facing => facing == "west", facing =>
+            board.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog, facing => facing == "west", facing =>
             {
                 if (facing is null)
                     return Vector2.Zero;
                 var step = engine.Grids.Get("square4").Step(new Empire.Core.Geometry.Coord(0, 0), facing);
                 return new Vector2(step.X, step.Y);
             }), level, scene);
-            board.ConfigureDynamicState(engine.Catalog);
+            board.ConfigureDynamicState();
             var state = engine.CreateState(level);
             var before = state.ToJsonString();
             board.RenderState(state);

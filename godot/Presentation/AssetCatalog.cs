@@ -29,6 +29,7 @@ public sealed record RuntimeAsset(
     int FrameCount,
     IReadOnlyList<string> FrameOrder,
     Vector2 Anchor,
+    Vector2 GroundFront,
     Vector2I? Footprint,
     float PixelDensity,
     int PhysicalWidth,
@@ -58,7 +59,7 @@ public sealed class AssetCatalog
 
     public AssetCatalog(AssetManifest manifest, ArtBindings bindings)
     {
-        if (manifest.Schema != 1 || manifest.LogicalTileSize <= 0)
+        if (manifest.Schema != 2 || manifest.LogicalTileSize <= 0)
             throw new InvalidOperationException("Unsupported selected-assets schema or logical tile size.");
         LogicalTileSize = manifest.LogicalTileSize;
         _units = new(bindings.Units, StringComparer.Ordinal);
@@ -153,6 +154,7 @@ public sealed class AssetCatalog
     {
         var sprite = RasterResources.Sprite(CreateFrameTexture(asset, frameIndex),
             asset.Anchor, asset.PixelDensity, asset.PresentationScale);
+        SpriteGroundContact.Attach(sprite, asset.GroundFront * asset.PixelDensity);
         sprite.SetMeta("art_identity", asset.Identity);
         sprite.SetMeta("topic_id", asset.TopicId);
         if (asset.Footprint is { } footprint)
@@ -208,6 +210,7 @@ public sealed class AssetCatalog
             ?? new[] { width / 2.0, height - 1.0 }, $"anchor of {identity}");
         if (anchor.X < 0 || anchor.X > width || anchor.Y < 0 || anchor.Y > height)
             throw new InvalidOperationException($"Anchor outside frame: {identity}");
+        var groundFront = SpriteGroundContact.Read(record.GroundFront, width, height, identity);
         var fps = effect ? record.Fps ?? 12 : record.Fps;
         var blend = record.BlendMode ?? "normal";
         if (fps is { } speed && (!double.IsFinite(speed) || speed <= 0))
@@ -224,7 +227,7 @@ public sealed class AssetCatalog
             throw new InvalidOperationException($"Actor appearance changes canonical footprint: {identity}");
         return new RuntimeAsset(identity, record.TopicId, category,
             record.ResourcePath, width, height, frames,
-            new ReadOnlyCollection<string>((string[])order.Clone()), anchor, footprint,
+            new ReadOnlyCollection<string>((string[])order.Clone()), anchor, groundFront, footprint,
             (float)density, record.PhysicalWidth, record.PhysicalHeight,
             isHero || record.PreserveAuthoredPalette, (float)record.PresentationScale,
             fps, record.Loop ?? false, blend);
@@ -294,5 +297,41 @@ internal sealed class RasterResources
     {
         if (!double.IsFinite(value) || value <= 0 || value > float.MaxValue)
             throw new InvalidOperationException($"Expected positive finite {field}.");
+    }
+}
+
+/// <summary>Asset-owned foreground contact, independent of placement and gameplay footprint.</summary>
+public static class SpriteGroundContact
+{
+    private const string Metadata = "authored_ground_front";
+
+    internal static Vector2 Read(double[]? value, int width, int height, string identity)
+    {
+        if (value is null)
+            throw new InvalidOperationException($"Missing authored ground-front contact: {identity}");
+        var point = RasterResources.Pair(value, $"ground-front contact of {identity}");
+        if (point.X < 0 || point.Y < 0 || point.X > width || point.Y > height)
+            throw new InvalidOperationException($"Ground-front contact outside frame: {identity}");
+        return point;
+    }
+
+    internal static void Attach(Sprite2D sprite, Vector2 physicalPoint) =>
+        sprite.SetMeta(Metadata, physicalPoint);
+
+    /// <summary>Returns the contact displacement in the sprite parent's logical coordinates.</summary>
+    public static Vector2 Offset(Sprite2D sprite)
+    {
+        if (!sprite.HasMeta(Metadata) || sprite.Texture is null)
+            throw new InvalidOperationException("Sprite lacks an authored ground-front contact or frame texture.");
+        var point = sprite.GetMeta(Metadata).AsVector2();
+        var size = sprite.Texture.GetSize();
+        if (sprite.FlipH)
+            point.X = size.X - point.X;
+        if (sprite.FlipV)
+            point.Y = size.Y - point.Y;
+        point += sprite.Offset;
+        if (sprite.Centered)
+            point -= size / 2;
+        return sprite.Transform * point - sprite.Position;
     }
 }

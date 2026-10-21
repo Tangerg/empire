@@ -9,7 +9,7 @@ never computes legality or mutates the canonical state.
 var assets = AssetCatalog.Load();
 var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
 var environment = EnvironmentCatalog.Load();
-board.Configure(assets, level, scene, environment, facesLeft);
+board.Configure(new(assets, environment, grid, facesLeft, directionVector), level, scene);
 board.ConfigureTerrain(WorldMaterialsManifest.Load());
 board.RenderState(canonicalState);
 ```
@@ -17,7 +17,7 @@ board.RenderState(canonicalState);
 `level` is the exported level `JsonObject`. `canonicalState` is a complete canonical
 state projection, such as an oracle fixture's `initialState`, not the level's seed
 unit list. The view copies its visual values and never mutates or retains that JSON
-object. The application supplies `facesLeft` from its tiling strategy.
+object. The application supplies the resolved composed `grid`, `facesLeft` and `directionVector` from its tiling strategy.
 
 ## Interactive session boundary
 
@@ -130,3 +130,21 @@ selection. It does not overwrite native layout. Levels without authored scenery
 keep the existing explicit unauthored-level presentation path. Scene outlines and
 decorations do not define playable cells or collision; those remain domain level
 data.
+
+## Canonical elevation surface
+
+`BoardView` copies `map.elevation` alongside terrain IDs into its detached read
+projection. `TerrainView` invalidates its composition when either changes and
+borrows the composed grid through `TerrainViewRules`. `ElevationSurfaceRenderer`
+uses that grid's cell outline, center and inverse mapping to locate each height
+transition. Shared equal-height edges receive no separate cliff object. Gentle
+one-level slope bands and stronger two-level edge bands remain inside the higher
+cell's footprint; no neighboring low cell is visually occupied by a face.
+
+This is a fixed tile-space height cue, not a displaced mesh: actor feet, overlay
+coordinates and pointer hit positions are unchanged. Connected threshold masks are
+softened as a whole, avoiding per-cell seams. Generated alpha textures belong to
+the terrain composition through `OwnedProceduralSprite`; no source texture is edited. The focused native
+presentation regression changes only elevation and checks redraw, new surface
+coverage, unchanged actor contact and unchanged input state. Actual rendered
+appearance still needs visual acceptance on the integrated scene.

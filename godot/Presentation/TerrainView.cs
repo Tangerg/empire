@@ -7,6 +7,8 @@ using Godot;
 
 namespace Empire.Presentation;
 
+public sealed record TerrainViewRules(EnvironmentCatalog Environment, ITacticalGrid Grid, ShadowCache? Shadows);
+
 /// <summary>
 /// Native material and authored-terrain composition. RGB textures remain the approved
 /// resources; only topology alpha is generated. This reads no battle legality or RNG.
@@ -35,44 +37,76 @@ public partial class TerrainView : Node2D
     private EnvironmentCatalog _environment = null!;
     private ShadowCache? _shadows;
     private string[]? _tiles;
+    private int[]? _elevation;
+    private ITacticalGrid _grid = null!;
+    private BoardProjection? _projection;
+    private Node2D? _authoredGround;
     private Vector2I _renderedSize;
     private Texture2D? _groundShape;
     private Vector2 _groundSize;
     private readonly Dictionary<string, Texture2D> _textures = new(StringComparer.Ordinal);
     private readonly List<string> _diagnostics = new();
-    private readonly List<Node2D> _standing = new();
+    private readonly List<Sprite2D> _standing = new();
+    private readonly List<TerrainDepthEntry> _depthEntries = new();
     public IReadOnlyList<string> Diagnostics => _diagnostics;
     public IReadOnlyList<Node2D> Standing => _standing;
+    public IReadOnlyList<TerrainDepthEntry> DepthEntries => _depthEntries;
     public int RenderedSceneryCount => _standing.Count;
     public int RenderedEdgeDecorationCount
     {
         get; private set;
     }
 
-    public void Configure(WorldMaterialsManifest manifest, AuthoredScene scene, EnvironmentCatalog environment, ShadowCache? shadows = null)
+    public void Configure(TerrainViewRules rules, WorldMaterialsManifest manifest, AuthoredScene scene)
     {
         if (manifest.Schema != 1)
             throw new InvalidOperationException("Unsupported world materials schema.");
         _manifest = manifest;
         _scene = scene;
-        _environment = environment;
-        _shadows = shadows;
+        _environment = rules.Environment;
+        _grid = rules.Grid;
+        _shadows = rules.Shadows;
         _tiles = null;
+        _elevation = null;
+        _projection = null;
         _groundShape = null;
     }
 
-    public void Render(string[] tiles, Vector2I size)
+    /// <summary>Transfers ownership of a detached authored ground subtree.</summary>
+    public void ConfigureAuthoredGround(Node2D authoredGround)
     {
-        if (_tiles is not null && _renderedSize == size && _tiles.SequenceEqual(tiles))
+        if (_authoredGround is not null || authoredGround.GetParent() is not null)
+            throw new InvalidOperationException("Authored ground must be transferred once as a detached subtree.");
+        AddChild(authoredGround);
+        _authoredGround = authoredGround;
+        _tiles = null;
+    }
+
+    public Node2D DetachAuthoredGround()
+    {
+        var ground = _authoredGround
+            ?? throw new InvalidOperationException("No authored ground is owned by this terrain view.");
+        ground.GetParent()!.RemoveChild(ground);
+        _authoredGround = null;
+        _tiles = null;
+        return ground;
+    }
+
+    public void Render(BoardProjection projection, string[] tiles, int[] elevation, Vector2I size)
+    {
+        if (_tiles is not null && _renderedSize == size && _tiles.SequenceEqual(tiles)
+            && _elevation is not null && _elevation.SequenceEqual(elevation)
+            && _projection is not null && _projection.Triangles.SequenceEqual(projection.Triangles)
+            && _projection.Faces.SequenceEqual(projection.Faces))
             return;
-        if (tiles.Length != size.X * size.Y)
+        if (tiles.Length != size.X * size.Y || elevation.Length != tiles.Length)
             throw new InvalidOperationException("Terrain size differs from map.");
         foreach (var tile in tiles.Distinct())
             if (!_manifest.TerrainBindings.ContainsKey(tile))
                 throw new InvalidOperationException($"No exported presentation material for terrain: {tile}");
         var staging = new Node2D { Name = "ComposedTerrain" };
         var diagnostics = new List<string>();
-        var standing = new List<Node2D>();
+        var standing = new List<Sprite2D>();
         var edgeCount = 0;
         var ground = new Node2D { Name = "Ground", ZIndex = -300 };
         staging.AddChild(ground);
@@ -312,7 +346,19 @@ public partial class TerrainView : Node2D
                     }, diagnostics);
                 var decal = Water(x, y) ? _manifest.Scenery.RiverStones
                     : _scene.River is null && Shore(x, y) ? _manifest.Scenery.ShoreDecals : material.Decals;
-                if (decal is { Chance: { } chance } && TileArtVariation.Hash(x, y, 1103) < chance)
+                var decalChance = decal?.Chance;
+                if (decal?.InteriorChance is { } interiorChance)
+                {
+                    if (!double.IsFinite(interiorChance) || interiorChance < 0 || interiorChance > 1
+                        || decalChance is null)
+                        throw new InvalidOperationException("Interior decal density requires a finite probability and an edge density.");
+                    var interior = _grid.Adjacent(new Coord(x, y)).All(neighbor =>
+                        TileAt(neighbor.X, neighbor.Y) == tile
+                        && elevation[neighbor.Y * size.X + neighbor.X] == elevation[y * size.X + x]);
+                    if (interior)
+                        decalChance = interiorChance;
+                }
+                if (decal is not null && decalChance is { } chance && TileArtVariation.Hash(x, y, 1103) < chance)
                 {
                     var id = Pick(decal, x, y, 1104);
                     TryLayer($"Terrain decal ({x},{y}) {id}", () =>
@@ -349,39 +395,114 @@ public partial class TerrainView : Node2D
             }
         }
         catch { staging.Free(); throw; }
+        var previousShape = _groundShape;
+        var previousSize = _groundSize;
+        var logical = new Node2D { Name = "ComposedTerrain" };
+        var entries = new List<TerrainDepthEntry>();
+        ProjectedGround? projected = null;
+        var authoredParent = _authoredGround?.GetParent();
+        try
+        {
+            _groundShape = ground.GetNodeOrNull<Sprite2D>("WorldField")?.Texture;
+            _groundSize = new Vector2(size.X * 32, size.Y * 32);
+            ApplyGroundClip(ground);
+            ApplyGroundClip(staging.GetNode<Node2D>("TerrainDecals"));
+            ApplyGroundClip(staging.GetNode<Node2D>("EdgeDecorations"));
+            var lighting = BoardLighting.CreateField(size, tiles, _manifest, _groundShape);
+            lighting.Hearths.ZIndex = -30;
+            lighting.Sunlight.ZIndex = -20;
+            staging.AddChild(lighting.Hearths);
+            staging.AddChild(lighting.Sunlight);
+            if (_shadows is not null)
+            {
+                var crossings = staging.GetNode<Node2D>("Crossings");
+                foreach (var deck in crossings.GetChildren().OfType<Sprite2D>())
+                {
+                    var density = deck.HasMeta("environment_cell")
+                        ? _environment.ResolveCell(deck.GetMeta("environment_cell").AsString()).PixelDensity
+                        : 1 / Math.Abs(deck.Scale.X);
+                    deck.AddChild(SpriteShadows.Create(deck, ShadowKind.Standing, density, _shadows));
+                }
+            }
+            foreach (var child in staging.GetChildren().OfType<Node2D>().ToArray())
+            {
+                if (child.Name == "TerrainScenery")
+                    continue;
+                staging.RemoveChild(child);
+                logical.AddChild(child);
+            }
+            projected = ProjectedGround.Create(logical, projection, size);
+            staging.AddChild(projected);
+            if (projection.Faces.Count != 0)
+            {
+                var material = MaterialRecord("cliff-front");
+                var texture = MaterialTexture(material);
+                var period = new Vector2(material.LogicalSize[0], material.LogicalSize[1]);
+                if (!Mathf.IsEqualApprox(texture.GetSize().X / texture.GetSize().Y, period.X / period.Y))
+                    throw new InvalidOperationException("Cliff material repeat must preserve source aspect ratio.");
+                foreach (var face in projection.Faces)
+                {
+                    var points = new[] { face.ProjectedA, face.ProjectedB, face.ProjectedC, face.ProjectedD }.Distinct().ToArray();
+                    var polygon = new Polygon2D { Name = $"Cliff_{entries.Count}", ZAsRelative = false };
+                    projected.AddChild(polygon);
+                    polygon.Polygon = points;
+                    polygon.Texture = texture;
+                    polygon.UV = points.Select(point => point / period * texture.GetSize()).ToArray();
+                    polygon.TextureRepeat = CanvasItem.TextureRepeatEnum.Enabled;
+                    var contact = new Vector2(face.HigherCell.X * 32 + 16, face.Depth);
+                    polygon.ZIndex = projection.DrawDepth(contact, BoardDepthLayer.Surface);
+                    entries.Add(new(polygon, contact, 0));
+                }
+            }
+            if (_authoredGround is not null)
+            {
+                authoredParent!.RemoveChild(_authoredGround);
+                logical.AddChild(_authoredGround);
+                ApplyGroundClip(_authoredGround);
+            }
+            foreach (var node in standing)
+            {
+                var contact = node.Position;
+                node.Position = projection.Project(contact);
+                node.ZAsRelative = false;
+                node.ZIndex = projection.DrawDepth(contact + SpriteGroundContact.Offset(node), BoardDepthLayer.Standing);
+                entries.Add(new(node, contact, 2, node));
+            }
+        }
+        catch
+        {
+            if (_authoredGround is not null && _authoredGround.GetParent() != authoredParent)
+            {
+                _authoredGround.GetParent()?.RemoveChild(_authoredGround);
+                authoredParent!.AddChild(_authoredGround);
+            }
+            _groundShape = previousShape;
+            _groundSize = previousSize;
+            if (_authoredGround is not null)
+                ApplyGroundClip(_authoredGround);
+            staging.Free();
+            if (GodotObject.IsInstanceValid(projected) && projected!.GetParent() is null)
+                projected.Free();
+            if (GodotObject.IsInstanceValid(logical) && logical.GetParent() is null)
+                logical.Free();
+            throw;
+        }
         foreach (var child in GetChildren())
         {
             RemoveChild(child);
             child.QueueFree();
         }
         AddChild(staging);
-        _groundShape = ground.GetNodeOrNull<Sprite2D>("WorldField")?.Texture;
-        _groundSize = new Vector2(size.X * 32, size.Y * 32);
-        ApplyGroundClip(ground);
-        ApplyGroundClip(staging.GetNode<Node2D>("TerrainDecals"));
-        ApplyGroundClip(staging.GetNode<Node2D>("EdgeDecorations"));
-        var lighting = BoardLighting.CreateField(size, tiles, _manifest, _groundShape);
-        lighting.Hearths.ZIndex = -30;
-        lighting.Sunlight.ZIndex = -20;
-        staging.AddChild(lighting.Hearths);
-        staging.AddChild(lighting.Sunlight);
-        if (_shadows is not null)
-        {
-            var crossings = staging.GetNode<Node2D>("Crossings");
-            foreach (var deck in crossings.GetChildren().OfType<Sprite2D>())
-            {
-                var density = deck.HasMeta("environment_cell")
-                    ? _environment.ResolveCell(deck.GetMeta("environment_cell").AsString()).PixelDensity
-                    : 1 / Math.Abs(deck.Scale.X);
-                deck.AddChild(SpriteShadows.Create(deck, ShadowKind.Standing, density, _shadows));
-            }
-        }
+        _depthEntries.Clear();
+        _depthEntries.AddRange(entries);
+        _projection = projection;
         RenderedEdgeDecorationCount = edgeCount;
         _standing.Clear();
         _standing.AddRange(standing);
         _diagnostics.Clear();
         _diagnostics.AddRange(diagnostics.Distinct(StringComparer.Ordinal));
         _tiles = tiles.ToArray();
+        _elevation = elevation.ToArray();
         _renderedSize = size;
     }
 

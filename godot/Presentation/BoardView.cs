@@ -7,10 +7,11 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using Godot;
 using Empire.Core.State;
+using Empire.Core.Geometry;
 
 namespace Empire.Presentation;
 
-public sealed record BoardViewRules(AssetCatalog Assets, EnvironmentCatalog Environment,
+public sealed record BoardViewRules(AssetCatalog Assets, EnvironmentCatalog Environment, ITacticalGrid Grid, ReadOnlyContent Content,
     Func<string?, bool> FacesLeft, Func<string?, Vector2>? DirectionVector);
 
 /// <summary>
@@ -30,6 +31,10 @@ public partial class BoardView : Node2D
     private DynamicStateView? _dynamicState;
     private AuthoredScene? _scene;
     private EnvironmentCatalog? _environment;
+    private ITacticalGrid? _grid;
+    private ReadOnlyContent? _content;
+    private BoardProjection? _surface;
+    public BoardProjection Projection => _surface ?? throw new InvalidOperationException("Render a canonical snapshot before querying its surface.");
     private ShadowCache _shadows = new();
     private readonly List<StandingEntry> _authoredStanding = new();
     private readonly List<StandingEntry> _standing = new();
@@ -41,7 +46,7 @@ public partial class BoardView : Node2D
     public int RenderingIssueCount => Diagnostics.Count(message => message is not
         "Authored scene is marked runtimeReady=false in the source document." and not
         "Environment catalog is marked runtimeReady=false in the source document.");
-    public Vector2 FieldSize => new Vector2(_mapSize.X, _mapSize.Y) * (_assets?.LogicalTileSize ?? 0);
+    public Vector2 FieldSize => Projection.Size;
     public int RenderedUnitCount
     {
         get; private set;
@@ -76,19 +81,24 @@ public partial class BoardView : Node2D
     {
         if (_scenery is null || _scene is null || _environment is null)
             throw new InvalidOperationException("Configure the board before its terrain materials.");
+        var authoredGround = _terrain is null
+            ? _scenery.GetNode<Node2D>("AuthoredGround") : _terrain.DetachAuthoredGround();
+        if (authoredGround.GetParent() is { } parent)
+            parent.RemoveChild(authoredGround);
         if (_terrain is not null)
         {
             _scenery.RemoveChild(_terrain);
             _terrain.QueueFree();
         }
         _terrain = new TerrainView { Name = "Terrain" };
-        _terrain.Configure(materials, _scene, _environment, _shadows);
+        _terrain.Configure(new(_environment, _grid!, _shadows), materials, _scene);
+        _terrain.ConfigureAuthoredGround(authoredGround);
         _scenery.AddChild(_terrain);
     }
 
-    public void ConfigureDynamicState(ReadOnlyContent content)
+    public void ConfigureDynamicState()
     {
-        _dynamicState = new DynamicStateView(new(_assets ?? throw new InvalidOperationException("Configure the board before its dynamic state."), content, _shadows));
+        _dynamicState = new DynamicStateView(new(_assets ?? throw new InvalidOperationException("Configure the board before its dynamic state."), _content ?? throw new InvalidOperationException("Configure the canonical content before dynamic state."), _shadows));
     }
 
     public void Configure(BoardViewRules rules, JsonObject level, AuthoredScene scene)
@@ -97,6 +107,7 @@ public partial class BoardView : Node2D
         var environment = rules.Environment;
         var facesLeft = rules.FacesLeft;
         var directionVector = rules.DirectionVector;
+        ArgumentNullException.ThrowIfNull(rules.Grid);
         CancelPresentation();
         ArgumentNullException.ThrowIfNull(facesLeft);
         var width = Integer(level, "width");
@@ -147,7 +158,7 @@ public partial class BoardView : Node2D
                             break;
                         case "under-units":
                             standing.AddChild(sprite);
-                            entries.Add(new StandingEntry(sprite, sprite.Position, 2, index));
+                            entries.Add(new StandingEntry(sprite, sprite.Position, 2, index, sprite));
                             break;
                         case "over-units":
                             frame.AddChild(sprite);
@@ -173,6 +184,7 @@ public partial class BoardView : Node2D
                         shadows: shadows, shadowKind: ShadowKind.Foreground);
                     sprite.Name = $"Frame_{index}";
                     sprite.Position = contact * catalog.LogicalTileSize;
+                    sprite.SetMeta("logical_contact", sprite.Position);
                     frame.AddChild(sprite);
                     rendered++;
                 }
@@ -187,7 +199,6 @@ public partial class BoardView : Node2D
                 diagnostics.Add("Authored scene is marked runtimeReady=false in the source document.");
             if (!environment.RuntimeReady)
                 diagnostics.Add("Environment catalog is marked runtimeReady=false in the source document.");
-            OrderStanding(entries);
         }
         catch
         {
@@ -207,6 +218,9 @@ public partial class BoardView : Node2D
         _mapSize = new Vector2I(width, height);
         _scene = scene;
         _environment = environment;
+        _grid = rules.Grid;
+        _content = rules.Content;
+        _surface = null;
         _terrain = null;
         _dynamicState = null;
         _authoredStanding.Clear();
@@ -229,6 +243,23 @@ public partial class BoardView : Node2D
         var assets = _assets ?? throw new InvalidOperationException("Configure BoardView before rendering.");
         var facesLeft = _facesLeft!;
         var snapshot = ReadProjection(canonicalState);
+        var playable = Enumerable.Range(0, snapshot.Tiles.Length).Where(index =>
+        {
+            var terrain = _content!.Definition("terrains", snapshot.Tiles[index])
+                ?? throw new InvalidOperationException($"Missing terrain definition: {snapshot.Tiles[index]}");
+            return !terrain.GetProperty("tags").EnumerateArray().Any(tag => tag.GetString() == "outside");
+        }).Select(index => new Coord(index % _mapSize.X, index / _mapSize.X)).ToHashSet();
+        var map = canonicalState["map"]!.AsObject();
+        if (_surface is null || !_surface.MatchesSurface(map, playable))
+            _surface = new BoardProjection(_grid!, map, playable);
+        foreach (var entry in _authoredStanding)
+            entry.Node.Position = Projection.Project(entry.Contact);
+        foreach (var node in _scenery!.GetNode<Node2D>("AuthoredFrame").GetChildren().OfType<Node2D>())
+        {
+            if (!node.HasMeta("logical_contact"))
+                node.SetMeta("logical_contact", node.Position);
+            node.Position = Projection.Project(node.GetMeta("logical_contact").AsVector2());
+        }
         var staging = new Node2D { Name = "CanonicalProjection" };
         var entries = new List<StandingEntry>(_authoredStanding);
         var diagnostics = new List<string>(_sceneDiagnostics);
@@ -240,10 +271,9 @@ public partial class BoardView : Node2D
         {
             if (_terrain is not null)
             {
-                _terrain.Render(snapshot.Tiles, _mapSize);
-                _terrain.ApplyGroundClip(_scenery!.GetNode<Node2D>("AuthoredGround"));
-                entries.AddRange(_terrain.Standing.Select((node, index) =>
-                    new StandingEntry(node, node.Position, 2, index + _authoredStanding.Count)));
+                _terrain.Render(Projection, snapshot.Tiles, snapshot.Elevation, _mapSize);
+                entries.AddRange(_terrain.DepthEntries.Select((entry, index) =>
+                    new StandingEntry(entry.Node, entry.LogicalContact, entry.Layer, index + _authoredStanding.Count, entry.GroundSprite)));
                 diagnostics.AddRange(_terrain.Diagnostics);
             }
             for (var index = 0; index < snapshot.Tiles.Length; index++)
@@ -262,7 +292,7 @@ public partial class BoardView : Node2D
                     if (snapshot.Owners[index] != 0)
                         structure.AddChild(DynamicStateView.CreateOwnerBanner("#" + snapshot.Colors[snapshot.Owners[index]].ToHtml(false), _shadows));
                     staging.AddChild(structure);
-                    entries.Add(new StandingEntry(structure, structure.Position, 1, index));
+                    entries.Add(new StandingEntry(structure, LogicalContact(index % _mapSize.X, index / _mapSize.X), 1, index, sprite));
                 }
                 catch (MissingArtResourceException error)
                 {
@@ -272,9 +302,14 @@ public partial class BoardView : Node2D
             if (_dynamicState is not null)
             {
                 var dynamicProjection = _dynamicState.Create(canonicalState);
+                foreach (var node in dynamicProjection.Root.GetChildren().OfType<Node2D>())
+                {
+                    node.SetMeta("logical_contact", node.Position);
+                    node.Position = Projection.Project(node.Position);
+                }
                 staging.AddChild(dynamicProjection.Root);
                 entries.AddRange(dynamicProjection.Standing.Select(entry =>
-                    new StandingEntry(entry.Node, entry.Node.Position, entry.Layer, entry.Index)));
+                    new StandingEntry(entry.Node, entry.Node.GetMeta("logical_contact").AsVector2(), entry.Layer, entry.Index, entry.GroundSprite)));
                 diagnostics.AddRange(dynamicProjection.Diagnostics);
                 renderedStructures = dynamicProjection.Structures;
                 renderedMarkers = dynamicProjection.Markers;
@@ -282,6 +317,12 @@ public partial class BoardView : Node2D
             var cover = new Node2D { Name = "IllustratedCover", ZIndex = -3 };
             staging.AddChild(cover);
             renderedCover = BoardScenery.AddCover(cover, canonicalState["map"]!.AsObject(), assets, _shadows, diagnostics);
+            foreach (var node in cover.GetChildren().OfType<Node2D>())
+            {
+                var contact = node.Position;
+                node.Position = Projection.Project(contact);
+                entries.Add(new(node, contact, 2, entries.Count, (Sprite2D)node));
+            }
             foreach (var unit in snapshot.Units)
             {
                 if (visibleUnitIds is not null && !visibleUnitIds.Contains(unit.Id))
@@ -302,6 +343,7 @@ public partial class BoardView : Node2D
                             snapshot.CaptureProgress[unit.Y * _mapSize.X + unit.X], snapshot.CaptureThreshold,
                             _directionVector?.Invoke(unit.Facing)));
                     actor.SetMeta("unit_id", unit.Id);
+                    actor.SetMeta("logical_contact", LogicalContact(unit.X, unit.Y));
                     if (unit.Key is not null)
                         actor.SetMeta("actor_key", unit.Key);
                     actor.SetMeta("unit_type", unit.Type);
@@ -309,7 +351,7 @@ public partial class BoardView : Node2D
                     actor.SetMeta("hp", unit.Hp);
                     actor.SetMeta("done", unit.Done);
                     staging.AddChild(actor);
-                    entries.Add(new StandingEntry(actor, actor.Position, 9, unit.Id));
+                    entries.Add(new StandingEntry(actor, LogicalContact(unit.X, unit.Y), 9, unit.Id, sprite));
                     renderedUnits++;
                 }
                 catch (MissingArtResourceException error)
@@ -320,6 +362,8 @@ public partial class BoardView : Node2D
             foreach (var layer in _dynamicState is null ? new[] { "structures", "markers" } : Array.Empty<string>())
                 if (canonicalState[layer] is JsonArray { Count: > 0 })
                     diagnostics.Add($"Canonical '{layer}' is present but dynamic presentation content is not configured.");
+            Projection.PrepareDepthPartitions(entries.Where(entry => entry.Layer != 0)
+                .Select(entry => StandingDepthContact(entry).Y), Array.Empty<float>());
             OrderStanding(entries);
         }
         catch
@@ -339,7 +383,7 @@ public partial class BoardView : Node2D
         _diagnostics = diagnostics.Distinct(StringComparer.Ordinal).ToList().AsReadOnly();
     }
 
-    private Projection ReadProjection(JsonObject state)
+    private BattleRenderSnapshot ReadProjection(JsonObject state)
     {
         if (Text(state, "levelId") != _levelId)
             throw new InvalidOperationException("Projection does not belong to the configured level.");
@@ -351,7 +395,8 @@ public partial class BoardView : Node2D
             ?? throw new InvalidOperationException("Null canonical terrain.")).ToArray();
         var owners = ArrayValue(map, "owners", count)
             .Select(node => Integer(node, "tile owner")).ToArray();
-        ArrayValue(map, "elevation", count);
+        var elevation = ArrayValue(map, "elevation", count)
+            .Select(node => Integer(node, "tile elevation")).ToArray();
         var capture = ArrayValue(map, "captureProgress", count).Select(node => Number(node, "capture progress")).ToArray();
         var captureThreshold = Number(state["rules"]?["captureThreshold"], "capture threshold");
 
@@ -382,11 +427,11 @@ public partial class BoardView : Node2D
                 unit["done"]?.GetValue<bool>() ?? throw new InvalidOperationException($"Unit {id} lacks done state."),
                 unit["facing"]?.GetValue<string>()));
         }
-        return new Projection(tiles, owners, colors, units, capture, captureThreshold);
+        return new BattleRenderSnapshot(tiles, elevation, owners, colors, units, capture, captureThreshold);
     }
 
-    private Vector2 CellContact(int x, int y) =>
-        new(x * _assets!.LogicalTileSize + 16, y * _assets.LogicalTileSize + 31);
+    private static Vector2 LogicalContact(int x, int y) => new(x * 32 + 16, y * 32 + 31);
+    private Vector2 CellContact(int x, int y) => Projection.CellContact(new Coord(x, y));
 
     private static Sprite2D CreateTopicPlacement(AssetCatalog catalog, string topic, AuthoredPlacement placement)
     {
@@ -410,23 +455,26 @@ public partial class BoardView : Node2D
         RasterResources.Positive(placement.Scale, "placement scale");
     }
 
-    private static void OrderStanding(List<StandingEntry> entries)
+    private static Vector2 StandingDepthContact(StandingEntry entry)
     {
-        if (entries.Count >= 2048)
-            throw new InvalidOperationException("Standing projection exceeds native depth range.");
-        entries.Sort((a, b) =>
+        var offset = Vector2.Zero;
+        if (entry.GroundSprite is { } sprite)
         {
-            var y = a.Contact.Y.CompareTo(b.Contact.Y);
-            if (y != 0)
-                return y;
-            var x = a.Contact.X.CompareTo(b.Contact.X);
-            if (x != 0)
-                return x;
-            var layer = a.Layer.CompareTo(b.Layer);
-            return layer != 0 ? layer : a.Index.CompareTo(b.Index);
-        });
-        for (var index = 0; index < entries.Count; index++)
-            entries[index].Node.ZIndex = index;
+            offset = SpriteGroundContact.Offset(sprite);
+            if (sprite != entry.Node)
+                offset = entry.Node.Transform * (sprite.Position + offset) - entry.Node.Position;
+        }
+        return entry.Contact + offset;
+    }
+
+    private void OrderStanding(List<StandingEntry> entries)
+    {
+        foreach (var entry in entries)
+        {
+            entry.Node.ZAsRelative = false;
+            entry.Node.ZIndex = Projection.DrawDepth(StandingDepthContact(entry),
+                entry.Layer == 0 ? BoardDepthLayer.Surface : BoardDepthLayer.Standing);
+        }
     }
 
     private void ReplaceChild(ref Node2D? previous, Node2D? next)
@@ -480,9 +528,9 @@ public partial class BoardView : Node2D
         return array;
     }
 
-    private sealed record StandingEntry(Node2D Node, Vector2 Contact, int Layer, int Index);
+    private sealed record StandingEntry(Node2D Node, Vector2 Contact, int Layer, int Index, Sprite2D? GroundSprite = null);
     private sealed record UnitProjection(int Id, string? Key, string Type, int Owner,
         int X, int Y, int Hp, bool Done, string? Facing);
-    private sealed record Projection(string[] Tiles, int[] Owners,
+    private sealed record BattleRenderSnapshot(string[] Tiles, int[] Elevation, int[] Owners,
         Dictionary<int, Color> Colors, List<UnitProjection> Units, double[] CaptureProgress, double CaptureThreshold);
 }
