@@ -214,7 +214,7 @@ public partial class LightingLifetimeChecks : Node
         screen.Board.AdvanceAnimationsAutomatically = false;
         void Bind(GrayFlagSession session)
         {
-            screen.BindSession(new(text, battleText, session, new(assets, environment, engine.Grids.Get("square4"), engine.Catalog, facing => facing == "west", null)), level, scene);
+            screen.BindSession(new(text, battleText, session, new(assets, environment, engine.Grids.Get("square4"), engine.Catalog)), level, scene);
             screen.ConfigureDynamicState();
         }
         var session = new GrayFlagSession(new(engine, presentation), level);

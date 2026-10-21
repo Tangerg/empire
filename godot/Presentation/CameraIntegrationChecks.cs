@@ -57,7 +57,7 @@ public partial class CameraIntegrationChecks : Node
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
     }
 
-    private void Bind(ITacticalBattleSession session) => screen.BindSession(new(text, battleText, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, _ => false, null)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
+    private void Bind(ITacticalBattleSession session) => screen.BindSession(new(text, battleText, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
     private async Task Layout()
     {
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
@@ -69,13 +69,13 @@ public partial class CameraIntegrationChecks : Node
         Require(map.Size.X > 0 && map.Size.Y > 0, "Usable native map viewport is laid out");
         Near(world.Scale, Vector2.One * 1.25f, "Initial screen scale is source zoom, not fit-to-panel");
         Require(screen.Board.Scale == Vector2.One, "Only the screen world owns camera scaling");
-        screen.SelectCell(new BoardCell(5, 8));
+        screen.SelectCell(new BoardCell(9, 12));
         Require(screen.SelectedUnitId == 2, "Fixture actor is the real Torren unit");
         GuiButton(MouseButton.Right, true, new Vector2(-1000, -1000));
         Require(screen.SelectedUnitId == 2, "Right press outside the field must not cancel selection");
-        GuiButton(MouseButton.Right, true, Field(new Vector2(5.5f, 8.5f) * 32));
+        GuiButton(MouseButton.Right, true, Field(new Vector2(9.5f, 12.5f) * 32));
         Require(screen.SelectedUnitId is null, "Right press on a valid field cell cancels immediately");
-        var at = Field(new Vector2(5.5f, 8.5f) * 32);
+        var at = Field(new Vector2(9.5f, 12.5f) * 32);
         GuiButton(MouseButton.Left, true, at);
         Require(screen.SelectedUnitId is null, "Primary down does not select");
         CapturedButton(MouseButton.Left, false, at);
@@ -142,7 +142,7 @@ public partial class CameraIntegrationChecks : Node
     private void CheckCancellation()
     {
         Bind(new GrayFlagSession(new(engine, presentation), level));
-        var at = Field(new Vector2(5.5f, 8.5f) * 32);
+        var at = Field(new Vector2(9.5f, 12.5f) * 32);
         GuiButton(MouseButton.Left, true, at);
         screen._Notification((int)Node.NotificationWMWindowFocusOut);
         GuiButton(MouseButton.Left, false, at);
@@ -185,7 +185,7 @@ public partial class CameraIntegrationChecks : Node
         GuiButton(MouseButton.Middle, true, new Vector2(100, 100));
         CapturedMove(new Vector2(10000, 10000));
         CapturedButton(MouseButton.Middle, false, new Vector2(10000, 10000));
-        screen.SelectCell(new BoardCell(5, 8));
+        screen.SelectCell(new BoardCell(9, 12));
         GuiButton(MouseButton.Right, true, Field(new Vector2(16, 16)));
         Require(screen.SelectedUnitId == 2, "Canonical outside terrain excludes holes even when material tags say playable");
         GuiButton(MouseButton.Left, true, Field(new Vector2(16, 16)));
@@ -201,7 +201,7 @@ public partial class CameraIntegrationChecks : Node
         materials = WorldMaterialsManifest.Load();
         materials.TerrainTags["plain"] = ["outside"];
         screen.ConfigureTerrain(materials);
-        var actor = Field(new Vector2(5.5f, 8.5f) * 32);
+        var actor = Field(new Vector2(9.5f, 12.5f) * 32);
         GuiButton(MouseButton.Left, true, actor);
         CapturedButton(MouseButton.Left, false, actor);
         Require(screen.SelectedUnitId == 2, "Material outside tags cannot block primary input on canonical playable terrain");
@@ -236,7 +236,8 @@ public partial class CameraIntegrationChecks : Node
                 var expected = new BattlefieldCamera(new(screen.Board.FieldSize.X, screen.Board.FieldSize.Y),
                     new(74, 62, 74, 74), new(0, 0));
                 expected.Resize(new(map.Size.X, map.Size.Y));
-                expected.CenterOn(new((destination.X + .5) * 32, (destination.Y + .5) * 32));
+                var projectedDestination = screen.Board.Projection.CellCenter(new(destination.X, destination.Y));
+                expected.CenterOn(new(projectedDestination.X, projectedDestination.Y));
                 Near(during, new((float)expected.FieldOrigin.X, (float)expected.FieldOrigin.Y), "Visible AI command follows the canonical final path point");
             }
             else
@@ -293,14 +294,14 @@ public partial class CameraIntegrationChecks : Node
         screen.BindApplicationActions(onRestart: () => restarts += 100, onExit: () => exits += 100);
         confirmation.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
         Require(restarts == 0, "A superseded restart dialog cannot invoke the newer binding's callback");
-        GuiButton(MouseButton.Left, true, Field(new Vector2(5.5f, 8.5f) * 32));
+        GuiButton(MouseButton.Left, true, Field(new Vector2(9.5f, 12.5f) * 32));
         RemoveChild(screen);
         exit.EmitSignal(Button.SignalName.Pressed);
         screen._Input(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = false });
         Require(exits == 0, "Unmounted application callback cannot exit camp");
         AddChild(screen);
         Bind(new GrayFlagSession(new(engine, presentation), level));
-        GuiButton(MouseButton.Left, false, Field(new Vector2(5.5f, 8.5f) * 32));
+        GuiButton(MouseButton.Left, false, Field(new Vector2(9.5f, 12.5f) * 32));
         Require(screen.SelectedUnitId is null, "Reattached screen cannot replay an old held gesture");
         Near(world.Scale, Vector2.One * 1.25f, "Explicit rebind after reattach restores a usable camera");
         screen.QueueFree();
@@ -312,7 +313,7 @@ public partial class CameraIntegrationChecks : Node
             screen.Board.AdvancePresentation(.1);
         Require(!screen.IsPresenting, "Presentation settles before the next order");
     }
-    private Vector2 Field(Vector2 point) => world.Position + point * world.Scale;
+    private Vector2 Field(Vector2 point) => world.Position + screen.Board.Projection.Project(point) * world.Scale;
     private Vector2 Global(Vector2 point) => map.GetGlobalTransformWithCanvas() * point;
     private void GuiButton(MouseButton button, bool pressed, Vector2 point) => map.EmitSignal(Control.SignalName.GuiInput,
         new InputEventMouseButton { ButtonIndex = button, Pressed = pressed, Position = point });

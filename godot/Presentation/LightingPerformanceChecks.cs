@@ -161,7 +161,7 @@ public partial class LightingPerformanceChecks : Node
         {
             var before = GC.GetAllocatedBytesForCurrentThread();
             var timer = Stopwatch.StartNew();
-            board.Configure(new(assets, EnvironmentCatalog.Load(), new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")), facing => facing == "west", null), fixture["level"]!.AsObject(), scene);
+            board.Configure(new(assets, EnvironmentCatalog.Load(), new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json"))), fixture["level"]!.AsObject(), scene);
             board.ConfigureTerrain(WorldMaterialsManifest.Load());
             board.ConfigureDynamicState();
             board.RenderState(state);

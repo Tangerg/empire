@@ -178,6 +178,12 @@ public partial class BattleScreen : Control
         var state = session.GetSnapshot().State;
         var fallback = new CameraPoint(_board.FieldSize.X / 2, _board.FieldSize.Y / 2);
         var focus = BattlefieldFocus.Initial(state, CellCenter, fallback);
+        if (authoredScene.OpeningFocus is { } opening)
+        {
+            if (opening.Length != 2 || !_tactical.InteractiveCells.Contains(new BoardCell(opening[0], opening[1])))
+                throw new InvalidOperationException("Authored opening focus must identify one playable canonical cell.");
+            focus = CellCenter(new CameraPoint(opening[0], opening[1]));
+        }
         _camera = new BattlefieldCamera(new(_board.FieldSize.X, _board.FieldSize.Y), new(74, 62, 74, 74), focus);
         _gestures = new BattlefieldGestures(new(point => _camera?.HasViewport == true ? _camera.ToField(point) : null, PressField, HoverField, () => HoverField(null), delta => { _camera?.Pan(delta); ApplyCamera(); }, notches => QueueZoom(notches * .1)));
         ResizeCamera();
@@ -572,7 +578,7 @@ public partial class BattleScreen : Control
             return;
         if (point.X < 0 || point.Y < 0 || point.X >= _board.FieldSize.X || point.Y >= _board.FieldSize.Y)
             return;
-        if (_board.Projection.Pick(new Vector2((float)point.X, (float)point.Y)) is not { } picked)
+        if (_board.Pick(new Vector2((float)point.X, (float)point.Y)) is not { } picked)
             return;
         var cell = new BoardCell(picked.X, picked.Y);
         if (_tactical is null || !Current(_tactical.Stamp) || !_tactical.InteractiveCells.Contains(cell))

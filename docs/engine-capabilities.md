@@ -615,10 +615,13 @@ remains a separate TypeScript check, not evidence of a native CI pass.
 `Presentation.BoardProjection` owns the detached rendering surface derived from the
 composed grid, canonical elevation, cliff edges and playable cells. Ground meshes,
 standing contacts, movement animation, tactical overlays, camera targets and pointer
-picking consume that projection. It does not change movement or author new cliffs.
-Visible surface triangles and their one-logical-pixel depth patches share the same
+picking consume that projection. Its fixed dimetric ground basis also owns visual direction
+vectors and camera-depth ordering; upright sprites are not skewed. It does not change
+movement or author new cliffs. `BoardView` resolves opaque sprite hits in that render
+order before surface hits, without changing command legality.
+Visible surface triangles and their one-camera-depth-pixel patches share the same
 geometry. Contact-dependent partitions batch empty depth intervals without losing
-interleaving; movement prepares its crossed depths once before animation. backfacing surface fans remain available for logical contact projection,
+interleaving; movement prepares its crossed depths once before animation. Backfacing surface fans remain available for logical contact projection,
 but are not rendered or picked. `ProjectedGround` owns the temporary ground viewport
 and its meshes borrow the viewport texture until teardown.
 

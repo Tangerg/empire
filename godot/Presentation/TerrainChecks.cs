@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Nodes;
 using Empire.Core.Engine;
+using Empire.Core.Geometry;
+using Empire.Core.Tactics;
 using Godot;
 
 namespace Empire.Presentation;
@@ -67,6 +69,8 @@ internal static class TerrainChecks
                 Require(!view.Diagnostics.Any(message => message.Contains("Missing", StringComparison.Ordinal)),
                     $"{scene.LevelId}: {string.Join("; ", view.Diagnostics)}");
                 Require(state.ToJsonString() == unchanged, "Terrain composition changed the canonical state.");
+                if (scene.LevelId == "c01-01")
+                    CheckNorthHill(engine, state);
                 if (scene.LevelId == "c01-02")
                 {
                     CheckRiver(view, materials, scene, tiles, size);
@@ -82,7 +86,122 @@ internal static class TerrainChecks
         CheckRiverGeometry();
         CheckRoadShoulder();
         CheckEdgeSupport(materials);
-        GD.Print("Terrain checks passed: 16 canonical resource projections, c01-02 river permissions/shape/bridge registration, raw diagonal occupancy, river width validation and junction topology.");
+        GD.Print("Terrain checks passed: 16 canonical resource projections, north hill cliff/ramp access and starting-unit connectivity, c01-02 river permissions/shape/bridge registration, raw diagonal occupancy, river width validation and junction topology.");
+    }
+
+    private static void CheckNorthHill(BattleEngine engine, JsonObject state)
+    {
+        var movement = new MovementRules(new(engine.Catalog, engine.Grids));
+        var battlefield = movement.Battlefield(state);
+        var board = engine.Space.Board(state);
+        Require(state["map"]!["cliffs"]!.AsArray().Count == 6, "The north hill must have six authored cliff edges, not a closed ring.");
+        var withoutCliffs = state.DeepClone().AsObject();
+        withoutCliffs["map"]!["cliffs"] = new JsonArray();
+        var openBattlefield = movement.Battlefield(withoutCliffs);
+        for (var x = 13; x <= 16; x++)
+        {
+            var upper = new Coord(x, 8);
+            var lower = new Coord(x, 9);
+            Require(battlefield.Cell(upper).Elevation == 2 && battlefield.Cell(lower).Elevation == 0,
+                $"North cliff {x} must connect the authored height-two summit and height-zero foot.");
+            Require(battlefield.IsCliff(upper, lower) && battlefield.IsCliff(lower, upper),
+                $"North cliff {x} is missing its undirected canonical edge.");
+            Require(battlefield.TraversalCost(upper, lower, "foot") is null
+                && battlefield.TraversalCost(lower, upper, "foot") is null,
+                $"Foot movement crossed north cliff {x}.");
+            Require(battlefield.TraversalCost(upper, lower, "flying") == 1
+                && battlefield.TraversalCost(lower, upper, "flying") == 1,
+                $"Flying movement failed to cross north cliff {x}.");
+            Require(openBattlefield.TraversalCost(upper, lower, "foot") == 1,
+                $"North cliff {x} must block an otherwise legal foot descent, not merely exceed the climb limit.");
+        }
+
+        foreach (var y in new[] { 7, 8 })
+        {
+            var upper = new Coord(16, y);
+            var lower = new Coord(17, y);
+            Require(battlefield.Cell(upper).Elevation == 2 && battlefield.Cell(lower).Elevation == 1,
+                "The east return must join the authored upper platform and lower slope.");
+            Require(battlefield.TraversalCost(upper, lower, "foot") is null
+                && battlefield.TraversalCost(lower, upper, "foot") is null
+                && battlefield.TraversalCost(upper, lower, "flying") == 1,
+                "The same east cliff must block foot movement and permit flight.");
+        }
+
+        var scout = state["units"]!.AsArray().OfType<JsonObject>()
+            .Single(unit => unit["key"]?.GetValue<string>() == "ridge-scout");
+        var scoutBudget = movement.MovementBudget(state, scout);
+        Require(TacticalQueries.Position(scout) == new Coord(11, 7), "The ridge scout's authored starting coordinate changed.");
+        for (var x = 11; x <= 12; x++)
+        {
+            var ramp = new[] { new Coord(x, 9), new Coord(x, 8), new Coord(x, 7) };
+            for (var step = 0; step < ramp.Length; step++)
+                Require(battlefield.Cell(ramp[step]).Elevation == step,
+                    $"North side ramp {x} must retain its 0-to-1-to-2 elevation sequence.");
+            for (var step = 1; step < ramp.Length; step++)
+            {
+                var uphill = battlefield.TraversalCost(ramp[step - 1], ramp[step], "foot");
+                var downhill = battlefield.TraversalCost(ramp[step], ramp[step - 1], "foot");
+                Require(uphill is > 0 && uphill <= scoutBudget && downhill is > 0 && downhill <= scoutBudget,
+                    $"North side ramp {x} contains a step the starting scout cannot traverse within its movement budget.");
+            }
+        }
+
+        var scoutPath = engine.Space.PathTo(engine.Space.ComputeMoveField(state, scout), state, new Coord(11, 9));
+        Require(scoutPath is not null && scoutPath.SequenceEqual(new[] { new Coord(11, 7), new Coord(11, 8), new Coord(11, 9) }),
+            "The composed movement policy must let the starting scout descend the side ramp.");
+        var probe = state.DeepClone().AsObject();
+        var probeScout = TacticalQueries.RequireUnit(probe, scout["id"]!.GetValue<int>());
+        for (var x = 11; x <= 12; x++)
+            foreach (var y in new[] { 9, 8 })
+            {
+                probeScout["x"] = x;
+                probeScout["y"] = y;
+                var from = new Coord(x, y);
+                var to = new Coord(x, y - 1);
+                var field = engine.Space.ComputeMoveField(probe, probeScout);
+                var path = engine.Space.PathTo(field, probe, to);
+                Require(field.Stops.Contains(board.IndexOf(to)) && path is not null && path.SequenceEqual(new[] { from, to }),
+                    $"The composed movement policy must let the scout ascend ramp {x} from {y}.");
+            }
+
+        var corridor = new Coord(16, 11);
+        var connectivity = new Dictionary<(string MovementClass, int Budget), (HashSet<Coord> FromCorridor, HashSet<Coord> ToCorridor)>();
+        foreach (var unit in state["units"]!.AsArray().OfType<JsonObject>())
+        {
+            var definition = engine.Catalog.Definition("units", unit["type"]!.GetValue<string>())!.Value;
+            var movementClass = definition.GetProperty("movementClass").GetString()!;
+            var profile = engine.Catalog.Definition("movementProfiles", movementClass)!.Value;
+            if (!profile.GetProperty("tags").EnumerateArray().Any(tag => tag.GetString() == "ground"))
+                continue;
+            var budget = movement.MovementBudget(state, unit);
+            var key = (movementClass, budget);
+            if (!connectivity.TryGetValue(key, out var connected))
+            {
+                connected = (Connected(false), Connected(true));
+                connectivity.Add(key, connected);
+            }
+            var origin = TacticalQueries.Position(unit);
+            Require(connected.FromCorridor.Contains(origin) && connected.ToCorridor.Contains(origin),
+                $"Starting unit {unit["key"]} is terrain-isolated from the central corridor within its movement budget.");
+
+            HashSet<Coord> Connected(bool reverse)
+            {
+                // Topology ignores temporary unit occupancy; each edge must still fit a real turn's budget.
+                var reached = new HashSet<Coord> { corridor };
+                var pending = new Queue<Coord>();
+                pending.Enqueue(corridor);
+                while (pending.TryDequeue(out var at))
+                    foreach (var next in board.Neighbours(at))
+                    {
+                        var cost = reverse ? battlefield.TraversalCost(next, at, movementClass)
+                            : battlefield.TraversalCost(at, next, movementClass);
+                        if (cost is > 0 && cost <= budget && reached.Add(next))
+                            pending.Enqueue(next);
+                    }
+                return reached;
+            }
+        }
     }
 
     private static void CheckRiver(TerrainView view, WorldMaterialsManifest materials, AuthoredScene scene, string[] tiles, Vector2I size)

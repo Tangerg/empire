@@ -48,7 +48,7 @@ public partial class LightingChecks : Node
         try
         {
             var clock = System.Diagnostics.Stopwatch.StartNew();
-            board.Configure(new(assets, EnvironmentCatalog.Load(), new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")), facing => facing == "west", null), level, scene);
+            board.Configure(new(assets, EnvironmentCatalog.Load(), new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json"))), level, scene);
             board.ConfigureTerrain(WorldMaterialsManifest.Load());
             board.ConfigureDynamicState();
             board.RenderState(state);

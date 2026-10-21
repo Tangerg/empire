@@ -16,6 +16,7 @@ public partial class AnimationChecks : Node
     private int assertions;
     private AssetCatalog assets = null!;
     private JsonObject initial = null!;
+    private string initialBytes = "";
     private JsonObject level = null!;
     private JsonArray packs = null!;
     private long revision;
@@ -25,10 +26,10 @@ public partial class AnimationChecks : Node
         try
         {
             assets = AssetCatalog.Load();
-            var fixture = PresentationJson.Load<JsonObject>("res://tests/oracle/grayflag-initial-raw.json");
-            level = fixture["level"]!.AsObject();
-            initial = fixture["state"]!.AsObject();
+            level = BattleTextChecks.OpeningLevel();
             packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
+            initial = new Empire.Core.Engine.BattleEngine(packs).CreateState(level);
+            initialBytes = initial.ToJsonString();
             CheckAssets();
             CheckTransitionOwnership();
             await CheckClock();
@@ -51,7 +52,7 @@ public partial class AnimationChecks : Node
     {
         var board = new BoardView { AdvanceAnimationsAutomatically = false };
         AddChild(board);
-        board.Configure(new(assets, EnvironmentCatalog.Load(), new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")), facing => facing == "west", null), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
+        board.Configure(new(assets, EnvironmentCatalog.Load(), new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json"))), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
         board.ConfigureDynamicState();
         board.RenderState(initial);
         return board;
@@ -179,14 +180,14 @@ public partial class AnimationChecks : Node
         var actor = Actor(board, id);
         Require(board.IsPresenting && Frame(actor) == 1, "Movement immediately selects source walk-a");
         await Tick(board, 0.0425);
-        Require(actor.Position.IsEqualApprox(new Vector2((x + 0.5f) * 32 + 16, y * 32 + 28.5f)),
+        Require(actor.Position.IsEqualApprox(board.Projection.Project(new Vector2((x + 0.5f) * 32 + 16, y * 32 + 31)) + new Vector2(0, -2.5f)),
             "Human 85 ms step has source quadratic halfway motion and 2.5 px hop");
         await Tick(board, 0.0426);
         await Tick(board, 0.075);
         Require(Frame(actor) == 3, "Source walk clip alternates walk-a/walk-b at 6.25 fps across path segments");
         await Tick(board, 0.011);
         Require(await task && !board.IsPresenting, "Move event must not replay the path a second time");
-        Require(Actor(board, id).Position == new Vector2((x + 2) * 32 + 16, y * 32 + 31), "Settled actor uses committed destination");
+        Require(Actor(board, id).Position == board.Projection.CellContact(new(x + 2, y)), "Settled actor uses committed destination");
         Require(input == transition.Before.GetRawText() + transition.After.GetRawText() + transition.Action.GetRawText(), "Animation cannot mutate detached transition JSON");
 
         var ai = transition with
@@ -196,11 +197,11 @@ public partial class AnimationChecks : Node
         task = board.PresentTransitionAsync(ai);
         actor = Actor(board, id);
         await Tick(board, 0.0325);
-        Require(actor.Position.X == (x + 0.5f) * 32 + 16, "AI uses source 65 ms per tile, not the human pace");
+        Require(Mathf.IsEqualApprox(actor.Position.X, board.Projection.Project(new Vector2((x + 0.5f) * 32 + 16, y * 32 + 31)).X), "AI uses source 65 ms per tile, not the human pace");
         board.CancelPresentation();
         Require(!await task && !board.IsPresenting && board.GetNodeOrNull("BattleEffects") is null,
             "Cancel removes temporary layers and resolves playback false");
-        Require(Actor(board, id).Position.X == (x + 2) * 32 + 16, "Mounted cancellation settles at committed state");
+        Require(Mathf.IsEqualApprox(Actor(board, id).Position.X, board.Projection.CellContact(new(x + 2, y)).X), "Mounted cancellation settles at committed state");
     }
 
     private async Task CheckStrikeAndDeath(BoardView board)
@@ -211,14 +212,15 @@ public partial class AnimationChecks : Node
         var target = before["units"]!.AsArray().Last()!.AsObject();
         var aid = Int(attacker, "id");
         var did = Int(target, "id");
-        var at = new Vector2(Int(target, "x") * 32 + 16, Int(target, "y") * 32 + 16);
+        var at = board.Projection.CellCenter(new(Int(target, "x"), Int(target, "y")));
         var attack = Strike("attack", aid, did);
         var task = board.PresentTransitionAsync(Transition(before, after, IdleAction(), [attack]));
         var actor = Actor(board, aid);
         var origin = actor.Position;
         Require(Frame(actor) == 2, "Strike selects the declared source attack frame");
         await Tick(board, 0.075);
-        var direction = new Vector2(Math.Sign(Int(target, "x") - Int(attacker, "x")), Math.Sign(Int(target, "y") - Int(attacker, "y")));
+        var direction = (board.Projection.CellContact(new(Int(target, "x"), Int(target, "y")))
+            - board.Projection.CellContact(new(Int(attacker, "x"), Int(attacker, "y")))).Normalized();
         Require(actor.Position.IsEqualApprox(origin + direction * 7), "Strike has source 150 ms sine lunge of seven pixels");
         await Tick(board, 0.076);
         var hit = board.GetNode<Node2D>("BattleEffects/Hit");
@@ -241,7 +243,7 @@ public partial class AnimationChecks : Node
             if (kind != "areaAttack")
                 await Tick(board, 0.151);
             hit = board.GetNode<Node2D>("BattleEffects/Hit");
-            Require(hit.Position == (kind == "partingShot" ? new Vector2(48, 80) : at),
+            Require(hit.Position == (kind == "partingShot" ? board.Projection.CellCenter(new(1, 2)) : at),
                 $"{kind}: source impact target and area no-extra-wind-up contract");
             await Drain(board, task);
         }
@@ -261,8 +263,8 @@ public partial class AnimationChecks : Node
         var ghost = Actor(board, did);
         Require(ghost is CanvasGroup && Mathf.IsEqualApprox(ghost.SelfModulate.A, 0.5f) && Mathf.IsEqualApprox(ghost.Scale.X, 0.825f),
             "Death uses source 220 ms fade and 35 percent shrink");
-        Require(Mathf.IsEqualApprox(ghost.Position.Y + ghost.Scale.Y * -15, Int(target, "y") * 32 + 16),
-            "Death scaling pivots around the cell middle, not the sprite foot");
+        Require(Mathf.IsEqualApprox(ghost.Position.Y + ghost.Scale.Y * -15, board.Projection.CellContact(new(Int(target, "x"), Int(target, "y"))).Y - 15),
+            "Death scaling preserves its screen-space billboard pivot above the projected foot");
         await Tick(board, 0.111);
         Require(await task && board.GetNodeOrNull($"CanonicalProjection/Unit_{did}") is null,
             "Death removes the ghost and final settled state has no dead actor");
@@ -349,7 +351,7 @@ public partial class AnimationChecks : Node
         };
         task = board.PresentTransitionAsync(Transition(before, after, IdleAction(), [impact]));
         await Tick(board, 0.151);
-        Require(board.GetNode<Node2D>("BattleEffects/Hit").Position == new Vector2(48, 80),
+        Require(board.GetNode<Node2D>("BattleEffects/Hit").Position == board.Projection.CellCenter(new(1, 2)),
             "Source destroyed structures remain in committed state and retain their impact coordinates");
         await Drain(board, task);
 
@@ -385,8 +387,8 @@ public partial class AnimationChecks : Node
         board.PresentationRepaintRequested += Repaint;
         var task = board.PresentTransitionAsync(Transition(Copy(), after, IdleAction(),
             [new JsonObject { ["type"] = "turnStart", ["player"] = 1, ["turn"] = 3 }, new JsonObject { ["type"] = "gameOver", ["team"] = 1, ["reason"] = "fixture" }]));
-        Require(repaints == 1 && board.GetNode<Label>("BattleEffects/TurnAnnouncement/Band/Number").Text.Contains("第 3 回合", StringComparison.Ordinal),
-            "Turn banner uses emitted turn and repaints the current header before appearing");
+        Require(repaints == 1 && board.GetNode<Label>("BattleEffects/TurnAnnouncement/Band/Number").Text == "Localized announcement",
+            "Turn banner displays the supplied localized receipt text and repaints the header before appearing");
         await Tick(board, 0.2201);
         await Tick(board, 0.4201);
         Require(!task.IsCompleted && board.GetNodeOrNull("BattleEffects/TurnAnnouncement") is not null, "Turn banner has source 220 ms entrance and 420 ms hold");
@@ -464,19 +466,19 @@ public partial class AnimationChecks : Node
         RemoveChild(board);
         Require(!await second && !board.IsPresenting, "ExitTree cancels without waiting for another process frame");
         AddChild(board);
-        board.Configure(new(assets, EnvironmentCatalog.Load(), new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")), facing => facing == "west", null), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
+        board.Configure(new(assets, EnvironmentCatalog.Load(), new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json"))), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
         board.ConfigureDynamicState();
         var reattached = board.PresentTransitionAsync(transition);
         Require(board.IsPresenting && !reattached.IsCompleted, "Explicit reattach and reconfigure restores the presentation lifecycle");
         await Tick(board, 0.221);
         Require(await reattached, "Reattached board can settle a new transition normally");
-        Require(initial.ToJsonString() == PresentationJson.Load<JsonObject>("res://tests/oracle/grayflag-initial-raw.json")["state"]!.ToJsonString(),
+        Require(initial.ToJsonString() == initialBytes,
             "All presentation tests leave original canonical fixture data unchanged");
     }
 
     private BattlePresentationTransition Transition(JsonObject before, JsonObject after, JsonObject action, IReadOnlyList<JsonObject> events,
         IReadOnlySet<int>? visible = null) =>
-        new(++revision, EcmaJson.ToElement(before), EcmaJson.ToElement(action), events.Select(EcmaJson.ToElement).ToArray(), EcmaJson.ToElement(after), false, visible);
+        new(++revision, EcmaJson.ToElement(before), EcmaJson.ToElement(action), events.Select(EcmaJson.ToElement).ToArray(), EcmaJson.ToElement(after), false, visible, events.Select(_ => "Localized announcement").ToArray());
     private async Task Tick(BoardView board, double seconds)
     {
         board.AdvancePresentation(seconds);

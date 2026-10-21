@@ -74,39 +74,48 @@ internal sealed class BoardDecorations : IDisposable
 
     private readonly record struct SurfaceVertex(Vector2 Logical, Vector2 Projected);
 
-    internal static void DrawProjected(Node2D canvas, Drawing drawing, Vector2 offset, IReadOnlyList<BoardSurfacePatch> patches)
+    internal static void DrawProjected(Node2D canvas, Drawing drawing, IReadOnlyList<Vector2> offsets, IReadOnlyList<BoardSurfacePatch> patches)
     {
-        var bounds = new Rect2(drawing.Bounds.Position + offset, drawing.Bounds.Size);
-        foreach (var patch in patches)
+        var points = new List<Vector2>();
+        var uv = new List<Vector2>();
+        var indices = new List<int>();
+        foreach (var offset in offsets)
         {
-            var logicalBounds = new Rect2(patch.Vertices[0].Logical, Vector2.Zero);
-            foreach (var vertex in patch.Vertices)
-                logicalBounds = logicalBounds.Expand(vertex.Logical);
-            if (!logicalBounds.Intersects(bounds))
-                continue;
-            var polygon = patch.Vertices.Select(vertex => new SurfaceVertex(vertex.Logical, vertex.Projected)).ToList();
-            polygon = Clip(polygon, point => point.X - bounds.Position.X);
-            polygon = Clip(polygon, point => bounds.End.X - point.X);
-            polygon = Clip(polygon, point => point.Y - bounds.Position.Y);
-            polygon = Clip(polygon, point => bounds.End.Y - point.Y);
-            polygon = polygon.Distinct().ToList();
-            if (polygon.Count < 3)
-                continue;
-            var area = 0f;
-            for (var index = 0; index < polygon.Count; index++)
+            var bounds = new Rect2(drawing.Bounds.Position + offset, drawing.Bounds.Size);
+            foreach (var patch in patches)
             {
-                var a = polygon[index].Projected;
-                var b = polygon[(index + 1) % polygon.Count].Projected;
-                area += a.X * b.Y - a.Y * b.X;
+                var logicalBounds = new Rect2(patch.Vertices[0].Logical, Vector2.Zero);
+                foreach (var vertex in patch.Vertices)
+                    logicalBounds = logicalBounds.Expand(vertex.Logical);
+                if (!logicalBounds.Intersects(bounds))
+                    continue;
+                var polygon = patch.Vertices.Select(vertex => new SurfaceVertex(vertex.Logical, vertex.Projected)).ToList();
+                polygon = Clip(polygon, point => point.X - bounds.Position.X);
+                polygon = Clip(polygon, point => bounds.End.X - point.X);
+                polygon = Clip(polygon, point => point.Y - bounds.Position.Y);
+                polygon = Clip(polygon, point => bounds.End.Y - point.Y);
+                polygon = polygon.Distinct().ToList();
+                if (polygon.Count < 3)
+                    continue;
+                var area = 0f;
+                for (var index = 0; index < polygon.Count; index++)
+                {
+                    var a = polygon[index].Projected;
+                    var b = polygon[(index + 1) % polygon.Count].Projected;
+                    area += a.X * b.Y - a.Y * b.X;
+                }
+                if (Math.Abs(area) <= 0.0001f)
+                    continue;
+                var first = points.Count;
+                points.AddRange(polygon.Select(vertex => vertex.Projected));
+                uv.AddRange(polygon.Select(vertex => (vertex.Logical - bounds.Position) / bounds.Size));
+                for (var index = 1; index + 1 < polygon.Count; index++)
+                    indices.AddRange([first, first + index, first + index + 1]);
             }
-            if (Math.Abs(area) <= 0.0001f)
-                continue;
-            // DrawPolygon takes normalized UVs (unlike Polygon2D's pixel UVs).
-            // Clipping both positions together keeps cliff seams on their own side.
-            canvas.DrawPolygon(polygon.Select(vertex => vertex.Projected).ToArray(),
-                new[] { new Color(1, 1, 1, drawing.Opacity) },
-                polygon.Select(vertex => (vertex.Logical - bounds.Position) / bounds.Size).ToArray(), drawing.Texture);
         }
+        if (indices.Count > 0)
+            RenderingServer.CanvasItemAddTriangleArray(canvas.GetCanvasItem(), indices.ToArray(), points.ToArray(),
+                [new Color(1, 1, 1, drawing.Opacity)], uv.ToArray(), [], [], drawing.Texture.GetRid());
     }
 
     private static List<SurfaceVertex> Clip(List<SurfaceVertex> polygon, Func<Vector2, float> signedDistance)

@@ -11,8 +11,7 @@ using Empire.Core.Geometry;
 
 namespace Empire.Presentation;
 
-public sealed record BoardViewRules(AssetCatalog Assets, EnvironmentCatalog Environment, ITacticalGrid Grid, ReadOnlyContent Content,
-    Func<string?, bool> FacesLeft, Func<string?, Vector2>? DirectionVector);
+public sealed record BoardViewRules(AssetCatalog Assets, EnvironmentCatalog Environment, ITacticalGrid Grid, ReadOnlyContent Content);
 
 /// <summary>
 /// Read-only projection of the canonical battle. This node never dispatches an order,
@@ -21,8 +20,6 @@ public sealed record BoardViewRules(AssetCatalog Assets, EnvironmentCatalog Envi
 public partial class BoardView : Node2D
 {
     private AssetCatalog? _assets;
-    private Func<string?, bool>? _facesLeft;
-    private Func<string?, Vector2>? _directionVector;
     private string _levelId = "";
     private Vector2I _mapSize;
     private Node2D? _scenery;
@@ -105,11 +102,8 @@ public partial class BoardView : Node2D
     {
         var catalog = rules.Assets;
         var environment = rules.Environment;
-        var facesLeft = rules.FacesLeft;
-        var directionVector = rules.DirectionVector;
         ArgumentNullException.ThrowIfNull(rules.Grid);
         CancelPresentation();
-        ArgumentNullException.ThrowIfNull(facesLeft);
         var width = Integer(level, "width");
         var height = Integer(level, "height");
         var levelId = Text(level, "id");
@@ -212,8 +206,6 @@ public partial class BoardView : Node2D
         _shadows.Dispose();
         _shadows = shadows;
         _assets = catalog;
-        _facesLeft = facesLeft;
-        _directionVector = directionVector;
         _levelId = levelId;
         _mapSize = new Vector2I(width, height);
         _scene = scene;
@@ -241,7 +233,6 @@ public partial class BoardView : Node2D
     public void RenderState(JsonObject canonicalState, IReadOnlySet<int>? visibleUnitIds = null)
     {
         var assets = _assets ?? throw new InvalidOperationException("Configure BoardView before rendering.");
-        var facesLeft = _facesLeft!;
         var snapshot = ReadProjection(canonicalState);
         var playable = Enumerable.Range(0, snapshot.Tiles.Length).Where(index =>
         {
@@ -292,7 +283,7 @@ public partial class BoardView : Node2D
                     if (snapshot.Owners[index] != 0)
                         structure.AddChild(DynamicStateView.CreateOwnerBanner("#" + snapshot.Colors[snapshot.Owners[index]].ToHtml(false), _shadows));
                     staging.AddChild(structure);
-                    entries.Add(new StandingEntry(structure, LogicalContact(index % _mapSize.X, index / _mapSize.X), 1, index, sprite));
+                    entries.Add(new StandingEntry(structure, LogicalContact(index % _mapSize.X, index / _mapSize.X), 1, index, sprite, new Coord(index % _mapSize.X, index / _mapSize.X)));
                 }
                 catch (MissingArtResourceException error)
                 {
@@ -334,14 +325,14 @@ public partial class BoardView : Node2D
                     var actor = new CanvasGroup { Name = $"Unit_{unit.Id}", Position = CellContact(unit.X, unit.Y) };
                     sprite.Name = "AuthoredSprite";
                     // Actor mirroring is around the canonical foot, not the sheet's center.
-                    if (facesLeft(unit.Facing))
+                    if (Projection.FacingVector(unit.Facing).X < 0)
                         sprite.Scale = new Vector2(-sprite.Scale.X, sprite.Scale.Y);
                     sprite.AddChild(SpriteShadows.CreateFigure(sprite, snapshot.Colors[unit.Owner], _shadows));
                     actor.AddChild(sprite);
                     if (_dynamicState is not null)
                         actor.AddChild(_dynamicState.CreateUnitBadges(unit.Type, unit.Hp, unit.Done,
                             snapshot.CaptureProgress[unit.Y * _mapSize.X + unit.X], snapshot.CaptureThreshold,
-                            _directionVector?.Invoke(unit.Facing)));
+                            Projection.FacingVector(unit.Facing)));
                     actor.SetMeta("unit_id", unit.Id);
                     actor.SetMeta("logical_contact", LogicalContact(unit.X, unit.Y));
                     if (unit.Key is not null)
@@ -351,7 +342,7 @@ public partial class BoardView : Node2D
                     actor.SetMeta("hp", unit.Hp);
                     actor.SetMeta("done", unit.Done);
                     staging.AddChild(actor);
-                    entries.Add(new StandingEntry(actor, LogicalContact(unit.X, unit.Y), 9, unit.Id, sprite));
+                    entries.Add(new StandingEntry(actor, LogicalContact(unit.X, unit.Y), 9, unit.Id, sprite, new Coord(unit.X, unit.Y), unit.Id));
                     renderedUnits++;
                 }
                 catch (MissingArtResourceException error)
@@ -363,7 +354,7 @@ public partial class BoardView : Node2D
                 if (canonicalState[layer] is JsonArray { Count: > 0 })
                     diagnostics.Add($"Canonical '{layer}' is present but dynamic presentation content is not configured.");
             Projection.PrepareDepthPartitions(entries.Where(entry => entry.Layer != 0)
-                .Select(entry => StandingDepthContact(entry).Y), Array.Empty<float>());
+                .Select(entry => StandingDepth(entry)), Array.Empty<float>());
             OrderStanding(entries);
         }
         catch
@@ -455,7 +446,33 @@ public partial class BoardView : Node2D
         RasterResources.Positive(placement.Scale, "placement scale");
     }
 
-    private static Vector2 StandingDepthContact(StandingEntry entry)
+    public Coord? Pick(Vector2 fieldPoint)
+    {
+        var surface = Projection.Pick(fieldPoint);
+        var global = ToGlobal(fieldPoint);
+        StandingEntry? front = null;
+        foreach (var entry in _standing)
+        {
+            if (entry.GroundSprite is not { } sprite || !sprite.IsVisibleInTree()
+                || !sprite.IsPixelOpaque(sprite.ToLocal(global)))
+                continue;
+            if (front is null || entry.Node.ZIndex > front.Node.ZIndex
+                || entry.Node.ZIndex == front.Node.ZIndex && front.Node.IsGreaterThan(entry.Node))
+                front = entry;
+        }
+        if (front is not null && (surface is null
+            || front.Node.ZIndex >= Projection.LayerAtDepth(surface.Depth, BoardDepthLayer.Surface)))
+        {
+            // A structure hit must not be reinterpreted as its occluded occupant by the cell controller.
+            if (front.UnitId is null && front.SelectionCell is { } cell
+                && _standing.Any(entry => entry.UnitId is not null && entry.SelectionCell == cell))
+                return null;
+            return front.SelectionCell;
+        }
+        return surface?.Cell;
+    }
+
+    private float StandingDepth(StandingEntry entry)
     {
         var offset = Vector2.Zero;
         if (entry.GroundSprite is { } sprite)
@@ -464,7 +481,7 @@ public partial class BoardView : Node2D
             if (sprite != entry.Node)
                 offset = entry.Node.Transform * (sprite.Position + offset) - entry.Node.Position;
         }
-        return entry.Contact + offset;
+        return Projection.Depth(entry.Contact) + offset.Y;
     }
 
     private void OrderStanding(List<StandingEntry> entries)
@@ -472,7 +489,7 @@ public partial class BoardView : Node2D
         foreach (var entry in entries)
         {
             entry.Node.ZAsRelative = false;
-            entry.Node.ZIndex = Projection.DrawDepth(StandingDepthContact(entry),
+            entry.Node.ZIndex = Projection.LayerAtDepth(StandingDepth(entry),
                 entry.Layer == 0 ? BoardDepthLayer.Surface : BoardDepthLayer.Standing);
         }
     }
@@ -528,7 +545,7 @@ public partial class BoardView : Node2D
         return array;
     }
 
-    private sealed record StandingEntry(Node2D Node, Vector2 Contact, int Layer, int Index, Sprite2D? GroundSprite = null);
+    private sealed record StandingEntry(Node2D Node, Vector2 Contact, int Layer, int Index, Sprite2D? GroundSprite = null, Coord? SelectionCell = null, int? UnitId = null);
     private sealed record UnitProjection(int Id, string? Key, string Type, int Owner,
         int X, int Y, int Hp, bool Done, string? Facing);
     private sealed record BattleRenderSnapshot(string[] Tiles, int[] Elevation, int[] Owners,

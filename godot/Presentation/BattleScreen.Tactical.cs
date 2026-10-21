@@ -142,7 +142,7 @@ public partial class BattleScreen
         BoardCell? cell = null;
         if (point is { } at && at.X >= 0 && at.Y >= 0 && at.X < _board.FieldSize.X && at.Y < _board.FieldSize.Y && _state is not null)
         {
-            if (_board.Projection.Pick(new Vector2((float)at.X, (float)at.Y)) is { } picked)
+            if (_board.Pick(new Vector2((float)at.X, (float)at.Y)) is { } picked)
             {
                 var candidate = new BoardCell(picked.X, picked.Y);
                 if (_tactical.InteractiveCells.Contains(candidate))

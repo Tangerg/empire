@@ -26,6 +26,47 @@ public partial class PresentationChecks : Node
         }
     }
 
+    private static void CheckBodyPicking(BoardView board, JsonObject state, int villageIndex)
+    {
+        var unit = board.GetNode<Node2D>("CanonicalProjection/Unit_2");
+        var sprite = unit.GetNode<Sprite2D>("AuthoredSprite");
+        var expected = new Empire.Core.Geometry.Coord(9, 12);
+        var bodyHit = false;
+        for (var y = -35; y < -8 && !bodyHit; y++)
+            for (var x = -18; x <= 18 && !bodyHit; x++)
+            {
+                var point = unit.Position + new Vector2(x, y);
+                if (sprite.IsPixelOpaque(sprite.ToLocal(board.ToGlobal(point))) && board.Pick(point) == expected)
+                    bodyHit = true;
+            }
+        Require(bodyHit, "An opaque visible unit body must select its canonical cell above its ground footprint.");
+        var occupied = state.DeepClone().AsObject();
+        var width = state["map"]!["width"]!.GetValue<int>();
+        var cell = new Empire.Core.Geometry.Coord(villageIndex % width, villageIndex / width);
+        var moved = occupied["units"]!.AsArray().OfType<JsonObject>().Single(value => value["id"]!.GetValue<int>() == 2);
+        moved["x"] = cell.X;
+        moved["y"] = cell.Y;
+        board.RenderState(occupied);
+        unit = board.GetNode<Node2D>("CanonicalProjection/Unit_2");
+        sprite = unit.GetNode<Sprite2D>("AuthoredSprite");
+        var house = board.GetNode<Node2D>($"CanonicalProjection/MapStructure_{villageIndex}");
+        var houseSprite = house.GetNode<Sprite2D>("AuthoredSprite");
+        Require(house.ZIndex > unit.ZIndex, "Fixture must put the house foundation in front of its occupant.");
+        var overlap = false;
+        for (var y = -35; y < 0; y++)
+            for (var x = -18; x <= 18; x++)
+            {
+                var point = unit.Position + new Vector2(x, y);
+                var global = board.ToGlobal(point);
+                if (!sprite.IsPixelOpaque(sprite.ToLocal(global)) || !houseSprite.IsPixelOpaque(houseSprite.ToLocal(global)))
+                    continue;
+                overlap = true;
+                Require(board.Pick(point) is null, "Opaque foreground architecture must not select its hidden occupant through the shared cell.");
+            }
+        Require(overlap, "The occlusion regression must exercise actual overlapping opaque pixels.");
+        board.RenderState(state);
+    }
+
     private void Check()
     {
         CheckDepthBands();
@@ -117,7 +158,7 @@ public partial class PresentationChecks : Node
         var before = state.ToJsonString();
         var board = new BoardView();
         AddChild(board);
-        board.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog, facing => facing == "west", null), level, scene);
+        board.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog), level, scene);
         board.RenderState(state);
         Require(state.ToJsonString() == before, "Rendering must not mutate canonical state.");
         Require(board.RenderedUnitCount == board.ProjectionUnitCount && board.ProjectionUnitCount == 19,
@@ -136,6 +177,7 @@ public partial class PresentationChecks : Node
             "Incomplete compositor must never be described as the complete scene.");
         var villageIndex = Enumerable.Range(0, state["map"]!["tiles"]!.AsArray().Count)
             .First(index => state["map"]!["tiles"]![index]!.GetValue<string>() == "village");
+        CheckBodyPicking(board, state, villageIndex);
         var ownedVillage = state.DeepClone().AsObject();
         ownedVillage["map"]!["owners"]![villageIndex] = 1;
         board.RenderState(ownedVillage);
@@ -160,9 +202,13 @@ public partial class PresentationChecks : Node
         var changed = (JsonObject)state.DeepClone();
         changed["units"]!.AsArray()[1]!["x"] = 6;
         changed["units"]!.AsArray()[1]!["hp"] = 98.0d;
+        changed["units"]!.AsArray()[1]!["facing"] = "south";
         board.RenderState(changed);
+        Require(board.GetNode<Sprite2D>("CanonicalProjection/Unit_2/AuthoredSprite").Scale.X < 0,
+            "Settled south-facing actors must preserve the projected down-left direction after movement.");
         Require(ReferenceEquals(stableSurface, board.Projection), "Unit-only changes must retain the terrain projection and viewport cache.");
-        Require(board.GetNode<Node2D>("CanonicalProjection/Unit_2").Position.X == 6 * 32 + 16,
+        Require(board.GetNode<Node2D>("CanonicalProjection/Unit_2").Position.IsEqualApprox(
+            board.Projection.CellContact(new(6, changed["units"]!.AsArray()[1]!["y"]!.GetValue<int>()))),
             "New canonical position must replace, not append to, the old projection.");
         Require(state.ToJsonString() == before, "Rendering another projection must leave the original intact.");
         changed["units"]!.AsArray()[1]!["key"] = null;
@@ -172,7 +218,7 @@ public partial class PresentationChecks : Node
             && board.Diagnostics.Any(message => message.Contains("not-exported-unit", StringComparison.Ordinal))
             && board.RenderingIssueCount > 0,
             "Unavailable art must be explicitly diagnosed without substituting another actor.");
-        board.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog, facing => facing == "west", null), level, scene);
+        board.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog), level, scene);
         board.RenderState(state);
         Require(board.GetChildCount() == 2, "Repeated configuration must not duplicate scene layers.");
         CheckTerrain(board, state);
@@ -182,6 +228,9 @@ public partial class PresentationChecks : Node
     private static void CheckDepthBands()
     {
         var projection = TerrainChecks.FlatProjection(["plain"], [0], new Vector2I(1, 1));
+        Require(projection.FacingVector("south").X < 0 && projection.FacingVector("south").Y > 0
+            && projection.FacingVector("east").X > 0 && projection.FacingVector("east").Y > 0,
+            "Grid directions must use the same dimetric basis as movement and attack contacts.");
         projection.PrepareDepthPartitions([20f], Array.Empty<float>());
         var source = projection.Triangles.Single(triangle => triangle.LogicalB.Y == 32 && triangle.LogicalC.Y == 32);
         var patches = projection.DepthPatches.Where(patch => patch.Source == source).ToArray();
@@ -191,7 +240,7 @@ public partial class PresentationChecks : Node
             var partition = projection.DepthPartitions.Single(value => value.StartDepth == patch.Depth);
             foreach (var vertex in patch.Vertices)
             {
-                Require(vertex.Logical.Y >= patch.Depth - 0.0001f && vertex.Logical.Y <= partition.EndDepthExclusive + 0.0001f,
+                Require(projection.Depth(vertex.Logical) >= patch.Depth - 0.0001f && projection.Depth(vertex.Logical) <= partition.EndDepthExclusive + 0.0001f,
                     "A ground partition must not paint across a required contact boundary.");
                 Require(vertex.Projected.IsEqualApprox(source.ProjectedA * vertex.SourceWeights.X
                     + source.ProjectedB * vertex.SourceWeights.Y + source.ProjectedC * vertex.SourceWeights.Z),
@@ -200,8 +249,8 @@ public partial class PresentationChecks : Node
             for (var index = 1; index + 1 < patch.Vertices.Count; index++)
                 area += Math.Abs((patch.Vertices[index].Logical - patch.Vertices[0].Logical)
                     .Cross(patch.Vertices[index + 1].Logical - patch.Vertices[0].Logical)) / 2;
-            var groundDepth = projection.DrawDepth(new Vector2(0, patch.Depth), BoardDepthLayer.Surface);
-            var actorDepth = projection.DrawDepth(new Vector2(0, 20), BoardDepthLayer.Standing);
+            var groundDepth = projection.LayerAtDepth(patch.Depth, BoardDepthLayer.Surface);
+            var actorDepth = projection.LayerAtDepth(20, BoardDepthLayer.Standing);
             Require(patch.Depth <= 20 ? groundDepth < actorDepth : groundDepth > actorDepth,
                 "Ground behind a contact must stay behind; genuine foreground ground must still occlude.");
         }
@@ -218,7 +267,7 @@ public partial class PresentationChecks : Node
             new System.Collections.Generic.HashSet<Empire.Core.Geometry.Coord> { new(0, 0), new(0, 1) });
         Require(cliff.Faces.Count > 0, "An actual canonical cliff must expose its camera-facing connection.");
         foreach (var face in cliff.Faces)
-            Require(cliff.Pick((face.ProjectedA + face.ProjectedB + face.ProjectedC + face.ProjectedD) / 4) is null,
+            Require(cliff.Pick((face.ProjectedA + face.ProjectedB + face.ProjectedC + face.ProjectedD) / 4)?.Cell is null,
                 "A visible cliff face must not pick a hidden top cell behind it.");
     }
 
@@ -283,7 +332,7 @@ public partial class PresentationChecks : Node
             "An elevation-only change must invalidate the terrain composition cache.");
         var changedCoord = new Empire.Core.Geometry.Coord(changedCell % width, changedCell / width);
         var raisedCenter = board.Projection.CellCenter(changedCoord);
-        Require(board.Projection.Pick(raisedCenter) == changedCoord,
+        Require(board.Projection.Pick(raisedCenter)?.Cell == changedCoord,
             "Raised surface center and inverse picking must refer to the same canonical cell.");
         Require(raised.ToJsonString() == raisedBefore,
             "Height projection must never advance canonical state.");

@@ -516,18 +516,6 @@ public sealed partial class GrayFlagSession
         var max = weapons.Max(value => D(value, "maxRange"));
         return min == max ? F(min) : $"{F(min)}-{F(max)}";
     }
-    private string Facing(JsonObject state, string facing)
-    {
-        var grid = RuleGrid(state);
-        var name = contentText.DirectionName(grid.Id, facing);
-        var origin = new Coord(0, 0);
-        var from = grid.Center(origin);
-        var to = grid.Center(grid.Step(origin, facing));
-        // Quantize the strategy's visual vector, never infer geometry from a direction ID.
-        var angle = Math.Atan2(to.Y - from.Y, to.X - from.X);
-        var sector = ((int)Math.Round(angle / (Math.PI / 4)) + 8) % 8;
-        var arrow = new[] { "→", "↘", "↓", "↙", "←", "↖", "↑", "↗" }[sector];
-        return name + " " + arrow;
-    }
+    private string Facing(JsonObject state, string facing) => contentText.DirectionName(RuleGrid(state).Id, facing);
     private string ModifierLabel(CombatModifier modifier) => modifierText.Describe(modifier);
 }

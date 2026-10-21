@@ -431,8 +431,7 @@ public partial class TerrainView : Node2D
                 staging.RemoveChild(child);
                 logical.AddChild(child);
             }
-            projected = ProjectedGround.Create(logical, projection, size);
-            staging.AddChild(projected);
+            CliffSurfaceMaterial? cliff = null;
             if (projection.Faces.Count != 0)
             {
                 var material = MaterialRecord("cliff-front");
@@ -440,20 +439,10 @@ public partial class TerrainView : Node2D
                 var period = new Vector2(material.LogicalSize[0], material.LogicalSize[1]);
                 if (!Mathf.IsEqualApprox(texture.GetSize().X / texture.GetSize().Y, period.X / period.Y))
                     throw new InvalidOperationException("Cliff material repeat must preserve source aspect ratio.");
-                foreach (var face in projection.Faces)
-                {
-                    var points = new[] { face.ProjectedA, face.ProjectedB, face.ProjectedC, face.ProjectedD }.Distinct().ToArray();
-                    var polygon = new Polygon2D { Name = $"Cliff_{entries.Count}", ZAsRelative = false };
-                    projected.AddChild(polygon);
-                    polygon.Polygon = points;
-                    polygon.Texture = texture;
-                    polygon.UV = points.Select(point => point / period * texture.GetSize()).ToArray();
-                    polygon.TextureRepeat = CanvasItem.TextureRepeatEnum.Enabled;
-                    var contact = new Vector2(face.HigherCell.X * 32 + 16, face.Depth);
-                    polygon.ZIndex = projection.DrawDepth(contact, BoardDepthLayer.Surface);
-                    entries.Add(new(polygon, contact, 0));
-                }
+                cliff = new CliffSurfaceMaterial(texture, period);
             }
+            projected = ProjectedGround.Create(new(projection, cliff), logical, size);
+            staging.AddChild(projected);
             if (_authoredGround is not null)
             {
                 authoredParent!.RemoveChild(_authoredGround);
@@ -465,7 +454,7 @@ public partial class TerrainView : Node2D
                 var contact = node.Position;
                 node.Position = projection.Project(contact);
                 node.ZAsRelative = false;
-                node.ZIndex = projection.DrawDepth(contact + SpriteGroundContact.Offset(node), BoardDepthLayer.Standing);
+                node.ZIndex = projection.LayerAtDepth(projection.Depth(contact) + SpriteGroundContact.Offset(node).Y, BoardDepthLayer.Standing);
                 entries.Add(new(node, contact, 2, node));
             }
         }

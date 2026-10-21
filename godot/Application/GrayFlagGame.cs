@@ -438,16 +438,7 @@ public partial class GrayFlagGame : Node
                     AssetCatalog.Load(),
                     EnvironmentCatalog.Load(),
                     grid,
-                    engine.Catalog,
-                    facing => facing is not null && grid.Step(new Coord(0, 0), facing).X < 0,
-                    facing =>
-                    {
-                        if (facing is null)
-                            return Vector2.Zero;
-                        var origin = grid.Center(new Coord(0, 0));
-                        var point = grid.Center(grid.Step(new Coord(0, 0), facing));
-                        return new Vector2((float)(point.X - origin.X), (float)(point.Y - origin.Y));
-                    })),
+                    engine.Catalog)),
                 level,
                 scene,
                 initialLogMessage);

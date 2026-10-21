@@ -9,16 +9,21 @@ namespace Empire.Presentation;
 public sealed record TerrainDepthEntry(Node2D Node, Vector2 LogicalContact, int Layer, Sprite2D? GroundSprite = null);
 
 /// <summary>Owns the logical ground viewport; projected polygons only borrow its texture.</summary>
+internal sealed record CliffSurfaceMaterial(Texture2D Texture, Vector2 Period);
+internal sealed record GroundSurfaceRules(BoardProjection Projection, CliffSurfaceMaterial? Cliff);
+
 internal partial class ProjectedGround : Node2D
 {
     private SubViewport? _viewport;
     private readonly List<Polygon2D> _surfaces = new();
     private BoardProjection? _projection;
+    private CliffSurfaceMaterial? _cliff;
     private readonly Dictionary<(Vector2 Logical, Vector2 Projected), Color> _shades = new();
 
-    internal static ProjectedGround Create(Node2D logicalGround, BoardProjection projection, Vector2I size)
+    internal static ProjectedGround Create(GroundSurfaceRules rules, Node2D logicalGround, Vector2I size)
     {
-        var result = new ProjectedGround { Name = "ProjectedGround" };
+        var projection = rules.Projection;
+        var result = new ProjectedGround { Name = "ProjectedGround", _cliff = rules.Cliff, _projection = projection };
         try
         {
             const int density = 2;
@@ -37,9 +42,9 @@ internal partial class ProjectedGround : Node2D
             var normals = new Dictionary<(Vector2 Logical, Vector2 Projected), Vector3>();
             foreach (var triangle in projection.Triangles)
             {
-                var a = SurfacePoint(triangle.LogicalA, triangle.ProjectedA);
-                var b = SurfacePoint(triangle.LogicalB, triangle.ProjectedB);
-                var c = SurfacePoint(triangle.LogicalC, triangle.ProjectedC);
+                var a = result.SurfacePoint(triangle.LogicalA, triangle.ProjectedA);
+                var b = result.SurfacePoint(triangle.LogicalB, triangle.ProjectedB);
+                var c = result.SurfacePoint(triangle.LogicalC, triangle.ProjectedC);
                 var normal = (b - a).Cross(c - a);
                 if (normal.Z < 0)
                     normal = -normal;
@@ -117,8 +122,37 @@ internal partial class ProjectedGround : Node2D
                 polygon.VertexColors = colors.ToArray();
                 polygon.Texture = texture;
                 polygon.TextureFilter = CanvasItem.TextureFilterEnum.Linear;
-                polygon.ZIndex = projection.DrawDepth(new Vector2(0, strip.StartDepth), BoardDepthLayer.Surface);
+                polygon.ZIndex = projection.LayerAtDepth(strip.StartDepth, BoardDepthLayer.Surface);
             }
+            if (_cliff is { } cliff)
+                foreach (var group in projection.Faces.SelectMany(face => projection.FacePatches(face)
+                    .Select(patch => (Face: face, Patch: patch))).GroupBy(item => item.Patch.Depth))
+                {
+                    var vertices = new List<Vector2>();
+                    var uv = new List<Vector2>();
+                    var indices = new Godot.Collections.Array();
+                    foreach (var (face, patch) in group)
+                    {
+                        indices.Add(Enumerable.Range(vertices.Count, patch.Vertices.Count).ToArray());
+                        vertices.AddRange(patch.Vertices.Select(vertex => vertex.Projected));
+                        var edge = face.LogicalB - face.LogicalA;
+                        uv.AddRange(patch.Vertices.Select(vertex =>
+                        {
+                            var distance = (vertex.Logical - face.LogicalA).Dot(edge.Normalized());
+                            var top = face.ProjectedA.Lerp(face.ProjectedB, distance / edge.Length());
+                            return new Vector2(distance, vertex.Projected.Y - top.Y) / cliff.Period * cliff.Texture.GetSize();
+                        }));
+                    }
+                    var polygon = new Polygon2D { Name = $"CliffStrip_{stripIndex++}", ZAsRelative = false };
+                    replacements.Add(polygon);
+                    polygon.Polygon = vertices.ToArray();
+                    polygon.Polygons = indices;
+                    polygon.UV = uv.ToArray();
+                    polygon.Texture = cliff.Texture;
+                    polygon.TextureRepeat = CanvasItem.TextureRepeatEnum.Enabled;
+                    polygon.ZIndex = projection.LayerAtDepth(group.Key, BoardDepthLayer.Surface);
+                }
+
         }
         catch
         {
@@ -149,8 +183,8 @@ internal partial class ProjectedGround : Node2D
         _surfaces.Clear();
     }
 
-    private static Vector3 SurfacePoint(Vector2 logical, Vector2 projected) =>
-        new(logical.X, logical.Y, logical.Y - projected.Y);
+    private Vector3 SurfacePoint(Vector2 logical, Vector2 projected) =>
+        new(logical.X, logical.Y, _projection!.SurfaceHeight(logical, projected));
 
     public override void _Notification(int what)
     {

@@ -245,6 +245,10 @@ public sealed class AuthoredScene
         get; init;
     }
     public int[] MapSize { get; init; } = Array.Empty<int>();
+    public int[]? OpeningFocus
+    {
+        get; init;
+    }
     public List<AuthoredPlacement> Placements { get; init; } = new();
     private List<FramePlacement> _framePlacements = new();
     [System.Text.Json.Serialization.JsonIgnore]

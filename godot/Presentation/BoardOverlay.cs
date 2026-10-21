@@ -54,16 +54,28 @@ public partial class BoardOverlay : Node2D
             _projection.DepthPartitionsChanged += RebuildRangePlanes;
             RebuildRangePlanes();
         }
-        _interactiveCells = interactiveCells.ToFrozenSet();
-        _unseen = visible is null ? [] : _interactiveCells.Where(cell => !visible.Contains(cell))
+        var unseen = visible is null ? System.Array.Empty<BoardCell>() : interactiveCells.Where(cell => !visible.Contains(cell))
             .OrderBy(cell => cell.Y).ThenBy(cell => cell.X).ToArray();
-        _incoming = incoming?.ToArray() ?? [];
-        RedrawPlanes();
+        var nextIncoming = incoming?.ToArray() ?? [];
+        var rangesChanged = changed || !_interactiveCells.SetEquals(interactiveCells) || !_unseen.SequenceEqual(unseen) || !_incoming.SequenceEqual(nextIncoming);
+        _interactiveCells = interactiveCells.ToFrozenSet();
+        _unseen = unseen;
+        _incoming = nextIncoming;
+        if (rangesChanged)
+            RedrawPlanes();
     }
     public void ShowTactical(TacticalSelectionOverlay projection)
     {
+        var before = _tactical;
         _tactical = projection;
-        RedrawPlanes();
+        if (before is null || before.Selected != projection.Selected || before.Cursor != projection.Cursor)
+            QueueRedraw();
+        if (before is null || !before.Move.SequenceEqual(projection.Move)
+            || !before.Attack.SequenceEqual(projection.Attack) || !before.Helpful.SequenceEqual(projection.Helpful)
+            || !before.Controlled.SequenceEqual(projection.Controlled) || !before.Threat.SequenceEqual(projection.Threat)
+            || !before.Path.SequenceEqual(projection.Path))
+            foreach (var plane in _ranges)
+                plane.QueueRedraw();
     }
     private void RedrawPlanes()
     {
@@ -98,7 +110,7 @@ public partial class BoardOverlay : Node2D
         {
             foreach (var partition in _projection.DepthPartitions)
             {
-                var depth = _projection.DrawDepth(new Vector2(0, partition.StartDepth), BoardDepthLayer.Range);
+                var depth = _projection.LayerAtDepth(partition.StartDepth, BoardDepthLayer.Range);
                 candidates.Add(depth, partition.Patches.ToArray());
                 intervals.Add(depth, (partition.StartDepth, partition.EndDepthExclusive));
                 planes.Add(new BoardRangePlane
@@ -155,11 +167,13 @@ public partial class BoardOverlay : Node2D
     {
         if (_resources is null || _projection is null)
             return;
+        foreach (var group in RangeOrder().GroupBy(item => item.Role))
+            BoardDecorations.DrawProjected(canvas, _resources.Spot(group.Key),
+                group.Select(item => new Vector2(item.Cell.X * 32, item.Cell.Y * 32)).ToArray(), _rangePatches[canvas.ZIndex]);
         foreach (var (role, cell) in RangeOrder())
         {
-            DrawDecoration(canvas, _resources.Spot(role), new(cell.X * 32, cell.Y * 32));
-            if (role == "incoming" && cell.Y * 32 + 16 >= _rangeIntervals[canvas.ZIndex].Start
-                && cell.Y * 32 + 16 < _rangeIntervals[canvas.ZIndex].End)
+            if (role == "incoming" && _projection.Depth(new(cell.X * 32 + 16, cell.Y * 32 + 16)) >= _rangeIntervals[canvas.ZIndex].Start
+                && _projection.Depth(new(cell.X * 32 + 16, cell.Y * 32 + 16)) < _rangeIntervals[canvas.ZIndex].End)
             {
                 var text = _incoming.First(pair => pair.Key == cell).Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
                 var font = ThemeDB.FallbackFont;
@@ -182,7 +196,7 @@ public partial class BoardOverlay : Node2D
     private void DrawDecoration(Node2D canvas, BoardDecorations.Drawing drawing, Vector2 offset)
     {
         if (_projection is not null)
-            BoardDecorations.DrawProjected(canvas, drawing, offset,
+            BoardDecorations.DrawProjected(canvas, drawing, [offset],
                 canvas == this ? _projection.DepthPatches : _rangePatches[canvas.ZIndex]);
     }
 }

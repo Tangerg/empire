@@ -184,12 +184,12 @@ public partial class BoardView
         var asset = UnitAsset(unit);
         var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
         var movingEntry = _standing.Single(entry => entry.Node == actor);
-        var frontOffset = StandingDepthContact(movingEntry).Y - movingEntry.Contact.Y;
-        var pathDepths = path.Select(point => LogicalContact(Coordinate(point!).X, Coordinate(point!).Y).Y + frontOffset).ToArray();
+        var frontOffset = StandingDepth(movingEntry) - Projection.Depth(movingEntry.Contact);
+        var pathDepths = path.Select(point => Projection.Depth(LogicalContact(Coordinate(point!).X, Coordinate(point!).Y)) + frontOffset).ToArray();
         var firstDepth = (int)Math.Floor(pathDepths.Min());
         var lastDepth = (int)Math.Ceiling(pathDepths.Max());
         Projection.PrepareDepthPartitions(_standing.Where(entry => entry.Layer != 0)
-            .Select(entry => StandingDepthContact(entry).Y),
+            .Select(entry => StandingDepth(entry)),
             Enumerable.Range(firstDepth, lastDepth - firstDepth + 1).Select(depth => (float)depth));
         var walk = new[] { AssetCatalog.FrameIndex(asset, "walk-a"), AssetCatalog.FrameIndex(asset, "walk-b") };
         var duration = playback.Transition.IsComputerAction ? 65.0 : 85.0;
@@ -199,8 +199,9 @@ public partial class BoardView
         {
             var from = Coordinate(path[index - 1]!);
             var to = Coordinate(path[index]!);
-            if (to.X != from.X)
-                Face(sprite, to.X < from.X);
+            var visualDirection = Projection.CellCenter(new(to.X, to.Y)).X - Projection.CellCenter(new(from.X, from.Y)).X;
+            if (visualDirection != 0)
+                Face(sprite, visualDirection < 0);
             var start = LogicalContact(from.X, from.Y);
             var end = LogicalContact(to.X, to.Y);
             if (!await playback.Clock.TweenAsync(duration, t =>
@@ -226,7 +227,7 @@ public partial class BoardView
         var asset = UnitAsset(attacker);
         var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
         var at = Coordinate(attacker);
-        var direction = new Vector2(Math.Sign(target.X - at.X), Math.Sign(target.Y - at.Y));
+        var direction = (CellContact(target.X, target.Y) - CellContact(at.X, at.Y)).Normalized();
         if (direction.X != 0)
             Face(sprite, direction.X < 0);
         var anchor = CellContact(at.X, at.Y);
