@@ -40,11 +40,16 @@ public sealed class PaintedGroundDocument
         get; init;
     }
 
+    public required PaintedOccluder[] Occluders
+    {
+        get; init;
+    }
+
     public BoardPlane CreatePlane(Vector2 logicalSize, int minimumHeight, int maximumHeight)
     {
         if (minimumHeight != 0 || maximumHeight != 0)
             throw new InvalidOperationException("This painted ground registration admits only its authored flat valley floor.");
-        if (PixelSize.Length != 2 || PixelSize[0] <= 0 || PixelSize[1] <= 0
+        if (Occluders is null || PixelSize.Length != 2 || PixelSize[0] <= 0 || PixelSize[1] <= 0
             || OriginPixels.Length != 2 || CellXPixels.Length != 2 || CellYPixels.Length != 2
             || !float.IsFinite(WorldScale) || WorldScale <= 0)
             throw new InvalidOperationException("Painted ground dimensions and registration must be explicit and positive.");
@@ -72,4 +77,28 @@ public sealed class PaintedGroundDocument
             throw new InvalidOperationException("Painted ground texture dimensions differ from its registration.");
         return PaintedGroundView.Create(this, texture, registeredMap);
     };
+}
+
+public sealed class PaintedOccluder
+{
+    public required string Id
+    {
+        get; init;
+    }
+    public required int[] ContactCell
+    {
+        get; init;
+    }
+    public required double[] GroundFrontPixels
+    {
+        get; init;
+    }
+    public required double[][] PolygonPixels
+    {
+        get; init;
+    }
+    public int[]? SelectionCell
+    {
+        get; init;
+    }
 }

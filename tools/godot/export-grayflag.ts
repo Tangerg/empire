@@ -64,7 +64,8 @@ function visitPresentation(node: ts.Node): void {
 }
 visitPresentation(presentationSource);
 if (!healFx) throw new Error('Missing source heal FX binding');
-write('data/art-bindings.json', { ...bindings, CANDIDATE_01_ACTOR_ART: actors, CANDIDATE_01_HEAL_FX: healFx });
+// Native art bindings are authored independently, including explicit structure lifecycle frames.
+write('tests/oracle/source-v1/art-bindings.json', { ...bindings, CANDIDATE_01_ACTOR_ART: actors, CANDIDATE_01_HEAL_FX: healFx });
 for (const candidate of CANDIDATE_01_LEVELS) {
   const path = `environment-builder-v1/scenes/${candidate.id}.scene.json`;
   if (existsSync(resolve(assetRoot, path))) write(`tests/oracle/source-v1/scenes/${candidate.id}.json`, read(path));

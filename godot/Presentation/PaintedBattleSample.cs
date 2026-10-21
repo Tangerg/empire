@@ -12,9 +12,13 @@ using Godot;
 
 namespace Empire.Presentation;
 
-/// <summary>Explicit composition entry for the authored pass, using the production battle/session/screen.</summary>
-public partial class PaintedPassSample : Control
+/// <summary>Explicit painted-scene composition using the production battle, session and screen.</summary>
+public partial class PaintedBattleSample : Control
 {
+    [Export(PropertyHint.File, "*.json")]
+    public string DefinitionPath { get; set; } = "";
+
+    private PaintedBattleDefinition _definition = null!;
     private BattleEngine _engine = null!;
     private SessionPresentationText _presentation = null!;
     private JsonObject _level = null!;
@@ -23,28 +27,38 @@ public partial class PaintedPassSample : Control
     private GrayFlagSession _session = null!;
     private BattleScreen? _screen;
     private readonly AiTurnPacer _pacer = new();
-    private string SavePath => ProjectSettings.GlobalizePath("user://painted-pass-sample/battle.json");
+    private string SavePath => ProjectSettings.GlobalizePath(_definition.SavePath);
 
     public override void _Ready()
     {
         try
         {
             SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-            var source = Godot.FileAccess.GetFileAsString("res://data/samples/painted-pass-level.json");
+            if (string.IsNullOrWhiteSpace(DefinitionPath))
+                throw new InvalidOperationException("A painted battle requires an explicit scene definition.");
+            _definition = PresentationJson.Load<PaintedBattleDefinition>(DefinitionPath);
+            _definition.Validate();
+            var source = Godot.FileAccess.GetFileAsString(_definition.LevelPath);
             _level = EcmaJson.Parse(source)!.AsObject();
-            _art = PresentationJson.Load<PaintedGroundDocument>("res://data/samples/painted-pass-art.json");
+            if (_definition.OpeningFocus[0] >= _level["width"]!.GetValue<int>()
+                || _definition.OpeningFocus[1] >= _level["height"]!.GetValue<int>())
+                throw new InvalidOperationException("Painted battle opening focus lies outside its canonical level.");
+            _art = PresentationJson.Load<PaintedGroundDocument>(_definition.GroundPath);
             var sourceHash = Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(source))).ToLowerInvariant();
             if (sourceHash != _art.LevelSourceSha256)
                 throw new InvalidOperationException("Painted scene registration does not match its reviewed canonical level source.");
             var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
-            packs.Add(PresentationJson.Load<JsonObject>("res://data/samples/painted-pass-content.json"));
+            foreach (var path in _definition.AdditionalContentPaths)
+                packs.Add(PresentationJson.Load<JsonObject>(path));
             _engine = new BattleEngine(packs);
             var contentText = EcmaJson.Parse(Godot.FileAccess.GetFileAsString("res://data/grayflag-content-text.json"))!.AsObject();
-            contentText["content"]!["terrains"]!.AsObject().Add("painted-pass.rocks",
-                new JsonObject { ["name"] = "sample.painted_pass.rocks" });
+            var additions = PresentationJson.Load<JsonObject>(_definition.ContentTextAdditionsPath);
+            foreach (var family in additions)
+                foreach (var binding in family.Value!.AsObject())
+                    contentText["content"]![family.Key]!.AsObject().Add(binding.Key, binding.Value!.DeepClone());
             var text = GodotTextCatalog.LoadSimplifiedChinese();
             _presentation = SessionPresentationText.Compose(new(_engine, text), new JsonArray(_level.DeepClone()),
-                Godot.FileAccess.GetFileAsString("res://data/samples/painted-pass-text.json"),
+                Godot.FileAccess.GetFileAsString(_definition.LevelTextPath),
                 contentText.ToJsonString());
             var initial = new GrayFlagSession(new(_engine, _presentation), _level);
             _registeredMap = initial.Snapshot()["map"]!.AsObject();
@@ -65,7 +79,7 @@ public partial class PaintedPassSample : Control
                 LevelId = _art.LevelId,
                 MapSize = [_level["width"]!.GetValue<int>(), _level["height"]!.GetValue<int>()],
                 RuntimeReady = true,
-                OpeningFocus = [8, 4],
+                OpeningFocus = _definition.OpeningFocus,
                 FramePlacements = []
             };
             next.BindSession(new(_presentation.Messages, _presentation.Battle, session,

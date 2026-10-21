@@ -161,9 +161,24 @@ public sealed partial class GrayFlagSession
             && selection.Targets.Contains(target) && selection.Destination is { } from)
         {
             var defender = TacticalQueries.UnitAt(state, new(target.X, target.Y));
+            var plan = engine.Combat.Forecast(state, selected, new(target.X, target.Y), new(from.X, from.Y), weapon);
+            if (plan.PrimaryStructure is { } structureForecast)
+            {
+                var structure = state["structures"]!.AsArray().OfType<JsonObject>()
+                    .Single(value => S(value, "id") == structureForecast.Structure);
+                var definition = Definition("structures", S(structure, "type"));
+                var rows = new List<TacticalHudRow>
+                {
+                    new("exchange", $"{Name(selected)} → {contentText.Name(ContentTextKind.Structure, S(structure, "type"))}"),
+                    new("strike", text.Format("ui.hud.strike", structureForecast.Damage, D(structure, "hp"), structureForecast.HpAfter),
+                        Gauge: new(structureForecast.HpAfter, D(definition, "maxHp")))
+                };
+                if (structureForecast.Destroyed)
+                    rows.Add(new("structure-destroyed", text.Format("ui.hud.structure_destroyed")));
+                Section("forecast", text.Format("ui.hud.forecast"), rows);
+            }
             if (defender is not null)
             {
-                var plan = engine.Combat.Forecast(state, selected, new(target.X, target.Y), new(from.X, from.Y), weapon);
                 if (plan.PrimaryUnit is { } exchange)
                 {
                     var recipient = TacticalQueries.UnitById(state, exchange.DamageRecipient) ?? defender;

@@ -172,7 +172,7 @@ public partial class BoardView : Node2D
                             break;
                         case "under-units":
                             standing.AddChild(sprite);
-                            entries.Add(new StandingEntry(sprite, sprite.Position, 2, index, sprite));
+                            entries.Add(new StandingEntry(sprite, sprite.Position, 2, index, new SpriteStandingVisual(sprite)));
                             break;
                         case "over-units":
                             frame.AddChild(sprite);
@@ -288,8 +288,19 @@ public partial class BoardView : Node2D
             {
                 _terrain.Render(Projection, snapshot.Tiles, snapshot.Elevation, _mapSize);
                 entries.AddRange(_terrain.DepthEntries.Select((entry, index) =>
-                    new StandingEntry(entry.Node, entry.LogicalContact, entry.Layer, index + _authoredStanding.Count, entry.GroundSprite)));
+                    new StandingEntry(entry.Node, entry.LogicalContact, entry.Layer, index + _authoredStanding.Count, entry.Visual, entry.SelectionCell)));
                 diagnostics.AddRange(_terrain.Diagnostics);
+                foreach (var entry in _terrain.DepthEntries.Where(entry => entry.SelectionCell is not null))
+                {
+                    var cell = entry.SelectionCell!.Value;
+                    var owner = snapshot.Owners[cell.Y * _mapSize.X + cell.X];
+                    if (owner == 0)
+                        continue;
+                    var banner = DynamicStateView.CreateOwnerBanner("#" + snapshot.Colors[owner].ToHtml(false), _shadows);
+                    banner.Position = Projection.CellContact(cell);
+                    staging.AddChild(banner);
+                    entries.Add(new(banner, Projection.LogicalCellContact(cell), 3, entries.Count));
+                }
             }
             for (var index = 0; index < snapshot.Tiles.Length; index++)
             {
@@ -307,7 +318,7 @@ public partial class BoardView : Node2D
                     if (snapshot.Owners[index] != 0)
                         structure.AddChild(DynamicStateView.CreateOwnerBanner("#" + snapshot.Colors[snapshot.Owners[index]].ToHtml(false), _shadows));
                     staging.AddChild(structure);
-                    entries.Add(new StandingEntry(structure, LogicalContact(index % _mapSize.X, index / _mapSize.X), 1, index, sprite, new Coord(index % _mapSize.X, index / _mapSize.X)));
+                    entries.Add(new StandingEntry(structure, LogicalContact(index % _mapSize.X, index / _mapSize.X), 1, index, new SpriteStandingVisual(sprite), new Coord(index % _mapSize.X, index / _mapSize.X)));
                 }
                 catch (MissingArtResourceException error)
                 {
@@ -324,7 +335,7 @@ public partial class BoardView : Node2D
                 }
                 staging.AddChild(dynamicProjection.Root);
                 entries.AddRange(dynamicProjection.Standing.Select(entry =>
-                    new StandingEntry(entry.Node, entry.Node.GetMeta("logical_contact").AsVector2(), entry.Layer, entry.Index, entry.GroundSprite)));
+                    new StandingEntry(entry.Node, entry.Node.GetMeta("logical_contact").AsVector2(), entry.Layer, entry.Index, entry.Visual, entry.SelectionCell)));
                 diagnostics.AddRange(dynamicProjection.Diagnostics);
                 renderedStructures = dynamicProjection.Structures;
                 renderedMarkers = dynamicProjection.Markers;
@@ -336,7 +347,7 @@ public partial class BoardView : Node2D
             {
                 var contact = node.Position;
                 node.Position = Projection.Project(contact);
-                entries.Add(new(node, contact, 2, entries.Count, (Sprite2D)node));
+                entries.Add(new(node, contact, 2, entries.Count, new SpriteStandingVisual((Sprite2D)node)));
             }
             foreach (var unit in snapshot.Units)
             {
@@ -366,7 +377,7 @@ public partial class BoardView : Node2D
                     actor.SetMeta("hp", unit.Hp);
                     actor.SetMeta("done", unit.Done);
                     staging.AddChild(actor);
-                    entries.Add(new StandingEntry(actor, LogicalContact(unit.X, unit.Y), 9, unit.Id, sprite, new Coord(unit.X, unit.Y), unit.Id));
+                    entries.Add(new StandingEntry(actor, LogicalContact(unit.X, unit.Y), 9, unit.Id, new SpriteStandingVisual(sprite), new Coord(unit.X, unit.Y), unit.Id));
                     renderedUnits++;
                 }
                 catch (MissingArtResourceException error)
@@ -477,8 +488,8 @@ public partial class BoardView : Node2D
         StandingEntry? front = null;
         foreach (var entry in _standing)
         {
-            if (entry.GroundSprite is not { } sprite || !sprite.IsVisibleInTree()
-                || !sprite.IsPixelOpaque(sprite.ToLocal(global)))
+            if (entry.Visual is not { } visual || !visual.Node.IsVisibleInTree()
+                || !visual.Contains(global))
                 continue;
             if (front is null || entry.Node.ZIndex > front.Node.ZIndex
                 || entry.Node.ZIndex == front.Node.ZIndex && front.Node.IsGreaterThan(entry.Node))
@@ -498,13 +509,7 @@ public partial class BoardView : Node2D
 
     private float StandingDepth(StandingEntry entry)
     {
-        var offset = Vector2.Zero;
-        if (entry.GroundSprite is { } sprite)
-        {
-            offset = SpriteGroundContact.Offset(sprite);
-            if (sprite != entry.Node)
-                offset = entry.Node.Transform * (sprite.Position + offset) - entry.Node.Position;
-        }
+        var offset = entry.Visual?.FrontOffset(entry.Node) ?? Vector2.Zero;
         return Projection.Depth(entry.Contact) + offset.Y;
     }
 
@@ -569,7 +574,7 @@ public partial class BoardView : Node2D
         return array;
     }
 
-    private sealed record StandingEntry(Node2D Node, Vector2 Contact, int Layer, int Index, Sprite2D? GroundSprite = null, Coord? SelectionCell = null, int? UnitId = null);
+    private sealed record StandingEntry(Node2D Node, Vector2 Contact, int Layer, int Index, StandingVisual? Visual = null, Coord? SelectionCell = null, int? UnitId = null);
     private sealed record UnitProjection(int Id, string? Key, string Type, int Owner,
         int X, int Y, int Hp, bool Done, string? Facing);
     private sealed record BattleRenderSnapshot(string[] Tiles, int[] Elevation, int[] Owners,

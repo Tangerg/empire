@@ -7,7 +7,7 @@ using Empire.Core.Geometry;
 
 namespace Empire.Presentation;
 
-public sealed record TerrainDepthEntry(Node2D Node, Vector2 LogicalContact, int Layer, Sprite2D? GroundSprite = null);
+public sealed record TerrainDepthEntry(Node2D Node, Vector2 LogicalContact, int Layer, StandingVisual? Visual = null, Coord? SelectionCell = null);
 
 /// <summary>Owns the logical ground viewport; projected polygons only borrow its texture.</summary>
 internal sealed record CliffSurfaceMaterial(Texture2D Texture, Vector2 Period, IReadOnlySet<Coord> FieldTopCells);

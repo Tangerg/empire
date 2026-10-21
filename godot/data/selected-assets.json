@@ -1124,6 +1124,111 @@
       "sha256": "0c9306d44b5c379d91fe0b2abe6c0851394506fbcdcdbf760a81e7a0fe34e191"
     },
     {
+      "assetId": "THREE-BRIDGES-NATIVE-BARRICADE-NORMAL",
+      "topicId": "THREE-BRIDGES-STRUCT-BARRICADE-NORMAL",
+      "label": "木制路障",
+      "category": "interactive-structure",
+      "width": 1470,
+      "height": 1070,
+      "runtimeReady": true,
+      "qualityTier": "native-generated-runtime-evaluation",
+      "frameWidth": 1470,
+      "frameHeight": 1070,
+      "frames": 1,
+      "stateOrder": [
+        "normal"
+      ],
+      "anchor": [
+        735,
+        820
+      ],
+      "groundFront": [
+        1040,
+        943
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "presentationScale": 0.02442356959863365,
+      "physicalWidth": 1470,
+      "physicalHeight": 1070,
+      "pixelDensity": 1,
+      "resourcePath": "res://assets/native/structure/three-bridges-barricade-normal.png",
+      "sha256": "aade963a898bf1770591a078920e29faa94a2c231da07c73f9581ab5f3a72b74"
+    },
+    {
+      "assetId": "THREE-BRIDGES-NATIVE-BARRICADE-DAMAGED",
+      "topicId": "THREE-BRIDGES-STRUCT-BARRICADE-DAMAGED",
+      "label": "受损木制路障",
+      "category": "interactive-structure",
+      "width": 1470,
+      "height": 1070,
+      "runtimeReady": true,
+      "qualityTier": "native-generated-runtime-evaluation",
+      "frameWidth": 1470,
+      "frameHeight": 1070,
+      "frames": 1,
+      "stateOrder": [
+        "damaged"
+      ],
+      "anchor": [
+        735,
+        820
+      ],
+      "groundFront": [
+        1040,
+        944
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "presentationScale": 0.02442356959863365,
+      "physicalWidth": 1470,
+      "physicalHeight": 1070,
+      "pixelDensity": 1,
+      "resourcePath": "res://assets/native/structure/three-bridges-barricade-damaged.png",
+      "sha256": "64a0e3c19a46b74fafcde788cdc119a37841603091681870d82d463f5445bbad"
+    },
+    {
+      "assetId": "THREE-BRIDGES-NATIVE-BARRICADE-DESTROYED",
+      "topicId": "THREE-BRIDGES-STRUCT-BARRICADE-DESTROYED",
+      "label": "木制路障残骸",
+      "category": "interactive-structure",
+      "width": 1470,
+      "height": 1070,
+      "runtimeReady": true,
+      "qualityTier": "native-generated-runtime-evaluation",
+      "frameWidth": 1470,
+      "frameHeight": 1070,
+      "frames": 1,
+      "stateOrder": [
+        "destroyed"
+      ],
+      "anchor": [
+        763,
+        790
+      ],
+      "groundFront": [
+        1185,
+        913
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "presentationScale": 0.02442356959863365,
+      "physicalWidth": 1470,
+      "physicalHeight": 1070,
+      "pixelDensity": 1,
+      "resourcePath": "res://assets/native/structure/three-bridges-barricade-destroyed.png",
+      "sha256": "db0d83f25b82d907376147ff7afebd7f42b2893aace5303593656009302d39f2"
+    },
+    {
       "assetId": "C01-FFV1-STRUCT-MERCENARY-DEPOT",
       "topicId": "C01-STRUCT-MERCENARY-DEPOT",
       "label": "佣兵补给仓",

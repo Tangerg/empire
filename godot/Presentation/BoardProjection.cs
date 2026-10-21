@@ -274,7 +274,8 @@ public sealed class BoardProjection
 
     public Vector2 CellCenter(Coord cell) => Project(Pixel(_grid.Center(cell)));
 
-    public Vector2 CellContact(Coord cell) => Project(Pixel(_grid.Center(cell)) + new Vector2(0, 15));
+    public Vector2 LogicalCellContact(Coord cell) => Pixel(_grid.Center(cell)) + new Vector2(0, 15);
+    public Vector2 CellContact(Coord cell) => Project(LogicalCellContact(cell));
 
     public Vector2 FacingVector(string? facing)
     {

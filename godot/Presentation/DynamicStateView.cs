@@ -7,11 +7,12 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core.State;
+using Empire.Core.Geometry;
 using Godot;
 
 namespace Empire.Presentation;
 
-public sealed record DynamicStanding(Node2D Node, int Layer, int Index, Sprite2D? GroundSprite = null);
+public sealed record DynamicStanding(Node2D Node, int Layer, int Index, StandingVisual? Visual = null, Coord? SelectionCell = null);
 public sealed record DynamicStateProjection(Node2D Root, IReadOnlyList<DynamicStanding> Standing,
     IReadOnlyList<string> Diagnostics, int Structures, int Markers);
 
@@ -62,7 +63,7 @@ public sealed class DynamicStateView
             result.AddChild(gauge);
         }
         if (done)
-            result.AddChild(Svg($"<rect width=\"32\" height=\"32\" fill=\"{Ink}\" opacity=\"0.35\"/>", "DoneShade"));
+            result.AddChild(Svg($"<circle cx=\"26\" cy=\"24\" r=\"4.5\" fill=\"{Ink}\" opacity=\"0.85\"/><path d=\"M23.5 24 L25.3 25.8 L28.6 22.2\" fill=\"none\" stroke=\"#c4cbb7\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "DoneIndicator"));
         return result;
     }
 
@@ -87,17 +88,23 @@ public sealed class DynamicStateView
                 var hp = Number(structure, "hp");
                 var maximum = Number(definition, "maxHp");
                 var disabled = structure["disabled"]!.GetValue<bool>();
-                var frame = hp <= maximum * 0.5 || disabled ? "damaged" : color is null ? "normal" : "captured";
+                var visualState = hp <= 0 ? StructureVisualState.Destroyed
+                    : hp <= maximum * 0.5 || disabled ? StructureVisualState.Damaged
+                    : color is null ? StructureVisualState.Normal : StructureVisualState.Captured;
+                var frame = visualState.ToString().ToLowerInvariant();
+                string? frameRole = null;
                 RuntimeAsset? asset = null;
                 Sprite2D? groundSprite = null;
                 try
                 {
-                    asset = assets.ResolveStructure(type);
+                    var visual = assets.ResolveStructure(type, visualState);
+                    asset = visual?.Asset;
+                    frameRole = visual?.Frame;
                 }
                 catch (MissingArtResourceException error) { diagnostics.Add($"Structure {id}: {error.Message}; using source rule-derived drawing."); }
                 if (asset is not null)
                 {
-                    groundSprite = assets.CreateSprite(asset, frame);
+                    groundSprite = assets.CreateSprite(asset, frameRole!);
                     node.AddChild(groundSprite);
                     node.AddChild(BoardLighting.CreateStructureContact(new(asset.FrameWidth, asset.FrameHeight), asset.PresentationScale, shadows));
                     if (color is not null)
@@ -116,7 +123,9 @@ public sealed class DynamicStateView
                 node.SetMeta("visual_state", frame);
                 node.SetMeta("rule_derived", asset is null);
                 root.AddChild(node);
-                standing.Add(new(node, 3, structureCount++, groundSprite));
+                standing.Add(new(node, hp <= 0 ? 0 : 3, structureCount++,
+                    hp <= 0 || groundSprite is null ? null : new SpriteStandingVisual(groundSprite),
+                    hp <= 0 ? null : new Coord((int)Number(structure, "x"), (int)Number(structure, "y"))));
             }
             foreach (var marker in state["markers"]!.AsArray().OfType<JsonObject>())
             {

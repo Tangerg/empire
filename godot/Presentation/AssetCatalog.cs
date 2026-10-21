@@ -47,7 +47,7 @@ public sealed class AssetCatalog
     private readonly Dictionary<string, UnitArtBinding> _units;
     private readonly Dictionary<string, ActorArtBinding> _actors;
     private readonly Dictionary<string, MapStructureArtBinding> _mapStructures;
-    private readonly Dictionary<string, string> _structures;
+    private readonly Dictionary<string, StructureArtBinding> _structures;
     private readonly Dictionary<string, string> _weaponEffects;
     private readonly string? _healEffect;
     private readonly RasterResources _rasters = new();
@@ -83,6 +83,18 @@ public sealed class AssetCatalog
             if (!_variants.TryAdd(record.Id!, asset))
                 throw new InvalidOperationException($"Duplicate selected variant: {record.Id}");
         }
+        foreach (var (id, binding) in _structures)
+        {
+            if (string.IsNullOrWhiteSpace(id) || binding is null)
+                throw new InvalidOperationException("Structure art requires an explicit identity and lifecycle binding.");
+            foreach (var state in Enum.GetValues<StructureVisualState>())
+            {
+                var frame = binding.FrameFor(state);
+                if (frame is null || string.IsNullOrWhiteSpace(frame.TopicId) || string.IsNullOrWhiteSpace(frame.Frame))
+                    throw new InvalidOperationException($"Missing structure lifecycle art: {id}/{state}.");
+                _ = FrameIndex(ResolveTopic(frame.TopicId), frame.Frame);
+            }
+        }
         foreach (var (key, actor) in _actors)
         {
             if (string.IsNullOrWhiteSpace(key) || key != key.Trim()
@@ -117,8 +129,15 @@ public sealed class AssetCatalog
 
     public bool HasMapStructureBinding(string terrainId) => _mapStructures.ContainsKey(terrainId);
 
-    public RuntimeAsset? ResolveStructure(string structureType) =>
-        _structures.TryGetValue(structureType, out var topic) ? ResolveTopic(topic) : null;
+    public (RuntimeAsset Asset, string Frame)? ResolveStructure(string structureType, StructureVisualState state)
+    {
+        if (!_structures.TryGetValue(structureType, out var binding))
+            return null;
+        var frame = binding.FrameFor(state);
+        var asset = ResolveTopic(frame.TopicId);
+        _ = FrameIndex(asset, frame.Frame);
+        return (asset, frame.Frame);
+    }
 
     public RuntimeAsset? ResolveWeaponEffect(string weapon) =>
         _weaponEffects.TryGetValue(weapon, out var topic) ? ResolveEffect(topic) : null;

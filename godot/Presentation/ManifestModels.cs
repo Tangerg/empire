@@ -139,7 +139,7 @@ public sealed class ArtBindings
     [JsonPropertyName("CANDIDATE_01_MAP_STRUCTURE_ART")]
     public Dictionary<string, MapStructureArtBinding> MapStructures { get; init; } = new();
     [JsonPropertyName("CANDIDATE_01_STRUCTURE_ART")]
-    public Dictionary<string, string> Structures { get; init; } = new();
+    public Dictionary<string, StructureArtBinding> Structures { get; init; } = new();
     [JsonPropertyName("CANDIDATE_01_WEAPON_FX")]
     public Dictionary<string, string> WeaponEffects { get; init; } = new();
     [JsonPropertyName("CANDIDATE_01_HEAL_FX")]
@@ -233,6 +233,52 @@ public sealed class EnvironmentCellRecord
         get; init;
     }
     public double PresentationScale { get; init; } = 1;
+}
+
+public enum StructureVisualState
+{
+    Normal, Captured, Damaged, Destroyed
+}
+
+public sealed record AssetFrameBinding
+{
+    public required string TopicId
+    {
+        get; init;
+    }
+    public required string Frame
+    {
+        get; init;
+    }
+}
+
+public sealed record StructureArtBinding
+{
+    public required AssetFrameBinding Normal
+    {
+        get; init;
+    }
+    public required AssetFrameBinding Captured
+    {
+        get; init;
+    }
+    public required AssetFrameBinding Damaged
+    {
+        get; init;
+    }
+    public required AssetFrameBinding Destroyed
+    {
+        get; init;
+    }
+
+    public AssetFrameBinding FrameFor(StructureVisualState state) => state switch
+    {
+        StructureVisualState.Normal => Normal,
+        StructureVisualState.Captured => Captured,
+        StructureVisualState.Damaged => Damaged,
+        StructureVisualState.Destroyed => Destroyed,
+        _ => throw new ArgumentOutOfRangeException(nameof(state))
+    };
 }
 
 public sealed class AuthoredScene

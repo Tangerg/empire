@@ -18,7 +18,7 @@ Use the existing unit-body selection, movement confirmation, attack and end-turn
 - `painted-pass-art.json` owns image registration, not legality. Its exact level-source SHA-256 makes an unreviewed level/layout change fail explicitly. The opaque 1672×941 image is scaled uniformly by 0.42. Camera zoom/pan may crop the viewport; neither the grid nor the camera stretches one image axis.
 - `BoardPlane` owns the explicit affine ground basis, consumed by the existing `BoardProjection` for ground, feet, overlays, depth and inverse picking. The default campaign explicitly supplies its existing dimetric basis. The sample supplies its measured painting registration.
 - `BoardGroundView` is the consumer-owned ground representation contract. The material-based `TerrainView` and fixed `PaintedGroundView` are real representations selected at composition, not level-ID branches or missing-resource fallbacks. BoardView owns the returned node; ground views own transferred authored children and borrow resource textures.
-- `PaintedPassSample` composes the normal BattleEngine, GrayFlagSession, BattleScreen and AI pacer. It does not duplicate their rules or command state machines. Recruitment instructions use the existing tactical query rather than a sample-specific UI condition.
+- `PaintedBattleSample`, configured by `painted-pass-scene.json`, composes the normal BattleEngine, GrayFlagSession, BattleScreen and AI pacer. It does not duplicate their rules or command state machines. Recruitment instructions use the existing tactical query rather than a sample-specific UI condition.
 
 ## Deliberate limits
 
@@ -31,3 +31,11 @@ The image is a generated edit of the approved chapter-one illustration with bake
 Actual cloud Godot interaction exercised body selection, a three-cell movement, end-turn AI movement/attack/counter, a player attack, Save/Load buttons and F5→move→F9→F5. Full canonical state equality was checked after reload. Central-rock and outside clicks did not commit movement. The native resource check additionally covers all registered cell-center inverse picks, domain rock blocking, unchanged aspect ratio, rejection of unregistered terrain/elevation and borrowed-texture lifetime. Existing presentation checks cover the unchanged campaign representation.
 
 GUI runs report a cloud X11 `BadShmSeg` startup diagnostic while displaying and accepting interaction correctly. Native headless verification and clean teardown are recorded separately; the X11 diagnostic is not mislabeled as a passing clean GUI log. macOS execution and final user visual acceptance remain pending.
+
+## Exact-source foreground layers
+
+Painted registration declares an explicit `occluders` array (empty for the original pass). Each entry contains a unique identity, a canonical contact-cell reference, an authored front-ground pixel, and a simple polygon in mother-image pixel coordinates. An optional selection-cell reference makes an existing painted building address its canonical interaction cell. It does not declare blocking, cover, ownership or healing.
+
+`PaintedGroundView` borrows the same mother texture for the base and every `Polygon2D`. Polygon UVs and projected vertices preserve the original pixel placement exactly; there is no independently regenerated house, clean plate, second image scale, or alpha-threshold fallback. Invalid, crossing or degenerate polygons fail admission. The view owns nodes, never the borrowed texture. `StandingVisual` projects sprite or polygon visible geometry into the same `BoardView` depth-aware body picker. A bridge railing uses a few authored sections at distinct front contacts, rather than a single depth for its entire diagonal span.
+
+The independent three-bridge scene exercises this representation. See [THREE-BRIDGES-SAMPLE.md](THREE-BRIDGES-SAMPLE.md) for its current scope and acceptance status.

@@ -146,11 +146,114 @@
     }
   },
   "CANDIDATE_01_STRUCTURE_ART": {
-    "gate": "C01-STRUCT-REPAIRABLE-GATE",
-    "command_node": "C01-STRUCT-OATH-TOWER-CONSOLE",
-    "depot": "C01-STRUCT-MERCENARY-DEPOT",
-    "bulkhead": "C01-STRUCT-WASTELAND-CHEVAUX",
-    "boss_part": "C01-STRUCT-SUNKEN-BELL-SLUICE"
+    "gate": {
+      "normal": {
+        "topicId": "C01-STRUCT-REPAIRABLE-GATE",
+        "frame": "normal"
+      },
+      "captured": {
+        "topicId": "C01-STRUCT-REPAIRABLE-GATE",
+        "frame": "captured"
+      },
+      "damaged": {
+        "topicId": "C01-STRUCT-REPAIRABLE-GATE",
+        "frame": "damaged"
+      },
+      "destroyed": {
+        "topicId": "C01-STRUCT-REPAIRABLE-GATE",
+        "frame": "damaged"
+      }
+    },
+    "command_node": {
+      "normal": {
+        "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
+        "frame": "normal"
+      },
+      "captured": {
+        "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
+        "frame": "captured"
+      },
+      "damaged": {
+        "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
+        "frame": "damaged"
+      },
+      "destroyed": {
+        "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
+        "frame": "damaged"
+      }
+    },
+    "depot": {
+      "normal": {
+        "topicId": "C01-STRUCT-MERCENARY-DEPOT",
+        "frame": "normal"
+      },
+      "captured": {
+        "topicId": "C01-STRUCT-MERCENARY-DEPOT",
+        "frame": "captured"
+      },
+      "damaged": {
+        "topicId": "C01-STRUCT-MERCENARY-DEPOT",
+        "frame": "damaged"
+      },
+      "destroyed": {
+        "topicId": "C01-STRUCT-MERCENARY-DEPOT",
+        "frame": "damaged"
+      }
+    },
+    "bulkhead": {
+      "normal": {
+        "topicId": "C01-STRUCT-WASTELAND-CHEVAUX",
+        "frame": "normal"
+      },
+      "captured": {
+        "topicId": "C01-STRUCT-WASTELAND-CHEVAUX",
+        "frame": "captured"
+      },
+      "damaged": {
+        "topicId": "C01-STRUCT-WASTELAND-CHEVAUX",
+        "frame": "damaged"
+      },
+      "destroyed": {
+        "topicId": "C01-STRUCT-WASTELAND-CHEVAUX",
+        "frame": "damaged"
+      }
+    },
+    "boss_part": {
+      "normal": {
+        "topicId": "C01-STRUCT-SUNKEN-BELL-SLUICE",
+        "frame": "normal"
+      },
+      "captured": {
+        "topicId": "C01-STRUCT-SUNKEN-BELL-SLUICE",
+        "frame": "captured"
+      },
+      "damaged": {
+        "topicId": "C01-STRUCT-SUNKEN-BELL-SLUICE",
+        "frame": "damaged"
+      },
+      "destroyed": {
+        "topicId": "C01-STRUCT-SUNKEN-BELL-SLUICE",
+        "frame": "damaged"
+      }
+    },
+    "three-bridges.barricade": {
+      "normal": {
+        "topicId": "THREE-BRIDGES-STRUCT-BARRICADE-NORMAL",
+        "frame": "normal"
+      },
+      "captured": {
+        "topicId": "THREE-BRIDGES-STRUCT-BARRICADE-NORMAL",
+        "frame": "normal"
+      },
+      "damaged": {
+        "topicId": "THREE-BRIDGES-STRUCT-BARRICADE-DAMAGED",
+        "frame": "damaged"
+      },
+      "destroyed": {
+        "topicId": "THREE-BRIDGES-STRUCT-BARRICADE-DESTROYED",
+        "frame": "destroyed"
+      }
+    }
   },
   "CANDIDATE_01_CHARACTER_ART": {
     "c01.laiya": "C01-CHAR-LEIA-01",

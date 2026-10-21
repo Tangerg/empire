@@ -474,7 +474,7 @@ public partial class TerrainView : BoardGroundView
                 node.Position = projection.Project(contact);
                 node.ZAsRelative = false;
                 node.ZIndex = projection.LayerAtDepth(projection.Depth(contact) + SpriteGroundContact.Offset(node).Y, BoardDepthLayer.Standing);
-                entries.Add(new(node, contact, 2, node));
+                entries.Add(new(node, contact, 2, new SpriteStandingVisual(node)));
             }
         }
         catch

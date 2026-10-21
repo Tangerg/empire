@@ -45,6 +45,8 @@ public partial class DynamicStateChecks : Node
         var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         var engine = new BattleEngine(packs);
         CheckCatalogBinding(assets, packs);
+        CheckPaintedOccluders(packs);
+        PaintedInteractionChecks.Run(Require);
         var levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json");
         var environment = EnvironmentCatalog.Load();
         var total = 0;
@@ -119,12 +121,77 @@ public partial class DynamicStateChecks : Node
         gauge.Free();
     }
 
+    private void CheckPaintedOccluders(JsonArray basePacks)
+    {
+        var packs = (JsonArray)basePacks.DeepClone();
+        packs.Add(PresentationJson.Load<JsonObject>("res://data/samples/three-bridges-content.json"));
+        var engine = new BattleEngine(packs);
+        var level = PresentationJson.Load<JsonObject>("res://data/samples/three-bridges-level.json");
+        var state = engine.CreateState(level);
+        var map = state["map"]!.AsObject();
+        var art = PresentationJson.Load<PaintedGroundDocument>("res://data/samples/three-bridges-art.json");
+        var texture = ResourceLoader.Load<Texture2D>(art.ResourcePath);
+        var width = map["width"]!.GetValue<int>();
+        var playable = map["tiles"]!.AsArray().Select((tile, index) => (tile, index))
+            .Where(item => !engine.Catalog.Definition("terrains", item.tile!.GetValue<string>())!.Value
+                .GetProperty("tags").EnumerateArray().Any(tag => tag.GetString() == "outside"))
+            .Select(item => new Empire.Core.Geometry.Coord(item.index % width, item.index / width)).ToHashSet();
+        var projection = new BoardProjection(engine.Grids.Get("square4"), art.CreatePlane, map, playable);
+        var ground = PaintedGroundView.Create(art, texture, map);
+        AddChild(ground);
+        ground.Render(projection, map["tiles"]!.AsArray().Select(tile => tile!.GetValue<string>()).ToArray(),
+            map["elevation"]!.AsArray().Select(height => height!.GetValue<int>()).ToArray(),
+            new Vector2I(width, map["height"]!.GetValue<int>()));
+        Require(ground.DepthEntries.Count == art.Occluders.Length, "Every painted foreground contour must share the standing depth pipeline.");
+        foreach (var entry in ground.DepthEntries)
+        {
+            var polygon = (Polygon2D)entry.Node;
+            Require(ReferenceEquals(polygon.Texture, texture), "Painted foreground must borrow the exact mother texture.");
+            for (var i = 0; i < polygon.Polygon.Length; i++)
+                Require(polygon.ToGlobal(polygon.Polygon[i]).IsEqualApprox(polygon.UV[i] * art.WorldScale),
+                    "Foreground sampling must redraw the exact source pixel position without drifting from the base.");
+        }
+        ground.Free();
+        Require(GodotObject.IsInstanceValid(texture), "Freeing foreground nodes must not dispose their borrowed mother texture.");
+        var first = art.Occluders[0];
+        var invalid = new PaintedGroundDocument
+        {
+            LevelId = art.LevelId,
+            LevelSourceSha256 = art.LevelSourceSha256,
+            ResourcePath = art.ResourcePath,
+            PixelSize = art.PixelSize,
+            WorldScale = art.WorldScale,
+            OriginPixels = art.OriginPixels,
+            CellXPixels = art.CellXPixels,
+            CellYPixels = art.CellYPixels,
+            Occluders = [new PaintedOccluder { Id = "Crossed", ContactCell = first.ContactCell,
+                GroundFrontPixels = first.GroundFrontPixels, PolygonPixels = [[10, 10], [50, 50], [10, 50], [50, 10]] }]
+        };
+        var rejected = false;
+        try
+        {
+            PaintedGroundView.Create(invalid, texture, map).Free();
+        }
+        catch (InvalidOperationException) { rejected = true; }
+        Require(rejected && GodotObject.IsInstanceValid(texture), "Crossed foreground polygons must fail admission without destroying borrowed resources.");
+    }
+
     private void CheckStructureTransitions(BoardView board, JsonObject state, AuthoredScene scene)
     {
         var structure = state["structures"]![0]!.AsObject();
         Node2D Current() => DynamicNodes(board).Single(node => node.HasMeta("structure_id"));
         Require(Current().GetMeta("visual_state").AsString() == "captured", "Owned healthy structure uses captured frame");
-        var old = Current().Position;
+        var body = Current().GetChildren().OfType<Sprite2D>().First();
+        var target = new Empire.Core.Geometry.Coord(structure["x"]!.GetValue<int>(), structure["y"]!.GetValue<int>());
+        var selectable = false;
+        for (var y = -60; y < 0 && !selectable; y += 3)
+            for (var x = -30; x <= 30 && !selectable; x += 3)
+            {
+                var point = Current().Position + new Vector2(x, y);
+                if (body.IsPixelOpaque(body.ToLocal(board.ToGlobal(point))) && board.Pick(point) == target)
+                    selectable = true;
+            }
+        Require(selectable, "Visible opaque structure pixels must select their canonical target cell.");
         structure["hp"] = 50;
         board.RenderState(state);
         Require(Current().GetMeta("visual_state").AsString() == "damaged", "Exactly half HP selects damaged frame");
@@ -138,7 +205,8 @@ public partial class DynamicStateChecks : Node
         structure["owner"] = 0;
         structure["x"] = structure["x"]!.GetValue<int>() + 1;
         board.RenderState(state);
-        Require(Current().GetMeta("visual_state").AsString() == "normal" && Current().Position == old + new Vector2(32, 0),
+        Require(Current().GetMeta("visual_state").AsString() == "normal" && Current().Position.IsEqualApprox(board.Projection.CellContact(
+                new(structure["x"]!.GetValue<int>(), structure["y"]!.GetValue<int>()))),
             "Ownership and location must refresh without stale objects");
         var before = state.ToJsonString();
         board.RenderState(state);
@@ -150,9 +218,9 @@ public partial class DynamicStateChecks : Node
         structure["hp"] = 0;
         structure["disabled"] = true;
         board.RenderState(state);
-        Require(board.RenderedStructureCount == 1 && Current().GetMeta("visual_state").AsString() == "damaged" &&
+        Require(board.RenderedStructureCount == 1 && Current().GetMeta("visual_state").AsString() == "destroyed" &&
             Current().GetNode<Node2D>("HealthGauge").GetMeta("ratio").AsDouble() == 0,
-            "A destroyed-but-retained source structure must remain as a disabled damaged object");
+            "A destroyed-but-retained structure must expose the explicit destroyed visual role");
         state["structures"]!.AsArray().Clear();
         board.RenderState(state);
         Require(board.RenderedStructureCount == 0 && !DynamicNodes(board).Any(node => node.HasMeta("structure_id")),
@@ -201,12 +269,12 @@ public partial class DynamicStateChecks : Node
         var before = state.ToJsonString();
         board.RenderState(state);
         var badges = board.GetNode<Node2D>($"CanonicalProjection/Unit_{id}/Badges");
-        Require(badges.HasNode("HealthGauge") && badges.HasNode("DoneShade"), "Damaged/done units must have visible source badges");
+        Require(badges.HasNode("HealthGauge") && badges.HasNode("DoneIndicator"), "Damaged/done units must have visible status badges without shading a square of painted scenery");
         Require(Math.Abs(badges.GetNode<Node2D>("CaptureGauge").GetMeta("ratio").AsDouble() - 0.5) < 0.0001,
             "Capture gauge must read canonical map progress, not unit capture");
         Require(state.ToJsonString() == before, "Badge projection must not advance unit or capture state");
-        Require(badges.GetNode<Node2D>("FacingPip").GetMeta("direction").AsVector2() == Vector2.Down,
-            "Facing pip must use the injected canonical grid vector");
+        Require(badges.GetNode<Node2D>("FacingPip").GetMeta("direction").AsVector2() == board.Projection.FacingVector("south"),
+            "Facing pip must project the injected canonical grid vector through the shared board plane");
     }
 
     private void CheckMapOwnership(BoardView board, JsonObject state, AssetCatalog assets)

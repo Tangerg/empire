@@ -93,6 +93,62 @@
         941
       ],
       "visualContract": "Uniformly scaled complete opaque illustration. Only the explicitly registered foreground valley is playable. Distant plateau, village and foreground tree-covered margins are not interactive. No painted actors or ownership flags."
+    },
+    {
+      "id": "three-bridges-barricade-normal",
+      "resourcePath": "res://assets/native/structure/three-bridges-barricade-normal.png",
+      "sha256": "aade963a898bf1770591a078920e29faa94a2c231da07c73f9581ab5f3a72b74",
+      "method": "Generated RGBA single-state barricade; approved candidate normal-reset.png copied byte-for-byte without crop, recolor, alpha cleanup or image transformation. Normal uses the native frontier house as style reference; damaged and destroyed derive from the accepted preceding state.",
+      "sourceOwner": "Native selected-assets.json",
+      "generationDate": "2026-10-21",
+      "imageDimensions": [
+        1470,
+        1070
+      ],
+      "visualContract": "One low wooden barricade state, transparent background and no baked ownership. Explicit state-specific anchor and foreground contact; all states share the normal-state material scale. Captured ownership reuses normal artwork and the canonical owner banner.",
+      "review": "Inspected in the actual Linux sample through normal enemy attacks: intact, damaged and destroyed artwork retain the authored contact/scale. Composed-rule checks confirm HP-zero movement and half-cover release plus save/load. See docs/THREE-BRIDGES-SAMPLE.md for exact manual and controlled coverage; no macOS or final whole-game visual acceptance claimed."
+    },
+    {
+      "id": "three-bridges-barricade-damaged",
+      "resourcePath": "res://assets/native/structure/three-bridges-barricade-damaged.png",
+      "sha256": "64a0e3c19a46b74fafcde788cdc119a37841603091681870d82d463f5445bbad",
+      "method": "Generated RGBA single-state barricade; approved candidate damaged-reset.png copied byte-for-byte without crop, recolor, alpha cleanup or image transformation. Normal uses the native frontier house as style reference; damaged and destroyed derive from the accepted preceding state.",
+      "sourceOwner": "Native selected-assets.json",
+      "generationDate": "2026-10-21",
+      "imageDimensions": [
+        1470,
+        1070
+      ],
+      "visualContract": "One low wooden barricade state, transparent background and no baked ownership. Explicit state-specific anchor and foreground contact; all states share the normal-state material scale. Captured ownership reuses normal artwork and the canonical owner banner.",
+      "review": "Inspected in the actual Linux sample through normal enemy attacks: intact, damaged and destroyed artwork retain the authored contact/scale. Composed-rule checks confirm HP-zero movement and half-cover release plus save/load. See docs/THREE-BRIDGES-SAMPLE.md for exact manual and controlled coverage; no macOS or final whole-game visual acceptance claimed."
+    },
+    {
+      "id": "three-bridges-barricade-destroyed",
+      "resourcePath": "res://assets/native/structure/three-bridges-barricade-destroyed.png",
+      "sha256": "db0d83f25b82d907376147ff7afebd7f42b2893aace5303593656009302d39f2",
+      "method": "Generated RGBA single-state barricade; approved candidate destroyed.png copied byte-for-byte without crop, recolor, alpha cleanup or image transformation. Normal uses the native frontier house as style reference; damaged and destroyed derive from the accepted preceding state.",
+      "sourceOwner": "Native selected-assets.json",
+      "generationDate": "2026-10-21",
+      "imageDimensions": [
+        1470,
+        1070
+      ],
+      "visualContract": "One low wooden barricade state, transparent background and no baked ownership. Explicit state-specific anchor and foreground contact; all states share the normal-state material scale. Captured ownership reuses normal artwork and the canonical owner banner.",
+      "review": "Inspected in the actual Linux sample through normal enemy attacks: intact, damaged and destroyed artwork retain the authored contact/scale. Composed-rule checks confirm HP-zero movement and half-cover release plus save/load. See docs/THREE-BRIDGES-SAMPLE.md for exact manual and controlled coverage; no macOS or final whole-game visual acceptance claimed."
+    },
+    {
+      "id": "three-bridges-painted-environment",
+      "resourcePath": "res://assets/native/scenes/three-bridges.png",
+      "sha256": "b95e877c9fb999f3e7e7d46d5a272ab35b4a4b1cfe8d97d1e1189b3fa11d136f",
+      "method": "Generated edit of the approved full arch-three-bridges illustration: removed all baked people, weapons, person shadows and both flags/poles. Composition retained with local texture and line redraw; not pixel-exact.",
+      "sourceOwner": "Native samples/three-bridges-art.json",
+      "generationDate": "2026-10-21",
+      "imageDimensions": [
+        1672,
+        941
+      ],
+      "visualContract": "Opaque complete environment; uniformly scaled. Foreground polygons borrow exact pixels from this same image. Canonical level alone defines walkable bridge decks, roads, water and interaction cells.",
+      "review": "Approved empty mother image. Real sample interaction and per-bridge registration are evaluated separately; not a main-campaign replacement."
     }
   ]
 }

@@ -637,5 +637,19 @@ owns material/mesh ground; `PaintedGroundView` owns fixed, uniformly scaled illu
 ground and refuses unregistered terrain changes. `BoardView` owns node replacement and
 authored-subtree transfer. Ground nodes borrow ResourceLoader textures. The sample's
 `PaintedGroundDocument` owns image registration and an exact canonical-level source hash,
-not a second navigation map. `PaintedPassSample` is an explicit application composition
+not a second navigation map. `PaintedBattleSample`, configured by an explicit painted scene definition, is an application composition
 entry using the existing engine/session/screen. See [painted sample](../godot/docs/PAINTED-PASS-SAMPLE.md).
+
+
+The painted three-bridge scene uses the same composition entry with explicit content,
+level, text and save resources. `PaintedGroundDocument.Occluders` owns only authored
+foreground polygons, image-space front contacts and canonical-cell references.
+`PaintedGroundView` samples their unchanged UVs from its borrowed mother texture.
+`StandingVisual` exposes visible geometry and contact to `BoardView`, which remains
+the sole draw-order/body-hit owner for both sprites and painted polygons. Navigation,
+bridge admission, capture and healing remain composed domain rules, not polygon tests.
+`StructureArtBinding` explicitly binds normal/captured/damaged/destroyed appearances;
+`DynamicStateView` projects HP into those appearances and removes destroyed-body hit
+interception. `GrayFlagSession.Hud` renders structure forecasts from `BattleCombat`'s
+actual plan rather than calculating damage. See
+[three-bridge sample](../godot/docs/THREE-BRIDGES-SAMPLE.md).

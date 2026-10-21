@@ -1,0 +1,51 @@
+{
+  "id": "empire.three-bridges",
+  "version": 1,
+  "terrains": [
+    {
+      "defense": 0.2,
+      "vision": 0,
+      "opaque": false,
+      "cover": "none",
+      "obstructionHeight": 0,
+      "capturable": true,
+      "ownerTurnGrants": [],
+      "heal": 15,
+      "produces": [],
+      "hq": false,
+      "tags": [
+        "building",
+        "outpost"
+      ],
+      "id": "three-bridges.aid-post",
+      "cost": {
+        "foot": 1,
+        "mounted": 1,
+        "heavy": 1,
+        "flying": 1,
+        "naval": null,
+        "amphibious": 1
+      }
+    }
+  ],
+  "terrainCharacters": {
+    "医": "three-bridges.aid-post"
+  },
+  "structures": [
+    {
+      "maxHp": 60,
+      "defense": 0,
+      "blocksMovement": true,
+      "blocksVision": false,
+      "cover": "half",
+      "obstructionHeight": 1,
+      "repairable": true,
+      "targetable": true,
+      "tags": [
+        "blocking",
+        "barricade"
+      ],
+      "id": "three-bridges.barricade"
+    }
+  ]
+}
