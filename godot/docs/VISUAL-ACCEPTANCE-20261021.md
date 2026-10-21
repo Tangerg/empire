@@ -48,3 +48,20 @@ source `runtimeReady=false`; rendering does not constitute authoring approval.
   Later unauthored scenes and final art/lighting approval remain open.
 - No new export package or macOS execution was validated in this batch. Earlier
   Linux export evidence and old untested Mac artifacts are separate checkpoints.
+
+## Character framing follow-up
+
+`CharacterPortrait` now owns thumbnail framing for both dialogue and roster.
+It uses the supplied texture's nonzero-alpha bounds, without modifying the source
+texture, battle frame, palette, or battle anchor. Opaque artwork retains its full
+rectangle. The temporary CPU image is disposed; the resulting atlas only borrows
+its source texture. `KeepAspectCentered` preserves the entire visible subject.
+There is no color-key removal, background mask, or duplicated portrait catalog.
+
+Actual staging inspection showed the ordinary swordsman and archer at readable
+thumbnail scale rather than fitting their large transparent animation margins.
+Roderick's story portrait was inspected at 1180 × 812 and a manually resized
+689 × 812 window: sword, shield, and feet remained visible. The existing native
+narrative/staging scenes passed with exact alpha-region and non-cropping guards,
+and their normal teardown emitted no errors. The beige backgrounds are still
+present; any generated alpha replacement is a separate art decision.

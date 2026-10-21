@@ -79,8 +79,12 @@ public partial class CampaignStagingChecks : Node
                 var picture = row.GetNode<TextureRect>("Avatar");
                 Require(picture.Texture is AtlasTexture, "Unavailable portraits must use selected actual unit sprites, not a geometric placeholder");
                 var expected = assets.ResolveUnit(unit.UnitType, unit.ActorKey);
-                Require(((AtlasTexture)picture.Texture).Atlas.ResourcePath == expected.ResourcePath,
+                Require(picture.Texture is AtlasTexture { Atlas: AtlasTexture frame } && frame.Atlas.ResourcePath == expected.ResourcePath,
                     "Roster fallback must respect the explicit actor binding and its source texture");
+                using var framePixels = assets.CreateFrameTexture(expected, AssetCatalog.FrameIndex(expected, "idle")).GetImage();
+                Require(((AtlasTexture)picture.Texture).Region == (Rect2)framePixels.GetUsedRect() &&
+                    picture.StretchMode == TextureRect.StretchModeEnum.KeepAspectCentered,
+                    "Roster thumbnails must fit visible artwork rather than transparent animation padding.");
             }
             Require(screen.RenderingDiagnostics.Any(value => value.Contains("campaign backdrop", StringComparison.Ordinal)) &&
                 text.Contains(view.ArtworkFailureLabel, StringComparison.Ordinal) &&

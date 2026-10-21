@@ -287,7 +287,11 @@ public partial class NarrativeChecks : Node
             Require(screen.RenderingDiagnostics.Count == 0, "Every source narrative image loads without a substitute");
             Equal(screen.FindChild("StoryPortrait", true, false) is not null, expected["portraitSource"] is not null, "Narrator has no invented portrait");
             if (screen.PresentedStory!.Portrait is { } portrait)
+            {
                 Equal(Find<TextureRect>("StoryPortrait").Texture.ResourcePath, portrait.ResourcePath!, "Original portrait texture is mounted");
+                Equal(Find<TextureRect>("StoryPortrait").StretchMode, TextureRect.StretchModeEnum.KeepAspectCentered,
+                    "Dialogue preserves the full portrait instead of cropping to the layout aspect ratio");
+            }
             Equal(Find<TextureRect>("CampaignBackdrop").Texture.ResourcePath, screen.PresentedStory!.Shell.Art.ResourcePath!, "Original scene/chapter texture is mounted");
             Equal(screen.FindChild("MissionBrief", true, false) is not null, entry.Mission is not null, "Mission panel presence follows source");
         }

@@ -98,11 +98,9 @@ public partial class CampaignStagingScreen : Control
             }
             if (avatar is not null)
             {
-                var picture = Picture(avatar);
+                var picture = CharacterPortrait.Create(avatar);
                 picture.Name = "Avatar";
                 picture.CustomMinimumSize = new Vector2(56, 56);
-                picture.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
-                picture.TextureFilter = TextureFilterEnum.Nearest;
                 row.AddChild(picture);
             }
             var labels = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };

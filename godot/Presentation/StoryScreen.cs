@@ -140,7 +140,7 @@ public partial class StoryScreen : Control
         body.AddChild(dialogue);
         if (view.Portrait is { } art && shell.Texture(art, $"portrait for {view.Speaker}") is { } texture)
         {
-            portrait = CampaignShell.Picture(texture);
+            portrait = CharacterPortrait.Create(texture);
             portrait.Name = "StoryPortrait";
             portrait.TooltipText = view.Speaker;
             portrait.AccessibilityName = view.Speaker;
