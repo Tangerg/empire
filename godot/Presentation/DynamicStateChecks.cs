@@ -60,7 +60,7 @@ public partial class DynamicStateChecks : Node
             };
             var board = new BoardView();
             AddChild(board);
-            board.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog), level, scene);
+            board.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric), level, scene);
             board.ConfigureDynamicState();
             var state = engine.CreateState(level);
             var before = state.ToJsonString();

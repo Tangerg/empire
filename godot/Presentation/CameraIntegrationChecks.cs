@@ -57,7 +57,7 @@ public partial class CameraIntegrationChecks : Node
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
     }
 
-    private void Bind(ITacticalBattleSession session) => screen.BindSession(new(text, battleText, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
+    private void Bind(ITacticalBattleSession session) => screen.BindSession(new(text, battleText, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
     private async Task Layout()
     {
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
@@ -181,7 +181,7 @@ public partial class CameraIntegrationChecks : Node
         Bind(outside);
         var materials = WorldMaterialsManifest.Load();
         materials.TerrainTags["c01.outside"] = [];
-        screen.ConfigureTerrain(materials);
+        screen.ConfigureGround(TerrainView.Factory(materials));
         GuiButton(MouseButton.Middle, true, new Vector2(100, 100));
         CapturedMove(new Vector2(10000, 10000));
         CapturedButton(MouseButton.Middle, false, new Vector2(10000, 10000));
@@ -200,7 +200,7 @@ public partial class CameraIntegrationChecks : Node
         Bind(session);
         materials = WorldMaterialsManifest.Load();
         materials.TerrainTags["plain"] = ["outside"];
-        screen.ConfigureTerrain(materials);
+        screen.ConfigureGround(TerrainView.Factory(materials));
         var actor = Field(new Vector2(9.5f, 12.5f) * 32);
         GuiButton(MouseButton.Left, true, actor);
         CapturedButton(MouseButton.Left, false, actor);

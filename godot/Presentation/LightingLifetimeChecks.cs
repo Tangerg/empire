@@ -214,14 +214,14 @@ public partial class LightingLifetimeChecks : Node
         screen.Board.AdvanceAnimationsAutomatically = false;
         void Bind(GrayFlagSession session)
         {
-            screen.BindSession(new(text, battleText, session, new(assets, environment, engine.Grids.Get("square4"), engine.Catalog)), level, scene);
+            screen.BindSession(new(text, battleText, session, new(assets, environment, engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, scene);
             screen.ConfigureDynamicState();
         }
         var session = new GrayFlagSession(new(engine, presentation), level);
         Bind(session);
         // Exercise the separate unshared field-light owners on one actual screen.
         if (cycle == 0)
-            screen.ConfigureTerrain(WorldMaterialsManifest.Load());
+            screen.ConfigureGround(TerrainView.Factory(WorldMaterialsManifest.Load()));
         var cache = screen.Board.LightingResources;
         var contact = screen.Board.GetNode<Node2D>("CanonicalProjection").GetChildren().OfType<Node2D>()
             .Select(node => node.GetNodeOrNull<Sprite2D>("SourceStructureContact")).First(sprite => sprite is not null)!;
@@ -246,7 +246,7 @@ public partial class LightingLifetimeChecks : Node
         var restarted = new GrayFlagSession(new(engine, presentation), level);
         Bind(restarted);
         Require(loadedCache.IsDisposed && !screen.Board.LightingResources.IsDisposed, "Restart did not replace exactly one resource owner.");
-        screen.ConfigureTerrain(WorldMaterialsManifest.Load());
+        screen.ConfigureGround(TerrainView.Factory(WorldMaterialsManifest.Load()));
         var exclusiveTextures = Descendants(screen).OfType<OwnedProceduralSprite>().Select(sprite => sprite.Texture).ToArray();
         var generatedMaterials = Descendants(screen).OfType<OwnedShaderMaterial>().Select(owner => owner.Value).ToArray();
         Require(exclusiveTextures.Length > 0 && generatedMaterials.Length > 0,

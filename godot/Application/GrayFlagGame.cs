@@ -438,11 +438,11 @@ public partial class GrayFlagGame : Node
                     AssetCatalog.Load(),
                     EnvironmentCatalog.Load(),
                     grid,
-                    engine.Catalog)),
+                    engine.Catalog, BoardPlane.Dimetric)),
                 level,
                 scene,
                 initialLogMessage);
-            next.ConfigureTerrain(WorldMaterialsManifest.Load());
+            next.ConfigureGround(TerrainView.Factory(WorldMaterialsManifest.Load()));
             next.ConfigureDynamicState();
             var boundGeneration = lifecycleGeneration;
             bool CurrentBattle() => boundGeneration == lifecycleGeneration && CurrentView(owner, next) &&

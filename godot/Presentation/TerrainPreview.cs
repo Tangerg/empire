@@ -41,8 +41,8 @@ public partial class TerrainPreview : Node2D
             var grid = engine.Grids.Get(level["rules"]?["grid"]?.GetValue<string>() ?? "square4");
             _board = new BoardView();
             AddChild(_board);
-            _board.Configure(new(AssetCatalog.Load(), EnvironmentCatalog.Load(), grid, engine.Catalog), level, TerrainChecks.Scene(level));
-            _board.ConfigureTerrain(WorldMaterialsManifest.Load());
+            _board.Configure(new(AssetCatalog.Load(), EnvironmentCatalog.Load(), grid, engine.Catalog, BoardPlane.Dimetric), level, TerrainChecks.Scene(level));
+            _board.ConfigureGround(TerrainView.Factory(WorldMaterialsManifest.Load()));
             _board.ConfigureDynamicState();
             _board.RenderState(state);
             if (state.ToJsonString() != unchanged)

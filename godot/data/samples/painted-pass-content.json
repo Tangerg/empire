@@ -1,0 +1,33 @@
+{
+  "id": "empire.painted-pass",
+  "version": 1,
+  "terrains": [
+    {
+      "defense": 0,
+      "vision": 0,
+      "opaque": true,
+      "cover": "full",
+      "obstructionHeight": 3,
+      "capturable": false,
+      "ownerTurnGrants": [],
+      "heal": 0,
+      "produces": [],
+      "hq": false,
+      "tags": [
+        "blocking"
+      ],
+      "id": "painted-pass.rocks",
+      "cost": {
+        "foot": null,
+        "mounted": null,
+        "heavy": null,
+        "flying": null,
+        "naval": null,
+        "amphibious": null
+      }
+    }
+  ],
+  "terrainCharacters": {
+    "石": "painted-pass.rocks"
+  }
+}

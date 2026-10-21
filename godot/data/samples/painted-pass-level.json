@@ -1,0 +1,262 @@
+{
+  "schema": 3,
+  "id": "grayflag-painted-pass",
+  "width": 16,
+  "height": 8,
+  "terrain": [
+    "____.------..___",
+    ".....---石--.....",
+    ".....------.....",
+    ".....------.....",
+    ".....------.....",
+    ".....------.....",
+    "__...------...._",
+    "__...------...._"
+  ],
+  "elevation": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "cliffs": [],
+  "owners": [],
+  "units": [
+    {
+      "key": "campaign-laiya",
+      "unit": "c01.laiya",
+      "owner": 1,
+      "x": 4,
+      "y": 4,
+      "facing": "east"
+    },
+    {
+      "key": "pass-sword",
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "x": 5,
+      "y": 6,
+      "facing": "east"
+    },
+    {
+      "key": "pass-archer",
+      "unit": "c01.archer",
+      "owner": 1,
+      "x": 3,
+      "y": 5,
+      "facing": "east"
+    },
+    {
+      "key": "pass-enemy-sword",
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "x": 11,
+      "y": 4,
+      "facing": "west"
+    },
+    {
+      "key": "pass-enemy-guard",
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "x": 12,
+      "y": 6,
+      "facing": "west"
+    },
+    {
+      "key": "pass-enemy-archer",
+      "unit": "c01.archer",
+      "owner": 2,
+      "x": 13,
+      "y": 3,
+      "facing": "west"
+    }
+  ],
+  "commanders": [],
+  "players": [
+    {
+      "id": 1,
+      "team": 1,
+      "color": "#4d86b8",
+      "controller": "human",
+      "resources": {
+        "funds": {
+          "current": 0,
+          "capacity": null
+        },
+        "command_points": {
+          "current": 0,
+          "capacity": 6
+        }
+      },
+      "objectives": [
+        {
+          "id": "route",
+          "type": "routEnemies"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "team": 2,
+      "color": "#a8493f",
+      "controller": "ai",
+      "resources": {
+        "funds": {
+          "current": 0,
+          "capacity": null
+        },
+        "command_points": {
+          "current": 0,
+          "capacity": 6
+        }
+      },
+      "objectives": [
+        {
+          "id": "route",
+          "type": "routEnemies"
+        }
+      ]
+    }
+  ],
+  "rules": {
+    "turnLimit": null,
+    "fog": false,
+    "moraleEnabled": false,
+    "captureMode": "progressive",
+    "captureThreshold": 100,
+    "baseResourceGrants": []
+  },
+  "victory": [
+    {
+      "id": "route",
+      "type": "routEnemies"
+    }
+  ],
+  "scenario": {
+    "triggers": []
+  }
+}

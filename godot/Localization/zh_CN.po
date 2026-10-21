@@ -2491,7 +2491,10 @@ msgid "ui.hud.modifier_mitigation"
 msgstr "{0} 减伤"
 
 msgid "ui.hud.selection.idle"
-msgstr "点击你的单位开始行动；点击自己的城堡/兵营可以征募（空格切换待命单位，方向键走格、回车确认）。"
+msgstr "点击你的单位开始行动（空格切换待命单位，方向键走格、回车确认）。"
+
+msgid "ui.hud.selection.idle_recruit"
+msgstr "点击你的单位开始行动；点击可征募据点查看征募选项（空格切换待命单位，方向键走格、回车确认）。"
 
 msgid "ui.hud.selection.unit"
 msgstr "点击蓝色格移动，点击敌人直接发起攻击。"
@@ -3548,3 +3551,12 @@ msgstr "灰旗"
 
 msgid "combat.modifier.support"
 msgstr "{0}援护攻击"
+
+msgid "sample.painted_pass.title"
+msgstr "灰旗 · 山口样段"
+
+msgid "sample.painted_pass.description"
+msgstr "前方谷地可移动与交战；远山、村庄和高台仅作景深。"
+
+msgid "sample.painted_pass.rocks"
+msgstr "岩石"

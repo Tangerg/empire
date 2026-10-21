@@ -469,9 +469,13 @@ public sealed partial class GrayFlagSession
             })));
         if (stamp.Revision != revision)
             throw new DomainInvariantException("Battle changed during HUD projection.");
+        var recruitmentQueries = human && selection.Kind == TacticalSelectionKind.Idle
+            ? GetTacticalQueries(stamp.Binding) : null;
+        var canOpenRecruitment = recruitmentQueries is not null
+            && recruitmentQueries.InteractiveCells.Any(recruitmentQueries.CanOpenRecruitment);
         var selectionHint = S(state, "phase") == "over"
             ? text.Format("ui.hud.battle_over")
-            : !human ? text.Format("ui.hud.computer_thinking") : SelectionHint(selection.Kind);
+            : !human ? text.Format("ui.hud.computer_thinking") : SelectionHint(selection.Kind, canOpenRecruitment);
         return new(
             stamp,
             selectionHint,
@@ -480,9 +484,9 @@ public sealed partial class GrayFlagSession
             busy);
     }
 
-    private string SelectionHint(TacticalSelectionKind kind) => kind switch
+    private string SelectionHint(TacticalSelectionKind kind, bool canRecruit) => kind switch
     {
-        TacticalSelectionKind.Idle => text.Format("ui.hud.selection.idle"),
+        TacticalSelectionKind.Idle => text.Format(canRecruit ? "ui.hud.selection.idle_recruit" : "ui.hud.selection.idle"),
         TacticalSelectionKind.Unit => text.Format("ui.hud.selection.unit"),
         TacticalSelectionKind.Destination => text.Format("ui.hud.selection.destination"),
         TacticalSelectionKind.Target => text.Format("ui.hud.selection.target"),

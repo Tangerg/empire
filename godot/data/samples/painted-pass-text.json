@@ -1,0 +1,36 @@
+{
+  "schema": 2,
+  "levels": {
+    "grayflag-painted-pass": {
+      "title": {
+        "key": "sample.painted_pass.title"
+      },
+      "description": {
+        "key": "sample.painted_pass.description"
+      },
+      "signals": {},
+      "players": {
+        "1": {
+          "name": {
+            "key": "battle.player.gray_flag"
+          },
+          "objectives": {
+            "route": {
+              "generated": true
+            }
+          }
+        },
+        "2": {
+          "name": {
+            "key": "battle.player.enemy"
+          },
+          "objectives": {
+            "route": {
+              "generated": true
+            }
+          }
+        }
+      }
+    }
+  }
+}

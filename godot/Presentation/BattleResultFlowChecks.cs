@@ -293,7 +293,7 @@ public partial class BattleResultFlowChecks : Node
         var screen = new BattleScreen();
         AddChild(screen);
         screen.Board.AdvanceAnimationsAutomatically = false;
-        screen.BindSession(new(text, presentationText.Battle, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
+        screen.BindSession(new(text, presentationText.Battle, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
         TacticalSceneInputChecks.Move(screen, session);
         Require(screen.IsPresenting && screen.Board.IsPresenting, "Busy-save test requires a real pending animation.");
         // The off-tree host deliberately has no campaign. Even if the Save guard

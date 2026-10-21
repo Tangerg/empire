@@ -14,6 +14,7 @@ public partial class PresentationChecks : Node
     {
         try
         {
+            CheckPaintedGround();
             Check();
             TerrainChecks.Run(this);
             GD.Print("Presentation resource contracts passed.");
@@ -24,6 +25,48 @@ public partial class PresentationChecks : Node
             GD.PushError(error.ToString());
             GetTree().Quit(1);
         }
+    }
+
+    private static void CheckPaintedGround()
+    {
+        var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
+        packs.Add(PresentationJson.Load<JsonObject>("res://data/samples/painted-pass-content.json"));
+        var engine = new BattleEngine(packs);
+        var level = PresentationJson.Load<JsonObject>("res://data/samples/painted-pass-level.json");
+        var state = engine.CreateState(level);
+        var map = state["map"]!.AsObject();
+        var art = PresentationJson.Load<PaintedGroundDocument>("res://data/samples/painted-pass-art.json");
+        var grid = engine.Grids.Get("square4");
+        var tiles = map["tiles"]!.AsArray().Select(value => value!.GetValue<string>()).ToArray();
+        var playable = Enumerable.Range(0, tiles.Length).Where(index => !engine.Catalog.Definition("terrains", tiles[index])!.Value.GetProperty("tags")
+                .EnumerateArray().Any(tag => tag.GetString() == "outside"))
+            .Select(index => new Empire.Core.Geometry.Coord(index % 16, index / 16)).ToHashSet();
+        var projection = new BoardProjection(grid, art.CreatePlane, map, playable);
+        foreach (var cell in playable)
+            Require(projection.Pick(projection.CellCenter(cell))?.Cell == cell,
+                "Every painted ground center must invert through the same registered surface.");
+        var outside = new Empire.Core.Geometry.Coord(0, 0);
+        Require(projection.Pick(projection.CellCenter(outside)) is null, "Painted distant scenery must not become interactive ground.");
+        var movement = new Empire.Core.Tactics.MovementRules(new(engine.Catalog, engine.Grids));
+        Require(movement.Battlefield(state).TraversalCost(new(7, 1), new(8, 1), "foot") is null,
+            "The registered central rock must be blocked by the composed domain terrain.");
+        var borrowed = ResourceLoader.Load<Texture2D>(art.ResourcePath);
+        var view = PaintedGroundView.Create(art, borrowed, map);
+        var authored = new Node2D();
+        view.ConfigureAuthoredGround(authored);
+        view.Render(projection, tiles, new int[tiles.Length], new(16, 8));
+        var sprite = view.GetNode<Sprite2D>("EnvironmentPainting");
+        Require(sprite.Scale.X == sprite.Scale.Y && sprite.Texture.GetSize() == new Vector2(1672, 941),
+            "The environment painting must retain its original aspect ratio, independently of grid registration.");
+        var changed = (string[])tiles.Clone();
+        changed[0] = "plain";
+        Throws<InvalidOperationException>(() => view.Render(projection, changed, new int[tiles.Length], new(16, 8)),
+            "A fixed painting must not silently accept changed canonical terrain.");
+        Throws<InvalidOperationException>(() => art.CreatePlane(new(512, 256), 0, 1),
+            "Unregistered elevation must fail, not distort the painted valley.");
+        view.Free();
+        Require(!GodotObject.IsInstanceValid(authored) && GodotObject.IsInstanceValid(borrowed),
+            "Ground teardown owns its nodes but must preserve the borrowed resource texture.");
     }
 
     private static void CheckBodyPicking(BoardView board, JsonObject state, int villageIndex)
@@ -158,7 +201,7 @@ public partial class PresentationChecks : Node
         var before = state.ToJsonString();
         var board = new BoardView();
         AddChild(board);
-        board.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog), level, scene);
+        board.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric), level, scene);
         board.RenderState(state);
         Require(state.ToJsonString() == before, "Rendering must not mutate canonical state.");
         Require(board.RenderedUnitCount == board.ProjectionUnitCount && board.ProjectionUnitCount == 19,
@@ -230,7 +273,7 @@ public partial class PresentationChecks : Node
             && board.Diagnostics.Any(message => message.Contains("not-exported-unit", StringComparison.Ordinal))
             && board.RenderingIssueCount > 0,
             "Unavailable art must be explicitly diagnosed without substituting another actor.");
-        board.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog), level, scene);
+        board.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric), level, scene);
         board.RenderState(state);
         Require(board.GetChildCount() == 2, "Repeated configuration must not duplicate scene layers.");
         CheckTerrain(board, state);
@@ -275,7 +318,7 @@ public partial class PresentationChecks : Node
             {"width":1,"height":2,"tiles":["plain","plain"],"elevation":[1,0],
              "cliffs":[{"from":{"x":0,"y":0},"to":{"x":0,"y":1}}]}
             """)!.AsObject();
-        var cliff = new BoardProjection(new Empire.Core.Geometry.Square4Grid(), cliffMap,
+        var cliff = new BoardProjection(new Empire.Core.Geometry.Square4Grid(), BoardPlane.Dimetric, cliffMap,
             new System.Collections.Generic.HashSet<Empire.Core.Geometry.Coord> { new(0, 0), new(0, 1) });
         Require(cliff.Faces.Count > 0, "An actual canonical cliff must expose its camera-facing connection.");
         foreach (var face in cliff.Faces)
@@ -290,7 +333,7 @@ public partial class PresentationChecks : Node
         var materials = WorldMaterialsManifest.Load();
         Require(Enumerable.Range(0, 256).Select(TerrainView.CanonicalBlobMask).Distinct().Count() == 47,
             "Canonical diagonal suppression must produce exactly Blob47.");
-        board.ConfigureTerrain(materials);
+        board.ConfigureGround(TerrainView.Factory(materials));
         board.RenderState(state);
         var terrain = board.GetNode<TerrainView>("AuthoredScene/Terrain");
         Require(terrain.RenderedSceneryCount > 0, "Terrain must use deterministic resource-backed scenery.");

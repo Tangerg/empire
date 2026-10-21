@@ -11,7 +11,7 @@ using Empire.Core.Geometry;
 
 namespace Empire.Presentation;
 
-public sealed record BoardViewRules(AssetCatalog Assets, EnvironmentCatalog Environment, ITacticalGrid Grid, ReadOnlyContent Content);
+public sealed record BoardViewRules(AssetCatalog Assets, EnvironmentCatalog Environment, ITacticalGrid Grid, ReadOnlyContent Content, BoardPlaneFactory Plane);
 
 /// <summary>
 /// Read-only projection of the canonical battle. This node never dispatches an order,
@@ -24,13 +24,14 @@ public partial class BoardView : Node2D
     private Vector2I _mapSize;
     private Node2D? _scenery;
     private Node2D? _projection;
-    private TerrainView? _terrain;
+    private BoardGroundView? _terrain;
     private DynamicStateView? _dynamicState;
     private AuthoredScene? _scene;
     private EnvironmentCatalog? _environment;
     private ITacticalGrid? _grid;
     private ReadOnlyContent? _content;
     private BoardProjection? _surface;
+    private BoardPlaneFactory _createPlane = null!;
     public BoardProjection Projection => _surface ?? throw new InvalidOperationException("Render a canonical snapshot before querying its surface.");
     private ShadowCache _shadows = new();
     private readonly List<StandingEntry> _authoredStanding = new();
@@ -74,23 +75,39 @@ public partial class BoardView : Node2D
     }
     public bool SurfaceReady => _terrain is not null;
 
-    public void ConfigureTerrain(WorldMaterialsManifest materials)
+    public void ConfigureGround(BoardGroundFactory createGround)
     {
         if (_scenery is null || _scene is null || _environment is null)
             throw new InvalidOperationException("Configure the board before its terrain materials.");
+        ArgumentNullException.ThrowIfNull(createGround);
+        var replacement = createGround(new(_environment, _grid!, _shadows), _scene);
+        if (replacement.GetParent() is not null)
+            throw new InvalidOperationException("A ground factory must return a detached owned node.");
         var authoredGround = _terrain is null
             ? _scenery.GetNode<Node2D>("AuthoredGround") : _terrain.DetachAuthoredGround();
-        if (authoredGround.GetParent() is { } parent)
-            parent.RemoveChild(authoredGround);
+        var previousParent = authoredGround.GetParent();
+        previousParent?.RemoveChild(authoredGround);
+        try
+        {
+            replacement.ConfigureAuthoredGround(authoredGround);
+            _scenery.AddChild(replacement);
+        }
+        catch
+        {
+            authoredGround.GetParent()?.RemoveChild(authoredGround);
+            if (_terrain is not null)
+                _terrain.ConfigureAuthoredGround(authoredGround);
+            else
+                previousParent!.AddChild(authoredGround);
+            replacement.Free();
+            throw;
+        }
         if (_terrain is not null)
         {
             _scenery.RemoveChild(_terrain);
             _terrain.QueueFree();
         }
-        _terrain = new TerrainView { Name = "Terrain" };
-        _terrain.Configure(new(_environment, _grid!, _shadows), materials, _scene);
-        _terrain.ConfigureAuthoredGround(authoredGround);
-        _scenery.AddChild(_terrain);
+        _terrain = replacement;
     }
 
     public void ConfigureDynamicState()
@@ -100,6 +117,7 @@ public partial class BoardView : Node2D
 
     public void Configure(BoardViewRules rules, JsonObject level, AuthoredScene scene)
     {
+        _createPlane = rules.Plane;
         var catalog = rules.Assets;
         var environment = rules.Environment;
         ArgumentNullException.ThrowIfNull(rules.Grid);
@@ -247,7 +265,7 @@ public partial class BoardView : Node2D
         }).Select(index => new Coord(index % _mapSize.X, index / _mapSize.X)).ToHashSet();
         var map = canonicalState["map"]!.AsObject();
         if (_surface is null || !_surface.MatchesSurface(map, playable))
-            _surface = new BoardProjection(_grid!, map, playable);
+            _surface = new BoardProjection(_grid!, _createPlane, map, playable);
         foreach (var entry in _authoredStanding)
             entry.Node.Position = Projection.Project(entry.Contact);
         foreach (var node in new[] { "AuthoredFrame", "DistantFrame" }

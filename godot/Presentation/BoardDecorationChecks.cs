@@ -77,7 +77,7 @@ public partial class BoardDecorationChecks : Node
             ["elevation"] = new JsonArray(Enumerable.Repeat(0, 9).Select(value => (JsonNode?)JsonValue.Create(value)).ToArray()),
             ["cliffs"] = new JsonArray(),
         };
-        var projection = new BoardProjection(new Square4Grid(), map, new HashSet<Coord> { new(1, 1) });
+        var projection = new BoardProjection(new Square4Grid(), BoardPlane.Dimetric, map, new HashSet<Coord> { new(1, 1) });
         for (var cycle = 0; cycle < 3; cycle++)
         {
             AddChild(overlay);

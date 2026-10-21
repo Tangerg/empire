@@ -615,8 +615,9 @@ remains a separate TypeScript check, not evidence of a native CI pass.
 `Presentation.BoardProjection` owns the detached rendering surface derived from the
 composed grid, canonical elevation, cliff edges and playable cells. Ground meshes,
 standing contacts, movement animation, tactical overlays, camera targets and pointer
-picking consume that projection. Its fixed dimetric ground basis also owns visual direction
-vectors and camera-depth ordering; upright sprites are not skewed. It does not change
+picking consume that projection. Its explicit `BoardPlane` registration also owns visual
+direction vectors and camera-depth ordering; upright sprites are not skewed. The campaign
+composes the dimetric basis; the independent painted-pass sample composes measured image registration. It does not change
 movement or author new cliffs. `BoardView` resolves opaque sprite hits in that render
 order before surface hits, without changing command legality.
 Visible surface triangles and their one-camera-depth-pixel patches share the same
@@ -630,3 +631,11 @@ foreground contacts. These are distinct art facts, not tactical occupancy. The
 shared `SpriteGroundContact` transforms the foreground point for painter depth;
 `BoardView` orders terrain, actors and props against the same surface bands. See
 [asset contact contract](../godot/docs/ASSET-GROUND-CONTACT.md).
+
+`BoardGroundView` is the board consumer's ground representation contract. `TerrainView`
+owns material/mesh ground; `PaintedGroundView` owns fixed, uniformly scaled illustration
+ground and refuses unregistered terrain changes. `BoardView` owns node replacement and
+authored-subtree transfer. Ground nodes borrow ResourceLoader textures. The sample's
+`PaintedGroundDocument` owns image registration and an exact canonical-level source hash,
+not a second navigation map. `PaintedPassSample` is an explicit application composition
+entry using the existing engine/session/screen. See [painted sample](../godot/docs/PAINTED-PASS-SAMPLE.md).

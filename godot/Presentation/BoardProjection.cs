@@ -46,8 +46,7 @@ public sealed class BoardProjection
     private readonly ITacticalGrid _grid;
     private readonly HashSet<Coord> _playable;
     private readonly Dictionary<Coord, BoardSurfaceTriangle[]> _cells = new();
-    private readonly float _originY;
-    private readonly float _originX;
+    private readonly BoardPlane _plane;
     private readonly int _surfaceWidth;
     private readonly int _surfaceHeight;
     private readonly int[] _surfaceHeights;
@@ -72,7 +71,7 @@ public sealed class BoardProjection
     public IReadOnlyList<BoardSurfacePatch> DepthPatches { get; private set; } = Array.Empty<BoardSurfacePatch>();
     public IReadOnlyList<BoardDepthPartition> DepthPartitions { get; private set; } = Array.Empty<BoardDepthPartition>();
 
-    public BoardProjection(ITacticalGrid grid, JsonObject map, IReadOnlySet<Coord> playable)
+    public BoardProjection(ITacticalGrid grid, BoardPlaneFactory createPlane, JsonObject map, IReadOnlySet<Coord> playable)
     {
         ArgumentNullException.ThrowIfNull(grid);
         ArgumentNullException.ThrowIfNull(map);
@@ -101,14 +100,12 @@ public sealed class BoardProjection
         foreach (var cell in _playable)
             if (cell.X < 0 || cell.Y < 0 || cell.X >= width || cell.Y >= height)
                 throw new ArgumentException($"Playable cell {cell} is outside canonical map bounds.", nameof(playable));
-        _originY = Math.Max(0, heights.Max()) * HeightStep;
         _logicalSize = Pixel(grid.Extent(new GridExtent(width, height)));
         RequireFinite(_logicalSize);
-        _originX = _logicalSize.Y * 0.8f;
+        _plane = createPlane(_logicalSize, heights.Min(), heights.Max());
         if (Depth(_logicalSize) + 8 * TileSize > 2048)
             throw new NotSupportedException("Board depth exceeds Godot's absolute Z range at one logical-pixel resolution with four-tile scenery margins.");
-        Size = new Vector2((_logicalSize.X + _logicalSize.Y) * 0.8f,
-            Depth(_logicalSize) + _originY - Math.Min(0, heights.Min()) * HeightStep);
+        Size = _plane.CanvasSize;
         var outline = grid.Outline();
         if (outline.Count < 3)
             throw new NotSupportedException("Board projection requires a polygonal grid outline.");
@@ -306,7 +303,7 @@ public sealed class BoardProjection
         return (int)depth;
     }
 
-    public float SurfaceHeight(Vector2 logical, Vector2 projected) => Depth(logical) + _originY - projected.Y;
+    public float SurfaceHeight(Vector2 logical, Vector2 projected) => Depth(logical) + _plane.Origin.Y - projected.Y;
 
     public BoardSurfaceHit? Pick(Vector2 projectedPixel)
     {
@@ -499,8 +496,8 @@ public sealed class BoardProjection
         return result;
     }
 
-    private static Vector2 GroundPlane(Vector2 point) => new(0.8f * (point.X - point.Y), 0.4f * (point.X + point.Y));
-    private Vector2 Raise(Vector2 point, float height) => GroundPlane(point) + new Vector2(_originX, _originY - height * HeightStep);
+    private Vector2 GroundPlane(Vector2 point) => _plane.Ground(point);
+    private Vector2 Raise(Vector2 point, float height) => GroundPlane(point) + _plane.Origin - new Vector2(0, height * HeightStep);
     private static Vector2 Pixel(TilePoint point) => new((float)point.X * TileSize, (float)point.Y * TileSize);
     private static float Cross(Vector2 a, Vector2 b) => a.X * b.Y - a.Y * b.X;
     private static Vector2 Blend(Vector2 a, Vector2 b, Vector2 c, Vector3 weights) => a * weights.X + b * weights.Y + c * weights.Z;

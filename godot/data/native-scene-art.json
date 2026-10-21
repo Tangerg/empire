@@ -80,6 +80,19 @@
         256
       ],
       "review": "Accepted as an iteration after matching opening and north-platform close camera review. Fine warm olive grass replaces oversized camouflage patches; no obvious repeat seam at those actual scales. Surface shading remains derived from canonical projected geometry normals. The warm palette and overall landscape naturalness remain subject to further visual refinement."
+    },
+    {
+      "id": "painted-pass-environment",
+      "resourcePath": "res://assets/native/scenes/painted-pass.png",
+      "sha256": "5d0cabbd97124f7428f0aaa42de9958e1cc4f73a07863f68d3d2a029644b8d93",
+      "method": "Image-generation edit of the approved ch01-s01 narrative illustration: remove all soldiers, horses and flags while preserving the pass composition. Local details are redrawn; not a lossless edit.",
+      "sourceOwner": "Native samples/painted-pass-art.json",
+      "generationDate": "2026-10-21",
+      "imageDimensions": [
+        1672,
+        941
+      ],
+      "visualContract": "Uniformly scaled complete opaque illustration. Only the explicitly registered foreground valley is playable. Distant plateau, village and foreground tree-covered margins are not interactive. No painted actors or ownership flags."
     }
   ]
 }

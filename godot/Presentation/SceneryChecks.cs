@@ -115,7 +115,7 @@ public partial class SceneryChecks : Node
         var cache = board.LightingResources;
         try
         {
-            board.Configure(new(assets, environment, new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json"))), level, scene);
+            board.Configure(new(assets, environment, new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")), BoardPlane.Dimetric), level, scene);
             Require(cache.IsDisposed, "Configure releases prior cache");
             cache = board.LightingResources;
             Require(board.RenderedPerimeterPlacementCount == 0, "Authored frame replaced by generic");
@@ -148,12 +148,12 @@ public partial class SceneryChecks : Node
                 await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             }
             var missing = new AuthoredScene { LevelId = scene.LevelId, MapSize = scene.MapSize, RuntimeReady = true };
-            board.Configure(new(assets, environment, new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json"))), level, missing);
+            board.Configure(new(assets, environment, new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")), BoardPlane.Dimetric), level, missing);
             Require(cache.IsDisposed && cache.TextureCount == 0, "Rebind disposes old compositions");
             cache = board.LightingResources;
             Require(board.RenderedAuthoredPlacementCount == 0 && board.RenderedPerimeterPlacementCount > 0, "Generic and authored counts distinct");
             var explicitEmpty = new AuthoredScene { LevelId = scene.LevelId, MapSize = scene.MapSize, RuntimeReady = true, FramePlacements = new() };
-            board.Configure(new(assets, environment, new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json"))), level, explicitEmpty);
+            board.Configure(new(assets, environment, new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")), BoardPlane.Dimetric), level, explicitEmpty);
             Require(cache.IsDisposed && board.RenderedPerimeterPlacementCount == 0, "Explicit empty frame must suppress generic");
             cache = board.LightingResources;
         }

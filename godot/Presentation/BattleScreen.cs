@@ -189,9 +189,9 @@ public partial class BattleScreen : Control
         ResizeCamera();
     }
 
-    public void ConfigureTerrain(WorldMaterialsManifest materials)
+    public void ConfigureGround(BoardGroundFactory createGround)
     {
-        _board.ConfigureTerrain(materials);
+        _board.ConfigureGround(createGround);
         if (_state is not null)
             Refresh();
     }

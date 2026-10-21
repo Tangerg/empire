@@ -13,7 +13,7 @@ public sealed record TerrainViewRules(EnvironmentCatalog Environment, ITacticalG
 /// Native material and authored-terrain composition. RGB textures remain the approved
 /// resources; only topology alpha is generated. This reads no battle legality or RNG.
 /// </summary>
-public partial class TerrainView : Node2D
+public partial class TerrainView : BoardGroundView
 {
     private static readonly Vector2I[] Cardinal = [new(0, -1), new(1, 0), new(0, 1), new(-1, 0)];
     private static readonly Vector2I[] Around = [
@@ -48,14 +48,29 @@ public partial class TerrainView : Node2D
     private readonly List<string> _diagnostics = new();
     private readonly List<Sprite2D> _standing = new();
     private readonly List<TerrainDepthEntry> _depthEntries = new();
-    public IReadOnlyList<string> Diagnostics => _diagnostics;
+    public override IReadOnlyList<string> Diagnostics => _diagnostics;
     public IReadOnlyList<Node2D> Standing => _standing;
-    public IReadOnlyList<TerrainDepthEntry> DepthEntries => _depthEntries;
+    public override IReadOnlyList<TerrainDepthEntry> DepthEntries => _depthEntries;
     public int RenderedSceneryCount => _standing.Count;
     public int RenderedEdgeDecorationCount
     {
         get; private set;
     }
+
+    public static BoardGroundFactory Factory(WorldMaterialsManifest materials) => (rules, scene) =>
+    {
+        var view = new TerrainView { Name = "Terrain" };
+        try
+        {
+            view.Configure(new(rules.Environment, rules.Grid, rules.Shadows), materials, scene);
+            return view;
+        }
+        catch
+        {
+            view.Free();
+            throw;
+        }
+    };
 
     public void Configure(TerrainViewRules rules, WorldMaterialsManifest manifest, AuthoredScene scene)
     {
@@ -73,7 +88,7 @@ public partial class TerrainView : Node2D
     }
 
     /// <summary>Transfers ownership of a detached authored ground subtree.</summary>
-    public void ConfigureAuthoredGround(Node2D authoredGround)
+    public override void ConfigureAuthoredGround(Node2D authoredGround)
     {
         if (_authoredGround is not null || authoredGround.GetParent() is not null)
             throw new InvalidOperationException("Authored ground must be transferred once as a detached subtree.");
@@ -82,7 +97,7 @@ public partial class TerrainView : Node2D
         _tiles = null;
     }
 
-    public Node2D DetachAuthoredGround()
+    public override Node2D DetachAuthoredGround()
     {
         var ground = _authoredGround
             ?? throw new InvalidOperationException("No authored ground is owned by this terrain view.");
@@ -92,7 +107,7 @@ public partial class TerrainView : Node2D
         return ground;
     }
 
-    public void Render(BoardProjection projection, string[] tiles, int[] elevation, Vector2I size)
+    public override void Render(BoardProjection projection, string[] tiles, int[] elevation, Vector2I size)
     {
         if (_tiles is not null && _renderedSize == size && _tiles.SequenceEqual(tiles)
             && _elevation is not null && _elevation.SequenceEqual(elevation)

@@ -27,7 +27,11 @@ public partial class NativeCapture : Node
             if (!Path.IsPathFullyQualified(_directory))
                 throw new InvalidOperationException("Capture directory must be absolute.");
             Directory.CreateDirectory(_directory);
-            AddChild(ResourceLoader.Load<PackedScene>("res://Scenes/GrayFlagGame.tscn").Instantiate());
+            var sceneArgument = OS.GetCmdlineUserArgs().SingleOrDefault(value => value.StartsWith("--capture-scene=", StringComparison.Ordinal));
+            var scenePath = sceneArgument is null ? "res://Scenes/GrayFlagGame.tscn" : sceneArgument["--capture-scene=".Length..];
+            if (!scenePath.StartsWith("res://Scenes/", StringComparison.Ordinal) || !scenePath.EndsWith(".tscn", StringComparison.Ordinal))
+                throw new InvalidOperationException("Capture target must be an explicit project scene.");
+            AddChild(ResourceLoader.Load<PackedScene>(scenePath).Instantiate());
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             Capture();

@@ -37,7 +37,7 @@ internal static class TerrainChecks
             ["cliffs"] = new JsonArray()
         };
         var cells = Enumerable.Range(0, tiles.Length).Select(index => new Empire.Core.Geometry.Coord(index % size.X, index / size.X)).ToHashSet();
-        return new BoardProjection(new Empire.Core.Geometry.Square4Grid(), map, cells);
+        return new BoardProjection(new Empire.Core.Geometry.Square4Grid(), BoardPlane.Dimetric, map, cells);
     }
 
     internal static void Run(Node parent)
@@ -65,7 +65,7 @@ internal static class TerrainChecks
                     .Where(index => !engine.Catalog.Definition("terrains", tiles[index])!.Value
                         .GetProperty("tags").EnumerateArray().Any(tag => tag.GetString() == "outside"))
                     .Select(index => new Empire.Core.Geometry.Coord(index % size.X, index / size.X)).ToHashSet();
-                view.Render(new BoardProjection(grid, state["map"]!.AsObject(), playable), tiles, heights, size);
+                view.Render(new BoardProjection(grid, BoardPlane.Dimetric, state["map"]!.AsObject(), playable), tiles, heights, size);
                 Require(!view.Diagnostics.Any(message => message.Contains("Missing", StringComparison.Ordinal)),
                     $"{scene.LevelId}: {string.Join("; ", view.Diagnostics)}");
                 Require(state.ToJsonString() == unchanged, "Terrain composition changed the canonical state.");
