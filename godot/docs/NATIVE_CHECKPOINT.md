@@ -2,6 +2,14 @@
 
 This is a working migration checkpoint, not full visual or feature completion.
 
+## Linux release package milestone
+
+The production Linux x86_64 archive is self-contained: the .NET runtime, runtime JSON and imported art are included, but source-test/oracle fixtures are excluded. The actual release runs outside the checkout with an empty executable search path and no SDK environment. Packaged checks pass 185 assertions across 22 runtime JSON documents and 159 textures, real authored story/choice, battle movement, manual save/load/restart, camp continuation and queued lighting teardown. Invalid/duplicate diagnostic modes and pre-existing save data are refused. Every process exits cleanly.
+
+Export testing found and fixed three real imported-PNG existence guards in the menu, campaign shell and staging screen: exported textures are remapped Godot resources, so these guards now use ResourceLoader.Exists rather than FileAccess.FileExists. Debug narrative (4,949), menu (102) and staging (151) checks pass afterward. The standard export script always runs the packaged resource/lifecycle regression. Earlier internal fixture-bearing verification builds are not the production deliverable.
+
+The archive is 107,056,024 bytes with SHA-256 `56ada11b1befc808810158970bfa84c05003b3a0c6679ce9da13d1fafa52bd98`. See LINUX-PACKAGE.md for launch/build commands, isolated smoke checks, save locations and prerequisites. This establishes Linux release operation, not renewed manual graphical acceptance, every Linux distribution, macOS or Windows. Manual desktop verification is tracked separately.
+
 ## Actual extension composition milestone
 
 One factory now composes the original five plugin recipes and all 24 typed capabilities into real runtime consumers. Named nondefault plugins participate in create/dispatch/save/load/replay, with actual manifest identity and rollback. Initial state and scenario/recruitment spawns share resolved catalog/grids; replacing a grid changes unauthored initial facing rather than falling through a fixed switch. Runtime TypeScript is not used.

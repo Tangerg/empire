@@ -24,7 +24,7 @@ public partial class CampaignMenuScreen : Control
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         var background = new ColorRect { Color = new Color("#111713"), MouseFilter = MouseFilterEnum.Ignore };
         background.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); AddChild(background);
-        if (view.ArtResourcePath is { } path && Godot.FileAccess.FileExists(path))
+        if (view.ArtResourcePath is { } path && ResourceLoader.Exists(path))
         {
             var texture = GD.Load<Texture2D>(path) ?? throw new InvalidOperationException($"Cannot load title art: {path}");
             var picture = new TextureRect { Name = "MenuArt", Texture = texture, TooltipText = view.ArtAlt,

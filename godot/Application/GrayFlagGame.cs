@@ -36,6 +36,7 @@ public partial class GrayFlagGame : Node
 
     public override void _Ready()
     {
+        if (GetParent() == GetTree().Root && PackageChecks.StartRequestedCheck(GetTree())) return;
         packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         engine = new GrayFlagEngine(packs);
         definition = PresentationJson.Load<JsonObject>("res://data/grayflag-campaign.json");

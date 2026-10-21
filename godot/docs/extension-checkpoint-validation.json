@@ -24,7 +24,6 @@
     ]
   },
   "pending": [
-    "Linux release resource/application smoke",
     "Renewed manual GUI acceptance",
     "Full victorious campaign route",
     "Nine absent authored scenery documents",
@@ -53,5 +52,21 @@
       "c01-06": 128
     },
     "comparison": "Independently selected actions, ordered events and intermediate state digest"
+  },
+  "linuxRelease": {
+    "archive": "Empire-linux-x86_64.tar.gz",
+    "bytes": 107056024,
+    "sha256": "56ada11b1befc808810158970bfa84c05003b3a0c6679ce9da13d1fafa52bd98",
+    "runtimeAssertions": 185,
+    "runtimeJsonDocuments": 22,
+    "textures": 159,
+    "oracleFixturesShipped": false,
+    "exitCode": 0,
+    "debugRegressions": {
+      "narrative": 4949,
+      "menu": 102,
+      "staging": 151
+    },
+    "manualGuiAcceptance": "Pending fresh desktop verification"
   }
 }

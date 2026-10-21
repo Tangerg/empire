@@ -99,7 +99,7 @@ public partial class CampaignStagingScreen : Control
             diagnostics.Add($"Original {purpose} is not exported: {art.Source}");
             return null;
         }
-        if (!Godot.FileAccess.FileExists(art.ResourcePath))
+        if (!ResourceLoader.Exists(art.ResourcePath))
         {
             diagnostics.Add($"Exported {purpose} is missing: {art.ResourcePath} (source {art.Source})");
             return null;
