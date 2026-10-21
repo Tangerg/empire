@@ -284,16 +284,16 @@
   "materials": {
     "field-material": {
       "schemaVersion": 2,
-      "id": "meadow-base",
+      "id": "meadow-fine",
       "replaces": {
         "atlas": "surface-meadow",
         "tone": 0
       },
-      "source": "masters/approved-v5/grass-material/master.png",
-      "sourceSha256": "5a6f971f5298380a7261a74aba8499d335253b0ec9472a739ec956ef3950e641",
+      "source": "/godot/assets/native/terrain/meadow-fine.png",
+      "sourceSha256": "f10f3efa32f658a9f320a01e4c81d6538c8852b370952450d304548e79769f9a",
       "logicalSize": [
-        1024,
-        1024
+        256,
+        256
       ],
       "worldOrigin": [
         0,
@@ -303,14 +303,14 @@
         "inset": 0,
         "bleed": 0
       },
-      "png": "runtime/meadow-base.png",
-      "png2x": "runtime/meadow-base@2x.png",
+      "png": "assets/native/terrain/meadow-fine.png",
+      "png2x": "assets/native/terrain/meadow-fine.png",
       "rasterSize": [
-        512,
-        512
+        627,
+        627
       ],
-      "resourcePath": "res://assets/world-materials-v1/runtime/meadow-base@2x.png",
-      "sha256": "dc4e5b01150ed1dfed638553fcfef2cc5c5e5ea09d4ab33b9f3ceb89cb0ef003"
+      "resourcePath": "res://assets/native/terrain/meadow-fine.png",
+      "sha256": "f10f3efa32f658a9f320a01e4c81d6538c8852b370952450d304548e79769f9a"
     },
     "road-material": {
       "schemaVersion": 2,

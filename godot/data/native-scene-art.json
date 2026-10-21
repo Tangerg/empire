@@ -47,7 +47,7 @@
         96,
         32
       ],
-      "review": "Reserved for canonically authored cliff faces. The shipped first level has no cliff edges and does not display this material; its hills remain traversable shared grass slopes. General cliff picking is checked synthetically, not claimed visually accepted campaign scenery."
+      "review": "Rendered on eight canonically authored north-platform cliff edges in the first level. The west side remains a traversable two-column grass ramp; foot, flying and starting-unit connectivity are checked against the same rule data. Real camera review accepts the grass/soil lip as a readable foundation, not final natural highland art. The south hill remains a continuous grass slope."
     },
     {
       "id": "frontier-gatehouse",
@@ -63,6 +63,23 @@
         1254
       ],
       "review": "Visible body height approximately 120 world units; doorway approximately 39 against ordinary infantry about 30. Real first-level window verified door selection at (5,13), neighboring hero selection and ground contact. Removed ten first-level miniature compound/tent/prop placements; other levels retain their authored scenery. Shared topic resource projections checked across all 16 levels."
+    },
+    {
+      "id": "meadow-fine",
+      "resourcePath": "res://assets/native/terrain/meadow-fine.png",
+      "sha256": "f10f3efa32f658a9f320a01e4c81d6538c8852b370952450d304548e79769f9a",
+      "method": "Generated opaque hand-painted fine grass fill, with one density and contrast correction. No pixel post-processing, roads, terrain silhouette or baked slope lighting.",
+      "sourceOwner": "Native world-materials.json",
+      "generationDate": "2026-10-21",
+      "imageDimensions": [
+        1254,
+        1254
+      ],
+      "logicalRepeat": [
+        256,
+        256
+      ],
+      "review": "Accepted as an iteration after matching opening and north-platform close camera review. Fine warm olive grass replaces oversized camouflage patches; no obvious repeat seam at those actual scales. Surface shading remains derived from canonical projected geometry normals. The warm palette and overall landscape naturalness remain subject to further visual refinement."
     }
   ]
 }
