@@ -106,7 +106,7 @@ public partial class PresentationChecks : Node
             "Canonical actor key must survive projection.");
         Require(unit.Position.IsEqualApprox(new Vector2(5 * 32 + 16, 8 * 32 + 31)),
             "Actor contact must preserve CELL_FOOT.");
-        Require(board.StatusText.Contains("terrain compositor is not migrated", StringComparison.Ordinal),
+        Require(board.StatusText == "地表显示尚未就绪。",
             "Incomplete compositor must never be described as the complete scene.");
         board.RenderState(state);
         Require(board.GetChildCount() == 2, "Repeated projection must not duplicate visual layers.");
@@ -121,7 +121,8 @@ public partial class PresentationChecks : Node
         changed["units"]!.AsArray()[1]!["type"] = "not-exported-unit";
         board.RenderState(changed);
         Require(board.RenderedUnitCount == 18 && board.ProjectionUnitCount == 19
-            && board.Diagnostics.Any(message => message.Contains("not-exported-unit", StringComparison.Ordinal)),
+            && board.Diagnostics.Any(message => message.Contains("not-exported-unit", StringComparison.Ordinal))
+            && board.PlayerDiagnostics.Any(message => message.Contains("not-exported-unit", StringComparison.Ordinal)),
             "Unavailable art must be explicitly diagnosed without substituting another actor.");
         board.Configure(assets, level, scene, environment, facing => facing == "west");
         board.RenderState(state);
@@ -141,8 +142,11 @@ public partial class PresentationChecks : Node
         Require(terrain.RenderedSceneryCount > 0, "Terrain must use deterministic resource-backed scenery.");
         Require(!terrain.Diagnostics.Any(message => message.Contains("Missing", StringComparison.Ordinal)),
             string.Join("\n", terrain.Diagnostics));
-        Require(board.StatusText.Contains("native visual acceptance and first-use responsiveness remain pending", StringComparison.Ordinal),
-            "Native terrain must not be described as full compositor parity.");
+        Require(board.StatusText == (board.PlayerDiagnostics.Any() ? $"场景提示：{board.PlayerDiagnostics.Count()} 项（悬停查看）" : ""),
+            "Player-facing status must retain scene warnings without developer acceptance prose.");
+        Require(board.Diagnostics.Any(message => message.Contains("runtimeReady=false", StringComparison.Ordinal))
+            && !board.PlayerDiagnostics.Any(message => message.Contains("runtimeReady=false", StringComparison.Ordinal)),
+            "Source art-review metadata must remain in diagnostics without leaking into player-facing status.");
         var ground = terrain.GetNode<Node2D>("ComposedTerrain/Ground");
         var field = ground.GetNode<Polygon2D>("WorldField");
         Require(field.Texture is not null && field.Polygon.Length == AuthoredScene.Load().GroundOutline.Length,

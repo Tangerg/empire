@@ -2,6 +2,12 @@
 
 This is a working migration checkpoint, not full visual or feature completion.
 
+## Actual Linux desktop check and player-facing status
+
+The v4 release was exercised on the cloud desktop at 1180×812: title, Chinese story/choice, staging, terrain/actors/HUD, a legal knight move, Save, confirmed Restart and Load restoring the moved position all passed. The original screenshots are retained separately as release proof. An apparent movement-cost clipping issue was rechecked and withdrawn: the costs wrap correctly; the next line had been below the scroll viewport. No speculative layout change was made.
+
+The confirmed English developer footer is removed from player-facing status. The two initial warnings were unchanged source art-review metadata (`runtimeReady=false`), not missing imported textures. Those flags remain in complete diagnostics, logs and tests; real missing-resource warnings remain player-visible. Updated presentation resource and real-session BattleScreen checks passed with clean teardown. The rebuilt release still requires fresh screenshot verification. Water, broader tactical controls, full campaign victory and macOS execution remain separate gates.
+
 ## Linux release package milestone
 
 The production Linux x86_64 archive is self-contained: the .NET runtime, runtime JSON and imported art are included, but source-test/oracle fixtures are excluded. The actual release runs outside the checkout with an empty executable search path and no SDK environment. Packaged checks pass 185 assertions across 22 runtime JSON documents and 159 textures, real authored story/choice, battle movement, manual save/load/restart, camp continuation and queued lighting teardown. Invalid/duplicate diagnostic modes and pre-existing save data are refused. Every process exits cleanly.

@@ -62,34 +62,40 @@ checkpoint report, not this control guide, states what has passed.
 
 ## Packaged release gate: not yet built
 
-This checkpoint is a verified development project, not a tested stand-alone
-binary distribution. Godot requires a matching export preset and export templates
-for release export. See the official [4.6 export guide](https://docs.godotengine.org/en/4.6/tutorials/export/exporting_projects.html)
-and [command-line export guide](https://docs.godotengine.org/en/stable/tutorials/editor/command_line_tutorial.html).
-
-When the official 4.6.3 .NET export templates are available, create a Linux desktop
-preset in Project > Export. Include runtime JSON data and all selected art; exclude
-test oracles, test scenes and development documentation. Record the preset in the
-repository, then export using its exact name:
+A self-contained Linux x86_64 release is now exported and tested outside the
+checkout with an empty executable search path and no SDK environment. The
+recorded preset and build/smoke commands are in [LINUX-PACKAGE.md](LINUX-PACKAGE.md).
+Matching official Godot 4.6.3 .NET templates were checksum-verified and installed
+workspace-locally. No system settings changed.
 
 ```sh
-"$GODOT_NET" --headless --path godot --export-release '<recorded preset name>' '<absolute output path>'
+bash tools/godot/export-linux.sh /absolute/new-output-directory
 ```
 
-The placeholder is deliberate: no preset or template installation is claimed in
-this checkpoint. Validate the resulting release outside the source checkout,
-without Node/TypeScript or editor caches. Test story/choice, movement/attack/AI,
-all supported order families, save/load/restart, finishing a battle and campaign
-continuation. Verify JSON/art resolution, fonts, shader/material appearance,
-fresh-user save location and expected silent behavior (the recovered original has no audio runtime). Keep user saves separate from build
-cleanup. Windows/macOS exports need their own platform tests; a Linux build is
-not proof of those platforms.
+This command builds, imports, exports, validates real runtime JSON/art and the
+application lifecycle, and packages the release. The release includes .NET but
+excludes source-test/oracle fixtures. Unknown/duplicate diagnostics and
+pre-existing save data are refused. Imported PNG guards use ResourceLoader.Exists,
+so exported remapped textures are tested rather than assuming source files exist.
 
-## Visual acceptance still pending
+The actual release passed 185 assertions across 22 runtime JSON documents and
+159 textures, authored story/choice, movement, save/load/restart, camp continuation
+and clean teardown. Those checks do not prove every order family, a victorious
+campaign, typography, shader appearance, or actual desktop input. Keep user saves
+separate from build cleanup. Windows/macOS exports need their own platform tests;
+a Linux build is not proof of those platforms. The recovered original has no
+audio runtime, so silence is expected.
 
-Headless resource and timeline contracts do not replace visual acceptance.
-Earlier real desktop story/choice/save/load/restart checks passed before the
-latest water and animation work. New terrain previews were inspected, but the
-latest desktop inspection responded, but its bounded terminal-input attempt timed out with partial input uncertain. Do not label the
-new integrated animation/campaign UI visually accepted until it can be inspected
-and exercised on a responsive native desktop. No desktop restart was attempted.
+## Desktop acceptance scope
+
+The actual v4 Linux release passed title, Chinese story/choice, staging,
+battlefield rendering, legal mouse movement and Save/Restart/Load restoration on
+the cloud desktop. This is real input/pixel evidence, not only headless contracts.
+The confirmed internal footer text was then removed; its source art-review
+metadata remains in diagnostics/logs/tests without being shown as player copy.
+Fresh rebuilt-release screenshots and the river scene are the next visual checks.
+
+This does not establish every tactical menu, animation, later map, full campaign
+victory, performance target or another platform. The earlier uncertain terminal
+input was preserved untouched; the release test used a newly observed terminal
+and isolated user data, with no desktop restart.

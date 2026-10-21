@@ -299,7 +299,7 @@ public partial class BattleScreen : Control
         UpdateHeader();
         UpdateTactical();
         _coverage.Text = _board.StatusText;
-        _coverage.TooltipText = string.Join("\n", _board.Diagnostics);
+        _coverage.TooltipText = string.Join("\n", _board.PlayerDiagnostics);
     }
 
     private void BuildInterface()

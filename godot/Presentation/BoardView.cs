@@ -33,6 +33,10 @@ public partial class BoardView : Node2D
     private ReadOnlyCollection<string> _diagnostics = Array.AsReadOnly(Array.Empty<string>());
 
     public ReadOnlyCollection<string> Diagnostics => _diagnostics;
+    // Source art-review metadata remains diagnostic evidence, not player-facing acceptance prose.
+    public IEnumerable<string> PlayerDiagnostics => Diagnostics.Where(message => message is not
+        "Authored scene is marked runtimeReady=false in the source document." and not
+        "Environment catalog is marked runtimeReady=false in the source document.");
     public Vector2 FieldSize => new Vector2(_mapSize.X, _mapSize.Y) * (_assets?.LogicalTileSize ?? 0);
     public int RenderedUnitCount { get; private set; }
     public int ProjectionUnitCount { get; private set; }
@@ -41,10 +45,9 @@ public partial class BoardView : Node2D
     public int RenderedCoverPropCount { get; private set; }
     public int RenderedStructureCount { get; private set; }
     public int RenderedMarkerCount { get; private set; }
-    public string StatusText => (_terrain is null
-        ? "Native actor/placement renderer; terrain compositor is not migrated."
-        : "Native C# preview · source field lights and composited contact/figure/prop shadows. Source overlays, cover and perimeter are implemented; native visual acceptance and first-use responsiveness remain pending.")
-        + (Diagnostics.Count > 0 ? $" {Diagnostics.Count} resource/coverage diagnostics." : "");
+    public string StatusText => _terrain is null
+        ? "地表显示尚未就绪。"
+        : PlayerDiagnostics.Any() ? $"场景提示：{PlayerDiagnostics.Count()} 项（悬停查看）" : "";
 
     public void ConfigureTerrain(WorldMaterialsManifest materials)
     {
@@ -184,6 +187,7 @@ public partial class BoardView : Node2D
         _authoredStanding.AddRange(entries);
         _sceneDiagnostics.Clear();
         _sceneDiagnostics.AddRange(diagnostics);
+        foreach (var message in diagnostics) GD.Print($"Scene diagnostic: {message}");
         _diagnostics = diagnostics.AsReadOnly();
         RenderedAuthoredPlacementCount = rendered;
         RenderedPerimeterPlacementCount = perimeter;
