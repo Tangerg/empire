@@ -328,29 +328,35 @@ public partial class BoardView : Node2D
             }
             if (_dynamicState is not null)
             {
-                var dynamicProjection = _dynamicState.Create(canonicalState);
+                var dynamicProjection = _dynamicState.Create(canonicalState, Projection);
                 foreach (var node in dynamicProjection.Root.GetChildren().OfType<Node2D>())
                 {
                     node.SetMeta("logical_contact", node.Position);
                     node.Position = Projection.Project(node.Position);
                 }
                 staging.AddChild(dynamicProjection.Root);
-                foreach (var entry in dynamicProjection.Standing.Where(entry => entry.Layer == 0))
-                    foreach (var sprite in entry.Node.GetChildren().OfType<Sprite2D>().ToArray())
-                    {
-                        var surface = PaintedSurface.Create(Projection, sprite, entry.Node.Position);
-                        entry.Node.AddChild(surface);
-                        sprite.Visible = false;
-                    }
-                entries.AddRange(dynamicProjection.Standing.Select(entry =>
-                    new StandingEntry(entry.Node, entry.Node.GetMeta("logical_contact").AsVector2(), entry.Layer, entry.Index, entry.Visual, entry.SelectionCell)));
+                foreach (var entry in dynamicProjection.Standing)
+                {
+                    PaintedSurface? body = null;
+                    if (entry.Layer == 0)
+                        foreach (var sprite in entry.Node.GetChildren().OfType<Sprite2D>().ToArray())
+                        {
+                            var surface = PaintedSurface.Create(Projection, sprite, entry.Node.Position);
+                            entry.Node.AddChild(surface);
+                            sprite.Visible = false;
+                            if (sprite == entry.SurfaceBody)
+                                body = surface;
+                        }
+                    entries.Add(new StandingEntry(entry.Node, entry.Node.GetMeta("logical_contact").AsVector2(),
+                        entry.Layer, entry.Index, entry.Visual, entry.SelectionCell, Surface: body));
+                }
                 diagnostics.AddRange(dynamicProjection.Diagnostics);
                 renderedStructures = dynamicProjection.Structures;
                 renderedMarkers = dynamicProjection.Markers;
             }
             var cover = new Node2D { Name = "IllustratedCover", ZIndex = -3 };
             staging.AddChild(cover);
-            renderedCover = BoardScenery.AddCover(cover, canonicalState["map"]!.AsObject(), assets, _shadows, diagnostics);
+            renderedCover = BoardScenery.AddCover(cover, canonicalState["map"]!.AsObject(), assets, _shadows, diagnostics, Projection);
             foreach (var node in cover.GetChildren().OfType<Node2D>())
             {
                 var contact = node.Position;
@@ -464,7 +470,7 @@ public partial class BoardView : Node2D
         return new BattleRenderSnapshot(tiles, elevation, owners, colors, units, capture, captureThreshold);
     }
 
-    private static Vector2 LogicalContact(int x, int y) => new(x * 32 + 16, y * 32 + 31);
+    private Vector2 LogicalContact(int x, int y) => Projection.LogicalCellContact(new Coord(x, y));
     private Vector2 CellContact(int x, int y) => Projection.CellContact(new Coord(x, y));
 
     private static Sprite2D CreateTopicPlacement(AssetCatalog catalog, string topic, AuthoredPlacement placement)
@@ -494,23 +500,37 @@ public partial class BoardView : Node2D
         var surface = Projection.Pick(fieldPoint);
         var global = ToGlobal(fieldPoint);
         StandingEntry? front = null;
+        Node2D? frontGeometry = null;
+        var frontDepth = int.MinValue;
+        void Consider(StandingEntry? entry, Node2D geometry, int depth)
+        {
+            if (frontGeometry is null || depth > frontDepth
+                || depth == frontDepth && frontGeometry.IsGreaterThan(geometry))
+            {
+                front = entry;
+                frontGeometry = geometry;
+                frontDepth = depth;
+            }
+        }
         foreach (var entry in _standing)
         {
-            if (entry.Visual is not { } visual || !visual.Node.IsVisibleInTree()
-                || !visual.Contains(global))
-                continue;
-            if (front is null || entry.Node.ZIndex > front.Node.ZIndex
-                || entry.Node.ZIndex == front.Node.ZIndex && front.Node.IsGreaterThan(entry.Node))
-                front = entry;
+            if (entry.Surface?.HitPolygon(global) is { } polygon)
+                Consider(entry, polygon, polygon.ZIndex);
+            else if (entry.Visual is { } visual && visual.Node.IsVisibleInTree() && visual.Node.Modulate.A > 0 && visual.Contains(global))
+                Consider(entry, entry.Node, entry.Node.ZIndex);
         }
-        if (front is not null && (surface is null
-            || front.Node.ZIndex >= Projection.LayerAtDepth(surface.Depth, BoardDepthLayer.Surface)))
+        // Frame artwork is deliberately in front of the battlefield. Its transparent
+        // canvas must not block interaction, but its visible pixels must.
+        foreach (var sprite in _scenery!.GetNode<Node2D>("AuthoredFrame").GetChildren().OfType<Sprite2D>())
+            if (sprite.IsVisibleInTree() && sprite.Modulate.A > 0 && sprite.IsPixelOpaque(sprite.ToLocal(global)))
+                Consider(null, sprite, sprite.ZIndex + _scenery.GetNode<Node2D>("AuthoredFrame").ZIndex);
+        if (frontGeometry is not null && (surface is null || frontDepth >= surface.DrawDepth))
         {
-            // A structure hit must not be reinterpreted as its occluded occupant by the cell controller.
-            if (front.UnitId is null && front.SelectionCell is { } cell
+            // Standing structures can hide an occupant; a walkable floor cannot.
+            if (front is not null && front.Surface is null && front.UnitId is null && front.SelectionCell is { } cell
                 && _standing.Any(entry => entry.UnitId is not null && entry.SelectionCell == cell))
                 return null;
-            return front.SelectionCell;
+            return front?.SelectionCell;
         }
         return surface?.Cell;
     }
@@ -582,7 +602,7 @@ public partial class BoardView : Node2D
         return array;
     }
 
-    private sealed record StandingEntry(Node2D Node, Vector2 Contact, int Layer, int Index, StandingVisual? Visual = null, Coord? SelectionCell = null, int? UnitId = null);
+    private sealed record StandingEntry(Node2D Node, Vector2 Contact, int Layer, int Index, StandingVisual? Visual = null, Coord? SelectionCell = null, int? UnitId = null, PaintedSurface? Surface = null);
     private sealed record UnitProjection(int Id, string? Key, string Type, int Owner,
         int X, int Y, int Hp, bool Done, string? Facing);
     private sealed record BattleRenderSnapshot(string[] Tiles, int[] Elevation, int[] Owners,

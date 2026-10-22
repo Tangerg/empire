@@ -42,7 +42,7 @@ public static class BoardLighting
         catch { hearths.Free(); sunlight?.Free(); throw; }
     }
 
-    /// <summary>Position is relative to CELL_FOOT (16,31), not to the source image's bounds.</summary>
+    /// <summary>Position is relative to the sprite-local foot (16,31), not the board cell origin or image bounds.</summary>
     public static Sprite2D CreateUnitContact()
     {
         var contact = UnitContact();

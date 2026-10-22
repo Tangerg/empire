@@ -23,7 +23,10 @@ Anchors are the central walkable star at (866,427), (866,427), (864,427), and
 canonical shoe contact must meet the walkable center, not the front rim. Ground
 front equals anchor, but surface art never contributes a standing front offset.
 The full source canvas retains transparent margins; it is not a new gameplay
-footprint or collision surface. Visible art fits inside a 32×32 logical envelope.
+footprint or collision surface. The common body is approximately 26×13 screen-space units. It may overhang a
+narrower projected cell, so the visible body, not only the underlying terrain
+cell, must remain selectable. Native physical placement is now the canonical
+cell center, shared with same-cell actor shoes.
 
 The existing `BoardView` Surface band and canonical projection/picking remain the
 only surface path. Bounded dynamic surface sprites reuse `PaintedSurface` and its
@@ -37,6 +40,11 @@ could cover the front rim. Per-partition composition fixes that source of error
 without changing gameplay, adding a projection, or stretching the artwork. The ownership mark and health decoration stay flat and below
 units. Other authored structure bindings explicitly remain standing and keep
 standing hit masks/occlusion. Unbound rule-derived drawings remain separate.
+
+The unified board picker consumes each rendered floor piece's UV alpha and actual
+partition Z. All four physical states retain their owning-cell selection across
+visible overhang. Transparent margins are not a hitbox; occupying units and opaque
+foreground geometry retain their normal visible selection/occlusion priority.
 
 ## Verification
 
@@ -59,7 +67,7 @@ OathPadChecks command. It saves native viewport states with/without the occupant
 and traversal samples. These are labeled presentation fixtures on the existing
 c01-03 board, not a completed third-scene map or a gameplay outcome claim.
 
-## 2026-10-22 display acceptance
+## Earlier 2026-10-22 display acceptance (before cell-center migration)
 
 The real Linux desktop Godot 4.6.3 .NET run passed 131 assertions with the normal
 TerrainView enabled and exited 0, without error or resource-leak diagnostics.

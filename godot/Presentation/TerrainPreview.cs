@@ -18,6 +18,8 @@ public partial class TerrainPreview : Node2D
     private Label? _heading;
     private int _sequence;
     private Rect2 _visualBounds;
+    private float? _reviewScale;
+    private Coord? _reviewFocus;
 
     public override async void _Ready()
     {
@@ -27,6 +29,15 @@ public partial class TerrainPreview : Node2D
             {
                 if (argument.StartsWith("--level=", StringComparison.Ordinal))
                     _levelId = argument[8..];
+                if (argument.StartsWith("--scale=", StringComparison.Ordinal))
+                    _reviewScale = float.Parse(argument[8..], System.Globalization.CultureInfo.InvariantCulture);
+                if (argument.StartsWith("--focus=", StringComparison.Ordinal))
+                {
+                    var coordinates = argument[8..].Split(',');
+                    if (coordinates.Length != 2)
+                        throw new InvalidOperationException("Review focus must be x,y.");
+                    _reviewFocus = new Coord(int.Parse(coordinates[0]), int.Parse(coordinates[1]));
+                }
                 if (argument.StartsWith("--capture-dir=", StringComparison.Ordinal))
                     _captureDirectory = argument[14..];
             }
@@ -37,19 +48,24 @@ public partial class TerrainPreview : Node2D
             var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
             var engine = new BattleEngine(packs);
             var state = engine.CreateState(level);
+            if (_reviewFocus is { } focus && (focus.X < 0 || focus.Y < 0
+                || focus.X >= level["width"]!.GetValue<int>() || focus.Y >= level["height"]!.GetValue<int>()))
+                throw new InvalidOperationException("Review focus must lie inside the canonical map.");
             var unchanged = state.ToJsonString();
             var grid = engine.Grids.Get(level["rules"]?["grid"]?.GetValue<string>() ?? "square4");
             _board = new BoardView();
             AddChild(_board);
-            _board.Configure(new(AssetCatalog.Load(), EnvironmentCatalog.Load(), grid, engine.Catalog, BoardPlane.Dimetric), level, TerrainChecks.Scene(level));
-            _board.ConfigureGround(TerrainView.Factory(WorldMaterialsManifest.Load()));
+            var scene = AuthoredScene.Load($"res://data/scenes/{_levelId}.json");
+            var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
+            _board.Configure(new(AssetCatalog.Load(), EnvironmentCatalog.Load(), grid, engine.Catalog, rendering.Plane), level, scene);
+            _board.ConfigureGround(rendering.Ground);
             _board.ConfigureDynamicState();
             _board.RenderState(state);
             if (state.ToJsonString() != unchanged)
                 throw new InvalidOperationException("Terrain preview mutated canonical state.");
             _heading = new Label
             {
-                Text = $"{_levelId}  Native terrain verification | canonical initial state | no gameplay controls\nSurface ready: {_board.SurfaceReady}; rendering issues: {_board.RenderingIssueCount}",
+                Text = $"{_levelId}  Native authored-scene preview | canonical initial state | no gameplay controls\nSurface ready: {_board.SurfaceReady}; rendering issues: {_board.RenderingIssueCount}; scale: {_reviewScale?.ToString(System.Globalization.CultureInfo.InvariantCulture) ?? "fit"}",
                 Position = new Vector2(18, 12),
                 ZIndex = 4095
             };
@@ -88,9 +104,13 @@ public partial class TerrainPreview : Node2D
         if (_board is null)
             return;
         var available = GetViewportRect().Size - new Vector2(64, 110);
-        var scale = Math.Min(available.X / _visualBounds.Size.X, available.Y / _visualBounds.Size.Y);
+        var scale = _reviewScale ?? Math.Min(available.X / _visualBounds.Size.X, available.Y / _visualBounds.Size.Y);
+        if (!float.IsFinite(scale) || scale <= 0)
+            throw new InvalidOperationException("Review scale must be finite and positive.");
         _board.Scale = Vector2.One * scale;
-        _board.Position = new Vector2((GetViewportRect().Size.X - _visualBounds.Size.X * scale) / 2, 78) - _visualBounds.Position * scale;
+        _board.Position = _reviewFocus is { } focus
+            ? GetViewportRect().Size / 2 - _board.Projection.CellContact(focus) * scale
+            : new Vector2((GetViewportRect().Size.X - _visualBounds.Size.X * scale) / 2, 78) - _visualBounds.Position * scale;
     }
     public override void _Input(InputEvent input)
     {

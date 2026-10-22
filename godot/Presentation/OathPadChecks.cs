@@ -40,6 +40,7 @@ public partial class OathPadChecks : Node
         var assets = AssetCatalog.Load();
         CheckBindings();
         CheckRegistration(assets);
+        CheckVisibleSurfaceSelection(assets);
         var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
         var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>().Single(value => value["id"]!.GetValue<string>() == "c01-03");
         var state = engine.CreateState(level);
@@ -75,7 +76,7 @@ public partial class OathPadChecks : Node
             Require(Pad().Position.IsEqualApprox(expectedContact) && Actor().Position.IsEqualApprox(expectedContact), "Every physical state keeps pad center and same-cell actor on the shared canonical contact.");
             Require(Pad().GetMeta("visual_state").AsString() == name, "The logical lifecycle chooses the matching physical state.");
             Require(Pad().ZIndex < Actor().ZIndex, "Floor art must draw below same-cell shoes, not win a standing tie.");
-            Require(Pad().ZIndex == board.Projection.LayerAtDepth(board.Projection.Depth(new Vector2(target.X * 32 + 16, target.Y * 32 + 31)), BoardDepthLayer.Surface), "The pad uses the existing surface depth partition.");
+            Require(Pad().ZIndex == board.Projection.LayerAtDepth(board.Projection.Depth(board.Projection.LogicalCellContact(target)), BoardDepthLayer.Surface), "The pad uses the existing surface depth partition.");
             Require(board.Pick(expectedContact) == target, "Same-cell floor art must not become a standing occluder that blocks canonical picking.");
             var active = !disabled && hp > 0;
             Require(Pad().HasNode("HealthGauge") == active && Pad().HasNode("OwnerMark") == (active && owner != 0) && !Pad().HasNode("OwnerBanner"), "Surface state decoration is flat, derived, and absent when inactive.");
@@ -93,6 +94,120 @@ public partial class OathPadChecks : Node
         board.RenderState(state);
         Require(Pad().ZIndex >= Actor().ZIndex && Pad().HasNode("OwnerBanner") && !Pad().HasNode("OwnerMark"), "Standing structures retain standing depth and ownership decoration.");
         board.Free();
+    }
+
+    private void CheckVisibleSurfaceSelection(AssetCatalog assets)
+    {
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var source = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<string>() == "c01-03");
+        var state = engine.CreateState(source);
+        var level = (JsonObject)source.DeepClone();
+        level["width"] = 7;
+        level["height"] = 7;
+        var map = state["map"]!.AsObject();
+        map["width"] = 7;
+        map["height"] = 7;
+        map["tiles"] = new JsonArray(Enumerable.Range(0, 49).Select(_ => (JsonNode?)JsonValue.Create("plain")).ToArray());
+        foreach (var name in new[] { "owners", "elevation", "captureProgress" })
+            map[name] = new JsonArray(Enumerable.Range(0, 49).Select(_ => (JsonNode?)JsonValue.Create(0)).ToArray());
+        map["cliffs"] = new JsonArray();
+        map["directionalCover"] = new JsonArray();
+        var structure = (JsonObject)state["structures"]![0]!.DeepClone();
+        structure["x"] = 3;
+        structure["y"] = 3;
+        structure["owner"] = 0;
+        state["structures"] = new JsonArray(structure);
+        var unit = (JsonObject)state["units"]![0]!.DeepClone();
+        unit["x"] = 3;
+        unit["y"] = 4;
+        state["units"] = new JsonArray();
+        var board = new BoardView();
+        AddChild(board);
+        try
+        {
+            // A 24 by 27 projected cell exposes the real pad's lateral overhang.
+            board.Configure(new(assets, EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog,
+                (size, _, _) => new BoardPlane(new(.75f, 0), new(0, 27f / 32), Vector2.Zero, size)),
+                level, new AuthoredScene { LevelId = "c01-03", MapSize = [7, 7], RuntimeReady = true, FramePlacements = [] });
+            board.ConfigureDynamicState();
+            var target = new Coord(3, 3);
+            foreach (var (hp, disabled) in new[] { (100, false), (50, false), (100, true), (0, true) })
+            {
+                structure["hp"] = hp;
+                structure["disabled"] = disabled;
+                var before = state.ToJsonString();
+                board.RenderState(state);
+                var pad = board.GetNode<Node2D>("CanonicalProjection/DynamicState/Structure_0");
+                var sprite = pad.GetChildren().OfType<Sprite2D>().First();
+                var body = pad.GetChildren().OfType<PaintedSurface>().First();
+                var center = board.Projection.CellContact(target);
+                Require(center == board.Projection.CellCenter(target) && pad.Position == center,
+                    "Surface registration and canonical cell center must agree.");
+                var overhang = 0;
+                var transparent = 0;
+                var occupied = 0;
+                var visibleSelection = true;
+                var transparentSelection = true;
+                for (var y = -9f; y <= 9; y += .5f)
+                    for (var x = -15f; x <= 15; x += .5f)
+                    {
+                        var point = center + new Vector2(x, y);
+                        var opaque = sprite.IsPixelOpaque(sprite.ToLocal(board.ToGlobal(point)));
+                        if (opaque)
+                        {
+                            occupied++;
+                            visibleSelection &= body.HitPolygon(board.ToGlobal(point)) is not null && board.Pick(point) == target;
+                            if (board.Projection.Pick(point)?.Cell != target)
+                                overhang++;
+                        }
+                        else
+                        {
+                            transparent++;
+                            transparentSelection &= board.Pick(point) == board.Projection.Pick(point)?.Cell;
+                        }
+                    }
+                Require(visibleSelection, "Every visible surface pixel, including its overhang, must select the owning cell.");
+                Require(transparentSelection, "Transparent source canvas must not create a surface-object hitbox.");
+                Require(overhang > 0 && occupied > 100 && transparent > 100,
+                    "Each physical state must exercise visible overhang and transparent canvas, not only its center.");
+                Require(before == state.ToJsonString(), "Pixel selection must not mutate canonical state.");
+            }
+            state["units"] = new JsonArray(unit);
+            board.RenderState(state);
+            var actor = board.GetNode<Node2D>($"CanonicalProjection/Unit_{unit["id"]!.GetValue<int>()}");
+            var actorSprite = actor.GetNode<Sprite2D>("AuthoredSprite");
+            var padCenter = board.Projection.CellContact(new(3, 3));
+            var overlap = 0;
+            var unitSelection = true;
+            for (var y = -6f; y <= 6; y += .5f)
+                for (var x = -13f; x <= 13; x += .5f)
+                {
+                    var point = padCenter + new Vector2(x, y);
+                    if (!actorSprite.IsPixelOpaque(actorSprite.ToLocal(board.ToGlobal(point))))
+                        continue;
+                    overlap++;
+                    unitSelection &= board.Pick(point) == new Coord(3, 4);
+                }
+            Require(unitSelection, "Visible unit pixels must win over a neighboring surface overhang.");
+            Require(overlap > 0, "The unit-occlusion fixture must overlap actual source body pixels.");
+            state["units"] = new JsonArray();
+            board.RenderState(state);
+            using var image = Image.CreateEmpty(3, 3, false, Image.Format.Rgba8);
+            image.Fill(Colors.Transparent);
+            image.SetPixel(1, 1, Colors.White);
+            using var texture = ImageTexture.CreateFromImage(image);
+            var foreground = new Sprite2D { Texture = texture, Position = padCenter };
+            board.GetNode<Node2D>("AuthoredScene/AuthoredFrame").AddChild(foreground);
+            Require(board.Pick(padCenter) is null, "Opaque foreground pixels must block a visible surface target.");
+            foreground.Modulate = new Color(1, 1, 1, 0);
+            Require(board.Pick(padCenter) == new Coord(3, 3), "A zero-opacity foreground must not block the visible surface target.");
+            foreground.Modulate = Colors.White;
+            Require(board.Pick(padCenter + new Vector2(-1, 0)) == new Coord(3, 3),
+                "Transparent foreground canvas must not block the surface target.");
+            foreground.Free();
+        }
+        finally { board.Free(); }
     }
 
     private void CheckBindings()
@@ -204,7 +319,8 @@ public partial class OathPadChecks : Node
                 pad = board.GetNode<Node2D>("CanonicalProjection/DynamicState/Structure_0");
                 var t = tick / 10f;
                 var eased = t < .5f ? 2 * t * t : 1 - MathF.Pow(-2 * t + 2, 2) / 2;
-                var logical = new Vector2((target.X - 1 + segment + eased) * 32 + 16, target.Y * 32 + 31);
+                var logical = board.Projection.LogicalCellContact(new(target.X - 1 + segment, target.Y)).Lerp(
+                    board.Projection.LogicalCellContact(new(target.X + segment, target.Y)), eased);
                 var expected = board.Projection.Project(logical) - new Vector2(0, MathF.Sin(MathF.PI * t) * 2.5f);
                 Require(actor.Position.DistanceTo(expected) < .02f && pad.Position == origin, "Traversal follows the existing canonical interpolation and authored walking bob, with no pad-induced jump or motion.");
                 var floorContact = board.Projection.Project(logical);

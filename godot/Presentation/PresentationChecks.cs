@@ -229,7 +229,7 @@ public partial class PresentationChecks : Node
         Require(unit.GetMeta("actor_key").AsString() == "campaign-torren",
             "Canonical actor key must survive projection.");
         Require(unit.Position.IsEqualApprox(board.Projection.CellContact(new Empire.Core.Geometry.Coord(10, 15))),
-            "Actor contact must sample the shared terrain surface at CELL_FOOT.");
+            "Actor contact must sample the shared terrain surface at the canonical cell center.");
         Require(!board.SurfaceReady,
             "Incomplete compositor must never be described as the complete scene.");
         var villageIndex = Enumerable.Range(0, state["map"]!["tiles"]!.AsArray().Count)
@@ -290,6 +290,9 @@ public partial class PresentationChecks : Node
         Require(projection.FacingVector("south").X < 0 && projection.FacingVector("south").Y > 0
             && projection.FacingVector("east").X > 0 && projection.FacingVector("east").Y > 0,
             "Grid directions must use the same dimetric basis as movement and attack contacts.");
+        Require(projection.LogicalCellContact(new(0, 0)) == new Vector2(16, 16)
+            && projection.CellContact(new(0, 0)) == projection.CellCenter(new(0, 0)),
+            "Native cell-bound physical contact is the grid center, never its south edge.");
         projection.PrepareDepthPartitions([20f], Array.Empty<float>());
         var source = projection.Triangles.Single(triangle => triangle.LogicalB.Y == 32 && triangle.LogicalC.Y == 32);
         var patches = projection.DepthPatches.Where(patch => patch.Source == source).ToArray();

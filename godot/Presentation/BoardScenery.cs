@@ -66,7 +66,7 @@ internal static class BoardScenery
     }
 
     internal static int AddCover(Node2D parent, JsonObject map, AssetCatalog assets,
-        ShadowCache shadows, List<string> diagnostics)
+        ShadowCache shadows, List<string> diagnostics, BoardProjection projection)
     {
         var covers = map["directionalCover"] as JsonArray
             ?? throw new InvalidOperationException("Canonical directional cover is absent.");
@@ -95,7 +95,7 @@ internal static class BoardScenery
                 var sprite = assets.CreateSpriteAtFrame(asset, 0);
                 sprite.Name = $"Cover_{count}";
                 var at = cover["at"]!;
-                sprite.Position = new(at["x"]!.GetValue<int>() * 32 + 16, at["y"]!.GetValue<int>() * 32 + 31);
+                sprite.Position = projection.LogicalCellContact(new Coord(at["x"]!.GetValue<int>(), at["y"]!.GetValue<int>()));
                 sprite.AddChild(SpriteShadows.Create(sprite, ShadowKind.BattleProp, 1 / sprite.Scale.X, shadows));
                 sprite.SetMeta("cover_level", strongest);
                 parent.AddChild(sprite);

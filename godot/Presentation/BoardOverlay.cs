@@ -189,10 +189,14 @@ public partial class BoardOverlay : Node2D
         if (_resources is null || _projection is null)
             return;
         if (_tactical?.Selected is { } selected && Contains(selected))
-            DrawDecoration(this, _resources.Ring("selection"), new(selected.X * 32, selected.Y * 32));
+            DrawDecoration(this, _resources.Ring("selection"), ContactRingOffset(selected));
         if (_tactical?.Cursor is { } cursor && Contains(cursor))
-            DrawDecoration(this, _resources.Ring("cursor"), new(cursor.X * 32, cursor.Y * 32));
+            DrawDecoration(this, _resources.Ring("cursor"), ContactRingOffset(cursor));
     }
+    // The source ring canvas keeps its local foot registration; only its board contact changes.
+    internal Vector2 ContactRingOffset(BoardCell cell) =>
+        _projection!.LogicalCellContact(new(cell.X, cell.Y)) - new Vector2(16, 31);
+
     private void DrawDecoration(Node2D canvas, BoardDecorations.Drawing drawing, Vector2 offset)
     {
         if (_projection is not null)

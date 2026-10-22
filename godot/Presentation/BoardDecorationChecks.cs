@@ -86,9 +86,12 @@ public partial class BoardDecorationChecks : Node
             overlay.ShowTactical(new(cell, cell, new[] { cell, outside }, new[] { cell }, new[] { cell }, new[] { cell }, new[] { cell, new BoardCell(2, 1) }, outside, new[] { cell, outside }));
             Require(overlay.RangeOrder().Select(item => item.Role).SequenceEqual(new[] { "threat", "controlled", "incoming", "heal", "attack", "fog" }), "Source range ordering, move/attack exclusion and outside containment");
             Require(overlay.RangeOrder().All(item => item.Cell == cell), "No outside ground decorations");
-            var centroid = new Vector2(0, projection.DepthPatches.Min(patch => patch.Depth));
-            Require(overlay.RangeDepth > projection.DrawDepth(centroid, BoardDepthLayer.Surface)
-                && overlay.RangeDepth < projection.DrawDepth(centroid, BoardDepthLayer.Standing)
+            Require(projection.Project(overlay.ContactRingOffset(cell) + new Vector2(16, 31))
+                .DistanceTo(projection.CellContact(new(cell.X, cell.Y))) < .001f,
+                "Selection and cursor ring local feet register to the same canonical contact as actors.");
+            var firstDepth = projection.DepthPartitions[0].StartDepth;
+            Require(overlay.RangeDepth > projection.LayerAtDepth(firstDepth, BoardDepthLayer.Surface)
+                && overlay.RangeDepth < projection.LayerAtDepth(firstDepth, BoardDepthLayer.Standing)
                 && overlay.ZIndex > 2500, "Ranges follow their surface depth below standing objects; cursor stays above effects");
             Require(overlay.GetChildren().OfType<BoardRangePlane>().All(plane => !plane.ZAsRelative), "Parent cursor depth cannot lift ranges above actors");
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);

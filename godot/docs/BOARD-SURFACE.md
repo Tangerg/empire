@@ -9,6 +9,14 @@ only screen Y. Painted scenes can supply their registered affine basis. Upright 
 inverse picking derive from this same basis. The same surface maps ground UVs, actor/building/decor placement, movement
 animation, range/path outlines, camera targets and inverse pointer picking.
 
+Native cell-bound units, structures and cover use the composed grid's **cell center**
+as their physical contact. `BoardProjection.LogicalCellContact` is the sole owner;
+placement, movement interpolation, metadata and painter depth consume that point.
+This intentionally replaces the old south-edge `(16,31)` board placement contract.
+Sprite-local anchors and animation pivots are unchanged. Freely authored scenery
+and registered image polygons remain at their authored coordinates, not recentered.
+Centered marker images no longer carry the former 15-pixel board-center compensation.
+
 Terrain geometry and ranges share depth partitions cut directly from the original
 triangles at standing contacts and required surface boundaries. They do not retain
 a full-map pixel tessellation. Contact ordering has one-camera-depth-pixel resolution.
@@ -104,8 +112,14 @@ checks that it belongs to the canonical interactive cells. It does not change
 playability or camera geometry. Without an authored camera composition, the current
 human formation supplies the target.
 
-`BoardView.Pick` checks the actual opaque pixels of visible standing sprites in
-render order before returning the visible surface hit. Decorative foreground art
+`BoardView.Pick` compares visible standing bodies and selectable surface objects
+with the canonical terrain hit in render order. Surface objects expose the actual
+clipped `PaintedSurface` polygons and their texture UV alpha, not their hidden
+original sprite rectangles. The hit retains its object's owning cell even where
+visible pixels overhang a neighboring cell. Terrain hits report the shared depth
+partition's rendered Z as well as continuous camera depth; comparing a surface
+strip's start Z against unpartitioned terrain depth would incorrectly discard it.
+Transparent pixels fall through. A visible unit wins above a walkable floor; Decorative foreground art
 blocks click-through. A building's cell cannot be reinterpreted as a hidden unit
 occupying that cell. Ground and cliff occlusion still compare the same camera-depth
 value; selection never changes domain legality. Existing keyboard selection remains
@@ -194,3 +208,7 @@ playable surface, the actual ground occludes it. This prevents roots floating in
 the background without extending grass or introducing a second map boundary.
 The southern edge remains visibly bounded; this is not a claim that every map
 border has received final scenery art.
+
+Selection and cursor rings retain their source-local `(16,31)` foot registration,
+but their native placement is derived from `BoardProjection.LogicalCellContact`.
+Range fills and route markup remain cell-area decorations, not actor foot owners.

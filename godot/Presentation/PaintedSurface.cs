@@ -13,6 +13,7 @@ internal partial class PaintedSurface : Node2D
     private Texture2D _texture = null!;
     private Transform2D _textureToBoard;
     private Vector2[]? _bounds;
+    private Image? _hitImage;
     private readonly List<Polygon2D> _polygons = new();
 
     internal static PaintedSurface Create(BoardProjection projection, Texture2D borrowedTexture, float worldScale)
@@ -121,6 +122,31 @@ internal partial class PaintedSurface : Node2D
         }
     }
 
+    internal Polygon2D? HitPolygon(Vector2 globalPoint)
+    {
+        if (!IsVisibleInTree() || Modulate.A <= 0 || SelfModulate.A <= 0)
+            return null;
+        var local = ToLocal(globalPoint);
+        var uv = _textureToBoard.AffineInverse() * local;
+        if (uv.X < 0 || uv.Y < 0 || uv.X >= _texture.GetWidth() || uv.Y >= _texture.GetHeight())
+            return null;
+        if (_hitImage is null)
+        {
+            _hitImage = _texture.GetImage();
+            if (_hitImage.IsCompressed() && _hitImage.Decompress() != Error.Ok)
+                throw new InvalidOperationException("Surface texture alpha could not be decoded for picking.");
+        }
+        if (_hitImage.GetPixel((int)uv.X, (int)uv.Y).A <= .1f)
+            return null;
+        Polygon2D? front = null;
+        foreach (var polygon in _polygons)
+            if (polygon.IsVisibleInTree() && (front is null || polygon.ZIndex >= front.ZIndex)
+                && polygon.Polygons.Any(piece => Geometry2D.IsPointInPolygon(local,
+                    piece.AsInt32Array().Select(index => polygon.Polygon[index]).ToArray())))
+                front = polygon;
+        return front;
+    }
+
     private void Clear()
     {
         foreach (var polygon in _polygons)
@@ -136,6 +162,7 @@ internal partial class PaintedSurface : Node2D
         if (what != NotificationPredelete)
             return;
         _projection.DepthPartitionsChanged -= Rebuild;
+        _hitImage?.Dispose();
         Clear();
     }
 }

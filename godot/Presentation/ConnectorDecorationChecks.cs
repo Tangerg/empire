@@ -65,7 +65,8 @@ public partial class ConnectorDecorationChecks : Node
             }
             var state = JsonNode.Parse("""{"players":[],"structures":[],"markers":[{"id":1,"kind":"fallen_corpse","owner":1,"at":{"x":2,"y":3}}]}""")!.AsObject();
             var markerView = new DynamicStateView(new(AssetCatalog.Load(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")), null));
-            var markers = markerView.Create(state);
+            var markerProjection = TerrainChecks.FlatProjection(Enumerable.Repeat("plain", 16).ToArray(), new int[16], new Vector2I(4, 4));
+            var markers = markerView.Create(state, markerProjection);
             try
             {
                 var sprite = markers.Root.GetNode<Sprite2D>("Marker_0/AuthoredMarker");

@@ -12,7 +12,7 @@ using Godot;
 
 namespace Empire.Presentation;
 
-public sealed record DynamicStanding(Node2D Node, int Layer, int Index, StandingVisual? Visual = null, Coord? SelectionCell = null);
+public sealed record DynamicStanding(Node2D Node, int Layer, int Index, StandingVisual? Visual = null, Coord? SelectionCell = null, Sprite2D? SurfaceBody = null);
 public sealed record DynamicStateProjection(Node2D Root, IReadOnlyList<DynamicStanding> Standing,
     IReadOnlyList<string> Diagnostics, int Structures, int Markers);
 
@@ -67,7 +67,7 @@ public sealed class DynamicStateView
         return result;
     }
 
-    public DynamicStateProjection Create(JsonObject state)
+    public DynamicStateProjection Create(JsonObject state, BoardProjection projection)
     {
         var root = new Node2D { Name = "DynamicState" };
         var standing = new List<DynamicStanding>();
@@ -84,7 +84,7 @@ public sealed class DynamicStateView
                 var definition = content.Definition("structures", type)
                     ?? throw new InvalidOperationException($"Live structure {id} references absent definition {type}.");
                 colors.TryGetValue(Number(structure, "owner"), out var color);
-                var node = new Node2D { Name = $"Structure_{structureCount}", Position = Contact(structure) };
+                var node = new Node2D { Name = $"Structure_{structureCount}", Position = Contact(structure, projection) };
                 var hp = Number(structure, "hp");
                 var maximum = Number(definition, "maxHp");
                 var disabled = structure["disabled"]!.GetValue<bool>();
@@ -110,7 +110,12 @@ public sealed class DynamicStateView
                         node.AddChild(surface ? CreateSurfaceOwnerMark(color) : CreateOwnerBanner(color, shadows));
                 }
                 else
-                    node.AddChild(Svg(StructureMarkup(structure, definition, active ? color : null), "RuleDerivedStructure"));
+                {
+                    var fallback = Svg(StructureMarkup(structure, definition, active ? color : null), "RuleDerivedStructure");
+                    node.AddChild(fallback);
+                    if (surface)
+                        groundSprite = fallback;
+                }
                 if (active && (asset is not null || definition.GetProperty("targetable").GetBoolean()))
                 {
                     var gauge = CreateGauge(hp, maximum);
@@ -129,13 +134,13 @@ public sealed class DynamicStateView
                 root.AddChild(node);
                 standing.Add(new(node, surface ? 0 : 3, structureCount++,
                     surface || groundSprite is null ? null : new SpriteStandingVisual(groundSprite),
-                    surface ? null : new Coord((int)Number(structure, "x"), (int)Number(structure, "y"))));
+                    new Coord((int)Number(structure, "x"), (int)Number(structure, "y")), surface ? groundSprite : null));
             }
             foreach (var marker in state["markers"]!.AsArray().OfType<JsonObject>())
             {
                 var kind = Text(marker, "kind");
                 colors.TryGetValue(Number(marker, "owner"), out var color);
-                var node = new Node2D { Name = $"Marker_{markerCount}", Position = Contact(marker["at"]!.AsObject()), ZIndex = -1 };
+                var node = new Node2D { Name = $"Marker_{markerCount}", Position = Contact(marker["at"]!.AsObject(), projection), ZIndex = -1 };
                 var topic = kind.Contains("corpse", StringComparison.Ordinal) || marker["fallenUnit"] is not null
                     ? "C01-BPROP-AFTERMATH-2" : kind.Contains("transport", StringComparison.Ordinal)
                         ? "C01-BPROP-AFTERMATH-3" : "C01-BPROP-EVIDENCE-1";
@@ -147,7 +152,6 @@ public sealed class DynamicStateView
                         Modulate = new Color(1, 1, 1, markerOpacity),
                         Name = "AuthoredMarker",
                         Texture = assets.CreateFrameTexture(asset, 0),
-                        Position = new Vector2(0, -15),
                         Scale = Vector2.One * (48f / Math.Max(asset.FrameWidth, asset.FrameHeight) / asset.PixelDensity),
                         TextureFilter = CanvasItem.TextureFilterEnum.Linear,
                     };
@@ -197,7 +201,8 @@ public sealed class DynamicStateView
         return banner;
     }
 
-    private static Vector2 Contact(JsonObject at) => new((float)Number(at, "x") * 32 + 16, (float)Number(at, "y") * 32 + 31);
+    private static Vector2 Contact(JsonObject at, BoardProjection projection) =>
+        projection.LogicalCellContact(new Coord((int)Number(at, "x"), (int)Number(at, "y")));
     private static string Text(JsonElement value, string field) => Empire.Core.Determinism.EcmaJson.ReadString(JsonValue.Create(value.GetProperty(field)));
     private static double Number(JsonElement value, string field) => value.GetProperty(field).GetDouble();
     private static string Text(JsonObject value, string field) => value[field]!.GetValue<string>();

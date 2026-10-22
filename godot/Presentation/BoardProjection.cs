@@ -22,7 +22,7 @@ public sealed record BoardSurfaceTriangle(Coord Cell,
 public sealed record BoardSurfaceFace(Coord HigherCell, Coord LowerCell,
     Vector2 LogicalA, Vector2 LogicalB, Vector2 ProjectedA, Vector2 ProjectedB, Vector2 ProjectedC, Vector2 ProjectedD, float Depth);
 
-public sealed record BoardSurfaceHit(Coord? Cell, float Depth);
+public sealed record BoardSurfaceHit(Coord? Cell, float Depth, int DrawDepth);
 
 public sealed record BoardFacePatch(int Depth, IReadOnlyList<BoardSurfaceVertex> Vertices);
 
@@ -272,9 +272,9 @@ public sealed class BoardProjection
         throw new InvalidOperationException($"Grid cell {cell} does not contain its logical point {logicalPixel} in the supplied outline.");
     }
 
-    public Vector2 CellCenter(Coord cell) => Project(Pixel(_grid.Center(cell)));
+    public Vector2 CellCenter(Coord cell) => CellContact(cell);
 
-    public Vector2 LogicalCellContact(Coord cell) => Pixel(_grid.Center(cell)) + new Vector2(0, 15);
+    public Vector2 LogicalCellContact(Coord cell) => Pixel(_grid.Center(cell));
     public Vector2 CellContact(Coord cell) => Project(LogicalCellContact(cell));
 
     public Vector2 FacingVector(string? facing)
@@ -343,7 +343,16 @@ public sealed class BoardProjection
                 nearestDepth = depth;
             }
         }
-        return float.IsNegativeInfinity(nearestDepth) ? null : new BoardSurfaceHit(nearest, nearestDepth);
+        return float.IsNegativeInfinity(nearestDepth) ? null : new BoardSurfaceHit(nearest, nearestDepth, SurfaceDrawDepth(nearestDepth));
+    }
+
+    private int SurfaceDrawDepth(float depth)
+    {
+        var index = Array.BinarySearch(_partitionCuts, (int)Math.Floor(depth));
+        if (index < 0)
+            index = ~index - 1;
+        index = Math.Clamp(index, 0, _partitionCuts.Length - 2);
+        return LayerAtDepth(_partitionCuts[index], BoardDepthLayer.Surface);
     }
 
     public bool MatchesPlane(BoardPlane plane) =>

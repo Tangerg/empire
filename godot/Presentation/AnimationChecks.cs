@@ -180,7 +180,7 @@ public partial class AnimationChecks : Node
         var actor = Actor(board, id);
         Require(board.IsPresenting && Frame(actor) == 1, "Movement immediately selects source walk-a");
         await Tick(board, 0.0425);
-        Require(actor.Position.IsEqualApprox(board.Projection.Project(new Vector2((x + 0.5f) * 32 + 16, y * 32 + 31)) + new Vector2(0, -2.5f)),
+        Require(actor.Position.IsEqualApprox(board.Projection.Project(board.Projection.LogicalCellContact(new(x, y)).Lerp(board.Projection.LogicalCellContact(new(x + 1, y)), .5f)) + new Vector2(0, -2.5f)),
             "Human 85 ms step has source quadratic halfway motion and 2.5 px hop");
         await Tick(board, 0.0426);
         await Tick(board, 0.075);
@@ -197,7 +197,7 @@ public partial class AnimationChecks : Node
         task = board.PresentTransitionAsync(ai);
         actor = Actor(board, id);
         await Tick(board, 0.0325);
-        Require(Mathf.IsEqualApprox(actor.Position.X, board.Projection.Project(new Vector2((x + 0.5f) * 32 + 16, y * 32 + 31)).X), "AI uses source 65 ms per tile, not the human pace");
+        Require(Mathf.IsEqualApprox(actor.Position.X, board.Projection.Project(board.Projection.LogicalCellContact(new(x, y)).Lerp(board.Projection.LogicalCellContact(new(x + 1, y)), .5f)).X), "AI uses source 65 ms per tile, not the human pace");
         board.CancelPresentation();
         Require(!await task && !board.IsPresenting && board.GetNodeOrNull("BattleEffects") is null,
             "Cancel removes temporary layers and resolves playback false");
