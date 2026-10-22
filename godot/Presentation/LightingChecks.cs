@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using Godot;
 using Empire.Core.Determinism;
+using Empire.Core.Engine;
 
 namespace Empire.Presentation;
 
@@ -28,40 +29,70 @@ public partial class LightingChecks : Node
             Contacts();
             Compositions(oracle);
             JunctionComposition();
-            await Integrated();
+            await Integrated(BattleTextChecks.OpeningLevel(), AuthoredScene.Load("res://data/scenes/c01-01.json"), false);
+            var materialScene = MaterialSceneFixtureChecks.Scene;
+            materialScene.Placements.AddRange(new[]
+            {
+                new AuthoredPlacement { Id = "grass-tuft-a", X = 1, Y = 1 },
+                new AuthoredPlacement { Id = "oak-ancient", X = 2, Y = 1, StandingShadow = true },
+                new AuthoredPlacement { TopicId = "C01-BPROP-COVER-1", X = 5, Y = 1 }
+            });
+            materialScene.FramePlacements.Add(new FramePlacement { Id = "oak-ancient", Layer = "foreground", Contact = [7, 5] });
+            var materialLevel = MaterialSceneFixtureChecks.Level;
+            materialLevel["terrain"]!.AsArray()[3] = "..v~....";
+            await Integrated(materialLevel, materialScene, true);
             GD.Print($"PASS {_checks} source lighting/shadow contracts. Headless resource checks only; live visual acceptance remains pending.");
             GetTree().Quit();
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
     }
 
-    private async Task Integrated()
+    private async Task Integrated(JsonObject level, AuthoredScene scene, bool materialLighting)
     {
-        var fixture = PresentationJson.Load<JsonObject>("res://tests/oracle/grayflag-initial-raw.json");
-        var level = fixture["level"]!.AsObject();
-        var state = fixture["state"]!.AsObject();
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var state = engine.CreateState(level);
         var before = EcmaJson.Stringify(state);
         var assets = AssetCatalog.Load();
-        var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
+        var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
         var board = new BoardView { AdvanceAnimationsAutomatically = false };
         AddChild(board);
         try
         {
             var clock = System.Diagnostics.Stopwatch.StartNew();
-            board.Configure(new(assets, EnvironmentCatalog.Load(), new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")), BoardPlane.Dimetric), level, scene);
-            board.ConfigureGround(TerrainView.Factory(WorldMaterialsManifest.Load()));
+            board.Configure(new(assets, EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, rendering.Plane), level, scene);
+            board.ConfigureGround(rendering.Ground);
             board.ConfigureDynamicState();
             board.RenderState(state);
-            GD.Print($"Integrated source-lighting board first projection: {clock.ElapsedMilliseconds}ms.");
-            var terrain = board.GetNode<TerrainView>("AuthoredScene/Terrain");
-            var sun = terrain.GetNode<Sprite2D>("ComposedTerrain/SourceFieldSunlight");
-            var hearths = terrain.GetNode<Node2D>("ComposedTerrain/SourceHearthLights");
+            GD.Print($"Integrated native lighting ({scene.LevelId}) first projection: {clock.ElapsedMilliseconds}ms.");
+            Require(board.RenderingIssueCount == 0, $"Native lighting scene has rendering issues: {string.Join("; ", board.Diagnostics)}");
             var actor = board.GetNode<Node2D>("CanonicalProjection/Unit_2");
             var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
             var shadow = sprite.GetNode<SpriteShadows>("SourceSpriteShadows");
             var cached = shadow.Texture;
             Require(actor is CanvasGroup && actor.SelfModulate == Colors.White, "Outer unit opacity must belong to a native compositing group.");
-            Require(hearths.ZIndex < sun.ZIndex && sun.ZIndex < actor.ZIndex, "Source non-standing lights changed board depth.");
+            if (materialLighting)
+            {
+                var terrain = board.GetNode<TerrainView>("AuthoredScene/Terrain");
+                var projected = terrain.GetNode<Node2D>("ComposedTerrain/ProjectedGround");
+                var viewport = projected.GetNode<SubViewport>("LogicalGround");
+                var logical = viewport.GetNode<Node2D>("ComposedTerrain");
+                var sun = logical.GetNode<Sprite2D>("SourceFieldSunlight");
+                var hearths = logical.GetNode<Node2D>("SourceHearthLights");
+                Require(hearths.GetChildCount() > 0 && sun.Texture.GetSize().X > 0, "Material fixture must render native field lights.");
+                Require(hearths.ZIndex < sun.ZIndex, "Material light order changed inside the logical ground composition.");
+                var surfaces = projected.GetChildren().OfType<Polygon2D>().ToArray();
+                Require(surfaces.Length > 0 && surfaces.All(surface => surface.Texture == viewport.GetTexture()),
+                    "Material lights must reach the board through the projected ground texture, not a second overlay.");
+                Require(board.GetNode<Node2D>("CanonicalProjection").GetChildren().Any(node => node.Name.ToString().StartsWith("MapStructure_", StringComparison.Ordinal))
+                    && board.RenderedAuthoredPlacementCount == 4,
+                    "Material lighting must exercise structure contacts and all explicit prop shadow kinds.");
+            }
+            else
+            {
+                Require(board.GetNodeOrNull<PaintedGroundView>("AuthoredScene/PaintedGround") is not null
+                    && board.GetNodeOrNull<TerrainView>("AuthoredScene/Terrain") is null,
+                    "Current painted campaign must use its registered renderer, not a procedural lighting overlay.");
+            }
             Require(shadow.GetMeta("composition_inputs").AsInt32() == 3 && sprite.SelfModulate.A == 0, "Figure must compose contact, ring and strip once, without a second original draw.");
             Require(shadow.GetMeta("source_texture").AsUInt64() == sprite.Texture.GetInstanceId(), "Integrated figure shadow sampled the wrong source frame.");
             foreach (var frame in board.GetNode<Node2D>("AuthoredScene/AuthoredFrame").GetChildren().OfType<Sprite2D>())
@@ -73,12 +104,16 @@ public partial class LightingChecks : Node
             {
                 var prop = standing.GetNode<Sprite2D>($"Placement_{index}");
                 var expected = placement.TopicId is not null ? ShadowKind.Topic : placement.StandingShadow ? ShadowKind.Standing : ShadowKind.Environment;
-                Require(prop.GetNode<SpriteShadows>("SourceSpriteShadows").GetMeta("shadow_kind").AsString() == expected.ToString(), "Authored prop ignored its explicit source shadow contract.");
+                var propShadow = prop.GetNode<SpriteShadows>("SourceSpriteShadows");
+                Require(propShadow.GetMeta("shadow_kind").AsString() == expected.ToString(), "Authored prop ignored its explicit source shadow contract.");
+                Require(propShadow.GetMeta("source_texture").AsUInt64() == prop.Texture.GetInstanceId(), "Authored prop shadow sampled a different source texture.");
             }
+            var textureCount = board.LightingResources.TextureCount;
             clock.Restart();
             board.RenderState(state);
+            Require(board.LightingResources.TextureCount == textureCount, "Repeated native projection grew its lighting cache.");
             Require(ReferenceEquals(cached, board.GetNode<Sprite2D>("CanonicalProjection/Unit_2/AuthoredSprite/SourceSpriteShadows").Texture), "Board projection recreation lost its frame cache.");
-            GD.Print($"Integrated cached repeat projection: {clock.ElapsedMilliseconds}ms.");
+            GD.Print($"Integrated cached repeat projection ({scene.LevelId}): {clock.ElapsedMilliseconds}ms.");
 
             // Presentation-only receipt fixture: verifies frame/facing playback, not legality.
             var unit = state["units"]!.AsArray().OfType<JsonObject>().Single(value => value["id"]!.GetValue<int>() == 2);

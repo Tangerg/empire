@@ -93,6 +93,12 @@ painted campaign maps to retain procedural river/road nodes. Formal scene checks
 use the same authored renderer/plane resolver as the application. Edge-decoration
 checks cover nonempty terrain support and source registration separately; integrated
 edge-overlay ground clipping is not covered by the current painted campaign scenes.
+`LightingChecks` keeps the frozen source-style math oracle separate from native
+integration: current campaign state and the independent material fixture both use
+`BoardSceneRendering`. The material fixture explicitly covers foreground, topic,
+standing and environment props; painted campaign art does not need those nodes.
+See [lighting verification](docs/LIGHTING-VERIFICATION.md) for the focused command
+and fixture recovery evidence.
 
 Historical TypeScript source-v1 oracle suites are retained as development evidence;
 they are not a current-schema acceptance mode. Stable shared RNG and grid vectors
