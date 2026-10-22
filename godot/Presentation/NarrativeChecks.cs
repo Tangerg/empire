@@ -11,55 +11,15 @@ using Godot;
 
 namespace Empire.Presentation;
 
-/// <summary>Executes native widgets against the frozen rendered expectations and native localization contracts. No desktop acceptance claim.</summary>
+/// <summary>Executes native widgets against the reviewed current native expectations and native localization contracts. No desktop acceptance claim.</summary>
 public partial class NarrativeChecks : Node
 {
-    // These authored campaign dates intentionally clarify the frozen source's mixed calendars.
-    private static readonly IReadOnlyDictionary<string, string> NativeStoryDates = new Dictionary<string, string>(StringComparer.Ordinal)
-    {
-        ["c01/prologue"] = "战役第 0 年 · 初夏（断冠纪第 318 年）",
-        ["c01/brief-01"] = "战役第 0 年 · 初夏",
-        ["c01/aftermath-01"] = "战役第 0 年 · 初夏",
-        ["c01/brief-02"] = "战役第 0 年 · 盛夏",
-        ["c01/aftermath-02"] = "战役第 0 年 · 盛夏",
-        ["c01/brief-03"] = "战役第 0 年 · 长夏",
-        ["c01/aftermath-03"] = "战役第 0 年 · 长夏",
-        ["c01/brief-04"] = "战役第 0 年 · 初秋",
-        ["c01/aftermath-04"] = "战役第 0 年 · 初秋",
-        ["c01/brief-05"] = "战役第 0 年 · 深秋",
-        ["c01/aftermath-05"] = "战役第 0 年 · 深秋",
-        ["c01/brief-06"] = "战役第 1 年 · 深冬",
-        ["c01/aftermath-06"] = "战役第 1 年 · 深冬",
-        ["c01/brief-07"] = "战役第 1 年 · 初春",
-        ["c01/aftermath-07"] = "战役第 1 年 · 初春",
-        ["c01/brief-08"] = "战役第 1 年 · 暮春",
-        ["c01/aftermath-08"] = "战役第 1 年 · 暮春",
-        ["c01/brief-09"] = "战役第 1 年 · 盛夏",
-        ["c01/aftermath-09"] = "战役第 1 年 · 盛夏",
-        ["c01/brief-10"] = "战役第 1 年 · 初秋",
-        ["c01/aftermath-10"] = "战役第 1 年 · 初秋",
-        ["c01/brief-11"] = "战役第 2 年 · 早春",
-        ["c01/aftermath-11"] = "战役第 2 年 · 早春",
-        ["c01/brief-12"] = "战役第 2 年 · 暮春",
-        ["c01/aftermath-12"] = "战役第 2 年 · 暮春",
-        ["c01/brief-13"] = "战役第 2 年 · 盛夏",
-        ["c01/aftermath-13"] = "战役第 2 年 · 盛夏",
-        ["c01/brief-14"] = "战役第 2 年 · 深秋",
-        ["c01/aftermath-14"] = "战役第 2 年 · 深秋",
-        ["c01/brief-15"] = "战役第 3 年 · 初春",
-        ["c01/aftermath-15"] = "战役第 3 年 · 初春",
-        ["c01/brief-16"] = "战役第 3 年 · 暮春",
-        ["c01/aftermath-16"] = "战役第 3 年 · 暮春",
-        ["c01/chapter-three-ending"] = "战役第 3 年 · 初夏",
-        ["c01/campaign-failed"] = "未定",
-    };
-
     private int assertions;
     private GameText messages = null!;
     private StoryDocument documents = null!;
     private NarrativePresentationDocument metadata = null!;
     private StoryScreen screen = null!;
-    private JsonObject oracle = null!;
+    private JsonObject expectations = null!;
     private readonly JsonSerializerOptions jsonOptions = new() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 
     public override async void _Ready()
@@ -69,19 +29,41 @@ public partial class NarrativeChecks : Node
             messages = GodotTextCatalog.LoadSimplifiedChinese();
             documents = StoryDocument.Load(messages);
             metadata = NarrativePresentationDocument.Load(messages);
-            oracle = PresentationJson.Load<JsonObject>(OS.GetEnvironment("EMPIRE_NARRATIVE_ORACLE"));
+            expectations = PresentationJson.Load<JsonObject>(OS.GetEnvironment("EMPIRE_NARRATIVE_EXPECTATIONS"));
             screen = new StoryScreen();
             AddChild(screen);
             await Layout();
-            CheckSourceProjections();
-            CheckLocalizationBoundary();
-            await CheckSourceWidgets();
-            CheckNormalTransitions();
-            CheckEndingTransitions();
-            CheckLifecycle();
-            CheckShellLifecycle();
-            await CheckLayout();
-            CheckMissingArt();
+            var failures = new List<Exception>();
+            void CheckGroup(Action check)
+            {
+                try
+                {
+                    check();
+                    GD.Print($"Narrative group passed: {check.Method.Name}");
+                }
+                catch (Exception error) { failures.Add(error); GD.Print($"Narrative group failed: {check.Method.Name}: {error.Message}"); }
+            }
+            async Task CheckAsyncGroup(Func<Task> check)
+            {
+                try
+                {
+                    await check();
+                    GD.Print($"Narrative group passed: {check.Method.Name}");
+                }
+                catch (Exception error) { failures.Add(error); GD.Print($"Narrative group failed: {check.Method.Name}: {error.Message}"); }
+            }
+            CheckGroup(CheckIdentityProjections);
+            CheckGroup(CheckNativeProjections);
+            CheckGroup(CheckLocalizationBoundary);
+            await CheckAsyncGroup(CheckNativeWidgets);
+            CheckGroup(CheckNormalTransitions);
+            CheckGroup(CheckEndingTransitions);
+            CheckGroup(CheckLifecycle);
+            CheckGroup(CheckShellLifecycle);
+            await CheckAsyncGroup(CheckLayout);
+            CheckGroup(CheckMissingArt);
+            if (failures.Count != 0)
+                throw new AggregateException("Native narrative check groups failed.", failures);
             GD.Print($"Native narrative checks passed: {assertions} assertions, {documents.Stories.Count} documents / {documents.Stories.Sum(story => story.Beats.Count)} beats, {documents.Choices.Count} choices.");
             GetTree().Quit();
         }
@@ -127,35 +109,57 @@ public partial class NarrativeChecks : Node
             primaryAction = view.Ending ? "finish" : "nextBeat",
         }, jsonOptions)!;
 
-    private void CheckStoryProjection(string id, StoryView view, JsonObject expected, string name, bool currentArtwork)
+    private void CheckStoryProjection(StoryView view, JsonObject expected, string name)
     {
-        Equal(view.Date, NativeStoryDates[id], name + ": native authored date");
         var projection = StoryProjection(view);
-        foreach (var field in expected.Where(field => field.Key != "date"))
-        {
-            if (currentArtwork && field.Key == "portraitSource" && field.Value?.GetValue<string>() is { } source &&
-                (source.EndsWith("/char-leia-01.png", StringComparison.Ordinal) || source.EndsWith("/char-roderick-01.png", StringComparison.Ordinal)))
-                Equal(view.Portrait!.Source, "/godot/assets/runtime/narrative-static/" + System.IO.Path.GetFileName(source),
-                    name + ": accepted native transparent portrait revision");
-            else
-                JsonEqual(projection[field.Key], field.Value, name + ": " + field.Key);
-        }
+        JsonEqual(projection, expected, name + ": complete native projection");
     }
 
-    private void CheckSourceProjections()
+    private void CheckIdentityProjections()
     {
+        var expectedStories = expectations["sourceDocuments"]!["stories"]!.AsArray();
+        var expectedSpeakers = expectations["sourceDocuments"]!["speakers"]!.AsObject();
+        Require(expectedStories.Select(story => Text(story!, "id")).ToHashSet(StringComparer.Ordinal)
+            .SetEquals(documents.Stories.Select(story => story.Id)), "Native identity expectations cover exactly all stories");
+        var count = 0;
+        foreach (var story in documents.Stories)
+        {
+            var expected = expectedStories.Single(value => Text(value!, "id") == story.Id)!;
+            Equal(story.Beats.Count, expected["beats"]!.AsArray().Count, story.Id + ": identity beat coverage");
+            for (var index = 0; index < story.Beats.Count; index++)
+            {
+                var speaker = Text(expected["beats"]![index]!, "speaker");
+                Equal(story.Beats[index].Speaker, speaker, story.Id + ": declared beat identity");
+                var view = NarrativeProjection.Story(story, documents.IdentityNameKeys, new(messages, metadata, 0, true), index, false);
+                Equal(view.Speaker, Text(expectedSpeakers, speaker), story.Id + ": shared identity speaker projection");
+                count++;
+            }
+        }
+        Equal(count, 91, "All 91 beat speaker projections checked independently of prose parity");
+        var entry = documents.Stories[0];
+        var missingIdentity = new Dictionary<string, string>(documents.IdentityNameKeys);
+        missingIdentity.Remove(entry.Beats[0].Speaker);
+        Throws(() => NarrativeProjection.Story(entry, missingIdentity, new(messages, metadata, 0, true), 0, false),
+            "Missing shared speaker identity fails in narrative projection");
+        var missingKey = new Dictionary<string, string>(documents.IdentityNameKeys) { [entry.Beats[0].Speaker] = "speaker.missing.name" };
+        Throws(() => NarrativeProjection.Story(entry, missingKey, new(messages, metadata, 0, true), 0, false),
+            "Missing shared speaker translation fails in narrative projection");
+    }
+
+    private void CheckNativeProjections()
+    {
+        Equal(expectations["storyCases"]!.AsArray().Count, 106, "All reviewed native story snapshots are present");
+        Equal(expectations["choiceCases"]!.AsArray().Count, 11, "All reviewed native choice snapshots are present");
         Equal(documents.Stories.Count, 35, "Export contains every source story");
-        Require(NativeStoryDates.Keys.ToHashSet(StringComparer.Ordinal).SetEquals(documents.Stories.Select(story => story.Id)),
-            "Every native story has exactly one explicit date expectation");
         Equal(documents.Stories.Sum(story => story.Beats.Count), 91, "Export contains every source beat");
         Equal(documents.Choices.Count, 11, "Export contains every source choice");
-        foreach (var item in oracle["storyCases"]!.AsArray().Select(value => value!.AsObject()))
+        foreach (var item in expectations["storyCases"]!.AsArray().Select(value => value!.AsObject()))
         {
             var view = NarrativeProjection.Story(Story(Text(item, "presentationId")), documents.IdentityNameKeys,
                 Context(item["state"]!.AsObject()), Number(item, "beatIndex"), Flag(item, "ending"));
-            CheckStoryProjection(Text(item, "presentationId"), view, item["expected"]!.AsObject(), Text(item, "name"), true);
+            CheckStoryProjection(view, item["expected"]!.AsObject(), Text(item, "name"));
         }
-        foreach (var item in oracle["choiceCases"]!.AsArray().Select(value => value!.AsObject()))
+        foreach (var item in expectations["choiceCases"]!.AsArray().Select(value => value!.AsObject()))
         {
             var choice = Choice(Text(item, "presentationId"));
             var view = NarrativeProjection.Choice(choice, choice.Options.Select(option => option.Id).ToArray(), Context(item["state"]!.AsObject()));
@@ -176,9 +180,9 @@ public partial class NarrativeChecks : Node
             foreach (var expected in item["expected"]!.AsObject())
                 JsonEqual(projection[expected.Key], expected.Value, Text(item, "name") + ": " + expected.Key);
         }
-        Equal(oracle["projectionCases"]!.AsArray().Count, 4, "Source edge projection fixtures are present");
-        Equal(oracle["lifecycleCases"]!.AsArray().Count, 11, "Source DOM lifetime fixtures are present");
-        foreach (var item in oracle["projectionCases"]!.AsArray().Select(value => value!.AsObject()))
+        Equal(expectations["projectionCases"]!.AsArray().Count, 4, "Source edge projection fixtures are present");
+        Equal(expectations["lifecycleCases"]!.AsArray().Count, 11, "Source DOM lifetime fixtures are present");
+        foreach (var item in expectations["projectionCases"]!.AsArray().Select(value => value!.AsObject()))
         {
             var presentation = JsonSerializer.Deserialize<NarrativePresentationDocument>(item["presentation"]!.ToJsonString(), jsonOptions)!;
             var story = JsonSerializer.Deserialize<StoryEntry>(item["story"]!.ToJsonString(), jsonOptions)!;
@@ -191,7 +195,7 @@ public partial class NarrativeChecks : Node
                 continue;
             }
             var view = NarrativeProjection.Story(story, speakers, context, Number(item, "beatIndex"), Flag(item, "ending"));
-            CheckStoryProjection(story.Id, view, item["expected"]!.AsObject(), Text(item, "name"), false);
+            CheckStoryProjection(view, item["expected"]!.AsObject(), Text(item, "name"));
         }
         foreach (var chapter in metadata.Chapters.Keys)
         {
@@ -262,9 +266,13 @@ public partial class NarrativeChecks : Node
         catch (JsonException) { assertions++; }
     }
 
-    private async Task CheckSourceWidgets()
+    private async Task CheckNativeWidgets()
     {
-        foreach (var item in oracle["storyCases"]!.AsArray().Select(value => value!.AsObject()))
+        var deadlineIndex = Story("c01/brief-03").Beats.FindIndex(beat => beat.Id == "reinforcement-deadline");
+        Require(deadlineIndex >= 0 && expectations["storyCases"]!.AsArray().Any(item =>
+            Text(item!, "presentationId") == "c01/brief-03" && Number(item!, "beatIndex") == deadlineIndex && !Flag(item!, "ending")),
+            "Reinforcement deadline must have an explicit native widget case");
+        foreach (var item in expectations["storyCases"]!.AsArray().Select(value => value!.AsObject()))
         {
             var ending = Flag(item, "ending");
             var index = Number(item, "beatIndex");
@@ -281,12 +289,12 @@ public partial class NarrativeChecks : Node
             await Layout();
             Equal(screen.BeatIndex, index, "Native cursor matches source visible beat");
             Equal(advanced + finished, 0, "Paging does not invoke canonical callbacks");
-            Equal(Find<Label>("StoryDate").Text, NativeStoryDates[entry.Id], $"Native {entry.Id} widget date matches the authored timeline");
+            Equal(Find<Label>("StoryDate").Text, Text(expected, "date"), $"Native {entry.Id} widget date matches the authored timeline");
             foreach (var (name, property) in new[] { ("StoryKicker", "kicker"), ("StoryLocation", "location"),
                 ("StoryTitle", "title"), ("StorySummary", "summary"), ("StorySpeaker", "speaker"), ("StoryBeat", "text"),
                 ("CampaignTitle", "campaignTitle"), ("CampaignChapter", "chapterHeading"), ("ProgressCount", "progress") })
-                Equal(Find<Label>(name).Text, Text(expected, property), $"Native {name} equals source DOM");
-            Equal(Find<Button>("StoryPrimary").Text, Text(expected, "primaryLabel"), "Native primary equals source DOM");
+                Equal(Find<Label>(name).Text, Text(expected, property), $"Native {name} equals reviewed native expectation");
+            Equal(Find<Button>("StoryPrimary").Text, Text(expected, "primaryLabel"), "Native primary equals reviewed native expectation");
             Equal(screen.FindChildren("StoryBeat", "Label", true, false).Count, 1, "Exactly one local dialogue beat is mounted");
             Equal(Find<Control>("BeatDots").GetChildCount(), entry.Beats.Count, "Native dots retain complete beat count");
             for (var dot = 0; dot < entry.Beats.Count; dot++)
@@ -305,7 +313,7 @@ public partial class NarrativeChecks : Node
             Equal(Find<TextureRect>("CampaignBackdrop").Texture.ResourcePath, screen.PresentedStory!.Shell.Art.ResourcePath!, "Original scene/chapter texture is mounted");
             Equal(screen.FindChild("MissionBrief", true, false) is not null, entry.Mission is not null, "Mission panel presence follows source");
         }
-        foreach (var item in oracle["choiceCases"]!.AsArray().Select(value => value!.AsObject()))
+        foreach (var item in expectations["choiceCases"]!.AsArray().Select(value => value!.AsObject()))
         {
             var entry = Choice(Text(item, "presentationId"));
             var expected = item["expected"]!;
@@ -330,9 +338,9 @@ public partial class NarrativeChecks : Node
 
     private void CheckNormalTransitions()
     {
-        foreach (var item in oracle["transitionCases"]!.AsArray().Select(value => value!.AsObject()).Where(value => Number(value, "initialBeat") == 0))
+        foreach (var item in expectations["transitionCases"]!.AsArray().Select(value => value!.AsObject()).Where(value => Number(value, "initialBeat") == 0))
         {
-            var definition = oracle["definition"]!.AsObject();
+            var definition = expectations["definition"]!.AsObject();
             var runtime = new CampaignRuntime(CampaignRules.Create(), definition, item["initialState"]!.AsObject());
             if (Text(runtime.Node(), "type") != "story")
                 continue;
@@ -360,9 +368,9 @@ public partial class NarrativeChecks : Node
 
     private void CheckEndingTransitions()
     {
-        foreach (var item in oracle["transitionCases"]!.AsArray().Select(value => value!.AsObject()).Where(value => Number(value, "initialBeat") == 0))
+        foreach (var item in expectations["transitionCases"]!.AsArray().Select(value => value!.AsObject()).Where(value => Number(value, "initialBeat") == 0))
         {
-            var definition = oracle["definition"]!.AsObject();
+            var definition = expectations["definition"]!.AsObject();
             var runtime = new CampaignRuntime(CampaignRules.Create(), definition, item["initialState"]!.AsObject());
             if (Text(runtime.Node(), "type") != "ending")
                 continue;

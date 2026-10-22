@@ -19,7 +19,7 @@ Normal primary actions advance one local beat. Only the last normal beat invokes
 
 The original `story.ts` mixes the prologue's world date, `断冠纪第 318 年`, with the campaign's year-zero timeline. The source campaign README pairs years 0–3 with Laiya's ages 18–21; these are relative story years, not a reset of the world calendar. Native PO wording now labels all 34 dated stories `战役第 … 年`, and the prologue retains the world-date anchor in parentheses. Numbers and seasons are unchanged; the failed ending remains `未定`. No calendar conversion, runtime clock or save field is introduced. The original chapter-two outline spans deep winter into the following autumn, so no absolute-year boundary is inferred from its relative labels.
 
-`NarrativeChecks.NativeStoryDates` explicitly names all 35 expected dates and verifies both projections and actual widgets. Date wording is the intentional native departure from the unchanged historical oracle; all other valid projected fields retain their frozen source comparisons.
+`tests/native/narrative.json` explicitly owns all 35 current expected dates. Projections and actual widgets compare directly with that reviewed native fixture, without a C# date override. Its [migration contract](../tests/native/narrative.md) records the precise intentional departures from the unchanged historical oracle, including formal mission wording and the existing native portrait-source ownership.
 
 ## The ending quirk is intentionally preserved
 
@@ -48,9 +48,9 @@ Run:
 bash tools/godot/narrative-checks/run.sh --verify-guard
 ```
 
-The test creates a fresh `/tmp/empire-narrative.*` project and isolates `XDG_DATA_HOME`; it does not touch user saves. It copies the actual production narrative classes and the exact production JSON loader, and imports only required source-exported narrative PNGs. The default gate uses frozen rendered expectations and native story-schema-3/staging-schema-2 documents, with no TypeScript runtime.
+The test creates a fresh `/tmp/empire-narrative.*` project and isolates XDG data/config/cache/runtime directories; it does not touch user saves. It copies the actual production narrative classes and the exact production JSON loader, and imports only required source-exported narrative PNGs. The default gate uses the reviewed `tests/native/narrative.json` and native story-schema-3/staging-schema-2 documents, with no TypeScript runtime. `verify-native.sh` runs the same scene against this same checked-in fixture.
 
-Frozen observations originally produced by `StoryCampaignController`, its adapter/runtime and save helpers cover:
+The complete fixture migrated from observations originally produced by `StoryCampaignController`, its adapter/runtime and save helpers preserves:
 
 - 35 documents / 91 ordinary-mode beat render fixtures, plus all five ending beats under active/completed/failed status: 106 source story projections total.
 - All 11 source-rendered choice menus.
@@ -58,7 +58,9 @@ Frozen observations originally produced by `StoryCampaignController`, its adapte
 - 11 actual DOM lifetime fixtures, with three unmounted/remounted cases explicitly marked as native safety differences.
 - Four supplemental native inputs: real runtime retreat history gives nonzero progress, a valid zero-battle definition, an unknown speaker rejection, and a known speaker with no portrait. The unknown-speaker fallback is an intentional breaking correction; its old display expectation was removed, not silently normalized.
 
-Native checks compare every valid projected field against frozen DOM outputs except the explicitly asserted native dates above, and explicitly assert the unknown-speaker rejection. Native widgets exercise every ordinary-mode beat fixture and each reachable beat-zero ending/status fixture. Canonical normal and ending callback sequences use the existing C# `CampaignRuntime` and `CampaignSave`; no battles or victories are fabricated. A wrong next-beat label is deliberately introduced only in the temporary project and must fail the source differential check. Source-side ending paging mutation was also rejected by the oracle.
+Native checks compare complete story projections against the current native fixture, without date, prose or portrait exclusions, and explicitly assert unknown-speaker rejection. Native widgets exercise every ordinary-mode beat fixture and each reachable beat-zero ending/status fixture. An explicit coverage assertion retains the existing `reinforcement-deadline` widget case. All 91 beat speaker projections use the shared identity owner in an independent check group; group failures are collected so prose failures do not hide identity checks or vice versa. Canonical normal and ending callback sequences use the existing C# `CampaignRuntime` and `CampaignSave`; no battles or victories are fabricated.
+
+Negative controls change only temporary expected prose, an expected speaker name, and the production projection's next-beat key. Each must fail its corresponding check, and the prose/speaker controls also prove the independent group still runs. Historical source-side ending paging mutation was separately rejected by the original oracle.
 
 The completed narrative-only checkpoint passed its native widget/projection checks and wrong-navigation-key negative control. That checkpoint covered 452 catalog messages and 415 content references, before the subsequent menu/staging/refusal additions; it is not merged-game acceptance. Parser and authoring checks reject malformed, duplicate, missing, empty, fuzzy and obsolete data. Two independent in-memory catalogs change actual native widget wording without changing authoring identities or state. These test catalogs are not additional shipped languages.
 

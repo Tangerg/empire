@@ -4,11 +4,13 @@ cd "$(dirname "$0")/../../.."
 source tools/godot/env.sh
 timeout_seconds="${EMPIRE_CHECK_TIMEOUT_SECONDS:-300}"
 scratch="$(mktemp -d "${TMPDIR:-/tmp}/empire-narrative.XXXXXXXX")"
-export XDG_DATA_HOME="$scratch/xdg-data"
+export XDG_DATA_HOME="$scratch/xdg-data" XDG_CONFIG_HOME="$scratch/xdg-config" XDG_CACHE_HOME="$scratch/xdg-cache"
+export XDG_RUNTIME_DIR="$scratch/xdg-runtime"
+mkdir -m 700 "$XDG_RUNTIME_DIR"
 printf 'Narrative verification output: %s\n' "$scratch"
-gzip -dc godot/tests/oracle/narrative.json.gz > "$scratch/oracle.json"
+cp godot/tests/native/narrative.json "$scratch/expectations.json"
 python3 tools/godot/localization-checks/validate_narrative.py "$PWD"
-export EMPIRE_NARRATIVE_ORACLE="$scratch/oracle.json"
+export EMPIRE_NARRATIVE_EXPECTATIONS="$scratch/expectations.json"
 python3 - "$PWD" "$scratch/native" <<'PY'
 from pathlib import Path
 import hashlib, json, shutil, sys
@@ -47,6 +49,29 @@ timeout --signal=TERM --kill-after=15s 300 "$GODOT_NET" --headless --path "$scra
 cat "$scratch/checks.log"
 if grep -Eiq "(^ERROR:|leaked|segmentation fault|unhandled exception)" "$scratch/checks.log"; then exit 1; fi
 if [[ " $* " == *" --verify-guard "* ]]; then
+  for mutation in prose identity; do
+    python3 - "$scratch/expectations.json" "$scratch/$mutation.json" "$mutation" <<'PYTHON'
+from pathlib import Path
+import json, sys
+source, target, mutation = sys.argv[1:]
+fixture = json.loads(Path(source).read_text())
+if mutation == 'prose':
+    case = next(case for case in fixture['storyCases'] if case['presentationId'] == 'c01/brief-03' and case['beatIndex'] == 1 and not case['ending'])
+    case['expected']['text'] = 'Incorrect reinforcement deadline expectation'
+else:
+    fixture['sourceDocuments']['speakers']['roderick'] = 'Incorrect speaker identity expectation'
+Path(target).write_text(json.dumps(fixture, ensure_ascii=False))
+PYTHON
+    if EMPIRE_NARRATIVE_EXPECTATIONS="$scratch/$mutation.json" timeout --signal=TERM --kill-after=15s "$timeout_seconds" "$GODOT_NET" --headless --path "$scratch/native" res://Scenes/NarrativeChecks.tscn >"$scratch/$mutation-mutant.log" 2>&1; then
+      echo "ERROR: narrative $mutation expectation mutant escaped detection." >&2; exit 1
+    fi
+  done
+  grep -q 'Narrative group passed: CheckIdentityProjections' "$scratch/prose-mutant.log"
+  grep -q 'Narrative group failed: CheckNativeProjections' "$scratch/prose-mutant.log"
+  grep -q 'Narrative group failed: CheckNativeWidgets' "$scratch/prose-mutant.log"
+  grep -q 'Narrative group failed: CheckIdentityProjections' "$scratch/identity-mutant.log"
+  grep -q 'Narrative group passed: CheckNativeProjections' "$scratch/identity-mutant.log"
+  echo 'Negative controls passed: native prose/widgets and independent shared identities reject incorrect expectations.'
   python3 - "$scratch/native/Presentation/NarrativeProjection.cs" <<'PY'
 from pathlib import Path
 import sys
@@ -58,5 +83,5 @@ PY
     echo 'ERROR: narrative label mutant escaped detection.' >&2; exit 1
   fi
   grep -q 'primaryLabel' "$scratch/mutant.log"
-  echo 'Negative control passed: frozen rendered expectations detects a wrong next-beat label.'
+  echo 'Negative control passed: reviewed native expectations detect a wrong next-beat label.'
 fi
