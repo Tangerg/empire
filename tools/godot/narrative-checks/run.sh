@@ -48,6 +48,18 @@ timeout --signal=TERM --kill-after=15s 300 "$GODOT_NET" --headless --editor --pa
 timeout --signal=TERM --kill-after=15s 300 "$GODOT_NET" --headless --path "$scratch/native" res://Scenes/NarrativeChecks.tscn > "$scratch/checks.log" 2>&1
 cat "$scratch/checks.log"
 if grep -Eiq "(^ERROR:|leaked|segmentation fault|unhandled exception)" "$scratch/checks.log"; then exit 1; fi
+expect_narrative_failure() {
+  local name="$1" log="$2" status=0
+  shift 2
+  "$@" >"$log" 2>&1 || status=$?
+  if [[ "$status" != 1 ]] ||
+    ! grep -Fq 'ERROR: System.AggregateException: Native narrative check groups failed.' "$log" ||
+    grep -Eiq 'leaked|segmentation fault|unhandled exception|core dumped|fatal error|fatal signal|crashhandler|program crashed' "$log"; then
+    printf 'ERROR: narrative %s did not exit with a clean assertion failure (exit %s); %s\n' "$name" "$status" "$log" >&2
+    return 1
+  fi
+  printf 'Negative process gate passed: %s (exit 1, expected assertion failure, clean teardown).\n' "$name"
+}
 if [[ " $* " == *" --verify-guard "* ]]; then
   for mutation in prose identity; do
     python3 - "$scratch/expectations.json" "$scratch/$mutation.json" "$mutation" <<'PYTHON'
@@ -62,9 +74,8 @@ else:
     fixture['sourceDocuments']['speakers']['roderick'] = 'Incorrect speaker identity expectation'
 Path(target).write_text(json.dumps(fixture, ensure_ascii=False))
 PYTHON
-    if EMPIRE_NARRATIVE_EXPECTATIONS="$scratch/$mutation.json" timeout --signal=TERM --kill-after=15s "$timeout_seconds" "$GODOT_NET" --headless --path "$scratch/native" res://Scenes/NarrativeChecks.tscn >"$scratch/$mutation-mutant.log" 2>&1; then
-      echo "ERROR: narrative $mutation expectation mutant escaped detection." >&2; exit 1
-    fi
+    expect_narrative_failure "$mutation" "$scratch/$mutation-mutant.log" \
+      env EMPIRE_NARRATIVE_EXPECTATIONS="$scratch/$mutation.json" timeout --signal=TERM --kill-after=15s "$timeout_seconds" "$GODOT_NET" --headless --path "$scratch/native" res://Scenes/NarrativeChecks.tscn
   done
   grep -q 'Narrative group passed: CheckIdentityProjections' "$scratch/prose-mutant.log"
   grep -q 'Narrative group failed: CheckNativeProjections' "$scratch/prose-mutant.log"
@@ -79,9 +90,8 @@ p = Path(sys.argv[1]); text = p.read_text(); assert text.count('"ui.story.next_b
 p.write_text(text.replace('"ui.story.next_beat"', '"ui.story.continue"'))
 PY
   timeout --signal=TERM --kill-after=15s "$timeout_seconds" dotnet build "$scratch/native/NarrativeNativeChecks.csproj" --nologo >"$scratch/mutant-build.log" 2>&1
-  if timeout --signal=TERM --kill-after=15s "$timeout_seconds" "$GODOT_NET" --headless --path "$scratch/native" res://Scenes/NarrativeChecks.tscn >"$scratch/mutant.log" 2>&1; then
-    echo 'ERROR: narrative label mutant escaped detection.' >&2; exit 1
-  fi
+  expect_narrative_failure next-beat "$scratch/mutant.log" \
+    timeout --signal=TERM --kill-after=15s "$timeout_seconds" "$GODOT_NET" --headless --path "$scratch/native" res://Scenes/NarrativeChecks.tscn
   grep -q 'primaryLabel' "$scratch/mutant.log"
   echo 'Negative control passed: reviewed native expectations detect a wrong next-beat label.'
 fi
