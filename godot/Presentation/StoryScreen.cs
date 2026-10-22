@@ -47,16 +47,16 @@ public partial class StoryScreen : Control
         submitted = true;
     }
 
-    public void ShowStory(StoryEntry entry, IReadOnlyDictionary<string, string> speakerNameKeys, NarrativeContext narrative,
+    public void ShowStory(StoryEntry entry, IReadOnlyDictionary<string, string> identityNameKeys, NarrativeContext narrative,
         bool isEnding, Action onContinue, Action onFinish, Action onExit)
     {
         ArgumentNullException.ThrowIfNull(onContinue);
         ArgumentNullException.ThrowIfNull(onFinish);
         ArgumentNullException.ThrowIfNull(onExit);
-        var first = NarrativeProjection.Story(entry, speakerNameKeys, narrative, 0, isEnding);
+        var first = NarrativeProjection.Story(entry, identityNameKeys, narrative, 0, isEnding);
         Reset(entry.Id, first.Shell, onExit);
         story = entry;
-        speakers = speakerNameKeys;
+        speakers = identityNameKeys;
         context = narrative;
         ending = isEnding;
         continueStory = onContinue;

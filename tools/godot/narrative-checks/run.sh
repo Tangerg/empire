@@ -19,7 +19,7 @@ root, target = map(Path, sys.argv[1:])
 (target / 'Localization').mkdir()
 for name in ['GameText.cs', 'GodotTextCatalog.cs', 'zh_CN.po']:
     shutil.copyfile(root / 'godot/Localization' / name, target / 'Localization' / name)
-for name in ['CharacterPortrait.cs', 'StoryScreen.cs', 'StoryModels.cs', 'NarrativeProjection.cs', 'CampaignShell.cs', 'NarrativeChecks.cs']:
+for name in ['CharacterPortrait.cs', 'StoryScreen.cs', 'StoryModels.cs', 'IdentityNames.cs', 'NarrativeProjection.cs', 'CampaignShell.cs', 'NarrativeChecks.cs']:
     shutil.copyfile(root / 'godot/Presentation' / name, target / 'Presentation' / name)
 # Copy the exact production loader, without unrelated board manifest types.
 loader = (root / 'godot/Presentation/ManifestModels.cs').read_text()

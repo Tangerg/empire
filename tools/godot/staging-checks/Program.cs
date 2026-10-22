@@ -20,15 +20,16 @@ foreach (var (target, fixture) in new[] { ("resourceLabelKeys", "testResourceLab
 var serialization = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
 int checks = 0;
 string Text(JsonNode? value) => EcmaJson.ReadString(value);
-string Name(string id) => Text(oracle["unitNames"]![id]);
 var dataDirectory = Path.GetDirectoryName(Path.GetFullPath(args[1]))!;
 var nativeLevels = EcmaJson.Parse(File.ReadAllText(Path.Combine(dataDirectory, "grayflag-campaign-levels.json")))!.AsArray();
 var levelById = nativeLevels.OfType<JsonObject>().ToDictionary(level => Text(level["id"]), StringComparer.Ordinal);
 var engine = new BattleEngine(EcmaJson.Parse(File.ReadAllText(Path.Combine(dataDirectory, "content-packs.json")))!.AsArray());
 var battleDocument = BattleTextDocument.Parse(new BattleTextDefinitions(nativeLevels, engine.Objectives, engine.ScenarioEffects),
     File.ReadAllText(Path.Combine(dataDirectory, "grayflag-battle-text.json")));
+var story = EcmaJson.Parse(File.ReadAllText(Path.Combine(dataDirectory, "grayflag-story.json")))!;
+var nameKeys = story["identityNameKeys"]!.AsObject().ToDictionary(item => item.Key, item => Text(item.Value), StringComparer.Ordinal);
 CampaignStagingText Presentation(GameText text) => new(text,
-    new BattleText(new(text, ObjectiveText.CreateDefault(text).Seal()), battleDocument), Name);
+    new BattleText(new(text, ObjectiveText.CreateDefault(text).Seal()), battleDocument), id => IdentityNames.Resolve(text, nameKeys, id));
 var presentation = Presentation(messages);
 JsonElement NativeLevel(JsonNode item) => EcmaJson.ToElement(levelById[Text(item["level"]!["id"])]);
 void Check(string name, JsonNode? actual, JsonNode? expected)
@@ -40,6 +41,7 @@ void Check(string name, JsonNode? actual, JsonNode? expected)
 foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
 {
     var before = EcmaJson.Stringify(item);
+    var digest = StateDigest.Hash(item["state"]!);
     var view = CampaignStaging.Create(presentation, EcmaJson.ToElement(item["state"]), EcmaJson.ToElement(item["node"]), NativeLevel(item),
         EcmaJson.ToElement(fixtureMetadata), item["pending"]!.GetValue<bool>());
     var actual = new JsonObject
@@ -58,7 +60,19 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
         ["chapterSource"] = view.ChapterArt.Source,
         ["briefingSource"] = view.BriefingArt?.Source,
     };
-    Check(Text(item["name"]), actual, item["expected"]);
+    var expected = item["expected"]!.DeepClone();
+    // The native identity delta is limited to Torren and Elin; retain every other frozen assertion.
+    for (var index = 0; index < view.Roster.Count; index++)
+    {
+        var unit = view.Roster[index];
+        if (unit.Id is "torren" or "elin")
+        {
+            Check("historical class-only roster label", expected["roster"]![index]!["name"], oracle["unitNames"]![unit.UnitType]);
+            expected["roster"]![index]!["name"] = unit.Id == "torren" ? "托伦" : "艾琳";
+        }
+    }
+    Check(Text(item["name"]), actual, expected);
+    Check("projection did not change digest", JsonValue.Create(StateDigest.Hash(item["state"]!)), JsonValue.Create(digest));
     Check("projection did not mutate state", JsonValue.Create(EcmaJson.Stringify(item)), JsonValue.Create(before));
     foreach (var unit in view.Roster)
     {
@@ -74,12 +88,57 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
     catch (NotSupportedException) { checks++; }
 }
 var first = oracle["cases"]![0]!;
+using (var stream = new System.IO.Compression.GZipStream(File.OpenRead(Path.Combine(dataDirectory, "../tests/oracle/narrative.json.gz")), System.IO.Compression.CompressionMode.Decompress))
+using (var reader = new StreamReader(stream))
+{
+    var narrativeOracle = EcmaJson.Parse(reader.ReadToEnd())!;
+    foreach (var speaker in narrativeOracle["sourceDocuments"]!["speakers"]!.AsObject())
+        Check("existing dialogue speaker label unchanged", JsonValue.Create(IdentityNames.Resolve(messages, nameKeys, speaker.Key)), speaker.Value);
+}
+var campaign = EcmaJson.Parse(File.ReadAllText(Path.Combine(dataDirectory, "grayflag-campaign.json")))!;
+foreach (var unit in campaign["initial"]!["roster"]!.AsArray())
+    Check("declared roster identity has a name", JsonValue.Create(string.IsNullOrWhiteSpace(IdentityNames.Resolve(messages, nameKeys, Text(unit!["id"])))), JsonValue.Create(false));
+Check("Laiya keeps personal name", JsonValue.Create(IdentityNames.Resolve(messages, nameKeys, "laiya")), JsonValue.Create("莱娅"));
+var changedState = first["state"]!.DeepClone();
+var reordered = new JsonObject();
+foreach (var unit in changedState["roster"]!.AsObject().Reverse())
+    reordered.Add(unit.Key, unit.Value!.DeepClone());
+changedState["roster"] = reordered;
+reordered["elin"]!["unitType"] = "c01.swordsman";
+reordered["torren"]!["disposition"] = "fallen";
+var changedBefore = EcmaJson.Stringify(changedState);
+var changedDigest = StateDigest.Hash(changedState);
+var changedView = CampaignStaging.Create(presentation, EcmaJson.ToElement(changedState), EcmaJson.ToElement(first["node"]), NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false);
+Check("reordered people sharing a class retain distinct names", JsonSerializer.SerializeToNode(changedView.Roster.Select(unit => new { unit.Id, unit.Name }), serialization),
+    JsonNode.Parse("[{\"id\":\"elin\",\"name\":\"艾琳\"},{\"id\":\"torren\",\"name\":\"托伦\"},{\"id\":\"laiya\",\"name\":\"莱娅\"}]"));
+Check("fallen member keeps status", JsonValue.Create(changedView.Roster.Single(unit => unit.Id == "torren").Status), JsonValue.Create(messages.Format("ui.staging.disposition.fallen")));
+Check("reordered projection preserves state", JsonValue.Create(EcmaJson.Stringify(changedState)), JsonValue.Create(changedBefore));
+Check("reordered projection preserves digest", JsonValue.Create(StateDigest.Hash(changedState)), JsonValue.Create(changedDigest));
+void Reject<TException>(Action action, string diagnostic) where TException : InvalidOperationException
+{
+    try
+    {
+        action();
+    }
+    catch (TException error) when (error.Message.Contains(diagnostic, StringComparison.Ordinal)) { checks++; return; }
+    throw new Exception($"Expected {typeof(TException).Name}: {diagnostic}");
+}
+var unknownState = first["state"]!.DeepClone();
+unknownState["roster"]!["torren"]!["id"] = "undeclared-person";
+Reject<InvalidOperationException>(() => CampaignStaging.Create(presentation, EcmaJson.ToElement(unknownState), EcmaJson.ToElement(first["node"]), NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false), "undeclared-person");
+var missingName = new GameText(key => key == nameKeys["elin"] ? null : catalog.GetValueOrDefault(key), CultureInfo.InvariantCulture);
+Reject<LocalizationException>(() => CampaignStaging.Create(Presentation(missingName), EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(first["node"]), NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false), nameKeys["elin"]);
+var contentText = EcmaJson.Parse(File.ReadAllText(Path.Combine(dataDirectory, "grayflag-content-text.json")))!;
+foreach (var (id, expectedName) in new[] { ("c01.swordsman", "边境剑士"), ("c01.archer", "边境弓手") })
+    Check("generic class name unchanged", JsonValue.Create(messages.Format(Text(contentText["content"]!["units"]![id]!["name"]))), JsonValue.Create(expectedName));
 var alternate = new GameText(key => catalog.TryGetValue(key, out var value) ? value + " [fixture]" : null, CultureInfo.InvariantCulture);
 var alternateView = CampaignStaging.Create(Presentation(alternate), EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(first["node"]),
     NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false);
+Check("identity names use injected locale", JsonValue.Create(alternateView.Roster.Single(unit => unit.Id == "torren").Name), JsonValue.Create("托伦 [fixture]"));
 Check("staging injects shared campaign wording", JsonValue.Create(alternateView.CampaignTitle),
     JsonValue.Create(messages.Format(Text(exported["titleKey"])) + " [fixture]"));
 Check("staging injects shell action wording", JsonValue.Create(alternateView.ExitLabel), JsonValue.Create("返回主菜单 [fixture]"));
+Console.WriteLine($"PASS {checks} staging projection/identity comparisons across 45 frozen views; shared-class, reordered/fallen, missing-name, dialogue/class-label and state/digest guards.");
 var node = first["node"]!.DeepClone().AsObject();
 node["level"] = "wrong";
 try

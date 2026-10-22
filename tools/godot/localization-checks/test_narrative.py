@@ -15,7 +15,7 @@ class NativeNarrativeContract(unittest.TestCase):
         self.temporary = tempfile.TemporaryDirectory(prefix="empire-narrative-contract.")
         self.root = Path(self.temporary.name)
         source = Path(__file__).resolve().parents[3]
-        for name in ["godot/data/grayflag-story.json", "godot/data/grayflag-staging.json", "godot/Localization/zh_CN.po"]:
+        for name in ["godot/data/grayflag-campaign.json", "godot/data/grayflag-story.json", "godot/data/grayflag-staging.json", "godot/Localization/zh_CN.po"]:
             target = self.root / name
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(source / name, target)
@@ -39,6 +39,18 @@ class NativeNarrativeContract(unittest.TestCase):
 
     def test_missing_key(self):
         self.change("grayflag-story.json", lambda value: value["stories"][0].update(titleKey="story.missing.title"))
+        self.reject()
+
+    def test_missing_roster_identity(self):
+        self.change("grayflag-story.json", lambda value: value["identityNameKeys"].pop("torren"))
+        self.reject()
+
+    def test_missing_roster_name_key(self):
+        self.change("grayflag-story.json", lambda value: value["identityNameKeys"].update(elin="speaker.missing.name"))
+        self.reject()
+
+    def test_obsolete_speaker_name_owner(self):
+        self.change("grayflag-story.json", lambda value: value.update(speakerNameKeys=value.pop("identityNameKeys")))
         self.reject()
 
     def test_literal_prose_is_not_a_second_owner(self):
@@ -66,12 +78,12 @@ class NativeNarrativeContract(unittest.TestCase):
         self.reject()
 
     def test_obsolete_schema(self):
-        self.change("grayflag-story.json", lambda value: value.update(schema=1))
+        self.change("grayflag-story.json", lambda value: value.update(schema=2))
         self.reject()
 
     def test_duplicate_json_field(self):
         path = self.root / "godot/data/grayflag-story.json"
-        path.write_text(path.read_text().replace('"schema": 2', '"schema": 2, "schema": 2', 1))
+        path.write_text(path.read_text().replace('"schema": 3', '"schema": 3, "schema": 3', 1))
         self.reject()
 
     def test_orphaned_message(self):

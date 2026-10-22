@@ -140,7 +140,7 @@ public sealed class CampaignStagingView
     }
 }
 
-public sealed record CampaignStagingText(GameText Messages, BattleText Battle, Func<string, string> UnitTypeName);
+public sealed record CampaignStagingText(GameText Messages, BattleText Battle, Func<string, string> IdentityName);
 
 public static class CampaignStaging
 {
@@ -178,7 +178,7 @@ public static class CampaignStaging
                 ? text.Format("ui.staging.available_status", Math.Floor(unit.GetProperty("hpRatio").GetDouble() * 100 + 0.5), rank)
                 : text.Format($"ui.staging.disposition.{disposition}");
             var binding = bindings.FirstOrDefault(candidate => Text(candidate.GetProperty("campaignUnit")) == unitId);
-            roster.Add(new CampaignStagingUnit(unitId, type, presentationText.UnitTypeName(type), status,
+            roster.Add(new CampaignStagingUnit(unitId, type, presentationText.IdentityName(unitId), status,
                 binding.ValueKind == JsonValueKind.Undefined ? null : Text(binding.GetProperty("levelUnitKey")),
                 portraits.TryGetProperty(unitId, out var portrait) ? Art(portrait) : null));
         }

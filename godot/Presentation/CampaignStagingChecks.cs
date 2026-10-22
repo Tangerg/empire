@@ -47,9 +47,9 @@ public partial class CampaignStagingChecks : Node
                     RemoveArt(child.Value);
             }
             RemoveArt(metadata);
-            string UnitName(string id) => EcmaJson.ReadString(oracle["unitNames"]![id]);
+            var identities = StoryDocument.Load(messages).IdentityNameKeys;
             var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
-            var presentationText = new CampaignStagingText(messages, BattleTextChecks.Load(engine, messages), UnitName);
+            var presentationText = new CampaignStagingText(messages, BattleTextChecks.Load(engine, messages), id => IdentityNames.Resolve(messages, identities, id));
             var nativeLevels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
                 .ToDictionary(level => level["id"]!.GetValue<string>(), StringComparer.Ordinal);
             System.Text.Json.JsonElement NativeLevel(JsonNode fixture) =>

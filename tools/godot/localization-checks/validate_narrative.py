@@ -37,13 +37,17 @@ def validate(root):
         if any(not isinstance(key, str) or not key.strip() for key in ids) or len(set(ids)) != len(ids):
             raise CatalogError(f"Missing or duplicate {name} ID")
 
-    shape(story, ["schema", "speakerNameKeys", "stories", "choices"])
+    shape(story, ["schema", "identityNameKeys", "stories", "choices"])
     shape(staging, ["schema", "titleKey", "completionLabelKey", "menu", "menuArt", "chapters", "storyScenes",
                     "battleTotal", "joinAfter", "relationLabelKeys", "resourceLabelKeys", "portraits", "levels"])
-    if story["schema"] != 2 or staging["schema"] != 2:
-        raise CatalogError("Native narrative documents require schema 2")
+    if story["schema"] != 3 or staging["schema"] != 2:
+        raise CatalogError("Native story requires schema 3 and staging requires schema 2")
     identities(story["stories"] + story["choices"], "narrative")
-    for key in story["speakerNameKeys"].values():
+    campaign = json.loads((data / "grayflag-campaign.json").read_text(encoding="utf-8"), object_pairs_hook=unique_object)
+    for unit in campaign["initial"]["roster"]:
+        if unit["id"] not in story["identityNameKeys"]:
+            raise CatalogError(f"Missing campaign identity name: {unit['id']}")
+    for key in story["identityNameKeys"].values():
         message(key)
     for row in story["stories"]:
         shape(row, ["id", "chapter", "kickerKey", "titleKey", "dateKey", "locationKey", "summaryKey", "beats"], ["scene", "mission"])
@@ -54,7 +58,7 @@ def validate(root):
             shape(beat, ["id", "speaker", "textKey"])
             if not re.fullmatch(r"[a-z][a-z-]+", beat["id"]):
                 raise CatalogError(f"Beat needs an authored word-based ID, not a numeric position: {beat['id']}")
-            if beat["speaker"] not in story["speakerNameKeys"]:
+            if beat["speaker"] not in story["identityNameKeys"]:
                 raise CatalogError(f"Unknown narrative speaker: {beat['speaker']}")
         if row.get("mission") is not None:
             shape(row["mission"], ["objectiveKey", "dangerKey", "lessonKey"])

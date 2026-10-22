@@ -59,6 +59,8 @@ public partial class GrayFlagGame : Node
         narrative = NarrativePresentationDocument.Load(text);
         campaign = NewCampaign();
         stories = StoryDocument.Load(text);
+        foreach (var unit in definition["initial"]!["roster"]!.AsArray())
+            IdentityNames.Resolve(text, stories.IdentityNameKeys, unit!["id"]!.GetValue<string>());
         ShowMenu();
     }
 
@@ -349,7 +351,7 @@ public partial class GrayFlagGame : Node
                             ShowMenu();
                     });
             else
-                next.ShowStory(stories.Stories.Single(value => value.Id == presentation), stories.SpeakerNameKeys, context, type == "ending",
+                next.ShowStory(stories.Stories.Single(value => value.Id == presentation), stories.IdentityNameKeys, context, type == "ending",
                     () =>
                     {
                         if (Current())
@@ -376,7 +378,7 @@ public partial class GrayFlagGame : Node
 
     private PreparedCampaignView PrepareStaging(GrayFlagCampaign owner)
     {
-        var projection = CampaignStaging.Create(new CampaignStagingText(text, battleText, presentationText.Content.UnitName),
+        var projection = CampaignStaging.Create(new CampaignStagingText(text, battleText, id => IdentityNames.Resolve(text, stories.IdentityNameKeys, id)),
             Empire.Core.Determinism.EcmaJson.ToElement(owner.Snapshot()),
             Empire.Core.Determinism.EcmaJson.ToElement(owner.Node()),
             Empire.Core.Determinism.EcmaJson.ToElement(owner.BattleLevel()),

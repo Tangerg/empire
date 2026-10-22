@@ -15,7 +15,7 @@ public sealed class StoryDocument
     {
         get; init;
     }
-    public Dictionary<string, string> SpeakerNameKeys { get; init; } = new(StringComparer.Ordinal);
+    public Dictionary<string, string> IdentityNameKeys { get; init; } = new(StringComparer.Ordinal);
     public List<StoryEntry> Stories { get; init; } = new();
     public List<StoryChoice> Choices { get; init; } = new();
 
@@ -28,10 +28,10 @@ public sealed class StoryDocument
 
     public void Validate(GameText text)
     {
-        if (Schema != 2)
+        if (Schema != 3)
             throw new InvalidOperationException("Unsupported story document schema.");
         Unique(Stories.Select(story => story.Id).Concat(Choices.Select(choice => choice.Id)), "narrative");
-        foreach (var nameKey in SpeakerNameKeys.Values)
+        foreach (var nameKey in IdentityNameKeys.Values)
             text.Format(nameKey);
         foreach (var story in Stories)
         {
@@ -42,7 +42,7 @@ public sealed class StoryDocument
                 text.Format(key);
             foreach (var beat in story.Beats)
             {
-                if (!SpeakerNameKeys.ContainsKey(beat.Speaker))
+                if (!IdentityNameKeys.ContainsKey(beat.Speaker))
                     throw new InvalidOperationException($"Unknown narrative speaker {beat.Speaker} in {story.Id}/{beat.Id}.");
                 text.Format(beat.TextKey);
             }

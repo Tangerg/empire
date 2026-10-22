@@ -10,7 +10,7 @@ Coverage:
 - Native .NET composite formatting, reordered/repeated arguments, escaped braces, invalid formats, exact arity (missing and extra arguments), index gaps, and required-key completeness.
 - Two independent injected test catalogs, explicit culture isolation from process culture and later caller mutation.
 - Exact equality of every source-catalog entry with Godot's native TranslationServer lookup; resource locale, strict missing-key behavior and one parameterized real Chinese message.
-- Native schema-2 story/staging reference completeness, strict field ownership, speaker/beat identities, and negative controls for obsolete fields, duplicated/positional beats and orphaned messages.
+- Native schema-3 story/schema-2 staging reference completeness, declared campaign roster name coverage, strict field ownership, speaker/beat identities, and negative controls for obsolete fields, duplicated/positional beats and orphaned messages.
 - Optional isolated native release packaging, followed by launching only the exported bundle.
 
 These checks deliberately assert failures, not just scan for methods that exist. They are foundation tests. They do not claim the existing application has stopped exposing all hardcoded strings or that domain schema migration is complete. Narrative content-key discovery and real consumers are now integrated. Semantic-code coverage, remaining menu/battle consumers and core locale-independence tests still belong to their separate migrations.

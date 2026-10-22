@@ -4,12 +4,12 @@
 
 `StoryScreen` owns only a local beat cursor and the lifetime of its controls. It never reads or mutates a campaign runtime, performs a save, or synthesizes a battle outcome. The application supplies `NarrativeContext` (the explicit `GameText` service, authored metadata, completed battle count, active status) and callbacks:
 
-- `ShowStory(story, speakerNameKeys, context, isEnding, onContinue, onFinish, onExit)`.
+- `ShowStory(story, identityNameKeys, context, isEnding, onContinue, onFinish, onExit)`.
 - `ShowChoice(choice, availableOptionIds, context, onChoose, onExit)`.
 
 Normal primary actions advance one local beat. Only the last normal beat invokes `onContinue`. Ending primary actions invoke `onFinish` immediately. That callback, not the screen, decides whether to advance/save/rebind or exit. Menu navigation is always `onExit`. Choice IDs are passed unchanged to the caller, in source presentation order, restricted to the canonical available option IDs.
 
-`NarrativeProjection` is a detached read model. `CampaignShell` renders its supplied title, chapter heading, segmented progress, actual backdrop, menu button and scroll body. Its display methods are reusable by staging/results without gaining campaign authority. The native `grayflag-story.json` schema 2 owns story/choice structure, speaker IDs and manually authored semantic beat IDs. It contains message references, not prose. `grayflag-staging.json` schema 2 owns shared `titleKey`, `completionLabelKey`, chapter title references and artwork. Level entries no longer repeat chapter titles. `zh_CN.po` alone owns narrative wording and the shared shell labels. No story/choice/scene identifiers are duplicated in production C#.
+`NarrativeProjection` is a detached read model. `CampaignShell` renders its supplied title, chapter heading, segmented progress, actual backdrop, menu button and scroll body. Its display methods are reusable by staging/results without gaining campaign authority. The native `grayflag-story.json` schema 3 owns story/choice structure, shared `identityNameKeys` for narrative roles and named campaign people, speaker IDs and manually authored semantic beat IDs. It contains message references, not prose. `grayflag-staging.json` schema 2 owns shared `titleKey`, `completionLabelKey`, chapter title references and artwork. Level entries no longer repeat chapter titles. `zh_CN.po` alone owns narrative wording and the shared shell labels. No story/choice/scene identifiers are duplicated in production C#.
 
 `StoryDocument.Load(text)` validates all content keys and zero-argument formats, unique story/choice/beat/option identities and mapped speakers before navigation. Literal old fields are rejected, not adapted. The projection resolves messages into detached view models; controls render those values. The application owns the one injected service. There is no localization dependency in Core, no translated prose/key added to campaign state, and no migration for schema-1 presentation documents.
 
@@ -48,7 +48,7 @@ Run:
 bash tools/godot/narrative-checks/run.sh --verify-guard
 ```
 
-The test creates a fresh `/tmp/empire-narrative.*` project and isolates `XDG_DATA_HOME`; it does not touch user saves. It copies the actual production narrative classes and the exact production JSON loader, and imports only required source-exported narrative PNGs. The default gate uses frozen rendered expectations and native schema-2 fixtures, with no TypeScript runtime.
+The test creates a fresh `/tmp/empire-narrative.*` project and isolates `XDG_DATA_HOME`; it does not touch user saves. It copies the actual production narrative classes and the exact production JSON loader, and imports only required source-exported narrative PNGs. The default gate uses frozen rendered expectations and native story-schema-3/staging-schema-2 documents, with no TypeScript runtime.
 
 Frozen observations originally produced by `StoryCampaignController`, its adapter/runtime and save helpers cover:
 

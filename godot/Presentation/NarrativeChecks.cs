@@ -151,7 +151,7 @@ public partial class NarrativeChecks : Node
         Equal(documents.Choices.Count, 11, "Export contains every source choice");
         foreach (var item in oracle["storyCases"]!.AsArray().Select(value => value!.AsObject()))
         {
-            var view = NarrativeProjection.Story(Story(Text(item, "presentationId")), documents.SpeakerNameKeys,
+            var view = NarrativeProjection.Story(Story(Text(item, "presentationId")), documents.IdentityNameKeys,
                 Context(item["state"]!.AsObject()), Number(item, "beatIndex"), Flag(item, "ending"));
             CheckStoryProjection(Text(item, "presentationId"), view, item["expected"]!.AsObject(), Text(item, "name"), true);
         }
@@ -211,8 +211,8 @@ public partial class NarrativeChecks : Node
             Chapter = documents.Stories[0].Chapter,
             Beats = new() { new() { Id = "unmapped-speaker", Speaker = "unmapped", TextKey = documents.Stories[0].Beats[0].TextKey } }
         };
-        Throws(() => NarrativeProjection.Story(unknown, documents.SpeakerNameKeys, new(messages, metadata, 0, true), 0, false), "Unknown speaker is rejected explicitly");
-        Throws(() => NarrativeProjection.Story(new StoryEntry { Id = "empty" }, documents.SpeakerNameKeys, new(messages, metadata, 0, true), 0, false), "Empty beat document is rejected explicitly");
+        Throws(() => NarrativeProjection.Story(unknown, documents.IdentityNameKeys, new(messages, metadata, 0, true), 0, false), "Unknown speaker is rejected explicitly");
+        Throws(() => NarrativeProjection.Story(new StoryEntry { Id = "empty" }, documents.IdentityNameKeys, new(messages, metadata, 0, true), 0, false), "Empty beat document is rejected explicitly");
     }
 
     private void CheckLocalizationBoundary()
@@ -222,13 +222,13 @@ public partial class NarrativeChecks : Node
         var alternate = new GameText(key => known.Contains(key) ? catalog.GetMessage(key).ToString() + " [fixture]" : null, CultureInfo.InvariantCulture);
         var entry = documents.Stories[0];
         var before = JsonSerializer.Serialize(documents, jsonOptions);
-        var first = NarrativeProjection.Story(entry, documents.SpeakerNameKeys, new(messages, metadata, 0, true), 0, false);
-        var second = NarrativeProjection.Story(entry, documents.SpeakerNameKeys, new(alternate, metadata, 0, true), 0, false);
+        var first = NarrativeProjection.Story(entry, documents.IdentityNameKeys, new(messages, metadata, 0, true), 0, false);
+        var second = NarrativeProjection.Story(entry, documents.IdentityNameKeys, new(alternate, metadata, 0, true), 0, false);
         Equal(second.Title, first.Title + " [fixture]", "Injected catalog owns story wording");
         Equal(second.Date, first.Date + " [fixture]", "Injected catalog owns date wording");
         Equal(second.Text, first.Text + " [fixture]", "Injected catalog owns beat wording");
         Equal(second.Shell.ExitLabel, first.Shell.ExitLabel + " [fixture]", "Injected catalog owns shell labels");
-        screen.ShowStory(entry, documents.SpeakerNameKeys, new(alternate, metadata, 0, true), false, () => { }, () => { }, () => { });
+        screen.ShowStory(entry, documents.IdentityNameKeys, new(alternate, metadata, 0, true), false, () => { }, () => { }, () => { });
         Equal(Find<Label>("StoryTitle").Text, second.Title, "Actual widget renders injected catalog, not hardcoded prose");
         Equal(Find<Label>("StoryDate").Text, second.Date, "Actual widget renders the injected date");
         Equal(Find<Button>("StoryPrimary").Text, second.PrimaryLabel, "Actual widget renders injected navigation");
@@ -238,12 +238,12 @@ public partial class NarrativeChecks : Node
         reorderedJson["beats"] = new JsonArray(original);
         var reordered = JsonSerializer.Deserialize<StoryEntry>(reorderedJson.ToJsonString(), jsonOptions)!;
         var moved = reordered.Beats.FindIndex(beat => beat.Id == entry.Beats[0].Id);
-        Equal(NarrativeProjection.Story(reordered, documents.SpeakerNameKeys, new(messages, metadata, 0, true), moved, false).Text,
+        Equal(NarrativeProjection.Story(reordered, documents.IdentityNameKeys, new(messages, metadata, 0, true), moved, false).Text,
             first.Text, "Reordering does not change semantic beat key ownership");
         var noSceneJson = JsonSerializer.SerializeToNode(entry, jsonOptions)!.AsObject();
         noSceneJson["scene"] = null;
         var noScene = JsonSerializer.Deserialize<StoryEntry>(noSceneJson.ToJsonString(), jsonOptions)!;
-        var chapterView = NarrativeProjection.Story(noScene, documents.SpeakerNameKeys, new(messages, metadata, 0, true), 0, false);
+        var chapterView = NarrativeProjection.Story(noScene, documents.IdentityNameKeys, new(messages, metadata, 0, true), 0, false);
         Equal(chapterView.Shell.Art.Source, metadata.Chapters[entry.Chapter].Art.Source, "Null scene uses the explicitly owned chapter backdrop");
         Equal(chapterView.Speaker, first.Speaker, "Known narrator remains localized without a scene");
         Require(chapterView.Narration, "Known narrator without a portrait is valid authoring");
@@ -275,7 +275,7 @@ public partial class NarrativeChecks : Node
             var expected = item["expected"]!;
             var advanced = 0;
             var finished = 0;
-            screen.ShowStory(entry, documents.SpeakerNameKeys, Context(item["state"]!.AsObject()), ending, () => advanced++, () => finished++, () => { });
+            screen.ShowStory(entry, documents.IdentityNameKeys, Context(item["state"]!.AsObject()), ending, () => advanced++, () => finished++, () => { });
             for (var beat = 0; beat < index; beat++)
                 Press("StoryPrimary");
             await Layout();
@@ -342,7 +342,7 @@ public partial class NarrativeChecks : Node
                 var node = runtime.Node();
                 if (Text(node, "type") != "story")
                     return;
-                screen.ShowStory(Story(Text(node, "presentation")), documents.SpeakerNameKeys, Context(runtime.Snapshot()), false,
+                screen.ShowStory(Story(Text(node, "presentation")), documents.IdentityNameKeys, Context(runtime.Snapshot()), false,
                     () => { runtime.Advance(); saved = CampaignSave.Load(CampaignSave.Create(definition, runtime.Snapshot()), definition)["state"]!.AsObject(); Bind(); },
                     () => throw new InvalidOperationException("Ordinary story invoked finish."), () => { });
             }
@@ -369,7 +369,7 @@ public partial class NarrativeChecks : Node
             JsonObject? saved = null;
             var exits = 0;
             var normal = 0;
-            void Bind() => screen.ShowStory(Story(Text(runtime.Node(), "presentation")), documents.SpeakerNameKeys, Context(runtime.Snapshot()), true,
+            void Bind() => screen.ShowStory(Story(Text(runtime.Node(), "presentation")), documents.IdentityNameKeys, Context(runtime.Snapshot()), true,
                 () => normal++, () =>
                 {
                     if (Text(runtime.Snapshot(), "status") == "active")
@@ -405,7 +405,7 @@ public partial class NarrativeChecks : Node
         var context = new NarrativeContext(messages, metadata, 0, true);
         var continuations = 0;
         var exits = 0;
-        void Bind() => screen.ShowStory(entry, documents.SpeakerNameKeys, context, false, () => continuations++, () => throw new Exception("Unexpected finish"), () => exits++);
+        void Bind() => screen.ShowStory(entry, documents.IdentityNameKeys, context, false, () => continuations++, () => throw new Exception("Unexpected finish"), () => exits++);
         Bind();
         var stalePage = Find<Button>("StoryPrimary");
         stalePage.EmitSignal(Button.SignalName.Pressed);
@@ -504,7 +504,7 @@ public partial class NarrativeChecks : Node
         var window = GetWindow();
         window.Size = new Vector2I(640, 360);
         await Layout();
-        screen.ShowStory(entry, documents.SpeakerNameKeys, new(messages, metadata, 5, true), false, () => { }, () => { }, () => { });
+        screen.ShowStory(entry, documents.IdentityNameKeys, new(messages, metadata, 5, true), false, () => { }, () => { }, () => { });
         await Layout();
         Equal(Find<GridContainer>("MissionBrief").Columns, 1, "Narrow source mission layout uses one column");
         Equal(Find<GridContainer>("StoryActions").Columns, 1, "Narrow source actions use one column");
@@ -525,7 +525,7 @@ public partial class NarrativeChecks : Node
         Require(Find<CampaignProgress>("CampaignProgress").Visible, "Wide layout shows campaign progress");
         var card = Find<Control>("NarrativeCard");
         Require(card.Size.X <= screen.Size.X, "Wrapping does not create horizontal overflow");
-        screen.ShowStory(entry, documents.SpeakerNameKeys, new(messages, metadata, 5, true), false, () => { }, () => { }, () => { });
+        screen.ShowStory(entry, documents.IdentityNameKeys, new(messages, metadata, 5, true), false, () => { }, () => { }, () => { });
         await Layout();
         Equal(Find<ScrollContainer>("NarrativeScroll").ScrollVertical, 0, "New caller binding begins at the top");
         var choice = documents.Choices[0];
@@ -553,7 +553,7 @@ public partial class NarrativeChecks : Node
             StoryScenes = metadata.StoryScenes.ToDictionary(pair => pair.Key, pair => new NarrativeArt { Source = pair.Value.Source, ResourcePath = "res://missing-narrative-art.png" }),
             Portraits = metadata.Portraits.ToDictionary(pair => pair.Key, pair => new NarrativeArt { Source = pair.Value.Source })
         };
-        screen.ShowStory(entry, documents.SpeakerNameKeys, new(messages, missing, 0, true), false, () => { }, () => { }, () => { });
+        screen.ShowStory(entry, documents.IdentityNameKeys, new(messages, missing, 0, true), false, () => { }, () => { }, () => { });
         Require(screen.RenderingDiagnostics.Any(message => message.Contains("missing-narrative-art.png")), "Absent exported scene gets explicit diagnostic");
         for (var index = 0; index < entry.Beats.Count && screen.PresentedStory!.Portrait is null; index++)
             Press("StoryPrimary");

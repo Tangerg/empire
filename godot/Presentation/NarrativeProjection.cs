@@ -94,7 +94,7 @@ public sealed record ChoiceView(CampaignShellView Shell, string Prompt, string C
 
 public static class NarrativeProjection
 {
-    public static StoryView Story(StoryEntry story, IReadOnlyDictionary<string, string> speakerNameKeys,
+    public static StoryView Story(StoryEntry story, IReadOnlyDictionary<string, string> identityNameKeys,
         NarrativeContext context, int beatIndex, bool ending)
     {
         if (story.Beats.Count == 0)
@@ -102,14 +102,12 @@ public static class NarrativeProjection
         if (beatIndex < 0)
             throw new ArgumentOutOfRangeException(nameof(beatIndex));
         var beat = story.Beats[Math.Min(beatIndex, story.Beats.Count - 1)];
-        if (!speakerNameKeys.TryGetValue(beat.Speaker, out var speakerKey))
-            throw new InvalidOperationException($"Unknown narrative speaker {beat.Speaker} in {story.Id}/{beat.Id}.");
         var lastBeat = beatIndex >= story.Beats.Count - 1;
         var text = context.Text;
         var mission = story.Mission is { } source ? new StoryMissionView(text.Format(source.ObjectiveKey), text.Format(source.DangerKey), text.Format(source.LessonKey)) : null;
         return new StoryView(CampaignShellView.Create(context, story.Chapter, story.Scene),
             text.Format(story.KickerKey), text.Format(story.DateKey), text.Format(story.LocationKey), text.Format(story.TitleKey), text.Format(story.SummaryKey), mission,
-            text.Format(speakerKey), text.Format(beat.TextKey), context.Presentation.Portraits.GetValueOrDefault(beat.Speaker), beatIndex, story.Beats.Count,
+            IdentityNames.Resolve(text, identityNameKeys, beat.Speaker), text.Format(beat.TextKey), context.Presentation.Portraits.GetValueOrDefault(beat.Speaker), beatIndex, story.Beats.Count,
             text.Format(ending ? context.CampaignActive ? context.Presentation.CompletionLabelKey : "ui.campaign.exit"
                 : lastBeat ? "ui.story.continue" : "ui.story.next_beat"), ending,
             text.Format("ui.story.objective"), text.Format("ui.story.danger"), text.Format("ui.story.lesson"));
