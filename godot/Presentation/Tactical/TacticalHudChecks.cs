@@ -77,10 +77,9 @@ public partial class TacticalHudChecks : Node
     {
         var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
         var text = GodotTextCatalog.LoadSimplifiedChinese();
-        var level = PresentationJson.Load<JsonObject>("res://data/samples/redstone-prototype/level.json");
-        var presentation = SessionPresentationText.Compose(new(engine, text), new JsonArray(level.DeepClone()),
-            Godot.FileAccess.GetFileAsString("res://data/samples/redstone-prototype/text.json"),
-            Godot.FileAccess.GetFileAsString("res://data/grayflag-content-text.json"));
+        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<string>() == "c01-03");
+        var presentation = BattleTextChecks.Session(engine, text);
         var session = new GrayFlagSession(new(engine, presentation), level);
         var control = new TacticalSelectionController(session.GetTacticalQueries(41));
         var home = new BoardCell(38, 23);
@@ -151,10 +150,20 @@ public partial class TacticalHudChecks : Node
 
     private async System.Threading.Tasks.Task CheckSitePointerBoundary()
     {
-        var sample = ResourceLoader.Load<PackedScene>("res://Scenes/PaintedRedstoneSample.tscn").Instantiate<PaintedBattleSample>();
-        AddChild(sample);
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var presentation = BattleTextChecks.Session(engine, GodotTextCatalog.LoadSimplifiedChinese());
+        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<string>() == "c01-03");
+        var session = new GrayFlagSession(new(engine, presentation), level);
+        var scene = AuthoredScene.Load("res://data/scenes/c01-03.json");
+        var rendering = BoardSceneRendering.Load(scene, level, session.Snapshot()["map"]!.AsObject());
+        var screen = new BattleScreen();
+        AddChild(screen);
+        screen.BindSession(new(presentation.Messages, presentation.Battle, session,
+            new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, rendering.Plane)), level, scene);
+        screen.ConfigureGround(rendering.Ground);
+        screen.ConfigureDynamicState();
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-        var screen = sample.GetChildren().OfType<BattleScreen>().Single();
         var map = (Control)screen.FindChild("MapArea", true, false);
         var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
         var inside = map.Size / 2;
@@ -203,8 +212,8 @@ public partial class TacticalHudChecks : Node
         map.EmitSignal(Control.SignalName.MouseExited);
         Release(outside, MouseButton.Middle);
         Require(!HasTile(), "Middle-button boundary release clears hover through the same captured gesture policy.");
-        RemoveChild(sample);
-        sample.Free();
+        RemoveChild(screen);
+        screen.Free();
     }
 
     public override async void _Ready()

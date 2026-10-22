@@ -1,39 +1,17 @@
 {
   "schemaVersion": "environment-scene-v1.1",
   "levelId": "c01-03",
-  "runtimeReady": false,
+  "runtimeReady": true,
   "mapSize": [
-    22,
-    15
+    101,
+    52
   ],
-  "selection": {
-    "allowAtlases": [
-      "forest-temperate"
-    ]
-  },
-  "zones": [
-    {
-      "id": "clearance-2-5",
-      "bounds": [
-        2,
-        5,
-        2,
-        5
-      ],
-      "role": "mounted-approach-understory",
-      "authoredTerrainScenery": [
-        "forest"
-      ]
-    }
+  "paintedGroundPath": "res://data/scenes/c01-03-painted-ground.json",
+  "openingFocus": [
+    54,
+    23
   ],
-  "placements": [
-    {
-      "id": "fern-bed",
-      "x": 2.5057234375,
-      "y": 5.18,
-      "layer": "under-units",
-      "scale": 0.48,
-      "flip": true
-    }
-  ]
+  "placements": [],
+  "framePlacements": [],
+  "zones": []
 }

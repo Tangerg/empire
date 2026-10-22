@@ -109,12 +109,11 @@ compare exact state, digest, and replay results without rewriting historical gol
 `docs/OBJECTIVE-OUTCOME-SCHEMA.md` before using them. Their regeneration requires
 the original repository and locked Node dependencies; the native runtime does not.
 
-## Redstone playable sample
+## Redstone campaign battlefield
 
-For the independent 101×52 Redstone visual/playable sample, open
-`Scenes/PaintedRedstoneSample.tscn` and run the current scene. See
-[Redstone sample instructions and limits](docs/REDSTONE-SAMPLE.md).
-It does not replace the campaign's third level.
+The formal `c01-03` uses the 101×52 painted Redstone battlefield through the normal
+campaign entry and carried roster. The independent Redstone sample has been
+removed. See [mission, controls, save contract and acceptance limits](docs/REDSTONE-CAMPAIGN.md).
 
 ## Formal painted second level
 

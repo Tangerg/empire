@@ -43,6 +43,11 @@ public partial class CameraIntegrationChecks : Node
             screen.Board.AdvanceAnimationsAutomatically = false;
             var initial = new ProjectedSession(new GrayFlagSession(new(engine, presentation), level), false, false);
             Bind(initial);
+            // This detached screen has a Node parent, not an application-sized Control.
+            screen.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.TopLeft);
+            screen.Size = new Vector2(
+                ProjectSettings.GetSetting("display/window/size/viewport_width").AsInt32(),
+                ProjectSettings.GetSetting("display/window/size/viewport_height").AsInt32());
             await Layout();
             map = (Control)screen.FindChild("MapArea", true, false);
             world = map.GetNode<Node2D>("World");
@@ -85,9 +90,10 @@ public partial class CameraIntegrationChecks : Node
         Require(screen.SelectedUnitId == 2, "Fixture actor is the real Torren unit");
         GuiButton(MouseButton.Right, true, new Vector2(-1000, -1000));
         Require(screen.SelectedUnitId == 2, "Right press outside the field must not cancel selection");
-        GuiButton(MouseButton.Right, true, Field(new Vector2(10.5f, 15.5f) * 32));
-        Require(screen.SelectedUnitId is null, "Right press on a valid field cell cancels immediately");
         var at = Field(new Vector2(10.5f, 15.5f) * 32);
+        Require(new Rect2(Vector2.Zero, map.Size).HasPoint(at), $"Gesture fixture actor must be inside the map viewport: {at}, size {map.Size}, screen {screen.Size}, viewport {GetViewport().GetVisibleRect().Size}, world {world.Position}.");
+        GuiButton(MouseButton.Right, true, at);
+        Require(screen.SelectedUnitId is null, "Right press on a valid field cell cancels immediately");
         GuiButton(MouseButton.Left, true, at);
         Require(screen.SelectedUnitId is null, "Primary down does not select");
         CapturedButton(MouseButton.Left, false, at);
@@ -227,14 +233,16 @@ public partial class CameraIntegrationChecks : Node
 
     private void CheckFollowAndBusyActions()
     {
-        foreach (var (computer, hidden) in new[] { (false, false), (true, false), (true, true) })
+        foreach (var (computer, hidden, far) in new[] { (false, false, false), (false, false, true), (true, false, true), (true, true, true) })
         {
             var session = new GrayFlagSession(new(engine, presentation), level);
             var projected = new ProjectedSession(session, computer, hidden);
             Bind(projected);
+            // Cover both visible hover and offscreen human no-follow; AI cases prove follow/concealment.
+            var panTo = far ? new Vector2(-10000, -10000) : new Vector2(80, 80);
             GuiButton(MouseButton.Middle, true, new Vector2(100, 100));
-            CapturedMove(new Vector2(-10000, -10000));
-            CapturedButton(MouseButton.Middle, false, new Vector2(-10000, -10000));
+            CapturedMove(panTo);
+            CapturedButton(MouseButton.Middle, false, panTo);
             var previous = world.Position;
             var exits = 0;
             var saves = 0;
@@ -257,6 +265,8 @@ public partial class CameraIntegrationChecks : Node
             }
             else
                 Near(during, previous, hidden ? "Hidden AI command cannot reveal its camera location" : "Human movement does not auto-follow");
+            if (!hidden)
+                Require(screen.IsPresenting, "Visible moves must start the timeline exercised by the busy-state assertions.");
             if (screen.IsPresenting)
             {
                 var revision = session.GetSnapshot().Revision;
@@ -269,13 +279,27 @@ public partial class CameraIntegrationChecks : Node
                 GuiButton(MouseButton.Left, false, new Vector2(150, 150));
                 Near(world.Position, during, "Busy map input cannot move the camera");
                 Require(session.GetSnapshot().Revision == revision && screen.SelectedUnitId is null, "Busy gestures cannot dispatch or select");
-                if (!computer)
+                if (!computer && far)
                 {
-                    var target = destination;
-                    map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = Field(new Vector2(target.X + .5f, target.Y + .5f) * 32) });
+                    var at = Field(new Vector2(destination.X + .5f, destination.Y + .5f) * 32);
+                    Require(!new Rect2(Vector2.Zero, map.Size).HasPoint(at), "Far-panned human fixture must exercise an offscreen target.");
+                    map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = at });
                     var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
-                    Require(hud.Projection!.Sections.Any(section => section.Key == "tile") && hud.Projection.Portrait?.ActorKey == "campaign-torren",
-                        "Busy pointer motion projects hovered terrain and visible inspection without tactical selection.");
+                    Require(!hud.Projection!.Sections.Any(section => section.Key == "tile")
+                        && session.GetSnapshot().Revision == revision && screen.SelectedUnitId is null,
+                        "Off-viewport busy motion must not expose terrain or change tactical state.");
+                }
+                if (!computer && !far)
+                {
+                    // Inspect an actually stationary actor. The moving sprite still covers its old cell,
+                    // while its canonical occupant has already moved to the committed destination.
+                    var target = session.GetTacticalQueries(0).Unit(5)!.At;
+                    var at = Field(new Vector2(target.X + .5f, target.Y + .5f) * 32);
+                    Require(new Rect2(Vector2.Zero, map.Size).HasPoint(at), "Busy hover fixture must lie inside the actual map viewport.");
+                    map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = at });
+                    var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+                    Require(hud.Projection!.Sections.Any(section => section.Key == "tile") && hud.Projection.Portrait?.ActorKey == "roderick-reserve",
+                        $"Busy pointer motion projects hovered terrain and visible inspection without tactical selection: target {target}, picked {screen.Board.Pick((at - world.Position) / world.Scale)}, portrait {hud.Projection.Portrait?.ActorKey}, sections {string.Join(',', hud.Projection.Sections.Select(section => section.Key))}.");
                     var portrait = hud.Projection.Portrait;
                     map.EmitSignal(Control.SignalName.MouseExited);
                     Require(!hud.Projection!.Sections.Any(section => section.Key == "tile") && hud.Projection.Portrait == portrait,

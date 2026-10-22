@@ -256,19 +256,19 @@ msgid "story.c01.brief-03.beat.buried-names.text"
 msgstr "守军在重复同一句誓文。他们还活着，只是名字被塔压在命令下面。"
 
 msgid "story.c01.brief-03.beat.reinforcement-deadline.text"
-msgstr "我不会阻止你关闭节点。但十四回合以后，援军会把所有复杂都当成敌人处理。"
+msgstr "第十五回合，援军就位。工兵得从南村接通信号，他们才能替我们切断控制链；没人接应，就不会自行出手。"
 
 msgid "story.c01.brief-03.beat.rescue-before-judgment.text"
-msgstr "那就在他们抵达以前，把复杂的人带回来。"
+msgstr "那就给他们一个信号。若能先关掉节点，就别让那些人再多等一刻。"
 
 msgid "story.c01.brief-03.mission.objective"
-msgstr "占领赤石城堡，或深入后方关闭控制节点。"
+msgstr "十八回合内占领赤石城堡，或中和控制链。任意我方单位抵达节点（80，24）即可关闭；摧毁节点或击倒门前盾卫也能断链。莱娅必须存活。"
 
 msgid "story.c01.brief-03.mission.danger"
-msgstr "正门有重弩和重甲；绕行更安全但会消耗回合。"
+msgstr "正门有重弩和重甲；南翼可占村补给。第十五回合起，活着的我方工兵在南村（78，30）接线才会获得援助，无需先占村；晚到仍可接应，空等不会断链。"
 
 msgid "story.c01.brief-03.mission.lesson"
-msgstr "攻城、复合路线、魔法克甲与非致命胜利。"
+msgstr "正门突破或南翼接线；村庄占领后，己方驻军在下个己方回合恢复最多二十点生命。此处不招募。"
 
 msgid "story.c01.aftermath-03.kicker"
 msgstr "战后"
@@ -1741,16 +1741,10 @@ msgid "objective.c01_03.p1.primary"
 msgstr "在十八回合内夺取赤石或切断控制链"
 
 msgid "objective.c01_03.p1.redstone_path"
-msgstr "夺城或关闭誓文节点"
-
-msgid "objective.c01_03.p1.disable_node"
-msgstr "深入后方关闭控制节点"
+msgstr "夺城或中和赤石控制链"
 
 msgid "objective.c01_03.p1.capture_redstone"
 msgstr "强攻并占领赤石城堡"
-
-msgid "objective.c01_03.p1.score_gate_breached"
-msgstr "击溃门卫并切断城门誓文链"
 
 msgid "objective.c01_03.p2.route"
 msgstr "击退敌军"
@@ -2019,8 +2013,14 @@ msgstr "{0}/{1}"
 msgid "objective.progress.interact"
 msgstr "进行中"
 
-msgid "objective.progress.stages"
-msgstr "{0}/{1} 阶段"
+msgid "objective.progress.all"
+msgstr "全部条件：已完成 {0}/{1}"
+
+msgid "objective.progress.any"
+msgstr "任选其一：{1} 个方案，已完成 {0} 个"
+
+msgid "objective.progress.sequence"
+msgstr "顺序阶段：已完成 {0}/{1}"
 
 msgid "objective.status.completed"
 msgstr "已完成"
@@ -3364,7 +3364,7 @@ msgid "battle.signal.redstone_gate_chain_broken"
 msgstr "破坏赤石城门锁链"
 
 msgid "battle.signal.redstone_sappers_cut_chain"
-msgstr "工兵切断城门锁链"
+msgstr "南村工兵接应援助，切断赤石控制链"
 
 msgid "level.c01_04.title"
 msgstr "04 · 黑旗营地"
@@ -3617,3 +3617,6 @@ msgstr "在行动序再次轮到该单位时自动恢复生命"
 
 msgid "ui.hud.site.recruit_unavailable"
 msgstr "当前无法打开征募名册；需在己方回合使用归属己方的空置据点。"
+
+msgid "objective.c01_03.p1.neutralize_chain"
+msgstr "关闭或摧毁节点，解除控制链"

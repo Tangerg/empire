@@ -62,9 +62,12 @@ public partial class DynamicStateChecks : Node
             };
             var board = new BoardView();
             AddChild(board);
-            board.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric), level, scene);
-            board.ConfigureDynamicState();
             var state = engine.CreateState(level);
+            var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
+            board.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog, rendering.Plane), level, scene);
+            // Keep this detached dynamic-sprite fixture groundless: its tile-body ownership checks
+            // intentionally exercise bodies that source-image ground would replace.
+            board.ConfigureDynamicState();
             var before = state.ToJsonString();
             board.RenderState(state);
             var count = state["structures"]!.AsArray().Count;

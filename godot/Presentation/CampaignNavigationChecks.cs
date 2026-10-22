@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Text.Json.Nodes;
 using Empire.Application;
 using Empire.Presentation.Feedback;
+using Empire.Core;
 using Empire.Core.Campaign;
 using Empire.Core.Engine;
 using Empire.Core.Lifecycle;
@@ -56,6 +57,7 @@ public partial class CampaignNavigationChecks : Node
                 ("victory settlement UI fixture and autosave", CheckVictorySettlement),
                 ("read/delete failure preserves menu", CheckReadDeleteFailure),
                 ("manual load admission and view activation are atomic", CheckManualLoadAdmission),
+                ("formal Redstone entry, carried-roster fixture, resume and settlement", CheckFormalRedstone),
             })
             {
                 try
@@ -603,6 +605,155 @@ public partial class CampaignNavigationChecks : Node
         var banners = Descendants(board).Where(node => node.HasMeta("owner_color")).ToArray();
         Require(banners.Length == 2 && banners.Select(node => node.GetMeta("owner_color").AsString()).Distinct(StringComparer.Ordinal).Count() == 2,
             "The two owned outposts must retain exactly two dynamic ownership flags.");
+    }
+
+    private void CheckFormalRedstone()
+    {
+        // Preserve the existing two-victory trace's campaign facts, not its obsolete battle-save envelope.
+        // This is historical carried-state admission, not a fresh c02 playthrough on the current engine.
+        using var archive = new System.IO.Compression.GZipStream(File.OpenRead(
+            ProjectSettings.GlobalizePath("res://tests/oracle/campaign-victory-opening.jsonl.gz")), System.IO.Compression.CompressionMode.Decompress);
+        using var reader = new System.IO.StreamReader(archive);
+        JsonObject? carried = null;
+        while (reader.ReadLine() is { } line)
+        {
+            var record = JsonNode.Parse(line)!.AsObject();
+            if (record["kind"]!.GetValue<string>() == "final")
+                carried = record["final"]!.DeepClone().AsObject();
+        }
+        Require(carried is not null && carried["currentNode"]?.GetValue<string>() == "aftermath-02"
+            && carried["roster"]!["elin"]!["disposition"]!.GetValue<string>() == "fallen",
+            "The historical opening must retain its actual aftermath and casualty, not a full-health sample.");
+        WriteFixture(carried!);
+        var originalManual = File.ReadAllText(manualPath);
+        var originalStamp = File.GetLastWriteTimeUtc(manualPath);
+        var game = MountGame();
+        try
+        {
+            Press(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
+            foreach (var node in new[] { "aftermath-02", "brief-03" })
+            {
+                Require(Campaign(game).Node()["id"]!.GetValue<string>() == node, "Redstone entry skipped the formal story chain.");
+                CompleteStory(game);
+            }
+            Require(Campaign(game).Node()["id"]!.GetValue<string>() == "battle-03", "Redstone briefing did not lead to its actual staging node.");
+            Press(Button(View<CampaignStagingScreen>(game), "StartBattle"));
+            var campaign = Campaign(game);
+            var engine = Field<BattleEngine>(game, "engine");
+            var opening = campaign.Battle!.Snapshot();
+            Require(opening["levelId"]!.GetValue<string>() == "c01-03"
+                && opening["map"]!["width"]!.GetValue<int>() == 101 && opening["map"]!["height"]!.GetValue<int>() == 52,
+                "Formal Redstone entry did not select the canonical large map.");
+            var units = opening["units"]!.AsArray().OfType<JsonObject>().ToArray();
+            Require(units.Length == 18 && units.All(unit => unit["key"]!.GetValue<string>() != "campaign-elin")
+                && campaign.RequestSnapshot()!["rosterBindings"]!.AsArray().Count == 2,
+                "The fallen archer was silently replaced by the sample roster.");
+            foreach (var key in new[] { "laiya", "torren" })
+            {
+                var persistent = carried!["roster"]![key]!;
+                var unit = units.Single(value => value["key"]!.GetValue<string>() == "campaign-" + key);
+                var maximum = engine.Catalog.Definition("units", persistent["unitType"]!.GetValue<string>())!.Value.GetProperty("maxHp").GetDouble();
+                Require(unit["hp"]!.GetValue<double>() == Math.Max(1, Math.Floor(maximum * persistent["hpRatio"]!.GetValue<double>() + .5))
+                    && EcmaJson.DeepEquals(unit["rank"], persistent["rank"])
+                    && EcmaJson.DeepEquals(unit["rankProgress"], persistent["rankProgress"])
+                    && EcmaJson.DeepEquals(unit["resources"], persistent["resources"]), "Redstone did not carry the existing roster health/rank/progress/resources.");
+            }
+            void Painted()
+            {
+                var board = View<BattleScreen>(game).Board;
+                var ground = Descendants(board).OfType<PaintedGroundView>().Single();
+                Require(board.RenderingIssueCount == 0 && board.RenderedUnitCount == 18
+                    && !Descendants(board).OfType<TerrainView>().Any(), "Formal Redstone did not render its carried roster on its only painted ground.");
+                Require(ground.DepthEntries.Count(entry => entry.SelectionCell is not null) == 8
+                    && !Descendants(board).Any(node => node.Name.ToString().StartsWith("MapStructure_", StringComparison.Ordinal)),
+                    "Redstone's eight source-image site bodies must not acquire duplicate sprites.");
+            }
+            Painted();
+            // Exercise the existing dimension boundary without retaining a retired gameplay definition.
+            var incompatible = campaign.Save();
+            var smallLevel = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json")
+                .OfType<JsonObject>().Single(level => level["id"]!.GetValue<string>() == "c01-01").DeepClone().AsObject();
+            smallLevel["id"] = "c01-03";
+            incompatible["battle"] = engine.SaveBattle(engine.CreateState(smallLevel));
+            var liveBeforeRejection = campaign.Battle;
+            try
+            {
+                campaign.Load(incompatible);
+                throw new InvalidOperationException("A differently sized c03 battle save was admitted.");
+            }
+            catch (StoredDocumentException error)
+            {
+                Require(error.Message == "Saved battle does not match the campaign level.", "The foreign-map fixture failed before the intended identity boundary.");
+            }
+            Require(ReferenceEquals(liveBeforeRejection, campaign.Battle) && Digest(campaign.Battle!.Snapshot()) == Digest(opening),
+                "Rejecting the retired-size battle contract replaced the active session.");
+            var session = campaign.Battle!;
+            var actor = units.Single(unit => unit["key"]!.GetValue<string>() == "siege-engineer");
+            var path = engine.Space.PathTo(engine.Space.ComputeMoveField(opening, actor), opening, new(65, 23))!;
+            var action = new JsonObject
+            {
+                ["kind"] = "command",
+                ["unit"] = actor["id"]!.DeepClone(),
+                ["path"] = new JsonArray(path.Select(at => (JsonNode)Empire.Core.Tactics.TacticalQueries.CoordinateJson(at)).ToArray()),
+                ["command"] = new JsonObject { ["ability"] = "wait" }
+            };
+            Require(session.Dispatch(EcmaJson.ToElement(action), session.GetSnapshot().Revision).Accepted,
+                "Formal Redstone rejected the unchanged legal main-road move.");
+            var played = Digest(session.Snapshot());
+            game._UnhandledKeyInput(new InputEventKey { Pressed = true, Keycode = Key.F5 });
+            Require(File.ReadAllText(manualPath) != originalManual, "Redstone F5 did not write the live battle.");
+            game._UnhandledKeyInput(new InputEventKey { Pressed = true, Keycode = Key.F9 });
+            Require(!ReferenceEquals(Campaign(game), campaign) && Digest(Campaign(game).Battle!.Snapshot()) == played,
+                "Redstone F9 did not replace the live session with the same played state.");
+            Painted();
+            Press(Buttons(View<BattleScreen>(game)).Single(button => button.Text == "战役营地"));
+            Require(Campaign(game).AtCamp, "Redstone exit did not return to the normal camp.");
+            Press(Button(View<CampaignStagingScreen>(game), "CampaignExit"));
+            Press(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
+            Press(Button(View<CampaignStagingScreen>(game), "StartBattle"));
+            Require(Digest(Campaign(game).Battle!.Snapshot()) == Digest(opening), "Redstone Continue did not rebuild the same carried opening.");
+            Painted();
+
+            // A positioned terminal fixture verifies real command -> objective -> application settlement.
+            campaign = Campaign(game);
+            var document = campaign.Save();
+            var nearNode = campaign.Battle!.Snapshot();
+            var engineer = nearNode["units"]!.AsArray().OfType<JsonObject>().Single(unit => unit["key"]!.GetValue<string>() == "siege-engineer");
+            engineer["x"] = 79;
+            engineer["y"] = 24;
+            document["battle"] = engine.SaveBattle(nearNode);
+            campaign.Load(document);
+            var finishing = new JsonObject
+            {
+                ["kind"] = "command",
+                ["unit"] = engineer["id"]!.DeepClone(),
+                ["path"] = new JsonArray(new JsonObject { ["x"] = 79, ["y"] = 24 }, new JsonObject { ["x"] = 80, ["y"] = 24 }),
+                ["command"] = new JsonObject { ["ability"] = "wait" }
+            };
+            Require(campaign.Battle!.Dispatch(EcmaJson.ToElement(finishing), campaign.Battle.GetSnapshot().Revision).Accepted,
+                "Positioned Redstone fixture did not finish via the real close-node command.");
+            var settledState = Digest(campaign.Battle.Snapshot());
+            var save = campaign.Save();
+            campaign.Load(save);
+            Require(Digest(campaign.Battle!.Snapshot()) == settledState, "Redstone terminal save lost its objectives or release facts.");
+            SetField(game, "session", campaign.Battle);
+            SetField(game, "screen", null);
+            SetField(game, "resultOffered", false);
+            game._Process(0);
+            Press(Button(View<BattleResultScreen>(game), "Settle"));
+            Require(campaign.Snapshot()["roster"]!["elin"]!["disposition"]!.GetValue<string>() == "fallen",
+                "Redstone settlement revived a roster casualty absent from the battle.");
+            Press(Button(View<BattleResultScreen>(game), "Proceed"));
+            Require(campaign.Node()["id"]!.GetValue<string>() == "aftermath-03" && View<Control>(game) is StoryScreen,
+                "Redstone settlement did not reach the formal aftermath.");
+            AssertSaved(game);
+        }
+        finally
+        {
+            File.WriteAllText(manualPath, originalManual);
+            File.SetLastWriteTimeUtc(manualPath, originalStamp);
+            Retire(game);
+        }
     }
 
     private void CheckReadDeleteFailure()

@@ -217,8 +217,16 @@ var score = progress.Children.Single(child => child.Id == "score");
 var signal = progress.Children.Single(child => child.Id == "signal");
 Check(progress.Status == "active" && progress.Facts.GetProperty("completed").GetInt32() == 0
     && progress.Facts.GetProperty("total").GetInt32() == 2
-    && firstText.ObjectiveProgress(progress) == firstCatalog.Format("objective.progress.stages", 0, 2),
+    && firstText.ObjectiveProgress(progress) == firstCatalog.Format("objective.progress.all", 0, 2),
     "composite progress renders handler-owned counts");
+foreach (var kind in new[] { "any", "all", "sequence" })
+{
+    var alternative = Copy(initial);
+    Objective(alternative, 1)["type"] = kind;
+    var alternativeProgress = engine.Victory.Objectives(alternative, 1).Single();
+    Check(firstText.ObjectiveProgress(alternativeProgress) == firstCatalog.Format("objective.progress." + kind, 0, 2),
+        $"{kind} progress describes its own completion semantics without changing handler-owned counts");
+}
 Check(score.Facts.GetProperty("current").GetProperty("kind").GetString() == "finite"
     && score.Facts.GetProperty("current").GetProperty("value").GetInt32() == 2
     && score.Facts.GetProperty("target").GetInt32() == 2

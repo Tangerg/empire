@@ -54,8 +54,10 @@ public partial class OathPadChecks : Node
         state["units"] = new JsonArray(unit);
         var board = new BoardView { AdvanceAnimationsAutomatically = false };
         AddChild(board);
-        board.Configure(new(assets, EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric), level, AuthoredScene.Load("res://data/scenes/c01-03.json"));
-        board.ConfigureGround(TerrainView.Factory(WorldMaterialsManifest.Load()));
+        var scene = AuthoredScene.Load("res://data/scenes/c01-03.json");
+        var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
+        board.Configure(new(assets, EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, rendering.Plane), level, scene);
+        board.ConfigureGround(rendering.Ground);
         board.ConfigureDynamicState();
         board.RenderState(state);
         CheckSurfaceSources(board.Projection, assets);
@@ -293,14 +295,15 @@ public partial class OathPadChecks : Node
     {
         var before = (JsonObject)state.DeepClone();
         var after = (JsonObject)state.DeepClone();
-        before["units"]![0]!["x"] = target.X - 1;
-        after["units"]![0]!["x"] = target.X + 1;
-        JsonObject At(int x) => new()
+        // Cross the authored depth axis: Redstone's registered painting is not a default dimetric plane.
+        before["units"]![0]!["y"] = target.Y - 1;
+        after["units"]![0]!["y"] = target.Y + 1;
+        JsonObject At(int y) => new()
         {
-            ["x"] = x,
-            ["y"] = target.Y
+            ["x"] = target.X,
+            ["y"] = y
         };
-        var path = new JsonArray(At(target.X - 1), At(target.X), At(target.X + 1));
+        var path = new JsonArray(At(target.Y - 1), At(target.Y), At(target.Y + 1));
         var action = new JsonObject { ["kind"] = "command", ["unit"] = id, ["path"] = path, ["command"] = new JsonObject { ["ability"] = "wait" } };
         var transition = new BattlePresentationTransition(1, EcmaJson.ToElement(before), EcmaJson.ToElement(action), [], EcmaJson.ToElement(after), false);
         var task = board.PresentTransitionAsync(transition);
@@ -319,8 +322,8 @@ public partial class OathPadChecks : Node
                 pad = board.GetNode<Node2D>("CanonicalProjection/DynamicState/Structure_0");
                 var t = tick / 10f;
                 var eased = t < .5f ? 2 * t * t : 1 - MathF.Pow(-2 * t + 2, 2) / 2;
-                var logical = board.Projection.LogicalCellContact(new(target.X - 1 + segment, target.Y)).Lerp(
-                    board.Projection.LogicalCellContact(new(target.X + segment, target.Y)), eased);
+                var logical = board.Projection.LogicalCellContact(new(target.X, target.Y - 1 + segment)).Lerp(
+                    board.Projection.LogicalCellContact(new(target.X, target.Y + segment)), eased);
                 var expected = board.Projection.Project(logical) - new Vector2(0, MathF.Sin(MathF.PI * t) * 2.5f);
                 Require(actor.Position.DistanceTo(expected) < .02f && pad.Position == origin, "Traversal follows the existing canonical interpolation and authored walking bob, with no pad-induced jump or motion.");
                 var floorContact = board.Projection.Project(logical);
@@ -344,7 +347,7 @@ public partial class OathPadChecks : Node
         Require(unsplitDepthFailures > 0, "The fixture must expose the prior whole-sprite center-depth failure on an actual overlapping shoe sample.");
         Require(overlapSamples >= 4, "Traversal must sample real plate pixels, not only empty neighboring cells.");
         Require(task.IsCompleted && await task, "Traversal must settle through the real native presentation timeline.");
-        Require(board.GetNode<Node2D>($"CanonicalProjection/Unit_{id}").Position == board.Projection.CellContact(new(target.X + 1, target.Y)), "Settled actor returns to the canonical endpoint.");
+        Require(board.GetNode<Node2D>($"CanonicalProjection/Unit_{id}").Position == board.Projection.CellContact(new(target.X, target.Y + 1)), "Settled actor returns to the canonical endpoint.");
     }
 
     private async Task CaptureLogicalScale(BoardView board, Vector2 contact, string name)

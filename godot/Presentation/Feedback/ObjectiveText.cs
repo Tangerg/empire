@@ -141,11 +141,11 @@ public sealed class ObjectiveText : KeyedRegistry<ObjectiveTextFormatter, Object
             (catalog, objective, _) => catalog.Format("objective.progress.score",
                 ScoreNumber(catalog, objective.Facts.GetProperty("current")), Number(objective.Facts, "target"))))
         .Register(Simple("interact", "objective.description.interact", "objective.progress.interact", _ => []))
-        .Register(Simple("all", "objective.description.all", "objective.progress.stages",
+        .Register(Simple("all", "objective.description.all", "objective.progress.all",
             objective => [Number(objective.Facts, "completed"), Number(objective.Facts, "total")]))
-        .Register(Simple("any", "objective.description.any", "objective.progress.stages",
+        .Register(Simple("any", "objective.description.any", "objective.progress.any",
             objective => [Number(objective.Facts, "completed"), Number(objective.Facts, "total")]))
-        .Register(Simple("sequence", "objective.description.sequence", "objective.progress.stages",
+        .Register(Simple("sequence", "objective.description.sequence", "objective.progress.sequence",
             objective => [Number(objective.Facts, "completed"), Number(objective.Facts, "total")]))
         .Register(new("optional", new[] { "objective.description.optional" },
             (catalog, _, describeChild) => catalog.Format("objective.description.optional", describeChild(0)),
