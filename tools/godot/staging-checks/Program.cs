@@ -164,7 +164,16 @@ catch (InvalidOperationException) { checks++; }
     NormalizeArt(normalized);
     Check("native shared document schema", exported["schema"], JsonValue.Create(2));
     Check("single campaign title owner", JsonValue.Create(messages.Format(Text(exported["titleKey"]))), oracle["metadata"]!["title"]);
-    foreach (var field in new[] { "battleTotal", "joinAfter", "portraits" })
+    var expectedPortraits = oracle["metadata"]!["portraits"]!.DeepClone();
+    // These two portraits are already native-owned; other historical declarations retain exact parity.
+    foreach (var (identity, filename) in new[] { ("laiya", "char-leia-01.png"), ("roderick", "char-roderick-01.png") })
+    {
+        var source = "/godot/assets/runtime/narrative-static/" + filename;
+        Check($"native portrait source {identity}", exported["portraits"]![identity]!["source"], JsonValue.Create(source));
+        expectedPortraits[identity]!["source"] = source;
+    }
+    Check("native portrait declarations", normalized!["portraits"], expectedPortraits);
+    foreach (var field in new[] { "battleTotal", "joinAfter" })
         Check($"unchanged staging metadata {field}", normalized![field], oracle["metadata"]![field]);
     foreach (var kind in new[] { "resource", "relation" })
         foreach (var label in oracle["metadata"]![kind + "Labels"]!.AsObject())
