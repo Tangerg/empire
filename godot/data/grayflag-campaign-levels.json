@@ -1397,26 +1397,6 @@
       "captureThreshold": 100,
       "baseResourceGrants": []
     },
-    "victory": [
-      {
-        "id": "primary",
-        "type": "failOn",
-        "condition": {
-          "type": "unitCount",
-          "selector": {
-            "keys": [
-              "campaign-laiya"
-            ]
-          },
-          "op": "lte",
-          "value": 0
-        },
-        "objective": {
-          "id": "route",
-          "type": "routEnemies"
-        }
-      }
-    ],
     "scenario": {
       "triggers": [
         {
@@ -4414,50 +4394,6 @@
       "captureThreshold": 100,
       "baseResourceGrants": []
     },
-    "victory": [
-      {
-        "id": "primary",
-        "type": "failOn",
-        "condition": {
-          "type": "unitCount",
-          "selector": {
-            "keys": [
-              "campaign-laiya"
-            ]
-          },
-          "op": "lte",
-          "value": 0
-        },
-        "objective": {
-          "id": "redstone-path",
-          "type": "any",
-          "objectives": [
-            {
-              "id": "disable-node",
-              "type": "escort",
-              "selector": {
-                "keys": [
-                  "campaign-laiya",
-                  "siege-engineer"
-                ]
-              },
-              "zone": "oath-node",
-              "count": 1
-            },
-            {
-              "id": "capture-redstone",
-              "type": "captureHQ"
-            },
-            {
-              "id": "score-gate_breached",
-              "type": "score",
-              "variable": "gate_breached",
-              "atLeast": 1
-            }
-          ]
-        }
-      }
-    ],
     "scenario": {
       "variables": {
         "gate_breached": 0
@@ -5236,46 +5172,6 @@
       "captureThreshold": 100,
       "baseResourceGrants": []
     },
-    "victory": [
-      {
-        "id": "primary",
-        "type": "failOn",
-        "condition": {
-          "type": "unitCount",
-          "selector": {
-            "keys": [
-              "campaign-laiya"
-            ]
-          },
-          "op": "lte",
-          "value": 0
-        },
-        "objective": {
-          "id": "black-camp-sequence",
-          "type": "sequence",
-          "objectives": [
-            {
-              "id": "score-evidence",
-              "type": "score",
-              "variable": "evidence",
-              "atLeast": 3
-            },
-            {
-              "id": "escort-west-exit",
-              "type": "escort",
-              "selector": {
-                "keys": [
-                  "campaign-laiya",
-                  "campaign-mirelle"
-                ]
-              },
-              "zone": "west-exit",
-              "count": 1
-            }
-          ]
-        }
-      }
-    ],
     "scenario": {
       "variables": {
         "evidence": 0
@@ -6087,44 +5983,6 @@
       "captureThreshold": 100,
       "baseResourceGrants": []
     },
-    "victory": [
-      {
-        "id": "primary",
-        "type": "failOn",
-        "condition": {
-          "type": "unitCount",
-          "selector": {
-            "keys": [
-              "campaign-laiya"
-            ]
-          },
-          "op": "lte",
-          "value": 0
-        },
-        "objective": {
-          "id": "save-village",
-          "type": "all",
-          "objectives": [
-            {
-              "id": "protect-villagers",
-              "type": "protect",
-              "selector": {
-                "anyTags": [
-                  "civilian"
-                ]
-              },
-              "minimumAlive": 2,
-              "untilTurn": 7
-            },
-            {
-              "id": "hold-seven",
-              "type": "surviveTurns",
-              "turns": 7
-            }
-          ]
-        }
-      }
-    ],
     "scenario": {
       "triggers": [
         {
@@ -6815,36 +6673,6 @@
       "captureThreshold": 100,
       "baseResourceGrants": []
     },
-    "victory": [
-      {
-        "id": "primary",
-        "type": "failOn",
-        "condition": {
-          "type": "unitCount",
-          "selector": {
-            "keys": [
-              "campaign-laiya"
-            ]
-          },
-          "op": "lte",
-          "value": 0
-        },
-        "objective": {
-          "id": "escort-north-bank",
-          "type": "escort",
-          "selector": {
-            "keys": [
-              "refugee-1",
-              "refugee-2",
-              "refugee-3",
-              "refugee-4"
-            ]
-          },
-          "zone": "north-bank",
-          "count": 4
-        }
-      }
-    ],
     "scenario": {
       "zones": [
         {
@@ -7648,38 +7476,6 @@
       "captureThreshold": 100,
       "baseResourceGrants": []
     },
-    "victory": [
-      {
-        "id": "primary",
-        "type": "failOn",
-        "condition": {
-          "type": "unitCount",
-          "selector": {
-            "keys": [
-              "campaign-laiya"
-            ]
-          },
-          "op": "lte",
-          "value": 0
-        },
-        "objective": {
-          "id": "city-control",
-          "type": "all",
-          "objectives": [
-            {
-              "id": "granary",
-              "type": "control",
-              "zone": "granary"
-            },
-            {
-              "id": "militia-barracks",
-              "type": "control",
-              "zone": "militia-barracks"
-            }
-          ]
-        }
-      }
-    ],
     "scenario": {
       "zones": [
         {
@@ -8364,40 +8160,6 @@
       "captureThreshold": 100,
       "baseResourceGrants": []
     },
-    "victory": [
-      {
-        "id": "primary",
-        "type": "failOn",
-        "condition": {
-          "type": "unitCount",
-          "selector": {
-            "keys": [
-              "campaign-laiya"
-            ]
-          },
-          "op": "lte",
-          "value": 0
-        },
-        "objective": {
-          "id": "protect-tasha",
-          "type": "failOn",
-          "condition": {
-            "type": "unitCount",
-            "selector": {
-              "keys": [
-                "campaign-tasha"
-              ]
-            },
-            "op": "lte",
-            "value": 0
-          },
-          "objective": {
-            "id": "route",
-            "type": "routEnemies"
-          }
-        }
-      }
-    ],
     "scenario": {
       "zones": [
         {
@@ -9194,28 +8956,6 @@
       "captureThreshold": 100,
       "baseResourceGrants": []
     },
-    "victory": [
-      {
-        "id": "primary",
-        "type": "failOn",
-        "condition": {
-          "type": "unitCount",
-          "selector": {
-            "keys": [
-              "campaign-laiya"
-            ]
-          },
-          "op": "lte",
-          "value": 0
-        },
-        "objective": {
-          "id": "break-chains",
-          "type": "neutralizeComposite",
-          "composite": "ivra-chains",
-          "minimumNeutralized": 3
-        }
-      }
-    ],
     "extra": {
       "campaign": "candidate-01-gray-banner",
       "chapter": 2,
@@ -9882,33 +9622,6 @@
       "captureThreshold": 100,
       "baseResourceGrants": []
     },
-    "victory": [
-      {
-        "id": "primary",
-        "type": "failOn",
-        "condition": {
-          "type": "unitCount",
-          "selector": {
-            "keys": [
-              "campaign-laiya"
-            ]
-          },
-          "op": "lte",
-          "value": 0
-        },
-        "objective": {
-          "id": "escort-east-pass",
-          "type": "escort",
-          "selector": {
-            "keys": [
-              "campaign-laiya"
-            ]
-          },
-          "zone": "east-pass",
-          "count": 1
-        }
-      }
-    ],
     "scenario": {
       "zones": [
         {
@@ -10719,43 +10432,6 @@
       "captureThreshold": 100,
       "baseResourceGrants": []
     },
-    "victory": [
-      {
-        "id": "primary",
-        "type": "failOn",
-        "condition": {
-          "type": "unitCount",
-          "selector": {
-            "keys": [
-              "campaign-laiya"
-            ]
-          },
-          "op": "lte",
-          "value": 0
-        },
-        "objective": {
-          "id": "grave-sequence",
-          "type": "sequence",
-          "objectives": [
-            {
-              "id": "score-names",
-              "type": "score",
-              "variable": "names",
-              "atLeast": 3
-            },
-            {
-              "id": "eliminate-colossus",
-              "type": "eliminate",
-              "selector": {
-                "keys": [
-                  "colossus"
-                ]
-              }
-            }
-          ]
-        }
-      }
-    ],
     "scenario": {
       "variables": {
         "names": 0
@@ -11552,28 +11228,6 @@
       "captureThreshold": 100,
       "baseResourceGrants": []
     },
-    "victory": [
-      {
-        "id": "primary",
-        "type": "failOn",
-        "condition": {
-          "type": "unitCount",
-          "selector": {
-            "keys": [
-              "campaign-laiya"
-            ]
-          },
-          "op": "lte",
-          "value": 0
-        },
-        "objective": {
-          "id": "bell-mechanism",
-          "type": "neutralizeComposite",
-          "composite": "bell-controls",
-          "minimumNeutralized": 2
-        }
-      }
-    ],
     "scenario": {
       "triggers": [
         {
@@ -12426,45 +12080,6 @@
       "captureThreshold": 100,
       "baseResourceGrants": []
     },
-    "victory": [
-      {
-        "id": "primary",
-        "type": "failOn",
-        "condition": {
-          "type": "unitCount",
-          "selector": {
-            "keys": [
-              "campaign-laiya"
-            ]
-          },
-          "op": "lte",
-          "value": 0
-        },
-        "objective": {
-          "id": "archive-sequence",
-          "type": "sequence",
-          "objectives": [
-            {
-              "id": "score-archives",
-              "type": "score",
-              "variable": "archives",
-              "atLeast": 3
-            },
-            {
-              "id": "escort-archive-exit",
-              "type": "escort",
-              "selector": {
-                "keys": [
-                  "campaign-mirelle"
-                ]
-              },
-              "zone": "archive-exit",
-              "count": 1
-            }
-          ]
-        }
-      }
-    ],
     "scenario": {
       "variables": {
         "archives": 0
@@ -13272,38 +12887,6 @@
       "captureThreshold": 100,
       "baseResourceGrants": []
     },
-    "victory": [
-      {
-        "id": "primary",
-        "type": "failOn",
-        "condition": {
-          "type": "unitCount",
-          "selector": {
-            "keys": [
-              "campaign-laiya"
-            ]
-          },
-          "op": "lte",
-          "value": 0
-        },
-        "objective": {
-          "id": "forge-all",
-          "type": "all",
-          "objectives": [
-            {
-              "id": "score-valves",
-              "type": "score",
-              "variable": "valves",
-              "atLeast": 2
-            },
-            {
-              "id": "route",
-              "type": "routEnemies"
-            }
-          ]
-        }
-      }
-    ],
     "scenario": {
       "variables": {
         "valves": 0
@@ -14179,38 +13762,6 @@
       "captureThreshold": 100,
       "baseResourceGrants": []
     },
-    "victory": [
-      {
-        "id": "primary",
-        "type": "failOn",
-        "condition": {
-          "type": "unitCount",
-          "selector": {
-            "keys": [
-              "campaign-laiya"
-            ]
-          },
-          "op": "lte",
-          "value": 0
-        },
-        "objective": {
-          "id": "protect-root",
-          "type": "failOn",
-          "condition": {
-            "type": "structure",
-            "id": "mother-root",
-            "state": "destroyed"
-          },
-          "objective": {
-            "id": "eliminate-oath-forces",
-            "type": "eliminate",
-            "selector": {
-              "owner": 2
-            }
-          }
-        }
-      }
-    ],
     "extra": {
       "campaign": "candidate-01-gray-banner",
       "chapter": 3,
@@ -15055,43 +14606,6 @@
       "captureThreshold": 100,
       "baseResourceGrants": []
     },
-    "victory": [
-      {
-        "id": "primary",
-        "type": "failOn",
-        "condition": {
-          "type": "unitCount",
-          "selector": {
-            "keys": [
-              "campaign-laiya"
-            ]
-          },
-          "op": "lte",
-          "value": 0
-        },
-        "objective": {
-          "id": "true-name-all",
-          "type": "all",
-          "objectives": [
-            {
-              "id": "score-true_names",
-              "type": "score",
-              "variable": "true_names",
-              "atLeast": 3
-            },
-            {
-              "id": "eliminate-memory-inquisitor",
-              "type": "eliminate",
-              "selector": {
-                "keys": [
-                  "memory-inquisitor"
-                ]
-              }
-            }
-          ]
-        }
-      }
-    ],
     "scenario": {
       "variables": {
         "true_names": 0

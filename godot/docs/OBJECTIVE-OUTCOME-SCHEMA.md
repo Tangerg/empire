@@ -41,7 +41,9 @@ Native gameplay levels no longer carry `players[].name` or objective `label`.
 `grayflag-battle-text.json` is addressed by level ID, player ID and objective ID;
 objective IDs need not be globally unique. The shipped document contains all
 34 players and 74 effective nested objective descriptions across 16 levels.
-Repeated level-victory templates have no independent wording source.
+All 34 players explicitly own their objectives. The 16 shipped levels have no
+unused top-level `victory` templates; generic level-default inheritance remains
+available to levels whose players do not declare objectives.
 
 A player name entry is exactly `{key: "authored.po.key"}` or
 `{literal: "user-authored text"}`. An objective entry can additionally be exactly

@@ -53,10 +53,11 @@ mounted reinforcement is slower: terrain-only path costs are 18 versus 15 and
 adjacency versus four under a fresh-budget segmentation, not a combat simulation.
 
 All actor identities, non-coordinate attributes, four site roles, objectives,
-choice flags, victory/defeat rules and story files are retained. The story's
-Roderick “one rescue” wording still has no implemented one-shot rescue event;
-this change does not add one. The old staging-card illustration remains separate
-art and does not establish runtime geometry.
+choice flags and victory/defeat rules are retained. The mission danger text now
+says “抢占北丘会让托伦提前进入包围；罗德里克留在后阵，别让托伦脱离队伍的援护。”
+This describes Roderick’s ordinary support reaction from reserve (8,19), not a
+one-shot rescue. No rescue counter, immunity, revival or story branch is added.
+The old staging-card illustration remains separate art and does not establish runtime geometry.
 
 ## Verification status
 
