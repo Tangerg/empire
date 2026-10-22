@@ -39,6 +39,7 @@ public sealed partial class GrayFlagSession
     {
         get; private set;
     }
+    public long Revision => revision;
     public bool CanUndo => undo.Count > 0 && !IsComputerTurn && battle.Snapshot()["phase"]?.GetValue<string>() != "over";
 
     public BattleDispatchResult Undo(long expectedRevision)

@@ -164,7 +164,7 @@ public partial class BattleScreen : Control
         _presenting = false;
         _board.CancelPresentation();
         _snapshot = null;
-        _presentedRevision = session.GetSnapshot().Revision;
+        _presentedRevision = session.Revision;
         _board.Configure(rules.Board, level, authoredScene);
         _hud.ConfigureArt(TacticalHudArt.Load(rules.Board.Assets));
         _session = session;

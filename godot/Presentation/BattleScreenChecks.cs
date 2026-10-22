@@ -229,16 +229,17 @@ public partial class BattleScreenChecks : Node
 
     private sealed class ReplaceableSession(ITacticalBattleSession inner) : ITacticalBattleSession
     {
+        public long Revision => Replacement?.Revision ?? inner.Revision;
         public BattleSnapshot? Replacement
         {
             get; set;
         }
-        public ITacticalSelectionQueries GetTacticalQueries(long binding) => new StampedQueries(inner.GetTacticalQueries(binding), new(binding, GetSnapshot().Revision));
+        public ITacticalSelectionQueries GetTacticalQueries(long binding) => new StampedQueries(inner.GetTacticalQueries(binding), new(binding, Revision));
         public TacticalHudProjection ProjectHud(TacticalStamp stamp, TacticalSelection selection, BoardCell? cursor, int? inspectId, bool busy)
         {
             var source = inner.ProjectHud(stamp with
             {
-                Revision = inner.GetSnapshot().Revision
+                Revision = inner.Revision
             }, selection, cursor, inspectId, busy);
             return source with
             {
@@ -346,12 +347,12 @@ public partial class BattleScreenChecks : Node
         screen.SetApplicationBusy(false);
         Require(screen.SelectedUnitId == selected, "Clearing application busy preserves the valid selection.");
         screen.SelectCell(destination);
-        Require(session.GetSnapshot().Revision == snapshot.Revision + 1, "Busy release re-enables source automatic destination dispatch.");
+        Require(session.Revision == snapshot.Revision + 1, "Busy release re-enables source automatic destination dispatch.");
         var undo = Buttons(screen).Single(button => button.Text == "撤销");
         Require(!undo.Disabled, "Real undo button becomes enabled after a reversible move.");
         undo.EmitSignal(Button.SignalName.Pressed);
         var undone = session.GetSnapshot();
-        Require(undone.Revision == snapshot.Revision + 2 && EcmaJson.DeepEquals(EcmaJson.Parse(undone.State.GetRawText()), EcmaJson.Parse(snapshot.State.GetRawText())), "Mounted undo restores exact canonical state and advances revision.");
+        Require(session.Revision == undone.Revision && undone.Revision == snapshot.Revision + 2 && EcmaJson.DeepEquals(EcmaJson.Parse(undone.State.GetRawText()), EcmaJson.Parse(snapshot.State.GetRawText())), "Mounted undo restores exact canonical state and advances revision.");
         Require(screen.Selection?.Kind == TacticalSelectionKind.Idle && screen.RecentMessages.Contains("已撤销上一步"), "Undo resets selection and appends the source cosmetic message.");
         var turn = Buttons(screen).Single(button => button.Text == "结束回合");
         turn.EmitSignal(Button.SignalName.Pressed);
@@ -446,7 +447,12 @@ public partial class BattleScreenChecks : Node
         screen.Refresh();
         screen.SelectCell(origin);
         Reaction("plugin-dodge").EmitSignal(Button.SignalName.Pressed);
-        Require(session.GetSnapshot().Revision == 3, "Refreshing the stale view must restore the actual HUD action path.");
+        Require(session.Revision == 3, "Refreshing the stale view must restore the actual HUD action path.");
+        screen.SelectCell(origin);
+        var beforeUndo = Reaction("guard");
+        Require(session.Undo(session.Revision).Accepted && session.Revision == 4, "External undo fixture did not advance revision.");
+        beforeUndo.EmitSignal(Button.SignalName.Pressed);
+        Require(session.Revision == 4 && screen.DisplayedRevision == 3, "Still-mounted HUD controls cannot use stale choices after undo.");
         screen.QueueFree();
     }
 

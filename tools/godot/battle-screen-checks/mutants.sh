@@ -41,7 +41,7 @@ mutants = {
         "BattleScreen must declare its complete consumer port"),
     "stale-live-revision": (
         "Presentation/BattleScreen.Tactical.cs",
-        [("_session.GetSnapshot().Revision == stamp.Revision && ", "")],
+        [("_session.Revision == stamp.Revision && ", "")],
         "Still-mounted HUD controls cannot use stale choices"),
     "closed-reaction-hud": (
         "Application/GrayFlagSession.Hud.cs",

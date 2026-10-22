@@ -15,7 +15,7 @@ public partial class BattleScreen
     private bool Current(TacticalStamp stamp, bool allowBusy = false) =>
         _bound && IsInsideTree() && _session is not null && _tactical is not null &&
         stamp.Binding == _tacticalBinding && stamp == _tactical.Stamp &&
-        _session.GetSnapshot().Revision == stamp.Revision && (allowBusy || !IsInputBlocked);
+        _session.Revision == stamp.Revision && (allowBusy || !IsInputBlocked);
 
     private void SynchronizeTactical(BattleSnapshot next)
     {

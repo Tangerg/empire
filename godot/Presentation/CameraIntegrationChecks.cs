@@ -41,10 +41,15 @@ public partial class CameraIntegrationChecks : Node
             screen = new BattleScreen();
             AddChild(screen);
             screen.Board.AdvanceAnimationsAutomatically = false;
-            Bind(new GrayFlagSession(new(engine, presentation), level));
+            var initial = new ProjectedSession(new GrayFlagSession(new(engine, presentation), level), false, false);
+            Bind(initial);
             await Layout();
             map = (Control)screen.FindChild("MapArea", true, false);
             world = map.GetNode<Node2D>("World");
+            var snapshotReads = initial.SnapshotReads;
+            map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = Field(new Vector2(10.5f, 15.5f) * 32) });
+            map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = Field(new Vector2(10.6f, 15.5f) * 32) });
+            Require(initial.SnapshotReads == snapshotReads, "Pointer freshness checks must not construct battle snapshots.");
             CheckInitialAndGestures();
             CheckZoomAndResize();
             CheckCancellation();
@@ -361,8 +366,14 @@ public partial class CameraIntegrationChecks : Node
 
     private sealed class ProjectedSession(GrayFlagSession inner, bool computer, bool hidden) : ITacticalBattleSession
     {
+        public long Revision => inner.Revision;
+        public int SnapshotReads
+        {
+            get; private set;
+        }
         public BattleSnapshot GetSnapshot()
         {
+            SnapshotReads++;
             var snapshot = inner.GetSnapshot();
             if (snapshot.Transition is not { } original)
                 return snapshot;
