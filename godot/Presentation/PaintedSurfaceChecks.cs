@@ -16,6 +16,7 @@ public partial class PaintedSurfaceChecks : Node
     {
         try
         {
+            CheckOpeningScene();
             await Check();
             GD.Print("Painted elevated surface registration, depth and picking passed.");
             GetTree().Quit();
@@ -25,6 +26,60 @@ public partial class PaintedSurfaceChecks : Node
             GD.PushError(error.ToString());
             GetTree().Quit(1);
         }
+    }
+
+    private void CheckOpeningScene()
+    {
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var level = BattleTextChecks.OpeningLevel();
+        var state = engine.CreateState(level);
+        TerrainChecks.CheckOpeningHills(engine, state);
+        var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
+        var art = PresentationJson.Load<PaintedGroundDocument>(scene.PaintedGroundPath!);
+        art.ValidateLevel(level);
+        var board = new BoardView();
+        AddChild(board);
+        try
+        {
+            board.Configure(new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, art.CreatePlane), level, scene);
+            board.ConfigureGround(art.Factory(state["map"]!.AsObject()));
+            board.RenderState(state);
+            Require(board.RenderedUnitCount == 19 && board.RenderedStructureCount == 0,
+                "The opening must render all 19 actors without duplicating the four painted buildings.");
+            foreach (var unit in state["units"]!.AsArray().OfType<JsonObject>())
+            {
+                var cell = new Coord(unit["x"]!.GetValue<int>(), unit["y"]!.GetValue<int>());
+                var actor = board.GetNode<Node2D>($"CanonicalProjection/Unit_{unit["id"]!.GetValue<int>()}");
+                Require(actor.Position.IsEqualApprox(board.Projection.CellContact(cell)),
+                    "Every opening actor must use the canonical elevated foot contact.");
+            }
+            foreach (var cell in new[] { new Coord(3, 16), new Coord(18, 13), new Coord(22, 16), new Coord(34, 13) })
+                Require(board.Pick(board.Projection.CellContact(cell)) == cell,
+                    "Each painted entrance must pick its actual canonical site.");
+        }
+        finally
+        {
+            RemoveChild(board);
+            board.Free();
+        }
+        foreach (var hp in new int?[] { null, 50, 98 })
+        {
+            var source = level.DeepClone().AsObject();
+            var torren = source["units"]!.AsArray().OfType<JsonObject>().Single(unit => unit["key"]!.GetValue<string>() == "campaign-torren");
+            if (hp is null)
+                torren.Remove("hp");
+            else
+                torren["hp"] = hp.Value;
+            var request = new JsonObject { ["levelId"] = "c01-01", ["level"] = source };
+            var context = new JsonObject { ["resources"] = new JsonObject(), ["flags"] = new JsonArray("twin_hills_rushed") };
+            var rushed = Empire.Core.Campaign.GrayFlagCampaignPolicy.ApplyBattleContext(request, context)["level"]!.AsObject();
+            var result = rushed["units"]!.AsArray().OfType<JsonObject>().Single(unit => unit["key"]!.GetValue<string>() == "campaign-torren");
+            Require(result["x"]!.GetValue<int>() == 15 && result["y"]!.GetValue<int>() == 7
+                && result["hp"]!.GetValue<double>() == Math.Min(hp ?? 98, 72),
+                "Rush must relocate Torren onto the real north plateau without healing existing wounds.");
+            TerrainChecks.CheckOpeningHills(engine, engine.CreateState(rushed));
+        }
+        GD.Print("Native opening registration, entrances, two-hill traversal, actor feet and rush HP policy passed.");
     }
 
     private async Task Check()

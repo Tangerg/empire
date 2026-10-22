@@ -75,7 +75,7 @@ public partial class PresentationChecks : Node
     {
         var unit = board.GetNode<Node2D>("CanonicalProjection/Unit_2");
         var sprite = unit.GetNode<Sprite2D>("AuthoredSprite");
-        var expected = new Empire.Core.Geometry.Coord(9, 12);
+        var expected = new Empire.Core.Geometry.Coord(10, 15);
         var bodyHit = false;
         for (var y = -35; y < -8 && !bodyHit; y++)
             for (var x = -18; x <= 18 && !bodyHit; x++)
@@ -228,7 +228,7 @@ public partial class PresentationChecks : Node
         var unit = board.GetNode<Node2D>("CanonicalProjection/Unit_2");
         Require(unit.GetMeta("actor_key").AsString() == "campaign-torren",
             "Canonical actor key must survive projection.");
-        Require(unit.Position.IsEqualApprox(board.Projection.CellContact(new Empire.Core.Geometry.Coord(9, 12))),
+        Require(unit.Position.IsEqualApprox(board.Projection.CellContact(new Empire.Core.Geometry.Coord(10, 15))),
             "Actor contact must sample the shared terrain surface at CELL_FOOT.");
         Require(!board.SurfaceReady,
             "Incomplete compositor must never be described as the complete scene.");
@@ -358,9 +358,6 @@ public partial class PresentationChecks : Node
         using var roadMask = road.Texture.GetImage();
         Require(roadMask.GetWidth() == width * 64 && roadMask.GetHeight() == height * 64,
             "Road technical mask must preserve the logical map extent at density two.");
-        foreach (var cell in AuthoredScene.Load("res://data/scenes/c01-01.json").RoadCorridor!.ProtectedCells)
-            Require(roadMask.GetPixel(cell[0] * 64 + 32, cell[1] * 64 + 32).A == 0,
-                "Reviewed protected road notch must remain unpainted.");
         for (var index = 0; index < tiles.Count; index++)
         {
             if (tiles[index]!.GetValue<string>() != "road")

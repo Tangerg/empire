@@ -69,13 +69,13 @@ public partial class CameraIntegrationChecks : Node
         Require(map.Size.X > 0 && map.Size.Y > 0, "Usable native map viewport is laid out");
         Near(world.Scale, Vector2.One * 1.25f, "Initial screen scale is source zoom, not fit-to-panel");
         Require(screen.Board.Scale == Vector2.One, "Only the screen world owns camera scaling");
-        screen.SelectCell(new BoardCell(9, 12));
+        screen.SelectCell(new BoardCell(10, 15));
         Require(screen.SelectedUnitId == 2, "Fixture actor is the real Torren unit");
         GuiButton(MouseButton.Right, true, new Vector2(-1000, -1000));
         Require(screen.SelectedUnitId == 2, "Right press outside the field must not cancel selection");
-        GuiButton(MouseButton.Right, true, Field(new Vector2(9.5f, 12.5f) * 32));
+        GuiButton(MouseButton.Right, true, Field(new Vector2(10.5f, 15.5f) * 32));
         Require(screen.SelectedUnitId is null, "Right press on a valid field cell cancels immediately");
-        var at = Field(new Vector2(9.5f, 12.5f) * 32);
+        var at = Field(new Vector2(10.5f, 15.5f) * 32);
         GuiButton(MouseButton.Left, true, at);
         Require(screen.SelectedUnitId is null, "Primary down does not select");
         CapturedButton(MouseButton.Left, false, at);
@@ -142,7 +142,7 @@ public partial class CameraIntegrationChecks : Node
     private void CheckCancellation()
     {
         Bind(new GrayFlagSession(new(engine, presentation), level));
-        var at = Field(new Vector2(9.5f, 12.5f) * 32);
+        var at = Field(new Vector2(10.5f, 15.5f) * 32);
         GuiButton(MouseButton.Left, true, at);
         screen._Notification((int)Node.NotificationWMWindowFocusOut);
         GuiButton(MouseButton.Left, false, at);
@@ -185,7 +185,7 @@ public partial class CameraIntegrationChecks : Node
         GuiButton(MouseButton.Middle, true, new Vector2(100, 100));
         CapturedMove(new Vector2(10000, 10000));
         CapturedButton(MouseButton.Middle, false, new Vector2(10000, 10000));
-        screen.SelectCell(new BoardCell(9, 12));
+        screen.SelectCell(new BoardCell(10, 15));
         GuiButton(MouseButton.Right, true, Field(new Vector2(16, 16)));
         Require(screen.SelectedUnitId == 2, "Canonical outside terrain excludes holes even when material tags say playable");
         GuiButton(MouseButton.Left, true, Field(new Vector2(16, 16)));
@@ -201,7 +201,7 @@ public partial class CameraIntegrationChecks : Node
         materials = WorldMaterialsManifest.Load();
         materials.TerrainTags["plain"] = ["outside"];
         screen.ConfigureGround(TerrainView.Factory(materials));
-        var actor = Field(new Vector2(9.5f, 12.5f) * 32);
+        var actor = Field(new Vector2(10.5f, 15.5f) * 32);
         GuiButton(MouseButton.Left, true, actor);
         CapturedButton(MouseButton.Left, false, actor);
         Require(screen.SelectedUnitId == 2, "Material outside tags cannot block primary input on canonical playable terrain");
@@ -294,14 +294,14 @@ public partial class CameraIntegrationChecks : Node
         screen.BindApplicationActions(onRestart: () => restarts += 100, onExit: () => exits += 100);
         confirmation.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
         Require(restarts == 0, "A superseded restart dialog cannot invoke the newer binding's callback");
-        GuiButton(MouseButton.Left, true, Field(new Vector2(9.5f, 12.5f) * 32));
+        GuiButton(MouseButton.Left, true, Field(new Vector2(10.5f, 15.5f) * 32));
         RemoveChild(screen);
         exit.EmitSignal(Button.SignalName.Pressed);
         screen._Input(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = false });
         Require(exits == 0, "Unmounted application callback cannot exit camp");
         AddChild(screen);
         Bind(new GrayFlagSession(new(engine, presentation), level));
-        GuiButton(MouseButton.Left, false, Field(new Vector2(9.5f, 12.5f) * 32));
+        GuiButton(MouseButton.Left, false, Field(new Vector2(10.5f, 15.5f) * 32));
         Require(screen.SelectedUnitId is null, "Reattached screen cannot replay an old held gesture");
         Near(world.Scale, Vector2.One * 1.25f, "Explicit rebind after reattach restores a usable camera");
         screen.QueueFree();

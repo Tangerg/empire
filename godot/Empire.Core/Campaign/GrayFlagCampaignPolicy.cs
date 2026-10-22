@@ -39,8 +39,8 @@ public static class GrayFlagCampaignPolicy
             case "c01-01" when Flag("twin_hills_rushed"):
                 if (Unit("campaign-torren") is { } torren)
                 {
-                    torren["x"] = 9;
-                    torren["y"] = 4;
+                    torren["x"] = 15;
+                    torren["y"] = 7;
                     torren["hp"] = Math.Min(Number(torren, "hp", 98), 72);
                 }
                 break;

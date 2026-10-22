@@ -70,7 +70,7 @@ internal static class TerrainChecks
                     $"{scene.LevelId}: {string.Join("; ", view.Diagnostics)}");
                 Require(state.ToJsonString() == unchanged, "Terrain composition changed the canonical state.");
                 if (scene.LevelId == "c01-01")
-                    CheckNorthHill(engine, state);
+                    CheckOpeningHills(engine, state);
                 if (scene.LevelId == "c01-02")
                 {
                     CheckRiver(view, materials, scene, tiles, size);
@@ -89,83 +89,71 @@ internal static class TerrainChecks
         GD.Print("Terrain checks passed: 16 canonical resource projections, north hill cliff/ramp access and starting-unit connectivity, c01-02 river permissions/shape/bridge registration, raw diagonal occupancy, river width validation and junction topology.");
     }
 
-    private static void CheckNorthHill(BattleEngine engine, JsonObject state)
+    internal static void CheckOpeningHills(BattleEngine engine, JsonObject state)
     {
         var movement = new MovementRules(new(engine.Catalog, engine.Grids));
         var battlefield = movement.Battlefield(state);
         var board = engine.Space.Board(state);
-        Require(state["map"]!["cliffs"]!.AsArray().Count == 8, "The north hill must have eight authored cliff edges, not a closed ring.");
+        var cliffs = state["map"]!["cliffs"]!.AsArray().OfType<JsonObject>().ToArray();
+        Require(cliffs.Length == 21, "The two low hills must retain their finite authored rock bands.");
         var withoutCliffs = state.DeepClone().AsObject();
         withoutCliffs["map"]!["cliffs"] = new JsonArray();
         var openBattlefield = movement.Battlefield(withoutCliffs);
-        for (var x = 13; x <= 16; x++)
+        foreach (var cliff in cliffs)
         {
-            var upper = new Coord(x, 8);
-            var lower = new Coord(x, 9);
-            Require(battlefield.Cell(upper).Elevation == 2 && battlefield.Cell(lower).Elevation == 0,
-                $"North cliff {x} must connect the authored height-two summit and height-zero foot.");
+            var upper = new Coord(cliff["from"]!["x"]!.GetValue<int>(), cliff["from"]!["y"]!.GetValue<int>());
+            var lower = new Coord(cliff["to"]!["x"]!.GetValue<int>(), cliff["to"]!["y"]!.GetValue<int>());
+            if (battlefield.Cell(upper).Elevation < battlefield.Cell(lower).Elevation)
+                (upper, lower) = (lower, upper);
+            Require(battlefield.Cell(upper).Elevation == 2 && battlefield.Cell(lower).Elevation < 2,
+                "An authored low rock band must descend from a height-two platform.");
             Require(battlefield.IsCliff(upper, lower) && battlefield.IsCliff(lower, upper),
-                $"North cliff {x} is missing its undirected canonical edge.");
+                "An authored cliff must be an undirected canonical edge.");
             Require(battlefield.TraversalCost(upper, lower, "foot") is null
                 && battlefield.TraversalCost(lower, upper, "foot") is null,
-                $"Foot movement crossed north cliff {x}.");
+                "Foot movement crossed an authored rock band.");
             Require(battlefield.TraversalCost(upper, lower, "flying") == 1
                 && battlefield.TraversalCost(lower, upper, "flying") == 1,
-                $"Flying movement failed to cross north cliff {x}.");
-            Require(openBattlefield.TraversalCost(upper, lower, "foot") == 1,
-                $"North cliff {x} must block an otherwise legal foot descent, not merely exceed the climb limit.");
-        }
-
-        foreach (var y in new[] { 5, 6, 7, 8 })
-        {
-            var upper = new Coord(16, y);
-            var lower = new Coord(17, y);
-            Require(battlefield.Cell(upper).Elevation == 2 && battlefield.Cell(lower).Elevation == 0,
-                "The east return must join the authored upper platform and lower slope.");
-            Require(battlefield.TraversalCost(upper, lower, "foot") is null
-                && battlefield.TraversalCost(lower, upper, "foot") is null
-                && battlefield.TraversalCost(upper, lower, "flying") == 1,
-                "The same east cliff must block foot movement and permit flight.");
+                "Flying movement failed to cross an authored rock band.");
+            Require(openBattlefield.TraversalCost(upper, lower, "foot") is > 0,
+                "A cliff must block an otherwise legal descent, not merely exceed the climb limit.");
         }
 
         var scout = state["units"]!.AsArray().OfType<JsonObject>()
             .Single(unit => unit["key"]?.GetValue<string>() == "ridge-scout");
         var scoutBudget = movement.MovementBudget(state, scout);
-        Require(TacticalQueries.Position(scout) == new Coord(11, 7), "The ridge scout's authored starting coordinate changed.");
-        for (var x = 11; x <= 12; x++)
+        Require(TacticalQueries.Position(scout) == new Coord(13, 6), "The ridge scout must start on the rear northern platform.");
+        Coord[][] ramps = [
+            [new(11, 10), new(11, 9), new(11, 8)],
+            [new(12, 10), new(12, 9), new(12, 8)],
+            [new(13, 10), new(13, 9), new(13, 8)],
+            [new(22, 22), new(23, 22), new(24, 22)],
+            [new(22, 23), new(23, 23), new(24, 23)]
+        ];
+        var probe = state.DeepClone().AsObject();
+        var probeScout = scout.DeepClone().AsObject();
+        probe["units"] = new JsonArray(probeScout);
+        foreach (var ramp in ramps)
         {
-            var ramp = new[] { new Coord(x, 9), new Coord(x, 8), new Coord(x, 7) };
             for (var step = 0; step < ramp.Length; step++)
                 Require(battlefield.Cell(ramp[step]).Elevation == step,
-                    $"North side ramp {x} must retain its 0-to-1-to-2 elevation sequence.");
+                    "Each visible main ramp must retain its continuous 0-to-1-to-2 elevation sequence.");
             for (var step = 1; step < ramp.Length; step++)
-            {
-                var uphill = battlefield.TraversalCost(ramp[step - 1], ramp[step], "foot");
-                var downhill = battlefield.TraversalCost(ramp[step], ramp[step - 1], "foot");
-                Require(uphill is > 0 && uphill <= scoutBudget && downhill is > 0 && downhill <= scoutBudget,
-                    $"North side ramp {x} contains a step the starting scout cannot traverse within its movement budget.");
-            }
+                foreach (var (from, to) in new[] { (ramp[step - 1], ramp[step]), (ramp[step], ramp[step - 1]) })
+                {
+                    var cost = battlefield.TraversalCost(from, to, "foot");
+                    Require(cost is > 0 && cost <= scoutBudget,
+                        "A main-ramp step must fit the actual starting scout's movement budget.");
+                    probeScout["x"] = from.X;
+                    probeScout["y"] = from.Y;
+                    var field = engine.Space.ComputeMoveField(probe, probeScout);
+                    var path = engine.Space.PathTo(field, probe, to);
+                    Require(field.Stops.Contains(board.IndexOf(to)) && path is not null && path.SequenceEqual(new[] { from, to }),
+                        "The composed movement policy must permit both directions on every visible main ramp.");
+                }
         }
 
-        var scoutPath = engine.Space.PathTo(engine.Space.ComputeMoveField(state, scout), state, new Coord(11, 9));
-        Require(scoutPath is not null && scoutPath.SequenceEqual(new[] { new Coord(11, 7), new Coord(11, 8), new Coord(11, 9) }),
-            "The composed movement policy must let the starting scout descend the side ramp.");
-        var probe = state.DeepClone().AsObject();
-        var probeScout = TacticalQueries.RequireUnit(probe, scout["id"]!.GetValue<int>());
-        for (var x = 11; x <= 12; x++)
-            foreach (var y in new[] { 9, 8 })
-            {
-                probeScout["x"] = x;
-                probeScout["y"] = y;
-                var from = new Coord(x, y);
-                var to = new Coord(x, y - 1);
-                var field = engine.Space.ComputeMoveField(probe, probeScout);
-                var path = engine.Space.PathTo(field, probe, to);
-                Require(field.Stops.Contains(board.IndexOf(to)) && path is not null && path.SequenceEqual(new[] { from, to }),
-                    $"The composed movement policy must let the scout ascend ramp {x} from {y}.");
-            }
-
-        var corridor = new Coord(16, 11);
+        var corridor = new Coord(16, 14);
         var connectivity = new Dictionary<(string MovementClass, int Budget), (HashSet<Coord> FromCorridor, HashSet<Coord> ToCorridor)>();
         foreach (var unit in state["units"]!.AsArray().OfType<JsonObject>())
         {

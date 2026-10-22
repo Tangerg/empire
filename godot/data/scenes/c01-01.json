@@ -1,83 +1,52 @@
 {
   "schemaVersion": "environment-scene-v1.1",
-  "sceneId": "c01-01",
   "levelId": "c01-01",
-  "title": "双子丘陵",
-  "runtimeReady": false,
-  "roadCorridor": {
-    "width": 20,
-    "maxTangentCut": 16,
-    "maxPlainOverhang": 0,
-    "protectedCells": []
-  },
+  "runtimeReady": true,
   "mapSize": [
     36,
-    24
+    30
   ],
-  "selection": {
-    "allowAtlases": [
-      "surface-meadow",
-      "surface-forest-floor",
-      "transition-meadow-forest",
-      "route-dirt-road",
-      "route-edge-dirt-road",
-      "cliff-modules-temperate",
-      "forest-temperate",
-      "camps-foundations",
-      "decals-small",
-      "rural-life"
-    ],
-    "denyAtlases": [
-      "surface-snow",
-      "surface-wasteland",
-      "surface-graveyard",
-      "surface-forge-stone",
-      "water-slow-river",
-      "water-shallow-stream",
-      "water-marsh-channel",
-      "water-icy-water",
-      "cliff-modules-highland",
-      "landmarks-large",
-      "crossings-fortifications",
-      "forest-existing"
-    ]
-  },
+  "paintedGroundPath": "res://data/scenes/c01-01-painted-ground.json",
+  "openingFocus": [
+    13,
+    14
+  ],
+  "placements": [],
+  "framePlacements": [],
   "zones": [
     {
       "id": "gray-camp",
       "bounds": [
-        2,
-        10,
-        11,
-        18
+        1,
+        14,
+        14,
+        23
       ],
       "role": "player-camp"
     },
     {
       "id": "north-hill",
       "bounds": [
-        10,
-        3,
-        18,
-        9
+        7,
+        0,
+        20,
+        11
       ],
       "role": "elevation-2",
       "authoredTerrainScenery": [
-        "hill",
-        "mountain"
+        "hill"
       ],
       "authoredTerrainSurface": [
-        "hill",
-        "mountain"
+        "hill"
       ]
     },
     {
       "id": "central-village",
       "bounds": [
-        15,
-        9,
+        16,
+        10,
         25,
-        16
+        18
       ],
       "role": "neutral-village",
       "authoredTerrainScenery": [
@@ -89,362 +58,28 @@
     {
       "id": "east-hill",
       "bounds": [
-        21,
-        15,
-        29,
-        21
+        22,
+        18,
+        33,
+        27
       ],
       "role": "elevation-2",
       "authoredTerrainScenery": [
-        "hill",
-        "mountain"
+        "hill"
       ],
       "authoredTerrainSurface": [
-        "hill",
-        "mountain"
+        "hill"
       ]
     },
     {
       "id": "vilsa-camp",
       "bounds": [
-        27,
-        7,
-        34,
-        15
+        28,
+        10,
+        35,
+        17
       ],
       "role": "enemy-vanguard"
     }
-  ],
-  "placements": [
-    {
-      "id": "farm-fence-straight",
-      "x": 16.2,
-      "y": 14.4,
-      "layer": "under-units",
-      "scale": 0.45
-    },
-    {
-      "id": "farm-fence-corner",
-      "x": 22.3,
-      "y": 12.6,
-      "layer": "under-units",
-      "scale": 0.45
-    },
-    {
-      "id": "bootprints",
-      "x": 25.7,
-      "y": 10.1,
-      "layer": "ground-decal",
-      "scale": 0.6
-    },
-    {
-      "id": "cart-ruts",
-      "x": 14.6,
-      "y": 11.2,
-      "layer": "ground-decal",
-      "scale": 0.7
-    },
-    {
-      "id": "stone-cluster-b",
-      "x": 9.2,
-      "y": 10.2,
-      "layer": "ground-decal",
-      "scale": 0.6
-    },
-    {
-      "id": "fallen-leaves",
-      "x": 18.8,
-      "y": 7.9,
-      "layer": "ground-decal",
-      "scale": 0.5
-    }
-  ],
-  "populationBindings": [
-    {
-      "topicId": "C01-MISSION-BORDER-FARMER",
-      "role": "village-ambient",
-      "maximum": 2
-    }
-  ],
-  "notes": [
-    "第二个中立村庄规则格在表现层作为晒麦场或边境驿站，不再画成第二座同名村庄。",
-    "所有道路、地面、地基和贴花低于单位；只有树冠、墙体和高构件允许进入前景层。",
-    "大型地标在本关明确禁用，留给赤石围城及后续视觉升级。",
-    "2026-10-19 布局重构：保留27×17方格规则，采用错位高地、弯折村道与南侧迂回。",
-    "两个丘陵区域由显式构件负责立体轮廓，禁用区域内逐格叠加的重复岩柱；地形与高度不变。",
-    "外围树林采用不规则团簇，保留西侧与东侧入口；村民与外围锚点统一在场景文档中维护。",
-    "2026-10-21 原生场景：道路收窄为20逻辑像素，外围树群由28处减为13处并留出入口；规则地形、部署、碰撞和镜头保持不变。",
-    "2026-10-21 首关改为36×24存储、704可玩格的不规则山口；outside边界完全来自原生关卡，场景不再另绘groundOutline。营地、村落与两处高地同步重新定位；19名初始单位不增。"
-  ],
-  "framePlacements": [
-    {
-      "region": "northwest",
-      "id": "oak-grove-dense",
-      "contact": [
-        5,
-        3
-      ],
-      "scale": 0.736,
-      "flip": true,
-      "layer": "foreground"
-    },
-    {
-      "region": "northwest",
-      "id": "mixed-forest-dense",
-      "contact": [
-        8,
-        1.5
-      ],
-      "scale": 0.832,
-      "flip": true,
-      "layer": "foreground"
-    },
-    {
-      "region": "northwest",
-      "id": "oak-grove-dense",
-      "contact": [
-        1,
-        8
-      ],
-      "scale": 0.736,
-      "flip": false,
-      "layer": "foreground"
-    },
-    {
-      "region": "north",
-      "id": "pine-cluster",
-      "contact": [
-        15,
-        -0.1
-      ],
-      "scale": 0.624,
-      "flip": false,
-      "layer": "foreground"
-    },
-    {
-      "region": "north",
-      "id": "mixed-forest-edge",
-      "contact": [
-        20,
-        -0.2
-      ],
-      "scale": 0.768,
-      "flip": true,
-      "layer": "foreground"
-    },
-    {
-      "region": "northeast",
-      "id": "mixed-forest-dense",
-      "contact": [
-        28,
-        2
-      ],
-      "scale": 0.672,
-      "flip": false,
-      "layer": "foreground"
-    },
-    {
-      "region": "northeast",
-      "id": "oak-ancient",
-      "contact": [
-        33,
-        7
-      ],
-      "scale": 0.736,
-      "flip": false,
-      "layer": "foreground"
-    },
-    {
-      "region": "southeast",
-      "id": "oak-grove-dense",
-      "contact": [
-        34,
-        14
-      ],
-      "scale": 0.768,
-      "flip": true,
-      "layer": "foreground"
-    },
-    {
-      "region": "southeast",
-      "id": "mixed-forest-dense",
-      "contact": [
-        30,
-        21
-      ],
-      "scale": 0.624,
-      "flip": true,
-      "layer": "foreground"
-    },
-    {
-      "region": "southwest",
-      "id": "mixed-forest-dense",
-      "contact": [
-        4,
-        20
-      ],
-      "scale": 0.768,
-      "flip": true,
-      "layer": "foreground"
-    },
-    {
-      "region": "southwest",
-      "id": "oak-ancient",
-      "contact": [
-        9,
-        23
-      ],
-      "scale": 0.624,
-      "flip": true,
-      "layer": "foreground"
-    },
-    {
-      "region": "south",
-      "id": "oak-grove-dense",
-      "contact": [
-        16,
-        24
-      ],
-      "scale": 0.736,
-      "flip": false,
-      "layer": "foreground"
-    },
-    {
-      "region": "south",
-      "id": "mixed-forest-dense",
-      "contact": [
-        27,
-        23
-      ],
-      "scale": 0.832,
-      "flip": false,
-      "layer": "foreground"
-    },
-    {
-      "region": "north-distant",
-      "id": "oak-grove-dense",
-      "contact": [
-        4,
-        4
-      ],
-      "scale": 1.1,
-      "flip": false,
-      "layer": "distant"
-    },
-    {
-      "region": "north-distant",
-      "id": "mixed-forest-dense",
-      "contact": [
-        7,
-        2
-      ],
-      "scale": 1.15,
-      "flip": true,
-      "layer": "distant"
-    },
-    {
-      "region": "north-distant",
-      "id": "oak-grove-dense",
-      "contact": [
-        10,
-        1
-      ],
-      "scale": 1.05,
-      "flip": false,
-      "layer": "distant"
-    },
-    {
-      "region": "north-distant",
-      "id": "mixed-forest-dense",
-      "contact": [
-        13,
-        1
-      ],
-      "scale": 1.2,
-      "flip": true,
-      "layer": "distant"
-    },
-    {
-      "region": "north-distant",
-      "id": "oak-grove-dense",
-      "contact": [
-        16,
-        1
-      ],
-      "scale": 1.1,
-      "flip": false,
-      "layer": "distant"
-    },
-    {
-      "region": "north-distant",
-      "id": "mixed-forest-dense",
-      "contact": [
-        19,
-        1
-      ],
-      "scale": 1.15,
-      "flip": true,
-      "layer": "distant"
-    },
-    {
-      "region": "north-distant",
-      "id": "oak-grove-dense",
-      "contact": [
-        22,
-        1
-      ],
-      "scale": 1.05,
-      "flip": false,
-      "layer": "distant"
-    },
-    {
-      "region": "north-distant",
-      "id": "mixed-forest-dense",
-      "contact": [
-        25,
-        1
-      ],
-      "scale": 1.15,
-      "flip": true,
-      "layer": "distant"
-    },
-    {
-      "region": "north-distant",
-      "id": "oak-grove-dense",
-      "contact": [
-        28,
-        3
-      ],
-      "scale": 1.05,
-      "flip": false,
-      "layer": "distant"
-    },
-    {
-      "region": "east-distant",
-      "id": "mixed-forest-dense",
-      "contact": [
-        32,
-        5
-      ],
-      "scale": 1.1,
-      "flip": true,
-      "layer": "distant"
-    },
-    {
-      "region": "east-distant",
-      "id": "oak-grove-dense",
-      "contact": [
-        34,
-        9
-      ],
-      "scale": 1.05,
-      "flip": false,
-      "layer": "distant"
-    }
-  ],
-  "groundOutline": [],
-  "openingFocus": [
-    12,
-    10
   ]
 }
