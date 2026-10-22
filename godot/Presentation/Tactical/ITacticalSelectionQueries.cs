@@ -48,6 +48,7 @@ public interface ITacticalSelectionQueries
     TacticalUnit? UnitAt(BoardCell at);
     bool AreEnemies(int firstUnit, int secondUnit);
     bool IsEnemyOfViewer(int unit);
+    bool IsSite(BoardCell at);
     bool CanOpenRecruitment(BoardCell at);
     IReadOnlyList<int> Actors();
     IReadOnlyList<BoardCell> MoveStops(int unit);

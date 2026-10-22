@@ -457,6 +457,12 @@ Presentation receives immutable/detached query projections. `ActionRefusal` carr
 semantic rejection facts; `ActionRefusalText` and injected `GameText` own wording.
 The revision-bound tactical interactive-cell projection is authoritative for input
 and fog; asset manifests cannot independently decide gameplay eligibility.
+`TacticalSelectionController` owns pinned site selection separately from transient
+cursor hover, using the same selection state and existing Back transition. HUD site
+instructions project canonical terrain ownership, recruitment content and
+`TacticalCell.Heal`; selection never captures, heals or recruits on its own.
+`BattleScreen` projects pointer hover/clicks only inside its map viewport; captured
+gestures still receive releases outside it, without treating HUD space as terrain.
 Registered objective handlers own immutable `ObjectiveAssessment` facts and outcomes;
 `ObjectiveHandlerRegistry` projects `ObjectiveProgress` without recomputing those rules.
 `VictorySystem` selects a `BattleConclusion`; `BattleLifecycle` alone commits it.

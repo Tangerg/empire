@@ -185,7 +185,7 @@ public partial class BattleScreen : Control
             focus = CellCenter(new CameraPoint(opening[0], opening[1]));
         }
         _camera = new BattlefieldCamera(new(_board.FieldSize.X, _board.FieldSize.Y), new(74, 62, 74, 74), focus);
-        _gestures = new BattlefieldGestures(new(point => _camera?.HasViewport == true ? _camera.ToField(point) : null, PressField, HoverField, () => HoverField(null), delta => { _camera?.Pan(delta); ApplyCamera(); }, notches => QueueZoom(notches * .1)));
+        _gestures = new BattlefieldGestures(new(ProjectMapPoint, PressField, HoverField, () => HoverField(null), delta => { _camera?.Pan(delta); ApplyCamera(); }, notches => QueueZoom(notches * .1)));
         ResizeCamera();
     }
 
@@ -513,7 +513,7 @@ public partial class BattleScreen : Control
         {
             // Inspection/cursor projection remains read-only while actions settle.
             if (input is InputEventMouseMotion hover)
-                HoverField(_camera.HasViewport ? _camera.ToField(new(hover.Position.X, hover.Position.Y)) : null);
+                HoverField(ProjectMapPoint(new(hover.Position.X, hover.Position.Y)));
             return;
         }
         switch (input)
@@ -571,6 +571,11 @@ public partial class BattleScreen : Control
                 break;
         }
     }
+
+    private CameraPoint? ProjectMapPoint(CameraPoint point) =>
+        _camera?.HasViewport == true && point.X >= 0 && point.Y >= 0
+        && point.X < _mapArea.Size.X && point.Y < _mapArea.Size.Y
+            ? _camera.ToField(point) : null;
 
     private void PressField(CameraPoint point, int button)
     {

@@ -22,6 +22,14 @@ dotnet build godot/Empire.csproj
 
 Select a friendly unit, choose its action and destination, then confirm the
 order. Use the existing attack, site interaction and end-turn controls.
+Click a site to keep its name, owner and use instructions open while
+moving the pointer into the HUD. An actionable friendly unit on a site keeps its
+normal unit-selection priority. Click another site or friendly unit to switch;
+right-click, Esc or the panel's close button clears the selection. The initial
+P1 outpost at (38,23) heals owned units by up to 15 HP at the start of their side's next turn;
+it does not recruit. Capturing another site requires the existing capture command,
+not merely moving onto it. None of these inspection controls changes site rules.
+
 Drag the battlefield or use the mouse wheel to pan; hold Ctrl/Cmd while
 scrolling, or use the top −/+ buttons, to zoom.
 In the running game, F5 saves and F9 loads; the header buttons use the same

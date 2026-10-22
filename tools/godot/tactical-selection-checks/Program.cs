@@ -337,6 +337,7 @@ sealed class Fixture : ITacticalSelectionQueries
     public TacticalUnit? UnitAt(BoardCell at) => UnitsOverride is not null ? UnitsOverride.FirstOrDefault(unit => unit.At == at && unit.Visible) : Root.GetProperty("units").EnumerateArray().Where(u => Cell(u.GetProperty("at")) == at).Select(u => Unit(u.GetProperty("id").GetInt32())).FirstOrDefault();
     public bool AreEnemies(int firstUnit, int secondUnit) => Root.GetProperty("enemies").EnumerateArray().Any(value => value.GetString() == $"{firstUnit}:{secondUnit}");
     public bool IsEnemyOfViewer(int unit) => Data(unit).GetProperty("owner").GetInt32() != 1;
+    public bool IsSite(BoardCell at) => false;
     public bool CanOpenRecruitment(BoardCell at) => Cells(Root.GetProperty("recruits")).Contains(at);
     public IReadOnlyList<int> Actors() => Root.GetProperty("actors").EnumerateArray().Select(value => value.GetInt32()).ToArray();
     public IReadOnlyList<BoardCell> MoveStops(int unit) => StopsOverride ?? Cells(Data(unit).GetProperty("stops"));

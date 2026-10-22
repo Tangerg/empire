@@ -78,8 +78,11 @@ public sealed class BattlefieldGestures : IDisposable
         var prevented = MoveGesture(id, at);
         var click = gesture is { Dragging: false, Button: 0 };
         gesture = null;
-        if (click && project(at) is { } point)
-            press(point, 0);
+        var point = project(at);
+        if (point is null)
+            leave();
+        else if (click)
+            press(point.Value, 0);
         return prevented;
     }
 

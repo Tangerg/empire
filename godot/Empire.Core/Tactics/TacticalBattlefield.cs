@@ -21,6 +21,8 @@ public sealed class TacticalBattlefield
     }
     private readonly GridExtent extent;
 
+    public TacticalBattlefield(JsonObject state, ReadOnlyContent content) : this(state, content.Source) { }
+
     internal TacticalBattlefield(JsonObject state, StateContent content)
     {
         State = state;

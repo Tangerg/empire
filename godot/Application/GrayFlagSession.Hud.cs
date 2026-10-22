@@ -428,7 +428,9 @@ public sealed partial class GrayFlagSession
                     UnitIcon = new(card.Unit, null, S(current, "color"))
                 };
             })));
-        if (cursor is { } tile && engine.Space.Board(state).Contains(new(tile.X, tile.Y)))
+        var inspectionCell = selection.Kind is TacticalSelectionKind.Site or TacticalSelectionKind.Recruit
+            ? selection.Destination : cursor;
+        if (inspectionCell is { } tile && engine.Space.Board(state).Contains(new(tile.X, tile.Y)))
         {
             var structure = state["structures"]!.AsArray().OfType<JsonObject>().FirstOrDefault(value => TacticalQueries.Position(value) == new Coord(tile.X, tile.Y));
             if (structure is not null)
@@ -460,13 +462,38 @@ public sealed partial class GrayFlagSession
                 new("cover", Cover(S(terrain, "cover"))) };
             if (B(terrain, "capturable"))
             {
-                var holder = state["players"]!.AsArray().OfType<JsonObject>()
-                    .FirstOrDefault(player => player["id"]!.ToJsonString() == state["map"]!["owners"]![index]?.ToJsonString());
-                rows.Add(new("owner", holder is not null
-                    ? battleText.PlayerName(S(state, "levelId"), N(holder, "id"))
-                    : text.Format("ui.hud.neutral")));
+                var siteOwner = state["map"]!["owners"]![index]!.GetValue<int>();
+                var holder = state["players"]!.AsArray().OfType<JsonObject>().FirstOrDefault(player => N(player, "id") == siteOwner);
+                var facts = new List<TacticalHudRow>
+                {
+                    new("owner", text.Format("ui.hud.site.owner", holder is not null
+                        ? battleText.PlayerName(S(state, "levelId"), N(holder, "id"))
+                        : text.Format("ui.hud.neutral")))
+                };
+                var heal = new TacticalBattlefield(state, engine.Catalog).Cell(new(tile.X, tile.Y)).Heal;
+                if (heal > 0)
+                {
+                    facts.Add(new("heal", text.Format("ui.hud.terrain_heal", heal)));
+                    facts.Add(new("heal-use", B(state["rules"]!.AsObject(), "healOnOwnedBuilding")
+                        ? text.Format("ui.hud.site.heal_use", text.Format(state["turnOrder"]!["activeUnit"] is null
+                            ? "ui.hud.site.heal_timing_side" : "ui.hud.site.heal_timing_unit"))
+                        : text.Format("ui.hud.site.heal_disabled")));
+                }
+                if (siteOwner != Viewer(state))
+                    facts.Add(new("capture-use", text.Format("ui.hud.site.capture_use")));
+                var progress = Number(state["map"]!["captureProgress"]![index]);
+                if (progress > 0)
+                    facts.Add(new("capture-progress", text.Format("ui.hud.site.capture_progress", progress,
+                        Number(state["rules"]!["captureThreshold"])), Gauge: new(progress, Number(state["rules"]!["captureThreshold"]))));
+                facts.Add(new("recruit-use", text.Format(terrain["produces"]!.AsArray().Count == 0
+                    ? "ui.hud.site.no_recruitment"
+                    : GetTacticalQueries(stamp.Binding).CanOpenRecruitment(tile)
+                        ? "ui.hud.site.recruit_use" : "ui.hud.site.recruit_unavailable")));
+                if (selection.Kind == TacticalSelectionKind.Site)
+                    facts.Add(Pick("close", text.Format("ui.hud.cancel_shortcut"), TacticalHudIntentKind.Back));
+                Section("site", contentText.Name(ContentTextKind.Terrain, S(terrain, "id")), facts);
             }
-            if (D(terrain, "heal") != 0)
+            else if (D(terrain, "heal") != 0)
                 rows.Add(new("heal", text.Format("ui.hud.terrain_heal", D(terrain, "heal"))));
             if (terrain["ownerTurnGrants"]!.AsArray().Count > 0)
                 rows.Add(new("grants", text.Format("ui.hud.production", Amounts(terrain["ownerTurnGrants"]))));
@@ -480,7 +507,16 @@ public sealed partial class GrayFlagSession
                     return $"{profileName} {cost}";
                 });
             rows.Add(new("movement-costs", string.Join(" · ", movementCosts)));
-            Section("tile", contentText.Name(ContentTextKind.Terrain, S(terrain, "id")), rows);
+            Section("tile", B(terrain, "capturable") ? text.Format("ui.hud.site.terrain_details")
+                : contentText.Name(ContentTextKind.Terrain, S(terrain, "id")), rows);
+        }
+        // Site use stays above long unit statistics, including when a selected unit stands on it.
+        var siteSection = sections.FirstOrDefault(section => section.Key == "site");
+        if (siteSection is not null)
+        {
+            sections.Remove(siteSection);
+            var details = sections.FindIndex(section => section.Key is "unit" or "structure" or "tile");
+            sections.Insert(details < 0 ? sections.Count : details, siteSection);
         }
         if (stamp.Revision != revision)
             throw new DomainInvariantException("Battle changed during HUD projection.");
@@ -510,6 +546,7 @@ public sealed partial class GrayFlagSession
         TacticalSelectionKind.Disembark => text.Format("ui.hud.selection.disembark"),
         TacticalSelectionKind.Tactic => text.Format("ui.hud.selection.tactic"),
         TacticalSelectionKind.Recruit => text.Format("ui.hud.selection.recruit"),
+        TacticalSelectionKind.Site => text.Format("ui.hud.selection.site"),
         _ => throw new ArgumentOutOfRangeException(nameof(kind)),
     };
 

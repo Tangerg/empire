@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.Json.Nodes;
 using Empire.Application;
 using Empire.Core.Engine;
+using Empire.Core.Tactics;
 using Empire.Localization;
 using Empire.Core.Determinism;
 using Godot;
@@ -58,6 +59,152 @@ public partial class TacticalHudChecks : Node
         var choices = recruit.Sections.Single(section => section.Key == "recruit").Rows.Where(row => row.Intent?.Kind == TacticalHudIntentKind.Recruit).ToArray();
         Require(choices.Select(row => row.Intent!.Key).SequenceEqual(cards.Select(card => card.Unit))
             && choices.Select(row => row.Enabled).SequenceEqual(cards.Select(card => card.Affordable)), "Reordering preserves the authoritative recruitment cards and affordability.");
+        state["map"]!["owners"]![0] = 0;
+        var neutral = GrayFlagSession.FromSave(new(engine, presentation), engine.SaveBattle(state));
+        var unavailable = neutral.ProjectHud(new(0, 0), new()
+        {
+            Kind = TacticalSelectionKind.Site,
+            Destination = site
+        }, null, null, false);
+        Require(engine.Recruitment.Cards(neutral.Snapshot(), new(0, 0)).Count == 0
+            && !neutral.GetTacticalQueries(0).CanOpenRecruitment(site)
+            && unavailable.Sections.Single(section => section.Key == "site").Rows.Single(row => row.Key == "recruit-use").Label
+                == GodotTextCatalog.LoadSimplifiedChinese().Format("ui.hud.site.recruit_unavailable"),
+            "A producing but unowned site cannot promise a recruitment panel that the canonical query will not open.");
+    }
+
+    private void CheckSiteInspection()
+    {
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var text = GodotTextCatalog.LoadSimplifiedChinese();
+        var level = PresentationJson.Load<JsonObject>("res://data/samples/redstone-prototype/level.json");
+        var presentation = SessionPresentationText.Compose(new(engine, text), new JsonArray(level.DeepClone()),
+            Godot.FileAccess.GetFileAsString("res://data/samples/redstone-prototype/text.json"),
+            Godot.FileAccess.GetFileAsString("res://data/grayflag-content-text.json"));
+        var session = new GrayFlagSession(new(engine, presentation), level);
+        var control = new TacticalSelectionController(session.GetTacticalQueries(41));
+        var home = new BoardCell(38, 23);
+        var before = EcmaJson.Stringify(session.Snapshot());
+        TacticalHudProjection Hud() => session.ProjectHud(control.Stamp, control.Selection, control.Cursor, control.InspectId, control.Busy);
+        Require(control.Click(control.Stamp, home).Request is null && control.Selection.Kind == TacticalSelectionKind.Site,
+            "The real non-recruiting Redstone home opens inspection, not a recruit panel or a domain command.");
+        control.Leave(control.Stamp);
+        var homeHud = Hud();
+        var site = homeHud.Sections.Single(section => section.Key == "site");
+        Require(control.Cursor is null && control.Overlay().Selected == home && site.Rows.Any(row => row.Key == "owner"),
+            "Leaving the board for the HUD preserves the selected site, its highlight and owner.");
+        Require(site.Rows.Single(row => row.Key == "heal").Label == text.Format("ui.hud.terrain_heal", 15)
+            && site.Rows.Single(row => row.Key == "heal-use").Label == text.Format("ui.hud.site.heal_use", text.Format("ui.hud.site.heal_timing_side")),
+            "The unchanged initial home explains the canonical 15 HP and owned-unit start-of-turn timing.");
+        Require(site.Rows.Single(row => row.Key == "recruit-use").Label == text.Format("ui.hud.site.no_recruitment")
+            && homeHud.Sections.All(section => section.Key != "recruit")
+            && !session.GetTacticalQueries(41).CanOpenRecruitment(home),
+            "Home stays non-recruiting in both data and UI.");
+        var unit = session.Snapshot()["units"]!.AsArray().OfType<JsonObject>().First(value => value["owner"]!.GetValue<int>() == 1);
+        var unitAt = new BoardCell(unit["x"]!.GetValue<int>(), unit["y"]!.GetValue<int>());
+        control.Hover(control.Stamp, unitAt);
+        Require(control.Selection.Destination == home && control.InspectId is null
+            && Hud().Sections.Single(section => section.Key == "site").Title == site.Title,
+            "Moving across units toward the HUD cannot replace a pinned site with incidental unit inspection.");
+        control.Leave(control.Stamp);
+        var hudWidget = new TacticalHud();
+        AddChild(hudWidget);
+        hudWidget.IntentRequested += intent => control.Back(intent.Stamp);
+        hudWidget.Apply(Hud());
+        var close = hudWidget.GetNode<VBoxContainer>("site").GetChildren().OfType<Button>().Single();
+        close.EmitSignal(BaseButton.SignalName.Pressed);
+        Require(control.Selection.Kind == TacticalSelectionKind.Idle && control.Overlay().Selected is null
+            && Hud().Sections.All(section => section.Key != "site"),
+            "The mounted close button clears selected site inspection after pointer leave.");
+        RemoveChild(hudWidget);
+        hudWidget.Free();
+        var sites = new[] { home, new BoardCell(16, 17), new(23, 36), new(55, 40), new(85, 14), new(88, 21), new(78, 30), new(88, 39) };
+        foreach (var at in sites)
+        {
+            Require(control.Click(control.Stamp, at).Request is null && control.Selection.Kind == TacticalSelectionKind.Site
+                && control.Selection.Destination == at && control.Overlay().Selected == at,
+                $"Redstone site {at} must replace the previous inspection without advancing the battle; got {control.Selection.Kind}.");
+            if (session.GetTacticalQueries(41).UnitAt(at) is { Visible: true } occupant)
+            {
+                control.Hover(control.Stamp, unitAt);
+                control.Leave(control.Stamp);
+                Require(control.InspectId == occupant.Id && Hud().Sections.Any(section => section.Key == "unit"),
+                    "A pinned occupied site keeps its visible garrison when the pointer crosses another unit and enters the HUD.");
+            }
+            control.Leave(control.Stamp);
+            var rows = Hud().Sections.Single(section => section.Key == "site").Rows;
+            var index = at.Y * level["width"]!.GetValue<int>() + at.X;
+            var owner = session.Snapshot()["map"]!["owners"]![index]!.GetValue<int>();
+            Require(rows.Any(row => row.Key == "capture-use") == (owner != 1),
+                "Only a site not owned by the viewer explains capture; no capture command is invented.");
+        }
+        control.Key(control.Stamp, "escape");
+        Require(control.Selection.Kind == TacticalSelectionKind.Idle && control.Overlay().Selected is null,
+            "Escape closes the pinned site through the existing back transition.");
+        control.Click(control.Stamp, home);
+        control.Click(control.Stamp, unitAt);
+        Require(control.Selection.Kind == TacticalSelectionKind.Unit && control.Selection.UnitId == unit["id"]!.GetValue<int>(),
+            "A friendly actor remains directly selectable from site inspection.");
+        Require(before == EcmaJson.Stringify(session.Snapshot()) && session.Events.Count == 0,
+            "Site selection, hover, switching and closing do not mutate battle facts or emit events.");
+    }
+
+    private async System.Threading.Tasks.Task CheckSitePointerBoundary()
+    {
+        var sample = ResourceLoader.Load<PackedScene>("res://Scenes/PaintedRedstoneSample.tscn").Instantiate<PaintedBattleSample>();
+        AddChild(sample);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        var screen = sample.GetChildren().OfType<BattleScreen>().Single();
+        var map = (Control)screen.FindChild("MapArea", true, false);
+        var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+        var inside = map.Size / 2;
+        var outside = new Vector2(map.Size.X + 1, inside.Y);
+        void Motion(Vector2 at) => map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = at });
+        void Down(Vector2 at, MouseButton button = MouseButton.Left) => map.EmitSignal(Control.SignalName.GuiInput,
+            new InputEventMouseButton { ButtonIndex = button, Pressed = true, Position = at });
+        void Release(Vector2 at, MouseButton button = MouseButton.Left) => screen._Input(new InputEventMouseButton
+        {
+            ButtonIndex = button,
+            Position = map.GetGlobalTransformWithCanvas() * at
+        });
+        bool HasTile() => hud.Projection!.Sections.Any(section => section.Key == "tile");
+
+        screen.SelectCell(new(38, 23));
+        Motion(outside);
+        Require(screen.Selection?.Kind == TacticalSelectionKind.Site
+            && hud.Projection!.Sections.Single(section => section.Key == "tile").Rows.First().Label == "38, 23",
+            "A native outside-map motion preserves only the pinned site, not an offscreen map projection.");
+        hud.GetNode<VBoxContainer>("site").GetChildren().OfType<Button>().Single().EmitSignal(BaseButton.SignalName.Pressed);
+        Require(screen.Selection?.Kind == TacticalSelectionKind.Idle && !HasTile(),
+            "Closing from the HUD cannot expose a fictitious offscreen hover tile.");
+        Motion(inside);
+        Require(HasTile(), "The native viewport center remains inspectable.");
+        screen.SetApplicationBusy(true);
+        Motion(outside);
+        Require(!HasTile(), "Busy read-only hover obeys the same viewport boundary.");
+        screen.SetApplicationBusy(false);
+
+        // A release just beyond the edge is below the six-pixel drag threshold.
+        Motion(inside);
+        Down(new(map.Size.X - 1, inside.Y));
+        map.EmitSignal(Control.SignalName.MouseExited);
+        Release(outside);
+        Require(!HasTile() && screen.Selection?.Kind == TacticalSelectionKind.Idle,
+            "A short boundary crossing clears hover without dispatching a click into the HUD.");
+        Motion(inside);
+        Require(HasTile(), "An outside release clears pointer capture for the next hover.");
+        Down(new(map.Size.X - 8, inside.Y));
+        screen._Input(new InputEventMouseMotion { Position = map.GetGlobalTransformWithCanvas() * outside });
+        Release(outside);
+        Motion(inside);
+        Require(HasTile() && screen.Selection?.Kind == TacticalSelectionKind.Idle && screen.DisplayedRevision == 0,
+            $"A drag released over the HUD clears capture and cannot advance battle state; tile={HasTile()}, selection={screen.Selection?.Kind}, revision={screen.DisplayedRevision}.");
+        Down(new(map.Size.X - 1, inside.Y), MouseButton.Middle);
+        map.EmitSignal(Control.SignalName.MouseExited);
+        Release(outside, MouseButton.Middle);
+        Require(!HasTile(), "Middle-button boundary release clears hover through the same captured gesture policy.");
+        RemoveChild(sample);
+        sample.Free();
     }
 
     public override async void _Ready()
@@ -65,6 +212,8 @@ public partial class TacticalHudChecks : Node
         try
         {
             CheckInspectionOrder();
+            CheckSiteInspection();
+            await CheckSitePointerBoundary();
             var stamp = new TacticalStamp(17, 9);
             var hud = new TacticalHud();
             AddChild(hud);

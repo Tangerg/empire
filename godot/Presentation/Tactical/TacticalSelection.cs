@@ -10,7 +10,7 @@ namespace Empire.Presentation.Tactical;
 
 public enum TacticalSelectionKind
 {
-    Idle, Deploying, DeploymentUnit, Unit, Destination, Target, Tactic, Disembark, Recruit
+    Idle, Deploying, DeploymentUnit, Unit, Destination, Target, Tactic, Disembark, Recruit, Site
 }
 public enum TacticalInputStatus
 {
@@ -171,6 +171,8 @@ public sealed class TacticalSelectionController
         if (at is { } candidate && !InteractiveCells.Contains(candidate))
             return Leave(expected);
         Cursor = at;
+        if (Selection.Kind == TacticalSelectionKind.Site)
+            return Result();
         var unit = at is { } cell ? queries.UnitAt(cell) : null;
         if (unit?.Visible == true)
             InspectId = unit.Id;
@@ -213,11 +215,13 @@ public sealed class TacticalSelectionController
     private TacticalSelection Fresh(BoardCell at)
     {
         var unit = queries.UnitAt(at);
-        if (unit is not null)
-            return queries.HumanTurn && unit.CanAct ? Pick(TacticalSelectionKind.Unit, unit.Id) : Pick(TacticalSelectionKind.Idle);
-        return queries.HumanTurn && queries.CanOpenRecruitment(at)
+        if (unit is not null && queries.HumanTurn && unit.CanAct)
+            return Pick(TacticalSelectionKind.Unit, unit.Id);
+        return unit is null && queries.HumanTurn && queries.CanOpenRecruitment(at)
             ? new TacticalSelection { Kind = TacticalSelectionKind.Recruit, Destination = at }
-            : Pick(TacticalSelectionKind.Idle);
+            : queries.IsSite(at)
+                ? new TacticalSelection { Kind = TacticalSelectionKind.Site, Destination = at }
+                : Pick(TacticalSelectionKind.Idle);
     }
     private TacticalSelection DeploymentAt(BoardCell at)
     {
@@ -518,6 +522,9 @@ public sealed class TacticalSelectionController
                             if (selection.Weapon is { } weapon && HoverTarget is { } target && unit is not null)
                                 attack.AddRange(queries.Attack(unit.Id, target, selection.Destination!.Value, weapon).AffectedCells);
                         }
+                        break;
+                    case TacticalSelectionKind.Site:
+                        selected = selection.Destination;
                         break;
                     case TacticalSelectionKind.Deploying:
                         move.AddRange(queries.DeploymentZone());

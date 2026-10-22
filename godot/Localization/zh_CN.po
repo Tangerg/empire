@@ -3581,3 +3581,39 @@ msgstr "（{0}，{1}）的结构已停用"
 
 msgid "battle.event.structure_enabled"
 msgstr "（{0}，{1}）的结构已重新启用"
+
+msgid "ui.hud.site.owner"
+msgstr "归属：{0}"
+
+msgid "ui.hud.site.heal_use"
+msgstr "驻守单位须与据点同属一方；{0}。点击单位、抵达或占领都不会立即治疗。"
+
+msgid "ui.hud.site.heal_disabled"
+msgstr "本局未启用据点自动治疗。"
+
+msgid "ui.hud.site.capture_use"
+msgstr "选中有占领能力的己方单位，再点其可到达的据点格，在指令中选择占领。仅抵达不会改变归属。"
+
+msgid "ui.hud.site.capture_progress"
+msgstr "占领进度 {0}/{1}；尚未完成时，后续行动可继续占领，离开会清空进度。"
+
+msgid "ui.hud.site.no_recruitment"
+msgstr "此据点不提供征募。"
+
+msgid "ui.hud.site.recruit_use"
+msgstr "点击此据点查看征募名册。"
+
+msgid "ui.hud.selection.site"
+msgstr "正在查看据点；点击其他据点或单位可改选，右键或 Esc 关闭。"
+
+msgid "ui.hud.site.terrain_details"
+msgstr "地形详情"
+
+msgid "ui.hud.site.heal_timing_side"
+msgstr "在该阵营的下个回合开始时自动恢复生命"
+
+msgid "ui.hud.site.heal_timing_unit"
+msgstr "在行动序再次轮到该单位时自动恢复生命"
+
+msgid "ui.hud.site.recruit_unavailable"
+msgstr "当前无法打开征募名册；需在己方回合使用归属己方的空置据点。"

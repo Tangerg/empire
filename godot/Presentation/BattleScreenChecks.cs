@@ -664,6 +664,7 @@ public partial class BattleScreenChecks : Node
         public TacticalUnit? Unit(int id) => inner.Unit(id);
         public TacticalUnit? UnitAt(BoardCell at) => inner.UnitAt(at);
         public bool AreEnemies(int firstUnit, int secondUnit) => inner.AreEnemies(firstUnit, secondUnit);
+        public bool IsSite(BoardCell at) => inner.IsSite(at);
         public bool CanOpenRecruitment(BoardCell at) => inner.CanOpenRecruitment(at);
         public bool IsEnemyOfViewer(int unit) => inner.IsEnemyOfViewer(unit);
         public IReadOnlyList<int> Actors() => inner.Actors();
