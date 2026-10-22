@@ -75,12 +75,14 @@ public partial class PaintedBattleSample : Control
                 LevelId = _art.LevelId,
                 MapSize = [_level["width"]!.GetValue<int>(), _level["height"]!.GetValue<int>()],
                 RuntimeReady = true,
+                PaintedGroundPath = _definition.GroundPath,
                 OpeningFocus = _definition.OpeningFocus,
                 FramePlacements = []
             };
+            var rendering = BoardSceneRendering.Load(scene, _level, _registeredMap);
             next.BindSession(new(_presentation.Messages, _presentation.Battle, session,
-                new(AssetCatalog.Load(), EnvironmentCatalog.Load(), _engine.Grids.Get("square4"), _engine.Catalog, _art.CreatePlane)), _level, scene);
-            next.ConfigureGround(_art.Factory(_registeredMap));
+                new(AssetCatalog.Load(), EnvironmentCatalog.Load(), _engine.Grids.Get("square4"), _engine.Catalog, rendering.Plane)), _level, scene);
+            next.ConfigureGround(rendering.Ground);
             next.ConfigureDynamicState();
             next.BindApplicationActions(Save, Load, () => Mount(new GrayFlagSession(new(_engine, _presentation), _level)));
         }
