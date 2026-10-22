@@ -346,10 +346,17 @@ public sealed class BoardProjection
         return float.IsNegativeInfinity(nearestDepth) ? null : new BoardSurfaceHit(nearest, nearestDepth);
     }
 
-    public bool MatchesSurface(JsonObject map, IReadOnlySet<Coord> playable)
+    public bool MatchesPlane(BoardPlane plane) =>
+        _plane.BasisX.IsEqualApprox(plane.BasisX) && _plane.BasisY.IsEqualApprox(plane.BasisY)
+        && _plane.Origin.IsEqualApprox(plane.Origin) && _plane.CanvasSize.IsEqualApprox(plane.CanvasSize);
+
+    public bool MatchesSurface(JsonObject map, IReadOnlySet<Coord> playable) =>
+        _playable.SetEquals(playable) && MatchesTerrainGeometry(map);
+
+    public bool MatchesTerrainGeometry(JsonObject map)
     {
         if (Integer(map["width"], "map width") != _surfaceWidth
-            || Integer(map["height"], "map height") != _surfaceHeight || !_playable.SetEquals(playable)
+            || Integer(map["height"], "map height") != _surfaceHeight
             || map["elevation"] is not JsonArray elevation || map["cliffs"] is not JsonArray cliffs)
             return false;
         if (!_surfaceHeights.SequenceEqual(elevation.Select((node, index) => Integer(node, $"elevation[{index}]"))))

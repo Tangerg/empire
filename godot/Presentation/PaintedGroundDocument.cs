@@ -59,8 +59,8 @@ public sealed class PaintedGroundDocument
 
     public BoardPlane CreatePlane(Vector2 logicalSize, int minimumHeight, int maximumHeight)
     {
-        if (minimumHeight != 0 || maximumHeight != 0)
-            throw new InvalidOperationException("This painted ground registration admits only its authored flat valley floor.");
+        if (minimumHeight > maximumHeight)
+            throw new InvalidOperationException("Painted ground height bounds must be ordered.");
         if (Occluders is null || PixelSize.Length != 2 || PixelSize[0] <= 0 || PixelSize[1] <= 0
             || OriginPixels.Length != 2 || CellXPixels.Length != 2 || CellYPixels.Length != 2
             || !float.IsFinite(WorldScale) || WorldScale <= 0)
@@ -72,9 +72,12 @@ public sealed class PaintedGroundDocument
             new Vector2(PixelSize[0], PixelSize[1]) * WorldScale);
         foreach (var corner in new[] { Vector2.Zero, new Vector2(logicalSize.X, 0), logicalSize, new Vector2(0, logicalSize.Y) })
         {
-            var point = plane.Ground(corner) + plane.Origin;
-            if (point.X < 0 || point.Y < 0 || point.X > plane.CanvasSize.X || point.Y > plane.CanvasSize.Y)
-                throw new InvalidOperationException("Registered tactical ground lies outside the painted canvas.");
+            foreach (var height in new[] { minimumHeight, maximumHeight })
+            {
+                var point = plane.Ground(corner) + plane.Origin - Vector2.Down * height * BoardProjection.HeightStep;
+                if (point.X < 0 || point.Y < 0 || point.X > plane.CanvasSize.X || point.Y > plane.CanvasSize.Y)
+                    throw new InvalidOperationException("Registered tactical surface lies outside the painted canvas.");
+            }
         }
         return plane;
     }

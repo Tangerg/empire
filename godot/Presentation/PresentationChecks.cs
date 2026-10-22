@@ -62,7 +62,9 @@ public partial class PresentationChecks : Node
         changed[0] = "plain";
         Throws<InvalidOperationException>(() => view.Render(projection, changed, new int[tiles.Length], new(16, 8)),
             "A fixed painting must not silently accept changed canonical terrain.");
-        Throws<InvalidOperationException>(() => art.CreatePlane(new(512, 256), 0, 1),
+        var elevated = new int[tiles.Length];
+        elevated[17] = 1;
+        Throws<InvalidOperationException>(() => view.Render(projection, tiles, elevated, new(16, 8)),
             "Unregistered elevation must fail, not distort the painted valley.");
         view.Free();
         Require(!GodotObject.IsInstanceValid(authored) && GodotObject.IsInstanceValid(borrowed),

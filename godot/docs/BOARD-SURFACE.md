@@ -4,8 +4,8 @@ The logical grid remains square. `BoardProjection` derives one
 presentation surface from the composed grid outline, canonical elevation and cliff
 edges. One elevation unit raises the center by 12 logical pixels. Corners average
 incident cells connected without a cliff; a declared cliff separates the two sides.
-The fixed dimetric ground basis is `(0.8x - 0.8y, 0.4x + 0.4y)`; height displaces
-only screen Y. Upright sprites are not skewed. Screen bounds, contact depth and
+The default material-ground dimetric basis is `(0.8x - 0.8y, 0.4x + 0.4y)`; height displaces
+only screen Y. Painted scenes can supply their registered affine basis. Upright sprites are not skewed. Screen bounds, contact depth and
 inverse picking derive from this same basis. The same surface maps ground UVs, actor/building/decor placement, movement
 animation, range/path outlines, camera targets and inverse pointer picking.
 
@@ -34,6 +34,26 @@ reference before the viewport is freed; authored ground is transferred, not clon
 when the compositor is rebuilt. Runtime height/terrain changes invalidate the cached
 geometry. Surface normals only shade the same mesh; they do not introduce a second
 height or collision representation.
+
+`PaintedGroundView` uses the same projection for a registered, already-painted
+scene. `PaintedSurface` redraws original image pixels in the shared top/face depth
+partitions: UV is projected position divided by the image world scale, not a second
+terrain warp. The full image remains the distant backdrop. The registered map is
+an immutable validation snapshot, not a second height, movement or picking owner.
+Terrain heights, cliff edges and affine registration must match; changing them
+requires matching authored artwork. Playable-domain policy remains with the
+board's composed content and canonical projection.
+
+An elevated painting must already depict the registered ramps, plateaus and cliff
+faces. This pipeline cannot recover hidden art from a flattened image, or turn
+arbitrarily painted stairs into walkable geometry. Existing flat painted scenes use
+the same pipeline without changing their level or image registration.
+
+`PaintedSurfaceChecks.tscn` checks the small registered ramp/plateau fixture and
+rejects registration drift. Run it with `-- --preview` on a real display to verify
+cliff pixels in both depth orders, dispatch one canonical uphill move and check the
+actor's final foot contact. The generated geometric guide is engineering evidence,
+not campaign artwork. No first-level painting is introduced by this change.
 
 Current limits: sprites are upright billboards with authored ground-front depth,
 not deformable foundations. Buildings must be placed on suitable terrain. A correct

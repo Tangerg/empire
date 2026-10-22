@@ -1,0 +1,205 @@
+#nullable enable
+using System;
+using System.Linq;
+using System.Text.Json.Nodes;
+using System.Threading.Tasks;
+using Empire.Core.Engine;
+using Empire.Core.Determinism;
+using Empire.Core.Geometry;
+using Godot;
+
+namespace Empire.Presentation;
+
+public partial class PaintedSurfaceChecks : Node
+{
+    public override async void _Ready()
+    {
+        try
+        {
+            await Check();
+            GD.Print("Painted elevated surface registration, depth and picking passed.");
+            GetTree().Quit();
+        }
+        catch (Exception error)
+        {
+            GD.PushError(error.ToString());
+            GetTree().Quit(1);
+        }
+    }
+
+    private async Task Check()
+    {
+        const int width = 6, height = 5;
+        var tiles = Enumerable.Repeat("plain", width * height).ToArray();
+        var heights = new int[tiles.Length];
+        foreach (var y in new[] { 1, 2 })
+            foreach (var x in new[] { 2, 3, 4 })
+                heights[y * width + x] = 2;
+        heights[3 * width + 2] = 1;
+        var map = new JsonObject
+        {
+            ["width"] = width,
+            ["height"] = height,
+            ["tiles"] = new JsonArray(tiles.Select(value => (JsonNode?)JsonValue.Create(value)).ToArray()),
+            ["elevation"] = new JsonArray(heights.Select(value => (JsonNode?)JsonValue.Create(value)).ToArray()),
+            ["cliffs"] = new JsonArray(new JsonArray(3, 4).Select(node => (JsonNode?)new JsonObject
+            {
+                ["from"] = new JsonObject { ["x"] = node!.GetValue<int>(), ["y"] = 2 },
+                ["to"] = new JsonObject { ["x"] = node.GetValue<int>(), ["y"] = 3 }
+            }).ToArray())
+        };
+        var art = new PaintedGroundDocument
+        {
+            LevelId = "elevated-registration-check",
+            LevelSourceSha256 = "check-only",
+            ResourcePath = "check-only",
+            PixelSize = [640, 480],
+            WorldScale = .5f,
+            OriginPixels = [96, 128],
+            CellXPixels = [64, 0],
+            CellYPixels = [0, 48],
+            Occluders = []
+        };
+        var playable = Enumerable.Range(0, tiles.Length).Select(index => new Coord(index % width, index / width)).ToHashSet();
+        var projection = new BoardProjection(new Square4Grid(), art.CreatePlane, map, playable);
+        foreach (var cell in new[] { new Coord(2, 4), new Coord(2, 3), new Coord(2, 2), new Coord(3, 2) })
+            Require(projection.Pick(projection.CellCenter(cell))?.Cell == cell, $"Visible ramp/platform center and reverse pick disagree: {cell}.");
+        var face = projection.Faces.First();
+        Require(projection.Pick((face.ProjectedA + face.ProjectedB + face.ProjectedC + face.ProjectedD) / 4)?.Cell is null,
+            "A cliff face cannot become walkable ground.");
+        var path = new[] { new Coord(2, 4), new Coord(2, 3), new Coord(2, 2) };
+        Require(path.Select(cell => heights[cell.Y * width + cell.X]).SequenceEqual(new[] { 0, 1, 2 }),
+            "Guide must contain a real canonical ramp, not a painted height illusion.");
+
+        string Points(params Vector2[] points) => string.Join(" ", points.Select(point => FormattableString.Invariant($"{point.X * 2},{point.Y * 2}")));
+        var polygons = string.Join("", projection.Triangles.Select(triangle =>
+            $"<polygon points='{Points(triangle.ProjectedA, triangle.ProjectedB, triangle.ProjectedC)}' fill='#91b56b' stroke='#44653e'/>"))
+            + string.Join("", projection.Faces.Select(item => $"<polygon points='{Points(item.ProjectedA, item.ProjectedB, item.ProjectedC, item.ProjectedD)}' fill='#9a7955' stroke='#55422c'/>"));
+        var svg = $"<svg xmlns='http://www.w3.org/2000/svg' width='640' height='480'><rect width='640' height='480' fill='#edf0e9'/>{polygons}</svg>";
+        var guide = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "empire-painted-elevation-registration-guide.svg");
+        System.IO.File.WriteAllText(guide, svg);
+        using var image = new Image();
+        Require(image.LoadSvgFromString(svg) == Error.Ok, "Registration guide must rasterize.");
+        using var texture = ImageTexture.CreateFromImage(image);
+        var view = PaintedGroundView.Create(art, texture, map);
+        AddChild(view);
+        try
+        {
+            view.Render(projection, tiles, heights, new(width, height));
+            projection.PrepareDepthPartitions(path.Select(cell => projection.Depth(projection.LogicalCellContact(cell))), []);
+            var strips = view.GetNode<Node2D>("RegisteredSurface").GetChildren().OfType<Polygon2D>().ToArray();
+            Require(strips.Length > 1, "Elevated pixels must participate in the shared depth partitions.");
+            foreach (var strip in strips)
+                Require(strip.Polygon.Zip(strip.UV).All(pair => pair.First.IsEqualApprox(pair.Second * art.WorldScale)),
+                    "Source pixels must stay at their registered screen coordinates without a second warp.");
+            var changed = map.DeepClone().AsObject();
+            changed["cliffs"] = new JsonArray();
+            Reject(() => view.Render(new BoardProjection(new Square4Grid(), art.CreatePlane, changed, playable), tiles, heights, new(width, height)),
+                "Cliff registration drift must fail.");
+            Reject(() => view.Render(new BoardProjection(new Square4Grid(), (size, min, max) =>
+                new BoardPlane(new(1, .05f), new(0, .75f), new(48, 64), new(320, 240)), map, playable), tiles, heights, new(width, height)),
+                "A different basis must not pass merely because origin and canvas match.");
+            GD.Print($"Registration guide: {guide}");
+        }
+        finally
+        {
+            RemoveChild(view);
+            view.Free();
+        }
+        Require(GodotObject.IsInstanceValid(texture), "Releasing painted geometry must not dispose the borrowed source.");
+        projection.PrepareDepthPartitions([15], []);
+        if (OS.GetCmdlineUserArgs().Contains("--preview"))
+            await Preview(art, map, texture);
+    }
+
+    private async Task Preview(PaintedGroundDocument art, JsonObject map, Texture2D texture)
+    {
+        Require(DisplayServer.GetName() != "headless", "Preview requires a real native window.");
+        var level = BattleTextChecks.OpeningLevel();
+        level["id"] = art.LevelId;
+        level["width"] = map["width"]!.DeepClone();
+        level["height"] = map["height"]!.DeepClone();
+        level["terrain"] = new JsonArray("......", "......", "......", "......", "......");
+        level["elevation"] = map["elevation"]!.DeepClone();
+        level["cliffs"] = map["cliffs"]!.DeepClone();
+        level["owners"] = new JsonArray();
+        level["commanders"] = new JsonArray();
+        level["scenario"] = new JsonObject();
+        level["units"] = new JsonArray(
+            new JsonObject { ["key"] = "campaign-laiya", ["x"] = 2, ["y"] = 4, ["unit"] = "c01.laiya", ["owner"] = 1 },
+            new JsonObject { ["key"] = "preview-enemy", ["x"] = 5, ["y"] = 0, ["unit"] = "c01.swordsman", ["owner"] = 2 });
+        var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
+        var engine = new BattleEngine(packs);
+        var battle = engine.CreateBattle(level);
+        var initial = battle.Snapshot();
+        var board = new BoardView { Position = new(80, 60), Scale = new(3, 3), AdvanceAnimationsAutomatically = false };
+        AddChild(board);
+        board.Configure(new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, art.CreatePlane),
+            level, new AuthoredScene { LevelId = art.LevelId, MapSize = [6, 5], OpeningFocus = [2, 3], RuntimeReady = true, FramePlacements = [] });
+        board.ConfigureGround((_, _) => PaintedGroundView.Create(art, texture, initial["map"]!.AsObject()));
+        board.RenderState(initial);
+        var face = board.Projection.Faces.First();
+        var point = (face.ProjectedA + face.ProjectedB + face.ProjectedC + face.ProjectedD) / 4;
+        var depth = board.Projection.LayerAtDepth(Mathf.FloorToInt(face.Depth), BoardDepthLayer.Surface);
+        var marker = new ColorRect
+        {
+            Position = point - Vector2.One * 2,
+            Size = new(4, 4),
+            Color = Colors.Magenta,
+            ZAsRelative = false,
+            ZIndex = depth - 1
+        };
+        board.AddChild(marker);
+        await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
+        var pixel = board.ToGlobal(point);
+        using (var behind = GetViewport().GetTexture().GetImage())
+            Require(behind.GetPixel((int)pixel.X, (int)pixel.Y) != Colors.Magenta, "A lower-depth marker must be occluded by painted cliff pixels.");
+        marker.ZIndex = depth + 1;
+        await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
+        using (var front = GetViewport().GetTexture().GetImage())
+            Require(front.GetPixel((int)pixel.X, (int)pixel.Y).IsEqualApprox(Colors.Magenta), "The same marker must be visible in front of the cliff.");
+        marker.Free();
+        GD.Print("Native painted cliff pixel occlusion passed in both depth orders.");
+        await ToSignal(GetTree().CreateTimer(1), SceneTreeTimer.SignalName.Timeout);
+        var id = initial["units"]![0]!["id"]!.GetValue<int>();
+        var action = new JsonObject
+        {
+            ["kind"] = "command",
+            ["unit"] = id,
+            ["path"] = new JsonArray(new JsonObject { ["x"] = 2, ["y"] = 4 }, new JsonObject { ["x"] = 2, ["y"] = 3 }, new JsonObject { ["x"] = 2, ["y"] = 2 }),
+            ["command"] = new JsonObject { ["ability"] = "wait" }
+        };
+        var receipt = battle.Dispatch(action);
+        var transition = new BattlePresentationTransition(1, EcmaJson.ToElement(receipt.Before), EcmaJson.ToElement(action),
+            receipt.Events.Select(EcmaJson.ToElement).ToArray(), EcmaJson.ToElement(battle.Snapshot()), false);
+        var movement = board.PresentTransitionAsync(transition);
+        for (var tick = 0; tick < 30 && !movement.IsCompleted; tick++)
+        {
+            board.AdvancePresentation(.01);
+            await ToSignal(GetTree().CreateTimer(.15), SceneTreeTimer.SignalName.Timeout);
+        }
+        Require(movement.IsCompleted && await movement, "Native slope movement must finish.");
+        Require(board.GetNode<Node2D>($"CanonicalProjection/Unit_{id}").Position.IsEqualApprox(board.Projection.CellContact(new(2, 2))),
+            "Moved actor must settle at its canonical elevated foot contact.");
+        GD.Print("Native canonical slope command and actor contact passed.");
+        await ToSignal(GetTree().CreateTimer(20), SceneTreeTimer.SignalName.Timeout);
+        RemoveChild(board);
+        board.Free();
+    }
+
+    private static void Require(bool value, string message)
+    {
+        if (!value)
+            throw new InvalidOperationException(message);
+    }
+
+    private static void Reject(Action action, string message)
+    {
+        try
+        {
+            action();
+        }
+        catch (InvalidOperationException) { return; }
+        throw new InvalidOperationException(message);
+    }
+}

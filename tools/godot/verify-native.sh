@@ -35,7 +35,7 @@ run_scene() {
     return 1
   fi
 }
-for scene in BattleScreenChecks BattleResultFlowChecks CampaignNavigationChecks; do
+for scene in PaintedSurfaceChecks BattleScreenChecks BattleResultFlowChecks CampaignNavigationChecks; do
   run_scene "$scene"
 done
 printf 'Current native contracts, replay/save determinism, and application flow passed. Manual GUI and export acceptance are separate.\n'

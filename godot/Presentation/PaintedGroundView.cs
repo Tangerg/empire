@@ -13,8 +13,10 @@ public partial class PaintedGroundView : BoardGroundView
 {
     private Node2D? _authored;
     private PaintedGroundDocument _document = null!;
-    private string[] _tiles = [];
-    private int[] _elevation = [];
+    private JsonObject _registeredMap = null!;
+    private Texture2D _texture = null!;
+    private PaintedSurface? _surface;
+    private BoardProjection? _projection;
     public override IReadOnlyList<string> Diagnostics => Array.Empty<string>();
     private readonly List<(Polygon2D Node, Coord Cell, Vector2[] Pixels, Vector2 Front, Coord? Selection)> _standing = new();
     private readonly List<TerrainDepthEntry> _depthEntries = new();
@@ -24,11 +26,13 @@ public partial class PaintedGroundView : BoardGroundView
 
     public static PaintedGroundView Create(PaintedGroundDocument document, Texture2D borrowedTexture, JsonObject registeredMap)
     {
-        var tiles = registeredMap["tiles"]!.AsArray().Select(value => EcmaJson.ReadString(value)).ToArray();
-        var heights = registeredMap["elevation"]!.AsArray().Select(value => value!.GetValue<int>()).ToArray();
-        if (heights.Any(height => height != 0) || registeredMap["cliffs"]!.AsArray().Count != 0)
-            throw new InvalidOperationException("The painted valley requires the registered flat, cliff-free playable surface.");
-        var view = new PaintedGroundView { Name = "PaintedGround", _document = document, _tiles = tiles, _elevation = heights };
+        var view = new PaintedGroundView
+        {
+            Name = "PaintedGround",
+            _document = document,
+            _registeredMap = registeredMap.DeepClone().AsObject(),
+            _texture = borrowedTexture
+        };
         try
         {
             view.AddChild(new Sprite2D
@@ -116,8 +120,26 @@ public partial class PaintedGroundView : BoardGroundView
 
     public override void Render(BoardProjection projection, string[] tiles, int[] elevation, Vector2I size)
     {
-        if (!_tiles.SequenceEqual(tiles) || !_elevation.SequenceEqual(elevation))
+        if (_registeredMap["width"]!.GetValue<int>() != size.X || _registeredMap["height"]!.GetValue<int>() != size.Y
+            || !_registeredMap["tiles"]!.AsArray().Select(EcmaJson.ReadString).SequenceEqual(tiles)
+            || !_registeredMap["elevation"]!.AsArray().Select(value => value!.GetValue<int>()).SequenceEqual(elevation))
             throw new InvalidOperationException("Canonical terrain changed without a matching authored painted surface.");
+        var plane = _document.CreatePlane(new Vector2(size.X, size.Y) * BoardProjection.TileSize,
+            elevation.Min(), elevation.Max());
+        if (!projection.MatchesPlane(plane) || !projection.MatchesTerrainGeometry(_registeredMap))
+            throw new InvalidOperationException("Painted surface and tactical projection use different registration.");
+        if (_projection != projection)
+        {
+            var surface = PaintedSurface.Create(projection, _texture, _document.WorldScale);
+            if (_surface is not null)
+            {
+                RemoveChild(_surface);
+                _surface.Free();
+            }
+            AddChild(surface);
+            _surface = surface;
+            _projection = projection;
+        }
         _depthEntries.Clear();
         foreach (var (node, cell, pixels, front, selection) in _standing)
         {
@@ -128,8 +150,5 @@ public partial class PaintedGroundView : BoardGroundView
             _depthEntries.Add(new(node, projection.LogicalCellContact(cell), 2,
                 new PolygonStandingVisual(node, front - anchor), selection));
         }
-        var plane = _document.CreatePlane(new Vector2(size.X, size.Y) * BoardProjection.TileSize, 0, 0);
-        if (projection.Size != plane.CanvasSize || !projection.Project(Vector2.Zero).IsEqualApprox(plane.Origin))
-            throw new InvalidOperationException("Painted surface and tactical projection use different registration.");
     }
 }
