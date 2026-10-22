@@ -1,6 +1,10 @@
 #nullable enable
 using System;
 using System.Linq;
+using System.Text.Json.Nodes;
+using Empire.Application;
+using Empire.Core.Engine;
+using Empire.Localization;
 using Empire.Core.Determinism;
 using Godot;
 
@@ -15,10 +19,52 @@ public partial class TacticalHudChecks : Node
             throw new InvalidOperationException(message);
         assertions++;
     }
+    private void CheckInspectionOrder()
+    {
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var presentation = BattleTextChecks.Session(engine, GodotTextCatalog.LoadSimplifiedChinese());
+        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<string>() == "c01-03");
+        var state = engine.CreateState(level);
+        var structure = state["structures"]![0]!.AsObject();
+        var at = new BoardCell(structure["x"]!.GetValue<int>(), structure["y"]!.GetValue<int>());
+        foreach (var disabled in new[] { false, true })
+        {
+            structure["disabled"] = disabled;
+            var session = GrayFlagSession.FromSave(new(engine, presentation), engine.SaveBattle(state));
+            var before = EcmaJson.Stringify(session.Snapshot());
+            var hud = session.ProjectHud(new(0, 0), new(), at, null, false);
+            var sections = hud.Sections.Select(section => section.Key).ToArray();
+            Require(Array.IndexOf(sections, "structure") < Array.IndexOf(sections, "tile"), "Structure inspection precedes passive ground details.");
+            var rows = hud.Sections.Single(section => section.Key == "structure").Rows;
+            Require(rows.Take(2).Select(row => row.Key).SequenceEqual(new[] { "hp", "owner" }), "Health and owner precede structure capabilities.");
+            Require(rows.Any(row => row.Key == "disabled") == disabled && (!disabled || rows[2].Key == "disabled"), "Current disabled state precedes structure capabilities.");
+            Require(before == EcmaJson.Stringify(session.Snapshot()), "Inspection ordering cannot mutate canonical state.");
+        }
+        // A detached recruitment fixture: campaign sites need not offer recruits.
+        var site = new BoardCell(0, 0);
+        state["map"]!["tiles"]![0] = "castle";
+        state["map"]!["owners"]![0] = state["currentPlayer"]!.DeepClone();
+        var initial = GrayFlagSession.FromSave(new(engine, presentation), engine.SaveBattle(state));
+        Require(initial.GetTacticalQueries(0).CanOpenRecruitment(site), "Recruitment fixture is reachable through the existing query.");
+        var recruit = initial.ProjectHud(new(0, 0), new()
+        {
+            Kind = TacticalSelectionKind.Recruit,
+            Destination = site
+        }, site, null, false);
+        var keys = recruit.Sections.Select(section => section.Key).ToArray();
+        Require(Array.IndexOf(keys, "recruit") < Array.IndexOf(keys, "tile"), "Recruitment actions precede passive site terrain details.");
+        var cards = engine.Recruitment.Cards(initial.Snapshot(), new(site.X, site.Y));
+        var choices = recruit.Sections.Single(section => section.Key == "recruit").Rows.Where(row => row.Intent?.Kind == TacticalHudIntentKind.Recruit).ToArray();
+        Require(choices.Select(row => row.Intent!.Key).SequenceEqual(cards.Select(card => card.Unit))
+            && choices.Select(row => row.Enabled).SequenceEqual(cards.Select(card => card.Affordable)), "Reordering preserves the authoritative recruitment cards and affordability.");
+    }
+
     public override async void _Ready()
     {
         try
         {
+            CheckInspectionOrder();
             var stamp = new TacticalStamp(17, 9);
             var hud = new TacticalHud();
             AddChild(hud);

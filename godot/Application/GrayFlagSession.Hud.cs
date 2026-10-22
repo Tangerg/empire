@@ -402,8 +402,56 @@ public sealed partial class GrayFlagSession
                             option.Eligible)));
             }
         }
+        if (selection.Kind == TacticalSelectionKind.Recruit && selection.Destination is { } recruitAt)
+            Section("recruit",
+                text.Format("ui.hud.recruit"),
+                new[] { new TacticalHudRow("accounts", Accounts("player", current)),
+                    Pick("cancel",
+                        text.Format("ui.common.close"),
+                        TacticalHudIntentKind.Back) }.Concat(engine.Recruitment.Cards(state,
+                        new(recruitAt.X, recruitAt.Y)).Select(card =>
+            {
+                var def = Definition("units", card.Unit);
+                var weapons = def["weapons"]!.AsArray().Select(id => Definition("weapons", EcmaJson.ReadString(id))).ToArray();
+                return Pick(card.Unit,
+                    $"{contentText.UnitName(card.Unit)} · {Costs(card.Costs)}",
+                    TacticalHudIntentKind.Recruit,
+                    card.Unit,
+                    hint: text.Format("ui.hud.recruit_hint",
+                        Power(weapons),
+                        D(def, "maxHp"),
+                        D(def, "movement"),
+                        Range(weapons),
+                        contentText.UnitBlurb(card.Unit)),
+                    enabled: card.Affordable) with
+                {
+                    UnitIcon = new(card.Unit, null, S(current, "color"))
+                };
+            })));
         if (cursor is { } tile && engine.Space.Board(state).Contains(new(tile.X, tile.Y)))
         {
+            var structure = state["structures"]!.AsArray().OfType<JsonObject>().FirstOrDefault(value => TacticalQueries.Position(value) == new Coord(tile.X, tile.Y));
+            if (structure is not null)
+            {
+                var def = Definition("structures", S(structure, "type"));
+                var facts = new List<TacticalHudRow> { new("hp", $"{structure["hp"]} / {def["maxHp"]}", Gauge: new(D(structure, "hp"), D(def, "maxHp"))) };
+                var holder = state["players"]!.AsArray().OfType<JsonObject>().FirstOrDefault(player => N(player, "id") == N(structure, "owner"));
+                if (holder is not null)
+                    facts.Add(new("owner", battleText.PlayerName(S(state, "levelId"), N(holder, "id"))));
+                if (B(structure, "disabled"))
+                    facts.Add(new("disabled", text.Format("ui.hud.disabled")));
+                foreach (var (key,
+                    label) in new[] { ("blocksMovement", text.Format("ui.hud.blocks_movement")),
+                    ("blocksVision", text.Format("ui.hud.blocks_vision")),
+                    ("repairable", text.Format("ui.hud.repairable")) })
+                    if (B(def, key))
+                        facts.Add(new(key, label));
+                if (S(def, "cover") is "full" or "half")
+                    facts.Add(new("cover", Cover(S(def, "cover"))));
+                if (!B(def, "targetable"))
+                    facts.Add(new("targetable", text.Format("ui.hud.untargetable")));
+                Section("structure", contentText.Name(ContentTextKind.Structure, S(def, "id")), facts);
+            }
             var index = engine.Space.Board(state).IndexOf(new(tile.X, tile.Y));
             var terrain = Definition("terrains", EcmaJson.ReadString(state["map"]!["tiles"]![index]));
             var rows = new List<TacticalHudRow> { new("coordinate", $"{tile.X}, {tile.Y}"),
@@ -433,55 +481,7 @@ public sealed partial class GrayFlagSession
                 });
             rows.Add(new("movement-costs", string.Join(" · ", movementCosts)));
             Section("tile", contentText.Name(ContentTextKind.Terrain, S(terrain, "id")), rows);
-            var structure = state["structures"]!.AsArray().OfType<JsonObject>().FirstOrDefault(value => TacticalQueries.Position(value) == new Coord(tile.X, tile.Y));
-            if (structure is not null)
-            {
-                var def = Definition("structures", S(structure, "type"));
-                var facts = new List<TacticalHudRow> { new("hp", $"{structure["hp"]} / {def["maxHp"]}", Gauge: new(D(structure, "hp"), D(def, "maxHp"))) };
-                var holder = state["players"]!.AsArray().OfType<JsonObject>().FirstOrDefault(player => N(player, "id") == N(structure, "owner"));
-                if (holder is not null)
-                    facts.Add(new("owner", battleText.PlayerName(S(state, "levelId"), N(holder, "id"))));
-                foreach (var (key,
-                    label) in new[] { ("blocksMovement", text.Format("ui.hud.blocks_movement")),
-                    ("blocksVision", text.Format("ui.hud.blocks_vision")),
-                    ("repairable", text.Format("ui.hud.repairable")) })
-                    if (B(def, key))
-                        facts.Add(new(key, label));
-                if (S(def, "cover") is "full" or "half")
-                    facts.Add(new("cover", Cover(S(def, "cover"))));
-                if (!B(def, "targetable"))
-                    facts.Add(new("targetable", text.Format("ui.hud.untargetable")));
-                if (B(structure, "disabled"))
-                    facts.Add(new("disabled", text.Format("ui.hud.disabled")));
-                Section("structure", contentText.Name(ContentTextKind.Structure, S(def, "id")), facts);
-            }
         }
-        if (selection.Kind == TacticalSelectionKind.Recruit && selection.Destination is { } recruitAt)
-            Section("recruit",
-                text.Format("ui.hud.recruit"),
-                new[] { new TacticalHudRow("accounts", Accounts("player", current)),
-                    Pick("cancel",
-                        text.Format("ui.common.close"),
-                        TacticalHudIntentKind.Back) }.Concat(engine.Recruitment.Cards(state,
-                        new(recruitAt.X, recruitAt.Y)).Select(card =>
-            {
-                var def = Definition("units", card.Unit);
-                var weapons = def["weapons"]!.AsArray().Select(id => Definition("weapons", EcmaJson.ReadString(id))).ToArray();
-                return Pick(card.Unit,
-                    $"{contentText.UnitName(card.Unit)} · {Costs(card.Costs)}",
-                    TacticalHudIntentKind.Recruit,
-                    card.Unit,
-                    hint: text.Format("ui.hud.recruit_hint",
-                        Power(weapons),
-                        D(def, "maxHp"),
-                        D(def, "movement"),
-                        Range(weapons),
-                        contentText.UnitBlurb(card.Unit)),
-                    enabled: card.Affordable) with
-                {
-                    UnitIcon = new(card.Unit, null, S(current, "color"))
-                };
-            })));
         if (stamp.Revision != revision)
             throw new DomainInvariantException("Battle changed during HUD projection.");
         var recruitmentQueries = human && selection.Kind == TacticalSelectionKind.Idle
