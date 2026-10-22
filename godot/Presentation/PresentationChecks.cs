@@ -278,7 +278,9 @@ public partial class PresentationChecks : Node
         board.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric), level, scene);
         board.RenderState(state);
         Require(board.GetChildCount() == 2, "Repeated configuration must not duplicate scene layers.");
-        CheckTerrain(board, state);
+        board.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric),
+            MaterialSceneFixtureChecks.Level, MaterialSceneFixtureChecks.Scene);
+        CheckTerrain(board, engine.CreateState(MaterialSceneFixtureChecks.Level));
         board.QueueFree();
     }
 
@@ -380,7 +382,6 @@ public partial class PresentationChecks : Node
             tiles[index]!.GetValue<string>() == "plain" && elevation[index]!.GetValue<int>() == 0);
         elevation[changedCell] = 1;
         var raisedBefore = raised.ToJsonString();
-        var contactBefore = board.GetNode<Node2D>("CanonicalProjection/Unit_2").Position;
         board.RenderState(raised);
         Require(terrain.GetChild(0) != cachedLayer,
             "An elevation-only change must invalidate the terrain composition cache.");

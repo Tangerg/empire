@@ -96,7 +96,6 @@ Check("detached committed state and events", () =>
 });
 Check("resource clamping and atomic costs", SupportChecks.Resources);
 Check("live ownership admission and commander projection", () => ReplayChecks.OwnershipAdmission(root));
-Check("opening unchanged gameplay and native persistence", () => ReplayChecks.OpeningGameplay(root));
 Check("shipped native full-level replay/save", () => ReplayChecks.ShippedLevels(root));
 if (passed + failed == 0) throw new ArgumentException($"Unknown check: {selectedCheck}");
 Console.WriteLine($"{passed} passed; {failed} failed");

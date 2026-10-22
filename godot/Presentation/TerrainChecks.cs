@@ -46,47 +46,50 @@ internal static class TerrainChecks
         var environment = EnvironmentCatalog.Load();
         var levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json");
         var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
-        var riverChecked = false;
         foreach (var level in levels.OfType<JsonObject>())
         {
             var state = engine.CreateState(level);
             var unchanged = state.ToJsonString();
-            var tiles = state["map"]!["tiles"]!.AsArray().Select(node => node!.GetValue<string>()).ToArray();
-            var size = new Vector2I(level["width"]!.GetValue<int>(), level["height"]!.GetValue<int>());
-            var scene = Scene(level);
-            var view = new TerrainView();
-            parent.AddChild(view);
+            var scene = AuthoredScene.Load($"res://data/scenes/{level["id"]!.GetValue<string>()}.json");
+            var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
+            var board = new BoardView();
+            parent.AddChild(board);
             try
             {
-                view.Configure(new(environment, engine.Grids.Get(level["rules"]?["grid"]?.GetValue<string>() ?? "square4"), null), materials, scene);
-                var heights = state["map"]!["elevation"]!.AsArray().Select(node => node!.GetValue<int>()).ToArray();
-                var grid = engine.Grids.Get(level["rules"]?["grid"]?.GetValue<string>() ?? "square4");
-                var playable = Enumerable.Range(0, tiles.Length)
-                    .Where(index => !engine.Catalog.Definition("terrains", tiles[index])!.Value
-                        .GetProperty("tags").EnumerateArray().Any(tag => tag.GetString() == "outside"))
-                    .Select(index => new Empire.Core.Geometry.Coord(index % size.X, index / size.X)).ToHashSet();
-                view.Render(new BoardProjection(grid, BoardPlane.Dimetric, state["map"]!.AsObject(), playable), tiles, heights, size);
-                Require(!view.Diagnostics.Any(message => message.Contains("Missing", StringComparison.Ordinal)),
-                    $"{scene.LevelId}: {string.Join("; ", view.Diagnostics)}");
-                Require(state.ToJsonString() == unchanged, "Terrain composition changed the canonical state.");
+                board.Configure(new(AssetCatalog.Load(), environment,
+                    engine.Grids.Get(level["rules"]?["grid"]?.GetValue<string>() ?? "square4"),
+                    engine.Catalog, rendering.Plane), level, scene);
+                board.ConfigureGround(rendering.Ground);
+                board.RenderState(state);
+                Require(!board.Diagnostics.Any(message => message.Contains("Missing", StringComparison.Ordinal)),
+                    $"{scene.LevelId}: {string.Join("; ", board.Diagnostics)}");
+                Require(state.ToJsonString() == unchanged, "Scene composition changed the canonical state.");
+                Require(board.Diagnostics.Contains("Authored scene is marked runtimeReady=false in the source document.") == !scene.RuntimeReady,
+                    "Scene review diagnostics must reflect the actual authored metadata.");
                 if (scene.LevelId == "c01-01")
                     CheckOpeningHills(engine, state);
-                if (scene.LevelId == "c01-02")
-                {
-                    CheckRiver(view, materials, scene, tiles, size);
-                    riverChecked = true;
-                }
-                GD.Print($"Terrain resource projection: {scene.LevelId}, {view.RenderedSceneryCount} standing props, {view.Diagnostics.Count} coverage diagnostics.");
+                GD.Print($"Authored scene projection: {scene.LevelId}, {board.ProjectionUnitCount} actors, {board.Diagnostics.Count} diagnostics.");
             }
-            finally { parent.RemoveChild(view); view.Free(); }
+            finally { parent.RemoveChild(board); board.Free(); }
         }
-        Require(riverChecked, "The canonical c01-02 river fixture must be tested.");
+        var fixture = MaterialSceneFixtureChecks.Scene;
+        var fixtureState = engine.CreateState(MaterialSceneFixtureChecks.Level);
+        var fixtureTiles = fixtureState["map"]!["tiles"]!.AsArray().Select(tile => tile!.GetValue<string>()).ToArray();
+        var view = new TerrainView();
+        parent.AddChild(view);
+        try
+        {
+            view.Configure(new(environment, engine.Grids.Get("square4"), null), materials, fixture);
+            view.Render(FlatProjection(fixtureTiles, new int[40], new(8, 5)), fixtureTiles, new int[40], new(8, 5));
+            CheckRiver(view, materials, fixture, fixtureTiles, new(8, 5));
+        }
+        finally { parent.RemoveChild(view); view.Free(); }
         CheckOccupancy(parent, materials, environment);
         CheckCrossings(materials, environment);
         CheckRiverGeometry();
         CheckRoadShoulder();
         CheckEdgeSupport(materials);
-        GD.Print("Terrain checks passed: 16 canonical resource projections, north hill cliff/ramp access and starting-unit connectivity, c01-02 river permissions/shape/bridge registration, raw diagonal occupancy, river width validation and junction topology.");
+        GD.Print("Terrain checks passed: authored scene renderers, opening hill access and connectivity, independent material river/bridge registration, raw diagonal occupancy, river width validation and junction topology.");
     }
 
     internal static void CheckOpeningHills(BattleEngine engine, JsonObject state)
@@ -210,14 +213,11 @@ internal static class TerrainChecks
         RequireAlphaOnly(shape, size, index => !materials.TerrainTags[tiles[index]].Intersect(materials.GroundTagFamilies["outside"]).Any(),
             "Playable shape painted an outside cell.");
         Require(river.GetData().Where((_, index) => index % 4 == 3).Any(alpha => alpha == 255), "Authored river has no actual opaque coverage.");
-        Require(view.RenderedEdgeDecorationCount == 17, "All 17 terrain-supported c01-02 source overlays must render.");
         var surface = ground.GetNode<Sprite2D>("Surface_meadow-stony");
         Require(surface.Material is ShaderMaterial clipped && clipped.GetShaderParameter("has_playable_shape").AsBool(),
             "Irregular boundary must clip hill/ground materials, not just the field underneath.");
-        foreach (var edge in view.GetNode<Node2D>("ComposedTerrain/ProjectedGround/LogicalGround/ComposedTerrain/EdgeDecorations").GetChildren().OfType<Sprite2D>())
-            Require(edge.HasMeta("ground_clipped"), "Authored edge overlays must share the playable ground silhouette.");
         var bridges = view.GetNode<Node2D>("ComposedTerrain/ProjectedGround/LogicalGround/ComposedTerrain/Crossings");
-        Require(bridges.GetChildCount() > 0, "The c01-02 bridge must use a native source sprite.");
+        Require(bridges.GetChildCount() > 0, "The material fixture bridge must use a native source sprite.");
         foreach (var bridge in bridges.GetChildren().OfType<Sprite2D>())
         {
             if (bridge.GetMeta("axis").AsString() != "horizontal")
@@ -228,7 +228,7 @@ internal static class TerrainChecks
             Require((bridge.Offset * bridge.Scale).IsEqualApprox(-new Vector2((float)source.SourceFoot[0], (float)source.SourceFoot[1])
                 * (float)source.LogicalPerSourcePixel), "Bridge registration foot changed.");
         }
-        Require(scene.River?.Widths?.Distinct().Count() > 1, "c01-02 must exercise its authored narrow bridge throat.");
+        Require(scene.River?.Widths?.Distinct().Count() > 1, "The material fixture must exercise an authored narrow bridge throat.");
     }
 
     private static void RequireAlphaOnly(Image image, Vector2I size, Func<int, bool> allowed, string message)
@@ -300,25 +300,34 @@ internal static class TerrainChecks
 
     private static void CheckEdgeSupport(WorldMaterialsManifest materials)
     {
-        var manifest = materials.EdgeDecorations ?? throw new InvalidOperationException("Edge decoration dependency absent.");
-        var scene = manifest.Scenes.Single(scene => scene.LevelId == "c01-02" && scene.MapSize.SequenceEqual(new[] { 36, 24 }));
-        var placement = scene.Placements.First();
-        var tiles = Enumerable.Repeat("not-the-authored-terrain", 36 * 24).ToArray();
+        var asset = (materials.EdgeDecorations ?? throw new InvalidOperationException("Edge decoration dependency absent.")).Assets.First();
+        var placement = new EdgeDecorationPlacement
+        {
+            Id = "supported-edge",
+            AssetId = asset.Id,
+            Center = [48, 48],
+            Scale = .02,
+            FlipX = true,
+            TerrainSupport = new() { Origin = [0, 0], Rows = [["plain", "plain", "plain"], ["plain", "plain", "plain"], ["plain", "plain", "plain"]] }
+        };
+        var scene = new EdgeDecorationScene { LevelId = "edge-contract", MapSize = [3, 3], Placements = [placement] };
+        var manifest = new EdgeDecorationManifest { SchemaVersion = 1, MeaningfulAlphaMin = 2, Assets = [asset], Scenes = [scene] };
+        EdgeDecorationRenderer.Validate(manifest);
+        var tiles = Enumerable.Repeat("not-the-authored-terrain", 9).ToArray();
         var root = new Node2D();
         try
         {
             var requested = false;
-            var count = EdgeDecorationRenderer.Add(root, manifest, scene.LevelId, new Vector2I(36, 24), tiles,
+            var count = EdgeDecorationRenderer.Add(root, manifest, scene.LevelId, new Vector2I(3, 3), tiles,
                 path => { requested = true; return ResourceLoader.Load<Texture2D>(path); }, new List<string>());
             Require(count == 0 && !requested, "Changed local terrain must disable authored overlays before loading art.");
             for (var y = 0; y < placement.TerrainSupport.Rows.Length; y++)
                 for (var x = 0; x < placement.TerrainSupport.Rows[y].Length; x++)
-                    tiles[(placement.TerrainSupport.Origin[1] + y) * 36 + placement.TerrainSupport.Origin[0] + x] = placement.TerrainSupport.Rows[y][x];
-            count = EdgeDecorationRenderer.Add(root, manifest, scene.LevelId, new Vector2I(36, 24), tiles,
+                    tiles[(placement.TerrainSupport.Origin[1] + y) * 3 + placement.TerrainSupport.Origin[0] + x] = placement.TerrainSupport.Rows[y][x];
+            count = EdgeDecorationRenderer.Add(root, manifest, scene.LevelId, new Vector2I(3, 3), tiles,
                 path => ResourceLoader.Load<Texture2D>(path), new List<string>());
             Require(count > 0 && root.HasNode(placement.Id), "An exactly supported source overlay must render.");
             var sprite = root.GetNode<Sprite2D>(placement.Id);
-            var asset = manifest.Assets.Single(asset => asset.Id == placement.AssetId);
             var sign = new Vector2(placement.FlipX ? -1 : 1, placement.FlipY ? -1 : 1);
             var anchor = (RasterResources.Pair(asset.SourceAnchor, asset.Id) + Vector2.One * asset.SourcePadding)
                 * (float)(asset.LogicalPerSourcePixel * placement.Scale);

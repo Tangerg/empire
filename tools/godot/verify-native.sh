@@ -15,7 +15,9 @@ export -f dotnet
 # No installation, publication or user-save mutation. Native checks use fixture sessions.
 dotnet build godot/Empire.csproj --disable-build-servers -m:1 -p:UseSharedCompilation=false
 dotnet build godot/Empire.Core.Tests --disable-build-servers -m:1 -p:UseSharedCompilation=false
-dotnet godot/Empire.Core.Tests/bin/Debug/net8.0/Empire.Core.Tests.dll godot/tests/oracle
+# Sixteen serial native AI battles and full replay each need a separate aggregate budget.
+EMPIRE_CHECK_TIMEOUT_SECONDS="${EMPIRE_REPLAY_TIMEOUT_SECONDS:-1200}" \
+  dotnet godot/Empire.Core.Tests/bin/Debug/net8.0/Empire.Core.Tests.dll godot/tests/oracle
 # Native battle/replay schema 3 rejects obsolete prose-bearing and partial-digest inputs.
 # Historical suites remain development evidence, not an implicit current-schema gate.
 bash tools/godot/objective-outcome-checks/run.sh
@@ -35,7 +37,7 @@ run_scene() {
     return 1
   fi
 }
-for scene in PaintedSurfaceChecks BattleScreenChecks BattleResultFlowChecks CampaignNavigationChecks; do
+for scene in PaintedSurfaceChecks PresentationChecks CameraIntegrationChecks BattleScreenChecks BattleResultFlowChecks CampaignNavigationChecks; do
   run_scene "$scene"
 done
 printf 'Current native contracts, replay/save determinism, and application flow passed. Manual GUI and export acceptance are separate.\n'

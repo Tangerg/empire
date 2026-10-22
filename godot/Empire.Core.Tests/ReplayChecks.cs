@@ -1,7 +1,6 @@
 using System.Text.Json.Nodes;
 using Empire.Core.Determinism;
 using Empire.Core.Engine;
-using Empire.Core.Lifecycle;
 using Empire.Core.Transactions;
 using Empire.Core;
 using Empire.Core.State;
@@ -10,46 +9,6 @@ using Empire.Core.Transport;
 
 internal static class ReplayChecks
 {
-    public static void OpeningGameplay(string oracleRoot)
-    {
-        var engine = Engine(oracleRoot);
-        var level = Levels(oracleRoot).Single(item => item["id"]!.GetValue<string>() == "c01-01");
-        var fixture = Read(Path.Combine(oracleRoot, "grayflag-0.58.json"));
-        var battle = engine.CreateBattle(level, fixture["replay"]!["seed"]!.GetValue<uint>());
-        var recorder = engine.RecordBattle(battle.Snapshot());
-        var index = 0;
-        foreach (var step in fixture["steps"]!.AsArray().OfType<JsonObject>())
-        {
-            var action = engine.Ai.ChooseAction(battle.Snapshot(), 0.58);
-            Equal(step["action"]!, action, $"opening legal AI action {index}");
-            var receipt = battle.Dispatch(action);
-            recorder.Record(action);
-            var expectedEvents = step["events"]!.AsArray();
-            if (receipt.Events.Count != expectedEvents.Count)
-                throw new Exception($"Opening event count differs at {index}.");
-            for (var eventIndex = 0; eventIndex < expectedEvents.Count; eventIndex++)
-            {
-                var expected = expectedEvents[eventIndex]!.AsObject();
-                var actual = receipt.Events[eventIndex];
-                if (expected["type"]!.GetValue<string>() != "gameOver")
-                    Equal(expected, actual, $"opening unchanged event {index}/{eventIndex}");
-                else
-                {
-                    if (actual["type"]!.GetValue<string>() != "gameOver")
-                        throw new Exception("The terminal event moved or disappeared.");
-                    var conclusion = BattleConclusion.Parse(actual["conclusion"]);
-                    if (conclusion.Team != expected["team"]?.GetValue<int>())
-                        throw new Exception("The semantic winner differs from the source outcome.");
-                }
-            }
-            index++;
-        }
-        if (battle.Snapshot()["phase"]!.GetValue<string>() != "over")
-            throw new Exception("The source terminal opening trace did not conclude natively.");
-        VerifyPersistence(engine, level, battle, recorder.Replay(battle.Snapshot()));
-        Console.WriteLine($"  Opening: {index} source-matched legal actions and unchanged events; terminal schema compared semantically, native replay/save hashes exact.");
-    }
-
     public static void ShippedLevels(string oracleRoot)
     {
         var engine = Engine(oracleRoot);

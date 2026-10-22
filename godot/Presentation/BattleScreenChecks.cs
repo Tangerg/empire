@@ -48,8 +48,12 @@ public partial class BattleScreenChecks : Node
             var level = BattleTextChecks.OpeningLevel();
             level["rules"]!["fog"] = true;
             var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
+            var source = new BattleEngine(packs).CreateState(level);
+            var sourceActor = source["units"]!.AsArray().OfType<JsonObject>().Single(unit => unit["id"]!.GetValue<int>() == 2);
+            var actorIndex = sourceActor["y"]!.GetValue<int>() * level["width"]!.GetValue<int>() + sourceActor["x"]!.GetValue<int>();
+            var actorTerrain = source["map"]!["tiles"]![actorIndex]!.GetValue<string>();
             var terrain = packs.OfType<JsonObject>().SelectMany(pack => pack["terrains"]?.AsArray().OfType<JsonObject>() ?? [])
-                .Single(definition => EcmaJson.ReadString(definition["id"]) == "plain");
+                .Single(definition => EcmaJson.ReadString(definition["id"]) == actorTerrain);
             if (canonicalOutside)
                 terrain["tags"]!.AsArray().Add("outside");
             var engine = new BattleEngine(packs);
@@ -64,9 +68,15 @@ public partial class BattleScreenChecks : Node
             var screen = new BattleScreen();
             AddChild(screen);
             screen.Board.AnimationsEnabled = false;
-            screen.BindSession(new(text, battleText, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
+            var scene = new AuthoredScene
+            {
+                LevelId = level["id"]!.GetValue<string>(),
+                MapSize = [level["width"]!.GetValue<int>(), level["height"]!.GetValue<int>()],
+                FramePlacements = []
+            };
+            screen.BindSession(new(text, battleText, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, scene);
             var materials = WorldMaterialsManifest.Load();
-            materials.TerrainTags["plain"] = canonicalOutside ? [] : ["outside"];
+            materials.TerrainTags[actorTerrain] = canonicalOutside ? [] : ["outside"];
             screen.ConfigureGround(TerrainView.Factory(materials));
 
             screen.SelectCell(actor.At);
@@ -84,9 +94,9 @@ public partial class BattleScreenChecks : Node
                 "Rendered fog must consume the exact canonical interactive-cell projection.");
             var state = session.Snapshot();
             var width = state["map"]!["width"]!.GetValue<int>();
-            var unseenPlain = state["map"]!["tiles"]!.AsArray().Select((tile, index) => (tile, at: new BoardCell(index % width, index / width)))
-                .First(entry => EcmaJson.ReadString(entry.tile) == "plain" && !visible.Contains(entry.at)).at;
-            Require(fog.Contains(unseenPlain) == !canonicalOutside,
+            var unseenTerrain = state["map"]!["tiles"]!.AsArray().Select((tile, index) => (tile, at: new BoardCell(index % width, index / width)))
+                .First(entry => EcmaJson.ReadString(entry.tile) == actorTerrain && !visible.Contains(entry.at)).at;
+            Require(fog.Contains(unseenTerrain) == !canonicalOutside,
                 "Material outside metadata cannot add or remove fog from a canonical cell.");
             Require(queries.MoveStops(2).SequenceEqual(stops) && EcmaJson.Stringify(session.Snapshot()) == stateBefore,
                 "Changing presentation metadata cannot change legality or battle state.");
@@ -151,7 +161,7 @@ public partial class BattleScreenChecks : Node
         Require(screen.IsPresenting && screen.Board.IsPresenting, "Accepted move must hold the presentation gate.");
         var revision = session.GetSnapshot().Revision;
         screen.SelectCell(destination);
-        screen.SelectCell(new BoardCell(5, 8));
+        screen.SelectCell(session.GetTacticalQueries(0).Unit(2)!.At);
         screen.Refresh();
         Require(session.GetSnapshot().Revision == revision && screen.SelectedUnitId is null,
             "Repeated clicks and refresh must not dispatch or change selection during playback.");
@@ -210,7 +220,7 @@ public partial class BattleScreenChecks : Node
         RemoveChild(screen);
         staleSave.EmitSignal(Button.SignalName.Pressed);
         Require(saves == 0, "Unmounted application callbacks must not save or load.");
-        screen.SelectCell(new BoardCell(5, 8));
+        screen.SelectCell(session.GetTacticalQueries(0).Unit(2)!.At);
         screen.SelectCell(destination);
         Require(last.GetSnapshot().Revision == lastRevision, "Unmounted callbacks must not dispatch.");
         Require(!screen.IsPresenting && !screen.Board.IsPresenting, "Unmount must release all presentation waiters.");
@@ -259,16 +269,20 @@ public partial class BattleScreenChecks : Node
         var screen = new BattleScreen();
         screen.Board.AnimationsEnabled = false; // This suite isolates synchronous binding, not timeline behavior.
         AddChild(screen);
-        screen.BindSession(new(text, battleText, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
-        screen.ConfigureGround(TerrainView.Factory(WorldMaterialsManifest.Load()));
+        var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
+        var rendering = BoardSceneRendering.Load(scene, level, engine.CreateState(level)["map"]!.AsObject());
+        screen.BindSession(new(text, battleText, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(),
+            engine.Grids.Get("square4"), engine.Catalog, rendering.Plane)), level, scene);
+        screen.ConfigureGround(rendering.Ground);
         Require(screen.GetNode<ColorRect>("Backdrop").ZIndex < -300,
             "The screen backdrop must be below all negative-depth terrain layers.");
         var before = session.GetSnapshot();
-        screen.SelectCell(new BoardCell(5, 8));
+        var beforeState = before.State.GetRawText();
+        screen.SelectCell(session.GetTacticalQueries(0).Unit(2)!.At);
         Require(screen.SelectedUnitId == 2 && session.GetSnapshot().Revision == before.Revision,
             "Selecting Torren must not advance canonical state.");
         var queries = session.GetTacticalQueries(0);
-        var destination = queries.MoveStops(2).First(cell => cell != new BoardCell(5, 8)
+        var destination = queries.MoveStops(2).First(cell => cell != session.GetTacticalQueries(0).Unit(2)!.At
             && queries.CommandsAt(2, cell) is { Count: 1 } commands && commands[0].SelfTargeted);
         var staleTurnButton = Buttons(screen).Single(button => button.Text == "结束回合");
         screen.SelectCell(destination);
@@ -286,8 +300,7 @@ public partial class BattleScreenChecks : Node
         var stale = session.Dispatch(after.Transition!.Action, before.Revision);
         Require(!stale.Accepted && session.GetSnapshot().Revision == after.Revision,
             "An obsolete UI revision must not replay a command.");
-        Require(before.State.GetProperty("units").EnumerateArray()
-                .Single(unit => unit.GetProperty("id").GetInt32() == 2).GetProperty("x").GetInt32() == 5,
+        Require(before.State.GetRawText() == beforeState,
             "Earlier detached snapshots must remain immutable.");
         var turnButton = Buttons(screen).Single(button => button.Name == "EndTurn");
         turnButton.EmitSignal(Button.SignalName.Pressed);
@@ -319,10 +332,10 @@ public partial class BattleScreenChecks : Node
         Require(session.GetSnapshot().Revision == snapshot.Revision, "Removed global button cannot dispatch after same-revision selection refresh.");
         Keypress(Key.Escape);
         Require(screen.Selection?.Kind == TacticalSelectionKind.Idle, "Native Escape follows the source back operation.");
-        screen.SelectCell(new(5, 8));
+        screen.SelectCell(session.GetTacticalQueries(0).Unit(2)!.At);
         var selected = screen.SelectedUnitId;
         var queries = session.GetTacticalQueries(0);
-        var destination = queries.MoveStops(2).First(at => at != new BoardCell(5, 8) && queries.CommandsAt(2, at) is { Count: 1 } commands && commands[0].SelfTargeted);
+        var destination = queries.MoveStops(2).First(at => at != session.GetTacticalQueries(0).Unit(2)!.At && queries.CommandsAt(2, at) is { Count: 1 } commands && commands[0].SelfTargeted);
         screen.SetApplicationBusy(true);
         var busyReaction = Buttons(screen).First(button => button.GetMeta("hud_key", "").AsString().StartsWith("stances/reaction:", StringComparison.Ordinal));
         screen.SelectCell(destination);
@@ -439,13 +452,17 @@ public partial class BattleScreenChecks : Node
 
     private void CheckLocalizedInteraction()
     {
-        var level = BattleTextChecks.OpeningLevel();
+        var sourceLevel = BattleTextChecks.OpeningLevel();
+        var level = sourceLevel.DeepClone().AsObject();
         // Bring one authored enemy into preview range without dispatching a setup action.
         var defender = level["units"]!.AsArray().OfType<JsonObject>().First(unit => unit["owner"]!.GetValue<int>() == 2);
-        defender["x"] = 6;
-        defender["y"] = 8;
+        var attacker = level["units"]!.AsArray().OfType<JsonObject>().Single(unit => unit["key"]?.GetValue<string>() == "campaign-torren");
+        var defenderAt = new BoardCell(attacker["x"]!.GetValue<int>() + 1, attacker["y"]!.GetValue<int>());
+        defender["x"] = defenderAt.X;
+        defender["y"] = defenderAt.Y;
         var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         var engine = new BattleEngine(packs);
+        var registeredMap = engine.CreateState(sourceLevel)["map"]!.AsObject();
         var translation = ResourceLoader.Load<Translation>(GodotTextCatalog.ResourcePath);
         var keys = translation.GetMessageList().ToHashSet(StringComparer.Ordinal);
         string? baselineState = null, baselineEvents = null, baselineSave = null;
@@ -482,8 +499,10 @@ public partial class BattleScreenChecks : Node
             var screen = new BattleScreen();
             AddChild(screen);
             screen.Board.AnimationsEnabled = false;
-            screen.BindSession(new(text, battleText, session, new(assets, EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
-            screen.ConfigureGround(TerrainView.Factory(WorldMaterialsManifest.Load()));
+            var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
+            var rendering = BoardSceneRendering.Load(scene, sourceLevel, registeredMap);
+            screen.BindSession(new(text, battleText, session, new(assets, EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, rendering.Plane)), level, scene);
+            screen.ConfigureGround(rendering.Ground);
             Require(screen.Board.RenderingIssueCount > 0 && screen.Board.Diagnostics.Any(value => value.Contains("c01.archer", StringComparison.Ordinal)),
                 "Unavailable actor art remains explicitly diagnosed without changing canonical units.");
             Require(Descendants(screen).OfType<Label>().Any(label => label.Text == text.Format("ui.battle.artwork_issues", screen.Board.RenderingIssueCount))
@@ -507,7 +526,7 @@ public partial class BattleScreenChecks : Node
                 && attack.Text.Contains(replacements["content.weapons.c01.border-blade.name"], StringComparison.Ordinal)
                 && attack.TooltipText.Contains(replacements["content.abilities.attack.hint"], StringComparison.Ordinal),
                 "Mounted weapon command names and range hints compose supplied ability and weapon text.");
-            screen.SelectCell(new BoardCell(6, 8));
+            screen.SelectCell(defenderAt);
             Require(screen.Selection?.Kind == TacticalSelectionKind.Target,
                 "Selecting the adjacent authored enemy must arm a real attack preview without dispatching.");
             using var hoverTarget = new InputEventKey { Keycode = Key.Right, Pressed = true };

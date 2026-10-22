@@ -84,12 +84,22 @@ malformed-input hardening differences. Original source and art are preserved.
 
 From the repository root in the configured local toolchain environment, run
 `bash tools/godot/verify-native.sh` for formatting, compilation, current native
-contracts, all 16 independent level save/replays, the opening gameplay comparison,
-and actual headless battle/result/navigation scenes. These checks use isolated
+contracts, all 16 independent level save/replays, and actual headless
+painted-surface, material, camera, battle/result/navigation scenes. These checks use isolated
 save locations. Manual GUI and current exported-package acceptance are separate.
 
+Material rendering contracts use an independent 8×5 fixture rather than requiring
+painted campaign maps to retain procedural river/road nodes. Formal scene checks
+use the same authored renderer/plane resolver as the application. Edge-decoration
+checks cover nonempty terrain support and source registration separately; integrated
+edge-overlay ground clipping is not covered by the current painted campaign scenes.
+
 Historical TypeScript source-v1 oracle suites are retained as development evidence;
-they are not a current-schema acceptance mode. See
+they are not a current-schema acceptance mode. Stable shared RNG and grid vectors
+remain cross-language contracts. Historical whole-campaign AI/action traces are not
+a native art-layout or balance gate: native levels and AI policy have evolved
+independently. Native full-level replay/save checks use the current content and
+compare exact state, digest, and replay results without rewriting historical goldens. See
 `docs/OBJECTIVE-OUTCOME-SCHEMA.md` before using them. Their regeneration requires
 the original repository and locked Node dependencies; the native runtime does not.
 

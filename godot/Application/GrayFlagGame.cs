@@ -424,18 +424,8 @@ public partial class GrayFlagGame : Node
         var id = level["id"]!.GetValue<string>();
         var scenePath = $"res://data/scenes/{id}.json";
         var scene = AuthoredScene.Load(scenePath);
-        BoardPlaneFactory plane = BoardPlane.Dimetric;
-        BoardGroundFactory ground;
-        if (scene.PaintedGroundPath is { } paintedGroundPath)
-        {
-            var art = PresentationJson.Load<PaintedGroundDocument>(paintedGroundPath);
-            var registeredLevel = levels.OfType<JsonObject>().Single(value => value["id"]!.GetValue<string>() == id);
-            art.ValidateLevel(registeredLevel);
-            plane = art.CreatePlane;
-            ground = art.Factory(engine.CreateState(registeredLevel)["map"]!.AsObject());
-        }
-        else
-            ground = TerrainView.Factory(WorldMaterialsManifest.Load());
+        var registeredLevel = levels.OfType<JsonObject>().Single(value => value["id"]!.GetValue<string>() == id);
+        var rendering = BoardSceneRendering.Load(scene, registeredLevel, engine.CreateState(registeredLevel)["map"]!.AsObject());
         var grid = engine.Grids.Get(level["rules"]?["grid"]?.GetValue<string>() ?? "square4");
         var nextScreen = PrepareMounted(new BattleScreen(), next =>
         {
@@ -444,11 +434,11 @@ public partial class GrayFlagGame : Node
                     AssetCatalog.Load(),
                     EnvironmentCatalog.Load(),
                     grid,
-                    engine.Catalog, plane)),
+                    engine.Catalog, rendering.Plane)),
                 level,
                 scene,
                 initialLogMessage);
-            next.ConfigureGround(ground);
+            next.ConfigureGround(rendering.Ground);
             next.ConfigureDynamicState();
             var boundGeneration = lifecycleGeneration;
             bool CurrentBattle() => boundGeneration == lifecycleGeneration && CurrentView(owner, next) &&

@@ -57,7 +57,14 @@ public partial class CameraIntegrationChecks : Node
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
     }
 
-    private void Bind(ITacticalBattleSession session) => screen.BindSession(new(text, battleText, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
+    private void Bind(ITacticalBattleSession session)
+    {
+        var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
+        var rendering = BoardSceneRendering.Load(scene, level, engine.CreateState(level)["map"]!.AsObject());
+        screen.BindSession(new(text, battleText, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(),
+            engine.Grids.Get("square4"), engine.Catalog, rendering.Plane)), level, scene);
+        screen.ConfigureGround(rendering.Ground);
+    }
     private async Task Layout()
     {
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
@@ -199,7 +206,10 @@ public partial class CameraIntegrationChecks : Node
         Require(session.GetSnapshot().State.GetRawText() == snapshot.State.GetRawText(), "Detached fixture setup never mutates the original session");
         Bind(session);
         materials = WorldMaterialsManifest.Load();
-        materials.TerrainTags["plain"] = ["outside"];
+        var actorCell = session.GetTacticalQueries(0).Unit(2)!.At;
+        var mapState = state["map"]!;
+        var actorTerrain = mapState["tiles"]![actorCell.Y * mapState["width"]!.GetValue<int>() + actorCell.X]!.GetValue<string>();
+        materials.TerrainTags[actorTerrain] = ["outside"];
         screen.ConfigureGround(TerrainView.Factory(materials));
         var actor = Field(new Vector2(10.5f, 15.5f) * 32);
         GuiButton(MouseButton.Left, true, actor);
