@@ -96,6 +96,7 @@ Check("detached committed state and events", () =>
 });
 Check("resource clamping and atomic costs", SupportChecks.Resources);
 Check("live ownership admission and commander projection", () => ReplayChecks.OwnershipAdmission(root));
+Check("structure lifecycle and redstone routes", () => StructureLifecycleChecks.Run(root));
 Check("escort mission and AI intent", () => EscortChecks.MissionAndIntent(root));
 if (selectedCheck == "three bridges native replay/save")
     Check("three bridges native replay/save", () => ReplayChecks.ThreeBridges(root));

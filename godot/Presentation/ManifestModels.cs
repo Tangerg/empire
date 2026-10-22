@@ -237,7 +237,7 @@ public sealed class EnvironmentCellRecord
 
 public enum StructureVisualState
 {
-    Normal, Captured, Damaged, Destroyed
+    Normal, Captured, Damaged, Disabled, Destroyed
 }
 
 public sealed record AssetFrameBinding
@@ -266,6 +266,10 @@ public sealed record StructureArtBinding
     {
         get; init;
     }
+    public required AssetFrameBinding Disabled
+    {
+        get; init;
+    }
     public required AssetFrameBinding Destroyed
     {
         get; init;
@@ -276,6 +280,7 @@ public sealed record StructureArtBinding
         StructureVisualState.Normal => Normal,
         StructureVisualState.Captured => Captured,
         StructureVisualState.Damaged => Damaged,
+        StructureVisualState.Disabled => Disabled,
         StructureVisualState.Destroyed => Destroyed,
         _ => throw new ArgumentOutOfRangeException(nameof(state))
     };

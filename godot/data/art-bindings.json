@@ -162,6 +162,10 @@
       "destroyed": {
         "topicId": "C01-STRUCT-REPAIRABLE-GATE",
         "frame": "damaged"
+      },
+      "disabled": {
+        "topicId": "C01-STRUCT-REPAIRABLE-GATE",
+        "frame": "damaged"
       }
     },
     "command_node": {
@@ -178,6 +182,10 @@
         "frame": "damaged"
       },
       "destroyed": {
+        "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
+        "frame": "damaged"
+      },
+      "disabled": {
         "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
         "frame": "damaged"
       }
@@ -198,6 +206,10 @@
       "destroyed": {
         "topicId": "C01-STRUCT-MERCENARY-DEPOT",
         "frame": "damaged"
+      },
+      "disabled": {
+        "topicId": "C01-STRUCT-MERCENARY-DEPOT",
+        "frame": "damaged"
       }
     },
     "bulkhead": {
@@ -214,6 +226,10 @@
         "frame": "damaged"
       },
       "destroyed": {
+        "topicId": "C01-STRUCT-WASTELAND-CHEVAUX",
+        "frame": "damaged"
+      },
+      "disabled": {
         "topicId": "C01-STRUCT-WASTELAND-CHEVAUX",
         "frame": "damaged"
       }
@@ -234,6 +250,10 @@
       "destroyed": {
         "topicId": "C01-STRUCT-SUNKEN-BELL-SLUICE",
         "frame": "damaged"
+      },
+      "disabled": {
+        "topicId": "C01-STRUCT-SUNKEN-BELL-SLUICE",
+        "frame": "damaged"
       }
     },
     "three-bridges.barricade": {
@@ -252,6 +272,10 @@
       "destroyed": {
         "topicId": "THREE-BRIDGES-STRUCT-BARRICADE-DESTROYED",
         "frame": "destroyed"
+      },
+      "disabled": {
+        "topicId": "THREE-BRIDGES-STRUCT-BARRICADE-DAMAGED",
+        "frame": "damaged"
       }
     }
   },

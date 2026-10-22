@@ -26,7 +26,7 @@ public static class DefaultBattlePlugins
     public static EnginePlugin TacticalRules
     {
         get;
-    } = new("engine.tactical-rules", 2, context =>
+    } = new("engine.tactical-rules", 3, context =>
     {
         context.Provide(Keys.Grids, GridRegistry.Core());
         context.Provide(Keys.Abilities, DefaultAbilities.Create());
@@ -56,7 +56,7 @@ public static class DefaultBattlePlugins
     public static EnginePlugin MissionRules
     {
         get;
-    } = new("engine.mission-rules", 2, context =>
+    } = new("engine.mission-rules", 3, context =>
     {
         context.Provide(Keys.ActionHandlers, DefaultActionHandlers.Create());
         context.Provide(Keys.ScenarioConditions, DefaultScenarioConditions.Create(context.Require(Keys.Random)));

@@ -200,8 +200,13 @@ public partial class DynamicStateChecks : Node
         structure["hp"] = 100;
         structure["disabled"] = true;
         board.RenderState(state);
-        Require(Current().GetMeta("visual_state").AsString() == "damaged", "Disabled healthy structure remains damaged");
+        Require(Current().GetMeta("visual_state").AsString() == "disabled", "Disabled healthy structure has its own logical state");
+        Require(Current().GetNodeOrNull("OwnerBanner") is null && Current().GetNodeOrNull("HealthGauge") is null,
+            "Disabled structure hides active ownership and health decoration without changing owner or HP");
         structure["disabled"] = false;
+        board.RenderState(state);
+        Require(Current().GetNodeOrNull("OwnerBanner") is not null && Current().GetNodeOrNull("HealthGauge") is not null,
+            "Enabled structure restores active decoration from the same state projection");
         structure["owner"] = 0;
         structure["x"] = structure["x"]!.GetValue<int>() + 1;
         board.RenderState(state);
@@ -219,7 +224,7 @@ public partial class DynamicStateChecks : Node
         structure["disabled"] = true;
         board.RenderState(state);
         Require(board.RenderedStructureCount == 1 && Current().GetMeta("visual_state").AsString() == "destroyed" &&
-            Current().GetNode<Node2D>("HealthGauge").GetMeta("ratio").AsDouble() == 0,
+            Current().GetNodeOrNull("HealthGauge") is null && Current().GetNodeOrNull("OwnerBanner") is null,
             "A destroyed-but-retained structure must expose the explicit destroyed visual role");
         state["structures"]!.AsArray().Clear();
         board.RenderState(state);

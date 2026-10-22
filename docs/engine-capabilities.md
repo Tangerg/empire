@@ -653,3 +653,20 @@ bridge admission, capture and healing remain composed domain rules, not polygon 
 interception. `GrayFlagSession.Hud` renders structure forecasts from `BattleCombat`'s
 actual plan rather than calculating damage. See
 [three-bridge sample](../godot/docs/THREE-BRIDGES-SAMPLE.md).
+
+### Native structure lifecycle (2026-10-22)
+
+`BattleCombat` is the sole live structure HP/availability writer. Its damage,
+explicit disable, and repair operations are consumed by combat and scenario
+commands; the action transaction owns commit/rollback and event accounting.
+Disable retains HP and ownership and emits `structureDisabled` only on the live
+available-to-disabled transition. Repair emits `structureEnabled` on reactivation,
+including a full-HP repair that emits no `structureRepaired` event. Destruction
+retains its distinct `structureDestroyed` event. Presentation derives logical
+Destroyed/Disabled/Damaged/Captured/Normal from that state, never writes it, and
+hides active decorations for unavailable structures.
+
+The native c01-03 routes disable rather than deal scripted damage. One once-only
+scenario rule frees oathbound units on disabled OR destroyed state. It does not
+add a victory condition or reverse liberation on repair. See
+[the native contract and asset limitation](../godot/docs/STRUCTURE-LIFECYCLE.md).

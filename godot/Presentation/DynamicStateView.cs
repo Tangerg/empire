@@ -89,8 +89,10 @@ public sealed class DynamicStateView
                 var maximum = Number(definition, "maxHp");
                 var disabled = structure["disabled"]!.GetValue<bool>();
                 var visualState = hp <= 0 ? StructureVisualState.Destroyed
-                    : hp <= maximum * 0.5 || disabled ? StructureVisualState.Damaged
+                    : disabled ? StructureVisualState.Disabled
+                    : hp <= maximum * 0.5 ? StructureVisualState.Damaged
                     : color is null ? StructureVisualState.Normal : StructureVisualState.Captured;
+                var active = visualState is not (StructureVisualState.Disabled or StructureVisualState.Destroyed);
                 var frame = visualState.ToString().ToLowerInvariant();
                 string? frameRole = null;
                 RuntimeAsset? asset = null;
@@ -107,12 +109,12 @@ public sealed class DynamicStateView
                     groundSprite = assets.CreateSprite(asset, frameRole!);
                     node.AddChild(groundSprite);
                     node.AddChild(BoardLighting.CreateStructureContact(new(asset.FrameWidth, asset.FrameHeight), asset.PresentationScale, shadows));
-                    if (color is not null)
+                    if (active && color is not null)
                         node.AddChild(CreateOwnerBanner(color, shadows));
                 }
                 else
-                    node.AddChild(Svg(StructureMarkup(structure, definition, color), "RuleDerivedStructure"));
-                if (asset is not null || definition.GetProperty("targetable").GetBoolean())
+                    node.AddChild(Svg(StructureMarkup(structure, definition, active ? color : null), "RuleDerivedStructure"));
+                if (active && (asset is not null || definition.GetProperty("targetable").GetBoolean()))
                     node.AddChild(CreateGauge(hp, maximum));
                 node.SetMeta("structure_id", id);
                 node.SetMeta("structure_type", type);

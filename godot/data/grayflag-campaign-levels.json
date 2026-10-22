@@ -4420,18 +4420,8 @@
           },
           "effects": [
             {
-              "type": "changeUnitOwner",
-              "selector": {
-                "anyTags": [
-                  "oathbound"
-                ]
-              },
-              "owner": 1
-            },
-            {
-              "type": "damageStructure",
-              "id": "redstone-node",
-              "amount": 100
+              "type": "disableStructure",
+              "id": "redstone-node"
             },
             {
               "type": "emitSignal",
@@ -4500,18 +4490,8 @@
               "value": 1
             },
             {
-              "type": "changeUnitOwner",
-              "selector": {
-                "anyTags": [
-                  "oathbound"
-                ]
-              },
-              "owner": 1
-            },
-            {
-              "type": "damageStructure",
-              "id": "redstone-node",
-              "amount": 100
+              "type": "disableStructure",
+              "id": "redstone-node"
             },
             {
               "type": "emitSignal",
@@ -4533,6 +4513,35 @@
               "value": 1
             },
             {
+              "type": "disableStructure",
+              "id": "redstone-node"
+            },
+            {
+              "type": "emitSignal",
+              "signal": "redstone_sappers_cut_chain"
+            }
+          ]
+        },
+        {
+          "id": "release-redstone-oathbound",
+          "timing": "afterAction",
+          "condition": {
+            "type": "any",
+            "conditions": [
+              {
+                "type": "structure",
+                "id": "redstone-node",
+                "state": "disabled"
+              },
+              {
+                "type": "structure",
+                "id": "redstone-node",
+                "state": "destroyed"
+              }
+            ]
+          },
+          "effects": [
+            {
               "type": "changeUnitOwner",
               "selector": {
                 "anyTags": [
@@ -4540,15 +4549,6 @@
                 ]
               },
               "owner": 1
-            },
-            {
-              "type": "damageStructure",
-              "id": "redstone-node",
-              "amount": 100
-            },
-            {
-              "type": "emitSignal",
-              "signal": "redstone_sappers_cut_chain"
             }
           ]
         }

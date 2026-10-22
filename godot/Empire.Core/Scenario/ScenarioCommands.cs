@@ -83,6 +83,8 @@ public sealed partial class ScenarioCommands
         combat.DamageStructure(state, Text(effect, "id"), Number(effect["amount"], "amount"), emit);
         return;
     }
+    public void DisableStructure(JsonObject state, JsonObject effect, Action<JsonObject> emit) =>
+        combat.DisableStructure(state, Text(effect, "id"), emit);
     public void RepairStructure(JsonObject state, JsonObject effect, Action<JsonObject> emit)
     {
         combat.RepairStructure(state, Text(effect, "id"), Number(effect["amount"], "amount"), emit);

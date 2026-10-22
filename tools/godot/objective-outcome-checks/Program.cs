@@ -604,4 +604,11 @@ Reject<LocalizationException>(() => eventText.DescribeAll(TransientContext(), ne
 Reject<LocalizationException>(() => eventText.DescribeAll(TransientContext(), new[] { EcmaJson.ToElement(creation), EcmaJson.ToElement(creation) }),
     "repeated creation identity is rejected instead of overwritten");
 
+foreach (var (kind, key) in new[] { ("structureDisabled", "battle.event.structure_disabled"), ("structureEnabled", "battle.event.structure_enabled") })
+{
+    var lifecycle = EcmaJson.ToElement(new JsonObject { ["type"] = kind, ["structure"] = "a-structure", ["at"] = new JsonObject { ["x"] = 4, ["y"] = 7 } });
+    Check(eventText.Describe(TransientContext(), lifecycle) == firstCatalog.Format(key, 4, 7),
+        $"{kind} uses the injected locale catalog, not an English event identifier");
+}
+
 Console.WriteLine($"Objective/outcome native contract checks passed: {checks} assertions.");

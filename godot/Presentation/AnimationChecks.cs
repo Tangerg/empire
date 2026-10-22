@@ -406,7 +406,7 @@ public partial class AnimationChecks : Node
         var unit = before["units"]![0]!.AsObject();
         var id = Int(unit, "id");
         var kinds = new[] { "move", "castBegan", "castResolved", "castCancelled", "forcedMove", "collisionDamage", "statusTick", "regen",
-            "unitWithdrawn", "unitEmbarked", "unitDisembarked", "unitRouted", "unitSurrendered", "unitSpawned", "unitRevived", "structureDamaged", "structureDestroyed", "structureRepaired" };
+            "unitWithdrawn", "unitEmbarked", "unitDisembarked", "unitRouted", "unitSurrendered", "unitSpawned", "unitRevived", "structureDamaged", "structureDestroyed", "structureRepaired", "structureDisabled", "structureEnabled" };
         foreach (var kind in kinds)
         {
             var task = board.PresentTransitionAsync(Transition(before, after, IdleAction(), [new JsonObject { ["type"] = kind }]));

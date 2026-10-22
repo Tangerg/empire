@@ -60,7 +60,7 @@ resources. The TypeScript exporter is a development-only oracle/data tool.
 
 All 12 original action kinds have native handlers. Focused differential suites for deployment (2,519 checks), career/formation progression (175), recruitment (25), and transport (81 direct cases plus 24 dispatch steps and save/resume guards) are reproducible with the corresponding `tools/godot/*-checks/run.sh` scripts. This does not establish complete extension-registry parity.
 
-All 34 default scenario effects and 16 conditions are implemented, with 466 direct
+The original 34 scenario effects and 16 conditions were verified with 466 direct
 source comparisons and 29 JSON-save/resume engine steps. Canonical `EcmaJson`
 preserves valid JavaScript lone-surrogate strings and keys; 2,100 source vectors
 verify the boundary. Catalog/level/deferred-reference checks reject unsupported
@@ -108,3 +108,7 @@ the original repository and locked Node dependencies; the native runtime does no
 See [the c01-02 reconstruction contract](docs/FORMAL-THREE-BRIDGES.md) for the
 explicit scene registration, four interactive houses, preserved campaign behavior,
 three-round truce semantics, and validation boundaries.
+
+The native structure lifecycle adds explicit disable and enable transitions (35
+scenario effects total), one-time c01-03 liberation, and version-3 tactical/mission
+rules. See [contracts, verification and the pending unlit-art dependency](docs/STRUCTURE-LIFECYCLE.md).

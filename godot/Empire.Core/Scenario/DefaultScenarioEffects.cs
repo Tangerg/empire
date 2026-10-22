@@ -120,6 +120,10 @@ public static class DefaultScenarioEffects
         {
             References = effect => new PayloadReferences().Structure(Text(effect, "id"))
         })
+        .Register(new("disableStructure", (context, effect) => context.Rules.Commands.DisableStructure(context.State, effect, context.Emit))
+        {
+            References = effect => new PayloadReferences().Structure(Text(effect, "id"))
+        })
         .Register(new("repairStructure", (context, effect) => context.Rules.Commands.RepairStructure(context.State, effect, context.Emit))
         {
             References = effect => new PayloadReferences().Structure(Text(effect, "id"))
