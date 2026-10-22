@@ -3503,14 +3503,31 @@
             "id": "primary",
             "type": "failOn",
             "condition": {
-              "type": "unitCount",
-              "selector": {
-                "keys": [
-                  "campaign-laiya"
-                ]
-              },
-              "op": "lte",
-              "value": 0
+              "type": "any",
+              "conditions": [
+                {
+                  "type": "unitCount",
+                  "selector": {
+                    "keys": [
+                      "campaign-laiya"
+                    ]
+                  },
+                  "op": "lte",
+                  "value": 0
+                },
+                {
+                  "type": "unitCount",
+                  "selector": {
+                    "keys": [
+                      "refugee-1",
+                      "refugee-2",
+                      "refugee-3"
+                    ]
+                  },
+                  "op": "lte",
+                  "value": 2
+                }
+              ]
             },
             "objective": {
               "id": "bridge-all",
@@ -3576,50 +3593,6 @@
       "captureThreshold": 100,
       "baseResourceGrants": []
     },
-    "victory": [
-      {
-        "id": "primary",
-        "type": "failOn",
-        "condition": {
-          "type": "unitCount",
-          "selector": {
-            "keys": [
-              "campaign-laiya"
-            ]
-          },
-          "op": "lte",
-          "value": 0
-        },
-        "objective": {
-          "id": "bridge-all",
-          "type": "all",
-          "objectives": [
-            {
-              "id": "escort-east-safety",
-              "type": "escort",
-              "selector": {
-                "keys": [
-                  "refugee-1",
-                  "refugee-2",
-                  "refugee-3"
-                ]
-              },
-              "zone": "east-safety",
-              "count": 3
-            },
-            {
-              "id": "eliminate-unmarked-ballista",
-              "type": "eliminate",
-              "selector": {
-                "keys": [
-                  "unmarked-ballista"
-                ]
-              }
-            }
-          ]
-        }
-      }
-    ],
     "scenario": {
       "zones": [
         {

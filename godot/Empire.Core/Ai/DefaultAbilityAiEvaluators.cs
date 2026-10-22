@@ -12,12 +12,12 @@ public static class DefaultAbilityAiEvaluators
     public static AbilityAiEvaluatorRegistry Create()
     {
         var registry = new AbilityAiEvaluatorRegistry();
-        registry.Register(new("wait", context => context.TileValue));
+        registry.Register(new("wait", context => context.TacticalValue));
         registry.Register(new("capture", context =>
         {
             var terrain = context.Turn.Battlefield.Cell(context.At).Terrain;
             var prize = IsTrue(terrain.GetProperty("hq")) ? 4000 : terrain.GetProperty("produces").GetArrayLength() > 0 ? 900 : 600;
-            return context.TileValue * 0.3 + prize;
+            return context.TacticalValue * 0.3 + prize;
         }));
         registry.Register(new("heal", context =>
         {
@@ -25,7 +25,7 @@ public static class DefaultAbilityAiEvaluators
                 return null;
             var definition = context.Turn.Content.Get("units", Text(ally, "type"));
             var healed = DefaultAbilities.HealAmount(context.Turn.Rules.Content, ally);
-            return context.TileValue * 0.3 + healed / Number(definition["maxHp"], "maxHp") * Number(definition["value"], "value") * 0.9;
+            return context.TacticalValue * 0.3 + healed / Number(definition["maxHp"], "maxHp") * Number(definition["value"], "value") * 0.9;
         }));
         registry.Register(new("attack", Attack));
         registry.Seal();
@@ -50,7 +50,7 @@ public static class DefaultAbilityAiEvaluators
             var structure = StructureAt(turn.State, target);
             if (structure is null || plan.PrimaryStructure is not { } structureForecast)
                 return null;
-            return context.TileValue * 0.25 + structureForecast.Damage * 8 + (structureForecast.Destroyed ? 900 : 0) +
+            return context.TacticalValue * 0.25 + structureForecast.Damage * 8 + (structureForecast.Destroyed ? 900 : 0) +
                 mission.PriorityStructures.GetValueOrDefault(Text(structure, "id")) * 300 + CollateralValue(content, turn.State, plan);
         }
         if (plan.PrimaryUnit is not { } forecast)
@@ -75,7 +75,7 @@ public static class DefaultAbilityAiEvaluators
         foreach (var (id, weight) in mission.ProtectedUnits)
             if (UnitById(turn.State, id) is { } protectedUnit)
                 score += weight * 80 / (1 + turn.Distance(Position(foe), Position(protectedUnit)));
-        return context.TileValue * 0.25 + score + CollateralValue(content, turn.State, plan);
+        return context.TacticalValue * 0.25 + score + CollateralValue(content, turn.State, plan);
     }
 
     private static double CollateralValue(StateContent content, JsonObject state, CombatPlan plan)

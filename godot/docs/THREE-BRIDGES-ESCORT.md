@@ -1,0 +1,24 @@
+# Three Bridges escort semantics
+
+The native `c01-02` mission requires all three named refugees to arrive alive and Leia to survive. Its existing `primary` `failOn` now evaluates an `any` condition: the original Leia-loss condition, or fewer than three of the named refugees remaining alive. A refugee casualty therefore records primary failure and defeat immediately. This is an intentional mission-local failure-semantics correction, not a change to generic escort, spawning, or revival rules. This mission configures no revival ability, tactic, or trigger. The Simplified Chinese objective text states the consequence.
+
+The generic escort AI advisor keeps its existing destination weight 12 and protection weight 6 for every living selected friendly escort until the escort objective completes. Arrival no longer removes the mission's positional incentive before the other escorts arrive. Mission positional value (objective destinations and escort protection proximity) is now added once by the common command scorer for every ability. Ability evaluators receive only tactical positional value and retain their existing tactical scaling. The common scorer rejects non-finite final totals after all components and directive penalties are combined. An attack from a safe tile no longer loses 75% of its objective positional reward merely because it is an attack. This intentionally changes mission-aware AI choices; it is not source-v1 AI equivalence.
+
+This is soft action scoring: the normal move field and command dispatcher still permit repositioning within or leaving the zone. Completed objectives stop supplying advice through the existing objective lifecycle.
+
+The existing strong mission priority is retained, not claimed to solve general AI survival, combat strategy, or pathfinding. In particular, geometric one-ply movement can still prefer waiting over a necessary detour. No map, starting position, unit identity, content stat, or image is changed. The unused top-level `victory` fallback duplicate is removed from c01-02: both players already declare their objectives, and state creation, validation, references, and text projection use those declarations. The other fifteen levels have the same redundant fallback but are unchanged in this focused repair. The normalizer's generic fallback is unchanged.
+
+The painted scene's level-source hash is refreshed only because the explicit objective rule changed.
+
+Focused checks:
+
+- `Empire.Core.Tests ... --only "escort mission and AI intent"`: mission-specific casualty/defeat, arrived-unit holding, final arrival and intent release, legal movement inside/outside the zone, generic revival, shared same-cell tactical-only inputs for all four shipped abilities, and an armed escort choosing an in-place attack with unchanged shipped content. NaN and overflowing mission totals are rejected by the registered command-scoring owner.
+- `Empire.Core.Tests ... --only "three bridges native replay/save"`: only the actual native c01-02 deployment, bounded at 4096 independently selected actions, semantic terminal conclusion, full save and replay equality. Defeat is an honest terminal result, not a campaign victory claim. This selector reuses the aggregate replay implementation without adding a duplicate run to the aggregate.
+
+Baseline characterization at commit 225d5de: all-side AI aggression 0.58 ran 4096 actions to turn518 without terminating. Refugee-1 died at action315; the ballista died at384; surviving refugees repeatedly entered and left the safety zone while the remaining enemy archer waited. The original all-AI run is evidence of this policy's nontermination, not proof that the player's initial mission was unwinnable.
+
+The edge-of-zone holding fixture also runs against the baseline Core assembly as a negative control: it fails the holding assertion with old AI, while the repaired implementation passes. This is stronger than merely checking that a manually selected wait action is legal.
+
+Targeted repaired result: c01-02 completed after 421 legal native actions at aggression 0.58, with `objectiveCompleted`, team 1, player 1, objective `primary`. Full save-state equality and independent action replay-state/hash equality passed. This is one independent level deployment, not carried-state campaign acceptance. The full sixteen-level gate was not rerun for this repair.
+
+The final finite-score guard was added after the 421-action run and covered by the rebuilt focused suite; it does not alter finite mission scores. The long Simplified Chinese objective uses the existing word-smart wrapped HUD labels inside the vertical command scroll container.

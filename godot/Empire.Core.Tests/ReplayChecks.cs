@@ -9,10 +9,14 @@ using Empire.Core.Transport;
 
 internal static class ReplayChecks
 {
-    public static void ShippedLevels(string oracleRoot)
+    public static void ThreeBridges(string oracleRoot) => CheckLevels(oracleRoot, Levels(oracleRoot).Where(level => level["id"]!.GetValue<string>() == "c01-02"));
+
+    public static void ShippedLevels(string oracleRoot) => CheckLevels(oracleRoot, Levels(oracleRoot));
+
+    private static void CheckLevels(string oracleRoot, IEnumerable<JsonObject> levels)
     {
         var engine = Engine(oracleRoot);
-        foreach (var level in Levels(oracleRoot))
+        foreach (var level in levels)
         {
             var battle = engine.CreateBattle(level);
             var recorder = engine.RecordBattle(battle.Snapshot());
@@ -27,7 +31,7 @@ internal static class ReplayChecks
             if (battle.Snapshot()["phase"]!.GetValue<string>() != "over")
                 throw new Exception($"{level["id"]}: battle exceeded the explicit 4096-action safety bound.");
             VerifyPersistence(engine, level, battle, recorder.Replay(battle.Snapshot()));
-            Console.WriteLine($"  {level["id"]}: {count} legal native actions, exact save/replay round trip (independent level, not carried-state campaign victory).");
+            Console.WriteLine($"  {level["id"]}: {count} legal native actions, conclusion {battle.Snapshot()["conclusion"]}, exact save/replay round trip (independent level, not carried-state campaign victory).");
         }
     }
 

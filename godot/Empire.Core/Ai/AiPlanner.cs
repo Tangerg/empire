@@ -6,7 +6,7 @@ namespace Empire.Core.Ai;
 
 public sealed record AiPlannerRules(AiPlanningDependencies Planning, AiIntentRegistry Intents);
 
-/// <summary>Original one-ply policy, using the execution engine's legality and forecasts.</summary>
+/// <summary>One-ply policy using shared mission position value and the execution engine's legality and forecasts.</summary>
 public sealed class AiPlanner
 {
     public AiPlanningDependencies Planning

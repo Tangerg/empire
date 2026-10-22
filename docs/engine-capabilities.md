@@ -435,8 +435,8 @@ than creating a second installation path.
 | `objectives` | `Objectives.ObjectiveHandlerRegistry`; registered handlers own assessment and progress facts |
 | `resources` | `Resources.BattleResources` |
 | `aiObjectiveAdvisors` | `Ai.AiObjectiveAdvisorRegistry` |
-| `abilityAiEvaluators` | `Ai.AbilityAiEvaluatorRegistry` |
-| `aiIntents` | `Ai.AiIntentRegistry`; `AiPlanner` composes decisions from those registered policies |
+| `abilityAiEvaluators` | `Ai.AbilityAiEvaluatorRegistry`; evaluators weight tactical position only |
+| `aiIntents` | `Ai.AiIntentRegistry`; `DefaultAiIntents` adds action-independent mission position once to evaluator utility; `AiPlanner` selects registered intents |
 
 Combat, forecast, damage, progression, recruitment and support consumers declare
 `BattleCombatRules`, `CombatForecastRules`, `BattleDamageRules`,

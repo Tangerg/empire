@@ -43,7 +43,9 @@ public static class DefaultAiIntents
             var path = field.TracePath(stop);
             if (path is null)
                 continue;
-            var tileValue = new TileAppraisal(context, unit, at).Value;
+            var position = new TileAppraisal(context, unit, at);
+            var missionValue = position.MissionPositionValue;
+            var tacticalValue = position.TacticalPositionValue;
             foreach (var option in context.Rules.Commands.Options(context.State, unit, at))
             {
                 if (context.AbilityEvaluators.TryGet(option.Ability) is not { } evaluator)
@@ -51,10 +53,13 @@ public static class DefaultAiIntents
                 IEnumerable<Coord?> targets = option.SelfTargeted ? new Coord?[] { null } : option.Targets.Select(target => (Coord?)target);
                 foreach (var target in targets)
                 {
-                    var score = evaluator.Score(new(context, unit, at, option, target, tileValue));
+                    var score = evaluator.Score(new(context, unit, at, option, target, tacticalValue));
                     if (score is null || !double.IsFinite(score.Value))
                         continue;
                     var withdrawing = option.Engagement is not null ? context.Rules.Directives.FightPenalty(unit) : 0;
+                    var totalScore = missionValue + score.Value + withdrawing;
+                    if (!double.IsFinite(totalScore))
+                        continue;
                     var command = new JsonObject { ["ability"] = option.Ability };
                     if (option.Weapon is not null)
                         command["weapon"] = option.Weapon;
@@ -67,7 +72,7 @@ public static class DefaultAiIntents
                         ["path"] = PathJson(path),
                         ["command"] = command
                     };
-                    var candidate = new ScoredAction(action, score.Value + withdrawing);
+                    var candidate = new ScoredAction(action, totalScore);
                     if (best is null || candidate.Score > best.Score)
                         best = candidate;
                 }

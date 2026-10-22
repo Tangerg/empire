@@ -21,7 +21,7 @@ public sealed class AiIntentRegistry : PriorityRegistry<AiIntent, AiIntentRegist
 }
 
 public sealed record AbilityAiEvaluationContext(AiTurnContext Turn, JsonObject Unit, Coord At,
-    CommandOption Option, Coord? Target, double TileValue);
+    CommandOption Option, Coord? Target, double TacticalValue);
 public sealed record AbilityAiEvaluator(string Ability, Func<AbilityAiEvaluationContext, double?> Score);
 public sealed class AbilityAiEvaluatorRegistry : KeyedRegistry<AbilityAiEvaluator, AbilityAiEvaluatorRegistry>
 {

@@ -184,12 +184,11 @@ public static class DefaultAiObjectiveAdvisors
         {
             var cells = context.Zone(Text(objective, "zone")).ToArray();
             var escorted = context.Select(Object(objective["selector"], "selector")).Where(unit => Integer(unit, "owner") == context.Owner).ToArray();
-            var unarrived = escorted.Where(unit => !cells.Contains(Position(unit))).ToArray();
-            foreach (var unit in unarrived)
+            foreach (var unit in escorted)
                 context.Protect(Integer(unit, "id"), 6);
             foreach (var cell in cells)
             {
-                context.Destination(cell, 12, "护送目标撤离", unarrived.Select(unit => Integer(unit, "id")));
+                context.Destination(cell, 12, "护送目标撤离", escorted.Select(unit => Integer(unit, "id")));
                 context.Destination(cell, 1.5, "封锁护送终点", UnitsOf(context.State, context.Owner).Where(unit => !escorted.Any(target => Integer(target, "id") == Integer(unit, "id"))).Select(unit => Integer(unit, "id")));
             }
         }));

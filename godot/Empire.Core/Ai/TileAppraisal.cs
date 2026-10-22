@@ -7,7 +7,7 @@ using static Empire.Core.Tactics.TacticalQueries;
 
 namespace Empire.Core.Ai;
 
-/// <summary>Original ordered one-ply position utility; legality belongs to the engine.</summary>
+/// <summary>Objective position value is action-independent; tactical preferences may be weighted by the ability.</summary>
 public sealed class TileAppraisal
 {
     private readonly AiTurnContext context;
@@ -36,18 +36,19 @@ public sealed class TileAppraisal
     private double ProtectedWeight => Agenda.Mission.ProtectedUnits.GetValueOrDefault(UnitId);
     private IReadOnlyList<JsonObject> Foes => foes ??= context.Enemies(Integer(unit, "owner"));
 
-    public double Value
+    public double MissionPositionValue => MissionPull() + EscortPull();
+    public double Value => MissionPositionValue + TacticalPositionValue;
+
+    public double TacticalPositionValue
     {
         get
         {
-            // Addition order is observable when utility scores nearly tie.
+            // Preserve the relative order of tactical terms for deterministic scoring.
             var total = 0.0;
             total += context.Rules.Directives.Pull(context.State, unit, at, context.Board.Grid);
             total += Number(terrain.GetProperty("defense"), "defense") * 90;
             total += cell.Elevation * 3;
             total += CaptureProspect();
-            total += MissionPull();
-            total += EscortPull();
             total += EngagementRange();
             total += CoverFromNearestFoe();
             total += EnemyKeepPull();
