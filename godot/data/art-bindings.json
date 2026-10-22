@@ -166,29 +166,31 @@
       "disabled": {
         "topicId": "C01-STRUCT-REPAIRABLE-GATE",
         "frame": "damaged"
-      }
+      },
+      "depthRole": "standing"
     },
     "command_node": {
       "normal": {
-        "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
+        "topicId": "C01-STRUCT-OATH-PAD-ACTIVE",
         "frame": "normal"
       },
       "captured": {
-        "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
-        "frame": "captured"
+        "topicId": "C01-STRUCT-OATH-PAD-ACTIVE",
+        "frame": "normal"
       },
       "damaged": {
-        "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
+        "topicId": "C01-STRUCT-OATH-PAD-DAMAGED",
         "frame": "damaged"
       },
       "destroyed": {
-        "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
-        "frame": "damaged"
+        "topicId": "C01-STRUCT-OATH-PAD-DESTROYED",
+        "frame": "destroyed"
       },
       "disabled": {
-        "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
-        "frame": "damaged"
-      }
+        "topicId": "C01-STRUCT-OATH-PAD-DISABLED",
+        "frame": "disabled"
+      },
+      "depthRole": "surface"
     },
     "depot": {
       "normal": {
@@ -210,7 +212,8 @@
       "disabled": {
         "topicId": "C01-STRUCT-MERCENARY-DEPOT",
         "frame": "damaged"
-      }
+      },
+      "depthRole": "standing"
     },
     "bulkhead": {
       "normal": {
@@ -232,7 +235,8 @@
       "disabled": {
         "topicId": "C01-STRUCT-WASTELAND-CHEVAUX",
         "frame": "damaged"
-      }
+      },
+      "depthRole": "standing"
     },
     "boss_part": {
       "normal": {
@@ -254,7 +258,8 @@
       "disabled": {
         "topicId": "C01-STRUCT-SUNKEN-BELL-SLUICE",
         "frame": "damaged"
-      }
+      },
+      "depthRole": "standing"
     },
     "three-bridges.barricade": {
       "normal": {
@@ -276,7 +281,8 @@
       "disabled": {
         "topicId": "THREE-BRIDGES-STRUCT-BARRICADE-DAMAGED",
         "frame": "damaged"
-      }
+      },
+      "depthRole": "standing"
     }
   },
   "CANDIDATE_01_CHARACTER_ART": {

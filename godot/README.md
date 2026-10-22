@@ -111,4 +111,4 @@ three-round truce semantics, and validation boundaries.
 
 The native structure lifecycle adds explicit disable and enable transitions (35
 scenario effects total), one-time c01-03 liberation, and version-3 tactical/mission
-rules. See [contracts, verification and the pending unlit-art dependency](docs/STRUCTURE-LIFECYCLE.md).
+rules. See [lifecycle contracts and verification](docs/STRUCTURE-LIFECYCLE.md).

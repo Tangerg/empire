@@ -335,6 +335,13 @@ public partial class BoardView : Node2D
                     node.Position = Projection.Project(node.Position);
                 }
                 staging.AddChild(dynamicProjection.Root);
+                foreach (var entry in dynamicProjection.Standing.Where(entry => entry.Layer == 0))
+                    foreach (var sprite in entry.Node.GetChildren().OfType<Sprite2D>().ToArray())
+                    {
+                        var surface = PaintedSurface.Create(Projection, sprite, entry.Node.Position);
+                        entry.Node.AddChild(surface);
+                        sprite.Visible = false;
+                    }
                 entries.AddRange(dynamicProjection.Standing.Select(entry =>
                     new StandingEntry(entry.Node, entry.Node.GetMeta("logical_contact").AsVector2(), entry.Layer, entry.Index, entry.Visual, entry.SelectionCell)));
                 diagnostics.AddRange(dynamicProjection.Diagnostics);

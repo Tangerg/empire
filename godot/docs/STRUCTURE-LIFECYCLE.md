@@ -32,15 +32,23 @@ gauges; stored HP and owner remain unchanged. Lifecycle notices use zh_CN messag
 keys and coordinates, not English event identifiers. No special animation is
 invented: receipt settlement rerenders canonical state.
 
-**Remaining authored-art dependency:** existing console art only supplies normal,
-damaged, and captured frames; even its old Destroyed binding points to damaged.
-The explicit Disabled binding currently points to the same existing physical
-frame. That frame still includes a glow and is NOT accepted as an unlit console.
-This batch changes logical classification and active decorations, not bitmap
-pixels. A later approved visual batch must supply genuine disabled/destroyed art
-and update their explicit bindings. No new images, map geometry, placements, or
-per-node visual flags are introduced here. The unbound mother-root continues to
-use the existing rule-derived rendering.
+The control node uses four original transparent low-pad images: lit intact,
+lit damaged, intact unlit Disabled, and broken unlit Destroyed. Captured explicitly
+reuses the normal physical image; ownership is a separate flat perimeter mark.
+The mark and HP gauge disappear for inactive states. Uniform authored scale and
+central walkable anchors register the originals without editing their pixels.
+
+Every authored structure binding declares `depthRole: surface | standing`.
+Missing and unknown roles fail catalog admission. Surface art uses the board's
+existing Surface depth band and canonical cell picking, with no standing hit mask.
+Standing structures retain their standing visuals and banners, including when
+an authored lifecycle bitmap is still physically tall. Missing bound art fails
+explicitly rather than drawing a different state. The unbound mother-root remains
+an intentional rule-derived drawing, not an authored-depth fallback.
+
+See [flat node art registration](FLAT-NODE-ART.md) for source provenance,
+registration tolerances and native verification. No gameplay, map geometry,
+structure HP, collision, or lifecycle rule is owned by these pictures.
 
 ## Persistence and verification
 

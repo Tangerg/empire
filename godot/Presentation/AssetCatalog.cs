@@ -87,6 +87,7 @@ public sealed class AssetCatalog
         {
             if (string.IsNullOrWhiteSpace(id) || binding is null)
                 throw new InvalidOperationException("Structure art requires an explicit identity and lifecycle binding.");
+            _ = binding.Depth;
             foreach (var state in Enum.GetValues<StructureVisualState>())
             {
                 var frame = binding.FrameFor(state);
@@ -129,14 +130,14 @@ public sealed class AssetCatalog
 
     public bool HasMapStructureBinding(string terrainId) => _mapStructures.ContainsKey(terrainId);
 
-    public (RuntimeAsset Asset, string Frame)? ResolveStructure(string structureType, StructureVisualState state)
+    public (RuntimeAsset Asset, string Frame, BoardDepthLayer Depth)? ResolveStructure(string structureType, StructureVisualState state)
     {
         if (!_structures.TryGetValue(structureType, out var binding))
             return null;
         var frame = binding.FrameFor(state);
         var asset = ResolveTopic(frame.TopicId);
         _ = FrameIndex(asset, frame.Frame);
-        return (asset, frame.Frame);
+        return (asset, frame.Frame, binding.Depth);
     }
 
     public RuntimeAsset? ResolveWeaponEffect(string weapon) =>

@@ -254,6 +254,18 @@ public sealed record AssetFrameBinding
 
 public sealed record StructureArtBinding
 {
+    public required string DepthRole
+    {
+        get; init;
+    }
+
+    public BoardDepthLayer Depth => DepthRole switch
+    {
+        "surface" => BoardDepthLayer.Surface,
+        "standing" => BoardDepthLayer.Standing,
+        _ => throw new InvalidOperationException($"Invalid structure art depth role: {DepthRole}.")
+    };
+
     public required AssetFrameBinding Normal
     {
         get; init;

@@ -1265,42 +1265,6 @@
       ]
     },
     {
-      "assetId": "C01-FFV1-STRUCT-OATH-TOWER-CONSOLE",
-      "topicId": "C01-STRUCT-OATH-TOWER-CONSOLE",
-      "label": "誓约塔控制台",
-      "category": "interactive-structure",
-      "png": "runtime-approved-v5/interactive-structure/struct-oath-tower-console@2x.png",
-      "width": 336,
-      "height": 112,
-      "runtimeReady": true,
-      "qualityTier": "approved-chunky-v5-export-verified",
-      "frameWidth": 112,
-      "frameHeight": 112,
-      "frames": 3,
-      "stateOrder": [
-        "normal",
-        "damaged",
-        "captured"
-      ],
-      "anchor": [
-        55.44615384615385,
-        94.91282051282052
-      ],
-      "footprint": [
-        2,
-        2
-      ],
-      "physicalWidth": 672,
-      "physicalHeight": 224,
-      "pixelDensity": 2,
-      "resourcePath": "res://assets/runtime-approved-v5/interactive-structure/struct-oath-tower-console@2x.png",
-      "sha256": "7cbf51570e465c109cb3d3cacc7bf9eb070203289ccdd9f52aac07d3cc5a9fea",
-      "groundFront": [
-        55.44615384615385,
-        94.91282051282052
-      ]
-    },
-    {
       "assetId": "C01-FFV1-STRUCT-REFUGEE-SHELTER",
       "topicId": "C01-STRUCT-REFUGEE-SHELTER",
       "label": "难民避难棚",
@@ -2219,6 +2183,134 @@
         32,
         53.00000000000001
       ]
+    },
+    {
+      "assetId": "C01-OATH-PAD-ACTIVE",
+      "topicId": "C01-STRUCT-OATH-PAD-ACTIVE",
+      "category": "interactive-structure",
+      "width": 1729,
+      "height": 910,
+      "frameWidth": 1729,
+      "frameHeight": 910,
+      "frames": 1,
+      "stateOrder": [
+        "normal"
+      ],
+      "anchor": [
+        866,
+        427
+      ],
+      "groundFront": [
+        866,
+        427
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "physicalWidth": 1729,
+      "physicalHeight": 910,
+      "pixelDensity": 1,
+      "presentationScale": 0.02631578947368421,
+      "resourcePath": "res://assets/oath-control-pad/node-active.png",
+      "sha256": "17759e2fbf022f1ba0d90d403d4789853da5c57b7e326fd3af9612519df9132e",
+      "preserveAuthoredPalette": true
+    },
+    {
+      "assetId": "C01-OATH-PAD-DAMAGED",
+      "topicId": "C01-STRUCT-OATH-PAD-DAMAGED",
+      "category": "interactive-structure",
+      "width": 1728,
+      "height": 910,
+      "frameWidth": 1728,
+      "frameHeight": 910,
+      "frames": 1,
+      "stateOrder": [
+        "damaged"
+      ],
+      "anchor": [
+        866,
+        427
+      ],
+      "groundFront": [
+        866,
+        427
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "physicalWidth": 1728,
+      "physicalHeight": 910,
+      "pixelDensity": 1,
+      "presentationScale": 0.02631578947368421,
+      "resourcePath": "res://assets/oath-control-pad/node-damaged.png",
+      "sha256": "6d5a25a81e4142fc5ab9c020ddcdeac2509025ed2b78fa53acab3a2022a73e56",
+      "preserveAuthoredPalette": true
+    },
+    {
+      "assetId": "C01-OATH-PAD-DISABLED",
+      "topicId": "C01-STRUCT-OATH-PAD-DISABLED",
+      "category": "interactive-structure",
+      "width": 1728,
+      "height": 910,
+      "frameWidth": 1728,
+      "frameHeight": 910,
+      "frames": 1,
+      "stateOrder": [
+        "disabled"
+      ],
+      "anchor": [
+        864,
+        427
+      ],
+      "groundFront": [
+        864,
+        427
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "physicalWidth": 1728,
+      "physicalHeight": 910,
+      "pixelDensity": 1,
+      "presentationScale": 0.026395939086294416,
+      "resourcePath": "res://assets/oath-control-pad/node-disabled.png",
+      "sha256": "8038a4def442cef605aff77405416f9b3220f5ec1b01149cec2ad6291ed67450",
+      "preserveAuthoredPalette": true
+    },
+    {
+      "assetId": "C01-OATH-PAD-DESTROYED",
+      "topicId": "C01-STRUCT-OATH-PAD-DESTROYED",
+      "category": "interactive-structure",
+      "width": 1728,
+      "height": 910,
+      "frameWidth": 1728,
+      "frameHeight": 910,
+      "frames": 1,
+      "stateOrder": [
+        "destroyed"
+      ],
+      "anchor": [
+        864,
+        421
+      ],
+      "groundFront": [
+        864,
+        421
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "physicalWidth": 1728,
+      "physicalHeight": 910,
+      "pixelDensity": 1,
+      "presentationScale": 0.023008849557522124,
+      "resourcePath": "res://assets/oath-control-pad/node-destroyed.png",
+      "sha256": "d9dd2de732ac5e22b9e434c43e2a3d4acd2c363cac79089902892ae910d21ad5",
+      "preserveAuthoredPalette": true
     }
   ]
 }

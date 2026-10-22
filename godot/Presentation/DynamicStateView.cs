@@ -94,28 +94,30 @@ public sealed class DynamicStateView
                     : color is null ? StructureVisualState.Normal : StructureVisualState.Captured;
                 var active = visualState is not (StructureVisualState.Disabled or StructureVisualState.Destroyed);
                 var frame = visualState.ToString().ToLowerInvariant();
-                string? frameRole = null;
-                RuntimeAsset? asset = null;
+                var visual = assets.ResolveStructure(type, visualState);
+                var asset = visual?.Asset;
+                // Unbound rule-derived drawings have no authored depth contract.
+                var surface = visual is { } authored
+                    ? authored.Depth == BoardDepthLayer.Surface : hp <= 0;
                 Sprite2D? groundSprite = null;
-                try
+                if (visual is { } art)
                 {
-                    var visual = assets.ResolveStructure(type, visualState);
-                    asset = visual?.Asset;
-                    frameRole = visual?.Frame;
-                }
-                catch (MissingArtResourceException error) { diagnostics.Add($"Structure {id}: {error.Message}; using source rule-derived drawing."); }
-                if (asset is not null)
-                {
-                    groundSprite = assets.CreateSprite(asset, frameRole!);
+                    groundSprite = assets.CreateSprite(art.Asset, art.Frame);
                     node.AddChild(groundSprite);
-                    node.AddChild(BoardLighting.CreateStructureContact(new(asset.FrameWidth, asset.FrameHeight), asset.PresentationScale, shadows));
+                    if (!surface)
+                        node.AddChild(BoardLighting.CreateStructureContact(new(asset!.FrameWidth, asset.FrameHeight), asset.PresentationScale, shadows));
                     if (active && color is not null)
-                        node.AddChild(CreateOwnerBanner(color, shadows));
+                        node.AddChild(surface ? CreateSurfaceOwnerMark(color) : CreateOwnerBanner(color, shadows));
                 }
                 else
                     node.AddChild(Svg(StructureMarkup(structure, definition, active ? color : null), "RuleDerivedStructure"));
                 if (active && (asset is not null || definition.GetProperty("targetable").GetBoolean()))
-                    node.AddChild(CreateGauge(hp, maximum));
+                {
+                    var gauge = CreateGauge(hp, maximum);
+                    if (surface)
+                        gauge.Position = new Vector2(0, 11);
+                    node.AddChild(gauge);
+                }
                 node.SetMeta("structure_id", id);
                 node.SetMeta("structure_type", type);
                 node.SetMeta("owner", (int)Number(structure, "owner"));
@@ -125,9 +127,9 @@ public sealed class DynamicStateView
                 node.SetMeta("visual_state", frame);
                 node.SetMeta("rule_derived", asset is null);
                 root.AddChild(node);
-                standing.Add(new(node, hp <= 0 ? 0 : 3, structureCount++,
-                    hp <= 0 || groundSprite is null ? null : new SpriteStandingVisual(groundSprite),
-                    hp <= 0 ? null : new Coord((int)Number(structure, "x"), (int)Number(structure, "y"))));
+                standing.Add(new(node, surface ? 0 : 3, structureCount++,
+                    surface || groundSprite is null ? null : new SpriteStandingVisual(groundSprite),
+                    surface ? null : new Coord((int)Number(structure, "x"), (int)Number(structure, "y"))));
             }
             foreach (var marker in state["markers"]!.AsArray().OfType<JsonObject>())
             {
@@ -176,6 +178,14 @@ public sealed class DynamicStateView
             $"<rect x=\"5.6\" y=\"28.2\" width=\"{F(20.8 * ratio)}\" height=\"2.4\" rx=\"1.2\" fill=\"{color}\"/>", "HealthGauge");
         node.SetMeta("ratio", ratio);
         return node;
+    }
+
+    private static Sprite2D CreateSurfaceOwnerMark(string color)
+    {
+        var mark = Svg($"<ellipse cx=\"16\" cy=\"31\" rx=\"14\" ry=\"8\" fill=\"none\" stroke=\"{color}\" stroke-width=\"0.8\" opacity=\"0.8\"/>",
+            "OwnerMark", new Rect2(0, 21, 32, 20));
+        mark.SetMeta("owner_color", color);
+        return mark;
     }
 
     public static Sprite2D CreateOwnerBanner(string color, ShadowCache? shadows = null)
