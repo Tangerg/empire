@@ -1,0 +1,1341 @@
+{
+  "schema": "blackflag-ground-geometry-v1",
+  "sourceImage": "assets/native/scenes/blackflag-camp.png",
+  "sourceSha256": "6f8c48c500dd26fc3a735b892d646bd9ec2f7e7de2e0cbef00f12d662af17926",
+  "pixelSize": [
+    1660,
+    948
+  ],
+  "canonicalCollisionOwner": "data/grayflag-campaign-levels.json#c01-04 terrain; this document is author-review evidence, not a runtime collision input.",
+  "basis": {
+    "originPixels": [
+      30,
+      24
+    ],
+    "cellXPixels": [
+      32,
+      0
+    ],
+    "cellYPixels": [
+      0,
+      30
+    ]
+  },
+  "houseMethod": "Conservative source-ground envelope; positive-area intersection with cell rectangles. Exposed edges approximately ±5 pixels, invisible rear edge inferred with 8-pixel allowance. Rechecked against palette revision; sampled structure drift at most approximately 1 pixel, not pixel-identical regeneration.",
+  "houses": [
+    {
+      "id": "sw_arrival_outpost",
+      "foundationNominal": [
+        [
+          187,
+          610
+        ],
+        [
+          234,
+          594
+        ],
+        [
+          275,
+          613
+        ],
+        [
+          284,
+          631
+        ],
+        [
+          233,
+          653
+        ],
+        [
+          176,
+          632
+        ]
+      ],
+      "foundationConservative": [
+        [
+          187,
+          610
+        ],
+        [
+          234,
+          586
+        ],
+        [
+          275,
+          613
+        ],
+        [
+          284,
+          631
+        ],
+        [
+          233,
+          653
+        ],
+        [
+          176,
+          632
+        ]
+      ],
+      "inferredRear": [
+        234,
+        594
+      ],
+      "rearUncertainty": "Rear corner and rear two edges are inferred behind the walls/roof; conservative envelope moves the rear corner eight source pixels upward. The visible front deck posts, not the roof edge, determine y653.",
+      "entrance": [
+        7,
+        21
+      ],
+      "approach": [
+        8,
+        21
+      ],
+      "doorThreshold": [
+        261,
+        619
+      ],
+      "stairToe": [
+        273,
+        641
+      ],
+      "frontGroundLandmark": [
+        233,
+        653
+      ],
+      "blockingCells": [
+        [
+          5,
+          18
+        ],
+        [
+          6,
+          18
+        ],
+        [
+          4,
+          19
+        ],
+        [
+          5,
+          19
+        ],
+        [
+          6,
+          19
+        ],
+        [
+          7,
+          19
+        ],
+        [
+          4,
+          20
+        ],
+        [
+          5,
+          20
+        ],
+        [
+          6,
+          20
+        ],
+        [
+          7,
+          20
+        ]
+      ]
+    },
+    {
+      "id": "ne_raised_outpost",
+      "foundationNominal": [
+        [
+          1387,
+          159
+        ],
+        [
+          1464,
+          134
+        ],
+        [
+          1517,
+          155
+        ],
+        [
+          1438,
+          183
+        ]
+      ],
+      "foundationConservative": [
+        [
+          1387,
+          159
+        ],
+        [
+          1464,
+          126
+        ],
+        [
+          1517,
+          155
+        ],
+        [
+          1438,
+          183
+        ]
+      ],
+      "inferredRear": [
+        1464,
+        134
+      ],
+      "rearUncertainty": "The left, right and front endpoints follow visible ground-level pier contacts. The rear corner is hidden, inferred from the wall/deck axis, with an eight-pixel upward conservative rear envelope.",
+      "entrance": [
+        42,
+        5
+      ],
+      "approach": [
+        42,
+        6
+      ],
+      "doorThreshold": [
+        1434,
+        150
+      ],
+      "stairToe": [
+        1411,
+        177
+      ],
+      "frontGroundLandmark": [
+        1438,
+        183
+      ],
+      "blockingCells": [
+        [
+          43,
+          3
+        ],
+        [
+          44,
+          3
+        ],
+        [
+          45,
+          3
+        ],
+        [
+          42,
+          4
+        ],
+        [
+          43,
+          4
+        ],
+        [
+          44,
+          4
+        ],
+        [
+          45,
+          4
+        ],
+        [
+          46,
+          4
+        ],
+        [
+          43,
+          5
+        ],
+        [
+          44,
+          5
+        ]
+      ]
+    },
+    {
+      "id": "west_woodkeeper_cottage",
+      "foundationNominal": [
+        [
+          465,
+          440
+        ],
+        [
+          509,
+          422
+        ],
+        [
+          554,
+          443
+        ],
+        [
+          512,
+          462
+        ]
+      ],
+      "foundationConservative": [
+        [
+          465,
+          440
+        ],
+        [
+          509,
+          414
+        ],
+        [
+          554,
+          443
+        ],
+        [
+          512,
+          462
+        ]
+      ],
+      "inferredRear": [
+        509,
+        422
+      ],
+      "rearUncertainty": "Left/front/right ground-wall bases are visible; the rear corner under the roof is inferred. Conservative envelope moves that hidden corner eight pixels up. The west log pile and right crate are distinct props, not the house foundation.",
+      "entrance": [
+        16,
+        15
+      ],
+      "approach": [
+        17,
+        15
+      ],
+      "doorThreshold": [
+        534,
+        451
+      ],
+      "stairToe": [
+        539,
+        467
+      ],
+      "frontGroundLandmark": [
+        512,
+        462
+      ],
+      "blockingCells": [
+        [
+          13,
+          13
+        ],
+        [
+          14,
+          13
+        ],
+        [
+          15,
+          13
+        ],
+        [
+          16,
+          13
+        ],
+        [
+          13,
+          14
+        ],
+        [
+          14,
+          14
+        ],
+        [
+          15,
+          14
+        ],
+        [
+          16,
+          14
+        ]
+      ]
+    },
+    {
+      "id": "se_caretaker_cottage",
+      "foundationNominal": [
+        [
+          1118,
+          786
+        ],
+        [
+          1165,
+          766
+        ],
+        [
+          1219,
+          789
+        ],
+        [
+          1168,
+          811
+        ]
+      ],
+      "foundationConservative": [
+        [
+          1118,
+          786
+        ],
+        [
+          1165,
+          758
+        ],
+        [
+          1219,
+          789
+        ],
+        [
+          1168,
+          811
+        ]
+      ],
+      "inferredRear": [
+        1165,
+        766
+      ],
+      "rearUncertainty": "The visible lower wall corners define left/right/front. The rear corner is under the house/roof projection and is inferred, with an eight-pixel upward conservative envelope. Crates, barrels and fences outside this polygon remain distinct prop masks.",
+      "entrance": [
+        37,
+        26
+      ],
+      "approach": [
+        37,
+        27
+      ],
+      "doorThreshold": [
+        1196,
+        794
+      ],
+      "frontGroundLandmark": [
+        1168,
+        811
+      ],
+      "blockingCells": [
+        [
+          34,
+          24
+        ],
+        [
+          35,
+          24
+        ],
+        [
+          36,
+          24
+        ],
+        [
+          34,
+          25
+        ],
+        [
+          35,
+          25
+        ],
+        [
+          36,
+          25
+        ],
+        [
+          37,
+          25
+        ],
+        [
+          35,
+          26
+        ],
+        [
+          36,
+          26
+        ]
+      ]
+    }
+  ],
+  "rockMethod": "Hand-traced visible lower stone envelope with inferred rear ground extent. Approximate ±5 source pixels, not invisible-geometry measurement. Positive-area source-cell intersection is conservatively blocked; outside remains outside. Small loose stones are not obstacles.",
+  "rocks": [
+    {
+      "id": "northwest-edge-rock",
+      "groundPolygonPixels": [
+        [
+          55,
+          143
+        ],
+        [
+          78,
+          131
+        ],
+        [
+          108,
+          145
+        ],
+        [
+          109,
+          158
+        ],
+        [
+          87,
+          166
+        ],
+        [
+          62,
+          159
+        ]
+      ],
+      "coveredCells": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "outsideCells": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": "northwest-path-rock",
+      "groundPolygonPixels": [
+        [
+          175,
+          188
+        ],
+        [
+          194,
+          176
+        ],
+        [
+          218,
+          190
+        ],
+        [
+          211,
+          204
+        ],
+        [
+          189,
+          209
+        ],
+        [
+          173,
+          199
+        ]
+      ],
+      "coveredCells": [
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "outsideCells": []
+    },
+    {
+      "id": "west-clearing-rock",
+      "groundPolygonPixels": [
+        [
+          153,
+          344
+        ],
+        [
+          175,
+          329
+        ],
+        [
+          205,
+          336
+        ],
+        [
+          219,
+          354
+        ],
+        [
+          202,
+          373
+        ],
+        [
+          175,
+          376
+        ],
+        [
+          155,
+          360
+        ]
+      ],
+      "coveredCells": [
+        [
+          3,
+          10
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          4,
+          11
+        ],
+        [
+          5,
+          11
+        ]
+      ],
+      "outsideCells": []
+    },
+    {
+      "id": "west-front-rock",
+      "groundPolygonPixels": [
+        [
+          77,
+          521
+        ],
+        [
+          93,
+          504
+        ],
+        [
+          123,
+          502
+        ],
+        [
+          148,
+          521
+        ],
+        [
+          139,
+          543
+        ],
+        [
+          112,
+          550
+        ],
+        [
+          89,
+          542
+        ]
+      ],
+      "coveredCells": [
+        [
+          1,
+          15
+        ],
+        [
+          2,
+          15
+        ],
+        [
+          1,
+          16
+        ],
+        [
+          2,
+          16
+        ],
+        [
+          3,
+          16
+        ],
+        [
+          1,
+          17
+        ],
+        [
+          2,
+          17
+        ],
+        [
+          3,
+          17
+        ]
+      ],
+      "outsideCells": []
+    },
+    {
+      "id": "north-edge-rock",
+      "groundPolygonPixels": [
+        [
+          557,
+          20
+        ],
+        [
+          580,
+          8
+        ],
+        [
+          608,
+          21
+        ],
+        [
+          601,
+          36
+        ],
+        [
+          579,
+          42
+        ],
+        [
+          559,
+          31
+        ]
+      ],
+      "coveredCells": [
+        [
+          16,
+          0
+        ],
+        [
+          17,
+          0
+        ],
+        [
+          18,
+          0
+        ]
+      ],
+      "outsideCells": [
+        [
+          18,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "north-supply-rock",
+      "groundPolygonPixels": [
+        [
+          1139,
+          126
+        ],
+        [
+          1156,
+          110
+        ],
+        [
+          1182,
+          111
+        ],
+        [
+          1198,
+          129
+        ],
+        [
+          1186,
+          145
+        ],
+        [
+          1159,
+          149
+        ],
+        [
+          1143,
+          137
+        ]
+      ],
+      "coveredCells": [
+        [
+          35,
+          2
+        ],
+        [
+          36,
+          2
+        ],
+        [
+          34,
+          3
+        ],
+        [
+          35,
+          3
+        ],
+        [
+          36,
+          3
+        ],
+        [
+          35,
+          4
+        ],
+        [
+          36,
+          4
+        ]
+      ],
+      "outsideCells": []
+    },
+    {
+      "id": "northeast-edge-rock",
+      "groundPolygonPixels": [
+        [
+          1557,
+          91
+        ],
+        [
+          1579,
+          77
+        ],
+        [
+          1606,
+          92
+        ],
+        [
+          1599,
+          108
+        ],
+        [
+          1580,
+          114
+        ],
+        [
+          1562,
+          105
+        ]
+      ],
+      "coveredCells": [
+        [
+          48,
+          1
+        ],
+        [
+          47,
+          2
+        ],
+        [
+          48,
+          2
+        ],
+        [
+          49,
+          2
+        ]
+      ],
+      "outsideCells": [
+        [
+          48,
+          1
+        ],
+        [
+          47,
+          2
+        ],
+        [
+          48,
+          2
+        ],
+        [
+          49,
+          2
+        ]
+      ]
+    },
+    {
+      "id": "northeast-path-rock",
+      "groundPolygonPixels": [
+        [
+          1515,
+          218
+        ],
+        [
+          1533,
+          204
+        ],
+        [
+          1558,
+          216
+        ],
+        [
+          1555,
+          233
+        ],
+        [
+          1534,
+          239
+        ],
+        [
+          1518,
+          230
+        ]
+      ],
+      "coveredCells": [
+        [
+          46,
+          6
+        ],
+        [
+          47,
+          6
+        ],
+        [
+          46,
+          7
+        ],
+        [
+          47,
+          7
+        ]
+      ],
+      "outsideCells": [
+        [
+          47,
+          6
+        ]
+      ]
+    },
+    {
+      "id": "east-rear-rock",
+      "groundPolygonPixels": [
+        [
+          1249,
+          343
+        ],
+        [
+          1266,
+          330
+        ],
+        [
+          1292,
+          331
+        ],
+        [
+          1310,
+          347
+        ],
+        [
+          1294,
+          361
+        ],
+        [
+          1270,
+          364
+        ],
+        [
+          1252,
+          355
+        ]
+      ],
+      "coveredCells": [
+        [
+          38,
+          10
+        ],
+        [
+          39,
+          10
+        ],
+        [
+          38,
+          11
+        ],
+        [
+          39,
+          11
+        ]
+      ],
+      "outsideCells": []
+    },
+    {
+      "id": "east-ridge-rock",
+      "groundPolygonPixels": [
+        [
+          1438,
+          433
+        ],
+        [
+          1455,
+          416
+        ],
+        [
+          1483,
+          418
+        ],
+        [
+          1504,
+          435
+        ],
+        [
+          1492,
+          453
+        ],
+        [
+          1469,
+          459
+        ],
+        [
+          1445,
+          449
+        ]
+      ],
+      "coveredCells": [
+        [
+          44,
+          13
+        ],
+        [
+          45,
+          13
+        ],
+        [
+          46,
+          13
+        ],
+        [
+          44,
+          14
+        ],
+        [
+          45,
+          14
+        ]
+      ],
+      "outsideCells": []
+    },
+    {
+      "id": "east-camp-rock",
+      "groundPolygonPixels": [
+        [
+          1245,
+          555
+        ],
+        [
+          1261,
+          538
+        ],
+        [
+          1285,
+          539
+        ],
+        [
+          1305,
+          560
+        ],
+        [
+          1291,
+          579
+        ],
+        [
+          1268,
+          584
+        ],
+        [
+          1250,
+          573
+        ]
+      ],
+      "coveredCells": [
+        [
+          37,
+          17
+        ],
+        [
+          38,
+          17
+        ],
+        [
+          39,
+          17
+        ],
+        [
+          38,
+          18
+        ],
+        [
+          39,
+          18
+        ]
+      ],
+      "outsideCells": []
+    },
+    {
+      "id": "southeast-edge-rock",
+      "groundPolygonPixels": [
+        [
+          1559,
+          631
+        ],
+        [
+          1578,
+          611
+        ],
+        [
+          1608,
+          608
+        ],
+        [
+          1635,
+          630
+        ],
+        [
+          1623,
+          650
+        ],
+        [
+          1595,
+          657
+        ],
+        [
+          1571,
+          647
+        ]
+      ],
+      "coveredCells": [
+        [
+          47,
+          19
+        ],
+        [
+          48,
+          19
+        ],
+        [
+          49,
+          19
+        ],
+        [
+          47,
+          20
+        ],
+        [
+          48,
+          20
+        ],
+        [
+          49,
+          20
+        ],
+        [
+          48,
+          21
+        ],
+        [
+          49,
+          21
+        ]
+      ],
+      "outsideCells": [
+        [
+          48,
+          19
+        ],
+        [
+          49,
+          19
+        ],
+        [
+          48,
+          20
+        ],
+        [
+          49,
+          20
+        ],
+        [
+          49,
+          21
+        ]
+      ]
+    },
+    {
+      "id": "south-inner-rock",
+      "groundPolygonPixels": [
+        [
+          752,
+          833
+        ],
+        [
+          772,
+          818
+        ],
+        [
+          798,
+          821
+        ],
+        [
+          814,
+          840
+        ],
+        [
+          795,
+          854
+        ],
+        [
+          772,
+          858
+        ],
+        [
+          754,
+          847
+        ]
+      ],
+      "coveredCells": [
+        [
+          22,
+          26
+        ],
+        [
+          23,
+          26
+        ],
+        [
+          24,
+          26
+        ],
+        [
+          22,
+          27
+        ],
+        [
+          23,
+          27
+        ],
+        [
+          24,
+          27
+        ]
+      ],
+      "outsideCells": [
+        [
+          23,
+          27
+        ],
+        [
+          24,
+          27
+        ]
+      ]
+    }
+  ],
+  "furnitureMethod": "Explicit standing-cell obstruction at visible table, bedding and cart mass. These are small furniture occupancy cells, not closed-house footprints or whole-canopy floor masks. The six open entrances and neighboring approach cells remain passable; small loose stones, shrubs and tree ground remain terrain cover rather than universal walls.",
+  "furniture": [
+    {
+      "id": "archive-table",
+      "blockedStandingCells": [
+        [
+          24,
+          14
+        ]
+      ],
+      "sourceGroundSample": [
+        814,
+        469
+      ]
+    },
+    {
+      "id": "witness-bedding",
+      "blockedStandingCells": [
+        [
+          28,
+          17
+        ]
+      ],
+      "sourceGroundSample": [
+        942,
+        549
+      ]
+    },
+    {
+      "id": "north-supply-table",
+      "blockedStandingCells": [
+        [
+          27,
+          7
+        ]
+      ],
+      "sourceGroundSample": [
+        910,
+        249
+      ]
+    },
+    {
+      "id": "west-aid-table",
+      "blockedStandingCells": [
+        [
+          14,
+          17
+        ]
+      ],
+      "sourceGroundSample": [
+        494,
+        549
+      ]
+    },
+    {
+      "id": "east-watch-cart",
+      "blockedStandingCells": [
+        [
+          41,
+          15
+        ],
+        [
+          42,
+          15
+        ],
+        [
+          41,
+          16
+        ]
+      ],
+      "sourceGroundSample": [
+        1369,
+        507
+      ]
+    }
+  ],
+  "counts": {
+    "houseCoveredCells": 37,
+    "houseInteriorWallCells": 33,
+    "houseOutsideCells": 4,
+    "rockCoveredCells": 70,
+    "rockInteriorWallCells": 54,
+    "rockOutsideCells": 16,
+    "furnitureWallCells": 7,
+    "domainCells": 1177,
+    "outsideCells": 323,
+    "wallCells": 94,
+    "footWalkableCells": 1083
+  }
+}

@@ -1,104 +1,17 @@
 {
   "schemaVersion": "environment-scene-v1.1",
   "levelId": "c01-04",
-  "runtimeReady": false,
+  "runtimeReady": true,
   "mapSize": [
-    20,
-    14
+    50,
+    30
   ],
-  "selection": {
-    "allowAtlases": [
-      "rural-life",
-      "forest-temperate"
-    ]
-  },
-  "zones": [
-    {
-      "id": "clearance-4-9",
-      "bounds": [
-        4,
-        9,
-        4,
-        9
-      ],
-      "role": "well-contact-clearance",
-      "authoredTerrainScenery": [
-        "plain"
-      ]
-    },
-    {
-      "id": "clearance-2-10",
-      "bounds": [
-        2,
-        10,
-        2,
-        10
-      ],
-      "role": "party-approach-understory",
-      "authoredTerrainScenery": [
-        "forest"
-      ]
-    },
-    {
-      "id": "clearance-4-12",
-      "bounds": [
-        4,
-        12,
-        4,
-        12
-      ],
-      "role": "party-approach-understory",
-      "authoredTerrainScenery": [
-        "forest"
-      ]
-    },
-    {
-      "id": "clearance-14-10",
-      "bounds": [
-        14,
-        10,
-        14,
-        10
-      ],
-      "role": "south-patrol-understory",
-      "authoredTerrainScenery": [
-        "forest"
-      ]
-    }
+  "paintedGroundPath": "res://data/scenes/c01-04-painted-ground.json",
+  "openingFocus": [
+    19,
+    19
   ],
-  "placements": [
-    {
-      "id": "stone-well",
-      "x": 4.542030625,
-      "y": 8.75,
-      "layer": "under-units",
-      "scale": 0.3720204,
-      "flip": false,
-      "standingShadow": true
-    },
-    {
-      "id": "fern-bed",
-      "x": 2.3905515625,
-      "y": 10.18,
-      "layer": "under-units",
-      "scale": 0.48,
-      "flip": false
-    },
-    {
-      "id": "fern-bed",
-      "x": 4.582670625,
-      "y": 12.18,
-      "layer": "under-units",
-      "scale": 0.48,
-      "flip": false
-    },
-    {
-      "id": "fern-bed",
-      "x": 14.509185625,
-      "y": 10.18,
-      "layer": "under-units",
-      "scale": 0.48,
-      "flip": false
-    }
-  ]
+  "placements": [],
+  "framePlacements": [],
+  "zones": []
 }
