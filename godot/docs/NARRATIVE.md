@@ -83,15 +83,22 @@ icons from the original provider. Scene and icon assets retain their existing
 source/export contract. The original TypeScript portrait assets and frozen
 JavaScript oracle remain unchanged.
 
-Laiya and Roderick use the previously reviewed generated transparent revisions.
-Mirelle's generated transparent candidate, pending in-scene visual acceptance, is now installed in the isolated native
-portrait resource. These are image-generation edits, not claims of lossless
-pixel extraction. `data/portrait-revisions.json` is historical provenance keyed
-by portrait ID, containing original source/hash and the edit description, not a
-second current path/hash declaration. The other five catalog images retain their
-existing bytes.
+All eight portraits now use generated transparent revisions. These are
+image-generation edits with redrawn details, not claims of lossless pixel
+extraction. `data/portrait-revisions.json` records historical provenance by
+portrait ID, with the original source/hash and an honest edit description; it
+never duplicates the current resource path/hash owner.
+
+Named HUD portraits use the complete catalog texture and the native
+`KeepAspectCentered` presentation, just as authored. The old JavaScript card's
+side clipping does not apply to these native images. There is no named-card
+atlas, per-character crop or padding, or extra texture cache. Explicit null
+portrait bindings still use the canonical unit idle-frame atlas. Controls release
+their references when replaced or detached; they do not dispose shared resources.
 
 Laiya and Roderick were inspected at roster/dialogue sizes in the earlier
-isolated application review. That prior review is not GUI acceptance of Mirelle
-or this ownership migration. Current build, behavioral and visual acceptance
-must be reported separately; the migration itself does not claim those checks.
+isolated application review. Mirelle passed native StoryScreen and TacticalHud
+visual review on 2026-10-23, including light/dark backgrounds. The five remaining
+candidates (Cain, Bran, Tasha, Torren and red juvenile dragon Ivra v2) and the
+uniform whole-image HUD policy still require current in-scene visual review.
+Static, headless and actual GUI acceptance must be reported separately.

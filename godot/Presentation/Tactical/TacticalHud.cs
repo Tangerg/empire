@@ -16,7 +16,6 @@ public partial class TacticalHud : VBoxContainer
         if (ReferenceEquals(art, value))
             return;
         ReleaseTextureReferences(this);
-        art?.ReleaseOwnedTextures();
         art = value;
     }
     private static void ReleaseTextureReferences(Node node)
@@ -33,7 +32,6 @@ public partial class TacticalHud : VBoxContainer
         generation++;
         current = null;
         ReleaseTextureReferences(this);
-        art?.ReleaseOwnedTextures();
     }
     public event Action<TacticalHudIntent>? IntentRequested;
     public TacticalHudProjection? Projection => current;

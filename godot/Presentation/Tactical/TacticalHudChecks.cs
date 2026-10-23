@@ -284,9 +284,8 @@ public partial class TacticalHudChecks : Node
             };
             var explicitCatalog = new PortraitCatalog(new Dictionary<string, PortraitAsset> { ["explicit-card"] = portraits.Portraits["mirelle"] });
             var explicitArt = new TacticalHudArt(assets, explicitCatalog, explicitDocument);
-            Require(((AtlasTexture)explicitArt.Portrait(new("c01.mirelle", null, "#224466"))).Atlas.ResourcePath == explicitCatalog.Resolve("explicit-card").ResourcePath,
+            Require(explicitArt.Portrait(new("c01.mirelle", null, "#224466")).ResourcePath == explicitCatalog.Resolve("explicit-card").ResourcePath,
                 "HUD uses the injected shared catalog and explicit ID, not unit-name inference");
-            explicitArt.ReleaseOwnedTextures();
             try
             {
                 _ = new TacticalHudArt(assets, new PortraitCatalog(new Dictionary<string, PortraitAsset> { ["different-card"] = portraits.Portraits["mirelle"] }), explicitDocument);
@@ -302,23 +301,44 @@ public partial class TacticalHudChecks : Node
             catch (System.Text.Json.JsonException) { assertions++; }
             var art = TacticalHudArt.Load(assets, portraits);
             hud.ConfigureArt(art);
+            TextureRect MountedPortrait() => ((PanelContainer)hud.FindChild("InspectedPortrait", true, false)).GetChild<TextureRect>(0);
+            foreach (var binding in metadata.Portraits.Values.Where(value => value.PortraitId is not null))
+            {
+                var namedPortrait = new TacticalHudPortrait(binding.UnitType, binding.ActorKey, "#224466");
+                var source = ResourceLoader.Load<Texture2D>(portraits.Resolve(binding.PortraitId!).ResourcePath!);
+                var whole = art.Portrait(namedPortrait);
+                Require(whole == source && whole.GetSize() == source.GetSize(),
+                    "Every named portrait uses the complete catalog image without cropping or padding: " + binding.PortraitId);
+                hud.Apply(new(stamp, "", new[] { new TacticalHudSection("unit", "角色", Array.Empty<TacticalHudRow>()) }, namedPortrait));
+                var mountedPortrait = MountedPortrait();
+                Require(mountedPortrait.Texture == source && mountedPortrait.StretchMode == TextureRect.StretchModeEnum.KeepAspectCentered,
+                    "Every named HUD portrait preserves the full image with one aspect-fit policy: " + binding.PortraitId);
+            }
             var named = new TacticalHudPortrait("c01.swordsman", "campaign-torren", "#224466");
-            var portrait = art.Portrait(named) as AtlasTexture;
-            Require(portrait is not null, "Named portrait is cropped source card");
-            Require(portrait!.Atlas.ResourcePath.Contains("torren", StringComparison.OrdinalIgnoreCase), "Named card source, not swordsman sprite");
-            var generic = art.Portrait(new("c01.swordsman", null, "#224466")) as AtlasTexture;
-            Require(generic is not null && generic.Atlas.ResourcePath != portrait.Atlas.ResourcePath, "Generic source frame distinct from named card");
-            hud.Apply(new(stamp, "", new[] { new TacticalHudSection("unit", "角色", Array.Empty<TacticalHudRow>()) }, named));
-            Require(hud.FindChild("InspectedPortrait", true, false) is PanelContainer, "Source portrait mounted");
+            var portrait = art.Portrait(named);
+            var genericPortrait = new TacticalHudPortrait("c01.swordsman", null, "#224466");
+            var generic = art.Portrait(genericPortrait) as AtlasTexture;
+            var unit = assets.ResolveUnit(genericPortrait.UnitType, genericPortrait.ActorKey);
+            Require(generic is not null && generic == assets.CreateFrameTexture(unit, AssetCatalog.FrameIndex(unit, "idle")),
+                "An explicit null portrait retains the canonical generic idle-frame atlas.");
+            Require(generic!.Atlas.ResourcePath != portrait.ResourcePath && art.UnitIcon(named) is AtlasTexture,
+                "Generic portraits and unit icons remain sprite frames, distinct from whole named portraits.");
+            hud.Apply(new(stamp, "", new[] { new TacticalHudSection("unit", "角色", Array.Empty<TacticalHudRow>()) }, genericPortrait));
+            var oldPortrait = MountedPortrait();
             for (var index = 0; index < 100; index++)
                 hud.Apply(new(stamp, "", new[] { new TacticalHudSection("unit", "角色", Array.Empty<TacticalHudRow>()) }, named));
-            Require(art.OwnedTextureCount == 1, "Repeated projections reuse one owned card crop");
+            Require(oldPortrait.Texture is null && MountedPortrait().Texture == portrait && art.Portrait(named) == portrait,
+                "Repeated projections release old control references and reuse the shared whole-image resource.");
+            oldPortrait = MountedPortrait();
             var replacement = TacticalHudArt.Load(assets, portraits);
             hud.ConfigureArt(replacement);
-            Require(art.OwnedTextureCount == 0, "Rebind releases owned crops after controls release references");
+            Require(oldPortrait.Texture is null && GodotObject.IsInstanceValid(portrait) && GodotObject.IsInstanceValid(generic),
+                "Rebinding releases control references, not shared catalog textures or idle-frame atlases.");
             hud.Apply(new(stamp, "", new[] { new TacticalHudSection("unit", "角色", Array.Empty<TacticalHudRow>()) }, named));
+            var lastPortrait = MountedPortrait();
             RemoveChild(hud);
-            Require(replacement.OwnedTextureCount == 0, "Teardown releases owned portrait crop");
+            Require(lastPortrait.Texture is null && replacement.Portrait(named) == portrait && art.Portrait(genericPortrait) == generic,
+                "HUD teardown leaves shared named and generic resources usable by their owners.");
             hud.QueueFree();
             var missing = PresentationJson.Load<TacticalHudArtDocument>("res://data/tactical-hud-art.json");
             var required = missing.SourceIconKeys[0];

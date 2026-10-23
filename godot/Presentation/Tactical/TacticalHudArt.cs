@@ -36,14 +36,6 @@ public sealed class TacticalHudArt
     private readonly TacticalHudArtDocument document;
     private readonly AssetCatalog assets;
     private readonly PortraitCatalog portraits;
-    private readonly Dictionary<string, AtlasTexture> cards = new(StringComparer.Ordinal);
-    public int OwnedTextureCount => cards.Count;
-    public void ReleaseOwnedTextures()
-    {
-        foreach (var texture in cards.Values)
-            texture.Dispose();
-        cards.Clear();
-    }
     public TacticalHudArt(AssetCatalog assets, PortraitCatalog portraits, TacticalHudArtDocument document)
     {
         if (document.Schema != 2)
@@ -79,15 +71,7 @@ public sealed class TacticalHudArt
         if (binding.UnitType != portrait.UnitType)
             throw new InvalidOperationException("HUD actor portrait type mismatch: " + key);
         if (binding.PortraitId is { } portraitId)
-        {
-            if (cards.TryGetValue(key, out var cached))
-                return cached;
-            var texture = Image(portraits.Resolve(portraitId));
-            // The source draws its 112-square card at x=-8 in a 96x112 clipped plate.
-            var cropped = new AtlasTexture { Atlas = texture, Region = new Rect2(texture.GetWidth() / 14f, 0, texture.GetWidth() * 6f / 7f, texture.GetHeight()) };
-            cards.Add(key, cropped);
-            return cropped;
-        }
+            return Image(portraits.Resolve(portraitId));
         var unit = assets.ResolveUnit(portrait.UnitType, portrait.ActorKey);
         return assets.CreateFrameTexture(unit, AssetCatalog.FrameIndex(unit, "idle"));
     }
