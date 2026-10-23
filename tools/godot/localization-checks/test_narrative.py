@@ -15,7 +15,8 @@ class NativeNarrativeContract(unittest.TestCase):
         self.temporary = tempfile.TemporaryDirectory(prefix="empire-narrative-contract.")
         self.root = Path(self.temporary.name)
         source = Path(__file__).resolve().parents[3]
-        for name in ["godot/data/grayflag-campaign.json", "godot/data/grayflag-story.json", "godot/data/grayflag-staging.json", "godot/Localization/zh_CN.po"]:
+        for name in ["godot/data/grayflag-campaign.json", "godot/data/grayflag-story.json", "godot/data/grayflag-staging.json",
+                     "godot/data/grayflag-content-text.json", "godot/Localization/zh_CN.po"]:
             target = self.root / name
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(source / name, target)
@@ -52,6 +53,18 @@ class NativeNarrativeContract(unittest.TestCase):
     def test_obsolete_speaker_name_owner(self):
         self.change("grayflag-story.json", lambda value: value.update(speakerNameKeys=value.pop("identityNameKeys")))
         self.reject()
+
+    def test_named_unit_must_reference_shared_identity(self):
+        self.change("grayflag-content-text.json", lambda value: value["content"]["units"]["c01.laiya"].update(name="content.units.c01.laiya.name"))
+        with self.assertRaisesRegex(CatalogError, "Named unit must reference shared identity name: c01.laiya"):
+            validate(self.root)
+
+    def test_duplicate_named_unit_wording(self):
+        path = self.root / "godot/Localization/zh_CN.po"
+        with path.open("a") as target:
+            target.write('\nmsgid "content.units.c01.laiya.name"\nmsgstr "莱娅"\n')
+        with self.assertRaisesRegex(CatalogError, "Duplicate named unit wording: content.units.c01.laiya.name"):
+            validate(self.root)
 
     def test_literal_prose_is_not_a_second_owner(self):
         self.change("grayflag-story.json", lambda value: value["stories"][0].update(title="another wording owner"))

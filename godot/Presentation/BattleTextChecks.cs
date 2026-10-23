@@ -25,7 +25,7 @@ internal static class BattleTextChecks
     }
 
     internal static SessionPresentationText Session(BattleEngine engine, GameText text) =>
-        SessionPresentationText.Compose(new SessionTextRules(engine, text),
+        SessionPresentationText.Compose(new SessionTextRules(engine, text, StoryDocument.Load(text).IdentityNameKeys),
             PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json"),
             Godot.FileAccess.GetFileAsString("res://data/grayflag-battle-text.json"),
             Godot.FileAccess.GetFileAsString("res://data/grayflag-content-text.json"));

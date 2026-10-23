@@ -29,7 +29,7 @@ void Same<T>(T actual, JsonNode? expected, string context)
 void Require(bool ok, string context) { if (!ok) throw new Exception(context); count++; }
 BoardCell Cell(JsonNode node) => new(node["x"]!.GetValue<int>(), node["y"]!.GetValue<int>());
 // Native contract: only composed terrain semantics determine the immutable cell projection.
-var normal = new GrayFlagSession(new(engine, presentation), oracle["level"]!.AsObject());
+var normal = new GrayFlagSession(new(engine, presentation, new JsonArray()), oracle["level"]!.AsObject());
 var normalQueries = normal.GetTacticalQueries(40);
 var normalState = normal.Snapshot();
 var terrainId = EcmaJson.ReadString(normalState["map"]!["tiles"]![0]);
@@ -39,7 +39,7 @@ var definition = outsidePacks.OfType<JsonObject>().SelectMany(pack => pack["terr
 definition["tags"]!.AsArray().Add("outside");
 var outsideEngine = new BattleEngine(outsidePacks);
 var outsidePresentation = FixtureBattleText.Session(root, outsideEngine, gameText);
-var outside = new GrayFlagSession(new(outsideEngine, outsidePresentation), oracle["level"]!.AsObject());
+var outside = new GrayFlagSession(new(outsideEngine, outsidePresentation, new JsonArray()), oracle["level"]!.AsObject());
 var outsideQueries = outside.GetTacticalQueries(40);
 Require(normalQueries.InteractiveCells.Count == 28 && outsideQueries.InteractiveCells.Count == 0,
     "interactive cells follow each engine's canonical terrain, not ids or movement costs");
@@ -71,7 +71,7 @@ catch (DomainInvariantException error) when (error.Message.Contains("facing not 
 foreach (var fixture in oracle["cases"]!.AsArray().OfType<JsonObject>())
 {
     var name = fixture["name"]!.GetValue<string>();
-    var session = GrayFlagSession.FromSave(new(engine, presentation), engine.SaveBattle(fixture["state"]!.AsObject()));
+    var session = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(fixture["state"]!.AsObject()));
     var digest = EcmaJson.Stringify(session.Snapshot());
     var q = session.GetTacticalQueries(41);
     Same(q.HumanInput, fixture["humanInput"], name + " input");
@@ -158,7 +158,7 @@ foreach (var flow in oracle["flows"]!.AsArray().OfType<JsonObject>())
 {
     var name = EcmaJson.ReadString(flow["name"]);
     var fixture = oracle["cases"]!.AsArray().OfType<JsonObject>().Single(c => EcmaJson.ReadString(c["name"]) == name);
-    var session = GrayFlagSession.FromSave(new(engine, presentation), engine.SaveBattle(fixture["state"]!.AsObject()));
+    var session = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(fixture["state"]!.AsObject()));
     var q = session.GetTacticalQueries(50);
     var control = new TacticalSelectionController(q);
     var at = control.Stamp;
@@ -200,7 +200,7 @@ foreach (var flow in oracle["flows"]!.AsArray().OfType<JsonObject>())
 }
 
 // Real controller intent goes through the revision-checked canonical dispatcher, never fake legality.
-var live = new GrayFlagSession(new(engine, presentation), oracle["level"]!.AsObject());
+var live = new GrayFlagSession(new(engine, presentation, new JsonArray()), oracle["level"]!.AsObject());
 var before = live.Snapshot();
 var queries = live.GetTacticalQueries(42);
 var controller = new TacticalSelectionController(queries);

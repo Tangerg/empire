@@ -32,7 +32,7 @@ public partial class TacticalHudChecks : Node
         foreach (var disabled in new[] { false, true })
         {
             structure["disabled"] = disabled;
-            var session = GrayFlagSession.FromSave(new(engine, presentation), engine.SaveBattle(state));
+            var session = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(state));
             var before = EcmaJson.Stringify(session.Snapshot());
             var hud = session.ProjectHud(new(0, 0), new(), at, null, false);
             var sections = hud.Sections.Select(section => section.Key).ToArray();
@@ -46,7 +46,7 @@ public partial class TacticalHudChecks : Node
         var site = new BoardCell(0, 0);
         state["map"]!["tiles"]![0] = "castle";
         state["map"]!["owners"]![0] = state["currentPlayer"]!.DeepClone();
-        var initial = GrayFlagSession.FromSave(new(engine, presentation), engine.SaveBattle(state));
+        var initial = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(state));
         Require(initial.GetTacticalQueries(0).CanOpenRecruitment(site), "Recruitment fixture is reachable through the existing query.");
         var recruit = initial.ProjectHud(new(0, 0), new()
         {
@@ -60,7 +60,7 @@ public partial class TacticalHudChecks : Node
         Require(choices.Select(row => row.Intent!.Key).SequenceEqual(cards.Select(card => card.Unit))
             && choices.Select(row => row.Enabled).SequenceEqual(cards.Select(card => card.Affordable)), "Reordering preserves the authoritative recruitment cards and affordability.");
         state["map"]!["owners"]![0] = 0;
-        var neutral = GrayFlagSession.FromSave(new(engine, presentation), engine.SaveBattle(state));
+        var neutral = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(state));
         var unavailable = neutral.ProjectHud(new(0, 0), new()
         {
             Kind = TacticalSelectionKind.Site,
@@ -80,7 +80,7 @@ public partial class TacticalHudChecks : Node
         var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
             .Single(value => value["id"]!.GetValue<string>() == "c01-03");
         var presentation = BattleTextChecks.Session(engine, text);
-        var session = new GrayFlagSession(new(engine, presentation), level);
+        var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
         var control = new TacticalSelectionController(session.GetTacticalQueries(41));
         var home = new BoardCell(38, 23);
         var before = EcmaJson.Stringify(session.Snapshot());
@@ -154,7 +154,7 @@ public partial class TacticalHudChecks : Node
         var presentation = BattleTextChecks.Session(engine, GodotTextCatalog.LoadSimplifiedChinese());
         var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
             .Single(value => value["id"]!.GetValue<string>() == "c01-03");
-        var session = new GrayFlagSession(new(engine, presentation), level);
+        var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
         var scene = AuthoredScene.Load("res://data/scenes/c01-03.json");
         var rendering = BoardSceneRendering.Load(scene, level, session.Snapshot()["map"]!.AsObject());
         var screen = new BattleScreen();

@@ -61,7 +61,7 @@ public sealed class GrayFlagCampaign
         }
         var nextRuntime = new CampaignRuntime(campaignRules, definition, runtime.Snapshot());
         var request = GrayFlagCampaignPolicy.ApplyBattleContext(nextRuntime.BeginBattle(bridge), nextRuntime.Snapshot());
-        var next = new PendingBattle(request, new GrayFlagSession(new(engine, presentation), request["level"]!.AsObject()), false);
+        var next = new PendingBattle(request, new GrayFlagSession(new(engine, presentation, request["rosterBindings"]!.AsArray()), request["level"]!.AsObject()), false);
         runtime = nextRuntime;
         pending = next;
     }
@@ -77,7 +77,7 @@ public sealed class GrayFlagCampaign
         if (chapter == 0)
             chapter = 1;
         return (result["outcome"]!.GetValue<string>(), CampaignBattleSummary.Create(
-            new CampaignSummaryText(presentation.Messages, presentation.Battle, presentation.Content.UnitName),
+            new CampaignSummaryText(presentation.Messages, presentation.Battle, current.Session.UnitName),
             chapter, current.Request["perspectivePlayer"]!.GetValue<int>(), EcmaJson.ToElement(state),
             result["signals"]!.AsArray().Select(signal => signal!.GetValue<string>()), BattleEventFacts.StrikeCount(events)));
     }
@@ -96,7 +96,7 @@ public sealed class GrayFlagCampaign
     private void ResetBattle(bool atCamp)
     {
         var current = pending ?? throw new CampaignActionException("No battle to restart.");
-        pending = new(current.Request, new GrayFlagSession(new(engine, presentation), current.Request["level"]!.AsObject()), atCamp);
+        pending = new(current.Request, new GrayFlagSession(new(engine, presentation, current.Request["rosterBindings"]!.AsArray()), current.Request["level"]!.AsObject()), atCamp);
     }
 
     private PendingBattle RequireConcludedBattle()
@@ -138,10 +138,10 @@ public sealed class GrayFlagCampaign
             }
             request = GrayFlagCampaignPolicy.ApplyBattleContext(request, nextRuntime.Snapshot());
             ValidateSavedSignals(request["level"]!.AsObject(), saved.Events);
-            var opening = new GrayFlagSession(new(engine, presentation), request["level"]!.AsObject());
+            var opening = new GrayFlagSession(new(engine, presentation, request["rosterBindings"]!.AsArray()), request["level"]!.AsObject());
             var session = saved.Location == CampaignLocation.Camp
                 ? opening
-                : GrayFlagSession.FromSave(new(engine, presentation), saved.Battle!, saved.Events);
+                : GrayFlagSession.FromSave(new(engine, presentation, request["rosterBindings"]!.AsArray()), saved.Battle!, saved.Events);
             var state = session.Snapshot();
             if (state["levelId"]?.GetValue<string>() != request["levelId"]!.GetValue<string>() ||
                 !EcmaJson.DeepEquals(state["map"]?["width"], request["level"]!["width"]) ||

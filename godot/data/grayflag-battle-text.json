@@ -1,5 +1,5 @@
 {
-  "schema": 2,
+  "schema": 3,
   "levels": {
     "c01-01": {
       "players": {
@@ -37,6 +37,10 @@
         "found_matching_orders": {
           "key": "battle.signal.found_matching_orders"
         }
+      },
+      "actors": {
+        "roderick-reserve": "roderick",
+        "vanguard-cain": "cain"
       }
     },
     "c01-02": {
@@ -81,6 +85,9 @@
         "accepted_bridge_truce": {
           "key": "battle.signal.accepted_bridge_truce"
         }
+      },
+      "actors": {
+        "cain": "cain"
       }
     },
     "c01-03": {
@@ -131,6 +138,9 @@
         "redstone_sappers_cut_chain": {
           "key": "battle.signal.redstone_sappers_cut_chain"
         }
+      },
+      "actors": {
+        "roderick": "roderick"
       }
     },
     "c01-04": {
@@ -181,7 +191,8 @@
         "saved_witnesses": {
           "key": "battle.signal.saved_witnesses"
         }
-      }
+      },
+      "actors": {}
     },
     "c01-05": {
       "players": {
@@ -225,7 +236,8 @@
         "gray_banner_raised": {
           "key": "battle.signal.gray_banner_raised"
         }
-      }
+      },
+      "actors": {}
     },
     "c01-06": {
       "players": {
@@ -266,7 +278,8 @@
         "white_river_bridge_damaged": {
           "key": "battle.signal.white_river_bridge_damaged"
         }
-      }
+      },
+      "actors": {}
     },
     "c01-07": {
       "players": {
@@ -306,7 +319,8 @@
       "description": {
         "key": "level.c01_07.description"
       },
-      "signals": {}
+      "signals": {},
+      "actors": {}
     },
     "c01-08": {
       "players": {
@@ -347,7 +361,8 @@
         "mercenary_dead_paid": {
           "key": "battle.signal.mercenary_dead_paid"
         }
-      }
+      },
+      "actors": {}
     },
     "c01-09": {
       "players": {
@@ -394,7 +409,10 @@
       "description": {
         "key": "level.c01_09.description"
       },
-      "signals": {}
+      "signals": {},
+      "actors": {
+        "caged-ivra": "ivra"
+      }
     },
     "c01-10": {
       "players": {
@@ -432,6 +450,9 @@
         "ivra_chose_to_help": {
           "key": "battle.signal.ivra_chose_to_help"
         }
+      },
+      "actors": {
+        "roderick": "roderick"
       }
     },
     "c01-11": {
@@ -482,7 +503,8 @@
         "named_royal_deserter": {
           "key": "battle.signal.named_royal_deserter"
         }
-      }
+      },
+      "actors": {}
     },
     "c01-12": {
       "players": {
@@ -520,6 +542,9 @@
         "bell_tower_flood_rising": {
           "key": "battle.signal.bell_tower_flood_rising"
         }
+      },
+      "actors": {
+        "imperial-cain": "cain"
       }
     },
     "c01-13": {
@@ -570,7 +595,8 @@
         "mirelle_kept_revision_marks": {
           "key": "battle.signal.mirelle_kept_revision_marks"
         }
-      }
+      },
+      "actors": {}
     },
     "c01-14": {
       "players": {
@@ -617,7 +643,8 @@
         "forge_valve_b_closed": {
           "key": "battle.signal.forge_valve_b_closed"
         }
-      }
+      },
+      "actors": {}
     },
     "c01-15": {
       "players": {
@@ -670,7 +697,8 @@
       "description": {
         "key": "level.c01_15.description"
       },
-      "signals": {}
+      "signals": {},
+      "actors": {}
     },
     "c01-16": {
       "players": {
@@ -720,7 +748,8 @@
         "unflagged_name_three": {
           "key": "battle.signal.unflagged_name_three"
         }
-      }
+      },
+      "actors": {}
     }
   }
 }

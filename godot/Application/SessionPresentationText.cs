@@ -1,3 +1,4 @@
+using System.Collections.Frozen;
 using System.Text.Json.Nodes;
 using Empire.Core.Engine;
 using Empire.Localization;
@@ -5,12 +6,16 @@ using Empire.Presentation.Feedback;
 
 namespace Empire.Application;
 
-public sealed record SessionTextRules(BattleEngine Engine, GameText Messages);
+public sealed record SessionTextRules(BattleEngine Engine, GameText Messages, IReadOnlyDictionary<string, string> IdentityNameKeys);
 
 /// <summary>The presentation collaborators consumed by a session; none owns gameplay state.</summary>
 public sealed record SessionPresentationText(GameText Messages, ActionRefusalText Refusals,
-    BattleText Battle, ContentText Content, CombatModifierText Modifiers, BattleEventText Events)
+    BattleText Battle, ContentText Content, CombatModifierText Modifiers, BattleEventText Events,
+    IReadOnlyDictionary<string, string> IdentityNameKeys)
 {
+    public BattleUnitNames UnitNames(string levelId, JsonArray rosterBindings) =>
+        new(new(Messages, Content, IdentityNameKeys), Battle.UnitIdentities(levelId, rosterBindings));
+
     public static SessionPresentationText Compose(SessionTextRules rules, JsonArray levels,
         string battleTextJson, string contentTextJson)
     {
@@ -26,6 +31,6 @@ public sealed record SessionPresentationText(GameText Messages, ActionRefusalTex
         var modifiers = CombatModifierText.CreateDefault(new(text, content));
         modifiers.ValidateCoverage(engine.Combat.ModifierKinds);
         return new(text, ActionRefusalText.CreateDefault(new(text, content)).Seal(), battle, content, modifiers.Seal(),
-            BattleEventText.CreateDefault(new(text, battle)));
+            BattleEventText.CreateDefault(new(text, battle)), rules.IdentityNameKeys.ToFrozenDictionary(StringComparer.Ordinal));
     }
 }

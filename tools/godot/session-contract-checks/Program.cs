@@ -19,7 +19,7 @@ var packs = JsonNode.Parse(File.ReadAllText(Path.Combine(root, "godot/data/conte
 var engine = new BattleEngine(packs);
 var presentation = FixtureBattleText.Session(root, engine, gameText);
 var level = oracle["level"]!.AsObject();
-var session = new GrayFlagSession(new(engine, presentation), level);
+var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
 var count = 0;
 foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
 {
@@ -37,11 +37,11 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
             accepted = session.Undo(beforeRevision).Accepted;
             break;
         case "load":
-            session = GrayFlagSession.FromSave(new(engine, presentation), session.Save());
+            session = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), session.Save());
             accepted = true;
             break;
         case "restart":
-            session = new GrayFlagSession(new(engine, presentation), level);
+            session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
             accepted = true;
             break;
     }
@@ -67,7 +67,7 @@ foreach (var metadata in oracle["metadata"]!.AsArray().OfType<JsonObject>())
 Require(!engine.HandsOffTurn(new JsonObject { ["kind"] = "unknown" }), "unknown kind hands off");
 foreach (var fixture in oracle["extraCases"]!.AsArray().OfType<JsonObject>())
 {
-    var extra = new GrayFlagSession(new(engine, presentation), fixture["level"]!.AsObject());
+    var extra = new GrayFlagSession(new(engine, presentation, new JsonArray()), fixture["level"]!.AsObject());
     var steps = fixture["steps"] is JsonArray sequence ? sequence.OfType<JsonObject>() : new[] { fixture };
     foreach (var step in steps)
     {
@@ -81,9 +81,9 @@ foreach (var fixture in oracle["extraCases"]!.AsArray().OfType<JsonObject>())
 }
 
 // Native persisted semantic history intentionally survives resume, unlike standalone TS load.
-var initial = new GrayFlagSession(new(engine, presentation), level);
+var initial = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
 var marker = new JsonObject { ["type"] = "priorCampaignEvent" };
-var resumed = GrayFlagSession.FromSave(new(engine, presentation), initial.Save(), new JsonArray(marker));
+var resumed = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), initial.Save(), new JsonArray(marker));
 var actor = resumed.Snapshot()["units"]!.AsArray().OfType<JsonObject>().First(u => u["owner"]!.GetValue<int>() == resumed.Snapshot()["currentPlayer"]!.GetValue<int>());
 var face = new JsonObject { ["kind"] = "face", ["unit"] = actor["id"]!.DeepClone(), ["facing"] = "north" };
 Require(!resumed.CanUndo && resumed.LastActionHandsOffTurn is null, "resume retained undo metadata");
@@ -95,7 +95,7 @@ Require(resumed.Dispatch(EcmaJson.ToElement(face), 2).Accepted, "fresh callback 
 
 var computerLevel = (JsonObject)level.DeepClone();
 computerLevel["players"]![0]!["controller"] = "ai";
-var computerSession = new GrayFlagSession(new(engine, presentation), computerLevel);
+var computerSession = new GrayFlagSession(new(engine, presentation, new JsonArray()), computerLevel);
 Require(computerSession.AdvanceComputer(), "computer fixture did not advance");
 Require(!computerSession.CanUndo && !computerSession.Undo(computerSession.GetSnapshot().Revision).Accepted, "computer-controlled undo permitted");
 
@@ -186,8 +186,8 @@ var alternateRefusals = new ActionRefusalText(alternateText)
     .Register(new("action.unsupported", "test.action.unsupported", (_, details) => [details.GetProperty("kind").GetString()]))
     .Seal();
 // Hold other presentation fixed while changing only the injected refusal wording.
-var localized = new GrayFlagSession(new(engine, presentation), level);
-var reworded = new GrayFlagSession(new(engine, presentation with { Refusals = alternateRefusals }), level);
+var localized = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+var reworded = new GrayFlagSession(new(engine, presentation with { Refusals = alternateRefusals }, new JsonArray()), level);
 var unknownAction = EcmaJson.ToElement(new JsonObject { ["kind"] = "plugin.command" });
 var beforeRefusal = StateDigest.Hash(localized.Snapshot());
 var originalResult = localized.Dispatch(unknownAction, 0);

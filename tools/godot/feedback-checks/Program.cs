@@ -27,7 +27,7 @@ var text = FixtureText.Load(args[2]);
 var presentationText = FixtureBattleText.Session(root, engine, text);
 var battleText = presentationText.Battle;
 string UnitName(string id) => presentationText.Content.UnitName(id);
-BattleLogNames Names(JsonNode state) => new(presentationText.Content.UnitName, presentationText.Content.CareerName,
+BattleLogNames Names(JsonNode state) => new(unit => presentationText.Content.UnitName(unit.GetProperty("type").GetString()!), presentationText.Content.UnitName, presentationText.Content.CareerName,
     presentationText.Content.ResourceName, PlayerNames(state));
 Func<int, string> PlayerNames(JsonNode state) => player => battleText.PlayerName(Text(state["levelId"]), player);
 var presenters = BattleEventText.CreateDefault(new(text, battleText));
@@ -87,7 +87,7 @@ foreach (var item in oracle["summaries"]!.AsArray().OfType<JsonObject>())
     var signals = result["signals"]!.AsArray().Select(Text).ToArray();
     var before = EcmaJson.Stringify(item);
     // Historical expected signal IDs/title fields remain source evidence, not a native localized-summary oracle.
-    var summary = CampaignBattleSummary.Create(new CampaignSummaryText(text, battleText, UnitName), item["chapter"]!.GetValue<int>(), item["perspectivePlayer"]!.GetValue<int>(),
+    var summary = CampaignBattleSummary.Create(new CampaignSummaryText(text, battleText, unit => UnitName(unit.GetProperty("type").GetString()!)), item["chapter"]!.GetValue<int>(), item["perspectivePlayer"]!.GetValue<int>(),
         EcmaJson.ToElement(state), signals, count);
     var actual = new JsonObject
     {

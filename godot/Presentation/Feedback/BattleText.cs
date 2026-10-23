@@ -35,6 +35,9 @@ public sealed class BattleText
         });
     }
 
+    public IReadOnlyDictionary<string, string> UnitIdentities(string levelId, JsonArray rosterBindings) =>
+        document.UnitIdentities(levelId, rosterBindings);
+
     public string LevelTitle(string levelId) => document.LevelTitle(text, levelId);
     public string LevelDescription(string levelId) => document.LevelDescription(text, levelId);
     public string SignalName(string levelId, string signalId) => document.SignalName(text, levelId, signalId);

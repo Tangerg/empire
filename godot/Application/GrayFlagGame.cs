@@ -51,14 +51,14 @@ public partial class GrayFlagGame : Node
         engine = new BattleEngine(packs);
         definition = PresentationJson.Load<JsonObject>("res://data/grayflag-campaign.json");
         levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json");
-        presentationText = SessionPresentationText.Compose(new SessionTextRules(engine, text), levels,
+        stories = StoryDocument.Load(text);
+        presentationText = SessionPresentationText.Compose(new SessionTextRules(engine, text, stories.IdentityNameKeys), levels,
             Godot.FileAccess.GetFileAsString("res://data/grayflag-battle-text.json"),
             Godot.FileAccess.GetFileAsString("res://data/grayflag-content-text.json"));
         battleText = presentationText.Battle;
         presentation = PresentationJson.Load<JsonObject>("res://data/grayflag-staging.json");
         narrative = NarrativePresentationDocument.Load(text);
         campaign = NewCampaign();
-        stories = StoryDocument.Load(text);
         foreach (var unit in definition["initial"]!["roster"]!.AsArray())
             IdentityNames.Resolve(text, stories.IdentityNameKeys, unit!["id"]!.GetValue<string>());
         ShowMenu();

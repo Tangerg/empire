@@ -12,7 +12,7 @@ using Empire.Localization;
 
 namespace Empire.Application;
 
-public sealed record BattleSessionRules(BattleEngine Engine, SessionPresentationText Presentation);
+public sealed record BattleSessionRules(BattleEngine Engine, SessionPresentationText Presentation, JsonArray RosterBindings);
 
 /// <summary>Thin application adapter. All choices come from the same core that dispatches them.</summary>
 public sealed partial class GrayFlagSession
@@ -22,6 +22,7 @@ public sealed partial class GrayFlagSession
     private readonly ActionRefusalText refusals;
     private readonly BattleText battleText;
     private readonly ContentText contentText;
+    private readonly BattleUnitNames unitNames;
     private readonly CombatModifierText modifierText;
     private readonly Battle battle;
     private long revision;
@@ -70,6 +71,7 @@ public sealed partial class GrayFlagSession
         contentText = presentation.Content;
         modifierText = presentation.Modifiers;
         eventText = presentation.Events;
+        unitNames = presentation.UnitNames(level["id"]!.GetValue<string>(), rules.RosterBindings);
         battle = engine.CreateBattle(level);
     }
 
@@ -79,6 +81,7 @@ public sealed partial class GrayFlagSession
         var presentation = rules.Presentation;
         this.engine = engine;
         this.battle = battle;
+        unitNames = presentation.UnitNames(battle.Snapshot()["levelId"]!.GetValue<string>(), rules.RosterBindings);
         text = presentation.Messages;
         refusals = presentation.Refusals;
         battleText = presentation.Battle;
@@ -94,6 +97,7 @@ public sealed partial class GrayFlagSession
             restored.events.AddRange(recordedEvents.OfType<JsonObject>().Select(value => (JsonObject)value.DeepClone()));
         return restored;
     }
+    public string UnitName(JsonElement unit) => unitNames.Name(unit);
     public JsonObject Snapshot() => battle.Snapshot();
     public JsonObject Save() => engine.SaveBattle(battle.Snapshot());
     public IReadOnlyList<JsonObject> Events => events.Select(value => (JsonObject)value.DeepClone()).ToArray();
@@ -176,7 +180,7 @@ public sealed partial class GrayFlagSession
         revision++;
         var after = Empire.Core.Determinism.EcmaJson.ToElement(battle.Snapshot());
         var eventValues = receipt.Events.Select(Empire.Core.Determinism.EcmaJson.ToElement).ToArray();
-        var logContext = new BattleLogContext(new BattleLogNames(contentText.UnitName, contentText.CareerName, contentText.ResourceName,
+        var logContext = new BattleLogContext(new BattleLogNames(unitNames.Name, contentText.UnitName, contentText.CareerName, contentText.ResourceName,
             id => battleText.PlayerName(levelId: after.GetProperty("levelId").GetString()!, playerId: id)), EcmaJson.ToElement(receipt.Before), after);
         transition = new BattlePresentationTransition(revision,
             Empire.Core.Determinism.EcmaJson.ToElement(receipt.Before),

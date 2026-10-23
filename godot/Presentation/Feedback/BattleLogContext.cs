@@ -6,12 +6,13 @@ using Empire.Localization;
 
 namespace Empire.Presentation.Feedback;
 
-public sealed record BattleLogNames(Func<string, string> UnitType, Func<string, string> Career,
+public sealed record BattleLogNames(Func<JsonElement, string> Unit, Func<string, string> UnitType, Func<string, string> Career,
     Func<string, string> Resource, Func<int, string> Player);
 
 /// <summary>Names are projections of one committed state and its injected ruleset.</summary>
 public sealed class BattleLogContext
 {
+    private readonly Func<JsonElement, string> unitName;
     private readonly Func<string, string> unitTypeName;
     private readonly Func<int, string> playerName;
     private readonly JsonElement before;
@@ -33,6 +34,7 @@ public sealed class BattleLogContext
     {
         State = after.Clone();
         this.before = before.Clone();
+        unitName = names.Unit;
         unitTypeName = names.UnitType;
         CareerName = names.Career;
         ResourceName = names.Resource;
@@ -66,7 +68,7 @@ public sealed class BattleLogContext
             return unitTypeName(identity.Type);
         foreach (var unit in UnitRecords(State).Concat(UnitRecords(before)))
             if (unit.GetProperty("id").GetDouble() == id)
-                return unitTypeName(FeedbackJson.Text(unit.GetProperty("type")));
+                return unitName(unit);
         throw new LocalizationException($"Committed event references unavailable unit identity '{id}'.");
     }
 

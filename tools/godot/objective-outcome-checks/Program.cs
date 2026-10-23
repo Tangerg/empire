@@ -79,9 +79,10 @@ var level = EcmaJson.Parse("""
 """)!.AsObject();
 const string metadata = """
 {
-  "schema": 2,
+  "schema": 3,
   "levels": {
     "test.objective-outcomes": {
+      "actors": {},
       "title": {"key": "test.level.title"},
       "description": {"key": "test.level.description"},
       "signals": {},
@@ -557,7 +558,7 @@ var fallen = Copy(defender);
 fallen["id"] = 102;
 logState["embarkedUnits"] = new JsonArray(new JsonObject { ["unit"] = embarked });
 logState["markers"] = new JsonArray(new JsonObject { ["fallenUnit"] = fallen });
-var logNames = new BattleLogNames(firstContentText.UnitName, firstContentText.CareerName, firstContentText.ResourceName,
+var logNames = new BattleLogNames(unit => firstContentText.UnitName(unit.GetProperty("type").GetString()!), firstContentText.UnitName, firstContentText.CareerName, firstContentText.ResourceName,
     id => firstText.PlayerName("test.objective-outcomes", id));
 var logContext = new BattleLogContext(logNames, EcmaJson.ToElement(contentState), EcmaJson.ToElement(logState));
 Check(logContext.UnitName(attacker["id"]!.GetValue<int>()) == "Copper infantry"

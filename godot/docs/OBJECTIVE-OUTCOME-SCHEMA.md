@@ -171,3 +171,32 @@ reruns and rejects unknown names. No valid assertion was removed.
 Remaining work is explicit: inject the event presenter through the session
 composition port, complete the API/readability/formatting pass, and verify the
 current exported package. Manual desktop interaction remains infrastructure-blocked.
+
+## Instance-name ownership, 2026-10-22
+
+`grayflag-story.json.identityNameKeys` is the shared identity-to-message binding;
+`zh_CN.po` owns each personal-name translation once. The seven character-specific
+content labels reference those same messages, while generic archetype labels keep
+their separate content keys. These native documents have no generator: the current
+TypeScript exporter writes historical source-v1 fixtures, not native text resources.
+The localization authoring guard rejects both competing bindings and resurrected
+personal-name PO entries.
+
+Battle text metadata is now schema 3. Each level explicitly declares its `actors`
+map for non-roster named units. Campaign roster identities still come exclusively
+from the reconstructed pending request's `rosterBindings`. `BattleTextDocument`
+validates unit keys and refuses overlap between these two disjoint sources;
+`BattleUnitNames` freezes the resulting projection and validates every referenced
+identity against the shared name owner. No portrait, key prefix or shared unit
+class determines a person's identity. Generic units retain their current type label.
+
+Fresh, restarted and restored sessions reconstruct the same projection. HUD,
+event-log full-unit records and fallen-unit summaries consume it. Instance keys
+already survive active, embarked and fallen records; no identity or translated
+name is added to gameplay state, events, saves or digests. Recruitment cards and
+type-oriented refusals still describe content archetypes, not personal instances.
+
+Creation events continue to own emission-time type and owner facts, including
+units created and erased within one committed action. The shipped spawn effects
+create generic units. This change neither adds personal identity facts to creation
+events nor claims support for transient named spawns that lack those facts.

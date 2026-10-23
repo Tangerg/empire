@@ -41,7 +41,7 @@ public partial class CameraIntegrationChecks : Node
             screen = new BattleScreen();
             AddChild(screen);
             screen.Board.AdvanceAnimationsAutomatically = false;
-            var initial = new ProjectedSession(new GrayFlagSession(new(engine, presentation), level), false, false);
+            var initial = new ProjectedSession(new GrayFlagSession(new(engine, presentation, new JsonArray()), level), false, false);
             Bind(initial);
             // This detached screen has a Node parent, not an application-sized Control.
             screen.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.TopLeft);
@@ -121,7 +121,7 @@ public partial class CameraIntegrationChecks : Node
 
     private void CheckZoomAndResize()
     {
-        Bind(new GrayFlagSession(new(engine, presentation), level));
+        Bind(new GrayFlagSession(new(engine, presentation, new JsonArray()), level));
         GuiButton(MouseButton.Middle, true, new Vector2(250, 200));
         CapturedMove(new Vector2(150, 150));
         CapturedButton(MouseButton.Middle, false, new Vector2(150, 150));
@@ -159,14 +159,14 @@ public partial class CameraIntegrationChecks : Node
 
     private void CheckCancellation()
     {
-        Bind(new GrayFlagSession(new(engine, presentation), level));
+        Bind(new GrayFlagSession(new(engine, presentation, new JsonArray()), level));
         var at = Field(new Vector2(10.5f, 15.5f) * 32);
         GuiButton(MouseButton.Left, true, at);
         screen._Notification((int)Node.NotificationWMWindowFocusOut);
         GuiButton(MouseButton.Left, false, at);
         Require(screen.SelectedUnitId is null, "Window focus loss cancels a pending click");
         GuiButton(MouseButton.Left, true, at);
-        Bind(new GrayFlagSession(new(engine, presentation), level));
+        Bind(new GrayFlagSession(new(engine, presentation, new JsonArray()), level));
         GuiButton(MouseButton.Left, false, at);
         Require(screen.SelectedUnitId is null, "Session rebind cancels a pending click");
         Near(world.Scale, Vector2.One * 1.25f, "A new binding starts at the source initial zoom");
@@ -191,11 +191,11 @@ public partial class CameraIntegrationChecks : Node
 
     private void CheckOutsideTerrain()
     {
-        var session = new GrayFlagSession(new(engine, presentation), level);
+        var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
         var snapshot = session.GetSnapshot();
         var state = JsonNode.Parse(snapshot.State.GetRawText())!.AsObject();
         state["map"]!["tiles"]![0] = "c01.outside";
-        var outside = GrayFlagSession.FromSave(new(engine, presentation), engine.SaveBattle(state));
+        var outside = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(state));
         Bind(outside);
         var materials = WorldMaterialsManifest.Load();
         materials.TerrainTags["c01.outside"] = [];
@@ -235,7 +235,7 @@ public partial class CameraIntegrationChecks : Node
     {
         foreach (var (computer, hidden, far) in new[] { (false, false, false), (false, false, true), (true, false, true), (true, true, true) })
         {
-            var session = new GrayFlagSession(new(engine, presentation), level);
+            var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
             var projected = new ProjectedSession(session, computer, hidden);
             Bind(projected);
             // Cover both visible hover and offscreen human no-follow; AI cases prove follow/concealment.
@@ -313,7 +313,7 @@ public partial class CameraIntegrationChecks : Node
             Require(screen.SelectedUnitId is null, "Presentation start canceled the pre-existing pointer gesture");
             exit.EmitSignal(Button.SignalName.Pressed);
             Require(exits == 1, "Settled camp exit invokes once through the current mounted binding");
-            Bind(new GrayFlagSession(new(engine, presentation), level));
+            Bind(new GrayFlagSession(new(engine, presentation, new JsonArray()), level));
             exit.EmitSignal(Button.SignalName.Pressed);
             Require(exits == 1, "An old-binding camp button cannot invoke after a rebind");
         }
@@ -321,7 +321,7 @@ public partial class CameraIntegrationChecks : Node
 
     private void CheckUnmountAndRebind()
     {
-        Bind(new GrayFlagSession(new(engine, presentation), level));
+        Bind(new GrayFlagSession(new(engine, presentation, new JsonArray()), level));
         var exits = 0;
         var restarts = 0;
         screen.BindApplicationActions(onRestart: () => restarts++, onExit: () => exits++);
@@ -329,7 +329,7 @@ public partial class CameraIntegrationChecks : Node
         var restart = Buttons(screen).Single(button => button.Text == "重新开始");
         restart.EmitSignal(Button.SignalName.Pressed);
         var confirmation = screen.GetChildren().OfType<ConfirmationDialog>().Single();
-        Bind(new GrayFlagSession(new(engine, presentation), level));
+        Bind(new GrayFlagSession(new(engine, presentation, new JsonArray()), level));
         screen.BindApplicationActions(onRestart: () => restarts += 100, onExit: () => exits += 100);
         confirmation.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
         Require(restarts == 0, "A superseded restart dialog cannot invoke the newer binding's callback");
@@ -339,7 +339,7 @@ public partial class CameraIntegrationChecks : Node
         screen._Input(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = false });
         Require(exits == 0, "Unmounted application callback cannot exit camp");
         AddChild(screen);
-        Bind(new GrayFlagSession(new(engine, presentation), level));
+        Bind(new GrayFlagSession(new(engine, presentation, new JsonArray()), level));
         GuiButton(MouseButton.Left, false, Field(new Vector2(10.5f, 15.5f) * 32));
         Require(screen.SelectedUnitId is null, "Reattached screen cannot replay an old held gesture");
         Near(world.Scale, Vector2.One * 1.25f, "Explicit rebind after reattach restores a usable camera");

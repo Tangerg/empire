@@ -289,7 +289,7 @@ public partial class BattleResultFlowChecks : Node
         var text = GodotTextCatalog.LoadSimplifiedChinese();
         var presentationText = BattleTextChecks.Session(engine, text);
         var level = BattleTextChecks.OpeningLevel();
-        var session = new GrayFlagSession(new(engine, presentationText), level);
+        var session = new GrayFlagSession(new(engine, presentationText, new JsonArray()), level);
         var screen = new BattleScreen();
         AddChild(screen);
         screen.Board.AdvanceAnimationsAutomatically = false;

@@ -35,11 +35,11 @@ var engine = BattleEngineFactory.Create(new ReadOnlyContent(fixture["packs"]!.As
 var metadata = EcmaJson.Parse(File.ReadAllText(Path.Combine(root, "godot/data/grayflag-content-text.json")))!.AsObject();
 metadata["reactions"]!["guard"] = new JsonObject { ["name"] = "test.reaction.guard.name", ["hint"] = "test.reaction.guard.hint" };
 metadata["reactions"]!["plugin-dodge"] = new JsonObject { ["name"] = "test.reaction.dodge.name", ["hint"] = "test.reaction.dodge.hint" };
-var presentation = SessionPresentationText.Compose(new(engine, gameText),
+var presentation = SessionPresentationText.Compose(new(engine, gameText, FixtureBattleText.IdentityNameKeys(root)),
     EcmaJson.Parse(File.ReadAllText(Path.Combine(root, "godot/data/grayflag-campaign-levels.json")))!.AsArray(),
     File.ReadAllText(Path.Combine(root, "godot/data/grayflag-battle-text.json")), EcmaJson.Stringify(metadata));
 var state = fixture["turns"]![0]!["before"]!.DeepClone().AsObject();
-var session = GrayFlagSession.FromSave(new(engine, presentation), engine.SaveBattle(state));
+var session = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(state));
 var actor = session.Snapshot()["units"]!.AsArray().OfType<JsonObject>().First(unit => engine.Turns.MayAct(state, unit));
 var id = actor["id"]!.GetValue<int>();
 var before = EcmaJson.Stringify(session.Snapshot());

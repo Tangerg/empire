@@ -4,7 +4,7 @@ using Empire.Localization;
 namespace Empire.Presentation.Feedback;
 
 public sealed record BattleResultMetric(string Label, int Value);
-public sealed record CampaignSummaryText(GameText Messages, BattleText Battle, Func<string, string> UnitTypeName);
+public sealed record CampaignSummaryText(GameText Messages, BattleText Battle, Func<JsonElement, string> UnitName);
 
 /// <summary>Detached result-screen projection, never a victory decision or a campaign transition.</summary>
 public sealed class CampaignBattleSummary
@@ -114,7 +114,7 @@ public sealed class CampaignBattleSummary
         var fallen = state.GetProperty("markers").EnumerateArray()
             .Where(marker => marker.TryGetProperty("fallenUnit", out var unit) && unit.ValueKind == JsonValueKind.Object &&
                 unit.GetProperty("owner").GetInt32() == perspectivePlayer)
-            .Select(marker => presentation.UnitTypeName(FeedbackJson.Text(marker.GetProperty("fallenUnit").GetProperty("type"))))
+            .Select(marker => presentation.UnitName(marker.GetProperty("fallenUnit")))
             .ToArray();
         var enemies = units.Count(unit => !players.Any(player =>
             player.GetProperty("id").GetInt32() == unit.GetProperty("owner").GetInt32() && player.GetProperty("team").GetInt32() == team));

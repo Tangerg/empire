@@ -53,10 +53,10 @@ public partial class PaintedBattleSample : Control
                 foreach (var binding in family.Value!.AsObject())
                     contentText["content"]![family.Key]!.AsObject().Add(binding.Key, binding.Value!.DeepClone());
             var text = GodotTextCatalog.LoadSimplifiedChinese();
-            _presentation = SessionPresentationText.Compose(new(_engine, text), new JsonArray(_level.DeepClone()),
+            _presentation = SessionPresentationText.Compose(new(_engine, text, StoryDocument.Load(text).IdentityNameKeys), new JsonArray(_level.DeepClone()),
                 Godot.FileAccess.GetFileAsString(_definition.LevelTextPath),
                 contentText.ToJsonString());
-            var initial = new GrayFlagSession(new(_engine, _presentation), _level);
+            var initial = new GrayFlagSession(new(_engine, _presentation, new JsonArray()), _level);
             _registeredMap = initial.Snapshot()["map"]!.AsObject();
             Mount(initial);
         }
@@ -84,7 +84,7 @@ public partial class PaintedBattleSample : Control
                 new(AssetCatalog.Load(), EnvironmentCatalog.Load(), _engine.Grids.Get("square4"), _engine.Catalog, rendering.Plane)), _level, scene);
             next.ConfigureGround(rendering.Ground);
             next.ConfigureDynamicState();
-            next.BindApplicationActions(Save, Load, () => Mount(new GrayFlagSession(new(_engine, _presentation), _level)));
+            next.BindApplicationActions(Save, Load, () => Mount(new GrayFlagSession(new(_engine, _presentation, new JsonArray()), _level)));
         }
         catch { RemoveChild(next); next.Free(); throw; }
         if (_screen is not null)
@@ -120,7 +120,7 @@ public partial class PaintedBattleSample : Control
         {
             var document = SaveFile.ReadDocument(SavePath)
                 ?? throw new StoredDocumentException("Empty sample save document.");
-            Mount(GrayFlagSession.FromSave(new(_engine, _presentation), document));
+            Mount(GrayFlagSession.FromSave(new(_engine, _presentation, new JsonArray()), document));
             _screen!.AppendMessage(_presentation.Messages.Format("feedback.load.completed"));
         }
         catch (Exception error) when (error is SaveStorageException or StoredDocumentException)

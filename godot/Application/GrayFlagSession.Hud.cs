@@ -52,7 +52,7 @@ public sealed partial class GrayFlagSession
                 unit["key"] is null ? null : S(unit, "key"),
                 team is not null ? S(team, "color") : "#999999");
         }
-        string Name(JsonObject unit) => contentText.UnitName(S(unit, "type"));
+        string Name(JsonObject unit) => unitNames.Name(EcmaJson.ToElement(unit));
         string Accounts(string kind, JsonObject holder, string? weapon = null) =>
             string.Join(" · ", engine.Resources.Accounts(new(kind, holder, weapon)).Select(account =>
             {

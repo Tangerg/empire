@@ -26,7 +26,7 @@ foreach (var test in fixture["cases"]!.AsArray().OfType<JsonObject>())
     var state = test["state"]!.AsObject();
     var caseEngine = test["packs"] is JsonArray casePacks ? new BattleEngine(casePacks) : engine;
     var casePresentation = ReferenceEquals(caseEngine, engine) ? presentation : FixtureBattleText.Session(root, caseEngine, gameText);
-    var session = GrayFlagSession.FromSave(new(caseEngine, casePresentation), caseEngine.SaveBattle(state));
+    var session = GrayFlagSession.FromSave(new(caseEngine, casePresentation, new JsonArray()), caseEngine.SaveBattle(state));
     var before = EcmaJson.Stringify(session.Snapshot());
     var at = new BoardCell(test["tile"]!["x"]!.GetValue<int>(), test["tile"]!["y"]!.GetValue<int>());
     var selection = new TacticalSelection { Kind = Enum.Parse<TacticalSelectionKind>(Text(test["kind"])), UnitId = test["unit"]?.GetValue<int>(), Destination = at, Weapon = test["weapon"] is null ? null : Text(test["weapon"]), Ability = test["ability"] is null ? null : Text(test["ability"]), Targets = test["target"] is JsonObject target ? new[] { new BoardCell(target["x"]!.GetValue<int>(), target["y"]!.GetValue<int>()) } : [] };
@@ -134,6 +134,6 @@ fogState["rules"]!["fog"] = true;
 var visible = engine.Space.VisibleUnits(fogState, 1).Select(unit => unit["id"]!.GetValue<int>()).ToHashSet();
 var hidden = fogState["units"]!.AsArray().OfType<JsonObject>().FirstOrDefault(unit => !visible.Contains(unit["id"]!.GetValue<int>()));
 Require(hidden is not null, "Hidden forged selection witness");
-if (hidden is not null) { var session = GrayFlagSession.FromSave(new(engine, presentation), engine.SaveBattle(fogState)); var id = hidden["id"]!.GetValue<int>(); var forged = session.ProjectHud(new(5, 0), new() { Kind = TacticalSelectionKind.Destination, UnitId = id, Destination = new(hidden["x"]!.GetValue<int>(), hidden["y"]!.GetValue<int>()) }, null, id, false); Require(!forged.Sections.Any(section => section.Key is "unit" or "forecast" or "commands"), "Hidden forged selected/inspect IDs expose no private unit/menu/forecast"); }
+if (hidden is not null) { var session = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(fogState)); var id = hidden["id"]!.GetValue<int>(); var forged = session.ProjectHud(new(5, 0), new() { Kind = TacticalSelectionKind.Destination, UnitId = id, Destination = new(hidden["x"]!.GetValue<int>(), hidden["y"]!.GetValue<int>()) }, null, id, false); Require(!forged.Sections.Any(section => section.Key is "unit" or "forecast" or "commands"), "Hidden forged selected/inspect IDs expose no private unit/menu/forecast"); }
 if (failures.Count > 0) throw new Exception(string.Join("\n", failures));
 Console.WriteLine($"HUD actual-source DOM differential: {checks} assertions passed.");

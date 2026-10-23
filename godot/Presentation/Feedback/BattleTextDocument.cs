@@ -1,3 +1,4 @@
+using System.Collections.Frozen;
 using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -22,7 +23,8 @@ public sealed class BattleTextDocument
     private sealed record PlayerEntry(TextEntry Name, IReadOnlyDictionary<string, TextEntry> Objectives);
 
     private sealed record LevelEntry(TextEntry Title, TextEntry Description,
-        IReadOnlyDictionary<string, TextEntry> Signals, IReadOnlyDictionary<int, PlayerEntry> Players);
+        IReadOnlyDictionary<string, TextEntry> Signals, IReadOnlyDictionary<int, PlayerEntry> Players,
+        FrozenSet<string> UnitKeys, FrozenDictionary<string, string> Actors);
 
     private readonly IReadOnlyDictionary<string, LevelEntry> levels;
     private readonly ObjectiveHandlerRegistry handlers;
@@ -45,7 +47,7 @@ public sealed class BattleTextDocument
         ArgumentNullException.ThrowIfNull(handlers);
         ArgumentNullException.ThrowIfNull(effects);
         var root = Fields(EcmaJson.Parse(json, rejectDuplicateProperties: true), "battle text document", "schema", "levels");
-        if (Integer(root["schema"], "battle text metadata schema") != 2)
+        if (Integer(root["schema"], "battle text metadata schema") != 3)
             throw new LocalizationException("Unsupported battle text metadata schema.");
         var declaredLevels = Properties(root["levels"], "battle text levels");
         var canonicalLevels = new Dictionary<string, JsonObject>(StringComparer.Ordinal);
@@ -61,7 +63,7 @@ public sealed class BattleTextDocument
         var result = new Dictionary<string, LevelEntry>(StringComparer.Ordinal);
         foreach (var (levelId, level) in canonicalLevels)
         {
-            var declaredLevel = Fields(declaredLevels[levelId], $"level '{levelId}'", "title", "description", "signals", "players");
+            var declaredLevel = Fields(declaredLevels[levelId], $"level '{levelId}'", "title", "description", "signals", "players", "actors");
             var title = Entry(declaredLevel["title"], $"level title '{levelId}'", allowGenerated: false);
             var description = Entry(declaredLevel["description"], $"level description '{levelId}'", allowGenerated: false);
             var declaredSignals = Properties(declaredLevel["signals"], $"signals for '{levelId}'");
@@ -112,9 +114,34 @@ public sealed class BattleTextDocument
                         Visit(child);
                 }
             }
-            result.Add(levelId, new(title, description, signals, playerEntries));
+            var unitKeys = Array(level["units"], $"units for '{levelId}'").OfType<JsonObject>()
+                .Where(unit => unit["key"] is not null).Select(unit => RequiredString(unit["key"], "unit key"))
+                .ToFrozenSet(StringComparer.Ordinal);
+            var actors = Properties(declaredLevel["actors"], $"actors for '{levelId}'").ToFrozenDictionary(
+                pair => pair.Key, pair => RequiredString(pair.Value, $"actor identity '{levelId}/{pair.Key}'"), StringComparer.Ordinal);
+            foreach (var key in actors.Keys)
+                if (!unitKeys.Contains(key))
+                    throw new LocalizationException($"Actor binding references unknown unit key '{levelId}/{key}'.");
+            result.Add(levelId, new(title, description, signals, playerEntries, unitKeys, actors));
         }
         return new BattleTextDocument(result, handlers);
+    }
+
+    internal IReadOnlyDictionary<string, string> UnitIdentities(string levelId, JsonArray rosterBindings)
+    {
+        var level = Level(levelId);
+        var identities = new Dictionary<string, string>(level.Actors, StringComparer.Ordinal);
+        foreach (var raw in rosterBindings)
+        {
+            var binding = Fields(raw, "roster identity binding", "campaignUnit", "levelUnitKey");
+            var key = RequiredString(binding["levelUnitKey"], "roster unit key");
+            var identity = RequiredString(binding["campaignUnit"], "campaign identity");
+            if (!level.UnitKeys.Contains(key))
+                throw new LocalizationException($"Roster binding references unknown unit key '{levelId}/{key}'.");
+            if (!identities.TryAdd(key, identity))
+                throw new LocalizationException($"Competing identity bindings for unit '{levelId}/{key}'.");
+        }
+        return identities.ToFrozenDictionary(StringComparer.Ordinal);
     }
 
     internal IReadOnlyList<string> ObjectiveKinds => handlers.Keys();

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate native narrative structure and its complete PO references, without rewriting either."""
+"""Validate native narrative structure, shared identity names and PO references without rewriting sources."""
 import json
 from pathlib import Path
 import re
@@ -49,6 +49,15 @@ def validate(root):
             raise CatalogError(f"Missing campaign identity name: {unit['id']}")
     for key in story["identityNameKeys"].values():
         message(key)
+    content_text = json.loads((data / "grayflag-content-text.json").read_text(encoding="utf-8"), object_pairs_hook=unique_object)
+    for identity in ["laiya", "roderick", "cain", "bran", "mirelle", "tasha", "ivra"]:
+        unit_id = f"c01.{identity}"
+        name_key = story["identityNameKeys"].get(identity)
+        if not name_key or content_text["content"]["units"][unit_id]["name"] != name_key:
+            raise CatalogError(f"Named unit must reference shared identity name: {unit_id}")
+        obsolete_key = f"content.units.{unit_id}.name"
+        if obsolete_key in messages:
+            raise CatalogError(f"Duplicate named unit wording: {obsolete_key}")
     for row in story["stories"]:
         shape(row, ["id", "chapter", "kickerKey", "titleKey", "dateKey", "locationKey", "summaryKey", "beats"], ["scene", "mission"])
         if not row["beats"]:

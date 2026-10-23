@@ -30,6 +30,7 @@ public partial class BattleScreenChecks : Node
             CheckCanonicalCellProjection();
             CheckRegisteredReactions();
             CheckLocalizedInteraction();
+            BattleIdentityChecks.Check(this);
             CheckInjectedEventPresenter();
             GD.Print("Native BattleScreen real-session integration passed.");
             GetTree().Quit();
@@ -60,7 +61,7 @@ public partial class BattleScreenChecks : Node
             var text = GodotTextCatalog.LoadSimplifiedChinese();
             var presentation = BattleTextChecks.Session(engine, text);
             var battleText = presentation.Battle;
-            var session = new GrayFlagSession(new(engine, presentation), level);
+            var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
             var stateBefore = EcmaJson.Stringify(session.Snapshot());
             var queries = session.GetTacticalQueries(0);
             var actor = queries.Unit(2)!;
@@ -121,8 +122,8 @@ public partial class BattleScreenChecks : Node
         {
             Events = defaults.Events.Clone().Replace("resourceChanged", (_, _) => customLine).Seal(),
         };
-        var fresh = new GrayFlagSession(new(engine, presentation), level);
-        var restored = GrayFlagSession.FromSave(new(engine, presentation), fresh.Save());
+        var fresh = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+        var restored = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), fresh.Save());
         foreach (var session in new[] { fresh, restored })
         {
             var screen = new BattleScreen();
@@ -148,7 +149,7 @@ public partial class BattleScreenChecks : Node
         var text = GodotTextCatalog.LoadSimplifiedChinese();
         var presentation = BattleTextChecks.Session(engine, text);
         var battleText = presentation.Battle;
-        var session = new GrayFlagSession(new(engine, presentation), level);
+        var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
         var screen = new BattleScreen();
         AddChild(screen);
         screen.Board.AdvanceAnimationsAutomatically = false;
@@ -176,7 +177,7 @@ public partial class BattleScreenChecks : Node
         Require(screen.RecentMessages.SequenceEqual(expectedLog.Recent()), "Descriptions must append once in receipt order after presentation.");
         screen.Refresh();
         Require(!screen.IsPresenting && screen.RecentMessages.SequenceEqual(expectedLog.Recent()), "Refreshing a settled revision must not replay it.");
-        var superseded = new GrayFlagSession(new(engine, presentation), level);
+        var superseded = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
         var replaceable = new ReplaceableSession(superseded);
         screen.BindSession(new(text, battleText, replaceable, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
         TacticalSceneInputChecks.Move(screen, replaceable);
@@ -192,17 +193,17 @@ public partial class BattleScreenChecks : Node
             "A newer transition-free snapshot must invalidate older async completion.");
         screen.Refresh();
         Require(!screen.IsPresenting, "A transition-free revision must remain consumed.");
-        var canceled = new GrayFlagSession(new(engine, presentation), level);
+        var canceled = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
         Bind(canceled);
         TacticalSceneInputChecks.Move(screen, canceled);
         screen.Board.CancelPresentation();
         Require(!screen.IsPresenting && screen.DisplayedRevision == canceled.GetSnapshot().Revision,
             "Same-session cancellation must settle both board and controls to committed state.");
-        var fresh = new GrayFlagSession(new(engine, presentation), level);
+        var fresh = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
         Bind(fresh);
         TacticalSceneInputChecks.Move(screen, fresh);
         Require(screen.IsPresenting, "Second timeline did not start.");
-        var loaded = GrayFlagSession.FromSave(new(engine, presentation), fresh.Save());
+        var loaded = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), fresh.Save());
         Bind(loaded);
         Require(!screen.IsPresenting && !screen.Board.IsPresenting && screen.DisplayedRevision == 0,
             "Rebinding a loaded session must cancel old playback without replaying its history.");
@@ -210,7 +211,7 @@ public partial class BattleScreenChecks : Node
         Require(screen.RecentMessages.SequenceEqual(new[] { "已读取第 1 回合的存档" }), "Load must clear history and keep one load line.");
         screen.Board.AdvancePresentation(100);
         Require(screen.DisplayedRevision == 0, "Stale timeline completion overwrote the rebound view.");
-        var last = new GrayFlagSession(new(engine, presentation), level);
+        var last = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
         Bind(last);
         TacticalSceneInputChecks.Move(screen, last);
         var saves = 0;
@@ -266,7 +267,7 @@ public partial class BattleScreenChecks : Node
         var text = GodotTextCatalog.LoadSimplifiedChinese();
         var presentation = BattleTextChecks.Session(engine, text);
         var battleText = presentation.Battle;
-        var session = new GrayFlagSession(new(engine, presentation), level);
+        var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
         var screen = new BattleScreen();
         screen.Board.AnimationsEnabled = false; // This suite isolates synchronous binding, not timeline behavior.
         AddChild(screen);
@@ -319,7 +320,7 @@ public partial class BattleScreenChecks : Node
         var text = GodotTextCatalog.LoadSimplifiedChinese();
         var presentation = BattleTextChecks.Session(engine, text);
         var battleText = presentation.Battle;
-        var session = new GrayFlagSession(new(engine, presentation), level);
+        var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
         var screen = new BattleScreen();
         AddChild(screen);
         screen.Board.AnimationsEnabled = false;
@@ -364,7 +365,7 @@ public partial class BattleScreenChecks : Node
         var cells = new JsonArray(own.Select(unit => (JsonNode)new JsonObject { ["x"] = unit["x"]!.GetValue<int>(), ["y"] = unit["y"]!.GetValue<int>() }).ToArray());
         deploymentLevel["scenario"]!.AsObject()["zones"] = new JsonArray(new JsonObject { ["id"] = "selection-check-zone", ["cells"] = cells });
         deploymentLevel["deployment"] = new JsonObject { ["order"] = new JsonArray(1), ["zones"] = new JsonArray(new JsonObject { ["player"] = 1, ["zone"] = "selection-check-zone" }) };
-        var deployment = new GrayFlagSession(new(engine, presentation), deploymentLevel);
+        var deployment = new GrayFlagSession(new(engine, presentation, new JsonArray()), deploymentLevel);
         screen.BindSession(new(text, battleText, deployment, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), deploymentLevel, AuthoredScene.Load("res://data/scenes/c01-01.json"));
         var roster = deployment.GetTacticalQueries(0).DeploymentUnits();
         var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
@@ -409,11 +410,11 @@ public partial class BattleScreenChecks : Node
             ["name"] = "test.reactions.plugin-dodge.name",
             ["hint"] = "test.reactions.plugin-dodge.hint"
         };
-        var presentation = SessionPresentationText.Compose(new(engine, text),
+        var presentation = SessionPresentationText.Compose(new(engine, text, StoryDocument.Load(text).IdentityNameKeys),
             PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json"),
             Godot.FileAccess.GetFileAsString("res://data/grayflag-battle-text.json"), EcmaJson.Stringify(metadata));
         var battleText = presentation.Battle;
-        var session = new GrayFlagSession(new(engine, presentation), level);
+        var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
         var screen = new BattleScreen();
         AddChild(screen);
         screen.Board.AnimationsEnabled = false;
@@ -496,7 +497,7 @@ public partial class BattleScreenChecks : Node
                 System.Globalization.CultureInfo.GetCultureInfo("zh-CN"));
             var presentation = BattleTextChecks.Session(engine, text);
             var battleText = presentation.Battle;
-            var session = new GrayFlagSession(new(engine, presentation), level);
+            var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
             var initial = EcmaJson.Stringify(session.Snapshot());
             var bindings = PresentationJson.Load<ArtBindings>("res://data/art-bindings.json");
             bindings.Actors.Clear();
@@ -583,7 +584,7 @@ public partial class BattleScreenChecks : Node
             var text = GodotTextCatalog.LoadSimplifiedChinese();
             var presentation = BattleTextChecks.Session(engine, text);
             var battleText = presentation.Battle;
-            var session = new GrayFlagSession(new(engine, presentation), level);
+            var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
             var screen = new BattleScreen();
             AddChild(screen);
             screen.Board.AnimationsEnabled = false;

@@ -217,7 +217,7 @@ public partial class LightingLifetimeChecks : Node
             screen.BindSession(new(text, battleText, session, new(assets, environment, engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, scene);
             screen.ConfigureDynamicState();
         }
-        var session = new GrayFlagSession(new(engine, presentation), level);
+        var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
         Bind(session);
         // Exercise the separate unshared field-light owners on one actual screen.
         if (cycle == 0)
@@ -235,7 +235,7 @@ public partial class LightingLifetimeChecks : Node
         Require(ReferenceEquals(contactTexture, replacementContact.Texture), "Reprojection lost shared contact identity.");
         TacticalSceneInputChecks.Move(screen, session);
         Require(screen.Board.IsPresenting, "Real legal order did not start the cancellation fixture.");
-        var loaded = GrayFlagSession.FromSave(new(engine, presentation), EcmaJson.Parse(EcmaJson.Stringify(session.Save()))!);
+        var loaded = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), EcmaJson.Parse(EcmaJson.Stringify(session.Save()))!);
         Bind(loaded);
         Require(cache.IsDisposed && !GodotObject.IsInstanceValid(contactTexture), "Load/rebind did not release the old board resources.");
         var loadedCache = screen.Board.LightingResources;
@@ -243,7 +243,7 @@ public partial class LightingLifetimeChecks : Node
         Require(!screen.Board.IsPresenting && screen.DisplayedRevision == 0 && !loadedCache.IsDisposed,
             "Old playback callback resurrected/released the loaded view.");
         // Restart is a new canonical session, not a fake state rewind.
-        var restarted = new GrayFlagSession(new(engine, presentation), level);
+        var restarted = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
         Bind(restarted);
         Require(loadedCache.IsDisposed && !screen.Board.LightingResources.IsDisposed, "Restart did not replace exactly one resource owner.");
         screen.ConfigureGround(TerrainView.Factory(WorldMaterialsManifest.Load()));
