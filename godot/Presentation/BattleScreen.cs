@@ -21,6 +21,7 @@ public sealed record BattleScreenRules(GameText Messages, BattleText BattleText,
 /// </summary>
 public partial class BattleScreen : Control
 {
+    private static readonly Color ChromeHeading = new("#efe5d5");
     private ITacticalBattleSession? _session;
     private GameText _text = null!;
     private BattleText _battleText = null!;
@@ -369,7 +370,7 @@ public partial class BattleScreen : Control
         var background = new ColorRect
         {
             Name = "Backdrop",
-            Color = new Color("#091712"),
+            Color = new Color("#17191a"),
             ZIndex = -4096,
             MouseFilter = MouseFilterEnum.Ignore
         };
@@ -385,7 +386,7 @@ public partial class BattleScreen : Control
         margins.AddChild(column);
         var heading = new HBoxContainer();
         column.AddChild(heading);
-        var title = Text(_text.Format("ui.battle.title"), 26, new Color("#eee1bd"));
+        var title = Text(_text.Format("ui.battle.title"), 26, ChromeHeading);
         title.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         heading.AddChild(title);
         var cameraControls = new HBoxContainer { Name = "CameraControls" };
@@ -401,7 +402,7 @@ public partial class BattleScreen : Control
         heading.AddChild(cameraControls);
         _applicationActions = new HBoxContainer { Name = "ApplicationActions" };
         heading.AddChild(_applicationActions);
-        _turn = Text(_text.Format("ui.battle.unbound"), 18, new Color("#d1cfbc"));
+        _turn = Text(_text.Format("ui.battle.unbound"), 18, new Color("#c9c4bc"));
         heading.AddChild(_turn);
         _restartConfirmation = new ConfirmationDialog
         {
@@ -447,8 +448,8 @@ public partial class BattleScreen : Control
         var panel = new PanelContainer { CustomMinimumSize = new Vector2(340, 0) };
         panel.AddThemeStyleboxOverride("panel", new StyleBoxFlat
         {
-            BgColor = new Color("#14251f"),
-            BorderColor = new Color("#465348"),
+            BgColor = new Color("#25211e"),
+            BorderColor = new Color("#76574a"),
             BorderWidthLeft = 1,
             BorderWidthTop = 1,
             BorderWidthRight = 1,
@@ -462,7 +463,7 @@ public partial class BattleScreen : Control
         var side = new VBoxContainer { CustomMinimumSize = new Vector2(308, 0) };
         side.AddThemeConstantOverride("separation", 12);
         panel.AddChild(side);
-        side.AddChild(Text(_text.Format("ui.battle.orders"), 21, new Color("#eee1bd")));
+        side.AddChild(Text(_text.Format("ui.battle.orders"), 21, ChromeHeading));
 
         var scroll = new ScrollContainer
         {
@@ -483,7 +484,7 @@ public partial class BattleScreen : Control
         side.AddChild(_globalOrders);
         _feedback = Wrapped(_text.Format("ui.battle.not_connected"));
         _feedback.MaxLinesVisible = 4;
-        _feedback.AddThemeColorOverride("font_color", new Color("#f1d99f"));
+        _feedback.AddThemeColorOverride("font_color", new Color("#dfad94"));
         side.AddChild(_feedback);
         _eventLog = Wrapped("");
         _eventLog.Name = "BattleEventLog";
@@ -492,7 +493,7 @@ public partial class BattleScreen : Control
         side.AddChild(_eventLog);
         _coverage = Wrapped("");
         _coverage.AddThemeFontSizeOverride("font_size", 12);
-        _coverage.AddThemeColorOverride("font_color", new Color("#aab6a5"));
+        _coverage.AddThemeColorOverride("font_color", new Color("#ada69d"));
         column.AddChild(_coverage);
     }
 
