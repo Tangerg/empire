@@ -1,6 +1,7 @@
 using System.Collections.Frozen;
 using System.Text.Json.Nodes;
 using Empire.Core;
+using Empire.Core.Abilities;
 using Empire.Core.Determinism;
 using Empire.Core.Geometry;
 using Empire.Core.Tactics;
@@ -107,7 +108,19 @@ public sealed partial class GrayFlagSession
         public IReadOnlyList<BoardCell> ControlZone(int unit) => Read(() => Indices(session.engine.Space.HostileControlZone(state, RequireVisible(unit))));
         public IReadOnlyList<TacticalCommand> CommandsAt(int unit, BoardCell at) => Read(() => Freeze(
             session.engine.CommandsAt(state, RequireVisible(unit), Coord(at)).Select(option =>
-                new TacticalCommand(option.Key, option.Ability, option.Weapon, option.SelfTargeted, option.Engagement is not null, Cells(option.Targets)))));
+                new TacticalCommand(option.Key, option.Ability, option.Weapon, option.SelfTargeted, option.Engagement is not null, Freeze(option.Targets.Select(target => TargetSubject(option.TargetKind, target)))))));
+        private TacticalTarget TargetSubject(AbilityTargetKind kind, Coord at)
+        {
+            if (kind is AbilityTargetKind.Self or AbilityTargetKind.Cell)
+                return TacticalTarget.AtCell(Cell(at));
+            var unit = TacticalQueries.UnitAt(state, at);
+            if (unit is not null)
+                return TacticalTarget.Unit(Cell(at), Integer(unit, "id"));
+            if (kind == AbilityTargetKind.UnitOrStructure && TacticalQueries.StructureAt(state, at) is not null)
+                return TacticalTarget.Object(Cell(at));
+            throw new DomainInvariantException("Command target does not have its declared canonical subject.");
+        }
+
         public TacticalAttack Attack(int unit, BoardCell target, BoardCell from, string weapon) => Read(() =>
         {
             var plan = session.engine.Combat.Forecast(state, RequireVisible(unit), Coord(target), Coord(from), weapon);
@@ -127,7 +140,9 @@ public sealed partial class GrayFlagSession
             session.engine.Deployment.Roster(state)?.Units.Where(unit => visible.Contains(Integer(unit, "id")))
                 .Select(unit => Integer(unit, "id")) ?? []));
         public IReadOnlyList<BoardCell> DeploymentZone() => Read(() => Cells(session.engine.Deployment.Roster(state)?.Zone ?? []));
-        public IReadOnlyList<BoardCell> DeploymentSpots(int unit) => Read(() => Cells(session.engine.Deployment.Spots(state, RequireVisible(unit)).Select(spot => spot.At)));
+        public IReadOnlyList<TacticalTarget> DeploymentTargets(int unit) => Read(() => Freeze(
+            session.engine.Deployment.Spots(state, RequireVisible(unit)).Select(spot => spot.Swaps is { } swapped
+                ? TacticalTarget.Unit(Cell(spot.At), Integer(swapped, "id")) : TacticalTarget.AtCell(Cell(spot.At)))));
         public IReadOnlyList<TacticalTactic> Tactics() => Read(() => Freeze(state["commanders"]!.AsArray().OfType<JsonObject>()
             .SelectMany(commander => session.engine.Support.Tactics(state, Text(commander, "id"))
                 .Select(option => new TacticalTactic(Text(commander, "id"), option.Id, Cells(option.Targets))))));

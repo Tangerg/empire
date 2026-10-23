@@ -1,12 +1,17 @@
 #nullable enable
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Empire.Presentation.Tactical;
 
 public readonly record struct TacticalStamp(long Binding, long Revision);
 public sealed record TacticalUnit(int Id, BoardCell At, bool CanAct, bool Visible);
 public sealed record TacticalCommand(string Key, string Ability, string? Weapon,
-    bool SelfTargeted, bool Hostile, IReadOnlyList<BoardCell> Targets);
+    bool SelfTargeted, bool Hostile, IReadOnlyList<TacticalTarget> TargetSubjects)
+{
+    public IReadOnlyList<BoardCell> Targets => Array.AsReadOnly(TargetSubjects.Select(target => target.Cell).ToArray());
+}
 public sealed record TacticalAttack(double StrikeDamage, double SplashDamage, double CounterDamage,
     double TerrainDefense, bool HasPrimaryUnit, IReadOnlyList<BoardCell> AffectedCells);
 public sealed record TacticalTactic(string Commander, string Id, IReadOnlyList<BoardCell> Targets);
@@ -59,7 +64,7 @@ public interface ITacticalSelectionQueries
     TacticalAttack Attack(int unit, BoardCell target, BoardCell from, string weapon);
     IReadOnlyList<int> DeploymentUnits();
     IReadOnlyList<BoardCell> DeploymentZone();
-    IReadOnlyList<BoardCell> DeploymentSpots(int unit);
+    IReadOnlyList<TacticalTarget> DeploymentTargets(int unit);
     IReadOnlyList<TacticalTactic> Tactics();
     IReadOnlyList<TacticalPassenger> Passengers(int carrier);
     /// <summary>In-bounds steps in configured grid direction order, not sorted coordinates.</summary>

@@ -17,7 +17,7 @@ static class StateGridChecks
         var packs = EcmaJson.Parse(File.ReadAllText(Path.Combine(root, "godot/data/content-packs.json")))!.AsArray();
         foreach (var vector in oracle["cases"]!.AsArray().OfType<JsonObject>())
         {
-            var id = StateJson.Text(vector, "id");
+            var id = EcmaJson.ReadString(vector["id"]);
             ITacticalGrid? resolved = null;
             var plugin = new EnginePlugin($"test.state-grid.{id}", 1, context =>
             {

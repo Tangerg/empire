@@ -32,6 +32,8 @@ public partial class BattleScreen : Control
     private Node2D _world = null!;
     private BattlefieldCamera? _camera;
     private BattlefieldGestures? _gestures;
+    // Only actual map input establishes pointer ownership. Keyboard focus clears it.
+    private CameraPoint? _pointerMapPosition;
     private Button _zoomOut = null!;
     private Button _zoomIn = null!;
     private Label _turn = null!;
@@ -69,6 +71,7 @@ public partial class BattleScreen : Control
         _tactical = null;
         _gestures?.Dispose();
         _gestures = null;
+        _pointerMapPosition = null;
         _camera = null;
         _presentationGeneration++;
         _presenting = false;
@@ -97,7 +100,11 @@ public partial class BattleScreen : Control
     public override void _Notification(int what)
     {
         if (what == NotificationWMWindowFocusOut || what == NotificationApplicationFocusOut)
+        {
             _gestures?.Cancel();
+            _pointerMapPosition = null;
+            HoverField(null);
+        }
     }
 
     public override void _Input(InputEvent input)
@@ -115,16 +122,16 @@ public partial class BattleScreen : Control
         switch (input)
         {
             case InputEventMouseMotion motion when _gestures.ActivePointerId == 0:
-                _gestures.PointerMove(0, ViewportToMap(motion.Position));
+                _gestures.PointerMove(0, TrackPointer(ViewportToMap(motion.Position)));
                 GetViewport().SetInputAsHandled();
                 break;
             case InputEventMouseButton mouse when _gestures.ActivePointerId == 0:
                 if (mouse.ButtonIndex is MouseButton.WheelUp or MouseButton.WheelDown or MouseButton.WheelLeft or MouseButton.WheelRight)
-                    MapInput(mouse);
+                    MapInput(mouse, ViewportToMap(mouse.Position));
                 else if (mouse.Canceled)
                     _gestures.Cancel(0);
                 else if (!mouse.Pressed && SourceButton(mouse.ButtonIndex) is { } button)
-                    _gestures.PointerUp(0, button, ViewportToMap(mouse.Position));
+                    _gestures.PointerUp(0, button, TrackPointer(ViewportToMap(mouse.Position)));
                 GetViewport().SetInputAsHandled();
                 break;
             case InputEventScreenDrag drag when _gestures.ActivePointerId == drag.Index + 1:
@@ -156,6 +163,7 @@ public partial class BattleScreen : Control
         _tactical = null;
         _gestures?.Dispose();
         _gestures = null;
+        _pointerMapPosition = null;
         _camera = null;
         _restart = null;
         _restartRequest = null;
@@ -323,6 +331,8 @@ public partial class BattleScreen : Control
             ?? throw new InvalidOperationException("Battle session returned a non-object state.");
         _board.RenderState(_state, _snapshot.VisibleUnitIds);
         SynchronizeTactical(next);
+        if (_pointerMapPosition is { } pointer)
+            HoverField(ProjectMapPoint(pointer));
         _overlay.ShowPublicState(_board.Projection, _tactical!.InteractiveCells, _snapshot.VisibleCells, _snapshot.Incoming);
         UpdateHeader();
         UpdateTactical();
@@ -428,7 +438,11 @@ public partial class BattleScreen : Control
         _world.AddChild(_overlay);
         _mapArea.GuiInput += MapInput;
         _mapArea.Resized += ResizeCamera;
-        _mapArea.MouseExited += () => _gestures?.PointerLeave();
+        _mapArea.MouseExited += () =>
+        {
+            _pointerMapPosition = null;
+            _gestures?.PointerLeave();
+        };
 
         var panel = new PanelContainer { CustomMinimumSize = new Vector2(340, 0) };
         panel.AddThemeStyleboxOverride("panel", new StyleBoxFlat
@@ -495,8 +509,16 @@ public partial class BattleScreen : Control
     {
         if (_camera is null || !_camera.HasViewport)
             return;
-        _world.Scale = Vector2.One * (float)_camera.Zoom;
-        _world.Position = new Vector2((float)_camera.FieldOrigin.X, (float)_camera.FieldOrigin.Y);
+        var scale = Vector2.One * (float)_camera.Zoom;
+        var position = new Vector2((float)_camera.FieldOrigin.X, (float)_camera.FieldOrigin.Y);
+        if (_world.Scale == scale && _world.Position == position)
+            return;
+        _world.Scale = scale;
+        _world.Position = position;
+        // The renderer remains the only hit owner after pan/zoom; a previous pixel
+        // result must not be reused at a different transform by Enter or the HUD.
+        if (_pointerMapPosition is { } pointer)
+            HoverField(ProjectMapPoint(pointer));
     }
 
     private void QueueZoom(double delta)
@@ -505,10 +527,24 @@ public partial class BattleScreen : Control
             _camera?.QueueZoom(delta);
     }
 
-    private void MapInput(InputEvent input)
+    private CameraPoint TrackPointer(CameraPoint point)
+    {
+        _pointerMapPosition = point;
+        return point;
+    }
+
+    private void MapInput(InputEvent input) => MapInput(input, null);
+
+    private void MapInput(InputEvent input, CameraPoint? capturedMapPosition)
     {
         if (!_bound || !IsInsideTree() || _gestures is null || _camera is null)
             return;
+        if (input is InputEventMouse mousePosition)
+            TrackPointer(capturedMapPosition ?? new(mousePosition.Position.X, mousePosition.Position.Y));
+        else if (input is InputEventPanGesture panPosition)
+            TrackPointer(new(panPosition.Position.X, panPosition.Position.Y));
+        else if (input is InputEventScreenTouch or InputEventScreenDrag)
+            _pointerMapPosition = null;
         if (IsInputBlocked)
         {
             // Inspection/cursor projection remains read-only while actions settle.
@@ -585,11 +621,11 @@ public partial class BattleScreen : Control
             return;
         if (_board.Pick(new Vector2((float)point.X, (float)point.Y)) is not { } picked)
             return;
-        var cell = new BoardCell(picked.X, picked.Y);
-        if (_tactical is null || !Current(_tactical.Stamp) || !_tactical.InteractiveCells.Contains(cell))
+        if (_tactical is null || !Current(_tactical.Stamp) || !_tactical.InteractiveCells.Contains(picked.Cell))
             return;
+        _tactical.Hover(_tactical.Stamp, picked);
         if (button == 0)
-            SelectCell(cell);
+            SelectHit(picked);
         else if (button == 2)
         {
             HandleTactical(_tactical.Back(_tactical.Stamp));
@@ -614,12 +650,12 @@ public partial class BattleScreen : Control
         _ => null,
     };
 
-    /// <summary>Cell interaction entry point also used by native contract checks.</summary>
-    public void SelectCell(BoardCell cell)
+    /// <summary>Explicit subject interaction entry point also used by native contract checks.</summary>
+    public void SelectHit(TacticalHit hit)
     {
         if (_tactical is null || !Current(_tactical.Stamp))
             return;
-        HandleTactical(_tactical.Click(_tactical.Stamp, cell));
+        HandleTactical(_tactical.Click(_tactical.Stamp, hit));
     }
 
     private void UpdateHeader()

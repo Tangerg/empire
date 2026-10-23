@@ -22,7 +22,7 @@ public enum TacticalRequestKind
 }
 public sealed record TacticalRequest(TacticalStamp Stamp, TacticalRequestKind Kind, JsonElement? Action);
 public sealed record TacticalInputResult(TacticalInputStatus Status, TacticalRequest? Request = null,
-    bool PreventDefault = false, BoardCell? Reveal = null, bool Center = false);
+    bool PreventDefault = false, BoardCell? Reveal = null, bool Center = false, bool CursorFocused = false);
 
 /// <summary>Only composition facts, never a mutable rule snapshot.</summary>
 public sealed record TacticalSelection
@@ -40,7 +40,8 @@ public sealed record TacticalSelection
         get; init;
     }
     public IReadOnlyList<BoardCell> Path { get; init; } = Array.Empty<BoardCell>();
-    public IReadOnlyList<BoardCell> Targets { get; init; } = Array.Empty<BoardCell>();
+    public IReadOnlyList<TacticalTarget> TargetSubjects { get; init; } = Array.Empty<TacticalTarget>();
+    public IReadOnlyList<BoardCell> Targets => Array.AsReadOnly(TargetSubjects.Select(target => target.Cell).ToArray());
     public string? Ability
     {
         get; init;
@@ -79,10 +80,11 @@ public sealed class TacticalSelectionController
     {
         get; private set;
     }
-    public BoardCell? Cursor
+    public TacticalHit? CursorHit
     {
         get; private set;
     }
+    public BoardCell? Cursor => CursorHit?.Cell;
     public int? InspectId
     {
         get; private set;
@@ -93,7 +95,7 @@ public sealed class TacticalSelectionController
     }
     public TacticalStamp Stamp => stamp;
     public IReadOnlySet<BoardCell> InteractiveCells => queries.InteractiveCells;
-    public BoardCell? HoverTarget => queries.Stamp == stamp && Cursor is { } at && Selection.Targets.Contains(at) ? at : null;
+    public BoardCell? HoverTarget => queries.Stamp == stamp && CursorHit is { } hit && AcceptsTarget(Selection, hit) ? hit.Cell : null;
     public bool ShowTactics => !Busy && queries.Stamp == stamp && queries.HumanTurn && Selection.Kind == TacticalSelectionKind.Idle;
 
     public TacticalSelectionController(ITacticalSelectionQueries queries)
@@ -108,7 +110,7 @@ public sealed class TacticalSelectionController
         queries = next;
         stamp = next.Stamp;
         Busy = false;
-        Cursor = null;
+        CursorHit = null;
         InspectId = null;
         Selection = Resting();
     }
@@ -121,12 +123,20 @@ public sealed class TacticalSelectionController
             return Result(TacticalInputStatus.StaleBinding);
         if (dispatched.Revision != stamp.Revision || next.Stamp.Revision < stamp.Revision)
             return Result(TacticalInputStatus.StaleRevision);
+        var advanced = next.Stamp.Revision != stamp.Revision;
         queries = next;
         stamp = next.Stamp;
         Busy = false;
         Selection = Resting();
+        if (advanced)
+        {
+            // A pixel hit belongs to its rendered revision. Only a new renderer
+            // pick or explicit keyboard focus may establish the next subject.
+            CursorHit = null;
+            InspectId = null;
+        }
         if (Cursor is { } cursor && !InteractiveCells.Contains(cursor))
-            Cursor = null;
+            CursorHit = null;
         return Result();
     }
 
@@ -162,22 +172,19 @@ public sealed class TacticalSelectionController
         return Action(new JsonObject { ["kind"] = "command", ["unit"] = unit, ["path"] = new JsonArray(path.Select(at => (JsonNode)Cell(at)).ToArray()), ["command"] = order });
     }
 
-    public TacticalInputResult Hover(TacticalStamp expected, BoardCell? at)
+    public TacticalInputResult Hover(TacticalStamp expected, TacticalHit? hit)
     {
         if (expected.Binding != stamp.Binding || queries.Stamp.Binding != stamp.Binding)
             return Result(TacticalInputStatus.StaleBinding);
         if (expected.Revision != stamp.Revision || queries.Stamp != stamp)
             return Result(TacticalInputStatus.StaleRevision);
-        if (at is { } candidate && !InteractiveCells.Contains(candidate))
+        if (hit is { } candidate && !InteractiveCells.Contains(candidate.Cell))
             return Leave(expected);
-        Cursor = at;
+        CursorHit = hit;
         if (Selection.Kind == TacticalSelectionKind.Site)
             return Result();
-        var unit = at is { } cell ? queries.UnitAt(cell) : null;
-        if (unit?.Visible == true)
-            InspectId = unit.Id;
-        else if (Selection.UnitId is null)
-            InspectId = null;
+        var unit = HitUnit(hit);
+        InspectId = unit?.Id ?? Selection.UnitId;
         return Result();
     }
 
@@ -187,7 +194,7 @@ public sealed class TacticalSelectionController
             return Result(TacticalInputStatus.StaleBinding);
         if (expected.Revision != stamp.Revision || queries.Stamp != stamp)
             return Result(TacticalInputStatus.StaleRevision);
-        Cursor = null;
+        CursorHit = null;
         return Result();
     }
 
@@ -202,7 +209,7 @@ public sealed class TacticalSelectionController
             return Result(TacticalInputStatus.Busy);
         Selection = Selection.Kind switch
         {
-            TacticalSelectionKind.Target => Selection with { Kind = TacticalSelectionKind.Destination, Targets = Array.Empty<BoardCell>(), Ability = null, Weapon = null, Hostile = false },
+            TacticalSelectionKind.Target => Selection with { Kind = TacticalSelectionKind.Destination, TargetSubjects = Array.Empty<TacticalTarget>(), Ability = null, Weapon = null, Hostile = false },
             TacticalSelectionKind.Destination => Pick(TacticalSelectionKind.Unit, Selection.UnitId),
             TacticalSelectionKind.DeploymentUnit => Pick(TacticalSelectionKind.Deploying),
             _ => Pick(TacticalSelectionKind.Idle),
@@ -212,50 +219,62 @@ public sealed class TacticalSelectionController
         return Result();
     }
 
-    private TacticalSelection Fresh(BoardCell at)
+    private TacticalUnit? HitUnit(TacticalHit? hit) =>
+        hit is { Kind: TacticalHitKind.Unit, UnitId: { } id }
+        && queries.Unit(id) is { Visible: true } unit && unit.At == hit.Cell ? unit : null;
+
+    private bool AcceptsTarget(TacticalSelection selection, TacticalHit hit) =>
+        (hit.Kind != TacticalHitKind.Unit || HitUnit(hit) is not null)
+        && selection.TargetSubjects.Any(target => target.Accepts(hit));
+
+    private TacticalSelection Fresh(TacticalHit hit)
     {
-        var unit = queries.UnitAt(at);
+        var unit = HitUnit(hit);
         if (unit is not null && queries.HumanTurn && unit.CanAct)
             return Pick(TacticalSelectionKind.Unit, unit.Id);
-        return unit is null && queries.HumanTurn && queries.CanOpenRecruitment(at)
-            ? new TacticalSelection { Kind = TacticalSelectionKind.Recruit, Destination = at }
-            : queries.IsSite(at)
-                ? new TacticalSelection { Kind = TacticalSelectionKind.Site, Destination = at }
+        if (hit.Kind != TacticalHitKind.Object)
+            return Pick(TacticalSelectionKind.Idle);
+        return queries.HumanTurn && queries.CanOpenRecruitment(hit.Cell)
+            ? new TacticalSelection { Kind = TacticalSelectionKind.Recruit, Destination = hit.Cell }
+            : queries.IsSite(hit.Cell)
+                ? new TacticalSelection { Kind = TacticalSelectionKind.Site, Destination = hit.Cell }
                 : Pick(TacticalSelectionKind.Idle);
     }
-    private TacticalSelection DeploymentAt(BoardCell at)
+
+    private TacticalSelection DeploymentAt(TacticalHit hit)
     {
-        var unit = queries.UnitAt(at);
+        var unit = HitUnit(hit);
         return unit is not null && queries.DeploymentUnits().Contains(unit.Id)
             ? Pick(TacticalSelectionKind.DeploymentUnit, unit.Id) : Pick(TacticalSelectionKind.Deploying);
     }
 
-    public TacticalInputResult Click(TacticalStamp expected, BoardCell at)
+    public TacticalInputResult Click(TacticalStamp expected, TacticalHit hit)
     {
         var guard = Guard(expected);
         if (guard != TacticalInputStatus.Ready)
             return Result(guard);
-        if (!InteractiveCells.Contains(at))
+        var at = hit.Cell;
+        if (!InteractiveCells.Contains(at) || hit.Kind == TacticalHitKind.Unit && HitUnit(hit) is null)
             return Result(TacticalInputStatus.Ignored);
         var selected = Selection;
         var unit = selected.UnitId is { } id ? queries.Unit(id) : null;
         switch (selected.Kind)
         {
             case TacticalSelectionKind.Deploying:
-                Selection = DeploymentAt(at);
+                Selection = DeploymentAt(hit);
                 break;
             case TacticalSelectionKind.DeploymentUnit:
                 if (unit is null)
                     Selection = Pick(TacticalSelectionKind.Deploying);
-                else if (queries.DeploymentSpots(unit.Id).Contains(at))
+                else if (queries.DeploymentTargets(unit.Id).Any(target => target.Accepts(hit)))
                     return Action(new JsonObject { ["kind"] = "deployUnit", ["unit"] = unit.Id, ["at"] = Cell(at) });
                 else
-                    Selection = DeploymentAt(at);
+                    Selection = DeploymentAt(hit);
                 break;
             case TacticalSelectionKind.Target:
             case TacticalSelectionKind.Tactic:
             case TacticalSelectionKind.Disembark:
-                if (!selected.Targets.Contains(at))
+                if (!AcceptsTarget(selected, hit))
                 {
                     Selection = Pick(TacticalSelectionKind.Idle);
                     break;
@@ -264,15 +283,15 @@ public sealed class TacticalSelectionController
                     return Action(new JsonObject { ["kind"] = "tactic", ["commander"] = selected.Commander, ["tactic"] = selected.Ability, ["target"] = Cell(at) });
                 if (selected.Kind == TacticalSelectionKind.Disembark)
                     return Action(new JsonObject { ["kind"] = "disembark", ["carrier"] = selected.UnitId, ["unit"] = selected.Passenger, ["at"] = Cell(at) });
-                return Command(new TacticalCommand("", selected.Ability!, selected.Weapon, false, selected.Hostile, selected.Targets), selected.UnitId!.Value, selected.Path, at);
+                return Command(new TacticalCommand("", selected.Ability!, selected.Weapon, false, selected.Hostile, selected.TargetSubjects), selected.UnitId!.Value, selected.Path, at);
             case TacticalSelectionKind.Unit:
             case TacticalSelectionKind.Destination:
                 if (unit is null || !queries.HumanTurn || !unit.CanAct)
                 {
-                    Selection = Fresh(at);
+                    Selection = Fresh(hit);
                     break;
                 }
-                var clicked = queries.UnitAt(at);
+                var clicked = HitUnit(hit);
                 if (clicked is { Visible: true } && queries.AreEnemies(unit.Id, clicked.Id) && ArmBestAttack(unit, clicked))
                     break;
                 if (queries.MoveStops(unit.Id).Contains(at) && queries.PathTo(unit.Id, at) is { } path)
@@ -283,14 +302,13 @@ public sealed class TacticalSelectionController
                     Selection = new TacticalSelection { Kind = TacticalSelectionKind.Destination, UnitId = unit.Id, Destination = at, Path = Copy(path) };
                 }
                 else
-                    Selection = Fresh(at);
+                    Selection = Fresh(hit);
                 break;
             default:
-                Selection = Fresh(at);
+                Selection = Fresh(hit);
                 break;
         }
-        var inspect = queries.UnitAt(at);
-        InspectId = inspect?.Visible == true ? inspect.Id : null;
+        InspectId = HitUnit(hit)?.Id;
         return Result();
     }
 
@@ -326,7 +344,7 @@ public sealed class TacticalSelectionController
         Ability = option.Ability,
         Weapon = option.Weapon,
         Hostile = option.Hostile,
-        Targets = Copy(option.Targets),
+        TargetSubjects = Array.AsReadOnly(option.TargetSubjects.ToArray()),
     };
 
     public TacticalInputResult ChooseCommand(TacticalStamp expected, string keyOrAbility)
@@ -362,7 +380,7 @@ public sealed class TacticalSelectionController
             return Result(TacticalInputStatus.Ignored);
         if (option.Targets.Count == 1)
             return Action(new JsonObject { ["kind"] = "tactic", ["commander"] = option.Commander, ["tactic"] = option.Id, ["target"] = Cell(option.Targets[0]) });
-        Selection = new TacticalSelection { Kind = TacticalSelectionKind.Tactic, Commander = option.Commander, Ability = option.Id, Targets = Copy(option.Targets) };
+        Selection = new TacticalSelection { Kind = TacticalSelectionKind.Tactic, Commander = option.Commander, Ability = option.Id, TargetSubjects = Array.AsReadOnly(option.Targets.Select(TacticalTarget.AtCell).ToArray()) };
         return Result();
     }
 
@@ -388,7 +406,7 @@ public sealed class TacticalSelectionController
         var option = queries.Passengers(id).FirstOrDefault(value => value.Id == passenger);
         if (option is null || option.Spots.Count == 0)
             return Result(TacticalInputStatus.Ignored);
-        Selection = new TacticalSelection { Kind = TacticalSelectionKind.Disembark, UnitId = id, Passenger = passenger, Targets = Copy(option.Spots) };
+        Selection = new TacticalSelection { Kind = TacticalSelectionKind.Disembark, UnitId = id, Passenger = passenger, TargetSubjects = Array.AsReadOnly(option.Spots.Select(TacticalTarget.AtCell).ToArray()) };
         return Result();
     }
 
@@ -419,6 +437,11 @@ public sealed class TacticalSelectionController
         InspectId = id;
         return new TacticalInputResult(TacticalInputStatus.Ready, Reveal: queries.Unit(id)?.At, Center: true);
     }
+
+    // Keyboard navigation deliberately focuses canonical subjects. Pointer hits never use this path.
+    private TacticalHit KeyboardFocus(BoardCell at) => queries.UnitAt(at) is { Visible: true } unit
+        ? TacticalHit.Unit(at, unit.Id)
+        : queries.IsSite(at) || queries.CanOpenRecruitment(at) ? TacticalHit.Object(at) : TacticalHit.Ground(at);
 
     public TacticalInputResult Key(TacticalStamp expected, string key)
     {
@@ -476,11 +499,11 @@ public sealed class TacticalSelectionController
                 reach = score;
             }
             if (best is { } target)
-                Hover(expected, target);
-            return new TacticalInputResult(TacticalInputStatus.Ready, PreventDefault: true, Reveal: best);
+                Hover(expected, KeyboardFocus(target));
+            return new TacticalInputResult(TacticalInputStatus.Ready, PreventDefault: true, Reveal: best, CursorFocused: best is not null);
         }
         if (k == "enter")
-            return (Cursor is { } at ? Click(expected, at) : Result(TacticalInputStatus.Ignored)) with
+            return (CursorHit is { } hit ? Click(expected, hit) : Result(TacticalInputStatus.Ignored)) with
             {
                 PreventDefault = true
             };
@@ -531,7 +554,7 @@ public sealed class TacticalSelectionController
                         break;
                     case TacticalSelectionKind.DeploymentUnit when unit is not null:
                         selected = unit.At;
-                        move.AddRange(queries.DeploymentSpots(unit.Id));
+                        move.AddRange(queries.DeploymentTargets(unit.Id).Select(target => target.Cell));
                         break;
                     case TacticalSelectionKind.Disembark:
                         selected = unit?.At;

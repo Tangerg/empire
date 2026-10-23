@@ -59,7 +59,7 @@ public sealed class AbilityCommands(AbilityRules rules, TacticalCommands command
                 StateJson.Number(weapon["minRange"], "minRange"),
                 StateJson.Number(weapon["maxRange"], "maxRange"));
             options.Add(new(id is null ? ability.Id : $"{ability.Id}:{id}", ability.Id, id,
-                ability.SelfTargeted, targets, ability.Engagement, range));
+                ability.TargetKind, targets, ability.Engagement, range));
         }
     }
 

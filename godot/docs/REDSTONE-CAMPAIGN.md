@@ -29,8 +29,9 @@ projected by the existing campaign bridge, not replaced with a sample roster.
   and no recruitment. No site gained invented recruit options.
 
 Click a site to pin its owner and use instructions while moving into the HUD.
-An actionable friendly actor on a site retains unit-selection priority. Click
-another site or actor to switch; right-click, Esc or the close button clears it.
+A visible actor body selects that actor; the independently visible site facade
+selects the site, without inferring an occupant from its cell. Click another site
+or actor to switch; right-click, Esc or the close button clears it.
 Drag or scroll to pan, and use Ctrl/Cmd-scroll or −/+ to zoom. The default camera
 remains 1.25; map scale, actor proportions and the original painting are unchanged.
 
@@ -39,8 +40,10 @@ remains 1.25; map scale, actor proportions and the original painting are unchang
 `data/scenes/c01-03-painted-ground.json` registers
 `assets/native/scenes/redstone.png`, whose SHA-256 remains
 `0557263dd9d53f3cb95a357586975dec24aa37bd0806eb6026ef8407db3181d1`.
-Its source-image foreground polygons own visual occlusion and selection geometry,
-not movement legality or combat state. The level checksum uses canonical JSON,
+Its source-image material polygons own visual occlusion. Independently authored
+pointer contours own building targets; typed ground hits cannot reveal a hidden
+occupant. Neither polygon owns movement legality or combat state. See the
+[painted interaction contract](PAINTED-INTERACTION-CONTRACT.md). The level checksum uses canonical JSON,
 not whitespace. Fixed painted terrain cannot support arbitrary elevation editing.
 All new mission, support and objective-progress text is in `Localization/zh_CN.po`.
 Alternative (`any`) progress says “任选其一”; it is not a mandatory stage sequence.

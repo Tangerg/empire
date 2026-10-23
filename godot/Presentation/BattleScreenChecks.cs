@@ -80,7 +80,7 @@ public partial class BattleScreenChecks : Node
             materials.TerrainTags[actorTerrain] = canonicalOutside ? [] : ["outside"];
             screen.ConfigureGround(TerrainView.Factory(materials));
 
-            screen.SelectCell(actor.At);
+            screen.SelectHit(TacticalHit.Unit(actor.At, actor.Id));
             Require((screen.SelectedUnitId == actor.Id) == !canonicalOutside,
                 "Canonical terrain must govern selection when material tags disagree.");
             screen._UnhandledKeyInput(new InputEventKey { Pressed = true, Keycode = Key.Escape });
@@ -161,8 +161,8 @@ public partial class BattleScreenChecks : Node
         Require(screen.RecentMessages.Count == 1, "Event text must wait until its animation completes.");
         Require(screen.IsPresenting && screen.Board.IsPresenting, "Accepted move must hold the presentation gate.");
         var revision = session.GetSnapshot().Revision;
-        screen.SelectCell(destination);
-        screen.SelectCell(session.GetTacticalQueries(0).Unit(2)!.At);
+        screen.SelectHit(TacticalHit.Ground(destination));
+        screen.SelectHit(TacticalHit.Unit(session.GetTacticalQueries(0).Unit(2)!.At, 2));
         screen.Refresh();
         Require(session.GetSnapshot().Revision == revision && screen.SelectedUnitId is null,
             "Repeated clicks and refresh must not dispatch or change selection during playback.");
@@ -221,8 +221,8 @@ public partial class BattleScreenChecks : Node
         RemoveChild(screen);
         staleSave.EmitSignal(Button.SignalName.Pressed);
         Require(saves == 0, "Unmounted application callbacks must not save or load.");
-        screen.SelectCell(session.GetTacticalQueries(0).Unit(2)!.At);
-        screen.SelectCell(destination);
+        screen.SelectHit(TacticalHit.Unit(session.GetTacticalQueries(0).Unit(2)!.At, 2));
+        screen.SelectHit(TacticalHit.Ground(destination));
         Require(last.GetSnapshot().Revision == lastRevision, "Unmounted callbacks must not dispatch.");
         Require(!screen.IsPresenting && !screen.Board.IsPresenting, "Unmount must release all presentation waiters.");
         screen.QueueFree();
@@ -236,7 +236,7 @@ public partial class BattleScreenChecks : Node
             get; set;
         }
         public ITacticalSelectionQueries GetTacticalQueries(long binding) => new StampedQueries(inner.GetTacticalQueries(binding), new(binding, Revision));
-        public TacticalHudProjection ProjectHud(TacticalStamp stamp, TacticalSelection selection, BoardCell? cursor, int? inspectId, bool busy)
+        public TacticalHudProjection ProjectHud(TacticalStamp stamp, TacticalSelection selection, TacticalHit? cursor, int? inspectId, bool busy)
         {
             var source = inner.ProjectHud(stamp with
             {
@@ -280,14 +280,14 @@ public partial class BattleScreenChecks : Node
             "The screen backdrop must be below all negative-depth terrain layers.");
         var before = session.GetSnapshot();
         var beforeState = before.State.GetRawText();
-        screen.SelectCell(session.GetTacticalQueries(0).Unit(2)!.At);
+        screen.SelectHit(TacticalHit.Unit(session.GetTacticalQueries(0).Unit(2)!.At, 2));
         Require(screen.SelectedUnitId == 2 && session.GetSnapshot().Revision == before.Revision,
             "Selecting Torren must not advance canonical state.");
         var queries = session.GetTacticalQueries(0);
         var destination = queries.MoveStops(2).First(cell => cell != session.GetTacticalQueries(0).Unit(2)!.At
             && queries.CommandsAt(2, cell) is { Count: 1 } commands && commands[0].SelfTargeted);
         var staleTurnButton = Buttons(screen).Single(button => button.Text == "结束回合");
-        screen.SelectCell(destination);
+        screen.SelectHit(TacticalHit.Ground(destination));
         var after = session.GetSnapshot();
         Require(after.Revision == before.Revision + 1 && screen.DisplayedRevision == after.Revision,
             "A sole self-targeted destination command dispatches without a confirmation menu.");
@@ -334,20 +334,20 @@ public partial class BattleScreenChecks : Node
         Require(session.GetSnapshot().Revision == snapshot.Revision, "Removed global button cannot dispatch after same-revision selection refresh.");
         Keypress(Key.Escape);
         Require(screen.Selection?.Kind == TacticalSelectionKind.Idle, "Native Escape follows the source back operation.");
-        screen.SelectCell(session.GetTacticalQueries(0).Unit(2)!.At);
+        screen.SelectHit(TacticalHit.Unit(session.GetTacticalQueries(0).Unit(2)!.At, 2));
         var selected = screen.SelectedUnitId;
         var queries = session.GetTacticalQueries(0);
         var destination = queries.MoveStops(2).First(at => at != session.GetTacticalQueries(0).Unit(2)!.At && queries.CommandsAt(2, at) is { Count: 1 } commands && commands[0].SelfTargeted);
         screen.SetApplicationBusy(true);
         var busyReaction = Buttons(screen).First(button => button.GetMeta("hud_key", "").AsString().StartsWith("stances/reaction:", StringComparison.Ordinal));
-        screen.SelectCell(destination);
+        screen.SelectHit(TacticalHit.Ground(destination));
         busyReaction.EmitSignal(Button.SignalName.Pressed);
         Keypress(Key.E);
         Keypress(Key.Escape);
         Require(session.GetSnapshot().Revision == snapshot.Revision && screen.SelectedUnitId == selected, "Application busy blocks board, HUD actions, end-turn and back input.");
         screen.SetApplicationBusy(false);
         Require(screen.SelectedUnitId == selected, "Clearing application busy preserves the valid selection.");
-        screen.SelectCell(destination);
+        screen.SelectHit(TacticalHit.Ground(destination));
         Require(session.Revision == snapshot.Revision + 1, "Busy release re-enables source automatic destination dispatch.");
         var undo = Buttons(screen).Single(button => button.Text == "撤销");
         Require(!undo.Disabled, "Real undo button becomes enabled after a reversible move.");
@@ -420,7 +420,7 @@ public partial class BattleScreenChecks : Node
         screen.Board.AnimationsEnabled = false;
         screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
         var origin = session.GetTacticalQueries(0).Unit(2)!.At;
-        screen.SelectCell(origin);
+        screen.SelectHit(TacticalHit.Unit(origin, 2));
         Button Reaction(string id) => Buttons(screen).Single(button => button.GetMeta("hud_key", "").AsString() == "stances/reaction:" + id);
         var buttons = Buttons(screen).Where(button => button.GetMeta("hud_key", "").AsString().StartsWith("stances/reaction:", StringComparison.Ordinal)).ToArray();
         Require(buttons.Select(button => button.Text).SequenceEqual(reactions.All().Select(stance => presentation.Content.ReactionName(stance.Id)))
@@ -435,7 +435,7 @@ public partial class BattleScreenChecks : Node
             "The actual HUD button must commit a registered reaction through the tactical session port.");
         staleGuard.EmitSignal(Button.SignalName.Pressed);
         Require(session.GetSnapshot().Revision == 1, "Removed reaction controls cannot replay after a HUD dispatch.");
-        screen.SelectCell(origin);
+        screen.SelectHit(TacticalHit.Unit(origin, 2));
         var staleCustom = Reaction("plugin-dodge");
         var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
         var guard = hud.Projection!.Sections.Single(section => section.Key == "stances").Rows.Single(row => row.Key == "reaction:guard").Intent!;
@@ -446,10 +446,10 @@ public partial class BattleScreenChecks : Node
             .Single(unit => unit["id"]!.GetValue<int>() == 2)["reaction"]!.GetValue<string>() == "guard",
             "Still-mounted HUD controls cannot use stale choices after the live session revision changes.");
         screen.Refresh();
-        screen.SelectCell(origin);
+        screen.SelectHit(TacticalHit.Unit(origin, 2));
         Reaction("plugin-dodge").EmitSignal(Button.SignalName.Pressed);
         Require(session.Revision == 3, "Refreshing the stale view must restore the actual HUD action path.");
-        screen.SelectCell(origin);
+        screen.SelectHit(TacticalHit.Unit(origin, 2));
         var beforeUndo = Reaction("guard");
         Require(session.Undo(session.Revision).Accepted && session.Revision == 4, "External undo fixture did not advance revision.");
         beforeUndo.EmitSignal(Button.SignalName.Pressed);
@@ -516,7 +516,7 @@ public partial class BattleScreenChecks : Node
                 && !Descendants(screen).OfType<Control>().Any(control => control.TooltipText.Contains("c01.archer", StringComparison.Ordinal)),
                 "The actual board notice uses injected wording and never exposes raw resource diagnostics in a tooltip.");
             var origin = session.GetTacticalQueries(0).Unit(2)!.At;
-            screen.SelectCell(origin);
+            screen.SelectHit(TacticalHit.Unit(origin, 2));
             var nativeHud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
             var hud = nativeHud.Projection!;
             var unitRows = hud.Sections.Single(section => section.Key == "unit").Rows;
@@ -527,13 +527,13 @@ public partial class BattleScreenChecks : Node
                 && unitRows.Single(row => row.Key == "blurb").Label == replacements["content.units.c01.swordsman.blurb"]
                 && guard.Text == replacements["content.reactions.guard.name"] && guard.TooltipText == replacements["content.reactions.guard.hint"],
                 "Mounted unit content and reaction labels and hints use supplied presentation text, not canonical definitions.");
-            screen.SelectCell(origin);
+            screen.SelectHit(TacticalHit.Unit(origin, 2));
             var attack = Buttons(screen).Single(button => button.GetMeta("hud_key", "").AsString() == "commands/attack:c01.border-blade");
             Require(attack.Text.Contains(replacements["content.abilities.attack.name"], StringComparison.Ordinal)
                 && attack.Text.Contains(replacements["content.weapons.c01.border-blade.name"], StringComparison.Ordinal)
                 && attack.TooltipText.Contains(replacements["content.abilities.attack.hint"], StringComparison.Ordinal),
                 "Mounted weapon command names and range hints compose supplied ability and weapon text.");
-            screen.SelectCell(defenderAt);
+            screen.SelectHit(TacticalHit.Unit(defenderAt, session.GetTacticalQueries(0).UnitAt(defenderAt)!.Id));
             Require(screen.Selection?.Kind == TacticalSelectionKind.Target,
                 "Selecting the adjacent authored enemy must arm a real attack preview without dispatching.");
             using var hoverTarget = new InputEventKey { Keycode = Key.Right, Pressed = true };
@@ -677,7 +677,7 @@ public partial class BattleScreenChecks : Node
         public TacticalAttack Attack(int unit, BoardCell target, BoardCell from, string weapon) => inner.Attack(unit, target, from, weapon);
         public IReadOnlyList<int> DeploymentUnits() => inner.DeploymentUnits();
         public IReadOnlyList<BoardCell> DeploymentZone() => inner.DeploymentZone();
-        public IReadOnlyList<BoardCell> DeploymentSpots(int unit) => inner.DeploymentSpots(unit);
+        public IReadOnlyList<TacticalTarget> DeploymentTargets(int unit) => inner.DeploymentTargets(unit);
         public IReadOnlyList<TacticalTactic> Tactics() => inner.Tactics();
         public IReadOnlyList<TacticalPassenger> Passengers(int carrier) => inner.Passengers(carrier);
         public IReadOnlyList<BoardCell> DirectionSteps(BoardCell from) => inner.DirectionSteps(from);

@@ -1,5 +1,6 @@
 #nullable enable
 using System;
+using Empire.Presentation.Tactical;
 using System.Linq;
 using System.Text.Json.Nodes;
 using Empire.Core.Engine;
@@ -46,6 +47,8 @@ public partial class DynamicStateChecks : Node
         var engine = new BattleEngine(packs);
         CheckCatalogBinding(assets, packs);
         CheckPaintedOccluders(packs);
+        PaintedPickingChecks.CheckAdmission(Require);
+        PaintedPickingChecks.CheckOpenMouth(this, Require);
         PaintedInteractionChecks.Run(Require);
         var levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json");
         var environment = EnvironmentCatalog.Load();
@@ -140,12 +143,12 @@ public partial class DynamicStateChecks : Node
                 .GetProperty("tags").EnumerateArray().Any(tag => tag.GetString() == "outside"))
             .Select(item => new Empire.Core.Geometry.Coord(item.index % width, item.index / width)).ToHashSet();
         var projection = new BoardProjection(engine.Grids.Get("square4"), art.CreatePlane, map, playable);
-        var ground = PaintedGroundView.Create(art, texture, map);
+        var ground = PaintedGroundView.Create(art, texture, map, engine.Catalog);
         AddChild(ground);
         ground.Render(projection, map["tiles"]!.AsArray().Select(tile => tile!.GetValue<string>()).ToArray(),
             map["elevation"]!.AsArray().Select(height => height!.GetValue<int>()).ToArray(),
             new Vector2I(width, map["height"]!.GetValue<int>()));
-        Require(ground.DepthEntries.Count == art.Occluders.Length, "Every painted foreground contour must share the standing depth pipeline.");
+        Require(ground.DepthEntries.Count == art.Occluders.Sum(item => item.Parts.Length), "Every painted foreground contour must share the standing depth pipeline.");
         foreach (var entry in ground.DepthEntries)
         {
             var polygon = (Polygon2D)entry.Node;
@@ -156,7 +159,7 @@ public partial class DynamicStateChecks : Node
         }
         ground.Free();
         Require(GodotObject.IsInstanceValid(texture), "Freeing foreground nodes must not dispose their borrowed mother texture.");
-        var first = art.Occluders[0];
+        var first = art.Occluders[0].Parts[0];
         var invalid = new PaintedGroundDocument
         {
             LevelId = art.LevelId,
@@ -167,13 +170,14 @@ public partial class DynamicStateChecks : Node
             OriginPixels = art.OriginPixels,
             CellXPixels = art.CellXPixels,
             CellYPixels = art.CellYPixels,
-            Occluders = [new PaintedOccluder { Id = "Crossed", ContactCell = first.ContactCell,
-                GroundFrontPixels = first.GroundFrontPixels, PolygonPixels = [[10, 10], [50, 50], [10, 50], [50, 10]] }]
+            Occluders = [new PaintedOccluder { Id = "Crossed", Parts = [new PaintedOccluderPart
+            { Id = "Body", ContactCell = first.ContactCell, GroundFrontPixels = first.GroundFrontPixels,
+                PolygonPixels = [[10, 10], [50, 50], [10, 50], [50, 10]], Pointer = new PaintedPointer { Kind = "pass-through" } }] }]
         };
         var rejected = false;
         try
         {
-            PaintedGroundView.Create(invalid, texture, map).Free();
+            PaintedGroundView.Create(invalid, texture, map, engine.Catalog).Free();
         }
         catch (InvalidOperationException) { rejected = true; }
         Require(rejected && GodotObject.IsInstanceValid(texture), "Crossed foreground polygons must fail admission without destroying borrowed resources.");
@@ -191,7 +195,7 @@ public partial class DynamicStateChecks : Node
             for (var x = -30; x <= 30 && !selectable; x += 3)
             {
                 var point = Current().Position + new Vector2(x, y);
-                if (body.IsPixelOpaque(body.ToLocal(board.ToGlobal(point))) && board.Pick(point) == target)
+                if (body.IsPixelOpaque(body.ToLocal(board.ToGlobal(point))) && board.Pick(point) is { Kind: TacticalHitKind.Object, UnitId: null } hit && hit.Cell == new BoardCell(target.X, target.Y))
                     selectable = true;
             }
         Require(selectable, "Visible opaque structure pixels must select their canonical target cell.");

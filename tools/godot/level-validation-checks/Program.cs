@@ -104,7 +104,7 @@ learned["units"]![0]!["learnedAbilities"] = new JsonArray("late-capability");
 var beforeRegistration = liveCapabilities.Issues(learned);
 if (!beforeRegistration.Any(issue => issue.Contains("late-capability", StringComparison.Ordinal)))
     throw new Exception("Unregistered learned ability was not rejected");
-lateAbilities.Register(new AbilityDefinition("late-capability"));
+lateAbilities.Register(new AbilityDefinition("late-capability", AbilityTargetKind.Self));
 if (!liveCapabilities.Issues(sample).SequenceEqual(liveCapabilities.Issues(learned)))
     throw new Exception("Registered ability owner was not consulted by the validator");
 if (engine.Abilities.Has("late-capability")) throw new Exception("Mutable registry clone leaked into composed engine");

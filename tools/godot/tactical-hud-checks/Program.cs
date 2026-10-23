@@ -28,9 +28,25 @@ foreach (var test in fixture["cases"]!.AsArray().OfType<JsonObject>())
     var casePresentation = ReferenceEquals(caseEngine, engine) ? presentation : FixtureBattleText.Session(root, caseEngine, gameText);
     var session = GrayFlagSession.FromSave(new(caseEngine, casePresentation, new JsonArray()), caseEngine.SaveBattle(state));
     var before = EcmaJson.Stringify(session.Snapshot());
+    // The historical HUD fixture records semantic coordinates, not painted pointer coverage.
+    TacticalHit SourceHit(BoardCell cell)
+    {
+        var q = session.GetTacticalQueries(19);
+        if (q.UnitAt(cell) is { } unit)
+            return TacticalHit.Unit(cell, unit.Id);
+        return q.IsSite(cell) || state["structures"]!.AsArray().OfType<JsonObject>()
+            .Any(value => value["x"]!.GetValue<int>() == cell.X && value["y"]!.GetValue<int>() == cell.Y)
+            ? TacticalHit.Object(cell) : TacticalHit.Ground(cell);
+    }
+    TacticalTarget SourceTarget(BoardCell cell) => SourceHit(cell) switch
+    {
+        { Kind: TacticalHitKind.Unit, UnitId: { } unit } => TacticalTarget.Unit(cell, unit),
+        { Kind: TacticalHitKind.Object } => TacticalTarget.Object(cell),
+        _ => TacticalTarget.AtCell(cell),
+    };
     var at = new BoardCell(test["tile"]!["x"]!.GetValue<int>(), test["tile"]!["y"]!.GetValue<int>());
-    var selection = new TacticalSelection { Kind = Enum.Parse<TacticalSelectionKind>(Text(test["kind"])), UnitId = test["unit"]?.GetValue<int>(), Destination = at, Weapon = test["weapon"] is null ? null : Text(test["weapon"]), Ability = test["ability"] is null ? null : Text(test["ability"]), Targets = test["target"] is JsonObject target ? new[] { new BoardCell(target["x"]!.GetValue<int>(), target["y"]!.GetValue<int>()) } : [] };
-    var projection = session.ProjectHud(new(19, 0), selection, test["cursor"] is JsonObject aimed ? new BoardCell(aimed["x"]!.GetValue<int>(), aimed["y"]!.GetValue<int>()) : null, test["inspect"]?.GetValue<int>(), test["busy"]?.GetValue<bool>() ?? false);
+    var selection = new TacticalSelection { Kind = Enum.Parse<TacticalSelectionKind>(Text(test["kind"])), UnitId = test["unit"]?.GetValue<int>(), Destination = at, Weapon = test["weapon"] is null ? null : Text(test["weapon"]), Ability = test["ability"] is null ? null : Text(test["ability"]), TargetSubjects = test["target"] is JsonObject target ? new[] { SourceTarget(new(target["x"]!.GetValue<int>(), target["y"]!.GetValue<int>())) } : [] };
+    var projection = session.ProjectHud(new(19, 0), selection, test["cursor"] is JsonObject aimed ? SourceHit(new(aimed["x"]!.GetValue<int>(), aimed["y"]!.GetValue<int>())) : null, test["inspect"]?.GetValue<int>(), test["busy"]?.GetValue<bool>() ?? false);
     Require(before == EcmaJson.Stringify(session.Snapshot()), name + " pure projection");
     Require(projection.Hint == Text(test["hint"]), name + " authored Game.hudView hint");
     Require(Text(test["sourceComposition"]) == "GameController.hudView → Hud.render", name + " actual source composition provenance");
@@ -124,7 +140,7 @@ foreach (var test in fixture["cases"]!.AsArray().OfType<JsonObject>())
         Require(Clean(objectives[i].Label.Replace(" · ", "")) == Clean(Text(test["objectives"]![i])), name + " objective labels");
     try
     {
-        session.ProjectHud(new(19, 1), selection, at, null, false);
+        session.ProjectHud(new(19, 1), selection, TacticalHit.Ground(at), null, false);
         throw new Exception("stale HUD accepted");
     }
     catch (Empire.Core.DomainInvariantException) { checks++; }

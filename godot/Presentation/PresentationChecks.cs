@@ -1,5 +1,6 @@
 #nullable enable
 using System;
+using Empire.Presentation.Tactical;
 using System.Linq;
 using System.Text.Json.Nodes;
 using Godot;
@@ -51,7 +52,7 @@ public partial class PresentationChecks : Node
         Require(movement.Battlefield(state).TraversalCost(new(7, 1), new(8, 1), "foot") is null,
             "The registered central rock must be blocked by the composed domain terrain.");
         var borrowed = ResourceLoader.Load<Texture2D>(art.ResourcePath);
-        var view = PaintedGroundView.Create(art, borrowed, map);
+        var view = PaintedGroundView.Create(art, borrowed, map, engine.Catalog);
         var authored = new Node2D();
         view.ConfigureAuthoredGround(authored);
         view.Render(projection, tiles, new int[tiles.Length], new(16, 8));
@@ -81,7 +82,7 @@ public partial class PresentationChecks : Node
             for (var x = -18; x <= 18 && !bodyHit; x++)
             {
                 var point = unit.Position + new Vector2(x, y);
-                if (sprite.IsPixelOpaque(sprite.ToLocal(board.ToGlobal(point))) && board.Pick(point) == expected)
+                if (sprite.IsPixelOpaque(sprite.ToLocal(board.ToGlobal(point))) && board.Pick(point) is { Kind: TacticalHitKind.Unit, UnitId: 2 } hit && hit.Cell == new BoardCell(expected.X, expected.Y))
                     bodyHit = true;
             }
         Require(bodyHit, "An opaque visible unit body must select its canonical cell above its ground footprint.");
@@ -106,7 +107,8 @@ public partial class PresentationChecks : Node
                 if (!sprite.IsPixelOpaque(sprite.ToLocal(global)) || !houseSprite.IsPixelOpaque(houseSprite.ToLocal(global)))
                     continue;
                 overlap = true;
-                Require(board.Pick(point) is null, "Opaque foreground architecture must not select its hidden occupant through the shared cell.");
+                Require(board.Pick(point) is { Kind: TacticalHitKind.Object, UnitId: null } hit
+                    && hit.Cell == new BoardCell(cell.X, cell.Y), "Opaque foreground architecture must select the object, never its hidden same-cell occupant.");
             }
         Require(overlap, "The occlusion regression must exercise actual overlapping opaque pixels.");
         board.RenderState(state);

@@ -9,10 +9,13 @@
   <ItemGroup>
     <ProjectReference Include="../../../godot/Empire.Core/Empire.Core.csproj" />
     <Compile Include="../../../godot/Application/GrayFlagSession.cs" Link="GrayFlagSession.cs" />
+    <Compile Include="../../../godot/Application/GrayFlagSession.Tactical.cs" Link="GrayFlagSession.Tactical.cs" />
     <Compile Include="$(HudRoot)/GrayFlagSession.Hud.cs" Link="GrayFlagSession.Hud.cs" />
     <Compile Include="../../../godot/Presentation/BattlePresentationModels.cs" Link="BattlePresentationModels.cs" />
     <Compile Include="../../../godot/Presentation/Feedback/*.cs" Link="Feedback/%(Filename)%(Extension)" />
     <Compile Include="../../../godot/Presentation/Tactical/TacticalHudModels.cs" />
+    <Compile Include="../../../godot/Presentation/Tactical/TacticalHit.cs" />
+    <Compile Include="../../../godot/Presentation/Tactical/TacticalTarget.cs" />
     <Compile Include="../../../godot/Presentation/Tactical/ITacticalSelectionQueries.cs" />
     <Compile Include="../../../godot/Presentation/Tactical/TacticalSelection.cs" />
     <Compile Include="../../../godot/Localization/GameText.cs" Link="Localization/GameText.cs" />

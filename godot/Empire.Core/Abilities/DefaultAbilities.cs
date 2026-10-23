@@ -8,9 +8,8 @@ namespace Empire.Core.Abilities;
 public static class DefaultAbilities
 {
     public static AbilityRegistry Create() => new AbilityRegistry()
-        .Register(new("attack")
+        .Register(new("attack", AbilityTargetKind.UnitOrStructure)
         {
-            SelfTargeted = false,
             Priority = 10,
             Tags = ["attack"],
             Engagement = "attack",
@@ -22,9 +21,8 @@ public static class DefaultAbilities
             Execute = (rules, query, target, emit) => rules.Combat.ExecuteAttack(query.State, query.Unit, query.At,
                 target ?? throw new DomainInvariantException("attack requires a target"), query.WeaponId, emit),
         })
-        .Register(new("heal")
+        .Register(new("heal", AbilityTargetKind.Unit)
         {
-            SelfTargeted = false,
             Priority = 20,
             Tags = ["healing"],
             Targets = (rules, query) => rules.Space.HealTargetsFrom(query.State, query.Unit, query.At)
@@ -32,13 +30,13 @@ public static class DefaultAbilities
             Execute = (rules, query, target, emit) => Heal(rules, query,
                 target ?? throw new DomainInvariantException("heal requires a target"), emit),
         })
-        .Register(new("capture")
+        .Register(new("capture", AbilityTargetKind.Self)
         {
             Priority = 5,
             Usable = (rules, query) => rules.Support.CanCapture(query.State, query.Unit, query.At),
             Execute = (rules, query, _, emit) => rules.Support.Capture(query.State, query.Unit, query.At, emit),
         })
-        .Register(new("wait")
+        .Register(new("wait", AbilityTargetKind.Self)
         {
             Priority = 90
         });

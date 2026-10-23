@@ -1,5 +1,6 @@
 #nullable enable
 using System;
+using Empire.Presentation.Tactical;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -79,7 +80,10 @@ public partial class OathPadChecks : Node
             Require(Pad().GetMeta("visual_state").AsString() == name, "The logical lifecycle chooses the matching physical state.");
             Require(Pad().ZIndex < Actor().ZIndex, "Floor art must draw below same-cell shoes, not win a standing tie.");
             Require(Pad().ZIndex == board.Projection.LayerAtDepth(board.Projection.Depth(board.Projection.LogicalCellContact(target)), BoardDepthLayer.Surface), "The pad uses the existing surface depth partition.");
-            Require(board.Pick(expectedContact) == target, "Same-cell floor art must not become a standing occluder that blocks canonical picking.");
+            var actorBody = Actor().GetNode<Sprite2D>("AuthoredSprite");
+            var contactHit = actorBody.IsPixelOpaque(actorBody.ToLocal(board.ToGlobal(expectedContact)))
+                ? TacticalHit.Unit(new(target.X, target.Y), id) : TacticalHit.Object(new(target.X, target.Y));
+            Require(board.Pick(expectedContact) == contactHit, "Same-cell floor art must preserve the visible actor or surface-object subject, never become a standing blocker.");
             var active = !disabled && hp > 0;
             Require(Pad().HasNode("HealthGauge") == active && Pad().HasNode("OwnerMark") == (active && owner != 0) && !Pad().HasNode("OwnerBanner"), "Surface state decoration is flat, derived, and absent when inactive.");
             await Capture(name + "-occupied");
@@ -159,14 +163,15 @@ public partial class OathPadChecks : Node
                         if (opaque)
                         {
                             occupied++;
-                            visibleSelection &= body.HitPolygon(board.ToGlobal(point)) is not null && board.Pick(point) == target;
+                            visibleSelection &= body.HitPolygon(board.ToGlobal(point)) is not null && board.Pick(point) == TacticalHit.Object(new(target.X, target.Y));
                             if (board.Projection.Pick(point)?.Cell != target)
                                 overhang++;
                         }
                         else
                         {
                             transparent++;
-                            transparentSelection &= board.Pick(point) == board.Projection.Pick(point)?.Cell;
+                            var ground = board.Projection.Pick(point)?.Cell;
+                            transparentSelection &= board.Pick(point) == (ground is { } cell ? TacticalHit.Ground(new(cell.X, cell.Y)) : null);
                         }
                     }
                 Require(visibleSelection, "Every visible surface pixel, including its overhang, must select the owning cell.");
@@ -189,7 +194,7 @@ public partial class OathPadChecks : Node
                     if (!actorSprite.IsPixelOpaque(actorSprite.ToLocal(board.ToGlobal(point))))
                         continue;
                     overlap++;
-                    unitSelection &= board.Pick(point) == new Coord(3, 4);
+                    unitSelection &= board.Pick(point) == TacticalHit.Unit(new(3, 4), unit["id"]!.GetValue<int>());
                 }
             Require(unitSelection, "Visible unit pixels must win over a neighboring surface overhang.");
             Require(overlap > 0, "The unit-occlusion fixture must overlap actual source body pixels.");
@@ -203,9 +208,9 @@ public partial class OathPadChecks : Node
             board.GetNode<Node2D>("AuthoredScene/AuthoredFrame").AddChild(foreground);
             Require(board.Pick(padCenter) is null, "Opaque foreground pixels must block a visible surface target.");
             foreground.Modulate = new Color(1, 1, 1, 0);
-            Require(board.Pick(padCenter) == new Coord(3, 3), "A zero-opacity foreground must not block the visible surface target.");
+            Require(board.Pick(padCenter) == TacticalHit.Object(new(3, 3)), "A zero-opacity foreground must not block the visible surface target.");
             foreground.Modulate = Colors.White;
-            Require(board.Pick(padCenter + new Vector2(-1, 0)) == new Coord(3, 3),
+            Require(board.Pick(padCenter + new Vector2(-1, 0)) == TacticalHit.Object(new(3, 3)),
                 "Transparent foreground canvas must not block the surface target.");
             foreground.Free();
         }

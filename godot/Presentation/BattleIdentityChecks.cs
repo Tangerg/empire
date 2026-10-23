@@ -66,7 +66,7 @@ internal static class BattleIdentityChecks
                 screen._UnhandledKeyInput(cancel);
                 var unit = Unit(session.Snapshot(), key);
                 var id = unit["id"]!.GetValue<int>();
-                screen.SelectCell(session.GetTacticalQueries(0).Unit(id)!.At);
+                screen.SelectHit(TacticalHit.Unit(session.GetTacticalQueries(0).Unit(id)!.At, id));
                 var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
                 Require(hud.Projection!.Sections.Single(section => section.Key == "unit").Title == expected
                     && session.UnitName(EcmaJson.ToElement(unit)) == expected,

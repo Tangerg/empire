@@ -10,8 +10,16 @@ namespace Empire.Core.Abilities;
 
 public sealed record CommandRange(double Min, double Max);
 
-public sealed record CommandOption(string Key, string Ability, string? Weapon, bool SelfTargeted,
-    IReadOnlyList<Coord> Targets, string? Engagement = null, CommandRange? Range = null);
+public enum AbilityTargetKind
+{
+    Self, Cell, Unit, UnitOrStructure
+}
+
+public sealed record CommandOption(string Key, string Ability, string? Weapon, AbilityTargetKind TargetKind,
+    IReadOnlyList<Coord> Targets, string? Engagement = null, CommandRange? Range = null)
+{
+    public bool SelfTargeted => TargetKind == AbilityTargetKind.Self;
+}
 
 public sealed record AbilityQuery(JsonObject State, JsonObject Unit, Coord At, bool Moved, string? WeaponId = null);
 
@@ -19,10 +27,10 @@ public sealed record AbilityQuery(JsonObject State, JsonObject Unit, Coord At, b
 public sealed record AbilityRules(ReadOnlyContent Content, ITacticalSpace Space, BattleCombat Combat,
     SupportOrders Support, CareerRules Careers, AbilityRegistry Abilities);
 
-public sealed record AbilityDefinition(string Id)
+public sealed record AbilityDefinition(string Id, AbilityTargetKind TargetKind)
 {
     private readonly IReadOnlyList<string> tags = Array.Empty<string>();
-    public bool SelfTargeted { get; init; } = true;
+    public bool SelfTargeted => TargetKind == AbilityTargetKind.Self;
     public double Priority { get; init; } = 50;
     public IReadOnlyList<string> Tags
     {

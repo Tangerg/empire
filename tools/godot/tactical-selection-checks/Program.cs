@@ -3,6 +3,8 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Presentation;
 using Empire.Core.Determinism;
+using Empire.Core;
+using Empire.Core.Abilities;
 using Empire.Presentation.Tactical;
 
 var fixture = new Fixture(JsonDocument.Parse(File.ReadAllText(args[0])).RootElement.Clone());
@@ -10,6 +12,24 @@ var controller = new TacticalSelectionController(fixture);
 int checks = 0;
 void Check(bool value, string name) { checks++; if (!value) throw new InvalidOperationException(name); }
 void Equal<T>(T actual, T expected, string name) => Check(JsonSerializer.Serialize(actual) == JsonSerializer.Serialize(expected), name + $" actual={JsonSerializer.Serialize(actual)} expected={JsonSerializer.Serialize(expected)}");
+// Metadata admission does not depend on a historical battle-content schema.
+try
+{
+    new AbilityRegistry().Register(new("invalid-target", (AbilityTargetKind)999));
+    throw new InvalidOperationException("Unknown ability target kind was admitted");
+}
+catch (DomainInvariantException) { checks++; }
+try
+{
+    DefaultAbilities.Create().Replace(new("attack", (AbilityTargetKind)999));
+    throw new InvalidOperationException("Unknown replacement target kind was admitted");
+}
+catch (DomainInvariantException) { checks++; }
+var defaultAbilities = DefaultAbilities.Create();
+Equal(defaultAbilities.Get("attack").TargetKind, AbilityTargetKind.UnitOrStructure, "attack click subject metadata");
+Equal(defaultAbilities.Get("heal").TargetKind, AbilityTargetKind.Unit, "heal click subject metadata");
+Equal(defaultAbilities.Get("capture").TargetKind, AbilityTargetKind.Self, "capture click subject metadata");
+Equal(defaultAbilities.Get("wait").TargetKind, AbilityTargetKind.Self, "wait click subject metadata");
 BoardCell? CellOrNull(JsonElement element) => element.ValueKind is JsonValueKind.Null or JsonValueKind.Undefined ? null : Fixture.Cell(element);
 foreach (var entry in fixture.Root.GetProperty("trace").EnumerateArray())
 {
@@ -18,8 +38,8 @@ foreach (var entry in fixture.Root.GetProperty("trace").EnumerateArray())
     var result = name switch
     {
         "back" => controller.Back(controller.Stamp),
-        "hover" => controller.Hover(controller.Stamp, new BoardCell(op[1].GetInt32(), op[2].GetInt32())),
-        _ => controller.Click(controller.Stamp, new BoardCell(op[1].GetInt32(), op[2].GetInt32())),
+        "hover" => controller.Hover(controller.Stamp, fixture.SourceHit(new(op[1].GetInt32(), op[2].GetInt32()))),
+        _ => controller.Click(controller.Stamp, fixture.SourceHit(new(op[1].GetInt32(), op[2].GetInt32()))),
     };
     var expectedAction = entry.GetProperty("action");
     Check(JsonNode.DeepEquals(result.Request?.Action is { } action ? JsonNode.Parse(action.GetRawText()) : null,
@@ -52,9 +72,9 @@ foreach (var entry in fixture.Root.GetProperty("overlays").EnumerateArray())
     }
     controller.Bind(fixture);
     if (entry.GetProperty("picked").GetBoolean())
-        controller.Click(controller.Stamp, new(0, 0));
+        controller.Click(controller.Stamp, fixture.SourceHit(new(0, 0)));
     controller.SetBusy(entry.GetProperty("busy").GetBoolean());
-    controller.Hover(controller.Stamp, Fixture.Cell(entry.GetProperty("hover")));
+    controller.Hover(controller.Stamp, fixture.SourceHit(Fixture.Cell(entry.GetProperty("hover"))));
     var expected = entry.GetProperty("view");
     var overlay = controller.Overlay();
     var name = entry.GetProperty("name").GetString();
@@ -74,20 +94,22 @@ foreach (var entry in fixture.Root.GetProperty("keyboard").EnumerateArray())
 {
     var op = entry.GetProperty("op");
     var result = op[0].GetString() == "key" ? controller.Key(controller.Stamp, op[1].GetString()!)
-        : controller.Click(controller.Stamp, new(op[1].GetInt32(), op[2].GetInt32()));
+        : controller.Click(controller.Stamp, fixture.SourceHit(new(op[1].GetInt32(), op[2].GetInt32())));
     var expectedAction = entry.GetProperty("action");
     Check(JsonNode.DeepEquals(result.Request?.Action is { } action ? JsonNode.Parse(action.GetRawText()) : null,
         expectedAction.ValueKind == JsonValueKind.Null ? null : JsonNode.Parse(expectedAction.GetRawText())), $"source controller action {op}");
     if (result.Request is not null)
         controller.CompleteDispatch(controller.Stamp, fixture);
     Equal(controller.Selection.Kind.ToString(), entry.GetProperty("kind").GetString(), $"source keyboard selection {op}");
+    Equal(controller.Selection.UnitId, entry.GetProperty("unitId").ValueKind == JsonValueKind.Null
+        ? (int?)null : entry.GetProperty("unitId").GetInt32(), $"source keyboard actor {op}");
     Equal(controller.Cursor, CellOrNull(entry.GetProperty("cursor")), $"source keyboard cursor {op}");
     Equal(result.PreventDefault, entry.GetProperty("prevented").GetBoolean(), $"source preventDefault {op}");
 }
 controller.Bind(fixture);
 var hoverLeave = fixture.Root.GetProperty("hoverLeave");
 controller.SetBusy(true);
-controller.Hover(controller.Stamp, new(3, 0));
+controller.Hover(controller.Stamp, fixture.SourceHit(new(3, 0)));
 Equal(controller.Cursor, CellOrNull(hoverLeave.GetProperty("hover").GetProperty("cursor")), "source busy hover cursor");
 Equal(controller.InspectId, hoverLeave.GetProperty("hover").GetProperty("inspect").GetInt32(), "source busy hover inspection");
 controller.Leave(controller.Stamp);
@@ -96,10 +118,10 @@ Equal(controller.InspectId, hoverLeave.GetProperty("leave").GetProperty("inspect
 Check(controller.Leave(controller.Stamp with { Binding = 99 }).Status == TacticalInputStatus.StaleBinding, "stale leave binding");
 controller.Bind(fixture);
 var stamp = controller.Stamp;
-Check(controller.Click(stamp with { Binding = 99 }, new(0, 0)).Status == TacticalInputStatus.StaleBinding, "stale binding");
-Check(controller.Click(stamp with { Revision = 99 }, new(0, 0)).Status == TacticalInputStatus.StaleRevision, "stale revision");
+Check(controller.Click(stamp with { Binding = 99 }, fixture.SourceHit(new(0, 0))).Status == TacticalInputStatus.StaleBinding, "stale binding");
+Check(controller.Click(stamp with { Revision = 99 }, fixture.SourceHit(new(0, 0))).Status == TacticalInputStatus.StaleRevision, "stale revision");
 controller.SetBusy(true);
-Check(controller.Click(stamp, new(0, 0)).Status == TacticalInputStatus.Busy, "busy click");
+Check(controller.Click(stamp, fixture.SourceHit(new(0, 0))).Status == TacticalInputStatus.Busy, "busy click");
 Check(controller.Key(stamp, "Escape").Status == TacticalInputStatus.Busy, "busy escape");
 Check(controller.Overlay().Move.Count == 0, "busy overlays");
 controller.SetBusy(false);
@@ -110,31 +132,36 @@ Check(controller.Back(stamp).Status == TacticalInputStatus.Ready, "AI escape pre
 fixture.HumanTurn = true;
 fixture.HumanInput = true;
 fixture.Phase = "over";
-Check(controller.Click(stamp, new(0, 0)).Status == TacticalInputStatus.Terminal, "terminal click");
+Check(controller.Click(stamp, fixture.SourceHit(new(0, 0))).Status == TacticalInputStatus.Terminal, "terminal click");
 fixture.Phase = "playing";
 controller.Bind(fixture);
-controller.Click(stamp, new(0, 0));
-controller.Click(stamp, new(2, 0));
+controller.Click(stamp, fixture.SourceHit(new(0, 0)));
+controller.Click(stamp, fixture.SourceHit(new(2, 0)));
 var wait = controller.Key(stamp, "w");
 Check(wait.Request?.Action?.GetProperty("command").GetProperty("ability").GetString() == "wait", "command before WASD");
 Check(controller.Cursor is null, "command does not move cursor");
 controller.CompleteDispatch(stamp, fixture);
 controller.Key(stamp, " ");
 Equal(controller.Selection.UnitId, fixture.Actors()[0], "cycle source actor order");
-controller.Hover(stamp, new(0, 0));
+controller.Hover(stamp, fixture.SourceHit(new(0, 0)));
 fixture.StepsOverride = new[] { new BoardCell(1, 1), new BoardCell(1, 0) };
 controller.Key(stamp, "d");
 Equal(controller.Cursor, new BoardCell(1, 1), "configured direction strict tie");
 fixture.StepsOverride = null;
 controller.Bind(fixture);
-controller.Click(stamp, new(0, 0));
-controller.Click(stamp, new(2, 0));
+controller.Click(stamp, fixture.SourceHit(new(0, 0)));
+controller.Click(stamp, fixture.SourceHit(new(2, 0)));
+var singletonOption = fixture.CommandsAt(1, new(2, 0)).Single(option => option.Key == "attack:soldier_sword");
+Check(singletonOption.TargetSubjects.Single() == TacticalTarget.Unit(new(3, 0), 2),
+    "singleton command carries canonical Unit subject metadata");
 var single = controller.ChooseCommand(stamp, "attack");
+Equal(Fixture.Cell(single.Request!.Action!.Value.GetProperty("command").GetProperty("target")), singletonOption.Targets.Single(),
+    "explicit HUD singleton command preserves its original canonical target coordinate");
 Check(single.Request?.Action?.GetProperty("command").TryGetProperty("target", out _) == true, "single target auto dispatch");
 controller.CompleteDispatch(stamp, fixture);
-controller.Click(stamp, new(0, 0));
-controller.Click(stamp, new(2, 0));
-fixture.CommandsOverride = new[] { new TacticalCommand("blessing", "customHelp", null, false, false, new[] { new BoardCell(0, 0), new BoardCell(1, 0) }) };
+controller.Click(stamp, fixture.SourceHit(new(0, 0)));
+controller.Click(stamp, fixture.SourceHit(new(2, 0)));
+fixture.CommandsOverride = new[] { new TacticalCommand("blessing", "customHelp", null, false, false, new[] { TacticalTarget.AtCell(new(0, 0)), TacticalTarget.AtCell(new(1, 0)) }) };
 controller.ChooseCommand(stamp, "blessing");
 Equal(controller.Selection.Kind, TacticalSelectionKind.Target, "multiple targets arm");
 Equal(controller.Overlay().Helpful.Count, 2, "engagement metadata helpful");
@@ -149,9 +176,9 @@ fixture.CommandsOverride = null;
 fixture.TacticsOverride = new[] { new TacticalTactic("c", "t", new[] { new BoardCell(0, 0), new BoardCell(1, 0) }) };
 controller.ChooseTactic(stamp, "c:t");
 Equal(controller.Selection.Kind, TacticalSelectionKind.Tactic, "tactic arm");
-Check(controller.Click(stamp, new(1, 0)).Request?.Action?.GetProperty("kind").GetString() == "tactic", "tactic dispatch");
+Check(controller.Click(stamp, fixture.SourceHit(new(1, 0))).Request?.Action?.GetProperty("kind").GetString() == "tactic", "tactic dispatch");
 controller.CompleteDispatch(stamp, fixture);
-controller.Click(stamp, new(0, 0));
+controller.Click(stamp, fixture.SourceHit(new(0, 0)));
 fixture.PassengersOverride = new[] { new TacticalPassenger(9, new[] { new BoardCell(1, 0) }) };
 controller.ChooseDisembark(stamp, 9);
 Equal(controller.Selection.Kind, TacticalSelectionKind.Disembark, "disembark arm");
@@ -161,16 +188,16 @@ Equal(controller.Selection.Kind, TacticalSelectionKind.Idle, "disembark source d
 fixture.Phase = "deployment";
 fixture.HumanTurn = false;
 controller.Bind(fixture);
-controller.Click(stamp, new(0, 0));
+controller.Click(stamp, fixture.SourceHit(new(0, 0)));
 Equal(controller.Selection.Kind, TacticalSelectionKind.DeploymentUnit, "deployment pick");
-Check(controller.Click(stamp, new(1, 0)).Request?.Action?.GetProperty("kind").GetString() == "deployUnit", "deployment dispatch");
+Check(controller.Click(stamp, fixture.SourceHit(new(1, 0))).Request?.Action?.GetProperty("kind").GetString() == "deployUnit", "deployment dispatch");
 controller.CompleteDispatch(stamp, fixture);
 Equal(controller.Selection.Kind, TacticalSelectionKind.Deploying, "deployment settles");
 Check(controller.Key(stamp, "arrowright").Status == TacticalInputStatus.NotHuman, "source keyboard deployment gate");
 fixture.Phase = "playing";
 fixture.HumanTurn = true;
 controller.Bind(fixture);
-controller.Click(stamp, new(0, 0));
+controller.Click(stamp, fixture.SourceHit(new(0, 0)));
 // A legal refusal resets composition just as a successful settled request does.
 controller.SetBusy(true);
 controller.CompleteDispatch(stamp, fixture);
@@ -178,11 +205,11 @@ Equal(controller.Selection.Kind, TacticalSelectionKind.Idle, "failed action rese
 // Equal scores must retain first stop and first option, including weapon key order.
 fixture.StopsOverride = new[] { new BoardCell(2, 0), new BoardCell(2, 1) };
 fixture.CommandsOverride = new[] {
-    new TacticalCommand("z", "volley", "zWeapon", false, true, new[] { new BoardCell(3,0) }),
-    new TacticalCommand("a", "volley", "aWeapon", false, true, new[] { new BoardCell(3,0) }) };
+    new TacticalCommand("z", "volley", "zWeapon", false, true, new[] { TacticalTarget.Unit(new(3, 0), 2) }),
+    new TacticalCommand("a", "volley", "aWeapon", false, true, new[] { TacticalTarget.Unit(new(3, 0), 2) }) };
 fixture.AttackOverride = new TacticalAttack(10, 0, 0, 0, true, new[] { new BoardCell(3, 0) });
-controller.Click(stamp, new(0, 0));
-controller.Click(stamp, new(3, 0));
+controller.Click(stamp, fixture.SourceHit(new(0, 0)));
+controller.Click(stamp, fixture.SourceHit(new(3, 0)));
 Equal(controller.Selection.Destination, new BoardCell(2, 0), "best spot strict tie preserves stops");
 Equal(controller.Selection.Weapon, "zWeapon", "best spot preserves option order");
 Equal(controller.Selection.Ability, "volley", "best spot preserves custom ability");
@@ -199,16 +226,16 @@ void Utf16Action(TacticalInputResult actual, string kind)
     controller.CompleteDispatch(stamp, fixture);
 }
 controller.Bind(fixture);
-controller.Click(stamp, new(0, 0));
-controller.Click(stamp, new(2, 0));
-fixture.CommandsOverride = new[] { new TacticalCommand("utf16", Strange("ability"), Strange("weapon"), false, true, new[] { new BoardCell(3, 0), new BoardCell(4, 0) }) };
+controller.Click(stamp, fixture.SourceHit(new(0, 0)));
+controller.Click(stamp, fixture.SourceHit(new(2, 0)));
+fixture.CommandsOverride = new[] { new TacticalCommand("utf16", Strange("ability"), Strange("weapon"), false, true, new[] { TacticalTarget.Unit(new(3, 0), 2), TacticalTarget.AtCell(new(4, 0)) }) };
 controller.ChooseCommand(stamp, "utf16");
-Utf16Action(controller.Click(stamp, new(3, 0)), "command");
+Utf16Action(controller.Click(stamp, fixture.SourceHit(new(3, 0))), "command");
 fixture.CommandsOverride = null;
 fixture.TacticsOverride = new[] { new TacticalTactic(Strange("commander"), Strange("tactic"), new[] { new BoardCell(3, 0), new BoardCell(4, 0) }) };
 controller.ChooseTactic(stamp, Strange("commander") + ":" + Strange("tactic"));
-Utf16Action(controller.Click(stamp, new(3, 0)), "tactic");
-controller.Click(stamp, new(2, 0));
+Utf16Action(controller.Click(stamp, fixture.SourceHit(new(3, 0))), "tactic");
+controller.Click(stamp, fixture.SourceHit(new(2, 0)));
 Utf16Action(controller.Recruit(stamp, Strange("type")), "recruit");
 fixture.Phase = "deployment";
 fixture.HumanTurn = false;
@@ -240,15 +267,15 @@ fixture.UnitsOverride = null;
 fixture.DeploymentOverride = null;
 // Cell eligibility is canonical even when a core movement/target query includes that cell.
 controller.Bind(fixture);
-controller.Click(stamp, new(0, 0));
+controller.Click(stamp, fixture.SourceHit(new(0, 0)));
 fixture.InteractiveCells = defaultCells.Where(cell => cell != new BoardCell(3, 0)).ToFrozenSet();
 var beforeOutside = controller.Selection;
-Check(controller.Click(stamp, new(3, 0)).Status == TacticalInputStatus.Ignored, "outside click is ignored");
+Check(controller.Click(stamp, fixture.SourceHit(new(3, 0))).Status == TacticalInputStatus.Ignored, "outside click is ignored");
 Equal(controller.Selection, beforeOutside, "outside click preserves selection");
-controller.Hover(stamp, new(1, 0));
-controller.Hover(stamp, new(3, 0));
+controller.Hover(stamp, fixture.SourceHit(new(1, 0)));
+controller.Hover(stamp, fixture.SourceHit(new(3, 0)));
 Check(controller.Cursor is null && controller.InspectId != 2, "outside hover cannot inspect or retain cursor");
-controller.Hover(stamp, new(0, 0));
+controller.Hover(stamp, fixture.SourceHit(new(0, 0)));
 fixture.StepsOverride = new[] { new BoardCell(3, 0), new BoardCell(1, 0) };
 var boundedStep = controller.Key(stamp, "arrowright");
 Check(controller.Cursor == new BoardCell(1, 0) && boundedStep.Reveal == controller.Cursor,
@@ -260,17 +287,124 @@ Check(controller.Selection.UnitId != 1 && cycleOutside.Reveal != new BoardCell(0
 fixture.InteractiveCells = defaultCells;
 fixture.StepsOverride = null;
 controller.Bind(fixture);
-Check(controller.Click(stamp, new(-1, 0)).Status == TacticalInputStatus.Ignored, "out-of-bounds click is ignored");
-controller.Hover(stamp, new(0, 0));
+Check(controller.Click(stamp, fixture.SourceHit(new(-1, 0))).Status == TacticalInputStatus.Ignored, "out-of-bounds click is ignored");
+controller.Hover(stamp, fixture.SourceHit(new(0, 0)));
 fixture.InteractiveCells = defaultCells.Where(cell => cell != new BoardCell(0, 0)).ToFrozenSet();
 controller.CompleteDispatch(stamp, fixture);
 Check(controller.Cursor is null, "settled revision cannot retain an ineligible cursor");
 fixture.InteractiveCells = defaultCells;
+// Rendered Ground/Object must never be promoted using the canonical occupant at the same cell.
+controller.Bind(fixture);
+controller.Click(stamp, TacticalHit.Ground(new(0, 0)));
+Check(controller.Selection.Kind == TacticalSelectionKind.Idle && controller.InspectId is null,
+    "Ground over a canonically visible actor cannot select or inspect it");
+controller.Hover(stamp, TacticalHit.Unit(new(3, 0), 2));
+Check(controller.InspectId == 2, "visible Unit hover inspects the exact subject");
+controller.Hover(stamp, TacticalHit.Ground(new(3, 0)));
+Check(controller.InspectId is null && controller.Cursor == new BoardCell(3, 0),
+    "same-cell Ground hover clears concealed entity inspection");
+fixture.Sites = new HashSet<BoardCell> { new(3, 0) };
+controller.Click(stamp, TacticalHit.Object(new(3, 0)));
+Check(controller.Selection.Kind == TacticalSelectionKind.Site && controller.InspectId is null,
+    "Object with an occupant selects the site, not its concealed occupant");
+controller.Bind(fixture);
+controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1));
+controller.Hover(stamp, TacticalHit.Unit(new(3, 0), 2));
+controller.Hover(stamp, TacticalHit.Object(new(3, 0)));
+Check(controller.InspectId == 1, "Object hover restores selected inspection instead of retaining a concealed enemy");
+controller.Click(stamp, TacticalHit.Ground(new(3, 0)));
+Check(controller.Selection.Kind != TacticalSelectionKind.Target && controller.InspectId is null,
+    "Ground over enemy cannot auto-arm an attack");
+controller.Bind(fixture);
+controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1));
+controller.Click(stamp, TacticalHit.Object(new(3, 0)));
+Check(controller.Selection.Kind == TacticalSelectionKind.Site && controller.InspectId is null,
+    "Object over enemy cannot auto-arm an attack");
+Check(controller.Click(stamp, TacticalHit.Unit(new(0, 0), 2)).Status == TacticalInputStatus.Ignored,
+    "Unit hit identity must match its canonical cell");
+fixture.Sites = new HashSet<BoardCell>();
+
+void ArmTypedCommand(params TacticalTarget[] targets)
+{
+    controller.Bind(fixture);
+    fixture.CommandsOverride = null;
+    controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1));
+    controller.Click(stamp, TacticalHit.Ground(new(2, 0)));
+    fixture.CommandsOverride = new[] { new TacticalCommand("typed", "custom-subject", null, false, false, targets) };
+    controller.ChooseCommand(stamp, "typed");
+}
+var entityTargets = new[] { TacticalTarget.Unit(new(3, 0), 2), TacticalTarget.Unit(new(0, 0), 1) };
+foreach (var concealed in new[] { TacticalHit.Ground(new(3, 0)), TacticalHit.Object(new(3, 0)) })
+{
+    ArmTypedCommand(entityTargets);
+    controller.Hover(stamp, concealed);
+    Check(controller.HoverTarget is null, "concealed entity has no typed target hover");
+    Check(controller.Click(stamp, concealed).Request is null, "Ground/Object cannot dispatch a Unit-target command");
+}
+ArmTypedCommand(entityTargets);
+controller.Hover(stamp, TacticalHit.Unit(new(3, 0), 2));
+Check(controller.HoverTarget == new BoardCell(3, 0), "visible entity target hover");
+Check(controller.Click(stamp, TacticalHit.Unit(new(3, 0), 2)).Request is not null, "explicit Unit dispatches entity target");
+ArmTypedCommand(TacticalTarget.Object(new(3, 0)), TacticalTarget.Object(new(4, 0)));
+Check(controller.Click(stamp, TacticalHit.Ground(new(3, 0))).Request is null, "Ground cannot impersonate a structure target");
+ArmTypedCommand(TacticalTarget.Object(new(3, 0)), TacticalTarget.Object(new(4, 0)));
+Check(controller.Click(stamp, TacticalHit.Object(new(3, 0))).Request is not null, "explicit Object dispatches structure target");
+ArmTypedCommand(TacticalTarget.AtCell(new(3, 0)), TacticalTarget.AtCell(new(4, 0)));
+Check(controller.Click(stamp, TacticalHit.Ground(new(3, 0))).Request is not null,
+    "custom Cell target remains legal at a concealed occupant without becoming an entity selection");
+ArmTypedCommand(TacticalTarget.AtCell(new(4, 0)), TacticalTarget.AtCell(new(5, 0)));
+var objectCellAction = controller.Click(stamp, TacticalHit.Object(new(4, 0))).Request?.Action;
+Check(objectCellAction?.GetProperty("command").GetProperty("target").GetProperty("x").GetInt32() == 4,
+    "Cell target uses explicit Object logical location, not inferred ground beneath its silhouette");
+ArmTypedCommand(entityTargets);
+controller.Hover(stamp, TacticalHit.Ground(new(3, 0)));
+Check(controller.Key(stamp, "enter").Request is null, "Enter preserves the current pointer Ground subject");
+fixture.CommandsOverride = null;
+controller.Bind(fixture);
+controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1));
+controller.Hover(stamp, TacticalHit.Ground(new(2, 0)));
+var focused = controller.Key(stamp, "arrowright");
+Check(focused.CursorFocused && controller.CursorHit == TacticalHit.Unit(new(3, 0), 2), "keyboard navigation explicitly declares and focuses canonical Unit");
+controller.Bind(fixture);
+controller.Hover(stamp, TacticalHit.Ground(new(3, 0)));
+var cycled = controller.Key(stamp, "tab");
+Check(!cycled.CursorFocused && controller.CursorHit == TacticalHit.Ground(new(3, 0)) && controller.Selection.UnitId == 1,
+    "cycle reveals selection without replacing the existing pointer cursor");
+
+fixture.Phase = "deployment";
+fixture.HumanTurn = false;
+fixture.UnitsOverride = new[] { new TacticalUnit(1, new(0, 0), false, true), new TacticalUnit(2, new(1, 0), false, true) };
+fixture.DeploymentOverride = new[] { 1, 2 };
+controller.Bind(fixture);
+controller.Click(stamp, TacticalHit.Ground(new(0, 0)));
+Check(controller.Selection.Kind == TacticalSelectionKind.Deploying, "Ground cannot pick a concealed deployment unit");
+controller.Hover(stamp, TacticalHit.Ground(new(1, 0)));
+var rosterPick = controller.PickDeploymentUnit(stamp, 1);
+Check(!rosterPick.CursorFocused && controller.CursorHit == TacticalHit.Ground(new(1, 0)), "roster reveal preserves the existing pointer cursor source");
+controller.Bind(fixture);
+controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1));
+Check(controller.Click(stamp, TacticalHit.Ground(new(1, 0))).Request is null,
+    "Ground cannot swap a concealed deployment unit");
+controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1));
+Check(controller.Click(stamp, TacticalHit.Unit(new(1, 0), 2)).Request is not null,
+    "visible deployment Unit retains explicit swap behavior");
+fixture.Phase = "playing";
+fixture.HumanTurn = true;
+fixture.UnitsOverride = null;
+fixture.DeploymentOverride = null;
+controller.Bind(fixture);
+controller.Hover(stamp, TacticalHit.Unit(new(3, 0), 2));
+controller.CompleteDispatch(stamp, fixture);
+Check(controller.CursorHit == TacticalHit.Unit(new(3, 0), 2) && controller.InspectId == 2,
+    "same-revision completion retains the current rendered hit");
 fixture.Stamp = stamp with { Revision = 1 };
-Check(controller.Click(stamp, new(0, 0)).Status == TacticalInputStatus.StaleRevision, "adapter advanced revision");
+Check(controller.Click(stamp, fixture.SourceHit(new(0, 0))).Status == TacticalInputStatus.StaleRevision, "adapter advanced revision");
+controller.CompleteDispatch(stamp, fixture);
+Check(controller.CursorHit is null && controller.InspectId is null,
+    "new revision invalidates the previous rendered pixel hit and inspection");
 controller.Bind(fixture);
 Check(controller.CompleteDispatch(stamp, fixture).Status == TacticalInputStatus.StaleRevision, "old completion");
-Console.WriteLine($"Tactical selection: {checks} checks passed; real TypeScript engine/selection differential plus controller contracts.");
+Console.WriteLine($"Tactical selection: {checks} checks passed; frozen source operation comparisons plus explicit native cursor/subject contracts.");
 
 sealed class Fixture : ITacticalSelectionQueries
 {
@@ -337,18 +471,30 @@ sealed class Fixture : ITacticalSelectionQueries
     public TacticalUnit? UnitAt(BoardCell at) => UnitsOverride is not null ? UnitsOverride.FirstOrDefault(unit => unit.At == at && unit.Visible) : Root.GetProperty("units").EnumerateArray().Where(u => Cell(u.GetProperty("at")) == at).Select(u => Unit(u.GetProperty("id").GetInt32())).FirstOrDefault();
     public bool AreEnemies(int firstUnit, int secondUnit) => Root.GetProperty("enemies").EnumerateArray().Any(value => value.GetString() == $"{firstUnit}:{secondUnit}");
     public bool IsEnemyOfViewer(int unit) => Data(unit).GetProperty("owner").GetInt32() != 1;
-    public bool IsSite(BoardCell at) => false;
+    public IReadOnlySet<BoardCell> Sites { get; set; } = new HashSet<BoardCell>();
+    public bool IsSite(BoardCell at) => Sites.Contains(at);
     public bool CanOpenRecruitment(BoardCell at) => Cells(Root.GetProperty("recruits")).Contains(at);
     public IReadOnlyList<int> Actors() => Root.GetProperty("actors").EnumerateArray().Select(value => value.GetInt32()).ToArray();
     public IReadOnlyList<BoardCell> MoveStops(int unit) => StopsOverride ?? Cells(Data(unit).GetProperty("stops"));
     public IReadOnlyList<BoardCell>? PathTo(int unit, BoardCell at) => Data(unit).GetProperty("paths").TryGetProperty(Key(at), out var path) ? Cells(path) : null;
     public IReadOnlyList<BoardCell> Threat(int unit) => Cells(Data(unit).GetProperty("threat"));
     public IReadOnlyList<BoardCell> ControlZone(int unit) => Cells(Data(unit).GetProperty("control"));
-    public IReadOnlyList<TacticalCommand> CommandsAt(int unit, BoardCell at) => CommandsOverride ?? JsonSerializer.Deserialize<TacticalCommand[]>(Data(unit).GetProperty("commands").GetProperty(Key(at)), JsonOptions)!;
+    // The historical oracle supplies semantic cell clicks, not renderer coverage.
+    public TacticalHit SourceHit(BoardCell at) => UnitAt(at) is { Visible: true } unit
+        ? TacticalHit.Unit(at, unit.Id) : CanOpenRecruitment(at) ? TacticalHit.Object(at) : TacticalHit.Ground(at);
+    public IReadOnlyList<TacticalCommand> CommandsAt(int unit, BoardCell at) => CommandsOverride ?? Data(unit)
+        .GetProperty("commands").GetProperty(Key(at)).EnumerateArray().Select(option => new TacticalCommand(
+            option.GetProperty("key").GetString()!, option.GetProperty("ability").GetString()!,
+            option.TryGetProperty("weapon", out var weapon) ? weapon.GetString() : null,
+            option.GetProperty("selfTargeted").GetBoolean(), option.GetProperty("hostile").GetBoolean(),
+            Cells(option.GetProperty("targets")).Select(target => UnitAt(target) is { } subject
+                ? TacticalTarget.Unit(target, subject.Id) : TacticalTarget.AtCell(target)).ToArray())).ToArray();
     public TacticalAttack Attack(int unit, BoardCell target, BoardCell from, string weapon) => AttackOverride ?? JsonSerializer.Deserialize<TacticalAttack>(Data(unit).GetProperty("attacks").GetProperty($"{Key(from)}:{Key(target)}:{weapon}"), JsonOptions)!;
     public IReadOnlyList<int> DeploymentUnits() => DeploymentOverride ?? Actors();
     public IReadOnlyList<BoardCell> DeploymentZone() => new[] { new BoardCell(0, 0), new BoardCell(1, 0) };
-    public IReadOnlyList<BoardCell> DeploymentSpots(int unit) => DeploymentZone();
+    public IReadOnlyList<TacticalTarget> DeploymentTargets(int unit) => DeploymentZone()
+        .Select(at => UnitAt(at) is { } occupant && occupant.Id != unit
+            ? TacticalTarget.Unit(at, occupant.Id) : TacticalTarget.AtCell(at)).ToArray();
     public IReadOnlyList<TacticalTactic> Tactics() => TacticsOverride;
     public IReadOnlyList<TacticalPassenger> Passengers(int carrier) => PassengersOverride;
     public IReadOnlyList<BoardCell> DirectionSteps(BoardCell from) => StepsOverride ?? Cells(Root.GetProperty("steps").GetProperty(Key(from)));

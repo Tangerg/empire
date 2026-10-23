@@ -8,6 +8,7 @@ using System.Text.Json.Nodes;
 using Godot;
 using Empire.Core.State;
 using Empire.Core.Geometry;
+using Empire.Presentation.Tactical;
 
 namespace Empire.Presentation;
 
@@ -80,7 +81,7 @@ public partial class BoardView : Node2D
         if (_scenery is null || _scene is null || _environment is null)
             throw new InvalidOperationException("Configure the board before its terrain materials.");
         ArgumentNullException.ThrowIfNull(createGround);
-        var replacement = createGround(new(_environment, _grid!, _shadows), _scene);
+        var replacement = createGround(new(_environment, _grid!, _content!, _shadows), _scene);
         if (replacement.GetParent() is not null)
             throw new InvalidOperationException("A ground factory must return a detached owned node.");
         var authoredGround = _terrain is null
@@ -257,6 +258,8 @@ public partial class BoardView : Node2D
     {
         var assets = _assets ?? throw new InvalidOperationException("Configure BoardView before rendering.");
         var snapshot = ReadProjection(canonicalState);
+        // This is the interaction surface, not a walkability test: walls remain
+        // pickable; only canonical outside terrain is excluded.
         var playable = Enumerable.Range(0, snapshot.Tiles.Length).Where(index =>
         {
             var terrain = _content!.Definition("terrains", snapshot.Tiles[index])
@@ -290,9 +293,9 @@ public partial class BoardView : Node2D
                 entries.AddRange(_terrain.DepthEntries.Select((entry, index) =>
                     new StandingEntry(entry.Node, entry.LogicalContact, entry.Layer, index + _authoredStanding.Count, entry.Visual, entry.SelectionCell)));
                 diagnostics.AddRange(_terrain.Diagnostics);
-                foreach (var entry in _terrain.DepthEntries.Where(entry => entry.SelectionCell is not null))
+                foreach (var site in _terrain.Sites)
                 {
-                    var cell = entry.SelectionCell!.Value;
+                    var cell = site.Cell;
                     var owner = snapshot.Owners[cell.Y * _mapSize.X + cell.X];
                     if (owner == 0)
                         continue;
@@ -495,44 +498,52 @@ public partial class BoardView : Node2D
         RasterResources.Positive(placement.Scale, "placement scale");
     }
 
-    public Coord? Pick(Vector2 fieldPoint)
+    public TacticalHit? Pick(Vector2 fieldPoint)
     {
         var surface = Projection.Pick(fieldPoint);
         var global = ToGlobal(fieldPoint);
-        StandingEntry? front = null;
-        Node2D? frontGeometry = null;
-        var frontDepth = int.MinValue;
-        void Consider(StandingEntry? entry, Node2D geometry, int depth)
-        {
-            if (frontGeometry is null || depth > frontDepth
-                || depth == frontDepth && frontGeometry.IsGreaterThan(geometry))
-            {
-                front = entry;
-                frontGeometry = geometry;
-                frontDepth = depth;
-            }
-        }
+        var coverage = new List<(StandingEntry? Entry, Node2D Geometry, int Depth)>();
+        // SpriteShadows suppresses its source handle's SelfModulate while its child still draws the complete body.
         foreach (var entry in _standing)
         {
             if (entry.Surface?.HitPolygon(global) is { } polygon)
-                Consider(entry, polygon, polygon.ZIndex);
-            else if (entry.Visual is { } visual && visual.Node.IsVisibleInTree() && visual.Node.Modulate.A > 0 && visual.Contains(global))
-                Consider(entry, entry.Node, entry.Node.ZIndex);
+                coverage.Add((entry, polygon, polygon.ZIndex));
+            else if (entry.Visual is { } visual && visual.Node.IsVisibleInTree() && visual.Node.Modulate.A > 0 && visual.Covers(global))
+                coverage.Add((entry, entry.Node, entry.Node.ZIndex));
         }
         // Frame artwork is deliberately in front of the battlefield. Its transparent
         // canvas must not block interaction, but its visible pixels must.
         foreach (var sprite in _scenery!.GetNode<Node2D>("AuthoredFrame").GetChildren().OfType<Sprite2D>())
             if (sprite.IsVisibleInTree() && sprite.Modulate.A > 0 && sprite.IsPixelOpaque(sprite.ToLocal(global)))
-                Consider(null, sprite, sprite.ZIndex + _scenery.GetNode<Node2D>("AuthoredFrame").ZIndex);
-        if (frontGeometry is not null && (surface is null || frontDepth >= surface.DrawDepth))
+                coverage.Add((null, sprite, sprite.ZIndex + _scenery.GetNode<Node2D>("AuthoredFrame").ZIndex));
+        // Use the same absolute Z and scene-tree tie order that draws these parts.
+        coverage.Sort((left, right) => left.Depth != right.Depth ? right.Depth.CompareTo(left.Depth)
+            : left.Geometry == right.Geometry ? 0 : left.Geometry.IsGreaterThan(right.Geometry) ? 1 : -1);
+        var entitiesVisible = true;
+        foreach (var (entry, _, depth) in coverage)
         {
-            // Standing structures can hide an occupant; a walkable floor cannot.
-            if (front is not null && front.Surface is null && front.UnitId is null && front.SelectionCell is { } cell
-                && _standing.Any(entry => entry.UnitId is not null && entry.SelectionCell == cell))
+            if (surface is not null && depth < surface.DrawDepth)
+                break;
+            if (entry is null)
+                return null; // Opaque frame artwork is an explicit blocker, at its actual draw depth.
+            if (entry.Surface is null && entry.Visual is { } material && !material.ContainsPointer(global))
+            {
+                // This material hides actors/sites behind it, but exposes the ground
+                // only if no further explicit blocker stands in front of that surface.
+                entitiesVisible = false;
+                continue;
+            }
+            if (entry.SelectionCell is not { } selected)
                 return null;
-            return front?.SelectionCell;
+            if (entitiesVisible)
+            {
+                var cell = new BoardCell(selected.X, selected.Y);
+                return entry.UnitId is { } unitId ? TacticalHit.Unit(cell, unitId) : TacticalHit.Object(cell);
+            }
         }
-        return surface?.Cell;
+        return GroundHit();
+
+        TacticalHit? GroundHit() => surface?.Cell is { } cell ? TacticalHit.Ground(new BoardCell(cell.X, cell.Y)) : null;
     }
 
     private float StandingDepth(StandingEntry entry)

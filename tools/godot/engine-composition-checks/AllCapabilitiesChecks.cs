@@ -34,8 +34,8 @@ static class AllCapabilitiesChecks
             ["requiresCapabilities"] = new JsonArray(plugin.RequiresCapabilities.Select(key => (JsonNode?)JsonValue.Create(key.Id)).ToArray()),
         }).ToArray());
         var expectedRecipe = (JsonArray)oracle["recipe"]!.DeepClone();
-        var tactical = expectedRecipe.OfType<JsonObject>().Single(plugin => StateJson.Text(plugin, "id") == "engine.tactical-rules");
-        check(StateJson.Integer(tactical, "version") == 1, "source tactical recipe version");
+        var tactical = expectedRecipe.OfType<JsonObject>().Single(plugin => EcmaJson.ReadString(plugin["id"]) == "engine.tactical-rules");
+        check(EcmaJson.ToElement(tactical["version"]).GetInt32() == 1, "source tactical recipe version");
         tactical["version"] = 2;
         var provides = tactical["provides"]!.AsArray();
         provides.Remove(provides.Single(key => key!.GetValue<string>() == "space"));
@@ -79,13 +79,13 @@ static class AllCapabilitiesChecks
                 {
                     Same(context.Content);
                     var variables = context.State["scenario"]!["variables"]!.AsObject();
-                    variables["statusCalls"] = StateJson.Number(variables, "statusCalls", 0) + 1;
+                    variables["statusCalls"] = EcmaJson.ToElement(variables["statusCalls"] ?? JsonValue.Create(0)).GetDouble() + 1;
                     context.Emit(new()
                     {
                         ["type"] = "scenarioSignal",
                         ["signal"] = "root-status"
                     });
-                    if (StateJson.IsTrue(variables["failStatus"]))
+                    if (variables["failStatus"]?.GetValueKind() == JsonValueKind.True)
                         throw new DomainInvariantException("root status failed");
                 }));
                 context.Replace(Keys.StatusBehaviors, statuses);
@@ -105,7 +105,7 @@ static class AllCapabilitiesChecks
                         ["type"] = "scenarioSignal",
                         ["signal"] = "root-departure"
                     });
-                    if (StateJson.IsTrue(variables["failDeparture"]))
+                    if (variables["failDeparture"]?.GetValueKind() == JsonValueKind.True)
                         throw new DomainInvariantException("root departure failed");
                 }));
                 context.Replace(Keys.UnitDepartures, departures);
@@ -123,7 +123,7 @@ static class AllCapabilitiesChecks
                 {
                     Same(context.Content);
                     var variables = context.State["scenario"]!["variables"]!.AsObject();
-                    variables["effectCalls"] = StateJson.Number(variables, "effectCalls", 0) + 1;
+                    variables["effectCalls"] = EcmaJson.ToElement(variables["effectCalls"] ?? JsonValue.Create(0)).GetDouble() + 1;
                     context.Emit(new()
                     {
                         ["type"] = "scenarioSignal",
@@ -141,12 +141,12 @@ static class AllCapabilitiesChecks
                 context.Replace(Keys.ActionHandlers, context.Require(Keys.ActionHandlers).Clone().Register("rootPrepare", (context, _) =>
                 {
                     var units = context.State["units"]!.AsArray().OfType<JsonObject>().ToArray();
-                    var unit = units.Single(u => StateJson.Integer(u, "id") == 2);
+                    var unit = units.Single(u => EcmaJson.ToElement(u["id"]).GetInt32() == 2);
                     unit["statuses"] = new JsonArray(new JsonObject { ["id"] = "inspired", ["remaining"] = 2, ["stacks"] = 1 });
                     unit["reaction"] = "root-guard";
                     context.Rules.Combat.Effects.AwardRankProgress(unit, 4, context.Emit);
-                    var target = units.First(u => StateJson.Integer(u, "owner") == 2);
-                    var id = StateJson.Integer(target, "id");
+                    var target = units.First(u => EcmaJson.ToElement(u["owner"]).GetInt32() == 2);
+                    var id = EcmaJson.ToElement(target["id"]).GetInt32();
                     context.Rules.Combat.Damage.Resolve(context.State, id, 999, false, blow => new() { ["type"] = "statusTick", ["unit"] = id, ["status"] = "inspired", ["amount"] = blow.Amount, ["hpAfter"] = blow.HpAfter }, context.Emit);
                 }));
             }, overrides: [Keys.StatusBehaviors, Keys.Progression, Keys.TurnOrders, Keys.Reactions, Keys.UnitDepartures, Keys.ReferenceChecks, Keys.Saves, Keys.ScenarioConditions, Keys.ScenarioEffects, Keys.Objectives, Keys.ActionHandlers],
@@ -182,9 +182,9 @@ static class AllCapabilitiesChecks
             check(EcmaJson.ReadString(EcmaJson.Parse(progress.Definition.GetRawText())!["type"]) == "rootHold", "objective projection detaches definition");
             var forecastState = battle.Snapshot();
             var forecastUnits = forecastState["units"]!.AsArray().OfType<JsonObject>().ToArray();
-            var defender = forecastUnits.Single(u => StateJson.Integer(u, "id") == 2);
+            var defender = forecastUnits.Single(u => EcmaJson.ToElement(u["id"]).GetInt32() == 2);
             defender["reaction"] = "root-guard";
-            var forecast = engine.Combat.Forecasts.Forecast(forecastState, forecastUnits.First(u => StateJson.Integer(u, "owner") == 2), defender);
+            var forecast = engine.Combat.Forecasts.Forecast(forecastState, forecastUnits.First(u => EcmaJson.ToElement(u["owner"]).GetInt32() == 2), defender);
             var forecastJson = JsonSerializer.SerializeToNode(forecast, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase })!;
             if (forecastJson["reaction"] is JsonObject reaction && reaction["protectedUnit"] is null)
                 reaction.Remove("protectedUnit");
@@ -241,7 +241,7 @@ static class AllCapabilitiesChecks
             same(environment.Rules.Content);
             trace.Add("reader");
             var result = defaults.Load(raw, environment);
-            if (StateJson.IsTrue(result["state"]!["scenario"]!["variables"]!["failRead"]))
+            if (result["state"]!["scenario"]!["variables"]!["failRead"]?.GetValueKind() == JsonValueKind.True)
                 throw new StoredDocumentException("root reader refused");
             return result;
         }
@@ -271,7 +271,7 @@ static class AllCapabilitiesChecks
         {
             same(context.Content);
             var variables = state["scenario"]!["variables"]!.AsObject();
-            variables["turnAdvance"] = StateJson.Number(variables, "turnAdvance", 0) + 1;
+            variables["turnAdvance"] = EcmaJson.ToElement(variables["turnAdvance"] ?? JsonValue.Create(0)).GetDouble() + 1;
             return defaults.Advance(state, context);
         }
         public bool CanAct(JsonObject state, JsonObject unit) => defaults.CanAct(state, unit);

@@ -3,6 +3,7 @@ using Empire.Core.Determinism;
 using Empire.Core.Engine;
 using Empire.Presentation;
 using Empire.Presentation.Feedback;
+using Empire.Presentation.Tactical;
 using Godot;
 using File = System.IO.File;
 
@@ -140,10 +141,10 @@ public partial class ReleaseDiagnostics : Node
         var queries = savedSession.GetTacticalQueries(0);
         var move = queries.Actors().SelectMany(id => queries.MoveStops(id)
             .Where(at => at != queries.Unit(id)!.At && queries.CommandsAt(id, at) is { Count: 1 } commands && commands[0].SelfTargeted)
-            .Select(at => (Origin: queries.Unit(id)!.At, Destination: at))).First();
+            .Select(at => (UnitId: id, Origin: queries.Unit(id)!.At, Destination: at))).First();
         battle.Board.AdvanceAnimationsAutomatically = false;
-        battle.SelectCell(move.Origin);
-        battle.SelectCell(move.Destination);
+        battle.SelectHit(TacticalHit.Unit(move.Origin, move.UnitId));
+        battle.SelectHit(TacticalHit.Ground(move.Destination));
         battle.Board.AdvancePresentation(100);
         Require(battle.DisplayedRevision > 0 && !battle.IsInputBlocked, "Real battle move did not commit and settle.");
         Press(Button(battle, text: "保存"));

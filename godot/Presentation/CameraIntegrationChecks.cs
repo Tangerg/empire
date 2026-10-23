@@ -57,10 +57,12 @@ public partial class CameraIntegrationChecks : Node
             Require(initial.SnapshotReads == snapshotReads, "Pointer freshness checks must not construct battle snapshots.");
             CheckInitialAndGestures();
             CheckZoomAndResize();
+            CheckStationaryPointerFocus();
             CheckCancellation();
             CheckOutsideTerrain();
             CheckFollowAndBusyActions();
             CheckUnmountAndRebind();
+            await PaintedPickingChecks.CheckSouthRoad(this, Require);
             GD.Print($"Native camera screen integration passed: {assertions} assertions.");
             GetTree().Quit();
         }
@@ -86,11 +88,11 @@ public partial class CameraIntegrationChecks : Node
         Require(map.Size.X > 0 && map.Size.Y > 0, "Usable native map viewport is laid out");
         Near(world.Scale, Vector2.One * 1.25f, "Initial screen scale is source zoom, not fit-to-panel");
         Require(screen.Board.Scale == Vector2.One, "Only the screen world owns camera scaling");
-        screen.SelectCell(new BoardCell(10, 15));
+        screen.SelectHit(TacticalHit.Unit(new BoardCell(10, 15), 2));
         Require(screen.SelectedUnitId == 2, "Fixture actor is the real Torren unit");
         GuiButton(MouseButton.Right, true, new Vector2(-1000, -1000));
         Require(screen.SelectedUnitId == 2, "Right press outside the field must not cancel selection");
-        var at = Field(new Vector2(10.5f, 15.5f) * 32);
+        var at = BoardField(ActorPoint());
         Require(new Rect2(Vector2.Zero, map.Size).HasPoint(at), $"Gesture fixture actor must be inside the map viewport: {at}, size {map.Size}, screen {screen.Size}, viewport {GetViewport().GetVisibleRect().Size}, world {world.Position}.");
         GuiButton(MouseButton.Right, true, at);
         Require(screen.SelectedUnitId is null, "Right press on a valid field cell cancels immediately");
@@ -157,10 +159,81 @@ public partial class CameraIntegrationChecks : Node
         Near(world.Scale, Vector2.One * .5f, "Minimum zoom clamp");
     }
 
+    private Vector2 ActorPoint() => ActorPoint(2, new BoardCell(10, 15));
+
+    private Vector2 ActorPoint(int id, BoardCell at)
+    {
+        var actor = screen.Board.GetNode<Node2D>($"CanonicalProjection/Unit_{id}");
+        var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
+        var rect = sprite.GetRect();
+        for (var y = rect.Position.Y + .5f; y < rect.End.Y; y += 1)
+            for (var x = rect.Position.X + .5f; x < rect.End.X; x += 1)
+            {
+                var local = new Vector2(x, y);
+                var point = screen.Board.ToLocal(sprite.ToGlobal(local));
+                if (sprite.IsPixelOpaque(local) && screen.Board.Pick(point) == TacticalHit.Unit(at, id))
+                    return point;
+            }
+        throw new InvalidOperationException($"Native pointer fixture needs an actual visible body pixel for Unit {id} at {at}.");
+    }
+
+    private void CheckStationaryPointerFocus()
+    {
+        string? HoveredCell()
+        {
+            var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+            return hud.Projection!.Sections.FirstOrDefault(section => section.Key == "tile")?.Rows.First().Label;
+        }
+        foreach (var zoom in new[] { false, true })
+        {
+            var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+            Bind(session);
+            var pointer = world.Position + ActorPoint() * world.Scale;
+            Require(new Rect2(Vector2.Zero, map.Size).HasPoint(pointer), "Stationary pointer starts on the actual map viewport.");
+            map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = pointer });
+            Require(HoveredCell() == "10, 15", "Initial pointer focus must resolve the visible Unit hit before camera motion.");
+            var before = world.Position;
+            for (var step = 0; step < (zoom ? 8 : 3); step++)
+                map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseButton
+                {
+                    ButtonIndex = zoom ? MouseButton.WheelUp : MouseButton.WheelDown,
+                    Pressed = true,
+                    CtrlPressed = zoom,
+                    Position = pointer
+                });
+            screen._Process(0);
+            var now = screen.Board.Pick((pointer - world.Position) / world.Scale);
+            Require(world.Position != before && now != TacticalHit.Unit(new(10, 15), 2),
+                "Pan/zoom must actually move a different rendered subject beneath the stationary pointer.");
+            Require(HoveredCell() == (now is { } hit ? $"{hit.Cell.X}, {hit.Cell.Y}" : null),
+                "Camera transforms must repick the exact remembered pointer without another mouse-motion event.");
+            screen._UnhandledKeyInput(new InputEventKey { Keycode = Key.Enter, Pressed = true });
+            Require(screen.SelectedUnitId != 2 && session.Revision == 0,
+                "Enter after stationary-pointer pan/zoom must not activate the Unit identity from the old camera projection.");
+            if (now is { Kind: TacticalHitKind.Unit, UnitId: { } id } && session.GetTacticalQueries(0).Unit(id) is { CanAct: true })
+                Require(screen.SelectedUnitId == id, "Enter must activate the newly visible actionable Unit subject, not discard pointer focus.");
+        }
+
+        var keyboardSession = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+        Bind(keyboardSession);
+        var stationary = world.Position + ActorPoint() * world.Scale;
+        map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = stationary });
+        var originalCamera = world.Position;
+        for (var step = 0; step < 18; step++)
+            screen._UnhandledKeyInput(new InputEventKey { Keycode = Key.Right, Pressed = true });
+        Require(world.Position != originalCamera && HoveredCell() == "28, 15",
+            "Keyboard navigation must retain its explicit focused ground cell when Reveal pans the camera.");
+        var underneath = screen.Board.Pick((stationary - world.Position) / world.Scale);
+        Require(underneath?.Cell != new BoardCell(28, 15), "Keyboard reveal must exercise a pointer position distinct from the keyboard focus.");
+        screen._UnhandledKeyInput(new InputEventKey { Keycode = Key.Enter, Pressed = true });
+        Require(screen.SelectedUnitId is null && keyboardSession.Revision == 0 && HoveredCell() == "28, 15",
+            "Enter after keyboard Reveal must preserve keyboard Ground intent rather than repick the obsolete physical pointer.");
+    }
+
     private void CheckCancellation()
     {
         Bind(new GrayFlagSession(new(engine, presentation, new JsonArray()), level));
-        var at = Field(new Vector2(10.5f, 15.5f) * 32);
+        var at = BoardField(ActorPoint());
         GuiButton(MouseButton.Left, true, at);
         screen._Notification((int)Node.NotificationWMWindowFocusOut);
         GuiButton(MouseButton.Left, false, at);
@@ -203,7 +276,7 @@ public partial class CameraIntegrationChecks : Node
         GuiButton(MouseButton.Middle, true, new Vector2(100, 100));
         CapturedMove(new Vector2(10000, 10000));
         CapturedButton(MouseButton.Middle, false, new Vector2(10000, 10000));
-        screen.SelectCell(new BoardCell(10, 15));
+        screen.SelectHit(TacticalHit.Unit(new BoardCell(10, 15), 2));
         GuiButton(MouseButton.Right, true, Field(new Vector2(16, 16)));
         Require(screen.SelectedUnitId == 2, "Canonical outside terrain excludes holes even when material tags say playable");
         GuiButton(MouseButton.Left, true, Field(new Vector2(16, 16)));
@@ -222,7 +295,7 @@ public partial class CameraIntegrationChecks : Node
         var actorTerrain = mapState["tiles"]![actorCell.Y * mapState["width"]!.GetValue<int>() + actorCell.X]!.GetValue<string>();
         materials.TerrainTags[actorTerrain] = ["outside"];
         screen.ConfigureGround(TerrainView.Factory(materials));
-        var actor = Field(new Vector2(10.5f, 15.5f) * 32);
+        var actor = BoardField(ActorPoint());
         GuiButton(MouseButton.Left, true, actor);
         CapturedButton(MouseButton.Left, false, actor);
         Require(screen.SelectedUnitId == 2, "Material outside tags cannot block primary input on canonical playable terrain");
@@ -294,7 +367,7 @@ public partial class CameraIntegrationChecks : Node
                     // Inspect an actually stationary actor. The moving sprite still covers its old cell,
                     // while its canonical occupant has already moved to the committed destination.
                     var target = session.GetTacticalQueries(0).Unit(5)!.At;
-                    var at = Field(new Vector2(target.X + .5f, target.Y + .5f) * 32);
+                    var at = BoardField(ActorPoint(5, target));
                     Require(new Rect2(Vector2.Zero, map.Size).HasPoint(at), "Busy hover fixture must lie inside the actual map viewport.");
                     map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = at });
                     var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
@@ -333,14 +406,14 @@ public partial class CameraIntegrationChecks : Node
         screen.BindApplicationActions(onRestart: () => restarts += 100, onExit: () => exits += 100);
         confirmation.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
         Require(restarts == 0, "A superseded restart dialog cannot invoke the newer binding's callback");
-        GuiButton(MouseButton.Left, true, Field(new Vector2(10.5f, 15.5f) * 32));
+        GuiButton(MouseButton.Left, true, BoardField(ActorPoint()));
         RemoveChild(screen);
         exit.EmitSignal(Button.SignalName.Pressed);
         screen._Input(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = false });
         Require(exits == 0, "Unmounted application callback cannot exit camp");
         AddChild(screen);
         Bind(new GrayFlagSession(new(engine, presentation, new JsonArray()), level));
-        GuiButton(MouseButton.Left, false, Field(new Vector2(10.5f, 15.5f) * 32));
+        GuiButton(MouseButton.Left, false, BoardField(ActorPoint()));
         Require(screen.SelectedUnitId is null, "Reattached screen cannot replay an old held gesture");
         Near(world.Scale, Vector2.One * 1.25f, "Explicit rebind after reattach restores a usable camera");
         screen.QueueFree();
@@ -352,6 +425,7 @@ public partial class CameraIntegrationChecks : Node
             screen.Board.AdvancePresentation(.1);
         Require(!screen.IsPresenting, "Presentation settles before the next order");
     }
+    private Vector2 BoardField(Vector2 point) => world.Position + point * world.Scale;
     private Vector2 Field(Vector2 point) => world.Position + screen.Board.Projection.Project(point) * world.Scale;
     private Vector2 Global(Vector2 point) => map.GetGlobalTransformWithCanvas() * point;
     private void GuiButton(MouseButton button, bool pressed, Vector2 point) => map.EmitSignal(Control.SignalName.GuiInput,
@@ -410,7 +484,7 @@ public partial class CameraIntegrationChecks : Node
             };
         }
         public ITacticalSelectionQueries GetTacticalQueries(long binding) => inner.GetTacticalQueries(binding);
-        public TacticalHudProjection ProjectHud(TacticalStamp stamp, TacticalSelection selection, BoardCell? cursor, int? inspectId, bool busy) => inner.ProjectHud(stamp, selection, cursor, inspectId, busy);
+        public TacticalHudProjection ProjectHud(TacticalStamp stamp, TacticalSelection selection, TacticalHit? cursor, int? inspectId, bool busy) => inner.ProjectHud(stamp, selection, cursor, inspectId, busy);
         public BattleDispatchResult Undo(long expectedRevision) => inner.Undo(expectedRevision);
         public BattleDispatchResult Dispatch(JsonElement action, long expectedRevision) => inner.Dispatch(action, expectedRevision);
     }

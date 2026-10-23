@@ -15,13 +15,13 @@ internal static class TacticalSceneInputChecks
             if (destination == origin)
                 continue;
             controller.Bind(queries);
-            controller.Click(controller.Stamp, origin);
-            var result = controller.Click(controller.Stamp, destination);
+            controller.Click(controller.Stamp, TacticalHit.Unit(origin, unitId));
+            var result = controller.Click(controller.Stamp, TacticalHit.Ground(destination));
             if (result.Request?.Action is not { } action || action.GetProperty("kind").GetString() != "command"
                 || action.GetProperty("command").GetProperty("ability").GetString() != "wait")
                 continue;
-            screen.SelectCell(origin);
-            screen.SelectCell(destination);
+            screen.SelectHit(TacticalHit.Unit(origin, unitId));
+            screen.SelectHit(TacticalHit.Ground(destination));
             return destination;
         }
         throw new InvalidOperationException("Movement fixture has no automatic wait destination.");

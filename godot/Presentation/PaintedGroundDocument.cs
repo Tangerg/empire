@@ -3,11 +3,13 @@ using System;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 using Empire.Core.Determinism;
 using Godot;
 
 namespace Empire.Presentation;
 
+[JsonUnmappedMemberHandling(JsonUnmappedMemberHandling.Disallow)]
 public sealed class PaintedGroundDocument
 {
     public required string LevelId
@@ -61,8 +63,8 @@ public sealed class PaintedGroundDocument
     {
         if (minimumHeight > maximumHeight)
             throw new InvalidOperationException("Painted ground height bounds must be ordered.");
-        if (Occluders is null || PixelSize.Length != 2 || PixelSize[0] <= 0 || PixelSize[1] <= 0
-            || OriginPixels.Length != 2 || CellXPixels.Length != 2 || CellYPixels.Length != 2
+        if (Occluders is null || PixelSize is not { Length: 2 } || PixelSize[0] <= 0 || PixelSize[1] <= 0
+            || OriginPixels is not { Length: 2 } || CellXPixels is not { Length: 2 } || CellYPixels is not { Length: 2 }
             || !float.IsFinite(WorldScale) || WorldScale <= 0)
             throw new InvalidOperationException("Painted ground dimensions and registration must be explicit and positive.");
         var plane = new BoardPlane(
@@ -82,19 +84,41 @@ public sealed class PaintedGroundDocument
         return plane;
     }
 
-    public BoardGroundFactory Factory(JsonObject registeredMap) => (_, scene) =>
+    public BoardGroundFactory Factory(JsonObject registeredMap) => (rules, scene) =>
     {
         if (scene.LevelId != LevelId)
             throw new InvalidOperationException("Painted ground and scene level identities differ.");
         var texture = ResourceLoader.Load<Texture2D>(ResourcePath)
             ?? throw new MissingArtResourceException(ResourcePath, $"Cannot load painted ground {ResourcePath}.");
-        if (PixelSize.Length != 2 || texture.GetWidth() != PixelSize[0] || texture.GetHeight() != PixelSize[1])
-            throw new InvalidOperationException("Painted ground texture dimensions differ from its registration.");
-        return PaintedGroundView.Create(this, texture, registeredMap);
+        return PaintedGroundView.Create(this, texture, registeredMap, rules.Content);
     };
 }
 
+/// <summary>A logical object owns its canonical site once, independently of its material drawing parts.</summary>
+[JsonUnmappedMemberHandling(JsonUnmappedMemberHandling.Disallow)]
 public sealed class PaintedOccluder
+{
+    public required string Id
+    {
+        get; init;
+    }
+    public int[]? SelectionCell
+    {
+        get; init;
+    }
+    public bool OwnsMapStructureBody
+    {
+        get; init;
+    }
+    public required PaintedOccluderPart[] Parts
+    {
+        get; init;
+    }
+}
+
+/// <summary>One opaque material patch, with its own drawing-depth front and explicit pointer coverage.</summary>
+[JsonUnmappedMemberHandling(JsonUnmappedMemberHandling.Disallow)]
+public sealed class PaintedOccluderPart
 {
     public required string Id
     {
@@ -112,11 +136,20 @@ public sealed class PaintedOccluder
     {
         get; init;
     }
-    public int[]? SelectionCell
+    public required PaintedPointer Pointer
     {
         get; init;
     }
-    public bool OwnsMapStructureBody
+}
+
+[JsonUnmappedMemberHandling(JsonUnmappedMemberHandling.Disallow)]
+public sealed class PaintedPointer
+{
+    public required string Kind
+    {
+        get; init;
+    }
+    public double[][]? PolygonPixels
     {
         get; init;
     }

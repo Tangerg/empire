@@ -30,7 +30,7 @@ EnginePlugin[] Plugins(double version, List<string> trace) => [
     {
         trace.Add("extension");
         var resources = context.Require(Keys.Resources);
-        context.Replace(Keys.Abilities, context.Require(Keys.Abilities).Clone().Register(new("root-pulse")
+        context.Replace(Keys.Abilities, context.Require(Keys.Abilities).Clone().Register(new("root-pulse", AbilityTargetKind.Self)
         {
             Priority = 12.5, Execute = (_, query, _, emit) =>
             {
@@ -38,17 +38,17 @@ EnginePlugin[] Plugins(double version, List<string> trace) => [
                 var amount = resources.Spend(subject, "root_energy", 1.5);
                 resources.Announce(subject, "root_energy", -amount, emit);
                 var variables = query.State["scenario"]!["variables"]!.AsObject();
-                variables["pulses"] = StateJson.Number(variables, "pulses", 0) + 1;
+                variables["pulses"] = EcmaJson.ToElement(variables["pulses"] ?? JsonValue.Create(0)).GetDouble() + 1;
                 emit(new() { ["type"]="scenarioSignal", ["signal"]="root-pulse" });
-                if (StateJson.IsTrue(variables["fail"])) throw new DomainInvariantException("root pulse failed");
+                if (variables["fail"]?.GetValueKind() == JsonValueKind.True) throw new DomainInvariantException("root pulse failed");
             }
         }));
         context.Replace(Keys.ActionHandlers, context.Require(Keys.ActionHandlers).Clone().Register("rootGrant", (context, action) =>
         {
-            var unit = context.State["units"]!.AsArray().OfType<JsonObject>().Single(u => StateJson.Integer(u,"id") == 2);
+            var unit = context.State["units"]!.AsArray().OfType<JsonObject>().Single(u => EcmaJson.ToElement(u["id"]).GetInt32() == 2);
             unit["learnedAbilities"] = new JsonArray("root-pulse");
             unit["resources"]!["root_energy"] = new JsonObject { ["current"] = 4, ["capacity"] = 5 };
-            unit["done"] = false; context.State["scenario"]!["variables"]!["fail"] = StateJson.IsTrue(action["fail"]);
+            unit["done"] = false; context.State["scenario"]!["variables"]!["fail"] = action["fail"]?.GetValueKind() == JsonValueKind.True;
             context.Emit(new() { ["type"]="scenarioSignal", ["signal"]="root-grant" });
         }));
     }, overrides: [Keys.Abilities, Keys.ActionHandlers], requiresCapabilities: [Keys.Abilities,Keys.ActionHandlers,Keys.Resources]),
@@ -58,7 +58,7 @@ EnginePlugin[] Plugins(double version, List<string> trace) => [
         var resources = context.Require(Keys.Resources).Clone();
         resources.Adapters.Register(new("root_energy", "unit", false, 0.25, subject =>
             subject.Holder["resources"]?["root_energy"] is JsonObject account ? new ResourceAccount(
-                () => new(StateJson.Number(account,"current",0), StateJson.Number(account,"capacity",0)), value => account["current"] = value) : null));
+                () => new(EcmaJson.ToElement(account["current"] ?? JsonValue.Create(0)).GetDouble(), EcmaJson.ToElement(account["capacity"] ?? JsonValue.Create(0)).GetDouble()), value => account["current"] = value) : null));
         context.Replace(Keys.Resources, resources);
     }, overrides: [Keys.Resources], requiresCapabilities: [Keys.Resources]),
     new("test.root-ai", 1, context =>
@@ -71,7 +71,7 @@ EnginePlugin[] Plugins(double version, List<string> trace) => [
 var level = oracle["level"]!.AsObject();
 foreach (var vector in oracle["cases"]!.AsArray().OfType<JsonObject>())
 {
-    var version = StateJson.Number(vector, "version", 1);
+    var version = EcmaJson.ToElement(vector["version"] ?? JsonValue.Create(1)).GetDouble();
     var trace = new List<string>();
     var catalog = Catalog();
     var engine = BattleEngineFactory.Create(catalog, Plugins(version, trace));
@@ -85,14 +85,14 @@ foreach (var vector in oracle["cases"]!.AsArray().OfType<JsonObject>())
     Equal(Events(battle.Dispatch(grant).Events)["events"], vector["grantEvents"], "custom action events");
     recorder.Record(grant);
     var state = battle.Snapshot();
-    var actor = state["units"]!.AsArray().OfType<JsonObject>().Single(u => StateJson.Integer(u, "id") == 2);
+    var actor = state["units"]!.AsArray().OfType<JsonObject>().Single(u => EcmaJson.ToElement(u["id"]).GetInt32() == 2);
     var options = new JsonArray(engine.CommandsAt(state, actor, TacticalQueries.Position(actor)).Select(option => (JsonNode?)new JsonObject { ["ability"] = option.Ability, ["key"] = option.Key }).ToArray());
     Equal(options, vector["options"], "custom ability menu");
     var pulse = vector["pulse"]!.AsObject();
     Equal(Events(battle.Dispatch(pulse).Events)["events"], vector["pulseEvents"], "composed ability resource events");
     recorder.Record(pulse);
     Equal(battle.Snapshot(), vector["final"], "custom ability final state");
-    Check(battle.StateHash == StateJson.Text(vector, "hash"), "final digest");
+    Check(battle.StateHash == EcmaJson.ReadString(vector["hash"]), "final digest");
     var save = engine.SaveBattle(battle.Snapshot(), "2026-10-20T00:00:00.000Z");
     Equal(save, FixtureRuleset.NativeDocument(vector["save"]!.AsObject()), "named save");
     Equal(engine.LoadBattle(save), vector["loaded"], "named load");
@@ -111,7 +111,7 @@ foreach (var vector in oracle["cases"]!.AsArray().OfType<JsonObject>())
     Equal(resumed.Snapshot(), vector["beforeFailure"], "restored battle uses resolved handlers/pipeline");
     if (vector["wrongVersion"] is not null)
         Equal(Error(() => BattleEngineFactory.Create(Catalog(), Plugins(version + 1, [])).LoadBattle(save)), vector["wrongVersion"], "version mismatch");
-    Reject(() => engine.Abilities.Register(new("late")), "abilities sealed");
+    Reject(() => engine.Abilities.Register(new("late", AbilityTargetKind.Self)), "abilities sealed");
     Reject(() => engine.ActionHandlers.Register("late", (_, _) => { }), "actions sealed");
     Reject(() => engine.Resources.Adapters.Register(new("late", "unit", true, 1, _ => null)), "resources sealed");
     Reject(() => engine.Ai.Intents.Register(new("late", 1, _ => null)), "AI sealed");
@@ -164,7 +164,7 @@ var spatial = oracle["spatial"]!.AsObject();
 var peace = BattleEngineFactory.Create(Catalog(), [new EnginePlugin("test.root-space",1,context=>context.Replace(Keys.Space,
     new PeaceSpace(context.Require(Keys.Content),context.Require(Keys.Grids))),overrides:[Keys.Space],requiresCapabilities:[Keys.Content,Keys.Grids])]);
 var spaceInput = spatial["input"]!.AsObject();
-var spaceActor = spaceInput["units"]!.AsArray().OfType<JsonObject>().Single(u => StateJson.Integer(u, "id") == 2);
+var spaceActor = spaceInput["units"]!.AsArray().OfType<JsonObject>().Single(u => EcmaJson.ToElement(u["id"]).GetInt32() == 2);
 JsonArray OptionKeys(BattleEngine engine) => new(engine.CommandsAt(spaceInput, spaceActor, TacticalQueries.Position(spaceActor)).Select(o => (JsonNode?)JsonValue.Create(o.Key)).ToArray());
 Equal(OptionKeys(plain), spatial["defaultOptions"], "default spatial options");
 Equal(OptionKeys(peace), spatial["customOptions"], "resolved spatial options");
@@ -227,17 +227,17 @@ sealed class TestBattleRandom : IBattleRandomSource
     public T Pick<T>(JsonObject state, string stream, IReadOnlyList<T> items) => defaults.Pick(state, stream, items);
     public bool Chance(JsonObject state, string stream, double percent)
     {
-        state["random"]!["seed"] = (uint)(StateJson.Number(state["random"]!["seed"], "seed") + 17);
+        state["random"]!["seed"] = (uint)(EcmaJson.ToElement(state["random"]!["seed"]).GetDouble() + 17);
         var counters = state["random"]!["counters"]!.AsObject();
-        counters[stream] = StateJson.Number(counters, stream, 0) + 3;
+        counters[stream] = EcmaJson.ToElement(counters[stream] ?? JsonValue.Create(0)).GetDouble() + 3;
         counters["other-stream"] = 7;
         state["scenario"]!["variables"]!["randomSeen"] = percent;
-        if (StateJson.IsTrue(state["scenario"]!["variables"]!["failRandom"]))
+        if (state["scenario"]!["variables"]!["failRandom"]?.GetValueKind() == JsonValueKind.True)
             throw new DomainInvariantException("random policy failed");
         return true;
     }
 }
-sealed class PeaceSpace(ReadOnlyContent content, Empire.Core.Geometry.GridRegistry grids) : DefaultTacticalSpace(content, grids)
+sealed class PeaceSpace(ReadOnlyContent content, Empire.Core.Geometry.GridRegistry grids) : DefaultTacticalSpace(new TacticalSpaceRules(content, grids))
 {
     public override IReadOnlyList<Empire.Core.Geometry.Coord> AttackTargetCoords(JsonObject state, JsonObject unit, Empire.Core.Geometry.Coord from, JsonObject weapon) => [];
 }

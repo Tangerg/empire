@@ -81,11 +81,11 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
     var support = new SupportOrders(new SupportOrderRules(content, grids, resources, combat.Effects));
     var careers = new CareerRules(new CareerRuleServices(content, resources, combat.Effects));
     var abilities = DefaultAbilities.Create()
-        .Register(new("pulse", "Pulse")
+        .Register(new("pulse", AbilityTargetKind.Self)
         {
             Usable = (_, _) => !IsTrue(config["disableAbility"])
         })
-        .Register(new("charge", "Charge")
+        .Register(new("charge", AbilityTargetKind.Self)
         {
             WeaponFor = (rules, query) => query.WeaponId is { } id ? rules.Combat.Forecasts.UnitWeapons(query.Unit).First(weapon => Text(weapon, "id") == id) : null,
             WeaponChoices = (rules, query) => rules.Combat.Forecasts.UnitWeapons(query.Unit),

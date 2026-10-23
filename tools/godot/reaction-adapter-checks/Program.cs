@@ -46,8 +46,8 @@ var before = EcmaJson.Stringify(session.Snapshot());
 void Require(bool result, string message) { if (!result) throw new Exception(message); }
 var queries = session.GetTacticalQueries(7);
 var controller = new TacticalSelectionController(queries);
-controller.Click(controller.Stamp, queries.Unit(id)!.At);
-var hud = session.ProjectHud(controller.Stamp, controller.Selection, controller.Cursor, controller.InspectId, false);
+controller.Click(controller.Stamp, TacticalHit.Unit(queries.Unit(id)!.At, id));
+var hud = session.ProjectHud(controller.Stamp, controller.Selection, controller.CursorHit, controller.InspectId, false);
 var rows = hud.Sections.Single(section => section.Key == "stances").Rows.Where(row => row.Key.StartsWith("reaction:", StringComparison.Ordinal)).ToArray();
 Require(rows.Select(row => row.Key).SequenceEqual(reactions.Keys().Select(stance => "reaction:" + stance)), "resolved reaction HUD IDs");
 Require(rows.Select(row => row.Label).SequenceEqual(reactions.Keys().Select(presentation.Content.ReactionName)), "resolved reaction HUD names");

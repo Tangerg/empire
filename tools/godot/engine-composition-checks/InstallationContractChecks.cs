@@ -1,5 +1,6 @@
 using System.Text.Json.Nodes;
 using Empire.Core;
+using Empire.Core.Determinism;
 using Empire.Core.Composition;
 using Empire.Core.Geometry;
 using Empire.Core.State;
@@ -13,7 +14,7 @@ static class InstallationContractChecks
     {
         var packs = (JsonArray)sourcePacks.DeepClone();
         var actorDefinition = packs.OfType<JsonObject>().SelectMany(pack => pack["units"]?.AsArray().OfType<JsonObject>() ?? [])
-            .Single(unit => StateJson.Text(unit, "id") == "c01.swordsman");
+            .Single(unit => EcmaJson.ReadString(unit["id"]) == "c01.swordsman");
         actorDefinition["movement"] = 1;
         actorDefinition["vision"] = 1;
         var catalog = new ReadOnlyContent(packs);
@@ -86,7 +87,7 @@ static class InstallationContractChecks
             var recorder = engine.RecordBattle(initial);
             var moved = battle.Dispatch(move);
             recorder.Record(move);
-            check(moved.Events.Any(item => StateJson.Text(item, "type") == "move"), $"{gridId}: movement command emitted its event");
+            check(moved.Events.Any(item => EcmaJson.ReadString(item["type"]) == "move"), $"{gridId}: movement command emitted its event");
             check(TacticalQueries.Position(battle.Snapshot()["units"]![0]!.AsObject()) == new Coord(2, 2), $"{gridId}: actual movement uses the replacement");
             var save = engine.SaveBattle(battle.Snapshot(), "2026-10-21T00:00:00.000Z");
             var restoredEngine = BattleEngineFactory.Create(catalog, [plugin]);

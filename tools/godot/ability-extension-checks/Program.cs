@@ -32,7 +32,7 @@ JsonNode? Node<T>(T value) => JsonSerializer.SerializeToNode(value, serializatio
 AbilityRegistry Abilities(JsonObject config)
 {
     var registry = DefaultAbilities.Create();
-    registry.Register(new("test-charge")
+    registry.Register(new("test-charge", AbilityTargetKind.Self)
     {
         Priority = 12.5,
         WeaponFor = (rules, query) => query.WeaponId is { } id
@@ -52,7 +52,7 @@ AbilityRegistry Abilities(JsonObject config)
             emit(new JsonObject { ["type"] = "scenarioSignal", ["signal"] = "charge:" + (query.WeaponId ?? "") });
         },
     });
-    registry.Register(new("test-pulse")
+    registry.Register(new("test-pulse", AbilityTargetKind.Self)
     {
         Priority = 12.25,
         Tags = ["command"],
@@ -66,9 +66,8 @@ AbilityRegistry Abilities(JsonObject config)
                 throw new DomainInvariantException("custom ability failed");
         },
     });
-    registry.Register(new("test-mark")
+    registry.Register(new("test-mark", StateJson.IsTrue(config["markSelf"]) ? AbilityTargetKind.Self : AbilityTargetKind.Cell)
     {
-        SelfTargeted = StateJson.IsTrue(config["markSelf"]),
         Priority = 12.25,
         Engagement = config["engagement"]?.GetValue<string>() ?? "hostile-action",
         Targets = (_, _) => [new(3, 3)],
@@ -78,7 +77,7 @@ AbilityRegistry Abilities(JsonObject config)
             emit(new JsonObject { ["type"] = "scenarioSignal", ["signal"] = "mark" });
         },
     });
-    registry.Register(new("test-replace")
+    registry.Register(new("test-replace", AbilityTargetKind.Self)
     {
         Execute = (_, query, _, emit) =>
         {
@@ -90,7 +89,7 @@ AbilityRegistry Abilities(JsonObject config)
             emit(new JsonObject { ["type"] = "scenarioSignal", ["signal"] = "actor-replaced" });
         },
     });
-    registry.Register(new("test-sacrifice")
+    registry.Register(new("test-sacrifice", AbilityTargetKind.Self)
     {
         Execute = (rules, query, _, emit) =>
         {
@@ -100,7 +99,7 @@ AbilityRegistry Abilities(JsonObject config)
         },
     });
     foreach (var (id, priority) in new[] { ("test-😀", 12.25), ("test-\ue000", 12.25), ("test-low", 12.1) })
-        registry.Register(new(id)
+        registry.Register(new(id, AbilityTargetKind.Self)
         {
             Priority = priority
         });
@@ -218,7 +217,7 @@ var selectedRangeWeapon = new JsonObject
     ["maxRange"] = 4.75,
 };
 var weaponQueries = 0;
-var rangeAbilities = DefaultAbilities.Create().Register(new("test-range")
+var rangeAbilities = DefaultAbilities.Create().Register(new("test-range", AbilityTargetKind.Self)
 {
     WeaponChoices = (_, _) => [selectedRangeWeapon],
     WeaponFor = (_, _) =>
@@ -240,12 +239,25 @@ Check("semantic command range", "no weapon has no range", Node(rangeCommands.Sin
 selectedRangeWeapon["minRange"] = 100;
 Check("semantic command range", "detached range facts", Node(ranged.Range), Node(new CommandRange(0.25, 4.75)));
 
+try
+{
+    new AbilityRegistry().Register(new("invalid-target", (AbilityTargetKind)999));
+    throw new Exception("Unknown ability target kind was admitted");
+}
+catch (DomainInvariantException) { checks++; }
+try
+{
+    DefaultAbilities.Create().Replace(new("attack", (AbilityTargetKind)999));
+    throw new Exception("Unknown replacement target kind was admitted");
+}
+catch (DomainInvariantException) { checks++; }
+
 var tagsSource = new[] { "original" };
-var entry = new AbilityDefinition("probe") { Tags = tagsSource };
+var entry = new AbilityDefinition("probe", AbilityTargetKind.Self) { Tags = tagsSource };
 tagsSource[0] = "outside";
 Check("immutable tags", "tags", Node(entry.Tags), Node(new[] { "original" }));
 var originalRegistry = new AbilityRegistry().Register(entry).Seal();
-var cloned = originalRegistry.Clone().Replace(entry with { Priority = 25 }).Register(new("second"));
+var cloned = originalRegistry.Clone().Replace(entry with { Priority = 25 }).Register(new("second", AbilityTargetKind.Self));
 Check("registry isolation", "keys", Node(originalRegistry.Keys()), Node(new[] { "probe" }));
 Check("registry replacement", "keys", Node(cloned.Keys()), Node(new[] { "probe", "second" }));
 Check("registry replacement", "original priority", Node(originalRegistry.Get("probe").Priority), Node(50d));

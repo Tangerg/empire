@@ -15,6 +15,6 @@ public interface ITacticalBattleSession
     BattleSnapshot GetSnapshot();
     BattleDispatchResult Dispatch(JsonElement action, long expectedRevision);
     ITacticalSelectionQueries GetTacticalQueries(long binding);
-    TacticalHudProjection ProjectHud(TacticalStamp stamp, TacticalSelection selection, BoardCell? cursor, int? inspectId, bool busy);
+    TacticalHudProjection ProjectHud(TacticalStamp stamp, TacticalSelection selection, TacticalHit? cursorHit, int? inspectId, bool busy);
     BattleDispatchResult Undo(long expectedRevision);
 }

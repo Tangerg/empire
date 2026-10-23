@@ -7,6 +7,7 @@ using Empire.Core.Geometry;
 
 namespace Empire.Presentation;
 
+/// <summary>One rendered part. SelectionCell projects its pointer target; logical site ownership lives in BoardGroundView.Sites.</summary>
 public sealed record TerrainDepthEntry(Node2D Node, Vector2 LogicalContact, int Layer, StandingVisual? Visual = null, Coord? SelectionCell = null);
 
 /// <summary>Owns the logical ground viewport; projected polygons only borrow its texture.</summary>

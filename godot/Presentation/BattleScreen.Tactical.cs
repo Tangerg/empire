@@ -45,7 +45,7 @@ public partial class BattleScreen
         _tactical.SetBusy(IsInputBlocked);
         var scroll = _hudScroll.ScrollVertical;
         var applyGeneration = ++_hudApplyGeneration;
-        _hud.Apply(_session.ProjectHud(stamp, _tactical.Selection, _tactical.Cursor, _tactical.InspectId, IsInputBlocked));
+        _hud.Apply(_session.ProjectHud(stamp, _tactical.Selection, _tactical.CursorHit, _tactical.InspectId, IsInputBlocked));
         Callable.From(() =>
         {
             if (applyGeneration == _hudApplyGeneration && Current(stamp, true))
@@ -103,6 +103,10 @@ public partial class BattleScreen
 
     private void HandleTactical(TacticalInputResult result)
     {
+        // Reveal alone (cycle/roster) changes selection, not the cursor's source.
+        // Only a controller event that actually focuses a cursor replaces a mouse hit.
+        if (result.CursorFocused)
+            _pointerMapPosition = null;
         if (result.Reveal is { } cell)
         {
             var point = CellCenter(new(cell.X, cell.Y));
@@ -139,20 +143,17 @@ public partial class BattleScreen
     {
         if (_tactical is null || !Current(_tactical.Stamp, true))
             return;
-        BoardCell? cell = null;
+        TacticalHit? hit = null;
         if (point is { } at && at.X >= 0 && at.Y >= 0 && at.X < _board.FieldSize.X && at.Y < _board.FieldSize.Y && _state is not null)
         {
-            if (_board.Pick(new Vector2((float)at.X, (float)at.Y)) is { } picked)
-            {
-                var candidate = new BoardCell(picked.X, picked.Y);
-                if (_tactical.InteractiveCells.Contains(candidate))
-                    cell = candidate;
-            }
+            if (_board.Pick(new Vector2((float)at.X, (float)at.Y)) is { } picked
+                && _tactical.InteractiveCells.Contains(picked.Cell))
+                hit = picked;
         }
-        if (_tactical.Cursor == cell)
+        if (_tactical.CursorHit == hit)
             return;
-        if (cell is { } hovered)
-            _tactical.Hover(_tactical.Stamp, hovered);
+        if (hit is not null)
+            _tactical.Hover(_tactical.Stamp, hit);
         else
             _tactical.Leave(_tactical.Stamp);
         UpdateTactical();

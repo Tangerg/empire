@@ -13,15 +13,20 @@ namespace Empire.Application;
 
 public sealed partial class GrayFlagSession
 {
-    public TacticalHudProjection ProjectHud(TacticalStamp stamp, TacticalSelection selection, BoardCell? cursor, int? inspectId, bool busy)
+    public TacticalHudProjection ProjectHud(TacticalStamp stamp, TacticalSelection selection, TacticalHit? cursorHit, int? inspectId, bool busy)
     {
         if (stamp.Revision != revision)
             throw new DomainInvariantException("HUD projection belongs to a stale session revision.");
+        var cursor = cursorHit?.Cell;
         var state = battle.Snapshot();
         var sections = new List<TacticalHudSection>();
         var current = TacticalQueries.Player(state, N(state, "currentPlayer"));
         var human = S(current, "controller") == "human";
         var visible = VisibleUnitIds(state, Viewer(state));
+        var cursorUnit = cursorHit is { Kind: TacticalHitKind.Unit, UnitId: { } hitId } && visible.Contains(hitId)
+            ? TacticalQueries.UnitById(state, hitId) : null;
+        if (cursorUnit is not null && TacticalQueries.Position(cursorUnit) != new Coord(cursorHit!.Cell.X, cursorHit.Cell.Y))
+            cursorUnit = null;
         var selected = selection.UnitId is { } selectedId && visible.Contains(selectedId) ? TacticalQueries.UnitById(state, selectedId) : null;
         var commandable = human && selected is not null && engine.Turns.MayAct(state, selected) ? selected : null;
         var formations = commandable is null ? [] : engine.Progression.Formations.Options(state, commandable);
@@ -119,10 +124,10 @@ public sealed partial class GrayFlagSession
                     unit: N(unit, "id"),
                     enabled: !busy,
                     active: selection.UnitId == N(unit, "id"))));
-            if (selected is not null && cursor is { } deploymentCursor)
+            if (selected is not null && cursorUnit is not null && cursor is { } deploymentCursor)
             {
                 var swap = engine.Deployment.Spots(state, selected).FirstOrDefault(spot => spot.At == new Coord(deploymentCursor.X, deploymentCursor.Y))?.Swaps;
-                if (swap is not null)
+                if (swap is not null && N(swap, "id") == N(cursorUnit, "id"))
                     Section("swap",
                         text.Format("ui.hud.deployment_swap"),
                         new[] { new TacticalHudRow("swap", text.Format("ui.hud.swap_hint", Name(swap))) });
@@ -157,12 +162,14 @@ public sealed partial class GrayFlagSession
                         TacticalHudIntentKind.Tactic,
                         $"{S(commander, "id")}:{tactic.Id}"))));
         if (selection.Kind == TacticalSelectionKind.Target && selected is not null
-            && selection.Weapon is { } weapon && cursor is { } target
-            && selection.Targets.Contains(target) && selection.Destination is { } from)
+            && selection.Weapon is { } weapon && cursorHit is { } targetHit
+            && (targetHit.Kind != TacticalHitKind.Unit || cursorUnit is not null)
+            && selection.TargetSubjects.Any(subject => subject.Accepts(targetHit)) && selection.Destination is { } from)
         {
-            var defender = TacticalQueries.UnitAt(state, new(target.X, target.Y));
+            var target = targetHit.Cell;
+            var defender = cursorUnit;
             var plan = engine.Combat.Forecast(state, selected, new(target.X, target.Y), new(from.X, from.Y), weapon);
-            if (plan.PrimaryStructure is { } structureForecast)
+            if (targetHit.Kind == TacticalHitKind.Object && plan.PrimaryStructure is { } structureForecast)
             {
                 var structure = state["structures"]!.AsArray().OfType<JsonObject>()
                     .Single(value => S(value, "id") == structureForecast.Structure);
@@ -432,7 +439,10 @@ public sealed partial class GrayFlagSession
             ? selection.Destination : cursor;
         if (inspectionCell is { } tile && engine.Space.Board(state).Contains(new(tile.X, tile.Y)))
         {
-            var structure = state["structures"]!.AsArray().OfType<JsonObject>().FirstOrDefault(value => TacticalQueries.Position(value) == new Coord(tile.X, tile.Y));
+            var structure = selection.Kind is TacticalSelectionKind.Site or TacticalSelectionKind.Recruit
+                || cursorHit?.Kind == TacticalHitKind.Object
+                ? state["structures"]!.AsArray().OfType<JsonObject>().FirstOrDefault(value => TacticalQueries.Position(value) == new Coord(tile.X, tile.Y))
+                : null;
             if (structure is not null)
             {
                 var def = Definition("structures", S(structure, "type"));

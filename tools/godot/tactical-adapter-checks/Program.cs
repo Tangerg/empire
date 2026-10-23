@@ -54,7 +54,7 @@ Require(!normalQueries.InteractiveCells.Contains(new(-1, 0)) && !normalQueries.I
     "interactive cells exclude storage bounds");
 Require(EcmaJson.DeepEquals(normal.Snapshot(), outside.Snapshot()), "outside projection must not mutate canonical state");
 var outsideController = new TacticalSelectionController(outsideQueries);
-Require(outsideController.Click(outsideController.Stamp, new(1, 1)).Status == TacticalInputStatus.Ignored,
+Require(outsideController.Click(outsideController.Stamp, TacticalHit.Ground(new(1, 1))).Status == TacticalInputStatus.Ignored,
     "outside query reaches controller click guard");
 Require(normalQueries.MoveStops(1).SequenceEqual(outsideQueries.MoveStops(1)),
     "interactive eligibility must not replace composed movement legality");
@@ -86,7 +86,7 @@ foreach (var fixture in oracle["cases"]!.AsArray().OfType<JsonObject>())
         if (!visible)
         {
             var hiddenController = new TacticalSelectionController(q);
-            hiddenController.Hover(hiddenController.Stamp, Cell(unit["at"]!));
+            hiddenController.Hover(hiddenController.Stamp, TacticalHit.Ground(Cell(unit["at"]!)));
             Require(hiddenController.InspectId is null, name + " hidden inspection");
             try
             {
@@ -127,7 +127,7 @@ foreach (var fixture in oracle["cases"]!.AsArray().OfType<JsonObject>())
     Same(q.DeploymentUnits(), fixture["deploymentUnits"], name + " deployment units");
     Same(q.DeploymentZone(), fixture["deploymentZone"], name + " deployment zone");
     foreach (var unit in fixture["deploymentSpots"]!.AsArray().OfType<JsonObject>())
-        Same(q.DeploymentSpots(unit["id"]!.GetValue<int>()), unit["spots"], name + " deployment spots");
+        Same(q.DeploymentTargets(unit["id"]!.GetValue<int>()).Select(target => target.Cell).ToArray(), unit["spots"], name + " deployment spots");
     var tactics = new JsonArray(q.Tactics().Select(t => (JsonNode)new JsonObject { ["commander"] = t.Commander, ["id"] = t.Id, ["targets"] = JsonSerializer.SerializeToNode(t.Targets, options) }).ToArray());
     Require(EcmaJson.DeepEquals(tactics, fixture["tactics"]), name + " lossless ordered tactics");
     foreach (var fact in fixture["facts"]!.AsArray().OfType<JsonObject>())
@@ -141,7 +141,24 @@ foreach (var fixture in oracle["cases"]!.AsArray().OfType<JsonObject>())
         {
             var at = Cell(position["at"]!);
             Same(q.PathTo(id, at), position["path"], name + " path");
-            Same(q.CommandsAt(id, at), position["commands"], name + " commands");
+            var commands = q.CommandsAt(id, at);
+            Same(commands.Select(option => new { option.Key, option.Ability, option.Weapon, option.SelfTargeted, option.Hostile, option.Targets }).ToArray(),
+                position["commands"], name + " commands retain canonical order and coordinates");
+            foreach (var command in commands)
+            {
+                var kind = engine.Abilities.Get(command.Ability).TargetKind;
+                foreach (var target in command.TargetSubjects)
+                {
+                    if (kind is Empire.Core.Abilities.AbilityTargetKind.Self or Empire.Core.Abilities.AbilityTargetKind.Cell)
+                        Require(target.Kind == TacticalTargetKind.Cell, name + " cell ability subject");
+                    else if (q.UnitAt(target.Cell) is { } occupant)
+                        Require(target.Kind == TacticalTargetKind.Unit && target.UnitId == occupant.Id,
+                            name + " command keeps canonical primary unit identity");
+                    else if (kind == Empire.Core.Abilities.AbilityTargetKind.UnitOrStructure)
+                        Require(target.Kind == TacticalTargetKind.Object || target.Kind == TacticalTargetKind.Unit,
+                            name + " combat target preserves primary entity, not area coverage");
+                }
+            }
             foreach (var attack in position["attacks"]!.AsArray().OfType<JsonObject>())
             {
                 var expected = (JsonObject)attack.DeepClone();
@@ -167,25 +184,27 @@ foreach (var flow in oracle["flows"]!.AsArray().OfType<JsonObject>())
     switch (name)
     {
         case "square4":
-            control.Click(at, Cell(flow["input"]!["unit"]!));
-            control.Click(at, Cell(flow["input"]!["target"]!));
-            emitted = control.Click(at, Cell(flow["input"]!["target"]!)).Request;
+            control.Click(at, TacticalHit.Unit(Cell(flow["input"]!["unit"]!), q.UnitAt(Cell(flow["input"]!["unit"]!))!.Id));
+            control.Click(at, TacticalHit.Unit(Cell(flow["input"]!["target"]!), q.UnitAt(Cell(flow["input"]!["target"]!))!.Id));
+            emitted = control.Click(at, TacticalHit.Unit(Cell(flow["input"]!["target"]!), q.UnitAt(Cell(flow["input"]!["target"]!))!.Id)).Request;
             break;
         case "tactics":
             emitted = control.ChooseTactic(at, EcmaJson.ReadString(expected["commander"]) + ":" + EcmaJson.ReadString(expected["tactic"])).Request;
-            emitted ??= control.Click(at, Cell(expected["target"]!)).Request;
+            emitted ??= control.Click(at, TacticalHit.Ground(Cell(expected["target"]!))).Request;
             break;
         case "transport":
-            control.Click(at, q.Unit(expected["carrier"]!.GetValue<int>())!.At);
+            control.Click(at, TacticalHit.Unit(q.Unit(expected["carrier"]!.GetValue<int>())!.At, expected["carrier"]!.GetValue<int>()));
             control.ChooseDisembark(at, expected["unit"]!.GetValue<int>());
-            emitted = control.Click(at, Cell(expected["at"]!)).Request;
+            emitted = control.Click(at, TacticalHit.Ground(Cell(expected["at"]!))).Request;
             break;
         case "deployment":
-            control.Click(at, q.Unit(expected["unit"]!.GetValue<int>())!.At);
-            emitted = control.Click(at, Cell(expected["at"]!)).Request;
+            control.Click(at, TacticalHit.Unit(q.Unit(expected["unit"]!.GetValue<int>())!.At, expected["unit"]!.GetValue<int>()));
+            var target = q.DeploymentTargets(expected["unit"]!.GetValue<int>()).Single(value => value.Cell == Cell(expected["at"]!));
+            emitted = control.Click(at, target.Kind == TacticalTargetKind.Unit
+                ? TacticalHit.Unit(target.Cell, target.UnitId!.Value) : TacticalHit.Ground(target.Cell)).Request;
             break;
         default:
-            control.Click(at, Cell(expected["at"]!));
+            control.Click(at, TacticalHit.Object(Cell(expected["at"]!)));
             emitted = control.Recruit(at, EcmaJson.ReadString(expected["unit"])).Request;
             break;
     }
@@ -206,8 +225,8 @@ var queries = live.GetTacticalQueries(42);
 var controller = new TacticalSelectionController(queries);
 var stamp = controller.Stamp;
 var actor = queries.Unit(queries.Actors()[0])!;
-controller.Click(stamp, actor.At);
-controller.Click(stamp, actor.At);
+controller.Click(stamp, TacticalHit.Unit(actor.At, actor.Id));
+controller.Click(stamp, TacticalHit.Unit(actor.At, actor.Id));
 var request = controller.ChooseCommand(stamp, "wait").Request ?? throw new Exception("Controller emitted no wait request");
 Require(live.Dispatch(request.Action!.Value, request.Stamp.Revision).Accepted, "canonical controller dispatch refused");
 try { _ = queries.Phase; throw new Exception("Stale snapshot accepted"); } catch (DomainInvariantException) { count++; }

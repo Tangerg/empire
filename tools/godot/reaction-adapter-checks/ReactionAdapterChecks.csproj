@@ -14,6 +14,8 @@
     <Compile Include="../../../godot/Presentation/BattlePresentationModels.cs" Link="BattlePresentationModels.cs" />
     <Compile Include="../../../godot/Presentation/Feedback/*.cs" Link="Feedback/%(Filename)%(Extension)" />
     <Compile Include="../../../godot/Presentation/Tactical/TacticalHudModels.cs" />
+    <Compile Include="../../../godot/Presentation/Tactical/TacticalHit.cs" />
+    <Compile Include="../../../godot/Presentation/Tactical/TacticalTarget.cs" />
     <Compile Include="../../../godot/Presentation/Tactical/ITacticalSelectionQueries.cs" />
     <Compile Include="../../../godot/Presentation/Tactical/TacticalSelection.cs" />
     <Compile Include="../../../godot/Localization/GameText.cs" Link="Localization/GameText.cs" />

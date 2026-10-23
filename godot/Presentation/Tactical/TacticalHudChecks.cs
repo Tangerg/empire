@@ -34,7 +34,7 @@ public partial class TacticalHudChecks : Node
             structure["disabled"] = disabled;
             var session = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(state));
             var before = EcmaJson.Stringify(session.Snapshot());
-            var hud = session.ProjectHud(new(0, 0), new(), at, null, false);
+            var hud = session.ProjectHud(new(0, 0), new(), TacticalHit.Object(at), null, false);
             var sections = hud.Sections.Select(section => section.Key).ToArray();
             Require(Array.IndexOf(sections, "structure") < Array.IndexOf(sections, "tile"), "Structure inspection precedes passive ground details.");
             var rows = hud.Sections.Single(section => section.Key == "structure").Rows;
@@ -52,7 +52,7 @@ public partial class TacticalHudChecks : Node
         {
             Kind = TacticalSelectionKind.Recruit,
             Destination = site
-        }, site, null, false);
+        }, TacticalHit.Object(site), null, false);
         var keys = recruit.Sections.Select(section => section.Key).ToArray();
         Require(Array.IndexOf(keys, "recruit") < Array.IndexOf(keys, "tile"), "Recruitment actions precede passive site terrain details.");
         var cards = engine.Recruitment.Cards(initial.Snapshot(), new(site.X, site.Y));
@@ -84,8 +84,8 @@ public partial class TacticalHudChecks : Node
         var control = new TacticalSelectionController(session.GetTacticalQueries(41));
         var home = new BoardCell(38, 23);
         var before = EcmaJson.Stringify(session.Snapshot());
-        TacticalHudProjection Hud() => session.ProjectHud(control.Stamp, control.Selection, control.Cursor, control.InspectId, control.Busy);
-        Require(control.Click(control.Stamp, home).Request is null && control.Selection.Kind == TacticalSelectionKind.Site,
+        TacticalHudProjection Hud() => session.ProjectHud(control.Stamp, control.Selection, control.CursorHit, control.InspectId, control.Busy);
+        Require(control.Click(control.Stamp, TacticalHit.Object(home)).Request is null && control.Selection.Kind == TacticalSelectionKind.Site,
             "The real non-recruiting Redstone home opens inspection, not a recruit panel or a domain command.");
         control.Leave(control.Stamp);
         var homeHud = Hud();
@@ -101,7 +101,7 @@ public partial class TacticalHudChecks : Node
             "Home stays non-recruiting in both data and UI.");
         var unit = session.Snapshot()["units"]!.AsArray().OfType<JsonObject>().First(value => value["owner"]!.GetValue<int>() == 1);
         var unitAt = new BoardCell(unit["x"]!.GetValue<int>(), unit["y"]!.GetValue<int>());
-        control.Hover(control.Stamp, unitAt);
+        control.Hover(control.Stamp, TacticalHit.Unit(unitAt, unit["id"]!.GetValue<int>()));
         Require(control.Selection.Destination == home && control.InspectId is null
             && Hud().Sections.Single(section => section.Key == "site").Title == site.Title,
             "Moving across units toward the HUD cannot replace a pinned site with incidental unit inspection.");
@@ -120,15 +120,15 @@ public partial class TacticalHudChecks : Node
         var sites = new[] { home, new BoardCell(16, 17), new(23, 36), new(55, 40), new(85, 14), new(88, 21), new(78, 30), new(88, 39) };
         foreach (var at in sites)
         {
-            Require(control.Click(control.Stamp, at).Request is null && control.Selection.Kind == TacticalSelectionKind.Site
+            Require(control.Click(control.Stamp, TacticalHit.Object(at)).Request is null && control.Selection.Kind == TacticalSelectionKind.Site
                 && control.Selection.Destination == at && control.Overlay().Selected == at,
                 $"Redstone site {at} must replace the previous inspection without advancing the battle; got {control.Selection.Kind}.");
             if (session.GetTacticalQueries(41).UnitAt(at) is { Visible: true } occupant)
             {
-                control.Hover(control.Stamp, unitAt);
+                control.Hover(control.Stamp, TacticalHit.Unit(unitAt, unit["id"]!.GetValue<int>()));
                 control.Leave(control.Stamp);
-                Require(control.InspectId == occupant.Id && Hud().Sections.Any(section => section.Key == "unit"),
-                    "A pinned occupied site keeps its visible garrison when the pointer crosses another unit and enters the HUD.");
+                Require(control.InspectId is null && Hud().Sections.All(section => section.Key != "unit"),
+                    "An explicit site hit must not inspect a same-cell garrison that the pointer did not hit.");
             }
             control.Leave(control.Stamp);
             var rows = Hud().Sections.Single(section => section.Key == "site").Rows;
@@ -140,8 +140,8 @@ public partial class TacticalHudChecks : Node
         control.Key(control.Stamp, "escape");
         Require(control.Selection.Kind == TacticalSelectionKind.Idle && control.Overlay().Selected is null,
             "Escape closes the pinned site through the existing back transition.");
-        control.Click(control.Stamp, home);
-        control.Click(control.Stamp, unitAt);
+        control.Click(control.Stamp, TacticalHit.Object(home));
+        control.Click(control.Stamp, TacticalHit.Unit(unitAt, unit["id"]!.GetValue<int>()));
         Require(control.Selection.Kind == TacticalSelectionKind.Unit && control.Selection.UnitId == unit["id"]!.GetValue<int>(),
             "A friendly actor remains directly selectable from site inspection.");
         Require(before == EcmaJson.Stringify(session.Snapshot()) && session.Events.Count == 0,
@@ -178,7 +178,7 @@ public partial class TacticalHudChecks : Node
         });
         bool HasTile() => hud.Projection!.Sections.Any(section => section.Key == "tile");
 
-        screen.SelectCell(new(38, 23));
+        screen.SelectHit(TacticalHit.Object(new(38, 23)));
         Motion(outside);
         Require(screen.Selection?.Kind == TacticalSelectionKind.Site
             && hud.Projection!.Sections.Single(section => section.Key == "tile").Rows.First().Label == "38, 23",

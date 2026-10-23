@@ -212,3 +212,7 @@ border has received final scenery art.
 Selection and cursor rings retain their source-local `(16,31)` foot registration,
 but their native placement is derived from `BoardProjection.LogicalCellContact`.
 Range fills and route markup remain cell-area decorations, not actor foot owners.
+
+## Pointer subjects and painted materials
+
+See [Painted Interaction Contract](PAINTED-INTERACTION-CONTRACT.md). Actual material depth governs both drawing and hit visibility. A visual roof may allow Ground pointer access outside its explicit target contour, but cannot expose the Unit or Object behind it. Canonical cell coordinates remain the ground fact, not a substitute for pointer subject identity.

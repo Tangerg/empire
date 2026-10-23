@@ -1,4 +1,5 @@
 #nullable enable
+using Empire.Presentation.Tactical;
 using System.Reflection;
 using System.Text.Json.Nodes;
 using Empire.Application;
@@ -70,9 +71,9 @@ public partial class CampaignNavigationChecks : Node
                         var screen = View<BattleScreen>(paintedCaptureGame);
                         var civilian = Campaign(paintedCaptureGame).Battle!.Snapshot()["units"]!.AsArray().OfType<JsonObject>()
                             .Single(unit => unit["key"]!.GetValue<string>() == "refugee-2");
-                        screen.SelectCell(new(13, 12));
+                        screen.SelectHit(TacticalHit.Unit(new(13, 12), civilian["id"]!.GetValue<int>()));
                         Require(screen.SelectedUnitId == civilian["id"]!.GetValue<int>(), "The formal escort actor could not be selected on its open-road starting cell.");
-                        screen.SelectCell(new(13, 13));
+                        screen.SelectHit(TacticalHit.Ground(new(13, 13)));
                         while (screen.IsInputBlocked)
                             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
                         var moved = Campaign(paintedCaptureGame).Battle!.Snapshot()["units"]!.AsArray().OfType<JsonObject>()
@@ -597,8 +598,8 @@ public partial class CampaignNavigationChecks : Node
         var ground = Descendants(board).OfType<PaintedGroundView>().Single();
         Require(!Descendants(board).OfType<TerrainView>().Any() && board.RenderedUnitCount == 20 && board.RenderingIssueCount == 0,
             "Formal bridge rendering must use its painted ground and all twenty actors without rendering errors.");
-        var houses = ground.DepthEntries.Where(entry => entry.SelectionCell is not null).ToArray();
-        Require(houses.Length == 4 && houses.All(entry => ground.OwnsMapStructureBody(entry.SelectionCell!.Value)),
+        var houses = ground.Sites;
+        Require(houses.Count == 4 && houses.All(entry => entry.OwnsMapStructureBody && ground.OwnsMapStructureBody(entry.Cell)),
             "The four painted houses must own their selectable map-structure bodies.");
         Require(!Descendants(board).Any(node => node.Name.ToString().StartsWith("MapStructure_", StringComparison.Ordinal)),
             "Formal bridge houses were duplicated by dynamic map-structure sprites.");
@@ -664,7 +665,7 @@ public partial class CampaignNavigationChecks : Node
                 var ground = Descendants(board).OfType<PaintedGroundView>().Single();
                 Require(board.RenderingIssueCount == 0 && board.RenderedUnitCount == 18
                     && !Descendants(board).OfType<TerrainView>().Any(), "Formal Redstone did not render its carried roster on its only painted ground.");
-                Require(ground.DepthEntries.Count(entry => entry.SelectionCell is not null) == 8
+                Require(ground.Sites.Count == 8
                     && !Descendants(board).Any(node => node.Name.ToString().StartsWith("MapStructure_", StringComparison.Ordinal)),
                     "Redstone's eight source-image site bodies must not acquire duplicate sprites.");
             }

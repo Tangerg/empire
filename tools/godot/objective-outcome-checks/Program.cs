@@ -430,7 +430,7 @@ BattleEngine ComposeContent(JsonArray source) => BattleEngineFactory.Create(new 
 [
     new EnginePlugin("test.content-presentation", 1, context =>
     {
-        context.Replace(Keys.Abilities, context.Require(Keys.Abilities).Clone().Register(new AbilityDefinition("test.inspect")));
+        context.Replace(Keys.Abilities, context.Require(Keys.Abilities).Clone().Register(new AbilityDefinition("test.inspect", AbilityTargetKind.Self)));
         context.Replace(Keys.CombatModifiers, context.Require(Keys.CombatModifiers).Register(new CombatModifierProvider(
             "test.resolve", 550, _ => { modifierEvaluations++; return new[] { customModifier }; })));
     }, overrides: [Keys.Abilities, Keys.CombatModifiers], requiresCapabilities: [Keys.Abilities, Keys.CombatModifiers]),

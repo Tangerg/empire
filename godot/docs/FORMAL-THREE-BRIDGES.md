@@ -14,7 +14,7 @@ local-only `671f3454` commit. No new art or first-level scene changes are includ
   formatting. Both painted samples use this same validation path.
 - The whole published 1672 × 941 painting retains uniform scale. Foreground
   polygons reuse pixels from that same image; there is no replacement terrain mesh.
-- An occluder can explicitly own a map-structure body at its selection cell.
+- A logical painted object can explicitly own a map-structure body at its selection cell; material parts do not each create a site.
   The ground owns the painted body; canonical map ownership supplies the dynamic
   banner. `BoardView` must not add another building sprite at an owned body.
 - Missing scene files now fail rather than manufacturing an empty scene. Nine
@@ -108,3 +108,5 @@ not a concept image. The first-level ending was a controlled fixture; no natural
 first- or second-level victory is claimed. The run used dummy audio, so audio is
 not validated. Expected malformed-save warnings belong to intentional rejection
 checks, not successful load cases.
+
+The shared [painted interaction contract](PAINTED-INTERACTION-CONTRACT.md) separates material draw coverage from pointer contours and preserves Ground/Unit/Object subjects. This schema migration does not alter this chapter's canonical battle data.

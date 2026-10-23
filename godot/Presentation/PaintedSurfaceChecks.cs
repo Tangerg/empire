@@ -1,5 +1,6 @@
 #nullable enable
 using System;
+using Empire.Presentation.Tactical;
 using System.Linq;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
@@ -54,8 +55,9 @@ public partial class PaintedSurfaceChecks : Node
                     "Every opening actor must use the canonical elevated foot contact.");
             }
             foreach (var cell in new[] { new Coord(3, 16), new Coord(18, 13), new Coord(22, 16), new Coord(34, 13) })
-                Require(board.Pick(board.Projection.CellContact(cell)) == cell,
-                    "Each painted entrance must pick its actual canonical site.");
+                Require(board.Pick(board.Projection.CellContact(cell)) is { Kind: TacticalHitKind.Object, UnitId: null } hit
+                    && hit.Cell == new BoardCell(cell.X, cell.Y),
+                    "Each authored entrance contour must select its actual canonical Object, never infer a same-cell occupant.");
         }
         finally
         {
@@ -136,7 +138,9 @@ public partial class PaintedSurfaceChecks : Node
         using var image = new Image();
         Require(image.LoadSvgFromString(svg) == Error.Ok, "Registration guide must rasterize.");
         using var texture = ImageTexture.CreateFromImage(image);
-        var view = PaintedGroundView.Create(art, texture, map);
+        var content = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json")).Catalog;
+        CheckCoveredCliff(art, map, texture, face);
+        var view = PaintedGroundView.Create(art, texture, map, content);
         AddChild(view);
         try
         {
@@ -167,6 +171,65 @@ public partial class PaintedSurfaceChecks : Node
             await Preview(art, map, texture);
     }
 
+    private void CheckCoveredCliff(PaintedGroundDocument registration, JsonObject map, Texture2D texture, BoardSurfaceFace face)
+    {
+        var point = (face.ProjectedA + face.ProjectedB + face.ProjectedC + face.ProjectedD) / 4;
+        var source = point / registration.WorldScale;
+        var art = new PaintedGroundDocument
+        {
+            LevelId = registration.LevelId,
+            LevelSourceSha256 = registration.LevelSourceSha256,
+            ResourcePath = registration.ResourcePath,
+            PixelSize = registration.PixelSize,
+            WorldScale = registration.WorldScale,
+            OriginPixels = registration.OriginPixels,
+            CellXPixels = registration.CellXPixels,
+            CellYPixels = registration.CellYPixels,
+            Occluders = [new PaintedOccluder { Id = "CliffRoof", Parts = [new PaintedOccluderPart
+            {
+                Id = "Material", ContactCell = [3, 3], GroundFrontPixels = [source.X, source.Y + 60],
+                PolygonPixels = [[source.X - 8, source.Y - 8], [source.X + 8, source.Y - 8], [source.X + 8, source.Y + 8], [source.X - 8, source.Y + 8]],
+                Pointer = new PaintedPointer { Kind = "pass-through" }
+            }] }]
+        };
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var level = BattleTextChecks.OpeningLevel().DeepClone().AsObject();
+        level["id"] = art.LevelId;
+        level["width"] = map["width"]!.DeepClone();
+        level["height"] = map["height"]!.DeepClone();
+        level["terrain"] = new JsonArray("......", "......", "......", "......", "......");
+        level["elevation"] = map["elevation"]!.DeepClone();
+        level["cliffs"] = map["cliffs"]!.DeepClone();
+        level["owners"] = new JsonArray();
+        level["commanders"] = new JsonArray();
+        level["scenario"] = new JsonObject();
+        level["units"] = new JsonArray(
+            new JsonObject { ["key"] = "campaign-laiya", ["x"] = 0, ["y"] = 4, ["unit"] = "c01.laiya", ["owner"] = 1 },
+            new JsonObject { ["key"] = "cliff-check-enemy", ["x"] = 5, ["y"] = 0, ["unit"] = "c01.swordsman", ["owner"] = 2 });
+        level["structures"] = new JsonArray();
+        var state = engine.CreateState(level);
+        var fixtureMap = state["map"]!.AsObject();
+        var board = new BoardView();
+        AddChild(board);
+        try
+        {
+            board.Configure(new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, art.CreatePlane), level,
+                new AuthoredScene { LevelId = art.LevelId, MapSize = [6, 5], RuntimeReady = true, FramePlacements = [] });
+            board.ConfigureGround((_, _) => PaintedGroundView.Create(art, texture, fixtureMap, engine.Catalog));
+            board.RenderState(state);
+            var material = board.GetNode<PaintedGroundView>("AuthoredScene/PaintedGround").DepthEntries.Single();
+            Require(material.Visual!.Covers(board.ToGlobal(point)) && material.Node.ZIndex > board.Projection.Pick(point)!.DrawDepth,
+                "The layered cliff regression must place actual pass-through material in front of a visible canonical cliff face.");
+            Require(board.Projection.Pick(point)?.Cell is null && board.Pick(point) is null,
+                "Pass-through foreground must not create ground interaction through an actual cliff face.");
+        }
+        finally
+        {
+            RemoveChild(board);
+            board.Free();
+        }
+    }
+
     private async Task Preview(PaintedGroundDocument art, JsonObject map, Texture2D texture)
     {
         Require(DisplayServer.GetName() != "headless", "Preview requires a real native window.");
@@ -191,7 +254,7 @@ public partial class PaintedSurfaceChecks : Node
         AddChild(board);
         board.Configure(new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, art.CreatePlane),
             level, new AuthoredScene { LevelId = art.LevelId, MapSize = [6, 5], OpeningFocus = [2, 3], RuntimeReady = true, FramePlacements = [] });
-        board.ConfigureGround((_, _) => PaintedGroundView.Create(art, texture, initial["map"]!.AsObject()));
+        board.ConfigureGround((_, _) => PaintedGroundView.Create(art, texture, initial["map"]!.AsObject(), engine.Catalog));
         board.RenderState(initial);
         var face = board.Projection.Faces.First();
         var point = (face.ProjectedA + face.ProjectedB + face.ProjectedC + face.ProjectedD) / 4;
