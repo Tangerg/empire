@@ -155,22 +155,55 @@ The serial native build reported no warnings or errors. Desktop inspection
 confirmed the actual surviving campaign roster, readable default framing,
 normal zoom and pan, and one legal moving archer attack followed by F5 saving.
 The 0.5 zoom overview is for spatial inspection, not the default play scale.
-These results do not establish a completed natural route or twelve-turn balance.
 
-Pending runtime acceptance consists of two normal-command routes:
+### Natural play on the authored-map checkpoint
 
-1. Split investigation and withdrawal. Exercise both pre-battle choices and
-   different A/B/C orders. Have Laiya or Mirelle personally visit an investigation
-   point before withdrawing. Retain at least one enemy so elimination cannot
-   mask extraction behavior; verify Laiya's loss still fails the mission.
-2. Frontal advance and elimination. Defeat all nine enemies normally; check
-   concentrated AI pressure, capture progress, owner-turn healing and village
-   income, save/load continuity, and campaign settlement.
+The 2026-10-23 desktop run used commit
+`48fe1d141c2fae937fd1dffc375a897f5561ce73` and a separate copy of a legitimately
+completed C03 south-route campaign. Normal story navigation selected
+`rescue-and-evidence`; C04 opened with eight allies and nine enemies. No unit,
+position, health, turn, scenario variable or event was injected. Tactical mistakes
+and combat losses were retained, without reloading to improve the outcome.
 
-Use real mouse input for legal roads, entrances, visible bodies, roof-covered
-ground, foreground/background material, selection rings, zoom and pan. Walk the
-entire closed-foundation perimeter and test open shelter mouths. Check one
-logical object and banner per site. Keyboard navigation or directly dispatched
-engine commands cannot substitute for mouse acceptance. Record actual turns,
-combat pressure and empty-walk time; do not describe static connectivity or
-positioned engine fixtures as natural-play or balance passes.
+- T5: guard 8 investigated A (21,12).
+- T6: swordsman 3 investigated B (24,15), and guard 4 investigated C (28,18).
+  B was only partly captured, confirming investigation does not require ownership.
+- Still on T6, Laiya moved normally from (10,20) to exit cell (9,21), completing
+  the primary objective with six enemies alive. This was extraction, not an
+  elimination victory. The result had six surviving allies, 25 strikes and 279
+  public battle events. Mirelle and the gravekeeper had fallen during combat.
+- All three investigation triggers and `withdraw-with-evidence` fired. Campaign
+  settlement recorded `found_prisoners`, `found_oath_template` and
+  `saved_witnesses`, then advanced normally to `aftermath-04`.
+
+F5/F9 round trips at terminal victory and at the aftermath preserved the battle,
+campaign and event facts. Only normal save timestamps changed. The victory
+round trip did not duplicate settlement. The process subsequently closed normally
+with exit 0 and no native error or leak diagnostics.
+
+Combat defeat and persistent campaign disposition are distinct. The existing
+`GrayFlagCampaignPolicy.ApplyBattleResult`, called by
+`Application/GrayFlagCampaign.FinishBattle`, retains defeated heroes as available
+with at least 30% health and emits `hero_wounded:<id>`. Consequently Mirelle was
+available at 0.3 health after this run and appeared in the ordinary aftermath
+dialogue. Torren and Elin remained fallen. This is the existing campaign policy,
+not a new resurrection rule or a save repair. The result-page screenshot uses
+the existing CampaignShell bridge-town illustration; it is not an image of the
+new C04 battlefield.
+
+Two separate normal-command engine runs exercised `split-the-force`. A frontal
+strategy investigated B and A but lost Laiya on T14. A guarded extraction
+strategy investigated B and A on T6 and C on T8, but also lost Laiya on T8 before
+withdrawal. Both are genuine strategy failures, not route passes; both exercised
+normal save/load continuity. Exact replay of the first failure reproduced its
+command sequence, state and events. They confirm that complete evidence alone
+does not override Laiya's critical survival condition. They do not establish
+that the map is unwinnable, and no values were changed to force a win.
+
+The desktop run proves one complete natural investigation/extraction/settlement
+chain within the recommended twelve turns, not general twelve-turn balance.
+Frontal elimination, every investigation order, a hero personally investigating,
+and exhaustive physical-perimeter mouse coverage remain unaccepted. A hero visit
+is optional test coverage, not an additional mission requirement. The engine
+runs do not substitute for mouse, scale or occlusion inspection. The earlier
+335 focused assertions were not a fresh full sixteen-chapter aggregate run.
