@@ -144,11 +144,11 @@ public sealed record CampaignStagingText(GameText Messages, BattleText Battle, F
 
 public static class CampaignStaging
 {
-    public static CampaignStagingView Create(CampaignStagingText presentationText, JsonElement state, JsonElement battleNode, JsonElement level,
+    public static CampaignStagingView Create(CampaignStagingText presentationText, PortraitCatalog portraitCatalog, JsonElement state, JsonElement battleNode, JsonElement level,
         JsonElement metadata, bool hasPendingRequest)
     {
         var text = presentationText.Messages;
-        if (metadata.GetProperty("schema").GetInt32() != 2)
+        if (metadata.GetProperty("schema").GetInt32() != 3)
             throw new InvalidOperationException("Unsupported campaign staging metadata schema.");
         var id = Text(level.GetProperty("id"));
         if (Text(battleNode.GetProperty("type")) != "battle" || Text(battleNode.GetProperty("level")) != id ||
@@ -180,7 +180,7 @@ public static class CampaignStaging
             var binding = bindings.FirstOrDefault(candidate => Text(candidate.GetProperty("campaignUnit")) == unitId);
             roster.Add(new CampaignStagingUnit(unitId, type, presentationText.IdentityName(unitId), status,
                 binding.ValueKind == JsonValueKind.Undefined ? null : Text(binding.GetProperty("levelUnitKey")),
-                portraits.TryGetProperty(unitId, out var portrait) ? Art(portrait) : null));
+                portraits.TryGetProperty(unitId, out var portrait) ? Portrait(portraitCatalog.Resolve(Text(portrait))) : null));
         }
         var resources = state.GetProperty("resources").EnumerateObject().Select(entry =>
             new CampaignStagingResource(entry.Name, Label(text, metadata.GetProperty("resourceLabelKeys"), entry.Name), Text(entry.Value)));
@@ -200,6 +200,7 @@ public static class CampaignStaging
             roster, resources, relations);
     }
 
+    private static CampaignStagingArt Portrait(NarrativeArt art) => new(art.Source, art.ResourcePath);
     private static CampaignStagingArt Art(JsonElement value) => new(Text(value.GetProperty("source")),
         value.GetProperty("resourcePath").ValueKind == JsonValueKind.Null ? null : Text(value.GetProperty("resourcePath")));
     private static string Label(GameText text, JsonElement keys, string id)

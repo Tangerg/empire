@@ -36,7 +36,7 @@ fixture change, not a runtime adapter or an exclusion from comparison.
   See `../../docs/REDSTONE-CAMPAIGN.md`. Both document expectations and sampled
   rendered expectations contain the reviewed wording.
 
-The migration changed exactly 213 existing string leaves:
+The initial migration changed exactly 213 existing string leaves:
 139 dates, 53 portrait paths and 21 occurrences of those six prose values. No
 state, transition, choice, layout, other prose or other artwork value changed.
 All existing cases are preserved: 106 story renders, 11 choices, 48 transitions,
@@ -45,12 +45,27 @@ requires the existing normal `reinforcement-deadline` case to reach the widget
 loop; the prose negative control targets that exact case. No duplicate render
 case is added. Of 35 authored dates, 34 change; campaign-failed remains `未定`.
 
+## Native portrait catalog migration (2026-10-23)
+
+All seven narrative identities now resolve through `data/portrait-catalog.json`,
+which also owns Torren's HUD card. The source strings are derived from native
+resource paths. The subsequent fixture change updates 48 ordinary story source
+expectations and one supplemental expected source, converts 27 portrait entries
+across the four supplemental presentation inputs to IDs, and advances those four
+inputs to staging schema 3. No other expectation changes. The known-speaker case
+without a portrait remains deliberately unbound.
+
+The Mirelle transparent candidate, pending in-scene visual acceptance, replaces only its native PNG. The
+catalog owns its new hash; the fixture does not duplicate hashes. Historical
+TypeScript portrait bytes and the frozen oracle remain untouched. Current native
+build/behavioral/visual verification is separate from authoring this migration.
+
 ## Verification
 
 Run `bash tools/godot/narrative-checks/run.sh --verify-guard` for the focused
 headless suite. It creates a small temporary native project and fresh
-data/config/cache/runtime XDG directories; it verifies all 23 declared narrative asset references against
-both source and exported hashes. No live profile is used. `TMPDIR` can place all
+data/config/cache/runtime XDG directories; it verifies all eight catalog portraits against their native byte hashes and
+16 scene/chapter references against both source and exported hashes. No live profile is used. `TMPDIR` can place all
 output in an external evidence directory.
 
 `bash tools/godot/verify-native.sh` also runs `NarrativeChecks` explicitly, against

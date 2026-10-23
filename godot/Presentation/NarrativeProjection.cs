@@ -20,12 +20,14 @@ public sealed class NarrativePresentationDocument
     }
     public Dictionary<int, NarrativeChapter> Chapters { get; init; } = new();
     public Dictionary<string, NarrativeArt> StoryScenes { get; init; } = new(StringComparer.Ordinal);
-    public Dictionary<string, NarrativeArt> Portraits { get; init; } = new(StringComparer.Ordinal);
-    public static NarrativePresentationDocument Load(GameText text, string path = "res://data/grayflag-staging.json")
+    public Dictionary<string, string> Portraits { get; init; } = new(StringComparer.Ordinal);
+    public static NarrativePresentationDocument Load(GameText text, PortraitCatalog portraits, string path = "res://data/grayflag-staging.json")
     {
         var document = PresentationJson.Load<NarrativePresentationDocument>(path);
-        if (document.Schema != 2)
+        if (document.Schema != 3)
             throw new InvalidOperationException("Unsupported narrative presentation metadata schema.");
+        foreach (var id in document.Portraits.Values)
+            portraits.Resolve(id);
         text.Format(document.TitleKey);
         text.Format(document.CompletionLabelKey);
         foreach (var chapter in document.Chapters.Values)
@@ -40,21 +42,8 @@ public sealed class NarrativeChapter
     public NarrativeArt Art { get; init; } = new();
 }
 
-public sealed class NarrativeArt
-{
-    public string Source { get; init; } = "";
-    public string? ResourcePath
-    {
-        get; init;
-    }
-    public string? Sha256
-    {
-        get; init;
-    }
-}
-
 /// <summary>Caller-owned campaign facts and text service, passed explicitly to a read-only presentation.</summary>
-public sealed record NarrativeContext(GameText Text, NarrativePresentationDocument Presentation, int CompletedBattles, bool CampaignActive);
+public sealed record NarrativeContext(GameText Text, PortraitCatalog PortraitCatalog, NarrativePresentationDocument Presentation, int CompletedBattles, bool CampaignActive);
 
 public sealed record CampaignShellView(string Title, string ChapterHeading, int CompletedBattles, int BattleTotal,
     NarrativeArt Art, string ExitLabel, string ProgressLabel, string ArtworkFailureLabel)
@@ -66,7 +55,7 @@ public sealed record CampaignShellView(string Title, string ChapterHeading, int 
     public static CampaignShellView Create(NarrativeContext context, int chapter, string? sceneTopic = null)
     {
         var metadata = context.Presentation;
-        if (metadata.Schema != 2)
+        if (metadata.Schema != 3)
             throw new InvalidOperationException("Unsupported narrative presentation metadata schema.");
         if (!metadata.Chapters.TryGetValue(chapter, out var entry))
             throw new InvalidOperationException($"Narrative chapter metadata is not authored: {chapter}.");
@@ -107,7 +96,7 @@ public static class NarrativeProjection
         var mission = story.Mission is { } source ? new StoryMissionView(text.Format(source.ObjectiveKey), text.Format(source.DangerKey), text.Format(source.LessonKey)) : null;
         return new StoryView(CampaignShellView.Create(context, story.Chapter, story.Scene),
             text.Format(story.KickerKey), text.Format(story.DateKey), text.Format(story.LocationKey), text.Format(story.TitleKey), text.Format(story.SummaryKey), mission,
-            IdentityNames.Resolve(text, identityNameKeys, beat.Speaker), text.Format(beat.TextKey), context.Presentation.Portraits.GetValueOrDefault(beat.Speaker), beatIndex, story.Beats.Count,
+            IdentityNames.Resolve(text, identityNameKeys, beat.Speaker), text.Format(beat.TextKey), context.Presentation.Portraits.TryGetValue(beat.Speaker, out var portraitId) ? context.PortraitCatalog.Resolve(portraitId) : null, beatIndex, story.Beats.Count,
             text.Format(ending ? context.CampaignActive ? context.Presentation.CompletionLabelKey : "ui.campaign.exit"
                 : lastBeat ? "ui.story.continue" : "ui.story.next_beat"), ending,
             text.Format("ui.story.objective"), text.Format("ui.story.danger"), text.Format("ui.story.lesson"));

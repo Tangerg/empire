@@ -4,7 +4,7 @@ Run from the repository:
 
     bash tools/godot/campaign-slot-checks/run.sh --native --verify-guard
 
-The runner creates a new `/tmp/empire-campaign-slot.*` directory. The default input is the frozen `godot/tests/oracle/campaign-menu.json.gz` plus current native schema-2 metadata and a disposable check-only catalog projection. There is no live TypeScript regeneration in the native gate.
+The runner creates a new `/tmp/empire-campaign-slot.*` directory. The default input is the frozen `godot/tests/oracle/campaign-menu.json.gz` plus current native schema-3 metadata and a disposable check-only catalog projection. There is no live TypeScript regeneration in the native gate. Production menu projections consume only current native metadata, whose menu keys, battle count and source artwork identity are checked against the frozen metadata; obsolete schema-2 input is explicitly rejected. The frozen display and storage expectations remain unchanged.
 Filesystem checks refuse to reuse their fixture directory and create seed files
 with `FileMode.CreateNew`. No game user-data path or existing player save is used.
 Core and test code are copied into this temporary directory before building, so

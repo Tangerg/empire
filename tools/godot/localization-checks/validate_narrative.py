@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Validate native narrative structure, shared identity names and PO references without rewriting sources."""
+import hashlib
 import json
 from pathlib import Path
 import re
@@ -21,6 +22,8 @@ def validate(root):
     messages = read_catalog((root / "godot/Localization/zh_CN.po").read_text(encoding="utf-8"))
     story = json.loads((data / "grayflag-story.json").read_text(encoding="utf-8"), object_pairs_hook=unique_object)
     staging = json.loads((data / "grayflag-staging.json").read_text(encoding="utf-8"), object_pairs_hook=unique_object)
+    portraits = json.loads((data / "portrait-catalog.json").read_text(encoding="utf-8"), object_pairs_hook=unique_object)
+    hud = json.loads((data / "tactical-hud-art.json").read_text(encoding="utf-8"), object_pairs_hook=unique_object)
     used = set()
 
     def shape(value, required, optional=()):
@@ -40,8 +43,47 @@ def validate(root):
     shape(story, ["schema", "identityNameKeys", "stories", "choices"])
     shape(staging, ["schema", "titleKey", "completionLabelKey", "menu", "menuArt", "chapters", "storyScenes",
                     "battleTotal", "joinAfter", "relationLabelKeys", "resourceLabelKeys", "portraits", "levels"])
-    if story["schema"] != 3 or staging["schema"] != 2:
-        raise CatalogError("Native story requires schema 3 and staging requires schema 2")
+    if story["schema"] != 3 or staging["schema"] != 3:
+        raise CatalogError("Native story and staging require schema 3")
+    shape(portraits, ["schema", "portraits"])
+    if type(portraits["schema"]) is not int or portraits["schema"] != 1 or not isinstance(portraits["portraits"], dict) or not portraits["portraits"]:
+        raise CatalogError("Native portraits require a nonempty schema 1 catalog")
+    resources = set()
+    for identity, asset in portraits["portraits"].items():
+        shape(asset, ["resourcePath", "sha256"])
+        resource, digest = asset["resourcePath"], asset["sha256"]
+        if not re.fullmatch(r"[a-z][a-z0-9-]*", identity) or not isinstance(resource, str) or not re.fullmatch(
+                r"res://assets/runtime/narrative-static/char-[a-z0-9-]+\.png", resource):
+            raise CatalogError(f"Invalid native portrait resource: {identity}")
+        if resource in resources or not isinstance(digest, str) or not re.fullmatch(r"[a-f0-9]{64}", digest):
+            raise CatalogError(f"Invalid or duplicate native portrait declaration: {identity}")
+        resources.add(resource)
+        source = root / "godot" / resource.removeprefix("res://")
+        if not source.is_file() or hashlib.sha256(source.read_bytes()).hexdigest() != digest:
+            raise CatalogError(f"Native portrait hash mismatch: {identity}")
+
+    def portrait_id(value, context):
+        if not isinstance(value, str) or value not in portraits["portraits"]:
+            raise CatalogError(f"Unknown native portrait ID in {context}: {value}")
+
+    if not isinstance(staging["portraits"], dict):
+        raise CatalogError("Staging portraits must map identities to portrait IDs")
+    for identity, value in staging["portraits"].items():
+        if identity not in story["identityNameKeys"]:
+            raise CatalogError(f"Unknown staging portrait identity: {identity}")
+        portrait_id(value, f"staging identity {identity}")
+    shape(hud, ["schema", "portraits", "icons", "sourceIconKeys"])
+    if hud["schema"] != 2 or not isinstance(hud["portraits"], dict):
+        raise CatalogError("Native tactical HUD requires schema 2 portrait bindings")
+    for key, binding in hud["portraits"].items():
+        shape(binding, ["unitType", "actorKey", "portraitId"])
+        if not isinstance(binding["unitType"], str) or not binding["unitType"] or not (
+                binding["actorKey"] is None or isinstance(binding["actorKey"], str) and binding["actorKey"]):
+            raise CatalogError(f"Invalid native HUD portrait binding: {key}")
+        if key != (binding["actorKey"] or binding["unitType"]):
+            raise CatalogError(f"Native HUD portrait binding key mismatch: {key}")
+        if binding["portraitId"] is not None:
+            portrait_id(binding["portraitId"], f"HUD binding {key}")
     identities(story["stories"] + story["choices"], "narrative")
     campaign = json.loads((data / "grayflag-campaign.json").read_text(encoding="utf-8"), object_pairs_hook=unique_object)
     for unit in campaign["initial"]["roster"]:

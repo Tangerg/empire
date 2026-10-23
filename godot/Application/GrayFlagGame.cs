@@ -24,6 +24,7 @@ public partial class GrayFlagGame : Node
     private JsonArray levels = null!;
     private JsonObject presentation = null!;
     private NarrativePresentationDocument narrative = null!;
+    private PortraitCatalog portraits = null!;
     private GrayFlagSession? session;
     private BattleScreen? screen;
     private Control? view;
@@ -57,7 +58,8 @@ public partial class GrayFlagGame : Node
             Godot.FileAccess.GetFileAsString("res://data/grayflag-content-text.json"));
         battleText = presentationText.Battle;
         presentation = PresentationJson.Load<JsonObject>("res://data/grayflag-staging.json");
-        narrative = NarrativePresentationDocument.Load(text);
+        portraits = PortraitCatalogResources.Load();
+        narrative = NarrativePresentationDocument.Load(text, portraits);
         campaign = NewCampaign();
         foreach (var unit in definition["initial"]!["roster"]!.AsArray())
             IdentityNames.Resolve(text, stories.IdentityNameKeys, unit!["id"]!.GetValue<string>());
@@ -111,7 +113,7 @@ public partial class GrayFlagGame : Node
                         var summary = new BattleResultScreen();
                         SetView(summary);
                         var stateAfter = campaign.Snapshot();
-                        var summaryShell = CampaignShellView.Create(new NarrativeContext(text, narrative,
+                        var summaryShell = CampaignShellView.Create(new NarrativeContext(text, portraits, narrative,
                             stateAfter["battleHistory"]!.AsArray().Count, stateAfter["status"]!.GetValue<string>() == "active"), report.Summary.Chapter);
                         summary.ShowResult("victory", report.Summary,
                             () =>
@@ -335,7 +337,7 @@ public partial class GrayFlagGame : Node
         {
             var presentation = node["presentation"]?.GetValue<string>();
             var state = owner.Snapshot();
-            var context = new NarrativeContext(text, narrative, state["battleHistory"]!.AsArray().Count, state["status"]!.GetValue<string>() == "active");
+            var context = new NarrativeContext(text, portraits, narrative, state["battleHistory"]!.AsArray().Count, state["status"]!.GetValue<string>() == "active");
             bool Current() => CurrentView(owner, next);
             if (type == "choice")
                 next.ShowChoice(stories.Choices.Single(value => value.Id == presentation),
@@ -378,7 +380,7 @@ public partial class GrayFlagGame : Node
 
     private PreparedCampaignView PrepareStaging(GrayFlagCampaign owner)
     {
-        var projection = CampaignStaging.Create(new CampaignStagingText(text, battleText, id => IdentityNames.Resolve(text, stories.IdentityNameKeys, id)),
+        var projection = CampaignStaging.Create(new CampaignStagingText(text, battleText, id => IdentityNames.Resolve(text, stories.IdentityNameKeys, id)), portraits,
             Empire.Core.Determinism.EcmaJson.ToElement(owner.Snapshot()),
             Empire.Core.Determinism.EcmaJson.ToElement(owner.Node()),
             Empire.Core.Determinism.EcmaJson.ToElement(owner.BattleLevel()),
@@ -432,7 +434,7 @@ public partial class GrayFlagGame : Node
         var nextScreen = PrepareMounted(new BattleScreen(), next =>
         {
             next.BindSession(
-                new(text, battleText, boundSession, new(
+                new(text, battleText, portraits, boundSession, new(
                     AssetCatalog.Load(),
                     EnvironmentCatalog.Load(),
                     grid,

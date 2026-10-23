@@ -159,7 +159,7 @@ public partial class TacticalHudChecks : Node
         var rendering = BoardSceneRendering.Load(scene, level, session.Snapshot()["map"]!.AsObject());
         var screen = new BattleScreen();
         AddChild(screen);
-        screen.BindSession(new(presentation.Messages, presentation.Battle, session,
+        screen.BindSession(new(presentation.Messages, presentation.Battle, PortraitCatalogResources.Load(), session,
             new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, rendering.Plane)), level, scene);
         screen.ConfigureGround(rendering.Ground);
         screen.ConfigureDynamicState();
@@ -269,14 +269,38 @@ public partial class TacticalHudChecks : Node
             hud.Apply(Projection());
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             Require(Button().HasFocus(), "Stable row focus restored");
+            var portraits = PortraitCatalogResources.Load();
             var metadata = PresentationJson.Load<TacticalHudArtDocument>("res://data/tactical-hud-art.json");
-            foreach (var image in metadata.Icons.Values.Concat(metadata.Portraits.Values.Where(value => value.Card is not null).Select(value => value.Card!)))
+            foreach (var image in metadata.Icons.Values.Concat(metadata.Portraits.Values.Where(value => value.PortraitId is not null).Select(value => portraits.Resolve(value.PortraitId!))))
             {
                 var bytes = Godot.FileAccess.GetFileAsBytes(image.ResourcePath!);
                 Require(bytes.Length > 0 && Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(bytes)).ToLowerInvariant() == image.Sha256, "Original HUD resource hash: " + image.ResourcePath);
             }
             var assets = AssetCatalog.Load();
-            var art = TacticalHudArt.Load(assets);
+            var explicitDocument = new TacticalHudArtDocument
+            {
+                Schema = 2,
+                Portraits = new() { ["c01.mirelle"] = new() { UnitType = "c01.mirelle", PortraitId = "explicit-card" } }
+            };
+            var explicitCatalog = new PortraitCatalog(new Dictionary<string, PortraitAsset> { ["explicit-card"] = portraits.Portraits["mirelle"] });
+            var explicitArt = new TacticalHudArt(assets, explicitCatalog, explicitDocument);
+            Require(((AtlasTexture)explicitArt.Portrait(new("c01.mirelle", null, "#224466"))).Atlas.ResourcePath == explicitCatalog.Resolve("explicit-card").ResourcePath,
+                "HUD uses the injected shared catalog and explicit ID, not unit-name inference");
+            explicitArt.ReleaseOwnedTextures();
+            try
+            {
+                _ = new TacticalHudArt(assets, new PortraitCatalog(new Dictionary<string, PortraitAsset> { ["different-card"] = portraits.Portraits["mirelle"] }), explicitDocument);
+                throw new Exception("Unknown portrait silently fell back to a frame");
+            }
+            catch (InvalidOperationException error) when (error.Message.Contains("Unknown portrait ID", StringComparison.Ordinal)) { assertions++; }
+            try
+            {
+                System.Text.Json.JsonSerializer.Deserialize<TacticalPortraitBinding>("{\"unitType\":\"c01.mirelle\"}",
+                    new System.Text.Json.JsonSerializerOptions { PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase });
+                throw new Exception("Omitted portrait ID silently became frame semantics");
+            }
+            catch (System.Text.Json.JsonException) { assertions++; }
+            var art = TacticalHudArt.Load(assets, portraits);
             hud.ConfigureArt(art);
             var named = new TacticalHudPortrait("c01.swordsman", "campaign-torren", "#224466");
             var portrait = art.Portrait(named) as AtlasTexture;
@@ -289,7 +313,7 @@ public partial class TacticalHudChecks : Node
             for (var index = 0; index < 100; index++)
                 hud.Apply(new(stamp, "", new[] { new TacticalHudSection("unit", "角色", Array.Empty<TacticalHudRow>()) }, named));
             Require(art.OwnedTextureCount == 1, "Repeated projections reuse one owned card crop");
-            var replacement = TacticalHudArt.Load(assets);
+            var replacement = TacticalHudArt.Load(assets, portraits);
             hud.ConfigureArt(replacement);
             Require(art.OwnedTextureCount == 0, "Rebind releases owned crops after controls release references");
             hud.Apply(new(stamp, "", new[] { new TacticalHudSection("unit", "角色", Array.Empty<TacticalHudRow>()) }, named));
@@ -299,7 +323,7 @@ public partial class TacticalHudChecks : Node
             var missing = PresentationJson.Load<TacticalHudArtDocument>("res://data/tactical-hud-art.json");
             var required = missing.SourceIconKeys[0];
             missing.Icons.Remove(required);
-            var broken = new TacticalHudArt(assets, missing);
+            var broken = new TacticalHudArt(assets, portraits, missing);
             try
             {
                 broken.Icon(required);

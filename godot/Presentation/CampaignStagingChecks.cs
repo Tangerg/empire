@@ -49,12 +49,15 @@ public partial class CampaignStagingChecks : Node
             RemoveArt(metadata);
             var identities = StoryDocument.Load(messages).IdentityNameKeys;
             var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+            var portraits = PortraitCatalogResources.Load();
+            var missingPortraits = new PortraitCatalog(portraits.Portraits.Select(pair => new KeyValuePair<string, PortraitAsset>(pair.Key,
+                new($"res://assets/runtime/narrative-static/char-missing-{pair.Key}.png", pair.Value.Sha256))));
             var presentationText = new CampaignStagingText(messages, BattleTextChecks.Load(engine, messages), id => IdentityNames.Resolve(messages, identities, id));
             var nativeLevels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
                 .ToDictionary(level => level["id"]!.GetValue<string>(), StringComparer.Ordinal);
             System.Text.Json.JsonElement NativeLevel(JsonNode fixture) =>
                 EcmaJson.ToElement(nativeLevels[fixture["level"]!["id"]!.GetValue<string>()]);
-            CampaignStagingView View(bool pending) => CampaignStaging.Create(presentationText, EcmaJson.ToElement(item["state"]),
+            CampaignStagingView View(bool pending) => CampaignStaging.Create(presentationText, missingPortraits, EcmaJson.ToElement(item["state"]),
                 EcmaJson.ToElement(item["node"]), NativeLevel(item), EcmaJson.ToElement(metadata), pending);
             var assets = AssetCatalog.Load();
             var view = View(false);
@@ -145,7 +148,7 @@ public partial class CampaignStagingChecks : Node
             metadata = FixtureMetadata();
             foreach (var sourceCase in oracle["cases"]!.AsArray().OfType<JsonObject>())
             {
-                var live = CampaignStaging.Create(presentationText, EcmaJson.ToElement(sourceCase["state"]), EcmaJson.ToElement(sourceCase["node"]),
+                var live = CampaignStaging.Create(presentationText, portraits, EcmaJson.ToElement(sourceCase["state"]), EcmaJson.ToElement(sourceCase["node"]),
                     NativeLevel(sourceCase), EcmaJson.ToElement(metadata), sourceCase["pending"]!.GetValue<bool>());
                 screen.ShowStaging(live, assets, () => starts++, () => exits++);
                 Require(screen.RenderingDiagnostics.Count == 0, $"Real exported staging art is incomplete: {string.Join("; ", screen.RenderingDiagnostics)}");

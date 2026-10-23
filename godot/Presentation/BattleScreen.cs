@@ -12,7 +12,7 @@ using Empire.Localization;
 
 namespace Empire.Presentation;
 
-public sealed record BattleScreenRules(GameText Messages, BattleText BattleText,
+public sealed record BattleScreenRules(GameText Messages, BattleText BattleText, PortraitCatalog Portraits,
     ITacticalBattleSession Session, BoardViewRules Board);
 
 /// <summary>
@@ -166,7 +166,7 @@ public partial class BattleScreen : Control
         _snapshot = null;
         _presentedRevision = session.Revision;
         _board.Configure(rules.Board, level, authoredScene);
-        _hud.ConfigureArt(TacticalHudArt.Load(rules.Board.Assets));
+        _hud.ConfigureArt(TacticalHudArt.Load(rules.Board.Assets, rules.Portraits));
         _session = session;
         _tactical = new TacticalSelectionController(_session.GetTacticalQueries(_tacticalBinding));
         _applicationBusy = false;

@@ -80,7 +80,7 @@ public partial class PaintedBattleSample : Control
                 FramePlacements = []
             };
             var rendering = BoardSceneRendering.Load(scene, _level, _registeredMap);
-            next.BindSession(new(_presentation.Messages, _presentation.Battle, session,
+            next.BindSession(new(_presentation.Messages, _presentation.Battle, PortraitCatalogResources.Load(), session,
                 new(AssetCatalog.Load(), EnvironmentCatalog.Load(), _engine.Grids.Get("square4"), _engine.Catalog, rendering.Plane)), _level, scene);
             next.ConfigureGround(rendering.Ground);
             next.ConfigureDynamicState();

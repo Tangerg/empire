@@ -19,8 +19,16 @@ public partial class CampaignMenuChecks : Node
                 throw new ArgumentException("Pass the frozen native menu fixture after --; only the minimal isolated runner may add --isolated-menu-art-fixture.");
             var oracle = EcmaJson.Parse(System.IO.File.ReadAllText(args[0]))!.AsObject();
             var messages = GodotTextCatalog.LoadSimplifiedChinese();
-            var sourceMetadata = EcmaJson.ToElement(oracle["metadata"]);
-            var missingArtMetadata = (JsonObject)oracle["metadata"]!.DeepClone();
+            const string exportPath = "res://data/grayflag-staging.json";
+            Require(Godot.FileAccess.FileExists(exportPath), "Menu checks require current native presentation metadata");
+            var exported = EcmaJson.Parse(Godot.FileAccess.GetFileAsString(exportPath))!.AsObject();
+            var frozenMetadata = oracle["metadata"]!.AsObject();
+            foreach (var key in new[] { "titleKey", "battleTotal", "menu" })
+                Require(EcmaJson.DeepEquals(exported[key], frozenMetadata[key]), $"Native menu metadata changed frozen {key}");
+            Require(EcmaJson.DeepEquals(exported["menuArt"]!["source"], frozenMetadata["menuArt"]!["source"]),
+                "Native menu source artwork identity changed");
+            var sourceMetadata = EcmaJson.ToElement(exported);
+            var missingArtMetadata = (JsonObject)exported.DeepClone();
             const string missingArtPath = "res://__campaign_menu_checks__/deliberately_missing_menu_art.png";
             Require(!Godot.FileAccess.FileExists(missingArtPath), "The deliberately missing-art fixture unexpectedly exists");
             missingArtMetadata["menuArt"]!["resourcePath"] = missingArtPath;
@@ -90,17 +98,8 @@ public partial class CampaignMenuChecks : Node
             Require(!Descendants(screen).OfType<ConfirmationDialog>().Any(), "Overwrite confirmation belongs to the application caller, not the menu renderer");
             if (!isolatedArtFixture)
             {
-                const string exportPath = "res://data/grayflag-staging.json";
-                Require(Godot.FileAccess.FileExists(exportPath), "Full-project menu checks require exported presentation metadata");
-                var exported = EcmaJson.Parse(Godot.FileAccess.GetFileAsString(exportPath))!.AsObject();
                 var loaded = new LoadedCampaign(oracle["initial"]!.AsObject(), null);
-                var sourceView = CampaignMenu.Create(messages, loaded, sourceMetadata);
-                var exportedView = CampaignMenu.Create(messages, loaded, EcmaJson.ToElement(exported));
-                Require(exportedView with
-                {
-                    ArtResourcePath = sourceView.ArtResourcePath
-                } == sourceView,
-                    "Exported menu prose, source art identity or progress disagrees with the frozen native menu expectations");
+                var exportedView = CampaignMenu.Create(messages, loaded, sourceMetadata);
                 Require(exportedView.ArtResourcePath is not null && Godot.FileAccess.FileExists(exportedView.ArtResourcePath),
                     "The actual exported original menu art is missing");
                 var hash = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(
@@ -111,7 +110,7 @@ public partial class CampaignMenuChecks : Node
                 var picture = Descendants(screen).OfType<TextureRect>().Single(node => node.Name == "MenuArt");
                 Require(picture.Texture is not null && picture.Texture.ResourcePath == exportedView.ArtResourcePath,
                     "The actual native menu did not load its exported original texture");
-                Require(picture.TooltipText == sourceView.ArtAlt, "The actual native menu lost its source art description");
+                Require(picture.TooltipText == exportedView.ArtAlt, "The actual native menu lost its source art description");
             }
             RemoveChild(screen);
             screen.QueueFree();

@@ -9,11 +9,11 @@
 
 Normal primary actions advance one local beat. Only the last normal beat invokes `onContinue`. Ending primary actions invoke `onFinish` immediately. That callback, not the screen, decides whether to advance/save/rebind or exit. Menu navigation is always `onExit`. Choice IDs are passed unchanged to the caller, in source presentation order, restricted to the canonical available option IDs.
 
-`NarrativeProjection` is a detached read model. `CampaignShell` renders its supplied title, chapter heading, segmented progress, actual backdrop, menu button and scroll body. Its display methods are reusable by staging/results without gaining campaign authority. The native `grayflag-story.json` schema 3 owns story/choice structure, shared `identityNameKeys` for narrative roles and named campaign people, speaker IDs and manually authored semantic beat IDs. It contains message references, not prose. `grayflag-staging.json` schema 2 owns shared `titleKey`, `completionLabelKey`, chapter title references and artwork. Level entries no longer repeat chapter titles. `zh_CN.po` alone owns narrative wording and the shared shell labels. No story/choice/scene identifiers are duplicated in production C#.
+`NarrativeProjection` is a detached read model. `CampaignShell` renders its supplied title, chapter heading, segmented progress, actual backdrop, menu button and scroll body. Its display methods are reusable by staging/results without gaining campaign authority. The native `grayflag-story.json` schema 3 owns story/choice structure, shared `identityNameKeys` for narrative roles and named campaign people, speaker IDs and manually authored semantic beat IDs. It contains message references, not prose. `grayflag-staging.json` schema 3 owns shared `titleKey`, `completionLabelKey`, chapter title references, scene artwork and identity-to-portrait-ID bindings. `portrait-catalog.json` alone owns current portrait resource paths and hashes; a shared injected `PortraitCatalog` resolves them for story, staging and HUD. Level entries no longer repeat chapter titles. `zh_CN.po` alone owns narrative wording and the shared shell labels. No story/choice/scene identifiers are duplicated in production C#.
 
 `StoryDocument.Load(text)` validates all content keys and zero-argument formats, unique story/choice/beat/option identities and mapped speakers before navigation. Literal old fields are rejected, not adapted. The projection resolves messages into detached view models; controls render those values. The application owns the one injected service. There is no localization dependency in Core, no translated prose/key added to campaign state, and no migration for schema-1 presentation documents.
 
-`export-grayflag.ts` no longer regenerates these documents or scrapes TypeScript menu wording. It only refreshes their explicitly referenced, hash-verified artwork. Native authoring now advances independently of original browser wording. Menu/staging labels and semantic-refusal presentation also use the catalog. Built-in level/unit names and remaining battle/outcome/progress text are not yet migrated; these slices do not claim complete game internationalization.
+`export-grayflag.ts` no longer regenerates these documents or scrapes TypeScript menu wording. It refreshes explicitly referenced, hash-verified scene artwork and verifies native portrait catalog bytes without copying legacy portraits. Native authoring now advances independently of original browser wording. Menu/staging labels and semantic-refusal presentation also use the catalog. Built-in level/unit names and remaining battle/outcome/progress text are not yet migrated; these slices do not claim complete game internationalization.
 
 ## Campaign-relative dates
 
@@ -34,7 +34,7 @@ The original `packages/game-ui/src/ui/campaign-game.ts` has two distinct contrac
 
 The screen mounts exactly one dialogue beat, with the localized speaker label (unknown speaker IDs are authoring errors), portrait when mapped, current and prior active beat dots, source next/continue/finish label, kicker/date/location/summary, and the original three mission labels. All 11 choice documents retain their original option number, label, detail, consequence and save-effect note.
 
-Null story scenes intentionally select the chapter backdrop. A missing declared scene does **not** select an unrelated substitute. A narrator/unmapped portrait stays portrait-free; missing mapped artwork produces a localized, player-safe artwork-failure notice. The precise missing source/resource path remains available through `RenderingDiagnostics`, not in the player label. The verification script checks actual source/export PNG bytes against every referenced SHA-256 before loading them in Godot.
+Null story scenes intentionally select the chapter backdrop. A missing declared scene does **not** select an unrelated substitute. A narrator/unmapped portrait stays portrait-free; missing mapped artwork produces a localized, player-safe artwork-failure notice. The precise missing source/resource path remains available through `RenderingDiagnostics`, not in the player label. The verification script checks native portrait PNG bytes against the catalog and remaining scene PNGs against both source/export hashes before loading them in Godot.
 
 Stale local-page buttons, old rebound controls, double submissions and unmounted controls cannot advance or choose. One successful canonical callback disables competing navigation until the caller rebinds. This is intentionally stronger than an unmounted-but-undisposed original DOM root, whose click listener can still run; source `dispose()` is what disables that listener.
 
@@ -48,7 +48,7 @@ Run:
 bash tools/godot/narrative-checks/run.sh --verify-guard
 ```
 
-The test creates a fresh `/tmp/empire-narrative.*` project and isolates XDG data/config/cache/runtime directories; it does not touch user saves. It copies the actual production narrative classes and the exact production JSON loader, and imports only required source-exported narrative PNGs. The default gate uses the reviewed `tests/native/narrative.json` and native story-schema-3/staging-schema-2 documents, with no TypeScript runtime. `verify-native.sh` runs the same scene against this same checked-in fixture.
+The test creates a fresh `/tmp/empire-narrative.*` project and isolates XDG data/config/cache/runtime directories; it does not touch user saves. It copies the actual production narrative classes and the exact production JSON loader, and imports the native catalog portraits and required source-exported scene PNGs. The default gate uses the reviewed `tests/native/narrative.json` and native story-schema-3/staging-schema-3 documents, with no TypeScript runtime. `verify-native.sh` runs the same scene against this same checked-in fixture.
 
 The complete fixture migrated from observations originally produced by `StoryCampaignController`, its adapter/runtime and save helpers preserves:
 
@@ -66,24 +66,32 @@ The completed narrative-only checkpoint passed its native widget/projection chec
 
 Not claimed: complete built-in-content/battle/outcome i18n; a victorious campaign playthrough; browser CSS effects or pixel-identical typography; physical native GUI acceptance; a newly exported standalone game. The separate foundation packaging check established native PO loading/formatting in a real exported executable; product release validation remains the integration owner's gate.
 
-## Native portrait revisions
+## Native portrait ownership and revisions
 
-Leia and Roderick now use generated transparent revisions of their original
-full-body illustrations. These are enlarged, redrawn image-generation edits, not
-lossless pixel extraction. `data/portrait-revisions.json` records original paths
-and hashes, current hashes, and the operation. The original TypeScript assets are
-unchanged. The remaining five character portraits retain their original opaque
-backgrounds.
+`data/portrait-catalog.json` schema 1 is the single native owner of all eight
+named cards: Laiya, Roderick, Cain, Bran, Mirelle, Tasha, Ivra and Torren. Each
+identity declares only `resourcePath` and `sha256`. Runtime diagnostic/source
+strings are derived from that path as `/godot/…`, never authored a second time.
+Existing PNG locations are retained. Staging/narrative schema 3 stores only
+identity-to-portrait-ID bindings; tactical HUD schema 2 stores `portraitId` or an
+explicit null selecting the bound unit's idle frame. An unknown ID, omitted
+choice or missing named-card resource is an error, not a sprite fallback.
 
-The two current narrative and HUD records explicitly name `/godot/assets/...` as
-their authored source; the resource at the matching `res://assets/...` path is the
-single native image owner. The importer validates that path and hash but never
-copies an old TypeScript image over it. Other original-source records continue to
-require matching source/export bytes. This is an authoring-location contract, not
-a filename exception or runtime fallback.
+The legacy importers validate this catalog and refuse to overwrite its assets.
+`export-tactical-hud-art.ts` preserves native portrait bindings and imports only
+icons from the original provider. Scene and icon assets retain their existing
+source/export contract. The original TypeScript portrait assets and frozen
+JavaScript oracle remain unchanged.
 
-Both revisions were inspected in an isolated real application before integration:
-Leia at roster size and both characters in dialogue on dark panels. No obvious
-background halo remained at those actual display sizes. Detail changes from the
-generative edit are intentional; original identity, pose, weapons and palette
-remain recognizable.
+Laiya and Roderick use the previously reviewed generated transparent revisions.
+Mirelle's generated transparent candidate, pending in-scene visual acceptance, is now installed in the isolated native
+portrait resource. These are image-generation edits, not claims of lossless
+pixel extraction. `data/portrait-revisions.json` is historical provenance keyed
+by portrait ID, containing original source/hash and the edit description, not a
+second current path/hash declaration. The other five catalog images retain their
+existing bytes.
+
+Laiya and Roderick were inspected at roster/dialogue sizes in the earlier
+isolated application review. That prior review is not GUI acceptance of Mirelle
+or this ownership migration. Current build, behavioral and visual acceptance
+must be reported separately; the migration itself does not claim those checks.

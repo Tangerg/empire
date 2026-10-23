@@ -216,25 +216,31 @@ foreach (var path in new[] { "relative.json", "user://autosave.json", "" })
     }
     catch (ArgumentException) { checks++; }
 }
+foreach (var key in new[] { "titleKey", "battleTotal", "menu" })
+    Same(exported[key], metadata[key], $"Native menu metadata changed frozen {key}");
+Same(exported["menuArt"]!["source"], metadata["menuArt"]!["source"], "Native menu source artwork identity changed");
+try
+{
+    CampaignMenu.Create(messages, new(null, null), EcmaJson.ToElement(metadata));
+    throw new Exception("Obsolete menu metadata schema was accepted");
+}
+catch (InvalidOperationException error) when (error.Message == "Unsupported campaign menu metadata schema.") { checks++; }
 foreach (var item in oracle["menuCases"]!.AsArray().OfType<JsonObject>())
 {
     var loaded = new LoadedCampaign(item["state"] as JsonObject, item["rejected"]?.GetValue<string>());
-    foreach (var data in new[] { metadata, exported })
-    {
-        var view = CampaignMenu.Create(messages, loaded, EcmaJson.ToElement(data));
-        var expected = item["expected"]!.AsObject();
-        Check(view.Title == expected["title"]!.GetValue<string>(), "Menu title source mismatch");
-        Check(view.Kicker == expected["kicker"]!.GetValue<string>() && view.Description == expected["description"]!.GetValue<string>(), "Menu prose mismatch");
-        Check(view.ArtAlt == expected["artAlt"]!.GetValue<string>() && view.ArtSource == expected["artSource"]!.GetValue<string>(), "Original title art identity mismatch");
-        Check(view.CanContinue == expected["canContinue"]!.GetValue<bool>(), "Continue visibility mismatch");
-        if (view.CanContinue)
-            Check(view.ContinueLabel == expected["continueLabel"]!.GetValue<string>(), "Continue text changed with status");
-        Check(view.NewLabel == expected["newLabel"]!.GetValue<string>() && view.NewPrimary == expected["newPrimary"]!.GetValue<bool>(), "New/restart label/primary mismatch");
-        Check(view.Progress == expected["progress"]?.GetValue<string>(), "Continue battle progress mismatch");
-        Check(view.RejectedNotice == expected["notice"]?.GetValue<string>(), "Unreadable-save notice must be localized without exposing diagnostic details");
-        if (item["prompt"] is not null)
-            Check(view.ReplacePrompt == item["prompt"]!.GetValue<string>(), "Replacement confirmation is not the source prompt");
-    }
+    var view = CampaignMenu.Create(messages, loaded, EcmaJson.ToElement(exported));
+    var expected = item["expected"]!.AsObject();
+    Check(view.Title == expected["title"]!.GetValue<string>(), "Menu title source mismatch");
+    Check(view.Kicker == expected["kicker"]!.GetValue<string>() && view.Description == expected["description"]!.GetValue<string>(), "Menu prose mismatch");
+    Check(view.ArtAlt == expected["artAlt"]!.GetValue<string>() && view.ArtSource == expected["artSource"]!.GetValue<string>(), "Original title art identity mismatch");
+    Check(view.CanContinue == expected["canContinue"]!.GetValue<bool>(), "Continue visibility mismatch");
+    if (view.CanContinue)
+        Check(view.ContinueLabel == expected["continueLabel"]!.GetValue<string>(), "Continue text changed with status");
+    Check(view.NewLabel == expected["newLabel"]!.GetValue<string>() && view.NewPrimary == expected["newPrimary"]!.GetValue<bool>(), "New/restart label/primary mismatch");
+    Check(view.Progress == expected["progress"]?.GetValue<string>(), "Continue battle progress mismatch");
+    Check(view.RejectedNotice == expected["notice"]?.GetValue<string>(), "Unreadable-save notice must be localized without exposing diagnostic details");
+    if (item["prompt"] is not null)
+        Check(view.ReplacePrompt == item["prompt"]!.GetValue<string>(), "Replacement confirmation is not the source prompt");
     var needsConfirmation = loaded.State is not null;
     Check(item["declined"]!["confirmations"]!.GetValue<int>() == (needsConfirmation ? 1 : 0), "Live source confirmation expectation changed");
     Check(item["declined"]!["deletes"]!.GetValue<int>() == (needsConfirmation ? 0 : 1), "Live source new-game deletion expectation changed");
@@ -242,7 +248,7 @@ foreach (var item in oracle["menuCases"]!.AsArray().OfType<JsonObject>())
     if (needsConfirmation)
         Check(item["continuedOriginalState"]!.GetValue<bool>(), "Live source Continue must use loaded state");
 }
-var changedMetadata = (JsonObject)metadata.DeepClone();
+var changedMetadata = (JsonObject)exported.DeepClone();
 changedMetadata["battleTotal"] = 27;
 Check(CampaignMenu.Create(messages, new(initial, null), EcmaJson.ToElement(changedMetadata)).Progress == "0/27", "Projection hardcodes the shipped battle count instead of metadata");
 var atomicPath = Slot("atomic-reader.json");

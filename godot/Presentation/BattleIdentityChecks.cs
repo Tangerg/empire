@@ -57,7 +57,7 @@ internal static class BattleIdentityChecks
             var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
             var registeredLevel = levels.OfType<JsonObject>().Single(level => level["id"]!.GetValue<string>() == "c01-01");
             var rendering = BoardSceneRendering.Load(scene, registeredLevel, engine.CreateState(registeredLevel)["map"]!.AsObject());
-            screen.BindSession(new(text, presentation.Battle, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(),
+            screen.BindSession(new(text, presentation.Battle, PortraitCatalogResources.Load(), session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(),
                 engine.Grids.Get("square4"), engine.Catalog, rendering.Plane)), campaign.BattleLevel(), scene);
             screen.ConfigureGround(rendering.Ground);
             foreach (var (key, expected) in subjects)

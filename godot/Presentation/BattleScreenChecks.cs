@@ -75,7 +75,7 @@ public partial class BattleScreenChecks : Node
                 MapSize = [level["width"]!.GetValue<int>(), level["height"]!.GetValue<int>()],
                 FramePlacements = []
             };
-            screen.BindSession(new(text, battleText, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, scene);
+            screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, scene);
             var materials = WorldMaterialsManifest.Load();
             materials.TerrainTags[actorTerrain] = canonicalOutside ? [] : ["outside"];
             screen.ConfigureGround(TerrainView.Factory(materials));
@@ -129,7 +129,7 @@ public partial class BattleScreenChecks : Node
             var screen = new BattleScreen();
             AddChild(screen);
             screen.Board.AnimationsEnabled = false;
-            screen.BindSession(new(text, presentation.Battle, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
+            screen.BindSession(new(text, presentation.Battle, PortraitCatalogResources.Load(), session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
             Buttons(screen).Single(button => button.Name == "EndTurn").EmitSignal(Button.SignalName.Pressed);
             Require(session.GetSnapshot().Transition!.Events.Any(value => value.GetProperty("type").GetString() == "resourceChanged"),
                 "The real end-turn action must emit a resource event for the custom presenter.");
@@ -153,7 +153,7 @@ public partial class BattleScreenChecks : Node
         var screen = new BattleScreen();
         AddChild(screen);
         screen.Board.AdvanceAnimationsAutomatically = false;
-        void Bind(GrayFlagSession value) => screen.BindSession(new(text, battleText, value, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
+        void Bind(GrayFlagSession value) => screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), value, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
         Bind(session);
         Require(screen.RecentMessages.SequenceEqual(new[] { session.GetSnapshot().InitialLogMessage }),
             "New battle log must contain only the original opening line.");
@@ -179,7 +179,7 @@ public partial class BattleScreenChecks : Node
         Require(!screen.IsPresenting && screen.RecentMessages.SequenceEqual(expectedLog.Recent()), "Refreshing a settled revision must not replay it.");
         var superseded = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
         var replaceable = new ReplaceableSession(superseded);
-        screen.BindSession(new(text, battleText, replaceable, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
+        screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), replaceable, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
         TacticalSceneInputChecks.Move(screen, replaceable);
         var replacement = superseded.GetSnapshot() with
         {
@@ -207,7 +207,7 @@ public partial class BattleScreenChecks : Node
         Bind(loaded);
         Require(!screen.IsPresenting && !screen.Board.IsPresenting && screen.DisplayedRevision == 0,
             "Rebinding a loaded session must cancel old playback without replaying its history.");
-        screen.BindSession(new(text, battleText, loaded, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"), initialLogMessage: "已读取第 1 回合的存档");
+        screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), loaded, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"), initialLogMessage: "已读取第 1 回合的存档");
         Require(screen.RecentMessages.SequenceEqual(new[] { "已读取第 1 回合的存档" }), "Load must clear history and keep one load line.");
         screen.Board.AdvancePresentation(100);
         Require(screen.DisplayedRevision == 0, "Stale timeline completion overwrote the rebound view.");
@@ -273,7 +273,7 @@ public partial class BattleScreenChecks : Node
         AddChild(screen);
         var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
         var rendering = BoardSceneRendering.Load(scene, level, engine.CreateState(level)["map"]!.AsObject());
-        screen.BindSession(new(text, battleText, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(),
+        screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(),
             engine.Grids.Get("square4"), engine.Catalog, rendering.Plane)), level, scene);
         screen.ConfigureGround(rendering.Ground);
         Require(screen.GetNode<ColorRect>("Backdrop").ZIndex < -300,
@@ -324,7 +324,7 @@ public partial class BattleScreenChecks : Node
         var screen = new BattleScreen();
         AddChild(screen);
         screen.Board.AnimationsEnabled = false;
-        screen.BindSession(new(text, battleText, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
+        screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
         void Keypress(Key key) => screen._UnhandledKeyInput(new InputEventKey { Pressed = true, Keycode = key });
         var snapshot = session.GetSnapshot();
         var staleSameRevision = Buttons(screen).Single(button => button.Text == "结束回合");
@@ -366,7 +366,7 @@ public partial class BattleScreenChecks : Node
         deploymentLevel["scenario"]!.AsObject()["zones"] = new JsonArray(new JsonObject { ["id"] = "selection-check-zone", ["cells"] = cells });
         deploymentLevel["deployment"] = new JsonObject { ["order"] = new JsonArray(1), ["zones"] = new JsonArray(new JsonObject { ["player"] = 1, ["zone"] = "selection-check-zone" }) };
         var deployment = new GrayFlagSession(new(engine, presentation, new JsonArray()), deploymentLevel);
-        screen.BindSession(new(text, battleText, deployment, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), deploymentLevel, AuthoredScene.Load("res://data/scenes/c01-01.json"));
+        screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), deployment, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), deploymentLevel, AuthoredScene.Load("res://data/scenes/c01-01.json"));
         var roster = deployment.GetTacticalQueries(0).DeploymentUnits();
         var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
         Button RosterButton(int id)
@@ -418,7 +418,7 @@ public partial class BattleScreenChecks : Node
         var screen = new BattleScreen();
         AddChild(screen);
         screen.Board.AnimationsEnabled = false;
-        screen.BindSession(new(text, battleText, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
+        screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
         var origin = session.GetTacticalQueries(0).Unit(2)!.At;
         screen.SelectCell(origin);
         Button Reaction(string id) => Buttons(screen).Single(button => button.GetMeta("hud_key", "").AsString() == "stances/reaction:" + id);
@@ -508,7 +508,7 @@ public partial class BattleScreenChecks : Node
             screen.Board.AnimationsEnabled = false;
             var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
             var rendering = BoardSceneRendering.Load(scene, sourceLevel, registeredMap);
-            screen.BindSession(new(text, battleText, session, new(assets, EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, rendering.Plane)), level, scene);
+            screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), session, new(assets, EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, rendering.Plane)), level, scene);
             screen.ConfigureGround(rendering.Ground);
             Require(screen.Board.RenderingIssueCount > 0 && screen.Board.Diagnostics.Any(value => value.Contains("c01.archer", StringComparison.Ordinal)),
                 "Unavailable actor art remains explicitly diagnosed without changing canonical units.");
@@ -588,7 +588,7 @@ public partial class BattleScreenChecks : Node
             var screen = new BattleScreen();
             AddChild(screen);
             screen.Board.AnimationsEnabled = false;
-            screen.BindSession(new(text, battleText, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
+            screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
             Exception fault = expectedArtFailure ? new MissingArtResourceException("res://test-missing-art", "test missing art diagnostic")
                 : new InvalidOperationException("test presentation programming defect");
             screen.Board.EventPresented += (_, _) => throw fault;

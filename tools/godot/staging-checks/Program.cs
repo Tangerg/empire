@@ -21,6 +21,7 @@ var serialization = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamin
 int checks = 0;
 string Text(JsonNode? value) => EcmaJson.ReadString(value);
 var dataDirectory = Path.GetDirectoryName(Path.GetFullPath(args[1]))!;
+var portraits = PortraitCatalog.Parse(File.ReadAllText(Path.Combine(dataDirectory, "portrait-catalog.json")));
 var nativeLevels = EcmaJson.Parse(File.ReadAllText(Path.Combine(dataDirectory, "grayflag-campaign-levels.json")))!.AsArray();
 var levelById = nativeLevels.OfType<JsonObject>().ToDictionary(level => Text(level["id"]), StringComparer.Ordinal);
 var engine = new BattleEngine(EcmaJson.Parse(File.ReadAllText(Path.Combine(dataDirectory, "content-packs.json")))!.AsArray());
@@ -42,7 +43,7 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
 {
     var before = EcmaJson.Stringify(item);
     var digest = StateDigest.Hash(item["state"]!);
-    var view = CampaignStaging.Create(presentation, EcmaJson.ToElement(item["state"]), EcmaJson.ToElement(item["node"]), NativeLevel(item),
+    var view = CampaignStaging.Create(presentation, portraits, EcmaJson.ToElement(item["state"]), EcmaJson.ToElement(item["node"]), NativeLevel(item),
         EcmaJson.ToElement(fixtureMetadata), item["pending"]!.GetValue<bool>());
     var actual = new JsonObject
     {
@@ -87,6 +88,31 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
     }
     catch (NotSupportedException) { checks++; }
 }
+// A catalog change is observed by every binding without editing presentation metadata.
+var renamedPortraits = new PortraitCatalog(new Dictionary<string, PortraitAsset>
+{
+    ["fixture-card"] = portraits.Portraits["laiya"]
+});
+var explicitBindings = fixtureMetadata.DeepClone();
+explicitBindings["portraits"] = new JsonObject { ["laiya"] = "fixture-card" };
+var explicitView = CampaignStaging.Create(presentation, renamedPortraits,
+    EcmaJson.ToElement(oracle["cases"]![0]!["state"]), EcmaJson.ToElement(oracle["cases"]![0]!["node"]),
+    NativeLevel(oracle["cases"]![0]!), EcmaJson.ToElement(explicitBindings), false);
+Check("portrait IDs are explicit, not derived from identity names", JsonValue.Create(explicitView.Roster.Single(unit => unit.Id == "laiya").Portrait!.ResourcePath),
+    JsonValue.Create(renamedPortraits.Resolve("fixture-card").ResourcePath));
+try
+{
+    portraits.Resolve("missing-card");
+    throw new Exception("Unknown portrait silently accepted");
+}
+catch (InvalidOperationException error) when (error.Message.Contains("Unknown portrait ID", StringComparison.Ordinal)) { checks++; }
+var invalidCatalog = "{\"schema\":1,\"portraits\":{\"id\":{\"resourcePath\":\"res://assets/card.png\",\"sha256\":\"" + new string('a', 64) + "\",\"source\":\"competing-owner\"}}}";
+try
+{
+    PortraitCatalog.Parse(invalidCatalog);
+    throw new Exception("Competing source declaration accepted");
+}
+catch (InvalidOperationException error) when (error.Message.Contains("Unexpected portrait asset fields", StringComparison.Ordinal)) { checks++; }
 var first = oracle["cases"]![0]!;
 using (var stream = new System.IO.Compression.GZipStream(File.OpenRead(Path.Combine(dataDirectory, "../tests/oracle/narrative.json.gz")), System.IO.Compression.CompressionMode.Decompress))
 using (var reader = new StreamReader(stream))
@@ -108,7 +134,7 @@ reordered["elin"]!["unitType"] = "c01.swordsman";
 reordered["torren"]!["disposition"] = "fallen";
 var changedBefore = EcmaJson.Stringify(changedState);
 var changedDigest = StateDigest.Hash(changedState);
-var changedView = CampaignStaging.Create(presentation, EcmaJson.ToElement(changedState), EcmaJson.ToElement(first["node"]), NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false);
+var changedView = CampaignStaging.Create(presentation, portraits, EcmaJson.ToElement(changedState), EcmaJson.ToElement(first["node"]), NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false);
 Check("reordered people sharing a class retain distinct names", JsonSerializer.SerializeToNode(changedView.Roster.Select(unit => new { unit.Id, unit.Name }), serialization),
     JsonNode.Parse("[{\"id\":\"elin\",\"name\":\"艾琳\"},{\"id\":\"torren\",\"name\":\"托伦\"},{\"id\":\"laiya\",\"name\":\"莱娅\"}]"));
 Check("fallen member keeps status", JsonValue.Create(changedView.Roster.Single(unit => unit.Id == "torren").Status), JsonValue.Create(messages.Format("ui.staging.disposition.fallen")));
@@ -125,14 +151,14 @@ void Reject<TException>(Action action, string diagnostic) where TException : Inv
 }
 var unknownState = first["state"]!.DeepClone();
 unknownState["roster"]!["torren"]!["id"] = "undeclared-person";
-Reject<InvalidOperationException>(() => CampaignStaging.Create(presentation, EcmaJson.ToElement(unknownState), EcmaJson.ToElement(first["node"]), NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false), "undeclared-person");
+Reject<InvalidOperationException>(() => CampaignStaging.Create(presentation, portraits, EcmaJson.ToElement(unknownState), EcmaJson.ToElement(first["node"]), NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false), "undeclared-person");
 var missingName = new GameText(key => key == nameKeys["elin"] ? null : catalog.GetValueOrDefault(key), CultureInfo.InvariantCulture);
-Reject<LocalizationException>(() => CampaignStaging.Create(Presentation(missingName), EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(first["node"]), NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false), nameKeys["elin"]);
+Reject<LocalizationException>(() => CampaignStaging.Create(Presentation(missingName), portraits, EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(first["node"]), NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false), nameKeys["elin"]);
 var contentText = EcmaJson.Parse(File.ReadAllText(Path.Combine(dataDirectory, "grayflag-content-text.json")))!;
 foreach (var (id, expectedName) in new[] { ("c01.swordsman", "边境剑士"), ("c01.archer", "边境弓手") })
     Check("generic class name unchanged", JsonValue.Create(messages.Format(Text(contentText["content"]!["units"]![id]!["name"]))), JsonValue.Create(expectedName));
 var alternate = new GameText(key => catalog.TryGetValue(key, out var value) ? value + " [fixture]" : null, CultureInfo.InvariantCulture);
-var alternateView = CampaignStaging.Create(Presentation(alternate), EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(first["node"]),
+var alternateView = CampaignStaging.Create(Presentation(alternate), portraits, EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(first["node"]),
     NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false);
 Check("identity names use injected locale", JsonValue.Create(alternateView.Roster.Single(unit => unit.Id == "torren").Name), JsonValue.Create("托伦 [fixture]"));
 Check("staging injects shared campaign wording", JsonValue.Create(alternateView.CampaignTitle),
@@ -143,7 +169,7 @@ var node = first["node"]!.DeepClone().AsObject();
 node["level"] = "wrong";
 try
 {
-    CampaignStaging.Create(presentation, EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(node), NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false);
+    CampaignStaging.Create(presentation, portraits, EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(node), NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false);
     throw new Exception("Mismatched staging identity accepted");
 }
 catch (InvalidOperationException) { checks++; }
@@ -162,17 +188,22 @@ catch (InvalidOperationException) { checks++; }
             NormalizeArt(entry.Value);
     }
     NormalizeArt(normalized);
-    Check("native shared document schema", exported["schema"], JsonValue.Create(2));
+    Check("native shared document schema", exported["schema"], JsonValue.Create(3));
     Check("single campaign title owner", JsonValue.Create(messages.Format(Text(exported["titleKey"]))), oracle["metadata"]!["title"]);
-    var expectedPortraits = oracle["metadata"]!["portraits"]!.DeepClone();
-    // These two portraits are already native-owned; other historical declarations retain exact parity.
-    foreach (var (identity, filename) in new[] { ("laiya", "char-leia-01.png"), ("roderick", "char-roderick-01.png") })
+    var expectedPortraits = oracle["metadata"]!["portraits"]!.AsObject();
+    Check("native portrait binding identities", JsonSerializer.SerializeToNode(exported["portraits"]!.AsObject().Select(pair => pair.Key).Order()),
+        JsonSerializer.SerializeToNode(expectedPortraits.Select(pair => pair.Key).Order()));
+    foreach (var (identity, previous) in expectedPortraits)
     {
-        var source = "/godot/assets/runtime/narrative-static/" + filename;
-        Check($"native portrait source {identity}", exported["portraits"]![identity]!["source"], JsonValue.Create(source));
-        expectedPortraits[identity]!["source"] = source;
+        var portraitId = Text(exported["portraits"]![identity]);
+        Check("explicit shared portrait identity", JsonValue.Create(portraitId), JsonValue.Create(identity));
+        var portrait = portraits.Resolve(portraitId);
+        var historicalFilename = Path.GetFileName(Text(previous!["source"]));
+        Check("native portrait keeps resource identity", JsonValue.Create(portrait.ResourcePath),
+            JsonValue.Create("res://assets/runtime/narrative-static/" + historicalFilename));
+        Check("native portrait source is derived", JsonValue.Create(portrait.Source),
+            JsonValue.Create("/godot/assets/runtime/narrative-static/" + historicalFilename));
     }
-    Check("native portrait declarations", normalized!["portraits"], expectedPortraits);
     foreach (var field in new[] { "battleTotal", "joinAfter" })
         Check($"unchanged staging metadata {field}", normalized![field], oracle["metadata"]![field]);
     foreach (var kind in new[] { "resource", "relation" })
@@ -187,7 +218,7 @@ catch (InvalidOperationException) { checks++; }
         foreach (var field in new[] { "chapter", "order", "briefingId", "chapterArt", "briefingArt" })
             Check($"unchanged level presentation {level.Key}.{field}", normalized!["levels"]![level.Key]![field], previous[field]);
     }
-    var art = exported["portraits"]!.AsObject().Select(pair => pair.Value!.AsObject()).Concat(
+    var art = portraits.Portraits.Keys.Select(id => JsonSerializer.SerializeToNode(portraits.Resolve(id), serialization)!.AsObject()).Concat(
         exported["levels"]!.AsObject().SelectMany(pair => new[] { pair.Value!["chapterArt"], pair.Value!["briefingArt"] }.OfType<JsonObject>()));
     var directory = Path.GetDirectoryName(Path.GetFullPath(args[1]))!;
     foreach (var item in art)
@@ -203,4 +234,4 @@ catch (InvalidOperationException) { checks++; }
         Check("original narrative asset identity", JsonValue.Create(targetHash), JsonValue.Create(sourceHash));
     }
 }
-Console.WriteLine($"PASS {checks} comparisons across {oracle["cases"]!.AsArray().Count} frozen staging renders with native schema-2 metadata; immutable rows and explicit actor bindings");
+Console.WriteLine($"PASS {checks} comparisons across {oracle["cases"]!.AsArray().Count} frozen staging renders with native schema-3 metadata; immutable rows and explicit actor bindings");

@@ -16,10 +16,16 @@ class NativeNarrativeContract(unittest.TestCase):
         self.root = Path(self.temporary.name)
         source = Path(__file__).resolve().parents[3]
         for name in ["godot/data/grayflag-campaign.json", "godot/data/grayflag-story.json", "godot/data/grayflag-staging.json",
-                     "godot/data/grayflag-content-text.json", "godot/Localization/zh_CN.po"]:
+                     "godot/data/grayflag-content-text.json", "godot/data/portrait-catalog.json",
+                     "godot/data/tactical-hud-art.json", "godot/Localization/zh_CN.po"]:
             target = self.root / name
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(source / name, target)
+        portraits = json.loads((source / "godot/data/portrait-catalog.json").read_text())["portraits"]
+        for asset in portraits.values():
+            relative = Path("godot") / asset["resourcePath"].removeprefix("res://")
+            (self.root / relative).parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(source / relative, self.root / relative)
 
     def tearDown(self):
         self.temporary.cleanup()
@@ -92,6 +98,55 @@ class NativeNarrativeContract(unittest.TestCase):
 
     def test_obsolete_schema(self):
         self.change("grayflag-story.json", lambda value: value.update(schema=2))
+        self.reject()
+
+    def test_obsolete_staging_schema(self):
+        self.change("grayflag-staging.json", lambda value: value.update(schema=2))
+        self.reject()
+
+    def test_obsolete_hud_schema(self):
+        self.change("tactical-hud-art.json", lambda value: value.update(schema=1))
+        self.reject()
+
+    def test_unknown_staging_portrait(self):
+        self.change("grayflag-staging.json", lambda value: value["portraits"].update(mirelle="unknown"))
+        self.reject()
+
+    def test_embedded_staging_card_is_not_an_owner(self):
+        self.change("grayflag-staging.json", lambda value: value["portraits"].update(mirelle={"resourcePath": "res://other.png"}))
+        self.reject()
+
+    def test_unknown_hud_portrait(self):
+        self.change("tactical-hud-art.json", lambda value: value["portraits"]["campaign-torren"].update(portraitId="unknown"))
+        self.reject()
+
+    def test_missing_hud_portrait_choice_is_not_null(self):
+        self.change("tactical-hud-art.json", lambda value: value["portraits"]["c01.swordsman"].pop("portraitId"))
+        self.reject()
+
+    def test_embedded_hud_card_is_not_an_owner(self):
+        self.change("tactical-hud-art.json", lambda value: value["portraits"]["c01.mirelle"].update(card={}))
+        self.reject()
+
+    def test_catalog_rejects_duplicate_source_fact(self):
+        self.change("portrait-catalog.json", lambda value: value["portraits"]["mirelle"].update(source="/godot/other.png"))
+        self.reject()
+
+    def test_catalog_rejects_hash_mismatch(self):
+        self.change("portrait-catalog.json", lambda value: value["portraits"]["mirelle"].update(sha256="0" * 64))
+        self.reject()
+
+    def test_catalog_rejects_changed_bytes(self):
+        path = self.root / "godot/assets/runtime/narrative-static/char-mirel-01.png"
+        path.write_bytes(path.read_bytes() + b"changed")
+        self.reject()
+
+    def test_catalog_rejects_duplicate_resource(self):
+        self.change("portrait-catalog.json", lambda value: value["portraits"].update(other=value["portraits"]["mirelle"].copy()))
+        self.reject()
+
+    def test_catalog_rejects_escaping_resource(self):
+        self.change("portrait-catalog.json", lambda value: value["portraits"]["mirelle"].update(resourcePath="res://assets/../other.png"))
         self.reject()
 
     def test_duplicate_json_field(self):

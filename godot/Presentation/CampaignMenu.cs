@@ -15,7 +15,7 @@ public static class CampaignMenu
 {
     public static CampaignMenuView Create(GameText text, LoadedCampaign loaded, JsonElement metadata)
     {
-        if (metadata.GetProperty("schema").GetInt32() != 2)
+        if (metadata.GetProperty("schema").GetInt32() != 3)
             throw new InvalidOperationException("Unsupported campaign menu metadata schema.");
         var menu = metadata.GetProperty("menu");
         var art = metadata.GetProperty("menuArt");

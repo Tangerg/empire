@@ -4,9 +4,9 @@
 
 `python3 tools/godot/tactical-hud-checks/mutants.py <oracle.json>` deliberately breaks projection semantics in isolated copies and requires behavioral failure, not compilation failure.
 
-After building/importing the Godot project using tools/godot/env.sh, run `res://Scenes/TacticalHudChecks.tscn` headlessly. These checks exercise real Godot buttons, one-shot submission, disabled/removed/replaced/remounted callbacks, exact stamps, focus retention and source portrait binding. This is control/asset acceptance, not a claim of visual GUI acceptance.
+After building/importing the Godot project using tools/godot/env.sh, run `res://Scenes/TacticalHudChecks.tscn` headlessly. These checks exercise real Godot buttons, one-shot submission, disabled/removed/replaced/remounted callbacks, exact stamps, focus retention and native portrait binding. This is control/asset acceptance, not a claim of visual GUI acceptance.
 
-`tools/godot/export-tactical-hud-art.ts` executes the candidate art provider, verifies declared cards/icons against its output, and copies only original PNG bytes. The metadata distinguishes source named cards from source single-frame portraits; it does not substitute a sprite for a missing card.
+`tools/godot/export-tactical-hud-art.ts` preserves native schema-2 portrait bindings and validates their IDs and catalog bytes. It invokes the original candidate provider only to import/verify icons; it cannot derive portrait bindings or overwrite native cards. The shared schema-1 `portrait-catalog.json` owns all eight named cards. Each HUD binding has `portraitId`, with explicit null selecting the unit idle frame. Unknown IDs, omitted choices and missing named cards fail instead of selecting a sprite. The historical checkpoint below predates this migration and is not current acceptance.
 
 ## Verified checkpoint (2026-10-20)
 

@@ -71,7 +71,7 @@ public partial class CameraIntegrationChecks : Node
     {
         var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
         var rendering = BoardSceneRendering.Load(scene, level, engine.CreateState(level)["map"]!.AsObject());
-        screen.BindSession(new(text, battleText, session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(),
+        screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(),
             engine.Grids.Get("square4"), engine.Catalog, rendering.Plane)), level, scene);
         screen.ConfigureGround(rendering.Ground);
     }

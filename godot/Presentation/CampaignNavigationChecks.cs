@@ -375,7 +375,7 @@ public partial class CampaignNavigationChecks : Node
             var saved = File.ReadAllText(automaticPath);
             Require(story.BeatIndex == 0 && story.PresentedStory!.Ending, "Ending must render beat zero with finish, not page the multi-beat document.");
             var text = Field<GameText>(game, "text");
-            Require(finish.Text == (status == "active" ? text.Format(NarrativePresentationDocument.Load(text).CompletionLabelKey) : text.Format("ui.campaign.exit")), "Ending finish/return label does not reflect canonical status.");
+            Require(finish.Text == (status == "active" ? text.Format(NarrativePresentationDocument.Load(text, PortraitCatalogResources.Load()).CompletionLabelKey) : text.Format("ui.campaign.exit")), "Ending finish/return label does not reflect canonical status.");
             Press(finish);
             if (status == "active")
             {

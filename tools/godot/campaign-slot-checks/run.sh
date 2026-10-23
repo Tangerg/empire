@@ -48,6 +48,8 @@ native = target / 'native'
 (native / 'Presentation').mkdir(parents=True)
 (native / 'Scenes').mkdir()
 (native / 'Localization').mkdir()
+(native / 'data').mkdir()
+shutil.copyfile(root / 'godot/data/grayflag-staging.json', native / 'data/grayflag-staging.json')
 for name in ['GameText.cs', 'GodotTextCatalog.cs', 'zh_CN.po']:
     shutil.copyfile(root / 'godot/Localization' / name, native / 'Localization' / name)
 for name in ['CampaignMenu.cs', 'CampaignMenuScreen.cs', 'CampaignMenuChecks.cs']:

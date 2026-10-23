@@ -14,8 +14,12 @@ import { ANCIENT_EMPIRES_CONTENT_PACK } from '../../packages/content-ancient-emp
 import { CANDIDATE_01_CONTENT_PACK, CANDIDATE_01_LEVELS, CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN, candidate01Level } from '../../packages/story-candidate-01/src/index';
 import { candidateMaterial, CANDIDATE_FOREST_FLOOR, CANDIDATE_SETTLEMENT_LIFE, CANDIDATE_RIVER_STONES, CANDIDATE_SHORE_DECALS, CANDIDATE_SHORE, CANDIDATE_VERTICAL_CROSSINGS, CANDIDATE_FOUNDATIONS, CANDIDATE_SURFACE_FIT } from '../../packages/story-candidate-01/src/presentation/candidate-01-terrain-materials';
 import * as bindings from '../../packages/story-candidate-01/src/presentation/candidate-01-bindings';
+import { readNativePortraitCatalog, requirePortraitId } from './portrait-catalog';
 const assetRoot = resolve('packages/story-candidate-01/assets/final-fantasy-v1');
 const output = resolve('godot');
+const portraitCatalog = readNativePortraitCatalog(output);
+const nativePortraitResources = new Set([...portraitCatalog.values()].map(asset => asset.resourcePath));
+const nativePortraitFiles = new Set([...portraitCatalog.values()].map(asset => resolve(output, asset.resourcePath.slice('res://'.length))));
 const read = (path: string) => JSON.parse(readFileSync(resolve(assetRoot, path), 'utf8'));
 const hash = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
 function write(path: string, value: unknown): void {
@@ -145,16 +149,24 @@ for (const record of read('manifest-hero-appearances.json').appearances) if (app
 for (const record of read('manifest-map-structure-presentations.json').variants) if (presentations.has(record.id)) assets.push({ ...record, png: record.hdPng, physicalWidth: record.hdWidth, physicalHeight: record.hdHeight });
 function copy(png: string): { resourcePath: string; sha256: string } {
   const source = resolve(assetRoot, png); if (!source.startsWith(assetRoot + '/')) throw new Error('Escaping asset path');
-  const destination = resolve(output, 'assets', png); mkdirSync(dirname(destination), { recursive: true });
+  const destination = resolve(output, 'assets', png);
+  if (nativePortraitFiles.has(destination)) throw new Error(`Source import cannot overwrite native portrait: ${png}`);
+  mkdirSync(dirname(destination), { recursive: true });
   copyFileSync(source, destination, constants.COPYFILE_FICLONE); return { resourcePath: `res://assets/${png}`, sha256: hash(readFileSync(source)) };
 }
 // Native narrative documents and PO own structure and wording. This importer only
 // refreshes the exact assets they reference; it never regenerates those documents.
 const narrativeMetadata = JSON.parse(readFileSync(resolve(output, 'data/grayflag-staging.json'), 'utf8'));
+if (narrativeMetadata.schema !== 3 || !narrativeMetadata.portraits || typeof narrativeMetadata.portraits !== 'object'
+  || Array.isArray(narrativeMetadata.portraits)) throw new Error('Native staging requires schema 3 portrait IDs');
+for (const [identity, portraitId] of Object.entries(narrativeMetadata.portraits)) {
+  requirePortraitId(portraitId, portraitCatalog, `staging identity ${identity}`);
+}
 function copyNarrativeAssets(value: unknown): void {
   if (!value || typeof value !== 'object') return;
   if ('source' in value && 'resourcePath' in value && 'sha256' in value) {
     const art = value as { source: string; resourcePath: string; sha256: string };
+    if (nativePortraitResources.has(art.resourcePath)) throw new Error(`Portrait asset facts belong only to portrait-catalog.json: ${art.resourcePath}`);
     if (art.source.startsWith('/godot/assets/')) {
       const relative = art.source.slice('/godot/'.length);
       const nativeSource = resolve(output, relative);

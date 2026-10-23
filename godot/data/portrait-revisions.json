@@ -1,21 +1,23 @@
 {
-  "schema": 1,
+  "schema": 2,
   "revisions": {
-    "res://assets/runtime/narrative-static/char-leia-01.png": {
-      "source": "/godot/assets/runtime/narrative-static/char-leia-01.png",
-      "sha256": "62a1ded33a523688b87199247b919a195fb0bc5da885ebe0daa1212aa3c43052",
+    "laiya": {
       "originalSource": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-leia-01.png",
       "originalSha256": "43ae13b305aa88868779cad493e8796c0aa4b5fb3d11e524c23f94977daf7de1",
       "generator": "OpenAI image generation, 2026-10-21",
       "operation": "Generated transparent revision retaining character identity and pose; enlarged and redrawn, not pixel-exact background extraction."
     },
-    "res://assets/runtime/narrative-static/char-roderick-01.png": {
-      "source": "/godot/assets/runtime/narrative-static/char-roderick-01.png",
-      "sha256": "989a843bafd7996fb3c80b5e29818868e29e1650afae1cd3163e166b2ec6c81e",
+    "roderick": {
       "originalSource": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-roderick-01.png",
       "originalSha256": "406d8c694941b1c200c794e7603c7717773ae69908de10130d59d77d48e3e131",
       "generator": "OpenAI image generation, 2026-10-21",
       "operation": "Generated transparent revision retaining character identity and pose; enlarged and redrawn, not pixel-exact background extraction."
+    },
+    "mirelle": {
+      "originalSource": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-mirel-01.png",
+      "originalSha256": "beb329a6f103f04346703a20cdd6098c533d7f7374f88e4410c0becd3d6a4894",
+      "generator": "OpenAI image generation, 2026-10-23",
+      "operation": "Generated transparent-background candidate installed in the isolated native portrait path, pending in-scene visual acceptance. The edit redraws facial and clothing details and is not lossless pixel extraction."
     }
   }
 }

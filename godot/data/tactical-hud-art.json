@@ -1,237 +1,205 @@
 {
-  "schema": 1,
+  "schema": 2,
   "portraits": {
     "c01.laiya": {
       "unitType": "c01.laiya",
       "actorKey": null,
-      "card": {
-        "source": "/godot/assets/runtime/narrative-static/char-leia-01.png",
-        "resourcePath": "res://assets/runtime/narrative-static/char-leia-01.png",
-        "sha256": "62a1ded33a523688b87199247b919a195fb0bc5da885ebe0daa1212aa3c43052"
-      }
+      "portraitId": "laiya"
     },
     "c01.roderick": {
       "unitType": "c01.roderick",
       "actorKey": null,
-      "card": {
-        "source": "/godot/assets/runtime/narrative-static/char-roderick-01.png",
-        "resourcePath": "res://assets/runtime/narrative-static/char-roderick-01.png",
-        "sha256": "989a843bafd7996fb3c80b5e29818868e29e1650afae1cd3163e166b2ec6c81e"
-      }
+      "portraitId": "roderick"
     },
     "c01.cain": {
       "unitType": "c01.cain",
       "actorKey": null,
-      "card": {
-        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-cain-01.png",
-        "resourcePath": "res://assets/runtime/narrative-static/char-cain-01.png",
-        "sha256": "25c90647fc310c75cf0d834d75677582067a03abefc6dcda58eb1670c980e227"
-      }
+      "portraitId": "cain"
     },
     "c01.bran": {
       "unitType": "c01.bran",
       "actorKey": null,
-      "card": {
-        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-bran-01.png",
-        "resourcePath": "res://assets/runtime/narrative-static/char-bran-01.png",
-        "sha256": "5b7ce3338e8a2405a507406c8bec310145f48e02d43f35120d622294515e3c2c"
-      }
+      "portraitId": "bran"
     },
     "c01.mirelle": {
       "unitType": "c01.mirelle",
       "actorKey": null,
-      "card": {
-        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-mirel-01.png",
-        "resourcePath": "res://assets/runtime/narrative-static/char-mirel-01.png",
-        "sha256": "beb329a6f103f04346703a20cdd6098c533d7f7374f88e4410c0becd3d6a4894"
-      }
+      "portraitId": "mirelle"
     },
     "c01.tasha": {
       "unitType": "c01.tasha",
       "actorKey": null,
-      "card": {
-        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-tasha-01.png",
-        "resourcePath": "res://assets/runtime/narrative-static/char-tasha-01.png",
-        "sha256": "0d370f848eb926b2927372810cbe8c30a92c8a36070772efefbe54887f5e56a1"
-      }
+      "portraitId": "tasha"
     },
     "c01.ivra": {
       "unitType": "c01.ivra",
       "actorKey": null,
-      "card": {
-        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-ivra-01.png",
-        "resourcePath": "res://assets/runtime/narrative-static/char-ivra-01.png",
-        "sha256": "0b86a713cbe8350b74e010c31f3b93ab813e6a112bb5e2fffcba97034312f6ff"
-      }
+      "portraitId": "ivra"
     },
     "c01.swordsman": {
       "unitType": "c01.swordsman",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.banner-guard": {
       "unitType": "c01.banner-guard",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.archer": {
       "unitType": "c01.archer",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.knight": {
       "unitType": "c01.knight",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.legion-shield": {
       "unitType": "c01.legion-shield",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.gravekeeper": {
       "unitType": "c01.gravekeeper",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.engineer": {
       "unitType": "c01.engineer",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.wolf-rider": {
       "unitType": "c01.wolf-rider",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.skeleton-guard": {
       "unitType": "c01.skeleton-guard",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.ghost": {
       "unitType": "c01.ghost",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.inquisitor": {
       "unitType": "c01.inquisitor",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.templar": {
       "unitType": "c01.templar",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.ballista": {
       "unitType": "c01.ballista",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.battle-mage": {
       "unitType": "c01.battle-mage",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.rune-shield": {
       "unitType": "c01.rune-shield",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.rune-artificer": {
       "unitType": "c01.rune-artificer",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.stone-golem": {
       "unitType": "c01.stone-golem",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.silver-longbow": {
       "unitType": "c01.silver-longbow",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.woodland-walker": {
       "unitType": "c01.woodland-walker",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.druid": {
       "unitType": "c01.druid",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.cemetery-colossus": {
       "unitType": "c01.cemetery-colossus",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.refugee": {
       "unitType": "c01.refugee",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "c01.laborer": {
       "unitType": "c01.laborer",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "soldier": {
       "unitType": "soldier",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "archer": {
       "unitType": "archer",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "rogue": {
       "unitType": "rogue",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "cleric": {
       "unitType": "cleric",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "mage": {
       "unitType": "mage",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "knight": {
       "unitType": "knight",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "ogre": {
       "unitType": "ogre",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "ballista": {
       "unitType": "ballista",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "dragon": {
       "unitType": "dragon",
       "actorKey": null,
-      "card": null
+      "portraitId": null
     },
     "campaign-torren": {
       "unitType": "c01.swordsman",
       "actorKey": "campaign-torren",
-      "card": {
-        "source": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime/narrative-static/char-torren-01.png",
-        "resourcePath": "res://assets/runtime/narrative-static/char-torren-01.png",
-        "sha256": "2aa08e004be8dc9fab3c2da104c3fa53af39c77b891a831d4f854efdc35a9954"
-      }
+      "portraitId": "torren"
     }
   },
   "icons": {

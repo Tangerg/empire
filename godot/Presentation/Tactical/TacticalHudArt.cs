@@ -15,6 +15,7 @@ public sealed class TacticalHudArtDocument
     public string[] SourceIconKeys { get; init; } = Array.Empty<string>();
     public Dictionary<string, NarrativeArt> Icons { get; init; } = new(StringComparer.Ordinal);
 }
+[System.Text.Json.Serialization.JsonUnmappedMemberHandling(System.Text.Json.Serialization.JsonUnmappedMemberHandling.Disallow)]
 public sealed class TacticalPortraitBinding
 {
     public string UnitType { get; init; } = "";
@@ -22,17 +23,19 @@ public sealed class TacticalPortraitBinding
     {
         get; init;
     }
-    public NarrativeArt? Card
+    [System.Text.Json.Serialization.JsonRequired]
+    public string? PortraitId
     {
         get; init;
     }
 }
 
-/// <summary>Source provider's explicit card-versus-frame choice, never a sprite fallback for a missing card.</summary>
+/// <summary>Explicit portrait ID or null for the unit idle frame; unknown IDs never fall back.</summary>
 public sealed class TacticalHudArt
 {
     private readonly TacticalHudArtDocument document;
     private readonly AssetCatalog assets;
+    private readonly PortraitCatalog portraits;
     private readonly Dictionary<string, AtlasTexture> cards = new(StringComparer.Ordinal);
     public int OwnedTextureCount => cards.Count;
     public void ReleaseOwnedTextures()
@@ -41,14 +44,18 @@ public sealed class TacticalHudArt
             texture.Dispose();
         cards.Clear();
     }
-    public TacticalHudArt(AssetCatalog assets, TacticalHudArtDocument document)
+    public TacticalHudArt(AssetCatalog assets, PortraitCatalog portraits, TacticalHudArtDocument document)
     {
-        if (document.Schema != 1)
+        if (document.Schema != 2)
             throw new InvalidOperationException("Unknown tactical HUD art schema.");
+        foreach (var binding in document.Portraits.Values)
+            if (binding.PortraitId is { } id)
+                portraits.Resolve(id);
+        this.portraits = portraits;
         this.document = document;
         this.assets = assets;
     }
-    public static TacticalHudArt Load(AssetCatalog assets) => new(assets, PresentationJson.Load<TacticalHudArtDocument>("res://data/tactical-hud-art.json"));
+    public static TacticalHudArt Load(AssetCatalog assets, PortraitCatalog portraits) => new(assets, portraits, PresentationJson.Load<TacticalHudArtDocument>("res://data/tactical-hud-art.json"));
     private static Texture2D Image(NarrativeArt image) => image.ResourcePath is { } path && ResourceLoader.Exists(path, "Texture2D")
         ? ResourceLoader.Load<Texture2D>(path) : throw new MissingArtResourceException(image.Source, "Missing source HUD art: " + image.Source);
     public Texture2D? Icon(string key)
@@ -71,11 +78,11 @@ public sealed class TacticalHudArt
             throw new MissingArtResourceException(key, "Missing source HUD portrait binding: " + key);
         if (binding.UnitType != portrait.UnitType)
             throw new InvalidOperationException("HUD actor portrait type mismatch: " + key);
-        if (binding.Card is { } card)
+        if (binding.PortraitId is { } portraitId)
         {
             if (cards.TryGetValue(key, out var cached))
                 return cached;
-            var texture = Image(card);
+            var texture = Image(portraits.Resolve(portraitId));
             // The source draws its 112-square card at x=-8 in a 96x112 clipped plate.
             var cropped = new AtlasTexture { Atlas = texture, Region = new Rect2(texture.GetWidth() / 14f, 0, texture.GetWidth() * 6f / 7f, texture.GetHeight()) };
             cards.Add(key, cropped);
