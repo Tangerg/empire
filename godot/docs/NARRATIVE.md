@@ -64,7 +64,7 @@ Negative controls change only temporary expected prose, an expected speaker name
 
 The completed narrative-only checkpoint passed its native widget/projection checks and wrong-navigation-key negative control. That checkpoint covered 452 catalog messages and 415 content references, before the subsequent menu/staging/refusal additions; it is not merged-game acceptance. Parser and authoring checks reject malformed, duplicate, missing, empty, fuzzy and obsolete data. Two independent in-memory catalogs change actual native widget wording without changing authoring identities or state. These test catalogs are not additional shipped languages.
 
-Not claimed: complete built-in-content/battle/outcome i18n; a victorious campaign playthrough; browser CSS effects or pixel-identical typography; physical native GUI acceptance; a newly exported standalone game. The separate foundation packaging check established native PO loading/formatting in a real exported executable; product release validation remains the integration owner's gate.
+Not claimed: complete built-in-content/battle/outcome i18n; a victorious campaign playthrough; browser CSS effects or pixel-identical typography; full-application physical pointer/touch acceptance; a newly exported standalone game. The separate foundation packaging check established native PO loading/formatting in a real exported executable; product release validation remains the integration owner's gate.
 
 ## Native portrait ownership and revisions
 
@@ -98,7 +98,20 @@ their references when replaced or detached; they do not dispose shared resources
 
 Laiya and Roderick were inspected at roster/dialogue sizes in the earlier
 isolated application review. Mirelle passed native StoryScreen and TacticalHud
-visual review on 2026-10-23, including light/dark backgrounds. The five remaining
-candidates (Cain, Bran, Tasha, Torren and red juvenile dragon Ivra v2) and the
-uniform whole-image HUD policy still require current in-scene visual review.
-Static, headless and actual GUI acceptance must be reported separately.
+visual review on 2026-10-23. On the same date, a temporary native GUI fixture
+mounted the actual production controls at their native portrait sizes: all eight
+named HUD portraits plus the generic idle frame were reviewed on controlled
+light/dark backgrounds. Cain, Bran, Tasha and red juvenile dragon Ivra v2 also
+passed light/dark review in the actual StoryScreen with authored speaker beats.
+No baked rectangle, conspicuous fringe or clipped extremity was visible; Ivra's
+wings, curled tail and claws remained intact. Torren has no current authored
+story-speaker binding, so its acceptance covers the HUD only. The fixture was
+removed after review; its background overrides are not a shipped theme or a
+text-contrast acceptance test. No portrait pixels, offsets or padding were
+changed to pass these checks.
+
+Static checks and the full `verify-native.sh` headless aggregate also passed,
+including whole-texture identity, shared-resource lifetime and generic-atlas HUD
+regressions. A temporary restoration of the old side crop failed the regression
+as expected. These automated results, the controlled native GUI review and a
+complete campaign/export acceptance are distinct; the last is not claimed here.
