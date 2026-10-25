@@ -225,17 +225,30 @@ public partial class BlackFlagCampChecks : Node
         projected.Choose("split-the-force");
         projected.BeginBattle();
         var projectedOpening = projected.Battle!.Snapshot();
-        var reprojectedCamp = Campaign(levels);
-        reprojectedCamp.Load(retiredCampSave);
-        Require(reprojectedCamp.AtCamp && EcmaJson.DeepEquals(reprojectedCamp.Snapshot(), retired.Snapshot())
-            && Integer(reprojectedCamp.Battle!.Snapshot()["map"]!, "width") == 50
-            && Integer(reprojectedCamp.Battle.Snapshot()["map"]!, "height") == 30
-            && EcmaJson.DeepEquals(reprojectedCamp.RequestSnapshot(), projected.RequestSnapshot())
-            && EcmaJson.DeepEquals(reprojectedCamp.Battle.Snapshot(), projectedOpening),
-            "A snapshot-free historical camp save must reproject current C04, not admit the retired battle as compatible.");
-        reprojectedCamp.BeginBattle();
-        Require(!reprojectedCamp.AtCamp && EcmaJson.DeepEquals(reprojectedCamp.Battle!.Snapshot(), projectedOpening),
-            "Re-entering a restored historical camp must start the current C04 opening.");
+        var projectedBefore = EcmaJson.Stringify(projected.Snapshot());
+        var projectedRequest = EcmaJson.Stringify(projected.RequestSnapshot());
+        var projectedSession = projected.Battle;
+        var retiredCampBytes = EcmaJson.Stringify(retiredCampSave);
+        rejected = false;
+        try
+        {
+            projected.Load(retiredCampSave);
+        }
+        catch (StoredDocumentException error)
+        {
+            Require(error.Message == "Saved battle does not match the campaign level.",
+                "A historical camp carries its immutable initialization source even without played battle state.");
+            rejected = true;
+        }
+        Require(rejected && !projected.AtCamp && ReferenceEquals(projected.Battle, projectedSession)
+            && EcmaJson.Stringify(projected.Snapshot()) == projectedBefore
+            && EcmaJson.Stringify(projected.RequestSnapshot()) == projectedRequest
+            && EcmaJson.DeepEquals(projected.Battle!.Snapshot(), projectedOpening)
+            && EcmaJson.Stringify(retiredCampSave) == retiredCampBytes,
+            "Schema4 refuses historical camp source changes atomically instead of silently reprojecting them.");
+        restoredCamp.BeginBattle();
+        Require(!restoredCamp.AtCamp && EcmaJson.DeepEquals(restoredCamp.Battle!.Snapshot(), opening),
+            "Re-entering a restored current-source camp starts its unchanged opening.");
     }
 
     private void CheckRegisteredPainting(BattleEngine engine, JsonObject level, JsonObject state)

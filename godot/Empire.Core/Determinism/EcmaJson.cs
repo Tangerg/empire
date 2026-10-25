@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -29,6 +30,9 @@ public static class EcmaJson
             throw new JsonException("Only one top-level JSON value is permitted.");
         return value;
     }
+
+    /// <summary>Identity of the exact canonical ECMAScript JSON source, not a mutable-state admission policy.</summary>
+    public static string Sha256(JsonNode? value) => Convert.ToHexString(SHA256.HashData(StrictUtf8.GetBytes(Stringify(value)))).ToLowerInvariant();
 
     public static string Stringify(JsonNode? value)
     {

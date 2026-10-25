@@ -12,16 +12,16 @@ internal enum CampaignLocation
 }
 
 internal sealed record ApplicationSaveDocument(JsonObject CampaignState, CampaignLocation Location,
-    JsonObject? Battle, JsonArray Events)
+    JsonObject? Battle, JsonArray Events, string? BattleSourceSha256)
 {
-    internal const int Schema = 3;
+    internal const int Schema = 4;
 
     internal static ApplicationSaveDocument Read(JsonNode? input, JsonObject definition)
     {
         if (input is not JsonObject document || document["schema"] is not JsonValue schema ||
             !schema.TryGetValue<int>(out var version) || version != Schema)
             throw new StoredDocumentException("Unsupported application save schema; only the current native format is accepted.");
-        var fields = new[] { "schema", "campaign", "mode", "battle", "events" };
+        var fields = new[] { "schema", "campaign", "mode", "battle", "events", "battleSourceSha256" };
         if (document.Count != fields.Length || fields.Any(field => !document.ContainsKey(field)))
             throw new StoredDocumentException("Application save fields do not match the current native format.");
         if (document["mode"] is not JsonValue mode || !mode.TryGetValue<string>(out var name))
@@ -33,6 +33,15 @@ internal sealed record ApplicationSaveDocument(JsonObject CampaignState, Campaig
             "camp" => CampaignLocation.Camp,
             _ => throw new StoredDocumentException("Application save mode is unknown."),
         };
+        string? sourceIdentity = null;
+        if (location == CampaignLocation.Campaign)
+        {
+            if (document["battleSourceSha256"] is not null)
+                throw new StoredDocumentException("Campaign-only saves cannot retain a battle source identity.");
+        }
+        else if (document["battleSourceSha256"] is not JsonValue source || !source.TryGetValue<string>(out sourceIdentity)
+            || sourceIdentity.Length != 64 || sourceIdentity.Any(character => character is not (>= '0' and <= '9') and not (>= 'a' and <= 'f')))
+            throw new StoredDocumentException("Saved battle initialization source identity is missing or invalid.");
         var state = CampaignSave.Load(document["campaign"], definition)["state"]!.AsObject();
         var pending = state["pendingBattle"] is not null;
         if (pending != (location != CampaignLocation.Campaign) ||
@@ -85,7 +94,7 @@ internal sealed record ApplicationSaveDocument(JsonObject CampaignState, Campaig
         else if (document["battle"] is not null || events.Count != 0)
             throw new StoredDocumentException("Campaign and camp saves cannot retain played battle state or events.");
         return new((JsonObject)state.DeepClone(), location, document["battle"]?.DeepClone() as JsonObject,
-            (JsonArray)events.DeepClone());
+            (JsonArray)events.DeepClone(), sourceIdentity);
     }
     private static void ValidateCreationEvent(JsonObject value, string kind)
     {

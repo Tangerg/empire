@@ -34,8 +34,9 @@ public partial class LuojiaChecks : Node
             CheckMovement(engine, level, audit);
             CheckSites(engine, level, audit);
             CheckObjectives(engine, level);
-            CheckOpeningCaptureRoutes(engine, level);
             CheckSaveAdmission(engine, levels);
+            CheckSourceBinding(engine, levels);
+            CheckOpeningCaptureRoutes(engine, level);
             CheckPainting(engine, level, audit);
             ExportGuiFixtures(engine, levels);
             GD.Print($"Native Luojia passed {assertions} assertions: sixteen sites, authored rendering/picking, route geometry, sequential control objectives, deadline and strict save admission. Detached probes are not normal-AI balance acceptance.");
@@ -152,6 +153,13 @@ public partial class LuojiaChecks : Node
             var cells = polygon["blockedCells"]!.AsArray().Select(cell => Cell(cell!)).ToArray();
             Require(cells.Length > 0 && cells.All(cell => !battlefield.Cell(cell).Admits("foot")), $"All of {Text(polygon, "id")}'s reviewed physical footprint blocks movement.");
         }
+        Require(!battlefield.Cell(new(56, 23)).Admits("foot"), "The natural T3 closed-planter regression must remain blocked, not merely have its spawn relocated.");
+        foreach (var cell in new Coord[] { new(28, 51), new(29, 51), new(30, 51), new(30, 52), new(31, 51), new(31, 52), new(32, 51),
+            new(70, 51), new(71, 51), new(72, 51), new(73, 50), new(74, 49), new(74, 50), new(75, 49), new(76, 49) })
+            Require(battlefield.Cell(cell).Admits("foot"), "Reviewed council and supply courtyard paving cannot be silently excluded as projection pockets.");
+        var nook = new Coord(35, 47);
+        Require(battlefield.Cell(nook).Admits("foot") && engine.Space.Board(state).Neighbours(nook).All(cell => !battlefield.Cell(cell).Admits("foot")),
+            "The tiny council furniture nook stays truthful paving with no square4 whole-cell entrance, not invented outside scenery.");
         var empty = state.DeepClone().AsObject();
         empty["units"] = new JsonArray();
         var probe = Unit(state, "campaign-torren").DeepClone().AsObject();
@@ -289,7 +297,7 @@ public partial class LuojiaChecks : Node
     {
         var battle = engine.CreateBattle(level);
         var width = Integer(level, "width");
-        var assignments = new[] { (Key: "campaign-torren", Zone: "granary"), (Key: "militia-2", Zone: "militia-barracks") };
+        var assignments = new[] { (Key: "north-militia", Zone: "granary"), (Key: "militia-2", Zone: "militia-barracks") };
         var zones = level["scenario"]!["zones"]!.AsArray().OfType<JsonObject>().ToDictionary(zone => Text(zone, "id"), zone => TacticalQueries.Position(zone["cells"]![0]!.AsObject()));
         var orders = 0;
         while (Text(battle.Snapshot(), "phase") == "playing" && Integer(battle.Snapshot(), "turn") <= 15)
@@ -410,6 +418,111 @@ public partial class LuojiaChecks : Node
         camp.Load(campSave);
         Require(Text(campSave, "mode") == "camp" && campSave["battle"] is null && campSave["events"]!.AsArray().Count == 0
             && camp.AtCamp && EcmaJson.DeepEquals(camp.Battle!.Snapshot(), opening), "A current camp save must reproject the current opening without played state.");
+    }
+
+    private void CheckSourceBinding(BattleEngine engine, JsonArray levels)
+    {
+        var definition = PresentationJson.Load<JsonObject>("res://data/grayflag-campaign.json");
+        var detached = definition.DeepClone().AsObject();
+        detached["start"] = "battle-07";
+        var presentation = BattleTextChecks.Session(engine, GodotTextCatalog.LoadSimplifiedChinese());
+        GrayFlagCampaign Campaign(JsonArray source) => new(new(engine, presentation), detached, source);
+        var current = Campaign(levels);
+        current.BeginBattle();
+        var live = current.Battle!;
+        var actor = Unit(live.Snapshot(), "campaign-torren");
+        Require(live.Dispatch(EcmaJson.ToElement(WaitCommand(actor, OpeningPath(engine, live.Snapshot(), actor)!)), live.Revision).Accepted,
+            "Source rejection protects a real played session.");
+        var identity = Text(current.Save(), "battleSourceSha256");
+        Require(identity == EcmaJson.Sha256(current.RequestSnapshot()!["level"]), "Pending identity binds the composed initialization request, not live HP or terrain.");
+        void Reject(JsonObject input)
+        {
+            var campaignBefore = EcmaJson.Stringify(current.Snapshot());
+            var requestBefore = EcmaJson.Stringify(current.RequestSnapshot());
+            var stateBefore = EcmaJson.Stringify(live.Snapshot());
+            var eventsBefore = Events(live);
+            var revisionBefore = live.Revision;
+            var bytesBefore = EcmaJson.Stringify(input);
+            var rejected = false;
+            try
+            {
+                current.Load(input);
+            }
+            catch (StoredDocumentException) { rejected = true; }
+            Require(rejected && ReferenceEquals(current.Battle, live) && current.HasPendingBattle && !current.AtCamp
+                && EcmaJson.Stringify(current.Snapshot()) == campaignBefore && EcmaJson.Stringify(current.RequestSnapshot()) == requestBefore
+                && EcmaJson.Stringify(live.Snapshot()) == stateBefore && Events(live) == eventsBefore && live.Revision == revisionBefore
+                && EcmaJson.Stringify(input) == bytesBefore, "Rejected source/schema must leave campaign, request, battle, events, revision and input unchanged.");
+        }
+        var oldLevel = PresentationJson.Load<JsonObject>("res://tests/native/luojia-pre-planter-level.json");
+        var oldLevels = new JsonArray(levels.OfType<JsonObject>().Select(level => (JsonNode)(Text(level, "id") == LevelId ? oldLevel : level).DeepClone()).ToArray());
+        var old = Campaign(oldLevels);
+        old.BeginBattle();
+        var oldSession = old.Battle!;
+        var oldState = oldSession.Snapshot();
+        var bran = Unit(oldState, "campaign-bran");
+        var invalidCell = new Coord(56, 23);
+        var path = engine.Space.PathTo(engine.Space.ComputeMoveField(oldState, bran), oldState, invalidCell);
+        Require(path is { Count: > 1 } && oldSession.Dispatch(EcmaJson.ToElement(WaitCommand(bran, path)), oldSession.Revision).Accepted,
+            "True published pre-planter source permits the observed four-cell Bran move through production rules.");
+        var savedOld = old.Save();
+        var independentlyValid = engine.LoadBattle(savedOld["battle"]);
+        Require(TacticalQueries.Position(Unit(independentlyValid, "campaign-bran")) == invalidCell
+            && !new MovementRules(new(engine.Catalog, engine.Grids)).Battlefield(live.Snapshot()).Cell(invalidCell).Admits("foot"),
+            "Same-size independently valid old save stands on a now-closed real planter, not a fabricated hash-only fixture.");
+        Reject(savedOld);
+        foreach (var bad in new[] { "", "not-a-hash", new string('0', 64), new string('A', 64) })
+        {
+            var malformed = current.Save();
+            malformed["battleSourceSha256"] = bad;
+            Reject(malformed);
+        }
+        var missing = current.Save();
+        missing.Remove("battleSourceSha256");
+        Reject(missing);
+        var obsolete = current.Save();
+        obsolete["schema"] = 3;
+        obsolete.Remove("battleSourceSha256");
+        Reject(obsolete);
+        var campaignOnly = Campaign(levels).Save();
+        Require(campaignOnly["battleSourceSha256"] is null, "Campaign-only current envelopes do not invent a pending battle identity.");
+        campaignOnly["schema"] = 3;
+        campaignOnly.Remove("battleSourceSha256");
+        Reject(campaignOnly);
+        current.ExitBattle();
+        Require(Text(current.Save(), "battleSourceSha256") == identity, "Camp reset retains its initialization identity.");
+        current.RestartBattle();
+        Require(Text(current.Save(), "battleSourceSha256") == identity, "Battle reset cannot relabel its source from live terrain.");
+
+        // A legitimate scenario mutation proves source identity is not a pristine/live-map comparison.
+        var changingLevels = levels.DeepClone().AsArray();
+        var changingLevel = changingLevels.OfType<JsonObject>().Single(level => Text(level, "id") == LevelId);
+        changingLevel["scenario"]!["zones"]!.AsArray().Add(new JsonObject { ["id"] = "source-test-ground", ["cells"] = new JsonArray(new JsonObject { ["x"] = 48, ["y"] = 35 }) });
+        foreach (var player in changingLevel["players"]!.AsArray().OfType<JsonObject>())
+            player["controller"] = "human";
+        changingLevel["scenario"]!["triggers"] = new JsonArray();
+        changingLevel["scenario"]!["triggers"]!.AsArray().Add(new JsonObject
+        {
+            ["id"] = "source-test-terrain",
+            ["timing"] = "turnStart",
+            ["condition"] = new JsonObject { ["type"] = "turnAtLeast", ["turn"] = 2 },
+            ["effects"] = new JsonArray(new JsonObject { ["type"] = "replaceTerrain", ["zone"] = "source-test-ground", ["terrain"] = "plain" })
+        });
+        var changing = Campaign(changingLevels);
+        changing.BeginBattle();
+        var changingIdentity = Text(changing.Save(), "battleSourceSha256");
+        var pristineMap = EcmaJson.Stringify(changing.Battle!.Snapshot()["map"]);
+        while (Integer(changing.Battle!.Snapshot(), "turn") < 2)
+            Require(changing.Battle.Dispatch(EcmaJson.ToElement(new JsonObject { ["kind"] = "endTurn" }), changing.Battle.Revision).Accepted, "Scenario mutation is reached by real phase commands.");
+        var changedSave = changing.Save();
+        Require(Events(changing.Battle!).Contains("terrainChanged", StringComparison.Ordinal)
+            && EcmaJson.Stringify(changing.Battle!.Snapshot()["map"]) != pristineMap
+            && Text(changedSave, "battleSourceSha256") == changingIdentity, "Legal terrain mutation retains its initial source identity.");
+        var restored = Campaign(changingLevels);
+        restored.Load(changedSave);
+        Require(EcmaJson.DeepEquals(restored.Battle!.Snapshot(), changing.Battle!.Snapshot()) && Events(restored.Battle!) == Events(changing.Battle!),
+            "Current source accepts its legitimate dynamic terrain and event history exactly.");
+        GD.Print("C07 source-binding checks passed: same-size published geometry rejection, immutable request identity, schema4 break and legal terrain-mutation round trip.");
     }
 
     private void ExportGuiFixtures(BattleEngine engine, JsonArray levels)

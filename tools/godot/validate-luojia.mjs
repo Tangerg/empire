@@ -77,9 +77,12 @@ function validate({ level, retired, scene, painted, audit, packs }) {
     const [x, y] = queue[i];
     for (const n of [[x-1,y],[x+1,y],[x,y-1],[x,y+1]]) if (passable.has(key(n)) && !reached.has(key(n))) { reached.add(key(n)); queue.push(n); }
   }
-  assert.equal(reached.size, passable.size, 'one connected street network');
+  assert.deepEqual(audit.isolatedGroundCells, [[35, 47]], 'only the pixel-reviewed council furniture nook is isolated ground');
+  assert.deepEqual(new Set([...passable].filter(cell => !reached.has(cell))), keys(audit.isolatedGroundCells),
+    'all other genuine ground belongs to the main street network');
+  for (const site of audit.sites) assert(reached.has(key(site.cell)) && reached.has(key(site.approach)), 'sites and approaches belong to main streets');
   assert.equal(keys(level.units.map(position)).size, 23);
-  for (const unit of level.units) assert(passable.has(key(position(unit))), `actual ground for ${unit.key}`);
+  for (const unit of level.units) assert(reached.has(key(position(unit))), `actual main-network ground for ${unit.key}`);
   for (const zone of level.scenario.zones) {
     assert.equal(zone.cells.length, 1);
     const site = audit.sites.find(s => s.id === zone.id);
@@ -97,7 +100,7 @@ function validate({ level, retired, scene, painted, audit, packs }) {
       && Math.abs(oy + (cell[1] + 0.5) * dy - pixel[1]) <= 1.5 * dy;
   };
   for (const ingress of audit.ingressPoints) {
-    assert(passable.has(key(ingress.cell)), `${ingress.id} visibly open entry must stay open`);
+    assert(reached.has(key(ingress.cell)), `${ingress.id} visibly open entry must stay open`);
     assert(nearPixel(ingress.cell, ingress.pixel), `${ingress.id} entry remains at its reviewed visible opening`);
     const toCenter = audit.routes.find(route => route.id === ingress.id);
     assert(toCenter && key(toCenter.cells[0]) === key(ingress.cell)
@@ -111,7 +114,7 @@ function validate({ level, retired, scene, painted, audit, packs }) {
   for (const route of audit.routes) {
     assert(route.cells.length > 1);
     for (const [i, cell] of route.cells.entries()) {
-      assert(passable.has(key(cell)), `${route.id} real street`);
+      assert(reached.has(key(cell)), `${route.id} real main-network street`);
       if (i) assert.equal(Math.abs(cell[0] - route.cells[i-1][0]) + Math.abs(cell[1] - route.cells[i-1][1]), 1);
     }
   }
@@ -146,6 +149,8 @@ if (process.argv.includes('--self-test')) {
   const setCell = (d, [x,y], symbol) => { const row=d.level.terrain[y]; d.level.terrain[y]=row.slice(0,x)+symbol+row.slice(x+1); };
   const mutations = [
     ['foundation hole', d => setCell(d,d.audit.blockedPolygons[0].blockedCells[0],'p'), /physical foundation/],
+    ['erase real nook paving', d => { setCell(d, [35,47], '_'); d.audit.outsideCells.push([35,47]); }, /all other genuine ground/],
+    ['invent isolated street', d => d.audit.isolatedGroundCells.push([40,40]), /only the pixel-reviewed/],
     ['shorter deadline', d => d.level.rules.turnLimit=10, /nonspatial C07/],
     ['changed objective', d => d.level.players[0].objectives[0].objective.type='any', /nonspatial C07/],
     ['extra site', d => setCell(d,d.audit.openingFocus,'v'), /site types and counts/],
@@ -171,4 +176,4 @@ if (process.argv.includes('--self-test')) {
   for (const [name, mutate, pattern] of mutations) { const d=structuredClone(data); mutate(d); assert.throws(()=>validate(d),pattern,name); }
   console.log(`PASS: ${mutations.length} semantic negative controls`);
 }
-console.log(`PASS: C07 ${data.level.width}x${data.level.height}; 16 canonical sites, ${counts.walkable} connected foot cells, ${counts.walls} reviewed solid cells. Native movement and normal-AI/GUI gates remain separate.`);
+console.log(`PASS: C07 ${data.level.width}x${data.level.height}; 16 canonical sites, ${counts.walkable} foot cells (one reviewed isolated nook), ${counts.walls} reviewed solid cells. Native movement and normal-AI/GUI gates remain separate.`);

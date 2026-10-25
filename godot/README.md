@@ -76,8 +76,10 @@ implementations and runtime checks. C01–C07 now have runtime-ready authored
 scenes; C08–C16 do not. Current C06 opening GUI, interaction and route-feasibility
 evidence is recorded in
 [White River](docs/WHITE-RIVER.md), without claiming full normal-AI escort balance.
-C07 city geometry, interaction, scale and normal-AI opening/save-load evidence is
-recorded in [Luojia](docs/LUOJIA.md); full objective-battle balance remains open.
+C07 corrected city geometry, interaction, scale and source-bound save evidence
+is recorded in [Luojia](docs/LUOJIA.md); full corrected normal-AI objective-battle
+balance remains open. Application schema 4 deliberately rejects all older
+application wrappers, including campaign-only saves; see [Compatibility](docs/COMPATIBILITY.md).
 Other story themes remain unported, and older exported packages do not represent
 the latest source. Extension and localization contracts are documented in the native
 capability map and quality audit, not inferred from screenshots.

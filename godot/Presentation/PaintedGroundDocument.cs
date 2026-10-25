@@ -1,7 +1,5 @@
 #nullable enable
 using System;
-using System.Security.Cryptography;
-using System.Text;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using Empire.Core.Determinism;
@@ -54,7 +52,7 @@ public sealed class PaintedGroundDocument
     {
         if (EcmaJson.ReadString(level["id"]) != LevelId)
             throw new InvalidOperationException("Painted ground and canonical level identities differ.");
-        var sourceHash = Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(EcmaJson.Stringify(level)))).ToLowerInvariant();
+        var sourceHash = EcmaJson.Sha256(level);
         if (sourceHash != LevelSourceSha256)
             throw new InvalidOperationException("Painted scene registration does not match its reviewed canonical level source.");
     }

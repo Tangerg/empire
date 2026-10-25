@@ -21,7 +21,7 @@ public sealed class GrayFlagCampaign
     private readonly IReadOnlyDictionary<string, JsonObject> levels;
     private CampaignRuntime runtime;
     private PendingBattle? pending;
-    private sealed record PendingBattle(JsonObject Request, GrayFlagSession Session, bool AtCamp);
+    private sealed record PendingBattle(JsonObject Request, GrayFlagSession Session, bool AtCamp, string SourceIdentity);
 
     public bool AtCamp => pending?.AtCamp == true;
     public bool HasPendingBattle => pending is not null;
@@ -61,7 +61,7 @@ public sealed class GrayFlagCampaign
         }
         var nextRuntime = new CampaignRuntime(campaignRules, definition, runtime.Snapshot());
         var request = GrayFlagCampaignPolicy.ApplyBattleContext(nextRuntime.BeginBattle(bridge), nextRuntime.Snapshot());
-        var next = new PendingBattle(request, new GrayFlagSession(new(engine, presentation, request["rosterBindings"]!.AsArray()), request["level"]!.AsObject()), false);
+        var next = new PendingBattle(request, new GrayFlagSession(new(engine, presentation, request["rosterBindings"]!.AsArray()), request["level"]!.AsObject()), false, EcmaJson.Sha256(request["level"]));
         runtime = nextRuntime;
         pending = next;
     }
@@ -96,7 +96,7 @@ public sealed class GrayFlagCampaign
     private void ResetBattle(bool atCamp)
     {
         var current = pending ?? throw new CampaignActionException("No battle to restart.");
-        pending = new(current.Request, new GrayFlagSession(new(engine, presentation, current.Request["rosterBindings"]!.AsArray()), current.Request["level"]!.AsObject()), atCamp);
+        pending = new(current.Request, new GrayFlagSession(new(engine, presentation, current.Request["rosterBindings"]!.AsArray()), current.Request["level"]!.AsObject()), atCamp, current.SourceIdentity);
     }
 
     private PendingBattle RequireConcludedBattle()
@@ -112,6 +112,7 @@ public sealed class GrayFlagCampaign
         ["campaign"] = CampaignSave.Create(definition, runtime.Snapshot()),
         ["mode"] = pending is null ? "campaign" : AtCamp ? "camp" : "battle",
         ["battle"] = pending is { AtCamp: false } ? pending.Session.Save() : null,
+        ["battleSourceSha256"] = pending?.SourceIdentity,
         ["events"] = pending is { AtCamp: false }
             ? new JsonArray(pending.Session.Events.Select(value => (JsonNode)value.DeepClone()).ToArray()) : new JsonArray(),
     };
@@ -137,6 +138,9 @@ public sealed class GrayFlagCampaign
                 throw new StoredDocumentException("Saved campaign roster references unknown content.", error);
             }
             request = GrayFlagCampaignPolicy.ApplyBattleContext(request, nextRuntime.Snapshot());
+            var sourceIdentity = EcmaJson.Sha256(request["level"]);
+            if (saved.BattleSourceSha256 != sourceIdentity)
+                throw new StoredDocumentException("Saved battle does not match the campaign level.");
             ValidateSavedSignals(request["level"]!.AsObject(), saved.Events);
             var opening = new GrayFlagSession(new(engine, presentation, request["rosterBindings"]!.AsArray()), request["level"]!.AsObject());
             var session = saved.Location == CampaignLocation.Camp
@@ -147,7 +151,7 @@ public sealed class GrayFlagCampaign
                 !EcmaJson.DeepEquals(state["map"]?["width"], request["level"]!["width"]) ||
                 !EcmaJson.DeepEquals(state["map"]?["height"], request["level"]!["height"]))
                 throw new StoredDocumentException("Saved battle does not match the campaign level.");
-            next = new(request, session, saved.Location == CampaignLocation.Camp);
+            next = new(request, session, saved.Location == CampaignLocation.Camp, sourceIdentity);
         }
         runtime = nextRuntime;
         pending = next;
