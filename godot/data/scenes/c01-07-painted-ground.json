@@ -1,0 +1,4826 @@
+{
+  "levelId": "c01-07",
+  "levelSourceSha256": "09ed57a38c7ef1c58ad70ea43956f6f074a8c550f374c33c7d98aaa1c69430d0",
+  "resourcePath": "res://assets/native/scenes/luojia.png",
+  "pixelSize": [
+    1536,
+    1024
+  ],
+  "originPixels": [
+    0,
+    0
+  ],
+  "cellXPixels": [
+    16,
+    0
+  ],
+  "cellYPixels": [
+    0,
+    16
+  ],
+  "worldScale": 1.0,
+  "occluders": [
+    {
+      "id": "granary",
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              401,
+              77
+            ],
+            [
+              460,
+              30
+            ],
+            [
+              625,
+              99
+            ],
+            [
+              570,
+              134
+            ]
+          ],
+          "groundFrontPixels": [
+            535,
+            215
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            33,
+            13
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              412,
+              105
+            ],
+            [
+              570,
+              133
+            ],
+            [
+              603,
+              111
+            ],
+            [
+              603,
+              177
+            ],
+            [
+              566,
+              200
+            ],
+            [
+              529,
+              215
+            ],
+            [
+              412,
+              169
+            ]
+          ],
+          "groundFrontPixels": [
+            535,
+            215
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                552,
+                148
+              ],
+              [
+                570,
+                140
+              ],
+              [
+                585,
+                144
+              ],
+              [
+                585,
+                172
+              ],
+              [
+                568,
+                183
+              ],
+              [
+                552,
+                175
+              ]
+            ]
+          },
+          "contactCell": [
+            33,
+            13
+          ]
+        }
+      ],
+      "selectionCell": [
+        35,
+        14
+      ]
+    },
+    {
+      "id": "militia-barracks",
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              902,
+              103
+            ],
+            [
+              1020,
+              44
+            ],
+            [
+              1174,
+              94
+            ],
+            [
+              1057,
+              147
+            ]
+          ],
+          "groundFrontPixels": [
+            1055,
+            206
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            65,
+            12
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              937,
+              104
+            ],
+            [
+              1057,
+              147
+            ],
+            [
+              1163,
+              105
+            ],
+            [
+              1163,
+              166
+            ],
+            [
+              1055,
+              206
+            ],
+            [
+              937,
+              166
+            ]
+          ],
+          "groundFrontPixels": [
+            1055,
+            206
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1031,
+                158
+              ],
+              [
+                1046,
+                150
+              ],
+              [
+                1056,
+                157
+              ],
+              [
+                1056,
+                182
+              ],
+              [
+                1046,
+                190
+              ],
+              [
+                1031,
+                181
+              ]
+            ]
+          },
+          "contactCell": [
+            65,
+            12
+          ]
+        }
+      ],
+      "selectionCell": [
+        65,
+        14
+      ]
+    },
+    {
+      "id": "council-hall",
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              237,
+              648
+            ],
+            [
+              350,
+              588
+            ],
+            [
+              474,
+              649
+            ],
+            [
+              362,
+              699
+            ]
+          ],
+          "groundFrontPixels": [
+            357,
+            765
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            22,
+            47
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              253,
+              661
+            ],
+            [
+              362,
+              700
+            ],
+            [
+              458,
+              663
+            ],
+            [
+              458,
+              723
+            ],
+            [
+              358,
+              765
+            ],
+            [
+              253,
+              722
+            ]
+          ],
+          "groundFrontPixels": [
+            357,
+            765
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                371,
+                707
+              ],
+              [
+                390,
+                697
+              ],
+              [
+                407,
+                704
+              ],
+              [
+                407,
+                737
+              ],
+              [
+                390,
+                748
+              ],
+              [
+                371,
+                739
+              ]
+            ]
+          },
+          "contactCell": [
+            22,
+            47
+          ]
+        }
+      ],
+      "selectionCell": [
+        21,
+        48
+      ]
+    },
+    {
+      "id": "southern-supply",
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              1137,
+              648
+            ],
+            [
+              1200,
+              607
+            ],
+            [
+              1326,
+              678
+            ],
+            [
+              1265,
+              720
+            ]
+          ],
+          "groundFrontPixels": [
+            1259,
+            781
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            78,
+            48
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              1157,
+              667
+            ],
+            [
+              1265,
+              720
+            ],
+            [
+              1314,
+              691
+            ],
+            [
+              1314,
+              744
+            ],
+            [
+              1260,
+              781
+            ],
+            [
+              1157,
+              741
+            ]
+          ],
+          "groundFrontPixels": [
+            1259,
+            781
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1239,
+                728
+              ],
+              [
+                1258,
+                717
+              ],
+              [
+                1278,
+                729
+              ],
+              [
+                1278,
+                762
+              ],
+              [
+                1259,
+                773
+              ],
+              [
+                1239,
+                759
+              ]
+            ]
+          },
+          "contactCell": [
+            78,
+            48
+          ]
+        }
+      ],
+      "selectionCell": [
+        78,
+        50
+      ]
+    },
+    {
+      "id": "west-north-house",
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              48,
+              253
+            ],
+            [
+              108,
+              214
+            ],
+            [
+              179,
+              251
+            ],
+            [
+              117,
+              284
+            ]
+          ],
+          "groundFrontPixels": [
+            111,
+            343
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            6,
+            21
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              60,
+              268
+            ],
+            [
+              117,
+              285
+            ],
+            [
+              172,
+              265
+            ],
+            [
+              172,
+              315
+            ],
+            [
+              110,
+              343
+            ],
+            [
+              60,
+              316
+            ]
+          ],
+          "groundFrontPixels": [
+            111,
+            343
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                101,
+                302
+              ],
+              [
+                114,
+                295
+              ],
+              [
+                125,
+                303
+              ],
+              [
+                125,
+                328
+              ],
+              [
+                112,
+                336
+              ],
+              [
+                101,
+                330
+              ]
+            ]
+          },
+          "contactCell": [
+            6,
+            21
+          ]
+        }
+      ],
+      "selectionCell": [
+        6,
+        23
+      ]
+    },
+    {
+      "id": "west-middle-house",
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              214,
+              305
+            ],
+            [
+              275,
+              266
+            ],
+            [
+              334,
+              304
+            ],
+            [
+              280,
+              334
+            ]
+          ],
+          "groundFrontPixels": [
+            278,
+            378
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            17,
+            23
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              231,
+              316
+            ],
+            [
+              280,
+              334
+            ],
+            [
+              326,
+              314
+            ],
+            [
+              326,
+              353
+            ],
+            [
+              279,
+              378
+            ],
+            [
+              231,
+              356
+            ]
+          ],
+          "groundFrontPixels": [
+            278,
+            378
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                281,
+                342
+              ],
+              [
+                291,
+                336
+              ],
+              [
+                301,
+                341
+              ],
+              [
+                301,
+                359
+              ],
+              [
+                290,
+                364
+              ],
+              [
+                281,
+                358
+              ]
+            ]
+          },
+          "contactCell": [
+            17,
+            23
+          ]
+        }
+      ],
+      "selectionCell": [
+        18,
+        24
+      ]
+    },
+    {
+      "id": "west-inner-house",
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              456,
+              386
+            ],
+            [
+              503,
+              350
+            ],
+            [
+              577,
+              395
+            ],
+            [
+              524,
+              424
+            ]
+          ],
+          "groundFrontPixels": [
+            520,
+            474
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            32,
+            29
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              476,
+              400
+            ],
+            [
+              524,
+              425
+            ],
+            [
+              566,
+              404
+            ],
+            [
+              566,
+              450
+            ],
+            [
+              520,
+              474
+            ],
+            [
+              476,
+              450
+            ]
+          ],
+          "groundFrontPixels": [
+            520,
+            474
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                511,
+                434
+              ],
+              [
+                526,
+                425
+              ],
+              [
+                541,
+                435
+              ],
+              [
+                541,
+                458
+              ],
+              [
+                527,
+                466
+              ],
+              [
+                511,
+                457
+              ]
+            ]
+          },
+          "contactCell": [
+            32,
+            29
+          ]
+        }
+      ],
+      "selectionCell": [
+        33,
+        30
+      ]
+    },
+    {
+      "id": "west-south-house",
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              542,
+              651
+            ],
+            [
+              599,
+              610
+            ],
+            [
+              681,
+              651
+            ],
+            [
+              618,
+              689
+            ]
+          ],
+          "groundFrontPixels": [
+            613,
+            747
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            38,
+            46
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              558,
+              665
+            ],
+            [
+              618,
+              689
+            ],
+            [
+              670,
+              669
+            ],
+            [
+              670,
+              715
+            ],
+            [
+              613,
+              747
+            ],
+            [
+              558,
+              718
+            ]
+          ],
+          "groundFrontPixels": [
+            613,
+            747
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                609,
+                702
+              ],
+              [
+                624,
+                693
+              ],
+              [
+                640,
+                701
+              ],
+              [
+                640,
+                726
+              ],
+              [
+                625,
+                736
+              ],
+              [
+                609,
+                728
+              ]
+            ]
+          },
+          "contactCell": [
+            38,
+            46
+          ]
+        }
+      ],
+      "selectionCell": [
+        39,
+        47
+      ]
+    },
+    {
+      "id": "east-north-house",
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              1340,
+              286
+            ],
+            [
+              1397,
+              248
+            ],
+            [
+              1492,
+              286
+            ],
+            [
+              1424,
+              329
+            ]
+          ],
+          "groundFrontPixels": [
+            1415,
+            377
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            88,
+            23
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              1358,
+              298
+            ],
+            [
+              1424,
+              329
+            ],
+            [
+              1479,
+              306
+            ],
+            [
+              1479,
+              348
+            ],
+            [
+              1415,
+              377
+            ],
+            [
+              1358,
+              352
+            ]
+          ],
+          "groundFrontPixels": [
+            1415,
+            377
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1366,
+                328
+              ],
+              [
+                1381,
+                319
+              ],
+              [
+                1398,
+                329
+              ],
+              [
+                1398,
+                353
+              ],
+              [
+                1382,
+                362
+              ],
+              [
+                1366,
+                353
+              ]
+            ]
+          },
+          "contactCell": [
+            88,
+            23
+          ]
+        }
+      ],
+      "selectionCell": [
+        86,
+        24
+      ]
+    },
+    {
+      "id": "east-inner-house",
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              1054,
+              397
+            ],
+            [
+              1112,
+              356
+            ],
+            [
+              1192,
+              396
+            ],
+            [
+              1127,
+              430
+            ]
+          ],
+          "groundFrontPixels": [
+            1118,
+            479
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            69,
+            29
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              1068,
+              409
+            ],
+            [
+              1127,
+              430
+            ],
+            [
+              1179,
+              409
+            ],
+            [
+              1179,
+              455
+            ],
+            [
+              1118,
+              479
+            ],
+            [
+              1068,
+              455
+            ]
+          ],
+          "groundFrontPixels": [
+            1118,
+            479
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1091,
+                436
+              ],
+              [
+                1107,
+                426
+              ],
+              [
+                1121,
+                437
+              ],
+              [
+                1121,
+                463
+              ],
+              [
+                1106,
+                469
+              ],
+              [
+                1091,
+                461
+              ]
+            ]
+          },
+          "contactCell": [
+            69,
+            29
+          ]
+        }
+      ],
+      "selectionCell": [
+        68,
+        32
+      ]
+    },
+    {
+      "id": "east-middle-house",
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              1327,
+              483
+            ],
+            [
+              1395,
+              439
+            ],
+            [
+              1480,
+              487
+            ],
+            [
+              1415,
+              526
+            ]
+          ],
+          "groundFrontPixels": [
+            1405,
+            579
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            87,
+            36
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              1344,
+              496
+            ],
+            [
+              1415,
+              526
+            ],
+            [
+              1467,
+              507
+            ],
+            [
+              1467,
+              551
+            ],
+            [
+              1405,
+              579
+            ],
+            [
+              1344,
+              550
+            ]
+          ],
+          "groundFrontPixels": [
+            1405,
+            579
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1359,
+                526
+              ],
+              [
+                1374,
+                517
+              ],
+              [
+                1390,
+                528
+              ],
+              [
+                1390,
+                551
+              ],
+              [
+                1374,
+                563
+              ],
+              [
+                1359,
+                553
+              ]
+            ]
+          },
+          "contactCell": [
+            87,
+            36
+          ]
+        }
+      ],
+      "selectionCell": [
+        86,
+        38
+      ]
+    },
+    {
+      "id": "east-south-house",
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              812,
+              681
+            ],
+            [
+              854,
+              639
+            ],
+            [
+              930,
+              686
+            ],
+            [
+              879,
+              722
+            ]
+          ],
+          "groundFrontPixels": [
+            872,
+            776
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            54,
+            48
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              825,
+              694
+            ],
+            [
+              879,
+              722
+            ],
+            [
+              920,
+              703
+            ],
+            [
+              920,
+              748
+            ],
+            [
+              872,
+              776
+            ],
+            [
+              825,
+              751
+            ]
+          ],
+          "groundFrontPixels": [
+            872,
+            776
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                836,
+                725
+              ],
+              [
+                849,
+                716
+              ],
+              [
+                866,
+                726
+              ],
+              [
+                866,
+                754
+              ],
+              [
+                850,
+                762
+              ],
+              [
+                836,
+                752
+              ]
+            ]
+          },
+          "contactCell": [
+            54,
+            48
+          ]
+        }
+      ],
+      "selectionCell": [
+        54,
+        50
+      ]
+    },
+    {
+      "id": "northwest-back-house",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              622,
+              71
+            ],
+            [
+              675,
+              34
+            ],
+            [
+              732,
+              73
+            ],
+            [
+              686,
+              104
+            ]
+          ],
+          "groundFrontPixels": [
+            680,
+            162
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            42,
+            10
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              637,
+              88
+            ],
+            [
+              686,
+              105
+            ],
+            [
+              722,
+              92
+            ],
+            [
+              722,
+              139
+            ],
+            [
+              680,
+              162
+            ],
+            [
+              637,
+              140
+            ]
+          ],
+          "groundFrontPixels": [
+            680,
+            162
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            42,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "id": "north-central-house",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              793,
+              147
+            ],
+            [
+              833,
+              112
+            ],
+            [
+              892,
+              149
+            ],
+            [
+              847,
+              179
+            ]
+          ],
+          "groundFrontPixels": [
+            845,
+            224
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            52,
+            14
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              805,
+              160
+            ],
+            [
+              847,
+              179
+            ],
+            [
+              882,
+              164
+            ],
+            [
+              882,
+              204
+            ],
+            [
+              845,
+              224
+            ],
+            [
+              805,
+              206
+            ]
+          ],
+          "groundFrontPixels": [
+            845,
+            224
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            52,
+            14
+          ]
+        }
+      ]
+    },
+    {
+      "id": "north-edge-left-house",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              792,
+              0
+            ],
+            [
+              835,
+              0
+            ],
+            [
+              868,
+              8
+            ],
+            [
+              834,
+              29
+            ]
+          ],
+          "groundFrontPixels": [
+            832,
+            69
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            52,
+            4
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              802,
+              12
+            ],
+            [
+              834,
+              29
+            ],
+            [
+              861,
+              17
+            ],
+            [
+              861,
+              52
+            ],
+            [
+              831,
+              69
+            ],
+            [
+              802,
+              55
+            ]
+          ],
+          "groundFrontPixels": [
+            832,
+            69
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            52,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "id": "north-edge-right-house",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              903,
+              7
+            ],
+            [
+              932,
+              0
+            ],
+            [
+              979,
+              14
+            ],
+            [
+              943,
+              36
+            ]
+          ],
+          "groundFrontPixels": [
+            943,
+            69
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            58,
+            4
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              912,
+              19
+            ],
+            [
+              943,
+              36
+            ],
+            [
+              970,
+              23
+            ],
+            [
+              970,
+              53
+            ],
+            [
+              943,
+              69
+            ],
+            [
+              912,
+              54
+            ]
+          ],
+          "groundFrontPixels": [
+            943,
+            69
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            58,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "id": "west-edge-upper-house",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              0,
+              307
+            ],
+            [
+              31,
+              324
+            ],
+            [
+              77,
+              355
+            ],
+            [
+              36,
+              389
+            ],
+            [
+              0,
+              371
+            ]
+          ],
+          "groundFrontPixels": [
+            36,
+            430
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            2,
+            26
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              0,
+              371
+            ],
+            [
+              36,
+              389
+            ],
+            [
+              68,
+              374
+            ],
+            [
+              68,
+              412
+            ],
+            [
+              38,
+              431
+            ],
+            [
+              0,
+              415
+            ]
+          ],
+          "groundFrontPixels": [
+            36,
+            430
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            2,
+            26
+          ]
+        }
+      ]
+    },
+    {
+      "id": "west-edge-lower-house",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              0,
+              455
+            ],
+            [
+              60,
+              416
+            ],
+            [
+              143,
+              459
+            ],
+            [
+              66,
+              505
+            ]
+          ],
+          "groundFrontPixels": [
+            58,
+            555
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            3,
+            34
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              7,
+              471
+            ],
+            [
+              66,
+              505
+            ],
+            [
+              126,
+              482
+            ],
+            [
+              126,
+              527
+            ],
+            [
+              58,
+              555
+            ],
+            [
+              7,
+              529
+            ]
+          ],
+          "groundFrontPixels": [
+            58,
+            555
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            3,
+            34
+          ]
+        }
+      ]
+    },
+    {
+      "id": "west-inner-blue-house",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              383,
+              390
+            ],
+            [
+              428,
+              349
+            ],
+            [
+              490,
+              389
+            ],
+            [
+              441,
+              426
+            ]
+          ],
+          "groundFrontPixels": [
+            437,
+            469
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            27,
+            29
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              397,
+              401
+            ],
+            [
+              441,
+              426
+            ],
+            [
+              480,
+              407
+            ],
+            [
+              480,
+              446
+            ],
+            [
+              437,
+              469
+            ],
+            [
+              397,
+              450
+            ]
+          ],
+          "groundFrontPixels": [
+            437,
+            469
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            27,
+            29
+          ]
+        }
+      ]
+    },
+    {
+      "id": "west-inner-back-house",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              337,
+              365
+            ],
+            [
+              377,
+              332
+            ],
+            [
+              427,
+              367
+            ],
+            [
+              386,
+              397
+            ]
+          ],
+          "groundFrontPixels": [
+            384,
+            433
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            24,
+            27
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              350,
+              376
+            ],
+            [
+              386,
+              397
+            ],
+            [
+              417,
+              382
+            ],
+            [
+              417,
+              414
+            ],
+            [
+              384,
+              433
+            ],
+            [
+              350,
+              415
+            ]
+          ],
+          "groundFrontPixels": [
+            384,
+            433
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            24,
+            27
+          ]
+        }
+      ]
+    },
+    {
+      "id": "west-south-back-house",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              456,
+              574
+            ],
+            [
+              510,
+              538
+            ],
+            [
+              590,
+              577
+            ],
+            [
+              531,
+              615
+            ]
+          ],
+          "groundFrontPixels": [
+            524,
+            664
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            32,
+            41
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              473,
+              588
+            ],
+            [
+              531,
+              615
+            ],
+            [
+              576,
+              594
+            ],
+            [
+              576,
+              638
+            ],
+            [
+              524,
+              664
+            ],
+            [
+              473,
+              640
+            ]
+          ],
+          "groundFrontPixels": [
+            524,
+            664
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            32,
+            41
+          ]
+        }
+      ]
+    },
+    {
+      "id": "west-south-back-wing",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              551,
+              578
+            ],
+            [
+              597,
+              549
+            ],
+            [
+              655,
+              580
+            ],
+            [
+              610,
+              614
+            ]
+          ],
+          "groundFrontPixels": [
+            605,
+            649
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            37,
+            40
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              566,
+              591
+            ],
+            [
+              610,
+              614
+            ],
+            [
+              644,
+              599
+            ],
+            [
+              644,
+              627
+            ],
+            [
+              605,
+              649
+            ],
+            [
+              566,
+              632
+            ]
+          ],
+          "groundFrontPixels": [
+            605,
+            649
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            37,
+            40
+          ]
+        }
+      ]
+    },
+    {
+      "id": "southwest-wall-house",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              559,
+              852
+            ],
+            [
+              618,
+              811
+            ],
+            [
+              706,
+              859
+            ],
+            [
+              639,
+              902
+            ]
+          ],
+          "groundFrontPixels": [
+            631,
+            959
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            39,
+            59
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              574,
+              872
+            ],
+            [
+              639,
+              902
+            ],
+            [
+              691,
+              880
+            ],
+            [
+              691,
+              930
+            ],
+            [
+              631,
+              959
+            ],
+            [
+              574,
+              933
+            ]
+          ],
+          "groundFrontPixels": [
+            631,
+            959
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            39,
+            59
+          ]
+        }
+      ]
+    },
+    {
+      "id": "southeast-wall-house",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              833,
+              904
+            ],
+            [
+              891,
+              862
+            ],
+            [
+              970,
+              914
+            ],
+            [
+              908,
+              955
+            ]
+          ],
+          "groundFrontPixels": [
+            903,
+            1007
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            56,
+            62
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              849,
+              924
+            ],
+            [
+              908,
+              955
+            ],
+            [
+              957,
+              933
+            ],
+            [
+              957,
+              978
+            ],
+            [
+              903,
+              1007
+            ],
+            [
+              849,
+              983
+            ]
+          ],
+          "groundFrontPixels": [
+            903,
+            1007
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            56,
+            62
+          ]
+        }
+      ]
+    },
+    {
+      "id": "east-south-back-blue-house",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              837,
+              611
+            ],
+            [
+              896,
+              565
+            ],
+            [
+              984,
+              614
+            ],
+            [
+              915,
+              657
+            ]
+          ],
+          "groundFrontPixels": [
+            909,
+            707
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            56,
+            44
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              852,
+              626
+            ],
+            [
+              915,
+              657
+            ],
+            [
+              969,
+              635
+            ],
+            [
+              969,
+              677
+            ],
+            [
+              909,
+              707
+            ],
+            [
+              852,
+              682
+            ]
+          ],
+          "groundFrontPixels": [
+            909,
+            707
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            56,
+            44
+          ]
+        }
+      ]
+    },
+    {
+      "id": "east-south-back-house",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              1007,
+              608
+            ],
+            [
+              1055,
+              576
+            ],
+            [
+              1149,
+              614
+            ],
+            [
+              1084,
+              652
+            ]
+          ],
+          "groundFrontPixels": [
+            1077,
+            695
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            67,
+            43
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              1026,
+              624
+            ],
+            [
+              1084,
+              652
+            ],
+            [
+              1131,
+              630
+            ],
+            [
+              1131,
+              667
+            ],
+            [
+              1077,
+              695
+            ],
+            [
+              1026,
+              670
+            ]
+          ],
+          "groundFrontPixels": [
+            1077,
+            695
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            67,
+            43
+          ]
+        }
+      ]
+    },
+    {
+      "id": "east-back-blue-house",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              1146,
+              352
+            ],
+            [
+              1208,
+              310
+            ],
+            [
+              1300,
+              359
+            ],
+            [
+              1228,
+              402
+            ]
+          ],
+          "groundFrontPixels": [
+            1220,
+            452
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            76,
+            28
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              1163,
+              371
+            ],
+            [
+              1228,
+              402
+            ],
+            [
+              1285,
+              379
+            ],
+            [
+              1285,
+              423
+            ],
+            [
+              1220,
+              452
+            ],
+            [
+              1163,
+              427
+            ]
+          ],
+          "groundFrontPixels": [
+            1220,
+            452
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            76,
+            28
+          ]
+        }
+      ]
+    },
+    {
+      "id": "east-edge-blue-house",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              1412,
+              425
+            ],
+            [
+              1476,
+              383
+            ],
+            [
+              1535,
+              412
+            ],
+            [
+              1535,
+              447
+            ],
+            [
+              1497,
+              478
+            ]
+          ],
+          "groundFrontPixels": [
+            1490,
+            531
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            93,
+            33
+          ]
+        },
+        {
+          "id": "facade",
+          "polygonPixels": [
+            [
+              1431,
+              443
+            ],
+            [
+              1497,
+              478
+            ],
+            [
+              1535,
+              461
+            ],
+            [
+              1535,
+              505
+            ],
+            [
+              1490,
+              531
+            ],
+            [
+              1431,
+              506
+            ]
+          ],
+          "groundFrontPixels": [
+            1490,
+            531
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            93,
+            33
+          ]
+        }
+      ]
+    },
+    {
+      "id": "northwest-gate",
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "left-pier",
+          "polygonPixels": [
+            [
+              80,
+              51
+            ],
+            [
+              105,
+              62
+            ],
+            [
+              119,
+              55
+            ],
+            [
+              119,
+              155
+            ],
+            [
+              103,
+              168
+            ],
+            [
+              81,
+              155
+            ]
+          ],
+          "groundFrontPixels": [
+            103,
+            168
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                86,
+                112
+              ],
+              [
+                101,
+                118
+              ],
+              [
+                101,
+                148
+              ],
+              [
+                86,
+                142
+              ]
+            ]
+          },
+          "contactCell": [
+            6,
+            10
+          ]
+        },
+        {
+          "id": "right-roof",
+          "polygonPixels": [
+            [
+              143,
+              24
+            ],
+            [
+              186,
+              0
+            ],
+            [
+              236,
+              27
+            ],
+            [
+              195,
+              50
+            ]
+          ],
+          "groundFrontPixels": [
+            209,
+            157
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            13,
+            9
+          ]
+        },
+        {
+          "id": "right-pier",
+          "polygonPixels": [
+            [
+              158,
+              36
+            ],
+            [
+              195,
+              50
+            ],
+            [
+              226,
+              34
+            ],
+            [
+              226,
+              143
+            ],
+            [
+              209,
+              157
+            ],
+            [
+              180,
+              143
+            ],
+            [
+              180,
+              74
+            ],
+            [
+              158,
+              68
+            ]
+          ],
+          "groundFrontPixels": [
+            209,
+            157
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            13,
+            9
+          ]
+        },
+        {
+          "id": "arch-lintel",
+          "polygonPixels": [
+            [
+              112,
+              69
+            ],
+            [
+              179,
+              39
+            ],
+            [
+              180,
+              74
+            ],
+            [
+              163,
+              82
+            ],
+            [
+              149,
+              81
+            ],
+            [
+              136,
+              89
+            ],
+            [
+              124,
+              104
+            ],
+            [
+              117,
+              126
+            ],
+            [
+              112,
+              127
+            ]
+          ],
+          "groundFrontPixels": [
+            146,
+            142
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            9,
+            8
+          ]
+        }
+      ],
+      "selectionCell": [
+        11,
+        11
+      ]
+    },
+    {
+      "id": "northeast-gate",
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "left-roof",
+          "polygonPixels": [
+            [
+              1280,
+              25
+            ],
+            [
+              1325,
+              0
+            ],
+            [
+              1381,
+              27
+            ],
+            [
+              1334,
+              51
+            ]
+          ],
+          "groundFrontPixels": [
+            1320,
+            150
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            82,
+            9
+          ]
+        },
+        {
+          "id": "left-pier",
+          "polygonPixels": [
+            [
+              1294,
+              37
+            ],
+            [
+              1334,
+              51
+            ],
+            [
+              1360,
+              37
+            ],
+            [
+              1360,
+              66
+            ],
+            [
+              1344,
+              73
+            ],
+            [
+              1344,
+              137
+            ],
+            [
+              1320,
+              151
+            ],
+            [
+              1295,
+              137
+            ]
+          ],
+          "groundFrontPixels": [
+            1320,
+            150
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            82,
+            9
+          ]
+        },
+        {
+          "id": "right-pier",
+          "polygonPixels": [
+            [
+              1394,
+              58
+            ],
+            [
+              1418,
+              68
+            ],
+            [
+              1442,
+              55
+            ],
+            [
+              1440,
+              150
+            ],
+            [
+              1418,
+              165
+            ],
+            [
+              1395,
+              151
+            ]
+          ],
+          "groundFrontPixels": [
+            1418,
+            165
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1410,
+                112
+              ],
+              [
+                1424,
+                116
+              ],
+              [
+                1424,
+                146
+              ],
+              [
+                1410,
+                141
+              ]
+            ]
+          },
+          "contactCell": [
+            88,
+            10
+          ]
+        },
+        {
+          "id": "arch-lintel",
+          "polygonPixels": [
+            [
+              1344,
+              56
+            ],
+            [
+              1395,
+              76
+            ],
+            [
+              1395,
+              115
+            ],
+            [
+              1387,
+              99
+            ],
+            [
+              1376,
+              93
+            ],
+            [
+              1365,
+              96
+            ],
+            [
+              1353,
+              106
+            ],
+            [
+              1344,
+              120
+            ]
+          ],
+          "groundFrontPixels": [
+            1370,
+            143
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            85,
+            8
+          ]
+        }
+      ],
+      "selectionCell": [
+        83,
+        11
+      ]
+    },
+    {
+      "id": "southwest-gate",
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "left-roof",
+          "polygonPixels": [
+            [
+              96,
+              755
+            ],
+            [
+              147,
+              725
+            ],
+            [
+              206,
+              759
+            ],
+            [
+              153,
+              789
+            ]
+          ],
+          "groundFrontPixels": [
+            148,
+            902
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            9,
+            56
+          ]
+        },
+        {
+          "id": "left-pier",
+          "polygonPixels": [
+            [
+              113,
+              769
+            ],
+            [
+              153,
+              789
+            ],
+            [
+              177,
+              776
+            ],
+            [
+              177,
+              880
+            ],
+            [
+              150,
+              903
+            ],
+            [
+              115,
+              883
+            ]
+          ],
+          "groundFrontPixels": [
+            148,
+            902
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            9,
+            56
+          ]
+        },
+        {
+          "id": "right-roof",
+          "polygonPixels": [
+            [
+              246,
+              831
+            ],
+            [
+              280,
+              807
+            ],
+            [
+              327,
+              836
+            ],
+            [
+              291,
+              859
+            ]
+          ],
+          "groundFrontPixels": [
+            286,
+            948
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            17,
+            59
+          ]
+        },
+        {
+          "id": "right-pier",
+          "polygonPixels": [
+            [
+              254,
+              843
+            ],
+            [
+              291,
+              859
+            ],
+            [
+              317,
+              845
+            ],
+            [
+              317,
+              929
+            ],
+            [
+              286,
+              949
+            ],
+            [
+              254,
+              929
+            ]
+          ],
+          "groundFrontPixels": [
+            286,
+            948
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                271,
+                872
+              ],
+              [
+                289,
+                879
+              ],
+              [
+                289,
+                918
+              ],
+              [
+                271,
+                911
+              ]
+            ]
+          },
+          "contactCell": [
+            17,
+            59
+          ]
+        },
+        {
+          "id": "arch-lintel",
+          "polygonPixels": [
+            [
+              174,
+              796
+            ],
+            [
+              255,
+              840
+            ],
+            [
+              255,
+              881
+            ],
+            [
+              241,
+              854
+            ],
+            [
+              226,
+              846
+            ],
+            [
+              210,
+              847
+            ],
+            [
+              192,
+              863
+            ],
+            [
+              177,
+              891
+            ]
+          ],
+          "groundFrontPixels": [
+            210,
+            902
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            13,
+            56
+          ]
+        }
+      ],
+      "selectionCell": [
+        15,
+        51
+      ]
+    },
+    {
+      "id": "southeast-gate",
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "left-roof",
+          "polygonPixels": [
+            [
+              1216,
+              821
+            ],
+            [
+              1256,
+              792
+            ],
+            [
+              1308,
+              821
+            ],
+            [
+              1268,
+              850
+            ]
+          ],
+          "groundFrontPixels": [
+            1258,
+            925
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            78,
+            57
+          ]
+        },
+        {
+          "id": "left-pier",
+          "polygonPixels": [
+            [
+              1227,
+              835
+            ],
+            [
+              1268,
+              850
+            ],
+            [
+              1289,
+              838
+            ],
+            [
+              1289,
+              905
+            ],
+            [
+              1258,
+              927
+            ],
+            [
+              1227,
+              907
+            ]
+          ],
+          "groundFrontPixels": [
+            1258,
+            925
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1242,
+                869
+              ],
+              [
+                1259,
+                878
+              ],
+              [
+                1259,
+                910
+              ],
+              [
+                1242,
+                902
+              ]
+            ]
+          },
+          "contactCell": [
+            78,
+            57
+          ]
+        },
+        {
+          "id": "right-roof",
+          "polygonPixels": [
+            [
+              1344,
+              753
+            ],
+            [
+              1397,
+              720
+            ],
+            [
+              1460,
+              757
+            ],
+            [
+              1408,
+              793
+            ]
+          ],
+          "groundFrontPixels": [
+            1400,
+            886
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            87,
+            55
+          ]
+        },
+        {
+          "id": "right-pier",
+          "polygonPixels": [
+            [
+              1370,
+              777
+            ],
+            [
+              1408,
+              793
+            ],
+            [
+              1433,
+              779
+            ],
+            [
+              1433,
+              865
+            ],
+            [
+              1400,
+              887
+            ],
+            [
+              1370,
+              867
+            ]
+          ],
+          "groundFrontPixels": [
+            1400,
+            886
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            87,
+            55
+          ]
+        },
+        {
+          "id": "arch-lintel",
+          "polygonPixels": [
+            [
+              1289,
+              820
+            ],
+            [
+              1371,
+              776
+            ],
+            [
+              1371,
+              817
+            ],
+            [
+              1354,
+              823
+            ],
+            [
+              1337,
+              831
+            ],
+            [
+              1326,
+              846
+            ],
+            [
+              1317,
+              864
+            ],
+            [
+              1310,
+              885
+            ],
+            [
+              1289,
+              896
+            ]
+          ],
+          "groundFrontPixels": [
+            1330,
+            884
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            83,
+            55
+          ]
+        }
+      ],
+      "selectionCell": [
+        84,
+        57
+      ]
+    },
+    {
+      "id": "civic-statue",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "stone-statue",
+          "polygonPixels": [
+            [
+              749,
+              370
+            ],
+            [
+              765,
+              364
+            ],
+            [
+              776,
+              377
+            ],
+            [
+              778,
+              394
+            ],
+            [
+              786,
+              400
+            ],
+            [
+              784,
+              452
+            ],
+            [
+              805,
+              462
+            ],
+            [
+              806,
+              478
+            ],
+            [
+              783,
+              492
+            ],
+            [
+              754,
+              484
+            ],
+            [
+              734,
+              473
+            ],
+            [
+              738,
+              455
+            ],
+            [
+              748,
+              449
+            ]
+          ],
+          "groundFrontPixels": [
+            774,
+            492
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            48,
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ration-canopy",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "roof",
+          "polygonPixels": [
+            [
+              673,
+              317
+            ],
+            [
+              712,
+              301
+            ],
+            [
+              761,
+              277
+            ],
+            [
+              786,
+              287
+            ],
+            [
+              809,
+              310
+            ],
+            [
+              851,
+              330
+            ],
+            [
+              793,
+              344
+            ],
+            [
+              746,
+              334
+            ],
+            [
+              703,
+              331
+            ]
+          ],
+          "groundFrontPixels": [
+            761,
+            360
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            47,
+            22
+          ]
+        },
+        {
+          "id": "left-post",
+          "polygonPixels": [
+            [
+              698,
+              327
+            ],
+            [
+              704,
+              329
+            ],
+            [
+              704,
+              354
+            ],
+            [
+              698,
+              351
+            ]
+          ],
+          "groundFrontPixels": [
+            701,
+            354
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            43,
+            22
+          ]
+        },
+        {
+          "id": "right-post",
+          "polygonPixels": [
+            [
+              811,
+              336
+            ],
+            [
+              817,
+              334
+            ],
+            [
+              817,
+              359
+            ],
+            [
+              811,
+              361
+            ]
+          ],
+          "groundFrontPixels": [
+            814,
+            361
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            50,
+            22
+          ]
+        }
+      ]
+    },
+    {
+      "id": "northwest-west-perimeter-visible",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "masonry-band",
+          "polygonPixels": [
+            [
+              0,
+              118
+            ],
+            [
+              12,
+              112
+            ],
+            [
+              17,
+              119
+            ],
+            [
+              28,
+              112
+            ],
+            [
+              32,
+              105
+            ],
+            [
+              44,
+              105
+            ],
+            [
+              50,
+              98
+            ],
+            [
+              62,
+              95
+            ],
+            [
+              68,
+              90
+            ],
+            [
+              79,
+              91
+            ],
+            [
+              80,
+              153
+            ],
+            [
+              0,
+              194
+            ]
+          ],
+          "groundFrontPixels": [
+            0,
+            194
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            0,
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "id": "northwest-east-perimeter-visible",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "masonry-band",
+          "polygonPixels": [
+            [
+              226,
+              65
+            ],
+            [
+              241,
+              58
+            ],
+            [
+              246,
+              63
+            ],
+            [
+              257,
+              58
+            ],
+            [
+              262,
+              51
+            ],
+            [
+              272,
+              50
+            ],
+            [
+              279,
+              44
+            ],
+            [
+              289,
+              44
+            ],
+            [
+              295,
+              36
+            ],
+            [
+              307,
+              36
+            ],
+            [
+              312,
+              30
+            ],
+            [
+              324,
+              28
+            ],
+            [
+              331,
+              21
+            ],
+            [
+              340,
+              22
+            ],
+            [
+              347,
+              16
+            ],
+            [
+              357,
+              17
+            ],
+            [
+              365,
+              12
+            ],
+            [
+              371,
+              70
+            ],
+            [
+              227,
+              143
+            ]
+          ],
+          "groundFrontPixels": [
+            227,
+            143
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            14,
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "id": "northeast-east-perimeter-visible",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "masonry-band",
+          "polygonPixels": [
+            [
+              1441,
+              106
+            ],
+            [
+              1454,
+              111
+            ],
+            [
+              1459,
+              105
+            ],
+            [
+              1469,
+              110
+            ],
+            [
+              1474,
+              118
+            ],
+            [
+              1483,
+              123
+            ],
+            [
+              1490,
+              118
+            ],
+            [
+              1500,
+              124
+            ],
+            [
+              1504,
+              133
+            ],
+            [
+              1513,
+              138
+            ],
+            [
+              1519,
+              132
+            ],
+            [
+              1536,
+              142
+            ],
+            [
+              1536,
+              199
+            ],
+            [
+              1441,
+              152
+            ]
+          ],
+          "groundFrontPixels": [
+            1536,
+            199
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            95,
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "id": "southwest-west-perimeter-visible",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "masonry-band",
+          "polygonPixels": [
+            [
+              0,
+              714
+            ],
+            [
+              13,
+              720
+            ],
+            [
+              19,
+              714
+            ],
+            [
+              29,
+              721
+            ],
+            [
+              34,
+              731
+            ],
+            [
+              45,
+              736
+            ],
+            [
+              52,
+              730
+            ],
+            [
+              62,
+              737
+            ],
+            [
+              66,
+              747
+            ],
+            [
+              77,
+              751
+            ],
+            [
+              84,
+              747
+            ],
+            [
+              94,
+              754
+            ],
+            [
+              99,
+              765
+            ],
+            [
+              111,
+              771
+            ],
+            [
+              113,
+              838
+            ],
+            [
+              0,
+              780
+            ]
+          ],
+          "groundFrontPixels": [
+            113,
+            838
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            7,
+            52
+          ]
+        }
+      ]
+    },
+    {
+      "id": "southwest-east-perimeter-visible",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "masonry-band",
+          "polygonPixels": [
+            [
+              315,
+              870
+            ],
+            [
+              328,
+              877
+            ],
+            [
+              335,
+              870
+            ],
+            [
+              345,
+              878
+            ],
+            [
+              350,
+              889
+            ],
+            [
+              363,
+              895
+            ],
+            [
+              370,
+              888
+            ],
+            [
+              379,
+              894
+            ],
+            [
+              384,
+              906
+            ],
+            [
+              398,
+              911
+            ],
+            [
+              404,
+              905
+            ],
+            [
+              416,
+              911
+            ],
+            [
+              420,
+              924
+            ],
+            [
+              434,
+              930
+            ],
+            [
+              439,
+              923
+            ],
+            [
+              452,
+              930
+            ],
+            [
+              458,
+              942
+            ],
+            [
+              472,
+              948
+            ],
+            [
+              480,
+              941
+            ],
+            [
+              493,
+              948
+            ],
+            [
+              501,
+              961
+            ],
+            [
+              515,
+              968
+            ],
+            [
+              521,
+              963
+            ],
+            [
+              533,
+              969
+            ],
+            [
+              540,
+              981
+            ],
+            [
+              554,
+              988
+            ],
+            [
+              563,
+              980
+            ],
+            [
+              574,
+              988
+            ],
+            [
+              581,
+              1000
+            ],
+            [
+              593,
+              1007
+            ],
+            [
+              601,
+              1000
+            ],
+            [
+              614,
+              1007
+            ],
+            [
+              621,
+              1020
+            ],
+            [
+              630,
+              1024
+            ],
+            [
+              500,
+              1024
+            ],
+            [
+              315,
+              932
+            ]
+          ],
+          "groundFrontPixels": [
+            500,
+            1024
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            31,
+            63
+          ]
+        }
+      ]
+    },
+    {
+      "id": "southeast-west-perimeter-visible",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "masonry-band",
+          "polygonPixels": [
+            [
+              1002,
+              965
+            ],
+            [
+              1018,
+              957
+            ],
+            [
+              1026,
+              963
+            ],
+            [
+              1039,
+              956
+            ],
+            [
+              1044,
+              944
+            ],
+            [
+              1056,
+              939
+            ],
+            [
+              1063,
+              945
+            ],
+            [
+              1076,
+              938
+            ],
+            [
+              1081,
+              925
+            ],
+            [
+              1094,
+              918
+            ],
+            [
+              1101,
+              924
+            ],
+            [
+              1114,
+              917
+            ],
+            [
+              1119,
+              904
+            ],
+            [
+              1132,
+              898
+            ],
+            [
+              1139,
+              903
+            ],
+            [
+              1153,
+              896
+            ],
+            [
+              1158,
+              884
+            ],
+            [
+              1171,
+              877
+            ],
+            [
+              1179,
+              882
+            ],
+            [
+              1190,
+              876
+            ],
+            [
+              1197,
+              862
+            ],
+            [
+              1210,
+              854
+            ],
+            [
+              1218,
+              860
+            ],
+            [
+              1227,
+              856
+            ],
+            [
+              1227,
+              908
+            ],
+            [
+              1003,
+              1024
+            ]
+          ],
+          "groundFrontPixels": [
+            1003,
+            1024
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            62,
+            63
+          ]
+        }
+      ]
+    },
+    {
+      "id": "southeast-east-perimeter-visible",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "masonry-band",
+          "polygonPixels": [
+            [
+              1433,
+              815
+            ],
+            [
+              1446,
+              809
+            ],
+            [
+              1454,
+              815
+            ],
+            [
+              1465,
+              809
+            ],
+            [
+              1472,
+              796
+            ],
+            [
+              1483,
+              789
+            ],
+            [
+              1490,
+              795
+            ],
+            [
+              1504,
+              787
+            ],
+            [
+              1508,
+              775
+            ],
+            [
+              1520,
+              769
+            ],
+            [
+              1527,
+              774
+            ],
+            [
+              1536,
+              768
+            ],
+            [
+              1536,
+              816
+            ],
+            [
+              1433,
+              868
+            ]
+          ],
+          "groundFrontPixels": [
+            1433,
+            868
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            89,
+            54
+          ]
+        }
+      ]
+    },
+    {
+      "id": "granary-front-left-visible",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "masonry-band",
+          "polygonPixels": [
+            [
+              303,
+              216
+            ],
+            [
+              314,
+              208
+            ],
+            [
+              326,
+              214
+            ],
+            [
+              332,
+              223
+            ],
+            [
+              343,
+              227
+            ],
+            [
+              350,
+              222
+            ],
+            [
+              361,
+              227
+            ],
+            [
+              369,
+              239
+            ],
+            [
+              379,
+              245
+            ],
+            [
+              376,
+              265
+            ],
+            [
+              314,
+              236
+            ],
+            [
+              303,
+              229
+            ]
+          ],
+          "groundFrontPixels": [
+            376,
+            265
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            23,
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "id": "militia-court-front-left-visible",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "masonry-band",
+          "polygonPixels": [
+            [
+              1014,
+              253
+            ],
+            [
+              1028,
+              260
+            ],
+            [
+              1035,
+              254
+            ],
+            [
+              1048,
+              261
+            ],
+            [
+              1052,
+              273
+            ],
+            [
+              1065,
+              278
+            ],
+            [
+              1073,
+              273
+            ],
+            [
+              1087,
+              279
+            ],
+            [
+              1093,
+              291
+            ],
+            [
+              1105,
+              295
+            ],
+            [
+              1110,
+              288
+            ],
+            [
+              1122,
+              295
+            ],
+            [
+              1128,
+              307
+            ],
+            [
+              1142,
+              313
+            ],
+            [
+              1138,
+              337
+            ],
+            [
+              1015,
+              281
+            ]
+          ],
+          "groundFrontPixels": [
+            1138,
+            337
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            71,
+            21
+          ]
+        }
+      ]
+    },
+    {
+      "id": "militia-court-front-right-visible",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "masonry-band",
+          "polygonPixels": [
+            [
+              1190,
+              268
+            ],
+            [
+              1202,
+              262
+            ],
+            [
+              1210,
+              267
+            ],
+            [
+              1221,
+              261
+            ],
+            [
+              1227,
+              250
+            ],
+            [
+              1239,
+              243
+            ],
+            [
+              1246,
+              248
+            ],
+            [
+              1258,
+              242
+            ],
+            [
+              1263,
+              229
+            ],
+            [
+              1274,
+              222
+            ],
+            [
+              1282,
+              228
+            ],
+            [
+              1295,
+              220
+            ],
+            [
+              1301,
+              208
+            ],
+            [
+              1317,
+              215
+            ],
+            [
+              1318,
+              230
+            ],
+            [
+              1196,
+              294
+            ]
+          ],
+          "groundFrontPixels": [
+            1196,
+            294
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            74,
+            18
+          ]
+        }
+      ]
+    },
+    {
+      "id": "west-inner-garden-front-visible",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "masonry-band",
+          "polygonPixels": [
+            [
+              286,
+              397
+            ],
+            [
+              298,
+              402
+            ],
+            [
+              301,
+              411
+            ],
+            [
+              314,
+              417
+            ],
+            [
+              321,
+              412
+            ],
+            [
+              334,
+              420
+            ],
+            [
+              339,
+              430
+            ],
+            [
+              353,
+              436
+            ],
+            [
+              359,
+              430
+            ],
+            [
+              371,
+              437
+            ],
+            [
+              376,
+              448
+            ],
+            [
+              390,
+              455
+            ],
+            [
+              396,
+              449
+            ],
+            [
+              407,
+              456
+            ],
+            [
+              412,
+              469
+            ],
+            [
+              419,
+              475
+            ],
+            [
+              413,
+              496
+            ],
+            [
+              286,
+              438
+            ]
+          ],
+          "groundFrontPixels": [
+            413,
+            496
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            25,
+            31
+          ]
+        }
+      ]
+    },
+    {
+      "id": "east-inner-front-visible",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "masonry-band",
+          "polygonPixels": [
+            [
+              1002,
+              403
+            ],
+            [
+              1014,
+              409
+            ],
+            [
+              1018,
+              424
+            ],
+            [
+              1031,
+              430
+            ],
+            [
+              1038,
+              424
+            ],
+            [
+              1050,
+              431
+            ],
+            [
+              1056,
+              442
+            ],
+            [
+              1069,
+              448
+            ],
+            [
+              1077,
+              443
+            ],
+            [
+              1089,
+              449
+            ],
+            [
+              1094,
+              461
+            ],
+            [
+              1107,
+              467
+            ],
+            [
+              1115,
+              462
+            ],
+            [
+              1126,
+              469
+            ],
+            [
+              1125,
+              490
+            ],
+            [
+              1002,
+              449
+            ]
+          ],
+          "groundFrontPixels": [
+            1125,
+            490
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            70,
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "id": "east-middle-front-visible",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "masonry-band",
+          "polygonPixels": [
+            [
+              1293,
+              513
+            ],
+            [
+              1306,
+              519
+            ],
+            [
+              1311,
+              532
+            ],
+            [
+              1325,
+              537
+            ],
+            [
+              1331,
+              531
+            ],
+            [
+              1345,
+              538
+            ],
+            [
+              1350,
+              550
+            ],
+            [
+              1363,
+              556
+            ],
+            [
+              1371,
+              550
+            ],
+            [
+              1384,
+              557
+            ],
+            [
+              1390,
+              569
+            ],
+            [
+              1403,
+              575
+            ],
+            [
+              1411,
+              569
+            ],
+            [
+              1423,
+              576
+            ],
+            [
+              1424,
+              599
+            ],
+            [
+              1293,
+              539
+            ]
+          ],
+          "groundFrontPixels": [
+            1424,
+            599
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            89,
+            37
+          ]
+        }
+      ]
+    }
+  ]
+}

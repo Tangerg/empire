@@ -72,10 +72,12 @@ capabilities before gameplay. See `tools/godot/scenario-checks` and
 This is a playable-level integration checkpoint, not the finished migration.
 The story/choice/battle/result and non-destructive save/load flow is integrated.
 Water, structures, markers, fog, camera controls, lighting and shadows have native
-implementations and runtime checks. C01–C06 now have runtime-ready authored
-scenes; C07–C16 do not. Current C06 opening GUI, interaction and route-feasibility
+implementations and runtime checks. C01–C07 now have runtime-ready authored
+scenes; C08–C16 do not. Current C06 opening GUI, interaction and route-feasibility
 evidence is recorded in
 [White River](docs/WHITE-RIVER.md), without claiming full normal-AI escort balance.
+C07 city geometry, interaction, scale and normal-AI opening/save-load evidence is
+recorded in [Luojia](docs/LUOJIA.md); full objective-battle balance remains open.
 Other story themes remain unported, and older exported packages do not represent
 the latest source. Extension and localization contracts are documented in the native
 capability map and quality audit, not inferred from screenshots.
