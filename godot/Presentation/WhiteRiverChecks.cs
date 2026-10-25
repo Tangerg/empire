@@ -121,7 +121,9 @@ public partial class WhiteRiverChecks : Node
             && tiles.Count(tile => tile!.GetValue<string>() == "village") == 5
             && tiles.Count(tile => tile!.GetValue<string>() == "c01.outpost") == 5, "Exactly five villages and five ordinary outposts must be canonical sites.");
         var board = new BoardView { AnimationsEnabled = false };
-        AddChild(board);
+        var preparedParent = new Node2D();
+        AddChild(preparedParent);
+        preparedParent.AddChild(board);
         try
         {
             board.Configure(new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, art.CreatePlane), level, scene);
@@ -153,11 +155,75 @@ public partial class WhiteRiverChecks : Node
             Require(board.Pick(new(-10, -10)) is null && board.Pick(board.FieldSize + new Vector2(10, 10)) is null,
                 "Off-canvas scenery must not become tactical ground.");
             Require(EcmaJson.Stringify(state) == before, "Registration, rendering and picking cannot mutate canonical battle state.");
+            var concealed = state.DeepClone().AsObject();
+            Position(Unit(concealed, "refugee-1"), new(27, 6));
+            Position(Unit(concealed, "refugee-2"), new(26, 5));
+            Position(Unit(concealed, "refugee-3"), new(27, 7));
+            Position(Unit(concealed, "refugee-4"), new(26, 6));
+            preparedParent.Visible = false;
+            board.RenderState(concealed);
+            var preparedCue = board.GetNodeOrNull<Polygon2D>("CanonicalProjection/OccludedUnitCues/UnitCue_" + Integer(Unit(concealed, "refugee-1"), "id"));
+            Require(preparedCue is not null && !preparedCue.IsVisibleInTree()
+                && board.Pick(board.ToLocal(preparedCue.ToGlobal(Vector2.Zero)))?.UnitId is null,
+                "A hidden prepared screen must build its cue projection but cannot expose it to live picking.");
+            preparedParent.Visible = true;
+            CheckGoalCues(board, concealed);
+            board.RenderState(state);
+            BenchmarkCues(board, engine, state);
         }
         finally
         {
-            RemoveChild(board);
-            board.Free();
+            RemoveChild(preparedParent);
+            preparedParent.Free();
+        }
+    }
+
+    private void CheckGoalCues(BoardView board, JsonObject state)
+    {
+        foreach (var key in new[] { "refugee-1", "refugee-2" })
+        {
+            var actor = Unit(state, key);
+            var id = Integer(actor, "id");
+            var cue = board.GetNodeOrNull<Polygon2D>($"CanonicalProjection/OccludedUnitCues/UnitCue_{id}");
+            Require(cue is not null && cue.IsVisibleInTree(), $"The occluded north-bank {key} must have an actually rendered tactical cue.");
+            var cell = TacticalQueries.Position(actor);
+            Require(board.Pick(board.ToLocal(cue!.ToGlobal(Vector2.Zero))) == TacticalHit.Unit(new(cell.X, cell.Y), id),
+                $"The visible north-bank {key} cue must select that exact canonical unit, not a shelter or a same-cell substitute.");
+        }
+    }
+
+    private void BenchmarkCues(BoardView board, BattleEngine engine, JsonObject opening)
+    {
+        const string prefix = "--benchmark-cues-save=";
+        var option = OS.GetCmdlineUserArgs().SingleOrDefault(argument => argument.StartsWith(prefix, StringComparison.Ordinal));
+        if (option is null)
+            return;
+        var path = option[prefix.Length..];
+        Require(Path.IsPathFullyQualified(path), "Cue benchmarking requires an explicit absolute saved-battle path.");
+        var document = EcmaJson.Parse(File.ReadAllText(path))!.AsObject();
+        var resumed = engine.LoadBattle(document["battle"]);
+        Require(Text(resumed, "levelId") == LevelId && Integer(resumed["map"]!, "width") == 50 && Integer(resumed["map"]!, "height") == 32,
+            "Cue benchmarking must use a current C06 battle, not unrelated or retired map data.");
+        board.ConfigureDynamicState();
+        foreach (var (name, state) in new[] { ("opening", opening), ("saved", resumed) })
+        {
+            var digest = EcmaJson.Stringify(state);
+            for (var warmup = 0; warmup < 2; warmup++)
+                board.RenderState(state);
+            var samples = new List<double>();
+            for (var trial = 0; trial < 7; trial++)
+            {
+                var watch = System.Diagnostics.Stopwatch.StartNew();
+                board.RenderState(state);
+                watch.Stop();
+                samples.Add(watch.Elapsed.TotalMilliseconds);
+            }
+            Require(EcmaJson.Stringify(state) == digest && board.RenderingIssueCount == 0,
+                "Cue benchmark renders must neither mutate state nor silently omit an unplaceable cue: " + string.Join("; ", board.Diagnostics));
+            if (name == "saved")
+                CheckGoalCues(board, state);
+            var cues = Descendants(board).Count(node => node.Name.ToString().StartsWith("UnitCue_", StringComparison.Ordinal));
+            GD.Print(FormattableString.Invariant($"Cue rebuild benchmark {name}: T{Integer(state, "turn")}, {Units(state).Count()} units, {cues} cues; median={samples.Order().ElementAt(3):F2}ms min={samples.Min():F2}ms max={samples.Max():F2}ms (7 warm rebuilds, read-only)."));
         }
     }
 
@@ -505,8 +571,12 @@ public partial class WhiteRiverChecks : Node
     private void ExportGuiFixtures(BattleEngine engine, JsonArray levels)
     {
         const string prefix = "--export-c06-gui-dir=";
-        var args = OS.GetCmdlineUserArgs();
-        Require(args.All(argument => argument.StartsWith(prefix, StringComparison.Ordinal)) && args.Length <= 1, "Only the explicit C06 evidence export option is supported.");
+        var supplied = OS.GetCmdlineUserArgs();
+        Require(supplied.All(argument => argument.StartsWith(prefix, StringComparison.Ordinal) || argument.StartsWith("--benchmark-cues-save=", StringComparison.Ordinal))
+            && supplied.Count(argument => argument.StartsWith(prefix, StringComparison.Ordinal)) <= 1
+            && supplied.Count(argument => argument.StartsWith("--benchmark-cues-save=", StringComparison.Ordinal)) <= 1,
+            "Only the explicit C06 evidence export and read-only cue benchmark options are supported.");
+        var args = supplied.Where(argument => argument.StartsWith(prefix, StringComparison.Ordinal)).ToArray();
         if (args.Length == 0)
             return;
         var path = args[0][prefix.Length..];

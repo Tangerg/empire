@@ -122,6 +122,15 @@ internal partial class PaintedSurface : Node2D
         }
     }
 
+    internal IEnumerable<Vector2[]> PointerPolygons(CanvasItem visibilityRoot)
+    {
+        if (!StandingVisual.IsVisibleWithin(this, visibilityRoot) || Modulate.A <= 0 || SelfModulate.A <= 0)
+            yield break;
+        foreach (var polygon in _polygons.Where(polygon => StandingVisual.IsVisibleWithin(polygon, visibilityRoot)))
+            foreach (var piece in polygon.Polygons)
+                yield return piece.AsInt32Array().Select(index => polygon.ToGlobal(polygon.Polygon[index])).ToArray();
+    }
+
     internal Polygon2D? HitPolygon(Vector2 globalPoint)
     {
         if (!IsVisibleInTree() || Modulate.A <= 0 || SelfModulate.A <= 0)

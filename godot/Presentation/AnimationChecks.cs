@@ -454,6 +454,7 @@ public partial class AnimationChecks : Node
 
         var transition = Transition(Copy(), Copy(), IdleAction(), [new JsonObject { ["type"] = "gameOver", ["reason"] = "fixture", ["team"] = 1 }]);
         var first = board.PresentTransitionAsync(transition);
+        Require(!board.GetNode<Node2D>("CanonicalProjection/OccludedUnitCues").Visible, "Occlusion cues are suppressed throughout committed animation, not left at stale pre-move positions");
         try
         {
             await board.PresentTransitionAsync(transition);
@@ -462,6 +463,7 @@ public partial class AnimationChecks : Node
         catch (InvalidOperationException) { Require(board.IsPresenting, "A second presentation cannot replace the active sequence"); }
         board.CancelPresentation();
         Require(!await first, "Explicit cancellation resolves the active presentation");
+        Require(board.GetNode<Node2D>("CanonicalProjection/OccludedUnitCues").Visible, "Cancellation rebuilds settled cue projection from committed state");
         var second = board.PresentTransitionAsync(transition);
         RemoveChild(board);
         Require(!await second && !board.IsPresenting, "ExitTree cancels without waiting for another process frame");

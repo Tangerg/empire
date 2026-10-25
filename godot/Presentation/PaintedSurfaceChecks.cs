@@ -222,6 +222,38 @@ public partial class PaintedSurfaceChecks : Node
                 "The layered cliff regression must place actual pass-through material in front of a visible canonical cliff face.");
             Require(board.Projection.Pick(point)?.Cell is null && board.Pick(point) is null,
                 "Pass-through foreground must not create ground interaction through an actual cliff face.");
+            var actor = state["units"]![0]!.AsObject();
+            actor["x"] = 3;
+            actor["y"] = 4;
+            var actorFoot = board.Projection.CellContact(new(3, 4)) / art.WorldScale;
+            art.Occluders[0] = new PaintedOccluder
+            {
+                Id = "CliffAndActorRoof",
+                Parts = [art.Occluders[0].Parts[0], new PaintedOccluderPart
+                {
+                    Id = "ActorCover", ContactCell = [3, 4], GroundFrontPixels = [actorFoot.X, actorFoot.Y + 20],
+                    PolygonPixels = [[actorFoot.X - 50, actorFoot.Y - 100], [actorFoot.X + 50, actorFoot.Y - 100],
+                        [actorFoot.X + 50, actorFoot.Y + 10], [actorFoot.X - 50, actorFoot.Y + 10]],
+                    Pointer = new PaintedPointer { Kind = "pass-through" }
+                }]
+            };
+            board.ConfigureGround((_, _) => PaintedGroundView.Create(art, texture, fixtureMap, engine.Catalog));
+            board.RenderState(state);
+            var id = actor["id"]!.GetValue<int>();
+            var sprite = board.GetNode<Sprite2D>($"CanonicalProjection/Unit_{id}/AuthoredSprite");
+            var rect = sprite.GetRect();
+            var preferred = board.ToLocal(sprite.ToGlobal(new(rect.GetCenter().X, rect.Position.Y))) + new Vector2(0, -14);
+            var cue = board.GetNodeOrNull<Polygon2D>($"CanonicalProjection/OccludedUnitCues/UnitCue_{id}");
+            Require(cue is not null, "The cliff fixture must contain a genuinely occluded actor with a visible cue.");
+            var faces = board.Projection.Faces.Select(item => new[] { item.ProjectedA, item.ProjectedB, item.ProjectedC, item.ProjectedD }).ToArray();
+            Require(faces.Any(polygon => Geometry2D.IntersectPolygons(polygon, cue!.Polygon.Select(pixel => pixel + preferred).ToArray()).Count > 0),
+                "A real cliff must overlap the preferred cue location so the exclusion guard has a geometric witness.");
+            var displayed = cue!.Polygon.Select(pixel => board.ToLocal(cue.ToGlobal(pixel))).ToArray();
+            Require(faces.All(polygon => Geometry2D.IntersectPolygons(polygon, displayed).Count == 0)
+                && board.Pick(board.ToLocal(cue.ToGlobal(Vector2.Zero))) == TacticalHit.Unit(new(3, 4), id),
+                "The cue must relocate clear of every projected cliff while retaining its own visible unit target.");
+            Require(board.Projection.Pick(point)?.Cell is null && board.Pick(point) is null,
+                "The original cliff face remains a blocker after the occluded actor obtains a cue.");
         }
         finally
         {

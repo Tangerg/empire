@@ -147,6 +147,7 @@ internal static class PaintedPickingChecks
             require(bodyPoints.Length > 100 && bodyPoints.All(point => ground.DepthEntries.All(entry => !entry.Visual!.Covers(board.ToGlobal(point)))),
                 "Every opaque actor-body pixel in the open mouth, not only its feet, must be outside foreground material coverage.");
             var missedBodyPoints = bodyPoints.Where(point => board.Pick(point) != TacticalHit.Unit(new(3, 3), 2)).ToArray();
+            require(!Descendants(board).Any(node => node.Name == "UnitCue_2"), "A fully exposed actor must not acquire an occlusion cue.");
             var actorNode = board.GetNode<Node2D>("CanonicalProjection/Unit_2");
             var actorSprite = actorNode.GetNode<Sprite2D>("AuthoredSprite");
             require(missedBodyPoints.Length == 0,
@@ -190,6 +191,109 @@ internal static class PaintedPickingChecks
                 board.ConfigureGround((_, _) => PaintedGroundView.Create(art, texture, map, engine.Catalog));
                 board.RenderState(state);
             }
+            var cueRoof = Material("CueRoof", 64, 48, 160, 132, 164, false);
+            foreach (var owner in new[] { 1, 2 })
+            {
+                actor["owner"] = owner;
+                Materials(cueRoof, Material("CuePost", 138, 58, 150, 132, 180, true));
+                var cue = board.GetNode<Polygon2D>("CanonicalProjection/OccludedUnitCues/UnitCue_2");
+                var center = board.ToLocal(cue.ToGlobal(Vector2.Zero));
+                require(cue.IsVisibleInTree() && board.Pick(center) == TacticalHit.Unit(new(3, 3), 2),
+                    "A visibly rendered cue must select either an allied or enemy render-visible occluded actor.");
+                require(cue.Color == Color.FromHtml(state["players"]!.AsArray().OfType<JsonObject>()
+                    .Single(player => player["id"]!.GetValue<int>() == owner)["color"]!.GetValue<string>()),
+                    "The cue must carry the actor's actual owner color, not an allied-only identity.");
+                require(OpaqueActorPoints(board, 2).All(point => board.Pick(point)?.Kind != TacticalHitKind.Unit),
+                    "A cue must not promote the original covered actor pixels or arbitrary roof pixels into Unit hits.");
+                require(board.Pick(new(144, 90)) == TacticalHit.Object(new(3, 3)),
+                    "The independently opaque facade post remains its structural target with a cue present.");
+                require(board.Pick(center + new Vector2(10, 10)) != TacticalHit.Unit(new(3, 3), 2),
+                    "Transparent corners of the cue bounds must not become an invisible rectangular target.");
+                board.Position = new(37, 29);
+                board.Scale = new(1.6f, .85f);
+                board.Rotation = .12f;
+                board.RenderState(state);
+                cue = board.GetNode<Polygon2D>("CanonicalProjection/OccludedUnitCues/UnitCue_2");
+                require(board.Pick(board.ToLocal(cue.ToGlobal(Vector2.Zero))) == TacticalHit.Unit(new(3, 3), 2),
+                    "Cue drawing and picking must share projected transforms under pan, zoom and rotation.");
+                board.Position = Vector2.Zero;
+                board.Scale = Vector2.One;
+                board.Rotation = 0;
+                board.RenderState(state, new HashSet<int>());
+                require(!Descendants(board).Any(node => node.Name == "UnitCue_2"),
+                    "Fog-filtered actors must produce neither body nor identity cue.");
+                actor["x"] = 1;
+                actor["y"] = 5;
+                board.RenderState(state);
+                require(!Descendants(board).Any(node => node.Name == "UnitCue_2"),
+                    "Moving into open ground must remove the old cue instead of retaining a stale target.");
+                actor["x"] = 3;
+                actor["y"] = 3;
+            }
+            Materials(cueRoof, Material("CuePost", 138, 58, 150, 132, 180, true));
+            var oldCue = board.GetNode<Polygon2D>("CanonicalProjection/OccludedUnitCues/UnitCue_2");
+            var oldCueCenter = oldCue.Position;
+            var oldCuePolygon = oldCue.Polygon.Select(oldCue.ToGlobal).ToArray();
+            var surfaceStructure = engine.CreateState(Redstone())["structures"]![0]!.DeepClone().AsObject();
+            var oldCueCell = board.Projection.Pick(oldCueCenter)!.Cell!.Value;
+            surfaceStructure["x"] = oldCueCell.X;
+            surfaceStructure["y"] = oldCueCell.Y;
+            state["structures"] = new JsonArray(surfaceStructure);
+            board.ConfigureDynamicState();
+            board.RenderState(state);
+            var flatBody = Descendants(board).OfType<PaintedSurface>().First(surface => surface.GetParent().HasMeta("structure_id"));
+            var surfacePolygons = flatBody.PointerPolygons(board).ToArray();
+            var surfaceBounds = StandingVisual.BoundsOf(surfacePolygons.SelectMany(polygon => polygon).ToArray());
+            require(surfacePolygons.Any(polygon => Geometry2D.IntersectPolygons(polygon, oldCuePolygon).Count > 0),
+                "The actual flattened surface footprint must overlap the formerly preferred cue, so conservative placement must relocate it.");
+            require(Enumerable.Range((int)surfaceBounds.Position.Y, (int)surfaceBounds.Size.Y + 1).Any(y =>
+                Enumerable.Range((int)surfaceBounds.Position.X, (int)surfaceBounds.Size.X + 1).Any(x => flatBody.HitPolygon(new(x, y)) is not null)),
+                "The flattened structure fixture must contain genuine opaque pointer pixels, not a transparent placeholder.");
+            var movedCue = board.GetNode<Polygon2D>("CanonicalProjection/OccludedUnitCues/UnitCue_2");
+            var cuePolygon = movedCue.Polygon.Select(movedCue.ToGlobal).ToArray();
+            require(flatBody.PointerPolygons(board).All(polygon => Geometry2D.IntersectPolygons(polygon, cuePolygon).Count == 0)
+                && board.Pick(movedCue.Position) == TacticalHit.Unit(new(3, 3), 2),
+                "The visible cue must move clear of flattened structure pointer geometry, not cover its target.");
+            var hiddenParent = new Node2D { Visible = false };
+            host.AddChild(hiddenParent);
+            board.Reparent(hiddenParent);
+            board.RenderState(state);
+            flatBody = Descendants(board).OfType<PaintedSurface>().First(surface => surface.GetParent().HasMeta("structure_id"));
+            movedCue = board.GetNode<Polygon2D>("CanonicalProjection/OccludedUnitCues/UnitCue_2");
+            cuePolygon = movedCue.Polygon.Select(movedCue.ToGlobal).ToArray();
+            require(flatBody.PointerPolygons(board).Count() == surfacePolygons.Length
+                && flatBody.PointerPolygons(board).All(polygon => Geometry2D.IntersectPolygons(polygon, cuePolygon).Count == 0),
+                "Hidden-parent preparation must retain flattened structural blockers and place the cue clear of their footprint.");
+            hiddenParent.Visible = true;
+            require(board.Pick(movedCue.Position) == TacticalHit.Unit(new(3, 3), 2),
+                "Revealing a prepared board must expose the same visible selectable cue without a second render.");
+            board.Reparent(host);
+            hiddenParent.Free();
+            state["structures"] = new JsonArray();
+            var savedActors = state["units"]!.DeepClone();
+            state["units"] = new JsonArray(Enumerable.Range(0, 4).Select(index =>
+            {
+                var nearby = actor.DeepClone().AsObject();
+                nearby["id"] = 91 + index;
+                nearby["key"] = $"cue-crowd-{index}";
+                nearby["x"] = 1 + index % 2;
+                nearby["y"] = 1 + index / 2;
+                return (JsonNode)nearby;
+            }).ToArray());
+            Materials(Material("EdgeCanopy", 0, 0, 132, 132, 164, false), canopy.Parts[2]);
+            var crowded = Descendants(board).OfType<Polygon2D>().Where(node => node.Name.ToString().StartsWith("UnitCue_", StringComparison.Ordinal)).ToArray();
+            require(crowded.Length == 4 && crowded.All(cue => cue.Position.X >= 10 && cue.Position.Y >= 10),
+                "Four adjacent covered actors near the board edge must retain in-bounds cues.");
+            require(crowded.All(cue => crowded.All(other => cue == other || cue.Position.DistanceTo(other.Position) >= 24)),
+                "Crowded occlusion cues must not overlap or share a pointer target.");
+            foreach (var cue in crowded)
+            {
+                var id = int.Parse(cue.Name.ToString()["UnitCue_".Length..], System.Globalization.CultureInfo.InvariantCulture);
+                require(board.Pick(cue.Position)?.UnitId == id, "Each near-edge cue must independently select its own canonical actor.");
+            }
+            state["units"] = savedActors;
+            actor = state["units"]![0]!.AsObject();
+            actor["owner"] = 1;
             var frontRoof = Material("FrontRoof", 96, 80, 128, 128, 164, false);
             var backObject = Material("BackObject", 96, 80, 128, 128, 148, true);
             var rearBlock = new PaintedOccluderPart

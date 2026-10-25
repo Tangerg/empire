@@ -65,8 +65,8 @@ are verified by the static validator. The generated source painting is preserved
 
 The retired 24×14 battle snapshot is incompatible and must be rejected atomically.
 Campaign-only saves before this battle remain the supported entry. Detached GUI
-fixtures explicitly contain no earlier victories. Full campaign carry-over,
-full normal-AI escort victory and exported-package acceptance are separate gates.
+fixtures explicitly contain no earlier victories. Full campaign carry-over and
+exported-package acceptance remain separate from the normal-AI run below.
 
 ### Actual GUI checkpoint, 2026-10-25
 
@@ -85,10 +85,10 @@ The focused suite passed 425 assertions (431 when explicitly exporting GUI
 fixtures); narrative passed 3303. Whitespace formatting and 289 unique script UID
 checks passed. Full aggregate results are recorded separately when completed.
 
-### Current aggregate gate
+### Published C06 aggregate gate
 
 `bash tools/godot/verify-native.sh` completed with exit 0 on 2026-10-25 after
-these changes: formatting/metadata and three static validators; both builds;
+the C06 scene changes (commit 9c4ce038): formatting/metadata and three static validators; both builds;
 all 16 independent native AI battles with exact save/replay; objective/outcome 91
 and catalog 76 assertions; all 13 native presentation/application scenes including
 C06 425, narrative 3303, camera 222, tactical HUD 125, result-flow 153 and navigation 288.
@@ -96,3 +96,75 @@ Expected malformed-save/storage rejection warnings are exercised by the navigati
 suite; no process/teardown gate failed. C06's generic AI-versus-AI replay ended
 after 130 legal actions with team 2 winning by elimination. That is a deterministic
 replay result, **not** a successful escort or a human-play balance acceptance.
+
+### Natural normal-AI escort result, 2026-10-25
+
+The published C06 source was played normally from its actual T2 GUI checkpoint
+through **T8 objective victory** on the cloud computer desktop. No battle-state
+edits, teleports, suppressed AI phases or casualty reloads were used. All four
+escorts arrived simultaneously at full 58/58/58/70 HP; Laiya survived at 116 HP.
+Eight allies and nine enemies remained, with 35 attack/counter engagements.
+The four friendly battle deaths were Mirelle, Torren and both foot guards;
+Elin routed rather than died. This was a successful withdrawal with losses,
+not a no-casualty balance claim. Both T4 pursuit and T6 warning fired normally.
+
+The terminal application save contains 405 events and objectiveCompleted/team 1.
+Actual F5→F9→F5 preserved the entire campaign, battle and event sequence except
+save timestamps. Normal settlement and both aftermath lines then advanced to
+brief-07, with battle_06_won and exactly one victory in this detached campaign.
+Torren remains fallen, Elin routed; existing hero-recovery rules return Mirelle
+as available at 0.3 HP ratio. This does not certify a C01–C06 carry-over campaign.
+
+Evidence is retained outside the source tree in empire-final-evidence/c06:
+natural-t3 through natural-t8, natural-victory-t8 and its reloaded comparison,
+natural-settlement-t8, natural-aftermath-saved, and native captures 004/005.
+The actual settlement screenshot is Library libfile_d62e49127f2c8191a7a5de528a710f9d.
+
+The run exposed a presentation issue: goal-area actors at (26,5)
+and (27,6) can be fully hidden by painted roof/foliage occlusion. Shared picking
+correctly follows visible pixels, so clicking concealed ground does not select
+the hidden actor; keyboard selection remains available. The terminal result
+above was secured before isolated diagnosis.
+
+### Shared occlusion-cue acceptance, 2026-10-25
+
+The shared board now gives mostly concealed render-visible units a compact
+owner-colored pawn badge and leader. The filled badge is an explicit unit hit;
+the original body keeps its depth. No mission, collision, map, unit or save rule
+changed. The painted-interaction contract describes placement and crowded-case
+diagnostics; this is not a guarantee of arbitrary-density marker packing.
+
+The same genuine T8 checkpoint was loaded in an isolated GUI profile. Both
+previously hidden refugees were mouse-selected through their distinct badges,
+showing the canonical refugee HUD. The red-house right facade still selected
+the neutral village with 20-per-turn healing; a shelter roof click still selected
+forest ground. After zooming and panning, the moved badge still selected its
+refugee. F9 rebuilt the visible cues correctly. F5→F9→F5 preserved the complete
+original T8 campaign, battle and all 400 events except both save timestamps.
+This is a presentation regression check, not another natural victory run.
+
+Initial GUI testing caught a hidden-screen preparation defect that visible-board
+fixtures missed. Construction now uses board-owned visibility, while live picks
+still require tree visibility. A hidden-prepare→reveal regression passes; restoring
+the incorrect whole-tree construction filter deliberately fails that guard.
+
+Evidence: cue-captures/native-002 (overview), 003/004 (both refugees), 010 (village),
+011 (roof), 012 (zoom/pan selection), 013 (load/reveal); cue-after-selection-t8 and
+cue-after-reload-t8 saves. Canonical application SHA256 after removing only the two
+savedAt values is 0b75761d0620301d45af2002067cf8f943ddd6b106b4d7058203a45ad2321e71.
+Actual selected-refugee screenshot: Library libfile_96d95eadc0188191b28e839198e72fc7.
+
+Measured cue-only warm rebuild overhead was approximately 0.27 ms at opening and
+1.06 ms at T8. Matched seven-sample full-rebuild medians were 20.42/246.01 ms without
+cues and 20.02/239.84 ms with cues; variation overlaps, so this does not claim a
+speedup. These are rebuild timings, not frame-rate measurements. Temporary baseline
+skips and production stopwatch instrumentation were removed before acceptance;
+the explicit read-only test benchmark remains available.
+
+The final cue source passed `bash tools/godot/verify-native.sh` with terminal exit 0:
+formatting, 290 script UIDs, all three static validators, both clean builds, all
+16 independent AI/save/replay battles and all 13 native scenes. Relevant updated
+totals include DynamicState 530 and C06 430; camera 222, HUD 125, result-flow 153
+and navigation 288 also passed. The separate animation scene passed 181 on this
+same source. Expected malformed-save/storage-rejection warnings remained confined
+to their negative navigation fixtures; no process/teardown gate failed.

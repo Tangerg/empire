@@ -69,6 +69,7 @@ public partial class BoardView
         var playback = new Playback(transition, before, after, afterVisibleUnitIds,
             new PresentationTimeline { MotionEnabled = AnimationsEnabled }, effects);
         _playback = playback;
+        _cueLayer!.Visible = false;
         try
         {
             // Source game.ts marches the complete command path before its event

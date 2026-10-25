@@ -51,7 +51,7 @@ painted documents and in-code fixtures use the same schema.
 `BoardView.Pick` returns an immutable `TacticalHit`:
 
 - `Ground(cell)` is projected ground, not an implicit occupant lookup.
-- `Unit(cell,id)` is the visible unit body actually hit.
+- `Unit(cell,id)` is the visible unit body or its explicit occlusion badge actually hit.
 - `Object(cell)` is an explicitly hit site or structure surface.
 
 Press, hover and `TacticalSelection` preserve this type. Ground and Object never
@@ -87,6 +87,33 @@ their original selection/reveal behavior without replacing the cursor: an active
 pointer is re-picked after camera motion, while an existing logical keyboard
 cursor is preserved. These are input-lifecycle corrections, not changes to legal
 action targets or combat execution.
+
+## Occluded-unit affordance
+
+A mostly concealed unit needs a visible mouse target, not a hidden occupancy
+lookup. `BoardView` derives compact owner-colored unit badges from the same
+render-visible actor entries and opaque foreground coverage. Badges identify the
+canonical unit, with a leader back to its projected position. Actor bodies keep
+their ordinary depth; roofs, foliage, foundations and mission zones do not change.
+Both friendly and enemy render-visible units qualify. Units excluded by the
+existing visibility filter have neither a rendered actor nor a badge.
+
+The badge is an explicit presentation subject: only its visible filled contour
+returns `Unit(cell,id)`. The surrounding roof remains `Ground`; an independently
+visible facade, explicit blocker or authored frame retains its pointer meaning.
+Placement conservatively avoids other badges, actor sprite bounds, facade
+contours, flattened dynamic structure bodies, cliff faces and authored frames
+rather than replacing their pointer subjects.
+An explicit rendering diagnostic records when no nearby unobstructed placement
+is available and the badge is omitted; keyboard
+selection remains available in that crowded case. Selecting a badge exposes
+the canonical unit identity in the normal HUD, not an engine ID on the map.
+Badges are rebuilt with the rendered snapshot and suppressed during animation,
+so they do not become stale command targets while actors move. This does not
+alter movement legality, attack range, ownership, save state or fog rules.
+Screen mounting prepares this projection before revealing its parent. Geometry
+construction therefore evaluates visibility owned within the board, not the
+temporarily hidden screen; actual pointer hits still require live tree visibility.
 
 ## Concrete regression and scope
 

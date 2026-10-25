@@ -226,6 +226,8 @@ public partial class BoardView : Node2D
         }
 
         ReplaceChild(ref _projection, null);
+        _unitCues.Clear();
+        _cueLayer = null;
         ReplaceChild(ref _scenery, staging);
         _shadows.Dispose();
         _shadows = shadows;
@@ -418,6 +420,7 @@ public partial class BoardView : Node2D
         ReplaceChild(ref _projection, staging);
         _standing.Clear();
         _standing.AddRange(entries);
+        diagnostics.AddRange(RebuildOcclusionCues(snapshot.Colors));
         ProjectionUnitCount = snapshot.Units.Count;
         RenderedUnitCount = renderedUnits;
         RenderedStructureCount = renderedStructures;
@@ -498,7 +501,9 @@ public partial class BoardView : Node2D
         RasterResources.Positive(placement.Scale, "placement scale");
     }
 
-    public TacticalHit? Pick(Vector2 fieldPoint)
+    public TacticalHit? Pick(Vector2 fieldPoint) => PickCue(fieldPoint) ?? PickScene(fieldPoint);
+
+    private TacticalHit? PickScene(Vector2 fieldPoint)
     {
         var surface = Projection.Pick(fieldPoint);
         var global = ToGlobal(fieldPoint);
@@ -517,8 +522,7 @@ public partial class BoardView : Node2D
             if (sprite.IsVisibleInTree() && sprite.Modulate.A > 0 && sprite.IsPixelOpaque(sprite.ToLocal(global)))
                 coverage.Add((null, sprite, sprite.ZIndex + _scenery.GetNode<Node2D>("AuthoredFrame").ZIndex));
         // Use the same absolute Z and scene-tree tie order that draws these parts.
-        coverage.Sort((left, right) => left.Depth != right.Depth ? right.Depth.CompareTo(left.Depth)
-            : left.Geometry == right.Geometry ? 0 : left.Geometry.IsGreaterThan(right.Geometry) ? 1 : -1);
+        coverage.Sort((left, right) => CompareDrawOrder(left.Geometry, left.Depth, right.Geometry, right.Depth));
         var entitiesVisible = true;
         foreach (var (entry, _, depth) in coverage)
         {
@@ -545,6 +549,10 @@ public partial class BoardView : Node2D
 
         TacticalHit? GroundHit() => surface?.Cell is { } cell ? TacticalHit.Ground(new BoardCell(cell.X, cell.Y)) : null;
     }
+
+    private static int CompareDrawOrder(Node2D left, int leftDepth, Node2D right, int rightDepth) =>
+        leftDepth != rightDepth ? rightDepth.CompareTo(leftDepth)
+        : left == right ? 0 : left.IsGreaterThan(right) ? 1 : -1;
 
     private float StandingDepth(StandingEntry entry)
     {
