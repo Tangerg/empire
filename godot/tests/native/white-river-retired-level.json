@@ -1,0 +1,734 @@
+{
+  "schema": 3,
+  "id": "c01-06",
+  "author": "《断冠之誓》战役",
+  "width": 24,
+  "height": 14,
+  "terrain": [
+    "..T...h...~~.....T......",
+    ".q........~~..v......q..",
+    "....T.....~~......h.....",
+    "..v.......==....T.......",
+    "----......~~......------",
+    "...T..h...~~..v.........",
+    "..........==............",
+    ".h....T...~~......T.....",
+    "------....~~....------..",
+    "..T.......==.......h....",
+    "....v.....~~..T.........",
+    ".q....T...~~.....v......",
+    ".....h....~~..q......q..",
+    "..T.......~~......T....."
+  ],
+  "elevation": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "owners": [],
+  "units": [
+    {
+      "key": "campaign-laiya",
+      "x": 9,
+      "y": 7,
+      "unit": "c01.laiya",
+      "owner": 1,
+      "facing": "east",
+      "formation": "formation-defensive"
+    },
+    {
+      "key": "campaign-torren",
+      "x": 8,
+      "y": 8,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "campaign-elin",
+      "x": 10,
+      "y": 9,
+      "unit": "c01.archer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "campaign-mirelle",
+      "x": 8,
+      "y": 10,
+      "unit": "c01.mirelle",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "campaign-bran",
+      "x": 7,
+      "y": 7,
+      "unit": "c01.bran",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "rearguard",
+      "x": 8,
+      "y": 7,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "rearguard-2",
+      "x": 9,
+      "y": 8,
+      "unit": "c01.banner-guard",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "refugee-1",
+      "x": 7,
+      "y": 11,
+      "unit": "c01.refugee",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "refugee-2",
+      "x": 8,
+      "y": 11,
+      "unit": "c01.refugee",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "refugee-3",
+      "x": 9,
+      "y": 11,
+      "unit": "c01.refugee",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "refugee-4",
+      "x": 8,
+      "y": 12,
+      "unit": "c01.laborer",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "mounted-rearguard",
+      "x": 6,
+      "y": 10,
+      "unit": "c01.knight",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "white-river-cleric",
+      "x": 7,
+      "y": 12,
+      "unit": "c01.gravekeeper",
+      "owner": 1,
+      "facing": "east"
+    },
+    {
+      "key": "pursuer-1",
+      "x": 1,
+      "y": 4,
+      "unit": "c01.knight",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "key": "pursuer-2",
+      "x": 2,
+      "y": 6,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "key": "pursuer-3",
+      "x": 3,
+      "y": 8,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "key": "pursuer-4",
+      "x": 1,
+      "y": 10,
+      "unit": "c01.swordsman",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "key": "pursuer-ballista",
+      "x": 1,
+      "y": 12,
+      "unit": "c01.ballista",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "key": "north-pursuer",
+      "x": 4,
+      "y": 2,
+      "unit": "c01.archer",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "key": "ford-shield",
+      "x": 4,
+      "y": 9,
+      "unit": "c01.legion-shield",
+      "owner": 2,
+      "facing": "west"
+    },
+    {
+      "key": "river-mage",
+      "x": 3,
+      "y": 12,
+      "unit": "c01.battle-mage",
+      "owner": 2,
+      "facing": "west"
+    }
+  ],
+  "commanders": [
+    {
+      "id": "laiya-command",
+      "unitKey": "campaign-laiya",
+      "radius": 2,
+      "turnGrants": [
+        {
+          "resource": "command_points",
+          "amount": 1
+        }
+      ],
+      "tactics": [
+        "c01.gray-rally",
+        "c01.hold-the-line"
+      ]
+    }
+  ],
+  "players": [
+    {
+      "id": 1,
+      "team": 1,
+      "color": "#4d86b8",
+      "controller": "human",
+      "resources": {
+        "funds": {
+          "current": 300,
+          "capacity": null
+        },
+        "command_points": {
+          "current": 1,
+          "capacity": 6
+        }
+      },
+      "objectives": [
+        {
+          "id": "primary",
+          "type": "failOn",
+          "condition": {
+            "type": "unitCount",
+            "selector": {
+              "keys": [
+                "campaign-laiya"
+              ]
+            },
+            "op": "lte",
+            "value": 0
+          },
+          "objective": {
+            "id": "escort-north-bank",
+            "type": "escort",
+            "selector": {
+              "keys": [
+                "refugee-1",
+                "refugee-2",
+                "refugee-3",
+                "refugee-4"
+              ]
+            },
+            "zone": "north-bank",
+            "count": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "team": 2,
+      "color": "#a8493f",
+      "controller": "ai",
+      "resources": {
+        "funds": {
+          "current": 250,
+          "capacity": null
+        },
+        "command_points": {
+          "current": 1,
+          "capacity": 6
+        }
+      },
+      "ai": {
+        "aggression": 0.65
+      },
+      "objectives": [
+        {
+          "id": "route",
+          "type": "routEnemies"
+        }
+      ]
+    }
+  ],
+  "rules": {
+    "turnLimit": 13,
+    "moraleEnabled": true,
+    "captureMode": "progressive",
+    "captureThreshold": 100,
+    "baseResourceGrants": []
+  },
+  "scenario": {
+    "zones": [
+      {
+        "id": "north-bank",
+        "cells": [
+          {
+            "x": 21,
+            "y": 0
+          },
+          {
+            "x": 22,
+            "y": 0
+          },
+          {
+            "x": 23,
+            "y": 0
+          },
+          {
+            "x": 21,
+            "y": 1
+          },
+          {
+            "x": 22,
+            "y": 1
+          },
+          {
+            "x": 23,
+            "y": 1
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "id": "pursuit-wave",
+        "timing": "turnStart",
+        "condition": {
+          "type": "turnAtLeast",
+          "turn": 4
+        },
+        "effects": [
+          {
+            "type": "spawnUnits",
+            "reason": "reinforcement",
+            "ready": true,
+            "units": [
+              {
+                "key": "pursuit-wave-knight",
+                "x": 0,
+                "y": 1,
+                "unit": "c01.knight",
+                "owner": 2,
+                "facing": "east"
+              },
+              {
+                "key": "pursuit-wave-sword",
+                "x": 0,
+                "y": 2,
+                "unit": "c01.swordsman",
+                "owner": 2,
+                "facing": "east"
+              },
+              {
+                "key": "pursuit-wave-bow",
+                "x": 1,
+                "y": 3,
+                "unit": "c01.archer",
+                "owner": 2,
+                "facing": "east"
+              }
+            ]
+          },
+          {
+            "type": "emitSignal",
+            "signal": "white_river_pursuit_arrived"
+          }
+        ]
+      },
+      {
+        "id": "bridge-damaged",
+        "timing": "turnStart",
+        "condition": {
+          "type": "turnAtLeast",
+          "turn": 6
+        },
+        "effects": [
+          {
+            "type": "emitSignal",
+            "signal": "white_river_bridge_damaged"
+          }
+        ]
+      }
+    ]
+  },
+  "extra": {
+    "campaign": "candidate-01-gray-banner",
+    "chapter": 2,
+    "order": 6,
+    "subtitle": "人、粮车和后卫，没有一项损失会在结算画面外消失。",
+    "tacticalTheme": "行军纵队、分层后卫与持续追击",
+    "recommendedTurns": 11,
+    "battleScale": "pursuit",
+    "fronts": 2
+  }
+}

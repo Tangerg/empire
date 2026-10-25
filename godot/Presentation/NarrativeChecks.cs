@@ -288,6 +288,15 @@ public partial class NarrativeChecks : Node
 
     private async Task CheckNativeWidgets()
     {
+        var crossing = Story("c01/brief-06");
+        var crossingDeadline = crossing.Beats.Single(beat => beat.Id == "cold-deadline");
+        foreach (var key in new[] { crossingDeadline.TextKey, crossing.Mission!.ObjectiveKey, "objective.c01_06.p1.primary" })
+        {
+            var prose = messages.Format(key);
+            Require(prose.Contains("回合期限", StringComparison.Ordinal), "White River prose points to the runtime-owned deadline");
+            Require(!System.Text.RegularExpressions.Regex.IsMatch(prose, @"[0-9零一二三四五六七八九十百]+\s*回合"),
+                "White River prose cannot own a competing numeric deadline");
+        }
         var deadlineIndex = Story("c01/brief-03").Beats.FindIndex(beat => beat.Id == "reinforcement-deadline");
         Require(deadlineIndex >= 0 && expectations["storyCases"]!.AsArray().Any(item =>
             Text(item!, "presentationId") == "c01/brief-03" && Number(item!, "beatIndex") == deadlineIndex && !Flag(item!, "ending")),

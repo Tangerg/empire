@@ -1,0 +1,1874 @@
+{
+  "levelId": "c01-06",
+  "levelSourceSha256": "5563bc87705ce5b5b8dd4ab6032ba5b2c23c6de17e61a48c27661d7c34da717e",
+  "resourcePath": "res://assets/native/scenes/white-river.png",
+  "pixelSize": [
+    1643,
+    957
+  ],
+  "worldScale": 1.25,
+  "originPixels": [
+    20,
+    30
+  ],
+  "cellXPixels": [
+    32,
+    0
+  ],
+  "cellYPixels": [
+    0,
+    28
+  ],
+  "occluders": [
+    {
+      "id": "northwest-slate-house",
+      "selectionCell": [
+        13,
+        8
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "contactCell": [
+            13,
+            7
+          ],
+          "groundFrontPixels": [
+            451,
+            246
+          ],
+          "polygonPixels": [
+            [
+              377,
+              188
+            ],
+            [
+              435,
+              133
+            ],
+            [
+              483,
+              147
+            ],
+            [
+              528,
+              190
+            ],
+            [
+              450,
+              215
+            ],
+            [
+              423,
+              174
+            ],
+            [
+              390,
+              198
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "closed-wall-body",
+          "contactCell": [
+            13,
+            7
+          ],
+          "groundFrontPixels": [
+            451,
+            246
+          ],
+          "polygonPixels": [
+            [
+              390,
+              194
+            ],
+            [
+              423,
+              177
+            ],
+            [
+              450,
+              215
+            ],
+            [
+              512,
+              197
+            ],
+            [
+              512,
+              227
+            ],
+            [
+              451,
+              246
+            ],
+            [
+              389,
+              226
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                456,
+                219
+              ],
+              [
+                506,
+                204
+              ],
+              [
+                506,
+                225
+              ],
+              [
+                456,
+                240
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "north-red-house",
+      "selectionCell": [
+        23,
+        8
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "contactCell": [
+            23,
+            7
+          ],
+          "groundFrontPixels": [
+            785,
+            251
+          ],
+          "polygonPixels": [
+            [
+              707,
+              184
+            ],
+            [
+              770,
+              126
+            ],
+            [
+              816,
+              139
+            ],
+            [
+              868,
+              190
+            ],
+            [
+              788,
+              215
+            ],
+            [
+              752,
+              169
+            ],
+            [
+              720,
+              197
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "closed-wall-body",
+          "contactCell": [
+            23,
+            7
+          ],
+          "groundFrontPixels": [
+            785,
+            251
+          ],
+          "polygonPixels": [
+            [
+              722,
+              192
+            ],
+            [
+              751,
+              172
+            ],
+            [
+              786,
+              215
+            ],
+            [
+              850,
+              198
+            ],
+            [
+              850,
+              230
+            ],
+            [
+              785,
+              250
+            ],
+            [
+              722,
+              224
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                791,
+                220
+              ],
+              [
+                842,
+                203
+              ],
+              [
+                842,
+                226
+              ],
+              [
+                791,
+                243
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "northeast-slate-house",
+      "selectionCell": [
+        39,
+        10
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "contactCell": [
+            39,
+            9
+          ],
+          "groundFrontPixels": [
+            1271,
+            305
+          ],
+          "polygonPixels": [
+            [
+              1187,
+              244
+            ],
+            [
+              1241,
+              184
+            ],
+            [
+              1287,
+              196
+            ],
+            [
+              1348,
+              248
+            ],
+            [
+              1270,
+              274
+            ],
+            [
+              1231,
+              222
+            ],
+            [
+              1201,
+              255
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "closed-wall-body",
+          "contactCell": [
+            39,
+            9
+          ],
+          "groundFrontPixels": [
+            1271,
+            305
+          ],
+          "polygonPixels": [
+            [
+              1203,
+              250
+            ],
+            [
+              1231,
+              226
+            ],
+            [
+              1270,
+              273
+            ],
+            [
+              1332,
+              255
+            ],
+            [
+              1332,
+              282
+            ],
+            [
+              1270,
+              304
+            ],
+            [
+              1203,
+              281
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1275,
+                277
+              ],
+              [
+                1326,
+                261
+              ],
+              [
+                1326,
+                279
+              ],
+              [
+                1275,
+                297
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "southwest-red-house",
+      "selectionCell": [
+        12,
+        24
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "contactCell": [
+            12,
+            23
+          ],
+          "groundFrontPixels": [
+            430,
+            700
+          ],
+          "polygonPixels": [
+            [
+              329,
+              617
+            ],
+            [
+              406,
+              553
+            ],
+            [
+              451,
+              568
+            ],
+            [
+              522,
+              618
+            ],
+            [
+              430,
+              654
+            ],
+            [
+              391,
+              596
+            ],
+            [
+              348,
+              630
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "closed-wall-body",
+          "contactCell": [
+            12,
+            23
+          ],
+          "groundFrontPixels": [
+            430,
+            700
+          ],
+          "polygonPixels": [
+            [
+              348,
+              625
+            ],
+            [
+              390,
+              601
+            ],
+            [
+              430,
+              653
+            ],
+            [
+              505,
+              627
+            ],
+            [
+              504,
+              668
+            ],
+            [
+              430,
+              697
+            ],
+            [
+              348,
+              665
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                437,
+                660
+              ],
+              [
+                497,
+                638
+              ],
+              [
+                497,
+                665
+              ],
+              [
+                437,
+                689
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "southeast-slate-house",
+      "selectionCell": [
+        35,
+        25
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "contactCell": [
+            35,
+            24
+          ],
+          "groundFrontPixels": [
+            1159,
+            706
+          ],
+          "polygonPixels": [
+            [
+              1068,
+              621
+            ],
+            [
+              1123,
+              561
+            ],
+            [
+              1180,
+              574
+            ],
+            [
+              1236,
+              625
+            ],
+            [
+              1158,
+              661
+            ],
+            [
+              1114,
+              599
+            ],
+            [
+              1081,
+              635
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "closed-wall-body",
+          "contactCell": [
+            35,
+            24
+          ],
+          "groundFrontPixels": [
+            1159,
+            706
+          ],
+          "polygonPixels": [
+            [
+              1083,
+              629
+            ],
+            [
+              1115,
+              603
+            ],
+            [
+              1159,
+              660
+            ],
+            [
+              1221,
+              634
+            ],
+            [
+              1220,
+              676
+            ],
+            [
+              1158,
+              703
+            ],
+            [
+              1083,
+              678
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1165,
+                664
+              ],
+              [
+                1213,
+                645
+              ],
+              [
+                1213,
+                674
+              ],
+              [
+                1165,
+                695
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "northwest-watch-shelter",
+      "selectionCell": [
+        6,
+        6
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "contactCell": [
+            6,
+            6
+          ],
+          "groundFrontPixels": [
+            222,
+            201
+          ],
+          "polygonPixels": [
+            [
+              173,
+              151
+            ],
+            [
+              240,
+              118
+            ],
+            [
+              292,
+              135
+            ],
+            [
+              221,
+              169
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "front-post",
+          "contactCell": [
+            6,
+            6
+          ],
+          "groundFrontPixels": [
+            222,
+            201
+          ],
+          "polygonPixels": [
+            [
+              183,
+              160
+            ],
+            [
+              188,
+              161
+            ],
+            [
+              188,
+              198
+            ],
+            [
+              183,
+              197
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                183,
+                160
+              ],
+              [
+                188,
+                161
+              ],
+              [
+                188,
+                198
+              ],
+              [
+                183,
+                197
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "north-supply-shelter",
+      "selectionCell": [
+        27,
+        7
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "contactCell": [
+            27,
+            7
+          ],
+          "groundFrontPixels": [
+            912,
+            246
+          ],
+          "polygonPixels": [
+            [
+              866,
+              198
+            ],
+            [
+              903,
+              184
+            ],
+            [
+              955,
+              197
+            ],
+            [
+              919,
+              212
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "front-post",
+          "contactCell": [
+            27,
+            7
+          ],
+          "groundFrontPixels": [
+            912,
+            246
+          ],
+          "polygonPixels": [
+            [
+              930,
+              212
+            ],
+            [
+              936,
+              210
+            ],
+            [
+              936,
+              242
+            ],
+            [
+              930,
+              245
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                930,
+                212
+              ],
+              [
+                936,
+                210
+              ],
+              [
+                936,
+                242
+              ],
+              [
+                930,
+                245
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "northeast-watch-shelter",
+      "selectionCell": [
+        46,
+        9
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "contactCell": [
+            46,
+            9
+          ],
+          "groundFrontPixels": [
+            1518,
+            298
+          ],
+          "polygonPixels": [
+            [
+              1461,
+              243
+            ],
+            [
+              1505,
+              224
+            ],
+            [
+              1560,
+              242
+            ],
+            [
+              1520,
+              261
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "front-post",
+          "contactCell": [
+            46,
+            9
+          ],
+          "groundFrontPixels": [
+            1518,
+            298
+          ],
+          "polygonPixels": [
+            [
+              1528,
+              263
+            ],
+            [
+              1534,
+              260
+            ],
+            [
+              1534,
+              292
+            ],
+            [
+              1528,
+              295
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1528,
+                263
+              ],
+              [
+                1534,
+                260
+              ],
+              [
+                1534,
+                292
+              ],
+              [
+                1528,
+                295
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "southwest-watch-shelter",
+      "selectionCell": [
+        5,
+        27
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "contactCell": [
+            4,
+            27
+          ],
+          "groundFrontPixels": [
+            173,
+            791
+          ],
+          "polygonPixels": [
+            [
+              112,
+              725
+            ],
+            [
+              173,
+              698
+            ],
+            [
+              223,
+              716
+            ],
+            [
+              162,
+              745
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "front-post",
+          "contactCell": [
+            4,
+            27
+          ],
+          "groundFrontPixels": [
+            173,
+            791
+          ],
+          "polygonPixels": [
+            [
+              123,
+              741
+            ],
+            [
+              129,
+              739
+            ],
+            [
+              129,
+              783
+            ],
+            [
+              123,
+              786
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                123,
+                741
+              ],
+              [
+                129,
+                739
+              ],
+              [
+                129,
+                783
+              ],
+              [
+                123,
+                786
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "southeast-supply-shelter",
+      "selectionCell": [
+        41,
+        25
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "contactCell": [
+            41,
+            24
+          ],
+          "groundFrontPixels": [
+            1340,
+            728
+          ],
+          "polygonPixels": [
+            [
+              1284,
+              656
+            ],
+            [
+              1342,
+              631
+            ],
+            [
+              1399,
+              651
+            ],
+            [
+              1341,
+              677
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "front-post",
+          "contactCell": [
+            41,
+            24
+          ],
+          "groundFrontPixels": [
+            1340,
+            728
+          ],
+          "polygonPixels": [
+            [
+              1350,
+              680
+            ],
+            [
+              1357,
+              677
+            ],
+            [
+              1357,
+              721
+            ],
+            [
+              1350,
+              724
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1350,
+                680
+              ],
+              [
+                1357,
+                677
+              ],
+              [
+                1357,
+                721
+              ],
+              [
+                1350,
+                724
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "snow-pines-1",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            1,
+            5
+          ],
+          "groundFrontPixels": [
+            56,
+            188
+          ],
+          "polygonPixels": [
+            [
+              20,
+              105
+            ],
+            [
+              140,
+              83
+            ],
+            [
+              221,
+              86
+            ],
+            [
+              226,
+              142
+            ],
+            [
+              133,
+              158
+            ],
+            [
+              56,
+              188
+            ],
+            [
+              20,
+              182
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "snow-pines-2",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            10,
+            6
+          ],
+          "groundFrontPixels": [
+            350,
+            213
+          ],
+          "polygonPixels": [
+            [
+              282,
+              80
+            ],
+            [
+              345,
+              94
+            ],
+            [
+              383,
+              155
+            ],
+            [
+              350,
+              213
+            ],
+            [
+              292,
+              198
+            ],
+            [
+              271,
+              142
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "snow-pines-3",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            16,
+            5
+          ],
+          "groundFrontPixels": [
+            551,
+            195
+          ],
+          "polygonPixels": [
+            [
+              509,
+              62
+            ],
+            [
+              588,
+              76
+            ],
+            [
+              627,
+              125
+            ],
+            [
+              611,
+              181
+            ],
+            [
+              551,
+              195
+            ],
+            [
+              510,
+              150
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "snow-pines-4",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            18,
+            10
+          ],
+          "groundFrontPixels": [
+            599,
+            311
+          ],
+          "polygonPixels": [
+            [
+              559,
+              205
+            ],
+            [
+              612,
+              196
+            ],
+            [
+              652,
+              242
+            ],
+            [
+              655,
+              289
+            ],
+            [
+              599,
+              311
+            ],
+            [
+              553,
+              276
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "snow-pines-5",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            27,
+            7
+          ],
+          "groundFrontPixels": [
+            891,
+            232
+          ],
+          "polygonPixels": [
+            [
+              873,
+              93
+            ],
+            [
+              931,
+              100
+            ],
+            [
+              972,
+              165
+            ],
+            [
+              958,
+              223
+            ],
+            [
+              891,
+              232
+            ],
+            [
+              859,
+              177
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "snow-pines-6",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            31,
+            13
+          ],
+          "groundFrontPixels": [
+            1040,
+            414
+          ],
+          "polygonPixels": [
+            [
+              1009,
+              283
+            ],
+            [
+              1062,
+              277
+            ],
+            [
+              1110,
+              342
+            ],
+            [
+              1102,
+              389
+            ],
+            [
+              1040,
+              414
+            ],
+            [
+              991,
+              368
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "snow-pines-7",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            43,
+            6
+          ],
+          "groundFrontPixels": [
+            1412,
+            223
+          ],
+          "polygonPixels": [
+            [
+              1376,
+              87
+            ],
+            [
+              1440,
+              72
+            ],
+            [
+              1499,
+              144
+            ],
+            [
+              1487,
+              211
+            ],
+            [
+              1412,
+              223
+            ],
+            [
+              1365,
+              173
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "snow-pines-8",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            42,
+            11
+          ],
+          "groundFrontPixels": [
+            1380,
+            355
+          ],
+          "polygonPixels": [
+            [
+              1350,
+              243
+            ],
+            [
+              1399,
+              228
+            ],
+            [
+              1447,
+              281
+            ],
+            [
+              1432,
+              335
+            ],
+            [
+              1380,
+              355
+            ],
+            [
+              1339,
+              306
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "snow-pines-9",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            2,
+            20
+          ],
+          "groundFrontPixels": [
+            98,
+            592
+          ],
+          "polygonPixels": [
+            [
+              25,
+              418
+            ],
+            [
+              98,
+              413
+            ],
+            [
+              153,
+              471
+            ],
+            [
+              155,
+              548
+            ],
+            [
+              98,
+              592
+            ],
+            [
+              34,
+              556
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "snow-pines-10",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            6,
+            20
+          ],
+          "groundFrontPixels": [
+            222,
+            605
+          ],
+          "polygonPixels": [
+            [
+              182,
+              459
+            ],
+            [
+              238,
+              453
+            ],
+            [
+              290,
+              522
+            ],
+            [
+              282,
+              588
+            ],
+            [
+              222,
+              605
+            ],
+            [
+              173,
+              552
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "snow-pines-11",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            17,
+            24
+          ],
+          "groundFrontPixels": [
+            584,
+            712
+          ],
+          "polygonPixels": [
+            [
+              529,
+              568
+            ],
+            [
+              593,
+              561
+            ],
+            [
+              647,
+              616
+            ],
+            [
+              641,
+              676
+            ],
+            [
+              584,
+              712
+            ],
+            [
+              527,
+              666
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "snow-pines-12",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            30,
+            22
+          ],
+          "groundFrontPixels": [
+            1009,
+            665
+          ],
+          "polygonPixels": [
+            [
+              988,
+              554
+            ],
+            [
+              1045,
+              540
+            ],
+            [
+              1086,
+              594
+            ],
+            [
+              1073,
+              653
+            ],
+            [
+              1009,
+              665
+            ],
+            [
+              975,
+              609
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "snow-pines-13",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            40,
+            22
+          ],
+          "groundFrontPixels": [
+            1302,
+            658
+          ],
+          "polygonPixels": [
+            [
+              1283,
+              533
+            ],
+            [
+              1331,
+              532
+            ],
+            [
+              1375,
+              586
+            ],
+            [
+              1363,
+              643
+            ],
+            [
+              1302,
+              658
+            ],
+            [
+              1274,
+              606
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "snow-pines-14",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            48,
+            24
+          ],
+          "groundFrontPixels": [
+            1560,
+            713
+          ],
+          "polygonPixels": [
+            [
+              1480,
+              554
+            ],
+            [
+              1546,
+              536
+            ],
+            [
+              1618,
+              593
+            ],
+            [
+              1618,
+              679
+            ],
+            [
+              1560,
+              713
+            ],
+            [
+              1491,
+              672
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "snow-pines-15",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            13,
+            30
+          ],
+          "groundFrontPixels": [
+            466,
+            873
+          ],
+          "polygonPixels": [
+            [
+              421,
+              747
+            ],
+            [
+              483,
+              730
+            ],
+            [
+              539,
+              790
+            ],
+            [
+              529,
+              857
+            ],
+            [
+              466,
+              873
+            ],
+            [
+              414,
+              820
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "snow-pines-16",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            35,
+            31
+          ],
+          "groundFrontPixels": [
+            1156,
+            929
+          ],
+          "polygonPixels": [
+            [
+              1110,
+              799
+            ],
+            [
+              1183,
+              780
+            ],
+            [
+              1258,
+              849
+            ],
+            [
+              1250,
+              921
+            ],
+            [
+              1156,
+              929
+            ],
+            [
+              1100,
+              875
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "snow-pines-17",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            21,
+            31
+          ],
+          "groundFrontPixels": [
+            695,
+            936
+          ],
+          "polygonPixels": [
+            [
+              660,
+              828
+            ],
+            [
+              716,
+              811
+            ],
+            [
+              771,
+              858
+            ],
+            [
+              766,
+              930
+            ],
+            [
+              695,
+              936
+            ],
+            [
+              645,
+              892
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "snow-pines-18",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            4,
+            31
+          ],
+          "groundFrontPixels": [
+            174,
+            926
+          ],
+          "polygonPixels": [
+            [
+              20,
+              789
+            ],
+            [
+              107,
+              775
+            ],
+            [
+              190,
+              844
+            ],
+            [
+              174,
+              926
+            ],
+            [
+              20,
+              926
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    }
+  ]
+}
