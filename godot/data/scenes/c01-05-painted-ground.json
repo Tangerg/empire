@@ -1,0 +1,4909 @@
+{
+  "levelId": "c01-05",
+  "levelSourceSha256": "69f0b09cbe9d5daae16e4f36a063b3168af38146a5a7a0b6607c19b2be3656ab",
+  "resourcePath": "res://assets/native/scenes/reed-village.png",
+  "pixelSize": [
+    1651,
+    953
+  ],
+  "worldScale": 1.25,
+  "originPixels": [
+    20,
+    32
+  ],
+  "cellXPixels": [
+    32,
+    0
+  ],
+  "cellYPixels": [
+    0,
+    28
+  ],
+  "occluders": [
+    {
+      "id": "northwest-slate-cottage",
+      "selectionCell": [
+        13,
+        8
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "contactCell": [
+            12,
+            7
+          ],
+          "groundFrontPixels": [
+            423,
+            254
+          ],
+          "polygonPixels": [
+            [
+              357,
+              198
+            ],
+            [
+              400,
+              156
+            ],
+            [
+              450,
+              165
+            ],
+            [
+              489,
+              201
+            ],
+            [
+              424,
+              229
+            ],
+            [
+              397,
+              190
+            ],
+            [
+              366,
+              211
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "closed-wall-body",
+          "contactCell": [
+            12,
+            7
+          ],
+          "groundFrontPixels": [
+            423,
+            254
+          ],
+          "polygonPixels": [
+            [
+              369,
+              203
+            ],
+            [
+              397,
+              176
+            ],
+            [
+              423,
+              224
+            ],
+            [
+              479,
+              207
+            ],
+            [
+              478,
+              238
+            ],
+            [
+              424,
+              253
+            ],
+            [
+              370,
+              235
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                430,
+                228
+              ],
+              [
+                472,
+                214
+              ],
+              [
+                472,
+                235
+              ],
+              [
+                430,
+                247
+              ]
+            ]
+          }
+        },
+        {
+          "id": "chimney",
+          "contactCell": [
+            12,
+            7
+          ],
+          "groundFrontPixels": [
+            423,
+            254
+          ],
+          "polygonPixels": [
+            [
+              429,
+              137
+            ],
+            [
+              441,
+              132
+            ],
+            [
+              452,
+              138
+            ],
+            [
+              451,
+              164
+            ],
+            [
+              441,
+              169
+            ],
+            [
+              431,
+              162
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "north-red-cottage",
+      "selectionCell": [
+        23,
+        9
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "contactCell": [
+            23,
+            8
+          ],
+          "groundFrontPixels": [
+            776,
+            258
+          ],
+          "polygonPixels": [
+            [
+              694,
+              192
+            ],
+            [
+              747,
+              143
+            ],
+            [
+              791,
+              150
+            ],
+            [
+              842,
+              195
+            ],
+            [
+              782,
+              218
+            ],
+            [
+              744,
+              179
+            ],
+            [
+              707,
+              210
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "closed-wall-body",
+          "contactCell": [
+            23,
+            8
+          ],
+          "groundFrontPixels": [
+            776,
+            258
+          ],
+          "polygonPixels": [
+            [
+              706,
+              203
+            ],
+            [
+              742,
+              169
+            ],
+            [
+              779,
+              213
+            ],
+            [
+              834,
+              196
+            ],
+            [
+              832,
+              238
+            ],
+            [
+              776,
+              256
+            ],
+            [
+              705,
+              236
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                783,
+                218
+              ],
+              [
+                826,
+                203
+              ],
+              [
+                826,
+                236
+              ],
+              [
+                783,
+                250
+              ]
+            ]
+          }
+        },
+        {
+          "id": "chimney",
+          "contactCell": [
+            23,
+            8
+          ],
+          "groundFrontPixels": [
+            776,
+            258
+          ],
+          "polygonPixels": [
+            [
+              799,
+              142
+            ],
+            [
+              811,
+              136
+            ],
+            [
+              822,
+              142
+            ],
+            [
+              821,
+              173
+            ],
+            [
+              808,
+              179
+            ],
+            [
+              800,
+              171
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "northeast-thatch-cottage",
+      "selectionCell": [
+        34,
+        10
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "contactCell": [
+            35,
+            9
+          ],
+          "groundFrontPixels": [
+            1170,
+            290
+          ],
+          "polygonPixels": [
+            [
+              1106,
+              229
+            ],
+            [
+              1158,
+              186
+            ],
+            [
+              1207,
+              178
+            ],
+            [
+              1245,
+              224
+            ],
+            [
+              1173,
+              250
+            ],
+            [
+              1146,
+              215
+            ],
+            [
+              1122,
+              242
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "closed-wall-body",
+          "contactCell": [
+            35,
+            9
+          ],
+          "groundFrontPixels": [
+            1170,
+            290
+          ],
+          "polygonPixels": [
+            [
+              1120,
+              235
+            ],
+            [
+              1148,
+              212
+            ],
+            [
+              1174,
+              247
+            ],
+            [
+              1220,
+              232
+            ],
+            [
+              1247,
+              241
+            ],
+            [
+              1260,
+              235
+            ],
+            [
+              1260,
+              266
+            ],
+            [
+              1170,
+              287
+            ],
+            [
+              1118,
+              267
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1127,
+                243
+              ],
+              [
+                1166,
+                257
+              ],
+              [
+                1166,
+                279
+              ],
+              [
+                1127,
+                265
+              ]
+            ]
+          }
+        },
+        {
+          "id": "chimney",
+          "contactCell": [
+            35,
+            9
+          ],
+          "groundFrontPixels": [
+            1170,
+            290
+          ],
+          "polygonPixels": [
+            [
+              1213,
+              186
+            ],
+            [
+              1228,
+              180
+            ],
+            [
+              1240,
+              186
+            ],
+            [
+              1240,
+              229
+            ],
+            [
+              1225,
+              235
+            ],
+            [
+              1215,
+              227
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "west-red-cottage",
+      "selectionCell": [
+        12,
+        15
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "contactCell": [
+            12,
+            14
+          ],
+          "groundFrontPixels": [
+            426,
+            446
+          ],
+          "polygonPixels": [
+            [
+              358,
+              385
+            ],
+            [
+              409,
+              345
+            ],
+            [
+              438,
+              349
+            ],
+            [
+              487,
+              395
+            ],
+            [
+              431,
+              418
+            ],
+            [
+              400,
+              379
+            ],
+            [
+              367,
+              399
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "closed-wall-body",
+          "contactCell": [
+            12,
+            14
+          ],
+          "groundFrontPixels": [
+            426,
+            446
+          ],
+          "polygonPixels": [
+            [
+              371,
+              396
+            ],
+            [
+              400,
+              369
+            ],
+            [
+              429,
+              414
+            ],
+            [
+              480,
+              397
+            ],
+            [
+              480,
+              424
+            ],
+            [
+              428,
+              445
+            ],
+            [
+              372,
+              425
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                381,
+                404
+              ],
+              [
+                420,
+                421
+              ],
+              [
+                420,
+                436
+              ],
+              [
+                381,
+                422
+              ]
+            ]
+          }
+        },
+        {
+          "id": "chimney",
+          "contactCell": [
+            12,
+            14
+          ],
+          "groundFrontPixels": [
+            426,
+            446
+          ],
+          "polygonPixels": [
+            [
+              409,
+              330
+            ],
+            [
+              421,
+              324
+            ],
+            [
+              434,
+              331
+            ],
+            [
+              433,
+              356
+            ],
+            [
+              421,
+              361
+            ],
+            [
+              411,
+              353
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "east-slate-cottage",
+      "selectionCell": [
+        39,
+        17
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "contactCell": [
+            40,
+            16
+          ],
+          "groundFrontPixels": [
+            1317,
+            489
+          ],
+          "polygonPixels": [
+            [
+              1247,
+              421
+            ],
+            [
+              1290,
+              386
+            ],
+            [
+              1340,
+              390
+            ],
+            [
+              1393,
+              435
+            ],
+            [
+              1326,
+              462
+            ],
+            [
+              1288,
+              430
+            ],
+            [
+              1257,
+              439
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "closed-wall-body",
+          "contactCell": [
+            40,
+            16
+          ],
+          "groundFrontPixels": [
+            1317,
+            489
+          ],
+          "polygonPixels": [
+            [
+              1260,
+              438
+            ],
+            [
+              1291,
+              417
+            ],
+            [
+              1325,
+              456
+            ],
+            [
+              1379,
+              438
+            ],
+            [
+              1377,
+              468
+            ],
+            [
+              1319,
+              487
+            ],
+            [
+              1259,
+              466
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1268,
+                445
+              ],
+              [
+                1313,
+                462
+              ],
+              [
+                1313,
+                479
+              ],
+              [
+                1268,
+                464
+              ]
+            ]
+          }
+        },
+        {
+          "id": "chimney",
+          "contactCell": [
+            40,
+            16
+          ],
+          "groundFrontPixels": [
+            1317,
+            489
+          ],
+          "polygonPixels": [
+            [
+              1285,
+              372
+            ],
+            [
+              1299,
+              366
+            ],
+            [
+              1312,
+              374
+            ],
+            [
+              1311,
+              407
+            ],
+            [
+              1297,
+              411
+            ],
+            [
+              1287,
+              401
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "southwest-red-cottage",
+      "selectionCell": [
+        21,
+        23
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "contactCell": [
+            22,
+            22
+          ],
+          "groundFrontPixels": [
+            737,
+            666
+          ],
+          "polygonPixels": [
+            [
+              651,
+              603
+            ],
+            [
+              714,
+              556
+            ],
+            [
+              761,
+              563
+            ],
+            [
+              819,
+              611
+            ],
+            [
+              744,
+              638
+            ],
+            [
+              706,
+              596
+            ],
+            [
+              667,
+              620
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "closed-wall-body",
+          "contactCell": [
+            22,
+            22
+          ],
+          "groundFrontPixels": [
+            737,
+            666
+          ],
+          "polygonPixels": [
+            [
+              667,
+              612
+            ],
+            [
+              706,
+              583
+            ],
+            [
+              743,
+              631
+            ],
+            [
+              807,
+              615
+            ],
+            [
+              807,
+              640
+            ],
+            [
+              739,
+              663
+            ],
+            [
+              666,
+              643
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                674,
+                618
+              ],
+              [
+                733,
+                640
+              ],
+              [
+                733,
+                656
+              ],
+              [
+                674,
+                640
+              ]
+            ]
+          }
+        },
+        {
+          "id": "chimney",
+          "contactCell": [
+            22,
+            22
+          ],
+          "groundFrontPixels": [
+            737,
+            666
+          ],
+          "polygonPixels": [
+            [
+              721,
+              549
+            ],
+            [
+              736,
+              542
+            ],
+            [
+              750,
+              550
+            ],
+            [
+              749,
+              580
+            ],
+            [
+              735,
+              585
+            ],
+            [
+              724,
+              575
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "southeast-slate-cottage",
+      "selectionCell": [
+        34,
+        23
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "roof",
+          "contactCell": [
+            35,
+            22
+          ],
+          "groundFrontPixels": [
+            1169,
+            661
+          ],
+          "polygonPixels": [
+            [
+              1087,
+              592
+            ],
+            [
+              1127,
+              544
+            ],
+            [
+              1181,
+              552
+            ],
+            [
+              1226,
+              597
+            ],
+            [
+              1166,
+              626
+            ],
+            [
+              1125,
+              594
+            ],
+            [
+              1100,
+              610
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "closed-wall-body",
+          "contactCell": [
+            35,
+            22
+          ],
+          "groundFrontPixels": [
+            1169,
+            661
+          ],
+          "polygonPixels": [
+            [
+              1100,
+              608
+            ],
+            [
+              1126,
+              588
+            ],
+            [
+              1167,
+              622
+            ],
+            [
+              1218,
+              606
+            ],
+            [
+              1225,
+              641
+            ],
+            [
+              1169,
+              659
+            ],
+            [
+              1100,
+              639
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1108,
+                615
+              ],
+              [
+                1160,
+                632
+              ],
+              [
+                1160,
+                652
+              ],
+              [
+                1108,
+                634
+              ]
+            ]
+          }
+        },
+        {
+          "id": "chimney",
+          "contactCell": [
+            35,
+            22
+          ],
+          "groundFrontPixels": [
+            1169,
+            661
+          ],
+          "polygonPixels": [
+            [
+              1203,
+              550
+            ],
+            [
+              1219,
+              544
+            ],
+            [
+              1231,
+              552
+            ],
+            [
+              1229,
+              631
+            ],
+            [
+              1214,
+              639
+            ],
+            [
+              1204,
+              628
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "northwest-watch-shelter",
+      "selectionCell": [
+        5,
+        6
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "canopy-roof",
+          "contactCell": [
+            5,
+            6
+          ],
+          "groundFrontPixels": [
+            180,
+            208
+          ],
+          "polygonPixels": [
+            [
+              142,
+              141
+            ],
+            [
+              199,
+              119
+            ],
+            [
+              238,
+              137
+            ],
+            [
+              182,
+              162
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "post-1",
+          "contactCell": [
+            3,
+            5
+          ],
+          "groundFrontPixels": [
+            146,
+            198
+          ],
+          "polygonPixels": [
+            [
+              146,
+              150
+            ],
+            [
+              151,
+              150
+            ],
+            [
+              151,
+              195
+            ],
+            [
+              146,
+              198
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "post-2",
+          "contactCell": [
+            5,
+            6
+          ],
+          "groundFrontPixels": [
+            182,
+            208
+          ],
+          "polygonPixels": [
+            [
+              177,
+              161
+            ],
+            [
+              182,
+              161
+            ],
+            [
+              182,
+              208
+            ],
+            [
+              177,
+              208
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "post-3",
+          "contactCell": [
+            6,
+            5
+          ],
+          "groundFrontPixels": [
+            224,
+            190
+          ],
+          "polygonPixels": [
+            [
+              224,
+              143
+            ],
+            [
+              229,
+              142
+            ],
+            [
+              229,
+              187
+            ],
+            [
+              224,
+              190
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "rail-1",
+          "contactCell": [
+            4,
+            5
+          ],
+          "groundFrontPixels": [
+            178,
+            199
+          ],
+          "polygonPixels": [
+            [
+              150,
+              180
+            ],
+            [
+              178,
+              194
+            ],
+            [
+              178,
+              199
+            ],
+            [
+              150,
+              186
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                153.92,
+                182.73
+              ],
+              [
+                174.08,
+                192.81
+              ],
+              [
+                174.08,
+                196.41
+              ],
+              [
+                153.92,
+                187.05
+              ]
+            ]
+          }
+        },
+        {
+          "id": "rail-2",
+          "contactCell": [
+            5,
+            5
+          ],
+          "groundFrontPixels": [
+            182,
+            198
+          ],
+          "polygonPixels": [
+            [
+              182,
+              191
+            ],
+            [
+              224,
+              174
+            ],
+            [
+              224,
+              180
+            ],
+            [
+              182,
+              198
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                187.88,
+                189.53
+              ],
+              [
+                218.12,
+                177.29
+              ],
+              [
+                218.12,
+                181.61
+              ],
+              [
+                187.88,
+                194.57
+              ]
+            ]
+          }
+        },
+        {
+          "id": "stored-supply-1",
+          "contactCell": [
+            4,
+            5
+          ],
+          "groundFrontPixels": [
+            164,
+            197
+          ],
+          "polygonPixels": [
+            [
+              152,
+              173
+            ],
+            [
+              169,
+              166
+            ],
+            [
+              179,
+              173
+            ],
+            [
+              179,
+              190
+            ],
+            [
+              164,
+              197
+            ],
+            [
+              153,
+              190
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "northeast-watch-shelter",
+      "selectionCell": [
+        48,
+        13
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "canopy-roof",
+          "contactCell": [
+            48,
+            12
+          ],
+          "groundFrontPixels": [
+            1558,
+            392
+          ],
+          "polygonPixels": [
+            [
+              1519,
+              316
+            ],
+            [
+              1577,
+              292
+            ],
+            [
+              1617,
+              309
+            ],
+            [
+              1559,
+              336
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "post-1",
+          "contactCell": [
+            47,
+            12
+          ],
+          "groundFrontPixels": [
+            1524,
+            373
+          ],
+          "polygonPixels": [
+            [
+              1524,
+              326
+            ],
+            [
+              1530,
+              325
+            ],
+            [
+              1529,
+              370
+            ],
+            [
+              1524,
+              373
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "post-2",
+          "contactCell": [
+            48,
+            12
+          ],
+          "groundFrontPixels": [
+            1561,
+            392
+          ],
+          "polygonPixels": [
+            [
+              1556,
+              337
+            ],
+            [
+              1562,
+              336
+            ],
+            [
+              1561,
+              392
+            ],
+            [
+              1555,
+              392
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "post-3",
+          "contactCell": [
+            49,
+            12
+          ],
+          "groundFrontPixels": [
+            1603,
+            370
+          ],
+          "polygonPixels": [
+            [
+              1604,
+              319
+            ],
+            [
+              1610,
+              317
+            ],
+            [
+              1609,
+              366
+            ],
+            [
+              1603,
+              370
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "rail-1",
+          "contactCell": [
+            48,
+            12
+          ],
+          "groundFrontPixels": [
+            1557,
+            374
+          ],
+          "polygonPixels": [
+            [
+              1529,
+              353
+            ],
+            [
+              1557,
+              368
+            ],
+            [
+              1557,
+              374
+            ],
+            [
+              1529,
+              359
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1532.92,
+                355.94
+              ],
+              [
+                1553.08,
+                366.74
+              ],
+              [
+                1553.08,
+                371.06
+              ],
+              [
+                1532.92,
+                360.26
+              ]
+            ]
+          }
+        },
+        {
+          "id": "rail-2",
+          "contactCell": [
+            48,
+            12
+          ],
+          "groundFrontPixels": [
+            1562,
+            376
+          ],
+          "polygonPixels": [
+            [
+              1562,
+              369
+            ],
+            [
+              1605,
+              350
+            ],
+            [
+              1605,
+              356
+            ],
+            [
+              1562,
+              376
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1568.02,
+                367.25
+              ],
+              [
+                1598.98,
+                353.57
+              ],
+              [
+                1598.98,
+                357.89
+              ],
+              [
+                1568.02,
+                372.29
+              ]
+            ]
+          }
+        },
+        {
+          "id": "stored-supply-1",
+          "contactCell": [
+            48,
+            12
+          ],
+          "groundFrontPixels": [
+            1579,
+            383
+          ],
+          "polygonPixels": [
+            [
+              1569,
+              351
+            ],
+            [
+              1586,
+              344
+            ],
+            [
+              1598,
+              353
+            ],
+            [
+              1596,
+              375
+            ],
+            [
+              1579,
+              383
+            ],
+            [
+              1569,
+              375
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "southwest-bridge-shelter",
+      "selectionCell": [
+        5,
+        22
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "canopy-roof",
+          "contactCell": [
+            3,
+            23
+          ],
+          "groundFrontPixels": [
+            141,
+            678
+          ],
+          "polygonPixels": [
+            [
+              102,
+              605
+            ],
+            [
+              143,
+              588
+            ],
+            [
+              184,
+              607
+            ],
+            [
+              141,
+              626
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "post-1",
+          "contactCell": [
+            2,
+            22
+          ],
+          "groundFrontPixels": [
+            107,
+            663
+          ],
+          "polygonPixels": [
+            [
+              107,
+              615
+            ],
+            [
+              112,
+              615
+            ],
+            [
+              112,
+              660
+            ],
+            [
+              107,
+              663
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "post-2",
+          "contactCell": [
+            3,
+            23
+          ],
+          "groundFrontPixels": [
+            138,
+            678
+          ],
+          "polygonPixels": [
+            [
+              138,
+              627
+            ],
+            [
+              144,
+              626
+            ],
+            [
+              144,
+              677
+            ],
+            [
+              138,
+              678
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "post-3",
+          "contactCell": [
+            4,
+            22
+          ],
+          "groundFrontPixels": [
+            175,
+            662
+          ],
+          "polygonPixels": [
+            [
+              176,
+              614
+            ],
+            [
+              182,
+              612
+            ],
+            [
+              181,
+              658
+            ],
+            [
+              175,
+              662
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "rail-1",
+          "contactCell": [
+            3,
+            22
+          ],
+          "groundFrontPixels": [
+            139,
+            663
+          ],
+          "polygonPixels": [
+            [
+              112,
+              644
+            ],
+            [
+              139,
+              657
+            ],
+            [
+              139,
+              663
+            ],
+            [
+              112,
+              650
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                115.78,
+                646.66
+              ],
+              [
+                135.22,
+                656.02
+              ],
+              [
+                135.22,
+                660.34
+              ],
+              [
+                115.78,
+                650.98
+              ]
+            ]
+          }
+        },
+        {
+          "id": "rail-2",
+          "contactCell": [
+            3,
+            22
+          ],
+          "groundFrontPixels": [
+            144,
+            664
+          ],
+          "polygonPixels": [
+            [
+              144,
+              657
+            ],
+            [
+              177,
+              641
+            ],
+            [
+              177,
+              647
+            ],
+            [
+              144,
+              664
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                148.62,
+                655.67
+              ],
+              [
+                172.38,
+                644.15
+              ],
+              [
+                172.38,
+                648.47
+              ],
+              [
+                148.62,
+                660.71
+              ]
+            ]
+          }
+        },
+        {
+          "id": "stored-supply-1",
+          "contactCell": [
+            3,
+            22
+          ],
+          "groundFrontPixels": [
+            126,
+            657
+          ],
+          "polygonPixels": [
+            [
+              113,
+              631
+            ],
+            [
+              126,
+              625
+            ],
+            [
+              137,
+              632
+            ],
+            [
+              137,
+              650
+            ],
+            [
+              126,
+              657
+            ],
+            [
+              114,
+              651
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "southeast-watch-shelter",
+      "selectionCell": [
+        46,
+        25
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "canopy-roof",
+          "contactCell": [
+            46,
+            24
+          ],
+          "groundFrontPixels": [
+            1516,
+            728
+          ],
+          "polygonPixels": [
+            [
+              1467,
+              651
+            ],
+            [
+              1511,
+              633
+            ],
+            [
+              1561,
+              651
+            ],
+            [
+              1518,
+              673
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "post-1",
+          "contactCell": [
+            45,
+            24
+          ],
+          "groundFrontPixels": [
+            1471,
+            715
+          ],
+          "polygonPixels": [
+            [
+              1472,
+              662
+            ],
+            [
+              1478,
+              661
+            ],
+            [
+              1477,
+              711
+            ],
+            [
+              1471,
+              715
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "post-2",
+          "contactCell": [
+            46,
+            24
+          ],
+          "groundFrontPixels": [
+            1518,
+            728
+          ],
+          "polygonPixels": [
+            [
+              1513,
+              675
+            ],
+            [
+              1519,
+              674
+            ],
+            [
+              1518,
+              728
+            ],
+            [
+              1512,
+              728
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "post-3",
+          "contactCell": [
+            47,
+            24
+          ],
+          "groundFrontPixels": [
+            1551,
+            714
+          ],
+          "polygonPixels": [
+            [
+              1553,
+              662
+            ],
+            [
+              1559,
+              660
+            ],
+            [
+              1557,
+              710
+            ],
+            [
+              1551,
+              714
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "rail-1",
+          "contactCell": [
+            46,
+            24
+          ],
+          "groundFrontPixels": [
+            1514,
+            717
+          ],
+          "polygonPixels": [
+            [
+              1477,
+              694
+            ],
+            [
+              1514,
+              712
+            ],
+            [
+              1514,
+              717
+            ],
+            [
+              1477,
+              700
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1482.18,
+                697.29
+              ],
+              [
+                1508.82,
+                710.25
+              ],
+              [
+                1508.82,
+                713.85
+              ],
+              [
+                1482.18,
+                701.61
+              ]
+            ]
+          }
+        },
+        {
+          "id": "rail-2",
+          "contactCell": [
+            46,
+            24
+          ],
+          "groundFrontPixels": [
+            1519,
+            718
+          ],
+          "polygonPixels": [
+            [
+              1519,
+              712
+            ],
+            [
+              1553,
+              694
+            ],
+            [
+              1553,
+              700
+            ],
+            [
+              1519,
+              718
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1523.76,
+                710.32
+              ],
+              [
+                1548.24,
+                697.36
+              ],
+              [
+                1548.24,
+                701.68
+              ],
+              [
+                1523.76,
+                714.64
+              ]
+            ]
+          }
+        },
+        {
+          "id": "stored-supply-1",
+          "contactCell": [
+            47,
+            24
+          ],
+          "groundFrontPixels": [
+            1552,
+            728
+          ],
+          "polygonPixels": [
+            [
+              1532,
+              685
+            ],
+            [
+              1555,
+              676
+            ],
+            [
+              1578,
+              689
+            ],
+            [
+              1577,
+              716
+            ],
+            [
+              1552,
+              728
+            ],
+            [
+              1531,
+              715
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "central-supply-cart",
+      "selectionCell": [
+        31,
+        14
+      ],
+      "ownsMapStructureBody": true,
+      "parts": [
+        {
+          "id": "loaded-cart-body",
+          "contactCell": [
+            31,
+            13
+          ],
+          "groundFrontPixels": [
+            1031,
+            421
+          ],
+          "polygonPixels": [
+            [
+              1001,
+              383
+            ],
+            [
+              1045,
+              365
+            ],
+            [
+              1076,
+              378
+            ],
+            [
+              1073,
+              398
+            ],
+            [
+              1031,
+              415
+            ],
+            [
+              1005,
+              405
+            ]
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1010,
+                390
+              ],
+              [
+                1047,
+                376
+              ],
+              [
+                1068,
+                382
+              ],
+              [
+                1065,
+                394
+              ],
+              [
+                1031,
+                408
+              ],
+              [
+                1012,
+                401
+              ]
+            ]
+          }
+        },
+        {
+          "id": "near-wheel",
+          "contactCell": [
+            31,
+            13
+          ],
+          "groundFrontPixels": [
+            1026,
+            422
+          ],
+          "polygonPixels": [
+            [
+              1015,
+              400
+            ],
+            [
+              1023,
+              397
+            ],
+            [
+              1032,
+              402
+            ],
+            [
+              1033,
+              413
+            ],
+            [
+              1026,
+              422
+            ],
+            [
+              1018,
+              421
+            ],
+            [
+              1013,
+              414
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "right-wheel",
+          "contactCell": [
+            32,
+            13
+          ],
+          "groundFrontPixels": [
+            1050,
+            412
+          ],
+          "polygonPixels": [
+            [
+              1044,
+              391
+            ],
+            [
+              1052,
+              389
+            ],
+            [
+              1059,
+              396
+            ],
+            [
+              1057,
+              406
+            ],
+            [
+              1050,
+              412
+            ],
+            [
+              1043,
+              407
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "handles",
+          "contactCell": [
+            33,
+            12
+          ],
+          "groundFrontPixels": [
+            1093,
+            385
+          ],
+          "polygonPixels": [
+            [
+              1071,
+              376
+            ],
+            [
+              1090,
+              366
+            ],
+            [
+              1094,
+              369
+            ],
+            [
+              1074,
+              382
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "northeast-border-boulder",
+      "parts": [
+        {
+          "id": "stone",
+          "contactCell": [
+            46,
+            4
+          ],
+          "groundFrontPixels": [
+            1496,
+            149
+          ],
+          "polygonPixels": [
+            [
+              1458,
+              127
+            ],
+            [
+              1469,
+              106
+            ],
+            [
+              1486,
+              92
+            ],
+            [
+              1504,
+              97
+            ],
+            [
+              1512,
+              116
+            ],
+            [
+              1519,
+              138
+            ],
+            [
+              1496,
+              149
+            ],
+            [
+              1469,
+              145
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "northwest-well-stone",
+      "parts": [
+        {
+          "id": "stone",
+          "contactCell": [
+            17,
+            9
+          ],
+          "groundFrontPixels": [
+            594,
+            296
+          ],
+          "polygonPixels": [
+            [
+              580,
+              280
+            ],
+            [
+              587,
+              267
+            ],
+            [
+              598,
+              268
+            ],
+            [
+              607,
+              278
+            ],
+            [
+              608,
+              288
+            ],
+            [
+              594,
+              296
+            ],
+            [
+              581,
+              289
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "west-bank-boulders",
+      "parts": [
+        {
+          "id": "stone",
+          "contactCell": [
+            10,
+            17
+          ],
+          "groundFrontPixels": [
+            356,
+            532
+          ],
+          "polygonPixels": [
+            [
+              334,
+              516
+            ],
+            [
+              342,
+              495
+            ],
+            [
+              361,
+              483
+            ],
+            [
+              382,
+              491
+            ],
+            [
+              389,
+              508
+            ],
+            [
+              403,
+              523
+            ],
+            [
+              389,
+              544
+            ],
+            [
+              359,
+              547
+            ],
+            [
+              337,
+              535
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bridge-east-abutment",
+      "parts": [
+        {
+          "id": "stone",
+          "contactCell": [
+            12,
+            21
+          ],
+          "groundFrontPixels": [
+            421,
+            632
+          ],
+          "polygonPixels": [
+            [
+              408,
+              585
+            ],
+            [
+              414,
+              560
+            ],
+            [
+              432,
+              553
+            ],
+            [
+              443,
+              564
+            ],
+            [
+              446,
+              583
+            ],
+            [
+              449,
+              605
+            ],
+            [
+              433,
+              621
+            ],
+            [
+              413,
+              610
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "southwest-bank-boulder",
+      "parts": [
+        {
+          "id": "stone",
+          "contactCell": [
+            2,
+            21
+          ],
+          "groundFrontPixels": [
+            95,
+            629
+          ],
+          "polygonPixels": [
+            [
+              65,
+              600
+            ],
+            [
+              72,
+              581
+            ],
+            [
+              87,
+              570
+            ],
+            [
+              105,
+              580
+            ],
+            [
+              108,
+              596
+            ],
+            [
+              114,
+              614
+            ],
+            [
+              95,
+              629
+            ],
+            [
+              71,
+              620
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bridge-west-bank-stone",
+      "parts": [
+        {
+          "id": "stone",
+          "contactCell": [
+            8,
+            24
+          ],
+          "groundFrontPixels": [
+            281,
+            710
+          ],
+          "polygonPixels": [
+            [
+              247,
+              682
+            ],
+            [
+              256,
+              659
+            ],
+            [
+              274,
+              651
+            ],
+            [
+              287,
+              668
+            ],
+            [
+              297,
+              689
+            ],
+            [
+              281,
+              710
+            ],
+            [
+              256,
+              703
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dock-bank-stone",
+      "parts": [
+        {
+          "id": "stone",
+          "contactCell": [
+            18,
+            24
+          ],
+          "groundFrontPixels": [
+            601,
+            713
+          ],
+          "polygonPixels": [
+            [
+              570,
+              692
+            ],
+            [
+              581,
+              675
+            ],
+            [
+              601,
+              674
+            ],
+            [
+              616,
+              686
+            ],
+            [
+              625,
+              702
+            ],
+            [
+              601,
+              713
+            ],
+            [
+              575,
+              706
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "south-bank-boulder",
+      "parts": [
+        {
+          "id": "stone",
+          "contactCell": [
+            33,
+            29
+          ],
+          "groundFrontPixels": [
+            1081,
+            844
+          ],
+          "polygonPixels": [
+            [
+              1047,
+              819
+            ],
+            [
+              1056,
+              796
+            ],
+            [
+              1075,
+              790
+            ],
+            [
+              1090,
+              806
+            ],
+            [
+              1099,
+              830
+            ],
+            [
+              1081,
+              844
+            ],
+            [
+              1059,
+              837
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "southeast-bank-stones",
+      "parts": [
+        {
+          "id": "stone",
+          "contactCell": [
+            42,
+            29
+          ],
+          "groundFrontPixels": [
+            1377,
+            868
+          ],
+          "polygonPixels": [
+            [
+              1349,
+              841
+            ],
+            [
+              1361,
+              821
+            ],
+            [
+              1381,
+              815
+            ],
+            [
+              1406,
+              824
+            ],
+            [
+              1428,
+              848
+            ],
+            [
+              1407,
+              865
+            ],
+            [
+              1377,
+              868
+            ],
+            [
+              1353,
+              857
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "northwest-well",
+      "parts": [
+        {
+          "id": "material",
+          "contactCell": [
+            11,
+            10
+          ],
+          "groundFrontPixels": [
+            373,
+            328
+          ],
+          "polygonPixels": [
+            [
+              349,
+              301
+            ],
+            [
+              366,
+              292
+            ],
+            [
+              389,
+              298
+            ],
+            [
+              393,
+              315
+            ],
+            [
+              387,
+              325
+            ],
+            [
+              370,
+              329
+            ],
+            [
+              353,
+              322
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "thatch-cottage-well",
+      "parts": [
+        {
+          "id": "material",
+          "contactCell": [
+            37,
+            10
+          ],
+          "groundFrontPixels": [
+            1206,
+            334
+          ],
+          "polygonPixels": [
+            [
+              1188,
+              310
+            ],
+            [
+              1204,
+              303
+            ],
+            [
+              1224,
+              311
+            ],
+            [
+              1224,
+              325
+            ],
+            [
+              1207,
+              332
+            ],
+            [
+              1188,
+              325
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "west-cottage-crates",
+      "parts": [
+        {
+          "id": "material",
+          "contactCell": [
+            13,
+            15
+          ],
+          "groundFrontPixels": [
+            463,
+            454
+          ],
+          "polygonPixels": [
+            [
+              447,
+              427
+            ],
+            [
+              463,
+              418
+            ],
+            [
+              481,
+              429
+            ],
+            [
+              480,
+              447
+            ],
+            [
+              463,
+              453
+            ],
+            [
+              448,
+              443
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "southwest-cottage-crates",
+      "parts": [
+        {
+          "id": "material",
+          "contactCell": [
+            22,
+            22
+          ],
+          "groundFrontPixels": [
+            748,
+            671
+          ],
+          "polygonPixels": [
+            [
+              732,
+              636
+            ],
+            [
+              751,
+              630
+            ],
+            [
+              770,
+              639
+            ],
+            [
+              769,
+              664
+            ],
+            [
+              748,
+              671
+            ],
+            [
+              733,
+              661
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "southeast-cottage-crates",
+      "parts": [
+        {
+          "id": "material",
+          "contactCell": [
+            33,
+            22
+          ],
+          "groundFrontPixels": [
+            1102,
+            657
+          ],
+          "polygonPixels": [
+            [
+              1085,
+              621
+            ],
+            [
+              1102,
+              615
+            ],
+            [
+              1120,
+              625
+            ],
+            [
+              1119,
+              649
+            ],
+            [
+              1102,
+              657
+            ],
+            [
+              1086,
+              646
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "northwest-willow",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            8,
+            6
+          ],
+          "groundFrontPixels": [
+            286,
+            219
+          ],
+          "polygonPixels": [
+            [
+              242,
+              184
+            ],
+            [
+              248,
+              151
+            ],
+            [
+              260,
+              143
+            ],
+            [
+              264,
+              121
+            ],
+            [
+              283,
+              111
+            ],
+            [
+              294,
+              124
+            ],
+            [
+              307,
+              120
+            ],
+            [
+              318,
+              143
+            ],
+            [
+              323,
+              161
+            ],
+            [
+              337,
+              174
+            ],
+            [
+              329,
+              195
+            ],
+            [
+              316,
+              202
+            ],
+            [
+              307,
+              216
+            ],
+            [
+              285,
+              208
+            ],
+            [
+              272,
+              220
+            ],
+            [
+              255,
+              207
+            ],
+            [
+              239,
+              208
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "north-clearing-willow",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            17,
+            6
+          ],
+          "groundFrontPixels": [
+            565,
+            216
+          ],
+          "polygonPixels": [
+            [
+              493,
+              166
+            ],
+            [
+              502,
+              132
+            ],
+            [
+              515,
+              119
+            ],
+            [
+              519,
+              98
+            ],
+            [
+              541,
+              88
+            ],
+            [
+              552,
+              69
+            ],
+            [
+              566,
+              76
+            ],
+            [
+              583,
+              74
+            ],
+            [
+              595,
+              99
+            ],
+            [
+              610,
+              101
+            ],
+            [
+              622,
+              126
+            ],
+            [
+              638,
+              137
+            ],
+            [
+              635,
+              159
+            ],
+            [
+              646,
+              175
+            ],
+            [
+              632,
+              195
+            ],
+            [
+              608,
+              199
+            ],
+            [
+              595,
+              212
+            ],
+            [
+              568,
+              206
+            ],
+            [
+              546,
+              215
+            ],
+            [
+              528,
+              201
+            ],
+            [
+              507,
+              204
+            ],
+            [
+              490,
+              185
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "north-door-willow",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            26,
+            7
+          ],
+          "groundFrontPixels": [
+            878,
+            237
+          ],
+          "polygonPixels": [
+            [
+              839,
+              204
+            ],
+            [
+              847,
+              178
+            ],
+            [
+              855,
+              165
+            ],
+            [
+              858,
+              150
+            ],
+            [
+              873,
+              141
+            ],
+            [
+              885,
+              151
+            ],
+            [
+              896,
+              148
+            ],
+            [
+              905,
+              169
+            ],
+            [
+              914,
+              178
+            ],
+            [
+              919,
+              203
+            ],
+            [
+              909,
+              217
+            ],
+            [
+              901,
+              230
+            ],
+            [
+              884,
+              224
+            ],
+            [
+              870,
+              236
+            ],
+            [
+              853,
+              225
+            ],
+            [
+              840,
+              228
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "west-well-willow",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            7,
+            12
+          ],
+          "groundFrontPixels": [
+            269,
+            393
+          ],
+          "polygonPixels": [
+            [
+              222,
+              348
+            ],
+            [
+              229,
+              316
+            ],
+            [
+              239,
+              301
+            ],
+            [
+              241,
+              283
+            ],
+            [
+              258,
+              271
+            ],
+            [
+              274,
+              260
+            ],
+            [
+              288,
+              273
+            ],
+            [
+              301,
+              276
+            ],
+            [
+              306,
+              299
+            ],
+            [
+              320,
+              314
+            ],
+            [
+              324,
+              342
+            ],
+            [
+              315,
+              363
+            ],
+            [
+              306,
+              385
+            ],
+            [
+              284,
+              381
+            ],
+            [
+              270,
+              394
+            ],
+            [
+              248,
+              381
+            ],
+            [
+              230,
+              385
+            ],
+            [
+              217,
+              366
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bridge-landing-willow",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            15,
+            21
+          ],
+          "groundFrontPixels": [
+            526,
+            636
+          ],
+          "polygonPixels": [
+            [
+              467,
+              585
+            ],
+            [
+              473,
+              554
+            ],
+            [
+              485,
+              544
+            ],
+            [
+              489,
+              524
+            ],
+            [
+              505,
+              511
+            ],
+            [
+              521,
+              502
+            ],
+            [
+              536,
+              515
+            ],
+            [
+              548,
+              513
+            ],
+            [
+              559,
+              536
+            ],
+            [
+              573,
+              547
+            ],
+            [
+              580,
+              571
+            ],
+            [
+              576,
+              591
+            ],
+            [
+              586,
+              607
+            ],
+            [
+              568,
+              626
+            ],
+            [
+              546,
+              620
+            ],
+            [
+              529,
+              636
+            ],
+            [
+              510,
+              624
+            ],
+            [
+              490,
+              629
+            ],
+            [
+              474,
+              611
+            ],
+            [
+              459,
+              612
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "central-plaza-willow",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            29,
+            18
+          ],
+          "groundFrontPixels": [
+            961,
+            550
+          ],
+          "polygonPixels": [
+            [
+              901,
+              513
+            ],
+            [
+              907,
+              486
+            ],
+            [
+              921,
+              478
+            ],
+            [
+              928,
+              457
+            ],
+            [
+              948,
+              449
+            ],
+            [
+              963,
+              460
+            ],
+            [
+              979,
+              454
+            ],
+            [
+              993,
+              474
+            ],
+            [
+              1009,
+              483
+            ],
+            [
+              1020,
+              506
+            ],
+            [
+              1010,
+              523
+            ],
+            [
+              1009,
+              539
+            ],
+            [
+              986,
+              537
+            ],
+            [
+              966,
+              549
+            ],
+            [
+              948,
+              539
+            ],
+            [
+              928,
+              546
+            ],
+            [
+              911,
+              532
+            ],
+            [
+              897,
+              533
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "east-front-willow",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            37,
+            16
+          ],
+          "groundFrontPixels": [
+            1206,
+            490
+          ],
+          "polygonPixels": [
+            [
+              1161,
+              451
+            ],
+            [
+              1167,
+              423
+            ],
+            [
+              1177,
+              413
+            ],
+            [
+              1180,
+              390
+            ],
+            [
+              1195,
+              376
+            ],
+            [
+              1206,
+              364
+            ],
+            [
+              1219,
+              379
+            ],
+            [
+              1230,
+              388
+            ],
+            [
+              1234,
+              411
+            ],
+            [
+              1248,
+              429
+            ],
+            [
+              1246,
+              454
+            ],
+            [
+              1235,
+              468
+            ],
+            [
+              1231,
+              486
+            ],
+            [
+              1212,
+              480
+            ],
+            [
+              1196,
+              490
+            ],
+            [
+              1181,
+              477
+            ],
+            [
+              1165,
+              479
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "east-rear-willow",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            40,
+            14
+          ],
+          "groundFrontPixels": [
+            1300,
+            451
+          ],
+          "polygonPixels": [
+            [
+              1241,
+              410
+            ],
+            [
+              1247,
+              382
+            ],
+            [
+              1259,
+              370
+            ],
+            [
+              1262,
+              343
+            ],
+            [
+              1280,
+              331
+            ],
+            [
+              1296,
+              319
+            ],
+            [
+              1311,
+              334
+            ],
+            [
+              1326,
+              338
+            ],
+            [
+              1333,
+              360
+            ],
+            [
+              1347,
+              372
+            ],
+            [
+              1357,
+              398
+            ],
+            [
+              1353,
+              422
+            ],
+            [
+              1336,
+              436
+            ],
+            [
+              1322,
+              451
+            ],
+            [
+              1300,
+              441
+            ],
+            [
+              1281,
+              450
+            ],
+            [
+              1264,
+              436
+            ],
+            [
+              1245,
+              439
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "south-main-bank-willow",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            29,
+            27
+          ],
+          "groundFrontPixels": [
+            969,
+            808
+          ],
+          "polygonPixels": [
+            [
+              905,
+              767
+            ],
+            [
+              911,
+              735
+            ],
+            [
+              924,
+              721
+            ],
+            [
+              927,
+              698
+            ],
+            [
+              943,
+              682
+            ],
+            [
+              956,
+              665
+            ],
+            [
+              971,
+              675
+            ],
+            [
+              985,
+              670
+            ],
+            [
+              998,
+              690
+            ],
+            [
+              1013,
+              701
+            ],
+            [
+              1026,
+              731
+            ],
+            [
+              1034,
+              745
+            ],
+            [
+              1037,
+              772
+            ],
+            [
+              1023,
+              790
+            ],
+            [
+              1004,
+              785
+            ],
+            [
+              986,
+              807
+            ],
+            [
+              963,
+              797
+            ],
+            [
+              943,
+              806
+            ],
+            [
+              927,
+              789
+            ],
+            [
+              908,
+              793
+            ],
+            [
+              896,
+              776
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "southeast-field-willow",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            47,
+            22
+          ],
+          "groundFrontPixels": [
+            1554,
+            655
+          ],
+          "polygonPixels": [
+            [
+              1496,
+              615
+            ],
+            [
+              1501,
+              582
+            ],
+            [
+              1512,
+              567
+            ],
+            [
+              1514,
+              544
+            ],
+            [
+              1530,
+              525
+            ],
+            [
+              1544,
+              502
+            ],
+            [
+              1558,
+              512
+            ],
+            [
+              1577,
+              515
+            ],
+            [
+              1585,
+              538
+            ],
+            [
+              1599,
+              551
+            ],
+            [
+              1612,
+              576
+            ],
+            [
+              1610,
+              596
+            ],
+            [
+              1622,
+              615
+            ],
+            [
+              1606,
+              634
+            ],
+            [
+              1587,
+              635
+            ],
+            [
+              1574,
+              654
+            ],
+            [
+              1550,
+              644
+            ],
+            [
+              1530,
+              652
+            ],
+            [
+              1514,
+              635
+            ],
+            [
+              1497,
+              638
+            ],
+            [
+              1487,
+              621
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "southwest-bank-willow",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            4,
+            29
+          ],
+          "groundFrontPixels": [
+            165,
+            855
+          ],
+          "polygonPixels": [
+            [
+              93,
+              802
+            ],
+            [
+              100,
+              770
+            ],
+            [
+              114,
+              755
+            ],
+            [
+              117,
+              727
+            ],
+            [
+              133,
+              712
+            ],
+            [
+              145,
+              690
+            ],
+            [
+              162,
+              700
+            ],
+            [
+              179,
+              699
+            ],
+            [
+              190,
+              722
+            ],
+            [
+              208,
+              734
+            ],
+            [
+              217,
+              761
+            ],
+            [
+              236,
+              779
+            ],
+            [
+              240,
+              807
+            ],
+            [
+              223,
+              826
+            ],
+            [
+              209,
+              846
+            ],
+            [
+              185,
+              839
+            ],
+            [
+              166,
+              854
+            ],
+            [
+              143,
+              845
+            ],
+            [
+              122,
+              851
+            ],
+            [
+              108,
+              832
+            ],
+            [
+              91,
+              835
+            ],
+            [
+              81,
+              817
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "northwest-border-willow",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            0,
+            7
+          ],
+          "groundFrontPixels": [
+            51,
+            247
+          ],
+          "polygonPixels": [
+            [
+              12,
+              215
+            ],
+            [
+              18,
+              182
+            ],
+            [
+              28,
+              167
+            ],
+            [
+              30,
+              145
+            ],
+            [
+              46,
+              132
+            ],
+            [
+              59,
+              141
+            ],
+            [
+              73,
+              138
+            ],
+            [
+              83,
+              161
+            ],
+            [
+              95,
+              171
+            ],
+            [
+              99,
+              200
+            ],
+            [
+              90,
+              218
+            ],
+            [
+              92,
+              237
+            ],
+            [
+              72,
+              241
+            ],
+            [
+              57,
+              233
+            ],
+            [
+              40,
+              246
+            ],
+            [
+              20,
+              235
+            ],
+            [
+              7,
+              237
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "west-river-willow",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            2,
+            19
+          ],
+          "groundFrontPixels": [
+            96,
+            591
+          ],
+          "polygonPixels": [
+            [
+              35,
+              550
+            ],
+            [
+              41,
+              520
+            ],
+            [
+              53,
+              506
+            ],
+            [
+              55,
+              482
+            ],
+            [
+              70,
+              468
+            ],
+            [
+              88,
+              451
+            ],
+            [
+              104,
+              461
+            ],
+            [
+              116,
+              458
+            ],
+            [
+              129,
+              478
+            ],
+            [
+              143,
+              491
+            ],
+            [
+              154,
+              520
+            ],
+            [
+              168,
+              542
+            ],
+            [
+              157,
+              562
+            ],
+            [
+              143,
+              578
+            ],
+            [
+              124,
+              575
+            ],
+            [
+              105,
+              590
+            ],
+            [
+              83,
+              580
+            ],
+            [
+              63,
+              587
+            ],
+            [
+              45,
+              571
+            ],
+            [
+              29,
+              572
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "north-middle-saplings",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            20,
+            6
+          ],
+          "groundFrontPixels": [
+            661,
+            217
+          ],
+          "polygonPixels": [
+            [
+              623,
+              184
+            ],
+            [
+              629,
+              160
+            ],
+            [
+              638,
+              152
+            ],
+            [
+              644,
+              130
+            ],
+            [
+              659,
+              121
+            ],
+            [
+              674,
+              134
+            ],
+            [
+              687,
+              131
+            ],
+            [
+              696,
+              154
+            ],
+            [
+              706,
+              165
+            ],
+            [
+              709,
+              190
+            ],
+            [
+              697,
+              202
+            ],
+            [
+              681,
+              199
+            ],
+            [
+              667,
+              216
+            ],
+            [
+              649,
+              207
+            ],
+            [
+              634,
+              215
+            ],
+            [
+              619,
+              202
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "thatch-west-willow",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            33,
+            8
+          ],
+          "groundFrontPixels": [
+            1084,
+            271
+          ],
+          "polygonPixels": [
+            [
+              1044,
+              240
+            ],
+            [
+              1052,
+              214
+            ],
+            [
+              1061,
+              201
+            ],
+            [
+              1066,
+              181
+            ],
+            [
+              1081,
+              173
+            ],
+            [
+              1095,
+              184
+            ],
+            [
+              1107,
+              183
+            ],
+            [
+              1115,
+              204
+            ],
+            [
+              1126,
+              215
+            ],
+            [
+              1131,
+              239
+            ],
+            [
+              1117,
+              257
+            ],
+            [
+              1101,
+              254
+            ],
+            [
+              1087,
+              270
+            ],
+            [
+              1071,
+              262
+            ],
+            [
+              1057,
+              270
+            ],
+            [
+              1041,
+              256
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "thatch-east-willow",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            39,
+            8
+          ],
+          "groundFrontPixels": [
+            1296,
+            283
+          ],
+          "polygonPixels": [
+            [
+              1257,
+              242
+            ],
+            [
+              1262,
+              215
+            ],
+            [
+              1273,
+              202
+            ],
+            [
+              1278,
+              184
+            ],
+            [
+              1293,
+              175
+            ],
+            [
+              1307,
+              188
+            ],
+            [
+              1318,
+              186
+            ],
+            [
+              1327,
+              208
+            ],
+            [
+              1338,
+              223
+            ],
+            [
+              1341,
+              251
+            ],
+            [
+              1326,
+              267
+            ],
+            [
+              1310,
+              263
+            ],
+            [
+              1298,
+              281
+            ],
+            [
+              1283,
+              272
+            ],
+            [
+              1269,
+              276
+            ],
+            [
+              1254,
+              259
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "northeast-bank-willow",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            40,
+            5
+          ],
+          "groundFrontPixels": [
+            1325,
+            180
+          ],
+          "polygonPixels": [
+            [
+              1285,
+              145
+            ],
+            [
+              1293,
+              118
+            ],
+            [
+              1303,
+              107
+            ],
+            [
+              1306,
+              87
+            ],
+            [
+              1321,
+              78
+            ],
+            [
+              1335,
+              89
+            ],
+            [
+              1345,
+              87
+            ],
+            [
+              1356,
+              111
+            ],
+            [
+              1368,
+              125
+            ],
+            [
+              1372,
+              151
+            ],
+            [
+              1357,
+              165
+            ],
+            [
+              1343,
+              160
+            ],
+            [
+              1331,
+              178
+            ],
+            [
+              1313,
+              169
+            ],
+            [
+              1298,
+              175
+            ],
+            [
+              1282,
+              160
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "south-outer-bank-willows",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            40,
+            28
+          ],
+          "groundFrontPixels": [
+            1304,
+            843
+          ],
+          "polygonPixels": [
+            [
+              1243,
+              802
+            ],
+            [
+              1249,
+              776
+            ],
+            [
+              1261,
+              763
+            ],
+            [
+              1264,
+              742
+            ],
+            [
+              1280,
+              731
+            ],
+            [
+              1293,
+              742
+            ],
+            [
+              1309,
+              735
+            ],
+            [
+              1323,
+              757
+            ],
+            [
+              1339,
+              762
+            ],
+            [
+              1345,
+              784
+            ],
+            [
+              1360,
+              779
+            ],
+            [
+              1376,
+              799
+            ],
+            [
+              1374,
+              818
+            ],
+            [
+              1359,
+              831
+            ],
+            [
+              1343,
+              826
+            ],
+            [
+              1326,
+              842
+            ],
+            [
+              1310,
+              832
+            ],
+            [
+              1293,
+              840
+            ],
+            [
+              1274,
+              829
+            ],
+            [
+              1257,
+              833
+            ],
+            [
+              1240,
+              817
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "south-foreground-willow",
+      "parts": [
+        {
+          "id": "foliage",
+          "contactCell": [
+            20,
+            31
+          ],
+          "groundFrontPixels": [
+            666,
+            951
+          ],
+          "polygonPixels": [
+            [
+              588,
+              953
+            ],
+            [
+              596,
+              918
+            ],
+            [
+              609,
+              905
+            ],
+            [
+              614,
+              880
+            ],
+            [
+              628,
+              867
+            ],
+            [
+              639,
+              845
+            ],
+            [
+              655,
+              834
+            ],
+            [
+              669,
+              846
+            ],
+            [
+              684,
+              843
+            ],
+            [
+              694,
+              865
+            ],
+            [
+              709,
+              878
+            ],
+            [
+              714,
+              904
+            ],
+            [
+              730,
+              918
+            ],
+            [
+              739,
+              943
+            ],
+            [
+              737,
+              953
+            ]
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ]
+    }
+  ]
+}

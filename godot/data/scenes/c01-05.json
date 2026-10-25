@@ -1,10 +1,15 @@
 {
   "schemaVersion": "environment-scene-v1.1",
   "levelId": "c01-05",
-  "runtimeReady": false,
+  "runtimeReady": true,
   "mapSize": [
-    21,
-    15
+    50,
+    32
+  ],
+  "paintedGroundPath": "res://data/scenes/c01-05-painted-ground.json",
+  "openingFocus": [
+    26,
+    17
   ],
   "placements": [],
   "framePlacements": [],

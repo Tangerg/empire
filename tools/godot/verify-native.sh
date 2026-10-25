@@ -9,6 +9,7 @@ fi
 bash tools/godot/format-native.sh --check
 python3 tools/godot/check-source-metadata.py
 node tools/godot/validate-blackflag-camp.mjs --self-test
+node tools/godot/validate-reed-village.mjs --self-test
 # Bound each native process; a stalled process is a failed gate, never a PASS.
 export EMPIRE_CHECK_TIMEOUT_SECONDS="${EMPIRE_CHECK_TIMEOUT_SECONDS:-300}"
 dotnet() { command timeout --signal=TERM --kill-after=15s "$EMPIRE_CHECK_TIMEOUT_SECONDS" "$DOTNET_ROOT/dotnet" "$@"; }
@@ -39,7 +40,7 @@ run_scene() {
   fi
 }
 export EMPIRE_NARRATIVE_EXPECTATIONS="$PWD/godot/tests/native/narrative.json"
-for scene in NarrativeChecks OathPadChecks DynamicStateChecks PaintedSurfaceChecks BlackFlagCampChecks PresentationChecks CameraIntegrationChecks TacticalHudChecks BattleScreenChecks BattleResultFlowChecks CampaignNavigationChecks; do
+for scene in NarrativeChecks OathPadChecks DynamicStateChecks PaintedSurfaceChecks BlackFlagCampChecks ReedVillageChecks PresentationChecks CameraIntegrationChecks TacticalHudChecks BattleScreenChecks BattleResultFlowChecks CampaignNavigationChecks; do
   run_scene "$scene"
 done
 printf 'Current native contracts, replay/save determinism, and application flow passed. Manual GUI and export acceptance are separate.\n'
