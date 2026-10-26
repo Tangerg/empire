@@ -39,9 +39,16 @@ explicit decompressed oracle path. Singleton HUD command execution and explicit
 keyboard navigation retain their existing canonical semantics; neither is a
 substitute for native pointer/coverage tests.
 
-Keyboard direction events explicitly declare `CursorFocused` when they establish
-canonical focus. Cycle and roster events only reveal/select; they do not replace
-the cursor or its source. Their unchanged continuous historical keyboard trace is
-compared directly, with no cursor restoration or altered frozen expectations.
-Native camera checks cover stationary pointer re-picking after transform changes
-and directional focus that survives camera reveal.
+Keyboard direction, cycle and roster events explicitly declare `CursorFocused`
+when establishing canonical focus. The continuous historical keyboard input trace
+now has explicit native cursor expectations: cycle focuses the chosen actor, and
+later navigation starts there rather than at the obsolete pointer. Native camera
+checks cover focus ownership across reveal and Enter without moving the pointer.
+
+Destination clicks now always preview rather than committing a sole self-targeted
+order. The source action comparison inserts and verifies explicit confirmation,
+then compares the same canonical action. Invalid target clicks retain the complete
+preview; the historical cancel-on-miss trace is resumed only after a separately
+asserted refusal and explicit Back operations. New regression assertions cover
+repeated self-clicks, explicit wait, unreachable destination feedback, and cycle
+followed by Enter/directional input. The frozen oracle is not rewritten.

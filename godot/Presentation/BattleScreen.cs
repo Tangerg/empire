@@ -52,8 +52,10 @@ public partial class BattleScreen : Control
     private readonly BattleLog _messages = new();
     public System.Collections.Generic.IReadOnlyList<string> RecentMessages => _messages.Recent();
     private Label _coverage = null!;
-    private VBoxContainer _globalOrders = null!;
+    private HBoxContainer _globalOrders = null!;
     private HBoxContainer _applicationActions = null!;
+    private PopupPanel _systemMenu = null!;
+    private PanelContainer _commandPanel = null!;
     private ConfirmationDialog _restartConfirmation = null!;
     private Action? _restart;
     private Action? _restartRequest;
@@ -86,6 +88,7 @@ public partial class BattleScreen : Control
 
     public override void _Ready()
     {
+        ResizeHud();
         ResizeCamera();
     }
 
@@ -225,7 +228,7 @@ public partial class BattleScreen : Control
         void AddAction(string text, Action callback, bool requireIdle = false)
         {
             Button button = null!;
-            button = Button(text, () => { if (button.IsInsideTree() && Current() && (!requireIdle || !IsInputBlocked)) callback(); });
+            button = Button(text, () => { if (button.IsInsideTree() && Current() && (!requireIdle || !IsInputBlocked)) { _systemMenu.Hide(); callback(); } });
             button.AutowrapMode = TextServer.AutowrapMode.Off;
             button.CustomMinimumSize = new Vector2(90, 38);
             _applicationActions.AddChild(button);
@@ -365,12 +368,13 @@ public partial class BattleScreen : Control
             UpdateHeader();
 
         };
+        Theme = TacticalHudStyle.Create();
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         // Material layers use negative world depths; a default-Z UI backdrop would cover them.
         var background = new ColorRect
         {
             Name = "Backdrop",
-            Color = new Color("#17191a"),
+            Color = new Color("#151e19"),
             ZIndex = -4096,
             MouseFilter = MouseFilterEnum.Ignore
         };
@@ -379,14 +383,14 @@ public partial class BattleScreen : Control
         var margins = new MarginContainer { Name = "Content" };
         margins.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         foreach (var edge in new[] { "left", "right", "top", "bottom" })
-            margins.AddThemeConstantOverride($"margin_{edge}", 18);
+            margins.AddThemeConstantOverride($"margin_{edge}", 12);
         AddChild(margins);
         var column = new VBoxContainer();
         column.AddThemeConstantOverride("separation", 12);
         margins.AddChild(column);
         var heading = new HBoxContainer();
         column.AddChild(heading);
-        var title = Text(_text.Format("ui.battle.title"), 26, ChromeHeading);
+        var title = Text(_text.Format("ui.battle.title"), 20, ChromeHeading);
         title.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         heading.AddChild(title);
         var cameraControls = new HBoxContainer { Name = "CameraControls" };
@@ -400,8 +404,15 @@ public partial class BattleScreen : Control
         cameraControls.AddChild(_zoomOut);
         cameraControls.AddChild(_zoomIn);
         heading.AddChild(cameraControls);
+        _systemMenu = new PopupPanel { Name = "SystemMenu" };
+        _systemMenu.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#202c24", 12));
+        AddChild(_systemMenu);
         _applicationActions = new HBoxContainer { Name = "ApplicationActions" };
-        heading.AddChild(_applicationActions);
+        _systemMenu.AddChild(_applicationActions);
+        var system = Button(_text.Format("ui.battle.system"), () => _systemMenu.PopupCentered());
+        system.Name = "SystemMenuButton";
+        system.CustomMinimumSize = new Vector2(72, 38);
+        heading.AddChild(system);
         _turn = Text(_text.Format("ui.battle.unbound"), 18, new Color("#c9c4bc"));
         heading.AddChild(_turn);
         _restartConfirmation = new ConfirmationDialog
@@ -421,7 +432,7 @@ public partial class BattleScreen : Control
         _restartConfirmation.Canceled += () => _restartRequest = null;
         AddChild(_restartConfirmation);
         var body = new HBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
-        body.AddThemeConstantOverride("separation", 20);
+        body.AddThemeConstantOverride("separation", 12);
         column.AddChild(body);
         _mapArea = new Control
         {
@@ -445,25 +456,14 @@ public partial class BattleScreen : Control
             _gestures?.PointerLeave();
         };
 
-        var panel = new PanelContainer { CustomMinimumSize = new Vector2(340, 0) };
-        panel.AddThemeStyleboxOverride("panel", new StyleBoxFlat
-        {
-            BgColor = new Color("#25211e"),
-            BorderColor = new Color("#76574a"),
-            BorderWidthLeft = 1,
-            BorderWidthTop = 1,
-            BorderWidthRight = 1,
-            BorderWidthBottom = 1,
-            ContentMarginLeft = 16,
-            ContentMarginRight = 16,
-            ContentMarginTop = 16,
-            ContentMarginBottom = 16
-        });
+        var panel = new PanelContainer { Name = "CommandPanel", CustomMinimumSize = new Vector2(340, 0) };
+        _commandPanel = panel;
+        panel.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#202a23", 14));
         body.AddChild(panel);
-        var side = new VBoxContainer { CustomMinimumSize = new Vector2(308, 0) };
-        side.AddThemeConstantOverride("separation", 12);
+        var side = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        side.AddThemeConstantOverride("separation", 10);
         panel.AddChild(side);
-        side.AddChild(Text(_text.Format("ui.battle.orders"), 21, ChromeHeading));
+        Resized += ResizeHud;
 
         var scroll = new ScrollContainer
         {
@@ -474,27 +474,36 @@ public partial class BattleScreen : Control
         };
         _hudScroll = scroll;
         side.AddChild(scroll);
-        _hud = new TacticalHud { Name = "TacticalHud", SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        _hud = new TacticalHud { Name = "TacticalHud", ShowHint = false, SizeFlagsHorizontal = SizeFlags.ExpandFill };
         _hud.IntentRequested += HandleHudIntent;
         scroll.AddChild(_hud);
         _modeHint = Wrapped("");
-        _modeHint.Visible = false; // Source selection hint is part of the single HUD projection.
+        _modeHint.Visible = true;
+        _modeHint.AddThemeFontSizeOverride("font_size", 14);
+        _modeHint.AddThemeColorOverride("font_color", TacticalHudStyle.Gold);
         side.AddChild(_modeHint);
-        _globalOrders = new VBoxContainer();
+        _globalOrders = new HBoxContainer();
         side.AddChild(_globalOrders);
         _feedback = Wrapped(_text.Format("ui.battle.not_connected"));
-        _feedback.MaxLinesVisible = 4;
+        _feedback.MaxLinesVisible = 2;
         _feedback.AddThemeColorOverride("font_color", new Color("#dfad94"));
         side.AddChild(_feedback);
         _eventLog = Wrapped("");
         _eventLog.Name = "BattleEventLog";
         _eventLog.AddThemeFontSizeOverride("font_size", 14);
-        _eventLog.MaxLinesVisible = 8;
+        _eventLog.MaxLinesVisible = 3;
+        _eventLog.AddThemeColorOverride("font_color", TacticalHudStyle.Muted);
         side.AddChild(_eventLog);
         _coverage = Wrapped("");
         _coverage.AddThemeFontSizeOverride("font_size", 12);
         _coverage.AddThemeColorOverride("font_color", new Color("#ada69d"));
         column.AddChild(_coverage);
+    }
+
+    private void ResizeHud()
+    {
+        if (_commandPanel is not null)
+            _commandPanel.CustomMinimumSize = new Vector2(Math.Clamp(Size.X * .29f, 300, 390), 0);
     }
 
     private void ResizeCamera()
@@ -656,6 +665,8 @@ public partial class BattleScreen : Control
     {
         if (_tactical is null || !Current(_tactical.Stamp))
             return;
+        if (GetViewport().GuiGetFocusOwner() is Button focused && IsAncestorOf(focused))
+            focused.ReleaseFocus();
         HandleTactical(_tactical.Click(_tactical.Stamp, hit));
     }
 

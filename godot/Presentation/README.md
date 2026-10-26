@@ -30,8 +30,9 @@ connects the screen to a real application session.
   `TacticalSelectionController`, the sole owner of local selection and targeting.
 - `ProjectHud(...)` returns revision-stamped content rows and intents. Native HUD
   buttons, keyboard input and board cells use the same controller/session path.
-- Selecting a reachable destination opens its command menu, or immediately commits
-  its sole self-targeted command. Move-and-wait remains one complete action.
+- Selecting any reachable destination opens a reversible command preview, including
+  the selected actor's current cell and a destination with only one available order.
+  Only choosing a command commits; move-and-wait remains one complete domain action.
 - `Dispatch(action, expectedRevision)` owns revalidation and execution. The screen
   forwards canonical controller/HUD actions and refreshes after accepted or rejected
   commands. Both the screen and session reject stale revisions.

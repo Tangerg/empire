@@ -14,7 +14,7 @@ public enum TacticalSelectionKind
 }
 public enum TacticalInputStatus
 {
-    Ready, Ignored, Busy, NotHuman, Terminal, StaleBinding, StaleRevision
+    Ready, Ignored, Busy, NotHuman, Terminal, StaleBinding, StaleRevision, InvalidDestination, InvalidTarget
 }
 public enum TacticalRequestKind
 {
@@ -275,10 +275,7 @@ public sealed class TacticalSelectionController
             case TacticalSelectionKind.Tactic:
             case TacticalSelectionKind.Disembark:
                 if (!AcceptsTarget(selected, hit))
-                {
-                    Selection = Pick(TacticalSelectionKind.Idle);
-                    break;
-                }
+                    return Result(TacticalInputStatus.InvalidTarget);
                 if (selected.Kind == TacticalSelectionKind.Tactic)
                     return Action(new JsonObject { ["kind"] = "tactic", ["commander"] = selected.Commander, ["tactic"] = selected.Ability, ["target"] = Cell(at) });
                 if (selected.Kind == TacticalSelectionKind.Disembark)
@@ -292,23 +289,30 @@ public sealed class TacticalSelectionController
                     break;
                 }
                 var clicked = HitUnit(hit);
-                if (clicked is { Visible: true } && queries.AreEnemies(unit.Id, clicked.Id) && ArmBestAttack(unit, clicked))
+                if (clicked is not null && clicked.Id != unit.Id)
+                {
+                    InspectId = clicked.Id;
+                    if (queries.AreEnemies(unit.Id, clicked.Id))
+                        return ArmBestAttack(unit, clicked) ? Result() : Result(TacticalInputStatus.InvalidTarget);
+                    Selection = Fresh(hit);
                     break;
+                }
                 if (queries.MoveStops(unit.Id).Contains(at) && queries.PathTo(unit.Id, at) is { } path)
                 {
-                    var commands = queries.CommandsAt(unit.Id, at);
-                    if (commands.Count == 1 && commands[0].SelfTargeted)
-                        return Command(commands[0], unit.Id, path);
+                    // Choosing a destination is always a preview, even when waiting
+                    // is the only available command. Only an explicit order commits.
                     Selection = new TacticalSelection { Kind = TacticalSelectionKind.Destination, UnitId = unit.Id, Destination = at, Path = Copy(path) };
                 }
-                else
+                else if (hit.Kind == TacticalHitKind.Object && (queries.IsSite(at) || queries.CanOpenRecruitment(at)))
                     Selection = Fresh(hit);
+                else
+                    return Result(TacticalInputStatus.InvalidDestination);
                 break;
             default:
                 Selection = Fresh(hit);
                 break;
         }
-        InspectId = HitUnit(hit)?.Id;
+        InspectId = HitUnit(hit)?.Id ?? Selection.UnitId;
         return Result();
     }
 
@@ -393,7 +397,8 @@ public sealed class TacticalSelectionController
             return Result(TacticalInputStatus.Ignored);
         Selection = Pick(TacticalSelectionKind.DeploymentUnit, id);
         InspectId = id;
-        return new TacticalInputResult(TacticalInputStatus.Ready, Reveal: unit.At, Center: true);
+        CursorHit = TacticalHit.Unit(unit.At, id);
+        return new TacticalInputResult(TacticalInputStatus.Ready, Reveal: unit.At, Center: true, CursorFocused: true);
     }
 
     public TacticalInputResult ChooseDisembark(TacticalStamp expected, int passenger)
@@ -435,7 +440,9 @@ public sealed class TacticalSelectionController
         var id = actors[(index + 1) % actors.Length];
         Selection = Pick(TacticalSelectionKind.Unit, id);
         InspectId = id;
-        return new TacticalInputResult(TacticalInputStatus.Ready, Reveal: queries.Unit(id)?.At, Center: true);
+        var at = queries.Unit(id)!.At;
+        CursorHit = TacticalHit.Unit(at, id);
+        return new TacticalInputResult(TacticalInputStatus.Ready, Reveal: at, Center: true, CursorFocused: true);
     }
 
     // Keyboard navigation deliberately focuses canonical subjects. Pointer hits never use this path.

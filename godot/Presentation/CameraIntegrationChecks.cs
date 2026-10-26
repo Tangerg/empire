@@ -228,6 +228,21 @@ public partial class CameraIntegrationChecks : Node
         screen._UnhandledKeyInput(new InputEventKey { Keycode = Key.Enter, Pressed = true });
         Require(screen.SelectedUnitId is null && keyboardSession.Revision == 0 && HoveredCell() == "28, 15",
             "Enter after keyboard Reveal must preserve keyboard Ground intent rather than repick the obsolete physical pointer.");
+
+        var cycleSession = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+        Bind(cycleSession);
+        var oldPointer = world.Position + ActorPoint() * world.Scale;
+        map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = oldPointer });
+        var queries = cycleSession.GetTacticalQueries(0);
+        var firstActor = queries.Actors().First();
+        var focusAt = queries.Unit(firstActor)!.At;
+        screen._UnhandledKeyInput(new InputEventKey { Keycode = Key.Space, Pressed = true });
+        Require(screen.SelectedUnitId == firstActor && HoveredCell() == $"{focusAt.X}, {focusAt.Y}" && cycleSession.Revision == 0,
+            "Cycling must transfer cursor ownership to the selected actor before its camera reveal can repick an old pointer.");
+        screen._UnhandledKeyInput(new InputEventKey { Keycode = Key.Enter, Pressed = true });
+        Require(screen.Selection is { Kind: TacticalSelectionKind.Destination } preview && preview.Destination == focusAt
+            && cycleSession.Revision == 0,
+            "Enter after cycling previews that actor's own cell, without committing wait or activating an obsolete pointer target.");
     }
 
     private void CheckCancellation()

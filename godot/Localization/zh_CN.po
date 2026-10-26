@@ -2497,13 +2497,13 @@ msgid "ui.hud.selection.idle_recruit"
 msgstr "点击你的单位开始行动；点击可征募据点查看征募选项（空格切换待命单位，方向键走格、回车确认）。"
 
 msgid "ui.hud.selection.unit"
-msgstr "点击蓝色格移动，点击敌人直接发起攻击。"
+msgstr "点击蓝色地格预览移动；点击敌人查看攻击预测。"
 
 msgid "ui.hud.selection.destination"
-msgstr "选择要下的指令；右键或 Esc 退回上一步。"
+msgstr "尚未行动：选择指令执行；右键或 Esc 返回。"
 
 msgid "ui.hud.selection.target"
-msgstr "点击高亮格中的目标；右键或 Esc 取消。"
+msgstr "核对战斗预测，再点高亮目标执行；Esc 返回。"
 
 msgid "ui.hud.selection.deploying"
 msgstr "战前部署：点击你的单位，再点高亮格调整站位；确认部署后开始战斗。"
@@ -3605,3 +3605,32 @@ msgstr "托伦"
 
 msgid "speaker.elin.name"
 msgstr "艾琳"
+
+msgid "ui.battle.system"
+msgstr "系统"
+
+msgid "ui.hud.unit_details"
+msgstr "兵种与能力"
+
+msgid "ui.hud.invalid_destination"
+msgstr "此处无法到达。请选择高亮地格，或按 Esc 取消。"
+
+msgid "ui.hud.invalid_target"
+msgstr "此处不是有效目标。请选择高亮目标，或按 Esc 返回。"
+
+msgid "ui.hud.unit_selected"
+msgstr "已选中 · 待命"
+
+msgid "ui.hud.unit_inspected"
+msgstr "查看单位"
+
+msgid "ui.hud.unit_preview"
+msgstr "行动预览 · 尚未执行"
+
+#. {0}: objective description; {1}: canonical progress.
+#, csharp-format
+msgid "ui.hud.objective_row"
+msgstr "{0}\n{1}"
+
+msgid "ui.hud.forecast_details"
+msgstr "伤害修正明细"

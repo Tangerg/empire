@@ -104,7 +104,7 @@ public sealed partial class GrayFlagSession
             text.Format("battle.objective.heading"),
             engine.Victory.Objectives(state, N(objectivePlayer, "id"))
                 .Select(objective => new TacticalHudRow(objective.Id,
-                    text.Format("battle.objective.row",
+                    text.Format("ui.hud.objective_row",
                         battleText.ObjectiveDescription(S(state, "levelId"), Viewer(state), objective),
                         battleText.ObjectiveProgress(objective)))));
         Section("roster",
@@ -221,7 +221,9 @@ public sealed partial class GrayFlagSession
                     if (exchange.Counter is { } counter)
                         rows.AddRange(counter.Modifiers.Select((modifier, index) => new TacticalHudRow($"counter-mod:{index}",
                             text.Format("ui.hud.counter_modifier", ModifierLabel(modifier)))));
-                    Section("forecast", text.Format("ui.hud.forecast"), rows);
+                    bool Detail(TacticalHudRow row) => row.Key is "damage-type" or "mitigation" || row.Key.StartsWith("strike-mod:", StringComparison.Ordinal) || row.Key.StartsWith("counter-mod:", StringComparison.Ordinal);
+                    Section("forecast", text.Format("ui.hud.forecast"), rows.Where(row => !Detail(row)));
+                    Section("forecast-details", text.Format("ui.hud.forecast_details"), rows.Where(Detail));
                 }
             }
         }
@@ -319,7 +321,13 @@ public sealed partial class GrayFlagSession
                         : "ui.hud.commander_active";
                 rows.Add(new("commander", text.Format("ui.hud.commander", S(commander, "id"), text.Format(commanderState))));
             }
-            Section("unit", Name(inspect), rows);
+            var inspectionState = B(inspect, "done") ? "ui.hud.acted"
+                : selected is null || N(selected, "id") != N(inspect, "id") ? "ui.hud.unit_inspected"
+                : selection.Kind is TacticalSelectionKind.Destination or TacticalSelectionKind.Target ? "ui.hud.unit_preview"
+                : "ui.hud.unit_selected";
+            rows.Insert(0, new("selection", text.Format(inspectionState), Selected: selected is not null && N(selected, "id") == N(inspect, "id")));
+            Section("unit", Name(inspect), rows.Where(row => row.Key is "owner" or "hp" or "selection"));
+            Section("unit-details", text.Format("ui.hud.unit_details"), rows.Where(row => row.Key is not ("owner" or "hp" or "done" or "selection")));
             if (commandable is not null && N(commandable, "id") == N(inspect, "id"))
             {
                 var id = N(commandable, "id");

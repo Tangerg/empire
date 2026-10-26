@@ -558,9 +558,14 @@ internal static class PaintedPickingChecks
             Hover(hiddenPoint);
             require(hud.Projection!.Sections.All(section => section.Key != "forecast"),
                 "Ground hover in explicit attack mode must not expose a hidden-occupant combat forecast.");
+            var previewBeforeMiss = screen.Selection;
             Click(hiddenPoint);
-            require(session.Revision == 0 && screen.Selection?.Kind == TacticalSelectionKind.Idle,
-                "An invalid Ground click in explicit attack mode cancels targeting without becoming a hidden entity-specific command.");
+            require(session.Revision == 0 && screen.Selection == previewBeforeMiss
+                && screen.Selection?.Kind == TacticalSelectionKind.Target,
+                "An invalid Ground click preserves the complete explicit attack preview without becoming a hidden entity-specific command.");
+            screen._UnhandledKeyInput(new InputEventKey { Keycode = Key.Escape, Pressed = true });
+            require(screen.Selection?.Kind == TacticalSelectionKind.Destination && session.Revision == 0,
+                "Explicit Escape still backs out of targeting after a refused Ground click.");
 
             var mixed = hidden.DeepClone().AsObject();
             var structure = mixed["structures"]![0]!.AsObject();

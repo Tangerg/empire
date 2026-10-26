@@ -1,4 +1,5 @@
 using System;
+using Godot;
 using Empire.Presentation.Tactical;
 
 namespace Empire.Presentation;
@@ -16,14 +17,16 @@ internal static class TacticalSceneInputChecks
                 continue;
             controller.Bind(queries);
             controller.Click(controller.Stamp, TacticalHit.Unit(origin, unitId));
-            var result = controller.Click(controller.Stamp, TacticalHit.Ground(destination));
+            controller.Click(controller.Stamp, TacticalHit.Ground(destination));
+            var result = controller.ChooseCommand(controller.Stamp, "wait");
             if (result.Request?.Action is not { } action || action.GetProperty("kind").GetString() != "command"
                 || action.GetProperty("command").GetProperty("ability").GetString() != "wait")
                 continue;
             screen.SelectHit(TacticalHit.Unit(origin, unitId));
             screen.SelectHit(TacticalHit.Ground(destination));
+            screen._UnhandledKeyInput(new InputEventKey { Keycode = Key.W, Pressed = true });
             return destination;
         }
-        throw new InvalidOperationException("Movement fixture has no automatic wait destination.");
+        throw new InvalidOperationException("Movement fixture has no legal wait destination.");
     }
 }

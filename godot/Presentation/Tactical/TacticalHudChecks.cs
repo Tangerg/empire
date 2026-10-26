@@ -163,9 +163,12 @@ public partial class TacticalHudChecks : Node
             new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, rendering.Plane)), level, scene);
         screen.ConfigureGround(rendering.Ground);
         screen.ConfigureDynamicState();
+        screen.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.TopLeft);
+        screen.Size = new Vector2(1180, 812);
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         var map = (Control)screen.FindChild("MapArea", true, false);
         var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         var inside = map.Size / 2;
         var outside = new Vector2(map.Size.X + 1, inside.Y);
         void Motion(Vector2 at) => map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = at });
@@ -216,6 +219,51 @@ public partial class TacticalHudChecks : Node
         screen.Free();
     }
 
+    private async System.Threading.Tasks.Task CheckResponsiveLayout()
+    {
+        var scroll = new ScrollContainer
+        {
+            Size = new Vector2(300, 420),
+            HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
+            Theme = TacticalHudStyle.Create()
+        };
+        AddChild(scroll);
+        var hud = new TacticalHud { SizeFlagsHorizontal = Control.SizeFlags.ExpandFill };
+        scroll.AddChild(hud);
+        var objective = new string('界', 80);
+        var projection = new TacticalHudProjection(new(1, 1), "选择高亮地格", new[]
+        {
+            new TacticalHudSection("unit", "莱娅", new[] { new TacticalHudRow("hp", "生命 116 / 116", Gauge: new(116, 116)) }),
+            new TacticalHudSection("objectives", "作战目标", new[] { new TacticalHudRow("long", objective) }),
+            new TacticalHudSection("forecast", "战斗预测", new[] { new TacticalHudRow("strike", "伤害 36 · 生命 80 → 44", Gauge: new(44, 80)) }),
+            new TacticalHudSection("unit-details", "兵种与能力", new[] { new TacticalHudRow("long", objective) })
+        });
+        foreach (var width in new[] { 300, 390 })
+        {
+            scroll.Size = new Vector2(width, 420);
+            hud.Apply(projection);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            var goal = hud.GetNode<VBoxContainer>("objectives").GetChildren().OfType<HBoxContainer>().Single().GetChildren().OfType<Label>().Single();
+            Require(goal.GetLineCount() > 1 && goal.GetGlobalRect().End.X <= scroll.GetGlobalRect().End.X,
+                "Long objectives wrap within the narrow and wide native panel, rather than clipping horizontally.");
+            Require(hud.GetNode("forecast").GetIndex() < hud.GetNode("unit").GetIndex(), "Forecast precedes inspected-unit details.");
+            var details = hud.GetNode<VBoxContainer>("unit-details");
+            var toggle = details.GetChildren().OfType<Button>().Single();
+            Require(!details.GetChildren().OfType<VBoxContainer>().Single().Visible, "Secondary details start collapsed.");
+            toggle.ButtonPressed = true;
+            toggle.GrabFocus();
+            hud.Apply(projection);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            details = hud.GetNode<VBoxContainer>("unit-details");
+            Require(details.GetChildren().OfType<VBoxContainer>().Single().Visible
+                && details.GetChildren().OfType<Button>().Single().HasFocus(), "Refresh preserves disclosure state and keyboard focus.");
+            details.GetChildren().OfType<Button>().Single().ButtonPressed = false;
+        }
+        RemoveChild(scroll);
+        scroll.Free();
+    }
+
     public override async void _Ready()
     {
         try
@@ -223,6 +271,7 @@ public partial class TacticalHudChecks : Node
             CheckInspectionOrder();
             CheckSiteInspection();
             await CheckSitePointerBoundary();
+            await CheckResponsiveLayout();
             var stamp = new TacticalStamp(17, 9);
             var hud = new TacticalHud();
             AddChild(hud);

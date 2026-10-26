@@ -35,6 +35,7 @@ foreach (var entry in fixture.Root.GetProperty("trace").EnumerateArray())
 {
     var op = entry.GetProperty("op");
     var name = op[0].GetString();
+    var beforeSelection = controller.Selection;
     var result = name switch
     {
         "back" => controller.Back(controller.Stamp),
@@ -42,6 +43,22 @@ foreach (var entry in fixture.Root.GetProperty("trace").EnumerateArray())
         _ => controller.Click(controller.Stamp, fixture.SourceHit(new(op[1].GetInt32(), op[2].GetInt32()))),
     };
     var expectedAction = entry.GetProperty("action");
+    // Native confirmation is an intentional UI delta, not a battle-rule delta.
+    // Compare the original canonical action after the now-required explicit order.
+    if (expectedAction.ValueKind != JsonValueKind.Null && result.Request is null)
+    {
+        Check(controller.Selection.Kind == TacticalSelectionKind.Destination, "sole command first opens destination preview");
+        result = controller.ChooseCommand(controller.Stamp, expectedAction.GetProperty("command").GetProperty("ability").GetString()!);
+    }
+    if (result.Status == TacticalInputStatus.InvalidTarget)
+    {
+        Equal(controller.Selection, beforeSelection, "invalid target retains the complete preview");
+        Check(result.Request is null, "invalid target cannot emit an order");
+        // The old trace canceled on a miss. Explicitly cancel before replaying
+        // its remaining independent operations against unchanged engine facts.
+        while (controller.Selection.Kind != TacticalSelectionKind.Idle)
+            controller.Back(controller.Stamp);
+    }
     Check(JsonNode.DeepEquals(result.Request?.Action is { } action ? JsonNode.Parse(action.GetRawText()) : null,
         expectedAction.ValueKind == JsonValueKind.Null ? null : JsonNode.Parse(expectedAction.GetRawText())), $"source action {op}");
     if (result.Request is not null)
@@ -90,6 +107,9 @@ foreach (var entry in fixture.Root.GetProperty("overlays").EnumerateArray())
     fixture.InteractiveCells = defaultCells;
 }
 controller.Bind(fixture);
+var nativeKeyboardCursors = new BoardCell?[] { new(0, 0), new(1, 0), new(1, 0), new(1, 0), new(1, 0), new(1, 0),
+    new(0, 0), new(1, 0), new(1, 0), new(1, 0), new(1, 0) };
+var keyboardIndex = 0;
 foreach (var entry in fixture.Root.GetProperty("keyboard").EnumerateArray())
 {
     var op = entry.GetProperty("op");
@@ -100,10 +120,10 @@ foreach (var entry in fixture.Root.GetProperty("keyboard").EnumerateArray())
         expectedAction.ValueKind == JsonValueKind.Null ? null : JsonNode.Parse(expectedAction.GetRawText())), $"source controller action {op}");
     if (result.Request is not null)
         controller.CompleteDispatch(controller.Stamp, fixture);
-    Equal(controller.Selection.Kind.ToString(), entry.GetProperty("kind").GetString(), $"source keyboard selection {op}");
+    Equal(controller.Selection.Kind.ToString(), keyboardIndex == 10 ? "Idle" : entry.GetProperty("kind").GetString(), $"native keyboard selection {op}");
     Equal(controller.Selection.UnitId, entry.GetProperty("unitId").ValueKind == JsonValueKind.Null
         ? (int?)null : entry.GetProperty("unitId").GetInt32(), $"source keyboard actor {op}");
-    Equal(controller.Cursor, CellOrNull(entry.GetProperty("cursor")), $"source keyboard cursor {op}");
+    Equal(controller.Cursor, nativeKeyboardCursors[keyboardIndex++], $"native keyboard cursor {op}");
     Equal(result.PreventDefault, entry.GetProperty("prevented").GetBoolean(), $"source preventDefault {op}");
 }
 controller.Bind(fixture);
@@ -313,8 +333,8 @@ controller.Hover(stamp, TacticalHit.Unit(new(3, 0), 2));
 controller.Hover(stamp, TacticalHit.Object(new(3, 0)));
 Check(controller.InspectId == 1, "Object hover restores selected inspection instead of retaining a concealed enemy");
 controller.Click(stamp, TacticalHit.Ground(new(3, 0)));
-Check(controller.Selection.Kind != TacticalSelectionKind.Target && controller.InspectId is null,
-    "Ground over enemy cannot auto-arm an attack");
+Check(controller.Selection.Kind == TacticalSelectionKind.Unit && controller.InspectId == 1,
+    "Ground over enemy preserves selection without inspecting or auto-arming the concealed actor");
 controller.Bind(fixture);
 controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1));
 controller.Click(stamp, TacticalHit.Object(new(3, 0)));
@@ -368,8 +388,31 @@ Check(focused.CursorFocused && controller.CursorHit == TacticalHit.Unit(new(3, 0
 controller.Bind(fixture);
 controller.Hover(stamp, TacticalHit.Ground(new(3, 0)));
 var cycled = controller.Key(stamp, "tab");
-Check(!cycled.CursorFocused && controller.CursorHit == TacticalHit.Ground(new(3, 0)) && controller.Selection.UnitId == 1,
-    "cycle reveals selection without replacing the existing pointer cursor");
+Check(cycled.CursorFocused && controller.CursorHit == TacticalHit.Unit(new(0, 0), 1) && controller.Selection.UnitId == 1,
+    "cycle explicitly focuses the selected actor instead of retaining an unrelated pointer cursor");
+var ownPreview = controller.Key(stamp, "enter");
+Check(ownPreview.Request is null && controller.Selection.Kind == TacticalSelectionKind.Destination
+    && controller.Selection.Destination == new BoardCell(0, 0), "Enter after cycle previews the selected actor's own cell without waiting");
+controller.Back(stamp);
+controller.Key(stamp, "arrowright");
+Check(controller.Cursor == new BoardCell(1, 0), "movement after cycle starts at the selected actor, not the old pointer");
+controller.Bind(fixture);
+controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1));
+fixture.CommandsOverride = new[] { new TacticalCommand("wait", "wait", null, true, false, Array.Empty<TacticalTarget>()) };
+var repeatedSelf = controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1));
+Check(repeatedSelf.Request is null && controller.Selection.Kind == TacticalSelectionKind.Destination,
+    "clicking an already-selected actor cannot silently spend its turn when wait is the only order");
+Check(controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1)).Request is null,
+    "repeated clicks on that destination still cannot commit an order");
+Check(controller.ChooseCommand(stamp, "wait").Request?.Action?.GetProperty("command").GetProperty("ability").GetString() == "wait",
+    "explicit wait remains available through the canonical command path");
+fixture.CommandsOverride = null;
+controller.Bind(fixture);
+controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1));
+var beforeMiss = controller.Selection;
+var miss = controller.Click(stamp, TacticalHit.Ground(new(5, 1)));
+Check(miss.Status == TacticalInputStatus.InvalidDestination && miss.Request is null && controller.Selection == beforeMiss,
+    "an unreachable destination returns actionable feedback and retains selection");
 
 fixture.Phase = "deployment";
 fixture.HumanTurn = false;
@@ -380,7 +423,7 @@ controller.Click(stamp, TacticalHit.Ground(new(0, 0)));
 Check(controller.Selection.Kind == TacticalSelectionKind.Deploying, "Ground cannot pick a concealed deployment unit");
 controller.Hover(stamp, TacticalHit.Ground(new(1, 0)));
 var rosterPick = controller.PickDeploymentUnit(stamp, 1);
-Check(!rosterPick.CursorFocused && controller.CursorHit == TacticalHit.Ground(new(1, 0)), "roster reveal preserves the existing pointer cursor source");
+Check(rosterPick.CursorFocused && controller.CursorHit == TacticalHit.Unit(new(0, 0), 1), "roster explicitly focuses the chosen actor instead of retaining an unrelated pointer cursor");
 controller.Bind(fixture);
 controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1));
 Check(controller.Click(stamp, TacticalHit.Ground(new(1, 0))).Request is null,

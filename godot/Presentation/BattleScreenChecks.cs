@@ -288,9 +288,12 @@ public partial class BattleScreenChecks : Node
             && queries.CommandsAt(2, cell) is { Count: 1 } commands && commands[0].SelfTargeted);
         var staleTurnButton = Buttons(screen).Single(button => button.Text == "结束回合");
         screen.SelectHit(TacticalHit.Ground(destination));
+        Require(session.Revision == before.Revision && screen.Selection?.Kind == TacticalSelectionKind.Destination,
+            "Even a sole self-targeted command first opens a reversible destination preview.");
+        screen._UnhandledKeyInput(new InputEventKey { Keycode = Key.W, Pressed = true });
         var after = session.GetSnapshot();
         Require(after.Revision == before.Revision + 1 && screen.DisplayedRevision == after.Revision,
-            "A sole self-targeted destination command dispatches without a confirmation menu.");
+            "An explicit wait commits the preview through the canonical controller command.");
         var actor = after.State.GetProperty("units").EnumerateArray()
             .Single(unit => unit.GetProperty("id").GetInt32() == 2);
         Require(actor.GetProperty("x").GetInt32() == destination.X
@@ -330,6 +333,19 @@ public partial class BattleScreenChecks : Node
         var staleSameRevision = Buttons(screen).Single(button => button.Text == "结束回合");
         Keypress(Key.Space);
         Require(screen.SelectedUnitId == session.GetTacticalQueries(0).Actors()[0], "Space selects first source-ordered actor through native keyboard input.");
+        var keyboardSelection = screen.Selection;
+        var systemButton = (Button)screen.FindChild("SystemMenuButton", true, false);
+        systemButton.GrabFocus();
+        Keypress(Key.Enter);
+        Keypress(Key.Space);
+        Keypress(Key.Right);
+        Require(screen.Selection == keyboardSelection && session.Revision == snapshot.Revision && systemButton.HasFocus(),
+            "Focused native controls retain Enter, Space and directional input without issuing battlefield orders.");
+        Keypress(Key.Escape);
+        Require(!systemButton.HasFocus() && screen.Selection == keyboardSelection,
+            "Escape returns native control focus to the map without discarding the pending selection.");
+        Keypress(Key.Tab);
+        Require(screen.Selection == keyboardSelection, "Tab is reserved for native focus traversal, not actor cycling.");
         staleSameRevision.EmitSignal(Button.SignalName.Pressed);
         Require(session.GetSnapshot().Revision == snapshot.Revision, "Removed global button cannot dispatch after same-revision selection refresh.");
         Keypress(Key.Escape);
@@ -348,7 +364,10 @@ public partial class BattleScreenChecks : Node
         screen.SetApplicationBusy(false);
         Require(screen.SelectedUnitId == selected, "Clearing application busy preserves the valid selection.");
         screen.SelectHit(TacticalHit.Ground(destination));
-        Require(session.Revision == snapshot.Revision + 1, "Busy release re-enables source automatic destination dispatch.");
+        Require(session.Revision == snapshot.Revision && screen.Selection?.Kind == TacticalSelectionKind.Destination,
+            "Busy release re-enables destination preview without spending the actor's turn.");
+        Keypress(Key.W);
+        Require(session.Revision == snapshot.Revision + 1, "Explicit wait commits after busy release.");
         var undo = Buttons(screen).Single(button => button.Text == "撤销");
         Require(!undo.Disabled, "Real undo button becomes enabled after a reversible move.");
         undo.EmitSignal(Button.SignalName.Pressed);
@@ -519,7 +538,7 @@ public partial class BattleScreenChecks : Node
             screen.SelectHit(TacticalHit.Unit(origin, 2));
             var nativeHud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
             var hud = nativeHud.Projection!;
-            var unitRows = hud.Sections.Single(section => section.Key == "unit").Rows;
+            var unitRows = hud.Sections.Where(section => section.Key is "unit" or "unit-details").SelectMany(section => section.Rows).ToArray();
             Require(hud.Hint == replacements["ui.hud.selection.unit"] && unitRows.Single(row => row.Key == "hp").Label.StartsWith(variant + " health", StringComparison.Ordinal),
                 "Mounted selection help and numeric unit facts use the injected catalog.");
             var guard = Buttons(screen).Single(button => button.GetMeta("hud_key", "").AsString() == "stances/reaction:guard");
@@ -538,7 +557,7 @@ public partial class BattleScreenChecks : Node
                 "Selecting the adjacent authored enemy must arm a real attack preview without dispatching.");
             using var hoverTarget = new InputEventKey { Keycode = Key.Right, Pressed = true };
             screen._UnhandledKeyInput(hoverTarget);
-            var modifierRows = nativeHud.Projection!.Sections.Single(section => section.Key == "forecast").Rows
+            var modifierRows = nativeHud.Projection!.Sections.Where(section => section.Key is "forecast" or "forecast-details").SelectMany(section => section.Rows)
                 .Where(row => row.Key.StartsWith("strike-mod:", StringComparison.Ordinal)).ToArray();
             Require(modifierRows.Length > 0 && modifierRows.All(row => row.Label.StartsWith(variant + " modifier ", StringComparison.Ordinal))
                 && modifierRows.Any(row => row.Label.Contains(replacements["combat.modifier.matchup"], StringComparison.Ordinal))

@@ -45,13 +45,18 @@ public partial class BattleScreen
         _tactical.SetBusy(IsInputBlocked);
         var scroll = _hudScroll.ScrollVertical;
         var applyGeneration = ++_hudApplyGeneration;
-        _hud.Apply(_session.ProjectHud(stamp, _tactical.Selection, _tactical.CursorHit, _tactical.InspectId, IsInputBlocked));
+        var projection = _session.ProjectHud(stamp, _tactical.Selection, _tactical.CursorHit, _tactical.InspectId, IsInputBlocked);
+        _hud.Apply(projection);
+        _modeHint.Text = projection.Hint;
         Callable.From(() =>
         {
             if (applyGeneration == _hudApplyGeneration && Current(stamp, true))
                 _hudScroll.ScrollVertical = scroll;
         }).CallDeferred();
         _overlay.ShowTactical(_tactical.Overlay());
+        var focusedGlobal = GetViewport().GuiGetFocusOwner();
+        var globalFocusName = focusedGlobal is Button && _globalOrders.IsAncestorOf(focusedGlobal)
+            ? focusedGlobal.Name.ToString() : null;
         Clear(_globalOrders);
         var queries = _session.GetTacticalQueries(_tacticalBinding);
         void Add(string name, string label, bool enabled, Action action)
@@ -63,8 +68,17 @@ public partial class BattleScreen
                     action();
             });
             button.Name = name;
+            button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+            if (name == "EndTurn")
+                button.AddThemeStyleboxOverride("normal", TacticalHudStyle.Panel("#48513a", 9, "#a99c69"));
             button.Disabled = !enabled || IsInputBlocked;
             _globalOrders.AddChild(button);
+            if (globalFocusName == name && !button.Disabled)
+                Callable.From(() =>
+                {
+                    if (applyGeneration == _hudApplyGeneration && Current(stamp) && button.IsInsideTree() && !button.Disabled)
+                        button.GrabFocus();
+                }).CallDeferred();
         }
         if (queries.Phase == "deployment")
             Add("FinishDeployment", _text.Format("ui.battle.finish_deployment"), queries.HumanInput,
@@ -103,8 +117,8 @@ public partial class BattleScreen
 
     private void HandleTactical(TacticalInputResult result)
     {
-        // Reveal alone (cycle/roster) changes selection, not the cursor's source.
-        // Only a controller event that actually focuses a cursor replaces a mouse hit.
+        // Explicit keyboard/roster focus replaces pointer ownership before camera
+        // movement, so Reveal cannot revive an older physical pointer hit.
         if (result.CursorFocused)
             _pointerMapPosition = null;
         if (result.Reveal is { } cell)
@@ -116,6 +130,9 @@ public partial class BattleScreen
                 _camera.Reveal(point, 32 * _camera.Zoom / 2);
             ApplyCamera();
         }
+        if (result.Status is TacticalInputStatus.InvalidDestination or TacticalInputStatus.InvalidTarget)
+            ShowFeedback(_text.Format(result.Status == TacticalInputStatus.InvalidDestination
+                ? "ui.hud.invalid_destination" : "ui.hud.invalid_target"));
         if (result.Request is { } request)
             DispatchTactical(request);
         else
@@ -163,11 +180,25 @@ public partial class BattleScreen
     {
         if (input is not InputEventKey { Pressed: true } key || _tactical is null || !Current(_tactical.Stamp))
             return;
+        // Tab belongs to native focus traversal; Space cycles actors only while
+        // the board owns input. Focused controls keep native activation/navigation.
+        if (_systemMenu.Visible || key.Keycode == Key.Tab)
+            return;
+        if (GetViewport().GuiGetFocusOwner() is Button focused && IsAncestorOf(focused) && focused.IsVisibleInTree())
+        {
+            if (key.Keycode == Key.Escape)
+            {
+                focused.ReleaseFocus();
+                GetViewport().SetInputAsHandled();
+                return;
+            }
+            if (key.Keycode is Key.Enter or Key.KpEnter or Key.Space or Key.Up or Key.Down or Key.Left or Key.Right)
+                return;
+        }
         var sourceKey = key.Keycode switch
         {
             Key.Escape => "escape",
             Key.Space => " ",
-            Key.Tab => "tab",
             Key.Enter or Key.KpEnter => "enter",
             Key.Up => "arrowup",
             Key.Down => "arrowdown",
@@ -187,8 +218,7 @@ public partial class BattleScreen
             return;
         var result = _tactical.Key(_tactical.Stamp, sourceKey);
         HandleTactical(result);
-        // Native controls otherwise activate a focused button after the same key
-        // already drove the source controller (Space/Enter/Tab in particular).
+        // A key routed to the board cannot also activate a native control.
         GetViewport().SetInputAsHandled();
     }
 }
