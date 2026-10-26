@@ -34,6 +34,17 @@ public partial class NativeCapture : Node
             AddChild(ResourceLoader.Load<PackedScene>(scenePath).Instantiate());
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            var sizeArgument = OS.GetCmdlineUserArgs().SingleOrDefault(value => value.StartsWith("--capture-size=", StringComparison.Ordinal));
+            if (sizeArgument is not null)
+            {
+                var dimensions = sizeArgument["--capture-size=".Length..].Split('x');
+                if (dimensions.Length != 2 || !int.TryParse(dimensions[0], out var width) || !int.TryParse(dimensions[1], out var height)
+                    || width < 640 || height < 480)
+                    throw new InvalidOperationException("Capture size must be WIDTHxHEIGHT, at least 640x480.");
+                GetWindow().Size = new Vector2I(width, height);
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            }
             Capture();
         }
         catch (Exception error)

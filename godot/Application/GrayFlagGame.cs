@@ -483,7 +483,10 @@ public partial class GrayFlagGame : Node
             SaveFile.WriteDocument(ProjectSettings.GlobalizePath(SavePath), campaign.Save());
             if (session is not null)
                 screen?.AppendMessage(text.Format("feedback.save.round_saved", session.Snapshot()["turn"]!.GetValue<int>()));
-            Notify(text.Format("feedback.save.completed"));
+            if (screen is null)
+                Notify(text.Format("feedback.save.completed"));
+            else
+                screen.ShowFeedback("");
         }
         catch (SaveStorageException error)
         {
@@ -512,7 +515,10 @@ public partial class GrayFlagGame : Node
             : text.Format("feedback.save.round_loaded", candidate.Battle.Snapshot()["turn"]!.GetValue<int>());
         var prepared = PrepareNode(candidate, initialLogMessage);
         Activate(candidate, prepared);
-        Notify(text.Format("feedback.load.completed"));
+        if (screen is null)
+            Notify(text.Format("feedback.load.completed"));
+        else
+            screen.ShowFeedback("");
     }
 
     private void Notify(string message)

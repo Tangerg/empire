@@ -183,7 +183,8 @@ public partial class BattleScreen : Control
         _tactical = new TacticalSelectionController(_session.GetTacticalQueries(_tacticalBinding));
         _applicationBusy = false;
         _bound = true;
-        _feedback.Text = _text.Format("ui.battle.choose_unit");
+        _feedback.Text = "";
+        _feedback.Visible = false;
         _messages.Clear();
         AppendMessage(initialLogMessage ?? session.GetSnapshot().InitialLogMessage ?? "");
         Refresh();
@@ -258,6 +259,7 @@ public partial class BattleScreen : Control
     {
         BuildInterface();
         _feedback.Text = message;
+        _feedback.Visible = message.Length > 0;
         _feedback.TooltipText = message;
     }
 
@@ -343,6 +345,7 @@ public partial class BattleScreen : Control
         _coverage.Text = !_board.SurfaceReady ? _text.Format("ui.battle.surface_pending")
             : _board.RenderingIssueCount > 0 ? _text.Format("ui.battle.artwork_issues", _board.RenderingIssueCount) : "";
         _coverage.TooltipText = "";
+        _coverage.Visible = _coverage.Text.Length > 0;
     }
 
     private void BuildInterface()
@@ -414,6 +417,7 @@ public partial class BattleScreen : Control
         system.CustomMinimumSize = new Vector2(72, 38);
         heading.AddChild(system);
         _turn = Text(_text.Format("ui.battle.unbound"), 18, new Color("#c9c4bc"));
+        _turn.Visible = false; // Full turn/limit/side context lives in the command rail.
         heading.AddChild(_turn);
         _restartConfirmation = new ConfirmationDialog
         {
@@ -497,7 +501,9 @@ public partial class BattleScreen : Control
         _coverage = Wrapped("");
         _coverage.AddThemeFontSizeOverride("font_size", 12);
         _coverage.AddThemeColorOverride("font_color", new Color("#ada69d"));
+        _coverage.Visible = false;
         column.AddChild(_coverage);
+        ResizeHud();
     }
 
     private void ResizeHud()

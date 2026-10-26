@@ -44,3 +44,10 @@ commands, refusal behavior, stale callbacks, camera/picking and keyboard parity.
 Real native screenshots cover C07 inspection, action preview, combat forecast,
 system menu and a narrower window. Evidence and a git patch are retained separately
 in Library; source artwork is not regenerated or recolored.
+
+The final review also expands visible objective leaves using their existing names
+and canonical status/progress, retaining the parent aggregate progress. Hidden
+nested objectives stay hidden. Duplicate top-bar turn text and redundant generic
+save/load notifications are removed; their detailed round-specific log remains.
+The optional NativeCapture `--capture-size=960x640` sizes the real native window
+once initial window-manager placement has completed, for reproducible QA.

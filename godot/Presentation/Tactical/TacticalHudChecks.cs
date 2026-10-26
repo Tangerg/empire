@@ -169,7 +169,11 @@ public partial class TacticalHudChecks : Node
         var map = (Control)screen.FindChild("MapArea", true, false);
         var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-        var inside = map.Size / 2;
+        var boardToMap = map.GetGlobalTransformWithCanvas().AffineInverse() * screen.Board.GetGlobalTransformWithCanvas();
+        var inside = session.GetTacticalQueries(0).InteractiveCells
+            .Select(cell => boardToMap * screen.Board.Projection.CellCenter(new(cell.X, cell.Y)))
+            .First(point => new Rect2(Vector2.Zero, map.Size).HasPoint(point)
+                && screen.Board.Pick(boardToMap.AffineInverse() * point) is not null);
         var outside = new Vector2(map.Size.X + 1, inside.Y);
         void Motion(Vector2 at) => map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = at });
         void Down(Vector2 at, MouseButton button = MouseButton.Left) => map.EmitSignal(Control.SignalName.GuiInput,
@@ -190,7 +194,7 @@ public partial class TacticalHudChecks : Node
         Require(screen.Selection?.Kind == TacticalSelectionKind.Idle && !HasTile(),
             "Closing from the HUD cannot expose a fictitious offscreen hover tile.");
         Motion(inside);
-        Require(HasTile(), "The native viewport center remains inspectable.");
+        Require(HasTile(), "A visible native battlefield cell remains inspectable.");
         screen.SetApplicationBusy(true);
         Motion(outside);
         Require(!HasTile(), "Busy read-only hover obeys the same viewport boundary.");
@@ -217,6 +221,30 @@ public partial class TacticalHudChecks : Node
         Require(!HasTile(), "Middle-button boundary release clears hover through the same captured gesture policy.");
         RemoveChild(screen);
         screen.Free();
+    }
+
+    private void CheckObjectiveChecklist()
+    {
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var text = GodotTextCatalog.LoadSimplifiedChinese();
+        var presentation = BattleTextChecks.Session(engine, text);
+        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<string>() == "c01-07");
+        var state = engine.CreateState(level);
+        var objectiveStates = state["players"]![0]!["objectiveStates"]!.AsObject();
+        objectiveStates["granary"]!["status"] = "completed";
+        foreach (var hidden in new[] { false, true })
+        {
+            objectiveStates["militia-barracks"]!["hidden"] = hidden;
+            var session = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(state));
+            var before = EcmaJson.Stringify(session.Snapshot());
+            var rows = session.ProjectHud(new(0, 0), new(), null, null, false).Sections.Single(section => section.Key == "objectives").Rows;
+            Require(rows.Single(row => row.Key == "granary").Label.Contains(text.Format("objective.c01_07.p1.granary"), StringComparison.Ordinal)
+                && rows.Single(row => row.Key == "granary").Selected, "The named granary renders its canonical completed state.");
+            Require(rows.Any(row => row.Key == "militia-barracks") == !hidden, "A nested hidden objective is not disclosed by the HUD checklist.");
+            Require(rows.Single(row => row.Key == "primary").Label.Contains("1/2", StringComparison.Ordinal), "Overall progress uses the existing objective assessment.");
+            Require(before == EcmaJson.Stringify(session.Snapshot()), "Objective checklist cannot advance battle facts.");
+        }
     }
 
     private async System.Threading.Tasks.Task CheckResponsiveLayout()
@@ -269,6 +297,7 @@ public partial class TacticalHudChecks : Node
         try
         {
             CheckInspectionOrder();
+            CheckObjectiveChecklist();
             CheckSiteInspection();
             await CheckSitePointerBoundary();
             await CheckResponsiveLayout();

@@ -100,13 +100,27 @@ public sealed partial class GrayFlagSession
                 Gauge: new(cast.Progress, 1))));
         var objectivePlayer = state["players"]!.AsArray().OfType<JsonObject>()
             .FirstOrDefault(player => S(player, "controller") == "human") ?? state["players"]![0]!.AsObject();
+        IEnumerable<TacticalHudRow> ObjectiveRows(Empire.Core.Objectives.ObjectiveProgress objective, bool root = true)
+        {
+            if (objectivePlayer["objectiveStates"]?[objective.Id]?["hidden"]?.GetValue<bool>() == true)
+                yield break;
+            var description = battleText.ObjectiveDescription(S(state, "levelId"), Viewer(state), objective);
+            var progress = battleText.ObjectiveProgress(objective);
+            if (objective.Children.Count == 0)
+                yield return new(objective.Id, text.Format("ui.hud.objective_task", description, progress),
+                    Selected: objective.Status == "completed");
+            else
+            {
+                if (root)
+                    yield return new(objective.Id, progress, description);
+                foreach (var child in objective.Children)
+                    foreach (var row in ObjectiveRows(child, false))
+                        yield return row;
+            }
+        }
         Section("objectives",
             text.Format("battle.objective.heading"),
-            engine.Victory.Objectives(state, N(objectivePlayer, "id"))
-                .Select(objective => new TacticalHudRow(objective.Id,
-                    text.Format("ui.hud.objective_row",
-                        battleText.ObjectiveDescription(S(state, "levelId"), Viewer(state), objective),
-                        battleText.ObjectiveProgress(objective)))));
+            engine.Victory.Objectives(state, N(objectivePlayer, "id")).SelectMany(objective => ObjectiveRows(objective)));
         Section("roster",
             text.Format("ui.hud.roster"),
             state["players"]!.AsArray().OfType<JsonObject>().Select(player => new TacticalHudRow($"player:{player["id"]}",
