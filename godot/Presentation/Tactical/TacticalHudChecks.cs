@@ -509,6 +509,68 @@ public partial class TacticalHudChecks : Node
         hud.Free();
     }
 
+    private async System.Threading.Tasks.Task CheckOrderBadgeStates()
+    {
+        GetWindow().Size = new Vector2I(960, 640);
+        var button = new Button { Text = "待机", Position = new Vector2(100, 100), Size = new Vector2(98, 54), Theme = TacticalHudStyle.Create() };
+        TacticalHudStyle.OrderBadge(button);
+        AddChild(button);
+        var badge = button.GetChildren().OfType<TacticalOrderBadge>().Single();
+        var redraws = 0;
+        badge.Draw += () => redraws++;
+        async System.Threading.Tasks.Task DrawFrame()
+        {
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        }
+        var viewport = GetViewport();
+        viewport.NotifyMouseEntered();
+        void Move(Vector2 point) => viewport.PushInput(new InputEventMouseMotion { Position = point, GlobalPosition = point }, true);
+        void Mouse(bool down, Vector2 point) => viewport.PushInput(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = down, Position = point, GlobalPosition = point }, true);
+        Move(new Vector2(20, 20));
+        await DrawFrame();
+        var normal = badge.SurfaceColor;
+        var point = button.GetGlobalRect().GetCenter();
+        Move(point);
+        await DrawFrame();
+        Require(badge.VisualMode == BaseButton.DrawMode.Hover && badge.SurfaceColor != normal, "Order badge renders native pointer hover distinctly from resting state.");
+        var hover = badge.SurfaceColor;
+        Mouse(true, point);
+        await DrawFrame();
+        Require(badge.VisualMode is BaseButton.DrawMode.Pressed or BaseButton.DrawMode.HoverPressed && badge.SurfaceColor != hover, "Non-toggle pointer down has a distinct native pressed surface before release.");
+        Mouse(false, point);
+        Move(new Vector2(20, 20));
+        button.GrabFocus();
+        await DrawFrame();
+        Require(badge.FocusVisible && button.GetThemeStylebox("focus") is StyleBoxEmpty, "Keyboard focus uses the shield contour rather than a conflicting rectangular frame.");
+        var actions = 0;
+        button.Pressed += () => actions++;
+        viewport.PushInput(new InputEventKey { Keycode = Key.Space, PhysicalKeycode = Key.Space, Pressed = true }, true);
+        await DrawFrame();
+        Require(badge.VisualMode == BaseButton.DrawMode.Pressed && badge.SurfaceColor != normal, "Focused keyboard down uses the same pressed feedback as pointer activation.");
+        viewport.PushInput(new InputEventKey { Keycode = Key.Space, PhysicalKeycode = Key.Space, Pressed = false }, true);
+        await DrawFrame();
+        Require(actions == 1 && badge.FocusVisible && badge.VisualMode == BaseButton.DrawMode.Normal, "Keyboard release fires once and retains focus without leaving the badge pressed.");
+        var beforeDisable = redraws;
+        button.Disabled = true;
+        await DrawFrame();
+        Require(badge.VisualMode == BaseButton.DrawMode.Disabled && !badge.FocusVisible && redraws > beforeDisable, "Programmatic disable redraws the existing badge and suppresses focus emphasis without a pointer event.");
+        Mouse(true, point);
+        Mouse(false, point);
+        Require(actions == 1, "A disabled badge cannot execute an order.");
+        button.Disabled = false;
+        Move(new Vector2(20, 20));
+        button.ReleaseFocus();
+        await DrawFrame();
+        Require(badge.VisualMode == BaseButton.DrawMode.Normal && badge.SurfaceColor == normal && !badge.FocusVisible, "Re-enabling and clearing focus restores the original surface without stale highlight.");
+        button.ToggleMode = true;
+        button.ButtonPressed = true;
+        await DrawFrame();
+        Require(badge.VisualMode == BaseButton.DrawMode.Pressed, "Programmatic toggle selection uses the same native visual state owner.");
+        RemoveChild(button);
+        button.Free();
+    }
+
     public override async void _Ready()
     {
         try
@@ -522,6 +584,7 @@ public partial class TacticalHudChecks : Node
             await CheckResponsiveLayout();
             await CheckPointerCapture();
             await CheckDossierLifetime();
+            await CheckOrderBadgeStates();
             var stamp = new TacticalStamp(17, 9);
             var hud = new TacticalHud();
             AddChild(hud);

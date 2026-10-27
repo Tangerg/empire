@@ -76,22 +76,14 @@ public static class TacticalHudStyle
             ContentMarginTop = 4,
             ContentMarginBottom = 8
         };
-        foreach (var state in new[] { "normal", "hover", "pressed", "disabled" })
+        foreach (var state in new[] { "normal", "hover", "pressed", "hover_pressed", "disabled", "focus" })
             button.AddThemeStyleboxOverride(state, empty);
-        var plate = new TacticalOrderBadge { Prominent = prominent, MouseFilter = Control.MouseFilterEnum.Ignore, ShowBehindParent = true };
+        var plate = new TacticalOrderBadge { Source = button, Prominent = prominent, MouseFilter = Control.MouseFilterEnum.Ignore, ShowBehindParent = true };
         button.AddChild(plate);
         plate.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
-        void Update()
-        {
-            plate.Disabled = button.Disabled;
-            plate.Highlighted = button.IsHovered() || button.ButtonPressed;
-            plate.QueueRedraw();
-        }
-        button.MouseEntered += Update;
-        button.MouseExited += Update;
-        button.ButtonDown += Update;
-        button.ButtonUp += Update;
-        button.Ready += Update;
+        // BaseButton owns hover, keyboard focus, press, toggle and disabled state.
+        // Its native draw invalidation also covers programmatic Disabled changes.
+        button.Draw += plate.QueueRedraw;
     }
 
     public static Theme Create()
@@ -127,22 +119,31 @@ public partial class TacticalOrderBadge : Control
     {
         get; init;
     }
-    public bool Disabled
+    internal BaseButton Source { get; init; } = null!;
+    internal BaseButton.DrawMode VisualMode => Source.GetDrawMode();
+    internal bool FocusVisible => !Source.Disabled && Source.HasFocus();
+    internal Color SurfaceColor => new(VisualMode switch
     {
-        get; set;
-    }
-    public bool Highlighted
-    {
-        get; set;
-    }
+        BaseButton.DrawMode.Disabled => "#302d25",
+        BaseButton.DrawMode.Pressed or BaseButton.DrawMode.HoverPressed => "#383625",
+        BaseButton.DrawMode.Hover => "#716344",
+        _ => Prominent ? "#5c633a" : "#474637"
+    });
     public override void _Ready() => Resized += QueueRedraw;
     public override void _Draw()
     {
         var w = Size.X;
         var h = Size.Y;
         var edge = new Vector2[] { new(7, 1), new(w - 7, 1), new(w - 1, 7), new(w - 3, h - 9), new(w * .5f, h - 1), new(3, h - 9), new(1, 7) };
-        DrawColoredPolygon(edge, new Color(Disabled ? "#302d25" : Highlighted ? "#716344" : Prominent ? "#5c633a" : "#474637"));
-        DrawPolyline(edge.Append(edge[0]).ToArray(), new Color(Disabled ? "#58503c" : "#b59a62"), 2, true);
-        DrawLine(new(10, 5), new(w - 10, 5), new Color(Disabled ? "#494434" : "#d4b878"), 1, true);
+        var disabled = VisualMode == BaseButton.DrawMode.Disabled;
+        var pressed = VisualMode is BaseButton.DrawMode.Pressed or BaseButton.DrawMode.HoverPressed;
+        DrawColoredPolygon(edge, SurfaceColor);
+        DrawPolyline(edge.Append(edge[0]).ToArray(), new Color(disabled ? "#58503c" : pressed ? "#d4b878" : "#b59a62"), 2, true);
+        DrawLine(new(10, 5), new(w - 10, 5), new Color(disabled ? "#494434" : pressed ? "#242218" : "#d4b878"), 1, true);
+        if (FocusVisible)
+        {
+            var focus = edge.Select(point => new Vector2(Mathf.Lerp(point.X, w * .5f, .1f), Mathf.Lerp(point.Y, h * .5f, .17f))).ToArray();
+            DrawPolyline(focus.Append(focus[0]).ToArray(), TacticalHudStyle.Ink, 1, true);
+        }
     }
 }
