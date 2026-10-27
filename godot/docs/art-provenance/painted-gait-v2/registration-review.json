@@ -1,0 +1,2125 @@
+[
+  {
+    "status": "registered; native animation acceptance pending",
+    "source": "unit-archer-v2.png",
+    "sha256": "11ced5ca50226cd168e44c4351c7b7d1a9841d7a2758433ef916fa5a4ed2389d",
+    "presentationScale": 0.0843373,
+    "note": "Preserve body-center registration; fourth near foot extends further below contact. Not a claim sole equals canonical contact.",
+    "identity": "C01-UNIT-ARCHER",
+    "frameAnchors": [
+      [
+        251,
+        555
+      ],
+      [
+        273,
+        551
+      ],
+      [
+        270,
+        566
+      ],
+      [
+        209,
+        556
+      ]
+    ],
+    "frameRegions": [
+      [
+        0,
+        0,
+        545,
+        724
+      ],
+      [
+        545,
+        0,
+        545,
+        724
+      ],
+      [
+        1090,
+        0,
+        630,
+        724
+      ],
+      [
+        1720,
+        0,
+        452,
+        724
+      ]
+    ],
+    "sourceLandmarks": {
+      "coordinateSystem": "idle-frame-local physical pixels, visual approximate +/-4 for belt; +/-10 head",
+      "belt": [
+        [
+          278,
+          380
+        ],
+        [
+          300,
+          377
+        ],
+        [
+          260,
+          402
+        ],
+        [
+          236,
+          382
+        ]
+      ],
+      "head": [
+        [
+          263,
+          220
+        ],
+        [
+          285,
+          218
+        ],
+        [
+          260,
+          240
+        ],
+        [
+          220,
+          220
+        ]
+      ]
+    },
+    "firstThreePixelPreserved": false,
+    "landmarkRelativeToRoot": [
+      {
+        "frame": 0,
+        "belt": [
+          27,
+          -175
+        ],
+        "head": [
+          12,
+          -335
+        ]
+      },
+      {
+        "frame": 1,
+        "belt": [
+          27,
+          -174
+        ],
+        "head": [
+          12,
+          -333
+        ]
+      },
+      {
+        "frame": 2,
+        "belt": [
+          -10,
+          -164
+        ],
+        "head": [
+          -10,
+          -326
+        ]
+      },
+      {
+        "frame": 3,
+        "belt": [
+          27,
+          -174
+        ],
+        "head": [
+          11,
+          -336
+        ]
+      }
+    ],
+    "nativeAcceptance": "pending parent viewport movement/attack capture"
+  },
+  {
+    "identity": "C01-UNIT-SWORDSMAN",
+    "source": "unit-swordsman-gait-v3.png",
+    "sourceSha256": "90128bde1240f9387e725e2f9b0e63015549abadaf0a8ab9dad0ae010ebc0f79",
+    "priorResource": "res://assets/painted-units-v1/unit-swordsman-v2.png",
+    "oldAnchors": [
+      [
+        251,
+        566
+      ],
+      [
+        250,
+        587
+      ],
+      [
+        240,
+        561
+      ],
+      [
+        195,
+        587
+      ]
+    ],
+    "frameRegions": [
+      [
+        0,
+        0,
+        543,
+        725
+      ],
+      [
+        543,
+        0,
+        518,
+        725
+      ],
+      [
+        1061,
+        0,
+        646,
+        725
+      ],
+      [
+        1707,
+        0,
+        462,
+        725
+      ]
+    ],
+    "frameAnchors": [
+      [
+        251,
+        569
+      ],
+      [
+        264,
+        569
+      ],
+      [
+        244,
+        563
+      ],
+      [
+        180,
+        569
+      ]
+    ],
+    "presentationScale": 0.0847458,
+    "measurementPrecision": "head/belt estimates +/-12 source px; alpha foot bounds measured; native acceptance pending",
+    "firstThreePixelPreserved": false,
+    "landmarkRelativeToRoot": [
+      {
+        "frame": 0,
+        "head": [
+          14,
+          -352
+        ],
+        "belt": [
+          -2,
+          -177
+        ],
+        "soleBelowRoot": 0
+      },
+      {
+        "frame": 1,
+        "head": [
+          19,
+          -352
+        ],
+        "belt": [
+          -2,
+          -177
+        ],
+        "soleBelowRoot": 20
+      },
+      {
+        "frame": 2,
+        "head": [
+          72,
+          -327
+        ],
+        "belt": [
+          35,
+          -161
+        ],
+        "soleBelowRoot": 0
+      },
+      {
+        "frame": 3,
+        "head": [
+          14,
+          -352
+        ],
+        "belt": [
+          -2,
+          -177
+        ],
+        "soleBelowRoot": 22
+      }
+    ],
+    "sourceLandmarks": [
+      {
+        "name": "idle",
+        "sourceRect": [
+          0,
+          0,
+          543,
+          725
+        ],
+        "visibleBbox": [
+          109,
+          150,
+          426,
+          569
+        ],
+        "headCenterSheetApprox": [
+          265,
+          217
+        ],
+        "beltCenterSheetApprox": [
+          249,
+          392
+        ]
+      },
+      {
+        "name": "walk-a",
+        "sourceRect": [
+          543,
+          0,
+          518,
+          725
+        ],
+        "visibleBbox": [
+          661,
+          150,
+          984,
+          589
+        ],
+        "headCenterSheetApprox": [
+          826,
+          217
+        ],
+        "beltCenterSheetApprox": [
+          805,
+          392
+        ]
+      },
+      {
+        "name": "attack",
+        "sourceRect": [
+          1061,
+          0,
+          646,
+          725
+        ],
+        "visibleBbox": [
+          1138,
+          169,
+          1676,
+          563
+        ],
+        "headCenterSheetApprox": [
+          1377,
+          236
+        ],
+        "beltCenterSheetApprox": [
+          1340,
+          402
+        ]
+      },
+      {
+        "name": "walk-b",
+        "sourceRect": [
+          1707,
+          0,
+          462,
+          725
+        ],
+        "visibleBbox": [
+          1738,
+          150,
+          2061,
+          591
+        ],
+        "headCenterSheetApprox": [
+          1901,
+          217
+        ],
+        "beltCenterSheetApprox": [
+          1885,
+          392
+        ]
+      }
+    ],
+    "nativeAcceptance": "pending parent viewport movement/attack capture"
+  },
+  {
+    "identity": "C01-UNIT-ENGINEER",
+    "source": "unit-engineer-gait-v2.png",
+    "sourceSha256": "0bbb84ea899c647e19626452c01c410ed06c64646ab1c1aff83cdf47827b278e",
+    "priorResource": "res://assets/painted-units-v1/unit-engineer.png",
+    "oldAnchors": [
+      [
+        288,
+        550
+      ],
+      [
+        259,
+        556
+      ],
+      [
+        255,
+        552
+      ],
+      [
+        227,
+        559
+      ]
+    ],
+    "frameRegions": [
+      [
+        0,
+        0,
+        571,
+        725
+      ],
+      [
+        571,
+        0,
+        522,
+        725
+      ],
+      [
+        1093,
+        0,
+        612,
+        725
+      ],
+      [
+        1705,
+        0,
+        464,
+        725
+      ]
+    ],
+    "frameAnchors": [
+      [
+        288,
+        552
+      ],
+      [
+        259,
+        553
+      ],
+      [
+        257,
+        554
+      ],
+      [
+        216,
+        555
+      ]
+    ],
+    "presentationScale": 0.0886076,
+    "measurementPrecision": "head/belt estimates +/-12 source px; alpha foot bounds measured; native acceptance pending",
+    "firstThreePixelPreserved": false,
+    "landmarkRelativeToRoot": [
+      {
+        "frame": 0,
+        "head": [
+          35,
+          -315
+        ],
+        "belt": [
+          17,
+          -160
+        ],
+        "soleBelowRoot": 11
+      },
+      {
+        "frame": 1,
+        "head": [
+          33,
+          -315
+        ],
+        "belt": [
+          17,
+          -160
+        ],
+        "soleBelowRoot": 24
+      },
+      {
+        "frame": 2,
+        "head": [
+          59,
+          -295
+        ],
+        "belt": [
+          22,
+          -155
+        ],
+        "soleBelowRoot": 9
+      },
+      {
+        "frame": 3,
+        "head": [
+          20,
+          -317
+        ],
+        "belt": [
+          17,
+          -160
+        ],
+        "soleBelowRoot": 24
+      }
+    ],
+    "sourceLandmarks": [
+      {
+        "name": "idle",
+        "sourceRect": [
+          0,
+          0,
+          571,
+          725
+        ],
+        "visibleBbox": [
+          133,
+          162,
+          476,
+          563
+        ],
+        "headCenterSheetApprox": [
+          323,
+          237
+        ],
+        "beltCenterSheetApprox": [
+          305,
+          392
+        ]
+      },
+      {
+        "name": "walk-a",
+        "sourceRect": [
+          571,
+          0,
+          522,
+          725
+        ],
+        "visibleBbox": [
+          666,
+          158,
+          1013,
+          577
+        ],
+        "headCenterSheetApprox": [
+          863,
+          238
+        ],
+        "beltCenterSheetApprox": [
+          847,
+          393
+        ]
+      },
+      {
+        "name": "attack",
+        "sourceRect": [
+          1093,
+          0,
+          612,
+          725
+        ],
+        "visibleBbox": [
+          1173,
+          184,
+          1653,
+          563
+        ],
+        "headCenterSheetApprox": [
+          1409,
+          259
+        ],
+        "beltCenterSheetApprox": [
+          1372,
+          399
+        ]
+      },
+      {
+        "name": "walk-b",
+        "sourceRect": [
+          1705,
+          0,
+          464,
+          725
+        ],
+        "visibleBbox": [
+          1758,
+          164,
+          2102,
+          579
+        ],
+        "headCenterSheetApprox": [
+          1941,
+          238
+        ],
+        "beltCenterSheetApprox": [
+          1938,
+          395
+        ]
+      }
+    ],
+    "nativeAcceptance": "pending parent viewport movement/attack capture"
+  },
+  {
+    "identity": "C01-UNIT-BANNER-GUARD",
+    "source": "unit-banner-guard-gait-v2.png",
+    "sourceSha256": "49de7abab8a4a3c1dbf607c86dc3d718fd179c7c4207ba15c9492472b994f5e9",
+    "priorResource": "res://assets/painted-units-v1/unit-banner-guard.png",
+    "oldAnchors": [
+      [
+        250,
+        562
+      ],
+      [
+        245,
+        564
+      ],
+      [
+        240,
+        555
+      ],
+      [
+        239,
+        565
+      ]
+    ],
+    "frameRegions": [
+      [
+        0,
+        0,
+        575,
+        725
+      ],
+      [
+        575,
+        0,
+        525,
+        725
+      ],
+      [
+        1100,
+        0,
+        592,
+        725
+      ],
+      [
+        1692,
+        0,
+        477,
+        725
+      ]
+    ],
+    "frameAnchors": [
+      [
+        250,
+        557
+      ],
+      [
+        226,
+        561
+      ],
+      [
+        240,
+        551
+      ],
+      [
+        189,
+        558
+      ]
+    ],
+    "presentationScale": 0.1014493,
+    "measurementPrecision": "head/belt estimates +/-12 source px; alpha foot bounds measured; native acceptance pending",
+    "firstThreePixelPreserved": false,
+    "landmarkRelativeToRoot": [
+      {
+        "frame": 0,
+        "head": [
+          15,
+          -260
+        ],
+        "belt": [
+          25,
+          -111
+        ],
+        "soleBelowRoot": 14
+      },
+      {
+        "frame": 1,
+        "head": [
+          20,
+          -254
+        ],
+        "belt": [
+          25,
+          -111
+        ],
+        "soleBelowRoot": 18
+      },
+      {
+        "frame": 2,
+        "head": [
+          16,
+          -228
+        ],
+        "belt": [
+          21,
+          -98
+        ],
+        "soleBelowRoot": 20
+      },
+      {
+        "frame": 3,
+        "head": [
+          15,
+          -256
+        ],
+        "belt": [
+          25,
+          -111
+        ],
+        "soleBelowRoot": 20
+      }
+    ],
+    "sourceLandmarks": [
+      {
+        "name": "idle",
+        "sourceRect": [
+          0,
+          0,
+          575,
+          725
+        ],
+        "visibleBbox": [
+          132,
+          134,
+          459,
+          571
+        ],
+        "headCenterSheetApprox": [
+          265,
+          297
+        ],
+        "beltCenterSheetApprox": [
+          275,
+          446
+        ]
+      },
+      {
+        "name": "walk-a",
+        "sourceRect": [
+          575,
+          0,
+          525,
+          725
+        ],
+        "visibleBbox": [
+          691,
+          136,
+          1002,
+          579
+        ],
+        "headCenterSheetApprox": [
+          821,
+          307
+        ],
+        "beltCenterSheetApprox": [
+          826,
+          450
+        ]
+      },
+      {
+        "name": "attack",
+        "sourceRect": [
+          1100,
+          0,
+          592,
+          725
+        ],
+        "visibleBbox": [
+          1198,
+          144,
+          1601,
+          571
+        ],
+        "headCenterSheetApprox": [
+          1356,
+          323
+        ],
+        "beltCenterSheetApprox": [
+          1361,
+          453
+        ]
+      },
+      {
+        "name": "walk-b",
+        "sourceRect": [
+          1692,
+          0,
+          477,
+          725
+        ],
+        "visibleBbox": [
+          1784,
+          139,
+          2096,
+          578
+        ],
+        "headCenterSheetApprox": [
+          1896,
+          302
+        ],
+        "beltCenterSheetApprox": [
+          1906,
+          447
+        ]
+      }
+    ],
+    "nativeAcceptance": "pending parent viewport movement/attack capture"
+  },
+  {
+    "identity": "C01-UNIT-LEGION-SHIELD",
+    "source": "unit-legion-shield-gait-v2.png",
+    "sourceSha256": "50e8872818394cdfb76f0dc902866f5877288e8389f8d32d3db288b58c8cbd44",
+    "priorResource": "res://assets/painted-units-v1/unit-legion-shield.png",
+    "oldAnchors": [
+      [
+        260,
+        549
+      ],
+      [
+        292,
+        566
+      ],
+      [
+        246,
+        552
+      ],
+      [
+        218,
+        564
+      ]
+    ],
+    "frameRegions": [
+      [
+        0,
+        0,
+        528,
+        724
+      ],
+      [
+        528,
+        0,
+        522,
+        724
+      ],
+      [
+        1050,
+        0,
+        632,
+        724
+      ],
+      [
+        1682,
+        0,
+        490,
+        724
+      ]
+    ],
+    "frameAnchors": [
+      [
+        260,
+        552
+      ],
+      [
+        262,
+        552
+      ],
+      [
+        250,
+        555
+      ],
+      [
+        198,
+        552
+      ]
+    ],
+    "presentationScale": 0.1041667,
+    "measurementPrecision": "head/belt estimates +/-12 source px; alpha foot bounds measured; native acceptance pending",
+    "firstThreePixelPreserved": false,
+    "landmarkRelativeToRoot": [
+      {
+        "frame": 0,
+        "head": [
+          30,
+          -266
+        ],
+        "belt": [
+          16,
+          -151
+        ],
+        "soleBelowRoot": 0
+      },
+      {
+        "frame": 1,
+        "head": [
+          27,
+          -260
+        ],
+        "belt": [
+          16,
+          -151
+        ],
+        "soleBelowRoot": 17
+      },
+      {
+        "frame": 2,
+        "head": [
+          63,
+          -258
+        ],
+        "belt": [
+          36,
+          -145
+        ],
+        "soleBelowRoot": 0
+      },
+      {
+        "frame": 3,
+        "head": [
+          16,
+          -262
+        ],
+        "belt": [
+          16,
+          -151
+        ],
+        "soleBelowRoot": 11
+      }
+    ],
+    "sourceLandmarks": [
+      {
+        "name": "idle",
+        "sourceRect": [
+          0,
+          0,
+          528,
+          724
+        ],
+        "visibleBbox": [
+          104,
+          209,
+          434,
+          552
+        ],
+        "headCenterSheetApprox": [
+          290,
+          286
+        ],
+        "beltCenterSheetApprox": [
+          276,
+          401
+        ]
+      },
+      {
+        "name": "walk-a",
+        "sourceRect": [
+          528,
+          0,
+          522,
+          724
+        ],
+        "visibleBbox": [
+          623,
+          212,
+          951,
+          569
+        ],
+        "headCenterSheetApprox": [
+          817,
+          292
+        ],
+        "beltCenterSheetApprox": [
+          806,
+          401
+        ]
+      },
+      {
+        "name": "attack",
+        "sourceRect": [
+          1050,
+          0,
+          632,
+          724
+        ],
+        "visibleBbox": [
+          1150,
+          220,
+          1631,
+          555
+        ],
+        "headCenterSheetApprox": [
+          1363,
+          297
+        ],
+        "beltCenterSheetApprox": [
+          1336,
+          410
+        ]
+      },
+      {
+        "name": "walk-b",
+        "sourceRect": [
+          1682,
+          0,
+          490,
+          724
+        ],
+        "visibleBbox": [
+          1734,
+          212,
+          2045,
+          563
+        ],
+        "headCenterSheetApprox": [
+          1896,
+          290
+        ],
+        "beltCenterSheetApprox": [
+          1896,
+          401
+        ]
+      }
+    ],
+    "nativeAcceptance": "pending parent viewport movement/attack capture"
+  },
+  {
+    "identity": "C01-UNIT-GRAVEKEEPER",
+    "source": "unit-gravekeeper-gait-v2.png",
+    "sourceSha256": "fc56281ead32b4ffd70681bdae60a34da721810f2068f7bfab5bc8db63bf8691",
+    "priorResource": "res://assets/painted-units-v1/unit-gravekeeper.png",
+    "oldAnchors": [
+      [
+        298,
+        549
+      ],
+      [
+        299,
+        552
+      ],
+      [
+        295,
+        551
+      ],
+      [
+        300,
+        551
+      ]
+    ],
+    "frameRegions": [
+      [
+        0,
+        0,
+        558,
+        725
+      ],
+      [
+        558,
+        0,
+        534,
+        725
+      ],
+      [
+        1092,
+        0,
+        580,
+        725
+      ],
+      [
+        1672,
+        0,
+        497,
+        725
+      ]
+    ],
+    "frameAnchors": [
+      [
+        298,
+        553
+      ],
+      [
+        285,
+        555
+      ],
+      [
+        288,
+        554
+      ],
+      [
+        259,
+        555
+      ]
+    ],
+    "presentationScale": 0.0921053,
+    "measurementPrecision": "head/belt estimates +/-12 source px; alpha foot bounds measured; native acceptance pending",
+    "firstThreePixelPreserved": false,
+    "landmarkRelativeToRoot": [
+      {
+        "frame": 0,
+        "head": [
+          9,
+          -304
+        ],
+        "belt": [
+          12,
+          -162
+        ],
+        "soleBelowRoot": 4
+      },
+      {
+        "frame": 1,
+        "head": [
+          11,
+          -301
+        ],
+        "belt": [
+          12,
+          -162
+        ],
+        "soleBelowRoot": 25
+      },
+      {
+        "frame": 2,
+        "head": [
+          18,
+          -298
+        ],
+        "belt": [
+          7,
+          -158
+        ],
+        "soleBelowRoot": 4
+      },
+      {
+        "frame": 3,
+        "head": [
+          10,
+          -301
+        ],
+        "belt": [
+          12,
+          -162
+        ],
+        "soleBelowRoot": 30
+      }
+    ],
+    "sourceLandmarks": [
+      {
+        "name": "idle",
+        "sourceRect": [
+          0,
+          0,
+          558,
+          725
+        ],
+        "visibleBbox": [
+          90,
+          157,
+          475,
+          557
+        ],
+        "headCenterSheetApprox": [
+          307,
+          249
+        ],
+        "beltCenterSheetApprox": [
+          310,
+          391
+        ]
+      },
+      {
+        "name": "walk-a",
+        "sourceRect": [
+          558,
+          0,
+          534,
+          725
+        ],
+        "visibleBbox": [
+          641,
+          155,
+          1029,
+          580
+        ],
+        "headCenterSheetApprox": [
+          854,
+          254
+        ],
+        "beltCenterSheetApprox": [
+          855,
+          393
+        ]
+      },
+      {
+        "name": "attack",
+        "sourceRect": [
+          1092,
+          0,
+          580,
+          725
+        ],
+        "visibleBbox": [
+          1156,
+          156,
+          1616,
+          558
+        ],
+        "headCenterSheetApprox": [
+          1398,
+          256
+        ],
+        "beltCenterSheetApprox": [
+          1387,
+          396
+        ]
+      },
+      {
+        "name": "walk-b",
+        "sourceRect": [
+          1672,
+          0,
+          497,
+          725
+        ],
+        "visibleBbox": [
+          1728,
+          155,
+          2108,
+          585
+        ],
+        "headCenterSheetApprox": [
+          1941,
+          254
+        ],
+        "beltCenterSheetApprox": [
+          1943,
+          393
+        ]
+      }
+    ],
+    "nativeAcceptance": "pending parent viewport movement/attack capture"
+  },
+  {
+    "identity": "C01-UNIT-BATTLE-MAGE",
+    "source": "unit-battle-mage-gait-v2.png",
+    "sourceSha256": "435a7a700427e85213d8ab6e791cacfee6dbe89befdce1fcaf1500ff37b2bfa5",
+    "priorResource": "res://assets/painted-units-v1/unit-battle-mage.png",
+    "oldAnchors": [
+      [
+        270,
+        555
+      ],
+      [
+        295,
+        557
+      ],
+      [
+        258,
+        549
+      ],
+      [
+        232,
+        558
+      ]
+    ],
+    "frameRegions": [
+      [
+        0,
+        0,
+        527,
+        725
+      ],
+      [
+        527,
+        0,
+        487,
+        725
+      ],
+      [
+        1014,
+        0,
+        681,
+        725
+      ],
+      [
+        1695,
+        0,
+        474,
+        725
+      ]
+    ],
+    "frameAnchors": [
+      [
+        270,
+        557
+      ],
+      [
+        246,
+        562
+      ],
+      [
+        276,
+        553
+      ],
+      [
+        186,
+        552
+      ]
+    ],
+    "presentationScale": 0.0888325,
+    "measurementPrecision": "head/belt estimates +/-12 source px; alpha foot bounds measured; native acceptance pending",
+    "firstThreePixelPreserved": false,
+    "landmarkRelativeToRoot": [
+      {
+        "frame": 0,
+        "head": [
+          11,
+          -313
+        ],
+        "belt": [
+          13,
+          -183
+        ],
+        "soleBelowRoot": 0
+      },
+      {
+        "frame": 1,
+        "head": [
+          16,
+          -311
+        ],
+        "belt": [
+          13,
+          -183
+        ],
+        "soleBelowRoot": -3
+      },
+      {
+        "frame": 2,
+        "head": [
+          7,
+          -294
+        ],
+        "belt": [
+          -6,
+          -171
+        ],
+        "soleBelowRoot": 0
+      },
+      {
+        "frame": 3,
+        "head": [
+          15,
+          -308
+        ],
+        "belt": [
+          13,
+          -183
+        ],
+        "soleBelowRoot": 14
+      }
+    ],
+    "sourceLandmarks": [
+      {
+        "name": "idle",
+        "sourceRect": [
+          0,
+          0,
+          527,
+          725
+        ],
+        "visibleBbox": [
+          94,
+          158,
+          446,
+          557
+        ],
+        "headCenterSheetApprox": [
+          281,
+          244
+        ],
+        "beltCenterSheetApprox": [
+          283,
+          374
+        ]
+      },
+      {
+        "name": "walk-a",
+        "sourceRect": [
+          527,
+          0,
+          487,
+          725
+        ],
+        "visibleBbox": [
+          609,
+          161,
+          929,
+          559
+        ],
+        "headCenterSheetApprox": [
+          789,
+          251
+        ],
+        "beltCenterSheetApprox": [
+          786,
+          379
+        ]
+      },
+      {
+        "name": "attack",
+        "sourceRect": [
+          1014,
+          0,
+          681,
+          725
+        ],
+        "visibleBbox": [
+          1100,
+          171,
+          1665,
+          552
+        ],
+        "headCenterSheetApprox": [
+          1297,
+          259
+        ],
+        "beltCenterSheetApprox": [
+          1284,
+          382
+        ]
+      },
+      {
+        "name": "walk-b",
+        "sourceRect": [
+          1695,
+          0,
+          474,
+          725
+        ],
+        "visibleBbox": [
+          1726,
+          158,
+          2058,
+          566
+        ],
+        "headCenterSheetApprox": [
+          1896,
+          244
+        ],
+        "beltCenterSheetApprox": [
+          1894,
+          369
+        ]
+      }
+    ],
+    "nativeAcceptance": "pending parent viewport movement/attack capture"
+  },
+  {
+    "identity": "laiya-stage01",
+    "source": "laiya-stage01-v2.png",
+    "sourceSha256": "746951e2063e5ba4fad3a28c3ea78d4a2c32eed8b684cfe571808a04bbda414a",
+    "priorResource": "res://assets/painted-units-v1/laiya-stage01.png",
+    "oldAnchors": [
+      [
+        273,
+        589
+      ],
+      [
+        306,
+        592
+      ],
+      [
+        303,
+        591
+      ],
+      [
+        234,
+        590
+      ]
+    ],
+    "frameRegions": [
+      [
+        0,
+        0,
+        524,
+        725
+      ],
+      [
+        524,
+        0,
+        525,
+        725
+      ],
+      [
+        1049,
+        0,
+        649,
+        725
+      ],
+      [
+        1698,
+        0,
+        470,
+        725
+      ]
+    ],
+    "frameAnchors": [
+      [
+        273,
+        580
+      ],
+      [
+        275,
+        588
+      ],
+      [
+        313,
+        584
+      ],
+      [
+        216,
+        586
+      ]
+    ],
+    "presentationScale": 0.0977654,
+    "visualLandmarks": {
+      "splits": [
+        0,
+        524,
+        1049,
+        1698,
+        2168
+      ],
+      "head": [
+        [
+          278,
+          289
+        ],
+        [
+          812,
+          289
+        ],
+        [
+          1368,
+          294
+        ],
+        [
+          1911,
+          290
+        ]
+      ],
+      "belt": [
+        [
+          259,
+          402
+        ],
+        [
+          785,
+          410
+        ],
+        [
+          1334,
+          414
+        ],
+        [
+          1900,
+          408
+        ]
+      ],
+      "lowestOpaqueYExclusive": [
+        580,
+        583,
+        584,
+        588
+      ]
+    },
+    "measurementPrecision": "head/belt estimates +/-12 source px; alpha foot bounds measured; native acceptance pending",
+    "landmarkRelativeToRoot": [
+      {
+        "frame": 0,
+        "head": [
+          5,
+          -291
+        ],
+        "belt": [
+          -14,
+          -178
+        ],
+        "soleBelowRoot": 0
+      },
+      {
+        "frame": 1,
+        "head": [
+          13,
+          -299
+        ],
+        "belt": [
+          -14,
+          -178
+        ],
+        "soleBelowRoot": -5
+      },
+      {
+        "frame": 2,
+        "head": [
+          6,
+          -290
+        ],
+        "belt": [
+          -28,
+          -170
+        ],
+        "soleBelowRoot": 0
+      },
+      {
+        "frame": 3,
+        "head": [
+          -3,
+          -296
+        ],
+        "belt": [
+          -14,
+          -178
+        ],
+        "soleBelowRoot": 2
+      }
+    ],
+    "nativeAcceptance": "pending parent viewport movement/attack capture"
+  },
+  {
+    "identity": "torren-stage01",
+    "source": "torren-stage01-v2.png",
+    "sourceSha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
+    "priorResource": "res://assets/painted-units-v1/torren-stage01.png",
+    "oldAnchors": [
+      [
+        269,
+        563
+      ],
+      [
+        327,
+        565
+      ],
+      [
+        259,
+        561
+      ],
+      [
+        253,
+        563
+      ]
+    ],
+    "frameRegions": [
+      [
+        0,
+        0,
+        557,
+        725
+      ],
+      [
+        557,
+        0,
+        513,
+        725
+      ],
+      [
+        1070,
+        0,
+        641,
+        725
+      ],
+      [
+        1711,
+        0,
+        458,
+        725
+      ]
+    ],
+    "frameAnchors": [
+      [
+        269,
+        565
+      ],
+      [
+        244,
+        564
+      ],
+      [
+        252,
+        564
+      ],
+      [
+        194,
+        571
+      ]
+    ],
+    "presentationScale": 0.0961538,
+    "visualLandmarks": {
+      "splits": [
+        0,
+        557,
+        1070,
+        1711,
+        2169
+      ],
+      "head": [
+        [
+          295,
+          255
+        ],
+        [
+          823,
+          254
+        ],
+        [
+          1389,
+          277
+        ],
+        [
+          1917,
+          254
+        ]
+      ],
+      "belt": [
+        [
+          271,
+          391
+        ],
+        [
+          803,
+          390
+        ],
+        [
+          1314,
+          397
+        ],
+        [
+          1907,
+          397
+        ]
+      ],
+      "lowestOpaqueYExclusive": [
+        565,
+        568,
+        564,
+        570
+      ]
+    },
+    "measurementPrecision": "head/belt estimates +/-12 source px; alpha foot bounds measured; native acceptance pending",
+    "landmarkRelativeToRoot": [
+      {
+        "frame": 0,
+        "head": [
+          26,
+          -310
+        ],
+        "belt": [
+          2,
+          -174
+        ],
+        "soleBelowRoot": 0
+      },
+      {
+        "frame": 1,
+        "head": [
+          22,
+          -310
+        ],
+        "belt": [
+          2,
+          -174
+        ],
+        "soleBelowRoot": 4
+      },
+      {
+        "frame": 2,
+        "head": [
+          67,
+          -287
+        ],
+        "belt": [
+          -8,
+          -167
+        ],
+        "soleBelowRoot": 0
+      },
+      {
+        "frame": 3,
+        "head": [
+          12,
+          -317
+        ],
+        "belt": [
+          2,
+          -174
+        ],
+        "soleBelowRoot": -1
+      }
+    ],
+    "nativeAcceptance": "pending parent viewport movement/attack capture"
+  },
+  {
+    "identity": "mirelle-stage01",
+    "source": "mirelle-stage01-v2.png",
+    "sourceSha256": "025112564830b3f6244491700bdd6920e4d6031be70fc6c6f2aa135265912d1d",
+    "priorResource": "res://assets/painted-units-v1/mirelle-stage01.png",
+    "oldAnchors": [
+      [
+        258,
+        566
+      ],
+      [
+        318,
+        582
+      ],
+      [
+        198,
+        563
+      ],
+      [
+        306,
+        582
+      ]
+    ],
+    "frameRegions": [
+      [
+        0,
+        0,
+        565,
+        725
+      ],
+      [
+        565,
+        0,
+        520,
+        725
+      ],
+      [
+        1085,
+        0,
+        582,
+        725
+      ],
+      [
+        1667,
+        0,
+        502,
+        725
+      ]
+    ],
+    "frameAnchors": [
+      [
+        258,
+        568
+      ],
+      [
+        248,
+        568
+      ],
+      [
+        188,
+        565
+      ],
+      [
+        231,
+        568
+      ]
+    ],
+    "presentationScale": 0.0806452,
+    "visualLandmarks": {
+      "splits": [
+        0,
+        565,
+        1085,
+        1667,
+        2169
+      ],
+      "head": [
+        [
+          274,
+          228
+        ],
+        [
+          824,
+          230
+        ],
+        [
+          1352,
+          244
+        ],
+        [
+          1909,
+          230
+        ]
+      ],
+      "belt": [
+        [
+          269,
+          366
+        ],
+        [
+          824,
+          366
+        ],
+        [
+          1326,
+          368
+        ],
+        [
+          1909,
+          366
+        ]
+      ],
+      "lowestOpaqueYExclusive": [
+        567,
+        585,
+        565,
+        585
+      ]
+    },
+    "measurementPrecision": "head/belt estimates +/-12 source px; alpha foot bounds measured; native acceptance pending",
+    "landmarkRelativeToRoot": [
+      {
+        "frame": 0,
+        "head": [
+          16,
+          -340
+        ],
+        "belt": [
+          11,
+          -202
+        ],
+        "soleBelowRoot": 0
+      },
+      {
+        "frame": 1,
+        "head": [
+          11,
+          -338
+        ],
+        "belt": [
+          11,
+          -202
+        ],
+        "soleBelowRoot": 17
+      },
+      {
+        "frame": 2,
+        "head": [
+          79,
+          -321
+        ],
+        "belt": [
+          53,
+          -197
+        ],
+        "soleBelowRoot": 0
+      },
+      {
+        "frame": 3,
+        "head": [
+          11,
+          -338
+        ],
+        "belt": [
+          11,
+          -202
+        ],
+        "soleBelowRoot": 17
+      }
+    ],
+    "nativeAcceptance": "pending parent viewport movement/attack capture"
+  },
+  {
+    "identity": "bran-stage01",
+    "source": "bran-stage01-v2.png",
+    "sourceSha256": "edf3ee2227b622acb7e34644e4b9258a905f9b7abb9383bda6f9efc39ca5c674",
+    "priorResource": "res://assets/painted-units-v1/bran-stage01.png",
+    "oldAnchors": [
+      [
+        297,
+        574
+      ],
+      [
+        306,
+        581
+      ],
+      [
+        267,
+        590
+      ],
+      [
+        265,
+        575
+      ]
+    ],
+    "frameRegions": [
+      [
+        0,
+        0,
+        563,
+        725
+      ],
+      [
+        563,
+        0,
+        532,
+        725
+      ],
+      [
+        1095,
+        0,
+        583,
+        725
+      ],
+      [
+        1678,
+        0,
+        491,
+        725
+      ]
+    ],
+    "frameAnchors": [
+      [
+        297,
+        575
+      ],
+      [
+        272,
+        574
+      ],
+      [
+        267,
+        591
+      ],
+      [
+        248,
+        573
+      ]
+    ],
+    "presentationScale": 0.0902062,
+    "visualLandmarks": {
+      "splits": [
+        0,
+        563,
+        1095,
+        1678,
+        2169
+      ],
+      "head": [
+        [
+          320,
+          262
+        ],
+        [
+          855,
+          262
+        ],
+        [
+          1377,
+          274
+        ],
+        [
+          1938,
+          262
+        ]
+      ],
+      "belt": [
+        [
+          306,
+          397
+        ],
+        [
+          844,
+          396
+        ],
+        [
+          1369,
+          410
+        ],
+        [
+          1935,
+          395
+        ]
+      ],
+      "lowestOpaqueYExclusive": [
+        575,
+        583,
+        591,
+        589
+      ]
+    },
+    "measurementPrecision": "head/belt estimates +/-12 source px; alpha foot bounds measured; native acceptance pending",
+    "landmarkRelativeToRoot": [
+      {
+        "frame": 0,
+        "head": [
+          23,
+          -313
+        ],
+        "belt": [
+          9,
+          -178
+        ],
+        "soleBelowRoot": 0
+      },
+      {
+        "frame": 1,
+        "head": [
+          20,
+          -312
+        ],
+        "belt": [
+          9,
+          -178
+        ],
+        "soleBelowRoot": 9
+      },
+      {
+        "frame": 2,
+        "head": [
+          15,
+          -317
+        ],
+        "belt": [
+          7,
+          -181
+        ],
+        "soleBelowRoot": 0
+      },
+      {
+        "frame": 3,
+        "head": [
+          12,
+          -311
+        ],
+        "belt": [
+          9,
+          -178
+        ],
+        "soleBelowRoot": 16
+      }
+    ],
+    "nativeAcceptance": "pending parent viewport movement/attack capture"
+  }
+]

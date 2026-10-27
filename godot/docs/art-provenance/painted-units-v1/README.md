@@ -13,3 +13,7 @@ Known limitation: several walk-a/b candidates vary arms and boots without fully 
 A later targeted swordsman v2 keeps the same 35-unit body height but uses a muted slate tunic and diagonal narrow idle/walk blade. Dense adjacent infantry were visually merging into a misleading horizontal silhouette; this was not a nonuniform-scaling bug. FigureGeometryChecks measures source alpha, atlas region, CPU body output and final ancestor transforms, including the real T7 save. Original variant remains in the earlier local checkpoint and evidence, not an alternative runtime owner.
 
 The figure compositor explicitly area-samples minified Linear layers in premultiplied RGBA before one unpremultiply. Legacy figure sampling remains unchanged. This recovers source area contribution lost by sparse 2×2 sampling; it does not apply a scene-wide blur or alter PNG pixels.
+
+## Later checkpoint: gait phase refinement
+
+The walk-a/walk-b limitation above describes this original checkpoint. Eleven current humanoid bindings now use the reviewed sibling assets documented in [painted-gait-v2](../painted-gait-v2/README.md), with opposite support-leg phases and body-centered registration. The wolf-rider remains on the original sheet. Two support phases are still not a full high-frame-count walk cycle; native motion acceptance is separate from static frame review. Original source PNGs remain preserved.

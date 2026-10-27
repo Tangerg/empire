@@ -7,9 +7,9 @@
       "topicId": "C01-UNIT-ARCHER",
       "label": "弓箭手",
       "category": "combat-unit",
-      "png": "painted-units-v1/unit-archer.png",
+      "png": "painted-units-v1/unit-archer-v2.png",
       "runtimeReady": true,
-      "qualityTier": "painted-v1-native-reviewed",
+      "qualityTier": "painted-v2-gait-reviewed",
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -25,8 +25,8 @@
       "physicalWidth": 2172,
       "physicalHeight": 724,
       "pixelDensity": 1,
-      "resourcePath": "res://assets/painted-units-v1/unit-archer.png",
-      "sha256": "1255a6f852339ffc0f27d760fef1d9654bfef23fdabb675b3aa047940b67d0fc",
+      "resourcePath": "res://assets/painted-units-v1/unit-archer-v2.png",
+      "sha256": "11ced5ca50226cd168e44c4351c7b7d1a9841d7a2758433ef916fa5a4ed2389d",
       "presentationScale": 0.0843373,
       "frameRegions": [
         [
@@ -60,7 +60,7 @@
           555
         ],
         [
-          258,
+          273,
           551
         ],
         [
@@ -68,8 +68,8 @@
           566
         ],
         [
-          249,
-          552
+          209,
+          556
         ]
       ],
       "textureFilter": "linear"
@@ -118,9 +118,9 @@
       "topicId": "C01-UNIT-BANNER-GUARD",
       "label": "旗卫",
       "category": "combat-unit",
-      "png": "painted-units-v1/unit-banner-guard.png",
+      "png": "painted-units-v1/unit-banner-guard-gait-v2.png",
       "runtimeReady": true,
-      "qualityTier": "painted-v1-native-reviewed",
+      "qualityTier": "painted-v2-gait-reviewed",
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -133,11 +133,11 @@
         1
       ],
       "preserveAuthoredPalette": true,
-      "physicalWidth": 2170,
+      "physicalWidth": 2169,
       "physicalHeight": 725,
       "pixelDensity": 1,
-      "resourcePath": "res://assets/painted-units-v1/unit-banner-guard.png",
-      "sha256": "e37a1318b8592ce3463dfb64b869dc04a49e623936e82caf3b653cb2ece65589",
+      "resourcePath": "res://assets/painted-units-v1/unit-banner-guard-gait-v2.png",
+      "sha256": "49de7abab8a4a3c1dbf607c86dc3d718fd179c7c4207ba15c9492472b994f5e9",
       "presentationScale": 0.1014493,
       "frameRegions": [
         [
@@ -155,32 +155,32 @@
         [
           1100,
           0,
-          595,
+          592,
           725
         ],
         [
-          1695,
+          1692,
           0,
-          475,
+          477,
           725
         ]
       ],
       "frameAnchors": [
         [
           250,
-          562
+          557
         ],
         [
-          245,
-          564
+          226,
+          561
         ],
         [
           240,
-          555
+          551
         ],
         [
-          239,
-          565
+          189,
+          558
         ]
       ],
       "textureFilter": "linear"
@@ -190,9 +190,9 @@
       "topicId": "C01-UNIT-BATTLE-MAGE",
       "label": "战斗法师",
       "category": "combat-unit",
-      "png": "painted-units-v1/unit-battle-mage.png",
+      "png": "painted-units-v1/unit-battle-mage-gait-v2.png",
       "runtimeReady": true,
-      "qualityTier": "painted-v1-native-reviewed",
+      "qualityTier": "painted-v2-gait-reviewed",
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -205,54 +205,54 @@
         1
       ],
       "preserveAuthoredPalette": true,
-      "physicalWidth": 2170,
+      "physicalWidth": 2169,
       "physicalHeight": 725,
       "pixelDensity": 1,
-      "resourcePath": "res://assets/painted-units-v1/unit-battle-mage.png",
-      "sha256": "ba9307721b6b9f880a52bec3a8409bf6323cc4bed14114203ff2dcf5c56e864d",
+      "resourcePath": "res://assets/painted-units-v1/unit-battle-mage-gait-v2.png",
+      "sha256": "435a7a700427e85213d8ab6e791cacfee6dbe89befdce1fcaf1500ff37b2bfa5",
       "presentationScale": 0.0888325,
       "frameRegions": [
         [
           0,
           0,
-          530,
+          527,
           725
         ],
         [
-          530,
+          527,
           0,
-          502,
+          487,
           725
         ],
         [
-          1032,
+          1014,
           0,
-          676,
+          681,
           725
         ],
         [
-          1708,
+          1695,
           0,
-          462,
+          474,
           725
         ]
       ],
       "frameAnchors": [
         [
           270,
-          555
-        ],
-        [
-          295,
           557
         ],
         [
-          258,
-          549
+          246,
+          562
         ],
         [
-          232,
-          558
+          276,
+          553
+        ],
+        [
+          186,
+          552
         ]
       ],
       "textureFilter": "linear"
@@ -340,9 +340,9 @@
       "topicId": "C01-UNIT-ENGINEER",
       "label": "工程师",
       "category": "combat-unit",
-      "png": "painted-units-v1/unit-engineer.png",
+      "png": "painted-units-v1/unit-engineer-gait-v2.png",
       "runtimeReady": true,
-      "qualityTier": "painted-v1-native-reviewed",
+      "qualityTier": "painted-v2-gait-reviewed",
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -358,51 +358,51 @@
       "physicalWidth": 2169,
       "physicalHeight": 725,
       "pixelDensity": 1,
-      "resourcePath": "res://assets/painted-units-v1/unit-engineer.png",
-      "sha256": "11195b187aca7255b71d57ea654d4cdd23de00dc0cfb3f2c7763db779a9dea90",
+      "resourcePath": "res://assets/painted-units-v1/unit-engineer-gait-v2.png",
+      "sha256": "0bbb84ea899c647e19626452c01c410ed06c64646ab1c1aff83cdf47827b278e",
       "presentationScale": 0.0886076,
       "frameRegions": [
         [
           0,
           0,
-          575,
+          571,
           725
         ],
         [
-          575,
+          571,
           0,
-          520,
+          522,
           725
         ],
         [
-          1095,
+          1093,
           0,
-          620,
+          612,
           725
         ],
         [
-          1715,
+          1705,
           0,
-          454,
+          464,
           725
         ]
       ],
       "frameAnchors": [
         [
           288,
-          550
-        ],
-        [
-          259,
-          556
-        ],
-        [
-          255,
           552
         ],
         [
-          227,
-          559
+          259,
+          553
+        ],
+        [
+          257,
+          554
+        ],
+        [
+          216,
+          555
         ]
       ],
       "textureFilter": "linear"
@@ -451,9 +451,9 @@
       "topicId": "C01-UNIT-GRAVEKEEPER",
       "label": "守墓人",
       "category": "combat-unit",
-      "png": "painted-units-v1/unit-gravekeeper.png",
+      "png": "painted-units-v1/unit-gravekeeper-gait-v2.png",
       "runtimeReady": true,
-      "qualityTier": "painted-v1-native-reviewed",
+      "qualityTier": "painted-v2-gait-reviewed",
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -466,54 +466,54 @@
         1
       ],
       "preserveAuthoredPalette": true,
-      "physicalWidth": 2170,
+      "physicalWidth": 2169,
       "physicalHeight": 725,
       "pixelDensity": 1,
-      "resourcePath": "res://assets/painted-units-v1/unit-gravekeeper.png",
-      "sha256": "03f61b41a882baf14153da6fb32755e576cc738dfd7d3bad32af6f5d09dd06cd",
+      "resourcePath": "res://assets/painted-units-v1/unit-gravekeeper-gait-v2.png",
+      "sha256": "fc56281ead32b4ffd70681bdae60a34da721810f2068f7bfab5bc8db63bf8691",
       "presentationScale": 0.0921053,
       "frameRegions": [
         [
           0,
           0,
-          555,
+          558,
           725
         ],
         [
-          555,
+          558,
           0,
-          530,
+          534,
           725
         ],
         [
-          1085,
+          1092,
           0,
-          595,
+          580,
           725
         ],
         [
-          1680,
+          1672,
           0,
-          490,
+          497,
           725
         ]
       ],
       "frameAnchors": [
         [
           298,
-          549
+          553
         ],
         [
-          299,
-          552
+          285,
+          555
         ],
         [
-          295,
-          551
+          288,
+          554
         ],
         [
-          300,
-          551
+          259,
+          555
         ]
       ],
       "textureFilter": "linear"
@@ -679,9 +679,9 @@
       "topicId": "C01-UNIT-LEGION-SHIELD",
       "label": "军团盾卫",
       "category": "combat-unit",
-      "png": "painted-units-v1/unit-legion-shield.png",
+      "png": "painted-units-v1/unit-legion-shield-gait-v2.png",
       "runtimeReady": true,
-      "qualityTier": "painted-v1-native-reviewed",
+      "qualityTier": "painted-v2-gait-reviewed",
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -697,8 +697,8 @@
       "physicalWidth": 2172,
       "physicalHeight": 724,
       "pixelDensity": 1,
-      "resourcePath": "res://assets/painted-units-v1/unit-legion-shield.png",
-      "sha256": "ef47679f0f500846e1bf346cbdbf4ea431243c73a2844a8b431b3beeb12cd3a5",
+      "resourcePath": "res://assets/painted-units-v1/unit-legion-shield-gait-v2.png",
+      "sha256": "50e8872818394cdfb76f0dc902866f5877288e8389f8d32d3db288b58c8cbd44",
       "presentationScale": 0.1041667,
       "frameRegions": [
         [
@@ -710,13 +710,13 @@
         [
           528,
           0,
-          526,
+          522,
           724
         ],
         [
-          1054,
+          1050,
           0,
-          628,
+          632,
           724
         ],
         [
@@ -729,19 +729,19 @@
       "frameAnchors": [
         [
           260,
-          549
-        ],
-        [
-          292,
-          566
-        ],
-        [
-          246,
           552
         ],
         [
-          218,
-          564
+          262,
+          552
+        ],
+        [
+          250,
+          555
+        ],
+        [
+          198,
+          552
         ]
       ],
       "textureFilter": "linear"
@@ -985,9 +985,9 @@
       "topicId": "C01-UNIT-SWORDSMAN",
       "label": "剑士",
       "category": "combat-unit",
-      "png": "painted-units-v1/unit-swordsman-v2.png",
+      "png": "painted-units-v1/unit-swordsman-gait-v3.png",
       "runtimeReady": true,
-      "qualityTier": "painted-v1-native-reviewed",
+      "qualityTier": "painted-v2-gait-reviewed",
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1003,51 +1003,51 @@
       "physicalWidth": 2169,
       "physicalHeight": 725,
       "pixelDensity": 1,
-      "resourcePath": "res://assets/painted-units-v1/unit-swordsman-v2.png",
-      "sha256": "95be9ac968edc96657081b34075370f456ad4e90304ebfaca6ef169c23c05560",
+      "resourcePath": "res://assets/painted-units-v1/unit-swordsman-gait-v3.png",
+      "sha256": "90128bde1240f9387e725e2f9b0e63015549abadaf0a8ab9dad0ae010ebc0f79",
       "presentationScale": 0.0847458,
       "frameRegions": [
         [
           0,
           0,
-          550,
+          543,
           725
         ],
         [
-          550,
+          543,
           0,
-          515,
+          518,
           725
         ],
         [
-          1065,
+          1061,
           0,
-          640,
+          646,
           725
         ],
         [
-          1705,
+          1707,
           0,
-          464,
+          462,
           725
         ]
       ],
       "frameAnchors": [
         [
           251,
-          566
+          569
         ],
         [
-          250,
-          587
+          264,
+          569
         ],
         [
-          240,
-          561
+          244,
+          563
         ],
         [
-          195,
-          587
+          180,
+          569
         ]
       ],
       "textureFilter": "linear"
@@ -2201,7 +2201,7 @@
     {
       "id": "laiya-stage01",
       "topicId": "C01-UNIT-BANNER-GUARD",
-      "png": "painted-units-v1/laiya-stage01.png",
+      "png": "painted-units-v1/laiya-stage01-v2.png",
       "hdPng": "runtime-approved-v5/hero-appearance/laiya-stage01@2x.png",
       "pixelDensity": 1,
       "frames": 4,
@@ -2213,56 +2213,56 @@
       ],
       "hdWidth": 832,
       "hdHeight": 128,
-      "physicalWidth": 2169,
+      "physicalWidth": 2168,
       "physicalHeight": 725,
-      "resourcePath": "res://assets/painted-units-v1/laiya-stage01.png",
-      "sha256": "2bd6561bcf0e02fb39bc058429b4939737bc1d06e7e2f12d41f5810516253a65",
+      "resourcePath": "res://assets/painted-units-v1/laiya-stage01-v2.png",
+      "sha256": "746951e2063e5ba4fad3a28c3ea78d4a2c32eed8b684cfe571808a04bbda414a",
       "presentationScale": 0.0977654,
       "frameRegions": [
         [
           0,
           0,
-          535,
-          725
-        ],
-        [
-          535,
-          0,
           524,
           725
         ],
         [
-          1059,
+          524,
           0,
-          646,
+          525,
           725
         ],
         [
-          1705,
+          1049,
           0,
-          464,
+          649,
+          725
+        ],
+        [
+          1698,
+          0,
+          470,
           725
         ]
       ],
       "frameAnchors": [
         [
           273,
-          589
+          580
         ],
         [
-          306,
-          592
+          275,
+          588
         ],
         [
-          303,
-          591
+          313,
+          584
         ],
         [
-          234,
-          590
+          216,
+          586
         ]
       ],
-      "qualityTier": "painted-v1-native-reviewed",
+      "qualityTier": "painted-v2-gait-reviewed",
       "textureFilter": "linear"
     },
     {
@@ -2299,7 +2299,7 @@
     {
       "id": "mirelle-stage01",
       "topicId": "C01-UNIT-GRAVEKEEPER",
-      "png": "painted-units-v1/mirelle-stage01.png",
+      "png": "painted-units-v1/mirelle-stage01-v2.png",
       "hdPng": "runtime-approved-v5/hero-appearance/mirelle-stage01@2x.png",
       "pixelDensity": 1,
       "frames": 4,
@@ -2313,60 +2313,60 @@
       "hdHeight": 128,
       "physicalWidth": 2169,
       "physicalHeight": 725,
-      "resourcePath": "res://assets/painted-units-v1/mirelle-stage01.png",
-      "sha256": "d52fe24bbcc83afc46201cac23068ebcc1759ac6cbe2822faad713d3a00544b9",
+      "resourcePath": "res://assets/painted-units-v1/mirelle-stage01-v2.png",
+      "sha256": "025112564830b3f6244491700bdd6920e4d6031be70fc6c6f2aa135265912d1d",
       "presentationScale": 0.0806452,
       "frameRegions": [
         [
           0,
           0,
-          559,
+          565,
           725
         ],
         [
-          559,
+          565,
           0,
-          516,
+          520,
           725
         ],
         [
-          1075,
+          1085,
           0,
-          595,
+          582,
           725
         ],
         [
-          1670,
+          1667,
           0,
-          499,
+          502,
           725
         ]
       ],
       "frameAnchors": [
         [
           258,
-          566
+          568
         ],
         [
-          318,
-          582
+          248,
+          568
         ],
         [
-          198,
-          563
+          188,
+          565
         ],
         [
-          306,
-          582
+          231,
+          568
         ]
       ],
-      "qualityTier": "painted-v1-native-reviewed",
+      "qualityTier": "painted-v2-gait-reviewed",
       "textureFilter": "linear"
     },
     {
       "id": "torren-stage01",
       "topicId": "C01-UNIT-SWORDSMAN",
-      "png": "painted-units-v1/torren-stage01.png",
+      "png": "painted-units-v1/torren-stage01-v2.png",
       "hdPng": "runtime-approved-v5/hero-appearance/torren-stage01@2x.png",
       "pixelDensity": 1,
       "frames": 4,
@@ -2378,56 +2378,56 @@
       ],
       "hdWidth": 832,
       "hdHeight": 128,
-      "physicalWidth": 2170,
+      "physicalWidth": 2169,
       "physicalHeight": 725,
-      "resourcePath": "res://assets/painted-units-v1/torren-stage01.png",
-      "sha256": "f34032e45fad1277e20f9ebf639a1299f2f9a6c4500aa37bfca562dd4288eff6",
+      "resourcePath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+      "sha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
       "presentationScale": 0.0961538,
       "frameRegions": [
         [
           0,
           0,
-          553,
+          557,
           725
         ],
         [
-          553,
+          557,
           0,
-          510,
+          513,
           725
         ],
         [
-          1063,
+          1070,
           0,
-          666,
+          641,
           725
         ],
         [
-          1729,
+          1711,
           0,
-          441,
+          458,
           725
         ]
       ],
       "frameAnchors": [
         [
           269,
-          563
-        ],
-        [
-          327,
           565
         ],
         [
-          259,
-          561
+          244,
+          564
         ],
         [
-          253,
-          563
+          252,
+          564
+        ],
+        [
+          194,
+          571
         ]
       ],
-      "qualityTier": "painted-v1-native-reviewed",
+      "qualityTier": "painted-v2-gait-reviewed",
       "textureFilter": "linear"
     },
     {
@@ -2464,7 +2464,7 @@
     {
       "id": "bran-stage01",
       "topicId": "C01-UNIT-RANGER",
-      "png": "painted-units-v1/bran-stage01.png",
+      "png": "painted-units-v1/bran-stage01-v2.png",
       "hdPng": "runtime-approved-v5/hero-appearance/bran-stage01@2x.png",
       "pixelDensity": 1,
       "frames": 4,
@@ -2476,56 +2476,56 @@
       ],
       "hdWidth": 832,
       "hdHeight": 128,
-      "physicalWidth": 2170,
+      "physicalWidth": 2169,
       "physicalHeight": 725,
-      "resourcePath": "res://assets/painted-units-v1/bran-stage01.png",
-      "sha256": "f6f4c304e0b1bdaa31ec0bb8832736fa3e622764ab00463719689ee16b00977e",
+      "resourcePath": "res://assets/painted-units-v1/bran-stage01-v2.png",
+      "sha256": "edf3ee2227b622acb7e34644e4b9258a905f9b7abb9383bda6f9efc39ca5c674",
       "presentationScale": 0.0902062,
       "frameRegions": [
         [
           0,
           0,
-          565,
+          563,
           725
         ],
         [
-          565,
+          563,
           0,
-          530,
+          532,
           725
         ],
         [
           1095,
           0,
-          576,
+          583,
           725
         ],
         [
-          1671,
+          1678,
           0,
-          499,
+          491,
           725
         ]
       ],
       "frameAnchors": [
         [
           297,
+          575
+        ],
+        [
+          272,
           574
         ],
         [
-          306,
-          581
-        ],
-        [
           267,
-          590
+          591
         ],
         [
-          265,
-          575
+          248,
+          573
         ]
       ],
-      "qualityTier": "painted-v1-native-reviewed",
+      "qualityTier": "painted-v2-gait-reviewed",
       "textureFilter": "linear"
     },
     {
