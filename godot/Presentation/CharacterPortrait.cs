@@ -22,7 +22,7 @@ public static class CharacterPortrait
             Texture = framed,
             ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
             StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
-            TextureFilter = CanvasItem.TextureFilterEnum.Nearest,
+            TextureFilter = CanvasItem.TextureFilterEnum.Linear,
             MouseFilter = Control.MouseFilterEnum.Ignore
         };
     }

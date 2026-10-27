@@ -1,5 +1,6 @@
 import contextlib
 import io
+import hashlib
 import json
 from pathlib import Path
 import shutil
@@ -123,6 +124,66 @@ class NativeNarrativeContract(unittest.TestCase):
     def test_missing_hud_portrait_choice_is_not_null(self):
         self.change("tactical-hud-art.json", lambda value: value["portraits"]["c01.swordsman"].pop("portraitId"))
         self.reject()
+
+    def test_missing_hud_portrait_region(self):
+        self.change("tactical-hud-art.json", lambda value: value["portraits"]["c01.laiya"].pop("portraitRegion"))
+        with self.assertRaisesRegex(CatalogError, "Invalid native narrative fields"):
+            validate(self.root)
+
+    def test_named_portrait_region_cannot_be_null(self):
+        self.change("tactical-hud-art.json", lambda value: value["portraits"]["c01.laiya"].update(portraitRegion=None))
+        with self.assertRaisesRegex(CatalogError, "requires a square physical-pixel crop: c01.laiya"):
+            validate(self.root)
+
+    def test_named_portrait_region_must_be_square(self):
+        self.change("tactical-hud-art.json", lambda value: value["portraits"]["c01.laiya"].update(portraitRegion=[0, 0, 100, 101]))
+        with self.assertRaisesRegex(CatalogError, "requires a square physical-pixel crop: c01.laiya"):
+            validate(self.root)
+
+    def test_named_portrait_region_must_be_inside_png(self):
+        for crop in [[100000, 0, 100, 100], [0, 100000, 100, 100]]:
+            with self.subTest(crop=crop):
+                self.change("tactical-hud-art.json", lambda value: value["portraits"]["c01.laiya"].update(portraitRegion=crop))
+                with self.assertRaisesRegex(CatalogError, "out of PNG bounds: c01.laiya"):
+                    validate(self.root)
+
+    def test_named_portrait_crop_can_touch_png_boundary(self):
+        catalog = json.loads((self.root / "godot/data/portrait-catalog.json").read_text())
+        path = self.root / "godot" / catalog["portraits"]["laiya"]["resourcePath"].removeprefix("res://")
+        png = path.read_bytes()
+        width, height = int.from_bytes(png[16:20], "big"), int.from_bytes(png[20:24], "big")
+        self.change("tactical-hud-art.json", lambda value: value["portraits"]["c01.laiya"].update(
+            portraitRegion=[width - 100, height - 100, 100, 100]))
+        with contextlib.redirect_stdout(io.StringIO()):
+            validate(self.root)
+
+    def test_named_portrait_requires_png_even_with_matching_hash(self):
+        catalog = json.loads((self.root / "godot/data/portrait-catalog.json").read_text())
+        path = self.root / "godot" / catalog["portraits"]["laiya"]["resourcePath"].removeprefix("res://")
+        malformed = b"not a PNG"
+        path.write_bytes(malformed)
+        self.change("portrait-catalog.json", lambda value: value["portraits"]["laiya"].update(
+            sha256=hashlib.sha256(malformed).hexdigest()))
+        with self.assertRaisesRegex(CatalogError, "Native portrait is not a PNG: laiya"):
+            validate(self.root)
+
+    def test_generic_portrait_region_can_explicitly_select_whole_idle_frame(self):
+        self.change("tactical-hud-art.json", lambda value: value["portraits"]["c01.swordsman"].update(portraitRegion=None))
+        with contextlib.redirect_stdout(io.StringIO()):
+            validate(self.root)
+
+    def test_generic_portrait_region_requires_explicit_field(self):
+        self.change("tactical-hud-art.json", lambda value: value["portraits"]["c01.swordsman"].pop("portraitRegion"))
+        with self.assertRaisesRegex(CatalogError, "Invalid native narrative fields"):
+            validate(self.root)
+
+    def test_generic_portrait_region_rejects_malformed_square(self):
+        for crop in [[0, 0, 10, 11], [0, 0, 0, 0], [-1, 0, 10, 10],
+                     [0, False, 10, 10], [0, 0, 1.5, 1.5], [0, 0, 10], "crop", [2**53, 0, 10, 10]]:
+            with self.subTest(crop=crop):
+                self.change("tactical-hud-art.json", lambda value: value["portraits"]["c01.swordsman"].update(portraitRegion=crop))
+                with self.assertRaisesRegex(CatalogError, "requires a square physical-pixel crop: c01.swordsman"):
+                    validate(self.root)
 
     def test_embedded_hud_card_is_not_an_owner(self):
         self.change("tactical-hud-art.json", lambda value: value["portraits"]["c01.mirelle"].update(card={}))

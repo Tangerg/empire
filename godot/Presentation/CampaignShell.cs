@@ -13,6 +13,8 @@ public partial class CampaignShell : Control
     private MarginContainer margins = null!;
     private VBoxContainer diagnosticsBox = null!;
     private bool built;
+    private Button? exitButton;
+    public HBoxContainer Footer { get; private set; } = null!;
     private int generation;
     public VBoxContainer Body { get; private set; } = null!;
     public ScrollContainer Scroll { get; private set; } = null!;
@@ -25,6 +27,7 @@ public partial class CampaignShell : Control
     public void Show(CampaignShellView view, Action onExit)
     {
         var binding = ++generation;
+        Theme = CampaignUiStyle.Create();
         Presented = view;
         diagnostics.Clear();
         actions.Clear();
@@ -53,11 +56,17 @@ public partial class CampaignShell : Control
         AddChild(column);
         column.AddThemeConstantOverride("separation", 0);
         var topbar = new PanelContainer { Name = "CampaignTopbar" };
-        topbar.AddThemeStyleboxOverride("panel", Panel(new Color("#18120e"), 10));
+        topbar.AddThemeStyleboxOverride("panel", new StyleBoxEmpty { ContentMarginLeft = 16, ContentMarginRight = 16, ContentMarginTop = 10, ContentMarginBottom = 8 });
         column.AddChild(topbar);
         var header = new HBoxContainer();
         header.AddThemeConstantOverride("separation", 12);
         topbar.AddChild(header);
+        var pennant = new PanelContainer { CustomMinimumSize = new Vector2(300, 0) };
+        pennant.AddThemeStyleboxOverride("panel", Empire.Presentation.Tactical.TacticalHudStyle.Panel("#29333c", 10, "#716247"));
+        header.AddChild(pennant);
+        var headingContent = new HBoxContainer();
+        headingContent.AddThemeConstantOverride("separation", 12);
+        pennant.AddChild(headingContent);
         var exit = new Button
         {
             Name = "CampaignExit",
@@ -65,6 +74,7 @@ public partial class CampaignShell : Control
             TooltipText = view.ExitLabel,
             CustomMinimumSize = new Vector2(44, 44)
         };
+        exitButton = exit;
         exit.AccessibilityName = view.ExitLabel;
         exit.Pressed += () =>
         {
@@ -73,10 +83,10 @@ public partial class CampaignShell : Control
             exit.Disabled = true;
             onExit();
         };
-        header.AddChild(exit);
+        headingContent.AddChild(exit);
         actions.Add(exit);
         var headings = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        header.AddChild(headings);
+        headingContent.AddChild(headings);
         headings.AddChild(Text(view.Title, 14, "#bba88b", "CampaignTitle"));
         headings.AddChild(Text(view.ChapterHeading, 18, "#f6ead2", "CampaignChapter"));
         progress = new CampaignProgress
@@ -85,9 +95,11 @@ public partial class CampaignShell : Control
             CustomMinimumSize = new Vector2(180, 32),
             SizeFlagsVertical = SizeFlags.ShrinkCenter,
             Completed = view.CompletedBattles,
-            Total = view.BattleTotal
+            Total = view.BattleTotal,
+            Caption = view.ProgressLabel
         };
         progress.AccessibilityName = view.ProgressLabel;
+        header.AddChild(new Control { SizeFlagsHorizontal = SizeFlags.ExpandFill });
         header.AddChild(progress);
         Scroll = new ScrollContainer
         {
@@ -101,6 +113,9 @@ public partial class CampaignShell : Control
         Body = new VBoxContainer { Name = "NarrativeBody", SizeFlagsHorizontal = SizeFlags.ExpandFill };
         Body.AddThemeConstantOverride("separation", 18);
         margins.AddChild(Body);
+        Footer = new HBoxContainer { Name = "CampaignFooter" };
+        Footer.AddThemeConstantOverride("separation", 16);
+        column.AddChild(Footer);
         diagnosticsBox = new VBoxContainer { Name = "NarrativeArtDiagnostics" };
         column.AddChild(diagnosticsBox);
         built = true;
@@ -109,6 +124,15 @@ public partial class CampaignShell : Control
     }
 
     public override void _Ready() => Resized += ResizeLayout;
+    public override void _UnhandledKeyInput(InputEvent input)
+    {
+        if (input is InputEventKey { Pressed: true, Echo: false, Keycode: Key.Escape }
+            && exitButton is { Disabled: false } button && button.IsVisibleInTree())
+        {
+            GetViewport().SetInputAsHandled();
+            button.EmitSignal(Button.SignalName.Pressed);
+        }
+    }
     public override void _ExitTree() => generation++;
     private void ResizeLayout()
     {
@@ -181,10 +205,10 @@ public partial class CampaignShell : Control
         BorderWidthRight = 1,
         BorderWidthTop = 1,
         BorderWidthBottom = 1,
-        CornerRadiusBottomLeft = 14,
-        CornerRadiusBottomRight = 14,
-        CornerRadiusTopLeft = 14,
-        CornerRadiusTopRight = 14,
+        CornerRadiusBottomLeft = 3,
+        CornerRadiusBottomRight = 3,
+        CornerRadiusTopLeft = 3,
+        CornerRadiusTopRight = 3,
         ContentMarginLeft = padding,
         ContentMarginRight = padding,
         ContentMarginTop = padding,
@@ -192,9 +216,11 @@ public partial class CampaignShell : Control
     };
 }
 
-/// <summary>Source segmented progress, including the zero-battle denominator contract.</summary>
+/// <summary>Compact source progress count; no invented mission or turn state.</summary>
 public partial class CampaignProgress : Control
 {
+    private readonly StyleBox progressSurface = Empire.Presentation.Tactical.TacticalHudStyle.Panel("#30291f", 8);
+    public string Caption { get; init; } = "";
     public int Completed
     {
         get; init;
@@ -206,22 +232,18 @@ public partial class CampaignProgress : Control
     public override void _Ready()
     {
         MouseFilter = MouseFilterEnum.Ignore;
-        var label = CampaignShell.Text($"{Completed}/{Total}", 14, "#fff4dc", "ProgressCount");
-        label.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        label.HorizontalAlignment = HorizontalAlignment.Center;
-        label.VerticalAlignment = VerticalAlignment.Center;
-        AddChild(label);
+        var row = new HBoxContainer();
+        row.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        row.AddThemeConstantOverride("separation", 12);
+        AddChild(row);
+        row.AddChild(CampaignShell.Text(Caption, 14, "#d8c6a4"));
+        var label = CampaignShell.Text($"{Completed}/{Total}", 16, "#fff4dc", "ProgressCount");
+        label.HorizontalAlignment = HorizontalAlignment.Right;
+        row.AddChild(label);
         Resized += QueueRedraw;
     }
     public override void _Draw()
     {
-        DrawRect(new Rect2(Vector2.Zero, Size), new Color(1, 1, 1, .05f));
-        var fraction = Total == 0 ? 0 : (double)Completed / Total;
-        DrawRect(new Rect2(Vector2.Zero, new Vector2((float)(Math.Clamp(fraction, 0, 1) * Size.X), Size.Y)), new Color("#4d86b8"));
-        for (var index = 1; index < Math.Max(1, Total); index++)
-        {
-            var x = Size.X * index / Math.Max(1, Total);
-            DrawLine(new Vector2(x, 0), new Vector2(x, Size.Y), new Color(.91f, .77f, .51f, .2f));
-        }
+        DrawStyleBox(progressSurface, new Rect2(new Vector2(-8, -4), Size + new Vector2(16, 8)));
     }
 }

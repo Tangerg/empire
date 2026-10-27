@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Godot;
+using Empire.Presentation.Tactical;
 
 namespace Empire.Presentation;
 
@@ -23,10 +24,11 @@ public partial class CampaignStagingScreen : Control
         submitted = true;
     }
 
-    public void ShowStaging(CampaignStagingView view, AssetCatalog assets, Action startBattle, Action exitCampaign)
+    public void ShowStaging(CampaignStagingView view, TacticalHudArt unitArt, Action startBattle, Action exitCampaign)
     {
         ArgumentNullException.ThrowIfNull(view);
-        ArgumentNullException.ThrowIfNull(assets);
+        ArgumentNullException.ThrowIfNull(unitArt);
+        Theme = CampaignUiStyle.Create();
         ArgumentNullException.ThrowIfNull(startBattle);
         ArgumentNullException.ThrowIfNull(exitCampaign);
         generation++;
@@ -54,11 +56,10 @@ public partial class CampaignStagingScreen : Control
                     startButton.Disabled = true;
                 exitCampaign();
             });
-        var card = new PanelContainer { Name = "StagingCard", SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        card.AddThemeStyleboxOverride("panel", CampaignShell.Panel(new Color(.08f, .07f, .055f, .96f), 24));
+        var card = new DispatchPanel { Name = "StagingCard", SizeFlagsHorizontal = SizeFlags.ExpandFill };
         shell.Body.AddChild(card);
         var body = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        body.AddThemeConstantOverride("separation", 24);
+        body.AddThemeConstantOverride("separation", 18);
         card.AddChild(body);
         var column = body;
         var hero = new HBoxContainer();
@@ -67,7 +68,7 @@ public partial class CampaignStagingScreen : Control
         if (view.BriefingArt is { } briefing && Texture(briefing, "briefing scene") is { } scene)
         {
             var picture = Picture(scene);
-            picture.CustomMinimumSize = new Vector2(250, 170);
+            picture.CustomMinimumSize = new Vector2(240, 150);
             picture.SizeFlagsHorizontal = SizeFlags.ExpandFill;
             hero.AddChild(picture);
         }
@@ -86,13 +87,14 @@ public partial class CampaignStagingScreen : Control
             var row = new HBoxContainer { Name = "Roster_" + unit.Id };
             row.AddThemeConstantOverride("separation", 14);
             roster.AddChild(row);
+            var identity = new TacticalHudPortrait(unit.UnitType, unit.ActorKey, "#ffffff");
             Texture2D? avatar = unit.Portrait is { } portrait ? Texture(portrait, $"portrait {unit.Id}") : null;
+            if (avatar is not null) avatar = unitArt.FramePortraitArtwork(identity, avatar);
             if (avatar is null)
             {
                 try
                 {
-                    var asset = assets.ResolveUnit(unit.UnitType, unit.ActorKey);
-                    avatar = assets.CreateFrameTexture(asset, AssetCatalog.FrameIndex(asset, "idle"));
+                    avatar = unitArt.Portrait(new TacticalHudPortrait(unit.UnitType, unit.ActorKey, "#ffffff"));
                 }
                 catch (MissingArtResourceException error) { diagnostics.Add($"Roster {unit.Id}: {error.Message}"); }
             }
@@ -123,7 +125,12 @@ public partial class CampaignStagingScreen : Control
         }
         var footer = new HBoxContainer();
         footer.AddThemeConstantOverride("separation", 24);
-        column.AddChild(footer);
+        var footerSurface = new PanelContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        footerSurface.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#30291f", 16));
+        shell.Footer.AddChild(footerSurface);
+        footerSurface.AddChild(footer);
+        footer.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        footer.AddThemeConstantOverride("separation", 18);
         footer.AddChild(Text(view.ActionNote, 16, "#b8c6b6"));
         var button = new Button { Name = "StartBattle", Text = view.StartLabel, CustomMinimumSize = new Vector2(210, 48) };
         startButton = button;
@@ -137,6 +144,7 @@ public partial class CampaignStagingScreen : Control
             startBattle();
         };
         footer.AddChild(button);
+        CampaignUiStyle.InitialFocus(button);
         if (diagnostics.Count > 0 && shell.RenderingDiagnostics.Count == 0)
             column.AddChild(Text(view.ArtworkFailureLabel, 16, "#efb76c"));
     }

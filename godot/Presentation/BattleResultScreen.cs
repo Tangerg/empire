@@ -32,6 +32,7 @@ public partial class BattleResultScreen : Control
 
     private VBoxContainer Begin(CampaignShellView? shellView = null, Action? onExit = null)
     {
+        Theme = CampaignUiStyle.Create();
         generation++;
         handled = false;
         AutoTranslateMode = AutoTranslateModeEnum.Disabled;
@@ -56,9 +57,14 @@ public partial class BattleResultScreen : Control
                 shell.DisableNavigation();
                 onExit();
             });
-            return shell.Body;
+            var summaryCard = new DispatchPanel { SizeFlagsHorizontal = SizeFlags.ExpandFill };
+            shell.Body.AddChild(summaryCard);
+            var content = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
+            content.AddThemeConstantOverride("separation", 18);
+            summaryCard.AddChild(content);
+            return content;
         }
-        var background = new ColorRect { Color = new Color("#091712"), MouseFilter = MouseFilterEnum.Ignore };
+        var background = new ColorRect { Color = new Color("#25291f"), MouseFilter = MouseFilterEnum.Ignore };
         background.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         AddChild(background);
         var margin = new MarginContainer();
@@ -70,7 +76,9 @@ public partial class BattleResultScreen : Control
         margin.AddChild(scroll);
         var column = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
         column.AddThemeConstantOverride("separation", 22);
-        scroll.AddChild(column);
+        var card = new DispatchPanel { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ShrinkCenter };
+        scroll.AddChild(card);
+        card.AddChild(column);
         return column;
     }
 
@@ -97,6 +105,7 @@ public partial class BattleResultScreen : Control
             action();
         };
         column.AddChild(button);
+        if (name is "Settle" or "Proceed" or "Retry") CampaignUiStyle.InitialFocus(button);
     }
 
     public void ShowResult(string outcome, CampaignBattleSummary summary, Action proceed, CampaignShellView? shellView = null, Action? onExit = null)

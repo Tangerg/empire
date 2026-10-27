@@ -50,6 +50,10 @@ native = target / 'native'
 (native / 'Localization').mkdir()
 (native / 'data').mkdir()
 shutil.copyfile(root / 'godot/data/grayflag-staging.json', native / 'data/grayflag-staging.json')
+shutil.copyfile(root / 'godot/Presentation/CampaignUiStyle.cs', native / 'Presentation/CampaignUiStyle.cs')
+shutil.copyfile(root / 'godot/Presentation/Tactical/TacticalHudStyle.cs', native / 'Presentation/TacticalHudStyle.cs')
+(native / 'assets/native/hud').mkdir(parents=True, exist_ok=True)
+shutil.copyfile(root / 'godot/assets/native/hud/dispatch-board-v1.png', native / 'assets/native/hud/dispatch-board-v1.png')
 for name in ['GameText.cs', 'GodotTextCatalog.cs', 'zh_CN.po']:
     shutil.copyfile(root / 'godot/Localization' / name, native / 'Localization' / name)
 for name in ['CampaignMenu.cs', 'CampaignMenuScreen.cs', 'CampaignMenuChecks.cs']:

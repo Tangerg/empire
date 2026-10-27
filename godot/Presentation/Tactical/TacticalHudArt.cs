@@ -95,6 +95,13 @@ public sealed class TacticalHudArt
         var asset = assets.ResolveUnit(unit.UnitType, unit.ActorKey);
         return assets.CreateFrameTexture(asset, AssetCatalog.FrameIndex(asset, "idle"));
     }
+    public Texture2D FramePortraitArtwork(TacticalHudPortrait portrait, Texture2D artwork)
+    {
+        var key = portrait.ActorKey is { } actor && document.Portraits.ContainsKey(actor) ? actor : portrait.UnitType;
+        if (!document.Portraits.TryGetValue(key, out var binding) || binding.UnitType != portrait.UnitType)
+            throw new MissingArtResourceException(key, "Missing source portrait framing: " + key);
+        return binding.PortraitRegion is null ? artwork : Crop(artwork, binding.PortraitRegion, key);
+    }
     public Texture2D Portrait(TacticalHudPortrait portrait)
     {
         var key = portrait.ActorKey is { } actor && document.Portraits.ContainsKey(actor) ? actor : portrait.UnitType;

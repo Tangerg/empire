@@ -385,7 +385,7 @@ public partial class GrayFlagGame : Node
             Empire.Core.Determinism.EcmaJson.ToElement(owner.Node()),
             Empire.Core.Determinism.EcmaJson.ToElement(owner.BattleLevel()),
             Empire.Core.Determinism.EcmaJson.ToElement(presentation), owner.HasPendingBattle);
-        var staging = PrepareMounted(new CampaignStagingScreen(), next => next.ShowStaging(projection, AssetCatalog.Load(), () =>
+        var staging = PrepareMounted(new CampaignStagingScreen(), next => next.ShowStaging(projection, Empire.Presentation.Tactical.TacticalHudArt.Load(AssetCatalog.Load(), portraits), () =>
         {
             if (!CurrentView(owner, next))
                 return;

@@ -19,6 +19,10 @@ root, target = map(Path, sys.argv[1:])
 (target / 'Scenes').mkdir()
 (target / 'data').mkdir()
 (target / 'Localization').mkdir()
+shutil.copyfile(root / 'godot/Presentation/CampaignUiStyle.cs', target / 'Presentation/CampaignUiStyle.cs')
+shutil.copyfile(root / 'godot/Presentation/Tactical/TacticalHudStyle.cs', target / 'Presentation/TacticalHudStyle.cs')
+(target / 'assets/native/hud').mkdir(parents=True, exist_ok=True)
+shutil.copyfile(root / 'godot/assets/native/hud/dispatch-board-v1.png', target / 'assets/native/hud/dispatch-board-v1.png')
 for name in ['GameText.cs', 'GodotTextCatalog.cs', 'zh_CN.po']:
     shutil.copyfile(root / 'godot/Localization' / name, target / 'Localization' / name)
 for name in ['NarrativeArt.cs', 'CharacterPortrait.cs', 'StoryScreen.cs', 'StoryModels.cs', 'NarrativeProjection.cs', 'CampaignShell.cs', 'NarrativeChecks.cs']:

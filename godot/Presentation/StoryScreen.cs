@@ -172,6 +172,7 @@ public partial class StoryScreen : Control
         var primary = ActionButton(view.PrimaryLabel, "StoryPrimary", AdvanceLocalBeat);
         actionGrid.AddChild(primary);
         ResizeLayout();
+        if (!restorePrimaryFocus) CampaignUiStyle.InitialFocus(primary);
         if (restorePrimaryFocus)
         {
             var binding = generation;
@@ -263,8 +264,7 @@ public partial class StoryScreen : Control
     }
     private VBoxContainer Card()
     {
-        var panel = new PanelContainer { Name = "NarrativeCard", SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        panel.AddThemeStyleboxOverride("panel", CampaignShell.Panel(new Color(.13f, .095f, .07f, .97f), 24));
+        var panel = new DispatchPanel { Name = "NarrativeCard", SizeFlagsHorizontal = SizeFlags.ExpandFill };
         shell.Body.AddChild(panel);
         var body = new VBoxContainer();
         body.AddThemeConstantOverride("separation", 18);

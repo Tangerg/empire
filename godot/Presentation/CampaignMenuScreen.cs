@@ -5,6 +5,12 @@ namespace Empire.Presentation;
 /// <summary>Signals menu intent once per binding. The caller owns confirmation, persistence and campaign transitions.</summary>
 public partial class CampaignMenuScreen : Control
 {
+    private DispatchPanel? menuCard;
+    public override void _Ready() => Resized += FitCard;
+    private void FitCard()
+    {
+        if (IsInstanceValid(menuCard)) menuCard!.CustomMinimumSize = new Vector2(Math.Min(570, Math.Max(280, Size.X - 72)), 0);
+    }
     private int generation;
     private bool submitted;
     private readonly List<string> diagnostics = new();
@@ -24,6 +30,7 @@ public partial class CampaignMenuScreen : Control
         ArgumentNullException.ThrowIfNull(view);
         ArgumentNullException.ThrowIfNull(continueCampaign);
         ArgumentNullException.ThrowIfNull(newCampaignRequested);
+        Theme = CampaignUiStyle.Create();
         generation++;
         var binding = generation;
         submitted = false;
@@ -55,7 +62,7 @@ public partial class CampaignMenuScreen : Control
         }
         else
             diagnostics.Add($"Original title art is unavailable: {view.ArtResourcePath ?? view.ArtSource}");
-        var shade = new ColorRect { Color = new Color(0.025f, 0.04f, 0.025f, 0.65f), MouseFilter = MouseFilterEnum.Ignore };
+        var shade = new ColorRect { Color = new Color(0.025f, 0.028f, 0.02f, 0.38f), MouseFilter = MouseFilterEnum.Ignore };
         shade.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         AddChild(shade);
         var margin = new MarginContainer();
@@ -66,15 +73,20 @@ public partial class CampaignMenuScreen : Control
         var scroll = new ScrollContainer { HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
         margin.AddChild(scroll);
         var column = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill };
-        column.AddThemeConstantOverride("separation", 20);
-        scroll.AddChild(column);
-        column.AddChild(Text(view.Kicker, 18));
-        column.AddChild(Text(view.Title, 48));
-        column.AddChild(Text(view.Description, 22));
+        column.AddThemeConstantOverride("separation", 16);
+        var card = menuCard = new DispatchPanel { SizeFlagsHorizontal = SizeFlags.ShrinkBegin, SizeFlagsVertical = SizeFlags.ShrinkCenter };
+        scroll.AddChild(card);
+        card.AddChild(column);
+        FitCard();
+        column.AddChild(Text(view.Title, 40));
+        column.AddChild(Text(view.Description, 18));
         var buttons = new List<Button>();
         if (view.CanContinue)
             AddButton("ContinueCampaign", view.ContinueLabel, view.Progress, true, continueCampaign);
         AddButton("NewCampaign", view.NewLabel, null, view.NewPrimary, newCampaignRequested);
+        var subtitle = Text(view.Kicker, 13);
+        subtitle.AddThemeColorOverride("font_color", new Color("#c6b89c"));
+        column.AddChild(subtitle);
         if (view.RejectedNotice is { } notice)
             column.AddChild(Text(notice, 18));
         if (diagnostics.Count > 0)
@@ -82,13 +94,14 @@ public partial class CampaignMenuScreen : Control
 
         void AddButton(string name, string label, string? note, bool primary, Action callback)
         {
-            var row = new HBoxContainer();
-            row.AddThemeConstantOverride("separation", 20);
+            var row = new VBoxContainer();
+            row.AddThemeConstantOverride("separation", 16);
             column.AddChild(row);
             var button = new Button { Name = name, Text = label, CustomMinimumSize = new Vector2(240, 54) };
             button.AddThemeColorOverride("font_color", new Color(primary ? "#f1daa0" : "#d9dfd6"));
             buttons.Add(button);
             row.AddChild(button);
+            if (primary) CampaignUiStyle.InitialFocus(button);
             if (note is not null)
                 row.AddChild(Text(note, 20));
             button.Pressed += () =>

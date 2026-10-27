@@ -89,6 +89,14 @@ public static class TacticalHudStyle
     public static Theme Create()
     {
         var theme = new Theme { DefaultFontSize = 15 };
+        theme.SetStylebox("panel", "TooltipPanel", Panel("#30291f", 10));
+        theme.SetStylebox("panel", "AcceptDialog", Panel("#30291f", 16));
+        var windowFrame = Panel("#30291f", 8);
+        windowFrame.ExpandMarginTop = 28;
+        theme.SetStylebox("embedded_border", "Window", windowFrame);
+        theme.SetColor("title_color", "Window", Ink);
+        theme.SetColor("font_color", "TooltipLabel", Ink);
+        theme.SetFontSize("font_size", "TooltipLabel", 16);
         theme.SetColor("font_color", "Label", Ink);
         theme.SetColor("font_color", "Button", Ink);
         theme.SetColor("font_hover_color", "Button", new Color("#fff5d7"));

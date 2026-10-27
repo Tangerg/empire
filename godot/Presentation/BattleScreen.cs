@@ -51,7 +51,7 @@ public partial class BattleScreen : Control
     public System.Collections.Generic.IReadOnlyList<string> RecentMessages => _messages.Recent();
     private Label _coverage = null!;
     private HBoxContainer _globalOrders = null!;
-    private HBoxContainer _applicationActions = null!;
+    private GridContainer _applicationActions = null!;
     private PopupPanel _systemMenu = null!;
     private AcceptDialog _battleLogDialog = null!;
     private long _toastGeneration;
@@ -223,14 +223,39 @@ public partial class BattleScreen : Control
         _restartConfirmation.Hide();
         var generation = ++_bindingGeneration;
         var session = _session;
-        bool Current() => _bound && IsInsideTree() && generation == _bindingGeneration && ReferenceEquals(session, _session);
+        var pending = false;
+        bool Current() => GodotObject.IsInstanceValid(this) && _bound && IsInsideTree() && generation == _bindingGeneration && ReferenceEquals(session, _session);
         _restart = onRestart is null ? null : () => { if (Current() && !IsInputBlocked) onRestart(); };
         void AddAction(string text, Action callback, bool requireIdle = false)
         {
             Button button = null!;
-            button = Button(text, () => { if (button.IsInsideTree() && Current() && (!requireIdle || !IsInputBlocked)) { _systemMenu.Hide(); callback(); } });
+            button = Button(text, () =>
+            {
+                if (pending || !button.IsInsideTree() || !Current() || (requireIdle && IsInputBlocked))
+                    return;
+                pending = true;
+                _systemMenu.Hide();
+                // Navigation can unmount this native Window; finish its input dispatch first.
+                Callable.From(() =>
+                {
+                    try
+                    {
+                        if (Current() && GodotObject.IsInstanceValid(button) && button.IsInsideTree()
+                            && (!requireIdle || !IsInputBlocked))
+                            callback();
+                    }
+                    finally { pending = false; }
+                }).CallDeferred();
+            });
             button.AutowrapMode = TextServer.AutowrapMode.Off;
-            button.CustomMinimumSize = new Vector2(90, 38);
+            button.CustomMinimumSize = new Vector2(140, 44);
+            button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+            if (requireIdle)
+            {
+                button.AddThemeStyleboxOverride("normal", TacticalHudStyle.Panel("#382923", 10, "#795844"));
+                button.AddThemeStyleboxOverride("hover", TacticalHudStyle.Panel("#50352b", 10, "#b58160"));
+                button.AddThemeColorOverride("font_color", new Color("#dfb49a"));
+            }
             _applicationActions.AddChild(button);
         }
         AddAction(_text.Format("ui.battle.log"), () =>
@@ -247,6 +272,8 @@ public partial class BattleScreen : Control
             {
                 _restartRequest = _restart;
                 _restartConfirmation.PopupCentered();
+                // This runs after the opening input dispatch; destructive confirmation is never the default key target.
+                _restartConfirmation.GetCancelButton().GrabFocus();
             }, true);
         if (onExit is not null)
             AddAction(_text.Format("ui.battle.camp"), onExit, true);
@@ -451,12 +478,28 @@ public partial class BattleScreen : Control
         cameraControls.AddChild(_zoomIn);
         heading.AddChild(cameraControls);
         _systemMenu = new PopupPanel { Name = "SystemMenu" };
-        _systemMenu.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#202c24", 12));
+        _systemMenu.AddThemeStyleboxOverride("panel", new StyleBoxEmpty());
         AddChild(_systemMenu);
         _battleLogDialog = new AcceptDialog { Name = "BattleLogDialog", Title = _text.Format("ui.battle.log") };
         AddChild(_battleLogDialog);
-        _applicationActions = new HBoxContainer { Name = "ApplicationActions" };
-        _systemMenu.AddChild(_applicationActions);
+        var systemPanel = new DispatchPanel { CustomMinimumSize = new Vector2(350, 0) };
+        _systemMenu.AddChild(systemPanel);
+        var systemBody = new VBoxContainer();
+        systemBody.AddThemeConstantOverride("separation", 14);
+        systemPanel.AddChild(systemBody);
+        var systemHeading = new HBoxContainer();
+        systemBody.AddChild(systemHeading);
+        var systemTitle = Text(_text.Format("ui.battle.system"), 20, TacticalHudStyle.Ink);
+        systemTitle.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        systemHeading.AddChild(systemTitle);
+        var closeSystem = Button(_text.Format("ui.common.cancel") + "  Esc", () => _systemMenu.Hide());
+        closeSystem.AutowrapMode = TextServer.AutowrapMode.Off;
+        closeSystem.CustomMinimumSize = new Vector2(94, 38);
+        systemHeading.AddChild(closeSystem);
+        _applicationActions = new GridContainer { Name = "ApplicationActions", Columns = 2 };
+        _applicationActions.AddThemeConstantOverride("h_separation", 10);
+        _applicationActions.AddThemeConstantOverride("v_separation", 10);
+        systemBody.AddChild(_applicationActions);
         var system = Button(_text.Format("ui.battle.system"), () => _systemMenu.PopupCentered());
         system.Name = "SystemMenuButton";
         system.CustomMinimumSize = new Vector2(72, 38);

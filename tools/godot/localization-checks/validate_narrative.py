@@ -49,6 +49,7 @@ def validate(root):
     if type(portraits["schema"]) is not int or portraits["schema"] != 1 or not isinstance(portraits["portraits"], dict) or not portraits["portraits"]:
         raise CatalogError("Native portraits require a nonempty schema 1 catalog")
     resources = set()
+    portrait_sizes = {}
     for identity, asset in portraits["portraits"].items():
         shape(asset, ["resourcePath", "sha256"])
         resource, digest = asset["resourcePath"], asset["sha256"]
@@ -59,8 +60,14 @@ def validate(root):
             raise CatalogError(f"Invalid or duplicate native portrait declaration: {identity}")
         resources.add(resource)
         source = root / "godot" / resource.removeprefix("res://")
-        if not source.is_file() or hashlib.sha256(source.read_bytes()).hexdigest() != digest:
+        if not source.is_file():
             raise CatalogError(f"Native portrait hash mismatch: {identity}")
+        png = source.read_bytes()
+        if hashlib.sha256(png).hexdigest() != digest:
+            raise CatalogError(f"Native portrait hash mismatch: {identity}")
+        if len(png) < 24 or png[:8] != b"\x89PNG\r\n\x1a\n" or png[12:16] != b"IHDR":
+            raise CatalogError(f"Native portrait is not a PNG: {identity}")
+        portrait_sizes[identity] = (int.from_bytes(png[16:20], "big"), int.from_bytes(png[20:24], "big"))
 
     def portrait_id(value, context):
         if not isinstance(value, str) or value not in portraits["portraits"]:
@@ -76,7 +83,7 @@ def validate(root):
     if hud["schema"] != 2 or not isinstance(hud["portraits"], dict):
         raise CatalogError("Native tactical HUD requires schema 2 portrait bindings")
     for key, binding in hud["portraits"].items():
-        shape(binding, ["unitType", "actorKey", "portraitId"])
+        shape(binding, ["unitType", "actorKey", "portraitId", "portraitRegion"])
         if not isinstance(binding["unitType"], str) or not binding["unitType"] or not (
                 binding["actorKey"] is None or isinstance(binding["actorKey"], str) and binding["actorKey"]):
             raise CatalogError(f"Invalid native HUD portrait binding: {key}")
@@ -84,6 +91,17 @@ def validate(root):
             raise CatalogError(f"Native HUD portrait binding key mismatch: {key}")
         if binding["portraitId"] is not None:
             portrait_id(binding["portraitId"], f"HUD binding {key}")
+        crop = binding["portraitRegion"]
+        if binding["portraitId"] is not None or crop is not None:
+            if not isinstance(crop, list) or len(crop) != 4 or any(
+                    type(value) is not int or abs(value) > 2**53 - 1 for value in crop
+            ) or crop[0] < 0 or crop[1] < 0 or crop[2] <= 0 or crop[2] != crop[3]:
+                raise CatalogError(f"HUD portrait requires a square physical-pixel crop: {key}")
+            if binding["portraitId"] is not None:
+                width, height = portrait_sizes[binding["portraitId"]]
+                if crop[0] + crop[2] > width or crop[1] + crop[3] > height:
+                    raise CatalogError(f"HUD portrait crop is out of PNG bounds: {key}")
+            # Generic regions are idle-frame-local; exporter/runtime own resolved actor-frame bounds.
     identities(story["stories"] + story["choices"], "narrative")
     campaign = json.loads((data / "grayflag-campaign.json").read_text(encoding="utf-8"), object_pairs_hook=unique_object)
     for unit in campaign["initial"]["roster"]:

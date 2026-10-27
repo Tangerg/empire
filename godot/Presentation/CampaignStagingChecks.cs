@@ -8,6 +8,7 @@ using Empire.Presentation.Feedback;
 using Empire.Localization;
 using System.Globalization;
 using Godot;
+using Empire.Presentation.Tactical;
 
 namespace Empire.Presentation;
 
@@ -60,14 +61,15 @@ public partial class CampaignStagingChecks : Node
             CampaignStagingView View(bool pending) => CampaignStaging.Create(presentationText, missingPortraits, EcmaJson.ToElement(item["state"]),
                 EcmaJson.ToElement(item["node"]), NativeLevel(item), EcmaJson.ToElement(metadata), pending);
             var assets = AssetCatalog.Load();
+            var unitArt = TacticalHudArt.Load(assets, portraits);
             var view = View(false);
             var screen = new CampaignStagingScreen();
             AddChild(screen);
             var starts = 0;
             var exits = 0;
-            screen.ShowStaging(view, assets, () => starts++, () => exits++);
+            screen.ShowStaging(view, unitArt, () => starts++, () => exits++);
             var card = Descendants(screen).OfType<PanelContainer>().Single(node => node.Name == "StagingCard");
-            Require(card.GetThemeStylebox("panel") is StyleBoxFlat { BgColor.A: >= .95f } &&
+            Require(card is DispatchPanel &&
                 Descendants(card).OfType<Label>().Any(label => label.Text == view.RosterHeading) &&
                 Descendants(card).OfType<Label>().Any(label => label.Text == view.StateHeading),
                 "Staging facts must remain on a readable surface independent of the illustration beneath them.");
@@ -81,13 +83,11 @@ public partial class CampaignStagingChecks : Node
                 var row = Descendants(screen).OfType<HBoxContainer>().Single(node => node.Name == "Roster_" + unit.Id);
                 var picture = row.GetNode<TextureRect>("Avatar");
                 Require(picture.Texture is AtlasTexture, "Unavailable portraits must use selected actual unit sprites, not a geometric placeholder");
-                var expected = assets.ResolveUnit(unit.UnitType, unit.ActorKey);
-                Require(picture.Texture is AtlasTexture { Atlas: AtlasTexture frame } && frame.Atlas.ResourcePath == expected.ResourcePath,
-                    "Roster fallback must respect the explicit actor binding and its source texture");
-                using var framePixels = assets.CreateFrameTexture(expected, AssetCatalog.FrameIndex(expected, "idle")).GetImage();
-                Require(((AtlasTexture)picture.Texture).Region == (Rect2)framePixels.GetUsedRect() &&
-                    picture.StretchMode == TextureRect.StretchModeEnum.KeepAspectCentered,
-                    "Roster thumbnails must fit visible artwork rather than transparent animation padding.");
+                var expected = unitArt.Portrait(new TacticalHudPortrait(unit.UnitType, unit.ActorKey, "#ffffff"));
+                Require(picture.Texture == expected || picture.Texture is AtlasTexture framed && framed.Atlas == expected,
+                    "Roster fallback must use the same registered face portrait as the battle HUD.");
+                Require(picture.StretchMode == TextureRect.StretchModeEnum.KeepAspectCentered,
+                    "Roster portrait must preserve its aspect ratio.");
             }
             Require(screen.RenderingDiagnostics.Any(value => value.Contains("campaign backdrop", StringComparison.Ordinal)) &&
                 text.Contains(view.ArtworkFailureLabel, StringComparison.Ordinal) &&
@@ -105,7 +105,7 @@ public partial class CampaignStagingChecks : Node
             oldExit.EmitSignal(Button.SignalName.Pressed);
             Require(exits == 0, "Shared-shell exit escaped a submitted Start action");
             var reentry = View(true);
-            screen.ShowStaging(reentry, assets, () => starts++, () => exits++);
+            screen.ShowStaging(reentry, unitArt, () => starts++, () => exits++);
             oldButton.EmitSignal(Button.SignalName.Pressed);
             oldExit.EmitSignal(Button.SignalName.Pressed);
             Require(starts == 1 && exits == 0, "Stale Start/Exit callbacks after rebind must not navigate");
@@ -132,14 +132,14 @@ public partial class CampaignStagingChecks : Node
             newButton.EmitSignal(Button.SignalName.Pressed);
             newExit.EmitSignal(Button.SignalName.Pressed);
             Require(starts == 1 && exits == 0, "Remount alone must not revive stale Start/Exit callbacks");
-            screen.ShowStaging(view, assets, () => starts++, () => exits++);
+            screen.ShowStaging(view, unitArt, () => starts++, () => exits++);
             var reboundStart = NavigationButton(screen, "StartBattle");
             var reboundExit = NavigationButton(screen, "CampaignExit");
             reboundExit.EmitSignal(Button.SignalName.Pressed);
             reboundExit.EmitSignal(Button.SignalName.Pressed);
             reboundStart.EmitSignal(Button.SignalName.Pressed);
             Require(exits == 1 && starts == 1 && reboundExit.Disabled && reboundStart.Disabled, "Exit must be single-use and block sibling Start");
-            screen.ShowStaging(view, assets, () => starts++, () => exits++);
+            screen.ShowStaging(view, unitArt, () => starts++, () => exits++);
             reboundExit.EmitSignal(Button.SignalName.Pressed);
             reboundStart.EmitSignal(Button.SignalName.Pressed);
             Require(exits == 1 && starts == 1, "A new staging binding revived previously submitted navigation");
@@ -150,13 +150,13 @@ public partial class CampaignStagingChecks : Node
             {
                 var live = CampaignStaging.Create(presentationText, portraits, EcmaJson.ToElement(sourceCase["state"]), EcmaJson.ToElement(sourceCase["node"]),
                     NativeLevel(sourceCase), EcmaJson.ToElement(metadata), sourceCase["pending"]!.GetValue<bool>());
-                screen.ShowStaging(live, assets, () => starts++, () => exits++);
+                screen.ShowStaging(live, unitArt, () => starts++, () => exits++);
                 Require(screen.RenderingDiagnostics.Count == 0, $"Real exported staging art is incomplete: {string.Join("; ", screen.RenderingDiagnostics)}");
                 foreach (var unit in live.Roster.Where(unit => unit.Portrait is not null))
                 {
                     var row = Descendants(screen).OfType<HBoxContainer>().Single(node => node.Name == "Roster_" + unit.Id);
                     var texture = row.GetNode<TextureRect>("Avatar").Texture;
-                    if (texture is AtlasTexture framed)
+                    while (texture is AtlasTexture framed)
                         texture = framed.Atlas;
                     Require(texture.ResourcePath == unit.Portrait!.ResourcePath,
                         "Exported named portrait must be used instead of the unit-sprite fallback");
