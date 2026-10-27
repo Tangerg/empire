@@ -18,6 +18,7 @@ public partial class BoardView
     private bool _exiting;
 
     public bool IsPresenting => _playback is not null;
+    internal object? PresentationIdentity => _playback;
     public bool AnimationsEnabled { get; set; } = true;
     public event Action? PresentationRepaintRequested;
     public event Action<BattlePresentationTransition, int>? EventPresented;
@@ -193,29 +194,33 @@ public partial class BoardView
             .Select(entry => StandingDepth(entry)),
             Enumerable.Range(firstDepth, lastDepth - firstDepth + 1).Select(depth => (float)depth));
         var walk = new[] { AssetCatalog.FrameIndex(asset, "walk-a"), AssetCatalog.FrameIndex(asset, "walk-b") };
-        var duration = playback.Transition.IsComputerAction ? 65.0 : 85.0;
-        var elapsed = 0.0;
+        // Presentation pace only: one support phase per travelled cell. The committed
+        // receipt still owns the path, destination and event order. A single tween
+        // preserves progress across cell boundaries instead of losing frame overshoot.
+        var duration = playback.Transition.IsComputerAction ? 110.0 : 160.0;
+        var contacts = path.Select(point => Coordinate(point!))
+            .Select(point => LogicalContact(point.X, point.Y)).ToArray();
+        var steps = contacts.Length - 1;
         SetFrame(sprite, asset, walk[0]);
-        for (var index = 1; index < path.Count; index++)
+        if (!await playback.Clock.TweenAsync(duration * steps, t =>
         {
-            var from = Coordinate(path[index - 1]!);
-            var to = Coordinate(path[index]!);
-            var visualDirection = Projection.CellCenter(new(to.X, to.Y)).X - Projection.CellCenter(new(from.X, from.Y)).X;
+            var distance = t * steps;
+            var segment = Math.Min((int)Math.Floor(distance), steps - 1);
+            var fraction = (float)(distance - segment);
+            var start = contacts[segment];
+            var end = contacts[segment + 1];
+            var visualDirection = Projection.Project(end).X - Projection.Project(start).X;
             if (visualDirection != 0)
                 Face(sprite, visualDirection < 0);
-            var start = LogicalContact(from.X, from.Y);
-            var end = LogicalContact(to.X, to.Y);
-            if (!await playback.Clock.TweenAsync(duration, t =>
-            {
-                var logical = start.Lerp(end, (float)Ease(t));
-                actor.SetMeta("logical_contact", logical);
-                actor.Position = Projection.Project(logical) - new Vector2(0, (float)(Math.Sin(Math.PI * t) * 2.5));
-                SetFrame(sprite, asset, walk[(int)Math.Floor((elapsed + t * duration) * 6.25 / 1000) % 2]);
-                SortAnimatedStanding();
-            }))
-                return false;
-            elapsed += duration;
-        }
+            var logical = start.Lerp(end, fraction);
+            actor.SetMeta("logical_contact", logical);
+            // Keep the actor's support plane and its composited contact shadow on
+            // the road. The drawn walk poses provide the gait, not a whole-body hop.
+            actor.Position = Projection.Project(logical);
+            SetFrame(sprite, asset, walk[segment % walk.Length]);
+            SortAnimatedStanding();
+        }))
+            return false;
         SetFrame(sprite, asset, AssetCatalog.FrameIndex(asset, "idle"));
         return true;
     }

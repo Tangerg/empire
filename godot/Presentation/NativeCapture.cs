@@ -1,5 +1,6 @@
 #nullable enable
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Godot;
@@ -15,6 +16,9 @@ public partial class NativeCapture : Node
     private string _directory = "";
     private int _sequence;
     private bool _capturing;
+    private bool _motionArmed;
+    private bool _motionCapturing;
+    private int _motionSequence;
 
     public override async void _Ready()
     {
@@ -58,6 +62,82 @@ public partial class NativeCapture : Node
     {
         if (input is InputEventKey { Pressed: true, Echo: false, Keycode: Key.F12 })
             Capture();
+        if (input is InputEventKey { Pressed: true, Echo: false, Keycode: Key.F8 } && !_motionCapturing)
+        {
+            _motionArmed = !_motionArmed;
+            GD.Print($"Native motion capture armed: {_motionArmed}; next committed transition only.");
+        }
+    }
+
+    public override void _Process(double delta)
+    {
+        if (_motionArmed && !_motionCapturing && FindBoard(this) is { IsPresenting: true } board)
+            CaptureMotion(board);
+    }
+
+    // Verification only: observe actual rendered frames, never advance the battle or its clock.
+    private async void CaptureMotion(BoardView board)
+    {
+        _motionArmed = false;
+        _motionCapturing = true;
+        var directory = Path.Combine(_directory, $"motion-{DateTime.UtcNow:yyyyMMdd-HHmmss}-{++_motionSequence:000}");
+        var identity = board.PresentationIdentity;
+        var started = Time.GetTicksMsec();
+        long bufferedBytes = 0;
+        var frames = new List<(Image Image, string Trace)>();
+        try
+        {
+            Directory.CreateDirectory(directory);
+            while (true)
+            {
+                await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
+                if (board.PresentationIdentity is not null && !ReferenceEquals(identity, board.PresentationIdentity))
+                    break;
+                var size = GetViewport().GetVisibleRect().Size;
+                var requiredBytes = (long)size.X * (long)size.Y * 4;
+                if (bufferedBytes + requiredBytes > 64L * 1024 * 1024)
+                    throw new IOException("Motion capture aborted: 64 MiB frame budget reached; no incomplete sequence saved.");
+                var image = GetViewport().GetTexture().GetImage();
+                frames.Add((image, "")); // Own immediately, including if tracing throws below.
+                bufferedBytes += requiredBytes;
+                var actors = board.GetNode<Node2D>("CanonicalProjection").GetChildren().OfType<Node2D>()
+                    .Where(node => node.HasMeta("unit_id")).Select(node =>
+                    {
+                        var sprite = node.GetNode<Sprite2D>("AuthoredSprite");
+                        return new
+                        {
+                            id = node.GetMeta("unit_id").AsInt32(),
+                            position = new[] { node.Position.X, node.Position.Y },
+                            supportPlane = node.HasMeta("logical_contact")
+                                ? new[] { board.Projection.Project(node.GetMeta("logical_contact").AsVector2()).X,
+                                    board.Projection.Project(node.GetMeta("logical_contact").AsVector2()).Y } : null,
+                            frame = sprite.HasMeta("frame") ? sprite.GetMeta("frame").AsInt32() : 0,
+                            offset = new[] { sprite.Offset.X, sprite.Offset.Y }
+                        };
+                    }).ToArray();
+                frames[^1] = (image, System.Text.Json.JsonSerializer.Serialize(new
+                {
+                    elapsedMs = Time.GetTicksMsec() - started,
+                    presenting = board.IsPresenting,
+                    actors
+                }));
+                if (!board.IsPresenting)
+                    break;
+            }
+            if (board.IsPresenting)
+                throw new IOException("Motion capture aborted: another transition began before readback settled; no mixed sequence saved.");
+            // Compress only after playback settles: PNG compression must not consume animation frames.
+            for (var frame = 0; frame < frames.Count; frame++)
+            {
+                var path = Path.Combine(directory, $"frame-{frame:000}.png");
+                if (frames[frame].Image.SavePng(path) != Error.Ok)
+                    throw new IOException($"Motion capture failed: {path}");
+                File.WriteAllText(Path.ChangeExtension(path, ".json"), frames[frame].Trace);
+            }
+            GD.Print($"Native motion capture complete: {directory}. Readback may affect frame pacing; timestamps are observations, not a performance benchmark.");
+        }
+        catch (Exception error) { GD.PushError(error.ToString()); }
+        finally { foreach (var frame in frames) frame.Image.Dispose(); _motionCapturing = false; }
     }
 
     private static BoardView? FindBoard(Node root)

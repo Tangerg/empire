@@ -43,9 +43,13 @@ Source owners:
 - `packages/story-candidate-01/src/presentation/index.ts`: explicit heal topic.
 
 The accepted command's supplied path plays once, before event presenters; the
-`move` event does not repeat it. Each segment takes 85 ms for the player or 65 ms
-for AI, using quadratic ease-in/out and a 2.5-pixel sine hop. Walking alternates
-the declared `walk-a`/`walk-b` frames at 6.25 fps. Idle is the declared single idle
+`move` event does not repeat it. Native visual refinement (2026-10-27) deliberately departs from the historical
+85/65 ms source movement: each cell now takes 160 ms for the player or 110 ms
+for AI. One continuous path tween preserves frame overshoot across cell boundaries,
+with linear ground-plane travel and no whole-actor/shadow hop. The declared
+`walk-a`/`walk-b` support phases alternate per travelled cell, independent of AI
+pace; a one-cell move intentionally needs only one support phase. This changes
+presentation only, not canonical path costs, rules, receipts or event ordering. Idle is the declared single idle
 frame. Attack is the declared attack frame, or `carry-or-work` for mission sheets.
 These are roles in a four-frame sheet, not four directional views or attack frames.
 

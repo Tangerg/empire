@@ -6,7 +6,7 @@ native application, imports its existing resource files headlessly and executes
 run runtime TypeScript, mutate user saves, dispatch test actions to a live game,
 or publish anything.
 
-The 177 assertions cover the original exported nine FX strips, source actor and
+The assertions cover the original exported nine FX strips, source actor and
 effect frame contracts, deterministic timing, cancellation and disposal,
 defensive ownership of transition inputs, lethal attacker/removed structure
 lookup semantics, explicit pre-action visibility, and deliberate silence for
@@ -18,3 +18,8 @@ durations, event fields, asset IDs and scope boundaries. These are native tests
 derived from those contracts, not claims of full frame-by-frame browser parity
 or desktop visual proof. Application-level once-only revision consumption and
 input/load/rebind handling are covered separately by BattleScreenChecks.
+
+The 2026-10-27 grounded-march checks explicitly validate the refined native
+160/110 ms pace, linear support-plane travel and distance-bound support phases.
+Those visual choices are intentional differences from the historical source
+85/65 ms hop, not a claim of timing parity. Battle receipts remain unchanged.

@@ -179,13 +179,17 @@ public partial class AnimationChecks : Node
         var task = board.PresentTransitionAsync(transition);
         var actor = Actor(board, id);
         Require(board.IsPresenting && Frame(actor) == 1, "Movement immediately selects source walk-a");
-        await Tick(board, 0.0425);
-        Require(actor.Position.IsEqualApprox(board.Projection.Project(board.Projection.LogicalCellContact(new(x, y)).Lerp(board.Projection.LogicalCellContact(new(x + 1, y)), .5f)) + new Vector2(0, -2.5f)),
-            "Human 85 ms step has source quadratic halfway motion and 2.5 px hop");
-        await Tick(board, 0.0426);
-        await Tick(board, 0.075);
-        Require(Frame(actor) == 3, "Source walk clip alternates walk-a/walk-b at 6.25 fps across path segments");
-        await Tick(board, 0.011);
+        await Tick(board, 0.040);
+        Require(actor.Position.IsEqualApprox(board.Projection.Project(board.Projection.LogicalCellContact(new(x, y)).Lerp(board.Projection.LogicalCellContact(new(x + 1, y)), .25f))),
+            "Human 160 ms cell advances linearly without lifting the support plane or shadow");
+        await Tick(board, 0.040);
+        Require(actor.Position.IsEqualApprox(board.Projection.Project(board.Projection.LogicalCellContact(new(x, y)).Lerp(board.Projection.LogicalCellContact(new(x + 1, y)), .5f))),
+            "Equal intervals travel equal distances within a cell");
+        await Tick(board, 0.100);
+        Require(Frame(actor) == 3, "Second travelled cell selects the opposite support phase");
+        Require(actor.Position.IsEqualApprox(board.Projection.Project(board.Projection.LogicalCellContact(new(x + 1, y)).Lerp(board.Projection.LogicalCellContact(new(x + 2, y)), .125f))),
+            "Crossing a cell preserves elapsed overshoot rather than stopping at its boundary");
+        await Tick(board, 0.141);
         Require(await task && !board.IsPresenting, "Move event must not replay the path a second time");
         Require(Actor(board, id).Position == board.Projection.CellContact(new(x + 2, y)), "Settled actor uses committed destination");
         Require(input == transition.Before.GetRawText() + transition.After.GetRawText() + transition.Action.GetRawText(), "Animation cannot mutate detached transition JSON");
@@ -196,8 +200,8 @@ public partial class AnimationChecks : Node
         };
         task = board.PresentTransitionAsync(ai);
         actor = Actor(board, id);
-        await Tick(board, 0.0325);
-        Require(Mathf.IsEqualApprox(actor.Position.X, board.Projection.Project(board.Projection.LogicalCellContact(new(x, y)).Lerp(board.Projection.LogicalCellContact(new(x + 1, y)), .5f)).X), "AI uses source 65 ms per tile, not the human pace");
+        await Tick(board, 0.055);
+        Require(Mathf.IsEqualApprox(actor.Position.X, board.Projection.Project(board.Projection.LogicalCellContact(new(x, y)).Lerp(board.Projection.LogicalCellContact(new(x + 1, y)), .5f)).X), "AI uses 110 ms presentation cells without altering the committed path");
         board.CancelPresentation();
         Require(!await task && !board.IsPresenting && board.GetNodeOrNull("BattleEffects") is null,
             "Cancel removes temporary layers and resolves playback false");
