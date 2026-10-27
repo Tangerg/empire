@@ -304,12 +304,13 @@ public partial class TacticalHud : Control
             var popup = detailPopup;
             dossier.Pressed += () =>
             {
-                if (generation != renderedGeneration || !IsInsideTree())
+                if (generation != renderedGeneration || !IsInsideTree() || !dossier.IsInsideTree())
                     return;
                 var openingStamp = current?.Stamp;
                 Callable.From(() =>
                 {
-                    if (GodotObject.IsInstanceValid(this) && IsInsideTree() && current?.Stamp == openingStamp
+                    if (GodotObject.IsInstanceValid(this) && IsInsideTree() && generation == renderedGeneration
+                        && current?.Stamp == openingStamp && GodotObject.IsInstanceValid(dossier) && dossier.IsInsideTree()
                         && GodotObject.IsInstanceValid(popup) && popup.IsInsideTree() && !popup.Visible)
                         popup.PopupCentered();
                 }).CallDeferred();

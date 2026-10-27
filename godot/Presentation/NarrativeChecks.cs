@@ -62,6 +62,7 @@ public partial class NarrativeChecks : Node
             CheckGroup(CheckNormalTransitions);
             CheckGroup(CheckEndingTransitions);
             CheckGroup(CheckLifecycle);
+            await CheckAsyncGroup(CheckBeatFocus);
             CheckGroup(CheckShellLifecycle);
             await CheckAsyncGroup(CheckLayout);
             CheckGroup(CheckMissingArt);
@@ -434,6 +435,37 @@ public partial class NarrativeChecks : Node
                 Equal(Find<Button>("StoryPrimary").Text, Text(expected, "primaryLabel"), "Ending finish label follows caller status");
             }
         }
+    }
+
+    private async Task CheckBeatFocus()
+    {
+        var entry = documents.Stories.First(value => value.Beats.Count > 1);
+        var context = new NarrativeContext(messages, portraits, metadata, 0, true);
+        void Bind() => screen.ShowStory(entry, documents.IdentityNameKeys, context, false, () => { }, () => { }, () => { });
+        Bind();
+        await Layout();
+        var primary = Find<Button>("StoryPrimary");
+        primary.GrabFocus();
+        primary.EmitSignal(Button.SignalName.Pressed);
+        await Layout();
+        Equal(Find<Button>("StoryPrimary").HasFocus(), true, "Keyboard focus follows the same local story action after paging");
+        Bind();
+        await Layout();
+        Find<Button>("StoryPrimary").GrabFocus();
+        Find<Button>("StoryPrimary").EmitSignal(Button.SignalName.Pressed);
+        Bind();
+        var exit = Find<Button>("CampaignExit");
+        exit.GrabFocus();
+        await Layout();
+        Equal(exit.HasFocus(), true, "A deferred page focus cannot steal focus after rebinding");
+        Bind();
+        await Layout();
+        Find<Button>("StoryPrimary").GrabFocus();
+        Find<Button>("StoryPrimary").EmitSignal(Button.SignalName.Pressed);
+        exit = Find<Button>("CampaignExit");
+        exit.GrabFocus();
+        await Layout();
+        Equal(exit.HasFocus(), true, "A newer explicit focus choice wins over deferred page restoration");
     }
 
     private void CheckLifecycle()

@@ -469,6 +469,19 @@ public partial class TacticalHudChecks : Node
         hud.Apply(Frame("道路"));
         var popup = (PopupPanel)hud.FindChild("UnitDossier", true, false);
         var scroll = hud.FindChild("DetailScroll", true, false);
+        var staleEntry = (Button)hud.FindChild("DossierButton", true, false);
+        staleEntry.EmitSignal(Button.SignalName.Pressed);
+        hud.Apply(Frame("同一战局版本的新检查对象"));
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        Require(!popup.Visible, "Deferred dossier opening cannot cross a newer HUD projection with the same battle stamp.");
+        var detachedEntry = (Button)hud.FindChild("DossierButton", true, false);
+        detachedEntry.EmitSignal(Button.SignalName.Pressed);
+        hud.RemoveChild(detachedEntry);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        Require(!popup.Visible, "Deferred dossier opening cannot act after its button is detached.");
+        detachedEntry.Free();
+        hud.Apply(Frame("重新挂载入口"));
         var showCount = 0;
         popup.VisibilityChanged += () =>
         {

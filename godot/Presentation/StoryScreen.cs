@@ -111,6 +111,7 @@ public partial class StoryScreen : Control
     {
         var view = NarrativeProjection.Story(story!, speakers, context, BeatIndex, ending);
         PresentedStory = view;
+        var restorePrimaryFocus = buttons.Any(button => IsInstanceValid(button) && button.HasFocus());
         Clear(shell.Body);
         buttons.Clear();
         missionGrid = null;
@@ -168,8 +169,22 @@ public partial class StoryScreen : Control
                 CustomMinimumSize = new Vector2(22, 3),
                 MouseFilter = MouseFilterEnum.Ignore
             });
-        actionGrid.AddChild(ActionButton(view.PrimaryLabel, "StoryPrimary", AdvanceLocalBeat));
+        var primary = ActionButton(view.PrimaryLabel, "StoryPrimary", AdvanceLocalBeat);
+        actionGrid.AddChild(primary);
         ResizeLayout();
+        if (restorePrimaryFocus)
+        {
+            var binding = generation;
+            var beat = BeatIndex;
+            Callable.From(() =>
+            {
+                if (IsInstanceValid(this) && IsInsideTree() && IsVisibleInTree()
+                    && generation == binding && BeatIndex == beat && !submitted
+                    && IsInstanceValid(primary) && primary.IsInsideTree() && !primary.Disabled
+                    && GetViewport().GuiGetFocusOwner() is null)
+                    primary.GrabFocus();
+            }).CallDeferred();
+        }
     }
 
     private void AdvanceLocalBeat()
