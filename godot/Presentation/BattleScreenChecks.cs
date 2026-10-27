@@ -155,6 +155,12 @@ public partial class BattleScreenChecks : Node
         screen.Board.AdvanceAnimationsAutomatically = false;
         void Bind(GrayFlagSession value) => screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), value, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
         Bind(session);
+        var projectionMounts = 0;
+        screen.Board.ChildEnteredTree += child =>
+        {
+            if (child.Name == "CanonicalProjection")
+                projectionMounts++;
+        };
         Require(screen.RecentMessages.SequenceEqual(new[] { session.GetSnapshot().InitialLogMessage }),
             "New battle log must contain only the original opening line.");
         var destination = TacticalSceneInputChecks.Move(screen, session);
@@ -170,6 +176,8 @@ public partial class BattleScreenChecks : Node
             screen.Board.AdvancePresentation(0.1);
         Require(!screen.IsPresenting && !screen.Board.IsPresenting && screen.DisplayedRevision == revision,
             "Timeline completion must settle the committed revision and release input.");
+        Require(projectionMounts == 2,
+            "A successful move mounts its before projection once and its settled projection once; screen synchronization must not mount after a second time.");
         var expectedLog = new Feedback.BattleLog();
         expectedLog.Add(session.GetSnapshot().InitialLogMessage!);
         foreach (var line in session.GetSnapshot().Transition!.EventDescriptions)
@@ -187,8 +195,12 @@ public partial class BattleScreenChecks : Node
             Transition = null
         };
         replaceable.Replacement = replacement;
-        screen.Refresh();
+        // Let the earlier playback finish before any external Refresh. A newer live
+        // revision must still render, not adopt the obsolete settled projection.
+        var mountsBeforeCompletion = projectionMounts;
         screen.Board.AdvancePresentation(100);
+        Require(projectionMounts == mountsBeforeCompletion + 2,
+            "A superseded successful playback renders its settlement and then the newer live snapshot.");
         Require(!screen.IsPresenting && screen.DisplayedRevision == 9,
             "A newer transition-free snapshot must invalidate older async completion.");
         screen.Refresh();
@@ -196,7 +208,10 @@ public partial class BattleScreenChecks : Node
         var canceled = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
         Bind(canceled);
         TacticalSceneInputChecks.Move(screen, canceled);
+        var mountsBeforeCancel = projectionMounts;
         screen.Board.CancelPresentation();
+        Require(projectionMounts > mountsBeforeCancel,
+            "Canceled playback still renders committed state rather than taking the successful-settlement adoption path.");
         Require(!screen.IsPresenting && screen.DisplayedRevision == canceled.GetSnapshot().Revision,
             "Same-session cancellation must settle both board and controls to committed state.");
         var fresh = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
@@ -330,7 +345,7 @@ public partial class BattleScreenChecks : Node
         screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
         void Keypress(Key key) => screen._UnhandledKeyInput(new InputEventKey { Pressed = true, Keycode = key });
         var snapshot = session.GetSnapshot();
-        var staleSameRevision = Buttons(screen).Single(button => button.Text == "结束回合");
+        var stableSameRevision = Buttons(screen).Single(button => button.Text == "结束回合");
         Keypress(Key.Space);
         Require(screen.SelectedUnitId == session.GetTacticalQueries(0).Actors()[0], "Space selects first source-ordered actor through native keyboard input.");
         var keyboardSelection = screen.Selection;
@@ -346,8 +361,8 @@ public partial class BattleScreenChecks : Node
             "Escape returns native control focus to the map without discarding the pending selection.");
         Keypress(Key.Tab);
         Require(screen.Selection == keyboardSelection, "Tab is reserved for native focus traversal, not actor cycling.");
-        staleSameRevision.EmitSignal(Button.SignalName.Pressed);
-        Require(session.GetSnapshot().Revision == snapshot.Revision, "Removed global button cannot dispatch after same-revision selection refresh.");
+        Require(ReferenceEquals(stableSameRevision, Buttons(screen).Single(button => button.Text == "结束回合")) && !stableSameRevision.Disabled,
+            "Same-revision selection refresh preserves the enabled global button and its native input capture.");
         Keypress(Key.Escape);
         Require(screen.Selection?.Kind == TacticalSelectionKind.Idle, "Native Escape follows the source back operation.");
         screen.SelectHit(TacticalHit.Unit(session.GetTacticalQueries(0).Unit(2)!.At, 2));
@@ -363,6 +378,8 @@ public partial class BattleScreenChecks : Node
         Require(session.GetSnapshot().Revision == snapshot.Revision && screen.SelectedUnitId == selected, "Application busy blocks board, HUD actions, end-turn and back input.");
         screen.SetApplicationBusy(false);
         Require(screen.SelectedUnitId == selected, "Clearing application busy preserves the valid selection.");
+        stableSameRevision.EmitSignal(Button.SignalName.Pressed);
+        Require(session.Revision == snapshot.Revision, "A global control detached by a changed busy binding cannot dispatch.");
         screen.SelectHit(TacticalHit.Ground(destination));
         Require(session.Revision == snapshot.Revision && screen.Selection?.Kind == TacticalSelectionKind.Destination,
             "Busy release re-enables destination preview without spending the actor's turn.");
@@ -375,6 +392,9 @@ public partial class BattleScreenChecks : Node
         Require(session.Revision == undone.Revision && undone.Revision == snapshot.Revision + 2 && EcmaJson.DeepEquals(EcmaJson.Parse(undone.State.GetRawText()), EcmaJson.Parse(snapshot.State.GetRawText())), "Mounted undo restores exact canonical state and advances revision.");
         Require(screen.Selection?.Kind == TacticalSelectionKind.Idle && screen.RecentMessages.Contains("已撤销上一步"), "Undo resets selection and appends the source cosmetic message.");
         var turn = Buttons(screen).Single(button => button.Text == "结束回合");
+        screen.SelectHit(TacticalHit.Unit(session.GetTacticalQueries(0).Unit(2)!.At, 2));
+        Require(ReferenceEquals(turn, Buttons(screen).Single(button => button.Text == "结束回合")),
+            "A current-binding global control remains the same instance after another selection.");
         turn.EmitSignal(Button.SignalName.Pressed);
         Require(session.GetSnapshot().Revision == undone.Revision + 1, "Mounted global end-turn commits once after undo.");
 
@@ -520,7 +540,9 @@ public partial class BattleScreenChecks : Node
             var initial = EcmaJson.Stringify(session.Snapshot());
             var bindings = PresentationJson.Load<ArtBindings>("res://data/art-bindings.json");
             bindings.Actors.Clear();
-            bindings.Units.Remove("c01.archer");
+            // Named portrait remains valid while this unselected actor lacks its map art.
+            // Generic HUD crops intentionally validate their frame source during binding.
+            bindings.Units.Remove("c01.roderick");
             var assets = new AssetCatalog(PresentationJson.Load<AssetManifest>("res://data/selected-assets.json"), bindings);
             var screen = new BattleScreen();
             AddChild(screen);
@@ -529,10 +551,10 @@ public partial class BattleScreenChecks : Node
             var rendering = BoardSceneRendering.Load(scene, sourceLevel, registeredMap);
             screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), session, new(assets, EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, rendering.Plane)), level, scene);
             screen.ConfigureGround(rendering.Ground);
-            Require(screen.Board.RenderingIssueCount > 0 && screen.Board.Diagnostics.Any(value => value.Contains("c01.archer", StringComparison.Ordinal)),
+            Require(screen.Board.RenderingIssueCount > 0 && screen.Board.Diagnostics.Any(value => value.Contains("c01.roderick", StringComparison.Ordinal)),
                 "Unavailable actor art remains explicitly diagnosed without changing canonical units.");
             Require(Descendants(screen).OfType<Label>().Any(label => label.Text == text.Format("ui.battle.artwork_issues", screen.Board.RenderingIssueCount))
-                && !Descendants(screen).OfType<Control>().Any(control => control.TooltipText.Contains("c01.archer", StringComparison.Ordinal)),
+                && !Descendants(screen).OfType<Control>().Any(control => control.TooltipText.Contains("c01.roderick", StringComparison.Ordinal)),
                 "The actual board notice uses injected wording and never exposes raw resource diagnostics in a tooltip.");
             var origin = session.GetTacticalQueries(0).Unit(2)!.At;
             screen.SelectHit(TacticalHit.Unit(origin, 2));

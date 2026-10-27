@@ -323,13 +323,18 @@ public partial class BattleScreen : Control
             if (generation != _presentationGeneration || !IsInsideTree() || !ReferenceEquals(_session, session))
                 return;
             var current = session!.GetSnapshot();
-            ApplySnapshot(settled && current.Revision == next.Revision ? next : current);
+            if (settled && current.Revision == next.Revision)
+                // BoardView owns settlement of an accepted playback. Adopt that exact
+                // revision for screen/UI state without replacing its finished projection.
+                SynchronizeSnapshot(next, ReadSnapshotState(next));
+            else
+                ApplySnapshot(current);
         }
         catch (MissingArtResourceException error)
         {
             if (generation != _presentationGeneration || !IsInsideTree() || !ReferenceEquals(_session, session))
                 return;
-            ApplySnapshot(next);
+            ApplySnapshot(session!.GetSnapshot());
             ShowFeedback(_text.Format("error.presentation.playback_failed"));
             GD.PushWarning(error.ToString());
         }
@@ -343,15 +348,24 @@ public partial class BattleScreen : Control
         }
     }
 
+    private static JsonObject ReadSnapshotState(BattleSnapshot snapshot) =>
+        Empire.Core.Determinism.EcmaJson.Parse(snapshot.State.GetRawText()) as JsonObject
+            ?? throw new InvalidOperationException("Battle session returned a non-object state.");
+
     private void ApplySnapshot(BattleSnapshot next)
     {
         if (_session is null)
             return;
+        var state = ReadSnapshotState(next);
+        _board.RenderState(state, next.VisibleUnitIds);
+        SynchronizeSnapshot(next, state);
+    }
+
+    private void SynchronizeSnapshot(BattleSnapshot next, JsonObject state)
+    {
         _snapshot = next;
         _presentedRevision = next.Revision;
-        _state = Empire.Core.Determinism.EcmaJson.Parse(_snapshot.State.GetRawText()) as JsonObject
-            ?? throw new InvalidOperationException("Battle session returned a non-object state.");
-        _board.RenderState(_state, _snapshot.VisibleUnitIds);
+        _state = state;
         SynchronizeTactical(next);
         if (_pointerMapPosition is { } pointer)
             HoverField(ProjectMapPoint(pointer));
