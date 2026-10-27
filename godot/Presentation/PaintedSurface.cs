@@ -68,6 +68,7 @@ internal partial class PaintedSurface : Node2D
     private void Rebuild()
     {
         var replacements = new List<Polygon2D>();
+        Rect2? clipBounds = _bounds is null ? null : StandingVisual.BoundsOf(_bounds);
         try
         {
             foreach (var strip in _projection.DepthPartitions)
@@ -83,6 +84,8 @@ internal partial class PaintedSurface : Node2D
                 var indices = new Godot.Collections.Array();
                 foreach (var patch in patches)
                 {
+                    if (clipBounds is { } bounds && !MayOverlap(patch, bounds))
+                        continue;
                     var projected = patch.Select(vertex => vertex.Projected).ToArray();
                     var clipped = _bounds is null ? new[] { projected }
                         : Geometry2D.IntersectPolygons(projected, _bounds).ToArray();
@@ -120,6 +123,22 @@ internal partial class PaintedSurface : Node2D
             AddChild(polygon);
             _polygons.Add(polygon);
         }
+    }
+
+    // Reject only wholly separated bounds. Touching edges still reach the exact native
+    // clipper, preserving its geometry, ordering and boundary behavior.
+    private static bool MayOverlap(IReadOnlyList<BoardSurfaceVertex> patch, Rect2 bounds)
+    {
+        var min = new Vector2(float.PositiveInfinity, float.PositiveInfinity);
+        var max = new Vector2(float.NegativeInfinity, float.NegativeInfinity);
+        for (var i = 0; i < patch.Count; i++)
+        {
+            var point = patch[i].Projected;
+            min = min.Min(point);
+            max = max.Max(point);
+        }
+        return !(max.X < bounds.Position.X || max.Y < bounds.Position.Y
+            || min.X > bounds.End.X || min.Y > bounds.End.Y);
     }
 
     internal IEnumerable<Vector2[]> PointerPolygons(CanvasItem visibilityRoot)
