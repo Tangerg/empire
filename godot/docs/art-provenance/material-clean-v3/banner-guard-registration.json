@@ -1,0 +1,166 @@
+{
+  "source": {
+    "assetId": "C01-FFV1-UNIT-BANNER-GUARD",
+    "topicId": "C01-UNIT-BANNER-GUARD",
+    "label": "\u65d7\u536b",
+    "category": "combat-unit",
+    "png": "painted-units-v1/unit-banner-guard-gait-v2.png",
+    "runtimeReady": true,
+    "qualityTier": "painted-v2-gait-reviewed",
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "preserveAuthoredPalette": true,
+    "physicalWidth": 2169,
+    "physicalHeight": 725,
+    "pixelDensity": 1,
+    "resourcePath": "res://assets/painted-units-v1/unit-banner-guard-gait-v2.png",
+    "sha256": "49de7abab8a4a3c1dbf607c86dc3d718fd179c7c4207ba15c9492472b994f5e9",
+    "presentationScale": 0.1014493,
+    "frameRegions": [
+      [
+        0,
+        0,
+        575,
+        725
+      ],
+      [
+        575,
+        0,
+        525,
+        725
+      ],
+      [
+        1100,
+        0,
+        592,
+        725
+      ],
+      [
+        1692,
+        0,
+        477,
+        725
+      ]
+    ],
+    "frameAnchors": [
+      [
+        250,
+        557
+      ],
+      [
+        226,
+        561
+      ],
+      [
+        240,
+        551
+      ],
+      [
+        189,
+        558
+      ]
+    ],
+    "textureFilter": "linear"
+  },
+  "registered": {
+    "assetId": "C01-FFV1-UNIT-BANNER-GUARD",
+    "topicId": "C01-UNIT-BANNER-GUARD",
+    "label": "\u65d7\u536b",
+    "category": "combat-unit",
+    "png": "painted-units-v1/unit-banner-guard-clean-v3.png",
+    "runtimeReady": true,
+    "qualityTier": "painted-v3-material-reviewed",
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "preserveAuthoredPalette": true,
+    "physicalWidth": 2169,
+    "physicalHeight": 725,
+    "pixelDensity": 1,
+    "resourcePath": "res://assets/painted-units-v1/unit-banner-guard-clean-v3.png",
+    "sha256": "dd0148586b236a385a4e6f9f6b68c32be4c0db1cd94fd6d000bf5df87b3508bf",
+    "presentationScale": 0.1014493,
+    "frameRegions": [
+      [
+        0,
+        0,
+        575,
+        725
+      ],
+      [
+        575,
+        0,
+        525,
+        725
+      ],
+      [
+        1100,
+        0,
+        592,
+        725
+      ],
+      [
+        1692,
+        0,
+        477,
+        725
+      ]
+    ],
+    "frameAnchors": [
+      [
+        250,
+        559
+      ],
+      [
+        226,
+        563
+      ],
+      [
+        239,
+        553
+      ],
+      [
+        186,
+        560
+      ]
+    ],
+    "textureFilter": "linear"
+  },
+  "anchorMethod": "Preserve original body/root registration with measured lower-body translation, not support-toe snapping. Mage attack gutter moved from1695 to1711 to preserve full fire.",
+  "driftPixels": [
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      -1,
+      2
+    ],
+    [
+      -3,
+      2
+    ]
+  ],
+  "runtimeAcceptance": "Pending native screenshot; no claim all alpha speckles removed."
+}

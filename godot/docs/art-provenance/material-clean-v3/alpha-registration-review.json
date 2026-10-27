@@ -1,0 +1,306 @@
+[
+  {
+    "type": "battle-mage",
+    "source": "/workspace/scratch/84c9fe948755/empire-final/godot/assets/painted-units-v1/unit-battle-mage-gait-v2.png",
+    "candidate": "/workspace/scratch/84c9fe948755/empire-final-evidence/material-refinement-20261027/candidates/unit-battle-mage-clean-v3.png",
+    "oldSize": [
+      2169,
+      725
+    ],
+    "candidateSize": [
+      2169,
+      725
+    ],
+    "frames": [
+      {
+        "frame": "idle",
+        "sourceRegion": [
+          0,
+          0,
+          527,
+          725
+        ],
+        "old": {
+          "bbox": [
+            94,
+            158,
+            446,
+            557
+          ],
+          "isolatedAlpha16Pixels": 228,
+          "edgeClipped": false
+        },
+        "candidate": {
+          "bbox": [
+            91,
+            157,
+            454,
+            559
+          ],
+          "isolatedAlpha16Pixels": 0,
+          "edgeClipped": false
+        },
+        "lowerBodyBestTranslationPx": [
+          1,
+          1
+        ],
+        "translationCaveat": "approximate pixel-MSE alignment of original opaque lower-body band y480..550; not ground anchor or proof of identity"
+      },
+      {
+        "frame": "walk-a",
+        "sourceRegion": [
+          527,
+          0,
+          487,
+          725
+        ],
+        "old": {
+          "bbox": [
+            82,
+            161,
+            402,
+            559
+          ],
+          "isolatedAlpha16Pixels": 160,
+          "edgeClipped": false
+        },
+        "candidate": {
+          "bbox": [
+            80,
+            160,
+            413,
+            562
+          ],
+          "isolatedAlpha16Pixels": 1,
+          "edgeClipped": false
+        },
+        "lowerBodyBestTranslationPx": [
+          2,
+          1
+        ],
+        "translationCaveat": "approximate pixel-MSE alignment of original opaque lower-body band y480..550; not ground anchor or proof of identity"
+      },
+      {
+        "frame": "attack",
+        "sourceRegion": [
+          1014,
+          0,
+          681,
+          725
+        ],
+        "old": {
+          "bbox": [
+            86,
+            171,
+            651,
+            553
+          ],
+          "isolatedAlpha16Pixels": 1618,
+          "edgeClipped": false
+        },
+        "candidate": {
+          "bbox": [
+            86,
+            169,
+            681,
+            554
+          ],
+          "isolatedAlpha16Pixels": 19,
+          "edgeClipped": true
+        },
+        "lowerBodyBestTranslationPx": [
+          2,
+          1
+        ],
+        "translationCaveat": "approximate pixel-MSE alignment of original opaque lower-body band y480..550; not ground anchor or proof of identity"
+      },
+      {
+        "frame": "walk-b",
+        "sourceRegion": [
+          1695,
+          0,
+          474,
+          725
+        ],
+        "old": {
+          "bbox": [
+            31,
+            158,
+            363,
+            566
+          ],
+          "isolatedAlpha16Pixels": 128,
+          "edgeClipped": false
+        },
+        "candidate": {
+          "bbox": [
+            0,
+            157,
+            373,
+            568
+          ],
+          "isolatedAlpha16Pixels": 0,
+          "edgeClipped": true
+        },
+        "lowerBodyBestTranslationPx": [
+          3,
+          1
+        ],
+        "translationCaveat": "approximate pixel-MSE alignment of original opaque lower-body band y480..550; not ground anchor or proof of identity"
+      }
+    ],
+    "pixelsUntouched": false
+  },
+  {
+    "type": "banner-guard",
+    "source": "/workspace/scratch/84c9fe948755/empire-final/godot/assets/painted-units-v1/unit-banner-guard-gait-v2.png",
+    "candidate": "/workspace/scratch/84c9fe948755/empire-final-evidence/material-refinement-20261027/candidates/unit-banner-guard-clean-v3.png",
+    "oldSize": [
+      2169,
+      725
+    ],
+    "candidateSize": [
+      2169,
+      725
+    ],
+    "frames": [
+      {
+        "frame": "idle",
+        "sourceRegion": [
+          0,
+          0,
+          575,
+          725
+        ],
+        "old": {
+          "bbox": [
+            132,
+            134,
+            459,
+            571
+          ],
+          "isolatedAlpha16Pixels": 0,
+          "edgeClipped": false
+        },
+        "candidate": {
+          "bbox": [
+            131,
+            128,
+            461,
+            574
+          ],
+          "isolatedAlpha16Pixels": 14,
+          "edgeClipped": false
+        },
+        "lowerBodyBestTranslationPx": [
+          0,
+          2
+        ],
+        "translationCaveat": "approximate pixel-MSE alignment of original opaque lower-body band y480..550; not ground anchor or proof of identity"
+      },
+      {
+        "frame": "walk-a",
+        "sourceRegion": [
+          575,
+          0,
+          525,
+          725
+        ],
+        "old": {
+          "bbox": [
+            116,
+            136,
+            427,
+            579
+          ],
+          "isolatedAlpha16Pixels": 7,
+          "edgeClipped": false
+        },
+        "candidate": {
+          "bbox": [
+            114,
+            132,
+            430,
+            583
+          ],
+          "isolatedAlpha16Pixels": 50,
+          "edgeClipped": false
+        },
+        "lowerBodyBestTranslationPx": [
+          0,
+          2
+        ],
+        "translationCaveat": "approximate pixel-MSE alignment of original opaque lower-body band y480..550; not ground anchor or proof of identity"
+      },
+      {
+        "frame": "attack",
+        "sourceRegion": [
+          1100,
+          0,
+          592,
+          725
+        ],
+        "old": {
+          "bbox": [
+            98,
+            144,
+            501,
+            571
+          ],
+          "isolatedAlpha16Pixels": 1,
+          "edgeClipped": false
+        },
+        "candidate": {
+          "bbox": [
+            92,
+            139,
+            502,
+            574
+          ],
+          "isolatedAlpha16Pixels": 10,
+          "edgeClipped": false
+        },
+        "lowerBodyBestTranslationPx": [
+          -1,
+          2
+        ],
+        "translationCaveat": "approximate pixel-MSE alignment of original opaque lower-body band y480..550; not ground anchor or proof of identity"
+      },
+      {
+        "frame": "walk-b",
+        "sourceRegion": [
+          1692,
+          0,
+          477,
+          725
+        ],
+        "old": {
+          "bbox": [
+            92,
+            139,
+            404,
+            578
+          ],
+          "isolatedAlpha16Pixels": 0,
+          "edgeClipped": false
+        },
+        "candidate": {
+          "bbox": [
+            86,
+            133,
+            402,
+            582
+          ],
+          "isolatedAlpha16Pixels": 1,
+          "edgeClipped": false
+        },
+        "lowerBodyBestTranslationPx": [
+          -3,
+          2
+        ],
+        "translationCaveat": "approximate pixel-MSE alignment of original opaque lower-body band y480..550; not ground anchor or proof of identity"
+      }
+    ],
+    "pixelsUntouched": false
+  }
+]

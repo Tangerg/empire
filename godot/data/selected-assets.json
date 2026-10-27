@@ -118,9 +118,9 @@
       "topicId": "C01-UNIT-BANNER-GUARD",
       "label": "旗卫",
       "category": "combat-unit",
-      "png": "painted-units-v1/unit-banner-guard-gait-v2.png",
+      "png": "painted-units-v1/unit-banner-guard-clean-v3.png",
       "runtimeReady": true,
-      "qualityTier": "painted-v2-gait-reviewed",
+      "qualityTier": "painted-v3-material-reviewed",
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -136,8 +136,8 @@
       "physicalWidth": 2169,
       "physicalHeight": 725,
       "pixelDensity": 1,
-      "resourcePath": "res://assets/painted-units-v1/unit-banner-guard-gait-v2.png",
-      "sha256": "49de7abab8a4a3c1dbf607c86dc3d718fd179c7c4207ba15c9492472b994f5e9",
+      "resourcePath": "res://assets/painted-units-v1/unit-banner-guard-clean-v3.png",
+      "sha256": "dd0148586b236a385a4e6f9f6b68c32be4c0db1cd94fd6d000bf5df87b3508bf",
       "presentationScale": 0.1014493,
       "frameRegions": [
         [
@@ -168,19 +168,19 @@
       "frameAnchors": [
         [
           250,
-          557
+          559
         ],
         [
           226,
-          561
+          563
         ],
         [
-          240,
-          551
+          239,
+          553
         ],
         [
-          189,
-          558
+          186,
+          560
         ]
       ],
       "textureFilter": "linear"
@@ -190,9 +190,9 @@
       "topicId": "C01-UNIT-BATTLE-MAGE",
       "label": "战斗法师",
       "category": "combat-unit",
-      "png": "painted-units-v1/unit-battle-mage-gait-v2.png",
+      "png": "painted-units-v1/unit-battle-mage-clean-v3.png",
       "runtimeReady": true,
-      "qualityTier": "painted-v2-gait-reviewed",
+      "qualityTier": "painted-v3-material-reviewed",
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -208,8 +208,8 @@
       "physicalWidth": 2169,
       "physicalHeight": 725,
       "pixelDensity": 1,
-      "resourcePath": "res://assets/painted-units-v1/unit-battle-mage-gait-v2.png",
-      "sha256": "435a7a700427e85213d8ab6e791cacfee6dbe89befdce1fcaf1500ff37b2bfa5",
+      "resourcePath": "res://assets/painted-units-v1/unit-battle-mage-clean-v3.png",
+      "sha256": "6440a21dcea27994ba2d3e2957e776e659893c357b96e91ccb5ddf8fe0a6bcfc",
       "presentationScale": 0.0888325,
       "frameRegions": [
         [
@@ -227,32 +227,32 @@
         [
           1014,
           0,
-          681,
+          697,
           725
         ],
         [
-          1695,
+          1711,
           0,
-          474,
+          458,
           725
         ]
       ],
       "frameAnchors": [
         [
-          270,
-          557
+          271,
+          558
         ],
         [
-          246,
-          562
+          248,
+          563
         ],
         [
-          276,
+          278,
+          554
+        ],
+        [
+          173,
           553
-        ],
-        [
-          186,
-          552
         ]
       ],
       "textureFilter": "linear"
@@ -2464,7 +2464,7 @@
     {
       "id": "bran-stage01",
       "topicId": "C01-UNIT-RANGER",
-      "png": "painted-units-v1/bran-stage01-v2.png",
+      "png": "painted-units-v1/bran-stage01-clean-v3.png",
       "hdPng": "runtime-approved-v5/hero-appearance/bran-stage01@2x.png",
       "pixelDensity": 1,
       "frames": 4,
@@ -2478,8 +2478,8 @@
       "hdHeight": 128,
       "physicalWidth": 2169,
       "physicalHeight": 725,
-      "resourcePath": "res://assets/painted-units-v1/bran-stage01-v2.png",
-      "sha256": "edf3ee2227b622acb7e34644e4b9258a905f9b7abb9383bda6f9efc39ca5c674",
+      "resourcePath": "res://assets/painted-units-v1/bran-stage01-clean-v3.png",
+      "sha256": "7106b27371b4b29902cf97152cc841489503465f090320eab0f522e2d6f1c86e",
       "presentationScale": 0.0902062,
       "frameRegions": [
         [
@@ -2509,23 +2509,23 @@
       ],
       "frameAnchors": [
         [
-          297,
+          298,
+          577
+        ],
+        [
+          274,
           575
         ],
         [
-          272,
-          574
+          260,
+          593
         ],
         [
-          267,
-          591
-        ],
-        [
-          248,
-          573
+          245,
+          575
         ]
       ],
-      "qualityTier": "painted-v2-gait-reviewed",
+      "qualityTier": "painted-v3-material-reviewed",
       "textureFilter": "linear"
     },
     {

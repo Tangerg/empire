@@ -1,0 +1,166 @@
+{
+  "source": {
+    "assetId": "C01-FFV1-UNIT-BATTLE-MAGE",
+    "topicId": "C01-UNIT-BATTLE-MAGE",
+    "label": "\u6218\u6597\u6cd5\u5e08",
+    "category": "combat-unit",
+    "png": "painted-units-v1/unit-battle-mage-gait-v2.png",
+    "runtimeReady": true,
+    "qualityTier": "painted-v2-gait-reviewed",
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "preserveAuthoredPalette": true,
+    "physicalWidth": 2169,
+    "physicalHeight": 725,
+    "pixelDensity": 1,
+    "resourcePath": "res://assets/painted-units-v1/unit-battle-mage-gait-v2.png",
+    "sha256": "435a7a700427e85213d8ab6e791cacfee6dbe89befdce1fcaf1500ff37b2bfa5",
+    "presentationScale": 0.0888325,
+    "frameRegions": [
+      [
+        0,
+        0,
+        527,
+        725
+      ],
+      [
+        527,
+        0,
+        487,
+        725
+      ],
+      [
+        1014,
+        0,
+        681,
+        725
+      ],
+      [
+        1695,
+        0,
+        474,
+        725
+      ]
+    ],
+    "frameAnchors": [
+      [
+        270,
+        557
+      ],
+      [
+        246,
+        562
+      ],
+      [
+        276,
+        553
+      ],
+      [
+        186,
+        552
+      ]
+    ],
+    "textureFilter": "linear"
+  },
+  "registered": {
+    "assetId": "C01-FFV1-UNIT-BATTLE-MAGE",
+    "topicId": "C01-UNIT-BATTLE-MAGE",
+    "label": "\u6218\u6597\u6cd5\u5e08",
+    "category": "combat-unit",
+    "png": "painted-units-v1/unit-battle-mage-clean-v3.png",
+    "runtimeReady": true,
+    "qualityTier": "painted-v3-material-reviewed",
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "footprint": [
+      1,
+      1
+    ],
+    "preserveAuthoredPalette": true,
+    "physicalWidth": 2169,
+    "physicalHeight": 725,
+    "pixelDensity": 1,
+    "resourcePath": "res://assets/painted-units-v1/unit-battle-mage-clean-v3.png",
+    "sha256": "6440a21dcea27994ba2d3e2957e776e659893c357b96e91ccb5ddf8fe0a6bcfc",
+    "presentationScale": 0.0888325,
+    "frameRegions": [
+      [
+        0,
+        0,
+        527,
+        725
+      ],
+      [
+        527,
+        0,
+        487,
+        725
+      ],
+      [
+        1014,
+        0,
+        697,
+        725
+      ],
+      [
+        1711,
+        0,
+        458,
+        725
+      ]
+    ],
+    "frameAnchors": [
+      [
+        271,
+        558
+      ],
+      [
+        248,
+        563
+      ],
+      [
+        278,
+        554
+      ],
+      [
+        173,
+        553
+      ]
+    ],
+    "textureFilter": "linear"
+  },
+  "anchorMethod": "Preserve original body/root registration with measured lower-body translation, not support-toe snapping. Mage attack gutter moved from1695 to1711 to preserve full fire.",
+  "driftPixels": [
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      3,
+      1
+    ]
+  ],
+  "runtimeAcceptance": "Pending native screenshot; no claim all alpha speckles removed."
+}

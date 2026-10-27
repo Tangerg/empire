@@ -1,0 +1,175 @@
+{
+  "modifiedEntries": [
+    "C01-FFV1-UNIT-BANNER-GUARD",
+    "C01-FFV1-UNIT-BATTLE-MAGE",
+    "bran-stage01"
+  ],
+  "assets": [
+    {
+      "asset": "C01-FFV1-UNIT-BANNER-GUARD",
+      "png": "painted-units-v1/unit-banner-guard-clean-v3.png",
+      "sha256": "dd0148586b236a385a4e6f9f6b68c32be4c0db1cd94fd6d000bf5df87b3508bf",
+      "size": [
+        2169,
+        725
+      ],
+      "frameRegions": [
+        [
+          0,
+          0,
+          575,
+          725
+        ],
+        [
+          575,
+          0,
+          525,
+          725
+        ],
+        [
+          1100,
+          0,
+          592,
+          725
+        ],
+        [
+          1692,
+          0,
+          477,
+          725
+        ]
+      ],
+      "frameAnchors": [
+        [
+          250,
+          559
+        ],
+        [
+          226,
+          563
+        ],
+        [
+          239,
+          553
+        ],
+        [
+          186,
+          560
+        ]
+      ],
+      "scaleUnchanged": true,
+      "alpha128FrameEdgesClear": true
+    },
+    {
+      "asset": "C01-FFV1-UNIT-BATTLE-MAGE",
+      "png": "painted-units-v1/unit-battle-mage-clean-v3.png",
+      "sha256": "6440a21dcea27994ba2d3e2957e776e659893c357b96e91ccb5ddf8fe0a6bcfc",
+      "size": [
+        2169,
+        725
+      ],
+      "frameRegions": [
+        [
+          0,
+          0,
+          527,
+          725
+        ],
+        [
+          527,
+          0,
+          487,
+          725
+        ],
+        [
+          1014,
+          0,
+          697,
+          725
+        ],
+        [
+          1711,
+          0,
+          458,
+          725
+        ]
+      ],
+      "frameAnchors": [
+        [
+          271,
+          558
+        ],
+        [
+          248,
+          563
+        ],
+        [
+          278,
+          554
+        ],
+        [
+          173,
+          553
+        ]
+      ],
+      "scaleUnchanged": true,
+      "alpha128FrameEdgesClear": true
+    },
+    {
+      "asset": "bran-stage01",
+      "png": "painted-units-v1/bran-stage01-clean-v3.png",
+      "sha256": "7106b27371b4b29902cf97152cc841489503465f090320eab0f522e2d6f1c86e",
+      "size": [
+        2169,
+        725
+      ],
+      "frameRegions": [
+        [
+          0,
+          0,
+          563,
+          725
+        ],
+        [
+          563,
+          0,
+          532,
+          725
+        ],
+        [
+          1095,
+          0,
+          583,
+          725
+        ],
+        [
+          1678,
+          0,
+          491,
+          725
+        ]
+      ],
+      "frameAnchors": [
+        [
+          298,
+          577
+        ],
+        [
+          274,
+          575
+        ],
+        [
+          260,
+          593
+        ],
+        [
+          245,
+          575
+        ]
+      ],
+      "scaleUnchanged": true,
+      "alpha128FrameEdgesClear": true
+    }
+  ],
+  "result": "PASS: exact source SHA256, dimensions, RGBA, complete regions, anchors in bounds, alpha128 clear edges, unchanged presentation scales. Native visual acceptance separate."
+}

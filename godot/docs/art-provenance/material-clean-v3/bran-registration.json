@@ -1,0 +1,156 @@
+{
+  "source": {
+    "id": "bran-stage01",
+    "topicId": "C01-UNIT-RANGER",
+    "png": "painted-units-v1/bran-stage01-v2.png",
+    "hdPng": "runtime-approved-v5/hero-appearance/bran-stage01@2x.png",
+    "pixelDensity": 1,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "hdWidth": 832,
+    "hdHeight": 128,
+    "physicalWidth": 2169,
+    "physicalHeight": 725,
+    "resourcePath": "res://assets/painted-units-v1/bran-stage01-v2.png",
+    "sha256": "edf3ee2227b622acb7e34644e4b9258a905f9b7abb9383bda6f9efc39ca5c674",
+    "presentationScale": 0.0902062,
+    "frameRegions": [
+      [
+        0,
+        0,
+        563,
+        725
+      ],
+      [
+        563,
+        0,
+        532,
+        725
+      ],
+      [
+        1095,
+        0,
+        583,
+        725
+      ],
+      [
+        1678,
+        0,
+        491,
+        725
+      ]
+    ],
+    "frameAnchors": [
+      [
+        297,
+        575
+      ],
+      [
+        272,
+        574
+      ],
+      [
+        267,
+        591
+      ],
+      [
+        248,
+        573
+      ]
+    ],
+    "qualityTier": "painted-v2-gait-reviewed",
+    "textureFilter": "linear"
+  },
+  "registered": {
+    "id": "bran-stage01",
+    "topicId": "C01-UNIT-RANGER",
+    "png": "painted-units-v1/bran-stage01-clean-v3.png",
+    "hdPng": "runtime-approved-v5/hero-appearance/bran-stage01@2x.png",
+    "pixelDensity": 1,
+    "frames": 4,
+    "frameOrder": [
+      "idle",
+      "walk-a",
+      "attack",
+      "walk-b"
+    ],
+    "hdWidth": 832,
+    "hdHeight": 128,
+    "physicalWidth": 2169,
+    "physicalHeight": 725,
+    "resourcePath": "res://assets/painted-units-v1/bran-stage01-clean-v3.png",
+    "sha256": "7106b27371b4b29902cf97152cc841489503465f090320eab0f522e2d6f1c86e",
+    "presentationScale": 0.0902062,
+    "frameRegions": [
+      [
+        0,
+        0,
+        563,
+        725
+      ],
+      [
+        563,
+        0,
+        532,
+        725
+      ],
+      [
+        1095,
+        0,
+        583,
+        725
+      ],
+      [
+        1678,
+        0,
+        491,
+        725
+      ]
+    ],
+    "frameAnchors": [
+      [
+        298,
+        577
+      ],
+      [
+        274,
+        575
+      ],
+      [
+        260,
+        593
+      ],
+      [
+        245,
+        575
+      ]
+    ],
+    "qualityTier": "painted-v3-material-reviewed",
+    "textureFilter": "linear"
+  },
+  "anchorMethod": "Original body/root registration plus measured lower-body translation, not support-toe snapping.",
+  "driftPixels": [
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      -7,
+      2
+    ],
+    [
+      -3,
+      2
+    ]
+  ],
+  "runtimeAcceptance": "Pending native screenshot."
+}

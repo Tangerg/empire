@@ -1,0 +1,111 @@
+{
+  "size": [
+    2169,
+    725
+  ],
+  "frames": [
+    {
+      "frame": "idle",
+      "oldRegion": [
+        0,
+        0,
+        563,
+        725
+      ],
+      "oldBbox": [
+        120,
+        184,
+        476,
+        575
+      ],
+      "newBbox": [
+        118,
+        181,
+        479,
+        578
+      ],
+      "lowerBodyTranslationApprox": [
+        1,
+        2
+      ]
+    },
+    {
+      "frame": "walk-a",
+      "oldRegion": [
+        563,
+        0,
+        532,
+        725
+      ],
+      "oldBbox": [
+        88,
+        183,
+        432,
+        583
+      ],
+      "newBbox": [
+        86,
+        180,
+        437,
+        586
+      ],
+      "lowerBodyTranslationApprox": [
+        2,
+        1
+      ]
+    },
+    {
+      "frame": "attack",
+      "oldRegion": [
+        1095,
+        0,
+        583,
+        725
+      ],
+      "oldBbox": [
+        101,
+        172,
+        539,
+        591
+      ],
+      "newBbox": [
+        91,
+        170,
+        534,
+        595
+      ],
+      "lowerBodyTranslationApprox": [
+        -7,
+        2
+      ]
+    },
+    {
+      "frame": "walk-b",
+      "oldRegion": [
+        1678,
+        0,
+        491,
+        725
+      ],
+      "oldBbox": [
+        47,
+        182,
+        408,
+        589
+      ],
+      "newBbox": [
+        41,
+        180,
+        407,
+        593
+      ],
+      "lowerBodyTranslationApprox": [
+        -3,
+        2
+      ]
+    }
+  ],
+  "isolatedAlpha16Beyond3pxOld": 105,
+  "isolatedAlpha16Beyond3pxNew": 4,
+  "method": "opaque lower body band y480..550 approximate pixel MSE registration, not support toe snapping; candidate not registered"
+}
