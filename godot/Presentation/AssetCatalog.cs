@@ -24,8 +24,8 @@ public sealed record RuntimeAsset(
     string TopicId,
     string Category,
     string ResourcePath,
-    int FrameWidth,
-    int FrameHeight,
+    float FrameWidth,
+    float FrameHeight,
     int FrameCount,
     IReadOnlyList<string> FrameOrder,
     Vector2 Anchor,
@@ -38,7 +38,22 @@ public sealed record RuntimeAsset(
     float PresentationScale,
     double? FramesPerSecond,
     bool Loop,
-    string BlendMode);
+    string BlendMode)
+{
+    public CanvasItem.TextureFilterEnum TextureFilter { get; init; } = CanvasItem.TextureFilterEnum.Nearest;
+    public IReadOnlyList<Rect2>? FrameRegions
+    {
+        get; init;
+    }
+    public Rect2 RegionAt(int index) => FrameRegions is { } regions ? regions[index]
+        : new Rect2(index * FrameWidth * PixelDensity, 0, FrameWidth * PixelDensity, FrameHeight * PixelDensity);
+    public IReadOnlyList<Vector2>? FrameAnchors
+    {
+        get; init;
+    }
+    public Vector2 AnchorAt(int index) => FrameAnchors is { } anchors ? anchors[index] : Anchor;
+    public Vector2 GroundFrontAt(int index) => FrameAnchors is { } anchors ? anchors[index] : GroundFront;
+}
 
 public sealed class AssetCatalog
 {
@@ -164,7 +179,7 @@ public sealed class AssetCatalog
         if (frameIndex < 0 || frameIndex >= asset.FrameCount)
             throw new ArgumentOutOfRangeException(nameof(frameIndex), $"Frame outside {asset.Identity}.");
         return _rasters.Frame(asset.ResourcePath, asset.PhysicalWidth, asset.PhysicalHeight,
-            asset.FrameWidth, asset.FrameHeight, asset.FrameCount, frameIndex, asset.PixelDensity);
+            asset.RegionAt(frameIndex));
     }
 
     public Sprite2D CreateSprite(RuntimeAsset asset, string frameRole = "idle") =>
@@ -173,13 +188,21 @@ public sealed class AssetCatalog
     public Sprite2D CreateSpriteAtFrame(RuntimeAsset asset, int frameIndex)
     {
         var sprite = RasterResources.Sprite(CreateFrameTexture(asset, frameIndex),
-            asset.Anchor, asset.PixelDensity, asset.PresentationScale);
-        SpriteGroundContact.Attach(sprite, asset.GroundFront * asset.PixelDensity);
+            asset.AnchorAt(frameIndex), asset.PixelDensity, asset.PresentationScale);
+        sprite.TextureFilter = asset.TextureFilter;
+        SpriteGroundContact.Attach(sprite, asset.GroundFrontAt(frameIndex) * asset.PixelDensity);
         sprite.SetMeta("art_identity", asset.Identity);
         sprite.SetMeta("topic_id", asset.TopicId);
         if (asset.Footprint is { } footprint)
             sprite.SetMeta("visual_footprint", footprint);
         return sprite;
+    }
+
+    public void ApplyFrame(Sprite2D sprite, RuntimeAsset asset, int frameIndex)
+    {
+        sprite.Texture = CreateFrameTexture(asset, frameIndex);
+        sprite.Offset = -asset.AnchorAt(frameIndex) * asset.PixelDensity;
+        SpriteGroundContact.Attach(sprite, asset.GroundFrontAt(frameIndex) * asset.PixelDensity);
     }
 
     public static int FrameIndex(RuntimeAsset asset, string frameRole)
@@ -205,20 +228,52 @@ public sealed class AssetCatalog
     private static RuntimeAsset ReadAsset(AssetRecord record, RuntimeAsset? basis)
     {
         var identity = record.Id ?? record.AssetId ?? record.TopicId;
-        var width = record.FrameWidth ?? record.Width;
-        var height = record.FrameHeight ?? record.Height;
+        float width = record.FrameWidth ?? record.Width;
+        float height = record.FrameHeight ?? record.Height;
         var frames = record.Frames ?? 1;
         var density = record.PixelDensity;
         var category = basis?.Category ?? record.Category ?? "";
         var effect = category == "fx";
         var order = record.FrameOrder ?? record.StateOrder ?? Array.Empty<string>();
+        var filter = record.TextureFilter switch
+        {
+            "nearest" => CanvasItem.TextureFilterEnum.Nearest,
+            "linear" => CanvasItem.TextureFilterEnum.Linear,
+            _ => throw new InvalidOperationException($"Unsupported authored texture filter: {identity}/{record.TextureFilter}.")
+        };
+        Rect2[]? regions = null;
+        if (record.FrameRegions is { } authoredRegions)
+        {
+            if (category is not ("combat-unit" or "mission-unit") || authoredRegions.Length != frames
+                || record.FrameAnchors is null || record.FrameAnchors.Length != frames
+                || density != 1 || record.FrameWidth is not null || record.FrameHeight is not null
+                || record.Width != 0 || record.Height != 0 || record.Anchor is not null || record.GroundFront is not null)
+                throw new InvalidOperationException($"Explicit actor regions require paired contacts, density one and no competing uniform geometry: {identity}.");
+            regions = authoredRegions.Select(region =>
+            {
+                if (region is null || region.Length != 4 || region[0] < 0 || region[1] < 0
+                    || region[2] <= 0 || region[3] <= 0
+                    || (long)region[0] + region[2] > record.PhysicalWidth
+                    || (long)region[1] + region[3] > record.PhysicalHeight)
+                    throw new InvalidOperationException($"Explicit actor region outside physical sheet: {identity}.");
+                return new Rect2(region[0], region[1], region[2], region[3]);
+            }).ToArray();
+            if (regions.Length > 0)
+            {
+                width = regions[0].Size.X;
+                height = regions[0].Size.Y;
+            }
+        }
+        else if (record.FrameAnchors is not null)
+            throw new InvalidOperationException($"Per-frame contacts require explicit actor regions: {identity}.");
         if (string.IsNullOrWhiteSpace(identity) || string.IsNullOrWhiteSpace(record.TopicId)
             || !record.ResourcePath.StartsWith("res://assets/", StringComparison.Ordinal)
             || record.ResourcePath.Contains("..", StringComparison.Ordinal)
-            || width <= 0 || height <= 0 || frames <= 0
+            || !float.IsFinite(width) || !float.IsFinite(height) || width <= 0 || height <= 0 || frames <= 0
             || !double.IsFinite(density) || density <= 0 || density > float.MaxValue
-            || Math.Abs(record.PhysicalWidth - width * (double)frames * density) > 0.001
-            || Math.Abs(record.PhysicalHeight - height * density) > 0.001)
+            || record.PhysicalWidth <= 0 || record.PhysicalHeight <= 0
+            || (regions is null && (Math.Abs(record.PhysicalWidth - width * (double)frames * density) > 0.001
+                || Math.Abs(record.PhysicalHeight - height * density) > 0.001)))
             throw new InvalidOperationException($"Invalid asset identity, resource path, or logical/physical geometry: {identity}");
         // Actors and structures name their semantic roles. Source FX instead play
         // every numeric strip index; inventing actor roles would change that contract.
@@ -226,11 +281,15 @@ public sealed class AssetCatalog
             && (order.Length != frames || order.Distinct(StringComparer.Ordinal).Count() != frames
                 || order.Any(string.IsNullOrWhiteSpace)))
             throw new InvalidOperationException($"Invalid authored frame order: {identity}");
-        var anchor = RasterResources.Pair(record.Anchor
+        Vector2[]? frameAnchors = null;
+        if (record.FrameAnchors is { } contacts)
+            frameAnchors = contacts.Select((point, index) => SpriteGroundContact.Read(point,
+                regions![index].Size.X, regions[index].Size.Y, $"{identity}/{index}")).ToArray();
+        var anchor = frameAnchors?[0] ?? RasterResources.Pair(record.Anchor
             ?? new[] { width / 2.0, height - 1.0 }, $"anchor of {identity}");
         if (anchor.X < 0 || anchor.X > width || anchor.Y < 0 || anchor.Y > height)
             throw new InvalidOperationException($"Anchor outside frame: {identity}");
-        var groundFront = SpriteGroundContact.Read(record.GroundFront, width, height, identity);
+        var groundFront = frameAnchors?[0] ?? SpriteGroundContact.Read(record.GroundFront, width, height, identity);
         var fps = effect ? record.Fps ?? 12 : record.Fps;
         var blend = record.BlendMode ?? "normal";
         if (fps is { } speed && (!double.IsFinite(speed) || speed <= 0))
@@ -250,17 +309,26 @@ public sealed class AssetCatalog
             new ReadOnlyCollection<string>((string[])order.Clone()), anchor, groundFront, footprint,
             (float)density, record.PhysicalWidth, record.PhysicalHeight,
             isHero || record.PreserveAuthoredPalette, (float)record.PresentationScale,
-            fps, record.Loop ?? false, blend);
+            fps, record.Loop ?? false, blend)
+        {
+            TextureFilter = filter,
+            FrameRegions = regions is null ? null : Array.AsReadOnly(regions),
+            FrameAnchors = frameAnchors is null ? null : Array.AsReadOnly(frameAnchors)
+        };
     }
 }
 
 internal sealed class RasterResources
 {
     private readonly Dictionary<string, Texture2D> _textures = new(StringComparer.Ordinal);
-    private readonly Dictionary<(string Path, int Index, int Width, int Height, int Columns, float Density), AtlasTexture> _frames = new();
+    private readonly Dictionary<(string Path, Rect2 Region), AtlasTexture> _frames = new();
 
     public AtlasTexture Frame(string path, int physicalWidth, int physicalHeight,
-        int width, int height, int columns, int index, float density)
+        float width, float height, int columns, int index, float density)
+        => Frame(path, physicalWidth, physicalHeight, new Rect2(index % columns * width * density,
+            index / columns * height * density, width * density, height * density));
+
+    public AtlasTexture Frame(string path, int physicalWidth, int physicalHeight, Rect2 region)
     {
         if (!_textures.TryGetValue(path, out var texture))
         {
@@ -272,14 +340,13 @@ internal sealed class RasterResources
         }
         if (texture.GetWidth() != physicalWidth || texture.GetHeight() != physicalHeight)
             throw new InvalidOperationException($"Texture dimensions differ from manifest: {path}; expected {physicalWidth}x{physicalHeight}, got {texture.GetWidth()}x{texture.GetHeight()}.");
-        var key = (path, index, width, height, columns, density);
+        var key = (path, region);
         if (_frames.TryGetValue(key, out var cached))
             return cached;
         var frame = new AtlasTexture
         {
             Atlas = texture,
-            Region = new Rect2(index % columns * width * density,
-                index / columns * height * density, width * density, height * density),
+            Region = region,
             FilterClip = true,
         };
         _frames.Add(key, frame);
@@ -325,7 +392,7 @@ public static class SpriteGroundContact
 {
     private const string Metadata = "authored_ground_front";
 
-    internal static Vector2 Read(double[]? value, int width, int height, string identity)
+    internal static Vector2 Read(double[]? value, float width, float height, string identity)
     {
         if (value is null)
             throw new InvalidOperationException($"Missing authored ground-front contact: {identity}");

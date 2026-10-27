@@ -28,6 +28,12 @@ public sealed class TacticalPortraitBinding
     {
         get; init;
     }
+    /// <summary>HUD-only physical-pixel square; null explicitly preserves a generic idle frame.</summary>
+    [System.Text.Json.Serialization.JsonRequired]
+    public int[]? PortraitRegion
+    {
+        get; init;
+    }
 }
 
 /// <summary>Explicit portrait ID or null for the unit idle frame; unknown IDs never fall back.</summary>
@@ -35,15 +41,31 @@ public sealed class TacticalHudArt
 {
     private readonly TacticalHudArtDocument document;
     private readonly AssetCatalog assets;
-    private readonly PortraitCatalog portraits;
+    private readonly Dictionary<string, AtlasTexture> portraitTextures = new(StringComparer.Ordinal);
     public TacticalHudArt(AssetCatalog assets, PortraitCatalog portraits, TacticalHudArtDocument document)
     {
         if (document.Schema != 2)
             throw new InvalidOperationException("Unknown tactical HUD art schema.");
-        foreach (var binding in document.Portraits.Values)
-            if (binding.PortraitId is { } id)
-                portraits.Resolve(id);
-        this.portraits = portraits;
+        foreach (var (key, binding) in document.Portraits)
+        {
+            if (binding.PortraitId is not { } id)
+            {
+                if (binding.PortraitRegion is not null)
+                    throw new InvalidOperationException("A generic idle-frame HUD portrait cannot declare a named-image crop: " + key);
+                continue;
+            }
+            var image = Image(portraits.Resolve(id));
+            var crop = binding.PortraitRegion;
+            if (crop is not { Length: 4 } || crop[0] < 0 || crop[1] < 0 || crop[2] <= 0 || crop[2] != crop[3]
+                || (long)crop[0] + crop[2] > image.GetWidth() || (long)crop[1] + crop[3] > image.GetHeight())
+                throw new InvalidOperationException("Named HUD portrait requires an in-bounds square physical-pixel crop: " + key);
+            portraitTextures.Add(key, new AtlasTexture
+            {
+                Atlas = image,
+                Region = new Rect2(crop[0], crop[1], crop[2], crop[3]),
+                FilterClip = true
+            });
+        }
         this.document = document;
         this.assets = assets;
     }
@@ -70,8 +92,8 @@ public sealed class TacticalHudArt
             throw new MissingArtResourceException(key, "Missing source HUD portrait binding: " + key);
         if (binding.UnitType != portrait.UnitType)
             throw new InvalidOperationException("HUD actor portrait type mismatch: " + key);
-        if (binding.PortraitId is { } portraitId)
-            return Image(portraits.Resolve(portraitId));
+        if (binding.PortraitId is not null)
+            return portraitTextures[key];
         var unit = assets.ResolveUnit(portrait.UnitType, portrait.ActorKey);
         return assets.CreateFrameTexture(unit, AssetCatalog.FrameIndex(unit, "idle"));
     }

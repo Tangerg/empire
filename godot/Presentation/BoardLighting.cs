@@ -61,8 +61,8 @@ public static class BoardLighting
 
     private static LayerFilterComposition.Raster UnitContact()
     {
-        // CSS overrides the presentation attribute .48 with .62.
-        var contact = ShadowRaster.Ellipse(new Vector2(12.5f, 4.2f), new Color("#0b100d"), .62f, .55f, 2);
+        // Ground-only ambient contact: a figure silhouette shadow would read as a cutout.
+        var contact = ShadowRaster.Ellipse(new Vector2(10.5f, 3.5f), new Color("#393426"), .42f, 1.1f, 2);
         return new(contact.Image, new Vector2(0, -1.8f) - contact.Centre / 2, 2);
     }
 

@@ -32,7 +32,7 @@ public sealed class ShadowCache : IDisposable
     {
         var scale = source.Scale.Abs();
         var offset = source.Offset * scale;
-        var key = ("figure", source.Texture.GetInstanceId(), scale, offset, source.FlipH, source.FlipV, team);
+        var key = ("figure", source.Texture.GetInstanceId(), scale, offset, source.FlipH, source.FlipV, team, source.TextureFilter);
         return Get(key, () =>
         {
             if (!_bodies.TryGetValue(team, out var body))
@@ -44,7 +44,8 @@ public sealed class ShadowCache : IDisposable
                 input.FlipY();
             var composition = LayerFilterComposition.Compose(new[] {
                 new LayerFilterComposition.Layer(body.Image, new(body.Origin, new Vector2(body.Image.GetWidth(), body.Image.GetHeight()) / body.Density)),
-                new LayerFilterComposition.Layer(input, new(offset, source.Texture.GetSize() * scale)),
+                new LayerFilterComposition.Layer(input, new(offset, source.Texture.GetSize() * scale),
+                    AreaMinification: source.TextureFilter == CanvasItem.TextureFilterEnum.Linear),
             }, 2);
             using (composition.Image)
                 return LayerFilterComposition.Filter(composition, ShadowKind.Figure);
@@ -203,7 +204,7 @@ public partial class SpriteShadows : Sprite2D
             ShadowKind.Standing => new[] { Css(0, 1, 0, "#040a07", .74f), Css(0, 3, 3, "#040a07", .42f) },
             ShadowKind.Foreground => new[] { Css(0, 2, 1, "#030906", .78f), Css(0, 6, 5, "#030906", .46f) },
             ShadowKind.FrameEdge => new[] { Css(0, 3, 1, "#030906", .82f), Css(0, 8, 7, "#030906", .52f) },
-            ShadowKind.Figure => new[] { Css(0, 0, .65f, "#fff6de", .45f), Css(0, 2, 1.2f, "#000000", .75f) },
+            ShadowKind.Figure => Array.Empty<Drop>(),
             ShadowKind.BattleProp => new[] { Css(0, 2, 2, "#000000", .42f) },
             ShadowKind.OwnerBanner => new[] { Css(0, 1, 1.1f, "#000000", .7f) },
             ShadowKind.Route => new[] { Css(0, 1, 0, "#ffe6b0", .1f) },

@@ -134,6 +134,43 @@ public partial class LuojiaChecks : Node
                         $"Adjacent cavalry/guard {(frontBack ? "front/back" : "side-by-side")} must retain substantial canonical picking regions, not a single exposed pixel.");
                 }
             }
+            // Detached visual probes reproduce the two actual natural T7 cells;
+            // they do not change campaign collision, movement or the saved battle.
+            foreach (var probe in new[]
+            {
+                (Key: "south-militia", Cell: new Coord(42, 36), Material: "southwest-upper-wall-t7-depth_masonry-and-terminal-pier"),
+                (Key: "east-militia", Cell: new Coord(66, 24), Material: "east-inner-tree-t7-depth_dense-crown")
+            })
+            {
+                var fixture = state.DeepClone().AsObject();
+                var actor = Unit(fixture, probe.Key).DeepClone().AsObject();
+                Position(actor, probe.Cell);
+                fixture["units"] = new JsonArray(actor);
+                var unchanged = EcmaJson.Stringify(fixture);
+                board.RenderState(fixture);
+                var actorId = Integer(actor, "id");
+                var node = board.GetNode<Node2D>($"CanonicalProjection/Unit_{actorId}");
+                var sprite = node.GetNode<Sprite2D>("AuthoredSprite");
+                var material = ground.DepthEntries.Single(entry => entry.Node.Name == probe.Material);
+                Require(material.Node.ZIndex > node.ZIndex,
+                    $"Natural T7 {probe.Key} must stand behind the painted material's actual ground front.");
+                var samples = 0;
+                var rect = sprite.GetRect();
+                for (var y = rect.Position.Y + 1; y < rect.End.Y; y += 2)
+                    for (var x = rect.Position.X + 1; x < rect.End.X; x += 2)
+                    {
+                        var pixel = new Vector2(x, y);
+                        var global = sprite.ToGlobal(pixel);
+                        if (!sprite.IsPixelOpaque(pixel) || !material.Visual!.Covers(global))
+                            continue;
+                        samples++;
+                        Require(board.Pick(board.ToLocal(global)) != TacticalHit.Unit(new(probe.Cell.X, probe.Cell.Y), actorId),
+                            "The same opaque material must hide the actor from both drawing and pointer picking.");
+                    }
+                Require(samples >= 12, $"The {probe.Key} regression must exercise a substantial true sprite/material overlap.");
+                Require(EcmaJson.Stringify(fixture) == unchanged,
+                    "Occlusion restoration cannot alter the natural-cell visual fixture's canonical state.");
+            }
             board.RenderState(state);
 
         }

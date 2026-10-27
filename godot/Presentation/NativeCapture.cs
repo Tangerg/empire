@@ -91,8 +91,22 @@ public partial class NativeCapture : Node
             GD.Print($"Native frame observation before readback: {fps:F1} FPS, process {processMilliseconds:F2} ms, "
                 + $"draw calls {drawCalls}, scene nodes {nodes}.");
             if (FindBoard(this) is { ProjectionUnitCount: > 0 } board)
+            {
                 GD.Print($"Native surface geometry: {board.Projection.Triangles.Count} source triangles, "
                     + $"{board.Projection.DepthPatches.Count} clipped patches, {board.Projection.DepthPartitions.Count} depth partitions.");
+                var figures = board.GetNode<Node2D>("CanonicalProjection").GetChildren().OfType<Node2D>()
+                    .Where(node => node.HasMeta("unit_id"))
+                    .Select(node => new
+                    {
+                        id = node.GetMeta("unit_id").AsInt32(),
+                        type = node.GetMeta("unit_type").AsString(),
+                        x = node.GetGlobalTransformWithCanvas().Origin.X,
+                        y = node.GetGlobalTransformWithCanvas().Origin.Y,
+                        art = node.GetNode<Sprite2D>("AuthoredSprite").GetMeta("art_identity").AsString()
+                    }).ToArray();
+                File.WriteAllText(Path.ChangeExtension(path, ".actors.json"),
+                    System.Text.Json.JsonSerializer.Serialize(figures, new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
+            }
         }
         catch (Exception error) { GD.PushError(error.ToString()); }
         finally { _capturing = false; }

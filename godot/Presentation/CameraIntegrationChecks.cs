@@ -55,8 +55,11 @@ public partial class CameraIntegrationChecks : Node
             map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = Field(new Vector2(10.5f, 15.5f) * 32) });
             map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = Field(new Vector2(10.6f, 15.5f) * 32) });
             Require(initial.SnapshotReads == snapshotReads, "Pointer freshness checks must not construct battle snapshots.");
+            await CheckOverlayViewport();
             CheckInitialAndGestures();
             CheckZoomAndResize();
+            screen.Size = new Vector2(960, 640);
+            await Layout();
             CheckStationaryPointerFocus();
             CheckCancellation();
             CheckOutsideTerrain();
@@ -81,6 +84,42 @@ public partial class CameraIntegrationChecks : Node
     {
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+    }
+
+    private Vector2 SafeCenter() => new(map.Size.X / 2, (110 + map.Size.Y - 134) / 2);
+
+    private async Task CheckOverlayViewport()
+    {
+        var originalSize = screen.Size;
+        foreach (var size in new[] { new Vector2(960, 640), new Vector2(1180, 812) })
+        {
+            screen.Size = size;
+            await Layout();
+            var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+            Bind(session);
+            Near(map.Position, Vector2.Zero, "Overlay HUD does not offset the map origin");
+            Near(map.Size, size, "Overlay HUD leaves the entire window available to the painted map");
+            GuiButton(MouseButton.Middle, true, new Vector2(400, 300));
+            CapturedMove(new Vector2(10000, 10000));
+            CapturedButton(MouseButton.Middle, false, new Vector2(10000, 10000));
+            Near(world.Position - new Vector2(74, 62) * world.Scale, new Vector2(16, 110),
+                "Top/left safe insets apply exactly once, independently of authored scene margins");
+            GuiButton(MouseButton.Middle, true, new Vector2(400, 300));
+            CapturedMove(new Vector2(-10000, -10000));
+            CapturedButton(MouseButton.Middle, false, new Vector2(-10000, -10000));
+            Near(world.Position + (screen.Board.FieldSize + new Vector2(74, 74)) * world.Scale,
+                size - new Vector2(16, 134), "Bottom/right safe insets apply exactly once at the pan limit");
+            screen._UnhandledKeyInput(new InputEventKey { Keycode = Key.Space, Pressed = true });
+            Require(screen.SelectedUnitId is not null, "Keyboard cycling selects an actual actor from an offscreen camera");
+            var actor = session.GetTacticalQueries(0).Unit(screen.SelectedUnitId!.Value)!;
+            var point = BoardField(screen.Board.Projection.CellCenter(new(actor.At.X, actor.At.Y)));
+            var safe = new Rect2(new Vector2(16, 110), size - new Vector2(32, 244));
+            Require(safe.HasPoint(point), $"Cycling reveals selected actor inside the unobscured safe rectangle at {size}: {point}");
+            Require(session.Revision == 0, "Layout, pan and focus cannot advance battle state");
+        }
+        screen.Size = originalSize;
+        await Layout();
+        Bind(new GrayFlagSession(new(engine, presentation, new JsonArray()), level));
     }
 
     private void CheckInitialAndGestures()
@@ -115,7 +154,7 @@ public partial class CameraIntegrationChecks : Node
         CapturedMove(new Vector2(-10000, -10000));
         CapturedButton(MouseButton.Middle, false, new Vector2(-10000, -10000));
         Near(world.Position + (screen.Board.FieldSize + new Vector2(74, 74)) * world.Scale,
-            map.Size, "A captured drag beyond the panel reaches the right and bottom scene edges");
+            map.Size - new Vector2(16, 134), "A captured drag reaches the right and bottom safe edges with overlay padding applied once");
         var edge = world.Position;
         CapturedMove(new Vector2(500, 500));
         Near(world.Position, edge, "Release outside the panel ends the captured gesture");
@@ -131,13 +170,13 @@ public partial class CameraIntegrationChecks : Node
         map.Size += new Vector2(20, 10);
         Near(new Vector2(74, 62) * world.Scale - world.Position, scroll, "Resize preserves scroll pixels");
         Near(world.Scale, Vector2.One * 1.25f, "Resize preserves readable zoom");
-        var center = (map.Size / 2 - world.Position) / world.Scale;
+        var center = (SafeCenter() - world.Position) / world.Scale;
         Wheel(MouseButton.WheelUp, ctrl: true, factor: 10);
         Wheel(MouseButton.WheelUp, meta: true, factor: .01f);
         Near(world.Scale, Vector2.One * 1.25f, "Wheel deltas wait for a presentation frame");
         screen._Process(0);
         Near(world.Scale, Vector2.One * 1.45f, "Ctrl and Meta each contribute one source notch regardless of magnitude");
-        Near((map.Size / 2 - world.Position) / world.Scale, center, "Wheel zoom anchors the viewport center, not pointer location");
+        Near((SafeCenter() - world.Position) / world.Scale, center, "Wheel zoom anchors the unobscured viewport center, not pointer location");
         ((Button)screen.FindChild("ZoomIn", true, false)).EmitSignal(Button.SignalName.Pressed);
         screen._Process(0);
         Near(world.Scale, Vector2.One * 1.6f, "Source plus button contributes 0.15 through the same frame path");
@@ -346,7 +385,7 @@ public partial class CameraIntegrationChecks : Node
             {
                 var expected = new BattlefieldCamera(new(screen.Board.FieldSize.X, screen.Board.FieldSize.Y),
                     new(74, 62, 74, 74), new(0, 0));
-                expected.Resize(new(map.Size.X, map.Size.Y));
+                expected.Resize(new(map.Size.X, map.Size.Y), new(16, 110, 16, 134));
                 var projectedDestination = screen.Board.Projection.CellCenter(new(destination.X, destination.Y));
                 expected.CenterOn(new(projectedDestination.X, projectedDestination.Y));
                 Near(during, new((float)expected.FieldOrigin.X, (float)expected.FieldOrigin.Y), "Visible AI command follows the canonical final path point");

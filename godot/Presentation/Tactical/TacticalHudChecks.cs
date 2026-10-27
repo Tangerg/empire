@@ -110,7 +110,7 @@ public partial class TacticalHudChecks : Node
         AddChild(hudWidget);
         hudWidget.IntentRequested += intent => control.Back(intent.Stamp);
         hudWidget.Apply(Hud());
-        var close = hudWidget.GetNode<VBoxContainer>("site").GetChildren().OfType<Button>().Single();
+        var close = ((VBoxContainer)hudWidget.FindChild("site", true, false)).GetChildren().OfType<Button>().Single();
         close.EmitSignal(BaseButton.SignalName.Pressed);
         Require(control.Selection.Kind == TacticalSelectionKind.Idle && control.Overlay().Selected is null
             && Hud().Sections.All(section => section.Key != "site"),
@@ -190,7 +190,7 @@ public partial class TacticalHudChecks : Node
         Require(screen.Selection?.Kind == TacticalSelectionKind.Site
             && hud.Projection!.Sections.Single(section => section.Key == "tile").Rows.First().Label == "38, 23",
             "A native outside-map motion preserves only the pinned site, not an offscreen map projection.");
-        hud.GetNode<VBoxContainer>("site").GetChildren().OfType<Button>().Single().EmitSignal(BaseButton.SignalName.Pressed);
+        ((VBoxContainer)hud.FindChild("site", true, false)).GetChildren().OfType<Button>().Single().EmitSignal(BaseButton.SignalName.Pressed);
         Require(screen.Selection?.Kind == TacticalSelectionKind.Idle && !HasTile(),
             "Closing from the HUD cannot expose a fictitious offscreen hover tile.");
         Motion(inside);
@@ -247,49 +247,126 @@ public partial class TacticalHudChecks : Node
         }
     }
 
+    private void CheckPinnedUnit()
+    {
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var presentation = BattleTextChecks.Session(engine, GodotTextCatalog.LoadSimplifiedChinese());
+        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>().First();
+        var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+        var units = session.Snapshot()["units"]!.AsArray().OfType<JsonObject>().ToArray();
+        var actor = units.First();
+        var target = units.Last();
+        var selected = actor["id"]!.GetValue<int>();
+        var inspected = target["id"]!.GetValue<int>();
+        var selection = new TacticalSelection { Kind = TacticalSelectionKind.Unit, UnitId = selected };
+        var before = EcmaJson.Stringify(session.Snapshot());
+        var hud = session.ProjectHud(new(0, 0), selection,
+            TacticalHit.Unit(new(target["x"]!.GetValue<int>(), target["y"]!.GetValue<int>()), inspected), inspected, false);
+        Require(hud.Sections.Single(section => section.Key == "unit").Title == session.UnitName(EcmaJson.ToElement(actor))
+            && hud.Portrait?.UnitType == actor["type"]!.GetValue<string>(),
+            "Hovering another unit cannot displace the acting unit's name, portrait and HP from the order tray.");
+        Require(before == EcmaJson.Stringify(session.Snapshot()), "Pinned identity is only a projection, never a battle mutation.");
+    }
+
     private async System.Threading.Tasks.Task CheckResponsiveLayout()
     {
-        var scroll = new ScrollContainer
+        var host = new Control
         {
-            Size = new Vector2(300, 420),
-            HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
+            Size = new Vector2(960, 640),
             Theme = TacticalHudStyle.Create()
         };
-        AddChild(scroll);
-        var hud = new TacticalHud { SizeFlagsHorizontal = Control.SizeFlags.ExpandFill };
-        scroll.AddChild(hud);
+        AddChild(host);
+        var hud = new TacticalHud
+        {
+            SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
+            SizeFlagsVertical = Control.SizeFlags.ExpandFill,
+            ShowHint = false
+        };
+        host.AddChild(hud);
+        hud.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
         var objective = new string('界', 80);
         var projection = new TacticalHudProjection(new(1, 1), "选择高亮地格", new[]
         {
-            new TacticalHudSection("unit", "莱娅", new[] { new TacticalHudRow("hp", "生命 116 / 116", Gauge: new(116, 116)) }),
+            new TacticalHudSection("unit", "莱娅", new[] { new TacticalHudRow("selection", "预览未执行"), new("hp", "生命 116 / 116", Gauge: new(116, 116)) }),
             new TacticalHudSection("objectives", "作战目标", new[] { new TacticalHudRow("long", objective) }),
-            new TacticalHudSection("forecast", "战斗预测", new[] { new TacticalHudRow("strike", "伤害 36 · 生命 80 → 44", Gauge: new(44, 80)) }),
+            new TacticalHudSection("forecast", "战斗预测", new[]
+            {
+                new TacticalHudRow("attacker", "灰旗卫士"), new("recipient", "戍斗法师"),
+                new("strike", "造成伤害 36 · 80 → 44", Gauge: new(44, 80)),
+                new("counter", "遭到反击 20 · 28 → 8", Gauge: new(8, 80))
+            }),
+            new TacticalHudSection("target", "选择目标", new[]
+            {
+                new TacticalHudRow("cancel", "取消 Esc", Intent: new(new(1, 1), TacticalHudIntentKind.Back))
+            }),
             new TacticalHudSection("unit-details", "兵种与能力", new[] { new TacticalHudRow("long", objective) })
         });
-        foreach (var width in new[] { 300, 390 })
+        foreach (var width in new[] { 960, 1180 })
         {
-            scroll.Size = new Vector2(width, 420);
+            host.Size = new Vector2(width, 640);
             hud.Apply(projection);
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-            var goal = hud.GetNode<VBoxContainer>("objectives").GetChildren().OfType<HBoxContainer>().Single().GetChildren().OfType<Label>().Single();
-            Require(goal.GetLineCount() > 1 && goal.GetGlobalRect().End.X <= scroll.GetGlobalRect().End.X,
+            var goal = ((VBoxContainer)hud.FindChild("objectives", true, false)).GetNode<VBoxContainer>("Content").GetChildren().OfType<HBoxContainer>().Single().GetChildren().OfType<Label>().Single();
+            Require(goal.GetLineCount() > 1 && goal.GetGlobalRect().End.X <= host.GetGlobalRect().End.X,
                 "Long objectives wrap within the narrow and wide native panel, rather than clipping horizontally.");
-            Require(hud.GetNode("forecast").GetIndex() < hud.GetNode("unit").GetIndex(), "Forecast precedes inspected-unit details.");
-            var details = hud.GetNode<VBoxContainer>("unit-details");
+            var unitCard = (Control)hud.FindChild("unit", true, false);
+            var prediction = (Control)hud.FindChild("forecast", true, false);
+            Require(unitCard.GetGlobalRect().Position.Y >= 500 && prediction.GetGlobalRect().End.Y < unitCard.GetGlobalRect().Position.Y,
+                "The acting unit stays in the bottom tray and prediction sits above it.");
+            var hp = unitCard.FindChildren("*", "Label", true, false).OfType<Label>().Single(label => label.Text.StartsWith("生命", StringComparison.Ordinal));
+            var dossierButton = (Button)hud.FindChild("DossierButton", true, false);
+            Require(hp.GetGlobalRect().End.Y + 4 <= dossierButton.GlobalPosition.Y
+                && hp.GetGlobalRect().End.X <= 274,
+                "Current/max HP remains fully visible above the dossier button at both window sizes.");
+            var pair = (HBoxContainer)hud.FindChild("Exchange", true, false);
+            var left = pair.GetChild<Control>(0).GetGlobalRect();
+            var right = pair.GetChild<Control>(1).GetGlobalRect();
+            Require(left.End.X <= right.Position.X && right.End.X <= host.GetGlobalRect().End.X,
+                "Both forecast recipients remain separate and readable without horizontal overflow.");
+            var cancel = ((HBoxContainer)prediction.FindChild("Heading", true, false)).GetChildren().OfType<Button>().Single();
+            Require(cancel.Size.Y < 40 && cancel.GetMeta("hud_key").AsString() == "target/cancel",
+                "Target cancellation retains its semantic key in the compact forecast header.");
+            var detailScroll = (ScrollContainer)hud.FindChild("DetailScroll", true, false);
+            var pinnedPosition = unitCard.GlobalPosition;
+            detailScroll.ScrollVertical = 100;
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Require(unitCard.GlobalPosition == pinnedPosition
+                && !detailScroll.IsAncestorOf(prediction), "Scrolling goals and details never displaces acting-unit or forecast context.");
+            var details = ((VBoxContainer)hud.FindChild("unit-details", true, false));
             var toggle = details.GetChildren().OfType<Button>().Single();
             Require(!details.GetChildren().OfType<VBoxContainer>().Single().Visible, "Secondary details start collapsed.");
             toggle.ButtonPressed = true;
+            ((PopupPanel)hud.FindChild("UnitDossier", true, false)).Popup();
             toggle.GrabFocus();
             hud.Apply(projection);
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-            details = hud.GetNode<VBoxContainer>("unit-details");
+            details = ((VBoxContainer)hud.FindChild("unit-details", true, false));
             Require(details.GetChildren().OfType<VBoxContainer>().Single().Visible
                 && details.GetChildren().OfType<Button>().Single().HasFocus(), "Refresh preserves disclosure state and keyboard focus.");
             details.GetChildren().OfType<Button>().Single().ButtonPressed = false;
+            ((PopupPanel)hud.FindChild("UnitDossier", true, false)).Hide();
+            hud.ShowHint = true;
+            hud.Apply(new(new(1, 1), "尚未行动：选择指令执行，或返回重新规划。", new[]
+            {
+                new TacticalHudSection("commands", "指令", new[]
+                {
+                    new TacticalHudRow("wait", "待机", Intent: new(new(1, 1), TacticalHudIntentKind.Command, "wait")),
+                    new("cancel", "取消 Esc", Intent: new(new(1, 1), TacticalHudIntentKind.Back))
+                })
+            }));
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            var tray = (Control)hud.FindChild("OrderTray", true, false);
+            var hint = (Label)hud.FindChild("SelectionHint", true, false);
+            Require(hint.GetGlobalRect().Position.X >= tray.GetGlobalRect().Position.X + 10
+                && hint.GetGlobalRect().End.X <= tray.GetGlobalRect().End.X - 10
+                && hint.GetGlobalRect().End.Y <= tray.GetGlobalRect().End.Y,
+                "A single command still reserves a complete material-backed instruction and cancel area.");
+            hud.ShowHint = false;
         }
-        RemoveChild(scroll);
-        scroll.Free();
+        RemoveChild(host);
+        host.Free();
     }
 
     public override async void _Ready()
@@ -298,6 +375,7 @@ public partial class TacticalHudChecks : Node
         {
             CheckInspectionOrder();
             CheckObjectiveChecklist();
+            CheckPinnedUnit();
             CheckSiteInspection();
             await CheckSitePointerBoundary();
             await CheckResponsiveLayout();
@@ -306,8 +384,8 @@ public partial class TacticalHudChecks : Node
             AddChild(hud);
             var fired = 0;
             hud.IntentRequested += intent => { Require(intent.Stamp == stamp, "Exact stamp emitted"); fired++; };
-            TacticalHudProjection Projection(bool enabled = true) => new(stamp, "下一步", new[] { new TacticalHudSection("orders", "指令", new[] { new TacticalHudRow("wait", "待命", "原始提示", enabled, Intent: new(stamp, TacticalHudIntentKind.Command, "wait")) }) });
-            Button Button() => hud.GetChildren().OfType<VBoxContainer>().Single().GetChildren().OfType<Button>().Single();
+            TacticalHudProjection Projection(bool enabled = true) => new(stamp, "下一步", new[] { new TacticalHudSection("commands", "指令", new[] { new TacticalHudRow("wait", "待命", "原始提示", enabled, Intent: new(stamp, TacticalHudIntentKind.Command, "wait")) }) });
+            Button Button() => ((GridContainer)hud.FindChild("Orders", true, false)).GetChildren().OfType<Button>().Single();
             hud.Apply(Projection());
             var old = Button();
             Require(old.TooltipText == "原始提示", "Native reason tooltip");
@@ -358,11 +436,11 @@ public partial class TacticalHudChecks : Node
             var explicitDocument = new TacticalHudArtDocument
             {
                 Schema = 2,
-                Portraits = new() { ["c01.mirelle"] = new() { UnitType = "c01.mirelle", PortraitId = "explicit-card" } }
+                Portraits = new() { ["c01.mirelle"] = new() { UnitType = "c01.mirelle", PortraitId = "explicit-card", PortraitRegion = new[] { 330, 40, 500, 500 } } }
             };
             var explicitCatalog = new PortraitCatalog(new Dictionary<string, PortraitAsset> { ["explicit-card"] = portraits.Portraits["mirelle"] });
             var explicitArt = new TacticalHudArt(assets, explicitCatalog, explicitDocument);
-            Require(explicitArt.Portrait(new("c01.mirelle", null, "#224466")).ResourcePath == explicitCatalog.Resolve("explicit-card").ResourcePath,
+            Require(((AtlasTexture)explicitArt.Portrait(new("c01.mirelle", null, "#224466"))).Atlas.ResourcePath == explicitCatalog.Resolve("explicit-card").ResourcePath,
                 "HUD uses the injected shared catalog and explicit ID, not unit-name inference");
             try
             {
@@ -377,20 +455,46 @@ public partial class TacticalHudChecks : Node
                 throw new Exception("Omitted portrait ID silently became frame semantics");
             }
             catch (System.Text.Json.JsonException) { assertions++; }
+            foreach (var region in new int[]?[] { null, new[] { -1, 0, 100, 100 }, new[] { 0, 0, 100, 90 }, new[] { 0, 0, 10000, 10000 } })
+            {
+                var invalid = new TacticalHudArtDocument
+                {
+                    Schema = 2,
+                    Portraits = new() { ["c01.mirelle"] = new() { UnitType = "c01.mirelle", PortraitId = "explicit-card", PortraitRegion = region } }
+                };
+                try
+                {
+                    _ = new TacticalHudArt(assets, explicitCatalog, invalid);
+                    throw new Exception("Invalid named portrait crop was accepted.");
+                }
+                catch (InvalidOperationException error) when (error.Message.Contains("in-bounds square", StringComparison.Ordinal)) { assertions++; }
+            }
+            try
+            {
+                _ = new TacticalHudArt(assets, explicitCatalog, new TacticalHudArtDocument
+                {
+                    Schema = 2,
+                    Portraits = new() { ["c01.swordsman"] = new() { UnitType = "c01.swordsman", PortraitId = null, PortraitRegion = new[] { 0, 0, 20, 20 } } }
+                });
+                throw new Exception("A generic frame accepted a named portrait crop.");
+            }
+            catch (InvalidOperationException error) when (error.Message.Contains("generic idle-frame", StringComparison.Ordinal)) { assertions++; }
             var art = TacticalHudArt.Load(assets, portraits);
             hud.ConfigureArt(art);
-            TextureRect MountedPortrait() => ((PanelContainer)hud.FindChild("InspectedPortrait", true, false)).GetChild<TextureRect>(0);
+            TextureRect MountedPortrait() => (TextureRect)hud.FindChild("InspectedPortrait", true, false);
             foreach (var binding in metadata.Portraits.Values.Where(value => value.PortraitId is not null))
             {
                 var namedPortrait = new TacticalHudPortrait(binding.UnitType, binding.ActorKey, "#224466");
                 var source = ResourceLoader.Load<Texture2D>(portraits.Resolve(binding.PortraitId!).ResourcePath!);
-                var whole = art.Portrait(namedPortrait);
-                Require(whole == source && whole.GetSize() == source.GetSize(),
-                    "Every named portrait uses the complete catalog image without cropping or padding: " + binding.PortraitId);
+                var crop = (AtlasTexture)art.Portrait(namedPortrait);
+                var region = binding.PortraitRegion!;
+                Require(crop.Atlas == source && crop.Region == new Rect2(region[0], region[1], region[2], region[3])
+                    && crop.GetSize() == new Vector2(region[2], region[3]) && art.Portrait(namedPortrait) == crop,
+                    "Every named HUD portrait uses its validated, cached head-and-shoulders crop without changing the narrative source: " + binding.PortraitId);
                 hud.Apply(new(stamp, "", new[] { new TacticalHudSection("unit", "角色", Array.Empty<TacticalHudRow>()) }, namedPortrait));
                 var mountedPortrait = MountedPortrait();
-                Require(mountedPortrait.Texture == source && mountedPortrait.StretchMode == TextureRect.StretchModeEnum.KeepAspectCentered,
-                    "Every named HUD portrait preserves the full image with one aspect-fit policy: " + binding.PortraitId);
+                Require(mountedPortrait.Texture == crop && mountedPortrait.StretchMode == TextureRect.StretchModeEnum.KeepAspectCentered,
+                    "Every named HUD crop preserves square aspect in its medallion: " + binding.PortraitId);
             }
             var named = new TacticalHudPortrait("c01.swordsman", "campaign-torren", "#224466");
             var portrait = art.Portrait(named);
@@ -399,14 +503,14 @@ public partial class TacticalHudChecks : Node
             var unit = assets.ResolveUnit(genericPortrait.UnitType, genericPortrait.ActorKey);
             Require(generic is not null && generic == assets.CreateFrameTexture(unit, AssetCatalog.FrameIndex(unit, "idle")),
                 "An explicit null portrait retains the canonical generic idle-frame atlas.");
-            Require(generic!.Atlas.ResourcePath != portrait.ResourcePath && art.UnitIcon(named) is AtlasTexture,
-                "Generic portraits and unit icons remain sprite frames, distinct from whole named portraits.");
+            Require(generic!.Atlas.ResourcePath != ((AtlasTexture)portrait).Atlas.ResourcePath && art.UnitIcon(named) is AtlasTexture,
+                "Generic portraits and unit icons remain sprite frames, distinct from named head-and-shoulders portraits.");
             hud.Apply(new(stamp, "", new[] { new TacticalHudSection("unit", "角色", Array.Empty<TacticalHudRow>()) }, genericPortrait));
             var oldPortrait = MountedPortrait();
             for (var index = 0; index < 100; index++)
                 hud.Apply(new(stamp, "", new[] { new TacticalHudSection("unit", "角色", Array.Empty<TacticalHudRow>()) }, named));
             Require(oldPortrait.Texture is null && MountedPortrait().Texture == portrait && art.Portrait(named) == portrait,
-                "Repeated projections release old control references and reuse the shared whole-image resource.");
+                "Repeated projections release old control references and reuse the art owner’s cached portrait resource.");
             oldPortrait = MountedPortrait();
             var replacement = TacticalHudArt.Load(assets, portraits);
             hud.ConfigureArt(replacement);
@@ -415,7 +519,7 @@ public partial class TacticalHudChecks : Node
             hud.Apply(new(stamp, "", new[] { new TacticalHudSection("unit", "角色", Array.Empty<TacticalHudRow>()) }, named));
             var lastPortrait = MountedPortrait();
             RemoveChild(hud);
-            Require(lastPortrait.Texture is null && replacement.Portrait(named) == portrait && art.Portrait(genericPortrait) == generic,
+            Require(lastPortrait.Texture is null && ((AtlasTexture)replacement.Portrait(named)).Atlas == ((AtlasTexture)portrait).Atlas && art.Portrait(genericPortrait) == generic,
                 "HUD teardown leaves shared named and generic resources usable by their owners.");
             hud.QueueFree();
             var missing = PresentationJson.Load<TacticalHudArtDocument>("res://data/tactical-hud-art.json");

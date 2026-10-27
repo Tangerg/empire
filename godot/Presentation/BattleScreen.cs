@@ -42,11 +42,9 @@ public partial class BattleScreen : Control
     private long _tacticalBinding;
     private bool _applicationBusy;
     private TacticalHud _hud = null!;
-    private ScrollContainer _hudScroll = null!;
     private long _hudApplyGeneration;
     public bool IsInputBlocked => _presenting || _applicationBusy;
     public TacticalSelection? Selection => _tactical?.Selection;
-    private Label _modeHint = null!;
     private Label _feedback = null!;
     private Label _eventLog = null!;
     private readonly BattleLog _messages = new();
@@ -55,7 +53,8 @@ public partial class BattleScreen : Control
     private HBoxContainer _globalOrders = null!;
     private HBoxContainer _applicationActions = null!;
     private PopupPanel _systemMenu = null!;
-    private PanelContainer _commandPanel = null!;
+    private AcceptDialog _battleLogDialog = null!;
+    private long _toastGeneration;
     private ConfirmationDialog _restartConfirmation = null!;
     private Action? _restart;
     private Action? _restartRequest;
@@ -234,6 +233,11 @@ public partial class BattleScreen : Control
             button.CustomMinimumSize = new Vector2(90, 38);
             _applicationActions.AddChild(button);
         }
+        AddAction(_text.Format("ui.battle.log"), () =>
+        {
+            _battleLogDialog.DialogText = string.Join("\n", _messages.Recent());
+            _battleLogDialog.PopupCentered(new Vector2I(540, 280));
+        });
         if (onSave is not null)
             AddAction(_text.Format("ui.battle.save"), onSave);
         if (onLoad is not null)
@@ -252,7 +256,19 @@ public partial class BattleScreen : Control
     {
         BuildInterface();
         _messages.Add(message);
-        _eventLog.Text = string.Join("\n", _messages.Recent().TakeLast(4));
+        _eventLog.Text = message;
+        _eventLog.Visible = true;
+        var toast = ++_toastGeneration;
+        if (!IsInsideTree())
+        {
+            _eventLog.Visible = false;
+            return;
+        }
+        GetTree().CreateTimer(3).Timeout += () =>
+        {
+            if (GodotObject.IsInstanceValid(this) && IsInsideTree() && toast == _toastGeneration)
+                _eventLog.Visible = false;
+        };
     }
 
     public void ShowFeedback(string message)
@@ -383,19 +399,32 @@ public partial class BattleScreen : Control
         };
         background.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         AddChild(background);
-        var margins = new MarginContainer { Name = "Content" };
-        margins.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        foreach (var edge in new[] { "left", "right", "top", "bottom" })
-            margins.AddThemeConstantOverride($"margin_{edge}", 12);
-        AddChild(margins);
-        var column = new VBoxContainer();
-        column.AddThemeConstantOverride("separation", 12);
-        margins.AddChild(column);
-        var heading = new HBoxContainer();
-        column.AddChild(heading);
-        var title = Text(_text.Format("ui.battle.title"), 20, ChromeHeading);
-        title.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-        heading.AddChild(title);
+        _mapArea = new Control
+        {
+            Name = "MapArea",
+            ClipContents = true,
+            MouseFilter = MouseFilterEnum.Stop
+        };
+        _mapArea.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        AddChild(_mapArea);
+        _world = new Node2D { Name = "World" };
+        _mapArea.AddChild(_world);
+        _world.AddChild(_board);
+        _world.AddChild(_overlay);
+        _mapArea.GuiInput += MapInput;
+        _mapArea.Resized += ResizeCamera;
+        _mapArea.MouseExited += () =>
+        {
+            _pointerMapPosition = null;
+            _gestures?.PointerLeave();
+        };
+        _hud = new TacticalHud { Name = "TacticalHud", ZIndex = 4000 };
+        _hud.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        _hud.IntentRequested += HandleHudIntent;
+        AddChild(_hud);
+        var heading = new HBoxContainer { ZIndex = 4001 };
+        AddChild(heading);
+        OverlayRect(heading, 1, 0, 1, 0, -174, 12, -14, 48);
         var cameraControls = new HBoxContainer { Name = "CameraControls" };
         _zoomOut = Button("−", () => QueueZoom(-.15));
         _zoomIn = Button("+", () => QueueZoom(.15));
@@ -410,6 +439,8 @@ public partial class BattleScreen : Control
         _systemMenu = new PopupPanel { Name = "SystemMenu" };
         _systemMenu.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#202c24", 12));
         AddChild(_systemMenu);
+        _battleLogDialog = new AcceptDialog { Name = "BattleLogDialog", Title = _text.Format("ui.battle.log") };
+        AddChild(_battleLogDialog);
         _applicationActions = new HBoxContainer { Name = "ApplicationActions" };
         _systemMenu.AddChild(_applicationActions);
         var system = Button(_text.Format("ui.battle.system"), () => _systemMenu.PopupCentered());
@@ -435,89 +466,60 @@ public partial class BattleScreen : Control
         };
         _restartConfirmation.Canceled += () => _restartRequest = null;
         AddChild(_restartConfirmation);
-        var body = new HBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
-        body.AddThemeConstantOverride("separation", 12);
-        column.AddChild(body);
-        _mapArea = new Control
-        {
-            Name = "MapArea",
-            SizeFlagsHorizontal = SizeFlags.ExpandFill,
-            SizeFlagsVertical = SizeFlags.ExpandFill,
-            ClipContents = true,
-            MouseFilter = MouseFilterEnum.Stop,
-            TooltipText = _text.Format("ui.battle.camera_hint")
-        };
-        body.AddChild(_mapArea);
-        _world = new Node2D { Name = "World" };
-        _mapArea.AddChild(_world);
-        _world.AddChild(_board);
-        _world.AddChild(_overlay);
-        _mapArea.GuiInput += MapInput;
-        _mapArea.Resized += ResizeCamera;
-        _mapArea.MouseExited += () =>
-        {
-            _pointerMapPosition = null;
-            _gestures?.PointerLeave();
-        };
-
-        var panel = new PanelContainer { Name = "CommandPanel", CustomMinimumSize = new Vector2(340, 0) };
-        _commandPanel = panel;
-        panel.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#202a23", 14));
-        body.AddChild(panel);
-        var side = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        side.AddThemeConstantOverride("separation", 10);
-        panel.AddChild(side);
         Resized += ResizeHud;
-
-        var scroll = new ScrollContainer
-        {
-            Name = "CommandScroll",
-            SizeFlagsVertical = SizeFlags.ExpandFill,
-            CustomMinimumSize = new Vector2(0, 60),
-            HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled
-        };
-        _hudScroll = scroll;
-        side.AddChild(scroll);
-        _hud = new TacticalHud { Name = "TacticalHud", ShowHint = false, SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        _hud.IntentRequested += HandleHudIntent;
-        scroll.AddChild(_hud);
-        _modeHint = Wrapped("");
-        _modeHint.Visible = true;
-        _modeHint.AddThemeFontSizeOverride("font_size", 14);
-        _modeHint.AddThemeColorOverride("font_color", TacticalHudStyle.Gold);
-        side.AddChild(_modeHint);
-        _globalOrders = new HBoxContainer();
-        side.AddChild(_globalOrders);
+        _globalOrders = new HBoxContainer { ZIndex = 4001 };
+        AddChild(_globalOrders);
+        OverlayRect(_globalOrders, 1, 1, 1, 1, -184, -84, -26, -30);
         _feedback = Wrapped(_text.Format("ui.battle.not_connected"));
         _feedback.MaxLinesVisible = 2;
         _feedback.AddThemeColorOverride("font_color", new Color("#dfad94"));
-        side.AddChild(_feedback);
+        _feedback.ZIndex = 4001;
+        _feedback.MouseFilter = MouseFilterEnum.Ignore;
+        AddChild(_feedback);
+        OverlayRect(_feedback, .5f, 1, .5f, 1, -240, -320, 240, -280);
         _eventLog = Wrapped("");
         _eventLog.Name = "BattleEventLog";
         _eventLog.AddThemeFontSizeOverride("font_size", 14);
-        _eventLog.MaxLinesVisible = 3;
+        _eventLog.MaxLinesVisible = 2;
         _eventLog.AddThemeColorOverride("font_color", TacticalHudStyle.Muted);
-        side.AddChild(_eventLog);
+        _eventLog.ZIndex = 4001;
+        _eventLog.MouseFilter = MouseFilterEnum.Ignore;
+        _eventLog.AddThemeColorOverride("font_shadow_color", new Color("#15130c"));
+        _eventLog.AddThemeConstantOverride("shadow_outline_size", 2);
+        AddChild(_eventLog);
+        OverlayRect(_eventLog, 0, 0, 0, 0, 28, 104, 324, 148);
         _coverage = Wrapped("");
         _coverage.AddThemeFontSizeOverride("font_size", 12);
         _coverage.AddThemeColorOverride("font_color", new Color("#ada69d"));
         _coverage.Visible = false;
-        column.AddChild(_coverage);
+        AddChild(_coverage);
         ResizeHud();
+    }
+
+    private static void OverlayRect(Control control, float left, float top, float right, float bottom, float x1, float y1, float x2, float y2)
+    {
+        control.AnchorLeft = left;
+        control.AnchorTop = top;
+        control.AnchorRight = right;
+        control.AnchorBottom = bottom;
+        control.OffsetLeft = x1;
+        control.OffsetTop = y1;
+        control.OffsetRight = x2;
+        control.OffsetBottom = y2;
     }
 
     private void ResizeHud()
     {
-        if (_commandPanel is not null)
-            _commandPanel.CustomMinimumSize = new Vector2(Math.Clamp(Size.X * .29f, 300, 390), 0);
+        if (_hud is not null)
+            _hud.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
     }
 
     private void ResizeCamera()
     {
         if (!_built || _camera is null)
             return;
-        // MapArea already excludes the native HUD. Reserving the source overlay bands again would double-pad it.
-        _camera.Resize(new(_mapArea.Size.X, _mapArea.Size.Y));
+        // The world uses the full native viewport; HUD controls intercept only their painted surfaces.
+        _camera.Resize(new(_mapArea.Size.X, _mapArea.Size.Y), new(16, 110, 16, 134));
         ApplyCamera();
     }
 

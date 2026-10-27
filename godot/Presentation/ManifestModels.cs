@@ -79,6 +79,15 @@ public sealed class AssetRecord
     {
         get; init;
     }
+    public string TextureFilter { get; init; } = "nearest";
+    public int[][]? FrameRegions
+    {
+        get; init;
+    }
+    public double[][]? FrameAnchors
+    {
+        get; init;
+    }
     public double[]? GroundFront
     {
         get; init;

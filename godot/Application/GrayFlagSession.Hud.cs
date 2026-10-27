@@ -30,7 +30,8 @@ public sealed partial class GrayFlagSession
         var selected = selection.UnitId is { } selectedId && visible.Contains(selectedId) ? TacticalQueries.UnitById(state, selectedId) : null;
         var commandable = human && selected is not null && engine.Turns.MayAct(state, selected) ? selected : null;
         var formations = commandable is null ? [] : engine.Progression.Formations.Options(state, commandable);
-        var inspect = inspectId is { } iid && visible.Contains(iid) ? TacticalQueries.UnitById(state, iid) : null;
+        // A pending order keeps its acting unit pinned; the forecast owns target inspection.
+        var inspect = selected ?? (inspectId is { } iid && visible.Contains(iid) ? TacticalQueries.UnitById(state, iid) : null);
         void Section(string key, string title, IEnumerable<TacticalHudRow> rows)
         {
             var values = rows.ToArray();
@@ -172,9 +173,13 @@ public sealed partial class GrayFlagSession
                 text.Format("ui.hud.tactics"),
                 state["commanders"]!.AsArray().OfType<JsonObject>().SelectMany(commander => engine.Support.Tactics(state,
                     S(commander, "id")).Select(tactic => Pick($"{S(commander, "id")}:{tactic.Id}",
-                        $"{contentText.Name(ContentTextKind.Tactic, tactic.Id)} · {Costs(tactic.Costs)}",
+                        contentText.Name(ContentTextKind.Tactic, tactic.Id),
                         TacticalHudIntentKind.Tactic,
-                        $"{S(commander, "id")}:{tactic.Id}"))));
+                        $"{S(commander, "id")}:{tactic.Id}",
+                        hint: Costs(tactic.Costs)) with
+                    {
+                        Icon = "ability:" + tactic.Id
+                    })));
         if (selection.Kind == TacticalSelectionKind.Target && selected is not null
             && selection.Weapon is { } weapon && cursorHit is { } targetHit
             && (targetHit.Kind != TacticalHitKind.Unit || cursorUnit is not null)
@@ -203,7 +208,11 @@ public sealed partial class GrayFlagSession
                 if (plan.PrimaryUnit is { } exchange)
                 {
                     var recipient = TacticalQueries.UnitById(state, exchange.DamageRecipient) ?? defender;
-                    var rows = new List<TacticalHudRow> { new("exchange", $"{Name(selected)} → {Name(defender)}") };
+                    var rows = new List<TacticalHudRow>
+                    {
+                        new("attacker", Name(selected), UnitIcon: UnitIcon(selected)),
+                        new("recipient", Name(recipient), UnitIcon: UnitIcon(recipient))
+                    };
                     if (exchange.Interceptor is not null)
                         rows.Add(new("interceptor", text.Format("ui.hud.interception", Name(recipient))));
                     else if (exchange.Reaction is { } reaction)
@@ -339,9 +348,10 @@ public sealed partial class GrayFlagSession
                 : selected is null || N(selected, "id") != N(inspect, "id") ? "ui.hud.unit_inspected"
                 : selection.Kind is TacticalSelectionKind.Destination or TacticalSelectionKind.Target ? "ui.hud.unit_preview"
                 : "ui.hud.unit_selected";
-            rows.Insert(0, new("selection", text.Format(inspectionState), Selected: selected is not null && N(selected, "id") == N(inspect, "id")));
-            Section("unit", Name(inspect), rows.Where(row => row.Key is "owner" or "hp" or "selection"));
-            Section("unit-details", text.Format("ui.hud.unit_details"), rows.Where(row => row.Key is not ("owner" or "hp" or "done" or "selection")));
+            rows.Insert(0, new("selection", text.Format(inspectionState == "ui.hud.unit_preview" ? "ui.hud.unit_preview_short" : inspectionState),
+                Hint: text.Format(inspectionState), Selected: selected is not null && N(selected, "id") == N(inspect, "id")));
+            Section("unit", Name(inspect), rows.Where(row => row.Key is "hp" or "selection"));
+            Section("unit-details", text.Format("ui.hud.unit_details"), rows.Where(row => row.Key is not ("hp" or "done" or "selection")));
             if (commandable is not null && N(commandable, "id") == N(inspect, "id"))
             {
                 var id = N(commandable, "id");

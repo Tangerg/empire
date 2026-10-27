@@ -117,6 +117,7 @@ public partial class PresentationChecks : Node
     private void Check()
     {
         CheckDepthBands();
+        ActorFrameRegionChecks.Run();
         var assets = AssetCatalog.Load();
         var generic = assets.ResolveUnit("c01.swordsman");
         var torren = assets.ResolveUnit("c01.swordsman", "campaign-torren");
@@ -132,14 +133,13 @@ public partial class PresentationChecks : Node
         {
             var frame = unitSprite.Texture as AtlasTexture
                 ?? throw new InvalidOperationException("Sprite must use a native AtlasTexture.");
-            Require(frame.Region.Size.IsEqualApprox(new Vector2(
-                torren.FrameWidth * torren.PixelDensity, torren.FrameHeight * torren.PixelDensity)),
+            Require(frame.Region.Size.IsEqualApprox(torren.RegionAt(0).Size),
                 "Atlas frame must be measured in physical pixels.");
             Require((unitSprite.Offset * unitSprite.Scale).IsEqualApprox(-torren.Anchor * torren.PresentationScale),
                 "Logical anchor must be preserved through density scaling.");
             Require(unitSprite.Modulate == Colors.White, "Actor pixels must not receive a team recolor.");
             Require((unitSprite.Texture.GetSize() * unitSprite.Scale).IsEqualApprox(
-                new Vector2(torren.FrameWidth, torren.FrameHeight) * torren.PresentationScale),
+                torren.RegionAt(0).Size / torren.PixelDensity * torren.PresentationScale),
                 "Density must not double the visual canvas.");
         }
         finally { unitSprite.Free(); }
@@ -147,7 +147,7 @@ public partial class PresentationChecks : Node
             && AssetCatalog.FrameIndex(torren, "attack") == 2,
             "Animation roles must use declared ordering.");
         var attack = assets.CreateFrameTexture(torren, AssetCatalog.FrameIndex(torren, "attack"));
-        Require(Mathf.IsEqualApprox(attack.Region.Position.X, 2 * torren.FrameWidth * torren.PixelDensity),
+        Require(attack.Region == torren.RegionAt(AssetCatalog.FrameIndex(torren, "attack")),
             "Attack frame must crop the correct atlas region.");
         Throws<InvalidOperationException>(() => AssetCatalog.FrameIndex(torren, "nonexistent"),
             "Undeclared animation role must not fall back to idle.");

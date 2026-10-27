@@ -418,7 +418,7 @@ public partial class BoardView
     private static void Face(Sprite2D sprite, bool left) => sprite.Scale = new Vector2(Mathf.Abs(sprite.Scale.X) * (left ? -1 : 1), sprite.Scale.Y);
     private void SetFrame(Sprite2D sprite, RuntimeAsset asset, int index)
     {
-        sprite.Texture = _assets!.CreateFrameTexture(asset, index);
+        _assets!.ApplyFrame(sprite, asset, index);
         sprite.GetNodeOrNull<SpriteShadows>("SourceSpriteShadows")?.Synchronize(sprite, ShadowKind.Figure, asset.PixelDensity);
         sprite.SetMeta("frame", index);
     }

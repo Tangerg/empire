@@ -43,17 +43,12 @@ public partial class BattleScreen
             return;
         var stamp = _tactical.Stamp;
         _tactical.SetBusy(IsInputBlocked);
-        var scroll = _hudScroll.ScrollVertical;
         var applyGeneration = ++_hudApplyGeneration;
         var projection = _session.ProjectHud(stamp, _tactical.Selection, _tactical.CursorHit, _tactical.InspectId, IsInputBlocked);
         _hud.Apply(projection);
-        _modeHint.Text = projection.Hint;
-        Callable.From(() =>
-        {
-            if (applyGeneration == _hudApplyGeneration && Current(stamp, true))
-                _hudScroll.ScrollVertical = scroll;
-        }).CallDeferred();
-        _overlay.ShowTactical(_tactical.Overlay());
+        var overlay = _tactical.Overlay();
+        _overlay.ShowTactical(overlay);
+        _board.ShowTacticalEmphasis(overlay);
         var focusedGlobal = GetViewport().GuiGetFocusOwner();
         var globalFocusName = focusedGlobal is Button && _globalOrders.IsAncestorOf(focusedGlobal)
             ? focusedGlobal.Name.ToString() : null;
@@ -69,8 +64,12 @@ public partial class BattleScreen
             });
             button.Name = name;
             button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+            button.AutowrapMode = TextServer.AutowrapMode.Off;
+            button.AddThemeFontSizeOverride("font_size", 14);
+            button.CustomMinimumSize = new Vector2(name == "EndTurn" ? 100 : 48, 50);
+            button.SizeFlagsHorizontal = SizeFlags.ShrinkCenter;
             if (name == "EndTurn")
-                button.AddThemeStyleboxOverride("normal", TacticalHudStyle.Panel("#48513a", 9, "#a99c69"));
+                TacticalHudStyle.OrderBadge(button, prominent: true);
             button.Disabled = !enabled || IsInputBlocked;
             _globalOrders.AddChild(button);
             if (globalFocusName == name && !button.Disabled)

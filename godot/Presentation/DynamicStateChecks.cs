@@ -106,6 +106,7 @@ public partial class DynamicStateChecks : Node
             {
                 CheckMarkers(board, state);
                 CheckBadges(board, state);
+                CheckTacticalEmphasis(board, state, engine);
                 CheckMapOwnership(board, state, assets);
                 Require(board.RenderedAuthoredPlacementCount == scene.Placements.Count + scene.FramePlacements.Count,
                     "Marker updates must not duplicate or delete authored shelter and civilian decoration");
@@ -287,6 +288,46 @@ public partial class DynamicStateChecks : Node
         Require(state.ToJsonString() == before, "Badge projection must not advance unit or capture state");
         Require(badges.GetNode<Node2D>("FacingPip").GetMeta("direction").AsVector2() == board.Projection.FacingVector("south"),
             "Facing pip must project the injected canonical grid vector through the shared board plane");
+    }
+
+    private void CheckTacticalEmphasis(BoardView board, JsonObject source, BattleEngine engine)
+    {
+        var state = (JsonObject)source.DeepClone();
+        var unit = state["units"]![0]!.AsObject();
+        var id = unit["id"]!.GetValue<int>();
+        var cell = new BoardCell(unit["x"]!.GetValue<int>(), unit["y"]!.GetValue<int>());
+        var otherUnit = state["units"]!.AsArray().OfType<JsonObject>().First(other => other["id"]!.GetValue<int>() != id);
+        var otherCell = new BoardCell(otherUnit["x"]!.GetValue<int>(), otherUnit["y"]!.GetValue<int>());
+        var maximum = engine.Catalog.Definition("units", unit["type"]!.GetValue<string>())!.Value.GetProperty("maxHp").GetDouble();
+        TacticalSelectionOverlay Overlay(BoardCell? selected = null, BoardCell? cursor = null) =>
+            new(selected, cursor, [], [], [], [], [], null, []);
+        var sourceBefore = source.ToJsonString();
+        foreach (var hp in new[] { (int)maximum, (int)maximum - 1, (int)(maximum * .3) + 1, (int)(maximum * .3), 1 })
+        {
+            unit["hp"] = hp;
+            var ratio = hp / maximum;
+            var before = state.ToJsonString();
+            board.RenderState(state);
+            var badges = board.GetNode<Node2D>($"CanonicalProjection/Unit_{id}/Badges");
+            var facing = badges.GetNode<CanvasItem>("FacingPip");
+            var health = badges.GetNodeOrNull<CanvasItem>("HealthGauge");
+            Require((health is not null) == (ratio < 1), "Full-health units must not acquire an invented health gauge when focused.");
+            foreach (var focus in new[] { Overlay(), Overlay(selected: cell), Overlay(cursor: cell), Overlay(selected: otherCell, cursor: otherCell), Overlay(), Overlay(cursor: cell), Overlay() })
+            {
+                board.ShowTacticalEmphasis(focus);
+                var focused = focus.Selected == cell || focus.Cursor == cell;
+                Require(facing.Visible == focused, $"Facing follows selected/cursor emphasis and clears on dismissal (HP ratio {ratio}).");
+                if (health is not null)
+                    Require(health.Visible == (focused || ratio <= .3), $"Only critical HP stays visible without focus, across the nearest legal integer HP values around 30% ({ratio}).");
+                Require(badges.GetNode<CanvasItem>("DoneIndicator").Visible,
+                    "Selection changes must not conceal the already-acted indicator.");
+                Require(badges.GetNode<CanvasItem>("CaptureGauge").Visible,
+                    "Selection changes must not conceal canonical capture progress.");
+                Require(state.ToJsonString() == before, "Repeated emphasis changes must not mutate supplied battle JSON.");
+            }
+        }
+        Require(source.ToJsonString() == sourceBefore, "Emphasis fixture must not mutate the caller's campaign state.");
+        board.RenderState(source);
     }
 
     private void CheckMapOwnership(BoardView board, JsonObject state, AssetCatalog assets)

@@ -7,13 +7,9 @@
       "topicId": "C01-UNIT-ARCHER",
       "label": "弓箭手",
       "category": "combat-unit",
-      "png": "runtime-approved-v5/combat-unit/unit-archer@2x.png",
-      "width": 416,
-      "height": 64,
+      "png": "painted-units-v1/unit-archer.png",
       "runtimeReady": true,
-      "qualityTier": "approved-chunky-v5-export-verified",
-      "frameWidth": 104,
-      "frameHeight": 64,
+      "qualityTier": "painted-v1-native-reviewed",
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -21,25 +17,62 @@
         "attack",
         "walk-b"
       ],
-      "anchor": [
-        52.38987341772152,
-        54.68354430379747
-      ],
       "footprint": [
         1,
         1
       ],
       "preserveAuthoredPalette": true,
-      "physicalWidth": 832,
-      "physicalHeight": 128,
-      "pixelDensity": 2,
-      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-archer@2x.png",
-      "sha256": "8ccebc08eeffa4087b22b9ec1261173e70a60a048a4ea39bdabe18b5f5d2d867",
-      "presentationScale": 0.62,
-      "groundFront": [
-        52.38987341772152,
-        54.68354430379747
-      ]
+      "physicalWidth": 2172,
+      "physicalHeight": 724,
+      "pixelDensity": 1,
+      "resourcePath": "res://assets/painted-units-v1/unit-archer.png",
+      "sha256": "1255a6f852339ffc0f27d760fef1d9654bfef23fdabb675b3aa047940b67d0fc",
+      "presentationScale": 0.0843373,
+      "frameRegions": [
+        [
+          0,
+          0,
+          545,
+          724
+        ],
+        [
+          545,
+          0,
+          545,
+          724
+        ],
+        [
+          1090,
+          0,
+          630,
+          724
+        ],
+        [
+          1720,
+          0,
+          452,
+          724
+        ]
+      ],
+      "frameAnchors": [
+        [
+          251,
+          555
+        ],
+        [
+          258,
+          551
+        ],
+        [
+          270,
+          566
+        ],
+        [
+          249,
+          552
+        ]
+      ],
+      "textureFilter": "linear"
     },
     {
       "assetId": "C01-FFV1-UNIT-BALLISTA",
@@ -85,13 +118,9 @@
       "topicId": "C01-UNIT-BANNER-GUARD",
       "label": "旗卫",
       "category": "combat-unit",
-      "png": "runtime-approved-v5/combat-unit/unit-banner-guard@2x.png",
-      "width": 416,
-      "height": 64,
+      "png": "painted-units-v1/unit-banner-guard.png",
       "runtimeReady": true,
-      "qualityTier": "approved-chunky-v5-export-verified",
-      "frameWidth": 104,
-      "frameHeight": 64,
+      "qualityTier": "painted-v1-native-reviewed",
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -99,38 +128,71 @@
         "attack",
         "walk-b"
       ],
-      "anchor": [
-        49.09179926560588,
-        56.83231334149327
-      ],
       "footprint": [
         1,
         1
       ],
       "preserveAuthoredPalette": true,
-      "physicalWidth": 832,
-      "physicalHeight": 128,
-      "pixelDensity": 2,
-      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-banner-guard@2x.png",
-      "sha256": "0bc3c803872b9cc415a20ef4c2b1d4eacd4de4a5472ac2cc1fb6f638e1ace40a",
-      "presentationScale": 0.62,
-      "groundFront": [
-        49.09179926560588,
-        56.83231334149327
-      ]
+      "physicalWidth": 2170,
+      "physicalHeight": 725,
+      "pixelDensity": 1,
+      "resourcePath": "res://assets/painted-units-v1/unit-banner-guard.png",
+      "sha256": "e37a1318b8592ce3463dfb64b869dc04a49e623936e82caf3b653cb2ece65589",
+      "presentationScale": 0.1014493,
+      "frameRegions": [
+        [
+          0,
+          0,
+          575,
+          725
+        ],
+        [
+          575,
+          0,
+          525,
+          725
+        ],
+        [
+          1100,
+          0,
+          595,
+          725
+        ],
+        [
+          1695,
+          0,
+          475,
+          725
+        ]
+      ],
+      "frameAnchors": [
+        [
+          250,
+          562
+        ],
+        [
+          245,
+          564
+        ],
+        [
+          240,
+          555
+        ],
+        [
+          239,
+          565
+        ]
+      ],
+      "textureFilter": "linear"
     },
     {
       "assetId": "C01-FFV1-UNIT-BATTLE-MAGE",
       "topicId": "C01-UNIT-BATTLE-MAGE",
       "label": "战斗法师",
       "category": "combat-unit",
-      "png": "runtime-approved-v5/combat-unit/unit-battle-mage@2x.png",
-      "width": 416,
-      "height": 64,
+      "png": "painted-units-v1/unit-battle-mage.png",
       "runtimeReady": true,
-      "qualityTier": "approved-chunky-v5-export-verified",
-      "frameWidth": 104,
-      "frameHeight": 64,
+      "qualityTier": "painted-v1-native-reviewed",
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -138,25 +200,62 @@
         "attack",
         "walk-b"
       ],
-      "anchor": [
-        46.18589025755879,
-        50.9070548712206
-      ],
       "footprint": [
         1,
         1
       ],
       "preserveAuthoredPalette": true,
-      "physicalWidth": 832,
-      "physicalHeight": 128,
-      "pixelDensity": 2,
-      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-battle-mage@2x.png",
-      "sha256": "a0baa90bf2fba5804b282d8f7561f36ff9e99ea66cdbd87022e0837569aa6778",
-      "presentationScale": 0.62,
-      "groundFront": [
-        46.18589025755879,
-        50.9070548712206
-      ]
+      "physicalWidth": 2170,
+      "physicalHeight": 725,
+      "pixelDensity": 1,
+      "resourcePath": "res://assets/painted-units-v1/unit-battle-mage.png",
+      "sha256": "ba9307721b6b9f880a52bec3a8409bf6323cc4bed14114203ff2dcf5c56e864d",
+      "presentationScale": 0.0888325,
+      "frameRegions": [
+        [
+          0,
+          0,
+          530,
+          725
+        ],
+        [
+          530,
+          0,
+          502,
+          725
+        ],
+        [
+          1032,
+          0,
+          676,
+          725
+        ],
+        [
+          1708,
+          0,
+          462,
+          725
+        ]
+      ],
+      "frameAnchors": [
+        [
+          270,
+          555
+        ],
+        [
+          295,
+          557
+        ],
+        [
+          258,
+          549
+        ],
+        [
+          232,
+          558
+        ]
+      ],
+      "textureFilter": "linear"
     },
     {
       "assetId": "C01-FFV1-UNIT-CEMETERY-COLOSSUS",
@@ -241,13 +340,9 @@
       "topicId": "C01-UNIT-ENGINEER",
       "label": "工程师",
       "category": "combat-unit",
-      "png": "runtime-approved-v5/combat-unit/unit-engineer@2x.png",
-      "width": 416,
-      "height": 64,
+      "png": "painted-units-v1/unit-engineer.png",
       "runtimeReady": true,
-      "qualityTier": "approved-chunky-v5-export-verified",
-      "frameWidth": 104,
-      "frameHeight": 64,
+      "qualityTier": "painted-v1-native-reviewed",
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -255,25 +350,62 @@
         "attack",
         "walk-b"
       ],
-      "anchor": [
-        47.38360655737705,
-        50.35628415300547
-      ],
       "footprint": [
         1,
         1
       ],
       "preserveAuthoredPalette": true,
-      "physicalWidth": 832,
-      "physicalHeight": 128,
-      "pixelDensity": 2,
-      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-engineer@2x.png",
-      "sha256": "2c30680ecc832843b39fab73d84e5606d80a235d1a4b849295ef1a2a26a2e999",
-      "presentationScale": 0.62,
-      "groundFront": [
-        47.38360655737705,
-        50.35628415300547
-      ]
+      "physicalWidth": 2169,
+      "physicalHeight": 725,
+      "pixelDensity": 1,
+      "resourcePath": "res://assets/painted-units-v1/unit-engineer.png",
+      "sha256": "11195b187aca7255b71d57ea654d4cdd23de00dc0cfb3f2c7763db779a9dea90",
+      "presentationScale": 0.0886076,
+      "frameRegions": [
+        [
+          0,
+          0,
+          575,
+          725
+        ],
+        [
+          575,
+          0,
+          520,
+          725
+        ],
+        [
+          1095,
+          0,
+          620,
+          725
+        ],
+        [
+          1715,
+          0,
+          454,
+          725
+        ]
+      ],
+      "frameAnchors": [
+        [
+          288,
+          550
+        ],
+        [
+          259,
+          556
+        ],
+        [
+          255,
+          552
+        ],
+        [
+          227,
+          559
+        ]
+      ],
+      "textureFilter": "linear"
     },
     {
       "assetId": "C01-FFV1-UNIT-GHOST",
@@ -319,13 +451,9 @@
       "topicId": "C01-UNIT-GRAVEKEEPER",
       "label": "守墓人",
       "category": "combat-unit",
-      "png": "runtime-approved-v5/combat-unit/unit-gravekeeper@2x.png",
-      "width": 416,
-      "height": 64,
+      "png": "painted-units-v1/unit-gravekeeper.png",
       "runtimeReady": true,
-      "qualityTier": "approved-chunky-v5-export-verified",
-      "frameWidth": 104,
-      "frameHeight": 64,
+      "qualityTier": "painted-v1-native-reviewed",
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -333,25 +461,62 @@
         "attack",
         "walk-b"
       ],
-      "anchor": [
-        48.81159420289855,
-        52.02229654403567
-      ],
       "footprint": [
         1,
         1
       ],
       "preserveAuthoredPalette": true,
-      "physicalWidth": 832,
-      "physicalHeight": 128,
-      "pixelDensity": 2,
-      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-gravekeeper@2x.png",
-      "sha256": "d9c2e0af04b8bee2440bebc21f8c69b38cd9d47843f35db74a12ca086ccafa86",
-      "presentationScale": 0.62,
-      "groundFront": [
-        48.81159420289855,
-        52.02229654403567
-      ]
+      "physicalWidth": 2170,
+      "physicalHeight": 725,
+      "pixelDensity": 1,
+      "resourcePath": "res://assets/painted-units-v1/unit-gravekeeper.png",
+      "sha256": "03f61b41a882baf14153da6fb32755e576cc738dfd7d3bad32af6f5d09dd06cd",
+      "presentationScale": 0.0921053,
+      "frameRegions": [
+        [
+          0,
+          0,
+          555,
+          725
+        ],
+        [
+          555,
+          0,
+          530,
+          725
+        ],
+        [
+          1085,
+          0,
+          595,
+          725
+        ],
+        [
+          1680,
+          0,
+          490,
+          725
+        ]
+      ],
+      "frameAnchors": [
+        [
+          298,
+          549
+        ],
+        [
+          299,
+          552
+        ],
+        [
+          295,
+          551
+        ],
+        [
+          300,
+          551
+        ]
+      ],
+      "textureFilter": "linear"
     },
     {
       "assetId": "C01-FFV1-UNIT-HEAVY-KNIGHT",
@@ -514,13 +679,9 @@
       "topicId": "C01-UNIT-LEGION-SHIELD",
       "label": "军团盾卫",
       "category": "combat-unit",
-      "png": "runtime-approved-v5/combat-unit/unit-legion-shield@2x.png",
-      "width": 416,
-      "height": 64,
+      "png": "painted-units-v1/unit-legion-shield.png",
       "runtimeReady": true,
-      "qualityTier": "approved-chunky-v5-export-verified",
-      "frameWidth": 104,
-      "frameHeight": 64,
+      "qualityTier": "painted-v1-native-reviewed",
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -528,25 +689,62 @@
         "attack",
         "walk-b"
       ],
-      "anchor": [
-        45.44474986256184,
-        50.975261132490374
-      ],
       "footprint": [
         1,
         1
       ],
       "preserveAuthoredPalette": true,
-      "physicalWidth": 832,
-      "physicalHeight": 128,
-      "pixelDensity": 2,
-      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-legion-shield@2x.png",
-      "sha256": "9b6aa970d75115f18c90da743222e2e2c12d62b07a4833cdd86a1582afd17a76",
-      "presentationScale": 0.62,
-      "groundFront": [
-        45.44474986256184,
-        50.975261132490374
-      ]
+      "physicalWidth": 2172,
+      "physicalHeight": 724,
+      "pixelDensity": 1,
+      "resourcePath": "res://assets/painted-units-v1/unit-legion-shield.png",
+      "sha256": "ef47679f0f500846e1bf346cbdbf4ea431243c73a2844a8b431b3beeb12cd3a5",
+      "presentationScale": 0.1041667,
+      "frameRegions": [
+        [
+          0,
+          0,
+          528,
+          724
+        ],
+        [
+          528,
+          0,
+          526,
+          724
+        ],
+        [
+          1054,
+          0,
+          628,
+          724
+        ],
+        [
+          1682,
+          0,
+          490,
+          724
+        ]
+      ],
+      "frameAnchors": [
+        [
+          260,
+          549
+        ],
+        [
+          292,
+          566
+        ],
+        [
+          246,
+          552
+        ],
+        [
+          218,
+          564
+        ]
+      ],
+      "textureFilter": "linear"
     },
     {
       "assetId": "C01-FFV1-UNIT-RANGER",
@@ -787,13 +985,9 @@
       "topicId": "C01-UNIT-SWORDSMAN",
       "label": "剑士",
       "category": "combat-unit",
-      "png": "runtime-approved-v5/combat-unit/unit-swordsman@2x.png",
-      "width": 384,
-      "height": 64,
+      "png": "painted-units-v1/unit-swordsman.png",
       "runtimeReady": true,
-      "qualityTier": "approved-chunky-v5-export-verified",
-      "frameWidth": 96,
-      "frameHeight": 64,
+      "qualityTier": "painted-v1-native-reviewed",
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -801,25 +995,62 @@
         "attack",
         "walk-b"
       ],
-      "anchor": [
-        48.44444444444444,
-        53.27777777777778
-      ],
       "footprint": [
         1,
         1
       ],
       "preserveAuthoredPalette": true,
-      "physicalWidth": 768,
-      "physicalHeight": 128,
-      "pixelDensity": 2,
-      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-swordsman@2x.png",
-      "sha256": "cdfd851f2c7f81e2e4564c3af43cc9ec3a1c8229105402c4814dfd20c5c8fe0a",
-      "presentationScale": 0.62,
-      "groundFront": [
-        48.44444444444444,
-        53.27777777777778
-      ]
+      "physicalWidth": 2170,
+      "physicalHeight": 725,
+      "pixelDensity": 1,
+      "resourcePath": "res://assets/painted-units-v1/unit-swordsman.png",
+      "sha256": "65e9308a97d1fd8b0f5d9b7582e6d97175ffed21564ad97d58d17110852652a1",
+      "presentationScale": 0.0897436,
+      "frameRegions": [
+        [
+          0,
+          0,
+          550,
+          725
+        ],
+        [
+          550,
+          0,
+          520,
+          725
+        ],
+        [
+          1070,
+          0,
+          645,
+          725
+        ],
+        [
+          1715,
+          0,
+          455,
+          725
+        ]
+      ],
+      "frameAnchors": [
+        [
+          252,
+          550
+        ],
+        [
+          255,
+          550
+        ],
+        [
+          262,
+          551
+        ],
+        [
+          205,
+          552
+        ]
+      ],
+      "textureFilter": "linear"
     },
     {
       "assetId": "C01-FFV1-UNIT-TEMPLAR",
@@ -865,13 +1096,9 @@
       "topicId": "C01-UNIT-WOLF-RIDER",
       "label": "狼骑兵",
       "category": "combat-unit",
-      "png": "runtime-approved-v5/combat-unit/unit-wolf-rider@2x.png",
-      "width": 512,
-      "height": 80,
+      "png": "painted-units-v1/unit-wolf-rider.png",
       "runtimeReady": true,
-      "qualityTier": "approved-chunky-v5-export-verified",
-      "frameWidth": 128,
-      "frameHeight": 80,
+      "qualityTier": "painted-v1-native-reviewed",
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -879,25 +1106,62 @@
         "attack",
         "walk-b"
       ],
-      "anchor": [
-        61.549420209828824,
-        61.70403092214246
-      ],
       "footprint": [
         1,
         1
       ],
       "preserveAuthoredPalette": true,
-      "physicalWidth": 1024,
-      "physicalHeight": 160,
-      "pixelDensity": 2,
-      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-wolf-rider@2x.png",
-      "sha256": "e801d786e50d20cd4c734070f57a8d88c405c7a9a6ac379cc9d4c37970428682",
-      "presentationScale": 0.62,
-      "groundFront": [
-        61.549420209828824,
-        61.70403092214246
-      ]
+      "physicalWidth": 2172,
+      "physicalHeight": 724,
+      "pixelDensity": 1,
+      "resourcePath": "res://assets/painted-units-v1/unit-wolf-rider.png",
+      "sha256": "0c230444fc60b7c451dba7ee159deb17bbf512514ed99bcb250d6c9600023d30",
+      "presentationScale": 0.1,
+      "frameRegions": [
+        [
+          0,
+          0,
+          511,
+          724
+        ],
+        [
+          511,
+          0,
+          545,
+          724
+        ],
+        [
+          1056,
+          0,
+          619,
+          724
+        ],
+        [
+          1675,
+          0,
+          497,
+          724
+        ]
+      ],
+      "frameAnchors": [
+        [
+          285,
+          568
+        ],
+        [
+          339,
+          568
+        ],
+        [
+          354,
+          569
+        ],
+        [
+          305,
+          565
+        ]
+      ],
+      "textureFilter": "linear"
     },
     {
       "assetId": "C01-FFV1-UNIT-WOODLAND-WALKER",
@@ -1450,24 +1714,25 @@
       "topicId": "C01-BPROP-AFTERMATH-2",
       "label": "弃械堆",
       "category": "battle-prop",
-      "png": "runtime-hd/battle-prop/bprop-aftermath-2.png",
-      "width": 64,
-      "height": 64,
+      "png": "painted-units-v1/aftermath-equipment.png",
+      "width": 1774,
+      "height": 887,
       "runtimeReady": true,
-      "qualityTier": "approved-chunky-v5-export-verified",
+      "qualityTier": "painted-v1-native-reviewed",
       "anchor": [
-        32,
-        32
+        887.0,
+        443.5
       ],
-      "physicalWidth": 128,
-      "physicalHeight": 128,
-      "pixelDensity": 2,
-      "resourcePath": "res://assets/runtime-hd/battle-prop/bprop-aftermath-2.png",
-      "sha256": "30d5c5474231bc97f75ecf8973e3c8316999ca00cf844961f1674651fc6c1be2",
+      "physicalWidth": 1774,
+      "physicalHeight": 887,
+      "pixelDensity": 1,
+      "resourcePath": "res://assets/painted-units-v1/aftermath-equipment.png",
+      "sha256": "4d167c56dde03f666aaf3fdf9e2653f4638697dd3736556daa3b282f2e4f0642",
       "groundFront": [
-        32,
-        32
-      ]
+        887.0,
+        443.5
+      ],
+      "textureFilter": "linear"
     },
     {
       "assetId": "C01-FFV1-BPROP-AFTERMATH-3",
@@ -1936,11 +2201,9 @@
     {
       "id": "laiya-stage01",
       "topicId": "C01-UNIT-BANNER-GUARD",
-      "png": "runtime-approved-v5/hero-appearance/laiya-stage01@2x.png",
+      "png": "painted-units-v1/laiya-stage01.png",
       "hdPng": "runtime-approved-v5/hero-appearance/laiya-stage01@2x.png",
-      "pixelDensity": 2,
-      "frameWidth": 104,
-      "frameHeight": 64,
+      "pixelDensity": 1,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -1948,21 +2211,59 @@
         "attack",
         "walk-b"
       ],
-      "anchor": [
-        55.33163265306123,
-        59.28061224489796
-      ],
       "hdWidth": 832,
       "hdHeight": 128,
-      "physicalWidth": 832,
-      "physicalHeight": 128,
-      "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/laiya-stage01@2x.png",
-      "sha256": "e1e53f78fb7ccdb275add9322e9e7d23559af4538f0919904981999665805a57",
-      "presentationScale": 0.62,
-      "groundFront": [
-        55.33163265306123,
-        59.28061224489796
-      ]
+      "physicalWidth": 2169,
+      "physicalHeight": 725,
+      "resourcePath": "res://assets/painted-units-v1/laiya-stage01.png",
+      "sha256": "2bd6561bcf0e02fb39bc058429b4939737bc1d06e7e2f12d41f5810516253a65",
+      "presentationScale": 0.0977654,
+      "frameRegions": [
+        [
+          0,
+          0,
+          535,
+          725
+        ],
+        [
+          535,
+          0,
+          524,
+          725
+        ],
+        [
+          1059,
+          0,
+          646,
+          725
+        ],
+        [
+          1705,
+          0,
+          464,
+          725
+        ]
+      ],
+      "frameAnchors": [
+        [
+          273,
+          589
+        ],
+        [
+          306,
+          592
+        ],
+        [
+          303,
+          591
+        ],
+        [
+          234,
+          590
+        ]
+      ],
+      "qualityTier": "painted-v1-native-reviewed",
+      "textureFilter": "linear"
     },
     {
       "id": "roderick-stage01",
@@ -1998,11 +2299,9 @@
     {
       "id": "mirelle-stage01",
       "topicId": "C01-UNIT-GRAVEKEEPER",
-      "png": "runtime-approved-v5/hero-appearance/mirelle-stage01@2x.png",
+      "png": "painted-units-v1/mirelle-stage01.png",
       "hdPng": "runtime-approved-v5/hero-appearance/mirelle-stage01@2x.png",
-      "pixelDensity": 2,
-      "frameWidth": 104,
-      "frameHeight": 64,
+      "pixelDensity": 1,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2010,30 +2309,66 @@
         "attack",
         "walk-b"
       ],
-      "anchor": [
-        44.291621327529924,
-        50.29815016322089
-      ],
       "hdWidth": 832,
       "hdHeight": 128,
-      "physicalWidth": 832,
-      "physicalHeight": 128,
-      "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/mirelle-stage01@2x.png",
-      "sha256": "4aa82bcc86b6d330fc89c31f3a5fc41c25abe6ede20b12f2a4c5d336bb3cc131",
-      "presentationScale": 0.62,
-      "groundFront": [
-        44.291621327529924,
-        50.29815016322089
-      ]
+      "physicalWidth": 2169,
+      "physicalHeight": 725,
+      "resourcePath": "res://assets/painted-units-v1/mirelle-stage01.png",
+      "sha256": "d52fe24bbcc83afc46201cac23068ebcc1759ac6cbe2822faad713d3a00544b9",
+      "presentationScale": 0.0806452,
+      "frameRegions": [
+        [
+          0,
+          0,
+          559,
+          725
+        ],
+        [
+          559,
+          0,
+          516,
+          725
+        ],
+        [
+          1075,
+          0,
+          595,
+          725
+        ],
+        [
+          1670,
+          0,
+          499,
+          725
+        ]
+      ],
+      "frameAnchors": [
+        [
+          258,
+          566
+        ],
+        [
+          318,
+          582
+        ],
+        [
+          198,
+          563
+        ],
+        [
+          306,
+          582
+        ]
+      ],
+      "qualityTier": "painted-v1-native-reviewed",
+      "textureFilter": "linear"
     },
     {
       "id": "torren-stage01",
       "topicId": "C01-UNIT-SWORDSMAN",
-      "png": "runtime-approved-v5/hero-appearance/torren-stage01@2x.png",
+      "png": "painted-units-v1/torren-stage01.png",
       "hdPng": "runtime-approved-v5/hero-appearance/torren-stage01@2x.png",
-      "pixelDensity": 2,
-      "frameWidth": 104,
-      "frameHeight": 64,
+      "pixelDensity": 1,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2041,21 +2376,59 @@
         "attack",
         "walk-b"
       ],
-      "anchor": [
-        44.51901565995526,
-        51.44519015659955
-      ],
       "hdWidth": 832,
       "hdHeight": 128,
-      "physicalWidth": 832,
-      "physicalHeight": 128,
-      "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/torren-stage01@2x.png",
-      "sha256": "456d29121b7e597f05c00a3f00ef529de638eca0da32160d4dad7979db5205c3",
-      "presentationScale": 0.62,
-      "groundFront": [
-        44.51901565995526,
-        51.44519015659955
-      ]
+      "physicalWidth": 2170,
+      "physicalHeight": 725,
+      "resourcePath": "res://assets/painted-units-v1/torren-stage01.png",
+      "sha256": "f34032e45fad1277e20f9ebf639a1299f2f9a6c4500aa37bfca562dd4288eff6",
+      "presentationScale": 0.0961538,
+      "frameRegions": [
+        [
+          0,
+          0,
+          553,
+          725
+        ],
+        [
+          553,
+          0,
+          510,
+          725
+        ],
+        [
+          1063,
+          0,
+          666,
+          725
+        ],
+        [
+          1729,
+          0,
+          441,
+          725
+        ]
+      ],
+      "frameAnchors": [
+        [
+          269,
+          563
+        ],
+        [
+          327,
+          565
+        ],
+        [
+          259,
+          561
+        ],
+        [
+          253,
+          563
+        ]
+      ],
+      "qualityTier": "painted-v1-native-reviewed",
+      "textureFilter": "linear"
     },
     {
       "id": "cain-stage01",
@@ -2091,11 +2464,9 @@
     {
       "id": "bran-stage01",
       "topicId": "C01-UNIT-RANGER",
-      "png": "runtime-approved-v5/hero-appearance/bran-stage01@2x.png",
+      "png": "painted-units-v1/bran-stage01.png",
       "hdPng": "runtime-approved-v5/hero-appearance/bran-stage01@2x.png",
-      "pixelDensity": 2,
-      "frameWidth": 104,
-      "frameHeight": 64,
+      "pixelDensity": 1,
       "frames": 4,
       "frameOrder": [
         "idle",
@@ -2103,21 +2474,59 @@
         "attack",
         "walk-b"
       ],
-      "anchor": [
-        42.81419624217119,
-        49.102296450939455
-      ],
       "hdWidth": 832,
       "hdHeight": 128,
-      "physicalWidth": 832,
-      "physicalHeight": 128,
-      "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/bran-stage01@2x.png",
-      "sha256": "b5c49999ff7bb96b122a989ca1d8b197f6b4b81f3aca2f7c52fc3d693db524f8",
-      "presentationScale": 0.62,
-      "groundFront": [
-        42.81419624217119,
-        49.102296450939455
-      ]
+      "physicalWidth": 2170,
+      "physicalHeight": 725,
+      "resourcePath": "res://assets/painted-units-v1/bran-stage01.png",
+      "sha256": "f6f4c304e0b1bdaa31ec0bb8832736fa3e622764ab00463719689ee16b00977e",
+      "presentationScale": 0.0902062,
+      "frameRegions": [
+        [
+          0,
+          0,
+          565,
+          725
+        ],
+        [
+          565,
+          0,
+          530,
+          725
+        ],
+        [
+          1095,
+          0,
+          576,
+          725
+        ],
+        [
+          1671,
+          0,
+          499,
+          725
+        ]
+      ],
+      "frameAnchors": [
+        [
+          297,
+          574
+        ],
+        [
+          306,
+          581
+        ],
+        [
+          267,
+          590
+        ],
+        [
+          265,
+          575
+        ]
+      ],
+      "qualityTier": "painted-v1-native-reviewed",
+      "textureFilter": "linear"
     },
     {
       "id": "tasha-stage01",

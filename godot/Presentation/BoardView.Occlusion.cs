@@ -41,6 +41,7 @@ public partial class BoardView
             var step = Math.Max(1, Math.Min(rect.Size.X, rect.Size.Y) / 16);
             var sampled = 0;
             var obscured = 0;
+            var top = float.PositiveInfinity;
             for (var y = rect.Position.Y + step / 2; y < rect.End.Y; y += step)
                 for (var x = rect.Position.X + step / 2; x < rect.End.X; x += step)
                 {
@@ -49,6 +50,7 @@ public partial class BoardView
                         continue;
                     sampled++;
                     var global = sprite.ToGlobal(pixel);
+                    top = Math.Min(top, ToLocal(global).Y);
                     if (frames.Any(frame => frame.Bounds.HasPoint(global) && frame.Visual.Covers(global)))
                         continue;
                     if (foreground.Any(item => item.Bounds.HasPoint(global) && item.Visual.Covers(global) && !item.Visual.ContainsPointer(global)))
@@ -57,7 +59,7 @@ public partial class BoardView
             // A cue identifies a mostly covered, already render-visible actor; it never reveals a fog-filtered actor.
             if (sampled == 0 || obscured * 2 < sampled)
                 continue;
-            var head = ToLocal(sprite.ToGlobal(new(rect.GetCenter().X, rect.Position.Y))) + new Vector2(0, -CueRadius - 4);
+            var head = new Vector2(actor.Node.Position.X, top - CueRadius - 4);
             var candidates = from row in new[] { 0, -1, 1, -2, 2, -3 }
                              from column in new[] { 0, -1, 1, -2, 2, -3, 3 }
                              select head + new Vector2(column * 24, row * 24);
@@ -71,7 +73,7 @@ public partial class BoardView
             {
                 Name = $"UnitCue_{actor.UnitId}",
                 Position = center,
-                Polygon = Enumerable.Range(0, 24).Select(index => Vector2.FromAngle(index * Mathf.Tau / 24) * CueRadius).ToArray(),
+                Polygon = [new(-7, -9), new(7, -9), new(7, 5), new(0, 10), new(-7, 5)],
                 Color = colors[actor.Node.GetMeta("owner").AsInt32()]
             };
             var leader = new Line2D
@@ -86,9 +88,9 @@ public partial class BoardView
             _cueLayer.AddChild(marker);
             marker.AddChild(new Line2D
             {
-                Points = Enumerable.Range(0, 25).Select(index => Vector2.FromAngle(index * Mathf.Tau / 24) * (CueRadius - .75f)).ToArray(),
-                Width = 1.5f,
-                DefaultColor = new Color(0.98f, 0.94f, 0.8f),
+                Points = marker.Polygon.Append(marker.Polygon[0]).ToArray(),
+                Width = 1.1f,
+                DefaultColor = new Color(0.88f, 0.82f, 0.64f),
                 Antialiased = true
             });
             marker.AddChild(new Polygon2D

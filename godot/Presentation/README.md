@@ -149,3 +149,17 @@ the terrain composition through `OwnedProceduralSprite`; no source texture is ed
 presentation regression changes only elevation and checks redraw, new surface
 coverage, unchanged actor contact and unchanged input state. Actual rendered
 appearance still needs visual acceptance on the integrated scene.
+
+## Battlefield HUD layout
+
+The native screen uses a full-size map and three floating command areas, not a
+map viewport narrowed by a side rail. `TacticalHud` owns its cloth mission banner,
+paper objective checklist, selected-unit/command islands and transient forecast.
+`BattleScreen` supplies the existing camera's HUD framing insets once. Map picking
+continues through the same renderer and world transform.
+
+Named HUD portraits use validated square head-and-shoulder regions in
+`tactical-hud-art.json`; the shared narrative portrait catalog still owns the
+original full images. The HUD art owner caches its AtlasTextures and never crops
+the source files or changes map animation frames. See
+`docs/hud/native-hud-20261026.md` for layout, focus and verification contracts.

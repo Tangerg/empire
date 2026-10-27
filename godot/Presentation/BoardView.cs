@@ -429,6 +429,23 @@ public partial class BoardView : Node2D
         _diagnostics = diagnostics.Distinct(StringComparer.Ordinal).ToList().AsReadOnly();
     }
 
+    /// <summary>Decoration emphasis projects the controller's selection; it owns no targeting state.</summary>
+    public void ShowTacticalEmphasis(TacticalSelectionOverlay selection)
+    {
+        foreach (var entry in _standing.Where(entry => entry.UnitId is not null))
+        {
+            var focused = entry.SelectionCell is { } cell
+                && (selection.Selected == new BoardCell(cell.X, cell.Y) || selection.Cursor == new BoardCell(cell.X, cell.Y));
+            var badges = entry.Node.GetNodeOrNull<Node2D>("Badges");
+            if (badges is null)
+                continue;
+            if (badges.GetNodeOrNull<CanvasItem>("FacingPip") is { } facing)
+                facing.Visible = focused;
+            if (badges.GetNodeOrNull<CanvasItem>("HealthGauge") is { } health)
+                health.Visible = focused || health.GetMeta("ratio").AsDouble() <= .3;
+        }
+    }
+
     private BattleRenderSnapshot ReadProjection(JsonObject state)
     {
         if (Text(state, "levelId") != _levelId)

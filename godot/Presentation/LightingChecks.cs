@@ -142,7 +142,6 @@ public partial class LightingChecks : Node
             [ShadowKind.Standing] = ".candidate-environment-prop.is-standing",
             [ShadowKind.Foreground] = ".candidate-scene-foreground .candidate-environment-prop",
             [ShadowKind.FrameEdge] = ".candidate-scene-foreground .is-frame-bottom",
-            [ShadowKind.Figure] = ".candidate-map .unit .figure",
             [ShadowKind.BattleProp] = ".candidate-battle-prop",
             [ShadowKind.OwnerBanner] = ".candidate-map .candidate-owner-banner",
             [ShadowKind.Route] = ".candidate-ground-route",
@@ -287,7 +286,7 @@ public partial class LightingChecks : Node
         impulse[10 * 21 + 10] = 1;
         var blurred = ShadowRaster.Blur(impulse, 21, 21, 1);
         Require(Math.Abs(blurred.Sum() - 1) < .00001 && blurred[10 * 21 + 9] == blurred[10 * 21 + 11], "Gaussian alpha convolution changed mass or symmetry.");
-        Require(SpriteShadows.Drops(ShadowKind.Figure)[0].Sigma == .65f, "CSS shadow stdDeviation must not be halved like box-shadow radius.");
+        Require(SpriteShadows.Drops(ShadowKind.Figure).Count == 0, "Painted figures must not acquire a light halo or full-silhouette drop shadow.");
         foreach (var kind in Enum.GetValues<ShadowKind>())
         {
             var result = ShadowRaster.Shadows(pixel, SpriteShadows.Drops(kind), 2);
@@ -382,7 +381,7 @@ public partial class LightingChecks : Node
                 "Compound figure must suppress its original draw without hiding the composed child.");
             using var image = figure.Texture.GetImage();
             var foot = (Vector2I)((new Vector2(0, -1.8f) / figure.Scale) - figure.Offset);
-            Require(image.GetPixel(foot.X, foot.Y).A > .62f, "Figure filter did not receive the contact body's alpha when its strip is transparent.");
+            Require(image.GetPixel(foot.X, foot.Y).A > .32f && image.GetPixel(foot.X, foot.Y).A < .55f, "Painted figures require a soft ground contact, not an opaque black sticker rim.");
             var banner = DynamicStateView.CreateOwnerBanner("#3465ab", cache);
             var repeatBanner = DynamicStateView.CreateOwnerBanner("#3465ab", cache);
             Require(ReferenceEquals(banner.Texture, repeatBanner.Texture)
@@ -448,7 +447,7 @@ public partial class LightingChecks : Node
             Require((unit.Position + unit.Texture.GetSize() * unit.Scale / 2).IsEqualApprox(new(0, -1.8f)), "Unit shadow moved the source foot-relative center.");
             Require((structure.Position + structure.Texture.GetSize() * structure.Scale / 2).IsEqualApprox(Vector2.Zero), "Structure shadow moved the source foot.");
             using var image = unit.Texture.GetImage();
-            Require(Math.Abs(image.GetPixel(image.GetWidth() / 2, image.GetHeight() / 2).A - .62f) < .005, "CSS unit-contact opacity override was multiplied instead of replacing .48.");
+            Require(Math.Abs(image.GetPixel(image.GetWidth() / 2, image.GetHeight() / 2).A - .42f) < .01, "Painted unit contact must remain a soft translucent ground shadow.");
             using var mass = structure.Texture.GetImage();
             Require(Math.Abs(mass.GetPixel(mass.GetWidth() / 2, mass.GetHeight() / 2).A - .22f) < .005, "Structure contact uses the wrong shared shadow weight.");
         }

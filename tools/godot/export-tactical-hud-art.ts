@@ -15,14 +15,27 @@ if (metadata.schema !== 2 || !metadata.portraits || typeof metadata.portraits !=
   throw new Error('Native tactical HUD requires schema 2 with explicit portrait bindings');
 }
 for (const [key, value] of Object.entries(metadata.portraits)) {
-  const binding = objectFields(value, ['unitType', 'actorKey', 'portraitId'], `HUD portrait binding ${key}`);
+  const binding = objectFields(value, ['unitType', 'actorKey', 'portraitId', 'portraitRegion'], `HUD portrait binding ${key}`);
   if (typeof binding.unitType !== 'string' || !binding.unitType
     || !(binding.actorKey === null || (typeof binding.actorKey === 'string' && binding.actorKey.length > 0))
     || key !== (binding.actorKey ?? binding.unitType)) {
     throw new Error(`Invalid native HUD portrait binding: ${key}`);
   }
   // Null explicitly selects the bound unit's idle frame, not a missing named card.
-  if (binding.portraitId !== null) requirePortraitId(binding.portraitId, catalog, `HUD binding ${key}`);
+  if (binding.portraitId !== null) {
+    requirePortraitId(binding.portraitId, catalog, `HUD binding ${key}`);
+    const crop = binding.portraitRegion;
+    const portrait = catalog.get(binding.portraitId as string)!;
+    const png = readFileSync(resolve('godot', portrait.resourcePath.slice('res://'.length)));
+    if (!png.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])) throw new Error(`HUD portrait is not a PNG: ${key}`);
+    if (!Array.isArray(crop) || crop.length !== 4 || !crop.every(Number.isSafeInteger)
+      || crop[0] < 0 || crop[1] < 0 || crop[2] <= 0 || crop[2] !== crop[3]
+      || crop[0] + crop[2] > png.readUInt32BE(16) || crop[1] + crop[3] > png.readUInt32BE(20)) {
+      throw new Error(`HUD portrait requires an in-bounds square physical-pixel crop: ${key}`);
+    }
+  } else if (binding.portraitRegion !== null) {
+    throw new Error(`Generic HUD portrait cannot declare a named-image crop: ${key}`);
+  }
 }
 
 const prefix = '/packages/story-candidate-01/assets/final-fantasy-v1/';

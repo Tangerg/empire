@@ -13,7 +13,7 @@ namespace Empire.Presentation;
 /// </summary>
 internal static class LayerFilterComposition
 {
-    internal sealed record Layer(Image Image, Rect2 Bounds, IReadOnlyList<Rect2>? Cutouts = null);
+    internal sealed record Layer(Image Image, Rect2 Bounds, IReadOnlyList<Rect2>? Cutouts = null, bool AreaMinification = false);
     internal sealed record Raster(Image Image, Vector2 Origin, float Density);
 
     internal static Raster Compose(IReadOnlyList<Layer> layers, float density)
@@ -32,17 +32,33 @@ internal static class LayerFilterComposition
         foreach (var layer in layers)
         {
             var input = new RasterPixels(layer.Image);
+            var footprint = new Vector2(input.Width, input.Height) / (layer.Bounds.Size * density);
+            var areaMinify = layer.AreaMinification && footprint.X >= 1 && footprint.Y >= 1
+                && (footprint.X > 1 || footprint.Y > 1);
+            if (areaMinify && layer.Cutouts is { Count: > 0 })
+                throw new ArgumentException("Area minification requires an uncut source layer.");
             var start = (Vector2I)((layer.Bounds.Position - origin) * density).Floor();
             var end = (Vector2I)((layer.Bounds.End - origin) * density).Ceil();
             for (var y = Math.Max(0, start.Y); y < Math.Min(size.Y, end.Y); y++)
                 for (var x = Math.Max(0, start.X); x < Math.Min(size.X, end.X); x++)
                 {
-                    var point = origin + new Vector2(x + .5f, y + .5f) / density;
-                    var coverage = Coverage(layer, origin + new Vector2(x, y) / density, 1 / density);
-                    if (coverage == 0)
-                        continue;
-                    var uv = (point - layer.Bounds.Position) / layer.Bounds.Size;
-                    var sample = Sample(input, uv * new Vector2(input.Width, input.Height) - Vector2.One / 2) * coverage;
+                    var topLeft = origin + new Vector2(x, y) / density;
+                    Color sample;
+                    if (areaMinify)
+                    {
+                        var sourceStart = (topLeft - layer.Bounds.Position) / layer.Bounds.Size
+                            * new Vector2(input.Width, input.Height);
+                        sample = AreaSample(input, sourceStart, footprint);
+                    }
+                    else
+                    {
+                        var coverage = Coverage(layer, topLeft, 1 / density);
+                        if (coverage == 0)
+                            continue;
+                        var point = origin + new Vector2(x + .5f, y + .5f) / density;
+                        var uv = (point - layer.Bounds.Position) / layer.Bounds.Size;
+                        sample = Sample(input, uv * new Vector2(input.Width, input.Height) - Vector2.One / 2) * coverage;
+                    }
                     pixels[y * size.X + x] = sample + pixels[y * size.X + x] * (1 - sample.A);
                 }
         }
@@ -93,6 +109,25 @@ internal static class LayerFilterComposition
                 hits++;
             }
         return hits / 16f;
+    }
+
+    // Integrate the entire output footprint in premultiplied RGBA. Uncovered canvas
+    // contributes transparent area; clamping it to edge colors would inflate silhouettes.
+    private static Color AreaSample(RasterPixels image, Vector2 start, Vector2 size)
+    {
+        var end = start + size;
+        var sum = new Color(0, 0, 0, 0);
+        for (var y = Math.Max(0, (int)MathF.Floor(start.Y)); y < Math.Min(image.Height, (int)MathF.Ceiling(end.Y)); y++)
+        {
+            var height = MathF.Min(y + 1, end.Y) - MathF.Max(y, start.Y);
+            for (var x = Math.Max(0, (int)MathF.Floor(start.X)); x < Math.Min(image.Width, (int)MathF.Ceiling(end.X)); x++)
+            {
+                var weight = height * (MathF.Min(x + 1, end.X) - MathF.Max(x, start.X));
+                var color = image.Pixel(x, y);
+                sum += new Color(color.R * color.A, color.G * color.A, color.B * color.A, color.A) * weight;
+            }
+        }
+        return sum / (size.X * size.Y);
     }
 
     private static Color Sample(RasterPixels image, Vector2 point)
