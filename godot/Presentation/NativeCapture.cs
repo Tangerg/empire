@@ -70,6 +70,41 @@ public partial class NativeCapture : Node
         return null;
     }
 
+    private static object TraceSprite(Sprite2D sprite)
+    {
+        using var image = SpriteShadows.ReadFrame(sprite.Texture);
+        var left = image.GetWidth();
+        var top = image.GetHeight();
+        var right = -1;
+        var bottom = -1;
+        for (var y = 0; y < image.GetHeight(); y++)
+            for (var x = 0; x < image.GetWidth(); x++)
+                if (image.GetPixel(x, y).A >= .05f)
+                {
+                    left = Math.Min(left, x);
+                    top = Math.Min(top, y);
+                    right = Math.Max(right, x);
+                    bottom = Math.Max(bottom, y);
+                }
+        var bounds = new Rect2(left, top, right - left + 1, bottom - top + 1);
+        var offset = sprite.Offset - (sprite.Centered ? sprite.Texture.GetSize() / 2 : Vector2.Zero);
+        var transform = sprite.GetGlobalTransformWithCanvas();
+        var points = new[] { bounds.Position, bounds.Position + new Vector2(bounds.Size.X, 0),
+            bounds.End, bounds.Position + new Vector2(0, bounds.Size.Y) }
+            .Select(point => transform * (point + offset)).ToArray();
+        return new
+        {
+            textureSize = new[] { image.GetWidth(), image.GetHeight() },
+            atlasRegion = sprite.Texture is AtlasTexture atlas ? new[] { atlas.Region.Position.X, atlas.Region.Position.Y, atlas.Region.Size.X, atlas.Region.Size.Y } : null,
+            scale = new[] { sprite.Scale.X, sprite.Scale.Y },
+            canvasAxisLengths = new[] { transform.X.Length(), transform.Y.Length() },
+            alphaBounds = new[] { bounds.Position.X, bounds.Position.Y, bounds.Size.X, bounds.Size.Y },
+            // This is the unoccluded draw extent; neighboring figures and walls may cover it.
+            alphaScreenBounds = new[] { points.Min(point => point.X), points.Min(point => point.Y),
+                points.Max(point => point.X) - points.Min(point => point.X), points.Max(point => point.Y) - points.Min(point => point.Y) }
+        };
+    }
+
     private async void Capture()
     {
         if (_capturing || _directory.Length == 0)
@@ -102,7 +137,9 @@ public partial class NativeCapture : Node
                         type = node.GetMeta("unit_type").AsString(),
                         x = node.GetGlobalTransformWithCanvas().Origin.X,
                         y = node.GetGlobalTransformWithCanvas().Origin.Y,
-                        art = node.GetNode<Sprite2D>("AuthoredSprite").GetMeta("art_identity").AsString()
+                        art = node.GetNode<Sprite2D>("AuthoredSprite").GetMeta("art_identity").AsString(),
+                        source = TraceSprite(node.GetNode<Sprite2D>("AuthoredSprite")),
+                        figure = TraceSprite(node.GetNode<Sprite2D>("AuthoredSprite/SourceSpriteShadows"))
                     }).ToArray();
                 File.WriteAllText(Path.ChangeExtension(path, ".actors.json"),
                     System.Text.Json.JsonSerializer.Serialize(figures, new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));

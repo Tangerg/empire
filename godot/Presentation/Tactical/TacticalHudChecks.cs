@@ -247,6 +247,56 @@ public partial class TacticalHudChecks : Node
         }
     }
 
+    private void CheckPrimaryOrders()
+    {
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var presentation = BattleTextChecks.Session(engine, GodotTextCatalog.LoadSimplifiedChinese());
+        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<string>() == "c01-07");
+        var state = engine.CreateState(level);
+        state["phase"] = "playing";
+        var session = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(state));
+        var queries = session.GetTacticalQueries(23);
+        var actor = queries.Unit(queries.Actors().First())!;
+        var control = new TacticalSelectionController(queries);
+        var selected = control.Click(control.Stamp, TacticalHit.Unit(actor.At, actor.Id));
+        Require(selected.Request is null && control.Selection.Kind == TacticalSelectionKind.Unit,
+            "Selecting a ready C07 actor does not dispatch a battle action.");
+        TacticalHudProjection Projection() => session.ProjectHud(control.Stamp, control.Selection, control.CursorHit, control.InspectId, false);
+        var projection = Projection();
+        var commands = queries.CommandsAt(actor.Id, actor.At);
+        Require(projection.Sections.Single(section => section.Key == "commands").Rows.Where(row => row.Key != "cancel")
+            .Select(row => row.Intent!.Key).SequenceEqual(commands.Select(command => command.Key)),
+            "Ready-unit primary buttons are exactly canonical commands at its current foot cell.");
+        var hud = new TacticalHud { Size = new Vector2(960, 640) };
+        AddChild(hud);
+        hud.Apply(projection);
+        Require(hud.FindChild("ContextTabs", true, false) is null
+            && hud.FindChildren("DossierButton", "Button", true, false).Count == 1,
+            "Low-frequency details have one entry, not a duplicate skill-like primary strip.");
+        TacticalRequest? request = null;
+        hud.IntentRequested += intent => request = control.ChooseCommand(intent.Stamp, intent.Key!).Request;
+        var wait = commands.Single(command => command.Ability == "wait");
+        var button = hud.FindChildren("*", "Button", true, false).OfType<Button>()
+            .Single(value => value.GetMeta("hud_key", "").AsString() == "commands/" + wait.Key);
+        button.EmitSignal(BaseButton.SignalName.Pressed);
+        Require(request?.Action is not null && session.Revision == 0,
+            "Only the explicit Wait button produces a request; projection does not mutate the session.");
+        var dispatched = session.Dispatch(request!.Action!.Value, request.Stamp.Revision);
+        Require(dispatched.Accepted && session.Revision == 1,
+            "The explicit primary Wait request commits through the real session once.");
+        control.CompleteDispatch(control.Stamp, session.GetTacticalQueries(23));
+        control.Click(control.Stamp, TacticalHit.Unit(actor.At, actor.Id));
+        var acted = Projection();
+        Require(control.Selection.Kind == TacticalSelectionKind.Idle && acted.Sections.All(section => section.Key is not ("commands" or "tactics"))
+            && acted.Sections.Single(section => section.Key == "unit").Rows.Any(row => row.Key == "cancel"),
+            "An acted unit exposes state, health, dossier and close, never a fake actionable primary strip.");
+        Require(control.ChooseCommand(control.Stamp, wait.Key).Request is null && session.Revision == 1,
+            "Inspecting an acted unit cannot dispatch a second Wait.");
+        RemoveChild(hud);
+        hud.Free();
+    }
+
     private void CheckPinnedUnit()
     {
         var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
@@ -299,6 +349,7 @@ public partial class TacticalHudChecks : Node
             {
                 new TacticalHudRow("cancel", "取消 Esc", Intent: new(new(1, 1), TacticalHudIntentKind.Back))
             }),
+            new TacticalHudSection("site", "村庄", new[] { new TacticalHudRow("site", "当前悬停地形") }),
             new TacticalHudSection("unit-details", "兵种与能力", new[] { new TacticalHudRow("long", objective) })
         });
         foreach (var width in new[] { 960, 1180 })
@@ -312,10 +363,11 @@ public partial class TacticalHudChecks : Node
                 "Long objectives wrap within the narrow and wide native panel, rather than clipping horizontally.");
             var unitCard = (Control)hud.FindChild("unit", true, false);
             var prediction = (Control)hud.FindChild("forecast", true, false);
-            Require(unitCard.GetGlobalRect().Position.Y >= 500 && prediction.GetGlobalRect().End.Y < unitCard.GetGlobalRect().Position.Y,
-                "The acting unit stays in the bottom tray and prediction sits above it.");
+            Require(unitCard.GetGlobalRect().Position.Y >= 500 && prediction.GetGlobalRect().Position.Y >= 514 && prediction.GetGlobalRect().End.Y <= 632,
+                "The acting unit and forecast stay in the bottom safe area, never covering a hovered map target.");
             var hp = unitCard.FindChildren("*", "Label", true, false).OfType<Label>().Single(label => label.Text.StartsWith("生命", StringComparison.Ordinal));
             var dossierButton = (Button)hud.FindChild("DossierButton", true, false);
+            Require(dossierButton.Text == "兵种与能力", "An acting unit owns its dossier entry label even while a village site is hovered.");
             Require(hp.GetGlobalRect().End.Y + 4 <= dossierButton.GlobalPosition.Y
                 && hp.GetGlobalRect().End.X <= 274,
                 "Current/max HP remains fully visible above the dossier button at both window sizes.");
@@ -369,6 +421,94 @@ public partial class TacticalHudChecks : Node
         host.Free();
     }
 
+    private async System.Threading.Tasks.Task CheckPointerCapture()
+    {
+        GetWindow().Size = new Vector2I(960, 640);
+        var hud = new TacticalHud { Size = new Vector2(960, 640) };
+        AddChild(hud);
+        var stamp = new TacticalStamp(70, 2);
+        TacticalHudProjection Frame(string detail) => new(stamp, "选择指令", new[]
+        {
+            new TacticalHudSection("commands", "指令", new[] { new TacticalHudRow("wait", "待机", Intent: new(stamp, TacticalHudIntentKind.Command, "wait")) }),
+            new TacticalHudSection("tile", "地形", new[] { new TacticalHudRow("terrain", detail) })
+        });
+        hud.Apply(Frame("道路"));
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        var button = (Button)hud.FindChild("Orders", true, false).GetChild(0);
+        var point = button.GetGlobalRect().GetCenter();
+        var fired = 0;
+        hud.IntentRequested += _ => fired++;
+        GetViewport().NotifyMouseEntered();
+        GetViewport().PushInput(new InputEventMouseMotion { Position = point, GlobalPosition = point }, true);
+        GetViewport().PushInput(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = true, Position = point, GlobalPosition = point }, true);
+        hud.Apply(Frame("道路"));
+        Require(ReferenceEquals(button, hud.FindChild("Orders", true, false).GetChild(0)), "Equivalent projection retains the actual native button.");
+        hud.Apply(Frame("草地"));
+        Require(ReferenceEquals(button, hud.FindChild("Orders", true, false).GetChild(0)), "Hover detail changes retain the pressed command subtree without detaching it.");
+        GetViewport().PushInput(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = false, Position = point, GlobalPosition = point }, true);
+        Require(fired == 1, "Native pointer press/release across hover refresh submits the first click exactly once.");
+        GetViewport().PushInput(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = false, Position = point, GlobalPosition = point }, true);
+        Require(fired == 1, "A duplicate release cannot submit a second order.");
+        RemoveChild(hud);
+        hud.Free();
+    }
+
+    private async System.Threading.Tasks.Task CheckDossierLifetime()
+    {
+        GetWindow().Size = new Vector2I(960, 640);
+        var hud = new TacticalHud { Size = new Vector2(960, 640) };
+        AddChild(hud);
+        var stamp = new TacticalStamp(80, 1);
+        TacticalHudProjection Frame(string terrain) => new(stamp, "查看单位", new[]
+        {
+            new TacticalHudSection("unit", "米蕾尔", new[] { new TacticalHudRow("hp", "生命 78 / 78") }),
+            new TacticalHudSection("unit-details", "兵种与能力", new[] { new TacticalHudRow("ability", "治疗") }),
+            new TacticalHudSection("tile", "地形", new[] { new TacticalHudRow("terrain", terrain) })
+        });
+        hud.Apply(Frame("道路"));
+        var popup = (PopupPanel)hud.FindChild("UnitDossier", true, false);
+        var scroll = hud.FindChild("DetailScroll", true, false);
+        var showCount = 0;
+        popup.VisibilityChanged += () =>
+        {
+            if (popup.Visible)
+                hud.Apply(Frame("焦点变化 " + ++showCount));
+        };
+        for (var index = 0; index < 3; index++)
+        {
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            var entry = (Button)hud.FindChild("DossierButton", true, false);
+            var point = entry.GetGlobalRect().GetCenter();
+            var viewport = GetViewport();
+            viewport.NotifyMouseEntered();
+            viewport.PushInput(new InputEventMouseMotion { Position = point, GlobalPosition = point }, true);
+            viewport.PushInput(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = true, Position = point, GlobalPosition = point }, true);
+            viewport.PushInput(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = false, Position = point, GlobalPosition = point }, true);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Require(popup.Visible && ReferenceEquals(popup, hud.FindChild("UnitDossier", true, false))
+                && ReferenceEquals(scroll, hud.FindChild("DetailScroll", true, false)),
+                "Opening a native dossier may synchronously refresh hover facts without replacing its registered subwindow or scroll owner.");
+            var details = (VBoxContainer)hud.FindChild("unit-details", true, false);
+            var toggle = details.GetChildren().OfType<Button>().Single();
+            toggle.ButtonPressed = false;
+            var togglePoint = toggle.GetGlobalRect().GetCenter() + (Vector2)popup.Position;
+            viewport.NotifyMouseEntered();
+            viewport.PushInput(new InputEventMouseMotion { Position = togglePoint, GlobalPosition = togglePoint }, true);
+            viewport.PushInput(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = true, Position = togglePoint, GlobalPosition = togglePoint }, true);
+            viewport.PushInput(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = false, Position = togglePoint, GlobalPosition = togglePoint }, true);
+            Require(toggle.ButtonPressed, "Native dossier disclosure press/release expands the content.");
+            hud.Apply(Frame("展开后地形 " + index));
+            Require(popup.Visible && ((VBoxContainer)hud.FindChild("unit-details", true, false)).GetNode<VBoxContainer>("Content").Visible,
+                "Expanded dossier remains visible across refreshed facts without reopening the subwindow.");
+            popup.Hide();
+            Require(!popup.Visible, "The persistent dossier still closes normally.");
+        }
+        RemoveChild(hud);
+        hud.Free();
+    }
+
     public override async void _Ready()
     {
         try
@@ -376,9 +516,12 @@ public partial class TacticalHudChecks : Node
             CheckInspectionOrder();
             CheckObjectiveChecklist();
             CheckPinnedUnit();
+            CheckPrimaryOrders();
             CheckSiteInspection();
             await CheckSitePointerBoundary();
             await CheckResponsiveLayout();
+            await CheckPointerCapture();
+            await CheckDossierLifetime();
             var stamp = new TacticalStamp(17, 9);
             var hud = new TacticalHud();
             AddChild(hud);
@@ -394,7 +537,7 @@ public partial class TacticalHudChecks : Node
             Require(fired == 1, "One-shot duplicate signal suppression");
             hud.Apply(Projection());
             old.EmitSignal(BaseButton.SignalName.Pressed);
-            Require(fired == 1, "Replaced row stale callback");
+            Require(fired == 1, "Equivalent refresh does not rearm a submitted native row");
             var mounted = Button();
             RemoveChild(hud);
             mounted.EmitSignal(BaseButton.SignalName.Pressed);
@@ -420,6 +563,10 @@ public partial class TacticalHudChecks : Node
             detached.EmitSignal(BaseButton.SignalName.Pressed);
             Require(fired == 1, "Detached child inert");
             detached.QueueFree();
+            hud.Apply(Projection() with
+            {
+                Busy = true
+            });
             hud.Apply(Projection());
             Button().GrabFocus();
             hud.Apply(Projection());
@@ -474,11 +621,11 @@ public partial class TacticalHudChecks : Node
                 _ = new TacticalHudArt(assets, explicitCatalog, new TacticalHudArtDocument
                 {
                     Schema = 2,
-                    Portraits = new() { ["c01.swordsman"] = new() { UnitType = "c01.swordsman", PortraitId = null, PortraitRegion = new[] { 0, 0, 20, 20 } } }
+                    Portraits = new() { ["c01.swordsman"] = new() { UnitType = "c01.swordsman", PortraitId = null, PortraitRegion = new[] { 0, 0, 99999, 99999 } } }
                 });
-                throw new Exception("A generic frame accepted a named portrait crop.");
+                throw new Exception("A generic frame accepted an out-of-bounds local crop.");
             }
-            catch (InvalidOperationException error) when (error.Message.Contains("generic idle-frame", StringComparison.Ordinal)) { assertions++; }
+            catch (InvalidOperationException error) when (error.Message.Contains("in-bounds square", StringComparison.Ordinal)) { assertions++; }
             var art = TacticalHudArt.Load(assets, portraits);
             hud.ConfigureArt(art);
             TextureRect MountedPortrait() => (TextureRect)hud.FindChild("InspectedPortrait", true, false);
@@ -501,8 +648,38 @@ public partial class TacticalHudChecks : Node
             var genericPortrait = new TacticalHudPortrait("c01.swordsman", null, "#224466");
             var generic = art.Portrait(genericPortrait) as AtlasTexture;
             var unit = assets.ResolveUnit(genericPortrait.UnitType, genericPortrait.ActorKey);
-            Require(generic is not null && generic == assets.CreateFrameTexture(unit, AssetCatalog.FrameIndex(unit, "idle")),
-                "An explicit null portrait retains the canonical generic idle-frame atlas.");
+            foreach (var (key, binding) in metadata.Portraits.Where(pair => pair.Value.PortraitId is null && pair.Value.PortraitRegion is not null))
+            {
+                var frameAsset = assets.ResolveUnit(binding.UnitType, binding.ActorKey);
+                var frame = assets.CreateFrameTexture(frameAsset, AssetCatalog.FrameIndex(frameAsset, "idle"));
+                var actual = art.Portrait(new(binding.UnitType, binding.ActorKey, "#224466"));
+                if (binding.PortraitRegion is not { } region)
+                    Require(actual == frame, "Null generic crop preserves its full idle frame: " + key);
+                else
+                    Require(actual is AtlasTexture cropped && cropped.Atlas == frame.Atlas && cropped.Atlas is not AtlasTexture
+                        && cropped.Region == new Rect2(frame.Region.Position + new Vector2(region[0], region[1]), new Vector2(region[2], region[3])),
+                        "Generic head crops remain frame-local and flatten onto the original sheet: " + key);
+            }
+            var wholeFrameArt = new TacticalHudArt(assets, portraits, new TacticalHudArtDocument
+            {
+                Schema = 2,
+                Portraits = new() { ["c01.swordsman"] = new() { UnitType = "c01.swordsman", PortraitId = null, PortraitRegion = null } }
+            });
+            Require(wholeFrameArt.Portrait(genericPortrait) == assets.CreateFrameTexture(unit, AssetCatalog.FrameIndex(unit, "idle")),
+                "Explicit null generic crop preserves the original idle texture.");
+            var shiftedManifest = PresentationJson.Load<JsonObject>("res://data/selected-assets.json");
+            var archerRecord = shiftedManifest["assets"]!.AsArray().OfType<JsonObject>().Single(value =>
+                value["topicId"]!.GetValue<string>() == "C01-UNIT-ARCHER" && value["id"] is null);
+            archerRecord["frameOrder"] = new JsonArray("walk-a", "idle", "attack", "walk-b");
+            var shiftedAssets = new AssetCatalog(System.Text.Json.JsonSerializer.Deserialize<AssetManifest>(shiftedManifest.ToJsonString(),
+                new System.Text.Json.JsonSerializerOptions { PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase })!,
+                PresentationJson.Load<ArtBindings>("res://data/art-bindings.json"));
+            var shiftedArt = new TacticalHudArt(shiftedAssets, portraits, metadata);
+            var shiftedCrop = (AtlasTexture)shiftedArt.Portrait(new("c01.archer", "elin", "#224466"));
+            var shiftedFrame = shiftedAssets.CreateFrameTexture(shiftedAssets.ResolveUnit("c01.archer"), 1);
+            Require(shiftedCrop.Region.Position == shiftedFrame.Region.Position + new Vector2(140, 140)
+                && shiftedCrop.Atlas == shiftedFrame.Atlas && shiftedCrop.Atlas is not AtlasTexture,
+                "Nonzero idle-region origin is applied once, without nested atlases.");
             Require(generic!.Atlas.ResourcePath != ((AtlasTexture)portrait).Atlas.ResourcePath && art.UnitIcon(named) is AtlasTexture,
                 "Generic portraits and unit icons remain sprite frames, distinct from named head-and-shoulders portraits.");
             hud.Apply(new(stamp, "", new[] { new TacticalHudSection("unit", "角色", Array.Empty<TacticalHudRow>()) }, genericPortrait));

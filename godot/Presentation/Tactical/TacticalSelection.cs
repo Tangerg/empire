@@ -357,17 +357,33 @@ public sealed class TacticalSelectionController
         if (guard != TacticalInputStatus.Ready)
             return Result(guard);
         var selected = Selection;
-        if (selected.Kind != TacticalSelectionKind.Destination || selected.UnitId is not { } unit || selected.Destination is not { } at || queries.Unit(unit) is null)
+        if (selected.UnitId is not { } unit || queries.Unit(unit) is not { CanAct: true } actor)
+            return Result(TacticalInputStatus.Ignored);
+        BoardCell at;
+        IReadOnlyList<BoardCell> path;
+        if (selected.Kind == TacticalSelectionKind.Unit)
+        {
+            at = actor.At;
+            if (queries.PathTo(unit, at) is not { } originPath)
+                return Result(TacticalInputStatus.Ignored);
+            path = originPath;
+        }
+        else if (selected.Kind == TacticalSelectionKind.Destination && selected.Destination is { } destination)
+        {
+            at = destination;
+            path = selected.Path;
+        }
+        else
             return Result(TacticalInputStatus.Ignored);
         var options = queries.CommandsAt(unit, at);
         var option = options.FirstOrDefault(value => value.Key == keyOrAbility) ?? options.FirstOrDefault(value => value.Ability == keyOrAbility);
         if (option is null)
             return Result(TacticalInputStatus.Ignored);
         if (option.SelfTargeted)
-            return Command(option, unit, selected.Path);
-        if (option.Targets.Count == 1)
-            return Command(option, unit, selected.Path, option.Targets[0]);
-        Selection = Target(unit, at, selected.Path, option);
+            return Command(option, unit, path);
+        if (selected.Kind == TacticalSelectionKind.Destination && option.Targets.Count == 1)
+            return Command(option, unit, path, option.Targets[0]);
+        Selection = Target(unit, at, path, option);
         return Result();
     }
 

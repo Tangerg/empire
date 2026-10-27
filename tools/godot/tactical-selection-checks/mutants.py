@@ -9,6 +9,10 @@ root = Path(__file__).resolve().parents[3]
 source = root / 'godot/Presentation/Tactical'
 project = root / 'tools/godot/tactical-selection-checks/TacticalSelectionChecks.csproj'
 mutants = {
+    'origin-orders-inaccessible': ('if (selected.Kind == TacticalSelectionKind.Unit)\n        {\n            at = actor.At;', 'if (selected.Kind == TacticalSelectionKind.Idle)\n        {\n            at = actor.At;'),
+    'origin-singleton-auto-commits': ('if (selected.Kind == TacticalSelectionKind.Destination && option.Targets.Count == 1)', 'if (option.Targets.Count == 1)'),
+    'acted-origin-admitted': ('queries.Unit(unit) is not { CanAct: true } actor', 'queries.Unit(unit) is not { } actor'),
+    'origin-path-replaced': ('path = originPath;', 'path = Array.Empty<BoardCell>();'),
     'cycle-retains-obsolete-cursor': ('CursorHit = TacticalHit.Unit(at, id);', ''),
     'invalid-target-discards-preview': ('return Result(TacticalInputStatus.InvalidTarget);', '{ Selection = Pick(TacticalSelectionKind.Idle); return Result(); }'),
     'sole-wait-commits-on-destination': ('// Choosing a destination is always a preview, even when waiting', 'var commands = queries.CommandsAt(unit.Id, at); if (commands.Count == 1 && commands[0].SelfTargeted) return Command(commands[0], unit.Id, path);\n                    // Choosing a destination is always a preview, even when waiting'),

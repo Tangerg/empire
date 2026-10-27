@@ -28,7 +28,7 @@ public sealed class TacticalPortraitBinding
     {
         get; init;
     }
-    /// <summary>HUD-only physical-pixel square; null explicitly preserves a generic idle frame.</summary>
+    /// <summary>HUD-only physical-pixel square: named-image-local or generic idle-frame-local; null preserves the whole generic frame.</summary>
     [System.Text.Json.Serialization.JsonRequired]
     public int[]? PortraitRegion
     {
@@ -41,6 +41,7 @@ public sealed class TacticalHudArt
 {
     private readonly TacticalHudArtDocument document;
     private readonly AssetCatalog assets;
+    private readonly Dictionary<(string Binding, string Asset), AtlasTexture> genericPortraitTextures = new();
     private readonly Dictionary<string, AtlasTexture> portraitTextures = new(StringComparer.Ordinal);
     public TacticalHudArt(AssetCatalog assets, PortraitCatalog portraits, TacticalHudArtDocument document)
     {
@@ -50,25 +51,34 @@ public sealed class TacticalHudArt
         {
             if (binding.PortraitId is not { } id)
             {
-                if (binding.PortraitRegion is not null)
-                    throw new InvalidOperationException("A generic idle-frame HUD portrait cannot declare a named-image crop: " + key);
+                if (binding.PortraitRegion is { } region)
+                {
+                    var unit = assets.ResolveUnit(binding.UnitType, binding.ActorKey);
+                    genericPortraitTextures.Add((key, unit.Identity), Crop(
+                        assets.CreateFrameTexture(unit, AssetCatalog.FrameIndex(unit, "idle")), region, key));
+                }
                 continue;
             }
             var image = Image(portraits.Resolve(id));
-            var crop = binding.PortraitRegion;
-            if (crop is not { Length: 4 } || crop[0] < 0 || crop[1] < 0 || crop[2] <= 0 || crop[2] != crop[3]
-                || (long)crop[0] + crop[2] > image.GetWidth() || (long)crop[1] + crop[3] > image.GetHeight())
-                throw new InvalidOperationException("Named HUD portrait requires an in-bounds square physical-pixel crop: " + key);
-            portraitTextures.Add(key, new AtlasTexture
-            {
-                Atlas = image,
-                Region = new Rect2(crop[0], crop[1], crop[2], crop[3]),
-                FilterClip = true
-            });
+            portraitTextures.Add(key, Crop(image, binding.PortraitRegion, key));
         }
         this.document = document;
         this.assets = assets;
     }
+    private static AtlasTexture Crop(Texture2D image, int[]? crop, string key)
+    {
+        if (crop is not { Length: 4 } || crop[0] < 0 || crop[1] < 0 || crop[2] <= 0 || crop[2] != crop[3]
+            || (long)crop[0] + crop[2] > image.GetWidth() || (long)crop[1] + crop[3] > image.GetHeight())
+            throw new InvalidOperationException("HUD portrait requires an in-bounds square physical-pixel crop: " + key);
+        var origin = image is AtlasTexture frame ? frame.Region.Position : Vector2.Zero;
+        return new AtlasTexture
+        {
+            Atlas = image is AtlasTexture atlas ? atlas.Atlas : image,
+            Region = new Rect2(origin + new Vector2(crop[0], crop[1]), new Vector2(crop[2], crop[3])),
+            FilterClip = true
+        };
+    }
+
     public static TacticalHudArt Load(AssetCatalog assets, PortraitCatalog portraits) => new(assets, portraits, PresentationJson.Load<TacticalHudArtDocument>("res://data/tactical-hud-art.json"));
     private static Texture2D Image(NarrativeArt image) => image.ResourcePath is { } path && ResourceLoader.Exists(path, "Texture2D")
         ? ResourceLoader.Load<Texture2D>(path) : throw new MissingArtResourceException(image.Source, "Missing source HUD art: " + image.Source);
@@ -95,6 +105,12 @@ public sealed class TacticalHudArt
         if (binding.PortraitId is not null)
             return portraitTextures[key];
         var unit = assets.ResolveUnit(portrait.UnitType, portrait.ActorKey);
-        return assets.CreateFrameTexture(unit, AssetCatalog.FrameIndex(unit, "idle"));
+        var idle = assets.CreateFrameTexture(unit, AssetCatalog.FrameIndex(unit, "idle"));
+        if (binding.PortraitRegion is not { } region)
+            return idle;
+        var cacheKey = (key, unit.Identity);
+        if (!genericPortraitTextures.TryGetValue(cacheKey, out var texture))
+            genericPortraitTextures.Add(cacheKey, texture = Crop(idle, region, key));
+        return texture;
     }
 }

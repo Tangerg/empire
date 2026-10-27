@@ -406,6 +406,37 @@ Check(controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1)).Request is null,
     "repeated clicks on that destination still cannot commit an order");
 Check(controller.ChooseCommand(stamp, "wait").Request?.Action?.GetProperty("command").GetProperty("ability").GetString() == "wait",
     "explicit wait remains available through the canonical command path");
+fixture.CommandsOverride = new[] { new TacticalCommand("wait", "wait", null, true, false, Array.Empty<TacticalTarget>()) };
+controller.Bind(fixture);
+controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1));
+var originWait = controller.ChooseCommand(stamp, "wait");
+Check(controller.Selection.Kind == TacticalSelectionKind.Unit && originWait.Request?.Action?.GetProperty("command").GetProperty("ability").GetString() == "wait",
+    "the explicit origin Wait button dispatches directly from selected Unit mode");
+Equal(Fixture.Cells(originWait.Request!.Action!.Value.GetProperty("path")), fixture.PathTo(1, new(0, 0)),
+    "origin orders reuse the canonical own-cell path");
+fixture.CommandsOverride = new[] { new TacticalCommand("origin-attack", "attack", "soldier_sword", false, true, new[] { TacticalTarget.Unit(new(3, 0), 2) }) };
+controller.Bind(fixture);
+controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1));
+var originAttack = controller.ChooseCommand(stamp, "origin-attack");
+Check(originAttack.Request is null && controller.Selection.Kind == TacticalSelectionKind.Target
+    && controller.Selection.Destination == new BoardCell(0, 0),
+    "an origin attack button arms its canonical targets without auto-attacking a singleton");
+Check(controller.Selection.TargetSubjects.Single() == TacticalTarget.Unit(new(3, 0), 2),
+    "origin attack preview preserves the typed target subject");
+var originEscape = controller.Key(stamp, "escape");
+Check(originEscape.Request is null && controller.Stamp == stamp && controller.Selection.Kind == TacticalSelectionKind.Destination,
+    "Escape from origin preview changes only selection, never revision or battle state");
+controller.Bind(fixture);
+controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1));
+fixture.UnitsOverride = new[] { new TacticalUnit(1, new(0, 0), false, true), new TacticalUnit(2, new(3, 0), false, true) };
+var actedOrigin = controller.ChooseCommand(stamp, "origin-attack");
+Check(actedOrigin.Request is null && actedOrigin.Status == TacticalInputStatus.Ignored && controller.Selection.Kind == TacticalSelectionKind.Unit,
+    "a no-longer-actionable selected actor cannot arm or dispatch through the origin button");
+controller.Bind(fixture);
+controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1));
+Check(controller.Selection.Kind == TacticalSelectionKind.Idle && controller.ChooseCommand(stamp, "origin-attack").Request is null,
+    "clicking an acted actor is inspection, not a command mode");
+fixture.UnitsOverride = null;
 fixture.CommandsOverride = null;
 controller.Bind(fixture);
 controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1));

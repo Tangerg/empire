@@ -985,7 +985,7 @@
       "topicId": "C01-UNIT-SWORDSMAN",
       "label": "剑士",
       "category": "combat-unit",
-      "png": "painted-units-v1/unit-swordsman.png",
+      "png": "painted-units-v1/unit-swordsman-v2.png",
       "runtimeReady": true,
       "qualityTier": "painted-v1-native-reviewed",
       "frames": 4,
@@ -1000,12 +1000,12 @@
         1
       ],
       "preserveAuthoredPalette": true,
-      "physicalWidth": 2170,
+      "physicalWidth": 2169,
       "physicalHeight": 725,
       "pixelDensity": 1,
-      "resourcePath": "res://assets/painted-units-v1/unit-swordsman.png",
-      "sha256": "65e9308a97d1fd8b0f5d9b7582e6d97175ffed21564ad97d58d17110852652a1",
-      "presentationScale": 0.0897436,
+      "resourcePath": "res://assets/painted-units-v1/unit-swordsman-v2.png",
+      "sha256": "95be9ac968edc96657081b34075370f456ad4e90304ebfaca6ef169c23c05560",
+      "presentationScale": 0.0847458,
       "frameRegions": [
         [
           0,
@@ -1016,38 +1016,38 @@
         [
           550,
           0,
-          520,
+          515,
           725
         ],
         [
-          1070,
+          1065,
           0,
-          645,
+          640,
           725
         ],
         [
-          1715,
+          1705,
           0,
-          455,
+          464,
           725
         ]
       ],
       "frameAnchors": [
         [
-          252,
-          550
+          251,
+          566
         ],
         [
-          255,
-          550
+          250,
+          587
         ],
         [
-          262,
-          551
+          240,
+          561
         ],
         [
-          205,
-          552
+          195,
+          587
         ]
       ],
       "textureFilter": "linear"

@@ -22,9 +22,15 @@ owner.
   with short names, native icons and shield silhouettes. Complete descriptions
   and costs remain available as tooltips. One order still reserves room for its
   cancel control and instruction; it does not create an undersized strip.
+  Selecting an actionable unit immediately exposes canonical commands at its
+  current cell (labelled “origin orders”), rather than disguising details tabs as
+  skills. Map movement and move-attack preview remain the controller's existing
+  paths. Details have one entry on the unit card.
+- An acted or enemy unit is inspection only: health, action state, dossier and a
+  close control, with no fake command bar or unrelated commander tactics.
 - End Turn is a separate, single-line control at the lower right. Undo remains
   visually secondary. No empty full-width opaque bar is drawn behind the map.
-- A forecast appears above the command area only while a valid target is being
+- A forecast replaces the bottom command island only while a valid target is being
   previewed. Its two columns show the acting unit's counter-damage/remaining HP
   and the actual recipient's strike-damage/remaining HP. Interception, collateral
   and lethal warnings remain visible. Cancellation shares the forecast header;
@@ -50,7 +56,10 @@ local disclosures, focus and artwork composition, not battle legality or damage.
 The selection controller remains the sole owner of selection/target transitions.
 
 Selecting a destination is always a preview, including one's own cell or a cell
-whose only order is Wait. Only choosing an order commits. Cycling available units
+whose only order is Wait. Only choosing an order commits. An explicit origin Wait button uses the queried
+own-cell path and submits through the same command/session boundary. A non-self
+origin command opens typed target preview even with one target; Escape changes no
+battle revision. Acted actors cannot dispatch origin commands. Cycling available units
 updates the canonical cursor hit; illegal clicks retain context and explain the
 refusal. Stale/detached callbacks and repeated emitted button signals are inert.
 
@@ -77,3 +86,7 @@ persistent counting defect and does not justify changing victory rules.
 Use `--capture-size=960x640` or `--capture-size=1180x812` for reproducible actual
 native window sizes. Evidence and recovery patches are retained separately in
 Library. Remote publication is not implied by local commits or verification.
+
+Native pointer ownership: equivalent projections retain controls; changes to hover details preserve an unchanged revision-bound command subtree without detaching it. Global orders are stable within a revision/busy binding. Forecasts stay inside the bottom safe area rather than covering the hovered map target. Native viewport press/release tests cover a hover refresh between press and release and duplicate-release suppression.
+
+The dossier PopupPanel and its ScrollContainer live for the HUD lifetime. Opening is deferred beyond the current GUI input event and revision-checked; projection refreshes replace only dossier content, never unregister or reopen the active native subwindow. Tests exercise native opening, synchronous hover refresh during visibility change, native disclosure clicks, and repeated close/reopen.

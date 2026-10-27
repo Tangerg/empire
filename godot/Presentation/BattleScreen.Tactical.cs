@@ -37,6 +37,8 @@ public partial class BattleScreen
         UpdateTactical();
     }
 
+    private (TacticalStamp Stamp, bool Busy)? _globalOrderBinding;
+
     private void UpdateTactical()
     {
         if (_tactical is null || _session is null || !Current(_tactical.Stamp, true))
@@ -49,6 +51,10 @@ public partial class BattleScreen
         var overlay = _tactical.Overlay();
         _overlay.ShowTactical(overlay);
         _board.ShowTacticalEmphasis(overlay);
+        var globalBinding = (stamp, IsInputBlocked);
+        if (_globalOrderBinding == globalBinding)
+            return;
+        _globalOrderBinding = globalBinding;
         var focusedGlobal = GetViewport().GuiGetFocusOwner();
         var globalFocusName = focusedGlobal is Button && _globalOrders.IsAncestorOf(focusedGlobal)
             ? focusedGlobal.Name.ToString() : null;

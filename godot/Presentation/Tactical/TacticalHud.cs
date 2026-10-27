@@ -22,6 +22,7 @@ public partial class TacticalHud : Control
             return;
         ReleaseTextureReferences(this);
         art = value;
+        current = null;
     }
     private static void ReleaseTextureReferences(Node node)
     {
@@ -44,15 +45,25 @@ public partial class TacticalHud : Control
 
     public void Apply(TacticalHudProjection projection)
     {
+        if (current is { } previous && Equivalent(previous, projection))
+            return;
+        var oldActions = current?.Sections.FirstOrDefault(section => section.Key is "commands" or "deployment" or "recruit" or "tactics");
+        var nextActions = projection.Sections.FirstOrDefault(section => section.Key is "commands" or "deployment" or "recruit" or "tactics");
+        var preserveActions = current is not null && current.Stamp == projection.Stamp && current.Busy == projection.Busy
+            && oldActions is not null && nextActions is not null && SameSection(oldActions, nextActions);
+        var retained = preserveActions ? GetChildren().Where(child => child.Name == oldActions!.Key || child.Name == "OrderTray").ToHashSet() : new HashSet<Node>();
+        if (detailPopup is not null)
+            retained.Add(detailPopup);
         var focused = detailPopup?.GuiGetFocusOwner() ?? GetViewport()?.GuiGetFocusOwner();
         var focusKey = focused?.GetMeta("hud_key", "").AsString();
         var scrollPosition = detailScroll?.ScrollVertical ?? 0;
-        var dossierOpen = detailPopup?.Visible == true;
         current = projection;
         var renderedGeneration = ++generation;
         submitted = false;
         foreach (var child in GetChildren())
         {
+            if (retained.Contains(child))
+                continue;
             ReleaseTextureReferences(child);
             RemoveChild(child);
             child.QueueFree();
@@ -60,17 +71,26 @@ public partial class TacticalHud : Control
         MouseFilter = MouseFilterEnum.Ignore;
         var details = new VBoxContainer { Name = "Details", SizeFlagsHorizontal = SizeFlags.ExpandFill };
         details.AddThemeConstantOverride("separation", 10);
-        detailPopup = new PopupPanel { Name = "UnitDossier", Size = new Vector2I(360, 340) };
-        detailPopup.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#30291e", 14, "#756344"));
-        AddChild(detailPopup);
-        detailScroll = new ScrollContainer
+        if (detailPopup is null)
         {
-            Name = "DetailScroll",
-            HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
-            CustomMinimumSize = new Vector2(328, 300)
-        };
+            detailPopup = new PopupPanel { Name = "UnitDossier", Size = new Vector2I(360, 340) };
+            detailPopup.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#30291e", 14, "#756344"));
+            AddChild(detailPopup);
+            detailScroll = new ScrollContainer
+            {
+                Name = "DetailScroll",
+                HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
+                CustomMinimumSize = new Vector2(328, 300)
+            };
+            detailPopup.AddChild(detailScroll);
+        }
+        foreach (var child in detailScroll!.GetChildren())
+        {
+            ReleaseTextureReferences(child);
+            detailScroll.RemoveChild(child);
+            child.QueueFree();
+        }
         detailScroll.AddChild(details);
-        detailPopup.AddChild(detailScroll);
         var forecast = projection.Sections.FirstOrDefault(section => section.Key == "forecast");
         var mainActions = projection.Sections.FirstOrDefault(section => section.Key is "commands" or "target" or "deployment" or "recruit" or "tactics");
         if (projection.Sections.Any(section => section.Key == "unit"))
@@ -80,10 +100,9 @@ public partial class TacticalHud : Control
             AddChild(portraitTray);
             Place(portraitTray, 0, 1, 0, 1, 14, -126, 274, -8);
         }
-        var actionCount = mainActions?.Key == "target" ? forecast is null ? 2 : 0 : mainActions?.Rows.Count(row => row.Key != "cancel")
-            ?? projection.Sections.Count(section => section.Key is "unit-details" or "stances" or "formations");
+        var actionCount = mainActions?.Key == "target" ? forecast is null ? 2 : 0 : mainActions?.Rows.Count(row => row.Key != "cancel") ?? 0;
         var actionSlots = Math.Max(2, Math.Min(4, actionCount));
-        if (actionCount > 0)
+        if (actionCount > 0 && !preserveActions)
         {
             var actionTray = TacticalHudStyle.CommandTray();
             actionTray.Name = "OrderTray";
@@ -93,6 +112,8 @@ public partial class TacticalHud : Control
         var target = projection.Sections.FirstOrDefault(section => section.Key == "target");
         foreach (var section in projection.Sections.OrderBy(section => Priority(section.Key)))
         {
+            if (preserveActions && section.Key == nextActions!.Key)
+                continue;
             if (section.Key == "target" && forecast is not null)
                 continue;
             var group = new VBoxContainer { Name = section.Key, SizeFlagsHorizontal = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore };
@@ -107,7 +128,7 @@ public partial class TacticalHud : Control
                 Place(group, 0, 1, 0, 1, 120, -118, 264, -35);
             }
             else if (section.Key == "forecast")
-                MountPlate(group, false, .5f, 1, .5f, 1, -182, -266, 182, -138);
+                MountPlate(group, false, 0, 1, 0, 1, 278, -126, 666, -8);
             else if (section == mainActions)
             {
                 AddChild(group);
@@ -205,6 +226,8 @@ public partial class TacticalHud : Control
             }
             var pairedForecast = section.Key == "forecast" && section.Rows.Any(row => row.Key == "attacker");
             if (pairedForecast)
+                group.TooltipText = string.Join("\n", section.Rows.Select(row => row.Label)) + "\n" + projection.Hint;
+            if (pairedForecast)
             {
                 var pair = new HBoxContainer { Name = "Exchange", SizeFlagsHorizontal = SizeFlags.ExpandFill };
                 pair.AddThemeConstantOverride("separation", 12);
@@ -214,8 +237,8 @@ public partial class TacticalHud : Control
                     var column = new VBoxContainer { Name = identity, SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsStretchRatio = 1 };
                     column.AddThemeConstantOverride("separation", 4);
                     pair.AddChild(column);
-                    AddReadOnly(column, section.Rows.Single(row => row.Key == identity), 14);
-                    AddReadOnly(column, section.Rows.Single(row => row.Key == damage), 15);
+                    AddReadOnly(column, section.Rows.Single(row => row.Key == identity), 13);
+                    AddReadOnly(column, section.Rows.Single(row => row.Key == damage), 12);
                 }
             }
             GridContainer? commandGrid = null;
@@ -226,7 +249,7 @@ public partial class TacticalHud : Control
             }
             foreach (var row in section.Rows)
             {
-                if (pairedForecast && row.Key is "attacker" or "recipient" or "strike" or "counter")
+                if (pairedForecast)
                     continue;
                 if (section.Key == "unit" && row.Key is "selection" or "owner")
                     continue;
@@ -235,7 +258,13 @@ public partial class TacticalHud : Control
                 if (row.Intent is not null)
                 {
                     var button = Order(row, section.Key, compact: row.Key == "cancel");
-                    if (row.Key == "cancel" && commandGrid is not null)
+                    if (row.Key == "cancel" && section.Key == "unit")
+                    {
+                        button.Text = "×";
+                        button.TooltipText = row.Label;
+                        header.AddChild(button);
+                    }
+                    else if (row.Key == "cancel" && commandGrid is not null)
                         header.AddChild(button);
                     else if (commandGrid is not null)
                     {
@@ -262,36 +291,12 @@ public partial class TacticalHud : Control
                 }
             }
         }
-        if (mainActions is null)
-        {
-            var shortcuts = new HBoxContainer { Name = "ContextTabs" };
-            AddChild(shortcuts);
-            Place(shortcuts, 0, 1, 0, 1, 292, -104, 292 + Math.Min(3, actionCount) * 106, -46);
-            foreach (var section in projection.Sections.Where(section => section.Key is "unit-details" or "stances" or "formations").Take(3))
-            {
-                var tab = new Button { Text = section.Title, SizeFlagsHorizontal = SizeFlags.ExpandFill, AutowrapMode = TextServer.AutowrapMode.WordSmart };
-                tab.AddThemeFontSizeOverride("font_size", 14);
-                TacticalHudStyle.OrderBadge(tab);
-                shortcuts.AddChild(tab);
-                var popup = detailPopup;
-                tab.Pressed += () =>
-                {
-                    if (generation != renderedGeneration || !IsInsideTree())
-                        return;
-                    expanded.Add(section.Key);
-                    var content = (VBoxContainer)details.FindChild(section.Key, true, false);
-                    content.GetNode<VBoxContainer>("Content").Visible = true;
-                    var toggle = content.GetChildren().OfType<Button>().Single();
-                    toggle.ButtonPressed = true;
-                    popup.PopupCentered();
-                    toggle.GrabFocus();
-                };
-            }
-        }
         if (projection.Sections.Any(section => section.Key is "unit-details" or "site" or "structure" or "stances" or "formations" or "roster"))
         {
-            var dossierTitle = projection.Sections.FirstOrDefault(section => section.Key is "site" or "structure" or "unit-details")?.Title
-                ?? projection.Sections.FirstOrDefault(section => section.Key == "roster")?.Title ?? "";
+            var dossierTitle = (projection.Sections.Any(section => section.Key == "unit")
+                ? projection.Sections.FirstOrDefault(section => section.Key == "unit-details")?.Title
+                : null)
+                ?? projection.Sections.FirstOrDefault(section => section.Key is "site" or "structure" or "unit-details" or "roster")?.Title ?? "";
             var dossier = new Button { Name = "DossierButton", Text = dossierTitle };
             CompactButton(dossier);
             AddChild(dossier);
@@ -299,13 +304,20 @@ public partial class TacticalHud : Control
             var popup = detailPopup;
             dossier.Pressed += () =>
             {
-                if (generation == renderedGeneration && IsInsideTree())
-                    popup.PopupCentered();
+                if (generation != renderedGeneration || !IsInsideTree())
+                    return;
+                var openingStamp = current?.Stamp;
+                Callable.From(() =>
+                {
+                    if (GodotObject.IsInstanceValid(this) && IsInsideTree() && current?.Stamp == openingStamp
+                        && GodotObject.IsInstanceValid(popup) && popup.IsInsideTree() && !popup.Visible)
+                        popup.PopupCentered();
+                }).CallDeferred();
             };
         }
         var hint = Label(projection.Hint, 13, TacticalHudStyle.Gold);
         hint.Name = "SelectionHint";
-        hint.Visible = ShowHint;
+        hint.Visible = ShowHint && mainActions is not null && forecast is null;
         hint.TooltipText = projection.Hint;
         hint.MouseFilter = MouseFilterEnum.Pass;
         hint.MaxLinesVisible = 1;
@@ -322,8 +334,6 @@ public partial class TacticalHud : Control
             AddChild(hint);
             Place(hint, 0, 1, 0, 1, 292, -32, 292 + actionSlots * 106, -10);
         }
-        if (dossierOpen)
-            detailPopup.PopupCentered();
         var mountedScroll = detailScroll;
         Callable.From(() =>
         {
@@ -377,7 +387,9 @@ public partial class TacticalHud : Control
             button.SetMeta("hud_key", key);
             button.Pressed += () =>
             {
-                if (IsInsideTree() && button.IsInsideTree() && renderedGeneration == generation && !submitted && !projection.Busy && !button.Disabled && ReferenceEquals(current, projection) && row.Enabled && intent.Stamp == current.Stamp)
+                if (IsInsideTree() && button.IsInsideTree() && !submitted && current is { Busy: false } live && !button.Disabled
+                    && intent.Stamp == live.Stamp && live.Sections.FirstOrDefault(value => value.Key == sectionKey)?.Rows
+                        .Any(value => SameRow(value, row) && value.Enabled) == true)
                 {
                     submitted = true;
                     IntentRequested?.Invoke(intent);
@@ -387,6 +399,32 @@ public partial class TacticalHud : Control
             return button;
         }
     }
+
+    private static bool SameRow(TacticalHudRow first, TacticalHudRow second) =>
+        first with
+        {
+            Intent = null
+        } == second with
+        {
+            Intent = null
+        }
+        && (first.Intent is null ? second.Intent is null : second.Intent is { } other
+            && first.Intent with
+            {
+                Action = null
+            } == other with
+            {
+                Action = null
+            }
+            && first.Intent.Action?.GetRawText() == other.Action?.GetRawText());
+
+    private static bool SameSection(TacticalHudSection first, TacticalHudSection second) =>
+        first.Key == second.Key && first.Title == second.Title && first.Rows.Count == second.Rows.Count
+        && first.Rows.Zip(second.Rows).All(pair => SameRow(pair.First, pair.Second));
+
+    private static bool Equivalent(TacticalHudProjection first, TacticalHudProjection second) =>
+        first.Stamp == second.Stamp && first.Hint == second.Hint && first.Busy == second.Busy && first.Portrait == second.Portrait
+        && first.Sections.Count == second.Sections.Count && first.Sections.Zip(second.Sections).All(pair => SameSection(pair.First, pair.Second));
 
     private static void Place(Control control, float left, float top, float right, float bottom, float x1, float y1, float x2, float y2)
     {
@@ -415,8 +453,8 @@ public partial class TacticalHud : Control
         var inset = new MarginContainer { MouseFilter = MouseFilterEnum.Ignore };
         inset.AddThemeConstantOverride("margin_left", content.Name == "crown" ? 32 : 20);
         inset.AddThemeConstantOverride("margin_right", content.Name == "crown" ? 42 : 18);
-        inset.AddThemeConstantOverride("margin_top", content.Name == "crown" ? 15 : 10);
-        inset.AddThemeConstantOverride("margin_bottom", 12);
+        inset.AddThemeConstantOverride("margin_top", content.Name == "crown" ? 15 : content.Name == "forecast" ? 6 : 10);
+        inset.AddThemeConstantOverride("margin_bottom", content.Name == "forecast" ? 6 : 12);
         panel.AddChild(inset);
         inset.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         inset.AddChild(content);

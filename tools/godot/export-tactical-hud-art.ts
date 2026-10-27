@@ -8,6 +8,11 @@ import { objectFields, readNativePortraitCatalog, requirePortraitId } from './po
 
 const catalog = readNativePortraitCatalog(resolve('godot'));
 const nativePortraitFiles = new Set([...catalog.values()].map(asset => resolve('godot', asset.resourcePath.slice('res://'.length))));
+const selected = JSON.parse(readFileSync('godot/data/selected-assets.json', 'utf8')).assets as Array<{
+  id?: string; topicId: string; frameOrder?: string[]; frameRegions?: number[][];
+  frameWidth?: number; frameHeight?: number; width?: number; height?: number; pixelDensity: number;
+}>;
+const artBindings = JSON.parse(readFileSync('godot/data/art-bindings.json', 'utf8'));
 const metadataPath = 'godot/data/tactical-hud-art.json';
 const metadata = objectFields(JSON.parse(readFileSync(metadataPath, 'utf8')),
   ['schema', 'portraits', 'icons', 'sourceIconKeys'], 'native tactical HUD');
@@ -27,14 +32,26 @@ for (const [key, value] of Object.entries(metadata.portraits)) {
     const crop = binding.portraitRegion;
     const portrait = catalog.get(binding.portraitId as string)!;
     const png = readFileSync(resolve('godot', portrait.resourcePath.slice('res://'.length)));
-    if (!png.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])) throw new Error(`HUD portrait is not a PNG: ${key}`);
+    if (!png.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))) throw new Error(`HUD portrait is not a PNG: ${key}`);
     if (!Array.isArray(crop) || crop.length !== 4 || !crop.every(Number.isSafeInteger)
       || crop[0] < 0 || crop[1] < 0 || crop[2] <= 0 || crop[2] !== crop[3]
       || crop[0] + crop[2] > png.readUInt32BE(16) || crop[1] + crop[3] > png.readUInt32BE(20)) {
       throw new Error(`HUD portrait requires an in-bounds square physical-pixel crop: ${key}`);
     }
   } else if (binding.portraitRegion !== null) {
-    throw new Error(`Generic HUD portrait cannot declare a named-image crop: ${key}`);
+    const actor = binding.actorKey === null ? null : artBindings.CANDIDATE_01_ACTOR_ART[binding.actorKey as string];
+    const unit = actor?.unitArt ?? artBindings.CANDIDATE_01_UNIT_ART[binding.unitType];
+    const asset = selected.find(asset => unit?.appearanceId ? asset.id === unit.appearanceId : !asset.id && asset.topicId === unit?.topicId);
+    const idle = asset?.frameOrder?.indexOf('idle') ?? -1;
+    if (!asset || idle < 0) throw new Error(`Missing generic idle-frame source: ${key}`);
+    const region = asset.frameRegions?.[idle];
+    const width = region?.[2] ?? (asset.frameWidth ?? asset.width ?? 0) * asset.pixelDensity;
+    const height = region?.[3] ?? (asset.frameHeight ?? asset.height ?? 0) * asset.pixelDensity;
+    const crop = binding.portraitRegion;
+    if (!Array.isArray(crop) || crop.length !== 4 || !crop.every(Number.isSafeInteger)
+      || crop[0] < 0 || crop[1] < 0 || crop[2] <= 0 || crop[2] !== crop[3]
+      || crop[0] + crop[2] > width || crop[1] + crop[3] > height)
+      throw new Error(`Generic HUD portrait requires an in-bounds square idle-frame-local crop: ${key}`);
   }
 }
 

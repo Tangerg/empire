@@ -168,7 +168,17 @@ public sealed partial class GrayFlagSession
                         }).Append(Pick("cancel",
                         text.Format("ui.hud.cancel_shortcut"),
                         TacticalHudIntentKind.Back)));
-        if (!busy && human && selection.Kind == TacticalSelectionKind.Idle && S(state, "phase") == "playing")
+        else if (!busy && selection.Kind == TacticalSelectionKind.Unit && commandable is not null)
+            Section("commands",
+                text.Format("ui.hud.origin_commands"),
+                engine.CommandsAt(state, commandable, TacticalQueries.Position(commandable))
+                    .Select(command => Pick(command.Key,
+                        contentText.CommandName(command), TacticalHudIntentKind.Command, command.Key,
+                        hint: contentText.CommandHint(command)) with
+                    {
+                        Icon = command.Weapon is { } id ? "weapon:" + id : "ability:" + command.Ability
+                    }).Append(Pick("cancel", text.Format("ui.hud.cancel_shortcut"), TacticalHudIntentKind.Back)));
+        if (!busy && human && selection.Kind == TacticalSelectionKind.Idle && inspect is null && S(state, "phase") == "playing")
             Section("tactics",
                 text.Format("ui.hud.tactics"),
                 state["commanders"]!.AsArray().OfType<JsonObject>().SelectMany(commander => engine.Support.Tactics(state,
@@ -349,8 +359,11 @@ public sealed partial class GrayFlagSession
                 : selection.Kind is TacticalSelectionKind.Destination or TacticalSelectionKind.Target ? "ui.hud.unit_preview"
                 : "ui.hud.unit_selected";
             rows.Insert(0, new("selection", text.Format(inspectionState == "ui.hud.unit_preview" ? "ui.hud.unit_preview_short" : inspectionState),
-                Hint: text.Format(inspectionState), Selected: selected is not null && N(selected, "id") == N(inspect, "id")));
-            Section("unit", Name(inspect), rows.Where(row => row.Key is "hp" or "selection"));
+                Hint: text.Format(B(inspect, "done") ? "ui.hud.inspection_done" : inspectionState), Selected: selected is not null && N(selected, "id") == N(inspect, "id")));
+            var summary = rows.Where(row => row.Key is "hp" or "selection");
+            if (selected is null)
+                summary = summary.Append(Pick("cancel", text.Format("ui.hud.cancel_shortcut"), TacticalHudIntentKind.Back));
+            Section("unit", Name(inspect), summary);
             Section("unit-details", text.Format("ui.hud.unit_details"), rows.Where(row => row.Key is not ("hp" or "done" or "selection")));
             if (commandable is not null && N(commandable, "id") == N(inspect, "id"))
             {
