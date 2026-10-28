@@ -1,0 +1,333 @@
+{
+  "checks": "PASS hash/dimensions/regions/anchor bounds/alpha128 gutter. No build/import executed.",
+  "assets": [
+    {
+      "asset": "C01-FFV1-UNIT-KNIGHT",
+      "old": {
+        "assetId": "C01-FFV1-UNIT-KNIGHT",
+        "topicId": "C01-UNIT-KNIGHT",
+        "label": "\u9a91\u58eb",
+        "category": "combat-unit",
+        "png": "runtime-approved-v5/combat-unit/unit-knight@2x.png",
+        "width": 416,
+        "height": 64,
+        "runtimeReady": true,
+        "qualityTier": "approved-chunky-v5-export-verified",
+        "frameWidth": 104,
+        "frameHeight": 64,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "attack",
+          "walk-b"
+        ],
+        "anchor": [
+          47.7908787541713,
+          50.93659621802002
+        ],
+        "footprint": [
+          1,
+          1
+        ],
+        "preserveAuthoredPalette": true,
+        "physicalWidth": 832,
+        "physicalHeight": 128,
+        "pixelDensity": 2,
+        "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-knight@2x.png",
+        "sha256": "b908fc8b74ec665a9a66f449132a587fd5782a1e65959a3fe9ea3785ce415bba",
+        "presentationScale": 0.62,
+        "groundFront": [
+          47.7908787541713,
+          50.93659621802002
+        ]
+      },
+      "registered": {
+        "assetId": "C01-FFV1-UNIT-KNIGHT",
+        "topicId": "C01-UNIT-KNIGHT",
+        "label": "\u9a91\u58eb",
+        "category": "combat-unit",
+        "png": "painted-c01-v1/unit-knight-v1.png",
+        "runtimeReady": true,
+        "qualityTier": "painted-c01-v1-review-pending",
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "attack",
+          "walk-b"
+        ],
+        "footprint": [
+          1,
+          1
+        ],
+        "preserveAuthoredPalette": true,
+        "physicalWidth": 2169,
+        "physicalHeight": 725,
+        "pixelDensity": 1,
+        "resourcePath": "res://assets/painted-c01-v1/unit-knight-v1.png",
+        "sha256": "f96803bdf4c3062bdb0240164a53cdff16be413b245c9c0a1955a2aabca61c8b",
+        "presentationScale": 0.0847458,
+        "frameRegions": [
+          [
+            0,
+            0,
+            528,
+            725
+          ],
+          [
+            528,
+            0,
+            533,
+            725
+          ],
+          [
+            1061,
+            0,
+            701,
+            725
+          ],
+          [
+            1762,
+            0,
+            407,
+            725
+          ]
+        ],
+        "frameAnchors": [
+          [
+            268,
+            555
+          ],
+          [
+            314,
+            555
+          ],
+          [
+            284,
+            557
+          ],
+          [
+            206,
+            555
+          ]
+        ],
+        "textureFilter": "linear"
+      },
+      "oldIdleAlpha128HeightPx": 88,
+      "oldIdleWorldHeight": 27.28,
+      "newIdleAlpha128HeightPx": 413,
+      "newBodyWorldHeight": 35,
+      "note": "Cain spear extends above head; body height excludes spear. Anchors use projected ground under stable torso/mount; not animated toe. Native movement acceptance pending."
+    },
+    {
+      "asset": "cain-stage01",
+      "old": {
+        "id": "cain-stage01",
+        "topicId": "C01-UNIT-LEGION-SHIELD",
+        "png": "runtime-approved-v5/hero-appearance/cain-stage01@2x.png",
+        "hdPng": "runtime-approved-v5/hero-appearance/cain-stage01@2x.png",
+        "pixelDensity": 2,
+        "frameWidth": 104,
+        "frameHeight": 64,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "attack",
+          "walk-b"
+        ],
+        "anchor": [
+          40.8372602739726,
+          50.579726027397264
+        ],
+        "hdWidth": 832,
+        "hdHeight": 128,
+        "physicalWidth": 832,
+        "physicalHeight": 128,
+        "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/cain-stage01@2x.png",
+        "sha256": "0967c3364daa06890b5c9791b1131ffb8f312e851e3f7611141267e425d6d01f",
+        "presentationScale": 0.62,
+        "groundFront": [
+          40.8372602739726,
+          50.579726027397264
+        ]
+      },
+      "registered": {
+        "id": "cain-stage01",
+        "topicId": "C01-UNIT-LEGION-SHIELD",
+        "png": "painted-c01-v1/cain-stage01-v1.png",
+        "pixelDensity": 1,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "attack",
+          "walk-b"
+        ],
+        "physicalWidth": 2172,
+        "physicalHeight": 724,
+        "resourcePath": "res://assets/painted-c01-v1/cain-stage01-v1.png",
+        "sha256": "6154d00388c770ba5d9376ebe473682241acd2503f0e039988007c183732fb45",
+        "presentationScale": 0.0911458,
+        "frameRegions": [
+          [
+            0,
+            0,
+            516,
+            724
+          ],
+          [
+            516,
+            0,
+            513,
+            724
+          ],
+          [
+            1029,
+            0,
+            728,
+            724
+          ],
+          [
+            1757,
+            0,
+            415,
+            724
+          ]
+        ],
+        "frameAnchors": [
+          [
+            233,
+            560
+          ],
+          [
+            269,
+            560
+          ],
+          [
+            280,
+            565
+          ],
+          [
+            211,
+            560
+          ]
+        ],
+        "textureFilter": "linear",
+        "qualityTier": "painted-c01-v1-review-pending",
+        "preserveAuthoredPalette": true
+      },
+      "oldIdleAlpha128HeightPx": 89,
+      "oldIdleWorldHeight": 27.59,
+      "newIdleAlpha128HeightPx": 493,
+      "newBodyWorldHeight": 35,
+      "note": "Cain spear extends above head; body height excludes spear. Anchors use projected ground under stable torso/mount; not animated toe. Native movement acceptance pending."
+    },
+    {
+      "asset": "roderick-stage01",
+      "old": {
+        "id": "roderick-stage01",
+        "topicId": "C01-UNIT-HEAVY-KNIGHT",
+        "png": "runtime-approved-v5/hero-appearance/roderick-stage01@2x.png",
+        "hdPng": "runtime-approved-v5/hero-appearance/roderick-stage01@2x.png",
+        "pixelDensity": 2,
+        "frameWidth": 128,
+        "frameHeight": 80,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "attack",
+          "walk-b"
+        ],
+        "anchor": [
+          60.2428722280887,
+          63.65575501583949
+        ],
+        "hdWidth": 1024,
+        "hdHeight": 160,
+        "physicalWidth": 1024,
+        "physicalHeight": 160,
+        "resourcePath": "res://assets/runtime-approved-v5/hero-appearance/roderick-stage01@2x.png",
+        "sha256": "215fc2c3d3206fc5319ea6d5cbd9042453c422e6c677d73d588c655364b4dbdf",
+        "presentationScale": 0.62,
+        "groundFront": [
+          60.2428722280887,
+          63.65575501583949
+        ]
+      },
+      "registered": {
+        "id": "roderick-stage01",
+        "topicId": "C01-UNIT-HEAVY-KNIGHT",
+        "png": "painted-c01-v1/roderick-stage01-v1.png",
+        "pixelDensity": 1,
+        "frames": 4,
+        "frameOrder": [
+          "idle",
+          "walk-a",
+          "attack",
+          "walk-b"
+        ],
+        "physicalWidth": 2169,
+        "physicalHeight": 725,
+        "resourcePath": "res://assets/painted-c01-v1/roderick-stage01-v1.png",
+        "sha256": "7406959bedaed1d4ba496037f799be792412e192cbc41a773f1c55f732c2beee",
+        "presentationScale": 0.0986842,
+        "frameRegions": [
+          [
+            0,
+            0,
+            512,
+            725
+          ],
+          [
+            512,
+            0,
+            532,
+            725
+          ],
+          [
+            1044,
+            0,
+            628,
+            725
+          ],
+          [
+            1672,
+            0,
+            497,
+            725
+          ]
+        ],
+        "frameAnchors": [
+          [
+            250,
+            557
+          ],
+          [
+            248,
+            557
+          ],
+          [
+            231,
+            557
+          ],
+          [
+            213,
+            557
+          ]
+        ],
+        "textureFilter": "linear",
+        "qualityTier": "painted-c01-v1-review-pending",
+        "preserveAuthoredPalette": true
+      },
+      "oldIdleAlpha128HeightPx": 112,
+      "oldIdleWorldHeight": 34.72,
+      "newIdleAlpha128HeightPx": 456,
+      "newBodyWorldHeight": 45,
+      "note": "Cain spear extends above head; body height excludes spear. Anchors use projected ground under stable torso/mount; not animated toe. Native movement acceptance pending."
+    }
+  ],
+  "portraitNote": "Cain/Roderick independent PortraitCatalog crop untouched. Knight idle-frame crop should be set by HUD art owner to [150,155,265,265]."
+}

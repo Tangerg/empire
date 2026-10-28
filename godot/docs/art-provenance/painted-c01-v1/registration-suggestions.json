@@ -1,0 +1,290 @@
+[
+  {
+    "candidate": "godot/assets/painted-c01-v1/unit-knight-v1.png",
+    "identitySource": "godot/assets/runtime-approved-v5/combat-unit/unit-knight@2x.png",
+    "identitySourceSize": [
+      832,
+      128
+    ],
+    "physicalSize": [
+      2169,
+      725
+    ],
+    "sha256": "f96803bdf4c3062bdb0240164a53cdff16be413b245c9c0a1955a2aabca61c8b",
+    "bodyHeightApprox": 413,
+    "suggestedBodyWorldHeight": 35,
+    "presentationScaleSuggestion": 0.0847458,
+    "frames": [
+      {
+        "name": "idle",
+        "sourceRect": [
+          0,
+          0,
+          528,
+          725
+        ],
+        "visibleBoundsSheet": [
+          64,
+          162,
+          418,
+          575
+        ],
+        "rootAnchorRegionSuggested": [
+          268,
+          555
+        ]
+      },
+      {
+        "name": "walk-a",
+        "sourceRect": [
+          528,
+          0,
+          533,
+          725
+        ],
+        "visibleBoundsSheet": [
+          639,
+          163,
+          981,
+          595
+        ],
+        "rootAnchorRegionSuggested": [
+          314,
+          555
+        ]
+      },
+      {
+        "name": "attack",
+        "sourceRect": [
+          1061,
+          0,
+          701,
+          725
+        ],
+        "visibleBoundsSheet": [
+          1141,
+          178,
+          1746,
+          578
+        ],
+        "rootAnchorRegionSuggested": [
+          284,
+          557
+        ]
+      },
+      {
+        "name": "walk-b",
+        "sourceRect": [
+          1762,
+          0,
+          407,
+          725
+        ],
+        "visibleBoundsSheet": [
+          1778,
+          162,
+          2116,
+          588
+        ],
+        "rootAnchorRegionSuggested": [
+          206,
+          555
+        ]
+      }
+    ],
+    "anchorCaveat": "Manual projected ground reference below stable pelvis/horse body, +/-12 source px; not alpha-bbox/extended weapon centre or snapping to animated support toe. Parent must validate native scale and movement before accepting.",
+    "review": "Transparent complete figures, separate horizontal alpha128 gutters. Humanoid walk phases visibly opposite. Horse phases visibly differ but leg occlusion makes exact diagonal pair less certain; native movement review required. No manifest registration."
+  },
+  {
+    "candidate": "godot/assets/painted-c01-v1/cain-stage01-v1.png",
+    "identitySource": "godot/assets/runtime-approved-v5/hero-appearance/cain-stage01@2x.png",
+    "identitySourceSize": [
+      832,
+      128
+    ],
+    "physicalSize": [
+      2172,
+      724
+    ],
+    "sha256": "6154d00388c770ba5d9376ebe473682241acd2503f0e039988007c183732fb45",
+    "bodyHeightApprox": 384,
+    "suggestedBodyWorldHeight": 35,
+    "presentationScaleSuggestion": 0.0911458,
+    "frames": [
+      {
+        "name": "idle",
+        "sourceRect": [
+          0,
+          0,
+          516,
+          724
+        ],
+        "visibleBoundsSheet": [
+          56,
+          83,
+          418,
+          576
+        ],
+        "rootAnchorRegionSuggested": [
+          233,
+          560
+        ]
+      },
+      {
+        "name": "walk-a",
+        "sourceRect": [
+          516,
+          0,
+          513,
+          724
+        ],
+        "visibleBoundsSheet": [
+          614,
+          83,
+          959,
+          593
+        ],
+        "rootAnchorRegionSuggested": [
+          269,
+          560
+        ]
+      },
+      {
+        "name": "attack",
+        "sourceRect": [
+          1029,
+          0,
+          728,
+          724
+        ],
+        "visibleBoundsSheet": [
+          1099,
+          214,
+          1727,
+          577
+        ],
+        "rootAnchorRegionSuggested": [
+          280,
+          565
+        ]
+      },
+      {
+        "name": "walk-b",
+        "sourceRect": [
+          1757,
+          0,
+          415,
+          724
+        ],
+        "visibleBoundsSheet": [
+          1787,
+          118,
+          2134,
+          582
+        ],
+        "rootAnchorRegionSuggested": [
+          211,
+          560
+        ]
+      }
+    ],
+    "anchorCaveat": "Manual projected ground reference below stable pelvis/horse body, +/-12 source px; not alpha-bbox/extended weapon centre or snapping to animated support toe. Parent must validate native scale and movement before accepting.",
+    "review": "Transparent complete figures, separate horizontal alpha128 gutters. Humanoid walk phases visibly opposite. Horse phases visibly differ but leg occlusion makes exact diagonal pair less certain; native movement review required. No manifest registration."
+  },
+  {
+    "candidate": "godot/assets/painted-c01-v1/roderick-stage01-v1.png",
+    "identitySource": "godot/assets/runtime-approved-v5/hero-appearance/roderick-stage01@2x.png",
+    "identitySourceSize": [
+      1024,
+      160
+    ],
+    "physicalSize": [
+      2169,
+      725
+    ],
+    "sha256": "7406959bedaed1d4ba496037f799be792412e192cbc41a773f1c55f732c2beee",
+    "bodyHeightApprox": 456,
+    "suggestedBodyWorldHeight": 45,
+    "presentationScaleSuggestion": 0.0986842,
+    "frames": [
+      {
+        "name": "idle",
+        "sourceRect": [
+          0,
+          0,
+          512,
+          725
+        ],
+        "visibleBoundsSheet": [
+          44,
+          127,
+          485,
+          583
+        ],
+        "rootAnchorRegionSuggested": [
+          250,
+          557
+        ]
+      },
+      {
+        "name": "walk-a",
+        "sourceRect": [
+          512,
+          0,
+          532,
+          725
+        ],
+        "visibleBoundsSheet": [
+          540,
+          127,
+          1018,
+          582
+        ],
+        "rootAnchorRegionSuggested": [
+          248,
+          557
+        ]
+      },
+      {
+        "name": "attack",
+        "sourceRect": [
+          1044,
+          0,
+          628,
+          725
+        ],
+        "visibleBoundsSheet": [
+          1070,
+          147,
+          1649,
+          577
+        ],
+        "rootAnchorRegionSuggested": [
+          231,
+          557
+        ]
+      },
+      {
+        "name": "walk-b",
+        "sourceRect": [
+          1672,
+          0,
+          497,
+          725
+        ],
+        "visibleBoundsSheet": [
+          1695,
+          127,
+          2162,
+          586
+        ],
+        "rootAnchorRegionSuggested": [
+          213,
+          557
+        ]
+      }
+    ],
+    "anchorCaveat": "Manual projected ground reference below stable pelvis/horse body, +/-12 source px; not alpha-bbox/extended weapon centre or snapping to animated support toe. Parent must validate native scale and movement before accepting.",
+    "review": "Transparent complete figures, separate horizontal alpha128 gutters. Humanoid walk phases visibly opposite. Horse phases visibly differ but leg occlusion makes exact diagonal pair less certain; native movement review required. No manifest registration."
+  }
+]

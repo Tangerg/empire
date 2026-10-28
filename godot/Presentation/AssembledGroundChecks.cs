@@ -33,6 +33,22 @@ public partial class AssembledGroundChecks : Node
         var state = engine.CreateState(level);
         var before = EcmaJson.Stringify(state);
         var map = state["map"]!.AsObject();
+        var actual = PresentationJson.Load<AssembledGroundDocument>("res://data/scenes/c01-01-assembled-ground.json");
+        actual.ValidateLevel(level);
+        foreach (var decoration in actual.Objects.Where(item => item.SelectionCell is null))
+        {
+            var x = (int)Math.Floor(decoration.Contact[0]);
+            var y = (int)Math.Floor(decoration.Contact[1]);
+            var width = map["width"]!.GetValue<int>();
+            var height = map["height"]!.GetValue<int>();
+            var outside = x < 0 || y < 0 || x >= width || y >= height;
+            if (!outside)
+            {
+                var terrain = engine.Catalog.Definition("terrains", map["tiles"]![y * width + x]!.GetValue<string>())!.Value;
+                outside = terrain.GetProperty("tags").EnumerateArray().Any(tag => tag.GetString() == "outside");
+            }
+            Require(outside, $"C01 decorative tree foot cannot occupy a playable cell: {decoration.Id}.");
+        }
         var sites = new[] { new Coord(3, 16), new Coord(18, 13), new Coord(22, 16), new Coord(34, 13) };
         SceneObjectPlacement Site(Coord cell) => new() { Id = $"Site_{cell.X}_{cell.Y}", AssetId = "house",
             Contact = [cell.X + .5, cell.Y + .5], Scale = 1, SelectionCell = [cell.X, cell.Y], OwnsMapStructureBody = true, Pointer = "target" };
