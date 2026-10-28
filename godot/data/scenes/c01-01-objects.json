@@ -1,82 +1,6 @@
 {
   "schema": 1,
   "objects": {
-    "cottage": {
-      "resourcePath": "res://assets/native/c01-assembled-v1/cottage.png",
-      "pixelSize": [
-        1536,
-        1024
-      ],
-      "anchorPixels": [
-        750,
-        879
-      ],
-      "groundFrontPixels": [
-        750,
-        897
-      ],
-      "contactShadowRadiiPixels": [
-        360,
-        55
-      ]
-    },
-    "pine-broad": {
-      "resourcePath": "res://assets/native/c01-assembled-v1/pine-broad.png",
-      "pixelSize": [
-        1060,
-        1484
-      ],
-      "anchorPixels": [
-        534,
-        1380
-      ],
-      "groundFrontPixels": [
-        534,
-        1393
-      ],
-      "contactShadowRadiiPixels": [
-        130,
-        30
-      ]
-    },
-    "granary": {
-      "resourcePath": "res://assets/native/c01-assembled-v1/granary.png",
-      "pixelSize": [
-        1536,
-        1024
-      ],
-      "anchorPixels": [
-        720,
-        875
-      ],
-      "groundFrontPixels": [
-        720,
-        910
-      ],
-      "contactShadowRadiiPixels": [
-        360,
-        55
-      ]
-    },
-    "outpost": {
-      "resourcePath": "res://assets/native/c01-assembled-v1/outpost.png",
-      "pixelSize": [
-        1536,
-        1024
-      ],
-      "anchorPixels": [
-        653,
-        914
-      ],
-      "groundFrontPixels": [
-        653,
-        942
-      ],
-      "contactShadowRadiiPixels": [
-        410,
-        55
-      ]
-    },
     "west-house-faithful": {
       "resourcePath": "res://assets/native/c01-faithful-sample-v4/west-house.png",
       "pixelSize": [
@@ -89,7 +13,7 @@
       ],
       "groundFrontPixels": [
         746,
-        965
+        942
       ],
       "contactShadowRadiiPixels": [
         400,
@@ -113,6 +37,101 @@
       "contactShadowRadiiPixels": [
         125,
         25
+      ]
+    },
+    "pine-tall-faithful": {
+      "resourcePath": "res://assets/native/c01-faithful-complete/pine-tall.png",
+      "pixelSize": [
+        1377,
+        1142
+      ],
+      "anchorPixels": [
+        696,
+        1023
+      ],
+      "groundFrontPixels": [
+        696,
+        1055
+      ],
+      "contactShadowRadiiPixels": [
+        92,
+        19
+      ]
+    },
+    "pine-young-faithful": {
+      "resourcePath": "res://assets/native/c01-faithful-complete/pine-young.png",
+      "pixelSize": [
+        1377,
+        1142
+      ],
+      "anchorPixels": [
+        713,
+        966
+      ],
+      "groundFrontPixels": [
+        713,
+        988
+      ],
+      "contactShadowRadiiPixels": [
+        78,
+        16
+      ]
+    },
+    "central-house-faithful": {
+      "resourcePath": "res://assets/native/c01-faithful-complete/central-house.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        831,
+        953
+      ],
+      "groundFrontPixels": [
+        831,
+        953
+      ],
+      "contactShadowRadiiPixels": [
+        370,
+        40
+      ]
+    },
+    "granary-house-faithful": {
+      "resourcePath": "res://assets/native/c01-faithful-complete/granary-house.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        762,
+        877
+      ],
+      "groundFrontPixels": [
+        762,
+        877
+      ],
+      "contactShadowRadiiPixels": [
+        370,
+        40
+      ]
+    },
+    "east-house-faithful": {
+      "resourcePath": "res://assets/native/c01-faithful-complete/east-house.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        767,
+        899
+      ],
+      "groundFrontPixels": [
+        767,
+        899
+      ],
+      "contactShadowRadiiPixels": [
+        370,
+        40
       ]
     }
   }

@@ -49,6 +49,23 @@ public partial class AssembledGroundChecks : Node
             }
             Require(outside, $"C01 decorative tree foot cannot occupy a playable cell: {decoration.Id}.");
         }
+        var actualCatalog = PresentationJson.Load<SceneObjectCatalog>(actual.ObjectCatalogPath);
+        foreach (var site in actual.Objects.Where(item => item.SelectionCell is not null))
+        {
+            var entrance = actualCatalog.Objects[site.AssetId];
+            Require(entrance.AnchorPixels.SequenceEqual(entrance.GroundFrontPixels),
+                $"C01 doorway is the building sorting front; root shrubs must not bury a unit at the entrance: {site.Id}.");
+        }
+        foreach (var assetId in actual.Objects.Select(item => item.AssetId).Distinct())
+        {
+            var asset = actualCatalog.Objects[assetId];
+            var texture = ResourceLoader.Load<Texture2D>(asset.ResourcePath);
+            using var image = texture.GetImage();
+            Require(image.DetectAlpha() != Image.AlphaMode.None,
+                $"C01 standing artwork must retain real transparent pixels: {assetId}.");
+            Require(image.HasMipmaps(),
+                $"C01 minified artwork needs imported mip levels, not only a filter setting: {assetId}.");
+        }
         var sites = new[] { new Coord(3, 16), new Coord(18, 13), new Coord(22, 16), new Coord(34, 13) };
         SceneObjectPlacement Site(Coord cell) => new() { Id = $"Site_{cell.X}_{cell.Y}", AssetId = "house",
             Contact = [cell.X + .5, cell.Y + .5], Scale = 1, SelectionCell = [cell.X, cell.Y], OwnsMapStructureBody = true, Pointer = "target" };
