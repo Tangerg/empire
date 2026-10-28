@@ -18,17 +18,17 @@
     23.75958941
   ],
   "levelSourceSha256": "076088e175ab603ac44c3b6f96218dbd69e0b53685cc07c048da4cc768b3225d",
-  "resourcePath": "res://assets/native/c01-assembled-v1/ground.png",
+  "resourcePath": "res://assets/native/c01-faithful-sample-v4/ground.png",
   "objectCatalogPath": "res://data/scenes/c01-01-objects.json",
   "objects": [
     {
       "id": "WestOutpost",
-      "assetId": "outpost",
+      "assetId": "west-house-faithful",
       "contact": [
         3.5,
         16.5
       ],
-      "scale": 0.12,
+      "scale": 0.13,
       "selectionCell": [
         3,
         16
@@ -83,12 +83,12 @@
     },
     {
       "id": "WestPine",
-      "assetId": "pine-broad",
+      "assetId": "west-pine-faithful",
       "contact": [
         7.5,
         13.5
       ],
-      "scale": 0.085,
+      "scale": 0.106,
       "selectionCell": null,
       "ownsMapStructureBody": false,
       "pointer": "pass-through"
