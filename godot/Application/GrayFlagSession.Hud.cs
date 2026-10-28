@@ -112,7 +112,12 @@ public sealed partial class GrayFlagSession
                     Selected: objective.Status == "completed");
             else
             {
-                if (root)
+                // Wrappers (such as failOn) have one child even when that child
+                // aggregates several tasks. Suppress only genuinely single-task progress.
+                var tasks = objective;
+                while (tasks.Children.Count == 1)
+                    tasks = tasks.Children[0];
+                if (root && tasks.Children.Count > 1)
                     yield return new(objective.Id, progress, description);
                 foreach (var child in objective.Children)
                     foreach (var row in ObjectiveRows(child, false))

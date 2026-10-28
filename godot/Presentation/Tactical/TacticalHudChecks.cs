@@ -231,6 +231,21 @@ public partial class TacticalHudChecks : Node
         var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
             .Single(value => value["id"]!.GetValue<string>() == "c01-07");
         var state = engine.CreateState(level);
+        var opening = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<string>() == "c01-01");
+        var openingSession = new GrayFlagSession(new(engine, presentation, new JsonArray()), opening);
+        var openingBefore = EcmaJson.Stringify(openingSession.Snapshot());
+        var openingSnapshot = openingSession.Snapshot();
+        var viewer = openingSnapshot["players"]!.AsArray().OfType<JsonObject>()
+            .Single(player => player["controller"]!.GetValue<string>() == "human")["id"]!.GetValue<int>();
+        var openingObjectives = engine.Victory.Objectives(openingSnapshot, viewer);
+        var singleTask = openingObjectives.Single().Children.Single();
+        var openingRows = openingSession.ProjectHud(new(0, 0), new(), null, null, false)
+            .Sections.Single(section => section.Key == "objectives").Rows;
+        Require(openingRows.Count == 1 && openingRows[0].Key == singleTask.Id && openingRows[0].Hint.Length == 0
+            && openingRows[0].Label.Contains(presentation.Battle.ObjectiveProgress(singleTask), StringComparison.Ordinal),
+            "A single-task C01 objective shows its canonical progress once, on the named task.");
+        Require(openingBefore == EcmaJson.Stringify(openingSession.Snapshot()), "Objective compaction cannot change battle facts.");
         var objectiveStates = state["players"]![0]!["objectiveStates"]!.AsObject();
         objectiveStates["granary"]!["status"] = "completed";
         foreach (var hidden in new[] { false, true })
@@ -399,7 +414,7 @@ public partial class TacticalHudChecks : Node
             details.GetChildren().OfType<Button>().Single().ButtonPressed = false;
             ((PopupPanel)hud.FindChild("UnitDossier", true, false)).Hide();
             hud.ShowHint = true;
-            hud.Apply(new(new(1, 1), "尚未行动：选择指令执行，或返回重新规划。", new[]
+            hud.Apply(new(new(1, 1), GodotTextCatalog.LoadSimplifiedChinese().Format("ui.hud.selection.unit"), new[]
             {
                 new TacticalHudSection("commands", "指令", new[]
                 {
@@ -415,6 +430,9 @@ public partial class TacticalHudChecks : Node
                 && hint.GetGlobalRect().End.X <= tray.GetGlobalRect().End.X - 10
                 && hint.GetGlobalRect().End.Y <= tray.GetGlobalRect().End.Y,
                 "A single command still reserves a complete material-backed instruction and cancel area.");
+            Require(hint.GetThemeFont("font").GetStringSize(hint.Text, fontSize: hint.GetThemeFontSize("font_size")).X <= hint.Size.X,
+                "The localized move/attack instruction fits fully without ellipsis at both native window sizes.");
+            Require(hint.TooltipText == hint.Text, "The instruction remains accessible through its complete tooltip.");
             hud.ShowHint = false;
         }
         RemoveChild(host);
