@@ -89,15 +89,23 @@ public static class BoardLighting
     {
         if (!frameSize.IsFinite() || frameSize.X <= 0 || frameSize.Y <= 0 || !float.IsFinite(presentationScale) || presentationScale <= 0)
             throw new ArgumentOutOfRangeException(nameof(frameSize));
+        return CreateGroundContact(frameSize * presentationScale * new Vector2(.32f, .055f), cache);
+    }
+
+    /// <summary>Explicit contact radii in the parent's local coordinates; no body-outline shadow.</summary>
+    public static Sprite2D CreateGroundContact(Vector2 radii, ShadowCache? cache = null)
+    {
+        if (!radii.IsFinite() || radii.X <= 0 || radii.Y <= 0)
+            throw new ArgumentOutOfRangeException(nameof(radii));
         LayerFilterComposition.Raster Raster()
         {
-            var image = ShadowRaster.Ellipse(frameSize * presentationScale * new Vector2(.32f, .055f), new Color("#28231f"), .22f, 0, 2);
+            var image = ShadowRaster.Ellipse(radii, new Color("#28231f"), .22f, 0, 2);
             return new(image.Image, -image.Centre / 2, 2);
         }
         Sprite2D sprite;
         if (cache is not null)
         {
-            var frame = cache.Get(("structure-contact", frameSize, presentationScale), Raster);
+            var frame = cache.Get(("ground-contact", radii), Raster);
             sprite = new Sprite2D { Texture = frame.Texture, Position = frame.Origin, Scale = Vector2.One / frame.Density };
         }
         else

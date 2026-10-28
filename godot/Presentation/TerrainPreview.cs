@@ -20,6 +20,7 @@ public partial class TerrainPreview : Node2D
     private Rect2 _visualBounds;
     private float? _reviewScale;
     private Coord? _reviewFocus;
+    private bool _hideObjects;
 
     public override async void _Ready()
     {
@@ -27,6 +28,7 @@ public partial class TerrainPreview : Node2D
         {
             foreach (var argument in OS.GetCmdlineUserArgs())
             {
+                if (argument == "--hide-assembled-objects") _hideObjects = true;
                 if (argument.StartsWith("--level=", StringComparison.Ordinal))
                     _levelId = argument[8..];
                 if (argument.StartsWith("--scale=", StringComparison.Ordinal))
@@ -61,6 +63,12 @@ public partial class TerrainPreview : Node2D
             _board.ConfigureGround(rendering.Ground);
             _board.ConfigureDynamicState();
             _board.RenderState(state);
+            if (_hideObjects)
+            {
+                var ground = _board.GetNode("AuthoredScene").GetChildren().OfType<AssembledGroundView>().Single();
+                foreach (var body in ground.GetChildren().OfType<Sprite2D>().Where(body => body.Name != "CleanGround"))
+                    body.Hide();
+            }
             if (state.ToJsonString() != unchanged)
                 throw new InvalidOperationException("Terrain preview mutated canonical state.");
             _heading = new Label

@@ -1,0 +1,1201 @@
+{
+  "levelId": "c01-01",
+  "pixelSize": [
+    1536,
+    1024
+  ],
+  "worldScale": 0.8798181899041609,
+  "originPixels": [
+    13.9748278,
+    89.65361629
+  ],
+  "cellXPixels": [
+    36.37115073,
+    0.20583468
+  ],
+  "cellYPixels": [
+    6.17017828,
+    23.75958941
+  ],
+  "levelSourceSha256": "076088e175ab603ac44c3b6f96218dbd69e0b53685cc07c048da4cc768b3225d",
+  "resourcePath": "res://assets/native/c01-assembled-v1/ground.png",
+  "objectCatalogPath": "res://data/scenes/c01-01-objects.json",
+  "objects": [
+    {
+      "id": "WestOutpost",
+      "assetId": "outpost",
+      "contact": [
+        3.5,
+        16.5
+      ],
+      "scale": 0.12,
+      "selectionCell": [
+        3,
+        16
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "CentralVillage",
+      "assetId": "cottage",
+      "contact": [
+        18.5,
+        13.5
+      ],
+      "scale": 0.14,
+      "selectionCell": [
+        18,
+        13
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Granary",
+      "assetId": "granary",
+      "contact": [
+        22.5,
+        16.5
+      ],
+      "scale": 0.13,
+      "selectionCell": [
+        22,
+        16
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "EastOutpost",
+      "assetId": "outpost",
+      "contact": [
+        34.5,
+        13.5
+      ],
+      "scale": 0.12,
+      "selectionCell": [
+        34,
+        13
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "WestPine",
+      "assetId": "pine-broad",
+      "contact": [
+        7.5,
+        13.5
+      ],
+      "scale": 0.085,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "VillagePines",
+      "assetId": "pine-broad",
+      "contact": [
+        25.5,
+        13.5
+      ],
+      "scale": 0.085,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine00",
+      "assetId": "pine-broad",
+      "contact": [
+        0.84966,
+        0.343924
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine01",
+      "assetId": "pine-broad",
+      "contact": [
+        4.082328,
+        0.736801
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine02",
+      "assetId": "pine-broad",
+      "contact": [
+        7.081485,
+        1.047525
+      ],
+      "scale": 0.115,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine03",
+      "assetId": "pine-broad",
+      "contact": [
+        9.301771,
+        0.439055
+      ],
+      "scale": 0.098,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine04",
+      "assetId": "pine-broad",
+      "contact": [
+        12.221526,
+        -1.754593
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine05",
+      "assetId": "pine-broad",
+      "contact": [
+        14.545547,
+        -1.353844
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine06",
+      "assetId": "pine-broad",
+      "contact": [
+        17.792516,
+        -1.045267
+      ],
+      "scale": 0.115,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine07",
+      "assetId": "pine-broad",
+      "contact": [
+        20.948986,
+        0.338152
+      ],
+      "scale": 0.098,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine08",
+      "assetId": "pine-broad",
+      "contact": [
+        23.097766,
+        0.151184
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine09",
+      "assetId": "pine-broad",
+      "contact": [
+        25.917413,
+        0.547639
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine10",
+      "assetId": "pine-broad",
+      "contact": [
+        28.255735,
+        0.864088
+      ],
+      "scale": 0.115,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine11",
+      "assetId": "pine-broad",
+      "contact": [
+        31.660017,
+        0.24536
+      ],
+      "scale": 0.098,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine12",
+      "assetId": "pine-broad",
+      "contact": [
+        34.744981,
+        0.050281
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine13",
+      "assetId": "pine-broad",
+      "contact": [
+        36.793653,
+        0.453416
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine14",
+      "assetId": "pine-broad",
+      "contact": [
+        39.627601,
+        0.765571
+      ],
+      "scale": 0.115,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine15",
+      "assetId": "pine-broad",
+      "contact": [
+        0.182844,
+        3.464233
+      ],
+      "scale": 0.098,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine16",
+      "assetId": "pine-broad",
+      "contact": [
+        3.51562,
+        3.267007
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine17",
+      "assetId": "pine-broad",
+      "contact": [
+        6.500476,
+        3.662031
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine18",
+      "assetId": "pine-broad",
+      "contact": [
+        24.946647,
+        3.838934
+      ],
+      "scale": 0.115,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine19",
+      "assetId": "pine-broad",
+      "contact": [
+        27.937908,
+        3.223784
+      ],
+      "scale": 0.098,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine20",
+      "assetId": "pine-broad",
+      "contact": [
+        30.362036,
+        3.034431
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine21",
+      "assetId": "pine-broad",
+      "contact": [
+        33.594705,
+        3.427308
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine22",
+      "assetId": "pine-broad",
+      "contact": [
+        36.593861,
+        3.738032
+      ],
+      "scale": 0.115,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine23",
+      "assetId": "pine-broad",
+      "contact": [
+        38.814148,
+        3.129561
+      ],
+      "scale": 0.098,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine24",
+      "assetId": "pine-broad",
+      "contact": [
+        -0.068815,
+        6.244239
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine25",
+      "assetId": "pine-broad",
+      "contact": [
+        1.979857,
+        6.647373
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine26",
+      "assetId": "pine-broad",
+      "contact": [
+        5.089153,
+        6.957143
+      ],
+      "scale": 0.115,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine27",
+      "assetId": "pine-broad",
+      "contact": [
+        29.309733,
+        6.158079
+      ],
+      "scale": 0.098,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine28",
+      "assetId": "pine-broad",
+      "contact": [
+        31.458514,
+        5.97111
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine29",
+      "assetId": "pine-broad",
+      "contact": [
+        34.278161,
+        6.367566
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine30",
+      "assetId": "pine-broad",
+      "contact": [
+        36.616483,
+        6.684015
+      ],
+      "scale": 0.115,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine31",
+      "assetId": "pine-broad",
+      "contact": [
+        40.020765,
+        6.065287
+      ],
+      "scale": 0.098,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine32",
+      "assetId": "pine-broad",
+      "contact": [
+        -0.318661,
+        9.823906
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine33",
+      "assetId": "pine-broad",
+      "contact": [
+        1.592338,
+        10.228233
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine34",
+      "assetId": "pine-broad",
+      "contact": [
+        38.844767,
+        10.242213
+      ],
+      "scale": 0.115,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine35",
+      "assetId": "pine-broad",
+      "contact": [
+        -2.185909,
+        13.375497
+      ],
+      "scale": 0.098,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine36",
+      "assetId": "pine-broad",
+      "contact": [
+        0.596172,
+        13.183042
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine37",
+      "assetId": "pine-broad",
+      "contact": [
+        39.100901,
+        13.27035
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine38",
+      "assetId": "pine-broad",
+      "contact": [
+        -3.286673,
+        21.97104
+      ],
+      "scale": 0.115,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine39",
+      "assetId": "pine-broad",
+      "contact": [
+        -0.983782,
+        21.361854
+      ],
+      "scale": 0.098,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine40",
+      "assetId": "pine-broad",
+      "contact": [
+        35.583481,
+        20.87671
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine41",
+      "assetId": "pine-broad",
+      "contact": [
+        37.714758,
+        21.279129
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine42",
+      "assetId": "pine-broad",
+      "contact": [
+        -3.230755,
+        26.179383
+      ],
+      "scale": 0.115,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine43",
+      "assetId": "pine-broad",
+      "contact": [
+        -1.285817,
+        25.573298
+      ],
+      "scale": 0.098,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine44",
+      "assetId": "pine-broad",
+      "contact": [
+        34.951029,
+        25.091017
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine45",
+      "assetId": "pine-broad",
+      "contact": [
+        36.724353,
+        25.496536
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine46",
+      "assetId": "pine-broad",
+      "contact": [
+        -3.835673,
+        30.39345
+      ],
+      "scale": 0.115,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine47",
+      "assetId": "pine-broad",
+      "contact": [
+        -0.816878,
+        29.778062
+      ],
+      "scale": 0.098,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine48",
+      "assetId": "pine-broad",
+      "contact": [
+        1.056555,
+        29.593479
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine49",
+      "assetId": "pine-broad",
+      "contact": [
+        31.686335,
+        29.749009
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine50",
+      "assetId": "pine-broad",
+      "contact": [
+        33.749309,
+        30.067843
+      ],
+      "scale": 0.115,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine51",
+      "assetId": "pine-broad",
+      "contact": [
+        36.547826,
+        29.454363
+      ],
+      "scale": 0.098,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine52",
+      "assetId": "pine-broad",
+      "contact": [
+        -4.256811,
+        33.848337
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine53",
+      "assetId": "pine-broad",
+      "contact": [
+        -2.070464,
+        34.250279
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine54",
+      "assetId": "pine-broad",
+      "contact": [
+        0.901158,
+        34.561241
+      ],
+      "scale": 0.115,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine55",
+      "assetId": "pine-broad",
+      "contact": [
+        3.534466,
+        33.949192
+      ],
+      "scale": 0.098,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine56",
+      "assetId": "pine-broad",
+      "contact": [
+        7.004917,
+        33.750774
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine57",
+      "assetId": "pine-broad",
+      "contact": [
+        10.127446,
+        34.144605
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine58",
+      "assetId": "pine-broad",
+      "contact": [
+        12.328094,
+        34.462247
+      ],
+      "scale": 0.115,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine59",
+      "assetId": "pine-broad",
+      "contact": [
+        15.457028,
+        33.845904
+      ],
+      "scale": 0.098,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine60",
+      "assetId": "pine-broad",
+      "contact": [
+        18.018831,
+        33.655358
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine61",
+      "assetId": "pine-broad",
+      "contact": [
+        21.389173,
+        34.047042
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine62",
+      "assetId": "pine-broad",
+      "contact": [
+        24.526004,
+        34.356574
+      ],
+      "scale": 0.115,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine63",
+      "assetId": "pine-broad",
+      "contact": [
+        26.883964,
+        33.74691
+      ],
+      "scale": 0.098,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine64",
+      "assetId": "pine-broad",
+      "contact": [
+        29.941393,
+        33.55207
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine65",
+      "assetId": "pine-broad",
+      "contact": [
+        32.403088,
+        33.951626
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine66",
+      "assetId": "pine-broad",
+      "contact": [
+        35.732662,
+        34.259488
+      ],
+      "scale": 0.115,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine67",
+      "assetId": "pine-broad",
+      "contact": [
+        -4.485527,
+        38.43794
+      ],
+      "scale": 0.098,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine68",
+      "assetId": "pine-broad",
+      "contact": [
+        -2.199072,
+        38.249778
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine69",
+      "assetId": "pine-broad",
+      "contact": [
+        0.758249,
+        38.645041
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine70",
+      "assetId": "pine-broad",
+      "contact": [
+        3.241395,
+        38.918147
+      ],
+      "scale": 0.115,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine71",
+      "assetId": "pine-broad",
+      "contact": [
+        6.776201,
+        38.340377
+      ],
+      "scale": 0.098,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine72",
+      "assetId": "pine-broad",
+      "contact": [
+        9.998838,
+        38.144105
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine73",
+      "assetId": "pine-broad",
+      "contact": [
+        12.185185,
+        38.546047
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine74",
+      "assetId": "pine-broad",
+      "contact": [
+        15.163957,
+        38.814859
+      ],
+      "scale": 0.115,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine75",
+      "assetId": "pine-broad",
+      "contact": [
+        17.790115,
+        38.244961
+      ],
+      "scale": 0.098,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine76",
+      "assetId": "pine-broad",
+      "contact": [
+        21.260565,
+        38.046542
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine77",
+      "assetId": "pine-broad",
+      "contact": [
+        24.383095,
+        38.440374
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine78",
+      "assetId": "pine-broad",
+      "contact": [
+        26.590893,
+        38.715865
+      ],
+      "scale": 0.115,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine79",
+      "assetId": "pine-broad",
+      "contact": [
+        29.712677,
+        38.141673
+      ],
+      "scale": 0.098,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "BorderPine80",
+      "assetId": "pine-broad",
+      "contact": [
+        32.274479,
+        37.951126
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "SouthwestPine",
+      "assetId": "pine-broad",
+      "contact": [
+        3.9462164175817795,
+        27.63238472631823
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "SouthwestSapling",
+      "assetId": "pine-broad",
+      "contact": [
+        6.382189385489273,
+        28.83184115596796
+      ],
+      "scale": 0.085,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "SouthPineWest",
+      "assetId": "pine-broad",
+      "contact": [
+        10.114110428023563,
+        30.81974761391986
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "SouthPineTall",
+      "assetId": "pine-broad",
+      "contact": [
+        11.229481173117357,
+        31.862291640761374
+      ],
+      "scale": 0.085,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "SouthPineMiddle",
+      "assetId": "pine-broad",
+      "contact": [
+        12.019771903961892,
+        32.065886520994184
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "SouthPineEast",
+      "assetId": "pine-broad",
+      "contact": [
+        13.7676970436269,
+        32.13492039022101
+      ],
+      "scale": 0.085,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "SouthPineFar",
+      "assetId": "pine-broad",
+      "contact": [
+        16.039850590688243,
+        32.03105967294651
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "SouthPineFront",
+      "assetId": "pine-broad",
+      "contact": [
+        16.49652144799229,
+        32.74260401020286
+      ],
+      "scale": 0.085,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "EastPine",
+      "assetId": "pine-broad",
+      "contact": [
+        35.7837988092415,
+        22.93730028447135
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "EastPineLower",
+      "assetId": "pine-broad",
+      "contact": [
+        36.237047462140396,
+        28.531113519839465
+      ],
+      "scale": 0.085,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    }
+  ]
+}

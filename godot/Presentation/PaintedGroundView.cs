@@ -29,6 +29,7 @@ public partial class PaintedGroundView : BoardGroundView
         JsonObject registeredMap, ReadOnlyContent content)
     {
         ArgumentNullException.ThrowIfNull(document);
+        if (document.Occluders is null) throw new InvalidOperationException("Painted ground requires explicit occluders.");
         ArgumentNullException.ThrowIfNull(borrowedTexture);
         ArgumentNullException.ThrowIfNull(registeredMap);
         ArgumentNullException.ThrowIfNull(content);

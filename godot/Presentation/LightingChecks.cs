@@ -89,9 +89,12 @@ public partial class LightingChecks : Node
             }
             else
             {
-                Require(board.GetNodeOrNull<PaintedGroundView>("AuthoredScene/PaintedGround") is not null
+                var assembled = board.GetNodeOrNull<AssembledGroundView>("AuthoredScene/AssembledGround");
+                Require(assembled is not null && board.GetNodeOrNull<PaintedGroundView>("AuthoredScene/PaintedGround") is null
                     && board.GetNodeOrNull<TerrainView>("AuthoredScene/Terrain") is null,
-                    "Current painted campaign must use its registered renderer, not a procedural lighting overlay.");
+                    "C01 must use independent registered objects, not baked occluders or a procedural lighting overlay.");
+                Require(assembled!.DepthEntries.All(entry => entry.Node.GetNodeOrNull<Sprite2D>("SourceStructureContact") is not null),
+                    "Every independent C01 object owns its local ground-contact shadow.");
             }
             Require(shadow.GetMeta("composition_inputs").AsInt32() == 3 && sprite.SelfModulate.A == 0, "Figure must compose contact, ring and strip once, without a second original draw.");
             Require(shadow.GetMeta("source_texture").AsUInt64() == sprite.Texture.GetInstanceId(), "Integrated figure shadow sampled the wrong source frame.");

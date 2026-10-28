@@ -36,17 +36,16 @@ public partial class PaintedSurfaceChecks : Node
         var state = engine.CreateState(level);
         TerrainChecks.CheckOpeningHills(engine, state);
         var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
-        var art = PresentationJson.Load<PaintedGroundDocument>(scene.PaintedGroundPath!);
-        art.ValidateLevel(level);
+        var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
         var board = new BoardView();
         AddChild(board);
         try
         {
-            board.Configure(new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, art.CreatePlane), level, scene);
-            board.ConfigureGround(art.Factory(state["map"]!.AsObject()));
+            board.Configure(new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, rendering.Plane), level, scene);
+            board.ConfigureGround(rendering.Ground);
             board.RenderState(state);
             Require(board.RenderedUnitCount == 19 && board.RenderedStructureCount == 0,
-                "The opening must render all 19 actors without duplicating the four painted buildings.");
+                "The opening must render all 19 actors without duplicating the four authored buildings.");
             foreach (var unit in state["units"]!.AsArray().OfType<JsonObject>())
             {
                 var cell = new Coord(unit["x"]!.GetValue<int>(), unit["y"]!.GetValue<int>());

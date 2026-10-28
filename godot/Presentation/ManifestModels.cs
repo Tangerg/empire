@@ -321,6 +321,7 @@ public sealed class AuthoredScene
     {
         get; init;
     }
+    public string? AssembledGroundPath { get; init; }
     public int[]? OpeningFocus
     {
         get; init;

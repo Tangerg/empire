@@ -51,7 +51,7 @@ public abstract class StandingVisual(Node2D node)
     }
 }
 
-public sealed class SpriteStandingVisual(Sprite2D sprite) : StandingVisual(sprite)
+public sealed class SpriteStandingVisual(Sprite2D sprite, bool receivesPointer = true) : StandingVisual(sprite)
 {
     public override bool Covers(Vector2 globalPoint) => sprite.IsPixelOpaque(sprite.ToLocal(globalPoint));
     public override Rect2 GlobalBounds
@@ -62,9 +62,10 @@ public sealed class SpriteStandingVisual(Sprite2D sprite) : StandingVisual(sprit
             return BoundsOf(new[] { rect.Position, new Vector2(rect.End.X, rect.Position.Y), rect.End, new Vector2(rect.Position.X, rect.End.Y) }.Select(sprite.ToGlobal).ToArray());
         }
     }
-    public override bool ContainsPointer(Vector2 globalPoint) => Covers(globalPoint);
+    public override bool ContainsPointer(Vector2 globalPoint) => receivesPointer && Covers(globalPoint);
     public override bool IntersectsPointer(Vector2[] globalPolygon)
     {
+        if (!receivesPointer) return false;
         // Placement may conservatively avoid transparent sprite canvas; actual pointer hits still use opaque pixels.
         var rect = sprite.GetRect();
         return Geometry2D.IntersectPolygons(globalPolygon.Select(sprite.ToLocal).ToArray(),
