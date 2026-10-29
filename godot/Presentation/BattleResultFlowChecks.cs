@@ -329,8 +329,8 @@ public partial class BattleResultFlowChecks : Node
         Require(!Field<AiTurnPacer>(game, "computerPacer").IsRunning, "Busy presentation must not start the AI pacing loop.");
         Require(screen.IsPresenting && session.GetSnapshot().Revision == revision, "Busy save/load altered the committed revision or canceled playback.");
         var invoked = 0;
-        // Save/load intentionally delegate to the Game guard; restart has an
-        // additional screen-level idle gate because it replaces the binding.
+        // Disabled screen affordances match the application idle policy; the Game
+        // guards remain authoritative for shortcuts and direct callers.
         screen.BindApplicationActions(() => Invoke(game, "Save"), () => Invoke(game, "Load"), () => invoked++);
         foreach (var button in Descendants(screen).OfType<Button>().Where(button => new[] { "保存", "读取", "重新开始" }.Contains(button.Text)))
         {

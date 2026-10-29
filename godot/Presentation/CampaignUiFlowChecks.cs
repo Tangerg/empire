@@ -207,6 +207,24 @@ public partial class CampaignUiFlowChecks : Node
         screen.BindSession(new(text, presentation.Battle, PortraitCatalogResources.Load(), session,
             new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)),
             level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
+        // A detached screen under a Node has no parent Control to size it.
+        screen.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.TopLeft);
+        GetWindow().Size = new Vector2I(960, 640);
+        screen.Size = new Vector2(960, 640);
+        await Layout();
+        Button(screen, "BattleLogButton").EmitSignal(Godot.Button.SignalName.Pressed);
+        await Layout();
+        var emptyDialog = (AcceptDialog)screen.FindChild("BattleLogDialog", true, false);
+        var emptyJournal = (RichTextLabel)screen.FindChild("BattleLogText", true, false);
+        Check(emptyDialog.Size.Y <= 200 && emptyJournal.Text == string.Join("\n\n", screen.RecentMessages) && emptyJournal.HasFocus(),
+            $"The initial short journal retains its real receipt, compact height and reading focus: size={emptyDialog.Size}, focus={emptyJournal.HasFocus()}, text={emptyJournal.Text}.");
+        Escape();
+        await Layout();
+        Button(screen, "BattleLogButton").EmitSignal(Godot.Button.SignalName.Pressed);
+        await Layout();
+        Check(emptyDialog.Size.Y <= 200, "Reopening a short journal remains compact after native initial auto-layout.");
+        Escape();
+        await Layout();
         screen.AppendMessage("保留可见回执");
         screen.ShowFeedback("待保留的反馈");
         var surface = (Control)screen.FindChild("FeedbackPanel", true, false);
@@ -214,15 +232,17 @@ public partial class CampaignUiFlowChecks : Node
         screen.AppendMessage("");
         Check(toast.Text == "保留可见回执" && toast.Visible, "Silent events cannot erase the last readable toast.");
         for (var index = 0; index < 75; index++)
-            screen.AppendMessage($"{index:00} · 托伦 → 军团盾卫：受到 11 点碰撞伤害；剩余 HP 7。" + new string('界', 70));
+            screen.AppendMessage($"{index:00} · 托伦 → 军团盾卫：受到 11 点碰撞伤害；剩余 HP 7。" + new string('界', 30 + index % 3 * 100));
         screen.AppendMessage("连续回执");
         screen.AppendMessage("连续回执");
         Check(screen.RecentMessages.Count == 60 && screen.RecentMessages[^1] == "连续回执 ×2",
             "The visible journal retains the existing bounded/compressed single-owner log.");
-        foreach (var size in new[] { new Vector2I(960, 640), new Vector2I(1180, 760) })
+        foreach (var size in new[] { new Vector2I(640, 360), new Vector2I(960, 640), new Vector2I(1180, 760) })
         {
             GetWindow().Size = size;
+            screen.Size = size;
             await Layout();
+            Check(screen.Size == (Vector2)size, "Journal fixture uses the requested native content dimensions.");
             var entry = Button(screen, "BattleLogButton");
             Check(entry.IsVisibleInTree() && new Rect2(Vector2.Zero, size).Encloses(entry.GetGlobalRect()), "Journal entry is directly discoverable inside the viewport.");
             entry.GrabFocus();
@@ -231,17 +251,61 @@ public partial class CampaignUiFlowChecks : Node
             await Layout();
             var dialog = (AcceptDialog)screen.FindChild("BattleLogDialog", true, false);
             var journal = (RichTextLabel)screen.FindChild("BattleLogText", true, false);
+            Check(journal.HasFocus(), "Opening the journal starts in its native keyboard reading region.");
             Check(dialog.Visible && dialog.Size.X <= size.X && dialog.Size.Y <= size.Y,
                 "Keyboard opening of a full long journal remains bounded rather than growing to sixty lines.");
             Check(journal.Text == string.Join("\n\n", screen.RecentMessages) && journal.GetVScrollBar().MaxValue > journal.Size.Y,
                 "All ordered receipts are available through an actual vertical scroll region.");
             Check(!surface.Visible && journal.Text.Contains("74 · 托伦 → 军团盾卫", StringComparison.Ordinal), "The journal suppresses competing feedback without losing its real event entries.");
+            var hint = (Label)screen.FindChild("BattleLogReadingHint", true, false);
+            Check(journal.GetGlobalRect().End.Y <= hint.GetGlobalRect().Position.Y
+                && hint.GetGlobalRect().End.Y <= dialog.GetOkButton().GetGlobalRect().Position.Y,
+                "Journal reading hint has its own row between prose and close, never overlaid on a receipt.");
             Check(dialog.GetOkButton().Text == text.Format("ui.common.close") && journal.GetGlobalRect().End.Y <= dialog.GetOkButton().GetGlobalRect().Position.Y,
                 $"Localized close remains separate from long scrolling content: label={dialog.GetOkButton().Text}, journal={journal.GetGlobalRect()}, close={dialog.GetOkButton().GetGlobalRect()}.");
+            journal.GrabFocus();
+            void ReadKey(Key key)
+            {
+                GetViewport().PushInput(new InputEventKey { Keycode = key, Pressed = true });
+                GetViewport().PushInput(new InputEventKey { Keycode = key, Pressed = false });
+            }
+            ReadKey(Key.Home);
+            await Layout();
+            var bar = journal.GetVScrollBar();
+            Check(bar.Value == 0, "Native journal Home reaches the oldest retained receipt.");
+            ReadKey(Key.Pagedown);
+            await Layout();
+            var readingPosition = bar.Value;
+            Check(readingPosition > 0, "Native journal PgDn reads forward without a battle command.");
+            var evictedHeight = journal.GetParagraphOffset(2);
+            Check(evictedHeight > journal.GetThemeFontSize("normal_font_size"), "Eviction compensation uses wrapped paragraph geometry, not a fixed one-line guess.");
+            screen.AppendMessage("追加回执 · 阅读期间不能被拉到末尾。");
+            await Layout();
+            Check(Math.Abs(bar.Value - Math.Max(0, readingPosition - evictedHeight)) <= 1, "Appending a receipt preserves the historical reading anchor even when the oldest bounded entry is evicted.");
+            ReadKey(Key.Home);
+            await Layout();
+            screen.AppendMessage("追加回执 · 最旧锚点已被淘汰。");
+            await Layout();
+            Check(bar.Value == 0 && journal.Text.StartsWith(screen.RecentMessages[0], StringComparison.Ordinal),
+                "When the anchored oldest entry is evicted, reading clamps to the new oldest retained receipt.");
+            ReadKey(Key.End);
+            await Layout();
+            screen.AppendMessage("追加回执 · 已在末尾时继续跟随。");
+            await Layout();
+            Check(bar.Value >= bar.MaxValue - bar.Page - 1 && session.Revision == 0,
+                "Native End and live follow show the latest receipt without issuing a battle order.");
             Escape();
             await Layout();
-            Check(!dialog.Visible && surface.Visible && session.Revision == 0, "Esc dismisses journal and restores retained feedback without a map command.");
+            Check(!dialog.Visible && surface.Visible && session.Revision == 0 && entry.HasFocus(), "Esc dismisses journal, restores visible entry focus and retained feedback without a map command.");
         }
+        var closing = (AcceptDialog)screen.FindChild("BattleLogDialog", true, false);
+        closing.PopupCentered();
+        Escape();
+        screen.BindApplicationActions();
+        var currentEntry = Button(screen, "SystemMenuButton");
+        currentEntry.GrabFocus();
+        await Layout();
+        Check(currentEntry.HasFocus(), "A binding change invalidates deferred journal focus restoration.");
         RemoveChild(screen);
         screen.Free();
         await Layout();

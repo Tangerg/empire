@@ -515,7 +515,7 @@ public partial class CameraIntegrationChecks : Node
                 save.EmitSignal(Button.SignalName.Pressed);
                 Require(saves == 0, "Application callbacks must wait until native popup dispatch completes.");
                 await Layout();
-                Require(exits == 0 && restarts == 0 && saves == 1, "Busy exit/restart are blocked while save remains available");
+                Require(exits == 0 && restarts == 0 && saves == 0 && save.Disabled, "Busy system actions reflect the application save/load idle contract without dispatching callbacks");
                 Wheel(MouseButton.WheelUp, ctrl: true);
                 screen._Process(0);
                 GuiButton(MouseButton.Left, false, new Vector2(150, 150));

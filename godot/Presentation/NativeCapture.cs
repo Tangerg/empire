@@ -14,6 +14,7 @@ namespace Empire.Presentation;
 public partial class NativeCapture : Node
 {
     private string _directory = "";
+    private int _journalFixtureReceipts;
     private int _sequence;
     private bool _capturing;
     private bool _motionArmed;
@@ -60,6 +61,35 @@ public partial class NativeCapture : Node
 
     public override void _Input(InputEvent input)
     {
+        if (OS.GetCmdlineUserArgs().Contains("--journal-ui-fixture")
+            && input is InputEventKey { Pressed: true, Echo: false } fixtureKey && fixtureKey.Keycode is Key.F6 or Key.F7
+            && FindBattleScreen(this) is { } battle)
+        {
+            if (_journalFixtureReceipts == 0)
+            {
+                var marker = new Label { Text = "战报测试夹具 · 合成回执 · 非实际战绩", Position = new Vector2(340, 62), ZIndex = 4096 };
+                marker.AddThemeColorOverride("font_color", Colors.White);
+                marker.AddThemeColorOverride("font_shadow_color", Colors.Black);
+                marker.AddThemeConstantOverride("shadow_outline_size", 4);
+                AddChild(marker);
+                GetWindow().Title = "Empire JOURNAL UI FIXTURE — F7 long log / F6 append receipt";
+                if (battle.FindChild("BattleLogDialog", true, false) is Window journal)
+                    journal.WindowInput += journalInput =>
+                    {
+                        if (journalInput is InputEventKey { Pressed: true, Echo: false, Keycode: Key.F6 })
+                        {
+                            _Input(journalInput);
+                            journal.SetInputAsHandled();
+                        }
+                    };
+            }
+            var count = fixtureKey.Keycode == Key.F7 ? 60 : 1;
+            for (var i = 0; i < count; i++)
+                battle.AppendMessage($"测试回执 {++_journalFixtureReceipts:D2} · 边境弓手 → 军团盾卫：这是用于检查换行、历史阅读和新回执跟随的合成记录，不代表实际攻击或通关。");
+            GetViewport().SetInputAsHandled();
+            return;
+        }
+
         if (input is InputEventKey { Pressed: true, Echo: false, Keycode: Key.F12 })
             Capture();
         if (input is InputEventKey { Pressed: true, Echo: false, Keycode: Key.F8 } && !_motionCapturing)
@@ -73,6 +103,16 @@ public partial class NativeCapture : Node
     {
         if (_motionArmed && !_motionCapturing && FindBoard(this) is { IsPresenting: true } board)
             CaptureMotion(board);
+    }
+
+    private static BattleScreen? FindBattleScreen(Node node)
+    {
+        if (node is BattleScreen battle)
+            return battle;
+        foreach (var child in node.GetChildren())
+            if (FindBattleScreen(child) is { } found)
+                return found;
+        return null;
     }
 
     // Verification only: observe actual rendered frames, never advance the battle or its clock.

@@ -59,6 +59,9 @@ public partial class BattleScreen : Control
     private PopupPanel _systemMenu = null!;
     private AcceptDialog _battleLogDialog = null!;
     private RichTextLabel _battleLogText = null!;
+    private Label _battleLogHint = null!;
+    private Button _battleLogEntry = null!;
+    private int _battleLogOpeningBinding = -1;
     private long _toastGeneration;
     private ConfirmationDialog _restartConfirmation = null!;
     private Action? _restart;
@@ -335,9 +338,26 @@ public partial class BattleScreen : Control
         if (message.Length == 0)
             return;
         BuildInterface();
+        var previousEntries = _battleLogDialog.Visible ? _messages.Recent() : [];
         _messages.Add(message);
         if (_battleLogDialog.Visible)
-            _battleLogText.Text = string.Join("\n\n", _messages.Recent());
+        {
+            var bar = _battleLogText.GetVScrollBar();
+            var readingPosition = bar.Value;
+            var follow = readingPosition >= bar.MaxValue - bar.Page - 1;
+            var entries = _messages.Recent();
+            // When the bounded journal evicts its oldest run, keep the same retained
+            // receipt under the reader rather than the same now-shifted pixel offset.
+            if (!follow && previousEntries.Length > 1 && entries[0] == previousEntries[1])
+                readingPosition = Math.Max(0, readingPosition - _battleLogText.GetParagraphOffset(previousEntries[0].Count(character => character == '\n') + 2));
+            _battleLogText.ScrollFollowing = follow;
+            _battleLogText.Text = string.Join("\n\n", entries);
+            if (!follow)
+            {
+                _battleLogText.GetContentHeight();
+                bar.Value = readingPosition;
+            }
+        }
         _eventLog.Text = message;
         _eventLog.Visible = true;
         var toast = ++_toastGeneration;
@@ -357,8 +377,16 @@ public partial class BattleScreen : Control
     {
         if (!_bound || !IsInsideTree())
             return;
-        _battleLogText.Text = string.Join("\n\n", _messages.Recent());
-        _battleLogDialog.PopupCentered(new Vector2I(Math.Min(640, (int)Size.X - 48), Math.Min(420, (int)Size.Y - 80)));
+        _battleLogText.ScrollFollowing = true;
+        _battleLogText.Text = _messages.Recent().Length == 0 ? _text.Format("ui.battle.log_empty") : string.Join("\n\n", _messages.Recent());
+        var width = Math.Min(640, (int)Size.X - 48);
+        var maximumHeight = Math.Min(420, (int)Size.Y - 80);
+        // Measure native wrapped text at its final width; FitContent would grow a long journal beyond its viewport.
+        _battleLogDialog.Size = new Vector2I(width, maximumHeight);
+        var height = Math.Clamp(_battleLogText.GetContentHeight() + 100, 160, maximumHeight);
+        _battleLogOpeningBinding = _bindingGeneration;
+        _battleLogDialog.PopupCentered(new Vector2I(width, height));
+        _battleLogText.GrabFocus();
     }
 
     public void ShowFeedback(string message)
@@ -575,11 +603,24 @@ public partial class BattleScreen : Control
             Name = "BattleLogDialog",
             Title = _text.Format("ui.battle.log"),
             OkButtonText = _text.Format("ui.common.close"),
-            MinSize = new Vector2I(360, 240)
+            MinSize = new Vector2I(360, 160)
         };
         _battleLogDialog.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#30291e", 14, "#756344"));
         AddChild(_battleLogDialog);
         _battleLogDialog.VisibilityChanged += RefreshFeedbackVisibility;
+        _battleLogDialog.VisibilityChanged += () =>
+        {
+            if (!IsInstanceValid(_battleLogDialog) || _battleLogDialog.Visible)
+                return;
+            var binding = _battleLogOpeningBinding;
+            Callable.From(() =>
+            {
+                if (IsInstanceValid(this) && IsInsideTree() && _bound && binding == _bindingGeneration
+                    && IsInstanceValid(_battleLogDialog) && !_battleLogDialog.Visible
+                    && IsInstanceValid(_battleLogEntry) && _battleLogEntry.IsVisibleInTree())
+                    _battleLogEntry.GrabFocus();
+            }).CallDeferred();
+        };
         _battleLogText = new RichTextLabel
         {
             Name = "BattleLogText",
@@ -591,13 +632,24 @@ public partial class BattleScreen : Control
         };
         _battleLogText.AddThemeColorOverride("default_color", TacticalHudStyle.Ink);
         _battleLogText.AddThemeFontSizeOverride("normal_font_size", 15);
-        _battleLogDialog.AddChild(_battleLogText);
-        _battleLogText.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        _battleLogText.OffsetLeft = 16;
-        _battleLogText.OffsetTop = 12;
-        _battleLogText.OffsetRight = -16;
-        _battleLogText.OffsetBottom = -54;
+        _battleLogText.AddThemeStyleboxOverride("focus", TacticalHudStyle.Panel("#00000000", 0, "#dec383"));
+        var logBody = new VBoxContainer { Name = "BattleLogBody" };
+        logBody.AddThemeConstantOverride("separation", 8);
+        _battleLogDialog.AddChild(logBody);
+        _battleLogText.SizeFlagsVertical = SizeFlags.ExpandFill;
+        logBody.AddChild(_battleLogText);
+        _battleLogHint = new Label
+        {
+            Name = "BattleLogReadingHint",
+            Text = _text.Format("ui.battle.log_reading_hint"),
+            HorizontalAlignment = HorizontalAlignment.Right,
+            MouseFilter = MouseFilterEnum.Ignore
+        };
+        _battleLogHint.AddThemeFontSizeOverride("font_size", 12);
+        _battleLogHint.AddThemeColorOverride("font_color", TacticalHudStyle.Muted);
+        logBody.AddChild(_battleLogHint);
         var logEntry = Button(_text.Format("ui.battle.log"), OpenBattleLog);
+        _battleLogEntry = logEntry;
         logEntry.Name = "BattleLogButton";
         logEntry.CustomMinimumSize = new Vector2(72, 38);
         heading.AddChild(logEntry);
