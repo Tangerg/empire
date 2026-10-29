@@ -433,6 +433,30 @@ public partial class TacticalHudChecks : Node
             Require(hint.GetThemeFont("font").GetStringSize(hint.Text, fontSize: hint.GetThemeFontSize("font_size")).X <= hint.Size.X,
                 "The localized move/attack instruction fits fully without ellipsis at both native window sizes.");
             Require(hint.TooltipText == hint.Text, "The instruction remains accessible through its complete tooltip.");
+            foreach (var hintKey in new[] { "idle", "idle_recruit", "deploying", "disembark", "tactic" })
+            {
+                var fullInstruction = GodotTextCatalog.LoadSimplifiedChinese().Format("ui.hud.selection." + hintKey);
+                hud.Apply(new(new(1, 1), fullInstruction, new[]
+                {
+                    new TacticalHudSection("tactics", "指挥战术", Enumerable.Range(0, 3).Select(i =>
+                        new TacticalHudRow("tactic-" + i, "战术 " + i, Enabled: i != 2,
+                            Intent: new(new(1, 1), TacticalHudIntentKind.Back))).ToArray())
+                }));
+                for (var frame = 0; frame < 4; frame++)
+                    await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                hint = (Label)hud.FindChild("SelectionHint", true, false);
+                tray = (Control)hud.FindChild("OrderTray", true, false);
+                var actions = (Control)hud.FindChild("tactics", false, false);
+                Require(hint.GetVisibleLineCount() == hint.GetLineCount() && hint.MaxLinesVisible == -1,
+                    $"The complete {hintKey} instruction is visible without pointer-only tooltip access at {width}px: lines={hint.GetLineCount()}, visible={hint.GetVisibleLineCount()}, size={hint.Size}, minimum={hint.GetMinimumSize()}, tray={tray.Size}.");
+                Require(tray.GetGlobalRect().Encloses(hint.GetGlobalRect())
+                    && hint.GetGlobalRect().Position.Y >= actions.GetGlobalRect().End.Y
+                    && tray.GetGlobalRect().Position.Y >= host.Size.Y - 180,
+                    "Wrapped guidance stays inside its material tray, below commands and within a bounded bottom area.");
+                var buttons = actions.FindChildren("*", "Button", true, false).OfType<Button>().ToArray();
+                Require(buttons.Length == 3 && buttons[2].Disabled && buttons.All(button => button.Size.Y >= 54),
+                    "Full instructions do not shrink command targets or enable unavailable commands.");
+            }
             hud.ShowHint = false;
         }
         RemoveChild(host);

@@ -390,7 +390,7 @@ public partial class TacticalHud : Control
         hint.Visible = ShowHint && mainActions is not null;
         hint.TooltipText = projection.Hint;
         hint.MouseFilter = MouseFilterEnum.Pass;
-        hint.MaxLinesVisible = forecast is null ? 1 : 2;
+        hint.MaxLinesVisible = forecast is null ? -1 : 2;
         hint.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
         hint.AddThemeColorOverride("font_shadow_color", new Color("#17120c"));
         hint.AddThemeConstantOverride("shadow_outline_size", 2);
@@ -403,6 +403,29 @@ public partial class TacticalHud : Control
         {
             AddChild(hint);
             Place(hint, 0, 1, 0, 1, 292, -32, 292 + actionSlots * 106, -10);
+            // Native wrapping owns the text height. Grow only its existing tray upward,
+            // leaving all command hit targets and the bottom margin intact.
+            void FitInstruction()
+            {
+                if (generation != renderedGeneration || !hint.IsInsideTree() || mainActions is null
+                    || FindChild("OrderTray", false, false) is not Control tray
+                    || FindChild(mainActions.Key, false, false) is not Control actions)
+                    return;
+                var lines = hint.GetLineCount();
+                var textHeight = Enumerable.Range(0, lines).Sum(hint.GetLineHeight)
+                    + Math.Max(0, lines - 1) * hint.GetThemeConstant("line_spacing");
+                var bottomInset = lines > 1 ? 6 : 0;
+                var extra = Math.Max(0, textHeight - 22) + bottomInset;
+                hint.OffsetBottom = -10 - bottomInset;
+                hint.OffsetTop = -32 - extra;
+                tray.OffsetTop = -126 - extra;
+                actions.OffsetTop = -113 - extra;
+                actions.OffsetBottom = -35 - extra;
+            }
+            hint.MinimumSizeChanged += FitInstruction;
+            hint.Resized += FitInstruction;
+            hint.Ready += FitInstruction;
+            FitInstruction();
         }
         var mountedScroll = detailScroll;
         Callable.From(() =>
