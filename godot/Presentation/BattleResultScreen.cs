@@ -11,6 +11,7 @@ public partial class BattleResultScreen : Control
 {
     private int generation;
     private bool handled;
+    private BoxContainer actions = null!;
     private CampaignShell? shell;
     public System.Collections.Generic.IReadOnlyList<string> RenderingDiagnostics => shell?.RenderingDiagnostics ?? Array.Empty<string>();
     public override void _ExitTree()
@@ -25,9 +26,9 @@ public partial class BattleResultScreen : Control
         Line(column, heading, 36);
         Line(column, reason);
         if (victory)
-            ActionButton(column, "Settle", text.Format("ui.result.settle"), settle);
-        ActionButton(column, "Retry", text.Format("ui.result.retry"), retry);
-        ActionButton(column, "Exit", text.Format("ui.result.camp"), exit);
+            ActionButton(actions, "Settle", text.Format("ui.result.settle"), settle);
+        ActionButton(actions, "Retry", text.Format("ui.result.retry"), retry);
+        ActionButton(actions, "Exit", text.Format("ui.result.camp"), exit);
     }
 
     private VBoxContainer Begin(CampaignShellView? shellView = null, Action? onExit = null)
@@ -62,6 +63,7 @@ public partial class BattleResultScreen : Control
             var content = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
             content.AddThemeConstantOverride("separation", 18);
             summaryCard.AddChild(content);
+            actions = ActionRail(shell.Footer);
             return content;
         }
         var background = new ColorRect { Color = new Color("#25291f"), MouseFilter = MouseFilterEnum.Ignore };
@@ -72,14 +74,34 @@ public partial class BattleResultScreen : Control
         foreach (var edge in new[] { "left", "right", "top", "bottom" })
             margin.AddThemeConstantOverride($"margin_{edge}", 48);
         AddChild(margin);
-        var scroll = new ScrollContainer { HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
-        margin.AddChild(scroll);
+        var layout = new VBoxContainer();
+        layout.AddThemeConstantOverride("separation", 16);
+        margin.AddChild(layout);
+        var scroll = new CampaignScroll
+        {
+            Name = "ResultScroll",
+            HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
+            SizeFlagsVertical = SizeFlags.ExpandFill
+        };
+        layout.AddChild(scroll);
         var column = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
         column.AddThemeConstantOverride("separation", 22);
         var card = new DispatchPanel { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ShrinkCenter };
         scroll.AddChild(card);
         card.AddChild(column);
+        actions = ActionRail(layout);
         return column;
+    }
+
+    private static BoxContainer ActionRail(Node parent)
+    {
+        var surface = new PanelContainer { Name = "ResultActions", SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        surface.AddThemeStyleboxOverride("panel", Empire.Presentation.Tactical.TacticalHudStyle.Panel("#30291f", 16));
+        parent.AddChild(surface);
+        var row = new HBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        row.AddThemeConstantOverride("separation", 12);
+        surface.AddChild(row);
+        return row;
     }
 
     private static void Line(VBoxContainer column, string text, int size = 20)
@@ -90,10 +112,10 @@ public partial class BattleResultScreen : Control
         column.AddChild(label);
     }
 
-    private void ActionButton(VBoxContainer column, string name, string text, Action action)
+    private void ActionButton(BoxContainer column, string name, string text, Action action)
     {
         var token = generation;
-        var button = new Button { Name = name, Text = text, CustomMinimumSize = new Vector2(0, 48) };
+        var button = new Button { Name = name, Text = text, SizeFlagsHorizontal = SizeFlags.ExpandFill, CustomMinimumSize = new Vector2(0, 48) };
         button.Pressed += () =>
         {
             if (handled || token != generation || !IsInsideTree() || !button.IsInsideTree())
@@ -118,15 +140,16 @@ public partial class BattleResultScreen : Control
         Line(summary.Heading, 24);
         Line(summary.Title, 36);
         Line(summary.Outcome);
-        var metrics = new GridContainer { Columns = 2 };
+        var metrics = new GridContainer { Name = "ResultMetrics", Columns = 2, SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        metrics.AddThemeConstantOverride("h_separation", 24);
         column.AddChild(metrics);
         foreach (var metric in summary.Metrics)
         {
-            metrics.AddChild(new Label { Text = metric.Label, CustomMinimumSize = new Vector2(170, 32) });
+            metrics.AddChild(new Label { Text = metric.Label, AutowrapMode = TextServer.AutowrapMode.WordSmart, SizeFlagsHorizontal = SizeFlags.ExpandFill, CustomMinimumSize = new Vector2(0, 32) });
             metrics.AddChild(new Label { Text = metric.Value.ToString(System.Globalization.CultureInfo.InvariantCulture) });
         }
         Line(summary.FallenLabel + "\n" + summary.FallenText);
         Line(summary.SignalsLabel + "\n" + summary.SignalsText);
-        ActionButton(column, "Proceed", summary.ContinueLabel, proceed);
+        ActionButton(actions, "Proceed", summary.ContinueLabel, proceed);
     }
 }

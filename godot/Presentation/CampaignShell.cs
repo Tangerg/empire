@@ -101,7 +101,7 @@ public partial class CampaignShell : Control
         progress.AccessibilityName = view.ProgressLabel;
         header.AddChild(new Control { SizeFlagsHorizontal = SizeFlags.ExpandFill });
         header.AddChild(progress);
-        Scroll = new ScrollContainer
+        Scroll = new CampaignScroll
         {
             Name = "NarrativeScroll",
             HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,

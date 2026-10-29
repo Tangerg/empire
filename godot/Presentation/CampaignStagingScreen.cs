@@ -12,6 +12,23 @@ public partial class CampaignStagingScreen : Control
     private int generation;
     private bool submitted;
     private CampaignShell? shell;
+    private BoxContainer? hero;
+    private BoxContainer? panels;
+    private BoxContainer? footer;
+    private TextureRect? briefingPicture;
+    private VBoxContainer? briefingText;
+    public override void _Ready() => Resized += ResizeLayout;
+    private void ResizeLayout()
+    {
+        var narrow = Size.X <= 760;
+        foreach (var box in new[] { hero, panels, footer })
+            if (IsInstanceValid(box))
+                box!.Vertical = narrow;
+        if (IsInstanceValid(briefingPicture))
+            briefingPicture!.CustomMinimumSize = new Vector2(narrow ? 0 : 240, narrow ? 100 : 150);
+        if (IsInstanceValid(hero) && IsInstanceValid(briefingText))
+            hero!.MoveChild(briefingText!, narrow || !IsInstanceValid(briefingPicture) ? 0 : 1);
+    }
     public CampaignStagingView? Presented
     {
         get; private set;
@@ -62,23 +79,24 @@ public partial class CampaignStagingScreen : Control
         body.AddThemeConstantOverride("separation", 18);
         card.AddChild(body);
         var column = body;
-        var hero = new HBoxContainer();
+        briefingPicture = null;
+        hero = new BoxContainer { Name = "StagingHero" };
         hero.AddThemeConstantOverride("separation", 24);
         body.AddChild(hero);
         if (view.BriefingArt is { } briefing && Texture(briefing, "briefing scene") is { } scene)
         {
-            var picture = Picture(scene);
+            var picture = briefingPicture = Picture(scene);
             picture.CustomMinimumSize = new Vector2(240, 150);
             picture.SizeFlagsHorizontal = SizeFlags.ExpandFill;
             hero.AddChild(picture);
         }
-        var briefingText = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        briefingText = new VBoxContainer { Name = "StagingBrief", SizeFlagsHorizontal = SizeFlags.ExpandFill };
         briefingText.AddThemeConstantOverride("separation", 10);
         hero.AddChild(briefingText);
         briefingText.AddChild(Text(view.Eyebrow, 16, "#d5bc7f"));
         briefingText.AddChild(Text(view.Title, 32, "#f1e4c0"));
         briefingText.AddChild(Text(view.Description, 19, "#d4d9cd"));
-        var panels = new HBoxContainer();
+        panels = new BoxContainer { Name = "StagingPanels" };
         panels.AddThemeConstantOverride("separation", 40);
         body.AddChild(panels);
         var roster = Panel(panels, view.RosterHeading);
@@ -124,7 +142,7 @@ public partial class CampaignStagingScreen : Control
             status.AddChild(ValueRow(relation.Label, relation.Amount));
             status.AddChild(new ProgressBar { Value = relation.Fill * 100, ShowPercentage = false, CustomMinimumSize = new Vector2(0, 8) });
         }
-        var footer = new HBoxContainer();
+        footer = new BoxContainer { Name = "StagingActionRow" };
         footer.AddThemeConstantOverride("separation", 24);
         var footerSurface = new PanelContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
         footerSurface.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#30291f", 16));
@@ -146,6 +164,7 @@ public partial class CampaignStagingScreen : Control
         };
         footer.AddChild(button);
         CampaignUiStyle.InitialFocus(button);
+        ResizeLayout();
         if (diagnostics.Count > 0 && shell.RenderingDiagnostics.Count == 0)
             column.AddChild(Text(view.ArtworkFailureLabel, 16, "#efb76c"));
     }
@@ -176,7 +195,11 @@ public partial class CampaignStagingScreen : Control
     {
         var row = new HBoxContainer();
         row.AddChild(Text(label, 18, "#bbc8b9"));
-        row.AddChild(Text(value, 19, "#eeddb1"));
+        var amount = Text(value, 19, "#eeddb1");
+        amount.AutowrapMode = TextServer.AutowrapMode.Off;
+        amount.SizeFlagsHorizontal = SizeFlags.ShrinkEnd;
+        amount.HorizontalAlignment = HorizontalAlignment.Right;
+        row.AddChild(amount);
         return row;
     }
     private static TextureRect Picture(Texture2D texture) => new()

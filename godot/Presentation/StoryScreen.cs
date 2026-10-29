@@ -113,6 +113,7 @@ public partial class StoryScreen : Control
         PresentedStory = view;
         var restorePrimaryFocus = buttons.Any(button => IsInstanceValid(button) && button.HasFocus());
         Clear(shell.Body);
+        Clear(shell.Footer);
         buttons.Clear();
         missionGrid = null;
         actionGrid = null;
@@ -158,7 +159,10 @@ public partial class StoryScreen : Control
         copy.AddChild(CampaignShell.Text(view.Text, 20, "#f4e8d2", "StoryBeat"));
         actionGrid = new GridContainer { Name = "StoryActions", Columns = 2, SizeFlagsHorizontal = SizeFlags.ExpandFill };
         actionGrid.AddThemeConstantOverride("v_separation", 16);
-        body.AddChild(actionGrid);
+        var actionSurface = new PanelContainer { Name = "StoryActionSurface", SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        actionSurface.AddThemeStyleboxOverride("panel", Empire.Presentation.Tactical.TacticalHudStyle.Panel("#30291f", 16));
+        shell.Footer.AddChild(actionSurface);
+        actionSurface.AddChild(actionGrid);
         var dots = new HBoxContainer { Name = "BeatDots", SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ShrinkCenter };
         dots.AddThemeConstantOverride("separation", 6);
         actionGrid.AddChild(dots);

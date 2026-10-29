@@ -71,7 +71,7 @@ public partial class CampaignMenuScreen : Control
         AddChild(margin);
         foreach (var edge in new[] { "left", "right", "top", "bottom" })
             margin.AddThemeConstantOverride($"margin_{edge}", 36);
-        var scroll = new ScrollContainer { HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
+        var scroll = new CampaignScroll { Name = "MenuScroll", HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
         margin.AddChild(scroll);
         var column = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill };
         column.AddThemeConstantOverride("separation", 16);

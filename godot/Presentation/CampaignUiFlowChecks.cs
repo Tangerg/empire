@@ -27,6 +27,7 @@ public partial class CampaignUiFlowChecks : Node
         {
             await CheckEscape();
             await CheckScreens();
+            await CheckLongContent();
             await CheckSystemPopup();
             await CheckBattleLog();
             if (failures.Count > 0)
@@ -226,6 +227,79 @@ public partial class CampaignUiFlowChecks : Node
         await Layout();
     }
 
+    private async Task CheckLongContent()
+    {
+        var original = GetWindow().Size;
+        var longText = string.Join("\n", Enumerable.Range(1, 24).Select(i => $"记录 {i}：这是长篇战役状态说明，用于验证滚动阅读和可见操作，不允许隐藏焦点盲执行。"));
+        var calls = 0;
+        foreach (var size in new[] { new Vector2I(640, 480), new Vector2I(960, 640) })
+        {
+            GetWindow().Size = size;
+            var result = new BattleResultScreen();
+            AddChild(result);
+            var summary = new CampaignBattleSummary(text, "长篇战绩测试", 1, "victory", 13, 9, 0, [longText], [longText], 22);
+            result.ShowResult("victory", summary, () => calls++, ShellView, () => calls++);
+            await Layout();
+            var scroll = Descendants(result).OfType<ScrollContainer>().Single();
+            var proceed = Button(result, "Proceed");
+            Check(proceed.HasFocus() && GetViewport().GetVisibleRect().Encloses(proceed.GetGlobalRect()),
+                $"Long result {size}: initial focused action is visible without test-assisted scrolling.");
+            Check(!scroll.IsAncestorOf(proceed) && scroll.ScrollVertical == 0,
+                "Settlement action remains outside long content, with the summary beginning visible.");
+            var metrics = result.FindChild("ResultMetrics", true, false)!;
+            ((Label)metrics.GetChild(0)).Text = "长篇指标名称用于验证本地化扩展而不是裁字";
+            await Layout();
+            Check(scroll.GetHScrollBar().MaxValue <= scroll.GetHScrollBar().Page + 1,
+                "Long metric labels wrap without hidden horizontal overflow.");
+            scroll.GrabFocus();
+            for (var i = 0; i < 8; i++)
+            {
+                GetViewport().PushInput(new InputEventKey { Keycode = Key.Down, Pressed = true });
+                GetViewport().PushInput(new InputEventKey { Keycode = Key.Down, Pressed = false });
+            }
+            await Layout();
+            Check(scroll.ScrollVertical > 0 && calls == 0, "Focused result content scrolls by native keyboard without committing navigation.");
+            GetViewport().PushInput(new InputEventKey { Keycode = Key.End, Pressed = true });
+            GetViewport().PushInput(new InputEventKey { Keycode = Key.End, Pressed = false });
+            await Layout();
+            Check(scroll.ScrollVertical >= scroll.GetVScrollBar().MaxValue - scroll.GetVScrollBar().Page - 1,
+                "Keyboard End reaches the final signal without clipping it.");
+            GetViewport().PushInput(new InputEventKey { Keycode = Key.Home, Pressed = true });
+            GetViewport().PushInput(new InputEventKey { Keycode = Key.Home, Pressed = false });
+            await Layout();
+            Check(scroll.ScrollVertical == 0, "Keyboard Home returns to summary start.");
+            Check(GetViewport().GetVisibleRect().Encloses(proceed.GetGlobalRect()), "Reading long settlement content cannot scroll away its action.");
+            result.ShowCompletion(text, "完成测试", longText, true, () => calls++, () => calls++, () => calls++);
+            await Layout();
+            Check(Button(result, "Settle").HasFocus(), "Completion primary focus is settlement, not retry.");
+            Check(Descendants(result).OfType<Button>().All(button => GetViewport().GetVisibleRect().Encloses(button.GetGlobalRect())),
+                "Long completion reason cannot hide settlement, retry or camp actions.");
+            RemoveChild(result);
+            result.QueueFree();
+            await Layout();
+
+            var menu = new CampaignMenuScreen();
+            AddChild(menu);
+            menu.ShowMenu(new("测试菜单", "测试", longText, "", "fixture", Art.ResourcePath,
+                true, "继续", "1/16", "重新开始", false, "覆盖？", null, "素材缺失"), () => calls++, () => calls++);
+            await Layout();
+            var menuScroll = Descendants(menu).OfType<ScrollContainer>().Single();
+            Check(menuScroll.GetGlobalRect().Encloses(Button(menu, "ContinueCampaign").GetGlobalRect()),
+                "Long menu description cannot hide its initially focused Continue button.");
+            GetViewport().PushInput(new InputEventKey { Keycode = Key.Tab, Pressed = true });
+            GetViewport().PushInput(new InputEventKey { Keycode = Key.Tab, Pressed = false });
+            await Layout();
+            Check(Button(menu, "NewCampaign").HasFocus() && menuScroll.GetGlobalRect().Encloses(Button(menu, "NewCampaign").GetGlobalRect()),
+                "Native Tab follows the menu's focused action into view.");
+            Check(calls == 0, "Layout, focus and reading never dispatch campaign navigation.");
+            RemoveChild(menu);
+            menu.QueueFree();
+            await Layout();
+        }
+        GetWindow().Size = original;
+        await Layout();
+    }
+
     private async Task CheckScreens()
     {
         var portraits = PortraitCatalogResources.Load();
@@ -235,7 +309,7 @@ public partial class CampaignUiFlowChecks : Node
         var stagingView = new CampaignStagingView(text, "c01-07", "灰旗战役", "第七章 · 山谷", "6/12", 6, 12,
             "战前准备", "灰旗山谷", "查看部队与任务，准备进入战场。", "离开战场后将从本关开局重新开始。", "进入战斗 →",
             new("fixture", Art.ResourcePath), new("fixture", Art.ResourcePath),
-            Enumerable.Range(0, 13).Select(i => new CampaignStagingUnit(i.ToString(), "archer", "山谷弓箭手", "生命 30 / 30 · 待命", null, null)), [], []);
+            Enumerable.Range(0, 13).Select(i => new CampaignStagingUnit(i.ToString(), "archer", "山谷弓箭手", "生命 30 / 30 · 待命", null, null)), [new("supply", "补给储备", "1250")], []);
         var summary = new CampaignBattleSummary(text, "灰旗山谷", 1, "victory", 13, 13, 0, [], [], 8);
         var menu = new CampaignMenuScreen();
         var staging = new CampaignStagingScreen();
@@ -293,10 +367,19 @@ public partial class CampaignUiFlowChecks : Node
                 bind();
                 await Layout();
                 var visible = GetViewport().GetVisibleRect();
+                if (screen is CampaignStagingScreen)
+                {
+                    Check(Descendants(screen).OfType<Label>().Single(label => label.Text == "1250").GetLineCount() == 1,
+                        "Resource amounts keep intrinsic numeric width rather than wrapping into vertical digits.");
+                    Check(screen.FindChild("StagingHero", true, false).GetChild(size.X <= 760 ? 0 : 1).Name == "StagingBrief",
+                        "Narrow staging prioritizes mission text before its illustration; wide layout restores side-by-side art.");
+                    foreach (var name in new[] { "StagingHero", "StagingPanels", "StagingActionRow" })
+                        Check(((BoxContainer)screen.FindChild(name, true, false)).Vertical == (size.X <= 760),
+                            $"{name}: narrow content stacks, wide content returns to columns.");
+                }
                 var primary = Button(screen, primaryName);
                 var scroll = Descendants(screen).OfType<ScrollContainer>().Single();
-                if (scroll.IsAncestorOf(primary))
-                    scroll.EnsureControlVisible(primary);
+                // Product focus/scroll behavior must make the action reachable; no test-assisted scrolling.
                 await Layout();
                 var rect = primary.GetGlobalRect();
                 Check(rect.Position.X >= -1 && rect.End.X <= visible.End.X + 1,
