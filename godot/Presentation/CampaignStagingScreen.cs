@@ -63,7 +63,7 @@ public partial class CampaignStagingScreen : Control
         AddChild(shell);
         Button? startButton = null;
         shell.Show(new CampaignShellView(view.CampaignTitle, view.ChapterHeading, view.CompletedBattles, view.BattleTotal,
-            new NarrativeArt { Source = view.ChapterArt.Source, ResourcePath = view.ChapterArt.ResourcePath }, view.ExitLabel, view.ProgressLabel, view.ArtworkFailureLabel), () =>
+            new NarrativeArt { Source = view.ChapterArt.Source, ResourcePath = view.ChapterArt.ResourcePath }, view.ExitLabel, view.ProgressLabel, view.ArtworkFailureLabel, view.ReadingHint), () =>
             {
                 if (submitted || currentGeneration != generation || !IsInsideTree())
                     return;

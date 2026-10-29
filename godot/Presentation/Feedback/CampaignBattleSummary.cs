@@ -9,6 +9,10 @@ public sealed record CampaignSummaryText(GameText Messages, BattleText Battle, F
 /// <summary>Detached result-screen projection, never a victory decision or a campaign transition.</summary>
 public sealed class CampaignBattleSummary
 {
+    public string ReadingHint
+    {
+        get;
+    }
     public string Title
     {
         get;
@@ -77,6 +81,7 @@ public sealed class CampaignBattleSummary
     public CampaignBattleSummary(GameText text, string title, int chapter, string outcome, int turns,
         int alliesRemaining, int enemiesRemaining, IEnumerable<string> fallen, IEnumerable<string> signals, int strikeCount)
     {
+        ReadingHint = text.Format("ui.campaign.reading_hint");
         Title = title;
         Chapter = chapter;
         Outcome = outcome;

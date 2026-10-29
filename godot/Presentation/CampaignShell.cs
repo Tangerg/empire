@@ -113,6 +113,7 @@ public partial class CampaignShell : Control
         Body = new VBoxContainer { Name = "NarrativeBody", SizeFlagsHorizontal = SizeFlags.ExpandFill };
         Body.AddThemeConstantOverride("separation", 18);
         margins.AddChild(Body);
+        column.AddChild(((CampaignScroll)Scroll).CreateReadingHint(view.ReadingHint));
         Footer = new HBoxContainer { Name = "CampaignFooter" };
         Footer.AddThemeConstantOverride("separation", 16);
         column.AddChild(Footer);

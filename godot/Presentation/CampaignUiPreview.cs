@@ -43,7 +43,7 @@ public partial class CampaignUiPreview : Control
             screen = menu;
             AddChild(menu);
             menu.ShowMenu(new("界面测试夹具", "F1 菜单 · F2 备战 · F3 结算 · F4 胜负", longText, "", "existing art", ArtPath,
-                true, "继续测试", "1 / 16", "重新开始测试", false, "仅测试", null, "素材缺失"), receipt, receipt);
+                true, "继续测试", "1 / 16", "重新开始测试", false, "仅测试", null, "素材缺失", text.Format("ui.campaign.reading_hint")), receipt, receipt);
         }
         else if (page == 1)
         {

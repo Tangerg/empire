@@ -191,6 +191,8 @@ public partial class CampaignUiFlowChecks : Node
             new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)),
             level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
         screen.AppendMessage("保留可见回执");
+        screen.ShowFeedback("待保留的反馈");
+        var surface = (Control)screen.FindChild("FeedbackPanel", true, false);
         var toast = (Label)screen.FindChild("BattleEventLog", true, false);
         screen.AppendMessage("");
         Check(toast.Text == "保留可见回执" && toast.Visible, "Silent events cannot erase the last readable toast.");
@@ -216,11 +218,12 @@ public partial class CampaignUiFlowChecks : Node
                 "Keyboard opening of a full long journal remains bounded rather than growing to sixty lines.");
             Check(journal.Text == string.Join("\n\n", screen.RecentMessages) && journal.GetVScrollBar().MaxValue > journal.Size.Y,
                 "All ordered receipts are available through an actual vertical scroll region.");
+            Check(!surface.Visible && journal.Text.Contains("74 · 托伦 → 军团盾卫", StringComparison.Ordinal), "The journal suppresses competing feedback without losing its real event entries.");
             Check(dialog.GetOkButton().Text == text.Format("ui.common.close") && journal.GetGlobalRect().End.Y <= dialog.GetOkButton().GetGlobalRect().Position.Y,
                 $"Localized close remains separate from long scrolling content: label={dialog.GetOkButton().Text}, journal={journal.GetGlobalRect()}, close={dialog.GetOkButton().GetGlobalRect()}.");
             Escape();
             await Layout();
-            Check(!dialog.Visible && session.Revision == 0, "Esc dismisses journal without a map command.");
+            Check(!dialog.Visible && surface.Visible && session.Revision == 0, "Esc dismisses journal and restores retained feedback without a map command.");
         }
         RemoveChild(screen);
         screen.Free();
@@ -246,7 +249,12 @@ public partial class CampaignUiFlowChecks : Node
                 $"Long result {size}: initial focused action is visible without test-assisted scrolling.");
             Check(!scroll.IsAncestorOf(proceed) && scroll.ScrollVertical == 0,
                 "Settlement action remains outside long content, with the summary beginning visible.");
-            var metrics = result.FindChild("ResultMetrics", true, false)!;
+            var hint = (Label)result.FindChild("ReadingHint", true, false);
+            Check(hint.Visible && hint.Text == text.Format("ui.campaign.reading_hint") && GetViewport().GetVisibleRect().Encloses(hint.GetGlobalRect()),
+                "Long campaign text exposes a localized reading hint outside its scroll area.");
+            Check(scroll.GetVScrollBar().Size.X >= 10, "The scroll thumb has a visible minimum width.");
+            var metrics = (Control)result.FindChild("ResultMetrics", true, false)!;
+            Check(metrics.Size.X <= 441, "Result metric labels and amounts stay in a compact reading group.");
             ((Label)metrics.GetChild(0)).Text = "长篇指标名称用于验证本地化扩展而不是裁字";
             await Layout();
             Check(scroll.GetHScrollBar().MaxValue <= scroll.GetHScrollBar().Page + 1,
@@ -274,6 +282,9 @@ public partial class CampaignUiFlowChecks : Node
             Check(Button(result, "Settle").HasFocus(), "Completion primary focus is settlement, not retry.");
             Check(Descendants(result).OfType<Button>().All(button => GetViewport().GetVisibleRect().Encloses(button.GetGlobalRect())),
                 "Long completion reason cannot hide settlement, retry or camp actions.");
+            result.ShowCompletion(text, "短结果", "已完成", true, () => calls++, () => calls++, () => calls++);
+            await Layout();
+            Check(!((Label)result.FindChild("ReadingHint", true, false)).Visible, "Short content does not reserve an unnecessary reading hint.");
             RemoveChild(result);
             result.QueueFree();
             await Layout();
@@ -281,11 +292,12 @@ public partial class CampaignUiFlowChecks : Node
             var menu = new CampaignMenuScreen();
             AddChild(menu);
             menu.ShowMenu(new("测试菜单", "测试", longText, "", "fixture", Art.ResourcePath,
-                true, "继续", "1/16", "重新开始", false, "覆盖？", null, "素材缺失"), () => calls++, () => calls++);
+                true, "继续", "1/16", "重新开始", false, "覆盖？", null, "素材缺失", text.Format("ui.campaign.reading_hint")), () => calls++, () => calls++);
             await Layout();
             var menuScroll = Descendants(menu).OfType<ScrollContainer>().Single();
+            Check(((Label)menu.FindChild("ReadingHint", true, false)).Visible, "Long menu prose uses the same reading affordance.");
             Check(menuScroll.GetGlobalRect().Encloses(Button(menu, "ContinueCampaign").GetGlobalRect()),
-                "Long menu description cannot hide its initially focused Continue button.");
+                 $"Long menu description cannot hide its initially focused Continue button: viewport={menuScroll.GetGlobalRect()}, button={Button(menu, "ContinueCampaign").GetGlobalRect()}, offset={menuScroll.ScrollVertical}.");
             GetViewport().PushInput(new InputEventKey { Keycode = Key.Tab, Pressed = true });
             GetViewport().PushInput(new InputEventKey { Keycode = Key.Tab, Pressed = false });
             await Layout();

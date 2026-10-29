@@ -16,6 +16,10 @@ public sealed record CampaignStagingRelation(string Id, string Label, string Amo
 /// <summary>Detached presentation of campaign facts and source adapter metadata, never a campaign transition.</summary>
 public sealed class CampaignStagingView
 {
+    public string ReadingHint
+    {
+        get;
+    }
     public string ExitLabel
     {
         get;
@@ -114,6 +118,7 @@ public sealed class CampaignStagingView
         CampaignStagingArt chapterArt, CampaignStagingArt? briefingArt, IEnumerable<CampaignStagingUnit> roster,
         IEnumerable<CampaignStagingResource> resources, IEnumerable<CampaignStagingRelation> relations)
     {
+        ReadingHint = text.Format("ui.campaign.reading_hint");
         ExitLabel = text.Format("ui.campaign.exit");
         ProgressLabel = text.Format("ui.campaign.progress");
         RosterHeading = text.Format("ui.staging.roster_heading");

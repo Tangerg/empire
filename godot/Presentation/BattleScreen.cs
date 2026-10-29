@@ -81,13 +81,15 @@ public partial class BattleScreen : Control
         _gestures?.Cancel();
         _pointerMapPosition = null;
         var boundary = ++_pointerBoundaryGeneration;
+        var leavingDossier = _built && _hud.DossierVisible;
         Callable.From(() =>
         {
             if (!GodotObject.IsInstanceValid(this) || !IsInsideTree() || boundary != _pointerBoundaryGeneration)
                 return;
             // An owned embedded dossier receives native window focus on opening.
             // That transfer is not an exit from the game's inspection context.
-            if (_built && _hud.OwnsWindowFocus)
+            // A close click may return focus before this deferred boundary runs.
+            if (_built && (_hud.OwnsWindowFocus || (leavingDossier && GetWindow().HasFocus())))
                 return;
             ClearPointerContext();
         }).CallDeferred();
@@ -349,8 +351,16 @@ public partial class BattleScreen : Control
         BuildInterface();
         _feedback.Text = message;
         _feedback.Visible = message.Length > 0;
-        _feedbackPanel.Visible = _feedback.Visible;
+        RefreshFeedbackVisibility();
         _feedback.TooltipText = message;
+    }
+
+    private static bool VisibleWindow(Window window) => IsInstanceValid(window) && window.IsInsideTree() && window.Visible;
+
+    private void RefreshFeedbackVisibility()
+    {
+        if (IsInstanceValid(_feedbackPanel))
+            _feedbackPanel.Visible = _feedback.Visible && !_hud.DossierVisible && !VisibleWindow(_systemMenu) && !VisibleWindow(_battleLogDialog);
     }
 
     /// <summary>Allows the application root to refresh after an external session transition.</summary>
@@ -525,6 +535,7 @@ public partial class BattleScreen : Control
         _hud = new TacticalHud { Name = "TacticalHud", ZIndex = 4000 };
         _hud.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         _hud.IntentRequested += HandleHudIntent;
+        _hud.DossierVisibilityChanged += RefreshFeedbackVisibility;
         AddChild(_hud);
         var heading = new HBoxContainer { ZIndex = 4001 };
         AddChild(heading);
@@ -543,6 +554,7 @@ public partial class BattleScreen : Control
         _systemMenu = new PopupPanel { Name = "SystemMenu" };
         _systemMenu.AddThemeStyleboxOverride("panel", new StyleBoxEmpty());
         AddChild(_systemMenu);
+        _systemMenu.VisibilityChanged += RefreshFeedbackVisibility;
         _battleLogDialog = new AcceptDialog
         {
             Name = "BattleLogDialog",
@@ -552,6 +564,7 @@ public partial class BattleScreen : Control
         };
         _battleLogDialog.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#30291e", 14, "#756344"));
         AddChild(_battleLogDialog);
+        _battleLogDialog.VisibilityChanged += RefreshFeedbackVisibility;
         _battleLogText = new RichTextLabel
         {
             Name = "BattleLogText",

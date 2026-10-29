@@ -5,6 +5,75 @@ namespace Empire.Presentation;
 /// <summary>Keyboard reading for campaign prose. Focused child actions retain their own key handling.</summary>
 public partial class CampaignScroll : ScrollContainer
 {
+    private Label? readingHint;
+    private PanelContainer? hintSurface;
+    public PanelContainer CreateReadingHint(string text)
+    {
+        readingHint = new Label
+        {
+            Name = "ReadingHint",
+            Text = text,
+            Visible = false,
+            AutowrapMode = TextServer.AutowrapMode.WordSmart,
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+            HorizontalAlignment = HorizontalAlignment.Right,
+            MouseFilter = MouseFilterEnum.Ignore
+        };
+        readingHint.AddThemeFontSizeOverride("font_size", 13);
+        readingHint.AddThemeColorOverride("font_color", new Color("#c6b89c"));
+        hintSurface = new PanelContainer { Visible = false, MouseFilter = MouseFilterEnum.Ignore };
+        hintSurface.AddThemeStyleboxOverride("panel", new StyleBoxFlat
+        {
+            BgColor = new Color("#29251ef2"),
+            ContentMarginLeft = 8,
+            ContentMarginRight = 8,
+            ContentMarginTop = 3,
+            ContentMarginBottom = 3
+        });
+        hintSurface.AddChild(readingHint);
+        return hintSurface;
+    }
+    public override void _Ready()
+    {
+        var bar = GetVScrollBar();
+        bar.CustomMinimumSize = new Vector2(10, 0);
+        foreach (var state in new[] { "grabber", "grabber_highlight", "grabber_pressed" })
+            bar.AddThemeStyleboxOverride(state, new StyleBoxFlat
+            {
+                BgColor = new Color(state == "grabber" ? "#a18d64" : "#e2bd73"),
+                CornerRadiusTopLeft = 3,
+                CornerRadiusTopRight = 3,
+                CornerRadiusBottomLeft = 3,
+                CornerRadiusBottomRight = 3
+            });
+        bar.Changed += () => { RefreshHint(); RevealFocusedChild(); };
+        Resized += () => { RefreshHint(); RevealFocusedChild(); };
+        Callable.From(RefreshHint).CallDeferred();
+    }
+    private void RefreshHint()
+    {
+        if (!IsInsideTree() || !IsInstanceValid(readingHint) || !IsInstanceValid(hintSurface))
+            return;
+        var hint = readingHint!;
+        var unreservedHeight = GetVScrollBar().Page + (hintSurface!.Visible ? hintSurface.Size.Y +
+            (hintSurface.GetParent() is BoxContainer parent ? parent.GetThemeConstant("separation") : 0) : 0);
+        var visible = hint.Text.Length > 0 && GetVScrollBar().MaxValue > unreservedHeight + 1;
+        if (hint.Visible == visible)
+            return;
+        hint.Visible = hintSurface.Visible = visible;
+        RevealFocusedChild();
+    }
+    private void RevealFocusedChild()
+    {
+        var focused = GetViewport()?.GuiGetFocusOwner();
+        if (focused is null || !IsAncestorOf(focused))
+            return;
+        Callable.From(() =>
+        {
+            if (IsInstanceValid(this) && IsInsideTree() && IsInstanceValid(focused) && focused.HasFocus() && IsAncestorOf(focused))
+                EnsureControlVisible(focused);
+        }).CallDeferred();
+    }
     public CampaignScroll()
     {
         FollowFocus = true;

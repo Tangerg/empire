@@ -22,7 +22,7 @@ public partial class BattleResultScreen : Control
 
     public void ShowCompletion(GameText text, string heading, string reason, bool victory, Action settle, Action retry, Action exit)
     {
-        var column = Begin();
+        var column = Begin(readingHint: text.Format("ui.campaign.reading_hint"));
         Line(column, heading, 36);
         Line(column, reason);
         if (victory)
@@ -31,7 +31,7 @@ public partial class BattleResultScreen : Control
         ActionButton(actions, "Exit", text.Format("ui.result.camp"), exit);
     }
 
-    private VBoxContainer Begin(CampaignShellView? shellView = null, Action? onExit = null)
+    private VBoxContainer Begin(CampaignShellView? shellView = null, Action? onExit = null, string readingHint = "")
     {
         Theme = CampaignUiStyle.Create();
         generation++;
@@ -50,7 +50,10 @@ public partial class BattleResultScreen : Control
             shell = new CampaignShell();
             AddChild(shell);
             var token = generation;
-            shell.Show(shellView, () =>
+            shell.Show(shellView with
+            {
+                ReadingHint = readingHint
+            }, () =>
             {
                 if (handled || token != generation || !IsInsideTree())
                     return;
@@ -89,6 +92,7 @@ public partial class BattleResultScreen : Control
         var card = new DispatchPanel { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ShrinkCenter };
         scroll.AddChild(card);
         card.AddChild(column);
+        layout.AddChild(scroll.CreateReadingHint(readingHint));
         actions = ActionRail(layout);
         return column;
     }
@@ -135,14 +139,17 @@ public partial class BattleResultScreen : Control
     {
         if (outcome != "victory")
             throw new ArgumentException("Only committed victories have a campaign result summary.", nameof(outcome));
-        var column = Begin(shellView, onExit);
+        var column = Begin(shellView, onExit, summary.ReadingHint);
         void Line(string text, int size = 20) => BattleResultScreen.Line(column, text, size);
         Line(summary.Heading, 24);
         Line(summary.Title, 36);
         Line(summary.Outcome);
-        var metrics = new GridContainer { Name = "ResultMetrics", Columns = 2, SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        var metrics = new GridContainer { Name = "ResultMetrics", Columns = 2, SizeFlagsHorizontal = SizeFlags.ShrinkBegin };
         metrics.AddThemeConstantOverride("h_separation", 24);
         column.AddChild(metrics);
+        void FitMetrics() => metrics.CustomMinimumSize = new Vector2(Math.Min(440, column.Size.X), 0);
+        column.Resized += FitMetrics;
+        FitMetrics();
         foreach (var metric in summary.Metrics)
         {
             metrics.AddChild(new Label { Text = metric.Label, AutowrapMode = TextServer.AutowrapMode.WordSmart, SizeFlagsHorizontal = SizeFlags.ExpandFill, CustomMinimumSize = new Vector2(0, 32) });

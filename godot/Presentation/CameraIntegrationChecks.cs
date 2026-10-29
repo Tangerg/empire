@@ -271,17 +271,29 @@ public partial class CameraIntegrationChecks : Node
         await Layout();
         Require(hud.Projection!.Sections.Any(section => section.Key == "forecast") && detail.IsInsideTree(),
             $"Actual map-to-HUD pointer transfer preserves the controller's valid preview target and its live details control: preview={screen.Selection?.PreviewTarget}, forecast={hud.Projection!.Sections.Any(section => section.Key == "forecast")}, buttonAlive={GodotObject.IsInstanceValid(detail) && detail.IsInsideTree()}, hovered={viewport.GuiGetHoveredControl()?.Name}.");
+        screen.ShowFeedback("待保留的拒绝原因");
+        var retainedFeedback = (Label)screen.FindChild("BattleFeedback", true, false);
+        var feedbackSurface = (Control)screen.FindChild("FeedbackPanel", true, false);
+        Require(feedbackSurface.Visible, "The refusal is visible before opening a dossier.");
         viewport.PushInput(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = true, Position = point, GlobalPosition = point }, true);
         viewport.PushInput(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = false, Position = point, GlobalPosition = point }, true);
         await Layout();
         var popup = (PopupPanel)hud.FindChild("UnitDossier", true, false);
         Require(popup.Visible && hud.Projection!.Sections.Any(section => section.Key == "forecast-details") && session.Revision == 0,
             $"Clicking actual forecast details opens the latest projected facts without committing combat: popup={popup.Visible}, details={hud.Projection!.Sections.Any(section => section.Key == "forecast-details")}, revision={session.Revision}, preview={screen.Selection?.PreviewTarget}, hovered={viewport.GuiGetHoveredControl()?.Name}.");
+        Require(!feedbackSurface.Visible && retainedFeedback.Text == "待保留的拒绝原因",
+            "A dossier suppresses only competing feedback presentation, never its retained reason.");
+        screen.ShowFeedback("弹层期间更新的拒绝原因");
+        Require(!feedbackSurface.Visible && retainedFeedback.Text == "弹层期间更新的拒绝原因",
+            "New feedback while a dossier is open remains retained and non-overlapping.");
         var close = (Button)hud.FindChild("DossierClose", true, false);
         Require(close.IsVisibleInTree() && close.Text == text.Format("ui.common.close") + "  Esc"
             && new Rect2(Vector2.Zero, popup.Size).Encloses(close.GetGlobalRect()), "The dossier has an explicit localized close affordance inside its bounds.");
+        // Native pointer/focus transfer and a fast close can share one dispatch.
+        screen._Notification((int)NotificationWMWindowFocusOut);
         close.EmitSignal(Button.SignalName.Pressed);
         await Layout();
+        Require(feedbackSurface.Visible && retainedFeedback.Text == "弹层期间更新的拒绝原因", "Closing a dossier restores the latest retained feedback without replaying an event.");
         Require(!popup.Visible && hud.Projection!.Sections.Any(section => section.Key == "forecast")
             && GetViewport().GuiGetFocusOwner()?.Name == "ForecastDetailsButton" && session.Revision == 0,
             "Visible close returns focus to the current forecast entry and preserves prediction without executing combat.");

@@ -45,7 +45,9 @@ public partial class TacticalHud : Control
     public event Action<TacticalHudIntent>? IntentRequested;
     public TacticalHudProjection? Projection => current;
     public bool ShowHint { get; set; } = true;
-    public bool OwnsWindowFocus => detailPopup is { Visible: true } && detailPopup.HasFocus();
+    public event Action? DossierVisibilityChanged;
+    public bool DossierVisible => GodotObject.IsInstanceValid(detailPopup) && detailPopup!.IsInsideTree() && detailPopup.Visible;
+    public bool OwnsWindowFocus => DossierVisible && detailPopup!.HasFocus();
 
     public void Apply(TacticalHudProjection projection)
     {
@@ -80,6 +82,7 @@ public partial class TacticalHud : Control
             detailPopup = new PopupPanel { Name = "UnitDossier", Size = new Vector2I(360, 340) };
             detailPopup.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#30291e", 14, "#756344"));
             AddChild(detailPopup);
+            detailPopup.VisibilityChanged += () => DossierVisibilityChanged?.Invoke();
             var body = new VBoxContainer { Name = "DossierBody" };
             body.AddThemeConstantOverride("separation", 8);
             detailPopup.AddChild(body);

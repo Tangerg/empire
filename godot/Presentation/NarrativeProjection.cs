@@ -46,7 +46,7 @@ public sealed class NarrativeChapter
 public sealed record NarrativeContext(GameText Text, PortraitCatalog PortraitCatalog, NarrativePresentationDocument Presentation, int CompletedBattles, bool CampaignActive);
 
 public sealed record CampaignShellView(string Title, string ChapterHeading, int CompletedBattles, int BattleTotal,
-    NarrativeArt Art, string ExitLabel, string ProgressLabel, string ArtworkFailureLabel)
+    NarrativeArt Art, string ExitLabel, string ProgressLabel, string ArtworkFailureLabel, string ReadingHint = "")
 {
     public string Progress => FormattableString.Invariant($"{CompletedBattles}/{BattleTotal}");
     public double ProgressFraction => BattleTotal == 0 ? 0 : (double)CompletedBattles / BattleTotal;
@@ -63,7 +63,7 @@ public sealed record CampaignShellView(string Title, string ChapterHeading, int 
             ? scene : new NarrativeArt { Source = sceneTopic };
         var text = context.Text;
         return new CampaignShellView(text.Format(metadata.TitleKey), text.Format("ui.campaign.chapter_heading", chapter, text.Format(entry.TitleKey)),
-            context.CompletedBattles, metadata.BattleTotal, art, text.Format("ui.campaign.exit"), text.Format("ui.campaign.progress"), text.Format("error.presentation.artwork_unavailable"));
+            context.CompletedBattles, metadata.BattleTotal, art, text.Format("ui.campaign.exit"), text.Format("ui.campaign.progress"), text.Format("error.presentation.artwork_unavailable"), text.Format("ui.campaign.reading_hint"));
     }
 }
 

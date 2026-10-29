@@ -6,11 +6,16 @@ namespace Empire.Presentation;
 public partial class CampaignMenuScreen : Control
 {
     private DispatchPanel? menuCard;
+    private CampaignScroll? menuScroll;
     public override void _Ready() => Resized += FitCard;
     private void FitCard()
     {
         if (IsInstanceValid(menuCard))
-            menuCard!.CustomMinimumSize = new Vector2(Math.Min(570, Math.Max(280, Size.X - 72)), 0);
+        {
+            var width = IsInstanceValid(menuScroll) ? menuScroll!.Size.X -
+                (menuScroll.GetVScrollBar().Visible ? menuScroll.GetVScrollBar().Size.X : 0) : Size.X - 72;
+            menuCard!.CustomMinimumSize = new Vector2(Math.Min(570, Math.Max(280, width)), 0);
+        }
     }
     private int generation;
     private bool submitted;
@@ -71,8 +76,14 @@ public partial class CampaignMenuScreen : Control
         AddChild(margin);
         foreach (var edge in new[] { "left", "right", "top", "bottom" })
             margin.AddThemeConstantOverride($"margin_{edge}", 36);
-        var scroll = new CampaignScroll { Name = "MenuScroll", HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
-        margin.AddChild(scroll);
+        var scroll = menuScroll = new CampaignScroll { Name = "MenuScroll", HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
+        var readingLayout = new VBoxContainer();
+        margin.AddChild(readingLayout);
+        scroll.SizeFlagsVertical = SizeFlags.ExpandFill;
+        readingLayout.AddChild(scroll);
+        scroll.Resized += FitCard;
+        scroll.GetVScrollBar().VisibilityChanged += FitCard;
+        readingLayout.AddChild(scroll.CreateReadingHint(view.ReadingHint));
         var column = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill };
         column.AddThemeConstantOverride("separation", 16);
         var card = menuCard = new DispatchPanel { SizeFlagsHorizontal = SizeFlags.ShrinkBegin, SizeFlagsVertical = SizeFlags.ShrinkCenter };
