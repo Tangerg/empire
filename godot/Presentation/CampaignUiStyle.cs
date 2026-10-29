@@ -21,7 +21,8 @@ public static class CampaignUiStyle
         button.TreeExiting += Cancel;
         Callable.From(() =>
         {
-            if (!GodotObject.IsInstanceValid(button)) return;
+            if (!GodotObject.IsInstanceValid(button))
+                return;
             button.TreeExiting -= Cancel;
             if (pending && GodotObject.IsInstanceValid(button) && button.IsInsideTree() && button.IsVisibleInTree()
                 && !button.Disabled && button.CanProcess() && button.GetViewport().GuiGetFocusOwner() is null)
@@ -39,8 +40,10 @@ public partial class DispatchPanel : PanelContainer
         TextureFilter = TextureFilterEnum.Linear;
         AddThemeStyleboxOverride("panel", new StyleBoxEmpty
         {
-            ContentMarginLeft = 26, ContentMarginRight = 26,
-            ContentMarginTop = 24, ContentMarginBottom = 24
+            ContentMarginLeft = 26,
+            ContentMarginRight = 26,
+            ContentMarginTop = 24,
+            ContentMarginBottom = 24
         });
         Resized += QueueRedraw;
     }

@@ -9,7 +9,8 @@ public partial class CampaignMenuScreen : Control
     public override void _Ready() => Resized += FitCard;
     private void FitCard()
     {
-        if (IsInstanceValid(menuCard)) menuCard!.CustomMinimumSize = new Vector2(Math.Min(570, Math.Max(280, Size.X - 72)), 0);
+        if (IsInstanceValid(menuCard))
+            menuCard!.CustomMinimumSize = new Vector2(Math.Min(570, Math.Max(280, Size.X - 72)), 0);
     }
     private int generation;
     private bool submitted;
@@ -101,7 +102,8 @@ public partial class CampaignMenuScreen : Control
             button.AddThemeColorOverride("font_color", new Color(primary ? "#f1daa0" : "#d9dfd6"));
             buttons.Add(button);
             row.AddChild(button);
-            if (primary) CampaignUiStyle.InitialFocus(button);
+            if (primary)
+                CampaignUiStyle.InitialFocus(button);
             if (note is not null)
                 row.AddChild(Text(note, 20));
             button.Pressed += () =>

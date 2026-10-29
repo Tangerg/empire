@@ -46,24 +46,24 @@ public partial class CampaignNavigationChecks : Node
                     runtime.Advance();
             }
             battleNodeState = runtime.Snapshot();
-            foreach (var (name, test) in new (string, Action)[] {
-                ("fresh menu, local beats, choice and autosave", CheckFreshStoryChoice),
+            foreach (var (name, test) in new (string, Func<Task>)[] {
+                ("fresh menu, local beats, choice and autosave", () => { CheckFreshStoryChoice(); return Task.CompletedTask; }),
                 ("startup resume, battle restart, camp and Continue", CheckBattleCampMenu),
-                ("story/choice return, rebind and unmount", CheckNarrativeNavigation),
-                ("overwrite cancellation, stale dialog and confirmation", CheckOverwrite),
-                ("overwrite dialog unmount", CheckUnmountedOverwrite),
-                ("invalid save notice and explicit replacement", CheckInvalidSave),
-                ("ending active/completed/failed UI fixtures", CheckEndingFixtures),
-                ("story, choice, ending and staging write failures", CheckWriteFailures),
-                ("victory settlement UI fixture and autosave", CheckVictorySettlement),
-                ("read/delete failure preserves menu", CheckReadDeleteFailure),
-                ("manual load admission and view activation are atomic", CheckManualLoadAdmission),
+                ("story/choice return, rebind and unmount", () => { CheckNarrativeNavigation(); return Task.CompletedTask; }),
+                ("overwrite cancellation, stale dialog and confirmation", () => { CheckOverwrite(); return Task.CompletedTask; }),
+                ("overwrite dialog unmount", () => { CheckUnmountedOverwrite(); return Task.CompletedTask; }),
+                ("invalid save notice and explicit replacement", () => { CheckInvalidSave(); return Task.CompletedTask; }),
+                ("ending active/completed/failed UI fixtures", () => { CheckEndingFixtures(); return Task.CompletedTask; }),
+                ("story, choice, ending and staging write failures", () => { CheckWriteFailures(); return Task.CompletedTask; }),
+                ("victory settlement UI fixture and autosave", () => { CheckVictorySettlement(); return Task.CompletedTask; }),
+                ("read/delete failure preserves menu", () => { CheckReadDeleteFailure(); return Task.CompletedTask; }),
+                ("manual load admission and view activation are atomic", () => { CheckManualLoadAdmission(); return Task.CompletedTask; }),
                 ("formal Redstone entry, carried-roster fixture, resume and settlement", CheckFormalRedstone),
             })
             {
                 try
                 {
-                    test();
+                    await test();
                     if (paintedCaptureGame is not null)
                     {
                         // Navigation fixtures suppress processing; this live interaction must run real animation frames.
@@ -74,6 +74,7 @@ public partial class CampaignNavigationChecks : Node
                         screen.SelectHit(TacticalHit.Unit(new(13, 12), civilian["id"]!.GetValue<int>()));
                         Require(screen.SelectedUnitId == civilian["id"]!.GetValue<int>(), "The formal escort actor could not be selected on its open-road starting cell.");
                         screen.SelectHit(TacticalHit.Ground(new(13, 13)));
+                        screen._UnhandledKeyInput(new InputEventKey { Keycode = Key.W, Pressed = true });
                         while (screen.IsInputBlocked)
                             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
                         var moved = Campaign(paintedCaptureGame).Battle!.Snapshot()["units"]!.AsArray().OfType<JsonObject>()
@@ -111,6 +112,12 @@ public partial class CampaignNavigationChecks : Node
         GD.Print($"Campaign navigation native checks {(failures.Count == 0 ? "passed" : "failed")}: {assertions} assertions; {failures.Count} failed groups. Ending states are explicit UI fixtures, not campaign outcome parity.");
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         GetTree().Quit(failures.Count == 0 ? 0 : 1);
+    }
+
+    private async Task Layout()
+    {
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
     }
 
     private void CheckFreshStoryChoice()
@@ -177,7 +184,7 @@ public partial class CampaignNavigationChecks : Node
         Require(ReferenceEquals(View<Control>(game), next) && State(game) == committed && Stamp(automaticPath) == saved, "Old story continue/exit remained live after navigation.");
     }
 
-    private void CheckBattleCampMenu()
+    private async Task CheckBattleCampMenu()
     {
         WriteFixture(battleNodeState);
         var savedBefore = File.ReadAllText(automaticPath);
@@ -200,12 +207,14 @@ public partial class CampaignNavigationChecks : Node
         Require(ReferenceEquals(campaign.Battle, battle), "Stale staging Start restarted the live battle.");
         var restart = Buttons(battleScreen).Single(button => button.Text == "重新开始");
         Press(restart);
+        await Layout();
         var dialog = Descendants(battleScreen).OfType<ConfirmationDialog>().Single();
         Require(dialog.Visible, "Restart did not request confirmation.");
         dialog.EmitSignal(ConfirmationDialog.SignalName.Canceled);
         dialog.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
         Require(ReferenceEquals(campaign.Battle, battle) && ReferenceEquals(View<Control>(game), battleScreen), "Cancelled restart later executed from a stale confirmation.");
         Press(restart);
+        await Layout();
         dialog.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
         var restarted = campaign.Battle;
         var nextScreen = View<BattleScreen>(game);
@@ -214,13 +223,21 @@ public partial class CampaignNavigationChecks : Node
         Press(restart);
         Require(ReferenceEquals(campaign.Battle, restarted), "Stale restart dialog/button replaced the new session.");
         Press(Buttons(nextScreen).Single(button => button.Text == "重新开始"));
+        await Layout();
         var staleDialog = Descendants(nextScreen).OfType<ConfirmationDialog>().Single();
         Press(Buttons(nextScreen).Single(button => button.Text == "战役营地"));
+        await Layout();
         var camp = View<CampaignStagingScreen>(game);
         var pending = State(game);
         var opening = campaign.Battle;
         Require(campaign.AtCamp && campaign.HasPendingBattle && opening is not null, "Battle exit failed to retain the request at camp.");
-        staleDialog.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
+        if (GodotObject.IsInstanceValid(staleDialog))
+        {
+            Require(!staleDialog.IsInsideTree(), "Retired restart confirmation must no longer receive native input.");
+            staleDialog.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
+        }
+        else
+            Require(!GodotObject.IsInstanceValid(nextScreen), "The old confirmation is released with its retired battle screen.");
         Require(ReferenceEquals(View<Control>(game), camp) && ReferenceEquals(campaign.Battle, opening) && State(game) == pending, "Stale restart escaped to the old battle from camp.");
         Require(File.ReadAllText(automaticPath) == saved && Stamp(automaticPath) == stamp, "Restart/camp exit rewrote the clean campaign slot.");
         var exit = Button(camp, "CampaignExit");
@@ -608,7 +625,7 @@ public partial class CampaignNavigationChecks : Node
             "The two owned outposts must retain exactly two dynamic ownership flags.");
     }
 
-    private void CheckFormalRedstone()
+    private async Task CheckFormalRedstone()
     {
         // Preserve the existing two-victory trace's campaign facts, not its obsolete battle-save envelope.
         // This is historical carried-state admission, not a fresh c02 playthrough on the current engine.
@@ -708,6 +725,7 @@ public partial class CampaignNavigationChecks : Node
                 "Redstone F9 did not replace the live session with the same played state.");
             Painted();
             Press(Buttons(View<BattleScreen>(game)).Single(button => button.Text == "战役营地"));
+            await Layout();
             Require(Campaign(game).AtCamp, "Redstone exit did not return to the normal camp.");
             Press(Button(View<CampaignStagingScreen>(game), "CampaignExit"));
             Press(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));

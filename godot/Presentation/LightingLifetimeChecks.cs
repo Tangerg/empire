@@ -257,7 +257,10 @@ public partial class LightingLifetimeChecks : Node
         var staleSave = Buttons(screen).Single(button => button.Text == "保存");
         TacticalSceneInputChecks.Move(screen, restarted);
         Require(screen.Board.IsPresenting, "Restarted view did not start a live queued transition.");
+        var exitingProjection = screen.Board.GetNode<Node2D>("CanonicalProjection");
         RemoveChild(screen); // The same unmount boundary used by application scene changes.
+        Require(ReferenceEquals(exitingProjection, screen.Board.GetNode<Node2D>("CanonicalProjection")),
+            "Child playback cancellation must not rebuild a projection while its parent screen is exiting.");
         staleSave.EmitSignal(Button.SignalName.Pressed);
         Require(saves == 0 && !screen.Board.IsPresenting, "Scene exit left stale application callbacks or playback active.");
         screen.QueueFree();

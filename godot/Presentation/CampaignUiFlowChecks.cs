@@ -28,7 +28,8 @@ public partial class CampaignUiFlowChecks : Node
             await CheckEscape();
             await CheckScreens();
             await CheckSystemPopup();
-            if (failures.Count > 0) throw new InvalidOperationException(string.Join("\n", failures));
+            if (failures.Count > 0)
+                throw new InvalidOperationException(string.Join("\n", failures));
             GD.Print($"CAMPAIGN_UI_FLOW_CHECKS_OK {assertions} assertions");
             GetTree().Quit();
         }
@@ -37,18 +38,21 @@ public partial class CampaignUiFlowChecks : Node
     private void Check(bool condition, string message)
     {
         assertions++;
-        if (!condition) failures.Add(message);
+        if (!condition)
+            failures.Add(message);
     }
     private async Task Layout()
     {
-        for (var i = 0; i < 4; i++) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        for (var i = 0; i < 4; i++)
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
     }
     private static IEnumerable<Node> Descendants(Node root)
     {
         foreach (var child in root.GetChildren())
         {
             yield return child;
-            foreach (var node in Descendants(child)) yield return node;
+            foreach (var node in Descendants(child))
+                yield return node;
         }
     }
     private static Button Button(Node root, string name) => Descendants(root).OfType<Button>().Single(button => button.Name == name);
@@ -60,19 +64,26 @@ public partial class CampaignUiFlowChecks : Node
         var exits = 0;
         shell.Show(ShellView, () => exits++);
         await Layout();
-        Escape(echo: true); Escape(pressed: false);
+        Escape(echo: true);
+        Escape(pressed: false);
         Check(exits == 0, "Esc releases and autorepeat cannot navigate.");
-        shell.Hide(); Escape();
+        shell.Hide();
+        Escape();
         Check(exits == 0, "Hidden campaign shell cannot receive Esc.");
-        shell.Show(); Escape(); Escape();
+        shell.Show();
+        Escape();
+        Escape();
         Check(exits == 1, "Current visible campaign shell exits exactly once.");
         shell.Show(ShellView, () => exits += 10);
-        Escape(); Escape();
+        Escape();
+        Escape();
         Check(exits == 11, "Rebinding routes Esc only to current exit callback.");
         shell.Show(ShellView, () => exits += 100);
-        shell.ProcessMode = ProcessModeEnum.Disabled; Escape();
+        shell.ProcessMode = ProcessModeEnum.Disabled;
+        Escape();
         Check(exits == 11, "Prepared but inactive shell cannot navigate.");
-        RemoveChild(shell); shell.QueueFree();
+        RemoveChild(shell);
+        shell.QueueFree();
         await Layout();
     }
     private async Task CheckSystemPopup()
@@ -97,7 +108,8 @@ public partial class CampaignUiFlowChecks : Node
         var close = Descendants(popup).OfType<Button>().Single(value => value.Text.EndsWith("  Esc", StringComparison.Ordinal));
         foreach (var size in new[] { new Vector2I(640, 360), new Vector2I(1280, 720) })
         {
-            GetWindow().Size = size; await Layout();
+            GetWindow().Size = size;
+            await Layout();
             Button(screen, "SystemMenuButton").EmitSignal(Godot.Button.SignalName.Pressed);
             await Layout();
             Check(popup.Visible && popup.Size.X <= size.X && popup.Size.Y <= size.Y,
@@ -132,28 +144,37 @@ public partial class CampaignUiFlowChecks : Node
         Button Action(string key) => Descendants(popup).OfType<Button>().Single(button => button.Text == text.Format(key));
         void Press(string key) => Action(key).EmitSignal(Godot.Button.SignalName.Pressed);
         screen.BindApplicationActions(() => saves++, () => loads++);
-        Press("ui.battle.save"); Press("ui.battle.save"); Press("ui.battle.load");
+        Press("ui.battle.save");
+        Press("ui.battle.save");
+        Press("ui.battle.load");
         Check(saves == 0 && loads == 0, "Popup callbacks must not run inside Pressed dispatch.");
         await Layout();
         Check(saves == 1 && loads == 0, "Only the first queued popup action commits in one dispatch cycle.");
-        Press("ui.battle.save"); await Layout();
+        Press("ui.battle.save");
+        await Layout();
         Check(saves == 2, "A later save remains available after pending dispatch completes.");
         screen.BindApplicationActions(() => saves++);
         Press("ui.battle.save");
         screen.BindApplicationActions(() => saves += 100);
         await Layout();
         Check(saves == 2, "Rebinding cancels queued callbacks from the previous application binding.");
-        Press("ui.battle.save"); RemoveChild(screen); AddChild(screen); await Layout();
+        Press("ui.battle.save");
+        RemoveChild(screen);
+        AddChild(screen);
+        await Layout();
         Check(saves == 2, "Unmount and remount cannot revive a queued application action.");
         BindSession();
         screen.BindApplicationActions(onExit: () => RemoveChild(screen));
-        popup.PopupCentered(); await Layout();
+        popup.PopupCentered();
+        await Layout();
         Press("ui.battle.camp");
         Check(screen.IsInsideTree(), "Popup Pressed dispatch retains its Window until the signal finishes.");
         await Layout();
         Check(!screen.IsInsideTree(), "Deferred popup exit still invokes its existing navigation callback.");
-        if (screen.IsInsideTree()) RemoveChild(screen);
-        screen.QueueFree(); await Layout();
+        if (screen.IsInsideTree())
+            RemoveChild(screen);
+        screen.QueueFree();
+        await Layout();
     }
     private async Task CheckScreens()
     {
@@ -183,29 +204,49 @@ public partial class CampaignUiFlowChecks : Node
         foreach (var (screen, bind, primaryName) in screens)
         {
             AddChild(screen);
-            bind(); await Layout();
+            bind();
+            await Layout();
             Check(Button(screen, primaryName).HasFocus(), $"{screen.GetType().Name}: initial primary focus.");
-            bind(); var stale = Button(screen, primaryName); bind(); await Layout();
+            bind();
+            var stale = Button(screen, primaryName);
+            bind();
+            await Layout();
             Check(Button(screen, primaryName).HasFocus() && !IsInstanceValid(stale), $"{screen.GetType().Name}: rebound primary owns deferred focus.");
-            bind(); RemoveChild(screen); await Layout();
+            bind();
+            RemoveChild(screen);
+            await Layout();
             Check(GetViewport().GuiGetFocusOwner() is null, $"{screen.GetType().Name}: detached screen cannot claim deferred focus.");
-            AddChild(screen); bind(); RemoveChild(screen); AddChild(screen); await Layout();
+            AddChild(screen);
+            bind();
+            RemoveChild(screen);
+            AddChild(screen);
+            await Layout();
             Check(GetViewport().GuiGetFocusOwner() is null, $"{screen.GetType().Name}: remount without rebind must not revive invalidated deferred focus.");
-            screen.Hide(); bind(); await Layout();
+            screen.Hide();
+            bind();
+            await Layout();
             Check(GetViewport().GuiGetFocusOwner() is null, $"{screen.GetType().Name}: hidden preparation cannot acquire focus.");
-            screen.Show(); screen.ProcessMode = ProcessModeEnum.Disabled; bind(); await Layout();
+            screen.Show();
+            screen.ProcessMode = ProcessModeEnum.Disabled;
+            bind();
+            await Layout();
             Check(GetViewport().GuiGetFocusOwner() is null, $"{screen.GetType().Name}: inactive preparation cannot acquire focus.");
             screen.ProcessMode = ProcessModeEnum.Inherit;
-            bind(); var alternate = Descendants(screen).OfType<Button>().First(button => button.Name != primaryName);
-            alternate.GrabFocus(); await Layout();
+            bind();
+            var alternate = Descendants(screen).OfType<Button>().First(button => button.Name != primaryName);
+            alternate.GrabFocus();
+            await Layout();
             Check(alternate.HasFocus(), $"{screen.GetType().Name}: delayed initial focus cannot steal explicit selection.");
             foreach (var size in new[] { new Vector2I(640, 360), new Vector2I(1280, 720) })
             {
-                GetWindow().Size = size; bind(); await Layout();
+                GetWindow().Size = size;
+                bind();
+                await Layout();
                 var visible = GetViewport().GetVisibleRect();
                 var primary = Button(screen, primaryName);
                 var scroll = Descendants(screen).OfType<ScrollContainer>().Single();
-                if (scroll.IsAncestorOf(primary)) scroll.EnsureControlVisible(primary);
+                if (scroll.IsAncestorOf(primary))
+                    scroll.EnsureControlVisible(primary);
                 await Layout();
                 var rect = primary.GetGlobalRect();
                 Check(rect.Position.X >= -1 && rect.End.X <= visible.End.X + 1,
@@ -215,7 +256,9 @@ public partial class CampaignUiFlowChecks : Node
                 Check(scroll.GetHScrollBar().MaxValue <= scroll.GetHScrollBar().Page + 1,
                     $"{screen.GetType().Name} {size}: disabled horizontal scrollbar hides overflowing content ({scroll.GetHScrollBar().MaxValue}/{scroll.GetHScrollBar().Page}).");
             }
-            RemoveChild(screen); screen.QueueFree(); await Layout();
+            RemoveChild(screen);
+            screen.QueueFree();
+            await Layout();
         }
     }
 }

@@ -35,15 +35,15 @@ public partial class SceneryChecks : Node
             var oracle = JsonNode.Parse(input)!;
             var environment = EnvironmentCatalog.Load();
             var assets = AssetCatalog.Load();
-            Frames(oracle, environment);
+            HistoricalFrames(oracle, environment);
             await CoversAndLifecycle(oracle, assets, environment);
-            GD.Print($"PASS {_checks} source scenery differential/resource/lifecycle assertions; no GUI acceptance claim.");
+            GD.Print($"PASS {_checks} historical source-art and current registered scenery/resource/lifecycle assertions; no GUI acceptance claim.");
             GetTree().Quit();
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
     }
 
-    private void Frames(JsonNode oracle, EnvironmentCatalog environment)
+    private void HistoricalFrames(JsonNode oracle, EnvironmentCatalog environment)
     {
         var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
         Require(!JsonSerializer.Deserialize<AuthoredScene>("{}", options)!.HasAuthoredFramePlacements, "Absent frames lost");
@@ -51,18 +51,20 @@ public partial class SceneryChecks : Node
         foreach (var field in oracle["fields"]!.AsArray())
         {
             var id = field!["id"]!.GetValue<string>();
-            var path = $"res://data/scenes/{id}.json";
-            var authored = Godot.FileAccess.FileExists(path) ? AuthoredScene.Load(path) : new AuthoredScene();
-            Require(authored.HasAuthoredFramePlacements == field["authored"]!.GetValue<bool>(), $"Frame presence {id}");
+            // Source declarations and their historical SVG are one pinned fixture. They are not
+            // the current native scene, whose map registration and artwork evolved independently.
+            var declared = field["framePlacements"] as JsonArray;
+            Require((declared is not null) == field["authored"]!.GetValue<bool>(), $"Historical frame declaration presence {id}");
             var source = XElement.Parse(field["foreground"]!.GetValue<string>()).Elements().ToArray();
-            if (authored.HasAuthoredFramePlacements)
-            {
-                Require(source.Length == authored.FramePlacements.Count, $"Authored frame count {id}");
-                continue;
-            }
-            var native = BoardScenery.Perimeter(field["width"]!.GetValue<int>(), field["height"]!.GetValue<int>());
-            Require(native.SequenceEqual(BoardScenery.Perimeter(field["width"]!.GetValue<int>(), field["height"]!.GetValue<int>())), "Generic frame determinism");
-            Require(native.Count == source.Length, $"Generic frame count {id}");
+            var native = declared is null
+                ? BoardScenery.Perimeter(field["width"]!.GetValue<int>(), field["height"]!.GetValue<int>())
+                : declared.Select(item => new BoardScenery.Placement(item!["id"]!.GetValue<string>(),
+                    item["contact"]![0]!.GetValue<double>() * 32, item["contact"]![1]!.GetValue<double>() * 32,
+                    item["scale"]?.GetValue<double>() ?? 1, item["flip"]?.GetValue<bool>() ?? false,
+                    1, ShadowKind.Foreground)).ToArray();
+            if (declared is null)
+                Require(native.SequenceEqual(BoardScenery.Perimeter(field["width"]!.GetValue<int>(), field["height"]!.GetValue<int>())), "Generic frame determinism");
+            Require(native.Count == source.Length, $"Historical frame count {id}");
             for (var i = 0; i < native.Count; i++)
             {
                 var placement = native[i];
@@ -106,16 +108,20 @@ public partial class SceneryChecks : Node
 
     private async Task CoversAndLifecycle(JsonNode oracle, AssetCatalog assets, EnvironmentCatalog environment)
     {
-        var fixture = PresentationJson.Load<JsonObject>("res://tests/oracle/grayflag-initial-raw.json");
-        var level = fixture["level"]!.AsObject();
-        var state = fixture["state"]!.AsObject();
+        var engine = new Empire.Core.Engine.BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var level = BattleTextChecks.OpeningLevel();
+        var state = engine.CreateState(level);
         var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
+        Require(scene.AssembledGroundPath is not null && scene.HasAuthoredFramePlacements && scene.FramePlacements.Count == 0,
+            "Current C01 owns its assembled scenery and explicitly suppresses legacy generic frames.");
+        var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
         var board = new BoardView { AdvanceAnimationsAutomatically = false };
         AddChild(board);
         var cache = board.LightingResources;
         try
         {
-            board.Configure(new(assets, environment, new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")), BoardPlane.Dimetric), level, scene);
+            board.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog, rendering.Plane), level, scene);
+            board.ConfigureGround(rendering.Ground);
             Require(cache.IsDisposed, "Configure releases prior cache");
             cache = board.LightingResources;
             Require(board.RenderedPerimeterPlacementCount == 0, "Authored frame replaced by generic");
@@ -136,8 +142,16 @@ public partial class SceneryChecks : Node
                     var sprite = root.GetChild<Sprite2D>(i);
                     var asset = assets.ResolveTopic(sprite.GetMeta("topic_id").AsString());
                     Require(image.Attribute("href")!.Value.EndsWith(asset.ResourcePath["res://assets/".Length..], StringComparison.Ordinal), "Cover artwork");
-                    Near(sprite.Position.X + sprite.Offset.X * sprite.Scale.X, piece["x"]!.GetValue<double>() + Num(image, "x"), "Cover X");
-                    Near(sprite.Position.Y + sprite.Offset.Y * sprite.Scale.Y, piece["y"]!.GetValue<double>() + Num(image, "y"), "Cover Y");
+                    // Historical TS art used foot (16,31); current contacts belong to BoardProjection.
+                    Near(sprite.Offset.X * sprite.Scale.X, Num(image, "x") - 16, "Historical cover artwork offset X");
+                    Near(sprite.Offset.Y * sprite.Scale.Y, Num(image, "y") - 31, "Historical cover artwork offset Y");
+                    var at = new Empire.Core.Geometry.Coord((int)(piece["x"]!.GetValue<double>() / 32),
+                        (int)(piece["y"]!.GetValue<double>() / 32));
+                    var logical = board.Projection.LogicalCellContact(at);
+                    Require(sprite.Position.IsEqualApprox(board.Projection.CellContact(at)),
+                        "Current cover feet must use the registered canonical support plane, not old SVG absolute coordinates.");
+                    Require(!sprite.ZAsRelative && sprite.ZIndex == board.Projection.LayerAtDepth(board.Projection.Depth(logical), BoardDepthLayer.Standing),
+                        "Current cover uses the same standing-depth owner as actors and buildings.");
                     Near(sprite.Texture.GetWidth() * sprite.Scale.X, Num(image, "width"), "Cover width");
                     Near(sprite.Texture.GetHeight() * sprite.Scale.Y, Num(image, "height"), "Cover height");
                     Require(sprite.GetChildCount() == 1 && sprite.GetChild<Sprite2D>(0).Texture != null, "Cover filter mounted");
@@ -148,12 +162,12 @@ public partial class SceneryChecks : Node
                 await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             }
             var missing = new AuthoredScene { LevelId = scene.LevelId, MapSize = scene.MapSize, RuntimeReady = true };
-            board.Configure(new(assets, environment, new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")), BoardPlane.Dimetric), level, missing);
+            board.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog, rendering.Plane), level, missing);
             Require(cache.IsDisposed && cache.TextureCount == 0, "Rebind disposes old compositions");
             cache = board.LightingResources;
             Require(board.RenderedAuthoredPlacementCount == 0 && board.RenderedPerimeterPlacementCount > 0, "Generic and authored counts distinct");
             var explicitEmpty = new AuthoredScene { LevelId = scene.LevelId, MapSize = scene.MapSize, RuntimeReady = true, FramePlacements = new() };
-            board.Configure(new(assets, environment, new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")), BoardPlane.Dimetric), level, explicitEmpty);
+            board.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog, rendering.Plane), level, explicitEmpty);
             Require(cache.IsDisposed && board.RenderedPerimeterPlacementCount == 0, "Explicit empty frame must suppress generic");
             cache = board.LightingResources;
         }

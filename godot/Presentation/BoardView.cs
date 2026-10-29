@@ -569,7 +569,7 @@ public partial class BoardView : Node2D
 
     private static int CompareDrawOrder(Node2D left, int leftDepth, Node2D right, int rightDepth) =>
         leftDepth != rightDepth ? rightDepth.CompareTo(leftDepth)
-        : left == right ? 0 : left.IsGreaterThan(right) ? 1 : -1;
+        : left == right ? 0 : left.IsGreaterThan(right) ? -1 : 1;
 
     private float StandingDepth(StandingEntry entry)
     {

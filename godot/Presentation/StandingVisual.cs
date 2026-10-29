@@ -65,7 +65,8 @@ public sealed class SpriteStandingVisual(Sprite2D sprite, bool receivesPointer =
     public override bool ContainsPointer(Vector2 globalPoint) => receivesPointer && Covers(globalPoint);
     public override bool IntersectsPointer(Vector2[] globalPolygon)
     {
-        if (!receivesPointer) return false;
+        if (!receivesPointer)
+            return false;
         // Placement may conservatively avoid transparent sprite canvas; actual pointer hits still use opaque pixels.
         var rect = sprite.GetRect();
         return Geometry2D.IntersectPolygons(globalPolygon.Select(sprite.ToLocal).ToArray(),

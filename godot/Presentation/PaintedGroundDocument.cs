@@ -10,7 +10,10 @@ namespace Empire.Presentation;
 [JsonUnmappedMemberHandling(JsonUnmappedMemberHandling.Disallow)]
 public sealed class PaintedGroundDocument : RegisteredGroundDocument
 {
-    public required PaintedOccluder[] Occluders { get; init; }
+    public required PaintedOccluder[] Occluders
+    {
+        get; init;
+    }
 
     public BoardGroundFactory Factory(JsonObject registeredMap) => (rules, scene) =>
     {

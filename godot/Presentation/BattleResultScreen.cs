@@ -105,7 +105,8 @@ public partial class BattleResultScreen : Control
             action();
         };
         column.AddChild(button);
-        if (name is "Settle" or "Proceed" or "Retry") CampaignUiStyle.InitialFocus(button);
+        if (name is "Settle" or "Proceed" or "Retry")
+            CampaignUiStyle.InitialFocus(button);
     }
 
     public void ShowResult(string outcome, CampaignBattleSummary summary, Action proceed, CampaignShellView? shellView = null, Action? onExit = null)

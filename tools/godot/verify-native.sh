@@ -42,7 +42,8 @@ run_scene() {
   fi
 }
 export EMPIRE_NARRATIVE_EXPECTATIONS="$PWD/godot/tests/native/narrative.json"
-for scene in NarrativeChecks OathPadChecks DynamicStateChecks PaintedSurfaceChecks BlackFlagCampChecks ReedVillageChecks WhiteRiverChecks LuojiaChecks PresentationChecks CameraIntegrationChecks TacticalHudChecks BattleScreenChecks BattleResultFlowChecks CampaignNavigationChecks; do
+for scene in NarrativeChecks OathPadChecks DynamicStateChecks PaintedSurfaceChecks AssembledGroundChecks PaintedSurfaceBroadPhaseChecks BlackFlagCampChecks ReedVillageChecks WhiteRiverChecks LuojiaChecks PresentationChecks CameraIntegrationChecks TacticalHudChecks BattleScreenChecks BattleResultFlowChecks CampaignNavigationChecks CampaignUiFlowChecks LightingLifetimeChecks; do
   run_scene "$scene"
 done
+run_scene SceneryChecks -- --scenery-oracle=res://tests/oracle/board-scenery.json.gz
 printf 'Current native contracts, replay/save determinism, and application flow passed. Manual GUI and export acceptance are separate.\n'

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Text.Json.Nodes;
 using Empire.Application;
 using Empire.Localization;
@@ -23,7 +24,7 @@ public partial class BattleResultFlowChecks : Node
     private GameText messages = null!;
     private CampaignBattleSummary Summary = null!;
 
-    public override void _Ready()
+    public override async void _Ready()
     {
         try
         {
@@ -44,7 +45,11 @@ public partial class BattleResultFlowChecks : Node
         foreach (var outcome in new[] { "victory", "defeat", "draw" })
             foreach (var action in outcome == "victory" ? new[] { "Settle", "Retry", "Exit" } : new[] { "Retry", "Exit" })
                 Check($"game {outcome}/{action}", () => CheckGameFlow(outcome, action));
-        Check("busy save/load keyboard and direct entry", CheckBusySaveLoad);
+        try
+        {
+            await CheckBusySaveLoad();
+        }
+        catch (Exception error) { failures.Add("busy save/load keyboard and direct entry: " + error); }
         if (failures.Count == 0)
         {
             GD.Print($"Battle result-flow native checks passed: {assertions} assertions.");
@@ -282,7 +287,7 @@ public partial class BattleResultFlowChecks : Node
             "Historical battle saves must be rejected without migrating their schema or payload.");
     }
 
-    private void CheckBusySaveLoad()
+    private async Task CheckBusySaveLoad()
     {
         var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         var engine = new BattleEngine(packs);
@@ -328,7 +333,10 @@ public partial class BattleResultFlowChecks : Node
         // additional screen-level idle gate because it replaces the binding.
         screen.BindApplicationActions(() => Invoke(game, "Save"), () => Invoke(game, "Load"), () => invoked++);
         foreach (var button in Descendants(screen).OfType<Button>().Where(button => new[] { "保存", "读取", "重新开始" }.Contains(button.Text)))
+        {
             Press(button);
+            await Layout();
+        }
         Require(invoked == 0 && !Descendants(screen).OfType<ConfirmationDialog>().Any(dialog => dialog.Visible), "Busy screen restart was not ignored.");
         Require(Field<Label>(screen, "_feedback").Text == feedback && screen.RecentMessages.SequenceEqual(messages), "Busy application save/load button bypassed the Game guard.");
         Require(savePaths.Select(FileStamp).SequenceEqual(stamps), "Busy Save/Load changed manual/autosave files or their temporary files.");
@@ -338,19 +346,30 @@ public partial class BattleResultFlowChecks : Node
         screen.BindApplicationActions(() => invoked++);
         var oldSave = Descendants(screen).OfType<Button>().Single(button => button.Text == "保存");
         Press(oldSave);
+        Require(invoked == 0, "Save must defer until popup dispatch completes.");
+        await Layout();
         Require(invoked == 1, "Settled screen did not restore application actions.");
         screen.BindApplicationActions(() => invoked += 10);
         Press(oldSave);
+        await Layout();
         Require(invoked == 1, "Rebinding application buttons in the same session left an old Save callback active.");
         var newSave = Descendants(screen).OfType<Button>().Single(button => button.Text == "保存");
         Press(newSave);
+        await Layout();
         Require(invoked == 11, "The replacement application button did not use the fresh binding.");
         newSave.GetParent().RemoveChild(newSave);
         Press(newSave);
+        await Layout();
         Require(invoked == 11, "An individually detached application button invoked its old callback.");
         newSave.QueueFree();
         game.Free();
         Retire(screen);
+    }
+
+    private async Task Layout()
+    {
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
     }
 
     private void CheckPrebattleAutosave()

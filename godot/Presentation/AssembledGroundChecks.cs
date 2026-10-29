@@ -19,11 +19,17 @@ public partial class AssembledGroundChecks : Node
     private void Require(bool condition, string message)
     {
         assertions++;
-        if (!condition) throw new InvalidOperationException(message);
+        if (!condition)
+            throw new InvalidOperationException(message);
     }
     public override async void _Ready()
     {
-        try { await Check(); GD.Print($"ASSEMBLED_GROUND_CHECKS_OK {assertions} assertions"); GetTree().Quit(); }
+        try
+        {
+            await Check();
+            GD.Print($"ASSEMBLED_GROUND_CHECKS_OK {assertions} assertions");
+            GetTree().Quit();
+        }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
     }
     private async Task Check()
@@ -67,15 +73,38 @@ public partial class AssembledGroundChecks : Node
                 $"C01 minified artwork needs imported mip levels, not only a filter setting: {assetId}.");
         }
         var sites = new[] { new Coord(3, 16), new Coord(18, 13), new Coord(22, 16), new Coord(34, 13) };
-        SceneObjectPlacement Site(Coord cell) => new() { Id = $"Site_{cell.X}_{cell.Y}", AssetId = "house",
-            Contact = [cell.X + .5, cell.Y + .5], Scale = 1, SelectionCell = [cell.X, cell.Y], OwnsMapStructureBody = true, Pointer = "target" };
-        SceneObjectPlacement Tree(double x, string pointer = "pass-through") => new() { Id = "Tree", AssetId = "house",
-            Contact = [x, 20.5], Scale = .5f, SelectionCell = null, OwnsMapStructureBody = false, Pointer = pointer };
+        SceneObjectPlacement Site(Coord cell) => new()
+        {
+            Id = $"Site_{cell.X}_{cell.Y}",
+            AssetId = "house",
+            Contact = [cell.X + .5, cell.Y + .5],
+            Scale = 1,
+            SelectionCell = [cell.X, cell.Y],
+            OwnsMapStructureBody = true,
+            Pointer = "target"
+        };
+        SceneObjectPlacement Tree(double x, string pointer = "pass-through") => new()
+        {
+            Id = "Tree",
+            AssetId = "house",
+            Contact = [x, 20.5],
+            Scale = .5f,
+            SelectionCell = null,
+            OwnsMapStructureBody = false,
+            Pointer = pointer
+        };
         AssembledGroundDocument Document(params SceneObjectPlacement[] instances) => new()
         {
-            LevelId = "c01-01", LevelSourceSha256 = EcmaJson.Sha256(level), ResourcePath = "fixture-clean-ground",
-            PixelSize = [2048, 2048], WorldScale = 1, OriginPixels = [64, 256], CellXPixels = [32, 0], CellYPixels = [0, 32],
-            ObjectCatalogPath = "fixture-catalog", Objects = instances
+            LevelId = "c01-01",
+            LevelSourceSha256 = EcmaJson.Sha256(level),
+            ResourcePath = "fixture-clean-ground",
+            PixelSize = [2048, 2048],
+            WorldScale = 1,
+            OriginPixels = [64, 256],
+            CellXPixels = [32, 0],
+            CellYPixels = [0, 32],
+            ObjectCatalogPath = "fixture-catalog",
+            Objects = instances
         };
         var document = Document(sites.Select(Site).Append(Tree(-1)).ToArray());
         document.ValidateLevel(level);
@@ -86,10 +115,14 @@ public partial class AssembledGroundChecks : Node
         objectImage.Fill(new Color(0, 0, 0, 0));
         objectImage.FillRect(new Rect2I(12, 8, 40, 80), new Color("#a34732"));
         using var house = ImageTexture.CreateFromImage(objectImage);
-        var catalog = new SceneObjectCatalog { Schema = 1, Objects = new()
+        var catalog = new SceneObjectCatalog
         {
-            ["house"] = new SceneObjectAsset { ResourcePath = "fixture-independent.png", PixelSize = [64, 96], AnchorPixels = [32, 88], GroundFrontPixels = [32, 88], ContactShadowRadiiPixels = [15, 4] }
-        } };
+            Schema = 1,
+            Objects = new()
+            {
+                ["house"] = new SceneObjectAsset { ResourcePath = "fixture-independent.png", PixelSize = [64, 96], AnchorPixels = [32, 88], GroundFrontPixels = [32, 88], ContactShadowRadiiPixels = [15, 4] }
+            }
+        };
         var textures = new Dictionary<string, Texture2D> { ["house"] = house };
         var scene = new AuthoredScene { LevelId = "c01-01", MapSize = [36, 30], RuntimeReady = true, FramePlacements = [] };
         var board = new BoardView { AdvanceAnimationsAutomatically = false };
@@ -137,8 +170,13 @@ public partial class AssembledGroundChecks : Node
             moving["x"] = destination.X;
             var path = new JsonArray(new JsonObject { ["x"] = from.X, ["y"] = from.Y },
                 new JsonObject { ["x"] = destination.X, ["y"] = destination.Y });
-            var action = new JsonObject { ["kind"] = "command", ["unit"] = unitId, ["path"] = path.DeepClone(),
-                ["command"] = new JsonObject { ["ability"] = "wait" } };
+            var action = new JsonObject
+            {
+                ["kind"] = "command",
+                ["unit"] = unitId,
+                ["path"] = path.DeepClone(),
+                ["command"] = new JsonObject { ["ability"] = "wait" }
+            };
             var movement = new JsonObject { ["type"] = "move", ["unit"] = unitId, ["path"] = path };
             var transition = new BattlePresentationTransition(1, EcmaJson.ToElement(state), EcmaJson.ToElement(action),
                 [EcmaJson.ToElement(movement)], EcmaJson.ToElement(after), false);
@@ -184,20 +222,34 @@ public partial class AssembledGroundChecks : Node
         void Reject(AssembledGroundDocument invalid, string reason)
         {
             var rejected = false;
-            try { AssembledGroundView.Create(invalid, ground, catalog, textures, map, engine.Catalog).Free(); }
+            try
+            {
+                AssembledGroundView.Create(invalid, ground, catalog, textures, map, engine.Catalog).Free();
+            }
             catch (Exception error) when (error is InvalidOperationException or ArgumentException) { rejected = true; }
             Require(rejected && IsInstanceValid(ground) && IsInstanceValid(house), reason);
         }
         Reject(Document(Site(sites[0]), Site(sites[0])), "Duplicate instance/site ownership is rejected without disposing borrowed art.");
         Reject(Document(Tree(-1000)), "Decorative contacts may leave the map but not the registered canvas.");
         Reject(Document(Tree(2, "automatic")), "Pointer semantics must be explicit.");
-        Reject(Document(new SceneObjectPlacement { Id = "invalid", AssetId = "house", Contact = [1, 1], Scale = 1,
-            SelectionCell = null, OwnsMapStructureBody = true, Pointer = "target" }), "A structure body cannot own an absent canonical site.");
+        Reject(Document(new SceneObjectPlacement
+        {
+            Id = "invalid",
+            AssetId = "house",
+            Contact = [1, 1],
+            Scale = 1,
+            SelectionCell = null,
+            OwnsMapStructureBody = true,
+            Pointer = "target"
+        }), "A structure body cannot own an absent canonical site.");
         var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
         var json = JsonNode.Parse(JsonSerializer.Serialize(document, options))!.AsObject();
         json["occluders"] = new JsonArray();
         var rejectedOldPatches = false;
-        try { JsonSerializer.Deserialize<AssembledGroundDocument>(json.ToJsonString(), options); }
+        try
+        {
+            JsonSerializer.Deserialize<AssembledGroundDocument>(json.ToJsonString(), options);
+        }
         catch (JsonException) { rejectedOldPatches = true; }
         Require(rejectedOldPatches, "Assembled documents reject obsolete background-patch occluders rather than silently combining renderers.");
     }

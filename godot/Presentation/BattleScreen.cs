@@ -347,7 +347,7 @@ public partial class BattleScreen : Control
         try
         {
             var settled = await _board.PresentTransitionAsync(transition, next.VisibleUnitIds);
-            if (generation != _presentationGeneration || !IsInsideTree() || !ReferenceEquals(_session, session))
+            if (generation != _presentationGeneration || _board.IsExiting || !IsInsideTree() || !ReferenceEquals(_session, session))
                 return;
             var current = session!.GetSnapshot();
             if (settled && current.Revision == next.Revision)
@@ -359,7 +359,7 @@ public partial class BattleScreen : Control
         }
         catch (MissingArtResourceException error)
         {
-            if (generation != _presentationGeneration || !IsInsideTree() || !ReferenceEquals(_session, session))
+            if (generation != _presentationGeneration || _board.IsExiting || !IsInsideTree() || !ReferenceEquals(_session, session))
                 return;
             ApplySnapshot(session!.GetSnapshot());
             ShowFeedback(_text.Format("error.presentation.playback_failed"));
@@ -367,7 +367,8 @@ public partial class BattleScreen : Control
         }
         finally
         {
-            if (generation == _presentationGeneration)
+            // A child board exits before this parent; its cancellation may resume us synchronously.
+            if (generation == _presentationGeneration && !_board.IsExiting && IsInsideTree())
             {
                 _presenting = false;
                 UpdateTactical();

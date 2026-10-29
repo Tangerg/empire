@@ -63,8 +63,8 @@ public partial class CameraIntegrationChecks : Node
             CheckStationaryPointerFocus();
             CheckCancellation();
             CheckOutsideTerrain();
-            CheckFollowAndBusyActions();
-            CheckUnmountAndRebind();
+            await CheckFollowAndBusyActions();
+            await CheckUnmountAndRebind();
             await PaintedPickingChecks.CheckSouthRoad(this, Require);
             GD.Print($"Native camera screen integration passed: {assertions} assertions.");
             GetTree().Quit();
@@ -358,7 +358,7 @@ public partial class CameraIntegrationChecks : Node
         Require(session.GetSnapshot().State.GetRawText() == snapshot.State.GetRawText(), "Disagreeing material metadata cannot advance the session");
     }
 
-    private void CheckFollowAndBusyActions()
+    private async Task CheckFollowAndBusyActions()
     {
         foreach (var (computer, hidden, far) in new[] { (false, false, false), (false, false, true), (true, false, true), (true, true, true) })
         {
@@ -400,6 +400,8 @@ public partial class CameraIntegrationChecks : Node
                 exit.EmitSignal(Button.SignalName.Pressed);
                 restart.EmitSignal(Button.SignalName.Pressed);
                 save.EmitSignal(Button.SignalName.Pressed);
+                Require(saves == 0, "Application callbacks must wait until native popup dispatch completes.");
+                await Layout();
                 Require(exits == 0 && restarts == 0 && saves == 1, "Busy exit/restart are blocked while save remains available");
                 Wheel(MouseButton.WheelUp, ctrl: true);
                 screen._Process(0);
@@ -439,14 +441,16 @@ public partial class CameraIntegrationChecks : Node
             GuiButton(MouseButton.Left, false, new Vector2(150, 150));
             Require(screen.SelectedUnitId is null, "Presentation start canceled the pre-existing pointer gesture");
             exit.EmitSignal(Button.SignalName.Pressed);
+            await Layout();
             Require(exits == 1, "Settled camp exit invokes once through the current mounted binding");
             Bind(new GrayFlagSession(new(engine, presentation, new JsonArray()), level));
             exit.EmitSignal(Button.SignalName.Pressed);
+            await Layout();
             Require(exits == 1, "An old-binding camp button cannot invoke after a rebind");
         }
     }
 
-    private void CheckUnmountAndRebind()
+    private async Task CheckUnmountAndRebind()
     {
         Bind(new GrayFlagSession(new(engine, presentation, new JsonArray()), level));
         var exits = 0;
@@ -455,6 +459,7 @@ public partial class CameraIntegrationChecks : Node
         var exit = Buttons(screen).Single(button => button.Text == "战役营地");
         var restart = Buttons(screen).Single(button => button.Text == "重新开始");
         restart.EmitSignal(Button.SignalName.Pressed);
+        await Layout();
         var confirmation = screen.GetChildren().OfType<ConfirmationDialog>().Single();
         Bind(new GrayFlagSession(new(engine, presentation, new JsonArray()), level));
         screen.BindApplicationActions(onRestart: () => restarts += 100, onExit: () => exits += 100);

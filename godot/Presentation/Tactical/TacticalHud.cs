@@ -338,7 +338,8 @@ public partial class TacticalHud : Control
         var mountedScroll = detailScroll;
         Callable.From(() =>
         {
-            if (generation == renderedGeneration && IsInsideTree() && mountedScroll.IsInsideTree())
+            if (GodotObject.IsInstanceValid(this) && generation == renderedGeneration && IsInsideTree()
+                && GodotObject.IsInstanceValid(mountedScroll) && mountedScroll.IsInsideTree())
                 mountedScroll.ScrollVertical = scrollPosition;
         }).CallDeferred();
 
@@ -348,7 +349,8 @@ public partial class TacticalHud : Control
                 return;
             Callable.From(() =>
             {
-                if (generation == renderedGeneration && IsInsideTree() && button.IsInsideTree() && !button.Disabled)
+                if (GodotObject.IsInstanceValid(this) && generation == renderedGeneration && IsInsideTree()
+                    && GodotObject.IsInstanceValid(button) && button.IsInsideTree() && !button.Disabled)
                     button.GrabFocus();
             }).CallDeferred();
         }

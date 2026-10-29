@@ -89,7 +89,8 @@ public partial class CampaignStagingScreen : Control
             roster.AddChild(row);
             var identity = new TacticalHudPortrait(unit.UnitType, unit.ActorKey, "#ffffff");
             Texture2D? avatar = unit.Portrait is { } portrait ? Texture(portrait, $"portrait {unit.Id}") : null;
-            if (avatar is not null) avatar = unitArt.FramePortraitArtwork(identity, avatar);
+            if (avatar is not null)
+                avatar = unitArt.FramePortraitArtwork(identity, avatar);
             if (avatar is null)
             {
                 try

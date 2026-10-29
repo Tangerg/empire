@@ -172,7 +172,8 @@ public partial class StoryScreen : Control
         var primary = ActionButton(view.PrimaryLabel, "StoryPrimary", AdvanceLocalBeat);
         actionGrid.AddChild(primary);
         ResizeLayout();
-        if (!restorePrimaryFocus) CampaignUiStyle.InitialFocus(primary);
+        if (!restorePrimaryFocus)
+            CampaignUiStyle.InitialFocus(primary);
         if (restorePrimaryFocus)
         {
             var binding = generation;

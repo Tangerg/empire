@@ -18,6 +18,7 @@ public partial class BoardView
     private bool _exiting;
 
     public bool IsPresenting => _playback is not null;
+    internal bool IsExiting => _exiting;
     internal object? PresentationIdentity => _playback;
     public bool AnimationsEnabled { get; set; } = true;
     public event Action? PresentationRepaintRequested;

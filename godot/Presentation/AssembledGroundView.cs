@@ -58,12 +58,24 @@ public partial class AssembledGroundView : BoardGroundView
                 SpriteGroundContact.Read(asset.AnchorPixels, asset.PixelSize[0], asset.PixelSize[1], id + " anchor"),
                 SpriteGroundContact.Read(asset.GroundFrontPixels, asset.PixelSize[0], asset.PixelSize[1], id + " front"), radii));
         }
-        var view = new AssembledGroundView { Name = "AssembledGround", _document = document,
-            _registeredMap = map.DeepClone().AsObject(), _ground = ground };
+        var view = new AssembledGroundView
+        {
+            Name = "AssembledGround",
+            _document = document,
+            _registeredMap = map.DeepClone().AsObject(),
+            _ground = ground
+        };
         try
         {
-            view.AddChild(new Sprite2D { Name = "CleanGround", Texture = ground, Centered = false,
-                Scale = Vector2.One * document.WorldScale, TextureFilter = CanvasItem.TextureFilterEnum.Linear, ZIndex = -4096 });
+            view.AddChild(new Sprite2D
+            {
+                Name = "CleanGround",
+                Texture = ground,
+                Centered = false,
+                Scale = Vector2.One * document.WorldScale,
+                TextureFilter = CanvasItem.TextureFilterEnum.Linear,
+                ZIndex = -4096
+            });
             var identities = new HashSet<string>(StringComparer.Ordinal);
             var cells = new HashSet<Coord>();
             var sites = new List<GroundSite>();
@@ -94,9 +106,15 @@ public partial class AssembledGroundView : BoardGroundView
                     || selection is not null && instance.Pointer != "target"
                     || instance.Pointer is not ("target" or "block" or "pass-through"))
                     throw new InvalidOperationException($"Scene object pointer and site ownership are inconsistent: {instance.Id}.");
-                var sprite = new Sprite2D { Name = instance.Id, Texture = asset.Texture, Centered = false,
-                    Offset = -asset.Anchor, Scale = Vector2.One * instance.Scale,
-                    TextureFilter = CanvasItem.TextureFilterEnum.LinearWithMipmaps };
+                var sprite = new Sprite2D
+                {
+                    Name = instance.Id,
+                    Texture = asset.Texture,
+                    Centered = false,
+                    Offset = -asset.Anchor,
+                    Scale = Vector2.One * instance.Scale,
+                    TextureFilter = CanvasItem.TextureFilterEnum.LinearWithMipmaps
+                };
                 SpriteGroundContact.Attach(sprite, asset.Front);
                 sprite.AddChild(BoardLighting.CreateGroundContact(asset.ShadowRadii, shadows));
                 view.AddChild(sprite);
@@ -135,7 +153,11 @@ public partial class AssembledGroundView : BoardGroundView
         {
             var replacement = PaintedSurface.Create(projection, _ground, _document.WorldScale);
             replacement.TextureFilter = CanvasItem.TextureFilterEnum.Linear;
-            if (_surface is not null) { RemoveChild(_surface); _surface.Free(); }
+            if (_surface is not null)
+            {
+                RemoveChild(_surface);
+                _surface.Free();
+            }
             AddChild(replacement);
             _surface = replacement;
             _projection = projection;

@@ -13,8 +13,11 @@ const content = createTestCatalog(CANDIDATE_01_CONTENT_PACK);
 const fields = CANDIDATE_01_LEVELS.map(level => {
   const map = mapFromLevel(content, level);
   const viewport = createSceneViewport(TacticalGrids.get('square4'), map.width, map.height, 32, candidate01SceneProfile());
+  const sourceFrames = candidate01EnvironmentScene(level.id)?.framePlacements;
   return { id: level.id, width: map.width, height: map.height,
-    authored: candidate01EnvironmentScene(level.id)?.framePlacements !== undefined,
+    authored: sourceFrames !== undefined,
+    ...(sourceFrames === undefined ? {} : { framePlacements: sourceFrames.map(({ id, contact, scale, flip }) =>
+      ({ id, contact: [...contact], scale, flip })) }),
     foreground: candidate01SceneFrameMarkup({ content, levelId: level.id, map, viewport }).foreground };
 });
 const map = mapFromLevel(content, CANDIDATE_01_LEVELS[0]);

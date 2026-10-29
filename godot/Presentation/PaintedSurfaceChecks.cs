@@ -53,10 +53,44 @@ public partial class PaintedSurfaceChecks : Node
                 Require(actor.Position.IsEqualApprox(board.Projection.CellContact(cell)),
                     "Every opening actor must use the canonical elevated foot contact.");
             }
-            foreach (var cell in new[] { new Coord(3, 16), new Coord(18, 13), new Coord(22, 16), new Coord(34, 13) })
-                Require(board.Pick(board.Projection.CellContact(cell)) is { Kind: TacticalHitKind.Object, UnitId: null } hit
-                    && hit.Cell == new BoardCell(cell.X, cell.Y),
-                    "Each authored entrance contour must select its actual canonical Object, never infer a same-cell occupant.");
+            var ground = board.GetNode<AssembledGroundView>("AuthoredScene/AssembledGround");
+            Require(ground.Sites.Select(site => site.Cell).ToHashSet().SetEquals(
+                [new Coord(3, 16), new Coord(18, 13), new Coord(22, 16), new Coord(34, 13)]),
+                "The opening must retain all four canonical building sites.");
+            foreach (var site in ground.Sites)
+            {
+                var sprite = ground.GetNode<Sprite2D>(site.Id);
+                // A transparent doorway anchor is not a visible building hit target.
+                var body = new Vector2(0, -100);
+                Require(sprite.IsPixelOpaque(body), $"The doorway-body probe must cover actual building pixels: {site.Id}.");
+                Require(board.Pick(board.ToLocal(sprite.ToGlobal(body))) is { Kind: TacticalHitKind.Object, UnitId: null } hit
+                    && hit.Cell == new BoardCell(site.Cell.X, site.Cell.Y),
+                    $"Visible building pixels must select their canonical site, never infer a same-cell occupant: {site.Id}.");
+            }
+            var shield = state["units"]!.AsArray().OfType<JsonObject>().Single(unit => unit["key"]!.GetValue<string>() == "vanguard-1");
+            shield["x"] = 22;
+            shield["y"] = 16;
+            shield["facing"] = "west";
+            board.RenderState(state);
+            var projection = board.GetNode<Node2D>("CanonicalProjection");
+            var shieldId = shield["id"]!.GetValue<int>();
+            var shieldActor = projection.GetNode<Node2D>($"Unit_{shieldId}");
+            var shieldSprite = shieldActor.GetNode<Sprite2D>("AuthoredSprite");
+            var granary = ground.GetNode<Sprite2D>(ground.Sites.Single(site => site.Cell == new Coord(22, 16)).Id);
+            Require(shieldActor.ZIndex == granary.ZIndex && projection.GetIndex() > board.GetNode("AuthoredScene").GetIndex(),
+                "Doorway regression must exercise equal Z with the actor subtree drawn later.");
+            var overlap = board.Projection.CellContact(new(22, 16)) + new Vector2(0, -19);
+            var globalOverlap = board.ToGlobal(overlap);
+            Require(shieldSprite.IsPixelOpaque(shieldSprite.ToLocal(globalOverlap)) && granary.IsPixelOpaque(granary.ToLocal(globalOverlap)),
+                "Doorway regression must overlap real opaque actor and building pixels.");
+            Require(board.Pick(overlap) == TacticalHit.Unit(new(22, 16), shieldId),
+                "At equal depth, the later-drawn visible actor must receive the doorway click.");
+            board.MoveChild(projection, 0);
+            Require(board.Pick(overlap) == TacticalHit.Object(new(22, 16)),
+                "Reversing the native tree order must make the now-frontmost house receive the same click.");
+            board.MoveChild(projection, board.GetChildCount() - 1);
+            Require(board.Pick(overlap) == TacticalHit.Unit(new(22, 16), shieldId),
+                "Restoring the actor subtree's native draw order must restore its visible click target.");
         }
         finally
         {
@@ -172,6 +206,33 @@ public partial class PaintedSurfaceChecks : Node
 
     private void CheckCoveredCliff(PaintedGroundDocument registration, JsonObject map, Texture2D texture, BoardSurfaceFace face)
     {
+        // Own this geometric witness rather than depending on evolving character padding.
+        using var actorImage = Image.CreateEmpty(16, 32, false, Image.Format.Rgba8);
+        actorImage.Fill(Colors.White);
+        using var actorTexture = ImageTexture.CreateFromImage(actorImage);
+        actorTexture.TakeOverPath("res://assets/check-fixtures/cliff-cue-actor.tres");
+        var actors = new AssetCatalog(new AssetManifest
+        {
+            Schema = 2,
+            LogicalTileSize = 32,
+            Assets = [new AssetRecord { TopicId = "cliff-cue-actor", Category = "combat-unit",
+                ResourcePath = actorTexture.ResourcePath, Width = 16, Height = 32,
+                PhysicalWidth = 16, PhysicalHeight = 32, PixelDensity = 1,
+                Anchor = [8, 32], GroundFront = [8, 32], Footprint = [1, 1], FrameOrder = ["idle"] }]
+        }, new ArtBindings
+        {
+            Units = new()
+            {
+                ["c01.laiya"] = new()
+                {
+                    TopicId = "cliff-cue-actor"
+                },
+                ["c01.swordsman"] = new()
+                {
+                    TopicId = "cliff-cue-actor"
+                }
+            }
+        });
         var point = (face.ProjectedA + face.ProjectedB + face.ProjectedC + face.ProjectedD) / 4;
         var source = point / registration.WorldScale;
         var art = new PaintedGroundDocument
@@ -212,14 +273,14 @@ public partial class PaintedSurfaceChecks : Node
         AddChild(board);
         try
         {
-            board.Configure(new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, art.CreatePlane), level,
+            board.Configure(new(actors, EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, art.CreatePlane), level,
                 new AuthoredScene { LevelId = art.LevelId, MapSize = [6, 5], RuntimeReady = true, FramePlacements = [] });
             board.ConfigureGround((_, _) => PaintedGroundView.Create(art, texture, fixtureMap, engine.Catalog));
             board.RenderState(state);
             var material = board.GetNode<PaintedGroundView>("AuthoredScene/PaintedGround").DepthEntries.Single();
             Require(material.Visual!.Covers(board.ToGlobal(point)) && material.Node.ZIndex > board.Projection.Pick(point)!.DrawDepth,
                 "The layered cliff regression must place actual pass-through material in front of a visible canonical cliff face.");
-            Require(board.Projection.Pick(point)?.Cell is null && board.Pick(point) is null,
+            Require(board.Projection.Pick(point) is { Cell: null } && board.Pick(point) is null,
                 "Pass-through foreground must not create ground interaction through an actual cliff face.");
             var actor = state["units"]![0]!.AsObject();
             actor["x"] = 3;
@@ -251,7 +312,7 @@ public partial class PaintedSurfaceChecks : Node
             Require(faces.All(polygon => Geometry2D.IntersectPolygons(polygon, displayed).Count == 0)
                 && board.Pick(board.ToLocal(cue.ToGlobal(Vector2.Zero))) == TacticalHit.Unit(new(3, 4), id),
                 "The cue must relocate clear of every projected cliff while retaining its own visible unit target.");
-            Require(board.Projection.Pick(point)?.Cell is null && board.Pick(point) is null,
+            Require(board.Projection.Pick(point) is { Cell: null } && board.Pick(point) is null,
                 "The original cliff face remains a blocker after the occluded actor obtains a cue.");
         }
         finally

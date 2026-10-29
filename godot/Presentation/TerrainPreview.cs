@@ -28,7 +28,8 @@ public partial class TerrainPreview : Node2D
         {
             foreach (var argument in OS.GetCmdlineUserArgs())
             {
-                if (argument == "--hide-assembled-objects") _hideObjects = true;
+                if (argument == "--hide-assembled-objects")
+                    _hideObjects = true;
                 if (argument.StartsWith("--level=", StringComparison.Ordinal))
                     _levelId = argument[8..];
                 if (argument.StartsWith("--scale=", StringComparison.Ordinal))

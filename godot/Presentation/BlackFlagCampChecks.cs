@@ -304,7 +304,27 @@ public partial class BlackFlagCampChecks : Node
             }
             Require(uncoveredOutside > 100 && board.Pick(new(-10, -10)) is null
                 && board.Pick(board.FieldSize + new Vector2(10, 10)) is null, "Outside sampling must cover real perimeter cells and both off-canvas corners.");
+            // The open floor is transparent, not a rule that suppresses a visible neighboring actor.
+            var guard = state["units"]!.AsArray().OfType<JsonObject>().Single(unit => unit["key"]!.GetValue<string>() == "camp-guard-1");
+            var guardId = guard["id"]!.GetValue<int>();
+            Require(guard["x"]!.GetValue<int>() == 21 && guard["y"]!.GetValue<int>() == 13,
+                "The adjacent-actor fixture must retain the real camp guard below the first shelter.");
+            var overlap = board.Projection.CellContact(new(21, 12)) + Vector2.Down * 4 * art.WorldScale;
+            var globalOverlap = board.ToGlobal(overlap);
+            var sprite = board.GetNode<Sprite2D>($"CanonicalProjection/Unit_{guardId}/AuthoredSprite");
+            Require(sprite.IsPixelOpaque(sprite.ToLocal(globalOverlap))
+                && ground.DepthEntries.All(entry => !entry.Visual!.Covers(globalOverlap)),
+                "The open-mouth overlap witness must contain real guard pixels and no foreground house material.");
+            Require(board.Pick(overlap) == TacticalHit.Unit(new(21, 13), guardId),
+                "Visible neighboring guard pixels must select that guard, not the shelter floor beneath them.");
+            var empty = state.DeepClone().AsObject();
+            empty["units"] = new JsonArray();
+            board.RenderState(empty);
+            Require(board.RenderedUnitCount == 0, "Empty-mouth geometry checks must contain no actor pixels.");
             CheckShelterMouths(board, ground, art);
+            board.RenderState(state);
+            Require(board.Pick(overlap) == TacticalHit.Unit(new(21, 13), guardId),
+                "Restoring the unchanged opening must restore the same visible neighboring guard target.");
             Require(EcmaJson.Stringify(state) == before, "C04 registration, rendering and pointer queries cannot mutate canonical battle state.");
         }
         finally

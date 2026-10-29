@@ -321,16 +321,15 @@ public partial class OathPadChecks : Node
         {
             for (var tick = 1; tick <= 10; tick++)
             {
-                board.AdvancePresentation(tick == 10 ? .00850001 : .0085);
+                board.AdvancePresentation(tick == 10 ? .01600001 : .016);
                 await Task.Yield();
                 actor = board.GetNode<Node2D>($"CanonicalProjection/Unit_{id}");
                 pad = board.GetNode<Node2D>("CanonicalProjection/DynamicState/Structure_0");
                 var t = tick / 10f;
-                var eased = t < .5f ? 2 * t * t : 1 - MathF.Pow(-2 * t + 2, 2) / 2;
                 var logical = board.Projection.LogicalCellContact(new(target.X, target.Y - 1 + segment)).Lerp(
-                    board.Projection.LogicalCellContact(new(target.X, target.Y + segment)), eased);
-                var expected = board.Projection.Project(logical) - new Vector2(0, MathF.Sin(MathF.PI * t) * 2.5f);
-                Require(actor.Position.DistanceTo(expected) < .02f && pad.Position == origin, "Traversal follows the existing canonical interpolation and authored walking bob, with no pad-induced jump or motion.");
+                    board.Projection.LogicalCellContact(new(target.X, target.Y + segment)), t);
+                var expected = board.Projection.Project(logical);
+                Require(actor.Position.DistanceTo(expected) < .02f && pad.Position == origin, "Traversal stays on the linearly interpolated support plane; drawn gait must not hop the actor or move the pad.");
                 var floorContact = board.Projection.Project(logical);
                 var image = pad.GetChildren().OfType<Sprite2D>().First();
                 if (image.IsPixelOpaque(image.ToLocal(board.ToGlobal(floorContact))))

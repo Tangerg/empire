@@ -143,19 +143,31 @@ public partial class PaintedSurfaceBroadPhaseChecks : Node2D
         const int width = 6, height = 5;
         var map = new JsonObject
         {
-            ["width"] = width, ["height"] = height,
+            ["width"] = width,
+            ["height"] = height,
             ["tiles"] = new JsonArray(Enumerable.Repeat("plain", width * height).Select(t => (JsonNode?)JsonValue.Create(t)).ToArray()),
             ["elevation"] = new JsonArray(Enumerable.Range(0, width * height).Select(i => (JsonNode?)JsonValue.Create(registered && i % width is >= 2 and <= 4 && i / width < 3 ? 2 : 0)).ToArray()),
             ["cliffs"] = new JsonArray()
         };
-        var art = new PaintedGroundDocument { LevelId = "profile-check", LevelSourceSha256 = "test", ResourcePath = "test", PixelSize = [640, 480],
-            WorldScale = .5f, OriginPixels = [96, 128], CellXPixels = [64, 0], CellYPixels = [0, 48], Occluders = [] };
+        var art = new PaintedGroundDocument
+        {
+            LevelId = "profile-check",
+            LevelSourceSha256 = "test",
+            ResourcePath = "test",
+            PixelSize = [640, 480],
+            WorldScale = .5f,
+            OriginPixels = [96, 128],
+            CellXPixels = [64, 0],
+            CellYPixels = [0, 48],
+            Occluders = []
+        };
         return new BoardProjection(new Square4Grid(), registered ? art.CreatePlane : BoardPlane.Dimetric, map,
             Enumerable.Range(0, width * height).Select(i => new Coord(i % width, i / width)).ToHashSet());
     }
     private void Require(bool condition, string message)
     {
-        if (!condition) throw new InvalidOperationException(message);
+        if (!condition)
+            throw new InvalidOperationException(message);
         checks++;
     }
 }
