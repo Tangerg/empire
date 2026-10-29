@@ -605,7 +605,7 @@ public partial class BattleScreen : Control
             OkButtonText = _text.Format("ui.common.close"),
             MinSize = new Vector2I(360, 160)
         };
-        _battleLogDialog.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#30291e", 14, "#756344"));
+        CampaignUiStyle.ConfigureDialog(_battleLogDialog, _text.Format("ui.common.close"));
         AddChild(_battleLogDialog);
         _battleLogDialog.VisibilityChanged += RefreshFeedbackVisibility;
         _battleLogDialog.VisibilityChanged += () =>

@@ -161,8 +161,20 @@ public partial class GrayFlagGame : Node
             Load();
     }
 
+    private void DismissViewNotices()
+    {
+        // Root-owned notices belong to the outgoing view, not the next scene.
+        foreach (var notice in GetChildren().OfType<AcceptDialog>())
+        {
+            notice.Hide();
+            RemoveChild(notice);
+            notice.QueueFree();
+        }
+    }
+
     private void SetView(Control next)
     {
+        DismissViewNotices();
         computerPacer.Cancel();
         if (view is BattleScreen previousBattle)
             previousBattle.SetApplicationBusy(false);
@@ -308,6 +320,7 @@ public partial class GrayFlagGame : Node
 
     private void Activate(GrayFlagCampaign owner, PreparedCampaignView prepared)
     {
+        DismissViewNotices();
         computerPacer.Cancel();
         if (view is BattleScreen previousBattle)
             previousBattle.SetApplicationBusy(false);

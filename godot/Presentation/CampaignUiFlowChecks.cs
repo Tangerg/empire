@@ -31,6 +31,7 @@ public partial class CampaignUiFlowChecks : Node
             await CheckSystemPopup();
             await CheckBattleLog();
             await CheckNoticeLayouts();
+            await CheckDialogLifecycle();
             if (failures.Count > 0)
                 throw new InvalidOperationException(string.Join("\n", failures));
             GD.Print($"CAMPAIGN_UI_FLOW_CHECKS_OK {assertions} assertions");
@@ -330,6 +331,56 @@ public partial class CampaignUiFlowChecks : Node
             RemoveChild(dialog);
             dialog.Free();
         }
+    }
+
+    private async Task CheckDialogLifecycle()
+    {
+        GetWindow().Size = new Vector2I(640, 360);
+        var owner = new Control();
+        AddChild(owner);
+        var dialog = new ConfirmationDialog { Title = "界面夹具", DialogText = "取消或关闭不执行，确认只执行一次。" };
+        CampaignUiStyle.ConfigureDialog(dialog, "确认");
+        owner.AddChild(dialog);
+        var confirmed = 0;
+        dialog.Confirmed += () => confirmed++;
+        foreach (var route in new[] { "cancel", "confirm", "cancel" })
+        {
+            CampaignUiStyle.OpenDialog(dialog);
+            await Layout();
+            var backdrop = owner.GetChildren().OfType<CanvasLayer>().Single();
+            var shade = backdrop.GetChild<ColorRect>(0);
+            Check(backdrop.Visible && shade.MouseFilter == Control.MouseFilterEnum.Ignore
+                && shade.Size == GetViewport().GetVisibleRect().Size,
+                "The modal shade covers the viewport without capturing gameplay input.");
+            Check(dialog.GetCancelButton().HasFocus(), "Every confirmation opening focuses safe Cancel.");
+            var surface = dialog.GetNode<Control>("DialogSurfaceLayer/DialogSurface");
+            Check(surface.Size == dialog.GetVisibleRect().Size, "The existing nine-slice material fills the native dialog viewport.");
+            Check(dialog.Theme.GetIcon("close", "Window").GetSize() == new Vector2(24, 24)
+                && dialog.Theme.GetIcon("close_pressed", "Window").GetSize() == new Vector2(24, 24),
+                "Native title close uses a 24px target in both supported engine states.");
+            switch (route)
+            {
+                case "cancel":
+                    dialog.GetCancelButton().EmitSignal(BaseButton.SignalName.Pressed);
+                    break;
+                case "confirm":
+                    dialog.GetOkButton().EmitSignal(BaseButton.SignalName.Pressed);
+                    break;
+            }
+            await Layout();
+            Check(!dialog.Visible && !backdrop.Visible, $"Closing via {route} leaves no visible shade.");
+            Check(owner.GetChildren().OfType<CanvasLayer>().Count() == 1, "Repeated opens reuse one shade, not stacked layers.");
+        }
+        Check(confirmed == 1, "Only the explicit Confirm action reaches the confirmation owner.");
+        CampaignUiStyle.OpenDialog(dialog);
+        await Layout();
+        var departingShade = owner.GetChildren().OfType<CanvasLayer>().Single();
+        owner.RemoveChild(dialog);
+        Check(!departingShade.Visible, "Unmount immediately hides a live modal shade.");
+        dialog.Free();
+        await Layout();
+        Check(owner.GetChildren().OfType<CanvasLayer>().Count() == 0, "Unmount frees the shade without leaving an input surface.");
+        owner.Free();
     }
 
     private async Task CheckLongContent()

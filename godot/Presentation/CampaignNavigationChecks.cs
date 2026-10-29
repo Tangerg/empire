@@ -48,6 +48,7 @@ public partial class CampaignNavigationChecks : Node
             battleNodeState = runtime.Snapshot();
             foreach (var (name, test) in new (string, Func<Task>)[] {
                 ("fresh menu, local beats, choice and autosave", () => { CheckFreshStoryChoice(); return Task.CompletedTask; }),
+                ("root notice leaves with its view", CheckNoticeViewTransition),
                 ("startup resume, battle restart, camp and Continue", CheckBattleCampMenu),
                 ("story/choice return, rebind and unmount", () => { CheckNarrativeNavigation(); return Task.CompletedTask; }),
                 ("overwrite cancellation, stale dialog and confirmation", () => { CheckOverwrite(); return Task.CompletedTask; }),
@@ -985,6 +986,26 @@ public partial class CampaignNavigationChecks : Node
         CampaignSlotStorage.Save(definition, state, automaticPath);
     }
     private JsonObject ReadSave() => EcmaJson.Parse(File.ReadAllText(automaticPath))!.AsObject();
+    private async Task CheckNoticeViewTransition()
+    {
+        foreach (var transition in new[] { "SetView", "ShowNode" })
+        {
+            var game = MountGame();
+            typeof(GrayFlagGame).GetMethod("Notify", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(game, ["UI fixture notice"]);
+            var notice = game.GetChildren().OfType<AcceptDialog>().Single();
+            var shade = game.GetChildren().OfType<CanvasLayer>().Single();
+            Require(notice.Visible && shade.Visible, "Root notice and its shade must be open before changing views.");
+            object?[] args = transition == "SetView" ? [new Control()] : [null];
+            typeof(GrayFlagGame).GetMethod(transition, BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(game, args);
+            Require(!notice.Visible && !notice.IsInsideTree() && !shade.Visible,
+                "Both direct and prepared view transitions immediately dismiss outgoing root notices.");
+            for (var i = 0; i < 4; i++)
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Require(!game.GetChildren().OfType<CanvasLayer>().Any(), "Deferred view cleanup leaves no modal shade behind.");
+            game.Free();
+        }
+    }
+
     private GrayFlagGame MountGame()
     {
         var game = new GrayFlagGame { ProcessMode = ProcessModeEnum.Disabled };
