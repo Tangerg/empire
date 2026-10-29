@@ -16,4 +16,4 @@ public sealed record TacticalHudSection(string Key, string Title, IReadOnlyList<
 /// <summary>Detached immutable presentation facts. No widget may originate a battle transition.</summary>
 public sealed record TacticalHudGauge(double Value, double Maximum);
 public sealed record TacticalHudPortrait(string UnitType, string? ActorKey, string TeamColor);
-public sealed record TacticalHudProjection(TacticalStamp Stamp, string Hint, IReadOnlyList<TacticalHudSection> Sections, TacticalHudPortrait? Portrait = null, bool Busy = false);
+public sealed record TacticalHudProjection(TacticalStamp Stamp, string Hint, IReadOnlyList<TacticalHudSection> Sections, TacticalHudPortrait? Portrait = null, bool Busy = false, string CloseLabel = "×");

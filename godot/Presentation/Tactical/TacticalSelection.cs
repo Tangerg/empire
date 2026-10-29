@@ -42,6 +42,10 @@ public sealed record TacticalSelection
     public IReadOnlyList<BoardCell> Path { get; init; } = Array.Empty<BoardCell>();
     public IReadOnlyList<TacticalTarget> TargetSubjects { get; init; } = Array.Empty<TacticalTarget>();
     public IReadOnlyList<BoardCell> Targets => Array.AsReadOnly(TargetSubjects.Select(target => target.Cell).ToArray());
+    public TacticalHit? PreviewTarget
+    {
+        get; init;
+    }
     public string? Ability
     {
         get; init;
@@ -181,6 +185,11 @@ public sealed class TacticalSelectionController
         if (hit is { } candidate && !InteractiveCells.Contains(candidate.Cell))
             return Leave(expected);
         CursorHit = hit;
+        if (Selection.Kind == TacticalSelectionKind.Target && hit is not null && AcceptsTarget(Selection, hit))
+            Selection = Selection with
+            {
+                PreviewTarget = hit
+            };
         if (Selection.Kind == TacticalSelectionKind.Site)
             return Result();
         var unit = HitUnit(hit);
@@ -195,6 +204,11 @@ public sealed class TacticalSelectionController
         if (expected.Revision != stamp.Revision || queries.Stamp != stamp)
             return Result(TacticalInputStatus.StaleRevision);
         CursorHit = null;
+        if (Selection.PreviewTarget is not null)
+            Selection = Selection with
+            {
+                PreviewTarget = null
+            };
         return Result();
     }
 
@@ -209,7 +223,7 @@ public sealed class TacticalSelectionController
             return Result(TacticalInputStatus.Busy);
         Selection = Selection.Kind switch
         {
-            TacticalSelectionKind.Target => Selection with { Kind = TacticalSelectionKind.Destination, TargetSubjects = Array.Empty<TacticalTarget>(), Ability = null, Weapon = null, Hostile = false },
+            TacticalSelectionKind.Target => Selection with { Kind = TacticalSelectionKind.Destination, TargetSubjects = Array.Empty<TacticalTarget>(), Ability = null, Weapon = null, Hostile = false, PreviewTarget = null },
             TacticalSelectionKind.Destination => Pick(TacticalSelectionKind.Unit, Selection.UnitId),
             TacticalSelectionKind.DeploymentUnit => Pick(TacticalSelectionKind.Deploying),
             _ => Pick(TacticalSelectionKind.Idle),
@@ -336,7 +350,10 @@ public sealed class TacticalSelectionController
             }
         if (choice is null)
             return false;
-        Selection = choice;
+        Selection = choice with
+        {
+            PreviewTarget = TacticalHit.Unit(target.At, target.Id)
+        };
         return true;
     }
     private static TacticalSelection Target(int unit, BoardCell at, IReadOnlyList<BoardCell> path, TacticalCommand option) => new()

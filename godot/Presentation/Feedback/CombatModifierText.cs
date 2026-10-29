@@ -86,11 +86,11 @@ public sealed class CombatModifierText : KeyedRegistry<CombatModifierFormatter, 
                 "half" => "combat.modifier.half_cover",
                 _ => throw new LocalizationException("Invalid modifier cover fact.")
             }))));
-        result.Register(new("core.defense", ["ui.hud.modifier_source.terrain", "ui.hud.modifier_source.unit", "combat.modifier.terrain_defense", "combat.modifier.unit_defense"],
+        result.Register(new("core.defense", ["ui.hud.modifier_source.terrain", "ui.hud.modifier_source.unit"],
             (rules, facts) => S(facts, "component") switch
             {
-                "terrain" => Label(rules.Messages, "ui.hud.modifier_source.terrain", rules.Messages.Format("combat.modifier.terrain_defense")),
-                "unit" => Label(rules.Messages, "ui.hud.modifier_source.unit", rules.Messages.Format("combat.modifier.unit_defense")),
+                "terrain" => rules.Messages.Format("ui.hud.modifier_source.terrain"),
+                "unit" => rules.Messages.Format("ui.hud.modifier_source.unit"),
                 _ => throw new LocalizationException("Invalid modifier defense fact."),
             }));
         result.Register(new("reaction.support", ["ui.hud.modifier_source.reaction", "combat.modifier.support"], (rules, facts) =>

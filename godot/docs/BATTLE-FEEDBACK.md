@@ -1,27 +1,52 @@
 # Native battle feedback
 
-The original descriptive event registry is ported independently of rule execution.
-The session resolves names through the canonical content/resource owners and
-computes one immutable description batch from the committed final state, exactly
-as the source controller creates one log context for each order. A departed unit
-is described as `单位`, not reconstructed from an invented previous-state name.
-The board emits a notification after each event's animation. The screen then adds
-its corresponding line to the single bounded/coalescing `BattleLog` owner and
-shows its last four entries, matching the current source HUD.
+The session's descriptive event registry is independent of rule execution. It resolves
+names through the composed identity/content owners, using detached before/after
+snapshots and observed creation events. Missing identities fail explicitly; they are
+not replaced by invented generic names. The board publishes each description after
+its event animation. `BattleLog` alone owns ordered retention: 60 consecutive runs,
+consecutive-repeat compression, and silent empty descriptions.
 
-Initial battle binding uses the source deployment/opening line. Restart clears
-messages without replaying that opening. Loading clears old messages and shows
-one load line, rather than replaying saved historical actions or effects. Save
-and failed-load notices append their source messages. Removed screens cannot
-submit orders or trigger stale Save/Load/Restart callbacks.
+The battle screen exposes that log directly in the top bar and through the system
+menu. A bounded scrollable, selectable plain-text journal preserves full receipts;
+localized close and Esc do not dispatch to the board. The latest nonempty event is
+also shown as a short toast. An empty event never erases a readable prior toast.
+Attack, counter, support, parting and healing receipts identify both participants.
+Forced movement and collision are distinct committed receipts. Collision HP comes
+from its explicit `hpAfter`; ordinary strike events do not invent an intermediate
+HP from the final batch snapshot.
 
-The campaign application obtains result signals/outcome from its existing bridge.
-`BattleEventFacts.StrikeCount` is the one core owner of the source payload-shape
-rule (both attacker and damage keys), not a presentation list of attack names.
-The result projection includes turn count, perspective-player survivors, enemy
-team survivors, fallen-unit names and ordered scenario signals. Source victory
-headings/details are shown only for a canonical victory; defeat is never labeled
-as success. Summaries do not decide outcomes or advance the campaign.
+New binding clears history and installs the supplied opening/load line. Refresh does
+not replay old events. Removed screens cannot submit orders or trigger stale
+Save/Load/Restart callbacks. Refused input is shown on a contrasting panel; a new
+successful selection or cancellation clears it. Terminal conclusion feedback is not
+silenced by ordinary selection cleanup.
+
+The application receives outcomes from its existing campaign bridge.
+`BattleEventFacts.StrikeCount` owns strike payload classification (attacker + damage),
+not a UI list of event names. Result projections show actual perspective survivors,
+fallen identities, ordered signals and canonical outcome; presentation never decides
+victory or advances the campaign implicitly.
+
+## Attack preview ownership
+
+`TacticalSelectionController` owns an explicit `PreviewTarget` separately from its
+live activation cursor. Clicking an enemy to arm an attack, or hovering another valid
+target, updates the preview. Traversing ordinary ground to reach the HUD keeps that
+preview visible without making Enter on that ground a combat command. Held-preview
+wording directs the player back to a highlighted target. Cancel, new revision,
+rebind, excluded/outside map, window exit and focus loss clear the appropriate context.
+
+The HUD renders the same session projection: primary strike HP, counter, interception,
+reaction, support, collateral and death facts. Extra effects are visible, not hidden
+in tooltips. The primary HP bar is labeled as the primary strike, not a computed
+whole-action final HP; force-move/collision forecasts remain outside the core forecast
+contract. A direct calculation-details entry expands the existing modifier projection.
+
+Map-to-HUD ownership is resolved after native input dispatch, because Godot clears the
+old hovered control before `MouseExited` and installs its replacement afterwards.
+The deferred boundary is invalidated by newer map input, focus/window exit and binding
+changes. The HUD does not cache a competing target or recompute battle rules.
 
 ## Campaign navigation
 
@@ -48,18 +73,18 @@ or scene authored for missing recovered levels is substituted. Presentation
 callbacks are single-use and invalid after rebinding/unmount. Save/load are
 blocked during an in-flight animation batch, like the source controller.
 
-## Evidence
+## Evidence and historical boundary
 
-`bash tools/godot/feedback-checks/run.sh` passes 1,320 source comparisons, including
-647 descriptions, six log sequences, five result projections and canonical label
-queries. Those include 142 actual replay actions. The original feedback/campaign
-source suites also passed 35 tests; a corrupted oracle was rejected.
-Native controller checks verify delayed text delivery, exact ordered log contents,
-no repeated log on refresh, load clearing and stale-callback rejection alongside
-the existing animation cancellation checks. The application continuation check
-compares postbattle summaries before and after a saved-game continuation.
+Current acceptance is the native scene/selection contracts: `BattleScreenChecks`
+(receipt identities/order/lifetime), `CampaignUiFlowChecks` (long journal, keyboard,
+window bounds), `CameraIntegrationChecks` (actual viewport pointer transfer and stale
+boundaries), `TacticalHudChecks` (visible prediction facts and expanded details), and
+the pure `tactical-selection-checks` controller harness. See the UI checkpoint report
+for executed results and GUI evidence; headless assertions are not visual acceptance.
 
-This establishes data and headless UI contracts, not a new desktop visual
-acceptance. The existing desktop responsiveness gate remains pending. See
-`../../tools/godot/feedback-checks/README.md` for source
-references and isolated helper scope.
+The older `tools/godot/feedback-checks` source differential records the former
+TypeScript wording, payloads and identity fallback behavior. Its historical 1,320
+comparisons are provenance, not a current native PASS. Current localization and
+identity contracts intentionally diverge, including the newly explicit collision and
+forced-movement presenters. It is not part of `verify-native.sh`; do not weaken current
+identity admission or remove native receipts merely to reproduce the old source text.

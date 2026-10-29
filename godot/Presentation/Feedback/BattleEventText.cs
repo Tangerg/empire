@@ -72,7 +72,7 @@ public sealed class BattleEventText
         text.ValidateKeys(new[] { "battle.event.attack", "battle.event.counter", "battle.event.support", "battle.event.parting",
             "battle.event.area", "battle.event.structure", "battle.event.area_structure", "battle.event.target_killed",
             "battle.event.ally_killed", "battle.event.structure_destroyed", "battle.event.structure_disabled", "battle.event.structure_enabled", "battle.event.heal", "battle.event.recruit",
-            "battle.event.capture", "battle.event.capture_progress", "battle.event.turn", "battle.event.resource",
+            "battle.event.forced_move", "battle.event.collision", "battle.event.capture", "battle.event.capture_progress", "battle.event.turn", "battle.event.resource",
             "battle.event.rank", "battle.event.career", "battle.event.facing", "battle.event.defeat",
             "ui.rank.recruit", "ui.rank.veteran", "ui.rank.elite" });
         string Casualty(JsonElement value, string field = "killed", string key = "battle.event.target_killed") =>
@@ -85,17 +85,22 @@ public sealed class BattleEventText
             _ => throw new InvalidOperationException($"Unknown rank in committed event: {value}."),
         });
         return new BattleEventText()
-            .Register("attack", (context, value) => text.Format("battle.event.attack", context.UnitName(Id(value, "attacker")), Number(value, "damage"), Casualty(value)))
-            .Register("counter", (_, value) => text.Format("battle.event.counter", Number(value, "damage"), Casualty(value, key: "battle.event.ally_killed")))
-            .Register("supportAttack", (context, value) => text.Format("battle.event.support", context.UnitName(Id(value, "attacker")), Number(value, "damage"), Casualty(value)))
-            .Register("partingShot", (context, value) => text.Format("battle.event.parting", context.UnitName(Id(value, "attacker")), Number(value, "damage"), Casualty(value)))
+            .Register("attack", (context, value) => text.Format("battle.event.attack", context.UnitName(Id(value, "attacker")), context.UnitName(Id(value, "defender")), Number(value, "damage"), Casualty(value)))
+            .Register("counter", (context, value) => text.Format("battle.event.counter", context.UnitName(Id(value, "attacker")), context.UnitName(Id(value, "defender")), Number(value, "damage"), Casualty(value)))
+            .Register("supportAttack", (context, value) => text.Format("battle.event.support", context.UnitName(Id(value, "attacker")), context.UnitName(Id(value, "defender")), Number(value, "damage"), Casualty(value)))
+            .Register("partingShot", (context, value) => text.Format("battle.event.parting", context.UnitName(Id(value, "attacker")), context.UnitName(Id(value, "defender")), Number(value, "damage"), Casualty(value)))
             .Register("areaAttack", (context, value) => text.Format("battle.event.area", context.UnitName(Id(value, "defender")), Number(value, "damage"), Casualty(value)))
             .Register("attackStructure", (_, value) => text.Format("battle.event.structure", Number(value, "damage"), Casualty(value, "destroyed", "battle.event.structure_destroyed")))
             .Register("areaAttackStructure", (_, value) => text.Format("battle.event.area_structure", Number(value, "damage"), Casualty(value, "destroyed", "battle.event.structure_destroyed")))
             .Register("structureDisabled", (_, value) => text.Format("battle.event.structure_disabled", Number(value.GetProperty("at"), "x"), Number(value.GetProperty("at"), "y")))
             .Register("structureEnabled", (_, value) => text.Format("battle.event.structure_enabled", Number(value.GetProperty("at"), "x"), Number(value.GetProperty("at"), "y")))
+            .Register("forcedMove", (context, value) => text.Format("battle.event.forced_move", context.UnitName(Id(value, "unit")),
+                Number(value.GetProperty("from"), "x"), Number(value.GetProperty("from"), "y"),
+                Number(value.GetProperty("to"), "x"), Number(value.GetProperty("to"), "y")))
+            .Register("collisionDamage", (context, value) => text.Format("battle.event.collision", context.UnitName(Id(value, "unit")),
+                Number(value, "amount"), Number(value, "hpAfter"), Casualty(value)))
             .Register("death", (_, _) => "")
-            .Register("heal", (context, value) => text.Format("battle.event.heal", context.UnitName(Id(value, "source")), Number(value, "amount")))
+            .Register("heal", (context, value) => text.Format("battle.event.heal", context.UnitName(Id(value, "source")), context.UnitName(Id(value, "target")), Number(value, "amount")))
             .Register("recruit", (context, value) => text.Format("battle.event.recruit",
                 context.PlayerName(Id(value, "owner")), context.UnitName(Id(value, "unit"))))
             .Register("capture", (context, value) => value.GetProperty("captured").GetBoolean()

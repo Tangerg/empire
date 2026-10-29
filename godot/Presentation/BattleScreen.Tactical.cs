@@ -125,7 +125,10 @@ public partial class BattleScreen
         // Explicit keyboard/roster focus replaces pointer ownership before camera
         // movement, so Reveal cannot revive an older physical pointer hit.
         if (result.CursorFocused)
+        {
             _pointerMapPosition = null;
+            _pointerBoundaryGeneration++;
+        }
         if (result.Reveal is { } cell)
         {
             var point = CellCenter(new(cell.X, cell.Y));
@@ -135,6 +138,8 @@ public partial class BattleScreen
                 _camera.Reveal(point, 32 * _camera.Zoom / 2);
             ApplyCamera();
         }
+        if (result.Status == TacticalInputStatus.Ready && _snapshot?.State.GetProperty("phase").GetString() != "over")
+            ShowFeedback("");
         if (result.Status is TacticalInputStatus.InvalidDestination or TacticalInputStatus.InvalidTarget)
             ShowFeedback(_text.Format(result.Status == TacticalInputStatus.InvalidDestination
                 ? "ui.hud.invalid_destination" : "ui.hud.invalid_target"));
@@ -172,7 +177,7 @@ public partial class BattleScreen
                 && _tactical.InteractiveCells.Contains(picked.Cell))
                 hit = picked;
         }
-        if (_tactical.CursorHit == hit)
+        if (_tactical.CursorHit == hit && (hit is not null || _tactical.Selection.PreviewTarget is null))
             return;
         if (hit is not null)
             _tactical.Hover(_tactical.Stamp, hit);

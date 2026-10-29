@@ -35,6 +35,7 @@ public partial class BattleScreen : Control
     private BattlefieldGestures? _gestures;
     // Only actual map input establishes pointer ownership. Keyboard focus clears it.
     private CameraPoint? _pointerMapPosition;
+    private long _pointerBoundaryGeneration;
     private Button _zoomOut = null!;
     private Button _zoomIn = null!;
     private Label _turn = null!;
@@ -45,7 +46,9 @@ public partial class BattleScreen : Control
     private long _hudApplyGeneration;
     public bool IsInputBlocked => _presenting || _applicationBusy;
     public TacticalSelection? Selection => _tactical?.Selection;
+    private Window? _inputWindow;
     private Label _feedback = null!;
+    private PanelContainer _feedbackPanel = null!;
     private Label _eventLog = null!;
     private readonly BattleLog _messages = new();
     public System.Collections.Generic.IReadOnlyList<string> RecentMessages => _messages.Recent();
@@ -54,6 +57,7 @@ public partial class BattleScreen : Control
     private GridContainer _applicationActions = null!;
     private PopupPanel _systemMenu = null!;
     private AcceptDialog _battleLogDialog = null!;
+    private RichTextLabel _battleLogText = null!;
     private long _toastGeneration;
     private ConfirmationDialog _restartConfirmation = null!;
     private Action? _restart;
@@ -66,8 +70,42 @@ public partial class BattleScreen : Control
     private long _presentedRevision = -1;
     public bool IsPresenting => _presenting;
 
+    public override void _EnterTree()
+    {
+        _inputWindow = GetWindow();
+        _inputWindow.MouseExited += LeaveWindowContext;
+    }
+
+    private void LeaveWindowContext()
+    {
+        _gestures?.Cancel();
+        _pointerMapPosition = null;
+        var boundary = ++_pointerBoundaryGeneration;
+        Callable.From(() =>
+        {
+            if (!GodotObject.IsInstanceValid(this) || !IsInsideTree() || boundary != _pointerBoundaryGeneration)
+                return;
+            // An owned embedded dossier receives native window focus on opening.
+            // That transfer is not an exit from the game's inspection context.
+            if (_built && _hud.OwnsWindowFocus)
+                return;
+            ClearPointerContext();
+        }).CallDeferred();
+    }
+
+    private void ClearPointerContext()
+    {
+        _gestures?.Cancel();
+        _pointerMapPosition = null;
+        _pointerBoundaryGeneration++;
+        HoverField(null);
+    }
+
     public override void _ExitTree()
     {
+        if (_inputWindow is not null)
+            _inputWindow.MouseExited -= LeaveWindowContext;
+        _inputWindow = null;
         _bindingGeneration++;
         _tacticalBinding++;
         _tactical = null;
@@ -102,12 +140,10 @@ public partial class BattleScreen : Control
 
     public override void _Notification(int what)
     {
-        if (what == NotificationWMWindowFocusOut || what == NotificationApplicationFocusOut)
-        {
-            _gestures?.Cancel();
-            _pointerMapPosition = null;
-            HoverField(null);
-        }
+        if (what == NotificationApplicationFocusOut)
+            ClearPointerContext();
+        else if (what == NotificationWMWindowFocusOut)
+            LeaveWindowContext();
     }
 
     public override void _Input(InputEvent input)
@@ -171,6 +207,9 @@ public partial class BattleScreen : Control
         _restart = null;
         _restartRequest = null;
         _restartConfirmation.Hide();
+        _battleLogDialog.Hide();
+        _systemMenu.Hide();
+        _pointerBoundaryGeneration++;
         _presentationGeneration++;
         _presenting = false;
         _board.CancelPresentation();
@@ -182,8 +221,7 @@ public partial class BattleScreen : Control
         _tactical = new TacticalSelectionController(_session.GetTacticalQueries(_tacticalBinding));
         _applicationBusy = false;
         _bound = true;
-        _feedback.Text = "";
-        _feedback.Visible = false;
+        ShowFeedback("");
         _messages.Clear();
         AppendMessage(initialLogMessage ?? session.GetSnapshot().InitialLogMessage ?? "");
         Refresh();
@@ -258,11 +296,7 @@ public partial class BattleScreen : Control
             }
             _applicationActions.AddChild(button);
         }
-        AddAction(_text.Format("ui.battle.log"), () =>
-        {
-            _battleLogDialog.DialogText = string.Join("\n", _messages.Recent());
-            _battleLogDialog.PopupCentered(new Vector2I(540, 280));
-        });
+        AddAction(_text.Format("ui.battle.log"), OpenBattleLog);
         if (onSave is not null)
             AddAction(_text.Format("ui.battle.save"), onSave);
         if (onLoad is not null)
@@ -281,8 +315,12 @@ public partial class BattleScreen : Control
 
     public void AppendMessage(string message)
     {
+        if (message.Length == 0)
+            return;
         BuildInterface();
         _messages.Add(message);
+        if (_battleLogDialog.Visible)
+            _battleLogText.Text = string.Join("\n\n", _messages.Recent());
         _eventLog.Text = message;
         _eventLog.Visible = true;
         var toast = ++_toastGeneration;
@@ -298,11 +336,20 @@ public partial class BattleScreen : Control
         };
     }
 
+    private void OpenBattleLog()
+    {
+        if (!_bound || !IsInsideTree())
+            return;
+        _battleLogText.Text = string.Join("\n\n", _messages.Recent());
+        _battleLogDialog.PopupCentered(new Vector2I(Math.Min(640, (int)Size.X - 48), Math.Min(420, (int)Size.Y - 80)));
+    }
+
     public void ShowFeedback(string message)
     {
         BuildInterface();
         _feedback.Text = message;
         _feedback.Visible = message.Length > 0;
+        _feedbackPanel.Visible = _feedback.Visible;
         _feedback.TooltipText = message;
     }
 
@@ -458,7 +505,22 @@ public partial class BattleScreen : Control
         _mapArea.MouseExited += () =>
         {
             _pointerMapPosition = null;
-            _gestures?.PointerLeave();
+            var boundary = ++_pointerBoundaryGeneration;
+            var stamp = _tactical?.Stamp;
+            // Godot clears its old hovered control before MouseExited and installs
+            // the new one afterwards. Resolve ownership after that input dispatch.
+            Callable.From(() =>
+            {
+                if (!GodotObject.IsInstanceValid(this) || !IsInsideTree() || boundary != _pointerBoundaryGeneration
+                    || stamp is not { } expected || _tactical is null || _tactical.Stamp != expected)
+                    return;
+                var hovered = GetViewport().GuiGetHoveredControl();
+                if (Current(expected) && _gestures?.ActivePointerId is null
+                    && _tactical.Selection.Kind == TacticalSelectionKind.Target && _tactical.Selection.Weapon is not null
+                    && _tactical.Selection.PreviewTarget is not null && hovered is not null && _hud.IsAncestorOf(hovered))
+                    return;
+                _gestures?.PointerLeave();
+            }).CallDeferred();
         };
         _hud = new TacticalHud { Name = "TacticalHud", ZIndex = 4000 };
         _hud.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
@@ -466,7 +528,7 @@ public partial class BattleScreen : Control
         AddChild(_hud);
         var heading = new HBoxContainer { ZIndex = 4001 };
         AddChild(heading);
-        OverlayRect(heading, 1, 0, 1, 0, -174, 12, -14, 48);
+        OverlayRect(heading, 1, 0, 1, 0, -252, 12, -14, 50);
         var cameraControls = new HBoxContainer { Name = "CameraControls" };
         _zoomOut = Button("−", () => QueueZoom(-.15));
         _zoomIn = Button("+", () => QueueZoom(.15));
@@ -481,8 +543,36 @@ public partial class BattleScreen : Control
         _systemMenu = new PopupPanel { Name = "SystemMenu" };
         _systemMenu.AddThemeStyleboxOverride("panel", new StyleBoxEmpty());
         AddChild(_systemMenu);
-        _battleLogDialog = new AcceptDialog { Name = "BattleLogDialog", Title = _text.Format("ui.battle.log") };
+        _battleLogDialog = new AcceptDialog
+        {
+            Name = "BattleLogDialog",
+            Title = _text.Format("ui.battle.log"),
+            OkButtonText = _text.Format("ui.common.close"),
+            MinSize = new Vector2I(360, 240)
+        };
+        _battleLogDialog.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#30291e", 14, "#756344"));
         AddChild(_battleLogDialog);
+        _battleLogText = new RichTextLabel
+        {
+            Name = "BattleLogText",
+            BbcodeEnabled = false,
+            ScrollActive = true,
+            ScrollFollowing = true,
+            SelectionEnabled = true,
+            AutowrapMode = TextServer.AutowrapMode.WordSmart
+        };
+        _battleLogText.AddThemeColorOverride("default_color", TacticalHudStyle.Ink);
+        _battleLogText.AddThemeFontSizeOverride("normal_font_size", 15);
+        _battleLogDialog.AddChild(_battleLogText);
+        _battleLogText.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        _battleLogText.OffsetLeft = 16;
+        _battleLogText.OffsetTop = 12;
+        _battleLogText.OffsetRight = -16;
+        _battleLogText.OffsetBottom = -54;
+        var logEntry = Button(_text.Format("ui.battle.log"), OpenBattleLog);
+        logEntry.Name = "BattleLogButton";
+        logEntry.CustomMinimumSize = new Vector2(72, 38);
+        heading.AddChild(logEntry);
         var systemPanel = new DispatchPanel { CustomMinimumSize = new Vector2(350, 0) };
         _systemMenu.AddChild(systemPanel);
         var systemBody = new VBoxContainer();
@@ -528,13 +618,17 @@ public partial class BattleScreen : Control
         _globalOrders = new HBoxContainer { ZIndex = 4001 };
         AddChild(_globalOrders);
         OverlayRect(_globalOrders, 1, 1, 1, 1, -184, -84, -26, -30);
-        _feedback = Wrapped(_text.Format("ui.battle.not_connected"));
+        _feedbackPanel = new PanelContainer { Name = "FeedbackPanel", ZIndex = 4001, MouseFilter = MouseFilterEnum.Ignore, Visible = false };
+        _feedbackPanel.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#29251ef2", 10, "#a98b57"));
+        AddChild(_feedbackPanel);
+        OverlayRect(_feedbackPanel, .5f, 1, .5f, 1, -240, -304, 240, -250);
+        _feedback = Wrapped("");
+        _feedback.Name = "BattleFeedback";
         _feedback.MaxLinesVisible = 2;
         _feedback.AddThemeColorOverride("font_color", new Color("#dfad94"));
         _feedback.ZIndex = 4001;
         _feedback.MouseFilter = MouseFilterEnum.Ignore;
-        AddChild(_feedback);
-        OverlayRect(_feedback, .5f, 1, .5f, 1, -240, -320, 240, -280);
+        _feedbackPanel.AddChild(_feedback);
         _eventLog = Wrapped("");
         _eventLog.Name = "BattleEventLog";
         _eventLog.AddThemeFontSizeOverride("font_size", 14);
@@ -616,7 +710,10 @@ public partial class BattleScreen : Control
         if (!_bound || !IsInsideTree() || _gestures is null || _camera is null)
             return;
         if (input is InputEventMouse mousePosition)
+        {
+            _pointerBoundaryGeneration++;
             TrackPointer(capturedMapPosition ?? new(mousePosition.Position.X, mousePosition.Position.Y));
+        }
         else if (input is InputEventPanGesture panPosition)
             TrackPointer(new(panPosition.Position.X, panPosition.Position.Y));
         else if (input is InputEventScreenTouch or InputEventScreenDrag)
@@ -744,7 +841,7 @@ public partial class BattleScreen : Control
         _turn.Text = over ? _text.Format("battle.header.finished") : _text.Format("battle.header.turn",
             _state["turn"]!.GetValue<int>(), _battleText.PlayerName(_state["levelId"]!.GetValue<string>(), _state["currentPlayer"]!.GetValue<int>()));
         if (over)
-            _feedback.Text = _battleText.DescribeConclusion(EcmaJson.ToElement(_state));
+            ShowFeedback(_battleText.DescribeConclusion(EcmaJson.ToElement(_state)));
     }
 
     // Tactical intent integration lives in BattleScreen.Tactical.cs.

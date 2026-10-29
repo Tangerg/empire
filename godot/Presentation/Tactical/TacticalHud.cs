@@ -15,6 +15,9 @@ public partial class TacticalHud : Control
     private TacticalHudArt? art;
     private ScrollContainer? detailScroll;
     private PopupPanel? detailPopup;
+    private Button? detailClose;
+    private string? detailOpenerName;
+    private TacticalStamp? detailOpeningStamp;
     private readonly HashSet<string> expanded = new() { "objectives" };
     public void ConfigureArt(TacticalHudArt value)
     {
@@ -42,6 +45,7 @@ public partial class TacticalHud : Control
     public event Action<TacticalHudIntent>? IntentRequested;
     public TacticalHudProjection? Projection => current;
     public bool ShowHint { get; set; } = true;
+    public bool OwnsWindowFocus => detailPopup is { Visible: true } && detailPopup.HasFocus();
 
     public void Apply(TacticalHudProjection projection)
     {
@@ -76,14 +80,36 @@ public partial class TacticalHud : Control
             detailPopup = new PopupPanel { Name = "UnitDossier", Size = new Vector2I(360, 340) };
             detailPopup.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#30291e", 14, "#756344"));
             AddChild(detailPopup);
+            var body = new VBoxContainer { Name = "DossierBody" };
+            body.AddThemeConstantOverride("separation", 8);
+            detailPopup.AddChild(body);
+            detailClose = new Button { Name = "DossierClose", Text = projection.CloseLabel, SizeFlagsHorizontal = SizeFlags.ShrinkEnd };
+            CompactButton(detailClose);
+            detailClose.Pressed += () => detailPopup.Hide();
+            body.AddChild(detailClose);
+            detailPopup.PopupHide += () =>
+            {
+                var openerName = detailOpenerName;
+                var openingStamp = detailOpeningStamp;
+                var closingGeneration = generation;
+                detailOpenerName = null;
+                detailOpeningStamp = null;
+                Callable.From(() =>
+                {
+                    if (GodotObject.IsInstanceValid(this) && IsInsideTree() && generation == closingGeneration && current?.Stamp == openingStamp
+                        && openerName is not null && FindChild(openerName, true, false) is Button opener && opener.IsVisibleInTree())
+                        opener.GrabFocus();
+                }).CallDeferred();
+            };
             detailScroll = new ScrollContainer
             {
                 Name = "DetailScroll",
                 HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
                 CustomMinimumSize = new Vector2(328, 300)
             };
-            detailPopup.AddChild(detailScroll);
+            body.AddChild(detailScroll);
         }
+        detailClose!.Text = projection.CloseLabel;
         foreach (var child in detailScroll!.GetChildren())
         {
             ReleaseTextureReferences(child);
@@ -91,6 +117,32 @@ public partial class TacticalHud : Control
             child.QueueFree();
         }
         detailScroll.AddChild(details);
+        void WireDossier(Button button, string? expandedKey = null)
+        {
+            var popup = detailPopup;
+            button.Pressed += () =>
+            {
+                if (generation != renderedGeneration || !IsInsideTree() || !button.IsInsideTree())
+                    return;
+                var openingStamp = current?.Stamp;
+                Callable.From(() =>
+                {
+                    if (!GodotObject.IsInstanceValid(this) || !IsInsideTree() || generation != renderedGeneration
+                        || current?.Stamp != openingStamp || !GodotObject.IsInstanceValid(button) || !button.IsInsideTree()
+                        || !GodotObject.IsInstanceValid(popup) || !popup.IsInsideTree() || popup.Visible)
+                        return;
+                    if (expandedKey is not null && details.FindChild(expandedKey, true, false) is VBoxContainer section)
+                    {
+                        section.GetChildren().OfType<Button>().Single().ButtonPressed = true;
+                        detailScroll!.ScrollVertical = 0;
+                    }
+                    detailOpenerName = button.Name;
+                    detailOpeningStamp = openingStamp;
+                    popup.PopupCentered();
+                    detailClose!.GrabFocus();
+                }).CallDeferred();
+            };
+        }
         var forecast = projection.Sections.FirstOrDefault(section => section.Key == "forecast");
         var mainActions = projection.Sections.FirstOrDefault(section => section.Key is "commands" or "target" or "deployment" or "recruit" or "tactics");
         if (projection.Sections.Any(section => section.Key == "unit"))
@@ -183,9 +235,19 @@ public partial class TacticalHud : Control
                     toggle.Text = (open ? "−  " : "+  ") + title;
                 };
             }
-            if (section.Key == "forecast" && target is not null)
-                foreach (var row in target.Rows)
-                    header.AddChild(Order(row, target.Key, compact: true));
+            if (section.Key == "forecast")
+            {
+                if (projection.Sections.FirstOrDefault(value => value.Key == "forecast-details") is { } calculation)
+                {
+                    var detail = new Button { Name = "ForecastDetailsButton", Text = calculation.Title };
+                    CompactButton(detail);
+                    header.AddChild(detail);
+                    WireDossier(detail, "forecast-details");
+                }
+                if (target is not null)
+                    foreach (var row in target.Rows)
+                        header.AddChild(Order(row, target.Key, compact: true));
+            }
             if (section.Key == "target")
             {
                 foreach (var row in section.Rows)
@@ -240,6 +302,23 @@ public partial class TacticalHud : Control
                     AddReadOnly(column, section.Rows.Single(row => row.Key == identity), 13);
                     AddReadOnly(column, section.Rows.Single(row => row.Key == damage), 12);
                 }
+            }
+            if (pairedForecast)
+            {
+                var effects = new GridContainer { Name = "ForecastEffects", Columns = 2, SizeFlagsHorizontal = SizeFlags.ExpandFill };
+                effects.AddThemeConstantOverride("h_separation", 12);
+                effects.AddThemeConstantOverride("v_separation", 3);
+                foreach (var row in section.Rows.Where(row => row.Key is not ("attacker" or "recipient" or "strike" or "counter")))
+                {
+                    var effect = Label(row.Label, 12, row.Key is "recipient-dies" or "attacker-dies" ? new Color("#e5a08b") : TacticalHudStyle.Gold);
+                    effect.Name = row.Key;
+                    effect.TooltipText = row.Hint;
+                    effects.AddChild(effect);
+                }
+                if (effects.GetChildCount() > 0)
+                    group.AddChild(effects);
+                else
+                    effects.Free();
             }
             GridContainer? commandGrid = null;
             if (section == mainActions && section.Key != "target")
@@ -301,27 +380,14 @@ public partial class TacticalHud : Control
             CompactButton(dossier);
             AddChild(dossier);
             Place(dossier, 0, 1, 0, 1, 28, -34, projection.Portrait is null ? 148 : 264, -9);
-            var popup = detailPopup;
-            dossier.Pressed += () =>
-            {
-                if (generation != renderedGeneration || !IsInsideTree() || !dossier.IsInsideTree())
-                    return;
-                var openingStamp = current?.Stamp;
-                Callable.From(() =>
-                {
-                    if (GodotObject.IsInstanceValid(this) && IsInsideTree() && generation == renderedGeneration
-                        && current?.Stamp == openingStamp && GodotObject.IsInstanceValid(dossier) && dossier.IsInsideTree()
-                        && GodotObject.IsInstanceValid(popup) && popup.IsInsideTree() && !popup.Visible)
-                        popup.PopupCentered();
-                }).CallDeferred();
-            };
+            WireDossier(dossier);
         }
         var hint = Label(projection.Hint, 13, TacticalHudStyle.Gold);
         hint.Name = "SelectionHint";
-        hint.Visible = ShowHint && mainActions is not null && forecast is null;
+        hint.Visible = ShowHint && mainActions is not null;
         hint.TooltipText = projection.Hint;
         hint.MouseFilter = MouseFilterEnum.Pass;
-        hint.MaxLinesVisible = 1;
+        hint.MaxLinesVisible = forecast is null ? 1 : 2;
         hint.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
         hint.AddThemeColorOverride("font_shadow_color", new Color("#17120c"));
         hint.AddThemeConstantOverride("shadow_outline_size", 2);
@@ -426,7 +492,7 @@ public partial class TacticalHud : Control
         && first.Rows.Zip(second.Rows).All(pair => SameRow(pair.First, pair.Second));
 
     private static bool Equivalent(TacticalHudProjection first, TacticalHudProjection second) =>
-        first.Stamp == second.Stamp && first.Hint == second.Hint && first.Busy == second.Busy && first.Portrait == second.Portrait
+        first.Stamp == second.Stamp && first.Hint == second.Hint && first.Busy == second.Busy && first.Portrait == second.Portrait && first.CloseLabel == second.CloseLabel
         && first.Sections.Count == second.Sections.Count && first.Sections.Zip(second.Sections).All(pair => SameSection(pair.First, pair.Second));
 
     private static void Place(Control control, float left, float top, float right, float bottom, float x1, float y1, float x2, float y2)
@@ -457,7 +523,7 @@ public partial class TacticalHud : Control
         inset.AddThemeConstantOverride("margin_left", content.Name == "crown" ? 32 : 20);
         inset.AddThemeConstantOverride("margin_right", content.Name == "crown" ? 42 : 18);
         inset.AddThemeConstantOverride("margin_top", content.Name == "crown" ? 15 : content.Name == "forecast" ? 6 : 10);
-        inset.AddThemeConstantOverride("margin_bottom", content.Name == "forecast" ? 6 : 12);
+        inset.AddThemeConstantOverride("margin_bottom", 12);
         panel.AddChild(inset);
         inset.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         inset.AddChild(content);

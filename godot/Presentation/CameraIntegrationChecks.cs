@@ -61,6 +61,7 @@ public partial class CameraIntegrationChecks : Node
             screen.Size = new Vector2(960, 640);
             await Layout();
             CheckStationaryPointerFocus();
+            await CheckForecastHandoff();
             CheckCancellation();
             CheckOutsideTerrain();
             await CheckFollowAndBusyActions();
@@ -214,6 +215,106 @@ public partial class CameraIntegrationChecks : Node
                     return point;
             }
         throw new InvalidOperationException($"Native pointer fixture needs an actual visible body pixel for Unit {id} at {at}.");
+    }
+
+    private async Task CheckForecastHandoff()
+    {
+        var originalWindowSize = GetWindow().Size;
+        GetWindow().Size = new Vector2I(960, 640);
+        await Layout();
+        // Detached interaction fixture: position one real enemy beside Torren, never a played battle.
+        var initial = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+        var state = initial.Snapshot();
+        var queries = initial.GetTacticalQueries(0);
+        var origin = queries.Unit(2)!.At;
+        var neighbor = queries.MoveStops(2).First(at => Math.Abs(at.X - origin.X) + Math.Abs(at.Y - origin.Y) == 1
+            && !state["units"]!.AsArray().OfType<JsonObject>().Any(unit => unit["x"]!.GetValue<int>() == at.X && unit["y"]!.GetValue<int>() == at.Y));
+        var enemy = state["units"]!.AsArray().OfType<JsonObject>().First(unit => unit["owner"]!.GetValue<int>() == 2);
+        var enemyId = enemy["id"]!.GetValue<int>();
+        enemy["x"] = neighbor.X;
+        enemy["y"] = neighbor.Y;
+        var session = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(state));
+        var viewport = GetViewport();
+        void Motion(Vector2 point) => viewport.PushInput(new InputEventMouseMotion { Position = point, GlobalPosition = point }, true);
+        async Task Arm()
+        {
+            Bind(session);
+            await Layout();
+            screen.SelectHit(TacticalHit.Unit(origin, 2));
+            screen.SelectHit(TacticalHit.Unit(neighbor, enemyId));
+            Require(screen.Selection?.Kind == TacticalSelectionKind.Target, $"Adjacent-enemy fixture exposes an ordinary attack target selection: kind={screen.Selection?.Kind}, origin={origin}, neighbor={neighbor}, commands={string.Join(",", session.GetTacticalQueries(0).CommandsAt(2, origin).Select(command => command.Key + "/" + string.Join(";", command.Targets)))}.");
+            await Layout();
+            viewport.NotifyMouseExited();
+            viewport.NotifyMouseEntered();
+            Motion(world.Position + ActorPoint(enemyId, neighbor) * world.Scale);
+            await Layout();
+            Require(((TacticalHud)screen.FindChild("TacticalHud", true, false)).Projection!.Sections.Any(section => section.Key == "forecast"),
+                $"A real visible enemy pixel must produce the current canonical forecast: point={world.Position + ActorPoint(enemyId, neighbor) * world.Scale}, hovered={viewport.GuiGetHoveredControl()?.Name}, size={screen.Size}, window={GetWindow().Size}, selection={screen.Selection?.Kind}, sections={string.Join(",", ((TacticalHud)screen.FindChild("TacticalHud", true, false)).Projection!.Sections.Select(section => section.Key))}.");
+        }
+        await Arm();
+        var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+        var ground = session.GetTacticalQueries(0).InteractiveCells.First(at => at != origin && at != neighbor
+            && !state["units"]!.AsArray().OfType<JsonObject>().Any(unit => unit["x"]!.GetValue<int>() == at.X && unit["y"]!.GetValue<int>() == at.Y)
+            && screen.Board.Pick(screen.Board.Projection.CellContact(new(at.X, at.Y))) == TacticalHit.Ground(at)
+            && new Rect2(new Vector2(350, 180), new Vector2(300, 200)).HasPoint(world.Position + screen.Board.Projection.CellContact(new(at.X, at.Y)) * world.Scale));
+        Motion(world.Position + screen.Board.Projection.CellContact(new(ground.X, ground.Y)) * world.Scale);
+        await Layout();
+        Require(hud.Projection!.Sections.Any(section => section.Key == "forecast") && screen.Selection?.PreviewTarget?.UnitId == enemyId,
+            "Crossing ordinary map ground on the way to HUD preserves the explicit target preview, independently of the activation cursor.");
+        Require(hud.Projection!.Hint == text.Format("ui.hud.selection.preview_held"), "Pinned preview guidance never promises Enter on a non-target cursor.");
+        screen._UnhandledKeyInput(new InputEventKey { Keycode = Key.Enter, Pressed = true });
+        Require(session.Revision == 0, "Retained preview cannot turn Enter on a non-target ground cursor into a combat order.");
+        await Layout();
+        var detail = (Button)hud.FindChild("ForecastDetailsButton", true, false);
+        var point = detail.GetGlobalRect().GetCenter();
+        Motion(point);
+        await Layout();
+        Require(hud.Projection!.Sections.Any(section => section.Key == "forecast") && detail.IsInsideTree(),
+            $"Actual map-to-HUD pointer transfer preserves the controller's valid preview target and its live details control: preview={screen.Selection?.PreviewTarget}, forecast={hud.Projection!.Sections.Any(section => section.Key == "forecast")}, buttonAlive={GodotObject.IsInstanceValid(detail) && detail.IsInsideTree()}, hovered={viewport.GuiGetHoveredControl()?.Name}.");
+        viewport.PushInput(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = true, Position = point, GlobalPosition = point }, true);
+        viewport.PushInput(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = false, Position = point, GlobalPosition = point }, true);
+        await Layout();
+        var popup = (PopupPanel)hud.FindChild("UnitDossier", true, false);
+        Require(popup.Visible && hud.Projection!.Sections.Any(section => section.Key == "forecast-details") && session.Revision == 0,
+            $"Clicking actual forecast details opens the latest projected facts without committing combat: popup={popup.Visible}, details={hud.Projection!.Sections.Any(section => section.Key == "forecast-details")}, revision={session.Revision}, preview={screen.Selection?.PreviewTarget}, hovered={viewport.GuiGetHoveredControl()?.Name}.");
+        var close = (Button)hud.FindChild("DossierClose", true, false);
+        Require(close.IsVisibleInTree() && close.Text == text.Format("ui.common.close") + "  Esc"
+            && new Rect2(Vector2.Zero, popup.Size).Encloses(close.GetGlobalRect()), "The dossier has an explicit localized close affordance inside its bounds.");
+        close.EmitSignal(Button.SignalName.Pressed);
+        await Layout();
+        Require(!popup.Visible && hud.Projection!.Sections.Any(section => section.Key == "forecast")
+            && GetViewport().GuiGetFocusOwner()?.Name == "ForecastDetailsButton" && session.Revision == 0,
+            "Visible close returns focus to the current forecast entry and preserves prediction without executing combat.");
+        ((Button)hud.FindChild("ForecastDetailsButton", true, false)).EmitSignal(Button.SignalName.Pressed);
+        await Layout();
+        Require(popup.Visible, "The current details entry reopens after explicit close.");
+        viewport.PushInput(new InputEventKey { Keycode = Key.Escape, Pressed = true });
+        viewport.PushInput(new InputEventKey { Keycode = Key.Escape, Pressed = false });
+        await Layout();
+        Require(!popup.Visible && hud.Projection!.Sections.Any(section => section.Key == "forecast") && session.Revision == 0,
+            "Native Esc closes only the dossier and retains the active forecast.");
+        GetWindow().EmitSignal(Window.SignalName.MouseExited);
+        await Layout();
+        Require(!hud.Projection!.Sections.Any(section => section.Key == "forecast"), "HUD-to-window-out also clears the preview; it cannot wait for a second map exit.");
+        await Arm();
+        screen._Notification((int)NotificationWMWindowFocusOut);
+        await Layout();
+        Require(!hud.Projection!.Sections.Any(section => section.Key == "forecast"), "Window focus loss still clears the preview.");
+        await Arm();
+        map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = new Vector2(-5000, -5000) });
+        Require(!hud.Projection!.Sections.Any(section => section.Key == "forecast"), "Invalid map positions are not treated as HUD input handoff.");
+        screen.SelectHit(TacticalHit.Ground(ground));
+        var feedback = (Label)screen.FindChild("BattleFeedback", true, false);
+        Require(feedback.Visible && ((Control)screen.FindChild("FeedbackPanel", true, false)).Visible, "A refused target has readable material-backed feedback.");
+        screen._UnhandledKeyInput(new InputEventKey { Keycode = Key.Escape, Pressed = true });
+        Require(!feedback.Visible && !((Control)screen.FindChild("FeedbackPanel", true, false)).Visible && screen.Selection?.PreviewTarget is null,
+            "Successful cancel/new selection clears stale refusal feedback before any battle command.");
+        await Arm();
+        Bind(initial);
+        Require(!hud.Projection!.Sections.Any(section => section.Key == "forecast") && session.Revision == 0,
+            "Rebinding clears target preview and every pointer-only probe leaves canonical state unchanged.");
+        GetWindow().Size = originalWindowSize;
+        await Layout();
     }
 
     private void CheckStationaryPointerFocus()
@@ -431,6 +532,7 @@ public partial class CameraIntegrationChecks : Node
                         $"Busy pointer motion projects hovered terrain and visible inspection without tactical selection: target {target}, picked {screen.Board.Pick((at - world.Position) / world.Scale)}, portrait {hud.Projection.Portrait?.ActorKey}, sections {string.Join(',', hud.Projection.Sections.Select(section => section.Key))}.");
                     var portrait = hud.Projection.Portrait;
                     map.EmitSignal(Control.SignalName.MouseExited);
+                    await Layout();
                     Require(!hud.Projection!.Sections.Any(section => section.Key == "tile") && hud.Projection.Portrait == portrait,
                         "Busy mouse leave clears cursor terrain but preserves source inspection.");
                     Require(session.GetSnapshot().Revision == revision && screen.SelectedUnitId is null, "Busy hover and leave never commit or arm a unit.");

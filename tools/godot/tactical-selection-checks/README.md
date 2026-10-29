@@ -52,3 +52,10 @@ preview; the historical cancel-on-miss trace is resumed only after a separately
 asserted refusal and explicit Back operations. New regression assertions cover
 repeated self-clicks, explicit wait, unreachable destination feedback, and cycle
 followed by Enter/directional input. The frozen oracle is not rewritten.
+
+The native UI additionally owns `PreviewTarget` in the selection controller, distinct
+from the live activation cursor. Crossing ordinary ground preserves the last valid
+preview for readable HUD details, but does not authorize a command on that ground.
+Cancel, leave and revision/binding transitions clear it. Native viewport interaction
+and current HUD projection are exercised in `CameraIntegrationChecks`, not inferred
+from the historical source trace.

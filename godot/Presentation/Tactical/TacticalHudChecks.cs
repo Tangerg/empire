@@ -439,6 +439,60 @@ public partial class TacticalHudChecks : Node
         host.Free();
     }
 
+    private async System.Threading.Tasks.Task CheckForecastFacts()
+    {
+        var host = new Control { Size = new Vector2(960, 640), Theme = TacticalHudStyle.Create() };
+        AddChild(host);
+        var hud = new TacticalHud();
+        host.AddChild(hud);
+        hud.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+        var stamp = new TacticalStamp(90, 1);
+        var warningRows = new[] {
+            new TacticalHudRow("interceptor", "皇家卫士将进行援护并承受伤害"),
+            new TacticalHudRow("reaction", "目标将触发防守姿态"),
+            new TacticalHudRow("support", "援护攻击预计追加 21 点伤害"),
+            new TacticalHudRow("collateral", "范围攻击还将波及 2 个单位、1 个结构"),
+            new TacticalHudRow("recipient-dies", "主击目标预计阵亡"),
+            new TacticalHudRow("attacker-dies", "攻击者预计阵亡") };
+        foreach (var width in new[] { 960, 1180 })
+        {
+            host.Size = new Vector2(width, 640);
+            hud.Apply(new(stamp with
+            {
+                Revision = width
+            }, "再点目标 / Enter 执行 · Esc 返回", new[] {
+                new TacticalHudSection("forecast", "战斗预测", new[] {
+                    new TacticalHudRow("attacker", "北丘边境弓手"), new TacticalHudRow("recipient", "军团皇家盾卫"),
+                    new TacticalHudRow("counter", "反击 20 · 28 → 8", Gauge: new(8, 80)),
+                    new TacticalHudRow("strike", "主击 36 · HP 80 → 44", Gauge: new(44, 80)) }.Concat(warningRows).ToArray()),
+                new TacticalHudSection("forecast-details", "计算详情", new[] { new TacticalHudRow("damage-type", "穿刺 → 重甲"), new TacticalHudRow("mitigation", "减伤 20%") }),
+                new TacticalHudSection("target", "选择目标", new[] { new TacticalHudRow("cancel", "取消 Esc", Intent: new(stamp, TacticalHudIntentKind.Back)) })
+            }));
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            var plate = (Control)hud.FindChild("forecastPlate", true, false);
+            var effects = (GridContainer)hud.FindChild("ForecastEffects", true, false);
+            Require(effects.GetChildCount() == warningRows.Length && effects.GetChildren().OfType<Label>().All(label =>
+                label.IsVisibleInTree() && plate.GetGlobalRect().Encloses(label.GetGlobalRect())),
+                "Interception, reaction, support, collateral and death facts are actually visible inside the forecast plate, not tooltip-only.");
+            Require(plate.GlobalPosition.Y >= 320 && plate.GetGlobalRect().End.Y <= host.Size.Y,
+                "Even the fullest forecast remains in the lower safe half at both widths.");
+            var hint = (Label)hud.FindChild("SelectionHint", true, false);
+            Require(hint.IsVisibleInTree() && plate.GetGlobalRect().Encloses(hint.GetGlobalRect()), "Confirmation and escape guidance stays visible with the forecast.");
+            var detail = (Button)hud.FindChild("ForecastDetailsButton", true, false);
+            detail.EmitSignal(Button.SignalName.Pressed);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            var popup = (PopupPanel)hud.FindChild("UnitDossier", true, false);
+            var calculation = (VBoxContainer)hud.FindChild("forecast-details", true, false);
+            Require(popup.Visible && calculation.GetNode<VBoxContainer>("Content").Visible,
+                "Direct forecast details opens the current calculation already expanded.");
+            popup.Hide();
+        }
+        RemoveChild(host);
+        host.Free();
+    }
+
     private async System.Threading.Tasks.Task CheckPointerCapture()
     {
         GetWindow().Size = new Vector2I(960, 640);
@@ -613,6 +667,7 @@ public partial class TacticalHudChecks : Node
             CheckSiteInspection();
             await CheckSitePointerBoundary();
             await CheckResponsiveLayout();
+            await CheckForecastFacts();
             await CheckPointerCapture();
             await CheckDossierLifetime();
             await CheckOrderBadgeStates();

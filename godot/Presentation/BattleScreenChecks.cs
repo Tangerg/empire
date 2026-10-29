@@ -32,6 +32,7 @@ public partial class BattleScreenChecks : Node
             CheckLocalizedInteraction();
             BattleIdentityChecks.Check(this);
             CheckInjectedEventPresenter();
+            CheckEventReceiptDetails();
             GD.Print("Native BattleScreen real-session integration passed.");
             GetTree().Quit();
         }
@@ -40,6 +41,48 @@ public partial class BattleScreenChecks : Node
             GD.PushError(error.ToString());
             GetTree().Quit(1);
         }
+    }
+
+    private void CheckEventReceiptDetails()
+    {
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var text = GodotTextCatalog.LoadSimplifiedChinese();
+        var presentation = BattleTextChecks.Session(engine, text);
+        var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), BattleTextChecks.OpeningLevel());
+        var state = EcmaJson.ToElement(session.Snapshot());
+        var context = new BattleLogContext(new(session.UnitName, presentation.Content.UnitName,
+            presentation.Content.CareerName, presentation.Content.ResourceName,
+            player => presentation.Battle.PlayerName("c01-01", player)), state, state);
+        foreach (var component in new[] { "terrain", "unit" })
+        {
+            var defense = presentation.Modifiers.Describe(new("fixture", "core.defense", component, "mitigation", "add", .3,
+                new JsonObject { ["component"] = component }));
+            var source = text.Format("ui.hud.modifier_source." + component);
+            Require(defense.Split(source, StringSplitOptions.None).Length == 2 && defense.Split("防御", StringSplitOptions.None).Length == 2
+                && defense.Contains("+30%", StringComparison.Ordinal), "Defense rows identify their source and amount once, without repeated source/defense labels.");
+        }
+        var defender = state.GetProperty("units").EnumerateArray().First(unit => unit.GetProperty("owner").GetInt32() == 2).GetProperty("id").GetInt32();
+        foreach (var kind in new[] { "attack", "counter", "supportAttack", "partingShot" })
+        {
+            var value = new JsonObject { ["type"] = kind, ["attacker"] = 2, ["defender"] = defender, ["damage"] = 17, ["killed"] = false };
+            var line = presentation.Events.Describe(context, EcmaJson.ToElement(value));
+            Require(line.Contains(context.UnitName(2), StringComparison.Ordinal) && line.Contains(context.UnitName(defender), StringComparison.Ordinal)
+                && line.Contains("17", StringComparison.Ordinal), "Every direct combat receipt identifies both participants and the committed damage.");
+        }
+        var heal = presentation.Events.Describe(context, EcmaJson.ToElement(new JsonObject { ["type"] = "heal", ["source"] = 2, ["target"] = defender, ["amount"] = 9 }));
+        Require(heal.Contains(context.UnitName(2), StringComparison.Ordinal) && heal.Contains(context.UnitName(defender), StringComparison.Ordinal),
+            "Healing receipts identify source and recipient instead of making the patient ambiguous.");
+        var collision = presentation.Events.Describe(context, EcmaJson.ToElement(new JsonObject { ["type"] = "collisionDamage", ["unit"] = defender, ["amount"] = 11, ["hpAfter"] = 7, ["killed"] = false }));
+        Require(collision.Contains(context.UnitName(defender), StringComparison.Ordinal) && collision.Contains("11", StringComparison.Ordinal)
+            && collision.Contains("7", StringComparison.Ordinal), "Collision feedback uses its committed hpAfter, not a guessed strike total.");
+        var moved = presentation.Events.Describe(context, EcmaJson.ToElement(new JsonObject
+        {
+            ["type"] = "forcedMove",
+            ["unit"] = defender,
+            ["from"] = new JsonObject { ["x"] = 3, ["y"] = 4 },
+            ["to"] = new JsonObject { ["x"] = 5, ["y"] = 6 }
+        }));
+        Require(moved.Contains("(3, 4)", StringComparison.Ordinal) && moved.Contains("(5, 6)", StringComparison.Ordinal), "Forced displacement remains visible as a distinct committed event.");
     }
 
     private void CheckCanonicalCellProjection()

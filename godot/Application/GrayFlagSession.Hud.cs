@@ -23,10 +23,16 @@ public sealed partial class GrayFlagSession
         var current = TacticalQueries.Player(state, N(state, "currentPlayer"));
         var human = S(current, "controller") == "human";
         var visible = VisibleUnitIds(state, Viewer(state));
-        var cursorUnit = cursorHit is { Kind: TacticalHitKind.Unit, UnitId: { } hitId } && visible.Contains(hitId)
-            ? TacticalQueries.UnitById(state, hitId) : null;
-        if (cursorUnit is not null && TacticalQueries.Position(cursorUnit) != new Coord(cursorHit!.Cell.X, cursorHit.Cell.Y))
-            cursorUnit = null;
+        JsonObject? VisibleHit(TacticalHit? hit)
+        {
+            if (hit is not { Kind: TacticalHitKind.Unit, UnitId: { } id } || !visible.Contains(id))
+                return null;
+            var unit = TacticalQueries.UnitById(state, id);
+            return unit is not null && TacticalQueries.Position(unit) == new Coord(hit.Cell.X, hit.Cell.Y) ? unit : null;
+        }
+        var cursorUnit = VisibleHit(cursorHit);
+        var forecastHit = selection.PreviewTarget ?? cursorHit;
+        var forecastUnit = VisibleHit(forecastHit);
         var selected = selection.UnitId is { } selectedId && visible.Contains(selectedId) ? TacticalQueries.UnitById(state, selectedId) : null;
         var commandable = human && selected is not null && engine.Turns.MayAct(state, selected) ? selected : null;
         var formations = commandable is null ? [] : engine.Progression.Formations.Options(state, commandable);
@@ -196,12 +202,12 @@ public sealed partial class GrayFlagSession
                         Icon = "ability:" + tactic.Id
                     })));
         if (selection.Kind == TacticalSelectionKind.Target && selected is not null
-            && selection.Weapon is { } weapon && cursorHit is { } targetHit
-            && (targetHit.Kind != TacticalHitKind.Unit || cursorUnit is not null)
+            && selection.Weapon is { } weapon && forecastHit is { } targetHit
+            && (targetHit.Kind != TacticalHitKind.Unit || forecastUnit is not null)
             && selection.TargetSubjects.Any(subject => subject.Accepts(targetHit)) && selection.Destination is { } from)
         {
             var target = targetHit.Cell;
-            var defender = cursorUnit;
+            var defender = forecastUnit;
             var plan = engine.Combat.Forecast(state, selected, new(target.X, target.Y), new(from.X, from.Y), weapon);
             if (targetHit.Kind == TacticalHitKind.Object && plan.PrimaryStructure is { } structureForecast)
             {
@@ -587,12 +593,18 @@ public sealed partial class GrayFlagSession
         var selectionHint = S(state, "phase") == "over"
             ? text.Format("ui.hud.battle_over")
             : !human ? text.Format("ui.hud.computer_thinking") : SelectionHint(selection.Kind, canOpenRecruitment);
+        if (human && S(state, "phase") == "playing" && selection.Kind == TacticalSelectionKind.Target
+            && selection.PreviewTarget is not null && (cursorHit is null
+                || !selection.TargetSubjects.Any(subject => subject.Accepts(cursorHit))
+                || cursorHit.Kind == TacticalHitKind.Unit && cursorUnit is null))
+            selectionHint = text.Format("ui.hud.selection.preview_held");
         return new(
             stamp,
             selectionHint,
             System.Array.AsReadOnly(sections.ToArray()),
             inspect is null ? null : UnitIcon(inspect),
-            busy);
+            busy,
+            text.Format("ui.common.close") + "  Esc");
     }
 
     private string SelectionHint(TacticalSelectionKind kind, bool canRecruit) => kind switch

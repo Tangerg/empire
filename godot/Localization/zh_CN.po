@@ -2083,16 +2083,16 @@ msgid "battle.result.defeat"
 msgstr "战败"
 
 msgid "battle.event.attack"
-msgstr "{0} 造成 {1} 点伤害{2}"
+msgstr "{0} → {1}：造成 {2} 点伤害{3}"
 
 msgid "battle.event.counter"
-msgstr "反击造成 {0} 点伤害{1}"
+msgstr "{0} → {1}：反击 {2} 点伤害{3}"
 
 msgid "battle.event.support"
-msgstr "{0} 援护攻击造成 {1} 点伤害{2}"
+msgstr "{0} → {1}：援护攻击 {2} 点伤害{3}"
 
 msgid "battle.event.parting"
-msgstr "{0} 借机攻击造成 {1} 点伤害{2}"
+msgstr "{0} → {1}：借机攻击 {2} 点伤害{3}"
 
 msgid "battle.event.area"
 msgstr "范围攻击对 {0} 造成 {1} 点伤害{2}"
@@ -2113,7 +2113,7 @@ msgid "battle.event.structure_destroyed"
 msgstr "，结构被摧毁"
 
 msgid "battle.event.heal"
-msgstr "{0} 治疗了 {1} 点生命"
+msgstr "{0} → {1}：恢复 {2} 点生命"
 
 msgid "battle.event.recruit"
 msgstr "{0} 征募了 {1}"
@@ -2278,7 +2278,7 @@ msgid "ui.hud.support_damage"
 msgstr "援护攻击预计追加 {0} 点伤害"
 
 msgid "ui.hud.strike"
-msgstr "造成伤害 {0} · {1} → {2}"
+msgstr "主击 {0} · HP {1} → {2}"
 
 msgid "ui.hud.counter"
 msgstr "遭到反击 {0} · {1} → {2}"
@@ -2503,7 +2503,7 @@ msgid "ui.hud.selection.destination"
 msgstr "选择指令执行；Esc 返回"
 
 msgid "ui.hud.selection.target"
-msgstr "核对战斗预测，再点高亮目标执行；Esc 返回。"
+msgstr "再点目标 / Enter 执行 · Esc 返回"
 
 msgid "ui.hud.selection.deploying"
 msgstr "战前部署：点击你的单位，再点高亮格调整站位；确认部署后开始战斗。"
@@ -3306,12 +3306,6 @@ msgstr "全掩体"
 msgid "combat.modifier.half_cover"
 msgstr "半掩体"
 
-msgid "combat.modifier.terrain_defense"
-msgstr "地形防御"
-
-msgid "combat.modifier.unit_defense"
-msgstr "单位防御"
-
 msgid "level.c01_01.title"
 msgstr "01 · 双子丘陵"
 
@@ -3646,3 +3640,12 @@ msgstr "原地指令"
 
 msgid "ui.hud.inspection_done"
 msgstr "该单位已行动；可切换其他单位或结束回合。"
+
+msgid "battle.event.forced_move"
+msgstr "{0} 被迫位移：({1}, {2}) → ({3}, {4})"
+
+msgid "battle.event.collision"
+msgstr "{0} 碰撞受伤 {1} · 剩余 HP {2}{3}"
+
+msgid "ui.hud.selection.preview_held"
+msgstr "预览已保留 · 移回目标确认 · Esc 返回"

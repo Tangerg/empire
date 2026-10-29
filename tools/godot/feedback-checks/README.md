@@ -1,4 +1,15 @@
-# Native battle feedback parity
+# Historical battle-feedback source differential
+
+This directory is retained as a forensic comparison with the original TypeScript
+feedback, **not current native acceptance**. The executable intentionally still
+compares literal source expectations and can report incompatibilities with current
+strict identities, localization and committed-event coverage. In particular, the
+native journal now names both participants and includes forced movement/collision.
+Do not interpret a historical count below as a newly executed PASS, or weaken the
+native contract to make this old oracle green. Current ownership and tests are in
+[`godot/docs/BATTLE-FEEDBACK.md`](../../../godot/docs/BATTLE-FEEDBACK.md).
+
+The remainder describes the historical comparison that produced the original evidence.
 
 Run from the repository root:
 

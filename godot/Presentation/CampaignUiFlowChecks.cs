@@ -28,6 +28,7 @@ public partial class CampaignUiFlowChecks : Node
             await CheckEscape();
             await CheckScreens();
             await CheckSystemPopup();
+            await CheckBattleLog();
             if (failures.Count > 0)
                 throw new InvalidOperationException(string.Join("\n", failures));
             GD.Print($"CAMPAIGN_UI_FLOW_CHECKS_OK {assertions} assertions");
@@ -176,6 +177,55 @@ public partial class CampaignUiFlowChecks : Node
         screen.QueueFree();
         await Layout();
     }
+    private async Task CheckBattleLog()
+    {
+        var level = BattleTextChecks.OpeningLevel();
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var presentation = BattleTextChecks.Session(engine, text);
+        var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+        var screen = new BattleScreen();
+        AddChild(screen);
+        screen.Board.AnimationsEnabled = false;
+        screen.BindSession(new(text, presentation.Battle, PortraitCatalogResources.Load(), session,
+            new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)),
+            level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
+        screen.AppendMessage("保留可见回执");
+        var toast = (Label)screen.FindChild("BattleEventLog", true, false);
+        screen.AppendMessage("");
+        Check(toast.Text == "保留可见回执" && toast.Visible, "Silent events cannot erase the last readable toast.");
+        for (var index = 0; index < 75; index++)
+            screen.AppendMessage($"{index:00} · 托伦 → 军团盾卫：受到 11 点碰撞伤害；剩余 HP 7。" + new string('界', 70));
+        screen.AppendMessage("连续回执");
+        screen.AppendMessage("连续回执");
+        Check(screen.RecentMessages.Count == 60 && screen.RecentMessages[^1] == "连续回执 ×2",
+            "The visible journal retains the existing bounded/compressed single-owner log.");
+        foreach (var size in new[] { new Vector2I(960, 640), new Vector2I(1180, 760) })
+        {
+            GetWindow().Size = size;
+            await Layout();
+            var entry = Button(screen, "BattleLogButton");
+            Check(entry.IsVisibleInTree() && new Rect2(Vector2.Zero, size).Encloses(entry.GetGlobalRect()), "Journal entry is directly discoverable inside the viewport.");
+            entry.GrabFocus();
+            GetViewport().PushInput(new InputEventKey { Keycode = Key.Enter, Pressed = true });
+            GetViewport().PushInput(new InputEventKey { Keycode = Key.Enter, Pressed = false });
+            await Layout();
+            var dialog = (AcceptDialog)screen.FindChild("BattleLogDialog", true, false);
+            var journal = (RichTextLabel)screen.FindChild("BattleLogText", true, false);
+            Check(dialog.Visible && dialog.Size.X <= size.X && dialog.Size.Y <= size.Y,
+                "Keyboard opening of a full long journal remains bounded rather than growing to sixty lines.");
+            Check(journal.Text == string.Join("\n\n", screen.RecentMessages) && journal.GetVScrollBar().MaxValue > journal.Size.Y,
+                "All ordered receipts are available through an actual vertical scroll region.");
+            Check(dialog.GetOkButton().Text == text.Format("ui.common.close") && journal.GetGlobalRect().End.Y <= dialog.GetOkButton().GetGlobalRect().Position.Y,
+                $"Localized close remains separate from long scrolling content: label={dialog.GetOkButton().Text}, journal={journal.GetGlobalRect()}, close={dialog.GetOkButton().GetGlobalRect()}.");
+            Escape();
+            await Layout();
+            Check(!dialog.Visible && session.Revision == 0, "Esc dismisses journal without a map command.");
+        }
+        RemoveChild(screen);
+        screen.Free();
+        await Layout();
+    }
+
     private async Task CheckScreens()
     {
         var portraits = PortraitCatalogResources.Load();

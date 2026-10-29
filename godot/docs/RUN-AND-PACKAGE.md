@@ -44,10 +44,10 @@ see `OBJECTIVE-OUTCOME-SCHEMA.md`.
 
 ## Tactical controls
 
-Select a unit, then a destination, then a command. A destination with only one
-self-targeted command commits immediately, matching the original game. Right
+Select a unit, then a destination, then a command. Choosing a destination remains a preview, even when waiting is its only
+command; choose that command explicitly to commit it. Right
 click or Escape steps back through targeting, destination and unit selection.
-Tab or Space cycles available actors; arrows or WASD move the cursor and Enter
+Space cycles available actors; Tab traverses native controls; arrows or WASD move the cursor and Enter
 uses the same cell-selection path as the mouse. In a destination menu, A/C/H/W
 select attack/capture/heal/wait before their cursor-key meanings. E ends the turn
 and U undoes the last eligible human action. Successful handoff clears undo;
