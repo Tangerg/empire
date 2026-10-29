@@ -30,6 +30,7 @@ public partial class CampaignUiFlowChecks : Node
             await CheckLongContent();
             await CheckSystemPopup();
             await CheckBattleLog();
+            await CheckNoticeLayouts();
             if (failures.Count > 0)
                 throw new InvalidOperationException(string.Join("\n", failures));
             GD.Print($"CAMPAIGN_UI_FLOW_CHECKS_OK {assertions} assertions");
@@ -114,6 +115,7 @@ public partial class CampaignUiFlowChecks : Node
             await Layout();
             Button(screen, "SystemMenuButton").EmitSignal(Godot.Button.SignalName.Pressed);
             await Layout();
+            Check(close.HasFocus(), "Opening system menu focuses its explicit safe close affordance.");
             Check(popup.Visible && popup.Size.X <= size.X && popup.Size.Y <= size.Y,
                 $"System popup {size}: contents must fit available window ({popup.Size}).");
             Check(Descendants(popup).OfType<Button>().All(button =>
@@ -146,6 +148,21 @@ public partial class CampaignUiFlowChecks : Node
         Button Action(string key) => Descendants(popup).OfType<Button>().Single(button => button.Text == text.Format(key));
         void Press(string key) => Action(key).EmitSignal(Godot.Button.SignalName.Pressed);
         screen.BindApplicationActions(() => saves++, () => loads++);
+        popup.PopupCentered();
+        screen.SetApplicationBusy(true);
+        await Layout();
+        Check(Action("ui.battle.save").Disabled && Action("ui.battle.load").Disabled
+            && Action("ui.battle.save").TooltipText == text.Format("ui.battle.busy_actions")
+            && !Action("ui.battle.log").Disabled, "Busy state disables mutating system actions with an explanation, not the journal.");
+        Press("ui.battle.save");
+        Press("ui.battle.load");
+        await Layout();
+        Check(popup.Visible && saves == 0 && loads == 0, "Busy save/load stays in the menu without silently dismissing it or dispatching callbacks.");
+        screen.SetApplicationBusy(false);
+        await Layout();
+        Check(!Action("ui.battle.save").Disabled && !Action("ui.battle.load").Disabled
+            && Action("ui.battle.save").TooltipText.Contains("F5", StringComparison.Ordinal), "Idle transition restores the existing actions and discoverable shortcuts.");
+
         Press("ui.battle.save");
         Press("ui.battle.save");
         Press("ui.battle.load");
@@ -228,6 +245,27 @@ public partial class CampaignUiFlowChecks : Node
         RemoveChild(screen);
         screen.Free();
         await Layout();
+    }
+
+    private async Task CheckNoticeLayouts()
+    {
+        foreach (var size in new[] { new Vector2I(640, 360), new Vector2I(960, 640) })
+        {
+            GetWindow().Size = size;
+            var dialog = new AcceptDialog { Title = text.Format("ui.application.title"), DialogText = text.Format("error.save.failed") };
+            CampaignUiStyle.ConfigureDialog(dialog, text.Format("ui.common.close"));
+            AddChild(dialog);
+            CampaignUiStyle.OpenDialog(dialog);
+            await Layout();
+            Check(dialog.Size.X <= size.X - 32 && dialog.Size.Y <= size.Y - 32
+                && dialog.GetOkButton().Size.X >= 104 && dialog.GetOkButton().Size.Y >= 40,
+                $"A root-owned notice fits the small viewport with a substantial close target: viewport={size}, dialog={dialog.Size}, button={dialog.GetOkButton().Size}.");
+            Check(dialog.GetLabel().GetGlobalRect().End.Y <= dialog.GetOkButton().GetGlobalRect().Position.Y,
+                "Wrapping notice prose remains separate from its close action.");
+            dialog.Hide();
+            RemoveChild(dialog);
+            dialog.Free();
+        }
     }
 
     private async Task CheckLongContent()

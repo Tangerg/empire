@@ -14,6 +14,26 @@ public static class CampaignUiStyle
         return theme;
     }
 
+    /// <summary>Existing notices and destructive confirmations share readable, bounded native chrome.</summary>
+    public static void ConfigureDialog(AcceptDialog dialog, string closeText)
+    {
+        dialog.Theme = Create();
+        dialog.OkButtonText = closeText;
+        dialog.DialogAutowrap = true;
+        dialog.GetLabel().AddThemeConstantOverride("line_spacing", 4);
+        dialog.AddThemeConstantOverride("buttons_min_width", 104);
+        dialog.AddThemeConstantOverride("buttons_min_height", 40);
+        dialog.AddThemeConstantOverride("buttons_separation", 16);
+    }
+
+    public static void OpenDialog(AcceptDialog dialog)
+    {
+        var available = dialog.GetParent().GetViewport().GetVisibleRect().Size;
+        dialog.PopupCentered(new Vector2I((int)Math.Min(440, available.X - 32), (int)Math.Min(140, available.Y - 48)));
+        if (dialog is ConfirmationDialog confirmation)
+            confirmation.GetCancelButton().GrabFocus();
+    }
+
     public static void InitialFocus(Button button)
     {
         var pending = true;

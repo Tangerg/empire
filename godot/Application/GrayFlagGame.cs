@@ -237,7 +237,7 @@ public partial class GrayFlagGame : Node
                 return;
             }
             var dialog = new ConfirmationDialog { Title = text.Format("ui.menu.restart"), DialogText = projection.ReplacePrompt };
-            dialog.GetOkButton().Text = text.Format("ui.menu.confirm_restart");
+            CampaignUiStyle.ConfigureDialog(dialog, text.Format("ui.menu.confirm_restart"));
             dialog.GetCancelButton().Text = text.Format("ui.common.cancel");
             var handled = false;
             dialog.Confirmed += () =>
@@ -260,7 +260,7 @@ public partial class GrayFlagGame : Node
             dialog.Canceled += Cancel;
             dialog.CloseRequested += Cancel;
             menu.AddChild(dialog);
-            dialog.PopupCentered();
+            CampaignUiStyle.OpenDialog(dialog);
         });
     }
 
@@ -529,9 +529,11 @@ public partial class GrayFlagGame : Node
             return;
         }
         var dialog = new AcceptDialog { Title = text.Format("ui.application.title"), DialogText = message };
+        CampaignUiStyle.ConfigureDialog(dialog, text.Format("ui.common.close"));
         dialog.Confirmed += dialog.QueueFree;
+        dialog.Canceled += dialog.QueueFree;
         dialog.CloseRequested += dialog.QueueFree;
         AddChild(dialog);
-        dialog.PopupCentered();
+        CampaignUiStyle.OpenDialog(dialog);
     }
 }

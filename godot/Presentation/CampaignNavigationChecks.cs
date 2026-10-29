@@ -307,6 +307,7 @@ public partial class CampaignNavigationChecks : Node
         var stamp = Stamp(automaticPath);
         Press(Button(menu, "NewCampaign"));
         var dialog = Descendants(menu).OfType<ConfirmationDialog>().Single();
+        Require(dialog.GetCancelButton().HasFocus() && !dialog.GetOkButton().HasFocus(), "Campaign replacement initially focuses Cancel, never the destructive action.");
         Require(dialog.Visible && ReferenceEquals(View<Control>(game), menu) && File.ReadAllText(automaticPath) == original, "Requesting overwrite modified the existing slot before approval.");
         Press(Button(menu, "ContinueCampaign"));
         Require(ReferenceEquals(View<Control>(game), menu), "Sibling Continue escaped the pending overwrite dialog.");
@@ -455,6 +456,10 @@ public partial class CampaignNavigationChecks : Node
                 else
                     Press(Button(View<Control>(game), "StartBattle"));
                 Require(Descendants(game).OfType<AcceptDialog>().Any(dialog => dialog.DialogText.Contains("自动保存失败", StringComparison.Ordinal)), "Failed campaign write was not surfaced to the player.");
+                var notice = Descendants(game).OfType<AcceptDialog>().Single(dialog => dialog.DialogText.Contains("自动保存失败", StringComparison.Ordinal));
+                Require(notice.Theme is not null && notice.GetOkButton().Text == GodotTextCatalog.LoadSimplifiedChinese().Format("ui.common.close") && notice.DialogAutowrap, "Non-battle storage failure uses the shared localized, wrapping notice contract.");
+                notice.EmitSignal(AcceptDialog.SignalName.Canceled);
+                Require(notice.IsQueuedForDeletion(), "Escape/cancel retires a root-owned notice instead of accumulating hidden windows.");
                 if (target == "battle")
                     Require(State(game) == before && Campaign(game).Battle is null && !Campaign(game).HasPendingBattle && View<Control>(game) is CampaignStagingScreen,
                     "Failed prebattle write opened a battle or changed the campaign.");

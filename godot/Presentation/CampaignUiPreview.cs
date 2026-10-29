@@ -20,6 +20,18 @@ public partial class CampaignUiPreview : Control
     }
     public override void _Input(InputEvent input)
     {
+        if (input is InputEventKey { Pressed: true, Echo: false, Keycode: Key.F6 })
+        {
+            var notice = new AcceptDialog { Title = "界面测试夹具 · 通知", DialogText = text.Format("error.save.failed") };
+            CampaignUiStyle.ConfigureDialog(notice, text.Format("ui.common.close"));
+            AddChild(notice);
+            notice.Confirmed += notice.QueueFree;
+            notice.Canceled += notice.QueueFree;
+            notice.CloseRequested += notice.QueueFree;
+            CampaignUiStyle.OpenDialog(notice);
+            GetViewport().SetInputAsHandled();
+            return;
+        }
         if (input is InputEventKey { Pressed: true, Echo: false } key && key.Keycode is Key.F1 or Key.F2 or Key.F3 or Key.F4 or Key.F5)
         {
             Show((int)key.Keycode - (int)Key.F1);
@@ -78,6 +90,6 @@ public partial class CampaignUiPreview : Control
             else
                 result.ShowCompletion(text, "测试夹具 · 胜负选项", longText, true, receipt, receipt, receipt);
         }
-        GetWindow().Title = "Empire UI QA FIXTURE — F1 menu / F2 staging / F3 result / F4 completion / F5 story";
+        GetWindow().Title = "Empire UI QA FIXTURE — F1 menu / F2 staging / F3 result / F4 completion / F5 story / F6 notice";
     }
 }

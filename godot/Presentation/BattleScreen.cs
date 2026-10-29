@@ -44,6 +44,7 @@ public partial class BattleScreen : Control
     private bool _applicationBusy;
     private TacticalHud _hud = null!;
     private long _hudApplyGeneration;
+    private readonly List<(Button Button, string Tooltip)> _idleActions = new();
     public bool IsInputBlocked => _presenting || _applicationBusy;
     public TacticalSelection? Selection => _tactical?.Selection;
     private Window? _inputWindow;
@@ -136,6 +137,7 @@ public partial class BattleScreen : Control
         if (!_built)
             return;
         _zoomOut.Disabled = _zoomIn.Disabled = !_bound || IsInputBlocked;
+        RefreshApplicationActions();
         if (_bound && _camera?.ApplyPendingZoom() == true)
             ApplyCamera();
     }
@@ -258,6 +260,7 @@ public partial class BattleScreen : Control
     public void BindApplicationActions(Action? onSave = null, Action? onLoad = null, Action? onRestart = null, Action? onExit = null)
     {
         BuildInterface();
+        _idleActions.Clear();
         Clear(_applicationActions);
         _restartRequest = null;
         _restartConfirmation.Hide();
@@ -266,7 +269,7 @@ public partial class BattleScreen : Control
         var pending = false;
         bool Current() => GodotObject.IsInstanceValid(this) && _bound && IsInsideTree() && generation == _bindingGeneration && ReferenceEquals(session, _session);
         _restart = onRestart is null ? null : () => { if (Current() && !IsInputBlocked) onRestart(); };
-        void AddAction(string text, Action callback, bool requireIdle = false)
+        void AddAction(string text, Action callback, bool requireIdle = false, bool destructive = false, string shortcut = "")
         {
             Button button = null!;
             button = Button(text, () =>
@@ -291,6 +294,8 @@ public partial class BattleScreen : Control
             button.CustomMinimumSize = new Vector2(140, 44);
             button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
             if (requireIdle)
+                _idleActions.Add((button, shortcut.Length == 0 ? "" : text + " · " + shortcut));
+            if (destructive)
             {
                 button.AddThemeStyleboxOverride("normal", TacticalHudStyle.Panel("#382923", 10, "#795844"));
                 button.AddThemeStyleboxOverride("hover", TacticalHudStyle.Panel("#50352b", 10, "#b58160"));
@@ -300,19 +305,29 @@ public partial class BattleScreen : Control
         }
         AddAction(_text.Format("ui.battle.log"), OpenBattleLog);
         if (onSave is not null)
-            AddAction(_text.Format("ui.battle.save"), onSave);
+            AddAction(_text.Format("ui.battle.save"), onSave, true, shortcut: "F5");
         if (onLoad is not null)
-            AddAction(_text.Format("ui.battle.load"), onLoad);
+            AddAction(_text.Format("ui.battle.load"), onLoad, true, shortcut: "F9");
         if (onRestart is not null)
             AddAction(_text.Format("ui.battle.restart"), () =>
             {
                 _restartRequest = _restart;
-                _restartConfirmation.PopupCentered();
+                CampaignUiStyle.OpenDialog(_restartConfirmation);
                 // This runs after the opening input dispatch; destructive confirmation is never the default key target.
                 _restartConfirmation.GetCancelButton().GrabFocus();
-            }, true);
+            }, true, true);
         if (onExit is not null)
-            AddAction(_text.Format("ui.battle.camp"), onExit, true);
+            AddAction(_text.Format("ui.battle.camp"), onExit, true, true);
+        RefreshApplicationActions();
+    }
+
+    private void RefreshApplicationActions()
+    {
+        foreach (var (button, tooltip) in _idleActions)
+        {
+            button.Disabled = !_bound || IsInputBlocked;
+            button.TooltipText = button.Disabled ? _text.Format("ui.battle.busy_actions") : tooltip;
+        }
     }
 
     public void AppendMessage(string message)
@@ -604,7 +619,12 @@ public partial class BattleScreen : Control
         _applicationActions.AddThemeConstantOverride("h_separation", 10);
         _applicationActions.AddThemeConstantOverride("v_separation", 10);
         systemBody.AddChild(_applicationActions);
-        var system = Button(_text.Format("ui.battle.system"), () => _systemMenu.PopupCentered());
+        var system = Button(_text.Format("ui.battle.system"), () =>
+        {
+            RefreshApplicationActions();
+            _systemMenu.PopupCentered();
+            closeSystem.GrabFocus();
+        });
         system.Name = "SystemMenuButton";
         system.CustomMinimumSize = new Vector2(72, 38);
         heading.AddChild(system);
@@ -618,6 +638,7 @@ public partial class BattleScreen : Control
             OkButtonText = _text.Format("ui.battle.restart"),
             CancelButtonText = _text.Format("ui.common.cancel")
         };
+        CampaignUiStyle.ConfigureDialog(_restartConfirmation, _text.Format("ui.battle.restart"));
         _restartConfirmation.Confirmed += () =>
         {
             var request = _restartRequest;
