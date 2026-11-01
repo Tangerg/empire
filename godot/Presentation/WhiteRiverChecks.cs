@@ -152,6 +152,7 @@ public partial class WhiteRiverChecks : Node
                     && board.Pick(board.Projection.CellContact(cell)) == TacticalHit.Ground(new(cell.X, cell.Y)),
                     $"{Text(site, "id")}'s open entrance must remain free ground rather than an invented facade floor.");
             }
+            CheckNorthSupplyPost(board, engine, state, art, audit);
             Require(board.Pick(new(-10, -10)) is null && board.Pick(board.FieldSize + new Vector2(10, 10)) is null,
                 "Off-canvas scenery must not become tactical ground.");
             Require(EcmaJson.Stringify(state) == before, "Registration, rendering and picking cannot mutate canonical battle state.");
@@ -176,6 +177,74 @@ public partial class WhiteRiverChecks : Node
             RemoveChild(preparedParent);
             preparedParent.Free();
         }
+    }
+
+    private void CheckNorthSupplyPost(BoardView board, BattleEngine engine, JsonObject state,
+        PaintedGroundDocument art, JsonObject audit)
+    {
+        var empty = state.DeepClone().AsObject();
+        empty["units"] = new JsonArray();
+        board.RenderState(empty);
+        var tiles = state["map"]!["tiles"]!.AsArray();
+        var legal = 0;
+        for (var index = 0; index < tiles.Count; index++)
+        {
+            if (engine.Catalog.Definition("terrains", Text(tiles[index]!))!.Value.GetProperty("cost").GetProperty("foot").ValueKind != JsonValueKind.Number)
+                continue;
+            var cell = new BoardCell(index % 50, index / 50);
+            Require(board.Pick(board.Projection.CellContact(new(cell.X, cell.Y))) == TacticalHit.Ground(cell),
+                $"C06 empty legal center must not target a shelter on bare snow: {cell}.");
+            legal++;
+        }
+        Require(legal == 1134, "C06 empty-center coverage must retain all canonical legal cells.");
+        foreach (var site in audit["sites"]!.AsArray().OfType<JsonObject>())
+            foreach (var field in new[] { "cell", "approach" })
+            {
+                var cell = Cell(site[field]!);
+                foreach (var dx in new[] { -8, 0, 8 })
+                    foreach (var dy in new[] { -6, 0, 6 })
+                    {
+                        var pixel = new Vector2(36 + 32 * cell.X + dx, 44 + 28 * cell.Y + dy);
+                        Require(board.Pick(pixel * art.WorldScale) == TacticalHit.Ground(new(cell.X, cell.Y)),
+                            $"C06 site and approach snow must remain open: {Text(site, "id")} {field}.");
+                    }
+            }
+        foreach (var pixel in new[] { new Vector2(928, 216), new Vector2(928, 228) })
+            Require(board.Pick(pixel * art.WorldScale) == TacticalHit.Object(new(27, 7)),
+                "The independently inspected actual north-supply wooden post must retain positive site targeting.");
+        void CheckFalsePost(bool negative)
+        {
+            board.RenderState(empty);
+            foreach (var (pixel, cell) in new[] { (new Vector2(932, 212), new BoardCell(28, 6)), (new Vector2(932, 240), new BoardCell(28, 7)) })
+                Require(board.Pick(pixel * art.WorldScale) == (negative ? TacticalHit.Object(new(27, 7)) : TacticalHit.Ground(cell)),
+                    "Bare snow beside the true post must be ground; the historical shifted rectangle must reproduce the false target.");
+            var fixture = empty.DeepClone().AsObject();
+            var actor = Unit(state, "campaign-torren").DeepClone().AsObject();
+            Position(actor, new(28, 7));
+            fixture["units"] = new JsonArray(actor);
+            board.RenderState(fixture);
+            var sprite = board.GetNode<Sprite2D>($"CanonicalProjection/Unit_{Integer(actor, "id")}/AuthoredSprite");
+            foreach (var pixel in new[] { new Vector2(932, 216), new Vector2(932, 228) })
+            {
+                var field = pixel * art.WorldScale;
+                Require(sprite.IsPixelOpaque(sprite.ToLocal(board.ToGlobal(field))), "C06 approach witnesses must overlap actual character alpha.");
+                Require(board.Pick(field) == (negative ? TacticalHit.Object(new(27, 7)) : TacticalHit.Unit(new(28, 7), Integer(actor, "id"))),
+                    "A visible actor beside the post must select itself, while the old rectangle reproduces the interception.");
+            }
+        }
+        CheckFalsePost(false);
+        var historical = PresentationJson.Load<PaintedGroundDocument>("res://data/scenes/c01-06-painted-ground.json");
+        var post = historical.Occluders.Single(item => item.Id == "north-supply-shelter").Parts.Single(part => part.Id == "front-post");
+        double[][] shifted = [[930, 212], [936, 210], [936, 242], [930, 245]];
+        for (var index = 0; index < shifted.Length; index++)
+        {
+            post.PolygonPixels[index] = shifted[index];
+            post.Pointer.PolygonPixels![index] = shifted[index];
+        }
+        board.ConfigureGround(historical.Factory(state["map"]!.AsObject()));
+        CheckFalsePost(true);
+        board.ConfigureGround(art.Factory(state["map"]!.AsObject()));
+        board.RenderState(state);
     }
 
     private void CheckGoalCues(BoardView board, JsonObject state)

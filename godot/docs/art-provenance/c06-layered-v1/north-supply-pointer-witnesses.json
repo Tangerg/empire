@@ -1,0 +1,181 @@
+{
+  "scope": "Read-only isolated original production scene vs local cloned PaintedGroundDocument; selected actual source witnesses before Pick; not normal gameplay.",
+  "sourceLevelSha256": "5563bc87705ce5b5b8dd4ab6032ba5b2c23c6de17e61a48c27661d7c34da717e",
+  "partPath": "occluders[id=north-supply-shelter].parts[id=front-post]",
+  "correctedMaterialAndPointerPolygonPixels": [
+    [
+      926,
+      212
+    ],
+    [
+      930,
+      211
+    ],
+    [
+      930,
+      238
+    ],
+    [
+      926,
+      240
+    ]
+  ],
+  "unchanged": [
+    "selectionCell27,7",
+    "contactCell27,7",
+    "groundFrontPixels912,246",
+    "roof part",
+    "rule data",
+    "all other parts"
+  ],
+  "positiveRealWoodPixels": [
+    {
+      "source": [
+        928,
+        216
+      ],
+      "sourceRgb": [
+        216,
+        145,
+        88
+      ],
+      "expected": "Object(27,7)"
+    },
+    {
+      "source": [
+        928,
+        228
+      ],
+      "sourceRgb": [
+        226,
+        154,
+        92
+      ],
+      "expected": "Object(27,7)"
+    }
+  ],
+  "negativeEmptyPixels": [
+    {
+      "source": [
+        932,
+        212
+      ],
+      "expected": "Ground(28,6)"
+    },
+    {
+      "source": [
+        932,
+        240
+      ],
+      "expected": "Ground(28,7)"
+    }
+  ],
+  "trueActorOpaquePixels": [
+    {
+      "actorCell": [
+        28,
+        7
+      ],
+      "source": [
+        932,
+        216
+      ],
+      "expected": "Unit(actual Torren id)"
+    },
+    {
+      "actorCell": [
+        28,
+        7
+      ],
+      "source": [
+        932,
+        228
+      ],
+      "expected": "Unit(actual Torren id)"
+    }
+  ],
+  "baseline": {
+    "legalCenters": 1134,
+    "incorrectGroundCenters": 2,
+    "mouthAndApproachSamples": 180,
+    "incorrectMouthApproach": 2,
+    "fixedActorSamples": 180,
+    "actualOpaqueBodySamples": 80,
+    "opaqueNonUnit": 2,
+    "renderingIssues": 0,
+    "originalStateUnchanged": true
+  },
+  "candidate": {
+    "legalCenters": 1134,
+    "incorrectGroundCenters": 0,
+    "mouthAndApproachSamples": 180,
+    "incorrectMouthApproach": 0,
+    "fixedActorSamples": 180,
+    "actualOpaqueBodySamples": 80,
+    "opaqueNonUnit": 0,
+    "renderingIssues": 0,
+    "originalStateUnchanged": true
+  },
+  "baselineActualWitnessResults": [
+    {
+      "source": [
+        928,
+        216
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 28, Y = 6 }, Kind = Ground, UnitId =  }"
+    },
+    {
+      "source": [
+        928,
+        228
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 28, Y = 7 }, Kind = Ground, UnitId =  }"
+    },
+    {
+      "source": [
+        932,
+        212
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 27, Y = 7 }, Kind = Object, UnitId =  }"
+    },
+    {
+      "source": [
+        932,
+        240
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 27, Y = 7 }, Kind = Object, UnitId =  }"
+    }
+  ],
+  "candidateActualWitnessResults": [
+    {
+      "source": [
+        928,
+        216
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 27, Y = 7 }, Kind = Object, UnitId =  }"
+    },
+    {
+      "source": [
+        928,
+        228
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 27, Y = 7 }, Kind = Object, UnitId =  }"
+    },
+    {
+      "source": [
+        932,
+        212
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 28, Y = 6 }, Kind = Ground, UnitId =  }"
+    },
+    {
+      "source": [
+        932,
+        240
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 28, Y = 7 }, Kind = Ground, UnitId =  }"
+    }
+  ],
+  "negativeControl": "Restore old polygon [[930,212],[936,210],[936,242],[930,245]] in both fields: this actual baseline run demonstrates both real-post positives fail and both empty negatives fail. Do not remove all target coverage to satisfy negative checks.",
+  "limits": "Mother PNG is fully opaque; alpha alone cannot distinguish wood from floor. Positive points come from visibly continuous bright wooden post, not successful Pick filtering. New independent alpha will require new actual local image witnesses. Existing roof cue behavior remains independently guarded."
+}

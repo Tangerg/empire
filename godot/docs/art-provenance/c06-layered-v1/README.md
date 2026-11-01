@@ -1,0 +1,29 @@
+# C06 pre-layering physical baseline — 2026-11-01
+
+C06 remains the original painted winter scene. No layered art is bound yet.
+The responsibility matrix lists 34 explicitly audited/occluding standing groups:
+five houses, five shelters, eighteen pine groups and six rock groups. Five house
+foundations (91 cells) and six rock foundations (75) cover all 166 canonical walls.
+This is not an exhaustive art inventory: bridge rails/lamps, crates and low fences
+are separately identified without inventing new collision cells or interactions.
+
+## Corrected north supply post
+
+The old source polygon [(930,212),(936,210),(936,242),(930,245)] was shifted right
+onto bare snow, not actual wood. Both its material-depth mask and pointer polygon
+now follow the inspected post at [(926,212),(930,211),(930,238),(926,240)].
+Selection site, contact, depth front and canonical map/rules remain unchanged.
+
+Fixed true wood (928,216)/(928,228) selects outpost (27,7). Bare snow at
+(932,212)/(932,240) selects ground (28,6)/(28,7); actual Torren opaque body at
+(932,216)/(932,228) in approach (28,7) selects Torren. Native regression deliberately
+restores the old rectangle and requires all false-target cases to reproduce.
+All 1134 legal empty centers and 180 entrance/approach offsets are checked. Existing
+concealed north-goal refugee cue checks remain; this is not removing valid shelter
+occlusion or making actors clickable through real roofs/posts.
+
+Fresh build: zero warnings/errors. Native WhiteRiver: 1759 assertions including
+this negative control and existing objective/cue/save contracts. No-AI route and
+T4/T6/T14 fixtures are explicitly synthetic, not this run's C06 combat completion.
+The GUI is currently occupied by actual C05, so C06 full visual/play acceptance
+is still pending. Source crops and isolated native pixel probes support this fix.
