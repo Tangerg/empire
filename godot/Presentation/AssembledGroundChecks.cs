@@ -123,6 +123,15 @@ public partial class AssembledGroundChecks : Node
                 ["house"] = new SceneObjectAsset { ResourcePath = "fixture-independent.png", PixelSize = [64, 96], AnchorPixels = [32, 88], GroundFrontPixels = [32, 88], ContactShadowRadiiPixels = [15, 4] }
             }
         };
+        SceneObjectAsset PointerAsset(double[][]? polygon) => new()
+        {
+            ResourcePath = "fixture-independent.png",
+            PixelSize = [64, 96],
+            AnchorPixels = [32, 88],
+            GroundFrontPixels = [32, 88],
+            ContactShadowRadiiPixels = [15, 4],
+            PointerPolygonPixels = polygon
+        };
         var textures = new Dictionary<string, Texture2D> { ["house"] = house };
         var scene = new AuthoredScene { LevelId = "c01-01", MapSize = [36, 30], RuntimeReady = true, FramePlacements = [] };
         var board = new BoardView { AdvanceAnimationsAutomatically = false };
@@ -217,6 +226,35 @@ public partial class AssembledGroundChecks : Node
             var contact = originalBody.Position;
             Require(board.Projection.Project(new Vector2(3.5f, 16.5f) * 32).IsEqualApprox(contact),
                 "Continuous instance contacts and canonical cell centers share the same projection.");
+            catalog.Objects["house"] = PointerAsset([[0, 55], [64, 55], [64, 96], [0, 96]]);
+            Bind(document);
+            var limited = view!.GetNode<Sprite2D>("Site_3_16");
+            var limitedVisual = view.DepthEntries.Single(entry => entry.Node == limited).Visual!;
+            var roof = limited.ToGlobal(new Vector2(0, -65));
+            var facade = limited.ToGlobal(new Vector2(0, -13));
+            Require(limitedVisual.Covers(roof) && !limitedVisual.ContainsPointer(roof),
+                "A restricted pointer contour must not erase the opaque roof's material coverage.");
+            Require(limitedVisual.ContainsPointer(facade) && board.Pick(board.ToLocal(facade)) is { Kind: TacticalHitKind.Object, Cell.X: 3, Cell.Y: 16 },
+                "Independent lower facade must still select its exact canonical site.");
+            Require(board.Pick(board.ToLocal(roof)) is not { Kind: TacticalHitKind.Object, Cell.X: 3, Cell.Y: 16 },
+                "Opaque roof outside the pointer contour redirected a click to the building.");
+            Require(!limitedVisual.ContainsPointer(limited.ToGlobal(new Vector2(-29, -13))),
+                "Transparent pixels inside the pointer contour must not become a rectangular hit target.");
+            var roofPolygon = new[] { new Vector2(-5, -70), new Vector2(5, -70), new Vector2(5, -60), new Vector2(-5, -60) }.Select(limited.ToGlobal).ToArray();
+            Require(!limitedVisual.IntersectsPointer(roofPolygon), "Cue placement treated the whole roof as an interactive facade.");
+            var limitedTreeVisual = view.DepthEntries.Single(entry => entry.Node.Name == "Tree").Visual!;
+            Require(!limitedTreeVisual.ContainsPointer(limitedTreeVisual.Node.ToGlobal(new Vector2(0, -13))) && !limitedTreeVisual.IntersectsPointer(roofPolygon),
+                "Adding a material contour made a pass-through decoration interactive.");
+            board.Position = new Vector2(91, 47);
+            board.Scale = new Vector2(1.4f, 1.4f);
+            limited.Scale = new Vector2(.75f, .75f);
+            Require(limitedVisual.ContainsPointer(limited.ToGlobal(new Vector2(0, -13)))
+                && !limitedVisual.ContainsPointer(limited.ToGlobal(new Vector2(0, -65)))
+                && limitedVisual.Covers(limited.ToGlobal(new Vector2(0, -65))),
+                "Pointer contour applied anchor/instance/parent scale twice or altered visual coverage.");
+            Require(EcmaJson.Stringify(state) == before, "Pointer-only geometry changed canonical battle state.");
+            catalog.Objects["house"] = PointerAsset(null);
+
         }
         finally { RemoveChild(board); board.Free(); }
         void Reject(AssembledGroundDocument invalid, string reason)
@@ -229,6 +267,18 @@ public partial class AssembledGroundChecks : Node
             catch (Exception error) when (error is InvalidOperationException or ArgumentException) { rejected = true; }
             Require(rejected && IsInstanceValid(ground) && IsInstanceValid(house), reason);
         }
+        foreach (var invalidPolygon in new double[][][]
+        {
+            [], [[0, 0], [1, 1]], [[1, 1], [1, 1], [2, 3]],
+            [[1, 1], [2, 2], [3, 3]], [[0, 0], [40, 40], [0, 40], [40, 0]],
+            [[-1, 0], [40, 0], [0, 40]], [[0, 0], [65, 0], [0, 40]],
+            [[0, 0], [double.NaN, 0], [0, 40]]
+        })
+        {
+            catalog.Objects["house"] = PointerAsset(invalidPolygon);
+            Reject(Document(Site(sites[0])), "Invalid independent pointer polygon was accepted or disposed borrowed textures.");
+        }
+        catalog.Objects["house"] = PointerAsset(null);
         Reject(Document(Site(sites[0]), Site(sites[0])), "Duplicate instance/site ownership is rejected without disposing borrowed art.");
         Reject(Document(Tree(-1000)), "Decorative contacts may leave the map but not the registered canvas.");
         Reject(Document(Tree(2, "automatic")), "Pointer semantics must be explicit.");

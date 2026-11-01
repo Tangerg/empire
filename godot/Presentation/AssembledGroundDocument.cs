@@ -68,6 +68,11 @@ public sealed class SceneObjectAsset
     {
         get; init;
     }
+    /// <summary>Optional source-pixel interaction contour; visual alpha coverage remains complete.</summary>
+    public double[][]? PointerPolygonPixels
+    {
+        get; init;
+    }
     public required double[] ContactShadowRadiiPixels
     {
         get; init;

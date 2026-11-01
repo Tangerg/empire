@@ -75,7 +75,7 @@ public partial class PaintedGroundView : BoardGroundView
                     throw new InvalidOperationException($"Painted polygon is absent: {identity}.");
                 var points = values.Select(point => SpriteGroundContact.Read(point,
                     document.PixelSize[0], document.PixelSize[1], identity)).ToArray();
-                ValidatePolygon(points, identity);
+                StandingVisual.ValidatePolygon(points, identity);
                 return points;
             }
             foreach (var item in document.Occluders)
@@ -153,38 +153,6 @@ public partial class PaintedGroundView : BoardGroundView
             view.Free();
             throw;
         }
-    }
-
-    private static void ValidatePolygon(Vector2[] points, string identity)
-    {
-        if (points.Distinct().Count() != points.Length || Geometry2D.TriangulatePolygon(points).Length == 0)
-            throw new InvalidOperationException($"Painted occluder polygon is degenerate: {identity}.");
-        static double Cross(Vector2 a, Vector2 b, Vector2 c) =>
-            ((double)b.X - a.X) * ((double)c.Y - a.Y) - ((double)b.Y - a.Y) * ((double)c.X - a.X);
-        static bool OnSegment(Vector2 point, Vector2 a, Vector2 b) => Cross(a, b, point) == 0
-            && point.X >= Math.Min(a.X, b.X) && point.X <= Math.Max(a.X, b.X)
-            && point.Y >= Math.Min(a.Y, b.Y) && point.Y <= Math.Max(a.Y, b.Y);
-        for (var vertex = 0; vertex < points.Length; vertex++)
-        {
-            var previous = points[(vertex + points.Length - 1) % points.Length];
-            var next = points[(vertex + 1) % points.Length];
-            if (OnSegment(previous, points[vertex], next) || OnSegment(next, previous, points[vertex]))
-                throw new InvalidOperationException($"Painted occluder polygon doubles back: {identity}.");
-        }
-        for (var first = 0; first < points.Length; first++)
-            for (var second = first + 1; second < points.Length; second++)
-            {
-                var firstEnd = (first + 1) % points.Length;
-                var secondEnd = (second + 1) % points.Length;
-                if (firstEnd == second || secondEnd == first)
-                    continue;
-                if (Geometry2D.SegmentIntersectsSegment(points[first], points[firstEnd], points[second], points[secondEnd]).VariantType != Variant.Type.Nil
-                    || OnSegment(points[first], points[second], points[secondEnd])
-                    || OnSegment(points[firstEnd], points[second], points[secondEnd])
-                    || OnSegment(points[second], points[first], points[firstEnd])
-                    || OnSegment(points[secondEnd], points[first], points[firstEnd]))
-                    throw new InvalidOperationException($"Painted occluder polygon crosses itself: {identity}.");
-            }
     }
 
     public override void ConfigureAuthoredGround(Node2D authoredGround)

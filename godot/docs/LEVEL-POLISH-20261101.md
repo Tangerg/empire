@@ -125,3 +125,23 @@ focus outline without issuing any order (`c02-collapsed-keyboard-final-960.jpg`)
 The reproducible source of the marked opening fixture is
 `tools/godot/c02-entry-fixture/`; generated output is isolated and not a game save
 committed as actual progress. Metadata and whitespace checks passed.
+
+## C02 material-preparation contract: independent pointer contours
+
+The independent-sprite catalog now optionally supplies `pointerPolygonPixels`.
+Absent metadata retains C01's full-alpha pointer behavior. A contour restricts
+only pointer reception and conservative cue overlap, **not material coverage**:
+opaque roof pixels still occlude rear actors even when they do not redirect a
+click to the building site. Contours are source-pixel geometry translated by the
+asset anchor once; normal node transforms own placement and scale. Transparent
+pixels and pass-through decorations never become targets. No alternate pick or
+depth owner is introduced. Painted and independent material polygons share the
+same existing strict degeneracy/self-intersection validation.
+
+AssembledGroundChecks **179 assertions** now include opaque roof coverage vs
+facade site selection, transparent pixels inside a contour, cue overlap,
+pass-through, scaled parent/instance transforms, and eight malformed contour
+cases with borrowed textures retained. PaintedSurfaceChecks and the **8129**
+exact broad-phase geometry/UV/depth/pointer comparisons pass unchanged. These are
+geometry fixtures, not C02 natural play or four-house final-material acceptance.
+Production C02 remains bound to its original painted renderer at this checkpoint.

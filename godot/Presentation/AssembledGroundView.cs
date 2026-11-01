@@ -19,7 +19,7 @@ public partial class AssembledGroundView : BoardGroundView
     private Node2D? _authored;
     private PaintedSurface? _surface;
     private BoardProjection? _projection;
-    private readonly List<(Sprite2D Sprite, Vector2 Contact, bool Pointer, Coord? Selection)> _objects = new();
+    private readonly List<(Sprite2D Sprite, Vector2 Contact, bool Pointer, Coord? Selection, Vector2[]? PointerPolygon)> _objects = new();
     private readonly List<TerrainDepthEntry> _depthEntries = new();
     private IReadOnlyList<GroundSite> _sites = Array.Empty<GroundSite>();
     public override IReadOnlyList<string> Diagnostics => Array.Empty<string>();
@@ -40,7 +40,7 @@ public partial class AssembledGroundView : BoardGroundView
             throw new InvalidOperationException("Clean ground texture differs from its registered dimensions.");
         if (catalog.Schema != 1 || catalog.Objects is null || document.Objects is null)
             throw new InvalidOperationException("Independent scene objects require catalog schema 1 and explicit instances.");
-        var geometry = new Dictionary<string, (Texture2D Texture, Vector2 Anchor, Vector2 Front, Vector2 ShadowRadii)>(StringComparer.Ordinal);
+        var geometry = new Dictionary<string, (Texture2D Texture, Vector2 Anchor, Vector2 Front, Vector2 ShadowRadii, Vector2[]? PointerPolygon)>(StringComparer.Ordinal);
         foreach (var (id, asset) in catalog.Objects)
         {
             if (string.IsNullOrWhiteSpace(id) || asset is null || string.IsNullOrWhiteSpace(asset.ResourcePath)
@@ -54,9 +54,18 @@ public partial class AssembledGroundView : BoardGroundView
             var radii = RasterResources.Pair(asset.ContactShadowRadiiPixels, id + " contact shadow radii");
             if (radii.X <= 0 || radii.Y <= 0 || radii.X > asset.PixelSize[0] / 2f || radii.Y > asset.PixelSize[1] / 2f)
                 throw new InvalidOperationException($"Contact shadow must fit the object's source dimensions: {id}.");
-            geometry.Add(id, (texture,
-                SpriteGroundContact.Read(asset.AnchorPixels, asset.PixelSize[0], asset.PixelSize[1], id + " anchor"),
-                SpriteGroundContact.Read(asset.GroundFrontPixels, asset.PixelSize[0], asset.PixelSize[1], id + " front"), radii));
+            var anchor = SpriteGroundContact.Read(asset.AnchorPixels, asset.PixelSize[0], asset.PixelSize[1], id + " anchor");
+            Vector2[]? pointerPolygon = null;
+            if (asset.PointerPolygonPixels is { } pixels)
+            {
+                if (pixels.Length < 3)
+                    throw new InvalidOperationException($"Independent pointer contour needs at least three vertices: {id}.");
+                var points = pixels.Select(point => SpriteGroundContact.Read(point, asset.PixelSize[0], asset.PixelSize[1], id + " pointer")).ToArray();
+                StandingVisual.ValidatePolygon(points, id + " pointer");
+                pointerPolygon = points.Select(point => point - anchor).ToArray();
+            }
+            geometry.Add(id, (texture, anchor,
+                SpriteGroundContact.Read(asset.GroundFrontPixels, asset.PixelSize[0], asset.PixelSize[1], id + " front"), radii, pointerPolygon));
         }
         var view = new AssembledGroundView
         {
@@ -118,7 +127,7 @@ public partial class AssembledGroundView : BoardGroundView
                 SpriteGroundContact.Attach(sprite, asset.Front);
                 sprite.AddChild(BoardLighting.CreateGroundContact(asset.ShadowRadii, shadows));
                 view.AddChild(sprite);
-                view._objects.Add((sprite, contact * BoardProjection.TileSize, instance.Pointer != "pass-through", selection));
+                view._objects.Add((sprite, contact * BoardProjection.TileSize, instance.Pointer != "pass-through", selection, asset.PointerPolygon));
             }
             view._sites = sites.AsReadOnly();
             return view;
@@ -163,10 +172,10 @@ public partial class AssembledGroundView : BoardGroundView
             _projection = projection;
         }
         _depthEntries.Clear();
-        foreach (var (sprite, contact, pointer, selection) in _objects)
+        foreach (var (sprite, contact, pointer, selection, pointerPolygon) in _objects)
         {
             sprite.Position = projection.Project(contact);
-            _depthEntries.Add(new(sprite, contact, 2, new SpriteStandingVisual(sprite, pointer), selection));
+            _depthEntries.Add(new(sprite, contact, 2, new SpriteStandingVisual(sprite, pointer, pointerPolygon), selection));
         }
     }
 }
