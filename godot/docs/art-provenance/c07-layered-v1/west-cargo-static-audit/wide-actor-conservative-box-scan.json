@@ -1,0 +1,773 @@
+{
+  "scope": "Static actual authored alpha only, no engine; all4frames and both foot-mirrored facings, all nearby p centresx54..61/y7..10. Conservative box includes entire visible crate plus border/background, so no positives here bounds the true material.",
+  "conservativeSourceBoxExclusive": [
+    924,
+    160,
+    942,
+    185
+  ],
+  "results": [
+    {
+      "assetId": "C01-FFV1-UNIT-HEAVY-KNIGHT",
+      "maxAlphaInConservativeBox": 253,
+      "hits": [
+        {
+          "cell": [
+            56,
+            10
+          ],
+          "frame": 2,
+          "role": "attack",
+          "facing": 1,
+          "count": 2,
+          "samples": [
+            {
+              "source": [
+                924,
+                160
+              ],
+              "asset": [
+                576,
+                79
+              ],
+              "alpha": 252
+            },
+            {
+              "source": [
+                924,
+                161
+              ],
+              "asset": [
+                576,
+                82
+              ],
+              "alpha": 253
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-KNIGHT",
+      "maxAlphaInConservativeBox": 1,
+      "hits": []
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-WOLF-RIDER",
+      "maxAlphaInConservativeBox": 253,
+      "hits": [
+        {
+          "cell": [
+            56,
+            10
+          ],
+          "frame": 1,
+          "role": "walk-a",
+          "facing": -1,
+          "count": 21,
+          "samples": [
+            {
+              "source": [
+                924,
+                160
+              ],
+              "asset": [
+                650,
+                488
+              ],
+              "alpha": 252
+            },
+            {
+              "source": [
+                925,
+                160
+              ],
+              "asset": [
+                640,
+                488
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                926,
+                160
+              ],
+              "asset": [
+                630,
+                488
+              ],
+              "alpha": 252
+            },
+            {
+              "source": [
+                924,
+                161
+              ],
+              "asset": [
+                650,
+                498
+              ],
+              "alpha": 250
+            },
+            {
+              "source": [
+                925,
+                161
+              ],
+              "asset": [
+                640,
+                498
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                926,
+                161
+              ],
+              "asset": [
+                630,
+                498
+              ],
+              "alpha": 252
+            },
+            {
+              "source": [
+                924,
+                162
+              ],
+              "asset": [
+                650,
+                508
+              ],
+              "alpha": 249
+            },
+            {
+              "source": [
+                925,
+                162
+              ],
+              "asset": [
+                640,
+                508
+              ],
+              "alpha": 253
+            }
+          ]
+        },
+        {
+          "cell": [
+            56,
+            10
+          ],
+          "frame": 2,
+          "role": "attack",
+          "facing": -1,
+          "count": 22,
+          "samples": [
+            {
+              "source": [
+                925,
+                160
+              ],
+              "asset": [
+                1200,
+                489
+              ],
+              "alpha": 251
+            },
+            {
+              "source": [
+                926,
+                160
+              ],
+              "asset": [
+                1190,
+                489
+              ],
+              "alpha": 252
+            },
+            {
+              "source": [
+                927,
+                160
+              ],
+              "asset": [
+                1180,
+                489
+              ],
+              "alpha": 252
+            },
+            {
+              "source": [
+                928,
+                160
+              ],
+              "asset": [
+                1170,
+                489
+              ],
+              "alpha": 250
+            },
+            {
+              "source": [
+                926,
+                161
+              ],
+              "asset": [
+                1190,
+                499
+              ],
+              "alpha": 252
+            },
+            {
+              "source": [
+                927,
+                161
+              ],
+              "asset": [
+                1180,
+                499
+              ],
+              "alpha": 252
+            },
+            {
+              "source": [
+                928,
+                161
+              ],
+              "asset": [
+                1170,
+                499
+              ],
+              "alpha": 252
+            },
+            {
+              "source": [
+                929,
+                161
+              ],
+              "asset": [
+                1160,
+                499
+              ],
+              "alpha": 250
+            }
+          ]
+        },
+        {
+          "cell": [
+            56,
+            10
+          ],
+          "frame": 3,
+          "role": "walk-b",
+          "facing": -1,
+          "count": 19,
+          "samples": [
+            {
+              "source": [
+                924,
+                160
+              ],
+              "asset": [
+                1780,
+                485
+              ],
+              "alpha": 252
+            },
+            {
+              "source": [
+                925,
+                160
+              ],
+              "asset": [
+                1770,
+                485
+              ],
+              "alpha": 251
+            },
+            {
+              "source": [
+                924,
+                161
+              ],
+              "asset": [
+                1780,
+                495
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                925,
+                161
+              ],
+              "asset": [
+                1770,
+                495
+              ],
+              "alpha": 252
+            },
+            {
+              "source": [
+                926,
+                161
+              ],
+              "asset": [
+                1760,
+                495
+              ],
+              "alpha": 250
+            },
+            {
+              "source": [
+                924,
+                162
+              ],
+              "asset": [
+                1780,
+                505
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                925,
+                162
+              ],
+              "asset": [
+                1770,
+                505
+              ],
+              "alpha": 252
+            },
+            {
+              "source": [
+                926,
+                162
+              ],
+              "asset": [
+                1760,
+                505
+              ],
+              "alpha": 251
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-BALLISTA",
+      "maxAlphaInConservativeBox": 254,
+      "hits": [
+        {
+          "cell": [
+            56,
+            10
+          ],
+          "frame": 0,
+          "role": "idle",
+          "facing": -1,
+          "count": 20,
+          "samples": [
+            {
+              "source": [
+                926,
+                160
+              ],
+              "asset": [
+                38,
+                81
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                927,
+                160
+              ],
+              "asset": [
+                35,
+                81
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                928,
+                160
+              ],
+              "asset": [
+                31,
+                81
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                929,
+                160
+              ],
+              "asset": [
+                28,
+                81
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                930,
+                160
+              ],
+              "asset": [
+                25,
+                81
+              ],
+              "alpha": 252
+            },
+            {
+              "source": [
+                927,
+                161
+              ],
+              "asset": [
+                35,
+                84
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                928,
+                161
+              ],
+              "asset": [
+                31,
+                84
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                929,
+                161
+              ],
+              "asset": [
+                28,
+                84
+              ],
+              "alpha": 253
+            }
+          ]
+        },
+        {
+          "cell": [
+            56,
+            10
+          ],
+          "frame": 1,
+          "role": "walk-a",
+          "facing": -1,
+          "count": 12,
+          "samples": [
+            {
+              "source": [
+                928,
+                160
+              ],
+              "asset": [
+                239,
+                81
+              ],
+              "alpha": 252
+            },
+            {
+              "source": [
+                929,
+                160
+              ],
+              "asset": [
+                236,
+                81
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                930,
+                160
+              ],
+              "asset": [
+                233,
+                81
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                931,
+                160
+              ],
+              "asset": [
+                230,
+                81
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                928,
+                161
+              ],
+              "asset": [
+                239,
+                84
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                929,
+                161
+              ],
+              "asset": [
+                236,
+                84
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                930,
+                161
+              ],
+              "asset": [
+                233,
+                84
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                931,
+                161
+              ],
+              "asset": [
+                230,
+                84
+              ],
+              "alpha": 253
+            }
+          ]
+        },
+        {
+          "cell": [
+            56,
+            10
+          ],
+          "frame": 2,
+          "role": "attack",
+          "facing": -1,
+          "count": 21,
+          "samples": [
+            {
+              "source": [
+                925,
+                160
+              ],
+              "asset": [
+                457,
+                81
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                926,
+                160
+              ],
+              "asset": [
+                454,
+                81
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                927,
+                160
+              ],
+              "asset": [
+                451,
+                81
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                928,
+                160
+              ],
+              "asset": [
+                447,
+                81
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                929,
+                160
+              ],
+              "asset": [
+                444,
+                81
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                927,
+                161
+              ],
+              "asset": [
+                451,
+                84
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                928,
+                161
+              ],
+              "asset": [
+                447,
+                84
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                929,
+                161
+              ],
+              "asset": [
+                444,
+                84
+              ],
+              "alpha": 253
+            }
+          ]
+        },
+        {
+          "cell": [
+            56,
+            10
+          ],
+          "frame": 3,
+          "role": "walk-b",
+          "facing": -1,
+          "count": 19,
+          "samples": [
+            {
+              "source": [
+                924,
+                160
+              ],
+              "asset": [
+                668,
+                81
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                925,
+                160
+              ],
+              "asset": [
+                665,
+                81
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                928,
+                160
+              ],
+              "asset": [
+                655,
+                81
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                929,
+                160
+              ],
+              "asset": [
+                652,
+                81
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                930,
+                160
+              ],
+              "asset": [
+                649,
+                81
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                931,
+                160
+              ],
+              "asset": [
+                646,
+                81
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                924,
+                161
+              ],
+              "asset": [
+                668,
+                84
+              ],
+              "alpha": 253
+            },
+            {
+              "source": [
+                925,
+                161
+              ],
+              "asset": [
+                665,
+                84
+              ],
+              "alpha": 250
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "assetId": "torren-stage01",
+      "maxAlphaInConservativeBox": 1,
+      "hits": []
+    }
+  ]
+}

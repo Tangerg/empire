@@ -1,0 +1,440 @@
+{
+  "scope": "Bounded source-aligned THREE-surface geometry proposal for parent atomic material reuse. External diagnostic only, no production mesh/engine/GUI/save/image generation. Existing whole-sprite two-foot fit rejection remains intact.",
+  "sourceSha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+  "materialAsset": "res://assets/native/c07-layered-v1/barracks-front-cargo-v1-candidate.png",
+  "sourceObject": "militia-west-front-wooden-box",
+  "canonicalSite": null,
+  "selectionCell": null,
+  "pointer": "pass-through",
+  "members": [
+    {
+      "id": "top",
+      "polygon": [
+        [
+          925.5,
+          164.5
+        ],
+        [
+          932,
+          161.5
+        ],
+        [
+          939,
+          166
+        ],
+        [
+          934.5,
+          168.5
+        ]
+      ],
+      "materialRole": "existing generated crate top wood plane",
+      "tint": "#ffffff",
+      "evidence": "Golden top remains independently visible, including frozen930163/931163; outline transitions blend with rear stock. These vertices are an authored source-aligned surface proposal, not a claim of unoccluded rear footing."
+    },
+    {
+      "id": "front-left",
+      "polygon": [
+        [
+          925.5,
+          164.5
+        ],
+        [
+          934.5,
+          168.5
+        ],
+        [
+          935.5,
+          182.5
+        ],
+        [
+          928,
+          180
+        ],
+        [
+          925.5,
+          178
+        ]
+      ],
+      "materialRole": "existing generated crate left/front wood face",
+      "tint": "#ffffff",
+      "evidence": "Visible warm vertical plank face and two observed lower material contacts928179/935182. Half-pixel perimeter puts observed material pixel centres inside rather than erasing them on a zero-area edge; it is not an expanded registration tolerance."
+    },
+    {
+      "id": "right-visible-and-completion",
+      "polygon": [
+        [
+          934.5,
+          168.5
+        ],
+        [
+          939,
+          166
+        ],
+        [
+          939,
+          178.5
+        ],
+        [
+          935.5,
+          182.5
+        ]
+      ],
+      "materialRole": "existing generated crate right wood face",
+      "tint": "#ffffff",
+      "evidence": "Dark side material visible around937174. Lower/far right edge merges with neighbouring barrel; right base termination939178.5 is bounded NEW DESIGN completion, not a source-certified right foot."
+    }
+  ],
+  "twoObservedBaseMaterialContacts": [
+    [
+      928,
+      179
+    ],
+    [
+      935,
+      182
+    ]
+  ],
+  "notAThreeOuterCornerAudit": true,
+  "newDesignRightCompletion": {
+    "point": [
+      939,
+      178.5
+    ],
+    "status": "Explicit new design completion; source side is partly occluded/merged with adjacent barrel. Not counted as a third true original foot."
+  },
+  "depthSupportSuggestion": {
+    "verifiedVisibleInnerContacts": [
+      [
+        928,
+        179
+      ],
+      [
+        935,
+        182
+      ]
+    ],
+    "modelRightEndpoint": [
+      939,
+      178.5
+    ],
+    "leftExtrapolationAt925_5": [
+      925.5,
+      177.92857142857142
+    ],
+    "classification": "Observed source material contacts plus marked completion/extrapolation for the atomic depth model. Do not reuse whole-house1055206 depth or invent three observed feet. Native front/back verification still required."
+  },
+  "fixedMaterialChecks": [
+    {
+      "source": [
+        930,
+        163
+      ],
+      "rgba": [
+        204,
+        149,
+        70,
+        255
+      ],
+      "material": "golden box top",
+      "facesContaining": [
+        "top"
+      ]
+    },
+    {
+      "source": [
+        931,
+        163
+      ],
+      "rgba": [
+        203,
+        143,
+        65,
+        255
+      ],
+      "material": "golden box top",
+      "facesContaining": [
+        "top"
+      ]
+    },
+    {
+      "source": [
+        932,
+        164
+      ],
+      "rgba": [
+        199,
+        137,
+        47,
+        255
+      ],
+      "material": "golden top",
+      "facesContaining": [
+        "top"
+      ]
+    },
+    {
+      "source": [
+        928,
+        170
+      ],
+      "rgba": [
+        169,
+        115,
+        50,
+        255
+      ],
+      "material": "wood front face",
+      "facesContaining": [
+        "front-left"
+      ]
+    },
+    {
+      "source": [
+        933,
+        174
+      ],
+      "rgba": [
+        169,
+        120,
+        56,
+        255
+      ],
+      "material": "wood front face",
+      "facesContaining": [
+        "front-left"
+      ]
+    },
+    {
+      "source": [
+        937,
+        174
+      ],
+      "rgba": [
+        100,
+        65,
+        36,
+        255
+      ],
+      "material": "dark right wood side",
+      "facesContaining": [
+        "right-visible-and-completion"
+      ]
+    },
+    {
+      "source": [
+        928,
+        179
+      ],
+      "rgba": [
+        108,
+        80,
+        42,
+        255
+      ],
+      "material": "left visible wood-base contact",
+      "facesContaining": [
+        "front-left"
+      ]
+    },
+    {
+      "source": [
+        935,
+        182
+      ],
+      "rgba": [
+        55,
+        29,
+        8,
+        255
+      ],
+      "material": "front dark wood-base contact",
+      "facesContaining": [
+        "front-left"
+      ]
+    },
+    {
+      "source": [
+        924,
+        182
+      ],
+      "rgba": [
+        166,
+        136,
+        107,
+        255
+      ],
+      "material": "legalp shaded paving at left",
+      "facesContaining": []
+    },
+    {
+      "source": [
+        930,
+        185
+      ],
+      "rgba": [
+        175,
+        141,
+        109,
+        255
+      ],
+      "material": "shaded paving below; underlying cell# unchanged",
+      "facesContaining": []
+    },
+    {
+      "source": [
+        940,
+        183
+      ],
+      "rgba": [
+        117,
+        85,
+        60,
+        255
+      ],
+      "material": "neighbouring barrel/cargo exclusion, not asserted world-empty",
+      "facesContaining": []
+    }
+  ],
+  "geometryChecks": {
+    "allFixedPositivesInside": true,
+    "allFixedNegativesOutside": true,
+    "meaning": "Only point containment in proposed geometry, not native render/Pick or whole-image visual acceptance."
+  },
+  "currentC07AppearanceFrontSamples": [
+    {
+      "assetId": "torren-stage01",
+      "presentInCanonicalC07Roster": true,
+      "cell": [
+        57,
+        11
+      ],
+      "canonicalTerrain": "p",
+      "footSource": [
+        920,
+        184
+      ],
+      "facing": "east",
+      "frameRole": "idle",
+      "frameIndex": 0,
+      "sourceMaterialWitness": [
+        928,
+        170
+      ],
+      "assetPixelFloat": [
+        352.20003993601915,
+        419.39993011196646
+      ],
+      "nearestPixel": [
+        352,
+        419
+      ],
+      "rgba": [
+        11,
+        5,
+        5,
+        253
+      ],
+      "relation": "FootY184 or200 ahead of box realbase179..182. Parent native front control should keep this true actor material visible/pickable, not hidden by the new box. This is a hypothetical staticpose, not an actual C07 gameplay position."
+    },
+    {
+      "assetId": "torren-stage01",
+      "presentInCanonicalC07Roster": true,
+      "cell": [
+        58,
+        12
+      ],
+      "canonicalTerrain": "p",
+      "footSource": [
+        936,
+        200
+      ],
+      "facing": "east",
+      "frameRole": "idle",
+      "frameIndex": 0,
+      "sourceMaterialWitness": [
+        933,
+        174
+      ],
+      "assetPixelFloat": [
+        237.7999850239928,
+        294.59987020793767
+      ],
+      "nearestPixel": [
+        238,
+        295
+      ],
+      "rgba": [
+        48,
+        34,
+        27,
+        253
+      ],
+      "relation": "FootY184 or200 ahead of box realbase179..182. Parent native front control should keep this true actor material visible/pickable, not hidden by the new box. This is a hypothetical staticpose, not an actual C07 gameplay position."
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-WOLF-RIDER",
+      "presentInCanonicalC07Roster": true,
+      "cell": [
+        57,
+        11
+      ],
+      "canonicalTerrain": "p",
+      "footSource": [
+        920,
+        184
+      ],
+      "facing": "west",
+      "frameRole": "idle",
+      "frameIndex": 0,
+      "sourceMaterialWitness": [
+        933,
+        174
+      ],
+      "assetPixelFloat": [
+        155.0,
+        468.0
+      ],
+      "nearestPixel": [
+        155,
+        468
+      ],
+      "rgba": [
+        199,
+        157,
+        112,
+        252
+      ],
+      "relation": "FootY184 or200 ahead of box realbase179..182. Parent native front control should keep this true actor material visible/pickable, not hidden by the new box. This is a hypothetical staticpose, not an actual C07 gameplay position."
+    }
+  ],
+  "genericBackRegression": {
+    "sourceContract": "western-front-box-source-and-actor-contract.json",
+    "assetId": "C01-FFV1-UNIT-BALLISTA",
+    "unitType": "c01.ballista",
+    "cell": [
+      56,
+      10
+    ],
+    "facing": "west",
+    "frame": 0,
+    "fixedTopPoints": [
+      [
+        930,
+        163
+      ],
+      [
+        931,
+        163
+      ]
+    ],
+    "isCurrentC07RosterUnit": false,
+    "parentReportedNativeResult": "Parent reports both true authored ballista-alpha points overlay original box top with0oldoccluders. This is an approved existing-appearance generic static regression, NOT a demonstrated actual C07 campaign incident; raw native evidence is parent-owned."
+  },
+  "wholePngReuseConclusion": "Keep western-box-existing-cargo-reuse-fit.json: small2-foot residual did not preserve frozen top/face positives. Atomic material reuse is a different explicit design and must not rewrite that failed whole-sprite evidence.",
+  "references": [
+    "west-front-box-grid.png",
+    "box-fixed-source-witnesses.png",
+    "atomic-box-source-overlay.png"
+  ],
+  "completionBoundary": "One object only. No additional site selection or broader search; proposal ready for parent native test."
+}

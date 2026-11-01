@@ -1,0 +1,846 @@
+{
+  "scope": "Read-only same-facing uniform reuse evaluation; two old visible base points only. No rotation/mirroring/nonuniform scaling, no changed samples. This generated crate is new-design material, NOT the original entire box shape.",
+  "asset": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/c07-layered-v1/barracks-front-cargo-v1-candidate.png",
+  "sha256": "fba5a0b0c287a86cb144c32ccc7badf222e95ce069a0cf48d5cab72ba41d7f2f",
+  "actualSize": [
+    1132,
+    1390
+  ],
+  "candidateGroundContacts": [
+    {
+      "asset": [
+        110,
+        1067
+      ],
+      "rgba": [
+        5,
+        2,
+        0,
+        249
+      ],
+      "oldVisibleContact": [
+        928,
+        179
+      ]
+    },
+    {
+      "asset": [
+        514,
+        1314
+      ],
+      "rgba": [
+        2,
+        1,
+        0,
+        254
+      ],
+      "oldVisibleContact": [
+        935,
+        182
+      ]
+    }
+  ],
+  "sourceScale": 0.015917047608429033,
+  "sourceTranslation": [
+    926.5338811461702,
+    161.55075482216523
+  ],
+  "mappedContacts": [
+    [
+      928.2847563830974,
+      178.534244620359
+    ],
+    [
+      934.7152436169027,
+      182.465755379641
+    ]
+  ],
+  "residualEachAxis": [
+    [
+      0.28475638309737406,
+      -0.46575537964099567
+    ],
+    [
+      -0.28475638309726037,
+      0.46575537964099567
+    ]
+  ],
+  "maxAbsAxisResidual": 0.46575537964099567,
+  "newUnconstrainedRightFoot": {
+    "asset": [
+      1030,
+      1064
+    ],
+    "rgba": [
+      3,
+      2,
+      1,
+      254
+    ],
+    "source": [
+      942.9284401828521,
+      178.4864934775337
+    ],
+    "canonicalCell": [
+      58,
+      11
+    ],
+    "canonicalTerrain": "#",
+    "meaning": "Unconstrained new design extension toward the neighboring barrel, not an authenticated old thirdfoot."
+  },
+  "fixedSourceMaterialSamples": [
+    {
+      "id": "old-left-foot",
+      "source": [
+        928,
+        179
+      ],
+      "assetFloat": [
+        92.10997478284942,
+        1096.2614177640799
+      ],
+      "nearestAsset": [
+        92,
+        1096
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "old-front-foot",
+      "source": [
+        935,
+        182
+      ],
+      "assetFloat": [
+        531.8900252171447,
+        1284.7385822359208
+      ],
+      "nearestAsset": [
+        532,
+        1285
+      ],
+      "rgba": [
+        74,
+        52,
+        35,
+        252
+      ]
+    },
+    {
+      "id": "new-back-control-top1",
+      "source": [
+        930,
+        163
+      ],
+      "assetFloat": [
+        217.76141776407667,
+        91.04987391426198
+      ],
+      "nearestAsset": [
+        218,
+        91
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "new-back-control-top2",
+      "source": [
+        931,
+        163
+      ],
+      "assetFloat": [
+        280.58713925469027,
+        91.04987391426198
+      ],
+      "nearestAsset": [
+        281,
+        91
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "old-front-face",
+      "source": [
+        928,
+        170
+      ],
+      "assetFloat": [
+        92.10997478284942,
+        530.8299243485573
+      ],
+      "nearestAsset": [
+        92,
+        531
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "left-paving",
+      "source": [
+        924,
+        182
+      ],
+      "assetFloat": [
+        -159.19291117960506,
+        1284.7385822359208
+      ],
+      "nearestAsset": [
+        -159,
+        1285
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "front-paving",
+      "source": [
+        930,
+        185
+      ],
+      "assetFloat": [
+        217.76141776407667,
+        1473.2157467077616
+      ],
+      "nearestAsset": [
+        218,
+        1473
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "nearbyCanonicalLegalCentreSamples": [
+    {
+      "cell": [
+        56,
+        8
+      ],
+      "source": [
+        904,
+        136
+      ],
+      "assetFloat": [
+        -1415.7073409918773,
+        -1605.2446063323057
+      ],
+      "nearestAsset": [
+        -1416,
+        -1605
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "cell": [
+        57,
+        8
+      ],
+      "source": [
+        920,
+        136
+      ],
+      "assetFloat": [
+        -410.49579714205953,
+        -1605.2446063323057
+      ],
+      "nearestAsset": [
+        -410,
+        -1605
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "cell": [
+        56,
+        9
+      ],
+      "source": [
+        904,
+        152
+      ],
+      "assetFloat": [
+        -1415.7073409918773,
+        -600.0330624824878
+      ],
+      "nearestAsset": [
+        -1416,
+        -600
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "cell": [
+        56,
+        10
+      ],
+      "source": [
+        904,
+        168
+      ],
+      "assetFloat": [
+        -1415.7073409918773,
+        405.17848136733005
+      ],
+      "nearestAsset": [
+        -1416,
+        405
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "cell": [
+        56,
+        11
+      ],
+      "source": [
+        904,
+        184
+      ],
+      "assetFloat": [
+        -1415.7073409918773,
+        1410.390025217148
+      ],
+      "nearestAsset": [
+        -1416,
+        1410
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "cell": [
+        57,
+        11
+      ],
+      "source": [
+        920,
+        184
+      ],
+      "assetFloat": [
+        -410.49579714205953,
+        1410.390025217148
+      ],
+      "nearestAsset": [
+        -410,
+        1410
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "cell": [
+        60,
+        11
+      ],
+      "source": [
+        968,
+        184
+      ],
+      "assetFloat": [
+        2605.1388344073944,
+        1410.390025217148
+      ],
+      "nearestAsset": [
+        2605,
+        1410
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "cell": [
+        56,
+        12
+      ],
+      "source": [
+        904,
+        200
+      ],
+      "assetFloat": [
+        -1415.7073409918773,
+        2415.601569066966
+      ],
+      "nearestAsset": [
+        -1416,
+        2416
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "cell": [
+        57,
+        12
+      ],
+      "source": [
+        920,
+        200
+      ],
+      "assetFloat": [
+        -410.49579714205953,
+        2415.601569066966
+      ],
+      "nearestAsset": [
+        -410,
+        2416
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "cell": [
+        58,
+        12
+      ],
+      "source": [
+        936,
+        200
+      ],
+      "assetFloat": [
+        594.7157467077584,
+        2415.601569066966
+      ],
+      "nearestAsset": [
+        595,
+        2416
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "cell": [
+        60,
+        12
+      ],
+      "source": [
+        968,
+        200
+      ],
+      "assetFloat": [
+        2605.1388344073944,
+        2415.601569066966
+      ],
+      "nearestAsset": [
+        2605,
+        2416
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "definedTorrenSoleSamples": [
+    {
+      "actorCell": [
+        57,
+        11
+      ],
+      "torrenFrame0SolePixel": [
+        160,
+        503
+      ],
+      "source": [
+        909.5192358,
+        178.0384644
+      ],
+      "assetFloat": [
+        -1068.9573697800504,
+        1035.8522499551705
+      ],
+      "nearestAsset": [
+        -1069,
+        1036
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "actorCell": [
+        57,
+        11
+      ],
+      "torrenFrame0SolePixel": [
+        170,
+        504
+      ],
+      "source": [
+        910.4807738,
+        178.1346182
+      ],
+      "assetFloat": [
+        -1008.5480511894148,
+        1041.8931818142344
+      ],
+      "nearestAsset": [
+        -1009,
+        1042
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "actorCell": [
+        57,
+        11
+      ],
+      "torrenFrame0SolePixel": [
+        180,
+        503
+      ],
+      "source": [
+        911.4423118,
+        178.0384644
+      ],
+      "assetFloat": [
+        -948.138732598772,
+        1035.8522499551705
+      ],
+      "nearestAsset": [
+        -948,
+        1036
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "actorCell": [
+        57,
+        11
+      ],
+      "torrenFrame0SolePixel": [
+        360,
+        560
+      ],
+      "source": [
+        928.7499958,
+        183.519231
+      ],
+      "assetFloat": [
+        139.2290020327772,
+        1380.1853659218266
+      ],
+      "nearestAsset": [
+        139,
+        1380
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "actorCell": [
+        57,
+        11
+      ],
+      "torrenFrame0SolePixel": [
+        370,
+        561
+      ],
+      "source": [
+        929.7115338,
+        183.6153848
+      ],
+      "assetFloat": [
+        199.63832062342,
+        1386.2262977808905
+      ],
+      "nearestAsset": [
+        200,
+        1386
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "actorCell": [
+        57,
+        11
+      ],
+      "torrenFrame0SolePixel": [
+        380,
+        561
+      ],
+      "source": [
+        930.6730718,
+        183.6153848
+      ],
+      "assetFloat": [
+        260.0476392140628,
+        1386.2262977808905
+      ],
+      "nearestAsset": [
+        260,
+        1386
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "actorCell": [
+        58,
+        12
+      ],
+      "torrenFrame0SolePixel": [
+        160,
+        503
+      ],
+      "source": [
+        925.5192358,
+        194.0384644
+      ],
+      "assetFloat": [
+        -63.745825930232535,
+        2041.0637938049883
+      ],
+      "nearestAsset": [
+        -64,
+        2041
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "actorCell": [
+        58,
+        12
+      ],
+      "torrenFrame0SolePixel": [
+        170,
+        504
+      ],
+      "source": [
+        926.4807738,
+        194.1346182
+      ],
+      "assetFloat": [
+        -3.33650733959687,
+        2047.1047256640522
+      ],
+      "nearestAsset": [
+        -3,
+        2047
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "actorCell": [
+        58,
+        12
+      ],
+      "torrenFrame0SolePixel": [
+        180,
+        503
+      ],
+      "source": [
+        927.4423118,
+        194.0384644
+      ],
+      "assetFloat": [
+        57.07281125104594,
+        2041.0637938049883
+      ],
+      "nearestAsset": [
+        57,
+        2041
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "actorCell": [
+        58,
+        12
+      ],
+      "torrenFrame0SolePixel": [
+        360,
+        560
+      ],
+      "source": [
+        944.7499958,
+        199.519231
+      ],
+      "assetFloat": [
+        1144.4405458825952,
+        2385.3969097716445
+      ],
+      "nearestAsset": [
+        1144,
+        2385
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "actorCell": [
+        58,
+        12
+      ],
+      "torrenFrame0SolePixel": [
+        370,
+        561
+      ],
+      "source": [
+        945.7115338,
+        199.6153848
+      ],
+      "assetFloat": [
+        1204.8498644732379,
+        2391.4378416307086
+      ],
+      "nearestAsset": [
+        1205,
+        2391
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "actorCell": [
+        58,
+        12
+      ],
+      "torrenFrame0SolePixel": [
+        380,
+        561
+      ],
+      "source": [
+        946.6730718,
+        199.6153848
+      ],
+      "assetFloat": [
+        1265.2591830638808,
+        2391.4378416307086
+      ],
+      "nearestAsset": [
+        1265,
+        2391
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "conclusion": "Reject this simple same-facing two-point whole-sprite registration as a faithful box/source-control replacement: top930163/931163 and front928170 are transparent, as is exactoldleftfoot928179. Small two-contact fit residual alone does not certify shape. No new opaque canonicalp-centre or the listedTorren soles was found, and new righttoe remains#; that does not rescue missing fixed original material nor certify all silhouettes.",
+  "recommendedBoundary": "Keep as unbound candidate or reuse its wood material for independently authored source geometry if explicitly chosen. No more generation or automatic adoption here."
+}

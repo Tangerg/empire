@@ -1,0 +1,186 @@
+{
+  "scope": "UNBOUND bounded west box using existing wood material. Source-certified inner base contacts928179/935182 and top/front material retained. Rear/right silhouette is explicit modest design completion where original merges with adjacent barrel; no extra old foot certification.",
+  "textureResourcePath": "res://assets/native/c07-layered-v1/barracks-front-cargo-v1-candidate.png",
+  "namePrefix": "AtomicWestCargoColumn",
+  "supportLine": [
+    [
+      926,
+      178.14285714285714
+    ],
+    [
+      928,
+      179
+    ],
+    [
+      935,
+      182
+    ],
+    [
+      940,
+      179.5
+    ]
+  ],
+  "members": [
+    {
+      "id": "left-front-face",
+      "polygon": [
+        [
+          926,
+          164
+        ],
+        [
+          935,
+          168
+        ],
+        [
+          935,
+          182
+        ],
+        [
+          926,
+          178.14285714285714
+        ]
+      ],
+      "uv": [
+        [
+          130,
+          380
+        ],
+        [
+          470,
+          570
+        ],
+        [
+          470,
+          1260
+        ],
+        [
+          130,
+          1040
+        ]
+      ],
+      "tint": "d4c5b0"
+    },
+    {
+      "id": "bounded-right-face-new-hidden-completion",
+      "polygon": [
+        [
+          935,
+          168
+        ],
+        [
+          939,
+          164
+        ],
+        [
+          940,
+          179.5
+        ],
+        [
+          935,
+          182
+        ]
+      ],
+      "uv": [
+        [
+          580,
+          590
+        ],
+        [
+          1000,
+          390
+        ],
+        [
+          1000,
+          1040
+        ],
+        [
+          580,
+          1260
+        ]
+      ],
+      "tint": "b0a697"
+    },
+    {
+      "id": "top-surface-old-fixed-material",
+      "polygon": [
+        [
+          926,
+          164
+        ],
+        [
+          933,
+          161
+        ],
+        [
+          939,
+          164
+        ],
+        [
+          935,
+          168
+        ]
+      ],
+      "uv": [
+        [
+          170,
+          340
+        ],
+        [
+          565,
+          150
+        ],
+        [
+          970,
+          350
+        ],
+        [
+          515,
+          520
+        ]
+      ],
+      "tint": "ece1cf"
+    }
+  ],
+  "materialPositives": [
+    [
+      930,
+      163
+    ],
+    [
+      931,
+      163
+    ],
+    [
+      932,
+      164
+    ],
+    [
+      928,
+      170
+    ],
+    [
+      933,
+      174
+    ],
+    [
+      928,
+      179
+    ],
+    [
+      935,
+      182
+    ]
+  ],
+  "materialNegatives": [
+    [
+      924,
+      182
+    ],
+    [
+      930,
+      185
+    ]
+  ],
+  "notGameplay": "Ballista back probe is an existing general appearance, absent from current C07 roster. Torren front probes use actual C07 party appearance."
+}

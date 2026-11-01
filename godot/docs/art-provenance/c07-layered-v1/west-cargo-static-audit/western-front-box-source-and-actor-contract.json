@@ -1,0 +1,492 @@
+{
+  "scope": "One bounded object only: western front wooden box under rear awnings. Static source/material/actor-alpha review; no native engine, GUI, save, production changes or new gameplay claim.",
+  "sourceSha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+  "object": {
+    "reviewId": "militia-west-front-wooden-box",
+    "canonicalSite": null,
+    "selectionCell": null,
+    "ownsMapStructureBody": false,
+    "approxVisibleRoiExclusive": [
+      926,
+      162,
+      940,
+      184
+    ],
+    "trueVisibleGroundContacts": [
+      {
+        "source": [
+          928,
+          179
+        ],
+        "rgba": [
+          108,
+          80,
+          42,
+          255
+        ],
+        "materialRole": "left part of visible box base/wood-to-paving edge",
+        "cell": [
+          58,
+          11
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-west-cargo"
+        ],
+        "currentPaintedPartCoverage": []
+      },
+      {
+        "source": [
+          935,
+          182
+        ],
+        "rgba": [
+          55,
+          29,
+          8,
+          255
+        ],
+        "materialRole": "front dark wooden corner at shaded paving",
+        "cell": [
+          58,
+          11
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-west-cargo"
+        ],
+        "currentPaintedPartCoverage": []
+      }
+    ],
+    "notThreeOuterCorners": "Two visible base contacts, not a full rear footprint. Source right side merges with adjacent grey-bound barrel; do not pretend that boundary is a fully isolated third outer foot.",
+    "topPositives": [
+      {
+        "source": [
+          930,
+          163
+        ],
+        "rgba": [
+          204,
+          149,
+          70,
+          255
+        ],
+        "materialRole": "golden top plank/rim",
+        "cell": [
+          58,
+          10
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-hall-foundation",
+          "militia-west-cargo"
+        ],
+        "currentPaintedPartCoverage": []
+      },
+      {
+        "source": [
+          931,
+          163
+        ],
+        "rgba": [
+          203,
+          143,
+          65,
+          255
+        ],
+        "materialRole": "golden top plank/rim",
+        "cell": [
+          58,
+          10
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-hall-foundation",
+          "militia-west-cargo"
+        ],
+        "currentPaintedPartCoverage": []
+      },
+      {
+        "source": [
+          932,
+          164
+        ],
+        "rgba": [
+          199,
+          137,
+          47,
+          255
+        ],
+        "materialRole": "golden upper surface",
+        "cell": [
+          58,
+          10
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-hall-foundation",
+          "militia-west-cargo"
+        ],
+        "currentPaintedPartCoverage": []
+      }
+    ],
+    "frontPositives": [
+      {
+        "source": [
+          928,
+          170
+        ],
+        "rgba": [
+          169,
+          115,
+          50,
+          255
+        ],
+        "materialRole": "warm wooden front/left face",
+        "cell": [
+          58,
+          10
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-hall-foundation",
+          "militia-west-cargo"
+        ],
+        "currentPaintedPartCoverage": []
+      },
+      {
+        "source": [
+          933,
+          174
+        ],
+        "rgba": [
+          169,
+          120,
+          56,
+          255
+        ],
+        "materialRole": "wooden box front face",
+        "cell": [
+          58,
+          10
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-hall-foundation",
+          "militia-west-cargo"
+        ],
+        "currentPaintedPartCoverage": []
+      }
+    ],
+    "groundNegatives": [
+      {
+        "source": [
+          924,
+          182
+        ],
+        "rgba": [
+          166,
+          136,
+          107,
+          255
+        ],
+        "materialRole": "open shaded paving left of box",
+        "cell": [
+          57,
+          11
+        ],
+        "terrain": "p",
+        "auditCellOwners": [],
+        "currentPaintedPartCoverage": []
+      },
+      {
+        "source": [
+          930,
+          185
+        ],
+        "rgba": [
+          175,
+          141,
+          109,
+          255
+        ],
+        "materialRole": "shaded paving below box; cell still# so not a movement oracle",
+        "cell": [
+          58,
+          11
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-west-cargo"
+        ],
+        "currentPaintedPartCoverage": []
+      }
+    ],
+    "responsibility": {
+      "id": "militia-west-cargo",
+      "polygonPixels": [
+        [
+          922,
+          168
+        ],
+        [
+          943,
+          179
+        ],
+        [
+          958,
+          170
+        ],
+        [
+          956,
+          151
+        ],
+        [
+          936,
+          140
+        ],
+        [
+          922,
+          149
+        ]
+      ],
+      "blockedCells": [
+        [
+          58,
+          8
+        ],
+        [
+          57,
+          9
+        ],
+        [
+          58,
+          9
+        ],
+        [
+          59,
+          9
+        ],
+        [
+          57,
+          10
+        ],
+        [
+          58,
+          10
+        ],
+        [
+          59,
+          10
+        ],
+        [
+          58,
+          11
+        ],
+        [
+          59,
+          11
+        ]
+      ]
+    },
+    "exclusions": [
+      "Rear brown support and partly hidden sacks",
+      "Grey/metal-bound barrel immediately at right",
+      "Blue kiosk roof at left",
+      "Two rear awning roofs and main building wall",
+      "Foreground drill fence"
+    ]
+  },
+  "nearbyVisibleSourceFeetLimits": "Neither rear awning has a clearly isolated wood-to-ground foot in this crop; their post bottoms merge into stacked stock/kiosk. They were not selected by inventing hidden feet.",
+  "frontControls": [
+    {
+      "cell": [
+        57,
+        11
+      ],
+      "canonicalFootSource": [
+        920,
+        184
+      ],
+      "terrain": "p",
+      "unitAppearance": "torren-stage01",
+      "frame": 0,
+      "facing": "east",
+      "fixedWoodSource": [
+        928,
+        170
+      ],
+      "framePixel": [
+        352,
+        419
+      ],
+      "alpha": 253,
+      "expectedRelation": "Actor foot184 ahead of box base179\u2013182; actor should appear in front at real overlap. Static alpha only."
+    },
+    {
+      "cell": [
+        58,
+        12
+      ],
+      "canonicalFootSource": [
+        936,
+        200
+      ],
+      "terrain": "p",
+      "unitAppearance": "torren-stage01",
+      "frame": 0,
+      "facing": "east",
+      "fixedWoodSource": [
+        933,
+        174
+      ],
+      "framePixel": [
+        238,
+        295
+      ],
+      "alpha": 253,
+      "expectedRelation": "Clear front-side control; native fixture not run here."
+    }
+  ],
+  "backCandidate": {
+    "unitType": "c01.ballista",
+    "actorKey": null,
+    "reasonActorKeyNull": "A named hero key must not be retained when changing type; AssetCatalog checks ExpectedUnitType. Use ordinary unit binding for the isolated fixture.",
+    "cell": [
+      56,
+      10
+    ],
+    "canonicalTerrain": "p",
+    "canonicalFootSource": [
+      904,
+      168
+    ],
+    "facing": "west",
+    "frameRole": "idle",
+    "frameIndex": 0,
+    "assetId": "C01-FFV1-UNIT-BALLISTA",
+    "topicId": "C01-UNIT-BALLISTA",
+    "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-ballista@2x.png",
+    "assetSha256": "78a24015d823536e9f8151ea7fab3aa03ce9e3add3506458c743af821c911b36",
+    "physicalSheetSize": [
+      832,
+      128
+    ],
+    "physicalFrameRegion": [
+      0,
+      0,
+      208,
+      128
+    ],
+    "logicalAnchor": [
+      54.43605036447978,
+      53.50828363154407
+    ],
+    "pixelDensity": 2,
+    "physicalPixelAnchor": [
+      108.87210072895957,
+      107.01656726308813
+    ],
+    "presentationScale": 0.62,
+    "actualSpriteScaleSigned": [
+      -0.31,
+      0.31
+    ],
+    "c07PlaneWorldScale": 1,
+    "sourceToFrameFormula": "x=108.87210072895956-(sourceX-904)/0.31; y=107.01656726308814+(sourceY-168)/0.31; frame0 sheet origin0,0.",
+    "witnesses": [
+      {
+        "source": [
+          930,
+          163
+        ],
+        "rgba": [
+          204,
+          149,
+          70,
+          255
+        ],
+        "materialRole": "golden top plank / top rim of western front box, visually checked in original enlarged source",
+        "cell": [
+          58,
+          10
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-hall-foundation",
+          "militia-west-cargo"
+        ],
+        "currentPaintedPartCoverage": [],
+        "actorPixelFloat": [
+          25.00113298702408,
+          90.88753500502362
+        ],
+        "nearestActorPixel": [
+          25,
+          91
+        ],
+        "actorRgba": [
+          101,
+          65,
+          35,
+          253
+        ]
+      },
+      {
+        "source": [
+          931,
+          163
+        ],
+        "rgba": [
+          203,
+          143,
+          65,
+          255
+        ],
+        "materialRole": "golden top plank / top rim of western front box, visually checked in original enlarged source",
+        "cell": [
+          58,
+          10
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-hall-foundation",
+          "militia-west-cargo"
+        ],
+        "currentPaintedPartCoverage": [],
+        "actorPixelFloat": [
+          21.775326535411182,
+          90.88753500502362
+        ],
+        "nearestActorPixel": [
+          22,
+          91
+        ],
+        "actorRgba": [
+          12,
+          7,
+          4,
+          251
+        ]
+      }
+    ],
+    "depthPremise": "Ballista canonical footY168 is behind both true visible box baseY179/182. The two sampled golden top pixels should belong to a foreground box surface, not the permanent floor. Current painted part coverage is empty at both.",
+    "status": "Actual source material + authored sprite opaque intersection confirmed statically. Draw/pick/cue failure is NOT yet native-reproduced; parent owns the isolated native test.",
+    "legalityBoundary": "Canonical anchor cellp confirmed; no rules action or actual unit placement/movement executed. VisualFootprint2x2 from art metadata is not silently used as a new collision rule."
+  },
+  "scanHistory": {
+    "initialFile": "initial-wide-alpha-scan.json",
+    "initialScope": "Only narrow inner FRONT PANEL polygon928168/933170/934180/929177. All four wider classes had no back intersection there. This remains true and was not a whole-object negative.",
+    "expandedFile": "wide-actor-conservative-box-scan.json",
+    "expandedScope": "Conservative whole-object bbox924160..942185; fourframes/bothfacings forTorren,knight,heavy-knight,wolf-rider,ballista; p centresx54..61/y7..10. Expansion exposed top-surface intersections missed by the initial panel-only mask.",
+    "classification": "Heavy-knight attack hits are outside true selected box top; wolf-rider walk/attack have possible top-edge hits, but only ballista idle two clear golden top pixels are advanced to a fixed native candidate. No further scanning requested."
+  },
+  "reuseFitFile": "western-box-existing-cargo-reuse-fit.json",
+  "references": [
+    "west-rear-context-raw.png",
+    "rear-poles-cargo-grid.png",
+    "west-front-box-grid.png",
+    "box-fixed-source-witnesses.png"
+  ],
+  "nextActionBoundary": "Only parent native back/front fixture and bounded reuse decision. Do not expand to new gates/sites or claim a confirmed new gameplay bug from this report."
+}

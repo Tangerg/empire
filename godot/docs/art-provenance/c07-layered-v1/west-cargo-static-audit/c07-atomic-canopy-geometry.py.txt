@@ -1,0 +1,17 @@
+from pathlib import Path
+import json
+r=Path('/workspace/scratch/84c9fe948755')
+wood=[[535,800],[535,1300],[572,1300],[572,800]]
+items=[]
+def add(id,p,uv,tint='c9c5bd'):
+ items.append({'id':id,'polygon':p,'uv':uv,'tint':tint})
+# Bottom-to-top painter order within each local-depth column.
+add('left-post-visible-original-rod-new-hidden-toe',[[944,138],[947,139],[948,173],[946,175],[944,174]],[[535,800],[572,800],[572,1270],[553,1300],[535,1270]],'aaa49b')
+add('front-post-original-visible-foot',[[971.5,153],[974.5,153],[975,191],[973,193],[971.5,191]],[[535,800],[572,800],[572,1270],[553,1300],[535,1270]],'c6c1b8')
+add('front-fascia',[[946,136],[974,152],[974,155],[946,139]],wood,'bdb9b1')
+add('right-fascia',[[974,152],[998,135],[998,138],[974,155]],wood,'a8a39b')
+add('left-eave-connected-cap',[[944,137],[947,136],[949,138],[947,141],[944,139]],[[535,800],[572,800],[572,1100],[553,1300],[535,1100]],'b7b1a8')
+add('front-eave-connected-knee',[[973,153],[978,153],[976,158],[974,158]],wood,'aaa59c')
+add('blue-slate-roof-original-visible-plane',[[947,136],[971,125],[998,135],[974,152]],[[115,391],[496,127],[947,383],[559,655]],'ffffff')
+x={'scope':'UNBOUND static atomized single-span canopy; only roof/eaves and two posts. Old visible geometry retained; hidden left toe completed as new design, never original-certified. Wall/cargo/other awnings absent from this geometry.','textureResourcePath':'res://assets/native/c07-layered-v1/barracks-front-lean-to-v2-candidate.png','namePrefix':'AtomicCanopyColumn','supportLine':[[943,172],[946,174],[973,192],[1001,187]],'supportNotes':['Left174 is a modest new hidden ground completion after original visible rod through169, not certified source foot.','Front973192 is the old certified visible wood foot.','East support interpolates toward original main-house contact1003187: virtual wall-mount projection, not new foot.'],'members':items,'canopyMaterialNegatives':[[969,165],[981,156],[984,173],[984,184],[1000,194]],'materialPositives':[[963,139],[982,137],[973,177],[973,192],[945,158],[946,169],[976,155]]}
+(r/'c07-static-preview/atomic-canopy-geometry.json').write_text(json.dumps(x,indent=2)+'\n')
