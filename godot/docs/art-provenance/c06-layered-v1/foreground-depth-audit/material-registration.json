@@ -1,0 +1,320 @@
+{
+  "scope": "Actual generated RGBA materials; source registration suggestions only. Central root-base anchor is distinct from genuinely frontmostroot groundFront. No native input/depth check, no image modification/repo write.",
+  "cases": [
+    {
+      "id": "rear",
+      "assetPath": "/workspace/scratch/84c9fe948755/generated_images/exec-5320792f-913d-412f-9597-ee323c3d1ab6.png",
+      "sha256": "5e11324f3ad1e6cd7968109df4bdf16bcdf1b385e2bbc79f5a05ea8ab229a9c3",
+      "actualSize": [
+        1156,
+        1360
+      ],
+      "alpha200MaterialBBox": [
+        362,
+        48,
+        1116,
+        1082
+      ],
+      "alphaStatistics": {
+        "0": {
+          "count": 192854,
+          "components": 508,
+          "largestComponentPixels": 191782,
+          "maxAlphaBeyond20PixelsFromOpaque": 1,
+          "nonzeroBeyond20PixelsFromOpaque": 144
+        },
+        "8": {
+          "count": 167413,
+          "components": 40,
+          "largestComponentPixels": 167357,
+          "maxAlphaBeyond20PixelsFromOpaque": 0,
+          "nonzeroBeyond20PixelsFromOpaque": 0
+        },
+        "20": {
+          "count": 165724,
+          "components": 1,
+          "largestComponentPixels": 165724,
+          "maxAlphaBeyond20PixelsFromOpaque": 0,
+          "nonzeroBeyond20PixelsFromOpaque": 0
+        },
+        "128": {
+          "count": 159114,
+          "components": 1,
+          "largestComponentPixels": 159114,
+          "maxAlphaBeyond20PixelsFromOpaque": 0,
+          "nonzeroBeyond20PixelsFromOpaque": 0
+        },
+        "199": {
+          "count": 155117,
+          "components": 1,
+          "largestComponentPixels": 155117,
+          "maxAlphaBeyond20PixelsFromOpaque": 0,
+          "nonzeroBeyond20PixelsFromOpaque": 0
+        }
+      },
+      "rootBaseAnchorPixels": [
+        780,
+        1052
+      ],
+      "rootBaseAnchorRGBA": [
+        11,
+        6,
+        5,
+        251
+      ],
+      "frontmostRootGroundFrontPixels": [
+        841,
+        1078
+      ],
+      "groundFrontRGBA": [
+        33,
+        24,
+        31,
+        251
+      ],
+      "suggestedSourceScale": 0.067,
+      "suggestedInstanceWorldScale": 0.08375,
+      "sourceRootBaseTarget": [
+        93,
+        166
+      ],
+      "fractionalContact": [
+        2.28125,
+        4.857142857142857
+      ],
+      "sourceTranslation": [
+        40.739999999999995,
+        95.51599999999999
+      ],
+      "actualGroundFrontSource": [
+        97.08699999999999,
+        167.742
+      ],
+      "actualMaterialTopSourceY": 98.73199999999999,
+      "actualMaterialBottomSourceY": 168.01,
+      "materialHeightSourcePx": 69.278,
+      "oldSourceBarkAlphaDiagnostics": [
+        {
+          "oldSourceBark": [
+            95,
+            146
+          ],
+          "assetPixel": [
+            810,
+            753
+          ],
+          "rgba": [
+            56,
+            44,
+            52,
+            253
+          ]
+        },
+        {
+          "oldSourceBark": [
+            95,
+            151
+          ],
+          "assetPixel": [
+            810,
+            828
+          ],
+          "rgba": [
+            38,
+            47,
+            125,
+            250
+          ]
+        },
+        {
+          "oldSourceBark": [
+            94,
+            157
+          ],
+          "assetPixel": [
+            795,
+            918
+          ],
+          "rgba": [
+            68,
+            49,
+            53,
+            253
+          ]
+        }
+      ],
+      "cautions": [
+        "Rootbase anchor is manually observed bark/root junction, NOT lowestalpha bound or canvascenter. groundFront is an actual foregroundrootpoint and may lie a fewsourcepixels in front of the rootbase target.",
+        "Suggested uniformscale preserves approximately observed originaltreeheight; sourcecrown position is visual/manual, not a new authoritative hardtolerance.",
+        "Old fixed bark positions need not coincide with a changed branching shape. New actualbark positiveocclusion witnesses must be measured after assembly; alpha0atoldbark is recorded, not silently broadened to pass."
+      ]
+    },
+    {
+      "id": "front",
+      "assetPath": "/workspace/scratch/84c9fe948755/generated_images/exec-3679d299-be42-4b53-8bb4-f40f7aa5689d.png",
+      "sha256": "0702107b059b7db1263154aaf06f92a471bf411dc5630ebea6b1459a9199c7d1",
+      "actualSize": [
+        1156,
+        1360
+      ],
+      "alpha200MaterialBBox": [
+        127,
+        61,
+        746,
+        1301
+      ],
+      "alphaStatistics": {
+        "0": {
+          "count": 116474,
+          "components": 468,
+          "largestComponentPixels": 115465,
+          "maxAlphaBeyond20PixelsFromOpaque": 1,
+          "nonzeroBeyond20PixelsFromOpaque": 68
+        },
+        "8": {
+          "count": 97403,
+          "components": 15,
+          "largestComponentPixels": 97389,
+          "maxAlphaBeyond20PixelsFromOpaque": 0,
+          "nonzeroBeyond20PixelsFromOpaque": 0
+        },
+        "20": {
+          "count": 95898,
+          "components": 2,
+          "largestComponentPixels": 95897,
+          "maxAlphaBeyond20PixelsFromOpaque": 0,
+          "nonzeroBeyond20PixelsFromOpaque": 0
+        },
+        "128": {
+          "count": 90722,
+          "components": 1,
+          "largestComponentPixels": 90722,
+          "maxAlphaBeyond20PixelsFromOpaque": 0,
+          "nonzeroBeyond20PixelsFromOpaque": 0
+        },
+        "199": {
+          "count": 87613,
+          "components": 1,
+          "largestComponentPixels": 87613,
+          "maxAlphaBeyond20PixelsFromOpaque": 0,
+          "nonzeroBeyond20PixelsFromOpaque": 0
+        }
+      },
+      "rootBaseAnchorPixels": [
+        480,
+        1235
+      ],
+      "rootBaseAnchorRGBA": [
+        20,
+        10,
+        10,
+        251
+      ],
+      "frontmostRootGroundFrontPixels": [
+        550,
+        1295
+      ],
+      "groundFrontRGBA": [
+        54,
+        34,
+        30,
+        245
+      ],
+      "suggestedSourceScale": 0.063,
+      "suggestedInstanceWorldScale": 0.07875,
+      "sourceRootBaseTarget": [
+        70,
+        185
+      ],
+      "fractionalContact": [
+        1.5625,
+        5.535714285714286
+      ],
+      "sourceTranslation": [
+        39.76,
+        107.195
+      ],
+      "actualGroundFrontSource": [
+        74.41,
+        188.77999999999997
+      ],
+      "actualMaterialTopSourceY": 111.038,
+      "actualMaterialBottomSourceY": 189.158,
+      "materialHeightSourcePx": 78.12,
+      "oldSourceBarkAlphaDiagnostics": [
+        {
+          "oldSourceBark": [
+            76,
+            145
+          ],
+          "assetPixel": [
+            575,
+            600
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "oldSourceBark": [
+            76,
+            151
+          ],
+          "assetPixel": [
+            575,
+            695
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "cautions": [
+        "Rootbase anchor is manually observed bark/root junction, NOT lowestalpha bound or canvascenter. groundFront is an actual foregroundrootpoint and may lie a fewsourcepixels in front of the rootbase target.",
+        "Suggested uniformscale preserves approximately observed originaltreeheight; sourcecrown position is visual/manual, not a new authoritative hardtolerance.",
+        "Old fixed bark positions need not coincide with a changed branching shape. New actualbark positiveocclusion witnesses must be measured after assembly; alpha0atoldbark is recorded, not silently broadened to pass."
+      ]
+    }
+  ],
+  "rejectedPreliminaryAnchorGuesses": [
+    {
+      "asset": "front",
+      "pixel": [
+        475,
+        1250
+      ],
+      "alpha": 0,
+      "reason": "Rootforkgap, not physicalmaterial. Replaced after actual closepixelinspection, not accepted."
+    },
+    {
+      "asset": "front",
+      "pixel": [
+        480,
+        1240
+      ],
+      "alpha": 0
+    },
+    {
+      "asset": "front",
+      "pixel": [
+        600,
+        1300
+      ],
+      "alpha": 0
+    },
+    {
+      "asset": "rear",
+      "pixel": [
+        850,
+        1080
+      ],
+      "alpha": 12
+    }
+  ]
+}

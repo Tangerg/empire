@@ -179,3 +179,28 @@ All full generated textures are retained, no bitmap stretching/painting/cutout b
 
 ## Southwest left border cliff v3 — high-body restoration only
 Built-in transparent imagegen used the original southwest border crop, not a masked whole-scene tile. First reconstruction exec-f57b1bce-ae83-41d3-8659-d23a7ab1d4d4 had an overly narrow upper mass; v2 exec-fd2d417c-8534-4837-9750-4e2b275a0bd3 broadened the actual vertical wall but its low right boulders extended 15.8–19.8 source pixels beyond the old observed right toe. Neither was bound. Final precise edit exec-45d1af1c-f138-41e8-bbc7-7a7bf82268c5 preserved the upper wall/cropped-left continuation and removed the excess low-right pile/snow skirt. Full 1013x1552 output retained, no Python bitmap edits. Source transform is uniform scale .05 plus translation(0,590.5); actual dark-stone foot(680,1470) anchors the sprite, not the snow skirt. Thin weak edge alpha remains; no broad weak-alpha background flagged and no engine threshold changed. New physical low right toe reaches x34 source, about5px beyond the old observed toe interval; this is not an exact whole-base reconstruction or all12wall certification.
+
+## Two proven northwest bare-tree depth defects (built-in imagegen)
+
+Reference inspection crop: original clean-v4 source rectangle (40,90)-(125,190),
+expanded 8x for inspection. Generation outputs were 1156x1360, not the requested
+680x800 reference dimensions; registration uses actual reviewed pixels.
+
+- `exec-5320792f-913d-412f-9597-ee323c3d1ab6`: background extraction of only the
+  rear/right forked bare tree, true transparent background, retain winter brown/
+  blue material and root structure; remove other tree, ground, rocks and grass.
+- `exec-3679d299-be42-4b53-8bb4-f40f7aa5689d`: background extraction of only the
+  nearer left slender tree, sparse branches, real transparency; no added fan
+  crown, foliage, broad shadow or surrounding platform.
+- `exec-cd142c0d-9df3-49ca-ad2b-a08e08488711`: precise-object-edit request to erase
+  only the two baked trees rooted near (93,166)/(70,185), preserving roads,
+  bridges, banks and all other vegetation. Output has whole-raster texture
+  differences, not pixel-identical outside the target. Three bridge gradient
+  comparisons have best displacement (0,0), but this does not certify all ground
+  geometry or resolve the previously rejected bridge-support cases.
+
+No Python painting/cutout, runtime alpha threshold change or terrain edit was
+used. Actual root base and forward root are separate reviewed points. Very faint
+A1 isolated speckles remain; no broad A>8 background beyond 20px from solid wood.
+See foreground-depth-audit for measured material, failed baseline and native
+front/back tests. All assets remain in the unbound assembly preview.

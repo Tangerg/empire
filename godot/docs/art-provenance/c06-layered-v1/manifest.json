@@ -483,6 +483,39 @@
       ],
       "mode": "RGBA",
       "status": "unbound static assembly candidate; restores removed SW high rock body, not full12wall foundation certification"
+    },
+    {
+      "file": "assets/native/c06-layered-v1/bare-tree-rear-v1.png",
+      "generation": "exec-5320792f-913d-412f-9597-ee323c3d1ab6",
+      "sha256": "5e11324f3ad1e6cd7968109df4bdf16bcdf1b385e2bbc79f5a05ea8ab229a9c3",
+      "pixelSize": [
+        1156,
+        1360
+      ],
+      "mode": "RGBA",
+      "status": "unbound candidate; six native static poses verify front/back depth, visible actor picking and forced-background negative controls"
+    },
+    {
+      "file": "assets/native/c06-layered-v1/bare-tree-front-v1.png",
+      "generation": "exec-3679d299-be42-4b53-8bb4-f40f7aa5689d",
+      "sha256": "0702107b059b7db1263154aaf06f92a471bf411dc5630ebea6b1459a9199c7d1",
+      "pixelSize": [
+        1156,
+        1360
+      ],
+      "mode": "RGBA",
+      "status": "unbound candidate; six native static poses verify front/back depth, visible actor picking and forced-background negative controls"
+    },
+    {
+      "file": "assets/native/c06-layered-v1/ground-clean-v5-bare-tree-candidate.png",
+      "generation": "exec-cd142c0d-9df3-49ca-ad2b-a08e08488711",
+      "sha256": "2c9bd152f4853cdcc41c65e6759bfa75fec7fb6b0a27b709a743df6d39bdeb83",
+      "pixelSize": [
+        1643,
+        957
+      ],
+      "mode": "RGB",
+      "status": "unbound two-bare-tree erasure candidate, whole-raster texture differs; three-bridge edge correlation best shift0,0; unresolved bridge support unchanged"
     }
   ]
 }

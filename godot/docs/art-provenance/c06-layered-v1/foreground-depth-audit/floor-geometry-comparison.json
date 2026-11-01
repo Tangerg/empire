@@ -1,0 +1,75 @@
+{
+  "scope": "Bounded static visual and localtranslation diagnostic, NOT exact localedit or bridge-support acceptance. Compares latest proposed two-tree cleanplate against current cleanv4; prior known bridgegeometryissues unchanged by this check.",
+  "oldSha256": "65a34e7efc87f95c51e8f7af2bdbb17a157bedfd0ab9a878394e90df1d7db05c",
+  "newSha256": "2c9bd152f4853cdcc41c65e6759bfa75fec7fb6b0a27b709a743df6d39bdeb83",
+  "sizes": [
+    [
+      1643,
+      957
+    ],
+    [
+      1643,
+      957
+    ]
+  ],
+  "bridges": [
+    {
+      "id": "west-timber-crossing",
+      "roi": [
+        195,
+        290,
+        441,
+        462
+      ],
+      "cellCount": 11,
+      "bestGradientTranslationXY": [
+        0,
+        0
+      ],
+      "bestGradientCorrelation": 0.9178139134973137,
+      "zeroShiftGradientCorrelation": 0.9178139134973137,
+      "roiMeanAbsoluteRgbChange": 7.496667612024957,
+      "evidence": "west-timber-crossing-new-floor-geometry.png",
+      "limit": "Correlation tests small rigidshift only, not localwarp, exactedges, passability or completebankfootprint."
+    },
+    {
+      "id": "central-stone-crossing",
+      "roi": [
+        722,
+        356,
+        948,
+        553
+      ],
+      "cellCount": 18,
+      "bestGradientTranslationXY": [
+        0,
+        0
+      ],
+      "bestGradientCorrelation": 0.939272861808741,
+      "zeroShiftGradientCorrelation": 0.939272861808741,
+      "roiMeanAbsoluteRgbChange": 6.712277076501505,
+      "evidence": "central-stone-crossing-new-floor-geometry.png",
+      "limit": "Correlation tests small rigidshift only, not localwarp, exactedges, passability or completebankfootprint."
+    },
+    {
+      "id": "east-timber-crossing",
+      "roi": [
+        1267,
+        353,
+        1529,
+        527
+      ],
+      "cellCount": 11,
+      "bestGradientTranslationXY": [
+        0,
+        0
+      ],
+      "bestGradientCorrelation": 0.9213179454131969,
+      "zeroShiftGradientCorrelation": 0.9213179454131969,
+      "roiMeanAbsoluteRgbChange": 6.8324778450469426,
+      "evidence": "east-timber-crossing-new-floor-geometry.png",
+      "limit": "Correlation tests small rigidshift only, not localwarp, exactedges, passability or completebankfootprint."
+    }
+  ],
+  "manualVisualResult": "All3paired deck/edge images viewed at enlargedscale. No obvious new deck/bank-outline shift or changed40centre materialclassification relative currentcleanv4. Colour/detailchanged broadly; NOT pixel-exactlocaledit and NOT approval of existing bridgefootprint problems."
+}

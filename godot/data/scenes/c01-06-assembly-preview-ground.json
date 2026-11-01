@@ -18,7 +18,7 @@
     0,
     28
   ],
-  "resourcePath": "res://assets/native/c06-layered-v1/ground-clean-v4-candidate.png",
+  "resourcePath": "res://assets/native/c06-layered-v1/ground-clean-v5-bare-tree-candidate.png",
   "objectCatalogPath": "res://data/scenes/c01-06-assembly-preview-objects.json",
   "objects": [
     {
@@ -1199,6 +1199,30 @@
         22.642857142857142
       ],
       "scale": 0.0625,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "northwest-bare-tree-rear",
+      "assetId": "bare-tree-rear-v1",
+      "contact": [
+        2.28125,
+        4.857142857142857
+      ],
+      "scale": 0.08375,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "northwest-bare-tree-front",
+      "assetId": "bare-tree-front-v1",
+      "contact": [
+        1.5625,
+        5.535714285714286
+      ],
+      "scale": 0.07875,
       "selectionCell": null,
       "ownsMapStructureBody": false,
       "pointer": "pass-through"
