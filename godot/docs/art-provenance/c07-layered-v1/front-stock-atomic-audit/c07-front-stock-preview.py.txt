@@ -1,0 +1,17 @@
+from pathlib import Path
+import json
+r=Path('/workspace/scratch/84c9fe948755');g=r/'empire-c01/godot'
+scene=json.load(open(g/'data/scenes/c01-07-barracks-preview.json'));ground=json.load(open(g/'data/scenes/c01-07-barracks-preview-ground.json'));objects=json.load(open(g/'data/scenes/c01-07-barracks-preview-objects.json'))
+# One original certified front toe. Right slatted ownership is uncertain, not a second original crate.
+anchor=[514,1314];s=.020
+pts=[[0,1005],[110,1067],[514,1314],[1030,1064],[1132,1015]]
+def fy(x):
+ for a,b in zip(pts,pts[1:]):
+  if a[0]<=x<=b[0]: return a[1]+(b[1]-a[1])*(x-a[0])/(b[0]-a[0])
+ raise ValueError(x)
+cuts=sorted({0,1132,110,514,1030,*range(0,1132,50)})
+objects['objects']['barracks-front-cargo-v1']={'resourcePath':'res://assets/native/c07-layered-v1/barracks-front-cargo-v1-candidate.png','pixelSize':[1132,1390],'anchorPixels':anchor,'groundFrontPixels':anchor,'contactShadowRadiiPixels':[20,3],'depthStrips':[{'rightPixels':b,'groundFrontPixels':[(a+b-1)/2,fy((a+b-1)/2)]} for a,b in zip(cuts,cuts[1:])]}
+ground['objects'].append({'id':'barracks-front-cargo','assetId':'barracks-front-cargo-v1','contact':[984/16,193/16],'scale':s,'selectionCell':None,'ownsMapStructureBody':False,'pointer':'pass-through'})
+scene['assembledGroundPath']='res://data/scenes/c01-07-front-stock-preview-ground.json';ground['objectCatalogPath']='res://data/scenes/c01-07-front-stock-preview-objects.json'
+for name,val in [('c01-07-front-stock-preview.json',scene),('c01-07-front-stock-preview-ground.json',ground),('c01-07-front-stock-preview-objects.json',objects)]: (g/'data/scenes'/name).write_text(json.dumps(val,indent=2)+'\n')
+print('UNBOUND front cargo: new bounded design anchored at original front toe; canopy still absent')

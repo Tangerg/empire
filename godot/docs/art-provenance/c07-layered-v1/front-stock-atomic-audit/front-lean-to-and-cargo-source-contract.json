@@ -1,0 +1,767 @@
+{
+  "scope": "Only foremost single-span blue lean-to and immediately overlapping stock around the old969165 head-cut witness. Static original PNG/data; no engine, GUI, save, production edit, or generation. Parent native attribution is separate. Rear awnings and rest of city explicitly excluded.",
+  "source": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/scenes/luojia.png",
+  "sourceSha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+  "reviewRoiExclusive": [
+    938,
+    120,
+    1009,
+    199
+  ],
+  "identity": {
+    "attachedTo": "militia-barracks",
+    "canonicalSite": [
+      65,
+      14
+    ],
+    "independentSite": null,
+    "newSelectionOwner": false,
+    "assetBoundary": "Small roof plane, its eave/fascia, visible wooden support posts and braces only. It is not a dark filled room/polygon. Main-house plaster, separate cargo and foreground training fence must not be baked into its alpha."
+  },
+  "roofGeometryMarks": [
+    {
+      "id": "west-left eave corner",
+      "geometryPoint": [
+        947,
+        136
+      ],
+      "actualRoofInteriorWitness": {
+        "source": [
+          948,
+          136
+        ],
+        "rgba": [
+          148,
+          159,
+          184,
+          255
+        ],
+        "material": "blue-grey slate edge",
+        "scope": "roof positive",
+        "cell": [
+          59,
+          8
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-hall-foundation"
+        ]
+      },
+      "note": "Earlier rough945137 is brown wood at adjacent eave/post boundary, NOT a blue-slate positive. Use exact material witness948136; do not shift source to chase the approximate mark."
+    },
+    {
+      "id": "upper rear roof-to-wall junction",
+      "geometryPoint": [
+        971,
+        125
+      ],
+      "actualRoofInteriorWitness": {
+        "source": [
+          972,
+          126
+        ],
+        "rgba": [
+          53,
+          62,
+          67,
+          255
+        ],
+        "material": "dark blue-grey slate near upper edge",
+        "scope": "roof positive",
+        "cell": [
+          60,
+          7
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-hall-foundation"
+        ]
+      },
+      "note": "Shadowed upper boundary, roof-wall transition around970..973/y124..126. No hidden rear support foot inferred."
+    },
+    {
+      "id": "east right roof-to-main-wall junction",
+      "geometryPoint": [
+        998,
+        135
+      ],
+      "actualRoofInteriorWitness": {
+        "source": [
+          996,
+          136
+        ],
+        "rgba": [
+          58,
+          63,
+          64,
+          255
+        ],
+        "material": "dark grey-blue roof corner just inside brown attachment trim",
+        "scope": "roof positive",
+        "cell": [
+          62,
+          8
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-hall-foundation"
+        ]
+      },
+      "note": "Geometry mark is trim/attachment boundary; interior sample stays on roof. Do not include tall main-house facade beyond it."
+    },
+    {
+      "id": "nearest/front eave tip",
+      "geometryPoint": [
+        974,
+        152
+      ],
+      "actualRoofInteriorWitness": {
+        "source": [
+          974,
+          150
+        ],
+        "rgba": [
+          147,
+          164,
+          185,
+          255
+        ],
+        "material": "light blue-grey slate at nearest roof tip",
+        "scope": "roof positive",
+        "cell": [
+          60,
+          9
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-hall-foundation"
+        ]
+      },
+      "note": "152 is pale eave/trim transition, not a ground contact; the visible post continues to192."
+    }
+  ],
+  "roofReferenceQuadrilateralNotCollision": [
+    [
+      947,
+      136
+    ],
+    [
+      971,
+      125
+    ],
+    [
+      998,
+      135
+    ],
+    [
+      974,
+      152
+    ]
+  ],
+  "roofMaterialPositives": [
+    {
+      "source": [
+        963,
+        139
+      ],
+      "rgba": [
+        99,
+        116,
+        144,
+        255
+      ],
+      "material": "middle blue slate",
+      "scope": "roof positive",
+      "cell": [
+        60,
+        8
+      ],
+      "terrain": "#",
+      "auditCellOwners": [
+        "militia-hall-foundation"
+      ]
+    },
+    {
+      "source": [
+        982,
+        137
+      ],
+      "rgba": [
+        68,
+        83,
+        109,
+        255
+      ],
+      "material": "right blue slate",
+      "scope": "roof positive",
+      "cell": [
+        61,
+        8
+      ],
+      "terrain": "#",
+      "auditCellOwners": [
+        "militia-hall-foundation"
+      ]
+    }
+  ],
+  "structureMaterialPositives": [
+    {
+      "source": [
+        976,
+        155
+      ],
+      "rgba": [
+        199,
+        146,
+        83,
+        255
+      ],
+      "material": "golden/brown front fascia just below nearest roof corner",
+      "scope": "wood trim positive",
+      "cell": [
+        61,
+        9
+      ],
+      "terrain": "#",
+      "auditCellOwners": [
+        "militia-hall-foundation"
+      ]
+    },
+    {
+      "source": [
+        973,
+        177
+      ],
+      "rgba": [
+        172,
+        114,
+        51,
+        255
+      ],
+      "material": "front vertical post wood",
+      "scope": "post positive",
+      "cell": [
+        60,
+        11
+      ],
+      "terrain": "p",
+      "auditCellOwners": []
+    },
+    {
+      "source": [
+        973,
+        192
+      ],
+      "rgba": [
+        94,
+        68,
+        41,
+        255
+      ],
+      "material": "visible front post wood meets paving",
+      "scope": "certified visible ground contact",
+      "cell": [
+        60,
+        12
+      ],
+      "terrain": "p",
+      "auditCellOwners": []
+    },
+    {
+      "source": [
+        945,
+        158
+      ],
+      "rgba": [
+        68,
+        47,
+        28,
+        255
+      ],
+      "material": "left vertical support dark brown wood",
+      "scope": "visible post segment, not ground",
+      "cell": [
+        59,
+        9
+      ],
+      "terrain": "#",
+      "auditCellOwners": [
+        "militia-hall-foundation",
+        "militia-west-cargo"
+      ]
+    },
+    {
+      "source": [
+        946,
+        169
+      ],
+      "rgba": [
+        58,
+        33,
+        13,
+        255
+      ],
+      "material": "lower visible left post timber",
+      "scope": "visible post segment, not ground",
+      "cell": [
+        59,
+        10
+      ],
+      "terrain": "#",
+      "auditCellOwners": [
+        "militia-hall-foundation",
+        "militia-west-cargo"
+      ]
+    }
+  ],
+  "supports": {
+    "front": {
+      "actualInnerWoodFoot": {
+        "source": [
+          973,
+          192
+        ],
+        "rgba": [
+          94,
+          68,
+          41,
+          255
+        ],
+        "material": "front brown support toe",
+        "scope": "true visible ground contact",
+        "cell": [
+          60,
+          12
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      },
+      "visiblePostApproxX": [
+        971,
+        976
+      ],
+      "visiblePostApproxY": [
+        157,
+        193
+      ],
+      "cornerToFootSourceHeight": 40,
+      "interpretation": "The roof tip is around974152;193 is outline/shadow transition. Keep the existing true973192 material witness."
+    },
+    "left": {
+      "visibleRodAxisApprox": [
+        [
+          945,
+          143
+        ],
+        [
+          946,
+          172
+        ]
+      ],
+      "lastUnambiguousRodBodySample": [
+        946,
+        169
+      ],
+      "lowerOcclusionRegionApprox": [
+        943,
+        172,
+        950,
+        179
+      ],
+      "occluders": "Overlapping front stock and foreground fence/cargo edges. Brown pixels below172 no longer establish an isolated wood-to-ground join.",
+      "groundFoot": null,
+      "status": "Unknown/hidden. The apparently plausible extrapolated foot around946174 is NOT a certified contact."
+    },
+    "rearAttachedCorners": {
+      "groundFeet": null,
+      "status": "Upper roof meets main building; no other isolated rear column-ground joins visible. Do not invent four-post footing."
+    }
+  },
+  "cargo": {
+    "frontWoodenBox": {
+      "approxVisibleCoreRoiExclusive": [
+        978,
+        170,
+        991,
+        194
+      ],
+      "positiveTop": {
+        "source": [
+          984,
+          173
+        ],
+        "rgba": [
+          222,
+          149,
+          45,
+          255
+        ],
+        "material": "golden wooden container top",
+        "scope": "cargo positive, canopy alpha negative",
+        "cell": [
+          61,
+          10
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-hall-foundation"
+        ]
+      },
+      "positiveFront": {
+        "source": [
+          984,
+          184
+        ],
+        "rgba": [
+          121,
+          71,
+          32,
+          255
+        ],
+        "material": "dark/orange plank front of box",
+        "scope": "cargo positive, canopy alpha negative",
+        "cell": [
+          61,
+          11
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-hall-foundation"
+        ]
+      },
+      "trueVisibleFrontToe": {
+        "source": [
+          984,
+          193
+        ],
+        "rgba": [
+          98,
+          58,
+          26,
+          255
+        ],
+        "material": "wood front corner meets paving",
+        "scope": "true cargo ground contact",
+        "cell": [
+          61,
+          12
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      },
+      "visibleCompleteness": "A clearly distinguishable box-like top/front and visible ground toe; most visible silhouette readable. Not proof of a complete hidden rear footprint."
+    },
+    "rightSlattedWoodRegion": {
+      "approxRoiExclusive": [
+        990,
+        174,
+        998,
+        191
+      ],
+      "positive": {
+        "source": [
+          995,
+          181
+        ],
+        "rgba": [
+          167,
+          123,
+          65,
+          255
+        ],
+        "material": "narrow light slat with dark horizontal divisions",
+        "scope": "wood/cargo positive, not canopy pole",
+        "cell": [
+          62,
+          11
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-hall-foundation"
+        ]
+      },
+      "visibleGroundInnerToe": {
+        "source": [
+          995,
+          189
+        ],
+        "rgba": [
+          48,
+          34,
+          16,
+          255
+        ],
+        "material": "dark end of narrow wooden/slatted side at paving boundary",
+        "scope": "visible wood-to-ground contact; object membership uncertain",
+        "cell": [
+          62,
+          11
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-hall-foundation"
+        ]
+      },
+      "classificationLimit": "May be the same box right face or an adjacent narrow container; source is too small to certify separate barrel/crate identity. Do not manufacture a second complete object or a new support count. Can be kept in the bounded front cargo unit without asserting species."
+    },
+    "rearShadowedStock": {
+      "approxRoiExclusive": [
+        950,
+        157,
+        971,
+        180
+      ],
+      "positives": [
+        {
+          "source": [
+            960,
+            169
+          ],
+          "rgba": [
+            131,
+            81,
+            30,
+            255
+          ],
+          "material": "warm rounded sack/barrel-like stock surface",
+          "scope": "cargo material positive; classification unresolved",
+          "cell": [
+            60,
+            10
+          ],
+          "terrain": "#",
+          "auditCellOwners": [
+            "militia-hall-foundation"
+          ]
+        },
+        {
+          "source": [
+            965,
+            172
+          ],
+          "rgba": [
+            108,
+            73,
+            32,
+            255
+          ],
+          "material": "brown/yellow adjoining stock",
+          "scope": "cargo material positive; classification unresolved",
+          "cell": [
+            60,
+            10
+          ],
+          "terrain": "#",
+          "auditCellOwners": [
+            "militia-hall-foundation"
+          ]
+        }
+      ],
+      "groundContacts": [],
+      "status": "Behind overlapping front stock/fence; source does not expose true ground feet or enough contour for a reliable object count. Do not turn the whole dark recess into solid canopy or claim a complete pile foundation."
+    },
+    "otherStockBehindFrontCrate": {
+      "approxRoiExclusive": [
+        980,
+        159,
+        990,
+        171
+      ],
+      "status": "Partially visible dark stack/container behind the foreground box; lower contact hidden by box. No certified anchor or complete independent contour."
+    }
+  },
+  "fixedMaterialNegativesByOwner": {
+    "canopyMustBeTransparentHere": [
+      {
+        "source": [
+          969,
+          165
+        ],
+        "rgba": [
+          38,
+          22,
+          12,
+          255
+        ],
+        "material": "dark gap/stock edge immediately left of front post",
+        "scope": "negative for canopy roof/post fill; not asserted to be empty world ground",
+        "cell": [
+          60,
+          10
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-hall-foundation"
+        ]
+      },
+      {
+        "source": [
+          981,
+          156
+        ],
+        "rgba": [
+          118,
+          99,
+          87,
+          255
+        ],
+        "material": "visible grey/brown main-house backing plaster between awning supports",
+        "scope": "negative for separate canopy asset; main body belongs behind",
+        "cell": [
+          61,
+          9
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-hall-foundation"
+        ]
+      },
+      {
+        "source": [
+          984,
+          173
+        ],
+        "rgba": [
+          222,
+          149,
+          45,
+          255
+        ],
+        "material": "separate golden cargo top",
+        "scope": "negative for canopy, positive for cargo",
+        "cell": [
+          61,
+          10
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-hall-foundation"
+        ]
+      },
+      {
+        "source": [
+          984,
+          184
+        ],
+        "rgba": [
+          121,
+          71,
+          32,
+          255
+        ],
+        "material": "separate front box planks",
+        "scope": "negative for canopy, positive for cargo",
+        "cell": [
+          61,
+          11
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-hall-foundation"
+        ]
+      }
+    ],
+    "roofOnlyNegatives": [
+      {
+        "source": [
+          973,
+          177
+        ],
+        "rgba": [
+          172,
+          114,
+          51,
+          255
+        ],
+        "material": "true post below roof",
+        "scope": "not roof material",
+        "cell": [
+          60,
+          11
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      },
+      {
+        "source": [
+          969,
+          165
+        ],
+        "rgba": [
+          38,
+          22,
+          12,
+          255
+        ],
+        "material": "dark recess beneath roof",
+        "scope": "not roof material",
+        "cell": [
+          60,
+          10
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-hall-foundation"
+        ]
+      }
+    ],
+    "knownPavingNegative": [
+      {
+        "source": [
+          1000,
+          194
+        ],
+        "rgba": [
+          199,
+          168,
+          113,
+          255
+        ],
+        "material": "open paved court immediately to right of cargo",
+        "scope": "negative for canopy and bounded cargo; original fixed fence/court negative retained",
+        "cell": [
+          62,
+          12
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      }
+    ]
+  },
+  "depthAndWalkabilityBoundary": {
+    "actorFrontRegression": {
+      "cell": [
+        60,
+        12
+      ],
+      "foot": [
+        968,
+        200
+      ],
+      "headSourceWitness": [
+        969,
+        165
+      ],
+      "visibleFrontPostY": 192,
+      "frontBoxToeY": 193,
+      "rightWoodToeY": 189
+    },
+    "lowerAwningDepth": "Front visible post and attached cargo have individual local feet; do not inherit main-house old1055206 depth. Only one canopy foot is certified. A full continuous support line needs honest modeling of the hidden support, not a claim that source showed it.",
+    "doNotInferCollisionFromCell": "Front post and box toes fall in p cells, but p cells need not have every pixel clear; this report does not claim standard actor soles collide with them. Preserve canonical rules/selection."
+  },
+  "proposedAssetSplit": [
+    "Small blue roof/eaves plus post bodies as one lean-to presentation object; transparent beneath except true structural wood.",
+    "Front visible wooden cargo unit (box and unresolved right slatted region) separately grounded at its observed toes, without a new site.",
+    "Partially hidden rear stock remains explicitly unregistered until its source responsibility can be represented honestly; do not invent certified hidden feet.",
+    "Main-house backing wall remains part of independent main core; foreground training fence and rear two awnings remain separate."
+  ],
+  "referenceCrops": [
+    "single-lean-to-context-raw.png",
+    "single-lean-to-context-grid.png",
+    "roof-geometry-grid.png",
+    "cargo-and-posts-grid.png",
+    "narrow-right-container-grid.png",
+    "fixed-source-markers.png"
+  ],
+  "completionBoundary": "This delivers original material/registration constraints, not a new asset fit or native occlusion acceptance. No full rear footing certification."
+}

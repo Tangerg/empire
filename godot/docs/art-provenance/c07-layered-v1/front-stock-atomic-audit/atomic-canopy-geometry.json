@@ -1,0 +1,337 @@
+{
+  "scope": "UNBOUND static atomized single-span canopy; only roof/eaves and two posts. Old visible geometry retained; hidden left toe completed as new design, never original-certified. Wall/cargo/other awnings absent from this geometry.",
+  "texture": "barracks-front-lean-to-v2-candidate.png",
+  "supportLine": [
+    [
+      943,
+      172
+    ],
+    [
+      946,
+      174
+    ],
+    [
+      973,
+      192
+    ],
+    [
+      1001,
+      187
+    ]
+  ],
+  "supportNotes": [
+    "Left174 is a modest new hidden ground completion after original visible rod through169, not certified source foot.",
+    "Front973192 is the old certified visible wood foot.",
+    "East support interpolates toward original main-house contact1003187: virtual wall-mount projection, not new foot."
+  ],
+  "members": [
+    {
+      "id": "left-post-visible-original-rod-new-hidden-toe",
+      "polygon": [
+        [
+          944,
+          138
+        ],
+        [
+          947,
+          139
+        ],
+        [
+          948,
+          173
+        ],
+        [
+          946,
+          175
+        ],
+        [
+          944,
+          174
+        ]
+      ],
+      "uv": [
+        [
+          535,
+          800
+        ],
+        [
+          572,
+          800
+        ],
+        [
+          572,
+          1270
+        ],
+        [
+          553,
+          1300
+        ],
+        [
+          535,
+          1270
+        ]
+      ],
+      "tint": "aaa49b"
+    },
+    {
+      "id": "front-post-original-visible-foot",
+      "polygon": [
+        [
+          971.5,
+          153
+        ],
+        [
+          974.5,
+          153
+        ],
+        [
+          975,
+          191
+        ],
+        [
+          973,
+          193
+        ],
+        [
+          971.5,
+          191
+        ]
+      ],
+      "uv": [
+        [
+          535,
+          800
+        ],
+        [
+          572,
+          800
+        ],
+        [
+          572,
+          1270
+        ],
+        [
+          553,
+          1300
+        ],
+        [
+          535,
+          1270
+        ]
+      ],
+      "tint": "c6c1b8"
+    },
+    {
+      "id": "front-fascia",
+      "polygon": [
+        [
+          946,
+          136
+        ],
+        [
+          974,
+          152
+        ],
+        [
+          974,
+          155
+        ],
+        [
+          946,
+          139
+        ]
+      ],
+      "uv": [
+        [
+          535,
+          800
+        ],
+        [
+          535,
+          1300
+        ],
+        [
+          572,
+          1300
+        ],
+        [
+          572,
+          800
+        ]
+      ],
+      "tint": "bdb9b1"
+    },
+    {
+      "id": "right-fascia",
+      "polygon": [
+        [
+          974,
+          152
+        ],
+        [
+          998,
+          135
+        ],
+        [
+          998,
+          138
+        ],
+        [
+          974,
+          155
+        ]
+      ],
+      "uv": [
+        [
+          535,
+          800
+        ],
+        [
+          535,
+          1300
+        ],
+        [
+          572,
+          1300
+        ],
+        [
+          572,
+          800
+        ]
+      ],
+      "tint": "a8a39b"
+    },
+    {
+      "id": "front-eave-connected-knee",
+      "polygon": [
+        [
+          973,
+          153
+        ],
+        [
+          978,
+          153
+        ],
+        [
+          976,
+          158
+        ],
+        [
+          974,
+          158
+        ]
+      ],
+      "uv": [
+        [
+          535,
+          800
+        ],
+        [
+          535,
+          1300
+        ],
+        [
+          572,
+          1300
+        ],
+        [
+          572,
+          800
+        ]
+      ],
+      "tint": "aaa59c"
+    },
+    {
+      "id": "blue-slate-roof-original-visible-plane",
+      "polygon": [
+        [
+          947,
+          136
+        ],
+        [
+          971,
+          125
+        ],
+        [
+          998,
+          135
+        ],
+        [
+          974,
+          152
+        ]
+      ],
+      "uv": [
+        [
+          115,
+          391
+        ],
+        [
+          496,
+          127
+        ],
+        [
+          947,
+          383
+        ],
+        [
+          559,
+          655
+        ]
+      ],
+      "tint": "ffffff"
+    }
+  ],
+  "canopyMaterialNegatives": [
+    [
+      969,
+      165
+    ],
+    [
+      981,
+      156
+    ],
+    [
+      984,
+      173
+    ],
+    [
+      984,
+      184
+    ],
+    [
+      1000,
+      194
+    ]
+  ],
+  "materialPositives": [
+    [
+      963,
+      139
+    ],
+    [
+      982,
+      137
+    ],
+    [
+      973,
+      177
+    ],
+    [
+      973,
+      192
+    ],
+    [
+      945,
+      158
+    ],
+    [
+      946,
+      169
+    ],
+    [
+      976,
+      155
+    ]
+  ]
+}

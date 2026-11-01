@@ -1,0 +1,1125 @@
+{
+  "scope": "Candidate-v2 static actual-pixel measurement. Front foot and three visible front roof corners only; original obscured rear roof-wall junction NOT fitted. Hidden original left foot NOT inferred. No generation/GUI/engine/production/save activity.",
+  "asset": "/workspace/scratch/84c9fe948755/generated_images/exec-7851c835-54c1-4f99-b9f0-4aca73232cd5.png",
+  "sha256": "3f9840005164d3be3ee4657d78641c1203795163bbeea58698b0f225839445c8",
+  "actualSize": [
+    1070,
+    1470
+  ],
+  "actualMeasuredProvenLandmarks": [
+    {
+      "id": "left roof-plane/eave edge",
+      "asset": [
+        101,
+        392
+      ],
+      "rgba": [
+        6,
+        6,
+        5,
+        253
+      ],
+      "originalSource": [
+        947,
+        136
+      ]
+    },
+    {
+      "id": "right roof-plane/eave edge",
+      "asset": [
+        962,
+        382
+      ],
+      "rgba": [
+        1,
+        1,
+        1,
+        253
+      ],
+      "originalSource": [
+        998,
+        135
+      ]
+    },
+    {
+      "id": "front roof-plane eave tip",
+      "asset": [
+        560,
+        670
+      ],
+      "rgba": [
+        87,
+        89,
+        99,
+        254
+      ],
+      "originalSource": [
+        974,
+        152
+      ]
+    },
+    {
+      "id": "front wood-ground inner contact",
+      "asset": [
+        557,
+        1417
+      ],
+      "rgba": [
+        69,
+        33,
+        8,
+        252
+      ],
+      "originalSource": [
+        973,
+        192
+      ]
+    }
+  ],
+  "newDesignLeftFoot": {
+    "asset": [
+      151,
+      1103
+    ],
+    "rgba": [
+      229,
+      159,
+      57,
+      252
+    ],
+    "originalSourceFoot": null,
+    "meaning": "Visible true new wood base, but old foot hidden and excluded. Existing old visible rod points945158/946169 remain constraints; unknown ground does not allow their deletion."
+  },
+  "rearPlaneMarkNotUsedInFit": {
+    "asset": [
+      493,
+      116
+    ],
+    "rgba": [
+      3,
+      4,
+      5,
+      255
+    ],
+    "sourceVisibleJunction": [
+      971,
+      125
+    ],
+    "meaning": "Complete candidate rear roof/cap versus source visibly clipped roof-wall junction; not forced to match."
+  },
+  "frontFootExactlyAnchoredThreeFrontRoofMinimax": {
+    "sourceScale": 0.056423611111111015,
+    "sourceTranslation": [
+      941.5720486111112,
+      112.04774305555569
+    ],
+    "mappedProvenLandmarks": [
+      [
+        947.2708333333334,
+        134.1657986111112
+      ],
+      [
+        995.8515625,
+        133.60156250000009
+      ],
+      [
+        973.1692708333334,
+        149.85156250000006
+      ],
+      [
+        973.0,
+        192.0
+      ]
+    ],
+    "residualEachAxis": [
+      [
+        0.27083333333337123,
+        -1.8342013888888005
+      ],
+      [
+        -2.1484375,
+        -1.3984374999999147
+      ],
+      [
+        -0.8307291666666288,
+        -2.148437499999943
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "maxAbsAxisResidual": 2.1484375,
+    "frontFootSource": [
+      973.0,
+      192.0
+    ],
+    "ifAnchorFrontFoot": {
+      "anchorPixels": [
+        557,
+        1417
+      ],
+      "instanceScale": 0.056423611111111015,
+      "contactCanonical": [
+        60.8125,
+        12.0
+      ]
+    },
+    "newDesignLeftFootSource": [
+      950.0920138888889,
+      174.28298611111114
+    ],
+    "oldMaterialSamples": [
+      {
+        "id": "roof-positive-center",
+        "source": [
+          963,
+          139
+        ],
+        "assetFloat": [
+          379.76923076922986,
+          477.6769230769216
+        ],
+        "nearestAsset": [
+          380,
+          478
+        ],
+        "rgba": [
+          89,
+          107,
+          144,
+          253
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "roof-positive-right",
+        "source": [
+          982,
+          137
+        ],
+        "assetFloat": [
+          716.507692307692,
+          442.2307692307677
+        ],
+        "nearestAsset": [
+          717,
+          442
+        ],
+        "rgba": [
+          62,
+          75,
+          108,
+          253
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "post-positive",
+        "source": [
+          973,
+          177
+        ],
+        "assetFloat": [
+          556.9999999999994,
+          1151.1538461538457
+        ],
+        "nearestAsset": [
+          557,
+          1151
+        ],
+        "rgba": [
+          163,
+          98,
+          40,
+          253
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "left-rod-positive",
+        "source": [
+          945,
+          158
+        ],
+        "assetFloat": [
+          60.75384615384469,
+          814.4153846153837
+        ],
+        "nearestAsset": [
+          61,
+          814
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "left-rod-lower-positive",
+        "source": [
+          946,
+          169
+        ],
+        "assetFloat": [
+          78.47692307692165,
+          1009.3692307692302
+        ],
+        "nearestAsset": [
+          78,
+          1009
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "original-real-front-foot",
+        "source": [
+          973,
+          192
+        ],
+        "assetFloat": [
+          556.9999999999994,
+          1417.0000000000002
+        ],
+        "nearestAsset": [
+          557,
+          1417
+        ],
+        "rgba": [
+          69,
+          33,
+          8,
+          252
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "negative-canopy-head-gap",
+        "source": [
+          969,
+          165
+        ],
+        "assetFloat": [
+          486.1076923076916,
+          938.4769230769224
+        ],
+        "nearestAsset": [
+          486,
+          938
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "negative-canopy-main-wall",
+        "source": [
+          981,
+          156
+        ],
+        "assetFloat": [
+          698.784615384615,
+          778.9692307692299
+        ],
+        "nearestAsset": [
+          699,
+          779
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "negative-canopy-cargo-top",
+        "source": [
+          984,
+          173
+        ],
+        "assetFloat": [
+          751.9538461538459,
+          1080.261538461538
+        ],
+        "nearestAsset": [
+          752,
+          1080
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "negative-canopy-cargo-front",
+        "source": [
+          984,
+          184
+        ],
+        "assetFloat": [
+          751.9538461538459,
+          1275.2153846153844
+        ],
+        "nearestAsset": [
+          752,
+          1275
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "negative-ground-court",
+        "source": [
+          1000,
+          194
+        ],
+        "assetFloat": [
+          1035.523076923077,
+          1452.446153846154
+        ],
+        "nearestAsset": [
+          1036,
+          1452
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      }
+    ]
+  },
+  "freeFourLandmarkMinimaxDiagnostic": {
+    "sourceScale": 0.05659203980099503,
+    "sourceTranslation": [
+      942.4213308457711,
+      112.9462064676617
+    ],
+    "mappedProvenLandmarks": [
+      [
+        948.1371268656716,
+        135.13028606965176
+      ],
+      [
+        996.8628731343283,
+        134.5643656716418
+      ],
+      [
+        974.1128731343283,
+        150.86287313432837
+      ],
+      [
+        973.9430970149253,
+        193.13712686567166
+      ]
+    ],
+    "residualEachAxis": [
+      [
+        1.1371268656715756,
+        -0.8697139303482402
+      ],
+      [
+        -1.1371268656716893,
+        -0.4356343283581907
+      ],
+      [
+        0.1128731343283107,
+        -1.1371268656716325
+      ],
+      [
+        0.9430970149253426,
+        1.1371268656716609
+      ]
+    ],
+    "maxAbsAxisResidual": 1.1371268656716893,
+    "frontFootSource": [
+      973.9430970149253,
+      193.13712686567166
+    ],
+    "ifAnchorFrontFoot": {
+      "anchorPixels": [
+        557,
+        1417
+      ],
+      "instanceScale": 0.05659203980099503,
+      "contactCanonical": [
+        60.871443563432834,
+        12.071070429104479
+      ]
+    },
+    "newDesignLeftFootSource": [
+      950.9667288557214,
+      175.3672263681592
+    ],
+    "oldMaterialSamples": [
+      {
+        "id": "roof-positive-center",
+        "source": [
+          963,
+          139
+        ],
+        "assetFloat": [
+          363.6318681318692,
+          460.37912087912076
+        ],
+        "nearestAsset": [
+          364,
+          460
+        ],
+        "rgba": [
+          84,
+          103,
+          139,
+          254
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "roof-positive-right",
+        "source": [
+          982,
+          137
+        ],
+        "assetFloat": [
+          699.3681318681329,
+          425.03846153846143
+        ],
+        "nearestAsset": [
+          699,
+          425
+        ],
+        "rgba": [
+          56,
+          70,
+          103,
+          254
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "post-positive",
+        "source": [
+          973,
+          177
+        ],
+        "assetFloat": [
+          540.3351648351659,
+          1131.8516483516482
+        ],
+        "nearestAsset": [
+          540,
+          1132
+        ],
+        "rgba": [
+          196,
+          125,
+          52,
+          253
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "left-rod-positive",
+        "source": [
+          945,
+          158
+        ],
+        "assetFloat": [
+          45.56593406593518,
+          796.1153846153844
+        ],
+        "nearestAsset": [
+          46,
+          796
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "left-rod-lower-positive",
+        "source": [
+          946,
+          169
+        ],
+        "assetFloat": [
+          63.236263736264846,
+          990.4890109890108
+        ],
+        "nearestAsset": [
+          63,
+          990
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "original-real-front-foot",
+        "source": [
+          973,
+          192
+        ],
+        "assetFloat": [
+          540.3351648351659,
+          1396.9065934065932
+        ],
+        "nearestAsset": [
+          540,
+          1397
+        ],
+        "rgba": [
+          150,
+          92,
+          38,
+          253
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "negative-canopy-head-gap",
+        "source": [
+          969,
+          165
+        ],
+        "assetFloat": [
+          469.6538461538472,
+          919.8076923076922
+        ],
+        "nearestAsset": [
+          470,
+          920
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "negative-canopy-main-wall",
+        "source": [
+          981,
+          156
+        ],
+        "assetFloat": [
+          681.6978021978033,
+          760.7747252747251
+        ],
+        "nearestAsset": [
+          682,
+          761
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "negative-canopy-cargo-top",
+        "source": [
+          984,
+          173
+        ],
+        "assetFloat": [
+          734.7087912087923,
+          1061.1703296703295
+        ],
+        "nearestAsset": [
+          735,
+          1061
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "negative-canopy-cargo-front",
+        "source": [
+          984,
+          184
+        ],
+        "assetFloat": [
+          734.7087912087923,
+          1255.5439560439559
+        ],
+        "nearestAsset": [
+          735,
+          1256
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "negative-ground-court",
+        "source": [
+          1000,
+          194
+        ],
+        "assetFloat": [
+          1017.4340659340669,
+          1432.2472527472526
+        ],
+        "nearestAsset": [
+          1017,
+          1432
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      }
+    ]
+  },
+  "originalRoofWidthAndFrontFootLockedDiagnostic": {
+    "sourceScale": 0.059233449477351915,
+    "sourceTranslation": [
+      940.006968641115,
+      108.06620209059234
+    ],
+    "mappedProvenLandmarks": [
+      [
+        945.9895470383276,
+        131.28571428571428
+      ],
+      [
+        996.9895470383276,
+        130.69337979094078
+      ],
+      [
+        973.177700348432,
+        147.75261324041813
+      ],
+      [
+        973.0,
+        192.0
+      ]
+    ],
+    "residualEachAxis": [
+      [
+        -1.0104529616723994,
+        -4.714285714285722
+      ],
+      [
+        -1.0104529616723994,
+        -4.3066202090592185
+      ],
+      [
+        -0.8222996515679597,
+        -4.247386759581872
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "maxAbsAxisResidual": 4.714285714285722,
+    "frontFootSource": [
+      973.0,
+      192.0
+    ],
+    "ifAnchorFrontFoot": {
+      "anchorPixels": [
+        557,
+        1417
+      ],
+      "instanceScale": 0.059233449477351915,
+      "contactCanonical": [
+        60.8125,
+        12.0
+      ]
+    },
+    "newDesignLeftFootSource": [
+      948.9512195121952,
+      173.40069686411152
+    ],
+    "oldMaterialSamples": [
+      {
+        "id": "roof-positive-center",
+        "source": [
+          963,
+          139
+        ],
+        "assetFloat": [
+          388.17647058823485,
+          522.235294117647
+        ],
+        "nearestAsset": [
+          388,
+          522
+        ],
+        "rgba": [
+          43,
+          47,
+          55,
+          253
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "roof-positive-right",
+        "source": [
+          982,
+          137
+        ],
+        "assetFloat": [
+          708.9411764705878,
+          488.47058823529403
+        ],
+        "nearestAsset": [
+          709,
+          488
+        ],
+        "rgba": [
+          88,
+          107,
+          145,
+          254
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "post-positive",
+        "source": [
+          973,
+          177
+        ],
+        "assetFloat": [
+          556.9999999999995,
+          1163.764705882353
+        ],
+        "nearestAsset": [
+          557,
+          1164
+        ],
+        "rgba": [
+          139,
+          77,
+          23,
+          253
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "left-rod-positive",
+        "source": [
+          945,
+          158
+        ],
+        "assetFloat": [
+          84.29411764705839,
+          842.9999999999999
+        ],
+        "nearestAsset": [
+          84,
+          843
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "left-rod-lower-positive",
+        "source": [
+          946,
+          169
+        ],
+        "assetFloat": [
+          101.17647058823485,
+          1028.705882352941
+        ],
+        "nearestAsset": [
+          101,
+          1029
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "original-real-front-foot",
+        "source": [
+          973,
+          192
+        ],
+        "assetFloat": [
+          556.9999999999995,
+          1417.0
+        ],
+        "nearestAsset": [
+          557,
+          1417
+        ],
+        "rgba": [
+          69,
+          33,
+          8,
+          252
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "negative-canopy-head-gap",
+        "source": [
+          969,
+          165
+        ],
+        "assetFloat": [
+          489.4705882352937,
+          961.1764705882352
+        ],
+        "nearestAsset": [
+          489,
+          961
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "negative-canopy-main-wall",
+        "source": [
+          981,
+          156
+        ],
+        "assetFloat": [
+          692.0588235294114,
+          809.235294117647
+        ],
+        "nearestAsset": [
+          692,
+          809
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "negative-canopy-cargo-top",
+        "source": [
+          984,
+          173
+        ],
+        "assetFloat": [
+          742.7058823529408,
+          1096.235294117647
+        ],
+        "nearestAsset": [
+          743,
+          1096
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "negative-canopy-cargo-front",
+        "source": [
+          984,
+          184
+        ],
+        "assetFloat": [
+          742.7058823529408,
+          1281.941176470588
+        ],
+        "nearestAsset": [
+          743,
+          1282
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      },
+      {
+        "id": "negative-ground-court",
+        "source": [
+          1000,
+          194
+        ],
+        "assetFloat": [
+          1012.8235294117643,
+          1450.764705882353
+        ],
+        "nearestAsset": [
+          1013,
+          1451
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "outsideCanvas": false
+      }
+    ]
+  },
+  "proportionAtOriginalWidth": {
+    "originalWidth": 51,
+    "actualAssetFrontRoofSpan": 861,
+    "sourceScale": 0.059233449477351915,
+    "originalFrontRoofTipY": 152,
+    "originalFrontFootY": 192,
+    "newFootMinusEaveAssetHeight": 747,
+    "mappedHeight": 44.24738675958188,
+    "newFrontRoofTipY": 147.75261324041813,
+    "signedFrontRoofTipYError": -4.247386759581872,
+    "interpretation": "The lengthened column overcorrects at equal roof width: front eave is4.247sourcepx higher/back than original, not restored exactly to152. No nonuniform rescale proposed."
+  },
+  "visibleLeftRodMismatch": {
+    "oldPositives": [
+      [
+        945,
+        158
+      ],
+      [
+        946,
+        169
+      ]
+    ],
+    "candidateNewRodApproxAssetX": [
+      115,
+      185
+    ],
+    "newLeftFootRegisteredSource": [
+      950.0920138888889,
+      174.28298611111114
+    ],
+    "originalLeftFoot": null,
+    "result": "Old visible rod samples are transparent under front-foot-anchored fit. New vertical left post is approximatelysourcex950, whereas old visible rod is945..947. This is a changed support position, not merely unknown foot completion. Do not mark all original structural positives preserved."
+  },
+  "alphaBackground": {
+    "nonzeroPixels": 429061,
+    "solidPixelsAtLeast200": 412127,
+    "farDefinition": "More than20assetpx from anyalpha>=200 pixel",
+    "farNonzeroPixels": 67,
+    "farMaxAlpha": 1,
+    "farAbove8": 0
+  },
+  "constraintsIfRetainedForLaterWork": {
+    "realFrontContactSource": [
+      973,
+      192
+    ],
+    "visibleFrontEaveTipSource": [
+      974,
+      152
+    ],
+    "visibleLeftEaveSource": [
+      947,
+      136
+    ],
+    "visibleRightEaveSource": [
+      998,
+      135
+    ],
+    "visibleLeftRodSamples": [
+      [
+        945,
+        158
+      ],
+      [
+        946,
+        169
+      ]
+    ],
+    "hiddenLeftGroundContact": null,
+    "mustRemainSeparate": [
+      "Main-house backing wall",
+      "Foreground wooden crate and stock",
+      "Foreground fence",
+      "Rear two awnings"
+    ],
+    "mustNotDo": [
+      "Do not introduce an arbitrary registration tolerance to call all positives preserved",
+      "Do not move the old visible left rod simply because its foot was hidden",
+      "Do not stretch the whole sprite nonuniformly",
+      "Do not keep generating without a bounded redesign of these actual physical constraints"
+    ]
+  },
+  "conclusion": "Substantial improvement fromv1: foot-anchored3-front-corner minimax error2.14844px and all fixed canopy-negative points transparent; however exact original width leaves eave4.247px too high and original visible left rod positives remain absent. Report partial matches and real mismatches, not a full source-contract pass. Stop blind regeneration; any changed support design needs explicit acceptance.",
+  "references": [
+    "front-foot-grid.png",
+    "left-foot-grid.png",
+    "front-eave-grid.png",
+    "left-eave-grid.png",
+    "right-plane-grid.png",
+    "roof-grid.png",
+    "measured-landmarks.png"
+  ],
+  "separateAtomicMaterialStudy": "atomic-material-uv-suggestions.json"
+}

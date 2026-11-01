@@ -1,0 +1,64 @@
+{
+  "levelId": "c01-07",
+  "levelSourceSha256": "bc0482afd358ed7705dd674448d8cbb7b691c4ef368496f58ad969c98e2f6029",
+  "pixelSize": [
+    1536,
+    1024
+  ],
+  "originPixels": [
+    0,
+    0
+  ],
+  "cellXPixels": [
+    16,
+    0
+  ],
+  "cellYPixels": [
+    0,
+    16
+  ],
+  "worldScale": 1.0,
+  "resourcePath": "res://assets/native/c07-layered-v1/ground-clean-v1-candidate.png",
+  "objectCatalogPath": "res://data/scenes/c01-07-front-stock-preview-objects.json",
+  "objects": [
+    {
+      "id": "north-blue-wooden-stand",
+      "assetId": "blue-roof-wooden-stand-v1",
+      "contact": [
+        56.25624806454001,
+        13.079207787348258
+      ],
+      "scale": 0.04099740147833,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "militia-barracks-core",
+      "assetId": "militia-barracks-core-v2",
+      "contact": [
+        62.657894736842124,
+        11.657894736842103
+      ],
+      "scale": 0.15789473684210353,
+      "selectionCell": [
+        65,
+        14
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "barracks-front-cargo",
+      "assetId": "barracks-front-cargo-v1",
+      "contact": [
+        61.5,
+        12.0625
+      ],
+      "scale": 0.02,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    }
+  ]
+}

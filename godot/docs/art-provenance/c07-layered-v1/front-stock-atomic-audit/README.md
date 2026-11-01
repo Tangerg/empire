@@ -1,0 +1,7 @@
+# C07 front lean-to/cargo static engineering candidate
+
+Not production-bound; not full C07 art acceptance or gameplay. Both complete generated canopy sprites failed original geometry registration and are only retained as source material. v1 posts short by15.72source px at matched width; v2 keeps fixed negative alpha but old left visible pole lost and front roof registration differs2.15px with true foot locked. No further blind whole-object regeneration.
+
+Atomic canopy reuses opaque UV from v2 and keeps original visible roof quadrilateral and posts. Its single true original front foot973192 remains; left ground completion is explicitly new design after visible old rod, not certified old foot. Local support interpolation toward main body is virtual wall attachment, not a claimed extra foot. Real transparent under-roof holes preserve independent main wall/cargo owners. The cargo is one bounded new design at original984193 toe; right source slat membership uncertain, not a second object.
+
+Initial native combined test:12/12 material witnesses pass; original60,12 head270/270 visible, back60,11 canopy overlap122/122 hidden and forced-background5/5reveals. Initial overly broad combined assertion found1/83canopy-overlap actor pixels hidden by another foreground object; attribution test in progress instead of removing true fence occlusion. Final results to follow. 276main +26cargo depth strips plus atomic columns: PERFORMANCE NOT accepted. Other awnings/rear stock/foundation coverage are unfinished.

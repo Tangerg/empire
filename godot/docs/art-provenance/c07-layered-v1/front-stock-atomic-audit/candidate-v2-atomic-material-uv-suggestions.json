@@ -1,0 +1,167 @@
+{
+  "scope": "Static actual-pixel material UV study only. No production geometry constructed, no generation/GUI/engine/save action. v2 failed whole-sprite source-registration history remains unchanged. Atomic roof/wood geometry is a separately authorized parent design.",
+  "asset": "/workspace/scratch/84c9fe948755/generated_images/exec-7851c835-54c1-4f99-b9f0-4aca73232cd5.png",
+  "sha256": "3f9840005164d3be3ee4657d78641c1203795163bbeea58698b0f225839445c8",
+  "actualSize": [
+    1070,
+    1470
+  ],
+  "roof": {
+    "uvQuadPixelsClockwiseLeftBackRightFront": [
+      [
+        115,
+        391
+      ],
+      [
+        496,
+        127
+      ],
+      [
+        947,
+        383
+      ],
+      [
+        559,
+        655
+      ]
+    ],
+    "correspondingVisibleSourceGeometryPoints": [
+      [
+        947,
+        136
+      ],
+      [
+        971,
+        125
+      ],
+      [
+        998,
+        135
+      ],
+      [
+        974,
+        152
+      ]
+    ],
+    "cornerRgba": [
+      [
+        220,
+        213,
+        219,
+        253
+      ],
+      [
+        44,
+        57,
+        87,
+        253
+      ],
+      [
+        92,
+        100,
+        116,
+        254
+      ],
+      [
+        127,
+        142,
+        174,
+        254
+      ]
+    ],
+    "classifiedMaterial": "Only blue-grey slate roof plane with its tile grout/highlights. Inset from thickness face, wood eaves, braces, posts and raised rear cap.",
+    "rasterizedQuadPixelCount": 220419,
+    "alphaRange": [
+      247,
+      254
+    ],
+    "pixelsBelowAlpha200": 0,
+    "meaning": "UV mapping is material reuse, not proof that whole candidate roof or its old post spacing matched the source. The original upper point971125 is the visible roof-wall junction, not an authenticated hidden full rear corner."
+  },
+  "wood": {
+    "woodUvRectangleExclusive": [
+      532,
+      790,
+      552,
+      1380
+    ],
+    "pixelSize": [
+      20,
+      590
+    ],
+    "pixelCount": 11800,
+    "alphaRange": [
+      253,
+      254
+    ],
+    "rgbChannelRanges": {
+      "min": [
+        144,
+        87,
+        34
+      ],
+      "max": [
+        248,
+        177,
+        84
+      ]
+    },
+    "woodGrainAxisPixels": [
+      [
+        542,
+        790
+      ],
+      [
+        542,
+        1379
+      ]
+    ],
+    "classifiedMaterial": "Continuous warm vertical wood grain on front-post left/front face interior. No transparent margin, black outline, ground toe, cap, bracket, or roof.",
+    "useBoundary": "Map its longitudinal grain along each parent-authored post/beam materialAxis. The UV strip does not define geometry, collision, or a new anchor."
+  },
+  "frozenGeometryConstraintsUnaffected": {
+    "frontTrueGroundFoot": [
+      973,
+      192
+    ],
+    "leftVisibleRodPositives": [
+      [
+        945,
+        158
+      ],
+      [
+        946,
+        169
+      ]
+    ],
+    "leftHiddenGroundFoot": null,
+    "sourceMaterialNegativesForCanopy": [
+      [
+        969,
+        165
+      ],
+      [
+        981,
+        156
+      ],
+      [
+        984,
+        173
+      ],
+      [
+        984,
+        184
+      ],
+      [
+        1000,
+        194
+      ]
+    ],
+    "note": "Preserve real visible left rod even though its hidden foot requires explicit new-design completion. Material UV opacity is not native geometry/Pick/depth acceptance."
+  },
+  "references": [
+    "atomic-material-uv-regions.png",
+    "wood-strip-source-crop.png"
+  ],
+  "visualQualification": "Actual quadrilateral and rectangle viewed over the original candidate PNG. Final texture orientation, seams, slat density, front/back actor coverage and transparent apertures require parent native preview; no such acceptance claimed here."
+}
