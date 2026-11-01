@@ -1,0 +1,77 @@
+{
+  "leftPhysicalColumns": 101,
+  "rightPhysicalColumns": 148,
+  "withdrawn": "Initial whole-image low(x) used upper/unowned pixels at left521..525 and right760, not valid physical supports. This table supersedes that claim.",
+  "components": [
+    {
+      "name": "NWLeftJambSurface",
+      "first": {
+        "uv": [
+          420,
+          1119
+        ],
+        "nativeSourceFoot": [
+          115.7133866,
+          158.71132866529413
+        ],
+        "alpha": 218
+      },
+      "last": {
+        "uv": [
+          520,
+          1081
+        ],
+        "nativeSourceFoot": [
+          128.8378238857143,
+          153.09098140411766
+        ],
+        "alpha": 135
+      },
+      "virtualEndpoints": [
+        [
+          114,
+          157.74589101452014
+        ],
+        [
+          132,
+          150.24012789179577
+        ]
+      ]
+    },
+    {
+      "name": "NWRightJambSurface",
+      "first": {
+        "uv": [
+          761,
+          919
+        ],
+        "nativeSourceFoot": [
+          165.17869997,
+          130.70842448336842
+        ],
+        "alpha": 158
+      },
+      "last": {
+        "uv": [
+          908,
+          981
+        ],
+        "nativeSourceFoot": [
+          186.50245676,
+          141.0275042103158
+        ],
+        "alpha": 206
+      },
+      "virtualEndpoints": [
+        [
+          164,
+          129.4912616722421
+        ],
+        [
+          188,
+          145.49491214943168
+        ]
+      ]
+    }
+  ]
+}

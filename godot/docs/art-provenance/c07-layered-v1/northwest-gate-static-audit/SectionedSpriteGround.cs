@@ -46,6 +46,7 @@ public partial class SectionedSpriteGround : BoardGroundView
                     var pieces=new List<Vector2[]>{clip};
                     if(geometry["excludePolygons"] is JsonArray exclusions)foreach(var exclusion in exclusions){var cut=exclusion!.AsArray().Select(p=>Pair(p!)).ToArray();pieces=pieces.SelectMany(p=>Geometry2D.ClipPolygons(p,cut)).ToList();}
                     foreach(var piece in pieces){if(piece.Length<3)continue;
+                    if(Geometry2D.IsPolygonClockwise(piece)!=Geometry2D.IsPolygonClockwise(clip))throw new Exception("Section exclusion produced an unsupported inner ring; cannot render it as a filled polygon");
                     var local=piece.Select(p=>p*scale+translation-contact).ToArray();shapes.Add(local);
                     node.AddChild(new Polygon2D{Polygon=local,UV=piece,Texture=texture,TextureFilter=CanvasItem.TextureFilterEnum.Linear});}
                 }
@@ -74,7 +75,7 @@ public partial class SectionedSpriteGround : BoardGroundView
             return polygons.Any(p=>Geometry2D.IsPointInPolygon(local,p))&&sampler.IsPixelOpaque((Source(global)-translation)/scale);
         }
         public override bool ContainsPointer(Vector2 global)=>Covers(global)&&Geometry2D.IsPointInPolygon(Source(global),pointer);
-        public override bool IntersectsPointer(Vector2[] globalPolygon)=>Geometry2D.IntersectPolygons(globalPolygon.Select(Source).ToArray(),pointer).Count>0;
+        public override bool IntersectsPointer(Vector2[] globalPolygon){if(pointer.Length<3)return false;var query=globalPolygon.Select(Node.ToLocal).ToArray();var localPointer=pointer.Select(p=>p-contact).ToArray();return polygons.Any(p=>Geometry2D.IntersectPolygons(query,p).Any(region=>Geometry2D.IntersectPolygons(region,localPointer).Count>0));}
         public override Rect2 GlobalBounds{get{var p=polygons.SelectMany(p=>p).Select(Node.ToGlobal).ToArray();var r=new Rect2(p[0],Vector2.Zero);foreach(var v in p)r=r.Expand(v);return r;}}
         protected override Vector2 ParentFrontOffset=>Vector2.Zero;
     }
