@@ -1,0 +1,214 @@
+{
+  "scope": "Read-only targeted north-red v4 recheck. Same uniform-scale/translation minimax and unchanged original overall6vertex ground polygon; full actual lower alpha includes annex, steps and leftmost base. Not a main-house-only fit.",
+  "assetPath": "/workspace/scratch/84c9fe948755/generated_images/exec-3afd00ef-6f88-424b-9795-89bd727941e8.png",
+  "assetSha256": "60e72d74b984c37001a8a6feb37e3dd5dafa358405a10e78c7e9ccc570631697",
+  "pixelSize": [
+    1536,
+    1024
+  ],
+  "physicalFeet": [
+    [
+      230.0,
+      814.0
+    ],
+    [
+      730.0,
+      992.0
+    ],
+    [
+      1400.0,
+      746.0
+    ]
+  ],
+  "physicalFeetAlpha": [
+    253,
+    251,
+    252
+  ],
+  "footRoles": [
+    "left main stone foot",
+    "front main stone foot",
+    "outer-right annex foot"
+  ],
+  "sourceOverallLowerVertices": [
+    [
+      720.0,
+      222.0
+    ],
+    [
+      785.0,
+      251.0
+    ],
+    [
+      851.0,
+      228.0
+    ]
+  ],
+  "sourceGroundPolygon": [
+    [
+      720.0,
+      185.0
+    ],
+    [
+      785.0,
+      164.0
+    ],
+    [
+      851.0,
+      189.0
+    ],
+    [
+      851.0,
+      228.0
+    ],
+    [
+      785.0,
+      251.0
+    ],
+    [
+      720.0,
+      222.0
+    ]
+  ],
+  "completeLowerContourXRange": [
+    196,
+    1410
+  ],
+  "completeLowerContourCount": 1215,
+  "fits": [
+    {
+      "completeLowContourIncluded": false,
+      "sourceScale": 0.10387323943661941,
+      "instanceWorldScale": 0.12984154929577427,
+      "sourceTranslation": [
+        702.6408450704228,
+        143.97887323943678
+      ],
+      "anchorPixels": [
+        730.0,
+        992.0
+      ],
+      "sourceFront": [
+        778.4683098591549,
+        247.02112676056322
+      ],
+      "transformedFeet": [
+        [
+          726.5316901408452,
+          228.531690140845
+        ],
+        [
+          778.4683098591549,
+          247.02112676056322
+        ],
+        [
+          848.0633802816899,
+          221.46830985915486
+        ]
+      ],
+      "footErrorsXY": [
+        [
+          6.531690140845171,
+          6.531690140845001
+        ],
+        [
+          -6.531690140845058,
+          -3.97887323943678
+        ],
+        [
+          -2.936619718310112,
+          -6.531690140845143
+        ]
+      ],
+      "minimaxObjective": 6.53169014084515,
+      "wholeLowContourMaximumLInfinityOutside": 3.894946808510518,
+      "wholeLowContourWitness": {
+        "pixel": [
+          321,
+          874
+        ],
+        "alpha": 205,
+        "source": [
+          735.9841549295776,
+          234.76408450704213
+        ]
+      },
+      "strict5Pass": false
+    },
+    {
+      "completeLowContourIncluded": true,
+      "sourceScale": 0.10387323943661972,
+      "instanceWorldScale": 0.12984154929577466,
+      "sourceTranslation": [
+        702.6408450704225,
+        143.9788732394366
+      ],
+      "anchorPixels": [
+        730.0,
+        992.0
+      ],
+      "sourceFront": [
+        778.4683098591549,
+        247.0211267605634
+      ],
+      "transformedFeet": [
+        [
+          726.5316901408451,
+          228.53169014084506
+        ],
+        [
+          778.4683098591549,
+          247.0211267605634
+        ],
+        [
+          848.0633802816901,
+          221.4683098591549
+        ]
+      ],
+      "footErrorsXY": [
+        [
+          6.531690140845058,
+          6.531690140845058
+        ],
+        [
+          -6.531690140845058,
+          -3.9788732394366093
+        ],
+        [
+          -2.9366197183098848,
+          -6.531690140845086
+        ]
+      ],
+      "minimaxObjective": 6.531690140845072,
+      "wholeLowContourMaximumLInfinityOutside": 3.8949468085106367,
+      "wholeLowContourWitness": {
+        "pixel": [
+          321,
+          874
+        ],
+        "alpha": 205,
+        "source": [
+          735.9841549295775,
+          234.76408450704224
+        ]
+      },
+      "strict5Pass": false
+    }
+  ],
+  "verdict": "FAIL both fixed3overallfoot and full-low-contour solves; do not adopt. Annex still extends overall width while putting its outer-right foot above left-foot height, opposite the source envelope lower-end relationship.",
+  "limits": [
+    "No new point selection based on fit success. x230/x730 retain the previous same physical main-base landmarks; x1400 is actual new outer annex foot identified from viewed image, not the old main-right1250 point. All3 y are3px inside alpha>=200 lower outline.",
+    "Entire real lower profile included so an inset nominal corner cannot conceal outlying stones. Alpha>=200 point list saved separately.",
+    "Original furnishings hide parts of rear foundation. This does not assert exact hidden geometry, source building function or runtime door/input behavior."
+  ],
+  "independentStrict5ImpossibilityProof": {
+    "fixedLeftToFrontXAsset": 500,
+    "requiredSourceLeftToFrontX": 65,
+    "eachFootPerAxisTolerance": 5,
+    "horizontalRequiresSourceScaleAtLeast": 0.11,
+    "fixedRightMinusLeftYAsset": -68,
+    "requiredSourceRightMinusLeftY": 6,
+    "verticalRequiresSourceScaleAtMost": 0.058823529411764705,
+    "explanation": "With both endpoints within5, 500*s must be at least65-10=55. But outer-right is68asset px above left while source requires6px below: 6+68*s must be<=10. Thus s>=.11 and s<=.058823529 are incompatible. This independently proves strict failure without trusting the LP or choosing a different foot."
+  }
+}

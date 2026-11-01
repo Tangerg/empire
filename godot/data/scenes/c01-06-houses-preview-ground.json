@@ -1,0 +1,100 @@
+{
+  "levelId": "c01-06",
+  "levelSourceSha256": "5563bc87705ce5b5b8dd4ab6032ba5b2c23c6de17e61a48c27661d7c34da717e",
+  "pixelSize": [
+    1643,
+    957
+  ],
+  "worldScale": 1.25,
+  "originPixels": [
+    20,
+    30
+  ],
+  "cellXPixels": [
+    32,
+    0
+  ],
+  "cellYPixels": [
+    0,
+    28
+  ],
+  "resourcePath": "res://assets/native/c06-layered-v1/ground-clean-v4-candidate.png",
+  "objectCatalogPath": "res://data/scenes/c01-06-houses-preview-objects.json",
+  "objects": [
+    {
+      "id": "northwest-slate-house",
+      "assetId": "slate-cottage-dual-door-night-v2",
+      "contact": [
+        13.407674501424502,
+        7.784086284086284
+      ],
+      "scale": 0.15313390313390313,
+      "selectionCell": [
+        13,
+        8
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "northeast-slate-house",
+      "assetId": "slate-cottage-left-night-v1",
+      "contact": [
+        39.054934954751126,
+        9.77706851971558
+      ],
+      "scale": 0.1515837104072398,
+      "selectionCell": [
+        39,
+        10
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "southeast-slate-house",
+      "assetId": "slate-cottage-left-night-v1",
+      "contact": [
+        35.493848981900456,
+        24.02868455074337
+      ],
+      "scale": 0.16063348416289594,
+      "selectionCell": [
+        35,
+        25
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "north-red-house",
+      "assetId": "red-cottage-inset-wing-night-v5",
+      "contact": [
+        23.854492807697195,
+        7.779129847035982
+      ],
+      "scale": 0.14733900673186837,
+      "selectionCell": [
+        23,
+        8
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "southwest-red-house",
+      "assetId": "red-cottage-dual-door-night-v2",
+      "contact": [
+        12.66066366445402,
+        23.75504418794745
+      ],
+      "scale": 0.18272445273072133,
+      "selectionCell": [
+        12,
+        24
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    }
+  ]
+}

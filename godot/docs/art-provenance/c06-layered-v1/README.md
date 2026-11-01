@@ -86,3 +86,20 @@ wing foot with a higher main-body sample. Both northern ridge rock fits also fai
 the combined-outline transform (4.86px), not the three-corner fit whose door steps
 extend outside. These are exposed-foot geometry results only, not native selection,
 hidden-rear responsibility, complete scenery acceptance or gameplay.
+
+## Explicit five-house native preview (not formal C06)
+
+`c01-06-houses-preview.json` is runtimeReady=false and not selected by campaign.
+It binds only five registered house candidates to clean ground v4 for same-camera
+native proportions review. Other standing objects are intentionally absent; the
+existing canonical outpost fallback bodies (square towers) remain visible where
+new shelters are not yet bound. They are not new map features or approved art.
+The final independent scene must replace them through existing ownership, not add
+new collision or treat this partial image as full visual acceptance.
+
+North red inset-wing v5 full lower-edge fit is3.184364px. Northwest and opposite
+slate fits and southwest complete-edge fit use stored exact parameters. Initial
+facade pointer contours in this partial preview still require actual door/roof,
+entrance, neighbor-unit and all-wall responsibility tests before formal adoption.
+New short shelter and separate NW ridge remain unbound; their failed whole-height
+or whole-edge constraints are recorded rather than silently using only good feet.

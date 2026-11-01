@@ -1,0 +1,1064 @@
+{
+  "assetPath": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/c06-layered-v1/watch-shelter-night-v1.png",
+  "sha256": "065a62d3b94fb57de276adaa8a0f30a99ae9af0e1da5a65428a63f44921ed766",
+  "pixelSize": [
+    1254,
+    1254
+  ],
+  "fourActualMainPostFeet": [
+    [
+      215.0,
+      1022.0
+    ],
+    [
+      520.0,
+      1162.0
+    ],
+    [
+      1055.0,
+      988.0
+    ],
+    [
+      760.0,
+      862.0
+    ]
+  ],
+  "actualFeetAlpha": [
+    253,
+    253,
+    251,
+    252
+  ],
+  "roles": [
+    "left exposed main stone base",
+    "front main stone base",
+    "right exposed main stone base",
+    "rear main stone base"
+  ],
+  "actualRoofTopWitness": {
+    "pixel": [
+      760,
+      130
+    ],
+    "alpha": 252
+  },
+  "clearOpenFloorPixelWitnesses": [
+    {
+      "pixel": [
+        650,
+        1050
+      ],
+      "alpha": 0
+    },
+    {
+      "pixel": [
+        850,
+        1050
+      ],
+      "alpha": 0
+    },
+    {
+      "pixel": [
+        850,
+        950
+      ],
+      "alpha": 0
+    },
+    {
+      "pixel": [
+        920,
+        1000
+      ],
+      "alpha": 0
+    },
+    {
+      "pixel": [
+        600,
+        1100
+      ],
+      "alpha": 0
+    },
+    {
+      "pixel": [
+        700,
+        1000
+      ],
+      "alpha": 0
+    }
+  ],
+  "method": "Fixed actual new4main-post feet alpha>=200 viewed before fit. Fit only3visible original main supports; rear original supports are partly hidden by cargo/roof and are NOT claimed as4audited original feet. Original visible support coordinates are manual source-pixel observations, approximately1\u20132px localization uncertainty, not new immutable collision/audit data. Same5px per-axis used for numerical reference, no point moved to gain pass.",
+  "cases": [
+    {
+      "id": "northwest-watch-shelter",
+      "sourceVisibleMainFeet": [
+        [
+          186,
+          186
+        ],
+        [
+          223,
+          198
+        ],
+        [
+          276,
+          175
+        ]
+      ],
+      "sourceRoofTopApproximate": [
+        247,
+        116
+      ],
+      "sourceOpening": "right-front long side",
+      "sourceRearFoot": "Not certified: partially hidden by original cargo/structure. Transformed candidate rear foot is prediction only.",
+      "sourceSelectionCell": [
+        6,
+        6
+      ],
+      "sourceApproach": [
+        7,
+        6
+      ],
+      "oldRegisteredGroundFront": [
+        222,
+        201
+      ],
+      "preferredFootAndOpeningOrientationCandidate": "original",
+      "fits": [
+        {
+          "orientation": "original",
+          "sourceScale": 0.1124780316344464,
+          "instanceWorldScale": 0.140597539543058,
+          "anchorPixelsInThisOrientation": [
+            520.0,
+            1162.0
+          ],
+          "sourceTranslation": [
+            160.92355008787348,
+            67.45957820738134
+          ],
+          "sourceFront": [
+            219.4121265377856,
+            198.15905096660805
+          ],
+          "fractionalContact": [
+            6.2316289543058,
+            6.005680391664574
+          ],
+          "predictedSourceFourMainFeet": [
+            [
+              185.10632688927944,
+              182.41212653778558
+            ],
+            [
+              219.4121265377856,
+              198.15905096660805
+            ],
+            [
+              279.5878734622144,
+              178.5878734622144
+            ],
+            [
+              246.40685413005275,
+              164.41564147627415
+            ]
+          ],
+          "threeVisibleFootMinimaxPerAxisError": 3.587873462214417,
+          "numericallyWithin5OfFixedVisibleFeet": true,
+          "candidateRoofTopSourceY": 82.08172231985938,
+          "candidateTopAboveOriginalApproxPixels": 33.91827768014062,
+          "siteAndApproachActualAlphaSamples": [
+            {
+              "role": "cell",
+              "cell": [
+                6,
+                6
+              ],
+              "sourcePixel": [
+                228,
+                212
+              ],
+              "actualOriginalAssetPixel": [
+                596,
+                1285
+              ],
+              "alpha": 0
+            },
+            {
+              "role": "approach",
+              "cell": [
+                7,
+                6
+              ],
+              "sourcePixel": [
+                260,
+                212
+              ],
+              "actualOriginalAssetPixel": [
+                881,
+                1285
+              ],
+              "alpha": 0
+            }
+          ]
+        },
+        {
+          "orientation": "virtual-horizontal-mirror",
+          "sourceScale": 0.10714285714285718,
+          "instanceWorldScale": 0.13392857142857148,
+          "anchorPixelsInThisOrientation": [
+            733.0,
+            1162.0
+          ],
+          "sourceTranslation": [
+            154.625,
+            69.98214285714285
+          ],
+          "sourceFront": [
+            233.1607142857143,
+            194.4821428571429
+          ],
+          "fractionalContact": [
+            6.661272321428572,
+            5.87436224489796
+          ],
+          "predictedSourceFourMainFeet": [
+            [
+              175.83928571428572,
+              175.83928571428572
+            ],
+            [
+              233.1607142857143,
+              194.4821428571429
+            ],
+            [
+              265.8392857142858,
+              179.4821428571429
+            ],
+            [
+              207.44642857142858,
+              162.33928571428572
+            ]
+          ],
+          "threeVisibleFootMinimaxPerAxisError": 10.160714285714283,
+          "numericallyWithin5OfFixedVisibleFeet": false,
+          "candidateRoofTopSourceY": 83.91071428571428,
+          "candidateTopAboveOriginalApproxPixels": 32.08928571428572,
+          "siteAndApproachActualAlphaSamples": [
+            {
+              "role": "cell",
+              "cell": [
+                6,
+                6
+              ],
+              "sourcePixel": [
+                228,
+                212
+              ],
+              "actualOriginalAssetPixel": [
+                568,
+                1325
+              ],
+              "alpha": 0
+            },
+            {
+              "role": "approach",
+              "cell": [
+                7,
+                6
+              ],
+              "sourcePixel": [
+                260,
+                212
+              ],
+              "actualOriginalAssetPixel": [
+                270,
+                1325
+              ],
+              "alpha": 0
+            }
+          ]
+        }
+      ],
+      "disposition": "NOT READY as a shared5shelter registration. Three exposed supports can numerically fit in the stated orientation, but overall height grows about25\u201335source pixels and rear support/all-lane/actor-depth not certified."
+    },
+    {
+      "id": "north-supply-shelter",
+      "sourceVisibleMainFeet": [
+        [
+          886,
+          237
+        ],
+        [
+          928,
+          239
+        ],
+        [
+          945,
+          227
+        ]
+      ],
+      "sourceRoofTopApproximate": [
+        907,
+        182
+      ],
+      "sourceOpening": "right-front short side",
+      "sourceRearFoot": "Not certified: partially hidden by original cargo/structure. Transformed candidate rear foot is prediction only.",
+      "sourceSelectionCell": [
+        27,
+        7
+      ],
+      "sourceApproach": [
+        28,
+        7
+      ],
+      "oldRegisteredGroundFront": [
+        912,
+        246
+      ],
+      "preferredFootAndOpeningOrientationCandidate": null,
+      "fits": [
+        {
+          "orientation": "original",
+          "sourceScale": 0.07023809523809524,
+          "instanceWorldScale": 0.08779761904761904,
+          "anchorPixelsInThisOrientation": [
+            520.0,
+            1162.0
+          ],
+          "sourceTranslation": [
+            881.1875,
+            154.92797619047622
+          ],
+          "sourceFront": [
+            917.7113095238095,
+            236.5446428571429
+          ],
+          "fractionalContact": [
+            28.053478422619047,
+            7.3765943877551035
+          ],
+          "predictedSourceFourMainFeet": [
+            [
+              896.2886904761905,
+              226.71130952380955
+            ],
+            [
+              917.7113095238095,
+              236.5446428571429
+            ],
+            [
+              955.2886904761905,
+              224.3232142857143
+            ],
+            [
+              934.5684523809524,
+              215.4732142857143
+            ]
+          ],
+          "threeVisibleFootMinimaxPerAxisError": 10.288690476190476,
+          "numericallyWithin5OfFixedVisibleFeet": false,
+          "candidateRoofTopSourceY": 164.0589285714286,
+          "candidateTopAboveOriginalApproxPixels": 17.941071428571405,
+          "siteAndApproachActualAlphaSamples": [
+            {
+              "role": "cell",
+              "cell": [
+                27,
+                7
+              ],
+              "sourcePixel": [
+                900,
+                240
+              ],
+              "actualOriginalAssetPixel": [
+                268,
+                1211
+              ],
+              "alpha": 0
+            },
+            {
+              "role": "approach",
+              "cell": [
+                28,
+                7
+              ],
+              "sourcePixel": [
+                932,
+                240
+              ],
+              "actualOriginalAssetPixel": [
+                723,
+                1211
+              ],
+              "alpha": 0
+            }
+          ]
+        },
+        {
+          "orientation": "virtual-horizontal-mirror",
+          "sourceScale": 0.05623901581722318,
+          "instanceWorldScale": 0.07029876977152898,
+          "anchorPixelsInThisOrientation": [
+            733.0,
+            1162.0
+          ],
+          "sourceTranslation": [
+            880.8207381370827,
+            175.47978910369073
+          ],
+          "sourceFront": [
+            922.0439367311072,
+            240.82952548330405
+          ],
+          "fractionalContact": [
+            28.1888730228471,
+            7.529625910118002
+          ],
+          "predictedSourceFourMainFeet": [
+            [
+              891.9560632688929,
+              231.04393673110724
+            ],
+            [
+              922.0439367311072,
+              240.82952548330405
+            ],
+            [
+              939.1968365553604,
+              232.95606326889282
+            ],
+            [
+              908.5465729349737,
+              223.95782073813712
+            ]
+          ],
+          "threeVisibleFootMinimaxPerAxisError": 5.956063268892798,
+          "numericallyWithin5OfFixedVisibleFeet": false,
+          "candidateRoofTopSourceY": 182.79086115992976,
+          "candidateTopAboveOriginalApproxPixels": -0.7908611599297615,
+          "siteAndApproachActualAlphaSamples": [
+            {
+              "role": "cell",
+              "cell": [
+                27,
+                7
+              ],
+              "sourcePixel": [
+                900,
+                240
+              ],
+              "actualOriginalAssetPixel": [
+                912,
+                1147
+              ],
+              "alpha": 0
+            },
+            {
+              "role": "approach",
+              "cell": [
+                28,
+                7
+              ],
+              "sourcePixel": [
+                932,
+                240
+              ],
+              "actualOriginalAssetPixel": [
+                343,
+                1147
+              ],
+              "alpha": 0
+            }
+          ]
+        }
+      ],
+      "disposition": "NOT READY as a shared5shelter registration. Both orientations exceed5; virtual mirror also reverses its narrow-right opening."
+    },
+    {
+      "id": "northeast-watch-shelter",
+      "sourceVisibleMainFeet": [
+        [
+          1470,
+          284
+        ],
+        [
+          1531,
+          303
+        ],
+        [
+          1554,
+          285
+        ]
+      ],
+      "sourceRoofTopApproximate": [
+        1509,
+        225
+      ],
+      "sourceOpening": "left-front long side",
+      "sourceRearFoot": "Not certified: partially hidden by original cargo/structure. Transformed candidate rear foot is prediction only.",
+      "sourceSelectionCell": [
+        46,
+        9
+      ],
+      "sourceApproach": [
+        45,
+        9
+      ],
+      "oldRegisteredGroundFront": [
+        1518,
+        298
+      ],
+      "preferredFootAndOpeningOrientationCandidate": "virtual-horizontal-mirror",
+      "fits": [
+        {
+          "orientation": "original",
+          "sourceScale": 0.1,
+          "instanceWorldScale": 0.125,
+          "anchorPixelsInThisOrientation": [
+            520.0,
+            1162.0
+          ],
+          "sourceTranslation": [
+            1463.75,
+            171.54999999999995
+          ],
+          "sourceFront": [
+            1515.75,
+            287.74999999999994
+          ],
+          "fractionalContact": [
+            46.7421875,
+            9.20535714285714
+          ],
+          "predictedSourceFourMainFeet": [
+            [
+              1485.25,
+              273.74999999999994
+            ],
+            [
+              1515.75,
+              287.74999999999994
+            ],
+            [
+              1569.25,
+              270.34999999999997
+            ],
+            [
+              1539.75,
+              257.74999999999994
+            ]
+          ],
+          "threeVisibleFootMinimaxPerAxisError": 15.25,
+          "numericallyWithin5OfFixedVisibleFeet": false,
+          "candidateRoofTopSourceY": 184.54999999999995,
+          "candidateTopAboveOriginalApproxPixels": 40.450000000000045,
+          "siteAndApproachActualAlphaSamples": [
+            {
+              "role": "cell",
+              "cell": [
+                46,
+                9
+              ],
+              "sourcePixel": [
+                1508,
+                296
+              ],
+              "actualOriginalAssetPixel": [
+                442,
+                1245
+              ],
+              "alpha": 0
+            },
+            {
+              "role": "approach",
+              "cell": [
+                45,
+                9
+              ],
+              "sourcePixel": [
+                1476,
+                296
+              ],
+              "actualOriginalAssetPixel": [
+                122,
+                1245
+              ],
+              "alpha": 0
+            }
+          ]
+        },
+        {
+          "orientation": "virtual-horizontal-mirror",
+          "sourceScale": 0.10000000000000002,
+          "instanceWorldScale": 0.12500000000000003,
+          "anchorPixelsInThisOrientation": [
+            733.0,
+            1162.0
+          ],
+          "sourceTranslation": [
+            1453.95,
+            183.04999999999998
+          ],
+          "sourceFront": [
+            1527.25,
+            299.25
+          ],
+          "fractionalContact": [
+            47.1015625,
+            9.616071428571429
+          ],
+          "predictedSourceFourMainFeet": [
+            [
+              1473.75,
+              281.85
+            ],
+            [
+              1527.25,
+              299.25
+            ],
+            [
+              1557.75,
+              285.25
+            ],
+            [
+              1503.25,
+              269.25
+            ]
+          ],
+          "threeVisibleFootMinimaxPerAxisError": 3.749999999999998,
+          "numericallyWithin5OfFixedVisibleFeet": true,
+          "candidateRoofTopSourceY": 196.04999999999998,
+          "candidateTopAboveOriginalApproxPixels": 28.950000000000017,
+          "siteAndApproachActualAlphaSamples": [
+            {
+              "role": "cell",
+              "cell": [
+                46,
+                9
+              ],
+              "sourcePixel": [
+                1508,
+                296
+              ],
+              "actualOriginalAssetPixel": [
+                713,
+                1130
+              ],
+              "alpha": 0
+            },
+            {
+              "role": "approach",
+              "cell": [
+                45,
+                9
+              ],
+              "sourcePixel": [
+                1476,
+                296
+              ],
+              "actualOriginalAssetPixel": [
+                1033,
+                1130
+              ],
+              "alpha": 0
+            }
+          ]
+        }
+      ],
+      "disposition": "NOT READY as a shared5shelter registration. Three exposed supports can numerically fit in the stated orientation, but overall height grows about25\u201335source pixels and rear support/all-lane/actor-depth not certified."
+    },
+    {
+      "id": "southwest-watch-shelter",
+      "sourceVisibleMainFeet": [
+        [
+          132,
+          755
+        ],
+        [
+          174,
+          780
+        ],
+        [
+          236,
+          751
+        ]
+      ],
+      "sourceRoofTopApproximate": [
+        198,
+        681
+      ],
+      "sourceOpening": "right-front long side",
+      "sourceRearFoot": "Not certified: partially hidden by original cargo/structure. Transformed candidate rear foot is prediction only.",
+      "sourceSelectionCell": [
+        5,
+        27
+      ],
+      "sourceApproach": [
+        6,
+        27
+      ],
+      "oldRegisteredGroundFront": [
+        173,
+        791
+      ],
+      "preferredFootAndOpeningOrientationCandidate": "original",
+      "fits": [
+        {
+          "orientation": "original",
+          "sourceScale": 0.12888888888888894,
+          "instanceWorldScale": 0.16111111111111118,
+          "anchorPixelsInThisOrientation": [
+            520.0,
+            1162.0
+          ],
+          "sourceTranslation": [
+            103.5,
+            626.7533333333333
+          ],
+          "sourceFront": [
+            170.52222222222224,
+            776.5222222222222
+          ],
+          "fractionalContact": [
+            4.703819444444445,
+            26.661507936507938
+          ],
+          "predictedSourceFourMainFeet": [
+            [
+              131.2111111111111,
+              758.4777777777779
+            ],
+            [
+              170.52222222222224,
+              776.5222222222222
+            ],
+            [
+              239.47777777777785,
+              754.0955555555556
+            ],
+            [
+              201.45555555555558,
+              737.8555555555556
+            ]
+          ],
+          "threeVisibleFootMinimaxPerAxisError": 3.477777777777782,
+          "numericallyWithin5OfFixedVisibleFeet": true,
+          "candidateRoofTopSourceY": 643.5088888888889,
+          "candidateTopAboveOriginalApproxPixels": 37.49111111111108,
+          "siteAndApproachActualAlphaSamples": [
+            {
+              "role": "cell",
+              "cell": [
+                5,
+                27
+              ],
+              "sourcePixel": [
+                196,
+                800
+              ],
+              "actualOriginalAssetPixel": [
+                718,
+                1344
+              ],
+              "alpha": 0
+            },
+            {
+              "role": "approach",
+              "cell": [
+                6,
+                27
+              ],
+              "sourcePixel": [
+                228,
+                800
+              ],
+              "actualOriginalAssetPixel": [
+                966,
+                1344
+              ],
+              "alpha": 0
+            }
+          ]
+        },
+        {
+          "orientation": "virtual-horizontal-mirror",
+          "sourceScale": 0.12380952380952377,
+          "instanceWorldScale": 0.1547619047619047,
+          "anchorPixelsInThisOrientation": [
+            733.0,
+            1162.0
+          ],
+          "sourceTranslation": [
+            95.36666666666667,
+            624.0142857142857
+          ],
+          "sourceFront": [
+            186.1190476190476,
+            767.8809523809523
+          ],
+          "fractionalContact": [
+            5.191220238095237,
+            26.352891156462583
+          ],
+          "predictedSourceFourMainFeet": [
+            [
+              119.88095238095238,
+              746.3380952380952
+            ],
+            [
+              186.1190476190476,
+              767.8809523809523
+            ],
+            [
+              223.88095238095235,
+              750.547619047619
+            ],
+            [
+              156.4047619047619,
+              730.7380952380952
+            ]
+          ],
+          "threeVisibleFootMinimaxPerAxisError": 12.119047619047617,
+          "numericallyWithin5OfFixedVisibleFeet": false,
+          "candidateRoofTopSourceY": 640.1095238095238,
+          "candidateTopAboveOriginalApproxPixels": 40.89047619047619,
+          "siteAndApproachActualAlphaSamples": [
+            {
+              "role": "cell",
+              "cell": [
+                5,
+                27
+              ],
+              "sourcePixel": [
+                196,
+                800
+              ],
+              "actualOriginalAssetPixel": [
+                440,
+                1421
+              ],
+              "alpha": 0
+            },
+            {
+              "role": "approach",
+              "cell": [
+                6,
+                27
+              ],
+              "sourcePixel": [
+                228,
+                800
+              ],
+              "actualOriginalAssetPixel": [
+                182,
+                1421
+              ],
+              "alpha": 0
+            }
+          ]
+        }
+      ],
+      "disposition": "NOT READY as a shared5shelter registration. Three exposed supports can numerically fit in the stated orientation, but overall height grows about25\u201335source pixels and rear support/all-lane/actor-depth not certified."
+    },
+    {
+      "id": "southeast-supply-shelter",
+      "sourceVisibleMainFeet": [
+        [
+          1325,
+          696
+        ],
+        [
+          1388,
+          721
+        ],
+        [
+          1426,
+          701
+        ]
+      ],
+      "sourceRoofTopApproximate": [
+        1360,
+        625
+      ],
+      "sourceOpening": "left-front long side",
+      "sourceRearFoot": "Not certified: partially hidden by original cargo/structure. Transformed candidate rear foot is prediction only.",
+      "sourceSelectionCell": [
+        41,
+        25
+      ],
+      "sourceApproach": [
+        42,
+        25
+      ],
+      "oldRegisteredGroundFront": [
+        1340,
+        728
+      ],
+      "preferredFootAndOpeningOrientationCandidate": "virtual-horizontal-mirror",
+      "fits": [
+        {
+          "orientation": "original",
+          "sourceScale": 0.12023809523809526,
+          "instanceWorldScale": 0.15029761904761907,
+          "anchorPixelsInThisOrientation": [
+            520.0,
+            1162.0
+          ],
+          "sourceTranslation": [
+            1312.3125,
+            569.0410714285714
+          ],
+          "sourceFront": [
+            1374.8363095238096,
+            708.7577380952381
+          ],
+          "fractionalContact": [
+            42.33863467261905,
+            24.241347789115647
+          ],
+          "predictedSourceFourMainFeet": [
+            [
+              1338.1636904761904,
+              691.9244047619047
+            ],
+            [
+              1374.8363095238096,
+              708.7577380952381
+            ],
+            [
+              1439.1636904761906,
+              687.8363095238095
+            ],
+            [
+              1403.6934523809523,
+              672.6863095238095
+            ]
+          ],
+          "threeVisibleFootMinimaxPerAxisError": 13.163690476190476,
+          "numericallyWithin5OfFixedVisibleFeet": false,
+          "candidateRoofTopSourceY": 584.6720238095238,
+          "candidateTopAboveOriginalApproxPixels": 40.32797619047619,
+          "siteAndApproachActualAlphaSamples": [
+            {
+              "role": "cell",
+              "cell": [
+                41,
+                25
+              ],
+              "sourcePixel": [
+                1348,
+                744
+              ],
+              "actualOriginalAssetPixel": [
+                297,
+                1455
+              ],
+              "alpha": 0
+            },
+            {
+              "role": "approach",
+              "cell": [
+                42,
+                25
+              ],
+              "sourcePixel": [
+                1380,
+                744
+              ],
+              "actualOriginalAssetPixel": [
+                563,
+                1455
+              ],
+              "alpha": 0
+            }
+          ]
+        },
+        {
+          "orientation": "virtual-horizontal-mirror",
+          "sourceScale": 0.12411847672778537,
+          "instanceWorldScale": 0.15514809590973172,
+          "anchorPixelsInThisOrientation": [
+            733.0,
+            1162.0
+          ],
+          "sourceTranslation": [
+            1298.7228490832158,
+            575.0726375176308
+          ],
+          "sourceFront": [
+            1389.7016925246826,
+            719.2983074753174
+          ],
+          "fractionalContact": [
+            42.80317789139633,
+            24.61779669554705
+          ],
+          "predictedSourceFourMainFeet": [
+            [
+              1323.2983074753174,
+              697.7016925246828
+            ],
+            [
+              1389.7016925246826,
+              719.2983074753174
+            ],
+            [
+              1427.557827926657,
+              701.9217207334275
+            ],
+            [
+              1359.9132581100139,
+              682.0627644569818
+            ]
+          ],
+          "threeVisibleFootMinimaxPerAxisError": 1.7016925246825594,
+          "numericallyWithin5OfFixedVisibleFeet": true,
+          "candidateRoofTopSourceY": 591.208039492243,
+          "candidateTopAboveOriginalApproxPixels": 33.79196050775704,
+          "siteAndApproachActualAlphaSamples": [
+            {
+              "role": "cell",
+              "cell": [
+                41,
+                25
+              ],
+              "sourcePixel": [
+                1348,
+                744
+              ],
+              "actualOriginalAssetPixel": [
+                856,
+                1361
+              ],
+              "alpha": 0
+            },
+            {
+              "role": "approach",
+              "cell": [
+                42,
+                25
+              ],
+              "sourcePixel": [
+                1380,
+                744
+              ],
+              "actualOriginalAssetPixel": [
+                598,
+                1361
+              ],
+              "alpha": 0
+            }
+          ]
+        }
+      ],
+      "disposition": "NOT READY as a shared5shelter registration. Three exposed supports can numerically fit in the stated orientation, but overall height grows about25\u201335source pixels and rear support/all-lane/actor-depth not certified."
+    }
+  ],
+  "limits": [
+    "Virtual mirror is an exact read-only coordinate reflection of this PNG for feasibility, NOT a registered opposite-facing asset or a recommendation for unsupported negative scale. A separately generated mirror must have its own measured feet.",
+    "No stone base was treated as a filled floor/platform. Six actual open-floor witness alpha values are zero. Transparent point checks are not runtime Ground/Unit/neighbor-priority assertions.",
+    "North known old false post rectangle is not inherited. Preserve real post positives and independent negative932,240 (approach) /932,212(goal) in eventual native integration, not roof/body fitted targets.",
+    "Old physical groundFront coordinates visibly differ from true source posts (notably SE1340,728 vs front about1388,721). selectionCell and old contact are not physical-foot ownership.",
+    "Do not claim original complete hidden footprint or blocked furniture responsibility from roof alpha. This static review adds no collision/terrain or game-rule changes."
+  ]
+}

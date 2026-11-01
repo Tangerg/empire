@@ -121,3 +121,26 @@ low narrow stone spans, thin snow and blue moonlit painted shading, true transpa
 1024x1536 canvas. Prompt foot coordinates are framing guidance, never test evidence;
 actual column feet, material width, depth strips and legal deck clearance remain
 pending. No binding to production or gameplay acceptance.
+
+## North red v4 and inset-wing v5
+V4 edits v3 to shrink its external rear annex while retaining main geometry. Still
+failed complete-foot6.531690px. V5 instead starts from the correct whole-footprint
+NW dual-door house: red main roof, left gable door retained, long-wall door becomes
+window; replace only the existing far-right quarter with a lower brown-roof wing
+INSIDE the original total footprint. No appended extra foundation. Original north
+source crop guides architecture. Fixed full alpha feet/low edge pass3.184364px;
+not yet native doorway/depth/full hidden-foundation certification.
+
+## Short open winter shelter v2
+Edit winter shelter v1 by lowering its whole roof about250asset pixels and shortening
+posts, not stretching the whole bitmap. Keep four feet/low rails/transparent floor
+and openings, relocate hanging lantern with roof, keep winter materials. Actual
+output feet shifted and are resampled; source height reference and native opening
+checks remain separate from lower-foot fits. No universal five-shelter acceptance.
+
+## Northwest snow ridge v2
+Original NW ridge crop is silhouette target; existing snow outcrop is material-only.
+Reconstruct tall fractured left/rear mass with low foreground ledge toward right,
+asymmetric whole footprint with frontmost contact near two-thirds width, not a
+symmetric mountain. Transparent1536x1024, only actual rock/snow resting on rocks;
+remove surrounding tree/reeds/ground/road. Prompt contacts are guides, not test data.

@@ -1,0 +1,191 @@
+{
+  "warning": "Only the three currently passing lower-envelope fits. Do not bind rejected north/red or either north-ridge pair using diagnostic fit parameters. Complete wall responsibility, door/native pick/depth remain separate acceptance.",
+  "fits": [
+    {
+      "id": "southwest-red-house",
+      "assetPath": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/c06-layered-v1/red-cottage-dual-door-night-v2.png",
+      "assetSha256": "a856b295f2681aebe240ac2deb047d934a6a3041b2afb2d800553e228f13672c",
+      "anchorPixels": [
+        795.0,
+        988.0
+      ],
+      "groundFrontPixels": [
+        795.0,
+        988.0
+      ],
+      "scale": 0.18272445273072133,
+      "contact": [
+        12.66066366445402,
+        23.75504418794745
+      ],
+      "sourceScale": 0.14617956218457706,
+      "sourceFront": [
+        425.14123726252865,
+        695.1412372625286
+      ],
+      "physicalFeet": [
+        [
+          280.0,
+          808.0
+        ],
+        [
+          795.0,
+          988.0
+        ],
+        [
+          1340.0,
+          803.0
+        ]
+      ],
+      "physicalFeetAlpha": [
+        217,
+        249,
+        228
+      ],
+      "expectedSourceFeet": [
+        [
+          345.0,
+          666.0
+        ],
+        [
+          430.0,
+          700.0
+        ],
+        [
+          505.0,
+          668.0
+        ]
+      ],
+      "maxErrorSourcePixels": 4.858762737471466,
+      "selectionCell": [
+        12,
+        24
+      ],
+      "approach": [
+        13,
+        24
+      ],
+      "limits": "Uniform lower-contact-envelope fit only, NOT native placement approval/hidden-rear proof."
+    },
+    {
+      "id": "north-central-boulder",
+      "assetPath": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/c06-layered-v1/snow-rock-outcrop-v1.png",
+      "assetSha256": "02f352b667f4f8e56ebf2cb1fe7b534ce0b89849b2fe22fd66c3d14d8b6c90b3",
+      "anchorPixels": [
+        775.0,
+        955.0
+      ],
+      "groundFrontPixels": [
+        775.0,
+        955.0
+      ],
+      "scale": 0.07886904761904762,
+      "contact": [
+        23.10342261904762,
+        11.368197278911563
+      ],
+      "sourceScale": 0.0630952380952381,
+      "sourceFront": [
+        759.3095238095239,
+        348.30952380952374
+      ],
+      "physicalFeet": [
+        [
+          150.0,
+          756.0
+        ],
+        [
+          775.0,
+          955.0
+        ],
+        [
+          1405.0,
+          755.0
+        ]
+      ],
+      "physicalFeetAlpha": [
+        249,
+        252,
+        250
+      ],
+      "expectedSourceFeet": [
+        [
+          722.0,
+          335.0
+        ],
+        [
+          763.0,
+          352.0
+        ],
+        [
+          796.0,
+          332.0
+        ]
+      ],
+      "maxErrorSourcePixels": 3.6904761904761907,
+      "selectionCell": null,
+      "approach": null,
+      "limits": "Uniform lower-contact-envelope fit only, NOT native placement approval/hidden-rear proof."
+    },
+    {
+      "id": "southwest-border-rock",
+      "assetPath": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/c06-layered-v1/snow-rock-outcrop-v1.png",
+      "assetSha256": "02f352b667f4f8e56ebf2cb1fe7b534ce0b89849b2fe22fd66c3d14d8b6c90b3",
+      "anchorPixels": [
+        775.0,
+        955.0
+      ],
+      "groundFrontPixels": [
+        775.0,
+        955.0
+      ],
+      "scale": 0.08949512405875823,
+      "contact": [
+        1.5005902049129736,
+        23.398557497310737
+      ],
+      "sourceScale": 0.07159609924700658,
+      "sourceFront": [
+        68.01888655721515,
+        685.1596099247006
+      ],
+      "physicalFeet": [
+        [
+          150.0,
+          756.0
+        ],
+        [
+          775.0,
+          955.0
+        ],
+        [
+          1405.0,
+          755.0
+        ]
+      ],
+      "physicalFeetAlpha": [
+        249,
+        252,
+        250
+      ],
+      "expectedSourceFeet": [
+        [
+          28.0,
+          671.0
+        ],
+        [
+          72.0,
+          690.0
+        ],
+        [
+          109.0,
+          666.0
+        ]
+      ],
+      "maxErrorSourcePixels": 4.840390075299371,
+      "selectionCell": null,
+      "approach": null,
+      "limits": "Uniform lower-contact-envelope fit only, NOT native placement approval/hidden-rear proof."
+    }
+  ]
+}

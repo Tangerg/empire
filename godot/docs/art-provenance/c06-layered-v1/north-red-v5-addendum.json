@@ -1,0 +1,224 @@
+{
+  "scope": "Read-only north-red v5 actual complete-building lower-envelope fit. Same original full building envelope, uniform positive scale and translation only. Not native door/actor/hidden-foundation certification.",
+  "assetPath": "/workspace/scratch/84c9fe948755/generated_images/exec-ec837218-853f-4e31-89e7-2d2952819660.png",
+  "sha256": "539d1accd45cb8dedf5dbc0b40050bcb62c594a19bf1f9268fdc6088956ad3ed",
+  "pixelSize": [
+    1536,
+    1024
+  ],
+  "actualWholeBuildingFeet": [
+    [
+      280.0,
+      797.0
+    ],
+    [
+      800.0,
+      989.0
+    ],
+    [
+      1400.0,
+      801.0
+    ]
+  ],
+  "actualFeetAlpha": [
+    252,
+    252,
+    250
+  ],
+  "roles": [
+    "outer-left main stone support",
+    "frontmost main stone support",
+    "outer-right lowered-wing stone support"
+  ],
+  "pointSelection": "Viewed full actual v5 before fitting. Physical supports have moved: old x230 is now roof-only and is NOT a ground landmark. New fixed physical x280/800/1400; each y3px inside actual alpha>=200 lower outline. Right is entire wing endpoint, not inner main-house end.",
+  "originalGroundPolygon": [
+    [
+      720.0,
+      185.0
+    ],
+    [
+      785.0,
+      164.0
+    ],
+    [
+      851.0,
+      189.0
+    ],
+    [
+      851.0,
+      228.0
+    ],
+    [
+      785.0,
+      251.0
+    ],
+    [
+      720.0,
+      222.0
+    ]
+  ],
+  "originalOverallLowerVertices": [
+    [
+      720.0,
+      222.0
+    ],
+    [
+      785.0,
+      251.0
+    ],
+    [
+      851.0,
+      228.0
+    ]
+  ],
+  "selectionCell": [
+    23,
+    8
+  ],
+  "approach": [
+    24,
+    8
+  ],
+  "lowOutlineXRange": [
+    274,
+    1401
+  ],
+  "lowOutlineSampleCount": 1128,
+  "fits": [
+    {
+      "fullLowerOutlineIncluded": false,
+      "sourceScale": 0.11994949494949521,
+      "instanceWorldScale": 0.149936868686869,
+      "anchorPixels": [
+        800.0,
+        989.0
+      ],
+      "groundFrontPixels": [
+        800.0,
+        989.0
+      ],
+      "sourceTranslation": [
+        686.0555555555553,
+        129.38510101010075
+      ],
+      "sourceFront": [
+        782.0151515151515,
+        248.0151515151515
+      ],
+      "fractionalContact": [
+        23.812973484848484,
+        7.786255411255411
+      ],
+      "sourceFeet": [
+        [
+          719.641414141414,
+          224.98484848484844
+        ],
+        [
+          782.0151515151515,
+          248.0151515151515
+        ],
+        [
+          853.9848484848486,
+          225.46464646464642
+        ]
+      ],
+      "footErrorsXY": [
+        [
+          -0.3585858585860251,
+          2.984848484848442
+        ],
+        [
+          -2.9848484848484986,
+          -2.9848484848484986
+        ],
+        [
+          2.9848484848486123,
+          -2.535353535353579
+        ]
+      ],
+      "minimaxObjective": 2.984848484848485,
+      "allLowerOutlineMaximumLInfinityOutside": 3.818181818181823,
+      "worstLowerOutlinePixel": [
+        388,
+        865
+      ],
+      "worstLowerOutlineAlpha": 201,
+      "worstLowerOutlineSource": [
+        732.5959595959595,
+        233.1414141414141
+      ],
+      "strictFootAndLowEnvelope5Pass": true
+    },
+    {
+      "fullLowerOutlineIncluded": true,
+      "sourceScale": 0.11787120538549468,
+      "instanceWorldScale": 0.14733900673186837,
+      "anchorPixels": [
+        800.0,
+        989.0
+      ],
+      "groundFrontPixels": [
+        800.0,
+        989.0
+      ],
+      "sourceTranslation": [
+        689.0468055379145,
+        131.24101359075325
+      ],
+      "sourceFront": [
+        783.3437698463102,
+        247.8156357170075
+      ],
+      "fractionalContact": [
+        23.854492807697195,
+        7.779129847035982
+      ],
+      "sourceFeet": [
+        [
+          722.050743045853,
+          225.18436428299253
+        ],
+        [
+          783.3437698463102,
+          247.8156357170075
+        ],
+        [
+          854.066493077607,
+          225.6558491045345
+        ]
+      ],
+      "footErrorsXY": [
+        [
+          2.0507430458529825,
+          3.184364282992533
+        ],
+        [
+          -1.6562301536897621,
+          -3.1843642829925045
+        ],
+        [
+          3.0664930776069923,
+          -2.3441508954655035
+        ]
+      ],
+      "minimaxObjective": 3.184364282992533,
+      "allLowerOutlineMaximumLInfinityOutside": 3.184364282992533,
+      "worstLowerOutlinePixel": [
+        1401,
+        801
+      ],
+      "worstLowerOutlineAlpha": 220,
+      "worstLowerOutlineSource": [
+        854.1843642829925,
+        225.6558491045345
+      ],
+      "strictFootAndLowEnvelope5Pass": true
+    }
+  ],
+  "limits": [
+    "PASS if stated is physical exposed-three-foot and complete low-material boundary only. Unknown hidden rear ownership/all wall coverage stays separate.",
+    "Original front recess/door-facing/entrance road and actual local depth/picking require final scene observation and native witnesses.",
+    "No roof/canvas alpha counted as foundation. All low-column endpoints in the inspected rows700+ include steps and wing; no collision enlarged."
+  ]
+}
