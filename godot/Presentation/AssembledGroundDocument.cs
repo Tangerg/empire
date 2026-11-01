@@ -64,7 +64,7 @@ public sealed class SceneObjectAsset
     {
         get; init;
     }
-    public required double[] GroundFrontPixels
+    public double[]? GroundFrontPixels
     {
         get; init;
     }
@@ -73,12 +73,17 @@ public sealed class SceneObjectAsset
     {
         get; init;
     }
+    /// <summary>Optional resource-local UV surfaces with explicit support; exclusive with whole-canvas strips.</summary>
+    public string? SurfaceGeometryPath
+    {
+        get; init;
+    }
     /// <summary>Optional source-pixel interaction contour; visual alpha coverage remains complete.</summary>
     public double[][]? PointerPolygonPixels
     {
         get; init;
     }
-    public required double[] ContactShadowRadiiPixels
+    public required double[]? ContactShadowRadiiPixels
     {
         get; init;
     }

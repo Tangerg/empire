@@ -20,6 +20,7 @@ public partial class AssembledGroundView : BoardGroundView
     private PaintedSurface? _surface;
     private BoardProjection? _projection;
     private readonly List<(Sprite2D Sprite, Vector2 Contact, bool Pointer, Coord? Selection, Vector2[]? PointerPolygon)> _objects = new();
+    private readonly List<(Node2D Node, Vector2 Contact, StandingVisual Visual, Coord? Selection)> _surfaces = new();
     private readonly List<TerrainDepthEntry> _depthEntries = new();
     private IReadOnlyList<GroundSite> _sites = Array.Empty<GroundSite>();
     public override IReadOnlyList<string> Diagnostics => Array.Empty<string>();
@@ -40,7 +41,7 @@ public partial class AssembledGroundView : BoardGroundView
             throw new InvalidOperationException("Clean ground texture differs from its registered dimensions.");
         if (catalog.Schema != 1 || catalog.Objects is null || document.Objects is null)
             throw new InvalidOperationException("Independent scene objects require catalog schema 1 and explicit instances.");
-        var geometry = new Dictionary<string, (Texture2D Texture, Vector2 Anchor, Vector2 Front, Vector2 ShadowRadii, Vector2[]? PointerPolygon, (Rect2 Region, Vector2 Front)[]? Strips)>(StringComparer.Ordinal);
+        var geometry = new Dictionary<string, (Texture2D Texture, Vector2 Anchor, Vector2 Front, Vector2 ShadowRadii, Vector2[]? PointerPolygon, (Rect2 Region, Vector2 Front)[]? Strips, CompiledSceneSurface? Surfaces)>(StringComparer.Ordinal);
         foreach (var (id, asset) in catalog.Objects)
         {
             if (string.IsNullOrWhiteSpace(id) || asset is null || string.IsNullOrWhiteSpace(asset.ResourcePath)
@@ -51,8 +52,11 @@ public partial class AssembledGroundView : BoardGroundView
             using var image = texture.GetImage();
             if (image is null || image.DetectAlpha() == Image.AlphaMode.None)
                 throw new InvalidOperationException($"Independent scene object must have transparency: {id}.");
-            var radii = RasterResources.Pair(asset.ContactShadowRadiiPixels, id + " contact shadow radii");
-            if (radii.X <= 0 || radii.Y <= 0 || radii.X > asset.PixelSize[0] / 2f || radii.Y > asset.PixelSize[1] / 2f)
+            var radii = asset.ContactShadowRadiiPixels is { } shadow
+                ? RasterResources.Pair(shadow, id + " contact shadow radii") : Vector2.Zero;
+            if (asset.SurfaceGeometryPath is null && asset.ContactShadowRadiiPixels is null)
+                throw new InvalidOperationException($"Sprite asset requires contact shadow dimensions: {id}.");
+            if (asset.ContactShadowRadiiPixels is not null && (radii.X <= 0 || radii.Y <= 0 || radii.X > asset.PixelSize[0] / 2f || radii.Y > asset.PixelSize[1] / 2f))
                 throw new InvalidOperationException($"Contact shadow must fit the object's source dimensions: {id}.");
             var anchor = SpriteGroundContact.Read(asset.AnchorPixels, asset.PixelSize[0], asset.PixelSize[1], id + " anchor");
             Vector2[]? pointerPolygon = null;
@@ -64,6 +68,11 @@ public partial class AssembledGroundView : BoardGroundView
                 StandingVisual.ValidatePolygon(points, id + " pointer");
                 pointerPolygon = points.Select(point => point - anchor).ToArray();
             }
+            if (asset.SurfaceGeometryPath is not null && (asset.DepthStrips is not null || asset.GroundFrontPixels is not null))
+                throw new InvalidOperationException($"Authored surfaces own contact and cannot also declare sprite front or strips: {id}.");
+            var surfaces = asset.SurfaceGeometryPath is { } surfacePath
+                ? CompiledSceneSurface.Compile(PresentationJson.Load<SceneSurfaceDocument>(surfacePath), texture, id)
+                : null;
             (Rect2 Region, Vector2 Front)[]? strips = null;
             if (asset.DepthStrips is { } sections)
             {
@@ -86,7 +95,7 @@ public partial class AssembledGroundView : BoardGroundView
                     throw new InvalidOperationException($"Independent depth strips cannot discard the rest of a whole object: {id}.");
             }
             geometry.Add(id, (texture, anchor,
-                SpriteGroundContact.Read(asset.GroundFrontPixels, asset.PixelSize[0], asset.PixelSize[1], id + " front"), radii, pointerPolygon, strips));
+                surfaces is null ? SpriteGroundContact.Read(asset.GroundFrontPixels, asset.PixelSize[0], asset.PixelSize[1], id + " front") : Vector2.Zero, radii, pointerPolygon, strips, surfaces));
         }
         var view = new AssembledGroundView
         {
@@ -109,6 +118,7 @@ public partial class AssembledGroundView : BoardGroundView
             var identities = new HashSet<string>(StringComparer.Ordinal);
             var cells = new HashSet<Coord>();
             var sites = new List<GroundSite>();
+            var samplers = new Dictionary<string, Sprite2D>(StringComparer.Ordinal);
             foreach (var instance in document.Objects)
             {
                 if (instance is null || string.IsNullOrWhiteSpace(instance.Id) || !identities.Add(instance.Id)
@@ -136,6 +146,25 @@ public partial class AssembledGroundView : BoardGroundView
                     || selection is not null && instance.Pointer != "target"
                     || instance.Pointer is not ("target" or "block" or "pass-through"))
                     throw new InvalidOperationException($"Scene object pointer and site ownership are inconsistent: {instance.Id}.");
+                if (asset.Surfaces is { } surfaces)
+                {
+                    if (!samplers.TryGetValue(instance.AssetId, out var sampler))
+                    {
+                        sampler = new Sprite2D { Texture = asset.Texture, Centered = false, Visible = false, TextureRepeat = CanvasItem.TextureRepeatEnum.Disabled };
+                        view.AddChild(sampler);
+                        samplers.Add(instance.AssetId, sampler);
+                    }
+                    var firstSurface = true;
+                    foreach (var (node, visual) in surfaces.Instantiate(view, instance.Id, instance.Scale, asset.Anchor,
+                        instance.Pointer != "pass-through", asset.PointerPolygon, sampler))
+                    {
+                        if (firstSurface && asset.ShadowRadii != Vector2.Zero)
+                            node.AddChild(BoardLighting.CreateGroundContact(asset.ShadowRadii, shadows));
+                        firstSurface = false;
+                        view._surfaces.Add((node, contact * BoardProjection.TileSize, visual, selection));
+                    }
+                    continue;
+                }
                 var sections = asset.Strips ?? new[] { (Region: new Rect2(Vector2.Zero, asset.Texture.GetSize()), Front: asset.Front) };
                 for (var index = 0; index < sections.Length; index++)
                 {
@@ -202,6 +231,11 @@ public partial class AssembledGroundView : BoardGroundView
             _projection = projection;
         }
         _depthEntries.Clear();
+        foreach (var (node, contact, visual, selection) in _surfaces)
+        {
+            node.Position = projection.Project(contact);
+            _depthEntries.Add(new(node, contact, 2, visual, selection));
+        }
         foreach (var (sprite, contact, pointer, selection, pointerPolygon) in _objects)
         {
             sprite.Position = projection.Project(contact);

@@ -1,0 +1,12 @@
+FORMAL_FENCE_EQUIVALENCE_COMPLETE {"supports":45,"triangleVertices":846,"maximumPointError":0,"maximumUvError":0,"maximumDepthError":0,"sampledMaterialPixels":2961,"coverageMismatch":0,"productionPolygonNodes":282,"previousPolygonNodes":144}
+SURFACE_LEGACY_STATIC_COMPLETE [{"level":"c01-01","stateUnchanged":true,"renderIssues":0,"entries":97,"sites":4,"scope":"initial static repeated render only; no actions or campaign progress"},{"level":"c01-02","stateUnchanged":true,"renderIssues":0,"entries":41,"sites":4,"scope":"initial static repeated render only; no actions or campaign progress"},{"level":"c01-03","stateUnchanged":true,"renderIssues":0,"entries":95,"sites":8,"scope":"initial static repeated render only; no actions or campaign progress"},{"level":"c01-04","stateUnchanged":true,"renderIssues":0,"entries":139,"sites":10,"scope":"initial static repeated render only; no actions or campaign progress"},{"level":"c01-05","stateUnchanged":true,"renderIssues":0,"entries":210,"sites":12,"scope":"initial static repeated render only; no actions or campaign progress"},{"level":"c01-06","stateUnchanged":true,"renderIssues":0,"entries":38,"sites":10,"scope":"initial static repeated render only; no actions or campaign progress"}]
+positive exit=0 expected=0
+C07_FORMAL_FENCE_SURFACE_STATIC_COMPLETE
+duplicate exit=1 expected=1
+ERROR: System.InvalidOperationException: Duplicate surface primitive: training-fence/intentional-duplicate.
+transparent-material exit=1 expected=1
+ERROR: System.InvalidOperationException: Opaque surface material includes transparency: training-fence/left-post-cap-946-0.
+back-depth exit=1 expected=1
+ERROR: System.Exception: Actual back/front/new designed opening alpha contract failed
+late-depth exit=1 expected=1
+ERROR: System.Exception: Actual back/front/new designed opening alpha contract failed

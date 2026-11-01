@@ -14,6 +14,7 @@ with tempfile.TemporaryDirectory(prefix="empire-metadata-checks-") as directory:
     subprocess.run(["git", "init", "--quiet", str(root)], check=True)
 
     def put(name, text):
+        (root / name).parent.mkdir(parents=True, exist_ok=True)
         (root / name).write_text(text)
 
     def check(expected, diagnostic=""):
@@ -44,4 +45,22 @@ with tempfile.TemporaryDirectory(prefix="empire-metadata-checks-") as directory:
     (root / "godot/missing.png.import").unlink()
     put("godot/Actor.cs.uid", "not a uid\n")
     check(False, "Invalid UID")
-print("PASS metadata gate: 9 isolated positive and negative cases.")
+    put("godot/Actor.cs.uid", "uid://actor123\n")
+    put("godot/docs/audit/.gdignore", "")
+    put("godot/docs/audit/Probe.cs", "archived source, not imported\n")
+    put("godot/docs/audit/shot.png", "archived image bytes\n")
+    put("godot/docs/audit/nested/Deep.cs", "nested archived source\n")
+    check(True)
+    put("godot/Active.cs", "class Active {}\n")
+    check(False, "Script UID is not indexed: godot/Active.cs.uid")
+    put("godot/Active.cs.uid", "uid://active123\n")
+    check(True)
+    (root / "godot/docs/audit/.gdignore").unlink()
+    check(False, "Script UID is not indexed: godot/docs/audit/Probe.cs.uid")
+    # Merely writing an untracked marker cannot suppress an indexed source failure.
+    put("godot/docs/audit/.gdignore", "")
+    result = subprocess.run(["python3", "tools/godot/check-source-metadata.py"],
+                            cwd=root, capture_output=True, text=True, timeout=20)
+    if result.returncode == 0 or "Script UID is not indexed: godot/docs/audit/Probe.cs.uid" not in result.stderr:
+        raise AssertionError(result.stdout + result.stderr)
+print("PASS metadata gate: 14 isolated positive and negative cases, including indexed-only ignore boundaries.")

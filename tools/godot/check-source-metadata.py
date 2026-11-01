@@ -9,10 +9,18 @@ root = Path(__file__).resolve().parents[2]
 tracked = set(subprocess.check_output(
     ["git", "ls-files", "-z", "--", "godot"], cwd=root
 ).decode().split("\0")) - {""}
+# Godot deliberately does not import resources beneath an indexed .gdignore.
+# An untracked marker must not hide missing companions in the committed source set.
+ignored_directories = {Path(name).parent for name in tracked if name.endswith("/.gdignore")}
 errors = []
 uids = {}
+ignored = 0
 for name in sorted(tracked):
     path = root / name
+    if any(Path(name).is_relative_to(directory) and Path(name) != directory / ".gdignore"
+           for directory in ignored_directories):
+        ignored += 1
+        continue
     if not path.exists():
         errors.append(f"Indexed source is absent: {name}")
         continue
@@ -39,4 +47,4 @@ for name in sorted(tracked):
 if errors:
     print("\n".join(errors), file=sys.stderr)
     sys.exit(1)
-print(f"Godot source metadata: {len(uids)} unique script UIDs; indexed resource companions present.")
+print(f"Godot source metadata: {len(uids)} unique script UIDs; indexed resource companions present; {ignored} intentionally unimported audit files.")

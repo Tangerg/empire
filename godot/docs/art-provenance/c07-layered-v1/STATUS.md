@@ -29,3 +29,6 @@ Only three major interactive building main bodies have new independent candidate
 Dense/high-contrast roof tiles vs softer ground; overly bright/fine grain; bin black wood seam reads like a hole although opaque; some repeated canopy slate details; weak ground contact shadows. Original unproved through-holes are not invented.276barracks/178granary main depth strips and atomic-column draws have not passed performance review. Software-rendered screenshot latency is not a user hardware FPS claim.
 
 Each audit folder preserves original failure, candidate result and intentional negative-control failure stage. No broad all-campaign acceptance is inferred from these focused static checks.
+
+## First formal-loader slice
+The isolated training-fence surface now has a production-loader path; the official C07 scene is unchanged. See [production-surface-audit](production-surface-audit/README.md) for exact geometry/UV equivalence, static controls, excluded action-fixture run and performance cost. This is not full-scene migration.

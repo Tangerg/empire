@@ -59,7 +59,7 @@ public partial class AssembledGroundChecks : Node
         foreach (var site in actual.Objects.Where(item => item.SelectionCell is not null))
         {
             var entrance = actualCatalog.Objects[site.AssetId];
-            Require(entrance.AnchorPixels.SequenceEqual(entrance.GroundFrontPixels),
+            Require(entrance.GroundFrontPixels is { } front && entrance.AnchorPixels.SequenceEqual(front),
                 $"C01 doorway is the building sorting front; root shrubs must not bury a unit at the entrance: {site.Id}.");
         }
         foreach (var assetId in actual.Objects.Select(item => item.AssetId).Distinct())

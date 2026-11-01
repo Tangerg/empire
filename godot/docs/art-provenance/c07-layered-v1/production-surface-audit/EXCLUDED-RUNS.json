@@ -1,0 +1,19 @@
+{
+  "excludedActionFixtures": [
+    {
+      "log": "formal-surface-regression-WhiteRiverChecks.log",
+      "status": "completed outside selected rendering-only scope; not acceptance"
+    },
+    {
+      "log": "formal-surface-regression-LuojiaChecks.log",
+      "status": "interrupted exit 130; route fixture had already run; not acceptance"
+    }
+  ],
+  "invalidInitializations": [
+    "fence-surface-formal.log (required sprite front before static controls)"
+  ],
+  "invalidEquivalence": [
+    "formal-fence-equivalence-INVALID-vertex-order-result.json (raw cyclic vertex ordering, not geometry error)"
+  ],
+  "acceptedStaticScope": "SceneSurfaceChecks, actual fence static controls, formal initial-only C01-C06 repeated rendering; no action/AI/save calls"
+}
