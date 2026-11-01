@@ -15,8 +15,10 @@ The initial merge retained the barracks object's five-instance order, then the n
 
 ## What this is and is not
 
-At this checkpoint:11independent instances,2independently owned building sites and801depth entries. The801includes the existing276-strip barracks body and178-strip granary body; it is not a performance pass. The2sites are **not the total interactive sites of C07**. Remaining canonical sites still use legacy default building placeholders. Walls, other foundations, yard/stock, gates and scenery remain incomplete.
+At this checkpoint:12independent instances,3independently owned building sites and989depth entries. The989includes the existing276-strip barracks body and178-strip granary body plus188-strip council hall; it is not a performance pass. The3sites are **not the total interactive sites of C07**. Remaining canonical sites still use legacy default building placeholders. Walls, other foundations, yard/stock, gates and scenery remain incomplete.
 
 Official `c01-07.json` is unchanged (55painted groups/108parts), and selected assembly remains `runtimeReady=false`. Neither clean-ground visibility nor default placeholders prove full foundation/route/art correctness. Do not bind it to normal campaign entry until selected/full-scene responsibility, material/contact integration, input/cue/camera and measured performance acceptance are complete. C06/C07 real gameplay remains separately paused; all present checks are pure static/display-clone tests.
 
 Next closed components must join this assembly while preserving previous actual-role/material/site tests. The northern rejected lookout geometry and absent leaves remain rejected/incomplete, not implicitly selected by consolidation.
+
+Council hall integration: [selected-council-audit](selected-council-audit/README.md), exact reviewed asset/placement transfer with fresh three-role directions and two wrong-depth negatives.

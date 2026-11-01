@@ -50,3 +50,6 @@ The existing bounded3-container design is added to the formal granary compositio
 
 ## Single selected assembly checkpoint
 All currently formalized objects now share one advancing candidate: [SELECTED-ASSEMBLY.md](SELECTED-ASSEMBLY.md).11instances/2independent site owners/801depth entries, not a completion percentage or performance pass; remaining canonical sites use legacy placeholders. Seven combined static runs and two precise composition negatives pass. Further objects append here, never another parallel live scene. See [selected-assembly-audit](selected-assembly-audit/README.md).
+
+## Council hall selected integration
+The exact reviewed council hall joins the same selected assembly, now12instances/3site owners/989depth entries. Three actual-role poses,512entry samples, target/approach and two wrong-depth negatives pass. See [selected-council-audit](selected-council-audit/README.md). No full-scene/performance or gameplay acceptance.

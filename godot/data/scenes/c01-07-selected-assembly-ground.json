@@ -158,6 +158,21 @@
       "selectionCell": null,
       "ownsMapStructureBody": false,
       "pointer": "pass-through"
+    },
+    {
+      "id": "council-hall-main",
+      "assetId": "council-hall-v1",
+      "contact": [
+        20.329483074107962,
+        47.44333257090576
+      ],
+      "scale": 0.1683440073193046,
+      "selectionCell": [
+        25,
+        47
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
     }
   ]
 }
