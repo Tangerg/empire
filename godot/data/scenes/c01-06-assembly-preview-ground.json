@@ -125,6 +125,159 @@
       ],
       "ownsMapStructureBody": true,
       "pointer": "target"
+    },
+    {
+      "id": "snow-pines-2-main-visible-trunk",
+      "assetId": "snow-pine-single-v2",
+      "contact": [
+        9.84375,
+        3.7142857142857144
+      ],
+      "scale": 0.125,
+      "pointer": "pass-through",
+      "selectionCell": null,
+      "ownsMapStructureBody": false
+    },
+    {
+      "id": "snow-pines-8-front-fenced-tree",
+      "assetId": "snow-pine-single-v2",
+      "contact": [
+        42.7684375,
+        9.599285714285713
+      ],
+      "scale": 0.08,
+      "pointer": "pass-through",
+      "selectionCell": null,
+      "ownsMapStructureBody": false
+    },
+    {
+      "id": "snow-pines-10-small-visible-tree",
+      "assetId": "snow-pine-single-v2",
+      "contact": [
+        6.90625,
+        16.75
+      ],
+      "scale": 0.05,
+      "pointer": "pass-through",
+      "selectionCell": null,
+      "ownsMapStructureBody": false
+    },
+    {
+      "id": "snow-pines-13-fenced-tree",
+      "assetId": "snow-pine-single-v2",
+      "contact": [
+        39.57125,
+        22.16142857142857
+      ],
+      "scale": 0.0975,
+      "pointer": "pass-through",
+      "selectionCell": null,
+      "ownsMapStructureBody": false
+    },
+    {
+      "id": "snow-pines-16-single-low-edge-tree",
+      "assetId": "snow-pine-single-v2",
+      "contact": [
+        36.5903125,
+        32.75642857142857
+      ],
+      "scale": 0.12,
+      "pointer": "pass-through",
+      "selectionCell": null,
+      "ownsMapStructureBody": false
+    },
+    {
+      "id": "snow-pines-3-front",
+      "assetId": "snow-pine-single-v2",
+      "contact": [
+        16.25,
+        5.5
+      ],
+      "scale": 0.1,
+      "pointer": "pass-through",
+      "selectionCell": null,
+      "ownsMapStructureBody": false
+    },
+    {
+      "id": "snow-pines-3-rear",
+      "assetId": "snow-pine-single-v2",
+      "contact": [
+        17.375,
+        3.142857142857143
+      ],
+      "scale": 0.0975,
+      "pointer": "pass-through",
+      "selectionCell": null,
+      "ownsMapStructureBody": false
+    },
+    {
+      "id": "snow-pines-4-left",
+      "assetId": "snow-pine-single-v2",
+      "contact": [
+        18.6875,
+        8.714285714285714
+      ],
+      "scale": 0.08750000000000001,
+      "pointer": "pass-through",
+      "selectionCell": null,
+      "ownsMapStructureBody": false
+    },
+    {
+      "id": "snow-pines-4-right",
+      "assetId": "snow-pine-single-v2",
+      "contact": [
+        19.6875,
+        8.928571428571429
+      ],
+      "scale": 0.07875,
+      "pointer": "pass-through",
+      "selectionCell": null,
+      "ownsMapStructureBody": false
+    },
+    {
+      "id": "northeast-watch-shelter",
+      "assetId": "watch-shelter-short-mirror-v3",
+      "contact": [
+        47.06499709076804,
+        9.698575861686802
+      ],
+      "scale": 0.11733902249806052,
+      "selectionCell": [
+        46,
+        9
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "southeast-supply-shelter",
+      "assetId": "watch-shelter-short-mirror-v3",
+      "contact": [
+        42.794570852534555,
+        24.530365371955238
+      ],
+      "scale": 0.1382488479262673,
+      "selectionCell": [
+        41,
+        25
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "north-supply-shelter",
+      "assetId": "north-supply-shelter-night-v2",
+      "contact": [
+        28.40874804075235,
+        7.456012091356919
+      ],
+      "scale": 0.08934169278996865,
+      "selectionCell": [
+        27,
+        7
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
     }
   ]
 }

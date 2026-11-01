@@ -225,6 +225,107 @@
         45,
         7
       ]
+    },
+    "snow-pine-single-v2": {
+      "resourcePath": "res://assets/native/c06-layered-v1/snow-pine-single-v2.png",
+      "pixelSize": [
+        1024,
+        1536
+      ],
+      "anchorPixels": [
+        501,
+        1501
+      ],
+      "groundFrontPixels": [
+        501,
+        1501
+      ],
+      "contactShadowRadiiPixels": [
+        75,
+        9
+      ]
+    },
+    "watch-shelter-short-mirror-v3": {
+      "resourcePath": "res://assets/native/c06-layered-v1/watch-shelter-short-mirror-v3.png",
+      "pixelSize": [
+        1254,
+        1254
+      ],
+      "anchorPixels": [
+        735,
+        1198
+      ],
+      "groundFrontPixels": [
+        735,
+        1198
+      ],
+      "contactShadowRadiiPixels": [
+        45,
+        7
+      ],
+      "pointerPolygonPixels": [
+        [
+          150,
+          560
+        ],
+        [
+          730,
+          810
+        ],
+        [
+          1100,
+          660
+        ],
+        [
+          1100,
+          1080
+        ],
+        [
+          735,
+          1198
+        ],
+        [
+          130,
+          1050
+        ]
+      ]
+    },
+    "north-supply-shelter-night-v2": {
+      "resourcePath": "res://assets/native/c06-layered-v1/north-supply-shelter-night-v2.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        1035,
+        924
+      ],
+      "groundFrontPixels": [
+        1035,
+        924
+      ],
+      "pointerPolygonPixels": [
+        [
+          1010,
+          600
+        ],
+        [
+          1050,
+          600
+        ],
+        [
+          1050,
+          860
+        ],
+        [
+          1010,
+          860
+        ]
+      ],
+      "contactShadowRadiiPixels": [
+        35,
+        6
+      ]
     }
   }
 }

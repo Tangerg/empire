@@ -1,0 +1,440 @@
+{
+  "scope": "Static actual revised north shelter. Source visible three supports frozen; fourth old source support unknown. No native or selection assertion.",
+  "assetPath": "/workspace/scratch/84c9fe948755/generated_images/exec-a3d08415-7150-4fef-9648-763c21cc09cc.png",
+  "sha256": "75e08aef1c1a1a9a5775456602b21c9fb943bf31cbe97264b06063c7832ff880",
+  "pixelSize": [
+    1536,
+    1024
+  ],
+  "sourceVisibleFeet": [
+    [
+      886.0,
+      237.0
+    ],
+    [
+      928.0,
+      239.0
+    ],
+    [
+      945.0,
+      227.0
+    ]
+  ],
+  "actualFourFeet": [
+    [
+      395.0,
+      862.0
+    ],
+    [
+      1035.0,
+      924.0
+    ],
+    [
+      1295.0,
+      729.0
+    ],
+    [
+      705.0,
+      701.0
+    ]
+  ],
+  "actualFootAlpha": [
+    253,
+    252,
+    251,
+    251
+  ],
+  "actualRoofCap": [
+    520,
+    167
+  ],
+  "actualRoofCapAlpha": 247,
+  "footSelection": "Visible main post/base center x chosen by physical identity; y is3px inside each actual alpha>=200 last pixel. Not prompt coordinates.",
+  "fits": [
+    {
+      "includesApproximateSourceTopY": false,
+      "minimaxError": 0.9656964656964603,
+      "withinStrict5": true,
+      "sourceScale": 0.06340956340956343,
+      "instanceWorldScale": 0.07926195426195429,
+      "sourceTranslation": [
+        861.9189189189188,
+        181.37525987525987
+      ],
+      "anchorPixels": [
+        1035.0,
+        924.0
+      ],
+      "groundFrontPixels": [
+        1035.0,
+        924.0
+      ],
+      "sourceFront": [
+        927.547817047817,
+        239.96569646569648
+      ],
+      "fractionalContact": [
+        28.360869282744282,
+        7.498774873774875
+      ],
+      "sourceFourFeet": [
+        [
+          886.9656964656964,
+          236.03430353430355
+        ],
+        [
+          927.547817047817,
+          239.96569646569648
+        ],
+        [
+          944.0343035343035,
+          227.6008316008316
+        ],
+        [
+          906.622661122661,
+          225.82536382536384
+        ]
+      ],
+      "threeFootErrorsXY": [
+        [
+          0.9656964656963964,
+          -0.9656964656964533
+        ],
+        [
+          -0.4521829521829659,
+          0.9656964656964817
+        ],
+        [
+          -0.9656964656965101,
+          0.6008316008316115
+        ]
+      ],
+      "sourceRoofTopY": 191.96465696465697,
+      "sourceHeight": 48.001039501039514,
+      "alphaProbes": [
+        {
+          "label": "site",
+          "source": [
+            900,
+            240
+          ],
+          "assetPixel": [
+            601,
+            925
+          ],
+          "alpha": 0
+        },
+        {
+          "label": "approach and old negative",
+          "source": [
+            932,
+            240
+          ],
+          "assetPixel": [
+            1105,
+            925
+          ],
+          "alpha": 0
+        },
+        {
+          "label": "old true upper wood",
+          "source": [
+            928,
+            216
+          ],
+          "assetPixel": [
+            1042,
+            546
+          ],
+          "alpha": 253
+        },
+        {
+          "label": "old true lower wood",
+          "source": [
+            928,
+            228
+          ],
+          "assetPixel": [
+            1042,
+            735
+          ],
+          "alpha": 253
+        },
+        {
+          "label": "old goal negative",
+          "source": [
+            932,
+            212
+          ],
+          "assetPixel": [
+            1105,
+            483
+          ],
+          "alpha": 253
+        }
+      ],
+      "actualPostPositiveCandidates": [
+        {
+          "assetPixel": [
+            1035,
+            700
+          ],
+          "alpha": 253,
+          "sourcePixel": [
+            927.547817047817,
+            225.76195426195426
+          ]
+        },
+        {
+          "assetPixel": [
+            1035,
+            820
+          ],
+          "alpha": 253,
+          "sourcePixel": [
+            927.547817047817,
+            233.37110187110187
+          ]
+        },
+        {
+          "assetPixel": [
+            395,
+            700
+          ],
+          "alpha": 253,
+          "sourcePixel": [
+            886.9656964656964,
+            225.76195426195426
+          ]
+        },
+        {
+          "assetPixel": [
+            1295,
+            600
+          ],
+          "alpha": 253,
+          "sourcePixel": [
+            944.0343035343035,
+            219.42099792099793
+          ]
+        }
+      ]
+    },
+    {
+      "includesApproximateSourceTopY": true,
+      "minimaxError": 2.663009404388725,
+      "withinStrict5": true,
+      "sourceScale": 0.07147335423197491,
+      "instanceWorldScale": 0.08934169278996865,
+      "sourceTranslation": [
+        855.1050156739811,
+        172.72695924764892
+      ],
+      "anchorPixels": [
+        1035.0,
+        924.0
+      ],
+      "groundFrontPixels": [
+        1035.0,
+        924.0
+      ],
+      "sourceFront": [
+        929.0799373040752,
+        238.76833855799373
+      ],
+      "fractionalContact": [
+        28.40874804075235,
+        7.456012091356919
+      ],
+      "sourceFourFeet": [
+        [
+          883.3369905956113,
+          234.3369905956113
+        ],
+        [
+          929.0799373040752,
+          238.76833855799373
+        ],
+        [
+          947.6630094043886,
+          224.83103448275864
+        ],
+        [
+          905.4937304075235,
+          222.82978056426333
+        ]
+      ],
+      "threeFootErrorsXY": [
+        [
+          -2.663009404388731,
+          -2.6630094043887027
+        ],
+        [
+          1.0799373040752016,
+          -0.2316614420062706
+        ],
+        [
+          2.6630094043886174,
+          -2.168965517241361
+        ]
+      ],
+      "sourceRoofTopY": 184.66300940438873,
+      "sourceHeight": 54.10532915360501,
+      "alphaProbes": [
+        {
+          "label": "site",
+          "source": [
+            900,
+            240
+          ],
+          "assetPixel": [
+            628,
+            941
+          ],
+          "alpha": 0
+        },
+        {
+          "label": "approach and old negative",
+          "source": [
+            932,
+            240
+          ],
+          "assetPixel": [
+            1076,
+            941
+          ],
+          "alpha": 0
+        },
+        {
+          "label": "old true upper wood",
+          "source": [
+            928,
+            216
+          ],
+          "assetPixel": [
+            1020,
+            605
+          ],
+          "alpha": 253
+        },
+        {
+          "label": "old true lower wood",
+          "source": [
+            928,
+            228
+          ],
+          "assetPixel": [
+            1020,
+            773
+          ],
+          "alpha": 253
+        },
+        {
+          "label": "old goal negative",
+          "source": [
+            932,
+            212
+          ],
+          "assetPixel": [
+            1076,
+            549
+          ],
+          "alpha": 253
+        }
+      ],
+      "actualPostPositiveCandidates": [
+        {
+          "assetPixel": [
+            1035,
+            700
+          ],
+          "alpha": 253,
+          "sourcePixel": [
+            929.0799373040752,
+            222.75830721003138
+          ]
+        },
+        {
+          "assetPixel": [
+            1035,
+            820
+          ],
+          "alpha": 253,
+          "sourcePixel": [
+            929.0799373040752,
+            231.33510971786836
+          ]
+        },
+        {
+          "assetPixel": [
+            395,
+            700
+          ],
+          "alpha": 253,
+          "sourcePixel": [
+            883.3369905956113,
+            222.75830721003138
+          ]
+        },
+        {
+          "assetPixel": [
+            1295,
+            600
+          ],
+          "alpha": 253,
+          "sourcePixel": [
+            947.6630094043886,
+            215.6109717868339
+          ]
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Three observed old feet+approximate roof-top fit only; not full base/cargo/fences ownership.",
+    "Old fixed source wood probes retained as separate material observations, not forced to become new material when physical artwork changes. New actual opaque post positive contours must be authored, plus old floor negatives.",
+    "No full floor opening or neighboring actor priority established by isolated pixel probes."
+  ],
+  "frontPostPointerCandidate": {
+    "actualWoodInteriorContourPixels": [
+      [
+        1010,
+        600
+      ],
+      [
+        1050,
+        600
+      ],
+      [
+        1050,
+        860
+      ],
+      [
+        1010,
+        860
+      ]
+    ],
+    "cornerAlpha": [
+      253,
+      253,
+      253,
+      252
+    ],
+    "positivePixelWitnesses": [
+      [
+        1020,
+        605
+      ],
+      [
+        1020,
+        773
+      ]
+    ],
+    "oldGoalNegativeAssetPixel": [
+      1076,
+      549
+    ],
+    "meaning": "Conservative actual vertical wood interior only. Excludes upper joint/beam/diagonal brace and stonebase. Both mapped old realwood positives lie inside; old goal snow pixel does not. Static containment/alpha only; native target/neighbor contract still required.",
+    "cropEvidence": "north-revised-front-post.png"
+  }
+}

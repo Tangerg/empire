@@ -1,0 +1,591 @@
+{
+  "schema": "c06-rail-lamp-visible-geometry-review-v1",
+  "status": "static-original-pixel-review-only-NOT-GUI-accepted",
+  "coordinates": "Original1643x957 source raster pixels, never enlarged crop pixel coordinates. Rectangles [left,top,right,bottom] are visual review bounds, NOT collision polygons.",
+  "source": "empire-c01/godot/assets/native/scenes/white-river.png",
+  "clean": "empire-c01/godot/assets/native/c06-layered-v1/ground-clean-v4-candidate.png",
+  "referencePixels": 5,
+  "assetMetadata": {
+    "west": {
+      "path": "generated_images/exec-84d72d41-2df6-4e1a-bfa3-0cc63a6adafe.png",
+      "sha256": "d7ce682901d0d3edc78a7e92e96cedd1cca25f577046aab179a0f28128a04a3f",
+      "size": [
+        1536,
+        1024
+      ],
+      "alphaDiagnosticBoundsExclusive": {
+        "gt0": [
+          49,
+          29,
+          1491,
+          992
+        ],
+        "gt8": [
+          74,
+          69,
+          1489,
+          974
+        ],
+        "gt128": [
+          74,
+          70,
+          1489,
+          973
+        ]
+      }
+    },
+    "east": {
+      "path": "generated_images/exec-5f9f3776-ffec-4d80-9e1f-509da9497664.png",
+      "sha256": "362ff8c53e2e82a9516a331ca155cefcf15491d76579e19384c8c96563f210a1",
+      "size": [
+        1536,
+        1024
+      ],
+      "alphaDiagnosticBoundsExclusive": {
+        "gt0": [
+          64,
+          67,
+          1472,
+          990
+        ],
+        "gt8": [
+          67,
+          83,
+          1468,
+          957
+        ],
+        "gt128": [
+          68,
+          84,
+          1467,
+          956
+        ]
+      }
+    },
+    "lamp": {
+      "path": "generated_images/exec-c31a0246-a1e3-4b6e-9f0c-dc2139b2f24b.png",
+      "sha256": "8a9d274c770929eaaf36647a1f840e6d65884f0c594a9794cefb1ecb27933168",
+      "size": [
+        1254,
+        1254
+      ],
+      "alphaDiagnosticBoundsExclusive": {
+        "gt0": [
+          33,
+          21,
+          1226,
+          1230
+        ],
+        "gt8": [
+          365,
+          233,
+          883,
+          1021
+        ],
+        "gt128": [
+          366,
+          234,
+          882,
+          1020
+        ]
+      }
+    }
+  },
+  "woodRails": [
+    {
+      "id": "west-back",
+      "fixedSourceFirstPostFoot": [
+        245,
+        405
+      ],
+      "fixedSourceLastPostFoot": [
+        361,
+        336
+      ],
+      "visibleSourcePostCount": 7,
+      "assetPostCount": 7,
+      "assetFirstPhysicalFoot": [
+        110,
+        969
+      ],
+      "assetLastPhysicalFoot": [
+        1457,
+        249
+      ],
+      "uniformScaleNoRotation": 0.088276,
+      "firstFootAnchoredOtherFootErrorPixels": 6.169,
+      "bestBalancedBothEndpointsErrorPixelsEach": 3.085,
+      "balancedFitWithin5px": true,
+      "finding": "West-back only is endpoint-preview plausible; full posts/height and click occlusion still unverified.",
+      "confidence": "Visible post lower wood endpoints manually checked in enlarged original; about2source pixels observational uncertainty, not extra acceptance tolerance."
+    },
+    {
+      "id": "west-front",
+      "fixedSourceFirstPostFoot": [
+        282,
+        431
+      ],
+      "fixedSourceLastPostFoot": [
+        399,
+        354
+      ],
+      "visibleSourcePostCount": 7,
+      "assetPostCount": 7,
+      "assetFirstPhysicalFoot": [
+        110,
+        969
+      ],
+      "assetLastPhysicalFoot": [
+        1457,
+        249
+      ],
+      "uniformScaleNoRotation": 0.091323,
+      "firstFootAnchoredOtherFootErrorPixels": 12.753,
+      "bestBalancedBothEndpointsErrorPixelsEach": 6.377,
+      "balancedFitWithin5px": false,
+      "finding": "Does not meet fixed5px endpoint reference even with balanced translation. Do not move surveyed source feet or stretchXY to force green.",
+      "confidence": "Visible post lower wood endpoints manually checked in enlarged original; about2source pixels observational uncertainty, not extra acceptance tolerance."
+    },
+    {
+      "id": "east-back",
+      "fixedSourceFirstPostFoot": [
+        1397,
+        395
+      ],
+      "fixedSourceLastPostFoot": [
+        1484,
+        472
+      ],
+      "visibleSourcePostCount": 6,
+      "assetPostCount": 6,
+      "assetFirstPhysicalFoot": [
+        106,
+        273
+      ],
+      "assetLastPhysicalFoot": [
+        1427,
+        950
+      ],
+      "uniformScaleNoRotation": 0.075818,
+      "firstFootAnchoredOtherFootErrorPixels": 28.846,
+      "bestBalancedBothEndpointsErrorPixelsEach": 14.423,
+      "balancedFitWithin5px": false,
+      "finding": "Does not meet fixed5px endpoint reference even with balanced translation. Do not move surveyed source feet or stretchXY to force green.",
+      "confidence": "Visible post lower wood endpoints manually checked in enlarged original; about2source pixels observational uncertainty, not extra acceptance tolerance."
+    },
+    {
+      "id": "east-front",
+      "fixedSourceFirstPostFoot": [
+        1312,
+        400
+      ],
+      "fixedSourceLastPostFoot": [
+        1422,
+        489
+      ],
+      "visibleSourcePostCount": 7,
+      "assetPostCount": 6,
+      "assetFirstPhysicalFoot": [
+        106,
+        273
+      ],
+      "assetLastPhysicalFoot": [
+        1427,
+        950
+      ],
+      "uniformScaleNoRotation": 0.093295,
+      "firstFootAnchoredOtherFootErrorPixels": 29.035,
+      "bestBalancedBothEndpointsErrorPixelsEach": 14.518,
+      "balancedFitWithin5px": false,
+      "finding": "Does not meet fixed5px endpoint reference even with balanced translation. Do not move surveyed source feet or stretchXY to force green.",
+      "confidence": "Visible post lower wood endpoints manually checked in enlarged original; about2source pixels observational uncertainty, not extra acceptance tolerance."
+    }
+  ],
+  "lampAsset": {
+    "physicalFrontStoneFootEstimate": [
+      644,
+      1014
+    ],
+    "bodyBoundsApprox": [
+      366,
+      236,
+      882,
+      1019
+    ],
+    "stoneBaseWidthApprox": 516,
+    "fullBodyHeightApprox": 783,
+    "note": "Width-based scales are previews only. Different original pedestals, retained caps and integrated piers prevent blanket same-size certification."
+  },
+  "lamps": [
+    {
+      "id": "W_SW_back",
+      "visiblePedestalGroundFootEstimate": [
+        223,
+        428
+      ],
+      "sourceStoneBaseWidthEstimate": 30,
+      "sourceLampTopY": 389,
+      "sourceUpperPedestalBounds": [
+        208,
+        399,
+        238,
+        429
+      ],
+      "cleanV4RaisedBaseResidualRect": [
+        210,
+        408,
+        238,
+        428
+      ],
+      "cleanV4BelowDeckBearingPierRect": null,
+      "uniformWidthPreviewScale": 0.05814,
+      "previewAssetHeight": 45.52,
+      "previewTopYIfFootKnown": 382.48,
+      "sourceTopFitErrorIfFootKnown": 6.52,
+      "readyForWholeLampPlacement": false,
+      "finding": "Low stub/landing stone remains; may be coverable at same true foot but confirm side protrusion.",
+      "coverageRule": "Same-coordinate full lamp might cover residual only after projected alpha union check at this surveyed foot. Do not offset new lamp to chase remaining old pixels. Above-deck residual cannot be accepted as flat ground without legal actor backside verification."
+    },
+    {
+      "id": "W_SW_front",
+      "visiblePedestalGroundFootEstimate": [
+        264,
+        450
+      ],
+      "sourceStoneBaseWidthEstimate": 29,
+      "sourceLampTopY": 405,
+      "sourceUpperPedestalBounds": [
+        250,
+        420,
+        279,
+        451
+      ],
+      "cleanV4RaisedBaseResidualRect": [
+        254,
+        427,
+        279,
+        453
+      ],
+      "cleanV4BelowDeckBearingPierRect": null,
+      "uniformWidthPreviewScale": 0.056202,
+      "previewAssetHeight": 44.01,
+      "previewTopYIfFootKnown": 405.99,
+      "sourceTopFitErrorIfFootKnown": 0.99,
+      "readyForWholeLampPlacement": false,
+      "finding": "Short upright block/stone remains in front of deck edge; foreground rock partly hides original base; foot estimate partly occluded.",
+      "coverageRule": "Same-coordinate full lamp might cover residual only after projected alpha union check at this surveyed foot. Do not offset new lamp to chase remaining old pixels. Above-deck residual cannot be accepted as flat ground without legal actor backside verification."
+    },
+    {
+      "id": "W_NE_back",
+      "visiblePedestalGroundFootEstimate": [
+        381,
+        324
+      ],
+      "sourceStoneBaseWidthEstimate": 31,
+      "sourceLampTopY": 285,
+      "sourceUpperPedestalBounds": [
+        366,
+        301,
+        397,
+        325
+      ],
+      "cleanV4RaisedBaseResidualRect": [
+        368,
+        303,
+        398,
+        327
+      ],
+      "cleanV4BelowDeckBearingPierRect": null,
+      "uniformWidthPreviewScale": 0.060078,
+      "previewAssetHeight": 47.04,
+      "previewTopYIfFootKnown": 276.96,
+      "sourceTopFitErrorIfFootKnown": 8.04,
+      "readyForWholeLampPlacement": false,
+      "finding": "Blurred raised stone/post-stump remains on bank, cannot count as automatically flat ground.",
+      "coverageRule": "Same-coordinate full lamp might cover residual only after projected alpha union check at this surveyed foot. Do not offset new lamp to chase remaining old pixels. Above-deck residual cannot be accepted as flat ground without legal actor backside verification."
+    },
+    {
+      "id": "W_NE_front",
+      "visiblePedestalGroundFootEstimate": null,
+      "sourceStoneBaseWidthEstimate": 27,
+      "sourceLampTopY": 305,
+      "sourceUpperPedestalBounds": [
+        408,
+        320,
+        435,
+        345
+      ],
+      "cleanV4RaisedBaseResidualRect": null,
+      "cleanV4BelowDeckBearingPierRect": [
+        409,
+        343,
+        438,
+        381
+      ],
+      "uniformWidthPreviewScale": 0.052326,
+      "previewAssetHeight": 40.97,
+      "previewTopYIfFootKnown": null,
+      "sourceTopFitErrorIfFootKnown": null,
+      "readyForWholeLampPlacement": false,
+      "finding": "Original upper pedestal merges into visible bridge support. Upper candidate joint around422,344; full visible stone foot~422,378 is below-deck support, not a new floating lamp root.",
+      "coverageRule": "Same-coordinate full lamp might cover residual only after projected alpha union check at this surveyed foot. Do not offset new lamp to chase remaining old pixels. Above-deck residual cannot be accepted as flat ground without legal actor backside verification."
+    },
+    {
+      "id": "C_SW",
+      "visiblePedestalGroundFootEstimate": [
+        732,
+        531
+      ],
+      "sourceStoneBaseWidthEstimate": 35,
+      "sourceLampTopY": 471,
+      "sourceUpperPedestalBounds": [
+        715,
+        496,
+        750,
+        533
+      ],
+      "cleanV4RaisedBaseResidualRect": [
+        719,
+        511,
+        749,
+        534
+      ],
+      "cleanV4BelowDeckBearingPierRect": null,
+      "uniformWidthPreviewScale": 0.067829,
+      "previewAssetHeight": 53.11,
+      "previewTopYIfFootKnown": 477.89,
+      "sourceTopFitErrorIfFootKnown": 6.89,
+      "readyForWholeLampPlacement": false,
+      "finding": "Clean lower pedestal/stub remains, clearly raised above bank.",
+      "coverageRule": "Same-coordinate full lamp might cover residual only after projected alpha union check at this surveyed foot. Do not offset new lamp to chase remaining old pixels. Above-deck residual cannot be accepted as flat ground without legal actor backside verification."
+    },
+    {
+      "id": "C_SE",
+      "visiblePedestalGroundFootEstimate": [
+        868,
+        538
+      ],
+      "sourceStoneBaseWidthEstimate": 36,
+      "sourceLampTopY": 480,
+      "sourceUpperPedestalBounds": [
+        850,
+        505,
+        886,
+        539
+      ],
+      "cleanV4RaisedBaseResidualRect": [
+        854,
+        514,
+        885,
+        539
+      ],
+      "cleanV4BelowDeckBearingPierRect": null,
+      "uniformWidthPreviewScale": 0.069767,
+      "previewAssetHeight": 54.63,
+      "previewTopYIfFootKnown": 483.37,
+      "sourceTopFitErrorIfFootKnown": 3.37,
+      "readyForWholeLampPlacement": false,
+      "finding": "Clean lower pedestal/stub remains; foreground boulder hides right edge.",
+      "coverageRule": "Same-coordinate full lamp might cover residual only after projected alpha union check at this surveyed foot. Do not offset new lamp to chase remaining old pixels. Above-deck residual cannot be accepted as flat ground without legal actor backside verification."
+    },
+    {
+      "id": "C_NW",
+      "visiblePedestalGroundFootEstimate": [
+        820,
+        394
+      ],
+      "sourceStoneBaseWidthEstimate": 36,
+      "sourceLampTopY": 344,
+      "sourceUpperPedestalBounds": [
+        802,
+        365,
+        839,
+        396
+      ],
+      "cleanV4RaisedBaseResidualRect": [
+        805,
+        363,
+        839,
+        396
+      ],
+      "cleanV4BelowDeckBearingPierRect": null,
+      "uniformWidthPreviewScale": 0.069767,
+      "previewAssetHeight": 54.63,
+      "previewTopYIfFootKnown": 339.37,
+      "sourceTopFitErrorIfFootKnown": 4.63,
+      "readyForWholeLampPlacement": false,
+      "finding": "Almost full stone pedestal remains after lantern removal, not merely bridge underside.",
+      "coverageRule": "Same-coordinate full lamp might cover residual only after projected alpha union check at this surveyed foot. Do not offset new lamp to chase remaining old pixels. Above-deck residual cannot be accepted as flat ground without legal actor backside verification."
+    },
+    {
+      "id": "C_NE",
+      "visiblePedestalGroundFootEstimate": null,
+      "sourceStoneBaseWidthEstimate": 37,
+      "sourceLampTopY": 351,
+      "sourceUpperPedestalBounds": [
+        919,
+        371,
+        951,
+        398
+      ],
+      "cleanV4RaisedBaseResidualRect": [
+        925,
+        374,
+        951,
+        395
+      ],
+      "cleanV4BelowDeckBearingPierRect": [
+        921,
+        393,
+        955,
+        439
+      ],
+      "uniformWidthPreviewScale": 0.071705,
+      "previewAssetHeight": 56.15,
+      "previewTopYIfFootKnown": null,
+      "sourceTopFitErrorIfFootKnown": null,
+      "readyForWholeLampPlacement": false,
+      "finding": "Cap and upper pedestal remain above deck; continuous pier extends to visible water foot~937,438. Cannot register a complete lamp to waterfoot then silently call it bank root.",
+      "coverageRule": "Same-coordinate full lamp might cover residual only after projected alpha union check at this surveyed foot. Do not offset new lamp to chase remaining old pixels. Above-deck residual cannot be accepted as flat ground without legal actor backside verification."
+    },
+    {
+      "id": "E_NW_front",
+      "visiblePedestalGroundFootEstimate": null,
+      "sourceStoneBaseWidthEstimate": 30,
+      "sourceLampTopY": 351,
+      "sourceUpperPedestalBounds": [
+        1285,
+        368,
+        1315,
+        396
+      ],
+      "cleanV4RaisedBaseResidualRect": [
+        1284,
+        372,
+        1315,
+        397
+      ],
+      "cleanV4BelowDeckBearingPierRect": [
+        1287,
+        392,
+        1324,
+        421
+      ],
+      "uniformWidthPreviewScale": 0.05814,
+      "previewAssetHeight": 45.52,
+      "previewTopYIfFootKnown": null,
+      "sourceTopFitErrorIfFootKnown": null,
+      "readyForWholeLampPlacement": false,
+      "finding": "Upper stone cap retained; below is integrated bridge pier to~1303,419. Upper replacement joint near1300,394 is inferred construction split, not independent visible ground root.",
+      "coverageRule": "Same-coordinate full lamp might cover residual only after projected alpha union check at this surveyed foot. Do not offset new lamp to chase remaining old pixels. Above-deck residual cannot be accepted as flat ground without legal actor backside verification."
+    },
+    {
+      "id": "E_NW_back",
+      "visiblePedestalGroundFootEstimate": [
+        1386,
+        386
+      ],
+      "sourceStoneBaseWidthEstimate": 26,
+      "sourceLampTopY": 345,
+      "sourceUpperPedestalBounds": [
+        1373,
+        365,
+        1399,
+        388
+      ],
+      "cleanV4RaisedBaseResidualRect": [
+        1371,
+        365,
+        1399,
+        388
+      ],
+      "cleanV4BelowDeckBearingPierRect": null,
+      "uniformWidthPreviewScale": 0.050388,
+      "previewAssetHeight": 39.45,
+      "previewTopYIfFootKnown": 346.55,
+      "sourceTopFitErrorIfFootKnown": 1.55,
+      "readyForWholeLampPlacement": false,
+      "finding": "Raised square stone base persists at bank corner.",
+      "coverageRule": "Same-coordinate full lamp might cover residual only after projected alpha union check at this surveyed foot. Do not offset new lamp to chase remaining old pixels. Above-deck residual cannot be accepted as flat ground without legal actor backside verification."
+    },
+    {
+      "id": "E_SE_front",
+      "visiblePedestalGroundFootEstimate": [
+        1443,
+        516
+      ],
+      "sourceStoneBaseWidthEstimate": 28,
+      "sourceLampTopY": 471,
+      "sourceUpperPedestalBounds": [
+        1429,
+        490,
+        1457,
+        517
+      ],
+      "cleanV4RaisedBaseResidualRect": [
+        1428,
+        489,
+        1457,
+        517
+      ],
+      "cleanV4BelowDeckBearingPierRect": null,
+      "uniformWidthPreviewScale": 0.054264,
+      "previewAssetHeight": 42.49,
+      "previewTopYIfFootKnown": 473.51,
+      "sourceTopFitErrorIfFootKnown": 2.51,
+      "readyForWholeLampPlacement": false,
+      "finding": "Stone pedestal remains under cleared lantern; lower foot partially obscured by reeds/wood diagonal.",
+      "coverageRule": "Same-coordinate full lamp might cover residual only after projected alpha union check at this surveyed foot. Do not offset new lamp to chase remaining old pixels. Above-deck residual cannot be accepted as flat ground without legal actor backside verification."
+    },
+    {
+      "id": "E_SE_back",
+      "visiblePedestalGroundFootEstimate": [
+        1508,
+        499
+      ],
+      "sourceStoneBaseWidthEstimate": 32,
+      "sourceLampTopY": 460,
+      "sourceUpperPedestalBounds": [
+        1492,
+        474,
+        1524,
+        501
+      ],
+      "cleanV4RaisedBaseResidualRect": [
+        1493,
+        477,
+        1523,
+        502
+      ],
+      "cleanV4BelowDeckBearingPierRect": null,
+      "uniformWidthPreviewScale": 0.062016,
+      "previewAssetHeight": 48.56,
+      "previewTopYIfFootKnown": 450.44,
+      "sourceTopFitErrorIfFootKnown": 9.56,
+      "readyForWholeLampPlacement": false,
+      "finding": "Stone pedestal remains at bank corner, with bright cap and dark side.",
+      "coverageRule": "Same-coordinate full lamp might cover residual only after projected alpha union check at this surveyed foot. Do not offset new lamp to chase remaining old pixels. Above-deck residual cannot be accepted as flat ground without legal actor backside verification."
+    }
+  ],
+  "requiredOwnershipChecks": [
+    "Above-deck pedestal remnants belong to independent scene-object coverage/occlusion responsibility, not automatically ground.",
+    "Below-deck load-bearing stone piers may stay continuous with preserved bridge deck, provided upper pedestal/contact is explicitly split.",
+    "Do not delete a load-bearing pier to simplify lantern registration.",
+    "Do not accept whole lamp overlay until projected real alpha covers retained pedestal at unchanged source foot without creating doubled cap/base; this static review does not establish coverage.",
+    "No logical bridge/terrain/route changes; no threshold/tolerance changes; no GUI/click pass asserted."
+  ],
+  "witnesses": [
+    "west-source-grid.png",
+    "west-clean-grid.png",
+    "central-source-grid.png",
+    "central-clean-grid.png",
+    "east-source-grid.png",
+    "east-clean-grid.png",
+    "lamps-01.png",
+    "lamps-05.png",
+    "lamps-09.png",
+    "west-FINAL-fixed-feet.png",
+    "east-FINAL-fixed-feet.png"
+  ],
+  "samplingNote": "Early foot-witness preview accidentally marked rock/water below some posts; final woodRails values were corrected by direct inspection of wooden ends, not optimized against generated asset. Old preliminary witness files are not accepted anchors."
+}

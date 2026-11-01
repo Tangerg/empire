@@ -1,0 +1,183 @@
+{
+  "scope": "Two actual mirror static candidates only; not full native scene approval.",
+  "fits": [
+    {
+      "id": "northeast-watch-shelter",
+      "assetPath": "/workspace/scratch/84c9fe948755/generated_images/exec-6f1f3671-892b-4a0d-af17-3d8773797db1.png",
+      "sha256": "8aa244ea1db91bcd1b176538877fb5899058395756b15b501a3d294a48895a82",
+      "includesApproximateSourceTopY": true,
+      "sourceScale": 0.09387121799844841,
+      "instanceWorldScale": 0.11733902249806052,
+      "sourceTranslation": [
+        1457.0845616757176,
+        189.10240496508922
+      ],
+      "anchorPixels": [
+        735.0,
+        1198.0
+      ],
+      "groundFrontPixels": [
+        735.0,
+        1198.0
+      ],
+      "sourceFront": [
+        1526.0799069045772,
+        301.56012412723044
+      ],
+      "fractionalContact": [
+        47.06499709076804,
+        9.698575861686802
+      ],
+      "actualSourceFourFeet": [
+        [
+          1474.9200930954228,
+          287.38557020946473
+        ],
+        [
+          1526.0799069045772,
+          301.56012412723044
+        ],
+        [
+          1554.7106283941039,
+          289.9200930954228
+        ],
+        [
+          1503.0814584949574,
+          275.933281613654
+        ]
+      ],
+      "threeFootErrorsXY": [
+        [
+          4.9200930954227715,
+          3.3855702094647313
+        ],
+        [
+          -4.9200930954227715,
+          -1.4398758727695622
+        ],
+        [
+          0.7106283941038782,
+          4.920093095422828
+        ]
+      ],
+      "sourceRoofTopY": 220.0799069045772,
+      "maxObjectiveSourcePixels": 4.920093095422808,
+      "withinStrict5": true,
+      "alphaProbes": [
+        {
+          "label": "site",
+          "source": [
+            1508,
+            296
+          ],
+          "assetPixel": [
+            542,
+            1139
+          ],
+          "alpha": 0
+        },
+        {
+          "label": "approach",
+          "source": [
+            1476,
+            296
+          ],
+          "assetPixel": [
+            202,
+            1139
+          ],
+          "alpha": 0
+        }
+      ]
+    },
+    {
+      "id": "southeast-supply-shelter",
+      "assetPath": "/workspace/scratch/84c9fe948755/generated_images/exec-6f1f3671-892b-4a0d-af17-3d8773797db1.png",
+      "sha256": "8aa244ea1db91bcd1b176538877fb5899058395756b15b501a3d294a48895a82",
+      "includesApproximateSourceTopY": true,
+      "sourceScale": 0.11059907834101383,
+      "instanceWorldScale": 0.1382488479262673,
+      "sourceTranslation": [
+        1308.1359447004606,
+        584.3525345622121
+      ],
+      "anchorPixels": [
+        735.0,
+        1198.0
+      ],
+      "groundFrontPixels": [
+        735.0,
+        1198.0
+      ],
+      "sourceFront": [
+        1389.4262672811058,
+        716.8502304147466
+      ],
+      "fractionalContact": [
+        42.794570852534555,
+        24.530365371955238
+      ],
+      "actualSourceFourFeet": [
+        [
+          1329.1497695852534,
+          700.1497695852536
+        ],
+        [
+          1389.4262672811058,
+          716.8502304147466
+        ],
+        [
+          1423.158986175115,
+          703.135944700461
+        ],
+        [
+          1362.3294930875575,
+          686.6566820276499
+        ]
+      ],
+      "threeFootErrorsXY": [
+        [
+          4.1497695852533525,
+          4.14976958525358
+        ],
+        [
+          1.4262672811057655,
+          -4.1497695852533525
+        ],
+        [
+          -2.841013824885067,
+          2.135944700460982
+        ]
+      ],
+      "sourceRoofTopY": 620.8502304147466,
+      "maxObjectiveSourcePixels": 4.149769585253401,
+      "withinStrict5": true,
+      "alphaProbes": [
+        {
+          "label": "site",
+          "source": [
+            1348,
+            744
+          ],
+          "assetPixel": [
+            360,
+            1443
+          ],
+          "alpha": 0
+        },
+        {
+          "label": "approach",
+          "source": [
+            1380,
+            744
+          ],
+          "assetPixel": [
+            650,
+            1443
+          ],
+          "alpha": 0
+        }
+      ]
+    }
+  ]
+}

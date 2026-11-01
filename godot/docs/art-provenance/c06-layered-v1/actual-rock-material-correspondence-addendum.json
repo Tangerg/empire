@@ -1,0 +1,526 @@
+{
+  "scope": "SOURCE MATERIAL CORRESPONDENCE CORRECTION. Static image review only. Old audit wall ownership and source polygons are preserved; they are not literal stone feet. No repo/rule edits or accepted runtime registration.",
+  "originalSourceSha256": "7fbdee75a49446a9e807c3a0852a70eafe9f6c8beeccc25736393371d2d81c8d",
+  "sourceEvidenceImages": [
+    "ne-source-context-wide.png",
+    "ne-tail-true-source.png",
+    "ne-front-true-source.png",
+    "ne-right-contact-obscured.png",
+    "ne-clean-v4-context.png",
+    "nw-source-full-material-grid.png",
+    "nw-right-real.png",
+    "nw-left-real.png",
+    "central-material-grid.png",
+    "sw-material-grid.png"
+  ],
+  "northeast": {
+    "sourceObservedContactWitnesses": [
+      {
+        "role": "small outer left stone tail meeting ground",
+        "source": [
+          1167,
+          114
+        ],
+        "certainty": "visible; approximately1\u20132px manual localization"
+      },
+      {
+        "role": "central foreground low stone bottom",
+        "source": [
+          1283,
+          161
+        ],
+        "certainty": "visible; approximately1\u20132px manual localization"
+      },
+      {
+        "role": "rightmost clearly visible foreground toe before pine occlusion",
+        "source": [
+          1390,
+          162
+        ],
+        "certainty": "visible stone-to-snow boundary; NOT the full object rightmost ground end"
+      }
+    ],
+    "actualSourceMaterialApproxExtent": [
+      1158,
+      65,
+      1430,
+      164
+    ],
+    "hiddenBoundary": "Far right rock extends behind the pine beyond the visible toe. Its terminal ground contact cannot be extracted from this single source image. Do not replace unknown contact by a snow ledge/top at1405,118.",
+    "auditCorrection": "The lower vertices1207,164 and1284,179 are snow/low plants in front of rock. Forcing new outer feet onto them was a false material correspondence, although historical numeric diagnostics remain reproducible.",
+    "cleanFloorRetainedRightMaterial": "Clean v4 retains visible rock aroundx1415andbeyond under/behind the pine. This is separate retained geology ownership, not blank clean plate. A full-width replacement must not duplicate it. Exact retained mask not extracted.",
+    "candidateCases": [
+      {
+        "candidate": "v1",
+        "path": "/workspace/scratch/84c9fe948755/generated_images/exec-17dcb43c-0961-4e92-bcd2-f71dcc5ea6de.png",
+        "sha256": "b6362b2096e2e7bac52f6947411910c2db633e7615a94ad3f9898fe47218d0a9",
+        "pixelSize": [
+          1536,
+          1024
+        ],
+        "frozenActualLeftAndFrontFeet": [
+          [
+            50,
+            562
+          ],
+          [
+            880,
+            917
+          ]
+        ],
+        "actualFirstTwoAlpha": [
+          250,
+          249
+        ],
+        "permissiveThirdPointSearch": "Any column bottom with actualalpha>=200. This is a lower-bound REJECTION diagnostic, not a new handpicked correspondence or approved registration.",
+        "bestPossibleAnyThirdPixel": [
+          1394.0,
+          792.0
+        ],
+        "minimumMaximumCoordinateError": 10.867762128325523,
+        "strict5PossibleEvenWithAnyThirdBottomPixel": false,
+        "diagnosticScale": 0.16588419405320817,
+        "diagnosticTranslation": [
+          1147.8896713615022,
+          19.751956181533558
+        ],
+        "diagnosticTransformedThreePoints": [
+          [
+            1156.1838810641627,
+            112.97887323943655
+          ],
+          [
+            1293.8677621283255,
+            171.86776212832544
+          ],
+          [
+            1379.1322378716745,
+            151.13223787167442
+          ]
+        ],
+        "interpretation": "Both fixed left-tail/front-foot identities and all permitted actual right-foot candidates fail5 against the three visible source contacts. This is bounded by the manually observed contact identities; hidden far-right end remains unknown. No accepted registration proposed."
+      },
+      {
+        "candidate": "v2",
+        "path": "/workspace/scratch/84c9fe948755/generated_images/exec-9cdca575-31a4-4378-9485-d864092a09d3.png",
+        "sha256": "b837795bc7af22996494a20def0edb0d9fe497ad984d07e4b368902e76ecc411",
+        "pixelSize": [
+          1536,
+          1024
+        ],
+        "frozenActualLeftAndFrontFeet": [
+          [
+            50,
+            617
+          ],
+          [
+            880,
+            920
+          ]
+        ],
+        "actualFirstTwoAlpha": [
+          253,
+          251
+        ],
+        "permissiveThirdPointSearch": "Any column bottom with actualalpha>=200. This is a lower-bound REJECTION diagnostic, not a new handpicked correspondence or approved registration.",
+        "bestPossibleAnyThirdPixel": [
+          1396.0,
+          796.0
+        ],
+        "minimumMaximumCoordinateError": 10.768750000000011,
+        "strict5PossibleEvenWithAnyThirdBottomPixel": false,
+        "diagnosticScale": 0.16562500000000008,
+        "diagnosticTranslation": [
+          1148.01875,
+          19.393749999999898
+        ],
+        "diagnosticTransformedThreePoints": [
+          [
+            1156.3,
+            121.58437499999995
+          ],
+          [
+            1293.76875,
+            171.76874999999998
+          ],
+          [
+            1379.23125,
+            151.23124999999996
+          ]
+        ],
+        "interpretation": "Both fixed left-tail/front-foot identities and all permitted actual right-foot candidates fail5 against the three visible source contacts. This is bounded by the manually observed contact identities; hidden far-right end remains unknown. No accepted registration proposed."
+      }
+    ]
+  },
+  "northwest": {
+    "candidatePath": "/workspace/scratch/84c9fe948755/generated_images/exec-119e715b-0b4e-49d0-aeb6-a258788098a4.png",
+    "sha256": "415a17aca89f3a883605ac0db724bcbff26485f49783dcdd85f968e5a7de384b",
+    "actualSize": [
+      1254,
+      1254
+    ],
+    "actualOpaqueBbox": [
+      10,
+      39,
+      1246,
+      1238
+    ],
+    "actualThreeOuterFeet": [
+      [
+        20.0,
+        794.0
+      ],
+      [
+        800.0,
+        1235.0
+      ],
+      [
+        1240.0,
+        1015.0
+      ]
+    ],
+    "actualFootAlpha": [
+      253,
+      253,
+      248
+    ],
+    "legacyThreeVertexDiagnostic": {
+      "sourceScale": 0.07633587786259521,
+      "translation": [
+        974.9083969465651,
+        75.9541984732826
+      ],
+      "error": 8.435114503816875,
+      "notLiteralSourceFootTruth": true
+    },
+    "summitAndOldFrontVicinityDiagnostic": {
+      "description": "Actual summit-interior candidate470,42 paired to original995,25; candidate front800,1235 paired to old front vicinity1035,169 only to test restored upper height. This does NOT certify the partially tree-obscured source ground contact or all lower edges.",
+      "sourceScale": 0.12081418253447143,
+      "worldScale": 0.15101772816808928,
+      "translation": [
+        938.2829940906106,
+        19.860144451739984
+      ],
+      "pairError": 0.0656598818122146,
+      "transformedActualFeet": [
+        [
+          940.6992777413001,
+          115.7866053841103
+        ],
+        [
+          1034.9343401181877,
+          169.0656598818122
+        ],
+        [
+          1088.0925804333551,
+          142.4865397242285
+        ]
+      ],
+      "knownSolidMaterialWitnesses": [
+        {
+          "source": [
+            995,
+            25
+          ],
+          "material": "summit interior snow",
+          "assetPixel": [
+            469,
+            43
+          ],
+          "alpha": 252
+        },
+        {
+          "source": [
+            978,
+            34
+          ],
+          "material": "upper-left stone rim",
+          "assetPixel": [
+            329,
+            117
+          ],
+          "alpha": 249
+        },
+        {
+          "source": [
+            977,
+            60
+          ],
+          "material": "left upper face",
+          "assetPixel": [
+            320,
+            332
+          ],
+          "alpha": 253
+        },
+        {
+          "source": [
+            995,
+            57
+          ],
+          "material": "central vertical face",
+          "assetPixel": [
+            469,
+            307
+          ],
+          "alpha": 253
+        },
+        {
+          "source": [
+            1023,
+            42
+          ],
+          "material": "right upper vertical face",
+          "assetPixel": [
+            701,
+            183
+          ],
+          "alpha": 253
+        },
+        {
+          "source": [
+            1034,
+            77
+          ],
+          "material": "right return stone face",
+          "assetPixel": [
+            792,
+            473
+          ],
+          "alpha": 253
+        },
+        {
+          "source": [
+            950,
+            90
+          ],
+          "material": "left-return solid stone",
+          "assetPixel": [
+            97,
+            581
+          ],
+          "alpha": 0
+        },
+        {
+          "source": [
+            975,
+            101
+          ],
+          "material": "lower-left stone face",
+          "assetPixel": [
+            304,
+            672
+          ],
+          "alpha": 253
+        },
+        {
+          "source": [
+            991,
+            84
+          ],
+          "material": "original rear-envelope solid stone",
+          "assetPixel": [
+            436,
+            531
+          ],
+          "alpha": 253
+        },
+        {
+          "source": [
+            980,
+            100
+          ],
+          "material": "lower dark vertical stone, not ground shadow",
+          "assetPixel": [
+            345,
+            663
+          ],
+          "alpha": 253
+        },
+        {
+          "source": [
+            1000,
+            100
+          ],
+          "material": "overlap control stone",
+          "assetPixel": [
+            511,
+            663
+          ],
+          "alpha": 253
+        }
+      ]
+    },
+    "status": "Tall candidate restores the order of magnitude of historicalcliffheight; no recommended final placement yet. The diagnostic still leaves known original left-return stone uncovered and extends its right low chain into the old path vicinity. Do not approve it solely from the old lower polygon or two landmarks. No claim of global mathematical impossibility."
+  },
+  "centralAndSouthwest": [
+    {
+      "id": "north-central-boulder",
+      "canonicalWallCellsUnchanged": [
+        [
+          21,
+          9
+        ],
+        [
+          22,
+          9
+        ],
+        [
+          23,
+          9
+        ],
+        [
+          24,
+          9
+        ],
+        [
+          21,
+          10
+        ],
+        [
+          22,
+          10
+        ],
+        [
+          23,
+          10
+        ],
+        [
+          24,
+          10
+        ],
+        [
+          22,
+          11
+        ],
+        [
+          23,
+          11
+        ]
+      ],
+      "groundResponsibilityPolygonUnchanged": [
+        [
+          711,
+          300
+        ],
+        [
+          749,
+          287
+        ],
+        [
+          788,
+          302
+        ],
+        [
+          796,
+          332
+        ],
+        [
+          763,
+          352
+        ],
+        [
+          722,
+          335
+        ]
+      ],
+      "sourceMaterialInspectionROI": [
+        720,
+        287,
+        787,
+        330
+      ],
+      "description": "Original is a small rounded low boulder, not the generic tall mountain. Ground polygon includes grass/snow below the realstone. Broad bbox is materialinspection ROI, not a solid rectangle.",
+      "priorNumericPassMeaning": "Legacy lower-envelope numerical feasibility only. NOT an approved real-material reconstruction or whole blocked-cell physical coverage.",
+      "residualResponsibility": "Wall cells with historically exposed snow/grass remain blocked. Any added physical articulation is an intentional presentation completion, not faithfully recovered original stone; keep independent from rules and from neighboring tree ownership."
+    },
+    {
+      "id": "southwest-border-rock",
+      "canonicalWallCellsUnchanged": [
+        [
+          0,
+          20
+        ],
+        [
+          1,
+          20
+        ],
+        [
+          2,
+          20
+        ],
+        [
+          0,
+          21
+        ],
+        [
+          1,
+          21
+        ],
+        [
+          2,
+          21
+        ],
+        [
+          0,
+          22
+        ],
+        [
+          1,
+          22
+        ],
+        [
+          2,
+          22
+        ],
+        [
+          0,
+          23
+        ],
+        [
+          1,
+          23
+        ],
+        [
+          2,
+          23
+        ]
+      ],
+      "groundResponsibilityPolygonUnchanged": [
+        [
+          24,
+          627
+        ],
+        [
+          67,
+          607
+        ],
+        [
+          106,
+          628
+        ],
+        [
+          109,
+          666
+        ],
+        [
+          72,
+          690
+        ],
+        [
+          28,
+          671
+        ]
+      ],
+      "sourceMaterialInspectionROI": [
+        0,
+        598,
+        140,
+        667
+      ],
+      "description": "Two visible stonepieces separated/occluded by trees and shrubs: left continuing bordercliff roughlyx0..29,y600..666; rightlowrock roughlyx69..139,y615..666. Audit polygon alsoincludes trunks,shrubs,snow and is not one mountain foundation.",
+      "priorNumericPassMeaning": "Legacy lower-envelope numerical feasibility only. NOT an approved real-material reconstruction or whole blocked-cell physical coverage.",
+      "residualResponsibility": "Wall cells with historically exposed snow/grass remain blocked. Any added physical articulation is an intentional presentation completion, not faithfully recovered original stone; keep independent from rules and from neighboring tree ownership."
+    }
+  ]
+}
