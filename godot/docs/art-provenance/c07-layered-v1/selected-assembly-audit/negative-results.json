@@ -1,0 +1,12 @@
+{
+  "duplicate-site": {
+    "exitCode": 1,
+    "expectedFailureStage": "Scene site must reference a unique canonical capturable cell: duplicate-granary-site",
+    "targetReached": true
+  },
+  "missing-fence": {
+    "exitCode": 1,
+    "expectedFailureStage": "Frozen material witness failed",
+    "targetReached": true
+  }
+}

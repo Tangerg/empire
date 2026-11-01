@@ -2,7 +2,7 @@
 
 ## Decision and current boundary
 
-This is an implementation plan, not completed integration. The official `c01-07.json` remains painted ground (55 groups / 108 parts). All new candidates are static and unbound. The latest council preview registers six sprites; atomic canopies, fences, boxes and gate geometry are still external audit combinations. The empty clean-ground image must not replace the official scene while omitted buildings/walls/trees would make blocked terrain appear traversable. No C06/C07 commands, AI turns or saves are advanced here.
+The single advancing candidate is now `c01-07-selected-assembly.json`, still runtimeReady=false; see [SELECTED-ASSEMBLY.md](SELECTED-ASSEMBLY.md). It contains11independent instances and2layered site owners, with other canonical sites still using legacy placeholders. Earlier per-slice previews are frozen audits, not parallel editable assembly definitions. Official `c01-07.json` remains painted ground (55groups/108parts). Missing walls/buildings/foundations/yard details still prohibit formal scene binding; no C06/C07 commands, AI turns or saves are advanced.
 
 ## One geometry owner
 

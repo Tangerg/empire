@@ -47,3 +47,6 @@ The reviewed8-member low bin now joins the formal main+cloth preview via the sam
 
 ## Three door-stock containers formal-loader slice
 The existing bounded3-container design is added to the formal granary composition, each retaining its independent contact profile.1098vertices/source/reference exact,5244coverage samples equal,1024entry-strip samples clear; a1×2between-centres intrusion fails the intended strip assertion while fixed material/front-role checks pass.63polygon nodes replace195. See [door-stock-surface-audit](door-stock-surface-audit/README.md). Not a new historical rear-role defect or complete granary/C07; no real actions/save changes.
+
+## Single selected assembly checkpoint
+All currently formalized objects now share one advancing candidate: [SELECTED-ASSEMBLY.md](SELECTED-ASSEMBLY.md).11instances/2independent site owners/801depth entries, not a completion percentage or performance pass; remaining canonical sites use legacy placeholders. Seven combined static runs and two precise composition negatives pass. Further objects append here, never another parallel live scene. See [selected-assembly-audit](selected-assembly-audit/README.md).

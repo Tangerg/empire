@@ -1,0 +1,22 @@
+{
+  "scope": "one-time exact merge of frozen approved slices; no new objects or official binding",
+  "objects": [
+    "north-blue-wooden-stand",
+    "militia-barracks-core",
+    "barracks-front-cargo",
+    "barracks-front-canopy",
+    "training-fence",
+    "granary-main",
+    "granary-cloth-canopy",
+    "granary-low-bin",
+    "granary-door-stock-rear",
+    "granary-door-stock-left",
+    "granary-door-stock-right"
+  ],
+  "overlapAssetsEqual": [
+    "barracks-front-cargo-v1",
+    "blue-roof-wooden-stand-v1",
+    "militia-barracks-core-v2"
+  ],
+  "officialSceneSha256": "5bd8cac7e2263dcffaf23b88c38b25515575678c3085a227e4a1f58f61abcd88"
+}
