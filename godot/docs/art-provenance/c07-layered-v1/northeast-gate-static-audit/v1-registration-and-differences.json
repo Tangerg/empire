@@ -1,0 +1,4128 @@
+{
+  "ready": true,
+  "scope": "One bounded northeast stonecandidate uniformregistration plus frozen source contracts. Staticread-only PNG/JSON only; noengine/GUI/save/gameplay orproductionwrite. Sourcecontract notmodified.",
+  "candidate": {
+    "path": "/workspace/scratch/84c9fe948755/generated_images/exec-378af01a-b0c6-4769-ac94-ed944a114dcd.png",
+    "sha256": "c848661f5ce2c166501216d870c05a4d1fb6e86a38b23021a73594538f5d171a",
+    "actualPixelSize": [
+      1331,
+      1181
+    ],
+    "mode": "RGBA",
+    "requestedSizeWas": [
+      1326,
+      1186
+    ],
+    "sizeCorrection": "ActualPNG1331x1181 controls allcoordinates; neverapplyrequestedcanvasdimensions."
+  },
+  "registration": {
+    "formula": "source=asset*sourceScale+translation; C07worldScale1. No rotation/nonuniformstretch.",
+    "sourceScale": 0.14537444933920696,
+    "translation": [
+      1265.398678414097,
+      -0.8876651982378121
+    ],
+    "maxAbsoluteAxisResidualPixels": 2.9449339207049046,
+    "features": [
+      {
+        "id": "left-arch-low-visible-inner-grey-stone",
+        "asset": [
+          602,
+          942
+        ],
+        "source": [
+          1350,
+          139
+        ],
+        "meaning": "Visible lower stone near innerleftarchleg, not fulllefttowerbase or candidate mainfrontcorner.",
+        "candidateRgba": [
+          170,
+          149,
+          135,
+          251
+        ],
+        "sourceRgba": [
+          115,
+          118,
+          124,
+          255
+        ],
+        "mappedSource": [
+          1352.9140969162997,
+          136.05506607929513
+        ],
+        "residual": [
+          2.9140969162997408,
+          -2.9449339207048695
+        ]
+      },
+      {
+        "id": "right-arch-low-visible-inner-grey-stone",
+        "asset": [
+          885,
+          1062
+        ],
+        "source": [
+          1397,
+          155
+        ],
+        "meaning": "Visible lower stone close to rightarchinneredge. Not the near-mostcornerat~9371090, nor the maintowerfoot.",
+        "candidateRgba": [
+          168,
+          148,
+          137,
+          252
+        ],
+        "sourceRgba": [
+          125,
+          120,
+          115,
+          255
+        ],
+        "mappedSource": [
+          1394.055066079295,
+          153.49999999999997
+        ],
+        "residual": [
+          -2.944933920704898,
+          -1.5000000000000284
+        ]
+      },
+      {
+        "id": "main-left-blue-roof-peak",
+        "asset": [
+          442,
+          47
+        ],
+        "source": [
+          1331,
+          3
+        ],
+        "meaning": "Actual roof cap/apex material. Shape landmark, not ground support.",
+        "candidateRgba": [
+          244,
+          247,
+          248,
+          253
+        ],
+        "sourceRgba": [
+          146,
+          155,
+          169,
+          255
+        ],
+        "mappedSource": [
+          1329.6541850220265,
+          5.944933920704915
+        ],
+        "residual": [
+          -1.3458149779735322,
+          2.9449339207049148
+        ]
+      },
+      {
+        "id": "right-orange-lookout-peak",
+        "asset": [
+          1125,
+          307
+        ],
+        "source": [
+          1426,
+          43
+        ],
+        "meaning": "Actual orange cap/apex. Shape landmark, not towerfoot.",
+        "candidateRgba": [
+          231,
+          137,
+          28,
+          252
+        ],
+        "sourceRgba": [
+          83,
+          56,
+          20,
+          255
+        ],
+        "mappedSource": [
+          1428.944933920705,
+          43.742290748898725
+        ],
+        "residual": [
+          2.944933920704898,
+          0.7422907488987249
+        ]
+      }
+    ],
+    "status": "Same-camera preview proposal, NOT a fullacceptance or exact originalshape. Maximumresidual is measurement, not a newtolerance. No iterativepointchanges or fitsearch forgreen."
+  },
+  "frozenActualC07WolfStonePoints": [
+    {
+      "source": [
+        1348,
+        121
+      ],
+      "meaning": "Same fixed stonepixels used by trueC07wolfback85,8 andfront84,9; actors verified separately in sourcecontract/nativeparent",
+      "originalRgba": [
+        152,
+        135,
+        131,
+        255
+      ],
+      "candidateUv": [
+        568.1969696969692,
+        838.439393939394
+      ],
+      "nearestAssetPixel": [
+        568,
+        838
+      ],
+      "candidateRgba": [
+        150,
+        128,
+        118,
+        253
+      ],
+      "projectedCell": [
+        84,
+        7
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1349,
+        122
+      ],
+      "meaning": "Same fixed stonepixels used by trueC07wolfback85,8 andfront84,9; actors verified separately in sourcecontract/nativeparent",
+      "originalRgba": [
+        148,
+        135,
+        132,
+        255
+      ],
+      "candidateUv": [
+        575.075757575757,
+        845.3181818181819
+      ],
+      "nearestAssetPixel": [
+        575,
+        845
+      ],
+      "candidateRgba": [
+        148,
+        129,
+        117,
+        253
+      ],
+      "projectedCell": [
+        84,
+        7
+      ],
+      "terrain": "#"
+    }
+  ],
+  "frozenGroundPointSamples": [
+    {
+      "source": [
+        1376,
+        145
+      ],
+      "meaning": "Originalpavingnegative preserved fromearlieroverview",
+      "originalRgba": [
+        206,
+        169,
+        125,
+        255
+      ],
+      "candidateUv": [
+        760.8030303030299,
+        1003.5303030303031
+      ],
+      "nearestAssetPixel": [
+        761,
+        1004
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "projectedCell": [
+        86,
+        9
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        1384,
+        145
+      ],
+      "meaning": "Originalpavingnegative preserved fromearlieroverview",
+      "originalRgba": [
+        252,
+        213,
+        146,
+        255
+      ],
+      "candidateUv": [
+        815.8333333333329,
+        1003.5303030303031
+      ],
+      "nearestAssetPixel": [
+        816,
+        1004
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "projectedCell": [
+        86,
+        9
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        1388,
+        152
+      ],
+      "meaning": "Originalpavingnegative preserved fromearlieroverview",
+      "originalRgba": [
+        172,
+        144,
+        118,
+        255
+      ],
+      "candidateUv": [
+        843.3484848484844,
+        1051.6818181818182
+      ],
+      "nearestAssetPixel": [
+        843,
+        1052
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "projectedCell": [
+        86,
+        9
+      ],
+      "terrain": "p"
+    }
+  ],
+  "roadRegions": [
+    {
+      "id": "continuous-source-visible-opening-and-immediate-front",
+      "polygon": [
+        [
+          1376,
+          110
+        ],
+        [
+          1387,
+          110
+        ],
+        [
+          1392,
+          119
+        ],
+        [
+          1393,
+          125
+        ],
+        [
+          1393,
+          154
+        ],
+        [
+          1388,
+          159
+        ],
+        [
+          1357,
+          149
+        ],
+        [
+          1357,
+          142
+        ],
+        [
+          1360,
+          140
+        ],
+        [
+          1376,
+          132
+        ]
+      ],
+      "pointCount": 1097,
+      "alphaCounts": {
+        "1": 46,
+        "32": 30,
+        "128": 29,
+        "200": 28,
+        "245": 27
+      },
+      "nonzeroSamples": [
+        {
+          "source": [
+            1392,
+            119
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            250,
+            210,
+            149,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            824.6818181818182
+          ],
+          "nearestAssetPixel": [
+            871,
+            825
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            7
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            121
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            242,
+            193,
+            128,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            838.439393939394
+          ],
+          "nearestAssetPixel": [
+            871,
+            838
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            7
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            122
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            243,
+            197,
+            132,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            845.3181818181819
+          ],
+          "nearestAssetPixel": [
+            871,
+            845
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            7
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            125
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            249,
+            209,
+            151,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            865.9545454545455
+          ],
+          "nearestAssetPixel": [
+            871,
+            866
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            7
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            125
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            247,
+            210,
+            154,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            865.9545454545455
+          ],
+          "nearestAssetPixel": [
+            878,
+            866
+          ],
+          "candidateRgba": [
+            34,
+            24,
+            15,
+            249
+          ],
+          "projectedCell": [
+            87,
+            7
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            126
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            248,
+            211,
+            154,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            872.8333333333334
+          ],
+          "nearestAssetPixel": [
+            878,
+            873
+          ],
+          "candidateRgba": [
+            35,
+            25,
+            16,
+            250
+          ],
+          "projectedCell": [
+            87,
+            7
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            127
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            246,
+            207,
+            151,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            879.7121212121212
+          ],
+          "nearestAssetPixel": [
+            878,
+            880
+          ],
+          "candidateRgba": [
+            31,
+            21,
+            14,
+            249
+          ],
+          "projectedCell": [
+            87,
+            7
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            128
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            250,
+            210,
+            149,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            886.5909090909091
+          ],
+          "nearestAssetPixel": [
+            871,
+            887
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            128
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            245,
+            207,
+            148,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            886.5909090909091
+          ],
+          "nearestAssetPixel": [
+            878,
+            887
+          ],
+          "candidateRgba": [
+            31,
+            21,
+            14,
+            249
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            129
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            250,
+            208,
+            146,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            893.469696969697
+          ],
+          "nearestAssetPixel": [
+            871,
+            893
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            129
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            247,
+            206,
+            146,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            893.469696969697
+          ],
+          "nearestAssetPixel": [
+            878,
+            893
+          ],
+          "candidateRgba": [
+            18,
+            9,
+            5,
+            245
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            130
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            250,
+            207,
+            144,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            900.3484848484849
+          ],
+          "nearestAssetPixel": [
+            871,
+            900
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            130
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            248,
+            207,
+            146,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            900.3484848484849
+          ],
+          "nearestAssetPixel": [
+            878,
+            900
+          ],
+          "candidateRgba": [
+            54,
+            42,
+            36,
+            169
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            131
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            247,
+            204,
+            143,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            907.2272727272727
+          ],
+          "nearestAssetPixel": [
+            878,
+            907
+          ],
+          "candidateRgba": [
+            17,
+            12,
+            6,
+            247
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            132
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            247,
+            206,
+            144,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            914.1060606060606
+          ],
+          "nearestAssetPixel": [
+            878,
+            914
+          ],
+          "candidateRgba": [
+            34,
+            23,
+            15,
+            247
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            133
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            246,
+            205,
+            144,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            920.9848484848486
+          ],
+          "nearestAssetPixel": [
+            878,
+            921
+          ],
+          "candidateRgba": [
+            38,
+            28,
+            19,
+            245
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            134
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            250,
+            209,
+            144,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            927.8636363636365
+          ],
+          "nearestAssetPixel": [
+            871,
+            928
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            134
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            248,
+            207,
+            145,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            927.8636363636365
+          ],
+          "nearestAssetPixel": [
+            878,
+            928
+          ],
+          "candidateRgba": [
+            35,
+            26,
+            17,
+            244
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            135
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            247,
+            204,
+            139,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            934.7424242424244
+          ],
+          "nearestAssetPixel": [
+            878,
+            935
+          ],
+          "candidateRgba": [
+            36,
+            25,
+            18,
+            246
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            136
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            248,
+            203,
+            135,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            941.6212121212122
+          ],
+          "nearestAssetPixel": [
+            878,
+            942
+          ],
+          "candidateRgba": [
+            37,
+            27,
+            21,
+            249
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            137
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            249,
+            204,
+            135,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            948.5000000000001
+          ],
+          "nearestAssetPixel": [
+            878,
+            949
+          ],
+          "candidateRgba": [
+            35,
+            24,
+            16,
+            249
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            138
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            250,
+            206,
+            138,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            955.378787878788
+          ],
+          "nearestAssetPixel": [
+            878,
+            955
+          ],
+          "candidateRgba": [
+            33,
+            22,
+            15,
+            248
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            139
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            250,
+            205,
+            137,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            962.2575757575759
+          ],
+          "nearestAssetPixel": [
+            878,
+            962
+          ],
+          "candidateRgba": [
+            33,
+            22,
+            17,
+            249
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            140
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            249,
+            206,
+            139,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            969.1363636363637
+          ],
+          "nearestAssetPixel": [
+            878,
+            969
+          ],
+          "candidateRgba": [
+            28,
+            20,
+            15,
+            247
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            141
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            249,
+            207,
+            142,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            976.0151515151516
+          ],
+          "nearestAssetPixel": [
+            878,
+            976
+          ],
+          "candidateRgba": [
+            15,
+            10,
+            4,
+            248
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            142
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            249,
+            210,
+            148,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            982.8939393939395
+          ],
+          "nearestAssetPixel": [
+            878,
+            983
+          ],
+          "candidateRgba": [
+            99,
+            90,
+            82,
+            87
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            143
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            250,
+            211,
+            149,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            989.7727272727274
+          ],
+          "nearestAssetPixel": [
+            871,
+            990
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            143
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            249,
+            209,
+            149,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            989.7727272727274
+          ],
+          "nearestAssetPixel": [
+            878,
+            990
+          ],
+          "candidateRgba": [
+            21,
+            14,
+            10,
+            251
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            144
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            250,
+            212,
+            150,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            996.6515151515152
+          ],
+          "nearestAssetPixel": [
+            871,
+            997
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            144
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            249,
+            211,
+            151,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            996.6515151515152
+          ],
+          "nearestAssetPixel": [
+            878,
+            997
+          ],
+          "candidateRgba": [
+            29,
+            22,
+            17,
+            248
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            145
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            249,
+            211,
+            153,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            1003.5303030303031
+          ],
+          "nearestAssetPixel": [
+            878,
+            1004
+          ],
+          "candidateRgba": [
+            38,
+            29,
+            21,
+            249
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            146
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            248,
+            214,
+            158,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            1010.409090909091
+          ],
+          "nearestAssetPixel": [
+            878,
+            1010
+          ],
+          "candidateRgba": [
+            39,
+            30,
+            22,
+            249
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            147
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            248,
+            214,
+            160,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            1017.2878787878789
+          ],
+          "nearestAssetPixel": [
+            878,
+            1017
+          ],
+          "candidateRgba": [
+            39,
+            28,
+            22,
+            248
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            148
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            249,
+            217,
+            167,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            1024.1666666666667
+          ],
+          "nearestAssetPixel": [
+            878,
+            1024
+          ],
+          "candidateRgba": [
+            37,
+            27,
+            22,
+            249
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            149
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            238,
+            205,
+            161,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            1031.0454545454547
+          ],
+          "nearestAssetPixel": [
+            878,
+            1031
+          ],
+          "candidateRgba": [
+            41,
+            32,
+            23,
+            247
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            150
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            178,
+            148,
+            113,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            1037.9242424242425
+          ],
+          "nearestAssetPixel": [
+            871,
+            1038
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            150
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            183,
+            153,
+            118,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            1037.9242424242425
+          ],
+          "nearestAssetPixel": [
+            878,
+            1038
+          ],
+          "candidateRgba": [
+            41,
+            31,
+            22,
+            246
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            151
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            171,
+            141,
+            111,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            1044.8030303030305
+          ],
+          "nearestAssetPixel": [
+            871,
+            1045
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            151
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            167,
+            137,
+            109,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            1044.8030303030305
+          ],
+          "nearestAssetPixel": [
+            878,
+            1045
+          ],
+          "candidateRgba": [
+            40,
+            30,
+            24,
+            248
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            152
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            169,
+            141,
+            112,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            1051.6818181818182
+          ],
+          "nearestAssetPixel": [
+            871,
+            1052
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            152
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            163,
+            137,
+            109,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            1051.6818181818182
+          ],
+          "nearestAssetPixel": [
+            878,
+            1052
+          ],
+          "candidateRgba": [
+            34,
+            26,
+            20,
+            250
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            153
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            159,
+            131,
+            102,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            1058.5606060606062
+          ],
+          "nearestAssetPixel": [
+            871,
+            1059
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            153
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            158,
+            132,
+            105,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            1058.5606060606062
+          ],
+          "nearestAssetPixel": [
+            878,
+            1059
+          ],
+          "candidateRgba": [
+            30,
+            21,
+            17,
+            249
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            154
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            153,
+            126,
+            96,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            1065.439393939394
+          ],
+          "nearestAssetPixel": [
+            871,
+            1065
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            154
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            160,
+            135,
+            106,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            1065.439393939394
+          ],
+          "nearestAssetPixel": [
+            878,
+            1065
+          ],
+          "candidateRgba": [
+            5,
+            1,
+            0,
+            254
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            155
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            156,
+            129,
+            98,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            1072.318181818182
+          ],
+          "nearestAssetPixel": [
+            871,
+            1072
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        }
+      ]
+    },
+    {
+      "id": "right-inner-leg-source-road-edge",
+      "polygon": [
+        [
+          1392,
+          125
+        ],
+        [
+          1393,
+          125
+        ],
+        [
+          1393,
+          149
+        ],
+        [
+          1392,
+          149
+        ]
+      ],
+      "pointCount": 50,
+      "alphaCounts": {
+        "1": 32,
+        "32": 25,
+        "128": 24,
+        "200": 23,
+        "245": 22
+      },
+      "nonzeroSamples": [
+        {
+          "source": [
+            1392,
+            125
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            249,
+            209,
+            151,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            865.9545454545455
+          ],
+          "nearestAssetPixel": [
+            871,
+            866
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            7
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            125
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            247,
+            210,
+            154,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            865.9545454545455
+          ],
+          "nearestAssetPixel": [
+            878,
+            866
+          ],
+          "candidateRgba": [
+            34,
+            24,
+            15,
+            249
+          ],
+          "projectedCell": [
+            87,
+            7
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            126
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            248,
+            211,
+            154,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            872.8333333333334
+          ],
+          "nearestAssetPixel": [
+            878,
+            873
+          ],
+          "candidateRgba": [
+            35,
+            25,
+            16,
+            250
+          ],
+          "projectedCell": [
+            87,
+            7
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            127
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            246,
+            207,
+            151,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            879.7121212121212
+          ],
+          "nearestAssetPixel": [
+            878,
+            880
+          ],
+          "candidateRgba": [
+            31,
+            21,
+            14,
+            249
+          ],
+          "projectedCell": [
+            87,
+            7
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            128
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            250,
+            210,
+            149,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            886.5909090909091
+          ],
+          "nearestAssetPixel": [
+            871,
+            887
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            128
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            245,
+            207,
+            148,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            886.5909090909091
+          ],
+          "nearestAssetPixel": [
+            878,
+            887
+          ],
+          "candidateRgba": [
+            31,
+            21,
+            14,
+            249
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            129
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            250,
+            208,
+            146,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            893.469696969697
+          ],
+          "nearestAssetPixel": [
+            871,
+            893
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            129
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            247,
+            206,
+            146,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            893.469696969697
+          ],
+          "nearestAssetPixel": [
+            878,
+            893
+          ],
+          "candidateRgba": [
+            18,
+            9,
+            5,
+            245
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            130
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            250,
+            207,
+            144,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            900.3484848484849
+          ],
+          "nearestAssetPixel": [
+            871,
+            900
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            130
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            248,
+            207,
+            146,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            900.3484848484849
+          ],
+          "nearestAssetPixel": [
+            878,
+            900
+          ],
+          "candidateRgba": [
+            54,
+            42,
+            36,
+            169
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            131
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            247,
+            204,
+            143,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            907.2272727272727
+          ],
+          "nearestAssetPixel": [
+            878,
+            907
+          ],
+          "candidateRgba": [
+            17,
+            12,
+            6,
+            247
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            132
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            247,
+            206,
+            144,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            914.1060606060606
+          ],
+          "nearestAssetPixel": [
+            878,
+            914
+          ],
+          "candidateRgba": [
+            34,
+            23,
+            15,
+            247
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            133
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            246,
+            205,
+            144,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            920.9848484848486
+          ],
+          "nearestAssetPixel": [
+            878,
+            921
+          ],
+          "candidateRgba": [
+            38,
+            28,
+            19,
+            245
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            134
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            250,
+            209,
+            144,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            927.8636363636365
+          ],
+          "nearestAssetPixel": [
+            871,
+            928
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            134
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            248,
+            207,
+            145,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            927.8636363636365
+          ],
+          "nearestAssetPixel": [
+            878,
+            928
+          ],
+          "candidateRgba": [
+            35,
+            26,
+            17,
+            244
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            135
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            247,
+            204,
+            139,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            934.7424242424244
+          ],
+          "nearestAssetPixel": [
+            878,
+            935
+          ],
+          "candidateRgba": [
+            36,
+            25,
+            18,
+            246
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            136
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            248,
+            203,
+            135,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            941.6212121212122
+          ],
+          "nearestAssetPixel": [
+            878,
+            942
+          ],
+          "candidateRgba": [
+            37,
+            27,
+            21,
+            249
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            137
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            249,
+            204,
+            135,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            948.5000000000001
+          ],
+          "nearestAssetPixel": [
+            878,
+            949
+          ],
+          "candidateRgba": [
+            35,
+            24,
+            16,
+            249
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            138
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            250,
+            206,
+            138,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            955.378787878788
+          ],
+          "nearestAssetPixel": [
+            878,
+            955
+          ],
+          "candidateRgba": [
+            33,
+            22,
+            15,
+            248
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            139
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            250,
+            205,
+            137,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            962.2575757575759
+          ],
+          "nearestAssetPixel": [
+            878,
+            962
+          ],
+          "candidateRgba": [
+            33,
+            22,
+            17,
+            249
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            140
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            249,
+            206,
+            139,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            969.1363636363637
+          ],
+          "nearestAssetPixel": [
+            878,
+            969
+          ],
+          "candidateRgba": [
+            28,
+            20,
+            15,
+            247
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            141
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            249,
+            207,
+            142,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            976.0151515151516
+          ],
+          "nearestAssetPixel": [
+            878,
+            976
+          ],
+          "candidateRgba": [
+            15,
+            10,
+            4,
+            248
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            142
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            249,
+            210,
+            148,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            982.8939393939395
+          ],
+          "nearestAssetPixel": [
+            878,
+            983
+          ],
+          "candidateRgba": [
+            99,
+            90,
+            82,
+            87
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            143
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            250,
+            211,
+            149,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            989.7727272727274
+          ],
+          "nearestAssetPixel": [
+            871,
+            990
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            143
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            249,
+            209,
+            149,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            989.7727272727274
+          ],
+          "nearestAssetPixel": [
+            878,
+            990
+          ],
+          "candidateRgba": [
+            21,
+            14,
+            10,
+            251
+          ],
+          "projectedCell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1392,
+            144
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            250,
+            212,
+            150,
+            255
+          ],
+          "candidateUv": [
+            870.863636363636,
+            996.6515151515152
+          ],
+          "nearestAssetPixel": [
+            871,
+            997
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            144
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            249,
+            211,
+            151,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            996.6515151515152
+          ],
+          "nearestAssetPixel": [
+            878,
+            997
+          ],
+          "candidateRgba": [
+            29,
+            22,
+            17,
+            248
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            145
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            249,
+            211,
+            153,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            1003.5303030303031
+          ],
+          "nearestAssetPixel": [
+            878,
+            1004
+          ],
+          "candidateRgba": [
+            38,
+            29,
+            21,
+            249
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            146
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            248,
+            214,
+            158,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            1010.409090909091
+          ],
+          "nearestAssetPixel": [
+            878,
+            1010
+          ],
+          "candidateRgba": [
+            39,
+            30,
+            22,
+            249
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            147
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            248,
+            214,
+            160,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            1017.2878787878789
+          ],
+          "nearestAssetPixel": [
+            878,
+            1017
+          ],
+          "candidateRgba": [
+            39,
+            28,
+            22,
+            248
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            148
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            249,
+            217,
+            167,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            1024.1666666666667
+          ],
+          "nearestAssetPixel": [
+            878,
+            1024
+          ],
+          "candidateRgba": [
+            37,
+            27,
+            22,
+            249
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            1393,
+            149
+          ],
+          "meaning": "Frozen source-visible ground exclusion point",
+          "originalRgba": [
+            238,
+            205,
+            161,
+            255
+          ],
+          "candidateUv": [
+            877.7424242424239,
+            1031.0454545454547
+          ],
+          "nearestAssetPixel": [
+            878,
+            1031
+          ],
+          "candidateRgba": [
+            41,
+            32,
+            23,
+            247
+          ],
+          "projectedCell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        }
+      ]
+    },
+    {
+      "id": "below-left-arch-stone-source-ground",
+      "polygon": [
+        [
+          1355,
+          142
+        ],
+        [
+          1358,
+          142
+        ],
+        [
+          1358,
+          144
+        ],
+        [
+          1355,
+          144
+        ]
+      ],
+      "pointCount": 12,
+      "alphaCounts": {
+        "1": 0,
+        "32": 0,
+        "128": 0,
+        "200": 0,
+        "245": 0
+      },
+      "nonzeroSamples": []
+    }
+  ],
+  "roadUniqueSourcePointCount": 1103,
+  "roadUniqueAlphaCounts": {
+    "1": 46,
+    "32": 30,
+    "128": 29,
+    "200": 28,
+    "245": 27
+  },
+  "roadUniqueAlphaAtLeast200Failures": [
+    {
+      "source": [
+        1393,
+        125
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        247,
+        210,
+        154,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        865.9545454545455
+      ],
+      "nearestAssetPixel": [
+        878,
+        866
+      ],
+      "candidateRgba": [
+        34,
+        24,
+        15,
+        249
+      ],
+      "projectedCell": [
+        87,
+        7
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        126
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        248,
+        211,
+        154,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        872.8333333333334
+      ],
+      "nearestAssetPixel": [
+        878,
+        873
+      ],
+      "candidateRgba": [
+        35,
+        25,
+        16,
+        250
+      ],
+      "projectedCell": [
+        87,
+        7
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        127
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        246,
+        207,
+        151,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        879.7121212121212
+      ],
+      "nearestAssetPixel": [
+        878,
+        880
+      ],
+      "candidateRgba": [
+        31,
+        21,
+        14,
+        249
+      ],
+      "projectedCell": [
+        87,
+        7
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        128
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        245,
+        207,
+        148,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        886.5909090909091
+      ],
+      "nearestAssetPixel": [
+        878,
+        887
+      ],
+      "candidateRgba": [
+        31,
+        21,
+        14,
+        249
+      ],
+      "projectedCell": [
+        87,
+        8
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        129
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        247,
+        206,
+        146,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        893.469696969697
+      ],
+      "nearestAssetPixel": [
+        878,
+        893
+      ],
+      "candidateRgba": [
+        18,
+        9,
+        5,
+        245
+      ],
+      "projectedCell": [
+        87,
+        8
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        131
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        247,
+        204,
+        143,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        907.2272727272727
+      ],
+      "nearestAssetPixel": [
+        878,
+        907
+      ],
+      "candidateRgba": [
+        17,
+        12,
+        6,
+        247
+      ],
+      "projectedCell": [
+        87,
+        8
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        132
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        247,
+        206,
+        144,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        914.1060606060606
+      ],
+      "nearestAssetPixel": [
+        878,
+        914
+      ],
+      "candidateRgba": [
+        34,
+        23,
+        15,
+        247
+      ],
+      "projectedCell": [
+        87,
+        8
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        133
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        246,
+        205,
+        144,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        920.9848484848486
+      ],
+      "nearestAssetPixel": [
+        878,
+        921
+      ],
+      "candidateRgba": [
+        38,
+        28,
+        19,
+        245
+      ],
+      "projectedCell": [
+        87,
+        8
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        134
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        248,
+        207,
+        145,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        927.8636363636365
+      ],
+      "nearestAssetPixel": [
+        878,
+        928
+      ],
+      "candidateRgba": [
+        35,
+        26,
+        17,
+        244
+      ],
+      "projectedCell": [
+        87,
+        8
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        135
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        247,
+        204,
+        139,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        934.7424242424244
+      ],
+      "nearestAssetPixel": [
+        878,
+        935
+      ],
+      "candidateRgba": [
+        36,
+        25,
+        18,
+        246
+      ],
+      "projectedCell": [
+        87,
+        8
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        136
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        248,
+        203,
+        135,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        941.6212121212122
+      ],
+      "nearestAssetPixel": [
+        878,
+        942
+      ],
+      "candidateRgba": [
+        37,
+        27,
+        21,
+        249
+      ],
+      "projectedCell": [
+        87,
+        8
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        137
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        249,
+        204,
+        135,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        948.5000000000001
+      ],
+      "nearestAssetPixel": [
+        878,
+        949
+      ],
+      "candidateRgba": [
+        35,
+        24,
+        16,
+        249
+      ],
+      "projectedCell": [
+        87,
+        8
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        138
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        250,
+        206,
+        138,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        955.378787878788
+      ],
+      "nearestAssetPixel": [
+        878,
+        955
+      ],
+      "candidateRgba": [
+        33,
+        22,
+        15,
+        248
+      ],
+      "projectedCell": [
+        87,
+        8
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        139
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        250,
+        205,
+        137,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        962.2575757575759
+      ],
+      "nearestAssetPixel": [
+        878,
+        962
+      ],
+      "candidateRgba": [
+        33,
+        22,
+        17,
+        249
+      ],
+      "projectedCell": [
+        87,
+        8
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        140
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        249,
+        206,
+        139,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        969.1363636363637
+      ],
+      "nearestAssetPixel": [
+        878,
+        969
+      ],
+      "candidateRgba": [
+        28,
+        20,
+        15,
+        247
+      ],
+      "projectedCell": [
+        87,
+        8
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        141
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        249,
+        207,
+        142,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        976.0151515151516
+      ],
+      "nearestAssetPixel": [
+        878,
+        976
+      ],
+      "candidateRgba": [
+        15,
+        10,
+        4,
+        248
+      ],
+      "projectedCell": [
+        87,
+        8
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        143
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        249,
+        209,
+        149,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        989.7727272727274
+      ],
+      "nearestAssetPixel": [
+        878,
+        990
+      ],
+      "candidateRgba": [
+        21,
+        14,
+        10,
+        251
+      ],
+      "projectedCell": [
+        87,
+        8
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        144
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        249,
+        211,
+        151,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        996.6515151515152
+      ],
+      "nearestAssetPixel": [
+        878,
+        997
+      ],
+      "candidateRgba": [
+        29,
+        22,
+        17,
+        248
+      ],
+      "projectedCell": [
+        87,
+        9
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        145
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        249,
+        211,
+        153,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        1003.5303030303031
+      ],
+      "nearestAssetPixel": [
+        878,
+        1004
+      ],
+      "candidateRgba": [
+        38,
+        29,
+        21,
+        249
+      ],
+      "projectedCell": [
+        87,
+        9
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        146
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        248,
+        214,
+        158,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        1010.409090909091
+      ],
+      "nearestAssetPixel": [
+        878,
+        1010
+      ],
+      "candidateRgba": [
+        39,
+        30,
+        22,
+        249
+      ],
+      "projectedCell": [
+        87,
+        9
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        147
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        248,
+        214,
+        160,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        1017.2878787878789
+      ],
+      "nearestAssetPixel": [
+        878,
+        1017
+      ],
+      "candidateRgba": [
+        39,
+        28,
+        22,
+        248
+      ],
+      "projectedCell": [
+        87,
+        9
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        148
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        249,
+        217,
+        167,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        1024.1666666666667
+      ],
+      "nearestAssetPixel": [
+        878,
+        1024
+      ],
+      "candidateRgba": [
+        37,
+        27,
+        22,
+        249
+      ],
+      "projectedCell": [
+        87,
+        9
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        149
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        238,
+        205,
+        161,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        1031.0454545454547
+      ],
+      "nearestAssetPixel": [
+        878,
+        1031
+      ],
+      "candidateRgba": [
+        41,
+        32,
+        23,
+        247
+      ],
+      "projectedCell": [
+        87,
+        9
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        150
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        183,
+        153,
+        118,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        1037.9242424242425
+      ],
+      "nearestAssetPixel": [
+        878,
+        1038
+      ],
+      "candidateRgba": [
+        41,
+        31,
+        22,
+        246
+      ],
+      "projectedCell": [
+        87,
+        9
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        151
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        167,
+        137,
+        109,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        1044.8030303030305
+      ],
+      "nearestAssetPixel": [
+        878,
+        1045
+      ],
+      "candidateRgba": [
+        40,
+        30,
+        24,
+        248
+      ],
+      "projectedCell": [
+        87,
+        9
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        152
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        163,
+        137,
+        109,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        1051.6818181818182
+      ],
+      "nearestAssetPixel": [
+        878,
+        1052
+      ],
+      "candidateRgba": [
+        34,
+        26,
+        20,
+        250
+      ],
+      "projectedCell": [
+        87,
+        9
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        153
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        158,
+        132,
+        105,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        1058.5606060606062
+      ],
+      "nearestAssetPixel": [
+        878,
+        1059
+      ],
+      "candidateRgba": [
+        30,
+        21,
+        17,
+        249
+      ],
+      "projectedCell": [
+        87,
+        9
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        1393,
+        154
+      ],
+      "meaning": "Frozen source-visible ground exclusion point",
+      "originalRgba": [
+        160,
+        135,
+        106,
+        255
+      ],
+      "candidateUv": [
+        877.7424242424239,
+        1065.439393939394
+      ],
+      "nearestAssetPixel": [
+        878,
+        1065
+      ],
+      "candidateRgba": [
+        5,
+        1,
+        0,
+        254
+      ],
+      "projectedCell": [
+        87,
+        9
+      ],
+      "terrain": "#"
+    }
+  ],
+  "roadSamplingCaveat": "NearestPNGpixelstaticcount, not nativebilinear/coveragecount. Preserve alloriginal1103points and actualnative sampling; thresholds are diagnostics, not permission to reduceopacity or alter sourcepolygons. Someoldedgegroundprojectsinto#cells butremainsrealimageground; no terrainchange.",
+  "localLowFootComparisons": [
+    {
+      "frozenOldFoot": {
+        "source": [
+          1350,
+          139
+        ],
+        "meaning": "Original independently certified stone, not revised for candidate",
+        "originalRgba": [
+          115,
+          118,
+          124,
+          255
+        ],
+        "candidateUv": [
+          581.9545454545449,
+          962.2575757575759
+        ],
+        "nearestAssetPixel": [
+          582,
+          962
+        ],
+        "candidateRgba": [
+          0,
+          0,
+          0,
+          4
+        ],
+        "projectedCell": [
+          84,
+          8
+        ],
+        "terrain": "#"
+      },
+      "method": "Inspect only the visually known stone-leg bottom at this frozenpointx. Stoneface, darkink outline and AA recorded separately, not whole-sprite-alphafoot fitting.",
+      "lastVisibleStone": {
+        "asset": [
+          582,
+          954
+        ],
+        "rgba": [
+          135,
+          118,
+          105,
+          252
+        ],
+        "mappedSource": [
+          1350.0066079295154,
+          137.79955947136563
+        ]
+      },
+      "lastDarkOutlineOrBoundaryAtAlpha128": {
+        "asset": [
+          582,
+          959
+        ],
+        "rgba": [
+          27,
+          20,
+          14,
+          229
+        ],
+        "mappedSource": [
+          1350.0066079295154,
+          138.52643171806167
+        ],
+        "deltaYFromOldFoot": -0.4735682819383271
+      },
+      "warning": "Nominal feature residual is not the same as local old-x foot displacement."
+    },
+    {
+      "frozenOldFoot": {
+        "source": [
+          1397,
+          155
+        ],
+        "meaning": "Original independently certified stone, not revised for candidate",
+        "originalRgba": [
+          125,
+          120,
+          115,
+          255
+        ],
+        "candidateUv": [
+          905.2575757575754,
+          1072.318181818182
+        ],
+        "nearestAssetPixel": [
+          905,
+          1072
+        ],
+        "candidateRgba": [
+          164,
+          143,
+          134,
+          252
+        ],
+        "projectedCell": [
+          87,
+          9
+        ],
+        "terrain": "#"
+      },
+      "method": "Inspect only the visually known stone-leg bottom at this frozenpointx. Stoneface, darkink outline and AA recorded separately, not whole-sprite-alphafoot fitting.",
+      "lastVisibleStone": {
+        "asset": [
+          905,
+          1076
+        ],
+        "rgba": [
+          179,
+          161,
+          150,
+          253
+        ],
+        "mappedSource": [
+          1396.9625550660794,
+          155.53524229074887
+        ]
+      },
+      "lastDarkOutlineOrBoundaryAtAlpha128": {
+        "asset": [
+          905,
+          1082
+        ],
+        "rgba": [
+          86,
+          75,
+          68,
+          153
+        ],
+        "mappedSource": [
+          1396.9625550660794,
+          156.4074889867841
+        ],
+        "deltaYFromOldFoot": 1.4074889867841023
+      },
+      "warning": "Nominal feature residual is not the same as local old-x foot displacement."
+    }
+  ],
+  "rightLookoutMaterialWitnesses": [
+    {
+      "source": [
+        1416,
+        59
+      ],
+      "meaning": "Actual pale background seen through LEFT opening of original rightlookout: gate-material negative",
+      "originalRgba": [
+        251,
+        249,
+        244,
+        255
+      ],
+      "candidateUv": [
+        1035.9545454545453,
+        411.9545454545452
+      ],
+      "nearestAssetPixel": [
+        1036,
+        412
+      ],
+      "candidateRgba": [
+        4,
+        2,
+        2,
+        0
+      ],
+      "projectedCell": [
+        88,
+        3
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        1431,
+        66
+      ],
+      "meaning": "Actual pale background seen through RIGHT opening of original rightlookout: gate-material negative",
+      "originalRgba": [
+        233,
+        239,
+        239,
+        255
+      ],
+      "candidateUv": [
+        1139.1363636363635,
+        460.1060606060604
+      ],
+      "nearestAssetPixel": [
+        1139,
+        460
+      ],
+      "candidateRgba": [
+        33,
+        10,
+        2,
+        235
+      ],
+      "projectedCell": [
+        89,
+        4
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        1427,
+        67
+      ],
+      "meaning": "Actual frontwoodpost of original rightlookout: gate-material positive",
+      "originalRgba": [
+        168,
+        124,
+        77,
+        255
+      ],
+      "candidateUv": [
+        1111.621212121212,
+        466.98484848484827
+      ],
+      "nearestAssetPixel": [
+        1112,
+        467
+      ],
+      "candidateRgba": [
+        3,
+        1,
+        1,
+        253
+      ],
+      "projectedCell": [
+        89,
+        4
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        1435,
+        78
+      ],
+      "meaning": "Actual lower frontwoodbeam: gate-material positive",
+      "originalRgba": [
+        194,
+        138,
+        85,
+        255
+      ],
+      "candidateUv": [
+        1166.651515151515,
+        542.651515151515
+      ],
+      "nearestAssetPixel": [
+        1167,
+        543
+      ],
+      "candidateRgba": [
+        202,
+        120,
+        41,
+        253
+      ],
+      "projectedCell": [
+        89,
+        4
+      ],
+      "terrain": "p"
+    }
+  ],
+  "rightLookoutInterpretation": "Originalleftbackgroundhole remainsA0; rightbackgroundhole1431,66 mapsnewwoodedgeA235. Bothoriginalpostandlowerbeam remainopaqueA253. A surviving newopening elsewhere does not make the frozen oldhole pass. This is an explicit shape/registrationdifference, not an excuse to drop thenegative. Exactnewmodule design remainsparentdecision.",
+  "backgroundAudit": {
+    "distantBackgroundRule": "Morethan20assetpixelsfromA200material, diagnosticonly",
+    "distantNonzeroPixelCount": 1516,
+    "distantMaximumAlpha": 1,
+    "distantAlphaAbove8Count": 0,
+    "meaning": "Lowalpha fringe is not physicalmaterial. No alpha/bitmap edits performed."
+  },
+  "conclusion": "Twofrozenwolfstonepoints remainA253, point-onlyroadnegativesA0, butcontinuousground and rightlookouthole must be assessed independently. No claimall24blockedfoundationscovered, no hiddenwhole-towerfeetcertified.",
+  "explicitlyNotCovered": [
+    "Nativecandidate draw/cue/Pick and sceneapproval (parent runs)",
+    "New multi-surface support/depthprofile or atomiclookoutdesign",
+    "Fullhiddenbase/24wallcellvisualsupport oradjacentperimeter/vegetation ownership",
+    "AnyactualC06/C07gameplay"
+  ]
+}
