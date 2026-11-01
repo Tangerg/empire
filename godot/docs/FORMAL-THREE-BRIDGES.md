@@ -1,4 +1,14 @@
-# Formal c01-02 painted valley reconstruction
+# Formal c01-02 valley reconstruction
+
+**Current rendering (2026-11-01):** formal `scenes/c01-02.json` now selects
+`c01-02-layered-ground.json`: clean ground plus independently textured houses,
+bridge fronts and trees. Canonical rules/registration are unchanged by this art
+adoption. See [current polish evidence](LEVEL-POLISH-20261101.md) and
+[asset provenance](art-provenance/c02-layered-v1/README.md). The painted-ground
+composition and limitations below describe the historical 2026-10-21
+reconstruction, not the current renderer or current acceptance results.
+
+## Historical reconstruction baseline
 
 This batch reconstructs the formal second campaign battle from published commit
 `1eb68e537c70df92fa7f7f48d97a1b807e74473e`. It is not recovery of the unavailable

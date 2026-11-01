@@ -173,3 +173,12 @@ contracts, wooden aperture alpha, 20 actors/4 sites/2 flags, formal entry + F5/F
 AssembledGround 179; PaintedSurfaceBroadPhase 8129; CameraIntegration 277; focused escort mission/AI
 intent 1/1. Historical source-v1 checks remain separate. Source metadata 305 UIDs
 and whitespace checks passed. Full seven-map real-play acceptance is not implied.
+
+Additional current core verification: `three bridges native replay/save` completed
+421 independently selected legal native actions with player 1 primary objective
+completion, exact save-state equality and action replay equality. This is the
+canonical **independent level all-side AI** test, not the ongoing human-controlled
+GUI entry fixture and not a C01→C02 carried-state victory. Log:
+`c02-native-replay-save.log`. Default 1.25 opening-camera actual screenshot:
+`c02-layered-default-1180.jpg`; the edge image deliberately zooms out and its dark
+canvas surround must not be reported as a default-camera regression.
