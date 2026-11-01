@@ -1,0 +1,780 @@
+{
+  "scope": "One unmodified transparent council-hall candidate: static visual/physical landmark registration only. Noengine/native rerun, GUI, save, bitmapedit or productiondata change. Parent reports oldnativeback/front defects already reproduced; thisreport doesnotclaim candidate nativevalidation.",
+  "source": {
+    "resourcePath": "res://assets/native/scenes/luojia.png",
+    "sha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980"
+  },
+  "candidate": {
+    "resourcePath": "res://assets/native/c07-layered-v1/council-hall-v1-candidate.png",
+    "sha256": "5fe453e66e05a7c6ab5f68934a532010064a6d097e20362ad3f1b5e672c3eefa",
+    "actualSize": [
+      1446,
+      1087
+    ],
+    "rgba": true
+  },
+  "recommendation": {
+    "status": "Usable bounded FEET-FIRST preview candidate, not exact full-foot/roof restoration or all-foundation pass.",
+    "formula": "sourcePixel = scale * assetPixel + translation; C07worldScale=1.0, so spriteworldscale equals thissourceScale.",
+    "sourceScale": 0.1683440073193046,
+    "sourceTranslation": [
+      228.47392497712724,
+      579.8069533394328
+    ],
+    "optionalSpriteRegistration": {
+      "assetAnchor": [
+        573,
+        1070
+      ],
+      "sourceContact": [
+        324.93504117108876,
+        759.9350411710886
+      ],
+      "instanceWorldScale": 0.1683440073193046
+    },
+    "depth": "Do NOT use optionalanchor as one wholebuilding groundFront. Main rightwall, porchposts and steps have different real groundcontacts. Existing localdepth-strip pipeline should follow physicalsupport, with roof/eave extrapolation explicitlyvirtual.",
+    "whyThisCandidate": "Two source-visible main ground contacts and actual candidateSTONEfeet provide a stable starting transform. It preserves frozen trueblue roof samples and excludes frozen foregroundpaving samples, while clearly exposing porch/softedge differences for same-camera review. No nonuniformstretch, collisionexpansion or sample relocation."
+  },
+  "frozenPhysicalFit": {
+    "method": "Uniformpositive scale + XYtranslation minimizingLinf source-axis residual over TWO major truegroundcontacts. These are comparable ground contacts, not supposedlyidenticalwoodmaterialpixels and not fullhiddenfoundation proof.",
+    "sourceContacts": [
+      [
+        324.0,
+        759.0
+      ],
+      [
+        456.0,
+        707.0
+      ]
+    ],
+    "candidateTrueStoneContacts": [
+      [
+        573.0,
+        1070.0
+      ],
+      [
+        1346.0,
+        750.0
+      ]
+    ],
+    "scale": 0.1683440073193046,
+    "translation": [
+      228.47392497712724,
+      579.8069533394328
+    ],
+    "maxAxisError": 0.9350411710887628,
+    "residuals": [
+      [
+        0.9350411710887556,
+        0.9350411710886419
+      ],
+      [
+        -0.9350411710887556,
+        -0.9350411710887556
+      ]
+    ]
+  },
+  "otherActuallyObservedCandidateContacts": [
+    {
+      "asset": [
+        573,
+        1070
+      ],
+      "rgba": [
+        177,
+        148,
+        119,
+        252
+      ],
+      "material": "main near corner actual bottomSTONE; wood/stonejoint around5701010 is not ground",
+      "sourceUnderCandidate": [
+        324.93504117108876,
+        759.9350411710886
+      ]
+    },
+    {
+      "asset": [
+        1346,
+        750
+      ],
+      "rgba": [
+        198,
+        163,
+        126,
+        250
+      ],
+      "material": "far/right main corner actual bottomSTONE; wood endsabout1340690 ABOVE this",
+      "sourceUnderCandidate": [
+        455.06495882891124,
+        706.0649588289112
+      ]
+    },
+    {
+      "asset": [
+        874,
+        969
+      ],
+      "rgba": [
+        62,
+        51,
+        44,
+        252
+      ],
+      "material": "physical stone support below porchleftpost, not its wood/stonejointaround875946",
+      "sourceUnderCandidate": [
+        375.6065873741994,
+        742.932296431839
+      ]
+    },
+    {
+      "asset": [
+        1127,
+        909
+      ],
+      "rgba": [
+        198,
+        158,
+        120,
+        252
+      ],
+      "material": "visible lower support stone around porchright; nearby steps merge, not a newcertified sourceoutercorner",
+      "sourceUnderCandidate": [
+        418.19762122598354,
+        732.8316559926807
+      ]
+    },
+    {
+      "asset": [
+        933,
+        1000
+      ],
+      "rgba": [
+        187,
+        154,
+        119,
+        251
+      ],
+      "material": "front step/stone corner, NOT a pillarfoot",
+      "sourceUnderCandidate": [
+        385.5388838060384,
+        748.1509606587374
+      ]
+    }
+  ],
+  "originalInnerSamplesUnderRecommendedTransform": [
+    {
+      "source": [
+        324,
+        759
+      ],
+      "sourceRgba": [
+        87,
+        44,
+        13,
+        255
+      ],
+      "role": "old visible west mainwood innerfoot",
+      "assetPixelFloat": [
+        567.4456521739129,
+        1064.4456521739135
+      ],
+      "nearestAssetPixel": [
+        567,
+        1064
+      ],
+      "candidateRgba": [
+        93,
+        80,
+        75,
+        253
+      ],
+      "nearestAnyOpaqueMaterialDistanceSource": 0.0
+    },
+    {
+      "source": [
+        324,
+        760
+      ],
+      "sourceRgba": [
+        227,
+        198,
+        163,
+        255
+      ],
+      "role": "old pale paving immediately1pxbelow westwood",
+      "assetPixelFloat": [
+        567.4456521739129,
+        1070.3858695652177
+      ],
+      "nearestAssetPixel": [
+        567,
+        1070
+      ],
+      "candidateRgba": [
+        98,
+        86,
+        79,
+        252
+      ],
+      "nearestAnyOpaqueMaterialDistanceSource": 0.0
+    },
+    {
+      "source": [
+        451,
+        706
+      ],
+      "sourceRgba": [
+        62,
+        54,
+        57,
+        255
+      ],
+      "role": "old right grey stone innerfoot",
+      "assetPixelFloat": [
+        1321.8532608695652,
+        749.6141304347829
+      ],
+      "nearestAssetPixel": [
+        1322,
+        750
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "nearestAnyOpaqueMaterialDistanceSource": 0.9065602237079124
+    },
+    {
+      "source": [
+        451,
+        708
+      ],
+      "sourceRgba": [
+        159,
+        121,
+        105,
+        255
+      ],
+      "role": "old warm ground transition beneath rightstone",
+      "assetPixelFloat": [
+        1321.8532608695652,
+        761.4945652173915
+      ],
+      "nearestAssetPixel": [
+        1322,
+        761
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "nearestAnyOpaqueMaterialDistanceSource": 2.564139526951434
+    },
+    {
+      "source": [
+        456,
+        707
+      ],
+      "sourceRgba": [
+        52,
+        34,
+        13,
+        255
+      ],
+      "role": "old righttimber innerfoot",
+      "assetPixelFloat": [
+        1351.554347826087,
+        755.5543478260872
+      ],
+      "nearestAssetPixel": [
+        1352,
+        756
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "nearestAnyOpaqueMaterialDistanceSource": 0.6941001236172454
+    },
+    {
+      "source": [
+        456,
+        709
+      ],
+      "sourceRgba": [
+        198,
+        154,
+        109,
+        255
+      ],
+      "role": "old groundbelow righttimber",
+      "assetPixelFloat": [
+        1351.554347826087,
+        767.4347826086959
+      ],
+      "nearestAssetPixel": [
+        1352,
+        767
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "nearestAnyOpaqueMaterialDistanceSource": 2.410319373872688
+    },
+    {
+      "source": [
+        373,
+        747
+      ],
+      "sourceRgba": [
+        59,
+        38,
+        27,
+        255
+      ],
+      "role": "old porchleft lower member INNERmaterial point; not guaranteed outerfoot",
+      "assetPixelFloat": [
+        858.516304347826,
+        993.1630434782612
+      ],
+      "nearestAssetPixel": [
+        859,
+        993
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "nearestAnyOpaqueMaterialDistanceSource": 4.047264431018334
+    },
+    {
+      "source": [
+        410,
+        727
+      ],
+      "sourceRgba": [
+        105,
+        74,
+        48,
+        255
+      ],
+      "role": "old porchright lower INNERmaterial point",
+      "assetPixelFloat": [
+        1078.304347826087,
+        874.3586956521742
+      ],
+      "nearestAssetPixel": [
+        1078,
+        874
+      ],
+      "candidateRgba": [
+        253,
+        224,
+        181,
+        253
+      ],
+      "nearestAnyOpaqueMaterialDistanceSource": 0.0
+    },
+    {
+      "source": [
+        408,
+        616
+      ],
+      "sourceRgba": [
+        116,
+        134,
+        161,
+        255
+      ],
+      "role": "frozen native back-roof trueblue positive",
+      "assetPixelFloat": [
+        1066.4239130434783,
+        214.9945652173913
+      ],
+      "nearestAssetPixel": [
+        1066,
+        215
+      ],
+      "candidateRgba": [
+        128,
+        145,
+        173,
+        253
+      ],
+      "nearestAnyOpaqueMaterialDistanceSource": 0.0
+    },
+    {
+      "source": [
+        410,
+        615
+      ],
+      "sourceRgba": [
+        118,
+        135,
+        162,
+        255
+      ],
+      "role": "frozen native back-roof trueblue positive",
+      "assetPixelFloat": [
+        1078.304347826087,
+        209.05434782608697
+      ],
+      "nearestAssetPixel": [
+        1078,
+        209
+      ],
+      "candidateRgba": [
+        71,
+        89,
+        121,
+        253
+      ],
+      "nearestAnyOpaqueMaterialDistanceSource": 0.0
+    },
+    {
+      "source": [
+        449,
+        724
+      ],
+      "sourceRgba": [
+        228,
+        183,
+        125,
+        255
+      ],
+      "role": "frozen native foregroundpaving exclusion/actorpositive",
+      "assetPixelFloat": [
+        1309.9728260869567,
+        856.5380434782611
+      ],
+      "nearestAssetPixel": [
+        1310,
+        857
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "nearestAnyOpaqueMaterialDistanceSource": 17.930810103273473
+    },
+    {
+      "source": [
+        451,
+        721
+      ],
+      "sourceRgba": [
+        228,
+        180,
+        119,
+        255
+      ],
+      "role": "frozen native foregroundpaving exclusion/actorpositive",
+      "assetPixelFloat": [
+        1321.8532608695652,
+        838.7173913043481
+      ],
+      "nearestAssetPixel": [
+        1322,
+        839
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "nearestAnyOpaqueMaterialDistanceSource": 14.700008472870207
+    },
+    {
+      "source": [
+        408,
+        760
+      ],
+      "sourceRgba": [
+        231,
+        196,
+        166,
+        255
+      ],
+      "role": "canonicalcouncilsite25,47paving",
+      "assetPixelFloat": [
+        1066.4239130434783,
+        1070.3858695652177
+      ],
+      "nearestAssetPixel": [
+        1066,
+        1070
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "nearestAnyOpaqueMaterialDistanceSource": 19.606837981081217
+    },
+    {
+      "source": [
+        408,
+        776
+      ],
+      "sourceRgba": [
+        212,
+        179,
+        148,
+        255
+      ],
+      "role": "canonicalapproach25,48paving",
+      "assetPixelFloat": [
+        1066.4239130434783,
+        1165.4293478260872
+      ],
+      "nearestAssetPixel": [
+        1066,
+        1165
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source": [
+        390,
+        720
+      ],
+      "sourceRgba": [
+        178,
+        115,
+        53,
+        255
+      ],
+      "role": "actual originalwood door point",
+      "assetPixelFloat": [
+        959.5,
+        832.7771739130437
+      ],
+      "nearestAssetPixel": [
+        960,
+        833
+      ],
+      "candidateRgba": [
+        68,
+        34,
+        8,
+        253
+      ],
+      "nearestAnyOpaqueMaterialDistanceSource": 0.0
+    }
+  ],
+  "materialAndShapeConclusions": {
+    "backRoofSamples": "408616/410615 both map to actualcandidate roofA253.",
+    "frontPavingSamples": "449724/451721 both mapA0; original foregroundpaving is not bakedinto candidatebuilding.",
+    "doorAndApproach": "Originaldoor390720mapsopaqueA253; site408760andapproach408776mapA0/outsidecanvas. Thisisstaticmaterial only, notpointersemantics approval.",
+    "westSoftEdgeMismatch": "Oldgroundpoint324760 mapsA252 stone because fittedmajorleftbase is atsource324.935,759.935; a onepixeloldpaving boundary is not identically preserved. Explicitdifference, not silentlypassednegative.",
+    "rightOldInnerSamples": "451706and456707mapA0 underrecommended fit. Candidateactualrightstonefootmaps455.065,706.065, about0.935pxabove/left ofold456707. Do not forceoldinnerpixel solid by enlargingart.",
+    "porchMismatch": "Oldleftmember373747mapsA0 with nearestactualmaterialdistance recorded; oldrightmember410727mapsA253STEPSTONE, notthe samewoodfoot. New visibleplinths change material/edgepositions; thisneeds actualsame-camera review, not an inventedexactfootpass.",
+    "newStonePlinths": "Candidatewood lowerends sit on visible substantialstoneplinths. Their wood/stonejoints are notground. Mainnearwoodjoint about5701010 vs truebase5731070 differs~10sourcepx. Do not fitwoodjointtooldgroundandignorestone below."
+  },
+  "correctedRoofAndPorchLandmarks": {
+    "supersedes": "remaining-major-objects-review/council-hall-major-object-contract.json completeVisibleArchitectureBoundary.majorLandmarksApprox ONLY. Nativefourfixedwitnesspoints and actualoldfootmaterialsamples areunchanged. Oldcoarse table remainshistorical, not silentlyoverwritten.",
+    "specificCorrections": [
+      {
+        "old": [
+          240,
+          647
+        ],
+        "new": [
+          273,
+          648
+        ],
+        "meaning": "mainleftgable/ridge-end junction;old240wasnotthisfeature"
+      },
+      {
+        "old": [
+          218,
+          674
+        ],
+        "new": [
+          232,
+          674
+        ],
+        "meaning": "leftannex visibleblueeavetip;218wasadjacent scenery"
+      },
+      {
+        "old": [
+          374,
+          660
+        ],
+        "new": [
+          392,
+          658
+        ],
+        "meaning": "porchrear ridge/toppoint"
+      },
+      {
+        "old": [
+          365,
+          699
+        ],
+        "new": [
+          374,
+          692
+        ],
+        "meaning": "porchnearleft eave/fasciaturn"
+      },
+      {
+        "old": [
+          411,
+          677
+        ],
+        "newApprox": [
+          420,
+          673
+        ],
+        "meaning": "porchrightroofextent;oldpointwasinsidewoodplane"
+      }
+    ],
+    "mainRoofComparison": {
+      "sourceApprox": [
+        [
+          273.0,
+          648.0
+        ],
+        [
+          417.0,
+          587.0
+        ],
+        [
+          463.0,
+          651.0
+        ],
+        [
+          327.0,
+          712.0
+        ]
+      ],
+      "candidateActualMaterialLandmarks": [
+        [
+          306.0,
+          401.0
+        ],
+        [
+          1110.0,
+          78.0
+        ],
+        [
+          1395.0,
+          428.0
+        ],
+        [
+          574.0,
+          777.0
+        ]
+      ],
+      "candidateAlpha": [
+        253,
+        252,
+        255,
+        253
+      ],
+      "sourceResidualsUnderFeetFirst": [
+        [
+          6.9871912168344465,
+          -0.6870997255260818
+        ],
+        [
+          -1.6642268984446673,
+          5.937785910338562
+        ],
+        [
+          0.313815187557168,
+          0.8581884720950939
+        ],
+        [
+          -1.8966148215919247,
+          -1.38975297346758
+        ]
+      ],
+      "maxAxisResidual": 6.9871912168344465,
+      "limit": "Roofjunctions are lowresolution structural landmarks, not pixelperfectouteralpha/collisionpoints. Remaining~7px roofjunction difference is disclosed, not evidence ofgrossbadproportions. Noapproxroofpoint wasusedto certifyfeet."
+    }
+  },
+  "optionalBalancedDiagnosticOnly": {
+    "purpose": "Show trade-off ratherthanforcealloldpoints. Fit same2majorcontacts plus4correctedroofjunctions. NOT preferred physicalanchor or automaticacceptance.",
+    "scale": 0.1744719926538109,
+    "translation": [
+      223.2323232323232,
+      574.4159779614325
+    ],
+    "maxAxisError": 3.620752984389349,
+    "residuals": [
+      [
+        -0.7952249770431763,
+        2.1010101010101607
+      ],
+      [
+        2.0716253443526966,
+        -1.7300275482093639
+      ],
+      [
+        3.6207529843893553,
+        -3.6207529843893553
+      ],
+      [
+        -0.10376492194666298,
+        1.0247933884297709
+      ],
+      [
+        3.6207529843893553,
+        -1.9100091827364167
+      ],
+      [
+        -3.6207529843893553,
+        -2.0192837465564253
+      ]
+    ],
+    "conclusion": "Sixlandmarks can balancewithin3.621sourceaxispx, but changesfootplacement and stilldoesnotauthenticateoldporchinnersamples. No newtolerance introduced."
+  },
+  "backgroundAlphaAudit": {
+    "definition": "Pixels morethan20assetpx fromalpha>=200 material; diagnosticonly, noalphaedit.",
+    "nonzeroFarPixels": 223,
+    "maxFarAlpha": 1,
+    "farAlphaAbove8": 0,
+    "result": "Only223distantnonzero pixels,maxA1; no opaquebackgroundsheet established. Nearboundary coloredRGBnoise not treatedasphysicalfeet."
+  },
+  "whatIsNotProved": [
+    "All56canonicalfoundationcells physicallysupported",
+    "Hiddenleftannexrearfeet or fullrearoutline",
+    "Exactporchfoot/step equality",
+    "NativePick,drawdepth,occlusioncue orcorrectsiteownership",
+    "Pixelidenticalroof/oldsoftedges"
+  ],
+  "references": [
+    "source-left-roof-grid.png",
+    "source-porch-roof-grid.png",
+    "source-far-roof-grid.png",
+    "candidate-west-foot-grid.png",
+    "candidate-east-foot-grid.png",
+    "candidate-porch-left-grid.png",
+    "candidate-porch-right-grid.png",
+    "candidate-porch-roof-grid.png",
+    "candidate-physical-landmarks.png"
+  ],
+  "ready": true
+}

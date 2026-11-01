@@ -1,0 +1,1311 @@
+{
+  "scope": "ONE remaining major interactive building: council-hall. Chosen after checking its canonical site, original source PNG, old55group registration, and foundation audit. No new minor-prop quota; no GUI/engine/save/gameplay/production edits. C07 source/audit has no bridge, so no bridge invented for this task.",
+  "source": {
+    "path": "res://assets/native/scenes/luojia.png",
+    "sha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+    "size": [
+      1536,
+      1024
+    ],
+    "paintedSha256": "37f95743c6278a6e8e0c1144feb37d38b9eb17790a776815c48a842190f23d91",
+    "occluderGroups": 55,
+    "standingParts": 108
+  },
+  "priorityProblem": {
+    "type": "Same major body has both missing true upper roof and overbroad foreground borrowed-paving depth.",
+    "backEvidence": "Torren25,40 true-blue tile samples haveA254/253 butzeroalloldstandingpartmemberships.",
+    "frontEvidence": "Torren28,46 hasA253atboth truepavingpoints, onlycouncil-hall_facade membership, oldfront765 vs actorfoot744. Actual local wing foot706..708 is far behind the actor.",
+    "classification": "Strong bounded static source/material/alpha/sort candidate awaiting parent native reproduction, NOT observed gameplay failure."
+  },
+  "siteContract": {
+    "id": "council-hall",
+    "selectionCell": [
+      25,
+      47
+    ],
+    "sourceCentre": [
+      408,
+      760
+    ],
+    "approach": [
+      25,
+      48
+    ],
+    "approachCentre": [
+      408,
+      776
+    ],
+    "sourceAtSite": {
+      "source": [
+        408,
+        760
+      ],
+      "rgba": [
+        231,
+        196,
+        166,
+        255
+      ],
+      "material": "entry paving; not building foot",
+      "cell": [
+        25,
+        47
+      ],
+      "terrain": "B",
+      "standingPartsContaining": []
+    },
+    "sourceAtApproach": {
+      "source": [
+        408,
+        776
+      ],
+      "rgba": [
+        212,
+        179,
+        148,
+        255
+      ],
+      "material": "approach paving; not building foot",
+      "cell": [
+        25,
+        48
+      ],
+      "terrain": "p",
+      "standingPartsContaining": []
+    },
+    "actualDoorMaterial": {
+      "source": [
+        390,
+        720
+      ],
+      "rgba": [
+        178,
+        115,
+        53,
+        255
+      ],
+      "material": "real wood main entrance door",
+      "cell": [
+        24,
+        45
+      ],
+      "terrain": "#",
+      "standingPartsContaining": [
+        "council-hall_facade"
+      ]
+    },
+    "existingPointer": {
+      "kind": "target",
+      "polygonPixels": [
+        [
+          371,
+          707
+        ],
+        [
+          390,
+          697
+        ],
+        [
+          407,
+          704
+        ],
+        [
+          407,
+          737
+        ],
+        [
+          390,
+          748
+        ],
+        [
+          371,
+          739
+        ]
+      ]
+    },
+    "preserve": "Keep current canonicalcaptureowner25,47 and approach25,48. Do not move architecture/door physical anchor onto the site centre. No new door-command or movement-rule defect asserted."
+  },
+  "existingBody": {
+    "id": "council-hall",
+    "ownsMapStructureBody": true,
+    "parts": [
+      {
+        "id": "roof",
+        "polygonPixels": [
+          [
+            237,
+            648
+          ],
+          [
+            350,
+            588
+          ],
+          [
+            474,
+            649
+          ],
+          [
+            362,
+            699
+          ]
+        ],
+        "groundFrontPixels": [
+          357,
+          765
+        ],
+        "pointer": {
+          "kind": "pass-through"
+        },
+        "contactCell": [
+          22,
+          47
+        ]
+      },
+      {
+        "id": "facade",
+        "polygonPixels": [
+          [
+            253,
+            661
+          ],
+          [
+            362,
+            700
+          ],
+          [
+            458,
+            663
+          ],
+          [
+            458,
+            723
+          ],
+          [
+            358,
+            765
+          ],
+          [
+            253,
+            722
+          ]
+        ],
+        "groundFrontPixels": [
+          357,
+          765
+        ],
+        "pointer": {
+          "kind": "target",
+          "polygonPixels": [
+            [
+              371,
+              707
+            ],
+            [
+              390,
+              697
+            ],
+            [
+              407,
+              704
+            ],
+            [
+              407,
+              737
+            ],
+            [
+              390,
+              748
+            ],
+            [
+              371,
+              739
+            ]
+          ]
+        },
+        "contactCell": [
+          22,
+          47
+        ]
+      }
+    ],
+    "selectionCell": [
+      25,
+      47
+    ]
+  },
+  "completeVisibleArchitectureBoundary": {
+    "roughSourceBounds": [
+      215,
+      584,
+      465,
+      762
+    ],
+    "description": "Large blue-slate timber hall with left gable/short roof return and long right-facing entrance wall; projecting timber gabled entrance porch with paired front posts/steps is part of the same hall function. Include visible main roof, chimney, walls, side door, main door and structural porch, while retaining separate surface/footline depths.",
+    "majorLandmarksApprox": {
+      "leftRoofRidgeEnd": [
+        240,
+        647
+      ],
+      "farRoofRidgeEnd": [
+        416,
+        589
+      ],
+      "rightRoofEave": [
+        463,
+        650
+      ],
+      "nearLeftLongEaveTurn": [
+        327,
+        712
+      ],
+      "leftRoofReturnTip": [
+        218,
+        674
+      ],
+      "porchGablePeak": [
+        374,
+        660
+      ],
+      "porchRightEave": [
+        411,
+        677
+      ],
+      "porchLeftEave": [
+        365,
+        699
+      ]
+    },
+    "landmarkLimit": "Source-read architecture landmarks for object identification and crop, not a minimax fit or hidden foundation polygon. Do not use coarse oldroof237648/350588/474649/362699 as actual roof corners.",
+    "leftReturn": "Visible blue short roof return around218674..273696 and plaster below is physically continuous with hall. No separate standing-object id is registered there. Ground/base is hidden by garden wall/vegetation; not a certified rear foot.",
+    "exclude": [
+      "garden perimeter walls/fence behind/left of hall",
+      "foreground flowerpots, shrubs and trees, including planters hiding wall bases",
+      "neighbour east fenced planter/benches",
+      "paving and cast shadows around hall",
+      "separate western/southwestern gate structures"
+    ],
+    "atomicVsWholeAsset": "A coherent whole-house asset can include main core and porch, but its render/pick depth cannot remain one maximum-footline. Main longwall and porch/front steps require actual supported local depth/parts. No full asset generation or pixel mask authored here."
+  },
+  "actualArchitecturalContacts": {
+    "westVisibleMainFrameFoot": {
+      "source": [
+        324,
+        759
+      ],
+      "rgba": [
+        87,
+        44,
+        13,
+        255
+      ],
+      "material": "visible lower wood structural frame at left main-wall turn;324760 is pale paving transition",
+      "cell": [
+        20,
+        47
+      ],
+      "terrain": "#",
+      "standingPartsContaining": []
+    },
+    "westPavingBelow": {
+      "source": [
+        324,
+        760
+      ],
+      "rgba": [
+        227,
+        198,
+        163,
+        255
+      ],
+      "material": "pale paving below visible wood",
+      "cell": [
+        20,
+        47
+      ],
+      "terrain": "#",
+      "standingPartsContaining": []
+    },
+    "eastWallStoneBase": {
+      "source": [
+        451,
+        706
+      ],
+      "rgba": [
+        62,
+        54,
+        57,
+        255
+      ],
+      "material": "true lower grey stone foundation/jamb material;708transitions warm ground",
+      "cell": [
+        28,
+        44
+      ],
+      "terrain": "#",
+      "standingPartsContaining": [
+        "council-hall_facade"
+      ]
+    },
+    "eastStoneGroundTransition": {
+      "source": [
+        451,
+        708
+      ],
+      "rgba": [
+        159,
+        121,
+        105,
+        255
+      ],
+      "material": "warm ground contact transition below grey stone",
+      "cell": [
+        28,
+        44
+      ],
+      "terrain": "#",
+      "standingPartsContaining": [
+        "council-hall_facade"
+      ]
+    },
+    "eastTimberFoot": {
+      "source": [
+        456,
+        707
+      ],
+      "rgba": [
+        52,
+        34,
+        13,
+        255
+      ],
+      "material": "true lower timber frame at right wing;709 warm paving",
+      "cell": [
+        28,
+        44
+      ],
+      "terrain": "#",
+      "standingPartsContaining": [
+        "council-hall_facade"
+      ]
+    },
+    "eastTimberPavingBelow": {
+      "source": [
+        456,
+        709
+      ],
+      "rgba": [
+        198,
+        154,
+        109,
+        255
+      ],
+      "material": "warm ground below right timber",
+      "cell": [
+        28,
+        44
+      ],
+      "terrain": "#",
+      "standingPartsContaining": [
+        "council-hall_facade"
+      ]
+    },
+    "porchLeftLowerMember": {
+      "source": [
+        373,
+        747
+      ],
+      "rgba": [
+        59,
+        38,
+        27,
+        255
+      ],
+      "material": "visible dark lower porch post/base; nearby foreground pot/stone trims obscure other edges",
+      "cell": [
+        23,
+        46
+      ],
+      "terrain": "#",
+      "standingPartsContaining": [
+        "council-hall_facade"
+      ]
+    },
+    "porchRightVisibleLowerMember": {
+      "source": [
+        410,
+        727
+      ],
+      "rgba": [
+        105,
+        74,
+        48,
+        255
+      ],
+      "material": "visible dark/brown lower right porch post;410729 is paving",
+      "cell": [
+        25,
+        45
+      ],
+      "terrain": "#",
+      "standingPartsContaining": [
+        "council-hall_facade"
+      ]
+    },
+    "porchRightPavingBelow": {
+      "source": [
+        410,
+        729
+      ],
+      "rgba": [
+        233,
+        193,
+        147,
+        255
+      ],
+      "material": "light paving below porch right member",
+      "cell": [
+        25,
+        45
+      ],
+      "terrain": "#",
+      "standingPartsContaining": [
+        "council-hall_facade"
+      ]
+    },
+    "limits": "Visible architectural contact samples, NOT three/four outer foundation corners. Left rear foundation is hidden. Distinct step/porch and wall feet cannot be combined into one invented flat plane. Exact anti-aliased outer border is not asserted from one inner material pixel.",
+    "oldWholeBodyFront": {
+      "source": [
+        357,
+        765
+      ],
+      "rgba": [
+        244,
+        198,
+        143,
+        255
+      ],
+      "material": "paved ground below/forward of hall, NOT actual structural base",
+      "cell": [
+        22,
+        47
+      ],
+      "terrain": "#",
+      "standingPartsContaining": []
+    }
+  },
+  "foundationAudit": {
+    "record": {
+      "id": "council-hall-foundation",
+      "polygonPixels": [
+        [
+          255,
+          679
+        ],
+        [
+          355,
+          722
+        ],
+        [
+          455,
+          686
+        ],
+        [
+          455,
+          722
+        ],
+        [
+          356,
+          766
+        ],
+        [
+          255,
+          723
+        ]
+      ],
+      "blockedCells": [
+        [
+          15,
+          42
+        ],
+        [
+          16,
+          42
+        ],
+        [
+          17,
+          42
+        ],
+        [
+          28,
+          42
+        ],
+        [
+          15,
+          43
+        ],
+        [
+          16,
+          43
+        ],
+        [
+          17,
+          43
+        ],
+        [
+          18,
+          43
+        ],
+        [
+          19,
+          43
+        ],
+        [
+          25,
+          43
+        ],
+        [
+          26,
+          43
+        ],
+        [
+          27,
+          43
+        ],
+        [
+          28,
+          43
+        ],
+        [
+          15,
+          44
+        ],
+        [
+          16,
+          44
+        ],
+        [
+          17,
+          44
+        ],
+        [
+          18,
+          44
+        ],
+        [
+          19,
+          44
+        ],
+        [
+          20,
+          44
+        ],
+        [
+          21,
+          44
+        ],
+        [
+          22,
+          44
+        ],
+        [
+          23,
+          44
+        ],
+        [
+          24,
+          44
+        ],
+        [
+          25,
+          44
+        ],
+        [
+          26,
+          44
+        ],
+        [
+          27,
+          44
+        ],
+        [
+          28,
+          44
+        ],
+        [
+          15,
+          45
+        ],
+        [
+          16,
+          45
+        ],
+        [
+          17,
+          45
+        ],
+        [
+          18,
+          45
+        ],
+        [
+          19,
+          45
+        ],
+        [
+          20,
+          45
+        ],
+        [
+          21,
+          45
+        ],
+        [
+          22,
+          45
+        ],
+        [
+          23,
+          45
+        ],
+        [
+          24,
+          45
+        ],
+        [
+          25,
+          45
+        ],
+        [
+          26,
+          45
+        ],
+        [
+          27,
+          45
+        ],
+        [
+          28,
+          45
+        ],
+        [
+          17,
+          46
+        ],
+        [
+          18,
+          46
+        ],
+        [
+          19,
+          46
+        ],
+        [
+          20,
+          46
+        ],
+        [
+          21,
+          46
+        ],
+        [
+          22,
+          46
+        ],
+        [
+          23,
+          46
+        ],
+        [
+          24,
+          46
+        ],
+        [
+          25,
+          46
+        ],
+        [
+          26,
+          46
+        ],
+        [
+          20,
+          47
+        ],
+        [
+          21,
+          47
+        ],
+        [
+          22,
+          47
+        ],
+        [
+          23,
+          47
+        ],
+        [
+          24,
+          47
+        ]
+      ]
+    },
+    "blockedCellCount": 56,
+    "meaning": "Canonical unchanged physical responsibility audit, not source-pixel-perfect building footprint or evidence of hidden source feet. No foundation reclassification performed."
+  },
+  "actualC07Poses": {
+    "backRoof": {
+      "cell": [
+        25,
+        40
+      ],
+      "terrain": "p",
+      "footSource": [
+        408,
+        648
+      ],
+      "unitType": "c01.swordsman",
+      "actorKey": "campaign-torren",
+      "presentInC07": true,
+      "frameIndex": 0,
+      "frameRole": "idle",
+      "facing": "east",
+      "witnesses": [
+        {
+          "source": [
+            408,
+            616
+          ],
+          "rgba": [
+            116,
+            134,
+            161,
+            255
+          ],
+          "material": "true blue slate roof tile",
+          "cell": [
+            25,
+            38
+          ],
+          "terrain": "p",
+          "standingPartsContaining": [],
+          "framePixelFloat": [
+            269.0,
+            232.19984025592333
+          ],
+          "nearestFramePixel": [
+            269,
+            232
+          ],
+          "actorRgba": [
+            55,
+            49,
+            47,
+            254
+          ]
+        },
+        {
+          "source": [
+            410,
+            615
+          ],
+          "rgba": [
+            118,
+            135,
+            162,
+            255
+          ],
+          "material": "true blue slate roof tile",
+          "cell": [
+            25,
+            38
+          ],
+          "terrain": "p",
+          "standingPartsContaining": [],
+          "framePixelFloat": [
+            289.8000099840048,
+            221.7998352639209
+          ],
+          "nearestFramePixel": [
+            290,
+            222
+          ],
+          "actorRgba": [
+            148,
+            138,
+            134,
+            253
+          ]
+        }
+      ],
+      "expectedRelation": "Back actorfootY648 is behind the hall physical supports, including real east-wing stone/wood basesY706..708 and porchY728+. Both independently fixed true tile points are excluded from all old108standingparts. Native should hide actoratthese actual roof pixels, not leave roof baked under actor.",
+      "pOnlyTerrainPathFromCanonical40_25": [
+        [
+          40,
+          25
+        ],
+        [
+          39,
+          25
+        ],
+        [
+          38,
+          25
+        ],
+        [
+          38,
+          26
+        ],
+        [
+          38,
+          27
+        ],
+        [
+          38,
+          28
+        ],
+        [
+          38,
+          29
+        ],
+        [
+          37,
+          29
+        ],
+        [
+          36,
+          29
+        ],
+        [
+          36,
+          30
+        ],
+        [
+          35,
+          30
+        ],
+        [
+          34,
+          30
+        ],
+        [
+          34,
+          31
+        ],
+        [
+          33,
+          31
+        ],
+        [
+          32,
+          31
+        ],
+        [
+          31,
+          31
+        ],
+        [
+          30,
+          31
+        ],
+        [
+          29,
+          31
+        ],
+        [
+          28,
+          31
+        ],
+        [
+          28,
+          32
+        ],
+        [
+          27,
+          32
+        ],
+        [
+          26,
+          32
+        ],
+        [
+          25,
+          32
+        ],
+        [
+          25,
+          33
+        ],
+        [
+          25,
+          34
+        ],
+        [
+          25,
+          35
+        ],
+        [
+          25,
+          36
+        ],
+        [
+          25,
+          37
+        ],
+        [
+          25,
+          38
+        ],
+        [
+          25,
+          39
+        ],
+        [
+          25,
+          40
+        ]
+      ],
+      "pathSteps": 30,
+      "pathScope": "Static terrain-only connectivity, not gameplay movement/occupancy/action legality."
+    },
+    "frontRightPaving": {
+      "cell": [
+        28,
+        46
+      ],
+      "terrain": "p",
+      "footSource": [
+        456,
+        744
+      ],
+      "unitType": "c01.swordsman",
+      "actorKey": "campaign-torren",
+      "presentInC07": true,
+      "frameIndex": 0,
+      "frameRole": "idle",
+      "facing": "east",
+      "witnesses": [
+        {
+          "source": [
+            449,
+            724
+          ],
+          "rgba": [
+            228,
+            183,
+            125,
+            255
+          ],
+          "material": "actual paving in front of right wing, below stone-plinth/curb edge",
+          "cell": [
+            28,
+            45
+          ],
+          "terrain": "#",
+          "standingPartsContaining": [
+            "council-hall_facade"
+          ],
+          "framePixelFloat": [
+            196.19996505598323,
+            356.99990015995206
+          ],
+          "nearestFramePixel": [
+            196,
+            357
+          ],
+          "actorRgba": [
+            109,
+            77,
+            53,
+            253
+          ]
+        },
+        {
+          "source": [
+            451,
+            721
+          ],
+          "rgba": [
+            228,
+            180,
+            119,
+            255
+          ],
+          "material": "actual paving below/right of wing plinth, not main facade",
+          "cell": [
+            28,
+            45
+          ],
+          "terrain": "#",
+          "standingPartsContaining": [
+            "council-hall_facade"
+          ],
+          "framePixelFloat": [
+            216.99997503998802,
+            325.79988518394487
+          ],
+          "nearestFramePixel": [
+            217,
+            326
+          ],
+          "actorRgba": [
+            65,
+            48,
+            37,
+            253
+          ]
+        }
+      ],
+      "expectedRelation": "Front actorfootY744 is ahead of LOCAL right-wing supportY706..708 and local step/curb edge nearY716..720. Oldfacade contains both paving samples and usesgroundFrontY765, in front of actor744, so source/alpha/depth model predicts false ground-over-actor cover. Native should keep these actual actor pixels visible/pickable. This is not a claim that actor is in front of every left-side corner of the wide hall.",
+      "pOnlyTerrainPathFromCanonical40_25": [
+        [
+          40,
+          25
+        ],
+        [
+          39,
+          25
+        ],
+        [
+          38,
+          25
+        ],
+        [
+          38,
+          26
+        ],
+        [
+          38,
+          27
+        ],
+        [
+          38,
+          28
+        ],
+        [
+          38,
+          29
+        ],
+        [
+          37,
+          29
+        ],
+        [
+          36,
+          29
+        ],
+        [
+          36,
+          30
+        ],
+        [
+          35,
+          30
+        ],
+        [
+          34,
+          30
+        ],
+        [
+          34,
+          31
+        ],
+        [
+          33,
+          31
+        ],
+        [
+          32,
+          31
+        ],
+        [
+          31,
+          31
+        ],
+        [
+          30,
+          31
+        ],
+        [
+          29,
+          31
+        ],
+        [
+          28,
+          31
+        ],
+        [
+          28,
+          32
+        ],
+        [
+          27,
+          32
+        ],
+        [
+          26,
+          32
+        ],
+        [
+          26,
+          33
+        ],
+        [
+          26,
+          34
+        ],
+        [
+          26,
+          35
+        ],
+        [
+          26,
+          36
+        ],
+        [
+          26,
+          37
+        ],
+        [
+          26,
+          38
+        ],
+        [
+          26,
+          39
+        ],
+        [
+          27,
+          39
+        ],
+        [
+          28,
+          39
+        ],
+        [
+          28,
+          40
+        ],
+        [
+          28,
+          41
+        ],
+        [
+          29,
+          41
+        ],
+        [
+          30,
+          41
+        ],
+        [
+          30,
+          42
+        ],
+        [
+          30,
+          43
+        ],
+        [
+          30,
+          44
+        ],
+        [
+          30,
+          45
+        ],
+        [
+          29,
+          45
+        ],
+        [
+          29,
+          46
+        ],
+        [
+          28,
+          46
+        ]
+      ],
+      "pathSteps": 41,
+      "pathScope": "Static terrain-only connectivity, not gameplay movement/occupancy/action legality."
+    }
+  },
+  "actorPresentation": {
+    "assetId": "torren-stage01",
+    "resourcePath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+    "sha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
+    "frameRegion": [
+      0,
+      0,
+      557,
+      725
+    ],
+    "frameAnchor": [
+      269,
+      565
+    ],
+    "spriteScale": 0.0961538,
+    "pixelDensity": 1,
+    "sourceWorldScale": 1,
+    "formula": "frame=anchor+(sourcePoint-canonicalFoot)/scale, eastframe0"
+  },
+  "necessaryFixBoundary": {
+    "replace": "Independently material-owned main hall + entrance porch, truthful local contact/depth. Do not patch only missing roof pixels while leaving bogus facadepaving/front765.",
+    "keep": "All canonicalterrain, site/approach, artstyle/unit proportions; distinct foreground props stay separate.",
+    "whyLoweringOneFrontFails": "Settingwholebodyfront to true leftfoot759 still puts all rightwingmaterial in front of actor744. The spatially different rightfoot706..708 needs local support/depth, not a different single maximum.",
+    "input": "Main actualdoor remains targetcouncil-hall25,47. Roof/genericbodycover must not infer new captures or same-cellunits. Frontactor remainsUnit where visibly in front."
+  },
+  "nativeRegressionProposal": {
+    "fixedBack": {
+      "cell": [
+        25,
+        40
+      ],
+      "sourcePoints": [
+        [
+          408,
+          616
+        ],
+        [
+          410,
+          615
+        ]
+      ],
+      "expected": "true roof covers opaqueactor, without making all neighbouring gap pixels opaque"
+    },
+    "fixedFront": {
+      "cell": [
+        28,
+        46
+      ],
+      "sourcePoints": [
+        [
+          449,
+          724
+        ],
+        [
+          451,
+          721
+        ]
+      ],
+      "expected": "actor retained visible/pickable; paved ground must not be standing facade"
+    },
+    "negativeControls": [
+      "Original missing-roof/no-layer geometry should fail backtrue-tile samples.",
+      "Original facade/front765 must fail forwardpaving samples.",
+      "Singlefront759 (lefttruefoot) must not be treated as proof of correct rightwing ordering."
+    ],
+    "status": "No engine/native execution here; parent may validate same independent canonical poses."
+  },
+  "references": [
+    "council-hall-source.png",
+    "council-hall-grid.png",
+    "council-right-wing-ground-grid.png",
+    "main-west-foot-grid.png",
+    "porch-feet-grid.png",
+    "right-wall-foot-grid.png",
+    "left-annex-grid.png",
+    "council-fixed-points-and-old-polygons.png"
+  ],
+  "completionBoundary": "One strong major-building candidate delivered. No further sites or small props surveyed."
+}

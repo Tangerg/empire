@@ -10,12 +10,14 @@ Original responsibility matrix has190audit groups:28building foundations,8gate p
 - Militia barracks: main body, atomic front lean-to, front crate, western crate, training fence. Source feet vs interaction-cell distinction retained. The west crate's original strongest failure uses an existing ballista appearance **not in C07 roster**; separate actual C07 front controls exist. Full62-cell foundation/annex/yard integration incomplete.
 - Granary: main body, independently supported cloth canopy, low front grain bin, three door-front containers, independently supported left clay-roof shed frame and major tied bale stock and square post-surrounding box. Actual C07 roof/sidewall/post/bin regressions and existing site/approach preserved. Three door boxes are bounded new stock design/front-protection, **not a claimed original rear-role defect**. Minor stock and full shed/stock/yard foundation integration incomplete. Earlier foreground-barrel identity was corrected to square timber post enclosure.
 
-Only two major interactive building main bodies have new independent candidates. This is **not2of16completed sites**, and does not count either full building foundation as complete. The other26building-foundation categories, four gates/eight piers and most walls/landscape props have not been reconstructed.
+- Council hall: independent main/annex/porch candidate fixes true-roof missed coverage and false foreground paving mask. Actual near-side helmet verifies local right-wall depth; original door/site and512sample entry strip retained. Full surrounding yard/walls/landscape incomplete.
+
+Only three major interactive building main bodies have new independent candidates. This is **not3of16completed sites**, and does not count any full building foundation as complete. The other25building-foundation categories, four gates/eight piers and most walls/landscape props have not been reconstructed.
 
 ## Remaining work / next order
 1. Door stock closed with full entry-strip and actual-role controls.
 2. Major left shed, bale stock and square post enclosure bounded candidates closed. Stop minor-stock refinement and move to council hall.
-3. Council hall major site: source review found actual blue-roof missed coverage and an overbroad facade covering true foreground paving. Prove natively before fixing; real visible wall feet, not legacy765depth, must own new geometry.
+3. Council hall main/porch bounded candidate closed with native original/fixed/negative controls; do not imply all56foundation or yard coverage is complete.
 4. Four gate openings and remaining buildings, ranked by actual-role/entry counterexamples rather than object count; return walls/trees/central canopy/statue and remaining coverage to the190groupmatrix.
 5. Integrate full-scene material sharpness, restrained line/lighting style and contact shadows, ground registration and all legal pathways; then render batching/performance with unchanged pixel/occlusion contracts. Only after complete affected validation consider production binding and permitted normal-play validation.
 
