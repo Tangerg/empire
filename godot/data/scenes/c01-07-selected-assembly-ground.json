@@ -188,6 +188,18 @@
       ],
       "ownsMapStructureBody": true,
       "pointer": "target"
+    },
+    {
+      "id": "southeast-gate-leaf",
+      "assetId": "southeast-gate-leaf-surface-v1",
+      "contact": [
+        82.9375,
+        53.0
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
     }
   ]
 }

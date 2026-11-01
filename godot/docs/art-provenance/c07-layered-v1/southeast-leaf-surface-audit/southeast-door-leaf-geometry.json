@@ -1,0 +1,137 @@
+{
+  "scope": "UNBOUND original southeast wooden gate leaf: approximate original visible silhouette, source-derived support. Texture layout is new material reuse, no new gate mechanics. Static proposal, not native accepted.",
+  "textureResourcePath": "res://assets/native/c07-layered-v1/southeast-gate-v1-candidate.png",
+  "namePrefix": "SoutheastGateWoodLeaf",
+  "supportLine": [
+    [
+      1327,
+      891
+    ],
+    [
+      1349,
+      902
+    ]
+  ],
+  "members": [
+    {
+      "id": "arched-wooden-leaf-plane",
+      "polygon": [
+        [
+          1327,
+          852
+        ],
+        [
+          1331,
+          850
+        ],
+        [
+          1335,
+          848
+        ],
+        [
+          1340,
+          849
+        ],
+        [
+          1344,
+          852
+        ],
+        [
+          1347,
+          857
+        ],
+        [
+          1349,
+          864
+        ],
+        [
+          1349,
+          902
+        ],
+        [
+          1327,
+          891
+        ]
+      ],
+      "uv": [
+        [
+          736.0,
+          832.3333333333334
+        ],
+        [
+          747.0909090909091,
+          829.6666666666666
+        ],
+        [
+          758.1818181818181,
+          827.0
+        ],
+        [
+          772.0454545454545,
+          828.3333333333334
+        ],
+        [
+          783.1363636363636,
+          832.3333333333334
+        ],
+        [
+          791.4545454545455,
+          839.0
+        ],
+        [
+          797.0,
+          848.3333333333334
+        ],
+        [
+          797.0,
+          899.0
+        ],
+        [
+          736.0,
+          884.3333333333334
+        ]
+      ],
+      "tint": "ffffff"
+    },
+    {
+      "id": "visible-sloping-timber-crossbar",
+      "polygon": [
+        [
+          1328,
+          864
+        ],
+        [
+          1348,
+          874
+        ],
+        [
+          1348,
+          876
+        ],
+        [
+          1328,
+          866
+        ]
+      ],
+      "uv": [
+        [
+          744,
+          794
+        ],
+        [
+          780,
+          814
+        ],
+        [
+          779,
+          818
+        ],
+        [
+          743,
+          798
+        ]
+      ],
+      "tint": "ffffff"
+    }
+  ]
+}

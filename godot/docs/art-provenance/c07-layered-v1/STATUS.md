@@ -56,3 +56,6 @@ The exact reviewed council hall joins the same selected assembly, now12instances
 
 ## Southeast stone formal integration
 Reviewed five-region stone frame now uses the same formal surface owner in the selected assembly:13instances/4sites/1177depth entries. Original full-canvas native-alpha UV edges are accepted without inset;22compiler assertions preserve opaque and actual-overrun rejection. Source vertices/UV/depth exact; old reprojection has1ULP drift; three native frames pixel-identical.2293road and actual-role/target contracts plus precise negatives pass. Leaf remains separate/next; see [southeast-stone-surface-audit](southeast-stone-surface-audit/README.md).
+
+## Southeast independent leaf formal integration
+The two-member leaf joins the same selected assembly with22own supports, no additional site:14instances/4sites/1199depth entries.666vertices and1425coverage samples exact; three GPU frames identical; front/back,2293opening samples and two wrong-depth controls pass. Flat wood/hinge/shadow art debt unchanged. See [southeast-leaf-surface-audit](southeast-leaf-surface-audit/README.md).

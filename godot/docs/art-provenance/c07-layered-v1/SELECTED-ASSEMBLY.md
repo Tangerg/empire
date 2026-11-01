@@ -15,7 +15,7 @@ The initial merge retained the barracks object's five-instance order, then the n
 
 ## What this is and is not
 
-At this checkpoint:13independent instances,4independently owned building/gate sites and1177depth entries. The1177includes the existing276-strip barracks body and178-strip granary body plus188-strip council hall and188-surface southeast stone gate; it is not a performance pass. The4sites are **not the total interactive sites of C07**. Remaining canonical sites still use legacy default building placeholders. Walls, other foundations, yard/stock, gates and scenery remain incomplete.
+At this checkpoint:14independent instances,4independently owned building/gate sites and1199depth entries. The1199includes the existing276-strip barracks body and178-strip granary body plus188-strip council hall and188-surface southeast stone gate plus22-surface independent wooden leaf; it is not a performance pass. The4sites are **not the total interactive sites of C07**. Remaining canonical sites still use legacy default building placeholders. Walls, other foundations, yard/stock, gates and scenery remain incomplete.
 
 Official `c01-07.json` is unchanged (55painted groups/108parts), and selected assembly remains `runtimeReady=false`. Neither clean-ground visibility nor default placeholders prove full foundation/route/art correctness. Do not bind it to normal campaign entry until selected/full-scene responsibility, material/contact integration, input/cue/camera and measured performance acceptance are complete. C06/C07 real gameplay remains separately paused; all present checks are pure static/display-clone tests.
 
@@ -23,4 +23,4 @@ Next closed components must join this assembly while preserving previous actual-
 
 Council hall integration: [selected-council-audit](selected-council-audit/README.md), exact reviewed asset/placement transfer with fresh three-role directions and two wrong-depth negatives.
 
-Southeast stone formal integration: [southeast-stone-surface-audit](southeast-stone-surface-audit/README.md); independent leaf is next, same assembly.
+Southeast stone formal integration: [southeast-stone-surface-audit](southeast-stone-surface-audit/README.md); independent leaf joined this same assembly: [southeast-leaf-surface-audit](southeast-leaf-surface-audit/README.md).
