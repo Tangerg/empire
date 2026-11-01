@@ -48,6 +48,7 @@ public partial class CampaignNavigationChecks : Node
             battleNodeState = runtime.Snapshot();
             foreach (var (name, test) in new (string, Func<Task>)[] {
                 ("fresh menu, local beats, choice and autosave", () => { CheckFreshStoryChoice(); return Task.CompletedTask; }),
+                ("battle window minimum follows committed view and lifecycle", CheckBattleWindowMinimum),
                 ("root notice leaves with its view", CheckNoticeViewTransition),
                 ("startup resume, battle restart, camp and Continue", CheckBattleCampMenu),
                 ("story/choice return, rebind and unmount", () => { CheckNarrativeNavigation(); return Task.CompletedTask; }),
@@ -183,6 +184,78 @@ public partial class CampaignNavigationChecks : Node
         Press(last);
         Press(Button(story, "CampaignExit"));
         Require(ReferenceEquals(View<Control>(game), next) && State(game) == committed && Stamp(automaticPath) == saved, "Old story continue/exit remained live after navigation.");
+    }
+
+    private async Task CheckBattleWindowMinimum()
+    {
+        var window = GetWindow();
+        var originalMinimum = window.MinSize;
+        var originalSize = window.Size;
+        GrayFlagGame? game = null;
+        try
+        {
+            foreach (var inherited in new[] { Vector2I.Zero, new Vector2I(1000, 500) })
+            {
+                window.MinSize = inherited;
+                window.Size = new(640, 480);
+                WriteFixture(battleNodeState);
+                game = MountGame();
+                Require(window.MinSize == inherited, "Menu changed its host window minimum.");
+                Press(Button(View<Control>(game), "ContinueCampaign"));
+                Require(window.MinSize == inherited, "Staging imposed battle-only constraints.");
+                var beforeSize = window.Size;
+                var children = game.GetChildCount();
+                var prepare = typeof(GrayFlagGame).GetMethod("PrepareMounted", BindingFlags.NonPublic | BindingFlags.Instance)!
+                    .MakeGenericMethod(typeof(BattleScreen));
+                var propagated = false;
+                var unconfigured = new BattleScreen();
+                // This deliberate pre-BindSession fault has not transferred these eager nodes
+                // into the screen tree; the fixture owns their cleanup.
+                var unownedBoard = unconfigured.Board;
+                var unownedOverlay = Field<BoardOverlay>(unconfigured, "_overlay");
+                try
+                {
+                    prepare.Invoke(game, new object[] { unconfigured, (Action<BattleScreen>)(_ => throw new InvalidOperationException("intentional preparation fixture")) });
+                }
+                catch (TargetInvocationException error) when (error.InnerException is InvalidOperationException) { propagated = true; }
+                finally
+                {
+                    unownedBoard.Free();
+                    unownedOverlay.Free();
+                }
+                Require(propagated && game.GetChildCount() == children && window.MinSize == inherited && window.Size == beforeSize,
+                    "Failed hidden battle preparation altered the current window or leaked a view.");
+                Press(Button(View<Control>(game), "StartBattle"));
+                await Layout();
+                var expected = new Vector2I(Math.Max(inherited.X, 960), Math.Max(inherited.Y, 640));
+                Require(window.MinSize == expected && window.Size.X >= expected.X && window.Size.Y >= expected.Y,
+                    "Committed battle did not preserve the larger host minimum and grow to a readable viewport.");
+                var state = State(game);
+                var battle = Digest(Campaign(game).Battle!.Snapshot());
+                window.Size = new(640, 360);
+                await Layout();
+                Require(window.Size.X >= expected.X && window.Size.Y >= expected.Y && State(game) == state && Digest(Campaign(game).Battle!.Snapshot()) == battle,
+                    "Battle resize escaped the minimum or changed gameplay.");
+                Press(Buttons(View<BattleScreen>(game)).Single(button => button.Text == "战役营地"));
+                await Layout();
+                Require(window.MinSize == inherited, "Leaving battle for camp retained the battle minimum.");
+                Press(Button(View<Control>(game), "StartBattle"));
+                RemoveChild(game);
+                Require(window.MinSize == inherited, "Unmount retained the battle minimum.");
+                AddChild(game);
+                Require(window.MinSize == expected, "Remount failed to restore the active battle minimum.");
+                game.Free();
+                game = null;
+                Require(window.MinSize == inherited, "Free retained the battle minimum.");
+            }
+        }
+        finally
+        {
+            if (GodotObject.IsInstanceValid(game))
+                game!.Free();
+            window.MinSize = originalMinimum;
+            window.Size = originalSize;
+        }
     }
 
     private async Task CheckBattleCampMenu()
@@ -498,6 +571,7 @@ public partial class CampaignNavigationChecks : Node
             SetField(game, "resultOffered", false);
             game._Process(0);
             var completion = View<BattleResultScreen>(game);
+            Require(GetWindow().MinSize == Field<Vector2I>(game, "inheritedWindowMinimum"), "Settlement retained the battle-only window minimum.");
             var previous = File.ReadAllText(automaticPath);
             var before = State(game);
             if (action == "failed-write")
@@ -901,6 +975,8 @@ public partial class CampaignNavigationChecks : Node
             var opening = new GrayFlagCampaign(new(engine, presentationText), definition, levels);
             SaveFile.WriteDocument(manualPath, opening.Save());
             var children = game.GetChildCount();
+            var windowMinimum = GetWindow().MinSize;
+            var windowSize = GetWindow().Size;
             SetField(game, "stories", new StoryDocument());
             var defectPropagated = false;
             try
@@ -913,6 +989,7 @@ public partial class CampaignNavigationChecks : Node
                 "Failed replacement-view preparation changed the active application.");
             Require(activeView.IsInsideTree() && game.GetChildCount() == children,
                 "Failed preparation removed the current screen or leaked a hidden replacement.");
+            Require(GetWindow().MinSize == windowMinimum && GetWindow().Size == windowSize, "Failed manual-load preparation altered the active battle window.");
             SetField(game, "stories", stories);
             game._UnhandledKeyInput(new InputEventKey { Pressed = true, Keycode = Key.F9 });
             Require(!ReferenceEquals(Campaign(game), activeCampaign) && View<Control>(game) is StoryScreen,

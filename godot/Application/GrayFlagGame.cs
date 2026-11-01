@@ -31,12 +31,56 @@ public partial class GrayFlagGame : Node
     private readonly AiTurnPacer computerPacer = new();
     private bool resultOffered;
     private long lifecycleGeneration;
+    private Window? applicationWindow;
+    private Vector2I inheritedWindowMinimum;
+    private static readonly Vector2I BattleWindowMinimum = new(960, 640);
+
+    public override void _EnterTree()
+    {
+        applicationWindow = GetWindow();
+        inheritedWindowMinimum = applicationWindow.MinSize;
+        ApplyWindowMinimum();
+    }
+
+    private Vector2I RequiredBattleWindow => new(Math.Max(inheritedWindowMinimum.X, BattleWindowMinimum.X),
+        Math.Max(inheritedWindowMinimum.Y, BattleWindowMinimum.Y));
+
+    private bool CanDisplayBattle()
+    {
+        if (DisplayServer.GetName() == "headless")
+            return true;
+        var window = applicationWindow!;
+        var fullscreen = window.Mode is Window.ModeEnum.Fullscreen or Window.ModeEnum.ExclusiveFullscreen;
+        var available = fullscreen ? DisplayServer.ScreenGetSize(window.CurrentScreen)
+            : DisplayServer.ScreenGetUsableRect(window.CurrentScreen).Size
+                - (window.GetSizeWithDecorations() - window.Size);
+        return available.X >= RequiredBattleWindow.X && available.Y >= RequiredBattleWindow.Y;
+    }
+
+    private void ApplyWindowMinimum()
+    {
+        if (!IsInstanceValid(applicationWindow))
+            return;
+        var window = applicationWindow!;
+        var minimum = view is BattleScreen ? RequiredBattleWindow : inheritedWindowMinimum;
+        var oldSize = window.Size;
+        window.MinSize = minimum;
+        if (view is BattleScreen && window.Mode == Window.ModeEnum.Windowed
+            && (oldSize.X < minimum.X || oldSize.Y < minimum.Y))
+        {
+            window.Size = new Vector2I(Math.Max(oldSize.X, minimum.X), Math.Max(oldSize.Y, minimum.Y));
+            window.MoveToCenter();
+        }
+    }
 
     public override void _ExitTree()
     {
         lifecycleGeneration++;
         computerPacer.Cancel();
         screen?.SetApplicationBusy(false);
+        if (IsInstanceValid(applicationWindow))
+            applicationWindow!.MinSize = inheritedWindowMinimum;
+        applicationWindow = null;
     }
     private const string SavePath = "user://grayflag-campaign-save.json";
     private const string CampaignSavePath = "user://grayflag-campaign-autosave.json";
@@ -185,6 +229,7 @@ public partial class GrayFlagGame : Node
         }
         view = next;
         AddChild(next);
+        ApplyWindowMinimum();
     }
 
     private GrayFlagCampaign NewCampaign(JsonObject? state = null) => new(new(engine, presentationText), definition, levels, state);
@@ -237,7 +282,14 @@ public partial class GrayFlagGame : Node
         {
             if (!CurrentMenu() || loaded.State is null)
                 return;
-            campaign = NewCampaign(loaded.State);
+            var candidate = NewCampaign(loaded.State);
+            if (candidate.HasPendingBattle && !candidate.AtCamp && !CanDisplayBattle())
+            {
+                ShowMenu();
+                Notify(text.Format("error.battle.window_too_small"));
+                return;
+            }
+            campaign = candidate;
             ShowNode();
         }, () =>
         {
@@ -336,6 +388,7 @@ public partial class GrayFlagGame : Node
         resultOffered = false;
         view.ProcessMode = ProcessModeEnum.Inherit;
         view.Visible = true;
+        ApplyWindowMinimum();
     }
 
     private void ShowNode(string? battleLogMessage = null) => Activate(campaign, PrepareNode(campaign, battleLogMessage));
@@ -402,6 +455,12 @@ public partial class GrayFlagGame : Node
         {
             if (!CurrentView(owner, next))
                 return;
+            if (!CanDisplayBattle())
+            {
+                ShowStaging();
+                Notify(text.Format("error.battle.window_too_small"));
+                return;
+            }
             if (!owner.HasPendingBattle)
             {
                 try
@@ -521,6 +580,11 @@ public partial class GrayFlagGame : Node
         {
             GD.PushWarning(error.ToString());
             Notify(text.Format("error.load.failed_unchanged"));
+            return;
+        }
+        if (candidate.HasPendingBattle && !candidate.AtCamp && !CanDisplayBattle())
+        {
+            Notify(text.Format("error.battle.window_too_small"));
             return;
         }
         var initialLogMessage = candidate.Battle is null

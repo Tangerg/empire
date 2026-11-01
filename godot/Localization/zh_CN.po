@@ -1437,10 +1437,10 @@ msgid "ui.staging.eyebrow"
 msgstr "作战准备 · {0:00}/{1}"
 
 msgid "ui.staging.initial_note"
-msgstr "进入战斗后自动保留关前存档。"
+msgstr "进入战斗后自动保留关前存档。战斗窗口至少 960×640，会按需扩大。"
 
 msgid "ui.staging.reentry_note"
-msgstr "离开战场后将从本关开局重新开始。"
+msgstr "离开战场后将从本关开局重新开始。战斗窗口至少 960×640，会按需扩大。"
 
 msgid "ui.staging.start"
 msgstr "开始战斗 →"
@@ -3661,3 +3661,6 @@ msgstr "暂无战报。行动回执会记录在这里。"
 
 msgid "ui.battle.log_reading_hint"
 msgstr "↑↓ / PgUp / PgDn 翻阅 · Home / End 首尾 · Tab 切换 · Esc 关闭"
+
+msgid "error.battle.window_too_small"
+msgstr "当前屏幕可用区域不足以完整显示战斗窗口（至少 960×640，另需系统边框空间）。请调低系统缩放或移到更大的屏幕后重试；当前进度未改变。"
