@@ -1,0 +1,20 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+ERROR: System.InvalidOperationException: Opaque surface material includes transparency: barracks-front-canopy-surface/blue-slate-roof-original-visible-plane-953-0-0.
+   at Empire.Presentation.CompiledSceneSurface.<>c__DisplayClass7_0.<ValidateOpaque>g__Check|0(Vector2 point) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/CompiledSceneSurface.cs:line 111
+   at Empire.Presentation.CompiledSceneSurface.ValidateOpaque(Image image, Vector2[] uv, String identity) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/CompiledSceneSurface.cs:line 128
+   at Empire.Presentation.CompiledSceneSurface.Compile(SceneSurfaceDocument document, Texture2D texture, String identity) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/CompiledSceneSurface.cs:line 77
+   at Empire.Presentation.AssembledGroundView.Create(AssembledGroundDocument document, Texture2D ground, SceneObjectCatalog catalog, IReadOnlyDictionary`2 textures, JsonObject map, ReadOnlyContent content, ShadowCache shadows) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/AssembledGroundView.cs:line 73
+   at Empire.Presentation.AssembledGroundDocument.<>c__DisplayClass8_0.<Factory>b__0(BoardGroundRules rules, AuthoredScene scene) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/AssembledGroundDocument.cs:line 34
+   at FormalCanopyProbe.<>c__DisplayClass0_0.<_Ready>b__1(BoardGroundRules rules, AuthoredScene scene) in /workspace/scratch/84c9fe948755/c07-static-preview/FormalCanopyProbe.cs:line 11
+   at Empire.Presentation.BoardView.ConfigureGround(BoardGroundFactory createGround) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:line 84
+   at FormalCanopyProbe._Ready() in /workspace/scratch/84c9fe948755/c07-static-preview/FormalCanopyProbe.cs:line 11
+   at: void FormalCanopyProbe._Ready() (res://FormalCanopyProbe.cs:11)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void FormalCanopyProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/FormalCanopyProbe.cs:11)
+       [2] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [3] bool FormalCanopyProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/FormalCanopyProbe_ScriptMethods.generated.cs:38)
+       [4] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)

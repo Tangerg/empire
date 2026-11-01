@@ -1,0 +1,32 @@
+{
+  "geometrySupportTintUnchanged": true,
+  "changedMemberUvOnly": "blue-slate-roof-original-visible-plane",
+  "originalObjectsPreserved": 3,
+  "appendedObjects": [
+    {
+      "id": "barracks-front-canopy",
+      "assetId": "barracks-front-canopy-surface",
+      "contact": [
+        59.0,
+        7.8125
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "training-fence",
+      "assetId": "training-fence",
+      "contact": [
+        59.125,
+        10.625
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    }
+  ],
+  "officialSceneSha256": "5bd8cac7e2263dcffaf23b88c38b25515575678c3085a227e4a1f58f61abcd88"
+}

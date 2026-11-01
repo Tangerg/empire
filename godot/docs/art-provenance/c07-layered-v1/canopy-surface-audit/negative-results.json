@@ -1,0 +1,22 @@
+{
+  "original-uv": {
+    "exitCode": 1,
+    "targetFailure": "at texel (218, 318), alpha=0.9372549",
+    "targetReached": true
+  },
+  "filled-hole": {
+    "exitCode": 1,
+    "targetFailure": "Frozen canopy material contract failed",
+    "targetReached": true
+  },
+  "early-depth": {
+    "exitCode": 1,
+    "targetFailure": "No proven true back occlusion/negative control",
+    "targetReached": true
+  },
+  "late-depth": {
+    "exitCode": 1,
+    "targetFailure": "Original head/front material regression",
+    "targetReached": true
+  }
+}

@@ -35,3 +35,6 @@ The isolated training-fence surface now has a production-loader path; the offici
 
 ## Bounded same-support batching
 [Surface batching audit](surface-batching-audit/README.md) preserves exact geometry/UV/Tint and native raster frames while reducing isolated formal-preview draw calls318→81. Deep contacts/ground partitions remain unchanged. Timing drift prevents a stable FPS claim; whole-scene performance is still not accepted.
+
+## Second formal-loader slice
+The barracks front canopy's seven reviewed members use the same formal compiler in an unbound composition. A documented0.2% roof UV inset repairs a previously missed alpha239 edge; no world geometry/support changes.54 same-support polygon nodes replace193 historical canopy polygons. See [canopy-surface-audit](canopy-surface-audit/README.md). This is static loader integration, not full barracks/C07 acceptance or real play.

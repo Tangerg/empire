@@ -108,7 +108,7 @@ internal sealed class CompiledSceneSurface
         void Check(Vector2 point)
         {
             if (image.GetPixel((int)point.X, (int)point.Y).A < .96f)
-                throw new InvalidOperationException($"Opaque surface material includes transparency: {identity}.");
+                throw new InvalidOperationException($"Opaque surface material includes transparency: {identity} at texel ({(int)point.X}, {(int)point.Y}), alpha={image.GetPixel((int)point.X, (int)point.Y).A}.");
         }
         foreach (var point in uv)
             Check(point);

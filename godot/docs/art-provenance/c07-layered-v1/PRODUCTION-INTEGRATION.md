@@ -22,7 +22,7 @@ Do not migrate external wrapper nesting, C07 absolute coordinates, hard-coded so
 4. **One integrated static acceptance batch:** full-scene same-camera images, actual roster appearances, front/back/side occlusion, continuous opening/approach checks, site uniqueness, targets/cues, scaled windows, load/unload/reload and malformed-asset failure recovery. Compile production and external audit separately; old probe success is not production build success.
 5. **Measured performance and formal binding:** satisfy correctness plus a bounded controlled performance comparison, then switch official scene only when scene coverage and registration permit. Real normal-play victory is a separate pending-authority validation, never inferred from static probes.
 
-Each step ends in a source commit and verified durable backup; current GitHub authentication remains unavailable. No main/force push or new chapters.
+Each step ends in a source commit and verified durable backup; GitHub authentication has been restored and completed batches are normally pushed and read back. No main/force push or new chapters.
 
 ## Verification that must survive migration
 
@@ -43,3 +43,6 @@ First optimization is same-material, same-depth, same-blend slice-local triangle
 ## Explicit unfinished quality
 
 Northern lookout architecture/voids and leaves; remaining scene responsibility; ground/building sharpness mismatch; dense roof/grain detail; flat gate wood/hinges; weak contact shadows; all-scene performance; and authorized real C07 flow remain unfinished. The selected local candidates are useful engineering evidence, not a claim of final top-tier art or whole-level completion.
+
+## Second formal-loader slice
+The seven-member barracks front canopy now follows the same compiler and explicit contact owner; no canopy-specific runtime path. Original triangle→slab clip→affine UV order differs from the fence exporter and is preserved. One source roof UV edge is deliberately inset0.2% to remove an alpha239 material defect. See [canopy-surface-audit](canopy-surface-audit/README.md) for original-failure, repaired equivalence, actual-role controls and GPU differences. Official scene binding remains blocked by incomplete scene responsibility.
