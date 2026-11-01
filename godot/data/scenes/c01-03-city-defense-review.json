@@ -381,6 +381,27 @@
           31
         ]
       ]
+    },
+    {
+      "id": "keep-east-low-return",
+      "cells": [
+        [
+          86,
+          28
+        ],
+        [
+          86,
+          29
+        ],
+        [
+          86,
+          30
+        ],
+        [
+          85,
+          30
+        ]
+      ]
     }
   ],
   "remainingGroups": [
@@ -467,28 +488,6 @@
         ]
       ],
       "basis": "rock outcrop and low vegetation, not a house or castle wall"
-    },
-    {
-      "id": "keep-east-footing",
-      "cells": [
-        [
-          86,
-          28
-        ],
-        [
-          86,
-          29
-        ],
-        [
-          85,
-          30
-        ],
-        [
-          86,
-          30
-        ]
-      ],
-      "basis": "candidate side stone footing / source debris margin; source material polygon is not a foundation audit"
     }
   ],
   "negativeControlGarrisonWing": {

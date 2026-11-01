@@ -15,15 +15,15 @@ visual inspection and synthetic fixtures must remain separate evidence categorie
 | --- | --- | --- |
 | 01 双子丘陵 · 36×30 | 莱娅 survives; defeat enemies; first death exposes command clue | Independent ground, seven object textures / 97 instances. Recheck cliff/door/adjacent actor selection and HUD. Historical normal-AI victory is not this run's result. |
 | 02 三桥河谷 · 41×38 | All three refugees east, designated ballista destroyed; any refugee loss fails; center bridge ceasefire through enemy T3 | Independent ground + 41 standing objects (batch 5); normal escort, refusal feedback, bridge-rail picking, loss/settlement. |
-| 03 赤石围城 · 101×52 | Control link neutralized OR HQ captured; T4 allied reinforcements; node/shield/T15-engineer routes break link; limit 18 | Whole map + 64 occlusion objects. Large-map camera, dense buildings, reinforcement landing, allegiance transition and viable normal-AI route. |
-| 04 黑旗营地 · 50×30 | Three clues, then at least one clue-carrier (莱娅 or 米蕾) withdraws | Whole map + 57 occlusion objects. Empty doorway vs real adjacent guard; clues, withdrawal and carried roster. Historical erroneous doorway probe has been corrected, not weakened. |
+| 03 赤石围城 · 101×52 | Control link neutralized OR HQ captured; T4 allied reinforcements; node/shield/T15-engineer routes break link; limit 18 | Independent ground + 95 standing instances. Actual normal-AI T4 victory and settlement; 89 city-support samples repaired, 15 independently classified samples plus ground/prop material coherence remain open. |
+| 04 黑旗营地 · 50×30 | Three clues, then at least one clue-carrier (莱娅 or 米蕾) withdraws | Formal map remains painted + 57 occlusion objects; independent 139-instance preview is staged, not yet visually accepted. Empty doorway vs real adjacent guard; clues, withdrawal and carried roster. |
 | 05 焚村令 · 50×32 | 莱娅 and at least two civilians survive seven rounds (normally human T8); enemy reinforcements T4; limit 11 | Whole map + 45 occlusion objects. Complete normal-AI T8 defense with carried C04 roster remains an open historical acceptance item. |
 | 06 白河夜渡 · 50×32 | All four escorts reach north bank; pursuit T4, bridge warning T6, limit 13; warning is not physical bridge destruction | Whole map + 28 occlusion objects. Historical normal-AI T8 victory; this run not replayed. Recheck covered endpoint actor badges, zoom/load and carryover. |
 | 07 无主之城 · 96×64 | Granary and militia-camp capture achievements latch; not simultaneous ownership; 莱娅 survives; limit 15 | Whole map + 55 occlusion objects / 16 capture points. Corrected map's complete normal-AI victory remains open; historical T9 route skipping enemy actions is not victory evidence. |
 
 For every map: verify actual scale and ground/building/actor integration, picking
 and passage, objective/reinforcement timing, camera/HUD obstruction, input feedback,
-save/load, and actual win/loss settlement. C03–07 painted-in objects remain an explicit
+save/load, and actual win/loss settlement. C04–07 painted-in objects remain an explicit
 art/interaction debt, not a claim of C01-style independent composition. Work will
 progress map by map rather than silently marking static validators as full polish.
 
@@ -428,3 +428,35 @@ wing reads as three large block rows. Next revision must increase source brick
 density at the same world geometry, not trade away wall height, thickness or
 legal gates to hide the problem. Ground/prop material coherence remains open.
 This checkpoint is not a claim of top-tier finished art or a second full victory.
+
+### C03 follow-on masonry density / Keep-side correction
+
+The horizontal sprite is regenerated with smaller staggered ashlar courses while
+preserving the established silhouette and world placements. Actual output is
+1483×1061 (not the requested 1484×1060); its measured bottom contact is y826,
+registered explicitly. No stretched brick texture or wall-height reduction is
+used. A low stone side return also restores the Keep east service-yard support,
+meeting the south defense wall without occupying its adjacent legal road. It
+covers the three confirmed old-material regressions and the adjoining apron
+sample; the building/entry itself does not move or grow.
+
+The responsibility contract now includes **89 repaired samples**. The unchanged
+494-wall scan has **15** remaining no-standing-material samples: HQ west return
+4, garrison east enclosure 6, tower south rim 2, retained bottom-ground rocks 3.
+These historical/attribution items and broader ground/prop material coherence
+remain open in the acceptance matrix. Native images in the same reproduction
+folder: 003 coarse-brick before, 006 finer-brick same-camera after; 005 shows the
+Keep side return meeting the south wall. These are diagnostics on a copied T4
+start, not new victories. Parent visual review accepts the direction for moving
+on, not a declaration that all C03 art is finished.
+
+Final **newly compiled** CampaignNavigation passes **4150 assertions / 0 failed
+groups**, including 12 gate/service-road contacts, 89 city supports, 172 house
+supports, facade/occupied-unit priority, carried-entry, load and settlement
+contracts. Build has zero warnings/errors. An intermediate newly added `Coord`
+reference lacked its namespace import; that compile failure is fixed. The run
+against the old DLL reporting 3574 is explicitly **discarded**, not final evidence.
+Logs: `c03-masonry-density-build.log`, `c03-masonry-density-final-checks.log`,
+`c03-masonry-density-probe-final.log`. The live GUI used the new image resources
+and unchanged rendering code; no application rule code changed. GitHub listed
+no workflow runs for the preceding 381c3bcf checkpoint; local checks are not CI.

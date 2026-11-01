@@ -239,18 +239,18 @@
       ]
     },
     "wall-horizontal": {
-      "resourcePath": "res://assets/native/c03-layered-v1/wall-horizontal-faithful-v3.png",
+      "resourcePath": "res://assets/native/c03-layered-v1/wall-horizontal-faithful-v4.png",
       "pixelSize": [
-        1484,
-        1060
+        1483,
+        1061
       ],
       "anchorPixels": [
         744,
-        829
+        826
       ],
       "groundFrontPixels": [
         744,
-        829
+        826
       ],
       "contactShadowRadiiPixels": [
         420,
@@ -345,6 +345,25 @@
       ],
       "contactShadowRadiiPixels": [
         70,
+        6
+      ]
+    },
+    "wall-low-base": {
+      "resourcePath": "res://assets/native/c03-layered-v1/wall-low-base.png",
+      "pixelSize": [
+        1024,
+        1536
+      ],
+      "anchorPixels": [
+        520,
+        1434
+      ],
+      "groundFrontPixels": [
+        520,
+        1434
+      ],
+      "contactShadowRadiiPixels": [
+        150,
         6
       ]
     }

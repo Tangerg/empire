@@ -7,6 +7,7 @@ using Empire.Presentation.Feedback;
 using Empire.Core;
 using Empire.Core.Campaign;
 using Empire.Core.Engine;
+using Empire.Core.Geometry;
 using Empire.Core.Lifecycle;
 using Empire.Localization;
 using Empire.Core.Determinism;
@@ -877,20 +878,23 @@ public partial class CampaignNavigationChecks : Node
                 }
             Require(!oldCoversBase, "C03 defense regression control must expose the original 25px-high garrison wing registration.");
         }
-        foreach (var y in new[] { 12, 23, 24 })
-            foreach (var x in new[] { 65, 66 })
+        foreach (var cell in new[] { new Coord(65, 12), new(66, 12), new(65, 23), new(66, 23), new(65, 24), new(66, 24),
+            new(75, 34), new(76, 34), new(85, 27), new(86, 27), new(87, 29), new(87, 30) })
+        {
+            var x = cell.X;
+            var y = cell.Y;
+            Require(level["terrain"]![y]!.GetValue<string>()[x] != '#', "C03 protected access cell must remain canonically passable.");
+            var point = board.Projection.CellContact(cell);
+            foreach (var wall in document.Objects.Where(value => value.AssetId.StartsWith("wall-", StringComparison.Ordinal)))
             {
-                var point = board.Projection.CellContact(new(x, y));
-                foreach (var wall in document.Objects.Where(value => value.AssetId.StartsWith("wall-", StringComparison.Ordinal)))
-                {
-                    var sprite = ground.GetNode<Sprite2D>(wall.Id);
-                    var visual = ground.DepthEntries.Single(entry => entry.Node == sprite).Visual!;
-                    Require(!visual.Covers(board.ToGlobal(point)), $"C03 real wall pixels cover an open doorway cell ({x},{y}): {wall.Id}.");
-                }
-                var hit = board.Pick(point);
-                Require(hit is not null && hit.Cell.X == x && hit.Cell.Y == y,
-                    $"C03 north/main gate road cannot be picked at its physical contact ({x},{y}): {hit}.");
+                var sprite = ground.GetNode<Sprite2D>(wall.Id);
+                var visual = ground.DepthEntries.Single(entry => entry.Node == sprite).Visual!;
+                Require(!visual.Covers(board.ToGlobal(point)), $"C03 real wall pixels cover an open doorway cell ({x},{y}): {wall.Id}.");
             }
+            var hit = board.Pick(point);
+            Require(hit is not null && hit.Cell.X == x && hit.Cell.Y == y,
+                $"C03 protected gate/service road cannot be picked at its physical contact ({x},{y}): {hit}.");
+        }
     }
 
     private async Task CheckFormalRedstone()
