@@ -1,0 +1,348 @@
+{
+  "schema": "c06-readonly-pine-fit-review-v1",
+  "status": "visual-static-review-only-not-runtime-accepted",
+  "source": "godot/assets/native/scenes/white-river.png",
+  "asset": "godot/assets/native/c06-layered-v1/snow-pines-v1.png",
+  "coordinateSpace": "original source raster pixels; reviewed crown boxes are approximate visual extents, NOT collision or alpha masks",
+  "method": "Viewed full original and RGBA asset, inspected all 18 polygon crops and enlarged pixel-grid crops. Roots only recorded when visible; hidden roots remain null. No GUI, game state, logical terrain or repo edits.",
+  "assetMeasurement": {
+    "size": [
+      1536,
+      1024
+    ],
+    "alphaGreaterThan8BoundsExclusive": [
+      373,
+      98,
+      1185,
+      932
+    ],
+    "nonzeroAlphaBoundsExclusive": [
+      33,
+      23,
+      1528,
+      1024
+    ],
+    "warning": "Very low alpha<=8 speckles extend far beyond silhouette; alpha>8 here is diagnostic only, NOT permission to alter production picking threshold.",
+    "trunkRootEstimates": [
+      {
+        "tree": "central",
+        "point": [
+          806,
+          832
+        ]
+      },
+      {
+        "tree": "left",
+        "point": [
+          578,
+          861
+        ]
+      },
+      {
+        "tree": "right",
+        "point": [
+          1018,
+          905
+        ]
+      }
+    ],
+    "rootEstimatePrecision": "visual estimate about 5-8 asset pixels, not runtime click tolerance",
+    "registrationAnchor": [
+      806,
+      832
+    ],
+    "frontmostVisibleTrunkContact": [
+      1018,
+      905
+    ],
+    "notContact": "texture bottom y1024, shadow/rock fringe y932, or old polygon front"
+  },
+  "uniformScaleProposal": {
+    "productionApproved": false,
+    "sourcePixelsPerAssetPixel": 0.13,
+    "uniformXY": true,
+    "worldPixelsPerAssetPixelAtExistingWorldScale1_25": 0.1625,
+    "visibleExtentAtScale": [
+      105.56,
+      108.42
+    ],
+    "centralTreeTipToRootApprox": 95.42,
+    "placementFormula": "sourcePoint = chosen visible root registration + (assetPoint - [806,832])*0.13",
+    "frontContactOffsetFromCentralRegistration": [
+      27.56,
+      9.49
+    ],
+    "scope": "A starting height-compatible preview scale for about100px pines, NOT one universal fit for the18 old polygons. No reviewed instance is approved for blind stamping; candidate6 needs composition/root confirmation.",
+    "rejectionReason": "Three-tree asset has fixed asymmetric roots and relative heights, while source markers include single trees, different-depth pairs, clipped forests and bare ground. Scaling/stretching to old polygons would create false trees or move roots."
+  },
+  "occlusionResponsibilities": [
+    "Keep canonical forest/terrain untouched; these findings are visual only.",
+    "Use real trunk ground contacts and crown alpha, not old polygon front. Front/back depth must follow each independent root; a three-tree combined texture cannot claim exact per-tree depth without splitting/explicit subparts.",
+    "Characters behind actual opaque crowns may be occluded, but bare paths, fence gaps and alpha-transparent areas must not become invisible barriers. Pass-through picking must still reach a legal character, with runtime back/front screenshots required.",
+    "Do not transplant whole-group bounds onto pine17 or open parts of10/12/14.",
+    "Preserve real house/fence/tree depth ordering for5/8/11/12/13. Do not move tree depth in front of the building solely to make it visible."
+  ],
+  "instances": [
+    {
+      "id": "snow-pines-1",
+      "observedType": "border-forest-multiple",
+      "visibleRootEstimate": null,
+      "approxCrownEnvelope": [
+        0,
+        0,
+        225,
+        180
+      ],
+      "finding": "Multiple pines, bare trees and rocks; several crowns clipped by top/left edge. Polygon front56,188 is shore/ground, not a common trunk. No single group root.",
+      "decision": "reject-one-group",
+      "runtimeVerified": false
+    },
+    {
+      "id": "snow-pines-2",
+      "observedType": "single-dominant-pine",
+      "visibleRootEstimate": [
+        335,
+        134
+      ],
+      "approxCrownEnvelope": [
+        288,
+        0,
+        387,
+        137
+      ],
+      "finding": "Visible dominant trunk at335,134; old350,213 is open ground near fence. Three-tree asset would add trees over shelter/fence/path.",
+      "decision": "needs-single-tree",
+      "runtimeVerified": false
+    },
+    {
+      "id": "snow-pines-3",
+      "observedType": "two-depth-pines",
+      "visibleRootEstimate": [
+        540,
+        184
+      ],
+      "approxCrownEnvelope": [
+        499,
+        2,
+        610,
+        190
+      ],
+      "finding": "Front pine trunk near540,184; second rear trunk near576,118. Old551,195 is fence/ground. Roots are different depth; single contact cannot represent both.",
+      "decision": "split-or-new-composition",
+      "runtimeVerified": false
+    },
+    {
+      "id": "snow-pines-4",
+      "observedType": "two-adjacent-pines",
+      "visibleRootEstimate": [
+        618,
+        274
+      ],
+      "approxCrownEnvelope": [
+        580,
+        168,
+        675,
+        286
+      ],
+      "finding": "Front/root area about618,274 and right tree about650,280; old599,311 is bare path. Three-tree asset adds an unsupported left tree if anchored to these roots.",
+      "decision": "split-or-new-composition",
+      "runtimeVerified": false
+    },
+    {
+      "id": "snow-pines-5",
+      "observedType": "pines-behind-shelter",
+      "visibleRootEstimate": null,
+      "approxCrownEnvelope": [
+        858,
+        76,
+        980,
+        202
+      ],
+      "finding": "Trunks hidden by shelter roof/fence; dominant tree axis near924. Old891,232 is shelter foreground. Do not claim inferred hidden root as measured.",
+      "decision": "needs-occluded-root-registration",
+      "runtimeVerified": false
+    },
+    {
+      "id": "snow-pines-6",
+      "observedType": "three-riverbank-pines",
+      "visibleRootEstimate": null,
+      "approxCrownEnvelope": [
+        980,
+        263,
+        1113,
+        380
+      ],
+      "finding": "Actual three-tree cluster exists; roots concealed by rocks/reeds around y350..380. Only plausible group-template candidate, but old1040,414 is reed/shore, not root. Tree axes and relative heights still differ.",
+      "decision": "candidate-only-after-root-review",
+      "runtimeVerified": false
+    },
+    {
+      "id": "snow-pines-7",
+      "observedType": "pines-overlapping-rocks",
+      "visibleRootEstimate": null,
+      "approxCrownEnvelope": [
+        1370,
+        0,
+        1500,
+        232
+      ],
+      "finding": "Tall rear crown and lower front pine overlap rocks. Old1412,223 is rocks/front understory; separate obscured roots, not one tree base.",
+      "decision": "split-or-new-composition",
+      "runtimeVerified": false
+    },
+    {
+      "id": "snow-pines-8",
+      "observedType": "single-pine-in-fence",
+      "visibleRootEstimate": null,
+      "approxCrownEnvelope": [
+        1345,
+        204,
+        1430,
+        308
+      ],
+      "finding": "Tree axis near1387, root hidden by fence around y296. Old1380,355 is open ground/bridge approach. Three-tree asset would overgrow open approach.",
+      "decision": "needs-single-tree",
+      "runtimeVerified": false
+    },
+    {
+      "id": "snow-pines-9",
+      "observedType": "two-forest-bands",
+      "visibleRootEstimate": null,
+      "approxCrownEnvelope": [
+        0,
+        315,
+        165,
+        640
+      ],
+      "finding": "Rear large pine near110,463 and lower forest rooted below polygon; polygon bridges open snowy gap. Old98,592 is front crown, not trunk.",
+      "decision": "reject-one-group",
+      "runtimeVerified": false
+    },
+    {
+      "id": "snow-pines-10",
+      "observedType": "small-pine-and-open-ground",
+      "visibleRootEstimate": [
+        241,
+        499
+      ],
+      "approxCrownEnvelope": [
+        211,
+        441,
+        269,
+        505
+      ],
+      "finding": "Small pine near241,499; most old polygon is open snow/brush. Old222,605 is bare snow. Do not fill that open region with a full three-tree group.",
+      "decision": "needs-small-single-tree",
+      "runtimeVerified": false
+    },
+    {
+      "id": "snow-pines-11",
+      "observedType": "pines-behind-fence",
+      "visibleRootEstimate": null,
+      "approxCrownEnvelope": [
+        514,
+        505,
+        604,
+        651
+      ],
+      "finding": "Two crowns behind fence; root zone hidden around y640, not old584,712 on clear approach. Requires per-tree inferred-contact disclosure.",
+      "decision": "needs-occluded-root-registration",
+      "runtimeVerified": false
+    },
+    {
+      "id": "snow-pines-12",
+      "observedType": "house-side-pines",
+      "visibleRootEstimate": null,
+      "approxCrownEnvelope": [
+        1019,
+        518,
+        1120,
+        645
+      ],
+      "finding": "Small foreground pine axis1047 and tall rear1100, roots hidden by fence/house. Old1009,665 is fence/reeds. Most left polygon is open ground.",
+      "decision": "split-or-new-composition",
+      "runtimeVerified": false
+    },
+    {
+      "id": "snow-pines-13",
+      "observedType": "single-pine-behind-fence",
+      "visibleRootEstimate": null,
+      "approxCrownEnvelope": [
+        1254,
+        533,
+        1323,
+        661
+      ],
+      "finding": "Actual tree near1290; root occluded around y650 by fence/shelter. Old1302,658 is foreground fence/roof edge, not independently visible root.",
+      "decision": "needs-single-tree",
+      "runtimeVerified": false
+    },
+    {
+      "id": "snow-pines-14",
+      "observedType": "road-and-lower-forest",
+      "visibleRootEstimate": null,
+      "approxCrownEnvelope": [
+        1522,
+        595,
+        1643,
+        790
+      ],
+      "finding": "Upper two thirds polygon are open road/rocks; actual pines start near y600 and continue below polygon. Old1560,713 lies on crown, not a trunk root.",
+      "decision": "reject-one-group",
+      "runtimeVerified": false
+    },
+    {
+      "id": "snow-pines-15",
+      "observedType": "bottom-clipped-forest",
+      "visibleRootEstimate": null,
+      "approxCrownEnvelope": [
+        408,
+        748,
+        560,
+        957
+      ],
+      "finding": "Multiple overlapping pines extend below frame; no visible common root. Old466,873 is foliage/rock edge. Must not lift clipped trunks to that point.",
+      "decision": "border-forest-needs-separate-layout",
+      "runtimeVerified": false
+    },
+    {
+      "id": "snow-pines-16",
+      "observedType": "single-pine-among-bare-trees",
+      "visibleRootEstimate": null,
+      "approxCrownEnvelope": [
+        1134,
+        805,
+        1245,
+        946
+      ],
+      "finding": "Single clear crown axis1194, root hidden near bottom/rock y940; old1156,929 is side understory. Three-tree asset would replace bare trees and brush incorrectly.",
+      "decision": "needs-single-tree",
+      "runtimeVerified": false
+    },
+    {
+      "id": "snow-pines-17",
+      "observedType": "open-grass-no-pine",
+      "visibleRootEstimate": null,
+      "approxCrownEnvelope": null,
+      "finding": "Audited polygon is snow, grass and bare twigs. No pine/root/crown to replace. Remove this visual pine instance proposal, not forest logic.",
+      "decision": "exclude-no-pine",
+      "runtimeVerified": false
+    },
+    {
+      "id": "snow-pines-18",
+      "observedType": "bottom-left-clipped-forest",
+      "visibleRootEstimate": null,
+      "approxCrownEnvelope": [
+        0,
+        744,
+        225,
+        957
+      ],
+      "finding": "Many overlapping crowns, rock, fence and clipped trees. Old174,926 is crown/edge rather than shared root. No faithful one-group anchor.",
+      "decision": "border-forest-needs-separate-layout",
+      "runtimeVerified": false
+    }
+  ],
+  "sourceSha256": "7fbdee75a49446a9e807c3a0852a70eafe9f6c8beeccc25736393371d2d81c8d",
+  "assetSha256": "c7f0043d7b8332bc57e7cb92878e9a48bf217b4a080a0230af3f281a1aeac3ba"
+}

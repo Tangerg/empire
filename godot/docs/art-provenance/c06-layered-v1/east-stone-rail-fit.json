@@ -1,0 +1,1520 @@
+{
+  "assetPath": "/workspace/scratch/84c9fe948755/generated_images/exec-7bc1e860-21f2-43b4-9945-6747a21320a6.png",
+  "sha256": "1ba73742b5fbef960aae86c14314df95d23ed43e9f943a5abb726cd72ec4aebf",
+  "pixelSize": [
+    1024,
+    1536
+  ],
+  "actualPostFeet": [
+    [
+      330.0,
+      1443.0
+    ],
+    [
+      490.0,
+      1133.0
+    ],
+    [
+      680.0,
+      745.0
+    ],
+    [
+      870.0,
+      385.0
+    ]
+  ],
+  "actualPostFeetAlpha": [
+    249,
+    253,
+    252,
+    250
+  ],
+  "endpointVector": [
+    540.0,
+    -1058.0
+  ],
+  "endpointSlopeYOverX": -1.9592592592592593,
+  "fourFeetLInfinityDistanceToEndpointLineInAssetPixels": [
+    0.0,
+    1.1764705882352942,
+    4.142678347934918,
+    0.0
+  ],
+  "scope": "Actual-alpha static foot-line fit only. No native picking or actor depth check. Deck edge endpoints are original audit boundaries, not claims that four old post contacts were individually audited.",
+  "fits": [
+    {
+      "edge": "west-deck-edge-negative-comparison",
+      "originalSourceEndpoints": [
+        [
+          742.0,
+          510.0
+        ],
+        [
+          831.0,
+          376.0
+        ]
+      ],
+      "sourceScale": 0.139549436795995,
+      "instanceWorldScale": 0.17443679599499373,
+      "anchorPixels": [
+        330.0,
+        1443.0
+      ],
+      "sourceTranslation": [
+        702.7703379224031,
+        315.45181476846057
+      ],
+      "sourceFront": [
+        748.8216520650815,
+        516.8216520650814
+      ],
+      "fractionalContact": [
+        22.775676627033796,
+        17.386487573752905
+      ],
+      "transformedFourFeet": [
+        [
+          748.8216520650815,
+          516.8216520650814
+        ],
+        [
+          771.1495619524406,
+          473.56132665832286
+        ],
+        [
+          797.6639549436796,
+          419.41614518147685
+        ],
+        [
+          824.1783479349187,
+          369.17834793491863
+        ]
+      ],
+      "endpointMinimaxPerAxisError": 6.821652065081353,
+      "fourFeetLInfinityDistanceToSourceEdge": [
+        6.821652065081434,
+        2.973091364205295,
+        2.7040050062577934,
+        6.821652065081298
+      ],
+      "within5PerAxisAndFootline": false,
+      "canonicalBridgeCenterCount": 40,
+      "maximumCenterAlpha": 0,
+      "alphaAtLeast200CenterSamples": [],
+      "allCenterAlphaSamples": [
+        {
+          "cell": [
+            10,
+            10
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            356,
+            324
+          ],
+          "assetPixel": [
+            -2485,
+            61
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            11,
+            10
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            388,
+            324
+          ],
+          "assetPixel": [
+            -2256,
+            61
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            9,
+            11
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            324,
+            352
+          ],
+          "assetPixel": [
+            -2714,
+            262
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            10,
+            11
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            356,
+            352
+          ],
+          "assetPixel": [
+            -2485,
+            262
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            11,
+            11
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            388,
+            352
+          ],
+          "assetPixel": [
+            -2256,
+            262
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            8,
+            12
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            292,
+            380
+          ],
+          "assetPixel": [
+            -2944,
+            463
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            9,
+            12
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            324,
+            380
+          ],
+          "assetPixel": [
+            -2714,
+            463
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            6,
+            13
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            228,
+            408
+          ],
+          "assetPixel": [
+            -3402,
+            663
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            7,
+            13
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            260,
+            408
+          ],
+          "assetPixel": [
+            -3173,
+            663
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            8,
+            13
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            292,
+            408
+          ],
+          "assetPixel": [
+            -2944,
+            663
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            7,
+            14
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            260,
+            436
+          ],
+          "assetPixel": [
+            -3173,
+            864
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            25,
+            12
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            836,
+            380
+          ],
+          "assetPixel": [
+            955,
+            463
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            26,
+            12
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            868,
+            380
+          ],
+          "assetPixel": [
+            1184,
+            463
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            25,
+            13
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            836,
+            408
+          ],
+          "assetPixel": [
+            955,
+            663
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            26,
+            13
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            868,
+            408
+          ],
+          "assetPixel": [
+            1184,
+            663
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            27,
+            13
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            900,
+            408
+          ],
+          "assetPixel": [
+            1413,
+            663
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            24,
+            14
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            804,
+            436
+          ],
+          "assetPixel": [
+            725,
+            864
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            25,
+            14
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            836,
+            436
+          ],
+          "assetPixel": [
+            955,
+            864
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            26,
+            14
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            868,
+            436
+          ],
+          "assetPixel": [
+            1184,
+            864
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            27,
+            14
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            900,
+            436
+          ],
+          "assetPixel": [
+            1413,
+            864
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            24,
+            15
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            804,
+            464
+          ],
+          "assetPixel": [
+            725,
+            1064
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            25,
+            15
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            836,
+            464
+          ],
+          "assetPixel": [
+            955,
+            1064
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            26,
+            15
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            868,
+            464
+          ],
+          "assetPixel": [
+            1184,
+            1064
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            23,
+            16
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            772,
+            492
+          ],
+          "assetPixel": [
+            496,
+            1265
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            24,
+            16
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            804,
+            492
+          ],
+          "assetPixel": [
+            725,
+            1265
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            25,
+            16
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            836,
+            492
+          ],
+          "assetPixel": [
+            955,
+            1265
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            26,
+            16
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            868,
+            492
+          ],
+          "assetPixel": [
+            1184,
+            1265
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            24,
+            17
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            804,
+            520
+          ],
+          "assetPixel": [
+            725,
+            1466
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            25,
+            17
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            836,
+            520
+          ],
+          "assetPixel": [
+            955,
+            1466
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            40,
+            12
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1316,
+            380
+          ],
+          "assetPixel": [
+            4394,
+            463
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            40,
+            13
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1316,
+            408
+          ],
+          "assetPixel": [
+            4394,
+            663
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            41,
+            13
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1348,
+            408
+          ],
+          "assetPixel": [
+            4624,
+            663
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            42,
+            13
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1380,
+            408
+          ],
+          "assetPixel": [
+            4853,
+            663
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            42,
+            14
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1380,
+            436
+          ],
+          "assetPixel": [
+            4853,
+            864
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            43,
+            14
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1412,
+            436
+          ],
+          "assetPixel": [
+            5082,
+            864
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            43,
+            15
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1412,
+            464
+          ],
+          "assetPixel": [
+            5082,
+            1064
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            44,
+            15
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1444,
+            464
+          ],
+          "assetPixel": [
+            5312,
+            1064
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            45,
+            15
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1476,
+            464
+          ],
+          "assetPixel": [
+            5541,
+            1064
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            44,
+            16
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1444,
+            492
+          ],
+          "assetPixel": [
+            5312,
+            1265
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            45,
+            16
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1476,
+            492
+          ],
+          "assetPixel": [
+            5541,
+            1265
+          ],
+          "alpha": 0
+        }
+      ]
+    },
+    {
+      "edge": "east-deck-edge",
+      "originalSourceEndpoints": [
+        [
+          860.0,
+          533.0
+        ],
+        [
+          928.0,
+          386.0
+        ]
+      ],
+      "sourceScale": 0.13454317897371715,
+      "instanceWorldScale": 0.16817897371714643,
+      "anchorPixels": [
+        330.0,
+        1443.0
+      ],
+      "sourceTranslation": [
+        813.2740926157696,
+        336.5275344180225
+      ],
+      "sourceFront": [
+        857.6733416770962,
+        530.6733416770963
+      ],
+      "fractionalContact": [
+        26.177291927409257,
+        17.881190774182013
+      ],
+      "transformedFourFeet": [
+        [
+          857.6733416770962,
+          530.6733416770963
+        ],
+        [
+          879.2002503128911,
+          488.96495619524404
+        ],
+        [
+          904.7634543178973,
+          436.7622027534418
+        ],
+        [
+          930.3266583229035,
+          388.32665832290365
+        ]
+      ],
+      "endpointMinimaxPerAxisError": 2.3266583229036306,
+      "fourFeetLInfinityDistanceToSourceEdge": [
+        2.326658322903732,
+        0.7997496871089298,
+        0.16770963704625183,
+        2.3266583229035755
+      ],
+      "within5PerAxisAndFootline": true,
+      "canonicalBridgeCenterCount": 40,
+      "maximumCenterAlpha": 253,
+      "alphaAtLeast200CenterSamples": [
+        {
+          "cell": [
+            27,
+            13
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            900,
+            408
+          ],
+          "assetPixel": [
+            645,
+            531
+          ],
+          "alpha": 253
+        },
+        {
+          "cell": [
+            27,
+            14
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            900,
+            436
+          ],
+          "assetPixel": [
+            645,
+            739
+          ],
+          "alpha": 253
+        },
+        {
+          "cell": [
+            26,
+            15
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            868,
+            464
+          ],
+          "assetPixel": [
+            407,
+            947
+          ],
+          "alpha": 253
+        },
+        {
+          "cell": [
+            26,
+            16
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            868,
+            492
+          ],
+          "assetPixel": [
+            407,
+            1156
+          ],
+          "alpha": 253
+        }
+      ],
+      "allCenterAlphaSamples": [
+        {
+          "cell": [
+            10,
+            10
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            356,
+            324
+          ],
+          "assetPixel": [
+            -3399,
+            -93
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            11,
+            10
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            388,
+            324
+          ],
+          "assetPixel": [
+            -3161,
+            -93
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            9,
+            11
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            324,
+            352
+          ],
+          "assetPixel": [
+            -3637,
+            115
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            10,
+            11
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            356,
+            352
+          ],
+          "assetPixel": [
+            -3399,
+            115
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            11,
+            11
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            388,
+            352
+          ],
+          "assetPixel": [
+            -3161,
+            115
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            8,
+            12
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            292,
+            380
+          ],
+          "assetPixel": [
+            -3874,
+            323
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            9,
+            12
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            324,
+            380
+          ],
+          "assetPixel": [
+            -3637,
+            323
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            6,
+            13
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            228,
+            408
+          ],
+          "assetPixel": [
+            -4350,
+            531
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            7,
+            13
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            260,
+            408
+          ],
+          "assetPixel": [
+            -4112,
+            531
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            8,
+            13
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            292,
+            408
+          ],
+          "assetPixel": [
+            -3874,
+            531
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            7,
+            14
+          ],
+          "bridge": "west-timber-crossing",
+          "sourcePixel": [
+            260,
+            436
+          ],
+          "assetPixel": [
+            -4112,
+            739
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            25,
+            12
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            836,
+            380
+          ],
+          "assetPixel": [
+            169,
+            323
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            26,
+            12
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            868,
+            380
+          ],
+          "assetPixel": [
+            407,
+            323
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            25,
+            13
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            836,
+            408
+          ],
+          "assetPixel": [
+            169,
+            531
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            26,
+            13
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            868,
+            408
+          ],
+          "assetPixel": [
+            407,
+            531
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            27,
+            13
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            900,
+            408
+          ],
+          "assetPixel": [
+            645,
+            531
+          ],
+          "alpha": 253
+        },
+        {
+          "cell": [
+            24,
+            14
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            804,
+            436
+          ],
+          "assetPixel": [
+            -69,
+            739
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            25,
+            14
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            836,
+            436
+          ],
+          "assetPixel": [
+            169,
+            739
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            26,
+            14
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            868,
+            436
+          ],
+          "assetPixel": [
+            407,
+            739
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            27,
+            14
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            900,
+            436
+          ],
+          "assetPixel": [
+            645,
+            739
+          ],
+          "alpha": 253
+        },
+        {
+          "cell": [
+            24,
+            15
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            804,
+            464
+          ],
+          "assetPixel": [
+            -69,
+            947
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            25,
+            15
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            836,
+            464
+          ],
+          "assetPixel": [
+            169,
+            947
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            26,
+            15
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            868,
+            464
+          ],
+          "assetPixel": [
+            407,
+            947
+          ],
+          "alpha": 253
+        },
+        {
+          "cell": [
+            23,
+            16
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            772,
+            492
+          ],
+          "assetPixel": [
+            -307,
+            1156
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            24,
+            16
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            804,
+            492
+          ],
+          "assetPixel": [
+            -69,
+            1156
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            25,
+            16
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            836,
+            492
+          ],
+          "assetPixel": [
+            169,
+            1156
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            26,
+            16
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            868,
+            492
+          ],
+          "assetPixel": [
+            407,
+            1156
+          ],
+          "alpha": 253
+        },
+        {
+          "cell": [
+            24,
+            17
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            804,
+            520
+          ],
+          "assetPixel": [
+            -69,
+            1364
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            25,
+            17
+          ],
+          "bridge": "central-stone-crossing",
+          "sourcePixel": [
+            836,
+            520
+          ],
+          "assetPixel": [
+            169,
+            1364
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            40,
+            12
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1316,
+            380
+          ],
+          "assetPixel": [
+            3737,
+            323
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            40,
+            13
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1316,
+            408
+          ],
+          "assetPixel": [
+            3737,
+            531
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            41,
+            13
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1348,
+            408
+          ],
+          "assetPixel": [
+            3974,
+            531
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            42,
+            13
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1380,
+            408
+          ],
+          "assetPixel": [
+            4212,
+            531
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            42,
+            14
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1380,
+            436
+          ],
+          "assetPixel": [
+            4212,
+            739
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            43,
+            14
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1412,
+            436
+          ],
+          "assetPixel": [
+            4450,
+            739
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            43,
+            15
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1412,
+            464
+          ],
+          "assetPixel": [
+            4450,
+            947
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            44,
+            15
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1444,
+            464
+          ],
+          "assetPixel": [
+            4688,
+            947
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            45,
+            15
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1476,
+            464
+          ],
+          "assetPixel": [
+            4926,
+            947
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            44,
+            16
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1444,
+            492
+          ],
+          "assetPixel": [
+            4688,
+            1156
+          ],
+          "alpha": 0
+        },
+        {
+          "cell": [
+            45,
+            16
+          ],
+          "bridge": "east-timber-crossing",
+          "sourcePixel": [
+            1476,
+            492
+          ],
+          "assetPixel": [
+            4926,
+            1156
+          ],
+          "alpha": 0
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Fits refer to the old audited DECK edge endpoints; four original post feet have not been independently certified.",
+    "East endpoint/footline within5 does not certify physical support, lane clearance or actor depth. Four opaque canonical center samples are a review risk; no native failure is claimed.",
+    "Reusing this rail on west edge fails. Use independent section depth with positive and negative actor controls."
+  ]
+}

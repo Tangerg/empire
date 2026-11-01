@@ -1,0 +1,279 @@
+{
+  "schema": "c06-single-pine-static-fit-v1",
+  "status": "preview-only-no-GUI-or-click-validation",
+  "asset": "generated_images/exec-f4a814dc-b5ef-43aa-8265-8521f92961ff.png",
+  "sha256": "5e953d6c6b99a4762a7456a56805bf4463f1a72aa08dcdf6bd58ccb3f3ab2dd4",
+  "size": [
+    1024,
+    1536
+  ],
+  "alphaDiagnosticBoundsExclusive": {
+    "gt0": [
+      0,
+      16,
+      1023,
+      1507
+    ],
+    "gt8": [
+      69,
+      18,
+      962,
+      1506
+    ],
+    "gt32": [
+      69,
+      18,
+      962,
+      1505
+    ],
+    "gt128": [
+      70,
+      19,
+      961,
+      1505
+    ]
+  },
+  "alphaWarning": "Faint alpha<=8 speckles reach x0 andx1022; outside-body RGB glow is largely alpha0. Bounds thresholds are diagnostic only: do not change runtime alpha picking threshold or inflate tolerance.",
+  "assetRootReview": {
+    "crownTipEstimate": [
+      523,
+      20
+    ],
+    "frontPhysicalRootContactEstimate": [
+      501,
+      1501
+    ],
+    "mainTrunkAxisApprox": 526,
+    "tipToContactHeight": 1481,
+    "crownFoliageBottomApprox": 1430,
+    "note": "Use physical wood contact rather than canvas bottom1536 or alpha fringe1506. Estimate about3..6 asset pixels; not runtime tolerance."
+  },
+  "scaleUnits": "source raster pixels per asset pixel, uniform XY; multiply by existing worldScale1.25 for runtime world pixels per asset pixel",
+  "anchorFormulas": {
+    "visible-root": "source = sourceVisibleRoot + (assetPixel-[501,1501])*scale",
+    "crown-tip-only": "source = sourceCrownTip + (assetPixel-[523,20])*scale; projected root is only a consequence of asset shape, never evidence that original root exists there"
+  },
+  "targetInstances": [
+    {
+      "id": "snow-pines-2/main-visible-trunk",
+      "sourceVisibleRoot": [
+        335,
+        134
+      ],
+      "sourceCrownTip": null,
+      "sourceCrownNote": "Top clipped by source image edge, so complete original height is unknown; visible crown roughly x288..387, y0..130.",
+      "uniformPreviewScale": 0.1,
+      "previewAnchorMode": "visible-root",
+      "previewAnchorSource": [
+        335,
+        134
+      ],
+      "predictedCrownTip": [
+        337.2,
+        -14.1
+      ],
+      "predictedFullAlphaWidth": 89.3,
+      "status": "root-supported-preview; clipped height not certified"
+    },
+    {
+      "id": "snow-pines-8/front-fenced-tree",
+      "sourceVisibleRoot": null,
+      "sourceCrownTip": [
+        1390,
+        204
+      ],
+      "sourceCrownNote": "Foreground crown in fence, about x1345..1430, y204..298; trunk base hidden by fence. Larger rear tree is a distinct object and must not be silently merged.",
+      "uniformPreviewScale": 0.064,
+      "previewAnchorMode": "crown-tip-only-not-root",
+      "previewAnchorSource": [
+        1390,
+        204
+      ],
+      "predictedHiddenRoot": [
+        1388.59,
+        298.78
+      ],
+      "predictedFullAlphaWidth": 57.15,
+      "status": "visual-only, no certified root/depth-contact"
+    },
+    {
+      "id": "snow-pines-10/small-visible-tree",
+      "sourceVisibleRoot": [
+        241,
+        499
+      ],
+      "sourceCrownTip": [
+        239,
+        441
+      ],
+      "sourceCrownNote": "Small tree at path/rock edge; old222,605 is empty snow. Source is broader relative to height than generated asset. Do not stretch X to chase old polygon.",
+      "uniformPreviewScale": 0.04,
+      "previewAnchorMode": "visible-root",
+      "previewAnchorSource": [
+        241,
+        499
+      ],
+      "predictedCrownTip": [
+        241.88,
+        439.76
+      ],
+      "predictedFullAlphaWidth": 35.72,
+      "status": "root-supported-height-preview; narrower crown needs art review"
+    },
+    {
+      "id": "snow-pines-13/fenced-tree",
+      "sourceVisibleRoot": null,
+      "sourceCrownTip": [
+        1288,
+        535
+      ],
+      "sourceCrownNote": "Crown approximately x1254..1323 to y650; fence/shelter hides trunk base. Original1302,658 is not a measured root.",
+      "uniformPreviewScale": 0.078,
+      "previewAnchorMode": "crown-tip-only-not-root",
+      "previewAnchorSource": [
+        1288,
+        535
+      ],
+      "predictedHiddenRoot": [
+        1286.28,
+        650.52
+      ],
+      "predictedFullAlphaWidth": 69.65,
+      "status": "visual-only, no certified root/depth-contact"
+    },
+    {
+      "id": "snow-pines-16/single-low-edge-tree",
+      "sourceVisibleRoot": null,
+      "sourceCrownTip": [
+        1193,
+        805
+      ],
+      "sourceCrownNote": "Single pine amid bare trees; lower root hidden behind dark foreground/rock around y940..957. Old1156,929 is side vegetation.",
+      "uniformPreviewScale": 0.096,
+      "previewAnchorMode": "crown-tip-only-not-root",
+      "previewAnchorSource": [
+        1193,
+        805
+      ],
+      "predictedHiddenRoot": [
+        1190.89,
+        947.18
+      ],
+      "predictedFullAlphaWidth": 85.73,
+      "status": "visual-only, no certified root/depth-contact"
+    }
+  ],
+  "otherClusterSceneLocationReview": [
+    {
+      "id": "snow-pines-1",
+      "instruction": "Separate visible trunks from rock/bare-tree band; trees clipped at image border need off-frame-root layout, not a group registered at56,188. No measured common root."
+    },
+    {
+      "id": "snow-pines-3/front",
+      "visibleRootEstimate": [
+        540,
+        184
+      ],
+      "crownTipEstimate": [
+        541,
+        65
+      ],
+      "instruction": "Use separate front pine, keep roof/fence foreground ownership; scale about0.080 only for height preview."
+    },
+    {
+      "id": "snow-pines-3/rear",
+      "visibleRootEstimate": [
+        576,
+        118
+      ],
+      "crownTipEstimate": [
+        576,
+        3
+      ],
+      "instruction": "Separate rear pine at deeper contact; do not assign front184 depth to both trees. Preview scale about0.078."
+    },
+    {
+      "id": "snow-pines-4/left",
+      "visibleRootEstimate": [
+        618,
+        274
+      ],
+      "crownTipEstimate": [
+        614,
+        170
+      ],
+      "instruction": "Separate left pine; height-preview scale about0.070. Verify root base against grass in enlarged crop."
+    },
+    {
+      "id": "snow-pines-4/right",
+      "visibleRootEstimate": [
+        650,
+        280
+      ],
+      "crownTipEstimate": [
+        650,
+        187
+      ],
+      "instruction": "Separate right pine; height-preview scale about0.063. Do not invent third tree at580,280."
+    },
+    {
+      "id": "snow-pines-5",
+      "instruction": "Fit rear crown axis~924 and tip~80 before placing shelter in front. Root remains unknown behind roof/fence; require explicit occluded-contact review. Secondary foliage left/right is not one shared trunk."
+    },
+    {
+      "id": "snow-pines-6",
+      "instruction": "Inspect separate crown axes near1010/1040/1090 and tips roughly295/265/278; riverbank reeds/rocks conceal bases. Crown-tip preview only until base contacts reviewed. Three-tree texture fixed proportions do not prove fit."
+    },
+    {
+      "id": "snow-pines-7",
+      "instruction": "Separate tall back tree near1460 and lower front tree near1425; rocks hide roots, several crowns clip top. Reuse neither1412,223 nor one ground-depth for entire cluster."
+    },
+    {
+      "id": "snow-pines-9/rear",
+      "visibleRootEstimate": [
+        110,
+        463
+      ],
+      "instruction": "One rear pine is visibly rooted around110,463; crown extends upward near315. Separate it from the lower forest across open snowy gap."
+    },
+    {
+      "id": "snow-pines-9/front-band",
+      "instruction": "Foreground crowns begin around y490 and roots continue below old polygon; do not use98,592 as trunk root. Require expanded frame registration."
+    },
+    {
+      "id": "snow-pines-11",
+      "instruction": "At least two pines aroundx550 and580, tips~510 and565, both behind fence. Fit crown silhouettes separately; roots hidden aroundy640. Do not place trunk at584,712 clear road."
+    },
+    {
+      "id": "snow-pines-12/front",
+      "instruction": "Small foreground pine axis~1047 tip~575; base hidden by fence. Review depth behind fence and before rear pine. Do not add tree over open groundx988..1020."
+    },
+    {
+      "id": "snow-pines-12/rear",
+      "instruction": "Taller rear pine axis~1100 tip~520; base hidden by house/fence. Register independently; no measured ground root."
+    },
+    {
+      "id": "snow-pines-14",
+      "instruction": "Keep upper open road/rock area. Actual pines are lower/right from~y600; separate crowns and continue roots below region, rather than anchoring whole group1560,713."
+    },
+    {
+      "id": "snow-pines-15",
+      "instruction": "Bottom forest crowns nearx420/465/535, all roots obscured or off-frame. Treat as separate border layout needing deeper canvas, not transplanted common root466,873."
+    },
+    {
+      "id": "snow-pines-17",
+      "instruction": "No pine present: exclude visual pine replacement; preserve logical terrain and actual grass."
+    },
+    {
+      "id": "snow-pines-18",
+      "instruction": "Border crowns overlap rocks and fence. Enumerate actual visible trees with off-frame roots separately; old174,926 is foliage. Do not fill fence opening with repeated group."
+    }
+  ],
+  "acceptanceBoundary": [
+    "No repo/terrain/forest/collision edits.",
+    "Only2 and10 in requested five have useful directly visible root anchors;8/13/16 retain null source roots.",
+    "Unknown-root previews must stay visibly labeled and cannot become production depth contacts by implication.",
+    "Each visible real tree is separate; do not multiply instances to fill old polygons.",
+    "Actual scene/character back-side alpha occlusion and legal picking remain GUI acceptance work."
+  ]
+}

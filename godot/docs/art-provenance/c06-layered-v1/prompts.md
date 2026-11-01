@@ -147,3 +147,8 @@ remove surrounding tree/reeds/ground/road. Prompt contacts are guides, not test 
 
 ## 2026-11-01 08:32 unbound candidate checkpoint
 Built-in imagegen, transparent backgrounds, no manual pixel modifications. NW v3 corrected lower chain but lacks true rear cliff height; NW v4 rebuilds taller rear-left cliff with previous lower contour reference. NE v1/v2 restore broad low ridge; subsequent source inspection shows old lower polygon includes grass/snow, so neither is certified from that polygon. North supply v1 is a dedicated thin timber four-post low snowy shelter extracted in style/geometry from original source crop, no crates/fence/ground. Short shelter mirror v3 reverses short v2 orientation; actual output must be measured rather than assuming exact mirror coordinates. No candidate in this checkpoint changes production scene or game rules.
+
+## 08:39 additional unbound candidates
+Single pine v2: isolate central tree from snow-pines-v1, preserve winter palette; no other trees/ground/rocks. Central east parapet v2: reconstruct matching four-post low stone parapet with steeper near-to-far foot line, no deck/lanterns. Wood west parapet v1: separate slim two-bar open timber rail with snowy caps and rising-right foot chain from original west bridge reference, no deck/piers/lamps. All generated with built-in imagegen and transparency preserved. Actual dimensions/contacts remeasured, prompt coordinates are not evidence.
+
+East wood rail v1: opposite descending-right independent slim two-bar wooden railing, snow-capped upright posts, reference west rail asset and original east crossing; no deck/piers/lamps/ground. Built-in imagegen transparent output; actual slope requires independent review.
