@@ -1,4 +1,4 @@
-# Granary shed: formal surface transfer 
+# Granary shed: formal surface transfer
 
 This batch advances the same selected assembly; the official C07 scene is not switched.
 All C07 probes are initial-state/display-only. No moves, commands, AI, turn ends,

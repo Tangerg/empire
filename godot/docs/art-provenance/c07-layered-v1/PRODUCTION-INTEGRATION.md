@@ -2,7 +2,7 @@
 
 ## Decision and current boundary
 
-The single advancing candidate is now `c01-07-selected-assembly.json`, still runtimeReady=false; see [SELECTED-ASSEMBLY.md](SELECTED-ASSEMBLY.md). It contains11independent instances and2layered site owners, with other canonical sites still using legacy placeholders. Earlier per-slice previews are frozen audits, not parallel editable assembly definitions. Official `c01-07.json` remains painted ground (55groups/108parts). Missing walls/buildings/foundations/yard details still prohibit formal scene binding; no C06/C07 commands, AI turns or saves are advanced.
+The single advancing candidate is now `c01-07-selected-assembly.json`, still runtimeReady=false; see [SELECTED-ASSEMBLY.md](SELECTED-ASSEMBLY.md). Current selected counts and ownership are recorded in SELECTED-ASSEMBLY.md; other canonical sites remain generic fallbacks or absent bodies, not original restoration. Earlier per-slice previews are frozen audits, not parallel editable assembly definitions. Official `c01-07.json` remains painted ground (55groups/108parts). Missing walls/buildings/foundations/yard details still prohibit formal scene binding; no C06/C07 commands, AI turns or saves are advanced.
 
 ## One geometry owner
 

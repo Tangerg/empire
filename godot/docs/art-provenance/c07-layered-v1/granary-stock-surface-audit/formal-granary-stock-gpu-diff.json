@@ -1,0 +1,81 @@
+[
+  {
+    "frame": "back",
+    "acceptance": true,
+    "differentPixels": 4,
+    "maximumChannelDelta": 1,
+    "bounds": [
+      586,
+      383,
+      618,
+      407
+    ]
+  },
+  {
+    "frame": "front",
+    "acceptance": false,
+    "differentPixels": 955540,
+    "maximumChannelDelta": 254,
+    "bounds": [
+      0,
+      0,
+      1179,
+      811
+    ]
+  },
+  {
+    "frame": "front-stable",
+    "acceptance": true,
+    "differentPixels": 3,
+    "maximumChannelDelta": 1,
+    "bounds": [
+      603,
+      415,
+      612,
+      431
+    ],
+    "referenceView": {
+      "viewport": [
+        1180,
+        812
+      ],
+      "boardPosition": [
+        -430,
+        -94
+      ],
+      "zoom": 2.5,
+      "focus": [
+        25,
+        12
+      ],
+      "scene": "res://selected-column-box-before-scene.json",
+      "displayPose": "24,15",
+      "stateUnchanged": true
+    },
+    "formalView": {
+      "viewport": [
+        1180,
+        812
+      ],
+      "boardPosition": [
+        -430,
+        -94
+      ],
+      "zoom": 2.5,
+      "focus": [
+        25,
+        12
+      ],
+      "scene": "res://data/scenes/c01-07-selected-assembly.json",
+      "displayPose": "24,15",
+      "stateUnchanged": true
+    }
+  },
+  {
+    "frame": "context",
+    "acceptance": true,
+    "differentPixels": 0,
+    "maximumChannelDelta": 0,
+    "bounds": null
+  }
+]

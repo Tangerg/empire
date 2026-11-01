@@ -299,6 +299,30 @@
       "selectionCell": null,
       "ownsMapStructureBody": false,
       "pointer": "pass-through"
+    },
+    {
+      "id": "granary-large-grain",
+      "assetId": "granary-large-grain-v1",
+      "contact": [
+        24.25,
+        13.4651875
+      ],
+      "scale": 0.043,
+      "selectionCell": null,
+      "pointer": "pass-through",
+      "ownsMapStructureBody": false
+    },
+    {
+      "id": "granary-column-box",
+      "assetId": "granary-column-box-surface-v1",
+      "contact": [
+        25.0,
+        12.375
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
     }
   ]
 }
