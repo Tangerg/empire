@@ -1,0 +1,11 @@
+# Granary door-front three containers — bounded static arrangement
+
+This restores a local stock layout and protects input/foreground semantics; it is NOT claimed as an independently reproduced original rear-role bug. Source contract is the second group of ../granary-grain-bin-audit/granary-stock-source-contract.json. Original513219left and541218right low-container front contacts retained;535215 is the low right wooden side, never main-house support. Rear tall box feet are hidden in the original and explicitly authored, not certified. Three independent geometry instances own three local front profiles; do not flatten them into one front value.
+
+New reasonable stock design uses two closed wooden crates and one grain-filled low box rather than claiming original botanical identities. Reuses existing bin candidate wood/grain UV only, no new generated raster. Selected bounded masses remain within old source stock area; source feet/two wood witnesses hold, and entire main entry strip remains empty of these containers. Ground shadows and cross-object texture/brightness remain deferred art integration debt.
+
+Fresh native build0warnings/errors.10fixed material/ground samples pass. Every pixel centre across source[528,224)..[592,240),1024samples covering columns33–36,row14, is clear of stock, not just cell centres. ActualC07 Torren33,14 east retains opaque visible pixels over535215/539211. Existing door568162 selects35,14; approach584232 remains ground36,14. State unchanged/rendering issues0.
+
+Two effective negative controls preserve otherwise valid fixtures: moving stock-only depth behind actor relation to260 yields exact `Granary door stock actual-role front visibility failed`; a deliberate1x2px stock intrusion BETWEEN cell-centre samples keeps all10fixed material checks and front-role checks passing but yields `Granary door stock full entry-strip exclusion failed` with2covered pixels and valid result JSON. Negative scripts/results are explicit tests, not production changes.
+
+Native same-camera files granary-door-stock-original-v1.png and candidate-v1.png show actual static clone pose33,14 atzoom2.5. C07 real play remains paused; no commands/saves/carryover accessed. Main house/canopy/bin/door stock still partial unbound scene; other granary stock and nearby objects absent. No performance/full-level/final-art acceptance.
