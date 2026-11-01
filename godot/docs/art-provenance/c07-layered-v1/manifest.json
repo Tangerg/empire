@@ -34,6 +34,17 @@
       "mode": "RGB",
       "sha256": "a7d42bd3caa41b36b721eb876f54cc4fd427db1af7f81156f9d28d34082d2686",
       "status": "unbound ground-only candidate; no road/footprint/whole-map registration acceptance yet"
+    },
+    {
+      "file": "assets/native/c07-layered-v1/training-fence-v2-rejected.png",
+      "generation": "exec-b0b17748-cfdf-403e-8d60-f3d9748d74ff",
+      "pixelSize": [
+        1187,
+        1325
+      ],
+      "mode": "RGBA",
+      "sha256": "2d3889d92d7aeb8e850dd3f1464790778203b9795252c2f1148822bfa9fac9ab",
+      "status": "REJECTED; all3frozen gaps still opaque, topbeam empty, posts too short; whole-fence candidate stopped"
     }
   ]
 }

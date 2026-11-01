@@ -1,0 +1,274 @@
+{
+  "scope": "Single bounded static measurement of the one requested fence revision. Original3 wood feet,3 transparent holes and beam positive unchanged. No GUI/engine/repo edits/gameplay. No new tolerance.",
+  "result": "REJECT as source-faithful whole-fence candidate; stop this candidate line, no further automatic generation. Improved spacing and removal of gray collars do not cure vertical structure/gaps.",
+  "input": "/workspace/scratch/84c9fe948755/generated_images/exec-b0b17748-cfdf-403e-8d60-f3d9748d74ff.png",
+  "sha256": "2d3889d92d7aeb8e850dd3f1464790778203b9795252c2f1148822bfa9fac9ab",
+  "pixelSize": [
+    1187,
+    1325
+  ],
+  "trueWoodFeet": [
+    {
+      "assetPixel": [
+        140,
+        683
+      ],
+      "rgba": [
+        239,
+        157,
+        56,
+        253
+      ],
+      "targetSource": [
+        950.0,
+        208.0
+      ],
+      "mappedSource": [
+        950.7020492520261,
+        207.28185590711965
+      ],
+      "errorSource": [
+        0.7020492520260859,
+        -0.7181440928803511
+      ]
+    },
+    {
+      "assetPixel": [
+        465,
+        868
+      ],
+      "rgba": [
+        130,
+        75,
+        32,
+        253
+      ],
+      "targetSource": [
+        963.0,
+        215.0
+      ],
+      "mappedSource": [
+        963.0556222514504,
+        214.31388976833034
+      ],
+      "errorSource": [
+        0.05562225145035882,
+        -0.6861102316696588
+      ]
+    },
+    {
+      "assetPixel": [
+        1075,
+        1265
+      ],
+      "rgba": [
+        221,
+        149,
+        62,
+        251
+      ],
+      "targetSource": [
+        987.0,
+        228.0
+      ],
+      "mappedSource": [
+        986.2423284965233,
+        229.40425432455004
+      ],
+      "errorSource": [
+        -0.7576715034766721,
+        1.4042543245500383
+      ]
+    }
+  ],
+  "uniformFit": {
+    "method": "Same unweighted scalar + translation least squares as v1; no rotation/anisotropic scale",
+    "scaleSourceAndInstance": 0.03801099384438207,
+    "translationSource": [
+      945.3805101138126,
+      181.3203471114067
+    ],
+    "maxAbsoluteAxisError": 1.4042543245500383,
+    "rmsEuclideanError": 1.1587984424200806,
+    "status": "Not an acceptance threshold; overall fixture fails regardless of small foot residual."
+  },
+  "postHeights": {
+    "realAssetTopPixels": [
+      [
+        140,
+        86
+      ],
+      [
+        467,
+        246
+      ],
+      [
+        1076,
+        618
+      ]
+    ],
+    "topRgba": [
+      [
+        61,
+        21,
+        0,
+        252
+      ],
+      [
+        70,
+        34,
+        5,
+        248
+      ],
+      [
+        67,
+        22,
+        0,
+        251
+      ]
+    ],
+    "mappedHeightSourcePixels": [
+      22.692563325096096,
+      23.64283817120565,
+      24.5931130173152
+    ],
+    "frozenOriginalCapInteriorToWoodFootHeight": [
+      31,
+      30,
+      30
+    ],
+    "deficitSourcePixels": [
+      8.307436674903904,
+      6.35716182879435,
+      5.406886982684799
+    ]
+  },
+  "fixedOriginalHoles": [
+    {
+      "source": [
+        972,
+        203
+      ],
+      "assetPixel": [
+        700,
+        570
+      ],
+      "rgba": [
+        109,
+        66,
+        26,
+        253
+      ]
+    },
+    {
+      "source": [
+        977,
+        207
+      ],
+      "assetPixel": [
+        832,
+        676
+      ],
+      "rgba": [
+        130,
+        73,
+        26,
+        253
+      ]
+    },
+    {
+      "source": [
+        954,
+        194
+      ],
+      "assetPixel": [
+        227,
+        334
+      ],
+      "rgba": [
+        29,
+        11,
+        0,
+        253
+      ]
+    }
+  ],
+  "fixedOriginalBeamAndPostPositives": [
+    {
+      "source": [
+        976,
+        194
+      ],
+      "assetPixel": [
+        806,
+        334
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source": [
+        963,
+        204
+      ],
+      "assetPixel": [
+        464,
+        597
+      ],
+      "rgba": [
+        252,
+        186,
+        69,
+        253
+      ]
+    },
+    {
+      "source": [
+        987,
+        216
+      ],
+      "assetPixel": [
+        1095,
+        912
+      ],
+      "rgba": [
+        183,
+        107,
+        31,
+        253
+      ]
+    }
+  ],
+  "adjacentPavingNegative": {
+    "source": [
+      1000,
+      194
+    ],
+    "assetPixel": [
+      1437,
+      334
+    ],
+    "rgba": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "background": {
+    "fartherThan20PixelsFromAlphaAtLeast200NonzeroCount": 287,
+    "farMaxAlpha": 1,
+    "farAbove8Count": 0,
+    "note": "No broad opaque background found. This is independent of geometry rejection."
+  },
+  "stopBoundary": "No replacement samples, no tolerance increase, no whole-city/clean-floor expansion. Blue kiosk prior candidate findings remain separate; no new acceptance is claimed here.",
+  "footEvidenceImages": [
+    "foot-0-grid.png",
+    "foot-1-grid.png",
+    "foot-2-grid.png"
+  ]
+}

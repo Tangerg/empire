@@ -1,0 +1,16 @@
+using Godot;
+using System.Text.Json.Nodes;
+using Empire.Presentation;
+using Empire.Core.Engine;
+using Empire.Core.Determinism;
+using Empire.Presentation.Tactical;
+public partial class MissingMaterialProbe : Node {
+ public override void _Ready(){try{
+ var e=new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));var l=PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>().Single(x=>x["id"]!.GetValue<string>()=="c01-07");var s=e.CreateState(l);var before=EcmaJson.Stringify(s);bool candidate=OS.GetEnvironment("C07_STATIC_CANDIDATE")=="1";var scene=AuthoredScene.Load(candidate?"res://data/scenes/c01-07-prop-preview.json":"res://data/scenes/c01-07.json");var r=BoardSceneRendering.Load(scene,l,s["map"]!.AsObject());var b=new BoardView{AnimationsEnabled=false};AddChild(b);b.Configure(new(AssetCatalog.Load(),EnvironmentCatalog.Load(),e.Grids.Get("square4"),e.Catalog,r.Plane),l,scene);b.ConfigureGround(r.Ground);b.ConfigureDynamicState();var original=s["units"]!.AsArray().OfType<JsonObject>().Single(u=>u["key"]!.GetValue<string>()=="campaign-torren");var rows=new JsonArray();
+ var cases=candidate?new[]{(56,11,910,170,"blue-roof-behind"),(56,13,907,200,"blue-solid-panel-front")}:new[]{(56,11,910,170,"blue-roof-cargo-shelter"),(61,12,976,194,"training-fence-beam")};foreach(var (x,y,px,py,name) in cases){
+ var shown=s.DeepClone().AsObject();var u=original.DeepClone().AsObject();u["x"]=x;u["y"]=y;shown["units"]=new JsonArray(u);b.RenderState(shown);int id=u["id"]!.GetValue<int>();var actor=b.GetNode<CanvasGroup>($"CanonicalProjection/Unit_{id}");var sprite=actor.GetNode<Sprite2D>("AuthoredSprite");var p=new Vector2(px,py);bool opaque=sprite.IsPixelOpaque(sprite.ToLocal(b.ToGlobal(p)));var hit=b.Pick(p);rows.Add(new JsonObject{{"material",name},{"cell",new JsonArray(x,y)},{"sourcePoint",new JsonArray(px,py)},{"canonicalTerrain",l["terrain"]![y]!.GetValue<string>()[x].ToString()},{"actualNativeSpriteOpaque",opaque},{"nativePick",hit?.ToString()},{"observedActorOverForegroundMaterial",opaque&&hit==TacticalHit.Unit(new(x,y),id)}});
+ }
+ if(candidate && (rows[0]!["observedActorOverForegroundMaterial"]!.GetValue<bool>() || !rows[1]!["observedActorOverForegroundMaterial"]!.GetValue<bool>() || rows.Any(row=>!row!["actualNativeSpriteOpaque"]!.GetValue<bool>()))) throw new Exception("Blue prop back/front contract failed");
+ var output=new JsonObject{{"scope","Read-only native initial-state fixtures; no engine commands, campaign carryover or real save. Native material ordering probe, NOT gameplay acceptance."},{"stateUnchanged",before==EcmaJson.Stringify(s)},{"renderingIssueCount",b.RenderingIssueCount},{"rows",rows}};System.IO.File.WriteAllText(ProjectSettings.GlobalizePath(candidate?"res://blue-candidate-result.json":"res://missing-material-result.json"),output.ToJsonString());GD.Print("C07_MISSING_MATERIAL_PROBE_COMPLETE");GetTree().Quit();
+ }catch(Exception ex){GD.PushError(ex.ToString());GetTree().Quit(1);}}
+}
