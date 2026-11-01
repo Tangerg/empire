@@ -1,0 +1,22 @@
+{
+  "back": {
+    "validated": true,
+    "actorPickable": false,
+    "targetFailure": false
+  },
+  "front": {
+    "validated": true,
+    "actorPickable": true,
+    "targetFailure": false
+  },
+  "background": {
+    "validated": true,
+    "actorPickable": true,
+    "targetFailure": true
+  },
+  "late": {
+    "validated": true,
+    "actorPickable": false,
+    "targetFailure": true
+  }
+}
