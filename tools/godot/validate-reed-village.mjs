@@ -152,7 +152,7 @@ function validate({ level, retired, scene, painted, audit, packs }) {
 const data = {
   level: readJson('godot/data/grayflag-campaign-levels.json').find(level => level.id === 'c01-05'),
   retired: readJson('godot/tests/native/reed-village-retired-level.json'),
-  scene: readJson('godot/data/scenes/c01-05.json'),
+  scene: readJson('godot/data/scenes/c01-05-painted-reference.json'),
   painted: readJson('godot/data/scenes/c01-05-painted-ground.json'),
   audit: readJson('godot/docs/art-provenance/reed-village-geometry.json'),
   packs: readJson('godot/data/content-packs.json'),

@@ -93,3 +93,15 @@ Use case: background-extraction. Extract/redraw ONLY northeast THATCHED COTTAGE 
 ## Short bridge rail
 
 Use case: precise-object-edit. Create ONE SHORT modular timber rail span derived from reference: EXACTLY TWO vertical end posts and TWO thin beams connecting them, with transparent open gaps. Not the reference's four-post long fence. Ground feet line rises from lowerLEFT to upperRIGHT at slope -0.42 (about23degrees). Two feet approx (250,850) and (1000,535) on1254x1254 transparent canvas; each post height about280. Preserve weathered brown timber, restrained hand-painted style and believable visible top/side thickness. No middle posts, no floor/deck, no stonebase, no scenery, no glow/shadow backdrop/text. Both endposts fully visible with padding; standalone complete sprite for three consecutive short depth-sorted segments of same bridge.
+
+## Shore footing tuft v1 — restored environment 2026-11-01
+Built-in image generation, original painted bridge diagnostic as style-only reference.
+Prompt: single tiny ground-contact riverbank tuft sprite, hand-painted 2D medieval
+tactical game, olive green/brown vegetation; transparent background, low irregular
+crescent of short dark olive blades, small grey-brown pebbles and moss, elevated
+45-degree view. Broad and low, no tall reeds/white flowers/boulder/water/bridge/text.
+Simplified hand-painted brushwork, sparse tapered alpha edges, dark earthy center,
+subdued palette, no bright yellow or glow.
+Unmodified generated RGBA is retained. One pass-through decorative instance only,
+source contact (354,538), below the unchanged rock foot (356,532); restores a small
+bank transition rather than shifting the physical rock or changing collision.

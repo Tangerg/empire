@@ -34,10 +34,10 @@ public partial class ReedVillageChecks : Node
             var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
             var state = engine.CreateState(level);
             CheckMissionSource(level, state);
-            if (OS.GetCmdlineUserArgs().Contains("--layered-preview", StringComparer.Ordinal))
-                CheckLayeredScene(engine, level, state, audit);
-            else
+            if (OS.GetCmdlineUserArgs().Contains("--legacy-painted", StringComparer.Ordinal))
                 CheckPainting(engine, level, state, audit);
+            else
+                CheckLayeredScene(engine, level, state, audit);
             CheckMovement(engine, level, state, audit);
             CheckOpeningEscape(engine, level);
             CheckNoAiTiming(engine, level);
@@ -84,9 +84,9 @@ public partial class ReedVillageChecks : Node
 
     private void CheckLayeredScene(BattleEngine engine, JsonObject level, JsonObject state, JsonObject audit)
     {
-        var scene = AuthoredScene.Load("res://data/scenes/c01-05-layered-preview.json");
+        var scene = AuthoredScene.Load("res://data/scenes/c01-05.json");
         Require(scene.RuntimeReady && scene.PaintedGroundPath is null && scene.AssembledGroundPath == "res://data/scenes/c01-05-layered-ground.json",
-            "C05 preview must use independent materials without a painted fallback.");
+            "Current C05 must use independent materials without a painted fallback.");
         var document = PresentationJson.Load<AssembledGroundDocument>(scene.AssembledGroundPath!);
         var catalog = PresentationJson.Load<SceneObjectCatalog>(document.ObjectCatalogPath);
         Require(document.WorldScale == 1.25f && document.OriginPixels.SequenceEqual([20f, 32f])
@@ -105,9 +105,9 @@ public partial class ReedVillageChecks : Node
             var sites = audit["sites"]!.AsArray().OfType<JsonObject>().Select(site => Cell(site["cell"]!)).ToHashSet();
             Require(board.RenderingIssueCount == 0 && board.RenderedUnitCount == 21 && ground.Sites.Count == 12
                 && ground.Sites.Select(site => site.Cell).ToHashSet().SetEquals(sites) && ground.Sites.All(site => site.OwnsMapStructureBody)
-                && board.RenderedStructureCount == 0 && document.Objects.Length == 57
+                && board.RenderedStructureCount == 0 && document.Objects.Length == 58
                 && ground.DepthEntries.Count == document.Objects.Sum(item => catalog.Objects[item.AssetId].DepthStrips?.Length ?? 1),
-                "All twelve unchanged sites and 57 independent instances must render once without duplicate bodies.");
+                "All twelve unchanged sites and 58 independent instances must render once without duplicate bodies.");
             var empty = state.DeepClone().AsObject();
             empty["units"] = new JsonArray();
             board.RenderState(empty);
@@ -233,6 +233,16 @@ public partial class ReedVillageChecks : Node
             Require(image.GetPixel((int)pixel.X, (int)pixel.Y).A < .1f,
                 "Historical transparent fringe samples remain explicitly invalid physical support evidence.");
         }
+        var shore = document.Objects.Single(item => item.Id == "west-bank-rock-footing");
+        var shoreSprite = ground.GetNode<Sprite2D>(shore.Id);
+        var shoreVisual = ground.DepthEntries.Single(entry => entry.Node == shoreSprite).Visual!;
+        var shorePoint = shoreSprite.ToGlobal(new Vector2(600 - 768, 650 - 800));
+        var shoreCell = CellOf(board.ToLocal(shorePoint) / document.WorldScale);
+        Require(shore.Pointer == "pass-through" && !shore.OwnsMapStructureBody && shore.SelectionCell is null
+            && shoreVisual.Covers(shorePoint) && board.Pick(board.ToLocal(shorePoint)) == TacticalHit.Ground(new(shoreCell.X, shoreCell.Y)),
+            "Low bank vegetation must visibly blend the real rock foot without owning a site or changing ground targeting.");
+        Require(shoreSprite.ZIndex > ground.GetNode<Sprite2D>("west-bank-boulders").ZIndex,
+            "The restored small bank tuft must overlap the lower rock edge from the physically nearer bank, not paint a floating shadow behind it.");
         var cart = document.Objects.Single(item => item.Id == "central-supply-cart");
         var cartAsset = catalog.Objects[cart.AssetId];
         var cartSprite = ground.GetNode<Sprite2D>(cart.Id);
@@ -327,8 +337,8 @@ public partial class ReedVillageChecks : Node
 
     private void CheckPainting(BattleEngine engine, JsonObject level, JsonObject state, JsonObject audit)
     {
-        var scene = AuthoredScene.Load("res://data/scenes/c01-05.json");
-        Require(scene.RuntimeReady && scene.PaintedGroundPath == "res://data/scenes/c01-05-painted-ground.json", "The ready C05 scene must bind its reviewed mother painting.");
+        var scene = AuthoredScene.Load("res://data/scenes/c01-05-painted-reference.json");
+        Require(scene.RuntimeReady && scene.PaintedGroundPath == "res://data/scenes/c01-05-painted-ground.json", "The historical C05 reference must retain its original mother painting.");
         var art = PresentationJson.Load<PaintedGroundDocument>(scene.PaintedGroundPath!);
         art.ValidateLevel(level);
         Require(art.LevelId == LevelId && art.ResourcePath == "res://assets/native/scenes/reed-village.png"
@@ -583,7 +593,7 @@ public partial class ReedVillageChecks : Node
     private void ExportGuiFixtures(BattleEngine engine, JsonArray levels)
     {
         const string prefix = "--export-c05-gui-dir=";
-        var args = OS.GetCmdlineUserArgs().Where(argument => argument != "--layered-preview").ToArray();
+        var args = OS.GetCmdlineUserArgs().Where(argument => argument != "--legacy-painted").ToArray();
         Require(args.All(argument => argument.StartsWith(prefix, StringComparison.Ordinal)) && args.Length <= 1, "Only the explicit C05 evidence export option is supported.");
         if (args.Length == 0)
             return;

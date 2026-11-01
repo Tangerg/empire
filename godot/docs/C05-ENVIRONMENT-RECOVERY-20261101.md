@@ -64,3 +64,28 @@ NE boulder proposal was paused when restored PNG alpha disproved two old purport
 foot witnesses. A corrected independently sampled opaque foot at (1080,931), not
 transparent (1080,945), is now under review. No move is accepted from transparent
 pixels. Keep old errors and corrective records separate from current evidence.
+
+## Prop review and formal binding, 06:45 UTC
+
+The corrected NE-border true opaque foot is now registered -2.7 source pixels X;
+all eight rechecked lower-outline points satisfy the unchanged five-pixel original
+physical envelope. The withdrawn transparent samples remain negative evidence.
+Cart true wheels remain on existing walls; shaft/fence clicks remain ground. Actual
+static actor fixtures at (33,12..14) show the cart-side path, independently of the
+engine adjacent-path queries. This is not continuous movement or normal play.
+
+The distinct west-bank boulder has valid physical grounding (max outside 3.806 px),
+not a proven floating registration. A 2.85 px near-tangent to the rail and removed
+bank vegetation caused the visual ambiguity. One small independent pass-through
+shore tuft overlaps its lower edge without moving rock, rail, shore or map. It has
+mipmaps; three additional native alpha/ownership/depth assertions pass. The new
+build passes 1499 C05 assertions. Broad cross-chapter ground/prop style coherence
+remains unfinished; do not repeatedly refine this one rock instead of playing.
+
+C02 readonly cross-check: 51 static fixtures, 8 actor/rail pairs, 664 real double
+alpha samples; no corresponding inversion found. Not full C02 replay.
+
+Formal C05 now binds the independent scene. The old painted scene and geometric
+negative controls are retained in c01-05-painted-reference.json and explicit
+--legacy-painted mode, not mixed into current presentation acceptance. Current
+C05 real normal-AI play is still pending; no lost C04 save has been fabricated.
