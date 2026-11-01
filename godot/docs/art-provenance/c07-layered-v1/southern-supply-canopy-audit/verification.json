@@ -1,0 +1,145 @@
+{
+  "staticOnly": true,
+  "previous25InstancesAndDefinitionsExact": true,
+  "instances": 30,
+  "sites": 6,
+  "depthEntries": 2297,
+  "addedSupportNodes": 223,
+  "actualRoleSamples": [
+    153,
+    134,
+    621
+  ],
+  "wrongRoleSamples": [
+    0,
+    0,
+    0
+  ],
+  "structuralJoints": [
+    {
+      "knee": "west-knee",
+      "railContactArea": 4.5210366,
+      "postContactArea": 11.307706
+    },
+    {
+      "knee": "front-west-knee",
+      "railContactArea": 6.0733767,
+      "postContactArea": 7.9583435
+    },
+    {
+      "knee": "front-east-knee",
+      "railContactArea": 3.1609514,
+      "postContactArea": 7.723093
+    },
+    {
+      "knee": "right-knee",
+      "railContactArea": 4.5405707,
+      "postContactArea": 7.6923523
+    }
+  ],
+  "negativeCases": [
+    {
+      "case": "late-posts",
+      "exit": 1,
+      "targetAssertion": "Southern canopy actual-role local front/back depth failed",
+      "wrongRoleSamples": [
+        153,
+        0,
+        0
+      ],
+      "joints": [
+        {
+          "knee": "west-knee",
+          "railContactArea": 4.5210366,
+          "postContactArea": 11.307706
+        },
+        {
+          "knee": "front-west-knee",
+          "railContactArea": 6.0733767,
+          "postContactArea": 7.9583435
+        },
+        {
+          "knee": "front-east-knee",
+          "railContactArea": 3.1609514,
+          "postContactArea": 7.723093
+        },
+        {
+          "knee": "right-knee",
+          "railContactArea": 4.5405707,
+          "postContactArea": 7.6923523
+        }
+      ]
+    },
+    {
+      "case": "background-cloth",
+      "exit": 1,
+      "targetAssertion": "Southern canopy actual-role local front/back depth failed",
+      "wrongRoleSamples": [
+        0,
+        0,
+        621
+      ],
+      "joints": [
+        {
+          "knee": "west-knee",
+          "railContactArea": 4.5210366,
+          "postContactArea": 11.307706
+        },
+        {
+          "knee": "front-west-knee",
+          "railContactArea": 6.0733767,
+          "postContactArea": 7.9583435
+        },
+        {
+          "knee": "front-east-knee",
+          "railContactArea": 3.1609514,
+          "postContactArea": 7.723093
+        },
+        {
+          "knee": "right-knee",
+          "railContactArea": 4.5405707,
+          "postContactArea": 7.6923523
+        }
+      ]
+    },
+    {
+      "case": "floating-knee",
+      "exit": 1,
+      "targetAssertion": "Southern canopy knee must physically join both wood edge rail and post",
+      "wrongRoleSamples": [
+        0,
+        0,
+        0
+      ],
+      "joints": [
+        {
+          "knee": "west-knee",
+          "railContactArea": 4.5210366,
+          "postContactArea": 11.307706
+        },
+        {
+          "knee": "front-west-knee",
+          "railContactArea": 0,
+          "postContactArea": 7.9583435
+        },
+        {
+          "knee": "front-east-knee",
+          "railContactArea": 3.1609514,
+          "postContactArea": 7.723093
+        },
+        {
+          "knee": "right-knee",
+          "railContactArea": 4.5405707,
+          "postContactArea": 7.6923523
+        }
+      ]
+    }
+  ],
+  "sourceReexportsByteExact": 5,
+  "mainRegression": "passed:128foot pixels,4actual-role groups,door/site/256approach samples",
+  "externalBuild": "passed,0warnings/errors",
+  "productionBuild": "passed,0warnings/errors",
+  "metadata": "passed:149scriptUIDs,1670ignoredAuditFiles",
+  "pausedFilesUnchanged": 6,
+  "fullScenePerformance": "not measured/not passed"
+}

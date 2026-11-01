@@ -1,0 +1,403 @@
+{
+  "levelId": "c01-07",
+  "levelSourceSha256": "bc0482afd358ed7705dd674448d8cbb7b691c4ef368496f58ad969c98e2f6029",
+  "pixelSize": [
+    1536,
+    1024
+  ],
+  "originPixels": [
+    0,
+    0
+  ],
+  "cellXPixels": [
+    16,
+    0
+  ],
+  "cellYPixels": [
+    0,
+    16
+  ],
+  "worldScale": 1.0,
+  "resourcePath": "res://assets/native/c07-layered-v1/ground-clean-v1-candidate.png",
+  "objectCatalogPath": "res://southern-supply-canopy-background-cloth-objects.json",
+  "objects": [
+    {
+      "id": "north-blue-wooden-stand",
+      "assetId": "blue-roof-wooden-stand-v1",
+      "contact": [
+        56.25624806454001,
+        13.079207787348258
+      ],
+      "scale": 0.04099740147833,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "militia-barracks-core",
+      "assetId": "militia-barracks-core-v2",
+      "contact": [
+        62.657894736842124,
+        11.657894736842103
+      ],
+      "scale": 0.15789473684210353,
+      "selectionCell": [
+        65,
+        14
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "barracks-front-cargo",
+      "assetId": "barracks-front-cargo-v1",
+      "contact": [
+        61.5,
+        12.0625
+      ],
+      "scale": 0.02,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "barracks-front-canopy",
+      "assetId": "barracks-front-canopy-surface",
+      "contact": [
+        59.0,
+        7.8125
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "training-fence",
+      "assetId": "training-fence",
+      "contact": [
+        59.125,
+        10.625
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "granary-main",
+      "assetId": "granary-main-v1",
+      "contact": [
+        36.1875,
+        11.25
+      ],
+      "scale": 0.17,
+      "selectionCell": [
+        35,
+        14
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "granary-cloth-canopy",
+      "assetId": "granary-canopy-surface",
+      "contact": [
+        23.75,
+        7.8125
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "granary-low-bin",
+      "assetId": "granary-bin-surface",
+      "contact": [
+        25.625,
+        13.625
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "granary-door-stock-rear",
+      "assetId": "granary-door-stock-rear-surface",
+      "contact": [
+        32.625,
+        11.5
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "granary-door-stock-left",
+      "assetId": "granary-door-stock-left-surface",
+      "contact": [
+        31.3125,
+        12.25
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "granary-door-stock-right",
+      "assetId": "granary-door-stock-right-surface",
+      "contact": [
+        33.25,
+        12.25
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "council-hall-main",
+      "assetId": "council-hall-v1",
+      "contact": [
+        20.329483074107962,
+        47.44333257090576
+      ],
+      "scale": 0.1683440073193046,
+      "selectionCell": [
+        25,
+        47
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "southeast-gate-stone",
+      "assetId": "southeast-gate-stone-surface-v2",
+      "contact": [
+        74.57765197753906,
+        45.18333435058594
+      ],
+      "scale": 0.19393938779830933,
+      "selectionCell": [
+        84,
+        57
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "southeast-gate-leaf",
+      "assetId": "southeast-gate-leaf-surface-v1",
+      "contact": [
+        82.9375,
+        53.0
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "southwest-gate-stone",
+      "assetId": "southwest-gate-stone-surface-v1",
+      "contact": [
+        5.131410121917725,
+        45.30769348144531
+      ],
+      "scale": 0.18803419172763824,
+      "selectionCell": [
+        15,
+        51
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "southwest-gate-leaf",
+      "assetId": "southwest-gate-leaf-surface-v1",
+      "contact": [
+        11.75,
+        52.9375
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "granary-shed-roof",
+      "assetId": "granary-shed-roof-surface-v1",
+      "contact": [
+        18.75,
+        5.875
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "granary-shed-fascia",
+      "assetId": "granary-shed-fascia-surface-v1",
+      "contact": [
+        18.6875,
+        5.75
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "granary-shed-leftpost",
+      "assetId": "granary-shed-leftpost-surface-v1",
+      "contact": [
+        18.6875,
+        7.875
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "granary-shed-nearpost",
+      "assetId": "granary-shed-nearpost-surface-v1",
+      "contact": [
+        21.9375,
+        9.9375
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "granary-shed-rightpost",
+      "assetId": "granary-shed-rightpost-surface-v1",
+      "contact": [
+        26.75,
+        8.5
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "granary-shed-rearpost",
+      "assetId": "granary-shed-rearpost-surface-v1",
+      "contact": [
+        23.75,
+        6.0625
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "granary-large-grain",
+      "assetId": "granary-large-grain-v1",
+      "contact": [
+        24.25,
+        13.4651875
+      ],
+      "scale": 0.043,
+      "selectionCell": null,
+      "pointer": "pass-through",
+      "ownsMapStructureBody": false
+    },
+    {
+      "id": "granary-column-box",
+      "assetId": "granary-column-box-surface-v1",
+      "contact": [
+        25.0,
+        12.375
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "southern-supply-main",
+      "assetId": "southern-supply-main-v1",
+      "contact": [
+        77.5,
+        48.375
+      ],
+      "scale": 0.175,
+      "selectionCell": [
+        70,
+        50
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "southern-supply-canopy-cloth",
+      "assetId": "southern-supply-canopy-cloth",
+      "contact": [
+        67.5,
+        41.6875
+      ],
+      "scale": 1.0,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "southern-supply-canopy-west-post",
+      "assetId": "southern-supply-canopy-west-post",
+      "contact": [
+        67.3125,
+        43.25
+      ],
+      "scale": 1.0,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "southern-supply-canopy-front-post",
+      "assetId": "southern-supply-canopy-front-post",
+      "contact": [
+        72.1875,
+        45.875
+      ],
+      "scale": 1.0,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "southern-supply-canopy-right-post",
+      "assetId": "southern-supply-canopy-right-post",
+      "contact": [
+        75.5625,
+        44.5625
+      ],
+      "scale": 1.0,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "southern-supply-canopy-rear-post",
+      "assetId": "southern-supply-canopy-rear-post",
+      "contact": [
+        70.125,
+        41.5625
+      ],
+      "scale": 1.0,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    }
+  ]
+}

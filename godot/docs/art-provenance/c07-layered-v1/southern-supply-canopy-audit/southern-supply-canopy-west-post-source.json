@@ -1,0 +1,178 @@
+{
+  "id": "west-post",
+  "namePrefix": "SouthernSupplyWestPost",
+  "textureResourcePath": "res://assets/native/c04-layered-v1/supply-canopy.png",
+  "scope": "Observed original visible foot, approximate \u00b12 source pixels.",
+  "supportLine": [
+    [
+      1076,
+      752
+    ],
+    [
+      1097,
+      752
+    ]
+  ],
+  "members": [
+    {
+      "id": "west-continuous-clean-wood-shaft",
+      "polygon": [
+        [
+          1078,
+          692
+        ],
+        [
+          1084,
+          692
+        ],
+        [
+          1084,
+          749
+        ],
+        [
+          1078,
+          749
+        ]
+      ],
+      "uv": [
+        [
+          402,
+          420
+        ],
+        [
+          414,
+          420
+        ],
+        [
+          414,
+          520
+        ],
+        [
+          402,
+          520
+        ]
+      ],
+      "tint": "d6be96"
+    },
+    {
+      "id": "west-blue-gray-foot-left",
+      "polygon": [
+        [
+          1077,
+          747
+        ],
+        [
+          1081,
+          747.5
+        ],
+        [
+          1081,
+          752
+        ],
+        [
+          1077,
+          750.8
+        ]
+      ],
+      "uv": [
+        [
+          730,
+          340
+        ],
+        [
+          750,
+          340
+        ],
+        [
+          750,
+          360
+        ],
+        [
+          730,
+          360
+        ]
+      ],
+      "tint": "516c78"
+    },
+    {
+      "id": "west-blue-gray-foot-right",
+      "polygon": [
+        [
+          1081,
+          747.5
+        ],
+        [
+          1085,
+          746.2
+        ],
+        [
+          1085,
+          750.7
+        ],
+        [
+          1081,
+          752
+        ]
+      ],
+      "uv": [
+        [
+          750,
+          340
+        ],
+        [
+          770,
+          340
+        ],
+        [
+          770,
+          360
+        ],
+        [
+          750,
+          360
+        ]
+      ],
+      "tint": "3d5362"
+    },
+    {
+      "id": "west-knee",
+      "polygon": [
+        [
+          1081,
+          707
+        ],
+        [
+          1094,
+          696
+        ],
+        [
+          1096,
+          696
+        ],
+        [
+          1081,
+          711
+        ]
+      ],
+      "uv": [
+        [
+          402,
+          420
+        ],
+        [
+          414,
+          420
+        ],
+        [
+          414,
+          520
+        ],
+        [
+          402,
+          520
+        ]
+      ],
+      "tint": "c2aa84"
+    }
+  ]
+}

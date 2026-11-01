@@ -1,0 +1,1021 @@
+{
+  "scope": "Southern canvas and four independently supported posts, static candidate. No movement/AI/save. Three feet visible in original; rear foot authored hidden completion. Existing material reused, no raster image edit.",
+  "components": [
+    {
+      "id": "cloth",
+      "namePrefix": "SouthernSupplyCloth",
+      "textureResourcePath": "res://assets/native/c04-layered-v1/supply-canopy.png",
+      "scope": "Original roof bounds and three visible feet; continuous mildly sagging cloth reconstruction, no main/rack/cargo. High rear corner has separately owned authored rear post, not floating wall attachment.",
+      "supportLine": [
+        [
+          1077,
+          750.021505376
+        ],
+        [
+          1081,
+          752
+        ],
+        [
+          1174,
+          798
+        ],
+        [
+          1224,
+          778
+        ],
+        [
+          1227,
+          776.8
+        ]
+      ],
+      "members": [
+        {
+          "id": "continuous-cloth-sector-0",
+          "polygon": [
+            [
+              1080,
+              694
+            ],
+            [
+              1103,
+              687
+            ],
+            [
+              1152,
+              714
+            ]
+          ],
+          "uv": [
+            [
+              540,
+              340
+            ],
+            [
+              625,
+              310
+            ],
+            [
+              750,
+              350
+            ]
+          ],
+          "tint": "fff3d8"
+        },
+        {
+          "id": "continuous-cloth-sector-1",
+          "polygon": [
+            [
+              1103,
+              687
+            ],
+            [
+              1125,
+              667
+            ],
+            [
+              1152,
+              714
+            ]
+          ],
+          "uv": [
+            [
+              625,
+              310
+            ],
+            [
+              710,
+              280
+            ],
+            [
+              750,
+              350
+            ]
+          ],
+          "tint": "fff3d8"
+        },
+        {
+          "id": "continuous-cloth-sector-2",
+          "polygon": [
+            [
+              1125,
+              667
+            ],
+            [
+              1174,
+              694
+            ],
+            [
+              1152,
+              714
+            ]
+          ],
+          "uv": [
+            [
+              710,
+              280
+            ],
+            [
+              835,
+              320
+            ],
+            [
+              750,
+              350
+            ]
+          ],
+          "tint": "fff3d8"
+        },
+        {
+          "id": "continuous-cloth-sector-3",
+          "polygon": [
+            [
+              1174,
+              694
+            ],
+            [
+              1224,
+              715
+            ],
+            [
+              1152,
+              714
+            ]
+          ],
+          "uv": [
+            [
+              835,
+              320
+            ],
+            [
+              960,
+              360
+            ],
+            [
+              750,
+              350
+            ]
+          ],
+          "tint": "fff3d8"
+        },
+        {
+          "id": "continuous-cloth-sector-4",
+          "polygon": [
+            [
+              1224,
+              715
+            ],
+            [
+              1199,
+              733
+            ],
+            [
+              1152,
+              714
+            ]
+          ],
+          "uv": [
+            [
+              960,
+              360
+            ],
+            [
+              875,
+              390
+            ],
+            [
+              750,
+              350
+            ]
+          ],
+          "tint": "fff3d8"
+        },
+        {
+          "id": "continuous-cloth-sector-5",
+          "polygon": [
+            [
+              1199,
+              733
+            ],
+            [
+              1174,
+              743
+            ],
+            [
+              1152,
+              714
+            ]
+          ],
+          "uv": [
+            [
+              875,
+              390
+            ],
+            [
+              790,
+              420
+            ],
+            [
+              750,
+              350
+            ]
+          ],
+          "tint": "fff3d8"
+        },
+        {
+          "id": "continuous-cloth-sector-6",
+          "polygon": [
+            [
+              1174,
+              743
+            ],
+            [
+              1127,
+              727
+            ],
+            [
+              1152,
+              714
+            ]
+          ],
+          "uv": [
+            [
+              790,
+              420
+            ],
+            [
+              665,
+              380
+            ],
+            [
+              750,
+              350
+            ]
+          ],
+          "tint": "fff3d8"
+        },
+        {
+          "id": "continuous-cloth-sector-7",
+          "polygon": [
+            [
+              1127,
+              727
+            ],
+            [
+              1080,
+              694
+            ],
+            [
+              1152,
+              714
+            ]
+          ],
+          "uv": [
+            [
+              665,
+              380
+            ],
+            [
+              540,
+              340
+            ],
+            [
+              750,
+              350
+            ]
+          ],
+          "tint": "fff3d8"
+        }
+      ]
+    },
+    {
+      "id": "west-post",
+      "namePrefix": "SouthernSupplyWestPost",
+      "textureResourcePath": "res://assets/native/c04-layered-v1/supply-canopy.png",
+      "scope": "Observed original visible foot, approximate \u00b12 source pixels.",
+      "supportLine": [
+        [
+          1076,
+          752
+        ],
+        [
+          1097,
+          752
+        ]
+      ],
+      "members": [
+        {
+          "id": "west-continuous-clean-wood-shaft",
+          "polygon": [
+            [
+              1078,
+              692
+            ],
+            [
+              1084,
+              692
+            ],
+            [
+              1084,
+              749
+            ],
+            [
+              1078,
+              749
+            ]
+          ],
+          "uv": [
+            [
+              402,
+              420
+            ],
+            [
+              414,
+              420
+            ],
+            [
+              414,
+              520
+            ],
+            [
+              402,
+              520
+            ]
+          ],
+          "tint": "d6be96"
+        },
+        {
+          "id": "west-blue-gray-foot-left",
+          "polygon": [
+            [
+              1077,
+              747
+            ],
+            [
+              1081,
+              747.5
+            ],
+            [
+              1081,
+              752
+            ],
+            [
+              1077,
+              750.8
+            ]
+          ],
+          "uv": [
+            [
+              730,
+              340
+            ],
+            [
+              750,
+              340
+            ],
+            [
+              750,
+              360
+            ],
+            [
+              730,
+              360
+            ]
+          ],
+          "tint": "516c78"
+        },
+        {
+          "id": "west-blue-gray-foot-right",
+          "polygon": [
+            [
+              1081,
+              747.5
+            ],
+            [
+              1085,
+              746.2
+            ],
+            [
+              1085,
+              750.7
+            ],
+            [
+              1081,
+              752
+            ]
+          ],
+          "uv": [
+            [
+              750,
+              340
+            ],
+            [
+              770,
+              340
+            ],
+            [
+              770,
+              360
+            ],
+            [
+              750,
+              360
+            ]
+          ],
+          "tint": "3d5362"
+        },
+        {
+          "id": "west-knee",
+          "polygon": [
+            [
+              1081,
+              707
+            ],
+            [
+              1094,
+              696
+            ],
+            [
+              1096,
+              696
+            ],
+            [
+              1081,
+              711
+            ]
+          ],
+          "uv": [
+            [
+              402,
+              420
+            ],
+            [
+              414,
+              420
+            ],
+            [
+              414,
+              520
+            ],
+            [
+              402,
+              520
+            ]
+          ],
+          "tint": "c2aa84"
+        }
+      ]
+    },
+    {
+      "id": "front-post",
+      "namePrefix": "SouthernSupplyFrontPost",
+      "textureResourcePath": "res://assets/native/c04-layered-v1/supply-canopy.png",
+      "scope": "Observed original visible foot, approximate \u00b12 source pixels.",
+      "supportLine": [
+        [
+          1154,
+          798
+        ],
+        [
+          1191,
+          798
+        ]
+      ],
+      "members": [
+        {
+          "id": "front-continuous-clean-wood-shaft",
+          "polygon": [
+            [
+              1171,
+              741
+            ],
+            [
+              1177,
+              741
+            ],
+            [
+              1177,
+              795
+            ],
+            [
+              1171,
+              795
+            ]
+          ],
+          "uv": [
+            [
+              402,
+              420
+            ],
+            [
+              414,
+              420
+            ],
+            [
+              414,
+              520
+            ],
+            [
+              402,
+              520
+            ]
+          ],
+          "tint": "d6be96"
+        },
+        {
+          "id": "front-blue-gray-foot-left",
+          "polygon": [
+            [
+              1170,
+              793
+            ],
+            [
+              1174,
+              793.5
+            ],
+            [
+              1174,
+              798
+            ],
+            [
+              1170,
+              796.8
+            ]
+          ],
+          "uv": [
+            [
+              730,
+              340
+            ],
+            [
+              750,
+              340
+            ],
+            [
+              750,
+              360
+            ],
+            [
+              730,
+              360
+            ]
+          ],
+          "tint": "516c78"
+        },
+        {
+          "id": "front-blue-gray-foot-right",
+          "polygon": [
+            [
+              1174,
+              793.5
+            ],
+            [
+              1178,
+              792.2
+            ],
+            [
+              1178,
+              796.7
+            ],
+            [
+              1174,
+              798
+            ]
+          ],
+          "uv": [
+            [
+              750,
+              340
+            ],
+            [
+              770,
+              340
+            ],
+            [
+              770,
+              360
+            ],
+            [
+              750,
+              360
+            ]
+          ],
+          "tint": "3d5362"
+        },
+        {
+          "id": "front-west-knee",
+          "polygon": [
+            [
+              1173,
+              755
+            ],
+            [
+              1157,
+              739
+            ],
+            [
+              1155,
+              739
+            ],
+            [
+              1173,
+              759
+            ]
+          ],
+          "uv": [
+            [
+              402,
+              420
+            ],
+            [
+              414,
+              420
+            ],
+            [
+              414,
+              520
+            ],
+            [
+              402,
+              520
+            ]
+          ],
+          "tint": "c2aa84"
+        },
+        {
+          "id": "front-east-knee",
+          "polygon": [
+            [
+              1175,
+              755
+            ],
+            [
+              1188,
+              736
+            ],
+            [
+              1190,
+              735
+            ],
+            [
+              1175,
+              759
+            ]
+          ],
+          "uv": [
+            [
+              402,
+              420
+            ],
+            [
+              414,
+              420
+            ],
+            [
+              414,
+              520
+            ],
+            [
+              402,
+              520
+            ]
+          ],
+          "tint": "c2aa84"
+        }
+      ]
+    },
+    {
+      "id": "right-post",
+      "namePrefix": "SouthernSupplyRightPost",
+      "textureResourcePath": "res://assets/native/c04-layered-v1/supply-canopy.png",
+      "scope": "Observed original visible foot, approximate \u00b12 source pixels.",
+      "supportLine": [
+        [
+          1208,
+          778
+        ],
+        [
+          1228,
+          778
+        ]
+      ],
+      "members": [
+        {
+          "id": "right-continuous-clean-wood-shaft",
+          "polygon": [
+            [
+              1222,
+              713
+            ],
+            [
+              1226,
+              713
+            ],
+            [
+              1226,
+              775
+            ],
+            [
+              1222,
+              775
+            ]
+          ],
+          "uv": [
+            [
+              402,
+              420
+            ],
+            [
+              414,
+              420
+            ],
+            [
+              414,
+              520
+            ],
+            [
+              402,
+              520
+            ]
+          ],
+          "tint": "d6be96"
+        },
+        {
+          "id": "right-blue-gray-foot-left",
+          "polygon": [
+            [
+              1221,
+              773
+            ],
+            [
+              1224,
+              773.5
+            ],
+            [
+              1224,
+              778
+            ],
+            [
+              1221,
+              776.8
+            ]
+          ],
+          "uv": [
+            [
+              730,
+              340
+            ],
+            [
+              750,
+              340
+            ],
+            [
+              750,
+              360
+            ],
+            [
+              730,
+              360
+            ]
+          ],
+          "tint": "516c78"
+        },
+        {
+          "id": "right-blue-gray-foot-right",
+          "polygon": [
+            [
+              1224,
+              773.5
+            ],
+            [
+              1227,
+              772.2
+            ],
+            [
+              1227,
+              776.7
+            ],
+            [
+              1224,
+              778
+            ]
+          ],
+          "uv": [
+            [
+              750,
+              340
+            ],
+            [
+              770,
+              340
+            ],
+            [
+              770,
+              360
+            ],
+            [
+              750,
+              360
+            ]
+          ],
+          "tint": "3d5362"
+        },
+        {
+          "id": "right-knee",
+          "polygon": [
+            [
+              1224,
+              728
+            ],
+            [
+              1211,
+              717
+            ],
+            [
+              1209,
+              717
+            ],
+            [
+              1224,
+              732
+            ]
+          ],
+          "uv": [
+            [
+              402,
+              420
+            ],
+            [
+              414,
+              420
+            ],
+            [
+              414,
+              520
+            ],
+            [
+              402,
+              520
+            ]
+          ],
+          "tint": "c2aa84"
+        }
+      ]
+    },
+    {
+      "id": "rear-post",
+      "namePrefix": "SouthernSupplyRearPost",
+      "textureResourcePath": "res://assets/native/c04-layered-v1/supply-canopy.png",
+      "scope": "Authored hidden rear foot, structural completion; not original pixel recovery.",
+      "supportLine": [
+        [
+          1121,
+          732
+        ],
+        [
+          1129,
+          732
+        ]
+      ],
+      "members": [
+        {
+          "id": "rear-continuous-clean-wood-shaft",
+          "polygon": [
+            [
+              1123,
+              665
+            ],
+            [
+              1127,
+              665
+            ],
+            [
+              1127,
+              729
+            ],
+            [
+              1123,
+              729
+            ]
+          ],
+          "uv": [
+            [
+              402,
+              420
+            ],
+            [
+              414,
+              420
+            ],
+            [
+              414,
+              520
+            ],
+            [
+              402,
+              520
+            ]
+          ],
+          "tint": "d6be96"
+        },
+        {
+          "id": "rear-blue-gray-foot-left",
+          "polygon": [
+            [
+              1122,
+              727
+            ],
+            [
+              1125,
+              727.5
+            ],
+            [
+              1125,
+              732
+            ],
+            [
+              1122,
+              730.8
+            ]
+          ],
+          "uv": [
+            [
+              730,
+              340
+            ],
+            [
+              750,
+              340
+            ],
+            [
+              750,
+              360
+            ],
+            [
+              730,
+              360
+            ]
+          ],
+          "tint": "516c78"
+        },
+        {
+          "id": "rear-blue-gray-foot-right",
+          "polygon": [
+            [
+              1125,
+              727.5
+            ],
+            [
+              1128,
+              726.2
+            ],
+            [
+              1128,
+              730.7
+            ],
+            [
+              1125,
+              732
+            ]
+          ],
+          "uv": [
+            [
+              750,
+              340
+            ],
+            [
+              770,
+              340
+            ],
+            [
+              770,
+              360
+            ],
+            [
+              750,
+              360
+            ]
+          ],
+          "tint": "3d5362"
+        }
+      ]
+    }
+  ],
+  "visibleOriginalFeet": [
+    [
+      1081,
+      752
+    ],
+    [
+      1174,
+      798
+    ],
+    [
+      1224,
+      778
+    ]
+  ],
+  "authoredHiddenRearFoot": [
+    1125,
+    732
+  ]
+}

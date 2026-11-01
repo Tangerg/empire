@@ -1,0 +1,138 @@
+{
+  "id": "rear-post",
+  "namePrefix": "SouthernSupplyRearPost",
+  "textureResourcePath": "res://assets/native/c04-layered-v1/supply-canopy.png",
+  "scope": "Authored hidden rear foot, structural completion; not original pixel recovery.",
+  "supportLine": [
+    [
+      1121,
+      732
+    ],
+    [
+      1129,
+      732
+    ]
+  ],
+  "members": [
+    {
+      "id": "rear-continuous-clean-wood-shaft",
+      "polygon": [
+        [
+          1123,
+          665
+        ],
+        [
+          1127,
+          665
+        ],
+        [
+          1127,
+          729
+        ],
+        [
+          1123,
+          729
+        ]
+      ],
+      "uv": [
+        [
+          402,
+          420
+        ],
+        [
+          414,
+          420
+        ],
+        [
+          414,
+          520
+        ],
+        [
+          402,
+          520
+        ]
+      ],
+      "tint": "d6be96"
+    },
+    {
+      "id": "rear-blue-gray-foot-left",
+      "polygon": [
+        [
+          1122,
+          727
+        ],
+        [
+          1125,
+          727.5
+        ],
+        [
+          1125,
+          732
+        ],
+        [
+          1122,
+          730.8
+        ]
+      ],
+      "uv": [
+        [
+          730,
+          340
+        ],
+        [
+          750,
+          340
+        ],
+        [
+          750,
+          360
+        ],
+        [
+          730,
+          360
+        ]
+      ],
+      "tint": "516c78"
+    },
+    {
+      "id": "rear-blue-gray-foot-right",
+      "polygon": [
+        [
+          1125,
+          727.5
+        ],
+        [
+          1128,
+          726.2
+        ],
+        [
+          1128,
+          730.7
+        ],
+        [
+          1125,
+          732
+        ]
+      ],
+      "uv": [
+        [
+          750,
+          340
+        ],
+        [
+          770,
+          340
+        ],
+        [
+          770,
+          360
+        ],
+        [
+          750,
+          360
+        ]
+      ],
+      "tint": "3d5362"
+    }
+  ]
+}
