@@ -278,6 +278,282 @@
       ],
       "ownsMapStructureBody": true,
       "pointer": "target"
+    },
+    {
+      "id": "west-timber-back-rail",
+      "assetId": "wood-parapet-west-v1",
+      "contact": [
+        6.960019049346879,
+        13.311450342110719
+      ],
+      "scale": 0.11187711659409773,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "west-timber-front-rail",
+      "assetId": "wood-parapet-west-front-v2",
+      "contact": [
+        8.265625,
+        14.410714285714286
+      ],
+      "scale": 0.1388888888888889,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "east-timber-back-rail",
+      "assetId": "wood-parapet-east-steep-v2",
+      "contact": [
+        45.738782637872134,
+        15.798534128146136
+      ],
+      "scale": 0.10004880429477805,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "east-timber-front-rail",
+      "assetId": "wood-parapet-east-steep-v2",
+      "contact": [
+        43.72962420693021,
+        16.487572334936903
+      ],
+      "scale": 0.12140068326012698,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "central-stone-west-parapet",
+      "assetId": "central-stone-parapet-night-v1",
+      "contact": [
+        22.63447121552277,
+        17.22510996059745
+      ],
+      "scale": 0.17880051314945478,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "central-stone-east-parapet",
+      "assetId": "central-stone-parapet-east-v2",
+      "contact": [
+        26.177291927409257,
+        17.881190774182013
+      ],
+      "scale": 0.16817897371714643,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "lamp-W_SW_back",
+      "assetId": "stone-bridge-lantern-v1",
+      "contact": [
+        6.34375,
+        14.214285714285714
+      ],
+      "scale": 0.07267441860465117,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "lamp-W_SW_front",
+      "assetId": "stone-bridge-lantern-v1",
+      "contact": [
+        7.625,
+        15.0
+      ],
+      "scale": 0.07025193798449612,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "lamp-W_NE_back",
+      "assetId": "stone-bridge-lantern-v1",
+      "contact": [
+        11.28125,
+        10.5
+      ],
+      "scale": 0.07509689922480621,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "lamp-W_NE_front",
+      "assetId": "stone-bridge-lantern-v1",
+      "contact": [
+        12.5625,
+        11.214285714285714
+      ],
+      "scale": 0.06540697674418605,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "lamp-C_SW",
+      "assetId": "stone-bridge-lantern-v1",
+      "contact": [
+        22.25,
+        17.892857142857142
+      ],
+      "scale": 0.08478682170542635,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "lamp-C_SE",
+      "assetId": "stone-bridge-lantern-v1",
+      "contact": [
+        26.5,
+        18.142857142857142
+      ],
+      "scale": 0.0872093023255814,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "lamp-C_NW",
+      "assetId": "stone-bridge-lantern-v1",
+      "contact": [
+        25.0,
+        13.0
+      ],
+      "scale": 0.08963178294573644,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "lamp-C_NE",
+      "assetId": "stone-bridge-lantern-v1",
+      "contact": [
+        28.65625,
+        13.035714285714286
+      ],
+      "scale": 0.07751937984496124,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "lamp-E_NW_front",
+      "assetId": "stone-bridge-lantern-v1",
+      "contact": [
+        40.0,
+        13.0
+      ],
+      "scale": 0.07267441860465117,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "lamp-E_NW_back",
+      "assetId": "stone-bridge-lantern-v1",
+      "contact": [
+        42.6875,
+        12.714285714285714
+      ],
+      "scale": 0.06298449612403101,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "lamp-E_SE_front",
+      "assetId": "stone-bridge-lantern-v1",
+      "contact": [
+        44.46875,
+        17.357142857142858
+      ],
+      "scale": 0.06782945736434108,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "lamp-E_SE_back",
+      "assetId": "stone-bridge-lantern-v1",
+      "contact": [
+        46.5,
+        16.75
+      ],
+      "scale": 0.07751937984496124,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "north-ridge-west",
+      "assetId": "northwest-ridge-corrected-v5",
+      "contact": [
+        31.716698128693366,
+        4.966630710064721
+      ],
+      "scale": 0.15101772816808928,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "north-ridge-east",
+      "assetId": "northeast-true-ledge-v3",
+      "contact": [
+        40.446875,
+        5.382142857142857
+      ],
+      "scale": 0.22499999999999998,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "north-central-boulder",
+      "assetId": "snow-boulder-low-v2",
+      "contact": [
+        22.96875,
+        10.714285714285714
+      ],
+      "scale": 0.0625,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "southwest-right-low-boulder",
+      "assetId": "snow-boulder-low-v2",
+      "contact": [
+        2.625,
+        22.714285714285715
+      ],
+      "scale": 0.075,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "south-foreground-obstacle-representation",
+      "assetId": "snow-boulder-low-v2",
+      "contact": [
+        26.71875,
+        31.071428571428573
+      ],
+      "scale": 0.125,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
     }
   ]
 }

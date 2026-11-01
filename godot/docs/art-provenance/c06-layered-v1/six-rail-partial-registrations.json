@@ -1,0 +1,255 @@
+{
+  "scope": "Unbound preview only, not full art or actor-depth approval. Wood true source feet and stone deck-edge endpoints are explicitly distinct contracts.",
+  "registrations": [
+    {
+      "id": "west-timber-back-rail",
+      "asset": "wood-parapet-west-v1",
+      "actualFeet": [
+        [
+          110.0,
+          969.0
+        ],
+        [
+          1457.0,
+          249.0
+        ]
+      ],
+      "sourceEndpoints": [
+        [
+          245,
+          405
+        ],
+        [
+          361,
+          336
+        ]
+      ],
+      "scale": 0.11187711659409773,
+      "contact": [
+        6.960019049346879,
+        13.311450342110719
+      ],
+      "endpointMaxError": 2.279390420899851,
+      "status": "static registration only; 20 full-coverage depth strips; native actor front/back and corner supports pending"
+    },
+    {
+      "id": "west-timber-front-rail",
+      "asset": "wood-parapet-west-front-v2",
+      "actualFeet": [
+        [
+          160.0,
+          1144.0
+        ],
+        [
+          388.0,
+          988.0
+        ],
+        [
+          590.0,
+          843.0
+        ],
+        [
+          783.0,
+          700.0
+        ],
+        [
+          979.0,
+          553.0
+        ],
+        [
+          1168.0,
+          406.0
+        ]
+      ],
+      "sourceEndpoints": [
+        [
+          282,
+          431
+        ],
+        [
+          399,
+          354
+        ]
+      ],
+      "scale": 0.1388888888888889,
+      "contact": [
+        8.265625,
+        14.410714285714286
+      ],
+      "endpointMaxError": 2.499999999999998,
+      "status": "static registration only; 20 full-coverage depth strips; native actor front/back and corner supports pending"
+    },
+    {
+      "id": "east-timber-back-rail",
+      "asset": "wood-parapet-east-steep-v2",
+      "actualFeet": [
+        [
+          90.0,
+          240.0
+        ],
+        [
+          290.0,
+          433.0
+        ],
+        [
+          500.0,
+          626.0
+        ],
+        [
+          710.0,
+          819.0
+        ],
+        [
+          940.0,
+          1025.0
+        ],
+        [
+          1168.0,
+          1211.0
+        ]
+      ],
+      "sourceEndpoints": [
+        [
+          1397,
+          395
+        ],
+        [
+          1484,
+          472
+        ]
+      ],
+      "scale": 0.10004880429477805,
+      "contact": [
+        45.738782637872134,
+        15.798534128146136
+      ],
+      "endpointMaxError": 0.3589555880917486,
+      "status": "static registration only; 20 full-coverage depth strips; native actor front/back and corner supports pending"
+    },
+    {
+      "id": "east-timber-front-rail",
+      "asset": "wood-parapet-east-steep-v2",
+      "actualFeet": [
+        [
+          90.0,
+          240.0
+        ],
+        [
+          290.0,
+          433.0
+        ],
+        [
+          500.0,
+          626.0
+        ],
+        [
+          710.0,
+          819.0
+        ],
+        [
+          940.0,
+          1025.0
+        ],
+        [
+          1168.0,
+          1211.0
+        ]
+      ],
+      "sourceEndpoints": [
+        [
+          1312,
+          400
+        ],
+        [
+          1422,
+          489
+        ]
+      ],
+      "scale": 0.12140068326012698,
+      "contact": [
+        43.72962420693021,
+        16.487572334936903
+      ],
+      "endpointMaxError": 2.6520253782332848,
+      "status": "static registration only; 20 full-coverage depth strips; native actor front/back and corner supports pending"
+    },
+    {
+      "id": "central-stone-west-parapet",
+      "asset": "central-stone-parapet-night-v1",
+      "actualFeet": [
+        [
+          350.0,
+          1371.0
+        ],
+        [
+          565.0,
+          1021.0
+        ],
+        [
+          760.0,
+          683.0
+        ],
+        [
+          940.0,
+          402.0
+        ]
+      ],
+      "sourceEndpoints": [
+        [
+          742,
+          510
+        ],
+        [
+          831,
+          376
+        ]
+      ],
+      "scale": 0.17880051314945478,
+      "contact": [
+        22.63447121552277,
+        17.22510996059745
+      ],
+      "endpointMaxError": 2.3030788967286706,
+      "status": "static registration only; 20 full-coverage depth strips; native actor front/back and corner supports pending"
+    },
+    {
+      "id": "central-stone-east-parapet",
+      "asset": "central-stone-parapet-east-v2",
+      "actualFeet": [
+        [
+          330.0,
+          1443.0
+        ],
+        [
+          490.0,
+          1133.0
+        ],
+        [
+          680.0,
+          745.0
+        ],
+        [
+          870.0,
+          385.0
+        ]
+      ],
+      "sourceEndpoints": [
+        [
+          860,
+          533
+        ],
+        [
+          928,
+          386
+        ]
+      ],
+      "scale": 0.16817897371714643,
+      "contact": [
+        26.177291927409257,
+        17.881190774182013
+      ],
+      "endpointMaxError": 2.3266583229036306,
+      "status": "static registration only; 20 full-coverage depth strips; native actor front/back and corner supports pending"
+    }
+  ]
+}
