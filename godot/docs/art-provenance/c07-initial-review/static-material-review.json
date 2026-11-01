@@ -1,0 +1,869 @@
+{
+  "scope": "Bounded read-only C07 preparation; PNG/JSON/C# only. No engine/Godot/build/GUI commands, no saves, no current gameplay result. Static synthetic poses are counterexample candidates, not executed native picking.",
+  "head": "592be29aeb87ef7c1778112713533252ddcb7a83",
+  "sourceSha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+  "levelSourceSha256": "bc0482afd358ed7705dd674448d8cbb7b691c4ef368496f58ad969c98e2f6029",
+  "sourceMatchesAudit": true,
+  "runtime": {
+    "runtimeReady": true,
+    "paintedGroundPath": "res://data/scenes/c01-07-painted-ground.json",
+    "pixelSize": [
+      1536,
+      1024
+    ],
+    "worldScale": 1.0,
+    "mapSize": [
+      96,
+      64
+    ],
+    "occluders": 55,
+    "parts": 108,
+    "standalonePlacements": 0,
+    "bridgesOrRiver": "None visible in source PNG, none declared by scene/geometry IDs. Four gate arches and eight city street ingresses are not bridges."
+  },
+  "responsibilityCounts": {
+    "buildingFoundations": 28,
+    "gatePiers": 8,
+    "wallBands": 54,
+    "initialGardenCargoStatueGroups": 38,
+    "fenceGroups": 9,
+    "additionalDetailedPropsBases": 53,
+    "totalGroundAuditGroups": 190,
+    "uniqueBlockedCells": 2281,
+    "interactiveSites": 16,
+    "interactiveBuildings": 12,
+    "noninteractiveBuildingsOrWingFoundations": 16,
+    "gateSites": 4
+  },
+  "actorRegistration": {
+    "resourcePath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+    "sha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
+    "idleFrameRegion": [
+      0,
+      0,
+      557,
+      725
+    ],
+    "anchor": [
+      269,
+      565
+    ],
+    "sourceScale": 0.0961538
+  },
+  "priorities": [
+    {
+      "id": "P1-militia-west-blue-side-stall-omitted",
+      "status": "Confirmed visible standing roof/posts are absent from all registered material parts; actor overlap is static-only",
+      "sourceRoi": [
+        875,
+        145,
+        930,
+        220
+      ],
+      "positiveProbeIndex": 0,
+      "actualVisibleFrontFeetApprox": [
+        [
+          900,
+          209
+        ],
+        [
+          915,
+          201
+        ]
+      ],
+      "groundResponsibilityLimit": "Nearby militia-west-cargo polygon x922..958 does not by itself establish this smaller blue-roof stall base. Preserve source-ground distinction; do not declare all nearby paving blocked or move rule cells from an actor-body overlap.",
+      "minimalPresentationContract": "Separate actual blue roof and wood/posts with their own real contact; retain open gaps and lawful actor/ground picking. Roof pass-through, no new selectable site."
+    },
+    {
+      "id": "P2-militia-drill-fence-omitted",
+      "status": "Confirmed physical timber is absent from standing material parts; static actor double-opaque overlap",
+      "sourceRoi": [
+        946,
+        175,
+        1000,
+        232
+      ],
+      "positiveProbeIndex": 1,
+      "exactExistingGroundResponsibilityId": "militia-west-drill-fence",
+      "visibleWoodBaseApprox": [
+        [
+          965,
+          215
+        ],
+        [
+          986,
+          226
+        ]
+      ],
+      "minimalPresentationContract": "Independent timber with real transparent rail gaps, physical bottom contacts; do not turn whole rectangular fence area into opaque material or a pointer target. Keep existing blockedCells."
+    },
+    {
+      "id": "P3-preserve-site-vs-physical-foundations-and-gate-clearance",
+      "status": "Assembly regression risk, NOT a newly observed current picking bug",
+      "example": "Southwest gate selection is cell15,51 center248,824, while piers ground at148,902 and286,948 and arch front210,902. A single anchor at selection would visibly displace the whole gate.",
+      "minimalPresentationContract": "Retain 28 building footprints, 8 pier footprints and street/court boundaries, not just 16 site bodies. Keep independent roof/pass-through, narrow actual facade targets and transparent arches. Do not infer physical anchor from selectionCell, or foundations from roof alpha."
+    }
+  ],
+  "fixedStaticProbes": [
+    {
+      "materialSourcePoint": [
+        910,
+        170
+      ],
+      "sourceRgba": [
+        92,
+        115,
+        153,
+        255
+      ],
+      "cell": [
+        56,
+        11
+      ],
+      "canonicalTerrain": "p",
+      "actorFootSource": [
+        904,
+        184
+      ],
+      "actorAppearance": "torren-stage01",
+      "frameRole": "idle",
+      "frame": 0,
+      "facing": "+X/no mirror",
+      "actorFramePixel": [
+        331,
+        419
+      ],
+      "actorRgba": [
+        63,
+        47,
+        36,
+        253
+      ],
+      "standingPartsAtPoint": []
+    },
+    {
+      "materialSourcePoint": [
+        976,
+        194
+      ],
+      "sourceRgba": [
+        218,
+        179,
+        127,
+        255
+      ],
+      "cell": [
+        61,
+        12
+      ],
+      "canonicalTerrain": "p",
+      "actorFootSource": [
+        984,
+        200
+      ],
+      "actorAppearance": "torren-stage01",
+      "frameRole": "idle",
+      "frame": 0,
+      "facing": "+X/no mirror",
+      "actorFramePixel": [
+        186,
+        503
+      ],
+      "actorRgba": [
+        34,
+        19,
+        10,
+        254
+      ],
+      "standingPartsAtPoint": []
+    },
+    {
+      "materialSourcePoint": [
+        913,
+        186
+      ],
+      "sourceRgba": [
+        255,
+        220,
+        113,
+        255
+      ],
+      "cell": [
+        56,
+        12
+      ],
+      "canonicalTerrain": "p",
+      "actorFootSource": [
+        904,
+        200
+      ],
+      "actorAppearance": "torren-stage01",
+      "frameRole": "idle",
+      "frame": 0,
+      "facing": "+X/no mirror",
+      "actorFramePixel": [
+        363,
+        419
+      ],
+      "actorRgba": [
+        117,
+        110,
+        107,
+        253
+      ],
+      "standingPartsAtPoint": []
+    },
+    {
+      "materialSourcePoint": [
+        966,
+        197
+      ],
+      "sourceRgba": [
+        74,
+        42,
+        12,
+        255
+      ],
+      "cell": [
+        60,
+        12
+      ],
+      "canonicalTerrain": "p",
+      "actorFootSource": [
+        968,
+        200
+      ],
+      "actorAppearance": "torren-stage01",
+      "frameRole": "idle",
+      "frame": 0,
+      "facing": "+X/no mirror",
+      "actorFramePixel": [
+        248,
+        534
+      ],
+      "actorRgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "standingPartsAtPoint": []
+    },
+    {
+      "materialSourcePoint": [
+        980,
+        197
+      ],
+      "sourceRgba": [
+        239,
+        194,
+        141,
+        255
+      ],
+      "cell": [
+        61,
+        12
+      ],
+      "canonicalTerrain": "p",
+      "actorFootSource": [
+        984,
+        200
+      ],
+      "actorAppearance": "torren-stage01",
+      "frameRole": "idle",
+      "frame": 0,
+      "facing": "+X/no mirror",
+      "actorFramePixel": [
+        227,
+        534
+      ],
+      "actorRgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "standingPartsAtPoint": []
+    },
+    {
+      "materialSourcePoint": [
+        980,
+        199
+      ],
+      "sourceRgba": [
+        229,
+        182,
+        122,
+        255
+      ],
+      "cell": [
+        61,
+        12
+      ],
+      "canonicalTerrain": "p",
+      "actorFootSource": [
+        984,
+        200
+      ],
+      "actorAppearance": "torren-stage01",
+      "frameRole": "idle",
+      "frame": 0,
+      "facing": "+X/no mirror",
+      "actorFramePixel": [
+        227,
+        555
+      ],
+      "actorRgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "standingPartsAtPoint": []
+    },
+    {
+      "materialSourcePoint": [
+        964,
+        190
+      ],
+      "sourceRgba": [
+        150,
+        101,
+        51,
+        255
+      ],
+      "cell": [
+        60,
+        12
+      ],
+      "canonicalTerrain": "p",
+      "actorFootSource": [
+        968,
+        200
+      ],
+      "actorAppearance": "torren-stage01",
+      "frameRole": "idle",
+      "frame": 0,
+      "facing": "+X/no mirror",
+      "actorFramePixel": [
+        227,
+        461
+      ],
+      "actorRgba": [
+        51,
+        51,
+        51,
+        5
+      ],
+      "standingPartsAtPoint": []
+    },
+    {
+      "materialSourcePoint": [
+        964,
+        192
+      ],
+      "sourceRgba": [
+        177,
+        121,
+        56,
+        255
+      ],
+      "cell": [
+        60,
+        12
+      ],
+      "canonicalTerrain": "p",
+      "actorFootSource": [
+        968,
+        200
+      ],
+      "actorAppearance": "torren-stage01",
+      "frameRole": "idle",
+      "frame": 0,
+      "facing": "+X/no mirror",
+      "actorFramePixel": [
+        227,
+        482
+      ],
+      "actorRgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "standingPartsAtPoint": []
+    },
+    {
+      "materialSourcePoint": [
+        966,
+        193
+      ],
+      "sourceRgba": [
+        221,
+        172,
+        118,
+        255
+      ],
+      "cell": [
+        60,
+        12
+      ],
+      "canonicalTerrain": "p",
+      "actorFootSource": [
+        968,
+        200
+      ],
+      "actorAppearance": "torren-stage01",
+      "frameRole": "idle",
+      "frame": 0,
+      "facing": "+X/no mirror",
+      "actorFramePixel": [
+        248,
+        492
+      ],
+      "actorRgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "standingPartsAtPoint": []
+    }
+  ],
+  "gateContracts": [
+    {
+      "id": "northwest-gate",
+      "selectionCell": [
+        11,
+        11
+      ],
+      "canonicalSiteCenter": [
+        184,
+        184
+      ],
+      "physicalPartContacts": [
+        {
+          "id": "left-pier",
+          "groundFront": [
+            103,
+            168
+          ],
+          "contactCell": [
+            6,
+            10
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                86,
+                112
+              ],
+              [
+                101,
+                118
+              ],
+              [
+                101,
+                148
+              ],
+              [
+                86,
+                142
+              ]
+            ]
+          }
+        },
+        {
+          "id": "right-roof",
+          "groundFront": [
+            209,
+            157
+          ],
+          "contactCell": [
+            13,
+            9
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "right-pier",
+          "groundFront": [
+            209,
+            157
+          ],
+          "contactCell": [
+            13,
+            9
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "arch-lintel",
+          "groundFront": [
+            146,
+            142
+          ],
+          "contactCell": [
+            9,
+            8
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ],
+      "openArchPixel": [
+        148,
+        139
+      ],
+      "openArchSourceRgba": [
+        163,
+        131,
+        102,
+        255
+      ],
+      "partsAtOpenArch": []
+    },
+    {
+      "id": "northeast-gate",
+      "selectionCell": [
+        83,
+        11
+      ],
+      "canonicalSiteCenter": [
+        1336,
+        184
+      ],
+      "physicalPartContacts": [
+        {
+          "id": "left-roof",
+          "groundFront": [
+            1320,
+            150
+          ],
+          "contactCell": [
+            82,
+            9
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "left-pier",
+          "groundFront": [
+            1320,
+            150
+          ],
+          "contactCell": [
+            82,
+            9
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "right-pier",
+          "groundFront": [
+            1418,
+            165
+          ],
+          "contactCell": [
+            88,
+            10
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1410,
+                112
+              ],
+              [
+                1424,
+                116
+              ],
+              [
+                1424,
+                146
+              ],
+              [
+                1410,
+                141
+              ]
+            ]
+          }
+        },
+        {
+          "id": "arch-lintel",
+          "groundFront": [
+            1370,
+            143
+          ],
+          "contactCell": [
+            85,
+            8
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ],
+      "openArchPixel": [
+        1373,
+        132
+      ],
+      "openArchSourceRgba": [
+        251,
+        211,
+        149,
+        255
+      ],
+      "partsAtOpenArch": []
+    },
+    {
+      "id": "southwest-gate",
+      "selectionCell": [
+        15,
+        51
+      ],
+      "canonicalSiteCenter": [
+        248,
+        824
+      ],
+      "physicalPartContacts": [
+        {
+          "id": "left-roof",
+          "groundFront": [
+            148,
+            902
+          ],
+          "contactCell": [
+            9,
+            56
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "left-pier",
+          "groundFront": [
+            148,
+            902
+          ],
+          "contactCell": [
+            9,
+            56
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "right-roof",
+          "groundFront": [
+            286,
+            948
+          ],
+          "contactCell": [
+            17,
+            59
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "right-pier",
+          "groundFront": [
+            286,
+            948
+          ],
+          "contactCell": [
+            17,
+            59
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                271,
+                872
+              ],
+              [
+                289,
+                879
+              ],
+              [
+                289,
+                918
+              ],
+              [
+                271,
+                911
+              ]
+            ]
+          }
+        },
+        {
+          "id": "arch-lintel",
+          "groundFront": [
+            210,
+            902
+          ],
+          "contactCell": [
+            13,
+            56
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ],
+      "openArchPixel": [
+        211,
+        889
+      ],
+      "openArchSourceRgba": [
+        252,
+        216,
+        158,
+        255
+      ],
+      "partsAtOpenArch": []
+    },
+    {
+      "id": "southeast-gate",
+      "selectionCell": [
+        84,
+        57
+      ],
+      "canonicalSiteCenter": [
+        1352,
+        920
+      ],
+      "physicalPartContacts": [
+        {
+          "id": "left-roof",
+          "groundFront": [
+            1258,
+            925
+          ],
+          "contactCell": [
+            78,
+            57
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "left-pier",
+          "groundFront": [
+            1258,
+            925
+          ],
+          "contactCell": [
+            78,
+            57
+          ],
+          "pointer": {
+            "kind": "target",
+            "polygonPixels": [
+              [
+                1242,
+                869
+              ],
+              [
+                1259,
+                878
+              ],
+              [
+                1259,
+                910
+              ],
+              [
+                1242,
+                902
+              ]
+            ]
+          }
+        },
+        {
+          "id": "right-roof",
+          "groundFront": [
+            1400,
+            886
+          ],
+          "contactCell": [
+            87,
+            55
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "right-pier",
+          "groundFront": [
+            1400,
+            886
+          ],
+          "contactCell": [
+            87,
+            55
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        },
+        {
+          "id": "arch-lintel",
+          "groundFront": [
+            1330,
+            884
+          ],
+          "contactCell": [
+            83,
+            55
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          }
+        }
+      ],
+      "openArchPixel": [
+        1332,
+        874
+      ],
+      "openArchSourceRgba": [
+        95,
+        68,
+        50,
+        255
+      ],
+      "partsAtOpenArch": []
+    }
+  ],
+  "existingTests": {
+    "path": "godot/Presentation/LuojiaChecks.cs",
+    "paintingLines": [
+      76,
+      180
+    ],
+    "existingCoverage": "Current full painting, 23 actors, 16 site body owners, each declared facade target, 16 empty entrance ground points, adjacent actor picking, and two already repaired T7 material cases. Registered-part count checks completeness of the declaration, not the missing furniture above.",
+    "notClaimed": "No new native tests run. Do not weaken existing empty-entry/actor-first/roof-pass-through contracts."
+  },
+  "sourceDocs": [
+    "godot/docs/LUOJIA.md",
+    "godot/docs/art-provenance/luojia-t7-occlusion.md"
+  ],
+  "completionBoundary": "Only two material omission witnesses plus one conversion contract. No full-city segmentation, no mission/balance outcome, no new chapters."
+}
