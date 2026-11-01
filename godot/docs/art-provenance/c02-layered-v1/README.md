@@ -97,3 +97,15 @@ canonical sites (7,9), (34,9), (4,33), (35,24). Render coverage and pointer cont
 remain independent. The actual GUI moved river-scout from (11,19) to (13,20),
 then F5/F9 restored that moved/done state. This is a C02 entry fixture with real
 input, not a fresh continuous campaign or an escort victory.
+
+## Post-play road support (2026-11-01)
+
+`ground-walkable-v4.png` supersedes `ground-candidate.png` for formal rendering.
+See `road-support-prompts.md` for all four edit prompts and `manifest.json` for
+final hash. Generation chain: exec-98feb750-0958-4d7b-a03d-ddceb6f7e17c →
+exec-bade5417-4adb-4a5d-9b2b-794d3ab31b21 →
+exec-55ebf88a-2f2b-45e1-a30b-1e253c496191 →
+exec-50f18e46-2511-4734-8482-135a54f9c043. Only the last is shipped as active
+material. Coordinate guide was an independent diagnostic diagram, never blended
+into the asset. Full C02 T11 victory precedes this art-only correction; actual T3
+reload verifies the originally observed knight-on-water defect after correction.

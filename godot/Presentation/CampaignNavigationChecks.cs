@@ -701,6 +701,25 @@ public partial class CampaignNavigationChecks : Node
         Require(!Descendants(board).Any(node => node.Name.ToString().StartsWith("MapStructure_", StringComparison.Ordinal)),
             "Formal bridge houses were duplicated by dynamic map-structure sprites.");
         var document = PresentationJson.Load<AssembledGroundDocument>("res://data/scenes/c01-02-layered-ground.json");
+        using (var pixels = ResourceLoader.Load<Texture2D>(document.ResourcePath).GetImage())
+        {
+            // Narrow material regression for manually reviewed dry foot contacts, not a universal terrain classifier.
+            foreach (var cell in new[] { new Vector2I(17, 4), new(16, 5), new(17, 5), new(16, 6),
+                new(19, 23), new(20, 23), new(20, 22), new(21, 23), new(12, 29), new(13, 28),
+                new(13, 29), new(11, 30), new(12, 30), new(11, 31), new(27, 13) })
+            {
+                var source = new Vector2(document.OriginPixels[0], document.OriginPixels[1])
+                    + new Vector2(document.CellXPixels[0], document.CellXPixels[1]) * (cell.X + .5f)
+                    + new Vector2(document.CellYPixels[0], document.CellYPixels[1]) * (cell.Y + .5f);
+                foreach (var dx in new[] { -6, 0, 6 })
+                    foreach (var dy in new[] { -6, 0, 6 })
+                    {
+                        var color = pixels.GetPixel((int)source.X + dx, (int)source.Y + dy);
+                        Require(!(color.B > color.R + .12f && color.G > color.R + .08f && color.B > color.G + .03f),
+                            $"C02 reviewed dry foot contact regressed to the source painting's blue water: {cell}, offset {dx},{dy}.");
+                    }
+            }
+        }
         var catalog = PresentationJson.Load<SceneObjectCatalog>(document.ObjectCatalogPath);
         foreach (var placement in document.Objects)
         {

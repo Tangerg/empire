@@ -1,5 +1,6 @@
 #nullable enable
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json.Nodes;
@@ -22,6 +23,7 @@ public partial class TerrainPreview : Node2D
     private float? _reviewScale;
     private Coord? _reviewFocus;
     private bool _hideObjects;
+    private readonly List<Coord> _supportCells = [];
 
     public override async void _Ready()
     {
@@ -29,6 +31,14 @@ public partial class TerrainPreview : Node2D
         {
             foreach (var argument in OS.GetCmdlineUserArgs())
             {
+                if (argument.StartsWith("--support-cells=", StringComparison.Ordinal))
+                    foreach (var cell in argument[16..].Split(';'))
+                    {
+                        var pair = cell.Split(',');
+                        if (pair.Length != 2)
+                            throw new InvalidOperationException("Support samples must be semicolon-separated x,y cells.");
+                        _supportCells.Add(new Coord(int.Parse(pair[0]), int.Parse(pair[1])));
+                    }
                 if (argument == "--hide-assembled-objects")
                     _hideObjects = true;
                 if (argument.StartsWith("--scene=", StringComparison.Ordinal))
@@ -70,6 +80,24 @@ public partial class TerrainPreview : Node2D
             _board.ConfigureGround(rendering.Ground);
             _board.ConfigureDynamicState();
             _board.RenderState(state);
+            if (_supportCells.Count > 0)
+            {
+                if (_supportCells.Any(cell => cell.X < 0 || cell.Y < 0
+                    || cell.X >= level["width"]!.GetValue<int>() || cell.Y >= level["height"]!.GetValue<int>()))
+                    throw new InvalidOperationException("Support samples must lie inside the canonical map.");
+                var guide = new Node2D { Name = "SupportContactGuide", ZIndex = 4094 };
+                guide.Draw += () =>
+                {
+                    foreach (var cell in _supportCells)
+                    {
+                        var at = _board.Projection.CellContact(cell);
+                        guide.DrawCircle(at, 4, Colors.Black, false, 2);
+                        guide.DrawCircle(at, 3, Colors.White, false, 1);
+                        guide.DrawString(ThemeDB.FallbackFont, at + new Vector2(5, -5), $"{cell.X},{cell.Y}", fontSize: 10);
+                    }
+                };
+                _board.AddChild(guide);
+            }
             if (_hideObjects)
             {
                 var ground = _board.GetNode("AuthoredScene").GetChildren().OfType<AssembledGroundView>().Single();

@@ -39,7 +39,7 @@
       ],
       "mode": "RGB",
       "alphaRange": null,
-      "status": "runtime-bound"
+      "status": "superseded-original-ground"
     },
     {
       "file": "assets/native/c02-layered-v1/outpost-candidate.png",
@@ -124,6 +124,18 @@
         254
       ],
       "status": "superseded-unbound-candidate"
+    },
+    {
+      "file": "assets/native/c02-layered-v1/ground-walkable-v4.png",
+      "sha256": "d41cfd240a48dafa0292a60b0ab29911a4671af8fb99bb76a68650563bfee2cf",
+      "pixelSize": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "status": "runtime-bound",
+      "sourceGeneration": "exec-50f18e46-2511-4734-8482-135a54f9c043.png",
+      "promptHistory": "road-support-prompts.md"
     }
   ]
 }

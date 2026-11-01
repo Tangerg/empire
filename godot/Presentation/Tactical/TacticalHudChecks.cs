@@ -448,10 +448,11 @@ public partial class TacticalHudChecks : Node
                 && hint.GetGlobalRect().End.X <= tray.GetGlobalRect().End.X - 10
                 && hint.GetGlobalRect().End.Y <= tray.GetGlobalRect().End.Y,
                 "A single command still reserves a complete material-backed instruction and cancel area.");
-            Require(hint.GetThemeFont("font").GetStringSize(hint.Text, fontSize: hint.GetThemeFontSize("font_size")).X <= hint.Size.X,
-                "The localized move/attack instruction fits fully without ellipsis at both native window sizes.");
+            Require(hint.GetVisibleLineCount() == hint.GetLineCount() && hint.MaxLinesVisible == -1
+                && hint.Text.Contains("方向键", StringComparison.Ordinal) && hint.Text.Contains("Enter", StringComparison.Ordinal),
+                "Selected-unit guidance keeps the precise keyboard path fully visible at both native window sizes.");
             Require(hint.TooltipText == hint.Text, "The instruction remains accessible through its complete tooltip.");
-            foreach (var hintKey in new[] { "idle", "idle_recruit", "deploying", "disembark", "tactic" })
+            foreach (var hintKey in new[] { "unit", "destination", "idle", "idle_recruit", "deploying", "disembark", "tactic" })
             {
                 var fullInstruction = GodotTextCatalog.LoadSimplifiedChinese().Format("ui.hud.selection." + hintKey);
                 hud.Apply(new(new(1, 1), fullInstruction, new[]

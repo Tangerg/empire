@@ -182,3 +182,59 @@ GUI entry fixture and not a C01→C02 carried-state victory. Log:
 `c02-native-replay-save.log`. Default 1.25 opening-camera actual screenshot:
 `c02-layered-default-1180.jpg`; the edge image deliberately zooms out and its dark
 canvas surround must not be reported as a default-camera regression.
+
+## Batch 6: C02 normal-AI escort completion and post-play foot support
+
+The controlled prior-C01-outcome **entry fixture** was played through the actual
+native GUI against normal enemy AI to C02 victory on turn 11. All three refugees
+arrived alive at 58/58 HP; Laiya survived at 78/116. Elin, the medic and reserve
+guard fell. Settlement records 38 engagements and advances to `aftermath-02`.
+This is a real C02 battle, **not** a continuous C01→C02 campaign proof. No combat
+reload/restart or enemy-turn skip was used; an earlier legal noncombat undo is
+retained in the evidence. This victory used the preceding layered ground asset.
+
+Evidence (`../empire-evidence-20261101/`): `c02-terminal-FIXTURE.json`,
+`c02-settled-autosave-FIXTURE.json`, `c02-terminal-runtime-FIXTURE.log`,
+`c02-layered-battle/native-020.png` (victory), `native-021.png` (settlement),
+and retained turn-by-turn manual saves. They are not overwritten by post-fix QA.
+
+Actual play exposed legal dry-road cells drawn as water in the inherited ground
+painting, especially knight (20,23). The replacement ground preserves the affine
+registration, all canonical rules/terrain and the three bridge structures. It
+repairs northern approach, middle east landing/safety band and southwest return
+bank. Small **noninteractive painted culverts** and outflow preserve intelligible
+drainage instead of filling the river into isolated ponds; no new tactical
+facility, bridge object, route or rule is added. Independent props stay unchanged.
+
+All 293 road and 44 bridge centers were reviewed with nine-point color candidate
+screening; this is not a universal material oracle or proof of every possible
+walkable cell. Fifteen manually reviewed dry contacts now have a narrow native
+pixel regression (135 foot samples); the preceding material fails 92 samples,
+while the corrected material passes. Stone/grass at the southwest shoreline is
+not represented as a full-width paved road. Source (516,720), cell (12,29), still
+has a stone near its left shoulder; no actual actor-foot-width acceptance is
+claimed for that particular edge. No further whole-map regeneration is justified
+by an ambiguous color alone.
+
+Post-fix actual native evidence: isolated reload of the original T3 manual save
+shows knight (20,23) standing on continuous dry earth, with the same unit positions
+and bridge depth ordering: `c02-support-qa/native-002.png` (objectives open),
+`native-003.png` (collapsed), `native-004.png` (knight inspection). These are local
+reproduction checks, **not another full playthrough of the revised material**.
+The first isolated launch incorrectly copied the manual envelope into the autosave
+slot and showed safe rejection; the manual schema-4 battle loaded through F9, and the
+QA-only autosave was corrected to the existing embedded campaign schema.
+
+Selection guidance now displays the existing arrow/Enter precision path even
+when a unit is selected; destination guidance warns that single-target commands
+execute immediately. This documents existing input behavior, not a change to
+confirmation or command rules. Both remain original-size fully wrapped text,
+with existing target size and bottom-tray bounds. Actual selection/keyboard
+preview screenshots: `c02-support-qa/native-005.png` and `native-006.png`.
+
+Affected validation: build zero warnings/errors; TacticalHud 268 assertions;
+CampaignNavigation 820 assertions, zero failed groups; AssembledGround 179;
+PaintedSurfaceBroadPhase 8129; CameraIntegration 277. Metadata: 305 unique UIDs. Headless mouse-notify
+warnings and the pre-existing environment-catalog diagnostic are not graphical
+acceptance. Full seven-map gameplay acceptance remains open; C03's confirmed
+wall/doorway registration defects are next.
