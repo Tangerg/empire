@@ -1,0 +1,26 @@
+using Godot;
+using System.Text.Json.Nodes;
+using Empire.Presentation;
+using Empire.Core.Engine;
+using Empire.Core.Determinism;
+using Empire.Presentation.Tactical;
+public partial class TreeDepthProbe : Node {
+ static IEnumerable<Node> Desc(Node n){foreach(Node c in n.GetChildren()){yield return c;foreach(var d in Desc(c))yield return d;}}
+ public override void _Ready(){try{
+ var engine=new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));var level=PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>().Single(x=>x["id"]!.GetValue<string>()=="c01-06");var state=engine.CreateState(level);var before=EcmaJson.Stringify(state);var scene=AuthoredScene.Load("res://data/scenes/c01-06-assembly-preview.json");var rendering=BoardSceneRendering.Load(scene,level,state["map"]!.AsObject());var board=new BoardView{AnimationsEnabled=false};AddChild(board);board.Configure(new(AssetCatalog.Load(),EnvironmentCatalog.Load(),engine.Grids.Get("square4"),engine.Catalog,rendering.Plane),level,scene);board.ConfigureGround(rendering.Ground);board.ConfigureDynamicState();
+ var original=state["units"]!.AsArray().OfType<JsonObject>().Single(u=>u["key"]!.GetValue<string>()=="campaign-torren");var id=original["id"]!.GetValue<int>();var rows=new JsonArray();
+ foreach(var (x,y) in new[]{(0,4),(0,5),(1,4),(2,4),(1,5),(2,5),(1,6),(2,6)}){
+ var terrain=level["terrain"]![y]!.GetValue<string>()[x];if(terrain is '_' or '#' or '~')throw new Exception("Fixture cell is not legal foot ground");
+ var fixture=state.DeepClone().AsObject();var u=original.DeepClone().AsObject();u["x"]=x;u["y"]=y;fixture["units"]=new JsonArray(u);board.RenderState(fixture);var actor=board.GetNode<CanvasGroup>($"CanonicalProjection/Unit_{id}");var body=actor.GetNode<Sprite2D>("AuthoredSprite");var treeRows=new JsonArray();
+ foreach(var name in new[]{"northwest-bare-tree-rear","northwest-bare-tree-front","northwest-front-pine-visible-root"}){
+ var tree=Desc(board).OfType<Sprite2D>().Single(s=>s.Name==name);int shared=0,selectable=0,bodyCount=0,bodySelectable=0;var points=new JsonArray();
+ for(int py=80;py<=240;py++)for(int px=15;px<=145;px++){var p=new Vector2(px,py)*1.25f;var world=board.ToGlobal(p);if(!body.IsPixelOpaque(body.ToLocal(world)))continue;bodyCount++;if(board.Pick(p)==TacticalHit.Unit(new(x,y),id))bodySelectable++;if(!tree.IsPixelOpaque(tree.ToLocal(world)))continue;shared++;if(points.Count<5)points.Add(new JsonArray(px,py));if(board.Pick(p)==TacticalHit.Unit(new(x,y),id))selectable++;}
+ var cue=board.GetNodeOrNull<Polygon2D>($"CanonicalProjection/OccludedUnitCues/UnitCue_{id}");bool accessibleCue=cue is not null&&board.Pick(board.ToLocal(cue.ToGlobal(Vector2.Zero)))==TacticalHit.Unit(new(x,y),id);if(bodyCount==0||(bodySelectable==0&&!accessibleCue))throw new Exception("Tree fixture has no visible actor pixels or selectable cue");int negativeControl=-1;if((x==2&&y==4&&name=="northwest-bare-tree-rear")||(x==1&&y==5&&name=="northwest-bare-tree-front")||(x==0&&y==4&&name=="northwest-front-pine-visible-root")){int z=tree.ZIndex;tree.ZIndex=-4096;negativeControl=0;foreach(var q in points.OfType<JsonArray>()){var p=new Vector2(q[0]!.GetValue<int>(),q[1]!.GetValue<int>())*1.25f;if(board.Pick(p)==TacticalHit.Unit(new(x,y),id))negativeControl++;}tree.ZIndex=z;if(shared==0||selectable!=0||negativeControl!=points.Count)throw new Exception("Foreground depth contract or forced-background negative control failed");}
+ if((x==2&&y==5&&name=="northwest-bare-tree-rear")||(x==1&&y==6&&name=="northwest-bare-tree-front")||(x==0&&y==5&&name=="northwest-front-pine-visible-root")){if(shared==0||selectable!=shared||tree.ZIndex>=actor.ZIndex)throw new Exception("Front-side actor visibility failed");}
+ treeRows.Add(new JsonObject{{"tree",name},{"selectableCue",accessibleCue},{"bodyOpaquePixels",bodyCount},{"bodySelectablePixels",bodySelectable},{"treeZ",tree.ZIndex},{"actorZ",actor.ZIndex},{"sharedOpaqueSourcePixels",shared},{"sharedPixelsPickingActor",selectable},{"forcedBackgroundNegativeControlActorHits",negativeControl},{"firstSharedSourcePixels",points}});
+ }
+ rows.Add(new JsonObject{{"cell",new JsonArray(x,y)},{"terrain",terrain.ToString()},{"trees",treeRows}});
+ }
+ var output=new JsonObject{{"scope","Initial-state render fixtures only; no engine commands, AI, campaign or real save access. NOT gameplay."},{"stateUnchanged",before==EcmaJson.Stringify(state)},{"rows",rows},{"renderingIssueCount",board.RenderingIssueCount}};System.IO.File.WriteAllText(ProjectSettings.GlobalizePath("res://tree-depth-result.json"),output.ToJsonString());GD.Print("TREE_DEPTH_STATIC_CAPTURE_COMPLETE");GetTree().Quit();
+ }catch(Exception e){GD.PushError(e.ToString());GetTree().Quit(1);}}
+}

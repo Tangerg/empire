@@ -1,0 +1,156 @@
+{
+  "scope": "Only 3 original visible conifers in snow-pines-1 neighborhood. Read-only PNG/JSON evidence. No engine or GUI commands, no real saves, no gameplay or runtime certification.",
+  "frozenHead": "83e49afcf35280b16fa4cf239abd1eadd2528f6f",
+  "objectCount": 98,
+  "fixedWitnessData": "pine1-fixed-source-witnesses.json",
+  "source": "empire-c01/godot/assets/native/scenes/white-river.png",
+  "clean": "empire-c01/godot/assets/native/c06-layered-v1/ground-clean-v5-bare-tree-candidate.png",
+  "trees": [
+    {
+      "id": "original-front-pine",
+      "root": {
+        "source": [
+          48,
+          181
+        ],
+        "visibleContactBand": [
+          47,
+          180,
+          50,
+          183
+        ],
+        "confidence": "visible trunk-to-snow/rock interface, about 1-2 source pixels ambiguity; not hidden underground roots",
+        "trueBarkWitness": [
+          48,
+          165
+        ]
+      },
+      "crown": {
+        "visibleApexApprox": [
+          47,
+          96
+        ],
+        "apexUncertaintyPixels": 3,
+        "visibleWidthApprox": [
+          10,
+          73
+        ],
+        "widthApprox": 63,
+        "heightRootToVisibleApexApprox": 85,
+        "note": "Original overlaps bare twigs/left rock; this is manual visible-material estimate, not an isolated alpha silhouette."
+      },
+      "canonicalRootCell": [
+        0,
+        5
+      ],
+      "canonicalRootTerrain": "T",
+      "currentStatus": "removed from clean-v5; all 5 frozen pine witnesses have zero alpha in all 98 independent instances",
+      "candidateReuse": {
+        "assetId": "snow-pine-single-v2",
+        "assetSha256": "5e953d6c6b99a4762a7456a56805bf4463f1a72aa08dcdf6bd58ccb3f3ab2dd4",
+        "assetAnchorPixels": [
+          501,
+          1501
+        ],
+        "anchorAlpha": 245,
+        "assetRealOpaqueCrownTip": [
+          523,
+          20
+        ],
+        "tipAlpha": 200,
+        "sourceScale": 0.05739365293720459,
+        "instanceScale": 0.07174206617150573,
+        "contact": [
+          0.875,
+          5.392857142857143
+        ],
+        "sourceTranslation": [
+          19.2457798784605,
+          94.85212694125592
+        ],
+        "predictedTipSource": [
+          49.2626603646185,
+          96.0
+        ],
+        "materialBboxAlphaAtLeast200": [
+          70,
+          19,
+          960,
+          1503
+        ],
+        "predictedOpaqueWidth": 51.080351114112084,
+        "predictedSourceMaterialBbox": [
+          23.263335584064823,
+          95.9426063470628,
+          74.34368669817691,
+          181.11478730587442
+        ],
+        "limitation": "Uniform height match yields ~51.08 source-pixel opaque width vs original visible crown about 63; narrower by ~12. No anisotropic stretch or alpha/collision expansion proposed. Shape/root flare and proper actor overlap require owner actual scene review; not tested by engine here."
+      }
+    },
+    {
+      "id": "original-left-back-pine",
+      "root": {
+        "source": [
+          62,
+          104
+        ],
+        "visibleContactBand": [
+          61,
+          103,
+          64,
+          106
+        ],
+        "trueBarkWitness": [
+          62,
+          98
+        ],
+        "confidence": "visible brown/dark trunk ending at snow, about 1 pixel ambiguity"
+      },
+      "canonicalRootCell": [
+        1,
+        2
+      ],
+      "canonicalRootTerrain": "_",
+      "crown": {
+        "apex": null,
+        "height": null,
+        "visibleLowerCrownWidthApprox": [
+          34,
+          85
+        ],
+        "widthApprox": 51,
+        "uncertainOverlapRoi": [
+          24,
+          0,
+          90,
+          60
+        ]
+      },
+      "currentStatus": "lower foliage/trunk deleted; all 4 frozen witnesses have zero independent sprite alpha, but clean-v5 retains top-edge conifer material in overlapping upper crown region",
+      "doubleCrownExcluded": false,
+      "recommendation": "DEFER full standalone tree. Cannot visually partition the retained upper pine mass between this trunk and farther trees; adding a complete tree could duplicate upper crown. No guessed scale/root-to-apex height supplied."
+    },
+    {
+      "id": "original-central-pine-root-hidden",
+      "crown": {
+        "visibleApexApprox": [
+          111,
+          41
+        ],
+        "visibleMaterialRoi": [
+          79,
+          41,
+          142,
+          140
+        ]
+      },
+      "root": null,
+      "groundFront": null,
+      "reason": "Its lower trunk/ground join is hidden by foreground bare branches and rock; shadow/foliage at y135-142 is not a provable root. Do not infer root from old snow-pines-1 polygon.",
+      "currentStatus": "confirmed needle deletion at fixed 11144/11170/12397/128116, all 4 independent alpha zero",
+      "recommendation": "Do not add in this bounded batch without a visible/justified contact."
+    }
+  ],
+  "batchRecommendation": "Only the foreground pine with visible root [48,181] has a bounded full-tree height candidate. Retain both deferred trees as explicit source discrepancies, not complete coverage. Added real pine may legitimately occlude actors formerly used for bare-tree tests; preserve alpha/cue/depth semantics rather than force actor body visibility."
+}

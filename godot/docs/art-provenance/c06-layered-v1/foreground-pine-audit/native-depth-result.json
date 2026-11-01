@@ -1,0 +1,577 @@
+{
+  "scope": "Initial-state render fixtures only; no engine commands, AI, campaign or real save access. NOT gameplay.",
+  "stateUnchanged": true,
+  "rows": [
+    {
+      "cell": [
+        0,
+        4
+      ],
+      "terrain": "T",
+      "trees": [
+        {
+          "tree": "northwest-bare-tree-rear",
+          "selectableCue": true,
+          "bodyOpaquePixels": 377,
+          "bodySelectablePixels": 63,
+          "treeZ": -2894,
+          "actorZ": -2954,
+          "sharedOpaqueSourcePixels": 0,
+          "sharedPixelsPickingActor": 0,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": []
+        },
+        {
+          "tree": "northwest-bare-tree-front",
+          "selectableCue": true,
+          "bodyOpaquePixels": 377,
+          "bodySelectablePixels": 63,
+          "treeZ": -2790,
+          "actorZ": -2954,
+          "sharedOpaqueSourcePixels": 0,
+          "sharedPixelsPickingActor": 0,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": []
+        },
+        {
+          "tree": "northwest-front-pine-visible-root",
+          "selectableCue": true,
+          "bodyOpaquePixels": 377,
+          "bodySelectablePixels": 63,
+          "treeZ": -2830,
+          "actorZ": -2954,
+          "sharedOpaqueSourcePixels": 314,
+          "sharedPixelsPickingActor": 0,
+          "forcedBackgroundNegativeControlActorHits": 5,
+          "firstSharedSourcePixels": [
+            [
+              37,
+              128
+            ],
+            [
+              38,
+              128
+            ],
+            [
+              39,
+              128
+            ],
+            [
+              36,
+              129
+            ],
+            [
+              37,
+              129
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "cell": [
+        0,
+        5
+      ],
+      "terrain": "T",
+      "trees": [
+        {
+          "tree": "northwest-bare-tree-rear",
+          "selectableCue": false,
+          "bodyOpaquePixels": 378,
+          "bodySelectablePixels": 378,
+          "treeZ": -2894,
+          "actorZ": -2814,
+          "sharedOpaqueSourcePixels": 0,
+          "sharedPixelsPickingActor": 0,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": []
+        },
+        {
+          "tree": "northwest-bare-tree-front",
+          "selectableCue": false,
+          "bodyOpaquePixels": 378,
+          "bodySelectablePixels": 378,
+          "treeZ": -2790,
+          "actorZ": -2814,
+          "sharedOpaqueSourcePixels": 0,
+          "sharedPixelsPickingActor": 0,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": []
+        },
+        {
+          "tree": "northwest-front-pine-visible-root",
+          "selectableCue": false,
+          "bodyOpaquePixels": 378,
+          "bodySelectablePixels": 378,
+          "treeZ": -2830,
+          "actorZ": -2814,
+          "sharedOpaqueSourcePixels": 279,
+          "sharedPixelsPickingActor": 279,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": [
+            [
+              37,
+              156
+            ],
+            [
+              38,
+              156
+            ],
+            [
+              39,
+              156
+            ],
+            [
+              36,
+              157
+            ],
+            [
+              37,
+              157
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "cell": [
+        1,
+        4
+      ],
+      "terrain": "T",
+      "trees": [
+        {
+          "tree": "northwest-bare-tree-rear",
+          "selectableCue": true,
+          "bodyOpaquePixels": 377,
+          "bodySelectablePixels": 186,
+          "treeZ": -2894,
+          "actorZ": -2954,
+          "sharedOpaqueSourcePixels": 11,
+          "sharedPixelsPickingActor": 0,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": [
+            [
+              73,
+              129
+            ],
+            [
+              74,
+              130
+            ],
+            [
+              74,
+              131
+            ],
+            [
+              75,
+              132
+            ],
+            [
+              76,
+              132
+            ]
+          ]
+        },
+        {
+          "tree": "northwest-bare-tree-front",
+          "selectableCue": true,
+          "bodyOpaquePixels": 377,
+          "bodySelectablePixels": 186,
+          "treeZ": -2790,
+          "actorZ": -2954,
+          "sharedOpaqueSourcePixels": 97,
+          "sharedPixelsPickingActor": 0,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": [
+            [
+              68,
+              129
+            ],
+            [
+              69,
+              129
+            ],
+            [
+              68,
+              130
+            ],
+            [
+              69,
+              130
+            ],
+            [
+              69,
+              131
+            ]
+          ]
+        },
+        {
+          "tree": "northwest-front-pine-visible-root",
+          "selectableCue": true,
+          "bodyOpaquePixels": 377,
+          "bodySelectablePixels": 186,
+          "treeZ": -2830,
+          "actorZ": -2954,
+          "sharedOpaqueSourcePixels": 116,
+          "sharedPixelsPickingActor": 0,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": [
+            [
+              63,
+              135
+            ],
+            [
+              62,
+              136
+            ],
+            [
+              63,
+              136
+            ],
+            [
+              64,
+              136
+            ],
+            [
+              61,
+              137
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "cell": [
+        2,
+        4
+      ],
+      "terrain": "T",
+      "trees": [
+        {
+          "tree": "northwest-bare-tree-rear",
+          "selectableCue": false,
+          "bodyOpaquePixels": 379,
+          "bodySelectablePixels": 227,
+          "treeZ": -2894,
+          "actorZ": -2954,
+          "sharedOpaqueSourcePixels": 152,
+          "sharedPixelsPickingActor": 0,
+          "forcedBackgroundNegativeControlActorHits": 5,
+          "firstSharedSourcePixels": [
+            [
+              104,
+              129
+            ],
+            [
+              105,
+              129
+            ],
+            [
+              104,
+              130
+            ],
+            [
+              105,
+              130
+            ],
+            [
+              104,
+              131
+            ]
+          ]
+        },
+        {
+          "tree": "northwest-bare-tree-front",
+          "selectableCue": false,
+          "bodyOpaquePixels": 379,
+          "bodySelectablePixels": 227,
+          "treeZ": -2790,
+          "actorZ": -2954,
+          "sharedOpaqueSourcePixels": 0,
+          "sharedPixelsPickingActor": 0,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": []
+        },
+        {
+          "tree": "northwest-front-pine-visible-root",
+          "selectableCue": false,
+          "bodyOpaquePixels": 379,
+          "bodySelectablePixels": 227,
+          "treeZ": -2830,
+          "actorZ": -2954,
+          "sharedOpaqueSourcePixels": 0,
+          "sharedPixelsPickingActor": 0,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": []
+        }
+      ]
+    },
+    {
+      "cell": [
+        1,
+        5
+      ],
+      "terrain": ".",
+      "trees": [
+        {
+          "tree": "northwest-bare-tree-rear",
+          "selectableCue": false,
+          "bodyOpaquePixels": 378,
+          "bodySelectablePixels": 302,
+          "treeZ": -2894,
+          "actorZ": -2814,
+          "sharedOpaqueSourcePixels": 0,
+          "sharedPixelsPickingActor": 0,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": []
+        },
+        {
+          "tree": "northwest-bare-tree-front",
+          "selectableCue": false,
+          "bodyOpaquePixels": 378,
+          "bodySelectablePixels": 302,
+          "treeZ": -2790,
+          "actorZ": -2814,
+          "sharedOpaqueSourcePixels": 76,
+          "sharedPixelsPickingActor": 0,
+          "forcedBackgroundNegativeControlActorHits": 5,
+          "firstSharedSourcePixels": [
+            [
+              70,
+              156
+            ],
+            [
+              71,
+              156
+            ],
+            [
+              70,
+              157
+            ],
+            [
+              71,
+              157
+            ],
+            [
+              72,
+              157
+            ]
+          ]
+        },
+        {
+          "tree": "northwest-front-pine-visible-root",
+          "selectableCue": false,
+          "bodyOpaquePixels": 378,
+          "bodySelectablePixels": 302,
+          "treeZ": -2830,
+          "actorZ": -2814,
+          "sharedOpaqueSourcePixels": 154,
+          "sharedPixelsPickingActor": 144,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": [
+            [
+              69,
+              156
+            ],
+            [
+              70,
+              156
+            ],
+            [
+              71,
+              156
+            ],
+            [
+              68,
+              157
+            ],
+            [
+              69,
+              157
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "cell": [
+        2,
+        5
+      ],
+      "terrain": ".",
+      "trees": [
+        {
+          "tree": "northwest-bare-tree-rear",
+          "selectableCue": false,
+          "bodyOpaquePixels": 379,
+          "bodySelectablePixels": 379,
+          "treeZ": -2894,
+          "actorZ": -2814,
+          "sharedOpaqueSourcePixels": 30,
+          "sharedPixelsPickingActor": 30,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": [
+            [
+              96,
+              162
+            ],
+            [
+              95,
+              163
+            ],
+            [
+              96,
+              163
+            ],
+            [
+              94,
+              164
+            ],
+            [
+              95,
+              164
+            ]
+          ]
+        },
+        {
+          "tree": "northwest-bare-tree-front",
+          "selectableCue": false,
+          "bodyOpaquePixels": 379,
+          "bodySelectablePixels": 379,
+          "treeZ": -2790,
+          "actorZ": -2814,
+          "sharedOpaqueSourcePixels": 0,
+          "sharedPixelsPickingActor": 0,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": []
+        },
+        {
+          "tree": "northwest-front-pine-visible-root",
+          "selectableCue": false,
+          "bodyOpaquePixels": 379,
+          "bodySelectablePixels": 379,
+          "treeZ": -2830,
+          "actorZ": -2814,
+          "sharedOpaqueSourcePixels": 0,
+          "sharedPixelsPickingActor": 0,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": []
+        }
+      ]
+    },
+    {
+      "cell": [
+        1,
+        6
+      ],
+      "terrain": ".",
+      "trees": [
+        {
+          "tree": "northwest-bare-tree-rear",
+          "selectableCue": false,
+          "bodyOpaquePixels": 377,
+          "bodySelectablePixels": 377,
+          "treeZ": -2894,
+          "actorZ": -2674,
+          "sharedOpaqueSourcePixels": 0,
+          "sharedPixelsPickingActor": 0,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": []
+        },
+        {
+          "tree": "northwest-bare-tree-front",
+          "selectableCue": false,
+          "bodyOpaquePixels": 377,
+          "bodySelectablePixels": 377,
+          "treeZ": -2790,
+          "actorZ": -2674,
+          "sharedOpaqueSourcePixels": 15,
+          "sharedPixelsPickingActor": 15,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": [
+            [
+              69,
+              184
+            ],
+            [
+              70,
+              184
+            ],
+            [
+              71,
+              184
+            ],
+            [
+              68,
+              185
+            ],
+            [
+              70,
+              185
+            ]
+          ]
+        },
+        {
+          "tree": "northwest-front-pine-visible-root",
+          "selectableCue": false,
+          "bodyOpaquePixels": 377,
+          "bodySelectablePixels": 377,
+          "treeZ": -2830,
+          "actorZ": -2674,
+          "sharedOpaqueSourcePixels": 0,
+          "sharedPixelsPickingActor": 0,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": []
+        }
+      ]
+    },
+    {
+      "cell": [
+        2,
+        6
+      ],
+      "terrain": ".",
+      "trees": [
+        {
+          "tree": "northwest-bare-tree-rear",
+          "selectableCue": false,
+          "bodyOpaquePixels": 379,
+          "bodySelectablePixels": 379,
+          "treeZ": -2894,
+          "actorZ": -2674,
+          "sharedOpaqueSourcePixels": 0,
+          "sharedPixelsPickingActor": 0,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": []
+        },
+        {
+          "tree": "northwest-bare-tree-front",
+          "selectableCue": false,
+          "bodyOpaquePixels": 379,
+          "bodySelectablePixels": 379,
+          "treeZ": -2790,
+          "actorZ": -2674,
+          "sharedOpaqueSourcePixels": 0,
+          "sharedPixelsPickingActor": 0,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": []
+        },
+        {
+          "tree": "northwest-front-pine-visible-root",
+          "selectableCue": false,
+          "bodyOpaquePixels": 379,
+          "bodySelectablePixels": 379,
+          "treeZ": -2830,
+          "actorZ": -2674,
+          "sharedOpaqueSourcePixels": 0,
+          "sharedPixelsPickingActor": 0,
+          "forcedBackgroundNegativeControlActorHits": -1,
+          "firstSharedSourcePixels": []
+        }
+      ]
+    }
+  ],
+  "renderingIssueCount": 0
+}
