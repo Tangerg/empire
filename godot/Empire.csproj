@@ -7,7 +7,7 @@
     <RootNamespace>Empire</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Empire.Core/**/*.cs;Empire.Core.Tests/**/*.cs" />
+    <Compile Remove="Empire.Core/**/*.cs;Empire.Core.Tests/**/*.cs;docs/**/*.cs" />
     <ProjectReference Include="Empire.Core/Empire.Core.csproj" />
   </ItemGroup>
   <ItemGroup Condition="'$(Configuration)' == 'ExportRelease'">
