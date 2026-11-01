@@ -137,16 +137,29 @@ internal sealed class CompiledSceneSurface
             var slice = _slices[index];
             var node = new Node2D { Name = $"{identity}__surface_{index}", Scale = Vector2.One * scale };
             owner.AddChild(node);
+            var vertices = new List<Vector2>();
+            var uv = new List<Vector2>();
+            var colors = new List<Color>();
+            var polygons = new Godot.Collections.Array();
             foreach (var primitive in slice.Primitives)
-                node.AddChild(new Polygon2D
-                {
-                    Polygon = primitive.Polygon.Select(p => p - anchor).ToArray(),
-                    UV = primitive.Uv,
-                    Texture = _texture,
-                    Color = primitive.Tint,
-                    TextureFilter = CanvasItem.TextureFilterEnum.Linear,
-                    TextureRepeat = CanvasItem.TextureRepeatEnum.Disabled
-                });
+            {
+                // Keep independent vertices and original primitive order: UV seams and alpha overlap are material facts.
+                polygons.Add(Enumerable.Range(vertices.Count, primitive.Polygon.Length).ToArray());
+                vertices.AddRange(primitive.Polygon.Select(p => p - anchor));
+                uv.AddRange(primitive.Uv);
+                colors.AddRange(Enumerable.Repeat(primitive.Tint, primitive.Polygon.Length));
+            }
+            node.AddChild(new Polygon2D
+            {
+                Polygon = vertices.ToArray(),
+                Polygons = polygons,
+                UV = uv.ToArray(),
+                VertexColors = colors.ToArray(),
+                Texture = _texture,
+                Color = Colors.White,
+                TextureFilter = CanvasItem.TextureFilterEnum.Linear,
+                TextureRepeat = CanvasItem.TextureRepeatEnum.Disabled
+            });
             yield return (node, new SurfaceVisual(node, slice, anchor, sampler, pointer, pointerPolygon));
         }
     }

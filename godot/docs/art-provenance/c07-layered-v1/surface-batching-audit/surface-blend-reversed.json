@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "supports": [
+    {
+      "id": "shared",
+      "frontPixels": [
+        25,
+        60
+      ],
+      "kind": "structural"
+    }
+  ],
+  "members": [
+    {
+      "id": "blue-second",
+      "supportId": "shared",
+      "polygonPixels": [
+        [
+          12,
+          12
+        ],
+        [
+          60,
+          12
+        ],
+        [
+          12,
+          60
+        ]
+      ],
+      "uvPixels": [
+        [
+          4,
+          4
+        ],
+        [
+          60,
+          4
+        ],
+        [
+          4,
+          60
+        ]
+      ],
+      "coverage": "native-alpha",
+      "tint": "#4b81c1"
+    },
+    {
+      "id": "red-first",
+      "supportId": "shared",
+      "polygonPixels": [
+        [
+          0,
+          0
+        ],
+        [
+          48,
+          0
+        ],
+        [
+          0,
+          48
+        ]
+      ],
+      "uvPixels": [
+        [
+          4,
+          4
+        ],
+        [
+          60,
+          4
+        ],
+        [
+          4,
+          60
+        ]
+      ],
+      "coverage": "native-alpha",
+      "tint": "#c65a3a"
+    }
+  ]
+}

@@ -32,3 +32,6 @@ Each audit folder preserves original failure, candidate result and intentional n
 
 ## First formal-loader slice
 The isolated training-fence surface now has a production-loader path; the official C07 scene is unchanged. See [production-surface-audit](production-surface-audit/README.md) for exact geometry/UV equivalence, static controls, excluded action-fixture run and performance cost. This is not full-scene migration.
+
+## Bounded same-support batching
+[Surface batching audit](surface-batching-audit/README.md) preserves exact geometry/UV/Tint and native raster frames while reducing isolated formal-preview draw calls318→81. Deep contacts/ground partitions remain unchanged. Timing drift prevents a stable FPS claim; whole-scene performance is still not accepted.

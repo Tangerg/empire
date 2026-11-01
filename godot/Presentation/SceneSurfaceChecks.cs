@@ -90,6 +90,26 @@ public partial class SceneSurfaceChecks : Node
             Require(visual.GlobalBounds == new Rect2(20, 20, 8, 8), "Bounds use the same transformed geometry.");
             node.Free();
         }
+        var layered = CompiledSceneSurface.Compile(Document(good, new SceneSurfaceMember
+        {
+            Id = "overlap",
+            SupportId = "foot",
+            Coverage = "opaque",
+            Tint = "#6633aa",
+            PolygonPixels = [[1, 1], [5, 1], [1, 5]],
+            UvPixels = [[1, 3], [5, 3], [1, 3]]
+        }), texture, "batched-fixture");
+        foreach (var (node, _) in layered.Instantiate(this, "batched", 1, Vector2.Zero, false, null, sampler))
+        {
+            Require(node.GetChildCount() == 1, "One shared support must not create one draw node per triangle.");
+            var draw = node.GetChild<Polygon2D>(0);
+            Require(draw.Polygons.Count == 2 && draw.Polygon.Length == 6 && draw.UV.Length == 6,
+                "Batching must retain independent triangle vertices and UV seams.");
+            Require(draw.VertexColors.Length == 6 && draw.VertexColors[0] == Colors.White
+                && draw.VertexColors[3] == Color.FromHtml("#6633aa") && draw.Color == Colors.White,
+                "Batch colors must preserve each primitive tint without multiplying it twice.");
+            node.Free();
+        }
         sampler.Free();
     }
 }
