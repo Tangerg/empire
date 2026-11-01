@@ -1,0 +1,15 @@
+using Godot;
+using Empire.Presentation;
+using Empire.Presentation.Tactical;
+using Empire.Core.Engine;
+using Empire.Core.Determinism;
+using System.Text.Json.Nodes;
+public partial class GranaryCanopyProbe:Node{
+public override void _Ready(){try{
+var e=new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));var l=PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>().Single(x=>x["id"]!.GetValue<string>()=="c01-07");var s=e.CreateState(l);var digest=EcmaJson.Stringify(s);var sc=AuthoredScene.Load("res://data/scenes/c01-07.json");var r=BoardSceneRendering.Load(sc,l,s["map"]!.AsObject());var b=new BoardView{AnimationsEnabled=false};AddChild(b);b.Configure(new(AssetCatalog.Load(),EnvironmentCatalog.Load(),e.Grids.Get("square4"),e.Catalog,r.Plane),l,sc);BoardGroundView? ground=null;b.ConfigureGround((rules,scene)=>ground=r.Ground(rules,scene));b.ConfigureDynamicState();
+var shown=s.DeepClone().AsObject();var u=s["units"]!.AsArray().OfType<JsonObject>().Single(v=>v["key"]!.GetValue<string>()=="campaign-torren").DeepClone().AsObject();u["x"]=27;u["y"]=13;u["facing"]="east";shown["units"]=new JsonArray(u);if(l["terrain"]![13]!.GetValue<string>()[27]!='p')throw new Exception("Fixed diagnostic pose terrain changed");b.RenderState(shown);int id=u["id"]!.GetValue<int>();var actor=b.GetNode<CanvasGroup>($"CanonicalProjection/Unit_{id}");var sprite=actor.GetNode<Sprite2D>("AuthoredSprite");var rows=new JsonArray();
+foreach(var p in new[]{new Vector2(439,200),new Vector2(440,204)}){var global=b.ToGlobal(p);var local=sprite.ToLocal(global);bool opaque=sprite.IsPixelOpaque(local);var hit=b.Pick(p);rows.Add(new JsonObject{{"source",new JsonArray(p.X,p.Y)},{"spriteLocal",new JsonArray(local.X,local.Y)},{"actorOpaque",opaque},{"actorPickable",hit==TacticalHit.Unit(new(27,13),id)},{"pick",hit?.ToString()},{"coveringOriginalParts",new JsonArray(ground!.DepthEntries.Where(d=>d.Visual is not null&&d.Visual.Covers(global)).Select(d=>(JsonNode)JsonValue.Create(d.Node.Name.ToString())!).ToArray())}});}
+var result=new JsonObject{{"scope","Original painted static appearance probe: actual C07 Torren appearance on canonical p pose; no actual movement/command/save/gameplay"},{"appearanceType","campaign-torren / c01.swordsman"},{"cell",new JsonArray(27,13)},{"facing","east"},{"spriteTexture",sprite.Texture.ResourcePath},{"spriteScale",new JsonArray(sprite.Scale.X,sprite.Scale.Y)},{"spriteOffset",new JsonArray(sprite.Offset.X,sprite.Offset.Y)},{"flipH",sprite.FlipH},{"stateUnchanged",digest==EcmaJson.Stringify(s)},{"issues",b.RenderingIssueCount},{"witnesses",rows}};System.IO.File.WriteAllText(ProjectSettings.GlobalizePath("res://granary-canopy-original-native-result.json"),result.ToJsonString());
+if(rows.Any(v=>!v!["actorOpaque"]!.GetValue<bool>()||!v["actorPickable"]!.GetValue<bool>())||digest!=EcmaJson.Stringify(s)||b.RenderingIssueCount!=0)throw new Exception("Original missing-foreground reproduction not established");GD.Print("ORIGINAL_GRANARY_POST_MISSING_FOREGROUND_REPRODUCED");GetTree().Quit();
+}catch(Exception ex){GD.PushError(ex.ToString());GetTree().Quit(1);}}
+}

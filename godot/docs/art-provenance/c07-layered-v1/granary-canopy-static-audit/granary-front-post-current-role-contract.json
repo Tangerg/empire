@@ -1,0 +1,780 @@
+{
+  "scope": "ONE priority C07 object: central/front post of the cloth lean-to attached to granary(35,14). Static actual source PNG, authored currentC07Torren alpha, canonical terrain and painter geometry only. No engine/GUI/save/generation/repository edits.",
+  "sourceSha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+  "siteIdentity": {
+    "id": "granary",
+    "selectionCell": [
+      35,
+      14
+    ],
+    "canonicalSourceCentre": [
+      568,
+      232
+    ],
+    "approach": [
+      36,
+      14
+    ],
+    "canonicalApproachSource": [
+      584,
+      232
+    ],
+    "originalSiteRecord": {
+      "id": "granary",
+      "terrain": "B",
+      "owner": 0,
+      "cell": [
+        35,
+        14
+      ],
+      "approach": [
+        36,
+        14
+      ],
+      "sitePixel": [
+        564,
+        228
+      ],
+      "approachPixel": [
+        588,
+        228
+      ]
+    },
+    "note": "No new site or moved capture point. Cloth awning/pole is a distinct visual part, not a new gameplay owner."
+  },
+  "priorityIssue": {
+    "visibleMaterial": "Tall thin front wood support below pale canvas, aroundx438..442/y185..219.",
+    "evidence": "Two actual authoredTorren opaque points at legal connectedp(27,13) intersect true wood, and all55currentstandingoccluders omit them. The wood shaft continues visibly below actorfoot216, establishing it should be in front at those points.",
+    "status": "Strong static source/alpha/depth candidate, awaiting parent native render/Pick attribution. Not reported as observed gameplay failure or completed C07 run."
+  },
+  "existingGranaryRegistration": {
+    "id": "granary",
+    "ownsMapStructureBody": true,
+    "parts": [
+      {
+        "id": "roof",
+        "polygonPixels": [
+          [
+            401,
+            77
+          ],
+          [
+            460,
+            30
+          ],
+          [
+            625,
+            99
+          ],
+          [
+            570,
+            134
+          ]
+        ],
+        "groundFrontPixels": [
+          535,
+          215
+        ],
+        "pointer": {
+          "kind": "pass-through"
+        },
+        "contactCell": [
+          33,
+          13
+        ]
+      },
+      {
+        "id": "facade",
+        "polygonPixels": [
+          [
+            412,
+            105
+          ],
+          [
+            570,
+            133
+          ],
+          [
+            603,
+            111
+          ],
+          [
+            603,
+            177
+          ],
+          [
+            566,
+            200
+          ],
+          [
+            529,
+            215
+          ],
+          [
+            412,
+            169
+          ]
+        ],
+        "groundFrontPixels": [
+          535,
+          215
+        ],
+        "pointer": {
+          "kind": "target",
+          "polygonPixels": [
+            [
+              552,
+              148
+            ],
+            [
+              570,
+              140
+            ],
+            [
+              585,
+              144
+            ],
+            [
+              585,
+              172
+            ],
+            [
+              568,
+              183
+            ],
+            [
+              552,
+              175
+            ]
+          ]
+        },
+        "contactCell": [
+          33,
+          13
+        ]
+      }
+    ],
+    "selectionCell": [
+      35,
+      14
+    ]
+  },
+  "oldAnchorRole": {
+    "source": [
+      535,
+      215
+    ],
+    "rgba": [
+      43,
+      24,
+      7,
+      255
+    ],
+    "material": "foreground planter/cargo area, not a certified main-house structural foot",
+    "cell": [
+      33,
+      13
+    ],
+    "terrain": "#",
+    "paintedStandingParts": []
+  },
+  "postPhysicalEvidence": {
+    "fixedMaterialPositives": [
+      {
+        "source": [
+          439,
+          200
+        ],
+        "rgba": [
+          163,
+          96,
+          28,
+          255
+        ],
+        "material": "brown wood support shaft",
+        "cell": [
+          27,
+          12
+        ],
+        "terrain": "p",
+        "paintedStandingParts": []
+      },
+      {
+        "source": [
+          440,
+          204
+        ],
+        "rgba": [
+          249,
+          175,
+          94,
+          255
+        ],
+        "material": "lit gold wood support shaft",
+        "cell": [
+          27,
+          12
+        ],
+        "terrain": "p",
+        "paintedStandingParts": []
+      },
+      {
+        "source": [
+          439,
+          217
+        ],
+        "rgba": [
+          94,
+          54,
+          13,
+          255
+        ],
+        "material": "lower brown shaft",
+        "cell": [
+          27,
+          13
+        ],
+        "terrain": "p",
+        "paintedStandingParts": []
+      },
+      {
+        "source": [
+          439,
+          219
+        ],
+        "rgba": [
+          96,
+          62,
+          22,
+          255
+        ],
+        "material": "same lower wood support still visible",
+        "cell": [
+          27,
+          13
+        ],
+        "terrain": "p",
+        "paintedStandingParts": []
+      }
+    ],
+    "visibleShaftDepthLowerBoundSourceY": 219,
+    "lowerBoundIsNotGroundAnchor": true,
+    "actualGroundFoot": null,
+    "occlusionBoundary": {
+      "approx": [
+        434,
+        220,
+        445,
+        244
+      ],
+      "meaning": "At222andbelow, support shaft merges behind foreground wooden cargo. The vertical wood at441243 is also a foreground crate corner: cannot certify it as the canopy foot."
+    },
+    "rejectedFootCandidate": {
+      "source": [
+        441,
+        243
+      ],
+      "rgba": [
+        59,
+        23,
+        1,
+        255
+      ],
+      "material": "foreground cargo corner/ambiguous merged wood, NOT certified canopy groundfoot",
+      "cell": [
+        27,
+        15
+      ],
+      "terrain": "p",
+      "paintedStandingParts": []
+    },
+    "openPavingBelow": {
+      "source": [
+        440,
+        245
+      ],
+      "rgba": [
+        250,
+        196,
+        137,
+        255
+      ],
+      "material": "exposed pale paving below the lower wood/cargo",
+      "cell": [
+        27,
+        15
+      ],
+      "terrain": "p",
+      "paintedStandingParts": []
+    },
+    "fixedCanopyMaterialNegative": {
+      "source": [
+        448,
+        216
+      ],
+      "rgba": [
+        227,
+        166,
+        99,
+        255
+      ],
+      "material": "open paving to right of narrow pole; do not make the whole open bay opaque",
+      "cell": [
+        28,
+        13
+      ],
+      "terrain": "p",
+      "paintedStandingParts": []
+    }
+  },
+  "backPose": {
+    "cell": [
+      27,
+      13
+    ],
+    "terrain": "p",
+    "canonicalFootSource": [
+      440,
+      216
+    ],
+    "unitType": "c01.swordsman",
+    "actorKey": "campaign-torren",
+    "presentInCanonicalC07": true,
+    "facing": "east",
+    "frameRole": "idle",
+    "frameIndex": 0,
+    "witnesses": [
+      {
+        "source": [
+          439,
+          200
+        ],
+        "rgba": [
+          163,
+          96,
+          28,
+          255
+        ],
+        "material": "continuous brown/yellow canopy support shaft wood",
+        "cell": [
+          27,
+          12
+        ],
+        "terrain": "p",
+        "paintedStandingParts": [],
+        "actorPixelFloat": [
+          258.5999950079976,
+          398.5999201279617
+        ],
+        "nearestFramePixel": [
+          259,
+          399
+        ],
+        "actorRgba": [
+          38,
+          25,
+          18,
+          253
+        ]
+      },
+      {
+        "source": [
+          440,
+          204
+        ],
+        "rgba": [
+          249,
+          175,
+          94,
+          255
+        ],
+        "material": "continuous brown/yellow canopy support shaft wood",
+        "cell": [
+          27,
+          12
+        ],
+        "terrain": "p",
+        "paintedStandingParts": [],
+        "actorPixelFloat": [
+          269.0,
+          440.1999400959712
+        ],
+        "nearestFramePixel": [
+          269,
+          440
+        ],
+        "actorRgba": [
+          128,
+          106,
+          90,
+          253
+        ]
+      }
+    ],
+    "expectedRelation": "Back candidate: actual actorfootY216 precedes the SAME visible support shaft continuing towoodY219. Its ground support cannot lie above its visible lower shaft; therefore this actor must not draw over those wood pixels. Exact hidden foot is not needed for this one-sided lower-bound argument and is NOT assigned.",
+    "pOnly4NeighborTerrainPathFromCanonicalTorrenStart": [
+      [
+        40,
+        25
+      ],
+      [
+        41,
+        25
+      ],
+      [
+        41,
+        24
+      ],
+      [
+        41,
+        23
+      ],
+      [
+        41,
+        22
+      ],
+      [
+        40,
+        22
+      ],
+      [
+        39,
+        22
+      ],
+      [
+        39,
+        21
+      ],
+      [
+        39,
+        20
+      ],
+      [
+        39,
+        19
+      ],
+      [
+        38,
+        19
+      ],
+      [
+        37,
+        19
+      ],
+      [
+        36,
+        19
+      ],
+      [
+        35,
+        19
+      ],
+      [
+        34,
+        19
+      ],
+      [
+        33,
+        19
+      ],
+      [
+        32,
+        19
+      ],
+      [
+        31,
+        19
+      ],
+      [
+        30,
+        19
+      ],
+      [
+        29,
+        19
+      ],
+      [
+        28,
+        19
+      ],
+      [
+        27,
+        19
+      ],
+      [
+        26,
+        19
+      ],
+      [
+        26,
+        18
+      ],
+      [
+        26,
+        17
+      ],
+      [
+        26,
+        16
+      ],
+      [
+        26,
+        15
+      ],
+      [
+        27,
+        15
+      ],
+      [
+        27,
+        14
+      ],
+      [
+        27,
+        13
+      ]
+    ],
+    "pathSteps": 29,
+    "reachabilityScope": "Static terrain-onlyp corridor, no#/_/q/v crossed. Does not execute movement, account for occupancy/combat, or claim one-turn reach."
+  },
+  "frontPose": {
+    "cell": [
+      27,
+      15
+    ],
+    "terrain": "p",
+    "canonicalFootSource": [
+      440,
+      248
+    ],
+    "unitType": "c01.swordsman",
+    "actorKey": "campaign-torren",
+    "presentInCanonicalC07": true,
+    "facing": "east",
+    "frameRole": "idle",
+    "frameIndex": 0,
+    "witnesses": [
+      {
+        "source": [
+          439,
+          217
+        ],
+        "rgba": [
+          94,
+          54,
+          13,
+          255
+        ],
+        "material": "continuous brown/yellow canopy support shaft wood",
+        "cell": [
+          27,
+          13
+        ],
+        "terrain": "p",
+        "paintedStandingParts": [],
+        "actorPixelFloat": [
+          258.5999950079976,
+          242.5998452479257
+        ],
+        "nearestFramePixel": [
+          259,
+          243
+        ],
+        "actorRgba": [
+          51,
+          47,
+          46,
+          253
+        ]
+      },
+      {
+        "source": [
+          439,
+          219
+        ],
+        "rgba": [
+          96,
+          62,
+          22,
+          255
+        ],
+        "material": "continuous brown/yellow canopy support shaft wood",
+        "cell": [
+          27,
+          13
+        ],
+        "terrain": "p",
+        "paintedStandingParts": [],
+        "actorPixelFloat": [
+          258.5999950079976,
+          263.39985523193053
+        ],
+        "nearestFramePixel": [
+          259,
+          263
+        ],
+        "actorRgba": [
+          69,
+          61,
+          59,
+          253
+        ]
+      }
+    ],
+    "expectedRelation": "Front control candidate: actorfootY248, beyond the visible lower cargo/wood extent endingaround243 and exposed paving244\u2013245. True pillar join is hidden, so this is a bounded source-scene front-control inference, not a newly certified pillarfoot243. Parent native assembly must retain a physically justified completion and keep this actor in front.",
+    "pOnly4NeighborTerrainPathFromCanonicalTorrenStart": [
+      [
+        40,
+        25
+      ],
+      [
+        41,
+        25
+      ],
+      [
+        41,
+        24
+      ],
+      [
+        41,
+        23
+      ],
+      [
+        41,
+        22
+      ],
+      [
+        40,
+        22
+      ],
+      [
+        39,
+        22
+      ],
+      [
+        39,
+        21
+      ],
+      [
+        39,
+        20
+      ],
+      [
+        39,
+        19
+      ],
+      [
+        38,
+        19
+      ],
+      [
+        37,
+        19
+      ],
+      [
+        36,
+        19
+      ],
+      [
+        35,
+        19
+      ],
+      [
+        34,
+        19
+      ],
+      [
+        33,
+        19
+      ],
+      [
+        32,
+        19
+      ],
+      [
+        31,
+        19
+      ],
+      [
+        30,
+        19
+      ],
+      [
+        29,
+        19
+      ],
+      [
+        28,
+        19
+      ],
+      [
+        27,
+        19
+      ],
+      [
+        26,
+        19
+      ],
+      [
+        26,
+        18
+      ],
+      [
+        26,
+        17
+      ],
+      [
+        26,
+        16
+      ],
+      [
+        26,
+        15
+      ],
+      [
+        27,
+        15
+      ]
+    ],
+    "pathSteps": 27,
+    "reachabilityScope": "Static terrain-onlyp corridor, no#/_/q/v crossed. Does not execute movement, account for occupancy/combat, or claim one-turn reach."
+  },
+  "actorPresentation": {
+    "id": "torren-stage01",
+    "resourcePath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+    "sha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
+    "frameRegion": [
+      0,
+      0,
+      557,
+      725
+    ],
+    "anchor": [
+      269,
+      565
+    ],
+    "presentationScale": 0.0961538,
+    "pixelDensity": 1,
+    "c07WorldScale": 1,
+    "mapping": "framePixel=anchor+(sourcePoint-canonicalFootSource)/0.0961538. East facing, frame0."
+  },
+  "whatIsNotProved": [
+    "Exact hidden pillar foot or full four-post canopy foundation",
+    "A native draw/Pick/cue failure; no engine run here",
+    "All currentC07roles or arbitrary animationframes",
+    "Player movement through the pillar or combat legality from a staticp-cell alone",
+    "Any new main-granary doorway-input defect"
+  ],
+  "minimalCorrectDirection": "Give actual canopy roof/post and separate cargo their own authored material/depth ownership. Preserve narrow clear spaces and currentgranarydoor/capture semantics. Do not repair this by moving all granaryfront535215 or declaring lower-bound219 a photographed groundfoot. Hidden pillar completion, if authored, must be explicitly new design and verified with both legal poses.",
+  "cueBoundary": "A thin post need not trigger whole-actor cue thresholds; validate correct exact-pixel draw/cover/Pick while leaving unrelated visible body pixels selectable, rather than requiring blanket actor disappearance.",
+  "references": [
+    "granary-front-context-raw.png",
+    "granary-front-context-grid.png",
+    "front-pole-grid.png",
+    "lower-post-cargo-source.png",
+    "lower-post-cargo-grid.png",
+    "fixed-post-material-witnesses.png"
+  ],
+  "completionBoundary": "One independently scoped priority issue delivered; no further sites surveyed.",
+  "sameCanopyCompleteSourceAddendum": "granary-complete-cloth-canopy-source-addendum.json"
+}

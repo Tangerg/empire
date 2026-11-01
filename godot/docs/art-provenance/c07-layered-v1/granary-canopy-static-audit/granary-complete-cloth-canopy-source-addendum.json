@@ -1,0 +1,451 @@
+{
+  "scope": "Same granarycloth canopy only: complete visible roof and support segments for later independent material design. No other cargo/house survey, generation, native engine, GUI, save or repository edits.",
+  "sourceSha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+  "roofGeometryLandmarks": [
+    {
+      "id": "west-left eave",
+      "geometryPoint": [
+        380,
+        154
+      ],
+      "status": "Visible trim/cloth corner; neighbouring red-tile roof overlaps the area immediately above. Do not include the red roof in the new cloth asset."
+    },
+    {
+      "id": "rear wall attachment / fold apex",
+      "geometryPoint": [
+        444,
+        128
+      ],
+      "status": "Visible grey shaded upper junction/crease by granarywall. A free-standing hidden back corner is not certified."
+    },
+    {
+      "id": "east attachment/eave",
+      "geometryPoint": [
+        504,
+        154
+      ],
+      "status": "Visible cloth-to-wood corner against granarymasonry; masonry excluded."
+    },
+    {
+      "id": "front low cloth tip",
+      "geometryPoint": [
+        440,
+        181
+      ],
+      "status": "Visible cream cloth/edge above braces and front vertical support."
+    }
+  ],
+  "roofReferenceQuadNotCollision": [
+    [
+      380,
+      154
+    ],
+    [
+      444,
+      128
+    ],
+    [
+      504,
+      154
+    ],
+    [
+      440,
+      181
+    ]
+  ],
+  "roofMaterialPositives": [
+    {
+      "source": [
+        438,
+        166
+      ],
+      "rgba": [
+        233,
+        191,
+        148,
+        255
+      ],
+      "role": "lit pale cloth central plane",
+      "cell": [
+        27,
+        10
+      ],
+      "terrain": "#",
+      "auditCellOwners": [
+        "joint-granary-foundation"
+      ]
+    },
+    {
+      "source": [
+        444,
+        133
+      ],
+      "rgba": [
+        118,
+        117,
+        133,
+        255
+      ],
+      "role": "grey shaded cloth near rear fold",
+      "cell": [
+        27,
+        8
+      ],
+      "terrain": "#",
+      "auditCellOwners": [
+        "joint-granary-foundation"
+      ]
+    },
+    {
+      "source": [
+        440,
+        180
+      ],
+      "rgba": [
+        251,
+        221,
+        162,
+        255
+      ],
+      "role": "light front cloth edge",
+      "cell": [
+        27,
+        11
+      ],
+      "terrain": "#",
+      "auditCellOwners": [
+        "joint-granary-foundation"
+      ]
+    }
+  ],
+  "canopyPosts": [
+    {
+      "id": "west-corner",
+      "visibleAxisApprox": [
+        [
+          382,
+          158
+        ],
+        [
+          384,
+          216
+        ]
+      ],
+      "materialPositives": [
+        {
+          "source": [
+            381,
+            174
+          ],
+          "rgba": [
+            132,
+            89,
+            35,
+            255
+          ],
+          "role": "brown corner support",
+          "cell": [
+            23,
+            10
+          ],
+          "terrain": "_",
+          "auditCellOwners": []
+        },
+        {
+          "source": [
+            384,
+            212
+          ],
+          "rgba": [
+            147,
+            105,
+            52,
+            255
+          ],
+          "role": "same upright wood continuing near base",
+          "cell": [
+            24,
+            13
+          ],
+          "terrain": "#",
+          "auditCellOwners": [
+            "northwest-grain-lean-to-stores",
+            "northwest-grain-loading-crates"
+          ]
+        }
+      ],
+      "trueVisibleFoot": {
+        "source": [
+          384,
+          216
+        ],
+        "rgba": [
+          127,
+          88,
+          44,
+          255
+        ],
+        "role": "last solid brown same-post base meeting exposed paving",
+        "cell": [
+          24,
+          13
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "northwest-grain-lean-to-stores",
+          "northwest-grain-loading-crates"
+        ]
+      },
+      "supportForIdentification": "Continuous narrow wood strip visible from eave down between grain sacks to216; at384218 the material is pale paving. Compare far-left-support-grid and far-left-foot-detail, not an audit polygon.",
+      "belowGroundNegative": {
+        "source": [
+          384,
+          218
+        ],
+        "rgba": [
+          239,
+          194,
+          133,
+          255
+        ],
+        "role": "visible pale paving beneath wood foot",
+        "cell": [
+          24,
+          13
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "northwest-grain-lean-to-stores",
+          "northwest-grain-loading-crates"
+        ]
+      },
+      "confidence": "Observed local wood-ground contact. Does not authenticate whole-canopy groundfront or the roots of other columns."
+    },
+    {
+      "id": "west-front-intermediate",
+      "visibleAxisApprox": [
+        [
+          408,
+          170
+        ],
+        [
+          408,
+          197
+        ]
+      ],
+      "materialPositives": [
+        {
+          "source": [
+            407,
+            184
+          ],
+          "rgba": [
+            55,
+            36,
+            16,
+            255
+          ],
+          "role": "visible intermediate wood rod",
+          "cell": [
+            25,
+            11
+          ],
+          "terrain": "_",
+          "auditCellOwners": []
+        },
+        {
+          "source": [
+            407,
+            196
+          ],
+          "rgba": [
+            76,
+            47,
+            13,
+            255
+          ],
+          "role": "lower visible intermediate rod",
+          "cell": [
+            25,
+            12
+          ],
+          "terrain": "#",
+          "auditCellOwners": [
+            "northwest-grain-lean-to-stores"
+          ]
+        }
+      ],
+      "trueVisibleFoot": null,
+      "lowerOcclusion": "Aroundy199 the separate barrel rim/body covers the rod. Barrel bottomaround217 is NOT a certified post foot."
+    },
+    {
+      "id": "front-central",
+      "visibleAxisApprox": [
+        [
+          439,
+          186
+        ],
+        [
+          439,
+          219
+        ]
+      ],
+      "materialPositives": [
+        {
+          "source": [
+            439,
+            200
+          ],
+          "rgba": [
+            163,
+            96,
+            28,
+            255
+          ],
+          "role": "true shaft used by currentC07Torren back witness",
+          "cell": [
+            27,
+            12
+          ],
+          "terrain": "p",
+          "auditCellOwners": []
+        },
+        {
+          "source": [
+            440,
+            204
+          ],
+          "rgba": [
+            249,
+            175,
+            94,
+            255
+          ],
+          "role": "true shaft used by second back witness",
+          "cell": [
+            27,
+            12
+          ],
+          "terrain": "p",
+          "auditCellOwners": []
+        },
+        {
+          "source": [
+            439,
+            219
+          ],
+          "rgba": [
+            96,
+            62,
+            22,
+            255
+          ],
+          "role": "last separately readable same shaft",
+          "cell": [
+            27,
+            13
+          ],
+          "terrain": "p",
+          "auditCellOwners": []
+        }
+      ],
+      "trueVisibleFoot": null,
+      "lowerOcclusion": "At222andbelow foreground crate overlaps/merges. Wood441243 belongs to/merges with cratecorner; do not certify it as canopy foot.",
+      "depthLowerBoundSourceY": 219
+    },
+    {
+      "id": "east-attached",
+      "visibleAxisApprox": [
+        [
+          503,
+          158
+        ],
+        [
+          503,
+          198
+        ]
+      ],
+      "materialPositives": [
+        {
+          "source": [
+            503,
+            185
+          ],
+          "rgba": [
+            179,
+            123,
+            64,
+            255
+          ],
+          "role": "tall narrow gold wood pole beside masonry",
+          "cell": [
+            31,
+            11
+          ],
+          "terrain": "#",
+          "auditCellOwners": [
+            "joint-granary-foundation"
+          ]
+        },
+        {
+          "source": [
+            503,
+            194
+          ],
+          "rgba": [
+            185,
+            132,
+            62,
+            255
+          ],
+          "role": "lower visible same pole",
+          "cell": [
+            31,
+            12
+          ],
+          "terrain": "#",
+          "auditCellOwners": [
+            "joint-granary-foundation"
+          ]
+        }
+      ],
+      "trueVisibleFoot": null,
+      "lowerOcclusion": "Fromaround200 the foreground planter/cargo covers the base; no isolated wood-to-ground join. The neighbouring planter bottom cannot be borrowed as a pole foot."
+    }
+  ],
+  "certifiedGroundContactCount": 1,
+  "singleFootMustNotBecomeWholeObjectDepth": "West foot384216 is real but cannot become one frontdepth for every roof/column pixel: frontcentralshaft already extends to219 and must coverTorrenfoot216. Separate/local support depths or explicit hidden-foot design completion are required; do not hide this mismatch under a global216/tie order.",
+  "hiddenCompletionContract": "Only west384216 is certified. Any inferred ground joins for intermediate/front/east posts are NEW DESIGN, not original image measurements. Preserve observed roof/post material and independently test legal back27,13/front27,15 from granary-front-post-current-role-contract.json. No guessed equal post heights asserted.",
+  "excludeFromCanopyAsset": [
+    "Neighbour red tile roof at northwest",
+    "Granary main masonry/timber backing wall",
+    "Grain sacks and barrels under roof",
+    "Planter/cargo by east pole",
+    "Foreground wooden crate that hides front pole base",
+    "Ground plane or large filled dark under-roof backdrop"
+  ],
+  "semanticBoundary": {
+    "granarySelectionCell": [
+      35,
+      14
+    ],
+    "approach": [
+      36,
+      14
+    ],
+    "newSite": false,
+    "polePointer": "pass-through unless existing canonical site contract explicitly assigns a true facade target; do not give every post a new capture target"
+  },
+  "references": [
+    "complete-canopy-roof-raw.png",
+    "complete-canopy-roof-grid.png",
+    "far-left-support-grid.png",
+    "far-left-foot-detail.png",
+    "left-support-grid.png",
+    "front-pole-grid.png",
+    "right-support-grid.png",
+    "lower-post-cargo-grid.png",
+    "canopy-outline-and-supports.png"
+  ],
+  "completionBoundary": "Material/source design constraints only. The strong currentC07actor occlusion candidate has separate frozen witnesses; no native result claimed in this addendum."
+}
