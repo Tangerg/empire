@@ -1,0 +1,863 @@
+{
+  "scope": "Bounded independent original-road continuous-region checks, v2 right arch return material/feet, and original wooden leaf source contract. Static PNG/JSON only; no native/Pick/gameplay claim. No production/alpha edits.",
+  "sourceSha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+  "candidate": {
+    "resourcePath": "res://assets/native/c07-layered-v1/southeast-gate-v2-stone-candidate.png",
+    "size": [
+      1326,
+      1186
+    ],
+    "sha256": "a9541e278cf533c844955d49bdc94ad7d3abe4491d9f6fa4c11300b458709b82",
+    "scale": 0.19393939393939394,
+    "translation": [
+      1193.2424242424242,
+      722.9333333333334
+    ]
+  },
+  "continuousRegionContract": {
+    "frozenInputFile": "opening-regions-intermediate.json",
+    "frozenInputSha256": "4e46096c399f446ef87ca8de42d32577f8d2239416c1bb22e034e6ba8634c452",
+    "regions": [
+      {
+        "id": "continuous-exposed-mouth-road",
+        "polygon": [
+          [
+            1307,
+            875
+          ],
+          [
+            1322,
+            875
+          ],
+          [
+            1322,
+            893
+          ],
+          [
+            1349,
+            907
+          ],
+          [
+            1359,
+            908
+          ],
+          [
+            1359,
+            932
+          ],
+          [
+            1305,
+            932
+          ],
+          [
+            1305,
+            887
+          ]
+        ],
+        "sourceMeaning": "Continuous original dirt/shadow road through visible hole and below real wooden leaf; avoids original wood, stone and foliage. Top right sloped boundary stays below the original wooden leaf lower diagonal.",
+        "areaSourcePixelsSquared": 2066.0,
+        "integerLatticeSampleCount": 2147,
+        "alphaHistogram": {
+          "0": 2145,
+          "1": 2
+        },
+        "nonzeroSamples": [
+          {
+            "source": [
+              1322,
+              875
+            ],
+            "originalRgba": [
+              156,
+              124,
+              99,
+              255
+            ],
+            "candidatePixel": [
+              664,
+              784
+            ],
+            "candidateRgba": [
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "source": [
+              1322,
+              876
+            ],
+            "originalRgba": [
+              159,
+              130,
+              107,
+              255
+            ],
+            "candidatePixel": [
+              664,
+              789
+            ],
+            "candidateRgba": [
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "id": "left-inner-edge-ground-strip",
+        "polygon": [
+          [
+            1303,
+            887
+          ],
+          [
+            1305,
+            887
+          ],
+          [
+            1305,
+            932
+          ],
+          [
+            1303,
+            932
+          ]
+        ],
+        "sourceMeaning": "Narrow continuous original road immediately right of actual left stone inner edge. Not broad fill over the stone itself.",
+        "areaSourcePixelsSquared": 90.0,
+        "integerLatticeSampleCount": 138,
+        "alphaHistogram": {
+          "0": 138
+        },
+        "nonzeroSamples": []
+      },
+      {
+        "id": "below-left-real-stone-foot",
+        "polygon": [
+          [
+            1295,
+            936
+          ],
+          [
+            1304,
+            936
+          ],
+          [
+            1304,
+            938
+          ],
+          [
+            1295,
+            938
+          ]
+        ],
+        "sourceMeaning": "Short exposed earthy ground band below the original left leg. Does not extend into farther shrubs/rock.",
+        "areaSourcePixelsSquared": 18.0,
+        "integerLatticeSampleCount": 30,
+        "alphaHistogram": {
+          "0": 30
+        },
+        "nonzeroSamples": []
+      },
+      {
+        "id": "below-right-real-stone-foot",
+        "polygon": [
+          [
+            1350,
+            908
+          ],
+          [
+            1361,
+            905
+          ],
+          [
+            1363,
+            910
+          ],
+          [
+            1351,
+            915
+          ]
+        ],
+        "sourceMeaning": "Exposed paving below the original right arch-return foot, excludes original wooden leaf and farther shrubs.",
+        "areaSourcePixelsSquared": 75.0,
+        "integerLatticeSampleCount": 78,
+        "alphaHistogram": {
+          "0": 78
+        },
+        "nonzeroSamples": []
+      }
+    ],
+    "sampling": "Every INTEGER source-space point inside polygon including edge, inverse map nearest source texture pixel via round. Original polygons were drawn from source evidence BEFORE candidate sampling. Native same polygons should check actual texture filtering/IsPixelOpaque separately; results do not silently declare A<=some threshold transparent.",
+    "unionUniqueIntegerPoints": 2293,
+    "unionAlphaHistogram": {
+      "0": 2291,
+      "1": 2
+    },
+    "result": "No sampled opaque intrusion remains in these independently selected original ground regions. Two literalA1 pixels are retained and reported, not relabeledA0 or fixed by changing thresholds. All other union pixelsA0. Does not certify all unreviewed gate/tower ground or fractional filtered edges.",
+    "nativeRequirement": "Using same registered candidate and its actual native visual pipeline, iterate every integer source point inside each supplied polygon including boundary. Require no gate-material Coverage/opaque drawing/pointer interception on these ground regions under existing production alpha semantics; empty-fixture underlying terrain semantics remain canonical. Preserve literal raw A1 observations separately rather than asserting all PNG alpha0. Include independent same-pose actor controls and fixed leg positives.",
+    "negativeControlUnmodifiedV1": [
+      {
+        "regionId": "continuous-exposed-mouth-road",
+        "v1OpaqueAtLeast200Count": 106,
+        "examples": [
+          {
+            "source": [
+              1334,
+              900
+            ],
+            "v1Alpha": 247
+          },
+          {
+            "source": [
+              1335,
+              900
+            ],
+            "v1Alpha": 252
+          },
+          {
+            "source": [
+              1335,
+              901
+            ],
+            "v1Alpha": 248
+          },
+          {
+            "source": [
+              1336,
+              901
+            ],
+            "v1Alpha": 252
+          },
+          {
+            "source": [
+              1337,
+              901
+            ],
+            "v1Alpha": 252
+          },
+          {
+            "source": [
+              1336,
+              902
+            ],
+            "v1Alpha": 243
+          },
+          {
+            "source": [
+              1337,
+              902
+            ],
+            "v1Alpha": 252
+          },
+          {
+            "source": [
+              1338,
+              902
+            ],
+            "v1Alpha": 252
+          }
+        ]
+      },
+      {
+        "regionId": "left-inner-edge-ground-strip",
+        "v1OpaqueAtLeast200Count": 0,
+        "examples": []
+      },
+      {
+        "regionId": "below-left-real-stone-foot",
+        "v1OpaqueAtLeast200Count": 0,
+        "examples": []
+      },
+      {
+        "regionId": "below-right-real-stone-foot",
+        "v1OpaqueAtLeast200Count": 71,
+        "examples": [
+          {
+            "source": [
+              1361,
+              905
+            ],
+            "v1Alpha": 253
+          },
+          {
+            "source": [
+              1358,
+              906
+            ],
+            "v1Alpha": 253
+          },
+          {
+            "source": [
+              1359,
+              906
+            ],
+            "v1Alpha": 253
+          },
+          {
+            "source": [
+              1360,
+              906
+            ],
+            "v1Alpha": 253
+          },
+          {
+            "source": [
+              1361,
+              906
+            ],
+            "v1Alpha": 253
+          },
+          {
+            "source": [
+              1354,
+              907
+            ],
+            "v1Alpha": 253
+          },
+          {
+            "source": [
+              1355,
+              907
+            ],
+            "v1Alpha": 253
+          },
+          {
+            "source": [
+              1356,
+              907
+            ],
+            "v1Alpha": 253
+          }
+        ]
+      }
+    ],
+    "sourceOwnerNote": "Original luojia.png is opaqueRGBA255 throughout. These are object-aperture/ground negatives based on visible real dirt, not assertions that the mother bitmap is transparent. Polygons intentionally exclude the wooden leaf, true stone and farther shrubs."
+  },
+  "rightReturnWall": {
+    "lowerVerticalMaterialPolygonCandidate": [
+      [
+        771,
+        675
+      ],
+      [
+        845,
+        740
+      ],
+      [
+        845,
+        937
+      ],
+      [
+        771,
+        891
+      ]
+    ],
+    "status": "Useful bounded LOWER vertical grey return partition. Left opening edge771675 and right stone corner845740 are visibly identifiable, and bottom771891\u2192845937 follows the real sloped grey stone lower face.",
+    "topBoundaryCaveat": "The diagonal771675\u2192845740 is an explicit renderer partition, NOT a fully visible hard material seam. Grey curved arch soffit exists above it and merges with return wall. Retain that upper region under the arch surface; do not leave a gap or claim this quad is the entire grey material boundary.",
+    "rightBoundary": "Nearx845 is the transition from grey return to light front voussoir/leg, about1\u20133assetpx soft painted boundary, not an additional world-space tolerance.",
+    "trueSupportLineApproxAsset": [
+      [
+        775,
+        890
+      ],
+      [
+        811,
+        916
+      ],
+      [
+        845,
+        938
+      ]
+    ],
+    "trueSupportMaterialSamples": [
+      {
+        "asset": [
+          775,
+          890
+        ],
+        "candidateRgba": [
+          93,
+          74,
+          65,
+          252
+        ],
+        "source": [
+          1343.5454545454545,
+          895.539393939394
+        ],
+        "meaning": "Lower grey left return inner stone"
+      },
+      {
+        "asset": [
+          811,
+          916
+        ],
+        "candidateRgba": [
+          90,
+          73,
+          64,
+          252
+        ],
+        "source": [
+          1350.5272727272727,
+          900.5818181818182
+        ],
+        "meaning": "Lower grey return middle inner stone"
+      },
+      {
+        "asset": [
+          840,
+          935
+        ],
+        "candidateRgba": [
+          118,
+          97,
+          84,
+          251
+        ],
+        "source": [
+          1356.1515151515152,
+          904.2666666666668
+        ],
+        "meaning": "Near-right lower grey stone"
+      },
+      {
+        "asset": [
+          845,
+          938
+        ],
+        "candidateRgba": [
+          53,
+          38,
+          24,
+          251
+        ],
+        "source": [
+          1357.121212121212,
+          904.8484848484849
+        ],
+        "meaning": "Dark real lower stone near front corner"
+      },
+      {
+        "asset": [
+          900,
+          916
+        ],
+        "candidateRgba": [
+          31,
+          26,
+          19,
+          252
+        ],
+        "source": [
+          1367.7878787878788,
+          900.5818181818182
+        ],
+        "meaning": "Adjoining front masonry lower return, not the grey quad left-to-right footprint"
+      }
+    ],
+    "mappedExtents": "Actual verified grey support runs approximatelysource1343.55,895.54 to1357.12,904.85. Do not substitute the upper arch virtual support for this short return face.",
+    "oldFootBoundaryObservation": {
+      "source": [
+        1354,
+        904
+      ],
+      "originalRgba": [
+        132,
+        109,
+        97,
+        255
+      ],
+      "candidatePixel": [
+        829,
+        934
+      ],
+      "candidateRgba": [
+        73,
+        66,
+        55,
+        73
+      ]
+    },
+    "boundaryInterpretation": "Original1354904 samples candidateA73 at an antialiased boundary. This is not a new solid-material certificate and has not been moved or threshold-relaxed. True v2 lowerstone samples are given separately.",
+    "centralSpan": "Transparent central aperture has no per-column real foot. Arch wall over it may use an explicitly VIRTUAL cross-leg support between actual left/right front legs; never call the arch apex/lowest alpha of an empty column a ground foot. Grey return quad and independent wood leaf use their own physical lower lines."
+  },
+  "frozenActorStonePoints": [
+    {
+      "source": [
+        1296,
+        899
+      ],
+      "originalRgba": [
+        248,
+        204,
+        160,
+        255
+      ],
+      "candidatePixel": [
+        530,
+        908
+      ],
+      "candidateRgba": [
+        240,
+        205,
+        167,
+        252
+      ]
+    },
+    {
+      "source": [
+        1297,
+        899
+      ],
+      "originalRgba": [
+        244,
+        199,
+        158,
+        255
+      ],
+      "candidatePixel": [
+        535,
+        908
+      ],
+      "candidateRgba": [
+        246,
+        214,
+        179,
+        252
+      ]
+    },
+    {
+      "source": [
+        1297,
+        927
+      ],
+      "originalRgba": [
+        228,
+        181,
+        138,
+        255
+      ],
+      "candidatePixel": [
+        535,
+        1052
+      ],
+      "candidateRgba": [
+        233,
+        196,
+        159,
+        253
+      ]
+    },
+    {
+      "source": [
+        1298,
+        929
+      ],
+      "originalRgba": [
+        232,
+        186,
+        142,
+        255
+      ],
+      "candidatePixel": [
+        540,
+        1063
+      ],
+      "candidateRgba": [
+        150,
+        124,
+        95,
+        251
+      ]
+    }
+  ],
+  "originalWoodenLeaf": {
+    "identity": "One partly open wooden gate leaf, with curved/arch-shaped visible top, vertical planks and a sloping bottom. Not a rectangular hole fill or four-corner solid wall. No opening interaction/rules introduced.",
+    "referenceImages": [
+      "original-door-leaf-close.png",
+      "original-door-leaf-grid.png"
+    ],
+    "visibleMaterialOutlineInner": [
+      [
+        1327,
+        852
+      ],
+      [
+        1331,
+        850
+      ],
+      [
+        1335,
+        849
+      ],
+      [
+        1340,
+        850
+      ],
+      [
+        1344,
+        853
+      ],
+      [
+        1347,
+        858
+      ],
+      [
+        1348,
+        864
+      ],
+      [
+        1348,
+        900
+      ],
+      [
+        1328,
+        890
+      ]
+    ],
+    "outlineRgba": [
+      [
+        54,
+        47,
+        30,
+        255
+      ],
+      [
+        70,
+        53,
+        38,
+        255
+      ],
+      [
+        70,
+        52,
+        39,
+        255
+      ],
+      [
+        66,
+        48,
+        34,
+        255
+      ],
+      [
+        80,
+        63,
+        47,
+        255
+      ],
+      [
+        73,
+        57,
+        43,
+        255
+      ],
+      [
+        54,
+        41,
+        27,
+        255
+      ],
+      [
+        57,
+        41,
+        27,
+        255
+      ],
+      [
+        69,
+        53,
+        35,
+        255
+      ]
+    ],
+    "fourUsefulBoundaryAnchors": {
+      "upperLeft": [
+        1327,
+        852
+      ],
+      "upperRight": [
+        1348,
+        864
+      ],
+      "lowerRight": [
+        1348,
+        900
+      ],
+      "lowerLeft": [
+        1328,
+        890
+      ]
+    },
+    "fourCornerCaveat": "These are useful visible side/low-edge anchors, NOT a complete four-corner top rectangle. Upper cap curves up via1335,849; preserve the outline or explicitly mark a simplified new design. Low-resolution outer antialias and hidden hinge prevent subpixel exact external silhouette certification.",
+    "actualBottomWoodInnerLine": [
+      [
+        1328,
+        889
+      ],
+      [
+        1334,
+        893
+      ],
+      [
+        1341,
+        897
+      ],
+      [
+        1347,
+        900
+      ]
+    ],
+    "bottomRgba": [
+      [
+        76,
+        58,
+        42,
+        255
+      ],
+      [
+        101,
+        77,
+        55,
+        255
+      ],
+      [
+        78,
+        62,
+        46,
+        255
+      ],
+      [
+        80,
+        63,
+        48,
+        255
+      ]
+    ],
+    "groundFrontApproxVisibleOuterLine": [
+      [
+        1327,
+        891
+      ],
+      [
+        1349,
+        902
+      ]
+    ],
+    "footLineMeaning": "Actual visible sloping lower timber/material line. Outer dark frame transition is about1sourcepixel below inner samples. It belongs to the wooden leaf, not the stone arch front or a guessed hidden hinge/ground base.",
+    "woodPositiveSamples": [
+      {
+        "source": [
+          1332,
+          870
+        ],
+        "rgba": [
+          87,
+          65,
+          46,
+          255
+        ]
+      },
+      {
+        "source": [
+          1339,
+          884
+        ],
+        "rgba": [
+          92,
+          63,
+          45,
+          255
+        ]
+      },
+      {
+        "source": [
+          1334,
+          893
+        ],
+        "rgba": [
+          101,
+          77,
+          55,
+          255
+        ]
+      },
+      {
+        "source": [
+          1347,
+          900
+        ],
+        "rgba": [
+          80,
+          63,
+          48,
+          255
+        ]
+      }
+    ],
+    "leafOwnerNegatives": [
+      {
+        "source": [
+          1322,
+          890
+        ],
+        "rgba": [
+          167,
+          133,
+          98,
+          255
+        ],
+        "meaning": "Actual ground left of leaf"
+      },
+      {
+        "source": [
+          1334,
+          899
+        ],
+        "rgba": [
+          154,
+          120,
+          87,
+          255
+        ],
+        "meaning": "Actual ground below local wood bottom"
+      },
+      {
+        "source": [
+          1347,
+          907
+        ],
+        "rgba": [
+          252,
+          202,
+          128,
+          255
+        ],
+        "meaning": "Actual paving below lower right leaf"
+      },
+      {
+        "source": [
+          1335,
+          845
+        ],
+        "rgba": [
+          248,
+          214,
+          171,
+          255
+        ],
+        "meaning": "Stone arch above cap; NOT world ground, belongs to stone owner"
+      }
+    ],
+    "depth": "Use sloped visible timber bottom, not globalrightstonefront904/905 or virtualarchspan. V2 grey return occupies part of old leaf screen area; separate textured wood must be depth-composed in front where its real bottom is nearer. No assumption that removal of baked wood makes every oldwoodpixel world-empty."
+  },
+  "remainingBoundary": "These four road polygons prove a continuous local aperture/approach and foot-under-clearance. They do not certify all eight canonical gate-pier responsibility groups, fullhidden tower bases, complete source-accurate arch widths, or native draw/Pick. Source opening and verified control points remain fixed; any next change must preserve the same region contract.",
+  "ready": true
+}
