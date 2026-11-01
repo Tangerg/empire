@@ -1,0 +1,9 @@
+# Low granary grain bin — source-aligned local-depth material geometry
+
+Generated whole sprite is REJECTED: two front feet minmaxfit.397px does not preserve original wood432224/225; both map to alpha0. Preserve that failure; no second generation. Implemented code-native geometry reuses verified opaque wood/grain UV only. Source left417251/right441243 and actual column432245 contacts own local depth. Hidden left side completion and closed front planks are authored design. Original dark front seams are NOT proven through-holes, so no invented alpha holes.
+
+11 frozen material/negative samples pass. Native original static actualC07 Torren at27,14 and27,15 exposes both432224/225 incorrectly behind sourcewood. New independent bin blocks behind27,14 and preserves front27,15,2samples each; west-facing same real appearance also passes actual front-panel432228/229 at both poses. The preliminary430224 shared control is explicitly withdrawn: frontalpha2, notopaque. State unchanged, issues0, existing granary door/approach retained. Fresh build0warnings/errors.
+
+All-left-foot251 depth mutant keeps same shape/material but wrongly blocks the front actor: valid result JSON and exact `Granary bin actual-role sloping-depth contract failed`, not incidental error. New geometry remains external read-only fixture, unbound production; no commands/real gameplay/save access.
+
+Parent inspected same-camera original-back vs candidate-back/front: body ordering correct, retain geometric candidate. Front black wood seam misleadingly resembles a hole; grain is too bright/fine. These are explicit material-unification debts, not final art acceptance. Ground contact shadows/performance/full stock/full level incomplete. Next main-door stock must keep independent contacts, canonical entry corridor and approach;535215 is low box wood, never the house foot.

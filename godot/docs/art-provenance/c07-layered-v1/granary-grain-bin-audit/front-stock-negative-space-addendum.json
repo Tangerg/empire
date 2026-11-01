@@ -1,0 +1,259 @@
+{
+  "scope": "Close only low foreground stock material/negative-space contract. Door-front535215group is documented separately in mainstockfile but not expanded here. No engine/native claim.",
+  "fixedPavingNegatives": [
+    {
+      "source": [
+        432,
+        246
+      ],
+      "rgba": [
+        239,
+        191,
+        137,
+        255
+      ],
+      "material": "actual paving immediately below same-column wood245"
+    },
+    {
+      "source": [
+        440,
+        248
+      ],
+      "rgba": [
+        242,
+        188,
+        134,
+        255
+      ],
+      "material": "actual paving at front legal27,15canonicalfoot"
+    },
+    {
+      "source": [
+        448,
+        238
+      ],
+      "rgba": [
+        246,
+        197,
+        140,
+        255
+      ],
+      "material": "actual paving outside right low wood post; not stock/cargo"
+    },
+    {
+      "source": [
+        430,
+        217
+      ],
+      "rgba": [
+        241,
+        175,
+        112,
+        255
+      ],
+      "material": "actual exposed paving behind/above low stock, clear of canopyshaft atx438..442 and barreltoleft"
+    }
+  ],
+  "sameColumnFootControl": {
+    "wood": [
+      432,
+      245
+    ],
+    "woodRgba": [
+      98,
+      66,
+      28,
+      255
+    ],
+    "paving": [
+      432,
+      246
+    ],
+    "pavingRgba": [
+      239,
+      191,
+      137,
+      255
+    ],
+    "meaning": "FrontactorfootY248 is ahead of genuine local wood bottom245; do not flatten groupdepth toleftfoot251."
+  },
+  "transparentHoleConclusion": {
+    "certifiedThroughHoles": [],
+    "status": "NOT established",
+    "evidence": "Front face has dark small triangles/slots amid brown wood and orange stock. The original raster does not show an unambiguous continuation of outside paving through them. They may be wood seams, internal darkness or stock shadows. Do not infer alpha0 merely from darkRGB and do not invent a hard historical hole contract.",
+    "designBoundary": "A new coherent stock-front construction may use explicit original-aligned material surfaces while keeping fixed paving negatives. Do not use one broad opaque rectangular backdrop extending into the known paving."
+  },
+  "optionalLowerFrontPanelPositives": [
+    {
+      "cell": [
+        27,
+        14
+      ],
+      "terrain": "p",
+      "canonicalFootSource": [
+        440,
+        232
+      ],
+      "actor": "campaign-torren",
+      "assetId": "torren-stage01",
+      "frameIndex": 0,
+      "facing": "west",
+      "witnesses": [
+        {
+          "source": [
+            432,
+            228
+          ],
+          "sourceRgba": [
+            219,
+            142,
+            54,
+            255
+          ],
+          "framePixelFloat": [
+            352.20003993601915,
+            523.3999800319904
+          ],
+          "nearestFramePixel": [
+            352,
+            523
+          ],
+          "actorRgba": [
+            89,
+            58,
+            39,
+            253
+          ]
+        },
+        {
+          "source": [
+            432,
+            229
+          ],
+          "sourceRgba": [
+            200,
+            119,
+            42,
+            255
+          ],
+          "framePixelFloat": [
+            352.20003993601915,
+            533.7999850239928
+          ],
+          "nearestFramePixel": [
+            352,
+            534
+          ],
+          "actorRgba": [
+            66,
+            42,
+            25,
+            253
+          ]
+        }
+      ],
+      "purpose": "Optional lower actual front-panel wood positive, not a replacement of frozen east432224/225 pair."
+    },
+    {
+      "cell": [
+        27,
+        15
+      ],
+      "terrain": "p",
+      "canonicalFootSource": [
+        440,
+        248
+      ],
+      "actor": "campaign-torren",
+      "assetId": "torren-stage01",
+      "frameIndex": 0,
+      "facing": "west",
+      "witnesses": [
+        {
+          "source": [
+            432,
+            228
+          ],
+          "sourceRgba": [
+            219,
+            142,
+            54,
+            255
+          ],
+          "framePixelFloat": [
+            352.20003993601915,
+            356.99990015995206
+          ],
+          "nearestFramePixel": [
+            352,
+            357
+          ],
+          "actorRgba": [
+            115,
+            109,
+            108,
+            253
+          ]
+        },
+        {
+          "source": [
+            432,
+            229
+          ],
+          "sourceRgba": [
+            200,
+            119,
+            42,
+            255
+          ],
+          "framePixelFloat": [
+            352.20003993601915,
+            367.3999051519545
+          ],
+          "nearestFramePixel": [
+            352,
+            367
+          ],
+          "actorRgba": [
+            95,
+            88,
+            86,
+            253
+          ]
+        }
+      ],
+      "purpose": "Optional lower actual front-panel wood positive, not a replacement of frozen east432224/225 pair."
+    }
+  ],
+  "earlierFailedSharedPoint": {
+    "source": [
+      430,
+      224
+    ],
+    "backEastAlpha": 253,
+    "frontEastAlpha": 2,
+    "accepted": false
+  },
+  "frozenPrimaryPositives": {
+    "sourcePoints": [
+      [
+        432,
+        224
+      ],
+      [
+        432,
+        225
+      ]
+    ],
+    "bothEastPosesAllAlpha253": true,
+    "sourceMeaning": "real wood/upper stock rim material, separate from high canopyshaft",
+    "preserve": "Keep original failed whole-candidatealpha0 report as negative evidence; atomic material assembly is explicit new design, not an original wholePNGfit pass."
+  },
+  "references": [
+    "granary-stock-source-contract.json",
+    "fixed-stock-negative-space.png",
+    "front-bin-grid.png",
+    "fixed-stock-witnesses.png"
+  ],
+  "ready": true
+}

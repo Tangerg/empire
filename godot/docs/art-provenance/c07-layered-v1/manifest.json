@@ -111,6 +111,17 @@
       "mode": "RGBA",
       "sha256": "5f279e28f58178c4e7f377bdab3ddac86412fc9de827cf787c1c9a2c11e9a3d0",
       "status": "UNBOUND main+canopy static candidate, single certified right door foot; hidden wall bases authored. Actual C07 roof/side/back and wolf front controls plus site pointer checks pass.178strips performance not passed; cargo/full scene incomplete."
+    },
+    {
+      "file": "assets/native/c07-layered-v1/granary-grain-bin-v1-candidate.png",
+      "generation": "exec-73643cbc-0965-46ca-969a-91f9dcabc22b",
+      "pixelSize": [
+        1335,
+        1178
+      ],
+      "mode": "RGBA",
+      "sha256": "10a92265306873ea69066b5f96117c658086820c8d2f60953f8069d85be665e5",
+      "status": "Whole-sprite fit REJECTED despite.397px feet residual: frozen wood samples A0. Only opaque wood/grain UV reused in source-aligned local-depth geometry; actualC07 front/back passes, visual grain/seam debts remain."
     }
   ],
   "staticStudies": [
@@ -129,6 +140,10 @@
     {
       "path": "granary-main-v1-audit",
       "status": "Mainhouse+code-native cloth canopy actual-C07 regression corrected in isolated static scene, no old granary masks. Material/depth/true-role/pointer guards and intentional depth mutant validated. Cross-object style/contact shadows/cargo/full integration pending."
+    },
+    {
+      "path": "granary-grain-bin-audit",
+      "status": "UNBOUND geometric candidate.11material/negative samples; actual Torren east rim and west panel back/front controls pass. Flat-left-depth mutant reaches intended failure. No transparent-hole claim, no production/gameplay/performance/full-scene acceptance."
     }
   ]
 }

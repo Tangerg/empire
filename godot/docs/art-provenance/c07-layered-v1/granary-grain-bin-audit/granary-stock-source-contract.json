@@ -1,0 +1,1356 @@
+{
+  "scope": "Exactly TWO local granary stock groups. Static source, existing currentC07actor alpha, canonical terrain and old painted geometry only. No GUI, engine, save, production mutation or generated art. The first has a strong new back/front static missing-layer example; the second is physical restoration and front/route protection, not a newly certified back-occlusion bug.",
+  "source": {
+    "resourcePath": "res://assets/native/scenes/luojia.png",
+    "sha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+    "size": [
+      1536,
+      1024
+    ],
+    "paintedSha256": "37f95743c6278a6e8e0c1144feb37d38b9eb17790a776815c48a842190f23d91"
+  },
+  "groups": [
+    {
+      "id": "granary-canopy-front-low-wood-stock",
+      "priority": 1,
+      "sourceVisibleBoundsApprox": [
+        415,
+        219,
+        445,
+        253
+      ],
+      "description": "Low foreground wood stock enclosure/crate-front immediately in front of cloth-canopy post, with visible vertical edge members and lower slanted wood rail/panel. Rear stock and barrel are separate/partly hidden. Source does not clearly certify every dark interior as an open lattice hole; do not invent a solid dark billboard or an exact historical functional label.",
+      "sameMaterialFixedPositives": [
+        {
+          "source": [
+            432,
+            224
+          ],
+          "rgba": [
+            121,
+            88,
+            37,
+            255
+          ],
+          "material": "real brown/gold low stock wood, not upper canopy shaft",
+          "cell": [
+            27,
+            14
+          ],
+          "terrain": "p",
+          "standingPartsContaining": []
+        },
+        {
+          "source": [
+            432,
+            225
+          ],
+          "rgba": [
+            213,
+            156,
+            85,
+            255
+          ],
+          "material": "real brown/gold low stock wood, not upper canopy shaft",
+          "cell": [
+            27,
+            14
+          ],
+          "terrain": "p",
+          "standingPartsContaining": []
+        }
+      ],
+      "actualContacts": [
+        {
+          "source": [
+            417,
+            251
+          ],
+          "rgba": [
+            44,
+            16,
+            2,
+            255
+          ],
+          "material": "left foreground wood member lower inner contact;253 is paving",
+          "cell": [
+            26,
+            15
+          ],
+          "terrain": "p",
+          "standingPartsContaining": []
+        },
+        {
+          "source": [
+            441,
+            243
+          ],
+          "rgba": [
+            59,
+            23,
+            1,
+            255
+          ],
+          "material": "right low stock wood member ground edge;245 is paving",
+          "cell": [
+            27,
+            15
+          ],
+          "terrain": "p",
+          "standingPartsContaining": []
+        }
+      ],
+      "sameColumnLowerEdge": {
+        "source": [
+          432,
+          245
+        ],
+        "rgba": [
+          98,
+          66,
+          28,
+          255
+        ],
+        "material": "actual lower stock wood edge at samex as both fixed positive samples",
+        "cell": [
+          27,
+          15
+        ],
+        "terrain": "p",
+        "standingPartsContaining": []
+      },
+      "sameColumnPavingImmediatelyBelow": {
+        "source": [
+          432,
+          246
+        ],
+        "rgba": [
+          239,
+          191,
+          137,
+          255
+        ],
+        "material": "paving below stock wood, proving frontactorfoot248 is in front locally",
+        "cell": [
+          27,
+          15
+        ],
+        "terrain": "p",
+        "standingPartsContaining": []
+      },
+      "footIntervals": "Painted edge transition: left wood251 then soft contact252 then paving253; right wood243 then soft contact244 then paving245. These are observed pixel transitions, not newly added fitting tolerances.",
+      "canonicalFootingCaution": "Observed left/right contacts lie in passable26,15 and27,15 cells. This does NOT itself prove a navigation defect: actual actor shoe contacts need not occupy small offset wood feet. No collision/map change proposed.",
+      "separationFromCanopy": "Upper continuous canopyshaft around439200..219 remains canopy responsibility.441243 is the LOW STOCK right edge, not a newly certified hidden canopy foot. New separate stock may occlude the canopy base; do not attach its foot to the canopy or move the main house.",
+      "depthContract": "Use physically supported sloping local contact/depth. Left251 and right243 cannot become one global251 front when the accepted same-x source432245/frontactor248 control requires the actor in front. Geometry completion between observed contacts is explicit design, not a hidden-foot audit.",
+      "materialNegatives": [
+        {
+          "source": [
+            448,
+            216
+          ],
+          "rgba": [
+            227,
+            166,
+            99,
+            255
+          ],
+          "material": "existing fixed open paving to right of canopy shaft; preserve",
+          "cell": [
+            28,
+            13
+          ],
+          "terrain": "p",
+          "standingPartsContaining": []
+        },
+        {
+          "source": [
+            448,
+            238
+          ],
+          "rgba": [
+            246,
+            197,
+            140,
+            255
+          ],
+          "material": "open paving immediately right of low stock",
+          "cell": [
+            28,
+            14
+          ],
+          "terrain": "p",
+          "standingPartsContaining": []
+        },
+        {
+          "source": [
+            456,
+            232
+          ],
+          "rgba": [
+            250,
+            196,
+            131,
+            255
+          ],
+          "material": "canonical28,14p centre: open paving beside stock",
+          "cell": [
+            28,
+            14
+          ],
+          "terrain": "p",
+          "standingPartsContaining": []
+        },
+        {
+          "source": [
+            456,
+            216
+          ],
+          "rgba": [
+            245,
+            195,
+            134,
+            255
+          ],
+          "material": "canonical28,13p centre: open paving above/right",
+          "cell": [
+            28,
+            13
+          ],
+          "terrain": "p",
+          "standingPartsContaining": []
+        },
+        {
+          "source": [
+            440,
+            248
+          ],
+          "rgba": [
+            242,
+            188,
+            134,
+            255
+          ],
+          "material": "canonical27,15p centre: open paving in front of stock",
+          "cell": [
+            27,
+            15
+          ],
+          "terrain": "p",
+          "standingPartsContaining": []
+        }
+      ],
+      "backPose": {
+        "cell": [
+          27,
+          14
+        ],
+        "terrain": "p",
+        "canonicalFootSource": [
+          440,
+          232
+        ],
+        "assetId": "torren-stage01",
+        "unitType": "c01.swordsman",
+        "presentInC07": true,
+        "frameIndex": 0,
+        "frameRole": "idle",
+        "facing": "east",
+        "resourcePath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+        "sha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
+        "frameRegion": [
+          0,
+          0,
+          557,
+          725
+        ],
+        "frameAnchor": [
+          269,
+          565
+        ],
+        "spriteScale": 0.0961538,
+        "witnesses": [
+          {
+            "source": [
+              432,
+              224
+            ],
+            "rgba": [
+              121,
+              88,
+              37,
+              255
+            ],
+            "material": "independently identified original wood material",
+            "cell": [
+              27,
+              14
+            ],
+            "terrain": "p",
+            "standingPartsContaining": [],
+            "framePixelFloat": [
+              185.79996006398085,
+              481.79996006398085
+            ],
+            "nearestFramePixel": [
+              186,
+              482
+            ],
+            "actorRgba": [
+              68,
+              41,
+              25,
+              253
+            ]
+          },
+          {
+            "source": [
+              432,
+              225
+            ],
+            "rgba": [
+              213,
+              156,
+              85,
+              255
+            ],
+            "material": "independently identified original wood material",
+            "cell": [
+              27,
+              14
+            ],
+            "terrain": "p",
+            "standingPartsContaining": [],
+            "framePixelFloat": [
+              185.79996006398085,
+              492.1999650559832
+            ],
+            "nearestFramePixel": [
+              186,
+              492
+            ],
+            "actorRgba": [
+              55,
+              34,
+              24,
+              253
+            ]
+          }
+        ],
+        "expectedRelation": "Must be behind this stock wood: actorfootY232 is behind the same material/support front atx432,y245. This wood is separate from high canopy post; exact same source samples have no standing-part coverage in original painted scene.",
+        "pOnlyTerrainPathFromTorrenInitial40_25": [
+          [
+            40,
+            25
+          ],
+          [
+            41,
+            25
+          ],
+          [
+            41,
+            24
+          ],
+          [
+            41,
+            23
+          ],
+          [
+            41,
+            22
+          ],
+          [
+            40,
+            22
+          ],
+          [
+            39,
+            22
+          ],
+          [
+            39,
+            21
+          ],
+          [
+            39,
+            20
+          ],
+          [
+            39,
+            19
+          ],
+          [
+            38,
+            19
+          ],
+          [
+            37,
+            19
+          ],
+          [
+            36,
+            19
+          ],
+          [
+            35,
+            19
+          ],
+          [
+            34,
+            19
+          ],
+          [
+            33,
+            19
+          ],
+          [
+            32,
+            19
+          ],
+          [
+            31,
+            19
+          ],
+          [
+            30,
+            19
+          ],
+          [
+            29,
+            19
+          ],
+          [
+            28,
+            19
+          ],
+          [
+            27,
+            19
+          ],
+          [
+            26,
+            19
+          ],
+          [
+            26,
+            18
+          ],
+          [
+            26,
+            17
+          ],
+          [
+            26,
+            16
+          ],
+          [
+            26,
+            15
+          ],
+          [
+            27,
+            15
+          ],
+          [
+            27,
+            14
+          ]
+        ],
+        "pathSteps": 28,
+        "pathLimit": "Static terrain connectivity only, not movement/occupancy/turn simulation."
+      },
+      "frontPose": {
+        "cell": [
+          27,
+          15
+        ],
+        "terrain": "p",
+        "canonicalFootSource": [
+          440,
+          248
+        ],
+        "assetId": "torren-stage01",
+        "unitType": "c01.swordsman",
+        "presentInC07": true,
+        "frameIndex": 0,
+        "frameRole": "idle",
+        "facing": "east",
+        "resourcePath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+        "sha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
+        "frameRegion": [
+          0,
+          0,
+          557,
+          725
+        ],
+        "frameAnchor": [
+          269,
+          565
+        ],
+        "spriteScale": 0.0961538,
+        "witnesses": [
+          {
+            "source": [
+              432,
+              224
+            ],
+            "rgba": [
+              121,
+              88,
+              37,
+              255
+            ],
+            "material": "independently identified original wood material",
+            "cell": [
+              27,
+              14
+            ],
+            "terrain": "p",
+            "standingPartsContaining": [],
+            "framePixelFloat": [
+              185.79996006398085,
+              315.3998801919425
+            ],
+            "nearestFramePixel": [
+              186,
+              315
+            ],
+            "actorRgba": [
+              88,
+              57,
+              37,
+              253
+            ]
+          },
+          {
+            "source": [
+              432,
+              225
+            ],
+            "rgba": [
+              213,
+              156,
+              85,
+              255
+            ],
+            "material": "independently identified original wood material",
+            "cell": [
+              27,
+              14
+            ],
+            "terrain": "p",
+            "standingPartsContaining": [],
+            "framePixelFloat": [
+              185.79996006398085,
+              325.79988518394487
+            ],
+            "nearestFramePixel": [
+              186,
+              326
+            ],
+            "actorRgba": [
+              140,
+              97,
+              65,
+              253
+            ]
+          }
+        ],
+        "expectedRelation": "Must remain in front and selectable at both opaque samples: actorfootY248 is ahead of observed same-x wood bottom245, with paving starting246. Do not use left supportY251 as a uniform whole-objectdepth that reverses this control.",
+        "pOnlyTerrainPathFromTorrenInitial40_25": [
+          [
+            40,
+            25
+          ],
+          [
+            41,
+            25
+          ],
+          [
+            41,
+            24
+          ],
+          [
+            41,
+            23
+          ],
+          [
+            41,
+            22
+          ],
+          [
+            40,
+            22
+          ],
+          [
+            39,
+            22
+          ],
+          [
+            39,
+            21
+          ],
+          [
+            39,
+            20
+          ],
+          [
+            39,
+            19
+          ],
+          [
+            38,
+            19
+          ],
+          [
+            37,
+            19
+          ],
+          [
+            36,
+            19
+          ],
+          [
+            35,
+            19
+          ],
+          [
+            34,
+            19
+          ],
+          [
+            33,
+            19
+          ],
+          [
+            32,
+            19
+          ],
+          [
+            31,
+            19
+          ],
+          [
+            30,
+            19
+          ],
+          [
+            29,
+            19
+          ],
+          [
+            28,
+            19
+          ],
+          [
+            27,
+            19
+          ],
+          [
+            26,
+            19
+          ],
+          [
+            26,
+            18
+          ],
+          [
+            26,
+            17
+          ],
+          [
+            26,
+            16
+          ],
+          [
+            26,
+            15
+          ],
+          [
+            27,
+            15
+          ]
+        ],
+        "pathSteps": 27,
+        "pathLimit": "Static terrain connectivity only, not movement/occupancy/turn simulation."
+      },
+      "rejectedPreliminarySharedWitness": {
+        "cell": [
+          27,
+          15
+        ],
+        "terrain": "p",
+        "canonicalFootSource": [
+          440,
+          248
+        ],
+        "assetId": "torren-stage01",
+        "unitType": "c01.swordsman",
+        "presentInC07": true,
+        "frameIndex": 0,
+        "frameRole": "idle",
+        "facing": "east",
+        "resourcePath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+        "sha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
+        "frameRegion": [
+          0,
+          0,
+          557,
+          725
+        ],
+        "frameAnchor": [
+          269,
+          565
+        ],
+        "spriteScale": 0.0961538,
+        "witnesses": [
+          {
+            "source": [
+              430,
+              224
+            ],
+            "rgba": [
+              180,
+              131,
+              69,
+              255
+            ],
+            "material": "independently identified original wood material",
+            "cell": [
+              26,
+              14
+            ],
+            "terrain": "#",
+            "standingPartsContaining": [],
+            "framePixelFloat": [
+              164.99995007997603,
+              315.3998801919425
+            ],
+            "nearestFramePixel": [
+              165,
+              315
+            ],
+            "actorRgba": [
+              0,
+              0,
+              0,
+              2
+            ]
+          }
+        ],
+        "expectedRelation": "Rejected as shared front/back opaque control: frontactorA2, despite backactorA253. Retained to correct preliminary message; not accepted fixture.",
+        "pOnlyTerrainPathFromTorrenInitial40_25": [
+          [
+            40,
+            25
+          ],
+          [
+            41,
+            25
+          ],
+          [
+            41,
+            24
+          ],
+          [
+            41,
+            23
+          ],
+          [
+            41,
+            22
+          ],
+          [
+            40,
+            22
+          ],
+          [
+            39,
+            22
+          ],
+          [
+            39,
+            21
+          ],
+          [
+            39,
+            20
+          ],
+          [
+            39,
+            19
+          ],
+          [
+            38,
+            19
+          ],
+          [
+            37,
+            19
+          ],
+          [
+            36,
+            19
+          ],
+          [
+            35,
+            19
+          ],
+          [
+            34,
+            19
+          ],
+          [
+            33,
+            19
+          ],
+          [
+            32,
+            19
+          ],
+          [
+            31,
+            19
+          ],
+          [
+            30,
+            19
+          ],
+          [
+            29,
+            19
+          ],
+          [
+            28,
+            19
+          ],
+          [
+            27,
+            19
+          ],
+          [
+            26,
+            19
+          ],
+          [
+            26,
+            18
+          ],
+          [
+            26,
+            17
+          ],
+          [
+            26,
+            16
+          ],
+          [
+            26,
+            15
+          ],
+          [
+            27,
+            15
+          ]
+        ],
+        "pathSteps": 27,
+        "pathLimit": "Static terrain connectivity only, not movement/occupancy/turn simulation."
+      },
+      "nativeStatus": "Not run by this reviewer; static actual-source/material/alpha proof only. Parent native same two poses should verify exact cover/draw/Pick. No cue-size threshold demanded for a narrow prop."
+    },
+    {
+      "id": "granary-door-front-three-wood-containers",
+      "priority": 2,
+      "sourceVisibleBoundsApprox": [
+        501,
+        185,
+        554,
+        220
+      ],
+      "description": "Three distinguishable wood-container masses: tall rear box around522..541/187..214, low left green-filled container around501..522/199..219, low right green-filled container around532..553/200..219. Small rear vegetation/pot and main wall are not silently included. Exact botanical/use classification is unneeded; a visually coherent new stock arrangement is permissible within frozen physical/input constraints.",
+      "oldFalseMainAnchor": {
+        "source": [
+          535,
+          215
+        ],
+        "rgba": [
+          43,
+          24,
+          7,
+          255
+        ],
+        "material": "dark LEFT/SIDE face of low right foreground wood container, NOT house masonry/door threshold/canopy foot",
+        "cell": [
+          33,
+          13
+        ],
+        "terrain": "#",
+        "standingPartsContaining": []
+      },
+      "realExposedContacts": [
+        {
+          "source": [
+            513,
+            219
+          ],
+          "rgba": [
+            82,
+            41,
+            10,
+            255
+          ],
+          "material": "low left container foreground wood ground edge;220 is pavement transition",
+          "cell": [
+            32,
+            13
+          ],
+          "terrain": "#",
+          "standingPartsContaining": []
+        },
+        {
+          "source": [
+            541,
+            218
+          ],
+          "rgba": [
+            43,
+            20,
+            7,
+            255
+          ],
+          "material": "low right container front dark wood ground edge;220 is pavement",
+          "cell": [
+            33,
+            13
+          ],
+          "terrain": "#",
+          "standingPartsContaining": []
+        }
+      ],
+      "belowContacts": [
+        {
+          "source": [
+            513,
+            220
+          ],
+          "rgba": [
+            212,
+            170,
+            122,
+            255
+          ],
+          "material": "paving transition below left container",
+          "cell": [
+            32,
+            13
+          ],
+          "terrain": "#",
+          "standingPartsContaining": []
+        },
+        {
+          "source": [
+            541,
+            220
+          ],
+          "rgba": [
+            238,
+            197,
+            151,
+            255
+          ],
+          "material": "paving below right container",
+          "cell": [
+            33,
+            13
+          ],
+          "terrain": "#",
+          "standingPartsContaining": []
+        }
+      ],
+      "tallRearBoxFoot": null,
+      "tallRearBoxLimit": "Tall rear box lower/far corners are partly hidden by the two low containers; do not certify three outer feet or reuse535215 as a whole-house foot.",
+      "frontPose": {
+        "cell": [
+          33,
+          14
+        ],
+        "terrain": "p",
+        "canonicalFootSource": [
+          536,
+          232
+        ],
+        "assetId": "torren-stage01",
+        "unitType": "c01.swordsman",
+        "presentInC07": true,
+        "frameIndex": 0,
+        "frameRole": "idle",
+        "facing": "east",
+        "resourcePath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+        "sha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
+        "frameRegion": [
+          0,
+          0,
+          557,
+          725
+        ],
+        "frameAnchor": [
+          269,
+          565
+        ],
+        "spriteScale": 0.0961538,
+        "witnesses": [
+          {
+            "source": [
+              535,
+              215
+            ],
+            "rgba": [
+              43,
+              24,
+              7,
+              255
+            ],
+            "material": "independently identified original wood material",
+            "cell": [
+              33,
+              13
+            ],
+            "terrain": "#",
+            "standingPartsContaining": [],
+            "framePixelFloat": [
+              258.5999950079976,
+              388.19991513595926
+            ],
+            "nearestFramePixel": [
+              259,
+              388
+            ],
+            "actorRgba": [
+              45,
+              27,
+              15,
+              253
+            ]
+          },
+          {
+            "source": [
+              539,
+              211
+            ],
+            "rgba": [
+              92,
+              63,
+              28,
+              255
+            ],
+            "material": "independently identified original wood material",
+            "cell": [
+              33,
+              13
+            ],
+            "terrain": "#",
+            "standingPartsContaining": [],
+            "framePixelFloat": [
+              300.2000149760072,
+              346.5998951679497
+            ],
+            "nearestFramePixel": [
+              300,
+              347
+            ],
+            "actorRgba": [
+              138,
+              105,
+              78,
+              253
+            ]
+          }
+        ],
+        "expectedRelation": "ActorfootY232 ahead of low right wood-container contactY218\u2013219. Keep actor visible/pickable over these real wood surfaces;535215 is NOT a house foot.",
+        "pOnlyTerrainPathFromTorrenInitial40_25": [
+          [
+            40,
+            25
+          ],
+          [
+            41,
+            25
+          ],
+          [
+            41,
+            24
+          ],
+          [
+            41,
+            23
+          ],
+          [
+            41,
+            22
+          ],
+          [
+            40,
+            22
+          ],
+          [
+            39,
+            22
+          ],
+          [
+            39,
+            21
+          ],
+          [
+            39,
+            20
+          ],
+          [
+            39,
+            19
+          ],
+          [
+            38,
+            19
+          ],
+          [
+            37,
+            19
+          ],
+          [
+            36,
+            19
+          ],
+          [
+            35,
+            19
+          ],
+          [
+            34,
+            19
+          ],
+          [
+            33,
+            19
+          ],
+          [
+            32,
+            19
+          ],
+          [
+            31,
+            19
+          ],
+          [
+            30,
+            19
+          ],
+          [
+            29,
+            19
+          ],
+          [
+            28,
+            19
+          ],
+          [
+            27,
+            19
+          ],
+          [
+            26,
+            19
+          ],
+          [
+            26,
+            18
+          ],
+          [
+            26,
+            17
+          ],
+          [
+            26,
+            16
+          ],
+          [
+            26,
+            15
+          ],
+          [
+            27,
+            15
+          ],
+          [
+            27,
+            14
+          ],
+          [
+            28,
+            14
+          ],
+          [
+            29,
+            14
+          ],
+          [
+            30,
+            14
+          ],
+          [
+            31,
+            14
+          ],
+          [
+            32,
+            14
+          ],
+          [
+            33,
+            14
+          ]
+        ],
+        "pathSteps": 34,
+        "pathLimit": "Static terrain connectivity only, not movement/occupancy/turn simulation."
+      },
+      "fixedStockExclusionAndApproachPoints": [
+        {
+          "source": [
+            536,
+            232
+          ],
+          "rgba": [
+            253,
+            232,
+            194,
+            255
+          ],
+          "material": "clear paving in front of stock at canonical33,14p",
+          "cell": [
+            33,
+            14
+          ],
+          "terrain": "p",
+          "standingPartsContaining": []
+        },
+        {
+          "source": [
+            552,
+            232
+          ],
+          "rgba": [
+            253,
+            231,
+            177,
+            255
+          ],
+          "material": "clear paving at canonical34,14p",
+          "cell": [
+            34,
+            14
+          ],
+          "terrain": "p",
+          "standingPartsContaining": []
+        },
+        {
+          "source": [
+            568,
+            232
+          ],
+          "rgba": [
+            248,
+            207,
+            146,
+            255
+          ],
+          "material": "granary selection35,14B centre, open paving",
+          "cell": [
+            35,
+            14
+          ],
+          "terrain": "B",
+          "standingPartsContaining": []
+        },
+        {
+          "source": [
+            584,
+            232
+          ],
+          "rgba": [
+            250,
+            210,
+            153,
+            255
+          ],
+          "material": "approach36,14p centre, open paving",
+          "cell": [
+            36,
+            14
+          ],
+          "terrain": "p",
+          "standingPartsContaining": []
+        }
+      ],
+      "doNotMisclassifyOtherMaterial": [
+        {
+          "source": [
+            520,
+            232
+          ],
+          "rgba": [
+            93,
+            126,
+            54,
+            255
+          ],
+          "material": "foreground conifer crown from another object, NOT bare ground merely because32,14 is passable",
+          "cell": [
+            32,
+            14
+          ],
+          "terrain": "p",
+          "standingPartsContaining": []
+        },
+        {
+          "source": [
+            504,
+            232
+          ],
+          "rgba": [
+            246,
+            221,
+            183,
+            255
+          ],
+          "material": "nearby garden-wall/pillar pale cap, excluded from stock, NOT asserted bare ground",
+          "cell": [
+            31,
+            14
+          ],
+          "terrain": "p",
+          "standingPartsContaining": []
+        }
+      ],
+      "backEvidenceBoundary": "No strong two-point back-role regression accepted for this group. LimitedidleTorren/wolf checks found only edge/local-depth-near-tie candidates. Do not call this group an observed currentC07wrong-occlusion incident; primary value is correct stock responsibility and preserving frontactor/entry corridor."
+    }
+  ],
+  "sharedRules": {
+    "pointer": "pass-through for stock; no new capture identity or same-cell occupant inference",
+    "siteOwner": "granary selection35,14 and approach36,14 unchanged",
+    "rules": "No terrain, blocker, collision, unit size or movement changes",
+    "sourceAuditBoundary": "Original joint-granary-foundation audit groups include door-front stock#cells; that coarse group does not turn their wooden contactpoints into main-house feet. Front low-stock contacts are not assigned fake#ownership.",
+    "newDesignBoundary": "Hidden rear volume or stock contents may be explicit new design. Preserve fixed material/clear-space and actual role front/back contracts; do not claim unseen historical geometry reconstructed."
+  },
+  "negativeControls": {
+    "stockMissingLayer": "Original scene membership is empty at432224/432225. Restore original/no-stock rendering to expose the fixed backTorren27,14 failure after parent native integration.",
+    "wrongUniformDepth": "If whole front low-stock uses leftmost footY251, same-x frontTorren27,15 must fail vs observed localfootY245. Do not weaken this reverse check to make one front depth pass.",
+    "wrongOpaqueSample": "430224 frontTorren isA2, explicitly rejected; no witness silently shifted after nativePick."
+  },
+  "references": [
+    "context-source.png",
+    "door-stock-grid.png",
+    "pole-stock-grid.png",
+    "front-bin-grid.png",
+    "door-front-space-grid.png",
+    "fixed-stock-witnesses.png"
+  ],
+  "completionBoundary": "Two local groups only; no expansion to all granary stock/yard or adjacent buildings."
+}
