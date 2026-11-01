@@ -37,3 +37,6 @@ Built-in imagegen, transparent_background=true. Raw exec-1621b21d-bae0-49dc-bceb
 
 ## 2026-11-01 Front cargo candidate v1
 Built-in imagegen transparent. Raw exec-facce1bd-5660-443b-a1ca-201f0f8649ac.png. Original crop977168..999195 for silhouette, C05 single-crate for material only. One enclosed tall wooden box, narrower front/left face and broader slatted right face; conceptual22x27 top corners13,2/1,5/7,10/20,6, base1,22/7,25/18,21; no posts, background, separate stock, feet, ground shadow. New design of bounded original cargo unit, not a claim to resolve original right-side object identity. Candidate remains unbound pending scale/contact and alpha/depth checks.
+
+## Front single-span lean-to candidate v2
+Built-in transparent edit of v1: lengthen both timber posts by305 asset px while preserving roof/eave/width/upper texture, extend transparent canvas; nearest foot6341232→6341537, left170978→1701283 requested. Actual output resampled by generator, so new coordinates must be remeasured; no acceptance from requested coordinates. v1 width-fit gives only24.28source px post length versus original40, not safe to distort roof wider. v2 raw exec-7851c835-54c1-4f99-b9f0-4aca73232cd5.png remains unbound.
