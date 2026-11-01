@@ -1,0 +1,227 @@
+{
+  "scope": "Additional read-only fit of the already stored v2 following owner source re-review. No claim that an L/cross roof is intrinsically source-inaccurate. Actual material parameters, not prompt coordinates.",
+  "assetPath": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/c06-layered-v1/red-cottage-annex-night-v2.png",
+  "assetSha256": "e72f21234fa007784dc2b5b4650ff3869d3c3cd44a976053faca0f0063fd5ff5",
+  "pixelSize": [
+    1536,
+    1024
+  ],
+  "fixedPhysicalFeet": [
+    [
+      180.0,
+      757.0
+    ],
+    [
+      1020.0,
+      945.0
+    ],
+    [
+      1370.0,
+      790.0
+    ]
+  ],
+  "fixedFootAlpha": [
+    251,
+    250,
+    251
+  ],
+  "physicalRoles": [
+    "outer-left base",
+    "frontmost right-wing base",
+    "outer-right base"
+  ],
+  "sourceTargetWholeBuildingEnvelopeLowerFeet": [
+    [
+      720.0,
+      222.0
+    ],
+    [
+      785.0,
+      251.0
+    ],
+    [
+      851.0,
+      228.0
+    ]
+  ],
+  "selectionCell": [
+    23,
+    8
+  ],
+  "approach": [
+    24,
+    8
+  ],
+  "originalGroundPolygonPixels": [
+    [
+      720.0,
+      185.0
+    ],
+    [
+      785.0,
+      164.0
+    ],
+    [
+      851.0,
+      189.0
+    ],
+    [
+      851.0,
+      228.0
+    ],
+    [
+      785.0,
+      251.0
+    ],
+    [
+      720.0,
+      222.0
+    ]
+  ],
+  "threeFeetOnly": {
+    "sourceScale": 0.11008403361344538,
+    "instanceWorldScale": 0.13760504201680673,
+    "sourceTranslation": [
+      686.4495798319329,
+      133.2352941176471
+    ],
+    "sourceFront": [
+      798.7352941176471,
+      237.26470588235298
+    ],
+    "anchorPixels": [
+      1020.0,
+      945.0
+    ],
+    "fractionalContact": [
+      24.33547794117647,
+      7.40231092436975
+    ],
+    "transformedFeet": [
+      [
+        706.264705882353,
+        216.56890756302525
+      ],
+      [
+        798.7352941176471,
+        237.26470588235298
+      ],
+      [
+        837.264705882353,
+        220.20168067226894
+      ]
+    ],
+    "errorsXY": [
+      [
+        -13.735294117646959,
+        -5.431092436974751
+      ],
+      [
+        13.735294117647072,
+        -13.735294117647015
+      ],
+      [
+        -13.735294117646959,
+        -7.798319327731065
+      ]
+    ],
+    "minimaxObjective": 13.735294117647001,
+    "wholeLowContourWithin5": false,
+    "allFeetAndContourWithin5": false,
+    "lowerContourMaximumLInfinityOutside": 14.28571428571422,
+    "worstLowerContourPixel": [
+      175,
+      752
+    ],
+    "worstLowerContourAlpha": 208,
+    "worstLowerContourSource": [
+      705.7142857142858,
+      216.01848739495802
+    ],
+    "secondaryMainFrontPixel": [
+      560,
+      911
+    ],
+    "secondaryMainFrontAlpha": 251,
+    "secondaryMainFrontSource": [
+      748.0966386554622,
+      233.52184873949585
+    ]
+  },
+  "feetAndEntireLowContour": {
+    "sourceScale": 0.1096234309623431,
+    "instanceWorldScale": 0.13702928870292888,
+    "sourceTranslation": [
+      687.0,
+      133.58995815899578
+    ],
+    "sourceFront": [
+      798.81589958159,
+      237.18410041841003
+    ],
+    "anchorPixels": [
+      1020.0,
+      945.0
+    ],
+    "fractionalContact": [
+      24.337996861924687,
+      7.399432157800358
+    ],
+    "transformedFeet": [
+      [
+        706.7322175732218,
+        216.5748953974895
+      ],
+      [
+        798.81589958159,
+        237.18410041841003
+      ],
+      [
+        837.18410041841,
+        220.19246861924682
+      ]
+    ],
+    "errorsXY": [
+      [
+        -13.26778242677824,
+        -5.425104602510487
+      ],
+      [
+        13.815899581589974,
+        -13.815899581589974
+      ],
+      [
+        -13.815899581589974,
+        -7.807531380753176
+      ]
+    ],
+    "minimaxObjective": 13.815899581589974,
+    "wholeLowContourWithin5": false,
+    "allFeetAndContourWithin5": false,
+    "lowerContourMaximumLInfinityOutside": 13.815899581589974,
+    "worstLowerContourPixel": [
+      175,
+      752
+    ],
+    "worstLowerContourAlpha": 208,
+    "worstLowerContourSource": [
+      706.18410041841,
+      216.02677824267778
+    ],
+    "secondaryMainFrontPixel": [
+      560,
+      911
+    ],
+    "secondaryMainFrontAlpha": 251,
+    "secondaryMainFrontSource": [
+      748.3891213389121,
+      233.45690376569036
+    ]
+  },
+  "sourceInterpretation": "Original north red source indeed has a red-roof front recess/crossing and a right-front wing. The previous assumption that any front-L variant is categorically wrong is not used. Original furnishings/yard fence obscure lower/rear support, so this report does not infer a fully visible historical foundation.",
+  "verdict": "FAIL candidate physical proportions against the immutable complete-house lower-envelope references; not a rejection based on roof topology. The stored candidate frontmost outer wing is far right of the original-envelope front vertex after uniform width fit. Do not substitute the earlier/main x560 front for the truly lower x1020 wing just to obtain a pass.",
+  "limits": [
+    "Same5px per-axis convention; no anisotropic scale, rotation, shifted foot witness or changed ground polygon.",
+    "Complete alpha>=200 lower contour considered; no roof alpha used as foundation. Hidden rear, whole-wall responsibility and runtime approach/picking remain unverified."
+  ]
+}

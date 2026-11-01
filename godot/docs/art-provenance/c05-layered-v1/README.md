@@ -1,6 +1,6 @@
 # C05 independent assets — formal binding and historical preparation
 
-## Current status — 2026-11-01 06:46 UTC
+## Current status — 2026-11-01 07:51 UTC
 
 Formal `c01-05.json` now uses independent registered ground and **58** objects.
 The last object is low pass-through bank footing, not new collision. Sloping bridge
@@ -8,7 +8,11 @@ rails use the shared validated depth-strip renderer; a single per-object foot wa
 proven incorrect even for these short pieces. Old painted scene and tests remain
 explicit historical references, not current presentation acceptance.
 Fresh native C05 1499, historical reference 172, canonical source negative controls,
-build, formatting and source metadata pass. Real normal-AI C05 is pending. See
+build, formatting and source metadata pass. New actual normal-AI C05 reached T8
+objective victory with all three civilians full-health; Bran fell and the unchanged
+settlement applies its authored hero-wounded recovery. This is a full C05 run from
+a strictly validated text-reconstructed C04 entry, not a continuous C01–C05 run.
+Performance and cross-chapter art coherence remain open. See
 `../../C05-ENVIRONMENT-RECOVERY-20261101.md` for reset and evidence boundaries.
 Selected resources, including generated shore tuft provenance, are in the manifest
 and prompts. Earlier rejected images remain reference history, not selected art.

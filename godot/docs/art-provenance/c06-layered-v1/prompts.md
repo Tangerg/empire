@@ -112,3 +112,12 @@ transparency. No added ground, furnishings or changed footprint.
 Edit the C05 open shelter to the existing winter moonlit palette, with thin snow
 and one small warm hanging lantern. Preserve the four physical posts, open low
 rails, roof geometry and transparent walk-through floor; no opaque platform.
+
+## Central stone parapet v1
+Reconstruct only the right-side low stone bridge parapet from the original central
+bridge crop, without deck, water, piers or lamps. Preserve steep screen direction
+(+89,-134), not generic isometric slope. Four low square masonry posts connected by
+low narrow stone spans, thin snow and blue moonlit painted shading, true transparent
+1024x1536 canvas. Prompt foot coordinates are framing guidance, never test evidence;
+actual column feet, material width, depth strips and legal deck clearance remain
+pending. No binding to production or gameplay acceptance.

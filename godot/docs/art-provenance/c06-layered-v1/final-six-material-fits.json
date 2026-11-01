@@ -1,0 +1,2013 @@
+{
+  "scope": "Read-only numerical fit of the actual candidate RGBA pixels against immutable original C06 ground polygons. No native picking or gameplay run, no GUI, image generation, repo/rule edits.",
+  "repositoryObservedHead": "a5340cf3c22d3564a6535da1d66d1be850e87af1",
+  "geometryAuditPath": "/workspace/scratch/84c9fe948755/empire-c01/godot/docs/art-provenance/white-river-geometry.json",
+  "geometryAuditSha256": "41c4ee3b92143a9d89cf8fec84f597e3d555d7644bc0dfc598ed6b1a373f2812",
+  "originalMapSha256": "7fbdee75a49446a9e807c3a0852a70eafe9f6c8beeccc25736393371d2d81c8d",
+  "tolerance": {
+    "metric": "For corresponding fixed feet: abs(dx)<=5 AND abs(dy)<=5 source pixels. For every real lower-edge pixel: contained in original convex ground polygon plus an axis-aligned5px square. No tolerance increase.",
+    "sourcePixels": 5,
+    "hiddenRearClaim": false
+  },
+  "method": [
+    "Actual generated PNGs and original source crops were viewed before choosing exposed physical feet. Fixed x positions identify lower masonry/stone corners; fixed foot y is3asset pixels inside the actual alpha>=200 lower outline. They are frozen before fit, not selected using Pick or pass/fail.",
+    "Complete low material profile includes every actual alpha>=200 column terminal from the inspected lower324rows, including BOTH SW door steps and the north annex. The complete chain uses the actual terminal, not an assumed3px inset.",
+    "Uniform positive sourceScale plus2D translation only; scipy HiGHS minimizes worst per-axis deviation. Combined solve adds all lower-outline constraints. L-infinity polygon distance uses original convex hull edge normals plus the four square normals; no synthetic collision polygon is introduced.",
+    "Audit lower vertices are preserved acceptance references, NOT claims every coarse vertex is an independently visible source stone corner. Source crops are saved separately.",
+    "World sprite scale=sourceScale*1.25. FractionalContact is physical front, NOT canonical selectionCell. No door alignment assumption."
+  ],
+  "assets": {
+    "north-red-v3": {
+      "generated": "/workspace/scratch/84c9fe948755/generated_images/exec-91a0d569-fc93-40cf-afa0-e27436281158.png",
+      "registered": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/c06-layered-v1/red-cottage-annex-night-v3.png",
+      "feet": [
+        [
+          230,
+          806
+        ],
+        [
+          730,
+          988
+        ],
+        [
+          1450,
+          731
+        ]
+      ],
+      "footRoles": [
+        "main-left ground corner",
+        "main-front ground corner",
+        "annex outer-right ground corner"
+      ],
+      "mainOnlyDiagnosticFeet": [
+        [
+          230,
+          806
+        ],
+        [
+          730,
+          988
+        ],
+        [
+          1250,
+          812
+        ]
+      ],
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "sha256": "e3f45517329293dc4be003b5d9027f904d7f7c36e9e45e2c4aadc2b8dac70b67",
+      "registeredFileSha256": "e3f45517329293dc4be003b5d9027f904d7f7c36e9e45e2c4aadc2b8dac70b67",
+      "registeredMatchesGenerated": true,
+      "fullLowerOutlineCount": 1246,
+      "fullLowerOutlineXRange": [
+        213,
+        1458
+      ],
+      "fullLowerOutlineFile": "north-red-v3-actual-lower-outline.json"
+    },
+    "southwest-red-dual": {
+      "generated": "/workspace/scratch/84c9fe948755/generated_images/exec-0280cbd4-03de-431d-bff3-6ee26631fbc2.png",
+      "registered": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/c06-layered-v1/red-cottage-dual-door-night-v2.png",
+      "feet": [
+        [
+          280,
+          808
+        ],
+        [
+          795,
+          988
+        ],
+        [
+          1340,
+          803
+        ]
+      ],
+      "footRoles": [
+        "left base",
+        "front base",
+        "right base"
+      ],
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "sha256": "a856b295f2681aebe240ac2deb047d934a6a3041b2afb2d800553e228f13672c",
+      "registeredFileSha256": "a856b295f2681aebe240ac2deb047d934a6a3041b2afb2d800553e228f13672c",
+      "registeredMatchesGenerated": true,
+      "fullLowerOutlineCount": 1085,
+      "fullLowerOutlineXRange": [
+        273,
+        1357
+      ],
+      "fullLowerOutlineFile": "southwest-red-dual-actual-lower-outline.json"
+    },
+    "snow-rock-outcrop-v1": {
+      "generated": "/workspace/scratch/84c9fe948755/generated_images/exec-310e93c8-d0cb-40d2-bba9-76428beb0f56.png",
+      "registered": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/c06-layered-v1/snow-rock-outcrop-v1.png",
+      "feet": [
+        [
+          150,
+          756
+        ],
+        [
+          775,
+          955
+        ],
+        [
+          1405,
+          755
+        ]
+      ],
+      "footRoles": [
+        "left lower material end",
+        "front lower material corner",
+        "right lower material end"
+      ],
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "sha256": "02f352b667f4f8e56ebf2cb1fe7b534ce0b89849b2fe22fd66c3d14d8b6c90b3",
+      "registeredFileSha256": "02f352b667f4f8e56ebf2cb1fe7b534ce0b89849b2fe22fd66c3d14d8b6c90b3",
+      "registeredMatchesGenerated": true,
+      "fullLowerOutlineCount": 1274,
+      "fullLowerOutlineXRange": [
+        142,
+        1415
+      ],
+      "fullLowerOutlineFile": "snow-rock-outcrop-v1-actual-lower-outline.json"
+    }
+  },
+  "cases": [
+    {
+      "objectId": "north-red-house",
+      "asset": "north-red-v3",
+      "originalGroundPolygonPixels": [
+        [
+          720,
+          185
+        ],
+        [
+          785,
+          164
+        ],
+        [
+          851,
+          189
+        ],
+        [
+          851,
+          228
+        ],
+        [
+          785,
+          251
+        ],
+        [
+          720,
+          222
+        ]
+      ],
+      "originalBlockedCells": [
+        [
+          23,
+          4
+        ],
+        [
+          24,
+          4
+        ],
+        [
+          21,
+          5
+        ],
+        [
+          22,
+          5
+        ],
+        [
+          23,
+          5
+        ],
+        [
+          24,
+          5
+        ],
+        [
+          25,
+          5
+        ],
+        [
+          21,
+          6
+        ],
+        [
+          22,
+          6
+        ],
+        [
+          23,
+          6
+        ],
+        [
+          24,
+          6
+        ],
+        [
+          25,
+          6
+        ],
+        [
+          22,
+          7
+        ],
+        [
+          23,
+          7
+        ],
+        [
+          24,
+          7
+        ],
+        [
+          25,
+          7
+        ]
+      ],
+      "threeFixedFeetOnly": {
+        "sourceScale": 0.10260869565217395,
+        "instanceWorldScale": 0.12826086956521743,
+        "anchorPixels": [
+          730.0,
+          988.0
+        ],
+        "sourceTranslation": [
+          703.2478260869565,
+          146.14521739130433
+        ],
+        "sourceFront": [
+          778.1521739130435,
+          247.5226086956522
+        ],
+        "fractionalContact": [
+          23.69225543478261,
+          7.768664596273292
+        ],
+        "actualFixedFeet": [
+          [
+            230.0,
+            806.0
+          ],
+          [
+            730.0,
+            988.0
+          ],
+          [
+            1450.0,
+            731.0
+          ]
+        ],
+        "actualFixedFeetAlpha": [
+          251,
+          252,
+          252
+        ],
+        "auditCorrespondingLowerVertices": [
+          [
+            720.0,
+            222.0
+          ],
+          [
+            785.0,
+            251.0
+          ],
+          [
+            851.0,
+            228.0
+          ]
+        ],
+        "transformedFeet": [
+          [
+            726.8478260869565,
+            228.84782608695653
+          ],
+          [
+            778.1521739130435,
+            247.5226086956522
+          ],
+          [
+            852.0304347826087,
+            221.1521739130435
+          ]
+        ],
+        "footErrorsXY": [
+          [
+            6.847826086956502,
+            6.84782608695653
+          ],
+          [
+            -6.847826086956502,
+            -3.4773913043478046
+          ],
+          [
+            1.0304347826087223,
+            -6.847826086956502
+          ]
+        ],
+        "maximumFootCoordinateError": 6.84782608695653,
+        "minimaxObjective": 6.847826086956517,
+        "fullLowerOutlineMaximumLInfinityOutside": 4.068917668825154,
+        "fullLowerOutlineWitness": {
+          "assetPixel": [
+            330,
+            871
+          ],
+          "alpha": 200,
+          "sourcePixel": [
+            737.1086956521739,
+            235.51739130434783
+          ]
+        },
+        "fixedFeetAndFullOutlineWithin5": false,
+        "solverIncludedCompleteLowerOutline": false
+      },
+      "feetAndCompleteLowerOutline": {
+        "sourceScale": 0.10260869565217391,
+        "instanceWorldScale": 0.1282608695652174,
+        "anchorPixels": [
+          730.0,
+          988.0
+        ],
+        "sourceTranslation": [
+          703.2478260869565,
+          146.14521739130436
+        ],
+        "sourceFront": [
+          778.1521739130435,
+          247.5226086956522
+        ],
+        "fractionalContact": [
+          23.69225543478261,
+          7.768664596273292
+        ],
+        "actualFixedFeet": [
+          [
+            230.0,
+            806.0
+          ],
+          [
+            730.0,
+            988.0
+          ],
+          [
+            1450.0,
+            731.0
+          ]
+        ],
+        "actualFixedFeetAlpha": [
+          251,
+          252,
+          252
+        ],
+        "auditCorrespondingLowerVertices": [
+          [
+            720.0,
+            222.0
+          ],
+          [
+            785.0,
+            251.0
+          ],
+          [
+            851.0,
+            228.0
+          ]
+        ],
+        "transformedFeet": [
+          [
+            726.8478260869565,
+            228.84782608695653
+          ],
+          [
+            778.1521739130435,
+            247.5226086956522
+          ],
+          [
+            852.0304347826086,
+            221.1521739130435
+          ]
+        ],
+        "footErrorsXY": [
+          [
+            6.847826086956502,
+            6.84782608695653
+          ],
+          [
+            -6.847826086956502,
+            -3.4773913043478046
+          ],
+          [
+            1.0304347826086087,
+            -6.847826086956502
+          ]
+        ],
+        "maximumFootCoordinateError": 6.84782608695653,
+        "minimaxObjective": 6.847826086956523,
+        "fullLowerOutlineMaximumLInfinityOutside": 4.068917668825154,
+        "fullLowerOutlineWitness": {
+          "assetPixel": [
+            330,
+            871
+          ],
+          "alpha": 200,
+          "sourcePixel": [
+            737.1086956521739,
+            235.51739130434783
+          ]
+        },
+        "fixedFeetAndFullOutlineWithin5": false,
+        "solverIncludedCompleteLowerOutline": true
+      },
+      "selectionCell": [
+        23,
+        8
+      ],
+      "approach": [
+        24,
+        8
+      ],
+      "rejectedMainHouseOnlyDiagnostic": {
+        "sourceScale": 0.13352826510721263,
+        "instanceWorldScale": 0.1669103313840158,
+        "anchorPixels": [
+          730.0,
+          988.0
+        ],
+        "sourceTranslation": [
+          686.6890838206627,
+          116.97563352826498
+        ],
+        "sourceFront": [
+          784.164717348928,
+          248.90155945419107
+        ],
+        "fractionalContact": [
+          23.880147417154,
+          7.817912837649681
+        ],
+        "actualFixedFeet": [
+          [
+            230.0,
+            806.0
+          ],
+          [
+            730.0,
+            988.0
+          ],
+          [
+            1250.0,
+            812.0
+          ]
+        ],
+        "actualFixedFeetAlpha": [
+          251,
+          252,
+          252
+        ],
+        "auditCorrespondingLowerVertices": [
+          [
+            720.0,
+            222.0
+          ],
+          [
+            785.0,
+            251.0
+          ],
+          [
+            851.0,
+            228.0
+          ]
+        ],
+        "transformedFeet": [
+          [
+            717.4005847953216,
+            224.59941520467837
+          ],
+          [
+            784.164717348928,
+            248.90155945419107
+          ],
+          [
+            853.5994152046785,
+            225.40058479532163
+          ]
+        ],
+        "footErrorsXY": [
+          [
+            -2.599415204678394,
+            2.5994152046783654
+          ],
+          [
+            -0.8352826510720206,
+            -2.098440545808927
+          ],
+          [
+            2.5994152046785075,
+            -2.5994152046783654
+          ]
+        ],
+        "maximumFootCoordinateError": 2.5994152046785075,
+        "minimaxObjective": 2.599415204678355,
+        "fullLowerOutlineMaximumLInfinityOutside": 30.37329434697881,
+        "fullLowerOutlineWitness": {
+          "assetPixel": [
+            1458,
+            727
+          ],
+          "alpha": 218,
+          "sourcePixel": [
+            881.3732943469788,
+            214.05068226120858
+          ]
+        },
+        "fixedFeetAndFullOutlineWithin5": false,
+        "solverIncludedCompleteLowerOutline": false
+      },
+      "disposition": "FAIL. Full annex-inclusive end/front/end fit exceeds5. Main-only three-foot pass would hide annex overflow; it is not a valid acceptance."
+    },
+    {
+      "objectId": "southwest-red-house",
+      "asset": "southwest-red-dual",
+      "originalGroundPolygonPixels": [
+        [
+          345,
+          620
+        ],
+        [
+          421,
+          590
+        ],
+        [
+          505,
+          620
+        ],
+        [
+          505,
+          668
+        ],
+        [
+          430,
+          700
+        ],
+        [
+          345,
+          666
+        ]
+      ],
+      "originalBlockedCells": [
+        [
+          10,
+          20
+        ],
+        [
+          11,
+          20
+        ],
+        [
+          12,
+          20
+        ],
+        [
+          13,
+          20
+        ],
+        [
+          14,
+          20
+        ],
+        [
+          10,
+          21
+        ],
+        [
+          11,
+          21
+        ],
+        [
+          12,
+          21
+        ],
+        [
+          13,
+          21
+        ],
+        [
+          14,
+          21
+        ],
+        [
+          15,
+          21
+        ],
+        [
+          10,
+          22
+        ],
+        [
+          11,
+          22
+        ],
+        [
+          12,
+          22
+        ],
+        [
+          13,
+          22
+        ],
+        [
+          14,
+          22
+        ],
+        [
+          15,
+          22
+        ],
+        [
+          10,
+          23
+        ],
+        [
+          11,
+          23
+        ],
+        [
+          12,
+          23
+        ],
+        [
+          13,
+          23
+        ],
+        [
+          14,
+          23
+        ]
+      ],
+      "threeFixedFeetOnly": {
+        "sourceScale": 0.1509433962264151,
+        "instanceWorldScale": 0.18867924528301885,
+        "anchorPixels": [
+          795.0,
+          988.0
+        ],
+        "sourceTranslation": [
+          306.3679245283019,
+          547.2358490566039
+        ],
+        "sourceFront": [
+          426.3679245283019,
+          696.367924528302
+        ],
+        "fractionalContact": [
+          12.698997641509434,
+          23.798854447439357
+        ],
+        "actualFixedFeet": [
+          [
+            280.0,
+            808.0
+          ],
+          [
+            795.0,
+            988.0
+          ],
+          [
+            1340.0,
+            803.0
+          ]
+        ],
+        "actualFixedFeetAlpha": [
+          217,
+          249,
+          228
+        ],
+        "auditCorrespondingLowerVertices": [
+          [
+            345.0,
+            666.0
+          ],
+          [
+            430.0,
+            700.0
+          ],
+          [
+            505.0,
+            668.0
+          ]
+        ],
+        "transformedFeet": [
+          [
+            348.6320754716981,
+            669.1981132075473
+          ],
+          [
+            426.3679245283019,
+            696.367924528302
+          ],
+          [
+            508.63207547169816,
+            668.4433962264152
+          ]
+        ],
+        "footErrorsXY": [
+          [
+            3.6320754716981014,
+            3.1981132075472942
+          ],
+          [
+            -3.6320754716981014,
+            -3.6320754716980446
+          ],
+          [
+            3.6320754716981583,
+            0.4433962264151887
+          ]
+        ],
+        "maximumFootCoordinateError": 3.6320754716981583,
+        "minimaxObjective": 3.632075471698094,
+        "fullLowerOutlineMaximumLInfinityOutside": 6.40213366249348,
+        "fullLowerOutlineWitness": {
+          "assetPixel": [
+            1029,
+            983
+          ],
+          "alpha": 200,
+          "sourcePixel": [
+            461.688679245283,
+            695.61320754717
+          ]
+        },
+        "fixedFeetAndFullOutlineWithin5": false,
+        "solverIncludedCompleteLowerOutline": false
+      },
+      "feetAndCompleteLowerOutline": {
+        "sourceScale": 0.14617956218457706,
+        "instanceWorldScale": 0.18272445273072133,
+        "anchorPixels": [
+          795.0,
+          988.0
+        ],
+        "sourceTranslation": [
+          308.9284853257899,
+          550.7158298241665
+        ],
+        "sourceFront": [
+          425.14123726252865,
+          695.1412372625286
+        ],
+        "fractionalContact": [
+          12.66066366445402,
+          23.75504418794745
+        ],
+        "actualFixedFeet": [
+          [
+            280.0,
+            808.0
+          ],
+          [
+            795.0,
+            988.0
+          ],
+          [
+            1340.0,
+            803.0
+          ]
+        ],
+        "actualFixedFeetAlpha": [
+          217,
+          249,
+          228
+        ],
+        "auditCorrespondingLowerVertices": [
+          [
+            345.0,
+            666.0
+          ],
+          [
+            430.0,
+            700.0
+          ],
+          [
+            505.0,
+            668.0
+          ]
+        ],
+        "transformedFeet": [
+          [
+            349.85876273747147,
+            668.8289160693047
+          ],
+          [
+            425.14123726252865,
+            695.1412372625286
+          ],
+          [
+            504.80909865312316,
+            668.0980182583819
+          ]
+        ],
+        "footErrorsXY": [
+          [
+            4.858762737471466,
+            2.8289160693046824
+          ],
+          [
+            -4.858762737471352,
+            -4.858762737471352
+          ],
+          [
+            -0.19090134687684213,
+            0.0980182583818987
+          ]
+        ],
+        "maximumFootCoordinateError": 4.858762737471466,
+        "minimaxObjective": 4.858762737471466,
+        "fullLowerOutlineMaximumLInfinityOutside": 4.858762737471616,
+        "fullLowerOutlineWitness": {
+          "assetPixel": [
+            1029,
+            983
+          ],
+          "alpha": 200,
+          "sourcePixel": [
+            459.3472548137197,
+            694.4103394516058
+          ]
+        },
+        "fixedFeetAndFullOutlineWithin5": true,
+        "solverIncludedCompleteLowerOutline": true
+      },
+      "selectionCell": [
+        12,
+        24
+      ],
+      "approach": [
+        13,
+        24
+      ],
+      "disposition": "PASS exposed-foot/lower-contour feasibility only with combined uniform minimax. Three-foot-only optimum lets the right-door steps exceed5. The same fixed witnesses are retained in both solves."
+    },
+    {
+      "objectId": "north-ridge-west",
+      "asset": "snow-rock-outcrop-v1",
+      "originalGroundPolygonPixels": [
+        [
+          948,
+          96
+        ],
+        [
+          991,
+          81
+        ],
+        [
+          1073,
+          105
+        ],
+        [
+          1078,
+          145
+        ],
+        [
+          1035,
+          169
+        ],
+        [
+          968,
+          145
+        ]
+      ],
+      "originalBlockedCells": [
+        [
+          29,
+          1
+        ],
+        [
+          30,
+          1
+        ],
+        [
+          29,
+          2
+        ],
+        [
+          30,
+          2
+        ],
+        [
+          31,
+          2
+        ],
+        [
+          32,
+          2
+        ],
+        [
+          29,
+          3
+        ],
+        [
+          30,
+          3
+        ],
+        [
+          31,
+          3
+        ],
+        [
+          32,
+          3
+        ],
+        [
+          33,
+          3
+        ],
+        [
+          29,
+          4
+        ],
+        [
+          30,
+          4
+        ],
+        [
+          31,
+          4
+        ],
+        [
+          32,
+          4
+        ],
+        [
+          33,
+          4
+        ]
+      ],
+      "threeFixedFeetOnly": {
+        "sourceScale": 0.08764940239043824,
+        "instanceWorldScale": 0.1095617529880478,
+        "anchorPixels": [
+          775.0,
+          955.0
+        ],
+        "sourceTranslation": [
+          960.9621513944223,
+          79.18525896414344
+        ],
+        "sourceFront": [
+          1028.890438247012,
+          162.89043824701196
+        ],
+        "fractionalContact": [
+          31.527826195219127,
+          4.746087080250427
+        ],
+        "actualFixedFeet": [
+          [
+            150.0,
+            756.0
+          ],
+          [
+            775.0,
+            955.0
+          ],
+          [
+            1405.0,
+            755.0
+          ]
+        ],
+        "actualFixedFeetAlpha": [
+          249,
+          252,
+          250
+        ],
+        "auditCorrespondingLowerVertices": [
+          [
+            968.0,
+            145.0
+          ],
+          [
+            1035.0,
+            169.0
+          ],
+          [
+            1078.0,
+            145.0
+          ]
+        ],
+        "transformedFeet": [
+          [
+            974.109561752988,
+            145.44820717131475
+          ],
+          [
+            1028.890438247012,
+            162.89043824701196
+          ],
+          [
+            1084.1095617529882,
+            145.3605577689243
+          ]
+        ],
+        "footErrorsXY": [
+          [
+            6.109561752988043,
+            0.4482071713147491
+          ],
+          [
+            -6.109561752987929,
+            -6.109561752988043
+          ],
+          [
+            6.1095617529881565,
+            0.36055776892430913
+          ]
+        ],
+        "maximumFootCoordinateError": 6.1095617529881565,
+        "minimaxObjective": 6.109561752988048,
+        "fullLowerOutlineMaximumLInfinityOutside": 6.986055776892499,
+        "fullLowerOutlineWitness": {
+          "assetPixel": [
+            1415,
+            754
+          ],
+          "alpha": 246,
+          "sourcePixel": [
+            1084.9860557768925,
+            145.27290836653387
+          ]
+        },
+        "fixedFeetAndFullOutlineWithin5": false,
+        "solverIncludedCompleteLowerOutline": false
+      },
+      "feetAndCompleteLowerOutline": {
+        "sourceScale": 0.08695652173913043,
+        "instanceWorldScale": 0.10869565217391304,
+        "anchorPixels": [
+          775.0,
+          955.0
+        ],
+        "sourceTranslation": [
+          961.2826086956521,
+          85.58695652173914
+        ],
+        "sourceFront": [
+          1028.6739130434783,
+          168.6304347826087
+        ],
+        "fractionalContact": [
+          31.521059782608695,
+          4.951086956521739
+        ],
+        "actualFixedFeet": [
+          [
+            150.0,
+            756.0
+          ],
+          [
+            775.0,
+            955.0
+          ],
+          [
+            1405.0,
+            755.0
+          ]
+        ],
+        "actualFixedFeetAlpha": [
+          249,
+          252,
+          250
+        ],
+        "auditCorrespondingLowerVertices": [
+          [
+            968.0,
+            145.0
+          ],
+          [
+            1035.0,
+            169.0
+          ],
+          [
+            1078.0,
+            145.0
+          ]
+        ],
+        "transformedFeet": [
+          [
+            974.3260869565217,
+            151.32608695652175
+          ],
+          [
+            1028.6739130434783,
+            168.6304347826087
+          ],
+          [
+            1083.4565217391305,
+            151.23913043478262
+          ]
+        ],
+        "footErrorsXY": [
+          [
+            6.326086956521749,
+            6.326086956521749
+          ],
+          [
+            -6.326086956521749,
+            -0.36956521739131176
+          ],
+          [
+            5.456521739130494,
+            6.2391304347826235
+          ]
+        ],
+        "maximumFootCoordinateError": 6.326086956521749,
+        "minimaxObjective": 6.326086956521749,
+        "fullLowerOutlineMaximumLInfinityOutside": 6.326086956521749,
+        "fullLowerOutlineWitness": {
+          "assetPixel": [
+            1415,
+            754
+          ],
+          "alpha": 246,
+          "sourcePixel": [
+            1084.3260869565217,
+            151.1521739130435
+          ]
+        },
+        "fixedFeetAndFullOutlineWithin5": false,
+        "solverIncludedCompleteLowerOutline": true
+      },
+      "selectionCell": null,
+      "approach": null,
+      "disposition": "FAIL this asset-to-audit envelope shape; no non-uniform scaling, tolerance increase, or point replacement proposed."
+    },
+    {
+      "objectId": "north-ridge-east",
+      "asset": "snow-rock-outcrop-v1",
+      "originalGroundPolygonPixels": [
+        [
+          1178,
+          111
+        ],
+        [
+          1230,
+          98
+        ],
+        [
+          1324,
+          121
+        ],
+        [
+          1326,
+          163
+        ],
+        [
+          1284,
+          179
+        ],
+        [
+          1207,
+          164
+        ]
+      ],
+      "originalBlockedCells": [
+        [
+          36,
+          2
+        ],
+        [
+          37,
+          2
+        ],
+        [
+          38,
+          2
+        ],
+        [
+          39,
+          2
+        ],
+        [
+          36,
+          3
+        ],
+        [
+          37,
+          3
+        ],
+        [
+          38,
+          3
+        ],
+        [
+          39,
+          3
+        ],
+        [
+          40,
+          3
+        ],
+        [
+          36,
+          4
+        ],
+        [
+          37,
+          4
+        ],
+        [
+          38,
+          4
+        ],
+        [
+          39,
+          4
+        ],
+        [
+          40,
+          4
+        ],
+        [
+          38,
+          5
+        ],
+        [
+          39,
+          5
+        ],
+        [
+          40,
+          5
+        ]
+      ],
+      "threeFixedFeetOnly": {
+        "sourceScale": 0.09482071713147411,
+        "instanceWorldScale": 0.11852589641434264,
+        "anchorPixels": [
+          775.0,
+          955.0
+        ],
+        "sourceTranslation": [
+          1201.6454183266933,
+          83.44701195219122
+        ],
+        "sourceFront": [
+          1275.1314741035858,
+          174.000796812749
+        ],
+        "fractionalContact": [
+          39.222858565737056,
+          5.142885600455322
+        ],
+        "actualFixedFeet": [
+          [
+            150.0,
+            756.0
+          ],
+          [
+            775.0,
+            955.0
+          ],
+          [
+            1405.0,
+            755.0
+          ]
+        ],
+        "actualFixedFeetAlpha": [
+          249,
+          252,
+          250
+        ],
+        "auditCorrespondingLowerVertices": [
+          [
+            1207.0,
+            164.0
+          ],
+          [
+            1284.0,
+            179.0
+          ],
+          [
+            1326.0,
+            163.0
+          ]
+        ],
+        "transformedFeet": [
+          [
+            1215.8685258964144,
+            155.13147410358565
+          ],
+          [
+            1275.1314741035858,
+            174.000796812749
+          ],
+          [
+            1334.8685258964144,
+            155.0366533864542
+          ]
+        ],
+        "footErrorsXY": [
+          [
+            8.86852589641444,
+            -8.868525896414354
+          ],
+          [
+            -8.868525896414212,
+            -4.999203187250998
+          ],
+          [
+            8.86852589641444,
+            -7.963346613545809
+          ]
+        ],
+        "maximumFootCoordinateError": 8.86852589641444,
+        "minimaxObjective": 8.868525896414342,
+        "fullLowerOutlineMaximumLInfinityOutside": 9.816733067729274,
+        "fullLowerOutlineWitness": {
+          "assetPixel": [
+            1415,
+            754
+          ],
+          "alpha": 246,
+          "sourcePixel": [
+            1335.8167330677293,
+            154.9418326693227
+          ]
+        },
+        "fixedFeetAndFullOutlineWithin5": false,
+        "solverIncludedCompleteLowerOutline": false
+      },
+      "feetAndCompleteLowerOutline": {
+        "sourceScale": 0.09407114624505929,
+        "instanceWorldScale": 0.11758893280632411,
+        "anchorPixels": [
+          775.0,
+          955.0
+        ],
+        "sourceTranslation": [
+          1201.99209486166,
+          97.77858426158821
+        ],
+        "sourceFront": [
+          1274.897233201581,
+          187.61652892561983
+        ],
+        "fractionalContact": [
+          39.215538537549406,
+          5.629161747343566
+        ],
+        "actualFixedFeet": [
+          [
+            150.0,
+            756.0
+          ],
+          [
+            775.0,
+            955.0
+          ],
+          [
+            1405.0,
+            755.0
+          ]
+        ],
+        "actualFixedFeetAlpha": [
+          249,
+          252,
+          250
+        ],
+        "auditCorrespondingLowerVertices": [
+          [
+            1207.0,
+            164.0
+          ],
+          [
+            1284.0,
+            179.0
+          ],
+          [
+            1326.0,
+            163.0
+          ]
+        ],
+        "transformedFeet": [
+          [
+            1216.102766798419,
+            168.89637082285304
+          ],
+          [
+            1274.897233201581,
+            187.61652892561983
+          ],
+          [
+            1334.1620553359683,
+            168.80229967660796
+          ]
+        ],
+        "footErrorsXY": [
+          [
+            9.102766798418997,
+            4.896370822853044
+          ],
+          [
+            -9.102766798418997,
+            8.616528925619832
+          ],
+          [
+            8.162055335968262,
+            5.802299676607959
+          ]
+        ],
+        "maximumFootCoordinateError": 9.102766798418997,
+        "minimaxObjective": 9.102766798418997,
+        "fullLowerOutlineMaximumLInfinityOutside": 9.102766798418997,
+        "fullLowerOutlineWitness": {
+          "assetPixel": [
+            1415,
+            754
+          ],
+          "alpha": 246,
+          "sourcePixel": [
+            1335.102766798419,
+            168.70822853036293
+          ]
+        },
+        "fixedFeetAndFullOutlineWithin5": false,
+        "solverIncludedCompleteLowerOutline": true
+      },
+      "selectionCell": null,
+      "approach": null,
+      "disposition": "FAIL this asset-to-audit envelope shape; no non-uniform scaling, tolerance increase, or point replacement proposed."
+    },
+    {
+      "objectId": "north-central-boulder",
+      "asset": "snow-rock-outcrop-v1",
+      "originalGroundPolygonPixels": [
+        [
+          711,
+          300
+        ],
+        [
+          749,
+          287
+        ],
+        [
+          788,
+          302
+        ],
+        [
+          796,
+          332
+        ],
+        [
+          763,
+          352
+        ],
+        [
+          722,
+          335
+        ]
+      ],
+      "originalBlockedCells": [
+        [
+          21,
+          9
+        ],
+        [
+          22,
+          9
+        ],
+        [
+          23,
+          9
+        ],
+        [
+          24,
+          9
+        ],
+        [
+          21,
+          10
+        ],
+        [
+          22,
+          10
+        ],
+        [
+          23,
+          10
+        ],
+        [
+          24,
+          10
+        ],
+        [
+          22,
+          11
+        ],
+        [
+          23,
+          11
+        ]
+      ],
+      "threeFixedFeetOnly": {
+        "sourceScale": 0.06385542168674692,
+        "instanceWorldScale": 0.07981927710843364,
+        "anchorPixels": [
+          775.0,
+          955.0
+        ],
+        "sourceTranslation": [
+          709.8975903614459,
+          287.4036144578314
+        ],
+        "sourceFront": [
+          759.3855421686748,
+          348.3855421686747
+        ],
+        "fractionalContact": [
+          23.105798192771086,
+          11.37091222030981
+        ],
+        "actualFixedFeet": [
+          [
+            150.0,
+            756.0
+          ],
+          [
+            775.0,
+            955.0
+          ],
+          [
+            1405.0,
+            755.0
+          ]
+        ],
+        "actualFixedFeetAlpha": [
+          249,
+          252,
+          250
+        ],
+        "auditCorrespondingLowerVertices": [
+          [
+            722.0,
+            335.0
+          ],
+          [
+            763.0,
+            352.0
+          ],
+          [
+            796.0,
+            332.0
+          ]
+        ],
+        "transformedFeet": [
+          [
+            719.4759036144579,
+            335.67831325301205
+          ],
+          [
+            759.3855421686748,
+            348.3855421686747
+          ],
+          [
+            799.6144578313252,
+            335.6144578313253
+          ]
+        ],
+        "footErrorsXY": [
+          [
+            -2.524096385542066,
+            0.6783132530120497
+          ],
+          [
+            -3.6144578313252396,
+            -3.6144578313252964
+          ],
+          [
+            3.6144578313252396,
+            3.6144578313252964
+          ]
+        ],
+        "maximumFootCoordinateError": 3.6144578313252964,
+        "minimaxObjective": 3.6144578313252973,
+        "fullLowerOutlineMaximumLInfinityOutside": 4.2530120481927725,
+        "fullLowerOutlineWitness": {
+          "assetPixel": [
+            1415,
+            754
+          ],
+          "alpha": 246,
+          "sourcePixel": [
+            800.2530120481928,
+            335.5506024096386
+          ]
+        },
+        "fixedFeetAndFullOutlineWithin5": true,
+        "solverIncludedCompleteLowerOutline": false
+      },
+      "feetAndCompleteLowerOutline": {
+        "sourceScale": 0.0630952380952381,
+        "instanceWorldScale": 0.07886904761904762,
+        "anchorPixels": [
+          775.0,
+          955.0
+        ],
+        "sourceTranslation": [
+          710.4107142857143,
+          288.0535714285714
+        ],
+        "sourceFront": [
+          759.3095238095239,
+          348.30952380952374
+        ],
+        "fractionalContact": [
+          23.10342261904762,
+          11.368197278911563
+        ],
+        "actualFixedFeet": [
+          [
+            150.0,
+            756.0
+          ],
+          [
+            775.0,
+            955.0
+          ],
+          [
+            1405.0,
+            755.0
+          ]
+        ],
+        "actualFixedFeetAlpha": [
+          249,
+          252,
+          250
+        ],
+        "auditCorrespondingLowerVertices": [
+          [
+            722.0,
+            335.0
+          ],
+          [
+            763.0,
+            352.0
+          ],
+          [
+            796.0,
+            332.0
+          ]
+        ],
+        "transformedFeet": [
+          [
+            719.875,
+            335.7535714285714
+          ],
+          [
+            759.3095238095239,
+            348.30952380952374
+          ],
+          [
+            799.0595238095239,
+            335.69047619047615
+          ]
+        ],
+        "footErrorsXY": [
+          [
+            -2.125,
+            0.7535714285713766
+          ],
+          [
+            -3.690476190476147,
+            -3.690476190476261
+          ],
+          [
+            3.059523809523853,
+            3.690476190476147
+          ]
+        ],
+        "maximumFootCoordinateError": 3.690476190476261,
+        "minimaxObjective": 3.6904761904761907,
+        "fullLowerOutlineMaximumLInfinityOutside": 3.690476190476261,
+        "fullLowerOutlineWitness": {
+          "assetPixel": [
+            1415,
+            754
+          ],
+          "alpha": 246,
+          "sourcePixel": [
+            799.6904761904763,
+            335.6273809523809
+          ]
+        },
+        "fixedFeetAndFullOutlineWithin5": true,
+        "solverIncludedCompleteLowerOutline": true
+      },
+      "selectionCell": null,
+      "approach": null,
+      "disposition": "PASS lower-contact-envelope feasibility only; not complete physical ownership/height/occlusion/picking acceptance."
+    },
+    {
+      "objectId": "southwest-border-rock",
+      "asset": "snow-rock-outcrop-v1",
+      "originalGroundPolygonPixels": [
+        [
+          24,
+          627
+        ],
+        [
+          67,
+          607
+        ],
+        [
+          106,
+          628
+        ],
+        [
+          109,
+          666
+        ],
+        [
+          72,
+          690
+        ],
+        [
+          28,
+          671
+        ]
+      ],
+      "originalBlockedCells": [
+        [
+          0,
+          20
+        ],
+        [
+          1,
+          20
+        ],
+        [
+          2,
+          20
+        ],
+        [
+          0,
+          21
+        ],
+        [
+          1,
+          21
+        ],
+        [
+          2,
+          21
+        ],
+        [
+          0,
+          22
+        ],
+        [
+          1,
+          22
+        ],
+        [
+          2,
+          22
+        ],
+        [
+          0,
+          23
+        ],
+        [
+          1,
+          23
+        ],
+        [
+          2,
+          23
+        ]
+      ],
+      "threeFixedFeetOnly": {
+        "sourceScale": 0.07216494845371231,
+        "instanceWorldScale": 0.09020618556714038,
+        "anchorPixels": [
+          775.0,
+          955.0
+        ],
+        "sourceTranslation": [
+          12.391752577130006,
+          616.2989690720747
+        ],
+        "sourceFront": [
+          68.31958762875705,
+          685.2164948453699
+        ],
+        "fractionalContact": [
+          1.5099871133986578,
+          23.40058910162035
+        ],
+        "actualFixedFeet": [
+          [
+            150.0,
+            756.0
+          ],
+          [
+            775.0,
+            955.0
+          ],
+          [
+            1405.0,
+            755.0
+          ]
+        ],
+        "actualFixedFeetAlpha": [
+          249,
+          252,
+          250
+        ],
+        "auditCorrespondingLowerVertices": [
+          [
+            28.0,
+            671.0
+          ],
+          [
+            72.0,
+            690.0
+          ],
+          [
+            109.0,
+            666.0
+          ]
+        ],
+        "transformedFeet": [
+          [
+            23.21649484518685,
+            670.8556701030811
+          ],
+          [
+            68.31958762875705,
+            685.2164948453699
+          ],
+          [
+            113.7835051545958,
+            670.7835051546275
+          ]
+        ],
+        "footErrorsXY": [
+          [
+            -4.783505154813149,
+            -0.14432989691886178
+          ],
+          [
+            -3.6804123712429515,
+            -4.78350515463012
+          ],
+          [
+            4.783505154595801,
+            4.783505154627505
+          ]
+        ],
+        "maximumFootCoordinateError": 4.783505154813149,
+        "minimaxObjective": 4.783505154627488,
+        "fullLowerOutlineMaximumLInfinityOutside": 5.505154639132925,
+        "fullLowerOutlineWitness": {
+          "assetPixel": [
+            1415,
+            754
+          ],
+          "alpha": 246,
+          "sourcePixel": [
+            114.50515463913293,
+            670.7113402061738
+          ]
+        },
+        "fixedFeetAndFullOutlineWithin5": false,
+        "solverIncludedCompleteLowerOutline": false
+      },
+      "feetAndCompleteLowerOutline": {
+        "sourceScale": 0.07159609924700658,
+        "instanceWorldScale": 0.08949512405875823,
+        "anchorPixels": [
+          775.0,
+          955.0
+        ],
+        "sourceTranslation": [
+          12.531909640785063,
+          616.7853351438093
+        ],
+        "sourceFront": [
+          68.01888655721515,
+          685.1596099247006
+        ],
+        "fractionalContact": [
+          1.5005902049129736,
+          23.398557497310737
+        ],
+        "actualFixedFeet": [
+          [
+            150.0,
+            756.0
+          ],
+          [
+            775.0,
+            955.0
+          ],
+          [
+            1405.0,
+            755.0
+          ]
+        ],
+        "actualFixedFeetAlpha": [
+          249,
+          252,
+          250
+        ],
+        "auditCorrespondingLowerVertices": [
+          [
+            28.0,
+            671.0
+          ],
+          [
+            72.0,
+            690.0
+          ],
+          [
+            109.0,
+            666.0
+          ]
+        ],
+        "transformedFeet": [
+          [
+            23.27132452783605,
+            670.9119861745463
+          ],
+          [
+            68.01888655721515,
+            685.1596099247006
+          ],
+          [
+            113.12442908282931,
+            670.8403900752993
+          ]
+        ],
+        "footErrorsXY": [
+          [
+            -4.72867547216395,
+            -0.08801382545368597
+          ],
+          [
+            -3.981113442784846,
+            -4.8403900752994105
+          ],
+          [
+            4.124429082829309,
+            4.840390075299297
+          ]
+        ],
+        "maximumFootCoordinateError": 4.8403900752994105,
+        "minimaxObjective": 4.840390075299371,
+        "fullLowerOutlineMaximumLInfinityOutside": 4.840390075299368,
+        "fullLowerOutlineWitness": {
+          "assetPixel": [
+            1415,
+            754
+          ],
+          "alpha": 246,
+          "sourcePixel": [
+            113.84039007529937,
+            670.7687939760523
+          ]
+        },
+        "fixedFeetAndFullOutlineWithin5": true,
+        "solverIncludedCompleteLowerOutline": true
+      },
+      "selectionCell": null,
+      "approach": null,
+      "disposition": "PASS lower-contact-envelope feasibility only; not complete physical ownership/height/occlusion/picking acceptance."
+    }
+  ],
+  "excludedRockResponsibilities": {
+    "west-bank-boulder": "Retained in clean floor as shoreline geology; do not duplicate. Separate native retention evidence covers actual current24actorrecords/14appearances/4frames/2facings on431back-sidelegalcells, with stated bounds.",
+    "south-foreground-rock": "Legacy audit label has no standalone stone in original source; no claim this asset reconstructs it. Original wall responsibility remains explicit."
+  },
+  "limitations": [
+    "No hidden rear footprint certification; no assertion all original blocked cells are carried by visible ground support. Full upper alpha is deliberately not treated as ground.",
+    "A fitted lower contour does not prove unchanged visible height, roof/door location, approach walkability, object picking, actor depth, or full scene integration.",
+    "The snow outcrop has a tall central silhouette; numeric lower-foot pass for the original small central rock does not certify original visual height/shape.",
+    "SW combined margin to5 is only about0.1412px; use full precision and the stored physical chain, not a rounded three-foot-only transform."
+  ],
+  "deferred": [
+    "Central stone bridge candidate exec-26c7d667-4134-43ac-8ca1-60c70f8ffa3e.png: actual four feet and source(+89,-134)deck alignment NOT inspected/tested in this report. Parent explicitly queued it for later; prompt coordinates are not evidence."
+  ]
+}

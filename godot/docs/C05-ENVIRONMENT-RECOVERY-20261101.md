@@ -89,3 +89,35 @@ Formal C05 now binds the independent scene. The old painted scene and geometric
 negative controls are retained in c01-05-painted-reference.json and explicit
 --legacy-painted mode, not mixed into current presentation acceptance. Current
 C05 real normal-AI play is still pending; no lost C04 save has been fabricated.
+
+## New real normal-AI C05 completion, 07:49 UTC
+
+The former complete printed C04 settled-state tool output was recovered separately
+from the lost filesystem. A private validator compared 188 JSON paths exactly
+through a new envelope and the canonical campaign loaders. Missing original save
+bytes/timestamp were not guessed. Seven persistent roster entries differ from C04's
+nine surviving actors because six were level-local and Elin remained fallen.
+This is explicitly a text-reconstructed entry fixture, not restored original bytes
+or a new continuous campaign run. Original output is retained privately, not here.
+
+From that admitted entry, the real GUI played normal enemy AI through human T8.
+No test outcome injection, no HP edits, no reload to erase mistakes. Three civilians
+all survived at 58/58. Laiya116, Torren85, Mirelle26; 11 allies and 10 enemies remain,
+24 engagements. Bran fell to the enemy cavalry after insufficient retreat; the loss
+was retained. The normal result applies `hero_wounded:bran` and the authored wounded
+hero recovery, not a manual resurrection. Elin remains fallen.
+
+Terminal events include save-village and primary objective completed, then gameOver
+objectiveCompleted for player/team1; state phase over, turn8. Normal settlement
+advances to aftermath-05. New terminal save SHA256:
+`959dbf448d6b04f62d9f403f4e136423bafdfe6206857de3555836e0dda23c88`.
+New settled autosave SHA256:
+`d50569c0821f5bc9bf0722a8baf26a76b135a909121a775bae0881cb9d537619`.
+Private milestones and original native screenshots010/011 are retained with the
+recovery backup, including the explicit entry-fixture watermark.
+
+This run uses the currently bound independent material/depth/prop fixes. Low frame
+rate observations are not a performance pass: single F12 samples may include other
+workloads. Controlled same-state continuous-frame comparisons are next; no quality
+reduction or speculative optimizer has been applied. Ground softness, fine willow
+texture and cross-chapter cohesion remain bounded art debt, not claimed finished.

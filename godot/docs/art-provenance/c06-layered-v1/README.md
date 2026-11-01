@@ -73,3 +73,16 @@ Three additional source-facing art candidates are saved with exact hashes: the
 north red cottage with a smaller rear annex, southwest red dual-door cottage, and
 open winter shelter. They are not bound or accepted before actual feet, annex,
 post/open-gap, doorway and depth checks. No C05 live assets or game rules changed.
+
+## Complete exposed-edge fit checkpoint
+
+The current six-material JSON checks include actual alpha lower edges, not merely
+three convenient corners. North red v3 exceeds its original complete envelope at
+the annex; combined minimax 6.85px fails the unchanged5px threshold. Original north
+house does show a front notch/wing; v2 is not rejected merely for that architecture,
+but its actual full-building feet/edge still fail at13.82px. Do not replace the true
+wing foot with a higher main-body sample. Both northern ridge rock fits also fail
+(6.33/9.10px); central and southwest rocks fit at3.69/4.84px. SW dual-door house needs
+the combined-outline transform (4.86px), not the three-corner fit whose door steps
+extend outside. These are exposed-foot geometry results only, not native selection,
+hidden-rear responsibility, complete scenery acceptance or gameplay.
