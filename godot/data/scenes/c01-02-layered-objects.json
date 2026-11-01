@@ -165,40 +165,40 @@
       ]
     },
     "stone-rail": {
-      "resourcePath": "res://assets/native/c02-layered-v1/stone-front-segment-candidate.png",
-      "pixelSize": [
-        2172,
-        724
-      ],
-      "anchorPixels": [
-        1080,
-        550
-      ],
-      "groundFrontPixels": [
-        1080,
-        550
-      ],
-      "contactShadowRadiiPixels": [
-        450,
-        8
-      ]
-    },
-    "wood-rail": {
-      "resourcePath": "res://assets/native/c02-layered-v1/wood-front-segment-candidate.png",
+      "resourcePath": "res://assets/native/c02-layered-v1/stone-front-short-v2.png",
       "pixelSize": [
         1536,
         1024
       ],
       "anchorPixels": [
-        780,
-        730
+        550,
+        685
       ],
       "groundFrontPixels": [
-        780,
-        730
+        550,
+        685
       ],
       "contactShadowRadiiPixels": [
-        450,
+        150,
+        8
+      ]
+    },
+    "wood-rail": {
+      "resourcePath": "res://assets/native/c02-layered-v1/wood-front-open-v3.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        445,
+        580
+      ],
+      "groundFrontPixels": [
+        445,
+        580
+      ],
+      "contactShadowRadiiPixels": [
+        150,
         8
       ]
     },

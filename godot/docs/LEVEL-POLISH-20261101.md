@@ -14,7 +14,7 @@ visual inspection and synthetic fixtures must remain separate evidence categorie
 | Map | Objectives / timing | Art contract and priority acceptance |
 | --- | --- | --- |
 | 01 双子丘陵 · 36×30 | 莱娅 survives; defeat enemies; first death exposes command clue | Independent ground, seven object textures / 97 instances. Recheck cliff/door/adjacent actor selection and HUD. Historical normal-AI victory is not this run's result. |
-| 02 三桥河谷 · 41×38 | All three refugees east, designated ballista destroyed; any refugee loss fails; center bridge ceasefire through enemy T3 | Whole painted map + 14 occlusion objects, not independent props. Normal escort, refusal feedback, bridge-rail picking, loss/settlement. |
+| 02 三桥河谷 · 41×38 | All three refugees east, designated ballista destroyed; any refugee loss fails; center bridge ceasefire through enemy T3 | Independent ground + 41 standing objects (batch 5); normal escort, refusal feedback, bridge-rail picking, loss/settlement. |
 | 03 赤石围城 · 101×52 | Control link neutralized OR HQ captured; T4 allied reinforcements; node/shield/T15-engineer routes break link; limit 18 | Whole map + 64 occlusion objects. Large-map camera, dense buildings, reinforcement landing, allegiance transition and viable normal-AI route. |
 | 04 黑旗营地 · 50×30 | Three clues, then at least one clue-carrier (莱娅 or 米蕾) withdraws | Whole map + 57 occlusion objects. Empty doorway vs real adjacent guard; clues, withdrawal and carried roster. Historical erroneous doorway probe has been corrected, not weakened. |
 | 05 焚村令 · 50×32 | 莱娅 and at least two civilians survive seven rounds (normally human T8); enemy reinforcements T4; limit 11 | Whole map + 45 occlusion objects. Complete normal-AI T8 defense with carried C04 roster remains an open historical acceptance item. |
@@ -23,7 +23,7 @@ visual inspection and synthetic fixtures must remain separate evidence categorie
 
 For every map: verify actual scale and ground/building/actor integration, picking
 and passage, objective/reinforcement timing, camera/HUD obstruction, input feedback,
-save/load, and actual win/loss settlement. C02–07 painted-in objects are an explicit
+save/load, and actual win/loss settlement. C03–07 painted-in objects remain an explicit
 art/interaction debt, not a claim of C01-style independent composition. Work will
 progress map by map rather than silently marking static validators as full polish.
 
@@ -145,3 +145,31 @@ cases with borrowed textures retained. PaintedSurfaceChecks and the **8129**
 exact broad-phase geometry/UV/depth/pointer comparisons pass unchanged. These are
 geometry fixtures, not C02 natural play or four-house final-material acceptance.
 Production C02 remains bound to its original painted renderer at this checkpoint.
+
+## Batch 5: C02 independent environment adoption
+
+C02 now uses clean ground plus 41 independently depth-sorted props (four houses,
+twelve bridge-front chunks, four broadleafs and 21 pines), reusing C01 pine
+materials. Rule/terrain/elevation/roster JSON and source registration geometry
+are unchanged. Bridge decks/arches/far rails and low dressing remain ground
+material; C03–07 are still unconverted. Whole-map static PNG is retained only
+as provenance/old renderer fixture, not the formal C02 rendering source.
+
+Actual native GUI evidence under `../empire-evidence-20261101/`:
+- `c02-art-{before,candidate,v2}/native-001.png`: same-camera asset iteration,
+  explicitly noninteractive preview; first two candidates are not final approval.
+- `c02-layered-stone-move-1180.jpg`: actual legal GUI move/wait of river-scout
+  (11,19)→(13,20), with visible stone bridge sorting; F5/F9 restores moved/done.
+- `c02-layered-edge-1180.jpg`: actual battle zoom-out confirms tree crowns do not
+  extend outside the ground canvas; final open wooden rail visible.
+
+These are controlled prior-outcome **entry fixtures**, not a continuous campaign
+win. Full normal-AI C02 escort victory, all three bridge crossing routes and
+C03–07 actual gameplay remain open. No objective or unit values changed.
+
+Verification: build zero warnings/errors; CampaignNavigation 550 assertions,
+zero failed groups (actual material doors/roofs/padding, all 12 rail pass-through
+contracts, wooden aperture alpha, 20 actors/4 sites/2 flags, formal entry + F5/F9);
+AssembledGround 179; PaintedSurfaceBroadPhase 8129; CameraIntegration 277; focused escort mission/AI
+intent 1/1. Historical source-v1 checks remain separate. Source metadata 305 UIDs
+and whitespace checks passed. Full seven-map real-play acceptance is not implied.

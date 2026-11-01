@@ -15,9 +15,12 @@ internal static class EscortChecks
         var engine = new BattleEngine(Read(Path.Combine(data, "content-packs.json")).AsArray());
         var level = Read(Path.Combine(data, "grayflag-campaign-levels.json")).AsArray().OfType<JsonObject>()
             .Single(candidate => Text(candidate, "id") == "c01-02");
-        var art = Read(Path.Combine(data, "scenes/c01-02-painted-ground.json"));
+        var scene = Read(Path.Combine(data, "scenes/c01-02.json"));
+        var registration = Text(scene!, "assembledGroundPath");
+        Require(registration == "res://data/scenes/c01-02-layered-ground.json", "C02 formal scene selects its independently layered registration");
+        var art = Read(Path.Combine(data, registration["res://data/".Length..]));
         var hash = Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(EcmaJson.Stringify(level)))).ToLowerInvariant();
-        Require(Text(art!, "levelSourceSha256") == hash, "Painted registration matches reviewed rule-only level change");
+        Require(Text(art!, "levelSourceSha256") == hash, "Formal layered registration matches the unchanged canonical level");
         Require(engine.Victory.Evaluate(engine.CreateState(level), _ => { }) is null, "All required units alive keeps mission active");
         foreach (var key in new[] { "campaign-laiya", "refugee-1", "refugee-2", "refugee-3" })
         {

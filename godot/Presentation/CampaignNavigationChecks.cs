@@ -662,7 +662,7 @@ public partial class CampaignNavigationChecks : Node
                 && EcmaJson.ToElement(unit["rank"]!).GetDouble() == EcmaJson.ToElement(persistent["rank"]!).GetDouble(),
                 "Formal bridge launch did not inherit roster type, health and rank.");
         }
-        CheckPaintedBoard(View<BattleScreen>(game).Board);
+        CheckLayeredBridgeBoard(View<BattleScreen>(game).Board);
     }
 
     private void CheckFormalSaveLoad(GrayFlagGame game)
@@ -681,7 +681,7 @@ public partial class CampaignNavigationChecks : Node
             Require(!ReferenceEquals(Campaign(game), campaign) && State(game) == campaignBefore
                 && Digest(Campaign(game).Battle!.Snapshot()) == before,
                 "Formal bridge F9 changed canonical state or failed to replace the loaded session atomically.");
-            CheckPaintedBoard(View<BattleScreen>(game).Board);
+            CheckLayeredBridgeBoard(View<BattleScreen>(game).Board);
         }
         finally
         {
@@ -690,16 +690,52 @@ public partial class CampaignNavigationChecks : Node
         }
     }
 
-    private void CheckPaintedBoard(BoardView board)
+    private void CheckLayeredBridgeBoard(BoardView board)
     {
-        var ground = Descendants(board).OfType<PaintedGroundView>().Single();
+        var ground = Descendants(board).OfType<AssembledGroundView>().Single();
         Require(!Descendants(board).OfType<TerrainView>().Any() && board.RenderedUnitCount == 20 && board.RenderingIssueCount == 0,
-            "Formal bridge rendering must use its painted ground and all twenty actors without rendering errors.");
+            "Formal bridge rendering must use its independently layered ground and all twenty actors without rendering errors.");
         var houses = ground.Sites;
         Require(houses.Count == 4 && houses.All(entry => entry.OwnsMapStructureBody && ground.OwnsMapStructureBody(entry.Cell)),
-            "The four painted houses must own their selectable map-structure bodies.");
+            "The four independent houses must own their selectable map-structure bodies.");
         Require(!Descendants(board).Any(node => node.Name.ToString().StartsWith("MapStructure_", StringComparison.Ordinal)),
             "Formal bridge houses were duplicated by dynamic map-structure sprites.");
+        var document = PresentationJson.Load<AssembledGroundDocument>("res://data/scenes/c01-02-layered-ground.json");
+        var catalog = PresentationJson.Load<SceneObjectCatalog>(document.ObjectCatalogPath);
+        foreach (var placement in document.Objects)
+        {
+            var sprite = ground.GetNode<Sprite2D>(placement.Id);
+            var asset = catalog.Objects[placement.AssetId];
+            var visual = ground.DepthEntries.Single(entry => entry.Node == sprite).Visual!;
+            Vector2 At(Vector2 source) => sprite.ToGlobal(source - new Vector2((float)asset.AnchorPixels[0], (float)asset.AnchorPixels[1]));
+            using var pixels = sprite.Texture.GetImage();
+            Require(pixels.HasMipmaps(), $"C02 independent minified material lacks mipmaps: {placement.Id}.");
+            Require(!visual.Covers(At(new Vector2(10, 10))), $"C02 transparent padding became opaque: {placement.Id}.");
+            if (placement.SelectionCell is { } cell)
+            {
+                var door = placement.AssetId switch
+                {
+                    "southwest-house" => new Vector2(920, 800),
+                    "east-village" => new Vector2(600, 700),
+                    _ => new Vector2(620, 860)
+                };
+                var roof = new Vector2(800, placement.AssetId == "east-village" ? 350 : 400);
+                Require(visual.Covers(At(door)) && visual.ContainsPointer(At(door)), $"C02 actual door pixels lost the facade target: {placement.Id}.");
+                var hit = board.Pick(board.ToLocal(At(door)));
+                Require(hit is { Kind: TacticalHitKind.Object } && hit.Cell.X == cell[0] && hit.Cell.Y == cell[1],
+                    $"C02 actual door picked another object or neighboring actor: {placement.Id} ({hit}).");
+                Require(visual.Covers(At(roof)) && !visual.ContainsPointer(At(roof)),
+                    $"C02 opaque roof must draw without redirecting clicks to the facade: {placement.Id}.");
+            }
+            else if (placement.AssetId is "wood-rail" or "stone-rail")
+            {
+                var opaque = placement.AssetId == "wood-rail" ? new Vector2(445, 400) : new Vector2(550, 500);
+                Require(visual.Covers(At(opaque)) && !visual.ContainsPointer(At(opaque)),
+                    $"C02 bridge fronts must occlude by depth but never steal ground input: {placement.Id}.");
+                if (placement.AssetId == "wood-rail")
+                    Require(!visual.Covers(At(new Vector2(750, 540))), $"C02 wooden rail opening must remain real transparent space: {placement.Id}.");
+            }
+        }
         var banners = Descendants(board).Where(node => node.HasMeta("owner_color")).ToArray();
         Require(banners.Length == 2 && banners.Select(node => node.GetMeta("owner_color").AsString()).Distinct(StringComparer.Ordinal).Count() == 2,
             "The two owned outposts must retain exactly two dynamic ownership flags.");

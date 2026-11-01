@@ -34,3 +34,19 @@ Use case: background-extraction. Reconstruct ONLY the SOUTHWEST/BOTTOM-LEFT vill
 ## East village — transparent
 
 Use case: background-extraction. Reconstruct ONLY the EAST/RIGHt-MIDDLE village HOUSE beside the farm and wooden bridge in this map as a complete independent transparent 2D game sprite. Preserve that specific compact timber/plaster/stone house's steep dark grey slate roof with smaller front-facing gable, warm brown structural beams, cream walls, low grey stone foundation, small amber windows and clear entrance steps. Same 45-degree elevated three-quarter camera and same orientation as original, not straight-on front elevation; match the original silhouette, proportions, linework and hand-painted palette. No tall outpost chimney, no new tower or architectural redesign. Keep the small stacked crates directly against its LEFT wall as attached props, but exclude nearby wagon, field fences, broadleaf tree and scenery. Only the building and its closely attached crates, complete feet/doorstep visible, generous transparent margins. Genuine transparent alpha, opaque material, clean antialiasing; no ground, grass patch, road, cast ground shadow, glow, halo, background, grid, text or checkerboard. Do not include any other house. This is a foreground layer placed independently at the original capture site.
+
+## Short stone front V2 — transparent (generation brief)
+
+Built-in generation `exec-97cfd28d-6a1d-4293-9e0f-c51834e24487.png`:
+short near-facing stone parapet chunk, one left capped square post and two short
+low blocks, grey stone, same original 45-degree painted perspective and down-right
+bridge direction. Isolated transparent sprite, no deck, river, ground or halo.
+This records the generation brief, not a verbatim reconstruction of the prompt.
+
+## Open wood front V3 — transparent
+
+Built-in edit `exec-1d2327ea-4c2d-4523-a34b-9a0d7fd7f32f.png`, input
+`exec-899bfc20-222a-489f-bc2f-469c714d1cf7.png` (discarded thick V2 rail).
+The following is the exact edit prompt:
+
+Use case: precise-object-edit. Edit this isolated wooden railing game sprite only: keep the same canvas, perspective, two upright locations, diagonal baseline and ochre wood painted texture. Make the TWO horizontal rails and both uprights much slimmer: horizontal beam face thickness one third of current thickness, upright width half current width while preserving their center positions and height. The central open gap should occupy most of the rectangle between posts (at least 60% air), so the game character body remains visible through it. It must look like an open wooden fence, never a solid wooden wall. Keep both slim horizontal rails connected to both slim posts, same 24 degree down-right angle. Genuine transparent alpha in all openings and outside, no dark background, no glow or shadow halo. No floor, deck, ground, scenery, text or added decoration. Preserve exact post ground contacts and overall scale for registered sprite replacement.

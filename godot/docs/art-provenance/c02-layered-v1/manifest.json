@@ -14,7 +14,7 @@
         0,
         255
       ],
-      "status": "candidate-not-runtime-bound"
+      "status": "runtime-bound"
     },
     {
       "file": "assets/native/c02-layered-v1/east-village-candidate.png",
@@ -28,7 +28,7 @@
         0,
         254
       ],
-      "status": "candidate-not-runtime-bound"
+      "status": "runtime-bound"
     },
     {
       "file": "assets/native/c02-layered-v1/ground-candidate.png",
@@ -39,7 +39,7 @@
       ],
       "mode": "RGB",
       "alphaRange": null,
-      "status": "candidate-not-runtime-bound"
+      "status": "runtime-bound"
     },
     {
       "file": "assets/native/c02-layered-v1/outpost-candidate.png",
@@ -53,7 +53,7 @@
         0,
         254
       ],
-      "status": "candidate-not-runtime-bound"
+      "status": "runtime-bound"
     },
     {
       "file": "assets/native/c02-layered-v1/southwest-house-candidate.png",
@@ -67,7 +67,7 @@
         0,
         254
       ],
-      "status": "candidate-not-runtime-bound"
+      "status": "runtime-bound"
     },
     {
       "file": "assets/native/c02-layered-v1/stone-front-segment-candidate.png",
@@ -81,7 +81,35 @@
         0,
         255
       ],
-      "status": "candidate-not-runtime-bound"
+      "status": "superseded-unbound-candidate"
+    },
+    {
+      "file": "assets/native/c02-layered-v1/stone-front-short-v2.png",
+      "sha256": "14b5bafb09f3f230bc76858d8dc42ed2dcaefa614c15aa0a379494b4cd0cf314",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "status": "runtime-bound"
+    },
+    {
+      "file": "assets/native/c02-layered-v1/wood-front-open-v3.png",
+      "sha256": "7a71a83b54270d0b0e3547cdd97db506df5ec56c222ec910d4a889801a958f11",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "status": "runtime-bound"
     },
     {
       "file": "assets/native/c02-layered-v1/wood-front-segment-candidate.png",
@@ -95,7 +123,7 @@
         0,
         254
       ],
-      "status": "candidate-not-runtime-bound"
+      "status": "superseded-unbound-candidate"
     }
   ]
 }

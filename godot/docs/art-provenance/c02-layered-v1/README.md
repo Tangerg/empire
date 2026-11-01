@@ -74,3 +74,26 @@ coverage. Material mipmap imports are enabled for all standing candidates.
 Generated house originals: `exec-c41c391d-f50f-42bb-8074-a2c844bfc3fb.png`
 (outpost), `exec-52c95d7d-339b-4c33-a5b7-4f1e37f28e88.png` (southwest),
 `exec-af513489-9caf-48e0-923e-d9fa275a0e64.png` (east village).
+
+## Accepted composition revision (2026-11-01)
+
+The formal C02 scene now selects this assembled registration. Four independently
+textured houses, twelve short bridge-front sections, four broadleaf trees and
+21 reused C01 pines are separate depth entries (41 total); fixed bridge decks,
+arches/far rails and low landscape dressing remain on the ground layer. This is
+not a claim that every rock/fence is an independent object.
+
+Short stone V2 and open wooden V3 replace the initial overlong segments. V2 wooden
+rail was rejected as too solid; V3 thins actual material geometry and preserves
+transparent openings, rather than squashing the sprite. The southwest doorway
+has no intrusive foreground pine; visible pine crowns stay within the ground
+rectangle. At zoomed-out actual battle view, the dark background surrounds a
+clean rectangular map without freestanding trees outside it. Orange bridge
+repair planks remain intentional original detail.
+
+Native actual-material facade tests use opaque door/roof pixels and transparent
+padding, through Board.Pick, not broad screen probes. Door art maps exactly to
+canonical sites (7,9), (34,9), (4,33), (35,24). Render coverage and pointer contour
+remain independent. The actual GUI moved river-scout from (11,19) to (13,20),
+then F5/F9 restored that moved/done state. This is a C02 entry fixture with real
+input, not a fresh continuous campaign or an escort victory.
