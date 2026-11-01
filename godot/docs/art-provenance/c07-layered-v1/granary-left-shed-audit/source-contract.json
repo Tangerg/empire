@@ -1,0 +1,1233 @@
+{
+  "scope": "Bounded structural closure of original left red-tile lean-to plus ONE large straw-bale group at its east/cloth-canopy overlap. No GUI, engine, saves, image generation, production edits or additional prop survey.",
+  "source": {
+    "resourcePath": "res://assets/native/scenes/luojia.png",
+    "sha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+    "size": [
+      1536,
+      1024
+    ],
+    "paintedSha256": "37f95743c6278a6e8e0c1144feb37d38b9eb17790a776815c48a842190f23d91"
+  },
+  "redShed": {
+    "sourceApproxBounds": [
+      295,
+      92,
+      433,
+      215
+    ],
+    "identity": "Original red-tiled grain-store lean-to west of main granary, visually adjoining cloth canopy; no independent capture site. Restore its substantial structure/back storage instead of treating all unbound pixels as empty walkable courtyard.",
+    "roofGeometry": {
+      "initialCoarseCornersRetainedAsHistory": [
+        [
+          299,
+          125
+        ],
+        [
+          379,
+          95
+        ],
+        [
+          431,
+          136
+        ],
+        [
+          359,
+          160
+        ]
+      ],
+      "initialLimit": "Initial rough structural marks, NOT orange tile-positive pixels.299125 is occluded/dark wood edge;431136 is darkbluefascia. They are explicitly superseded as tileface landmarks.",
+      "revisedSourceRoofSurfaceBoundaryApprox": [
+        [
+          300,
+          124
+        ],
+        [
+          382,
+          94
+        ],
+        [
+          431,
+          133
+        ],
+        [
+          357,
+          161
+        ]
+      ],
+      "nearOrangeTileInnerLandmark": [
+        357,
+        159
+      ],
+      "geometryLimit": "Source-read boundary suggestion separating actual tile plane from timber/dark fascia. Not an exact independent assetfit, all-pixel certification or newly invented tolerance. Near dark fascia continues toabouty164; east blackfascia around431136 is not orange tile. West roof junction is partly covered by wood cap.",
+      "clothJoin": "Existing cloth western corner around380154 touches redroof front/right eave. Keep that visual connection, not an invented loadbearing groundfoot."
+    },
+    "visibleFootEvidence": [
+      {
+        "source": [
+          301,
+          170
+        ],
+        "rgba": [
+          77,
+          56,
+          40,
+          255
+        ],
+        "material": "true visible lower left structural wood post;301172 is pale ground",
+        "cell": [
+          18,
+          10
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      },
+      {
+        "source": [
+          361,
+          213
+        ],
+        "rgba": [
+          93,
+          64,
+          40,
+          255
+        ],
+        "material": "true visible lower near structural wood post;361214..215 transitions warm ground",
+        "cell": [
+          22,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      }
+    ],
+    "groundBelowFeet": [
+      {
+        "source": [
+          301,
+          172
+        ],
+        "rgba": [
+          246,
+          233,
+          223,
+          255
+        ],
+        "material": "pale ground below leftwood",
+        "cell": [
+          18,
+          10
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      },
+      {
+        "source": [
+          361,
+          215
+        ],
+        "rgba": [
+          200,
+          161,
+          132,
+          255
+        ],
+        "material": "warm ground below nearwood",
+        "cell": [
+          22,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      }
+    ],
+    "unprovenFeet": "Mid area around328188..200 contains storage panels/rack/front fence mixed together; NOT certified third roofpost. Hidden back/right post foot is explicit newdesign completion, not source evidence.",
+    "materialOwnership": "Roof/structural posts/braces and actual rear store wall or racks belong structure; loose sacks, bales and barrels separate. No broad dark opaque filled bay solely because interior is shaded.",
+    "actorStatus": "No accepted actualC07legal back-roof alpha counterexample. Much under/behind roof is canonical_ or#. This asset is a structural/visual-responsibility restoration, NOT a demonstrated currentC07roofbug."
+  },
+  "grainGroup": {
+    "visibleMaterialBoundsApprox": [
+      352,
+      168,
+      407,
+      223
+    ],
+    "identity": "Large golden straw-bale stack spanning red-shed/cloth-canopy seam. Poles aroundx382and408, front barrel, underlyingpaving are separate owners. Not all old dark under-canopy pixels are grain.",
+    "fixedActualMaterialPositives": [
+      {
+        "source": [
+          388,
+          210
+        ],
+        "rgba": [
+          236,
+          173,
+          48,
+          255
+        ],
+        "material": "lit yellow lower bale front",
+        "cell": [
+          24,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      },
+      {
+        "source": [
+          390,
+          211
+        ],
+        "rgba": [
+          148,
+          92,
+          25,
+          255
+        ],
+        "material": "shaded brown-gold lowerbale front",
+        "cell": [
+          24,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      },
+      {
+        "source": [
+          402,
+          185
+        ],
+        "rgba": [
+          137,
+          100,
+          49,
+          255
+        ],
+        "material": "rightmost true bale-side edge; opaque but near silhouette",
+        "cell": [
+          25,
+          11
+        ],
+        "terrain": "_",
+        "oldStandingPartsContaining": []
+      },
+      {
+        "source": [
+          403,
+          185
+        ],
+        "rgba": [
+          98,
+          72,
+          37,
+          255
+        ],
+        "material": "darkened adjacent bale-sideedge; not deep interior",
+        "cell": [
+          25,
+          11
+        ],
+        "terrain": "_",
+        "oldStandingPartsContaining": []
+      }
+    ],
+    "confirmedVisibleBottomMaterial": [
+      {
+        "source": [
+          388,
+          215
+        ],
+        "rgba": [
+          44,
+          19,
+          1,
+          255
+        ],
+        "material": "dark lower edge of visible lowerfrontbale",
+        "cell": [
+          24,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      },
+      {
+        "source": [
+          394,
+          213
+        ],
+        "rgba": [
+          50,
+          29,
+          11,
+          255
+        ],
+        "material": "eastward visible lowerbale edge",
+        "cell": [
+          24,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      },
+      {
+        "source": [
+          396,
+          212
+        ],
+        "rgba": [
+          53,
+          29,
+          11,
+          255
+        ],
+        "material": "last reasonably separable inner lowerbale material before barrel overlap",
+        "cell": [
+          24,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      }
+    ],
+    "groundBelowVisibleBottom": [
+      {
+        "source": [
+          388,
+          217
+        ],
+        "rgba": [
+          153,
+          122,
+          91,
+          255
+        ],
+        "material": "warm contactshadow/ground below bale",
+        "cell": [
+          24,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      },
+      {
+        "source": [
+          394,
+          215
+        ],
+        "rgba": [
+          148,
+          129,
+          119,
+          255
+        ],
+        "material": "shadowed ground below bale",
+        "cell": [
+          24,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      },
+      {
+        "source": [
+          396,
+          214
+        ],
+        "rgba": [
+          144,
+          123,
+          116,
+          255
+        ],
+        "material": "shadowed ground below bale",
+        "cell": [
+          24,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      }
+    ],
+    "eastLocalSupportUncertainty": {
+      "queryColumn": 402,
+      "trueGrainFootAt402": null,
+      "foregroundBarrelStartsAround": [
+        399,
+        199,
+        421,
+        219
+      ],
+      "reason": "Foremost barrel top/wood body covers the grain loweredge nearx401..403 fromabout199\u2013202down. At402211..216 the material can be barrel/front contact, NOT authenticated bale foot. Do not setgrain402213 from these pixels, or usegroupmax388215 toforce backwolf200 behind.",
+      "inferenceBoundary": "A continuation from visible396212 toward402 is plausible geometry but unobserved; any chosen continuation for new pile must be labelled designedhidden support and tested as newcontract. Originalold backorder remains unresolved."
+    },
+    "relativeMaterialNegatives": [
+      {
+        "source": [
+          402,
+          178
+        ],
+        "rgba": [
+          19,
+          18,
+          16,
+          255
+        ],
+        "material": "dark cavity ABOVE grain; negative for bale only, not certified empty world/ground",
+        "cell": [
+          25,
+          11
+        ],
+        "terrain": "_",
+        "oldStandingPartsContaining": []
+      },
+      {
+        "source": [
+          408,
+          190
+        ],
+        "rgba": [
+          132,
+          99,
+          55,
+          255
+        ],
+        "material": "existing canopy vertical wood post, exclude from grain asset",
+        "cell": [
+          25,
+          11
+        ],
+        "terrain": "_",
+        "oldStandingPartsContaining": []
+      },
+      {
+        "source": [
+          414,
+          208
+        ],
+        "rgba": [
+          60,
+          42,
+          25,
+          255
+        ],
+        "material": "foreground barrel wood, exclude from grain asset",
+        "cell": [
+          25,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      },
+      {
+        "source": [
+          396,
+          216
+        ],
+        "rgba": [
+          147,
+          123,
+          114,
+          255
+        ],
+        "material": "shadowed ground below visible eastbale, not opaque straw",
+        "cell": [
+          24,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      },
+      {
+        "source": [
+          406,
+          221
+        ],
+        "rgba": [
+          246,
+          194,
+          137,
+          255
+        ],
+        "material": "sunlit paving below barrel/stock",
+        "cell": [
+          25,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      },
+      {
+        "source": [
+          424,
+          216
+        ],
+        "rgba": [
+          232,
+          178,
+          121,
+          255
+        ],
+        "material": "exposed paving right of barrel; underlyingcell26,13is# so NOT a movementpermission assertion",
+        "cell": [
+          26,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      }
+    ],
+    "backAlphaCandidateNotOriginalBug": {
+      "cell": [
+        26,
+        12
+      ],
+      "terrain": "p",
+      "footSource": [
+        424,
+        200
+      ],
+      "unitType": "c01.wolf-rider",
+      "presentInCanonicalC07": true,
+      "canonicalUnitKeys": [
+        "raider-1",
+        "raider-2",
+        "north-raider"
+      ],
+      "assetId": "C01-FFV1-UNIT-WOLF-RIDER",
+      "facing": "east",
+      "frameIndex": 0,
+      "frameRole": "idle",
+      "samples": [
+        {
+          "source": [
+            402,
+            185
+          ],
+          "rgba": [
+            137,
+            100,
+            49,
+            255
+          ],
+          "material": "real straw-bale material, side edge or lower front face",
+          "cell": [
+            25,
+            11
+          ],
+          "terrain": "_",
+          "oldStandingPartsContaining": [],
+          "framePixelFloat": [
+            65.0,
+            418.0
+          ],
+          "nearestFramePixel": [
+            65,
+            418
+          ],
+          "actorRgba": [
+            115,
+            86,
+            62,
+            247
+          ]
+        },
+        {
+          "source": [
+            403,
+            185
+          ],
+          "rgba": [
+            98,
+            72,
+            37,
+            255
+          ],
+          "material": "real straw-bale material, side edge or lower front face",
+          "cell": [
+            25,
+            11
+          ],
+          "terrain": "_",
+          "oldStandingPartsContaining": [],
+          "framePixelFloat": [
+            75.0,
+            418.0
+          ],
+          "nearestFramePixel": [
+            75,
+            418
+          ],
+          "actorRgba": [
+            199,
+            164,
+            125,
+            251
+          ]
+        }
+      ],
+      "interpretation": "UNRESOLVED ORIGINAL ORDER: true bale-side pixels overlap actual currentC07wolfalpha and have no originalstandingpart, but local grainfoot nearx402 is hidden by a barrel. Do not infer it from whole-group388215, and do not call this an old wrong-order bug. A newly designed hidden support may establish a NEW explicit rendering contract; it cannot retroactively prove oldorder.",
+      "pOnlyTerrainPathFrom40_25": [
+        [
+          40,
+          25
+        ],
+        [
+          41,
+          25
+        ],
+        [
+          41,
+          24
+        ],
+        [
+          41,
+          23
+        ],
+        [
+          41,
+          22
+        ],
+        [
+          40,
+          22
+        ],
+        [
+          39,
+          22
+        ],
+        [
+          39,
+          21
+        ],
+        [
+          39,
+          20
+        ],
+        [
+          39,
+          19
+        ],
+        [
+          38,
+          19
+        ],
+        [
+          37,
+          19
+        ],
+        [
+          36,
+          19
+        ],
+        [
+          35,
+          19
+        ],
+        [
+          34,
+          19
+        ],
+        [
+          33,
+          19
+        ],
+        [
+          32,
+          19
+        ],
+        [
+          31,
+          19
+        ],
+        [
+          30,
+          19
+        ],
+        [
+          29,
+          19
+        ],
+        [
+          28,
+          19
+        ],
+        [
+          27,
+          19
+        ],
+        [
+          26,
+          19
+        ],
+        [
+          26,
+          18
+        ],
+        [
+          26,
+          17
+        ],
+        [
+          26,
+          16
+        ],
+        [
+          26,
+          15
+        ],
+        [
+          27,
+          15
+        ],
+        [
+          27,
+          14
+        ],
+        [
+          27,
+          13
+        ],
+        [
+          27,
+          12
+        ],
+        [
+          26,
+          12
+        ]
+      ],
+      "pathSteps": 31,
+      "limit": "Static terrain/alpha only, not gameplay/occupancy/native test."
+    },
+    "frontControl": {
+      "cell": [
+        24,
+        15
+      ],
+      "terrain": "p",
+      "footSource": [
+        392,
+        248
+      ],
+      "unitType": "c01.wolf-rider",
+      "presentInCanonicalC07": true,
+      "canonicalUnitKeys": [
+        "raider-1",
+        "raider-2",
+        "north-raider"
+      ],
+      "assetId": "C01-FFV1-UNIT-WOLF-RIDER",
+      "facing": "east",
+      "frameIndex": 0,
+      "frameRole": "idle",
+      "samples": [
+        {
+          "source": [
+            388,
+            210
+          ],
+          "rgba": [
+            236,
+            173,
+            48,
+            255
+          ],
+          "material": "real straw-bale material, side edge or lower front face",
+          "cell": [
+            24,
+            13
+          ],
+          "terrain": "#",
+          "oldStandingPartsContaining": [],
+          "framePixelFloat": [
+            245.0,
+            188.0
+          ],
+          "nearestFramePixel": [
+            245,
+            188
+          ],
+          "actorRgba": [
+            135,
+            66,
+            48,
+            252
+          ]
+        },
+        {
+          "source": [
+            390,
+            211
+          ],
+          "rgba": [
+            148,
+            92,
+            25,
+            255
+          ],
+          "material": "real straw-bale material, side edge or lower front face",
+          "cell": [
+            24,
+            13
+          ],
+          "terrain": "#",
+          "oldStandingPartsContaining": [],
+          "framePixelFloat": [
+            265.0,
+            198.0
+          ],
+          "nearestFramePixel": [
+            265,
+            198
+          ],
+          "actorRgba": [
+            160,
+            95,
+            39,
+            253
+          ]
+        }
+      ],
+      "interpretation": "Valid front control: footY248 is safely in front of visible local grain bottomY215, so these opaque actorpoints must remain visible/pickable in a restored pile. No missingfrontocclusion bug asserted.",
+      "pOnlyTerrainPathFrom40_25": [
+        [
+          40,
+          25
+        ],
+        [
+          41,
+          25
+        ],
+        [
+          41,
+          24
+        ],
+        [
+          41,
+          23
+        ],
+        [
+          41,
+          22
+        ],
+        [
+          40,
+          22
+        ],
+        [
+          39,
+          22
+        ],
+        [
+          39,
+          21
+        ],
+        [
+          39,
+          20
+        ],
+        [
+          39,
+          19
+        ],
+        [
+          38,
+          19
+        ],
+        [
+          37,
+          19
+        ],
+        [
+          36,
+          19
+        ],
+        [
+          35,
+          19
+        ],
+        [
+          34,
+          19
+        ],
+        [
+          33,
+          19
+        ],
+        [
+          32,
+          19
+        ],
+        [
+          31,
+          19
+        ],
+        [
+          30,
+          19
+        ],
+        [
+          29,
+          19
+        ],
+        [
+          28,
+          19
+        ],
+        [
+          27,
+          19
+        ],
+        [
+          26,
+          19
+        ],
+        [
+          25,
+          19
+        ],
+        [
+          24,
+          19
+        ],
+        [
+          24,
+          18
+        ],
+        [
+          24,
+          17
+        ],
+        [
+          24,
+          16
+        ],
+        [
+          24,
+          15
+        ]
+      ],
+      "pathSteps": 28,
+      "limit": "Static terrain/alpha only, not gameplay/occupancy/native test."
+    },
+    "noNewArtRequirement": "Owner already has continuousorange tile andwood materials. No new texture selected or generated here. New coherentpile design is permitted within actualvisiblematerial/foot/lane boundaries; do not call reconstructedhiddenfeet original certification."
+  },
+  "canonicalResponsibility": {
+    "records": [
+      {
+        "id": "northwest-grain-lean-to-stores",
+        "polygonPixels": [
+          [
+            299,
+            181
+          ],
+          [
+            361,
+            211
+          ],
+          [
+            403,
+            192
+          ],
+          [
+            403,
+            218
+          ],
+          [
+            363,
+            241
+          ],
+          [
+            299,
+            210
+          ]
+        ],
+        "blockedCells": [
+          [
+            18,
+            11
+          ],
+          [
+            19,
+            11
+          ],
+          [
+            20,
+            11
+          ],
+          [
+            18,
+            12
+          ],
+          [
+            19,
+            12
+          ],
+          [
+            20,
+            12
+          ],
+          [
+            21,
+            12
+          ],
+          [
+            22,
+            12
+          ],
+          [
+            23,
+            12
+          ],
+          [
+            24,
+            12
+          ],
+          [
+            25,
+            12
+          ],
+          [
+            18,
+            13
+          ],
+          [
+            19,
+            13
+          ],
+          [
+            20,
+            13
+          ],
+          [
+            21,
+            13
+          ],
+          [
+            22,
+            13
+          ],
+          [
+            23,
+            13
+          ],
+          [
+            24,
+            13
+          ],
+          [
+            25,
+            13
+          ],
+          [
+            20,
+            14
+          ],
+          [
+            21,
+            14
+          ],
+          [
+            22,
+            14
+          ],
+          [
+            23,
+            14
+          ],
+          [
+            24,
+            14
+          ],
+          [
+            22,
+            15
+          ]
+        ]
+      },
+      {
+        "id": "northwest-grain-loading-crates",
+        "polygonPixels": [
+          [
+            383,
+            231
+          ],
+          [
+            406,
+            241
+          ],
+          [
+            431,
+            228
+          ],
+          [
+            429,
+            218
+          ],
+          [
+            408,
+            209
+          ],
+          [
+            385,
+            220
+          ]
+        ],
+        "blockedCells": [
+          [
+            24,
+            13
+          ],
+          [
+            25,
+            13
+          ],
+          [
+            26,
+            13
+          ],
+          [
+            23,
+            14
+          ],
+          [
+            24,
+            14
+          ],
+          [
+            25,
+            14
+          ],
+          [
+            26,
+            14
+          ],
+          [
+            25,
+            15
+          ]
+        ]
+      }
+    ],
+    "limit": "These coarse original auditpolygons are responsibility/canonicalblock records, NOT complete actual assetfootprints. They cannot authenticate hiddenposts or cause terrain_/# tobe changedtop.",
+    "routeConstraints": [
+      {
+        "cells": [
+          [
+            26,
+            12
+          ],
+          [
+            27,
+            12
+          ],
+          [
+            28,
+            12
+          ]
+        ],
+        "terrain": "p,p,p",
+        "sourceCentreRange": [
+          [
+            424,
+            200
+          ],
+          [
+            456,
+            200
+          ]
+        ],
+        "meaning": "Three passable cells on eastside; not a claim of48px of unoccluded screenpaving because standing bodies can project over rear cells."
+      },
+      {
+        "cells": [
+          [
+            27,
+            13
+          ],
+          [
+            28,
+            13
+          ],
+          [
+            29,
+            13
+          ],
+          [
+            30,
+            13
+          ]
+        ],
+        "terrain": "p,p,p,p",
+        "meaning": "Eastturn from shed/stock toward granaryapproach; do not enlarge ground bases into thesecanonicalfootcontacts without physicalregistration proof."
+      },
+      {
+        "cells": [
+          [
+            24,
+            15
+          ],
+          [
+            24,
+            16
+          ],
+          [
+            25,
+            16
+          ],
+          [
+            26,
+            16
+          ],
+          [
+            26,
+            15
+          ],
+          [
+            27,
+            15
+          ]
+        ],
+        "terrain": "allp",
+        "meaning": "Connectedfront/side access around originalstock/walls.24,15isreachable via24,16,not isolated justbecause24,14and25,15are#."
+      }
+    ],
+    "preserve": "No rule/blocker/capturechanges. Solegranarysite35,14andapproach36,14 unchanged. A canonicalp cell does not imply every sourcepixel is empty."
+  },
+  "actorPresentation": {
+    "resourcePath": "res://assets/painted-units-v1/unit-wolf-rider.png",
+    "sha256": "0c230444fc60b7c451dba7ee159deb17bbf512514ed99bcb250d6c9600023d30",
+    "frameRegion": [
+      0,
+      0,
+      511,
+      724
+    ],
+    "anchor": [
+      285,
+      568
+    ],
+    "spriteScale": 0.1,
+    "pixelDensity": 1
+  },
+  "statusCorrections": {
+    "retained": "Both fixedbackpoints do have real existing wolfalpha; thatmeasurement stands.",
+    "withdrawn": "Initial wording strongest backexample must NOT be read as proven oldocclusionerror. True localfoot402 remains hidden; parent explicitly agreed to keep originalorder uncertain.",
+    "strictStop": "No further subpixel/pose search to turn this into a pass. Roofstructure andvisiblegrainboundary deliverable iscomplete."
+  },
+  "references": [
+    "left-red-shed-source.png",
+    "left-red-shed-grid.png",
+    "four-roof-corners-grid.png",
+    "red-left-post-grid.png",
+    "red-near-post-grid.png",
+    "red-mid-post-grid.png",
+    "large-stock-contact-grid.png",
+    "large-grain-bottom-grid.png",
+    "grain-east-side-grid.png",
+    "left-shed-structure-and-grain-boundaries.png"
+  ],
+  "ready": true
+}
