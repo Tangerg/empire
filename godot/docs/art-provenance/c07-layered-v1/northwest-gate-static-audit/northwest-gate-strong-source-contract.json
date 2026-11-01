@@ -1,0 +1,1738 @@
+{
+  "ready": true,
+  "scope": "Bounded original northwest gate static PNG/JSON/actual-actor-alpha study only. No GUI, engine/native commands, game/save changes, production edits, new art or source alpha modification. Native reproduction belongs to parent.",
+  "source": {
+    "resourcePath": "res://assets/native/scenes/luojia.png",
+    "sha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+    "pixelSize": [
+      1536,
+      1024
+    ],
+    "canonicalSourceGridPixels": 16,
+    "worldScale": 1
+  },
+  "priorOverview": "../four-gates-review/four-gates-overview-and-southeast-contract.json (read unchanged; approximate contact evidence refined here)",
+  "site": {
+    "id": "northwest-gate",
+    "terrain": "q",
+    "owner": 1,
+    "cell": [
+      11,
+      11
+    ],
+    "approach": [
+      12,
+      11
+    ],
+    "sitePixel": [
+      180,
+      180
+    ],
+    "approachPixel": [
+      204,
+      180
+    ]
+  },
+  "canonicalSiteCenter": [
+    184,
+    184
+  ],
+  "canonicalApproachCenter": [
+    200,
+    184
+  ],
+  "siteSemantics": "Existing q outpost (11,11), approach(12,11); no door-opening mechanic or extra selection owner. Preserve target wall at94,132 selecting this site. Audit sitePixel180180/approachPixel204180 are visual references, not canonical projected centres.",
+  "oldGateRegistration": {
+    "id": "northwest-gate",
+    "ownsMapStructureBody": true,
+    "parts": [
+      {
+        "id": "left-pier",
+        "polygonPixels": [
+          [
+            80,
+            51
+          ],
+          [
+            105,
+            62
+          ],
+          [
+            119,
+            55
+          ],
+          [
+            119,
+            155
+          ],
+          [
+            103,
+            168
+          ],
+          [
+            81,
+            155
+          ]
+        ],
+        "groundFrontPixels": [
+          103,
+          168
+        ],
+        "pointer": {
+          "kind": "target",
+          "polygonPixels": [
+            [
+              86,
+              112
+            ],
+            [
+              101,
+              118
+            ],
+            [
+              101,
+              148
+            ],
+            [
+              86,
+              142
+            ]
+          ]
+        },
+        "contactCell": [
+          6,
+          10
+        ]
+      },
+      {
+        "id": "right-roof",
+        "polygonPixels": [
+          [
+            143,
+            24
+          ],
+          [
+            186,
+            0
+          ],
+          [
+            236,
+            27
+          ],
+          [
+            195,
+            50
+          ]
+        ],
+        "groundFrontPixels": [
+          209,
+          157
+        ],
+        "pointer": {
+          "kind": "pass-through"
+        },
+        "contactCell": [
+          13,
+          9
+        ]
+      },
+      {
+        "id": "right-pier",
+        "polygonPixels": [
+          [
+            158,
+            36
+          ],
+          [
+            195,
+            50
+          ],
+          [
+            226,
+            34
+          ],
+          [
+            226,
+            143
+          ],
+          [
+            209,
+            157
+          ],
+          [
+            180,
+            143
+          ],
+          [
+            180,
+            74
+          ],
+          [
+            158,
+            68
+          ]
+        ],
+        "groundFrontPixels": [
+          209,
+          157
+        ],
+        "pointer": {
+          "kind": "pass-through"
+        },
+        "contactCell": [
+          13,
+          9
+        ]
+      },
+      {
+        "id": "arch-lintel",
+        "polygonPixels": [
+          [
+            112,
+            69
+          ],
+          [
+            179,
+            39
+          ],
+          [
+            180,
+            74
+          ],
+          [
+            163,
+            82
+          ],
+          [
+            149,
+            81
+          ],
+          [
+            136,
+            89
+          ],
+          [
+            124,
+            104
+          ],
+          [
+            117,
+            126
+          ],
+          [
+            112,
+            127
+          ]
+        ],
+        "groundFrontPixels": [
+          146,
+          142
+        ],
+        "pointer": {
+          "kind": "pass-through"
+        },
+        "contactCell": [
+          9,
+          8
+        ]
+      }
+    ],
+    "selectionCell": [
+      11,
+      11
+    ]
+  },
+  "physicalResponsibility": {
+    "twoPierGroups": [
+      {
+        "id": "northwest-gate-pier-0",
+        "polygonPixels": [
+          [
+            81,
+            126
+          ],
+          [
+            103,
+            137
+          ],
+          [
+            119,
+            129
+          ],
+          [
+            119,
+            157
+          ],
+          [
+            102,
+            168
+          ],
+          [
+            81,
+            155
+          ]
+        ],
+        "blockedCells": [
+          [
+            5,
+            7
+          ],
+          [
+            5,
+            8
+          ],
+          [
+            6,
+            8
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            5,
+            9
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            7,
+            9
+          ],
+          [
+            5,
+            10
+          ],
+          [
+            6,
+            10
+          ],
+          [
+            7,
+            10
+          ]
+        ]
+      },
+      {
+        "id": "northwest-gate-pier-1",
+        "polygonPixels": [
+          [
+            179,
+            115
+          ],
+          [
+            208,
+            127
+          ],
+          [
+            228,
+            117
+          ],
+          [
+            228,
+            145
+          ],
+          [
+            209,
+            157
+          ],
+          [
+            179,
+            145
+          ]
+        ],
+        "blockedCells": [
+          [
+            11,
+            7
+          ],
+          [
+            12,
+            7
+          ],
+          [
+            13,
+            7
+          ],
+          [
+            14,
+            7
+          ],
+          [
+            11,
+            8
+          ],
+          [
+            12,
+            8
+          ],
+          [
+            13,
+            8
+          ],
+          [
+            14,
+            8
+          ],
+          [
+            11,
+            9
+          ],
+          [
+            12,
+            9
+          ],
+          [
+            13,
+            9
+          ],
+          [
+            14,
+            9
+          ]
+        ]
+      }
+    ],
+    "uniqueBlockedCellCount": 22,
+    "interpretation": "These are canonical blocked-cell responsibilities, NOT a bitmap mask and NOT certified whole-tower foundations. Actual standing material may project outside the ground polygon and into p pixels. Do not fill all22 squares or modify collision to fit a new image.",
+    "visibleBodyVsRuleBoundary": [
+      {
+        "source": [
+          125,
+          156
+        ],
+        "rgba": [
+          209,
+          183,
+          132,
+          255
+        ],
+        "meaning": "Left arch low stone projects into#(7,9), outside left audit polygon whose xmax is119; this is not evidence the audit polygon is a visible-image mask",
+        "cell": [
+          7,
+          9
+        ],
+        "terrain": "#",
+        "oldParts": []
+      },
+      {
+        "source": [
+          174,
+          139
+        ],
+        "rgba": [
+          194,
+          169,
+          144,
+          255
+        ],
+        "meaning": "Right arch visible grey return lies at p(10,8), left of right audit polygon xmin179. A legal cell need not have every projected pixel free; no shoe/base collision is proved from this alone.",
+        "cell": [
+          10,
+          8
+        ],
+        "terrain": "p",
+        "oldParts": []
+      }
+    ],
+    "adjoiningObjects": "Perimeter wall bands, low shrubs and rocks are not gate legs and should not be bundled into a new gate or promoted to gate targets. Full hidden rear base coverage not certified."
+  },
+  "actualPhysicalEvidence": {
+    "leftArchLeg": [
+      {
+        "source": [
+          125,
+          155
+        ],
+        "rgba": [
+          216,
+          186,
+          141,
+          255
+        ],
+        "meaning": "Visible pale low stone at the inner/near left arch leg; vegetation masks farther lower continuation. These are reliable stone-material points, not the complete tower external base.",
+        "cell": [
+          7,
+          9
+        ],
+        "terrain": "#",
+        "oldParts": []
+      },
+      {
+        "source": [
+          125,
+          156
+        ],
+        "rgba": [
+          209,
+          183,
+          132,
+          255
+        ],
+        "meaning": "Visible pale low stone at the inner/near left arch leg; vegetation masks farther lower continuation. These are reliable stone-material points, not the complete tower external base.",
+        "cell": [
+          7,
+          9
+        ],
+        "terrain": "#",
+        "oldParts": []
+      },
+      {
+        "source": [
+          126,
+          155
+        ],
+        "rgba": [
+          219,
+          190,
+          148,
+          255
+        ],
+        "meaning": "Visible pale low stone at the inner/near left arch leg; vegetation masks farther lower continuation. These are reliable stone-material points, not the complete tower external base.",
+        "cell": [
+          7,
+          9
+        ],
+        "terrain": "#",
+        "oldParts": []
+      }
+    ],
+    "rightArchGreyReturn": [
+      {
+        "source": [
+          174,
+          139
+        ],
+        "rgba": [
+          194,
+          169,
+          144,
+          255
+        ],
+        "meaning": "Visible grey low return-stone material;140 is edge/transition,141 dark contact-shadow transition, not a new separately certified lower foot",
+        "cell": [
+          10,
+          8
+        ],
+        "terrain": "p",
+        "oldParts": []
+      }
+    ],
+    "approxVisibleArchSupports": {
+      "leftNear": [
+        125,
+        156
+      ],
+      "rightNear": [
+        174,
+        139
+      ],
+      "uncertainty": "One source-pixel antialias/shadow transition; no invented exact hidden corner. If later rendering requires a support across the transparent opening, it must be explicit virtual interpolation between real leg supports, not the lowest opaque arch-top pixel."
+    },
+    "uncertifiedWholeTowerBases": [
+      {
+        "source": [
+          103,
+          168
+        ],
+        "rgba": [
+          106,
+          133,
+          50,
+          255
+        ],
+        "meaning": "Old left-pier front lies in green vegetation, NOT visible tower stone foot",
+        "cell": [
+          6,
+          10
+        ],
+        "terrain": "#",
+        "oldParts": [
+          {
+            "id": "northwest-gate/left-pier",
+            "front": [
+              103,
+              168
+            ],
+            "pointerKind": "target"
+          }
+        ]
+      },
+      {
+        "source": [
+          209,
+          157
+        ],
+        "rgba": [
+          243,
+          220,
+          119,
+          255
+        ],
+        "meaning": "Old right-pier front is bright road/edge colour in this image, NOT a certified visible tower stone foot",
+        "cell": [
+          13,
+          9
+        ],
+        "terrain": "#",
+        "oldParts": [
+          {
+            "id": "northwest-gate/right-pier",
+            "front": [
+              209,
+              157
+            ],
+            "pointerKind": "pass-through"
+          }
+        ]
+      }
+    ],
+    "depthConsequence": "Old left-pier polygon stops atx119; the real pale left arch leg continuesx120..127 down155\u2013156. Old arch-lintel endsaroundy127 and does not cover the chosen body samples. Old whole archfront146142 does not own the omitted lower leg or certify tower bases."
+  },
+  "woodLeafSeparate": {
+    "location": "Open wooden leaf on RIGHT side of the arch aperture; left road remains visible. Stone, leaf and ground are distinct owners.",
+    "visibleSourceCrop": [
+      148,
+      90,
+      173,
+      143
+    ],
+    "lowerVisibleTimber": [
+      {
+        "source": [
+          154,
+          129
+        ],
+        "rgba": [
+          54,
+          39,
+          27,
+          255
+        ],
+        "meaning": "Visible lower dark timber/wood-edge, not the neighbouring pale-grey right stone return or its ground support",
+        "cell": [
+          9,
+          8
+        ],
+        "terrain": "p",
+        "oldParts": []
+      },
+      {
+        "source": [
+          161,
+          133
+        ],
+        "rgba": [
+          94,
+          75,
+          57,
+          255
+        ],
+        "meaning": "Visible lower dark timber/wood-edge, not the neighbouring pale-grey right stone return or its ground support",
+        "cell": [
+          10,
+          8
+        ],
+        "terrain": "p",
+        "oldParts": []
+      },
+      {
+        "source": [
+          167,
+          137
+        ],
+        "rgba": [
+          44,
+          27,
+          18,
+          255
+        ],
+        "meaning": "Visible lower dark timber/wood-edge, not the neighbouring pale-grey right stone return or its ground support",
+        "cell": [
+          10,
+          8
+        ],
+        "terrain": "p",
+        "oldParts": []
+      }
+    ],
+    "approximateOuterBottomLine": [
+      [
+        153,
+        130
+      ],
+      [
+        169,
+        139
+      ]
+    ],
+    "lineStatus": "Visible timber termination slopes down/right: atx153 wood endsaround130, x161around134, x169around139. Soft antialias/shadow at the edge; this is an observed lower-edge estimate for later independent registration, not a final executable leaf polygon. Do not reuse right towerfront157 or leftleg156 as whole leaf support.",
+    "woodInteriorPositives": [
+      {
+        "source": [
+          158,
+          113
+        ],
+        "rgba": [
+          89,
+          64,
+          47,
+          255
+        ],
+        "meaning": "Actual timber surface, separate from stone and open road",
+        "cell": [
+          9,
+          7
+        ],
+        "terrain": "p",
+        "oldParts": []
+      },
+      {
+        "source": [
+          162,
+          123
+        ],
+        "rgba": [
+          94,
+          67,
+          46,
+          255
+        ],
+        "meaning": "Actual timber surface, separate from stone and open road",
+        "cell": [
+          10,
+          7
+        ],
+        "terrain": "p",
+        "oldParts": []
+      },
+      {
+        "source": [
+          166,
+          130
+        ],
+        "rgba": [
+          90,
+          64,
+          41,
+          255
+        ],
+        "meaning": "Actual timber surface, separate from stone and open road",
+        "cell": [
+          10,
+          8
+        ],
+        "terrain": "p",
+        "oldParts": []
+      }
+    ],
+    "groundBelowLeaf": [
+      {
+        "source": [
+          154,
+          133
+        ],
+        "rgba": [
+          153,
+          123,
+          97,
+          255
+        ],
+        "meaning": "Paving/shadow below the diagonal timber bottom; must not be turned into wood",
+        "cell": [
+          9,
+          8
+        ],
+        "terrain": "p",
+        "oldParts": []
+      },
+      {
+        "source": [
+          161,
+          137
+        ],
+        "rgba": [
+          159,
+          126,
+          98,
+          255
+        ],
+        "meaning": "Paving/shadow below the diagonal timber bottom; must not be turned into wood",
+        "cell": [
+          10,
+          8
+        ],
+        "terrain": "p",
+        "oldParts": []
+      },
+      {
+        "source": [
+          167,
+          142
+        ],
+        "rgba": [
+          252,
+          205,
+          136,
+          255
+        ],
+        "meaning": "Paving/shadow below the diagonal timber bottom; must not be turned into wood",
+        "cell": [
+          10,
+          8
+        ],
+        "terrain": "p",
+        "oldParts": []
+      }
+    ],
+    "uncertainty": "Cap/hinge overlap is partially hidden by stone. Full exact curved-top tracing, hardware, hidden hinge and leaf structural thickness are not certified in this bounded pass."
+  },
+  "actorAsset": {
+    "resourcePath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+    "sha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
+    "frameRegion": [
+      0,
+      0,
+      557,
+      725
+    ],
+    "frameAnchor": [
+      269,
+      565
+    ],
+    "effectiveScale": 0.0961538,
+    "flipRule": "East is unflipped. No enlarged sprite, frame substitution or gameplay motion."
+  },
+  "backMissingOcclusionCandidate": {
+    "actorKey": "campaign-torren",
+    "appearanceId": "torren-stage01",
+    "frameIndex": 0,
+    "facing": "east",
+    "cell": [
+      8,
+      8
+    ],
+    "terrain": "p",
+    "footSource": [
+      136,
+      136
+    ],
+    "footOriginalRgba": [
+      149,
+      121,
+      94,
+      255
+    ],
+    "footSourceClassification": "Actual shadowed paving inside the arch opening.",
+    "points": [
+      {
+        "source": [
+          125,
+          129
+        ],
+        "rgba": [
+          236,
+          192,
+          148,
+          255
+        ],
+        "meaning": "Actual pale left arch-leg stone, not wooden leaf, paving, shadow or vegetation",
+        "cell": [
+          7,
+          8
+        ],
+        "terrain": "#",
+        "oldParts": [],
+        "actorFramePixel": [
+          155,
+          492
+        ],
+        "actorAlpha": 253,
+        "sourceYAtOrAboveActorFoot": true
+      },
+      {
+        "source": [
+          126,
+          129
+        ],
+        "rgba": [
+          239,
+          196,
+          151,
+          255
+        ],
+        "meaning": "Actual pale left arch-leg stone, not wooden leaf, paving, shadow or vegetation",
+        "cell": [
+          7,
+          8
+        ],
+        "terrain": "#",
+        "oldParts": [],
+        "actorFramePixel": [
+          165,
+          492
+        ],
+        "actorAlpha": 253,
+        "sourceYAtOrAboveActorFoot": true
+      }
+    ],
+    "expectation": "FootY136 is behind the visibly supported left leg at155\u2013156. Stone should hide the opaque body at these two points. No old standing part covers either point: static missing-occlusion candidate, not a native result.",
+    "staticPqvBMainNetworkPath": [
+      [
+        40,
+        25
+      ],
+      [
+        41,
+        25
+      ],
+      [
+        41,
+        24
+      ],
+      [
+        41,
+        23
+      ],
+      [
+        41,
+        22
+      ],
+      [
+        40,
+        22
+      ],
+      [
+        39,
+        22
+      ],
+      [
+        39,
+        21
+      ],
+      [
+        39,
+        20
+      ],
+      [
+        39,
+        19
+      ],
+      [
+        38,
+        19
+      ],
+      [
+        37,
+        19
+      ],
+      [
+        36,
+        19
+      ],
+      [
+        35,
+        19
+      ],
+      [
+        34,
+        19
+      ],
+      [
+        33,
+        19
+      ],
+      [
+        32,
+        19
+      ],
+      [
+        31,
+        19
+      ],
+      [
+        30,
+        19
+      ],
+      [
+        29,
+        19
+      ],
+      [
+        28,
+        19
+      ],
+      [
+        27,
+        19
+      ],
+      [
+        27,
+        18
+      ],
+      [
+        26,
+        18
+      ],
+      [
+        26,
+        17
+      ],
+      [
+        25,
+        17
+      ],
+      [
+        24,
+        17
+      ],
+      [
+        23,
+        17
+      ],
+      [
+        22,
+        17
+      ],
+      [
+        21,
+        17
+      ],
+      [
+        21,
+        16
+      ],
+      [
+        20,
+        16
+      ],
+      [
+        19,
+        16
+      ],
+      [
+        19,
+        15
+      ],
+      [
+        18,
+        15
+      ],
+      [
+        17,
+        15
+      ],
+      [
+        17,
+        14
+      ],
+      [
+        16,
+        14
+      ],
+      [
+        15,
+        14
+      ],
+      [
+        15,
+        13
+      ],
+      [
+        14,
+        13
+      ],
+      [
+        13,
+        13
+      ],
+      [
+        13,
+        12
+      ],
+      [
+        13,
+        11
+      ],
+      [
+        13,
+        10
+      ],
+      [
+        12,
+        10
+      ],
+      [
+        11,
+        10
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        10,
+        9
+      ],
+      [
+        10,
+        8
+      ],
+      [
+        9,
+        8
+      ],
+      [
+        8,
+        8
+      ]
+    ]
+  },
+  "frontControl": {
+    "actorKey": "campaign-torren",
+    "appearanceId": "torren-stage01",
+    "frameIndex": 0,
+    "facing": "east",
+    "cell": [
+      8,
+      10
+    ],
+    "terrain": "p",
+    "footSource": [
+      136,
+      168
+    ],
+    "footOriginalRgba": [
+      182,
+      178,
+      69,
+      255
+    ],
+    "footSourceClassification": "Low grass/road verge, NOT bright paving; canonical p. No stone/wood ground foot is visible at this centre. Full vegetation physical-height certification is outside this gate-only study.",
+    "points": [
+      {
+        "source": [
+          125,
+          151
+        ],
+        "rgba": [
+          233,
+          194,
+          152,
+          255
+        ],
+        "meaning": "Actual pale left arch-leg stone, not wooden leaf, paving, shadow or vegetation",
+        "cell": [
+          7,
+          9
+        ],
+        "terrain": "#",
+        "oldParts": [],
+        "actorFramePixel": [
+          155,
+          388
+        ],
+        "actorAlpha": 252,
+        "sourceYAtOrAboveActorFoot": true
+      },
+      {
+        "source": [
+          126,
+          151
+        ],
+        "rgba": [
+          229,
+          191,
+          152,
+          255
+        ],
+        "meaning": "Actual pale left arch-leg stone, not wooden leaf, paving, shadow or vegetation",
+        "cell": [
+          7,
+          9
+        ],
+        "terrain": "#",
+        "oldParts": [],
+        "actorFramePixel": [
+          165,
+          388
+        ],
+        "actorAlpha": 253,
+        "sourceYAtOrAboveActorFoot": true
+      }
+    ],
+    "expectation": "FootY168 is in front of the left-leg support at155\u2013156. The real opaque actor must remain in front/visible at the two stone overlaps. This is a front preservation control, not a second claimed old failure.",
+    "staticPqvBMainNetworkPath": [
+      [
+        40,
+        25
+      ],
+      [
+        41,
+        25
+      ],
+      [
+        41,
+        24
+      ],
+      [
+        41,
+        23
+      ],
+      [
+        41,
+        22
+      ],
+      [
+        40,
+        22
+      ],
+      [
+        39,
+        22
+      ],
+      [
+        39,
+        21
+      ],
+      [
+        39,
+        20
+      ],
+      [
+        39,
+        19
+      ],
+      [
+        38,
+        19
+      ],
+      [
+        37,
+        19
+      ],
+      [
+        36,
+        19
+      ],
+      [
+        35,
+        19
+      ],
+      [
+        34,
+        19
+      ],
+      [
+        33,
+        19
+      ],
+      [
+        32,
+        19
+      ],
+      [
+        31,
+        19
+      ],
+      [
+        30,
+        19
+      ],
+      [
+        29,
+        19
+      ],
+      [
+        28,
+        19
+      ],
+      [
+        27,
+        19
+      ],
+      [
+        27,
+        18
+      ],
+      [
+        26,
+        18
+      ],
+      [
+        26,
+        17
+      ],
+      [
+        25,
+        17
+      ],
+      [
+        24,
+        17
+      ],
+      [
+        23,
+        17
+      ],
+      [
+        22,
+        17
+      ],
+      [
+        21,
+        17
+      ],
+      [
+        21,
+        16
+      ],
+      [
+        20,
+        16
+      ],
+      [
+        19,
+        16
+      ],
+      [
+        19,
+        15
+      ],
+      [
+        18,
+        15
+      ],
+      [
+        17,
+        15
+      ],
+      [
+        17,
+        14
+      ],
+      [
+        16,
+        14
+      ],
+      [
+        15,
+        14
+      ],
+      [
+        15,
+        13
+      ],
+      [
+        14,
+        13
+      ],
+      [
+        13,
+        13
+      ],
+      [
+        13,
+        12
+      ],
+      [
+        13,
+        11
+      ],
+      [
+        13,
+        10
+      ],
+      [
+        12,
+        10
+      ],
+      [
+        11,
+        10
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        8,
+        10
+      ]
+    ]
+  },
+  "actorLegality": "Bothp cells have static four-neighbourp/q/v/B paths to initialTorren40,25 with units omitted. This proves terrain connectivity, NOT actual current occupancy, turn cost, played arrival, route under enemies or gameplay progress. Both selected pixels are above their actorfoot, avoiding ground-in-front-of-foot mistaken Pick claims.",
+  "roadRegionsFile": "northwest-gate-original-road-regions.json",
+  "roadRegions": [
+    {
+      "id": "continuous-legal-opening-and-immediate-front",
+      "polygon": [
+        [
+          132,
+          120
+        ],
+        [
+          149,
+          120
+        ],
+        [
+          149,
+          132
+        ],
+        [
+          170,
+          143
+        ],
+        [
+          175,
+          144
+        ],
+        [
+          175,
+          163
+        ],
+        [
+          137,
+          163
+        ],
+        [
+          131,
+          155
+        ],
+        [
+          131,
+          148
+        ],
+        [
+          130,
+          146
+        ],
+        [
+          130,
+          124
+        ]
+      ],
+      "meaning": "Conservative source-visible paving/shadow corridor below the arch, LEFT of the separately owned wooden leaf, then below both leaf and right leg. Whole polygon remains in canonical p cells; excludes overhead vegetation visible through the high opening and the original wooden leaf.",
+      "areaSourcePixelsSquared": 1406.0,
+      "integerSourcePointCount": 1468,
+      "oldPartOverlapCount": 0,
+      "projectedCells": [
+        {
+          "cell": [
+            8,
+            7
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            9,
+            7
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            9,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            10,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            8,
+            9
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            9,
+            9
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            10,
+            9
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            8,
+            10
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            9,
+            10
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            10,
+            10
+          ],
+          "terrain": "p"
+        }
+      ]
+    },
+    {
+      "id": "left-inner-leg-road-edge",
+      "polygon": [
+        [
+          130,
+          126
+        ],
+        [
+          131,
+          126
+        ],
+        [
+          131,
+          146
+        ],
+        [
+          130,
+          146
+        ]
+      ],
+      "meaning": "True paving immediately to the right of the stone/soft dark inner edge, not the pale left arch body.",
+      "areaSourcePixelsSquared": 20.0,
+      "integerSourcePointCount": 42,
+      "oldPartOverlapCount": 0,
+      "projectedCells": [
+        {
+          "cell": [
+            8,
+            7
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            8,
+            9
+          ],
+          "terrain": "p"
+        }
+      ]
+    },
+    {
+      "id": "below-right-arch-return-road",
+      "polygon": [
+        [
+          172,
+          144
+        ],
+        [
+          175,
+          144
+        ],
+        [
+          175,
+          147
+        ],
+        [
+          172,
+          147
+        ]
+      ],
+      "meaning": "Bright road below the actual grey right arch return, still in canonical p; excludes right-side shrubs/tower responsibility.",
+      "areaSourcePixelsSquared": 9.0,
+      "integerSourcePointCount": 16,
+      "oldPartOverlapCount": 0,
+      "projectedCells": [
+        {
+          "cell": [
+            10,
+            9
+          ],
+          "terrain": "p"
+        }
+      ]
+    }
+  ],
+  "fixedGroundNegatives": [
+    {
+      "source": [
+        136,
+        136
+      ],
+      "rgba": [
+        149,
+        121,
+        94,
+        255
+      ],
+      "meaning": "Real paving/shadow inside or in front of gate; an object-mask negative, not originalPNGalpha0",
+      "cell": [
+        8,
+        8
+      ],
+      "terrain": "p",
+      "oldParts": []
+    },
+    {
+      "source": [
+        144,
+        144
+      ],
+      "rgba": [
+        216,
+        174,
+        121,
+        255
+      ],
+      "meaning": "Real paving/shadow inside or in front of gate; an object-mask negative, not originalPNGalpha0",
+      "cell": [
+        9,
+        9
+      ],
+      "terrain": "p",
+      "oldParts": []
+    },
+    {
+      "source": [
+        160,
+        152
+      ],
+      "rgba": [
+        253,
+        204,
+        133,
+        255
+      ],
+      "meaning": "Real paving/shadow inside or in front of gate; an object-mask negative, not originalPNGalpha0",
+      "cell": [
+        10,
+        9
+      ],
+      "terrain": "p",
+      "oldParts": []
+    },
+    {
+      "source": [
+        173,
+        144
+      ],
+      "rgba": [
+        249,
+        189,
+        112,
+        255
+      ],
+      "meaning": "Real paving/shadow inside or in front of gate; an object-mask negative, not originalPNGalpha0",
+      "cell": [
+        10,
+        9
+      ],
+      "terrain": "p",
+      "oldParts": []
+    }
+  ],
+  "existingTargetPositive": {
+    "source": [
+      94,
+      132
+    ],
+    "rgba": [
+      150,
+      127,
+      111,
+      255
+    ],
+    "meaning": "True existing left tower/banner wall target selecting northwest-gate(11,11), not the opening or a new door action",
+    "cell": [
+      5,
+      8
+    ],
+    "terrain": "#",
+    "oldParts": [
+      {
+        "id": "northwest-gate/left-pier",
+        "front": [
+          103,
+          168
+        ],
+        "pointerKind": "target"
+      }
+    ]
+  },
+  "nativeProbeRecommendation": {
+    "backCell": [
+      8,
+      8
+    ],
+    "frontCell": [
+      8,
+      10
+    ],
+    "facing": "east",
+    "frameIndex": 0,
+    "backPoints": [
+      [
+        125,
+        129
+      ],
+      [
+        126,
+        129
+      ]
+    ],
+    "frontPoints": [
+      [
+        125,
+        151
+      ],
+      [
+        126,
+        151
+      ]
+    ],
+    "expectation": "Original should incorrectly expose back body because all old55groups are absent at both actual stone points. Correct local left-leg surface must hide back and retain front visible/pickable. Inspect draw/cue plus actual Pick; static alpha/point containment is not native evidence. Preserve continuous original road regions and existing site target.",
+    "negativeControls": [
+      "Omit left-leg material, or place it atsourcefront136 or earlier: back control must fail.",
+      "A blanket late front beyond168, e.g.172, must fail front preservation where real stone overlaps.",
+      "A filled arch-aperture rectangle must fail continuous road regions, not merely a single centre."
+    ]
+  },
+  "explicitlyNotCovered": [
+    "Complete hidden tower/rear foundation support; no all22wallcell visual-pass claim.",
+    "Whole upper roof/canopy geometry and all legal-neighbour appearances; one strongest actual C07 role pair only.",
+    "Exact leaf curved cap/hinge or a candidate registration.",
+    "Native draw, depth, cue, Pick and actual campaign gameplay; parent executes separately."
+  ]
+}

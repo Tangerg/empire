@@ -1,0 +1,220 @@
+{
+  "ready": true,
+  "scope": "Source-defined object-mask exclusion, NOT transparent pixels in mother PNG. Sample every integer source point inside or on polygon boundary in future native candidate checks. No engine or candidate here.",
+  "regions": [
+    {
+      "id": "continuous-legal-opening-and-immediate-front",
+      "polygon": [
+        [
+          132,
+          120
+        ],
+        [
+          149,
+          120
+        ],
+        [
+          149,
+          132
+        ],
+        [
+          170,
+          143
+        ],
+        [
+          175,
+          144
+        ],
+        [
+          175,
+          163
+        ],
+        [
+          137,
+          163
+        ],
+        [
+          131,
+          155
+        ],
+        [
+          131,
+          148
+        ],
+        [
+          130,
+          146
+        ],
+        [
+          130,
+          124
+        ]
+      ],
+      "meaning": "Conservative source-visible paving/shadow corridor below the arch, LEFT of the separately owned wooden leaf, then below both leaf and right leg. Whole polygon remains in canonical p cells; excludes overhead vegetation visible through the high opening and the original wooden leaf.",
+      "areaSourcePixelsSquared": 1406.0,
+      "integerSourcePointCount": 1468,
+      "oldPartOverlapCount": 0,
+      "projectedCells": [
+        {
+          "cell": [
+            8,
+            7
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            9,
+            7
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            9,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            10,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            8,
+            9
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            9,
+            9
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            10,
+            9
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            8,
+            10
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            9,
+            10
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            10,
+            10
+          ],
+          "terrain": "p"
+        }
+      ]
+    },
+    {
+      "id": "left-inner-leg-road-edge",
+      "polygon": [
+        [
+          130,
+          126
+        ],
+        [
+          131,
+          126
+        ],
+        [
+          131,
+          146
+        ],
+        [
+          130,
+          146
+        ]
+      ],
+      "meaning": "True paving immediately to the right of the stone/soft dark inner edge, not the pale left arch body.",
+      "areaSourcePixelsSquared": 20.0,
+      "integerSourcePointCount": 42,
+      "oldPartOverlapCount": 0,
+      "projectedCells": [
+        {
+          "cell": [
+            8,
+            7
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            8,
+            9
+          ],
+          "terrain": "p"
+        }
+      ]
+    },
+    {
+      "id": "below-right-arch-return-road",
+      "polygon": [
+        [
+          172,
+          144
+        ],
+        [
+          175,
+          144
+        ],
+        [
+          175,
+          147
+        ],
+        [
+          172,
+          147
+        ]
+      ],
+      "meaning": "Bright road below the actual grey right arch return, still in canonical p; excludes right-side shrubs/tower responsibility.",
+      "areaSourcePixelsSquared": 9.0,
+      "integerSourcePointCount": 16,
+      "oldPartOverlapCount": 0,
+      "projectedCells": [
+        {
+          "cell": [
+            10,
+            9
+          ],
+          "terrain": "p"
+        }
+      ]
+    }
+  ]
+}
