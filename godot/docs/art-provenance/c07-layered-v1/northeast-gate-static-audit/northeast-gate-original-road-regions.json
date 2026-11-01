@@ -1,0 +1,236 @@
+{
+  "ready": true,
+  "scope": "Original source-visible paving/ground exclusion polygons. Mother PNG is opaque: negative means no NEW GATE material at these ground pixels, not originalalpha0. Preserve every integer pixel inside/on boundary in future native test.",
+  "uniqueIntegerSourcePointCount": 1103,
+  "regions": [
+    {
+      "id": "continuous-source-visible-opening-and-immediate-front",
+      "polygon": [
+        [
+          1376,
+          110
+        ],
+        [
+          1387,
+          110
+        ],
+        [
+          1392,
+          119
+        ],
+        [
+          1393,
+          125
+        ],
+        [
+          1393,
+          154
+        ],
+        [
+          1388,
+          159
+        ],
+        [
+          1357,
+          149
+        ],
+        [
+          1357,
+          142
+        ],
+        [
+          1360,
+          140
+        ],
+        [
+          1376,
+          132
+        ]
+      ],
+      "meaning": "Independently observed original paving/shadow, to the RIGHT of the separate left wooden leaf, below it and in front. High blue-green background seen through the upper opening is excluded. A few edge pixels project into partially blocked cells; that does not make them stone or authorize putting an actor on the#cell.",
+      "areaSourcePixelsSquared": 1053.0,
+      "integerSourcePointCount": 1097,
+      "oldPartOverlapCount": 0,
+      "projectedCells": [
+        {
+          "cell": [
+            86,
+            6
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            86,
+            7
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            87,
+            7
+          ],
+          "terrain": "#"
+        },
+        {
+          "cell": [
+            84,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "cell": [
+            85,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            86,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "cell": [
+            84,
+            9
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            85,
+            9
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            86,
+            9
+          ],
+          "terrain": "p"
+        },
+        {
+          "cell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        }
+      ],
+      "pointCountByCanonicalTerrain": {
+        "#": 74,
+        "p": 1023
+      }
+    },
+    {
+      "id": "right-inner-leg-source-road-edge",
+      "polygon": [
+        [
+          1392,
+          125
+        ],
+        [
+          1393,
+          125
+        ],
+        [
+          1393,
+          149
+        ],
+        [
+          1392,
+          149
+        ]
+      ],
+      "meaning": "Actual source-visible road immediately left of the dark stone edge at1395. It projects into#(87,7..9) even though the real stone is farther right: preserve image-space aperture without changing canonical terrain.",
+      "areaSourcePixelsSquared": 24.0,
+      "integerSourcePointCount": 50,
+      "oldPartOverlapCount": 0,
+      "projectedCells": [
+        {
+          "cell": [
+            87,
+            7
+          ],
+          "terrain": "#"
+        },
+        {
+          "cell": [
+            87,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "cell": [
+            87,
+            9
+          ],
+          "terrain": "#"
+        }
+      ],
+      "pointCountByCanonicalTerrain": {
+        "#": 50
+      }
+    },
+    {
+      "id": "below-left-arch-stone-source-ground",
+      "polygon": [
+        [
+          1355,
+          142
+        ],
+        [
+          1358,
+          142
+        ],
+        [
+          1358,
+          144
+        ],
+        [
+          1355,
+          144
+        ]
+      ],
+      "meaning": "Original visible shadowed ground below the left stone/leaf junction; partial#cell projection is explicitly retained, no all-cell walkability assertion.",
+      "areaSourcePixelsSquared": 6.0,
+      "integerSourcePointCount": 12,
+      "oldPartOverlapCount": 0,
+      "projectedCells": [
+        {
+          "cell": [
+            84,
+            8
+          ],
+          "terrain": "#"
+        },
+        {
+          "cell": [
+            84,
+            9
+          ],
+          "terrain": "p"
+        }
+      ],
+      "pointCountByCanonicalTerrain": {
+        "#": 8,
+        "p": 4
+      }
+    }
+  ],
+  "ruleCaveat": "Ground in some edge pixels of#cells is historical partial-cell interleaving. Do not make thosecells walkable, expand collision, or use wholecellblocked as license to fill the original visible aperture."
+}

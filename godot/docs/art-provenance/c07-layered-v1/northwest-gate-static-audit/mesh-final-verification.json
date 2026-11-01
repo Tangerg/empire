@@ -1,0 +1,58 @@
+{
+  "scope": "Final separate-upper-module data: four positive roles native rerun. UV/duplicate-base/duplicate-member/per-component-depth negative controls executed immediately before final upper-module split; lower-panel mapping/role inputs unchanged. Not full GPU seam/performance/whole-gate acceptance.",
+  "positive": {
+    "left-back-final": {
+      "meshSamples": 618,
+      "meshOpaque": 456,
+      "meshTransparent": 162,
+      "meshMismatch": 0,
+      "primitiveOverlaps": 0,
+      "roleWitnesses": 2,
+      "stateUnchanged": true
+    },
+    "left-front-final": {
+      "meshSamples": 618,
+      "meshOpaque": 456,
+      "meshTransparent": 162,
+      "meshMismatch": 0,
+      "primitiveOverlaps": 0,
+      "roleWitnesses": 2,
+      "stateUnchanged": true
+    },
+    "right-back-final": {
+      "meshSamples": 618,
+      "meshOpaque": 456,
+      "meshTransparent": 162,
+      "meshMismatch": 0,
+      "primitiveOverlaps": 0,
+      "roleWitnesses": 3,
+      "stateUnchanged": true
+    },
+    "right-front-final": {
+      "meshSamples": 618,
+      "meshOpaque": 456,
+      "meshTransparent": 162,
+      "meshMismatch": 0,
+      "primitiveOverlaps": 0,
+      "roleWitnesses": 3,
+      "stateUnchanged": true
+    }
+  },
+  "negativeWitnessCounts": {
+    "uvMismatch": 319,
+    "duplicateBasePrimitiveOverlap": 430,
+    "duplicateMemberPrimitiveOverlap": 358
+  },
+  "notPassed": [
+    "lookout visual assembly",
+    "GPU all-scale/half-pixel seam equivalence",
+    "whole-gate final art",
+    "production binding",
+    "performance"
+  ],
+  "withdrawn": [
+    "whole-image low(x) physical support",
+    "all original-RGBA equality",
+    "front shield180116 transparent actor witness"
+  ]
+}

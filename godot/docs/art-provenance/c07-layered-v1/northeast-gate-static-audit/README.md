@@ -1,0 +1,3 @@
+# Northeast gate static investigation
+
+Original actual C07 enemy raider-1 wolf-rider east idle appearance, canonical p back(85,8)/front(84,9), same true-stone samples1348,121 and1349,122: original body incorrectly visible from behind and front control preserved. Fresh native original two cases completed stateUnchanged/0issues. No game command, arrival or real gameplay claimed. Frozen source continuous opening union1103 and actual left/right arch stone/independent left leaf are kept separately from hidden tower foundations. Some original road-edge pixels fall inside canonical blocked cells due existing partial-cell responsibility; this does not authorize movement or terrain edits. Raw generated stone is not registered or accepted.
