@@ -1,0 +1,305 @@
+{
+  "schema": "c07-original-fence-finite-timber-evidence-v1",
+  "sourceImage": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/scenes/luojia.png",
+  "sourceSha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+  "scope": "Static actual original pixels only; ready framework untouched. No GUI/engine/repo edits. Not a full-brace reconstruction or new visual acceptance.",
+  "conclusion": "Cannot confidently recover a complete source-faithful X in either tiny bay from this source. The clearest right-side linear warm bands run roughly parallel to the sloping base and may be middle/lower transverse timber or its bevel, not cross-bracing. Do not fabricate a complete X merely because the accepted frame looks empty.",
+  "members": [
+    {
+      "id": "right-lower-warm-edge-left",
+      "polygon": [
+        [
+          968.61,
+          210.52
+        ],
+        [
+          972.61,
+          213.52
+        ],
+        [
+          973.39,
+          212.48
+        ],
+        [
+          969.39,
+          209.48
+        ]
+      ],
+      "tint": "#ffffff",
+      "materialAxis": [
+        [
+          969,
+          210
+        ],
+        [
+          973,
+          213
+        ]
+      ],
+      "widthSourcePixels": 1.3,
+      "sourcePixelEvidence": [
+        {
+          "source": [
+            969,
+            210
+          ],
+          "rgba": [
+            143,
+            102,
+            60,
+            255
+          ]
+        },
+        {
+          "source": [
+            970,
+            211
+          ],
+          "rgba": [
+            183,
+            145,
+            101,
+            255
+          ]
+        },
+        {
+          "source": [
+            971,
+            212
+          ],
+          "rgba": [
+            134,
+            94,
+            60,
+            255
+          ]
+        },
+        {
+          "source": [
+            972,
+            212
+          ],
+          "rgba": [
+            185,
+            147,
+            101,
+            255
+          ]
+        },
+        {
+          "source": [
+            973,
+            213
+          ],
+          "rgba": [
+            117,
+            85,
+            47,
+            255
+          ]
+        }
+      ],
+      "kind": "visible warm narrow timber-edge fragment, approximately parallel to base",
+      "confidence": "Visible local edge only. Full adjoining beam extent/hidden edge NOT certified; not proof of an X brace.",
+      "autoAdopt": false
+    },
+    {
+      "id": "right-lower-warm-edge-right",
+      "polygon": [
+        [
+          978.5939482190896,
+          214.50756472613796
+        ],
+        [
+          983.5939482190896,
+          218.50756472613796
+        ],
+        [
+          984.4060517809104,
+          217.49243527386204
+        ],
+        [
+          979.4060517809104,
+          213.49243527386204
+        ]
+      ],
+      "tint": "#ffffff",
+      "materialAxis": [
+        [
+          979,
+          214
+        ],
+        [
+          984,
+          218
+        ]
+      ],
+      "widthSourcePixels": 1.3,
+      "sourcePixelEvidence": [
+        {
+          "source": [
+            979,
+            214
+          ],
+          "rgba": [
+            155,
+            124,
+            81,
+            255
+          ]
+        },
+        {
+          "source": [
+            980,
+            215
+          ],
+          "rgba": [
+            151,
+            110,
+            77,
+            255
+          ]
+        },
+        {
+          "source": [
+            981,
+            216
+          ],
+          "rgba": [
+            127,
+            94,
+            57,
+            255
+          ]
+        },
+        {
+          "source": [
+            983,
+            217
+          ],
+          "rgba": [
+            172,
+            140,
+            100,
+            255
+          ]
+        },
+        {
+          "source": [
+            984,
+            218
+          ],
+          "rgba": [
+            77,
+            54,
+            31,
+            255
+          ]
+        }
+      ],
+      "kind": "visible warm narrow timber-edge fragment, approximately parallel to base",
+      "confidence": "Visible local edge only. Full adjoining beam extent/hidden edge NOT certified; not proof of an X brace.",
+      "autoAdopt": false
+    }
+  ],
+  "fixedHoleChecks": [
+    {
+      "source": [
+        972,
+        203
+      ],
+      "newFragmentHits": [],
+      "combinedFrameworkHits": []
+    },
+    {
+      "source": [
+        977,
+        207
+      ],
+      "newFragmentHits": [],
+      "combinedFrameworkHits": []
+    },
+    {
+      "source": [
+        954,
+        194
+      ],
+      "newFragmentHits": [],
+      "combinedFrameworkHits": []
+    }
+  ],
+  "confirmedFrameworkRetained": {
+    "file": "fence-module-geometry-executable.json",
+    "sha256": "eb6ada46171d4686964fee7ab4d4bd1c256786b4174268b10e1649cf12062263"
+  },
+  "withheld": [
+    {
+      "area": "left bay, source[951,187,962,210]",
+      "evidence": "Short dark strip between light openings is visible, but it merges with pillar/behind-crate material. Timber continuity, width and endpoints cannot be separated reliably.",
+      "candidateDarkPixels": [
+        {
+          "source": [
+            953,
+            197
+          ],
+          "rgba": [
+            108,
+            72,
+            39,
+            255
+          ]
+        },
+        {
+          "source": [
+            955,
+            196
+          ],
+          "rgba": [
+            85,
+            51,
+            18,
+            255
+          ]
+        },
+        {
+          "source": [
+            957,
+            195
+          ],
+          "rgba": [
+            69,
+            41,
+            16,
+            255
+          ]
+        },
+        {
+          "source": [
+            959,
+            194
+          ],
+          "rgba": [
+            71,
+            44,
+            16,
+            255
+          ]
+        }
+      ],
+      "decision": "No executable full diagonal provided. Dark RGB alone is not ownership evidence."
+    },
+    {
+      "area": "right bay, source[965,198,985,224]",
+      "evidence": "Bright paving holes and small warm edges are distinct; the large dark field mixes fence shadows with background. Broad diagonals would cover material not positively identified as wood.",
+      "decision": "No full X or per-test cutouts. Above finite 1.3px strips are source-edge study only, not permission to fill the dark region."
+    }
+  ],
+  "uncertainty": "At this original resolution the warm edge thickness is about1\u20132sourcepx. 1.3px proposed fragment width represents the visible narrow band, not a pass tolerance. Adjacent continuity is intentionally not inferred.",
+  "sourceCrops": [
+    "right-diagonals-source.png",
+    "right-diagonals-grid.png",
+    "left-diagonals-grid.png",
+    "finite-timber-edge-overlay.png"
+  ],
+  "nextBoundary": "If a complete cross-brace design is required, it must be an explicit art-design choice approved separately, not falsely documented as recovered original geometry."
+}

@@ -1,0 +1,80 @@
+using Godot;
+using Empire.Presentation;
+using System.Text.Json.Nodes;
+
+// External static renderer fixture. No campaign, engine commands or production format changes.
+public partial class AtomicFenceGround : BoardGroundView
+{
+    readonly BoardGroundView ground;
+    readonly List<TerrainDepthEntry> entries = new();
+    readonly List<(Node2D Node, Vector2 SourceContact, StandingVisual Visual)> slices = new();
+    public override IReadOnlyList<string> Diagnostics => ground.Diagnostics;
+    public override IReadOnlyList<GroundSite> Sites => ground.Sites;
+    public override IReadOnlyList<TerrainDepthEntry> DepthEntries => entries;
+    public AtomicFenceGround(BoardGroundView ground, JsonObject geometry)
+    {
+        this.ground = ground;
+        AddChild(ground);
+        var texture = GD.Load<Texture2D>("res://assets/native/c07-layered-v1/training-fence-v2-rejected.png");
+        Vector2 Pair(JsonNode n) => new(n[0]!.GetValue<float>(), n[1]!.GetValue<float>());
+        var uv = geometry["woodUvRectangle"]!.AsArray().Select(v => v!.GetValue<float>()).ToArray();
+        using var pixels = texture.GetImage();
+        for (int y=(int)uv[1];y<uv[3];y++) for(int x=(int)uv[0];x<uv[2];x++)
+            if(pixels.GetPixel(x,y).A < .98f) throw new Exception("Material sample includes transparency");
+        var members=geometry["members"]!.AsArray().OfType<JsonObject>().ToArray();
+        // Shared vertical slices preserve the original sloped support line without whole-fence Z ordering.
+        for(int x=946;x<992;x++)
+        {
+            var polygons=new List<Vector2[]>();
+            var colors=new List<Color>();
+            var axes=new List<(Vector2 Start,Vector2 End)>();
+            foreach(var m in members)
+            {
+                var polygon=m["polygon"]!.AsArray().Select(p=>Pair(p!)).ToArray();
+                var slab=new[]{new Vector2(x,170),new Vector2(x+1,170),new Vector2(x+1,232),new Vector2(x,232)};
+                foreach(var clip in Geometry2D.IntersectPolygons(polygon,slab))
+                {
+                    if(clip.Length<3) continue;
+                    polygons.Add(clip);
+                    colors.Add(new Color(m["tint"]!.GetValue<string>()));
+                    axes.Add((Pair(m["materialAxis"]![0]!),Pair(m["materialAxis"]![1]!)));
+                }
+            }
+            if(polygons.Count==0)continue;
+            float sx=x+.5f;
+            float sy=sx<=963?208+(sx-950)*7/13:215+(sx-963)*13/24;
+            var contact=new Vector2(sx,sy);
+            var node=new Node2D{Name=$"AtomicFenceColumn{x}"};AddChild(node);
+            var locals=new List<Vector2[]>();
+            for(int i=0;i<polygons.Count;i++)
+            {
+                var local=polygons[i].Select(p=>p-contact).ToArray();locals.Add(local);
+                // Reuse only plain wood pixels, not the rejected fence silhouette or its filled openings.
+                var along=(axes[i].End-axes[i].Start).Normalized();var across=new Vector2(-along.Y,along.X);
+                var texcoords=polygons[i].Select(p=>new Vector2(Mathf.Clamp((uv[0]+uv[2])/2+(p-axes[i].Start).Dot(across)*4,uv[0]+.5f,uv[2]-1.5f),Mathf.Clamp(uv[1]+10+(p-axes[i].Start).Dot(along)*10,uv[1]+.5f,uv[3]-1.5f))).ToArray();
+                node.AddChild(new Polygon2D{Polygon=local,UV=texcoords,Texture=texture,Color=colors[i],TextureFilter=CanvasItem.TextureFilterEnum.Linear});
+            }
+            slices.Add((node,contact,new UnionWoodVisual(node,locals)));
+        }
+    }
+    public override void ConfigureAuthoredGround(Node2D authoredGround)=>ground.ConfigureAuthoredGround(authoredGround);
+    public override Node2D DetachAuthoredGround()=>ground.DetachAuthoredGround();
+    public override void Render(BoardProjection projection,string[] tiles,int[] elevation,Vector2I size)
+    {
+        ground.Render(projection,tiles,elevation,size);entries.Clear();entries.AddRange(ground.DepthEntries);
+        foreach(var (node,source,visual) in slices)
+        {
+            var logical=source/16*BoardProjection.TileSize;
+            node.Position=projection.Project(logical);
+            entries.Add(new(node,logical,2,visual));
+        }
+    }
+    sealed class UnionWoodVisual(Node2D node,List<Vector2[]> polygons):StandingVisual(node)
+    {
+        public override bool Covers(Vector2 global)=>polygons.Any(p=>Geometry2D.IsPointInPolygon(Node.ToLocal(global),p));
+        public override bool ContainsPointer(Vector2 global)=>false;
+        public override bool IntersectsPointer(Vector2[] global)=>false;
+        public override Rect2 GlobalBounds {get {var points=polygons.SelectMany(p=>p).Select(Node.ToGlobal).ToArray();var r=new Rect2(points[0],Vector2.Zero);foreach(var p in points)r=r.Expand(p);return r;}}
+        protected override Vector2 ParentFrontOffset=>Vector2.Zero;
+    }
+}

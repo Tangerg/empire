@@ -1,0 +1,701 @@
+{
+  "schema": "c07-independent-fence-modules-static-v1",
+  "coordinateSpace": "C07 source pixels, worldScale1. materialAxis is ONLY texture-grain orientation, never selection/contact ownership.",
+  "woodTexturePath": "/workspace/scratch/84c9fe948755/generated_images/exec-b0b17748-cfdf-403e-8d60-f3d9748d74ff.png",
+  "woodTextureSha256": "2d3889d92d7aeb8e850dd3f1464790778203b9795252c2f1148822bfa9fac9ab",
+  "woodUvRectangle": [
+    95,
+    180,
+    132,
+    600
+  ],
+  "woodUvRectangleConvention": "[left,top,right,bottom], exclusive end",
+  "woodUvAlphaRange": [
+    252,
+    253
+  ],
+  "members": [
+    {
+      "id": "left-post-cap",
+      "polygon": [
+        [
+          946,
+          179
+        ],
+        [
+          949,
+          177
+        ],
+        [
+          953,
+          179
+        ],
+        [
+          949,
+          181
+        ]
+      ],
+      "tint": "#ffffff",
+      "materialAxis": [
+        [
+          946.65,
+          177.70000000000002
+        ],
+        [
+          952.25,
+          180.5
+        ]
+      ],
+      "depth": {
+        "kind": "single-wood-support",
+        "groundFrontPixels": [
+          950,
+          208
+        ]
+      }
+    },
+    {
+      "id": "left-post-side",
+      "polygon": [
+        [
+          946,
+          179
+        ],
+        [
+          949,
+          181
+        ],
+        [
+          949,
+          208
+        ],
+        [
+          946,
+          206
+        ]
+      ],
+      "tint": "#d5b38b",
+      "materialAxis": [
+        [
+          947.5,
+          179.0
+        ],
+        [
+          947.5,
+          208.0
+        ]
+      ],
+      "depth": {
+        "kind": "single-wood-support",
+        "groundFrontPixels": [
+          950,
+          208
+        ]
+      }
+    },
+    {
+      "id": "left-post-front",
+      "polygon": [
+        [
+          949,
+          181
+        ],
+        [
+          953,
+          179
+        ],
+        [
+          953,
+          206
+        ],
+        [
+          950,
+          208
+        ],
+        [
+          949,
+          208
+        ]
+      ],
+      "tint": "#ffffff",
+      "materialAxis": [
+        [
+          950.8,
+          179.0
+        ],
+        [
+          950.8,
+          208.0
+        ]
+      ],
+      "depth": {
+        "kind": "single-wood-support",
+        "groundFrontPixels": [
+          950,
+          208
+        ]
+      }
+    },
+    {
+      "id": "middle-post-cap",
+      "polygon": [
+        [
+          960,
+          187
+        ],
+        [
+          963,
+          185
+        ],
+        [
+          967,
+          187
+        ],
+        [
+          963,
+          189
+        ]
+      ],
+      "tint": "#ffffff",
+      "materialAxis": [
+        [
+          960.65,
+          185.69999999999996
+        ],
+        [
+          966.2499999999999,
+          188.49999999999994
+        ]
+      ],
+      "depth": {
+        "kind": "single-wood-support",
+        "groundFrontPixels": [
+          963,
+          215
+        ]
+      }
+    },
+    {
+      "id": "middle-post-side",
+      "polygon": [
+        [
+          960,
+          187
+        ],
+        [
+          963,
+          189
+        ],
+        [
+          963,
+          215
+        ],
+        [
+          960,
+          213
+        ]
+      ],
+      "tint": "#d5b38b",
+      "materialAxis": [
+        [
+          961.5,
+          187.0
+        ],
+        [
+          961.5,
+          215.0
+        ]
+      ],
+      "depth": {
+        "kind": "single-wood-support",
+        "groundFrontPixels": [
+          963,
+          215
+        ]
+      }
+    },
+    {
+      "id": "middle-post-front",
+      "polygon": [
+        [
+          963,
+          189
+        ],
+        [
+          967,
+          187
+        ],
+        [
+          967,
+          213
+        ],
+        [
+          963,
+          215
+        ]
+      ],
+      "tint": "#ffffff",
+      "materialAxis": [
+        [
+          965.0,
+          187.0
+        ],
+        [
+          965.0,
+          215.0
+        ]
+      ],
+      "depth": {
+        "kind": "single-wood-support",
+        "groundFrontPixels": [
+          963,
+          215
+        ]
+      }
+    },
+    {
+      "id": "right-post-cap",
+      "polygon": [
+        [
+          984,
+          200
+        ],
+        [
+          987,
+          198
+        ],
+        [
+          991,
+          200
+        ],
+        [
+          987,
+          202
+        ]
+      ],
+      "tint": "#ffffff",
+      "materialAxis": [
+        [
+          984.65,
+          198.70000000000002
+        ],
+        [
+          990.25,
+          201.5
+        ]
+      ],
+      "depth": {
+        "kind": "single-wood-support",
+        "groundFrontPixels": [
+          987,
+          228
+        ]
+      }
+    },
+    {
+      "id": "right-post-side",
+      "polygon": [
+        [
+          984,
+          200
+        ],
+        [
+          987,
+          202
+        ],
+        [
+          987,
+          228
+        ],
+        [
+          984,
+          226
+        ]
+      ],
+      "tint": "#d5b38b",
+      "materialAxis": [
+        [
+          985.5,
+          200.0
+        ],
+        [
+          985.5,
+          228.0
+        ]
+      ],
+      "depth": {
+        "kind": "single-wood-support",
+        "groundFrontPixels": [
+          987,
+          228
+        ]
+      }
+    },
+    {
+      "id": "right-post-front",
+      "polygon": [
+        [
+          987,
+          202
+        ],
+        [
+          991,
+          200
+        ],
+        [
+          991,
+          226
+        ],
+        [
+          987,
+          228
+        ]
+      ],
+      "tint": "#ffffff",
+      "materialAxis": [
+        [
+          989.0,
+          200.0
+        ],
+        [
+          989.0,
+          228.0
+        ]
+      ],
+      "depth": {
+        "kind": "single-wood-support",
+        "groundFrontPixels": [
+          987,
+          228
+        ]
+      }
+    },
+    {
+      "id": "left-upper-rail-top",
+      "polygon": [
+        [
+          953,
+          183
+        ],
+        [
+          960,
+          186
+        ],
+        [
+          960,
+          188
+        ],
+        [
+          953,
+          185
+        ]
+      ],
+      "tint": "#ffffff",
+      "materialAxis": [
+        [
+          952.6379310344827,
+          183.8448275862069
+        ],
+        [
+          960.3620689655173,
+          187.1551724137931
+        ]
+      ],
+      "depth": {
+        "kind": "local-linear-wood-footline",
+        "samples": [
+          [
+            953.0,
+            209.6153846153846
+          ],
+          [
+            960.0,
+            213.3846153846154
+          ]
+        ],
+        "requirement": "Preserve local depths across this diagonal beam; do not replace with one remote/global site anchor."
+      }
+    },
+    {
+      "id": "left-upper-rail-face",
+      "polygon": [
+        [
+          953,
+          185
+        ],
+        [
+          960,
+          188
+        ],
+        [
+          960,
+          191
+        ],
+        [
+          953,
+          188
+        ]
+      ],
+      "tint": "#ffffff",
+      "materialAxis": [
+        [
+          952.4568965517242,
+          186.26724137931035
+        ],
+        [
+          960.5431034482759,
+          189.73275862068968
+        ]
+      ],
+      "depth": {
+        "kind": "local-linear-wood-footline",
+        "samples": [
+          [
+            953.0,
+            209.6153846153846
+          ],
+          [
+            960.0,
+            213.3846153846154
+          ]
+        ],
+        "requirement": "Preserve local depths across this diagonal beam; do not replace with one remote/global site anchor."
+      }
+    },
+    {
+      "id": "right-upper-rail-top",
+      "polygon": [
+        [
+          967,
+          190
+        ],
+        [
+          984,
+          197
+        ],
+        [
+          984,
+          199
+        ],
+        [
+          967,
+          192
+        ]
+      ],
+      "tint": "#ffffff",
+      "materialAxis": [
+        [
+          966.6479289940828,
+          190.8550295857988
+        ],
+        [
+          984.3520710059172,
+          198.1449704142012
+        ]
+      ],
+      "depth": {
+        "kind": "local-linear-wood-footline",
+        "samples": [
+          [
+            967.0,
+            217.16666666666666
+          ],
+          [
+            984.0,
+            226.375
+          ]
+        ],
+        "requirement": "Preserve local depths across this diagonal beam; do not replace with one remote/global site anchor."
+      }
+    },
+    {
+      "id": "right-upper-rail-face",
+      "polygon": [
+        [
+          967,
+          192
+        ],
+        [
+          984,
+          199
+        ],
+        [
+          984,
+          202
+        ],
+        [
+          967,
+          195
+        ]
+      ],
+      "tint": "#ffffff",
+      "materialAxis": [
+        [
+          966.4718934911242,
+          193.28254437869822
+        ],
+        [
+          984.5281065088758,
+          200.71745562130178
+        ]
+      ],
+      "depth": {
+        "kind": "local-linear-wood-footline",
+        "samples": [
+          [
+            967.0,
+            217.16666666666666
+          ],
+          [
+            984.0,
+            226.375
+          ]
+        ],
+        "requirement": "Preserve local depths across this diagonal beam; do not replace with one remote/global site anchor."
+      }
+    },
+    {
+      "id": "left-lower-rail",
+      "polygon": [
+        [
+          953,
+          203
+        ],
+        [
+          960,
+          206
+        ],
+        [
+          960,
+          209
+        ],
+        [
+          953,
+          206
+        ]
+      ],
+      "tint": "#d5b38b",
+      "materialAxis": [
+        [
+          952.4568965517242,
+          204.26724137931035
+        ],
+        [
+          960.5431034482759,
+          207.73275862068968
+        ]
+      ],
+      "depth": {
+        "kind": "local-linear-wood-footline",
+        "samples": [
+          [
+            953.0,
+            209.6153846153846
+          ],
+          [
+            960.0,
+            213.3846153846154
+          ]
+        ],
+        "requirement": "Preserve local depths across this diagonal beam; do not replace with one remote/global site anchor."
+      }
+    },
+    {
+      "id": "right-lower-rail",
+      "polygon": [
+        [
+          967,
+          211
+        ],
+        [
+          984,
+          220
+        ],
+        [
+          984,
+          223
+        ],
+        [
+          967,
+          214
+        ]
+      ],
+      "tint": "#d5b38b",
+      "materialAxis": [
+        [
+          966.3797297297298,
+          212.17162162162163
+        ],
+        [
+          984.6202702702702,
+          221.82837837837837
+        ]
+      ],
+      "depth": {
+        "kind": "local-linear-wood-footline",
+        "samples": [
+          [
+            967.0,
+            217.16666666666666
+          ],
+          [
+            984.0,
+            226.375
+          ]
+        ],
+        "requirement": "Preserve local depths across this diagonal beam; do not replace with one remote/global site anchor."
+      }
+    }
+  ],
+  "supportLine": [
+    [
+      950,
+      208
+    ],
+    [
+      963,
+      215
+    ],
+    [
+      987,
+      228
+    ]
+  ],
+  "postHeights": [
+    31,
+    30,
+    30
+  ],
+  "frozenCapInteriorToFootHeights": [
+    31,
+    30,
+    30
+  ],
+  "selectionCell": null,
+  "pointer": "pass-through",
+  "limitations": [
+    "Middle cap corrected to retain frozen965185 wood point; only cap outline changed,963215 foot and pillar body retained. Cap top184 gives31px total while frozen cap interior185-to-foot gives30px.",
+    "Original X/diagonal bracing is not reconstructed in this conservative framework. Dark original bays mix timber and rear cargo; filling all dark pixels would recreate false occlusion. Do not call this complete original-fence visual restoration.",
+    "Caps/left upper rail blend with stocks; 1\u20132sourcepx outline uncertainty, not an added acceptance tolerance.",
+    "No native actual draw/pick, antialias/filter footprint or actor-cue test has run. Static empty gaps are not final rendering proof.",
+    "Texture-repetition/style and projected local-depth behavior need owner scene validation.",
+    "One positive probe does not certify the rest; 7 explicit positive points,3holes,3feet are included but are still bounded checks."
+  ],
+  "note": "Historical failing-cap reconstruction only; do not integrate as ready geometry.",
+  "historicalEvidence": "Reconstructed from the first proposal polygon recorded in the tool transcript, NOT claimed to be an untouched byte-for-byte old file. All unchanged member geometry preserved. This deliberate old cap must fail frozen positive965185.",
+  "negativeControl": {
+    "fixedSourcePositive": [
+      965,
+      185
+    ],
+    "expected": "opaque wood cap",
+    "actualOldPolygonContains": false,
+    "edgeCrossProducts": [
+      4.0,
+      -4.0,
+      12.0,
+      16.0
+    ],
+    "failure": "Frozen original cap material omitted; fixed by changing only cap outline, no foot/body move."
+  }
+}
