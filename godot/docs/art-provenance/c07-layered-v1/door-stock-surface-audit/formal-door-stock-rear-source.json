@@ -1,0 +1,151 @@
+{
+  "scope": "New reasonable rear closed crate; original rear foot hidden by low front containers, no certified original-foot claim",
+  "textureResourcePath": "res://assets/native/c07-layered-v1/granary-grain-bin-v1-candidate.png",
+  "namePrefix": "GranaryStockRearColumn",
+  "members": [
+    {
+      "id": "left-face",
+      "polygon": [
+        [
+          522,
+          188
+        ],
+        [
+          530,
+          194
+        ],
+        [
+          530,
+          214
+        ],
+        [
+          522,
+          207
+        ]
+      ],
+      "uv": [
+        [
+          200,
+          770
+        ],
+        [
+          375,
+          860
+        ],
+        [
+          375,
+          940
+        ],
+        [
+          200,
+          850
+        ]
+      ],
+      "tint": "b7a084"
+    },
+    {
+      "id": "right-face",
+      "polygon": [
+        [
+          530,
+          194
+        ],
+        [
+          542,
+          188
+        ],
+        [
+          542,
+          208
+        ],
+        [
+          530,
+          214
+        ]
+      ],
+      "uv": [
+        [
+          565,
+          838
+        ],
+        [
+          800,
+          757
+        ],
+        [
+          800,
+          821
+        ],
+        [
+          565,
+          905
+        ]
+      ],
+      "tint": "d1b799"
+    },
+    {
+      "id": "top-wood-lid-new-stock",
+      "polygon": [
+        [
+          522,
+          188
+        ],
+        [
+          531,
+          184
+        ],
+        [
+          542,
+          188
+        ],
+        [
+          530,
+          194
+        ]
+      ],
+      "uv": [
+        [
+          565,
+          838
+        ],
+        [
+          800,
+          757
+        ],
+        [
+          800,
+          821
+        ],
+        [
+          565,
+          905
+        ]
+      ],
+      "tint": "d0b28d"
+    }
+  ],
+  "supportLine": [
+    [
+      521,
+      207
+    ],
+    [
+      522,
+      207
+    ],
+    [
+      530,
+      214
+    ],
+    [
+      542,
+      208
+    ],
+    [
+      543,
+      208
+    ]
+  ],
+  "pointer": "pass-through",
+  "newSiteOwner": false
+}

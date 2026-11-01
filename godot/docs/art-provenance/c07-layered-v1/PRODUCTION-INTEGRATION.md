@@ -52,3 +52,6 @@ The reviewed17-member cloth canopy uses the same surface compiler in an unbound 
 
 ## Low granary grain bin formal-loader slice
 The reviewed8-member low bin now joins the formal main+cloth preview via the same compiled surface owner.1128source/reference vertices and1190material samples match exactly; actual Torren east/west front/back and wrong-left-foot negative remain intact.33polygon nodes replace201. See [granary-bin-surface-audit](granary-bin-surface-audit/README.md). Black-seam/grain/shadow/style debts remain; official C07 and real gameplay unchanged.
+
+## Three door-stock containers formal-loader slice
+The existing bounded3-container design is added to the formal granary composition, each retaining its independent contact profile.1098vertices/source/reference exact,5244coverage samples equal,1024entry-strip samples clear; a1×2between-centres intrusion fails the intended strip assertion while fixed material/front-role checks pass.63polygon nodes replace195. See [door-stock-surface-audit](door-stock-surface-audit/README.md). Not a new historical rear-role defect or complete granary/C07; no real actions/save changes.

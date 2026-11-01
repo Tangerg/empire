@@ -1,0 +1,41 @@
+{
+  "basePlacementsUnchanged": 6,
+  "addedIndependentPlacements": [
+    {
+      "id": "granary-door-stock-rear",
+      "assetId": "granary-door-stock-rear-surface",
+      "contact": [
+        32.625,
+        11.5
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "granary-door-stock-left",
+      "assetId": "granary-door-stock-left-surface",
+      "contact": [
+        31.3125,
+        12.25
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "granary-door-stock-right",
+      "assetId": "granary-door-stock-right-surface",
+      "contact": [
+        33.25,
+        12.25
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    }
+  ]
+}

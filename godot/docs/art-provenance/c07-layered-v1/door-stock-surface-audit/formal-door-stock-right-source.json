@@ -1,0 +1,151 @@
+{
+  "scope": "Original low right front contact541218 retained;535215 remains its own wood side, never main-house support",
+  "textureResourcePath": "res://assets/native/c07-layered-v1/granary-grain-bin-v1-candidate.png",
+  "namePrefix": "GranaryStockRightColumn",
+  "members": [
+    {
+      "id": "left-face",
+      "polygon": [
+        [
+          532,
+          201
+        ],
+        [
+          541,
+          206
+        ],
+        [
+          541,
+          218
+        ],
+        [
+          532,
+          214
+        ]
+      ],
+      "uv": [
+        [
+          200,
+          770
+        ],
+        [
+          375,
+          860
+        ],
+        [
+          375,
+          940
+        ],
+        [
+          200,
+          850
+        ]
+      ],
+      "tint": "b7a084"
+    },
+    {
+      "id": "right-face",
+      "polygon": [
+        [
+          541,
+          206
+        ],
+        [
+          553,
+          201
+        ],
+        [
+          553,
+          214
+        ],
+        [
+          541,
+          218
+        ]
+      ],
+      "uv": [
+        [
+          565,
+          838
+        ],
+        [
+          800,
+          757
+        ],
+        [
+          800,
+          821
+        ],
+        [
+          565,
+          905
+        ]
+      ],
+      "tint": "d1b799"
+    },
+    {
+      "id": "top-wood-lid-new-stock",
+      "polygon": [
+        [
+          532,
+          201
+        ],
+        [
+          544,
+          196
+        ],
+        [
+          553,
+          201
+        ],
+        [
+          541,
+          206
+        ]
+      ],
+      "uv": [
+        [
+          565,
+          838
+        ],
+        [
+          800,
+          757
+        ],
+        [
+          800,
+          821
+        ],
+        [
+          565,
+          905
+        ]
+      ],
+      "tint": "d0b28d"
+    }
+  ],
+  "supportLine": [
+    [
+      531,
+      214
+    ],
+    [
+      532,
+      214
+    ],
+    [
+      541,
+      218
+    ],
+    [
+      553,
+      214
+    ],
+    [
+      554,
+      214
+    ]
+  ],
+  "pointer": "pass-through",
+  "newSiteOwner": false
+}
