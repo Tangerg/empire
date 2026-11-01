@@ -1,0 +1,745 @@
+{
+  "levelId": "c01-05",
+  "levelSourceSha256": "69f0b09cbe9d5daae16e4f36a063b3168af38146a5a7a0b6607c19b2be3656ab",
+  "worldScale": 1.25,
+  "originPixels": [
+    20,
+    32
+  ],
+  "cellXPixels": [
+    32,
+    0
+  ],
+  "cellYPixels": [
+    0,
+    28
+  ],
+  "pixelSize": [
+    1651,
+    953
+  ],
+  "resourcePath": "res://assets/native/c05-layered-v1/ground-clean-v2.png",
+  "objectCatalogPath": "res://data/scenes/c01-05-layered-objects.json",
+  "objects": [
+    {
+      "id": "northwest-slate-cottage",
+      "assetId": "slate-cottage-source-v2",
+      "contact": [
+        12.607382465698144,
+        7.963694799953879
+      ],
+      "scale": 0.1261097659402744,
+      "selectionCell": [
+        13,
+        8
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "north-red-cottage",
+      "assetId": "red-cottage-source-v2",
+      "contact": [
+        23.47808634633682,
+        8.162056544787276
+      ],
+      "scale": 0.15342530922930542,
+      "selectionCell": [
+        23,
+        9
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "northeast-thatch-cottage",
+      "assetId": "thatch-cottage-annex-v3",
+      "contact": [
+        35.83897569444444,
+        9.101686507936508
+      ],
+      "scale": 0.15090811965811965,
+      "selectionCell": [
+        34,
+        10
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "west-red-cottage",
+      "assetId": "red-cottage-source-v2",
+      "contact": [
+        12.649991426611797,
+        14.742847344699197
+      ],
+      "scale": 0.13031550068587106,
+      "selectionCell": [
+        12,
+        15
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "east-slate-cottage",
+      "assetId": "slate-cottage-left-source-v2",
+      "contact": [
+        40.58210930066603,
+        16.319525621856737
+      ],
+      "scale": 0.14153187440532827,
+      "selectionCell": [
+        39,
+        17
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "southwest-red-cottage",
+      "assetId": "red-cottage-left-source-v2",
+      "contact": [
+        22.439114205004035,
+        22.694367577539488
+      ],
+      "scale": 0.16545601291364004,
+      "selectionCell": [
+        21,
+        23
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "southeast-slate-cottage",
+      "assetId": "slate-cottage-left-source-v2",
+      "contact": [
+        35.83349191246432,
+        22.511536631779258
+      ],
+      "scale": 0.14866793529971456,
+      "selectionCell": [
+        34,
+        23
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "northwest-willow",
+      "assetId": "willow",
+      "contact": [
+        8.3125,
+        6.678571428571429
+      ],
+      "scale": 0.10717410323709536,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "north-clearing-willow",
+      "assetId": "willow",
+      "contact": [
+        17.03125,
+        6.571428571428571
+      ],
+      "scale": 0.17060367454068243,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "north-door-willow",
+      "assetId": "willow",
+      "contact": [
+        26.8125,
+        7.321428571428571
+      ],
+      "scale": 0.08748906386701663,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "west-well-willow",
+      "assetId": "willow",
+      "contact": [
+        7.78125,
+        12.892857142857142
+      ],
+      "scale": 0.11701662292213474,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "bridge-landing-willow",
+      "assetId": "willow",
+      "contact": [
+        15.8125,
+        21.571428571428573
+      ],
+      "scale": 0.1388888888888889,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "central-plaza-willow",
+      "assetId": "willow",
+      "contact": [
+        29.40625,
+        18.5
+      ],
+      "scale": 0.13451443569553806,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "east-front-willow",
+      "assetId": "willow",
+      "contact": [
+        37.0625,
+        16.357142857142858
+      ],
+      "scale": 0.09514435695538058,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "east-rear-willow",
+      "assetId": "willow",
+      "contact": [
+        40.0,
+        14.964285714285714
+      ],
+      "scale": 0.1268591426071741,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "south-main-bank-willow",
+      "assetId": "willow",
+      "contact": [
+        29.65625,
+        27.714285714285715
+      ],
+      "scale": 0.1541994750656168,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "southeast-field-willow",
+      "assetId": "willow",
+      "contact": [
+        47.9375,
+        22.25
+      ],
+      "scale": 0.14763779527559054,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "southwest-bank-willow",
+      "assetId": "willow",
+      "contact": [
+        4.53125,
+        29.392857142857142
+      ],
+      "scale": 0.17388451443569555,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "northwest-border-willow",
+      "assetId": "willow",
+      "contact": [
+        0.96875,
+        7.678571428571429
+      ],
+      "scale": 0.10061242344706912,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "west-river-willow",
+      "assetId": "willow",
+      "contact": [
+        2.375,
+        19.964285714285715
+      ],
+      "scale": 0.15201224846894137,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "north-middle-saplings",
+      "assetId": "willow",
+      "contact": [
+        20.03125,
+        6.607142857142857
+      ],
+      "scale": 0.09842519685039369,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "thatch-west-willow",
+      "assetId": "willow",
+      "contact": [
+        33.25,
+        8.535714285714286
+      ],
+      "scale": 0.09842519685039369,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "thatch-east-willow",
+      "assetId": "willow",
+      "contact": [
+        39.875,
+        8.964285714285714
+      ],
+      "scale": 0.09514435695538058,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "northeast-bank-willow",
+      "assetId": "willow",
+      "contact": [
+        40.78125,
+        5.285714285714286
+      ],
+      "scale": 0.09842519685039369,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "south-outer-bank-willows",
+      "assetId": "willow",
+      "contact": [
+        40.125,
+        28.964285714285715
+      ],
+      "scale": 0.14873140857392825,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "south-foreground-willow",
+      "assetId": "willow",
+      "contact": [
+        20.1875,
+        32.82142857142857
+      ],
+      "scale": 0.16513560804899385,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "northeast-border-boulder",
+      "assetId": "boulder",
+      "contact": [
+        46.125,
+        4.178571428571429
+      ],
+      "scale": 0.08111702127659574,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "northwest-well-stone",
+      "assetId": "boulder",
+      "contact": [
+        17.9375,
+        9.428571428571429
+      ],
+      "scale": 0.03723404255319149,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "west-bank-boulders",
+      "assetId": "boulder",
+      "contact": [
+        10.5,
+        17.857142857142858
+      ],
+      "scale": 0.05984042553191489,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "bridge-east-abutment",
+      "assetId": "boulder",
+      "contact": [
+        12.53125,
+        21.428571428571427
+      ],
+      "scale": 0.04654255319148936,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "southwest-bank-boulder",
+      "assetId": "boulder",
+      "contact": [
+        2.34375,
+        21.321428571428573
+      ],
+      "scale": 0.06515957446808511,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "bridge-west-bank-stone",
+      "assetId": "boulder",
+      "contact": [
+        8.15625,
+        24.214285714285715
+      ],
+      "scale": 0.06648936170212766,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "dock-bank-stone",
+      "assetId": "boulder",
+      "contact": [
+        18.15625,
+        24.321428571428573
+      ],
+      "scale": 0.07313829787234043,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "south-bank-boulder",
+      "assetId": "boulder",
+      "contact": [
+        33.15625,
+        29.0
+      ],
+      "scale": 0.06914893617021275,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "southeast-bank-stones",
+      "assetId": "boulder",
+      "contact": [
+        42.40625,
+        29.857142857142858
+      ],
+      "scale": 0.1050531914893617,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "northwest-watch-shelter",
+      "assetId": "watch-shelter-open-v2",
+      "contact": [
+        4.935582129963899,
+        6.305312016503352
+      ],
+      "scale": 0.11732851985559567,
+      "selectionCell": [
+        5,
+        6
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "northeast-watch-shelter",
+      "assetId": "watch-shelter-open-v2",
+      "contact": [
+        48.01929151624549,
+        12.748732164345881
+      ],
+      "scale": 0.11883273164861612,
+      "selectionCell": [
+        48,
+        13
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "southwest-bridge-shelter",
+      "assetId": "watch-shelter-open-v2",
+      "contact": [
+        3.5828632671480145,
+        23.002299295169333
+      ],
+      "scale": 0.1022864019253911,
+      "selectionCell": [
+        5,
+        22
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "southeast-watch-shelter",
+      "assetId": "watch-shelter-open-left-v2",
+      "contact": [
+        46.9465129093199,
+        24.88453580424613
+      ],
+      "scale": 0.10075566750629722,
+      "selectionCell": [
+        46,
+        25
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "northwest-watch-shelter-supply-1",
+      "assetId": "single-crate",
+      "contact": [
+        4.52382553807947,
+        5.865627956480606
+      ],
+      "scale": 0.04346026490066225,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "northeast-watch-shelter-supply-1",
+      "assetId": "single-crate",
+      "contact": [
+        48.772896634615385,
+        12.49065934065934
+      ],
+      "scale": 0.04326923076923077,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "southwest-bridge-shelter-supply-1",
+      "assetId": "single-crate",
+      "contact": [
+        3.3029084158415842,
+        22.310466760961813
+      ],
+      "scale": 0.03712871287128713,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "southeast-watch-shelter-supply-1",
+      "assetId": "single-crate",
+      "contact": [
+        47.92091346153846,
+        24.81291208791209
+      ],
+      "scale": 0.07692307692307693,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "northwest-well",
+      "assetId": "well",
+      "contact": [
+        11.018382352941178,
+        10.586134453781513
+      ],
+      "scale": 0.10294117647058823,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "thatch-cottage-well",
+      "assetId": "well",
+      "contact": [
+        37.07085459183673,
+        10.763119533527698
+      ],
+      "scale": 0.09693877551020408,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "west-cottage-crates",
+      "assetId": "single-crate",
+      "contact": [
+        13.883101851851851,
+        15.124338624338623
+      ],
+      "scale": 0.046296296296296294,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "southwest-cottage-crates",
+      "assetId": "single-crate",
+      "contact": [
+        22.804026442307695,
+        22.876717032967033
+      ],
+      "scale": 0.05288461538461539,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "southeast-cottage-crates",
+      "assetId": "single-crate",
+      "contact": [
+        33.82690012562814,
+        22.364770279971285
+      ],
+      "scale": 0.04899497487437186,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "central-supply-cart",
+      "assetId": "supply-cart",
+      "contact": [
+        31.59375,
+        13.892857142857142
+      ],
+      "scale": 0.14,
+      "selectionCell": [
+        31,
+        14
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "bridge-front-rail-1",
+      "assetId": "bridge-rail-short",
+      "contact": [
+        7.9108943689055184,
+        21.619161941969402
+      ],
+      "scale": 0.05701265952318909,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "bridge-front-rail-2",
+      "assetId": "bridge-rail-short",
+      "contact": [
+        9.153081868905518,
+        21.020947656255117
+      ],
+      "scale": 0.05701265952318909,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "bridge-front-rail-3",
+      "assetId": "bridge-rail-short",
+      "contact": [
+        10.395269368905518,
+        20.422733370540833
+      ],
+      "scale": 0.05701265952318909,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "bridge-front-rail-4",
+      "assetId": "bridge-rail-short",
+      "contact": [
+        11.637456868905518,
+        19.824519084826544
+      ],
+      "scale": 0.05701265952318909,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "bridge-rear-rail-1",
+      "assetId": "bridge-rail-short",
+      "contact": [
+        6.4416754261593985,
+        20.76080551571542
+      ],
+      "scale": 0.05597221492167413,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "bridge-rear-rail-2",
+      "assetId": "bridge-rail-short",
+      "contact": [
+        7.660425426159399,
+        20.171519801429703
+      ],
+      "scale": 0.05597221492167413,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "bridge-rear-rail-3",
+      "assetId": "bridge-rail-short",
+      "contact": [
+        8.879175426159398,
+        19.58223408714399
+      ],
+      "scale": 0.05597221492167413,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "bridge-rear-rail-4",
+      "assetId": "bridge-rail-short",
+      "contact": [
+        10.097925426159398,
+        18.992948372858276
+      ],
+      "scale": 0.05597221492167413,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    }
+  ]
+}

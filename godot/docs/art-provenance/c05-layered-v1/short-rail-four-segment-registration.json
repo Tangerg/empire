@@ -1,0 +1,396 @@
+{
+  "asset": {
+    "resourcePath": "res://assets/native/c05-layered-v1/bridge-rail-short.png",
+    "pixelSize": [
+      1254,
+      1254
+    ],
+    "sha256": "aba1901b05115c822c1d144cccdd23068aca22cf8b7b23dc0e668c39bae5902f",
+    "anchorPixels": [
+      235,
+      1116
+    ],
+    "groundFrontPixels": [
+      235,
+      1116
+    ],
+    "physicalFootSamples": [
+      {
+        "pixel": [
+          235.0,
+          1116.0
+        ],
+        "alpha": 253
+      },
+      {
+        "pixel": [
+          1100.0,
+          734.0
+        ],
+        "alpha": 253
+      }
+    ],
+    "actualTopSamples": [
+      {
+        "pixel": [
+          235.0,
+          630.0
+        ],
+        "alpha": 253
+      },
+      {
+        "pixel": [
+          1100.0,
+          240.0
+        ],
+        "alpha": 253
+      }
+    ],
+    "actualFootLineSlope": -0.4416184971098266
+  },
+  "instances": [
+    {
+      "id": "bridge-front-rail-1",
+      "assetId": "bridge-rail-short",
+      "contact": [
+        7.9108943689055184,
+        21.619161941969402
+      ],
+      "scale": 0.05701265952318909,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through",
+      "originalSegmentFeet": [
+        [
+          273.0,
+          637.0
+        ],
+        [
+          312.75,
+          620.25
+        ]
+      ],
+      "mappedFeet": [
+        [
+          273.1486198049766,
+          637.3365343751433
+        ],
+        [
+          312.60138019502347,
+          619.9134656248567
+        ]
+      ],
+      "sourceScale": 0.04561012761855127,
+      "sourceFootYDeparture": [
+        0.39916033069948753,
+        -0.39916033069948753
+      ],
+      "sourcePostHeightFromActualOpaqueTop": [
+        22.16652202261592,
+        22.531403043564328
+      ],
+      "depthStatus": "not runtime-certified; independent complete short sprite uses near/lower foot as groundFront. Check actual actor/front/rear order at every deck route witness and joints after native binding."
+    },
+    {
+      "id": "bridge-front-rail-2",
+      "assetId": "bridge-rail-short",
+      "contact": [
+        9.153081868905518,
+        21.020947656255117
+      ],
+      "scale": 0.05701265952318909,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through",
+      "originalSegmentFeet": [
+        [
+          312.75,
+          620.25
+        ],
+        [
+          352.5,
+          603.5
+        ]
+      ],
+      "mappedFeet": [
+        [
+          312.8986198049766,
+          620.5865343751433
+        ],
+        [
+          352.35138019502347,
+          603.1634656248567
+        ]
+      ],
+      "sourceScale": 0.04561012761855127,
+      "sourceFootYDeparture": [
+        0.39916033069948753,
+        -0.39916033069948753
+      ],
+      "sourcePostHeightFromActualOpaqueTop": [
+        22.16652202261592,
+        22.531403043564328
+      ],
+      "depthStatus": "not runtime-certified; independent complete short sprite uses near/lower foot as groundFront. Check actual actor/front/rear order at every deck route witness and joints after native binding."
+    },
+    {
+      "id": "bridge-front-rail-3",
+      "assetId": "bridge-rail-short",
+      "contact": [
+        10.395269368905518,
+        20.422733370540833
+      ],
+      "scale": 0.05701265952318909,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through",
+      "originalSegmentFeet": [
+        [
+          352.5,
+          603.5
+        ],
+        [
+          392.25,
+          586.75
+        ]
+      ],
+      "mappedFeet": [
+        [
+          352.6486198049766,
+          603.8365343751433
+        ],
+        [
+          392.10138019502347,
+          586.4134656248567
+        ]
+      ],
+      "sourceScale": 0.04561012761855127,
+      "sourceFootYDeparture": [
+        0.39916033069948753,
+        -0.39916033069948753
+      ],
+      "sourcePostHeightFromActualOpaqueTop": [
+        22.16652202261592,
+        22.531403043564328
+      ],
+      "depthStatus": "not runtime-certified; independent complete short sprite uses near/lower foot as groundFront. Check actual actor/front/rear order at every deck route witness and joints after native binding."
+    },
+    {
+      "id": "bridge-front-rail-4",
+      "assetId": "bridge-rail-short",
+      "contact": [
+        11.637456868905518,
+        19.824519084826544
+      ],
+      "scale": 0.05701265952318909,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through",
+      "originalSegmentFeet": [
+        [
+          392.25,
+          586.75
+        ],
+        [
+          432.0,
+          570.0
+        ]
+      ],
+      "mappedFeet": [
+        [
+          392.3986198049766,
+          587.0865343751433
+        ],
+        [
+          431.85138019502347,
+          569.6634656248567
+        ]
+      ],
+      "sourceScale": 0.04561012761855127,
+      "sourceFootYDeparture": [
+        0.39916033069948753,
+        -0.39916033069937384
+      ],
+      "sourcePostHeightFromActualOpaqueTop": [
+        22.16652202261592,
+        22.531403043564328
+      ],
+      "depthStatus": "not runtime-certified; independent complete short sprite uses near/lower foot as groundFront. Check actual actor/front/rear order at every deck route witness and joints after native binding."
+    },
+    {
+      "id": "bridge-rear-rail-1",
+      "assetId": "bridge-rail-short",
+      "contact": [
+        6.4416754261593985,
+        20.76080551571542
+      ],
+      "scale": 0.05597221492167413,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through",
+      "originalSegmentFeet": [
+        [
+          226.0,
+          613.0
+        ],
+        [
+          265.0,
+          596.5
+        ]
+      ],
+      "mappedFeet": [
+        [
+          226.13361363710075,
+          613.3025544400317
+        ],
+        [
+          264.8663863628993,
+          596.1974455599682
+        ]
+      ],
+      "sourceScale": 0.044777771937339304,
+      "sourceFootYDeparture": [
+        0.3590832864973663,
+        -0.35908328649748
+      ],
+      "sourcePostHeightFromActualOpaqueTop": [
+        21.7619971615469,
+        22.120219337045615
+      ],
+      "depthStatus": "not runtime-certified; independent complete short sprite uses near/lower foot as groundFront. Check actual actor/front/rear order at every deck route witness and joints after native binding."
+    },
+    {
+      "id": "bridge-rear-rail-2",
+      "assetId": "bridge-rail-short",
+      "contact": [
+        7.660425426159399,
+        20.171519801429703
+      ],
+      "scale": 0.05597221492167413,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through",
+      "originalSegmentFeet": [
+        [
+          265.0,
+          596.5
+        ],
+        [
+          304.0,
+          580.0
+        ]
+      ],
+      "mappedFeet": [
+        [
+          265.1336136371008,
+          596.8025544400317
+        ],
+        [
+          303.8663863628993,
+          579.6974455599682
+        ]
+      ],
+      "sourceScale": 0.044777771937339304,
+      "sourceFootYDeparture": [
+        0.35908328649748,
+        -0.35908328649748
+      ],
+      "sourcePostHeightFromActualOpaqueTop": [
+        21.7619971615469,
+        22.120219337045615
+      ],
+      "depthStatus": "not runtime-certified; independent complete short sprite uses near/lower foot as groundFront. Check actual actor/front/rear order at every deck route witness and joints after native binding."
+    },
+    {
+      "id": "bridge-rear-rail-3",
+      "assetId": "bridge-rail-short",
+      "contact": [
+        8.879175426159398,
+        19.58223408714399
+      ],
+      "scale": 0.05597221492167413,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through",
+      "originalSegmentFeet": [
+        [
+          304.0,
+          580.0
+        ],
+        [
+          343.0,
+          563.5
+        ]
+      ],
+      "mappedFeet": [
+        [
+          304.1336136371007,
+          580.3025544400317
+        ],
+        [
+          342.8663863628992,
+          563.1974455599682
+        ]
+      ],
+      "sourceScale": 0.044777771937339304,
+      "sourceFootYDeparture": [
+        0.3590832864973663,
+        -0.3590832864975937
+      ],
+      "sourcePostHeightFromActualOpaqueTop": [
+        21.7619971615469,
+        22.120219337045615
+      ],
+      "depthStatus": "not runtime-certified; independent complete short sprite uses near/lower foot as groundFront. Check actual actor/front/rear order at every deck route witness and joints after native binding."
+    },
+    {
+      "id": "bridge-rear-rail-4",
+      "assetId": "bridge-rail-short",
+      "contact": [
+        10.097925426159398,
+        18.992948372858276
+      ],
+      "scale": 0.05597221492167413,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through",
+      "originalSegmentFeet": [
+        [
+          343.0,
+          563.5
+        ],
+        [
+          382.0,
+          547.0
+        ]
+      ],
+      "mappedFeet": [
+        [
+          343.1336136371007,
+          563.8025544400317
+        ],
+        [
+          381.8663863628992,
+          546.6974455599682
+        ]
+      ],
+      "sourceScale": 0.044777771937339304,
+      "sourceFootYDeparture": [
+        0.3590832864973663,
+        -0.35908328649748
+      ],
+      "sourcePostHeightFromActualOpaqueTop": [
+        21.7619971615469,
+        22.120219337045615
+      ],
+      "depthStatus": "not runtime-certified; independent complete short sprite uses near/lower foot as groundFront. Check actual actor/front/rear order at every deck route witness and joints after native binding."
+    }
+  ],
+  "notes": [
+    "No AtlasTexture, crop, rotation, nonuniform scale or rendering change. Each instance is a complete original short PNG.",
+    "Four segments per original edge, front x-span39.75 and rear x-span39.0 source pixels.",
+    "Shared endpoint posts overlap slightly because each whole PNG contains both end posts. Verify actual joint appearance; not a missing-source-asset workaround.",
+    "Only independent actual ground-foot line geometry certified here; visual depth and interaction require isolated native Board tests.",
+    "Keep existing bridge deck unchanged on ground and preserve seven standable cells and nine route contacts."
+  ]
+}

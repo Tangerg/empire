@@ -1,0 +1,3115 @@
+{
+  "sourceImageSha256": "a0c0a00c8037605a8abfa24f81d083079e1e466a103d481f4141fa46c4c79bb1",
+  "groundRegistration": {
+    "originPixels": [
+      20,
+      32
+    ],
+    "axisX": [
+      32,
+      0
+    ],
+    "axisY": [
+      0,
+      28
+    ],
+    "worldScale": 1.25
+  },
+  "notes": [
+    "Read-only candidate registration study; production repository not modified.",
+    "Instances scale is WORLD scale = source scale \u00d7 1.25.",
+    "All five PNGs viewed separately; actual pixel alpha revalidated separately even where geometry corresponds closely.",
+    "All 7 selected current house instances meet original 5-source-pixel exposed-foot tolerance. NE uses asymmetric annex-v3; the previous symmetric thatch-left-source-v2 is rejected and not included.",
+    "Selection cell is an interaction owner, never a body placement pivot. Front/door points are distinct physical features.",
+    "Contours are conservative visible wall/door targeting; not roof alpha or a substitute ground footprint.",
+    "House original hidden-rear audit is conservative/inferred. Exposed-foot pass does not certify hidden-rear foundation coverage."
+  ],
+  "assets": {
+    "slate-cottage-source-v2": {
+      "resourcePath": "res://assets/native/c05-layered-v1/slate-cottage-source-v2.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "sha256": "65dcbac13a813a14263bc3a29f20237368abbfef9d374fc806e22656667805fb",
+      "anchorPixels": [
+        795,
+        982
+      ],
+      "groundFrontPixels": [
+        795,
+        982
+      ],
+      "pointerPolygonPixels": [
+        [
+          320,
+          600
+        ],
+        [
+          804,
+          733
+        ],
+        [
+          1292,
+          594
+        ],
+        [
+          1292,
+          725
+        ],
+        [
+          1324,
+          790
+        ],
+        [
+          1060,
+          880
+        ],
+        [
+          1060,
+          925
+        ],
+        [
+          950,
+          955
+        ],
+        [
+          887,
+          945
+        ],
+        [
+          866,
+          938
+        ],
+        [
+          794,
+          976
+        ],
+        [
+          289,
+          796
+        ],
+        [
+          306,
+          718
+        ]
+      ],
+      "closedDoorContourPixels": [
+        [
+          918,
+          731
+        ],
+        [
+          987,
+          709
+        ],
+        [
+          987,
+          859
+        ],
+        [
+          918,
+          882
+        ]
+      ],
+      "actualPixelWitnesses": {
+        "leftBase": {
+          "pixel": [
+            285,
+            800
+          ],
+          "alpha": 249,
+          "insidePointerPolygon": false
+        },
+        "frontBase": {
+          "pixel": [
+            795,
+            982
+          ],
+          "alpha": 248,
+          "insidePointerPolygon": false
+        },
+        "rightBase": {
+          "pixel": [
+            1336,
+            794
+          ],
+          "alpha": 250,
+          "insidePointerPolygon": false
+        },
+        "doorThresholdTop": {
+          "pixel": [
+            945,
+            897
+          ],
+          "alpha": 253,
+          "insidePointerPolygon": true
+        },
+        "lowestStepFoot": {
+          "pixel": [
+            980,
+            944
+          ],
+          "alpha": 251,
+          "insidePointerPolygon": true
+        },
+        "doorOpaqueProbe": {
+          "pixel": [
+            950,
+            800
+          ],
+          "alpha": 252,
+          "insidePointerPolygon": true
+        },
+        "roofOpaqueExcludedProbe": {
+          "pixel": [
+            1040,
+            440
+          ],
+          "alpha": 252,
+          "insidePointerPolygon": false
+        }
+      },
+      "contourMeaning": "Conservative lower-wall and closed-door/steps interaction contour, intentionally excluding roof, chimney, eaves and upper gable. Visual alpha remains complete; this is NOT a ground-foundation mask. The contour only grants permission; actual opaque alpha is still required."
+    },
+    "red-cottage-source-v2": {
+      "resourcePath": "res://assets/native/c05-layered-v1/red-cottage-source-v2.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "sha256": "27e4cac042c7e7234b59dee0f7593d94496fc4e8e99319ce04f01f5ab3477970",
+      "anchorPixels": [
+        795,
+        982
+      ],
+      "groundFrontPixels": [
+        795,
+        982
+      ],
+      "pointerPolygonPixels": [
+        [
+          320,
+          600
+        ],
+        [
+          804,
+          733
+        ],
+        [
+          1292,
+          594
+        ],
+        [
+          1292,
+          725
+        ],
+        [
+          1324,
+          790
+        ],
+        [
+          1060,
+          880
+        ],
+        [
+          1060,
+          925
+        ],
+        [
+          950,
+          955
+        ],
+        [
+          887,
+          945
+        ],
+        [
+          866,
+          938
+        ],
+        [
+          794,
+          976
+        ],
+        [
+          289,
+          796
+        ],
+        [
+          306,
+          718
+        ]
+      ],
+      "closedDoorContourPixels": [
+        [
+          918,
+          731
+        ],
+        [
+          987,
+          709
+        ],
+        [
+          987,
+          859
+        ],
+        [
+          918,
+          882
+        ]
+      ],
+      "actualPixelWitnesses": {
+        "leftBase": {
+          "pixel": [
+            285,
+            800
+          ],
+          "alpha": 251,
+          "insidePointerPolygon": false
+        },
+        "frontBase": {
+          "pixel": [
+            795,
+            982
+          ],
+          "alpha": 253,
+          "insidePointerPolygon": false
+        },
+        "rightBase": {
+          "pixel": [
+            1336,
+            794
+          ],
+          "alpha": 252,
+          "insidePointerPolygon": false
+        },
+        "doorThresholdTop": {
+          "pixel": [
+            945,
+            897
+          ],
+          "alpha": 253,
+          "insidePointerPolygon": true
+        },
+        "lowestStepFoot": {
+          "pixel": [
+            980,
+            944
+          ],
+          "alpha": 253,
+          "insidePointerPolygon": true
+        },
+        "doorOpaqueProbe": {
+          "pixel": [
+            950,
+            800
+          ],
+          "alpha": 253,
+          "insidePointerPolygon": true
+        },
+        "roofOpaqueExcludedProbe": {
+          "pixel": [
+            1040,
+            440
+          ],
+          "alpha": 253,
+          "insidePointerPolygon": false
+        }
+      },
+      "contourMeaning": "Conservative lower-wall and closed-door/steps interaction contour, intentionally excluding roof, chimney, eaves and upper gable. Visual alpha remains complete; this is NOT a ground-foundation mask. The contour only grants permission; actual opaque alpha is still required."
+    },
+    "slate-cottage-left-source-v2": {
+      "resourcePath": "res://assets/native/c05-layered-v1/slate-cottage-left-source-v2.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "sha256": "9b626d075f730405c5e837118dbe1919f07dd11a7dbeb2600010c90d3be0f6bb",
+      "anchorPixels": [
+        740,
+        982
+      ],
+      "groundFrontPixels": [
+        740,
+        982
+      ],
+      "pointerPolygonPixels": [
+        [
+          1229,
+          718
+        ],
+        [
+          1246,
+          796
+        ],
+        [
+          741,
+          976
+        ],
+        [
+          669,
+          938
+        ],
+        [
+          648,
+          945
+        ],
+        [
+          585,
+          955
+        ],
+        [
+          475,
+          925
+        ],
+        [
+          475,
+          880
+        ],
+        [
+          211,
+          790
+        ],
+        [
+          243,
+          725
+        ],
+        [
+          243,
+          594
+        ],
+        [
+          731,
+          733
+        ],
+        [
+          1215,
+          600
+        ]
+      ],
+      "closedDoorContourPixels": [
+        [
+          617,
+          882
+        ],
+        [
+          548,
+          859
+        ],
+        [
+          548,
+          709
+        ],
+        [
+          617,
+          731
+        ]
+      ],
+      "actualPixelWitnesses": {
+        "leftBase": {
+          "pixel": [
+            199,
+            794
+          ],
+          "alpha": 252,
+          "insidePointerPolygon": false
+        },
+        "frontBase": {
+          "pixel": [
+            740,
+            982
+          ],
+          "alpha": 252,
+          "insidePointerPolygon": false
+        },
+        "rightBase": {
+          "pixel": [
+            1250,
+            800
+          ],
+          "alpha": 250,
+          "insidePointerPolygon": false
+        },
+        "doorThresholdTop": {
+          "pixel": [
+            590,
+            897
+          ],
+          "alpha": 253,
+          "insidePointerPolygon": true
+        },
+        "lowestStepFoot": {
+          "pixel": [
+            555,
+            944
+          ],
+          "alpha": 252,
+          "insidePointerPolygon": true
+        },
+        "doorOpaqueProbe": {
+          "pixel": [
+            585,
+            800
+          ],
+          "alpha": 253,
+          "insidePointerPolygon": true
+        },
+        "roofOpaqueExcludedProbe": {
+          "pixel": [
+            495,
+            440
+          ],
+          "alpha": 253,
+          "insidePointerPolygon": false
+        }
+      },
+      "contourMeaning": "Conservative lower-wall and closed-door/steps interaction contour, intentionally excluding roof, chimney, eaves and upper gable. Visual alpha remains complete; this is NOT a ground-foundation mask. The contour only grants permission; actual opaque alpha is still required."
+    },
+    "red-cottage-left-source-v2": {
+      "resourcePath": "res://assets/native/c05-layered-v1/red-cottage-left-source-v2.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "sha256": "6cc4158616aa6426c0268545392185ddb323547cdf35e657e9d5d7b8b4abb570",
+      "anchorPixels": [
+        740,
+        982
+      ],
+      "groundFrontPixels": [
+        740,
+        982
+      ],
+      "pointerPolygonPixels": [
+        [
+          1229,
+          718
+        ],
+        [
+          1246,
+          796
+        ],
+        [
+          741,
+          976
+        ],
+        [
+          669,
+          938
+        ],
+        [
+          648,
+          945
+        ],
+        [
+          585,
+          955
+        ],
+        [
+          475,
+          925
+        ],
+        [
+          475,
+          880
+        ],
+        [
+          211,
+          790
+        ],
+        [
+          243,
+          725
+        ],
+        [
+          243,
+          594
+        ],
+        [
+          731,
+          733
+        ],
+        [
+          1215,
+          600
+        ]
+      ],
+      "closedDoorContourPixels": [
+        [
+          617,
+          882
+        ],
+        [
+          548,
+          859
+        ],
+        [
+          548,
+          709
+        ],
+        [
+          617,
+          731
+        ]
+      ],
+      "actualPixelWitnesses": {
+        "leftBase": {
+          "pixel": [
+            199,
+            794
+          ],
+          "alpha": 253,
+          "insidePointerPolygon": false
+        },
+        "frontBase": {
+          "pixel": [
+            740,
+            982
+          ],
+          "alpha": 253,
+          "insidePointerPolygon": false
+        },
+        "rightBase": {
+          "pixel": [
+            1250,
+            800
+          ],
+          "alpha": 249,
+          "insidePointerPolygon": false
+        },
+        "doorThresholdTop": {
+          "pixel": [
+            590,
+            897
+          ],
+          "alpha": 253,
+          "insidePointerPolygon": true
+        },
+        "lowestStepFoot": {
+          "pixel": [
+            555,
+            944
+          ],
+          "alpha": 253,
+          "insidePointerPolygon": true
+        },
+        "doorOpaqueProbe": {
+          "pixel": [
+            585,
+            800
+          ],
+          "alpha": 253,
+          "insidePointerPolygon": true
+        },
+        "roofOpaqueExcludedProbe": {
+          "pixel": [
+            495,
+            440
+          ],
+          "alpha": 253,
+          "insidePointerPolygon": false
+        }
+      },
+      "contourMeaning": "Conservative lower-wall and closed-door/steps interaction contour, intentionally excluding roof, chimney, eaves and upper gable. Visual alpha remains complete; this is NOT a ground-foundation mask. The contour only grants permission; actual opaque alpha is still required."
+    },
+    "thatch-cottage-annex-v3": {
+      "resourcePath": "res://assets/native/c05-layered-v1/thatch-cottage-annex-v3.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "sha256": "0d61a30024444a50a8129ad69ab69432adbda0b737fd464ddcb5d84635e8d0ed",
+      "anchorPixels": [
+        639,
+        913
+      ],
+      "groundFrontPixels": [
+        639,
+        913
+      ],
+      "pointerPolygonPixels": [
+        [
+          275,
+          610
+        ],
+        [
+          641,
+          710
+        ],
+        [
+          1036,
+          585
+        ],
+        [
+          1040,
+          765
+        ],
+        [
+          1090,
+          670
+        ],
+        [
+          1248,
+          730
+        ],
+        [
+          1415,
+          690
+        ],
+        [
+          1439,
+          781
+        ],
+        [
+          1255,
+          843
+        ],
+        [
+          1060,
+          780
+        ],
+        [
+          640,
+          907
+        ],
+        [
+          466,
+          850
+        ],
+        [
+          421,
+          864
+        ],
+        [
+          302,
+          824
+        ],
+        [
+          246,
+          773
+        ],
+        [
+          257,
+          716
+        ]
+      ],
+      "closedDoorContourPixels": [
+        [
+          378,
+          658
+        ],
+        [
+          443,
+          673
+        ],
+        [
+          443,
+          790
+        ],
+        [
+          378,
+          775
+        ]
+      ],
+      "actualPixelWitnesses": {
+        "leftBase": {
+          "pixel": [
+            246,
+            773
+          ],
+          "alpha": 248,
+          "insidePointerPolygon": true
+        },
+        "frontBase": {
+          "pixel": [
+            639,
+            913
+          ],
+          "alpha": 251,
+          "insidePointerPolygon": false
+        },
+        "rightBase": {
+          "pixel": [
+            1445,
+            783
+          ],
+          "alpha": 249,
+          "insidePointerPolygon": false
+        },
+        "doorThresholdTop": {
+          "pixel": [
+            400,
+            806
+          ],
+          "alpha": 253,
+          "insidePointerPolygon": true
+        },
+        "lowestStepFoot": {
+          "pixel": [
+            420,
+            856
+          ],
+          "alpha": 252,
+          "insidePointerPolygon": true
+        },
+        "doorOpaqueProbe": {
+          "pixel": [
+            410,
+            735
+          ],
+          "alpha": 252,
+          "insidePointerPolygon": true
+        },
+        "roofOpaqueExcludedProbe": {
+          "pixel": [
+            850,
+            400
+          ],
+          "alpha": 252,
+          "insidePointerPolygon": false
+        }
+      },
+      "contourMeaning": "Conservative lower-wall and closed-door/steps interaction contour, intentionally excluding roof, chimney, eaves and upper gable. Visual alpha remains complete; this is NOT a ground-foundation mask. The contour only grants permission; actual opaque alpha is still required."
+    }
+  },
+  "instances": [
+    {
+      "id": "northwest-slate-cottage",
+      "assetId": "slate-cottage-source-v2",
+      "approvedVisibleBaseFit": true,
+      "suggestedPlacement": {
+        "id": "northwest-slate-cottage",
+        "assetId": "slate-cottage-source-v2",
+        "contact": [
+          12.607382465698144,
+          7.963694799953879
+        ],
+        "scale": 0.1261097659402744,
+        "selectionCell": [
+          13,
+          8
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      },
+      "fitMethod": "Exact minimax max absolute coordinate error across 3 exposed physical L/F/R base landmarks, uniform positive scale + translation only. Minimized maximum of pairwise affine residual bounds; no roof/canvas fitting.",
+      "sourceScale": 0.10088781275221953,
+      "sourceTranslation": [
+        343.23042776432607,
+        155.91162227602905
+      ],
+      "sourceBaseFeet": [
+        [
+          371.98345439870866,
+          236.6218724778047
+        ],
+        [
+          423.4362389023406,
+          254.98345439870863
+        ],
+        [
+          478.01654560129134,
+          236.01654560129134
+        ]
+      ],
+      "originalExposedBaseFeet": [
+        [
+          371.0,
+          237.0
+        ],
+        [
+          423.0,
+          254.0
+        ],
+        [
+          479.0,
+          237.0
+        ]
+      ],
+      "baseFootErrors": [
+        [
+          0.983454398708659,
+          -0.37812752219531376
+        ],
+        [
+          0.43623890234061946,
+          0.9834543987086306
+        ],
+        [
+          -0.983454398708659,
+          -0.983454398708659
+        ]
+      ],
+      "maximumBaseCoordinateError": 0.983454398708659,
+      "originalGroundAudit": {
+        "id": "northwest-slate-cottage",
+        "foundationNominal": [
+          [
+            370,
+            219
+          ],
+          [
+            429,
+            198
+          ],
+          [
+            480,
+            217
+          ],
+          [
+            479,
+            237
+          ],
+          [
+            423,
+            254
+          ],
+          [
+            371,
+            237
+          ]
+        ],
+        "foundationConservative": [
+          [
+            370,
+            219
+          ],
+          [
+            429,
+            190
+          ],
+          [
+            480,
+            217
+          ],
+          [
+            479,
+            237
+          ],
+          [
+            423,
+            254
+          ],
+          [
+            371,
+            237
+          ]
+        ],
+        "blockedCells": [
+          [
+            12,
+            5
+          ],
+          [
+            13,
+            5
+          ],
+          [
+            10,
+            6
+          ],
+          [
+            11,
+            6
+          ],
+          [
+            12,
+            6
+          ],
+          [
+            13,
+            6
+          ],
+          [
+            14,
+            6
+          ],
+          [
+            10,
+            7
+          ],
+          [
+            11,
+            7
+          ],
+          [
+            12,
+            7
+          ],
+          [
+            13,
+            7
+          ],
+          [
+            14,
+            7
+          ]
+        ],
+        "entrance": [
+          13,
+          8
+        ],
+        "approach": [
+          14,
+          8
+        ],
+        "doorThreshold": [
+          441,
+          243
+        ],
+        "frontGroundLandmark": [
+          423,
+          254
+        ],
+        "rearUncertainty": "Visible lower wall edges define the front and sides; the concealed rear corner is inferred with an eight-source-pixel conservative allowance. The roof does not define physical collision."
+      },
+      "doorThresholdTopSource": [
+        438.5694108151735,
+        246.40799031476996
+      ],
+      "lowestStepFootSource": [
+        442.1004842615012,
+        251.1497175141243
+      ],
+      "doorThresholdOldPixelDelta": [
+        -2.430589184826488,
+        3.407990314769961
+      ],
+      "entryChecks": [
+        {
+          "role": "entrance",
+          "cell": [
+            13,
+            8
+          ],
+          "source": [
+            452,
+            270
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                1078.124,
+                1130.844
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1038.476,
+                1130.844
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1117.7720000000002,
+                1130.844
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1078.124,
+                1091.1960000000001
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1078.124,
+                1170.4920000000002
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            }
+          ]
+        },
+        {
+          "role": "approach",
+          "cell": [
+            14,
+            8
+          ],
+          "source": [
+            484,
+            270
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                1395.308,
+                1130.844
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1355.66,
+                1130.844
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1434.9560000000001,
+                1130.844
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1395.308,
+                1091.1960000000001
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1395.308,
+                1170.4920000000002
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            }
+          ]
+        }
+      ],
+      "staticOwnTargetLegalCenterOverlaps": [],
+      "staticBoundary": "Pixel/geometry prediction only, not Board.Pick runtime or natural play. Entry/approach samples fixed before tests; no sample selected by picking. Final binding must independently check complete original wall responsibility and true visible actor/empty doorway behavior."
+    },
+    {
+      "id": "north-red-cottage",
+      "assetId": "red-cottage-source-v2",
+      "approvedVisibleBaseFit": true,
+      "suggestedPlacement": {
+        "id": "north-red-cottage",
+        "assetId": "red-cottage-source-v2",
+        "contact": [
+          23.47808634633682,
+          8.162056544787276
+        ],
+        "scale": 0.15342530922930542,
+        "selectionCell": [
+          23,
+          9
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      },
+      "fitMethod": "Exact minimax max absolute coordinate error across 3 exposed physical L/F/R base landmarks, uniform positive scale + translation only. Minimized maximum of pairwise affine residual bounds; no roof/canvas fitting.",
+      "sourceScale": 0.12274024738344434,
+      "sourceTranslation": [
+        673.72026641294,
+        140.00666032350142
+      ],
+      "sourceBaseFeet": [
+        [
+          708.7012369172216,
+          238.1988582302569
+        ],
+        [
+          771.2987630827782,
+          260.53758325404374
+        ],
+        [
+          837.7012369172216,
+          237.46241674595623
+        ]
+      ],
+      "originalExposedBaseFeet": [
+        [
+          704.0,
+          237.0
+        ],
+        [
+          776.0,
+          258.0
+        ],
+        [
+          833.0,
+          240.0
+        ]
+      ],
+      "baseFootErrors": [
+        [
+          4.7012369172216495,
+          1.1988582302568886
+        ],
+        [
+          -4.701236917221763,
+          2.5375832540437386
+        ],
+        [
+          4.7012369172216495,
+          -2.537583254043767
+        ]
+      ],
+      "maximumBaseCoordinateError": 4.701236917221763,
+      "originalGroundAudit": {
+        "id": "north-red-cottage",
+        "foundationNominal": [
+          [
+            703,
+            217
+          ],
+          [
+            766,
+            197
+          ],
+          [
+            834,
+            217
+          ],
+          [
+            833,
+            240
+          ],
+          [
+            776,
+            258
+          ],
+          [
+            704,
+            237
+          ]
+        ],
+        "foundationConservative": [
+          [
+            703,
+            217
+          ],
+          [
+            766,
+            189
+          ],
+          [
+            834,
+            217
+          ],
+          [
+            833,
+            240
+          ],
+          [
+            776,
+            258
+          ],
+          [
+            704,
+            237
+          ]
+        ],
+        "blockedCells": [
+          [
+            22,
+            5
+          ],
+          [
+            23,
+            5
+          ],
+          [
+            24,
+            5
+          ],
+          [
+            21,
+            6
+          ],
+          [
+            22,
+            6
+          ],
+          [
+            23,
+            6
+          ],
+          [
+            24,
+            6
+          ],
+          [
+            25,
+            6
+          ],
+          [
+            21,
+            7
+          ],
+          [
+            22,
+            7
+          ],
+          [
+            23,
+            7
+          ],
+          [
+            24,
+            7
+          ],
+          [
+            25,
+            7
+          ],
+          [
+            23,
+            8
+          ]
+        ],
+        "entrance": [
+          23,
+          9
+        ],
+        "approach": [
+          24,
+          9
+        ],
+        "doorThreshold": [
+          785,
+          243
+        ],
+        "frontGroundLandmark": [
+          776,
+          258
+        ],
+        "rearUncertainty": "Visible lower wall edges define the front and sides; the concealed rear corner is inferred with an eight-source-pixel conservative allowance. The roof does not define physical collision."
+      },
+      "doorThresholdTopSource": [
+        789.7098001902949,
+        250.104662226451
+      ],
+      "lowestStepFootSource": [
+        794.0057088487154,
+        255.87345385347288
+      ],
+      "doorThresholdOldPixelDelta": [
+        4.709800190294914,
+        7.104662226451012
+      ],
+      "entryChecks": [
+        {
+          "role": "entrance",
+          "cell": [
+            23,
+            9
+          ],
+          "source": [
+            772,
+            298
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                800.7131782945744,
+                1287.2170542635658
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                768.1240310077527,
+                1287.2170542635658
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                833.3023255813961,
+                1287.2170542635658
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                800.7131782945744,
+                1254.6279069767443
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                800.7131782945744,
+                1319.8062015503876
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            }
+          ]
+        },
+        {
+          "role": "approach",
+          "cell": [
+            24,
+            9
+          ],
+          "source": [
+            804,
+            298
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                1061.426356589148,
+                1287.2170542635658
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1028.8372093023263,
+                1287.2170542635658
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1094.0155038759697,
+                1287.2170542635658
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1061.426356589148,
+                1254.6279069767443
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1061.426356589148,
+                1319.8062015503876
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            }
+          ]
+        }
+      ],
+      "staticOwnTargetLegalCenterOverlaps": [],
+      "staticBoundary": "Pixel/geometry prediction only, not Board.Pick runtime or natural play. Entry/approach samples fixed before tests; no sample selected by picking. Final binding must independently check complete original wall responsibility and true visible actor/empty doorway behavior."
+    },
+    {
+      "id": "northeast-thatch-cottage",
+      "assetId": "thatch-cottage-annex-v3",
+      "approvedVisibleBaseFit": true,
+      "suggestedPlacement": {
+        "id": "northeast-thatch-cottage",
+        "assetId": "thatch-cottage-annex-v3",
+        "contact": [
+          35.83897569444444,
+          9.101686507936508
+        ],
+        "scale": 0.15090811965811965,
+        "selectionCell": [
+          34,
+          10
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      },
+      "fitMethod": "Exact minimax max absolute coordinate error across 3 exposed physical L/F/R base landmarks, uniform positive scale + translation only. Minimized maximum of pairwise affine residual bounds; no roof/canvas fitting.",
+      "sourceScale": 0.12072649572649573,
+      "sourceTranslation": [
+        1089.7029914529915,
+        176.62393162393164
+      ],
+      "sourceBaseFeet": [
+        [
+          1119.4017094017095,
+          269.9455128205128
+        ],
+        [
+          1166.8472222222222,
+          286.84722222222223
+        ],
+        [
+          1264.1527777777778,
+          271.1527777777778
+        ]
+      ],
+      "originalExposedBaseFeet": [
+        [
+          1118.0,
+          268.0
+        ],
+        [
+          1170.0,
+          290.0
+        ],
+        [
+          1261.0,
+          268.0
+        ]
+      ],
+      "baseFootErrors": [
+        [
+          1.4017094017094678,
+          1.9455128205128176
+        ],
+        [
+          -3.1527777777778283,
+          -3.1527777777777715
+        ],
+        [
+          3.1527777777778283,
+          3.1527777777778283
+        ]
+      ],
+      "maximumBaseCoordinateError": 3.1527777777778283,
+      "originalGroundAudit": {
+        "id": "northeast-thatch-cottage",
+        "foundationNominal": [
+          [
+            1117,
+            240
+          ],
+          [
+            1186,
+            218
+          ],
+          [
+            1261,
+            239
+          ],
+          [
+            1261,
+            268
+          ],
+          [
+            1170,
+            290
+          ],
+          [
+            1118,
+            268
+          ]
+        ],
+        "foundationConservative": [
+          [
+            1117,
+            240
+          ],
+          [
+            1186,
+            210
+          ],
+          [
+            1261,
+            239
+          ],
+          [
+            1261,
+            268
+          ],
+          [
+            1170,
+            290
+          ],
+          [
+            1118,
+            268
+          ]
+        ],
+        "blockedCells": [
+          [
+            35,
+            6
+          ],
+          [
+            36,
+            6
+          ],
+          [
+            37,
+            6
+          ],
+          [
+            34,
+            7
+          ],
+          [
+            35,
+            7
+          ],
+          [
+            36,
+            7
+          ],
+          [
+            37,
+            7
+          ],
+          [
+            38,
+            7
+          ],
+          [
+            34,
+            8
+          ],
+          [
+            35,
+            8
+          ],
+          [
+            36,
+            8
+          ],
+          [
+            37,
+            8
+          ],
+          [
+            38,
+            8
+          ],
+          [
+            35,
+            9
+          ],
+          [
+            36,
+            9
+          ]
+        ],
+        "entrance": [
+          34,
+          10
+        ],
+        "approach": [
+          35,
+          10
+        ],
+        "doorThreshold": [
+          1146,
+          276
+        ],
+        "frontGroundLandmark": [
+          1170,
+          290
+        ],
+        "rearUncertainty": "Visible lower wall edges define the front and sides; the concealed rear corner is inferred with an eight-source-pixel conservative allowance. The roof does not define physical collision."
+      },
+      "doorThresholdTopSource": [
+        1137.9935897435898,
+        273.9294871794872
+      ],
+      "lowestStepFootSource": [
+        1140.4081196581196,
+        279.965811965812
+      ],
+      "doorThresholdOldPixelDelta": [
+        -8.006410256410163,
+        -2.0705128205128176
+      ],
+      "entryChecks": [
+        {
+          "role": "entrance",
+          "cell": [
+            34,
+            10
+          ],
+          "source": [
+            1124,
+            326
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                284.0884955752212,
+                1237.3097345132742
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                250.95575221238937,
+                1237.3097345132742
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                317.2212389380531,
+                1237.3097345132742
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                284.0884955752212,
+                1204.1769911504423
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                284.0884955752212,
+                1270.442477876106
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            }
+          ]
+        },
+        {
+          "role": "approach",
+          "cell": [
+            35,
+            10
+          ],
+          "source": [
+            1156,
+            326
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                549.1504424778761,
+                1237.3097345132742
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                516.0176991150443,
+                1237.3097345132742
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                582.2831858407079,
+                1237.3097345132742
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                549.1504424778761,
+                1204.1769911504423
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                549.1504424778761,
+                1270.442477876106
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            }
+          ]
+        }
+      ],
+      "staticOwnTargetLegalCenterOverlaps": [],
+      "staticBoundary": "Pixel/geometry prediction only, not Board.Pick runtime or natural play. Entry/approach samples fixed before tests; no sample selected by picking. Final binding must independently check complete original wall responsibility and true visible actor/empty doorway behavior."
+    },
+    {
+      "id": "west-red-cottage",
+      "assetId": "red-cottage-source-v2",
+      "approvedVisibleBaseFit": true,
+      "suggestedPlacement": {
+        "id": "west-red-cottage",
+        "assetId": "red-cottage-source-v2",
+        "contact": [
+          12.649991426611797,
+          14.742847344699197
+        ],
+        "scale": 0.13031550068587106,
+        "selectionCell": [
+          12,
+          15
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      },
+      "fitMethod": "Exact minimax max absolute coordinate error across 3 exposed physical L/F/R base landmarks, uniform positive scale + translation only. Minimized maximum of pairwise affine residual bounds; no roof/canvas fitting.",
+      "sourceScale": 0.10425240054869685,
+      "sourceTranslation": [
+        341.9190672153635,
+        342.4238683127572
+      ],
+      "sourceBaseFeet": [
+        [
+          371.6310013717421,
+          425.82578875171464
+        ],
+        [
+          424.7997256515775,
+          444.7997256515775
+        ],
+        [
+          481.20027434842245,
+          425.20027434842245
+        ]
+      ],
+      "originalExposedBaseFeet": [
+        [
+          372.0,
+          425.0
+        ],
+        [
+          426.0,
+          446.0
+        ],
+        [
+          480.0,
+          424.0
+        ]
+      ],
+      "baseFootErrors": [
+        [
+          -0.3689986282578843,
+          0.8257887517146401
+        ],
+        [
+          -1.2002743484225107,
+          -1.2002743484225107
+        ],
+        [
+          1.2002743484224538,
+          1.2002743484224538
+        ]
+      ],
+      "maximumBaseCoordinateError": 1.2002743484225107,
+      "originalGroundAudit": {
+        "id": "west-red-cottage",
+        "foundationNominal": [
+          [
+            371,
+            399
+          ],
+          [
+            427,
+            378
+          ],
+          [
+            482,
+            397
+          ],
+          [
+            480,
+            424
+          ],
+          [
+            426,
+            446
+          ],
+          [
+            372,
+            425
+          ]
+        ],
+        "foundationConservative": [
+          [
+            371,
+            399
+          ],
+          [
+            427,
+            370
+          ],
+          [
+            482,
+            397
+          ],
+          [
+            480,
+            424
+          ],
+          [
+            426,
+            446
+          ],
+          [
+            372,
+            425
+          ]
+        ],
+        "blockedCells": [
+          [
+            11,
+            12
+          ],
+          [
+            12,
+            12
+          ],
+          [
+            13,
+            12
+          ],
+          [
+            14,
+            12
+          ],
+          [
+            10,
+            13
+          ],
+          [
+            11,
+            13
+          ],
+          [
+            12,
+            13
+          ],
+          [
+            13,
+            13
+          ],
+          [
+            14,
+            13
+          ],
+          [
+            10,
+            14
+          ],
+          [
+            11,
+            14
+          ],
+          [
+            12,
+            14
+          ],
+          [
+            13,
+            14
+          ],
+          [
+            14,
+            14
+          ]
+        ],
+        "entrance": [
+          12,
+          15
+        ],
+        "approach": [
+          12,
+          16
+        ],
+        "doorThreshold": [
+          428,
+          429
+        ],
+        "frontGroundLandmark": [
+          426,
+          446
+        ],
+        "rearUncertainty": "Visible lower wall edges define the front and sides; the concealed rear corner is inferred with an eight-source-pixel conservative allowance. The roof does not define physical collision."
+      },
+      "doorThresholdTopSource": [
+        440.43758573388203,
+        435.9382716049382
+      ],
+      "lowestStepFootSource": [
+        444.0864197530864,
+        440.838134430727
+      ],
+      "doorThresholdOldPixelDelta": [
+        12.437585733882031,
+        6.9382716049382225
+      ],
+      "entryChecks": [
+        {
+          "role": "entrance",
+          "cell": [
+            12,
+            15
+          ],
+          "source": [
+            420,
+            466
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                748.9605263157896,
+                1185.355263157895
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                710.592105263158,
+                1185.355263157895
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                787.3289473684212,
+                1185.355263157895
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                748.9605263157896,
+                1146.9868421052633
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                748.9605263157896,
+                1223.7236842105265
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            }
+          ]
+        },
+        {
+          "role": "approach",
+          "cell": [
+            12,
+            16
+          ],
+          "source": [
+            420,
+            494
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                748.9605263157896,
+                1453.934210526316
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                710.592105263158,
+                1453.934210526316
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                787.3289473684212,
+                1453.934210526316
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                748.9605263157896,
+                1415.5657894736844
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                748.9605263157896,
+                1492.3026315789475
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            }
+          ]
+        }
+      ],
+      "staticOwnTargetLegalCenterOverlaps": [],
+      "staticBoundary": "Pixel/geometry prediction only, not Board.Pick runtime or natural play. Entry/approach samples fixed before tests; no sample selected by picking. Final binding must independently check complete original wall responsibility and true visible actor/empty doorway behavior."
+    },
+    {
+      "id": "east-slate-cottage",
+      "assetId": "slate-cottage-left-source-v2",
+      "approvedVisibleBaseFit": true,
+      "suggestedPlacement": {
+        "id": "east-slate-cottage",
+        "assetId": "slate-cottage-left-source-v2",
+        "contact": [
+          40.58210930066603,
+          16.319525621856737
+        ],
+        "scale": 0.14153187440532827,
+        "selectionCell": [
+          39,
+          17
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      },
+      "fitMethod": "Exact minimax max absolute coordinate error across 3 exposed physical L/F/R base landmarks, uniform positive scale + translation only. Minimized maximum of pairwise affine residual bounds; no roof/canvas fitting.",
+      "sourceScale": 0.11322549952426261,
+      "sourceTranslation": [
+        1234.8406279733588,
+        377.7592768791627
+      ],
+      "sourceBaseFeet": [
+        [
+          1257.372502378687,
+          467.66032350142723
+        ],
+        [
+          1318.627497621313,
+          488.94671741198863
+        ],
+        [
+          1376.372502378687,
+          468.33967649857277
+        ]
+      ],
+      "originalExposedBaseFeet": [
+        [
+          1259.0,
+          468.0
+        ],
+        [
+          1317.0,
+          489.0
+        ],
+        [
+          1378.0,
+          468.0
+        ]
+      ],
+      "baseFootErrors": [
+        [
+          -1.6274976213130685,
+          -0.3396764985727714
+        ],
+        [
+          1.6274976213130685,
+          -0.053282588011370535
+        ],
+        [
+          -1.6274976213130685,
+          0.3396764985727714
+        ]
+      ],
+      "maximumBaseCoordinateError": 1.6274976213130685,
+      "originalGroundAudit": {
+        "id": "east-slate-cottage",
+        "foundationNominal": [
+          [
+            1259,
+            444
+          ],
+          [
+            1321,
+            422
+          ],
+          [
+            1378,
+            444
+          ],
+          [
+            1378,
+            468
+          ],
+          [
+            1317,
+            489
+          ],
+          [
+            1259,
+            468
+          ]
+        ],
+        "foundationConservative": [
+          [
+            1259,
+            444
+          ],
+          [
+            1321,
+            414
+          ],
+          [
+            1378,
+            444
+          ],
+          [
+            1378,
+            468
+          ],
+          [
+            1317,
+            489
+          ],
+          [
+            1259,
+            468
+          ]
+        ],
+        "blockedCells": [
+          [
+            40,
+            13
+          ],
+          [
+            41,
+            13
+          ],
+          [
+            38,
+            14
+          ],
+          [
+            39,
+            14
+          ],
+          [
+            40,
+            14
+          ],
+          [
+            41,
+            14
+          ],
+          [
+            42,
+            14
+          ],
+          [
+            38,
+            15
+          ],
+          [
+            39,
+            15
+          ],
+          [
+            40,
+            15
+          ],
+          [
+            41,
+            15
+          ],
+          [
+            42,
+            15
+          ],
+          [
+            39,
+            16
+          ],
+          [
+            40,
+            16
+          ],
+          [
+            41,
+            16
+          ]
+        ],
+        "entrance": [
+          39,
+          17
+        ],
+        "approach": [
+          38,
+          17
+        ],
+        "doorThreshold": [
+          1306,
+          472
+        ],
+        "frontGroundLandmark": [
+          1317,
+          489
+        ],
+        "rearUncertainty": "Visible lower wall edges define the front and sides; the concealed rear corner is inferred with an eight-source-pixel conservative allowance. The roof does not define physical collision."
+      },
+      "doorThresholdTopSource": [
+        1301.6436726926738,
+        479.32254995242624
+      ],
+      "lowestStepFootSource": [
+        1297.6807802093244,
+        484.6441484300666
+      ],
+      "doorThresholdOldPixelDelta": [
+        -4.356327307326183,
+        7.322549952426243
+      ],
+      "entryChecks": [
+        {
+          "role": "entrance",
+          "cell": [
+            39,
+            17
+          ],
+          "source": [
+            1284,
+            522
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                434.17226890756234,
+                1273.924369747899
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                398.8445378151254,
+                1273.924369747899
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                469.4999999999993,
+                1273.924369747899
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                434.17226890756234,
+                1238.5966386554621
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                434.17226890756234,
+                1309.252100840336
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            }
+          ]
+        },
+        {
+          "role": "approach",
+          "cell": [
+            38,
+            17
+          ],
+          "source": [
+            1252,
+            522
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                151.55042016806658,
+                1273.924369747899
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                116.2226890756296,
+                1273.924369747899
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                186.87815126050356,
+                1273.924369747899
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                151.55042016806658,
+                1238.5966386554621
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                151.55042016806658,
+                1309.252100840336
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            }
+          ]
+        }
+      ],
+      "staticOwnTargetLegalCenterOverlaps": [],
+      "staticBoundary": "Pixel/geometry prediction only, not Board.Pick runtime or natural play. Entry/approach samples fixed before tests; no sample selected by picking. Final binding must independently check complete original wall responsibility and true visible actor/empty doorway behavior."
+    },
+    {
+      "id": "southwest-red-cottage",
+      "assetId": "red-cottage-left-source-v2",
+      "approvedVisibleBaseFit": true,
+      "suggestedPlacement": {
+        "id": "southwest-red-cottage",
+        "assetId": "red-cottage-left-source-v2",
+        "contact": [
+          22.439114205004035,
+          22.694367577539488
+        ],
+        "scale": 0.16545601291364004,
+        "selectionCell": [
+          21,
+          23
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      },
+      "fitMethod": "Exact minimax max absolute coordinate error across 3 exposed physical L/F/R base landmarks, uniform positive scale + translation only. Minimized maximum of pairwise affine residual bounds; no roof/canvas fitting.",
+      "sourceScale": 0.13236481033091202,
+      "sourceTranslation": [
+        640.1016949152543,
+        537.46004842615
+      ],
+      "sourceBaseFeet": [
+        [
+          666.4422921711057,
+          642.5577078288942
+        ],
+        [
+          738.0516545601291,
+          667.4422921711057
+        ],
+        [
+          805.5577078288943,
+          643.3518966908796
+        ]
+      ],
+      "originalExposedBaseFeet": [
+        [
+          665.0,
+          644.0
+        ],
+        [
+          737.0,
+          666.0
+        ],
+        [
+          807.0,
+          642.0
+        ]
+      ],
+      "baseFootErrors": [
+        [
+          1.4422921711056915,
+          -1.4422921711058052
+        ],
+        [
+          1.0516545601291227,
+          1.4422921711056915
+        ],
+        [
+          -1.4422921711056915,
+          1.3518966908795846
+        ]
+      ],
+      "maximumBaseCoordinateError": 1.4422921711058052,
+      "originalGroundAudit": {
+        "id": "southwest-red-cottage",
+        "foundationNominal": [
+          [
+            663,
+            615
+          ],
+          [
+            735,
+            592
+          ],
+          [
+            807,
+            615
+          ],
+          [
+            807,
+            642
+          ],
+          [
+            737,
+            666
+          ],
+          [
+            665,
+            644
+          ]
+        ],
+        "foundationConservative": [
+          [
+            663,
+            615
+          ],
+          [
+            735,
+            584
+          ],
+          [
+            807,
+            615
+          ],
+          [
+            807,
+            642
+          ],
+          [
+            737,
+            666
+          ],
+          [
+            665,
+            644
+          ]
+        ],
+        "blockedCells": [
+          [
+            21,
+            19
+          ],
+          [
+            22,
+            19
+          ],
+          [
+            20,
+            20
+          ],
+          [
+            21,
+            20
+          ],
+          [
+            22,
+            20
+          ],
+          [
+            23,
+            20
+          ],
+          [
+            24,
+            20
+          ],
+          [
+            20,
+            21
+          ],
+          [
+            21,
+            21
+          ],
+          [
+            22,
+            21
+          ],
+          [
+            23,
+            21
+          ],
+          [
+            24,
+            21
+          ],
+          [
+            20,
+            22
+          ],
+          [
+            21,
+            22
+          ],
+          [
+            22,
+            22
+          ],
+          [
+            23,
+            22
+          ],
+          [
+            24,
+            22
+          ]
+        ],
+        "entrance": [
+          21,
+          23
+        ],
+        "approach": [
+          22,
+          23
+        ],
+        "doorThreshold": [
+          699,
+          642
+        ],
+        "frontGroundLandmark": [
+          737,
+          666
+        ],
+        "rearUncertainty": "Visible lower wall edges define the front and sides; the concealed rear corner is inferred with an eight-source-pixel conservative allowance. The roof does not define physical collision."
+      },
+      "doorThresholdTopSource": [
+        718.1969330104923,
+        656.1912832929781
+      ],
+      "lowestStepFootSource": [
+        713.5641646489104,
+        662.412429378531
+      ],
+      "doorThresholdOldPixelDelta": [
+        19.19693301049233,
+        14.191283292978142
+      ],
+      "entryChecks": [
+        {
+          "role": "entrance",
+          "cell": [
+            21,
+            23
+          ],
+          "source": [
+            708,
+            690
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                512.9634146341463,
+                1152.4207317073178
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                482.7439024390243,
+                1152.4207317073178
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                543.1829268292681,
+                1152.4207317073178
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                512.9634146341463,
+                1122.2012195121958
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                512.9634146341463,
+                1182.6402439024398
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            }
+          ]
+        },
+        {
+          "role": "approach",
+          "cell": [
+            22,
+            23
+          ],
+          "source": [
+            740,
+            690
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                754.7195121951219,
+                1152.4207317073178
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                724.4999999999999,
+                1152.4207317073178
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                784.9390243902438,
+                1152.4207317073178
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                754.7195121951219,
+                1122.2012195121958
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                754.7195121951219,
+                1182.6402439024398
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            }
+          ]
+        }
+      ],
+      "staticOwnTargetLegalCenterOverlaps": [],
+      "staticBoundary": "Pixel/geometry prediction only, not Board.Pick runtime or natural play. Entry/approach samples fixed before tests; no sample selected by picking. Final binding must independently check complete original wall responsibility and true visible actor/empty doorway behavior."
+    },
+    {
+      "id": "southeast-slate-cottage",
+      "assetId": "slate-cottage-left-source-v2",
+      "approvedVisibleBaseFit": true,
+      "suggestedPlacement": {
+        "id": "southeast-slate-cottage",
+        "assetId": "slate-cottage-left-source-v2",
+        "contact": [
+          35.83349191246432,
+          22.511536631779258
+        ],
+        "scale": 0.14866793529971456,
+        "selectionCell": [
+          34,
+          23
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      },
+      "fitMethod": "Exact minimax max absolute coordinate error across 3 exposed physical L/F/R base landmarks, uniform positive scale + translation only. Minimized maximum of pairwise affine residual bounds; no roof/canvas fitting.",
+      "sourceScale": 0.11893434823977164,
+      "sourceTranslation": [
+        1078.6603235014272,
+        545.5294957183635
+      ],
+      "sourceBaseFeet": [
+        [
+          1102.3282588011418,
+          639.9633682207422
+        ],
+        [
+          1166.6717411988582,
+          662.3230256898192
+        ],
+        [
+          1227.3282588011418,
+          640.6769743101808
+        ]
+      ],
+      "originalExposedBaseFeet": [
+        [
+          1100.0,
+          640.0
+        ],
+        [
+          1169.0,
+          661.0
+        ],
+        [
+          1225.0,
+          642.0
+        ]
+      ],
+      "baseFootErrors": [
+        [
+          2.3282588011418284,
+          -0.036631779257845665
+        ],
+        [
+          -2.3282588011418284,
+          1.3230256898192465
+        ],
+        [
+          2.3282588011418284,
+          -1.3230256898192465
+        ]
+      ],
+      "maximumBaseCoordinateError": 2.3282588011418284,
+      "originalGroundAudit": {
+        "id": "southeast-slate-cottage",
+        "foundationNominal": [
+          [
+            1099,
+            614
+          ],
+          [
+            1165,
+            592
+          ],
+          [
+            1226,
+            614
+          ],
+          [
+            1225,
+            642
+          ],
+          [
+            1169,
+            661
+          ],
+          [
+            1100,
+            640
+          ]
+        ],
+        "foundationConservative": [
+          [
+            1099,
+            614
+          ],
+          [
+            1165,
+            584
+          ],
+          [
+            1226,
+            614
+          ],
+          [
+            1225,
+            642
+          ],
+          [
+            1169,
+            661
+          ],
+          [
+            1100,
+            640
+          ]
+        ],
+        "blockedCells": [
+          [
+            35,
+            19
+          ],
+          [
+            36,
+            19
+          ],
+          [
+            33,
+            20
+          ],
+          [
+            34,
+            20
+          ],
+          [
+            35,
+            20
+          ],
+          [
+            36,
+            20
+          ],
+          [
+            37,
+            20
+          ],
+          [
+            33,
+            21
+          ],
+          [
+            34,
+            21
+          ],
+          [
+            35,
+            21
+          ],
+          [
+            36,
+            21
+          ],
+          [
+            37,
+            21
+          ],
+          [
+            34,
+            22
+          ],
+          [
+            35,
+            22
+          ],
+          [
+            36,
+            22
+          ],
+          [
+            37,
+            22
+          ]
+        ],
+        "entrance": [
+          34,
+          23
+        ],
+        "approach": [
+          35,
+          23
+        ],
+        "doorThreshold": [
+          1130,
+          641
+        ],
+        "frontGroundLandmark": [
+          1169,
+          661
+        ],
+        "rearUncertainty": "Visible lower wall edges define the front and sides; the concealed rear corner is inferred with an eight-source-pixel conservative allowance. The roof does not define physical collision."
+      },
+      "doorThresholdTopSource": [
+        1148.8315889628925,
+        652.2136060894386
+      ],
+      "lowestStepFootSource": [
+        1144.6688867745006,
+        657.8035204567079
+      ],
+      "doorThresholdOldPixelDelta": [
+        18.83158896289251,
+        11.2136060894386
+      ],
+      "entryChecks": [
+        {
+          "role": "entrance",
+          "cell": [
+            34,
+            23
+          ],
+          "source": [
+            1124,
+            690
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                381.2159999999999,
+                1214.7079999999999
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                347.5839999999999,
+                1214.7079999999999
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                414.8479999999999,
+                1214.7079999999999
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                381.2159999999999,
+                1181.076
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                381.2159999999999,
+                1248.34
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            }
+          ]
+        },
+        {
+          "role": "approach",
+          "cell": [
+            35,
+            23
+          ],
+          "source": [
+            1156,
+            690
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                650.2719999999999,
+                1214.7079999999999
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                616.6399999999999,
+                1214.7079999999999
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                683.9039999999999,
+                1214.7079999999999
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                650.2719999999999,
+                1181.076
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                650.2719999999999,
+                1248.34
+              ],
+              "alpha": 0,
+              "insidePointerPolygon": false,
+              "ownTargetOpaque": false
+            }
+          ]
+        }
+      ],
+      "staticOwnTargetLegalCenterOverlaps": [],
+      "staticBoundary": "Pixel/geometry prediction only, not Board.Pick runtime or natural play. Entry/approach samples fixed before tests; no sample selected by picking. Final binding must independently check complete original wall responsibility and true visible actor/empty doorway behavior."
+    }
+  ]
+}

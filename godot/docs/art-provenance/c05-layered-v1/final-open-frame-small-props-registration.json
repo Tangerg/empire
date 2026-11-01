@@ -1,0 +1,1815 @@
+{
+  "assets": {
+    "watch-shelter-open-v2": {
+      "resourcePath": "res://assets/native/c05-layered-v1/watch-shelter-open-v2.png",
+      "pixelSize": [
+        1254,
+        1254
+      ],
+      "sha256": "79173cfdd8a13a8301aa1df42844980a3f3ab1dccd2279612adc96c755e8a99f",
+      "anchorPixels": [
+        521,
+        1154
+      ],
+      "groundFrontPixels": [
+        521,
+        1154
+      ],
+      "pointerPolygonPixels": [
+        [
+          275,
+          810
+        ],
+        [
+          460,
+          907
+        ],
+        [
+          460,
+          934
+        ],
+        [
+          275,
+          839
+        ]
+      ],
+      "physicalFeet": [
+        {
+          "pixel": [
+            224,
+            1018
+          ],
+          "alpha": 253
+        },
+        {
+          "pixel": [
+            521,
+            1154
+          ],
+          "alpha": 253
+        },
+        {
+          "pixel": [
+            1055,
+            980
+          ],
+          "alpha": 252
+        }
+      ],
+      "clearFloorWitnesses": [
+        {
+          "pixel": [
+            800,
+            1000
+          ],
+          "alpha": 0
+        },
+        {
+          "pixel": [
+            800,
+            950
+          ],
+          "alpha": 0
+        },
+        {
+          "pixel": [
+            650,
+            1000
+          ],
+          "alpha": 0
+        },
+        {
+          "pixel": [
+            650,
+            900
+          ],
+          "alpha": 0
+        }
+      ],
+      "frontRailOpaqueWitness": {
+        "pixel": [
+          365,
+          870
+        ],
+        "alpha": 253
+      }
+    },
+    "watch-shelter-open-left-v2": {
+      "resourcePath": "res://assets/native/c05-layered-v1/watch-shelter-open-left-v2.png",
+      "pixelSize": [
+        1254,
+        1254
+      ],
+      "sha256": "1ba5bf030420d3c04b165a00384f4cda8430e0b5852ced13a98c7a6665c867b9",
+      "anchorPixels": [
+        782,
+        1190
+      ],
+      "groundFrontPixels": [
+        782,
+        1190
+      ],
+      "pointerPolygonPixels": [
+        [
+          840,
+          920
+        ],
+        [
+          1020,
+          845
+        ],
+        [
+          1020,
+          865
+        ],
+        [
+          840,
+          940
+        ]
+      ],
+      "physicalFeet": [
+        {
+          "pixel": [
+            172,
+            966
+          ],
+          "alpha": 252
+        },
+        {
+          "pixel": [
+            782,
+            1190
+          ],
+          "alpha": 252
+        },
+        {
+          "pixel": [
+            1085,
+            1060
+          ],
+          "alpha": 252
+        }
+      ],
+      "clearFloorWitnesses": [
+        {
+          "pixel": [
+            400,
+            1000
+          ],
+          "alpha": 0
+        },
+        {
+          "pixel": [
+            400,
+            950
+          ],
+          "alpha": 0
+        },
+        {
+          "pixel": [
+            600,
+            1000
+          ],
+          "alpha": 0
+        },
+        {
+          "pixel": [
+            600,
+            900
+          ],
+          "alpha": 0
+        }
+      ],
+      "frontRailOpaqueWitness": {
+        "pixel": [
+          930,
+          892
+        ],
+        "alpha": 253
+      }
+    },
+    "single-crate": {
+      "resourcePath": "res://assets/native/c05-layered-v1/single-crate.png",
+      "pixelSize": [
+        1254,
+        1254
+      ],
+      "sha256": "d27a0c18e488986216f8caef326ce21447ab52c90474278dbacd8c8993a93a8a",
+      "anchorPixels": [
+        626,
+        1043
+      ],
+      "groundFrontPixels": [
+        626,
+        1043
+      ],
+      "pointerPolygonPixels": null,
+      "physicalFeet": [
+        {
+          "pixel": [
+            237,
+            827
+          ],
+          "alpha": 250
+        },
+        {
+          "pixel": [
+            626,
+            1043
+          ],
+          "alpha": 252
+        },
+        {
+          "pixel": [
+            1017,
+            828
+          ],
+          "alpha": 251
+        }
+      ],
+      "clearFloorWitnesses": []
+    },
+    "well": {
+      "resourcePath": "res://assets/native/c05-layered-v1/well.png",
+      "pixelSize": [
+        1254,
+        1254
+      ],
+      "sha256": "7de4c04b9fe0478c4f121623b811d6b691dc61c19b482b8252519a4967d927ca",
+      "anchorPixels": [
+        625,
+        950
+      ],
+      "groundFrontPixels": [
+        625,
+        950
+      ],
+      "pointerPolygonPixels": null,
+      "physicalFeet": [
+        {
+          "pixel": [
+            380,
+            855
+          ],
+          "alpha": 250
+        },
+        {
+          "pixel": [
+            625,
+            950
+          ],
+          "alpha": 251
+        },
+        {
+          "pixel": [
+            876,
+            855
+          ],
+          "alpha": 252
+        }
+      ],
+      "clearFloorWitnesses": []
+    }
+  },
+  "instances": [
+    {
+      "id": "northwest-watch-shelter",
+      "assetId": "watch-shelter-open-v2",
+      "placement": {
+        "id": "northwest-watch-shelter",
+        "assetId": "watch-shelter-open-v2",
+        "contact": [
+          4.935582129963899,
+          6.305312016503352
+        ],
+        "scale": 0.11732851985559567,
+        "selectionCell": [
+          5,
+          6
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      },
+      "sourceScale": 0.09386281588447654,
+      "sourceTranslation": [
+        129.0361010830325,
+        100.23104693140795
+      ],
+      "originalFeet": [
+        [
+          146,
+          198
+        ],
+        [
+          182,
+          208
+        ],
+        [
+          224,
+          190
+        ]
+      ],
+      "mappedFeet": [
+        [
+          150.06137184115522,
+          195.78339350180505
+        ],
+        [
+          177.93862815884478,
+          208.54873646209387
+        ],
+        [
+          228.06137184115522,
+          192.21660649819495
+        ]
+      ],
+      "maximumExposedFootCoordinateError": 4.0613718411552355,
+      "entryChecks": [
+        {
+          "role": "cell",
+          "cell": [
+            5,
+            6
+          ],
+          "source": [
+            196,
+            214
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                713.4230769230769,
+                1212.076923076923
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                670.8076923076923,
+                1212.076923076923
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                756.0384615384615,
+                1212.076923076923
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                713.4230769230769,
+                1169.4615384615383
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                713.4230769230769,
+                1254.6923076923076
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            }
+          ]
+        },
+        {
+          "role": "approach",
+          "cell": [
+            6,
+            6
+          ],
+          "source": [
+            228,
+            214
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                1054.3461538461538,
+                1212.076923076923
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1011.7307692307692,
+                1212.076923076923
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1096.9615384615383,
+                1212.076923076923
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1054.3461538461538,
+                1169.4615384615383
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1054.3461538461538,
+                1254.6923076923076
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            }
+          ]
+        }
+      ],
+      "staticOwnTargetLegalCenterOverlaps": [],
+      "note": "Frame only; target contour is one actual opaque rail, preserving original post/roof pass-through. Physical front is real post plinth, never open mouth. Corresponding stored-supply is a separate pass-through crate, not a floor.",
+      "frontRailPositiveTargetWitness": {
+        "assetPixel": [
+          365,
+          870
+        ],
+        "alpha": 253,
+        "source": [
+          163.29602888086643,
+          181.89169675090253
+        ],
+        "expectedCanonicalSelectionCell": [
+          5,
+          6
+        ],
+        "expectedKindEmptyBoard": "Object",
+        "method": "fixed by inspected rail wood pixels and current transform, not selected by Board.Pick"
+      }
+    },
+    {
+      "id": "northeast-watch-shelter",
+      "assetId": "watch-shelter-open-v2",
+      "placement": {
+        "id": "northeast-watch-shelter",
+        "assetId": "watch-shelter-open-v2",
+        "contact": [
+          48.01929151624549,
+          12.748732164345881
+        ],
+        "scale": 0.11883273164861612,
+        "selectionCell": [
+          48,
+          13
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      },
+      "sourceScale": 0.0950661853188929,
+      "sourceTranslation": [
+        1507.0878459687124,
+        279.2581227436823
+      ],
+      "originalFeet": [
+        [
+          1524,
+          373
+        ],
+        [
+          1561,
+          392
+        ],
+        [
+          1603,
+          370
+        ]
+      ],
+      "mappedFeet": [
+        [
+          1528.3826714801444,
+          376.03549939831527
+        ],
+        [
+          1556.6173285198556,
+          388.9645006016847
+        ],
+        [
+          1607.3826714801444,
+          372.42298435619733
+        ]
+      ],
+      "maximumExposedFootCoordinateError": 4.382671480144404,
+      "entryChecks": [
+        {
+          "role": "cell",
+          "cell": [
+            48,
+            13
+          ],
+          "source": [
+            1572,
+            410
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                682.8101265822787,
+                1375.2721518987344
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                640.7341772151901,
+                1375.2721518987344
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                724.8860759493674,
+                1375.2721518987344
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                682.8101265822787,
+                1333.196202531646
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                682.8101265822787,
+                1417.348101265823
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            }
+          ]
+        },
+        {
+          "role": "approach",
+          "cell": [
+            47,
+            13
+          ],
+          "source": [
+            1540,
+            410
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                346.2025316455699,
+                1375.2721518987344
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                304.12658227848124,
+                1375.2721518987344
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                388.27848101265846,
+                1375.2721518987344
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                346.2025316455699,
+                1333.196202531646
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                346.2025316455699,
+                1417.348101265823
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            }
+          ]
+        }
+      ],
+      "staticOwnTargetLegalCenterOverlaps": [],
+      "note": "Frame only; target contour is one actual opaque rail, preserving original post/roof pass-through. Physical front is real post plinth, never open mouth. Corresponding stored-supply is a separate pass-through crate, not a floor.",
+      "frontRailPositiveTargetWitness": {
+        "assetPixel": [
+          365,
+          870
+        ],
+        "alpha": 253,
+        "source": [
+          1541.7870036101083,
+          361.9657039711191
+        ],
+        "expectedCanonicalSelectionCell": [
+          48,
+          13
+        ],
+        "expectedKindEmptyBoard": "Object",
+        "method": "fixed by inspected rail wood pixels and current transform, not selected by Board.Pick"
+      }
+    },
+    {
+      "id": "southwest-bridge-shelter",
+      "assetId": "watch-shelter-open-v2",
+      "placement": {
+        "id": "southwest-bridge-shelter",
+        "assetId": "watch-shelter-open-v2",
+        "contact": [
+          3.5828632671480145,
+          23.002299295169333
+        ],
+        "scale": 0.1022864019253911,
+        "selectionCell": [
+          5,
+          22
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      },
+      "sourceScale": 0.08182912154031288,
+      "sourceTranslation": [
+        92.01865222623346,
+        581.6335740072202
+      ],
+      "originalFeet": [
+        [
+          107,
+          663
+        ],
+        [
+          138,
+          678
+        ],
+        [
+          175,
+          662
+        ]
+      ],
+      "mappedFeet": [
+        [
+          110.34837545126354,
+          664.9356197352587
+        ],
+        [
+          134.65162454873646,
+          676.0643802647413
+        ],
+        [
+          178.34837545126356,
+          661.8261131167268
+        ]
+      ],
+      "maximumExposedFootCoordinateError": 3.3483754512635393,
+      "entryChecks": [
+        {
+          "role": "cell",
+          "cell": [
+            5,
+            22
+          ],
+          "source": [
+            196,
+            662
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                1270.7132352941176,
+                982.1250000000001
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1221.830882352941,
+                982.1250000000001
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1319.595588235294,
+                982.1250000000001
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1270.7132352941176,
+                933.2426470588236
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1270.7132352941176,
+                1031.0073529411766
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            }
+          ]
+        },
+        {
+          "role": "approach",
+          "cell": [
+            5,
+            23
+          ],
+          "source": [
+            196,
+            690
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                1270.7132352941176,
+                1324.3014705882354
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1221.830882352941,
+                1324.3014705882354
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1319.595588235294,
+                1324.3014705882354
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1270.7132352941176,
+                1275.4191176470588
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                1270.7132352941176,
+                1373.1838235294117
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            }
+          ]
+        }
+      ],
+      "staticOwnTargetLegalCenterOverlaps": [],
+      "note": "Frame only; target contour is one actual opaque rail, preserving original post/roof pass-through. Physical front is real post plinth, never open mouth. Corresponding stored-supply is a separate pass-through crate, not a floor.",
+      "frontRailPositiveTargetWitness": {
+        "assetPixel": [
+          365,
+          870
+        ],
+        "alpha": 253,
+        "source": [
+          121.88628158844766,
+          652.8249097472924
+        ],
+        "expectedCanonicalSelectionCell": [
+          5,
+          22
+        ],
+        "expectedKindEmptyBoard": "Object",
+        "method": "fixed by inspected rail wood pixels and current transform, not selected by Board.Pick"
+      }
+    },
+    {
+      "id": "southeast-watch-shelter",
+      "assetId": "watch-shelter-open-left-v2",
+      "placement": {
+        "id": "southeast-watch-shelter",
+        "assetId": "watch-shelter-open-left-v2",
+        "contact": [
+          46.9465129093199,
+          24.88453580424613
+        ],
+        "scale": 0.10075566750629722,
+        "selectionCell": [
+          46,
+          25
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      },
+      "sourceScale": 0.08060453400503778,
+      "sourceTranslation": [
+        1459.2556675062972,
+        632.8476070528967
+      ],
+      "originalFeet": [
+        [
+          1471,
+          715
+        ],
+        [
+          1518,
+          728
+        ],
+        [
+          1551,
+          714
+        ]
+      ],
+      "mappedFeet": [
+        [
+          1473.1196473551636,
+          710.7115869017632
+        ],
+        [
+          1522.2884130982368,
+          728.7670025188917
+        ],
+        [
+          1546.7115869017632,
+          718.2884130982368
+        ]
+      ],
+      "maximumExposedFootCoordinateError": 4.288413098236775,
+      "entryChecks": [
+        {
+          "role": "cell",
+          "cell": [
+            46,
+            25
+          ],
+          "source": [
+            1508,
+            746
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                604.7343750000006,
+                1403.7968750000002
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                555.1093750000006,
+                1403.7968750000002
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                654.3593750000006,
+                1403.7968750000002
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                604.7343750000006,
+                1354.1718750000002
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                604.7343750000006,
+                1453.4218750000002
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            }
+          ]
+        },
+        {
+          "role": "approach",
+          "cell": [
+            45,
+            25
+          ],
+          "source": [
+            1476,
+            746
+          ],
+          "centerAnd4pxSamples": [
+            {
+              "assetPixel": [
+                207.73437500000054,
+                1403.7968750000002
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                158.10937500000054,
+                1403.7968750000002
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                257.3593750000005,
+                1403.7968750000002
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                207.73437500000054,
+                1354.1718750000002
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            },
+            {
+              "assetPixel": [
+                207.73437500000054,
+                1453.4218750000002
+              ],
+              "alpha": 0,
+              "ownTargetOpaque": false
+            }
+          ]
+        }
+      ],
+      "staticOwnTargetLegalCenterOverlaps": [],
+      "note": "Frame only; target contour is one actual opaque rail, preserving original post/roof pass-through. Physical front is real post plinth, never open mouth. Corresponding stored-supply is a separate pass-through crate, not a floor.",
+      "frontRailPositiveTargetWitness": {
+        "assetPixel": [
+          930,
+          892
+        ],
+        "alpha": 253,
+        "source": [
+          1534.2178841309824,
+          704.7468513853904
+        ],
+        "expectedCanonicalSelectionCell": [
+          46,
+          25
+        ],
+        "expectedKindEmptyBoard": "Object",
+        "method": "fixed by inspected rail wood pixels and current transform, not selected by Board.Pick"
+      }
+    },
+    {
+      "id": "northwest-watch-shelter-supply-1",
+      "assetId": "single-crate",
+      "placement": {
+        "id": "northwest-watch-shelter-supply-1",
+        "assetId": "single-crate",
+        "contact": [
+          4.52382553807947,
+          5.865627956480606
+        ],
+        "scale": 0.04346026490066225,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      },
+      "sourceScale": 0.0347682119205298,
+      "sourceTranslation": [
+        142.9975165562914,
+        159.97433774834437
+      ],
+      "originalExposedLowerFootWitnesses": [
+        [
+          152,
+          188
+        ],
+        [
+          164,
+          197
+        ],
+        [
+          179,
+          188
+        ]
+      ],
+      "mappedVisibleLowerFootWitnesses": [
+        [
+          151.23758278145695,
+          188.7276490066225
+        ],
+        [
+          164.76241721854305,
+          196.23758278145695
+        ],
+        [
+          178.35678807947022,
+          188.76241721854305
+        ]
+      ],
+      "maximumExposedFootCoordinateError": 0.7624172185430464,
+      "originalWholeGroundPolygon": [
+        [
+          152,
+          188
+        ],
+        [
+          169,
+          181
+        ],
+        [
+          179,
+          188
+        ],
+        [
+          164,
+          197
+        ]
+      ],
+      "blockedCells": [
+        [
+          4,
+          5
+        ]
+      ],
+      "note": "Preserves existing pass-through material pointer. Three exposed-foot fit only; original hidden rear envelope and complete wall responsibility still need physical support review. Do not certify by roof/top alpha."
+    },
+    {
+      "id": "northeast-watch-shelter-supply-1",
+      "assetId": "single-crate",
+      "placement": {
+        "id": "northeast-watch-shelter-supply-1",
+        "assetId": "single-crate",
+        "contact": [
+          48.772896634615385,
+          12.49065934065934
+        ],
+        "scale": 0.04326923076923077,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      },
+      "sourceScale": 0.03461538461538462,
+      "sourceTranslation": [
+        1559.0634615384615,
+        345.63461538461536
+      ],
+      "originalExposedLowerFootWitnesses": [
+        [
+          1569,
+          373
+        ],
+        [
+          1579,
+          383
+        ],
+        [
+          1596,
+          374
+        ]
+      ],
+      "mappedVisibleLowerFootWitnesses": [
+        [
+          1567.2673076923077,
+          374.2615384615384
+        ],
+        [
+          1580.7326923076923,
+          381.73846153846154
+        ],
+        [
+          1594.2673076923077,
+          374.2961538461538
+        ]
+      ],
+      "maximumExposedFootCoordinateError": 1.7326923076923082,
+      "originalWholeGroundPolygon": [
+        [
+          1569,
+          373
+        ],
+        [
+          1586,
+          366
+        ],
+        [
+          1596,
+          374
+        ],
+        [
+          1579,
+          383
+        ]
+      ],
+      "blockedCells": [
+        [
+          48,
+          11
+        ],
+        [
+          49,
+          11
+        ],
+        [
+          48,
+          12
+        ],
+        [
+          49,
+          12
+        ]
+      ],
+      "note": "Preserves existing pass-through material pointer. Three exposed-foot fit only; original hidden rear envelope and complete wall responsibility still need physical support review. Do not certify by roof/top alpha."
+    },
+    {
+      "id": "southwest-bridge-shelter-supply-1",
+      "assetId": "single-crate",
+      "placement": {
+        "id": "southwest-bridge-shelter-supply-1",
+        "assetId": "single-crate",
+        "contact": [
+          3.3029084158415842,
+          22.310466760961813
+        ],
+        "scale": 0.03712871287128713,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      },
+      "sourceScale": 0.0297029702970297,
+      "sourceTranslation": [
+        107.0990099009901,
+        625.7128712871288
+      ],
+      "originalExposedLowerFootWitnesses": [
+        [
+          114,
+          650
+        ],
+        [
+          126,
+          657
+        ],
+        [
+          137,
+          650
+        ]
+      ],
+      "mappedVisibleLowerFootWitnesses": [
+        [
+          114.13861386138613,
+          650.2772277227724
+        ],
+        [
+          125.6930693069307,
+          656.6930693069307
+        ],
+        [
+          137.30693069306932,
+          650.3069306930694
+        ]
+      ],
+      "maximumExposedFootCoordinateError": 0.3069306930693072,
+      "originalWholeGroundPolygon": [
+        [
+          114,
+          650
+        ],
+        [
+          127,
+          644
+        ],
+        [
+          137,
+          650
+        ],
+        [
+          126,
+          657
+        ]
+      ],
+      "blockedCells": [
+        [
+          3,
+          21
+        ],
+        [
+          2,
+          22
+        ],
+        [
+          3,
+          22
+        ]
+      ],
+      "note": "Preserves existing pass-through material pointer. Three exposed-foot fit only; original hidden rear envelope and complete wall responsibility still need physical support review. Do not certify by roof/top alpha."
+    },
+    {
+      "id": "southeast-watch-shelter-supply-1",
+      "assetId": "single-crate",
+      "placement": {
+        "id": "southeast-watch-shelter-supply-1",
+        "assetId": "single-crate",
+        "contact": [
+          47.92091346153846,
+          24.81291208791209
+        ],
+        "scale": 0.07692307692307693,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      },
+      "sourceScale": 0.06153846153846154,
+      "sourceTranslation": [
+        1514.9461538461537,
+        662.5769230769231
+      ],
+      "originalExposedLowerFootWitnesses": [
+        [
+          1531,
+          712
+        ],
+        [
+          1552,
+          728
+        ],
+        [
+          1577,
+          715
+        ]
+      ],
+      "mappedVisibleLowerFootWitnesses": [
+        [
+          1529.530769230769,
+          713.4692307692308
+        ],
+        [
+          1553.4692307692308,
+          726.7615384615385
+        ],
+        [
+          1577.530769230769,
+          713.5307692307692
+        ]
+      ],
+      "maximumExposedFootCoordinateError": 1.4692307692307693,
+      "originalWholeGroundPolygon": [
+        [
+          1531,
+          712
+        ],
+        [
+          1554,
+          702
+        ],
+        [
+          1577,
+          715
+        ],
+        [
+          1552,
+          728
+        ]
+      ],
+      "blockedCells": [
+        [
+          47,
+          23
+        ],
+        [
+          48,
+          23
+        ],
+        [
+          47,
+          24
+        ],
+        [
+          48,
+          24
+        ]
+      ],
+      "note": "Preserves existing pass-through material pointer. Three exposed-foot fit only; original hidden rear envelope and complete wall responsibility still need physical support review. Do not certify by roof/top alpha."
+    },
+    {
+      "id": "northwest-well",
+      "assetId": "well",
+      "placement": {
+        "id": "northwest-well",
+        "assetId": "well",
+        "contact": [
+          11.018382352941178,
+          10.586134453781513
+        ],
+        "scale": 0.10294117647058823,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      },
+      "sourceScale": 0.08235294117647059,
+      "sourceTranslation": [
+        321.11764705882354,
+        250.1764705882353
+      ],
+      "originalExposedLowerFootWitnesses": [
+        [
+          352,
+          321
+        ],
+        [
+          373,
+          328
+        ],
+        [
+          393,
+          321
+        ]
+      ],
+      "mappedVisibleLowerFootWitnesses": [
+        [
+          352.4117647058824,
+          320.5882352941177
+        ],
+        [
+          372.5882352941177,
+          328.4117647058824
+        ],
+        [
+          393.25882352941176,
+          320.5882352941177
+        ]
+      ],
+      "maximumExposedFootCoordinateError": 0.41176470588235325,
+      "originalWholeGroundPolygon": [
+        [
+          349,
+          310
+        ],
+        [
+          368,
+          300
+        ],
+        [
+          390,
+          306
+        ],
+        [
+          393,
+          321
+        ],
+        [
+          373,
+          328
+        ],
+        [
+          352,
+          321
+        ]
+      ],
+      "blockedCells": [
+        [
+          10,
+          9
+        ],
+        [
+          11,
+          9
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          10
+        ]
+      ],
+      "note": "Preserves existing pass-through material pointer. Three exposed-foot fit only; original hidden rear envelope and complete wall responsibility still need physical support review. Do not certify by roof/top alpha."
+    },
+    {
+      "id": "thatch-cottage-well",
+      "assetId": "well",
+      "placement": {
+        "id": "thatch-cottage-well",
+        "assetId": "well",
+        "contact": [
+          37.07085459183673,
+          10.763119533527698
+        ],
+        "scale": 0.09693877551020408,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      },
+      "sourceScale": 0.07755102040816327,
+      "sourceTranslation": [
+        1157.7979591836734,
+        259.6938775510204
+      ],
+      "originalExposedLowerFootWitnesses": [
+        [
+          1187,
+          327
+        ],
+        [
+          1206,
+          334
+        ],
+        [
+          1226,
+          325
+        ]
+      ],
+      "mappedVisibleLowerFootWitnesses": [
+        [
+          1187.2673469387753,
+          326.0
+        ],
+        [
+          1206.2673469387753,
+          333.36734693877554
+        ],
+        [
+          1225.7326530612245,
+          326.0
+        ]
+      ],
+      "maximumExposedFootCoordinateError": 1.0,
+      "originalWholeGroundPolygon": [
+        [
+          1184,
+          312
+        ],
+        [
+          1203,
+          302
+        ],
+        [
+          1224,
+          310
+        ],
+        [
+          1226,
+          325
+        ],
+        [
+          1206,
+          334
+        ],
+        [
+          1187,
+          327
+        ]
+      ],
+      "blockedCells": [
+        [
+          36,
+          9
+        ],
+        [
+          37,
+          9
+        ],
+        [
+          36,
+          10
+        ],
+        [
+          37,
+          10
+        ]
+      ],
+      "note": "Preserves existing pass-through material pointer. Three exposed-foot fit only; original hidden rear envelope and complete wall responsibility still need physical support review. Do not certify by roof/top alpha."
+    },
+    {
+      "id": "west-cottage-crates",
+      "assetId": "single-crate",
+      "placement": {
+        "id": "west-cottage-crates",
+        "assetId": "single-crate",
+        "contact": [
+          13.883101851851851,
+          15.124338624338623
+        ],
+        "scale": 0.046296296296296294,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      },
+      "sourceScale": 0.037037037037037035,
+      "sourceTranslation": [
+        441.0740740740741,
+        416.85185185185185
+      ],
+      "originalExposedLowerFootWitnesses": [
+        [
+          449,
+          446
+        ],
+        [
+          463,
+          454
+        ],
+        [
+          480,
+          449
+        ]
+      ],
+      "mappedVisibleLowerFootWitnesses": [
+        [
+          449.85185185185185,
+          447.48148148148147
+        ],
+        [
+          464.25925925925924,
+          455.48148148148147
+        ],
+        [
+          478.74074074074076,
+          447.51851851851853
+        ]
+      ],
+      "maximumExposedFootCoordinateError": 1.4814814814814814,
+      "originalWholeGroundPolygon": [
+        [
+          447,
+          436
+        ],
+        [
+          464,
+          427
+        ],
+        [
+          481,
+          436
+        ],
+        [
+          480,
+          449
+        ],
+        [
+          463,
+          454
+        ],
+        [
+          449,
+          446
+        ]
+      ],
+      "blockedCells": [
+        [
+          13,
+          14
+        ],
+        [
+          14,
+          14
+        ],
+        [
+          13,
+          15
+        ],
+        [
+          14,
+          15
+        ]
+      ],
+      "note": "Preserves existing pass-through material pointer. Three exposed-foot fit only; original hidden rear envelope and complete wall responsibility still need physical support review. Do not certify by roof/top alpha."
+    },
+    {
+      "id": "southwest-cottage-crates",
+      "assetId": "single-crate",
+      "placement": {
+        "id": "southwest-cottage-crates",
+        "assetId": "single-crate",
+        "contact": [
+          22.804026442307695,
+          22.876717032967033
+        ],
+        "scale": 0.05288461538461539,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      },
+      "sourceScale": 0.04230769230769231,
+      "sourceTranslation": [
+        723.2442307692309,
+        628.4211538461539
+      ],
+      "originalExposedLowerFootWitnesses": [
+        [
+          735,
+          664
+        ],
+        [
+          748,
+          671
+        ],
+        [
+          768,
+          665
+        ]
+      ],
+      "mappedVisibleLowerFootWitnesses": [
+        [
+          733.2711538461539,
+          663.4096153846154
+        ],
+        [
+          749.7288461538462,
+          672.5480769230769
+        ],
+        [
+          766.2711538461539,
+          663.4519230769231
+        ]
+      ],
+      "maximumExposedFootCoordinateError": 1.7288461538461544,
+      "originalWholeGroundPolygon": [
+        [
+          733,
+          650
+        ],
+        [
+          752,
+          643
+        ],
+        [
+          770,
+          650
+        ],
+        [
+          768,
+          665
+        ],
+        [
+          748,
+          671
+        ],
+        [
+          735,
+          664
+        ]
+      ],
+      "blockedCells": [
+        [
+          22,
+          21
+        ],
+        [
+          23,
+          21
+        ],
+        [
+          22,
+          22
+        ],
+        [
+          23,
+          22
+        ]
+      ],
+      "note": "Preserves existing pass-through material pointer. Three exposed-foot fit only; original hidden rear envelope and complete wall responsibility still need physical support review. Do not certify by roof/top alpha."
+    },
+    {
+      "id": "southeast-cottage-crates",
+      "assetId": "single-crate",
+      "placement": {
+        "id": "southeast-cottage-crates",
+        "assetId": "single-crate",
+        "contact": [
+          33.82690012562814,
+          22.364770279971285
+        ],
+        "scale": 0.04899497487437186,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      },
+      "sourceScale": 0.03919597989949749,
+      "sourceTranslation": [
+        1077.9241206030151,
+        617.3321608040201
+      ],
+      "originalExposedLowerFootWitnesses": [
+        [
+          1086,
+          649
+        ],
+        [
+          1102,
+          657
+        ],
+        [
+          1119,
+          651
+        ]
+      ],
+      "mappedVisibleLowerFootWitnesses": [
+        [
+          1087.213567839196,
+          649.7472361809045
+        ],
+        [
+          1102.4608040201006,
+          658.213567839196
+        ],
+        [
+          1117.786432160804,
+          649.786432160804
+        ]
+      ],
+      "maximumExposedFootCoordinateError": 1.2135678391959797,
+      "originalWholeGroundPolygon": [
+        [
+          1085,
+          635
+        ],
+        [
+          1102,
+          627
+        ],
+        [
+          1119,
+          636
+        ],
+        [
+          1119,
+          651
+        ],
+        [
+          1102,
+          657
+        ],
+        [
+          1086,
+          649
+        ]
+      ],
+      "blockedCells": [
+        [
+          33,
+          21
+        ],
+        [
+          34,
+          21
+        ],
+        [
+          33,
+          22
+        ],
+        [
+          34,
+          22
+        ]
+      ],
+      "note": "Preserves existing pass-through material pointer. Three exposed-foot fit only; original hidden rear envelope and complete wall responsibility still need physical support review. Do not certify by roof/top alpha."
+    }
+  ],
+  "notIncluded": [
+    "central-supply-cart retains its independent actual wheel/cart fitting task and target selection (31,14)",
+    "trees/rocks/short bridge rails"
+  ],
+  "contract": [
+    "No floor/deck added to shelters. Empty mouth must remain Ground and a real opaque neighboring actor must win as Unit.",
+    "Furniture remains pass-through; no new collision or site introduced.",
+    "Old single full rail fits were GEOMETRIC ONLY; no whole-rail depth approval, no AtlasTexture approval. Follow the existing independent-complete-asset guard and actual short-span sprite depth tests.",
+    "Static Python pixel observations are not native Board.Pick or gameplay evidence.",
+    "Original conservative hidden rear polygons cannot be proved by top/roof alpha."
+  ],
+  "fitMethod": "Exact minimax positive uniform scale+translation against original three exposed physical contact witnesses; 1.25 source-to-world conversion."
+}

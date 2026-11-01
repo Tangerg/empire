@@ -49,3 +49,47 @@ Use case: stylized-concept. ONE independent narrow timber bridge SIDE RAIL sprit
 ## Ground clean v2
 
 Use case: precise-object-edit. Further clean ONLY the standing boulders from this GROUND LAYER. Preserve EXACT 1651x953 canvas, every riverbank/water pixel layout, wooden bridge deck and stone bridge support piers/abutments, the dock/boat, all existing low crossable fences, crops, reeds, paths and terrain. Remove the remaining large standing rock piles and replace only their silhouettes with matching low grass/soil: especially upper-right rocks near (1410,66) and (1490,126), both west-bank and east-bank bridge approach boulder groups, center small rock clusters, southern riverbank rock groups near (1000,790),(1260,807),(1400,850),(1570,875). DO NOT remove any bridge support stone or flatten bridge deck, don't change river shape or add any walkable bank. Keep tiny ground pebbles. No new trees/buildings/UI. This pass is object-removal only, not a map redesign. Keep the same muted hand-painted ground style and exact existing bridge/water registration.
+
+## Open shelter v2
+
+Use case: precise-object-edit. Correct the provided open watch shelter for game foreground layering. REMOVE THE ENTIRE WOODEN FLOOR/PLATFORM, its underfloor supports, fascia and all entrance steps. Replace these areas with genuine fully transparent emptiness. Keep the roof, four vertical posts, crossbraces and thin side rails in their current geometry/style; extend each needed post naturally to its own exposed small grounded foot. The region BELOW the rails and INSIDE the four posts must be see-through all the way to the ground, no deck no tiles no soil. No surrounding ground or shadow backdrop. Preserve hand-painted timber style and orthographic camera. Single structure, full transparency, centered1254x1254 canvas. This is a roof/post/rail foreground only, NEVER a roofed platform.
+
+## Bridge rail v2
+
+Use case: precise-object-edit. Repaint this single timber bridge railing with a precisely steeper receding axis, preserving thin open wooden rail construction and hand-painted style. Desired FOUR POST GROUND FEET centers on 1536x1024 canvas: (200,900), (600,732), (1000,564), (1400,396). Thus the ground-foot line rises 504 pixels over1200 rightward, slope -0.42, NOT the current shallower slope. Posts remain exactly vertical, about210 pixels tall. Two slim connecting beams run parallel to this same -0.42 axis, transparent gaps, no floor/deck/base/wall. Keep faithful muted wood texture, four posts and no extras, genuinely transparent canvas, no glow or shadow backdrop. Do NOT rotate vertical posts diagonally; redraw in correct perspective.
+
+## Source-faithful slate
+
+Extract ONLY the small northwest gray-slate cottage of this village (located x350–495, y125–255 in source). Make a transparent isolated sprite of THAT building, preserving the exact appearance and proportions of its roof, walls, masonry base, chimney and doorway. Important: this cottage has a LEFT-facing peaked gable with window, a RIGHT-facing long side with door; do not redesign it into a right-gable house. Preserve its squat broad silhouette and shallow foundation footprint. Scale the existing cottage uniformly up for clean readable hand-painted detail; no perspective change, no fancy generic house, no reversal of long wall/gable. Remove every surrounding fence, tree, grass, crate and neighboring object. Transparent background with padding, no glow or floor. Output just this cottage, no other objects or text.
+
+## Source red
+
+Use case: precise-object-edit. Make the red-tile roof variant of THIS EXACT cottage. Change ONLY slate roof material to muted aged red-brown terracotta tiles. Preserve pixel framing, the LEFT-facing peaked gable WINDOW and RIGHT-facing long-wall DOOR, chimney, walls, stone base silhouette, shallow ground perspective and exact overall size/proportions. Do not move the door to a gable, do not change the building handedness. Same1536x1024 transparent canvas. No extraobjects, scenery, text, glow or opaque background.
+
+## Source slate left
+
+Use case: precise-object-edit. Produce the opposite handed version of this exact source-faithful village cottage. Mirror the building architecture so the peaked GABLE with WINDOW is on the RIGHT-facing side, and the LONG WALL with the wooden DOOR is on the LEFT-facing side. Keep exact squat proportions, SHALLOW symmetric stone base footprint, roof/chimney materials, camera angle and material quality. Do not turn the doorway into a gable doorway. Preserve1536x1024 canvas, overall footprint width/height, full building and transparent padding. No scenery, objects, text, glow or opaque background. Single faithful cottage sprite.
+
+## Source red left
+
+Use case: precise-object-edit. Change ONLY the roof covering of this exact LEFT-long-wall-door cottage to muted aged terracotta red-brown small overlapping tiles. Keep all geometry, shallow symmetric foundation, RIGHT-facing gable window, LEFT-facing long-wall door, framing, chimney, walls, dimensions and style unchanged.1536x1024 genuinely transparent canvas, no extra objects, scenery, text, glow or opaque backdrop. This is a roof-material variant, not redesign.
+
+## Source thatch left
+
+Use case: precise-object-edit. Change ONLY roof covering of this source-faithful LEFT-long-wall-door cottage to muted golden straw thatch with restrained layered straw eaves and bound ridge. Keep exact building geometry, shallow symmetric stone base footprint, RIGHT-facing peaked gable WINDOW and LEFT-facing long-wall DOOR, original chimney/walls/framing/dimensions unchanged. No roof overgrowth, no movement of foundation corners. Same1536x1024 transparent canvas, no extra objects, scene, text, glow or opaque backdrop.
+
+## Open shelter opposite
+
+Use case: precise-object-edit. Horizontally mirrored architectural variant of this EXACT open timber watch shelter. Front closest post moves to RIGHT of center; longer visible face is on LEFT, shorter face on RIGHT. Keep four upright posts, roof, open thin rails, same timber style and proportions. CRITICAL absolutely NO FLOOR, platform, steps, ground, fascia or stored supplies; inside below rails must remain genuinely transparent emptiness as reference. No extra objects, text, glow or backdrop. Entire mirrored open frame centered1254x1254 transparent canvas.
+
+## Single crate
+
+Use case: stylized-concept. ONE small closed square wooden supply crate, NOT a stack, faithful hand-painted medieval tactics sprite. Elevated orthographic camera, both visible front sides equal width, shallow diamond footprint; visible left and right ground corners at equal height, closest middle ground corner only about0.22 of full crate width lower. Plain weathered warm brown planks with diagonal bracing, restrained nails, top visible, soft earthy outlines and muted highlights. Entire SINGLE CUBE centered on1024x1024 genuine transparent canvas with generous padding. No extra crates, barrels, grass, scene, floor, shadows, text or glow.
+
+## Thatch annex
+
+Use case: background-extraction. Extract/redraw ONLY northeast THATCHED COTTAGE of this original village, source x1098..1275 y175..292. Preserve its ACTUAL architecture including the small attached RIGHT-SIDE lean-to annex that widens the total foundation. Peaked gable and door face lower LEFT, long thatched roof side extends RIGHT into the low attached annex. Its closest front foundation corner is well LEFT of the full footprint center: visible foot L=(1118,268), F=(1170,290), far right R=(1261,268), giving front corner about36 percent across width. Preserve this asymmetric shallow foundation, don't replace with a symmetric generic square cottage. Uniformly enlarge original building for clear faithful hand-painted stone/timber/straw details; same camera, muted palette and squat proportions. Transparent isolated sprite with padding1536x1024; no trees/fences/well/crops/crates/grass or surrounding scene, no text/glow/backdrop. Keep the annex attached and grounded, not a separate extra building.
+
+## Short bridge rail
+
+Use case: precise-object-edit. Create ONE SHORT modular timber rail span derived from reference: EXACTLY TWO vertical end posts and TWO thin beams connecting them, with transparent open gaps. Not the reference's four-post long fence. Ground feet line rises from lowerLEFT to upperRIGHT at slope -0.42 (about23degrees). Two feet approx (250,850) and (1000,535) on1254x1254 transparent canvas; each post height about280. Preserve weathered brown timber, restrained hand-painted style and believable visible top/side thickness. No middle posts, no floor/deck, no stonebase, no scenery, no glow/shadow backdrop/text. Both endposts fully visible with padding; standalone complete sprite for three consecutive short depth-sorted segments of same bridge.
