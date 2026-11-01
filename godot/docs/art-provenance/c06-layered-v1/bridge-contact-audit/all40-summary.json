@@ -1,0 +1,624 @@
+{
+  "scope": "40 canonical bridge cells x14 resolved appearances x4frames x2facings, actual anatomically-selected source alpha lower contours. Raised boots excluded; uncertain walking/occluded contacts retained separately. Old deck quadrilaterals are approximate material boundaries, not final deck+bank classification; positive distances are inspection candidates, not automatic failures. No commands, real-save access, scene or map edits.",
+  "poseCount": 56,
+  "cellCount": 40,
+  "approxHistoricalDeckQuads": {
+    "west": [
+      [
+        215,
+        409
+      ],
+      [
+        375,
+        310
+      ],
+      [
+        421,
+        329
+      ],
+      [
+        267,
+        442
+      ]
+    ],
+    "central": [
+      [
+        742,
+        510
+      ],
+      [
+        831,
+        376
+      ],
+      [
+        928,
+        386
+      ],
+      [
+        860,
+        533
+      ]
+    ],
+    "east": [
+      [
+        1287,
+        389
+      ],
+      [
+        1330,
+        373
+      ],
+      [
+        1509,
+        480
+      ],
+      [
+        1458,
+        507
+      ]
+    ]
+  },
+  "summary": [
+    {
+      "cell": [
+        10,
+        10
+      ],
+      "bridge": "west",
+      "idleMaxOutsideApproxDeck": 12.59485499765919,
+      "idleWorstIdentity": "C01-FFV1-UNIT-BALLISTA",
+      "idleWorstAnatomy": "operator_left_boot",
+      "idleWorstSourcePixel": [
+        334.4557192,
+        320.27589064
+      ]
+    },
+    {
+      "cell": [
+        11,
+        10
+      ],
+      "bridge": "west",
+      "idleMaxOutsideApproxDeck": 3.690020631146803,
+      "idleWorstIdentity": "C01-FFV1-UNIT-BALLISTA",
+      "idleWorstAnatomy": "operator_left_boot",
+      "idleWorstSourcePixel": [
+        409.5442808,
+        320.27589064
+      ]
+    },
+    {
+      "cell": [
+        9,
+        11
+      ],
+      "bridge": "west",
+      "idleMaxOutsideApproxDeck": 5.621752161816825,
+      "idleWorstIdentity": "C01-FFV1-UNIT-BALLISTA",
+      "idleWorstAnatomy": "operator_left_boot",
+      "idleWorstSourcePixel": [
+        302.4557192,
+        348.27589064
+      ]
+    },
+    {
+      "cell": [
+        10,
+        11
+      ],
+      "bridge": "west",
+      "idleMaxOutsideApproxDeck": 0,
+      "idleWorstIdentity": "C01-FFV1-UNIT-ARCHER",
+      "idleWorstAnatomy": "left_boot",
+      "idleWorstSourcePixel": [
+        364.29879032,
+        351.79759048
+      ]
+    },
+    {
+      "cell": [
+        11,
+        11
+      ],
+      "bridge": "west",
+      "idleMaxOutsideApproxDeck": 8.7638697550036,
+      "idleWorstIdentity": "C01-FFV1-UNIT-BALLISTA",
+      "idleWorstAnatomy": "operator_left_boot",
+      "idleWorstSourcePixel": [
+        409.5442808,
+        348.27589064
+      ]
+    },
+    {
+      "cell": [
+        8,
+        12
+      ],
+      "bridge": "west",
+      "idleMaxOutsideApproxDeck": 0,
+      "idleWorstIdentity": "C01-FFV1-UNIT-ARCHER",
+      "idleWorstAnatomy": "left_boot",
+      "idleWorstSourcePixel": [
+        300.29879032,
+        379.79759048
+      ]
+    },
+    {
+      "cell": [
+        9,
+        12
+      ],
+      "bridge": "west",
+      "idleMaxOutsideApproxDeck": 0,
+      "idleWorstIdentity": "C01-FFV1-UNIT-ARCHER",
+      "idleWorstAnatomy": "left_boot",
+      "idleWorstSourcePixel": [
+        332.29879032,
+        379.79759048
+      ]
+    },
+    {
+      "cell": [
+        25,
+        12
+      ],
+      "bridge": "central",
+      "idleMaxOutsideApproxDeck": 13.628835257977745,
+      "idleWorstIdentity": "C01-FFV1-UNIT-BALLISTA",
+      "idleWorstAnatomy": "operator_left_boot",
+      "idleWorstSourcePixel": [
+        814.4557192,
+        376.27589064
+      ]
+    },
+    {
+      "cell": [
+        26,
+        12
+      ],
+      "bridge": "central",
+      "idleMaxOutsideApproxDeck": 6.5607835677908275,
+      "idleWorstIdentity": "torren-stage01",
+      "idleWorstAnatomy": "left_boot",
+      "idleWorstSourcePixel": [
+        871.846152,
+        373.61538768
+      ]
+    },
+    {
+      "cell": [
+        40,
+        12
+      ],
+      "bridge": "east",
+      "idleMaxOutsideApproxDeck": 9.325252695032695,
+      "idleWorstIdentity": "C01-FFV1-UNIT-BALLISTA",
+      "idleWorstAnatomy": "operator_left_boot",
+      "idleWorstSourcePixel": [
+        1294.4557192,
+        376.27589064
+      ]
+    },
+    {
+      "cell": [
+        6,
+        13
+      ],
+      "bridge": "west",
+      "idleMaxOutsideApproxDeck": 9.763295736301762,
+      "idleWorstIdentity": "C01-FFV1-UNIT-BALLISTA",
+      "idleWorstAnatomy": "operator_left_boot",
+      "idleWorstSourcePixel": [
+        206.4557192,
+        404.27589064
+      ]
+    },
+    {
+      "cell": [
+        7,
+        13
+      ],
+      "bridge": "west",
+      "idleMaxOutsideApproxDeck": 0,
+      "idleWorstIdentity": "C01-FFV1-UNIT-ARCHER",
+      "idleWorstAnatomy": "left_boot",
+      "idleWorstSourcePixel": [
+        268.29879032,
+        407.79759048
+      ]
+    },
+    {
+      "cell": [
+        8,
+        13
+      ],
+      "bridge": "west",
+      "idleMaxOutsideApproxDeck": 0,
+      "idleWorstIdentity": "C01-FFV1-UNIT-ARCHER",
+      "idleWorstAnatomy": "left_boot",
+      "idleWorstSourcePixel": [
+        300.29879032,
+        407.79759048
+      ]
+    },
+    {
+      "cell": [
+        25,
+        13
+      ],
+      "bridge": "central",
+      "idleMaxOutsideApproxDeck": 0,
+      "idleWorstIdentity": "C01-FFV1-UNIT-ARCHER",
+      "idleWorstAnatomy": "left_boot",
+      "idleWorstSourcePixel": [
+        844.29879032,
+        407.79759048
+      ]
+    },
+    {
+      "cell": [
+        26,
+        13
+      ],
+      "bridge": "central",
+      "idleMaxOutsideApproxDeck": 0,
+      "idleWorstIdentity": "C01-FFV1-UNIT-ARCHER",
+      "idleWorstAnatomy": "left_boot",
+      "idleWorstSourcePixel": [
+        876.29879032,
+        407.79759048
+      ]
+    },
+    {
+      "cell": [
+        27,
+        13
+      ],
+      "bridge": "central",
+      "idleMaxOutsideApproxDeck": 1.8137742365980556,
+      "idleWorstIdentity": "C01-FFV1-UNIT-BALLISTA",
+      "idleWorstAnatomy": "operator_left_boot",
+      "idleWorstSourcePixel": [
+        921.5442808,
+        404.27589064
+      ]
+    },
+    {
+      "cell": [
+        40,
+        13
+      ],
+      "bridge": "east",
+      "idleMaxOutsideApproxDeck": 8.338403605997257,
+      "idleWorstIdentity": "C01-FFV1-UNIT-BALLISTA",
+      "idleWorstAnatomy": "operator_left_boot",
+      "idleWorstSourcePixel": [
+        1294.4557192,
+        404.27589064
+      ]
+    },
+    {
+      "cell": [
+        41,
+        13
+      ],
+      "bridge": "east",
+      "idleMaxOutsideApproxDeck": 0,
+      "idleWorstIdentity": "C01-FFV1-UNIT-ARCHER",
+      "idleWorstAnatomy": "left_boot",
+      "idleWorstSourcePixel": [
+        1356.29879032,
+        407.79759048
+      ]
+    },
+    {
+      "cell": [
+        42,
+        13
+      ],
+      "bridge": "east",
+      "idleMaxOutsideApproxDeck": 9.862992020565166,
+      "idleWorstIdentity": "C01-FFV1-UNIT-BALLISTA",
+      "idleWorstAnatomy": "operator_left_boot",
+      "idleWorstSourcePixel": [
+        1401.5442808,
+        404.27589064
+      ]
+    },
+    {
+      "cell": [
+        7,
+        14
+      ],
+      "bridge": "west",
+      "idleMaxOutsideApproxDeck": 7.0843716494737174,
+      "idleWorstIdentity": "C01-FFV1-UNIT-BALLISTA",
+      "idleWorstAnatomy": "operator_left_boot",
+      "idleWorstSourcePixel": [
+        238.4557192,
+        432.27589064
+      ]
+    },
+    {
+      "cell": [
+        24,
+        14
+      ],
+      "bridge": "central",
+      "idleMaxOutsideApproxDeck": 9.302180158235279,
+      "idleWorstIdentity": "C01-FFV1-UNIT-BALLISTA",
+      "idleWorstAnatomy": "operator_left_boot",
+      "idleWorstSourcePixel": [
+        782.4557192,
+        432.27589064
+      ]
+    },
+    {
+      "cell": [
+        25,
+        14
+      ],
+      "bridge": "central",
+      "idleMaxOutsideApproxDeck": 0,
+      "idleWorstIdentity": "C01-FFV1-UNIT-ARCHER",
+      "idleWorstAnatomy": "left_boot",
+      "idleWorstSourcePixel": [
+        844.29879032,
+        435.79759048
+      ]
+    },
+    {
+      "cell": [
+        26,
+        14
+      ],
+      "bridge": "central",
+      "idleMaxOutsideApproxDeck": 0,
+      "idleWorstIdentity": "C01-FFV1-UNIT-ARCHER",
+      "idleWorstAnatomy": "left_boot",
+      "idleWorstSourcePixel": [
+        876.29879032,
+        435.79759048
+      ]
+    },
+    {
+      "cell": [
+        27,
+        14
+      ],
+      "bridge": "central",
+      "idleMaxOutsideApproxDeck": 13.569324545358269,
+      "idleWorstIdentity": "C01-FFV1-UNIT-BALLISTA",
+      "idleWorstAnatomy": "operator_left_boot",
+      "idleWorstSourcePixel": [
+        921.5442808,
+        432.27589064
+      ]
+    },
+    {
+      "cell": [
+        42,
+        14
+      ],
+      "bridge": "east",
+      "idleMaxOutsideApproxDeck": 0,
+      "idleWorstIdentity": "C01-FFV1-UNIT-ARCHER",
+      "idleWorstAnatomy": "left_boot",
+      "idleWorstSourcePixel": [
+        1388.29879032,
+        435.79759048
+      ]
+    },
+    {
+      "cell": [
+        43,
+        14
+      ],
+      "bridge": "east",
+      "idleMaxOutsideApproxDeck": 2.2482394837569735,
+      "idleWorstIdentity": "C01-FFV1-UNIT-BALLISTA",
+      "idleWorstAnatomy": "operator_left_boot",
+      "idleWorstSourcePixel": [
+        1433.5442808,
+        432.27589064
+      ]
+    },
+    {
+      "cell": [
+        24,
+        15
+      ],
+      "bridge": "central",
+      "idleMaxOutsideApproxDeck": 0,
+      "idleWorstIdentity": "C01-FFV1-UNIT-ARCHER",
+      "idleWorstAnatomy": "left_boot",
+      "idleWorstSourcePixel": [
+        812.29879032,
+        463.79759048
+      ]
+    },
+    {
+      "cell": [
+        25,
+        15
+      ],
+      "bridge": "central",
+      "idleMaxOutsideApproxDeck": 0,
+      "idleWorstIdentity": "C01-FFV1-UNIT-ARCHER",
+      "idleWorstAnatomy": "left_boot",
+      "idleWorstSourcePixel": [
+        844.29879032,
+        463.79759048
+      ]
+    },
+    {
+      "cell": [
+        26,
+        15
+      ],
+      "bridge": "central",
+      "idleMaxOutsideApproxDeck": 0,
+      "idleWorstIdentity": "C01-FFV1-UNIT-ARCHER",
+      "idleWorstAnatomy": "left_boot",
+      "idleWorstSourcePixel": [
+        876.29879032,
+        463.79759048
+      ]
+    },
+    {
+      "cell": [
+        43,
+        15
+      ],
+      "bridge": "east",
+      "idleMaxOutsideApproxDeck": 0,
+      "idleWorstIdentity": "C01-FFV1-UNIT-ARCHER",
+      "idleWorstAnatomy": "left_boot",
+      "idleWorstSourcePixel": [
+        1420.29879032,
+        463.79759048
+      ]
+    },
+    {
+      "cell": [
+        44,
+        15
+      ],
+      "bridge": "east",
+      "idleMaxOutsideApproxDeck": 0,
+      "idleWorstIdentity": "C01-FFV1-UNIT-ARCHER",
+      "idleWorstAnatomy": "left_boot",
+      "idleWorstSourcePixel": [
+        1452.29879032,
+        463.79759048
+      ]
+    },
+    {
+      "cell": [
+        45,
+        15
+      ],
+      "bridge": "east",
+      "idleMaxOutsideApproxDeck": 11.052197706414303,
+      "idleWorstIdentity": "C01-FFV1-UNIT-BALLISTA",
+      "idleWorstAnatomy": "operator_left_boot",
+      "idleWorstSourcePixel": [
+        1497.5442808,
+        460.27589064
+      ]
+    },
+    {
+      "cell": [
+        23,
+        16
+      ],
+      "bridge": "central",
+      "idleMaxOutsideApproxDeck": 4.975525058492832,
+      "idleWorstIdentity": "C01-FFV1-UNIT-BALLISTA",
+      "idleWorstAnatomy": "operator_left_boot",
+      "idleWorstSourcePixel": [
+        750.4557192,
+        488.27589064
+      ]
+    },
+    {
+      "cell": [
+        24,
+        16
+      ],
+      "bridge": "central",
+      "idleMaxOutsideApproxDeck": 0,
+      "idleWorstIdentity": "C01-FFV1-UNIT-ARCHER",
+      "idleWorstAnatomy": "left_boot",
+      "idleWorstSourcePixel": [
+        812.29879032,
+        491.79759048
+      ]
+    },
+    {
+      "cell": [
+        25,
+        16
+      ],
+      "bridge": "central",
+      "idleMaxOutsideApproxDeck": 0,
+      "idleWorstIdentity": "C01-FFV1-UNIT-ARCHER",
+      "idleWorstAnatomy": "left_boot",
+      "idleWorstSourcePixel": [
+        844.29879032,
+        491.79759048
+      ]
+    },
+    {
+      "cell": [
+        26,
+        16
+      ],
+      "bridge": "central",
+      "idleMaxOutsideApproxDeck": 8.037300870647577,
+      "idleWorstIdentity": "C01-FFV1-UNIT-BALLISTA",
+      "idleWorstAnatomy": "operator_left_boot",
+      "idleWorstSourcePixel": [
+        889.5442808,
+        488.27589064
+      ]
+    },
+    {
+      "cell": [
+        44,
+        16
+      ],
+      "bridge": "east",
+      "idleMaxOutsideApproxDeck": 4.776633807070823,
+      "idleWorstIdentity": "C01-FFV1-UNIT-BALLISTA",
+      "idleWorstAnatomy": "operator_left_boot",
+      "idleWorstSourcePixel": [
+        1422.4557192,
+        488.27589064
+      ]
+    },
+    {
+      "cell": [
+        45,
+        16
+      ],
+      "bridge": "east",
+      "idleMaxOutsideApproxDeck": 1.9541418023932187,
+      "idleWorstIdentity": "C01-FFV1-UNIT-BALLISTA",
+      "idleWorstAnatomy": "operator_left_boot",
+      "idleWorstSourcePixel": [
+        1497.5442808,
+        488.27589064
+      ]
+    },
+    {
+      "cell": [
+        24,
+        17
+      ],
+      "bridge": "central",
+      "idleMaxOutsideApproxDeck": 0.5281261737785431,
+      "idleWorstIdentity": "C01-FFV1-UNIT-KNIGHT",
+      "idleWorstAnatomy": "right_boot",
+      "idleWorstSourcePixel": [
+        797.15253936,
+        521.28813616
+      ]
+    },
+    {
+      "cell": [
+        25,
+        17
+      ],
+      "bridge": "central",
+      "idleMaxOutsideApproxDeck": 0,
+      "idleWorstIdentity": "C01-FFV1-UNIT-ARCHER",
+      "idleWorstAnatomy": "left_boot",
+      "idleWorstSourcePixel": [
+        844.29879032,
+        519.79759048
+      ]
+    }
+  ],
+  "fullDiagnosticSha256": "fca7b3c7162f76ecd29deabd2eb081e4a6f1840bb6bcb280e15176608c530b64"
+}

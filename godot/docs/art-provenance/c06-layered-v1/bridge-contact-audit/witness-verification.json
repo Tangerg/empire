@@ -1,0 +1,1007 @@
+{
+  "passed": true,
+  "witnessCount": 75,
+  "pointCount": 1882,
+  "checks": [
+    "within current anatomical ROI",
+    "original sprite sheet alpha > 80 at region-translated coordinate",
+    "present in recorded lower contour",
+    "no lower opaque pixel within ROI column",
+    "idle text exact F0 JSON projection"
+  ],
+  "errors": [],
+  "inputSha256": {
+    "nonhero-contact-rois.json": "175c0384986079a3a7443bec25aeedfea19f171bf82d142008fde1a3880f9daa",
+    "short-sole-witnesses.json": "773ba9ef61bf837d52c07f870e1ceefe39f16bb889191e28da496acb005ade24",
+    "idle-short-lines.txt": "a7dde2d04dd7061b73d8f623eaa221b5abe37dd43603ae19afacb2d642a4218e"
+  },
+  "sourcePngSha256": {
+    "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-units-v1/unit-archer-v2.png": "11ced5ca50226cd168e44c4351c7b7d1a9841d7a2758433ef916fa5a4ed2389d",
+    "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-c01-v1/unit-knight-v1.png": "f96803bdf4c3062bdb0240164a53cdff16be413b245c9c0a1955a2aabca61c8b",
+    "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-units-v1/unit-swordsman-gait-v3.png": "90128bde1240f9387e725e2f9b0e63015549abadaf0a8ab9dad0ae010ebc0f79",
+    "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-units-v1/unit-legion-shield-gait-v2.png": "50e8872818394cdfb76f0dc902866f5877288e8389f8d32d3db288b58c8cbd44",
+    "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-units-v1/unit-banner-guard-clean-v3.png": "dd0148586b236a385a4e6f9f6b68c32be4c0db1cd94fd6d000bf5df87b3508bf",
+    "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-units-v1/unit-battle-mage-clean-v3.png": "6440a21dcea27994ba2d3e2957e776e659893c357b96e91ccb5ddf8fe0a6bcfc",
+    "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-units-v1/unit-gravekeeper-gait-v2.png": "fc56281ead32b4ffd70681bdae60a34da721810f2068f7bfab5bc8db63bf8691",
+    "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/runtime-approved-v5/mission-unit/mission-bridge-laborer@2x.png": "97e88d5832bd6bfceb206986d9b1cf287c489ac87ebe15704ec2e5e302115dd1",
+    "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/runtime-approved-v5/mission-unit/mission-refugee-adult@2x.png": "987f85ee8cf92fce82b5fe767c54dd1c5adb97ffb2d978ab4595b7921b0fecc5",
+    "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/runtime-approved-v5/combat-unit/unit-ballista@2x.png": "78a24015d823536e9f8151ea7fab3aa03ce9e3add3506458c743af821c911b36"
+  },
+  "details": [
+    {
+      "identity": "C01-FFV1-UNIT-ARCHER",
+      "frame": 0,
+      "anatomy": "left_boot",
+      "roi": [
+        125,
+        538,
+        202,
+        575
+      ],
+      "pointCount": 31,
+      "minAlpha": 82
+    },
+    {
+      "identity": "C01-FFV1-UNIT-ARCHER",
+      "frame": 0,
+      "anatomy": "right_boot",
+      "roi": [
+        280,
+        526,
+        385,
+        560
+      ],
+      "pointCount": 34,
+      "minAlpha": 81
+    },
+    {
+      "identity": "C01-FFV1-UNIT-ARCHER",
+      "frame": 1,
+      "anatomy": "front_heel_candidate",
+      "roi": [
+        300,
+        550,
+        335,
+        624
+      ],
+      "pointCount": 19,
+      "minAlpha": 85
+    },
+    {
+      "identity": "C01-FFV1-UNIT-ARCHER",
+      "frame": 2,
+      "anatomy": "left_boot",
+      "roi": [
+        112,
+        515,
+        186,
+        588
+      ],
+      "pointCount": 33,
+      "minAlpha": 89
+    },
+    {
+      "identity": "C01-FFV1-UNIT-ARCHER",
+      "frame": 2,
+      "anatomy": "right_boot",
+      "roi": [
+        330,
+        550,
+        418,
+        624
+      ],
+      "pointCount": 32,
+      "minAlpha": 83
+    },
+    {
+      "identity": "C01-FFV1-UNIT-ARCHER",
+      "frame": 3,
+      "anatomy": "front_boot",
+      "roi": [
+        105,
+        571,
+        182,
+        606
+      ],
+      "pointCount": 36,
+      "minAlpha": 89
+    },
+    {
+      "identity": "C01-FFV1-UNIT-KNIGHT",
+      "frame": 0,
+      "anatomy": "left_boot",
+      "roi": [
+        92,
+        501,
+        177,
+        537
+      ],
+      "pointCount": 39,
+      "minAlpha": 84
+    },
+    {
+      "identity": "C01-FFV1-UNIT-KNIGHT",
+      "frame": 0,
+      "anatomy": "right_boot",
+      "roi": [
+        290,
+        543,
+        399,
+        581
+      ],
+      "pointCount": 40,
+      "minAlpha": 81
+    },
+    {
+      "identity": "C01-FFV1-UNIT-KNIGHT",
+      "frame": 1,
+      "anatomy": "front_heel_candidate",
+      "roi": [
+        325,
+        565,
+        360,
+        600
+      ],
+      "pointCount": 6,
+      "minAlpha": 104
+    },
+    {
+      "identity": "C01-FFV1-UNIT-KNIGHT",
+      "frame": 2,
+      "anatomy": "left_boot",
+      "roi": [
+        75,
+        516,
+        150,
+        551
+      ],
+      "pointCount": 41,
+      "minAlpha": 84
+    },
+    {
+      "identity": "C01-FFV1-UNIT-KNIGHT",
+      "frame": 2,
+      "anatomy": "right_boot",
+      "roi": [
+        347,
+        548,
+        456,
+        585
+      ],
+      "pointCount": 45,
+      "minAlpha": 85
+    },
+    {
+      "identity": "C01-FFV1-UNIT-KNIGHT",
+      "frame": 3,
+      "anatomy": "front_boot",
+      "roi": [
+        17,
+        559,
+        111,
+        598
+      ],
+      "pointCount": 46,
+      "minAlpha": 84
+    },
+    {
+      "identity": "C01-FFV1-UNIT-SWORDSMAN",
+      "frame": 0,
+      "anatomy": "left_boot",
+      "roi": [
+        107,
+        537,
+        194,
+        577
+      ],
+      "pointCount": 36,
+      "minAlpha": 90
+    },
+    {
+      "identity": "C01-FFV1-UNIT-SWORDSMAN",
+      "frame": 0,
+      "anatomy": "right_boot",
+      "roi": [
+        292,
+        530,
+        397,
+        569
+      ],
+      "pointCount": 39,
+      "minAlpha": 87
+    },
+    {
+      "identity": "C01-FFV1-UNIT-SWORDSMAN",
+      "frame": 1,
+      "anatomy": "front_heel_candidate",
+      "roi": [
+        323,
+        554,
+        351,
+        594
+      ],
+      "pointCount": 22,
+      "minAlpha": 82
+    },
+    {
+      "identity": "C01-FFV1-UNIT-SWORDSMAN",
+      "frame": 2,
+      "anatomy": "left_boot",
+      "roi": [
+        75,
+        515,
+        156,
+        595
+      ],
+      "pointCount": 35,
+      "minAlpha": 84
+    },
+    {
+      "identity": "C01-FFV1-UNIT-SWORDSMAN",
+      "frame": 2,
+      "anatomy": "right_boot",
+      "roi": [
+        335,
+        514,
+        440,
+        591
+      ],
+      "pointCount": 43,
+      "minAlpha": 86
+    },
+    {
+      "identity": "C01-FFV1-UNIT-SWORDSMAN",
+      "frame": 3,
+      "anatomy": "front_boot",
+      "roi": [
+        31,
+        553,
+        124,
+        601
+      ],
+      "pointCount": 44,
+      "minAlpha": 86
+    },
+    {
+      "identity": "C01-FFV1-UNIT-LEGION-SHIELD",
+      "frame": 0,
+      "anatomy": "left_boot",
+      "roi": [
+        149,
+        519,
+        214,
+        586
+      ],
+      "pointCount": 40,
+      "minAlpha": 81
+    },
+    {
+      "identity": "C01-FFV1-UNIT-LEGION-SHIELD",
+      "frame": 0,
+      "anatomy": "right_boot",
+      "roi": [
+        291,
+        517,
+        367,
+        581
+      ],
+      "pointCount": 36,
+      "minAlpha": 82
+    },
+    {
+      "identity": "C01-FFV1-UNIT-LEGION-SHIELD",
+      "frame": 1,
+      "anatomy": "front_heel_candidate",
+      "roi": [
+        274,
+        542,
+        306,
+        606
+      ],
+      "pointCount": 29,
+      "minAlpha": 83
+    },
+    {
+      "identity": "C01-FFV1-UNIT-LEGION-SHIELD",
+      "frame": 2,
+      "anatomy": "left_boot",
+      "roi": [
+        100,
+        526,
+        174,
+        555
+      ],
+      "pointCount": 38,
+      "minAlpha": 82
+    },
+    {
+      "identity": "C01-FFV1-UNIT-LEGION-SHIELD",
+      "frame": 2,
+      "anatomy": "right_boot",
+      "roi": [
+        321,
+        516,
+        399,
+        549
+      ],
+      "pointCount": 40,
+      "minAlpha": 81
+    },
+    {
+      "identity": "C01-FFV1-UNIT-LEGION-SHIELD",
+      "frame": 3,
+      "anatomy": "front_boot",
+      "roi": [
+        84,
+        542,
+        149,
+        570
+      ],
+      "pointCount": 36,
+      "minAlpha": 89
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BANNER-GUARD",
+      "frame": 0,
+      "anatomy": "left_boot",
+      "roi": [
+        153,
+        540,
+        215,
+        578
+      ],
+      "pointCount": 33,
+      "minAlpha": 90
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BANNER-GUARD",
+      "frame": 0,
+      "anatomy": "right_boot",
+      "roi": [
+        268,
+        521,
+        343,
+        590
+      ],
+      "pointCount": 29,
+      "minAlpha": 84
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BANNER-GUARD",
+      "frame": 1,
+      "anatomy": "front_heel_candidate",
+      "roi": [
+        271,
+        554,
+        301,
+        588
+      ],
+      "pointCount": 18,
+      "minAlpha": 82
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BANNER-GUARD",
+      "frame": 2,
+      "anatomy": "left_boot",
+      "roi": [
+        92,
+        510,
+        155,
+        541
+      ],
+      "pointCount": 34,
+      "minAlpha": 81
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BANNER-GUARD",
+      "frame": 2,
+      "anatomy": "right_boot",
+      "roi": [
+        254,
+        551,
+        332,
+        580
+      ],
+      "pointCount": 31,
+      "minAlpha": 85
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BANNER-GUARD",
+      "frame": 3,
+      "anatomy": "front_boot",
+      "roi": [
+        94,
+        551,
+        158,
+        587
+      ],
+      "pointCount": 35,
+      "minAlpha": 84
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BATTLE-MAGE",
+      "frame": 0,
+      "anatomy": "left_boot",
+      "roi": [
+        151,
+        532,
+        220,
+        564
+      ],
+      "pointCount": 30,
+      "minAlpha": 84
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BATTLE-MAGE",
+      "frame": 0,
+      "anatomy": "right_boot",
+      "roi": [
+        295,
+        507,
+        390,
+        539
+      ],
+      "pointCount": 36,
+      "minAlpha": 82
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BATTLE-MAGE",
+      "frame": 1,
+      "anatomy": "front_heel_candidate",
+      "roi": [
+        259,
+        544,
+        291,
+        568
+      ],
+      "pointCount": 24,
+      "minAlpha": 82
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BATTLE-MAGE",
+      "frame": 2,
+      "anatomy": "left_boot",
+      "roi": [
+        111,
+        493,
+        181,
+        570
+      ],
+      "pointCount": 30,
+      "minAlpha": 86
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BATTLE-MAGE",
+      "frame": 2,
+      "anatomy": "right_boot",
+      "roi": [
+        344,
+        523,
+        430,
+        559
+      ],
+      "pointCount": 33,
+      "minAlpha": 86
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BATTLE-MAGE",
+      "frame": 3,
+      "anatomy": "front_boot",
+      "roi": [
+        59,
+        540,
+        132,
+        575
+      ],
+      "pointCount": 33,
+      "minAlpha": 83
+    },
+    {
+      "identity": "C01-FFV1-UNIT-GRAVEKEEPER",
+      "frame": 0,
+      "anatomy": "left_boot",
+      "roi": [
+        194,
+        530,
+        272,
+        561
+      ],
+      "pointCount": 42,
+      "minAlpha": 100
+    },
+    {
+      "identity": "C01-FFV1-UNIT-GRAVEKEEPER",
+      "frame": 0,
+      "anatomy": "right_boot",
+      "roi": [
+        306,
+        525,
+        409,
+        554
+      ],
+      "pointCount": 37,
+      "minAlpha": 81
+    },
+    {
+      "identity": "C01-FFV1-UNIT-GRAVEKEEPER",
+      "frame": 1,
+      "anatomy": "front_heel_candidate",
+      "roi": [
+        303,
+        553,
+        331,
+        584
+      ],
+      "pointCount": 19,
+      "minAlpha": 102
+    },
+    {
+      "identity": "C01-FFV1-UNIT-GRAVEKEEPER",
+      "frame": 2,
+      "anatomy": "left_boot",
+      "roi": [
+        176,
+        528,
+        242,
+        563
+      ],
+      "pointCount": 37,
+      "minAlpha": 86
+    },
+    {
+      "identity": "C01-FFV1-UNIT-GRAVEKEEPER",
+      "frame": 2,
+      "anatomy": "right_boot",
+      "roi": [
+        305,
+        525,
+        408,
+        561
+      ],
+      "pointCount": 39,
+      "minAlpha": 83
+    },
+    {
+      "identity": "C01-FFV1-UNIT-GRAVEKEEPER",
+      "frame": 3,
+      "anatomy": "front_boot",
+      "roi": [
+        163,
+        549,
+        246,
+        590
+      ],
+      "pointCount": 42,
+      "minAlpha": 81
+    },
+    {
+      "identity": "C01-FFV1-MISSION-BRIDGE-LABORER",
+      "frame": 0,
+      "anatomy": "left_boot",
+      "roi": [
+        63,
+        91,
+        85,
+        101
+      ],
+      "pointCount": 21,
+      "minAlpha": 84
+    },
+    {
+      "identity": "C01-FFV1-MISSION-BRIDGE-LABORER",
+      "frame": 0,
+      "anatomy": "right_boot",
+      "roi": [
+        88,
+        90,
+        118,
+        101
+      ],
+      "pointCount": 17,
+      "minAlpha": 102
+    },
+    {
+      "identity": "C01-FFV1-MISSION-BRIDGE-LABORER",
+      "frame": 1,
+      "anatomy": "rear_boot_candidate",
+      "roi": [
+        66,
+        88,
+        88,
+        100
+      ],
+      "pointCount": 14,
+      "minAlpha": 103
+    },
+    {
+      "identity": "C01-FFV1-MISSION-BRIDGE-LABORER",
+      "frame": 1,
+      "anatomy": "front_heel_candidate",
+      "roi": [
+        96,
+        94,
+        104,
+        102
+      ],
+      "pointCount": 7,
+      "minAlpha": 83
+    },
+    {
+      "identity": "C01-FFV1-MISSION-BRIDGE-LABORER",
+      "frame": 2,
+      "anatomy": "left_boot",
+      "roi": [
+        62,
+        90,
+        83,
+        100
+      ],
+      "pointCount": 18,
+      "minAlpha": 109
+    },
+    {
+      "identity": "C01-FFV1-MISSION-BRIDGE-LABORER",
+      "frame": 2,
+      "anatomy": "right_boot",
+      "roi": [
+        90,
+        89,
+        121,
+        100
+      ],
+      "pointCount": 16,
+      "minAlpha": 87
+    },
+    {
+      "identity": "C01-FFV1-MISSION-BRIDGE-LABORER",
+      "frame": 3,
+      "anatomy": "rear_boot_candidate",
+      "roi": [
+        64,
+        88,
+        85,
+        100
+      ],
+      "pointCount": 13,
+      "minAlpha": 91
+    },
+    {
+      "identity": "C01-FFV1-MISSION-BRIDGE-LABORER",
+      "frame": 3,
+      "anatomy": "front_heel_candidate",
+      "roi": [
+        98,
+        94,
+        106,
+        102
+      ],
+      "pointCount": 9,
+      "minAlpha": 83
+    },
+    {
+      "identity": "C01-FFV1-MISSION-REFUGEE-ADULT",
+      "frame": 0,
+      "anatomy": "left_boot",
+      "roi": [
+        71,
+        92,
+        92,
+        103
+      ],
+      "pointCount": 19,
+      "minAlpha": 83
+    },
+    {
+      "identity": "C01-FFV1-MISSION-REFUGEE-ADULT",
+      "frame": 0,
+      "anatomy": "right_boot",
+      "roi": [
+        93,
+        91,
+        122,
+        102
+      ],
+      "pointCount": 25,
+      "minAlpha": 120
+    },
+    {
+      "identity": "C01-FFV1-MISSION-REFUGEE-ADULT",
+      "frame": 1,
+      "anatomy": "rear_boot",
+      "roi": [
+        73,
+        93,
+        96,
+        103
+      ],
+      "pointCount": 17,
+      "minAlpha": 83
+    },
+    {
+      "identity": "C01-FFV1-MISSION-REFUGEE-ADULT",
+      "frame": 1,
+      "anatomy": "front_heel_candidate",
+      "roi": [
+        102,
+        95,
+        108,
+        104
+      ],
+      "pointCount": 7,
+      "minAlpha": 89
+    },
+    {
+      "identity": "C01-FFV1-MISSION-REFUGEE-ADULT",
+      "frame": 2,
+      "anatomy": "left_boot",
+      "roi": [
+        71,
+        93,
+        92,
+        104
+      ],
+      "pointCount": 17,
+      "minAlpha": 102
+    },
+    {
+      "identity": "C01-FFV1-MISSION-REFUGEE-ADULT",
+      "frame": 2,
+      "anatomy": "right_boot",
+      "roi": [
+        94,
+        91,
+        123,
+        103
+      ],
+      "pointCount": 24,
+      "minAlpha": 105
+    },
+    {
+      "identity": "C01-FFV1-MISSION-REFUGEE-ADULT",
+      "frame": 3,
+      "anatomy": "rear_boot_candidate",
+      "roi": [
+        70,
+        92,
+        87,
+        103
+      ],
+      "pointCount": 11,
+      "minAlpha": 85
+    },
+    {
+      "identity": "C01-FFV1-MISSION-REFUGEE-ADULT",
+      "frame": 3,
+      "anatomy": "front_boot",
+      "roi": [
+        94,
+        92,
+        123,
+        104
+      ],
+      "pointCount": 21,
+      "minAlpha": 90
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BALLISTA",
+      "frame": 0,
+      "anatomy": "operator_left_boot",
+      "roi": [
+        20,
+        87,
+        42,
+        96
+      ],
+      "pointCount": 19,
+      "minAlpha": 103
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BALLISTA",
+      "frame": 0,
+      "anatomy": "left_wheel",
+      "roi": [
+        59,
+        94,
+        74,
+        103
+      ],
+      "pointCount": 13,
+      "minAlpha": 127
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BALLISTA",
+      "frame": 0,
+      "anatomy": "front_wheel",
+      "roi": [
+        102,
+        104,
+        119,
+        113
+      ],
+      "pointCount": 13,
+      "minAlpha": 99
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BALLISTA",
+      "frame": 0,
+      "anatomy": "far_wheel",
+      "roi": [
+        148,
+        91,
+        165,
+        102
+      ],
+      "pointCount": 10,
+      "minAlpha": 83
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BALLISTA",
+      "frame": 1,
+      "anatomy": "operator_left_boot",
+      "roi": [
+        21,
+        83,
+        37,
+        93
+      ],
+      "pointCount": 13,
+      "minAlpha": 109
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BALLISTA",
+      "frame": 1,
+      "anatomy": "left_wheel",
+      "roi": [
+        61,
+        93,
+        77,
+        103
+      ],
+      "pointCount": 11,
+      "minAlpha": 155
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BALLISTA",
+      "frame": 1,
+      "anatomy": "front_wheel",
+      "roi": [
+        103,
+        103,
+        121,
+        113
+      ],
+      "pointCount": 13,
+      "minAlpha": 91
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BALLISTA",
+      "frame": 1,
+      "anatomy": "far_wheel",
+      "roi": [
+        149,
+        91,
+        165,
+        102
+      ],
+      "pointCount": 9,
+      "minAlpha": 100
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BALLISTA",
+      "frame": 2,
+      "anatomy": "operator_left_boot",
+      "roi": [
+        20,
+        87,
+        42,
+        96
+      ],
+      "pointCount": 19,
+      "minAlpha": 84
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BALLISTA",
+      "frame": 2,
+      "anatomy": "left_wheel",
+      "roi": [
+        59,
+        94,
+        74,
+        103
+      ],
+      "pointCount": 13,
+      "minAlpha": 109
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BALLISTA",
+      "frame": 2,
+      "anatomy": "front_wheel",
+      "roi": [
+        102,
+        104,
+        119,
+        113
+      ],
+      "pointCount": 14,
+      "minAlpha": 83
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BALLISTA",
+      "frame": 2,
+      "anatomy": "far_wheel",
+      "roi": [
+        148,
+        91,
+        165,
+        102
+      ],
+      "pointCount": 10,
+      "minAlpha": 82
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BALLISTA",
+      "frame": 3,
+      "anatomy": "operator_left_boot",
+      "roi": [
+        21,
+        87,
+        38,
+        96
+      ],
+      "pointCount": 12,
+      "minAlpha": 114
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BALLISTA",
+      "frame": 3,
+      "anatomy": "operator_right_boot",
+      "roi": [
+        41,
+        94,
+        61,
+        103
+      ],
+      "pointCount": 3,
+      "minAlpha": 191
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BALLISTA",
+      "frame": 3,
+      "anatomy": "left_wheel",
+      "roi": [
+        62,
+        96,
+        78,
+        105
+      ],
+      "pointCount": 10,
+      "minAlpha": 87
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BALLISTA",
+      "frame": 3,
+      "anatomy": "front_wheel",
+      "roi": [
+        103,
+        104,
+        121,
+        114
+      ],
+      "pointCount": 13,
+      "minAlpha": 111
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BALLISTA",
+      "frame": 3,
+      "anatomy": "far_wheel",
+      "roi": [
+        149,
+        91,
+        165,
+        103
+      ],
+      "pointCount": 9,
+      "minAlpha": 84
+    }
+  ]
+}
