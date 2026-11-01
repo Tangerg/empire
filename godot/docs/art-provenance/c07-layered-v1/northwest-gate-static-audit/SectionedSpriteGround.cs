@@ -22,7 +22,7 @@ public partial class SectionedSpriteGround : BoardGroundView
         var sampler = new Sprite2D { Texture = texture, Centered = false, Visible = false }; AddChild(sampler);
         float scale = geometry["scale"]!.GetValue<float>(); var translation = Pair(geometry["translation"]!);
         var target = geometry["selectionCell"]!; selection = new(target[0]!.GetValue<int>(),target[1]!.GetValue<int>());
-        sites = ground.Sites.Append(new GroundSite(geometry["siteId"]!.GetValue<string>(),selection,true)).ToArray();
+        sites = geometry["ownsSite"]?.GetValue<bool>() == false ? ground.Sites : ground.Sites.Append(new GroundSite(geometry["siteId"]!.GetValue<string>(),selection,true)).ToArray();
         var prefix=geometry["namePrefix"]!.GetValue<string>();
         var pointer = geometry["pointerSourcePolygon"]!.AsArray().Select(p=>Pair(p!)).ToArray();
         foreach(var section in geometry["sections"]!.AsArray().OfType<JsonObject>())

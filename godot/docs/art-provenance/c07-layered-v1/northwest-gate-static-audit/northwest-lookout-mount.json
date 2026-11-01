@@ -1,0 +1,96 @@
+{
+  "textureResourcePath": "res://assets/native/c07-layered-v1/northwest-gate-v1-stone-candidate.png",
+  "namePrefix": "NWLookoutMount",
+  "supportLine": [
+    [
+      74,
+      164
+    ],
+    [
+      115,
+      164
+    ]
+  ],
+  "members": [
+    {
+      "id": "left-mount-face",
+      "polygon": [
+        [
+          78.3,
+          74.0
+        ],
+        [
+          96.6,
+          81.9
+        ],
+        [
+          92.5,
+          91.4
+        ],
+        [
+          75.8,
+          83.8
+        ]
+      ],
+      "uv": [
+        [
+          1080,
+          490
+        ],
+        [
+          1160,
+          490
+        ],
+        [
+          1160,
+          560
+        ],
+        [
+          1080,
+          560
+        ]
+      ],
+      "tint": "c5bdad"
+    },
+    {
+      "id": "right-mount-face",
+      "polygon": [
+        [
+          96.6,
+          81.9
+        ],
+        [
+          113.5,
+          75.5
+        ],
+        [
+          109.2,
+          85.6
+        ],
+        [
+          92.5,
+          91.4
+        ]
+      ],
+      "uv": [
+        [
+          1080,
+          490
+        ],
+        [
+          1160,
+          490
+        ],
+        [
+          1160,
+          560
+        ],
+        [
+          1080,
+          560
+        ]
+      ],
+      "tint": "ffffff"
+    }
+  ]
+}

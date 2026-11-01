@@ -1,0 +1,54 @@
+{
+  "scope": "Independent existing lookout geometry translated to original peak; fixed original holes/posts retained. Timber roof grounded by tower base, not floor height. New mount interface under review.",
+  "siteId": "northwest-gate",
+  "namePrefix": "NWLookout",
+  "textureResourcePath": "res://assets/native/c07-layered-v1/northwest-gate-v1-stone-candidate.png",
+  "scale": 0.14505957,
+  "translation": [
+    58.84933426377015,
+    -8.351086193770172
+  ],
+  "selectionCell": [
+    11,
+    11
+  ],
+  "pointerSourcePolygon": [],
+  "sections": [
+    {
+      "id": "open-wood-lookout",
+      "polygonPixels": [
+        [
+          130,
+          330
+        ],
+        [
+          380,
+          330
+        ],
+        [
+          380,
+          578
+        ],
+        [
+          260,
+          625
+        ],
+        [
+          130,
+          570
+        ]
+      ],
+      "supportLinePixels": [
+        [
+          130,
+          1160
+        ],
+        [
+          380,
+          1160
+        ]
+      ]
+    }
+  ],
+  "ownsSite": false
+}
