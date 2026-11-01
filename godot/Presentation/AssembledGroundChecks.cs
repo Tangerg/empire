@@ -298,6 +298,69 @@ public partial class AssembledGroundChecks : Node
             catch (Exception error) when (error is InvalidOperationException or ArgumentException) { rejected = true; }
             Require(rejected && IsInstanceValid(ground) && IsInstanceValid(house), reason);
         }
+        using var solidImage = Image.CreateEmpty(64, 96, false, Image.Format.Rgb8);
+        solidImage.Fill(Colors.White);
+        using var solidTexture = ImageTexture.CreateFromImage(solidImage);
+        Require(solidImage.DetectAlpha() == Image.AlphaMode.None, "Opaque material fixture must really be RGB without alpha.");
+        catalog.Objects["house"] = PointerAsset(null);
+        textures["house"] = solidTexture;
+        var solidSpriteRejected = false;
+        try { AssembledGroundView.Create(Document(Site(sites[0])), ground, catalog, textures, map, engine.Catalog).Free(); }
+        catch (InvalidOperationException error) when (error.Message.Contains("must have transparency", StringComparison.Ordinal))
+        { solidSpriteRejected = true; }
+        Require(solidSpriteRejected && IsInstanceValid(solidTexture), "Full opaque sprite must still reject at the transparency contract without disposing borrowed material.");
+        SceneObjectAsset SurfaceAsset(string coverage) => new()
+        {
+            ResourcePath = "fixture-independent.png", PixelSize = [64, 96], AnchorPixels = [32, 88],
+            ContactShadowRadiiPixels = null,
+            SurfaceGeometryPath = $"res://data/scene-test-fixtures/{coverage}-material-surface.json"
+        };
+        var materialBoard = new BoardView { AnimationsEnabled = false };
+        AddChild(materialBoard);
+        using var nativeImage = Image.CreateEmpty(64, 96, false, Image.Format.Rgba8);
+        nativeImage.Fill(Colors.White); nativeImage.SetPixel(16, 40, Colors.Transparent);
+        using var nativeTexture = ImageTexture.CreateFromImage(nativeImage);
+        try
+        {
+            var binding = Document(Site(sites[0]));
+            materialBoard.Configure(new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, binding.CreatePlane), level, scene);
+            var empty = state.DeepClone().AsObject(); empty["units"] = new JsonArray();
+            foreach (var coverage in new[] { "opaque", "native-alpha" })
+            {
+                var material = coverage == "opaque" ? solidTexture : nativeTexture;
+                textures["house"] = material; catalog.Objects["house"] = SurfaceAsset(coverage);
+                AssembledGroundView? materialView = null;
+                GD.Print("RGB_SURFACE_MATERIAL_ACCEPTANCE_BEGIN " + coverage);
+                materialBoard.ConfigureGround((rules, _) => materialView = AssembledGroundView.Create(binding, ground, catalog, textures, map, rules.Content));
+                materialBoard.RenderState(empty);
+                Require(materialView!.DepthEntries.Count == 2 && materialView.Sites.Count == 1, "Two geometry surfaces must keep one canonical site.");
+                var entry = materialView.DepthEntries[0];
+                foreach (var surface in materialView.DepthEntries)
+                {
+                    var draw = surface.Node.GetChildren().OfType<Polygon2D>().Single();
+                    Require(draw.Texture == material && draw.Polygon.Length == 6 && draw.UV.Length == 6,
+                        "Draw must use the same compiled geometry and selected RGB/native-alpha material.");
+                }
+                Vector2 Global(float x, float y) => entry.Node.ToGlobal(new Vector2(x, y) - new Vector2(32, 88));
+                var target = TacticalHit.Object(new(sites[0].X, sites[0].Y));
+                Require(entry.Visual!.Covers(Global(15.25f, 42.25f)) && materialBoard.Pick(materialBoard.ToLocal(Global(15.25f, 42.25f))) == target,
+                    "RGB/native material interior must render and pick its explicit site.");
+                Require(materialView.DepthEntries.All(e => !e.Visual!.Covers(Global(32.25f, 40.25f)))
+                    && materialBoard.Pick(materialBoard.ToLocal(Global(32.25f, 40.25f))) != target,
+                    "Opaque RGB texture must not fill the actual geometric gap.");
+                var nativeHole = Global(16.25f, 40.25f);
+                Require(entry.Visual.Covers(nativeHole) == (coverage == "opaque")
+                    && (materialBoard.Pick(materialBoard.ToLocal(nativeHole)) == target) == (coverage == "opaque"),
+                    "Native-alpha mapped hole must remain transparent while solid RGB material covers its polygon.");
+                Require(materialBoard.RenderingIssueCount == 0, "Material fixture must not hide rendering issues.");
+            }
+            Require(EcmaJson.Stringify(state) == before, "Material coverage cannot mutate gameplay state.");
+        }
+        finally
+        {
+            RemoveChild(materialBoard); materialBoard.Free();
+            textures["house"] = house; catalog.Objects["house"] = PointerAsset(null);
+        }
         foreach (var invalidPolygon in new double[][][]
         {
             [], [[0, 0], [1, 1]], [[1, 1], [1, 1], [2, 3]],

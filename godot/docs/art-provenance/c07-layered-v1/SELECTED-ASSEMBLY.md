@@ -15,7 +15,7 @@ The initial merge retained the barracks object's five-instance order, then the n
 
 ## What this is and is not
 
-At this checkpoint:16independent instances,5independently owned building/gate sites and1393depth entries. The1393includes the existing276-strip barracks body and178-strip granary body plus188-strip council hall and188-surface southeast stone gate plus22-surface independent wooden leaf and174-surface southwest stone gate with20-surface independent left leaf; it is not a performance pass. The5sites are **not the total interactive sites of C07**. Remaining canonical sites still use legacy default building placeholders. Walls, other foundations, yard/stock, gates and scenery remain incomplete.
+At this checkpoint:22independent instances,5independently owned building/gate sites and1698depth entries. The1698includes the existing276-strip barracks body and178-strip granary body plus188-strip council hall and188-surface southeast stone gate plus22-surface independent wooden leaf and174-surface southwest stone gate with20-surface independent left leaf and305-surface six-component granary shed; it is not a performance pass. The5sites are **not the total interactive sites of C07**. Remaining canonical sites still use legacy default building placeholders. Walls, other foundations, yard/stock, gates and scenery remain incomplete.
 
 Official `c01-07.json` is unchanged (55painted groups/108parts), and selected assembly remains `runtimeReady=false`. Neither clean-ground visibility nor default placeholders prove full foundation/route/art correctness. Do not bind it to normal campaign entry until selected/full-scene responsibility, material/contact integration, input/cue/camera and measured performance acceptance are complete. C06/C07 real gameplay remains separately paused; all present checks are pure static/display-clone tests.
 
@@ -26,3 +26,5 @@ Council hall integration: [selected-council-audit](selected-council-audit/README
 Southeast stone formal integration: [southeast-stone-surface-audit](southeast-stone-surface-audit/README.md); independent leaf joined this same assembly: [southeast-leaf-surface-audit](southeast-leaf-surface-audit/README.md).
 
 Southwest stone formal integration: [southwest-stone-surface-audit](southwest-stone-surface-audit/README.md); its independent left leaf is now included: [southwest-leaf-surface-audit](southwest-leaf-surface-audit/README.md).
+
+Granary shed formal integration: [granary-shed-surface-audit](granary-shed-surface-audit/README.md); per-post contacts, original material mapping, strict RGB/sprite coverage boundary and measured compiler cost. Major bale stock and column enclosure remain next.

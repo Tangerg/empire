@@ -30,7 +30,47 @@ internal sealed class CompiledSceneSurface
         _slices = slices;
     }
 
+    internal sealed class Material : IDisposable
+    {
+        private readonly Image _pixels;
+        internal Texture2D Texture { get; }
+        internal bool IsOpaque { get; }
+        internal int Width => _pixels.GetWidth();
+        internal int Height => _pixels.GetHeight();
+        internal Material(Texture2D texture)
+        {
+            Texture = texture;
+            _pixels = texture.GetImage() ?? throw new InvalidOperationException("Surface texture cannot supply native pixels.");
+            IsOpaque = _pixels.DetectAlpha() == Image.AlphaMode.None;
+        }
+        internal float Alpha(int x, int y) => _pixels.GetPixel(x, y).A;
+        public void Dispose() => _pixels.Dispose();
+    }
+
+    internal sealed class Materials : IDisposable
+    {
+        private readonly Dictionary<Texture2D, Material> _materials = new();
+        internal Material Get(Texture2D texture)
+        {
+            if (!_materials.TryGetValue(texture, out var material))
+                _materials.Add(texture, material = new Material(texture));
+            return material;
+        }
+        public void Dispose()
+        {
+            foreach (var material in _materials.Values)
+                material.Dispose();
+            _materials.Clear();
+        }
+    }
+
     internal static CompiledSceneSurface Compile(SceneSurfaceDocument document, Texture2D texture, string identity)
+    {
+        using var materials = new Materials();
+        return Compile(document, materials.Get(texture), identity);
+    }
+
+    internal static CompiledSceneSurface Compile(SceneSurfaceDocument document, Material material, string identity)
     {
         if (document.Schema != 1 || document.Supports is not { Length: > 0 } || document.Members is not { Length: > 0 })
             throw new InvalidOperationException($"Invalid authored surface document: {identity}.");
@@ -45,9 +85,6 @@ internal sealed class CompiledSceneSurface
         var names = new HashSet<string>(StringComparer.Ordinal);
         var triangles = new List<(string Support, Primitive Primitive)>();
         var primitiveKeys = new HashSet<string>(StringComparer.Ordinal);
-        using var image = texture.GetImage();
-        if (image is null)
-            throw new InvalidOperationException($"Surface texture cannot supply native pixels: {identity}.");
         foreach (var member in document.Members)
         {
             if (member is null || string.IsNullOrWhiteSpace(member.Id) || !names.Add(member.Id)
@@ -65,8 +102,8 @@ internal sealed class CompiledSceneSurface
             // Opaque subdomains require actual texel endpoints for exhaustive material validation.
             var nativeAlpha = member.Coverage == "native-alpha";
             if (uv.Any(p => p.X < 0 || p.Y < 0 || (nativeAlpha
-                    ? p.X > image.GetWidth() || p.Y > image.GetHeight()
-                    : p.X >= image.GetWidth() || p.Y >= image.GetHeight())))
+                    ? p.X > material.Width || p.Y > material.Height
+                    : p.X >= material.Width || p.Y >= material.Height)))
                 throw new InvalidOperationException($"Surface UV lies outside its material: {identity}/{member.Id}.");
             var indices = Geometry2D.TriangulatePolygon(polygon);
             for (var index = 0; index < indices.Length; index += 3)
@@ -78,8 +115,8 @@ internal sealed class CompiledSceneSurface
                     FormattableString.Invariant($"{point.X:R},{point.Y:R}")).Order(StringComparer.Ordinal));
                 if (!primitiveKeys.Add(key))
                     throw new InvalidOperationException($"Duplicate surface primitive: {identity}/{member.Id}.");
-                if (member.Coverage == "opaque")
-                    ValidateOpaque(image, texels, identity + "/" + member.Id);
+                if (member.Coverage == "opaque" && !material.IsOpaque)
+                    ValidateOpaque(material, texels, identity + "/" + member.Id);
                 triangles.Add((member.SupportId, new Primitive(points, texels, tint, member.Coverage == "native-alpha",
                     points[0], points[1], points[2], texels[0], texels[1], texels[2])));
             }
@@ -98,7 +135,7 @@ internal sealed class CompiledSceneSurface
                 throw new InvalidOperationException($"Physical surface contact lies outside its owned geometry: {identity}/{supportId}.");
             slices.Add(new(support, owned));
         }
-        return new(texture, slices.ToArray());
+        return new(material.Texture, slices.ToArray());
     }
 
     private static Vector2 ReadPoint(double[]? point, string identity)
@@ -108,12 +145,12 @@ internal sealed class CompiledSceneSurface
         return RasterResources.Pair(point, identity);
     }
 
-    private static void ValidateOpaque(Image image, Vector2[] uv, string identity)
+    private static void ValidateOpaque(Material material, Vector2[] uv, string identity)
     {
         void Check(Vector2 point)
         {
-            if (image.GetPixel((int)point.X, (int)point.Y).A < .96f)
-                throw new InvalidOperationException($"Opaque surface material includes transparency: {identity} at texel ({(int)point.X}, {(int)point.Y}), alpha={image.GetPixel((int)point.X, (int)point.Y).A}.");
+            if (material.Alpha((int)point.X, (int)point.Y) < .96f)
+                throw new InvalidOperationException($"Opaque surface material includes transparency: {identity} at texel ({(int)point.X}, {(int)point.Y}), alpha={material.Alpha((int)point.X, (int)point.Y)}.");
         }
         foreach (var point in uv)
             Check(point);

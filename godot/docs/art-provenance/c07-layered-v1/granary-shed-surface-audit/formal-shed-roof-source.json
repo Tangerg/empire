@@ -1,0 +1,71 @@
+{
+  "namePrefix": "GranaryShedRoofColumn",
+  "textureResourcePath": "res://assets/native/c07-layered-v1/orange-clay-tile-material-v1.png",
+  "members": [
+    {
+      "id": "continuous-clay-plane",
+      "polygon": [
+        [
+          300,
+          124
+        ],
+        [
+          382,
+          94
+        ],
+        [
+          431,
+          133
+        ],
+        [
+          357,
+          161
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          0
+        ],
+        [
+          1535,
+          0
+        ],
+        [
+          1535,
+          1023
+        ],
+        [
+          0,
+          1023
+        ]
+      ],
+      "tint": "cbbba7"
+    }
+  ],
+  "supportLine": [
+    [
+      299,
+      168.6
+    ],
+    [
+      301,
+      170
+    ],
+    [
+      361,
+      213
+    ],
+    [
+      431,
+      191
+    ],
+    [
+      434,
+      190.05
+    ]
+  ],
+  "scope": "Observed clay-face/eave landmarks, not rough wooden corner positions. Roof support envelope from actual left/near and new hidden right supports.",
+  "pointer": "pass-through",
+  "newSiteOwner": false
+}

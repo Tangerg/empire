@@ -1,0 +1,107 @@
+{
+  "schema": 1,
+  "supports": [
+    {
+      "id": "left",
+      "frontPixels": [
+        17.5,
+        88
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "right",
+      "frontPixels": [
+        47.5,
+        88
+      ],
+      "kind": "structural"
+    }
+  ],
+  "members": [
+    {
+      "id": "left",
+      "supportId": "left",
+      "polygonPixels": [
+        [
+          10,
+          10
+        ],
+        [
+          25,
+          10
+        ],
+        [
+          25,
+          80
+        ],
+        [
+          10,
+          80
+        ]
+      ],
+      "uvPixels": [
+        [
+          10,
+          10
+        ],
+        [
+          25,
+          10
+        ],
+        [
+          25,
+          80
+        ],
+        [
+          10,
+          80
+        ]
+      ],
+      "coverage": "native-alpha",
+      "tint": "#ffffff"
+    },
+    {
+      "id": "right",
+      "supportId": "right",
+      "polygonPixels": [
+        [
+          40,
+          10
+        ],
+        [
+          55,
+          10
+        ],
+        [
+          55,
+          80
+        ],
+        [
+          40,
+          80
+        ]
+      ],
+      "uvPixels": [
+        [
+          40,
+          10
+        ],
+        [
+          55,
+          10
+        ],
+        [
+          55,
+          80
+        ],
+        [
+          40,
+          80
+        ]
+      ],
+      "coverage": "native-alpha",
+      "tint": "#ffffff"
+    }
+  ]
+}

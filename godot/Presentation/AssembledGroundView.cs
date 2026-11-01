@@ -42,6 +42,7 @@ public partial class AssembledGroundView : BoardGroundView
         if (catalog.Schema != 1 || catalog.Objects is null || document.Objects is null)
             throw new InvalidOperationException("Independent scene objects require catalog schema 1 and explicit instances.");
         var geometry = new Dictionary<string, (Texture2D Texture, Vector2 Anchor, Vector2 Front, Vector2 ShadowRadii, Vector2[]? PointerPolygon, (Rect2 Region, Vector2 Front)[]? Strips, CompiledSceneSurface? Surfaces)>(StringComparer.Ordinal);
+        using var materials = new CompiledSceneSurface.Materials();
         foreach (var (id, asset) in catalog.Objects)
         {
             if (string.IsNullOrWhiteSpace(id) || asset is null || string.IsNullOrWhiteSpace(asset.ResourcePath)
@@ -49,8 +50,8 @@ public partial class AssembledGroundView : BoardGroundView
                 || !textures.TryGetValue(id, out var texture) || texture is AtlasTexture
                 || texture.GetSize() != new Vector2(asset.PixelSize[0], asset.PixelSize[1]) || ReferenceEquals(texture, ground))
                 throw new InvalidOperationException($"Independent scene asset must be a complete, correctly sized texture: {id}.");
-            using var image = texture.GetImage();
-            if (image is null || image.DetectAlpha() == Image.AlphaMode.None)
+            var material = materials.Get(texture);
+            if (asset.SurfaceGeometryPath is null && material.IsOpaque)
                 throw new InvalidOperationException($"Independent scene object must have transparency: {id}.");
             var radii = asset.ContactShadowRadiiPixels is { } shadow
                 ? RasterResources.Pair(shadow, id + " contact shadow radii") : Vector2.Zero;
@@ -71,7 +72,7 @@ public partial class AssembledGroundView : BoardGroundView
             if (asset.SurfaceGeometryPath is not null && (asset.DepthStrips is not null || asset.GroundFrontPixels is not null))
                 throw new InvalidOperationException($"Authored surfaces own contact and cannot also declare sprite front or strips: {id}.");
             var surfaces = asset.SurfaceGeometryPath is { } surfacePath
-                ? CompiledSceneSurface.Compile(PresentationJson.Load<SceneSurfaceDocument>(surfacePath), texture, id)
+                ? CompiledSceneSurface.Compile(PresentationJson.Load<SceneSurfaceDocument>(surfacePath), material, id)
                 : null;
             (Rect2 Region, Vector2 Front)[]? strips = null;
             if (asset.DepthStrips is { } sections)

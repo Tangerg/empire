@@ -1,0 +1,720 @@
+{
+  "scope": "UNBOUND left shed structural reconstruction. Original roof has no certified legal C07 actor overlap: not a reproduced roof gameplay bug. Original two feet and clay/wood edges retained; hidden posts explicitly new design; speculative back panel removed pending independent stock identity. Stock not part of this structural group.",
+  "components": [
+    {
+      "namePrefix": "GranaryShedRoofColumn",
+      "textureResourcePath": "res://assets/native/c07-layered-v1/orange-clay-tile-material-v1.png",
+      "members": [
+        {
+          "id": "continuous-clay-plane",
+          "polygon": [
+            [
+              300,
+              124
+            ],
+            [
+              382,
+              94
+            ],
+            [
+              431,
+              133
+            ],
+            [
+              357,
+              161
+            ]
+          ],
+          "uv": [
+            [
+              0.5,
+              0.5
+            ],
+            [
+              1534.5,
+              0.5
+            ],
+            [
+              1534.5,
+              1022.5
+            ],
+            [
+              0.5,
+              1022.5
+            ]
+          ],
+          "tint": "cbbba7"
+        }
+      ],
+      "supportLine": [
+        [
+          299,
+          168.6
+        ],
+        [
+          301,
+          170
+        ],
+        [
+          361,
+          213
+        ],
+        [
+          431,
+          191
+        ],
+        [
+          434,
+          190.05
+        ]
+      ],
+      "scope": "Observed clay-face/eave landmarks, not rough wooden corner positions. Roof support envelope from actual left/near and new hidden right supports.",
+      "pointer": "pass-through",
+      "newSiteOwner": false
+    },
+    {
+      "namePrefix": "GranaryShedFasciaColumn",
+      "textureResourcePath": "res://assets/native/c07-layered-v1/granary-main-v1-candidate.png",
+      "members": [
+        {
+          "id": "left-descending-eave",
+          "polygon": [
+            [
+              299,
+              124
+            ],
+            [
+              357,
+              160
+            ],
+            [
+              358,
+              164
+            ],
+            [
+              299,
+              128
+            ]
+          ],
+          "uv": [
+            [
+              143,
+              470
+            ],
+            [
+              158,
+              470
+            ],
+            [
+              158,
+              600
+            ],
+            [
+              143,
+              600
+            ]
+          ],
+          "tint": "9e927f"
+        },
+        {
+          "id": "front-long-eave",
+          "polygon": [
+            [
+              357,
+              160
+            ],
+            [
+              431,
+              132
+            ],
+            [
+              432,
+              136
+            ],
+            [
+              358,
+              164
+            ]
+          ],
+          "uv": [
+            [
+              143,
+              470
+            ],
+            [
+              158,
+              470
+            ],
+            [
+              158,
+              600
+            ],
+            [
+              143,
+              600
+            ]
+          ],
+          "tint": "a99b83"
+        },
+        {
+          "id": "rear-ridge-beam",
+          "polygon": [
+            [
+              299,
+              122
+            ],
+            [
+              382,
+              92
+            ],
+            [
+              384,
+              95
+            ],
+            [
+              300,
+              126
+            ]
+          ],
+          "uv": [
+            [
+              143,
+              470
+            ],
+            [
+              158,
+              470
+            ],
+            [
+              158,
+              600
+            ],
+            [
+              143,
+              600
+            ]
+          ],
+          "tint": "c4ac88"
+        },
+        {
+          "id": "far-side-edge",
+          "polygon": [
+            [
+              382,
+              93
+            ],
+            [
+              432,
+              132
+            ],
+            [
+              432,
+              135
+            ],
+            [
+              381,
+              96
+            ]
+          ],
+          "uv": [
+            [
+              143,
+              470
+            ],
+            [
+              158,
+              470
+            ],
+            [
+              158,
+              600
+            ],
+            [
+              143,
+              600
+            ]
+          ],
+          "tint": "a59881"
+        }
+      ],
+      "supportLine": [
+        [
+          299,
+          168.6
+        ],
+        [
+          301,
+          170
+        ],
+        [
+          361,
+          213
+        ],
+        [
+          431,
+          191
+        ],
+        [
+          434,
+          190.05
+        ]
+      ],
+      "scope": "Observed structural edge bands, separate from orange roof interior.",
+      "pointer": "pass-through",
+      "newSiteOwner": false
+    },
+    {
+      "namePrefix": "GranaryShedLeftPostColumn",
+      "textureResourcePath": "res://assets/native/c07-layered-v1/granary-main-v1-candidate.png",
+      "members": [
+        {
+          "id": "upright",
+          "polygon": [
+            [
+              299.5,
+              126
+            ],
+            [
+              302.5,
+              126
+            ],
+            [
+              302.5,
+              169.5
+            ],
+            [
+              301,
+              170.5
+            ],
+            [
+              299.5,
+              169.5
+            ]
+          ],
+          "uv": [
+            [
+              143,
+              470
+            ],
+            [
+              158,
+              470
+            ],
+            [
+              158,
+              595
+            ],
+            [
+              150,
+              600
+            ],
+            [
+              143,
+              595
+            ]
+          ],
+          "tint": "c6b599"
+        },
+        {
+          "id": "left-knee",
+          "polygon": [
+            [
+              302.5,
+              129
+            ],
+            [
+              312,
+              135
+            ],
+            [
+              310,
+              138
+            ],
+            [
+              302.5,
+              134
+            ]
+          ],
+          "uv": [
+            [
+              143,
+              470
+            ],
+            [
+              158,
+              470
+            ],
+            [
+              158,
+              600
+            ],
+            [
+              143,
+              600
+            ]
+          ],
+          "tint": "b6a184"
+        }
+      ],
+      "supportLine": [
+        [
+          298.5,
+          170
+        ],
+        [
+          313,
+          170
+        ]
+      ],
+      "scope": "Observed source foot [301, 170]; each post owns its own depth, not the roof envelope",
+      "pointer": "pass-through",
+      "newSiteOwner": false
+    },
+    {
+      "namePrefix": "GranaryShedNearPostColumn",
+      "textureResourcePath": "res://assets/native/c07-layered-v1/granary-main-v1-candidate.png",
+      "members": [
+        {
+          "id": "upright",
+          "polygon": [
+            [
+              359.5,
+              163
+            ],
+            [
+              362.5,
+              163
+            ],
+            [
+              362.5,
+              212.5
+            ],
+            [
+              361,
+              213.5
+            ],
+            [
+              359.5,
+              212.5
+            ]
+          ],
+          "uv": [
+            [
+              143,
+              470
+            ],
+            [
+              158,
+              470
+            ],
+            [
+              158,
+              595
+            ],
+            [
+              150,
+              600
+            ],
+            [
+              143,
+              595
+            ]
+          ],
+          "tint": "c6b599"
+        },
+        {
+          "id": "connected-left-knee",
+          "polygon": [
+            [
+              359.5,
+              165
+            ],
+            [
+              351,
+              160
+            ],
+            [
+              352,
+              165
+            ],
+            [
+              359.5,
+              176
+            ]
+          ],
+          "uv": [
+            [
+              143,
+              470
+            ],
+            [
+              158,
+              470
+            ],
+            [
+              158,
+              600
+            ],
+            [
+              143,
+              600
+            ]
+          ],
+          "tint": "b6a184"
+        },
+        {
+          "id": "connected-right-knee",
+          "polygon": [
+            [
+              362.5,
+              164
+            ],
+            [
+              371,
+              159
+            ],
+            [
+              369,
+              164
+            ],
+            [
+              362.5,
+              175
+            ]
+          ],
+          "uv": [
+            [
+              143,
+              470
+            ],
+            [
+              158,
+              470
+            ],
+            [
+              158,
+              600
+            ],
+            [
+              143,
+              600
+            ]
+          ],
+          "tint": "b6a184"
+        }
+      ],
+      "supportLine": [
+        [
+          350,
+          213
+        ],
+        [
+          372,
+          213
+        ]
+      ],
+      "scope": "Observed source foot [361, 213]; each post owns its own depth, not the roof envelope",
+      "pointer": "pass-through",
+      "newSiteOwner": false
+    },
+    {
+      "namePrefix": "GranaryShedRightPostColumn",
+      "textureResourcePath": "res://assets/native/c07-layered-v1/granary-main-v1-candidate.png",
+      "members": [
+        {
+          "id": "upright",
+          "polygon": [
+            [
+              428.5,
+              136
+            ],
+            [
+              431.5,
+              136
+            ],
+            [
+              431.5,
+              190.5
+            ],
+            [
+              430,
+              191.5
+            ],
+            [
+              428.5,
+              190.5
+            ]
+          ],
+          "uv": [
+            [
+              143,
+              470
+            ],
+            [
+              158,
+              470
+            ],
+            [
+              158,
+              595
+            ],
+            [
+              150,
+              600
+            ],
+            [
+              143,
+              595
+            ]
+          ],
+          "tint": "c6b599"
+        }
+      ],
+      "supportLine": [
+        [
+          427.5,
+          191
+        ],
+        [
+          432.5,
+          191
+        ]
+      ],
+      "scope": "NEW hidden support completion; original foot not visible/certified; each post owns its own depth, not the roof envelope",
+      "pointer": "pass-through",
+      "newSiteOwner": false
+    },
+    {
+      "namePrefix": "GranaryShedRearPostColumn",
+      "textureResourcePath": "res://assets/native/c07-layered-v1/granary-main-v1-candidate.png",
+      "members": [
+        {
+          "id": "upright",
+          "polygon": [
+            [
+              380.5,
+              97
+            ],
+            [
+              383.5,
+              97
+            ],
+            [
+              383.5,
+              147.5
+            ],
+            [
+              382,
+              148.5
+            ],
+            [
+              380.5,
+              147.5
+            ]
+          ],
+          "uv": [
+            [
+              143,
+              470
+            ],
+            [
+              158,
+              470
+            ],
+            [
+              158,
+              595
+            ],
+            [
+              150,
+              600
+            ],
+            [
+              143,
+              595
+            ]
+          ],
+          "tint": "c6b599"
+        }
+      ],
+      "supportLine": [
+        [
+          379.5,
+          148
+        ],
+        [
+          384.5,
+          148
+        ]
+      ],
+      "scope": "NEW hidden support completion; original foot not visible/certified; each post owns its own depth, not the roof envelope",
+      "pointer": "pass-through",
+      "newSiteOwner": false
+    }
+  ],
+  "materialPositives": [
+    [
+      320,
+      130
+    ],
+    [
+      360,
+      130
+    ],
+    [
+      400,
+      130
+    ],
+    [
+      301,
+      160
+    ],
+    [
+      301,
+      170
+    ],
+    [
+      361,
+      200
+    ],
+    [
+      361,
+      213
+    ]
+  ],
+  "materialNegatives": [
+    [
+      301,
+      172
+    ],
+    [
+      361,
+      215
+    ],
+    [
+      440,
+      180
+    ]
+  ],
+  "certifiedFeet": [
+    [
+      301,
+      170
+    ],
+    [
+      361,
+      213
+    ]
+  ],
+  "authoredHiddenFeet": [
+    [
+      430,
+      191
+    ],
+    [
+      382,
+      148
+    ]
+  ],
+  "noOldRoofRoleFailureClaim": true
+}

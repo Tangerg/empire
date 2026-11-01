@@ -1,0 +1,54 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+SHED_MATERIAL_COMPILE_BEGIN roof members=156
+WARNING: A Thread object is being destroyed without its completion having been realized.
+Please call wait_to_finish() on it to ensure correct cleanup.
+     at: ~Thread (core/os/thread.cpp:102)
+ERROR: 7 RID allocations of type '23NavMeshGeometryParser2D' were leaked at exit.
+ERROR: 6 RID allocations of type '23NavMeshGeometryParser3D' were leaked at exit.
+ERROR: Pages in use exist at exit in PagedAllocator: N7Variant5Pools11BucketLargeE
+   at: ~PagedAllocator (./core/templates/paged_allocator.h:169)
+ERROR: Pages in use exist at exit in PagedAllocator: N7Variant5Pools12BucketMediumE
+   at: ~PagedAllocator (./core/templates/paged_allocator.h:169)
+ERROR: Pages in use exist at exit in PagedAllocator: N7Variant5Pools11BucketSmallE
+   at: ~PagedAllocator (./core/templates/paged_allocator.h:169)
+ERROR: BUG: Unreferenced static string to 0: node_changed
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: animation_player_changed
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: current_animation_changed
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: animation_list_changed
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: animation_libraries_updated
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: caches_cleared
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: mixer_applied
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: mixer_updated
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: autoshrink_changed
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: size_changed
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: child_entered_tree
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: child_order_changed
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: fallback_changed
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: bus_layout_changed
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: bus_renamed
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: interface_added
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: _initialize
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: _exists
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: _recognize_path
+   at: unref (core/string/string_name.cpp:116)
+ERROR: Pages in use exist at exit in PagedAllocator: N10StringName5_DataE
+   at: ~PagedAllocator (./core/templates/paged_allocator.h:169)

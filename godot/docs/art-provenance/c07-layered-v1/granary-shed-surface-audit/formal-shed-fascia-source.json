@@ -1,0 +1,191 @@
+{
+  "namePrefix": "GranaryShedFasciaColumn",
+  "textureResourcePath": "res://assets/native/c07-layered-v1/granary-main-v1-candidate.png",
+  "members": [
+    {
+      "id": "left-descending-eave",
+      "polygon": [
+        [
+          299,
+          124
+        ],
+        [
+          357,
+          160
+        ],
+        [
+          358,
+          164
+        ],
+        [
+          299,
+          128
+        ]
+      ],
+      "uv": [
+        [
+          143,
+          470
+        ],
+        [
+          158,
+          470
+        ],
+        [
+          158,
+          600
+        ],
+        [
+          143,
+          600
+        ]
+      ],
+      "tint": "9e927f"
+    },
+    {
+      "id": "front-long-eave",
+      "polygon": [
+        [
+          357,
+          160
+        ],
+        [
+          431,
+          132
+        ],
+        [
+          432,
+          136
+        ],
+        [
+          358,
+          164
+        ]
+      ],
+      "uv": [
+        [
+          143,
+          470
+        ],
+        [
+          158,
+          470
+        ],
+        [
+          158,
+          600
+        ],
+        [
+          143,
+          600
+        ]
+      ],
+      "tint": "a99b83"
+    },
+    {
+      "id": "rear-ridge-beam",
+      "polygon": [
+        [
+          299,
+          122
+        ],
+        [
+          382,
+          92
+        ],
+        [
+          384,
+          95
+        ],
+        [
+          300,
+          126
+        ]
+      ],
+      "uv": [
+        [
+          143,
+          470
+        ],
+        [
+          158,
+          470
+        ],
+        [
+          158,
+          600
+        ],
+        [
+          143,
+          600
+        ]
+      ],
+      "tint": "c4ac88"
+    },
+    {
+      "id": "far-side-edge",
+      "polygon": [
+        [
+          382,
+          93
+        ],
+        [
+          432,
+          132
+        ],
+        [
+          432,
+          135
+        ],
+        [
+          381,
+          96
+        ]
+      ],
+      "uv": [
+        [
+          143,
+          470
+        ],
+        [
+          158,
+          470
+        ],
+        [
+          158,
+          600
+        ],
+        [
+          143,
+          600
+        ]
+      ],
+      "tint": "a59881"
+    }
+  ],
+  "supportLine": [
+    [
+      299,
+      168.6
+    ],
+    [
+      301,
+      170
+    ],
+    [
+      361,
+      213
+    ],
+    [
+      431,
+      191
+    ],
+    [
+      434,
+      190.05
+    ]
+  ],
+  "scope": "Observed structural edge bands, separate from orange roof interior.",
+  "pointer": "pass-through",
+  "newSiteOwner": false
+}

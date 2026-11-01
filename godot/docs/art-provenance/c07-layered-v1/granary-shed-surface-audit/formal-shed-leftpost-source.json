@@ -1,0 +1,107 @@
+{
+  "namePrefix": "GranaryShedLeftPostColumn",
+  "textureResourcePath": "res://assets/native/c07-layered-v1/granary-main-v1-candidate.png",
+  "members": [
+    {
+      "id": "upright",
+      "polygon": [
+        [
+          299.5,
+          126
+        ],
+        [
+          302.5,
+          126
+        ],
+        [
+          302.5,
+          169.5
+        ],
+        [
+          301,
+          170.5
+        ],
+        [
+          299.5,
+          169.5
+        ]
+      ],
+      "uv": [
+        [
+          143,
+          470
+        ],
+        [
+          158,
+          470
+        ],
+        [
+          158,
+          595
+        ],
+        [
+          150,
+          600
+        ],
+        [
+          143,
+          595
+        ]
+      ],
+      "tint": "c6b599"
+    },
+    {
+      "id": "left-knee",
+      "polygon": [
+        [
+          302.5,
+          129
+        ],
+        [
+          312,
+          135
+        ],
+        [
+          310,
+          138
+        ],
+        [
+          302.5,
+          134
+        ]
+      ],
+      "uv": [
+        [
+          143,
+          470
+        ],
+        [
+          158,
+          470
+        ],
+        [
+          158,
+          600
+        ],
+        [
+          143,
+          600
+        ]
+      ],
+      "tint": "b6a184"
+    }
+  ],
+  "supportLine": [
+    [
+      298.5,
+      170
+    ],
+    [
+      313,
+      170
+    ]
+  ],
+  "scope": "Observed source foot [301, 170]; each post owns its own depth, not the roof envelope",
+  "pointer": "pass-through",
+  "newSiteOwner": false
+}

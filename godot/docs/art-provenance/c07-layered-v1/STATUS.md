@@ -65,3 +65,6 @@ Own five southwest regions now shared formal native-alpha owner:15instances/5sit
 
 ## Southwest independent left leaf formal integration
 Own upward-right support integrated into same selected scene:16instances/5sites/1393depth entries.528vertices/source/UV/depth exact,1334coverage samples equal;1405opening and real front/back plus wrong-depth controls pass. Close-up GPU1pixel/max1,context exact;20nodes replace93 without FPS claim. Both southern gates now formal candidates, not completed whole sites. See [southwest-leaf-surface-audit](southwest-leaf-surface-audit/README.md).
+
+## Granary shed formal integration
+The same selected assembly now has22instances/5sites/1698depth entries. Six shed material/support components retain exact source geometry and individual posts. Closed-triangle offline UV transfer fixes154 negative floating endpoints without an inset;305polygon nodes replace785. RGB surfaces are accepted while opaque sprites still reject, and per-texture private opacity snapshots remove redundant alpha scanning without relaxing UV/geometry/native-alpha guards. 2.5x/1.25x GPU differences56/26pixels max1; compiler67ms versus75s timeout is loading cost only. See [granary-shed-surface-audit](granary-shed-surface-audit/README.md). Major bale stock/column enclosure next; full-scene art/performance/gameplay still incomplete.

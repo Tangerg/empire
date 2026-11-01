@@ -128,6 +128,43 @@ public partial class SceneSurfaceChecks : Node
         Reject(Document(Member("past-bottom", "foot", "native-alpha", [[0, 0], [8, 0], [0, 8.001]])), "Surface UV lies outside its material");
         Reject(Document(Member("past-left", "foot", "native-alpha", [[-.001, 0], [8, 0], [0, 8]])), "Surface UV lies outside its material");
         Reject(Document(Member("opaque-edge", "foot", "opaque", [[0, 0], [8, 0], [0, 8]])), "Surface UV lies outside its material");
+        foreach (var format in new[] { Image.Format.Rgb8, Image.Format.Rgba8 })
+        {
+            using var solid = Image.CreateEmpty(8, 8, false, format);
+            solid.Fill(Colors.White);
+            using var solidTexture = ImageTexture.CreateFromImage(solid);
+            using var materials = new CompiledSceneSurface.Materials();
+            var material = materials.Get(solidTexture);
+            Require(ReferenceEquals(material, materials.Get(solidTexture)) && material.IsOpaque,
+                "One texture must have one immutable opacity snapshot per assembly compilation.");
+            solid.SetPixel(3, 1, Colors.Transparent);
+            Require(material.IsOpaque && material.Alpha(3, 1) == 1,
+                "Caller image edits must not mutate the captured material pixels or their opacity fact.");
+            Require(CompiledSceneSurface.Compile(Document(Member("solid", "foot", "opaque",
+                [[1, 1], [5, 1], [1, 1]])), material, "solid") is not null,
+                "RGB and full-opaque RGBA must compile from the complete opacity proof.");
+            var rejectedUv = false;
+            try { CompiledSceneSurface.Compile(Document(Member("bad-uv", "foot", "opaque",
+                [[-.001, 0], [5, 1], [1, 1]])), material, "solid"); }
+            catch (InvalidOperationException error) when (error.Message.Contains("Surface UV lies outside", StringComparison.Ordinal))
+            { rejectedUv = true; }
+            Require(rejectedUv, "Opaque material proof cannot bypass UV domain validation.");
+        }
+        foreach (var alpha in new[] { 0f, 239f / 255f })
+        {
+            using var partial = Image.CreateEmpty(8, 8, false, Image.Format.Rgba8);
+            partial.Fill(Colors.White); partial.SetPixel(3, 1, new Color(1, 1, 1, alpha));
+            using var partialTexture = ImageTexture.CreateFromImage(partial);
+            using var materials = new CompiledSceneSurface.Materials();
+            var material = materials.Get(partialTexture);
+            Require(!material.IsOpaque, "Transparent and 239-alpha edge materials cannot take the complete-opacity proof.");
+            var rejected = false;
+            try { CompiledSceneSurface.Compile(Document(Member("partial", "foot", "opaque",
+                [[1, 1], [5, 1], [1, 1]])), material, "partial"); }
+            catch (InvalidOperationException error) when (error.Message.Contains("Opaque surface material includes transparency", StringComparison.Ordinal))
+            { rejected = true; }
+            Require(rejected, "Transparent holes and the original 239-alpha threshold negative must retain exhaustive validation.");
+        }
         sampler.Free();
     }
 }
