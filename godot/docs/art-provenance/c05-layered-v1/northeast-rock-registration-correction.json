@@ -1,0 +1,258 @@
+{
+  "status": "Restored real PNG and official audit verified after reset; supersedes earlier assumption that all original eight coordinates were opaque. No production files modified.",
+  "assetSha256": "3e6297529df4ec8e278d9646efa146f5c4f2bce0de4e39e00d6bb837ac553976",
+  "officialAuditSha256": "90188a3f5ad558d402815ac85e734388614c9dddbe5b66f1e474017a5079b1cf",
+  "withdrawnWitnesses": [
+    {
+      "assetPixel": [
+        742,
+        1015
+      ],
+      "actualAlpha": 17
+    },
+    {
+      "assetPixel": [
+        1080,
+        945
+      ],
+      "actualAlpha": 0
+    }
+  ],
+  "selectionRule": "Fixed x values on inspected exposed lower stone; at each x choose3 asset pixels inside the last alpha>=200 lower outline, excluding isolated transparent fringe. No Pick usage.",
+  "actualOpaqueLowerOutlineWitnesses": [
+    {
+      "assetPixel": [
+        145,
+        929
+      ],
+      "actualAlpha": 252,
+      "beforeSource": [
+        1463.877659574468,
+        141.7968085106383
+      ],
+      "afterSource": [
+        1461.177659574468,
+        141.7968085106383
+      ],
+      "beforeCell": [
+        45,
+        3
+      ],
+      "afterCell": [
+        45,
+        3
+      ],
+      "outsideOriginalEnvelopeDistanceBefore": 2.560426285272473,
+      "outsideOriginalEnvelopeDistanceAfter": 4.82726570958332
+    },
+    {
+      "assetPixel": [
+        297,
+        973
+      ],
+      "actualAlpha": 250,
+      "beforeSource": [
+        1473.7414893617022,
+        144.65212765957446
+      ],
+      "afterSource": [
+        1471.0414893617021,
+        144.65212765957446
+      ],
+      "beforeCell": [
+        45,
+        4
+      ],
+      "afterCell": [
+        45,
+        4
+      ],
+      "outsideOriginalEnvelopeDistanceBefore": 0,
+      "outsideOriginalEnvelopeDistanceAfter": 0
+    },
+    {
+      "assetPixel": [
+        354,
+        953
+      ],
+      "actualAlpha": 250,
+      "beforeSource": [
+        1477.4404255319148,
+        143.35425531914893
+      ],
+      "afterSource": [
+        1474.7404255319148,
+        143.35425531914893
+      ],
+      "beforeCell": [
+        45,
+        3
+      ],
+      "afterCell": [
+        45,
+        3
+      ],
+      "outsideOriginalEnvelopeDistanceBefore": 0,
+      "outsideOriginalEnvelopeDistanceAfter": 0
+    },
+    {
+      "assetPixel": [
+        448,
+        995
+      ],
+      "actualAlpha": 252,
+      "beforeSource": [
+        1483.540425531915,
+        146.07978723404256
+      ],
+      "afterSource": [
+        1480.840425531915,
+        146.07978723404256
+      ],
+      "beforeCell": [
+        45,
+        4
+      ],
+      "afterCell": [
+        45,
+        4
+      ],
+      "outsideOriginalEnvelopeDistanceBefore": 0,
+      "outsideOriginalEnvelopeDistanceAfter": 0
+    },
+    {
+      "assetPixel": [
+        640,
+        1042
+      ],
+      "actualAlpha": 252,
+      "beforeSource": [
+        1496.0,
+        149.12978723404257
+      ],
+      "afterSource": [
+        1493.3,
+        149.12978723404257
+      ],
+      "beforeCell": [
+        46,
+        4
+      ],
+      "afterCell": [
+        46,
+        4
+      ],
+      "outsideOriginalEnvelopeDistanceBefore": 0.12978723404256698,
+      "outsideOriginalEnvelopeDistanceAfter": 0.5240673662257944
+    },
+    {
+      "assetPixel": [
+        742,
+        1010
+      ],
+      "actualAlpha": 252,
+      "beforeSource": [
+        1502.6191489361702,
+        147.0531914893617
+      ],
+      "afterSource": [
+        1499.9191489361701,
+        147.0531914893617
+      ],
+      "beforeCell": [
+        46,
+        4
+      ],
+      "afterCell": [
+        46,
+        4
+      ],
+      "outsideOriginalEnvelopeDistanceBefore": 0.8538677258268806,
+      "outsideOriginalEnvelopeDistanceAfter": 0
+    },
+    {
+      "assetPixel": [
+        991,
+        970
+      ],
+      "actualAlpha": 250,
+      "beforeSource": [
+        1518.777659574468,
+        144.45744680851064
+      ],
+      "afterSource": [
+        1516.077659574468,
+        144.45744680851064
+      ],
+      "beforeCell": [
+        46,
+        4
+      ],
+      "afterCell": [
+        46,
+        4
+      ],
+      "outsideOriginalEnvelopeDistanceBefore": 4.916208118397317,
+      "outsideOriginalEnvelopeDistanceAfter": 3.8396476175782834
+    },
+    {
+      "assetPixel": [
+        1080,
+        931
+      ],
+      "actualAlpha": 252,
+      "beforeSource": [
+        1524.5531914893618,
+        141.92659574468084
+      ],
+      "afterSource": [
+        1521.8531914893617,
+        141.92659574468084
+      ],
+      "beforeCell": [
+        47,
+        3
+      ],
+      "afterCell": [
+        46,
+        3
+      ],
+      "outsideOriginalEnvelopeDistanceBefore": 6.277172800736339,
+      "outsideOriginalEnvelopeDistanceAfter": 4.087256332523105
+    }
+  ],
+  "sourceTranslationProposal": [
+    -2.7,
+    0
+  ],
+  "contactAfter": [
+    46.040625,
+    4.178571428571429
+  ],
+  "scaleUnchanged": 0.08111702127659574,
+  "maximumEightOutlineDistanceAfter": 4.82726570958332,
+  "oldResponsibilityLeftGapBefore": {
+    "sourceQuery": [
+      1459.3333333333333,
+      128.4006734006734
+    ],
+    "distanceSourcePx": 6.43267463491497,
+    "nearestOpaqueAssetPixel": [
+      174,
+      727
+    ]
+  },
+  "oldResponsibilityLeftGapAfterProposedTranslation": {
+    "sourceQuery": [
+      1459.3333333333333,
+      128.4006734006734
+    ],
+    "distanceSourcePx": 3.7373253579289116,
+    "nearestOpaqueAssetPixel": [
+      174,
+      727
+    ]
+  },
+  "requiredNegativeControl": "Unshifted restored real point1080,931 has alpha252 and maps into legal47,3; minus2.7 returns to original wall46,3.",
+  "limitation": "This verifies exposed lower outline only, not complete hidden rear envelope. \u00b15 unchanged."
+}

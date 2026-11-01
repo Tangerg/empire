@@ -186,10 +186,84 @@ public partial class ReedVillageChecks : Node
                         $"C05 actual front rail must retain positive site targeting: {placement.Id}.");
                 }
             }
+            CheckLayeredRockAndCart(board, ground, document, catalog, engine, state, audit);
             CheckLayeredBridgeDepth(board, document, catalog, state, rendering.Ground);
             Require(EcmaJson.Stringify(state) == before && board.RenderingIssueCount == 0, "C05 presentation probes must not mutate gameplay.");
         }
         finally { RemoveChild(board); board.Free(); }
+    }
+
+    private void CheckLayeredRockAndCart(BoardView board, AssembledGroundView ground, AssembledGroundDocument document,
+        SceneObjectCatalog catalog, BattleEngine engine, JsonObject state, JsonObject audit)
+    {
+        static float OutsideDistance(Vector2 point, Vector2[] polygon)
+        {
+            if (Geometry2D.IsPointInPolygon(point, polygon))
+                return 0;
+            return Enumerable.Range(0, polygon.Length).Min(index => point.DistanceTo(
+                Geometry2D.GetClosestPointToSegment(point, polygon[index], polygon[(index + 1) % polygon.Length])));
+        }
+        var rockReview = PresentationJson.Load<JsonObject>("res://docs/art-provenance/c05-layered-v1/northeast-rock-registration-correction.json");
+        var rock = document.Objects.Single(item => item.Id == "northeast-border-boulder");
+        var rockAsset = catalog.Objects[rock.AssetId];
+        var sprite = ground.GetNode<Sprite2D>(rock.Id);
+        var visual = ground.DepthEntries.Single(entry => entry.Node == sprite).Visual!;
+        var original = audit["rocks"]!.AsArray().OfType<JsonObject>().Single(item => Text(item, "id") == rock.Id);
+        var polygon = original["groundPolygonPixels"]!.AsArray().Select(point => Vector(point!)).ToArray();
+        foreach (var foot in rockReview["actualOpaqueLowerOutlineWitnesses"]!.AsArray())
+        {
+            var local = Vector(foot!["assetPixel"]!) - new Vector2((float)rockAsset.AnchorPixels[0], (float)rockAsset.AnchorPixels[1]);
+            var global = sprite.ToGlobal(local);
+            var source = board.ToLocal(global) / document.WorldScale;
+            Require(visual.Covers(global) && source.DistanceTo(Vector(foot["afterSource"]!)) < .02f
+                && OutsideDistance(source, polygon) <= 5,
+                "C05 northeast border stone must use independently rechecked opaque lower outline within original five-pixel physical tolerance.");
+        }
+        var rightFoot = rockReview["actualOpaqueLowerOutlineWitnesses"]!.AsArray().Last()!;
+        var after = Vector(rightFoot["afterSource"]!);
+        var rejected = Vector(rightFoot["beforeSource"]!);
+        Coord CellOf(Vector2 point) => new(Mathf.FloorToInt((point.X - 20) / 32), Mathf.FloorToInt((point.Y - 32) / 28));
+        Require(CellOf(after) == new Coord(46, 3) && Text(state["map"]!["tiles"]![3 * 50 + 46]!) == "wall"
+            && CellOf(rejected) == new Coord(47, 3) && OutsideDistance(rejected, polygon) > 5,
+            "The real opaque right foot must return to its original wall; the old placement is a failing physical negative control.");
+        foreach (var withdrawn in rockReview["withdrawnWitnesses"]!.AsArray())
+        {
+            var pixel = Vector(withdrawn!["assetPixel"]!);
+            using var image = sprite.Texture.GetImage();
+            Require(image.GetPixel((int)pixel.X, (int)pixel.Y).A < .1f,
+                "Historical transparent fringe samples remain explicitly invalid physical support evidence.");
+        }
+        var cart = document.Objects.Single(item => item.Id == "central-supply-cart");
+        var cartAsset = catalog.Objects[cart.AssetId];
+        var cartSprite = ground.GetNode<Sprite2D>(cart.Id);
+        var cartVisual = ground.DepthEntries.Single(entry => entry.Node == cartSprite).Visual!;
+        var review = PresentationJson.Load<JsonObject>("res://docs/art-provenance/c05-layered-v1/cart-physical-witnesses.json");
+        foreach (var point in review["threeTrueWheelSourcePoints"]!.AsArray())
+        {
+            var source = Vector(point!);
+            var cell = CellOf(source);
+            Require(cartVisual.Covers(board.ToGlobal(source * document.WorldScale))
+                && Text(state["map"]!["tiles"]![cell.Y * 50 + cell.X]!) == "wall",
+                "C05 supply-cart real wheel contacts must stay on the existing physical obstruction, not a legal approach.");
+        }
+        foreach (var probe in review["shaftTests"]!.AsArray())
+        {
+            var field = Vector(probe!["source"]!) * document.WorldScale;
+            Require(cartVisual.Covers(board.ToGlobal(field)) && !cartVisual.ContainsPointer(board.ToGlobal(field))
+                && board.Pick(field) == TacticalHit.Ground(new(33, 13)),
+                "C05 projecting cart shaft is real wood, not a new ground blocker or distant outpost target.");
+        }
+        Require(board.Pick(Vector(review["retainedCrossableFencePoint"]!["source"]!) * document.WorldScale) == TacticalHit.Ground(new(33, 12)),
+            "The retained low fence must keep its original crossable ground contract.");
+        var fixture = state.DeepClone().AsObject();
+        var actor = Unit(fixture, "campaign-torren").DeepClone().AsObject();
+        fixture["units"] = new JsonArray(actor);
+        for (var y = 12; y < 14; y++)
+        {
+            Position(actor, new(33, y));
+            Require(engine.Space.PathTo(engine.Space.ComputeMoveField(fixture, actor), fixture, new(33, y + 1)) is { Count: 2 },
+                "Actual movement queries must connect the cart-side route without changing collision or movement allowance.");
+        }
     }
 
     private void CheckLayeredBridgeDepth(BoardView board, AssembledGroundDocument document, SceneObjectCatalog catalog,

@@ -1,0 +1,95 @@
+{
+  "cartSelectionCell": [
+    31,
+    14
+  ],
+  "threeTrueWheelSourcePoints": [
+    [
+      1031,
+      420.776
+    ],
+    [
+      998.52,
+      404.76
+    ],
+    [
+      1064.488,
+      407
+    ]
+  ],
+  "wheelCells": [
+    [
+      31,
+      13
+    ],
+    [
+      30,
+      13
+    ],
+    [
+      32,
+      13
+    ]
+  ],
+  "maxWheelDistanceOutsideOriginalEnvelope": 4.647807832415076,
+  "shaftTests": [
+    {
+      "source": [
+        1078.6,
+        419.32
+      ],
+      "assetPixel": [
+        1035,
+        925
+      ],
+      "alphaObserved": 253,
+      "expectedEmptyPick": "Ground",
+      "expectedCell": [
+        33,
+        13
+      ]
+    },
+    {
+      "source": [
+        1079.16,
+        421.896
+      ],
+      "assetPixel": [
+        1040,
+        948
+      ],
+      "alphaObserved": 252,
+      "expectedEmptyPick": "Ground",
+      "expectedCell": [
+        33,
+        13
+      ]
+    }
+  ],
+  "retainedCrossableFencePoint": {
+    "source": [
+      1090,
+      380
+    ],
+    "expectedEmptyPick": "Ground",
+    "expectedCell": [
+      33,
+      12
+    ]
+  },
+  "actorRouteForVisualOverlap": [
+    [
+      33,
+      12
+    ],
+    [
+      33,
+      13
+    ],
+    [
+      33,
+      14
+    ]
+  ],
+  "limits": "Wheel contacts pass exposed envelope within5px, not complete hidden-rear responsibility certification. Shaft end is real wood on walkable projection but not certified ground-contact foot; no new collision justified. Mother ground long two-rail feature remains flat crossable art."
+}
