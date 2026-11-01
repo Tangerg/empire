@@ -1,0 +1,626 @@
+{
+  "scope": "Candidate renderer-only initial-state fixtures; no engine commands, AI or actual campaign save reads/writes. Not real gameplay.",
+  "existingContract": "Production C06 painted roof parts are pass-through; front wooden posts target the unchanged site. Broad provisional candidate contours violated this.",
+  "beforeEmptyLegalSiteInterceptions": [
+    {
+      "cell": [
+        6,
+        4
+      ],
+      "source": [
+        228,
+        156
+      ],
+      "terrain": ".",
+      "pick": "TacticalHit { Cell = BoardCell { X = 6, Y = 6 }, Kind = Object, UnitId =  }",
+      "sameGround": false
+    },
+    {
+      "cell": [
+        7,
+        4
+      ],
+      "source": [
+        260,
+        156
+      ],
+      "terrain": ".",
+      "pick": "TacticalHit { Cell = BoardCell { X = 6, Y = 6 }, Kind = Object, UnitId =  }",
+      "sameGround": false
+    },
+    {
+      "cell": [
+        45,
+        8
+      ],
+      "source": [
+        1476,
+        268
+      ],
+      "terrain": ".",
+      "pick": "TacticalHit { Cell = BoardCell { X = 46, Y = 9 }, Kind = Object, UnitId =  }",
+      "sameGround": false
+    },
+    {
+      "cell": [
+        47,
+        8
+      ],
+      "source": [
+        1540,
+        268
+      ],
+      "terrain": ".",
+      "pick": "TacticalHit { Cell = BoardCell { X = 46, Y = 9 }, Kind = Object, UnitId =  }",
+      "sameGround": false
+    },
+    {
+      "cell": [
+        41,
+        22
+      ],
+      "source": [
+        1348,
+        660
+      ],
+      "terrain": ".",
+      "pick": "TacticalHit { Cell = BoardCell { X = 41, Y = 25 }, Kind = Object, UnitId =  }",
+      "sameGround": false
+    },
+    {
+      "cell": [
+        43,
+        23
+      ],
+      "source": [
+        1412,
+        688
+      ],
+      "terrain": ".",
+      "pick": "TacticalHit { Cell = BoardCell { X = 41, Y = 25 }, Kind = Object, UnitId =  }",
+      "sameGround": false
+    },
+    {
+      "cell": [
+        3,
+        24
+      ],
+      "source": [
+        132,
+        716
+      ],
+      "terrain": ".",
+      "pick": "TacticalHit { Cell = BoardCell { X = 5, Y = 27 }, Kind = Object, UnitId =  }",
+      "sameGround": false
+    },
+    {
+      "cell": [
+        5,
+        24
+      ],
+      "source": [
+        196,
+        716
+      ],
+      "terrain": ".",
+      "pick": "TacticalHit { Cell = BoardCell { X = 5, Y = 27 }, Kind = Object, UnitId =  }",
+      "sameGround": false
+    },
+    {
+      "cell": [
+        6,
+        24
+      ],
+      "source": [
+        228,
+        716
+      ],
+      "terrain": ".",
+      "pick": "TacticalHit { Cell = BoardCell { X = 5, Y = 27 }, Kind = Object, UnitId =  }",
+      "sameGround": false
+    },
+    {
+      "cell": [
+        3,
+        25
+      ],
+      "source": [
+        132,
+        744
+      ],
+      "terrain": ".",
+      "pick": "TacticalHit { Cell = BoardCell { X = 5, Y = 27 }, Kind = Object, UnitId =  }",
+      "sameGround": false
+    },
+    {
+      "cell": [
+        4,
+        26
+      ],
+      "source": [
+        164,
+        772
+      ],
+      "terrain": ".",
+      "pick": "TacticalHit { Cell = BoardCell { X = 5, Y = 27 }, Kind = Object, UnitId =  }",
+      "sameGround": false
+    }
+  ],
+  "afterEmptyLegalSiteInterceptions": [
+    {
+      "cell": [
+        3,
+        24
+      ],
+      "source": [
+        132,
+        716
+      ],
+      "terrain": ".",
+      "pick": "TacticalHit { Cell = BoardCell { X = 5, Y = 27 }, Kind = Object, UnitId =  }",
+      "sameGround": false
+    },
+    {
+      "cell": [
+        3,
+        25
+      ],
+      "source": [
+        132,
+        744
+      ],
+      "terrain": ".",
+      "pick": "TacticalHit { Cell = BoardCell { X = 5, Y = 27 }, Kind = Object, UnitId =  }",
+      "sameGround": false
+    }
+  ],
+  "remainingInterceptions": "Two SW samples lie on actual target wood; not forced to Ground.",
+  "actualNewPostSamples": [
+    {
+      "site": "northwest-watch-shelter",
+      "assetPixel": [
+        215,
+        780
+      ],
+      "source": [
+        190.75563,
+        154.36334
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 6, Y = 6 }, Kind = Object, UnitId =  }",
+      "sameObject": true
+    },
+    {
+      "site": "northwest-watch-shelter",
+      "assetPixel": [
+        215,
+        940
+      ],
+      "source": [
+        190.75563,
+        169.69453
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 6, Y = 6 }, Kind = Object, UnitId =  }",
+      "sameObject": true
+    },
+    {
+      "site": "southwest-watch-shelter",
+      "assetPixel": [
+        215,
+        780
+      ],
+      "source": [
+        129.05612,
+        720.33167
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 5, Y = 27 }, Kind = Object, UnitId =  }",
+      "sameObject": true
+    },
+    {
+      "site": "southwest-watch-shelter",
+      "assetPixel": [
+        215,
+        940
+      ],
+      "source": [
+        129.05612,
+        741.55615
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 5, Y = 27 }, Kind = Object, UnitId =  }",
+      "sameObject": true
+    },
+    {
+      "site": "northeast-watch-shelter",
+      "assetPixel": [
+        740,
+        900
+      ],
+      "source": [
+        1526.5493,
+        273.5865
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 46, Y = 9 }, Kind = Object, UnitId =  }",
+      "sameObject": true
+    },
+    {
+      "site": "northeast-watch-shelter",
+      "assetPixel": [
+        740,
+        1060
+      ],
+      "source": [
+        1526.5493,
+        288.6059
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 46, Y = 9 }, Kind = Object, UnitId =  }",
+      "sameObject": true
+    },
+    {
+      "site": "southeast-supply-shelter",
+      "assetPixel": [
+        740,
+        900
+      ],
+      "source": [
+        1389.9792,
+        683.8917
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 41, Y = 25 }, Kind = Object, UnitId =  }",
+      "sameObject": true
+    },
+    {
+      "site": "southeast-supply-shelter",
+      "assetPixel": [
+        740,
+        1060
+      ],
+      "source": [
+        1389.9792,
+        701.5875
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 41, Y = 25 }, Kind = Object, UnitId =  }",
+      "sameObject": true
+    },
+    {
+      "site": "north-supply-shelter",
+      "assetPixel": [
+        1030,
+        660
+      ],
+      "source": [
+        928.7226,
+        219.89938
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 27, Y = 7 }, Kind = Object, UnitId =  }",
+      "sameObject": true
+    },
+    {
+      "site": "north-supply-shelter",
+      "assetPixel": [
+        1030,
+        800
+      ],
+      "source": [
+        928.7226,
+        229.90564
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 27, Y = 7 }, Kind = Object, UnitId =  }",
+      "sameObject": true
+    }
+  ],
+  "originalNorthPostSamples": [
+    {
+      "source": [
+        928,
+        216
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 27, Y = 7 }, Kind = Object, UnitId =  }"
+    },
+    {
+      "source": [
+        928,
+        228
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 27, Y = 7 }, Kind = Object, UnitId =  }"
+    },
+    {
+      "source": [
+        932,
+        212
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 28, Y = 6 }, Kind = Ground, UnitId =  }"
+    },
+    {
+      "source": [
+        932,
+        240
+      ],
+      "pick": "TacticalHit { Cell = BoardCell { X = 28, Y = 7 }, Kind = Ground, UnitId =  }"
+    }
+  ],
+  "emptySiteApproachSampleCount": 180,
+  "emptySiteApproachAllGround": true,
+  "actorAccessibility": [
+    {
+      "site": "northwest-slate-house",
+      "kind": "cell",
+      "cell": [
+        13,
+        8
+      ],
+      "rawOpaqueBodyPixels": 379,
+      "visibleSelectableBodyPixels": 379,
+      "cueExists": false,
+      "cueSelectsUnit": false
+    },
+    {
+      "site": "northwest-slate-house",
+      "kind": "approach",
+      "cell": [
+        14,
+        8
+      ],
+      "rawOpaqueBodyPixels": 379,
+      "visibleSelectableBodyPixels": 379,
+      "cueExists": false,
+      "cueSelectsUnit": false
+    },
+    {
+      "site": "north-red-house",
+      "kind": "cell",
+      "cell": [
+        23,
+        8
+      ],
+      "rawOpaqueBodyPixels": 379,
+      "visibleSelectableBodyPixels": 379,
+      "cueExists": false,
+      "cueSelectsUnit": false
+    },
+    {
+      "site": "north-red-house",
+      "kind": "approach",
+      "cell": [
+        24,
+        8
+      ],
+      "rawOpaqueBodyPixels": 378,
+      "visibleSelectableBodyPixels": 378,
+      "cueExists": false,
+      "cueSelectsUnit": false
+    },
+    {
+      "site": "northeast-slate-house",
+      "kind": "cell",
+      "cell": [
+        39,
+        10
+      ],
+      "rawOpaqueBodyPixels": 379,
+      "visibleSelectableBodyPixels": 379,
+      "cueExists": false,
+      "cueSelectsUnit": false
+    },
+    {
+      "site": "northeast-slate-house",
+      "kind": "approach",
+      "cell": [
+        40,
+        10
+      ],
+      "rawOpaqueBodyPixels": 379,
+      "visibleSelectableBodyPixels": 379,
+      "cueExists": false,
+      "cueSelectsUnit": false
+    },
+    {
+      "site": "southwest-red-house",
+      "kind": "cell",
+      "cell": [
+        12,
+        24
+      ],
+      "rawOpaqueBodyPixels": 379,
+      "visibleSelectableBodyPixels": 329,
+      "cueExists": false,
+      "cueSelectsUnit": false
+    },
+    {
+      "site": "southwest-red-house",
+      "kind": "approach",
+      "cell": [
+        13,
+        24
+      ],
+      "rawOpaqueBodyPixels": 379,
+      "visibleSelectableBodyPixels": 379,
+      "cueExists": false,
+      "cueSelectsUnit": false
+    },
+    {
+      "site": "southeast-slate-house",
+      "kind": "cell",
+      "cell": [
+        35,
+        25
+      ],
+      "rawOpaqueBodyPixels": 379,
+      "visibleSelectableBodyPixels": 379,
+      "cueExists": false,
+      "cueSelectsUnit": false
+    },
+    {
+      "site": "southeast-slate-house",
+      "kind": "approach",
+      "cell": [
+        36,
+        25
+      ],
+      "rawOpaqueBodyPixels": 379,
+      "visibleSelectableBodyPixels": 379,
+      "cueExists": false,
+      "cueSelectsUnit": false
+    },
+    {
+      "site": "northwest-watch-shelter",
+      "kind": "cell",
+      "cell": [
+        6,
+        6
+      ],
+      "rawOpaqueBodyPixels": 379,
+      "visibleSelectableBodyPixels": 379,
+      "cueExists": false,
+      "cueSelectsUnit": false
+    },
+    {
+      "site": "northwest-watch-shelter",
+      "kind": "approach",
+      "cell": [
+        7,
+        6
+      ],
+      "rawOpaqueBodyPixels": 379,
+      "visibleSelectableBodyPixels": 379,
+      "cueExists": false,
+      "cueSelectsUnit": false
+    },
+    {
+      "site": "north-supply-shelter",
+      "kind": "cell",
+      "cell": [
+        27,
+        7
+      ],
+      "rawOpaqueBodyPixels": 379,
+      "visibleSelectableBodyPixels": 379,
+      "cueExists": false,
+      "cueSelectsUnit": false
+    },
+    {
+      "site": "north-supply-shelter",
+      "kind": "approach",
+      "cell": [
+        28,
+        7
+      ],
+      "rawOpaqueBodyPixels": 379,
+      "visibleSelectableBodyPixels": 379,
+      "cueExists": false,
+      "cueSelectsUnit": false
+    },
+    {
+      "site": "northeast-watch-shelter",
+      "kind": "cell",
+      "cell": [
+        46,
+        9
+      ],
+      "rawOpaqueBodyPixels": 379,
+      "visibleSelectableBodyPixels": 353,
+      "cueExists": false,
+      "cueSelectsUnit": false
+    },
+    {
+      "site": "northeast-watch-shelter",
+      "kind": "approach",
+      "cell": [
+        45,
+        9
+      ],
+      "rawOpaqueBodyPixels": 379,
+      "visibleSelectableBodyPixels": 213,
+      "cueExists": false,
+      "cueSelectsUnit": false
+    },
+    {
+      "site": "southwest-watch-shelter",
+      "kind": "cell",
+      "cell": [
+        5,
+        27
+      ],
+      "rawOpaqueBodyPixels": 379,
+      "visibleSelectableBodyPixels": 379,
+      "cueExists": false,
+      "cueSelectsUnit": false
+    },
+    {
+      "site": "southwest-watch-shelter",
+      "kind": "approach",
+      "cell": [
+        6,
+        27
+      ],
+      "rawOpaqueBodyPixels": 379,
+      "visibleSelectableBodyPixels": 379,
+      "cueExists": false,
+      "cueSelectsUnit": false
+    },
+    {
+      "site": "southeast-supply-shelter",
+      "kind": "cell",
+      "cell": [
+        41,
+        25
+      ],
+      "rawOpaqueBodyPixels": 379,
+      "visibleSelectableBodyPixels": 379,
+      "cueExists": false,
+      "cueSelectsUnit": false
+    },
+    {
+      "site": "southeast-supply-shelter",
+      "kind": "approach",
+      "cell": [
+        42,
+        25
+      ],
+      "rawOpaqueBodyPixels": 379,
+      "visibleSelectableBodyPixels": 379,
+      "cueExists": false,
+      "cueSelectsUnit": false
+    }
+  ],
+  "all20ActorsHaveVisibleSelectablePixels": true,
+  "goalCues": [
+    {
+      "unit": "refugee-1",
+      "cell": [
+        27,
+        6
+      ],
+      "cueExists": true,
+      "cuePick": "TacticalHit { Cell = BoardCell { X = 27, Y = 6 }, Kind = Unit, UnitId = 8 }"
+    },
+    {
+      "unit": "refugee-2",
+      "cell": [
+        26,
+        5
+      ],
+      "cueExists": false,
+      "cuePick": null
+    },
+    {
+      "unit": "refugee-3",
+      "cell": [
+        27,
+        7
+      ],
+      "cueExists": false,
+      "cuePick": null
+    },
+    {
+      "unit": "refugee-4",
+      "cell": [
+        26,
+        6
+      ],
+      "cueExists": false,
+      "cuePick": null
+    }
+  ],
+  "renderingIssueCount": 0,
+  "stateUnchanged": true,
+  "limitations": "Four northeast raw alpha probes remain truly occluded by roof and fall to Ground; this is not a failure to select visible body. Site/approach have353/213selectable body pixels. Do not remove correct roof occlusion or force invisible pixels clickable. No all-appearance/motion/bridge-depth or wall-footprint acceptance here."
+}

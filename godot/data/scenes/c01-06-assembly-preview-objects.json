@@ -197,28 +197,20 @@
       ],
       "pointerPolygonPixels": [
         [
-          170,
-          660
+          180,
+          700
         ],
         [
-          550,
-          810
+          245,
+          700
         ],
         [
-          1150,
-          580
+          245,
+          995
         ],
         [
-          1100,
-          1045
-        ],
-        [
-          520,
-          1196
-        ],
-        [
-          165,
-          1073
+          180,
+          995
         ]
       ],
       "contactShadowRadiiPixels": [
@@ -265,28 +257,20 @@
       ],
       "pointerPolygonPixels": [
         [
-          150,
-          560
+          700,
+          850
         ],
         [
-          730,
-          810
+          780,
+          850
         ],
         [
-          1100,
-          660
+          780,
+          1110
         ],
         [
-          1100,
-          1080
-        ],
-        [
-          735,
-          1198
-        ],
-        [
-          130,
-          1050
+          700,
+          1110
         ]
       ]
     },
@@ -1270,6 +1254,391 @@
       "contactShadowRadiiPixels": [
         55,
         9
+      ]
+    },
+    "yard-fence-up-v1": {
+      "resourcePath": "res://assets/native/c06-layered-v1/yard-fence-up-v1.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        270,
+        945
+      ],
+      "groundFrontPixels": [
+        270,
+        945
+      ],
+      "depthStrips": [
+        {
+          "rightPixels": 192,
+          "groundFrontPixels": [
+            96.0,
+            945.0
+          ]
+        },
+        {
+          "rightPixels": 384,
+          "groundFrontPixels": [
+            288.0,
+            937.5971830985916
+          ]
+        },
+        {
+          "rightPixels": 576,
+          "groundFrontPixels": [
+            480.0,
+            858.6338028169014
+          ]
+        },
+        {
+          "rightPixels": 768,
+          "groundFrontPixels": [
+            672.0,
+            779.6704225352113
+          ]
+        },
+        {
+          "rightPixels": 960,
+          "groundFrontPixels": [
+            864.0,
+            700.7070422535211
+          ]
+        },
+        {
+          "rightPixels": 1152,
+          "groundFrontPixels": [
+            1056.0,
+            621.743661971831
+          ]
+        },
+        {
+          "rightPixels": 1344,
+          "groundFrontPixels": [
+            1248.0,
+            542.7802816901408
+          ]
+        },
+        {
+          "rightPixels": 1536,
+          "groundFrontPixels": [
+            1440.0,
+            507.0
+          ]
+        }
+      ],
+      "contactShadowRadiiPixels": [
+        12,
+        2
+      ]
+    },
+    "yard-fence-down-v1": {
+      "resourcePath": "res://assets/native/c06-layered-v1/yard-fence-down-v1.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        1320,
+        970
+      ],
+      "groundFrontPixels": [
+        1320,
+        970
+      ],
+      "depthStrips": [
+        {
+          "rightPixels": 192,
+          "groundFrontPixels": [
+            96.0,
+            493.0
+          ]
+        },
+        {
+          "rightPixels": 384,
+          "groundFrontPixels": [
+            288.0,
+            518.3816513761468
+          ]
+        },
+        {
+          "rightPixels": 576,
+          "groundFrontPixels": [
+            480.0,
+            602.4036697247707
+          ]
+        },
+        {
+          "rightPixels": 768,
+          "groundFrontPixels": [
+            672.0,
+            686.4256880733944
+          ]
+        },
+        {
+          "rightPixels": 960,
+          "groundFrontPixels": [
+            864.0,
+            770.4477064220184
+          ]
+        },
+        {
+          "rightPixels": 1152,
+          "groundFrontPixels": [
+            1056.0,
+            854.4697247706422
+          ]
+        },
+        {
+          "rightPixels": 1344,
+          "groundFrontPixels": [
+            1248.0,
+            938.4917431192661
+          ]
+        },
+        {
+          "rightPixels": 1536,
+          "groundFrontPixels": [
+            1440.0,
+            970.0
+          ]
+        }
+      ],
+      "contactShadowRadiiPixels": [
+        12,
+        2
+      ]
+    },
+    "yard-crate-barrel-v1": {
+      "resourcePath": "res://assets/native/c06-layered-v1/yard-crate-barrel-v1.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        575,
+        925
+      ],
+      "groundFrontPixels": [
+        575,
+        925
+      ],
+      "depthStrips": [
+        {
+          "rightPixels": 400,
+          "groundFrontPixels": [
+            200.0,
+            790.0
+          ]
+        },
+        {
+          "rightPixels": 575,
+          "groundFrontPixels": [
+            487.5,
+            889.7388059701493
+          ]
+        },
+        {
+          "rightPixels": 720,
+          "groundFrontPixels": [
+            647.5,
+            881.7788461538462
+          ]
+        },
+        {
+          "rightPixels": 840,
+          "groundFrontPixels": [
+            780.0,
+            802.7884615384615
+          ]
+        },
+        {
+          "rightPixels": 960,
+          "groundFrontPixels": [
+            900.0,
+            805.7777777777778
+          ]
+        },
+        {
+          "rightPixels": 1080,
+          "groundFrontPixels": [
+            1020.0,
+            851.1111111111111
+          ]
+        },
+        {
+          "rightPixels": 1200,
+          "groundFrontPixels": [
+            1140.0,
+            838.1818181818181
+          ]
+        },
+        {
+          "rightPixels": 1536,
+          "groundFrontPixels": [
+            1368.0,
+            770.0
+          ]
+        }
+      ],
+      "contactShadowRadiiPixels": [
+        35,
+        5
+      ]
+    },
+    "yard-fence-up-short-v2": {
+      "resourcePath": "res://assets/native/c06-layered-v1/yard-fence-up-short-v2.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        190,
+        917
+      ],
+      "groundFrontPixels": [
+        190,
+        917
+      ],
+      "depthStrips": [
+        {
+          "rightPixels": 192,
+          "groundFrontPixels": [
+            96.0,
+            917.0
+          ]
+        },
+        {
+          "rightPixels": 384,
+          "groundFrontPixels": [
+            288.0,
+            873.1261538461539
+          ]
+        },
+        {
+          "rightPixels": 576,
+          "groundFrontPixels": [
+            480.0,
+            787.1692307692308
+          ]
+        },
+        {
+          "rightPixels": 768,
+          "groundFrontPixels": [
+            672.0,
+            701.2123076923077
+          ]
+        },
+        {
+          "rightPixels": 960,
+          "groundFrontPixels": [
+            864.0,
+            626.0
+          ]
+        },
+        {
+          "rightPixels": 1152,
+          "groundFrontPixels": [
+            1056.0,
+            626.0
+          ]
+        },
+        {
+          "rightPixels": 1344,
+          "groundFrontPixels": [
+            1248.0,
+            626.0
+          ]
+        },
+        {
+          "rightPixels": 1536,
+          "groundFrontPixels": [
+            1440.0,
+            626.0
+          ]
+        }
+      ],
+      "contactShadowRadiiPixels": [
+        12,
+        2
+      ]
+    },
+    "yard-fence-down-short-v2": {
+      "resourcePath": "res://assets/native/c06-layered-v1/yard-fence-down-short-v2.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        860,
+        930
+      ],
+      "groundFrontPixels": [
+        860,
+        930
+      ],
+      "depthStrips": [
+        {
+          "rightPixels": 192,
+          "groundFrontPixels": [
+            96.0,
+            620.0
+          ]
+        },
+        {
+          "rightPixels": 384,
+          "groundFrontPixels": [
+            288.0,
+            671.1386861313869
+          ]
+        },
+        {
+          "rightPixels": 576,
+          "groundFrontPixels": [
+            480.0,
+            758.029197080292
+          ]
+        },
+        {
+          "rightPixels": 768,
+          "groundFrontPixels": [
+            672.0,
+            844.9197080291971
+          ]
+        },
+        {
+          "rightPixels": 960,
+          "groundFrontPixels": [
+            864.0,
+            930.0
+          ]
+        },
+        {
+          "rightPixels": 1152,
+          "groundFrontPixels": [
+            1056.0,
+            930.0
+          ]
+        },
+        {
+          "rightPixels": 1344,
+          "groundFrontPixels": [
+            1248.0,
+            930.0
+          ]
+        },
+        {
+          "rightPixels": 1536,
+          "groundFrontPixels": [
+            1440.0,
+            930.0
+          ]
+        }
+      ],
+      "contactShadowRadiiPixels": [
+        12,
+        2
       ]
     }
   }

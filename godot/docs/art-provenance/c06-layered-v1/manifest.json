@@ -417,6 +417,61 @@
       ],
       "mode": "RGBA",
       "status": "unbound alpha cleanup; old haze negative control and unchanged-transform lower-material check passed"
+    },
+    {
+      "file": "assets/native/c06-layered-v1/yard-fence-up-v1.png",
+      "generation": "exec-924dcd5b-59fc-47c8-9e9d-9d3ee67a867b",
+      "sha256": "fb21f4efb627d95b0b6afa04746b7b698501081dae5241de680359a5851471a5",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "partial modular yard-fence candidate; no new collision; actual alpha/runtime checks pending"
+    },
+    {
+      "file": "assets/native/c06-layered-v1/yard-fence-down-v1.png",
+      "generation": "exec-8db1b683-2436-4772-acd6-d40ab59afe1e",
+      "sha256": "5dfef42df31790d66bb998ef49a7c395b245605a3ecfafb57641262cfbb8434b",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "partial modular yard-fence candidate; no new collision; actual alpha/runtime checks pending"
+    },
+    {
+      "file": "assets/native/c06-layered-v1/yard-crate-barrel-v1.png",
+      "generation": "exec-b4b7d65a-59e2-4b28-a7cd-2c96e6866407",
+      "sha256": "fd6c39ff32b110a6d6556e6ce2702d15bf6ad7111e777e07991620a150cec471",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "partial preview existing yard supplies; independent depth groups, native route review pending"
+    },
+    {
+      "file": "assets/native/c06-layered-v1/yard-fence-up-short-v2.png",
+      "generation": "exec-9b279bb5-7477-46a1-8e46-bab95715e42d",
+      "sha256": "a11c1ed3ae28f492e772e5bc7eea1a051ad89ab41a3eb009e21f4a7eec998848",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "shorter beam span preserves meaningful post height; no nonuniform stretching; partial preview only"
+    },
+    {
+      "file": "assets/native/c06-layered-v1/yard-fence-down-short-v2.png",
+      "generation": "exec-816b1ef1-6044-4e27-80c0-9de5417d0534",
+      "sha256": "22bb5a7ac8c1730a9fb582c114e843811362dc4d27a201a15bc7ea9f3fefb84a",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "shorter beam span preserves meaningful post height; no nonuniform stretching; partial preview only"
     }
   ]
 }

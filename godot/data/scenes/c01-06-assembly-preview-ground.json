@@ -686,6 +686,510 @@
       "selectionCell": null,
       "ownsMapStructureBody": false,
       "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-NW-left",
+      "assetId": "yard-fence-up-short-v2",
+      "contact": [
+        10.247243623804463,
+        6.961135570062242
+      ],
+      "scale": 0.04649309245483518,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-NW-back",
+      "assetId": "yard-fence-down-v1",
+      "contact": [
+        16.470734285258455,
+        6.712017959704622
+      ],
+      "scale": 0.04945756222080408,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-N-front",
+      "assetId": "yard-fence-down-v1",
+      "contact": [
+        25.546815172303766,
+        8.196496945938554
+      ],
+      "scale": 0.055041480536056134,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-N-right",
+      "assetId": "yard-fence-up-v1",
+      "contact": [
+        25.622754491017965,
+        8.176005132591957
+      ],
+      "scale": 0.06237524950099802,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-N-shelter-front",
+      "assetId": "yard-fence-up-v1",
+      "contact": [
+        28.03686377245509,
+        8.506415739948674
+      ],
+      "scale": 0.05239520958083828,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-NE-left",
+      "assetId": "yard-fence-down-v1",
+      "contact": [
+        36.36000319081046,
+        9.267139210502323
+      ],
+      "scale": 0.04706445437141015,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-NE-rear",
+      "assetId": "yard-fence-up-v1",
+      "contact": [
+        35.111059131736525,
+        8.55549615055603
+      ],
+      "scale": 0.057385229540918056,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-NE-front-corner",
+      "assetId": "yard-fence-down-short-v2",
+      "contact": [
+        39.13135992462311,
+        10.24273151471644
+      ],
+      "scale": 0.042713567839195984,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-NE-right",
+      "assetId": "yard-fence-up-v1",
+      "contact": [
+        40.78882859281437,
+        10.222946963216424
+      ],
+      "scale": 0.049900199600798056,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-NE-back",
+      "assetId": "yard-fence-down-v1",
+      "contact": [
+        41.682015794511805,
+        9.041981949129363
+      ],
+      "scale": 0.04546904913848119,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-NE-tree-front",
+      "assetId": "yard-fence-down-v1",
+      "contact": [
+        43.48635928525846,
+        10.051303673990335
+      ],
+      "scale": 0.04945756222080411,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-SW-left",
+      "assetId": "yard-fence-down-v1",
+      "contact": [
+        9.853202776005107,
+        23.346339684565596
+      ],
+      "scale": 0.05344607530312705,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-SW-left-back",
+      "assetId": "yard-fence-up-v1",
+      "contact": [
+        8.357129491017965,
+        22.479576561163388
+      ],
+      "scale": 0.06237524950099797,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-SW-front-left",
+      "assetId": "yard-fence-down-v1",
+      "contact": [
+        12.385808870453095,
+        24.773361290910746
+      ],
+      "scale": 0.05583918315252071,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-SW-front-right",
+      "assetId": "yard-fence-up-v1",
+      "contact": [
+        12.473740019960081,
+        24.75570287995438
+      ],
+      "scale": 0.04657351962741182,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-SW-right",
+      "assetId": "yard-fence-up-v1",
+      "contact": [
+        15.881237524950098,
+        23.471414314228678
+      ],
+      "scale": 0.058216899534264926,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-SW-back",
+      "assetId": "yard-fence-down-short-v2",
+      "contact": [
+        16.703596105527637,
+        22.267318736539842
+      ],
+      "scale": 0.04020100502512562,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-SE-left-back",
+      "assetId": "yard-fence-up-v1",
+      "contact": [
+        31.487306636726544,
+        22.66406472768748
+      ],
+      "scale": 0.06902860944777109,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-SE-left-front",
+      "assetId": "yard-fence-down-v1",
+      "contact": [
+        32.93744017230376,
+        23.500068374509983
+      ],
+      "scale": 0.05504148053605599,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-SE-gate-left",
+      "assetId": "yard-fence-down-v1",
+      "contact": [
+        33.9809349074665,
+        24.093217248609715
+      ],
+      "scale": 0.03988513082322906,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-SE-front-left",
+      "assetId": "yard-fence-down-v1",
+      "contact": [
+        36.79819120931717,
+        25.052067189351813
+      ],
+      "scale": 0.03908742820676447,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-SE-front-right-a",
+      "assetId": "yard-fence-up-v1",
+      "contact": [
+        37.856505738522955,
+        25.478863701169086
+      ],
+      "scale": 0.05655355954757145,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-SE-front-right-b",
+      "assetId": "yard-fence-up-v1",
+      "contact": [
+        39.247130738522955,
+        24.639577986883374
+      ],
+      "scale": 0.05655355954757118,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-SE-back",
+      "assetId": "yard-fence-down-v1",
+      "contact": [
+        39.32570696394384,
+        22.645620612635607
+      ],
+      "scale": 0.03709317166560311,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-supplies-NW-front",
+      "assetId": "yard-crate-barrel-v1",
+      "contact": [
+        14.15625,
+        7.464285714285714
+      ],
+      "scale": 0.027499999999999997,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-supplies-NW-side",
+      "assetId": "yard-crate-barrel-v1",
+      "contact": [
+        15.59375,
+        6.857142857142857
+      ],
+      "scale": 0.03375,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-supplies-N-left",
+      "assetId": "yard-crate-barrel-v1",
+      "contact": [
+        21.75,
+        6.75
+      ],
+      "scale": 0.028749999999999998,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-supplies-N-front",
+      "assetId": "yard-crate-barrel-v1",
+      "contact": [
+        24.125,
+        7.464285714285714
+      ],
+      "scale": 0.028749999999999998,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-supplies-N-annex",
+      "assetId": "yard-crate-barrel-v1",
+      "contact": [
+        26.46875,
+        7.0
+      ],
+      "scale": 0.03,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-supplies-N-supply",
+      "assetId": "yard-crate-barrel-v1",
+      "contact": [
+        28.0625,
+        7.25
+      ],
+      "scale": 0.03,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-supplies-NE-left",
+      "assetId": "yard-crate-barrel-v1",
+      "contact": [
+        36.4375,
+        8.642857142857142
+      ],
+      "scale": 0.028749999999999998,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-supplies-NE-front",
+      "assetId": "yard-crate-barrel-v1",
+      "contact": [
+        39.6875,
+        9.857142857142858
+      ],
+      "scale": 0.03375,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-supplies-NE-side",
+      "assetId": "yard-crate-barrel-v1",
+      "contact": [
+        41.5625,
+        8.821428571428571
+      ],
+      "scale": 0.03375,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-supplies-SW-left",
+      "assetId": "yard-crate-barrel-v1",
+      "contact": [
+        9.90625,
+        22.357142857142858
+      ],
+      "scale": 0.028749999999999998,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-supplies-SW-front",
+      "assetId": "yard-crate-barrel-v1",
+      "contact": [
+        11.96875,
+        24.0
+      ],
+      "scale": 0.028749999999999998,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-supplies-SW-side",
+      "assetId": "yard-crate-barrel-v1",
+      "contact": [
+        15.59375,
+        22.321428571428573
+      ],
+      "scale": 0.0325,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-supplies-SE-left",
+      "assetId": "yard-crate-barrel-v1",
+      "contact": [
+        33.125,
+        22.892857142857142
+      ],
+      "scale": 0.0325,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-supplies-SE-front",
+      "assetId": "yard-crate-barrel-v1",
+      "contact": [
+        36.71875,
+        23.964285714285715
+      ],
+      "scale": 0.03,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-supplies-SE-side",
+      "assetId": "yard-crate-barrel-v1",
+      "contact": [
+        38.4375,
+        22.714285714285715
+      ],
+      "scale": 0.03125,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-supplies-SE-shelter",
+      "assetId": "yard-crate-barrel-v1",
+      "contact": [
+        41.875,
+        23.892857142857142
+      ],
+      "scale": 0.03125,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-SE-front-left-b",
+      "assetId": "yard-fence-down-v1",
+      "contact": [
+        37.89194120931717,
+        25.552067189351813
+      ],
+      "scale": 0.03908742820676447,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "yard-fence-SE-back-b",
+      "assetId": "yard-fence-down-v1",
+      "contact": [
+        40.34133196394384,
+        23.145620612635607
+      ],
+      "scale": 0.03709317166560311,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
     }
   ]
 }

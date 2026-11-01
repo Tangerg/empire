@@ -167,3 +167,12 @@ Built-in imagegen precise-object-edit, exec-30bc3016-97d0-4f26-8cae-c525dd991efe
 Built-in background-extraction edit exec-ce1c0092-7025-42d9-a36e-ae10dcbbf0b1, input red-cottage-dual-door-night-v2. Requested exact canvas/building/contact preservation, remove ALL surrounding blue/gray/black halo and seven specified exterior pixels to alpha0, preserve solid chimney/roof/walls/two doors/steps. Actual result changed some material colors and edge pixels, so not called byte-exact; same transform and fresh actual lower contour verified.
 
 West rail exec-8ec26fc8-095f-40b0-946c-c8a96bcf4b84 was an unnecessary background cleanup experiment: inspected original exterior already alpha0 despite RGB fog appearance. Not adopted. Ground erase experiment exec-1c1a843e-2f03-4088-b1d2-74d2a024b0e8 repainted over1.2million pixels outside intended lamp patches and changed32/40bridge center witnesses; rejected, ground remainsv4.
+
+## Independent existing yard props
+Built-in transparent imagegen, using original yard crops and existing winter-material style references:
+- exec-924dcd5b-59fc-47c8-9e9d-9d3ee67a867b yard-fence-up-v1: two posts/two beams, short low village fence, ascending-right, no ground/haze. Actual feet independently measured; prompt coordinates not treated as facts.
+- exec-8db1b683-2436-4772-acd6-d40ab59afe1e yard-fence-down-v1: matching opposite direction, two posts, same snow/timber, no ground.
+- exec-9b279bb5-7477-46a1-8e46-bab95715e42d yard-fence-up-short-v2: shorten only beam separation while retaining post size, preserve canvas. Generated geometry remeasured, not assumed exact requestedcoordinates.
+- exec-816b1ef1-6044-4e27-80c0-9de5417d0534 yard-fence-down-short-v2: matching opposite short bay with full post height.
+- exec-b4b7d65a-59e2-4b28-a7cd-2c96e6866407 yard-crate-barrel-v1: one ordinary crate and one upright barrel, snow caps, winter painted materials, no treasure/labels/ground or shadow. Simplifies original stored-prop regions, not exact original object counts.
+All full generated textures are retained, no bitmap stretching/painting/cutout by Python. Source crops/grid annotations are inspection evidence only.
