@@ -46,3 +46,6 @@ Northern lookout architecture/voids and leaves; remaining scene responsibility; 
 
 ## Second formal-loader slice
 The seven-member barracks front canopy now follows the same compiler and explicit contact owner; no canopy-specific runtime path. Original triangle→slab clip→affine UV order differs from the fence exporter and is preserved. One source roof UV edge is deliberately inset0.2% to remove an alpha239 material defect. See [canopy-surface-audit](canopy-surface-audit/README.md) for original-failure, repaired equivalence, actual-role controls and GPU differences. Official scene binding remains blocked by incomplete scene responsibility.
+
+## Granary cloth canopy formal-loader slice
+The reviewed17-member cloth canopy uses the same surface compiler in an unbound main+canopy preview; no new runtime wrapper or UV repair. Formal vertices match original source clips exactly; old per-column transform differs at18Xcoordinates by1ULP. Actual C07 front/back, existing site/approach, material voids and targeted negatives remain intact.125 polygon nodes replace474 historical canopy polygons. See [granary-canopy-surface-audit](granary-canopy-surface-audit/README.md). Other cargo/yard/full-scene responsibilities and material/shadow debt remain open; no real-play progress.

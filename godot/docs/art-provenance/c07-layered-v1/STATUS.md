@@ -38,3 +38,6 @@ The isolated training-fence surface now has a production-loader path; the offici
 
 ## Second formal-loader slice
 The barracks front canopy's seven reviewed members use the same formal compiler in an unbound composition. A documented0.2% roof UV inset repairs a previously missed alpha239 edge; no world geometry/support changes.54 same-support polygon nodes replace193 historical canopy polygons. See [canopy-surface-audit](canopy-surface-audit/README.md). This is static loader integration, not full barracks/C07 acceptance or real play.
+
+## Granary cloth canopy formal-loader slice
+The reviewed17-member cloth canopy uses the same surface compiler in an unbound main+canopy preview; no new runtime wrapper or UV repair. Formal vertices match original source clips exactly; old per-column transform differs at18Xcoordinates by1ULP. Actual C07 front/back, existing site/approach, material voids and targeted negatives remain intact.125 polygon nodes replace474 historical canopy polygons. See [granary-canopy-surface-audit](granary-canopy-surface-audit/README.md). Other cargo/yard/full-scene responsibilities and material/shadow debt remain open; no real-play progress.

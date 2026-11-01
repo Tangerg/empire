@@ -1,0 +1,833 @@
+{
+  "scope": "UNBOUND complete granary cloth canopy geometry. Only west384216 is an observed ground join. Intermediate408219 is hidden structural support only; visible post ends inside independently owned box top200. Front439.5223/east503207 are explicitly authored hidden-foot completions after observed shafts, not recovered original feet. Main house/cargo/red roof excluded.",
+  "textureResourcePath": "res://assets/native/c04-layered-v1/supply-canopy.png",
+  "namePrefix": "GranaryCanopyColumn",
+  "supportLine": [
+    [
+      379,
+      215.1666666667
+    ],
+    [
+      384,
+      216
+    ],
+    [
+      408,
+      219
+    ],
+    [
+      439.5,
+      223
+    ],
+    [
+      503,
+      207
+    ],
+    [
+      506,
+      206.244094488
+    ]
+  ],
+  "members": [
+    {
+      "id": "west-corner-certified-foot",
+      "polygon": [
+        [
+          380,
+          155
+        ],
+        [
+          383,
+          155
+        ],
+        [
+          386,
+          215
+        ],
+        [
+          384,
+          217
+        ],
+        [
+          382,
+          215
+        ]
+      ],
+      "uv": [
+        [
+          402,
+          420
+        ],
+        [
+          414,
+          420
+        ],
+        [
+          414,
+          515
+        ],
+        [
+          408,
+          520
+        ],
+        [
+          402,
+          515
+        ]
+      ],
+      "tint": "c6b8a1"
+    },
+    {
+      "id": "intermediate-visible-rod-hidden-foot-design",
+      "polygon": [
+        [
+          406,
+          168
+        ],
+        [
+          409,
+          169
+        ],
+        [
+          409.6,
+          200
+        ],
+        [
+          406,
+          200
+        ]
+      ],
+      "uv": [
+        [
+          402,
+          420
+        ],
+        [
+          414,
+          420
+        ],
+        [
+          414,
+          480
+        ],
+        [
+          402,
+          480
+        ]
+      ],
+      "tint": "aca18e"
+    },
+    {
+      "id": "front-central-visible-rod-hidden-foot-design",
+      "polygon": [
+        [
+          437.5,
+          181
+        ],
+        [
+          441.5,
+          181
+        ],
+        [
+          441.5,
+          222
+        ],
+        [
+          439.5,
+          223
+        ],
+        [
+          437.5,
+          222
+        ]
+      ],
+      "uv": [
+        [
+          402,
+          420
+        ],
+        [
+          414,
+          420
+        ],
+        [
+          414,
+          515
+        ],
+        [
+          408,
+          520
+        ],
+        [
+          402,
+          515
+        ]
+      ],
+      "tint": "d1c0a6"
+    },
+    {
+      "id": "east-attached-visible-rod-hidden-foot-design",
+      "polygon": [
+        [
+          501,
+          153
+        ],
+        [
+          505,
+          153
+        ],
+        [
+          505,
+          206
+        ],
+        [
+          503,
+          208
+        ],
+        [
+          501,
+          206
+        ]
+      ],
+      "uv": [
+        [
+          402,
+          420
+        ],
+        [
+          414,
+          420
+        ],
+        [
+          414,
+          515
+        ],
+        [
+          408,
+          520
+        ],
+        [
+          402,
+          515
+        ]
+      ],
+      "tint": "c4b7a2"
+    },
+    {
+      "id": "front-left-knee",
+      "polygon": [
+        [
+          437.5,
+          182
+        ],
+        [
+          433.5,
+          179.5
+        ],
+        [
+          437.5,
+          187
+        ],
+        [
+          440,
+          185
+        ]
+      ],
+      "uv": [
+        [
+          402,
+          420
+        ],
+        [
+          414,
+          420
+        ],
+        [
+          414,
+          520
+        ],
+        [
+          402,
+          520
+        ]
+      ],
+      "tint": "b5a690"
+    },
+    {
+      "id": "front-right-knee",
+      "polygon": [
+        [
+          441,
+          183
+        ],
+        [
+          445,
+          180.5
+        ],
+        [
+          442,
+          188
+        ],
+        [
+          440,
+          186
+        ]
+      ],
+      "uv": [
+        [
+          402,
+          420
+        ],
+        [
+          414,
+          420
+        ],
+        [
+          414,
+          520
+        ],
+        [
+          402,
+          520
+        ]
+      ],
+      "tint": "b5a690"
+    },
+    {
+      "id": "west-knee",
+      "polygon": [
+        [
+          383,
+          156
+        ],
+        [
+          391,
+          160
+        ],
+        [
+          384,
+          168
+        ],
+        [
+          381,
+          164
+        ]
+      ],
+      "uv": [
+        [
+          402,
+          420
+        ],
+        [
+          414,
+          420
+        ],
+        [
+          414,
+          520
+        ],
+        [
+          402,
+          520
+        ]
+      ],
+      "tint": "b5a690"
+    },
+    {
+      "id": "east-knee",
+      "polygon": [
+        [
+          502,
+          155
+        ],
+        [
+          494,
+          159
+        ],
+        [
+          502,
+          168
+        ],
+        [
+          504,
+          162
+        ]
+      ],
+      "uv": [
+        [
+          402,
+          420
+        ],
+        [
+          414,
+          420
+        ],
+        [
+          414,
+          520
+        ],
+        [
+          402,
+          520
+        ]
+      ],
+      "tint": "b5a690"
+    },
+    {
+      "id": "authored-rear-wall-cleat-not-source-recovery",
+      "polygon": [
+        [
+          441,
+          125
+        ],
+        [
+          447,
+          126
+        ],
+        [
+          447,
+          130
+        ],
+        [
+          441,
+          129
+        ]
+      ],
+      "uv": [
+        [
+          402,
+          420
+        ],
+        [
+          414,
+          420
+        ],
+        [
+          414,
+          520
+        ],
+        [
+          402,
+          520
+        ]
+      ],
+      "tint": "bba98e"
+    },
+    {
+      "id": "continuous-cloth-sag-sector-0",
+      "polygon": [
+        [
+          380,
+          154
+        ],
+        [
+          412,
+          142.5
+        ],
+        [
+          442,
+          157
+        ]
+      ],
+      "uv": [
+        [
+          540,
+          340
+        ],
+        [
+          625,
+          310
+        ],
+        [
+          750,
+          350
+        ]
+      ],
+      "tint": "ece5d8"
+    },
+    {
+      "id": "continuous-cloth-sag-sector-1",
+      "polygon": [
+        [
+          412,
+          142.5
+        ],
+        [
+          444,
+          128
+        ],
+        [
+          442,
+          157
+        ]
+      ],
+      "uv": [
+        [
+          625,
+          310
+        ],
+        [
+          710,
+          280
+        ],
+        [
+          750,
+          350
+        ]
+      ],
+      "tint": "e7e2da"
+    },
+    {
+      "id": "continuous-cloth-sag-sector-2",
+      "polygon": [
+        [
+          444,
+          128
+        ],
+        [
+          474,
+          142.5
+        ],
+        [
+          442,
+          157
+        ]
+      ],
+      "uv": [
+        [
+          710,
+          280
+        ],
+        [
+          835,
+          320
+        ],
+        [
+          750,
+          350
+        ]
+      ],
+      "tint": "e6e2dd"
+    },
+    {
+      "id": "continuous-cloth-sag-sector-3",
+      "polygon": [
+        [
+          474,
+          142.5
+        ],
+        [
+          504,
+          154
+        ],
+        [
+          442,
+          157
+        ]
+      ],
+      "uv": [
+        [
+          835,
+          320
+        ],
+        [
+          960,
+          360
+        ],
+        [
+          750,
+          350
+        ]
+      ],
+      "tint": "eee8dd"
+    },
+    {
+      "id": "continuous-cloth-sag-sector-4",
+      "polygon": [
+        [
+          504,
+          154
+        ],
+        [
+          472,
+          169
+        ],
+        [
+          442,
+          157
+        ]
+      ],
+      "uv": [
+        [
+          960,
+          360
+        ],
+        [
+          875,
+          390
+        ],
+        [
+          750,
+          350
+        ]
+      ],
+      "tint": "fff3df"
+    },
+    {
+      "id": "continuous-cloth-sag-sector-5",
+      "polygon": [
+        [
+          472,
+          169
+        ],
+        [
+          440,
+          181
+        ],
+        [
+          442,
+          157
+        ]
+      ],
+      "uv": [
+        [
+          875,
+          390
+        ],
+        [
+          790,
+          420
+        ],
+        [
+          750,
+          350
+        ]
+      ],
+      "tint": "fff6e4"
+    },
+    {
+      "id": "continuous-cloth-sag-sector-6",
+      "polygon": [
+        [
+          440,
+          181
+        ],
+        [
+          410,
+          169
+        ],
+        [
+          442,
+          157
+        ]
+      ],
+      "uv": [
+        [
+          790,
+          420
+        ],
+        [
+          665,
+          380
+        ],
+        [
+          750,
+          350
+        ]
+      ],
+      "tint": "fff3df"
+    },
+    {
+      "id": "continuous-cloth-sag-sector-7",
+      "polygon": [
+        [
+          410,
+          169
+        ],
+        [
+          380,
+          154
+        ],
+        [
+          442,
+          157
+        ]
+      ],
+      "uv": [
+        [
+          665,
+          380
+        ],
+        [
+          540,
+          340
+        ],
+        [
+          750,
+          350
+        ]
+      ],
+      "tint": "f7ecda"
+    },
+    {
+      "id": "deliberate-filled-bay",
+      "polygon": [
+        [
+          380,
+          154
+        ],
+        [
+          504,
+          154
+        ],
+        [
+          504,
+          207
+        ],
+        [
+          439,
+          223
+        ],
+        [
+          384,
+          216
+        ]
+      ],
+      "uv": [
+        [
+          408,
+          450
+        ],
+        [
+          408,
+          450
+        ],
+        [
+          408,
+          450
+        ],
+        [
+          408,
+          450
+        ],
+        [
+          408,
+          450
+        ]
+      ],
+      "tint": "ffffff"
+    }
+  ],
+  "materialPositives": [
+    [
+      438,
+      166
+    ],
+    [
+      444,
+      133
+    ],
+    [
+      440,
+      180
+    ],
+    [
+      381,
+      174
+    ],
+    [
+      384,
+      212
+    ],
+    [
+      384,
+      216
+    ],
+    [
+      407,
+      184
+    ],
+    [
+      407,
+      196
+    ],
+    [
+      439,
+      200
+    ],
+    [
+      440,
+      204
+    ],
+    [
+      439,
+      217
+    ],
+    [
+      439,
+      219
+    ],
+    [
+      503,
+      185
+    ],
+    [
+      503,
+      194
+    ]
+  ],
+  "materialNegatives": [
+    [
+      384,
+      218
+    ],
+    [
+      448,
+      216
+    ],
+    [
+      440,
+      245
+    ]
+  ],
+  "siteIdentity": {
+    "selectionCell": [
+      35,
+      14
+    ],
+    "approach": [
+      36,
+      14
+    ],
+    "newOwner": false,
+    "pointer": "pass-through"
+  },
+  "textureAudit": {
+    "pureWoodRectangle": [
+      402,
+      420,
+      414,
+      520
+    ],
+    "pureWoodMinAlpha": 249,
+    "clothUvQuad": [
+      [
+        540,
+        340
+      ],
+      [
+        710,
+        280
+      ],
+      [
+        960,
+        360
+      ],
+      [
+        790,
+        420
+      ]
+    ],
+    "reason": "Only opaque existing material pixels are reused; original C04 cargo/fog/background are not geometry."
+  }
+}
