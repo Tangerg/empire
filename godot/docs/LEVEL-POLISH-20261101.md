@@ -358,3 +358,73 @@ ground/prop material coherence remain open; C03 overall acceptance is not comple
 C02 cannot inherit this wall-foundation test: its map has zero wall terrain cells.
 C04 has a separate positive-area foundation audit; do not substitute center-only
 opacity for that established rule.
+
+### C03 normal-AI manual conclusion (foundation revision 5b6982aa)
+
+Actual native GUI play finished at **turn 4, victory**, by breaking the gate chain.
+Torren traversed the original main opening `(65,24) → (66,24) → (67,24) → (68,24)`
+through normal move/attack input. Enemy AI acted normally, including artillery
+and bow damage; no damage-avoidance reload or engine-dispatched battle replaced
+this play. Four oathbound units converted to allies. Normal settlement reports
+**16 friendly survivors, 4 enemies remaining, 10 engagements, no new friendly
+fallen**, and advances to `aftermath-03`. The campaign carries the actual prior
+C02 settlement; C01 prior history remains a controlled entry fixture, so this is
+not a claim of continuous whole-campaign play. The on-screen fixture marker stays.
+
+Evidence root: `empire-evidence-20261101/`; index
+`c03-manual-play-evidence-index.json`, terminal `c03-terminal-FIXTURE.json`
+(SHA-256 `cff835cd0432e02c28952d2e1b55dd3a815a17d200f50fdb4aa295089c86cd18`),
+settled `c03-settled-autosave-FIXTURE.json`, and
+`c03-terminal-runtime-FIXTURE.log`. Native captures in `c03-foundation-v1/`:
+005 T2 start, 006 T2 human end, 007 T3 human end, 008 final forecast,
+009 actual victory, 010 normal settlement summary. Frames 001–004 were scene
+review, not battle progress. Forecast 33 is potential damage; terminal hit 21
+is capped by the target's remaining HP. North-gate traversal, the garrison/tower
+mouse overlap, HQ-capture alternative and T15 support route are not manually
+covered. Wall-support and material-coherence debt above remains open. Subsequent
+art-only reproductions must not be represented as a second complete playthrough.
+
+### C03 city-wall support checkpoint — functional, not visual acceptance
+
+The responsibility review separates 104 previously unsupported nine-point wall
+samples into specific wall, enclosure, tower and rock associations. This batch
+corrects **85 city-wall samples**: the garrison wing's front was accidentally
+25 source pixels too high; horizontal wall modules were too short for their
+registered blocked bands; long vertical walls had lost their side shoulders.
+The wing contact is restored, horizontal runs use fewer full-height modules,
+and independently generated low stone shoulders meet the existing vertical
+wall sides. No map, passability, selection cell, battle rule or gate is changed.
+No fake depth/front offsets or new renderer layer were introduced.
+
+`c01-03-city-defense-review.json` records the eight repaired responsibility
+groups and five remaining groups. Actual standing-material scan now yields
+**19 / 494** wall cells without any material at the same fixed nine samples,
+versus 104 before this batch. The remaining 19 comprise HQ west return (4),
+garrison east enclosure (6), tower rim (2), Keep east footing (4), and three
+retained bottom-ground rock samples; a missing standing sprite does not mean
+those three visible rocks are bare grass. Keep east has three old material
+witnesses, so that small registration regression remains explicit, not fixed.
+The other remaining groups had no old nine-point material witness either.
+
+Native CampaignNavigation: **3526 assertions, zero failed groups**; build zero
+warnings/errors. The first invocation refused its non-isolated default user-data
+path before exercising tests; corrected invocation used fresh `/tmp/empire-*`
+data. Expected storage-error negative fixtures remain in the successful log.
+The added defense guard checks all 85 reviewed supports, preserves the existing
+six actual gate checks and rejects the frozen old garrison-wing placement.
+All 172 house-support checks still pass. Focused full-wall probe has the same
+known unconfigured dynamic-object diagnostic, not a production resource failure.
+
+Actual 1180×760 / 1.25 native views: `c03-wall-footing-v1/native-002.png`
+(default) and `native-003.png` (city). They reload a copy of the actual T4 start
+in a separate XDG directory solely for visual reproduction; the successful
+terminal and settlement remain unchanged. The reproduction's initial autosave
+was mistakenly populated with the manual-envelope format and correctly rejected;
+manual F9 loads the valid copied T4 application save. No battle fact was edited.
+
+**Visual acceptance remains incomplete.** Root review finds horizontal bricks
+oversized relative to the vertical wall after the reduced repeat count; the short
+wing reads as three large block rows. Next revision must increase source brick
+density at the same world geometry, not trade away wall height, thickness or
+legal gates to hide the problem. Ground/prop material coherence remains open.
+This checkpoint is not a claim of top-tier finished art or a second full victory.

@@ -154,131 +154,11 @@
       "pointer": "block"
     },
     {
-      "id": "NorthWestWall0",
-      "assetId": "wall-horizontal",
-      "contact": [
-        66.109375,
-        10.777777777777779
-      ],
-      "scale": 0.07614555,
-      "selectionCell": null,
-      "ownsMapStructureBody": false,
-      "pointer": "block"
-    },
-    {
-      "id": "NorthWestWall1",
-      "assetId": "wall-horizontal",
-      "contact": [
-        69.578125,
-        10.777777777777779
-      ],
-      "scale": 0.07614555,
-      "selectionCell": null,
-      "ownsMapStructureBody": false,
-      "pointer": "block"
-    },
-    {
-      "id": "NorthEastWall0",
-      "assetId": "wall-horizontal",
-      "contact": [
-        76.09375,
-        10.88888888888889
-      ],
-      "scale": 0.06738544,
-      "selectionCell": null,
-      "ownsMapStructureBody": false,
-      "pointer": "block"
-    },
-    {
-      "id": "NorthEastWall1",
-      "assetId": "wall-horizontal",
-      "contact": [
-        79.15625,
-        10.88888888888889
-      ],
-      "scale": 0.06738544,
-      "selectionCell": null,
-      "ownsMapStructureBody": false,
-      "pointer": "block"
-    },
-    {
-      "id": "SouthWestWall0",
-      "assetId": "wall-horizontal",
-      "contact": [
-        66.63541666666667,
-        33.44444444444444
-      ],
-      "scale": 0.06918239,
-      "selectionCell": null,
-      "ownsMapStructureBody": false,
-      "pointer": "block"
-    },
-    {
-      "id": "SouthWestWall1",
-      "assetId": "wall-horizontal",
-      "contact": [
-        69.78125,
-        33.44444444444444
-      ],
-      "scale": 0.06918239,
-      "selectionCell": null,
-      "ownsMapStructureBody": false,
-      "pointer": "block"
-    },
-    {
-      "id": "SouthWestWall2",
-      "assetId": "wall-horizontal",
-      "contact": [
-        72.92708333333333,
-        33.44444444444444
-      ],
-      "scale": 0.06918239,
-      "selectionCell": null,
-      "ownsMapStructureBody": false,
-      "pointer": "block"
-    },
-    {
-      "id": "SouthEastWall0",
-      "assetId": "wall-horizontal",
-      "contact": [
-        79.30208333333333,
-        33.5
-      ],
-      "scale": 0.07906559,
-      "selectionCell": null,
-      "ownsMapStructureBody": false,
-      "pointer": "block"
-    },
-    {
-      "id": "SouthEastWall1",
-      "assetId": "wall-horizontal",
-      "contact": [
-        82.90625,
-        33.5
-      ],
-      "scale": 0.07906559,
-      "selectionCell": null,
-      "ownsMapStructureBody": false,
-      "pointer": "block"
-    },
-    {
-      "id": "SouthEastWall2",
-      "assetId": "wall-horizontal",
-      "contact": [
-        86.51041666666667,
-        33.5
-      ],
-      "scale": 0.07906559,
-      "selectionCell": null,
-      "ownsMapStructureBody": false,
-      "pointer": "block"
-    },
-    {
       "id": "GarrisonWing0",
       "assetId": "wall-horizontal",
       "contact": [
         81.875,
-        17.0
+        18.38888888888889
       ],
       "scale": 0.09568733,
       "selectionCell": null,
@@ -1064,6 +944,234 @@
       "pointer": "block",
       "selectionCell": null,
       "ownsMapStructureBody": false
+    },
+    {
+      "id": "SouthWestWall0",
+      "assetId": "wall-horizontal",
+      "contact": [
+        67.421875,
+        33.44444444444444
+      ],
+      "scale": 0.10309973,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "SouthWestWall1",
+      "assetId": "wall-horizontal",
+      "contact": [
+        72.140625,
+        33.44444444444444
+      ],
+      "scale": 0.10309973,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "SouthEastWall0",
+      "assetId": "wall-horizontal",
+      "contact": [
+        80.203125,
+        33.5
+      ],
+      "scale": 0.11792453,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "SouthEastWall1",
+      "assetId": "wall-horizontal",
+      "contact": [
+        85.609375,
+        33.5
+      ],
+      "scale": 0.11792453,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "NorthWestWall0",
+      "assetId": "wall-horizontal",
+      "contact": [
+        67.84375,
+        11.88888888888889
+      ],
+      "scale": 0.1509434,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "NorthEastWall0",
+      "assetId": "wall-horizontal",
+      "contact": [
+        77.625,
+        11.88888888888889
+      ],
+      "scale": 0.13342318,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "WestUpperOuterFoot0",
+      "assetId": "wall-low-footing",
+      "contact": [
+        65.0,
+        19.48148148148148
+      ],
+      "scale": 0.125,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "WestUpperOuterFoot1",
+      "assetId": "wall-low-footing",
+      "contact": [
+        65.0,
+        23.0
+      ],
+      "scale": 0.125,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "WestUpperInnerFoot0",
+      "assetId": "wall-low-footing",
+      "contact": [
+        66.75,
+        19.48148148148148
+      ],
+      "scale": 0.125,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "WestUpperInnerFoot1",
+      "assetId": "wall-low-footing",
+      "contact": [
+        66.75,
+        23.0
+      ],
+      "scale": 0.125,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "WestLowerOuterFoot0",
+      "assetId": "wall-low-footing",
+      "contact": [
+        65.0,
+        31.279999999999998
+      ],
+      "scale": 0.12,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "WestLowerOuterFoot1",
+      "assetId": "wall-low-footing",
+      "contact": [
+        65.0,
+        34.0
+      ],
+      "scale": 0.12,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "WestLowerInnerFoot0",
+      "assetId": "wall-low-footing",
+      "contact": [
+        66.75,
+        31.279999999999998
+      ],
+      "scale": 0.12,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "WestLowerInnerFoot1",
+      "assetId": "wall-low-footing",
+      "contact": [
+        66.75,
+        33.0
+      ],
+      "scale": 0.12,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "EastOuterFoot0",
+      "assetId": "wall-low-footing",
+      "contact": [
+        93.25,
+        15.571851851851854
+      ],
+      "scale": 0.13,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "EastOuterFoot1",
+      "assetId": "wall-low-footing",
+      "contact": [
+        93.25,
+        20.678888888888892
+      ],
+      "scale": 0.13,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "EastOuterFoot2",
+      "assetId": "wall-low-footing",
+      "contact": [
+        93.25,
+        25.785925925925923
+      ],
+      "scale": 0.13,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "EastOuterFoot3",
+      "assetId": "wall-low-footing",
+      "contact": [
+        93.25,
+        30.892962962962958
+      ],
+      "scale": 0.13,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "EastOuterFoot4",
+      "assetId": "wall-low-footing",
+      "contact": [
+        93.25,
+        36.0
+      ],
+      "scale": 0.13,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
     }
   ]
 }

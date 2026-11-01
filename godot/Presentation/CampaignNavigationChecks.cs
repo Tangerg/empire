@@ -843,6 +843,40 @@ public partial class CampaignNavigationChecks : Node
             }
         }
         Require(rejectedPlacementExposesCells > 0, "C03 foundation guard must reject the previous doorway-snapped assembly, not silently bless its exposed walls.");
+        var defenseReview = PresentationJson.Load<JsonObject>("res://data/scenes/c01-03-city-defense-review.json");
+        var walls = document.Objects.Where(value => value.AssetId.StartsWith("wall-", StringComparison.Ordinal))
+            .Select(value => ground.DepthEntries.Single(entry => entry.Node.Name.ToString() == value.Id).Visual!).ToArray();
+        foreach (var group in defenseReview["groups"]!.AsArray().OfType<JsonObject>())
+            foreach (var cell in group["cells"]!.AsArray().OfType<JsonArray>())
+            {
+                var x = cell[0]!.GetValue<int>();
+                var y = cell[1]!.GetValue<int>();
+                Require(level["terrain"]![y]!.GetValue<string>()[x] == '#', "C03 wall-support review must not invent blocked terrain.");
+                var supported = false;
+                foreach (var dx in new[] { -6, 0, 6 })
+                    foreach (var dy in new[] { -7, 0, 7 })
+                        supported |= walls.Any(visual => visual.Covers(board.ToGlobal(new Vector2(21 + 16 * x + dx, 26 + 18 * y + dy) * 1.5f)));
+                Require(supported, $"C03 city defense leaves reviewed wall support as bare ground: {group["id"]} ({x},{y}).");
+            }
+        var rejectedWing = defenseReview["negativeControlGarrisonWing"]!.AsObject();
+        var wingAsset = catalog.Objects[rejectedWing["assetId"]!.GetValue<string>()];
+        using (var pixels = ResourceLoader.Load<Texture2D>(wingAsset.ResourcePath).GetImage())
+        {
+            var oldContact = new Vector2(13 + 16 * rejectedWing["contact"]![0]!.GetValue<float>(),
+                17 + 18 * rejectedWing["contact"]![1]!.GetValue<float>());
+            var oldCoversBase = false;
+            foreach (var dx in new[] { -6, 0, 6 })
+                foreach (var dy in new[] { -7, 0, 7 })
+                {
+                    var source = new Vector2(21 + 16 * 82 + dx, 26 + 18 * 18 + dy);
+                    var pixel = (source - oldContact) * (1.5f / rejectedWing["scale"]!.GetValue<float>())
+                        + new Vector2((float)wingAsset.AnchorPixels[0], (float)wingAsset.AnchorPixels[1]);
+                    var px = Mathf.RoundToInt(pixel.X);
+                    var py = Mathf.RoundToInt(pixel.Y);
+                    oldCoversBase |= px >= 0 && py >= 0 && px < pixels.GetWidth() && py < pixels.GetHeight() && pixels.GetPixel(px, py).A > .1f;
+                }
+            Require(!oldCoversBase, "C03 defense regression control must expose the original 25px-high garrison wing registration.");
+        }
         foreach (var y in new[] { 12, 23, 24 })
             foreach (var x in new[] { 65, 66 })
             {
