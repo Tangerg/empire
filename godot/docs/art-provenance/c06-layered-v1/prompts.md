@@ -47,3 +47,25 @@ hand-painted tactical view. Subdued blue-green readable branch masses, moonlit
 snow patches, short visible brown trunks/root stones, compact triangular shape.
 No ground island/pedestal/background/bushes/buildings/people/text/festive lights,
 no haze or glow outside alpha. Full tips and root contacts with empty margins.
+
+## Clean ground v3 (two removals failed)
+Only remove residual west-bank outcrop around (478,374), x446..506/y335..400,
+retaining neighboring rocks/reeds/water/landing; remove pine rooted (335,134),
+needle region x290..392/y0..141, keeping neighboring bare tree and background.
+Preserve accepted low central bridge edge, exact 1643x957 and every other feature.
+Output did not remove these two correctly; not accepted or bound.
+
+## Snow rock outcrop v1
+Transparent 1536x1024, three joined angular blue-grey granite masses, tall middle
+and lower flanks, moonlit snow and broad simple painted planes. Compact real stone
+contact footprint suggested left(350,780), nearest(800,975), right(1250,780),
+rear hidden; top about(800,200). No transparent fake feet, snow platform, terrain
+island, shadow halo, vegetation, water, text or background. Actual resulting
+geometry must be sampled; prompt coordinates are not validated foot landmarks.
+
+## Opposite-facing slate cottage v1
+Mirror-facing version of night slate, same transparent 1536x1024 framing: gable
+on RIGHT, long roof/eaves wall with ground-level door facing LEFT. Mirror chimney,
+steps, windows, foundation and snow consistently, retain proportions/night palette.
+No redesign, gable door, new objects, terrain or glow. Actual output foot registration
+and door targeting are still pending, not presumed exact mathematical mirroring.

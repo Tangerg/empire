@@ -39,3 +39,16 @@ visual responsibility must be reviewed instead of fabricating an original rock.
 The night cottage preserves source silhouette approximately; independent alpha
 footing/door registration is still required. Transparent-margin inspected samples
 remain alpha zero despite RGB backdrop color in the generated PNG.
+
+## Later candidate review (not acceptance)
+
+Clean v2/v3 still retain the west-bank rock and explicit pine2. Do not duplicate
+them with independent objects yet. Three bridge decks retain the 40 inspected
+canonical centers; low central bridge foundation may remain. The current night
+slate palette asset has the wrong door/gable arrangement for the original houses.
+NE/SE need the opposite-facing version (new candidate saved); NW needs a gable
+door. North red needs its gable door/low annex, SW its additional gable door.
+Three opaque corner fits alone cannot certify these architectures. The initial SE
+slate fit of 5.004717 pixels fails the fixed five-pixel limit and is not rounded
+into a pass. The original snow-pines-17 named polygon is also mainly snow/low grass,
+not proof of a tree; actual roots, not old labels, must determine pivots.
