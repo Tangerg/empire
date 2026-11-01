@@ -492,7 +492,11 @@ accurately classified, not changed into new collision rules. Three true side-clo
 pixels now select their real site rather than ground; do not remove real facades
 merely to force every walkable center to return Ground.
 
-Normal C04 play from the actual C03 settlement is the next verification stage.
-C01 prior history still has a controlled entry fixture; no continuous full-campaign
-claim is made. Broader ground/prop stylistic consistency remains a visual review
-item across levels, not a reason to equate geometry tests with finished art.
+Normal C04 play from the actual C03 settlement is now complete: T6 primary victory
+after all three investigations and subsequent Laiya withdrawal, 9 allies alive,
+4 enemies remaining, five normal enemy turns and no combat reloads. Actual tent
+entry/body selection and settlement are indexed in `C04-NORMAL-PLAY-20261101.md`;
+formal native checks rerun at 332 assertions. C01 prior history still has a
+controlled entry fixture; no continuous full-campaign claim is made. The far east
+cart was not manually visited. Broader ground/prop stylistic consistency remains
+a visual review item across levels, not a reason to equate geometry with finished art.

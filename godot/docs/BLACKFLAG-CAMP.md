@@ -247,4 +247,8 @@ against its explicit reference scene; it no longer overrides current acceptance.
 Both pass with a newly compiled build, zero warnings/errors. They include detached
 legal-command objective probes, not normal-AI play. Native whole-map and normal
 1.25 previews are retained under `empire-evidence-20261101/c04-{before,after-physical}-*`.
-Actual carried-campaign C04 gameplay and final visual acceptance remain separate.
+Actual carried-campaign C04 normal-AI play subsequently completed at T6: three
+clues followed by Laiya withdrawal, 9 allies alive and 4 enemies remaining, with
+no combat reloads. See `C04-NORMAL-PLAY-20261101.md` for exact screenshots, hashes,
+carried-entry boundary and remaining visual/unvisited-object limits. Final art
+acceptance remains distinct from the completed route and geometry checks.
