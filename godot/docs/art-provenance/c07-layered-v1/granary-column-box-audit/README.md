@@ -1,0 +1,12 @@
+# Granary square post enclosure — bounded static assembly
+
+Original source identity is a square timber enclosure with two flat sides and a dark inset top, not the previously assumed round barrel. Whether it is a pedestal/container is unknown. Original bare post foot is hidden:408219 is only a designed structural extension, not an observed ground join. Visible post geometry now ends at the box-top insertion; box owns its own local lower profile. All materials reuse existing timber, no new raster generation or alpha editing.
+
+## Withdrawn diagnostic explanations
+The first background-depth mutant did not change final Pick, so its exit0 was **not** a valid depth-negative result. Two preliminary explanations were wrong and withdrawn: (1) another standing prop continued to cover the actor; (2) alpha244 fell below a special .96 actor-picking threshold. Engine SpriteStandingVisual uses IsPixelOpaque for both material and pointer coverage; the .96 check belongs only to the external textured-material helper and must not be confused with unit picking. No threshold was changed.
+
+Actual trace at archer415201: only box columns414/415 cover the point; actorZ=-2782, projected ground DrawDepth=-2780. In the background mutant boxZ=-3582, but PickScene breaks at the nearer ground before reaching the actor. With proper box depth, columnsZ=-2718/-2722 are nearer than both. Thus this below-foot pixel cannot prove end-to-end box hiding using Pick. It is retained only as an object-depth/ground-ownership diagnostic, not an old gameplay defect.
+
+A different existing C07 engineer sample at413200 has groundDrawDepth=-2788 behind actorZ=-2782. The background mutant actually makes this sample pick the engineer; its sampled texture alpha202 is accepted by the existing IsPixelOpaque path. This falsifies the mistaken numeric-alpha-threshold explanation independently. Final positive/negative results must show this engineer point as the end-to-end reverse control; original painted rear wrong-order still not claimed.
+
+Actual Laiya front poses24,15 west and26,15 east preserve real visible pixels, including source-certified412210/414212.768 adjacent-lane pixel centres and unchanged granary entrance/approach are checked. Candidate is unbound static rendering, not commands, saves, gameplay or production integration. Material scale/density and ground contact shadows remain whole-scene visual debt; no further minor granary stock expansion before council hall.

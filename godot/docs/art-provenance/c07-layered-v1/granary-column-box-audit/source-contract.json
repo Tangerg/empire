@@ -1,0 +1,1200 @@
+{
+  "scope": "Single foreground square wooden surround/base atsource399199..421219. Read-only PNG/JSON/alpha analysis, external filesonly; noengine/GUI/gameplay/saves/production edits.",
+  "source": {
+    "resourcePath": "res://assets/native/scenes/luojia.png",
+    "sha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+    "size": [
+      1536,
+      1024
+    ],
+    "paintedSha256": "37f95743c6278a6e8e0c1144feb37d38b9eb17790a776815c48a842190f23d91",
+    "occluderGroups": 55,
+    "standingParts": 108
+  },
+  "identityCorrection": {
+    "acceptedVisualDescription": "Square timber-sided box/surround at the canopy middle post, with two flat framed wood faces and a dark inset top. The post visually enters the central top. NOT a round barrel.",
+    "function": "Whether it is a purpose-built post pedestal, a boxed support, or another square container cannot be proved from these pixels. No visible foliage establishes a flowerpot function.",
+    "supersedesHistoricalMisnomer": [
+      "granary-left-shed-review/left-shed-and-large-grain-source-contract.json foregroundBarrelStartsAround",
+      "oldergrain-review references tobarrel atthissame location",
+      "thisdirectory filename inherited frominitialtask"
+    ],
+    "geometryConsequences": "Reuse flat wood faces/box geometry if restored. Do not generate or fit cylindricalstaves/roundbarrel based on oldname. Earlier finding that it obscuresgrain402-foot remains valid; onlyidentity was corrected."
+  },
+  "visibleGeometry": {
+    "materialBoundsApprox": [
+      399,
+      198,
+      420,
+      219
+    ],
+    "topCornersApprox": [
+      [
+        400,
+        202
+      ],
+      [
+        408,
+        198
+      ],
+      [
+        419,
+        202
+      ],
+      [
+        410,
+        205
+      ]
+    ],
+    "leftVisibleFaceApprox": [
+      [
+        400,
+        202
+      ],
+      [
+        410,
+        205
+      ],
+      [
+        410,
+        218
+      ],
+      [
+        401,
+        213
+      ]
+    ],
+    "rightVisibleFaceApprox": [
+      [
+        410,
+        205
+      ],
+      [
+        419,
+        202
+      ],
+      [
+        419,
+        214
+      ],
+      [
+        410,
+        218
+      ]
+    ],
+    "limit": "Source-read physical shape and two flatfaces, not an exact pixelmask/UV/productionmesh or hidden rear footprint. Soft painted edges mean inner contactsamples and material transitions are more defensible than alpha-bbox claims.",
+    "actualWoodPositives": [
+      {
+        "source": [
+          403,
+          208
+        ],
+        "rgba": [
+          97,
+          64,
+          43,
+          255
+        ],
+        "material": "visible left flat wooden face",
+        "cell": [
+          25,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      },
+      {
+        "source": [
+          412,
+          210
+        ],
+        "rgba": [
+          71,
+          44,
+          19,
+          255
+        ],
+        "material": "visible right/front flat wooden frame",
+        "cell": [
+          25,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      },
+      {
+        "source": [
+          414,
+          212
+        ],
+        "rgba": [
+          64,
+          42,
+          27,
+          255
+        ],
+        "material": "visible right wooden face/frame",
+        "cell": [
+          25,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      }
+    ],
+    "trueLowerContactSamples": [
+      {
+        "source": [
+          403,
+          214
+        ],
+        "rgba": [
+          49,
+          30,
+          25,
+          255
+        ],
+        "material": "left lower darkwood edge",
+        "cell": [
+          25,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      },
+      {
+        "source": [
+          410,
+          218
+        ],
+        "rgba": [
+          91,
+          66,
+          38,
+          255
+        ],
+        "material": "front lower wood/contact edge",
+        "cell": [
+          25,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      },
+      {
+        "source": [
+          418,
+          214
+        ],
+        "rgba": [
+          85,
+          55,
+          34,
+          255
+        ],
+        "material": "right lower wood edge",
+        "cell": [
+          26,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      }
+    ],
+    "groundBelowContacts": [
+      {
+        "source": [
+          403,
+          216
+        ],
+        "rgba": [
+          122,
+          105,
+          96,
+          255
+        ],
+        "material": "shadowed ground below leftwood",
+        "cell": [
+          25,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      },
+      {
+        "source": [
+          410,
+          220
+        ],
+        "rgba": [
+          230,
+          183,
+          125,
+          255
+        ],
+        "material": "sunlit ground below frontwood",
+        "cell": [
+          25,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      },
+      {
+        "source": [
+          418,
+          216
+        ],
+        "rgba": [
+          188,
+          154,
+          109,
+          255
+        ],
+        "material": "warm ground transition below rightwood",
+        "cell": [
+          26,
+          13
+        ],
+        "terrain": "#",
+        "oldStandingPartsContaining": []
+      }
+    ],
+    "samePointCaution": "These are the BOX/base contacts, not three exposed canopy-postfeet.",
+    "bottomThreeVisibleCornerJunctionsApprox": [
+      [
+        401,
+        213
+      ],
+      [
+        410,
+        218
+      ],
+      [
+        419,
+        214
+      ]
+    ],
+    "cornerQualification": "Approximate visible left/front/right outer face-junctions for source-aligned design. Not hiddenrear corner; trueLowerContactSamples are independently readable INNER material/contact samples and must not be silently renamed threeoutercorners.",
+    "cornerRgb": [
+      {
+        "source": [
+          401,
+          213
+        ],
+        "rgb": [
+          53,
+          32,
+          26
+        ]
+      },
+      {
+        "source": [
+          410,
+          218
+        ],
+        "rgb": [
+          91,
+          66,
+          38
+        ]
+      },
+      {
+        "source": [
+          419,
+          214
+        ],
+        "rgb": [
+          153,
+          127,
+          101
+        ]
+      }
+    ]
+  },
+  "postRelationship": {
+    "visiblePostMaterial": {
+      "source": [
+        408,
+        195
+      ],
+      "rgba": [
+        120,
+        89,
+        48,
+        255
+      ],
+      "material": "continuous vertical canopywood above square top",
+      "cell": [
+        25,
+        12
+      ],
+      "terrain": "#",
+      "oldStandingPartsContaining": []
+    },
+    "entryArea": [
+      406,
+      196,
+      412,
+      201
+    ],
+    "exposedPostGroundFoot": null,
+    "interpretation": "Post descends into/behind the dark square top near408199. Its continuation toground is hidden byboxfaces. It is reasonable to design the new post supported by this squarebase, but rawpostfoot408219 is NOT seen in original.",
+    "existingDesignedPost408219": "Retain explicitdesign classification if owner already used it. The visibleboxbottom410218 may inform supportassembly, but is not proof of a nakedpostgroundfoot408219. No existing production parameter altered here."
+  },
+  "materialNegatives": [
+    {
+      "source": [
+        406,
+        221
+      ],
+      "rgba": [
+        246,
+        194,
+        137,
+        255
+      ],
+      "material": "actual paving below/left of squarebox",
+      "cell": [
+        25,
+        13
+      ],
+      "terrain": "#",
+      "oldStandingPartsContaining": []
+    },
+    {
+      "source": [
+        410,
+        222
+      ],
+      "rgba": [
+        245,
+        194,
+        133,
+        255
+      ],
+      "material": "actual paving directly in front",
+      "cell": [
+        25,
+        13
+      ],
+      "terrain": "#",
+      "oldStandingPartsContaining": []
+    },
+    {
+      "source": [
+        422,
+        218
+      ],
+      "rgba": [
+        236,
+        184,
+        124,
+        255
+      ],
+      "material": "actual paving immediately right/front",
+      "cell": [
+        26,
+        13
+      ],
+      "terrain": "#",
+      "oldStandingPartsContaining": []
+    },
+    {
+      "source": [
+        424,
+        216
+      ],
+      "rgba": [
+        232,
+        178,
+        121,
+        255
+      ],
+      "material": "actual exposed paving east of squarebox",
+      "cell": [
+        26,
+        13
+      ],
+      "terrain": "#",
+      "oldStandingPartsContaining": []
+    }
+  ],
+  "ownerExclusions": [
+    {
+      "source": [
+        408,
+        195
+      ],
+      "rgba": [
+        120,
+        89,
+        48,
+        255
+      ],
+      "material": "canopy post: exclude from standalonebox surface, not world-empty",
+      "cell": [
+        25,
+        12
+      ],
+      "terrain": "#",
+      "oldStandingPartsContaining": []
+    },
+    {
+      "source": [
+        397,
+        207
+      ],
+      "rgba": [
+        95,
+        63,
+        20,
+        255
+      ],
+      "material": "adjacent strawbale material, not box/emptyground",
+      "cell": [
+        24,
+        12
+      ],
+      "terrain": "#",
+      "oldStandingPartsContaining": []
+    }
+  ],
+  "alliedStaticEvidence": {
+    "scope": "Bounded currentC07friendly13entries/9uniqueauthoredappearances, frame0idle only, bothfacings, 8nearbycanonicalp cells. Independently source-inspected wholebarrelcandidatepolygon; hits still require material/localfoot classification. Not nativePick/render or gameplay.",
+    "appearanceCount": 9,
+    "assets": [
+      "laiya-stage01",
+      "torren-stage01",
+      "C01-FFV1-UNIT-ARCHER",
+      "mirelle-stage01",
+      "bran-stage01",
+      "C01-FFV1-UNIT-BANNER-GUARD",
+      "C01-FFV1-UNIT-ENGINEER",
+      "C01-FFV1-UNIT-SWORDSMAN",
+      "C01-FFV1-UNIT-GRAVEKEEPER"
+    ],
+    "frameScope": "Idleframe0 only, bothfacings. 13currentalliedentries resolve to9uniqueauthoredappearances via currentartbindings. No enemywolf/ballista substituted.",
+    "scanMaskLimit": "Initial bounded polygon was labelledbarrelbefore identitycorrection. It is only a conservative boxmaterial-candidate region; every hit still needed source material classification. Preserve rawscan ratherthan overwrite identityhistory.",
+    "strongFront": {
+      "unitKey": "campaign-laiya",
+      "unitType": "c01.laiya",
+      "assetId": "laiya-stage01",
+      "presentInCanonicalC07AlliedRoster": true,
+      "cell": [
+        26,
+        15
+      ],
+      "terrain": "p",
+      "footSource": [
+        424,
+        248
+      ],
+      "facing": "east",
+      "frameIndex": 0,
+      "resourcePath": "res://assets/painted-units-v1/laiya-stage01-v2.png",
+      "sha256": "746951e2063e5ba4fad3a28c3ea78d4a2c32eed8b684cfe571808a04bbda414a",
+      "frameRegion": [
+        0,
+        0,
+        524,
+        725
+      ],
+      "anchor": [
+        273,
+        580
+      ],
+      "spriteScale": 0.0977654,
+      "witnesses": [
+        {
+          "source": [
+            412,
+            210
+          ],
+          "rgba": [
+            71,
+            44,
+            19,
+            255
+          ],
+          "material": "actual box material or tentative rim contact",
+          "cell": [
+            25,
+            13
+          ],
+          "terrain": "#",
+          "oldStandingPartsContaining": [],
+          "framePixelFloat": [
+            150.25718914871726,
+            191.31443230427124
+          ],
+          "nearestFramePixel": [
+            150,
+            191
+          ],
+          "actorRgba": [
+            68,
+            38,
+            20,
+            253
+          ]
+        },
+        {
+          "source": [
+            414,
+            212
+          ],
+          "rgba": [
+            64,
+            42,
+            27,
+            255
+          ],
+          "material": "actual box material or tentative rim contact",
+          "cell": [
+            25,
+            13
+          ],
+          "terrain": "#",
+          "oldStandingPartsContaining": [],
+          "framePixelFloat": [
+            170.7143242905977,
+            211.77156744615172
+          ],
+          "nearestFramePixel": [
+            171,
+            212
+          ],
+          "actorRgba": [
+            110,
+            96,
+            89,
+            253
+          ]
+        }
+      ],
+      "interpretation": "Strong actual friendly front control: footY248 is ahead of independently visible box contactY214..218. Preserve opaqueLaiya and Unit picking at both true wooden face points; no whole-actorcue requirement.",
+      "pOnlyTerrainPathFrom40_25": [
+        [
+          40,
+          25
+        ],
+        [
+          41,
+          25
+        ],
+        [
+          41,
+          24
+        ],
+        [
+          41,
+          23
+        ],
+        [
+          41,
+          22
+        ],
+        [
+          40,
+          22
+        ],
+        [
+          39,
+          22
+        ],
+        [
+          39,
+          21
+        ],
+        [
+          39,
+          20
+        ],
+        [
+          39,
+          19
+        ],
+        [
+          38,
+          19
+        ],
+        [
+          37,
+          19
+        ],
+        [
+          36,
+          19
+        ],
+        [
+          35,
+          19
+        ],
+        [
+          34,
+          19
+        ],
+        [
+          33,
+          19
+        ],
+        [
+          32,
+          19
+        ],
+        [
+          31,
+          19
+        ],
+        [
+          30,
+          19
+        ],
+        [
+          29,
+          19
+        ],
+        [
+          28,
+          19
+        ],
+        [
+          27,
+          19
+        ],
+        [
+          26,
+          19
+        ],
+        [
+          26,
+          18
+        ],
+        [
+          26,
+          17
+        ],
+        [
+          26,
+          16
+        ],
+        [
+          26,
+          15
+        ]
+      ],
+      "pathSteps": 26,
+      "pathLimit": "Static terrain connectivity only; no gameplay/save/action execution."
+    },
+    "weakBackCandidates": [
+      {
+        "unitKey": "campaign-elin",
+        "unitType": "c01.archer",
+        "assetId": "C01-FFV1-UNIT-ARCHER",
+        "presentInCanonicalC07AlliedRoster": true,
+        "cell": [
+          26,
+          12
+        ],
+        "terrain": "p",
+        "footSource": [
+          424,
+          200
+        ],
+        "facing": "east",
+        "frameIndex": 0,
+        "resourcePath": "res://assets/painted-units-v1/unit-archer-v2.png",
+        "sha256": "11ced5ca50226cd168e44c4351c7b7d1a9841d7a2758433ef916fa5a4ed2389d",
+        "frameRegion": [
+          0,
+          0,
+          545,
+          724
+        ],
+        "anchor": [
+          251,
+          555
+        ],
+        "spriteScale": 0.0843373,
+        "witnesses": [
+          {
+            "source": [
+              415,
+              201
+            ],
+            "rgba": [
+              65,
+              53,
+              38,
+              255
+            ],
+            "material": "actual box material or tentative rim contact",
+            "cell": [
+              25,
+              12
+            ],
+            "terrain": "#",
+            "oldStandingPartsContaining": [],
+            "framePixelFloat": [
+              144.28565178159604,
+              566.8571498020449
+            ],
+            "nearestFramePixel": [
+              144,
+              567
+            ],
+            "actorRgba": [
+              29,
+              10,
+              1,
+              244
+            ]
+          }
+        ],
+        "interpretation": "Only ONE candidate back overlap at a dark top-rim boundary/boot edge. Alpha244 is real, and footY200 is behind boxgroundY214..218, but originalmaterial/column rim responsibility and edge sampling still require native confirmation. NOT promoted to a robust demonstrated oldfailure.",
+        "pOnlyTerrainPathFrom40_25": [
+          [
+            40,
+            25
+          ],
+          [
+            41,
+            25
+          ],
+          [
+            41,
+            24
+          ],
+          [
+            41,
+            23
+          ],
+          [
+            41,
+            22
+          ],
+          [
+            40,
+            22
+          ],
+          [
+            39,
+            22
+          ],
+          [
+            39,
+            21
+          ],
+          [
+            39,
+            20
+          ],
+          [
+            39,
+            19
+          ],
+          [
+            38,
+            19
+          ],
+          [
+            37,
+            19
+          ],
+          [
+            36,
+            19
+          ],
+          [
+            35,
+            19
+          ],
+          [
+            34,
+            19
+          ],
+          [
+            33,
+            19
+          ],
+          [
+            32,
+            19
+          ],
+          [
+            31,
+            19
+          ],
+          [
+            30,
+            19
+          ],
+          [
+            29,
+            19
+          ],
+          [
+            28,
+            19
+          ],
+          [
+            27,
+            19
+          ],
+          [
+            26,
+            19
+          ],
+          [
+            26,
+            18
+          ],
+          [
+            26,
+            17
+          ],
+          [
+            26,
+            16
+          ],
+          [
+            26,
+            15
+          ],
+          [
+            27,
+            15
+          ],
+          [
+            27,
+            14
+          ],
+          [
+            27,
+            13
+          ],
+          [
+            27,
+            12
+          ],
+          [
+            26,
+            12
+          ]
+        ],
+        "pathSteps": 31,
+        "pathLimit": "Static terrain connectivity only; no gameplay/save/action execution."
+      },
+      {
+        "unitKey": "engineer",
+        "unitType": "c01.engineer",
+        "assetId": "C01-FFV1-UNIT-ENGINEER",
+        "presentInCanonicalC07AlliedRoster": true,
+        "cell": [
+          26,
+          12
+        ],
+        "terrain": "p",
+        "footSource": [
+          424,
+          200
+        ],
+        "facing": "east",
+        "frameIndex": 0,
+        "resourcePath": "res://assets/painted-units-v1/unit-engineer-gait-v2.png",
+        "sha256": "0bbb84ea899c647e19626452c01c410ed06c64646ab1c1aff83cdf47827b278e",
+        "frameRegion": [
+          0,
+          0,
+          571,
+          725
+        ],
+        "anchor": [
+          288,
+          552
+        ],
+        "spriteScale": 0.0886076,
+        "witnesses": [
+          {
+            "source": [
+              413,
+              200
+            ],
+            "rgba": [
+              47,
+              46,
+              38,
+              255
+            ],
+            "material": "actual box material or tentative rim contact",
+            "cell": [
+              25,
+              12
+            ],
+            "terrain": "#",
+            "oldStandingPartsContaining": [],
+            "framePixelFloat": [
+              163.85714995102,
+              552.0
+            ],
+            "nearestFramePixel": [
+              164,
+              552
+            ],
+            "actorRgba": [
+              30,
+              17,
+              10,
+              202
+            ]
+          }
+        ],
+        "interpretation": "Only ONE candidate overlap, alpha202 near dark pole/top join. Do not use it to claim a large barrel/box coverdefect. Retain as weak native candidate, not fixedcertifiedmaterial proof.",
+        "pOnlyTerrainPathFrom40_25": [
+          [
+            40,
+            25
+          ],
+          [
+            41,
+            25
+          ],
+          [
+            41,
+            24
+          ],
+          [
+            41,
+            23
+          ],
+          [
+            41,
+            22
+          ],
+          [
+            40,
+            22
+          ],
+          [
+            39,
+            22
+          ],
+          [
+            39,
+            21
+          ],
+          [
+            39,
+            20
+          ],
+          [
+            39,
+            19
+          ],
+          [
+            38,
+            19
+          ],
+          [
+            37,
+            19
+          ],
+          [
+            36,
+            19
+          ],
+          [
+            35,
+            19
+          ],
+          [
+            34,
+            19
+          ],
+          [
+            33,
+            19
+          ],
+          [
+            32,
+            19
+          ],
+          [
+            31,
+            19
+          ],
+          [
+            30,
+            19
+          ],
+          [
+            29,
+            19
+          ],
+          [
+            28,
+            19
+          ],
+          [
+            27,
+            19
+          ],
+          [
+            26,
+            19
+          ],
+          [
+            26,
+            18
+          ],
+          [
+            26,
+            17
+          ],
+          [
+            26,
+            16
+          ],
+          [
+            26,
+            15
+          ],
+          [
+            27,
+            15
+          ],
+          [
+            27,
+            14
+          ],
+          [
+            27,
+            13
+          ],
+          [
+            27,
+            12
+          ],
+          [
+            26,
+            12
+          ]
+        ],
+        "pathSteps": 31,
+        "pathLimit": "Static terrain connectivity only; no gameplay/save/action execution."
+      }
+    ],
+    "acceptedOldWrongOcclusionClaim": false,
+    "conclusion": "Current scan establishes strong friendly front controls, but only two isolated back edge samples. No robust old back-face/bodycover bug certified; no native execution. Restoring squarepostbase is primarily truthful support/stock responsibility, not a claimed fresh wholebody clipping incident."
+  },
+  "canonicalAndInputBoundary": {
+    "groundContactCells": [
+      [
+        25,
+        13
+      ],
+      [
+        26,
+        13
+      ]
+    ],
+    "terrain": "Both#; actual boxcontacts fit existingblockedarea. Upperprojectedtop can overlap othercells without making them physicalfootprints.",
+    "nearbyConnectedLegalPoses": [
+      [
+        26,
+        12
+      ],
+      [
+        27,
+        12
+      ],
+      [
+        28,
+        12
+      ],
+      [
+        27,
+        13
+      ],
+      [
+        24,
+        15
+      ],
+      [
+        26,
+        15
+      ],
+      [
+        27,
+        15
+      ]
+    ],
+    "site": "No separatecapturableobject. Keepgranarysite35,14 andapproach36,14 unchanged.",
+    "pointer": "pass-through materialcover; never infer same-celloccupant/newsite from squarebase",
+    "preserve": "Do not enlarge base into canonicalactorfeet just to force edge witnesses. Clear-source negatives are visualownership points, not newterrain permissions;424216 is in#26,13 despitevisiblepaving."
+  },
+  "newObjectControls": {
+    "positiveWood": [
+      [
+        403,
+        208
+      ],
+      [
+        412,
+        210
+      ],
+      [
+        414,
+        212
+      ]
+    ],
+    "negativePaving": [
+      [
+        406,
+        221
+      ],
+      [
+        410,
+        222
+      ],
+      [
+        422,
+        218
+      ],
+      [
+        424,
+        216
+      ]
+    ],
+    "frontActor": {
+      "unitKey": "campaign-laiya",
+      "cell": [
+        26,
+        15
+      ],
+      "facing": "east",
+      "frame": 0,
+      "samples": [
+        [
+          412,
+          210
+        ],
+        [
+          414,
+          212
+        ]
+      ],
+      "expected": "Actualopaqueactorvisibleandpickable infront"
+    },
+    "back": "If owner usesonepixelarcher415201, first confirm nativeactualalpha/rimownership and retain boundededge classification. Do not fabricate a stronger backcase or move samples afterPick.",
+    "negativeControl": "Latefrontdepth beyond248 would incorrectly hide fixedLaiya front samples and shouldfail. A broadopaque rectangle extending belowboxmust failactualpaving410222."
+  },
+  "references": [
+    "front-barrel-source.png",
+    "front-barrel-grid.png",
+    "friendly-idle-alpha-scan.json",
+    "square-base-contacts-and-negatives.png"
+  ],
+  "completionBoundary": "Single squarebase contract closed; no further roles/frames/poses or granary objects examined. Ready to return to previouslyclosedcouncil-hall review."
+}
