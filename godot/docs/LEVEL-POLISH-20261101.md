@@ -17,14 +17,14 @@ visual inspection and synthetic fixtures must remain separate evidence categorie
 | 02 三桥河谷 · 41×38 | All three refugees east, designated ballista destroyed; any refugee loss fails; center bridge ceasefire through enemy T3 | Independent ground + 41 standing objects (batch 5); normal escort, refusal feedback, bridge-rail picking, loss/settlement. |
 | 03 赤石围城 · 101×52 | Control link neutralized OR HQ captured; T4 allied reinforcements; node/shield/T15-engineer routes break link; limit 18 | Independent ground + 95 standing instances. Actual normal-AI T4 victory and settlement; 89 city-support samples repaired, 15 independently classified samples plus ground/prop material coherence remain open. |
 | 04 黑旗营地 · 50×30 | Three clues, then at least one clue-carrier (莱娅 or 米蕾) withdraws | Formal independent ground + 139 instances, 33 house foundation regions and 11 actual furniture feet checked; actual normal-AI T6 three-clue withdrawal victory recorded. Empty doorway vs real adjacent guard; clues, withdrawal and carried roster. |
-| 05 焚村令 · 50×32 | 莱娅 and at least two civilians survive seven rounds (normally human T8); enemy reinforcements T4; limit 11 | Formal independent ground + 58 objects; fresh C05 1499 assertions, depth-strip front/back negative controls, 26 original physical groups reviewed. Normal-AI T8 defense pending from explicitly text-reconstructed C04 recovery fixture, not original autosave bytes. |
-| 06 白河夜渡 · 50×32 | All four escorts reach north bank; pursuit T4, bridge warning T6, limit 13; warning is not physical bridge destruction | Whole map + 28 occlusion objects. Historical normal-AI T8 victory; this run not replayed. Recheck covered endpoint actor badges, zoom/load and carryover. |
+| 05 焚村令 · 50×32 | 莱娅 and at least two civilians survive seven rounds (normally human T8); enemy reinforcements T4; limit 11 | Formal independent ground + 58 objects; fresh C05 1499 assertions, depth-strip front/back negative controls, 26 original physical groups reviewed. New real normal-AI T8 defense/settlement complete from explicitly text-reconstructed C04 entry, not original autosave bytes. All three civilians survived; Bran loss/wounded result retained. Controlled cloud performance review is not passed. |
+| 06 白河夜渡 · 50×32 | All four escorts reach north bank; pursuit T4, bridge warning T6, limit 13; warning is not physical bridge destruction | Production remains painted + north-shelter picking fix. New real run paused T1 after10 friendly actions, no enemy turn; operation authorization pending. Independent99-object preview remains unbound: focused static root/depth/picking checks pass, seven bridge-support contacts and remaining wall/forest responsibility gaps unresolved. Historical victory is not new evidence. |
 | 07 无主之城 · 96×64 | Granary and militia-camp capture achievements latch; not simultaneous ownership; 莱娅 survives; limit 15 | Whole map + 55 occlusion objects / 16 capture points. Corrected map's complete normal-AI victory remains open; historical T9 route skipping enemy actions is not victory evidence. |
 
 For every map: verify actual scale and ground/building/actor integration, picking
 and passage, objective/reinforcement timing, camera/HUD obstruction, input feedback,
-save/load, and actual win/loss settlement. C05–07 painted-in objects remain an explicit
-art/interaction debt, not a claim of C01-style independent composition. Work will
+save/load, and actual win/loss settlement. C06–07 production painted-in objects remain an explicit
+art/interaction debt; C06 independent preview is not final production acceptance. Work will
 progress map by map rather than silently marking static validators as full polish.
 
 Sources: `godot/data/grayflag-campaign{,-levels}.json`, `godot/data/scenes/c01-*.json`,
@@ -500,3 +500,35 @@ formal native checks rerun at 332 assertions. C01 prior history still has a
 controlled entry fixture; no continuous full-campaign claim is made. The far east
 cart was not manually visited. Broader ground/prop stylistic consistency remains
 a visual review item across levels, not a reason to equate geometry with finished art.
+
+
+## Current C05/C06 checkpoint, 11:45 UTC
+
+C05 actual recovered-environment normal-AI completion and precise entry provenance
+are recorded in [C05 recovery](C05-ENVIRONMENT-RECOVERY-20261101.md). Controlled
+software-renderer results and open optimization boundaries are in
+[C05 rendering review](C05-SOFTWARE-RENDERING-REVIEW-20261101.md); they are not a
+user-hardware FPS claim or performance pass.
+
+C06 real play is separate from independent material fixtures. The actual entry
+comes from the new C05 settlement; realT1 has10 friendly actions recorded, with
+no enemy turn or new victory. The blocked normal operation remains paused; none
+of the subsequent renderer-only initial-state poses advance or read that save.
+
+The unbound99-object preview now has independent buildings, rails, props, a
+restored southwest high cliff, two proven foreground bare trees and one original
+front pine with visible root. Recent focused native probes cover1134 legal
+centers,180 entrances,180 body samples,20 site actor poses and8 specific tree
+front/back poses; these are static acceptance only. Original vs changed-source
+provenance, failed baseline and negative controls remain in
+`art-provenance/c06-layered-v1/`.
+
+Seven anatomical bridge contacts still need coherent support. Uniform widening
+covered water-center negatives; a local envelope bent straight spans; the final
+platform candidate failed its seven contacts. None was adopted. West(10,10) bank
+height remains uncertain, while east(42,13) is an actual wooden-beam false positive
+and must not be “repaired” to satisfy an approximate quad. Existing wall-expression
+gaps, hidden/retained forest ownership and cross-level ground/prop material
+coherence also remain incomplete. Do not promote the preview or claim fullC06
+polish from the passing focused probes. C07 work at this point is read-only
+source/pixel preinspection, not a new gameplay run or artwork acceptance.
