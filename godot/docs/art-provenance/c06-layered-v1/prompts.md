@@ -24,3 +24,26 @@ windowpanes, thin snow on tile/chimney/foundation edges. Keep readable dark slat
 compact geometry and approved simple painterly linework. No thick snow cap, opaque
 background, terrain platform, halo, extra vegetation/people/lamps/text; no reshaped
 footing/door. Raw generated RGBA preserved; acceptance awaits physical fitting.
+
+## Clean ground v2
+Precise follow-up to clean v1; same 1643x957 frame. Remove only residual tall land
+rocks in ROIs (940,15)-(1085,175), (1170,75)-(1335,180), (710,280)-(800,355),
+(440,325)-(510,400), (20,590)-(115,695), and residual edge pines in
+(20,70)-(226,190), (1365,50)-(1500,225), (20,760)-(190,935). Remove central bridge
+raised stone rails/end pillars above deck only; retain its deck edge thickness,
+arches and piers. Keep two clean timber decks, water/shore/reeds and all other
+positions unchanged; no new bottom-center rock, no new lights/objects/crop.
+
+## Red cottage night v1
+Edit night-slate sprite as exact geometry/alpha/canvas-preserving color variant.
+Only replace slate tiles with muted night russet terracotta, same snow pattern,
+tile scale, foundation, steps, window/door/chimney. No daylight orange, new shapes,
+background, terrain, glow or objects. Registration still independently checked.
+
+## Snow pines v1
+Full original C06 is style/palette reference only. Generate transparent cluster
+of three alpine spruces, tall center and two short companions, elevated 45-degree
+hand-painted tactical view. Subdued blue-green readable branch masses, moonlit
+snow patches, short visible brown trunks/root stones, compact triangular shape.
+No ground island/pedestal/background/bushes/buildings/people/text/festive lights,
+no haze or glow outside alpha. Full tips and root contacts with empty margins.
