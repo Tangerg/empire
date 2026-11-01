@@ -1,0 +1,134 @@
+{
+  "scope": "UNBOUND southwest independent left wooden leaf; source-derived soft-boundary interpretation, not exact cutout; own upward-right bottom.",
+  "textureResourcePath": "res://assets/native/c07-layered-v1/southeast-gate-v1-candidate.png",
+  "namePrefix": "SouthwestGateWoodLeaf",
+  "supportLine": [
+    [
+      188,
+      902
+    ],
+    [
+      191,
+      900
+    ],
+    [
+      198,
+      897
+    ],
+    [
+      205,
+      894
+    ],
+    [
+      208,
+      892
+    ]
+  ],
+  "members": [
+    {
+      "id": "left-arched-wood-leaf",
+      "polygon": [
+        [
+          188,
+          856
+        ],
+        [
+          191,
+          851
+        ],
+        [
+          196,
+          847
+        ],
+        [
+          201,
+          847
+        ],
+        [
+          208,
+          850
+        ],
+        [
+          208,
+          892
+        ],
+        [
+          188,
+          902
+        ]
+      ],
+      "uv": [
+        [
+          797.0,
+          838.7818181818182
+        ],
+        [
+          787.85,
+          832.2363636363636
+        ],
+        [
+          772.6,
+          827.0
+        ],
+        [
+          757.35,
+          827.0
+        ],
+        [
+          736.0,
+          830.9272727272727
+        ],
+        [
+          736.0,
+          885.9090909090909
+        ],
+        [
+          797.0,
+          899.0
+        ]
+      ],
+      "tint": "ffffff"
+    },
+    {
+      "id": "original-upward-right-crossbar",
+      "polygon": [
+        [
+          189,
+          874
+        ],
+        [
+          207,
+          864
+        ],
+        [
+          207,
+          866
+        ],
+        [
+          189,
+          876
+        ]
+      ],
+      "uv": [
+        [
+          780,
+          814
+        ],
+        [
+          744,
+          794
+        ],
+        [
+          743,
+          798
+        ],
+        [
+          779,
+          818
+        ]
+      ],
+      "tint": "ffffff"
+    }
+  ],
+  "validationStatus": "Closed native static positive/negative coverage; unbound, no gameplay; v48 checkpoint had planning only"
+}

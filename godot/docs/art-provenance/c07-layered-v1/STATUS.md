@@ -62,3 +62,6 @@ The two-member leaf joins the same selected assembly with22own supports, no addi
 
 ## Southwest stone formal integration
 Own five southwest regions now shared formal native-alpha owner:15instances/5sites/1373depth entries.1044source vertices exact, old reprojection1ULP;1405opening/5460native-alpha and actual roles pass. Roof-only negative preserves actors/pointers while intruding11road points. GPU back/front345/344pixels max2, context149max1, explicitly not identical. Original3.25px low-stone/art/foundation debt retained; left leaf next. See [southwest-stone-surface-audit](southwest-stone-surface-audit/README.md).
+
+## Southwest independent left leaf formal integration
+Own upward-right support integrated into same selected scene:16instances/5sites/1393depth entries.528vertices/source/UV/depth exact,1334coverage samples equal;1405opening and real front/back plus wrong-depth controls pass. Close-up GPU1pixel/max1,context exact;20nodes replace93 without FPS claim. Both southern gates now formal candidates, not completed whole sites. See [southwest-leaf-surface-audit](southwest-leaf-surface-audit/README.md).

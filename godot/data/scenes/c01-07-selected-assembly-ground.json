@@ -215,6 +215,18 @@
       ],
       "ownsMapStructureBody": true,
       "pointer": "target"
+    },
+    {
+      "id": "southwest-gate-leaf",
+      "assetId": "southwest-gate-leaf-surface-v1",
+      "contact": [
+        11.75,
+        52.9375
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
     }
   ]
 }
