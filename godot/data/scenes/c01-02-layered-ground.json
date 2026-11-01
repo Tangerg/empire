@@ -1,0 +1,505 @@
+{
+  "levelId": "c01-02",
+  "levelSourceSha256": "27e8428cfec3126b630d1d4dbf926d6fd23927f4d36817149d6d1c3c7a7f0230",
+  "resourcePath": "res://assets/native/c02-layered-v1/ground-candidate.png",
+  "pixelSize": [
+    1672,
+    941
+  ],
+  "worldScale": 0.65,
+  "originPixels": [
+    16,
+    12
+  ],
+  "cellXPixels": [
+    40,
+    0
+  ],
+  "cellYPixels": [
+    0,
+    24
+  ],
+  "objectCatalogPath": "res://data/scenes/c01-02-layered-objects.json",
+  "objects": [
+    {
+      "id": "WestOutpost",
+      "assetId": "outpost",
+      "contact": [
+        7.5,
+        9.5
+      ],
+      "scale": 0.13,
+      "selectionCell": [
+        7,
+        9
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "EastOutpost",
+      "assetId": "outpost",
+      "contact": [
+        34.5,
+        9.5
+      ],
+      "scale": 0.125,
+      "selectionCell": [
+        34,
+        9
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "SouthwestVillage",
+      "assetId": "southwest-house",
+      "contact": [
+        4.5,
+        33.5
+      ],
+      "scale": 0.135,
+      "selectionCell": [
+        4,
+        33
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "EastVillage",
+      "assetId": "east-village",
+      "contact": [
+        35.5,
+        24.5
+      ],
+      "scale": 0.13,
+      "selectionCell": [
+        35,
+        24
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "NorthBridgeFrontWest",
+      "assetId": "stone-rail",
+      "contact": [
+        18.1,
+        12.5
+      ],
+      "scale": 0.058,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "NorthBridgeFrontMiddle",
+      "assetId": "stone-rail",
+      "contact": [
+        20.7,
+        14.0
+      ],
+      "scale": 0.058,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "NorthBridgeFrontEast",
+      "assetId": "stone-rail",
+      "contact": [
+        23.25,
+        15.416666666666666
+      ],
+      "scale": 0.058,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "SouthStoneBridgeFrontWest",
+      "assetId": "stone-rail",
+      "contact": [
+        10.8,
+        22.375
+      ],
+      "scale": 0.058,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "SouthStoneBridgeFrontMiddle",
+      "assetId": "stone-rail",
+      "contact": [
+        13.475,
+        23.875
+      ],
+      "scale": 0.058,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "SouthStoneBridgeFrontEast",
+      "assetId": "stone-rail",
+      "contact": [
+        15.2,
+        24.833333333333332
+      ],
+      "scale": 0.058,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "WoodBridgeFrontWest",
+      "assetId": "wood-rail",
+      "contact": [
+        26.625,
+        26.5
+      ],
+      "scale": 0.052,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "WoodBridgeFrontMiddle",
+      "assetId": "wood-rail",
+      "contact": [
+        29.375,
+        28.583333333333332
+      ],
+      "scale": 0.052,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "WoodBridgeFrontEast",
+      "assetId": "wood-rail",
+      "contact": [
+        31.875,
+        30.416666666666668
+      ],
+      "scale": 0.052,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Broadleaf0",
+      "assetId": "broadleaf",
+      "contact": [
+        9.625,
+        13.291666666666666
+      ],
+      "scale": 0.085,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Broadleaf1",
+      "assetId": "broadleaf",
+      "contact": [
+        21.375,
+        30.833333333333332
+      ],
+      "scale": 0.085,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Broadleaf2",
+      "assetId": "broadleaf",
+      "contact": [
+        33.1,
+        21.5
+      ],
+      "scale": 0.09,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Broadleaf3",
+      "assetId": "broadleaf",
+      "contact": [
+        23.35,
+        6.541666666666667
+      ],
+      "scale": 0.055,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        1.1,
+        4.916666666666667
+      ],
+      "scale": 0.09388888888888888,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        3.6,
+        3.6666666666666665
+      ],
+      "scale": 0.10833333333333334,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine2",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        1.85,
+        10.75
+      ],
+      "scale": 0.10833333333333334,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine3",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        4.1,
+        9.291666666666666
+      ],
+      "scale": 0.0975,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine4",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        15.85,
+        6.583333333333333
+      ],
+      "scale": 0.09388888888888888,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine5",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        14.225,
+        3.25
+      ],
+      "scale": 0.08305555555555555,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine6",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        11.85,
+        2.2083333333333335
+      ],
+      "scale": 0.08666666666666667,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine7",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        0.225,
+        20.75
+      ],
+      "scale": 0.13,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine8",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        2.725,
+        23.25
+      ],
+      "scale": 0.13,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine9",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        0.975,
+        26.583333333333332
+      ],
+      "scale": 0.10833333333333334,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine10",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        1.6,
+        33.25
+      ],
+      "scale": 0.11555555555555555,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine11",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        2.35,
+        37.833333333333336
+      ],
+      "scale": 0.13722222222222222,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine12",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        4.975,
+        38.25
+      ],
+      "scale": 0.11916666666666667,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine13",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        13.85,
+        38.041666666666664
+      ],
+      "scale": 0.10472222222222222,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine14",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        37.85,
+        3.875
+      ],
+      "scale": 0.10111111111111111,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine15",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        40.1,
+        6.791666666666667
+      ],
+      "scale": 0.11916666666666667,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine16",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        38.6,
+        9.083333333333334
+      ],
+      "scale": 0.10833333333333334,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine17",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        40.6,
+        12.0
+      ],
+      "scale": 0.08666666666666667,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine18",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        38.35,
+        37.0
+      ],
+      "scale": 0.13,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine19",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        40.35,
+        38.666666666666664
+      ],
+      "scale": 0.13722222222222222,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine20",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        35.35,
+        37.833333333333336
+      ],
+      "scale": 0.12277777777777778,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Pine21",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        34.85,
+        34.5
+      ],
+      "scale": 0.08666666666666667,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    }
+  ]
+}

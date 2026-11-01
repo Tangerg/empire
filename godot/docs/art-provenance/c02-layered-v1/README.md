@@ -45,3 +45,32 @@ Before production adoption: validate all four building contacts and selection
 cells, every bridge deck/front-rail depth transition, hidden actor cues and clicks,
 normal pan/zoom, save/load, and the normal-AI escort. Resource preparation alone
 passes none of those gameplay or complete-scene gates.
+
+## First assembly preview (not production adoption)
+
+`data/scenes/c01-02-layered-preview.json` can be selected only through the opt-in
+TerrainPreview `--scene=res://data/scenes/c01-02-layered-preview.json` override.
+The formal campaign binding remains unchanged. Same-camera native captures use
+`--level=c01-02 --scale=1 --focus=20,19` at 1180×760; original and candidate are
+in `../empire-evidence-20261101/c02-art-{before,candidate}/native-001.png`.
+Both render with SurfaceReady=true and zero rendering issues. This only validates
+resource composition, not visual acceptance.
+
+The initial candidate has known visual defects: front-rail height/continuity is
+insufficient, a southwest tree intrudes on the doorway, and some visible crowns
+extend outside the rectangular ground plate. These must be corrected before the
+formal scene changes. Upper stone-bridge orange repair planks already exist in
+the original map and are intentionally retained, not a generated material error.
+
+The three new house candidates faithfully target the original C02 grey-roof,
+three-quarter-view designs. Directly reusing C01's frontal orange-roof cottages
+would change their orientation/silhouette; C01 materials are therefore reused
+only for appropriate pines, not forced onto the C02 houses. The outpost candidate
+is shared by the two same-family outposts, with separate scale and site contacts.
+The southwest and east villages each have independent assets. Building source
+alpha and optional lower-facade pointer contours remain separate from visual roof
+coverage. Material mipmap imports are enabled for all standing candidates.
+
+Generated house originals: `exec-c41c391d-f50f-42bb-8074-a2c844bfc3fb.png`
+(outpost), `exec-52c95d7d-339b-4c33-a5b7-4f1e37f28e88.png` (southwest),
+`exec-af513489-9caf-48e0-923e-d9fa275a0e64.png` (east village).

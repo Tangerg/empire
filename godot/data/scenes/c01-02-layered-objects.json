@@ -1,0 +1,282 @@
+{
+  "schema": 1,
+  "objects": {
+    "outpost": {
+      "resourcePath": "res://assets/native/c02-layered-v1/outpost-candidate.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        620,
+        930
+      ],
+      "groundFrontPixels": [
+        620,
+        930
+      ],
+      "contactShadowRadiiPixels": [
+        250,
+        35
+      ],
+      "pointerPolygonPixels": [
+        [
+          310,
+          690
+        ],
+        [
+          550,
+          795
+        ],
+        [
+          625,
+          720
+        ],
+        [
+          1185,
+          610
+        ],
+        [
+          1240,
+          820
+        ],
+        [
+          950,
+          965
+        ],
+        [
+          600,
+          975
+        ],
+        [
+          300,
+          830
+        ]
+      ]
+    },
+    "southwest-house": {
+      "resourcePath": "res://assets/native/c02-layered-v1/southwest-house-candidate.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        940,
+        955
+      ],
+      "groundFrontPixels": [
+        940,
+        955
+      ],
+      "contactShadowRadiiPixels": [
+        250,
+        35
+      ],
+      "pointerPolygonPixels": [
+        [
+          315,
+          735
+        ],
+        [
+          660,
+          860
+        ],
+        [
+          1225,
+          640
+        ],
+        [
+          1260,
+          875
+        ],
+        [
+          950,
+          985
+        ],
+        [
+          680,
+          1000
+        ],
+        [
+          310,
+          840
+        ]
+      ]
+    },
+    "east-village": {
+      "resourcePath": "res://assets/native/c02-layered-v1/east-village-candidate.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        565,
+        835
+      ],
+      "groundFrontPixels": [
+        565,
+        835
+      ],
+      "contactShadowRadiiPixels": [
+        250,
+        35
+      ],
+      "pointerPolygonPixels": [
+        [
+          250,
+          600
+        ],
+        [
+          420,
+          530
+        ],
+        [
+          705,
+          690
+        ],
+        [
+          900,
+          770
+        ],
+        [
+          1300,
+          630
+        ],
+        [
+          1345,
+          830
+        ],
+        [
+          960,
+          960
+        ],
+        [
+          670,
+          875
+        ],
+        [
+          470,
+          870
+        ],
+        [
+          230,
+          760
+        ]
+      ]
+    },
+    "stone-rail": {
+      "resourcePath": "res://assets/native/c02-layered-v1/stone-front-segment-candidate.png",
+      "pixelSize": [
+        2172,
+        724
+      ],
+      "anchorPixels": [
+        1080,
+        550
+      ],
+      "groundFrontPixels": [
+        1080,
+        550
+      ],
+      "contactShadowRadiiPixels": [
+        450,
+        8
+      ]
+    },
+    "wood-rail": {
+      "resourcePath": "res://assets/native/c02-layered-v1/wood-front-segment-candidate.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        780,
+        730
+      ],
+      "groundFrontPixels": [
+        780,
+        730
+      ],
+      "contactShadowRadiiPixels": [
+        450,
+        8
+      ]
+    },
+    "broadleaf": {
+      "resourcePath": "res://assets/native/c02-layered-v1/broadleaf-candidate.png",
+      "pixelSize": [
+        1324,
+        1188
+      ],
+      "anchorPixels": [
+        645,
+        1015
+      ],
+      "groundFrontPixels": [
+        645,
+        1015
+      ],
+      "contactShadowRadiiPixels": [
+        200,
+        25
+      ]
+    },
+    "west-pine-faithful": {
+      "resourcePath": "res://assets/native/c01-faithful-sample-v4/west-pine.png",
+      "pixelSize": [
+        1377,
+        1142
+      ],
+      "anchorPixels": [
+        682,
+        962
+      ],
+      "groundFrontPixels": [
+        682,
+        1030
+      ],
+      "contactShadowRadiiPixels": [
+        125,
+        25
+      ]
+    },
+    "pine-tall-faithful": {
+      "resourcePath": "res://assets/native/c01-faithful-complete/pine-tall.png",
+      "pixelSize": [
+        1377,
+        1142
+      ],
+      "anchorPixels": [
+        696,
+        1023
+      ],
+      "groundFrontPixels": [
+        696,
+        1055
+      ],
+      "contactShadowRadiiPixels": [
+        92,
+        19
+      ]
+    },
+    "pine-young-faithful": {
+      "resourcePath": "res://assets/native/c01-faithful-complete/pine-young.png",
+      "pixelSize": [
+        1377,
+        1142
+      ],
+      "anchorPixels": [
+        713,
+        966
+      ],
+      "groundFrontPixels": [
+        713,
+        988
+      ],
+      "contactShadowRadiiPixels": [
+        78,
+        16
+      ]
+    }
+  }
+}

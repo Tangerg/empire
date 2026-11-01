@@ -14,6 +14,7 @@ public partial class TerrainPreview : Node2D
 {
     private string? _captureDirectory;
     private string _levelId = "c01-02";
+    private string? _scenePath;
     private BoardView? _board;
     private Label? _heading;
     private int _sequence;
@@ -30,6 +31,8 @@ public partial class TerrainPreview : Node2D
             {
                 if (argument == "--hide-assembled-objects")
                     _hideObjects = true;
+                if (argument.StartsWith("--scene=", StringComparison.Ordinal))
+                    _scenePath = argument[8..];
                 if (argument.StartsWith("--level=", StringComparison.Ordinal))
                     _levelId = argument[8..];
                 if (argument.StartsWith("--scale=", StringComparison.Ordinal))
@@ -58,7 +61,10 @@ public partial class TerrainPreview : Node2D
             var grid = engine.Grids.Get(level["rules"]?["grid"]?.GetValue<string>() ?? "square4");
             _board = new BoardView();
             AddChild(_board);
-            var scene = AuthoredScene.Load($"res://data/scenes/{_levelId}.json");
+            if (_scenePath is not null && (!_scenePath.StartsWith("res://data/scenes/", StringComparison.Ordinal)
+                || !_scenePath.EndsWith(".json", StringComparison.Ordinal) || _scenePath.Contains("..", StringComparison.Ordinal)))
+                throw new InvalidOperationException("Preview scene override must be an explicit authored-scene resource.");
+            var scene = AuthoredScene.Load(_scenePath ?? $"res://data/scenes/{_levelId}.json");
             var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
             _board.Configure(new(AssetCatalog.Load(), EnvironmentCatalog.Load(), grid, engine.Catalog, rendering.Plane), level, scene);
             _board.ConfigureGround(rendering.Ground);
