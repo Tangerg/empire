@@ -1,0 +1,2375 @@
+{
+  "ready": true,
+  "scope": "One bounded uniform candidate registration. Static image/JSON only, no GUI/engine/native/game/save or production writes, no resampling/editing candidate art. Source contract and fixed witnesses unchanged.",
+  "candidate": {
+    "path": "/workspace/scratch/84c9fe948755/generated_images/exec-01cb5b35-9f30-491b-8952-88c592a0c1e8.png",
+    "sha256": "7a4b49bdebe2932b6d69baac03e1274314c847b9249282d0dfa2b8e11340ac67",
+    "size": [
+      1326,
+      1186
+    ],
+    "mode": "RGBA"
+  },
+  "registration": {
+    "formula": "source = asset * sourceScale + translation; C07worldScale1, no rotation/nonuniform stretch",
+    "sourceScale": 0.14505956552207427,
+    "translation": [
+      54.78836720392432,
+      -4.290119131044122
+    ],
+    "maxAbsoluteAxisResidualPixels": 4.060967063770146,
+    "purpose": "Same-camera preview proposal, NOT accepted compatibility or exact source-foot pass. Residual is a measured result, not a new tolerance.",
+    "features": [
+      {
+        "id": "left-arch-inner-low-pale-stone",
+        "asset": [
+          511,
+          1077
+        ],
+        "source": [
+          125,
+          156
+        ],
+        "meaning": "Actual pale stone near the inner leg lower edge, not whole left tower foundation or candidate outer buttress.",
+        "candidateActualRgba": [
+          236,
+          204,
+          167,
+          252
+        ],
+        "originalRgba": [
+          209,
+          183,
+          132,
+          255
+        ],
+        "mappedSource": [
+          128.91380518570426,
+          151.93903293622986
+        ],
+        "sourceResidual": [
+          3.9138051857042626,
+          -4.060967063770136
+        ]
+      },
+      {
+        "id": "right-arch-gray-return-near-low-stone",
+        "asset": [
+          836,
+          969
+        ],
+        "source": [
+          174,
+          139
+        ],
+        "meaning": "Near low grey return material adjacent to the cream front face, not the farther return back edge at763918 and not right tower base.",
+        "candidateActualRgba": [
+          204,
+          177,
+          149,
+          253
+        ],
+        "originalRgba": [
+          194,
+          169,
+          144,
+          255
+        ],
+        "mappedSource": [
+          176.0581639803784,
+          136.27259985984585
+        ],
+        "sourceResidual": [
+          2.0581639803783958,
+          -2.7274001401541454
+        ]
+      },
+      {
+        "id": "left-blue-lookout-peak",
+        "asset": [
+          263,
+          354
+        ],
+        "source": [
+          97,
+          43
+        ],
+        "meaning": "Visible roof cap/apex material, a shape landmark, NOT ground support. Original apex soft one-pixel edge.",
+        "candidateActualRgba": [
+          255,
+          253,
+          198,
+          253
+        ],
+        "originalRgba": [
+          99,
+          100,
+          99,
+          255
+        ],
+        "mappedSource": [
+          92.93903293622985,
+          47.06096706377017
+        ],
+        "sourceResidual": [
+          -4.06096706377015,
+          4.060967063770171
+        ]
+      },
+      {
+        "id": "right-orange-roof-peak",
+        "asset": [
+          967,
+          34
+        ],
+        "source": [
+          191,
+          3
+        ],
+        "meaning": "Visible roof cap/apex material, a shape landmark. Original top nearly touches mother canvas; no new hidden height invented.",
+        "candidateActualRgba": [
+          253,
+          204,
+          106,
+          253
+        ],
+        "originalRgba": [
+          197,
+          141,
+          105,
+          255
+        ],
+        "mappedSource": [
+          195.06096706377014,
+          0.6419060967064034
+        ],
+        "sourceResidual": [
+          4.060967063770136,
+          -2.3580939032935966
+        ]
+      }
+    ]
+  },
+  "frozenActorStoneWitnesses": [
+    {
+      "source": [
+        125,
+        129
+      ],
+      "meaning": "Fixed original actual-Torren stone overlap, back first2/front last2",
+      "originalRgba": [
+        236,
+        192,
+        148,
+        255
+      ],
+      "assetPixelNearest": [
+        484,
+        919
+      ],
+      "candidateRgba": [
+        244,
+        209,
+        172,
+        253
+      ],
+      "canonicalCell": [
+        7,
+        8
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        126,
+        129
+      ],
+      "meaning": "Fixed original actual-Torren stone overlap, back first2/front last2",
+      "originalRgba": [
+        239,
+        196,
+        151,
+        255
+      ],
+      "assetPixelNearest": [
+        491,
+        919
+      ],
+      "candidateRgba": [
+        242,
+        209,
+        169,
+        253
+      ],
+      "canonicalCell": [
+        7,
+        8
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        125,
+        151
+      ],
+      "meaning": "Fixed original actual-Torren stone overlap, back first2/front last2",
+      "originalRgba": [
+        233,
+        194,
+        152,
+        255
+      ],
+      "assetPixelNearest": [
+        484,
+        1071
+      ],
+      "candidateRgba": [
+        229,
+        197,
+        164,
+        253
+      ],
+      "canonicalCell": [
+        7,
+        9
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        126,
+        151
+      ],
+      "meaning": "Fixed original actual-Torren stone overlap, back first2/front last2",
+      "originalRgba": [
+        229,
+        191,
+        152,
+        255
+      ],
+      "assetPixelNearest": [
+        491,
+        1071
+      ],
+      "candidateRgba": [
+        229,
+        197,
+        164,
+        253
+      ],
+      "canonicalCell": [
+        7,
+        9
+      ],
+      "terrain": "#"
+    }
+  ],
+  "oldLowFootDifferences": [
+    {
+      "source": [
+        125,
+        156
+      ],
+      "meaning": "Original independently certified low stone: remain fixed even where candidate is now transparent",
+      "originalRgba": [
+        209,
+        183,
+        132,
+        255
+      ],
+      "assetPixelNearest": [
+        484,
+        1105
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "canonicalCell": [
+        7,
+        9
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        174,
+        139
+      ],
+      "meaning": "Original independently certified low stone: remain fixed even where candidate is now transparent",
+      "originalRgba": [
+        194,
+        169,
+        144,
+        255
+      ],
+      "assetPixelNearest": [
+        822,
+        988
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "canonicalCell": [
+        10,
+        8
+      ],
+      "terrain": "p"
+    }
+  ],
+  "roadRegions": [
+    {
+      "id": "continuous-legal-opening-and-immediate-front",
+      "polygon": [
+        [
+          132,
+          120
+        ],
+        [
+          149,
+          120
+        ],
+        [
+          149,
+          132
+        ],
+        [
+          170,
+          143
+        ],
+        [
+          175,
+          144
+        ],
+        [
+          175,
+          163
+        ],
+        [
+          137,
+          163
+        ],
+        [
+          131,
+          155
+        ],
+        [
+          131,
+          148
+        ],
+        [
+          130,
+          146
+        ],
+        [
+          130,
+          124
+        ]
+      ],
+      "pointCount": 1468,
+      "nonzeroAlphaCount": 26,
+      "alphaAtLeast200Count": 19,
+      "failuresAlphaAtLeast200": [
+        {
+          "source": [
+            130,
+            127
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            158,
+            134,
+            113,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            905
+          ],
+          "candidateRgba": [
+            67,
+            50,
+            29,
+            201
+          ],
+          "canonicalCell": [
+            8,
+            7
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            128
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            155,
+            132,
+            111,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            912
+          ],
+          "candidateRgba": [
+            64,
+            46,
+            27,
+            207
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            129
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            153,
+            130,
+            110,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            919
+          ],
+          "candidateRgba": [
+            59,
+            42,
+            23,
+            224
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            130
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            150,
+            128,
+            109,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            926
+          ],
+          "candidateRgba": [
+            51,
+            36,
+            19,
+            232
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            131
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            140,
+            120,
+            102,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            933
+          ],
+          "candidateRgba": [
+            50,
+            34,
+            18,
+            249
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            132
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            131,
+            112,
+            95,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            940
+          ],
+          "candidateRgba": [
+            43,
+            29,
+            14,
+            253
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            133
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            140,
+            119,
+            103,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            946
+          ],
+          "candidateRgba": [
+            42,
+            29,
+            13,
+            226
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            135
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            152,
+            131,
+            113,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            960
+          ],
+          "candidateRgba": [
+            52,
+            35,
+            20,
+            249
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            136
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            152,
+            129,
+            111,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            967
+          ],
+          "candidateRgba": [
+            52,
+            35,
+            18,
+            245
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            137
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            152,
+            127,
+            108,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            974
+          ],
+          "candidateRgba": [
+            53,
+            37,
+            18,
+            242
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            138
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            152,
+            128,
+            107,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            981
+          ],
+          "candidateRgba": [
+            55,
+            39,
+            20,
+            246
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            139
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            155,
+            129,
+            108,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            988
+          ],
+          "candidateRgba": [
+            55,
+            39,
+            21,
+            247
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            140
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            158,
+            131,
+            109,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            995
+          ],
+          "candidateRgba": [
+            53,
+            37,
+            18,
+            251
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            141
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            157,
+            129,
+            106,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            1002
+          ],
+          "candidateRgba": [
+            53,
+            38,
+            19,
+            251
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            142
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            157,
+            129,
+            106,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            1008
+          ],
+          "candidateRgba": [
+            50,
+            36,
+            17,
+            255
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            143
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            156,
+            127,
+            104,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            1015
+          ],
+          "candidateRgba": [
+            43,
+            31,
+            13,
+            245
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            144
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            157,
+            130,
+            103,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            1022
+          ],
+          "candidateRgba": [
+            46,
+            30,
+            11,
+            254
+          ],
+          "canonicalCell": [
+            8,
+            9
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            145
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            158,
+            129,
+            105,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            1029
+          ],
+          "candidateRgba": [
+            59,
+            43,
+            25,
+            249
+          ],
+          "canonicalCell": [
+            8,
+            9
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            146
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            163,
+            135,
+            108,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            1036
+          ],
+          "candidateRgba": [
+            60,
+            44,
+            26,
+            249
+          ],
+          "canonicalCell": [
+            8,
+            9
+          ],
+          "terrain": "p"
+        }
+      ],
+      "maximumAlpha": 255
+    },
+    {
+      "id": "left-inner-leg-road-edge",
+      "polygon": [
+        [
+          130,
+          126
+        ],
+        [
+          131,
+          126
+        ],
+        [
+          131,
+          146
+        ],
+        [
+          130,
+          146
+        ]
+      ],
+      "pointCount": 42,
+      "nonzeroAlphaCount": 21,
+      "alphaAtLeast200Count": 19,
+      "failuresAlphaAtLeast200": [
+        {
+          "source": [
+            130,
+            127
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            158,
+            134,
+            113,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            905
+          ],
+          "candidateRgba": [
+            67,
+            50,
+            29,
+            201
+          ],
+          "canonicalCell": [
+            8,
+            7
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            128
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            155,
+            132,
+            111,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            912
+          ],
+          "candidateRgba": [
+            64,
+            46,
+            27,
+            207
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            129
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            153,
+            130,
+            110,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            919
+          ],
+          "candidateRgba": [
+            59,
+            42,
+            23,
+            224
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            130
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            150,
+            128,
+            109,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            926
+          ],
+          "candidateRgba": [
+            51,
+            36,
+            19,
+            232
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            131
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            140,
+            120,
+            102,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            933
+          ],
+          "candidateRgba": [
+            50,
+            34,
+            18,
+            249
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            132
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            131,
+            112,
+            95,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            940
+          ],
+          "candidateRgba": [
+            43,
+            29,
+            14,
+            253
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            133
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            140,
+            119,
+            103,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            946
+          ],
+          "candidateRgba": [
+            42,
+            29,
+            13,
+            226
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            135
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            152,
+            131,
+            113,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            960
+          ],
+          "candidateRgba": [
+            52,
+            35,
+            20,
+            249
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            136
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            152,
+            129,
+            111,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            967
+          ],
+          "candidateRgba": [
+            52,
+            35,
+            18,
+            245
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            137
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            152,
+            127,
+            108,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            974
+          ],
+          "candidateRgba": [
+            53,
+            37,
+            18,
+            242
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            138
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            152,
+            128,
+            107,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            981
+          ],
+          "candidateRgba": [
+            55,
+            39,
+            20,
+            246
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            139
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            155,
+            129,
+            108,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            988
+          ],
+          "candidateRgba": [
+            55,
+            39,
+            21,
+            247
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            140
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            158,
+            131,
+            109,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            995
+          ],
+          "candidateRgba": [
+            53,
+            37,
+            18,
+            251
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            141
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            157,
+            129,
+            106,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            1002
+          ],
+          "candidateRgba": [
+            53,
+            38,
+            19,
+            251
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            142
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            157,
+            129,
+            106,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            1008
+          ],
+          "candidateRgba": [
+            50,
+            36,
+            17,
+            255
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            143
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            156,
+            127,
+            104,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            1015
+          ],
+          "candidateRgba": [
+            43,
+            31,
+            13,
+            245
+          ],
+          "canonicalCell": [
+            8,
+            8
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            144
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            157,
+            130,
+            103,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            1022
+          ],
+          "candidateRgba": [
+            46,
+            30,
+            11,
+            254
+          ],
+          "canonicalCell": [
+            8,
+            9
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            145
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            158,
+            129,
+            105,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            1029
+          ],
+          "candidateRgba": [
+            59,
+            43,
+            25,
+            249
+          ],
+          "canonicalCell": [
+            8,
+            9
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            130,
+            146
+          ],
+          "meaning": "Frozen original legal road exclusion point",
+          "originalRgba": [
+            163,
+            135,
+            108,
+            255
+          ],
+          "assetPixelNearest": [
+            518,
+            1036
+          ],
+          "candidateRgba": [
+            60,
+            44,
+            26,
+            249
+          ],
+          "canonicalCell": [
+            8,
+            9
+          ],
+          "terrain": "p"
+        }
+      ],
+      "maximumAlpha": 255
+    },
+    {
+      "id": "below-right-arch-return-road",
+      "polygon": [
+        [
+          172,
+          144
+        ],
+        [
+          175,
+          144
+        ],
+        [
+          175,
+          147
+        ],
+        [
+          172,
+          147
+        ]
+      ],
+      "pointCount": 16,
+      "nonzeroAlphaCount": 0,
+      "alphaAtLeast200Count": 0,
+      "failuresAlphaAtLeast200": [],
+      "maximumAlpha": 0
+    }
+  ],
+  "roadUniquePointCount": 1468,
+  "roadUniqueOpaqueFailures": [
+    {
+      "source": [
+        130,
+        127
+      ],
+      "meaning": "Frozen original legal road exclusion point",
+      "originalRgba": [
+        158,
+        134,
+        113,
+        255
+      ],
+      "assetPixelNearest": [
+        518,
+        905
+      ],
+      "candidateRgba": [
+        67,
+        50,
+        29,
+        201
+      ],
+      "canonicalCell": [
+        8,
+        7
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        130,
+        128
+      ],
+      "meaning": "Frozen original legal road exclusion point",
+      "originalRgba": [
+        155,
+        132,
+        111,
+        255
+      ],
+      "assetPixelNearest": [
+        518,
+        912
+      ],
+      "candidateRgba": [
+        64,
+        46,
+        27,
+        207
+      ],
+      "canonicalCell": [
+        8,
+        8
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        130,
+        129
+      ],
+      "meaning": "Frozen original legal road exclusion point",
+      "originalRgba": [
+        153,
+        130,
+        110,
+        255
+      ],
+      "assetPixelNearest": [
+        518,
+        919
+      ],
+      "candidateRgba": [
+        59,
+        42,
+        23,
+        224
+      ],
+      "canonicalCell": [
+        8,
+        8
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        130,
+        130
+      ],
+      "meaning": "Frozen original legal road exclusion point",
+      "originalRgba": [
+        150,
+        128,
+        109,
+        255
+      ],
+      "assetPixelNearest": [
+        518,
+        926
+      ],
+      "candidateRgba": [
+        51,
+        36,
+        19,
+        232
+      ],
+      "canonicalCell": [
+        8,
+        8
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        130,
+        131
+      ],
+      "meaning": "Frozen original legal road exclusion point",
+      "originalRgba": [
+        140,
+        120,
+        102,
+        255
+      ],
+      "assetPixelNearest": [
+        518,
+        933
+      ],
+      "candidateRgba": [
+        50,
+        34,
+        18,
+        249
+      ],
+      "canonicalCell": [
+        8,
+        8
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        130,
+        132
+      ],
+      "meaning": "Frozen original legal road exclusion point",
+      "originalRgba": [
+        131,
+        112,
+        95,
+        255
+      ],
+      "assetPixelNearest": [
+        518,
+        940
+      ],
+      "candidateRgba": [
+        43,
+        29,
+        14,
+        253
+      ],
+      "canonicalCell": [
+        8,
+        8
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        130,
+        133
+      ],
+      "meaning": "Frozen original legal road exclusion point",
+      "originalRgba": [
+        140,
+        119,
+        103,
+        255
+      ],
+      "assetPixelNearest": [
+        518,
+        946
+      ],
+      "candidateRgba": [
+        42,
+        29,
+        13,
+        226
+      ],
+      "canonicalCell": [
+        8,
+        8
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        130,
+        135
+      ],
+      "meaning": "Frozen original legal road exclusion point",
+      "originalRgba": [
+        152,
+        131,
+        113,
+        255
+      ],
+      "assetPixelNearest": [
+        518,
+        960
+      ],
+      "candidateRgba": [
+        52,
+        35,
+        20,
+        249
+      ],
+      "canonicalCell": [
+        8,
+        8
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        130,
+        136
+      ],
+      "meaning": "Frozen original legal road exclusion point",
+      "originalRgba": [
+        152,
+        129,
+        111,
+        255
+      ],
+      "assetPixelNearest": [
+        518,
+        967
+      ],
+      "candidateRgba": [
+        52,
+        35,
+        18,
+        245
+      ],
+      "canonicalCell": [
+        8,
+        8
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        130,
+        137
+      ],
+      "meaning": "Frozen original legal road exclusion point",
+      "originalRgba": [
+        152,
+        127,
+        108,
+        255
+      ],
+      "assetPixelNearest": [
+        518,
+        974
+      ],
+      "candidateRgba": [
+        53,
+        37,
+        18,
+        242
+      ],
+      "canonicalCell": [
+        8,
+        8
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        130,
+        138
+      ],
+      "meaning": "Frozen original legal road exclusion point",
+      "originalRgba": [
+        152,
+        128,
+        107,
+        255
+      ],
+      "assetPixelNearest": [
+        518,
+        981
+      ],
+      "candidateRgba": [
+        55,
+        39,
+        20,
+        246
+      ],
+      "canonicalCell": [
+        8,
+        8
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        130,
+        139
+      ],
+      "meaning": "Frozen original legal road exclusion point",
+      "originalRgba": [
+        155,
+        129,
+        108,
+        255
+      ],
+      "assetPixelNearest": [
+        518,
+        988
+      ],
+      "candidateRgba": [
+        55,
+        39,
+        21,
+        247
+      ],
+      "canonicalCell": [
+        8,
+        8
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        130,
+        140
+      ],
+      "meaning": "Frozen original legal road exclusion point",
+      "originalRgba": [
+        158,
+        131,
+        109,
+        255
+      ],
+      "assetPixelNearest": [
+        518,
+        995
+      ],
+      "candidateRgba": [
+        53,
+        37,
+        18,
+        251
+      ],
+      "canonicalCell": [
+        8,
+        8
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        130,
+        141
+      ],
+      "meaning": "Frozen original legal road exclusion point",
+      "originalRgba": [
+        157,
+        129,
+        106,
+        255
+      ],
+      "assetPixelNearest": [
+        518,
+        1002
+      ],
+      "candidateRgba": [
+        53,
+        38,
+        19,
+        251
+      ],
+      "canonicalCell": [
+        8,
+        8
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        130,
+        142
+      ],
+      "meaning": "Frozen original legal road exclusion point",
+      "originalRgba": [
+        157,
+        129,
+        106,
+        255
+      ],
+      "assetPixelNearest": [
+        518,
+        1008
+      ],
+      "candidateRgba": [
+        50,
+        36,
+        17,
+        255
+      ],
+      "canonicalCell": [
+        8,
+        8
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        130,
+        143
+      ],
+      "meaning": "Frozen original legal road exclusion point",
+      "originalRgba": [
+        156,
+        127,
+        104,
+        255
+      ],
+      "assetPixelNearest": [
+        518,
+        1015
+      ],
+      "candidateRgba": [
+        43,
+        31,
+        13,
+        245
+      ],
+      "canonicalCell": [
+        8,
+        8
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        130,
+        144
+      ],
+      "meaning": "Frozen original legal road exclusion point",
+      "originalRgba": [
+        157,
+        130,
+        103,
+        255
+      ],
+      "assetPixelNearest": [
+        518,
+        1022
+      ],
+      "candidateRgba": [
+        46,
+        30,
+        11,
+        254
+      ],
+      "canonicalCell": [
+        8,
+        9
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        130,
+        145
+      ],
+      "meaning": "Frozen original legal road exclusion point",
+      "originalRgba": [
+        158,
+        129,
+        105,
+        255
+      ],
+      "assetPixelNearest": [
+        518,
+        1029
+      ],
+      "candidateRgba": [
+        59,
+        43,
+        25,
+        249
+      ],
+      "canonicalCell": [
+        8,
+        9
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        130,
+        146
+      ],
+      "meaning": "Frozen original legal road exclusion point",
+      "originalRgba": [
+        163,
+        135,
+        108,
+        255
+      ],
+      "assetPixelNearest": [
+        518,
+        1036
+      ],
+      "candidateRgba": [
+        60,
+        44,
+        26,
+        249
+      ],
+      "canonicalCell": [
+        8,
+        9
+      ],
+      "terrain": "p"
+    }
+  ],
+  "lookoutIndependentMaterialWitnesses": [
+    {
+      "source": [
+        85,
+        67
+      ],
+      "meaning": "Original visible pale background through LEFT lookout opening: original structure-material negative.",
+      "originalRgba": [
+        236,
+        225,
+        197,
+        255
+      ],
+      "assetPixelNearest": [
+        208,
+        491
+      ],
+      "candidateRgba": [
+        30,
+        17,
+        10,
+        251
+      ],
+      "canonicalCell": [
+        5,
+        4
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        92,
+        65
+      ],
+      "meaning": "Original visible pale background through lookout opening: structure-material negative.",
+      "originalRgba": [
+        221,
+        209,
+        179,
+        255
+      ],
+      "assetPixelNearest": [
+        257,
+        478
+      ],
+      "candidateRgba": [
+        245,
+        178,
+        67,
+        253
+      ],
+      "canonicalCell": [
+        5,
+        4
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        96,
+        68
+      ],
+      "meaning": "Original front timber post material: positive.",
+      "originalRgba": [
+        172,
+        135,
+        102,
+        255
+      ],
+      "assetPixelNearest": [
+        284,
+        498
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "canonicalCell": [
+        6,
+        4
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        100,
+        77
+      ],
+      "meaning": "Original lower front timber beam material: positive.",
+      "originalRgba": [
+        157,
+        99,
+        51,
+        255
+      ],
+      "assetPixelNearest": [
+        312,
+        560
+      ],
+      "candidateRgba": [
+        191,
+        110,
+        45,
+        253
+      ],
+      "canonicalCell": [
+        6,
+        4
+      ],
+      "terrain": "p"
+    }
+  ],
+  "lookoutConclusion": "The new lookout opening/columns are not pointwise compatible with the original. Both independently original visible background holes become wood and the old front-post sample becomes empty at this registration. This cannot be called a transparency pass or repaired by deleting old negative witnesses. A source-specific module redesign/independent lookout registration may be needed; parent may accept a visibly different design only as an explicit design change with retained open structure, not exact restoration.",
+  "additionalLeftLowWall": {
+    "candidatePhysicalSamples": [
+      {
+        "asset": [
+          75,
+          1054
+        ],
+        "candidateRgba": [
+          162,
+          140,
+          129,
+          252
+        ],
+        "mappedSource": [
+          65.6678346180799,
+          148.60266292922216
+        ],
+        "projectedCell": [
+          4,
+          9
+        ],
+        "terrain": "#",
+        "classification": "Actual grey lower stone near left side-wall base; original corresponding ground lies under foliage/adjacent perimeter wall, ownership not certified"
+      },
+      {
+        "asset": [
+          115,
+          1085
+        ],
+        "candidateRgba": [
+          169,
+          141,
+          118,
+          253
+        ],
+        "mappedSource": [
+          71.47021723896286,
+          153.09950946040647
+        ],
+        "projectedCell": [
+          4,
+          9
+        ],
+        "terrain": "#",
+        "classification": "Left low-wall front base inner stone; not the main tower front foot"
+      },
+      {
+        "asset": [
+          194,
+          1056
+        ],
+        "candidateRgba": [
+          101,
+          86,
+          71,
+          253
+        ],
+        "mappedSource": [
+          82.92992291520673,
+          148.8927820602663
+        ],
+        "projectedCell": [
+          5,
+          9
+        ],
+        "terrain": "#",
+        "classification": "Low side-wall/tower join base; original hidden by surrounding material"
+      }
+    ],
+    "classification": "The candidate includes an extra low side-wall/buttress to the left of the lookout tower. Original source has adjoining perimeter masonry/foliage, so that piece cannot automatically be assigned to the gate tower foundation. The three sampled real base points project into#cells at this fit; that does NOT prove the entire side wall ownership/footprint or all nearby legal poses safe.",
+    "notClaimed": "No extra pier/site/collision, no certified original separate buttress, no blanket all22foundations pass. Keep this segment distinct or explicitly justify original adjoining-wall responsibility before binding.",
+    "canonicalResponsibilityAtSampleCells": [
+      {
+        "cell": [
+          4,
+          9
+        ],
+        "owners": [
+          "northwest-outer-west"
+        ]
+      },
+      {
+        "cell": [
+          5,
+          9
+        ],
+        "owners": [
+          "northwest-gate-pier-0",
+          "northwest-outer-west"
+        ]
+      }
+    ],
+    "outerWallAuditPolygon": [
+      [
+        0,
+        196
+      ],
+      [
+        82,
+        156
+      ],
+      [
+        82,
+        170
+      ],
+      [
+        0,
+        211
+      ]
+    ],
+    "ownershipCaveat": "The first two real low-wall base samples land in the cell owned only by adjoining northwest-outer-west, not the gate pier. Their exact material points are NOT proof of support inside that ground polygon; standing projection, vegetation-obscured ground and partial-cell intersection remain distinct. This prevents laundering the added side wall into a new certified tower foundation."
+  },
+  "localLowFootColumnEvidence": {
+    "method": "At each frozen oldsourcefoot x, inspect ONLY the already visually identified leg-bottom column. Pale/grey stone terminus, dark ink edge and antialias are recorded separately; this is not a whole-sprite alpha-bottom foundation proof.",
+    "left": {
+      "original": [
+        125,
+        156
+      ],
+      "nearestAssetX": 484,
+      "lastVisiblePaleStoneAsset": [
+        484,
+        1095
+      ],
+      "paleStoneRgba": [
+        220,
+        188,
+        155,
+        252
+      ],
+      "paleStoneMappedSource": [
+        124.99719691660826,
+        154.55010511562722
+      ],
+      "lastDarkOutlineAlpha128Asset": [
+        484,
+        1101
+      ],
+      "outlineRgba": [
+        18,
+        9,
+        4,
+        226
+      ],
+      "outlineMappedSource": [
+        124.99719691660826,
+        155.42046250875964
+      ],
+      "outlineShortfallY": 0.5795374912403588
+    },
+    "right": {
+      "original": [
+        174,
+        139
+      ],
+      "nearestAssetX": 822,
+      "lastVisibleGreyStoneAsset": [
+        822,
+        963
+      ],
+      "greyStoneRgba": [
+        141,
+        120,
+        108,
+        252
+      ],
+      "greyStoneMappedSource": [
+        174.02733006306937,
+        135.4022424667134
+      ],
+      "lastDarkOutlineAlpha128Asset": [
+        822,
+        969
+      ],
+      "outlineRgba": [
+        20,
+        13,
+        8,
+        227
+      ],
+      "outlineMappedSource": [
+        174.02733006306937,
+        136.27259985984585
+      ],
+      "outlineShortfallY": 2.7274001401541454
+    },
+    "correction": "Initial quick message used nominal fit residual to describe bothfeet around3\u20134pxshort. That was overbroad: left outline at the frozen x is onlyapproximately0.580pxabove oldpoint; right is2.7274001pxabove. Exact oldpointsremainA0, but do not chase subpixelAA as an invented acceptance rule."
+  },
+  "parentNativeObservationReportedNotRunHere": {
+    "source": "Parent message2026-11-01 during this study",
+    "actorBackAndFront": "passed",
+    "siteAndApproach": "passed",
+    "ownershipProbePointCount": 5460,
+    "ownershipFailures": 0,
+    "originalRoadRegion": "main1468native22covered, leftband42native20covered, sourcex130y124..145; rightband0",
+    "status": "Candidate NOT accepted; native sampling differs from this nearest-alpha diagnostic. Both observations retained, not harmonized by shifting frozen probes."
+  },
+  "rejectedButtressSample": {
+    "asset": [
+      66,
+      1059
+    ],
+    "rgba": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "reason": "Initial nominalfarbase sample isA1transparent, not a real stonefoot; retained as rejected evidence, not used as physicalsupport. Actual grey interior75,1054 is recorded separately."
+  },
+  "backgroundAudit": {
+    "nonzeroAlphaPixelCount": 836866,
+    "alphaAtLeast200PixelCount": 818726,
+    "fartherThan20AssetPixelsFromA200": {
+      "nonzeroCount": 277,
+      "maximumAlpha": 1,
+      "alphaAbove8Count": 0
+    },
+    "meaning": "Quantitative distant-background audit only; low-alpha fringe is not physical material and no alpha was edited."
+  },
+  "conclusion": "Preview fit retains four actor-stone pixels, but original low stone endpoints shorten and the frozen road-edge/lookup-hole results below remain strict differences. No full candidate acceptance. Do not chase a global least-error fit at expense of continuous ground or holes.",
+  "notCovered": [
+    "A full new stone depth surface/support-line partition. Candidate clear arch columns need explicit physical/virtual depth; whole image onefront is not certified.",
+    "New actual-actor draw/Pick/cue tests; parent owns native.",
+    "Complete hidden tower foundation, all neighbouring art/decorative wall ownership or all22blockedcell coverage."
+  ]
+}
