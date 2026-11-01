@@ -49,3 +49,6 @@ The seven-member barracks front canopy now follows the same compiler and explici
 
 ## Granary cloth canopy formal-loader slice
 The reviewed17-member cloth canopy uses the same surface compiler in an unbound main+canopy preview; no new runtime wrapper or UV repair. Formal vertices match original source clips exactly; old per-column transform differs at18Xcoordinates by1ULP. Actual C07 front/back, existing site/approach, material voids and targeted negatives remain intact.125 polygon nodes replace474 historical canopy polygons. See [granary-canopy-surface-audit](granary-canopy-surface-audit/README.md). Other cargo/yard/full-scene responsibilities and material/shadow debt remain open; no real-play progress.
+
+## Low granary grain bin formal-loader slice
+The reviewed8-member low bin now joins the formal main+cloth preview via the same compiled surface owner.1128source/reference vertices and1190material samples match exactly; actual Torren east/west front/back and wrong-left-foot negative remain intact.33polygon nodes replace201. See [granary-bin-surface-audit](granary-bin-surface-audit/README.md). Black-seam/grain/shadow/style debts remain; official C07 and real gameplay unchanged.
