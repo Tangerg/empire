@@ -11,7 +11,7 @@
       ],
       "mode": "RGBA",
       "sha256": "dd26ba9a73eb5c7b4097dff2598f09dd0d5e7341b8f927e0c54ed453291adfdd",
-      "status": "unbound candidate; solid lower panel retained; two measured front feet fit, full physical/native acceptance pending"
+      "status": "UNBOUND single-object static candidate: native back/front and picking verified, original solid lower panel retained; not whole-scene quality acceptance"
     },
     {
       "file": "assets/native/c07-layered-v1/training-fence-v1-rejected.png",
@@ -55,7 +55,7 @@
       ],
       "mode": "RGBA",
       "sha256": "2decc9ee65012da2adec9a07be186d712f353cedd89be416d896f852b6a90bd2",
-      "status": "UNBOUND main architectural core candidate, deliberately no lean-to/cargo/plants/racks; measured contact fit and footprint not yet accepted"
+      "status": "REJECTED registration candidate; certified source feet do not fit uniformly within subpixel registration; retained provenance, not bound"
     },
     {
       "file": "assets/native/c07-layered-v1/militia-barracks-core-v2-candidate.png",
@@ -66,13 +66,50 @@
       ],
       "mode": "RGBA",
       "sha256": "6eb76b256dca7263f00a2f4633f1ef33ec0ca4178bdad8f23871501f7d262b98",
-      "status": "UNBOUND localized stone-ground-edge correction; minimax residual .474 source px; old left source foot A61 antialias edge, not solid claim; native local depth/side/back validation pending"
+      "status": "UNBOUND main-core static candidate: front/side/back and site-target native validation passed; first old source foot A61 edge not solid claim, minimax residual.474px.276 strips performance not passed; not full62cell foundation or whole scene acceptance"
+    },
+    {
+      "file": "assets/native/c07-layered-v1/barracks-front-lean-to-v1-candidate.png",
+      "generation": "exec-1621b21d-bae0-49dc-bceb-92c41c824194",
+      "pixelSize": [
+        1202,
+        1309
+      ],
+      "mode": "RGBA",
+      "sha256": "a6aff62b1119ad7f5439c4b5c0e658c52a13282ae7c6ac70e2c58776208b5fc4",
+      "status": "REJECTED whole-silhouette registration: matched roof width makes posts15.72source px too short; no whole-object binding"
+    },
+    {
+      "file": "assets/native/c07-layered-v1/barracks-front-lean-to-v2-candidate.png",
+      "generation": "exec-7851c835-54c1-4f99-b9f0-4aca73232cd5",
+      "pixelSize": [
+        1070,
+        1470
+      ],
+      "mode": "RGBA",
+      "sha256": "3f9840005164d3be3ee4657d78641c1203795163bbeea58698b0f225839445c8",
+      "status": "REJECTED whole-silhouette registration: old visible left rod lost and2.15source px roof residual.Only verified opaque slate/wood material regions reused by independent code-native canopy geometry; hidden left foot is declared new design"
+    },
+    {
+      "file": "assets/native/c07-layered-v1/barracks-front-cargo-v1-candidate.png",
+      "generation": "exec-facce1bd-5660-443b-a1ca-201f0f8649ac",
+      "pixelSize": [
+        1132,
+        1390
+      ],
+      "mode": "RGBA",
+      "sha256": "fba5a0b0c287a86cb144c32ccc7badf222e95ce069a0cf48d5cab72ba41d7f2f",
+      "status": "UNBOUND bounded front cargo design at original984193toe, no claim to original right-side object identity; local-depth combined static validation passed, performance/full-footprint integration not accepted"
     }
   ],
   "staticStudies": [
     {
       "path": "atomic-fence-study",
       "status": "unbound independent geometry candidate; plain wood UV reused from rejected silhouette; no production-format or gameplay acceptance"
+    },
+    {
+      "path": "front-stock-atomic-audit",
+      "status": "UNBOUND combined main core/canopy/cargo/fence/blue static candidate.12 material witnesses and front/back alpha controls pass.Updated filled-canopy negative reaches intended material assertion; earlier integer/float initialization failures explicitly withdrawn.Whole scene, foot coverage, performance, real C07 gameplay not accepted."
     }
   ]
 }
