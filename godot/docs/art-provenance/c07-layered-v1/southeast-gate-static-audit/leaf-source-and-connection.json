@@ -1,0 +1,711 @@
+{
+  "scope": "Read-only source/pixel and existing TexturedPropGround compatibility study. No GUI/engine/save/repo change. This new directory does not alter closed v2 region files.",
+  "geometryFile": "southeast-door-leaf-geometry.json",
+  "coordinateSpace": "Original C07 source pixels, worldScale1; do NOT apply gate sprite scale/translation again to this source-space prop.",
+  "implementationCompatibility": {
+    "source": "c07-static-preview/TexturedPropGround.cs",
+    "constructor": "Existing members polygon/uv/tint, one textureResourcePath and shared supportLine are sufficient. UV count equals polygon count. Whole rectangle bounds checked alpha252\u2013253; existing .96 material check remains unchanged.",
+    "rendering": "Renderer splits at source integer x, uses supportLine at x+.5, materialDepth2. Existing pointer methods return false, so this decorative leaf cannot become another site-selection owner. Canonical gate selection remains84,57 owned by left tower body.",
+    "supportExtent": "Polygon minX1327,maxX1349; supplied support covers every generated x+.5 column. No zero-width segments.",
+    "selection": "No door-opening command/state or new collision introduced."
+  },
+  "sourceFacts": {
+    "leaf": "Visible single partly open arched-top wooden leaf with vertical planks and one sloping crossbar. Hinge mechanics and rear thickness are not visible and are not invented.",
+    "sourceOutline": [
+      [
+        1327,
+        852
+      ],
+      [
+        1331,
+        850
+      ],
+      [
+        1335,
+        848
+      ],
+      [
+        1340,
+        849
+      ],
+      [
+        1344,
+        852
+      ],
+      [
+        1347,
+        857
+      ],
+      [
+        1349,
+        864
+      ],
+      [
+        1349,
+        902
+      ],
+      [
+        1327,
+        891
+      ]
+    ],
+    "sourceGroundFrontApprox": [
+      [
+        1327,
+        891
+      ],
+      [
+        1349,
+        902
+      ]
+    ],
+    "visibleInnerBottomLine": [
+      [
+        1328,
+        889
+      ],
+      [
+        1334,
+        893
+      ],
+      [
+        1341,
+        897
+      ],
+      [
+        1347,
+        900
+      ]
+    ],
+    "footCaveat": "These are visible lower timber/frame contacts, not a certified hidden foundation or hardware pivot. Source outer antialias is soft; polygon boundaries are an explicit approximate vector reconstruction from that visible silhouette.",
+    "originalWoodPositives": [
+      {
+        "source": [
+          1332,
+          870
+        ],
+        "sourceRgba": [
+          87,
+          65,
+          46,
+          255
+        ],
+        "meaning": "Actual original visible wood; proposed leaf material positive, no new function",
+        "woodPolygonCovers": true,
+        "woodSupportSourceY": 893.5,
+        "v2Pixel": [
+          715,
+          758
+        ],
+        "v2Rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "v2SectionSupport": [
+          {
+            "section": "left-tower-and-left-arch",
+            "supportSourceY": 916.3520917209272
+          }
+        ]
+      },
+      {
+        "source": [
+          1339,
+          884
+        ],
+        "sourceRgba": [
+          92,
+          63,
+          45,
+          255
+        ],
+        "meaning": "Actual original visible wood; proposed leaf material positive, no new function",
+        "woodPolygonCovers": true,
+        "woodSupportSourceY": 897.0,
+        "v2Pixel": [
+          752,
+          830
+        ],
+        "v2Rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "v2SectionSupport": [
+          {
+            "section": "left-tower-and-left-arch",
+            "supportSourceY": 912.9362506420134
+          }
+        ]
+      },
+      {
+        "source": [
+          1334,
+          893
+        ],
+        "sourceRgba": [
+          101,
+          77,
+          55,
+          255
+        ],
+        "meaning": "Actual original visible wood; proposed leaf material positive, no new function",
+        "woodPolygonCovers": true,
+        "woodSupportSourceY": 894.5,
+        "v2Pixel": [
+          726,
+          877
+        ],
+        "v2Rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "v2SectionSupport": [
+          {
+            "section": "left-tower-and-left-arch",
+            "supportSourceY": 915.3365714001691
+          }
+        ]
+      },
+      {
+        "source": [
+          1347,
+          900
+        ],
+        "sourceRgba": [
+          80,
+          63,
+          48,
+          255
+        ],
+        "meaning": "Actual original visible wood; proposed leaf material positive, no new function",
+        "woodPolygonCovers": true,
+        "woodSupportSourceY": 901.0,
+        "v2Pixel": [
+          793,
+          913
+        ],
+        "v2Rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "v2SectionSupport": [
+          {
+            "section": "right-return-lower-edge-fringe",
+            "supportSourceY": 897.9331601731602
+          }
+        ]
+      }
+    ],
+    "originalGroundNegatives": [
+      {
+        "source": [
+          1322,
+          890
+        ],
+        "sourceRgba": [
+          167,
+          133,
+          98,
+          255
+        ],
+        "meaning": "Ground left/below original leaf, proposed wood must not cover",
+        "woodPolygonCovers": false,
+        "woodSupportSourceY": null,
+        "v2Pixel": [
+          664,
+          861
+        ],
+        "v2Rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "v2SectionSupport": [
+          {
+            "section": "left-tower-and-left-arch",
+            "supportSourceY": 921.0604132080787
+          }
+        ]
+      },
+      {
+        "source": [
+          1334,
+          899
+        ],
+        "sourceRgba": [
+          154,
+          120,
+          87,
+          255
+        ],
+        "meaning": "Ground left/below original leaf, proposed wood must not cover",
+        "woodPolygonCovers": false,
+        "woodSupportSourceY": 894.5,
+        "v2Pixel": [
+          726,
+          908
+        ],
+        "v2Rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "v2SectionSupport": [
+          {
+            "section": "left-tower-and-left-arch",
+            "supportSourceY": 915.3365714001691
+          }
+        ]
+      },
+      {
+        "source": [
+          1347,
+          907
+        ],
+        "sourceRgba": [
+          252,
+          202,
+          128,
+          255
+        ],
+        "meaning": "Ground left/below original leaf, proposed wood must not cover",
+        "woodPolygonCovers": false,
+        "woodSupportSourceY": 901.0,
+        "v2Pixel": [
+          793,
+          949
+        ],
+        "v2Rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "v2SectionSupport": [
+          {
+            "section": "right-return-lower-edge-fringe",
+            "supportSourceY": 897.9331601731602
+          }
+        ]
+      }
+    ],
+    "sourceArchOwnerNegative": {
+      "source": [
+        1335,
+        845
+      ],
+      "sourceRgba": [
+        248,
+        214,
+        171,
+        255
+      ],
+      "meaning": "Actual stone above leaf cap, not world ground; must remain outside leaf polygon.",
+      "woodPolygonCovers": false,
+      "woodSupportSourceY": 895.0,
+      "v2Pixel": [
+        731,
+        629
+      ],
+      "v2Rgba": [
+        241,
+        199,
+        154,
+        254
+      ],
+      "v2SectionSupport": [
+        {
+          "section": "left-tower-and-left-arch",
+          "supportSourceY": 914.8749712543699
+        }
+      ]
+    }
+  },
+  "newDesignAndMaterialReuse": {
+    "textureResourcePath": "res://assets/native/c07-layered-v1/southeast-gate-v1-candidate.png",
+    "sha256": "0912b5b72d9d798fbc7db4b8c394b1c0b920e5da1a87699abd68b760ac6648f0",
+    "rectangles": [
+      {
+        "name": "leaf-plank-material",
+        "exclusiveRectangle": [
+          736,
+          827,
+          798,
+          900
+        ],
+        "alphaMin": 252,
+        "alphaMax": 253
+      },
+      {
+        "name": "crossbar-material-bounds",
+        "exclusiveRectangle": [
+          743,
+          794,
+          781,
+          819
+        ],
+        "alphaMin": 252,
+        "alphaMax": 253
+      }
+    ],
+    "classification": "Reuses actual existing v1 wood pixels ONLY as solid material. It does not crop/reinstall the failed whole v1 gate. UV scale/painted grain layout and vector edge smoothing are new design choices, not original-pixel restoration.",
+    "minimalMembers": "One arched leaf plane is enough for material/depth. Second narrow member restores the visibly evidenced sloping crossbar; both share one actual sloped bottom support. No extra side thickness, hinge, latch or new panel opening is added."
+  },
+  "v2Connection": {
+    "upperAndHingeObservations": [
+      {
+        "source": [
+          1327,
+          852
+        ],
+        "sourceRgba": [
+          54,
+          47,
+          30,
+          255
+        ],
+        "meaning": "Original wood boundary sample compared with actual v2 stone; no assumption that every old wood pixel is now empty",
+        "woodPolygonCovers": true,
+        "woodSupportSourceY": 891.0,
+        "v2Pixel": [
+          690,
+          665
+        ],
+        "v2Rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "v2SectionSupport": [
+          {
+            "section": "left-tower-and-left-arch",
+            "supportSourceY": 918.660092449923
+          }
+        ]
+      },
+      {
+        "source": [
+          1331,
+          850
+        ],
+        "sourceRgba": [
+          70,
+          53,
+          38,
+          255
+        ],
+        "meaning": "Original wood boundary sample compared with actual v2 stone; no assumption that every old wood pixel is now empty",
+        "woodPolygonCovers": true,
+        "woodSupportSourceY": 893.0,
+        "v2Pixel": [
+          710,
+          655
+        ],
+        "v2Rgba": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "v2SectionSupport": [
+          {
+            "section": "left-tower-and-left-arch",
+            "supportSourceY": 916.8136918667263
+          }
+        ]
+      },
+      {
+        "source": [
+          1335,
+          849
+        ],
+        "sourceRgba": [
+          70,
+          52,
+          39,
+          255
+        ],
+        "meaning": "Original wood boundary sample compared with actual v2 stone; no assumption that every old wood pixel is now empty",
+        "woodPolygonCovers": true,
+        "woodSupportSourceY": 895.0,
+        "v2Pixel": [
+          731,
+          650
+        ],
+        "v2Rgba": [
+          255,
+          0,
+          0,
+          1
+        ],
+        "v2SectionSupport": [
+          {
+            "section": "left-tower-and-left-arch",
+            "supportSourceY": 914.8749712543699
+          }
+        ]
+      },
+      {
+        "source": [
+          1340,
+          850
+        ],
+        "sourceRgba": [
+          66,
+          48,
+          34,
+          255
+        ],
+        "meaning": "Original wood boundary sample compared with actual v2 stone; no assumption that every old wood pixel is now empty",
+        "woodPolygonCovers": true,
+        "woodSupportSourceY": 897.5,
+        "v2Pixel": [
+          757,
+          655
+        ],
+        "v2Rgba": [
+          25,
+          19,
+          13,
+          249
+        ],
+        "v2SectionSupport": [
+          {
+            "section": "left-tower-and-left-arch",
+            "supportSourceY": 912.4746504962143
+          }
+        ]
+      },
+      {
+        "source": [
+          1344,
+          853
+        ],
+        "sourceRgba": [
+          80,
+          63,
+          47,
+          255
+        ],
+        "meaning": "Original wood boundary sample compared with actual v2 stone; no assumption that every old wood pixel is now empty",
+        "woodPolygonCovers": true,
+        "woodSupportSourceY": 899.5,
+        "v2Pixel": [
+          777,
+          671
+        ],
+        "v2Rgba": [
+          132,
+          108,
+          92,
+          253
+        ],
+        "v2SectionSupport": [
+          {
+            "section": "arch-front-above-return",
+            "supportSourceY": 910.6529032258065
+          }
+        ]
+      },
+      {
+        "source": [
+          1347,
+          858
+        ],
+        "sourceRgba": [
+          73,
+          57,
+          43,
+          255
+        ],
+        "meaning": "Original wood boundary sample compared with actual v2 stone; no assumption that every old wood pixel is now empty",
+        "woodPolygonCovers": true,
+        "woodSupportSourceY": 901.0,
+        "v2Pixel": [
+          793,
+          696
+        ],
+        "v2Rgba": [
+          138,
+          114,
+          101,
+          253
+        ],
+        "v2SectionSupport": [
+          {
+            "section": "recessed-right-return",
+            "supportSourceY": 897.9331601731602
+          }
+        ]
+      },
+      {
+        "source": [
+          1348,
+          864
+        ],
+        "sourceRgba": [
+          54,
+          41,
+          27,
+          255
+        ],
+        "meaning": "Original wood boundary sample compared with actual v2 stone; no assumption that every old wood pixel is now empty",
+        "woodPolygonCovers": true,
+        "woodSupportSourceY": 901.5,
+        "v2Pixel": [
+          798,
+          727
+        ],
+        "v2Rgba": [
+          141,
+          117,
+          106,
+          253
+        ],
+        "v2SectionSupport": [
+          {
+            "section": "recessed-right-return",
+            "supportSourceY": 898.5980952380953
+          }
+        ]
+      },
+      {
+        "source": [
+          1348,
+          880
+        ],
+        "sourceRgba": [
+          65,
+          48,
+          30,
+          255
+        ],
+        "meaning": "Original wood boundary sample compared with actual v2 stone; no assumption that every old wood pixel is now empty",
+        "woodPolygonCovers": true,
+        "woodSupportSourceY": 901.5,
+        "v2Pixel": [
+          798,
+          810
+        ],
+        "v2Rgba": [
+          143,
+          120,
+          109,
+          253
+        ],
+        "v2SectionSupport": [
+          {
+            "section": "recessed-right-return",
+            "supportSourceY": 898.5980952380953
+          }
+        ]
+      },
+      {
+        "source": [
+          1348,
+          895
+        ],
+        "sourceRgba": [
+          68,
+          50,
+          34,
+          255
+        ],
+        "meaning": "Original wood boundary sample compared with actual v2 stone; no assumption that every old wood pixel is now empty",
+        "woodPolygonCovers": true,
+        "woodSupportSourceY": 901.5,
+        "v2Pixel": [
+          798,
+          887
+        ],
+        "v2Rgba": [
+          135,
+          112,
+          102,
+          253
+        ],
+        "v2SectionSupport": [
+          {
+            "section": "recessed-right-return",
+            "supportSourceY": 898.5980952380953
+          }
+        ]
+      },
+      {
+        "source": [
+          1348,
+          900
+        ],
+        "sourceRgba": [
+          57,
+          41,
+          27,
+          255
+        ],
+        "meaning": "Original wood boundary sample compared with actual v2 stone; no assumption that every old wood pixel is now empty",
+        "woodPolygonCovers": true,
+        "woodSupportSourceY": 901.5,
+        "v2Pixel": [
+          798,
+          913
+        ],
+        "v2Rgba": [
+          255,
+          255,
+          255,
+          1
+        ],
+        "v2SectionSupport": [
+          {
+            "section": "right-return-lower-edge-fringe",
+            "supportSourceY": 898.5980952380953
+          }
+        ]
+      }
+    ],
+    "conclusion": "At original right side1348,864..895, v2 grey return is opaque. Its local support is around898.6, while wood support atx1348 is901.5: leaf can naturally render in front of grey return as an attached overlapping surface, not float in a completely disconnected gap. Left free edge is intentionally in aperture. Exact unseen hinge is unproved.",
+    "capMismatch": "Old upper-right cap1340,850 and1344,853 falls on v2 arch/soffit material with later virtual support~912..911 than wood897.5..899.5. Existing local depth therefore predicts this small top-cap portion remains hidden under the new stone arch. This is an explicit new-arch/old-leaf interface difference, not a full old silhouette pass. Do not force whole leaf always-on-top or move frozen ground samples to conceal it.",
+    "bottom": "At1348,900 v2 is onlyA1 and original wood bottom1349,902 is outside stone; independent wood extends down naturally to its original visible lower line. No invisible wooden support extension below902 is proposed.",
+    "noFloatingClaim": "Geometric overlap establishes a plausible attachment region, not proof of a hidden hinge or mechanical mount. Same-camera preview should confirm no visible seam/unsupported isolated sliver at the curved cap."
+  },
+  "continuousRoadPreservation": {
+    "originalRegionInput": "/workspace/scratch/84c9fe948755/c07-readonly-review/southeast-gate-candidate-v2-stone-review/opening-regions-intermediate.json",
+    "sha256": "4e46096c399f446ef87ca8de42d32577f8d2239416c1bb22e034e6ba8634c452",
+    "results": [
+      {
+        "region": "continuous-exposed-mouth-road",
+        "proposedWoodHits": [],
+        "count": 0
+      },
+      {
+        "region": "left-inner-edge-ground-strip",
+        "proposedWoodHits": [],
+        "count": 0
+      },
+      {
+        "region": "below-left-real-stone-foot",
+        "proposedWoodHits": [],
+        "count": 0
+      },
+      {
+        "region": "below-right-real-stone-foot",
+        "proposedWoodHits": [],
+        "count": 0
+      }
+    ],
+    "result": "Proposed full wood+crossbar polygons intersect NONE of the frozen source-road region integer samples. Keep those native region checks unchanged; do not substitute only the three ground witnesses."
+  },
+  "nativeFollowup": "Render wood with existing textured primitive pipeline atop sectioned v2. Confirm four fixed wood material points, all frozen ground region samples, inherited gate body selection and separate stone actor front/back controls. Keep top-cap mismatch classified rather than changing depth globally to expose it.",
+  "ready": true
+}

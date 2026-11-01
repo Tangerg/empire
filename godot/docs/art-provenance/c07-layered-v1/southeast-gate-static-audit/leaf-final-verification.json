@@ -1,0 +1,38 @@
+{
+  "scope": "two positive and two intended-negative static tests, not gameplay",
+  "cases": [
+    {
+      "result": "southeast-gate-leaf-final--back-native-result.json",
+      "negative": null,
+      "expectedPick": false,
+      "exactTargetFailure": false,
+      "roadUnion": 2293,
+      "materialGuards": 8
+    },
+    {
+      "result": "southeast-gate-leaf-final--front-native-result.json",
+      "negative": null,
+      "expectedPick": true,
+      "exactTargetFailure": false,
+      "roadUnion": 2293,
+      "materialGuards": 8
+    },
+    {
+      "result": "southeast-gate-leaf-final-background-back-native-result.json",
+      "negative": "background",
+      "expectedPick": true,
+      "exactTargetFailure": true,
+      "roadUnion": 2293,
+      "materialGuards": 8
+    },
+    {
+      "result": "southeast-gate-leaf-final-late-front-native-result.json",
+      "negative": "late",
+      "expectedPick": false,
+      "exactTargetFailure": true,
+      "roadUnion": 2293,
+      "materialGuards": 8
+    }
+  ],
+  "freshBuild": "0 warnings, 0 errors; strict script aborts before execution on failed compilation"
+}
