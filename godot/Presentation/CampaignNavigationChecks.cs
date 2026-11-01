@@ -760,6 +760,64 @@ public partial class CampaignNavigationChecks : Node
             "The two owned outposts must retain exactly two dynamic ownership flags.");
     }
 
+    private void CheckLayeredRedstoneBoard(BoardView board)
+    {
+        var ground = Descendants(board).OfType<AssembledGroundView>().Single();
+        Require(board.RenderingIssueCount == 0 && board.RenderedUnitCount == 18
+            && !Descendants(board).OfType<TerrainView>().Any(), "Formal Redstone renders its carried roster on independent layered ground.");
+        Require(ground.Sites.Count == 8
+            && !Descendants(board).Any(node => node.Name.ToString().StartsWith("MapStructure_", StringComparison.Ordinal)),
+            "Redstone's eight independent site bodies must not acquire duplicate sprites.");
+        var document = PresentationJson.Load<AssembledGroundDocument>("res://data/scenes/c01-03-layered-ground.json");
+        var catalog = PresentationJson.Load<SceneObjectCatalog>(document.ObjectCatalogPath);
+        foreach (var placement in document.Objects)
+        {
+            var sprite = ground.GetNode<Sprite2D>(placement.Id);
+            var asset = catalog.Objects[placement.AssetId];
+            var visual = ground.DepthEntries.Single(entry => entry.Node == sprite).Visual!;
+            Vector2 At(Vector2 source) => sprite.ToGlobal(source - new Vector2((float)asset.AnchorPixels[0], (float)asset.AnchorPixels[1]));
+            using var pixels = sprite.Texture.GetImage();
+            Require(pixels.HasMipmaps(), $"C03 independent minified material lacks mipmaps: {placement.Id}.");
+            Require(!visual.Covers(At(new Vector2(10, 10))), $"C03 transparent padding became opaque: {placement.Id}.");
+            if (placement.SelectionCell is { } cell)
+            {
+                var contact = board.ToGlobal(board.Projection.CellContact(new(cell[0], cell[1])));
+                Require(At(new Vector2((float)asset.AnchorPixels[0], (float)asset.AnchorPixels[1])).IsEqualApprox(contact),
+                    $"C03 door threshold does not coincide with its canonical support cell: {placement.Id}.");
+                var door = placement.AssetId switch
+                {
+                    "shed" => new Vector2(775, 760),
+                    "southwest-house" => new Vector2(920, 800),
+                    _ => new Vector2(620, 860)
+                };
+                var roof = new Vector2(800, 400);
+                Require(visual.Covers(At(door)) && visual.ContainsPointer(At(door)), $"C03 actual door pixels lost facade input: {placement.Id}.");
+                var hit = board.Pick(board.ToLocal(At(door)));
+                // The headquarters starts occupied: existing actor precedence must remain intact at that same doorway cell.
+                Require(hit is { } && (hit.Kind == TacticalHitKind.Object
+                    || placement.Id == "Headquarters" && hit.Kind == TacticalHitKind.Unit)
+                    && hit.Cell.X == cell[0] && hit.Cell.Y == cell[1],
+                    $"C03 doorway selected a neighboring tile or object instead of its site/occupant: {placement.Id} ({hit}).");
+                Require(visual.Covers(At(roof)) && !visual.ContainsPointer(At(roof)),
+                    $"C03 opaque roof must draw without redirecting ground clicks: {placement.Id}.");
+            }
+        }
+        foreach (var y in new[] { 12, 23, 24 })
+            foreach (var x in new[] { 65, 66 })
+            {
+                var point = board.Projection.CellContact(new(x, y));
+                foreach (var wall in document.Objects.Where(value => value.AssetId.StartsWith("wall-", StringComparison.Ordinal)))
+                {
+                    var sprite = ground.GetNode<Sprite2D>(wall.Id);
+                    var visual = ground.DepthEntries.Single(entry => entry.Node == sprite).Visual!;
+                    Require(!visual.Covers(board.ToGlobal(point)), $"C03 real wall pixels cover an open doorway cell ({x},{y}): {wall.Id}.");
+                }
+                var hit = board.Pick(point);
+                Require(hit is not null && hit.Cell.X == x && hit.Cell.Y == y,
+                    $"C03 north/main gate road cannot be picked at its physical contact ({x},{y}): {hit}.");
+            }
+    }
+
     private async Task CheckFormalRedstone()
     {
         // Preserve the existing two-victory trace's campaign facts, not its obsolete battle-save envelope.
@@ -811,17 +869,8 @@ public partial class CampaignNavigationChecks : Node
                     && EcmaJson.DeepEquals(unit["rankProgress"], persistent["rankProgress"])
                     && EcmaJson.DeepEquals(unit["resources"], persistent["resources"]), "Redstone did not carry the existing roster health/rank/progress/resources.");
             }
-            void Painted()
-            {
-                var board = View<BattleScreen>(game).Board;
-                var ground = Descendants(board).OfType<PaintedGroundView>().Single();
-                Require(board.RenderingIssueCount == 0 && board.RenderedUnitCount == 18
-                    && !Descendants(board).OfType<TerrainView>().Any(), "Formal Redstone did not render its carried roster on its only painted ground.");
-                Require(ground.Sites.Count == 8
-                    && !Descendants(board).Any(node => node.Name.ToString().StartsWith("MapStructure_", StringComparison.Ordinal)),
-                    "Redstone's eight source-image site bodies must not acquire duplicate sprites.");
-            }
-            Painted();
+            void Layered() => CheckLayeredRedstoneBoard(View<BattleScreen>(game).Board);
+            Layered();
             // Exercise the existing dimension boundary without retaining a retired gameplay definition.
             var incompatible = campaign.Save();
             var smallLevel = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json")
@@ -858,7 +907,7 @@ public partial class CampaignNavigationChecks : Node
             game._UnhandledKeyInput(new InputEventKey { Pressed = true, Keycode = Key.F9 });
             Require(!ReferenceEquals(Campaign(game), campaign) && Digest(Campaign(game).Battle!.Snapshot()) == played,
                 "Redstone F9 did not replace the live session with the same played state.");
-            Painted();
+            Layered();
             Press(Buttons(View<BattleScreen>(game)).Single(button => button.Text == "战役营地"));
             await Layout();
             Require(Campaign(game).AtCamp, "Redstone exit did not return to the normal camp.");
@@ -866,7 +915,7 @@ public partial class CampaignNavigationChecks : Node
             Press(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
             Press(Button(View<CampaignStagingScreen>(game), "StartBattle"));
             Require(Digest(Campaign(game).Battle!.Snapshot()) == Digest(opening), "Redstone Continue did not rebuild the same carried opening.");
-            Painted();
+            Layered();
 
             // A positioned terminal fixture verifies real command -> objective -> application settlement.
             campaign = Campaign(game);

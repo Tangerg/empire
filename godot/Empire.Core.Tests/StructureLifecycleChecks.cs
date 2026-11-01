@@ -14,10 +14,10 @@ internal static class StructureLifecycleChecks
         var engine = new BattleEngine(JsonNode.Parse(File.ReadAllText(Path.Combine(data, "content-packs.json")))!.AsArray());
         var original = JsonNode.Parse(File.ReadAllText(Path.Combine(data, "grayflag-campaign-levels.json")))!.AsArray()
             .OfType<JsonObject>().Single(level => Text(level, "id") == "c01-03");
-        var art = JsonNode.Parse(File.ReadAllText(Path.Combine(data, "scenes/c01-03-painted-ground.json")))!;
+        var art = JsonNode.Parse(File.ReadAllText(Path.Combine(data, "scenes/c01-03-layered-ground.json")))!;
         var hash = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(
             System.Text.Encoding.UTF8.GetBytes(EcmaJson.Stringify(original)))).ToLowerInvariant();
-        Require(Text(art, "levelSourceSha256") == hash, "Formal Redstone painting is registered to its only gameplay definition");
+        Require(Text(art, "levelSourceSha256") == hash, "Formal Redstone layered ground is registered to its only gameplay definition");
         Require(Integer(original, "width") == 101 && Integer(original, "height") == 52
             && Integer(original["rules"]!, "turnLimit") == 18, "Authored large-map scale and deadline remain unchanged");
         Require(!original["scenario"]!["variables"]!.AsObject().ContainsKey("gate_breached"), "No duplicate gate victory fact survives");

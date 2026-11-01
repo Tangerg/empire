@@ -1,0 +1,8 @@
+## c03WallHorizontalV2Prompt
+
+Use case: precise-object-edit. Edit target: attached short gray stone crenellated wall sprite. Keep exactly one short straight horizontal medieval wall module, two merlons, transparent background with generous empty padding, no ground slab, no vegetation, no text. Correct only perspective and material integration: elevated 45-degree strategy-game camera, much more visible broad TOP stone walkway connecting merlons and clearly readable right-side thickness; a low sturdy wall rather than a flat front elevation. Horizontal bottom baseline stays level for seamless neighboring modules, front face about 55% of current height relative to width, broad top depth about one third visible total height. Hand-painted muted warm gray weathered stone, softer dark seams not black cartoon outlines, restrained highlights without bright bevel glow. Preserve the gray medieval material and clean silhouette; subtle neutral contact shadow tightly below base, actual transparent alpha everywhere else. Output a single asset, not a scene or sprite sheet.
+
+## c03WallHorizontalV3Prompt
+
+Precise sprite edit. Keep the attached gray stone wall's material, two crenellations, broad visible top surfaces, softly weathered stones and transparent padding. Change ONLY its orientation: the long front base and ALL horizontal mortar courses must be EXACTLY HORIZONTAL left-to-right, not sloping down to the right. This is an orthographic elevated 45-degree camera aimed perpendicular to the wall long face, so the long wall axis is strictly screen horizontal. Short right end face remains visible with depth receding up-right. A repeatable modular game wall, not isometric diagonal wall. Single isolated asset on actual transparency, no ground or text.
+

@@ -252,3 +252,42 @@ This closes the narrow edge question above without further painting or changing
 rules. Evidence: `c02-foot-fixture/native-002.png` (standing), `native-003.png`
 (adjacent move), `c02-foot-fixture-NOT-GAMEPLAY.txt` (exact fixture construction),
 and the isolated saved event trace (unit 4 at 12,30, done, HP 116).
+
+## Batch 7 — C03 layered candidate and doorway registration (not full acceptance)
+
+C03 now uses an assembled ground with independent walls, eight canonical-site
+buildings, a tower and pass-through decorative pines. Original level source,
+101×52 rules grid, origin (13,17), axes (16,0)/(0,18), world scale 1.5 and all
+mission/rule facts are unchanged. The old wall alpha incorrectly covered legal
+north-gate cells (65–66,12) and main-gate cells (65–66,24). Wall placement now
+leaves both road openings genuinely transparent, rather than allowing clicks
+through a visibly solid wall. Eight door contacts are registered to their real
+canonical sites; roofs remain occluders but not selectable facade regions.
+An occupied headquarters correctly preserves unit-first picking at that same
+cell, not an unconditional object-pick assertion.
+
+This is a **recoverable visual candidate**, not completed C03 artwork or gameplay
+acceptance. v3 corrects vertical wall top/side thickness and calibrates building
+scales against old painted bounds without moving doors. v4 corrects horizontal
+wall top depth; its west/south seam receives a final 10 source-pixel extension
+of the lower end piece, away from either gate. Ground-detail v2 was requested at
+2× size but the generator returned 1642×958: it is not an upscale. Ground still
+looks softer and busier than independent props; this remains a material-fusion
+debt and is not hidden by passing geometry tests. Rejected variants and exact
+prompts/provenance are retained in `docs/art-provenance/c03-layered-v1`.
+
+Actual C03 entry resumes the real C02 settlement with Elin still dead. Current
+real play is only T1: engineer moved (61,23)→(65,23), done, HP86. No full C03
+victory is claimed. Manual save and byte-identical recovery copies precede each
+art reload. Evidence: `../empire-evidence-20261101/c03-before/native-002.png`,
+`c03-after-v3/native-002.png`, `c03-after-v4/native-002.png`, and
+`c03-pre-v5-saved-FIXTURE.json`. These carry the controlled prior-C01 entry marker;
+they are not fresh C01 or continuous-campaign completion evidence.
+
+Verification before the final seam adjustment: build zero warnings/errors;
+focused core structure-lifecycle/Redstone-route checks pass; CameraIntegration
+277 assertions; native CampaignNavigation 1834 assertions, zero failed groups,
+including eight actual facade/roof contracts and actual wall alpha/pick checks
+at all six gate contacts. Settlement branches in that suite are explicit UI
+fixtures, not actual mission results. Final seam regression and real 1.25 city,
+node and second-entrance inspection remain to follow this candidate checkpoint.
