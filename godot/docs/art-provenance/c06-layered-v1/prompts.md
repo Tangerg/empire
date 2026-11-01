@@ -96,3 +96,19 @@ Reconstruct same compact 45-degree volumes/footprint, no generic symmetric cotta
 or omitted annex. Transparent1536x1024, all stone feet/step visible. Remove yard,
 crates, tools, fences, vegetation, lamps and ground. Clean moonlit painted style
 with lit windows/light snow. Generated output remains unbound awaiting fit.
+
+## North red annex v3
+Edit the corrected dual-door cottage, preserve compact rectangular main volume
+and its gable main door. Use muted red roof, replace long-wall side door with a
+window, and add only a small lower rear-right annex; no large projecting front
+L-wing. Preserve winter palette, transparent canvas and readable stone feet.
+
+## Southwest red dual-door v2
+Edit the northwest dual-door cottage roof from slate to muted russet red, keeping
+both original door positions, overall geometry, foundation, snow, framing and
+transparency. No added ground, furnishings or changed footprint.
+
+## Open winter shelter v1
+Edit the C05 open shelter to the existing winter moonlit palette, with thin snow
+and one small warm hanging lantern. Preserve the four physical posts, open low
+rails, roof geometry and transparent walk-through floor; no opaque platform.

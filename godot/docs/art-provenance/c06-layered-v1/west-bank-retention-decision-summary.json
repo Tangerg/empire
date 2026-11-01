@@ -1,0 +1,463 @@
+{
+  "scope": "Bounded C06 retain-the-rock-as-baked-shore decision. No new/expanded collision; do not overlay another independent boulder. Native actor sprite intersections, not gameplay or GUI rendering.",
+  "result": "No backside actor intersection found, including a conservative box larger than the two actual retained rock material contours.",
+  "actorRecordCount": 24,
+  "resolvedAppearanceCount": 14,
+  "unitTypeCount": 13,
+  "allAppearanceRecords": [
+    {
+      "identity": "laiya-stage01",
+      "resourcePath": "res://assets/painted-units-v1/laiya-stage01-v2.png",
+      "actualKeys": [
+        "campaign-laiya"
+      ],
+      "unitTypes": [
+        "c01.laiya"
+      ],
+      "frameCount": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "sourcePresentationScale": 0.07821232
+    },
+    {
+      "identity": "torren-stage01",
+      "resourcePath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+      "actualKeys": [
+        "campaign-torren"
+      ],
+      "unitTypes": [
+        "c01.swordsman"
+      ],
+      "frameCount": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "sourcePresentationScale": 0.07692304
+    },
+    {
+      "identity": "C01-FFV1-UNIT-ARCHER",
+      "resourcePath": "res://assets/painted-units-v1/unit-archer-v2.png",
+      "actualKeys": [
+        "campaign-elin",
+        "pursuer-3",
+        "north-pursuer",
+        "pursuit-wave-bow"
+      ],
+      "unitTypes": [
+        "c01.archer"
+      ],
+      "frameCount": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "sourcePresentationScale": 0.06746984
+    },
+    {
+      "identity": "mirelle-stage01",
+      "resourcePath": "res://assets/painted-units-v1/mirelle-stage01-v2.png",
+      "actualKeys": [
+        "campaign-mirelle"
+      ],
+      "unitTypes": [
+        "c01.mirelle"
+      ],
+      "frameCount": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "sourcePresentationScale": 0.064516164
+    },
+    {
+      "identity": "bran-stage01",
+      "resourcePath": "res://assets/painted-units-v1/bran-stage01-clean-v3.png",
+      "actualKeys": [
+        "campaign-bran"
+      ],
+      "unitTypes": [
+        "c01.bran"
+      ],
+      "frameCount": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "sourcePresentationScale": 0.07216496
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BANNER-GUARD",
+      "resourcePath": "res://assets/painted-units-v1/unit-banner-guard-clean-v3.png",
+      "actualKeys": [
+        "rearguard",
+        "rearguard-2"
+      ],
+      "unitTypes": [
+        "c01.banner-guard"
+      ],
+      "frameCount": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "sourcePresentationScale": 0.08115944
+    },
+    {
+      "identity": "C01-FFV1-MISSION-REFUGEE-ADULT",
+      "resourcePath": "res://assets/runtime-approved-v5/mission-unit/mission-refugee-adult@2x.png",
+      "actualKeys": [
+        "refugee-1",
+        "refugee-2",
+        "refugee-3"
+      ],
+      "unitTypes": [
+        "c01.refugee"
+      ],
+      "frameCount": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "sourcePresentationScale": 0.496
+    },
+    {
+      "identity": "C01-FFV1-MISSION-BRIDGE-LABORER",
+      "resourcePath": "res://assets/runtime-approved-v5/mission-unit/mission-bridge-laborer@2x.png",
+      "actualKeys": [
+        "refugee-4"
+      ],
+      "unitTypes": [
+        "c01.laborer"
+      ],
+      "frameCount": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "carry-or-work",
+        "walk-b"
+      ],
+      "sourcePresentationScale": 0.496
+    },
+    {
+      "identity": "C01-FFV1-UNIT-KNIGHT",
+      "resourcePath": "res://assets/painted-c01-v1/unit-knight-v1.png",
+      "actualKeys": [
+        "mounted-rearguard",
+        "pursuer-1",
+        "pursuit-wave-knight"
+      ],
+      "unitTypes": [
+        "c01.knight"
+      ],
+      "frameCount": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "sourcePresentationScale": 0.06779664
+    },
+    {
+      "identity": "C01-FFV1-UNIT-GRAVEKEEPER",
+      "resourcePath": "res://assets/painted-units-v1/unit-gravekeeper-gait-v2.png",
+      "actualKeys": [
+        "white-river-cleric"
+      ],
+      "unitTypes": [
+        "c01.gravekeeper"
+      ],
+      "frameCount": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "sourcePresentationScale": 0.07368424
+    },
+    {
+      "identity": "C01-FFV1-UNIT-SWORDSMAN",
+      "resourcePath": "res://assets/painted-units-v1/unit-swordsman-gait-v3.png",
+      "actualKeys": [
+        "pursuer-2",
+        "pursuer-4",
+        "pursuit-wave-sword"
+      ],
+      "unitTypes": [
+        "c01.swordsman"
+      ],
+      "frameCount": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "sourcePresentationScale": 0.06779664
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BALLISTA",
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-ballista@2x.png",
+      "actualKeys": [
+        "pursuer-ballista"
+      ],
+      "unitTypes": [
+        "c01.ballista"
+      ],
+      "frameCount": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "sourcePresentationScale": 0.496
+    },
+    {
+      "identity": "C01-FFV1-UNIT-LEGION-SHIELD",
+      "resourcePath": "res://assets/painted-units-v1/unit-legion-shield-gait-v2.png",
+      "actualKeys": [
+        "ford-shield"
+      ],
+      "unitTypes": [
+        "c01.legion-shield"
+      ],
+      "frameCount": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "sourcePresentationScale": 0.08333336
+    },
+    {
+      "identity": "C01-FFV1-UNIT-BATTLE-MAGE",
+      "resourcePath": "res://assets/painted-units-v1/unit-battle-mage-clean-v3.png",
+      "actualKeys": [
+        "river-mage"
+      ],
+      "unitTypes": [
+        "c01.battle-mage"
+      ],
+      "frameCount": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "sourcePresentationScale": 0.071066
+    }
+  ],
+  "movementClasses": "Actual thirteen unit types usefoot/mounted/heavy; all three rejectwater andwall. Thefoot-walkable set tested is a conservative admissible-ground superset, not a claim every profile has identical costs.",
+  "posesPerAppearance": "All4authoredframes (idle,walk-a,walk-b,attack or mission work) \u00d7 left/right around canonicalfoot. No extra future or hypothetical class assumed.",
+  "legalCellsBehindFootY400": 431,
+  "staticAabbCasesIncludingControls": 48384,
+  "staticAabbLegalCandidatePoses": 518,
+  "staticAabbControlPoses": 112,
+  "actualAlphaMethod": "Sprite2D.IsPixelOpaque using real productionBoard actor and AssetCatalog.ApplyFrame. Sampled0.5sourcepx grid after AABB filter. Original riverPNG alpha is not used as a wood/rock segmentation oracle.",
+  "originalBroadRoi": [
+    430,
+    320,
+    525,
+    415
+  ],
+  "conservativeRockRectangle": [
+    460,
+    340,
+    525,
+    400
+  ],
+  "legalPosesIntersectingActualMaterialContours": 0,
+  "legalPosesIntersectingConservativeRockBox": 0,
+  "closestObservedOpaquePixelCases": [
+    {
+      "assetIdentity": "C01-FFV1-UNIT-KNIGHT",
+      "cell": [
+        16,
+        11
+      ],
+      "frameRole": "attack",
+      "facing": "left",
+      "footSource": [
+        548,
+        352
+      ],
+      "nearestActualRockContourDistance": 19.04206,
+      "nearestContourPixel": [
+        521,
+        338
+      ]
+    },
+    {
+      "assetIdentity": "C01-FFV1-UNIT-LEGION-SHIELD",
+      "cell": [
+        16,
+        11
+      ],
+      "frameRole": "attack",
+      "facing": "left",
+      "footSource": [
+        548,
+        352
+      ],
+      "nearestActualRockContourDistance": 19.04206,
+      "nearestContourPixel": [
+        521,
+        338
+      ]
+    },
+    {
+      "assetIdentity": "torren-stage01",
+      "cell": [
+        16,
+        11
+      ],
+      "frameRole": "attack",
+      "facing": "left",
+      "footSource": [
+        548,
+        352
+      ],
+      "nearestActualRockContourDistance": 20.365458,
+      "nearestContourPixel": [
+        520.5,
+        336
+      ]
+    },
+    {
+      "assetIdentity": "laiya-stage01",
+      "cell": [
+        16,
+        11
+      ],
+      "frameRole": "attack",
+      "facing": "left",
+      "footSource": [
+        548,
+        352
+      ],
+      "nearestActualRockContourDistance": 21.100948,
+      "nearestContourPixel": [
+        524.5,
+        338
+      ]
+    },
+    {
+      "assetIdentity": "C01-FFV1-UNIT-KNIGHT",
+      "cell": [
+        15,
+        10
+      ],
+      "frameRole": "walk-b",
+      "facing": "right",
+      "footSource": [
+        516,
+        324
+      ],
+      "nearestActualRockContourDistance": 21.289669,
+      "nearestContourPixel": [
+        504.5,
+        326
+      ]
+    },
+    {
+      "assetIdentity": "C01-FFV1-UNIT-KNIGHT",
+      "cell": [
+        14,
+        10
+      ],
+      "frameRole": "walk-b",
+      "facing": "left",
+      "footSource": [
+        484,
+        324
+      ],
+      "nearestActualRockContourDistance": 21.708294,
+      "nearestContourPixel": [
+        495.5,
+        326
+      ]
+    },
+    {
+      "assetIdentity": "C01-FFV1-UNIT-SWORDSMAN",
+      "cell": [
+        16,
+        11
+      ],
+      "frameRole": "attack",
+      "facing": "left",
+      "footSource": [
+        548,
+        352
+      ],
+      "nearestActualRockContourDistance": 21.835863,
+      "nearestContourPixel": [
+        523,
+        336
+      ]
+    },
+    {
+      "assetIdentity": "C01-FFV1-UNIT-ARCHER",
+      "cell": [
+        15,
+        10
+      ],
+      "frameRole": "walk-b",
+      "facing": "right",
+      "footSource": [
+        516,
+        324
+      ],
+      "nearestActualRockContourDistance": 21.931713,
+      "nearestContourPixel": [
+        510,
+        327
+      ]
+    }
+  ],
+  "positiveControl": {
+    "cell": [
+      14,
+      12
+    ],
+    "canonicalTerrain": "wall - deliberately illegal diagnostic placement, not legal gameplay",
+    "posesDetectingActualRockIntersection": 112,
+    "expectedPoses": 112,
+    "purpose": "Shows actual alpha and transformations detect material intersection when a body occupies the forbidden foundation; not all-zero broken oracle."
+  },
+  "stateUnchanged": true,
+  "limits": [
+    "Only present C06 opening+T4resolved14appearances; future asset silhouettes or new types require rerun.",
+    "Stationary canonicalfoot positions andall4realframes/bothfacings. Not a natural-play balance test, not arbitrary continuous foot positions or attack-lunge animation proof.",
+    "0.5sourcepx sampling and hand-reviewed actual material search contours; broad conservative rectangle is also empty. Nearest observed material separation is~19.04sourcepx, not a subpixel boundary pass.",
+    "Front-sidefootY>=400 excluded from failures; natural actor-over-ground compositing on the foreground side is allowed.",
+    "Retention must be explicit as thisspecificshore/background exception. Does not certify all34groups independent orclear."
+  ],
+  "evidence": [
+    "west-bank-actor-overlap.json",
+    "rock-probe-native.log",
+    "rock-probe-build.log",
+    "native-probe/RockProbe.cs"
+  ],
+  "inputDllSha256": "bdca393f2451c549909236d3d9876787afc2d6b368a28a72cafcc28e70a49f13"
+}

@@ -52,3 +52,24 @@ Three opaque corner fits alone cannot certify these architectures. The initial S
 slate fit of 5.004717 pixels fails the fixed five-pixel limit and is not rounded
 into a pass. The original snow-pines-17 named polygon is also mainly snow/low grass,
 not proof of a tree; actual roots, not old labels, must determine pivots.
+
+## Bounded west-bank shore decision
+
+Clean v4 removes pine2 but retains the existing west-bank stone shore. Retain this
+continuous shore geology in the ground layer; do not add a duplicate independent
+west-bank boulder. This decision is based on full actual actor alpha, not inability
+to erase the source: opening and T4 records resolve to 14 appearances / 13 types,
+four frames and both facings. Across 431 legal backside fixed foot positions,
+neither inspected stone contours nor their larger conservative box intersect actor
+alpha. Nearest inspected alpha is about 19.04 source pixels away. All 112 poses
+placed at the illegal wall positive-control position intersect, validating the probe.
+See the two adjacent JSON reports. This does not certify in-between motion, camera
+rendering, future actor types or C06 gameplay. Four other actual standing rock groups
+remain independent candidates; the southern rock label lacks an original rock and
+needs a separate honest visual-responsibility decision. Bridges retain only their
+continuous low deck/foundation; elevated rails/lamps require independent objects.
+
+Three additional source-facing art candidates are saved with exact hashes: the
+north red cottage with a smaller rear annex, southwest red dual-door cottage, and
+open winter shelter. They are not bound or accepted before actual feet, annex,
+post/open-gap, doorway and depth checks. No C05 live assets or game rules changed.
