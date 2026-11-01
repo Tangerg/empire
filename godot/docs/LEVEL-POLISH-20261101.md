@@ -238,3 +238,17 @@ PaintedSurfaceBroadPhase 8129; CameraIntegration 277. Metadata: 305 unique UIDs.
 warnings and the pre-existing environment-catalog diagnostic are not graphical
 acceptance. Full seven-map gameplay acceptance remains open; C03's confirmed
 wall/doorway registration defects are next.
+
+
+### Southwest foot-width closure (isolated placement fixture)
+
+A further explicitly synthetic placement fixture copies T3-start and changes only
+knight 4's coordinates from (16,22) to (12,29); it is **not** part of the real
+battle history. Native rendering at normal 1.25 zoom shows the boot contact on
+dry grass, with the tall shoreline boulder behind/right rather than beneath the
+actor. Normal GUI select → Down → Enter → W moves to adjacent road (12,30),
+with the normal moved/done result. Both actual frames show supported dry feet.
+This closes the narrow edge question above without further painting or changing
+rules. Evidence: `c02-foot-fixture/native-002.png` (standing), `native-003.png`
+(adjacent move), `c02-foot-fixture-NOT-GAMEPLAY.txt` (exact fixture construction),
+and the isolated saved event trace (unit 4 at 12,30, done, HP 116).
