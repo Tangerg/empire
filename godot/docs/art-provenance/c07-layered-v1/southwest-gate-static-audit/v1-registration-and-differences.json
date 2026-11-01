@@ -1,0 +1,631 @@
+{
+  "scope": "One bounded uniform-only southwest stone candidate registration assessment. Candidate and source physically viewed. No pixel edits, generation, GUI, engine/native run or production write. Parent reports original actor samples native-confirmed; this is not candidate native acceptance.",
+  "candidate": {
+    "resourcePath": "res://assets/native/c07-layered-v1/southwest-gate-v1-stone-candidate.png",
+    "size": [
+      1326,
+      1186
+    ],
+    "sha256": "3cfc5ed0647cbac6fb3cb46260ee09fa12c250d344b250ac2968d99d34379120"
+  },
+  "previewRegistration": {
+    "status": "Usable SAME-CAMERA preview candidate with declared physical differences, not a full foundation/shape pass.",
+    "scale": 0.18803418803418792,
+    "translation": [
+      82.10256410256423,
+      724.923076923077
+    ],
+    "formula": "source=scale*assetPixel+translation, C07worldScale1. No nonuniform stretch or rotation.",
+    "optionalAssetAnchor": [
+      510,
+      963
+    ],
+    "optionalSourceContact": [
+      178.00000000000006,
+      906.0
+    ],
+    "warning": "This anchor is the separate left ARCH return near lower corner, not blue tower main nearbase383981. Do not reinterpret old181903 as main tower base. No whole-gate singlegroundfront."
+  },
+  "nominalLandmarkFit": {
+    "method": "Minimax source-axis residual over two approximate visible arch-foot feature correspondences and two source roof-cap landmarks. Landmark/model correspondence is explicitly approximate; objective value is NOT an acceptance tolerance. No alpha points or road samples optimized.",
+    "asset": [
+      [
+        510,
+        963
+      ],
+      [
+        803,
+        1080
+      ],
+      [
+        398,
+        31
+      ],
+      [
+        1095,
+        428
+      ]
+    ],
+    "sourceApprox": [
+      [
+        181,
+        903
+      ],
+      [
+        233,
+        931
+      ],
+      [
+        157,
+        729
+      ],
+      [
+        285,
+        803
+      ]
+    ],
+    "scale": 0.18803418803418792,
+    "translation": [
+      82.10256410256423,
+      724.923076923077
+    ],
+    "maxAxisError": 2.9999999999999623,
+    "residuals": [
+      [
+        -2.999999999999943,
+        3.0
+      ],
+      [
+        0.09401709401711855,
+        -3.0
+      ],
+      [
+        -0.05982905982898501,
+        1.7521367521368347
+      ],
+      [
+        3.0,
+        2.401709401709468
+      ]
+    ],
+    "footInterpretation": "Old181903 is a visible grey arch-return low material point, not a hidden full foundation vertex. Old233931 is the near inner-side stone edge, whereas certified inner stone235932 remains an independent checked point. These edge contacts do not authenticate exact hidden dimensions.",
+    "roofLandmarks": "Original blue roof cap around157729 and red cap285803 were re-read from source pixel grid, not stale oldroofpolygon147725/280807. Candidate cap39831 and1095428 are actual opaque materialA253/A252."
+  },
+  "actualPhysicalContactsDistinct": [
+    {
+      "candidatePixel": [
+        383,
+        981
+      ],
+      "candidateRgba": [
+        156,
+        122,
+        105,
+        249
+      ],
+      "mappedSource": [
+        154.1196581196582,
+        909.3846153846154
+      ],
+      "label": "MAIN blue tower near base; NOT old181903 arch-return foot. Old analogous whole tower base partly vegetation-hidden."
+    },
+    {
+      "candidatePixel": [
+        510,
+        963
+      ],
+      "candidateRgba": [
+        26,
+        17,
+        11,
+        250
+      ],
+      "mappedSource": [
+        178.00000000000006,
+        906.0
+      ],
+      "label": "Separate LEFT ARCH grey-return near lower corner/edge. This is distinct from main tower base383981."
+    },
+    {
+      "candidatePixel": [
+        545,
+        943
+      ],
+      "candidateRgba": [
+        45,
+        33,
+        26,
+        253
+      ],
+      "mappedSource": [
+        184.58119658119665,
+        902.2393162393162
+      ],
+      "label": "Left arch grey return farther/back lower stone; different endpoint from510963."
+    },
+    {
+      "candidatePixel": [
+        601,
+        881
+      ],
+      "candidateRgba": [
+        71,
+        42,
+        6,
+        247
+      ],
+      "mappedSource": [
+        195.11111111111117,
+        890.5811965811965
+      ],
+      "label": "Farther interior light return lower stone exposed after door removal. Old equivalent partly wood-hidden; cannot certify an old hidden foot."
+    },
+    {
+      "candidatePixel": [
+        803,
+        1080
+      ],
+      "candidateRgba": [
+        28,
+        19,
+        13,
+        213
+      ],
+      "mappedSource": [
+        233.09401709401712,
+        928.0
+      ],
+      "label": "RIGHT ARCH inner-side lower edge; A213 boundary, not a robust new inner-face material sample."
+    },
+    {
+      "candidatePixel": [
+        817,
+        1084
+      ],
+      "candidateRgba": [
+        191,
+        166,
+        151,
+        253
+      ],
+      "mappedSource": [
+        235.72649572649576,
+        928.7521367521367
+      ],
+      "label": "RIGHT ARCH lower inner STONE material A253, independently observed; maps above old235932."
+    },
+    {
+      "candidatePixel": [
+        900,
+        1128
+      ],
+      "candidateRgba": [
+        190,
+        163,
+        147,
+        253
+      ],
+      "mappedSource": [
+        251.33333333333337,
+        937.025641025641
+      ],
+      "label": "Right arch masonry front/right lower face near tower connection; not old235932 inner edge."
+    },
+    {
+      "candidatePixel": [
+        1090,
+        1168
+      ],
+      "candidateRgba": [
+        251,
+        239,
+        205,
+        252
+      ],
+      "mappedSource": [
+        287.0598290598291,
+        944.5470085470085
+      ],
+      "label": "Small right tower near base candidate; original base foliage/rock-hidden so no original exact-fit claim."
+    }
+  ],
+  "frozenActorStonePoints": [
+    {
+      "source": [
+        235,
+        875
+      ],
+      "sourceRgba": [
+        152,
+        138,
+        136,
+        255
+      ],
+      "role": "Unchanged old native actual Torren/stone witness; required positive material",
+      "candidatePixel": [
+        813,
+        798
+      ],
+      "candidateRgba": [
+        199,
+        172,
+        154,
+        253
+      ]
+    },
+    {
+      "source": [
+        236,
+        876
+      ],
+      "sourceRgba": [
+        151,
+        135,
+        133,
+        255
+      ],
+      "role": "Unchanged old native actual Torren/stone witness; required positive material",
+      "candidatePixel": [
+        818,
+        803
+      ],
+      "candidateRgba": [
+        196,
+        170,
+        152,
+        253
+      ]
+    },
+    {
+      "source": [
+        241,
+        927
+      ],
+      "sourceRgba": [
+        142,
+        129,
+        127,
+        255
+      ],
+      "role": "Unchanged old native actual Torren/stone witness; required positive material",
+      "candidatePixel": [
+        845,
+        1075
+      ],
+      "candidateRgba": [
+        190,
+        162,
+        145,
+        253
+      ]
+    },
+    {
+      "source": [
+        242,
+        929
+      ],
+      "sourceRgba": [
+        131,
+        118,
+        114,
+        255
+      ],
+      "role": "Unchanged old native actual Torren/stone witness; required positive material",
+      "candidatePixel": [
+        850,
+        1085
+      ],
+      "candidateRgba": [
+        191,
+        162,
+        144,
+        253
+      ]
+    }
+  ],
+  "sourceFootAndFixedGroundDifferences": [
+    {
+      "source": [
+        181,
+        903
+      ],
+      "sourceRgba": [
+        122,
+        110,
+        108,
+        255
+      ],
+      "role": "Original low grey ARCH return material, not main tower base",
+      "candidatePixel": [
+        526,
+        947
+      ],
+      "candidateRgba": [
+        132,
+        112,
+        101,
+        252
+      ]
+    },
+    {
+      "source": [
+        235,
+        932
+      ],
+      "sourceRgba": [
+        147,
+        133,
+        125,
+        255
+      ],
+      "role": "Original true inner right stone foot: newA0, explicit lost source material",
+      "candidatePixel": [
+        813,
+        1101
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source": [
+        232,
+        904
+      ],
+      "sourceRgba": [
+        253,
+        210,
+        145,
+        255
+      ],
+      "role": "Original legal back actor foot on genuine aperture dirt",
+      "candidatePixel": [
+        797,
+        952
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source": [
+        232,
+        920
+      ],
+      "sourceRgba": [
+        247,
+        199,
+        141,
+        255
+      ],
+      "role": "Original lower mouth dirt",
+      "candidatePixel": [
+        797,
+        1037
+      ],
+      "candidateRgba": [
+        255,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "source": [
+        235,
+        936
+      ],
+      "sourceRgba": [
+        156,
+        130,
+        96,
+        255
+      ],
+      "role": "Original exposed dirt below right foot",
+      "candidatePixel": [
+        813,
+        1123
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source": [
+        181,
+        909
+      ],
+      "sourceRgba": [
+        154,
+        124,
+        100,
+        255
+      ],
+      "role": "Original exposed dirt below left arch foot",
+      "candidatePixel": [
+        526,
+        979
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "physicalDifferenceConclusions": {
+    "leftReturn": "Old181903 maps to genuine grey return materialA252; selected new near edge510963 maps178906, and back low edge545943 maps184.581,902.239. Do not label either new near main tower foot or claim every source low-edge pixel identical.",
+    "rightFoot": "New inner edge8031080 maps233.094,928.0 versus old approximate inner side233931: 3px up. New innerSTONE8171084 maps235.726,928.752; original truefoot235932 mapsA0. The preserved two actor front samples are several pixels above/sideways and do NOT prove full original foot restoration.",
+    "scaleFeasibility": "One uniform transform can preserve frozen4actor-material points and all known continuous road-region opacity exclusions, with roofcaps within about3source-axispx. It cannot be called an exact physical registration because the right low stone ends above the old visible foot, and left return/corner placements differ.",
+    "hiddenTowerFeet": "Generated blue/main towerbase383981 maps154.12,909.38. Original equivalent is foliage-obscured, so this is new visible base geometry rather than a certified old foot. Same restriction applies to red main tower and farther interior return exposed by removing old wooden leaf."
+  },
+  "continuousGroundContract": {
+    "frozenFile": "/workspace/scratch/84c9fe948755/c07-readonly-review/southwest-gate-source-study/southwest-gate-original-road-regions.json",
+    "sha256": "c0fa14badb0130414c9cc67a16282e232773796070f62eeafd6d4949ee88fc0e",
+    "sampling": "Same integer source points inside/on independent original polygons, nearest texturepixel; no regions moved, no transparency threshold changed. Native must re-evaluate actual Coverage/Pick/filtering.",
+    "regionResults": [
+      {
+        "regionId": "continuous-open-mouth-and-front-road",
+        "pointCount": 1336,
+        "histogram": {
+          "0": 1335,
+          "1": 1
+        },
+        "opaqueHits": []
+      },
+      {
+        "regionId": "right-inner-edge-road-band",
+        "pointCount": 80,
+        "histogram": {
+          "0": 80
+        },
+        "opaqueHits": []
+      },
+      {
+        "regionId": "under-left-leg-ground-band",
+        "pointCount": 21,
+        "histogram": {
+          "0": 21
+        },
+        "opaqueHits": []
+      },
+      {
+        "regionId": "under-right-leg-ground-band",
+        "pointCount": 8,
+        "histogram": {
+          "0": 8
+        },
+        "opaqueHits": []
+      }
+    ],
+    "unionPointCount": 1405,
+    "nonzeroUnionSamples": [
+      {
+        "source": [
+          224,
+          884
+        ],
+        "sourceRgba": [
+          247,
+          194,
+          124,
+          255
+        ],
+        "role": "Original frozen ground-region point",
+        "candidatePixel": [
+          755,
+          846
+        ],
+        "candidateRgba": [
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    ],
+    "result": "NoA>=200 hits; one A1 source point retained, all other sampled points A0. Do not rewrite literalA1 asA0 or count this static result as native fullfield pass."
+  },
+  "failedDiagnosticRoofOnly": {
+    "registration": {
+      "scale": 0.18464351005484458,
+      "translation": [
+        83.16361974405848,
+        723.6243144424132
+      ],
+      "maxAxisError": 0.3482632541133464,
+      "residuals": [
+        [
+          -0.34826325411336256,
+          0.34826325411336256
+        ],
+        [
+          0.3482632541133057,
+          -0.34826325411336256
+        ]
+      ]
+    },
+    "groundFalsePositives": [
+      {
+        "source": [
+          232,
+          904
+        ],
+        "candidatePixel": [
+          806,
+          977
+        ],
+        "alpha": 251
+      },
+      {
+        "source": [
+          232,
+          920
+        ],
+        "candidatePixel": [
+          806,
+          1064
+        ],
+        "alpha": 251
+      },
+      {
+        "source": [
+          231,
+          915
+        ],
+        "candidatePixel": [
+          801,
+          1036
+        ],
+        "alpha": 203
+      }
+    ],
+    "meaning": "Matching roofs alone visibly narrows original road and covers actual back-actor ground foot. Rejected, despite small roof residual. Original road contract catches this rather than relying solely on4actor positives."
+  },
+  "otherTwoFootDiagnostic": {
+    "registration": {
+      "scale": 0.19512195121951187,
+      "translation": [
+        78.90243902439042,
+        717.6829268292687
+      ],
+      "maxAxisError": 2.5853658536585016,
+      "residuals": [
+        [
+          -2.585365853658516,
+          2.5853658536586863
+        ],
+        [
+          2.585365853658459,
+          -2.585365853658459
+        ]
+      ]
+    },
+    "meaning": "Retained only as dimensional trade-off, not a better pass or new tolerance. No further tuning loop performed."
+  },
+  "depthOwnership": "Left arch near face, grey internal return, far interior surface and right arch/tower have distinct real supports. Over true transparent span use explicitly virtual cross-leg support, not lowest alpha/archead as ground. Removed original LEFT wooden leaf needs independent oldslopedwood support; it must not be assigned wholearchfront902 or righttowerfront948.",
+  "backgroundAlphaAudit": {
+    "nonzeroMoreThan20AssetPixelsFromA200": 830,
+    "maxFarAlpha": 1,
+    "farAlphaAbove8": 0,
+    "note": "No alpha modified. Nearbody antialias/noise not counted as feet."
+  },
+  "nativeFollowup": "Preview the supplied transform once and retain fixed native back/front actor points plus whole original continuous road regions. Review actual right-foot shortfall235932 separately; do not silently drop it or call frontsample success complete foundation coverage. No rule/selection/terrain change proposed.",
+  "evidence": [
+    "candidate-left-arch-foot-grid.png",
+    "candidate-right-arch-foot-grid.png",
+    "original-roof-landmarks-grid.png",
+    "candidate-distinct-physical-contacts.png"
+  ],
+  "ready": true
+}
