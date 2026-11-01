@@ -11,3 +11,5 @@ Large under-shed bale asset is only saved as a candidate checkpoint; no registra
 Complete stock/back partitions, visual assembly/contact shadows and performance still pending. No production/fullscene acceptance; new material and shape await same-camera visual review.
 
 V1 native visual review found the authored back storage panel ungrounded in source identity and visually detached from supports. **V1 assembly visual NOT accepted** despite structural checks passing. Preserve its failure image. Remove this speculative panel from the next structural candidate; restore independently identified supplies separately instead of inventing a back wall. New bale asset remains unregistered at this checkpoint.
+
+Active frame-v2 removes the rejected panel entirely; separate bale stock is documented in ../granary-large-grain-audit. Original v1 files remain historical failure evidence, not the active accepted assembly.
