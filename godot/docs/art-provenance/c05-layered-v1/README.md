@@ -1,12 +1,14 @@
 # C05 independent assets — unbound preparation
 
-These six built-in image-generation outputs are a recoverable material checkpoint,
+These thirteen built-in image-generation outputs are a recoverable material checkpoint,
 not the accepted C05 scene. `c01-05.json` still uses the original painted village.
 No gameplay, geometry, scene registration, or collision data changes in this batch.
 See `prompts.md` and `manifest.json` for prompts, exact bytes and dimensions.
 
-The ground candidate preserves the river/bridge layout provisionally, but retains
-some boulders. It must not receive duplicate rock sprites without visual review.
+The first ground candidate retains some boulders; `ground-clean-v2.png` removes
+those standing rocks while retaining the bridge/dock. Both remain unbound pending
+registration review, and must not receive duplicate rock sprites. The rail candidate
+has a measured slope discrepancy requiring review before binding.
 House variants differ in occupied pixel bounds despite the same canvas size; each
 must be registered from its actual foundation/door pixels, not a shared canvas pivot.
 The watch shelter's plank floor must remain click-through; only its physical posts

@@ -21,3 +21,31 @@ Use case: stylized-concept. Create ONE isolated independent open timber watch sh
 ## Willow
 
 Use case: stylized-concept. ONE independent riverside willow tree sprite for the referenced faithful hand-painted 2D medieval tactics map. Use reference only for 45-degree elevated orthographic camera and soft painterly foliage language. Broad rounded weeping willow canopy with long hanging olive-green branches, subtle muted yellow-green highlights, readable brown trunk and modest exposed root foot. Not a pine, not a tropical palm; avoid luminous lime green, glitter, harsh individual speckles and black outlines. Keep natural asymmetrical rounded canopy, medium squat river willow, single trunk clearly ending at lower-center anchor. Whole tree in 1024x1024 canvas with transparent padding. Genuine transparent background including spaces around roots/leaf tips, no ground patch, no reeds, water, scenery, rock, text, shadow backdrop or glow.
+
+## Well
+
+Use case: stylized-concept. ONE independent small round stone village well sprite, faithful hand-painted 2D medieval tactics art, elevated 45 degree orthographic view. Low circular gray fieldstone well rim with visible oval dark opening, two slender wooden uprights, plain crossbeam and rope windlass, small suspended wooden bucket inside. NO roof, no platform, no garden or grass. Warm weathered brown wood, restrained slate-gray stones, soft earthy outlines, no sparkling grain. Broad short ground footprint and clearly visible base course, entire well centered on 1024x1024 genuine transparent canvas with padding, no scenery, glow, cast shadow backdrop, text or characters. Design aligns with the two small open wells in the supplied village reference; do not reproduce the scene.
+
+## Crates
+
+Use case: stylized-concept. One independent small stack of THREE closed medieval wooden supply crates, two broad cubes on ground and one smaller box above, faithful hand-painted 2D 45-degree elevated orthographic tactics sprite. Warm weathered brown plank wood, diagonal bracing, restrained dark iron nails, clear top/front/side faces, soft earthy contours and muted highlights, not glossy. Compact low stack no taller than a person, no sacks barrels cart or grass. Entire asset centered on 1024x1024 genuine transparent canvas with padding, readable ground-contact feet along lower silhouette. No scene, text, characters, floating particles, cast-shadow backdrop or glow.
+
+## Slate left
+
+Use case: precise-object-edit. Produce a horizontally mirrored architectural variant of this cottage for the same hand-painted game. Front GABLE DOOR must now be on the LOWER LEFT-facing wall, with the long windowed side wall extending to the RIGHT. Slate roof and chimney, plaster/timber walls, low stone foundation, identical building proportions, camera elevation, style, muted colors and detail. This is specifically the opposite handed cottage, not another right-door house. Keep all sprite transparent background and centered 1536x1024 canvas, full low foundation visible. No scene, extra objects, people, text, glow or opaque background.
+
+## Red left
+
+Use case: precise-object-edit. Opposite-handed RED TILE cottage variant of the supplied red cottage sprite: horizontally mirrored building architecture, front GABLE and wooden DOOR on the LOWER LEFT-facing wall, long windowed wall extending RIGHT. Keep muted terracotta tile roof, modest chimney, plaster/timber, low stone foundation, original proportions and faithful 45-degree hand-painted art. Exact 1536x1024 canvas with padding, true transparent background. No new objects, no ground, text, characters, glow or backdrop. Do not keep the original right-facing door; this variant must face left.
+
+## Thatch left
+
+Use case: precise-object-edit. Opposite-handed thatched cottage variant of supplied sprite: mirror the architecture horizontally so front GABLE and wooden DOOR face LOWER LEFT and the long windowed wall extends RIGHT. Retain golden straw roof, modest chimney, plaster/timber, low stone foundation, same broad modest cottage proportions, elevated 45-degree faithful hand-painted camera/style. Whole centered cottage on 1536x1024 genuinely transparent canvas. No new objects, ground patch, scene, text, characters, glow or opaque backdrop. Door must be on left-facing gable, not right.
+
+## Bridge rail
+
+Use case: stylized-concept. ONE independent narrow timber bridge SIDE RAIL sprite for faithful hand-painted medieval 2D tactics. It is NOT a complete bridge. Four slender vertical weathered brown posts connected by two thin horizontal beams, open transparent gaps, no planks/deck beneath, no wall, no stone base, no landscape. Orthographic elevated 45-degree camera: the row recedes diagonally from LOWER LEFT to UPPER RIGHT; ground feet line rises approximately 0.42 pixels per 1 pixel right (about 23 degrees above horizontal), enough visible top and side thickness. Entire rail has length about 1000 and height about 180 pixels, centered in 1536x1024 transparent canvas with ample padding. Modest waist-high wooden railing, straight continuous beams, restrained warm wood texture, soft dark-brown edges. No chains, rope, ornate caps, text, people, shadow backdrop or glow. Rail thickness/post spacing should resemble small rustic river bridge in the reference.
+
+## Ground clean v2
+
+Use case: precise-object-edit. Further clean ONLY the standing boulders from this GROUND LAYER. Preserve EXACT 1651x953 canvas, every riverbank/water pixel layout, wooden bridge deck and stone bridge support piers/abutments, the dock/boat, all existing low crossable fences, crops, reeds, paths and terrain. Remove the remaining large standing rock piles and replace only their silhouettes with matching low grass/soil: especially upper-right rocks near (1410,66) and (1490,126), both west-bank and east-bank bridge approach boulder groups, center small rock clusters, southern riverbank rock groups near (1000,790),(1260,807),(1400,850),(1570,875). DO NOT remove any bridge support stone or flatten bridge deck, don't change river shape or add any walkable bank. Keep tiny ground pebbles. No new trees/buildings/UI. This pass is object-removal only, not a map redesign. Keep the same muted hand-painted ground style and exact existing bridge/water registration.
