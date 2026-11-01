@@ -1,0 +1,212 @@
+{
+  "levelSourceSha256": "722fa679315205c2917c236c192613827abc1394ac22b494001c716c10407014",
+  "scope": "Actual visible furniture feet and front columns, manually inspected on original transparent assets; not roof-alpha substitutes for physical foundations. Canonical terrain remains sole collision owner.",
+  "furniture": [
+    {
+      "id": "archive-tent",
+      "sourceAssetFootPixels": [
+        [
+          713,
+          746
+        ],
+        [
+          893,
+          697
+        ]
+      ],
+      "blockedStandingCells": [
+        [
+          24,
+          14
+        ]
+      ],
+      "negativeControlPlacement": {
+        "id": "archive-tent",
+        "assetId": "archive-tent",
+        "contact": [
+          24.5,
+          15.5
+        ],
+        "scale": 0.125,
+        "selectionCell": [
+          24,
+          15
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      }
+    },
+    {
+      "id": "witness-shelter",
+      "sourceAssetFootPixels": [
+        [
+          690,
+          744
+        ],
+        [
+          886,
+          706
+        ]
+      ],
+      "blockedStandingCells": [
+        [
+          28,
+          17
+        ]
+      ],
+      "negativeControlPlacement": {
+        "id": "witness-shelter",
+        "assetId": "witness-tent",
+        "contact": [
+          28.5,
+          18.5
+        ],
+        "scale": 0.125,
+        "selectionCell": [
+          28,
+          18
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      }
+    },
+    {
+      "id": "north-supply-canopy",
+      "sourceAssetFootPixels": [
+        [
+          706,
+          697
+        ],
+        [
+          880,
+          750
+        ]
+      ],
+      "blockedStandingCells": [
+        [
+          27,
+          7
+        ]
+      ],
+      "negativeControlPlacement": {
+        "id": "north-supply-canopy",
+        "assetId": "supply-canopy",
+        "contact": [
+          27.5,
+          8.5
+        ],
+        "scale": 0.14,
+        "selectionCell": [
+          27,
+          8
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      }
+    },
+    {
+      "id": "west-aid-post",
+      "sourceAssetFootPixels": [
+        [
+          706,
+          697
+        ],
+        [
+          880,
+          750
+        ]
+      ],
+      "blockedStandingCells": [
+        [
+          14,
+          17
+        ]
+      ],
+      "negativeControlPlacement": {
+        "id": "west-aid-post",
+        "assetId": "supply-canopy",
+        "contact": [
+          14.5,
+          18.5
+        ],
+        "scale": 0.14,
+        "selectionCell": [
+          14,
+          18
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      }
+    },
+    {
+      "id": "east-watch-cart",
+      "sourceAssetFootPixels": [
+        [
+          610,
+          938
+        ],
+        [
+          320,
+          795
+        ],
+        [
+          909,
+          815
+        ]
+      ],
+      "blockedStandingCells": [
+        [
+          41,
+          15
+        ],
+        [
+          42,
+          15
+        ],
+        [
+          41,
+          16
+        ]
+      ],
+      "negativeControlPlacement": {
+        "id": "east-watch-cart",
+        "assetId": "supply-cart",
+        "contact": [
+          41.84375,
+          16.8
+        ],
+        "scale": 0.1,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "block"
+      }
+    }
+  ],
+  "southwestHouse": {
+    "id": "grayflag-approach-outpost",
+    "sourceAssetLeftPierFoot": [
+      440,
+      740
+    ],
+    "reviewedSourceLeftPier": [
+      176,
+      632
+    ],
+    "sourceUncertaintyPixels": 5,
+    "negativeControlPlacement": {
+      "id": "grayflag-approach-outpost",
+      "assetId": "raised-cabin",
+      "contact": [
+        6.34375,
+        20.966666666666665
+      ],
+      "scale": 0.17,
+      "selectionCell": [
+        7,
+        21
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    }
+  }
+}

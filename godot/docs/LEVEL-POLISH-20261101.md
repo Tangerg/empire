@@ -16,14 +16,14 @@ visual inspection and synthetic fixtures must remain separate evidence categorie
 | 01 双子丘陵 · 36×30 | 莱娅 survives; defeat enemies; first death exposes command clue | Independent ground, seven object textures / 97 instances. Recheck cliff/door/adjacent actor selection and HUD. Historical normal-AI victory is not this run's result. |
 | 02 三桥河谷 · 41×38 | All three refugees east, designated ballista destroyed; any refugee loss fails; center bridge ceasefire through enemy T3 | Independent ground + 41 standing objects (batch 5); normal escort, refusal feedback, bridge-rail picking, loss/settlement. |
 | 03 赤石围城 · 101×52 | Control link neutralized OR HQ captured; T4 allied reinforcements; node/shield/T15-engineer routes break link; limit 18 | Independent ground + 95 standing instances. Actual normal-AI T4 victory and settlement; 89 city-support samples repaired, 15 independently classified samples plus ground/prop material coherence remain open. |
-| 04 黑旗营地 · 50×30 | Three clues, then at least one clue-carrier (莱娅 or 米蕾) withdraws | Formal map remains painted + 57 occlusion objects; independent 139-instance preview is staged, not yet visually accepted. Empty doorway vs real adjacent guard; clues, withdrawal and carried roster. |
+| 04 黑旗营地 · 50×30 | Three clues, then at least one clue-carrier (莱娅 or 米蕾) withdraws | Formal independent ground + 139 instances, 33 house foundation regions and 11 actual furniture feet checked; actual carried-campaign route is next. Empty doorway vs real adjacent guard; clues, withdrawal and carried roster. |
 | 05 焚村令 · 50×32 | 莱娅 and at least two civilians survive seven rounds (normally human T8); enemy reinforcements T4; limit 11 | Whole map + 45 occlusion objects. Complete normal-AI T8 defense with carried C04 roster remains an open historical acceptance item. |
 | 06 白河夜渡 · 50×32 | All four escorts reach north bank; pursuit T4, bridge warning T6, limit 13; warning is not physical bridge destruction | Whole map + 28 occlusion objects. Historical normal-AI T8 victory; this run not replayed. Recheck covered endpoint actor badges, zoom/load and carryover. |
 | 07 无主之城 · 96×64 | Granary and militia-camp capture achievements latch; not simultaneous ownership; 莱娅 survives; limit 15 | Whole map + 55 occlusion objects / 16 capture points. Corrected map's complete normal-AI victory remains open; historical T9 route skipping enemy actions is not victory evidence. |
 
 For every map: verify actual scale and ground/building/actor integration, picking
 and passage, objective/reinforcement timing, camera/HUD obstruction, input feedback,
-save/load, and actual win/loss settlement. C04–07 painted-in objects remain an explicit
+save/load, and actual win/loss settlement. C05–07 painted-in objects remain an explicit
 art/interaction debt, not a claim of C01-style independent composition. Work will
 progress map by map rather than silently marking static validators as full polish.
 
@@ -460,3 +460,39 @@ Logs: `c03-masonry-density-build.log`, `c03-masonry-density-final-checks.log`,
 `c03-masonry-density-probe-final.log`. The live GUI used the new image resources
 and unchanged rendering code; no application rule code changed. GitHub listed
 no workflow runs for the preceding 381c3bcf checkpoint; local checks are not CI.
+
+
+## C04 independent composition and physical registration
+
+139 independent instances replace painted-in tall scene objects. Actual 1180×812
+previews at scale .5 and 1.25 use identical canonical initial actors and source
+axes; they are explicitly labeled no-gameplay previews, not battle progress.
+Evidence: `c04-before-full/`, `c04-before-opening/`,
+`c04-after-physical-full/`, `c04-after-physical-opening/`.
+
+The first visual/physical audit caught defects that the prior 278 assertions
+missed: undersized southwest supporting piers, table/bed feet inside open entrance
+rows, and cart alpha blocking legal (42,16). Fixes retain all gameplay and sites.
+Current focused new-DLL native validation passes **332** formal assertions, while
+**341** historical painted assertions pass separately via `--legacy-painted`.
+The former covers all 33 interior house-support regions, 11 actual feet on the
+seven canonical furniture cells, per-item old-placement negative controls,
+30 empty openings and real neighboring guard priority. Build zero warnings/errors.
+A temporary test compile hit an ambiguous Godot polygon overload; explicit typed
+vertices resolve it, and the final results above are from the rebuilt DLL.
+
+Independent read-only old/new native scans cover all 1083 legal cell centers,
+plus 182 candidate audit points; 40 fixed entrances/approaches remain Ground,
+0 rendering issues and state unchanged. That separate scan froze the old depth
+catalog; its empty-board result is not evidence for the final new front-pole
+actor ordering. The final focused suite checks that actual adjacent guard case.
+Full responsibility/source/probe records are in `c04-physical-review/` beside the
+screenshots. NE outside-cell support and subpixel rock fringe differences remain
+accurately classified, not changed into new collision rules. Three true side-cloth
+pixels now select their real site rather than ground; do not remove real facades
+merely to force every walkable center to return Ground.
+
+Normal C04 play from the actual C03 settlement is the next verification stage.
+C01 prior history still has a controlled entry fixture; no continuous full-campaign
+claim is made. Broader ground/prop stylistic consistency remains a visual review
+item across levels, not a reason to equate geometry tests with finished art.

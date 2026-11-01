@@ -2,15 +2,18 @@
 
 `c01-04` is the 50×30 forest camp in the formal GrayFlag campaign. The C04 member
 of `data/grayflag-campaign-levels.json` is its only gameplay authoring source;
-`data/scenes/c01-04.json` binds `data/scenes/c01-04-painted-ground.json`. The scene
+`data/scenes/c01-04.json` now binds `data/scenes/c01-04-layered-ground.json`.
+The independent 139-instance composition preserves the original canonical map;
+`c01-04-painted-reference.json` is only the explicit historical visual oracle. The scene
 opens around (19,19), with no retired tile placements, frame placements or zones.
-This is an authored map and balance change, not a visual-only replacement.
+The historical 50×30 map revision was a map/balance change. The 2026-11-01
+independent-art replacement changes presentation only, not that map or balance.
 
 ## Space and ownership
 
 Coordinates are zero-based. The 323 canonical outside cells define the irregular
 1177-cell domain. Do not add a competing ground outline to hide a scene warning.
-The painting is 1660×948, registered at origin (30,24), axes (32,0)/(0,30), and
+The historical painting is 1660×948, registered at origin (30,24), axes (32,0)/(0,30), and
 uniform world scale 1.25. Its SHA-256 is
 `6f8c48c500dd26fc3a735b892d646bd9ec2f7e7de2e0cbef00f12d662af17926`.
 The registration checksum is SHA-256 of ECMAScript `JSON.stringify` of the C04
@@ -207,3 +210,41 @@ and exhaustive physical-perimeter mouse coverage remain unaccepted. A hero visit
 is optional test coverage, not an additional mission requirement. The engine
 runs do not substitute for mouse, scale or occlusion inspection. The earlier
 335 focused assertions were not a fresh full sixteen-chapter aggregate run.
+
+
+## Independent layered registration — 2026-11-01
+
+Current ground is 1659×948, with the exact original origin/axes/world scale;
+its omitted far-right padding pixel is beyond the tactical board. Eleven new
+transparent architecture/rock/autumn resources plus existing faithful pines form
+139 independent instances; tall foliage is pass-through and rock input uses its
+actual lower footprint, not the full roof-like silhouette. No canonical map,
+site, troop, objective, reinforcement, save source, or rule is changed.
+
+The initial preview exposed real regressions despite passing open-mouth tests:
+SW cabin scale .17 left (4,19)/(4,20) ground areas bare; shared tent contacts
+placed table/bed feet in legal entrance rows; the cart right wheel stole legal
+(42,16). Reviewed SW scale .24 fits its actual front/left piers without moving
+its entrance. Archive, witness, north/west tables and cart now use their actual
+feet, recorded in `data/scenes/c01-04-layered-physical-review.json`, with original
+bad placements as negative controls. Tent depth uses the visible front-pole foot,
+not the empty doorway point. All 33 interior house foundations are reviewed for
+material overlap, and 11 real furniture feet land on the original seven furniture
+wall cells. Alpha overlap alone is not certification of hidden physical geometry.
+
+Three real side-cloth faces can now target their corresponding site from adjacent
+visible cloth pixels. This is not a new null blocker or neighboring-unit picking
+bug; real canvas remains selectable. Forty fixed opening/house-approach samples
+remain Ground in the independent audit; production native tests preserve the 30
+open-mouth probes and the real neighboring Unit 11 precedence. The cart neighbor
+(42,16) and seven formerly obscured rock-adjacent ground centers remain accessible.
+NE conservative foundation (46,4) is outside, not a new passable-ground defect;
+small rock corner differences of 0.03–4.62px² are within old trace uncertainty.
+
+`BlackFlagCampChecks` defaults to the formal layered contract (**332 assertions**).
+`--legacy-painted` runs the old source-consistency oracle (**341 assertions**)
+against its explicit reference scene; it no longer overrides current acceptance.
+Both pass with a newly compiled build, zero warnings/errors. They include detached
+legal-command objective probes, not normal-AI play. Native whole-map and normal
+1.25 previews are retained under `empire-evidence-20261101/c04-{before,after-physical}-*`.
+Actual carried-campaign C04 gameplay and final visual acceptance remain separate.

@@ -38,10 +38,10 @@ public partial class BlackFlagCampChecks : Node
             CheckMissionSource(engine, level, state);
             CheckStagingChoices(engine, level);
             CheckSaveAdmission(engine);
-            if (OS.GetCmdlineUserArgs().Contains("--layered-preview", StringComparer.Ordinal))
-                CheckLayeredPreview(engine, level, state);
-            else
+            if (OS.GetCmdlineUserArgs().Contains("--legacy-painted", StringComparer.Ordinal))
                 CheckRegisteredPainting(engine, level, state);
+            else
+                CheckLayeredScene(engine, level, state);
             CheckFoundations(engine, level, state);
             CheckEvidenceCommands(engine, level);
             GD.Print($"Native BlackFlagCamp passed {assertions} assertions: registration, ten sites, material picking, foundations, staging, save admission and detached legal-command mission probes. Natural route play and GUI acceptance are separate.");
@@ -254,9 +254,12 @@ public partial class BlackFlagCampChecks : Node
             "Re-entering a restored current-source camp starts its unchanged opening.");
     }
 
-    private void CheckLayeredPreview(BattleEngine engine, JsonObject level, JsonObject state)
+    private void CheckLayeredScene(BattleEngine engine, JsonObject level, JsonObject state)
     {
-        var scene = AuthoredScene.Load("res://data/scenes/c01-04-layered-preview.json");
+        var preview = OS.GetCmdlineUserArgs().Contains("--layered-preview", StringComparer.Ordinal);
+        var scene = AuthoredScene.Load(preview ? "res://data/scenes/c01-04-layered-preview.json" : "res://data/scenes/c01-04.json");
+        Require(scene.RuntimeReady && scene.AssembledGroundPath == "res://data/scenes/c01-04-layered-ground.json" && scene.PaintedGroundPath is null,
+            "C04 must bind its independent scene, not silently fall back to the historical painting.");
         var document = PresentationJson.Load<AssembledGroundDocument>(scene.AssembledGroundPath!);
         Require(document.WorldScale == 1.25f && document.OriginPixels.SequenceEqual([30f, 24f])
             && document.CellXPixels.SequenceEqual([32f, 0f]) && document.CellYPixels.SequenceEqual([0f, 30f]),
@@ -336,10 +339,11 @@ public partial class BlackFlagCampChecks : Node
                 Require(physical.IsEqualApprox(new(landmark[0]!.GetValue<float>(), landmark[1]!.GetValue<float>())),
                     $"C04 building moved away from its audited foundation to chase the interaction cell: {placement.Id}.");
             }
+            CheckLayeredPhysicalSupports(board, ground, document, catalog, audit, houseNames, state["map"]!.AsObject());
             board.RenderState(state);
             Require(board.Pick(overlap) == TacticalHit.Unit(new(21, 13), guardId)
                 && EcmaJson.Stringify(state) == before, "C04 preview probes must restore actor priority without mutating battle facts.");
-            GD.Print("C04 layered preview is an explicit geometry fixture; formal C04 still uses its unchanged painted registration.");
+            GD.Print("C04 layered scene probes are geometry fixtures, not natural-route gameplay.");
         }
         finally
         {
@@ -348,11 +352,86 @@ public partial class BlackFlagCampChecks : Node
         }
     }
 
+    private void CheckLayeredPhysicalSupports(BoardView board, AssembledGroundView ground, AssembledGroundDocument document,
+        SceneObjectCatalog catalog, JsonObject audit, IReadOnlyDictionary<string, string> houseNames, JsonObject map)
+    {
+        var review = PresentationJson.Load<JsonObject>("res://data/scenes/c01-04-layered-physical-review.json");
+        var supportedHouseCells = 0;
+        foreach (var house in audit["houses"]!.AsArray().OfType<JsonObject>())
+        {
+            var id = houseNames[Text(house, "id")];
+            var visual = ground.DepthEntries.Single(entry => entry.Node.Name.ToString() == id).Visual!;
+            var envelope = house["foundationConservative"]!.AsArray().OfType<JsonArray>()
+                .Select(point => new Vector2(point[0]!.GetValue<float>(), point[1]!.GetValue<float>())).ToArray();
+            foreach (var cell in house["blockingCells"]!.AsArray().OfType<JsonArray>())
+            {
+                var x = cell[0]!.GetValue<int>();
+                var y = cell[1]!.GetValue<int>();
+                if (map["tiles"]![y * 50 + x]!.GetValue<string>() != "wall")
+                    continue; // Four historical conservative-envelope cells are already outside the playable board.
+                var left = 30 + 32 * x;
+                var top = 24 + 30 * y;
+                var clipped = Geometry2D.IntersectPolygons(envelope,
+                    new Vector2[] { new(left, top), new(left + 32, top), new(left + 32, top + 30), new(left, top + 30) });
+                Require(clipped.Count > 0 && clipped.Any(polygon => InteriorSamples(polygon.Select(point => new[] { (double)point.X, point.Y }).ToArray())
+                    .Any(source => visual.Covers(board.ToGlobal(source * document.WorldScale)))),
+                    $"C04 original positive-area house foundation is entirely bare in its blocked cell: {id} ({x},{y}).");
+                supportedHouseCells++;
+            }
+        }
+        Require(supportedHouseCells == 33, "C04 must review all four houses' interior foundations, not a small happy-path sample.");
+        foreach (var item in review["furniture"]!.AsArray().OfType<JsonObject>())
+        {
+            var id = Text(item, "id");
+            var placement = document.Objects.Single(value => value.Id == id);
+            var asset = catalog.Objects[placement.AssetId];
+            var sprite = ground.GetNode<Sprite2D>(id);
+            var visual = ground.DepthEntries.Single(entry => entry.Node == sprite).Visual!;
+            var expected = item["blockedStandingCells"]!.AsArray().OfType<JsonArray>()
+                .Select(cell => new Coord(cell[0]!.GetValue<int>(), cell[1]!.GetValue<int>())).ToHashSet();
+            var previous = item["negativeControlPlacement"]!.AsObject();
+            var rejectedFeet = 0;
+            foreach (var pixel in item["sourceAssetFootPixels"]!.AsArray().OfType<JsonArray>())
+            {
+                var local = new Vector2(pixel[0]!.GetValue<float>() - (float)asset.AnchorPixels[0],
+                    pixel[1]!.GetValue<float>() - (float)asset.AnchorPixels[1]);
+                var global = sprite.ToGlobal(local);
+                var source = board.ToLocal(global) / document.WorldScale;
+                var cell = new Coord(Mathf.FloorToInt((source.X - 30) / 32), Mathf.FloorToInt((source.Y - 24) / 30));
+                Require(visual.Covers(global) && expected.Contains(cell) && map["tiles"]![cell.Y * 50 + cell.X]!.GetValue<string>() == "wall",
+                    $"C04 visible furniture foot must land on its real blocked support, not an open entrance: {id} {cell}.");
+                var oldSource = new Vector2(30 + 32 * previous["contact"]![0]!.GetValue<float>(),
+                    24 + 30 * previous["contact"]![1]!.GetValue<float>()) + local * previous["scale"]!.GetValue<float>() / document.WorldScale;
+                var oldCell = new Coord(Mathf.FloorToInt((oldSource.X - 30) / 32), Mathf.FloorToInt((oldSource.Y - 24) / 30));
+                if (!expected.Contains(oldCell))
+                    rejectedFeet++;
+            }
+            Require(rejectedFeet > 0, $"C04 furniture guard must reject the original doorway-aligned placement: {id}.");
+        }
+        var southwest = review["southwestHouse"]!.AsObject();
+        var houseSprite = ground.GetNode<Sprite2D>(Text(southwest, "id"));
+        var houseAsset = catalog.Objects[document.Objects.Single(value => value.Id == Text(southwest, "id")).AssetId];
+        var foot = southwest["sourceAssetLeftPierFoot"]!.AsArray();
+        var localFoot = new Vector2(foot[0]!.GetValue<float>() - (float)houseAsset.AnchorPixels[0], foot[1]!.GetValue<float>() - (float)houseAsset.AnchorPixels[1]);
+        var actual = board.ToLocal(houseSprite.ToGlobal(localFoot)) / document.WorldScale;
+        var reference = southwest["reviewedSourceLeftPier"]!.AsArray();
+        var expectedFoot = new Vector2(reference[0]!.GetValue<float>(), reference[1]!.GetValue<float>());
+        var tolerance = southwest["sourceUncertaintyPixels"]!.GetValue<float>();
+        Require(houseSprite.IsPixelOpaque(localFoot) && actual.DistanceTo(expectedFoot) <= tolerance,
+            "C04 southwest visible supporting pier must fit the audited physical footprint, not merely have the correct anchor.");
+        var rejectedHouse = southwest["negativeControlPlacement"]!.AsObject();
+        var oldFoot = new Vector2(30 + 32 * rejectedHouse["contact"]![0]!.GetValue<float>(), 24 + 30 * rejectedHouse["contact"]![1]!.GetValue<float>())
+            + localFoot * rejectedHouse["scale"]!.GetValue<float>() / document.WorldScale;
+        Require(oldFoot.DistanceTo(expectedFoot) > tolerance, "C04 southwest pier guard must reject the undersized original body.");
+        var cartApproach = board.Projection.CellContact(new(42, 16));
+        Require(board.Pick(cartApproach) == TacticalHit.Ground(new(42, 16)), "C04 cart must not steal its adjacent non-foundation walkable cell.");
+    }
+
     private void CheckRegisteredPainting(BattleEngine engine, JsonObject level, JsonObject state)
     {
-        var scene = AuthoredScene.Load("res://data/scenes/c01-04.json");
+        var scene = AuthoredScene.Load("res://data/scenes/c01-04-painted-reference.json");
         Require(scene.RuntimeReady && scene.PaintedGroundPath == "res://data/scenes/c01-04-painted-ground.json",
-            "C04 must bind its reviewed ready painted scene, not a fallback terrain board.");
+            "Historical C04 painted oracle must retain its own explicit reference scene, not redefine current production art.");
         var art = PresentationJson.Load<PaintedGroundDocument>(scene.PaintedGroundPath!);
         art.ValidateLevel(level);
         Require(art.LevelId == "c01-04" && art.ResourcePath == "res://assets/native/scenes/blackflag-camp.png"
