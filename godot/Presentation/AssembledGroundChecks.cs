@@ -123,14 +123,15 @@ public partial class AssembledGroundChecks : Node
                 ["house"] = new SceneObjectAsset { ResourcePath = "fixture-independent.png", PixelSize = [64, 96], AnchorPixels = [32, 88], GroundFrontPixels = [32, 88], ContactShadowRadiiPixels = [15, 4] }
             }
         };
-        SceneObjectAsset PointerAsset(double[][]? polygon) => new()
+        SceneObjectAsset PointerAsset(double[][]? polygon, SceneObjectDepthStrip[]? strips = null) => new()
         {
             ResourcePath = "fixture-independent.png",
             PixelSize = [64, 96],
             AnchorPixels = [32, 88],
             GroundFrontPixels = [32, 88],
             ContactShadowRadiiPixels = [15, 4],
-            PointerPolygonPixels = polygon
+            PointerPolygonPixels = polygon,
+            DepthStrips = strips
         };
         var textures = new Dictionary<string, Texture2D> { ["house"] = house };
         var scene = new AuthoredScene { LevelId = "c01-01", MapSize = [36, 30], RuntimeReady = true, FramePlacements = [] };
@@ -253,6 +254,36 @@ public partial class AssembledGroundChecks : Node
                 && limitedVisual.Covers(limited.ToGlobal(new Vector2(0, -65))),
                 "Pointer contour applied anchor/instance/parent scale twice or altered visual coverage.");
             Require(EcmaJson.Stringify(state) == before, "Pointer-only geometry changed canonical battle state.");
+            board.Position = Vector2.Zero;
+            board.Scale = Vector2.One;
+            catalog.Objects["house"] = PointerAsset([[12, 70], [52, 70], [52, 88], [12, 88]],
+                [new() { RightPixels = 20, GroundFrontPixels = [12, 88] },
+                 new() { RightPixels = 40, GroundFrontPixels = [20, 86] },
+                 new() { RightPixels = 64, GroundFrontPixels = [40, 84] }]);
+            Bind(Document(Site(sites[0])));
+            var strips = view!.DepthEntries.ToArray();
+            var firstStrip = (Sprite2D)strips[0].Node;
+            Require(strips.Length == 3 && strips.All(entry => ((Sprite2D)entry.Node).Texture == house)
+                && strips.Select(entry => entry.Node.ZIndex).Distinct().Count() == 3,
+                "Sloping independent material must share its complete texture and use distinct physical depth contacts.");
+            for (var y = 0; y < 96; y++)
+                for (var x = 0; x < 64; x++)
+                {
+                    var global = firstStrip.ToGlobal(new Vector2(x + .25f, y + .25f) - new Vector2(32, 88));
+                    var expected = objectImage.GetPixel(x, y).A > .5f;
+                    var visible = strips.Where(entry => entry.Visual!.Covers(global)).ToArray();
+                    Require(visible.Length == (expected ? 1 : 0),
+                        $"Independent draw-strip partition must preserve every alpha sample once, without gaps or duplicate coverage: {x},{y}.");
+                    var shouldTarget = expected && y >= 70;
+                    Require(visible.Any(entry => entry.Visual!.ContainsPointer(global)) == shouldTarget,
+                        "Independent depth strips must preserve the original alpha-limited pointer contour.");
+                }
+            var stripDoor = firstStrip.ToGlobal(new Vector2(32, 76) - new Vector2(32, 88));
+            Require(board.Pick(board.ToLocal(stripDoor)) == TacticalHit.Object(new(sites[0].X, sites[0].Y)),
+                "A partitioned independent site must still resolve to its original single canonical owner.");
+            Require(view.GetChildren().OfType<Sprite2D>().Count(sprite => sprite.HasNode("SourceStructureContact")) == 1,
+                "Depth strips must not duplicate the object's contact shadow.");
+            Require(EcmaJson.Stringify(state) == before, "Depth partitioning cannot create another gameplay writer.");
             catalog.Objects["house"] = PointerAsset(null);
 
         }
@@ -277,6 +308,19 @@ public partial class AssembledGroundChecks : Node
         {
             catalog.Objects["house"] = PointerAsset(invalidPolygon);
             Reject(Document(Site(sites[0])), "Invalid independent pointer polygon was accepted or disposed borrowed textures.");
+        }
+        foreach (var strips in new SceneObjectDepthStrip[][]
+        {
+            [], [new() { RightPixels = 64, GroundFrontPixels = [32, 88] }],
+            [new() { RightPixels = 32, GroundFrontPixels = [16, 88] }, new() { RightPixels = 63, GroundFrontPixels = [48, 88] }],
+            [new() { RightPixels = 32, GroundFrontPixels = [16, 88] }, new() { RightPixels = 65, GroundFrontPixels = [48, 88] }],
+            [new() { RightPixels = 32, GroundFrontPixels = [16, 88] }, new() { RightPixels = 32, GroundFrontPixels = [32, 88] }],
+            [new() { RightPixels = 32, GroundFrontPixels = [40, 88] }, new() { RightPixels = 64, GroundFrontPixels = [48, 88] }],
+            [new() { RightPixels = 32, GroundFrontPixels = [16, double.NaN] }, new() { RightPixels = 64, GroundFrontPixels = [48, 88] }]
+        })
+        {
+            catalog.Objects["house"] = PointerAsset(null, strips);
+            Reject(Document(Site(sites[0])), "Malformed depth partitions must reject atomically without discarding independent texture pixels.");
         }
         catalog.Objects["house"] = PointerAsset(null);
         Reject(Document(Site(sites[0]), Site(sites[0])), "Duplicate instance/site ownership is rejected without disposing borrowed art.");

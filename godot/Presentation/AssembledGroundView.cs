@@ -40,7 +40,7 @@ public partial class AssembledGroundView : BoardGroundView
             throw new InvalidOperationException("Clean ground texture differs from its registered dimensions.");
         if (catalog.Schema != 1 || catalog.Objects is null || document.Objects is null)
             throw new InvalidOperationException("Independent scene objects require catalog schema 1 and explicit instances.");
-        var geometry = new Dictionary<string, (Texture2D Texture, Vector2 Anchor, Vector2 Front, Vector2 ShadowRadii, Vector2[]? PointerPolygon)>(StringComparer.Ordinal);
+        var geometry = new Dictionary<string, (Texture2D Texture, Vector2 Anchor, Vector2 Front, Vector2 ShadowRadii, Vector2[]? PointerPolygon, (Rect2 Region, Vector2 Front)[]? Strips)>(StringComparer.Ordinal);
         foreach (var (id, asset) in catalog.Objects)
         {
             if (string.IsNullOrWhiteSpace(id) || asset is null || string.IsNullOrWhiteSpace(asset.ResourcePath)
@@ -64,8 +64,29 @@ public partial class AssembledGroundView : BoardGroundView
                 StandingVisual.ValidatePolygon(points, id + " pointer");
                 pointerPolygon = points.Select(point => point - anchor).ToArray();
             }
+            (Rect2 Region, Vector2 Front)[]? strips = null;
+            if (asset.DepthStrips is { } sections)
+            {
+                if (sections.Length < 2 || sections.Length > asset.PixelSize[0])
+                    throw new InvalidOperationException($"Independent depth strips require a nonempty, bounded partition: {id}.");
+                var left = 0;
+                strips = new (Rect2 Region, Vector2 Front)[sections.Length];
+                for (var index = 0; index < sections.Length; index++)
+                {
+                    var section = sections[index] ?? throw new InvalidOperationException($"Missing independent depth strip: {id}.");
+                    if (section.RightPixels <= left || section.RightPixels > asset.PixelSize[0])
+                        throw new InvalidOperationException($"Independent depth strips must cover the canvas exactly without gaps or overlaps: {id}.");
+                    var front = SpriteGroundContact.Read(section.GroundFrontPixels, asset.PixelSize[0], asset.PixelSize[1], id + " strip front");
+                    if (front.X < left || front.X > section.RightPixels)
+                        throw new InvalidOperationException($"Independent strip contact must lie within its own physical span: {id}.");
+                    strips[index] = (new Rect2(left, 0, section.RightPixels - left, asset.PixelSize[1]), front);
+                    left = section.RightPixels;
+                }
+                if (left != asset.PixelSize[0])
+                    throw new InvalidOperationException($"Independent depth strips cannot discard the rest of a whole object: {id}.");
+            }
             geometry.Add(id, (texture, anchor,
-                SpriteGroundContact.Read(asset.GroundFrontPixels, asset.PixelSize[0], asset.PixelSize[1], id + " front"), radii, pointerPolygon));
+                SpriteGroundContact.Read(asset.GroundFrontPixels, asset.PixelSize[0], asset.PixelSize[1], id + " front"), radii, pointerPolygon, strips));
         }
         var view = new AssembledGroundView
         {
@@ -115,19 +136,28 @@ public partial class AssembledGroundView : BoardGroundView
                     || selection is not null && instance.Pointer != "target"
                     || instance.Pointer is not ("target" or "block" or "pass-through"))
                     throw new InvalidOperationException($"Scene object pointer and site ownership are inconsistent: {instance.Id}.");
-                var sprite = new Sprite2D
+                var sections = asset.Strips ?? new[] { (Region: new Rect2(Vector2.Zero, asset.Texture.GetSize()), Front: asset.Front) };
+                for (var index = 0; index < sections.Length; index++)
                 {
-                    Name = instance.Id,
-                    Texture = asset.Texture,
-                    Centered = false,
-                    Offset = -asset.Anchor,
-                    Scale = Vector2.One * instance.Scale,
-                    TextureFilter = CanvasItem.TextureFilterEnum.LinearWithMipmaps
-                };
-                SpriteGroundContact.Attach(sprite, asset.Front);
-                sprite.AddChild(BoardLighting.CreateGroundContact(asset.ShadowRadii, shadows));
-                view.AddChild(sprite);
-                view._objects.Add((sprite, contact * BoardProjection.TileSize, instance.Pointer != "pass-through", selection, asset.PointerPolygon));
+                    var section = sections[index];
+                    var sprite = new Sprite2D
+                    {
+                        Name = index == 0 ? instance.Id : $"{instance.Id}__depth_{index}",
+                        Texture = asset.Texture,
+                        Centered = false,
+                        Offset = section.Region.Position - asset.Anchor,
+                        RegionEnabled = asset.Strips is not null,
+                        RegionRect = section.Region,
+                        RegionFilterClipEnabled = true,
+                        Scale = Vector2.One * instance.Scale,
+                        TextureFilter = CanvasItem.TextureFilterEnum.LinearWithMipmaps
+                    };
+                    SpriteGroundContact.Attach(sprite, section.Front - section.Region.Position);
+                    if (index == 0)
+                        sprite.AddChild(BoardLighting.CreateGroundContact(asset.ShadowRadii, shadows));
+                    view.AddChild(sprite);
+                    view._objects.Add((sprite, contact * BoardProjection.TileSize, instance.Pointer != "pass-through", selection, asset.PointerPolygon));
+                }
             }
             view._sites = sites.AsReadOnly();
             return view;

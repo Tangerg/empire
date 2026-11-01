@@ -68,6 +68,11 @@ public sealed class SceneObjectAsset
     {
         get; init;
     }
+    /// <summary>Contiguous vertical draw strips for a sloping physical base. The resource stays one complete independent texture.</summary>
+    public SceneObjectDepthStrip[]? DepthStrips
+    {
+        get; init;
+    }
     /// <summary>Optional source-pixel interaction contour; visual alpha coverage remains complete.</summary>
     public double[][]? PointerPolygonPixels
     {
@@ -77,6 +82,13 @@ public sealed class SceneObjectAsset
     {
         get; init;
     }
+}
+
+[JsonUnmappedMemberHandling(JsonUnmappedMemberHandling.Disallow)]
+public sealed class SceneObjectDepthStrip
+{
+    public required int RightPixels { get; init; }
+    public required double[] GroundFrontPixels { get; init; }
 }
 
 [JsonUnmappedMemberHandling(JsonUnmappedMemberHandling.Disallow)]
