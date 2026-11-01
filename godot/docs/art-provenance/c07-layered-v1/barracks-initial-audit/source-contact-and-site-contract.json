@@ -1,0 +1,794 @@
+{
+  "scope": "Only actual militia-barracks body/attached western lean-to contacts and entrance relationship. Static PNG/JSON, no renderer execution/GUI/save/production changes. Parent owns separate native occlusion attribution; this report does not declare the observed head clipping a defect by assumption.",
+  "sourceSha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+  "identity": {
+    "paintedId": "militia-barracks",
+    "groundId": "militia-hall-foundation",
+    "siteId": "militia-barracks",
+    "isCanonicalSite": true,
+    "ownsMapStructureBody": true,
+    "selectionCell": [
+      65,
+      14
+    ],
+    "canonicalSiteCenterSource": [
+      1048,
+      232
+    ],
+    "canonicalApproachCell": [
+      66,
+      14
+    ],
+    "canonicalApproachCenterSource": [
+      1064,
+      232
+    ],
+    "auditSiteRecord": {
+      "id": "militia-barracks",
+      "terrain": "B",
+      "owner": 0,
+      "cell": [
+        65,
+        14
+      ],
+      "approach": [
+        66,
+        14
+      ],
+      "sitePixel": [
+        1044,
+        228
+      ],
+      "approachPixel": [
+        1068,
+        228
+      ]
+    },
+    "semantics": "Existing B field post, not a recruitment house/enterable interior. Do not move physical building to site."
+  },
+  "currentRegistration": {
+    "id": "militia-barracks",
+    "ownsMapStructureBody": true,
+    "parts": [
+      {
+        "id": "roof",
+        "polygonPixels": [
+          [
+            902,
+            103
+          ],
+          [
+            1020,
+            44
+          ],
+          [
+            1174,
+            94
+          ],
+          [
+            1057,
+            147
+          ]
+        ],
+        "groundFrontPixels": [
+          1055,
+          206
+        ],
+        "pointer": {
+          "kind": "pass-through"
+        },
+        "contactCell": [
+          65,
+          12
+        ]
+      },
+      {
+        "id": "facade",
+        "polygonPixels": [
+          [
+            937,
+            104
+          ],
+          [
+            1057,
+            147
+          ],
+          [
+            1163,
+            105
+          ],
+          [
+            1163,
+            166
+          ],
+          [
+            1055,
+            206
+          ],
+          [
+            937,
+            166
+          ]
+        ],
+        "groundFrontPixels": [
+          1055,
+          206
+        ],
+        "pointer": {
+          "kind": "target",
+          "polygonPixels": [
+            [
+              1031,
+              158
+            ],
+            [
+              1046,
+              150
+            ],
+            [
+              1056,
+              157
+            ],
+            [
+              1056,
+              182
+            ],
+            [
+              1046,
+              190
+            ],
+            [
+              1031,
+              181
+            ]
+          ]
+        },
+        "contactCell": [
+          65,
+          12
+        ]
+      }
+    ],
+    "selectionCell": [
+      65,
+      14
+    ]
+  },
+  "groundResponsibility": {
+    "id": "militia-hall-foundation",
+    "polygonPixels": [
+      [
+        940,
+        116
+      ],
+      [
+        1050,
+        154
+      ],
+      [
+        1159,
+        122
+      ],
+      [
+        1159,
+        162
+      ],
+      [
+        1050,
+        202
+      ],
+      [
+        940,
+        162
+      ]
+    ],
+    "blockedCells": [
+      [
+        58,
+        7
+      ],
+      [
+        59,
+        7
+      ],
+      [
+        60,
+        7
+      ],
+      [
+        71,
+        7
+      ],
+      [
+        72,
+        7
+      ],
+      [
+        58,
+        8
+      ],
+      [
+        59,
+        8
+      ],
+      [
+        60,
+        8
+      ],
+      [
+        61,
+        8
+      ],
+      [
+        62,
+        8
+      ],
+      [
+        63,
+        8
+      ],
+      [
+        67,
+        8
+      ],
+      [
+        68,
+        8
+      ],
+      [
+        69,
+        8
+      ],
+      [
+        70,
+        8
+      ],
+      [
+        71,
+        8
+      ],
+      [
+        72,
+        8
+      ],
+      [
+        58,
+        9
+      ],
+      [
+        59,
+        9
+      ],
+      [
+        60,
+        9
+      ],
+      [
+        61,
+        9
+      ],
+      [
+        62,
+        9
+      ],
+      [
+        63,
+        9
+      ],
+      [
+        64,
+        9
+      ],
+      [
+        65,
+        9
+      ],
+      [
+        66,
+        9
+      ],
+      [
+        67,
+        9
+      ],
+      [
+        68,
+        9
+      ],
+      [
+        69,
+        9
+      ],
+      [
+        70,
+        9
+      ],
+      [
+        71,
+        9
+      ],
+      [
+        72,
+        9
+      ],
+      [
+        58,
+        10
+      ],
+      [
+        59,
+        10
+      ],
+      [
+        60,
+        10
+      ],
+      [
+        61,
+        10
+      ],
+      [
+        62,
+        10
+      ],
+      [
+        63,
+        10
+      ],
+      [
+        64,
+        10
+      ],
+      [
+        65,
+        10
+      ],
+      [
+        66,
+        10
+      ],
+      [
+        67,
+        10
+      ],
+      [
+        68,
+        10
+      ],
+      [
+        69,
+        10
+      ],
+      [
+        70,
+        10
+      ],
+      [
+        71,
+        10
+      ],
+      [
+        72,
+        10
+      ],
+      [
+        61,
+        11
+      ],
+      [
+        62,
+        11
+      ],
+      [
+        63,
+        11
+      ],
+      [
+        64,
+        11
+      ],
+      [
+        65,
+        11
+      ],
+      [
+        66,
+        11
+      ],
+      [
+        67,
+        11
+      ],
+      [
+        68,
+        11
+      ],
+      [
+        69,
+        11
+      ],
+      [
+        70,
+        11
+      ],
+      [
+        63,
+        12
+      ],
+      [
+        64,
+        12
+      ],
+      [
+        65,
+        12
+      ],
+      [
+        66,
+        12
+      ],
+      [
+        67,
+        12
+      ]
+    ]
+  },
+  "groundCellCount": 62,
+  "trueVisibleContacts": {
+    "mainBody": [
+      {
+        "source": [
+          1003,
+          187
+        ],
+        "rgba": [
+          112,
+          79,
+          51,
+          255
+        ],
+        "material": "left-front structural brown timber meeting paving",
+        "status": "visible contact, roughly1pixel boundary uncertainty",
+        "cell": [
+          62,
+          11
+        ],
+        "terrain": "#",
+        "namedAuditCellOwners": [
+          "militia-hall-foundation"
+        ]
+      },
+      {
+        "source": [
+          1054,
+          173
+        ],
+        "rgba": [
+          71,
+          55,
+          44,
+          255
+        ],
+        "material": "right gray stone door jamb meeting paving",
+        "status": "visible architectural base/contact; not an outer corner of the whole building",
+        "cell": [
+          65,
+          10
+        ],
+        "terrain": "#",
+        "namedAuditCellOwners": [
+          "militia-hall-foundation"
+        ]
+      },
+      {
+        "source": [
+          1091,
+          172
+        ],
+        "rgba": [
+          58,
+          43,
+          31,
+          255
+        ],
+        "material": "main timber corner between adjacent pots meeting paving",
+        "status": "visible contact, not flowerpot base",
+        "cell": [
+          68,
+          10
+        ],
+        "terrain": "#",
+        "namedAuditCellOwners": [
+          "militia-hall-foundation"
+        ]
+      }
+    ],
+    "notThreeOuterFoundationCorners": "These are3 independently identifiable structural contacts, including1jamb. They do not reveal all rear/side base edges or certify the62-cell footprint. Do not advertise a three-outer-corner full foundation fit.",
+    "frontLowAwning": [
+      {
+        "source": [
+          973,
+          192
+        ],
+        "rgba": [
+          94,
+          68,
+          41,
+          255
+        ],
+        "material": "front low awning vertical brown post meeting paving",
+        "status": "visible wood foot; distinct from fence upper rail below/right",
+        "cell": [
+          60,
+          12
+        ],
+        "terrain": "p",
+        "namedAuditCellOwners": []
+      }
+    ],
+    "otherAwningFeet": {
+      "leftFrontAround": [
+        946,
+        174
+      ],
+      "rearWestAround": [
+        904,
+        138
+      ],
+      "status": "Partial support bodies are visible, but full ground joins merge with sacks/crates/kiosk/fence. These are NOT accepted foot anchors; no hidden feet filled in."
+    }
+  },
+  "legacyDepthComparison": [
+    {
+      "source": [
+        1050,
+        202
+      ],
+      "rgba": [
+        251,
+        194,
+        117,
+        255
+      ],
+      "material": "paved court in current actual image, not main-building front masonry",
+      "status": "old audit front vertex; not a true foot witness",
+      "cell": [
+        65,
+        12
+      ],
+      "terrain": "#",
+      "namedAuditCellOwners": [
+        "militia-hall-foundation"
+      ]
+    },
+    {
+      "source": [
+        1055,
+        206
+      ],
+      "rgba": [
+        252,
+        197,
+        122,
+        255
+      ],
+      "material": "paved court in current actual image, not main-building front masonry",
+      "status": "current painted roof+facade depth anchor; source role must not be mislabeled",
+      "cell": [
+        65,
+        12
+      ],
+      "terrain": "#",
+      "namedAuditCellOwners": [
+        "militia-hall-foundation"
+      ]
+    }
+  ],
+  "doorAndPaving": {
+    "doorApproxRegion": [
+      1024,
+      132,
+      1055,
+      174
+    ],
+    "visibleThreshold": {
+      "source": [
+        1041,
+        172
+      ],
+      "rgba": [
+        163,
+        120,
+        88,
+        255
+      ],
+      "material": "lower brown door/threshold edge above the shallow pale step",
+      "status": "visible source material; not canonical capture coordinate",
+      "cell": [
+        65,
+        10
+      ],
+      "terrain": "#",
+      "namedAuditCellOwners": [
+        "militia-hall-foundation"
+      ]
+    },
+    "canonicalSite": {
+      "source": [
+        1048,
+        232
+      ],
+      "rgba": [
+        251,
+        187,
+        108,
+        255
+      ],
+      "material": "open court site center",
+      "status": "keep selection semantics here",
+      "cell": [
+        65,
+        14
+      ],
+      "terrain": "B",
+      "namedAuditCellOwners": []
+    },
+    "canonicalApproach": {
+      "source": [
+        1064,
+        232
+      ],
+      "rgba": [
+        246,
+        195,
+        137,
+        255
+      ],
+      "material": "open court adjacent approach center",
+      "status": "keep approach semantics here",
+      "cell": [
+        66,
+        14
+      ],
+      "terrain": "p",
+      "namedAuditCellOwners": []
+    },
+    "futurePointerContract": "Target true visible door/masonry only, still selecting65,14. Roof remains pass-through; do not make facade from a floor rectangle or move anchor to approach/site.",
+    "oldPointerNotLiteralDoorTrace": {
+      "sourcePavingPoint": {
+        "source": [
+          1044,
+          184
+        ],
+        "rgba": [
+          251,
+          205,
+          139,
+          255
+        ],
+        "material": "paving below actual threshold",
+        "status": "static image classification, no runtime Pick executed",
+        "cell": [
+          65,
+          11
+        ],
+        "terrain": "#",
+        "namedAuditCellOwners": [
+          "militia-hall-foundation"
+        ]
+      },
+      "insideCurrentPointerPolygon": true,
+      "boundary": "This shows existing coarse pointer extends below true visible door; it is not by itself proof of an observed gameplay/input failure."
+    }
+  },
+  "decompositionProposal": {
+    "mainCore": "Keep connected large blue roof, masonry/timber body and its actual arch door as one architectural identity; visible depth contacts differ from logical site. May need material/depth separation within rendering, no new site.",
+    "westernLeanTo": "Treat attached lower awning roof/posts as separate presentation material/group from main core, with independently verified support contacts. Keep barrels/sacks/crates separate. No independent capture identity.",
+    "westernCargoResponsibility": {
+      "id": "militia-west-cargo",
+      "polygonPixels": [
+        [
+          922,
+          168
+        ],
+        [
+          943,
+          179
+        ],
+        [
+          958,
+          170
+        ],
+        [
+          956,
+          151
+        ],
+        [
+          936,
+          140
+        ],
+        [
+          922,
+          149
+        ]
+      ],
+      "blockedCells": [
+        [
+          58,
+          8
+        ],
+        [
+          57,
+          9
+        ],
+        [
+          58,
+          9
+        ],
+        [
+          59,
+          9
+        ],
+        [
+          57,
+          10
+        ],
+        [
+          58,
+          10
+        ],
+        [
+          59,
+          10
+        ],
+        [
+          58,
+          11
+        ],
+        [
+          59,
+          11
+        ]
+      ]
+    },
+    "smallBlueKiosk": "Separate wood-panel kiosk at881..925/153..211; already reviewed independently. Do not include in main hall or awning generation.",
+    "smallRedHouse": "north-central-house at793..892/105..215 is unrelated noninteractive house; do not rename or merge.",
+    "foregroundFence": "Independentmilitia-west-drill-fence; feet950208/963215/987228, not awning supports.",
+    "excludeFromMainAsset": [
+      "Training weapon racks along right facade and in foreground court",
+      "Flowerpots flanking portal and corner",
+      "Cargo under western lean-to",
+      "Cypress/trees and perimeter stone walls",
+      "Blue kiosk and adjacent red house",
+      "Courtyard paving/contact-shadow backdrop"
+    ]
+  },
+  "poseAttributionReference": {
+    "cell": [
+      60,
+      12
+    ],
+    "canonicalFootSource": [
+      968,
+      200
+    ],
+    "footMinusVisibleAwningFrontY": 8,
+    "footMinusLeftMainVisibleContactY": 13,
+    "currentAuthoredFrontMinusActorFootY": 6,
+    "interpretation": "At this x, correct material identity matters. These numeric relations are for parent native attribution only; not every overlapping pixel necessarily belongs to the awning. No draw/pick result inferred from them alone."
+  },
+  "fitBoundary": "No candidate PNG or new scalar fit yet. Registration cannot be certified from roof alpha or copied ground polygon. Later independent art must keep known real contacts and disclose hidden completion; canonical collision changes are not authorized here.",
+  "referenceImages": [
+    "main-whole-raw.png",
+    "main-whole-grid.png",
+    "main-base-grid.png",
+    "door-grid.png",
+    "awning-feet-grid.png",
+    "left-frame-foot-grid.png",
+    "door-jamb-foot-grid.png",
+    "middle-frame-foot-grid.png",
+    "far-right-body-grid.png",
+    "awning-front-foot-grid.png",
+    "actual-contacts-vs-legacy-depth.png"
+  ]
+}

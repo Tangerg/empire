@@ -1,0 +1,21 @@
+using Godot;
+using Empire.Presentation;
+using Empire.Core.Engine;
+using Empire.Core.Determinism;
+using Empire.Presentation.Tactical;
+using System.Text.Json.Nodes;
+public partial class PaintedOcclusionAttribution:Node{
+ public override void _Ready(){try{
+ var e=new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));var l=PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>().Single(x=>x["id"]!.GetValue<string>()=="c01-07");var s=e.CreateState(l);var digest=EcmaJson.Stringify(s);var sc=AuthoredScene.Load("res://data/scenes/c01-07.json");var r=BoardSceneRendering.Load(sc,l,s["map"]!.AsObject());var b=new BoardView{AnimationsEnabled=false};AddChild(b);b.Configure(new(AssetCatalog.Load(),EnvironmentCatalog.Load(),e.Grids.Get("square4"),e.Catalog,r.Plane),l,sc);BoardGroundView? g=null;b.ConfigureGround((rules,scene)=>g=r.Ground(rules,scene));b.ConfigureDynamicState();
+ var f=s.DeepClone().AsObject();var u=s["units"]!.AsArray().OfType<JsonObject>().Single(x=>x["key"]!.GetValue<string>()=="campaign-torren").DeepClone().AsObject();u["x"]=60;u["y"]=12;f["units"]=new JsonArray(u);b.RenderState(f);int id=u["id"]!.GetValue<int>();var actor=b.GetNode<CanvasGroup>($"CanonicalProjection/Unit_{id}");var sprite=actor.GetNode<Sprite2D>("AuthoredSprite");var blockers=new Dictionary<string,(int Count,List<Vector2> Points,int Z,Vector2 Contact)>();int opaque=0,hidden=0;
+ for(int y=145;y<=180;y++)for(int x=940;x<=990;x++){
+ var p=new Vector2(x,y);if(!sprite.IsPixelOpaque(sprite.ToLocal(b.ToGlobal(p))))continue;opaque++;if(b.Pick(p)==TacticalHit.Unit(new(60,12),id))continue;hidden++;
+ foreach(var entry in g!.DepthEntries.Where(entry=>entry.Visual is not null&&entry.Node.ZIndex>actor.ZIndex&&entry.Visual.Covers(b.ToGlobal(p)))){
+ string name=entry.Node.Name;var row=blockers.GetValueOrDefault(name,(Count:0,Points:new List<Vector2>(),Z:entry.Node.ZIndex,Contact:entry.LogicalContact));row.Count++;if(row.Points.Count<8)row.Points.Add(p);blockers[name]=row;}
+ }
+ var soles=new JsonArray();foreach(var assetPoint in new[]{new Vector2(160,503),new Vector2(170,504),new Vector2(180,503),new Vector2(360,560),new Vector2(370,561),new Vector2(380,561)}){
+ var p=new Vector2(968,200)+(assetPoint-new Vector2(269,565))*.0961538f;soles.Add(new JsonObject{{"assetPixel",new JsonArray(assetPoint.X,assetPoint.Y)},{"source",new JsonArray(p.X,p.Y)},{"nativeOpaque",sprite.IsPixelOpaque(sprite.ToLocal(b.ToGlobal(p)))},{"sourceYBeyondVisibleAwningFoot192",p.Y-192}});}
+ var result=new JsonObject{{"scope","Static original-painted renderer attribution; no commands/carryover/save, no conclusion that every cover is erroneous"},{"cell",new JsonArray(60,12)},{"stateUnchanged",digest==EcmaJson.Stringify(s)},{"actorZ",actor.ZIndex},{"actualPlantedSoles",soles},{"opaqueHeadRegionPixels",opaque},{"hiddenHeadRegionPixels",hidden},{"issues",b.RenderingIssueCount},{"coveringOriginalParts",new JsonArray(blockers.Select(kv=>(JsonNode)new JsonObject{{"name",kv.Key},{"count",kv.Value.Count},{"z",kv.Value.Z},{"logicalContact",new JsonArray(kv.Value.Contact.X,kv.Value.Contact.Y)},{"sourceSamples",new JsonArray(kv.Value.Points.Select(p=>(JsonNode)new JsonArray(p.X,p.Y)).ToArray())}}).ToArray())}};
+ System.IO.File.WriteAllText(ProjectSettings.GlobalizePath("res://painted-head-attribution.json"),result.ToJsonString());GD.Print("STATIC_ATTRIBUTION_COMPLETE");GetTree().Quit();
+ }catch(Exception ex){GD.PushError(ex.ToString());GetTree().Quit(1);}}
+}
