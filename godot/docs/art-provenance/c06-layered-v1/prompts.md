@@ -69,3 +69,30 @@ on RIGHT, long roof/eaves wall with ground-level door facing LEFT. Mirror chimne
 steps, windows, foundation and snow consistently, retain proportions/night palette.
 No redesign, gable door, new objects, terrain or glow. Actual output foot registration
 and door targeting are still pending, not presumed exact mathematical mirroring.
+
+## Clean ground v4
+Full v3 as edit target; enlarged crops of the exact residual west-bank rocks and
+pine2 as location references, not collage inserts. Explicitly remove rock cluster
+protruding into water near(490,375), restore river water/waterline rather than
+fill with snow; remove connected pine rooted(335,134), preserving neighboring bare
+tree. Keep canvas/decks/arches/roads/river/all other geometry. The pine was removed
+but the bank rocks remain. This is not yet a complete-clearance success. Retention
+as continuous nonforeground shore geology is separately being tested against
+actual full actor alpha and legal behind positions, not justified by tool failure.
+
+## Northwest dual-door slate v2
+Night slate v1 target plus original NW crop for facade reference. Preserve complete
+outer geometry, corners, roof/chimney, right wall/door/steps, snow and palette.
+Replace only lower left-gable window with full-height wooden main door and small
+step confined to facade; upper gable window stays. Existing side door stays because
+original right-wall imagery is ambiguous and provides some side-door evidence.
+No copied crates/fence/lantern/background or enlarged ground platform.
+
+## North red annex v2
+Original north-red crop is architecture target; night slate is style-only. Keep
+left gable main door, broad red main roof, rear-right chimney and lower right
+lean-to/annex with brown shingle roof. Main long wall has windows, not a moved door.
+Reconstruct same compact 45-degree volumes/footprint, no generic symmetric cottage
+or omitted annex. Transparent1536x1024, all stone feet/step visible. Remove yard,
+crates, tools, fences, vegetation, lamps and ground. Clean moonlit painted style
+with lit windows/light snow. Generated output remains unbound awaiting fit.
