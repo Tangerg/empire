@@ -1,0 +1,13 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+ERROR: System.InvalidOperationException: Surface UV lies outside its material: canvas-edge-fixture/canvas-edge.
+   at Empire.Presentation.CompiledSceneSurface.Compile(SceneSurfaceDocument document, Texture2D texture, String identity) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/CompiledSceneSurface.cs:line 65
+   at Empire.Presentation.SceneSurfaceChecks.Check() in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SceneSurfaceChecks.cs:line 115
+   at Empire.Presentation.SceneSurfaceChecks._Ready() in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SceneSurfaceChecks.cs:line 20
+   at: void Empire.Presentation.SceneSurfaceChecks._Ready() (res://Presentation/SceneSurfaceChecks.cs:20)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void Empire.Presentation.SceneSurfaceChecks._Ready() (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SceneSurfaceChecks.cs:20)
+       [2] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [3] bool Empire.Presentation.SceneSurfaceChecks.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/empire-c01/godot/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/Empire.Presentation.SceneSurfaceChecks_ScriptMethods.generated.cs:60)
+       [4] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)

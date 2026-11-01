@@ -110,6 +110,24 @@ public partial class SceneSurfaceChecks : Node
                 "Batch colors must preserve each primitive tint without multiplying it twice.");
             node.Free();
         }
+        // A full-canvas native-alpha polygon uses normalized UV 1 at the far edge.
+        // Its interior samples remain in the last texel; do not inset source geometry/UV to satisfy validation.
+        var edge = CompiledSceneSurface.Compile(Document(Member("canvas-edge", "foot", "native-alpha",
+            [[0, 0], [8, 0], [0, 8]])), texture, "canvas-edge-fixture");
+        foreach (var (node, visual) in edge.Instantiate(this, "canvas-edge", 1, Vector2.Zero, true, null, sampler))
+        {
+            var draw = node.GetChild<Polygon2D>(0);
+            Require(draw.UV.Contains(new Vector2(8, 0)) && draw.UV.Contains(new Vector2(0, 8)),
+                "Native canvas edge UV must not be silently inset.");
+            foreach (var point in new[] { new Vector2(3.9f, .05f), new Vector2(.05f, 3.9f), new Vector2(1.55f, .55f) })
+                Require(visual.Covers(node.ToGlobal(point)) == sampler.IsPixelOpaque(point * 2),
+                    "Native canvas interior/last-texel/hole coverage must match the source sampler.");
+            node.Free();
+        }
+        Reject(Document(Member("past-right", "foot", "native-alpha", [[0, 0], [8.001, 0], [0, 8]])), "Surface UV lies outside its material");
+        Reject(Document(Member("past-bottom", "foot", "native-alpha", [[0, 0], [8, 0], [0, 8.001]])), "Surface UV lies outside its material");
+        Reject(Document(Member("past-left", "foot", "native-alpha", [[-.001, 0], [8, 0], [0, 8]])), "Surface UV lies outside its material");
+        Reject(Document(Member("opaque-edge", "foot", "opaque", [[0, 0], [8, 0], [0, 8]])), "Surface UV lies outside its material");
         sampler.Free();
     }
 }

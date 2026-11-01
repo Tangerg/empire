@@ -61,7 +61,12 @@ internal sealed class CompiledSceneSurface
             var polygon = member.PolygonPixels.Select(p => ReadPoint(p, identity + " polygon")).ToArray();
             var uv = member.UvPixels.Select(p => ReadPoint(p, identity + " UV")).ToArray();
             StandingVisual.ValidatePolygon(polygon, identity + "/" + member.Id);
-            if (uv.Any(p => p.X < 0 || p.Y < 0 || p.X >= image.GetWidth() || p.Y >= image.GetHeight()))
+            // Native-alpha UVs describe continuous canvas edges, including normalized UV 1.
+            // Opaque subdomains require actual texel endpoints for exhaustive material validation.
+            var nativeAlpha = member.Coverage == "native-alpha";
+            if (uv.Any(p => p.X < 0 || p.Y < 0 || (nativeAlpha
+                    ? p.X > image.GetWidth() || p.Y > image.GetHeight()
+                    : p.X >= image.GetWidth() || p.Y >= image.GetHeight())))
                 throw new InvalidOperationException($"Surface UV lies outside its material: {identity}/{member.Id}.");
             var indices = Geometry2D.TriangulatePolygon(polygon);
             for (var index = 0; index < indices.Length; index += 3)

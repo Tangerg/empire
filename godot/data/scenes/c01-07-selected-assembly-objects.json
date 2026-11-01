@@ -4996,6 +4996,37 @@
           895
         ]
       ]
+    },
+    "southeast-gate-stone-surface-v2": {
+      "resourcePath": "res://assets/native/c07-layered-v1/southeast-gate-v2-stone-candidate.png",
+      "pixelSize": [
+        1326,
+        1186
+      ],
+      "anchorPixels": [
+        0,
+        0
+      ],
+      "contactShadowRadiiPixels": null,
+      "surfaceGeometryPath": "res://data/scenes/c01-07-southeast-stone-surface.json",
+      "pointerPolygonPixels": [
+        [
+          251.40621948242188,
+          753.1561889648438
+        ],
+        [
+          339.0624694824219,
+          799.5624389648438
+        ],
+        [
+          339.0624694824219,
+          964.5624389648438
+        ],
+        [
+          251.40621948242188,
+          923.3124389648438
+        ]
+      ]
     }
   }
 }

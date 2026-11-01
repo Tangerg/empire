@@ -53,3 +53,6 @@ All currently formalized objects now share one advancing candidate: [SELECTED-AS
 
 ## Council hall selected integration
 The exact reviewed council hall joins the same selected assembly, now12instances/3site owners/989depth entries. Three actual-role poses,512entry samples, target/approach and two wrong-depth negatives pass. See [selected-council-audit](selected-council-audit/README.md). No full-scene/performance or gameplay acceptance.
+
+## Southeast stone formal integration
+Reviewed five-region stone frame now uses the same formal surface owner in the selected assembly:13instances/4sites/1177depth entries. Original full-canvas native-alpha UV edges are accepted without inset;22compiler assertions preserve opaque and actual-overrun rejection. Source vertices/UV/depth exact; old reprojection has1ULP drift; three native frames pixel-identical.2293road and actual-role/target contracts plus precise negatives pass. Leaf remains separate/next; see [southeast-stone-surface-audit](southeast-stone-surface-audit/README.md).

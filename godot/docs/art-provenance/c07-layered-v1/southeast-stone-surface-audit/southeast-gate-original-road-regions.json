@@ -1,0 +1,184 @@
+{
+  "scale": 0.19393939393939394,
+  "translation": [
+    1193.2424242424242,
+    722.9333333333334
+  ],
+  "sampleRule": "Every INTEGER source-space point inside polygon including edge, inverse map nearest source texture pixel via round. Original polygons were drawn from source evidence BEFORE candidate sampling. Native same polygons should check actual texture filtering/IsPixelOpaque separately; results do not silently declare A<=some threshold transparent.",
+  "regions": [
+    {
+      "id": "continuous-exposed-mouth-road",
+      "polygon": [
+        [
+          1307,
+          875
+        ],
+        [
+          1322,
+          875
+        ],
+        [
+          1322,
+          893
+        ],
+        [
+          1349,
+          907
+        ],
+        [
+          1359,
+          908
+        ],
+        [
+          1359,
+          932
+        ],
+        [
+          1305,
+          932
+        ],
+        [
+          1305,
+          887
+        ]
+      ],
+      "sourceMeaning": "Continuous original dirt/shadow road through visible hole and below real wooden leaf; avoids original wood, stone and foliage. Top right sloped boundary stays below the original wooden leaf lower diagonal.",
+      "areaSourcePixelsSquared": 2066.0,
+      "integerLatticeSampleCount": 2147,
+      "alphaHistogram": {
+        "0": 2145,
+        "1": 2
+      },
+      "nonzeroSamples": [
+        {
+          "source": [
+            1322,
+            875
+          ],
+          "originalRgba": [
+            156,
+            124,
+            99,
+            255
+          ],
+          "candidatePixel": [
+            664,
+            784
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "source": [
+            1322,
+            876
+          ],
+          "originalRgba": [
+            159,
+            130,
+            107,
+            255
+          ],
+          "candidatePixel": [
+            664,
+            789
+          ],
+          "candidateRgba": [
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "left-inner-edge-ground-strip",
+      "polygon": [
+        [
+          1303,
+          887
+        ],
+        [
+          1305,
+          887
+        ],
+        [
+          1305,
+          932
+        ],
+        [
+          1303,
+          932
+        ]
+      ],
+      "sourceMeaning": "Narrow continuous original road immediately right of actual left stone inner edge. Not broad fill over the stone itself.",
+      "areaSourcePixelsSquared": 90.0,
+      "integerLatticeSampleCount": 138,
+      "alphaHistogram": {
+        "0": 138
+      },
+      "nonzeroSamples": []
+    },
+    {
+      "id": "below-left-real-stone-foot",
+      "polygon": [
+        [
+          1295,
+          936
+        ],
+        [
+          1304,
+          936
+        ],
+        [
+          1304,
+          938
+        ],
+        [
+          1295,
+          938
+        ]
+      ],
+      "sourceMeaning": "Short exposed earthy ground band below the original left leg. Does not extend into farther shrubs/rock.",
+      "areaSourcePixelsSquared": 18.0,
+      "integerLatticeSampleCount": 30,
+      "alphaHistogram": {
+        "0": 30
+      },
+      "nonzeroSamples": []
+    },
+    {
+      "id": "below-right-real-stone-foot",
+      "polygon": [
+        [
+          1350,
+          908
+        ],
+        [
+          1361,
+          905
+        ],
+        [
+          1363,
+          910
+        ],
+        [
+          1351,
+          915
+        ]
+      ],
+      "sourceMeaning": "Exposed paving below the original right arch-return foot, excludes original wooden leaf and farther shrubs.",
+      "areaSourcePixelsSquared": 75.0,
+      "integerLatticeSampleCount": 78,
+      "alphaHistogram": {
+        "0": 78
+      },
+      "nonzeroSamples": []
+    }
+  ]
+}
