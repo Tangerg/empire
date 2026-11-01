@@ -1,0 +1,8 @@
+## c04RaisedCabinPrompt
+
+Use case stylized-concept, faithful game prop. Reference is the exact forest camp; recreate ONLY its southwest raised wooden cabin as a standalone transparent sprite: small dark timber log house on short wooden supports, slate-gray shingled gable roof, squat stone chimney, little front porch with simple wood railing, 3 short visible wooden steps leading down toward lower-right to a clear foot landing. One warm window, closed readable front door, modest barrel/crate beside porch. Same 45-degree elevated orthographic 2D painted strategy-game view, warm weathered timber, restrained dark edges, subdued highlights, no overly huge roof or tall tower. House width roughly 1.1 times total height including steps. Whole structure inside generous transparent padding; 1536x1024 landscape canvas. No ground slab, grass, trees, people, text, exterior glow, oversized stone foundation or extra buildings. Preserve original rustic raised cabin character rather than replacing it with stone mansion.
+
+## c04GroundCabinPrompt
+
+Precise object edit of this small raised timber cabin sprite. Keep the exact rustic log wall materials, dark slate roof, small chimney, warm windows, compact footprint and orthographic 45-degree style. Change it into a low grounded woodkeeper cottage: remove tall stilts and porch railing, lower floor to ground level, replace wide raised porch with just one low wooden threshold step beneath the front door toward lower right. Keep enough visible side and roof, do not enlarge house. Tiny log bundle beside left wall and one crate by right corner only. True fully transparent background, generous padding, no ground slab, landscape, glow, people or lettering. One independent house sprite 1536x1024.
+
