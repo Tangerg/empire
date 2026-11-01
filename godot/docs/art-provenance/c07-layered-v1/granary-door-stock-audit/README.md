@@ -8,4 +8,6 @@ Fresh native build0warnings/errors.10fixed material/ground samples pass. Every p
 
 Two effective negative controls preserve otherwise valid fixtures: moving stock-only depth behind actor relation to260 yields exact `Granary door stock actual-role front visibility failed`; a deliberate1x2px stock intrusion BETWEEN cell-centre samples keeps all10fixed material checks and front-role checks passing but yields `Granary door stock full entry-strip exclusion failed` with2covered pixels and valid result JSON. Negative scripts/results are explicit tests, not production changes.
 
+Parent visually reviewed the two images: entry clear, actual front-role relationship readable; bounded new design retained as static candidate, not final whole-scene art.
+
 Native same-camera files granary-door-stock-original-v1.png and candidate-v1.png show actual static clone pose33,14 atzoom2.5. C07 real play remains paused; no commands/saves/carryover accessed. Main house/canopy/bin/door stock still partial unbound scene; other granary stock and nearby objects absent. No performance/full-level/final-art acceptance.
