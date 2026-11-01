@@ -1,0 +1,125 @@
+{
+  "scope": "Independent source-visible ground polygons, not source A0 (mother is opaque). Include every integer source point inside/on boundary for future native material exclusion; no new candidate or native run in this review.",
+  "regions": [
+    {
+      "id": "continuous-open-mouth-and-front-road",
+      "polygon": [
+        [
+          213,
+          869
+        ],
+        [
+          219,
+          872
+        ],
+        [
+          225,
+          878
+        ],
+        [
+          230,
+          890
+        ],
+        [
+          231,
+          932
+        ],
+        [
+          190,
+          911
+        ],
+        [
+          190,
+          905
+        ],
+        [
+          211,
+          894
+        ]
+      ],
+      "sourceMeaning": "Original dirt/shadow road through visible aperture and in front of wooden leaf; top contour is inside real arch opening, left contour below/outside the separate wooden leaf.",
+      "areaSourcePixelsSquared": 1325.0,
+      "integerSourcePointCount": 1336,
+      "oldPartOverlapCount": 0,
+      "oldPartOverlaps": []
+    },
+    {
+      "id": "right-inner-edge-road-band",
+      "polygon": [
+        [
+          230,
+          892
+        ],
+        [
+          231,
+          892
+        ],
+        [
+          231,
+          931
+        ],
+        [
+          230,
+          931
+        ]
+      ],
+      "sourceMeaning": "Narrow road immediately left of real right stone leg; no wall face included.",
+      "areaSourcePixelsSquared": 39.0,
+      "integerSourcePointCount": 80,
+      "oldPartOverlapCount": 0,
+      "oldPartOverlaps": []
+    },
+    {
+      "id": "under-left-leg-ground-band",
+      "polygon": [
+        [
+          179,
+          908
+        ],
+        [
+          185,
+          908
+        ],
+        [
+          185,
+          910
+        ],
+        [
+          179,
+          910
+        ]
+      ],
+      "sourceMeaning": "Visible earth below real left arch leg, not the tower shrub foundation.",
+      "areaSourcePixelsSquared": 12.0,
+      "integerSourcePointCount": 21,
+      "oldPartOverlapCount": 0,
+      "oldPartOverlaps": []
+    },
+    {
+      "id": "under-right-leg-ground-band",
+      "polygon": [
+        [
+          233,
+          936
+        ],
+        [
+          236,
+          936
+        ],
+        [
+          236,
+          937
+        ],
+        [
+          233,
+          937
+        ]
+      ],
+      "sourceMeaning": "Small exposed dirt below real right arch-leg stone; farther foreground vegetation excluded.",
+      "areaSourcePixelsSquared": 3.0,
+      "integerSourcePointCount": 8,
+      "oldPartOverlapCount": 0,
+      "oldPartOverlaps": []
+    }
+  ]
+}
