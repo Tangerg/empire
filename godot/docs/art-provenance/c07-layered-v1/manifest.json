@@ -1,0 +1,39 @@
+{
+  "runtimeReady": false,
+  "productionBound": false,
+  "files": [
+    {
+      "file": "assets/native/c07-layered-v1/blue-roof-wooden-stand-v1.png",
+      "generation": "exec-85df8cf8-6f64-4cf7-ab12-0e2513552ff8",
+      "pixelSize": [
+        1073,
+        1465
+      ],
+      "mode": "RGBA",
+      "sha256": "dd26ba9a73eb5c7b4097dff2598f09dd0d5e7341b8f927e0c54ed453291adfdd",
+      "status": "unbound candidate; solid lower panel retained; two measured front feet fit, full physical/native acceptance pending"
+    },
+    {
+      "file": "assets/native/c07-layered-v1/training-fence-v1-rejected.png",
+      "generation": "exec-d58e65b0-c106-462a-a036-aada99bf9db1",
+      "pixelSize": [
+        1187,
+        1325
+      ],
+      "mode": "RGBA",
+      "sha256": "9ae8b5bc5f92d28d678dd7321769a73f4305df8f18392a0154f48929fb492ef6",
+      "status": "REJECTED unbound candidate; old real gaps became opaque and old top-beam witness became transparent; do not bind"
+    },
+    {
+      "file": "assets/native/c07-layered-v1/ground-clean-v1-candidate.png",
+      "generation": "exec-3871db08-a1dd-4bec-bc19-4112b5617d0b",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "a7d42bd3caa41b36b721eb876f54cc4fd427db1af7f81156f9d28d34082d2686",
+      "status": "unbound ground-only candidate; no road/footprint/whole-map registration acceptance yet"
+    }
+  ]
+}

@@ -1,0 +1,726 @@
+{
+  "scope": "Only the two northern props. Static original PNG and data. No GUI/engine/build, no real saves or production changes. Source image itself opaque; source RGB/material identification is visual, not extracted alpha proof.",
+  "sourceSha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+  "sourcePixelSize": [
+    1536,
+    1024
+  ],
+  "plane": {
+    "origin": [
+      0,
+      0
+    ],
+    "basisX": [
+      16,
+      0
+    ],
+    "basisY": [
+      0,
+      16
+    ],
+    "worldScale": 1
+  },
+  "blueKiosk": {
+    "id": "north-militia-side-blue-roof-kiosk",
+    "namingLimit": "Visual descriptor only. Blue tiled roof plus wood-panel body; no new shop/supply/capture capability inferred. Not a proven open four-post shelter.",
+    "referenceCrop": [
+      875,
+      145,
+      930,
+      220
+    ],
+    "contextCrop": [
+      790,
+      102,
+      982,
+      231
+    ],
+    "approxVisibleRoofContour": [
+      [
+        899,
+        153
+      ],
+      [
+        908,
+        157
+      ],
+      [
+        915,
+        162
+      ],
+      [
+        920,
+        169
+      ],
+      [
+        924,
+        173
+      ],
+      [
+        921,
+        177
+      ],
+      [
+        914,
+        179
+      ],
+      [
+        907,
+        182
+      ],
+      [
+        900,
+        184
+      ],
+      [
+        890,
+        180
+      ],
+      [
+        884,
+        177
+      ],
+      [
+        881,
+        173
+      ],
+      [
+        882,
+        166
+      ],
+      [
+        887,
+        160
+      ],
+      [
+        893,
+        156
+      ]
+    ],
+    "contourStatus": "Manual visible roof outline for source extraction/generation reference only; not final runtime pointer/material polygon, not ground footprint. Adjacent orange house and brown sacks must not be incorporated.",
+    "visibleWoodBodyExtentApprox": [
+      887,
+      178,
+      920,
+      211
+    ],
+    "visibleHeightApprox": 57,
+    "visibleRoofWidthApprox": 43,
+    "supportLandmarks": [
+      {
+        "source": [
+          900,
+          209
+        ],
+        "sourceRgb": [
+          77,
+          38,
+          19
+        ],
+        "meaning": "real lower left-front brown wood post, RGB proves body interior, foot boundary extends about 1px farther down",
+        "cell": [
+          56,
+          13
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      },
+      {
+        "source": [
+          915,
+          204
+        ],
+        "sourceRgb": [
+          91,
+          59,
+          16
+        ],
+        "meaning": "real right-front dark golden wood foot, not its surrounding ground shadow",
+        "cell": [
+          57,
+          12
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      }
+    ],
+    "roofLandmarks": [
+      {
+        "source": [
+          899,
+          154
+        ],
+        "sourceRgb": [
+          149,
+          158,
+          183
+        ],
+        "meaning": "visible roof apex",
+        "cell": [
+          56,
+          9
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      },
+      {
+        "source": [
+          910,
+          170
+        ],
+        "sourceRgb": [
+          92,
+          115,
+          153
+        ],
+        "meaning": "fixed roof-material positive used by independent static actor overlap",
+        "cell": [
+          56,
+          10
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      }
+    ],
+    "bodyLandmarks": [
+      {
+        "source": [
+          913,
+          186
+        ],
+        "sourceRgb": [
+          255,
+          220,
+          113
+        ],
+        "meaning": "right-front vertical golden wood",
+        "cell": [
+          57,
+          11
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      },
+      {
+        "source": [
+          906,
+          197
+        ],
+        "sourceRgb": [
+          252,
+          186,
+          53
+        ],
+        "meaning": "solid golden wood panel; must NOT be made a transparent doorway",
+        "cell": [
+          56,
+          12
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      }
+    ],
+    "depthContract": {
+      "registrationProposalSource": [
+        900,
+        209
+      ],
+      "groundFrontProposalSource": [
+        900,
+        210
+      ],
+      "otherVisibleFootSource": [
+        915,
+        204
+      ],
+      "note": "Registration is material base, not any logical site. Authoritative usable depth must follow physically observed front wood; no hidden rear foot has been inferred. If future source-specific shape changes, measure its actual foot rather than forcing prompt coordinates."
+    },
+    "negativePoints": [
+      {
+        "source": [
+          903,
+          213
+        ],
+        "sourceRgb": [
+          251,
+          205,
+          130
+        ],
+        "meaning": "clear paving immediately in front of the left wood foot; standalone sprite body must not create a floor/platform here",
+        "cell": [
+          56,
+          13
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      },
+      {
+        "source": [
+          907,
+          210
+        ],
+        "sourceRgb": [
+          253,
+          217,
+          157
+        ],
+        "meaning": "clear paving ahead of front panel, outside wooden body",
+        "cell": [
+          56,
+          13
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      },
+      {
+        "source": [
+          923,
+          203
+        ],
+        "sourceRgb": [
+          246,
+          195,
+          119
+        ],
+        "meaning": "clear right paving outside the right wood foot",
+        "cell": [
+          57,
+          12
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      }
+    ],
+    "uncertainHole": {
+      "roi": [
+        902,
+        183,
+        912,
+        190
+      ],
+      "classification": "Dark upper recess/window-like opening; no unambiguous view of far paving. Do not force transparent through-hole or invent traversable entrance."
+    },
+    "separateNearbyObjectsToExclude": [
+      {
+        "source": [
+          889,
+          211
+        ],
+        "sourceRgb": [
+          145,
+          121,
+          113
+        ],
+        "meaning": "gray stone garden/wall post, separate from wood kiosk",
+        "cell": [
+          55,
+          13
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      },
+      {
+        "source": [
+          911,
+          215
+        ],
+        "sourceRgb": [
+          114,
+          64,
+          27
+        ],
+        "meaning": "separate brown foreground crate; NOT clear paving and NOT part of kiosk",
+        "cell": [
+          56,
+          13
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      },
+      {
+        "source": [
+          930,
+          205
+        ],
+        "sourceRgb": [
+          166,
+          181,
+          8
+        ],
+        "meaning": "foreground cypress foliage; NOT clear paving",
+        "cell": [
+          58,
+          12
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      }
+    ],
+    "responsibility": {
+      "neighborNoninteractiveHouse": "north-central-house: roof/facade registered separately with front [845,224], facade max x882",
+      "notMilitiaSite": "militia-barracks selectionCell [65,14] remains unchanged; kiosk receives no selectionCell/ownsMapStructureBody=false/pass-through",
+      "notAutomaticallyOwnedByCargo": "militia-west-cargo polygon [[922,168],[943,179],[958,170],[956,151],[936,140],[922,149]] is a different larger cargo base",
+      "unassignedSupportPendingPhysicalReview": "Both visible wood support samples fall within canonical p cells and no ground-audit ownership. A p-cell need not have all 16x16 pixels clear. Actual Torren planted-sole landmarks at both fixed cells/both facings do not coincide with these wood samples; no physical defect is established. Hidden rear footprint remains unknown. Do not silently change terrain, grow pointers/collision or move material to manufacture a pass."
+    }
+  },
+  "trainingFence": {
+    "id": "militia-west-drill-fence-first-two-bays",
+    "referenceCrop": [
+      940,
+      168,
+      1000,
+      235
+    ],
+    "contextCrop": [
+      927,
+      140,
+      1055,
+      273
+    ],
+    "originalGroundResponsibility": {
+      "id": "militia-west-drill-fence",
+      "polygonPixels": [
+        [
+          953,
+          205
+        ],
+        [
+          990,
+          223
+        ],
+        [
+          992,
+          230
+        ],
+        [
+          955,
+          213
+        ]
+      ],
+      "blockedCells": [
+        [
+          59,
+          12
+        ],
+        [
+          59,
+          13
+        ],
+        [
+          60,
+          13
+        ],
+        [
+          61,
+          13
+        ],
+        [
+          61,
+          14
+        ]
+      ]
+    },
+    "visibleSupportLandmarks": [
+      {
+        "source": [
+          950,
+          208
+        ],
+        "sourceRgb": [
+          38,
+          22,
+          17
+        ],
+        "meaning": "left post real dark wood at foot; boundary about y209",
+        "cell": [
+          59,
+          13
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-west-wall",
+          "militia-west-drill-fence"
+        ]
+      },
+      {
+        "source": [
+          963,
+          215
+        ],
+        "sourceRgb": [
+          45,
+          30,
+          22
+        ],
+        "meaning": "middle post real dark wood at foot; boundary about y216",
+        "cell": [
+          60,
+          13
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-west-drill-fence"
+        ]
+      },
+      {
+        "source": [
+          987,
+          228
+        ],
+        "sourceRgb": [
+          80,
+          58,
+          26
+        ],
+        "meaning": "right post real dark wood at foot; boundary about y229-230",
+        "cell": [
+          61,
+          14
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-west-drill-fence"
+        ]
+      }
+    ],
+    "postTopLandmarksApprox": [
+      [
+        951,
+        176
+      ],
+      [
+        965,
+        186
+      ],
+      [
+        988,
+        195
+      ]
+    ],
+    "sizeApprox": {
+      "visibleMaterialEnvelope": [
+        946,
+        174,
+        993,
+        231
+      ],
+      "groundFootSpan": 37,
+      "frontFootYSpan": 20,
+      "postHeightsApprox": [
+        32,
+        29,
+        33
+      ]
+    },
+    "depthContract": {
+      "frontLineSamples": [
+        [
+          950,
+          208
+        ],
+        [
+          963,
+          215
+        ],
+        [
+          987,
+          228
+        ]
+      ],
+      "endpointSlope": 0.5405405405405406,
+      "leftBaySuggestedSourceSpan": [
+        946,
+        966
+      ],
+      "rightBaySuggestedSourceSpan": [
+        963,
+        993
+      ],
+      "note": "Actual sloping wood base, not logical selection. Do not collapse whole diagonal fence to an unrelated site/roof depth. If separately generated bays are used, shared-post overlap must not double-draw; if one full asset is used, local-depth handling should preserve the three measured contacts. This is registration requirement, not a runtime deep-strip acceptance."
+    },
+    "solidPositivePoints": [
+      {
+        "source": [
+          976,
+          194
+        ],
+        "sourceRgb": [
+          218,
+          179,
+          127
+        ],
+        "meaning": "fixed light wooden upper beam surface; real source texture, not ground",
+        "cell": [
+          61,
+          12
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      },
+      {
+        "source": [
+          963,
+          204
+        ],
+        "sourceRgb": [
+          159,
+          114,
+          66
+        ],
+        "meaning": "middle solid wood post",
+        "cell": [
+          60,
+          12
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      },
+      {
+        "source": [
+          987,
+          216
+        ],
+        "sourceRgb": [
+          100,
+          63,
+          20
+        ],
+        "meaning": "right solid wood post",
+        "cell": [
+          61,
+          13
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-west-drill-fence"
+        ]
+      }
+    ],
+    "transparentNegativePoints": [
+      {
+        "source": [
+          972,
+          203
+        ],
+        "sourceRgb": [
+          251,
+          240,
+          199
+        ],
+        "meaning": "light court paving visible through broad right-bay gap",
+        "cell": [
+          60,
+          12
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      },
+      {
+        "source": [
+          977,
+          207
+        ],
+        "sourceRgb": [
+          226,
+          190,
+          146
+        ],
+        "meaning": "court paving visible through narrow right-bay hole",
+        "cell": [
+          61,
+          12
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      },
+      {
+        "source": [
+          954,
+          194
+        ],
+        "sourceRgb": [
+          239,
+          192,
+          128
+        ],
+        "meaning": "left bay open gap; canonical cell is wall due fence foot elsewhere, so transparency does not mean traversable cell",
+        "cell": [
+          59,
+          12
+        ],
+        "terrain": "#",
+        "auditCellOwners": [
+          "militia-west-drill-fence"
+        ]
+      }
+    ],
+    "adjacentRouteNegative": [
+      {
+        "source": [
+          1000,
+          194
+        ],
+        "sourceRgb": [
+          199,
+          168,
+          113
+        ],
+        "meaning": "open paved court to the right/behind this fence; preserve independent ground/visible actor, not a full-box facade",
+        "cell": [
+          62,
+          12
+        ],
+        "terrain": "p",
+        "auditCellOwners": []
+      }
+    ],
+    "separateNeighbors": [
+      "Militia hall awning support around [973,193], sacks and crate group behind the fence are NOT this fence.",
+      "Rightward spear/pike rack and further drill rail beyond x993 are separate objects; do not paste them into the requested first two bays.",
+      "Gray low stone ledge under the fence is a ground support/context, not transparent wood; do not erase or duplicate its whole apron in the generated sprite."
+    ],
+    "selection": "No independent site and no target pointer. Real wood hides back actors; true gaps show actors/ground. All 3 actual support cells are already # under militia-west-drill-fence (left also militia-west-wall). Preserve exact canonical blocked cells."
+  },
+  "assetContract": "Generate complete independent transparent PNGs matching actual visible original object, not crops containing brown background, paving, shadows, wall or plants. Keep uniform scaling. Re-measure actual generated pixel roots/alpha before registration; no requested canvas/foot hint is accepted as actual measurement.",
+  "strongNewBoundary": "Fence supports have named # responsibility; blue-kiosk support samples lack named ground-audit ownership but this is NOT proof of a walking/support defect. See actual planted-sole review.",
+  "earlierCoarsePointsCorrected": {
+    "stallRightFoot": "earlier y201 estimate refined to actual visible wood [915,204]",
+    "fenceMiddleFoot": "[964,217] lands on gray support; real wood witness is [963,215]",
+    "rejectedGroundNegativePoints": [
+      [
+        911,
+        215
+      ],
+      [
+        930,
+        205
+      ],
+      [
+        875,
+        218
+      ]
+    ],
+    "rejectedFenceHolePoint": [
+      979,
+      215
+    ],
+    "physicalClaim": "Any previous wording suggesting p-cell wood establishes a foundation/collision defect is superseded. This is unresolved audit ownership, not a whole-cell empty-space rule."
+  },
+  "references": [
+    "blue-stall-source.png",
+    "blue-stall-grid.png",
+    "blue-stall-context-source.png",
+    "fence-main-source.png",
+    "fence-main-grid.png",
+    "fence-context-source.png",
+    "fence-feet-detail.png",
+    "stall-foot-check.png",
+    "fence-gap-check.png",
+    "torren-idle-boot-material-grid.png",
+    "torren-rear-sole-detail.png",
+    "blue-kiosk-real-sole-boundary-review.json",
+    "blue-stall-raw.png",
+    "fence-first-two-bays-raw.png",
+    "north-props-context-raw.png"
+  ]
+}
