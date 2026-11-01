@@ -323,6 +323,21 @@
       "selectionCell": null,
       "ownsMapStructureBody": false,
       "pointer": "pass-through"
+    },
+    {
+      "id": "southern-supply-main",
+      "assetId": "southern-supply-main-v1",
+      "contact": [
+        77.5,
+        48.375
+      ],
+      "scale": 0.175,
+      "selectionCell": [
+        70,
+        50
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
     }
   ]
 }

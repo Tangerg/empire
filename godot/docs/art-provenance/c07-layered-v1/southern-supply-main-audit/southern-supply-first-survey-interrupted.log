@@ -1,0 +1,406 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+ERROR: BUG: Unreferenced static string to 0: .
+   at: unref (core/string/string_name.cpp:116)
+WARNING: A Thread object is being destroyed without its completion having been realized.
+Please call wait_to_finish() on it to ensure correct cleanup.
+     at: ~Thread (core/os/thread.cpp:102)
+ERROR: 7 RID allocations of type '23NavMeshGeometryParser2D' were leaked at exit.
+ERROR: 6 RID allocations of type '23NavMeshGeometryParser3D' were leaked at exit.
+ERROR: Pages in use exist at exit in PagedAllocator: N7Variant5Pools11BucketLargeE
+   at: ~PagedAllocator (./core/templates/paged_allocator.h:169)
+ERROR: Pages in use exist at exit in PagedAllocator: N7Variant5Pools12BucketMediumE
+   at: ~PagedAllocator (./core/templates/paged_allocator.h:169)
+ERROR: Pages in use exist at exit in PagedAllocator: N7Variant5Pools11BucketSmallE
+   at: ~PagedAllocator (./core/templates/paged_allocator.h:169)
+ERROR: Can't emit non-existing signal "property_list_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+ERROR: BUG: Unreferenced static string to 0: node_changed
+   at: unref (core/string/string_name.cpp:116)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_1_38(nint, nint, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:338)
+       [1] void Godot.CanvasItem.SetTextureFilter(Godot.CanvasItem+TextureFilterEnum) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/CanvasItem.cs:1462)
+       [2] void Godot.CanvasItem.set_TextureFilter(Godot.CanvasItem+TextureFilterEnum) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/CanvasItem.cs:319)
+       [3] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.Create(Godot.Sprite2D, Empire.Presentation.ShadowKind, float, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:112)
+       [4] Godot.Sprite2D Empire.Presentation.DynamicStateView.CreateOwnerBanner(string, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/DynamicStateView.cs:200)
+       [5] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:304)
+       [6] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [7] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [8] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [9] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Can't emit non-existing signal "texture_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_1_56(nint, nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:495)
+       [1] void Godot.Sprite2D.SetTexture(Godot.Texture2D) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:229)
+       [2] void Godot.Sprite2D.set_Texture(Godot.Texture2D) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:25)
+       [3] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:170)
+       [4] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.Create(Godot.Sprite2D, Empire.Presentation.ShadowKind, float, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:121)
+       [5] Godot.Sprite2D Empire.Presentation.DynamicStateView.CreateOwnerBanner(string, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/DynamicStateView.cs:200)
+       [6] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:304)
+       [7] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [8] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [9] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [10] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: BUG: Unreferenced static string to 0: animation_player_changed
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: current_animation_changed
+   at: unref (core/string/string_name.cpp:116)
+ERROR: Can't emit non-existing signal "item_rect_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+ERROR: BUG: Unreferenced static string to 0: animation_list_changed
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: animation_libraries_updated
+   at: unref (core/string/string_name.cpp:116)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_1_56(nint, nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:495)
+       [1] void Godot.Sprite2D.SetTexture(Godot.Texture2D) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:229)
+       [2] void Godot.Sprite2D.set_Texture(Godot.Texture2D) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:25)
+       [3] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:170)
+       [4] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.Create(Godot.Sprite2D, Empire.Presentation.ShadowKind, float, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:121)
+       [5] Godot.Sprite2D Empire.Presentation.DynamicStateView.CreateOwnerBanner(string, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/DynamicStateView.cs:200)
+       [6] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:304)
+       [7] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [8] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [9] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [10] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: BUG: Unreferenced static string to 0: caches_cleared
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: mixer_applied
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: mixer_updated
+   at: unref (core/string/string_name.cpp:116)
+ERROR: Can't emit non-existing signal "item_rect_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+ERROR: BUG: Unreferenced static string to 0: autoshrink_changed
+   at: unref (core/string/string_name.cpp:116)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_1_14(nint, nint, Godot.NativeInterop.godot_bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:140)
+       [1] void Godot.Sprite2D.SetCentered(bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:247)
+       [2] void Godot.Sprite2D.set_Centered(bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:41)
+       [3] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:171)
+       [4] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.Create(Godot.Sprite2D, Empire.Presentation.ShadowKind, float, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:121)
+       [5] Godot.Sprite2D Empire.Presentation.DynamicStateView.CreateOwnerBanner(string, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/DynamicStateView.cs:200)
+       [6] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:304)
+       [7] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [8] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [9] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [10] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Can't emit non-existing signal "item_rect_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_1_36(nint, nint, Godot.Vector2*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:322)
+       [1] void Godot.Sprite2D.SetOffset(Godot.Vector2) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:265)
+       [2] void Godot.Sprite2D.set_Offset(Godot.Vector2) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:57)
+       [3] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:172)
+       [4] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.Create(Godot.Sprite2D, Empire.Presentation.ShadowKind, float, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:121)
+       [5] Godot.Sprite2D Empire.Presentation.DynamicStateView.CreateOwnerBanner(string, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/DynamicStateView.cs:200)
+       [6] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:304)
+       [7] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [8] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [9] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [10] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Can't emit non-existing signal "property_list_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_2_142(nint, nint, Godot.NativeInterop.godot_string_name, Godot.Variant) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:1297)
+       [1] void Godot.GodotObject.SetMeta(Godot.StringName, Godot.Variant) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/GodotObject.cs:600)
+       [2] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:175)
+       [3] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.Create(Godot.Sprite2D, Empire.Presentation.ShadowKind, float, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:121)
+       [4] Godot.Sprite2D Empire.Presentation.DynamicStateView.CreateOwnerBanner(string, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/DynamicStateView.cs:200)
+       [5] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:304)
+       [6] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [7] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [8] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [9] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Can't emit non-existing signal "property_list_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_2_142(nint, nint, Godot.NativeInterop.godot_string_name, Godot.Variant) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:1297)
+       [1] void Godot.GodotObject.SetMeta(Godot.StringName, Godot.Variant) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/GodotObject.cs:600)
+       [2] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:178)
+       [3] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.Create(Godot.Sprite2D, Empire.Presentation.ShadowKind, float, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:121)
+       [4] Godot.Sprite2D Empire.Presentation.DynamicStateView.CreateOwnerBanner(string, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/DynamicStateView.cs:200)
+       [5] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:304)
+       [6] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [7] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [8] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [9] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: BUG: Unreferenced static string to 0: size_changed
+   at: unref (core/string/string_name.cpp:116)
+ERROR: Can't emit non-existing signal "property_list_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_2_142(nint, nint, Godot.NativeInterop.godot_string_name, Godot.Variant) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:1297)
+       [1] void Godot.GodotObject.SetMeta(Godot.StringName, Godot.Variant) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/GodotObject.cs:600)
+       [2] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:179)
+       [3] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.Create(Godot.Sprite2D, Empire.Presentation.ShadowKind, float, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:121)
+       [4] Godot.Sprite2D Empire.Presentation.DynamicStateView.CreateOwnerBanner(string, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/DynamicStateView.cs:200)
+       [5] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:304)
+       [6] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [7] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [8] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [9] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: BUG: Unreferenced static string to 0: child_entered_tree
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: child_exiting_tree
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: fallback_changed
+   at: unref (core/string/string_name.cpp:116)
+ERROR: Can't emit non-existing signal "property_list_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_1_38(nint, nint, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:338)
+       [1] void Godot.CanvasItem.SetTextureFilter(Godot.CanvasItem+TextureFilterEnum) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/CanvasItem.cs:1462)
+       [2] void Godot.CanvasItem.set_TextureFilter(Godot.CanvasItem+TextureFilterEnum) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/CanvasItem.cs:319)
+       [3] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.Create(Godot.Sprite2D, Empire.Presentation.ShadowKind, float, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:112)
+       [4] Godot.Sprite2D Empire.Presentation.DynamicStateView.CreateOwnerBanner(string, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/DynamicStateView.cs:200)
+       [5] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:304)
+       [6] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [7] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [8] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [9] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Can't emit non-existing signal "texture_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_1_56(nint, nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:495)
+       [1] void Godot.Sprite2D.SetTexture(Godot.Texture2D) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:229)
+       [2] void Godot.Sprite2D.set_Texture(Godot.Texture2D) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:25)
+       [3] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:170)
+       [4] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.Create(Godot.Sprite2D, Empire.Presentation.ShadowKind, float, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:121)
+       [5] Godot.Sprite2D Empire.Presentation.DynamicStateView.CreateOwnerBanner(string, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/DynamicStateView.cs:200)
+       [6] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:304)
+       [7] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [8] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [9] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [10] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Can't emit non-existing signal "item_rect_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_1_56(nint, nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:495)
+       [1] void Godot.Sprite2D.SetTexture(Godot.Texture2D) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:229)
+       [2] void Godot.Sprite2D.set_Texture(Godot.Texture2D) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:25)
+       [3] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:170)
+       [4] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.Create(Godot.Sprite2D, Empire.Presentation.ShadowKind, float, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:121)
+       [5] Godot.Sprite2D Empire.Presentation.DynamicStateView.CreateOwnerBanner(string, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/DynamicStateView.cs:200)
+       [6] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:304)
+       [7] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [8] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [9] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [10] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Can't emit non-existing signal "item_rect_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_1_14(nint, nint, Godot.NativeInterop.godot_bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:140)
+       [1] void Godot.Sprite2D.SetCentered(bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:247)
+       [2] void Godot.Sprite2D.set_Centered(bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:41)
+       [3] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:171)
+       [4] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.Create(Godot.Sprite2D, Empire.Presentation.ShadowKind, float, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:121)
+       [5] Godot.Sprite2D Empire.Presentation.DynamicStateView.CreateOwnerBanner(string, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/DynamicStateView.cs:200)
+       [6] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:304)
+       [7] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [8] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [9] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [10] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Can't emit non-existing signal "item_rect_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_1_36(nint, nint, Godot.Vector2*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:322)
+       [1] void Godot.Sprite2D.SetOffset(Godot.Vector2) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:265)
+       [2] void Godot.Sprite2D.set_Offset(Godot.Vector2) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:57)
+       [3] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:172)
+       [4] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.Create(Godot.Sprite2D, Empire.Presentation.ShadowKind, float, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:121)
+       [5] Godot.Sprite2D Empire.Presentation.DynamicStateView.CreateOwnerBanner(string, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/DynamicStateView.cs:200)
+       [6] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:304)
+       [7] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [8] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [9] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [10] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Can't emit non-existing signal "property_list_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_2_142(nint, nint, Godot.NativeInterop.godot_string_name, Godot.Variant) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:1297)
+       [1] void Godot.GodotObject.SetMeta(Godot.StringName, Godot.Variant) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/GodotObject.cs:600)
+       [2] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:175)
+       [3] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.Create(Godot.Sprite2D, Empire.Presentation.ShadowKind, float, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:121)
+       [4] Godot.Sprite2D Empire.Presentation.DynamicStateView.CreateOwnerBanner(string, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/DynamicStateView.cs:200)
+       [5] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:304)
+       [6] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [7] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [8] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [9] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Can't emit non-existing signal "property_list_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_2_142(nint, nint, Godot.NativeInterop.godot_string_name, Godot.Variant) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:1297)
+       [1] void Godot.GodotObject.SetMeta(Godot.StringName, Godot.Variant) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/GodotObject.cs:600)
+       [2] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:178)
+       [3] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.Create(Godot.Sprite2D, Empire.Presentation.ShadowKind, float, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:121)
+       [4] Godot.Sprite2D Empire.Presentation.DynamicStateView.CreateOwnerBanner(string, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/DynamicStateView.cs:200)
+       [5] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:304)
+       [6] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [7] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [8] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [9] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Can't emit non-existing signal "property_list_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_2_142(nint, nint, Godot.NativeInterop.godot_string_name, Godot.Variant) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:1297)
+       [1] void Godot.GodotObject.SetMeta(Godot.StringName, Godot.Variant) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/GodotObject.cs:600)
+       [2] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:179)
+       [3] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.Create(Godot.Sprite2D, Empire.Presentation.ShadowKind, float, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:121)
+       [4] Godot.Sprite2D Empire.Presentation.DynamicStateView.CreateOwnerBanner(string, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/DynamicStateView.cs:200)
+       [5] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:304)
+       [6] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [7] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [8] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [9] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Can't emit non-existing signal "property_list_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_1_38(nint, nint, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:338)
+       [1] void Godot.CanvasItem.SetTextureFilter(Godot.CanvasItem+TextureFilterEnum) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/CanvasItem.cs:1462)
+       [2] void Godot.CanvasItem.set_TextureFilter(Godot.CanvasItem+TextureFilterEnum) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/CanvasItem.cs:319)
+       [3] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.CreateFigure(Godot.Sprite2D, Godot.Color, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:133)
+       [4] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:384)
+       [5] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [6] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [7] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [8] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Can't emit non-existing signal "texture_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_1_56(nint, nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:495)
+       [1] void Godot.Sprite2D.SetTexture(Godot.Texture2D) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:229)
+       [2] void Godot.Sprite2D.set_Texture(Godot.Texture2D) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:25)
+       [3] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:160)
+       [4] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.CreateFigure(Godot.Sprite2D, Godot.Color, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:142)
+       [5] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:384)
+       [6] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [7] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [8] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [9] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Can't emit non-existing signal "item_rect_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_1_56(nint, nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:495)
+       [1] void Godot.Sprite2D.SetTexture(Godot.Texture2D) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:229)
+       [2] void Godot.Sprite2D.set_Texture(Godot.Texture2D) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:25)
+       [3] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:160)
+       [4] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.CreateFigure(Godot.Sprite2D, Godot.Color, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:142)
+       [5] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:384)
+       [6] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [7] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [8] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [9] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Can't emit non-existing signal "item_rect_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_1_14(nint, nint, Godot.NativeInterop.godot_bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:140)
+       [1] void Godot.Sprite2D.SetCentered(bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:247)
+       [2] void Godot.Sprite2D.set_Centered(bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:41)
+       [3] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:161)
+       [4] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.CreateFigure(Godot.Sprite2D, Godot.Color, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:142)
+       [5] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:384)
+       [6] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [7] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [8] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [9] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Can't emit non-existing signal "item_rect_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_1_36(nint, nint, Godot.Vector2*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:322)
+       [1] void Godot.Sprite2D.SetOffset(Godot.Vector2) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:265)
+       [2] void Godot.Sprite2D.set_Offset(Godot.Vector2) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Sprite2D.cs:57)
+       [3] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:162)
+       [4] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.CreateFigure(Godot.Sprite2D, Godot.Color, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:142)
+       [5] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:384)
+       [6] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [7] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [8] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [9] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Can't emit non-existing signal "property_list_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_2_142(nint, nint, Godot.NativeInterop.godot_string_name, Godot.Variant) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:1297)
+       [1] void Godot.GodotObject.SetMeta(Godot.StringName, Godot.Variant) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/GodotObject.cs:600)
+       [2] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:165)
+       [3] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.CreateFigure(Godot.Sprite2D, Godot.Color, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:142)
+       [4] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:384)
+       [5] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [6] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [7] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [8] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: BUG: Unreferenced static string to 0: bus_layout_changed
+   at: unref (core/string/string_name.cpp:116)
+ERROR: BUG: Unreferenced static string to 0: bus_renamed
+   at: unref (core/string/string_name.cpp:116)
+ERROR: Can't emit non-existing signal "property_list_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_2_142(nint, nint, Godot.NativeInterop.godot_string_name, Godot.Variant) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:1297)
+       [1] void Godot.GodotObject.SetMeta(Godot.StringName, Godot.Variant) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/GodotObject.cs:600)
+       [2] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:178)
+       [3] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.CreateFigure(Godot.Sprite2D, Godot.Color, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:142)
+       [4] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:384)
+       [5] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [6] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [7] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [8] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Can't emit non-existing signal "property_list_changed".
+   at: emit_signalp (core/object/object.cpp:1325)
+ERROR: BUG: Unreferenced static string to 0: interface_added
+   at: unref (core/string/string_name.cpp:116)
+   C# backtrace (most recent call first):
+       [0] void Godot.NativeCalls.godot_icall_2_142(nint, nint, Godot.NativeInterop.godot_string_name, Godot.Variant) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:1297)
+       [1] void Godot.GodotObject.SetMeta(Godot.StringName, Godot.Variant) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/GodotObject.cs:600)
+       [2] void Empire.Presentation.SpriteShadows.Synchronize(Godot.Sprite2D, Empire.Presentation.ShadowKind, float) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:179)
+       [3] Empire.Presentation.SpriteShadows Empire.Presentation.SpriteShadows.CreateFigure(Godot.Sprite2D, Godot.Color, Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/SpriteShadows.cs:142)
+       [4] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:384)
+       [5] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [6] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [7] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [8] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: BUG: Unreferenced static string to 0: _initialize
+   at: unref (core/string/string_name.cpp:116)
+ERROR: Parameter "classinfo" is null.
+   at: setup_csharp_script_binding (modules/mono/csharp_script.cpp:1160)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeInterop.InteropUtils.UnmanagedGetManaged(nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/InteropUtils.cs:35)
+       [1] Godot.GodotObject Godot.NativeCalls.godot_icall_1_637(nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:5527)
+       [2] Godot.ImageTexture Godot.ImageTexture.CreateFromImage(Godot.Image) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/ImageTexture.cs:82)
+       [3] Empire.Presentation.OwnedProceduralSprite Empire.Presentation.OwnedProceduralSprite.Create(Godot.Image, System.Action`1[Empire.Presentation.OwnedProceduralSprite]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/OwnedProceduralSprite.cs:21)
+       [4] Godot.Sprite2D Empire.Presentation.DynamicStateView.Svg(string, string, System.Nullable`1[Godot.Rect2], Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/DynamicStateView.cs:239)
+       [5] Godot.Node2D Empire.Presentation.DynamicStateView.CreateUnitBadges(string, double, bool, double, double, System.Nullable`1[Godot.Vector2]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/DynamicStateView.cs:49)
+       [6] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:387)
+       [7] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [8] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [9] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [10] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: BUG: Unreferenced static string to 0: _exists
+   at: unref (core/string/string_name.cpp:116)
+ERROR: Condition "!script_binding.inited" is true. Returning: { nullptr }
+   at: godotsharp_internal_unmanaged_get_instance_binding_managed (modules/mono/glue/runtime_interop.cpp:250)
+ERROR: BUG: Unreferenced static string to 0: _recognize_path
+   at: unref (core/string/string_name.cpp:116)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeInterop.InteropUtils.UnmanagedGetManaged(nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/InteropUtils.cs:35)
+       [1] Godot.GodotObject Godot.NativeCalls.godot_icall_1_637(nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:5527)
+       [2] Godot.ImageTexture Godot.ImageTexture.CreateFromImage(Godot.Image) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/ImageTexture.cs:82)
+       [3] Empire.Presentation.OwnedProceduralSprite Empire.Presentation.OwnedProceduralSprite.Create(Godot.Image, System.Action`1[Empire.Presentation.OwnedProceduralSprite]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/OwnedProceduralSprite.cs:21)
+       [4] Godot.Sprite2D Empire.Presentation.DynamicStateView.Svg(string, string, System.Nullable`1[Godot.Rect2], Empire.Presentation.ShadowCache) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/DynamicStateView.cs:239)
+       [5] Godot.Node2D Empire.Presentation.DynamicStateView.CreateUnitBadges(string, double, bool, double, double, System.Nullable`1[Godot.Vector2]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/DynamicStateView.cs:49)
+       [6] void Empire.Presentation.BoardView.RenderState(System.Text.Json.Nodes.JsonObject, System.Collections.Generic.IReadOnlySet`1[System.Int32]) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:387)
+       [7] void SouthernSupplyOriginalProbe._Ready() (/workspace/scratch/84c9fe948755/c07-static-preview/SouthernSupplyOriginalProbe.cs:14)
+       [8] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [9] bool SouthernSupplyOriginalProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/SouthernSupplyOriginalProbe_ScriptMethods.generated.cs:38)
+       [10] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Pages in use exist at exit in PagedAllocator: N10StringName5_DataE
+   at: ~PagedAllocator (./core/templates/paged_allocator.h:169)
+ERROR: Parameter "classinfo" is null.
+   at: setup_csharp_script_binding (modules/mono/csharp_script.cpp:1160)
+ERROR: Condition "!script_binding.inited" is true. Returning: { nullptr }
+   at: godotsharp_internal_unmanaged_instance_binding_create_managed (modules/mono/glue/runtime_interop.cpp:263)
+ERROR: FATAL: Condition "!rc_owner" is true.
+   at: _instance_binding_reference_callback (modules/mono/csharp_script.cpp:1266)

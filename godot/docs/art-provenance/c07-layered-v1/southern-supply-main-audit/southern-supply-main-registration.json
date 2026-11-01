@@ -1,0 +1,53 @@
+{
+  "scope": "Candidate main-body only. No original awning, shelves, bales or foot ownership merged. No rule/action changes. Site differs from physical anchor.",
+  "sourceImage": "res://assets/native/scenes/luojia.png",
+  "sourceSha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+  "selectedAsset": "southern-supply-main-v1",
+  "candidateFeetPixels": [
+    [
+      262,
+      680
+    ],
+    [
+      834,
+      1013
+    ],
+    [
+      1278,
+      837
+    ]
+  ],
+  "candidateSourceContact": [
+    1240,
+    774
+  ],
+  "scale": 0.175,
+  "originalVisibleNearCornerApprox": [
+    1240,
+    774
+  ],
+  "originalNearCornerUncertaintyPixels": 2,
+  "hiddenLeftAndRightFeet": "reconstructed candidate geometry; original obscured by canvas/rack/cargo, NOT asserted original coordinates",
+  "semanticSite": [
+    70,
+    50
+  ],
+  "approach": [
+    70,
+    51
+  ],
+  "legacyFrontNotPhysicalProof": [
+    1259,
+    781
+  ],
+  "legacyFoundationResponsibilityCells": 60,
+  "foundationAcceptance": "pending per-cell attribution; body alone is not assumed owner of all 60 painted assembly foundation samples",
+  "transparency": "Generated RGBA preserved. Displayed surrounding dark RGB mostly has alpha 0; no threshold removal performed. Actual scene must check residual exterior alpha.",
+  "failedCandidates": [
+    "exec-26266108-a270-45b0-a45d-e24424d1511a.png",
+    "exec-a84d8d98-157f-4f56-bca5-c32dbac72d35.png"
+  ],
+  "selectedGeneration": "exec-34038ee4-a7c4-46a3-9706-61760e7f4958.png",
+  "method": "Built-in image_gen; extraction then wall-height correction. Door and hidden foundation reconstructed, not pixel recovery.",
+  "supportMethod": "8px local span actual solid base texel boundary, offline witness/export; 192 runtime strips sole current support owner. First ideal-line candidate produced foot clipping and is excluded."
+}

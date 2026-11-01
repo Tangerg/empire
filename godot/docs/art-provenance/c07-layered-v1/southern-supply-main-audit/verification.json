@@ -1,0 +1,50 @@
+{
+  "scope": "Pure static selected main-body candidate only; no battle commands or C06/C07 play.",
+  "positive": "SOUTHERN_SUPPLY_MAIN_STATIC_COMPLETE",
+  "actualRoleOverlapCounts": [
+    95,
+    145,
+    140,
+    603
+  ],
+  "actualRoleWrongOrder": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "realFootWitnesses": 128,
+  "realFootClipped": 0,
+  "approachPixelCentres": 256,
+  "approachCovered": 0,
+  "negativeCases": [
+    {
+      "case": "flat-front",
+      "exit": 1,
+      "targetAssertion": "Southern supply actual-role main local depth contract failed",
+      "wrongFrontSamples": 140,
+      "validMaterialAndDoor": true
+    },
+    {
+      "case": "old-foot-line",
+      "exit": 1,
+      "targetAssertion": "Southern supply visible foundation foot must not be clipped by ground",
+      "clippedFootSamples": 80,
+      "otherRolesAndDoorPassed": true
+    },
+    {
+      "case": "background",
+      "exit": 1,
+      "targetAssertion": "Southern supply independent door/site/approach contract failed",
+      "classification": "Door sunk behind ground. NOT counted as a targeted back-role rejection; that assertion was not reached."
+    }
+  ],
+  "externalBuild": "passed 0 warnings/errors",
+  "productionBuild": "passed 0 warnings/errors",
+  "metadata": "passed:149 unique script UIDs, indexed companions,1589 ignored audit files",
+  "noBroadGameplayRunner": true,
+  "priorDefinitionsExact": 24,
+  "officialSceneUnchanged": true,
+  "pausedTrueSaveHashesEqual": 6,
+  "frameRate": "not measured/not passed"
+}
