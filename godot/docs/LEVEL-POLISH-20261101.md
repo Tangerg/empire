@@ -82,3 +82,46 @@ Validation and final GUI results are recorded below when complete.
   exclusive fullscreen were not available for verification. The preflight uses
   the pinned engine's screen/usable-area/decoration APIs; no desktop resolution,
   global scaling setting or fullscreen mode is changed by the application.
+
+## Batch 2: C02 observed framing and objective-paper obstruction
+
+Before independent-material adoption, actual C02 entry-fixture inspection exposed
+an avoidable 108px blank strip on the left while the right of the map was cropped.
+The initial focus hit scroll zero, exposing scene padding. Registered authored
+maps now constrain **first framing only** to their ground bounds on each axis that
+already covers the viewport. Initial 1.25 zoom is unchanged; later dragging,
+edge-reveal space and resize behavior remain unchanged. This is not fitting the
+whole map by shrinking actors. Maps smaller than the viewport are not enlarged.
+
+The objective disclosure already existed, but collapsing it hid text while its
+paper and pointer-blocking Control retained a 102px default height. The collapsed
+paper now uses its actual title/inset height, releasing the vacant map region;
+expansion restores the original minimum or full wrapped content. Keyboard focus
+also now uses dark text and a brown outline on paper instead of near-white text.
+No new feature, gameplay change or automatic objective hiding was added.
+
+Actual C02 entry uses a clearly labeled fixture: a controlled earlier C01 outcome
+allows loading canonical C02 at its opening turn. `NativeCapture` accepts the
+explicit `--level-entry-fixture` flag to mark both viewport and native title. This
+is not a claim of continuous campaign completion or a C02 victory. Reference
+manual save stayed byte-identical during visual review.
+
+Evidence: `c02-opening-FIXTURE-before-1180.jpg` versus
+`c02-opening-FIXTURE-after-1180.jpg`; `c02-objectives-collapsed-before-1180.jpg`
+versus `c02-objectives-collapsed-after-1180.jpg`. The latter releases the actual
+northeast archer; clicking it displays its 78/78 inspection card in
+`c02-exposed-enemy-picked-1180.jpg`. Space on the retained disclosure focus
+reopens objectives without executing an order. These images still use the
+original production C02 artwork, not the newly generated material candidates.
+
+Concentrated checks: native camera **32**, HUD **256**, camera screen integration
+**277**, campaign UI **200**. Build has zero warnings/errors. The HUD harness retains
+its known duplicate NotifyMouseEntered warnings, but no engine errors/leaks.
+Small-window final GUI and publication are recorded with this batch's completion.
+
+Final 960×640 native review: full objective text remains readable when expanded;
+click and consecutive Space presses collapse/reopen it, retaining the dark-text
+focus outline without issuing any order (`c02-collapsed-keyboard-final-960.jpg`).
+The reproducible source of the marked opening fixture is
+`tools/godot/c02-entry-fixture/`; generated output is isolated and not a game save
+committed as actual progress. Metadata and whitespace checks passed.

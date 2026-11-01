@@ -1,0 +1,32 @@
+using Empire.Checks;
+using Empire.Application;
+using Empire.Core.Engine;
+using Empire.Core.Lifecycle;
+using System.Text.Json.Nodes;
+if (args.Length != 3) throw new ArgumentException("Usage: C02EntryFixture <repository> <catalog.json> <output-FIXTURE.json>");
+var root = args[0];
+JsonNode Read(string path) => JsonNode.Parse(File.ReadAllText(Path.Combine(root, path)))!;
+var engine = new BattleEngine(Read("godot/data/content-packs.json").AsArray());
+var text = FixtureText.Load(args[1]);
+var presentation = FixtureBattleText.Session(root, engine, text);
+var campaign = new GrayFlagCampaign(new(engine, presentation), Read("godot/data/grayflag-campaign.json").AsObject(), Read("godot/data/grayflag-campaign-levels.json").AsArray());
+void ToBattle() { while (campaign.Node()["type"]!.GetValue<string>() != "battle") { if (campaign.Node()["type"]!.GetValue<string>() == "choice") campaign.Choose(campaign.Choices()[0]!["id"]!.GetValue<string>()); else campaign.Advance(); } }
+ToBattle();
+campaign.BeginBattle();
+// Explicit controlled C01 terminal fixture for C02 entry. NOT a played victory.
+var document = campaign.Save();
+var terminal = campaign.Battle!.Snapshot();
+var conclusion = BattleConclusion.LastTeamRemaining(1);
+foreach (var player in terminal["players"]!.AsArray().OfType<JsonObject>()) player["alive"] = player["team"]!.GetValue<int>() == conclusion.Team;
+terminal["phase"] = "over";
+terminal["conclusion"] = conclusion.ToJson();
+terminal["scenario"]!["eventCounts"]!["gameOver"] = 1;
+document["battle"] = engine.SaveBattle(terminal);
+document["events"] = new JsonArray(new JsonObject { ["type"] = "gameOver", ["conclusion"] = conclusion.ToJson() });
+campaign.Load(document);
+campaign.FinishBattle();
+ToBattle();
+campaign.BeginBattle();
+if (campaign.Battle!.Snapshot()["levelId"]!.GetValue<string>() != "c01-02") throw new Exception("Wrong fixture level");
+File.WriteAllText(args[2], campaign.Save().ToJsonString());
+Console.WriteLine("C02 INITIAL FIXTURE: controlled C01 outcome; canonical C02 unchanged; no C02 action or turn skipped.");

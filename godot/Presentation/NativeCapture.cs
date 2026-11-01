@@ -50,6 +50,16 @@ public partial class NativeCapture : Node
                 await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
                 await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             }
+            if (OS.GetCmdlineUserArgs().Contains("--level-entry-fixture"))
+            {
+                var marker = new Label { Text = "关卡入场夹具 · 非连续通关", Position = new Vector2(340, 64), ZIndex = 4096 };
+                marker.AddThemeFontSizeOverride("font_size", 14);
+                marker.AddThemeColorOverride("font_color", Colors.White);
+                marker.AddThemeColorOverride("font_shadow_color", Colors.Black);
+                marker.AddThemeConstantOverride("shadow_outline_size", 4);
+                AddChild(marker);
+                GetWindow().Title = "Empire LEVEL ENTRY FIXTURE — canonical battle, controlled prior outcome";
+            }
             Capture();
         }
         catch (Exception error)

@@ -376,6 +376,24 @@ public partial class TacticalHudChecks : Node
             var goal = ((VBoxContainer)hud.FindChild("objectives", true, false)).GetNode<VBoxContainer>("Content").GetChildren().OfType<HBoxContainer>().Single().GetChildren().OfType<Label>().Single();
             Require(goal.GetLineCount() > 1 && goal.GetGlobalRect().End.X <= host.GetGlobalRect().End.X,
                 "Long objectives wrap within the narrow and wide native panel, rather than clipping horizontally.");
+            var objectiveGroup = (VBoxContainer)hud.FindChild("objectives", true, false);
+            var objectivePlate = (Control)hud.FindChild("objectivesPlate", true, false);
+            var objectiveToggle = objectiveGroup.GetChildren().OfType<Button>().Single();
+            var expandedBottom = objectivePlate.GetGlobalRect().End.Y;
+            Require(objectiveToggle.GetThemeColor("font_focus_color") == new Color("#453921"), "Keyboard-focused objective text must remain dark on the light paper.");
+            objectiveToggle.GrabFocus();
+            objectiveToggle.ButtonPressed = false;
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Require(objectivePlate.Size.Y < 60 && objectivePlate.GetGlobalRect().End.Y < expandedBottom - 30,
+                "Collapsed objectives must release their paper and pointer-blocking rectangle, not just hide text.");
+            Require(!objectiveGroup.GetNode<VBoxContainer>("Content").Visible && objectiveToggle.HasFocus(),
+                "Objective collapse lost the accessible disclosure focus or left content visible.");
+            objectiveToggle.ButtonPressed = true;
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Require(objectiveGroup.GetNode<VBoxContainer>("Content").Visible && objectivePlate.GetGlobalRect().End.Y >= expandedBottom
+                && objectiveToggle.HasFocus(), "Reopening objectives failed to restore full text and focus.");
             var unitCard = (Control)hud.FindChild("unit", true, false);
             var prediction = (Control)hud.FindChild("forecast", true, false);
             Require(unitCard.GetGlobalRect().Position.Y >= 500 && prediction.GetGlobalRect().Position.Y >= 514 && prediction.GetGlobalRect().End.Y <= 632,

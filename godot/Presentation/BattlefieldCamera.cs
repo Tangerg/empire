@@ -19,11 +19,12 @@ public sealed class BattlefieldCamera
     private readonly CameraPoint fieldSize;
     private readonly CameraInsets sceneInsets;
     private readonly CameraPoint initialFocus;
+    private readonly bool frameInitialGround;
     private CameraPoint viewport;
     private CameraInsets padding;
     private double pendingZoom;
 
-    public BattlefieldCamera(CameraPoint fieldSize, CameraInsets sceneInsets, CameraPoint initialFocus)
+    public BattlefieldCamera(CameraPoint fieldSize, CameraInsets sceneInsets, CameraPoint initialFocus, bool frameInitialGround = false)
     {
         RequirePoint(fieldSize, nameof(fieldSize));
         if (fieldSize.X <= 0 || fieldSize.Y <= 0)
@@ -33,6 +34,7 @@ public sealed class BattlefieldCamera
         this.fieldSize = fieldSize;
         this.sceneInsets = sceneInsets;
         this.initialFocus = initialFocus;
+        this.frameInitialGround = frameInitialGround;
     }
 
     public double Zoom { get; private set; } = InitialZoom;
@@ -74,6 +76,15 @@ public sealed class BattlefieldCamera
         {
             HasViewport = true;
             CenterOn(initialFocus);
+            if (frameInitialGround)
+            {
+                // Registered ground can cover the viewport without exposing scene padding.
+                // Correct only first framing, never shrink actors or limit later edge panning.
+                var origin = FieldOrigin;
+                var x = fieldSize.X * Zoom >= viewport.X ? Math.Clamp(origin.X, viewport.X - fieldSize.X * Zoom, 0) : origin.X;
+                var y = fieldSize.Y * Zoom >= viewport.Y ? Math.Clamp(origin.Y, viewport.Y - fieldSize.Y * Zoom, 0) : origin.Y;
+                ScrollTo(new(Scroll.X + origin.X - x, Scroll.Y + origin.Y - y));
+            }
         }
     }
 

@@ -216,6 +216,8 @@ public partial class TacticalHud : Control
                 {
                     toggle.AddThemeColorOverride("font_color", new Color("#453921"));
                     toggle.AddThemeColorOverride("font_pressed_color", new Color("#453921"));
+                    toggle.AddThemeColorOverride("font_focus_color", new Color("#453921"));
+                    toggle.AddThemeStyleboxOverride("focus", TacticalHudStyle.Panel("#00000000", 2, "#795a2b"));
                     toggle.AddThemeStyleboxOverride("normal", TacticalHudStyle.Panel("#00000000", 2, "#00000000"));
                     toggle.AddThemeStyleboxOverride("pressed", TacticalHudStyle.Panel("#00000000", 2, "#00000000"));
                 }
@@ -553,7 +555,13 @@ public partial class TacticalHud : Control
         panel.AddChild(inset);
         inset.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         inset.AddChild(content);
-        void FitHeight() => panel.CustomMinimumSize = new Vector2(0, inset.GetCombinedMinimumSize().Y);
+        void FitHeight()
+        {
+            var minimum = inset.GetCombinedMinimumSize().Y;
+            panel.CustomMinimumSize = new Vector2(0, minimum);
+            if (content.Name == "objectives")
+                panel.OffsetBottom = y1 + Math.Max(minimum, expanded.Contains("objectives") ? y2 - y1 : 0);
+        }
         inset.MinimumSizeChanged += FitHeight;
         FitHeight();
     }

@@ -15,12 +15,32 @@ public partial class CameraChecks : Node
         try
         {
             CheckWorldTransform();
+            CheckRegisteredOpening();
             CheckGestureTransform();
             CheckFollow();
             GD.Print($"Native camera checks passed: {assertions} assertions.");
             GetTree().Quit();
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
+    }
+
+    private void CheckRegisteredOpening()
+    {
+        var camera = new BattlefieldCamera(new(1672 * .65, 941 * .65), new(74, 62, 74, 74), new(300, 350), frameInitialGround: true);
+        camera.Resize(new(1180, 760), new(16, 110, 16, 134));
+        Require(camera.Zoom == BattlefieldCamera.InitialZoom, "Registered opening must not shrink actors to fit.");
+        Require(camera.FieldOrigin.X <= 0 && camera.FieldOrigin.X + 1672 * .65 * camera.Zoom >= 1180,
+            "Registered opening left avoidable horizontal blank margin while cropping the opposite side.");
+        Require(camera.FieldOrigin.Y <= 0 && camera.FieldOrigin.Y + 941 * .65 * camera.Zoom >= 760,
+            "Registered opening left avoidable vertical blank margin.");
+        camera.Pan(new(10000, 10000));
+        var edge = camera.FieldOrigin;
+        Require(edge.X > 0 && edge.Y > 0, "Initial framing must not remove edge panning space below HUD.");
+        camera.Resize(new(1180, 760), new(16, 110, 16, 134));
+        Require(camera.FieldOrigin == edge, "Later layout unexpectedly re-centered the user's camera.");
+        camera.Reveal(new(0, 0), 20);
+        Require(camera.FieldOrigin.X >= 16 && camera.FieldOrigin.Y >= 110,
+            "Boundary actors cannot be revealed inside the HUD-safe area.");
     }
 
     private void CheckWorldTransform()

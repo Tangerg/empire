@@ -241,7 +241,8 @@ public partial class BattleScreen : Control
                 throw new InvalidOperationException("Authored opening focus must identify one playable canonical cell.");
             focus = CellCenter(new CameraPoint(opening[0], opening[1]));
         }
-        _camera = new BattlefieldCamera(new(_board.FieldSize.X, _board.FieldSize.Y), new(74, 62, 74, 74), focus);
+        _camera = new BattlefieldCamera(new(_board.FieldSize.X, _board.FieldSize.Y), new(74, 62, 74, 74), focus,
+            frameInitialGround: authoredScene.PaintedGroundPath is not null || authoredScene.AssembledGroundPath is not null);
         _gestures = new BattlefieldGestures(new(ProjectMapPoint, PressField, HoverField, () => HoverField(null), delta => { _camera?.Pan(delta); ApplyCamera(); }, notches => QueueZoom(notches * .1)));
         ResizeCamera();
     }
