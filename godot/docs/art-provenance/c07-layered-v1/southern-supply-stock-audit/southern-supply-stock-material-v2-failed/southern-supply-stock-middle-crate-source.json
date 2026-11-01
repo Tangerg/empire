@@ -1,0 +1,168 @@
+{
+  "id": "middle-crate",
+  "namePrefix": "SouthernSupplyMiddleCrate",
+  "textureResourcePath": "res://assets/native/c07-layered-v1/granary-grain-bin-v1-candidate.png",
+  "scope": "Authored closed crate within original cargo responsibility region. No original hidden-foot accuracy claim.",
+  "supportLine": [
+    [
+      1131,
+      774
+    ],
+    [
+      1132,
+      774
+    ],
+    [
+      1155,
+      785
+    ],
+    [
+      1174,
+      774
+    ],
+    [
+      1175,
+      774
+    ]
+  ],
+  "members": [
+    {
+      "id": "left-face",
+      "polygon": [
+        [
+          1132,
+          744
+        ],
+        [
+          1155,
+          755
+        ],
+        [
+          1155,
+          785
+        ],
+        [
+          1132,
+          774
+        ]
+      ],
+      "uv": [
+        [
+          220,
+          780
+        ],
+        [
+          360,
+          850
+        ],
+        [
+          360,
+          890
+        ],
+        [
+          220,
+          820
+        ]
+      ],
+      "tint": "b7a084"
+    },
+    {
+      "id": "right-face",
+      "polygon": [
+        [
+          1155,
+          755
+        ],
+        [
+          1174,
+          744
+        ],
+        [
+          1174,
+          774
+        ],
+        [
+          1155,
+          785
+        ]
+      ],
+      "uv": [
+        [
+          600,
+          810
+        ],
+        [
+          760,
+          750
+        ],
+        [
+          760,
+          790
+        ],
+        [
+          600,
+          850
+        ]
+      ],
+      "tint": "d1b799"
+    },
+    {
+      "id": "top-wood-lid-new-stock",
+      "polygon": [
+        [
+          1132,
+          744
+        ],
+        [
+          1151,
+          730
+        ],
+        [
+          1174,
+          744
+        ],
+        [
+          1155,
+          755
+        ]
+      ],
+      "uv": [
+        [
+          600,
+          810
+        ],
+        [
+          760,
+          750
+        ],
+        [
+          760,
+          790
+        ],
+        [
+          600,
+          850
+        ]
+      ],
+      "tint": "d0b28d"
+    }
+  ],
+  "footprint": [
+    [
+      1132,
+      774
+    ],
+    [
+      1155,
+      785
+    ],
+    [
+      1174,
+      774
+    ],
+    [
+      1151,
+      760
+    ]
+  ]
+}

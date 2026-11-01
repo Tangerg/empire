@@ -1,0 +1,516 @@
+{
+  "scope": "UNBOUND three independent door-front containers; no newly reproduced rear-role bug claimed. Preserve actual C07 front actor and full entry strip.",
+  "containers": [
+    {
+      "scope": "New reasonable rear closed crate; original rear foot hidden by low front containers, no certified original-foot claim",
+      "textureResourcePath": "res://assets/native/c07-layered-v1/granary-grain-bin-v1-candidate.png",
+      "namePrefix": "GranaryStockRearColumn",
+      "members": [
+        {
+          "id": "left-face",
+          "polygon": [
+            [
+              522,
+              188
+            ],
+            [
+              530,
+              194
+            ],
+            [
+              530,
+              214
+            ],
+            [
+              522,
+              207
+            ]
+          ],
+          "uv": [
+            [
+              200,
+              770
+            ],
+            [
+              375,
+              860
+            ],
+            [
+              375,
+              940
+            ],
+            [
+              200,
+              850
+            ]
+          ],
+          "tint": "b7a084"
+        },
+        {
+          "id": "right-face",
+          "polygon": [
+            [
+              530,
+              194
+            ],
+            [
+              542,
+              188
+            ],
+            [
+              542,
+              208
+            ],
+            [
+              530,
+              214
+            ]
+          ],
+          "uv": [
+            [
+              565,
+              838
+            ],
+            [
+              800,
+              757
+            ],
+            [
+              800,
+              821
+            ],
+            [
+              565,
+              905
+            ]
+          ],
+          "tint": "d1b799"
+        },
+        {
+          "id": "top-wood-lid-new-stock",
+          "polygon": [
+            [
+              522,
+              188
+            ],
+            [
+              531,
+              184
+            ],
+            [
+              542,
+              188
+            ],
+            [
+              530,
+              194
+            ]
+          ],
+          "uv": [
+            [
+              565,
+              838
+            ],
+            [
+              800,
+              757
+            ],
+            [
+              800,
+              821
+            ],
+            [
+              565,
+              905
+            ]
+          ],
+          "tint": "d0b28d"
+        }
+      ],
+      "supportLine": [
+        [
+          521,
+          207
+        ],
+        [
+          522,
+          207
+        ],
+        [
+          530,
+          214
+        ],
+        [
+          542,
+          208
+        ],
+        [
+          543,
+          208
+        ]
+      ],
+      "pointer": "pass-through",
+      "newSiteOwner": false
+    },
+    {
+      "scope": "Original low left front contact513219 retained; other corners/new grain contents are bounded stock design, not plant identity recovery",
+      "textureResourcePath": "res://assets/native/c07-layered-v1/granary-grain-bin-v1-candidate.png",
+      "namePrefix": "GranaryStockLeftColumn",
+      "members": [
+        {
+          "id": "left-face",
+          "polygon": [
+            [
+              501,
+              201
+            ],
+            [
+              513,
+              206
+            ],
+            [
+              513,
+              219
+            ],
+            [
+              501,
+              213
+            ]
+          ],
+          "uv": [
+            [
+              200,
+              770
+            ],
+            [
+              375,
+              860
+            ],
+            [
+              375,
+              940
+            ],
+            [
+              200,
+              850
+            ]
+          ],
+          "tint": "b7a084"
+        },
+        {
+          "id": "right-face",
+          "polygon": [
+            [
+              513,
+              206
+            ],
+            [
+              523,
+              201
+            ],
+            [
+              523,
+              214
+            ],
+            [
+              513,
+              219
+            ]
+          ],
+          "uv": [
+            [
+              565,
+              838
+            ],
+            [
+              800,
+              757
+            ],
+            [
+              800,
+              821
+            ],
+            [
+              565,
+              905
+            ]
+          ],
+          "tint": "d1b799"
+        },
+        {
+          "id": "top-grain-new-stock",
+          "polygon": [
+            [
+              501,
+              201
+            ],
+            [
+              511,
+              196
+            ],
+            [
+              523,
+              201
+            ],
+            [
+              513,
+              206
+            ]
+          ],
+          "uv": [
+            [
+              520,
+              687
+            ],
+            [
+              800,
+              548
+            ],
+            [
+              1040,
+              580
+            ],
+            [
+              750,
+              735
+            ]
+          ],
+          "tint": "c3ad86"
+        }
+      ],
+      "supportLine": [
+        [
+          500,
+          213
+        ],
+        [
+          501,
+          213
+        ],
+        [
+          513,
+          219
+        ],
+        [
+          523,
+          214
+        ],
+        [
+          524,
+          214
+        ]
+      ],
+      "pointer": "pass-through",
+      "newSiteOwner": false
+    },
+    {
+      "scope": "Original low right front contact541218 retained;535215 remains its own wood side, never main-house support",
+      "textureResourcePath": "res://assets/native/c07-layered-v1/granary-grain-bin-v1-candidate.png",
+      "namePrefix": "GranaryStockRightColumn",
+      "members": [
+        {
+          "id": "left-face",
+          "polygon": [
+            [
+              532,
+              201
+            ],
+            [
+              541,
+              206
+            ],
+            [
+              541,
+              218
+            ],
+            [
+              532,
+              214
+            ]
+          ],
+          "uv": [
+            [
+              200,
+              770
+            ],
+            [
+              375,
+              860
+            ],
+            [
+              375,
+              940
+            ],
+            [
+              200,
+              850
+            ]
+          ],
+          "tint": "b7a084"
+        },
+        {
+          "id": "right-face",
+          "polygon": [
+            [
+              541,
+              206
+            ],
+            [
+              553,
+              201
+            ],
+            [
+              553,
+              214
+            ],
+            [
+              541,
+              218
+            ]
+          ],
+          "uv": [
+            [
+              565,
+              838
+            ],
+            [
+              800,
+              757
+            ],
+            [
+              800,
+              821
+            ],
+            [
+              565,
+              905
+            ]
+          ],
+          "tint": "d1b799"
+        },
+        {
+          "id": "top-wood-lid-new-stock",
+          "polygon": [
+            [
+              532,
+              201
+            ],
+            [
+              544,
+              196
+            ],
+            [
+              553,
+              201
+            ],
+            [
+              541,
+              206
+            ]
+          ],
+          "uv": [
+            [
+              565,
+              838
+            ],
+            [
+              800,
+              757
+            ],
+            [
+              800,
+              821
+            ],
+            [
+              565,
+              905
+            ]
+          ],
+          "tint": "d0b28d"
+        }
+      ],
+      "supportLine": [
+        [
+          531,
+          214
+        ],
+        [
+          532,
+          214
+        ],
+        [
+          541,
+          218
+        ],
+        [
+          553,
+          214
+        ],
+        [
+          554,
+          214
+        ]
+      ],
+      "pointer": "pass-through",
+      "newSiteOwner": false
+    }
+  ],
+  "materialPositives": [
+    [
+      513,
+      219
+    ],
+    [
+      541,
+      218
+    ],
+    [
+      535,
+      215
+    ],
+    [
+      539,
+      211
+    ]
+  ],
+  "materialNegatives": [
+    [
+      513,
+      220
+    ],
+    [
+      541,
+      220
+    ],
+    [
+      536,
+      232
+    ],
+    [
+      552,
+      232
+    ],
+    [
+      568,
+      232
+    ],
+    [
+      584,
+      232
+    ]
+  ],
+  "entryStripSourceBounds": [
+    528,
+    224,
+    592,
+    240
+  ],
+  "selection": [
+    35,
+    14
+  ],
+  "approach": [
+    36,
+    14
+  ]
+}

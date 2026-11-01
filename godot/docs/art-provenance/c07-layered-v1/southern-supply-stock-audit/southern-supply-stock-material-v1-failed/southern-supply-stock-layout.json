@@ -1,0 +1,373 @@
+{
+  "scope": "Three bounded cargo instances for previously missing main-body foundation responsibilities. Other racks/left stacks/scenery still absent.",
+  "boxes": [
+    {
+      "id": "middle-crate",
+      "namePrefix": "SouthernSupplyMiddleCrate",
+      "textureResourcePath": "res://assets/native/c07-layered-v1/granary-grain-bin-v1-candidate.png",
+      "scope": "Authored closed crate within original cargo responsibility region. No original hidden-foot accuracy claim.",
+      "supportLine": [
+        [
+          1131,
+          774
+        ],
+        [
+          1132,
+          774
+        ],
+        [
+          1155,
+          785
+        ],
+        [
+          1174,
+          774
+        ],
+        [
+          1175,
+          774
+        ]
+      ],
+      "members": [
+        {
+          "id": "left-face",
+          "polygon": [
+            [
+              1132,
+              744
+            ],
+            [
+              1155,
+              755
+            ],
+            [
+              1155,
+              785
+            ],
+            [
+              1132,
+              774
+            ]
+          ],
+          "uv": [
+            [
+              200,
+              770
+            ],
+            [
+              375,
+              860
+            ],
+            [
+              375,
+              940
+            ],
+            [
+              200,
+              850
+            ]
+          ],
+          "tint": "b7a084"
+        },
+        {
+          "id": "right-face",
+          "polygon": [
+            [
+              1155,
+              755
+            ],
+            [
+              1174,
+              744
+            ],
+            [
+              1174,
+              774
+            ],
+            [
+              1155,
+              785
+            ]
+          ],
+          "uv": [
+            [
+              565,
+              838
+            ],
+            [
+              800,
+              757
+            ],
+            [
+              800,
+              821
+            ],
+            [
+              565,
+              905
+            ]
+          ],
+          "tint": "d1b799"
+        },
+        {
+          "id": "top-wood-lid-new-stock",
+          "polygon": [
+            [
+              1132,
+              744
+            ],
+            [
+              1151,
+              730
+            ],
+            [
+              1174,
+              744
+            ],
+            [
+              1155,
+              755
+            ]
+          ],
+          "uv": [
+            [
+              565,
+              838
+            ],
+            [
+              800,
+              757
+            ],
+            [
+              800,
+              821
+            ],
+            [
+              565,
+              905
+            ]
+          ],
+          "tint": "d0b28d"
+        }
+      ],
+      "footprint": [
+        [
+          1132,
+          774
+        ],
+        [
+          1155,
+          785
+        ],
+        [
+          1174,
+          774
+        ],
+        [
+          1151,
+          760
+        ]
+      ]
+    },
+    {
+      "id": "east-crate",
+      "namePrefix": "SouthernSupplyEastCrate",
+      "textureResourcePath": "res://assets/native/c07-layered-v1/granary-grain-bin-v1-candidate.png",
+      "scope": "Authored closed crate within original cargo responsibility region. No original hidden-foot accuracy claim.",
+      "supportLine": [
+        [
+          1245,
+          786
+        ],
+        [
+          1246,
+          786
+        ],
+        [
+          1268,
+          796
+        ],
+        [
+          1285,
+          787
+        ],
+        [
+          1286,
+          787
+        ]
+      ],
+      "members": [
+        {
+          "id": "left-face",
+          "polygon": [
+            [
+              1246,
+              768
+            ],
+            [
+              1268,
+              778
+            ],
+            [
+              1268,
+              796
+            ],
+            [
+              1246,
+              786
+            ]
+          ],
+          "uv": [
+            [
+              200,
+              770
+            ],
+            [
+              375,
+              860
+            ],
+            [
+              375,
+              940
+            ],
+            [
+              200,
+              850
+            ]
+          ],
+          "tint": "b7a084"
+        },
+        {
+          "id": "right-face",
+          "polygon": [
+            [
+              1268,
+              778
+            ],
+            [
+              1285,
+              769
+            ],
+            [
+              1285,
+              787
+            ],
+            [
+              1268,
+              796
+            ]
+          ],
+          "uv": [
+            [
+              565,
+              838
+            ],
+            [
+              800,
+              757
+            ],
+            [
+              800,
+              821
+            ],
+            [
+              565,
+              905
+            ]
+          ],
+          "tint": "d1b799"
+        },
+        {
+          "id": "top-wood-lid-new-stock",
+          "polygon": [
+            [
+              1246,
+              768
+            ],
+            [
+              1266,
+              759
+            ],
+            [
+              1285,
+              769
+            ],
+            [
+              1268,
+              778
+            ]
+          ],
+          "uv": [
+            [
+              565,
+              838
+            ],
+            [
+              800,
+              757
+            ],
+            [
+              800,
+              821
+            ],
+            [
+              565,
+              905
+            ]
+          ],
+          "tint": "d0b28d"
+        }
+      ],
+      "footprint": [
+        [
+          1246,
+          786
+        ],
+        [
+          1268,
+          796
+        ],
+        [
+          1285,
+          787
+        ],
+        [
+          1266,
+          777
+        ]
+      ]
+    }
+  ],
+  "bales": {
+    "id": "southern-supply-right-bales",
+    "assetId": "granary-large-grain-v1",
+    "contactSource": [
+      1196,
+      780
+    ],
+    "scale": 0.035
+  },
+  "requiredPreviouslyUncoveredCells": [
+    [
+      72,
+      46
+    ],
+    [
+      73,
+      47
+    ],
+    [
+      74,
+      47
+    ],
+    [
+      79,
+      48
+    ]
+  ],
+  "originalCargoGroups": [
+    "supply-middle-crate-stack-base",
+    "supply-right-grain-stack-base",
+    "supply-east-sack-crate-ground"
+  ]
+}

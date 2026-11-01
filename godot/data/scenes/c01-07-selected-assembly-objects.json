@@ -7792,6 +7792,32 @@
       ],
       "surfaceGeometryPath": "res://data/scenes/c01-07-southern-supply-canopy-rear-post-surface.json",
       "contactShadowRadiiPixels": null
+    },
+    "southern-supply-stock-middle-crate": {
+      "resourcePath": "res://assets/native/c07-layered-v1/granary-grain-bin-v1-candidate.png",
+      "pixelSize": [
+        1335,
+        1178
+      ],
+      "anchorPixels": [
+        0,
+        0
+      ],
+      "contactShadowRadiiPixels": null,
+      "surfaceGeometryPath": "res://data/scenes/c01-07-southern-supply-stock-middle-crate-surface.json"
+    },
+    "southern-supply-stock-east-crate": {
+      "resourcePath": "res://assets/native/c07-layered-v1/granary-grain-bin-v1-candidate.png",
+      "pixelSize": [
+        1335,
+        1178
+      ],
+      "anchorPixels": [
+        0,
+        0
+      ],
+      "contactShadowRadiiPixels": null,
+      "surfaceGeometryPath": "res://data/scenes/c01-07-southern-supply-stock-east-crate-surface.json"
     }
   }
 }

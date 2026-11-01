@@ -1,0 +1,31 @@
+{
+  "staticOnly": true,
+  "instances": 33,
+  "sites": 6,
+  "depthEntries": 2542,
+  "addedSupportNodes": 245,
+  "actualFrontOverlaps": [
+    167,
+    459,
+    350
+  ],
+  "wrongRoleSamples": [
+    0,
+    0,
+    0
+  ],
+  "rearPick": "not covered;84bounded actual poses survey found no rear overlap",
+  "negativeCases": {
+    "missing-cargo": "reached four-contact responsibility assertion",
+    "late-middle-foot": "reached actual front local-depth assertion,167wrong samples"
+  },
+  "excludedNegative": "first late-foot run failed duplicate primitive initialization,NOT valid depth proof",
+  "productionBuild": "passed0warnings0errors",
+  "externalBuild": "passed0warnings0errors",
+  "mainRegression": "passed128feet,4actual-role groups,door/site/approach",
+  "canopyRegression": "passed joints/feet/materials/3actualroles/door/approach",
+  "pausedFilesUnchanged": 6,
+  "finalArt": "NOT passed:dark muddy crate material/frame legibility",
+  "performance": "NOT passed/fullscene not measured",
+  "metadata": "passed149UIDs1759indexedIgnoredAuditFiles"
+}
