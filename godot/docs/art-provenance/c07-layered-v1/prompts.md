@@ -25,3 +25,6 @@ Blue front feet lie in canonical paved cells, but that alone is not a collision
 failure: reviewed actual Torren sole points at the two nearby cells do not land
 on the fixed wood-foot witnesses. Hidden rear base and all motions are not
 certified. No terrain, site selection or current painted C07 contracts change.
+
+## militia-barracks-core-v1-candidate — exec-801381e5-4f99-4fbf-90b1-f16274faff63
+Built-in imagegen, transparent background. Reference1 is original C07 main-whole-raw crop (890,30),305x185. Reference2 is approved faithful-v4 west-house for material/outline only, not front-facing camera or orange roof. Requested one independent blue-gray tiled main barracks core, exact original camera/proportions/arched entrance, warm masonry/timber and dormer. Remove attached lower lean-to complex and all cargo/pots/racks/fence/kiosk/trees/walls/paving. Reconstruct only hidden structural wall, not extra doors or extensions. Preserve source-crop composition; requested4x1220x740 transparent canvas with visible structural contacts near452628(left timber),656572(door right jamb),804568(front wing timber); actual output dimensions must be measured, never assumed. True RGBA silhouette, no shadow backdrop/halo/text/characters. This is an unbound candidate; scalar fit, hidden completion footprint and actual depth are pending.
