@@ -4171,5 +4171,18 @@
     "safeBackgroundRule": "Far forest/cliffs outside reviewed playable boundary can stay baked if not part of an explicit standing group or covering its legal approach. Do not erase all edge trees by rectangular bands.",
     "waterRule": "Retain river surface, shoreline, reeds and inaccessible river-rock scenery unless a specifically identified foreground overlap needs independent depth. No conversion of water to blank snow.",
     "lowFenceRule": "Existing crossable low fences may remain ground detail in the first clean plate if deliberately documented, but do not claim all standing objects separated. No new collision."
-  }
+  },
+  "visualAuditCorrections": [
+    {
+      "id": "south-foreground-rock",
+      "sourceBounds": [
+        814,
+        835,
+        931,
+        930
+      ],
+      "finding": "The original PNG contains snow and southern pine vegetation here, not the named rock. Audit wall ownership is canonical but the physical visual interpretation must be corrected before independent placement. Do not invent a rock solely from the old label.",
+      "status": "open-source-pixel-responsibility-review"
+    }
+  ]
 }

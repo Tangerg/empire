@@ -27,3 +27,15 @@ this negative control and existing objective/cue/save contracts. No-AI route and
 T4/T6/T14 fixtures are explicitly synthetic, not this run's C06 combat completion.
 The GUI is currently occupied by actual C05, so C06 full visual/play acceptance
 is still pending. Source crops and isolated native pixel probes support this fix.
+
+## Unbound materials checkpoint
+
+Two built-in image-generation outputs are saved, not bound: clean ground v1 and
+night slate cottage v1. Ground retains exact 1643x957 canvas but still contains
+five visible audited rock bodies; it is not accepted as a duplicate-free plate.
+The sixth old audit label `south-foreground-rock` has no rock in the original PNG,
+only snow/pines in its ROI. Its 12 canonical wall cells must remain unchanged, but
+visual responsibility must be reviewed instead of fabricating an original rock.
+The night cottage preserves source silhouette approximately; independent alpha
+footing/door registration is still required. Transparent-margin inspected samples
+remain alpha zero despite RGB backdrop color in the generated PNG.
