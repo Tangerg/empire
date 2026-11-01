@@ -1,0 +1,1482 @@
+{
+  "scope": "Static physically classified front support edge for parent existing depthStrips pipeline. No production registration, native pose, GUI, or save change. No new fit tolerance.",
+  "asset": "/workspace/scratch/84c9fe948755/generated_images/exec-ef781f41-36ae-4670-83cd-5948045d1291.png",
+  "actualSize": [
+    1609,
+    977
+  ],
+  "assetSha256": "6eb76b256dca7263f00a2f4633f1ef33ec0ca4178bdad8f23871501f7d262b98",
+  "registrationUsedForSourceNumbers": {
+    "sourceScale": 0.15789473684210353,
+    "sourceTranslation": [
+      912.0526315789486,
+      39.36842105263315
+    ],
+    "mappedContacts": [
+      [
+        1002.526315789474,
+        186.52631578947364
+      ],
+      [
+        1054.473684210526,
+        172.94736842105274
+      ],
+      [
+        1091.4210526315783,
+        172.47368421052644
+      ]
+    ],
+    "residualEachAxis": [
+      [
+        -0.4736842105260166,
+        -0.4736842105263577
+      ],
+      [
+        0.4736842105260166,
+        -0.05263157894725623
+      ],
+      [
+        0.4210526315782772,
+        0.47368421052644294
+      ]
+    ],
+    "maxAbsAxisError": 0.47368421052644294,
+    "ifAnchorFirstContact": {
+      "anchor": [
+        573.0,
+        932.0
+      ],
+      "sourceContact": [
+        1002.526315789474,
+        186.52631578947364
+      ],
+      "canonicalContact": [
+        62.657894736842124,
+        11.657894736842103
+      ],
+      "instanceScale": 0.15789473684210353
+    },
+    "planeWorldScale": 1
+  },
+  "frozenInteriorContactsNotRetuned": [
+    {
+      "identity": "left-front timber structure via its added stone base",
+      "asset": [
+        573,
+        932
+      ],
+      "rgba": [
+        78,
+        62,
+        43,
+        250
+      ],
+      "sourceCorrespondence": [
+        1003,
+        187
+      ],
+      "identification": "Visible solid stone base inner bottom edge. New art adds stone blocks below the wood frames; wood-to-stone seam is not the ground contact."
+    },
+    {
+      "identity": "right stone doorway jamb",
+      "asset": [
+        902,
+        846
+      ],
+      "rgba": [
+        104,
+        84,
+        73,
+        253
+      ],
+      "sourceCorrespondence": [
+        1054,
+        173
+      ],
+      "identification": "Visible solid right portal stone-jamb bottom inner edge."
+    },
+    {
+      "identity": "front-wing timber structure via its added stone base",
+      "asset": [
+        1136,
+        843
+      ],
+      "rgba": [
+        86,
+        66,
+        50,
+        252
+      ],
+      "sourceCorrespondence": [
+        1091,
+        172
+      ],
+      "identification": "Visible solid stone base inner bottom edge. New art adds stone blocks below the wood frames; wood-to-stone seam is not the ground contact."
+    }
+  ],
+  "measurementMethod": "Visually inspect full lower-body material and three enlarged base grids first. Only columns122..1533 are a continuous real wall/stone/wood-threshold base. Within that confirmed domain record outer solid alpha>=200 material/ink edge. Roof-only columns outside are never labeled feet; low-alpha outside noise is excluded. Black outline adds about3\u20134 asset pixels below selected interior stone contact witnesses; those interior landmarks remain unchanged.",
+  "physicalFootSpanInclusive": [
+    122,
+    1533
+  ],
+  "physicalSpanSourceX": [
+    931.3157894736853,
+    1154.1052631578934
+  ],
+  "physicalMaterialSegments": [
+    {
+      "id": "left rear timber base and long left wall",
+      "assetXInclusive": [
+        122,
+        543
+      ]
+    },
+    {
+      "id": "left-front stone support block",
+      "assetXInclusive": [
+        544,
+        603
+      ]
+    },
+    {
+      "id": "main front wall base to left portal jamb",
+      "assetXInclusive": [
+        604,
+        673
+      ]
+    },
+    {
+      "id": "left portal stone jamb protrusion",
+      "assetXInclusive": [
+        674,
+        726
+      ]
+    },
+    {
+      "id": "visible wooden doorway threshold edge",
+      "assetXInclusive": [
+        727,
+        875
+      ]
+    },
+    {
+      "id": "right portal stone jamb protrusion",
+      "assetXInclusive": [
+        876,
+        936
+      ]
+    },
+    {
+      "id": "recessed main wall/inner timber corner",
+      "assetXInclusive": [
+        937,
+        1017
+      ]
+    },
+    {
+      "id": "short wing return wall",
+      "assetXInclusive": [
+        1018,
+        1107
+      ]
+    },
+    {
+      "id": "front-wing stone support block",
+      "assetXInclusive": [
+        1108,
+        1171
+      ]
+    },
+    {
+      "id": "right wing wall plus its projecting timber and terminal stone block",
+      "assetXInclusive": [
+        1172,
+        1533
+      ]
+    }
+  ],
+  "supportPolylinePixels": [
+    [
+      122,
+      688
+    ],
+    [
+      124,
+      691
+    ],
+    [
+      146,
+      704
+    ],
+    [
+      149,
+      705
+    ],
+    [
+      160,
+      701
+    ],
+    [
+      210,
+      729
+    ],
+    [
+      227,
+      737
+    ],
+    [
+      232,
+      741
+    ],
+    [
+      233,
+      751
+    ],
+    [
+      245,
+      759
+    ],
+    [
+      255,
+      763
+    ],
+    [
+      266,
+      758
+    ],
+    [
+      269,
+      758
+    ],
+    [
+      280,
+      765
+    ],
+    [
+      304,
+      777
+    ],
+    [
+      309,
+      781
+    ],
+    [
+      321,
+      786
+    ],
+    [
+      339,
+      797
+    ],
+    [
+      353,
+      803
+    ],
+    [
+      396,
+      826
+    ],
+    [
+      403,
+      831
+    ],
+    [
+      409,
+      833
+    ],
+    [
+      419,
+      840
+    ],
+    [
+      467,
+      866
+    ],
+    [
+      484,
+      877
+    ],
+    [
+      542,
+      908
+    ],
+    [
+      543,
+      909
+    ],
+    [
+      544,
+      920
+    ],
+    [
+      548,
+      924
+    ],
+    [
+      570,
+      935
+    ],
+    [
+      600,
+      926
+    ],
+    [
+      603,
+      922
+    ],
+    [
+      604,
+      912
+    ],
+    [
+      605,
+      911
+    ],
+    [
+      608,
+      911
+    ],
+    [
+      613,
+      908
+    ],
+    [
+      670,
+      889
+    ],
+    [
+      674,
+      889
+    ],
+    [
+      695,
+      900
+    ],
+    [
+      723,
+      892
+    ],
+    [
+      726,
+      889
+    ],
+    [
+      728,
+      879
+    ],
+    [
+      729,
+      878
+    ],
+    [
+      816,
+      854
+    ],
+    [
+      869,
+      837
+    ],
+    [
+      873,
+      837
+    ],
+    [
+      890,
+      846
+    ],
+    [
+      903,
+      850
+    ],
+    [
+      930,
+      842
+    ],
+    [
+      934,
+      840
+    ],
+    [
+      936,
+      837
+    ],
+    [
+      937,
+      808
+    ],
+    [
+      986,
+      788
+    ],
+    [
+      989,
+      788
+    ],
+    [
+      1001,
+      794
+    ],
+    [
+      1005,
+      794
+    ],
+    [
+      1015,
+      790
+    ],
+    [
+      1020,
+      791
+    ],
+    [
+      1099,
+      832
+    ],
+    [
+      1107,
+      835
+    ],
+    [
+      1110,
+      834
+    ],
+    [
+      1133,
+      846
+    ],
+    [
+      1139,
+      846
+    ],
+    [
+      1165,
+      836
+    ],
+    [
+      1171,
+      836
+    ],
+    [
+      1220,
+      821
+    ],
+    [
+      1223,
+      821
+    ],
+    [
+      1233,
+      827
+    ],
+    [
+      1246,
+      825
+    ],
+    [
+      1254,
+      822
+    ],
+    [
+      1256,
+      820
+    ],
+    [
+      1257,
+      813
+    ],
+    [
+      1259,
+      812
+    ],
+    [
+      1303,
+      798
+    ],
+    [
+      1310,
+      797
+    ],
+    [
+      1340,
+      787
+    ],
+    [
+      1342,
+      785
+    ],
+    [
+      1353,
+      783
+    ],
+    [
+      1393,
+      769
+    ],
+    [
+      1409,
+      765
+    ],
+    [
+      1482,
+      739
+    ],
+    [
+      1489,
+      738
+    ],
+    [
+      1497,
+      742
+    ],
+    [
+      1503,
+      743
+    ],
+    [
+      1533,
+      732
+    ]
+  ],
+  "supportPolylineSource": [
+    [
+      931.3157894736853,
+      148.0000000000004
+    ],
+    [
+      931.6315789473695,
+      148.4736842105267
+    ],
+    [
+      935.1052631578957,
+      150.52631578947404
+    ],
+    [
+      935.5789473684221,
+      150.68421052631615
+    ],
+    [
+      937.3157894736852,
+      150.05263157894774
+    ],
+    [
+      945.2105263157904,
+      154.47368421052664
+    ],
+    [
+      947.8947368421061,
+      155.73684210526346
+    ],
+    [
+      948.6842105263166,
+      156.36842105263187
+    ],
+    [
+      948.8421052631588,
+      157.9473684210529
+    ],
+    [
+      950.736842105264,
+      159.21052631578974
+    ],
+    [
+      952.3157894736851,
+      159.84210526315815
+    ],
+    [
+      954.0526315789482,
+      159.05263157894763
+    ],
+    [
+      954.5263157894746,
+      159.05263157894763
+    ],
+    [
+      956.2631578947377,
+      160.15789473684237
+    ],
+    [
+      960.0526315789481,
+      162.0526315789476
+    ],
+    [
+      960.8421052631586,
+      162.684210526316
+    ],
+    [
+      962.7368421052639,
+      163.47368421052653
+    ],
+    [
+      965.5789473684217,
+      165.21052631578965
+    ],
+    [
+      967.7894736842112,
+      166.1578947368423
+    ],
+    [
+      974.5789473684216,
+      169.78947368421066
+    ],
+    [
+      975.6842105263164,
+      170.57894736842118
+    ],
+    [
+      976.631578947369,
+      170.8947368421054
+    ],
+    [
+      978.21052631579,
+      172.0000000000001
+    ],
+    [
+      985.789473684211,
+      176.10526315789483
+    ],
+    [
+      988.4736842105267,
+      177.84210526315795
+    ],
+    [
+      997.6315789473688,
+      182.73684210526315
+    ],
+    [
+      997.7894736842109,
+      182.89473684210526
+    ],
+    [
+      997.9473684210529,
+      184.6315789473684
+    ],
+    [
+      998.5789473684214,
+      185.26315789473682
+    ],
+    [
+      1002.0526315789476,
+      186.99999999999994
+    ],
+    [
+      1006.7894736842107,
+      185.578947368421
+    ],
+    [
+      1007.2631578947371,
+      184.9473684210526
+    ],
+    [
+      1007.4210526315792,
+      183.36842105263156
+    ],
+    [
+      1007.5789473684213,
+      183.21052631578948
+    ],
+    [
+      1008.0526315789476,
+      183.21052631578948
+    ],
+    [
+      1008.8421052631581,
+      182.73684210526315
+    ],
+    [
+      1017.842105263158,
+      179.7368421052632
+    ],
+    [
+      1018.4736842105265,
+      179.7368421052632
+    ],
+    [
+      1021.7894736842106,
+      181.47368421052633
+    ],
+    [
+      1026.2105263157896,
+      180.2105263157895
+    ],
+    [
+      1026.6842105263158,
+      179.7368421052632
+    ],
+    [
+      1027.0,
+      178.15789473684217
+    ],
+    [
+      1027.157894736842,
+      178.00000000000006
+    ],
+    [
+      1040.8947368421052,
+      174.21052631578956
+    ],
+    [
+      1049.2631578947367,
+      171.5263157894738
+    ],
+    [
+      1049.894736842105,
+      171.5263157894738
+    ],
+    [
+      1052.5789473684208,
+      172.94736842105274
+    ],
+    [
+      1054.631578947368,
+      173.57894736842115
+    ],
+    [
+      1058.894736842105,
+      172.31578947368433
+    ],
+    [
+      1059.5263157894733,
+      172.0000000000001
+    ],
+    [
+      1059.8421052631575,
+      171.5263157894738
+    ],
+    [
+      1059.9999999999995,
+      166.9473684210528
+    ],
+    [
+      1067.7368421052627,
+      163.78947368421075
+    ],
+    [
+      1068.2105263157891,
+      163.78947368421075
+    ],
+    [
+      1070.1052631578943,
+      164.73684210526335
+    ],
+    [
+      1070.7368421052627,
+      164.73684210526335
+    ],
+    [
+      1072.3157894736837,
+      164.10526315789494
+    ],
+    [
+      1073.1052631578943,
+      164.26315789473705
+    ],
+    [
+      1085.5789473684204,
+      170.7368421052633
+    ],
+    [
+      1086.8421052631572,
+      171.2105263157896
+    ],
+    [
+      1087.3157894736835,
+      171.0526315789475
+    ],
+    [
+      1090.947368421052,
+      172.94736842105274
+    ],
+    [
+      1091.8947368421045,
+      172.94736842105274
+    ],
+    [
+      1095.9999999999993,
+      171.3684210526317
+    ],
+    [
+      1096.9473684210518,
+      171.3684210526317
+    ],
+    [
+      1104.684210526315,
+      169.00000000000014
+    ],
+    [
+      1105.1578947368412,
+      169.00000000000014
+    ],
+    [
+      1106.7368421052622,
+      169.94736842105277
+    ],
+    [
+      1108.7894736842097,
+      169.63157894736858
+    ],
+    [
+      1110.0526315789466,
+      169.15789473684225
+    ],
+    [
+      1110.3684210526308,
+      168.84210526315806
+    ],
+    [
+      1110.5263157894728,
+      167.73684210526332
+    ],
+    [
+      1110.842105263157,
+      167.5789473684212
+    ],
+    [
+      1117.7894736842095,
+      165.3684210526318
+    ],
+    [
+      1118.8947368421043,
+      165.21052631578965
+    ],
+    [
+      1123.6315789473674,
+      163.63157894736864
+    ],
+    [
+      1123.9473684210516,
+      163.31578947368445
+    ],
+    [
+      1125.6842105263147,
+      163.00000000000023
+    ],
+    [
+      1131.9999999999989,
+      160.78947368421078
+    ],
+    [
+      1134.5263157894726,
+      160.15789473684237
+    ],
+    [
+      1146.0526315789461,
+      156.05263157894768
+    ],
+    [
+      1147.1578947368407,
+      155.89473684210554
+    ],
+    [
+      1148.4210526315776,
+      156.52631578947398
+    ],
+    [
+      1149.3684210526303,
+      156.68421052631606
+    ],
+    [
+      1154.1052631578934,
+      154.94736842105294
+    ]
+  ],
+  "compressionAudit": {
+    "authoritativeFullMeasurement": "measured-physical-foot-edge-by-column.json",
+    "fullColumnCount": 1412,
+    "compressedVertexCount": 85,
+    "actualMaxVerticalDifferenceAssetPixels": 1.0,
+    "actualMaxVerticalDifferenceSourcePixels": 0.15789473684210353,
+    "interpretation": "Raster-edge storage simplification only, NOT a relaxed physical-registration tolerance or pass criterion. Full1412-point edge is preserved if exact interpolation is required."
+  },
+  "constructionLandmarksPixels": [
+    [
+      122,
+      688
+    ],
+    [
+      124,
+      691
+    ],
+    [
+      146,
+      704
+    ],
+    [
+      149,
+      705
+    ],
+    [
+      160,
+      701
+    ],
+    [
+      210,
+      729
+    ],
+    [
+      227,
+      737
+    ],
+    [
+      232,
+      741
+    ],
+    [
+      233,
+      751
+    ],
+    [
+      245,
+      759
+    ],
+    [
+      255,
+      763
+    ],
+    [
+      266,
+      758
+    ],
+    [
+      269,
+      758
+    ],
+    [
+      280,
+      765
+    ],
+    [
+      304,
+      777
+    ],
+    [
+      309,
+      781
+    ],
+    [
+      321,
+      786
+    ],
+    [
+      339,
+      797
+    ],
+    [
+      353,
+      803
+    ],
+    [
+      396,
+      826
+    ],
+    [
+      403,
+      831
+    ],
+    [
+      409,
+      833
+    ],
+    [
+      419,
+      840
+    ],
+    [
+      467,
+      866
+    ],
+    [
+      484,
+      877
+    ],
+    [
+      542,
+      908
+    ],
+    [
+      543,
+      909
+    ],
+    [
+      544,
+      920
+    ],
+    [
+      548,
+      924
+    ],
+    [
+      570,
+      935
+    ],
+    [
+      600,
+      926
+    ],
+    [
+      603,
+      922
+    ],
+    [
+      604,
+      912
+    ],
+    [
+      605,
+      911
+    ],
+    [
+      608,
+      911
+    ],
+    [
+      613,
+      908
+    ],
+    [
+      670,
+      889
+    ],
+    [
+      674,
+      889
+    ],
+    [
+      695,
+      900
+    ],
+    [
+      723,
+      892
+    ],
+    [
+      726,
+      889
+    ],
+    [
+      728,
+      879
+    ],
+    [
+      729,
+      878
+    ],
+    [
+      816,
+      854
+    ],
+    [
+      869,
+      837
+    ],
+    [
+      873,
+      837
+    ],
+    [
+      890,
+      846
+    ],
+    [
+      903,
+      850
+    ],
+    [
+      930,
+      842
+    ],
+    [
+      934,
+      840
+    ],
+    [
+      936,
+      837
+    ],
+    [
+      937,
+      808
+    ],
+    [
+      986,
+      788
+    ],
+    [
+      989,
+      788
+    ],
+    [
+      1001,
+      794
+    ],
+    [
+      1005,
+      794
+    ],
+    [
+      1015,
+      790
+    ],
+    [
+      1020,
+      791
+    ],
+    [
+      1099,
+      832
+    ],
+    [
+      1107,
+      835
+    ],
+    [
+      1110,
+      834
+    ],
+    [
+      1133,
+      846
+    ],
+    [
+      1139,
+      846
+    ],
+    [
+      1165,
+      836
+    ],
+    [
+      1171,
+      836
+    ],
+    [
+      1220,
+      821
+    ],
+    [
+      1223,
+      821
+    ],
+    [
+      1233,
+      827
+    ],
+    [
+      1246,
+      825
+    ],
+    [
+      1254,
+      822
+    ],
+    [
+      1256,
+      820
+    ],
+    [
+      1257,
+      813
+    ],
+    [
+      1259,
+      812
+    ],
+    [
+      1303,
+      798
+    ],
+    [
+      1310,
+      797
+    ],
+    [
+      1340,
+      787
+    ],
+    [
+      1342,
+      785
+    ],
+    [
+      1353,
+      783
+    ],
+    [
+      1393,
+      769
+    ],
+    [
+      1409,
+      765
+    ],
+    [
+      1482,
+      739
+    ],
+    [
+      1489,
+      738
+    ],
+    [
+      1497,
+      742
+    ],
+    [
+      1503,
+      743
+    ],
+    [
+      1533,
+      732
+    ]
+  ],
+  "overhangDepthExtension": {
+    "policy": "Extrapolate nearest actual bearing-side ground segment for roof-only canvas columns; label these virtual support depths, not visible feet. No roof lowest-alpha fallback.",
+    "leftPhysicalReferenceSegment": [
+      [
+        122,
+        688
+      ],
+      [
+        149,
+        705
+      ]
+    ],
+    "leftVirtualCanvasEndpoint": [
+      0,
+      611.1851851851852
+    ],
+    "rightPhysicalReferenceSegment": [
+      [
+        1503,
+        743
+      ],
+      [
+        1533,
+        732
+      ]
+    ],
+    "rightVirtualCanvasEndpoint": [
+      1609,
+      704.1333333333333
+    ],
+    "limits": "These are a depth model for eaves beyond the bearing body, not a new collision/foundation region or proof of occlusion. Tiny edge AA at adjacent columns remains part of rendering, not a new support anchor."
+  },
+  "originalSourceContactSamplingUnderMinimax": [
+    {
+      "sourceWitness": [
+        1003,
+        187
+      ],
+      "originalWitnessTerrain": {
+        "cell": [
+          62,
+          11
+        ],
+        "terrain": "#",
+        "owners": [
+          "militia-hall-foundation"
+        ]
+      },
+      "inverseAssetFloat": [
+        575.9999999999982,
+        935.0000000000002
+      ],
+      "nearestPixel": [
+        576,
+        935
+      ],
+      "actualRgbaAtOriginalSource": [
+        100,
+        79,
+        62,
+        61
+      ],
+      "classification": "Only low-alpha fringe, not a physical positive",
+      "signedVerticalDistanceInSourceToPhysicalBottom": 0.15789473684213942,
+      "signConvention": "Positive means in front/below the base; negative means inside/behind the base edge.",
+      "nearestPhysicalBottomAsset": [
+        575.9999999999982,
+        934.0
+      ],
+      "nearestPhysicalBottomSource": [
+        1003.0,
+        186.84210526315786
+      ],
+      "euclideanSourceDistanceToPhysicalBottom": 0.15789473684213942,
+      "frozenRealInteriorContactAsset": [
+        573,
+        932
+      ],
+      "frozenRealInteriorContactAlpha": 250,
+      "fittedRealContactSource": [
+        1002.526315789474,
+        186.52631578947364
+      ],
+      "fittedRealContactTerrain": {
+        "cell": [
+          62,
+          11
+        ],
+        "terrain": "#",
+        "owners": [
+          "militia-hall-foundation"
+        ]
+      },
+      "sameCanonicalBlockedCell": true
+    },
+    {
+      "sourceWitness": [
+        1054,
+        173
+      ],
+      "originalWitnessTerrain": {
+        "cell": [
+          65,
+          10
+        ],
+        "terrain": "#",
+        "owners": [
+          "militia-hall-foundation"
+        ]
+      },
+      "inverseAssetFloat": [
+        899.0000000000017,
+        846.3333333333327
+      ],
+      "nearestPixel": [
+        899,
+        846
+      ],
+      "actualRgbaAtOriginalSource": [
+        58,
+        49,
+        43,
+        252
+      ],
+      "classification": "Solid stone support base above its bottom edge",
+      "signedVerticalDistanceInSourceToPhysicalBottom": -0.4210526315790445,
+      "signConvention": "Positive means in front/below the base; negative means inside/behind the base edge.",
+      "nearestPhysicalBottomAsset": [
+        898.0,
+        848.0
+      ],
+      "nearestPhysicalBottomSource": [
+        1053.8421052631577,
+        173.26315789473693
+      ],
+      "euclideanSourceDistanceToPhysicalBottom": 0.3068922049920803,
+      "frozenRealInteriorContactAsset": [
+        902,
+        846
+      ],
+      "frozenRealInteriorContactAlpha": 253,
+      "fittedRealContactSource": [
+        1054.473684210526,
+        172.94736842105274
+      ],
+      "fittedRealContactTerrain": {
+        "cell": [
+          65,
+          10
+        ],
+        "terrain": "#",
+        "owners": [
+          "militia-hall-foundation"
+        ]
+      },
+      "sameCanonicalBlockedCell": true
+    },
+    {
+      "sourceWitness": [
+        1091,
+        172
+      ],
+      "originalWitnessTerrain": {
+        "cell": [
+          68,
+          10
+        ],
+        "terrain": "#",
+        "owners": [
+          "militia-hall-foundation"
+        ]
+      },
+      "inverseAssetFloat": [
+        1133.3333333333376,
+        839.9999999999992
+      ],
+      "nearestPixel": [
+        1133,
+        840
+      ],
+      "actualRgbaAtOriginalSource": [
+        99,
+        77,
+        62,
+        252
+      ],
+      "classification": "Solid stone support base above its bottom edge",
+      "signedVerticalDistanceInSourceToPhysicalBottom": -0.9473684210527469,
+      "signConvention": "Positive means in front/below the base; negative means inside/behind the base edge.",
+      "nearestPhysicalBottomAsset": [
+        1132.0,
+        845.0
+      ],
+      "nearestPhysicalBottomSource": [
+        1090.78947368421,
+        172.78947368421063
+      ],
+      "euclideanSourceDistanceToPhysicalBottom": 0.8170618261192337,
+      "frozenRealInteriorContactAsset": [
+        1136,
+        843
+      ],
+      "frozenRealInteriorContactAlpha": 252,
+      "fittedRealContactSource": [
+        1091.4210526315783,
+        172.47368421052644
+      ],
+      "fittedRealContactTerrain": {
+        "cell": [
+          68,
+          10
+        ],
+        "terrain": "#",
+        "owners": [
+          "militia-hall-foundation"
+        ]
+      },
+      "sameCanonicalBlockedCell": true
+    }
+  ],
+  "nativeFollowupBoundary": {
+    "retainExistingCases": "Keep parent frozen true-material/transparent-hole and legal actor front/back cases unchanged. Do not relocate poses or hide real supports merely to get visible bodies.",
+    "knownFrontRegression": {
+      "actorCell": [
+        60,
+        12
+      ],
+      "actorFootSource": [
+        968,
+        200
+      ],
+      "oldHeadWitnessSource": [
+        969,
+        165
+      ],
+      "expectedScope": "Actor is ahead of lower awning/cargo and this local main-core bearing edge; parent native fixture owns final visual/pick/cue checks."
+    },
+    "notVerifiedHere": [
+      "Draw order/pick after assembling depth strips",
+      "All rear/hidden foundation coverage",
+      "Every material pixel under all190 old hidden head points",
+      "Future awning/cargo object registration"
+    ]
+  },
+  "referenceImages": [
+    "left-wall-foot-grid.png",
+    "portal-base-grid.png",
+    "wing-base-grid.png",
+    "physical-footline-overlay.png"
+  ]
+}

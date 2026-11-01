@@ -1,0 +1,533 @@
+{
+  "scope": "Static bounded material registration only. No engine/GUI/save/production writes. Three identifiable structural ground contacts, NOT three outer foundation corners or whole62-cell responsibility certification. Frozen source contacts preserved; no tolerance invented.",
+  "asset": "/workspace/scratch/84c9fe948755/generated_images/exec-ef781f41-36ae-4670-83cd-5948045d1291.png",
+  "sha256": "6eb76b256dca7263f00a2f4633f1ef33ec0ca4178bdad8f23871501f7d262b98",
+  "actualSize": [
+    1609,
+    977
+  ],
+  "contacts": [
+    {
+      "identity": "left-front timber structure via its added stone base",
+      "asset": [
+        573,
+        932
+      ],
+      "rgba": [
+        78,
+        62,
+        43,
+        250
+      ],
+      "sourceCorrespondence": [
+        1003,
+        187
+      ],
+      "identification": "Visible solid stone base inner bottom edge. New art adds stone blocks below the wood frames; wood-to-stone seam is not the ground contact."
+    },
+    {
+      "identity": "right stone doorway jamb",
+      "asset": [
+        902,
+        846
+      ],
+      "rgba": [
+        104,
+        84,
+        73,
+        253
+      ],
+      "sourceCorrespondence": [
+        1054,
+        173
+      ],
+      "identification": "Visible solid right portal stone-jamb bottom inner edge."
+    },
+    {
+      "identity": "front-wing timber structure via its added stone base",
+      "asset": [
+        1136,
+        843
+      ],
+      "rgba": [
+        86,
+        66,
+        50,
+        252
+      ],
+      "sourceCorrespondence": [
+        1091,
+        172
+      ],
+      "identification": "Visible solid stone base inner bottom edge. New art adds stone blocks below the wood frames; wood-to-stone seam is not the ground contact."
+    }
+  ],
+  "leastSquaresFit": {
+    "sourceScale": 0.156519790345897,
+    "sourceTranslation": [
+      913.1089424689542,
+      40.58720983446801
+    ],
+    "mappedContacts": [
+      [
+        1002.7947823371532,
+        186.46365443684402
+      ],
+      [
+        1054.2897933609534,
+        173.00295246709686
+      ],
+      [
+        1090.9154243018932,
+        172.53339309605917
+      ]
+    ],
+    "residualEachAxis": [
+      [
+        -0.20521766284684873,
+        -0.5363455631559759
+      ],
+      [
+        0.28979336095335384,
+        0.0029524670968612554
+      ],
+      [
+        -0.08457569810684618,
+        0.5333930960591715
+      ]
+    ],
+    "maxAbsAxisError": 0.5363455631559759,
+    "ifAnchorFirstContact": {
+      "anchor": [
+        573.0,
+        932.0
+      ],
+      "sourceContact": [
+        1002.7947823371532,
+        186.46365443684402
+      ],
+      "canonicalContact": [
+        62.67467389607207,
+        11.653978402302752
+      ],
+      "instanceScale": 0.156519790345897
+    },
+    "planeWorldScale": 1
+  },
+  "minimaxFit": {
+    "sourceScale": 0.15789473684210353,
+    "sourceTranslation": [
+      912.0526315789486,
+      39.36842105263315
+    ],
+    "mappedContacts": [
+      [
+        1002.526315789474,
+        186.52631578947364
+      ],
+      [
+        1054.473684210526,
+        172.94736842105274
+      ],
+      [
+        1091.4210526315783,
+        172.47368421052644
+      ]
+    ],
+    "residualEachAxis": [
+      [
+        -0.4736842105260166,
+        -0.4736842105263577
+      ],
+      [
+        0.4736842105260166,
+        -0.05263157894725623
+      ],
+      [
+        0.4210526315782772,
+        0.47368421052644294
+      ]
+    ],
+    "maxAbsAxisError": 0.47368421052644294,
+    "ifAnchorFirstContact": {
+      "anchor": [
+        573.0,
+        932.0
+      ],
+      "sourceContact": [
+        1002.526315789474,
+        186.52631578947364
+      ],
+      "canonicalContact": [
+        62.657894736842124,
+        11.657894736842103
+      ],
+      "instanceScale": 0.15789473684210353
+    },
+    "planeWorldScale": 1
+  },
+  "fitInterpretation": "Both residuals are reported, not labeled a pass against any arbitrary five-pixel threshold. Least-squares parameters retain the least total squared structural-contact error; minimax is an alternative, not used for the following boundary samples.",
+  "alphaBackground": {
+    "pixelsAlphaPositive": 811041,
+    "pixelsAlphaAtLeast9": 799814,
+    "pixelsAlphaAtLeast200": 794497,
+    "farFromOpaqueDefinition": "More than20 asset pixels from any alpha>=200 pixel",
+    "farNonzeroPixels": 275,
+    "farMaxAlpha": 1,
+    "farPixelsAbove8": 0,
+    "alphaAtLeast9ConnectedComponents": 26,
+    "outsideMainComponentPixelsAtLeast9": 30,
+    "interpretation": "Sparse very-low-alpha noise is not a large semitransparent black cloud; do not treat any low-alpha fringe as physical foundation."
+  },
+  "visibleCompletedLeftWallGroundBoundary": [
+    {
+      "asset": [
+        127,
+        690
+      ],
+      "rgba": [
+        12,
+        6,
+        4,
+        249
+      ],
+      "source": [
+        932.986955842883,
+        148.58586517313694
+      ],
+      "physicalClassification": "left/back end of newly exposed main wall solid base",
+      "cell": [
+        58,
+        9
+      ],
+      "terrain": "#",
+      "namedAuditCellOwners": [
+        "militia-hall-foundation",
+        "militia-west-cargo"
+      ]
+    },
+    {
+      "asset": [
+        240,
+        754
+      ],
+      "rgba": [
+        3,
+        1,
+        1,
+        251
+      ],
+      "source": [
+        950.6736921519695,
+        158.60313175527435
+      ],
+      "physicalClassification": "visible left wall timber-ground inner edge",
+      "cell": [
+        59,
+        9
+      ],
+      "terrain": "#",
+      "namedAuditCellOwners": [
+        "militia-hall-foundation",
+        "militia-west-cargo"
+      ]
+    },
+    {
+      "asset": [
+        573,
+        932
+      ],
+      "rgba": [
+        78,
+        62,
+        43,
+        250
+      ],
+      "source": [
+        1002.7947823371532,
+        186.46365443684402
+      ],
+      "physicalClassification": "left-front added stone base",
+      "cell": [
+        62,
+        11
+      ],
+      "terrain": "#",
+      "namedAuditCellOwners": [
+        "militia-hall-foundation"
+      ]
+    }
+  ],
+  "knownLeftSideLegalCenterNegatives": [
+    {
+      "cell": [
+        57,
+        8
+      ],
+      "terrain": "p",
+      "source": [
+        920,
+        136
+      ],
+      "assetFloat": [
+        44.02674905082033,
+        609.5893046794714
+      ],
+      "nearestAsset": [
+        44,
+        610
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "outOfCanvas": false
+    },
+    {
+      "cell": [
+        57,
+        11
+      ],
+      "terrain": "p",
+      "source": [
+        920,
+        184
+      ],
+      "assetFloat": [
+        44.02674905082033,
+        916.259789567827
+      ],
+      "nearestAsset": [
+        44,
+        916
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "outOfCanvas": false
+    },
+    {
+      "cell": [
+        60,
+        11
+      ],
+      "terrain": "p",
+      "source": [
+        968,
+        184
+      ],
+      "assetFloat": [
+        350.697233939176,
+        916.259789567827
+      ],
+      "nearestAsset": [
+        351,
+        916
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "outOfCanvas": false
+    },
+    {
+      "cell": [
+        57,
+        12
+      ],
+      "terrain": "p",
+      "source": [
+        920,
+        200
+      ],
+      "assetFloat": [
+        44.02674905082033,
+        1018.4832845306122
+      ],
+      "nearestAsset": [
+        44,
+        1018
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "outOfCanvas": true
+    },
+    {
+      "cell": [
+        58,
+        12
+      ],
+      "terrain": "p",
+      "source": [
+        936,
+        200
+      ],
+      "assetFloat": [
+        146.25024401360554,
+        1018.4832845306122
+      ],
+      "nearestAsset": [
+        146,
+        1018
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "outOfCanvas": true
+    },
+    {
+      "cell": [
+        60,
+        12
+      ],
+      "terrain": "p",
+      "source": [
+        968,
+        200
+      ],
+      "assetFloat": [
+        350.697233939176,
+        1018.4832845306122
+      ],
+      "nearestAsset": [
+        351,
+        1018
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "outOfCanvas": true
+    },
+    {
+      "cell": [
+        61,
+        12
+      ],
+      "terrain": "p",
+      "source": [
+        984,
+        200
+      ],
+      "assetFloat": [
+        452.9207289019612,
+        1018.4832845306122
+      ],
+      "nearestAsset": [
+        453,
+        1018
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "outOfCanvas": true
+    },
+    {
+      "cell": [
+        62,
+        12
+      ],
+      "terrain": "p",
+      "source": [
+        1000,
+        200
+      ],
+      "assetFloat": [
+        555.1442238647464,
+        1018.4832845306122
+      ],
+      "nearestAsset": [
+        555,
+        1018
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "outOfCanvas": true
+    }
+  ],
+  "additionalCanonicalEntranceNegatives": [
+    {
+      "cell": [
+        65,
+        14
+      ],
+      "source": [
+        1048,
+        232
+      ],
+      "assetFloat": [
+        861.8147087531021,
+        1222.9302744561826
+      ],
+      "nearestAsset": [
+        862,
+        1223
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "outOfCanvas": true
+    },
+    {
+      "cell": [
+        66,
+        14
+      ],
+      "source": [
+        1064,
+        232
+      ],
+      "assetFloat": [
+        964.0382037158873,
+        1222.9302744561826
+      ],
+      "nearestAsset": [
+        964,
+        1223
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "outOfCanvas": true
+    }
+  ],
+  "boundaryConclusion": "No opaque new main-core physical base at the listed canonical legal centres with this LS registration. Newly revealed left-wall ground edge samples lie in existing # responsibility. This does not prove every pixel in a legal cell clear, does not assign formerly occluded rear/left foundation exactly, and does not establish Pick or final assembled awning/cargo depth.",
+  "visualDifferences": [
+    "New left/front-wing wood posts have explicit stone support blocks where original small source only resolves timber-to-paving; these blocks are included in ground contacts, not ignored.",
+    "Rain awnings/cargo/pots/racks intentionally absent and must be separately represented, not absorbed into the completed wall or old 206 depth."
+  ],
+  "referenceImages": [
+    "left-front-grid.png",
+    "door-right-grid.png",
+    "wing-front-grid.png"
+  ]
+}

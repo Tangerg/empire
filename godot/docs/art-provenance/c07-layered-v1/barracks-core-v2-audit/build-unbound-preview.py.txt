@@ -1,0 +1,16 @@
+from pathlib import Path
+import json,bisect
+r=Path('/workspace/scratch/84c9fe948755');g=r/'empire-c01/godot';v=r/'c07-readonly-review/militia-barracks-review/candidate-v2'
+fit=json.load(open(v/'main-core-contact-fit.json'))['minimaxFit'];s=fit['sourceScale'];t=fit['sourceTranslation'];profile=json.load(open(v/'main-core-physical-front-polyline.json'));points=profile['supportPolylinePixels'];points=[profile['overhangDepthExtension']['leftVirtualCanvasEndpoint']]+points+[profile['overhangDepthExtension']['rightVirtualCanvasEndpoint']];xs=[p[0] for p in points]
+def fy(x):
+ i=max(0,min(len(points)-2,bisect.bisect_right(xs,x)-1));a,b=points[i:i+2];return a[1]+(b[1]-a[1])*(x-a[0])/(b[0]-a[0])
+cuts=sorted({0,1609,*range(0,1609,8),*(int(p[0]) for p in points)})
+strips=[]
+for a,b in zip(cuts,cuts[1:]):
+ x=(a+b-1)/2;strips.append({'rightPixels':b,'groundFrontPixels':[x,fy(x)]})
+anchor=[573,932];contact=[(anchor[i]*s+t[i])/16 for i in [0,1]]
+scene=json.load(open(g/'data/scenes/c01-07-prop-preview.json'));scene['assembledGroundPath']='res://data/scenes/c01-07-barracks-preview-ground.json'
+ground=json.load(open(g/'data/scenes/c01-07-prop-preview-ground.json'));ground['objectCatalogPath']='res://data/scenes/c01-07-barracks-preview-objects.json';ground['objects'].append({'id':'militia-barracks-core','assetId':'militia-barracks-core-v2','contact':contact,'scale':s,'selectionCell':[65,14],'ownsMapStructureBody':True,'pointer':'target'})
+objects=json.load(open(g/'data/scenes/c01-07-prop-preview-objects.json'));objects['objects']['militia-barracks-core-v2']={'resourcePath':'res://assets/native/c07-layered-v1/militia-barracks-core-v2-candidate.png','pixelSize':[1609,977],'anchorPixels':anchor,'groundFrontPixels':anchor,'contactShadowRadiiPixels':[35,6],'depthStrips':strips,'pointerPolygonPixels':[[674,889],[675,745],[685,690],[707,646],[747,611],[789,594],[836,595],[882,616],[913,650],[935,705],[936,837],[903,850],[875,840],[728,879],[696,900]]}
+for name,value in [('c01-07-barracks-preview.json',scene),('c01-07-barracks-preview-ground.json',ground),('c01-07-barracks-preview-objects.json',objects)]: (g/'data/scenes'/name).write_text(json.dumps(value,indent=2)+'\n')
+print({'strips':len(strips),'sourceScale':s,'sourceTranslation':t,'primarySourceContact':[q*16 for q in contact],'scope':'UNBOUND static preview; core+blue only; attached canopy/cargo absent'})

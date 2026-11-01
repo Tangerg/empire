@@ -1,0 +1,482 @@
+{
+  "scope": "Static actual candidate-v2 pixels; compare raw upper structure separately from effects of changing its registration fit. No engine/GUI/save/production actions.",
+  "v1": {
+    "path": "/workspace/scratch/84c9fe948755/generated_images/exec-801381e5-4f99-4fbf-90b1-f16274faff63.png",
+    "size": [
+      1610,
+      977
+    ],
+    "sha256": "2decc9ee65012da2adec9a07be186d712f353cedd89be416d896f852b6a90bd2"
+  },
+  "v2": {
+    "path": "/workspace/scratch/84c9fe948755/generated_images/exec-ef781f41-36ae-4670-83cd-5948045d1291.png",
+    "size": [
+      1609,
+      977
+    ],
+    "sha256": "6eb76b256dca7263f00a2f4633f1ef33ec0ca4178bdad8f23871501f7d262b98"
+  },
+  "sizeDifference": [
+    -1,
+    0
+  ],
+  "notAnExactLocalPixelEdit": true,
+  "upperStructureRegions": [
+    {
+      "id": "main-slate",
+      "roiExclusive": [
+        500,
+        200,
+        950,
+        500
+      ],
+      "unshiftedMeanAbsoluteRgbDifference": 6.027893827160494,
+      "bestLocalTranslationWithin3Pixels": {
+        "dx": -1,
+        "dy": 0,
+        "meanAbsoluteRgbDifference": 5.48938024691358
+      },
+      "meaning": "A texture-alignment diagnostic, not an accepted geometric movement or an image edit."
+    },
+    {
+      "id": "dormer",
+      "roiExclusive": [
+        720,
+        300,
+        870,
+        495
+      ],
+      "unshiftedMeanAbsoluteRgbDifference": 7.453253561253561,
+      "bestLocalTranslationWithin3Pixels": {
+        "dx": -1,
+        "dy": 0,
+        "meanAbsoluteRgbDifference": 7.165595441595442
+      },
+      "meaning": "A texture-alignment diagnostic, not an accepted geometric movement or an image edit."
+    },
+    {
+      "id": "left-gable",
+      "roiExclusive": [
+        270,
+        320,
+        500,
+        570
+      ],
+      "unshiftedMeanAbsoluteRgbDifference": 5.591779710144928,
+      "bestLocalTranslationWithin3Pixels": {
+        "dx": -1,
+        "dy": 0,
+        "meanAbsoluteRgbDifference": 5.199507246376812
+      },
+      "meaning": "A texture-alignment diagnostic, not an accepted geometric movement or an image edit."
+    },
+    {
+      "id": "right-gable",
+      "roiExclusive": [
+        1180,
+        350,
+        1490,
+        550
+      ],
+      "unshiftedMeanAbsoluteRgbDifference": 7.795010752688172,
+      "bestLocalTranslationWithin3Pixels": {
+        "dx": -1,
+        "dy": 0,
+        "meanAbsoluteRgbDifference": 6.134645161290322
+      },
+      "meaning": "A texture-alignment diagnostic, not an accepted geometric movement or an image edit."
+    },
+    {
+      "id": "door-arch",
+      "roiExclusive": [
+        690,
+        580,
+        935,
+        760
+      ],
+      "unshiftedMeanAbsoluteRgbDifference": 5.647724867724868,
+      "bestLocalTranslationWithin3Pixels": {
+        "dx": 0,
+        "dy": 0,
+        "meanAbsoluteRgbDifference": 5.647724867724868
+      },
+      "meaning": "A texture-alignment diagnostic, not an accepted geometric movement or an image edit."
+    }
+  ],
+  "upperSilhouette": {
+    "commonRegionExclusive": [
+      0,
+      0,
+      1609,
+      600
+    ],
+    "alphaThreshold": 200,
+    "differentMaskPixels": 1399,
+    "v1BoundaryDistanceToV2Quantiles50_95_99_max": [
+      0.0,
+      1.0,
+      1.4142135623730951,
+      2.23606797749979
+    ],
+    "v2BoundaryDistanceToV1Quantiles50_95_99_max": [
+      0.0,
+      1.0,
+      1.4142135623730951,
+      2.23606797749979
+    ],
+    "note": "This only characterizes the upper silhouette. Interior window/timber/roof geometry also requires visual comparison; no silhouette-only certification of unchanged architecture."
+  },
+  "finialTopEvidence": [
+    {
+      "id": "ridge",
+      "roiExclusive": [
+        980,
+        0,
+        1050,
+        170
+      ],
+      "v1": {
+        "topY": 23,
+        "topRowOpaqueX": [
+          1014
+        ]
+      },
+      "v2": {
+        "topY": 23,
+        "topRowOpaqueX": [
+          1013,
+          1014
+        ]
+      }
+    },
+    {
+      "id": "left",
+      "roiExclusive": [
+        380,
+        170,
+        460,
+        345
+      ],
+      "v1": {
+        "topY": 187,
+        "topRowOpaqueX": [
+          416
+        ]
+      },
+      "v2": {
+        "topY": 187,
+        "topRowOpaqueX": [
+          415,
+          416
+        ]
+      }
+    },
+    {
+      "id": "right",
+      "roiExclusive": [
+        1310,
+        170,
+        1405,
+        350
+      ],
+      "v1": {
+        "topY": 195,
+        "topRowOpaqueX": [
+          1352,
+          1353,
+          1354,
+          1355,
+          1356
+        ]
+      },
+      "v2": {
+        "topY": 194,
+        "topRowOpaqueX": [
+          1351,
+          1352,
+          1353,
+          1354,
+          1355
+        ]
+      }
+    }
+  ],
+  "observedInterpretation": "Viewed raw v1/v2 and the foot grids: same connected roof/gable/dormer/portal design; no gross upper-body reconfiguration visible. But not byte/pixel-preserving: width1609, texture-regionRGB MAE~5.6\u20137.8 and best local upper texture alignment mostlydx=-1. Upper opaque silhouette maximum displacement sqrt5~2.236 asset px. This is minor raw-image drift, not zero drift; owner decides acceptability.",
+  "requestedCoordinatesAreNotMeasuredFeet": [
+    {
+      "requestedAsset": [
+        575,
+        936
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "warning": "Reported only to show prompt targets are not accepted as real ground witnesses."
+    },
+    {
+      "requestedAsset": [
+        899,
+        846
+      ],
+      "rgba": [
+        58,
+        49,
+        43,
+        252
+      ],
+      "warning": "Reported only to show prompt targets are not accepted as real ground witnesses."
+    },
+    {
+      "requestedAsset": [
+        1135,
+        840
+      ],
+      "rgba": [
+        89,
+        65,
+        50,
+        253
+      ],
+      "warning": "Reported only to show prompt targets are not accepted as real ground witnesses."
+    }
+  ],
+  "newMeasuredFootInnerPoints": [
+    {
+      "identity": "left-front timber structure via its added stone base",
+      "asset": [
+        573,
+        932
+      ],
+      "rgba": [
+        78,
+        62,
+        43,
+        250
+      ],
+      "sourceCorrespondence": [
+        1003,
+        187
+      ],
+      "identification": "Visible solid stone base inner bottom edge. New art adds stone blocks below the wood frames; wood-to-stone seam is not the ground contact."
+    },
+    {
+      "identity": "right stone doorway jamb",
+      "asset": [
+        902,
+        846
+      ],
+      "rgba": [
+        104,
+        84,
+        73,
+        253
+      ],
+      "sourceCorrespondence": [
+        1054,
+        173
+      ],
+      "identification": "Visible solid right portal stone-jamb bottom inner edge."
+    },
+    {
+      "identity": "front-wing timber structure via its added stone base",
+      "asset": [
+        1136,
+        843
+      ],
+      "rgba": [
+        86,
+        66,
+        50,
+        252
+      ],
+      "sourceCorrespondence": [
+        1091,
+        172
+      ],
+      "identification": "Visible solid stone base inner bottom edge. New art adds stone blocks below the wood frames; wood-to-stone seam is not the ground contact."
+    }
+  ],
+  "newRegistrationLeastSquares": {
+    "sourceScale": 0.156519790345897,
+    "sourceTranslation": [
+      913.1089424689542,
+      40.58720983446801
+    ],
+    "mappedContacts": [
+      [
+        1002.7947823371532,
+        186.46365443684402
+      ],
+      [
+        1054.2897933609534,
+        173.00295246709686
+      ],
+      [
+        1090.9154243018932,
+        172.53339309605917
+      ]
+    ],
+    "residualEachAxis": [
+      [
+        -0.20521766284684873,
+        -0.5363455631559759
+      ],
+      [
+        0.28979336095335384,
+        0.0029524670968612554
+      ],
+      [
+        -0.08457569810684618,
+        0.5333930960591715
+      ]
+    ],
+    "maxAbsAxisError": 0.5363455631559759,
+    "ifAnchorFirstContact": {
+      "anchor": [
+        573.0,
+        932.0
+      ],
+      "sourceContact": [
+        1002.7947823371532,
+        186.46365443684402
+      ],
+      "canonicalContact": [
+        62.67467389607207,
+        11.653978402302752
+      ],
+      "instanceScale": 0.156519790345897
+    },
+    "planeWorldScale": 1
+  },
+  "newRegistrationMinimax": {
+    "sourceScale": 0.15789473684210353,
+    "sourceTranslation": [
+      912.0526315789486,
+      39.36842105263315
+    ],
+    "mappedContacts": [
+      [
+        1002.526315789474,
+        186.52631578947364
+      ],
+      [
+        1054.473684210526,
+        172.94736842105274
+      ],
+      [
+        1091.4210526315783,
+        172.47368421052644
+      ]
+    ],
+    "residualEachAxis": [
+      [
+        -0.4736842105260166,
+        -0.4736842105263577
+      ],
+      [
+        0.4736842105260166,
+        -0.05263157894725623
+      ],
+      [
+        0.4210526315782772,
+        0.47368421052644294
+      ]
+    ],
+    "maxAbsAxisError": 0.47368421052644294,
+    "ifAnchorFirstContact": {
+      "anchor": [
+        573.0,
+        932.0
+      ],
+      "sourceContact": [
+        1002.526315789474,
+        186.52631578947364
+      ],
+      "canonicalContact": [
+        62.657894736842124,
+        11.657894736842103
+      ],
+      "instanceScale": 0.15789473684210353
+    },
+    "planeWorldScale": 1
+  },
+  "physicalFrontProfile": "main-core-physical-front-polyline.json",
+  "residualConclusion": "New minimax max-axis contact error .473684sourcepx improves on v1 1.284483 without retargeting original source points. Nevertheless source1003,187 falls atA61, not real solid stone; the other two old exact source points areA252. No new tolerance/pass claim and no further generation implied.",
+  "registrationOnlyComparisonForSameAssetCoordinates": [
+    {
+      "sameAssetCoordinate": [
+        1014,
+        23
+      ],
+      "v1RegisteredSource": [
+        1072.91144200627,
+        39.61050156739848
+      ],
+      "v2RegisteredSource": [
+        1072.1578947368416,
+        43.000000000001535
+      ],
+      "registrationOnlySourceDelta": [
+        -0.7535472694282817,
+        3.3894984326030553
+      ]
+    },
+    {
+      "sameAssetCoordinate": [
+        416,
+        187
+      ],
+      "v1RegisteredSource": [
+        976.3691222570538,
+        66.08699059561158
+      ],
+      "v2RegisteredSource": [
+        977.7368421052637,
+        68.89473684210651
+      ],
+      "registrationOnlySourceDelta": [
+        1.3677198482098447,
+        2.807746246494929
+      ]
+    },
+    {
+      "sameAssetCoordinate": [
+        1356,
+        194
+      ],
+      "v1RegisteredSource": [
+        1128.1246081504705,
+        67.21708463949872
+      ],
+      "v2RegisteredSource": [
+        1126.157894736841,
+        70.00000000000124
+      ],
+      "registrationOnlySourceDelta": [
+        -1.9667134136295772,
+        2.782915360502514
+      ]
+    },
+    {
+      "sameAssetCoordinate": [
+        800,
+        400
+      ],
+      "v1RegisteredSource": [
+        1038.3628526645773,
+        100.4741379310347
+      ],
+      "v2RegisteredSource": [
+        1038.3684210526314,
+        102.52631578947457
+      ],
+      "registrationOnlySourceDelta": [
+        0.005568388054143725,
+        2.052177858439862
+      ]
+    }
+  ]
+}
