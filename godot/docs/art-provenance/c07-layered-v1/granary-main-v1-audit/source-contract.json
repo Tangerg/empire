@@ -1,0 +1,1919 @@
+{
+  "scope": "Priority updated by owner to GRANARY MAIN CORE + cloth-wall join. Static source/JSON/real asset-alpha analysis only. No engine, GUI, gameplay, saves, image generation or production edits. Earlier exploratory training-rack crop is not a delivered new issue.",
+  "source": {
+    "resourcePath": "res://assets/native/scenes/luojia.png",
+    "sha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+    "size": [
+      1536,
+      1024
+    ],
+    "paintedFile": "godot/data/scenes/c01-07-painted-ground.json",
+    "paintedSha256": "37f95743c6278a6e8e0c1144feb37d38b9eb17790a776815c48a842190f23d91",
+    "occluderGroups": 55,
+    "standingParts": 108
+  },
+  "siteContract": {
+    "selectionCell": [
+      35,
+      14
+    ],
+    "canonicalCentre": [
+      568,
+      232
+    ],
+    "approach": [
+      36,
+      14
+    ],
+    "canonicalApproachCentre": [
+      584,
+      232
+    ],
+    "materialAtSite": {
+      "source": [
+        568,
+        232
+      ],
+      "rgba": [
+        248,
+        207,
+        146,
+        255
+      ],
+      "material": "pale open paving at capture interaction cell",
+      "cell": [
+        35,
+        14
+      ],
+      "terrain": "B",
+      "standingPartsContaining": []
+    },
+    "materialAtApproach": {
+      "source": [
+        584,
+        232
+      ],
+      "rgba": [
+        250,
+        210,
+        153,
+        255
+      ],
+      "material": "pale open paving at approach",
+      "cell": [
+        36,
+        14
+      ],
+      "terrain": "p",
+      "standingPartsContaining": []
+    },
+    "currentPointer": {
+      "kind": "target",
+      "polygonPixels": [
+        [
+          552,
+          148
+        ],
+        [
+          570,
+          140
+        ],
+        [
+          585,
+          144
+        ],
+        [
+          585,
+          172
+        ],
+        [
+          568,
+          183
+        ],
+        [
+          552,
+          175
+        ]
+      ]
+    },
+    "preserve": "Keep exactly the granary gameplay owner/site35,14 and approach36,14. Visible door and actual architectural feet occur much farther back in image; do not relocate whole house or door physical anchor onto interaction cell. No new doorway-input failure is asserted here."
+  },
+  "mainRoofLandmarks": {
+    "matchingPlaneOrder": "left far eave -> rear ridge -> front gable ridge -> near low eave",
+    "fourActualMaterialLandmarks": [
+      {
+        "source": [
+          400,
+          78
+        ],
+        "rgba": [
+          119,
+          86,
+          52,
+          255
+        ],
+        "material": "left/far orange eave material tip; not antialiased whole-sprite bbox",
+        "cell": [
+          25,
+          4
+        ],
+        "terrain": "p",
+        "standingPartsContaining": []
+      },
+      {
+        "source": [
+          451,
+          35
+        ],
+        "rgba": [
+          226,
+          179,
+          132,
+          255
+        ],
+        "material": "rear ridge-cap inner bright landmark; silhouette starts around448,33",
+        "cell": [
+          28,
+          2
+        ],
+        "terrain": "p",
+        "standingPartsContaining": []
+      },
+      {
+        "source": [
+          558,
+          82
+        ],
+        "rgba": [
+          245,
+          187,
+          103,
+          255
+        ],
+        "material": "front gable ridge / sloping fascia junction; finial above around558,71 is a separate feature",
+        "cell": [
+          34,
+          5
+        ],
+        "terrain": "p",
+        "standingPartsContaining": [
+          "granary_roof"
+        ]
+      },
+      {
+        "source": [
+          512,
+          128
+        ],
+        "rgba": [
+          71,
+          43,
+          31,
+          255
+        ],
+        "material": "near low orange eave/fascia turn; black underside continues toabout512,135 and is NOT the same roof-plane point",
+        "cell": [
+          32,
+          8
+        ],
+        "terrain": "p",
+        "standingPartsContaining": [
+          "granary_facade"
+        ]
+      }
+    ],
+    "additionalFarRightEave": {
+      "source": [
+        608,
+        96
+      ],
+      "rgba": [
+        219,
+        159,
+        96,
+        255
+      ],
+      "material": "actual far-right orange tile eave tip, separate from rear lean-to/pergola",
+      "cell": [
+        38,
+        6
+      ],
+      "terrain": "p",
+      "standingPartsContaining": [
+        "granary_roof"
+      ]
+    },
+    "doNotUseOldRoofPolygonAsActualOutline": true,
+    "limits": "Hand-read source material/structural junctions, not all-pixel masks or a new fitting tolerance. Source is low-resolution painted art; feature definitions must match candidate definitions (roof-plane corner vs dark fascia underside vs finial)."
+  },
+  "architecturalGroundEvidence": {
+    "certifiedExposedRightPortalStoneFoot": {
+      "source": [
+        579,
+        180
+      ],
+      "rgba": [
+        67,
+        57,
+        56,
+        255
+      ],
+      "material": "visible lower stone-jamb ground contact; (579,178) is grey stone and y182 is warm pavement transition",
+      "cell": [
+        36,
+        11
+      ],
+      "terrain": "#",
+      "standingPartsContaining": [
+        "granary_facade"
+      ]
+    },
+    "jambUpperMaterial": {
+      "source": [
+        579,
+        178
+      ],
+      "rgba": [
+        137,
+        132,
+        131,
+        255
+      ],
+      "material": "grey portal stone just above ground edge",
+      "cell": [
+        36,
+        11
+      ],
+      "terrain": "#",
+      "standingPartsContaining": [
+        "granary_facade"
+      ]
+    },
+    "pavingImmediatelyBelowJamb": {
+      "source": [
+        579,
+        182
+      ],
+      "rgba": [
+        133,
+        115,
+        100,
+        255
+      ],
+      "material": "warm shadowed paving immediately below stone edge",
+      "cell": [
+        36,
+        11
+      ],
+      "terrain": "#",
+      "standingPartsContaining": [
+        "granary_facade"
+      ]
+    },
+    "stepVisibleSurface": {
+      "source": [
+        560,
+        186
+      ],
+      "rgba": [
+        246,
+        207,
+        152,
+        255
+      ],
+      "material": "light stone threshold/step surface",
+      "cell": [
+        35,
+        11
+      ],
+      "terrain": "#",
+      "standingPartsContaining": [
+        "granary_facade"
+      ]
+    },
+    "stepLowerLip": {
+      "source": [
+        560,
+        188
+      ],
+      "rgba": [
+        176,
+        128,
+        76,
+        255
+      ],
+      "material": "brown lower lip of stone step; (560,189) returns to paving",
+      "cell": [
+        35,
+        11
+      ],
+      "terrain": "#",
+      "standingPartsContaining": [
+        "granary_facade"
+      ]
+    },
+    "stepPavingBelow": {
+      "source": [
+        560,
+        189
+      ],
+      "rgba": [
+        239,
+        187,
+        131,
+        255
+      ],
+      "material": "warm paved ground below visible step lip",
+      "cell": [
+        35,
+        11
+      ],
+      "terrain": "#",
+      "standingPartsContaining": [
+        "granary_facade"
+      ]
+    },
+    "stepScope": "Visible doorway step is real architecture, not an additional outer foundation corner. Its visible front edge is diagonal and partly occluded by left planter. Do not manufacture three outer feet from jamb plus two points on one step.",
+    "frontLeftMainCorner": {
+      "visibleStructuralLowerMaterial": {
+        "source": [
+          508,
+          198
+        ],
+        "rgba": [
+          38,
+          30,
+          23,
+          255
+        ],
+        "material": "dark lower structural corner material immediately beside foreground vegetation/awning post",
+        "cell": [
+          31,
+          12
+        ],
+        "terrain": "#",
+        "standingPartsContaining": [
+          "granary_facade"
+        ]
+      },
+      "lowerEdgePoint": {
+        "source": [
+          508,
+          199
+        ],
+        "rgba": [
+          33,
+          20,
+          5,
+          255
+        ],
+        "material": "dark material/shadow at cluttered lower edge",
+        "cell": [
+          31,
+          12
+        ],
+        "terrain": "#",
+        "standingPartsContaining": [
+          "granary_facade"
+        ]
+      },
+      "trueUnoccludedGroundFoot": null,
+      "status": "Uncertain actual foot: plant/cargo and adjacent canopy pole merge around this base. Retain visible lower limit only, not a certified complete outer foundation corner."
+    },
+    "remainingFeet": "Left rear/lateral wall bases are occluded by attached roof/canopy; main right outer end is hidden by stock/planter. No hidden third foot is authenticated.",
+    "oldGroundFrontRejected": {
+      "source": [
+        535,
+        215
+      ],
+      "rgba": [
+        43,
+        24,
+        7,
+        255
+      ],
+      "material": "foreground dark cargo/planter, not certified main-house foot",
+      "cell": [
+        33,
+        13
+      ],
+      "terrain": "#",
+      "standingPartsContaining": []
+    },
+    "auditResponsibilityNotPhysicalTrace": [
+      {
+        "id": "joint-granary-foundation",
+        "polygonPixels": [
+          [
+            416,
+            126
+          ],
+          [
+            534,
+            167
+          ],
+          [
+            598,
+            140
+          ],
+          [
+            598,
+            182
+          ],
+          [
+            535,
+            217
+          ],
+          [
+            416,
+            173
+          ]
+        ],
+        "blockedCells": [
+          [
+            26,
+            7
+          ],
+          [
+            26,
+            8
+          ],
+          [
+            27,
+            8
+          ],
+          [
+            28,
+            8
+          ],
+          [
+            29,
+            8
+          ],
+          [
+            36,
+            8
+          ],
+          [
+            37,
+            8
+          ],
+          [
+            26,
+            9
+          ],
+          [
+            27,
+            9
+          ],
+          [
+            28,
+            9
+          ],
+          [
+            29,
+            9
+          ],
+          [
+            30,
+            9
+          ],
+          [
+            31,
+            9
+          ],
+          [
+            32,
+            9
+          ],
+          [
+            34,
+            9
+          ],
+          [
+            35,
+            9
+          ],
+          [
+            36,
+            9
+          ],
+          [
+            37,
+            9
+          ],
+          [
+            26,
+            10
+          ],
+          [
+            27,
+            10
+          ],
+          [
+            28,
+            10
+          ],
+          [
+            29,
+            10
+          ],
+          [
+            30,
+            10
+          ],
+          [
+            31,
+            10
+          ],
+          [
+            32,
+            10
+          ],
+          [
+            33,
+            10
+          ],
+          [
+            34,
+            10
+          ],
+          [
+            35,
+            10
+          ],
+          [
+            36,
+            10
+          ],
+          [
+            37,
+            10
+          ],
+          [
+            26,
+            11
+          ],
+          [
+            27,
+            11
+          ],
+          [
+            28,
+            11
+          ],
+          [
+            29,
+            11
+          ],
+          [
+            30,
+            11
+          ],
+          [
+            31,
+            11
+          ],
+          [
+            32,
+            11
+          ],
+          [
+            33,
+            11
+          ],
+          [
+            34,
+            11
+          ],
+          [
+            35,
+            11
+          ],
+          [
+            36,
+            11
+          ],
+          [
+            37,
+            11
+          ],
+          [
+            29,
+            12
+          ],
+          [
+            30,
+            12
+          ],
+          [
+            31,
+            12
+          ],
+          [
+            32,
+            12
+          ],
+          [
+            33,
+            12
+          ],
+          [
+            34,
+            12
+          ],
+          [
+            35,
+            12
+          ],
+          [
+            36,
+            12
+          ],
+          [
+            31,
+            13
+          ],
+          [
+            32,
+            13
+          ],
+          [
+            33,
+            13
+          ],
+          [
+            34,
+            13
+          ]
+        ]
+      }
+    ]
+  },
+  "canopyWallJoin": {
+    "previousRoofHighLandmark": {
+      "source": [
+        444,
+        128
+      ],
+      "rgba": [
+        118,
+        121,
+        137,
+        255
+      ],
+      "material": "blue-grey cloth surface/fold, NOT a photographed mounting bracket or ground foot",
+      "cell": [
+        27,
+        8
+      ],
+      "terrain": "#",
+      "standingPartsContaining": [
+        "granary_facade"
+      ]
+    },
+    "actualLocalWall": {
+      "source": [
+        444,
+        125
+      ],
+      "rgba": [
+        83,
+        76,
+        80,
+        255
+      ],
+      "material": "dark lower long-wall trim",
+      "cell": [
+        27,
+        7
+      ],
+      "terrain": "p",
+      "standingPartsContaining": [
+        "granary_facade"
+      ]
+    },
+    "lastDarkTransition": {
+      "source": [
+        444,
+        126
+      ],
+      "rgba": [
+        47,
+        43,
+        51,
+        255
+      ],
+      "material": "dark wall/cloth seam transition",
+      "cell": [
+        27,
+        7
+      ],
+      "terrain": "p",
+      "standingPartsContaining": [
+        "granary_facade"
+      ]
+    },
+    "clothTransition": {
+      "source": [
+        444,
+        127
+      ],
+      "rgba": [
+        88,
+        90,
+        103,
+        255
+      ],
+      "material": "mixed blue-grey seam pixel",
+      "cell": [
+        27,
+        7
+      ],
+      "terrain": "p",
+      "standingPartsContaining": [
+        "granary_facade"
+      ]
+    },
+    "joinInterpretation": "At this x the visible wall-to-cloth boundary is about y126\u2013127, with444128 already on fabric. The roof approaches/overlaps under the wall trim. A new main core should preserve visual connection here; exact hidden attachment/support hardware is design completion, not source-certified. The long wall continues behind the cloth; never turn its visible cloth seam into ground foundation."
+  },
+  "existingTwoPartsCannotBeRetainedUnchanged": {
+    "reason": "Granary roof/facade are coarse borrowed-pixel polygons, not clean main-core material masks. They omit genuine core roof/side-wall pixels and borrow canopy, foreground stock, paving, and a rear lean-to; retaining them whole duplicates or clips newly independent pieces.",
+    "missingMainMaterialWitnesses": [
+      {
+        "source": [
+          485,
+          112
+        ],
+        "rgba": [
+          228,
+          122,
+          63,
+          255
+        ],
+        "material": "real orange roof tile",
+        "cell": [
+          30,
+          7
+        ],
+        "terrain": "p",
+        "standingPartsContaining": [],
+        "actorPixelFloat": [
+          237.7999850239928,
+          315.3998801919425
+        ],
+        "nearestFramePixel": [
+          238,
+          315
+        ],
+        "actorRgba": [
+          67,
+          57,
+          51,
+          253
+        ]
+      },
+      {
+        "source": [
+          490,
+          113
+        ],
+        "rgba": [
+          225,
+          123,
+          66,
+          255
+        ],
+        "material": "real orange roof tile",
+        "cell": [
+          30,
+          7
+        ],
+        "terrain": "p",
+        "standingPartsContaining": [],
+        "actorPixelFloat": [
+          289.8000099840048,
+          325.79988518394487
+        ],
+        "nearestFramePixel": [
+          290,
+          326
+        ],
+        "actorRgba": [
+          71,
+          60,
+          50,
+          253
+        ]
+      },
+      {
+        "source": [
+          438,
+          106
+        ],
+        "rgba": [
+          149,
+          135,
+          133,
+          255
+        ],
+        "material": "actual grey long side-wall plaster",
+        "cell": [
+          27,
+          6
+        ],
+        "terrain": "p",
+        "standingPartsContaining": [],
+        "actorPixelFloat": [
+          248.1999900159952,
+          419.39993011196646
+        ],
+        "nearestFramePixel": [
+          248,
+          419
+        ],
+        "actorRgba": [
+          167,
+          165,
+          168,
+          254
+        ]
+      },
+      {
+        "source": [
+          445,
+          110
+        ],
+        "rgba": [
+          148,
+          133,
+          128,
+          255
+        ],
+        "material": "actual grey long side-wall plaster",
+        "cell": [
+          27,
+          6
+        ],
+        "terrain": "p",
+        "standingPartsContaining": [],
+        "actorPixelFloat": [
+          321.00002496001196,
+          460.99995007997603
+        ],
+        "nearestFramePixel": [
+          321,
+          461
+        ],
+        "actorRgba": [
+          106,
+          97,
+          92,
+          253
+        ]
+      }
+    ],
+    "foreignBorrowedMaterial": [
+      {
+        "source": [
+          450,
+          150
+        ],
+        "rgba": [
+          143,
+          134,
+          138,
+          255
+        ],
+        "material": "grey shaded cloth, belongs independent canopy not main core",
+        "cell": [
+          28,
+          9
+        ],
+        "terrain": "#",
+        "standingPartsContaining": [
+          "granary_facade"
+        ]
+      },
+      {
+        "source": [
+          485,
+          151
+        ],
+        "rgba": [
+          132,
+          128,
+          137,
+          255
+        ],
+        "material": "grey shaded cloth, belongs independent canopy not main core",
+        "cell": [
+          30,
+          9
+        ],
+        "terrain": "#",
+        "standingPartsContaining": [
+          "granary_facade"
+        ]
+      },
+      {
+        "source": [
+          535,
+          205
+        ],
+        "rgba": [
+          53,
+          30,
+          17,
+          255
+        ],
+        "material": "foreground box/planter wood, not main wall",
+        "cell": [
+          33,
+          12
+        ],
+        "terrain": "#",
+        "standingPartsContaining": [
+          "granary_facade"
+        ]
+      },
+      {
+        "source": [
+          550,
+          193
+        ],
+        "rgba": [
+          187,
+          107,
+          44,
+          255
+        ],
+        "material": "foreground planter/stock wood, not main wall",
+        "cell": [
+          34,
+          12
+        ],
+        "terrain": "#",
+        "standingPartsContaining": [
+          "granary_facade"
+        ]
+      },
+      {
+        "source": [
+          570,
+          190
+        ],
+        "rgba": [
+          210,
+          160,
+          105,
+          255
+        ],
+        "material": "paving below doorway step, not main facade",
+        "cell": [
+          35,
+          11
+        ],
+        "terrain": "#",
+        "standingPartsContaining": [
+          "granary_facade"
+        ]
+      },
+      {
+        "source": [
+          614,
+          103
+        ],
+        "rgba": [
+          115,
+          87,
+          50,
+          255
+        ],
+        "material": "rear small lean-to/pergola/background wood, beyond main orange eave",
+        "cell": [
+          38,
+          6
+        ],
+        "terrain": "p",
+        "standingPartsContaining": [
+          "granary_roof"
+        ]
+      }
+    ],
+    "minimalScope": "Other54occluder groups need not be modified for this object. Replace/retrace granary two surfaces using the new core with visible roof/wall material ownership, exclude already separated canopy and stock. Unknown hidden wall pixels require explicit new design, not source-pixel certification. This is not a recommendation to keep original2polygons and add a third patch over the gap."
+  },
+  "actualC07StaticPoses": {
+    "backRoof": {
+      "assetId": "torren-stage01",
+      "unitType": "c01.swordsman",
+      "currentC07Appearance": true,
+      "matchingCanonicalUnitKeys": [
+        "campaign-torren",
+        "west-militia",
+        "south-militia",
+        "raider-3",
+        "royal-1"
+      ],
+      "cell": [
+        30,
+        8
+      ],
+      "terrain": "p",
+      "footSource": [
+        488,
+        136
+      ],
+      "facing": "east",
+      "frameIndex": 0,
+      "frameRole": "idle",
+      "resourcePath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+      "assetSha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
+      "frameRegion": [
+        0,
+        0,
+        557,
+        725
+      ],
+      "frameAnchor": [
+        269,
+        565
+      ],
+      "spriteScale": 0.0961538,
+      "witnesses": [
+        {
+          "source": [
+            485,
+            112
+          ],
+          "rgba": [
+            228,
+            122,
+            63,
+            255
+          ],
+          "material": "real orange roof tile",
+          "cell": [
+            30,
+            7
+          ],
+          "terrain": "p",
+          "standingPartsContaining": [],
+          "actorPixelFloat": [
+            237.7999850239928,
+            315.3998801919425
+          ],
+          "nearestFramePixel": [
+            238,
+            315
+          ],
+          "actorRgba": [
+            67,
+            57,
+            51,
+            253
+          ]
+        },
+        {
+          "source": [
+            490,
+            113
+          ],
+          "rgba": [
+            225,
+            123,
+            66,
+            255
+          ],
+          "material": "real orange roof tile",
+          "cell": [
+            30,
+            7
+          ],
+          "terrain": "p",
+          "standingPartsContaining": [],
+          "actorPixelFloat": [
+            289.8000099840048,
+            325.79988518394487
+          ],
+          "nearestFramePixel": [
+            290,
+            326
+          ],
+          "actorRgba": [
+            71,
+            60,
+            50,
+            253
+          ]
+        }
+      ],
+      "expectedRelation": "Must be behind true main roof at these pixels. Same side-wall body remains visible down to (483,140), BELOW actor footY136, independently bounding main-house support depth. That wall point is NOT a ground foot. No current standing part contains either tile point.",
+      "pOnlyStaticPathFromTorrenInitial40_25": [
+        [
+          40,
+          25
+        ],
+        [
+          41,
+          25
+        ],
+        [
+          41,
+          24
+        ],
+        [
+          41,
+          23
+        ],
+        [
+          41,
+          22
+        ],
+        [
+          40,
+          22
+        ],
+        [
+          39,
+          22
+        ],
+        [
+          39,
+          21
+        ],
+        [
+          39,
+          20
+        ],
+        [
+          39,
+          19
+        ],
+        [
+          40,
+          19
+        ],
+        [
+          41,
+          19
+        ],
+        [
+          42,
+          19
+        ],
+        [
+          43,
+          19
+        ],
+        [
+          44,
+          19
+        ],
+        [
+          45,
+          19
+        ],
+        [
+          46,
+          19
+        ],
+        [
+          47,
+          19
+        ],
+        [
+          47,
+          18
+        ],
+        [
+          47,
+          17
+        ],
+        [
+          47,
+          16
+        ],
+        [
+          47,
+          15
+        ],
+        [
+          47,
+          14
+        ],
+        [
+          47,
+          13
+        ],
+        [
+          47,
+          12
+        ],
+        [
+          47,
+          11
+        ],
+        [
+          47,
+          10
+        ],
+        [
+          47,
+          9
+        ],
+        [
+          47,
+          8
+        ],
+        [
+          47,
+          7
+        ],
+        [
+          47,
+          6
+        ],
+        [
+          47,
+          5
+        ],
+        [
+          46,
+          5
+        ],
+        [
+          45,
+          5
+        ],
+        [
+          45,
+          4
+        ],
+        [
+          44,
+          4
+        ],
+        [
+          43,
+          4
+        ],
+        [
+          42,
+          4
+        ],
+        [
+          41,
+          4
+        ],
+        [
+          40,
+          4
+        ],
+        [
+          39,
+          4
+        ],
+        [
+          38,
+          4
+        ],
+        [
+          37,
+          4
+        ],
+        [
+          36,
+          4
+        ],
+        [
+          35,
+          4
+        ],
+        [
+          34,
+          4
+        ],
+        [
+          33,
+          4
+        ],
+        [
+          32,
+          4
+        ],
+        [
+          31,
+          4
+        ],
+        [
+          30,
+          4
+        ],
+        [
+          30,
+          5
+        ],
+        [
+          30,
+          6
+        ],
+        [
+          30,
+          7
+        ],
+        [
+          30,
+          8
+        ]
+      ],
+      "staticPathSteps": 53,
+      "pathLimit": "Terrain-only connectivity; no occupancy, turn cost, gameplay movement or save access."
+    },
+    "backSideWall": {
+      "assetId": "torren-stage01",
+      "unitType": "c01.swordsman",
+      "currentC07Appearance": true,
+      "matchingCanonicalUnitKeys": [
+        "campaign-torren",
+        "west-militia",
+        "south-militia",
+        "raider-3",
+        "royal-1"
+      ],
+      "cell": [
+        27,
+        7
+      ],
+      "terrain": "p",
+      "footSource": [
+        440,
+        120
+      ],
+      "facing": "east",
+      "frameIndex": 0,
+      "frameRole": "idle",
+      "resourcePath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+      "assetSha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
+      "frameRegion": [
+        0,
+        0,
+        557,
+        725
+      ],
+      "frameAnchor": [
+        269,
+        565
+      ],
+      "spriteScale": 0.0961538,
+      "witnesses": [
+        {
+          "source": [
+            438,
+            106
+          ],
+          "rgba": [
+            149,
+            135,
+            133,
+            255
+          ],
+          "material": "actual grey long side-wall plaster",
+          "cell": [
+            27,
+            6
+          ],
+          "terrain": "p",
+          "standingPartsContaining": [],
+          "actorPixelFloat": [
+            248.1999900159952,
+            419.39993011196646
+          ],
+          "nearestFramePixel": [
+            248,
+            419
+          ],
+          "actorRgba": [
+            167,
+            165,
+            168,
+            254
+          ]
+        },
+        {
+          "source": [
+            445,
+            110
+          ],
+          "rgba": [
+            148,
+            133,
+            128,
+            255
+          ],
+          "material": "actual grey long side-wall plaster",
+          "cell": [
+            27,
+            6
+          ],
+          "terrain": "p",
+          "standingPartsContaining": [],
+          "actorPixelFloat": [
+            321.00002496001196,
+            460.99995007997603
+          ],
+          "nearestFramePixel": [
+            321,
+            461
+          ],
+          "actorRgba": [
+            106,
+            97,
+            92,
+            253
+          ]
+        }
+      ],
+      "expectedRelation": "Must be behind actual side wall. The same wall remains visible at (445,125), below actor footY120; actual hidden lower support is not invented. Both current standing-part memberships are empty.",
+      "pOnlyStaticPathFromTorrenInitial40_25": [
+        [
+          40,
+          25
+        ],
+        [
+          41,
+          25
+        ],
+        [
+          41,
+          24
+        ],
+        [
+          41,
+          23
+        ],
+        [
+          41,
+          22
+        ],
+        [
+          40,
+          22
+        ],
+        [
+          39,
+          22
+        ],
+        [
+          39,
+          21
+        ],
+        [
+          39,
+          20
+        ],
+        [
+          39,
+          19
+        ],
+        [
+          40,
+          19
+        ],
+        [
+          41,
+          19
+        ],
+        [
+          42,
+          19
+        ],
+        [
+          43,
+          19
+        ],
+        [
+          44,
+          19
+        ],
+        [
+          45,
+          19
+        ],
+        [
+          46,
+          19
+        ],
+        [
+          47,
+          19
+        ],
+        [
+          47,
+          18
+        ],
+        [
+          47,
+          17
+        ],
+        [
+          47,
+          16
+        ],
+        [
+          47,
+          15
+        ],
+        [
+          47,
+          14
+        ],
+        [
+          47,
+          13
+        ],
+        [
+          47,
+          12
+        ],
+        [
+          47,
+          11
+        ],
+        [
+          47,
+          10
+        ],
+        [
+          47,
+          9
+        ],
+        [
+          47,
+          8
+        ],
+        [
+          47,
+          7
+        ],
+        [
+          47,
+          6
+        ],
+        [
+          47,
+          5
+        ],
+        [
+          46,
+          5
+        ],
+        [
+          45,
+          5
+        ],
+        [
+          45,
+          4
+        ],
+        [
+          44,
+          4
+        ],
+        [
+          43,
+          4
+        ],
+        [
+          42,
+          4
+        ],
+        [
+          41,
+          4
+        ],
+        [
+          40,
+          4
+        ],
+        [
+          39,
+          4
+        ],
+        [
+          38,
+          4
+        ],
+        [
+          37,
+          4
+        ],
+        [
+          36,
+          4
+        ],
+        [
+          35,
+          4
+        ],
+        [
+          34,
+          4
+        ],
+        [
+          33,
+          4
+        ],
+        [
+          32,
+          4
+        ],
+        [
+          31,
+          4
+        ],
+        [
+          30,
+          4
+        ],
+        [
+          29,
+          4
+        ],
+        [
+          28,
+          4
+        ],
+        [
+          27,
+          4
+        ],
+        [
+          27,
+          5
+        ],
+        [
+          27,
+          6
+        ],
+        [
+          27,
+          7
+        ]
+      ],
+      "staticPathSteps": 55,
+      "pathLimit": "Terrain-only connectivity; no occupancy, turn cost, gameplay movement or save access."
+    },
+    "frontPortal": {
+      "assetId": "C01-FFV1-UNIT-WOLF-RIDER",
+      "unitType": "c01.wolf-rider",
+      "currentC07Appearance": true,
+      "matchingCanonicalUnitKeys": [
+        "raider-1",
+        "raider-2",
+        "north-raider"
+      ],
+      "cell": [
+        36,
+        13
+      ],
+      "terrain": "p",
+      "footSource": [
+        584,
+        216
+      ],
+      "facing": "east",
+      "frameIndex": 0,
+      "frameRole": "idle",
+      "resourcePath": "res://assets/painted-units-v1/unit-wolf-rider.png",
+      "assetSha256": "0c230444fc60b7c451dba7ee159deb17bbf512514ed99bcb250d6c9600023d30",
+      "frameRegion": [
+        0,
+        0,
+        511,
+        724
+      ],
+      "frameAnchor": [
+        285,
+        568
+      ],
+      "spriteScale": 0.1,
+      "witnesses": [
+        {
+          "source": [
+            579,
+            178
+          ],
+          "rgba": [
+            137,
+            132,
+            131,
+            255
+          ],
+          "material": "true right stone door-jamb lower surface",
+          "cell": [
+            36,
+            11
+          ],
+          "terrain": "#",
+          "standingPartsContaining": [
+            "granary_facade"
+          ],
+          "actorPixelFloat": [
+            235.0,
+            188.0
+          ],
+          "nearestFramePixel": [
+            235,
+            188
+          ],
+          "actorRgba": [
+            121,
+            72,
+            69,
+            250
+          ]
+        },
+        {
+          "source": [
+            579,
+            180
+          ],
+          "rgba": [
+            67,
+            57,
+            56,
+            255
+          ],
+          "material": "true right stone door-jamb ground contact edge",
+          "cell": [
+            36,
+            11
+          ],
+          "terrain": "#",
+          "standingPartsContaining": [
+            "granary_facade"
+          ],
+          "actorPixelFloat": [
+            235.0,
+            208.0
+          ],
+          "nearestFramePixel": [
+            235,
+            208
+          ],
+          "actorRgba": [
+            81,
+            41,
+            28,
+            252
+          ]
+        }
+      ],
+      "expectedRelation": "Must remain in front: actor footY216 is in front of true exposed right stone-frame baseY180. This is a real currentC07 enemy appearance (raider-1/raider-2), not a generic absent ballista. Both source pixels should retain actor draw/pick where opaque after main-core replacement.",
+      "pOnlyStaticPathFromTorrenInitial40_25": [
+        [
+          40,
+          25
+        ],
+        [
+          41,
+          25
+        ],
+        [
+          41,
+          24
+        ],
+        [
+          41,
+          23
+        ],
+        [
+          41,
+          22
+        ],
+        [
+          40,
+          22
+        ],
+        [
+          39,
+          22
+        ],
+        [
+          39,
+          21
+        ],
+        [
+          39,
+          20
+        ],
+        [
+          39,
+          19
+        ],
+        [
+          38,
+          19
+        ],
+        [
+          37,
+          19
+        ],
+        [
+          37,
+          18
+        ],
+        [
+          37,
+          17
+        ],
+        [
+          37,
+          16
+        ],
+        [
+          37,
+          15
+        ],
+        [
+          37,
+          14
+        ],
+        [
+          36,
+          14
+        ],
+        [
+          36,
+          13
+        ]
+      ],
+      "staticPathSteps": 18,
+      "pathLimit": "Terrain-only connectivity; no occupancy, turn cost, gameplay movement or save access."
+    }
+  },
+  "depthLowerBoundsNotGroundAnchors": [
+    {
+      "source": [
+        483,
+        140
+      ],
+      "rgba": [
+        60,
+        51,
+        44,
+        255
+      ],
+      "material": "same long side-wall dark vertical timber below foot136; not a ground foot",
+      "cell": [
+        30,
+        8
+      ],
+      "terrain": "p",
+      "standingPartsContaining": [
+        "granary_facade"
+      ]
+    },
+    {
+      "source": [
+        445,
+        125
+      ],
+      "rgba": [
+        90,
+        82,
+        86,
+        255
+      ],
+      "material": "same side-wall lower visible material below foot120; not a ground foot",
+      "cell": [
+        27,
+        7
+      ],
+      "terrain": "p",
+      "standingPartsContaining": [
+        "granary_facade"
+      ]
+    }
+  ],
+  "nativeVerificationProposal": {
+    "positive": "Parent native same-pose: backTorren30,8 at485112/490113 must gain actual core cover; backTorren27,7 at438106/445110 must gain true side-wall cover. Preserve exact asset/scale/frame0/facingeast.",
+    "reverse": "CurrentC07wolf-rider east idle at36,13 must stay visibly in front and selectable at579178/579180.",
+    "negativeControl": "Original granary2part geometry omits all four back material samples (reproduced geometrically here); restoring old geometry should fail a fixed exact-pixel cover test. Do not choose witnesses by newPick outcome.",
+    "interaction": "Original site35,14/approach36,14 unchanged, door target stays canonicalgranary. Thin/small cover need not satisfy whole-actor cue threshold.",
+    "status": "Static alpha/material/terrain evidence only; parent owns pending native render/Pick proof."
+  },
+  "references": [
+    "granary-main-grid.png",
+    "granary-door-feet-grid.png",
+    "granary-main-side-grid.png",
+    "canopy-wall-junction-grid.png",
+    "main-left-corner-foot-grid.png",
+    "main-door-right-foot-grid.png",
+    "main-door-threshold-grid.png",
+    "roof-five-landmarks.png",
+    "main-fixed-witness-overlay.png"
+  ],
+  "completionBoundary": "One requested main-building scope closed; no candidate registration/fit undertaken, no further city objects reviewed."
+}
