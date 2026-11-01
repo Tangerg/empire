@@ -200,6 +200,21 @@
       "selectionCell": null,
       "ownsMapStructureBody": false,
       "pointer": "pass-through"
+    },
+    {
+      "id": "southwest-gate-stone",
+      "assetId": "southwest-gate-stone-surface-v1",
+      "contact": [
+        5.131410121917725,
+        45.30769348144531
+      ],
+      "scale": 0.18803419172763824,
+      "selectionCell": [
+        15,
+        51
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
     }
   ]
 }

@@ -5040,6 +5040,37 @@
       ],
       "contactShadowRadiiPixels": null,
       "surfaceGeometryPath": "res://data/scenes/c01-07-southeast-leaf-surface.json"
+    },
+    "southwest-gate-stone-surface-v1": {
+      "resourcePath": "res://assets/native/c07-layered-v1/southwest-gate-v1-stone-candidate.png",
+      "pixelSize": [
+        1326,
+        1186
+      ],
+      "anchorPixels": [
+        0,
+        0
+      ],
+      "contactShadowRadiiPixels": null,
+      "surfaceGeometryPath": "res://data/scenes/c01-07-southwest-stone-surface.json",
+      "pointerPolygonPixels": [
+        [
+          1004.5908813476562,
+          782.1817016601562
+        ],
+        [
+          1100.318115234375,
+          819.4089965820312
+        ],
+        [
+          1100.318115234375,
+          1026.818115234375
+        ],
+        [
+          1004.5908813476562,
+          989.5907592773438
+        ]
+      ]
     }
   }
 }

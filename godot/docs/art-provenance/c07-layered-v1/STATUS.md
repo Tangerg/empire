@@ -59,3 +59,6 @@ Reviewed five-region stone frame now uses the same formal surface owner in the s
 
 ## Southeast independent leaf formal integration
 The two-member leaf joins the same selected assembly with22own supports, no additional site:14instances/4sites/1199depth entries.666vertices and1425coverage samples exact; three GPU frames identical; front/back,2293opening samples and two wrong-depth controls pass. Flat wood/hinge/shadow art debt unchanged. See [southeast-leaf-surface-audit](southeast-leaf-surface-audit/README.md).
+
+## Southwest stone formal integration
+Own five southwest regions now shared formal native-alpha owner:15instances/5sites/1373depth entries.1044source vertices exact, old reprojection1ULP;1405opening/5460native-alpha and actual roles pass. Roof-only negative preserves actors/pointers while intruding11road points. GPU back/front345/344pixels max2, context149max1, explicitly not identical. Original3.25px low-stone/art/foundation debt retained; left leaf next. See [southwest-stone-surface-audit](southwest-stone-surface-audit/README.md).
