@@ -27,3 +27,6 @@ play. Probe source/log are in the owner evidence root `c04-preaudit/`.
 Current goals: investigate A(21,12), B(24,15), C(28,18), then Laiya or Mirelle
 reaches exit x7–9,y21; Laiya survives. Nine enemies defeated is alternate victory.
 There are no reinforcements, river/bridges or hard turn limit; 12 is recommended.
+
+Reuse update: `grounded-cabin.png` is now shared by the corrected C03 southwest
+house; the other six remain unbound candidates. C04 itself is still unchanged.

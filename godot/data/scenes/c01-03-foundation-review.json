@@ -1,0 +1,893 @@
+{
+  "scope": "Eight-house reviewed support matrix, not a claim that all shared city wall terrain belongs to houses. Material silhouettes include roofs, not certified ground polygons.",
+  "sites": [
+    {
+      "id": "RearHouse",
+      "selectionCell": [
+        16,
+        17
+      ],
+      "foundationCells": [
+        [
+          11,
+          16
+        ],
+        [
+          12,
+          16
+        ],
+        [
+          13,
+          16
+        ],
+        [
+          14,
+          16
+        ],
+        [
+          15,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          17,
+          16
+        ]
+      ],
+      "basis": "canonical isolated wall component",
+      "negativeControlPlacement": {
+        "id": "RearHouse",
+        "assetId": "outpost",
+        "contact": [
+          16.5,
+          17.5
+        ],
+        "scale": 0.175497,
+        "selectionCell": [
+          16,
+          17
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      }
+    },
+    {
+      "id": "CentralHouse",
+      "selectionCell": [
+        38,
+        23
+      ],
+      "foundationCells": [
+        [
+          33,
+          20
+        ],
+        [
+          34,
+          20
+        ],
+        [
+          35,
+          20
+        ],
+        [
+          36,
+          20
+        ],
+        [
+          37,
+          20
+        ],
+        [
+          38,
+          20
+        ],
+        [
+          39,
+          20
+        ],
+        [
+          40,
+          20
+        ],
+        [
+          41,
+          20
+        ],
+        [
+          42,
+          20
+        ],
+        [
+          33,
+          21
+        ],
+        [
+          34,
+          21
+        ],
+        [
+          35,
+          21
+        ],
+        [
+          36,
+          21
+        ],
+        [
+          37,
+          21
+        ],
+        [
+          38,
+          21
+        ],
+        [
+          39,
+          21
+        ],
+        [
+          40,
+          21
+        ],
+        [
+          41,
+          21
+        ],
+        [
+          42,
+          21
+        ],
+        [
+          33,
+          22
+        ],
+        [
+          34,
+          22
+        ],
+        [
+          35,
+          22
+        ],
+        [
+          36,
+          22
+        ],
+        [
+          37,
+          22
+        ],
+        [
+          38,
+          22
+        ],
+        [
+          39,
+          22
+        ],
+        [
+          40,
+          22
+        ],
+        [
+          41,
+          22
+        ],
+        [
+          42,
+          22
+        ]
+      ],
+      "basis": "canonical isolated wall component",
+      "negativeControlPlacement": {
+        "id": "CentralHouse",
+        "assetId": "southwest-house",
+        "contact": [
+          38.5,
+          23.5
+        ],
+        "scale": 0.173846,
+        "selectionCell": [
+          38,
+          23
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      }
+    },
+    {
+      "id": "SouthwestHouse",
+      "selectionCell": [
+        23,
+        36
+      ],
+      "foundationCells": [
+        [
+          16,
+          32
+        ],
+        [
+          17,
+          32
+        ],
+        [
+          18,
+          32
+        ],
+        [
+          19,
+          32
+        ],
+        [
+          20,
+          32
+        ],
+        [
+          21,
+          32
+        ],
+        [
+          22,
+          32
+        ],
+        [
+          23,
+          32
+        ],
+        [
+          24,
+          32
+        ],
+        [
+          16,
+          33
+        ],
+        [
+          17,
+          33
+        ],
+        [
+          18,
+          33
+        ],
+        [
+          19,
+          33
+        ],
+        [
+          20,
+          33
+        ],
+        [
+          21,
+          33
+        ],
+        [
+          22,
+          33
+        ],
+        [
+          23,
+          33
+        ],
+        [
+          24,
+          33
+        ],
+        [
+          16,
+          34
+        ],
+        [
+          17,
+          34
+        ],
+        [
+          18,
+          34
+        ],
+        [
+          19,
+          34
+        ],
+        [
+          20,
+          34
+        ],
+        [
+          21,
+          34
+        ],
+        [
+          22,
+          34
+        ],
+        [
+          23,
+          34
+        ],
+        [
+          24,
+          34
+        ],
+        [
+          16,
+          35
+        ],
+        [
+          17,
+          35
+        ],
+        [
+          18,
+          35
+        ],
+        [
+          19,
+          35
+        ],
+        [
+          20,
+          35
+        ],
+        [
+          21,
+          35
+        ],
+        [
+          22,
+          35
+        ],
+        [
+          23,
+          35
+        ],
+        [
+          24,
+          35
+        ]
+      ],
+      "basis": "canonical isolated wall component",
+      "negativeControlPlacement": {
+        "id": "SouthwestHouse",
+        "assetId": "shed",
+        "contact": [
+          23.5,
+          36.5
+        ],
+        "scale": 0.137838,
+        "selectionCell": [
+          23,
+          36
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      }
+    },
+    {
+      "id": "SouthHouse",
+      "selectionCell": [
+        55,
+        40
+      ],
+      "foundationCells": [
+        [
+          50,
+          37
+        ],
+        [
+          51,
+          37
+        ],
+        [
+          52,
+          37
+        ],
+        [
+          53,
+          37
+        ],
+        [
+          54,
+          37
+        ],
+        [
+          55,
+          37
+        ],
+        [
+          56,
+          37
+        ],
+        [
+          57,
+          37
+        ],
+        [
+          58,
+          37
+        ],
+        [
+          50,
+          38
+        ],
+        [
+          51,
+          38
+        ],
+        [
+          52,
+          38
+        ],
+        [
+          53,
+          38
+        ],
+        [
+          54,
+          38
+        ],
+        [
+          55,
+          38
+        ],
+        [
+          56,
+          38
+        ],
+        [
+          57,
+          38
+        ],
+        [
+          58,
+          38
+        ],
+        [
+          50,
+          39
+        ],
+        [
+          51,
+          39
+        ],
+        [
+          52,
+          39
+        ],
+        [
+          53,
+          39
+        ],
+        [
+          54,
+          39
+        ],
+        [
+          55,
+          39
+        ],
+        [
+          56,
+          39
+        ],
+        [
+          57,
+          39
+        ],
+        [
+          58,
+          39
+        ]
+      ],
+      "basis": "canonical isolated wall component",
+      "negativeControlPlacement": {
+        "id": "SouthHouse",
+        "assetId": "shed",
+        "contact": [
+          55.5,
+          40.5
+        ],
+        "scale": 0.176062,
+        "selectionCell": [
+          55,
+          40
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      }
+    },
+    {
+      "id": "Headquarters",
+      "selectionCell": [
+        85,
+        14
+      ],
+      "foundationCells": [
+        [
+          86,
+          10
+        ],
+        [
+          87,
+          10
+        ],
+        [
+          88,
+          10
+        ],
+        [
+          89,
+          10
+        ],
+        [
+          81,
+          11
+        ],
+        [
+          82,
+          11
+        ],
+        [
+          83,
+          11
+        ],
+        [
+          84,
+          11
+        ],
+        [
+          85,
+          11
+        ],
+        [
+          86,
+          11
+        ],
+        [
+          87,
+          11
+        ],
+        [
+          88,
+          11
+        ],
+        [
+          89,
+          11
+        ],
+        [
+          83,
+          12
+        ],
+        [
+          84,
+          12
+        ],
+        [
+          85,
+          12
+        ],
+        [
+          86,
+          12
+        ],
+        [
+          87,
+          12
+        ],
+        [
+          88,
+          12
+        ],
+        [
+          86,
+          13
+        ],
+        [
+          87,
+          13
+        ]
+      ],
+      "basis": "canonical wall centers inside historical material silhouette; shared city-wall components are not exclusive building foundations",
+      "negativeControlPlacement": {
+        "id": "Headquarters",
+        "assetId": "outpost",
+        "contact": [
+          85.5,
+          14.5
+        ],
+        "scale": 0.228477,
+        "selectionCell": [
+          85,
+          14
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      }
+    },
+    {
+      "id": "Garrison",
+      "selectionCell": [
+        88,
+        21
+      ],
+      "foundationCells": [
+        [
+          84,
+          17
+        ],
+        [
+          85,
+          17
+        ],
+        [
+          86,
+          17
+        ],
+        [
+          87,
+          17
+        ],
+        [
+          88,
+          17
+        ],
+        [
+          89,
+          17
+        ],
+        [
+          90,
+          17
+        ],
+        [
+          84,
+          18
+        ],
+        [
+          85,
+          18
+        ],
+        [
+          86,
+          18
+        ],
+        [
+          87,
+          18
+        ],
+        [
+          88,
+          18
+        ],
+        [
+          89,
+          18
+        ],
+        [
+          90,
+          18
+        ],
+        [
+          86,
+          19
+        ],
+        [
+          87,
+          19
+        ],
+        [
+          88,
+          19
+        ],
+        [
+          89,
+          19
+        ]
+      ],
+      "basis": "canonical wall centers inside historical material silhouette; shared city-wall components are not exclusive building foundations",
+      "negativeControlPlacement": {
+        "id": "Garrison",
+        "assetId": "southwest-house",
+        "contact": [
+          88.5,
+          21.5
+        ],
+        "scale": 0.167692,
+        "selectionCell": [
+          88,
+          21
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      }
+    },
+    {
+      "id": "KeepHouse",
+      "selectionCell": [
+        78,
+        30
+      ],
+      "foundationCells": [
+        [
+          79,
+          28
+        ],
+        [
+          80,
+          28
+        ],
+        [
+          81,
+          28
+        ],
+        [
+          82,
+          28
+        ],
+        [
+          83,
+          28
+        ],
+        [
+          84,
+          28
+        ],
+        [
+          85,
+          28
+        ],
+        [
+          80,
+          29
+        ],
+        [
+          81,
+          29
+        ],
+        [
+          82,
+          29
+        ],
+        [
+          83,
+          29
+        ],
+        [
+          84,
+          29
+        ],
+        [
+          85,
+          29
+        ]
+      ],
+      "basis": "canonical wall centers inside historical material silhouette; shared city-wall components are not exclusive building foundations",
+      "negativeControlPlacement": {
+        "id": "KeepHouse",
+        "assetId": "shed",
+        "contact": [
+          78.5,
+          30.5
+        ],
+        "scale": 0.137838,
+        "selectionCell": [
+          78,
+          30
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      }
+    },
+    {
+      "id": "SoutheastHouse",
+      "selectionCell": [
+        88,
+        39
+      ],
+      "foundationCells": [
+        [
+          91,
+          34
+        ],
+        [
+          92,
+          34
+        ],
+        [
+          87,
+          35
+        ],
+        [
+          88,
+          35
+        ],
+        [
+          89,
+          35
+        ],
+        [
+          90,
+          35
+        ],
+        [
+          91,
+          35
+        ],
+        [
+          92,
+          35
+        ],
+        [
+          87,
+          36
+        ],
+        [
+          88,
+          36
+        ],
+        [
+          89,
+          36
+        ],
+        [
+          90,
+          36
+        ],
+        [
+          91,
+          36
+        ],
+        [
+          92,
+          36
+        ],
+        [
+          87,
+          37
+        ],
+        [
+          88,
+          37
+        ],
+        [
+          89,
+          37
+        ],
+        [
+          90,
+          37
+        ],
+        [
+          91,
+          37
+        ],
+        [
+          92,
+          37
+        ]
+      ],
+      "basis": "canonical wall centers inside historical material silhouette; shared city-wall components are not exclusive building foundations",
+      "negativeControlPlacement": {
+        "id": "SoutheastHouse",
+        "assetId": "shed",
+        "contact": [
+          88.5,
+          39.5
+        ],
+        "scale": 0.123938,
+        "selectionCell": [
+          88,
+          39
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      }
+    }
+  ]
+}

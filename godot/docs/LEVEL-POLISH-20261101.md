@@ -311,3 +311,50 @@ Corrected v7 CampaignNavigation passes 1786 assertions, zero failed groups.
 The count is lower because there are two fewer wall instances sampled against
 six gate contacts, not because facade/gate contracts were removed. Ground/prop
 material fusion and full C03 combat remain open.
+
+### C03 physical footprint correction (after candidate review)
+
+The candidate's new assertion that every building anchor must coincide with its
+interaction cell was wrong. Interaction cells may be outside the physical body;
+moving the body to them exposed impassable terrain as grass. It has been removed,
+not retained as a product contract. Each building now fits its reviewed physical
+area, while all eight original selection cells and map/rule data stay unchanged.
+The southwest low shed was also the wrong silhouette for its wood-house site;
+it now uses the independently generated small grounded timber cabin.
+
+`data/scenes/c01-03-foundation-review.json` records all eight sites, 172 reviewed
+wall cells, their attribution basis and the frozen previous placements used as
+negative control. The four western houses have distinct canonical wall islands.
+Eastern houses share components with city walls/tower: only canonical wall cells
+inside their historical material silhouettes are attributed here, not the entire
+connected defense network. Those silhouettes include roofs and are **not** a
+certified ground foundation polygon. Boundary cells need actual opaque material
+intersection at the fixed 3×3 footprint samples; requiring every center opaque
+would over-enlarge roofs and ignore legitimate partial-cell foundation geometry.
+The independent old-placement raster check exposes 57 reviewed cells; the native
+suite also requires that the frozen old assembly fail the overlap contract.
+
+Validation: build zero warnings/errors; format verify passes; native full
+CampaignNavigation **2797 assertions, zero failed groups**; focused actual
+standing-visual probe **172 reviewed cells, zero failed overlaps**, canonical
+level SHA unchanged. The probe alone has an explicitly unconfigured dynamic
+node diagnostic; the complete native suite supplies that presentation and passes.
+All eight actual door pixels still pick their original site (or existing occupied
+HQ unit priority), roofs remain non-targeting and six north/main gate contacts
+remain clear. This is geometry/input validation, not victorious gameplay.
+
+Real saved T1 human-done state was retained across the artwork reload; repeated
+F5 changes only the two savedAt timestamps, not campaign/battle facts. Evidence:
+`c03-foundation-safe-reload-FIXTURE.json`, `c03-foundation-v1/native-002.png`
+(opening), `native-003.png` (southwest timber house), `native-004.png` (city store
+and southeast house); final probe/source and full native log retained alongside.
+
+Remaining city-defense registration debt is explicit: a separate scan of all
+494 canonical wall cells finds **104** with no standing material at the same nine
+samples. Shared city-wall/tower support bands and east-wall rear margins are not
+claimed fixed by the eight-house correction. This count cannot be directly
+compared with the old 228 **center-only** scan. Full-city physical attribution and
+ground/prop material coherence remain open; C03 overall acceptance is not complete.
+C02 cannot inherit this wall-foundation test: its map has zero wall terrain cells.
+C04 has a separate positive-area foundation audit; do not substitute center-only
+opacity for that established rule.

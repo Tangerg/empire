@@ -275,6 +275,59 @@
         55,
         10
       ]
+    },
+    "grounded-cabin": {
+      "resourcePath": "res://assets/native/c04-layered-v1/grounded-cabin.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        950,
+        860
+      ],
+      "groundFrontPixels": [
+        950,
+        860
+      ],
+      "contactShadowRadiiPixels": [
+        300,
+        24
+      ],
+      "pointerPolygonPixels": [
+        [
+          430,
+          570
+        ],
+        [
+          730,
+          650
+        ],
+        [
+          840,
+          560
+        ],
+        [
+          1100,
+          540
+        ],
+        [
+          1100,
+          790
+        ],
+        [
+          950,
+          850
+        ],
+        [
+          740,
+          850
+        ],
+        [
+          430,
+          720
+        ]
+      ]
     }
   }
 }

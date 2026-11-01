@@ -781,11 +781,9 @@ public partial class CampaignNavigationChecks : Node
             Require(!visual.Covers(At(new Vector2(10, 10))), $"C03 transparent padding became opaque: {placement.Id}.");
             if (placement.SelectionCell is { } cell)
             {
-                var contact = board.ToGlobal(board.Projection.CellContact(new(cell[0], cell[1])));
-                Require(At(new Vector2((float)asset.AnchorPixels[0], (float)asset.AnchorPixels[1])).IsEqualApprox(contact),
-                    $"C03 door threshold does not coincide with its canonical support cell: {placement.Id}.");
                 var door = placement.AssetId switch
                 {
+                    "grounded-cabin" => new Vector2(930, 720),
                     "shed" => new Vector2(775, 760),
                     "southwest-house" => new Vector2(920, 800),
                     _ => new Vector2(620, 860)
@@ -802,6 +800,49 @@ public partial class CampaignNavigationChecks : Node
                     $"C03 opaque roof must draw without redirecting ground clicks: {placement.Id}.");
             }
         }
+        var foundationReview = PresentationJson.Load<JsonObject>("res://data/scenes/c01-03-foundation-review.json");
+        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json")
+            .OfType<JsonObject>().Single(value => value["id"]!.GetValue<string>() == "c01-03");
+        var rejectedPlacementExposesCells = 0;
+        foreach (var site in foundationReview["sites"]!.AsArray().OfType<JsonObject>())
+        {
+            var id = site["id"]!.GetValue<string>();
+            var sprite = ground.GetNode<Sprite2D>(id);
+            var visual = ground.DepthEntries.Single(entry => entry.Node == sprite).Visual!;
+            var previous = site["negativeControlPlacement"]!.AsObject();
+            var previousAsset = catalog.Objects[previous["assetId"]!.GetValue<string>()];
+            using var previousPixels = ResourceLoader.Load<Texture2D>(previousAsset.ResourcePath).GetImage();
+            var previousSourceContact = new Vector2(13 + 16 * previous["contact"]![0]!.GetValue<float>(),
+                17 + 18 * previous["contact"]![1]!.GetValue<float>());
+            var previousRatio = 1.5f / previous["scale"]!.GetValue<float>();
+            foreach (var cell in site["foundationCells"]!.AsArray().OfType<JsonArray>())
+            {
+                var x = cell[0]!.GetValue<int>();
+                var y = cell[1]!.GetValue<int>();
+                Require(level["terrain"]![y]!.GetValue<string>()[x] == '#', $"C03 reviewed foundation changed its canonical terrain: {id} ({x},{y}).");
+                var overlapsMaterial = false;
+                var previousOverlapsMaterial = false;
+                // A boundary cell need not have an opaque center: actual material must
+                // overlap its reviewed footprint, not hide the entire tile with a roof.
+                foreach (var dx in new[] { -6, 0, 6 })
+                    foreach (var dy in new[] { -7, 0, 7 })
+                    {
+                        var source = new Vector2(21 + 16 * x + dx, 26 + 18 * y + dy);
+                        overlapsMaterial |= visual.Covers(board.ToGlobal(source * 1.5f));
+                        var oldPixel = (source - previousSourceContact) * previousRatio
+                            + new Vector2((float)previousAsset.AnchorPixels[0], (float)previousAsset.AnchorPixels[1]);
+                        var px = Mathf.RoundToInt(oldPixel.X);
+                        var py = Mathf.RoundToInt(oldPixel.Y);
+                        previousOverlapsMaterial |= px >= 0 && py >= 0 && px < previousPixels.GetWidth()
+                            && py < previousPixels.GetHeight() && previousPixels.GetPixel(px, py).A > .1f;
+                    }
+                if (!previousOverlapsMaterial)
+                    rejectedPlacementExposesCells++;
+                Require(overlapsMaterial,
+                    $"C03 physical building leaves reviewed impassable foundation as bare ground: {id} ({x},{y}).");
+            }
+        }
+        Require(rejectedPlacementExposesCells > 0, "C03 foundation guard must reject the previous doorway-snapped assembly, not silently bless its exposed walls.");
         foreach (var y in new[] { 12, 23, 24 })
             foreach (var x in new[] { 65, 66 })
             {
