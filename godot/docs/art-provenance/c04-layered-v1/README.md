@@ -30,3 +30,37 @@ There are no reinforcements, river/bridges or hard turn limit; 12 is recommended
 
 Reuse update: `grounded-cabin.png` is now shared by the corrected C03 southwest
 house; the other six remain unbound candidates. C04 itself is still unchanged.
+
+## Registered preview checkpoint
+
+`data/scenes/c01-04-layered-preview.json` now composes 139 independent placements
+on the prepared ground. This is **not the formal scene** and not visually accepted.
+The formal `c01-04.json` is untouched while C03 actual play owns the GUI.
+Four houses use audited physical front-ground pivots separately from selection
+cells; the eastern cart retains its physical furniture area, not the distant
+interaction marker. Boulder sprites use their audited footprint locations and
+an explicit lower-body input contour; tall decorative foliage stays pass-through.
+The seven previously hidden legal ground centers are reachable without moving
+terrain or expanding movement permission. This is not a blanket rock-pass-through
+change: each rock still blocks input on its opaque footprint material.
+
+Focused executable validation:
+
+```
+Godot --headless --path godot res://Scenes/BlackFlagCampChecks.tscn -- --layered-preview
+```
+
+The isolated preview passes 278 assertions: 19 real opening actors, ten site
+bodies, actual facade picking, all 30 fixed empty-mouth probes, occupied-neighbor
+Unit 11 precedence, seven reviewed legal ground contacts, physical house pivots,
+canonical foundation rejection, staging/save admission and existing detached
+legal-command mission probes. Default formal painted validation independently
+still passes 341 assertions. Build zero warnings/errors, format verify passes,
+source metadata 305 unique script UIDs. None is a C04 natural-route playthrough,
+rendered screenshot review or proof that every foundation edge is visually fitted.
+
+Candidate asset count is eleven; `grounded-cabin` is also used by C03. New
+`raised-cabin-left`, boulder, autumn tree and supply cart are project-owned alpha
+assets with complete prompt/provenance records. Ground remains 1659×948 with
+unchanged canonical pixel axes and origin; its omitted one-pixel far-right padding
+lies beyond the tactical board, not a reason to shrink cells or move objectives.

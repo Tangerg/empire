@@ -1,0 +1,474 @@
+{
+  "schema": 1,
+  "objects": {
+    "prisoner-tent": {
+      "resourcePath": "res://assets/native/c04-layered-v1/prisoner-tent.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        800,
+        820
+      ],
+      "groundFrontPixels": [
+        800,
+        820
+      ],
+      "contactShadowRadiiPixels": [
+        300,
+        25
+      ],
+      "pointerPolygonPixels": [
+        [
+          355,
+          530
+        ],
+        [
+          620,
+          650
+        ],
+        [
+          695,
+          830
+        ],
+        [
+          340,
+          820
+        ]
+      ]
+    },
+    "archive-tent": {
+      "resourcePath": "res://assets/native/c04-layered-v1/archive-tent.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        800,
+        820
+      ],
+      "groundFrontPixels": [
+        800,
+        820
+      ],
+      "contactShadowRadiiPixels": [
+        300,
+        25
+      ],
+      "pointerPolygonPixels": [
+        [
+          350,
+          540
+        ],
+        [
+          620,
+          650
+        ],
+        [
+          695,
+          830
+        ],
+        [
+          340,
+          820
+        ]
+      ]
+    },
+    "witness-tent": {
+      "resourcePath": "res://assets/native/c04-layered-v1/witness-tent.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        800,
+        820
+      ],
+      "groundFrontPixels": [
+        800,
+        820
+      ],
+      "contactShadowRadiiPixels": [
+        300,
+        25
+      ],
+      "pointerPolygonPixels": [
+        [
+          350,
+          540
+        ],
+        [
+          620,
+          650
+        ],
+        [
+          695,
+          830
+        ],
+        [
+          340,
+          820
+        ]
+      ]
+    },
+    "supply-canopy": {
+      "resourcePath": "res://assets/native/c04-layered-v1/supply-canopy.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        800,
+        850
+      ],
+      "groundFrontPixels": [
+        800,
+        850
+      ],
+      "contactShadowRadiiPixels": [
+        270,
+        20
+      ],
+      "pointerPolygonPixels": [
+        [
+          690,
+          550
+        ],
+        [
+          930,
+          610
+        ],
+        [
+          920,
+          735
+        ],
+        [
+          690,
+          680
+        ]
+      ]
+    },
+    "raised-cabin": {
+      "resourcePath": "res://assets/native/c04-layered-v1/raised-cabin.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        720,
+        850
+      ],
+      "groundFrontPixels": [
+        720,
+        850
+      ],
+      "contactShadowRadiiPixels": [
+        260,
+        25
+      ],
+      "pointerPolygonPixels": [
+        [
+          450,
+          560
+        ],
+        [
+          730,
+          650
+        ],
+        [
+          810,
+          545
+        ],
+        [
+          1060,
+          510
+        ],
+        [
+          1120,
+          740
+        ],
+        [
+          950,
+          845
+        ],
+        [
+          720,
+          850
+        ],
+        [
+          430,
+          725
+        ]
+      ]
+    },
+    "raised-cabin-left": {
+      "resourcePath": "res://assets/native/c04-layered-v1/raised-cabin-left.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        750,
+        920
+      ],
+      "groundFrontPixels": [
+        750,
+        920
+      ],
+      "contactShadowRadiiPixels": [
+        270,
+        25
+      ],
+      "pointerPolygonPixels": [
+        [
+          400,
+          570
+        ],
+        [
+          650,
+          590
+        ],
+        [
+          750,
+          690
+        ],
+        [
+          1110,
+          565
+        ],
+        [
+          1190,
+          750
+        ],
+        [
+          770,
+          900
+        ],
+        [
+          430,
+          820
+        ]
+      ]
+    },
+    "grounded-cabin": {
+      "resourcePath": "res://assets/native/c04-layered-v1/grounded-cabin.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        780,
+        860
+      ],
+      "groundFrontPixels": [
+        780,
+        860
+      ],
+      "contactShadowRadiiPixels": [
+        280,
+        20
+      ],
+      "pointerPolygonPixels": [
+        [
+          430,
+          570
+        ],
+        [
+          730,
+          650
+        ],
+        [
+          840,
+          560
+        ],
+        [
+          1100,
+          540
+        ],
+        [
+          1100,
+          790
+        ],
+        [
+          950,
+          850
+        ],
+        [
+          740,
+          850
+        ],
+        [
+          430,
+          720
+        ]
+      ]
+    },
+    "boulder": {
+      "resourcePath": "res://assets/native/c04-layered-v1/boulder.png",
+      "pixelSize": [
+        1254,
+        1254
+      ],
+      "anchorPixels": [
+        640,
+        1040
+      ],
+      "groundFrontPixels": [
+        640,
+        1040
+      ],
+      "contactShadowRadiiPixels": [
+        290,
+        22
+      ],
+      "pointerPolygonPixels": [
+        [
+          150,
+          850
+        ],
+        [
+          600,
+          730
+        ],
+        [
+          1080,
+          840
+        ],
+        [
+          1090,
+          980
+        ],
+        [
+          650,
+          1040
+        ],
+        [
+          220,
+          940
+        ]
+      ]
+    },
+    "autumn-tree": {
+      "resourcePath": "res://assets/native/c04-layered-v1/autumn-tree.png",
+      "pixelSize": [
+        1024,
+        1536
+      ],
+      "anchorPixels": [
+        550,
+        1395
+      ],
+      "groundFrontPixels": [
+        550,
+        1395
+      ],
+      "contactShadowRadiiPixels": [
+        110,
+        16
+      ]
+    },
+    "supply-cart": {
+      "resourcePath": "res://assets/native/c04-layered-v1/supply-cart.png",
+      "pixelSize": [
+        1254,
+        1254
+      ],
+      "anchorPixels": [
+        610,
+        940
+      ],
+      "groundFrontPixels": [
+        610,
+        940
+      ],
+      "contactShadowRadiiPixels": [
+        270,
+        20
+      ],
+      "pointerPolygonPixels": [
+        [
+          250,
+          620
+        ],
+        [
+          500,
+          560
+        ],
+        [
+          920,
+          710
+        ],
+        [
+          970,
+          900
+        ],
+        [
+          620,
+          950
+        ],
+        [
+          250,
+          780
+        ]
+      ]
+    },
+    "west-pine-faithful": {
+      "resourcePath": "res://assets/native/c01-faithful-sample-v4/west-pine.png",
+      "pixelSize": [
+        1377,
+        1142
+      ],
+      "anchorPixels": [
+        682,
+        962
+      ],
+      "groundFrontPixels": [
+        682,
+        1030
+      ],
+      "contactShadowRadiiPixels": [
+        125,
+        25
+      ]
+    },
+    "pine-tall-faithful": {
+      "resourcePath": "res://assets/native/c01-faithful-complete/pine-tall.png",
+      "pixelSize": [
+        1377,
+        1142
+      ],
+      "anchorPixels": [
+        696,
+        1023
+      ],
+      "groundFrontPixels": [
+        696,
+        1055
+      ],
+      "contactShadowRadiiPixels": [
+        92,
+        19
+      ]
+    },
+    "pine-young-faithful": {
+      "resourcePath": "res://assets/native/c01-faithful-complete/pine-young.png",
+      "pixelSize": [
+        1377,
+        1142
+      ],
+      "anchorPixels": [
+        713,
+        966
+      ],
+      "groundFrontPixels": [
+        713,
+        988
+      ],
+      "contactShadowRadiiPixels": [
+        78,
+        16
+      ]
+    }
+  }
+}

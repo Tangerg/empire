@@ -1,0 +1,1723 @@
+{
+  "levelId": "c01-04",
+  "levelSourceSha256": "722fa679315205c2917c236c192613827abc1394ac22b494001c716c10407014",
+  "worldScale": 1.25,
+  "originPixels": [
+    30,
+    24
+  ],
+  "cellXPixels": [
+    32,
+    0
+  ],
+  "cellYPixels": [
+    0,
+    30
+  ],
+  "pixelSize": [
+    1659,
+    948
+  ],
+  "resourcePath": "res://assets/native/c04-layered-v1/ground-candidate.png",
+  "objectCatalogPath": "res://data/scenes/c01-04-layered-objects.json",
+  "objects": [
+    {
+      "id": "prisoner-shelter",
+      "assetId": "prisoner-tent",
+      "contact": [
+        21.5,
+        12.5
+      ],
+      "scale": 0.125,
+      "selectionCell": [
+        21,
+        12
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "archive-tent",
+      "assetId": "archive-tent",
+      "contact": [
+        24.5,
+        15.5
+      ],
+      "scale": 0.125,
+      "selectionCell": [
+        24,
+        15
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "witness-shelter",
+      "assetId": "witness-tent",
+      "contact": [
+        28.5,
+        18.5
+      ],
+      "scale": 0.125,
+      "selectionCell": [
+        28,
+        18
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "north-supply-canopy",
+      "assetId": "supply-canopy",
+      "contact": [
+        27.5,
+        8.5
+      ],
+      "scale": 0.14,
+      "selectionCell": [
+        27,
+        8
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "west-aid-post",
+      "assetId": "supply-canopy",
+      "contact": [
+        14.5,
+        18.5
+      ],
+      "scale": 0.14,
+      "selectionCell": [
+        14,
+        18
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "east-watch-post",
+      "assetId": "supply-canopy",
+      "contact": [
+        42.125,
+        16.2
+      ],
+      "scale": 0.14,
+      "selectionCell": [
+        43,
+        16
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "grayflag-approach-outpost",
+      "assetId": "raised-cabin",
+      "contact": [
+        6.34375,
+        20.966666666666665
+      ],
+      "scale": 0.17,
+      "selectionCell": [
+        7,
+        21
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "enemy-rear-outpost",
+      "assetId": "raised-cabin-left",
+      "contact": [
+        44.0,
+        5.3
+      ],
+      "scale": 0.17,
+      "selectionCell": [
+        42,
+        5
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "woodkeeper-home",
+      "assetId": "grounded-cabin",
+      "contact": [
+        15.0625,
+        14.6
+      ],
+      "scale": 0.16,
+      "selectionCell": [
+        16,
+        15
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "south-caretaker-home",
+      "assetId": "grounded-cabin",
+      "contact": [
+        35.5625,
+        26.233333333333334
+      ],
+      "scale": 0.16,
+      "selectionCell": [
+        37,
+        26
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "east-watch-cart",
+      "assetId": "supply-cart",
+      "contact": [
+        41.84375,
+        16.8
+      ],
+      "scale": 0.1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "northwest-edge-rock",
+      "assetId": "boulder",
+      "contact": [
+        1.625,
+        4.733333333333333
+      ],
+      "scale": 0.065407,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "northwest-path-rock",
+      "assetId": "boulder",
+      "contact": [
+        5.171875,
+        6.166666666666667
+      ],
+      "scale": 0.054506,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "west-clearing-rock",
+      "assetId": "boulder",
+      "contact": [
+        4.875,
+        11.733333333333333
+      ],
+      "scale": 0.079942,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "west-front-rock",
+      "assetId": "boulder",
+      "contact": [
+        2.578125,
+        17.533333333333335
+      ],
+      "scale": 0.085998,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "north-edge-rock",
+      "assetId": "boulder",
+      "contact": [
+        17.265625,
+        0.6
+      ],
+      "scale": 0.061773,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "north-supply-rock",
+      "assetId": "boulder",
+      "contact": [
+        35.578125,
+        4.166666666666667
+      ],
+      "scale": 0.071463,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "northeast-edge-rock",
+      "assetId": "boulder",
+      "contact": [
+        48.484375,
+        3.0
+      ],
+      "scale": 0.059351,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "northeast-path-rock",
+      "assetId": "boulder",
+      "contact": [
+        47.078125,
+        7.166666666666667
+      ],
+      "scale": 0.052083,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "east-rear-rock",
+      "assetId": "boulder",
+      "contact": [
+        39.046875,
+        11.333333333333334
+      ],
+      "scale": 0.073886,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "east-ridge-rock",
+      "assetId": "boulder",
+      "contact": [
+        45.03125,
+        14.5
+      ],
+      "scale": 0.079942,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "east-camp-rock",
+      "assetId": "boulder",
+      "contact": [
+        38.90625,
+        18.666666666666668
+      ],
+      "scale": 0.072674,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "southeast-edge-rock",
+      "assetId": "boulder",
+      "contact": [
+        48.96875,
+        21.1
+      ],
+      "scale": 0.092054,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "south-inner-rock",
+      "assetId": "boulder",
+      "contact": [
+        23.53125,
+        27.8
+      ],
+      "scale": 0.075097,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "Tree_northwest-rear_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        0.3046875,
+        4.4
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_northwest-rear_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        2.7890625,
+        4.233333333333333
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_northwest-rear_2",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        5.2734375,
+        4.4
+      ],
+      "scale": 0.13,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_northwest-rear_3",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        7.7578125,
+        4.233333333333333
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_northwest-rear",
+      "assetId": "autumn-tree",
+      "contact": [
+        4.59375,
+        4.566666666666666
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_north-rear_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        8.90625,
+        4.133333333333334
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_north-rear_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        11.09375,
+        3.966666666666667
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_north-rear_2",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        13.28125,
+        4.133333333333334
+      ],
+      "scale": 0.13,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_north-rear_3",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        15.46875,
+        3.966666666666667
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_north-rear",
+      "assetId": "autumn-tree",
+      "contact": [
+        12.75,
+        4.3
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_north-road-west_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        17.890625,
+        6.633333333333334
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_north-road-west_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        19.796875,
+        6.466666666666667
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_north-road-west",
+      "assetId": "autumn-tree",
+      "contact": [
+        19.40625,
+        6.8
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_north-road-middle_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        21.40625,
+        6.566666666666666
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_north-road-middle_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        23.59375,
+        6.4
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_north-road-middle",
+      "assetId": "autumn-tree",
+      "contact": [
+        23.0625,
+        6.733333333333333
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_north-road-east_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        23.171875,
+        5.0
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_north-road-east_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        26.390625,
+        4.833333333333333
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_north-road-east_2",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        29.609375,
+        5.0
+      ],
+      "scale": 0.13,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_north-road-east_3",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        32.828125,
+        4.833333333333333
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_north-road-east",
+      "assetId": "autumn-tree",
+      "contact": [
+        28.5625,
+        5.166666666666667
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_north-supply-fringe_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        34.93359375,
+        4.733333333333333
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_north-supply-fringe_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        36.98828125,
+        4.566666666666666
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_north-supply-fringe_2",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        39.04296875,
+        4.733333333333333
+      ],
+      "scale": 0.13,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_north-supply-fringe_3",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        41.09765625,
+        4.566666666666666
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_north-supply-fringe",
+      "assetId": "autumn-tree",
+      "contact": [
+        38.578125,
+        4.9
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_northeast-house-rear_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        43.3359375,
+        2.373066666666667
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_northeast-house-rear_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        45.5078125,
+        2.889333333333333
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_northeast-house-rear_2",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        47.6796875,
+        2.3666666666666667
+      ],
+      "scale": 0.13,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_northeast-house-rear_3",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        49.6045,
+        2.373066666666667
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_northeast-house-rear",
+      "assetId": "autumn-tree",
+      "contact": [
+        47.15625,
+        2.533333333333333
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_northeast-house-east_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        47.3046875,
+        8.033333333333333
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_northeast-house-east_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        49.7265625,
+        7.866666666666666
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_northeast-house-east",
+      "assetId": "autumn-tree",
+      "contact": [
+        49.078125,
+        8.2
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_west-road-grove_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        6.9453125,
+        10.433333333333334
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_west-road-grove_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        9.2109375,
+        10.266666666666667
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_west-road-grove",
+      "assetId": "autumn-tree",
+      "contact": [
+        8.640625,
+        10.6
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_west-stone-fringe_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        0.328125,
+        13.833333333333334
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_west-stone-fringe_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        2.859375,
+        13.666666666666666
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_west-stone-fringe",
+      "assetId": "autumn-tree",
+      "contact": [
+        2.15625,
+        14.0
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_north-clearing-west_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        13.2578125,
+        9.5
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_north-clearing-west_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        14.8984375,
+        9.333333333333334
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_north-clearing-west",
+      "assetId": "autumn-tree",
+      "contact": [
+        14.640625,
+        9.666666666666666
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_north-clearing-pines_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        15.9296875,
+        9.866666666666667
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_north-clearing-pines_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        17.4765625,
+        9.7
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_north-clearing-pines",
+      "assetId": "autumn-tree",
+      "contact": [
+        17.265625,
+        10.033333333333333
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_woodkeeper-west_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        11.859375,
+        14.733333333333333
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_woodkeeper-west",
+      "assetId": "autumn-tree",
+      "contact": [
+        12.421875,
+        14.9
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_woodkeeper-rear_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        14.7578125,
+        12.066666666666666
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_woodkeeper-rear_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        16.3359375,
+        11.9
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_woodkeeper-rear",
+      "assetId": "autumn-tree",
+      "contact": [
+        16.109375,
+        12.233333333333333
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_woodkeeper-east_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        17.9375,
+        15.2
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_west-aid-rear_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        7.9296875,
+        17.533333333333335
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_west-aid-rear_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        9.7890625,
+        17.366666666666667
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_west-aid-rear",
+      "assetId": "autumn-tree",
+      "contact": [
+        9.421875,
+        17.7
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_arrival-house-rear_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        4.640625,
+        17.633333333333333
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_arrival-house-rear_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        6.421875,
+        17.466666666666665
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_arrival-house-rear",
+      "assetId": "autumn-tree",
+      "contact": [
+        6.09375,
+        17.8
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_west-boundary-lower_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        0.21725000000000017,
+        18.633333333333333
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_west-boundary-lower_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        1.921875,
+        18.466666666666665
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_west-boundary-lower",
+      "assetId": "autumn-tree",
+      "contact": [
+        1.53125,
+        18.8
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_east-rear-grove_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        35.0546875,
+        9.166666666666666
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_east-rear-grove_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        37.1015625,
+        9.0
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_east-rear-grove",
+      "assetId": "autumn-tree",
+      "contact": [
+        36.640625,
+        9.333333333333334
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_east-middle-grove_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        39.71875,
+        11.4
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_east-middle-grove_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        42.09375,
+        11.233333333333333
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_east-middle-grove",
+      "assetId": "autumn-tree",
+      "contact": [
+        41.46875,
+        11.566666666666666
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_east-route-rear_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        46.6171875,
+        14.266666666666667
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_east-route-rear_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        48.1640625,
+        14.1
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_east-route-rear",
+      "assetId": "autumn-tree",
+      "contact": [
+        47.953125,
+        14.433333333333334
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_east-watch-west_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        38.09375,
+        16.9
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_east-watch-west",
+      "assetId": "autumn-tree",
+      "contact": [
+        38.65625,
+        17.066666666666666
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_east-camp-front_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        36.8671875,
+        20.1
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_east-camp-front_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        38.4765625,
+        19.933333333333334
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_east-camp-front",
+      "assetId": "autumn-tree",
+      "contact": [
+        38.234375,
+        20.266666666666666
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_east-camp-south_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        33.78125,
+        20.933333333333334
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_east-camp-south_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        35.53125,
+        20.766666666666666
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_east-camp-south",
+      "assetId": "autumn-tree",
+      "contact": [
+        35.21875,
+        21.1
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_southeast-boundary_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        45.0078125,
+        22.0
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_southeast-boundary_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        46.8359375,
+        21.833333333333332
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_southeast-boundary",
+      "assetId": "autumn-tree",
+      "contact": [
+        46.484375,
+        22.166666666666668
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_south-caretaker-west_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        28.3046875,
+        25.1
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_south-caretaker-west_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        30.5390625,
+        24.933333333333334
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_south-caretaker-west",
+      "assetId": "autumn-tree",
+      "contact": [
+        29.984375,
+        25.266666666666666
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_south-caretaker-rear_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        32.578125,
+        24.8
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_south-caretaker-rear",
+      "assetId": "autumn-tree",
+      "contact": [
+        33.140625,
+        24.966666666666665
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_southwest-near_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        0.21725000000000017,
+        24.566666666666666
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_southwest-near_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        2.3203125,
+        24.4
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_southwest-near",
+      "assetId": "autumn-tree",
+      "contact": [
+        1.796875,
+        24.733333333333334
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_southwest-middle_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        6.770833333333333,
+        26.433333333333334
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_southwest-middle_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        8.5625,
+        26.266666666666666
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_southwest-middle_2",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        10.354166666666668,
+        26.433333333333334
+      ],
+      "scale": 0.13,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_southwest-middle",
+      "assetId": "autumn-tree",
+      "contact": [
+        9.125,
+        26.6
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_south-mid-front_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        11.984375,
+        28.3
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_south-mid-front_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        14.015625,
+        28.133333333333333
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_south-mid-front_2",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        16.046875,
+        28.3
+      ],
+      "scale": 0.13,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_south-mid-front",
+      "assetId": "autumn-tree",
+      "contact": [
+        14.578125,
+        28.466666666666665
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_south-inner-rear_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        19.3125,
+        27.333333333333332
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_south-inner-rear_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        21.5,
+        27.166666666666668
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_south-inner-rear",
+      "assetId": "autumn-tree",
+      "contact": [
+        20.96875,
+        27.5
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_southwest-border_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        0.953125,
+        30.49413333333333
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_southwest-border_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        4.734375,
+        30.6
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_southwest-border_2",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        8.515625,
+        30.676533333333335
+      ],
+      "scale": 0.13,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_southwest-border_3",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        12.296875,
+        30.49413333333333
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_southwest-border",
+      "assetId": "autumn-tree",
+      "contact": [
+        7.1875,
+        30.751466666666666
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_south-center-border_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        24.359375,
+        30.49413333333333
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_south-center-border_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        26.703125,
+        30.366666666666667
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_south-center-border_2",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        29.046875,
+        30.533333333333335
+      ],
+      "scale": 0.13,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_south-center-border_3",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        31.390625,
+        30.366666666666667
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_south-center-border",
+      "assetId": "autumn-tree",
+      "contact": [
+        28.4375,
+        30.7
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_southeast-foreground_0",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        38.46875,
+        30.49413333333333
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_southeast-foreground_1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        42.03125,
+        30.533333333333335
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_southeast-foreground_2",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        45.59375,
+        30.676533333333335
+      ],
+      "scale": 0.13,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Tree_southeast-foreground_3",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        49.15625,
+        30.49413333333333
+      ],
+      "scale": 0.14,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Autumn_southeast-foreground",
+      "assetId": "autumn-tree",
+      "contact": [
+        44.375,
+        30.751466666666666
+      ],
+      "scale": 0.095,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    }
+  ]
+}

@@ -38,7 +38,10 @@ public partial class BlackFlagCampChecks : Node
             CheckMissionSource(engine, level, state);
             CheckStagingChoices(engine, level);
             CheckSaveAdmission(engine);
-            CheckRegisteredPainting(engine, level, state);
+            if (OS.GetCmdlineUserArgs().Contains("--layered-preview", StringComparer.Ordinal))
+                CheckLayeredPreview(engine, level, state);
+            else
+                CheckRegisteredPainting(engine, level, state);
             CheckFoundations(engine, level, state);
             CheckEvidenceCommands(engine, level);
             GD.Print($"Native BlackFlagCamp passed {assertions} assertions: registration, ten sites, material picking, foundations, staging, save admission and detached legal-command mission probes. Natural route play and GUI acceptance are separate.");
@@ -249,6 +252,100 @@ public partial class BlackFlagCampChecks : Node
         restoredCamp.BeginBattle();
         Require(!restoredCamp.AtCamp && EcmaJson.DeepEquals(restoredCamp.Battle!.Snapshot(), opening),
             "Re-entering a restored current-source camp starts its unchanged opening.");
+    }
+
+    private void CheckLayeredPreview(BattleEngine engine, JsonObject level, JsonObject state)
+    {
+        var scene = AuthoredScene.Load("res://data/scenes/c01-04-layered-preview.json");
+        var document = PresentationJson.Load<AssembledGroundDocument>(scene.AssembledGroundPath!);
+        Require(document.WorldScale == 1.25f && document.OriginPixels.SequenceEqual([30f, 24f])
+            && document.CellXPixels.SequenceEqual([32f, 0f]) && document.CellYPixels.SequenceEqual([0f, 30f]),
+            "C04 candidate cannot rescale canonical registration to fit a generated image.");
+        var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
+        var board = new BoardView { AnimationsEnabled = false };
+        AddChild(board);
+        try
+        {
+            board.Configure(new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, rendering.Plane), level, scene);
+            board.ConfigureGround(rendering.Ground);
+            var before = EcmaJson.Stringify(state);
+            board.RenderState(state);
+            var ground = Descendants(board).OfType<AssembledGroundView>().Single();
+            Require(board.RenderingIssueCount == 0 && board.RenderedUnitCount == 19 && ground.Sites.Count == 10
+                && ground.Sites.Select(site => site.Cell).ToHashSet().SetEquals(Sites)
+                && ground.Sites.All(site => site.OwnsMapStructureBody) && board.RenderedStructureCount == 0,
+                "C04 independent candidate must render all actors and ten owned site bodies without duplicates.");
+            var guard = Units(state).Single(unit => Text(unit, "key") == "camp-guard-1");
+            var guardId = Integer(guard, "id");
+            var overlap = new Vector2(718, 403) * document.WorldScale;
+            var guardSprite = board.GetNode<Sprite2D>($"CanonicalProjection/Unit_{guardId}/AuthoredSprite");
+            Require(guardSprite.IsPixelOpaque(guardSprite.ToLocal(board.ToGlobal(overlap)))
+                && ground.DepthEntries.All(entry => !entry.Visual!.Covers(board.ToGlobal(overlap)))
+                && board.Pick(overlap) == TacticalHit.Unit(new(21, 13), guardId),
+                "Layered shelter opening retains real neighboring-actor priority, not an always-Ground shortcut.");
+            var empty = state.DeepClone().AsObject();
+            empty["units"] = new JsonArray();
+            board.RenderState(empty);
+            foreach (var cell in Sites.Take(6))
+                foreach (var delta in new[] { Vector2.Zero, Vector2.Left * 4, Vector2.Right * 4, Vector2.Up * 4, Vector2.Down * 4 })
+                {
+                    var point = board.Projection.CellContact(new(cell.X, cell.Y)) + delta * document.WorldScale;
+                    Require(ground.DepthEntries.All(entry => !entry.Visual!.Covers(board.ToGlobal(point)))
+                        && board.Pick(point) == TacticalHit.Ground(new(cell.X, cell.Y)),
+                        $"C04 independent shelter/canopy mouth must be actual empty space: {cell}, {delta}.");
+                }
+            var catalog = PresentationJson.Load<SceneObjectCatalog>(document.ObjectCatalogPath);
+            foreach (var placement in document.Objects)
+            {
+                var sprite = ground.GetNode<Sprite2D>(placement.Id);
+                var visual = ground.DepthEntries.Single(entry => entry.Node == sprite).Visual!;
+                var asset = catalog.Objects[placement.AssetId];
+                Vector2 At(Vector2 pixel) => sprite.ToGlobal(pixel - new Vector2((float)asset.AnchorPixels[0], (float)asset.AnchorPixels[1]));
+                using var pixels = sprite.Texture.GetImage();
+                Require(pixels.HasMipmaps() && !visual.Covers(At(new(10, 10))), $"C04 independent asset needs minification and genuine transparent padding: {placement.Id}.");
+                if (placement.SelectionCell is not { } cell)
+                    continue;
+                var facade = placement.AssetId switch
+                {
+                    "supply-canopy" => new Vector2(800, 640),
+                    "raised-cabin" => new Vector2(900, 610),
+                    "raised-cabin-left" => new Vector2(610, 610),
+                    "grounded-cabin" => new Vector2(930, 720),
+                    _ => new Vector2(400, 700)
+                };
+                Require(visual.Covers(At(facade)) && visual.ContainsPointer(At(facade))
+                    && board.Pick(board.ToLocal(At(facade))) == TacticalHit.Object(new(cell[0], cell[1])),
+                    $"C04 actual independent facade must select its unchanged interaction site: {placement.Id}.");
+            }
+            foreach (var cell in new[] { new Coord(5, 4), new(4, 9), new(38, 9), new(44, 12), new(45, 12), new(38, 16), new(23, 25) })
+                Require(board.Pick(board.Projection.CellContact(new(cell.X, cell.Y))) == TacticalHit.Ground(new(cell.X, cell.Y)),
+                    $"C04 registered boulder base must not steal the reviewed walkable ground contact: {cell}.");
+            var audit = PresentationJson.Load<JsonObject>("res://docs/art-provenance/blackflag-camp-geometry.json");
+            var houseNames = new Dictionary<string, string>
+            {
+                ["sw_arrival_outpost"] = "grayflag-approach-outpost",
+                ["ne_raised_outpost"] = "enemy-rear-outpost",
+                ["west_woodkeeper_cottage"] = "woodkeeper-home",
+                ["se_caretaker_cottage"] = "south-caretaker-home"
+            };
+            foreach (var house in audit["houses"]!.AsArray().OfType<JsonObject>())
+            {
+                var placement = document.Objects.Single(value => value.Id == houseNames[Text(house, "id")]);
+                var physical = new Vector2((float)(30 + 32 * placement.Contact[0]), (float)(24 + 30 * placement.Contact[1]));
+                var landmark = house["frontGroundLandmark"]!.AsArray();
+                Require(physical.IsEqualApprox(new(landmark[0]!.GetValue<float>(), landmark[1]!.GetValue<float>())),
+                    $"C04 building moved away from its audited foundation to chase the interaction cell: {placement.Id}.");
+            }
+            board.RenderState(state);
+            Require(board.Pick(overlap) == TacticalHit.Unit(new(21, 13), guardId)
+                && EcmaJson.Stringify(state) == before, "C04 preview probes must restore actor priority without mutating battle facts.");
+            GD.Print("C04 layered preview is an explicit geometry fixture; formal C04 still uses its unchanged painted registration.");
+        }
+        finally
+        {
+            RemoveChild(board);
+            board.Free();
+        }
     }
 
     private void CheckRegisteredPainting(BattleEngine engine, JsonObject level, JsonObject state)
