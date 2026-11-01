@@ -1,0 +1,5380 @@
+{
+  "scope": "Read-only four-gate source/registration/terrain overview and one southeast-gate detailed static actual-role contract. No engine, GUI, save, replay or real gameplay. No production data/bitmap edits.",
+  "source": {
+    "path": "res://assets/native/scenes/luojia.png",
+    "sha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+    "pixelSize": [
+      1536,
+      1024
+    ]
+  },
+  "summary": {
+    "fourSites": 4,
+    "pierGroups": 8,
+    "oldOccluderGroupCount": 55,
+    "mission": "Gates are existing q outposts, not goal switches or a new door-opening system; mission targets remain granary/militia-barracks. Gate target body selects original site. Decorative adjoining walls, shrubs, rocks and fences must remain separate objects and cannot become extra sites.",
+    "priorityOrder": [
+      "southeast-gate",
+      "southwest-gate",
+      "northwest-gate",
+      "northeast-gate"
+    ],
+    "finding": "Only southeast has been matched against actual C07 actor alpha in this bounded pass. Other ranks reflect visibly omitted stone/roof registration extent, not certified native failures. No gate mouth target-polygon interception was proved."
+  },
+  "gates": [
+    {
+      "id": "northwest-gate",
+      "priority": 3,
+      "visibleSourceCrop": [
+        60,
+        0,
+        250,
+        210
+      ],
+      "canonicalSite": {
+        "id": "northwest-gate",
+        "terrain": "q",
+        "owner": 1,
+        "cell": [
+          11,
+          11
+        ],
+        "approach": [
+          12,
+          11
+        ],
+        "sitePixel": [
+          180,
+          180
+        ],
+        "approachPixel": [
+          204,
+          180
+        ]
+      },
+      "canonicalSiteCenter": [
+        184,
+        184
+      ],
+      "canonicalApproachCenter": [
+        200,
+        184
+      ],
+      "siteTerrain": "q",
+      "approachTerrain": "p",
+      "siteMainComponentPath": [
+        [
+          40,
+          25
+        ],
+        [
+          41,
+          25
+        ],
+        [
+          41,
+          24
+        ],
+        [
+          41,
+          23
+        ],
+        [
+          41,
+          22
+        ],
+        [
+          40,
+          22
+        ],
+        [
+          39,
+          22
+        ],
+        [
+          39,
+          21
+        ],
+        [
+          39,
+          20
+        ],
+        [
+          39,
+          19
+        ],
+        [
+          38,
+          19
+        ],
+        [
+          37,
+          19
+        ],
+        [
+          36,
+          19
+        ],
+        [
+          35,
+          19
+        ],
+        [
+          34,
+          19
+        ],
+        [
+          33,
+          19
+        ],
+        [
+          32,
+          19
+        ],
+        [
+          31,
+          19
+        ],
+        [
+          30,
+          19
+        ],
+        [
+          29,
+          19
+        ],
+        [
+          28,
+          19
+        ],
+        [
+          27,
+          19
+        ],
+        [
+          27,
+          18
+        ],
+        [
+          26,
+          18
+        ],
+        [
+          26,
+          17
+        ],
+        [
+          25,
+          17
+        ],
+        [
+          24,
+          17
+        ],
+        [
+          23,
+          17
+        ],
+        [
+          22,
+          17
+        ],
+        [
+          21,
+          17
+        ],
+        [
+          21,
+          16
+        ],
+        [
+          20,
+          16
+        ],
+        [
+          19,
+          16
+        ],
+        [
+          19,
+          15
+        ],
+        [
+          18,
+          15
+        ],
+        [
+          17,
+          15
+        ],
+        [
+          17,
+          14
+        ],
+        [
+          16,
+          14
+        ],
+        [
+          15,
+          14
+        ],
+        [
+          15,
+          13
+        ],
+        [
+          14,
+          13
+        ],
+        [
+          13,
+          13
+        ],
+        [
+          13,
+          12
+        ],
+        [
+          13,
+          11
+        ],
+        [
+          12,
+          11
+        ],
+        [
+          11,
+          11
+        ]
+      ],
+      "approachMainComponentPath": [
+        [
+          40,
+          25
+        ],
+        [
+          41,
+          25
+        ],
+        [
+          41,
+          24
+        ],
+        [
+          41,
+          23
+        ],
+        [
+          41,
+          22
+        ],
+        [
+          40,
+          22
+        ],
+        [
+          39,
+          22
+        ],
+        [
+          39,
+          21
+        ],
+        [
+          39,
+          20
+        ],
+        [
+          39,
+          19
+        ],
+        [
+          38,
+          19
+        ],
+        [
+          37,
+          19
+        ],
+        [
+          36,
+          19
+        ],
+        [
+          35,
+          19
+        ],
+        [
+          34,
+          19
+        ],
+        [
+          33,
+          19
+        ],
+        [
+          32,
+          19
+        ],
+        [
+          31,
+          19
+        ],
+        [
+          30,
+          19
+        ],
+        [
+          29,
+          19
+        ],
+        [
+          28,
+          19
+        ],
+        [
+          27,
+          19
+        ],
+        [
+          27,
+          18
+        ],
+        [
+          26,
+          18
+        ],
+        [
+          26,
+          17
+        ],
+        [
+          25,
+          17
+        ],
+        [
+          24,
+          17
+        ],
+        [
+          23,
+          17
+        ],
+        [
+          22,
+          17
+        ],
+        [
+          21,
+          17
+        ],
+        [
+          21,
+          16
+        ],
+        [
+          20,
+          16
+        ],
+        [
+          19,
+          16
+        ],
+        [
+          19,
+          15
+        ],
+        [
+          18,
+          15
+        ],
+        [
+          17,
+          15
+        ],
+        [
+          17,
+          14
+        ],
+        [
+          16,
+          14
+        ],
+        [
+          15,
+          14
+        ],
+        [
+          15,
+          13
+        ],
+        [
+          14,
+          13
+        ],
+        [
+          13,
+          13
+        ],
+        [
+          13,
+          12
+        ],
+        [
+          13,
+          11
+        ],
+        [
+          12,
+          11
+        ]
+      ],
+      "pathCaveat": "Static 4-neighbor p/q/v/B connectivity with units omitted; no movement orders, enemy blockers, route-feasibility gameplay or per-turn reach claim. Existing native LuojiaChecks separately tests canonical movement/capture routes.",
+      "oldRegistration": {
+        "id": "northwest-gate",
+        "ownsMapStructureBody": true,
+        "parts": [
+          {
+            "id": "left-pier",
+            "polygonPixels": [
+              [
+                80,
+                51
+              ],
+              [
+                105,
+                62
+              ],
+              [
+                119,
+                55
+              ],
+              [
+                119,
+                155
+              ],
+              [
+                103,
+                168
+              ],
+              [
+                81,
+                155
+              ]
+            ],
+            "groundFrontPixels": [
+              103,
+              168
+            ],
+            "pointer": {
+              "kind": "target",
+              "polygonPixels": [
+                [
+                  86,
+                  112
+                ],
+                [
+                  101,
+                  118
+                ],
+                [
+                  101,
+                  148
+                ],
+                [
+                  86,
+                  142
+                ]
+              ]
+            },
+            "contactCell": [
+              6,
+              10
+            ]
+          },
+          {
+            "id": "right-roof",
+            "polygonPixels": [
+              [
+                143,
+                24
+              ],
+              [
+                186,
+                0
+              ],
+              [
+                236,
+                27
+              ],
+              [
+                195,
+                50
+              ]
+            ],
+            "groundFrontPixels": [
+              209,
+              157
+            ],
+            "pointer": {
+              "kind": "pass-through"
+            },
+            "contactCell": [
+              13,
+              9
+            ]
+          },
+          {
+            "id": "right-pier",
+            "polygonPixels": [
+              [
+                158,
+                36
+              ],
+              [
+                195,
+                50
+              ],
+              [
+                226,
+                34
+              ],
+              [
+                226,
+                143
+              ],
+              [
+                209,
+                157
+              ],
+              [
+                180,
+                143
+              ],
+              [
+                180,
+                74
+              ],
+              [
+                158,
+                68
+              ]
+            ],
+            "groundFrontPixels": [
+              209,
+              157
+            ],
+            "pointer": {
+              "kind": "pass-through"
+            },
+            "contactCell": [
+              13,
+              9
+            ]
+          },
+          {
+            "id": "arch-lintel",
+            "polygonPixels": [
+              [
+                112,
+                69
+              ],
+              [
+                179,
+                39
+              ],
+              [
+                180,
+                74
+              ],
+              [
+                163,
+                82
+              ],
+              [
+                149,
+                81
+              ],
+              [
+                136,
+                89
+              ],
+              [
+                124,
+                104
+              ],
+              [
+                117,
+                126
+              ],
+              [
+                112,
+                127
+              ]
+            ],
+            "groundFrontPixels": [
+              146,
+              142
+            ],
+            "pointer": {
+              "kind": "pass-through"
+            },
+            "contactCell": [
+              9,
+              8
+            ]
+          }
+        ],
+        "selectionCell": [
+          11,
+          11
+        ]
+      },
+      "twoPhysicalPierResponsibilities": [
+        {
+          "id": "northwest-gate-pier-0",
+          "polygonPixels": [
+            [
+              81,
+              126
+            ],
+            [
+              103,
+              137
+            ],
+            [
+              119,
+              129
+            ],
+            [
+              119,
+              157
+            ],
+            [
+              102,
+              168
+            ],
+            [
+              81,
+              155
+            ]
+          ],
+          "blockedCells": [
+            [
+              5,
+              7
+            ],
+            [
+              5,
+              8
+            ],
+            [
+              6,
+              8
+            ],
+            [
+              7,
+              8
+            ],
+            [
+              5,
+              9
+            ],
+            [
+              6,
+              9
+            ],
+            [
+              7,
+              9
+            ],
+            [
+              5,
+              10
+            ],
+            [
+              6,
+              10
+            ],
+            [
+              7,
+              10
+            ]
+          ]
+        },
+        {
+          "id": "northwest-gate-pier-1",
+          "polygonPixels": [
+            [
+              179,
+              115
+            ],
+            [
+              208,
+              127
+            ],
+            [
+              228,
+              117
+            ],
+            [
+              228,
+              145
+            ],
+            [
+              209,
+              157
+            ],
+            [
+              179,
+              145
+            ]
+          ],
+          "blockedCells": [
+            [
+              11,
+              7
+            ],
+            [
+              12,
+              7
+            ],
+            [
+              13,
+              7
+            ],
+            [
+              14,
+              7
+            ],
+            [
+              11,
+              8
+            ],
+            [
+              12,
+              8
+            ],
+            [
+              13,
+              8
+            ],
+            [
+              14,
+              8
+            ],
+            [
+              11,
+              9
+            ],
+            [
+              12,
+              9
+            ],
+            [
+              13,
+              9
+            ],
+            [
+              14,
+              9
+            ]
+          ]
+        }
+      ],
+      "pierCellCount": 22,
+      "physicalResponsibilityCaveat": "Audit ground polygons are canonical blocked-cell responsibility, not exact visible stone foot. Do not demand roof silhouette equals these ground polygons. No collision/site change proposed.",
+      "visibleSupportAssessment": [
+        "Small left lookout/tower lowest plaster around91,155 remains visible but ground contact is partially hidden by shrubs/rocks; old103,168 is not certified tower foot.",
+        "Large right tower main base is obscured by shrubbery; adjacent right arch return has a visible contact around174,139. Do not apply old209,157 shrub/ground depth to all its wall."
+      ],
+      "visibleArchSideContactsApprox": [
+        {
+          "source": [
+            125,
+            156
+          ],
+          "rgba": [
+            209,
+            183,
+            132,
+            255
+          ],
+          "role": "Approx visually visible adjoining arch-side stone contact; not the hidden whole tower foundation corner",
+          "canonicalProjectedCell": [
+            7,
+            9
+          ],
+          "terrainAtProjectedCell": "#",
+          "oldParts": []
+        },
+        {
+          "source": [
+            174,
+            139
+          ],
+          "rgba": [
+            194,
+            169,
+            144,
+            255
+          ],
+          "role": "Approx visually visible adjoining arch-side stone contact; not the hidden whole tower foundation corner",
+          "canonicalProjectedCell": [
+            10,
+            8
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": []
+        }
+      ],
+      "fixedOpeningNegatives": [
+        {
+          "source": [
+            136,
+            136
+          ],
+          "rgba": [
+            149,
+            121,
+            94,
+            255
+          ],
+          "role": "Actual dirt/paving through or immediately in front of arch, must remain empty of new gate material/target; original mother PNG is opaque so this is an object-mask negative, not source A0",
+          "canonicalProjectedCell": [
+            8,
+            8
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": []
+        },
+        {
+          "source": [
+            144,
+            144
+          ],
+          "rgba": [
+            216,
+            174,
+            121,
+            255
+          ],
+          "role": "Actual dirt/paving through or immediately in front of arch, must remain empty of new gate material/target; original mother PNG is opaque so this is an object-mask negative, not source A0",
+          "canonicalProjectedCell": [
+            9,
+            9
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": []
+        },
+        {
+          "source": [
+            160,
+            152
+          ],
+          "rgba": [
+            253,
+            204,
+            133,
+            255
+          ],
+          "role": "Actual dirt/paving through or immediately in front of arch, must remain empty of new gate material/target; original mother PNG is opaque so this is an object-mask negative, not source A0",
+          "canonicalProjectedCell": [
+            10,
+            9
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": []
+        }
+      ],
+      "targetPositive": {
+        "source": [
+          94,
+          132
+        ],
+        "rgba": [
+          150,
+          127,
+          111,
+          255
+        ],
+        "role": "Actual tower wall/banner material inside existing target polygon; selects gate canonical site, not a new door-opening capability",
+        "canonicalProjectedCell": [
+          5,
+          8
+        ],
+        "terrainAtProjectedCell": "#",
+        "oldParts": [
+          {
+            "id": "northwest-gate/left-pier",
+            "groundFrontPixels": [
+              103,
+              168
+            ],
+            "pointerKind": "target"
+          }
+        ]
+      },
+      "sourceOpenGateLeafBoundary": "The partly open wooden gate leaf is real standing material and must be separated from the hole. Do not erase leaf with the ground aperture or fill opening with a rectangle.",
+      "scopeAndPriority": "Left arch vertical stone continues aboutx119..127,y127..156 below old arch-lintel polygon. Small open lookout roof/beam silhouette is omitted by left-pier top polygon. Possible actor missing occlusion; not separately native/alpha tested here."
+    },
+    {
+      "id": "northeast-gate",
+      "priority": 4,
+      "visibleSourceCrop": [
+        1260,
+        0,
+        1460,
+        205
+      ],
+      "canonicalSite": {
+        "id": "northeast-gate",
+        "terrain": "q",
+        "owner": 2,
+        "cell": [
+          83,
+          11
+        ],
+        "approach": [
+          82,
+          11
+        ],
+        "sitePixel": [
+          1332,
+          180
+        ],
+        "approachPixel": [
+          1308,
+          180
+        ]
+      },
+      "canonicalSiteCenter": [
+        1336,
+        184
+      ],
+      "canonicalApproachCenter": [
+        1320,
+        184
+      ],
+      "siteTerrain": "q",
+      "approachTerrain": "p",
+      "siteMainComponentPath": [
+        [
+          40,
+          25
+        ],
+        [
+          41,
+          25
+        ],
+        [
+          42,
+          25
+        ],
+        [
+          43,
+          25
+        ],
+        [
+          44,
+          25
+        ],
+        [
+          45,
+          25
+        ],
+        [
+          46,
+          25
+        ],
+        [
+          47,
+          25
+        ],
+        [
+          48,
+          25
+        ],
+        [
+          49,
+          25
+        ],
+        [
+          50,
+          25
+        ],
+        [
+          51,
+          25
+        ],
+        [
+          52,
+          25
+        ],
+        [
+          53,
+          25
+        ],
+        [
+          54,
+          25
+        ],
+        [
+          54,
+          26
+        ],
+        [
+          55,
+          26
+        ],
+        [
+          56,
+          26
+        ],
+        [
+          57,
+          26
+        ],
+        [
+          57,
+          25
+        ],
+        [
+          58,
+          25
+        ],
+        [
+          59,
+          25
+        ],
+        [
+          59,
+          24
+        ],
+        [
+          59,
+          23
+        ],
+        [
+          59,
+          22
+        ],
+        [
+          59,
+          21
+        ],
+        [
+          60,
+          21
+        ],
+        [
+          61,
+          21
+        ],
+        [
+          62,
+          21
+        ],
+        [
+          63,
+          21
+        ],
+        [
+          64,
+          21
+        ],
+        [
+          65,
+          21
+        ],
+        [
+          66,
+          21
+        ],
+        [
+          67,
+          21
+        ],
+        [
+          68,
+          21
+        ],
+        [
+          68,
+          20
+        ],
+        [
+          69,
+          20
+        ],
+        [
+          70,
+          20
+        ],
+        [
+          70,
+          19
+        ],
+        [
+          70,
+          18
+        ],
+        [
+          71,
+          18
+        ],
+        [
+          72,
+          18
+        ],
+        [
+          73,
+          18
+        ],
+        [
+          74,
+          18
+        ],
+        [
+          75,
+          18
+        ],
+        [
+          76,
+          18
+        ],
+        [
+          77,
+          18
+        ],
+        [
+          77,
+          17
+        ],
+        [
+          78,
+          17
+        ],
+        [
+          79,
+          17
+        ],
+        [
+          79,
+          16
+        ],
+        [
+          80,
+          16
+        ],
+        [
+          81,
+          16
+        ],
+        [
+          81,
+          15
+        ],
+        [
+          82,
+          15
+        ],
+        [
+          83,
+          15
+        ],
+        [
+          83,
+          14
+        ],
+        [
+          83,
+          13
+        ],
+        [
+          83,
+          12
+        ],
+        [
+          83,
+          11
+        ]
+      ],
+      "approachMainComponentPath": [
+        [
+          40,
+          25
+        ],
+        [
+          41,
+          25
+        ],
+        [
+          42,
+          25
+        ],
+        [
+          43,
+          25
+        ],
+        [
+          44,
+          25
+        ],
+        [
+          45,
+          25
+        ],
+        [
+          46,
+          25
+        ],
+        [
+          47,
+          25
+        ],
+        [
+          48,
+          25
+        ],
+        [
+          49,
+          25
+        ],
+        [
+          50,
+          25
+        ],
+        [
+          51,
+          25
+        ],
+        [
+          52,
+          25
+        ],
+        [
+          53,
+          25
+        ],
+        [
+          54,
+          25
+        ],
+        [
+          54,
+          26
+        ],
+        [
+          55,
+          26
+        ],
+        [
+          56,
+          26
+        ],
+        [
+          57,
+          26
+        ],
+        [
+          57,
+          25
+        ],
+        [
+          58,
+          25
+        ],
+        [
+          59,
+          25
+        ],
+        [
+          59,
+          24
+        ],
+        [
+          59,
+          23
+        ],
+        [
+          59,
+          22
+        ],
+        [
+          59,
+          21
+        ],
+        [
+          60,
+          21
+        ],
+        [
+          61,
+          21
+        ],
+        [
+          62,
+          21
+        ],
+        [
+          63,
+          21
+        ],
+        [
+          64,
+          21
+        ],
+        [
+          65,
+          21
+        ],
+        [
+          66,
+          21
+        ],
+        [
+          67,
+          21
+        ],
+        [
+          68,
+          21
+        ],
+        [
+          68,
+          20
+        ],
+        [
+          69,
+          20
+        ],
+        [
+          70,
+          20
+        ],
+        [
+          70,
+          19
+        ],
+        [
+          70,
+          18
+        ],
+        [
+          70,
+          17
+        ],
+        [
+          70,
+          16
+        ],
+        [
+          70,
+          15
+        ],
+        [
+          70,
+          14
+        ],
+        [
+          70,
+          13
+        ],
+        [
+          70,
+          12
+        ],
+        [
+          71,
+          12
+        ],
+        [
+          71,
+          11
+        ],
+        [
+          72,
+          11
+        ],
+        [
+          73,
+          11
+        ],
+        [
+          73,
+          10
+        ],
+        [
+          74,
+          10
+        ],
+        [
+          75,
+          10
+        ],
+        [
+          76,
+          10
+        ],
+        [
+          77,
+          10
+        ],
+        [
+          78,
+          10
+        ],
+        [
+          79,
+          10
+        ],
+        [
+          80,
+          10
+        ],
+        [
+          81,
+          10
+        ],
+        [
+          82,
+          10
+        ],
+        [
+          82,
+          11
+        ]
+      ],
+      "pathCaveat": "Static 4-neighbor p/q/v/B connectivity with units omitted; no movement orders, enemy blockers, route-feasibility gameplay or per-turn reach claim. Existing native LuojiaChecks separately tests canonical movement/capture routes.",
+      "oldRegistration": {
+        "id": "northeast-gate",
+        "ownsMapStructureBody": true,
+        "parts": [
+          {
+            "id": "left-roof",
+            "polygonPixels": [
+              [
+                1280,
+                25
+              ],
+              [
+                1325,
+                0
+              ],
+              [
+                1381,
+                27
+              ],
+              [
+                1334,
+                51
+              ]
+            ],
+            "groundFrontPixels": [
+              1320,
+              150
+            ],
+            "pointer": {
+              "kind": "pass-through"
+            },
+            "contactCell": [
+              82,
+              9
+            ]
+          },
+          {
+            "id": "left-pier",
+            "polygonPixels": [
+              [
+                1294,
+                37
+              ],
+              [
+                1334,
+                51
+              ],
+              [
+                1360,
+                37
+              ],
+              [
+                1360,
+                66
+              ],
+              [
+                1344,
+                73
+              ],
+              [
+                1344,
+                137
+              ],
+              [
+                1320,
+                151
+              ],
+              [
+                1295,
+                137
+              ]
+            ],
+            "groundFrontPixels": [
+              1320,
+              150
+            ],
+            "pointer": {
+              "kind": "pass-through"
+            },
+            "contactCell": [
+              82,
+              9
+            ]
+          },
+          {
+            "id": "right-pier",
+            "polygonPixels": [
+              [
+                1394,
+                58
+              ],
+              [
+                1418,
+                68
+              ],
+              [
+                1442,
+                55
+              ],
+              [
+                1440,
+                150
+              ],
+              [
+                1418,
+                165
+              ],
+              [
+                1395,
+                151
+              ]
+            ],
+            "groundFrontPixels": [
+              1418,
+              165
+            ],
+            "pointer": {
+              "kind": "target",
+              "polygonPixels": [
+                [
+                  1410,
+                  112
+                ],
+                [
+                  1424,
+                  116
+                ],
+                [
+                  1424,
+                  146
+                ],
+                [
+                  1410,
+                  141
+                ]
+              ]
+            },
+            "contactCell": [
+              88,
+              10
+            ]
+          },
+          {
+            "id": "arch-lintel",
+            "polygonPixels": [
+              [
+                1344,
+                56
+              ],
+              [
+                1395,
+                76
+              ],
+              [
+                1395,
+                115
+              ],
+              [
+                1387,
+                99
+              ],
+              [
+                1376,
+                93
+              ],
+              [
+                1365,
+                96
+              ],
+              [
+                1353,
+                106
+              ],
+              [
+                1344,
+                120
+              ]
+            ],
+            "groundFrontPixels": [
+              1370,
+              143
+            ],
+            "pointer": {
+              "kind": "pass-through"
+            },
+            "contactCell": [
+              85,
+              8
+            ]
+          }
+        ],
+        "selectionCell": [
+          83,
+          11
+        ]
+      },
+      "twoPhysicalPierResponsibilities": [
+        {
+          "id": "northeast-gate-pier-0",
+          "polygonPixels": [
+            [
+              1297,
+              107
+            ],
+            [
+              1321,
+              120
+            ],
+            [
+              1345,
+              109
+            ],
+            [
+              1345,
+              137
+            ],
+            [
+              1320,
+              150
+            ],
+            [
+              1297,
+              137
+            ]
+          ],
+          "blockedCells": [
+            [
+              81,
+              6
+            ],
+            [
+              83,
+              6
+            ],
+            [
+              84,
+              6
+            ],
+            [
+              81,
+              7
+            ],
+            [
+              82,
+              7
+            ],
+            [
+              83,
+              7
+            ],
+            [
+              84,
+              7
+            ],
+            [
+              81,
+              8
+            ],
+            [
+              82,
+              8
+            ],
+            [
+              83,
+              8
+            ],
+            [
+              84,
+              8
+            ],
+            [
+              81,
+              9
+            ],
+            [
+              82,
+              9
+            ],
+            [
+              83,
+              9
+            ]
+          ]
+        },
+        {
+          "id": "northeast-gate-pier-1",
+          "polygonPixels": [
+            [
+              1395,
+              121
+            ],
+            [
+              1418,
+              132
+            ],
+            [
+              1440,
+              122
+            ],
+            [
+              1440,
+              149
+            ],
+            [
+              1418,
+              164
+            ],
+            [
+              1395,
+              151
+            ]
+          ],
+          "blockedCells": [
+            [
+              87,
+              7
+            ],
+            [
+              88,
+              7
+            ],
+            [
+              89,
+              7
+            ],
+            [
+              87,
+              8
+            ],
+            [
+              88,
+              8
+            ],
+            [
+              89,
+              8
+            ],
+            [
+              87,
+              9
+            ],
+            [
+              88,
+              9
+            ],
+            [
+              89,
+              9
+            ],
+            [
+              88,
+              10
+            ]
+          ]
+        }
+      ],
+      "pierCellCount": 24,
+      "physicalResponsibilityCaveat": "Audit ground polygons are canonical blocked-cell responsibility, not exact visible stone foot. Do not demand roof silhouette equals these ground polygons. No collision/site change proposed.",
+      "visibleSupportAssessment": [
+        "Large left tower near base is largely foliage-hidden; visible left arch side contacts ground around1354,138.",
+        "Small right lookout/tower ground base is foliage-hidden; adjoining inner arch-side stone continues to about1396,158."
+      ],
+      "visibleArchSideContactsApprox": [
+        {
+          "source": [
+            1354,
+            138
+          ],
+          "rgba": [
+            71,
+            64,
+            63,
+            255
+          ],
+          "role": "Approx visually visible adjoining arch-side stone contact; not the hidden whole tower foundation corner",
+          "canonicalProjectedCell": [
+            84,
+            8
+          ],
+          "terrainAtProjectedCell": "#",
+          "oldParts": []
+        },
+        {
+          "source": [
+            1396,
+            158
+          ],
+          "rgba": [
+            78,
+            78,
+            59,
+            255
+          ],
+          "role": "Approx visually visible adjoining arch-side stone contact; not the hidden whole tower foundation corner",
+          "canonicalProjectedCell": [
+            87,
+            9
+          ],
+          "terrainAtProjectedCell": "#",
+          "oldParts": []
+        }
+      ],
+      "fixedOpeningNegatives": [
+        {
+          "source": [
+            1376,
+            145
+          ],
+          "rgba": [
+            206,
+            169,
+            125,
+            255
+          ],
+          "role": "Actual dirt/paving through or immediately in front of arch, must remain empty of new gate material/target; original mother PNG is opaque so this is an object-mask negative, not source A0",
+          "canonicalProjectedCell": [
+            86,
+            9
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": []
+        },
+        {
+          "source": [
+            1384,
+            145
+          ],
+          "rgba": [
+            252,
+            213,
+            146,
+            255
+          ],
+          "role": "Actual dirt/paving through or immediately in front of arch, must remain empty of new gate material/target; original mother PNG is opaque so this is an object-mask negative, not source A0",
+          "canonicalProjectedCell": [
+            86,
+            9
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": []
+        },
+        {
+          "source": [
+            1388,
+            152
+          ],
+          "rgba": [
+            172,
+            144,
+            118,
+            255
+          ],
+          "role": "Actual dirt/paving through or immediately in front of arch, must remain empty of new gate material/target; original mother PNG is opaque so this is an object-mask negative, not source A0",
+          "canonicalProjectedCell": [
+            86,
+            9
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": []
+        }
+      ],
+      "targetPositive": {
+        "source": [
+          1417,
+          130
+        ],
+        "rgba": [
+          135,
+          145,
+          163,
+          255
+        ],
+        "role": "Actual tower wall/banner material inside existing target polygon; selects gate canonical site, not a new door-opening capability",
+        "canonicalProjectedCell": [
+          88,
+          8
+        ],
+        "terrainAtProjectedCell": "#",
+        "oldParts": [
+          {
+            "id": "northeast-gate/right-pier",
+            "groundFrontPixels": [
+              1418,
+              165
+            ],
+            "pointerKind": "target"
+          }
+        ]
+      },
+      "sourceOpenGateLeafBoundary": "The partly open wooden gate leaf is real standing material and must be separated from the hole. Do not erase leaf with the ground aperture or fill opening with a rectangle.",
+      "scopeAndPriority": "Arch-lintel omits vertical arch returns below about120/115; full small lookout roof and posts are not faithfully covered. Canonical entrance and source mouth have no new target-polygon false-positive found; not exhaustive picking certification."
+    },
+    {
+      "id": "southwest-gate",
+      "priority": 2,
+      "visibleSourceCrop": [
+        85,
+        710,
+        340,
+        970
+      ],
+      "canonicalSite": {
+        "id": "southwest-gate",
+        "terrain": "q",
+        "owner": 0,
+        "cell": [
+          15,
+          51
+        ],
+        "approach": [
+          16,
+          51
+        ],
+        "sitePixel": [
+          252,
+          828
+        ],
+        "approachPixel": [
+          276,
+          828
+        ]
+      },
+      "canonicalSiteCenter": [
+        248,
+        824
+      ],
+      "canonicalApproachCenter": [
+        264,
+        824
+      ],
+      "siteTerrain": "q",
+      "approachTerrain": "p",
+      "siteMainComponentPath": [
+        [
+          40,
+          25
+        ],
+        [
+          39,
+          25
+        ],
+        [
+          38,
+          25
+        ],
+        [
+          38,
+          26
+        ],
+        [
+          38,
+          27
+        ],
+        [
+          38,
+          28
+        ],
+        [
+          38,
+          29
+        ],
+        [
+          37,
+          29
+        ],
+        [
+          36,
+          29
+        ],
+        [
+          36,
+          30
+        ],
+        [
+          35,
+          30
+        ],
+        [
+          34,
+          30
+        ],
+        [
+          33,
+          30
+        ],
+        [
+          32,
+          30
+        ],
+        [
+          31,
+          30
+        ],
+        [
+          30,
+          30
+        ],
+        [
+          29,
+          30
+        ],
+        [
+          28,
+          30
+        ],
+        [
+          28,
+          31
+        ],
+        [
+          28,
+          32
+        ],
+        [
+          27,
+          32
+        ],
+        [
+          26,
+          32
+        ],
+        [
+          26,
+          33
+        ],
+        [
+          26,
+          34
+        ],
+        [
+          26,
+          35
+        ],
+        [
+          26,
+          36
+        ],
+        [
+          26,
+          37
+        ],
+        [
+          26,
+          38
+        ],
+        [
+          26,
+          39
+        ],
+        [
+          27,
+          39
+        ],
+        [
+          28,
+          39
+        ],
+        [
+          28,
+          40
+        ],
+        [
+          28,
+          41
+        ],
+        [
+          29,
+          41
+        ],
+        [
+          30,
+          41
+        ],
+        [
+          30,
+          42
+        ],
+        [
+          30,
+          43
+        ],
+        [
+          30,
+          44
+        ],
+        [
+          30,
+          45
+        ],
+        [
+          29,
+          45
+        ],
+        [
+          29,
+          46
+        ],
+        [
+          28,
+          46
+        ],
+        [
+          27,
+          46
+        ],
+        [
+          27,
+          47
+        ],
+        [
+          26,
+          47
+        ],
+        [
+          25,
+          47
+        ],
+        [
+          25,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          23,
+          48
+        ],
+        [
+          22,
+          48
+        ],
+        [
+          22,
+          49
+        ],
+        [
+          22,
+          50
+        ],
+        [
+          22,
+          51
+        ],
+        [
+          21,
+          51
+        ],
+        [
+          20,
+          51
+        ],
+        [
+          19,
+          51
+        ],
+        [
+          18,
+          51
+        ],
+        [
+          17,
+          51
+        ],
+        [
+          16,
+          51
+        ],
+        [
+          15,
+          51
+        ]
+      ],
+      "approachMainComponentPath": [
+        [
+          40,
+          25
+        ],
+        [
+          39,
+          25
+        ],
+        [
+          38,
+          25
+        ],
+        [
+          38,
+          26
+        ],
+        [
+          38,
+          27
+        ],
+        [
+          38,
+          28
+        ],
+        [
+          38,
+          29
+        ],
+        [
+          37,
+          29
+        ],
+        [
+          36,
+          29
+        ],
+        [
+          36,
+          30
+        ],
+        [
+          35,
+          30
+        ],
+        [
+          34,
+          30
+        ],
+        [
+          33,
+          30
+        ],
+        [
+          32,
+          30
+        ],
+        [
+          31,
+          30
+        ],
+        [
+          30,
+          30
+        ],
+        [
+          29,
+          30
+        ],
+        [
+          28,
+          30
+        ],
+        [
+          28,
+          31
+        ],
+        [
+          28,
+          32
+        ],
+        [
+          27,
+          32
+        ],
+        [
+          26,
+          32
+        ],
+        [
+          26,
+          33
+        ],
+        [
+          26,
+          34
+        ],
+        [
+          26,
+          35
+        ],
+        [
+          26,
+          36
+        ],
+        [
+          26,
+          37
+        ],
+        [
+          26,
+          38
+        ],
+        [
+          26,
+          39
+        ],
+        [
+          27,
+          39
+        ],
+        [
+          28,
+          39
+        ],
+        [
+          28,
+          40
+        ],
+        [
+          28,
+          41
+        ],
+        [
+          29,
+          41
+        ],
+        [
+          30,
+          41
+        ],
+        [
+          30,
+          42
+        ],
+        [
+          30,
+          43
+        ],
+        [
+          30,
+          44
+        ],
+        [
+          30,
+          45
+        ],
+        [
+          29,
+          45
+        ],
+        [
+          29,
+          46
+        ],
+        [
+          28,
+          46
+        ],
+        [
+          27,
+          46
+        ],
+        [
+          27,
+          47
+        ],
+        [
+          26,
+          47
+        ],
+        [
+          25,
+          47
+        ],
+        [
+          25,
+          48
+        ],
+        [
+          24,
+          48
+        ],
+        [
+          23,
+          48
+        ],
+        [
+          22,
+          48
+        ],
+        [
+          22,
+          49
+        ],
+        [
+          22,
+          50
+        ],
+        [
+          22,
+          51
+        ],
+        [
+          21,
+          51
+        ],
+        [
+          20,
+          51
+        ],
+        [
+          19,
+          51
+        ],
+        [
+          18,
+          51
+        ],
+        [
+          17,
+          51
+        ],
+        [
+          16,
+          51
+        ]
+      ],
+      "pathCaveat": "Static 4-neighbor p/q/v/B connectivity with units omitted; no movement orders, enemy blockers, route-feasibility gameplay or per-turn reach claim. Existing native LuojiaChecks separately tests canonical movement/capture routes.",
+      "oldRegistration": {
+        "id": "southwest-gate",
+        "ownsMapStructureBody": true,
+        "parts": [
+          {
+            "id": "left-roof",
+            "polygonPixels": [
+              [
+                96,
+                755
+              ],
+              [
+                147,
+                725
+              ],
+              [
+                206,
+                759
+              ],
+              [
+                153,
+                789
+              ]
+            ],
+            "groundFrontPixels": [
+              148,
+              902
+            ],
+            "pointer": {
+              "kind": "pass-through"
+            },
+            "contactCell": [
+              9,
+              56
+            ]
+          },
+          {
+            "id": "left-pier",
+            "polygonPixels": [
+              [
+                113,
+                769
+              ],
+              [
+                153,
+                789
+              ],
+              [
+                177,
+                776
+              ],
+              [
+                177,
+                880
+              ],
+              [
+                150,
+                903
+              ],
+              [
+                115,
+                883
+              ]
+            ],
+            "groundFrontPixels": [
+              148,
+              902
+            ],
+            "pointer": {
+              "kind": "pass-through"
+            },
+            "contactCell": [
+              9,
+              56
+            ]
+          },
+          {
+            "id": "right-roof",
+            "polygonPixels": [
+              [
+                246,
+                831
+              ],
+              [
+                280,
+                807
+              ],
+              [
+                327,
+                836
+              ],
+              [
+                291,
+                859
+              ]
+            ],
+            "groundFrontPixels": [
+              286,
+              948
+            ],
+            "pointer": {
+              "kind": "pass-through"
+            },
+            "contactCell": [
+              17,
+              59
+            ]
+          },
+          {
+            "id": "right-pier",
+            "polygonPixels": [
+              [
+                254,
+                843
+              ],
+              [
+                291,
+                859
+              ],
+              [
+                317,
+                845
+              ],
+              [
+                317,
+                929
+              ],
+              [
+                286,
+                949
+              ],
+              [
+                254,
+                929
+              ]
+            ],
+            "groundFrontPixels": [
+              286,
+              948
+            ],
+            "pointer": {
+              "kind": "target",
+              "polygonPixels": [
+                [
+                  271,
+                  872
+                ],
+                [
+                  289,
+                  879
+                ],
+                [
+                  289,
+                  918
+                ],
+                [
+                  271,
+                  911
+                ]
+              ]
+            },
+            "contactCell": [
+              17,
+              59
+            ]
+          },
+          {
+            "id": "arch-lintel",
+            "polygonPixels": [
+              [
+                174,
+                796
+              ],
+              [
+                255,
+                840
+              ],
+              [
+                255,
+                881
+              ],
+              [
+                241,
+                854
+              ],
+              [
+                226,
+                846
+              ],
+              [
+                210,
+                847
+              ],
+              [
+                192,
+                863
+              ],
+              [
+                177,
+                891
+              ]
+            ],
+            "groundFrontPixels": [
+              210,
+              902
+            ],
+            "pointer": {
+              "kind": "pass-through"
+            },
+            "contactCell": [
+              13,
+              56
+            ]
+          }
+        ],
+        "selectionCell": [
+          15,
+          51
+        ]
+      },
+      "twoPhysicalPierResponsibilities": [
+        {
+          "id": "southwest-gate-pier-0",
+          "polygonPixels": [
+            [
+              115,
+              836
+            ],
+            [
+              148,
+              852
+            ],
+            [
+              173,
+              840
+            ],
+            [
+              173,
+              884
+            ],
+            [
+              148,
+              902
+            ],
+            [
+              115,
+              883
+            ]
+          ],
+          "blockedCells": [
+            [
+              7,
+              52
+            ],
+            [
+              8,
+              52
+            ],
+            [
+              9,
+              52
+            ],
+            [
+              10,
+              52
+            ],
+            [
+              7,
+              53
+            ],
+            [
+              8,
+              53
+            ],
+            [
+              9,
+              53
+            ],
+            [
+              10,
+              53
+            ],
+            [
+              7,
+              54
+            ],
+            [
+              8,
+              54
+            ],
+            [
+              9,
+              54
+            ],
+            [
+              10,
+              54
+            ],
+            [
+              7,
+              55
+            ],
+            [
+              8,
+              55
+            ],
+            [
+              9,
+              55
+            ],
+            [
+              10,
+              55
+            ],
+            [
+              8,
+              56
+            ],
+            [
+              9,
+              56
+            ]
+          ]
+        },
+        {
+          "id": "southwest-gate-pier-1",
+          "polygonPixels": [
+            [
+              254,
+              882
+            ],
+            [
+              285,
+              899
+            ],
+            [
+              316,
+              884
+            ],
+            [
+              316,
+              929
+            ],
+            [
+              286,
+              948
+            ],
+            [
+              254,
+              929
+            ]
+          ],
+          "blockedCells": [
+            [
+              15,
+              55
+            ],
+            [
+              16,
+              55
+            ],
+            [
+              17,
+              55
+            ],
+            [
+              18,
+              55
+            ],
+            [
+              19,
+              55
+            ],
+            [
+              15,
+              56
+            ],
+            [
+              16,
+              56
+            ],
+            [
+              17,
+              56
+            ],
+            [
+              18,
+              56
+            ],
+            [
+              19,
+              56
+            ],
+            [
+              15,
+              57
+            ],
+            [
+              16,
+              57
+            ],
+            [
+              17,
+              57
+            ],
+            [
+              18,
+              57
+            ],
+            [
+              19,
+              57
+            ],
+            [
+              15,
+              58
+            ],
+            [
+              16,
+              58
+            ],
+            [
+              17,
+              58
+            ],
+            [
+              18,
+              58
+            ],
+            [
+              19,
+              58
+            ],
+            [
+              17,
+              59
+            ],
+            [
+              18,
+              59
+            ]
+          ]
+        }
+      ],
+      "pierCellCount": 40,
+      "physicalResponsibilityCaveat": "Audit ground polygons are canonical blocked-cell responsibility, not exact visible stone foot. Do not demand roof silhouette equals these ground polygons. No collision/site change proposed.",
+      "visibleSupportAssessment": [
+        "Large left tower lower wall at166,896 is visible but near base partly shrub-hidden; left arch return at181,903 is a distinct visible contact.",
+        "Small right tower lower wall around293,939 is visible but complete foot is obscured by foreground foliage/rock; inner arch return244,933 is visible."
+      ],
+      "visibleArchSideContactsApprox": [
+        {
+          "source": [
+            181,
+            903
+          ],
+          "rgba": [
+            122,
+            110,
+            108,
+            255
+          ],
+          "role": "Approx visually visible adjoining arch-side stone contact; not the hidden whole tower foundation corner",
+          "canonicalProjectedCell": [
+            11,
+            56
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": []
+        },
+        {
+          "source": [
+            244,
+            933
+          ],
+          "rgba": [
+            81,
+            84,
+            61,
+            255
+          ],
+          "role": "Approx visually visible adjoining arch-side stone contact; not the hidden whole tower foundation corner",
+          "canonicalProjectedCell": [
+            15,
+            58
+          ],
+          "terrainAtProjectedCell": "#",
+          "oldParts": []
+        }
+      ],
+      "fixedOpeningNegatives": [
+        {
+          "source": [
+            216,
+            889
+          ],
+          "rgba": [
+            252,
+            205,
+            137,
+            255
+          ],
+          "role": "Actual dirt/paving through or immediately in front of arch, must remain empty of new gate material/target; original mother PNG is opaque so this is an object-mask negative, not source A0",
+          "canonicalProjectedCell": [
+            13,
+            55
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": []
+        },
+        {
+          "source": [
+            224,
+            904
+          ],
+          "rgba": [
+            251,
+            196,
+            121,
+            255
+          ],
+          "role": "Actual dirt/paving through or immediately in front of arch, must remain empty of new gate material/target; original mother PNG is opaque so this is an object-mask negative, not source A0",
+          "canonicalProjectedCell": [
+            14,
+            56
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": []
+        },
+        {
+          "source": [
+            232,
+            916
+          ],
+          "rgba": [
+            250,
+            205,
+            142,
+            255
+          ],
+          "role": "Actual dirt/paving through or immediately in front of arch, must remain empty of new gate material/target; original mother PNG is opaque so this is an object-mask negative, not source A0",
+          "canonicalProjectedCell": [
+            14,
+            57
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": []
+        }
+      ],
+      "targetPositive": {
+        "source": [
+          280,
+          895
+        ],
+        "rgba": [
+          151,
+          130,
+          117,
+          255
+        ],
+        "role": "Actual tower wall/banner material inside existing target polygon; selects gate canonical site, not a new door-opening capability",
+        "canonicalProjectedCell": [
+          17,
+          55
+        ],
+        "terrainAtProjectedCell": "#",
+        "oldParts": [
+          {
+            "id": "southwest-gate/right-pier",
+            "groundFrontPixels": [
+              286,
+              948
+            ],
+            "pointerKind": "target"
+          }
+        ]
+      },
+      "sourceOpenGateLeafBoundary": "The partly open wooden gate leaf is real standing material and must be separated from the hole. Do not erase leaf with the ground aperture or fill opening with a rectangle.",
+      "scopeAndPriority": "Old arch-lintel ends at891/881 while actual arch returns reach903/933. Old left-roof polygon visibly misses right/front roof extent; right-roof and facade partitions also differ. Similar missing occlusion candidate, but only southeast received actor validation in this bounded review."
+    },
+    {
+      "id": "southeast-gate",
+      "priority": 1,
+      "visibleSourceCrop": [
+        1195,
+        705,
+        1480,
+        960
+      ],
+      "canonicalSite": {
+        "id": "southeast-gate",
+        "terrain": "q",
+        "owner": 0,
+        "cell": [
+          84,
+          57
+        ],
+        "approach": [
+          85,
+          57
+        ],
+        "sitePixel": [
+          1352,
+          920
+        ],
+        "approachPixel": [
+          1368,
+          920
+        ]
+      },
+      "canonicalSiteCenter": [
+        1352,
+        920
+      ],
+      "canonicalApproachCenter": [
+        1368,
+        920
+      ],
+      "siteTerrain": "q",
+      "approachTerrain": "p",
+      "siteMainComponentPath": [
+        [
+          40,
+          25
+        ],
+        [
+          41,
+          25
+        ],
+        [
+          42,
+          25
+        ],
+        [
+          43,
+          25
+        ],
+        [
+          44,
+          25
+        ],
+        [
+          45,
+          25
+        ],
+        [
+          46,
+          25
+        ],
+        [
+          47,
+          25
+        ],
+        [
+          48,
+          25
+        ],
+        [
+          49,
+          25
+        ],
+        [
+          50,
+          25
+        ],
+        [
+          51,
+          25
+        ],
+        [
+          52,
+          25
+        ],
+        [
+          53,
+          25
+        ],
+        [
+          54,
+          25
+        ],
+        [
+          54,
+          26
+        ],
+        [
+          55,
+          26
+        ],
+        [
+          56,
+          26
+        ],
+        [
+          57,
+          26
+        ],
+        [
+          58,
+          26
+        ],
+        [
+          59,
+          26
+        ],
+        [
+          60,
+          26
+        ],
+        [
+          61,
+          26
+        ],
+        [
+          61,
+          27
+        ],
+        [
+          61,
+          28
+        ],
+        [
+          61,
+          29
+        ],
+        [
+          62,
+          29
+        ],
+        [
+          63,
+          29
+        ],
+        [
+          63,
+          30
+        ],
+        [
+          64,
+          30
+        ],
+        [
+          65,
+          30
+        ],
+        [
+          65,
+          31
+        ],
+        [
+          65,
+          32
+        ],
+        [
+          66,
+          32
+        ],
+        [
+          67,
+          32
+        ],
+        [
+          68,
+          32
+        ],
+        [
+          69,
+          32
+        ],
+        [
+          70,
+          32
+        ],
+        [
+          71,
+          32
+        ],
+        [
+          72,
+          32
+        ],
+        [
+          73,
+          32
+        ],
+        [
+          74,
+          32
+        ],
+        [
+          75,
+          32
+        ],
+        [
+          76,
+          32
+        ],
+        [
+          77,
+          32
+        ],
+        [
+          78,
+          32
+        ],
+        [
+          79,
+          32
+        ],
+        [
+          79,
+          33
+        ],
+        [
+          79,
+          34
+        ],
+        [
+          79,
+          35
+        ],
+        [
+          80,
+          35
+        ],
+        [
+          81,
+          35
+        ],
+        [
+          81,
+          36
+        ],
+        [
+          82,
+          36
+        ],
+        [
+          83,
+          36
+        ],
+        [
+          83,
+          37
+        ],
+        [
+          83,
+          38
+        ],
+        [
+          83,
+          39
+        ],
+        [
+          83,
+          40
+        ],
+        [
+          83,
+          41
+        ],
+        [
+          83,
+          42
+        ],
+        [
+          83,
+          43
+        ],
+        [
+          83,
+          44
+        ],
+        [
+          83,
+          45
+        ],
+        [
+          83,
+          46
+        ],
+        [
+          83,
+          47
+        ],
+        [
+          82,
+          47
+        ],
+        [
+          81,
+          47
+        ],
+        [
+          81,
+          48
+        ],
+        [
+          81,
+          49
+        ],
+        [
+          81,
+          50
+        ],
+        [
+          82,
+          50
+        ],
+        [
+          83,
+          50
+        ],
+        [
+          83,
+          51
+        ],
+        [
+          84,
+          51
+        ],
+        [
+          84,
+          52
+        ],
+        [
+          84,
+          53
+        ],
+        [
+          84,
+          54
+        ],
+        [
+          84,
+          55
+        ],
+        [
+          84,
+          56
+        ],
+        [
+          84,
+          57
+        ]
+      ],
+      "approachMainComponentPath": [
+        [
+          40,
+          25
+        ],
+        [
+          41,
+          25
+        ],
+        [
+          42,
+          25
+        ],
+        [
+          43,
+          25
+        ],
+        [
+          44,
+          25
+        ],
+        [
+          45,
+          25
+        ],
+        [
+          46,
+          25
+        ],
+        [
+          47,
+          25
+        ],
+        [
+          48,
+          25
+        ],
+        [
+          49,
+          25
+        ],
+        [
+          50,
+          25
+        ],
+        [
+          51,
+          25
+        ],
+        [
+          52,
+          25
+        ],
+        [
+          53,
+          25
+        ],
+        [
+          54,
+          25
+        ],
+        [
+          54,
+          26
+        ],
+        [
+          55,
+          26
+        ],
+        [
+          56,
+          26
+        ],
+        [
+          57,
+          26
+        ],
+        [
+          58,
+          26
+        ],
+        [
+          59,
+          26
+        ],
+        [
+          60,
+          26
+        ],
+        [
+          61,
+          26
+        ],
+        [
+          61,
+          27
+        ],
+        [
+          61,
+          28
+        ],
+        [
+          61,
+          29
+        ],
+        [
+          62,
+          29
+        ],
+        [
+          63,
+          29
+        ],
+        [
+          63,
+          30
+        ],
+        [
+          64,
+          30
+        ],
+        [
+          65,
+          30
+        ],
+        [
+          65,
+          31
+        ],
+        [
+          65,
+          32
+        ],
+        [
+          66,
+          32
+        ],
+        [
+          67,
+          32
+        ],
+        [
+          68,
+          32
+        ],
+        [
+          69,
+          32
+        ],
+        [
+          70,
+          32
+        ],
+        [
+          71,
+          32
+        ],
+        [
+          72,
+          32
+        ],
+        [
+          73,
+          32
+        ],
+        [
+          74,
+          32
+        ],
+        [
+          75,
+          32
+        ],
+        [
+          76,
+          32
+        ],
+        [
+          77,
+          32
+        ],
+        [
+          78,
+          32
+        ],
+        [
+          79,
+          32
+        ],
+        [
+          79,
+          33
+        ],
+        [
+          79,
+          34
+        ],
+        [
+          79,
+          35
+        ],
+        [
+          80,
+          35
+        ],
+        [
+          81,
+          35
+        ],
+        [
+          81,
+          36
+        ],
+        [
+          82,
+          36
+        ],
+        [
+          83,
+          36
+        ],
+        [
+          83,
+          37
+        ],
+        [
+          83,
+          38
+        ],
+        [
+          83,
+          39
+        ],
+        [
+          83,
+          40
+        ],
+        [
+          83,
+          41
+        ],
+        [
+          83,
+          42
+        ],
+        [
+          83,
+          43
+        ],
+        [
+          83,
+          44
+        ],
+        [
+          83,
+          45
+        ],
+        [
+          83,
+          46
+        ],
+        [
+          83,
+          47
+        ],
+        [
+          82,
+          47
+        ],
+        [
+          81,
+          47
+        ],
+        [
+          81,
+          48
+        ],
+        [
+          81,
+          49
+        ],
+        [
+          81,
+          50
+        ],
+        [
+          82,
+          50
+        ],
+        [
+          83,
+          50
+        ],
+        [
+          83,
+          51
+        ],
+        [
+          84,
+          51
+        ],
+        [
+          84,
+          52
+        ],
+        [
+          84,
+          53
+        ],
+        [
+          84,
+          54
+        ],
+        [
+          84,
+          55
+        ],
+        [
+          85,
+          55
+        ],
+        [
+          85,
+          56
+        ],
+        [
+          85,
+          57
+        ]
+      ],
+      "pathCaveat": "Static 4-neighbor p/q/v/B connectivity with units omitted; no movement orders, enemy blockers, route-feasibility gameplay or per-turn reach claim. Existing native LuojiaChecks separately tests canonical movement/capture routes.",
+      "oldRegistration": {
+        "id": "southeast-gate",
+        "ownsMapStructureBody": true,
+        "parts": [
+          {
+            "id": "left-roof",
+            "polygonPixels": [
+              [
+                1216,
+                821
+              ],
+              [
+                1256,
+                792
+              ],
+              [
+                1308,
+                821
+              ],
+              [
+                1268,
+                850
+              ]
+            ],
+            "groundFrontPixels": [
+              1258,
+              925
+            ],
+            "pointer": {
+              "kind": "pass-through"
+            },
+            "contactCell": [
+              78,
+              57
+            ]
+          },
+          {
+            "id": "left-pier",
+            "polygonPixels": [
+              [
+                1227,
+                835
+              ],
+              [
+                1268,
+                850
+              ],
+              [
+                1289,
+                838
+              ],
+              [
+                1289,
+                905
+              ],
+              [
+                1258,
+                927
+              ],
+              [
+                1227,
+                907
+              ]
+            ],
+            "groundFrontPixels": [
+              1258,
+              925
+            ],
+            "pointer": {
+              "kind": "target",
+              "polygonPixels": [
+                [
+                  1242,
+                  869
+                ],
+                [
+                  1259,
+                  878
+                ],
+                [
+                  1259,
+                  910
+                ],
+                [
+                  1242,
+                  902
+                ]
+              ]
+            },
+            "contactCell": [
+              78,
+              57
+            ]
+          },
+          {
+            "id": "right-roof",
+            "polygonPixels": [
+              [
+                1344,
+                753
+              ],
+              [
+                1397,
+                720
+              ],
+              [
+                1460,
+                757
+              ],
+              [
+                1408,
+                793
+              ]
+            ],
+            "groundFrontPixels": [
+              1400,
+              886
+            ],
+            "pointer": {
+              "kind": "pass-through"
+            },
+            "contactCell": [
+              87,
+              55
+            ]
+          },
+          {
+            "id": "right-pier",
+            "polygonPixels": [
+              [
+                1370,
+                777
+              ],
+              [
+                1408,
+                793
+              ],
+              [
+                1433,
+                779
+              ],
+              [
+                1433,
+                865
+              ],
+              [
+                1400,
+                887
+              ],
+              [
+                1370,
+                867
+              ]
+            ],
+            "groundFrontPixels": [
+              1400,
+              886
+            ],
+            "pointer": {
+              "kind": "pass-through"
+            },
+            "contactCell": [
+              87,
+              55
+            ]
+          },
+          {
+            "id": "arch-lintel",
+            "polygonPixels": [
+              [
+                1289,
+                820
+              ],
+              [
+                1371,
+                776
+              ],
+              [
+                1371,
+                817
+              ],
+              [
+                1354,
+                823
+              ],
+              [
+                1337,
+                831
+              ],
+              [
+                1326,
+                846
+              ],
+              [
+                1317,
+                864
+              ],
+              [
+                1310,
+                885
+              ],
+              [
+                1289,
+                896
+              ]
+            ],
+            "groundFrontPixels": [
+              1330,
+              884
+            ],
+            "pointer": {
+              "kind": "pass-through"
+            },
+            "contactCell": [
+              83,
+              55
+            ]
+          }
+        ],
+        "selectionCell": [
+          84,
+          57
+        ]
+      },
+      "twoPhysicalPierResponsibilities": [
+        {
+          "id": "southeast-gate-pier-0",
+          "polygonPixels": [
+            [
+              1228,
+              857
+            ],
+            [
+              1259,
+              874
+            ],
+            [
+              1288,
+              858
+            ],
+            [
+              1288,
+              906
+            ],
+            [
+              1258,
+              925
+            ],
+            [
+              1228,
+              906
+            ]
+          ],
+          "blockedCells": [
+            [
+              76,
+              53
+            ],
+            [
+              77,
+              53
+            ],
+            [
+              79,
+              53
+            ],
+            [
+              80,
+              53
+            ],
+            [
+              76,
+              54
+            ],
+            [
+              77,
+              54
+            ],
+            [
+              78,
+              54
+            ],
+            [
+              79,
+              54
+            ],
+            [
+              80,
+              54
+            ],
+            [
+              76,
+              55
+            ],
+            [
+              77,
+              55
+            ],
+            [
+              78,
+              55
+            ],
+            [
+              79,
+              55
+            ],
+            [
+              80,
+              55
+            ],
+            [
+              76,
+              56
+            ],
+            [
+              77,
+              56
+            ],
+            [
+              78,
+              56
+            ],
+            [
+              79,
+              56
+            ],
+            [
+              80,
+              56
+            ],
+            [
+              77,
+              57
+            ],
+            [
+              78,
+              57
+            ],
+            [
+              79,
+              57
+            ]
+          ]
+        },
+        {
+          "id": "southeast-gate-pier-1",
+          "polygonPixels": [
+            [
+              1370,
+              816
+            ],
+            [
+              1400,
+              833
+            ],
+            [
+              1431,
+              819
+            ],
+            [
+              1431,
+              865
+            ],
+            [
+              1400,
+              886
+            ],
+            [
+              1370,
+              867
+            ]
+          ],
+          "blockedCells": [
+            [
+              85,
+              51
+            ],
+            [
+              86,
+              51
+            ],
+            [
+              87,
+              51
+            ],
+            [
+              88,
+              51
+            ],
+            [
+              89,
+              51
+            ],
+            [
+              85,
+              52
+            ],
+            [
+              86,
+              52
+            ],
+            [
+              87,
+              52
+            ],
+            [
+              88,
+              52
+            ],
+            [
+              89,
+              52
+            ],
+            [
+              85,
+              53
+            ],
+            [
+              86,
+              53
+            ],
+            [
+              87,
+              53
+            ],
+            [
+              88,
+              53
+            ],
+            [
+              89,
+              53
+            ],
+            [
+              85,
+              54
+            ],
+            [
+              86,
+              54
+            ],
+            [
+              87,
+              54
+            ],
+            [
+              88,
+              54
+            ],
+            [
+              89,
+              54
+            ],
+            [
+              86,
+              55
+            ],
+            [
+              87,
+              55
+            ],
+            [
+              88,
+              55
+            ]
+          ]
+        }
+      ],
+      "pierCellCount": 45,
+      "physicalResponsibilityCaveat": "Audit ground polygons are canonical blocked-cell responsibility, not exact visible stone foot. Do not demand roof silhouette equals these ground polygons. No collision/site change proposed.",
+      "visibleSupportAssessment": [
+        "Small left tower lower plaster near1250,931 is visible but much of its full base is obscured by plants/foreground rock. The adjoining left arch leg has a separately certified visible lower stone contact1297,932, not the oldlefttower front1258,925.",
+        "Large right tower near base is shrub-obscured; right arch return has visible contact around1354,904. Main tower roof and left wall silhouettes extend beyond old parts."
+      ],
+      "visibleArchSideContactsApprox": [
+        {
+          "source": [
+            1297,
+            932
+          ],
+          "rgba": [
+            226,
+            183,
+            135,
+            255
+          ],
+          "role": "Approx visually visible adjoining arch-side stone contact; not the hidden whole tower foundation corner",
+          "canonicalProjectedCell": [
+            81,
+            58
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": []
+        },
+        {
+          "source": [
+            1354,
+            904
+          ],
+          "rgba": [
+            132,
+            109,
+            97,
+            255
+          ],
+          "role": "Approx visually visible adjoining arch-side stone contact; not the hidden whole tower foundation corner",
+          "canonicalProjectedCell": [
+            84,
+            56
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": []
+        }
+      ],
+      "fixedOpeningNegatives": [
+        {
+          "source": [
+            1304,
+            920
+          ],
+          "rgba": [
+            248,
+            204,
+            136,
+            255
+          ],
+          "role": "Actual dirt/paving through or immediately in front of arch, must remain empty of new gate material/target; original mother PNG is opaque so this is an object-mask negative, not source A0",
+          "canonicalProjectedCell": [
+            81,
+            57
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": []
+        },
+        {
+          "source": [
+            1308,
+            925
+          ],
+          "rgba": [
+            253,
+            203,
+            126,
+            255
+          ],
+          "role": "Actual dirt/paving through or immediately in front of arch, must remain empty of new gate material/target; original mother PNG is opaque so this is an object-mask negative, not source A0",
+          "canonicalProjectedCell": [
+            81,
+            57
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": []
+        },
+        {
+          "source": [
+            1320,
+            919
+          ],
+          "rgba": [
+            252,
+            204,
+            132,
+            255
+          ],
+          "role": "Actual dirt/paving through or immediately in front of arch, must remain empty of new gate material/target; original mother PNG is opaque so this is an object-mask negative, not source A0",
+          "canonicalProjectedCell": [
+            82,
+            57
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": []
+        },
+        {
+          "source": [
+            1336,
+            924
+          ],
+          "rgba": [
+            251,
+            204,
+            129,
+            255
+          ],
+          "role": "Actual dirt/paving through or immediately in front of arch, must remain empty of new gate material/target; original mother PNG is opaque so this is an object-mask negative, not source A0",
+          "canonicalProjectedCell": [
+            83,
+            57
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": []
+        }
+      ],
+      "targetPositive": {
+        "source": [
+          1250,
+          895
+        ],
+        "rgba": [
+          252,
+          212,
+          162,
+          255
+        ],
+        "role": "Actual tower wall/banner material inside existing target polygon; selects gate canonical site, not a new door-opening capability",
+        "canonicalProjectedCell": [
+          78,
+          55
+        ],
+        "terrainAtProjectedCell": "#",
+        "oldParts": [
+          {
+            "id": "southeast-gate/left-pier",
+            "groundFrontPixels": [
+              1258,
+              925
+            ],
+            "pointerKind": "target"
+          }
+        ]
+      },
+      "sourceOpenGateLeafBoundary": "The partly open wooden gate leaf is real standing material and must be separated from the hole. Do not erase leaf with the ground aperture or fill opening with a rectangle.",
+      "scopeAndPriority": "Certified static actual C07 Torren back/front overlap on the omitted left arch leg; detailed contract accompanies this overview. Old arch front884 is not the true local support about934. Not yet native failure in this report."
+    }
+  ],
+  "recommendedOneObject": {
+    "id": "southeast-gate",
+    "issue": "Source-visible left arch leg is absent from all old55groups at two actual opaque Torren back points. Local true ground support is below actor foot, so it should occlude that actor. Existing whole archfront884 is also too far back for this local leg.",
+    "actorAsset": {
+      "resourcePath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+      "sha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
+      "frameRegion": [
+        0,
+        0,
+        557,
+        725
+      ],
+      "frameAnchor": [
+        269,
+        565
+      ],
+      "effectiveScale": 0.0961538
+    },
+    "visibleLocalSupport": [
+      {
+        "source": [
+          1297,
+          932
+        ],
+        "rgba": [
+          226,
+          183,
+          135,
+          255
+        ],
+        "role": "Reliable lower exposed stone inner contact; actual outer transition is around933\u2013934, not an invented hidden foot",
+        "canonicalProjectedCell": [
+          81,
+          58
+        ],
+        "terrainAtProjectedCell": "p",
+        "oldParts": []
+      },
+      {
+        "source": [
+          1299,
+          932
+        ],
+        "rgba": [
+          243,
+          202,
+          156,
+          255
+        ],
+        "role": "Reliable adjoining inner stone contact",
+        "canonicalProjectedCell": [
+          81,
+          58
+        ],
+        "terrainAtProjectedCell": "p",
+        "oldParts": []
+      },
+      {
+        "source": [
+          1297,
+          936
+        ],
+        "rgba": [
+          230,
+          199,
+          123,
+          255
+        ],
+        "role": "Ground immediately below leg; no gate material here",
+        "canonicalProjectedCell": [
+          81,
+          58
+        ],
+        "terrainAtProjectedCell": "p",
+        "oldParts": []
+      }
+    ],
+    "back": {
+      "actorKey": "campaign-torren",
+      "appearanceId": "torren-stage01",
+      "cell": [
+        81,
+        57
+      ],
+      "terrain": "p",
+      "sourceFoot": [
+        1304,
+        920
+      ],
+      "facing": "east",
+      "frameIndex": 0,
+      "points": [
+        {
+          "source": [
+            1296,
+            899
+          ],
+          "rgba": [
+            248,
+            204,
+            160,
+            255
+          ],
+          "role": "True exposed left arch-leg front stone, manually inspected in source grid",
+          "canonicalProjectedCell": [
+            81,
+            56
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": [],
+          "actorFramePixel": [
+            186,
+            347
+          ],
+          "actorAlpha": 253,
+          "sourceYAtOrAboveFoot": true
+        },
+        {
+          "source": [
+            1297,
+            899
+          ],
+          "rgba": [
+            244,
+            199,
+            158,
+            255
+          ],
+          "role": "True exposed left arch-leg front stone, manually inspected in source grid",
+          "canonicalProjectedCell": [
+            81,
+            56
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": [],
+          "actorFramePixel": [
+            196,
+            347
+          ],
+          "actorAlpha": 253,
+          "sourceYAtOrAboveFoot": true
+        }
+      ],
+      "expectedNewOrdering": "Torren footY920 lies behind true leg support~934; leg should draw in front and hide actor at both stone points. Old parts list is empty at both. Native verification still required.",
+      "staticMainNetworkPath": [
+        [
+          40,
+          25
+        ],
+        [
+          41,
+          25
+        ],
+        [
+          42,
+          25
+        ],
+        [
+          43,
+          25
+        ],
+        [
+          44,
+          25
+        ],
+        [
+          45,
+          25
+        ],
+        [
+          46,
+          25
+        ],
+        [
+          47,
+          25
+        ],
+        [
+          48,
+          25
+        ],
+        [
+          49,
+          25
+        ],
+        [
+          50,
+          25
+        ],
+        [
+          51,
+          25
+        ],
+        [
+          52,
+          25
+        ],
+        [
+          53,
+          25
+        ],
+        [
+          54,
+          25
+        ],
+        [
+          54,
+          26
+        ],
+        [
+          55,
+          26
+        ],
+        [
+          56,
+          26
+        ],
+        [
+          57,
+          26
+        ],
+        [
+          58,
+          26
+        ],
+        [
+          59,
+          26
+        ],
+        [
+          60,
+          26
+        ],
+        [
+          61,
+          26
+        ],
+        [
+          61,
+          27
+        ],
+        [
+          61,
+          28
+        ],
+        [
+          61,
+          29
+        ],
+        [
+          62,
+          29
+        ],
+        [
+          63,
+          29
+        ],
+        [
+          63,
+          30
+        ],
+        [
+          64,
+          30
+        ],
+        [
+          65,
+          30
+        ],
+        [
+          65,
+          31
+        ],
+        [
+          65,
+          32
+        ],
+        [
+          66,
+          32
+        ],
+        [
+          67,
+          32
+        ],
+        [
+          68,
+          32
+        ],
+        [
+          69,
+          32
+        ],
+        [
+          70,
+          32
+        ],
+        [
+          71,
+          32
+        ],
+        [
+          72,
+          32
+        ],
+        [
+          73,
+          32
+        ],
+        [
+          74,
+          32
+        ],
+        [
+          75,
+          32
+        ],
+        [
+          76,
+          32
+        ],
+        [
+          77,
+          32
+        ],
+        [
+          78,
+          32
+        ],
+        [
+          79,
+          32
+        ],
+        [
+          79,
+          33
+        ],
+        [
+          79,
+          34
+        ],
+        [
+          79,
+          35
+        ],
+        [
+          80,
+          35
+        ],
+        [
+          81,
+          35
+        ],
+        [
+          81,
+          36
+        ],
+        [
+          82,
+          36
+        ],
+        [
+          83,
+          36
+        ],
+        [
+          83,
+          37
+        ],
+        [
+          83,
+          38
+        ],
+        [
+          83,
+          39
+        ],
+        [
+          83,
+          40
+        ],
+        [
+          83,
+          41
+        ],
+        [
+          83,
+          42
+        ],
+        [
+          83,
+          43
+        ],
+        [
+          83,
+          44
+        ],
+        [
+          83,
+          45
+        ],
+        [
+          83,
+          46
+        ],
+        [
+          83,
+          47
+        ],
+        [
+          82,
+          47
+        ],
+        [
+          81,
+          47
+        ],
+        [
+          81,
+          48
+        ],
+        [
+          81,
+          49
+        ],
+        [
+          81,
+          50
+        ],
+        [
+          81,
+          51
+        ],
+        [
+          81,
+          52
+        ],
+        [
+          81,
+          53
+        ],
+        [
+          81,
+          54
+        ],
+        [
+          81,
+          55
+        ],
+        [
+          81,
+          56
+        ],
+        [
+          81,
+          57
+        ]
+      ]
+    },
+    "front": {
+      "actorKey": "campaign-torren",
+      "appearanceId": "torren-stage01",
+      "cell": [
+        81,
+        59
+      ],
+      "terrain": "p",
+      "sourceFoot": [
+        1304,
+        952
+      ],
+      "facing": "east",
+      "frameIndex": 0,
+      "points": [
+        {
+          "source": [
+            1297,
+            927
+          ],
+          "rgba": [
+            228,
+            181,
+            138,
+            255
+          ],
+          "role": "True exposed left arch-leg front stone, manually inspected in source grid",
+          "canonicalProjectedCell": [
+            81,
+            57
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": [],
+          "actorFramePixel": [
+            196,
+            305
+          ],
+          "actorAlpha": 252,
+          "sourceYAtOrAboveFoot": true
+        },
+        {
+          "source": [
+            1298,
+            929
+          ],
+          "rgba": [
+            232,
+            186,
+            142,
+            255
+          ],
+          "role": "True exposed left arch-leg front stone, manually inspected in source grid",
+          "canonicalProjectedCell": [
+            81,
+            58
+          ],
+          "terrainAtProjectedCell": "p",
+          "oldParts": [],
+          "actorFramePixel": [
+            207,
+            326
+          ],
+          "actorAlpha": 253,
+          "sourceYAtOrAboveFoot": true
+        }
+      ],
+      "expectedNewOrdering": "Torren footY952 lies in front of the same leg support~934; actor must remain visible/pickable at both true stone intersections.",
+      "staticMainNetworkPath": [
+        [
+          40,
+          25
+        ],
+        [
+          41,
+          25
+        ],
+        [
+          42,
+          25
+        ],
+        [
+          43,
+          25
+        ],
+        [
+          44,
+          25
+        ],
+        [
+          45,
+          25
+        ],
+        [
+          46,
+          25
+        ],
+        [
+          47,
+          25
+        ],
+        [
+          48,
+          25
+        ],
+        [
+          49,
+          25
+        ],
+        [
+          50,
+          25
+        ],
+        [
+          51,
+          25
+        ],
+        [
+          52,
+          25
+        ],
+        [
+          53,
+          25
+        ],
+        [
+          54,
+          25
+        ],
+        [
+          54,
+          26
+        ],
+        [
+          55,
+          26
+        ],
+        [
+          56,
+          26
+        ],
+        [
+          57,
+          26
+        ],
+        [
+          58,
+          26
+        ],
+        [
+          59,
+          26
+        ],
+        [
+          60,
+          26
+        ],
+        [
+          61,
+          26
+        ],
+        [
+          61,
+          27
+        ],
+        [
+          61,
+          28
+        ],
+        [
+          61,
+          29
+        ],
+        [
+          62,
+          29
+        ],
+        [
+          63,
+          29
+        ],
+        [
+          63,
+          30
+        ],
+        [
+          64,
+          30
+        ],
+        [
+          65,
+          30
+        ],
+        [
+          65,
+          31
+        ],
+        [
+          65,
+          32
+        ],
+        [
+          66,
+          32
+        ],
+        [
+          67,
+          32
+        ],
+        [
+          68,
+          32
+        ],
+        [
+          69,
+          32
+        ],
+        [
+          70,
+          32
+        ],
+        [
+          71,
+          32
+        ],
+        [
+          72,
+          32
+        ],
+        [
+          73,
+          32
+        ],
+        [
+          74,
+          32
+        ],
+        [
+          75,
+          32
+        ],
+        [
+          76,
+          32
+        ],
+        [
+          77,
+          32
+        ],
+        [
+          78,
+          32
+        ],
+        [
+          79,
+          32
+        ],
+        [
+          79,
+          33
+        ],
+        [
+          79,
+          34
+        ],
+        [
+          79,
+          35
+        ],
+        [
+          80,
+          35
+        ],
+        [
+          81,
+          35
+        ],
+        [
+          81,
+          36
+        ],
+        [
+          82,
+          36
+        ],
+        [
+          83,
+          36
+        ],
+        [
+          83,
+          37
+        ],
+        [
+          83,
+          38
+        ],
+        [
+          83,
+          39
+        ],
+        [
+          83,
+          40
+        ],
+        [
+          83,
+          41
+        ],
+        [
+          83,
+          42
+        ],
+        [
+          83,
+          43
+        ],
+        [
+          83,
+          44
+        ],
+        [
+          83,
+          45
+        ],
+        [
+          83,
+          46
+        ],
+        [
+          83,
+          47
+        ],
+        [
+          82,
+          47
+        ],
+        [
+          81,
+          47
+        ],
+        [
+          81,
+          48
+        ],
+        [
+          81,
+          49
+        ],
+        [
+          81,
+          50
+        ],
+        [
+          81,
+          51
+        ],
+        [
+          81,
+          52
+        ],
+        [
+          81,
+          53
+        ],
+        [
+          81,
+          54
+        ],
+        [
+          81,
+          55
+        ],
+        [
+          81,
+          56
+        ],
+        [
+          81,
+          57
+        ],
+        [
+          81,
+          58
+        ],
+        [
+          81,
+          59
+        ]
+      ]
+    },
+    "apertureAndGroundNegatives": [
+      {
+        "source": [
+          1304,
+          920
+        ],
+        "rgba": [
+          248,
+          204,
+          136,
+          255
+        ],
+        "role": "Actual open-path dirt/shadow; new gate geometry must not fill it",
+        "canonicalProjectedCell": [
+          81,
+          57
+        ],
+        "terrainAtProjectedCell": "p",
+        "oldParts": []
+      },
+      {
+        "source": [
+          1308,
+          925
+        ],
+        "rgba": [
+          253,
+          203,
+          126,
+          255
+        ],
+        "role": "Actual open-path dirt/shadow; new gate geometry must not fill it",
+        "canonicalProjectedCell": [
+          81,
+          57
+        ],
+        "terrainAtProjectedCell": "p",
+        "oldParts": []
+      },
+      {
+        "source": [
+          1320,
+          919
+        ],
+        "rgba": [
+          252,
+          204,
+          132,
+          255
+        ],
+        "role": "Actual open-path dirt/shadow; new gate geometry must not fill it",
+        "canonicalProjectedCell": [
+          82,
+          57
+        ],
+        "terrainAtProjectedCell": "p",
+        "oldParts": []
+      },
+      {
+        "source": [
+          1336,
+          924
+        ],
+        "rgba": [
+          251,
+          204,
+          129,
+          255
+        ],
+        "role": "Actual open-path dirt/shadow; new gate geometry must not fill it",
+        "canonicalProjectedCell": [
+          83,
+          57
+        ],
+        "terrainAtProjectedCell": "p",
+        "oldParts": []
+      },
+      {
+        "source": [
+          1297,
+          936
+        ],
+        "rgba": [
+          230,
+          199,
+          123,
+          255
+        ],
+        "role": "Actual open-path dirt/shadow; new gate geometry must not fill it",
+        "canonicalProjectedCell": [
+          81,
+          58
+        ],
+        "terrainAtProjectedCell": "p",
+        "oldParts": []
+      }
+    ],
+    "rejectedExploratoryPoints": [
+      {
+        "source": [
+          1304,
+          887
+        ],
+        "rgba": [
+          159,
+          131,
+          108,
+          255
+        ],
+        "role": "Rejected: this is shadowed open-mouth ground, not stone. Do not use as gate material positive.",
+        "canonicalProjectedCell": [
+          81,
+          55
+        ],
+        "terrainAtProjectedCell": "p",
+        "oldParts": [
+          {
+            "id": "southeast-gate/arch-lintel",
+            "groundFrontPixels": [
+              1330,
+              884
+            ],
+            "pointerKind": "pass-through"
+          }
+        ]
+      },
+      {
+        "source": [
+          1303,
+          886
+        ],
+        "rgba": [
+          146,
+          128,
+          109,
+          255
+        ],
+        "role": "Rejected: mouth-edge mixed pixel, not robust stone positive.",
+        "canonicalProjectedCell": [
+          81,
+          55
+        ],
+        "terrainAtProjectedCell": "p",
+        "oldParts": [
+          {
+            "id": "southeast-gate/arch-lintel",
+            "groundFrontPixels": [
+              1330,
+              884
+            ],
+            "pointerKind": "pass-through"
+          }
+        ]
+      }
+    ],
+    "coordinateCorrection": "Cell81,57 center is1304,920; earlier rough reasoning using912 was arithmetic error and is NOT used in evidence. All final samples use exact16*x+8.",
+    "geometryOwnership": "Arch legs are connected gate masonry but their local depth must follow their own visible feet, not force entire gate to one tower front. Roof/eaves can be extrapolated from physical support explicitly; original source leaf and arch hole retain distinct material/negative masks.",
+    "nativeFollowup": "Render same initial-state actor poses separately. Confirm actor alpha, actual material coverage, draw depth and Board.Pick/cue at the fixed points. Regression negative: omit left arch leg or force its sourcefront884; expected back control must fail. Late uniformfront>952 should fail front control. Keep four opening negatives and existing site/approach selection tests."
+  },
+  "existingTestCoverage": {
+    "file": "godot/Presentation/LuojiaChecks.cs",
+    "siteBodyAndGround": "lines99\u2013110 check roof pass-through, some target sample selects each site, each site cell center Ground. Does not exhaust arch-leg/source silhouette or true actor overlap at all four gates.",
+    "movement": "CheckMovement validates audit blockedCells and declared route steps; no rule/collision correction proposed by this art review.",
+    "captures": "CheckSites uses canonical site/approach and captures/economics; decorative gate anatomy is not a second selection owner."
+  },
+  "ready": true
+}
