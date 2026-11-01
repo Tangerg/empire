@@ -159,3 +159,11 @@ North supply v2 rebuilds its four-post plane into the original shallow long fron
 Low boulder v2: source central small boulder rather than prior tall mountain, squat snow-capped blue-gray connected stone with complete base, no reeds/ground; built-in transparent generation. NE true ledge v3: original low elongated cliff source plus v1 material reference; replace incorrect right-rising mound footprint with source-visible left tail above central/right front feet, no scenery. Actual correspondence pending, not approval based on requested coordinates.
 
 NW corrected v5: same tall cliff, fill source-proven missing left return rock and shorten only far-right low ledge to avoid known road witness; preserve summit/central foot. West front rail v2: separate steeper rising-right open wood rail, preserving existing style. Both built-in transparent imagegen, measured actual pixels.
+
+## Northwest broad shelf v6
+Built-in imagegen precise-object-edit, exec-30bc3016-97d0-4f26-8cae-c525dd991efe. References corrected-v5 and original ridge-west-source crop. Requested broad flat snowy shelf/right shoulder instead of triangular spire; preserve lower contact/canvas, cool painted stone, no plants/ground, transparent. Output has lower top: original face witnesses (995,25),(978,34),(1023,42) now alpha 0; remaining 8 frozen witnesses opaque, old right-road negative (1088,142) remains transparent. This is a visual candidate, not geometry acceptance.
+
+## Southwest house alpha-v3
+Built-in background-extraction edit exec-ce1c0092-7025-42d9-a36e-ae10dcbbf0b1, input red-cottage-dual-door-night-v2. Requested exact canvas/building/contact preservation, remove ALL surrounding blue/gray/black halo and seven specified exterior pixels to alpha0, preserve solid chimney/roof/walls/two doors/steps. Actual result changed some material colors and edge pixels, so not called byte-exact; same transform and fresh actual lower contour verified.
+
+West rail exec-8ec26fc8-095f-40b0-946c-c8a96bcf4b84 was an unnecessary background cleanup experiment: inspected original exterior already alpha0 despite RGB fog appearance. Not adopted. Ground erase experiment exec-1c1a843e-2f03-4088-b1d2-74d2a024b0e8 repainted over1.2million pixels outside intended lamp patches and changed32/40bridge center witnesses; rejected, ground remainsv4.

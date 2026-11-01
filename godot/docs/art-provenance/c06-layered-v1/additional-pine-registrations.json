@@ -1,0 +1,115 @@
+{
+  "instances": [
+    {
+      "id": "pine5-behind-supply",
+      "sourceRoot": [
+        922.1,
+        205
+      ],
+      "sourceScale": 0.0844,
+      "registrationEvidence": "inferred hidden root, source crown axis924 and top80; behind north shelter",
+      "status": "static candidate; original crown/ground comparison and native actor alpha pending; no collision changes"
+    },
+    {
+      "id": "pine6-bank-west",
+      "sourceRoot": [
+        1009,
+        360
+      ],
+      "sourceScale": 0.044,
+      "registrationEvidence": "inferred hidden shore root; source tip295",
+      "status": "static candidate; original crown/ground comparison and native actor alpha pending; no collision changes"
+    },
+    {
+      "id": "pine6-bank-middle",
+      "sourceRoot": [
+        1039,
+        350
+      ],
+      "sourceScale": 0.0574,
+      "registrationEvidence": "inferred hidden shore root; source tip265",
+      "status": "static candidate; original crown/ground comparison and native actor alpha pending; no collision changes"
+    },
+    {
+      "id": "pine6-bank-east",
+      "sourceRoot": [
+        1089,
+        365
+      ],
+      "sourceScale": 0.0587,
+      "registrationEvidence": "inferred hidden shore root; source tip278",
+      "status": "static candidate; original crown/ground comparison and native actor alpha pending; no collision changes"
+    },
+    {
+      "id": "pine7-rear",
+      "sourceRoot": [
+        1458,
+        164
+      ],
+      "sourceScale": 0.11,
+      "registrationEvidence": "inferred root behind ledge, source tall rear crown clipped near top",
+      "status": "static candidate; original crown/ground comparison and native actor alpha pending; no collision changes"
+    },
+    {
+      "id": "pine7-front",
+      "sourceRoot": [
+        1423,
+        223
+      ],
+      "sourceScale": 0.1,
+      "registrationEvidence": "inferred separate front root; not shared with rear tree",
+      "status": "static candidate; original crown/ground comparison and native actor alpha pending; no collision changes"
+    },
+    {
+      "id": "pine9-rear",
+      "sourceRoot": [
+        110,
+        463
+      ],
+      "sourceScale": 0.1,
+      "registrationEvidence": "visible source trunk root110,463; excludes separate lower forest band",
+      "status": "static candidate; original crown/ground comparison and native actor alpha pending; no collision changes"
+    },
+    {
+      "id": "pine11-rear",
+      "sourceRoot": [
+        548,
+        640
+      ],
+      "sourceScale": 0.088,
+      "registrationEvidence": "inferred hidden root behind former fence, source top510",
+      "status": "static candidate; original crown/ground comparison and native actor alpha pending; no collision changes"
+    },
+    {
+      "id": "pine11-front",
+      "sourceRoot": [
+        579,
+        649
+      ],
+      "sourceScale": 0.057,
+      "registrationEvidence": "inferred hidden root behind former fence, source top565",
+      "status": "static candidate; original crown/ground comparison and native actor alpha pending; no collision changes"
+    },
+    {
+      "id": "pine12-rear",
+      "sourceRoot": [
+        1098,
+        645
+      ],
+      "sourceScale": 0.0844,
+      "registrationEvidence": "inferred root behind house, source top520",
+      "status": "static candidate; original crown/ground comparison and native actor alpha pending; no collision changes"
+    },
+    {
+      "id": "pine12-front",
+      "sourceRoot": [
+        1046,
+        648
+      ],
+      "sourceScale": 0.0493,
+      "registrationEvidence": "inferred root by house/fence, source top575",
+      "status": "static candidate; original crown/ground comparison and native actor alpha pending; no collision changes"
+    }
+  ],
+  "remaining": "Border bands1/9front/14/15/18 still require explicit retained-vs-independent responsibilities; pine17 has no actual tree and remains excluded."
+}

@@ -1,0 +1,87 @@
+{
+  "negativeClearSamples": [
+    {
+      "pixel": [
+        700,
+        100
+      ],
+      "oldAlpha": 225,
+      "newAlpha": 0
+    },
+    {
+      "pixel": [
+        450,
+        150
+      ],
+      "oldAlpha": 221,
+      "newAlpha": 0
+    },
+    {
+      "pixel": [
+        400,
+        210
+      ],
+      "oldAlpha": 203,
+      "newAlpha": 0
+    },
+    {
+      "pixel": [
+        150,
+        400
+      ],
+      "oldAlpha": 33,
+      "newAlpha": 0
+    },
+    {
+      "pixel": [
+        1300,
+        200
+      ],
+      "oldAlpha": 170,
+      "newAlpha": 0
+    },
+    {
+      "pixel": [
+        600,
+        100
+      ],
+      "oldAlpha": 231,
+      "newAlpha": 0
+    },
+    {
+      "pixel": [
+        900,
+        15
+      ],
+      "oldAlpha": 15,
+      "newAlpha": 0
+    }
+  ],
+  "negativeControl": "old asset must fail same transparent-background check",
+  "contactAndUniformTransform": "UNCHANGED; no placement refit to pass",
+  "newActualFootPixels": [
+    [
+      280,
+      799
+    ],
+    [
+      795,
+      988
+    ],
+    [
+      1340,
+      803
+    ]
+  ],
+  "footWitnessRule": "Retain original front795,988 and right1340,803 since both remain real opaque material; original left280,808 is proven haze, replace only that invalid witness with actual lower masonry280,799 (three pixels inside new terminal). No placement change or tolerance relaxation.",
+  "newFootAlpha": [
+    248,
+    254,
+    244
+  ],
+  "maximumSourceFootCoordinateError": 4.858762737471466,
+  "fullLowerContourPoints": 1070,
+  "maximumSourceLowerContourOutside": 2.3865911564407782,
+  "historicalCorrection": "Old alpha>=200 terminal included background haze: old left280,808 and former overflow1029,983 are now transparent. Prior 4.8588 fit was a conservative outline containing haze, NOT proof every old sample was masonry. New complete material contour checked at the unchanged transform, no threshold change in production.",
+  "scope": "Asset alpha and exposed lower material only; not full hidden wall/actor/pointer acceptance"
+}

@@ -1,0 +1,239 @@
+{
+  "method": "Read-only heuristic: alpha>=16 pixels >10px from alpha>=245 core. Connected areas>=100 require original-pixel inspection. Does not alter alpha or imply every weak region is erroneous. Ground images excluded.",
+  "assets": [
+    {
+      "asset": "central-stone-parapet-east-v2.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "central-stone-parapet-night-v1.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "north-supply-shelter-night-v1.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "north-supply-shelter-night-v2.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "northeast-ridge-foot-v2.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "northeast-ridge-night-v1.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "northeast-true-ledge-v3.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "northwest-ridge-broad-shelf-v6.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "northwest-ridge-corrected-v5.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "northwest-ridge-foot-v3.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "northwest-ridge-tall-v4.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "northwest-snow-ridge-v2.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "red-cottage-annex-night-v2.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "red-cottage-annex-night-v3.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "red-cottage-annex-night-v4.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "red-cottage-dual-door-alpha-v3.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "red-cottage-dual-door-night-v2.png",
+      "weakPixelsFarFromOpaqueCore": 605000,
+      "regions": [
+        {
+          "area": 577002,
+          "box": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sample": [
+            11,
+            269
+          ],
+          "alphaAtSample": 77
+        },
+        {
+          "area": 27543,
+          "box": [
+            1247,
+            811,
+            1536,
+            1024
+          ],
+          "sample": [
+            1396,
+            968
+          ],
+          "alphaAtSample": 41
+        }
+      ],
+      "classification": "Confirmed unwanted background haze; old regression negative-control only, replaced by alpha-v3 in both previews."
+    },
+    {
+      "asset": "red-cottage-inset-wing-night-v5.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "red-cottage-night-v1.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "slate-cottage-dual-door-night-v2.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "slate-cottage-left-night-v1.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "slate-cottage-night-v1.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "snow-boulder-low-v2.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "snow-pine-single-v2.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "snow-pines-v1.png",
+      "weakPixelsFarFromOpaqueCore": 64,
+      "regions": [],
+      "classification": "64 weak pixels, no region>=100; unused three-tree candidate. Small soft edge residue not mass-removal justification."
+    },
+    {
+      "asset": "snow-rock-outcrop-v1.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "stone-bridge-lantern-v1.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "watch-shelter-night-v1.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "watch-shelter-short-mirror-v3.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "watch-shelter-short-night-v2.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "wood-parapet-east-steep-v2.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "wood-parapet-east-v1.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "wood-parapet-west-front-v2.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    },
+    {
+      "asset": "wood-parapet-west-v1.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged by this heuristic. Not a guarantee of all transparency details; no edit warranted."
+    }
+  ],
+  "manualReview": "Only the old southwest house generated a large flagged exterior region; native image and original alpha confirmed it. A visually smoky west rail had alpha=0 at all inspected exterior witnesses and was not changed. Contact shadows and transparent RGB were not blanket-removed."
+}
