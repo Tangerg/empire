@@ -291,3 +291,23 @@ including eight actual facade/roof contracts and actual wall alpha/pick checks
 at all six gate contacts. Settlement branches in that suite are explicit UI
 fixtures, not actual mission results. Final seam regression and real 1.25 city,
 node and second-entrance inspection remain to follow this candidate checkpoint.
+
+### Whole-city inspection and continuous vertical wall correction
+
+Normal 1.25 city inspection exposed repeated diagonal seams along the east wall
+that the opening crop did not show. A new generated orthographic-axis module
+keeps its top and dark side face but has parallel long edges; eight placements
+replace ten overlapping slanted placements. Main/north gate alpha clearance is
+unchanged. Normal native frames: `c03-after-v7/native-002.png` (opening),
+`native-003.png` (city/node), `native-004.png` (north entrance/headquarters).
+The historical north horizontal wall is already segmented in the source image;
+this is not a newly broken perimeter. The short internal wall looks detached
+from the newly registered garrison door and remains a specific composition debt.
+
+An intermediate local v6 layout omitted required explicit null/false placement
+fields and was rejected on load and by the native suite. Those fields were
+restored, not made optional; original manual save hash remained unchanged.
+Corrected v7 CampaignNavigation passes 1786 assertions, zero failed groups.
+The count is lower because there are two fewer wall instances sampled against
+six gate contacts, not because facade/gate contracts were removed. Ground/prop
+material fusion and full C03 combat remain open.
