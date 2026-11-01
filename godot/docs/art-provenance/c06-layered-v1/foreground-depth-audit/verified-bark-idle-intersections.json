@@ -1,0 +1,960 @@
+{
+  "scope": "New static PNG/JSON calculation only. No engine commands, GUI, save or runtime input. Actual idle frame, explicit manifest anchors/scale, both facing signs. Fixed visible tree pixels were selected from original/clean image before actoralpha testing.",
+  "sourceSha256": "7fbdee75a49446a9e807c3a0852a70eafe9f6c8beeccc25736393371d2d81c8d",
+  "cleanSha256": "65a34e7efc87f95c51e8f7af2bdbb17a157bedfd0ab9a878394e90df1d7db05c",
+  "manifestSha256": "64d9d2690a6b2c4737863bf5b329574442d152c7b5298178c07c9ef8e9d00476",
+  "trees": [
+    {
+      "id": "bare-root-93-164",
+      "rootSource": [
+        93,
+        166
+      ],
+      "rootUncertaintyPixels": 2,
+      "points": [
+        [
+          95,
+          146
+        ],
+        [
+          95,
+          151
+        ],
+        [
+          94,
+          157
+        ]
+      ],
+      "pixels": [
+        {
+          "source": [
+            95,
+            146
+          ],
+          "oldRGBA": [
+            19,
+            15,
+            23,
+            255
+          ],
+          "cleanRGBA": [
+            58,
+            37,
+            34,
+            255
+          ]
+        },
+        {
+          "source": [
+            95,
+            151
+          ],
+          "oldRGBA": [
+            55,
+            42,
+            41,
+            255
+          ],
+          "cleanRGBA": [
+            81,
+            61,
+            59,
+            255
+          ]
+        },
+        {
+          "source": [
+            94,
+            157
+          ],
+          "oldRGBA": [
+            60,
+            40,
+            43,
+            255
+          ],
+          "cleanRGBA": [
+            20,
+            17,
+            22,
+            255
+          ]
+        }
+      ],
+      "counterexampleCandidates": [
+        {
+          "appearance": "C01-FFV1-UNIT-KNIGHT",
+          "assetPath": "res://assets/painted-c01-v1/unit-knight-v1.png",
+          "assetSha256": "f96803bdf4c3062bdb0240164a53cdff16be413b245c9c0a1955a2aabca61c8b",
+          "frame": 0,
+          "frameRole": "idle",
+          "facing": -1,
+          "cell": [
+            2,
+            4
+          ],
+          "terrain": "T",
+          "actorFootSource": [
+            100.0,
+            156.0
+          ],
+          "treeRootMinusActorFootY": 10.0,
+          "treeMaterialPointSource": [
+            95,
+            146
+          ],
+          "actorFramePixel": [
+            342,
+            408
+          ],
+          "actorTexturePixel": [
+            342,
+            408
+          ],
+          "actualActorRGBA": [
+            162,
+            106,
+            54,
+            253
+          ],
+          "sourceScale": 0.06779663999999999,
+          "frameAnchor": [
+            268.0,
+            555.0
+          ],
+          "frameRegion": [
+            0,
+            0,
+            528,
+            725
+          ]
+        },
+        {
+          "appearance": "C01-FFV1-UNIT-KNIGHT",
+          "assetPath": "res://assets/painted-c01-v1/unit-knight-v1.png",
+          "assetSha256": "f96803bdf4c3062bdb0240164a53cdff16be413b245c9c0a1955a2aabca61c8b",
+          "frame": 0,
+          "frameRole": "idle",
+          "facing": -1,
+          "cell": [
+            2,
+            4
+          ],
+          "terrain": "T",
+          "actorFootSource": [
+            100.0,
+            156.0
+          ],
+          "treeRootMinusActorFootY": 10.0,
+          "treeMaterialPointSource": [
+            95,
+            151
+          ],
+          "actorFramePixel": [
+            342,
+            481
+          ],
+          "actorTexturePixel": [
+            342,
+            481
+          ],
+          "actualActorRGBA": [
+            98,
+            60,
+            34,
+            252
+          ],
+          "sourceScale": 0.06779663999999999,
+          "frameAnchor": [
+            268.0,
+            555.0
+          ],
+          "frameRegion": [
+            0,
+            0,
+            528,
+            725
+          ]
+        },
+        {
+          "appearance": "C01-FFV1-UNIT-KNIGHT",
+          "assetPath": "res://assets/painted-c01-v1/unit-knight-v1.png",
+          "assetSha256": "f96803bdf4c3062bdb0240164a53cdff16be413b245c9c0a1955a2aabca61c8b",
+          "frame": 0,
+          "frameRole": "idle",
+          "facing": -1,
+          "cell": [
+            2,
+            4
+          ],
+          "terrain": "T",
+          "actorFootSource": [
+            100.0,
+            156.0
+          ],
+          "treeRootMinusActorFootY": 10.0,
+          "treeMaterialPointSource": [
+            94,
+            157
+          ],
+          "actorFramePixel": [
+            356,
+            570
+          ],
+          "actorTexturePixel": [
+            356,
+            570
+          ],
+          "actualActorRGBA": [
+            74,
+            45,
+            26,
+            252
+          ],
+          "sourceScale": 0.06779663999999999,
+          "frameAnchor": [
+            268.0,
+            555.0
+          ],
+          "frameRegion": [
+            0,
+            0,
+            528,
+            725
+          ]
+        },
+        {
+          "appearance": "C01-FFV1-UNIT-KNIGHT",
+          "assetPath": "res://assets/painted-c01-v1/unit-knight-v1.png",
+          "assetSha256": "f96803bdf4c3062bdb0240164a53cdff16be413b245c9c0a1955a2aabca61c8b",
+          "frame": 0,
+          "frameRole": "idle",
+          "facing": 1,
+          "cell": [
+            2,
+            4
+          ],
+          "terrain": "T",
+          "actorFootSource": [
+            100.0,
+            156.0
+          ],
+          "treeRootMinusActorFootY": 10.0,
+          "treeMaterialPointSource": [
+            95,
+            146
+          ],
+          "actorFramePixel": [
+            194,
+            408
+          ],
+          "actorTexturePixel": [
+            194,
+            408
+          ],
+          "actualActorRGBA": [
+            247,
+            241,
+            233,
+            253
+          ],
+          "sourceScale": 0.06779663999999999,
+          "frameAnchor": [
+            268.0,
+            555.0
+          ],
+          "frameRegion": [
+            0,
+            0,
+            528,
+            725
+          ]
+        },
+        {
+          "appearance": "torren-stage01",
+          "assetPath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+          "assetSha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
+          "frame": 0,
+          "frameRole": "idle",
+          "facing": -1,
+          "cell": [
+            2,
+            4
+          ],
+          "terrain": "T",
+          "actorFootSource": [
+            100.0,
+            156.0
+          ],
+          "treeRootMinusActorFootY": 10.0,
+          "treeMaterialPointSource": [
+            95,
+            146
+          ],
+          "actorFramePixel": [
+            334,
+            435
+          ],
+          "actorTexturePixel": [
+            334,
+            435
+          ],
+          "actualActorRGBA": [
+            45,
+            34,
+            28,
+            253
+          ],
+          "sourceScale": 0.07692304,
+          "frameAnchor": [
+            269.0,
+            565.0
+          ],
+          "frameRegion": [
+            0,
+            0,
+            557,
+            725
+          ]
+        },
+        {
+          "appearance": "torren-stage01",
+          "assetPath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+          "assetSha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
+          "frame": 0,
+          "frameRole": "idle",
+          "facing": -1,
+          "cell": [
+            2,
+            4
+          ],
+          "terrain": "T",
+          "actorFootSource": [
+            100.0,
+            156.0
+          ],
+          "treeRootMinusActorFootY": 10.0,
+          "treeMaterialPointSource": [
+            95,
+            151
+          ],
+          "actorFramePixel": [
+            334,
+            500
+          ],
+          "actorTexturePixel": [
+            334,
+            500
+          ],
+          "actualActorRGBA": [
+            13,
+            6,
+            2,
+            253
+          ],
+          "sourceScale": 0.07692304,
+          "frameAnchor": [
+            269.0,
+            565.0
+          ],
+          "frameRegion": [
+            0,
+            0,
+            557,
+            725
+          ]
+        },
+        {
+          "appearance": "torren-stage01",
+          "assetPath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+          "assetSha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
+          "frame": 0,
+          "frameRole": "idle",
+          "facing": 1,
+          "cell": [
+            2,
+            4
+          ],
+          "terrain": "T",
+          "actorFootSource": [
+            100.0,
+            156.0
+          ],
+          "treeRootMinusActorFootY": 10.0,
+          "treeMaterialPointSource": [
+            95,
+            146
+          ],
+          "actorFramePixel": [
+            204,
+            435
+          ],
+          "actorTexturePixel": [
+            204,
+            435
+          ],
+          "actualActorRGBA": [
+            57,
+            40,
+            30,
+            253
+          ],
+          "sourceScale": 0.07692304,
+          "frameAnchor": [
+            269.0,
+            565.0
+          ],
+          "frameRegion": [
+            0,
+            0,
+            557,
+            725
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bare-root-70-183",
+      "rootSource": [
+        70,
+        185
+      ],
+      "rootUncertaintyPixels": 2,
+      "points": [
+        [
+          76,
+          145
+        ],
+        [
+          76,
+          151
+        ],
+        [
+          75,
+          160
+        ],
+        [
+          73,
+          175
+        ]
+      ],
+      "pixels": [
+        {
+          "source": [
+            76,
+            145
+          ],
+          "oldRGBA": [
+            66,
+            60,
+            80,
+            255
+          ],
+          "cleanRGBA": [
+            77,
+            56,
+            42,
+            255
+          ]
+        },
+        {
+          "source": [
+            76,
+            151
+          ],
+          "oldRGBA": [
+            28,
+            12,
+            16,
+            255
+          ],
+          "cleanRGBA": [
+            55,
+            26,
+            12,
+            255
+          ]
+        },
+        {
+          "source": [
+            75,
+            160
+          ],
+          "oldRGBA": [
+            54,
+            52,
+            49,
+            255
+          ],
+          "cleanRGBA": [
+            7,
+            5,
+            5,
+            255
+          ]
+        },
+        {
+          "source": [
+            73,
+            175
+          ],
+          "oldRGBA": [
+            15,
+            12,
+            21,
+            255
+          ],
+          "cleanRGBA": [
+            21,
+            18,
+            28,
+            255
+          ]
+        }
+      ],
+      "counterexampleCandidates": [
+        {
+          "appearance": "C01-FFV1-UNIT-KNIGHT",
+          "assetPath": "res://assets/painted-c01-v1/unit-knight-v1.png",
+          "assetSha256": "f96803bdf4c3062bdb0240164a53cdff16be413b245c9c0a1955a2aabca61c8b",
+          "frame": 0,
+          "frameRole": "idle",
+          "facing": -1,
+          "cell": [
+            1,
+            4
+          ],
+          "terrain": "T",
+          "actorFootSource": [
+            68.0,
+            156.0
+          ],
+          "treeRootMinusActorFootY": 29.0,
+          "treeMaterialPointSource": [
+            76,
+            145
+          ],
+          "actorFramePixel": [
+            150,
+            393
+          ],
+          "actorTexturePixel": [
+            150,
+            393
+          ],
+          "actualActorRGBA": [
+            186,
+            134,
+            71,
+            253
+          ],
+          "sourceScale": 0.06779663999999999,
+          "frameAnchor": [
+            268.0,
+            555.0
+          ],
+          "frameRegion": [
+            0,
+            0,
+            528,
+            725
+          ]
+        },
+        {
+          "appearance": "C01-FFV1-UNIT-KNIGHT",
+          "assetPath": "res://assets/painted-c01-v1/unit-knight-v1.png",
+          "assetSha256": "f96803bdf4c3062bdb0240164a53cdff16be413b245c9c0a1955a2aabca61c8b",
+          "frame": 0,
+          "frameRole": "idle",
+          "facing": -1,
+          "cell": [
+            1,
+            4
+          ],
+          "terrain": "T",
+          "actorFootSource": [
+            68.0,
+            156.0
+          ],
+          "treeRootMinusActorFootY": 29.0,
+          "treeMaterialPointSource": [
+            76,
+            151
+          ],
+          "actorFramePixel": [
+            150,
+            481
+          ],
+          "actorTexturePixel": [
+            150,
+            481
+          ],
+          "actualActorRGBA": [
+            57,
+            33,
+            13,
+            253
+          ],
+          "sourceScale": 0.06779663999999999,
+          "frameAnchor": [
+            268.0,
+            555.0
+          ],
+          "frameRegion": [
+            0,
+            0,
+            528,
+            725
+          ]
+        },
+        {
+          "appearance": "C01-FFV1-UNIT-KNIGHT",
+          "assetPath": "res://assets/painted-c01-v1/unit-knight-v1.png",
+          "assetSha256": "f96803bdf4c3062bdb0240164a53cdff16be413b245c9c0a1955a2aabca61c8b",
+          "frame": 0,
+          "frameRole": "idle",
+          "facing": 1,
+          "cell": [
+            1,
+            4
+          ],
+          "terrain": "T",
+          "actorFootSource": [
+            68.0,
+            156.0
+          ],
+          "treeRootMinusActorFootY": 29.0,
+          "treeMaterialPointSource": [
+            76,
+            145
+          ],
+          "actorFramePixel": [
+            386,
+            393
+          ],
+          "actorTexturePixel": [
+            386,
+            393
+          ],
+          "actualActorRGBA": [
+            90,
+            65,
+            41,
+            253
+          ],
+          "sourceScale": 0.06779663999999999,
+          "frameAnchor": [
+            268.0,
+            555.0
+          ],
+          "frameRegion": [
+            0,
+            0,
+            528,
+            725
+          ]
+        },
+        {
+          "appearance": "torren-stage01",
+          "assetPath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+          "assetSha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
+          "frame": 0,
+          "frameRole": "idle",
+          "facing": -1,
+          "cell": [
+            1,
+            4
+          ],
+          "terrain": "T",
+          "actorFootSource": [
+            68.0,
+            156.0
+          ],
+          "treeRootMinusActorFootY": 29.0,
+          "treeMaterialPointSource": [
+            76,
+            151
+          ],
+          "actorFramePixel": [
+            165,
+            500
+          ],
+          "actorTexturePixel": [
+            165,
+            500
+          ],
+          "actualActorRGBA": [
+            86,
+            53,
+            29,
+            251
+          ],
+          "sourceScale": 0.07692304,
+          "frameAnchor": [
+            269.0,
+            565.0
+          ],
+          "frameRegion": [
+            0,
+            0,
+            557,
+            725
+          ]
+        },
+        {
+          "appearance": "torren-stage01",
+          "assetPath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+          "assetSha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
+          "frame": 0,
+          "frameRole": "idle",
+          "facing": 1,
+          "cell": [
+            1,
+            4
+          ],
+          "terrain": "T",
+          "actorFootSource": [
+            68.0,
+            156.0
+          ],
+          "treeRootMinusActorFootY": 29.0,
+          "treeMaterialPointSource": [
+            76,
+            145
+          ],
+          "actorFramePixel": [
+            373,
+            422
+          ],
+          "actorTexturePixel": [
+            373,
+            422
+          ],
+          "actualActorRGBA": [
+            98,
+            88,
+            81,
+            253
+          ],
+          "sourceScale": 0.07692304,
+          "frameAnchor": [
+            269.0,
+            565.0
+          ],
+          "frameRegion": [
+            0,
+            0,
+            557,
+            725
+          ]
+        },
+        {
+          "appearance": "torren-stage01",
+          "assetPath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+          "assetSha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
+          "frame": 0,
+          "frameRole": "idle",
+          "facing": 1,
+          "cell": [
+            1,
+            4
+          ],
+          "terrain": "T",
+          "actorFootSource": [
+            68.0,
+            156.0
+          ],
+          "treeRootMinusActorFootY": 29.0,
+          "treeMaterialPointSource": [
+            76,
+            151
+          ],
+          "actorFramePixel": [
+            373,
+            500
+          ],
+          "actorTexturePixel": [
+            373,
+            500
+          ],
+          "actualActorRGBA": [
+            107,
+            66,
+            38,
+            253
+          ],
+          "sourceScale": 0.07692304,
+          "frameAnchor": [
+            269.0,
+            565.0
+          ],
+          "frameRegion": [
+            0,
+            0,
+            557,
+            725
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bare-root-120-195",
+      "rootSource": [
+        119,
+        193
+      ],
+      "rootUncertaintyPixels": 3,
+      "points": [
+        [
+          118,
+          174
+        ],
+        [
+          119,
+          183
+        ],
+        [
+          119,
+          188
+        ]
+      ],
+      "pixels": [
+        {
+          "source": [
+            118,
+            174
+          ],
+          "oldRGBA": [
+            20,
+            16,
+            17,
+            255
+          ],
+          "cleanRGBA": [
+            78,
+            52,
+            52,
+            255
+          ]
+        },
+        {
+          "source": [
+            119,
+            183
+          ],
+          "oldRGBA": [
+            42,
+            30,
+            34,
+            255
+          ],
+          "cleanRGBA": [
+            27,
+            18,
+            15,
+            255
+          ]
+        },
+        {
+          "source": [
+            119,
+            188
+          ],
+          "oldRGBA": [
+            12,
+            12,
+            19,
+            255
+          ],
+          "cleanRGBA": [
+            47,
+            40,
+            48,
+            255
+          ]
+        }
+      ],
+      "counterexampleCandidates": []
+    },
+    {
+      "id": "old-large-root-near180185",
+      "rootSource": [
+        185,
+        184
+      ],
+      "rootUncertaintyPixels": 5,
+      "points": [
+        [
+          180,
+          145
+        ],
+        [
+          180,
+          154
+        ],
+        [
+          180,
+          174
+        ]
+      ],
+      "classification": "Original tall trunk is nearer187,181; clean has lower branch/shrub mass instead. Do not claim retained full tall tree from coarsebbox.",
+      "pixels": [
+        {
+          "source": [
+            180,
+            145
+          ],
+          "oldRGBA": [
+            25,
+            71,
+            115,
+            255
+          ],
+          "cleanRGBA": [
+            64,
+            45,
+            26,
+            255
+          ]
+        },
+        {
+          "source": [
+            180,
+            154
+          ],
+          "oldRGBA": [
+            83,
+            115,
+            197,
+            255
+          ],
+          "cleanRGBA": [
+            90,
+            116,
+            189,
+            255
+          ]
+        },
+        {
+          "source": [
+            180,
+            174
+          ],
+          "oldRGBA": [
+            47,
+            87,
+            152,
+            255
+          ],
+          "cleanRGBA": [
+            144,
+            128,
+            131,
+            255
+          ]
+        }
+      ],
+      "counterexampleCandidates": []
+    }
+  ]
+}

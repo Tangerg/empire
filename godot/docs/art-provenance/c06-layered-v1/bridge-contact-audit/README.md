@@ -33,10 +33,20 @@ that half-pixel scan quantization. Do not shrink this witness to manufacture a p
 
 ## Observed defects and rejected repair
 
-Same-camera static actors at west (10,10) and east (40,13) show inadequate edge
-support in both historical painted and layered preview scenes. This predates the
-new rails. Anatomical idle candidates reach about 13.6 source pixels beyond the
-old approximate deck contour, primarily due to the ballista operator's boot.
+Same-camera static actors exposed support candidates in both historical painted
+and layered preview scenes, predating the new rails. Subsequent original-pixel
+review distinguishes seven actual water/underside/vertical-post contacts from two
+false or unresolved candidates; the approximate quad alone is not a verdict:
+
+- West (9,11), (11,11): water or underside rather than flat walking surface.
+- Central (24,14), (27,14): water or arch side; central (25,12): pillar face.
+- East (40,13): pillar face; east (45,15): water.
+- West (10,10): bank rock/snow, with height unresolved. The earlier wording
+  “inadequate support” was too strong without confirming rock elevation.
+- East (42,13): actual wood/edge beam. Do not repair this quad false positive.
+
+Anatomical idle candidates reach about 13.6 source pixels beyond the old
+approximate deck contour, primarily due to the ballista operator's boot.
 
 A whole-deck uniform widening candidate was **rejected**: it also painted deck
 across neighboring canonical water-cell centers. Terrain, actor coordinates,
@@ -57,3 +67,19 @@ resolve localized support without unnatural bridge shape, then align independent
 rail/lamp geometry and re-render the same actor poses. Full-body occlusion,
 interaction and later normal-AI C06 gameplay remain separate acceptance stages.
 No failing historical check was deleted or loosened by this documentation commit.
+
+## Later bounded candidates — not adopted
+
+The local row-envelope candidate `exec-9c2e779d-a411-489b-8bbc-91b8f941a657`
+was rejected visually: straight spans became curved or kinked, especially the
+stone bridge. The final natural-platform attempt
+`exec-77e431eb-084b-4dbb-aaaa-23b868ded4bc` retained straighter spans but did not
+cover the seven verified physical contacts consistently; protruding platforms
+also read as separate attachments rather than coherent construction. This
+support candidate is stopped, not accepted. Neither image is bound to the
+preview or production ground; canonical terrain and movement remain unchanged.
+
+Original material crops, seven-point diagnostic comparison and rejected output
+bytes are retained in recovery Library item
+`libfile_17777e1530488191bd13f04685f4661f` version23. These are static artwork
+checks, not additional gameplay or a successful bridge acceptance.
