@@ -43,3 +43,24 @@ The unbound C05 preview remains a candidate. Formal c01-05 is unchanged. Remaini
 
 Private auth data is absent from all recovery artifacts. New login is coordinated
 by the root task, not started by this writer.
+
+## Fresh recovered-environment validation
+
+Recovered HEAD was independently confirmed as d89826d7, then the core depth-strip
+checkpoint was committed as 6af5f399. Official SDK 8.0.419 and Godot .NET 4.6.3
+archives were checked against publisher SHA512 manifests. New build: zero warnings
+or errors. Fresh shared AssembledGround checks pass 12478 assertions, not merely the
+old recorded result. Fresh C05 candidate checks pass 1477 assertions, including
+all four actual rear alpha/Z/pointer witnesses, the front-rail inverse witness,
+and the unchanged unsplit near-foot candidate deliberately reproducing failure.
+The old C05 painted oracle still passes 172; current C04 layered contracts pass332.
+C05 remains unbound pending final props/route review, so none are actual C05 play.
+
+Fresh diagnostic GUI screenshots live in `../c05-bridge-evidence-recovered/`.
+They reconstruct the original unsplit condition and corrected condition with the
+same two fixed actors; they are not the lost image files or a real battle.
+
+NE boulder proposal was paused when restored PNG alpha disproved two old purported
+foot witnesses. A corrected independently sampled opaque foot at (1080,931), not
+transparent (1080,945), is now under review. No move is accepted from transparent
+pixels. Keep old errors and corrective records separate from current evidence.

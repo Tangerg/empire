@@ -34,7 +34,10 @@ public partial class ReedVillageChecks : Node
             var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
             var state = engine.CreateState(level);
             CheckMissionSource(level, state);
-            CheckPainting(engine, level, state, audit);
+            if (OS.GetCmdlineUserArgs().Contains("--layered-preview", StringComparer.Ordinal))
+                CheckLayeredScene(engine, level, state, audit);
+            else
+                CheckPainting(engine, level, state, audit);
             CheckMovement(engine, level, state, audit);
             CheckOpeningEscape(engine, level);
             CheckNoAiTiming(engine, level);
@@ -77,6 +80,175 @@ public partial class ReedVillageChecks : Node
             && Text(wave["condition"]!, "type") == "turnAtLeast" && Integer(wave["condition"]!, "turn") == 4
             && wave["effects"]![0]!["units"]!.AsArray().OfType<JsonObject>().Select(TacticalQueries.Position).SequenceEqual([new Coord(13, 17), new(12, 18), new(13, 18)])
             && Text(wave["effects"]![1]!, "signal") == "gray_banner_raised", "The one-shot three-unit western wave must retain T4 timing and its campaign signal.");
+    }
+
+    private void CheckLayeredScene(BattleEngine engine, JsonObject level, JsonObject state, JsonObject audit)
+    {
+        var scene = AuthoredScene.Load("res://data/scenes/c01-05-layered-preview.json");
+        Require(scene.RuntimeReady && scene.PaintedGroundPath is null && scene.AssembledGroundPath == "res://data/scenes/c01-05-layered-ground.json",
+            "C05 preview must use independent materials without a painted fallback.");
+        var document = PresentationJson.Load<AssembledGroundDocument>(scene.AssembledGroundPath!);
+        var catalog = PresentationJson.Load<SceneObjectCatalog>(document.ObjectCatalogPath);
+        Require(document.WorldScale == 1.25f && document.OriginPixels.SequenceEqual([20f, 32f])
+            && document.CellXPixels.SequenceEqual([32f, 0f]) && document.CellYPixels.SequenceEqual([0f, 28f]),
+            "C05 must retain original physical registration and canonical map geometry.");
+        var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
+        var board = new BoardView { AnimationsEnabled = false };
+        AddChild(board);
+        try
+        {
+            board.Configure(new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, rendering.Plane), level, scene);
+            board.ConfigureGround(rendering.Ground);
+            var before = EcmaJson.Stringify(state);
+            board.RenderState(state);
+            var ground = Descendants(board).OfType<AssembledGroundView>().Single();
+            var sites = audit["sites"]!.AsArray().OfType<JsonObject>().Select(site => Cell(site["cell"]!)).ToHashSet();
+            Require(board.RenderingIssueCount == 0 && board.RenderedUnitCount == 21 && ground.Sites.Count == 12
+                && ground.Sites.Select(site => site.Cell).ToHashSet().SetEquals(sites) && ground.Sites.All(site => site.OwnsMapStructureBody)
+                && board.RenderedStructureCount == 0 && document.Objects.Length == 57
+                && ground.DepthEntries.Count == document.Objects.Sum(item => catalog.Objects[item.AssetId].DepthStrips?.Length ?? 1),
+                "All twelve unchanged sites and 57 independent instances must render once without duplicate bodies.");
+            var empty = state.DeepClone().AsObject();
+            empty["units"] = new JsonArray();
+            board.RenderState(empty);
+            var count = 0;
+            var tiles = state["map"]!["tiles"]!.AsArray();
+            for (var index = 0; index < tiles.Count; index++)
+            {
+                if (engine.Catalog.Definition("terrains", Text(tiles[index]!))!.Value.GetProperty("cost").GetProperty("foot").ValueKind != JsonValueKind.Number)
+                    continue;
+                var cell = new Coord(index % 50, index / 50);
+                Require(board.Pick(board.Projection.CellContact(cell)) == TacticalHit.Ground(new(cell.X, cell.Y)),
+                    $"C05 originally clear legal center must remain ground: {cell}.");
+                count++;
+            }
+            Require(count == 1044, "C05 legal-center coverage must include its entire unchanged map.");
+            foreach (var site in audit["sites"]!.AsArray().OfType<JsonObject>())
+                foreach (var cell in new[] { Cell(site["cell"]!), Cell(site["approach"]!) })
+                    foreach (var delta in new[] { Vector2.Zero, Vector2.Left * 4, Vector2.Right * 4, Vector2.Up * 4, Vector2.Down * 4 })
+                        Require(board.Pick(board.Projection.CellContact(cell) + delta * document.WorldScale) == TacticalHit.Ground(new(cell.X, cell.Y)),
+                            $"C05 doorway and approach must remain open: {Text(site, "id")} {cell} {delta}.");
+            foreach (var placement in document.Objects)
+            {
+                var sprite = ground.GetNode<Sprite2D>(placement.Id);
+                using var image = sprite.Texture.GetImage();
+                Require(image.HasMipmaps() && image.DetectAlpha() != Image.AlphaMode.None,
+                    $"Independent object must retain whole transparent minified texture: {placement.Id}.");
+            }
+            var houses = PresentationJson.Load<JsonObject>("res://docs/art-provenance/c05-layered-v1/all-house-registration-final-candidates.json");
+            foreach (var house in houses["instances"]!.AsArray().OfType<JsonObject>())
+            {
+                var placement = document.Objects.Single(item => item.Id == Text(house, "id"));
+                var asset = catalog.Objects[placement.AssetId];
+                var sprite = ground.GetNode<Sprite2D>(placement.Id);
+                var visual = ground.DepthEntries.Single(entry => entry.Node == sprite).Visual!;
+                Vector2 At(JsonNode pixel) => sprite.ToGlobal(Vector(pixel) - new Vector2((float)asset.AnchorPixels[0], (float)asset.AnchorPixels[1]));
+                var witnesses = houses["assets"]![placement.AssetId]!["actualPixelWitnesses"]!;
+                var keys = new[] { "leftBase", "frontBase", "rightBase" };
+                for (var index = 0; index < keys.Length; index++)
+                {
+                    var global = At(witnesses[keys[index]]!["pixel"]!);
+                    var delta = board.ToLocal(global) / document.WorldScale - Vector(house["originalExposedBaseFeet"]![index]!);
+                    Require(visual.Covers(global) && Mathf.Abs(delta.X) <= 5 && Mathf.Abs(delta.Y) <= 5,
+                        $"C05 real stone foot must match its original foundation, not a roof or interaction-site anchor: {placement.Id} {keys[index]}.");
+                }
+                var door = At(witnesses["doorOpaqueProbe"]!["pixel"]!);
+                var cell = placement.SelectionCell!;
+                Require(visual.Covers(door) && visual.ContainsPointer(door) && board.Pick(board.ToLocal(door)) == TacticalHit.Object(new(cell[0], cell[1])),
+                    $"C05 actual door must select its unchanged village: {placement.Id}.");
+                var roof = At(witnesses["roofOpaqueExcludedProbe"]!["pixel"]!);
+                Require(visual.Covers(roof) && !visual.ContainsPointer(roof), $"C05 roof must not become a doorway: {placement.Id}.");
+            }
+            var props = PresentationJson.Load<JsonObject>("res://docs/art-provenance/c05-layered-v1/final-open-frame-small-props-registration.json");
+            foreach (var item in props["instances"]!.AsArray().OfType<JsonObject>())
+            {
+                var placement = document.Objects.Single(value => value.Id == Text(item, "id"));
+                var asset = catalog.Objects[placement.AssetId];
+                var reference = props["assets"]![placement.AssetId]!;
+                var sprite = ground.GetNode<Sprite2D>(placement.Id);
+                var visual = ground.DepthEntries.Single(entry => entry.Node == sprite).Visual!;
+                Vector2 At(JsonNode pixel) => sprite.ToGlobal(Vector(pixel) - new Vector2((float)asset.AnchorPixels[0], (float)asset.AnchorPixels[1]));
+                var feet = reference["physicalFeet"]!.AsArray();
+                var expected = (item["originalFeet"] ?? item["originalExposedLowerFootWitnesses"])!.AsArray();
+                for (var index = 0; index < feet.Count; index++)
+                {
+                    var global = At(feet[index]!["pixel"]!);
+                    var delta = board.ToLocal(global) / document.WorldScale - Vector(expected[index]!);
+                    Require(visual.Covers(global) && Mathf.Abs(delta.X) <= 5 && Mathf.Abs(delta.Y) <= 5,
+                        $"C05 furniture foot must retain original support: {placement.Id} {index}.");
+                }
+                foreach (var clear in reference["clearFloorWitnesses"]!.AsArray())
+                    Require(!visual.Covers(At(clear!["pixel"]!)), $"C05 open shelter cannot introduce an opaque platform: {placement.Id}.");
+                if (placement.SelectionCell is { } cell)
+                {
+                    var rail = At(reference["frontRailOpaqueWitness"]!["pixel"]!);
+                    Require(visual.Covers(rail) && visual.ContainsPointer(rail) && board.Pick(board.ToLocal(rail)) == TacticalHit.Object(new(cell[0], cell[1])),
+                        $"C05 actual front rail must retain positive site targeting: {placement.Id}.");
+                }
+            }
+            CheckLayeredBridgeDepth(board, document, catalog, state, rendering.Ground);
+            Require(EcmaJson.Stringify(state) == before && board.RenderingIssueCount == 0, "C05 presentation probes must not mutate gameplay.");
+        }
+        finally { RemoveChild(board); board.Free(); }
+    }
+
+    private void CheckLayeredBridgeDepth(BoardView board, AssembledGroundDocument document, SceneObjectCatalog catalog,
+        JsonObject state, BoardGroundFactory restore)
+    {
+        var cases = new (Coord Cell, string Rail, Vector2 Point, bool ActorInFront)[]
+        {
+            (new(7, 20), "bridge-rear-rail-1", new(260, 594), true),
+            (new(7, 20), "bridge-rear-rail-1", new(260, 582), true),
+            (new(9, 19), "bridge-rear-rail-3", new(324, 566), true),
+            (new(9, 19), "bridge-rear-rail-3", new(324, 554), true),
+            (new(9, 20), "bridge-front-rail-2", new(326, 598), false)
+        };
+        void CheckCases(bool negative)
+        {
+            foreach (var probe in cases)
+            {
+                var fixture = state.DeepClone().AsObject();
+                var actor = Unit(fixture, "campaign-torren").DeepClone().AsObject();
+                Position(actor, probe.Cell);
+                fixture["units"] = new JsonArray(actor);
+                board.RenderState(fixture);
+                var sprite = board.GetNode<Sprite2D>($"CanonicalProjection/Unit_{Integer(actor, "id")}/AuthoredSprite");
+                var ground = Descendants(board).OfType<AssembledGroundView>().Single();
+                var field = probe.Point * document.WorldScale;
+                var global = board.ToGlobal(field);
+                var material = ground.DepthEntries.Where(entry => (entry.Node.Name.ToString() == probe.Rail
+                    || entry.Node.Name.ToString().StartsWith(probe.Rail + "__depth_", StringComparison.Ordinal)) && entry.Visual!.Covers(global)).ToArray();
+                Require(sprite.IsPixelOpaque(sprite.ToLocal(global)) && material.Length == 1,
+                    "C05 bridge depth witnesses must overlap actual actor alpha and exactly one actual rail region.");
+                var actorDepth = sprite.GetParent<Node2D>().ZIndex;
+                var actorInFront = probe.ActorInFront && !negative;
+                Require(actorInFront ? actorDepth > material[0].Node.ZIndex : actorDepth < material[0].Node.ZIndex,
+                    negative ? "The old unsplit near-foot ordering must reproduce rear-rail failure while preserving front-rail occlusion."
+                        : "C05 rail draw order must follow its physical local baseline, including front-rail occlusion.");
+                var hit = board.Pick(field);
+                Require(actorInFront ? hit == TacticalHit.Unit(new(probe.Cell.X, probe.Cell.Y), Integer(actor, "id")) : hit?.Kind == TacticalHitKind.Ground,
+                    "C05 visible-pointer result must agree with actual rail/actor draw order.");
+            }
+        }
+        CheckCases(false);
+        var rejectedCatalog = new SceneObjectCatalog { Schema = catalog.Schema, Objects = new(catalog.Objects) };
+        var asset = catalog.Objects["bridge-rail-short"];
+        rejectedCatalog.Objects["bridge-rail-short"] = new SceneObjectAsset
+        {
+            ResourcePath = asset.ResourcePath,
+            PixelSize = asset.PixelSize,
+            AnchorPixels = asset.AnchorPixels,
+            GroundFrontPixels = asset.GroundFrontPixels,
+            ContactShadowRadiiPixels = asset.ContactShadowRadiiPixels,
+            PointerPolygonPixels = asset.PointerPolygonPixels
+        };
+        var textures = catalog.Objects.ToDictionary(pair => pair.Key, pair => ResourceLoader.Load<Texture2D>(pair.Value.ResourcePath));
+        var groundTexture = ResourceLoader.Load<Texture2D>(document.ResourcePath);
+        board.ConfigureGround((rules, _) => AssembledGroundView.Create(document, groundTexture, rejectedCatalog, textures,
+            state["map"]!.AsObject(), rules.Content, rules.Shadows));
+        CheckCases(true);
+        board.ConfigureGround(restore);
+        board.RenderState(state);
     }
 
     private void CheckPainting(BattleEngine engine, JsonObject level, JsonObject state, JsonObject audit)
@@ -337,7 +509,7 @@ public partial class ReedVillageChecks : Node
     private void ExportGuiFixtures(BattleEngine engine, JsonArray levels)
     {
         const string prefix = "--export-c05-gui-dir=";
-        var args = OS.GetCmdlineUserArgs();
+        var args = OS.GetCmdlineUserArgs().Where(argument => argument != "--layered-preview").ToArray();
         Require(args.All(argument => argument.StartsWith(prefix, StringComparison.Ordinal)) && args.Length <= 1, "Only the explicit C05 evidence export option is supported.");
         if (args.Length == 0)
             return;

@@ -87,8 +87,14 @@ public sealed class SceneObjectAsset
 [JsonUnmappedMemberHandling(JsonUnmappedMemberHandling.Disallow)]
 public sealed class SceneObjectDepthStrip
 {
-    public required int RightPixels { get; init; }
-    public required double[] GroundFrontPixels { get; init; }
+    public required int RightPixels
+    {
+        get; init;
+    }
+    public required double[] GroundFrontPixels
+    {
+        get; init;
+    }
 }
 
 [JsonUnmappedMemberHandling(JsonUnmappedMemberHandling.Disallow)]
