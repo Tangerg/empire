@@ -1,0 +1,757 @@
+{
+  "scope": "One bounded static registration round, no additional image generation, no pixel edits, no engine/GUI/native execution or production writes. Source mother pixels and unmodified candidate inspected. Original southeast gate four actor samples were confirmed native by parent, not executed here.",
+  "candidate": {
+    "resourcePath": "res://assets/native/c07-layered-v1/southeast-gate-v1-candidate.png",
+    "sha256": "0912b5b72d9d798fbc7db4b8c394b1c0b920e5da1a87699abd68b760ac6648f0",
+    "pixelSize": [
+      1326,
+      1186
+    ]
+  },
+  "source": {
+    "resourcePath": "res://assets/native/scenes/luojia.png",
+    "sha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980"
+  },
+  "previewCandidate": {
+    "status": "Usable for a bounded same-camera preview, NOT accepted full physical restoration. Frozen left-leg controls and aperture negatives hold statically, but right leg/door are displaced onto original paving.",
+    "formula": "source = scale*assetPixel + translation; C07 worldScale1 so same world sprite scale. No rotation or nonuniform stretch.",
+    "scale": 0.19393939393939394,
+    "translation": [
+      1193.2424242424242,
+      722.9333333333334
+    ],
+    "assetAnchor": [
+      535,
+      1078
+    ],
+    "sourceContact": [
+      1297,
+      932
+    ],
+    "method": "Use one true left arch-leg lower-stone contact and source small-roof peak-to-that-contact height128px versus candidate660px. This fixes source scale from structure, not by optimizing frozen alpha samples. Small roof/source peak is low-resolution approximate, not a new ground foot.",
+    "globalGroundFrontForbidden": "Do not use anchor as one whole-gate depth. Two real legs/towers/leaf require local supports; central hole is not an arch-top ground foot."
+  },
+  "actualCandidatePhysicalContacts": [
+    {
+      "asset": [
+        535,
+        1078
+      ],
+      "rgba": [
+        95,
+        74,
+        48,
+        249
+      ],
+      "mappedSource": [
+        1297.0,
+        932.0
+      ],
+      "classification": "Real lower stone of left arch leg, not arch apex. Registration point; corresponding old inner stone sample1297,932. Only this specific contact is exact by construction."
+    },
+    {
+      "asset": [
+        460,
+        1107
+      ],
+      "rgba": [
+        229,
+        190,
+        150,
+        252
+      ],
+      "mappedSource": [
+        1282.4545454545455,
+        937.6242424242425
+      ],
+      "classification": "Left arch front masonry corner lower stone; new geometry, no separately certified original counterpart."
+    },
+    {
+      "asset": [
+        243,
+        1163
+      ],
+      "rgba": [
+        139,
+        114,
+        91,
+        252
+      ],
+      "mappedSource": [
+        1240.369696969697,
+        948.4848484848485
+      ],
+      "classification": "Small left tower near foundation corner; actual new stone foot, but original analogous base is partly hidden by shrubs/rock, NOT certified old match."
+    },
+    {
+      "asset": [
+        845,
+        990
+      ],
+      "rgba": [
+        81,
+        58,
+        42,
+        252
+      ],
+      "mappedSource": [
+        1357.121212121212,
+        914.9333333333334
+      ],
+      "classification": "Real near corner of right arch-leg stone foot; compare visible original return around1354,904."
+    },
+    {
+      "asset": [
+        965,
+        989
+      ],
+      "rgba": [
+        102,
+        79,
+        56,
+        252
+      ],
+      "mappedSource": [
+        1380.3939393939395,
+        914.739393939394
+      ],
+      "classification": "Large right tower near foundation corner; original tower base obscured by shrubs, not a certified original contact."
+    },
+    {
+      "asset": [
+        1255,
+        855
+      ],
+      "rgba": [
+        234,
+        202,
+        162,
+        252
+      ],
+      "mappedSource": [
+        1436.6363636363637,
+        888.7515151515152
+      ],
+      "classification": "Large right tower far/right visible new stone base; original matching base not fully visible."
+    },
+    {
+      "asset": [
+        727,
+        909
+      ],
+      "rgba": [
+        18,
+        9,
+        2,
+        250
+      ],
+      "mappedSource": [
+        1334.2363636363636,
+        899.2242424242424
+      ],
+      "classification": "Actual lower left region of partly open wooden gate leaf, dark timber edge not stone foot."
+    },
+    {
+      "asset": [
+        799,
+        950
+      ],
+      "rgba": [
+        78,
+        52,
+        32,
+        253
+      ],
+      "mappedSource": [
+        1348.2,
+        907.1757575757576
+      ],
+      "classification": "Actual lower right wood material near open-leaf bottom; its new ground support differs from stone arch return."
+    },
+    {
+      "asset": [
+        805,
+        956
+      ],
+      "rgba": [
+        28,
+        16,
+        7,
+        253
+      ],
+      "mappedSource": [
+        1349.3636363636365,
+        908.339393939394
+      ],
+      "classification": "Actual lower-right dark wood frame inner edge, not a hidden stone support."
+    }
+  ],
+  "roofHeightAndWidthComparison": [
+    {
+      "asset": [
+        255,
+        418
+      ],
+      "candidateRgba": [
+        252,
+        234,
+        181,
+        252
+      ],
+      "sourceApprox": [
+        1246,
+        804
+      ],
+      "mappedSource": [
+        1242.6969696969697,
+        804.0
+      ],
+      "residualSource": [
+        -3.303030303030255,
+        0.0
+      ]
+    },
+    {
+      "asset": [
+        978,
+        37
+      ],
+      "candidateRgba": [
+        255,
+        201,
+        113,
+        253
+      ],
+      "sourceApprox": [
+        1379,
+        730
+      ],
+      "mappedSource": [
+        1382.9151515151516,
+        730.1090909090909
+      ],
+      "residualSource": [
+        3.9151515151515923,
+        0.10909090909092356
+      ]
+    }
+  ],
+  "frozenLeftStonePositives": [
+    {
+      "source": [
+        1296,
+        899
+      ],
+      "sourceRgba": [
+        248,
+        204,
+        160,
+        255
+      ],
+      "role": "Frozen source left arch-leg actual stone / actor overlap positive",
+      "assetPixelFloat": [
+        529.84375,
+        907.8437499999997
+      ],
+      "nearestAssetPixel": [
+        530,
+        908
+      ],
+      "candidateRgba": [
+        245,
+        210,
+        171,
+        253
+      ]
+    },
+    {
+      "source": [
+        1297,
+        899
+      ],
+      "sourceRgba": [
+        244,
+        199,
+        158,
+        255
+      ],
+      "role": "Frozen source left arch-leg actual stone / actor overlap positive",
+      "assetPixelFloat": [
+        535.0,
+        907.8437499999997
+      ],
+      "nearestAssetPixel": [
+        535,
+        908
+      ],
+      "candidateRgba": [
+        249,
+        223,
+        188,
+        253
+      ]
+    },
+    {
+      "source": [
+        1297,
+        927
+      ],
+      "sourceRgba": [
+        228,
+        181,
+        138,
+        255
+      ],
+      "role": "Frozen source left arch-leg actual stone / actor overlap positive",
+      "assetPixelFloat": [
+        535.0,
+        1052.2187499999998
+      ],
+      "nearestAssetPixel": [
+        535,
+        1052
+      ],
+      "candidateRgba": [
+        238,
+        207,
+        167,
+        252
+      ]
+    },
+    {
+      "source": [
+        1298,
+        929
+      ],
+      "sourceRgba": [
+        232,
+        186,
+        142,
+        255
+      ],
+      "role": "Frozen source left arch-leg actual stone / actor overlap positive",
+      "assetPixelFloat": [
+        540.15625,
+        1062.5312499999998
+      ],
+      "nearestAssetPixel": [
+        540,
+        1063
+      ],
+      "candidateRgba": [
+        120,
+        97,
+        70,
+        252
+      ]
+    }
+  ],
+  "frozenApertureGroundNegatives": [
+    {
+      "source": [
+        1304,
+        920
+      ],
+      "sourceRgba": [
+        248,
+        204,
+        136,
+        255
+      ],
+      "role": "Frozen actual empty aperture/paving; must be transparent in new gate object",
+      "assetPixelFloat": [
+        571.09375,
+        1016.1249999999997
+      ],
+      "nearestAssetPixel": [
+        571,
+        1016
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source": [
+        1308,
+        925
+      ],
+      "sourceRgba": [
+        253,
+        203,
+        126,
+        255
+      ],
+      "role": "Frozen actual empty aperture/paving; must be transparent in new gate object",
+      "assetPixelFloat": [
+        591.71875,
+        1041.9062499999998
+      ],
+      "nearestAssetPixel": [
+        592,
+        1042
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source": [
+        1320,
+        919
+      ],
+      "sourceRgba": [
+        252,
+        204,
+        132,
+        255
+      ],
+      "role": "Frozen actual empty aperture/paving; must be transparent in new gate object",
+      "assetPixelFloat": [
+        653.59375,
+        1010.9687499999997
+      ],
+      "nearestAssetPixel": [
+        654,
+        1011
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source": [
+        1336,
+        924
+      ],
+      "sourceRgba": [
+        251,
+        204,
+        129,
+        255
+      ],
+      "role": "Frozen actual empty aperture/paving; must be transparent in new gate object",
+      "assetPixelFloat": [
+        736.09375,
+        1036.7499999999998
+      ],
+      "nearestAssetPixel": [
+        736,
+        1037
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source": [
+        1297,
+        936
+      ],
+      "sourceRgba": [
+        230,
+        199,
+        123,
+        255
+      ],
+      "role": "Frozen actual empty aperture/paving; must be transparent in new gate object",
+      "assetPixelFloat": [
+        535.0,
+        1098.6249999999998
+      ],
+      "nearestAssetPixel": [
+        535,
+        1099
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "siteApproach": [
+    {
+      "source": [
+        1352,
+        920
+      ],
+      "sourceRgba": [
+        253,
+        199,
+        118,
+        255
+      ],
+      "role": "Canonical southeast gate site or approach center; independent ground, never architectural pivot",
+      "assetPixelFloat": [
+        818.59375,
+        1016.1249999999997
+      ],
+      "nearestAssetPixel": [
+        819,
+        1016
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source": [
+        1368,
+        920
+      ],
+      "sourceRgba": [
+        173,
+        133,
+        78,
+        255
+      ],
+      "role": "Canonical southeast gate site or approach center; independent ground, never architectural pivot",
+      "assetPixelFloat": [
+        901.09375,
+        1016.1249999999997
+      ],
+      "nearestAssetPixel": [
+        901,
+        1016
+      ],
+      "candidateRgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "knownRightSideGeometryConflict": {
+    "originalVisibleArchContacts": [
+      [
+        1297,
+        932
+      ],
+      [
+        1354,
+        904
+      ]
+    ],
+    "candidateRealArchContacts": [
+      [
+        535,
+        1078
+      ],
+      [
+        845,
+        990
+      ]
+    ],
+    "sourceRelativeVector": [
+      57,
+      -28
+    ],
+    "candidateRelativeVectorAsset": [
+      310,
+      -88
+    ],
+    "requiredScaleFromHorizontal": 0.18387096774193548,
+    "requiredScaleFromVertical": 0.3181818181818182,
+    "inference": "Because the physical contact vectors are not parallel, no uniform scale+translation can exactly register BOTH. This is a real relative-foot geometry mismatch, not a request to move source samples or invent tolerance.",
+    "underPreviewRightFoot": [
+      1357.121212121212,
+      914.9333333333334
+    ],
+    "rightFootResidual": [
+      3.121212121212011,
+      10.933333333333394
+    ],
+    "observableGroundIntrusions": [
+      {
+        "source": [
+          1354,
+          910
+        ],
+        "sourceRgba": [
+          241,
+          175,
+          88,
+          255
+        ],
+        "role": "Original visible paving below old right arch/leaf support, new object covers it; exact static geometry difference, not a gameplay/Pick failure claim",
+        "assetPixelFloat": [
+          828.90625,
+          964.5624999999997
+        ],
+        "nearestAssetPixel": [
+          829,
+          965
+        ],
+        "candidateRgba": [
+          145,
+          126,
+          118,
+          253
+        ]
+      },
+      {
+        "source": [
+          1352,
+          912
+        ],
+        "sourceRgba": [
+          251,
+          189,
+          104,
+          255
+        ],
+        "role": "Original visible paving below old right arch/leaf support, new object covers it; exact static geometry difference, not a gameplay/Pick failure claim",
+        "assetPixelFloat": [
+          818.59375,
+          974.8749999999997
+        ],
+        "nearestAssetPixel": [
+          819,
+          975
+        ],
+        "candidateRgba": [
+          38,
+          26,
+          20,
+          253
+        ]
+      },
+      {
+        "source": [
+          1348,
+          908
+        ],
+        "sourceRgba": [
+          253,
+          203,
+          121,
+          255
+        ],
+        "role": "Original visible paving below old right arch/leaf support, new object covers it; exact static geometry difference, not a gameplay/Pick failure claim",
+        "assetPixelFloat": [
+          797.96875,
+          954.2499999999997
+        ],
+        "nearestAssetPixel": [
+          798,
+          954
+        ],
+        "candidateRgba": [
+          77,
+          53,
+          31,
+          253
+        ]
+      }
+    ],
+    "doorLeaf": "New lower-right visible timber799,950 maps1348.2,907.18; original wood near1346,898 ends above the clear paving1348,908. New wood covers that pavingA253. Original exact unseen hinge/base shape is not inferred.",
+    "towerHiddenFeet": "New small-tower stone base maps about1240.37,948.48 and large near-base1380.39,914.74. Both are actual new contacts, but their old analogues are foliage/rock-obscured, so no invented exact old foundation fit is claimed."
+  },
+  "rejectedUniformAlternatives": {
+    "twoFeetMinimax": {
+      "fit": {
+        "scale": 0.21356783919597927,
+        "translation": [
+          1178.138190954774,
+          697.1708542713577
+        ],
+        "maxAxisError": 4.60301507537672,
+        "residuals": [
+          [
+            -4.603015075377016,
+            -4.603015075376675
+          ],
+          [
+            4.603015075376561,
+            4.603015075377243
+          ]
+        ]
+      },
+      "reason": "It trades both contacts by4.603source-axispx, but leaves ALL FOUR frozen left-leg stone samples transparent at this transform. Roof peaks shift up17.6/24.9px. Not recommended."
+    },
+    "twoFeetTwoRoofMinimax": {
+      "fit": {
+        "scale": 0.19393939393939458,
+        "translation": [
+          1191.0787878787876,
+          717.4666666666661
+        ],
+        "maxAxisError": 5.466666666666671,
+        "residuals": [
+          [
+            -2.163636363636215,
+            -5.46666666666647
+          ],
+          [
+            0.9575757575760235,
+            5.466666666666697
+          ],
+          [
+            -5.466666666666697,
+            -5.466666666666924
+          ],
+          [
+            1.7515151515153775,
+            -5.357575757576228
+          ]
+        ]
+      },
+      "reason": "Balanced residual5.467px is not a permission threshold. It makes1297,899 onlyA7 and front1297,927 A1,1298,929 A0; cannot protect frozen material. Retained as failed diagnostic, not used."
+    }
+  },
+  "centralArchDepthSupport": {
+    "realLeft": [
+      535,
+      1078
+    ],
+    "realRight": [
+      845,
+      990
+    ],
+    "virtualSpanBetweenLegs": [
+      [
+        540,
+        1078
+      ],
+      [
+        845,
+        990
+      ]
+    ],
+    "classification": "Virtual support interpolation for arch span whose columns contain only arch masonry above transparent aperture. Not actual per-column foot and absolutely not alpha-bottom/arch-apex support. Must not add opaque geometry or pointer coverage to hole.",
+    "leafSeparate": "Partly open wooden leaf is real material with its own visible bottom. Do not force the leaf to arch virtual-front or erase it to manufacture a larger opening.",
+    "leftLegNativeControls": "With proper local support, original backTorren81,57footY920 must be behind at1296/1297,899; frontTorren81,59footY952 must remain visible at1297,927 and1298,929. Static candidate alpha here is sufficient but not native draw/Pick proof."
+  },
+  "backgroundAlphaAudit": {
+    "nonzeroMoreThan20PixelsFromOpaque": 885,
+    "maxFarAlpha": 1,
+    "farAlphaAbove8": 0,
+    "note": "Opaque stone/wood feet identified by actual material viewing, not whole alpha column minima. Low-alpha outline noise is not physical support. No alpha threshold changed."
+  },
+  "recommendation": "Preview once with supplied left-leg/roof registration, disclose right-leg and leaf extension. Do not declare complete gate fit or move canonical ground/collision/selection to hide the mismatch. If source right-path preservation is required, this whole PNG needs a bounded shape correction or explicit separate architecture composition; uniform translation alone cannot fix it while retaining left-foot/roof alignment.",
+  "evidence": [
+    "left-foot-grid.png",
+    "right-foot-grid.png",
+    "source-roofs-grid.png",
+    "candidate-contacts-and-controls.png"
+  ],
+  "ready": true
+}
