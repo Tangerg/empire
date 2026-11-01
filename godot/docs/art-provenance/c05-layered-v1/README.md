@@ -1,15 +1,23 @@
-# C05 independent assets — unbound preparation
+# C05 independent assets — formal binding and historical preparation
 
-These built-in image-generation outputs are a recoverable material checkpoint,
-not the accepted C05 scene. `c01-05.json` still uses the original painted village.
-The preview-only registration files now exercise the candidates; the formal scene,
-canonical map, gameplay and collision data remain unchanged.
-See `prompts.md` and `manifest.json` for prompts, exact bytes and dimensions.
+## Current status — 2026-11-01 06:46 UTC
 
-The first ground candidate retains some boulders; `ground-clean-v2.png` removes
-those standing rocks while retaining the bridge/dock. Both remain unbound pending
-registration review, and must not receive duplicate rock sprites. The rail candidate
-has a measured slope discrepancy requiring review before binding.
+Formal `c01-05.json` now uses independent registered ground and **58** objects.
+The last object is low pass-through bank footing, not new collision. Sloping bridge
+rails use the shared validated depth-strip renderer; a single per-object foot was
+proven incorrect even for these short pieces. Old painted scene and tests remain
+explicit historical references, not current presentation acceptance.
+Fresh native C05 1499, historical reference 172, canonical source negative controls,
+build, formatting and source metadata pass. Real normal-AI C05 is pending. See
+`../../C05-ENVIRONMENT-RECOVERY-20261101.md` for reset and evidence boundaries.
+Selected resources, including generated shore tuft provenance, are in the manifest
+and prompts. Earlier rejected images remain reference history, not selected art.
+
+## Historical preparation notes (superseded where stated above)
+
+The following records describe earlier unbound candidates and their failures.
+They do not assert that the current formal scene remains painted, that the old
+workspace screenshots/saves still exist, or that provisional registrations passed.
 
 ## Physical review corrections
 
