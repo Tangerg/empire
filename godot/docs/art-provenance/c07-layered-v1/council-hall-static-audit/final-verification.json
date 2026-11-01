@@ -1,0 +1,28 @@
+{
+  "scope": "Focused final static closure, no full campaign acceptance or actual play",
+  "productionBuild": "0warnings/0errors",
+  "externalProbeBuild": "0warnings/0errors",
+  "positiveCases": [
+    "fixed original true roof",
+    "fixed original foreground paving",
+    "new true local-front Torren helmet",
+    "main door target",
+    "approach25,48",
+    "512entry strip pixels"
+  ],
+  "negativeCases": {
+    "background": "exit1 intended Council hall actual-alpha back/front contract failed",
+    "wholeFront759": "exit1 same intended assertion; real helmet2points falsely hidden"
+  },
+  "logsInRecovery": [
+    "c07-static-preview/council-final-production-build.log",
+    "c07-static-preview/council-final-probe-build.log",
+    "c07-static-preview/council-hall-final-roof.log",
+    "c07-static-preview/council-hall-final-front.log",
+    "c07-static-preview/council-hall-final-local-front.log",
+    "c07-static-preview/council-hall-final-background-negative.log",
+    "c07-static-preview/council-hall-final-flat-negative.log"
+  ],
+  "performancePassed": false,
+  "productionBinding": false
+}
