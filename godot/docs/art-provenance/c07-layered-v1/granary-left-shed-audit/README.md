@@ -9,3 +9,5 @@ Negative assigning roof envelope to every post produces valid result JSON and ex
 Large under-shed bale asset is only saved as a candidate checkpoint; no registration acceptance yet. Its visible old base388215/394213/396212 is documented, but402column base is obscured by independent barrel. Prior tentative back-wolf wrong-order assertion is withdrawn, alpha data retained as pending. Foreground wolf24,15 remains a valid protective case for new layout. No retroactive original bug claim from future authored hidden feet.
 
 Complete stock/back partitions, visual assembly/contact shadows and performance still pending. No production/fullscene acceptance; new material and shape await same-camera visual review.
+
+V1 native visual review found the authored back storage panel ungrounded in source identity and visually detached from supports. **V1 assembly visual NOT accepted** despite structural checks passing. Preserve its failure image. Remove this speculative panel from the next structural candidate; restore independently identified supplies separately instead of inventing a back wall. New bale asset remains unregistered at this checkpoint.
