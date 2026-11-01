@@ -1,0 +1,310 @@
+{
+  "scope": "Read-only NE-specific low rock vs frozen original NE whole ground envelope. Actual source photo/candidate viewed; not prompt landmarks.",
+  "assetPath": "/workspace/scratch/84c9fe948755/generated_images/exec-17dcb43c-0961-4e92-bcd2-f71dcc5ea6de.png",
+  "sha256": "b6362b2096e2e7bac52f6947411910c2db633e7615a94ad3f9898fe47218d0a9",
+  "pixelSize": [
+    1536,
+    1024
+  ],
+  "actualCompleteLowerEndFrontEndFeet": [
+    [
+      50.0,
+      562.0
+    ],
+    [
+      880.0,
+      917.0
+    ],
+    [
+      1500.0,
+      731.0
+    ]
+  ],
+  "actualFootAlpha": [
+    250,
+    249,
+    251
+  ],
+  "roles": [
+    "visible outer-left high tail ground end",
+    "frontmost low central stone foot",
+    "outer-right tail foot"
+  ],
+  "sourceOverallLowerVertices": [
+    [
+      1207.0,
+      164.0
+    ],
+    [
+      1284.0,
+      179.0
+    ],
+    [
+      1326.0,
+      163.0
+    ]
+  ],
+  "originalWholeGroundPolygon": [
+    [
+      1178.0,
+      111.0
+    ],
+    [
+      1230.0,
+      98.0
+    ],
+    [
+      1324.0,
+      121.0
+    ],
+    [
+      1326.0,
+      163.0
+    ],
+    [
+      1284.0,
+      179.0
+    ],
+    [
+      1207.0,
+      164.0
+    ]
+  ],
+  "originalBlockedCells": [
+    [
+      36,
+      2
+    ],
+    [
+      37,
+      2
+    ],
+    [
+      38,
+      2
+    ],
+    [
+      39,
+      2
+    ],
+    [
+      36,
+      3
+    ],
+    [
+      37,
+      3
+    ],
+    [
+      38,
+      3
+    ],
+    [
+      39,
+      3
+    ],
+    [
+      40,
+      3
+    ],
+    [
+      36,
+      4
+    ],
+    [
+      37,
+      4
+    ],
+    [
+      38,
+      4
+    ],
+    [
+      39,
+      4
+    ],
+    [
+      40,
+      4
+    ],
+    [
+      38,
+      5
+    ],
+    [
+      39,
+      5
+    ],
+    [
+      40,
+      5
+    ]
+  ],
+  "sampleMethod": "Visible left tail is real rock, not shadow or removable decoration. All columns with actualalpha>=200 contribute their LAST opaque pixel, including tail below700. Unlike prior assets whose complete foot profile is belowrow700, this asset starts atrow559; retaining a700cut would silently omit real tail and is NOT done.",
+  "completeLowOutlineXRange": [
+    39,
+    1503
+  ],
+  "completeLowOutlineSampleCount": 1465,
+  "fits": [
+    {
+      "completeActualLowerOutlineIncluded": false,
+      "sourceScale": 0.07607607607607579,
+      "instanceWorldScale": 0.09509509509509474,
+      "sourceTranslation": [
+        1210.1246246246249,
+        114.31681681681695
+      ],
+      "anchorPixels": [
+        880.0,
+        917.0
+      ],
+      "sourceFront": [
+        1277.0715715715714,
+        184.07857857857846
+      ],
+      "sourceFeet": [
+        [
+          1213.9284284284286,
+          157.07157157157155
+        ],
+        [
+          1277.0715715715714,
+          184.07857857857846
+        ],
+        [
+          1324.2387387387384,
+          169.92842842842836
+        ]
+      ],
+      "errorsXY": [
+        [
+          6.92842842842856,
+          -6.928428428428447
+        ],
+        [
+          -6.92842842842856,
+          5.078578578578458
+        ],
+        [
+          -1.7612612612615521,
+          6.9284284284283615
+        ]
+      ],
+      "minimaxObjective": 6.928428428428437,
+      "allLowerOutlineMaximumLInfinityOutside": 5.992457975216457,
+      "worstLowerOutlinePixel": [
+        1357,
+        812
+      ],
+      "worstLowerOutlineAlpha": 210,
+      "worstLowerOutlineSource": [
+        1313.3598598598596,
+        176.0905905905905
+      ],
+      "strict5Pass": false
+    },
+    {
+      "completeActualLowerOutlineIncluded": true,
+      "sourceScale": 0.07607607607607608,
+      "instanceWorldScale": 0.0950950950950951,
+      "sourceTranslation": [
+        1210.1246246246246,
+        114.31681681681681
+      ],
+      "anchorPixels": [
+        880.0,
+        917.0
+      ],
+      "sourceFront": [
+        1277.0715715715717,
+        184.07857857857857
+      ],
+      "sourceFeet": [
+        [
+          1213.9284284284283,
+          157.07157157157155
+        ],
+        [
+          1277.0715715715717,
+          184.07857857857857
+        ],
+        [
+          1324.2387387387387,
+          169.92842842842842
+        ]
+      ],
+      "errorsXY": [
+        [
+          6.928428428428333,
+          -6.928428428428447
+        ],
+        [
+          -6.928428428428333,
+          5.078578578578572
+        ],
+        [
+          -1.7612612612613248,
+          6.928428428428418
+        ]
+      ],
+      "minimaxObjective": 6.928428428428425,
+      "allLowerOutlineMaximumLInfinityOutside": 5.992457975216634,
+      "worstLowerOutlinePixel": [
+        1357,
+        812
+      ],
+      "worstLowerOutlineAlpha": 210,
+      "worstLowerOutlineSource": [
+        1313.3598598598599,
+        176.09059059059058
+      ],
+      "strict5Pass": false
+    }
+  ],
+  "independentStrict5Contradiction": {
+    "leftToFrontHorizontalRequiresScaleAtLeast": 0.08072289156626505,
+    "leftToRightVerticalRequiresScaleAtMost": 0.05325443786982249,
+    "explanation": "Source lower-left\u2192front needs77\u00b110px; source right foot is1px above lower-left, but candidate right foot is169.0px lower. Thus scale must simultaneously exceed the horizontal bound and lie below the vertical bound."
+  },
+  "opaqueBodyBBoxInclusive": [
+    39,
+    225,
+    1503,
+    920
+  ],
+  "opaqueBodyCanvasMargins": [
+    39,
+    225,
+    32,
+    103
+  ],
+  "canvasBorderAlpha": {
+    "left": {
+      "maximumAlpha": 1,
+      "nonzeroCount": 27,
+      "alphaAtLeast200Count": 0
+    },
+    "right": {
+      "maximumAlpha": 0,
+      "nonzeroCount": 0,
+      "alphaAtLeast200Count": 0
+    },
+    "top": {
+      "maximumAlpha": 0,
+      "nonzeroCount": 0,
+      "alphaAtLeast200Count": 0
+    },
+    "bottom": {
+      "maximumAlpha": 1,
+      "nonzeroCount": 5,
+      "alphaAtLeast200Count": 0
+    }
+  },
+  "verdict": "FAIL strict fixed overall lower-foot + complete lower-profile fit. Left-tail/right-end ground levels remain incompatible with original lower-envelope pair. No tail omitted or main-only box substituted.",
+  "sourceCaveat": "The original audit has additional upper/rear vertices, so full historical rear contact is not established solely by the lower3samples. Report is a failed fit against the requested frozen lower-envelope references, not a claim every visible source stone is exactly described by that coarse polygon.",
+  "limits": [
+    "No new collision, source art edit, native pick or actual actor occlusion test.",
+    "Candidate lower-profile pass/fail never certifies upper rock height, forest/background integration or hidden foundation ownership."
+  ]
+}

@@ -144,3 +144,6 @@ Reconstruct tall fractured left/rear mass with low foreground ledge toward right
 asymmetric whole footprint with frontmost contact near two-thirds width, not a
 symmetric mountain. Transparent1536x1024, only actual rock/snow resting on rocks;
 remove surrounding tree/reeds/ground/road. Prompt contacts are guides, not test data.
+
+## 2026-11-01 08:32 unbound candidate checkpoint
+Built-in imagegen, transparent backgrounds, no manual pixel modifications. NW v3 corrected lower chain but lacks true rear cliff height; NW v4 rebuilds taller rear-left cliff with previous lower contour reference. NE v1/v2 restore broad low ridge; subsequent source inspection shows old lower polygon includes grass/snow, so neither is certified from that polygon. North supply v1 is a dedicated thin timber four-post low snowy shelter extracted in style/geometry from original source crop, no crates/fence/ground. Short shelter mirror v3 reverses short v2 orientation; actual output must be measured rather than assuming exact mirror coordinates. No candidate in this checkpoint changes production scene or game rules.

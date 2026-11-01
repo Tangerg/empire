@@ -1,0 +1,251 @@
+{
+  "scope": "Bounded actual source solid-rock height/horizontal evidence; not blindly demanding every coarse ground-polygon pixel or old cast-shadow pixel be covered.",
+  "originalImageSha256": "7fbdee75a49446a9e807c3a0852a70eafe9f6c8beeccc25736393371d2d81c8d",
+  "candidateFitFile": "northwest-specific-rock-revised-fit.json",
+  "observations": [
+    {
+      "material": "summit interior snow",
+      "sourcePixel": [
+        995,
+        25
+      ],
+      "originalRGB": [
+        64,
+        99,
+        171
+      ],
+      "candidateAssetFloat": [
+        370.4978233830842,
+        -887.1977611940293
+      ],
+      "candidateAlphaAtNearestPixel": 0
+    },
+    {
+      "material": "upper-left stone rim",
+      "sourcePixel": [
+        978,
+        34
+      ],
+      "originalRGB": [
+        43,
+        67,
+        115
+      ],
+      "candidateAssetFloat": [
+        144.44962686567132,
+        -767.5251865671637
+      ],
+      "candidateAlphaAtNearestPixel": 0
+    },
+    {
+      "material": "left upper face",
+      "sourcePixel": [
+        977,
+        60
+      ],
+      "originalRGB": [
+        20,
+        39,
+        69
+      ],
+      "candidateAssetFloat": [
+        131.15267412935293,
+        -421.8044154228852
+      ],
+      "candidateAlphaAtNearestPixel": 0
+    },
+    {
+      "material": "central vertical face",
+      "sourcePixel": [
+        995,
+        57
+      ],
+      "originalRGB": [
+        28,
+        41,
+        76
+      ],
+      "candidateAssetFloat": [
+        370.4978233830842,
+        -461.6952736318404
+      ],
+      "candidateAlphaAtNearestPixel": 0
+    },
+    {
+      "material": "right upper vertical face",
+      "sourcePixel": [
+        1023,
+        42
+      ],
+      "originalRGB": [
+        130,
+        141,
+        180
+      ],
+      "candidateAssetFloat": [
+        742.8124999999994,
+        -661.1495646766165
+      ],
+      "candidateAlphaAtNearestPixel": 0
+    },
+    {
+      "material": "right return stone face",
+      "sourcePixel": [
+        1034,
+        77
+      ],
+      "originalRGB": [
+        54,
+        60,
+        84
+      ],
+      "candidateAssetFloat": [
+        889.0789800995019,
+        -195.75621890547234
+      ],
+      "candidateAlphaAtNearestPixel": 0
+    },
+    {
+      "material": "left-return solid stone",
+      "sourcePixel": [
+        950,
+        90
+      ],
+      "originalRGB": [
+        54,
+        72,
+        112
+      ],
+      "candidateAssetFloat": [
+        -227.86504975124396,
+        -22.8958333333331
+      ],
+      "candidateAlphaAtNearestPixel": 0
+    },
+    {
+      "material": "lower-left stone face",
+      "sourcePixel": [
+        975,
+        101
+      ],
+      "originalRGB": [
+        20,
+        40,
+        71
+      ],
+      "candidateAssetFloat": [
+        104.55876865671613,
+        123.37064676616933
+      ],
+      "candidateAlphaAtNearestPixel": 0
+    },
+    {
+      "material": "original rear-envelope solid stone",
+      "sourcePixel": [
+        991,
+        84
+      ],
+      "originalRGB": [
+        57,
+        71,
+        113
+      ],
+      "candidateAssetFloat": [
+        317.3100124378106,
+        -102.67754975124352
+      ],
+      "candidateAlphaAtNearestPixel": 0
+    },
+    {
+      "material": "lower dark vertical stone, not ground shadow",
+      "sourcePixel": [
+        980,
+        100
+      ],
+      "originalRGB": [
+        33,
+        50,
+        83
+      ],
+      "candidateAssetFloat": [
+        171.04353233830813,
+        110.07369402985093
+      ],
+      "candidateAlphaAtNearestPixel": 0
+    },
+    {
+      "material": "overlap control stone",
+      "sourcePixel": [
+        1000,
+        100
+      ],
+      "originalRGB": [
+        18,
+        33,
+        60
+      ],
+      "candidateAssetFloat": [
+        436.9825870646762,
+        110.07369402985093
+      ],
+      "candidateAlphaAtNearestPixel": 253
+    }
+  ],
+  "minimumSourceMaterialRequirements": {
+    "unambiguousSummitSnowPixel": [
+      995,
+      25
+    ],
+    "summitSilhouetteApproxY": [
+      19,
+      22
+    ],
+    "originalAuditFrontFoot": [
+      1035,
+      169
+    ],
+    "heightFromFrontToInteriorSnowWitness": 144,
+    "heightToApproxSummitBoundary": [
+      147,
+      150
+    ],
+    "unambiguousLeftReturnStonePixel": [
+      950,
+      90
+    ],
+    "knownSolidRockWitnessBounds": [
+      950,
+      25,
+      1034,
+      101
+    ],
+    "boundsMeaning": "Envelope of selected positive material witnesses, NOT a rectangle to fill and NOT an exact silhouette extraction mask."
+  },
+  "currentCandidateActualExtentAfterAcceptedFootFit": {
+    "opaqueSourceMinimumX": 968.0390992212895,
+    "opaqueSourceMinimumY": 94.42927296962326,
+    "physicalFrontSource": [
+      1034.0692654865188,
+      166.85188129925405
+    ],
+    "materialHeightFromFrontToOpaqueTop": 72.42260832963078,
+    "leftMissingReachToSolidWitness": 18.03909922128946,
+    "topMissingReachToSnowWitness": 69.42927296962326
+  },
+  "minimalGeometryDirection": [
+    "Preserve the accepted whole lower-chain world placement; restore the actual rear high cliff volume upward, and its visible left return about18sourcepx left of current all-material minimum. Do not widen/raise the entire lower chain or change terrain.",
+    "Known actual interior snow at995,25 requires about69sourcepx more upward material than current top94.43; silhouette summit needs about73\u201375px more. Current body height~72.42sourcepx is about half the historical144\u2013150px front-to-summit range.",
+    "At this exact uniform scale the old snow witness maps above current canvas (see observation). Correct reconstruction therefore needs a taller/back-left body and potentially a different canvas/anchor registration, not a different groundFront or selectionCell.",
+    "This does not require filling pines, branch gaps, background or path shadows. Only independently visible rock/snow material and subsequently audited true physical support are obligations."
+  ],
+  "explicitExclusions": [
+    "Pine needles/branches largely around944..979,120..185 are not part of the rock replacement merely because old wall cells nearby are blocked.",
+    "Bare thin tree/trunk crossing about1010..1045,105..176 is vegetation, not rock alpha to reproduce.",
+    "Broad blue ground shadows/snow/path below~175 and east of~1070 are not solid cliff walls and are not used as positive rock witnesses.",
+    "The coarse audit ground polygon is not a paint mask; upper mass points are standing rock visibility evidence, not proof that roof alpha equals ground foundation."
+  ],
+  "limits": [
+    "Hand-reviewed original material witnesses, not a full segmentation. No full rear foundation or complete16wall-cell support certification.",
+    "No generation, source modifications, native pick or GUI run."
+  ]
+}
