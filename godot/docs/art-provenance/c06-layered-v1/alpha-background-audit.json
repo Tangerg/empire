@@ -187,6 +187,12 @@
       "classification": "No broad weak-alpha exterior flagged; not a guarantee of every contour. No cleanup warranted."
     },
     {
+      "asset": "southwest-border-cliff-v3.png",
+      "weakPixelsFarFromOpaqueCore": 0,
+      "regions": [],
+      "classification": "No broad weak-alpha exterior flagged; thin a1/2 edge samples retained, no threshold changes. Four original material and four mapped exclusion witnesses separately verified."
+    },
+    {
       "asset": "stone-bridge-lantern-v1.png",
       "weakPixelsFarFromOpaqueCore": 0,
       "regions": [],
@@ -264,6 +270,5 @@
       "regions": [],
       "classification": "No broad weak-alpha exterior flagged; not a guarantee of every contour. No cleanup warranted."
     }
-  ],
-  "manualReview": "39 candidate RGBA images inspected by broad-exterior heuristic. Only retained old SW house has a broad flagged region, reproduced and corrected by alpha-v3. No current new yard sprite flags; unused triple-pine has64isolated weak pixels. No blanket alpha threshold or shadow deletion."
+  ]
 }

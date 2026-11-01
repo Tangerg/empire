@@ -1,0 +1,220 @@
+{
+  "status": "unbound96object static candidate; restores original SW vertical body; production unchanged",
+  "sourceTransform": {
+    "scale": 0.05,
+    "translation": [
+      0,
+      590.5
+    ]
+  },
+  "assetSha256": "46a34c13415445f963cd2c9b39a4b646ffc74e49fdcc2c7d2c6bde18da8fc449",
+  "originalMaterialWitnesses": [
+    {
+      "source": [
+        22,
+        614
+      ],
+      "assetPixel": [
+        440,
+        470
+      ],
+      "rgba": [
+        108,
+        111,
+        132,
+        253
+      ]
+    },
+    {
+      "source": [
+        24,
+        638
+      ],
+      "assetPixel": [
+        480,
+        950
+      ],
+      "rgba": [
+        39,
+        57,
+        90,
+        253
+      ]
+    },
+    {
+      "source": [
+        24,
+        646
+      ],
+      "assetPixel": [
+        480,
+        1110
+      ],
+      "rgba": [
+        21,
+        36,
+        64,
+        252
+      ]
+    },
+    {
+      "source": [
+        24,
+        657
+      ],
+      "assetPixel": [
+        480,
+        1330
+      ],
+      "rgba": [
+        47,
+        66,
+        103,
+        253
+      ]
+    }
+  ],
+  "mappedExclusions": [
+    {
+      "source": [
+        53,
+        678
+      ],
+      "assetPixel": [
+        1060,
+        1750
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source": [
+        36,
+        716
+      ],
+      "assetPixel": [
+        720,
+        2510
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source": [
+        100,
+        716
+      ],
+      "assetPixel": [
+        2000,
+        2510
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source": [
+        132,
+        688
+      ],
+      "assetPixel": [
+        2640,
+        1950
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "actualStoneFootWitnesses": [
+    {
+      "assetPixel": [
+        190,
+        1427
+      ],
+      "rgba": [
+        21,
+        38,
+        64,
+        253
+      ],
+      "source": [
+        9.5,
+        661.85
+      ]
+    },
+    {
+      "assetPixel": [
+        500,
+        1464
+      ],
+      "rgba": [
+        15,
+        29,
+        53,
+        248
+      ],
+      "source": [
+        25.0,
+        663.7
+      ]
+    },
+    {
+      "assetPixel": [
+        680,
+        1470
+      ],
+      "rgba": [
+        23,
+        34,
+        60,
+        253
+      ],
+      "source": [
+        34.0,
+        664.0
+      ]
+    }
+  ],
+  "oldRightToeObservedRange": {
+    "x": [
+      25,
+      29
+    ],
+    "y": [
+      663,
+      667
+    ]
+  },
+  "boundary": "The central true foot(25,663.7) is within the old toe neighborhood; right low step(34,664) extends5px beyond old rightmost observation. Not claiming whole-base exact fit. Original cap point(22,604) remains alpha0; same-column current cap begins about0.55sourcepx lower. Old clean floor retains some low stone fragments, so defect is lost high rock body, not total absence of foundation.",
+  "validation": {
+    "frozenHighMaterialWitnesses": 4,
+    "mappedNegativeWitnesses": 4,
+    "removedInstanceNegativeControl": "all4positive witnesses become0",
+    "nativeStaticProbe": "1134legal centers,180mouth probes,180fixed actor samples,20whole-body poses; issues0, initialStateUnchanged",
+    "sharedHouseAlpha": "7exterior negatives +old negativecontrol +3truefeet +1070loweredge points unchanged",
+    "fullWallAcceptance": false,
+    "normalGameplay": false
+  },
+  "remainingSeparateWallIssues": [
+    "NE38,5 high neighboring roof alpha is not rock foundation",
+    "south24,29 remains historical road/snow wall expression",
+    "central22,11 and23,11 remain historical low grass/snow wall expression",
+    "five houses hidden rear foundations not certified",
+    "bridge support repair candidates rejected; no bridge art adopted"
+  ]
+}
