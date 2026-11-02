@@ -1,0 +1,264 @@
+{
+  "ready": true,
+  "scope": "Original material-owner correction and bounded proposed footing review only. No engine, GUI, gameplay, saves, production edits or image changes.",
+  "sourceImage": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/scenes/luojia.png",
+  "sourceSha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+  "supersedes": {
+    "file": "c07-static-preview/central-platform-review/central-platform-responsibility-and-next-component.json",
+    "field": "eastPlanterStaticRegressionCandidate",
+    "correction": "The old paired back foliage833450/834451 and front stone832489 are two different physical objects. Their alpha facts remain, but they cannot share one489 footline or be claimed as a same-object back/front pair."
+  },
+  "rearWhitePlanter": {
+    "owner": "rear white stone container and its tall dark-green foliage",
+    "visibleMaterialBoundsApprox": {
+      "foliage": [
+        821,
+        445,
+        851,
+        468
+      ],
+      "rightStoneFace": [
+        849,
+        461,
+        859,
+        477
+      ]
+    },
+    "stoneFacePositiveSamples": [
+      {
+        "source": [
+          851,
+          475
+        ],
+        "rgb": [
+          200,
+          161,
+          120
+        ],
+        "cell": [
+          53,
+          29
+        ],
+        "terrain": "p"
+      },
+      {
+        "source": [
+          855,
+          473
+        ],
+        "rgb": [
+          229,
+          186,
+          153
+        ],
+        "cell": [
+          53,
+          29
+        ],
+        "terrain": "p"
+      }
+    ],
+    "visibleRightLowerBoundaryApprox": [
+      [
+        851,
+        476
+      ],
+      [
+        857,
+        473
+      ]
+    ],
+    "edgeUncertainty": "About one source pixel of antialias/contact mixing. This is a partial visible right-foot boundary, not a complete original footprint.",
+    "hiddenFeet": "Near-front/left base obscured by the separate front wood box; do not invent old feet from the foreground stone support.",
+    "canonicalContext": "The visible right-foot segment projects into p(53,29). This records an original source/road overlap requiring design review; the static new-base proof does NOT certify a full original actor-shoe collision without an original complete foundation.",
+    "backWitness": {
+      "cell": [
+        52,
+        28
+      ],
+      "facing": "west",
+      "foot": [
+        840,
+        456
+      ],
+      "points": [
+        {
+          "source": [
+            833,
+            450
+          ],
+          "framePixel": [
+            341,
+            502
+          ],
+          "actorAlpha": 253
+        },
+        {
+          "source": [
+            834,
+            451
+          ],
+          "framePixel": [
+            331,
+            512
+          ],
+          "actorAlpha": 252
+        }
+      ],
+      "oldPaintedOwners": [],
+      "nativeStatus": "Parent reports independent original static probe confirmed actorOpaque=true,owners=[],PickUnit=true; this reviewer did not run it."
+    },
+    "sameObjectFrontControl": {
+      "status": "Not found in bounded check; do not substitute the front wood box.",
+      "cell": [
+        51,
+        32
+      ],
+      "idleAppearances": 12,
+      "facings": 2,
+      "whiteStoneFaceInteriorROIInclusive": [
+        851,
+        466,
+        856,
+        472
+      ],
+      "sourcePoints": 42,
+      "alphaThreshold": 200,
+      "matches": 0,
+      "notExhaustiveAllMapOrAllFrames": true
+    }
+  },
+  "frontWoodPlanter": {
+    "owner": "separate foreground wooden flower box and the visible stone support immediately beneath it",
+    "visibleMaterialBoundsApprox": {
+      "foliage": [
+        819,
+        465,
+        845,
+        478
+      ],
+      "woodFace": [
+        822,
+        474,
+        848,
+        486
+      ]
+    },
+    "stoneSupportFrontLowerBoundaryApproxY": [
+      495,
+      496
+    ],
+    "old489Interpretation": "832489 is an interior stone-side point below this wood box, not its complete ground foot and not the rear white container foot.",
+    "supportOwnershipLimit": "Do not infer all hidden rear stone geometry or its structural continuity with the wider platform merely from this visible patch.",
+    "frontWitness": {
+      "cell": [
+        51,
+        32
+      ],
+      "terrain": "p",
+      "facing": "east",
+      "foot": [
+        824,
+        520
+      ],
+      "source": [
+        832,
+        489
+      ],
+      "framePixel": [
+        352,
+        242
+      ],
+      "actorAlpha": 252,
+      "oldPaintedOwners": []
+    },
+    "newBackCandidate": {
+      "cell": [
+        53,
+        29
+      ],
+      "terrain": "p",
+      "facing": "west",
+      "foot": [
+        856,
+        472
+      ],
+      "points": [
+        {
+          "source": [
+            843,
+            470
+          ],
+          "rgb": [
+            79,
+            83,
+            21
+          ],
+          "framePixel": [
+            404,
+            544
+          ],
+          "actorAlpha": 250
+        },
+        {
+          "source": [
+            844,
+            470
+          ],
+          "rgb": [
+            88,
+            83,
+            28
+          ],
+          "framePixel": [
+            393,
+            544
+          ],
+          "actorAlpha": 253
+        }
+      ],
+      "material": "Foreground box own low foliage/wood-mouth margin, distinct from the tall rear foliage; confirm this narrow rim ownership in the native close view before freezing.",
+      "nativeStatus": "Not run by reviewer; candidate only."
+    }
+  },
+  "newRearWhitePlanterFooting": {
+    "polygon": [
+      [
+        815,
+        477
+      ],
+      [
+        830,
+        470
+      ],
+      [
+        843,
+        477
+      ],
+      [
+        830,
+        484
+      ]
+    ],
+    "ownership": "Explicit new design; the rear830470 and full closed diamond are NOT original-source-certified feet.",
+    "leafWitnessesRetained": [
+      [
+        833,
+        450
+      ],
+      [
+        834,
+        451
+      ]
+    ],
+    "mathematicalProofFile": "/workspace/scratch/84c9fe948755/c07-static-preview/central-east-planter-review/rear-white-planter-new-base-walk-corridor.json",
+    "fixedTorrenWalkContinuousPass": true,
+    "minimumClearanceSourcePixels": 4.483111685793132,
+    "counts": {
+      "legalCells": 102,
+      "directedEdges": 324,
+      "soleSegments": 82950
+    },
+    "doesNotCertify": "Any future sprite ground contacts, bilinear/mipmap outline, other appearances, original hidden footprint, gameplay or current C07 save."
+  }
+}

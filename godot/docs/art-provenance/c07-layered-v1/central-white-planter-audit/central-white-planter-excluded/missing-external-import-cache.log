@@ -1,0 +1,91 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+ERROR: Unable to open file: res://.godot/imported/central-east-white-planter-v2-candidate.png-40c14b3abff3a0b717e4681ca11e7cd2.ctex.
+   at: _load_data (scene/resources/compressed_texture.cpp:42)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1224(nint, nint, string, string, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:11254)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Extensions/ResourceLoaderExtensions.cs:27)
+       [3] Empire.Presentation.BoardGroundView Empire.Presentation.AssembledGroundDocument+<>c__DisplayClass8_0.<Factory>b__0(Empire.Presentation.BoardGroundRules, Empire.Presentation.AuthoredScene) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/AssembledGroundDocument.cs:32)
+       [4] Empire.Presentation.BoardGroundView CityPreview+<>c__DisplayClass0_0.<_Ready>b__1(Empire.Presentation.BoardGroundRules, Empire.Presentation.AuthoredScene) (/workspace/scratch/84c9fe948755/c07-static-preview/CityPreview.cs:8)
+       [5] void Empire.Presentation.BoardView.ConfigureGround(Empire.Presentation.BoardGroundFactory) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:84)
+       [6] void CityPreview+<_Ready>d__0.MoveNext() (/workspace/scratch/84c9fe948755/c07-static-preview/CityPreview.cs:8)
+       [7] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+       [8] void CityPreview._Ready()
+       [9] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [10] bool Godot.CanvasItem.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/CanvasItem.cs:1792)
+       [11] bool Godot.Node2D.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node2D.cs:557)
+       [12] bool CityPreview.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CityPreview_ScriptMethods.generated.cs:38)
+       [13] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Failed loading resource: res://.godot/imported/central-east-white-planter-v2-candidate.png-40c14b3abff3a0b717e4681ca11e7cd2.ctex.
+   at: _load (core/io/resource_loader.cpp:343)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1224(nint, nint, string, string, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:11254)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Extensions/ResourceLoaderExtensions.cs:27)
+       [3] Empire.Presentation.BoardGroundView Empire.Presentation.AssembledGroundDocument+<>c__DisplayClass8_0.<Factory>b__0(Empire.Presentation.BoardGroundRules, Empire.Presentation.AuthoredScene) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/AssembledGroundDocument.cs:32)
+       [4] Empire.Presentation.BoardGroundView CityPreview+<>c__DisplayClass0_0.<_Ready>b__1(Empire.Presentation.BoardGroundRules, Empire.Presentation.AuthoredScene) (/workspace/scratch/84c9fe948755/c07-static-preview/CityPreview.cs:8)
+       [5] void Empire.Presentation.BoardView.ConfigureGround(Empire.Presentation.BoardGroundFactory) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:84)
+       [6] void CityPreview+<_Ready>d__0.MoveNext() (/workspace/scratch/84c9fe948755/c07-static-preview/CityPreview.cs:8)
+       [7] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+       [8] void CityPreview._Ready()
+       [9] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [10] bool Godot.CanvasItem.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/CanvasItem.cs:1792)
+       [11] bool Godot.Node2D.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node2D.cs:557)
+       [12] bool CityPreview.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CityPreview_ScriptMethods.generated.cs:38)
+       [13] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Failed loading resource: res://assets/native/c07-layered-v1/central-east-white-planter-v2-candidate.png.
+   at: _load (core/io/resource_loader.cpp:343)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1224(nint, nint, string, string, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:11254)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Extensions/ResourceLoaderExtensions.cs:27)
+       [3] Empire.Presentation.BoardGroundView Empire.Presentation.AssembledGroundDocument+<>c__DisplayClass8_0.<Factory>b__0(Empire.Presentation.BoardGroundRules, Empire.Presentation.AuthoredScene) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/AssembledGroundDocument.cs:32)
+       [4] Empire.Presentation.BoardGroundView CityPreview+<>c__DisplayClass0_0.<_Ready>b__1(Empire.Presentation.BoardGroundRules, Empire.Presentation.AuthoredScene) (/workspace/scratch/84c9fe948755/c07-static-preview/CityPreview.cs:8)
+       [5] void Empire.Presentation.BoardView.ConfigureGround(Empire.Presentation.BoardGroundFactory) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:84)
+       [6] void CityPreview+<_Ready>d__0.MoveNext() (/workspace/scratch/84c9fe948755/c07-static-preview/CityPreview.cs:8)
+       [7] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+       [8] void CityPreview._Ready()
+       [9] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [10] bool Godot.CanvasItem.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/CanvasItem.cs:1792)
+       [11] bool Godot.Node2D.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node2D.cs:557)
+       [12] bool CityPreview.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CityPreview_ScriptMethods.generated.cs:38)
+       [13] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Error loading resource: 'res://assets/native/c07-layered-v1/central-east-white-planter-v2-candidate.png'.
+   at: load (core/core_bind.cpp:78)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1224(nint, nint, string, string, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:11254)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Extensions/ResourceLoaderExtensions.cs:27)
+       [3] Empire.Presentation.BoardGroundView Empire.Presentation.AssembledGroundDocument+<>c__DisplayClass8_0.<Factory>b__0(Empire.Presentation.BoardGroundRules, Empire.Presentation.AuthoredScene) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/AssembledGroundDocument.cs:32)
+       [4] Empire.Presentation.BoardGroundView CityPreview+<>c__DisplayClass0_0.<_Ready>b__1(Empire.Presentation.BoardGroundRules, Empire.Presentation.AuthoredScene) (/workspace/scratch/84c9fe948755/c07-static-preview/CityPreview.cs:8)
+       [5] void Empire.Presentation.BoardView.ConfigureGround(Empire.Presentation.BoardGroundFactory) (/workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:84)
+       [6] void CityPreview+<_Ready>d__0.MoveNext() (/workspace/scratch/84c9fe948755/c07-static-preview/CityPreview.cs:8)
+       [7] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+       [8] void CityPreview._Ready()
+       [9] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [10] bool Godot.CanvasItem.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/CanvasItem.cs:1792)
+       [11] bool Godot.Node2D.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node2D.cs:557)
+       [12] bool CityPreview.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CityPreview_ScriptMethods.generated.cs:38)
+       [13] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: Empire.Presentation.MissingArtResourceException: Missing independent scene object: central-east-white-planter-v2.
+   at Empire.Presentation.AssembledGroundDocument.<>c__DisplayClass8_0.<Factory>b__0(BoardGroundRules rules, AuthoredScene scene) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/AssembledGroundDocument.cs:line 32
+   at CityPreview.<>c__DisplayClass0_0.<_Ready>b__1(BoardGroundRules rules, AuthoredScene sc) in /workspace/scratch/84c9fe948755/c07-static-preview/CityPreview.cs:line 8
+   at Empire.Presentation.BoardView.ConfigureGround(BoardGroundFactory createGround) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:line 84
+   at CityPreview._Ready() in /workspace/scratch/84c9fe948755/c07-static-preview/CityPreview.cs:line 8
+   at: void CityPreview+<_Ready>d__0.MoveNext() (res://CityPreview.cs:8)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void CityPreview+<_Ready>d__0.MoveNext() (/workspace/scratch/84c9fe948755/c07-static-preview/CityPreview.cs:8)
+       [2] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+       [3] void CityPreview._Ready()
+       [4] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [5] bool Godot.CanvasItem.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/CanvasItem.cs:1792)
+       [6] bool Godot.Node2D.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node2D.cs:557)
+       [7] bool CityPreview.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/CityPreview_ScriptMethods.generated.cs:38)
+       [8] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)

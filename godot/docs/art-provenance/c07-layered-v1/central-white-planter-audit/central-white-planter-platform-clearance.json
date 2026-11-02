@@ -1,0 +1,220 @@
+{
+  "scope": "Conservative entire visible stone box: successful disjoint bounds imply no material overlap. Old placement additionally retains an actual gray stone texel intruding onto actual platform polygon. Foliage allowed to overhang.",
+  "design": {
+    "assetPath": "empire-c01/godot/assets/native/c07-layered-v1/central-east-white-planter-v2-candidate.png",
+    "scale": 0.036,
+    "anchor": [
+      800,
+      943
+    ],
+    "worldAnchor": [
+      834,
+      480
+    ],
+    "hiddenBack": [
+      834,
+      467
+    ],
+    "stoneFootRoi": [
+      498,
+      700,
+      1068,
+      970
+    ],
+    "stoneWholeBox": [
+      [
+        498,
+        570
+      ],
+      [
+        1068,
+        944
+      ]
+    ],
+    "scope": "Single offline registration design; after integration this is frozen provenance, selected placement/strips are runtime owner."
+  },
+  "stoneWorldBox": [
+    [
+      823.128,
+      466.572
+    ],
+    [
+      843.648,
+      480.036
+    ]
+  ],
+  "platformMembers": [
+    {
+      "member": "upper-platform",
+      "bounds": [
+        [
+          716,
+          448
+        ],
+        [
+          820,
+          501
+        ]
+      ],
+      "overlapWithConservativeStoneBox": false
+    },
+    {
+      "member": "step-0-riser-0",
+      "bounds": [
+        [
+          716,
+          475
+        ],
+        [
+          767,
+          505
+        ]
+      ],
+      "overlapWithConservativeStoneBox": false
+    },
+    {
+      "member": "step-0-riser-1",
+      "bounds": [
+        [
+          767,
+          475
+        ],
+        [
+          820,
+          505
+        ]
+      ],
+      "overlapWithConservativeStoneBox": false
+    },
+    {
+      "member": "step-1-riser-0",
+      "bounds": [
+        [
+          715,
+          481
+        ],
+        [
+          767,
+          512
+        ]
+      ],
+      "overlapWithConservativeStoneBox": false
+    },
+    {
+      "member": "step-1-riser-1",
+      "bounds": [
+        [
+          767,
+          481
+        ],
+        [
+          822,
+          512
+        ]
+      ],
+      "overlapWithConservativeStoneBox": false
+    },
+    {
+      "member": "step-1-tread-0",
+      "bounds": [
+        [
+          715,
+          479
+        ],
+        [
+          767,
+          508
+        ]
+      ],
+      "overlapWithConservativeStoneBox": false
+    },
+    {
+      "member": "step-1-tread-1",
+      "bounds": [
+        [
+          767,
+          479
+        ],
+        [
+          822,
+          508
+        ]
+      ],
+      "overlapWithConservativeStoneBox": false
+    },
+    {
+      "member": "step-2-riser-0",
+      "bounds": [
+        [
+          714,
+          487
+        ],
+        [
+          767,
+          518
+        ]
+      ],
+      "overlapWithConservativeStoneBox": false
+    },
+    {
+      "member": "step-2-riser-1",
+      "bounds": [
+        [
+          767,
+          487
+        ],
+        [
+          824,
+          518
+        ]
+      ],
+      "overlapWithConservativeStoneBox": false
+    },
+    {
+      "member": "step-2-tread-0",
+      "bounds": [
+        [
+          714,
+          485
+        ],
+        [
+          767,
+          514
+        ]
+      ],
+      "overlapWithConservativeStoneBox": false
+    },
+    {
+      "member": "step-2-tread-1",
+      "bounds": [
+        [
+          767,
+          485
+        ],
+        [
+          824,
+          514
+        ]
+      ],
+      "overlapWithConservativeStoneBox": false
+    }
+  ],
+  "fixedStoneWitness": {
+    "texture": [
+      515,
+      730
+    ],
+    "rgba": [
+      151,
+      140,
+      137,
+      252
+    ],
+    "mappedSource": [
+      823.74,
+      472.332
+    ],
+    "platformPolygonOwners": []
+  },
+  "allDisjoint": true
+}
