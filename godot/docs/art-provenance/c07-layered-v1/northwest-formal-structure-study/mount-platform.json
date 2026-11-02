@@ -1,0 +1,223 @@
+{
+  "textureResourcePath": "res://assets/native/c07-layered-v1/northwest-gate-v1-stone-candidate.png",
+  "namePrefix": "NWLookoutMount",
+  "supportLine": [
+    [
+      74,
+      164
+    ],
+    [
+      116,
+      164
+    ]
+  ],
+  "members": [
+    {
+      "id": "tower-upper-left",
+      "polygon": [
+        [
+          75.8,
+          76
+        ],
+        [
+          92.5,
+          83.6
+        ],
+        [
+          92.5,
+          91.4
+        ],
+        [
+          75.8,
+          83.8
+        ]
+      ],
+      "uv": [
+        [
+          155,
+          664
+        ],
+        [
+          246,
+          704
+        ],
+        [
+          246,
+          753
+        ],
+        [
+          155,
+          714
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "native-alpha"
+    },
+    {
+      "id": "tower-upper-right",
+      "polygon": [
+        [
+          92.5,
+          83.6
+        ],
+        [
+          109.2,
+          77.8
+        ],
+        [
+          109.2,
+          85.6
+        ],
+        [
+          92.5,
+          91.4
+        ]
+      ],
+      "uv": [
+        [
+          970,
+          650
+        ],
+        [
+          1025,
+          627
+        ],
+        [
+          1025,
+          725
+        ],
+        [
+          970,
+          747
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "native-alpha"
+    },
+    {
+      "id": "cap-horizontal-top",
+      "polygon": [
+        [
+          75,
+          73
+        ],
+        [
+          93.9,
+          65.2
+        ],
+        [
+          115.5,
+          74.5
+        ],
+        [
+          96.6,
+          82.3
+        ]
+      ],
+      "uv": [
+        [
+          625,
+          375
+        ],
+        [
+          690,
+          348
+        ],
+        [
+          732,
+          373
+        ],
+        [
+          667,
+          400
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "native-alpha"
+    },
+    {
+      "id": "cap-left-thickness",
+      "polygon": [
+        [
+          75,
+          73
+        ],
+        [
+          96.6,
+          82.3
+        ],
+        [
+          96.6,
+          85.8
+        ],
+        [
+          75,
+          76.5
+        ]
+      ],
+      "uv": [
+        [
+          155,
+          664
+        ],
+        [
+          246,
+          704
+        ],
+        [
+          246,
+          753
+        ],
+        [
+          155,
+          714
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "native-alpha"
+    },
+    {
+      "id": "cap-right-thickness",
+      "polygon": [
+        [
+          96.6,
+          82.3
+        ],
+        [
+          115.5,
+          74.5
+        ],
+        [
+          115.5,
+          78.0
+        ],
+        [
+          96.6,
+          85.8
+        ]
+      ],
+      "uv": [
+        [
+          970,
+          650
+        ],
+        [
+          1025,
+          627
+        ],
+        [
+          1025,
+          725
+        ],
+        [
+          970,
+          747
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "native-alpha"
+    }
+  ],
+  "scope": "Bounded new tower-cap design; 3.5 source-pixel vertical thickness; retains lower tower/ground support and untouched lookout material/holes; geometry not pixel restoration",
+  "supportScope": "Same existing tower structural front=164; endpoint extended from115 to116 solely to span new 0.5px cap overhang, not a new physical ground foot"
+}

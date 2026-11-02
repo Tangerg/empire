@@ -1,0 +1,4 @@
+<Project Sdk="Godot.NET.Sdk/4.6.3">
+<PropertyGroup><EmpireRuntimePath Condition="'$(EmpireRuntimePath)' == ''">/workspace/scratch/84c9fe948755/empire-c01/godot/.godot/mono/temp/bin/Debug</EmpireRuntimePath><TargetFramework>net8.0</TargetFramework><EnableDynamicLoading>true</EnableDynamicLoading><Nullable>enable</Nullable><ImplicitUsings>enable</ImplicitUsings></PropertyGroup>
+<ItemGroup><Reference Include="Empire"><HintPath>$(EmpireRuntimePath)/Empire.dll</HintPath></Reference><Reference Include="Empire.Core"><HintPath>$(EmpireRuntimePath)/Empire.Core.dll</HintPath></Reference></ItemGroup>
+</Project>
