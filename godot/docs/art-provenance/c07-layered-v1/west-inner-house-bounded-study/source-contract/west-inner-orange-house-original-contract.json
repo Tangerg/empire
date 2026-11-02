@@ -1,0 +1,940 @@
+{
+  "ready": true,
+  "scope": "Complete bounded ORIGINAL orange-roof west-inner-house source contract. No engine/GUI/actions/save. Parent supplied native results are identified separately. Candidate PNG NOT measured in this report.",
+  "currentSelection": {
+    "instanceCount": 48,
+    "westInnerHouseReplacementFound": false,
+    "meaning": "48 selected before this house; current source house remains not replaced."
+  },
+  "sourceImage": "empire-c01/godot/assets/native/scenes/luojia.png",
+  "sourceSha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+  "physicalObjectSplit": {
+    "targetCore": "One-storey orange/red tiled house with its own chimney, plaster wall, arched wooden front door and right window. Continuous with adjacent urban block but one separate site owner.",
+    "notAFullLargeShed": "Tall two-storey blue-roofed house on the left is west-inner-blue-house, NOT a large lean-to to bake into this asset. Rear house is another owner.",
+    "rightSide": "Open wooden garden trellis and greenery, plus low courtyard wall/pier, are separate west-inner-side-garden/west-inner-east-wall responsibilities, not orange main walls.",
+    "standalonePots": "Left foreground tree pot around487463..501478 is west-inner-door-pot; right pot/plant and courtyard pier must not provide building foot references.",
+    "minimalWholeAsset": "Whole orange-roof main house including chimney/roof/eaves/own wall/window/door frame/threshold only. Hidden left short wall and rear/right foundation closure are design completions, never source-certified feet."
+  },
+  "bodyFacetsSourceApproximate": {
+    "roofMainPlane": {
+      "visibleEnvelopeApprox": [
+        [
+          480,
+          369
+        ],
+        [
+          514,
+          356
+        ],
+        [
+          550,
+          391
+        ],
+        [
+          484,
+          418
+        ]
+      ],
+      "status": "Approximate actual orange roof/eave landmarks, not old quad. Left edge is partially hidden by blue eaves/tree; do NOT reproduce those pixels as orange-house roof."
+    },
+    "eavesFront": {
+      "left": [
+        484,
+        417
+      ],
+      "right": [
+        546,
+        396
+      ],
+      "status": "Visible dark eave extrema, approximate1\u20132sourcepx."
+    },
+    "chimney": {
+      "roughVisibleBounds": [
+        492,
+        349,
+        510,
+        379
+      ],
+      "certifiedPositivePoints": [
+        [
+          498,
+          352
+        ],
+        [
+          500,
+          351
+        ]
+      ],
+      "status": "Real main-house stone chimney; cap is outside existing old roof mask at fixed samples."
+    },
+    "frontPlasterPlane": {
+      "visibleApproximateArea": [
+        484,
+        402,
+        543,
+        456
+      ],
+      "doorWoodApproximateBounds": [
+        499,
+        423,
+        514,
+        455
+      ],
+      "rightWindowApproximateBounds": [
+        525,
+        412,
+        533,
+        428
+      ],
+      "status": "A visible facade plane, not a rectangular ground footprint. Left boundary joins blue house; lower-left/right sectors are occluded by independent plants/wall."
+    }
+  },
+  "visibleStoneAndDoorBase": {
+    "doorInteriorPositiveWitnesses": [
+      {
+        "source": [
+          503,
+          440
+        ],
+        "rgb": [
+          167,
+          102,
+          47
+        ],
+        "material": "actual brown/orange wooden door leaf interior",
+        "status": "unambiguous wood planks",
+        "canonicalCell": [
+          31,
+          27
+        ],
+        "terrain": "#",
+        "insideOldTarget": false
+      },
+      {
+        "source": [
+          507,
+          443
+        ],
+        "rgb": [
+          169,
+          97,
+          34
+        ],
+        "material": "actual brown/orange wooden door leaf interior",
+        "status": "unambiguous wood planks",
+        "canonicalCell": [
+          31,
+          27
+        ],
+        "terrain": "#",
+        "insideOldTarget": false
+      },
+      {
+        "source": [
+          505,
+          440
+        ],
+        "rgb": [
+          148,
+          87,
+          35
+        ],
+        "material": "actual brown/orange wooden door leaf interior",
+        "status": "unambiguous wood planks",
+        "canonicalCell": [
+          31,
+          27
+        ],
+        "terrain": "#",
+        "insideOldTarget": false
+      },
+      {
+        "source": [
+          504,
+          451
+        ],
+        "rgb": [
+          155,
+          90,
+          29
+        ],
+        "material": "actual brown/orange wooden door leaf interior",
+        "status": "unambiguous wood planks",
+        "canonicalCell": [
+          31,
+          28
+        ],
+        "terrain": "#",
+        "insideOldTarget": false
+      },
+      {
+        "source": [
+          506,
+          451
+        ],
+        "rgb": [
+          157,
+          92,
+          29
+        ],
+        "material": "actual brown/orange wooden door leaf interior",
+        "status": "unambiguous wood planks",
+        "canonicalCell": [
+          31,
+          28
+        ],
+        "terrain": "#",
+        "insideOldTarget": false
+      }
+    ],
+    "thresholdMaterial": [
+      {
+        "source": [
+          504,
+          456
+        ],
+        "rgb": [
+          247,
+          213,
+          175
+        ],
+        "material": "pale stone threshold below true wood door",
+        "status": "visible material, not full foundation",
+        "canonicalCell": [
+          31,
+          28
+        ],
+        "terrain": "#"
+      },
+      {
+        "source": [
+          507,
+          455
+        ],
+        "rgb": [
+          253,
+          223,
+          190
+        ],
+        "material": "pale threshold/tread stone",
+        "status": "visible material, not full foundation",
+        "canonicalCell": [
+          31,
+          28
+        ],
+        "terrain": "#"
+      },
+      {
+        "source": [
+          515,
+          453
+        ],
+        "rgb": [
+          251,
+          227,
+          195
+        ],
+        "material": "right door-frame lower pale stone",
+        "status": "visible material, not full foundation",
+        "canonicalCell": [
+          32,
+          28
+        ],
+        "terrain": "#"
+      }
+    ],
+    "contactBands": [
+      {
+        "id": "visible-threshold-near-edge",
+        "approximatePolyline": [
+          [
+            501,
+            458
+          ],
+          [
+            507,
+            456
+          ],
+          [
+            515,
+            454
+          ]
+        ],
+        "status": "Visible threshold-to-paving band, about1\u20132px antialias/shadow mix; this is a local structural contact, NOT three outer house corners."
+      },
+      {
+        "id": "right-jamb-lower-edge",
+        "approximateBand": [
+          [
+            515,
+            453
+          ],
+          [
+            516,
+            455
+          ]
+        ],
+        "status": "515453 is solid pale lower stone;516454 already warm mixed edge. Do not force all boundary samples opaque."
+      }
+    ],
+    "unknownFullFeet": [
+      "Left exterior foot hidden by blue-house junction and independent foreground pot",
+      "Right exterior foot hidden by plant/pot and independent courtyard pier",
+      "Rear wall/base invisible"
+    ],
+    "oldFrontIsNotCertifiedFoot": {
+      "source": [
+        520,
+        474
+      ],
+      "rgb": [
+        223,
+        183,
+        133
+      ],
+      "material": "front paving/tile surface, NOT demonstrated main wall foot",
+      "status": "old groundFront520474 must not become a forced physical anchor",
+      "canonicalCell": [
+        32,
+        29
+      ],
+      "terrain": "#"
+    },
+    "forbiddenBorrowedFootReferences": [
+      [
+        476,
+        450
+      ],
+      [
+        520,
+        474
+      ],
+      [
+        566,
+        450
+      ]
+    ],
+    "forbiddenReason": "Old rough material/ground-front coordinates are not three source-confirmed building feet.476450 lies adjacent/occluded owner area,520474 is front paving,566450 is courtyard/garden-wall zone."
+  },
+  "siteAndInputContract": {
+    "canonicalSelectionCell": [
+      33,
+      30
+    ],
+    "canonicalSiteContact": [
+      536,
+      488
+    ],
+    "approachCell": [
+      34,
+      30
+    ],
+    "canonicalApproachContact": [
+      552,
+      488
+    ],
+    "logicalOwnership": "One target owner west-inner-house selecting33,30; no change to terrain, site, approach or battle rules. Roof/chimney visual-only material must not steal ground targets.",
+    "originalAuditMarkers": {
+      "sitePixel": [
+        540,
+        492
+      ],
+      "approachPixel": [
+        564,
+        492
+      ],
+      "warning": "These visual provenance markers are NOT canonical16px-cell centres. approachPixel564492 is in35,30, not approach34,30; do not use it to place actor feet or move the route."
+    },
+    "oldTargetPolygon": [
+      [
+        511,
+        434
+      ],
+      [
+        526,
+        425
+      ],
+      [
+        541,
+        435
+      ],
+      [
+        541,
+        458
+      ],
+      [
+        527,
+        466
+      ],
+      [
+        511,
+        457
+      ]
+    ],
+    "oldTargetDoesNotContainActualDoor": true,
+    "targetNegativeMaterial": {
+      "source": [
+        526,
+        462
+      ],
+      "rgb": [
+        250,
+        214,
+        174
+      ],
+      "material": "paving below actual doorway; inside old target but not true door",
+      "status": "visible material, not full foundation",
+      "canonicalCell": [
+        32,
+        28
+      ],
+      "terrain": "#"
+    },
+    "tests": {
+      "file": "empire-c01/godot/Presentation/LuojiaChecks.cs",
+      "existingLines99to104": "Roofs pass-through; any sample inside AUTHORED target returning Object suffices. This does not validate source-real door placement.",
+      "existingLines106to110": "Empty canonical site centre must remain Ground. Preserve this along with real wood-door Object positives."
+    }
+  },
+  "actualC07RoleWitnesses": [
+    {
+      "assetId": "torren-stage01",
+      "resourcePath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+      "frame": 0,
+      "frameRegion": [
+        0,
+        0,
+        557,
+        725
+      ],
+      "anchor": [
+        269,
+        565
+      ],
+      "scale": 0.0961538,
+      "west": false,
+      "cell": [
+        31,
+        23
+      ],
+      "terrain": "p",
+      "sourceContact": [
+        504,
+        376
+      ],
+      "points": [
+        {
+          "source": [
+            498,
+            352
+          ],
+          "originalRgb": [
+            242,
+            200,
+            152
+          ],
+          "actorFramePixel": [
+            206,
+            315
+          ],
+          "actorRgba": [
+            109,
+            69,
+            42,
+            253
+          ],
+          "oldMaterialOwners": []
+        },
+        {
+          "source": [
+            500,
+            351
+          ],
+          "originalRgb": [
+            242,
+            199,
+            148
+          ],
+          "actorFramePixel": [
+            227,
+            304
+          ],
+          "actorRgba": [
+            17,
+            9,
+            7,
+            253
+          ],
+          "oldMaterialOwners": []
+        }
+      ],
+      "expected": "Opaque chimney cap should cover actor; missing material oldowners[] is native-confirmed by parent."
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-WOLF-RIDER",
+      "resourcePath": "res://assets/painted-units-v1/unit-wolf-rider.png",
+      "frame": 0,
+      "frameRegion": [
+        0,
+        0,
+        511,
+        724
+      ],
+      "anchor": [
+        285,
+        568
+      ],
+      "scale": 0.1,
+      "west": false,
+      "cell": [
+        31,
+        30
+      ],
+      "terrain": "p",
+      "sourceContact": [
+        504,
+        488
+      ],
+      "points": [
+        {
+          "source": [
+            504,
+            451
+          ],
+          "originalRgb": [
+            155,
+            90,
+            29
+          ],
+          "actorFramePixel": [
+            285,
+            198
+          ],
+          "actorRgba": [
+            180,
+            94,
+            61,
+            253
+          ],
+          "oldMaterialOwners": [
+            {
+              "id": "west-inner-house/facade",
+              "groundFront": [
+                520,
+                474
+              ]
+            }
+          ]
+        },
+        {
+          "source": [
+            506,
+            451
+          ],
+          "originalRgb": [
+            157,
+            92,
+            29
+          ],
+          "actorFramePixel": [
+            305,
+            198
+          ],
+          "actorRgba": [
+            189,
+            95,
+            61,
+            253
+          ],
+          "oldMaterialOwners": [
+            {
+              "id": "west-inner-house/facade",
+              "groundFront": [
+                520,
+                474
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": "Front actor should stay visible over true door wood; static front control only, not run by reviewer."
+    }
+  ],
+  "parentNativeEvidence": {
+    "file": "c07-static-preview/west-inner-house-original-result.json",
+    "reportedByParent": "WestInnerHouseProbe fresh native original reproduction",
+    "back": "Both498352/500351 actorOpaque=true, owners=[], unitPicked=true for Torren31,23 east.",
+    "door": "Actual wooden503440/507443 returnedGround31,27;515443 returnedObject33,30. Reviewer independently confirms first two are real wood.",
+    "notReviewerExecuted": true
+  },
+  "completeCanonicalResponsibility": {
+    "originalAudit": {
+      "id": "west-inner-house-foundation",
+      "polygonPixels": [
+        [
+          476,
+          397
+        ],
+        [
+          519,
+          418
+        ],
+        [
+          564,
+          398
+        ],
+        [
+          564,
+          449
+        ],
+        [
+          520,
+          473
+        ],
+        [
+          476,
+          449
+        ]
+      ],
+      "blockedCells": [
+        [
+          29,
+          24
+        ],
+        [
+          30,
+          24
+        ],
+        [
+          34,
+          24
+        ],
+        [
+          35,
+          24
+        ],
+        [
+          29,
+          25
+        ],
+        [
+          30,
+          25
+        ],
+        [
+          31,
+          25
+        ],
+        [
+          32,
+          25
+        ],
+        [
+          33,
+          25
+        ],
+        [
+          34,
+          25
+        ],
+        [
+          35,
+          25
+        ],
+        [
+          29,
+          26
+        ],
+        [
+          30,
+          26
+        ],
+        [
+          31,
+          26
+        ],
+        [
+          32,
+          26
+        ],
+        [
+          33,
+          26
+        ],
+        [
+          34,
+          26
+        ],
+        [
+          35,
+          26
+        ],
+        [
+          29,
+          27
+        ],
+        [
+          30,
+          27
+        ],
+        [
+          31,
+          27
+        ],
+        [
+          32,
+          27
+        ],
+        [
+          33,
+          27
+        ],
+        [
+          34,
+          27
+        ],
+        [
+          35,
+          27
+        ],
+        [
+          29,
+          28
+        ],
+        [
+          30,
+          28
+        ],
+        [
+          31,
+          28
+        ],
+        [
+          32,
+          28
+        ],
+        [
+          33,
+          28
+        ],
+        [
+          34,
+          28
+        ],
+        [
+          35,
+          28
+        ],
+        [
+          31,
+          29
+        ],
+        [
+          32,
+          29
+        ],
+        [
+          33,
+          29
+        ]
+      ]
+    },
+    "notAFoundationMask": "35blocked cells belong to canonical collision. Historical polygon/bbox is not an actual single red-house solid footprint.",
+    "overlappingCoarseResponsibilities": [
+      {
+        "otherResponsibilityId": "west-inner-blue-house-foundation",
+        "sharedCanonicalBlockedCells": [
+          [
+            29,
+            25
+          ],
+          [
+            29,
+            26
+          ],
+          [
+            29,
+            27
+          ],
+          [
+            29,
+            28
+          ]
+        ],
+        "meaning": "Shared coarse canonical cell allocation, NOT proof of physical solid overlap or one ownership of all pixels."
+      },
+      {
+        "otherResponsibilityId": "west-inner-east-wall",
+        "sharedCanonicalBlockedCells": [
+          [
+            34,
+            28
+          ],
+          [
+            35,
+            27
+          ],
+          [
+            35,
+            28
+          ]
+        ],
+        "meaning": "Shared coarse canonical cell allocation, NOT proof of physical solid overlap or one ownership of all pixels."
+      },
+      {
+        "otherResponsibilityId": "west-inner-side-garden",
+        "sharedCanonicalBlockedCells": [
+          [
+            34,
+            25
+          ],
+          [
+            34,
+            26
+          ],
+          [
+            34,
+            27
+          ],
+          [
+            34,
+            28
+          ],
+          [
+            35,
+            25
+          ],
+          [
+            35,
+            26
+          ],
+          [
+            35,
+            27
+          ],
+          [
+            35,
+            28
+          ]
+        ],
+        "meaning": "Shared coarse canonical cell allocation, NOT proof of physical solid overlap or one ownership of all pixels."
+      },
+      {
+        "otherResponsibilityId": "west-inner-door-pot",
+        "sharedCanonicalBlockedCells": [
+          [
+            30,
+            28
+          ],
+          [
+            31,
+            29
+          ]
+        ],
+        "meaning": "Shared coarse canonical cell allocation, NOT proof of physical solid overlap or one ownership of all pixels."
+      }
+    ],
+    "sourceExamplesOfMixture": [
+      {
+        "source": [
+          472,
+          440
+        ],
+        "rgb": [
+          252,
+          225,
+          168
+        ],
+        "material": "adjacent blue-house wall sector, not orange-only footing",
+        "status": "visible material, not full foundation",
+        "canonicalCell": [
+          29,
+          27
+        ],
+        "terrain": "#"
+      },
+      {
+        "source": [
+          552,
+          424
+        ],
+        "rgb": [
+          62,
+          57,
+          38
+        ],
+        "material": "separate garden/trellis material",
+        "status": "visible material, not full foundation",
+        "canonicalCell": [
+          34,
+          26
+        ],
+        "terrain": "#"
+      },
+      {
+        "source": [
+          552,
+          456
+        ],
+        "rgb": [
+          237,
+          200,
+          164
+        ],
+        "material": "separate low courtyard wall/paving transition",
+        "status": "visible material, not full foundation",
+        "canonicalCell": [
+          34,
+          28
+        ],
+        "terrain": "#"
+      },
+      {
+        "source": [
+          488,
+          456
+        ],
+        "rgb": [
+          67,
+          97,
+          67
+        ],
+        "material": "independent foreground door-pot foliage",
+        "status": "visible material, not full foundation",
+        "canonicalCell": [
+          30,
+          28
+        ],
+        "terrain": "#"
+      },
+      {
+        "source": [
+          520,
+          472
+        ],
+        "rgb": [
+          254,
+          229,
+          187
+        ],
+        "material": "front paving/possible low stoop surface; no main-wall ground foot certified",
+        "status": "visible material, not full foundation",
+        "canonicalCell": [
+          32,
+          29
+        ],
+        "terrain": "#"
+      }
+    ],
+    "instruction": "Retain all canonical blocked cells but allocate actual blue house, garden/wall, pot and genuinely hidden/uncertain foundation separately. Never enlarge orange body to fill every35cell centre."
+  },
+  "deliveryFiles": [
+    "whole-context-5x.png",
+    "wider-context-4x.png",
+    "door-and-feet-grid.png",
+    "door-base-detail.png",
+    "roof-facets-grid.png",
+    "chimney-roof-detail.png"
+  ],
+  "stoppingBoundary": "Original main-house contract closed. No more role searches or source-foot archaeology required before parent candidate preview. No candidate fit or new hidden-foot certification performed."
+}
