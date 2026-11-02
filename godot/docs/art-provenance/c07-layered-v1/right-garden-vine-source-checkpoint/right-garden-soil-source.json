@@ -1,0 +1,58 @@
+{
+  "textureResourcePath": "res://assets/native/c07-layered-v1/central-front-wood-planter-v1-candidate.png",
+  "supportMode": "horizontal-plane",
+  "supportLine": [
+    [
+      547,
+      446
+    ],
+    [
+      580,
+      434.5
+    ]
+  ],
+  "members": [
+    {
+      "id": "new-ground-level-rooted-soil-bed",
+      "polygon": [
+        [
+          552,
+          448.5
+        ],
+        [
+          580,
+          434.5
+        ],
+        [
+          575,
+          432
+        ],
+        [
+          547,
+          446
+        ]
+      ],
+      "uv": [
+        [
+          610,
+          620
+        ],
+        [
+          620,
+          620
+        ],
+        [
+          620,
+          630
+        ],
+        [
+          610,
+          630
+        ]
+      ],
+      "tint": "c7b8a2",
+      "coverage": "opaque"
+    }
+  ],
+  "scope": "NEW ground-level soil inside the garden frame; no added traversability/height/interaction. Horizontal supports at actual ground, not whole object front."
+}
