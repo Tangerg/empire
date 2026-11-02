@@ -1,0 +1,32 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+ERROR: Unhandled XServer error: BadAccess (attempt to access private resource denied)
+   Major opcode of failed request: 130
+   Serial number of failed request: 1
+   Current serial number in output stream: 265
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1310)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 267
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1310)
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 318
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1310)
+C07_STATIC_CAPTURE stateUnchanged=true issues=0
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 3
+   Current serial number in output stream: 325
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1310)
+ERROR: Unhandled XServer error: BadShmSeg (invalid shared segment parameter)
+   Major opcode of failed request: 130
+   Serial number of failed request: 2
+   Current serial number in output stream: 355
+   at: default_window_error_handler (platform/linuxbsd/x11/display_server_x11.cpp:1310)

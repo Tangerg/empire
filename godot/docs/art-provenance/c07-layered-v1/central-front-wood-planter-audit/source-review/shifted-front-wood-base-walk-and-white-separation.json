@@ -1,0 +1,273 @@
+{
+  "ready": true,
+  "scope": "Static continuous fixed Torren walk-sole math plus proposed wood-base vs current measured white-stone-foot hull. No engine, GUI, battle action, save, production edit or actor enlargement. Platform projected upper surfaces deliberately not used as a ground foundation.",
+  "proposedBase": [
+    [
+      825,
+      486
+    ],
+    [
+      841,
+      481
+    ],
+    [
+      857,
+      487
+    ],
+    [
+      840,
+      496
+    ]
+  ],
+  "hiddenRearCorner": [
+    841,
+    481
+  ],
+  "baseStatus": "Entire shifted base is new design; hidden rear is not original source fact. This tests planned footing, not a future candidate PNG.",
+  "frozenSoleInput": "/workspace/scratch/84c9fe948755/c07-static-preview/central-east-planter-review/rear-white-planter-new-base-walk-corridor.json",
+  "frames": [
+    {
+      "index": 1,
+      "roi": [
+        280,
+        515,
+        380,
+        575
+      ],
+      "pointCount": 89,
+      "anchor": [
+        244,
+        564
+      ]
+    },
+    {
+      "index": 3,
+      "roi": [
+        30,
+        515,
+        125,
+        575
+      ],
+      "pointCount": 86,
+      "anchor": [
+        194,
+        571
+      ]
+    }
+  ],
+  "scale": 0.0961538,
+  "directedEdges": 324,
+  "soleSegments": 82950,
+  "violations": [],
+  "walkPass": true,
+  "walkMinimumClearanceSourcePixels": 9.641676823554088,
+  "closestWalkWitness": {
+    "fromCell": [
+      53,
+      28
+    ],
+    "toCell": [
+      53,
+      29
+    ],
+    "west": false,
+    "frame": 3,
+    "soleFramePixel": [
+      61,
+      567
+    ],
+    "sourceSegment": [
+      [
+        843.2115446,
+        455.6153848
+      ],
+      [
+        843.2115446,
+        471.6153848
+      ]
+    ],
+    "baseEdge": [
+      [
+        825,
+        486
+      ],
+      [
+        841,
+        481
+      ]
+    ],
+    "fixedPoint": [
+      843.2115446,
+      471.6153848
+    ],
+    "nearestPoint": [
+      841.0,
+      481.0
+    ],
+    "movingSegmentParameter": 1.0,
+    "fixedPointKind": "segment-end"
+  },
+  "whiteActualFootingInput": "/workspace/scratch/84c9fe948755/c07-static-preview/central-white-planter-actual-footing.json",
+  "whiteActualFootingInputSha256": "44242288df594ebb1d1d3c1d40c24a6841ed10b68ab131eb8bdee6437c014584",
+  "whiteActualHull": [
+    [
+      823.164,
+      472.836
+    ],
+    [
+      834,
+      467
+    ],
+    [
+      843.612,
+      473.664
+    ],
+    [
+      843.576,
+      473.952
+    ],
+    [
+      843.504,
+      474.096
+    ],
+    [
+      843.432,
+      474.204
+    ],
+    [
+      843.36,
+      474.276
+    ],
+    [
+      843.144,
+      474.456
+    ],
+    [
+      843.036,
+      474.528
+    ],
+    [
+      841.956,
+      475.212
+    ],
+    [
+      834.936,
+      479.604
+    ],
+    [
+      834.756,
+      479.712
+    ],
+    [
+      834.504,
+      479.856
+    ],
+    [
+      834.36,
+      479.928
+    ],
+    [
+      834.252,
+      479.964
+    ],
+    [
+      834.036,
+      480.0
+    ],
+    [
+      833.964,
+      480.0
+    ],
+    [
+      833.748,
+      479.964
+    ],
+    [
+      833.676,
+      479.928
+    ],
+    [
+      833.496,
+      479.82
+    ],
+    [
+      823.812,
+      473.628
+    ],
+    [
+      823.704,
+      473.556
+    ],
+    [
+      823.56,
+      473.448
+    ],
+    [
+      823.308,
+      473.196
+    ],
+    [
+      823.236,
+      473.088
+    ],
+    [
+      823.2,
+      473.016
+    ]
+  ],
+  "physicalBaseHullIntersection": false,
+  "physicalBaseHullMinimumDistanceSourcePixels": 3.001600910925689,
+  "closestObjectWitness": {
+    "frontWoodBaseEdge": [
+      [
+        825,
+        486
+      ],
+      [
+        841,
+        481
+      ]
+    ],
+    "whiteActualHullEdge": [
+      [
+        834.36,
+        479.928
+      ],
+      [
+        834.252,
+        479.964
+      ]
+    ],
+    "fixedPoint": [
+      834.252,
+      479.964
+    ],
+    "nearestPoint": [
+      835.1473024911031,
+      482.8289679715303
+    ],
+    "movingSegmentParameter": 0.6342064056939475,
+    "fixedPointKind": "base-end"
+  },
+  "materialWitnessesRemainFixed": [
+    [
+      843,
+      470
+    ],
+    [
+      844,
+      470
+    ],
+    [
+      832,
+      489
+    ]
+  ],
+  "limitations": [
+    "No future PNG foot certification",
+    "White hull includes an explicitly new-design hidden-back vertex but measured actual visible stone lower edge; nearest relationship recorded below",
+    "No original full-hidden-footprint certification",
+    "Fixed source alpha contours only, not all roles/poses or filtered rendering",
+    "Material witness ownership must remain front object specific; rear white alpha alone cannot prove front object restoration"
+  ]
+}

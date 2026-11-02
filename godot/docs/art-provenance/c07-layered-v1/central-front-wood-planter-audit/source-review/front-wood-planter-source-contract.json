@@ -1,0 +1,374 @@
+{
+  "ready": true,
+  "scope": "One bounded read-only original-PNG/terrain review. No engine, GUI, battle command, AI, save, production edit, or new art. Values marked approximate are manual source-pixel observations, not new acceptance tolerances.",
+  "source": {
+    "path": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/scenes/luojia.png",
+    "sha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+    "pixelSize": [
+      1536,
+      1024
+    ]
+  },
+  "identity": "Foreground wooden flower box and visible stone support below it, separate from the rear tall green plant in a white container. The stone support exact hidden structural continuity with the outer platform is not source-certified.",
+  "visibleBoundsApprox": {
+    "foregroundFoliage": [
+      819,
+      463,
+      845,
+      478
+    ],
+    "woodenBody": [
+      819,
+      471,
+      848,
+      486
+    ],
+    "stoneSupport": [
+      818,
+      479,
+      851,
+      496
+    ]
+  },
+  "visibleFacesApprox": [
+    {
+      "id": "wood-left-front",
+      "polygon": [
+        [
+          819,
+          474
+        ],
+        [
+          833,
+          479
+        ],
+        [
+          833,
+          486
+        ],
+        [
+          820,
+          480
+        ]
+      ],
+      "classification": "Approximate exposed face; upper wood mouth partly covered by foliage."
+    },
+    {
+      "id": "wood-right-front",
+      "polygon": [
+        [
+          833,
+          479
+        ],
+        [
+          847,
+          471
+        ],
+        [
+          848,
+          480
+        ],
+        [
+          833,
+          486
+        ]
+      ],
+      "classification": "Approximate orange wood face; no rear closed body inferred."
+    },
+    {
+      "id": "stone-left-front",
+      "polygon": [
+        [
+          818,
+          479
+        ],
+        [
+          833,
+          487
+        ],
+        [
+          834,
+          496
+        ],
+        [
+          819,
+          486
+        ]
+      ],
+      "classification": "Approximate observed gray stone side below wooden box."
+    },
+    {
+      "id": "stone-right-front",
+      "polygon": [
+        [
+          833,
+          487
+        ],
+        [
+          851,
+          479
+        ],
+        [
+          851,
+          487
+        ],
+        [
+          834,
+          496
+        ]
+      ],
+      "classification": "Approximate observed warm stone side below wooden box."
+    }
+  ],
+  "groundContact": {
+    "visibleFrontPolylineApprox": [
+      [
+        819,
+        486
+      ],
+      [
+        834,
+        496
+      ],
+      [
+        851,
+        487
+      ]
+    ],
+    "frontNearCornerBand": {
+      "x": [
+        833,
+        834
+      ],
+      "y": [
+        495,
+        496
+      ]
+    },
+    "notFoot": "At and below y497 the near-corner pixels mix deep contact shadow and paving; do not extend the object merely by scanning the darkest pixels. 832489 is inside the visible stone face, not its bottom foot.",
+    "hiddenRearFoot": null,
+    "hiddenRearFootStatus": "Not visible in source. Any complete diamond or closure must be explicitly new design.",
+    "visibleFootTouchedCanonicalCells": [
+      {
+        "cell": [
+          51,
+          30
+        ],
+        "terrain": "#"
+      },
+      {
+        "cell": [
+          52,
+          30
+        ],
+        "terrain": "#"
+      },
+      {
+        "cell": [
+          52,
+          31
+        ],
+        "terrain": "#"
+      },
+      {
+        "cell": [
+          53,
+          30
+        ],
+        "terrain": "#"
+      }
+    ],
+    "visibleFootRoadIntrusionObserved": false,
+    "boundary": "Known visible lower branches remain in #. This is not a whole-foundation or all-actor movement pass; hidden rear ground has not been certified."
+  },
+  "fixedMaterialWitnesses": [
+    {
+      "source": [
+        843,
+        470
+      ],
+      "rgb": [
+        79,
+        83,
+        21
+      ],
+      "material": "Olive foreground small foliage/upper wood-mouth shadow. Not orange wood-board face and not rear tall white-planter foliage.",
+      "cell": [
+        52,
+        29
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        844,
+        470
+      ],
+      "rgb": [
+        88,
+        83,
+        28
+      ],
+      "material": "Same foreground mouth/leaf margin.",
+      "cell": [
+        52,
+        29
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        832,
+        489
+      ],
+      "rgb": [
+        171,
+        159,
+        162
+      ],
+      "material": "Foreground box stone support left/near gray face, interior material point.",
+      "cell": [
+        52,
+        30
+      ],
+      "terrain": "#"
+    }
+  ],
+  "extraInteriorMaterialSamples": [
+    {
+      "source": [
+        826,
+        481
+      ],
+      "rgb": [
+        119,
+        72,
+        47
+      ],
+      "material": "Visible left wooden body interior",
+      "cell": [
+        51,
+        30
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        840,
+        479
+      ],
+      "rgb": [
+        226,
+        147,
+        55
+      ],
+      "material": "Visible right orange wooden face interior",
+      "cell": [
+        52,
+        29
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        839,
+        490
+      ],
+      "rgb": [
+        245,
+        189,
+        108
+      ],
+      "material": "Visible warm stone support face interior",
+      "cell": [
+        52,
+        30
+      ],
+      "terrain": "#"
+    }
+  ],
+  "sourceOwnerSeparationEvidence": "The rear white container has a pale rim above/right around y467-468; the two frozen olive pixels are below that rim and continuous with the smaller foreground box mouth/foliage. Do not insist their material be orange wood in the new asset.",
+  "actualTorrenWitnesses": {
+    "assetPath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+    "frameIndex": 0,
+    "region": [
+      0,
+      0,
+      557,
+      725
+    ],
+    "anchor": [
+      269,
+      565
+    ],
+    "scale": 0.0961538,
+    "backCandidate": {
+      "cell": [
+        53,
+        29
+      ],
+      "terrain": "p",
+      "facing": "west",
+      "foot": [
+        856,
+        472
+      ],
+      "points": [
+        {
+          "source": [
+            843,
+            470
+          ],
+          "framePixel": [
+            404,
+            544
+          ],
+          "alpha": 250
+        },
+        {
+          "source": [
+            844,
+            470
+          ],
+          "framePixel": [
+            393,
+            544
+          ],
+          "alpha": 253
+        }
+      ],
+      "materialOwner": "Foreground wooden planter composite, not rear white planter",
+      "nativeStatus": "Parent will validate original static state; this reviewer did not run it."
+    },
+    "front": {
+      "cell": [
+        51,
+        32
+      ],
+      "terrain": "p",
+      "facing": "east",
+      "foot": [
+        824,
+        520
+      ],
+      "source": [
+        832,
+        489
+      ],
+      "framePixel": [
+        352,
+        242
+      ],
+      "alpha": 252,
+      "materialOwner": "Foreground stone support",
+      "nativeStatus": "Existing original static report belongs to this foreground owner, not the rear white planter."
+    }
+  },
+  "targetOwnerAcceptance": [
+    "At the back material points, explicitly inspect the new FRONT WOOD object visual alpha/covered material and its own support depth.",
+    "A combined Pick/hidden result caused solely by the already-selected rear white planter does not prove the foreground wood planter is present or correct.",
+    "For the front point, preserve actor visibility relative to the foreground stone support; do not import rear-white depth.",
+    "A negative control that removes only the FRONT WOOD owner should fail a target-presence/target-coverage assertion, even when rear-white alpha still hides the actor at the same source point.",
+    "No successful full50cell responsibility or hidden-foundation claim follows from these local pixels."
+  ]
+}

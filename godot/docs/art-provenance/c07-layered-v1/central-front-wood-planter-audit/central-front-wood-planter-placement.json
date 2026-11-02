@@ -1,0 +1,181 @@
+{
+  "scope": "Entire visible stone-body conservative rectangles; not only center/foot samples. Separate physical ground bases; overlapping foliage is permitted.",
+  "woodStoneBox": [
+    [
+      825.11,
+      482.96
+    ],
+    [
+      857.87,
+      496.08
+    ]
+  ],
+  "whiteStoneBox": [
+    [
+      823.128,
+      466.572
+    ],
+    [
+      843.648,
+      480.036
+    ]
+  ],
+  "whiteDisjoint": true,
+  "platform": [
+    {
+      "id": "upper-platform",
+      "bounds": [
+        [
+          716,
+          448
+        ],
+        [
+          820,
+          501
+        ]
+      ],
+      "disjoint": true
+    },
+    {
+      "id": "step-0-riser-0",
+      "bounds": [
+        [
+          716,
+          475
+        ],
+        [
+          767,
+          505
+        ]
+      ],
+      "disjoint": true
+    },
+    {
+      "id": "step-0-riser-1",
+      "bounds": [
+        [
+          767,
+          475
+        ],
+        [
+          820,
+          505
+        ]
+      ],
+      "disjoint": true
+    },
+    {
+      "id": "step-1-riser-0",
+      "bounds": [
+        [
+          715,
+          481
+        ],
+        [
+          767,
+          512
+        ]
+      ],
+      "disjoint": true
+    },
+    {
+      "id": "step-1-riser-1",
+      "bounds": [
+        [
+          767,
+          481
+        ],
+        [
+          822,
+          512
+        ]
+      ],
+      "disjoint": true
+    },
+    {
+      "id": "step-1-tread-0",
+      "bounds": [
+        [
+          715,
+          479
+        ],
+        [
+          767,
+          508
+        ]
+      ],
+      "disjoint": true
+    },
+    {
+      "id": "step-1-tread-1",
+      "bounds": [
+        [
+          767,
+          479
+        ],
+        [
+          822,
+          508
+        ]
+      ],
+      "disjoint": true
+    },
+    {
+      "id": "step-2-riser-0",
+      "bounds": [
+        [
+          714,
+          487
+        ],
+        [
+          767,
+          518
+        ]
+      ],
+      "disjoint": true
+    },
+    {
+      "id": "step-2-riser-1",
+      "bounds": [
+        [
+          767,
+          487
+        ],
+        [
+          824,
+          518
+        ]
+      ],
+      "disjoint": true
+    },
+    {
+      "id": "step-2-tread-0",
+      "bounds": [
+        [
+          714,
+          485
+        ],
+        [
+          767,
+          514
+        ]
+      ],
+      "disjoint": true
+    },
+    {
+      "id": "step-2-tread-1",
+      "bounds": [
+        [
+          767,
+          485
+        ],
+        [
+          824,
+          514
+        ]
+      ],
+      "disjoint": true
+    }
+  ],
+  "passed": true
+}
