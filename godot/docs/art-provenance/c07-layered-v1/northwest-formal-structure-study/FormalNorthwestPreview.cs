@@ -16,7 +16,7 @@ public partial class FormalNorthwestPreview : Node2D
             var before = EcmaJson.Stringify(state);
             var variant = OS.GetEnvironment("NW_VARIANT");
             if (variant.Length == 0) variant = "stone";
-            var scene = AuthoredScene.Load($"res://northwest-{variant}-scene.json");
+            var scene = AuthoredScene.Load(variant == "baseline" ? "res://data/scenes/c01-07-selected-assembly.json" : $"res://northwest-{variant}-scene.json");
             var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
             var board = new BoardView { AnimationsEnabled = false };
             AddChild(board);
@@ -28,11 +28,14 @@ public partial class FormalNorthwestPreview : Node2D
             unit["x"] = 8; unit["y"] = 8; unit["facing"] = "east";
             shown["units"] = new JsonArray(unit);
             board.RenderState(shown);
-            board.Scale = Vector2.One * 2.5f;
+            var fullScene = OS.GetEnvironment("NW_FULL_SCENE") == "1";
+            var zoom = fullScene ? .65f : OS.GetEnvironment("NW_DEFAULT_SCALE") == "1" ? 1.25f : 2.5f;
+            board.Scale = Vector2.One * zoom;
             var overlay = new CanvasLayer(); AddChild(overlay);
             overlay.AddChild(new ColorRect { Color = new Color("#181818"), Size = new Vector2(1180, 72) });
-            overlay.AddChild(new Label { Text = $"C07 NORTHWEST STATIC MATERIAL STUDY — {variant}\nFormal loader; fixed Torren back pose; leaf absent; not gameplay or selected scene", Position = new Vector2(12, 12) });
-            void Layout() => board.Position = GetViewportRect().Size / 2 - board.Projection.CellContact(new(10, 7)) * 2.5f;
+            overlay.AddChild(new Label { Text = $"C07 NORTHWEST STATIC MATERIAL STUDY — {variant}\nFormal loader; fixed Torren back pose; leaf={(variant.EndsWith("leaf") ? "new narrow design" : "absent")}; not gameplay or selected scene", Position = new Vector2(12, 12) });
+            void Layout() => board.Position = GetViewportRect().Size / 2 + (fullScene ? new Vector2(0, 36) : Vector2.Zero)
+                - board.Projection.CellContact(fullScene ? new(48, 32) : new(10, 7)) * zoom;
             GetViewport().SizeChanged += Layout;
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
@@ -40,6 +43,29 @@ public partial class FormalNorthwestPreview : Node2D
             Layout();
             if (EcmaJson.Stringify(state) != before) throw new Exception("Static rendering changed state.");
             GD.Print("FORMAL_NORTHWEST_STATIC_READY issues=" + board.RenderingIssueCount);
+            if (OS.GetEnvironment("NW_MEASURE") == "1")
+            {
+                for (var i = 0; i < 60; i++) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                var samples = new JsonArray();
+                for (var i = 0; i < 120; i++)
+                {
+                    await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                    samples.Add(new JsonObject {
+                        ["drawCalls"] = Performance.GetMonitor(Performance.Monitor.RenderTotalDrawCallsInFrame),
+                        ["objects"] = Performance.GetMonitor(Performance.Monitor.RenderTotalObjectsInFrame),
+                        ["primitives"] = Performance.GetMonitor(Performance.Monitor.RenderTotalPrimitivesInFrame),
+                        ["processSeconds"] = Performance.GetMonitor(Performance.Monitor.TimeProcess)
+                    });
+                }
+                File.WriteAllText(ProjectSettings.GlobalizePath($"res://cost-{(fullScene ? "full-" : "")}{variant}.json"), new JsonObject {
+                    ["scope"] = "Same viewport/camera/real detached actor; native Compatibility llvmpipe;60 warmup then120 frames; no gameplay or screenshot disk writes during sampling.",
+                    ["variant"] = variant, ["zoom"] = zoom, ["fullScene"] = fullScene,
+                    ["sceneNodeCount"] = Performance.GetMonitor(Performance.Monitor.ObjectNodeCount), ["viewport"] = new JsonArray(GetWindow().Size.X, GetWindow().Size.Y),
+                    ["stateUnchanged"] = EcmaJson.Stringify(state) == before, ["samples"] = samples
+                }.ToJsonString(new() { WriteIndented = true }));
+                GD.Print("NORTHWEST_STATIC_COST_COMPLETE " + variant);
+                GetTree().Quit();
+            }
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
     }

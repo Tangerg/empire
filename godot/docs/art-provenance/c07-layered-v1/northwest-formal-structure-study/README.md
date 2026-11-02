@@ -33,3 +33,19 @@ Verification:
 - Six paused evidence/save hashes remain unchanged (hash record only; no save bytes published).
 
 Remaining: independent wood leaf, whole-gate default-scale review and bounded total-cost measurement. Top material remains simple and edge styling is not final art acceptance. OfficialC07 and unique selected assembly are untouched.
+
+## Independent narrow leaf and bounded whole-layout cost
+
+The original right wooden edge conflicts with the reconstructed right stone at source166,130 and169,104. The chosen study is explicitly a new narrower leaf, not a restored original silhouette: left/middle feet153,130 and161,134 retained; right foot165,136.5 is an inset redesign. Hidden hinge hardware is not certified. Thin edge/two rails reuse existing timber entirely inside that outline, sharing its sloping local supports. Leaf owns no site and remains pass-through; stone is the sole structure/site owner.
+
+`NorthwestLeafProbe` uses real Torren east-facing appearance at canonical p positions9,7 (behind) and9,9 (front), without any action command. It qualifies only alpha-overlap points that can Pick the actor when the leaf visual is hidden. This eliminates independent ground/stone occlusion as an explanation. Restored leaf hides all254 qualified rear samples; all152 front samples remain pickable. These are formal depth/Pick checks, not framebuffer assertions; actual native images are separate evidence. Wrong background/foreground support variants both fail the intended independent leaf assertion. The final combined1468-road/stone/site/approach check passed after joinery, not just before it. State digests remain unchanged.
+
+Images: whole-gate-narrow-leaf-1180.png (plain near), whole-gate-leaf-default125.png (plain default), whole-gate-leaf-joinery-default125.png (minimal joinery default). Gray outside the source canvas is the fixed diagnostic camera, not the actual default battle framing. Other generic houses are existing unselected/fallback responsibilities, not improvements from this gate.
+
+Performance is measured, not accepted globally. Same1180x760 camera, one actual detached actor,60 warmup+120 measured native frames,Compatibility llvmpipe, no screenshot writes during sampling:
+- Local1.25 view: selected fallback741 calls versus complete gate952; +211,28.5% is not equal-quality regression.
+- Full-layout0.65 view:2477 versus2688 calls(+8.52%); scene nodes8359 versus9213(+854). Gate415 depth entries plus leaf12; all assembled ground5483. Whole-layout primitives296020→298046.
+- Process time varies and software rendering is not a user hardware/FPS conclusion. One AB only, not a throughput acceptance.
+- Read-only audit identifies29 entirely transparent native supports with zero alpha across every UV rectangle including a2-texel halo. No pruning has yet been adopted in this checkpoint.
+
+Selected/official scene remain unchanged. Geometry/candidate visual evidence does not certify fullC07 gameplay, global art consistency, or full campaign performance.

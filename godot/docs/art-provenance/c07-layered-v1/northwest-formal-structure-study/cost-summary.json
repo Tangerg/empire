@@ -1,0 +1,65 @@
+{
+  "scope": "One AB controlled static view, software rendering, no user hardware/FPS or whole campaign performance acceptance",
+  "results": [
+    {
+      "variant": "baseline",
+      "frames": 120,
+      "stateUnchanged": true,
+      "zoom": 1.25,
+      "viewport": [
+        1180,
+        760
+      ],
+      "drawCalls": {
+        "min": 741,
+        "median": 741.0,
+        "max": 741
+      },
+      "objects": {
+        "min": 1460,
+        "median": 1460.0,
+        "max": 1460
+      },
+      "primitives": {
+        "min": 104897,
+        "median": 104897.0,
+        "max": 104897
+      },
+      "processSeconds": {
+        "min": 0.056608,
+        "median": 0.097905,
+        "max": 0.766613
+      }
+    },
+    {
+      "variant": "platform-leaf",
+      "frames": 120,
+      "stateUnchanged": true,
+      "zoom": 1.25,
+      "viewport": [
+        1180,
+        760
+      ],
+      "drawCalls": {
+        "min": 952,
+        "median": 952.0,
+        "max": 952
+      },
+      "objects": {
+        "min": 1685,
+        "median": 1685.0,
+        "max": 1685
+      },
+      "primitives": {
+        "min": 106923,
+        "median": 106923.0,
+        "max": 106923
+      },
+      "processSeconds": {
+        "min": 0.051474,
+        "median": 0.062295,
+        "max": 0.102448
+      }
+    }
+  ]
+}

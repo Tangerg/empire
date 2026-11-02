@@ -1,0 +1,67 @@
+{
+  "scope": "Whole selected layout versus new gate replacing simple fallback; unequal visual detail; one AB, no FPS or whole campaign performance acceptance",
+  "results": [
+    {
+      "variant": "baseline",
+      "zoom": 0.65,
+      "viewport": [
+        1180,
+        760
+      ],
+      "sceneNodeCount": 8359,
+      "stateUnchanged": true,
+      "frames": 120,
+      "drawCalls": {
+        "min": 2477,
+        "median": 2477.0,
+        "max": 2477
+      },
+      "objects": {
+        "min": 4478,
+        "median": 4478.0,
+        "max": 4478
+      },
+      "primitives": {
+        "min": 296020,
+        "median": 296020.0,
+        "max": 296020
+      },
+      "processSeconds": {
+        "min": 0.086064,
+        "median": 0.119571,
+        "max": 0.220067
+      }
+    },
+    {
+      "variant": "platform-leaf",
+      "zoom": 0.65,
+      "viewport": [
+        1180,
+        760
+      ],
+      "sceneNodeCount": 9213,
+      "stateUnchanged": true,
+      "frames": 120,
+      "drawCalls": {
+        "min": 2688,
+        "median": 2688.0,
+        "max": 2688
+      },
+      "objects": {
+        "min": 4703,
+        "median": 4703.0,
+        "max": 4703
+      },
+      "primitives": {
+        "min": 298046,
+        "median": 298046.0,
+        "max": 298046
+      },
+      "processSeconds": {
+        "min": 0.11705,
+        "median": 0.141443,
+        "max": 0.765408
+      }
+    }
+  ]
+}

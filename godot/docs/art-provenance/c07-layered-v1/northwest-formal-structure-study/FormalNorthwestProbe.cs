@@ -8,7 +8,7 @@ public partial class FormalNorthwestProbe:Node{
 public override void _Ready(){try{
 var e=new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));var l=PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>().Single(x=>x["id"]!.GetValue<string>()=="c01-07");var s=e.CreateState(l);var digest=EcmaJson.Stringify(s);bool candidate=true;bool behind=OS.GetEnvironment("C07_GATE_BACK_DEPTH")=="1";bool oldMaterial=false;bool roofFit=false;var variant=OS.GetEnvironment("NW_VARIANT");if(variant.Length==0)variant="stone";var sc=AuthoredScene.Load($"res://northwest-{variant}-scene.json");var r=BoardSceneRendering.Load(sc,l,s["map"]!.AsObject());var b=new BoardView{AnimationsEnabled=false};AddChild(b);b.Configure(new(AssetCatalog.Load(),EnvironmentCatalog.Load(),e.Grids.Get("square4"),e.Catalog,r.Plane),l,sc);BoardGroundView? ground=null;b.ConfigureGround((rules,scene)=>ground=r.Ground(rules,scene));b.ConfigureDynamicState();
 var empty=s.DeepClone().AsObject();empty["units"]=new JsonArray();b.RenderState(empty);
-var gateEntries=ground!.DepthEntries.Where(d=>d.Node.Name.ToString().StartsWith("northwest-gate-study__")).Select(d=>(d.Visual!,d.Visual!.GlobalBounds)).ToArray();
+var gateEntries=ground!.DepthEntries.Where(d=>(d.Node.Name.ToString().StartsWith("northwest-gate-study__") || d.Node.Name.ToString().StartsWith("northwest-leaf-study__"))).Select(d=>(d.Visual!,d.Visual!.GlobalBounds)).ToArray();
 if (variant.StartsWith("platform", StringComparison.Ordinal))
 {
     var joint = b.ToGlobal(new Vector2(96, 85.3f));

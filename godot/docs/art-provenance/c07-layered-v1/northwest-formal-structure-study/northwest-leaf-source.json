@@ -1,0 +1,209 @@
+{
+  "scope": "Unselected narrow leaf redesign; original left/middle timber foot retained, right side inset to avoid reconstructed stone. Hidden hinge/thickness not original pixel certification.",
+  "textureResourcePath": "res://assets/native/c07-layered-v1/southeast-gate-v1-candidate.png",
+  "namePrefix": "NorthwestWoodLeaf",
+  "supportLine": [
+    [
+      153,
+      130
+    ],
+    [
+      161,
+      134
+    ],
+    [
+      165,
+      136.5
+    ]
+  ],
+  "members": [
+    {
+      "id": "arched-wooden-leaf",
+      "polygon": [
+        [
+          153,
+          94
+        ],
+        [
+          157,
+          93
+        ],
+        [
+          161,
+          94
+        ],
+        [
+          165,
+          98
+        ],
+        [
+          165,
+          136.5
+        ],
+        [
+          161,
+          134
+        ],
+        [
+          153,
+          130
+        ]
+      ],
+      "uv": [
+        [
+          736.0,
+          828.6551724137931
+        ],
+        [
+          756.3333333333334,
+          827.0
+        ],
+        [
+          776.6666666666666,
+          828.6551724137931
+        ],
+        [
+          797.0,
+          835.2758620689655
+        ],
+        [
+          797.0,
+          899.0
+        ],
+        [
+          776.6666666666666,
+          894.8620689655172
+        ],
+        [
+          736.0,
+          888.2413793103449
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "upper-cross-rail",
+      "polygon": [
+        [
+          154,
+          108.5
+        ],
+        [
+          164,
+          114.0
+        ],
+        [
+          164,
+          115.3
+        ],
+        [
+          154,
+          109.8
+        ]
+      ],
+      "uv": [
+        [
+          740,
+          840
+        ],
+        [
+          740,
+          890
+        ],
+        [
+          749,
+          890
+        ],
+        [
+          749,
+          840
+        ]
+      ],
+      "tint": "c5b291",
+      "coverage": "opaque"
+    },
+    {
+      "id": "lower-cross-rail",
+      "polygon": [
+        [
+          154,
+          121.0
+        ],
+        [
+          164,
+          126.5
+        ],
+        [
+          164,
+          127.8
+        ],
+        [
+          154,
+          122.3
+        ]
+      ],
+      "uv": [
+        [
+          740,
+          840
+        ],
+        [
+          740,
+          890
+        ],
+        [
+          749,
+          890
+        ],
+        [
+          749,
+          840
+        ]
+      ],
+      "tint": "c5b291",
+      "coverage": "opaque"
+    },
+    {
+      "id": "hinge-side-edge-thickness",
+      "polygon": [
+        [
+          164.35,
+          97.35
+        ],
+        [
+          165,
+          98
+        ],
+        [
+          165,
+          136.5
+        ],
+        [
+          164.35,
+          136.09375
+        ]
+      ],
+      "uv": [
+        [
+          785,
+          829
+        ],
+        [
+          790,
+          830
+        ],
+        [
+          790,
+          898
+        ],
+        [
+          785,
+          897
+        ]
+      ],
+      "tint": "a99983",
+      "coverage": "opaque"
+    }
+  ]
+}
