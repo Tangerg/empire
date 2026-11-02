@@ -1,0 +1,244 @@
+{
+  "ready": true,
+  "axes": {
+    "left": [
+      356.46,
+      410.11
+    ],
+    "frontReference": [
+      384.0,
+      430.0
+    ],
+    "right": [
+      420.89,
+      414.95500000000004
+    ],
+    "hiddenRear": [
+      393.3499999999999,
+      395.06500000000005
+    ],
+    "area": 1159.1681624998164,
+    "sourceBounds": [
+      [
+        356.46,
+        395.06500000000005
+      ],
+      [
+        420.89,
+        430.0
+      ]
+    ]
+  },
+  "cells": [
+    {
+      "cell": [
+        23,
+        24
+      ],
+      "terrain": "#",
+      "positiveArea": 1.5426930250541773
+    },
+    {
+      "cell": [
+        24,
+        24
+      ],
+      "terrain": "#",
+      "positiveArea": 45.16382552483992
+    },
+    {
+      "cell": [
+        25,
+        24
+      ],
+      "terrain": "#",
+      "positiveArea": 0.012103418819606304
+    },
+    {
+      "cell": [
+        22,
+        25
+      ],
+      "terrain": "#",
+      "positiveArea": 72.35623490782746
+    },
+    {
+      "cell": [
+        23,
+        25
+      ],
+      "terrain": "#",
+      "positiveArea": 220.20256043114932
+    },
+    {
+      "cell": [
+        24,
+        25
+      ],
+      "terrain": "#",
+      "positiveArea": 256.0
+    },
+    {
+      "cell": [
+        25,
+        25
+      ],
+      "terrain": "#",
+      "positiveArea": 165.6590076923021
+    },
+    {
+      "cell": [
+        26,
+        25
+      ],
+      "terrain": "#",
+      "positiveArea": 12.617987500081654
+    },
+    {
+      "cell": [
+        22,
+        26
+      ],
+      "terrain": "#",
+      "positiveArea": 4.831137499961187
+    },
+    {
+      "cell": [
+        23,
+        26
+      ],
+      "terrain": "#",
+      "positiveArea": 133.38533750000352
+    },
+    {
+      "cell": [
+        24,
+        26
+      ],
+      "terrain": "#",
+      "positiveArea": 175.3944499998761
+    },
+    {
+      "cell": [
+        25,
+        26
+      ],
+      "terrain": "#",
+      "positiveArea": 70.69251249989611
+    },
+    {
+      "cell": [
+        26,
+        26
+      ],
+      "terrain": "#",
+      "positiveArea": 1.3103125000197906
+    }
+  ],
+  "nonBlocked": [],
+  "blueRelation": {
+    "boundary": {
+      "testedSegments": 887,
+      "intersectingSegments": 0,
+      "minimumDistance": 8.83462506278562,
+      "closestWitness": {
+        "actor": {
+          "blueBoundaryEdge": 0
+        },
+        "actorSweep": [
+          [
+            390.3,
+            437.3
+          ],
+          [
+            390.40000000000003,
+            437.4
+          ]
+        ],
+        "kind": "actor-start",
+        "point": [
+          390.3,
+          437.3
+        ],
+        "nearestPoint": [
+          386.89,
+          429.15000000000003
+        ],
+        "baseEdgeIndex": 357,
+        "baseEdge": [
+          [
+            386.80499999999995,
+            429.15000000000003
+          ],
+          [
+            386.89,
+            429.15000000000003
+          ]
+        ],
+        "parameter": 1.0
+      },
+      "firstViolations": []
+    },
+    "rearVerticesInsideBlue": [],
+    "blueVerticesInsideRear": [],
+    "disjoint": true
+  },
+  "walk": {
+    "testedSegments": 10500,
+    "intersectingSegments": 0,
+    "minimumDistance": 7.90808993702659,
+    "closestWitness": {
+      "actor": {
+        "fromCell": [
+          21,
+          26
+        ],
+        "toCell": [
+          20,
+          26
+        ],
+        "west": true,
+        "frame": 3,
+        "soleFramePixel": [
+          34,
+          553
+        ]
+      },
+      "actorSweep": [
+        [
+          359.384608,
+          422.2692316
+        ],
+        [
+          343.384608,
+          422.2692316
+        ]
+      ],
+      "kind": "actor-start",
+      "point": [
+        359.384608,
+        422.2692316
+      ],
+      "nearestPoint": [
+        363.93999999999994,
+        415.80500000000006
+      ],
+      "baseEdgeIndex": 87,
+      "baseEdge": [
+        [
+          363.85499999999996,
+          415.72
+        ],
+        [
+          363.93999999999994,
+          415.80500000000006
+        ]
+      ],
+      "parameter": 1.0
+    },
+    "firstViolations": []
+  },
+  "insideCount": 0,
+  "legalCellsCount": 18,
+  "directedEdgesCount": 40
+}

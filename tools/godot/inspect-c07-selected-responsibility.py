@@ -18,6 +18,7 @@ FOUNDATION_BODIES = {
     "southern-supply-foundation": "southern-supply-main",
     "west-inner-house-foundation": "west-inner-house-main",
     "west-inner-blue-house-foundation": "west-inner-blue-house-main",
+    "west-inner-back-house-foundation": "west-inner-rear-house-main",
 }
 
 

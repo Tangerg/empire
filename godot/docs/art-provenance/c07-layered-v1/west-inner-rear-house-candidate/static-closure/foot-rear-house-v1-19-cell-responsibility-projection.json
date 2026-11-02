@@ -1,0 +1,953 @@
+{
+  "ready": true,
+  "scope": "Fixed 19-cell legacy responsibility projected separately onto NEW ground domain and immutable candidate alpha, plus original source evidence. No engine/GUI/actions or production modifications.",
+  "inputHashes": {
+    "/workspace/scratch/84c9fe948755/c07-readonly-review/west-inner-rear-house-review/rear-house-v1-whole-base-result.json": "077371c6876741be530b54ab82d8fb50a4e390ffb35625095700965beece0429",
+    "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/c07-layered-v1/west-inner-rear-house-v1-candidate.png": "0f71f826126abb7e27f820a709f0677e634868b7ca5c17995b1e65493de90ccb",
+    "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/scenes/luojia.png": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+    "/workspace/scratch/84c9fe948755/empire-c01/godot/docs/art-provenance/luojia-geometry.json": "d486f4c7bc7c8f274d2747d4280912bdfd9421c571157447fcf589ae3a4b8176",
+    "/workspace/scratch/84c9fe948755/empire-c01/godot/data/grayflag-campaign-levels.json": "e226041272be12ea1686be7297953f332606002908ce44fa8d15028c0435ed42"
+  },
+  "uniformRegistration": {
+    "scale": 0.085,
+    "anchorPixels": [
+      654,
+      1068
+    ],
+    "worldAnchor": [
+      384,
+      430
+    ],
+    "worldOrigin": [
+      328.40999999999997,
+      339.22
+    ]
+  },
+  "rows": [
+    {
+      "cell": [
+        21,
+        23
+      ],
+      "terrain": "#",
+      "newBasePositiveArea": 0,
+      "candidateMaterialAreaByMinimumAlpha": {
+        "1": 1.0626750000000196,
+        "9": 0.7588000000000122,
+        "128": 0.6334250000000162,
+        "200": 0.5973000000000095,
+        "245": 0.5624500000000119
+      },
+      "category": "projected-material-only-no-ground-domain",
+      "substantiveAlphaDefinition": "A>=9 excludes generated A1..8 scatter but does not redefine texture or engine opacity; all alpha thresholds retained separately.",
+      "originalCenterPixel": {
+        "source": [
+          344,
+          376
+        ],
+        "rgb": [
+          178,
+          197,
+          8
+        ]
+      },
+      "otherCoarseAuditResponsibilityIds": [
+        "west-middle-house-east-wall"
+      ],
+      "candidateCenterPixel": {
+        "asset": [
+          183,
+          432
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "originalMaterialObservation": "Foreground yellow-green foliage; a diagonal neighboring wall/eave edge lies near the upper-left. No original rear-house ground foot certified in this cell.",
+      "selectedBlueGroundDomain": {
+        "intersectionArea": 0,
+        "separationProof": "Cell bottom <=416; full selected blue NEW ground domain minimumY=421.6. Blue roof projection is not physical takeover."
+      },
+      "neighborOwnershipEvidence": {
+        "coarseAuditOnly": [
+          "west-middle-house-east-wall"
+        ],
+        "status": "No transfer of ground responsibility certified. Overlapping coarse old wall audit is only a lead; hidden wall/tree bases are not measured here."
+      },
+      "remainingResponsibility": "Unresolved physical responsibility, not automatically bare house foundation. No arbitrary infill or neighboring-owner assignment."
+    },
+    {
+      "cell": [
+        22,
+        23
+      ],
+      "terrain": "#",
+      "newBasePositiveArea": 0,
+      "candidateMaterialAreaByMinimumAlpha": {
+        "1": 167.03632500000003,
+        "9": 163.97845000000007,
+        "128": 162.71790000000004,
+        "200": 162.32477500000005,
+        "245": 161.45777500000008
+      },
+      "category": "projected-material-only-no-ground-domain",
+      "substantiveAlphaDefinition": "A>=9 excludes generated A1..8 scatter but does not redefine texture or engine opacity; all alpha thresholds retained separately.",
+      "originalCenterPixel": {
+        "source": [
+          360,
+          376
+        ],
+        "rgb": [
+          173,
+          154,
+          64
+        ]
+      },
+      "otherCoarseAuditResponsibilityIds": [
+        "west-middle-house-east-wall"
+      ],
+      "candidateCenterPixel": {
+        "asset": [
+          371,
+          432
+        ],
+        "rgba": [
+          163,
+          64,
+          29,
+          253
+        ]
+      },
+      "originalMaterialObservation": "Rear-house upper gable/plaster and sloping eave, partly occluded by foliage. Not a visible ground-foot band.",
+      "selectedBlueGroundDomain": {
+        "intersectionArea": 0,
+        "separationProof": "Cell bottom <=416; full selected blue NEW ground domain minimumY=421.6. Blue roof projection is not physical takeover."
+      },
+      "neighborOwnershipEvidence": {
+        "coarseAuditOnly": [
+          "west-middle-house-east-wall"
+        ],
+        "status": "No transfer of ground responsibility certified. Overlapping coarse old wall audit is only a lead; hidden wall/tree bases are not measured here."
+      },
+      "remainingResponsibility": "Unresolved physical responsibility, not automatically bare house foundation. No arbitrary infill or neighboring-owner assignment."
+    },
+    {
+      "cell": [
+        23,
+        23
+      ],
+      "terrain": "#",
+      "newBasePositiveArea": 0,
+      "candidateMaterialAreaByMinimumAlpha": {
+        "1": 255.99999999999997,
+        "9": 255.99999999999997,
+        "128": 255.99999999999997,
+        "200": 255.99999999999997,
+        "245": 255.99999999999997
+      },
+      "category": "projected-material-only-no-ground-domain",
+      "substantiveAlphaDefinition": "A>=9 excludes generated A1..8 scatter but does not redefine texture or engine opacity; all alpha thresholds retained separately.",
+      "originalCenterPixel": {
+        "source": [
+          376,
+          376
+        ],
+        "rgb": [
+          140,
+          120,
+          106
+        ]
+      },
+      "otherCoarseAuditResponsibilityIds": [],
+      "candidateCenterPixel": {
+        "asset": [
+          559,
+          432
+        ],
+        "rgba": [
+          248,
+          116,
+          28,
+          253
+        ]
+      },
+      "originalMaterialObservation": "Rear-house upper gable with narrow window and roof/eave edge. Not a visible ground-foot band.",
+      "selectedBlueGroundDomain": {
+        "intersectionArea": 0,
+        "separationProof": "Cell bottom <=416; full selected blue NEW ground domain minimumY=421.6. Blue roof projection is not physical takeover."
+      },
+      "neighborOwnershipEvidence": {
+        "coarseAuditOnly": [],
+        "status": "No transfer of ground responsibility certified. Overlapping coarse old wall audit is only a lead; hidden wall/tree bases are not measured here."
+      },
+      "remainingResponsibility": "Unresolved physical responsibility, not automatically bare house foundation. No arbitrary infill or neighboring-owner assignment."
+    },
+    {
+      "cell": [
+        24,
+        23
+      ],
+      "terrain": "#",
+      "newBasePositiveArea": 0,
+      "candidateMaterialAreaByMinimumAlpha": {
+        "1": 256.0,
+        "9": 256.0,
+        "128": 256.0,
+        "200": 256.0,
+        "245": 256.0
+      },
+      "category": "projected-material-only-no-ground-domain",
+      "substantiveAlphaDefinition": "A>=9 excludes generated A1..8 scatter but does not redefine texture or engine opacity; all alpha thresholds retained separately.",
+      "originalCenterPixel": {
+        "source": [
+          392,
+          376
+        ],
+        "rgb": [
+          216,
+          130,
+          68
+        ]
+      },
+      "otherCoarseAuditResponsibilityIds": [],
+      "candidateCenterPixel": {
+        "asset": [
+          748,
+          432
+        ],
+        "rgba": [
+          240,
+          96,
+          21,
+          253
+        ]
+      },
+      "originalMaterialObservation": "Orange roof material. A projected roof is not the physical foundation of this grid cell.",
+      "selectedBlueGroundDomain": {
+        "intersectionArea": 0,
+        "separationProof": "Cell bottom <=416; full selected blue NEW ground domain minimumY=421.6. Blue roof projection is not physical takeover."
+      },
+      "neighborOwnershipEvidence": {
+        "coarseAuditOnly": [],
+        "status": "No transfer of ground responsibility certified. Overlapping coarse old wall audit is only a lead; hidden wall/tree bases are not measured here."
+      },
+      "remainingResponsibility": "Unresolved physical responsibility, not automatically bare house foundation. No arbitrary infill or neighboring-owner assignment."
+    },
+    {
+      "cell": [
+        25,
+        23
+      ],
+      "terrain": "#",
+      "newBasePositiveArea": 0,
+      "candidateMaterialAreaByMinimumAlpha": {
+        "1": 254.31389999999988,
+        "9": 253.93692499999992,
+        "128": 253.7499249999999,
+        "200": 253.6525999999999,
+        "245": 253.49789999999987
+      },
+      "category": "projected-material-only-no-ground-domain",
+      "substantiveAlphaDefinition": "A>=9 excludes generated A1..8 scatter but does not redefine texture or engine opacity; all alpha thresholds retained separately.",
+      "originalCenterPixel": {
+        "source": [
+          408,
+          376
+        ],
+        "rgb": [
+          140,
+          74,
+          45
+        ]
+      },
+      "otherCoarseAuditResponsibilityIds": [],
+      "candidateCenterPixel": {
+        "asset": [
+          936,
+          432
+        ],
+        "rgba": [
+          255,
+          205,
+          80,
+          253
+        ]
+      },
+      "originalMaterialObservation": "Orange roof and adjacent blue-roof projection at the right edge. Neither is ground-foot evidence here.",
+      "selectedBlueGroundDomain": {
+        "intersectionArea": 0,
+        "separationProof": "Cell bottom <=416; full selected blue NEW ground domain minimumY=421.6. Blue roof projection is not physical takeover."
+      },
+      "neighborOwnershipEvidence": {
+        "coarseAuditOnly": [],
+        "status": "No transfer of ground responsibility certified. Overlapping coarse old wall audit is only a lead; hidden wall/tree bases are not measured here."
+      },
+      "remainingResponsibility": "Unresolved physical responsibility, not automatically bare house foundation. No arbitrary infill or neighboring-owner assignment."
+    },
+    {
+      "cell": [
+        21,
+        24
+      ],
+      "terrain": "#",
+      "newBasePositiveArea": 0,
+      "candidateMaterialAreaByMinimumAlpha": {
+        "1": 4.2387750000001505,
+        "9": 3.652700000000147,
+        "128": 3.365825000000119,
+        "200": 3.2608500000001217,
+        "245": 3.013925000000134
+      },
+      "category": "projected-material-only-no-ground-domain",
+      "substantiveAlphaDefinition": "A>=9 excludes generated A1..8 scatter but does not redefine texture or engine opacity; all alpha thresholds retained separately.",
+      "originalCenterPixel": {
+        "source": [
+          344,
+          392
+        ],
+        "rgb": [
+          152,
+          175,
+          24
+        ]
+      },
+      "otherCoarseAuditResponsibilityIds": [],
+      "candidateCenterPixel": {
+        "asset": [
+          183,
+          620
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "originalMaterialObservation": "Foreground foliage and woody/trunk-colored material; tree root/ground contact is not certified within this cell.",
+      "selectedBlueGroundDomain": {
+        "intersectionArea": 0,
+        "separationProof": "Cell bottom <=416; full selected blue NEW ground domain minimumY=421.6. Blue roof projection is not physical takeover."
+      },
+      "neighborOwnershipEvidence": {
+        "coarseAuditOnly": [],
+        "status": "No transfer of ground responsibility certified. Overlapping coarse old wall audit is only a lead; hidden wall/tree bases are not measured here."
+      },
+      "remainingResponsibility": "Unresolved physical responsibility, not automatically bare house foundation. No arbitrary infill or neighboring-owner assignment."
+    },
+    {
+      "cell": [
+        22,
+        24
+      ],
+      "terrain": "#",
+      "newBasePositiveArea": 0,
+      "candidateMaterialAreaByMinimumAlpha": {
+        "1": 200.19730000000067,
+        "9": 197.5423250000006,
+        "128": 196.23077500000056,
+        "200": 195.72120000000052,
+        "245": 194.7891750000005
+      },
+      "category": "projected-material-only-no-ground-domain",
+      "substantiveAlphaDefinition": "A>=9 excludes generated A1..8 scatter but does not redefine texture or engine opacity; all alpha thresholds retained separately.",
+      "originalCenterPixel": {
+        "source": [
+          360,
+          392
+        ],
+        "rgb": [
+          71,
+          96,
+          37
+        ]
+      },
+      "otherCoarseAuditResponsibilityIds": [],
+      "candidateCenterPixel": {
+        "asset": [
+          371,
+          620
+        ],
+        "rgba": [
+          172,
+          144,
+          123,
+          253
+        ]
+      },
+      "originalMaterialObservation": "Foreground green foliage masking the rear-house wall. Ground ownership behind the foliage remains unproved.",
+      "selectedBlueGroundDomain": {
+        "intersectionArea": 0,
+        "separationProof": "Cell bottom <=416; full selected blue NEW ground domain minimumY=421.6. Blue roof projection is not physical takeover."
+      },
+      "neighborOwnershipEvidence": {
+        "coarseAuditOnly": [],
+        "status": "No transfer of ground responsibility certified. Overlapping coarse old wall audit is only a lead; hidden wall/tree bases are not measured here."
+      },
+      "remainingResponsibility": "Unresolved physical responsibility, not automatically bare house foundation. No arbitrary infill or neighboring-owner assignment."
+    },
+    {
+      "cell": [
+        23,
+        24
+      ],
+      "terrain": "#",
+      "newBasePositiveArea": 1.5426930250541773,
+      "candidateMaterialAreaByMinimumAlpha": {
+        "1": 256.0,
+        "9": 256.0,
+        "128": 256.0,
+        "200": 256.0,
+        "245": 256.0
+      },
+      "category": "new-ground-domain-positive-area",
+      "substantiveAlphaDefinition": "A>=9 excludes generated A1..8 scatter but does not redefine texture or engine opacity; all alpha thresholds retained separately.",
+      "originalCenterPixel": {
+        "source": [
+          376,
+          392
+        ],
+        "rgb": [
+          149,
+          156,
+          92
+        ]
+      },
+      "otherCoarseAuditResponsibilityIds": [],
+      "candidateCenterPixel": {
+        "asset": [
+          559,
+          620
+        ],
+        "rgba": [
+          194,
+          169,
+          151,
+          253
+        ]
+      }
+    },
+    {
+      "cell": [
+        24,
+        24
+      ],
+      "terrain": "#",
+      "newBasePositiveArea": 45.16382552483992,
+      "candidateMaterialAreaByMinimumAlpha": {
+        "1": 256.0,
+        "9": 256.0,
+        "128": 256.0,
+        "200": 256.0,
+        "245": 256.0
+      },
+      "category": "new-ground-domain-positive-area",
+      "substantiveAlphaDefinition": "A>=9 excludes generated A1..8 scatter but does not redefine texture or engine opacity; all alpha thresholds retained separately.",
+      "originalCenterPixel": {
+        "source": [
+          392,
+          392
+        ],
+        "rgb": [
+          42,
+          58,
+          79
+        ]
+      },
+      "otherCoarseAuditResponsibilityIds": [
+        "west-inner-blue-house-foundation"
+      ],
+      "candidateCenterPixel": {
+        "asset": [
+          748,
+          620
+        ],
+        "rgba": [
+          246,
+          111,
+          35,
+          253
+        ]
+      }
+    },
+    {
+      "cell": [
+        25,
+        24
+      ],
+      "terrain": "#",
+      "newBasePositiveArea": 0.012103418819606304,
+      "candidateMaterialAreaByMinimumAlpha": {
+        "1": 256.0,
+        "9": 256.0,
+        "128": 256.0,
+        "200": 256.0,
+        "245": 256.0
+      },
+      "category": "new-ground-domain-positive-area",
+      "substantiveAlphaDefinition": "A>=9 excludes generated A1..8 scatter but does not redefine texture or engine opacity; all alpha thresholds retained separately.",
+      "originalCenterPixel": {
+        "source": [
+          408,
+          392
+        ],
+        "rgb": [
+          58,
+          81,
+          109
+        ]
+      },
+      "otherCoarseAuditResponsibilityIds": [],
+      "candidateCenterPixel": {
+        "asset": [
+          936,
+          620
+        ],
+        "rgba": [
+          187,
+          81,
+          34,
+          253
+        ]
+      }
+    },
+    {
+      "cell": [
+        21,
+        25
+      ],
+      "terrain": "#",
+      "newBasePositiveArea": 0,
+      "candidateMaterialAreaByMinimumAlpha": {
+        "1": 0.004249999999995112,
+        "9": 0.0,
+        "128": 0.0,
+        "200": 0.0,
+        "245": 0.0
+      },
+      "category": "no-candidate-substantive-material",
+      "substantiveAlphaDefinition": "A>=9 excludes generated A1..8 scatter but does not redefine texture or engine opacity; all alpha thresholds retained separately.",
+      "originalCenterPixel": {
+        "source": [
+          344,
+          408
+        ],
+        "rgb": [
+          171,
+          175,
+          4
+        ]
+      },
+      "otherCoarseAuditResponsibilityIds": [],
+      "candidateCenterPixel": {
+        "asset": [
+          183,
+          809
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "originalMaterialObservation": "Foreground tree foliage/trunk region; no certified rear-house stone foot or visible tree-root foundation in this cell.",
+      "selectedBlueGroundDomain": {
+        "intersectionArea": 0,
+        "separationProof": "Cell bottom <=416; full selected blue NEW ground domain minimumY=421.6. Blue roof projection is not physical takeover."
+      },
+      "neighborOwnershipEvidence": {
+        "coarseAuditOnly": [],
+        "status": "No transfer of ground responsibility certified. Overlapping coarse old wall audit is only a lead; hidden wall/tree bases are not measured here."
+      },
+      "remainingResponsibility": "Unresolved physical responsibility, not automatically bare house foundation. No arbitrary infill or neighboring-owner assignment."
+    },
+    {
+      "cell": [
+        22,
+        25
+      ],
+      "terrain": "#",
+      "newBasePositiveArea": 72.35623490782746,
+      "candidateMaterialAreaByMinimumAlpha": {
+        "1": 165.73897500000047,
+        "9": 163.02365000000069,
+        "128": 161.7720250000006,
+        "200": 161.0189250000007,
+        "245": 160.16637500000076
+      },
+      "category": "new-ground-domain-positive-area",
+      "substantiveAlphaDefinition": "A>=9 excludes generated A1..8 scatter but does not redefine texture or engine opacity; all alpha thresholds retained separately.",
+      "originalCenterPixel": {
+        "source": [
+          360,
+          408
+        ],
+        "rgb": [
+          48,
+          84,
+          38
+        ]
+      },
+      "otherCoarseAuditResponsibilityIds": [],
+      "candidateCenterPixel": {
+        "asset": [
+          371,
+          809
+        ],
+        "rgba": [
+          158,
+          132,
+          110,
+          253
+        ]
+      }
+    },
+    {
+      "cell": [
+        23,
+        25
+      ],
+      "terrain": "#",
+      "newBasePositiveArea": 220.20256043114932,
+      "candidateMaterialAreaByMinimumAlpha": {
+        "1": 256.0,
+        "9": 256.0,
+        "128": 256.0,
+        "200": 256.0,
+        "245": 256.0
+      },
+      "category": "new-ground-domain-positive-area",
+      "substantiveAlphaDefinition": "A>=9 excludes generated A1..8 scatter but does not redefine texture or engine opacity; all alpha thresholds retained separately.",
+      "originalCenterPixel": {
+        "source": [
+          376,
+          408
+        ],
+        "rgb": [
+          128,
+          157,
+          44
+        ]
+      },
+      "otherCoarseAuditResponsibilityIds": [],
+      "candidateCenterPixel": {
+        "asset": [
+          559,
+          809
+        ],
+        "rgba": [
+          200,
+          182,
+          168,
+          253
+        ]
+      }
+    },
+    {
+      "cell": [
+        24,
+        25
+      ],
+      "terrain": "#",
+      "newBasePositiveArea": 256.0,
+      "candidateMaterialAreaByMinimumAlpha": {
+        "1": 255.99999999999997,
+        "9": 255.99999999999997,
+        "128": 255.99999999999997,
+        "200": 255.99999999999997,
+        "245": 255.99999999999997
+      },
+      "category": "new-ground-domain-positive-area",
+      "substantiveAlphaDefinition": "A>=9 excludes generated A1..8 scatter but does not redefine texture or engine opacity; all alpha thresholds retained separately.",
+      "originalCenterPixel": {
+        "source": [
+          392,
+          408
+        ],
+        "rgb": [
+          129,
+          134,
+          124
+        ]
+      },
+      "otherCoarseAuditResponsibilityIds": [
+        "west-inner-blue-house-foundation"
+      ],
+      "candidateCenterPixel": {
+        "asset": [
+          748,
+          809
+        ],
+        "rgba": [
+          252,
+          230,
+          194,
+          253
+        ]
+      }
+    },
+    {
+      "cell": [
+        25,
+        25
+      ],
+      "terrain": "#",
+      "newBasePositiveArea": 165.6590076923021,
+      "candidateMaterialAreaByMinimumAlpha": {
+        "1": 256.0,
+        "9": 256.0,
+        "128": 256.0,
+        "200": 256.0,
+        "245": 256.0
+      },
+      "category": "new-ground-domain-positive-area",
+      "substantiveAlphaDefinition": "A>=9 excludes generated A1..8 scatter but does not redefine texture or engine opacity; all alpha thresholds retained separately.",
+      "originalCenterPixel": {
+        "source": [
+          408,
+          408
+        ],
+        "rgb": [
+          86,
+          67,
+          45
+        ]
+      },
+      "otherCoarseAuditResponsibilityIds": [
+        "west-inner-blue-house-foundation"
+      ],
+      "candidateCenterPixel": {
+        "asset": [
+          936,
+          809
+        ],
+        "rgba": [
+          63,
+          34,
+          13,
+          253
+        ]
+      }
+    },
+    {
+      "cell": [
+        22,
+        26
+      ],
+      "terrain": "#",
+      "newBasePositiveArea": 4.831137499961187,
+      "candidateMaterialAreaByMinimumAlpha": {
+        "1": 6.373375000000259,
+        "9": 5.687850000000209,
+        "128": 5.3448750000002265,
+        "200": 5.180825000000228,
+        "245": 4.965775000000228
+      },
+      "category": "new-ground-domain-positive-area",
+      "substantiveAlphaDefinition": "A>=9 excludes generated A1..8 scatter but does not redefine texture or engine opacity; all alpha thresholds retained separately.",
+      "originalCenterPixel": {
+        "source": [
+          360,
+          424
+        ],
+        "rgb": [
+          80,
+          79,
+          50
+        ]
+      },
+      "otherCoarseAuditResponsibilityIds": [],
+      "candidateCenterPixel": {
+        "asset": [
+          371,
+          997
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "cell": [
+        23,
+        26
+      ],
+      "terrain": "#",
+      "newBasePositiveArea": 133.38533750000352,
+      "candidateMaterialAreaByMinimumAlpha": {
+        "1": 139.4777000000009,
+        "9": 136.79552500000085,
+        "128": 135.49332500000088,
+        "200": 134.89365000000086,
+        "245": 134.1188750000009
+      },
+      "category": "new-ground-domain-positive-area",
+      "substantiveAlphaDefinition": "A>=9 excludes generated A1..8 scatter but does not redefine texture or engine opacity; all alpha thresholds retained separately.",
+      "originalCenterPixel": {
+        "source": [
+          376,
+          424
+        ],
+        "rgb": [
+          212,
+          195,
+          170
+        ]
+      },
+      "otherCoarseAuditResponsibilityIds": [],
+      "candidateCenterPixel": {
+        "asset": [
+          559,
+          997
+        ],
+        "rgba": [
+          23,
+          17,
+          11,
+          254
+        ]
+      }
+    },
+    {
+      "cell": [
+        24,
+        26
+      ],
+      "terrain": "#",
+      "newBasePositiveArea": 175.3944499998761,
+      "candidateMaterialAreaByMinimumAlpha": {
+        "1": 181.67977500000046,
+        "9": 179.3155000000004,
+        "128": 178.1433500000004,
+        "200": 177.62315000000038,
+        "245": 176.90617500000042
+      },
+      "category": "new-ground-domain-positive-area",
+      "substantiveAlphaDefinition": "A>=9 excludes generated A1..8 scatter but does not redefine texture or engine opacity; all alpha thresholds retained separately.",
+      "originalCenterPixel": {
+        "source": [
+          392,
+          424
+        ],
+        "rgb": [
+          115,
+          109,
+          106
+        ]
+      },
+      "otherCoarseAuditResponsibilityIds": [
+        "west-inner-blue-house-foundation"
+      ],
+      "candidateCenterPixel": {
+        "asset": [
+          748,
+          997
+        ],
+        "rgba": [
+          216,
+          183,
+          145,
+          253
+        ]
+      }
+    },
+    {
+      "cell": [
+        25,
+        26
+      ],
+      "terrain": "#",
+      "newBasePositiveArea": 70.69251249989611,
+      "candidateMaterialAreaByMinimumAlpha": {
+        "1": 77.39625000000038,
+        "9": 74.74722500000037,
+        "128": 73.53895000000037,
+        "200": 72.95032500000038,
+        "245": 72.24397500000038
+      },
+      "category": "new-ground-domain-positive-area",
+      "substantiveAlphaDefinition": "A>=9 excludes generated A1..8 scatter but does not redefine texture or engine opacity; all alpha thresholds retained separately.",
+      "originalCenterPixel": {
+        "source": [
+          408,
+          424
+        ],
+        "rgb": [
+          61,
+          41,
+          33
+        ]
+      },
+      "otherCoarseAuditResponsibilityIds": [
+        "west-inner-blue-house-foundation"
+      ],
+      "candidateCenterPixel": {
+        "asset": [
+          936,
+          997
+        ],
+        "rgba": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "classificationCounts": {
+    "new-ground-domain-positive-area": 11,
+    "projected-material-only-no-ground-domain": 7,
+    "no-candidate-substantive-material": 1
+  },
+  "selectedBlueBaseMinimumY": 421.6,
+  "remainingEightCells": [
+    [
+      21,
+      23
+    ],
+    [
+      22,
+      23
+    ],
+    [
+      23,
+      23
+    ],
+    [
+      24,
+      23
+    ],
+    [
+      25,
+      23
+    ],
+    [
+      21,
+      24
+    ],
+    [
+      22,
+      24
+    ],
+    [
+      21,
+      25
+    ]
+  ],
+  "closureConclusion": "The local house geometry may be assessed independently, but the old 19-cell physical responsibility is not closed: eleven cells have some NEW base area, seven only elevated projection, one no substantive candidate material. No remaining cell is silently assigned to the blue house or a courtyard wall.",
+  "alphaMethod": "Exact positive texel-box overlap area under source=origin+asset*scale, measured independently per16x16 cell. A1/9/128/200/245 all reported. No interpolation, clipping by other scene objects, or GPU rendered visibility claimed.",
+  "groundMethod": "Unchanged 759 visible stone-foot polyline plus explicit NEW hidden rear corner, from preceding whole-base report; never substitute alpha or old audit polygon.",
+  "limits": [
+    "Per-cell positive ground area does not mean the full cell is filled.",
+    "Projected roof/body pixels do not certify foundation, collision or all original physical responsibility.",
+    "Coarse overlapping audit ownership is a clue only, not certified neighboring ground support."
+  ]
+}

@@ -5,8 +5,8 @@
     "data/grayflag-campaign-levels.json": "e226041272be12ea1686be7297953f332606002908ce44fa8d15028c0435ed42",
     "data/scenes/c01-07-selected-assembly.json": "5d0f48f9e6312e9adab201eb1e59fb564fd108f085b02f4733d93b9c17531151",
     "data/scenes/c01-07.json": "5bd8cac7e2263dcffaf23b88c38b25515575678c3085a227e4a1f58f61abcd88",
-    "data/scenes/c01-07-selected-assembly-ground.json": "a2a84225554e7eee73c65a55a9bed85cf277423aa9a9125bbd71f9ac6959f640",
-    "data/scenes/c01-07-selected-assembly-objects.json": "2641de21eb1c8447c0e9c378f599bee6418c970f972bc448b62a2d31bc7289e5",
+    "data/scenes/c01-07-selected-assembly-ground.json": "a1683ca5d690a8d62a8ff5b449829b0973a744866bbdaff2a98d40499c96e175",
+    "data/scenes/c01-07-selected-assembly-objects.json": "1934ea97be3985e3a429ac14481436bc91b50f4451a86b588a214bdabd6330d8",
     "data/scenes/c01-07-canopy-surface.json": "f1984898f6781a4829c1fde831c60a90259bb51d42e59a1bfab4cac330c43147",
     "data/scenes/c01-07-fence-surface.json": "7a1d436ce81435fe80190611f2aa13952578d1171b524186a9e254391fa18250",
     "data/scenes/c01-07-granary-canopy-surface.json": "255d8ea2b86e220d93235d5605d8d260798e7de1046ae88de603f4ec714ccfd2",
@@ -46,9 +46,9 @@
   },
   "officialSceneSelected": false,
   "actualPlayStatus": "C06/C07 paused; no new actual play in this matrix",
-  "selectedInstances": 55,
-  "selectedAssets": 50,
-  "supportEntries": 4524,
+  "selectedInstances": 56,
+  "selectedAssets": 51,
+  "supportEntries": 4696,
   "selectedSites": 7,
   "canonicalSites": 16,
   "instances": [
@@ -622,6 +622,16 @@
       "supports": 1,
       "selectionCell": null,
       "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "west-inner-rear-house-main",
+      "assetId": "west-inner-rear-house-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#west-inner-rear-house-v1/depthStrips",
+      "footKind": "registered sprite-strip feet",
+      "supports": 172,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
     }
   ],
   "sites": [
@@ -986,7 +996,7 @@
       "id": "west-inner-back-house-foundation",
       "auditedBlockedCells": 19,
       "sourceOwner": "docs/art-provenance/luojia-geometry.json#west-inner-back-house-foundation",
-      "selectedRelatedBody": null,
+      "selectedRelatedBody": "west-inner-rear-house-main",
       "wholeFoundationClosed": false
     },
     {
