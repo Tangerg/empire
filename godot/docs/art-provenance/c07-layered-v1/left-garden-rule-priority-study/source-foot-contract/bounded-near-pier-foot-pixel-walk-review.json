@@ -1,0 +1,264 @@
+{
+  "scope": "Only three original visible lower-stone texels and four local legal directed edges, static not gameplay",
+  "legalCells": [
+    [
+      23,
+      31
+    ],
+    [
+      23,
+      32
+    ],
+    [
+      24,
+      32
+    ]
+  ],
+  "directedEdges": [
+    [
+      [
+        23,
+        31
+      ],
+      [
+        23,
+        32
+      ]
+    ],
+    [
+      [
+        23,
+        32
+      ],
+      [
+        23,
+        31
+      ]
+    ],
+    [
+      [
+        23,
+        32
+      ],
+      [
+        24,
+        32
+      ]
+    ],
+    [
+      [
+        24,
+        32
+      ],
+      [
+        23,
+        32
+      ]
+    ]
+  ],
+  "segments": 1050,
+  "points": [
+    {
+      "originalPixel": [
+        393,
+        514
+      ],
+      "materialConfidence": "visually identified near-pier lower stone material",
+      "RGB": [
+        222,
+        201,
+        181
+      ],
+      "pixelDomain": [
+        [
+          393,
+          514
+        ],
+        [
+          394,
+          515
+        ]
+      ],
+      "piecewisePixelConvention": "Unit source texel cell [x,x+1) \u00d7 [y,y+1). Only the three manually identified near-pier lower-stone texels. No filled bbox or hidden foot inference.",
+      "intersectingSoleSegments": 2,
+      "examples": [
+        {
+          "from": [
+            24,
+            32
+          ],
+          "to": [
+            23,
+            32
+          ],
+          "west": true,
+          "frame": 3,
+          "framePixel": [
+            118,
+            517
+          ],
+          "tInterval": [
+            0.3317305499999996,
+            0.3942305499999996
+          ],
+          "t": 0.3629805499999996,
+          "sourcePoint": [
+            393.5,
+            514.8076948
+          ]
+        },
+        {
+          "from": [
+            24,
+            32
+          ],
+          "to": [
+            23,
+            32
+          ],
+          "west": true,
+          "frame": 3,
+          "framePixel": [
+            119,
+            515
+          ],
+          "tInterval": [
+            0.32572093750000164,
+            0.38822093750000164
+          ],
+          "t": 0.35697093750000164,
+          "sourcePoint": [
+            393.5,
+            514.6153872
+          ]
+        }
+      ]
+    },
+    {
+      "originalPixel": [
+        394,
+        515
+      ],
+      "materialConfidence": "visually identified near-pier lower stone material",
+      "RGB": [
+        227,
+        201,
+        177
+      ],
+      "pixelDomain": [
+        [
+          394,
+          515
+        ],
+        [
+          395,
+          516
+        ]
+      ],
+      "piecewisePixelConvention": "Unit source texel cell [x,x+1) \u00d7 [y,y+1). Only the three manually identified near-pier lower-stone texels. No filled bbox or hidden foot inference.",
+      "intersectingSoleSegments": 0,
+      "examples": []
+    },
+    {
+      "originalPixel": [
+        395,
+        516
+      ],
+      "materialConfidence": "visually identified near-pier lower stone material",
+      "RGB": [
+        216,
+        194,
+        157
+      ],
+      "pixelDomain": [
+        [
+          395,
+          516
+        ],
+        [
+          396,
+          517
+        ]
+      ],
+      "piecewisePixelConvention": "Unit source texel cell [x,x+1) \u00d7 [y,y+1). Only the three manually identified near-pier lower-stone texels. No filled bbox or hidden foot inference.",
+      "intersectingSoleSegments": 5,
+      "examples": [
+        {
+          "from": [
+            23,
+            32
+          ],
+          "to": [
+            24,
+            32
+          ],
+          "west": false,
+          "frame": 1,
+          "framePixel": [
+            287,
+            523
+          ],
+          "tInterval": [
+            0.9290866625000014,
+            0.9915866625000014
+          ],
+          "t": 0.9603366625000014,
+          "sourcePoint": [
+            395.5,
+            516.0576942
+          ]
+        },
+        {
+          "from": [
+            23,
+            32
+          ],
+          "to": [
+            24,
+            32
+          ],
+          "west": false,
+          "frame": 1,
+          "framePixel": [
+            288,
+            524
+          ],
+          "tInterval": [
+            0.9230770499999998,
+            0.9855770499999998
+          ],
+          "t": 0.9543270499999998,
+          "sourcePoint": [
+            395.5,
+            516.153848
+          ]
+        },
+        {
+          "from": [
+            23,
+            32
+          ],
+          "to": [
+            24,
+            32
+          ],
+          "west": false,
+          "frame": 1,
+          "framePixel": [
+            289,
+            526
+          ],
+          "tInterval": [
+            0.9170674374999983,
+            0.9795674374999983
+          ],
+          "t": 0.9483174374999983,
+          "sourcePoint": [
+            395.5,
+            516.3461556
+          ]
+        }
+      ]
+    }
+  ]
+}

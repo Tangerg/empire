@@ -1,0 +1,1245 @@
+{
+  "ready": true,
+  "scope": "Only the left courtyard connected to the selected west-inner blue house, prioritising the near L-shaped continuous stone enclosure. Source pixels and static actual-role math; parent separately ran original native witnesses. No GUI, engine, save, production or image generation by this review.",
+  "source": {
+    "path": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/scenes/luojia.png",
+    "sha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+    "size": [
+      1536,
+      1024
+    ]
+  },
+  "actor": {
+    "path": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-units-v1/torren-stage01-v2.png",
+    "sha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
+    "canonicalIdentity": {
+      "key": "campaign-torren",
+      "x": 40,
+      "y": 25,
+      "unit": "c01.swordsman",
+      "owner": 1,
+      "facing": "east"
+    }
+  },
+  "ownership": {
+    "independentObjects": [
+      "continuous near stone perimeter with tall intermediate and near corner piers",
+      "open timber trellis / climbing plants, not a closed building",
+      "separate foreground pots outside the return",
+      "far rear stone segment and trees, deferred"
+    ],
+    "exclude": [
+      "selected blue/orange main houses",
+      "rear orange house",
+      "independent foreground pots and road shadows",
+      "far rear wall/trees are not part of this next near-L design"
+    ],
+    "sourceFrontStoneApproxBounds": [
+      298,
+      438,
+      432,
+      518
+    ],
+    "wholeGardenIsNotOneSolidFoundation": true,
+    "currentSelectedHouses": [
+      {
+        "id": "west-inner-house-main",
+        "assetId": "west-inner-house-v2",
+        "contact": [
+          31.8125,
+          28.375
+        ],
+        "scale": 0.11,
+        "selectionCell": [
+          33,
+          30
+        ],
+        "ownsMapStructureBody": true,
+        "pointer": "target"
+      },
+      {
+        "id": "west-inner-blue-house-main",
+        "assetId": "west-inner-blue-house-v1",
+        "contact": [
+          26.375,
+          29.1875
+        ],
+        "scale": 0.1,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      }
+    ],
+    "currentSelectedLeftGardenReplacement": [],
+    "legacyOwner": {
+      "id": "west-inner-garden-front-visible",
+      "ownsMapStructureBody": false,
+      "parts": [
+        {
+          "id": "masonry-band",
+          "polygonPixels": [
+            [
+              286,
+              397
+            ],
+            [
+              298,
+              402
+            ],
+            [
+              301,
+              411
+            ],
+            [
+              314,
+              417
+            ],
+            [
+              321,
+              412
+            ],
+            [
+              334,
+              420
+            ],
+            [
+              339,
+              430
+            ],
+            [
+              353,
+              436
+            ],
+            [
+              359,
+              430
+            ],
+            [
+              371,
+              437
+            ],
+            [
+              376,
+              448
+            ],
+            [
+              390,
+              455
+            ],
+            [
+              396,
+              449
+            ],
+            [
+              407,
+              456
+            ],
+            [
+              412,
+              469
+            ],
+            [
+              419,
+              475
+            ],
+            [
+              413,
+              496
+            ],
+            [
+              286,
+              438
+            ]
+          ],
+          "groundFrontPixels": [
+            413,
+            496
+          ],
+          "pointer": {
+            "kind": "pass-through"
+          },
+          "contactCell": [
+            25,
+            31
+          ]
+        }
+      ]
+    }
+  },
+  "observedStoneGroundEvidence": {
+    "longWallVisibleLowerBands": [
+      {
+        "range": [
+          [
+            298,
+            466
+          ],
+          [
+            307,
+            470
+          ]
+        ],
+        "certainty": "mixed stone/grass border; roughly 1–2px; do not count broader diagonal road shadow"
+      },
+      {
+        "range": [
+          [
+            313,
+            473
+          ],
+          [
+            326,
+            480
+          ]
+        ],
+        "certainty": "visible lower stone with intermittent grass; source318474 is solid stone above contact"
+      },
+      {
+        "range": [
+          [
+            328,
+            481
+          ],
+          [
+            337,
+            485
+          ]
+        ],
+        "certainty": "visible lower stone, 1–2px mixed border"
+      }
+    ],
+    "middleAndConnectingBase": {
+      "rangeX": [
+        338,
+        387
+      ],
+      "status": "Base obscured in substantial intervals by attached grass/plants. Last visible lower stone is not certified complete ground contact; no fabricated continuous original foot."
+    },
+    "nearPier": {
+      "visibleFacePoints": [
+        {
+          "source": [
+            391,
+            484
+          ],
+          "RGB": [
+            224,
+            216,
+            217
+          ],
+          "material": "pale corner-cap/side stone",
+          "status": "visible material, not automatically a ground foot",
+          "cell": [
+            24,
+            30
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            388,
+            492
+          ],
+          "RGB": [
+            99,
+            95,
+            102
+          ],
+          "material": "grey side stone",
+          "status": "visible material, not automatically a ground foot",
+          "cell": [
+            24,
+            30
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            391,
+            512
+          ],
+          "RGB": [
+            128,
+            119,
+            118
+          ],
+          "material": "lower grey stone",
+          "status": "visible material, not automatically a ground foot",
+          "cell": [
+            24,
+            32
+          ],
+          "terrain": "p"
+        }
+      ],
+      "solidLowerPoints": [
+        {
+          "source": [
+            393,
+            514
+          ],
+          "RGB": [
+            222,
+            201,
+            181
+          ],
+          "material": "lower pale stone",
+          "status": "visible material, not automatically a ground foot",
+          "cell": [
+            24,
+            32
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            394,
+            515
+          ],
+          "RGB": [
+            227,
+            201,
+            177
+          ],
+          "material": "lower pale stone",
+          "status": "visible material, not automatically a ground foot",
+          "cell": [
+            24,
+            32
+          ],
+          "terrain": "p"
+        },
+        {
+          "source": [
+            395,
+            516
+          ],
+          "RGB": [
+            216,
+            194,
+            157
+          ],
+          "material": "near pale stone foot band",
+          "status": "visible material, not automatically a ground foot",
+          "cell": [
+            24,
+            32
+          ],
+          "terrain": "p"
+        }
+      ],
+      "nearMixedGroundBand": [
+        [
+          393,
+          516
+        ],
+        [
+          395,
+          518
+        ]
+      ],
+      "status": "Pale stone continues to y516, then mixed grass/shadow. Exact hidden rear corners not visible; new closure must not be attributed to original."
+    },
+    "shortReturn": {
+      "visibleStonePoints": [
+        {
+          "source": [
+            426,
+            480
+          ],
+          "RGB": [
+            240,
+            198,
+            162
+          ],
+          "material": "warm pale return-wall stone",
+          "status": "visible material, not automatically a ground foot",
+          "cell": [
+            26,
+            30
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            426,
+            485
+          ],
+          "RGB": [
+            192,
+            135,
+            93
+          ],
+          "material": "lower shaded return-wall stone",
+          "status": "visible material, not automatically a ground foot",
+          "cell": [
+            26,
+            30
+          ],
+          "terrain": "#"
+        }
+      ],
+      "occludedLowerBand": [
+        {
+          "source": [
+            430,
+            489
+          ],
+          "RGB": [
+            57,
+            38,
+            15
+          ],
+          "material": "dark vegetation/pot-shadow boundary, NOT certified wall foot",
+          "status": "visible material, not automatically a ground foot",
+          "cell": [
+            26,
+            30
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            416,
+            494
+          ],
+          "RGB": [
+            60,
+            74,
+            28
+          ],
+          "material": "green foreground vegetation, NOT wall foot",
+          "status": "visible material, not automatically a ground foot",
+          "cell": [
+            26,
+            30
+          ],
+          "terrain": "#"
+        }
+      ],
+      "status": "Return joins near pier and rises toward blue house. Its lower edge is largely occluded by independent pots/plants; 430489 cannot be a certified original stone foot."
+    }
+  },
+  "staticOriginalDepthWitnesses": {
+    "rear": [
+      {
+        "cell": [
+          23,
+          31
+        ],
+        "terrain": "p",
+        "facing": "east",
+        "frame": 0,
+        "frameRegion": [
+          0,
+          0,
+          557,
+          725
+        ],
+        "frameAnchor": [
+          269,
+          565
+        ],
+        "scale": 0.0961538,
+        "framePixel": [
+          425,
+          356
+        ],
+        "actorAlpha": 253,
+        "actorFoot": [
+          376,
+          504
+        ],
+        "sourcePoint": [
+          391,
+          484
+        ],
+        "RGB": [
+          224,
+          216,
+          217
+        ],
+        "oldOwners": [
+          {
+            "id": "west-inner-garden-front-visible",
+            "part": "masonry-band",
+            "front": [
+              413,
+              496
+            ]
+          }
+        ]
+      },
+      {
+        "cell": [
+          23,
+          31
+        ],
+        "terrain": "p",
+        "facing": "east",
+        "frame": 0,
+        "frameRegion": [
+          0,
+          0,
+          557,
+          725
+        ],
+        "frameAnchor": [
+          269,
+          565
+        ],
+        "scale": 0.0961538,
+        "framePixel": [
+          393,
+          440
+        ],
+        "actorAlpha": 252,
+        "actorFoot": [
+          376,
+          504
+        ],
+        "sourcePoint": [
+          388,
+          492
+        ],
+        "RGB": [
+          99,
+          95,
+          102
+        ],
+        "oldOwners": []
+      }
+    ],
+    "front": [
+      {
+        "cell": [
+          24,
+          32
+        ],
+        "terrain": "p",
+        "facing": "east",
+        "frame": 0,
+        "frameRegion": [
+          0,
+          0,
+          557,
+          725
+        ],
+        "frameAnchor": [
+          269,
+          565
+        ],
+        "scale": 0.0961538,
+        "framePixel": [
+          227,
+          273
+        ],
+        "actorAlpha": 252,
+        "actorFoot": [
+          392,
+          520
+        ],
+        "sourcePoint": [
+          388,
+          492
+        ],
+        "RGB": [
+          99,
+          95,
+          102
+        ],
+        "oldOwners": []
+      }
+    ],
+    "reason": "Original actor foot504 is behind the same near pier whose actual stone continues to512–516; old entire bandfront496 places actor in front, and the lower side texel lacks an owner. Frontfoot520 is correctly in front.",
+    "parentReportedNative": "Parent independently reported rear391484 actorDepth−1566 vs old wall−1598 and UnitPick=true; rear388492 owner[]/UnitPick=true; front388492 UnitPick=true. Not executed by this agent."
+  },
+  "originalPhysicalRoadConflict": [
+    {
+      "id": "long-wall-original-foot",
+      "sourceStone": {
+        "source": [
+          318,
+          474
+        ],
+        "RGB": [
+          114,
+          119,
+          128
+        ],
+        "material": "lower stone face / visible foot band",
+        "status": "visible material, not automatically a ground foot",
+        "cell": [
+          19,
+          29
+        ],
+        "terrain": "p"
+      },
+      "frame": 1,
+      "framePixel": [
+        307,
+        558
+      ],
+      "sheetPixel": [
+        864,
+        558
+      ],
+      "actorAlpha": 246,
+      "facing": "east",
+      "path": [
+        [
+          19,
+          29
+        ],
+        [
+          19,
+          30
+        ]
+      ],
+      "pathTerrain": [
+        "p",
+        "p"
+      ],
+      "segmentIndex": 0,
+      "t": 0.19230767499999857,
+      "sourceSolePoint": [
+        318.0576894,
+        474.5
+      ],
+      "evidence": "Static frozen actual sole boundary crossing a manually identified stone texel, not an engine action or whole foundation inference."
+    },
+    {
+      "id": "near-pier-original-low-stone",
+      "sourceStone": {
+        "source": [
+          393,
+          514
+        ],
+        "RGB": [
+          222,
+          201,
+          181
+        ],
+        "material": "lower stone face / visible foot band",
+        "status": "visible material, not automatically a ground foot",
+        "cell": [
+          24,
+          32
+        ],
+        "terrain": "p"
+      },
+      "frame": 3,
+      "framePixel": [
+        118,
+        517
+      ],
+      "sheetPixel": [
+        1829,
+        517
+      ],
+      "actorAlpha": 233,
+      "facing": "west",
+      "path": [
+        [
+          25,
+          32
+        ],
+        [
+          24,
+          32
+        ],
+        [
+          23,
+          32
+        ]
+      ],
+      "pathTerrain": [
+        "p",
+        "p",
+        "p"
+      ],
+      "segmentIndex": 1,
+      "t": 0.3629805499999996,
+      "sourceSolePoint": [
+        393.5,
+        514.8076948
+      ],
+      "evidence": "Static frozen actual sole boundary crossing a manually identified stone texel, not an engine action or whole foundation inference."
+    },
+    {
+      "id": "near-pier-original-near-foot",
+      "sourceStone": {
+        "source": [
+          395,
+          516
+        ],
+        "RGB": [
+          216,
+          194,
+          157
+        ],
+        "material": "lower stone face / visible foot band",
+        "status": "visible material, not automatically a ground foot",
+        "cell": [
+          24,
+          32
+        ],
+        "terrain": "p"
+      },
+      "frame": 1,
+      "framePixel": [
+        287,
+        523
+      ],
+      "sheetPixel": [
+        844,
+        523
+      ],
+      "actorAlpha": 227,
+      "facing": "east",
+      "path": [
+        [
+          23,
+          32
+        ],
+        [
+          24,
+          32
+        ]
+      ],
+      "pathTerrain": [
+        "p",
+        "p"
+      ],
+      "segmentIndex": 0,
+      "t": 0.9603366625000014,
+      "sourceSolePoint": [
+        395.5,
+        516.0576942
+      ],
+      "evidence": "Static frozen actual sole boundary crossing a manually identified stone texel, not an engine action or whole foundation inference."
+    }
+  ],
+  "responsibility": {
+    "source": "godot/docs/art-provenance/luojia-geometry.json blockedPolygons",
+    "groups": [
+      {
+        "id": "west-inner-west-wall",
+        "polygonPixels": [
+          [
+            281,
+            416
+          ],
+          [
+            287,
+            446
+          ],
+          [
+            344,
+            475
+          ],
+          [
+            350,
+            461
+          ],
+          [
+            298,
+            436
+          ],
+          [
+            294,
+            421
+          ]
+        ],
+        "blockedCells": [
+          [
+            17,
+            26
+          ],
+          [
+            18,
+            26
+          ],
+          [
+            17,
+            27
+          ],
+          [
+            18,
+            27
+          ],
+          [
+            19,
+            27
+          ],
+          [
+            20,
+            27
+          ],
+          [
+            18,
+            28
+          ],
+          [
+            19,
+            28
+          ],
+          [
+            20,
+            28
+          ],
+          [
+            21,
+            28
+          ],
+          [
+            20,
+            29
+          ],
+          [
+            21,
+            29
+          ]
+        ]
+      },
+      {
+        "id": "west-inner-south-wall",
+        "polygonPixels": [
+          [
+            345,
+            475
+          ],
+          [
+            408,
+            505
+          ],
+          [
+            415,
+            493
+          ],
+          [
+            351,
+            461
+          ]
+        ],
+        "blockedCells": [
+          [
+            21,
+            28
+          ],
+          [
+            22,
+            28
+          ],
+          [
+            21,
+            29
+          ],
+          [
+            22,
+            29
+          ],
+          [
+            23,
+            29
+          ],
+          [
+            24,
+            29
+          ],
+          [
+            22,
+            30
+          ],
+          [
+            23,
+            30
+          ],
+          [
+            24,
+            30
+          ],
+          [
+            25,
+            30
+          ],
+          [
+            24,
+            31
+          ],
+          [
+            25,
+            31
+          ]
+        ]
+      },
+      {
+        "id": "west-inner-front-garden",
+        "polygonPixels": [
+          [
+            345,
+            473
+          ],
+          [
+            389,
+            495
+          ],
+          [
+            422,
+            480
+          ],
+          [
+            421,
+            458
+          ],
+          [
+            378,
+            438
+          ],
+          [
+            345,
+            452
+          ]
+        ],
+        "blockedCells": [
+          [
+            22,
+            27
+          ],
+          [
+            23,
+            27
+          ],
+          [
+            24,
+            27
+          ],
+          [
+            21,
+            28
+          ],
+          [
+            22,
+            28
+          ],
+          [
+            23,
+            28
+          ],
+          [
+            24,
+            28
+          ],
+          [
+            25,
+            28
+          ],
+          [
+            26,
+            28
+          ],
+          [
+            21,
+            29
+          ],
+          [
+            22,
+            29
+          ],
+          [
+            23,
+            29
+          ],
+          [
+            24,
+            29
+          ],
+          [
+            25,
+            29
+          ],
+          [
+            26,
+            29
+          ],
+          [
+            22,
+            30
+          ],
+          [
+            23,
+            30
+          ],
+          [
+            24,
+            30
+          ],
+          [
+            25,
+            30
+          ],
+          [
+            26,
+            30
+          ]
+        ]
+      }
+    ],
+    "unionCells": [
+      [
+        17,
+        26
+      ],
+      [
+        18,
+        26
+      ],
+      [
+        17,
+        27
+      ],
+      [
+        18,
+        27
+      ],
+      [
+        19,
+        27
+      ],
+      [
+        20,
+        27
+      ],
+      [
+        22,
+        27
+      ],
+      [
+        23,
+        27
+      ],
+      [
+        24,
+        27
+      ],
+      [
+        18,
+        28
+      ],
+      [
+        19,
+        28
+      ],
+      [
+        20,
+        28
+      ],
+      [
+        21,
+        28
+      ],
+      [
+        22,
+        28
+      ],
+      [
+        23,
+        28
+      ],
+      [
+        24,
+        28
+      ],
+      [
+        25,
+        28
+      ],
+      [
+        26,
+        28
+      ],
+      [
+        20,
+        29
+      ],
+      [
+        21,
+        29
+      ],
+      [
+        22,
+        29
+      ],
+      [
+        23,
+        29
+      ],
+      [
+        24,
+        29
+      ],
+      [
+        25,
+        29
+      ],
+      [
+        26,
+        29
+      ],
+      [
+        22,
+        30
+      ],
+      [
+        23,
+        30
+      ],
+      [
+        24,
+        30
+      ],
+      [
+        25,
+        30
+      ],
+      [
+        26,
+        30
+      ],
+      [
+        24,
+        31
+      ],
+      [
+        25,
+        31
+      ]
+    ],
+    "count": 32,
+    "limits": "32-cell audit union includes broad courtyard/wood/plant responsibilities and is not a stone physical mask. No requirement to fill paving centres."
+  },
+  "selectedBlueBoundary": {
+    "newFullFloorReference": "c07-readonly-review/blue-house-foot-study/blue-v2-whole-new-base-and-orange-separation.json",
+    "visibleFootLeft": [
+      390.3,
+      437.3
+    ],
+    "visibleAxisCorner": [
+      422,
+      467
+    ],
+    "visibleFootRight": [
+      478.8,
+      451.3
+    ],
+    "hiddenCornerNewDesign": [
+      447.1,
+      421.6
+    ],
+    "sourceProjectedTimberInsideNewFloor": [
+      {
+        "source": [
+          421,
+          458
+        ],
+        "RGB": [
+          111,
+          79,
+          36
+        ],
+        "material": "visible timber/inner furniture projection; NOT ground foot",
+        "status": "visible material, not automatically a ground foot",
+        "cell": [
+          26,
+          28
+        ],
+        "terrain": "#"
+      },
+      {
+        "source": [
+          426,
+          464
+        ],
+        "RGB": [
+          141,
+          122,
+          58
+        ],
+        "material": "visible timber/foliage projection; NOT certified ground foot",
+        "status": "visible material, not automatically a ground foot",
+        "cell": [
+          26,
+          29
+        ],
+        "terrain": "#"
+      }
+    ],
+    "interpretation": "These source projected points lie inside the NEW blue ground polygon numerically, but are elevated/hidden-base material, not proved physical interpenetration. Future trellis feet must not blindly reuse old garden responsibility polygon."
+  },
+  "nextOneBoundedDesign": {
+    "reference": "new-continuous-l-wall-full-footing-proposal.json",
+    "frontLineFullTested": [
+      [
+        300,
+        454
+      ],
+      [
+        398,
+        503
+      ],
+      [
+        430,
+        487
+      ]
+    ],
+    "shortenedRecommendedFrontLine": [
+      [
+        326,
+        467
+      ],
+      [
+        398,
+        503
+      ],
+      [
+        430,
+        487
+      ]
+    ],
+    "shortenedLongDomainDefault4": [
+      [
+        326,
+        467
+      ],
+      [
+        398,
+        503
+      ],
+      [
+        402,
+        501
+      ],
+      [
+        330,
+        465
+      ]
+    ],
+    "shorteningProof": "Exact subset of tested full long-wall domain, same return and finite piers. Does not claim unresolved far west section is restored.",
+    "hiddenThickness": "NEW 45-degree axis rear offsets, not source inferred base. Default4; tested maximum6 bounds range3..6.",
+    "roleContractChange": "New near foot front503 is ahead of old rear actorfoot504, so original back witness may now correctly remain visible. Preserve original samples as comparison; do not require artificial hiding after physical relocation.",
+    "stoneOnlyNext": true,
+    "deferred": [
+      "far west continuation before x326",
+      "far rear segment364436..396420",
+      "trellis/plant hidden roots",
+      "independent pots"
+    ]
+  },
+  "inspectionFiles": [
+    "left-garden-initial-context.png",
+    "complete-left-yard-front-stone-grid.png",
+    "west-wall-stone-versus-shadow-grid.png",
+    "near-pier-material-and-ground-grid.png",
+    "short-return-and-independent-pot-boundary-grid.png"
+  ]
+}

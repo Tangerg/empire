@@ -1,0 +1,788 @@
+{
+  "ready": true,
+  "scope": "Bounded static search: only five actual new stone components, exact deployed merged polygons/UV/supports; all12 actual C07 initial appearances frame0, original scale, both facings and only legal p neighbours within material/depth bounds. No engine/GUI/action/state/Pick.",
+  "inputs": [
+    {
+      "path": "/workspace/scratch/84c9fe948755/c07-static-preview/left-garden-stone-new-layout.json",
+      "sha256": "d08f58244c1dc9aa7c1d613cac787610be861a600ce019bdb2a66e7e733d1978"
+    },
+    {
+      "path": "/workspace/scratch/84c9fe948755/c07-static-preview/left-garden-stone-merged-surface.json",
+      "sha256": "42a24d1b847215f9d69a86a9b75e386af672d91c5280b02cac3b0ef4c1503bcd"
+    },
+    {
+      "path": "/workspace/scratch/84c9fe948755/empire-c01/godot/data/grayflag-campaign-levels.json",
+      "sha256": "e226041272be12ea1686be7297953f332606002908ce44fa8d15028c0435ed42"
+    },
+    {
+      "path": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/c07-layered-v1/west-inner-right-garden-stone-v2-candidate.png",
+      "sha256": "d062931199ff3894b2bf8c7322328a19ab8b2d2ffa6da9d531d3bc792c90a1bf"
+    }
+  ],
+  "lattice": {
+    "step": 0.5,
+    "offset": 0.25,
+    "materialSamples": 11988,
+    "criteria": "Interior of exact rendered member, material alpha>=244, sourceY<=actorFootY, actual local supportY>actorFootY, actor alpha>=200; fixed lattice not success-picked."
+  },
+  "cells": [
+    [
+      16,
+      27
+    ],
+    [
+      21,
+      27
+    ],
+    [
+      16,
+      29
+    ],
+    [
+      19,
+      29
+    ],
+    [
+      28,
+      29
+    ],
+    [
+      29,
+      29
+    ],
+    [
+      16,
+      30
+    ],
+    [
+      17,
+      30
+    ],
+    [
+      18,
+      30
+    ],
+    [
+      19,
+      30
+    ],
+    [
+      20,
+      30
+    ],
+    [
+      21,
+      30
+    ],
+    [
+      28,
+      30
+    ],
+    [
+      29,
+      30
+    ]
+  ],
+  "appearances": [
+    {
+      "assetId": "laiya-stage01",
+      "unitKeys": [
+        "campaign-laiya"
+      ],
+      "path": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-units-v1/laiya-stage01-v2.png",
+      "sha256": "746951e2063e5ba4fad3a28c3ea78d4a2c32eed8b684cfe571808a04bbda414a",
+      "frame": 0,
+      "region": [
+        0,
+        0,
+        524,
+        725
+      ],
+      "anchor": [
+        273,
+        580
+      ],
+      "effectiveScale": 0.0977654
+    },
+    {
+      "assetId": "torren-stage01",
+      "unitKeys": [
+        "campaign-torren"
+      ],
+      "path": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-units-v1/torren-stage01-v2.png",
+      "sha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36",
+      "frame": 0,
+      "region": [
+        0,
+        0,
+        557,
+        725
+      ],
+      "anchor": [
+        269,
+        565
+      ],
+      "effectiveScale": 0.0961538
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-ARCHER",
+      "unitKeys": [
+        "campaign-elin",
+        "east-militia",
+        "royal-2",
+        "west-raider"
+      ],
+      "path": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-units-v1/unit-archer-v2.png",
+      "sha256": "11ced5ca50226cd168e44c4351c7b7d1a9841d7a2758433ef916fa5a4ed2389d",
+      "frame": 0,
+      "region": [
+        0,
+        0,
+        545,
+        724
+      ],
+      "anchor": [
+        251,
+        555
+      ],
+      "effectiveScale": 0.0843373
+    },
+    {
+      "assetId": "mirelle-stage01",
+      "unitKeys": [
+        "campaign-mirelle"
+      ],
+      "path": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-units-v1/mirelle-stage01-v2.png",
+      "sha256": "025112564830b3f6244491700bdd6920e4d6031be70fc6c6f2aa135265912d1d",
+      "frame": 0,
+      "region": [
+        0,
+        0,
+        565,
+        725
+      ],
+      "anchor": [
+        258,
+        568
+      ],
+      "effectiveScale": 0.0806452
+    },
+    {
+      "assetId": "bran-stage01",
+      "unitKeys": [
+        "campaign-bran"
+      ],
+      "path": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-units-v1/bran-stage01-clean-v3.png",
+      "sha256": "7106b27371b4b29902cf97152cc841489503465f090320eab0f522e2d6f1c86e",
+      "frame": 0,
+      "region": [
+        0,
+        0,
+        563,
+        725
+      ],
+      "anchor": [
+        298,
+        577
+      ],
+      "effectiveScale": 0.0902062
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-BANNER-GUARD",
+      "unitKeys": [
+        "militia",
+        "militia-2",
+        "north-militia"
+      ],
+      "path": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-units-v1/unit-banner-guard-clean-v3.png",
+      "sha256": "dd0148586b236a385a4e6f9f6b68c32be4c0db1cd94fd6d000bf5df87b3508bf",
+      "frame": 0,
+      "region": [
+        0,
+        0,
+        575,
+        725
+      ],
+      "anchor": [
+        250,
+        559
+      ],
+      "effectiveScale": 0.1014493
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-ENGINEER",
+      "unitKeys": [
+        "engineer"
+      ],
+      "path": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-units-v1/unit-engineer-gait-v2.png",
+      "sha256": "0bbb84ea899c647e19626452c01c410ed06c64646ab1c1aff83cdf47827b278e",
+      "frame": 0,
+      "region": [
+        0,
+        0,
+        571,
+        725
+      ],
+      "anchor": [
+        288,
+        552
+      ],
+      "effectiveScale": 0.0886076
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-SWORDSMAN",
+      "unitKeys": [
+        "west-militia",
+        "south-militia",
+        "raider-3",
+        "royal-1"
+      ],
+      "path": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-units-v1/unit-swordsman-gait-v3.png",
+      "sha256": "90128bde1240f9387e725e2f9b0e63015549abadaf0a8ab9dad0ae010ebc0f79",
+      "frame": 0,
+      "region": [
+        0,
+        0,
+        543,
+        725
+      ],
+      "anchor": [
+        251,
+        569
+      ],
+      "effectiveScale": 0.0847458
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-GRAVEKEEPER",
+      "unitKeys": [
+        "city-cleric"
+      ],
+      "path": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-units-v1/unit-gravekeeper-gait-v2.png",
+      "sha256": "fc56281ead32b4ffd70681bdae60a34da721810f2068f7bfab5bc8db63bf8691",
+      "frame": 0,
+      "region": [
+        0,
+        0,
+        558,
+        725
+      ],
+      "anchor": [
+        298,
+        553
+      ],
+      "effectiveScale": 0.0921053
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-WOLF-RIDER",
+      "unitKeys": [
+        "raider-1",
+        "raider-2",
+        "north-raider"
+      ],
+      "path": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-units-v1/unit-wolf-rider.png",
+      "sha256": "0c230444fc60b7c451dba7ee159deb17bbf512514ed99bcb250d6c9600023d30",
+      "frame": 0,
+      "region": [
+        0,
+        0,
+        511,
+        724
+      ],
+      "anchor": [
+        285,
+        568
+      ],
+      "effectiveScale": 0.1
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-LEGION-SHIELD",
+      "unitKeys": [
+        "royal-3",
+        "east-royal"
+      ],
+      "path": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-units-v1/unit-legion-shield-gait-v2.png",
+      "sha256": "50e8872818394cdfb76f0dc902866f5877288e8389f8d32d3db288b58c8cbd44",
+      "frame": 0,
+      "region": [
+        0,
+        0,
+        528,
+        724
+      ],
+      "anchor": [
+        260,
+        552
+      ],
+      "effectiveScale": 0.1041667
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-BATTLE-MAGE",
+      "unitKeys": [
+        "royal-mage"
+      ],
+      "path": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-units-v1/unit-battle-mage-clean-v3.png",
+      "sha256": "6440a21dcea27994ba2d3e2957e776e659893c357b96e91ccb5ddf8fe0a6bcfc",
+      "frame": 0,
+      "region": [
+        0,
+        0,
+        527,
+        725
+      ],
+      "anchor": [
+        271,
+        558
+      ],
+      "effectiveScale": 0.0888325
+    }
+  ],
+  "conservativeBoxCandidates": [
+    {
+      "assetId": "laiya-stage01",
+      "cell": [
+        19,
+        29
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 42
+    },
+    {
+      "assetId": "laiya-stage01",
+      "cell": [
+        19,
+        29
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 207
+    },
+    {
+      "assetId": "laiya-stage01",
+      "cell": [
+        28,
+        29
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 7
+    },
+    {
+      "assetId": "laiya-stage01",
+      "cell": [
+        21,
+        30
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 42
+    },
+    {
+      "assetId": "laiya-stage01",
+      "cell": [
+        21,
+        30
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 207
+    },
+    {
+      "assetId": "torren-stage01",
+      "cell": [
+        21,
+        27
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 2
+    },
+    {
+      "assetId": "torren-stage01",
+      "cell": [
+        19,
+        29
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 288
+    },
+    {
+      "assetId": "torren-stage01",
+      "cell": [
+        19,
+        29
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 166
+    },
+    {
+      "assetId": "torren-stage01",
+      "cell": [
+        28,
+        29
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 23
+    },
+    {
+      "assetId": "torren-stage01",
+      "cell": [
+        21,
+        30
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 288
+    },
+    {
+      "assetId": "torren-stage01",
+      "cell": [
+        21,
+        30
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 166
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-ARCHER",
+      "cell": [
+        19,
+        29
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 84
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-ARCHER",
+      "cell": [
+        21,
+        30
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 84
+    },
+    {
+      "assetId": "mirelle-stage01",
+      "cell": [
+        19,
+        29
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 84
+    },
+    {
+      "assetId": "mirelle-stage01",
+      "cell": [
+        21,
+        30
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 84
+    },
+    {
+      "assetId": "bran-stage01",
+      "cell": [
+        21,
+        27
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 1
+    },
+    {
+      "assetId": "bran-stage01",
+      "cell": [
+        19,
+        29
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 248
+    },
+    {
+      "assetId": "bran-stage01",
+      "cell": [
+        28,
+        29
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 15
+    },
+    {
+      "assetId": "bran-stage01",
+      "cell": [
+        21,
+        30
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 248
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-BANNER-GUARD",
+      "cell": [
+        21,
+        27
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 47
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-BANNER-GUARD",
+      "cell": [
+        19,
+        29
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 690
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-BANNER-GUARD",
+      "cell": [
+        19,
+        29
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 125
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-BANNER-GUARD",
+      "cell": [
+        28,
+        29
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 124
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-BANNER-GUARD",
+      "cell": [
+        21,
+        30
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 690
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-BANNER-GUARD",
+      "cell": [
+        21,
+        30
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 125
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-BANNER-GUARD",
+      "cell": [
+        28,
+        30
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 388
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-ENGINEER",
+      "cell": [
+        19,
+        29
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 84
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-ENGINEER",
+      "cell": [
+        19,
+        29
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 125
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-ENGINEER",
+      "cell": [
+        21,
+        30
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 84
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-ENGINEER",
+      "cell": [
+        21,
+        30
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 125
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-SWORDSMAN",
+      "cell": [
+        19,
+        29
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 42
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-SWORDSMAN",
+      "cell": [
+        21,
+        30
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 42
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-GRAVEKEEPER",
+      "cell": [
+        21,
+        27
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 2
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-GRAVEKEEPER",
+      "cell": [
+        19,
+        29
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 288
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-GRAVEKEEPER",
+      "cell": [
+        28,
+        29
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 23
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-GRAVEKEEPER",
+      "cell": [
+        21,
+        30
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 288
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-WOLF-RIDER",
+      "cell": [
+        21,
+        27
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 6
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-WOLF-RIDER",
+      "cell": [
+        19,
+        29
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 366
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-WOLF-RIDER",
+      "cell": [
+        28,
+        29
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 40
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-WOLF-RIDER",
+      "cell": [
+        21,
+        30
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 366
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-WOLF-RIDER",
+      "cell": [
+        28,
+        30
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 37
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-LEGION-SHIELD",
+      "cell": [
+        21,
+        27
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 1
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-LEGION-SHIELD",
+      "cell": [
+        21,
+        27
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 4
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-LEGION-SHIELD",
+      "cell": [
+        19,
+        29
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 328
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-LEGION-SHIELD",
+      "cell": [
+        19,
+        29
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 248
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-LEGION-SHIELD",
+      "cell": [
+        28,
+        29
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 15
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-LEGION-SHIELD",
+      "cell": [
+        28,
+        29
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 32
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-LEGION-SHIELD",
+      "cell": [
+        21,
+        30
+      ],
+      "facing": "east",
+      "bboxMaterialSamples": 328
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-LEGION-SHIELD",
+      "cell": [
+        21,
+        30
+      ],
+      "facing": "west",
+      "bboxMaterialSamples": 248
+    }
+  ],
+  "results": [],
+  "limits": [
+    "No whole-world or other-role search; appearances are from actual initial level units, not invented mount/ballista assets.",
+    "Absence of robust fixed-lattice samples is not proof that no subpixel alpha intersection exists.",
+    "Positive samples still need parent native owner/depth/Pick confirmation; no static Pick claim."
+  ]
+}
