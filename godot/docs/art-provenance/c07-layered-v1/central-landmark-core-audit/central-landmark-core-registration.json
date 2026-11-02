@@ -1,0 +1,84 @@
+{
+  "scope": "Core only: white finial/neck/stone cap/shaft/two lower steps; no canopy pole/outer platform/planters/benches",
+  "assetSha256": "5d9f714d2065b78b009c5717bad74a9854d4eb6a968894434cbccad1d9311b45",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "scale": 0.0965,
+  "anchor": [
+    503,
+    1381
+  ],
+  "worldAnchor": [
+    767,
+    487
+  ],
+  "sourceVisibleWitnesses": [
+    [
+      737,
+      469
+    ],
+    [
+      767,
+      486
+    ],
+    [
+      800,
+      470
+    ]
+  ],
+  "notExactOriginalFootClaims": [
+    [
+      735,
+      470
+    ],
+    [
+      802,
+      472
+    ]
+  ],
+  "stripCount": 128,
+  "stripRule": "Eight-image-pixel band max actual alpha>.5 lower edge, not ideal line clipping",
+  "runtimeOwnership": "Selected asset depthStrips own runtime contacts; this generator is offline reproducible provenance",
+  "alpha": {
+    "max": 254,
+    "nonzero": 416504,
+    "over127": 404991,
+    "below10ResidualOutsideBody": "present; not opaque/pointer material, no engine threshold change; raw alpha preserved"
+  },
+  "originalCapOverhangMaterialSamples": [
+    {
+      "source": [
+        782,
+        393
+      ],
+      "textureFloat": [
+        658.440414507772,
+        406.9067357512954
+      ],
+      "nearestRgba": [
+        253,
+        239,
+        205,
+        253
+      ]
+    },
+    {
+      "source": [
+        783,
+        394
+      ],
+      "textureFloat": [
+        668.8031088082902,
+        417.2694300518135
+      ],
+      "nearestRgba": [
+        251,
+        207,
+        144,
+        252
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+using Godot;
+using System.Text.Json.Nodes;
+public partial class C07SourceReference:Node2D {
+ public override async void _Ready(){try{
+ var doc=JsonNode.Parse(File.ReadAllText(ProjectSettings.GlobalizePath(OS.GetEnvironment("C07_SOURCE_REFERENCE"))))!.AsObject();Vector2 Pair(JsonNode n)=>new(n[0]!.GetValue<float>(),n[1]!.GetValue<float>());var zoom=doc["zoom"]!.GetValue<float>();var focus=Pair(doc["focus"]!);var plane=new Node2D{Scale=Vector2.One*zoom};AddChild(plane);plane.AddChild(new Sprite2D{Texture=ResourceLoader.Load<Texture2D>("res://assets/native/scenes/luojia.png"),Centered=false});foreach(var marker in doc["markers"]!.AsArray().OfType<JsonObject>()){var p=Pair(marker["point"]!);plane.AddChild(new Line2D{Points=new[]{p-new Vector2(2,0),p+new Vector2(2,0)},Width=.45f,DefaultColor=Colors.Cyan});plane.AddChild(new Line2D{Points=new[]{p-new Vector2(0,2),p+new Vector2(0,2)},Width=.45f,DefaultColor=Colors.Cyan});var label=new Label{Text=marker["label"]!.GetValue<string>(),Position=p+new Vector2(1,-5),Scale=Vector2.One*.23f};label.AddThemeColorOverride("font_color",Colors.Black);plane.AddChild(label);}
+ var ui=new CanvasLayer();AddChild(ui);ui.AddChild(new Label{Text=doc["label"]!.GetValue<string>(),Position=new(10,10)});void Layout(){plane.Position=GetViewportRect().Size/2-focus*zoom;}GetViewport().SizeChanged+=Layout;Layout();await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);await ToSignal(RenderingServer.Singleton,RenderingServer.SignalName.FramePostDraw);GetViewport().GetTexture().GetImage().SavePng(doc["output"]!.GetValue<string>());GetTree().Quit();
+ }catch(Exception ex){GD.PushError(ex.ToString());GetTree().Quit(1);}}
+}
