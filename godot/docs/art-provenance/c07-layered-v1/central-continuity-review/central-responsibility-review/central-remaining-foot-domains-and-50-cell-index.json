@@ -1,0 +1,2027 @@
+{
+  "ready": true,
+  "scope": "Complete50-row responsibility index plus bounded source-foot residual list. Read-only static inspection; no GUI/engine/actions/saves or production edits.",
+  "selectedInstanceCount": 41,
+  "jointSource": {
+    "path": "godot/docs/art-provenance/luojia-geometry.json",
+    "selector": "blockedPolygons[id=central-statue-and-planters].blockedCells",
+    "count": 50
+  },
+  "nativeCenterQuery": {
+    "path": "/workspace/scratch/84c9fe948755/c07-static-preview/central-selected-responsibility-result.json",
+    "sha256": "6680f8d48f99b1c1130a3d1c1c018d9c2ab70d46737538219e541c52d8786ac5",
+    "withMaterial": 24,
+    "empty": 26,
+    "notFoundationAcceptance": true
+  },
+  "currentComponents": {
+    "core": {
+      "objects": [
+        "central-landmark-core"
+      ],
+      "footEvidence": "Current conservative authored hidden-base bound from core footing report; not complete original hidden foundation.",
+      "newDesignHull": [
+        [
+          735,
+          453
+        ],
+        [
+          803,
+          453
+        ],
+        [
+          803,
+          489
+        ],
+        [
+          735,
+          489
+        ]
+      ]
+    },
+    "platform": {
+      "objects": [
+        "central-platform"
+      ],
+      "footEvidence": "Only its authored front ground support line is used here. Upper deck/body projected hull is NOT promoted to ground foundation.",
+      "supportFrontPolyline": [
+        [
+          714,
+          491
+        ],
+        [
+          767,
+          518
+        ],
+        [
+          824,
+          491
+        ]
+      ]
+    },
+    "east-white": {
+      "objects": [
+        "central-east-white-planter"
+      ],
+      "footEvidence": "Current actual visible stone feet + explicitly authored hidden rear. Original right foot was relocated by new design.",
+      "newDesignHull": [
+        [
+          823.164,
+          472.836
+        ],
+        [
+          834,
+          467
+        ],
+        [
+          843.612,
+          473.664
+        ],
+        [
+          843.576,
+          473.952
+        ],
+        [
+          843.504,
+          474.096
+        ],
+        [
+          843.432,
+          474.204
+        ],
+        [
+          843.36,
+          474.276
+        ],
+        [
+          843.144,
+          474.456
+        ],
+        [
+          843.036,
+          474.528
+        ],
+        [
+          841.956,
+          475.212
+        ],
+        [
+          834.936,
+          479.604
+        ],
+        [
+          834.756,
+          479.712
+        ],
+        [
+          834.504,
+          479.856
+        ],
+        [
+          834.36,
+          479.928
+        ],
+        [
+          834.252,
+          479.964
+        ],
+        [
+          834.036,
+          480.0
+        ],
+        [
+          833.964,
+          480.0
+        ],
+        [
+          833.748,
+          479.964
+        ],
+        [
+          833.676,
+          479.928
+        ],
+        [
+          833.496,
+          479.82
+        ],
+        [
+          823.812,
+          473.628
+        ],
+        [
+          823.704,
+          473.556
+        ],
+        [
+          823.56,
+          473.448
+        ],
+        [
+          823.308,
+          473.196
+        ],
+        [
+          823.236,
+          473.088
+        ],
+        [
+          823.2,
+          473.016
+        ]
+      ]
+    },
+    "east-front-wood": {
+      "objects": [
+        "central-front-wood-planter"
+      ],
+      "footEvidence": "Current actual visible stone feet + explicitly authored hidden rear.",
+      "newDesignHull": [
+        [
+          825.15,
+          486.04
+        ],
+        [
+          841,
+          481
+        ],
+        [
+          857.75,
+          487.56
+        ],
+        [
+          857.71,
+          487.84
+        ],
+        [
+          857.67,
+          487.96
+        ],
+        [
+          857.63,
+          488.04
+        ],
+        [
+          857.51,
+          488.16
+        ],
+        [
+          857.39,
+          488.24
+        ],
+        [
+          856.71,
+          488.6
+        ],
+        [
+          856.55,
+          488.68
+        ],
+        [
+          855.87,
+          489.0
+        ],
+        [
+          841.27,
+          495.84
+        ],
+        [
+          840.95,
+          495.96
+        ],
+        [
+          840.75,
+          496.0
+        ],
+        [
+          840.67,
+          496.0
+        ],
+        [
+          840.43,
+          495.96
+        ],
+        [
+          840.23,
+          495.88
+        ],
+        [
+          839.87,
+          495.72
+        ],
+        [
+          839.39,
+          495.48
+        ],
+        [
+          838.87,
+          495.2
+        ],
+        [
+          826.03,
+          488.0
+        ],
+        [
+          825.63,
+          487.76
+        ],
+        [
+          825.39,
+          487.6
+        ],
+        [
+          825.31,
+          487.52
+        ],
+        [
+          825.23,
+          487.36
+        ],
+        [
+          825.19,
+          487.16
+        ]
+      ]
+    },
+    "west-front-wood": {
+      "objects": [
+        "central-west-wood-planter"
+      ],
+      "footEvidence": "CURRENT GROUNDED file worldAnchor699.5,491; old actual-footing file704.5,491 is superseded and deliberately not used.",
+      "newDesignHull": [
+        [
+          687.02,
+          483.032
+        ],
+        [
+          699.5,
+          479
+        ],
+        [
+          713.1,
+          484.248
+        ],
+        [
+          713.068,
+          484.472
+        ],
+        [
+          713.036,
+          484.568
+        ],
+        [
+          713.004,
+          484.632
+        ],
+        [
+          712.94,
+          484.696
+        ],
+        [
+          712.908,
+          484.728
+        ],
+        [
+          712.812,
+          484.792
+        ],
+        [
+          712.268,
+          485.08
+        ],
+        [
+          712.14,
+          485.144
+        ],
+        [
+          711.596,
+          485.4
+        ],
+        [
+          699.916,
+          490.872
+        ],
+        [
+          699.66,
+          490.968
+        ],
+        [
+          699.5,
+          491.0
+        ],
+        [
+          699.436,
+          491.0
+        ],
+        [
+          699.244,
+          490.968
+        ],
+        [
+          699.084,
+          490.904
+        ],
+        [
+          698.796,
+          490.776
+        ],
+        [
+          698.732,
+          490.744
+        ],
+        [
+          698.54,
+          490.648
+        ],
+        [
+          698.412,
+          490.584
+        ],
+        [
+          697.996,
+          490.36
+        ],
+        [
+          687.724,
+          484.6
+        ],
+        [
+          687.404,
+          484.408
+        ],
+        [
+          687.212,
+          484.28
+        ],
+        [
+          687.18,
+          484.248
+        ],
+        [
+          687.148,
+          484.216
+        ],
+        [
+          687.084,
+          484.088
+        ],
+        [
+          687.052,
+          483.928
+        ]
+      ]
+    }
+  },
+  "remainingDomains": [
+    {
+      "id": "west-white-container",
+      "areaApprox": [
+        684,
+        455,
+        718,
+        477
+      ],
+      "evidence": [
+        {
+          "source": [
+            688,
+            466
+          ],
+          "rgb": [
+            125,
+            120,
+            117
+          ],
+          "cell": [
+            43,
+            29
+          ],
+          "kind": "visible white-container stone wall interior; NOT certified ground foot"
+        }
+      ],
+      "physicalFootClosure": "Near-front foot obscured by independent low corner post and front wood box. Not allocated to whole cells.",
+      "status": "necessary remaining structural owner, footprint pending"
+    },
+    {
+      "id": "west-low-corner-post",
+      "areaApprox": [
+        676,
+        472,
+        692,
+        484
+      ],
+      "evidence": [
+        {
+          "source": [
+            685,
+            481
+          ],
+          "rgb": [
+            91,
+            91,
+            96
+          ],
+          "cell": [
+            42,
+            30
+          ],
+          "kind": "visible low corner-post stone lower face"
+        },
+        {
+          "source": [
+            685,
+            482
+          ],
+          "rgb": [
+            67,
+            65,
+            67
+          ],
+          "cell": [
+            42,
+            30
+          ],
+          "kind": "contact-edge band, not rear white container foot"
+        }
+      ],
+      "physicalFootClosure": "Partial visible lower edge; hidden base not certified.",
+      "status": "remaining west boundary base"
+    },
+    {
+      "id": "west-wood-original-right-front-residual",
+      "areaApprox": [
+        704,
+        485,
+        718,
+        492
+      ],
+      "evidence": [
+        {
+          "source": [
+            706,
+            490
+          ],
+          "rgb": [
+            33,
+            35,
+            43
+          ],
+          "cell": [
+            44,
+            30
+          ],
+          "kind": "ORIGINAL foreground stone lower-edge material absent at current shifted wood placement"
+        }
+      ],
+      "physicalFootClosure": "Do not assign this to the new west wood merely because part of the same canonical cell intersects its hull. No platform owner atx706: platform startsx714.",
+      "status": "explicit true source residual from accepted shifted/shrunk new design",
+      "currentWestTexturePixel": [
+        843,
+        1024
+      ],
+      "currentWestAlpha": 0
+    },
+    {
+      "id": "rear-west-bench-and-planted-bed",
+      "areaApprox": [
+        710,
+        419,
+        752,
+        461
+      ],
+      "evidence": [
+        {
+          "source": [
+            720,
+            446
+          ],
+          "rgb": [
+            103,
+            84,
+            49
+          ],
+          "cell": [
+            45,
+            27
+          ],
+          "kind": "visible wood/bed material, not complete foot"
+        }
+      ],
+      "physicalFootClosure": "Source back/under-bench contacts not fully traced. Do not assign all northern blocked cells based on foliage or bench-seat alpha.",
+      "status": "necessary footing/occlusion review pending; exact seat slats not priority"
+    },
+    {
+      "id": "rear-east-bench-and-planted-bed",
+      "areaApprox": [
+        779,
+        414,
+        827,
+        466
+      ],
+      "evidence": [
+        {
+          "source": [
+            815,
+            459
+          ],
+          "rgb": [
+            92,
+            87,
+            91
+          ],
+          "cell": [
+            50,
+            28
+          ],
+          "kind": "visible gray lower bench/bed material; complete support not certified"
+        },
+        {
+          "source": [
+            786,
+            419
+          ],
+          "rgb": [
+            107,
+            107,
+            38
+          ],
+          "cell": [
+            49,
+            26
+          ],
+          "kind": "high foliage, NOT physical base"
+        },
+        {
+          "source": [
+            786,
+            420
+          ],
+          "rgb": [
+            83,
+            94,
+            22
+          ],
+          "cell": [
+            49,
+            26
+          ],
+          "kind": "high foliage, NOT physical base"
+        }
+      ],
+      "physicalFootClosure": "Shared bed and bench ownership still needs explicit ground split; no hidden root invented.",
+      "status": "remaining structural foliage owner with bounded static back-actor candidate"
+    },
+    {
+      "id": "southwest-front-planter-base",
+      "areaApprox": [
+        727,
+        501,
+        759,
+        519
+      ],
+      "evidence": [
+        {
+          "source": [
+            744,
+            514
+          ],
+          "rgb": [
+            73,
+            74,
+            80
+          ],
+          "cell": [
+            46,
+            32
+          ],
+          "kind": "true stone base face beyond current platform front support"
+        }
+      ],
+      "platformFrontAtWitnessX": 506.2830188679245,
+      "physicalFootClosure": "Visible stone establishes remaining bearing material; complete hidden base and lowest exact edge not frozen.",
+      "status": "necessary residual base; exact leaf duplication may wait"
+    },
+    {
+      "id": "southeast-front-planter-and-bench-base",
+      "areaApprox": [
+        773,
+        503,
+        809,
+        522
+      ],
+      "evidence": [
+        {
+          "source": [
+            782,
+            516
+          ],
+          "rgb": [
+            75,
+            74,
+            67
+          ],
+          "cell": [
+            48,
+            32
+          ],
+          "kind": "true low support material beyond platform front support"
+        }
+      ],
+      "platformFrontAtWitnessX": 510.89473684210526,
+      "physicalFootClosure": "Separate planter stone from adjacent wood bench before registration; not a single max-alpha foot.",
+      "status": "necessary residual base; bench decorative detail may wait"
+    },
+    {
+      "id": "south-front-low-corner-post-base",
+      "areaApprox": [
+        758,
+        497,
+        776,
+        523
+      ],
+      "evidence": [
+        {
+          "source": [
+            767,
+            519
+          ],
+          "rgb": [
+            221,
+            194,
+            182
+          ],
+          "cell": [
+            47,
+            32
+          ],
+          "kind": "true pale low stone plinth beyond platform front518"
+        }
+      ],
+      "platformFrontAtWitnessX": 518,
+      "physicalFootClosure": "Own low base separate from platform. Ornamental upper details not needed to assert the lower bearing material is restored.",
+      "status": "small but explicit residual base, not completed by top-plane alpha at760504"
+    }
+  ],
+  "all50CellIndex": [
+    {
+      "cell": [
+        43,
+        27
+      ],
+      "originalCenterRgb": [
+        232,
+        201,
+        168
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        44,
+        27
+      ],
+      "originalCenterRgb": [
+        220,
+        186,
+        154
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        45,
+        27
+      ],
+      "originalCenterRgb": [
+        249,
+        176,
+        75
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [
+        {
+          "group": "rear-west-bench-and-planted-bed",
+          "witness": {
+            "source": [
+              720,
+              446
+            ],
+            "rgb": [
+              103,
+              84,
+              49
+            ],
+            "cell": [
+              45,
+              27
+            ],
+            "kind": "visible wood/bed material, not complete foot"
+          }
+        }
+      ],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        46,
+        27
+      ],
+      "originalCenterRgb": [
+        38,
+        74,
+        18
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        47,
+        27
+      ],
+      "originalCenterRgb": [
+        130,
+        116,
+        114
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-landmark-core__depth_53"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        42,
+        28
+      ],
+      "originalCenterRgb": [
+        233,
+        202,
+        171
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        43,
+        28
+      ],
+      "originalCenterRgb": [
+        121,
+        125,
+        116
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        44,
+        28
+      ],
+      "originalCenterRgb": [
+        34,
+        80,
+        38
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        45,
+        28
+      ],
+      "originalCenterRgb": [
+        80,
+        56,
+        42
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "core",
+          "partialCellArea": 11.0
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        46,
+        28
+      ],
+      "originalCenterRgb": [
+        166,
+        148,
+        131
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "core",
+          "partialCellArea": 176.0
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        47,
+        28
+      ],
+      "originalCenterRgb": [
+        127,
+        113,
+        116
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-platform__surface_8",
+        "central-landmark-core__depth_53"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "core",
+          "partialCellArea": 176.0
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        48,
+        28
+      ],
+      "originalCenterRgb": [
+        230,
+        184,
+        133
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-platform__surface_8",
+        "central-landmark-core__depth_74"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "core",
+          "partialCellArea": 176.0
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        49,
+        28
+      ],
+      "originalCenterRgb": [
+        122,
+        84,
+        49
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "core",
+          "partialCellArea": 176.0
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        50,
+        28
+      ],
+      "originalCenterRgb": [
+        66,
+        59,
+        58
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "core",
+          "partialCellArea": 33.0
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [
+        {
+          "group": "rear-east-bench-and-planted-bed",
+          "witness": {
+            "source": [
+              815,
+              459
+            ],
+            "rgb": [
+              92,
+              87,
+              91
+            ],
+            "cell": [
+              50,
+              28
+            ],
+            "kind": "visible gray lower bench/bed material; complete support not certified"
+          }
+        }
+      ],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        42,
+        29
+      ],
+      "originalCenterRgb": [
+        139,
+        140,
+        106
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        43,
+        29
+      ],
+      "originalCenterRgb": [
+        98,
+        78,
+        68
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-west-wood-planter__depth_33"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "west-front-wood",
+          "partialCellArea": 2.843350754934363
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [
+        {
+          "group": "west-white-container",
+          "witness": {
+            "source": [
+              688,
+              466
+            ],
+            "rgb": [
+              125,
+              120,
+              117
+            ],
+            "cell": [
+              43,
+              29
+            ],
+            "kind": "visible white-container stone wall interior; NOT certified ground foot"
+          }
+        }
+      ],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        44,
+        29
+      ],
+      "originalCenterRgb": [
+        75,
+        69,
+        12
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        45,
+        29
+      ],
+      "originalCenterRgb": [
+        129,
+        118,
+        118
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-platform__surface_24"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "core",
+          "partialCellArea": 16.0
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        46,
+        29
+      ],
+      "originalCenterRgb": [
+        118,
+        114,
+        120
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-platform__surface_24",
+        "central-landmark-core__depth_33"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "core",
+          "partialCellArea": 256.0
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        47,
+        29
+      ],
+      "originalCenterRgb": [
+        57,
+        58,
+        64
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-platform__surface_24",
+        "central-landmark-core__depth_53"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "core",
+          "partialCellArea": 256.0
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        48,
+        29
+      ],
+      "originalCenterRgb": [
+        164,
+        109,
+        66
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-platform__surface_24",
+        "central-landmark-core__depth_74"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "core",
+          "partialCellArea": 256.0
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        49,
+        29
+      ],
+      "originalCenterRgb": [
+        220,
+        177,
+        123
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-platform__surface_24",
+        "central-landmark-core__depth_95"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "core",
+          "partialCellArea": 256.0
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        50,
+        29
+      ],
+      "originalCenterRgb": [
+        244,
+        204,
+        155
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-platform__surface_24"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "core",
+          "partialCellArea": 48.0
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        51,
+        29
+      ],
+      "originalCenterRgb": [
+        66,
+        87,
+        44
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-east-white-planter__depth_32"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "east-white",
+          "partialCellArea": 49.27649777891929
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        52,
+        29
+      ],
+      "originalCenterRgb": [
+        102,
+        129,
+        42
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-east-white-planter__depth_60",
+        "central-front-wood-planter__depth_38"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "east-white",
+          "partialCellArea": 89.65801422100049
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        42,
+        30
+      ],
+      "originalCenterRgb": [
+        229,
+        199,
+        169
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "west-front-wood",
+          "partialCellArea": 1.5272832954942714
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [
+        {
+          "group": "west-low-corner-post",
+          "witness": {
+            "source": [
+              685,
+              481
+            ],
+            "rgb": [
+              91,
+              91,
+              96
+            ],
+            "cell": [
+              42,
+              30
+            ],
+            "kind": "visible low corner-post stone lower face"
+          }
+        },
+        {
+          "group": "west-low-corner-post",
+          "witness": {
+            "source": [
+              685,
+              482
+            ],
+            "rgb": [
+              67,
+              65,
+              67
+            ],
+            "cell": [
+              42,
+              30
+            ],
+            "kind": "contact-edge band, not rear white container foot"
+          }
+        }
+      ],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        43,
+        30
+      ],
+      "originalCenterRgb": [
+        136,
+        123,
+        112
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-west-wood-planter__depth_33"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "west-front-wood",
+          "partialCellArea": 124.61900737808901
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        44,
+        30
+      ],
+      "originalCenterRgb": [
+        245,
+        216,
+        185
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "west-front-wood",
+          "partialCellArea": 39.39999057148816
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": true,
+      "remainingSourceWitnesses": [
+        {
+          "group": "west-wood-original-right-front-residual",
+          "witness": {
+            "source": [
+              706,
+              490
+            ],
+            "rgb": [
+              33,
+              35,
+              43
+            ],
+            "cell": [
+              44,
+              30
+            ],
+            "kind": "ORIGINAL foreground stone lower-edge material absent at current shifted wood placement"
+          }
+        }
+      ],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        45,
+        30
+      ],
+      "originalCenterRgb": [
+        130,
+        114,
+        97
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-platform__surface_183"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "core",
+          "partialCellArea": 9.0
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": true,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        46,
+        30
+      ],
+      "originalCenterRgb": [
+        101,
+        131,
+        37
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-platform__surface_40"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "core",
+          "partialCellArea": 144.0
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        47,
+        30
+      ],
+      "originalCenterRgb": [
+        239,
+        199,
+        155
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-platform__surface_40"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "core",
+          "partialCellArea": 144.0
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        48,
+        30
+      ],
+      "originalCenterRgb": [
+        236,
+        194,
+        151
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-platform__surface_40"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "core",
+          "partialCellArea": 144.0
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        49,
+        30
+      ],
+      "originalCenterRgb": [
+        173,
+        186,
+        54
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-platform__surface_40"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "core",
+          "partialCellArea": 144.0
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        50,
+        30
+      ],
+      "originalCenterRgb": [
+        252,
+        221,
+        156
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-platform__surface_263"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "core",
+          "partialCellArea": 27.0
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": true,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        51,
+        30
+      ],
+      "originalCenterRgb": [
+        62,
+        51,
+        42
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "east-front-wood",
+          "partialCellArea": 30.588609139376786
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": true,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        52,
+        30
+      ],
+      "originalCenterRgb": [
+        237,
+        185,
+        109
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-front-wood-planter__depth_38"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [
+        {
+          "id": "east-front-wood",
+          "partialCellArea": 186.4472602676542
+        }
+      ],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        43,
+        31
+      ],
+      "originalCenterRgb": [
+        160,
+        128,
+        102
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        44,
+        31
+      ],
+      "originalCenterRgb": [
+        249,
+        209,
+        161
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        45,
+        31
+      ],
+      "originalCenterRgb": [
+        109,
+        106,
+        116
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": true,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        46,
+        31
+      ],
+      "originalCenterRgb": [
+        92,
+        58,
+        29
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-platform__surface_307"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": true,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        47,
+        31
+      ],
+      "originalCenterRgb": [
+        123,
+        121,
+        123
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-platform__surface_56"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": true,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        48,
+        31
+      ],
+      "originalCenterRgb": [
+        87,
+        78,
+        71
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-platform__surface_231"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": true,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        49,
+        31
+      ],
+      "originalCenterRgb": [
+        245,
+        188,
+        87
+      ],
+      "currentNativeCenterMaterialOwners": [
+        "central-platform__surface_355"
+      ],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": true,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        50,
+        31
+      ],
+      "originalCenterRgb": [
+        249,
+        214,
+        165
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": true,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        51,
+        31
+      ],
+      "originalCenterRgb": [
+        249,
+        208,
+        158
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        46,
+        32
+      ],
+      "originalCenterRgb": [
+        204,
+        176,
+        156
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [
+        {
+          "group": "southwest-front-planter-base",
+          "witness": {
+            "source": [
+              744,
+              514
+            ],
+            "rgb": [
+              73,
+              74,
+              80
+            ],
+            "cell": [
+              46,
+              32
+            ],
+            "kind": "true stone base face beyond current platform front support"
+          }
+        }
+      ],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        47,
+        32
+      ],
+      "originalCenterRgb": [
+        95,
+        87,
+        77
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": true,
+      "remainingSourceWitnesses": [
+        {
+          "group": "south-front-low-corner-post-base",
+          "witness": {
+            "source": [
+              767,
+              519
+            ],
+            "rgb": [
+              221,
+              194,
+              182
+            ],
+            "cell": [
+              47,
+              32
+            ],
+            "kind": "true pale low stone plinth beyond platform front518"
+          }
+        }
+      ],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        48,
+        32
+      ],
+      "originalCenterRgb": [
+        251,
+        227,
+        165
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": true,
+      "remainingSourceWitnesses": [
+        {
+          "group": "southeast-front-planter-and-bench-base",
+          "witness": {
+            "source": [
+              782,
+              516
+            ],
+            "rgb": [
+              75,
+              74,
+              67
+            ],
+            "cell": [
+              48,
+              32
+            ],
+            "kind": "true low support material beyond platform front support"
+          }
+        }
+      ],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        49,
+        32
+      ],
+      "originalCenterRgb": [
+        219,
+        176,
+        127
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    },
+    {
+      "cell": [
+        50,
+        32
+      ],
+      "originalCenterRgb": [
+        239,
+        194,
+        141
+      ],
+      "currentNativeCenterMaterialOwners": [],
+      "currentAuthoredFootHullPartialIntersections_NOTwholeCellCoverage": [],
+      "platformAuthoredFrontSupportTouchesCell": false,
+      "remainingSourceWitnesses": [],
+      "wholeCellPhysicalResponsibilityCertified": false,
+      "unallocatedOriginalFootResponsibility": "Do not fill by centre emptiness. Any residual area not demonstrated by a source foot/explicit current base remains unallocated; group assignment is evidence-specific, not exclusive whole-cell ownership."
+    }
+  ],
+  "fixedTrueResiduals": [
+    [
+      706,
+      490
+    ],
+    [
+      744,
+      514
+    ],
+    [
+      782,
+      516
+    ],
+    [
+      767,
+      519
+    ]
+  ],
+  "doNotForceFillExample": {
+    "cell": [
+      43,
+      27
+    ],
+    "sourceCenter": [
+      696,
+      440
+    ],
+    "originalRgb": [
+      232,
+      201,
+      168
+    ],
+    "observation": "Original source centre is paving, too. A blocked cell may intersect only part of a nearby structure; neither current centre emptiness nor this original centre can assign an entire cell to a guessed object."
+  },
+  "nextMinimalSequence": [
+    {
+      "priority": 1,
+      "area": "west continuous bearing handoff ROI676456..719494",
+      "scope": [
+        "Separate rear white-container support from low corner post",
+        "Keep accepted current west wood new registration",
+        "Explicitly close or explicitly retain original stone residual706490/right-front branch towards platform left end; do not silently transfer it to another owner"
+      ],
+      "notAllowed": "No huge solid tile-filling wall; hidden joins must be stated new design and real shoe corridors preserved."
+    },
+    {
+      "priority": 2,
+      "area": "rear planted strips and bench supports",
+      "scope": [
+        "Resolve actual bed/bench support ownership",
+        "Preserve genuine high-foliage occlusion for legal back-side actors"
+      ],
+      "ornamentalDetailMayWait": "Individual bench slats and exact leaf shapes are not separate completion gates."
+    },
+    {
+      "priority": 3,
+      "area": "south-front two planter bases plus low-corner-post plinth",
+      "scope": [
+        "Restore the visible stone bearing beyond current platform support at744514/782516/767519",
+        "Treat the three foot domains independently but close the whole front boundary coherently"
+      ],
+      "ornamentalDetailMayWait": "Exact tall low-column ornament and fine foliage styling, once footprint/occlusion contracts are handled."
+    }
+  ],
+  "rearEastStaticCandidate": {
+    "role": "Torren",
+    "cell": [
+      49,
+      26
+    ],
+    "terrain": "p",
+    "facing": "west",
+    "foot": [
+      792,
+      424
+    ],
+    "points": [
+      {
+        "source": [
+          786,
+          419
+        ],
+        "framePixel": [
+          331,
+          512
+        ],
+        "actorAlpha": 252,
+        "currentCoreAlpha": 0
+      },
+      {
+        "source": [
+          786,
+          420
+        ],
+        "framePixel": [
+          331,
+          523
+        ],
+        "actorAlpha": 252,
+        "currentCoreAlpha": 0
+      }
+    ],
+    "oldPaintedOwners": [],
+    "status": "Static true foliage/body overlap candidate only. Bed physical contact is visibly later than424 but exact hidden footprint not certified; parent native attribution still required. Not gameplay evidence."
+  },
+  "completionBoundary": "No claim of full50-cell foundation completion or exclusive allocation. Current hull intersections include explicitly new-design hidden bases; platform top/face material cannot stand in for ground support. Historical unknowns remain explicit."
+}

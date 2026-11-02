@@ -1,0 +1,409 @@
+{
+  "ready": true,
+  "scope": "Only the requested new low-corner-pier ground domain. Read-only static math; no GUI/engine/action. 7px-tall projected top is not treated as another ground footprint. Earlier2px connecting plinth was rejected; this review does not certify it.",
+  "pierGroundFootprint": [
+    [
+      680,
+      478
+    ],
+    [
+      685,
+      482
+    ],
+    [
+      690,
+      479
+    ],
+    [
+      685,
+      475
+    ]
+  ],
+  "projectedTopNotGround": [
+    [
+      680,
+      471
+    ],
+    [
+      685,
+      475
+    ],
+    [
+      690,
+      472
+    ],
+    [
+      685,
+      468
+    ]
+  ],
+  "whiteGroundHull": [
+    [
+      685.164,
+      465.836
+    ],
+    [
+      696,
+      460
+    ],
+    [
+      705.612,
+      466.664
+    ],
+    [
+      705.576,
+      466.952
+    ],
+    [
+      705.504,
+      467.096
+    ],
+    [
+      705.432,
+      467.204
+    ],
+    [
+      705.36,
+      467.276
+    ],
+    [
+      705.144,
+      467.456
+    ],
+    [
+      705.036,
+      467.528
+    ],
+    [
+      703.956,
+      468.212
+    ],
+    [
+      696.936,
+      472.604
+    ],
+    [
+      696.756,
+      472.712
+    ],
+    [
+      696.504,
+      472.856
+    ],
+    [
+      696.36,
+      472.928
+    ],
+    [
+      696.252,
+      472.964
+    ],
+    [
+      696.036,
+      473.0
+    ],
+    [
+      695.964,
+      473.0
+    ],
+    [
+      695.748,
+      472.964
+    ],
+    [
+      695.676,
+      472.928
+    ],
+    [
+      695.496,
+      472.82
+    ],
+    [
+      685.812,
+      466.628
+    ],
+    [
+      685.704,
+      466.556
+    ],
+    [
+      685.56,
+      466.448
+    ],
+    [
+      685.308,
+      466.196
+    ],
+    [
+      685.236,
+      466.088
+    ],
+    [
+      685.2,
+      466.016
+    ]
+  ],
+  "woodGroundHull": [
+    [
+      687.02,
+      483.032
+    ],
+    [
+      699.5,
+      479
+    ],
+    [
+      713.1,
+      484.248
+    ],
+    [
+      713.068,
+      484.472
+    ],
+    [
+      713.036,
+      484.568
+    ],
+    [
+      713.004,
+      484.632
+    ],
+    [
+      712.94,
+      484.696
+    ],
+    [
+      712.908,
+      484.728
+    ],
+    [
+      712.812,
+      484.792
+    ],
+    [
+      712.268,
+      485.08
+    ],
+    [
+      712.14,
+      485.144
+    ],
+    [
+      711.596,
+      485.4
+    ],
+    [
+      699.916,
+      490.872
+    ],
+    [
+      699.66,
+      490.968
+    ],
+    [
+      699.5,
+      491.0
+    ],
+    [
+      699.436,
+      491.0
+    ],
+    [
+      699.244,
+      490.968
+    ],
+    [
+      699.084,
+      490.904
+    ],
+    [
+      698.796,
+      490.776
+    ],
+    [
+      698.732,
+      490.744
+    ],
+    [
+      698.54,
+      490.648
+    ],
+    [
+      698.412,
+      490.584
+    ],
+    [
+      697.996,
+      490.36
+    ],
+    [
+      687.724,
+      484.6
+    ],
+    [
+      687.404,
+      484.408
+    ],
+    [
+      687.212,
+      484.28
+    ],
+    [
+      687.18,
+      484.248
+    ],
+    [
+      687.148,
+      484.216
+    ],
+    [
+      687.084,
+      484.088
+    ],
+    [
+      687.052,
+      483.928
+    ]
+  ],
+  "whiteRelation": {
+    "testedSegments": 4,
+    "intersectingSegments": 0,
+    "minimumDistance": 7.490823237846174,
+    "closest": {
+      "pierEdge": 2,
+      "segment": [
+        [
+          690.0,
+          479.0
+        ],
+        [
+          685.0,
+          475.0
+        ]
+      ],
+      "kind": "moving-end",
+      "point": [
+        685.0,
+        475.0
+      ],
+      "nearestPoint": [
+        689.0352925989504,
+        468.6889900632694
+      ],
+      "baseEdge": [
+        [
+          695.496,
+          472.82
+        ],
+        [
+          685.812,
+          466.628
+        ]
+      ],
+      "parameter": 0.6671527675598481
+    },
+    "firstViolations": [],
+    "anyOtherVerticesInsidePier": false,
+    "groundDomainsDisjoint": true
+  },
+  "woodRelation": {
+    "testedSegments": 4,
+    "intersectingSegments": 0,
+    "minimumDistance": 1.9242141252989344,
+    "closest": {
+      "pierEdge": 1,
+      "segment": [
+        [
+          685.0,
+          482.0
+        ],
+        [
+          690.0,
+          479.0
+        ]
+      ],
+      "kind": "fixed-edge-start",
+      "point": [
+        687.02,
+        483.032
+      ],
+      "nearestPoint": [
+        686.03,
+        481.382
+      ],
+      "baseEdge": [
+        [
+          687.02,
+          483.032
+        ],
+        [
+          699.5,
+          479
+        ]
+      ],
+      "parameter": 0.20599999999999888
+    },
+    "firstViolations": [],
+    "anyOtherVerticesInsidePier": false,
+    "groundDomainsDisjoint": true
+  },
+  "walkCorridor": {
+    "testedSegments": 82950,
+    "intersectingSegments": 0,
+    "minimumDistance": 0.6153920000000426,
+    "closest": {
+      "fromCell": [
+        41,
+        29
+      ],
+      "toCell": [
+        41,
+        30
+      ],
+      "west": true,
+      "frame": 3,
+      "soleFramePixel": [
+        34,
+        553
+      ],
+      "segment": [
+        [
+          679.384608,
+          470.2692316
+        ],
+        [
+          679.384608,
+          486.2692316
+        ]
+      ],
+      "kind": "fixed-edge-start",
+      "point": [
+        680.0,
+        478.0
+      ],
+      "nearestPoint": [
+        679.384608,
+        478.0
+      ],
+      "baseEdge": [
+        [
+          680,
+          478
+        ],
+        [
+          685,
+          482
+        ]
+      ],
+      "parameter": 0.48317302499999926
+    },
+    "firstViolations": []
+  },
+  "directedLegalEdges": 324,
+  "limitations": [
+    "Frozen manually confirmed 175 real Torren support-boot lower-edge pixels only, frames1/3 with actual possible facing contract; continuous segment math, not gameplay.",
+    "White and wood conservative hulls include explicitly authored hidden rear corners, not certified original hidden bases.",
+    "Ground-domain separation does not assert absence of screen-projected body overlap; native local depth controls remain separate.",
+    "Do not extend ground footing west of x680 without rerunning the same fixed corridor; present clearance is only0.615392 sourcepixels."
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "textureResourcePath": "res://assets/native/c07-layered-v1/central-landmark-core-v1-candidate.png",
+  "supportLine": [
+    [
+      680,
+      478
+    ],
+    [
+      685,
+      482
+    ],
+    [
+      690,
+      479
+    ]
+  ],
+  "members": [
+    {
+      "id": "corner-cap",
+      "polygon": [
+        [
+          680,
+          471
+        ],
+        [
+          685,
+          475
+        ],
+        [
+          690,
+          472
+        ],
+        [
+          685,
+          468
+        ]
+      ],
+      "uv": [
+        [
+          410,
+          650
+        ],
+        [
+          490,
+          650
+        ],
+        [
+          490,
+          850
+        ],
+        [
+          410,
+          850
+        ]
+      ],
+      "tint": "ffffff"
+    },
+    {
+      "id": "corner-left",
+      "polygon": [
+        [
+          680,
+          471
+        ],
+        [
+          685,
+          475
+        ],
+        [
+          685,
+          482
+        ],
+        [
+          680,
+          478
+        ]
+      ],
+      "uv": [
+        [
+          300,
+          1245
+        ],
+        [
+          455,
+          1320
+        ],
+        [
+          455,
+          1335
+        ],
+        [
+          300,
+          1260
+        ]
+      ],
+      "tint": "ffffff"
+    },
+    {
+      "id": "corner-right",
+      "polygon": [
+        [
+          685,
+          475
+        ],
+        [
+          690,
+          472
+        ],
+        [
+          690,
+          479
+        ],
+        [
+          685,
+          482
+        ]
+      ],
+      "uv": [
+        [
+          550,
+          1310
+        ],
+        [
+          780,
+          1195
+        ],
+        [
+          780,
+          1212
+        ],
+        [
+          550,
+          1327
+        ]
+      ],
+      "tint": "ffffff"
+    }
+  ],
+  "scope": "Separate low west corner pier, source partial visible lower edge at685482; hidden back and simple supported geometry new design. No borrowed white-planter foot."
+}

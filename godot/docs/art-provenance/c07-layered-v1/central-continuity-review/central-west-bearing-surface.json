@@ -1,0 +1,5403 @@
+{
+  "schema": 1,
+  "supports": [
+    {
+      "id": "cap-column-474",
+      "frontPixels": [
+        6.125,
+        0.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "cap-column-475",
+      "frontPixels": [
+        7.25,
+        1.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "cap-column-476",
+      "frontPixels": [
+        8.375,
+        2.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "cap-column-477",
+      "frontPixels": [
+        9.5,
+        3.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "cap-column-478",
+      "frontPixels": [
+        10.75,
+        4.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "cap-column-479",
+      "frontPixels": [
+        12.625,
+        5.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "cap-column-480",
+      "frontPixels": [
+        14.5,
+        6.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "cap-column-481",
+      "frontPixels": [
+        16.375,
+        7.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "cap-column-482",
+      "frontPixels": [
+        18.25,
+        8.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "cap-column-483",
+      "frontPixels": [
+        20.277771,
+        9.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "cap-column-484",
+      "frontPixels": [
+        21.055542,
+        10.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "cap-column-485",
+      "frontPixels": [
+        21.833374,
+        11.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "cap-column-486",
+      "frontPixels": [
+        22.611084,
+        12.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "cap-column-487",
+      "frontPixels": [
+        23.388916,
+        13.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "cap-column-488",
+      "frontPixels": [
+        24.166626,
+        14.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "cap-column-489",
+      "frontPixels": [
+        24.944458,
+        15.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "cap-column-490",
+      "frontPixels": [
+        23.722229,
+        16.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-680",
+      "frontPixels": [
+        0.5,
+        6.3999939999999995
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-681",
+      "frontPixels": [
+        1.5,
+        7.2000122
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-682",
+      "frontPixels": [
+        2.5,
+        8
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-683",
+      "frontPixels": [
+        3.5,
+        8.799987999999999
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-684",
+      "frontPixels": [
+        4.5,
+        9.600006
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-685",
+      "frontPixels": [
+        5.5,
+        10.321441700000001
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-686",
+      "frontPixels": [
+        6.5,
+        10.9642944
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-687",
+      "frontPixels": [
+        7.5,
+        11.607147000000001
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-688",
+      "frontPixels": [
+        8.5,
+        12.25
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-689",
+      "frontPixels": [
+        9.5,
+        12.892853
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-690",
+      "frontPixels": [
+        10.5,
+        13.535706
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-691",
+      "frontPixels": [
+        11.5,
+        14.178558
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-692",
+      "frontPixels": [
+        12.5,
+        14.821442
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-693",
+      "frontPixels": [
+        13.5,
+        15.464294
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-694",
+      "frontPixels": [
+        14.5,
+        16.107146999999998
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-695",
+      "frontPixels": [
+        15.5,
+        16.75
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-696",
+      "frontPixels": [
+        16.5,
+        17.392853000000002
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-697",
+      "frontPixels": [
+        17.5,
+        18.035705999999998
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-698",
+      "frontPixels": [
+        18.5,
+        18.678558000000002
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-699",
+      "frontPixels": [
+        19.5,
+        19
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-700",
+      "frontPixels": [
+        20.5,
+        19
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-701",
+      "frontPixels": [
+        21.5,
+        19
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-702",
+      "frontPixels": [
+        22.5,
+        19
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-703",
+      "frontPixels": [
+        23.5,
+        19
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-704",
+      "frontPixels": [
+        24.5,
+        19
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-705",
+      "frontPixels": [
+        25.5,
+        19
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-706",
+      "frontPixels": [
+        26.5,
+        18.875
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-707",
+      "frontPixels": [
+        27.5,
+        18.625
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-708",
+      "frontPixels": [
+        28.5,
+        18.375
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-709",
+      "frontPixels": [
+        29.5,
+        18.125
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-710",
+      "frontPixels": [
+        30.5,
+        17.875
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-711",
+      "frontPixels": [
+        31.5,
+        17.625
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-712",
+      "frontPixels": [
+        32.5,
+        17.375
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "riser-column-713",
+      "frontPixels": [
+        33.5,
+        17.125
+      ],
+      "kind": "structural"
+    }
+  ],
+  "members": [
+    {
+      "id": "cap-low-bearing-cap-474-0-0",
+      "supportId": "cap-column-474",
+      "polygonPixels": [
+        [
+          8.5,
+          1
+        ],
+        [
+          3.75,
+          1
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "uvPixels": [
+        [
+          430,
+          661.7647
+        ],
+        [
+          418.82355,
+          661.7647
+        ],
+        [
+          421.7647,
+          650
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-475-0-0",
+      "supportId": "cap-column-475",
+      "polygonPixels": [
+        [
+          12,
+          2
+        ],
+        [
+          2.5,
+          2
+        ],
+        [
+          3.75,
+          1
+        ],
+        [
+          8.5,
+          1
+        ]
+      ],
+      "uvPixels": [
+        [
+          438.2353,
+          673.5294
+        ],
+        [
+          415.88235,
+          673.5294
+        ],
+        [
+          418.82355,
+          661.7647
+        ],
+        [
+          430,
+          661.7647
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-476-0-0",
+      "supportId": "cap-column-476",
+      "polygonPixels": [
+        [
+          15.5,
+          3
+        ],
+        [
+          1.25,
+          3
+        ],
+        [
+          2.5,
+          2
+        ],
+        [
+          12,
+          2
+        ]
+      ],
+      "uvPixels": [
+        [
+          446.47058,
+          685.2941
+        ],
+        [
+          412.94116,
+          685.2941
+        ],
+        [
+          415.88235,
+          673.5294
+        ],
+        [
+          438.2353,
+          673.5294
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-477-0-0",
+      "supportId": "cap-column-477",
+      "polygonPixels": [
+        [
+          19,
+          4
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1.25,
+          3
+        ],
+        [
+          15.5,
+          3
+        ]
+      ],
+      "uvPixels": [
+        [
+          454.70587,
+          697.05884
+        ],
+        [
+          410,
+          697.05884
+        ],
+        [
+          412.94116,
+          685.2941
+        ],
+        [
+          446.47058,
+          685.2941
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-478-3-0",
+      "supportId": "cap-column-478",
+      "polygonPixels": [
+        [
+          21.5,
+          5
+        ],
+        [
+          20.363647,
+          5
+        ],
+        [
+          19,
+          4
+        ]
+      ],
+      "uvPixels": [
+        [
+          460.58823,
+          708.82355
+        ],
+        [
+          457.91446,
+          708.82355
+        ],
+        [
+          454.70587,
+          697.05884
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-478-9-0",
+      "supportId": "cap-column-478",
+      "polygonPixels": [
+        [
+          1.4615479,
+          5
+        ],
+        [
+          1.25,
+          5
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "uvPixels": [
+        [
+          413.43903,
+          708.8239
+        ],
+        [
+          412.94116,
+          708.82355
+        ],
+        [
+          410,
+          697.05884
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-478-12-0",
+      "supportId": "cap-column-478",
+      "polygonPixels": [
+        [
+          20.363647,
+          5
+        ],
+        [
+          3.0909424,
+          5
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          19,
+          4
+        ]
+      ],
+      "uvPixels": [
+        [
+          457.91443,
+          708.82355
+        ],
+        [
+          417.2728,
+          708.82355
+        ],
+        [
+          410,
+          697.05884
+        ],
+        [
+          454.70587,
+          697.05884
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-478-15-0",
+      "supportId": "cap-column-478",
+      "polygonPixels": [
+        [
+          3.0909424,
+          5
+        ],
+        [
+          1.4615479,
+          5
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "uvPixels": [
+        [
+          417.27286,
+          708.8238
+        ],
+        [
+          413.43893,
+          708.82355
+        ],
+        [
+          410,
+          697.05884
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-479-3-0",
+      "supportId": "cap-column-479",
+      "polygonPixels": [
+        [
+          24,
+          6
+        ],
+        [
+          21.727295,
+          6
+        ],
+        [
+          20.363647,
+          5
+        ],
+        [
+          21.5,
+          5
+        ]
+      ],
+      "uvPixels": [
+        [
+          466.47058,
+          720.58826
+        ],
+        [
+          461.12305,
+          720.58826
+        ],
+        [
+          457.91446,
+          708.82355
+        ],
+        [
+          460.58823,
+          708.82355
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-479-9-0",
+      "supportId": "cap-column-479",
+      "polygonPixels": [
+        [
+          2.9230957,
+          6
+        ],
+        [
+          2.5,
+          6
+        ],
+        [
+          1.25,
+          5
+        ],
+        [
+          1.4615479,
+          5
+        ]
+      ],
+      "uvPixels": [
+        [
+          416.878,
+          720.58875
+        ],
+        [
+          415.88235,
+          720.58826
+        ],
+        [
+          412.94116,
+          708.82355
+        ],
+        [
+          413.43903,
+          708.8239
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-479-12-0",
+      "supportId": "cap-column-479",
+      "polygonPixels": [
+        [
+          21.727295,
+          6
+        ],
+        [
+          6.1818237,
+          6
+        ],
+        [
+          3.0909424,
+          5
+        ],
+        [
+          20.363647,
+          5
+        ]
+      ],
+      "uvPixels": [
+        [
+          461.123,
+          720.5882
+        ],
+        [
+          424.54547,
+          720.58826
+        ],
+        [
+          417.2728,
+          708.82355
+        ],
+        [
+          457.91443,
+          708.82355
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-479-15-0",
+      "supportId": "cap-column-479",
+      "polygonPixels": [
+        [
+          6.1818237,
+          6
+        ],
+        [
+          2.9230957,
+          6
+        ],
+        [
+          1.4615479,
+          5
+        ],
+        [
+          3.0909424,
+          5
+        ]
+      ],
+      "uvPixels": [
+        [
+          424.54547,
+          720.58826
+        ],
+        [
+          416.87787,
+          720.58826
+        ],
+        [
+          413.43893,
+          708.82355
+        ],
+        [
+          417.27286,
+          708.8238
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-480-3-0",
+      "supportId": "cap-column-480",
+      "polygonPixels": [
+        [
+          26.5,
+          7
+        ],
+        [
+          23.090942,
+          7
+        ],
+        [
+          21.727295,
+          6
+        ],
+        [
+          24,
+          6
+        ]
+      ],
+      "uvPixels": [
+        [
+          472.35294,
+          732.3529
+        ],
+        [
+          464.33163,
+          732.35297
+        ],
+        [
+          461.12305,
+          720.58826
+        ],
+        [
+          466.47058,
+          720.58826
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-480-9-0",
+      "supportId": "cap-column-480",
+      "polygonPixels": [
+        [
+          4.3846436,
+          7
+        ],
+        [
+          3.75,
+          7
+        ],
+        [
+          2.5,
+          6
+        ],
+        [
+          2.9230957,
+          6
+        ]
+      ],
+      "uvPixels": [
+        [
+          420.31686,
+          732.35333
+        ],
+        [
+          418.82355,
+          732.35297
+        ],
+        [
+          415.88235,
+          720.58826
+        ],
+        [
+          416.878,
+          720.58875
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-480-12-0",
+      "supportId": "cap-column-480",
+      "polygonPixels": [
+        [
+          23.090942,
+          7
+        ],
+        [
+          9.272705,
+          7
+        ],
+        [
+          6.1818237,
+          6
+        ],
+        [
+          21.727295,
+          6
+        ]
+      ],
+      "uvPixels": [
+        [
+          464.3315,
+          732.3529
+        ],
+        [
+          431.81815,
+          732.3529
+        ],
+        [
+          424.54547,
+          720.58826
+        ],
+        [
+          461.123,
+          720.5882
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-480-15-0",
+      "supportId": "cap-column-480",
+      "polygonPixels": [
+        [
+          9.272705,
+          7
+        ],
+        [
+          4.3846436,
+          7
+        ],
+        [
+          2.9230957,
+          6
+        ],
+        [
+          6.1818237,
+          6
+        ]
+      ],
+      "uvPixels": [
+        [
+          431.8181,
+          732.35297
+        ],
+        [
+          420.3168,
+          732.35297
+        ],
+        [
+          416.87787,
+          720.58826
+        ],
+        [
+          424.54547,
+          720.58826
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-481-3-0",
+      "supportId": "cap-column-481",
+      "polygonPixels": [
+        [
+          29,
+          8
+        ],
+        [
+          24.454529,
+          8
+        ],
+        [
+          23.090942,
+          7
+        ],
+        [
+          26.5,
+          7
+        ]
+      ],
+      "uvPixels": [
+        [
+          478.2353,
+          744.1176
+        ],
+        [
+          467.54013,
+          744.11774
+        ],
+        [
+          464.33163,
+          732.35297
+        ],
+        [
+          472.35294,
+          732.3529
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-481-9-0",
+      "supportId": "cap-column-481",
+      "polygonPixels": [
+        [
+          5.8461304,
+          8
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          3.75,
+          7
+        ],
+        [
+          4.3846436,
+          7
+        ]
+      ],
+      "uvPixels": [
+        [
+          423.75558,
+          744.1177
+        ],
+        [
+          421.7647,
+          744.1177
+        ],
+        [
+          418.82355,
+          732.35297
+        ],
+        [
+          420.31686,
+          732.35333
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-481-12-0",
+      "supportId": "cap-column-481",
+      "polygonPixels": [
+        [
+          24.454529,
+          8
+        ],
+        [
+          12.363647,
+          8
+        ],
+        [
+          9.272705,
+          7
+        ],
+        [
+          23.090942,
+          7
+        ]
+      ],
+      "uvPixels": [
+        [
+          467.54007,
+          744.1177
+        ],
+        [
+          439.09094,
+          744.1177
+        ],
+        [
+          431.81815,
+          732.3529
+        ],
+        [
+          464.3315,
+          732.3529
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-481-15-0",
+      "supportId": "cap-column-481",
+      "polygonPixels": [
+        [
+          12.363647,
+          8
+        ],
+        [
+          5.8461304,
+          8
+        ],
+        [
+          4.3846436,
+          7
+        ],
+        [
+          9.272705,
+          7
+        ]
+      ],
+      "uvPixels": [
+        [
+          439.09094,
+          744.11774
+        ],
+        [
+          423.75568,
+          744.11774
+        ],
+        [
+          420.3168,
+          732.35297
+        ],
+        [
+          431.8181,
+          732.35297
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-482-3-0",
+      "supportId": "cap-column-482",
+      "polygonPixels": [
+        [
+          31.5,
+          9
+        ],
+        [
+          25.818176,
+          9
+        ],
+        [
+          24.454529,
+          8
+        ],
+        [
+          29,
+          8
+        ]
+      ],
+      "uvPixels": [
+        [
+          484.11765,
+          755.8823
+        ],
+        [
+          470.74866,
+          755.8824
+        ],
+        [
+          467.54013,
+          744.11774
+        ],
+        [
+          478.2353,
+          744.1176
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-482-9-0",
+      "supportId": "cap-column-482",
+      "polygonPixels": [
+        [
+          7.307678,
+          9
+        ],
+        [
+          6.555542,
+          9
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          5.8461304,
+          8
+        ]
+      ],
+      "uvPixels": [
+        [
+          427.19452,
+          755.8824
+        ],
+        [
+          425.42462,
+          755.8817
+        ],
+        [
+          421.7647,
+          744.1177
+        ],
+        [
+          423.75558,
+          744.1177
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-482-12-0",
+      "supportId": "cap-column-482",
+      "polygonPixels": [
+        [
+          25.818176,
+          9
+        ],
+        [
+          15.454529,
+          9
+        ],
+        [
+          12.363647,
+          8
+        ],
+        [
+          24.454529,
+          8
+        ]
+      ],
+      "uvPixels": [
+        [
+          470.74866,
+          755.8824
+        ],
+        [
+          446.36362,
+          755.8823
+        ],
+        [
+          439.09094,
+          744.1177
+        ],
+        [
+          467.54007,
+          744.1177
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-482-15-0",
+      "supportId": "cap-column-482",
+      "polygonPixels": [
+        [
+          15.454529,
+          9
+        ],
+        [
+          7.307678,
+          9
+        ],
+        [
+          5.8461304,
+          8
+        ],
+        [
+          12.363647,
+          8
+        ]
+      ],
+      "uvPixels": [
+        [
+          446.3636,
+          755.8824
+        ],
+        [
+          427.19458,
+          755.88245
+        ],
+        [
+          423.75568,
+          744.11774
+        ],
+        [
+          439.09094,
+          744.11774
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-483-3-0",
+      "supportId": "cap-column-483",
+      "polygonPixels": [
+        [
+          34,
+          10
+        ],
+        [
+          27.181824,
+          10
+        ],
+        [
+          25.818176,
+          9
+        ],
+        [
+          31.5,
+          9
+        ]
+      ],
+      "uvPixels": [
+        [
+          490,
+          767.64703
+        ],
+        [
+          473.9572,
+          767.64703
+        ],
+        [
+          470.74866,
+          755.8824
+        ],
+        [
+          484.11765,
+          755.8823
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-483-9-0",
+      "supportId": "cap-column-483",
+      "polygonPixels": [
+        [
+          8.769226,
+          10
+        ],
+        [
+          8.111084,
+          10
+        ],
+        [
+          6.555542,
+          9
+        ],
+        [
+          7.307678,
+          9
+        ]
+      ],
+      "uvPixels": [
+        [
+          430.63345,
+          767.6471
+        ],
+        [
+          429.08447,
+          767.6455
+        ],
+        [
+          425.42462,
+          755.8817
+        ],
+        [
+          427.19452,
+          755.8824
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-483-12-0",
+      "supportId": "cap-column-483",
+      "polygonPixels": [
+        [
+          27.181824,
+          10
+        ],
+        [
+          18.545471,
+          10
+        ],
+        [
+          15.454529,
+          9
+        ],
+        [
+          25.818176,
+          9
+        ]
+      ],
+      "uvPixels": [
+        [
+          473.9572,
+          767.64703
+        ],
+        [
+          453.6364,
+          767.64703
+        ],
+        [
+          446.36362,
+          755.8823
+        ],
+        [
+          470.74866,
+          755.8824
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-483-15-0",
+      "supportId": "cap-column-483",
+      "polygonPixels": [
+        [
+          18.545471,
+          10
+        ],
+        [
+          8.769226,
+          10
+        ],
+        [
+          7.307678,
+          9
+        ],
+        [
+          15.454529,
+          9
+        ]
+      ],
+      "uvPixels": [
+        [
+          453.6364,
+          767.64716
+        ],
+        [
+          430.63348,
+          767.6471
+        ],
+        [
+          427.19458,
+          755.88245
+        ],
+        [
+          446.3636,
+          755.8824
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-484-3-0",
+      "supportId": "cap-column-484",
+      "polygonPixels": [
+        [
+          34,
+          11
+        ],
+        [
+          28.545471,
+          11
+        ],
+        [
+          27.181824,
+          10
+        ],
+        [
+          34,
+          10
+        ]
+      ],
+      "uvPixels": [
+        [
+          490,
+          779.41174
+        ],
+        [
+          477.1658,
+          779.41174
+        ],
+        [
+          473.9572,
+          767.64703
+        ],
+        [
+          490,
+          767.64703
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-484-9-0",
+      "supportId": "cap-column-484",
+      "polygonPixels": [
+        [
+          10.230774,
+          11
+        ],
+        [
+          9.666687,
+          11
+        ],
+        [
+          8.111084,
+          10
+        ],
+        [
+          8.769226,
+          10
+        ]
+      ],
+      "uvPixels": [
+        [
+          434.07233,
+          779.41156
+        ],
+        [
+          432.74515,
+          779.4118
+        ],
+        [
+          429.08447,
+          767.6455
+        ],
+        [
+          430.63345,
+          767.6471
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-484-12-0",
+      "supportId": "cap-column-484",
+      "polygonPixels": [
+        [
+          28.545471,
+          11
+        ],
+        [
+          21.636353,
+          11
+        ],
+        [
+          18.545471,
+          10
+        ],
+        [
+          27.181824,
+          10
+        ]
+      ],
+      "uvPixels": [
+        [
+          477.16574,
+          779.4117
+        ],
+        [
+          460.90906,
+          779.41174
+        ],
+        [
+          453.6364,
+          767.64703
+        ],
+        [
+          473.9572,
+          767.64703
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-484-15-0",
+      "supportId": "cap-column-484",
+      "polygonPixels": [
+        [
+          21.636353,
+          11
+        ],
+        [
+          10.230774,
+          11
+        ],
+        [
+          8.769226,
+          10
+        ],
+        [
+          18.545471,
+          10
+        ]
+      ],
+      "uvPixels": [
+        [
+          460.90906,
+          779.41174
+        ],
+        [
+          434.07242,
+          779.41174
+        ],
+        [
+          430.63348,
+          767.6471
+        ],
+        [
+          453.6364,
+          767.64716
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-485-3-0",
+      "supportId": "cap-column-485",
+      "polygonPixels": [
+        [
+          34,
+          12
+        ],
+        [
+          29.909058,
+          12
+        ],
+        [
+          28.545471,
+          11
+        ],
+        [
+          34,
+          11
+        ]
+      ],
+      "uvPixels": [
+        [
+          490,
+          791.17645
+        ],
+        [
+          480.3743,
+          791.17633
+        ],
+        [
+          477.1658,
+          779.41174
+        ],
+        [
+          490,
+          779.41174
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-485-9-0",
+      "supportId": "cap-column-485",
+      "polygonPixels": [
+        [
+          11.692322,
+          12
+        ],
+        [
+          11.222229,
+          12
+        ],
+        [
+          9.666687,
+          11
+        ],
+        [
+          10.230774,
+          11
+        ]
+      ],
+      "uvPixels": [
+        [
+          437.51108,
+          791.1757
+        ],
+        [
+          436.40524,
+          791.1765
+        ],
+        [
+          432.74515,
+          779.4118
+        ],
+        [
+          434.07233,
+          779.41156
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-485-12-0",
+      "supportId": "cap-column-485",
+      "polygonPixels": [
+        [
+          29.909058,
+          12
+        ],
+        [
+          24.727295,
+          12
+        ],
+        [
+          21.636353,
+          11
+        ],
+        [
+          28.545471,
+          11
+        ]
+      ],
+      "uvPixels": [
+        [
+          480.37424,
+          791.17645
+        ],
+        [
+          468.1819,
+          791.17645
+        ],
+        [
+          460.90906,
+          779.41174
+        ],
+        [
+          477.16574,
+          779.4117
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-485-15-0",
+      "supportId": "cap-column-485",
+      "polygonPixels": [
+        [
+          24.727295,
+          12
+        ],
+        [
+          11.692322,
+          12
+        ],
+        [
+          10.230774,
+          11
+        ],
+        [
+          21.636353,
+          11
+        ]
+      ],
+      "uvPixels": [
+        [
+          468.18185,
+          791.1765
+        ],
+        [
+          437.51135,
+          791.17645
+        ],
+        [
+          434.07242,
+          779.41174
+        ],
+        [
+          460.90906,
+          779.41174
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-486-3-0",
+      "supportId": "cap-column-486",
+      "polygonPixels": [
+        [
+          34,
+          13
+        ],
+        [
+          31.272705,
+          13
+        ],
+        [
+          29.909058,
+          12
+        ],
+        [
+          34,
+          12
+        ]
+      ],
+      "uvPixels": [
+        [
+          490,
+          802.94116
+        ],
+        [
+          483.58286,
+          802.94104
+        ],
+        [
+          480.3743,
+          791.17633
+        ],
+        [
+          490,
+          791.17645
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-486-9-0",
+      "supportId": "cap-column-486",
+      "polygonPixels": [
+        [
+          13.15387,
+          13
+        ],
+        [
+          12.777771,
+          13
+        ],
+        [
+          11.222229,
+          12
+        ],
+        [
+          11.692322,
+          12
+        ]
+      ],
+      "uvPixels": [
+        [
+          440.94974,
+          802.9396
+        ],
+        [
+          440.0652,
+          802.9406
+        ],
+        [
+          436.40524,
+          791.1765
+        ],
+        [
+          437.51108,
+          791.1757
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-486-12-0",
+      "supportId": "cap-column-486",
+      "polygonPixels": [
+        [
+          31.272705,
+          13
+        ],
+        [
+          27.818176,
+          13
+        ],
+        [
+          24.727295,
+          12
+        ],
+        [
+          29.909058,
+          12
+        ]
+      ],
+      "uvPixels": [
+        [
+          483.58282,
+          802.94116
+        ],
+        [
+          475.45453,
+          802.94116
+        ],
+        [
+          468.1819,
+          791.17645
+        ],
+        [
+          480.37424,
+          791.17645
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-486-15-0",
+      "supportId": "cap-column-486",
+      "polygonPixels": [
+        [
+          27.818176,
+          13
+        ],
+        [
+          13.15387,
+          13
+        ],
+        [
+          11.692322,
+          12
+        ],
+        [
+          24.727295,
+          12
+        ]
+      ],
+      "uvPixels": [
+        [
+          475.45453,
+          802.94116
+        ],
+        [
+          440.9503,
+          802.94116
+        ],
+        [
+          437.51135,
+          791.17645
+        ],
+        [
+          468.18185,
+          791.1765
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-487-3-0",
+      "supportId": "cap-column-487",
+      "polygonPixels": [
+        [
+          34,
+          14
+        ],
+        [
+          32.636353,
+          14
+        ],
+        [
+          31.272705,
+          13
+        ],
+        [
+          34,
+          13
+        ]
+      ],
+      "uvPixels": [
+        [
+          490,
+          814.7059
+        ],
+        [
+          486.7914,
+          814.7058
+        ],
+        [
+          483.58286,
+          802.94104
+        ],
+        [
+          490,
+          802.94116
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-487-9-0",
+      "supportId": "cap-column-487",
+      "polygonPixels": [
+        [
+          14.615356,
+          14
+        ],
+        [
+          14.333313,
+          14
+        ],
+        [
+          12.777771,
+          13
+        ],
+        [
+          13.15387,
+          13
+        ]
+      ],
+      "uvPixels": [
+        [
+          444.38907,
+          814.7059
+        ],
+        [
+          443.72488,
+          814.7039
+        ],
+        [
+          440.0652,
+          802.9406
+        ],
+        [
+          440.94974,
+          802.9396
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-487-12-0",
+      "supportId": "cap-column-487",
+      "polygonPixels": [
+        [
+          32.636353,
+          14
+        ],
+        [
+          30.909058,
+          14
+        ],
+        [
+          27.818176,
+          13
+        ],
+        [
+          31.272705,
+          13
+        ]
+      ],
+      "uvPixels": [
+        [
+          486.7914,
+          814.7059
+        ],
+        [
+          482.72714,
+          814.7057
+        ],
+        [
+          475.45453,
+          802.94116
+        ],
+        [
+          483.58282,
+          802.94116
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-487-15-0",
+      "supportId": "cap-column-487",
+      "polygonPixels": [
+        [
+          30.909058,
+          14
+        ],
+        [
+          14.615356,
+          14
+        ],
+        [
+          13.15387,
+          13
+        ],
+        [
+          27.818176,
+          13
+        ]
+      ],
+      "uvPixels": [
+        [
+          482.7272,
+          814.7059
+        ],
+        [
+          444.38913,
+          814.70593
+        ],
+        [
+          440.9503,
+          802.94116
+        ],
+        [
+          475.45453,
+          802.94116
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-488-3-0",
+      "supportId": "cap-column-488",
+      "polygonPixels": [
+        [
+          34,
+          15
+        ],
+        [
+          32.636353,
+          14
+        ],
+        [
+          34,
+          14
+        ]
+      ],
+      "uvPixels": [
+        [
+          490,
+          826.4706
+        ],
+        [
+          486.7914,
+          814.7058
+        ],
+        [
+          490,
+          814.7059
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-488-9-0",
+      "supportId": "cap-column-488",
+      "polygonPixels": [
+        [
+          16.076904,
+          15
+        ],
+        [
+          15.888916,
+          15
+        ],
+        [
+          14.333313,
+          14
+        ],
+        [
+          14.615356,
+          14
+        ]
+      ],
+      "uvPixels": [
+        [
+          447.828,
+          826.4706
+        ],
+        [
+          447.38568,
+          826.4706
+        ],
+        [
+          443.72488,
+          814.7039
+        ],
+        [
+          444.38907,
+          814.7059
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-488-12-0",
+      "supportId": "cap-column-488",
+      "polygonPixels": [
+        [
+          34,
+          15
+        ],
+        [
+          30.909058,
+          14
+        ],
+        [
+          32.636353,
+          14
+        ]
+      ],
+      "uvPixels": [
+        [
+          490,
+          826.4706
+        ],
+        [
+          482.72714,
+          814.7057
+        ],
+        [
+          486.7914,
+          814.7059
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-488-15-0",
+      "supportId": "cap-column-488",
+      "polygonPixels": [
+        [
+          34,
+          15
+        ],
+        [
+          16.076904,
+          15
+        ],
+        [
+          14.615356,
+          14
+        ],
+        [
+          30.909058,
+          14
+        ]
+      ],
+      "uvPixels": [
+        [
+          490,
+          826.4706
+        ],
+        [
+          447.82803,
+          826.4706
+        ],
+        [
+          444.38913,
+          814.70593
+        ],
+        [
+          482.7272,
+          814.7059
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-489-6-0",
+      "supportId": "cap-column-489",
+      "polygonPixels": [
+        [
+          30,
+          16
+        ],
+        [
+          26.5,
+          16
+        ],
+        [
+          34,
+          15
+        ]
+      ],
+      "uvPixels": [
+        [
+          480.58826,
+          838.2353
+        ],
+        [
+          472.35294,
+          838.2353
+        ],
+        [
+          490,
+          826.4706
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-489-9-0",
+      "supportId": "cap-column-489",
+      "polygonPixels": [
+        [
+          17.538452,
+          16
+        ],
+        [
+          17.444458,
+          16
+        ],
+        [
+          15.888916,
+          15
+        ],
+        [
+          16.076904,
+          15
+        ]
+      ],
+      "uvPixels": [
+        [
+          451.26694,
+          838.2353
+        ],
+        [
+          451.04578,
+          838.2353
+        ],
+        [
+          447.38568,
+          826.4706
+        ],
+        [
+          447.828,
+          826.4706
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-489-15-0",
+      "supportId": "cap-column-489",
+      "polygonPixels": [
+        [
+          34,
+          15
+        ],
+        [
+          26.5,
+          16
+        ],
+        [
+          17.538452,
+          16
+        ],
+        [
+          16.076904,
+          15
+        ]
+      ],
+      "uvPixels": [
+        [
+          490,
+          826.4706
+        ],
+        [
+          472.35294,
+          838.2353
+        ],
+        [
+          451.26697,
+          838.2353
+        ],
+        [
+          447.82803,
+          826.4706
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-490-6-0",
+      "supportId": "cap-column-490",
+      "polygonPixels": [
+        [
+          26,
+          17
+        ],
+        [
+          19,
+          17
+        ],
+        [
+          26.5,
+          16
+        ],
+        [
+          30,
+          16
+        ]
+      ],
+      "uvPixels": [
+        [
+          471.17648,
+          850
+        ],
+        [
+          454.70587,
+          850
+        ],
+        [
+          472.35294,
+          838.2353
+        ],
+        [
+          480.58826,
+          838.2353
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-490-9-0",
+      "supportId": "cap-column-490",
+      "polygonPixels": [
+        [
+          19,
+          17
+        ],
+        [
+          17.444458,
+          16
+        ],
+        [
+          17.538452,
+          16
+        ]
+      ],
+      "uvPixels": [
+        [
+          454.70587,
+          850
+        ],
+        [
+          451.04578,
+          838.2353
+        ],
+        [
+          451.26694,
+          838.2353
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "cap-low-bearing-cap-490-15-0",
+      "supportId": "cap-column-490",
+      "polygonPixels": [
+        [
+          19,
+          17
+        ],
+        [
+          17.538452,
+          16
+        ],
+        [
+          26.5,
+          16
+        ]
+      ],
+      "uvPixels": [
+        [
+          454.70587,
+          850
+        ],
+        [
+          451.26697,
+          838.2353
+        ],
+        [
+          472.35294,
+          838.2353
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-0-680-0-0",
+      "supportId": "riser-column-680",
+      "polygonPixels": [
+        [
+          1,
+          4.7999878
+        ],
+        [
+          1,
+          6.3999939999999995
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "uvPixels": [
+        [
+          330.99982,
+          1259.9999
+        ],
+        [
+          331,
+          1272
+        ],
+        [
+          300,
+          1260
+        ],
+        [
+          300,
+          1245
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-0-680-3-0",
+      "supportId": "riser-column-680",
+      "polygonPixels": [
+        [
+          1,
+          6.3999939999999995
+        ],
+        [
+          1,
+          6.7999878
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "uvPixels": [
+        [
+          331.00037,
+          1272.0001
+        ],
+        [
+          331,
+          1274.9999
+        ],
+        [
+          300,
+          1260
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-0-681-0-0",
+      "supportId": "riser-column-681",
+      "polygonPixels": [
+        [
+          2,
+          5.6000061
+        ],
+        [
+          2,
+          6.7999878
+        ],
+        [
+          1,
+          6.3999939999999995
+        ],
+        [
+          1,
+          4.7999878
+        ]
+      ],
+      "uvPixels": [
+        [
+          362,
+          1275
+        ],
+        [
+          362,
+          1283.9999
+        ],
+        [
+          331,
+          1272
+        ],
+        [
+          330.99982,
+          1259.9999
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-0-681-3-0",
+      "supportId": "riser-column-681",
+      "polygonPixels": [
+        [
+          2,
+          6.7999878
+        ],
+        [
+          2,
+          7.6000060000000005
+        ],
+        [
+          1,
+          6.7999878
+        ],
+        [
+          1,
+          6.3999939999999995
+        ]
+      ],
+      "uvPixels": [
+        [
+          362.00058,
+          1284.0002
+        ],
+        [
+          362.00027,
+          1290.0001
+        ],
+        [
+          331,
+          1274.9999
+        ],
+        [
+          331.00037,
+          1272.0001
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-0-682-0-0",
+      "supportId": "riser-column-682",
+      "polygonPixels": [
+        [
+          3,
+          6.3999939999999995
+        ],
+        [
+          3,
+          7.2000122
+        ],
+        [
+          2,
+          6.7999878
+        ],
+        [
+          2,
+          5.6000061
+        ]
+      ],
+      "uvPixels": [
+        [
+          392.99973,
+          1289.9999
+        ],
+        [
+          392.99942,
+          1295.9998
+        ],
+        [
+          362,
+          1283.9999
+        ],
+        [
+          362,
+          1275
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-0-682-3-0",
+      "supportId": "riser-column-682",
+      "polygonPixels": [
+        [
+          3,
+          7.2000122
+        ],
+        [
+          3,
+          8.399994
+        ],
+        [
+          2,
+          7.6000060000000005
+        ],
+        [
+          2,
+          6.7999878
+        ]
+      ],
+      "uvPixels": [
+        [
+          393,
+          1296.0001
+        ],
+        [
+          393,
+          1305
+        ],
+        [
+          362.00027,
+          1290.0001
+        ],
+        [
+          362.00058,
+          1284.0002
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-0-683-0-0",
+      "supportId": "riser-column-683",
+      "polygonPixels": [
+        [
+          4,
+          7.2000122
+        ],
+        [
+          4,
+          7.6000060000000005
+        ],
+        [
+          3,
+          7.2000122
+        ],
+        [
+          3,
+          6.3999939999999995
+        ]
+      ],
+      "uvPixels": [
+        [
+          424,
+          1305.0001
+        ],
+        [
+          423.99963,
+          1307.9999
+        ],
+        [
+          392.99942,
+          1295.9998
+        ],
+        [
+          392.99973,
+          1289.9999
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-0-683-3-0",
+      "supportId": "riser-column-683",
+      "polygonPixels": [
+        [
+          4,
+          7.6000060000000005
+        ],
+        [
+          4,
+          9.200012000000001
+        ],
+        [
+          3,
+          8.399994
+        ],
+        [
+          3,
+          7.2000122
+        ]
+      ],
+      "uvPixels": [
+        [
+          424,
+          1308
+        ],
+        [
+          424.00018,
+          1320.0001
+        ],
+        [
+          393,
+          1305
+        ],
+        [
+          393,
+          1296.0001
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-0-684-0-0",
+      "supportId": "riser-column-684",
+      "polygonPixels": [
+        [
+          5,
+          8
+        ],
+        [
+          4,
+          7.6000060000000005
+        ],
+        [
+          4,
+          7.2000122
+        ]
+      ],
+      "uvPixels": [
+        [
+          455,
+          1320
+        ],
+        [
+          423.99963,
+          1307.9999
+        ],
+        [
+          424,
+          1305.0001
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-0-684-3-0",
+      "supportId": "riser-column-684",
+      "polygonPixels": [
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          4,
+          9.200012000000001
+        ],
+        [
+          4,
+          7.6000060000000005
+        ]
+      ],
+      "uvPixels": [
+        [
+          455,
+          1320
+        ],
+        [
+          455,
+          1335
+        ],
+        [
+          424.00018,
+          1320.0001
+        ],
+        [
+          424,
+          1308
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-685-0-0",
+      "supportId": "riser-column-685",
+      "polygonPixels": [
+        [
+          6,
+          8.642852999999999
+        ],
+        [
+          6,
+          10.5
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "uvPixels": [
+        [
+          311.0714,
+          1250.3572
+        ],
+        [
+          311.07144,
+          1264.2858
+        ],
+        [
+          300,
+          1260
+        ],
+        [
+          300,
+          1245
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-685-3-0",
+      "supportId": "riser-column-685",
+      "polygonPixels": [
+        [
+          6,
+          10.5
+        ],
+        [
+          6,
+          10.642852999999999
+        ],
+        [
+          5,
+          10
+        ]
+      ],
+      "uvPixels": [
+        [
+          311.07144,
+          1264.2858
+        ],
+        [
+          311.07144,
+          1265.357
+        ],
+        [
+          300,
+          1260
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-686-0-0",
+      "supportId": "riser-column-686",
+      "polygonPixels": [
+        [
+          7,
+          9.2857056
+        ],
+        [
+          7,
+          11
+        ],
+        [
+          6,
+          10.5
+        ],
+        [
+          6,
+          8.642852999999999
+        ]
+      ],
+      "uvPixels": [
+        [
+          322.14276,
+          1255.7142
+        ],
+        [
+          322.14285,
+          1268.5714
+        ],
+        [
+          311.07144,
+          1264.2858
+        ],
+        [
+          311.0714,
+          1250.3572
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-686-3-0",
+      "supportId": "riser-column-686",
+      "polygonPixels": [
+        [
+          7,
+          11
+        ],
+        [
+          7,
+          11.2857056
+        ],
+        [
+          6,
+          10.642852999999999
+        ],
+        [
+          6,
+          10.5
+        ]
+      ],
+      "uvPixels": [
+        [
+          322.14285,
+          1268.5714
+        ],
+        [
+          322.14285,
+          1270.7142
+        ],
+        [
+          311.07144,
+          1265.357
+        ],
+        [
+          311.07144,
+          1264.2858
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-687-0-0",
+      "supportId": "riser-column-687",
+      "polygonPixels": [
+        [
+          8,
+          9.928558299999999
+        ],
+        [
+          8,
+          11.5
+        ],
+        [
+          7,
+          11
+        ],
+        [
+          7,
+          9.2857056
+        ]
+      ],
+      "uvPixels": [
+        [
+          333.21408,
+          1261.0713
+        ],
+        [
+          333.2143,
+          1272.8572
+        ],
+        [
+          322.14285,
+          1268.5714
+        ],
+        [
+          322.14276,
+          1255.7142
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-687-3-0",
+      "supportId": "riser-column-687",
+      "polygonPixels": [
+        [
+          8,
+          11.5
+        ],
+        [
+          8,
+          11.928558299999999
+        ],
+        [
+          7,
+          11.2857056
+        ],
+        [
+          7,
+          11
+        ]
+      ],
+      "uvPixels": [
+        [
+          333.2143,
+          1272.8572
+        ],
+        [
+          333.2143,
+          1276.0713
+        ],
+        [
+          322.14285,
+          1270.7142
+        ],
+        [
+          322.14285,
+          1268.5714
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-688-0-0",
+      "supportId": "riser-column-688",
+      "polygonPixels": [
+        [
+          9,
+          10.571411000000001
+        ],
+        [
+          9,
+          12
+        ],
+        [
+          8,
+          11.5
+        ],
+        [
+          8,
+          9.928558299999999
+        ]
+      ],
+      "uvPixels": [
+        [
+          344.28534,
+          1266.4283
+        ],
+        [
+          344.2857,
+          1277.1428
+        ],
+        [
+          333.2143,
+          1272.8572
+        ],
+        [
+          333.21408,
+          1261.0713
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-688-3-0",
+      "supportId": "riser-column-688",
+      "polygonPixels": [
+        [
+          9,
+          12
+        ],
+        [
+          9,
+          12.571411
+        ],
+        [
+          8,
+          11.928558299999999
+        ],
+        [
+          8,
+          11.5
+        ]
+      ],
+      "uvPixels": [
+        [
+          344.2857,
+          1277.1428
+        ],
+        [
+          344.2857,
+          1281.4285
+        ],
+        [
+          333.2143,
+          1276.0713
+        ],
+        [
+          333.2143,
+          1272.8572
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-689-0-0",
+      "supportId": "riser-column-689",
+      "polygonPixels": [
+        [
+          10,
+          11.2142944
+        ],
+        [
+          10,
+          12.5
+        ],
+        [
+          9,
+          12
+        ],
+        [
+          9,
+          10.571411000000001
+        ]
+      ],
+      "uvPixels": [
+        [
+          355.35715,
+          1271.7858
+        ],
+        [
+          355.35715,
+          1281.4286
+        ],
+        [
+          344.2857,
+          1277.1428
+        ],
+        [
+          344.28534,
+          1266.4283
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-689-3-0",
+      "supportId": "riser-column-689",
+      "polygonPixels": [
+        [
+          10,
+          12.5
+        ],
+        [
+          10,
+          13.214294
+        ],
+        [
+          9,
+          12.571411
+        ],
+        [
+          9,
+          12
+        ]
+      ],
+      "uvPixels": [
+        [
+          355.35715,
+          1281.4286
+        ],
+        [
+          355.35757,
+          1286.7859
+        ],
+        [
+          344.2857,
+          1281.4285
+        ],
+        [
+          344.2857,
+          1277.1428
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-690-0-0",
+      "supportId": "riser-column-690",
+      "polygonPixels": [
+        [
+          11,
+          11.857147000000001
+        ],
+        [
+          11,
+          13
+        ],
+        [
+          10,
+          12.5
+        ],
+        [
+          10,
+          11.2142944
+        ]
+      ],
+      "uvPixels": [
+        [
+          366.42856,
+          1277.143
+        ],
+        [
+          366.42856,
+          1285.7142
+        ],
+        [
+          355.35715,
+          1281.4286
+        ],
+        [
+          355.35715,
+          1271.7858
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-690-3-0",
+      "supportId": "riser-column-690",
+      "polygonPixels": [
+        [
+          11,
+          13
+        ],
+        [
+          11,
+          13.857147
+        ],
+        [
+          10,
+          13.214294
+        ],
+        [
+          10,
+          12.5
+        ]
+      ],
+      "uvPixels": [
+        [
+          366.42856,
+          1285.7142
+        ],
+        [
+          366.42877,
+          1292.143
+        ],
+        [
+          355.35757,
+          1286.7859
+        ],
+        [
+          355.35715,
+          1281.4286
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-691-0-0",
+      "supportId": "riser-column-691",
+      "polygonPixels": [
+        [
+          12,
+          12.5
+        ],
+        [
+          12,
+          13.5
+        ],
+        [
+          11,
+          13
+        ],
+        [
+          11,
+          11.857147000000001
+        ]
+      ],
+      "uvPixels": [
+        [
+          377.5,
+          1282.5
+        ],
+        [
+          377.5,
+          1290
+        ],
+        [
+          366.42856,
+          1285.7142
+        ],
+        [
+          366.42856,
+          1277.143
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-691-3-0",
+      "supportId": "riser-column-691",
+      "polygonPixels": [
+        [
+          12,
+          13.5
+        ],
+        [
+          12,
+          14.5
+        ],
+        [
+          11,
+          13.857147
+        ],
+        [
+          11,
+          13
+        ]
+      ],
+      "uvPixels": [
+        [
+          377.5,
+          1290
+        ],
+        [
+          377.5,
+          1297.5
+        ],
+        [
+          366.42877,
+          1292.143
+        ],
+        [
+          366.42856,
+          1285.7142
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-692-0-0",
+      "supportId": "riser-column-692",
+      "polygonPixels": [
+        [
+          13,
+          13.142853
+        ],
+        [
+          13,
+          14
+        ],
+        [
+          12,
+          13.5
+        ],
+        [
+          12,
+          12.5
+        ]
+      ],
+      "uvPixels": [
+        [
+          388.57123,
+          1287.857
+        ],
+        [
+          388.57144,
+          1294.2858
+        ],
+        [
+          377.5,
+          1290
+        ],
+        [
+          377.5,
+          1282.5
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-692-3-0",
+      "supportId": "riser-column-692",
+      "polygonPixels": [
+        [
+          13,
+          14
+        ],
+        [
+          13,
+          15.142853
+        ],
+        [
+          12,
+          14.5
+        ],
+        [
+          12,
+          13.5
+        ]
+      ],
+      "uvPixels": [
+        [
+          388.57144,
+          1294.2858
+        ],
+        [
+          388.57144,
+          1302.857
+        ],
+        [
+          377.5,
+          1297.5
+        ],
+        [
+          377.5,
+          1290
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-693-0-0",
+      "supportId": "riser-column-693",
+      "polygonPixels": [
+        [
+          14,
+          13.785706
+        ],
+        [
+          14,
+          14.5
+        ],
+        [
+          13,
+          14
+        ],
+        [
+          13,
+          13.142853
+        ]
+      ],
+      "uvPixels": [
+        [
+          399.64243,
+          1293.2141
+        ],
+        [
+          399.64285,
+          1298.5714
+        ],
+        [
+          388.57144,
+          1294.2858
+        ],
+        [
+          388.57123,
+          1287.857
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-693-3-0",
+      "supportId": "riser-column-693",
+      "polygonPixels": [
+        [
+          14,
+          14.5
+        ],
+        [
+          14,
+          15.785706
+        ],
+        [
+          13,
+          15.142853
+        ],
+        [
+          13,
+          14
+        ]
+      ],
+      "uvPixels": [
+        [
+          399.64285,
+          1298.5714
+        ],
+        [
+          399.64285,
+          1308.2142
+        ],
+        [
+          388.57144,
+          1302.857
+        ],
+        [
+          388.57144,
+          1294.2858
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-694-0-0",
+      "supportId": "riser-column-694",
+      "polygonPixels": [
+        [
+          15,
+          14.428558
+        ],
+        [
+          15,
+          15
+        ],
+        [
+          14,
+          14.5
+        ],
+        [
+          14,
+          13.785706
+        ]
+      ],
+      "uvPixels": [
+        [
+          410.71356,
+          1298.571
+        ],
+        [
+          410.7143,
+          1302.8572
+        ],
+        [
+          399.64285,
+          1298.5714
+        ],
+        [
+          399.64243,
+          1293.2141
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-694-3-0",
+      "supportId": "riser-column-694",
+      "polygonPixels": [
+        [
+          15,
+          15
+        ],
+        [
+          15,
+          16.428558000000002
+        ],
+        [
+          14,
+          15.785706
+        ],
+        [
+          14,
+          14.5
+        ]
+      ],
+      "uvPixels": [
+        [
+          410.7143,
+          1302.8572
+        ],
+        [
+          410.7143,
+          1313.5713
+        ],
+        [
+          399.64285,
+          1308.2142
+        ],
+        [
+          399.64285,
+          1298.5714
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-695-0-0",
+      "supportId": "riser-column-695",
+      "polygonPixels": [
+        [
+          16,
+          15.071411
+        ],
+        [
+          16,
+          15.5
+        ],
+        [
+          15,
+          15
+        ],
+        [
+          15,
+          14.428558
+        ]
+      ],
+      "uvPixels": [
+        [
+          421.78464,
+          1303.9281
+        ],
+        [
+          421.7857,
+          1307.1428
+        ],
+        [
+          410.7143,
+          1302.8572
+        ],
+        [
+          410.71356,
+          1298.571
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-695-3-0",
+      "supportId": "riser-column-695",
+      "polygonPixels": [
+        [
+          16,
+          15.5
+        ],
+        [
+          16,
+          17.071410999999998
+        ],
+        [
+          15,
+          16.428558000000002
+        ],
+        [
+          15,
+          15
+        ]
+      ],
+      "uvPixels": [
+        [
+          421.7857,
+          1307.1428
+        ],
+        [
+          421.7857,
+          1318.9285
+        ],
+        [
+          410.7143,
+          1313.5713
+        ],
+        [
+          410.7143,
+          1302.8572
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-696-0-0",
+      "supportId": "riser-column-696",
+      "polygonPixels": [
+        [
+          17,
+          15.714294
+        ],
+        [
+          17,
+          16
+        ],
+        [
+          16,
+          15.5
+        ],
+        [
+          16,
+          15.071411
+        ]
+      ],
+      "uvPixels": [
+        [
+          432.85715,
+          1309.2858
+        ],
+        [
+          432.85715,
+          1311.4286
+        ],
+        [
+          421.7857,
+          1307.1428
+        ],
+        [
+          421.78464,
+          1303.9281
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-696-3-0",
+      "supportId": "riser-column-696",
+      "polygonPixels": [
+        [
+          17,
+          16
+        ],
+        [
+          17,
+          17.714294000000002
+        ],
+        [
+          16,
+          17.071410999999998
+        ],
+        [
+          16,
+          15.5
+        ]
+      ],
+      "uvPixels": [
+        [
+          432.85715,
+          1311.4286
+        ],
+        [
+          432.85724,
+          1324.2858
+        ],
+        [
+          421.7857,
+          1318.9285
+        ],
+        [
+          421.7857,
+          1307.1428
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-697-0-0",
+      "supportId": "riser-column-697",
+      "polygonPixels": [
+        [
+          18,
+          16.357146999999998
+        ],
+        [
+          18,
+          16.5
+        ],
+        [
+          17,
+          16
+        ],
+        [
+          17,
+          15.714294
+        ]
+      ],
+      "uvPixels": [
+        [
+          443.92856,
+          1314.643
+        ],
+        [
+          443.92856,
+          1315.7142
+        ],
+        [
+          432.85715,
+          1311.4286
+        ],
+        [
+          432.85715,
+          1309.2858
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-697-3-0",
+      "supportId": "riser-column-697",
+      "polygonPixels": [
+        [
+          18,
+          16.5
+        ],
+        [
+          18,
+          18.357146999999998
+        ],
+        [
+          17,
+          17.714294000000002
+        ],
+        [
+          17,
+          16
+        ]
+      ],
+      "uvPixels": [
+        [
+          443.92856,
+          1315.7142
+        ],
+        [
+          443.9286,
+          1329.6428
+        ],
+        [
+          432.85724,
+          1324.2858
+        ],
+        [
+          432.85715,
+          1311.4286
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-698-0-0",
+      "supportId": "riser-column-698",
+      "polygonPixels": [
+        [
+          19,
+          17
+        ],
+        [
+          18,
+          16.5
+        ],
+        [
+          18,
+          16.357146999999998
+        ]
+      ],
+      "uvPixels": [
+        [
+          455,
+          1320
+        ],
+        [
+          443.92856,
+          1315.7142
+        ],
+        [
+          443.92856,
+          1314.643
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-1-698-3-0",
+      "supportId": "riser-column-698",
+      "polygonPixels": [
+        [
+          19,
+          17
+        ],
+        [
+          19,
+          19
+        ],
+        [
+          18,
+          18.357146999999998
+        ],
+        [
+          18,
+          16.5
+        ]
+      ],
+      "uvPixels": [
+        [
+          455,
+          1320
+        ],
+        [
+          455,
+          1335
+        ],
+        [
+          443.9286,
+          1329.6428
+        ],
+        [
+          443.92856,
+          1315.7142
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-2-699-0-0",
+      "supportId": "riser-column-699",
+      "polygonPixels": [
+        [
+          20,
+          18.714294000000002
+        ],
+        [
+          19,
+          19
+        ],
+        [
+          19,
+          17
+        ],
+        [
+          20,
+          17
+        ]
+      ],
+      "uvPixels": [
+        [
+          322.14276,
+          1268.5714
+        ],
+        [
+          300,
+          1260
+        ],
+        [
+          300,
+          1245
+        ],
+        [
+          322.14285,
+          1255.7142
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-2-699-3-0",
+      "supportId": "riser-column-699",
+      "polygonPixels": [
+        [
+          20,
+          19
+        ],
+        [
+          19,
+          19
+        ],
+        [
+          20,
+          18.714294000000002
+        ]
+      ],
+      "uvPixels": [
+        [
+          322.14285,
+          1270.7142
+        ],
+        [
+          300,
+          1260
+        ],
+        [
+          322.14285,
+          1268.5715
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-2-700-0-0",
+      "supportId": "riser-column-700",
+      "polygonPixels": [
+        [
+          21,
+          18.428558000000002
+        ],
+        [
+          20,
+          18.714294000000002
+        ],
+        [
+          20,
+          17
+        ],
+        [
+          21,
+          17
+        ]
+      ],
+      "uvPixels": [
+        [
+          344.2857,
+          1277.1427
+        ],
+        [
+          322.14276,
+          1268.5714
+        ],
+        [
+          322.14285,
+          1255.7142
+        ],
+        [
+          344.2857,
+          1266.4286
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-2-700-3-0",
+      "supportId": "riser-column-700",
+      "polygonPixels": [
+        [
+          21,
+          19
+        ],
+        [
+          20,
+          19
+        ],
+        [
+          20,
+          18.714294000000002
+        ],
+        [
+          21,
+          18.428558000000002
+        ]
+      ],
+      "uvPixels": [
+        [
+          344.2857,
+          1281.4286
+        ],
+        [
+          322.14285,
+          1270.7142
+        ],
+        [
+          322.14285,
+          1268.5715
+        ],
+        [
+          344.28644,
+          1277.1432
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-2-701-0-0",
+      "supportId": "riser-column-701",
+      "polygonPixels": [
+        [
+          22,
+          18.142853000000002
+        ],
+        [
+          21,
+          18.428558000000002
+        ],
+        [
+          21,
+          17
+        ],
+        [
+          22,
+          17
+        ]
+      ],
+      "uvPixels": [
+        [
+          366.42856,
+          1285.7142
+        ],
+        [
+          344.2857,
+          1277.1427
+        ],
+        [
+          344.2857,
+          1266.4286
+        ],
+        [
+          366.42856,
+          1277.1428
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-2-701-3-0",
+      "supportId": "riser-column-701",
+      "polygonPixels": [
+        [
+          22,
+          19
+        ],
+        [
+          21,
+          19
+        ],
+        [
+          21,
+          18.428558000000002
+        ],
+        [
+          22,
+          18.142853000000002
+        ]
+      ],
+      "uvPixels": [
+        [
+          366.42856,
+          1292.1428
+        ],
+        [
+          344.2857,
+          1281.4286
+        ],
+        [
+          344.28644,
+          1277.1432
+        ],
+        [
+          366.42877,
+          1285.7144
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-2-702-0-0",
+      "supportId": "riser-column-702",
+      "polygonPixels": [
+        [
+          23,
+          17.857146999999998
+        ],
+        [
+          22,
+          18.142853000000002
+        ],
+        [
+          22,
+          17
+        ],
+        [
+          23,
+          17
+        ]
+      ],
+      "uvPixels": [
+        [
+          388.57123,
+          1294.2856
+        ],
+        [
+          366.42856,
+          1285.7142
+        ],
+        [
+          366.42856,
+          1277.1428
+        ],
+        [
+          388.57144,
+          1287.8572
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-2-702-3-0",
+      "supportId": "riser-column-702",
+      "polygonPixels": [
+        [
+          23,
+          19
+        ],
+        [
+          22,
+          19
+        ],
+        [
+          22,
+          18.142853000000002
+        ],
+        [
+          23,
+          17.857146999999998
+        ]
+      ],
+      "uvPixels": [
+        [
+          388.57144,
+          1302.8572
+        ],
+        [
+          366.42856,
+          1292.1428
+        ],
+        [
+          366.42877,
+          1285.7144
+        ],
+        [
+          388.57144,
+          1294.2858
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-2-703-0-0",
+      "supportId": "riser-column-703",
+      "polygonPixels": [
+        [
+          24,
+          17.571410999999998
+        ],
+        [
+          23,
+          17.857146999999998
+        ],
+        [
+          23,
+          17
+        ],
+        [
+          24,
+          17
+        ]
+      ],
+      "uvPixels": [
+        [
+          410.7143,
+          1302.857
+        ],
+        [
+          388.57123,
+          1294.2856
+        ],
+        [
+          388.57144,
+          1287.8572
+        ],
+        [
+          410.7143,
+          1298.5714
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-2-703-3-0",
+      "supportId": "riser-column-703",
+      "polygonPixels": [
+        [
+          24,
+          19
+        ],
+        [
+          23,
+          19
+        ],
+        [
+          23,
+          17.857146999999998
+        ],
+        [
+          24,
+          17.571410999999998
+        ]
+      ],
+      "uvPixels": [
+        [
+          410.7143,
+          1313.5714
+        ],
+        [
+          388.57144,
+          1302.8572
+        ],
+        [
+          388.57144,
+          1294.2858
+        ],
+        [
+          410.71466,
+          1302.8573
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-2-704-0-0",
+      "supportId": "riser-column-704",
+      "polygonPixels": [
+        [
+          25,
+          17.285705999999998
+        ],
+        [
+          24,
+          17.571410999999998
+        ],
+        [
+          24,
+          17
+        ],
+        [
+          25,
+          17
+        ]
+      ],
+      "uvPixels": [
+        [
+          432.85715,
+          1311.4285
+        ],
+        [
+          410.7143,
+          1302.857
+        ],
+        [
+          410.7143,
+          1298.5714
+        ],
+        [
+          432.85715,
+          1309.2858
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-2-704-3-0",
+      "supportId": "riser-column-704",
+      "polygonPixels": [
+        [
+          25,
+          19
+        ],
+        [
+          24,
+          19
+        ],
+        [
+          24,
+          17.571410999999998
+        ],
+        [
+          25,
+          17.285705999999998
+        ]
+      ],
+      "uvPixels": [
+        [
+          432.85715,
+          1324.2858
+        ],
+        [
+          410.7143,
+          1313.5714
+        ],
+        [
+          410.71466,
+          1302.8573
+        ],
+        [
+          432.85724,
+          1311.4286
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-2-705-0-0",
+      "supportId": "riser-column-705",
+      "polygonPixels": [
+        [
+          25,
+          17.285705999999998
+        ],
+        [
+          25,
+          17
+        ],
+        [
+          26,
+          17
+        ]
+      ],
+      "uvPixels": [
+        [
+          432.85715,
+          1311.4285
+        ],
+        [
+          432.85715,
+          1309.2858
+        ],
+        [
+          455,
+          1320
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-2-705-3-0",
+      "supportId": "riser-column-705",
+      "polygonPixels": [
+        [
+          26,
+          19
+        ],
+        [
+          25,
+          19
+        ],
+        [
+          25,
+          17.285705999999998
+        ],
+        [
+          26,
+          17
+        ]
+      ],
+      "uvPixels": [
+        [
+          455,
+          1335
+        ],
+        [
+          432.85715,
+          1324.2858
+        ],
+        [
+          432.85724,
+          1311.4286
+        ],
+        [
+          455,
+          1320
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-3-706-0-0",
+      "supportId": "riser-column-706",
+      "polygonPixels": [
+        [
+          27,
+          18.5
+        ],
+        [
+          26,
+          19
+        ],
+        [
+          26,
+          17
+        ],
+        [
+          27,
+          16.75
+        ]
+      ],
+      "uvPixels": [
+        [
+          578.75,
+          1310.5
+        ],
+        [
+          550,
+          1327
+        ],
+        [
+          550,
+          1310
+        ],
+        [
+          578.75,
+          1295.625
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-3-706-3-0",
+      "supportId": "riser-column-706",
+      "polygonPixels": [
+        [
+          27,
+          18.75
+        ],
+        [
+          26,
+          19
+        ],
+        [
+          27,
+          18.5
+        ]
+      ],
+      "uvPixels": [
+        [
+          578.75,
+          1312.625
+        ],
+        [
+          550,
+          1327
+        ],
+        [
+          578.75,
+          1310.5
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-3-707-0-0",
+      "supportId": "riser-column-707",
+      "polygonPixels": [
+        [
+          28,
+          18
+        ],
+        [
+          27,
+          18.5
+        ],
+        [
+          27,
+          16.75
+        ],
+        [
+          28,
+          16.5
+        ]
+      ],
+      "uvPixels": [
+        [
+          607.5,
+          1294
+        ],
+        [
+          578.75,
+          1310.5
+        ],
+        [
+          578.75,
+          1295.625
+        ],
+        [
+          607.5,
+          1281.25
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-3-707-3-0",
+      "supportId": "riser-column-707",
+      "polygonPixels": [
+        [
+          28,
+          18.5
+        ],
+        [
+          27,
+          18.75
+        ],
+        [
+          27,
+          18.5
+        ],
+        [
+          28,
+          18
+        ]
+      ],
+      "uvPixels": [
+        [
+          607.5,
+          1298.25
+        ],
+        [
+          578.75,
+          1312.625
+        ],
+        [
+          578.75,
+          1310.5
+        ],
+        [
+          607.5,
+          1294
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-3-708-0-0",
+      "supportId": "riser-column-708",
+      "polygonPixels": [
+        [
+          29,
+          17.5
+        ],
+        [
+          28,
+          18
+        ],
+        [
+          28,
+          16.5
+        ],
+        [
+          29,
+          16.25
+        ]
+      ],
+      "uvPixels": [
+        [
+          636.25,
+          1277.5
+        ],
+        [
+          607.5,
+          1294
+        ],
+        [
+          607.5,
+          1281.25
+        ],
+        [
+          636.25,
+          1266.875
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-3-708-3-0",
+      "supportId": "riser-column-708",
+      "polygonPixels": [
+        [
+          29,
+          18.25
+        ],
+        [
+          28,
+          18.5
+        ],
+        [
+          28,
+          18
+        ],
+        [
+          29,
+          17.5
+        ]
+      ],
+      "uvPixels": [
+        [
+          636.25,
+          1283.875
+        ],
+        [
+          607.5,
+          1298.25
+        ],
+        [
+          607.5,
+          1294
+        ],
+        [
+          636.25,
+          1277.5
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-3-709-0-0",
+      "supportId": "riser-column-709",
+      "polygonPixels": [
+        [
+          30,
+          17
+        ],
+        [
+          29,
+          17.5
+        ],
+        [
+          29,
+          16.25
+        ],
+        [
+          30,
+          16
+        ]
+      ],
+      "uvPixels": [
+        [
+          665,
+          1261
+        ],
+        [
+          636.25,
+          1277.5
+        ],
+        [
+          636.25,
+          1266.875
+        ],
+        [
+          665,
+          1252.5
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-3-709-3-0",
+      "supportId": "riser-column-709",
+      "polygonPixels": [
+        [
+          30,
+          18
+        ],
+        [
+          29,
+          18.25
+        ],
+        [
+          29,
+          17.5
+        ],
+        [
+          30,
+          17
+        ]
+      ],
+      "uvPixels": [
+        [
+          665,
+          1269.5
+        ],
+        [
+          636.25,
+          1283.875
+        ],
+        [
+          636.25,
+          1277.5
+        ],
+        [
+          665,
+          1261
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-3-710-0-0",
+      "supportId": "riser-column-710",
+      "polygonPixels": [
+        [
+          31,
+          16.5
+        ],
+        [
+          30,
+          17
+        ],
+        [
+          30,
+          16
+        ],
+        [
+          31,
+          15.75
+        ]
+      ],
+      "uvPixels": [
+        [
+          693.75,
+          1244.5
+        ],
+        [
+          665,
+          1261
+        ],
+        [
+          665,
+          1252.5
+        ],
+        [
+          693.75,
+          1238.125
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-3-710-3-0",
+      "supportId": "riser-column-710",
+      "polygonPixels": [
+        [
+          31,
+          17.75
+        ],
+        [
+          30,
+          18
+        ],
+        [
+          30,
+          17
+        ],
+        [
+          31,
+          16.5
+        ]
+      ],
+      "uvPixels": [
+        [
+          693.75,
+          1255.125
+        ],
+        [
+          665,
+          1269.5
+        ],
+        [
+          665,
+          1261
+        ],
+        [
+          693.75,
+          1244.5
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-3-711-0-0",
+      "supportId": "riser-column-711",
+      "polygonPixels": [
+        [
+          32,
+          16
+        ],
+        [
+          31,
+          16.5
+        ],
+        [
+          31,
+          15.75
+        ],
+        [
+          32,
+          15.5
+        ]
+      ],
+      "uvPixels": [
+        [
+          722.5,
+          1228
+        ],
+        [
+          693.75,
+          1244.5
+        ],
+        [
+          693.75,
+          1238.125
+        ],
+        [
+          722.5,
+          1223.75
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-3-711-3-0",
+      "supportId": "riser-column-711",
+      "polygonPixels": [
+        [
+          32,
+          17.5
+        ],
+        [
+          31,
+          17.75
+        ],
+        [
+          31,
+          16.5
+        ],
+        [
+          32,
+          16
+        ]
+      ],
+      "uvPixels": [
+        [
+          722.5,
+          1240.75
+        ],
+        [
+          693.75,
+          1255.125
+        ],
+        [
+          693.75,
+          1244.5
+        ],
+        [
+          722.5,
+          1228
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-3-712-0-0",
+      "supportId": "riser-column-712",
+      "polygonPixels": [
+        [
+          33,
+          15.5
+        ],
+        [
+          32,
+          16
+        ],
+        [
+          32,
+          15.5
+        ],
+        [
+          33,
+          15.25
+        ]
+      ],
+      "uvPixels": [
+        [
+          751.25,
+          1211.5
+        ],
+        [
+          722.5,
+          1228
+        ],
+        [
+          722.5,
+          1223.75
+        ],
+        [
+          751.25,
+          1209.375
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-3-712-3-0",
+      "supportId": "riser-column-712",
+      "polygonPixels": [
+        [
+          33,
+          17.25
+        ],
+        [
+          32,
+          17.5
+        ],
+        [
+          32,
+          16
+        ],
+        [
+          33,
+          15.5
+        ]
+      ],
+      "uvPixels": [
+        [
+          751.25,
+          1226.375
+        ],
+        [
+          722.5,
+          1240.75
+        ],
+        [
+          722.5,
+          1228
+        ],
+        [
+          751.25,
+          1211.5
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-3-713-0-0",
+      "supportId": "riser-column-713",
+      "polygonPixels": [
+        [
+          33,
+          15.5
+        ],
+        [
+          33,
+          15.25
+        ],
+        [
+          34,
+          15
+        ]
+      ],
+      "uvPixels": [
+        [
+          751.25,
+          1211.5
+        ],
+        [
+          751.25,
+          1209.375
+        ],
+        [
+          780,
+          1195
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "riser-low-bearing-riser-3-713-3-0",
+      "supportId": "riser-column-713",
+      "polygonPixels": [
+        [
+          34,
+          17
+        ],
+        [
+          33,
+          17.25
+        ],
+        [
+          33,
+          15.5
+        ],
+        [
+          34,
+          15
+        ]
+      ],
+      "uvPixels": [
+        [
+          780,
+          1212
+        ],
+        [
+          751.25,
+          1226.375
+        ],
+        [
+          751.25,
+          1211.5
+        ],
+        [
+          780,
+          1195
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    }
+  ]
+}
