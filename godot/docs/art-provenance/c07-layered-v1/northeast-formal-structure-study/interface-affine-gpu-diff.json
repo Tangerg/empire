@@ -1,0 +1,47 @@
+{
+  "scope": "Same native2.5 camera/world framebuffer;72px caption excluded. Explicit interface domain plus2client-pixel AA halo. No zero-difference claim unless measured.",
+  "changedPixels": 6681,
+  "outsideDomainHaloChanged": 1838,
+  "outsideMaxChannelDelta": 42,
+  "maxChannelDelta": 255,
+  "changedBounds": [
+    688,
+    192,
+    791,
+    487
+  ],
+  "projectedDomain": [
+    [
+      695.1156387665196,
+      220.2477973568283
+    ],
+    [
+      739.818281938326,
+      238.41960352422916
+    ],
+    [
+      788.5187224669603,
+      220.2477973568283
+    ],
+    [
+      788.5187224669603,
+      267.4944933920705
+    ],
+    [
+      739.818281938326,
+      283.4856828193833
+    ],
+    [
+      695.1156387665196,
+      267.4944933920705
+    ]
+  ],
+  "rasterHaloClientPixels": 2,
+  "outsideDeltaHistogram": {
+    "0": 1838,
+    "1": 1306,
+    "2": 1023,
+    "5": 634,
+    "20": 72
+  }
+}

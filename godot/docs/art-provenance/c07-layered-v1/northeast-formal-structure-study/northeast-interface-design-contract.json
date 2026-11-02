@@ -1,0 +1,58 @@
+{
+  "designNotRestoration": true,
+  "replacementDomainTexturePixels": [
+    [
+      995,
+      392
+    ],
+    [
+      1118,
+      442
+    ],
+    [
+      1252,
+      392
+    ],
+    [
+      1252,
+      522
+    ],
+    [
+      1118,
+      566
+    ],
+    [
+      995,
+      522
+    ]
+  ],
+  "retained": "All baseline pixels/geometry outside declared interface domain, original arch/legs/roof except any later independently proven seam issue; original physical tower support curve;1103 road points.",
+  "fixedHoles": [
+    [
+      1416,
+      59
+    ],
+    [
+      1431,
+      66
+    ]
+  ],
+  "fixedMaterialPositives": [
+    [
+      1427,
+      67
+    ],
+    [
+      1435,
+      78
+    ]
+  ],
+  "notYetVerified": [
+    "GPU composition",
+    "physical connections",
+    "fixed holes",
+    "outside-domain invariance",
+    "actual actor/road",
+    "leaf absent"
+  ]
+}

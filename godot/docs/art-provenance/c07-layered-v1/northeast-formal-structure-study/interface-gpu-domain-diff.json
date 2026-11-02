@@ -1,0 +1,40 @@
+{
+  "scope": "Same native2.5 camera/world framebuffer, excludes72px caption. Declared new interface projected domain with2client-pixel raster/AA halo only; no claim unchanged inside domain.",
+  "changedPixels": 5664,
+  "outsideDomainHaloChanged": 871,
+  "maxChannelDelta": 255,
+  "changedBounds": [
+    688,
+    192,
+    791,
+    367
+  ],
+  "projectedDomain": [
+    [
+      695.1156387665196,
+      220.2477973568283
+    ],
+    [
+      739.818281938326,
+      238.41960352422916
+    ],
+    [
+      788.5187224669603,
+      220.2477973568283
+    ],
+    [
+      788.5187224669603,
+      267.4944933920705
+    ],
+    [
+      739.818281938326,
+      283.4856828193833
+    ],
+    [
+      695.1156387665196,
+      267.4944933920705
+    ]
+  ],
+  "rasterHaloClientPixels": 2,
+  "roofAndArchOutsideDomain": "FAILED"
+}

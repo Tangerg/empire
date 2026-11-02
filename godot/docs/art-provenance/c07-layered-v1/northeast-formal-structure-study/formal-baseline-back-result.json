@@ -1,5 +1,145 @@
 {
-  "scope": "Unselected frozen failed NE v2 through formal loader; detached real wolf-rider poses. No gameplay commands or save writers. Two lookout holes deliberately remain failed.",
+  "scope": "Unselected frozen failed NE v2; two holes intentionally remain covered; no commands or saves.",
+  "apertureWitnesses": [
+    {
+      "cell": [
+        88,
+        5
+      ],
+      "source": [
+        1416,
+        59
+      ],
+      "spriteLocal": [
+        0,
+        -290
+      ],
+      "actorOpaque": true,
+      "pick": "TacticalHit { Cell = BoardCell { X = 88, Y = 3 }, Kind = Ground, UnitId =  }",
+      "actorPickable": false
+    },
+    {
+      "cell": [
+        88,
+        5
+      ],
+      "source": [
+        1431,
+        66
+      ],
+      "spriteLocal": [
+        150,
+        -220
+      ],
+      "actorOpaque": false,
+      "pick": "TacticalHit { Cell = BoardCell { X = 89, Y = 4 }, Kind = Ground, UnitId =  }",
+      "actorPickable": false
+    },
+    {
+      "cell": [
+        88,
+        5
+      ],
+      "source": [
+        1427,
+        67
+      ],
+      "spriteLocal": [
+        110,
+        -210
+      ],
+      "actorOpaque": true,
+      "pick": "TacticalHit { Cell = BoardCell { X = 89, Y = 4 }, Kind = Ground, UnitId =  }",
+      "actorPickable": false
+    },
+    {
+      "cell": [
+        88,
+        5
+      ],
+      "source": [
+        1435,
+        78
+      ],
+      "spriteLocal": [
+        190,
+        -100
+      ],
+      "actorOpaque": false,
+      "pick": "TacticalHit { Cell = BoardCell { X = 89, Y = 4 }, Kind = Ground, UnitId =  }",
+      "actorPickable": false
+    },
+    {
+      "cell": [
+        89,
+        6
+      ],
+      "source": [
+        1416,
+        59
+      ],
+      "spriteLocal": [
+        -160,
+        -449.99994
+      ],
+      "actorOpaque": false,
+      "pick": "TacticalHit { Cell = BoardCell { X = 88, Y = 3 }, Kind = Ground, UnitId =  }",
+      "actorPickable": false
+    },
+    {
+      "cell": [
+        89,
+        6
+      ],
+      "source": [
+        1431,
+        66
+      ],
+      "spriteLocal": [
+        -10,
+        -379.99994
+      ],
+      "actorOpaque": true,
+      "pick": "TacticalHit { Cell = BoardCell { X = 89, Y = 4 }, Kind = Ground, UnitId =  }",
+      "actorPickable": false
+    },
+    {
+      "cell": [
+        89,
+        6
+      ],
+      "source": [
+        1427,
+        67
+      ],
+      "spriteLocal": [
+        -50,
+        -369.99994
+      ],
+      "actorOpaque": true,
+      "pick": "TacticalHit { Cell = BoardCell { X = 89, Y = 4 }, Kind = Ground, UnitId =  }",
+      "actorPickable": false
+    },
+    {
+      "cell": [
+        89,
+        6
+      ],
+      "source": [
+        1435,
+        78
+      ],
+      "spriteLocal": [
+        30,
+        -259.99994
+      ],
+      "actorOpaque": true,
+      "pick": "TacticalHit { Cell = BoardCell { X = 89, Y = 4 }, Kind = Ground, UnitId =  }",
+      "actorPickable": false
+    }
+  ],
+  "candidate": false,
+  "intentionallyReplacedSamples": 0,
   "stateUnchanged": true,
   "issues": 0,
   "front": false,

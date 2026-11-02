@@ -1,0 +1,18 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+ERROR: System.InvalidOperationException: A value of type 'System.Int32' cannot be converted to a 'System.Single'.
+   at System.Text.Json.Nodes.JsonValue`1.GetValue[T]()
+   at FormalNortheastBaselineProbe.Point(JsonNode value) in /workspace/scratch/84c9fe948755/c07-northeast-formal/FormalNortheastBaselineProbe.cs:line 143
+   at FormalNortheastBaselineProbe.<>c__DisplayClass0_2.<_Ready>b__15(JsonObject v) in /workspace/scratch/84c9fe948755/c07-northeast-formal/FormalNortheastBaselineProbe.cs:line 122
+   at System.Linq.Enumerable.TryGetSingle[TSource](IEnumerable`1 source, Func`2 predicate, Boolean& found)
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   at FormalNortheastBaselineProbe._Ready() in /workspace/scratch/84c9fe948755/c07-northeast-formal/FormalNortheastBaselineProbe.cs:line 122
+   at: void FormalNortheastBaselineProbe._Ready() (res://FormalNortheastBaselineProbe.cs:122)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void FormalNortheastBaselineProbe._Ready() (/workspace/scratch/84c9fe948755/c07-northeast-formal/FormalNortheastBaselineProbe.cs:122)
+       [2] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [3] bool FormalNortheastBaselineProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-northeast-formal/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/FormalNortheastBaselineProbe_ScriptMethods.generated.cs:48)
+       [4] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
