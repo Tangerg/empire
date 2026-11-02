@@ -23,6 +23,7 @@ public partial class AssembledGroundView : BoardGroundView
     private readonly List<(Node2D Node, Vector2 Contact, StandingVisual Visual, Coord? Selection)> _surfaces = new();
     private readonly List<TerrainDepthEntry> _depthEntries = new();
     private readonly List<CompiledSceneSurface.Instance> _surfaceInstances = new();
+    private readonly List<(Node2D Node, Sprite2D Source, Vector2 Contact)> _contacts = new();
     private IReadOnlyList<GroundSite> _sites = Array.Empty<GroundSite>();
     public override IReadOnlyList<string> Diagnostics => Array.Empty<string>();
     public override IReadOnlyList<TerrainDepthEntry> DepthEntries => _depthEntries;
@@ -148,6 +149,9 @@ public partial class AssembledGroundView : BoardGroundView
                     || selection is not null && instance.Pointer != "target"
                     || instance.Pointer is not ("target" or "block" or "pass-through"))
                     throw new InvalidOperationException($"Scene object pointer and site ownership are inconsistent: {instance.Id}.");
+                if (asset.ShadowRadii != Vector2.Zero)
+                    view.AddGroundContact(instance.Id, asset.ShadowRadii, instance.Scale,
+                        contact * BoardProjection.TileSize, shadows);
                 if (asset.Surfaces is { } surfaces)
                 {
                     if (!samplers.TryGetValue(instance.AssetId, out var sampler))
@@ -156,15 +160,11 @@ public partial class AssembledGroundView : BoardGroundView
                         view.AddChild(sampler);
                         samplers.Add(instance.AssetId, sampler);
                     }
-                    var firstSurface = true;
                     var surfaceInstance = surfaces.Instantiate(view, instance.Id, instance.Scale, asset.Anchor,
                         instance.Pointer != "pass-through", asset.PointerPolygon, sampler);
                     view._surfaceInstances.Add(surfaceInstance);
                     foreach (var (node, visual) in surfaceInstance.Pieces)
                     {
-                        if (firstSurface && asset.ShadowRadii != Vector2.Zero)
-                            node.AddChild(BoardLighting.CreateGroundContact(asset.ShadowRadii, shadows));
-                        firstSurface = false;
                         view._surfaces.Add((node, contact * BoardProjection.TileSize, visual, selection));
                     }
                     continue;
@@ -186,8 +186,6 @@ public partial class AssembledGroundView : BoardGroundView
                         TextureFilter = CanvasItem.TextureFilterEnum.LinearWithMipmaps
                     };
                     SpriteGroundContact.Attach(sprite, section.Front - section.Region.Position);
-                    if (index == 0)
-                        sprite.AddChild(BoardLighting.CreateGroundContact(asset.ShadowRadii, shadows));
                     view.AddChild(sprite);
                     view._objects.Add((sprite, contact * BoardProjection.TileSize, instance.Pointer != "pass-through", selection, asset.PointerPolygon));
                 }
@@ -196,6 +194,20 @@ public partial class AssembledGroundView : BoardGroundView
             return view;
         }
         catch { view.Free(); throw; }
+    }
+
+    // Keep the source alive: it borrows a cached texture or owns the uncached procedural fallback.
+    // A floor projection borrows that texture, never the first standing strip's depth or Pick owner.
+    private void AddGroundContact(string identity, Vector2 radii, float scale, Vector2 contact, ShadowCache? shadows)
+    {
+        var source = BoardLighting.CreateGroundContact(radii, shadows);
+        source.Position *= scale;
+        source.Scale *= scale;
+        source.Visible = false;
+        var node = new Node2D { Name = identity + "__ground_contact" };
+        AddChild(node);
+        node.AddChild(source);
+        _contacts.Add((node, source, contact));
     }
 
     public override void ConfigureAuthoredGround(Node2D authoredGround)
@@ -238,6 +250,22 @@ public partial class AssembledGroundView : BoardGroundView
             }
             AddChild(replacement);
             _surface = replacement;
+            foreach (var (node, source, contact) in _contacts)
+            {
+                // Preserve source size/opacity and use the existing registered ground-top depth partitions.
+                // Rebuild only with a replacement projection; PaintedSurface observes partition changes itself.
+                var position = projection.Project(contact);
+                var floor = PaintedSurface.Create(projection, source, position);
+                if (node.GetNodeOrNull<PaintedSurface>("RegisteredSurface") is { } old)
+                {
+                    node.RemoveChild(old);
+                    old.Free();
+                }
+                node.Position = position;
+                node.AddChild(floor);
+                // Equal surface depth must draw after the base floor, but before standing materials.
+                MoveChild(node, GetChildCount() - 1);
+            }
             _projection = projection;
         }
         _depthEntries.Clear();
