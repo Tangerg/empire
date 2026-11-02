@@ -1,0 +1,100 @@
+{
+  "textureResourcePath": "res://assets/native/c07-layered-v1/central-landmark-core-v1-candidate.png",
+  "supportLine": [
+    [
+      715,
+      485
+    ],
+    [
+      767,
+      512
+    ],
+    [
+      822,
+      485
+    ]
+  ],
+  "members": [
+    {
+      "id": "step-1-riser-0",
+      "polygon": [
+        [
+          715,
+          481
+        ],
+        [
+          767,
+          508
+        ],
+        [
+          767,
+          512
+        ],
+        [
+          715,
+          485
+        ]
+      ],
+      "uv": [
+        [
+          300,
+          1245
+        ],
+        [
+          455,
+          1320
+        ],
+        [
+          455,
+          1335
+        ],
+        [
+          300,
+          1260
+        ]
+      ],
+      "tint": "ffffff"
+    },
+    {
+      "id": "step-1-riser-1",
+      "polygon": [
+        [
+          767,
+          508
+        ],
+        [
+          822,
+          481
+        ],
+        [
+          822,
+          485
+        ],
+        [
+          767,
+          512
+        ]
+      ],
+      "uv": [
+        [
+          550,
+          1310
+        ],
+        [
+          780,
+          1195
+        ],
+        [
+          780,
+          1212
+        ],
+        [
+          550,
+          1327
+        ]
+      ],
+      "tint": "ffffff"
+    }
+  ],
+  "scope": "Source-informed low outer platform/three steps only. Hidden rear and centre connections are new design. Independent planters/benches/front corner post absent; no gameplay or terrain changes."
+}

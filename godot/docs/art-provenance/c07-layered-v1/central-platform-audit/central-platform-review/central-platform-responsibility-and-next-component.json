@@ -1,0 +1,748 @@
+{
+  "ready": true,
+  "scope": "Static original PNG/terrain/catalog/actual actor-alpha analysis only. No engine, GUI, battle commands or saves. Current selected partial candidate is not formal C07 gameplay acceptance.",
+  "source": {
+    "path": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/scenes/luojia.png",
+    "sha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+    "size": [
+      1536,
+      1024
+    ]
+  },
+  "responsibility": {
+    "id": "central-statue-and-planters",
+    "blockedCells": [
+      [
+        43,
+        27
+      ],
+      [
+        44,
+        27
+      ],
+      [
+        45,
+        27
+      ],
+      [
+        46,
+        27
+      ],
+      [
+        47,
+        27
+      ],
+      [
+        42,
+        28
+      ],
+      [
+        43,
+        28
+      ],
+      [
+        44,
+        28
+      ],
+      [
+        45,
+        28
+      ],
+      [
+        46,
+        28
+      ],
+      [
+        47,
+        28
+      ],
+      [
+        48,
+        28
+      ],
+      [
+        49,
+        28
+      ],
+      [
+        50,
+        28
+      ],
+      [
+        42,
+        29
+      ],
+      [
+        43,
+        29
+      ],
+      [
+        44,
+        29
+      ],
+      [
+        45,
+        29
+      ],
+      [
+        46,
+        29
+      ],
+      [
+        47,
+        29
+      ],
+      [
+        48,
+        29
+      ],
+      [
+        49,
+        29
+      ],
+      [
+        50,
+        29
+      ],
+      [
+        51,
+        29
+      ],
+      [
+        52,
+        29
+      ],
+      [
+        42,
+        30
+      ],
+      [
+        43,
+        30
+      ],
+      [
+        44,
+        30
+      ],
+      [
+        45,
+        30
+      ],
+      [
+        46,
+        30
+      ],
+      [
+        47,
+        30
+      ],
+      [
+        48,
+        30
+      ],
+      [
+        49,
+        30
+      ],
+      [
+        50,
+        30
+      ],
+      [
+        51,
+        30
+      ],
+      [
+        52,
+        30
+      ],
+      [
+        43,
+        31
+      ],
+      [
+        44,
+        31
+      ],
+      [
+        45,
+        31
+      ],
+      [
+        46,
+        31
+      ],
+      [
+        47,
+        31
+      ],
+      [
+        48,
+        31
+      ],
+      [
+        49,
+        31
+      ],
+      [
+        50,
+        31
+      ],
+      [
+        51,
+        31
+      ],
+      [
+        46,
+        32
+      ],
+      [
+        47,
+        32
+      ],
+      [
+        48,
+        32
+      ],
+      [
+        49,
+        32
+      ],
+      [
+        50,
+        32
+      ]
+    ],
+    "count": 50,
+    "auditPolygonIsNotSingleObjectFootprint": true,
+    "notCertified": "No claim that core, platform or any single planter physically carries all 50 cells."
+  },
+  "nextMinimalComponent": {
+    "id": "central-low-platform-and-front-stairs",
+    "reason": "Original platform/steps supporting blocked cells are absent from the current core-only selected candidate, leaving ordinary clean paving. Restore structural readability before decorative completion.",
+    "include": [
+      "Visible low central deck stone",
+      "West and southeast front stair runs"
+    ],
+    "exclude": [
+      "Core pillar and its own pedestal",
+      "Rear canopy post",
+      "Four planters and their individual bases",
+      "Benches",
+      "Front low corner pillar and its individual base",
+      "Rear garden beds"
+    ],
+    "completeOriginalGroundPolygon": null,
+    "reasonPolygonNull": "Exterior corners and joins are materially hidden by separate planters, benches and the front low pillar. A full closed outline would require explicit new-design hidden connections, not reconstruction of observed source facts."
+  },
+  "visiblePlatformTraces": [
+    {
+      "part": "west upper stair nosing",
+      "sourcePolyline": [
+        [
+          716,
+          475
+        ],
+        [
+          738,
+          486
+        ]
+      ],
+      "status": "manual approximate visible trace; not exact pixel contour"
+    },
+    {
+      "part": "west lowest visible stair edge",
+      "sourcePolyline": [
+        [
+          714,
+          491
+        ],
+        [
+          735,
+          502
+        ]
+      ],
+      "status": "manual approximate visible trace; ends hidden by adjacent containers"
+    },
+    {
+      "part": "southeast upper stair nosing",
+      "sourcePolyline": [
+        [
+          798,
+          487
+        ],
+        [
+          820,
+          476
+        ]
+      ],
+      "status": "manual approximate visible trace"
+    },
+    {
+      "part": "southeast lowest visible stair edge",
+      "sourcePolyline": [
+        [
+          803,
+          506
+        ],
+        [
+          824,
+          495
+        ]
+      ],
+      "status": "manual approximate visible trace; do not extend through bench/planter"
+    }
+  ],
+  "heightEvidence": "Visible corresponding upper/lowest west traces differ about 16-17 source Y pixels; this is projected total stair rise evidence, not a world-height measurement. Rear upper corners and a common full diamond are not certified.",
+  "materialMissingFromCore": [
+    {
+      "source": [
+        728,
+        488
+      ],
+      "materialObserved": "west stair stone surface",
+      "sourceRgb": [
+        130,
+        114,
+        97
+      ],
+      "cleanRgb": [
+        243,
+        199,
+        149
+      ],
+      "cell": [
+        45,
+        30
+      ],
+      "terrain": "#",
+      "currentCoreAssetPixel": [
+        98,
+        1391
+      ],
+      "currentCoreAlpha": 0
+    },
+    {
+      "source": [
+        808,
+        488
+      ],
+      "materialObserved": "southeast stair stone surface",
+      "sourceRgb": [
+        252,
+        221,
+        156
+      ],
+      "cleanRgb": [
+        248,
+        204,
+        153
+      ],
+      "cell": [
+        50,
+        30
+      ],
+      "terrain": "#",
+      "currentCoreAssetPixel": [
+        927,
+        1391
+      ],
+      "currentCoreAlpha": 0
+    },
+    {
+      "source": [
+        760,
+        504
+      ],
+      "materialObserved": "separate front low pillar gray face",
+      "sourceRgb": [
+        123,
+        121,
+        123
+      ],
+      "cleanRgb": [
+        191,
+        163,
+        134
+      ],
+      "cell": [
+        47,
+        31
+      ],
+      "terrain": "#",
+      "currentCoreAssetPixel": [
+        430,
+        1557
+      ],
+      "currentCoreAlpha": 0
+    },
+    {
+      "source": [
+        708,
+        478
+      ],
+      "materialObserved": "west planter wooden face",
+      "sourceRgb": [
+        203,
+        123,
+        64
+      ],
+      "cleanRgb": [
+        253,
+        209,
+        149
+      ],
+      "cell": [
+        44,
+        29
+      ],
+      "terrain": "#",
+      "currentCoreAssetPixel": [
+        -109,
+        1287
+      ],
+      "currentCoreAlpha": 0
+    },
+    {
+      "source": [
+        704,
+        488
+      ],
+      "materialObserved": "west planter stone base edge",
+      "sourceRgb": [
+        139,
+        139,
+        145
+      ],
+      "cleanRgb": [
+        231,
+        194,
+        157
+      ],
+      "cell": [
+        44,
+        30
+      ],
+      "terrain": "#",
+      "currentCoreAssetPixel": [
+        -150,
+        1391
+      ],
+      "currentCoreAlpha": 0
+    }
+  ],
+  "pavingNegativeWitnesses": [
+    {
+      "source": [
+        680,
+        504
+      ],
+      "materialObserved": "actual source exterior paving; physical platform must not be extended here merely to fill its responsibility bbox",
+      "sourceRgb": [
+        233,
+        203,
+        170
+      ],
+      "cleanRgb": [
+        244,
+        211,
+        170
+      ],
+      "cell": [
+        42,
+        31
+      ],
+      "terrain": "p",
+      "currentCoreAssetPixel": [
+        -399,
+        1557
+      ],
+      "currentCoreAlpha": 0
+    },
+    {
+      "source": [
+        712,
+        520
+      ],
+      "materialObserved": "actual source exterior paving; physical platform must not be extended here merely to fill its responsibility bbox",
+      "sourceRgb": [
+        223,
+        195,
+        163
+      ],
+      "cleanRgb": [
+        217,
+        183,
+        150
+      ],
+      "cell": [
+        44,
+        32
+      ],
+      "terrain": "p",
+      "currentCoreAssetPixel": [
+        -67,
+        1722
+      ],
+      "currentCoreAlpha": 0
+    },
+    {
+      "source": [
+        824,
+        520
+      ],
+      "materialObserved": "actual source exterior paving; physical platform must not be extended here merely to fill its responsibility bbox",
+      "sourceRgb": [
+        235,
+        199,
+        161
+      ],
+      "cleanRgb": [
+        239,
+        206,
+        163
+      ],
+      "cell": [
+        51,
+        32
+      ],
+      "terrain": "p",
+      "currentCoreAssetPixel": [
+        1093,
+        1722
+      ],
+      "currentCoreAlpha": 0
+    },
+    {
+      "source": [
+        808,
+        536
+      ],
+      "materialObserved": "actual source exterior paving; physical platform must not be extended here merely to fill its responsibility bbox",
+      "sourceRgb": [
+        216,
+        185,
+        153
+      ],
+      "cleanRgb": [
+        208,
+        180,
+        152
+      ],
+      "cell": [
+        50,
+        33
+      ],
+      "terrain": "p",
+      "currentCoreAssetPixel": [
+        927,
+        1888
+      ],
+      "currentCoreAlpha": 0
+    }
+  ],
+  "retractedPriorInterpretation": {
+    "source": [
+      712,
+      472
+    ],
+    "rgb": [
+      75,
+      69,
+      12
+    ],
+    "correction": "This is green foliage/dark leaf margin in the west planter, not certified wooden face or foundation. Retained as correction; replaced by wood708478 and stone704488."
+  },
+  "neighborRuleBoundary": {
+    "note": "These are canonical legal rectangles, not permission to demand every standing-object projected pixel be transparent. Check real physical bases/actor shoe paths, preserving the fixed source paving negatives.",
+    "southwestLegalRows": [
+      [
+        42,
+        31
+      ],
+      [
+        42,
+        32
+      ],
+      [
+        43,
+        32
+      ],
+      [
+        44,
+        32
+      ],
+      [
+        45,
+        32
+      ]
+    ],
+    "southeastLegalCell": [
+      51,
+      32
+    ],
+    "frontLegalRow33XRangeInclusive": [
+      43,
+      52
+    ],
+    "frontRow33SourceYStart": 528
+  },
+  "separateOwners": [
+    {
+      "id": "west-planter",
+      "visibleBaseWitness": [
+        704,
+        488
+      ],
+      "foliageNotFoot": true
+    },
+    {
+      "id": "southwest-front-planter",
+      "visibleBaseApprox": [
+        746,
+        515
+      ],
+      "hiddenRearUncertified": true
+    },
+    {
+      "id": "southeast-front-planter",
+      "visibleBaseApprox": [
+        782,
+        516
+      ],
+      "neighborWoodBenchSeparate": true,
+      "hiddenRearUncertified": true
+    },
+    {
+      "id": "east-planter",
+      "visibleBaseApprox": [
+        833,
+        490
+      ],
+      "baseMaterialWitness": [
+        832,
+        489
+      ],
+      "hiddenRearUncertified": true
+    },
+    {
+      "id": "front-low-corner-pillar",
+      "visibleFaceWitness": [
+        760,
+        504
+      ],
+      "lowestVisibleBaseApprox": [
+        767,
+        521
+      ],
+      "notCentralCoreFoot": true
+    },
+    {
+      "id": "rearBedsAndBenches",
+      "status": "Not fully foot-traced; visibly separate from core/platform, no invented hidden feet."
+    }
+  ],
+  "eastPlanterStaticRegressionCandidate": {
+    "priority": "After low structural platform; one bounded actual-C07 appearance case, no larger actor search.",
+    "asset": "res://assets/painted-units-v1/torren-stage01-v2.png",
+    "frameIndex": 0,
+    "frameRegion": [
+      0,
+      0,
+      557,
+      725
+    ],
+    "anchor": [
+      269,
+      565
+    ],
+    "scale": 0.0961538,
+    "back": {
+      "cell": [
+        52,
+        28
+      ],
+      "terrain": "p",
+      "foot": [
+        840,
+        456
+      ],
+      "facing": "west",
+      "points": [
+        {
+          "source": [
+            833,
+            450
+          ],
+          "material": "real foliage",
+          "rgb": [
+            45,
+            75,
+            45
+          ],
+          "framePixel": [
+            341,
+            502
+          ],
+          "actorAlpha": 253,
+          "oldPaintedOwners": []
+        },
+        {
+          "source": [
+            834,
+            451
+          ],
+          "material": "real foliage",
+          "rgb": [
+            58,
+            106,
+            55
+          ],
+          "framePixel": [
+            331,
+            512
+          ],
+          "actorAlpha": 252,
+          "oldPaintedOwners": []
+        }
+      ],
+      "expected": "Actual foreground planter should cover these actor pixels; old owner omission is static, native confirmation pending."
+    },
+    "front": {
+      "cell": [
+        51,
+        32
+      ],
+      "terrain": "p",
+      "foot": [
+        824,
+        520
+      ],
+      "facing": "east",
+      "source": [
+        832,
+        489
+      ],
+      "material": "real planter stone base",
+      "rgb": [
+        171,
+        159,
+        162
+      ],
+      "framePixel": [
+        352,
+        242
+      ],
+      "actorAlpha": 252,
+      "oldPaintedOwners": [],
+      "expected": "Actor is in front of the base and should remain visible."
+    }
+  },
+  "acceptanceBoundary": [
+    "No source-confirmed full platform rear polygon",
+    "No full 50-cell foundation certification",
+    "No actual C07 movement or native depth verification performed",
+    "No art generation, pixel alteration, selected scene changes, or gameplay rule changes",
+    "Do not combine the rear canopy pole with the landmark core"
+  ]
+}

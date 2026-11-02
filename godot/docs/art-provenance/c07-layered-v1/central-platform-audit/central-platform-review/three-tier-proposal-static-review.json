@@ -1,0 +1,405 @@
+{
+  "ready": true,
+  "scope": "Static review of parent-proposed three-tier coordinates; not a claim of source-exact reconstruction, actual footing clearance for every moving appearance, or native draw acceptance.",
+  "upperBackCorner": [
+    766,
+    448
+  ],
+  "upperBackCornerOwnership": "New-design hidden connection, not observed source foot or corner.",
+  "topFrontPolylines": [
+    [
+      [
+        716,
+        475
+      ],
+      [
+        767,
+        501
+      ],
+      [
+        820,
+        475
+      ]
+    ],
+    [
+      [
+        715,
+        481
+      ],
+      [
+        767,
+        508
+      ],
+      [
+        822,
+        481
+      ]
+    ],
+    [
+      [
+        714,
+        487
+      ],
+      [
+        767,
+        514
+      ],
+      [
+        824,
+        487
+      ]
+    ]
+  ],
+  "riserSourceYHeightEach": 4,
+  "lowestFrontFootline": [
+    [
+      714,
+      491
+    ],
+    [
+      767,
+      518
+    ],
+    [
+      824,
+      491
+    ]
+  ],
+  "allProposedSurfaceConvexHull": [
+    [
+      714,
+      487
+    ],
+    [
+      716,
+      475
+    ],
+    [
+      766,
+      448
+    ],
+    [
+      820,
+      475
+    ],
+    [
+      824,
+      487
+    ],
+    [
+      824,
+      491
+    ],
+    [
+      767,
+      518
+    ],
+    [
+      714,
+      491
+    ]
+  ],
+  "continuousPolygonVsCanonicalCellRectangles": {
+    "method": "Convex hull of all explicit top/riser vertices clipped against continuous 16x16 source-space cell rectangles; positive area only. Conservative projected envelope, not a physical footprint certification.",
+    "positiveAreaLegalCellOverlaps": [],
+    "overlappedWallCells": [
+      {
+        "cell": [
+          46,
+          28
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 65.95703703703475
+      },
+      {
+        "cell": [
+          47,
+          28
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 202.0799999999872
+      },
+      {
+        "cell": [
+          48,
+          28
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 176.0
+      },
+      {
+        "cell": [
+          49,
+          28
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 49.0
+      },
+      {
+        "cell": [
+          44,
+          29
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 26.403333333320916
+      },
+      {
+        "cell": [
+          45,
+          29
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 183.67999999999302
+      },
+      {
+        "cell": [
+          46,
+          29
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 255.96296296297805
+      },
+      {
+        "cell": [
+          47,
+          29
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 256.0
+      },
+      {
+        "cell": [
+          48,
+          29
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 256.0
+      },
+      {
+        "cell": [
+          49,
+          29
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 255.0
+      },
+      {
+        "cell": [
+          50,
+          29
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 176.0
+      },
+      {
+        "cell": [
+          51,
+          29
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 28.16666666668607
+      },
+      {
+        "cell": [
+          44,
+          30
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 71.08647798743914
+      },
+      {
+        "cell": [
+          45,
+          30
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 252.29315164219588
+      },
+      {
+        "cell": [
+          46,
+          30
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 256.0
+      },
+      {
+        "cell": [
+          47,
+          30
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 256.0
+      },
+      {
+        "cell": [
+          48,
+          30
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 256.0
+      },
+      {
+        "cell": [
+          49,
+          30
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 256.0
+      },
+      {
+        "cell": [
+          50,
+          30
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 254.4532163742697
+      },
+      {
+        "cell": [
+          51,
+          30
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 94.99122807016829
+      },
+      {
+        "cell": [
+          45,
+          31
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 37.82005590497283
+      },
+      {
+        "cell": [
+          46,
+          31
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 164.52830188677763
+      },
+      {
+        "cell": [
+          47,
+          31
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 253.35534591195756
+      },
+      {
+        "cell": [
+          48,
+          31
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 251.55263157893205
+      },
+      {
+        "cell": [
+          49,
+          31
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 162.52631578946603
+      },
+      {
+        "cell": [
+          50,
+          31
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 42.80994152047788
+      },
+      {
+        "cell": [
+          47,
+          32
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 41.096491228061495
+      },
+      {
+        "cell": [
+          48,
+          32
+        ],
+        "terrain": "#",
+        "projectedHullOverlapArea": 32.23684210528154
+      }
+    ]
+  },
+  "sourceDifferences": [
+    {
+      "part": "west lowest visible edge",
+      "sourceApproxAtX735": [
+        735,
+        502
+      ],
+      "proposedAtX735": [
+        735,
+        501.6981132075472
+      ],
+      "classification": "Approximate visible-trace agreement; no newly invented tolerance."
+    },
+    {
+      "part": "southeast lowest visible edge",
+      "sourceApprox": [
+        [
+          803,
+          506
+        ],
+        [
+          824,
+          495
+        ]
+      ],
+      "proposedAtSameX": [
+        [
+          803,
+          500.9473684210526
+        ],
+        [
+          824,
+          491
+        ]
+      ],
+      "classification": "Proposed right foot is about4-5 source pixels farther back than the manually traced original low edge. Record as incomplete/shortened original stair expression; this is not evidence of added legal-road intrusion."
+    },
+    {
+      "part": "front low corner pillar",
+      "originalFaceWitness": [
+        760,
+        504
+      ],
+      "originalOwnBaseApprox": [
+        767,
+        521
+      ],
+      "proposedPlatformFront": [
+        767,
+        518
+      ],
+      "classification": "Platform projected stone may cover the old pillar face coordinate, but must not certify the independent pillar as restored. Its own lower base remains distinct."
+    }
+  ],
+  "fixedExteriorPavingNegatives": [
+    [
+      680,
+      504
+    ],
+    [
+      712,
+      520
+    ],
+    [
+      824,
+      520
+    ],
+    [
+      808,
+      536
+    ]
+  ],
+  "recommendedBoundary": "Bounded candidate is compatible with current canonical cells in this continuous-envelope test. Keep the right-foot mismatch and hidden-connection design status explicit; do not change rules or treat the 50 responsibility cells as one image mask. Native/static body/ground rendering and any actual movement remain outside this review."
+}
