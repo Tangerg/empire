@@ -1,0 +1,25 @@
+{
+  "scope": "Same complete selected static layout/camera, baseline NE generic fallback is NOT equal quality.120 frames after60warmup. Absolute llvmpipe times not target hardware performance.",
+  "runs": [
+    {
+      "variant": "baseline63",
+      "depthEntries": 5454,
+      "sceneNodes": 9154,
+      "stateUnchanged": true,
+      "drawCallsMedian": 2672.0,
+      "objectsMedian": 4679.0,
+      "primitivesMedian": 297432.0,
+      "processSecondsMedian": 0.0999745
+    },
+    {
+      "variant": "candidate65",
+      "depthEntries": 5673,
+      "sceneNodes": 9604,
+      "stateUnchanged": true,
+      "drawCallsMedian": 2808.0,
+      "objectsMedian": 4818.0,
+      "primitivesMedian": 302313.0,
+      "processSecondsMedian": 0.1185295
+    }
+  ]
+}

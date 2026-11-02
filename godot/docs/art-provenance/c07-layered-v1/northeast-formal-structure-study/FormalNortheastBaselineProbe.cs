@@ -18,8 +18,10 @@ public partial class FormalNortheastBaselineProbe : Node
             var digest = EcmaJson.Stringify(state);
             var candidate = OS.GetEnvironment("NE_INTERFACE") == "1";
             var negative = OS.GetEnvironment("NE_NEGATIVE");
+            var leaf = OS.GetEnvironment("NE_LEAF") == "1";
+            if (leaf && (!candidate || negative.Length>0)) throw new Exception("Whole gate requires ordinary repaired interface.");
             if (negative is not ("" or "left-post" or "right-beam")) throw new Exception("Unknown static negative.");
-            var scene = AuthoredScene.Load(negative.Length > 0 ? $"res://northeast-negative-{negative}-scene.json" : candidate ? "res://northeast-interface-scene.json" : "res://northeast-baseline-scene.json");
+            var scene = AuthoredScene.Load(negative.Length > 0 ? $"res://northeast-negative-{negative}-scene.json" : leaf ? "res://northeast-leaf-scene.json" : candidate ? "res://northeast-interface-scene.json" : "res://northeast-baseline-scene.json");
             var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
             var board = new BoardView { AnimationsEnabled = false };
             AddChild(board);
@@ -133,7 +135,7 @@ public partial class FormalNortheastBaselineProbe : Node
                 ["ownershipMismatch"] = mismatch, ["gateTarget"] = target?.ToString(), ["approach"] = approach?.ToString(),
                 ["lookoutFixedSamples"] = lookout, ["witnesses"] = witnesses
             };
-            File.WriteAllText(ProjectSettings.GlobalizePath($"res://formal-{(candidate ? "interface" : "baseline")}-{(front ? "front" : "back")}-result.json"), result.ToJsonString(new() { WriteIndented = true }));
+            File.WriteAllText(ProjectSettings.GlobalizePath($"res://formal-{(leaf ? "whole-gate" : candidate ? "interface" : "baseline")}-{(front ? "front" : "back")}-result.json"), result.ToJsonString(new() { WriteIndented = true }));
             GD.Print(candidate ? "FORMAL_NORTHEAST_INTERFACE_CONTRACT_VERIFIED" : "FORMAL_NORTHEAST_FAILED_BASELINE_VERIFIED");
             GetTree().Quit();
         }

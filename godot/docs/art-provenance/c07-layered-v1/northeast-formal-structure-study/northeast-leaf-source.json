@@ -1,0 +1,164 @@
+{
+  "scope": "Unselected independent left leaf. Observed silhouette approximate +/-2 source pixels; hidden hinge/joinery is new design. No opening or rule changes.",
+  "textureResourcePath": "res://assets/native/c07-layered-v1/southeast-gate-v1-candidate.png",
+  "namePrefix": "NortheastWoodLeaf",
+  "supportLine": [
+    [
+      1355,
+      139
+    ],
+    [
+      1373,
+      131
+    ]
+  ],
+  "members": [
+    {
+      "id": "arched-left-leaf",
+      "polygon": [
+        [
+          1355,
+          104
+        ],
+        [
+          1360,
+          97
+        ],
+        [
+          1364,
+          94
+        ],
+        [
+          1369,
+          94
+        ],
+        [
+          1373,
+          96
+        ],
+        [
+          1373,
+          131
+        ],
+        [
+          1355,
+          139
+        ]
+      ],
+      "uv": [
+        [
+          736.0,
+          843.0
+        ],
+        [
+          752.9444444444445,
+          831.8
+        ],
+        [
+          766.5,
+          827.0
+        ],
+        [
+          783.4444444444445,
+          827.0
+        ],
+        [
+          797.0,
+          830.2
+        ],
+        [
+          797.0,
+          886.2
+        ],
+        [
+          736.0,
+          899.0
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "upper-rail",
+      "polygon": [
+        [
+          1356,
+          111
+        ],
+        [
+          1372,
+          103.9
+        ],
+        [
+          1372,
+          105.2
+        ],
+        [
+          1356,
+          112.3
+        ]
+      ],
+      "uv": [
+        [
+          740,
+          840
+        ],
+        [
+          740,
+          890
+        ],
+        [
+          749,
+          890
+        ],
+        [
+          749,
+          840
+        ]
+      ],
+      "tint": "c5b291",
+      "coverage": "opaque"
+    },
+    {
+      "id": "lower-rail",
+      "polygon": [
+        [
+          1356,
+          126
+        ],
+        [
+          1372,
+          118.9
+        ],
+        [
+          1372,
+          120.2
+        ],
+        [
+          1356,
+          127.3
+        ]
+      ],
+      "uv": [
+        [
+          740,
+          840
+        ],
+        [
+          740,
+          890
+        ],
+        [
+          749,
+          890
+        ],
+        [
+          749,
+          840
+        ]
+      ],
+      "tint": "c5b291",
+      "coverage": "opaque"
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "scope": "Unselected new frame/floor interface; explicit changed domain, two fixed holes and wood positives; detached wolf-rider; no commands or saves.",
+  "apertureWitnesses": [
+    {
+      "cell": [
+        88,
+        5
+      ],
+      "source": [
+        1416,
+        59
+      ],
+      "spriteLocal": [
+        0,
+        -290
+      ],
+      "actorOpaque": true,
+      "pick": "TacticalHit { Cell = BoardCell { X = 88, Y = 5 }, Kind = Unit, UnitId = 14 }",
+      "actorPickable": true
+    },
+    {
+      "cell": [
+        88,
+        5
+      ],
+      "source": [
+        1431,
+        66
+      ],
+      "spriteLocal": [
+        150,
+        -220
+      ],
+      "actorOpaque": false,
+      "pick": "TacticalHit { Cell = BoardCell { X = 89, Y = 4 }, Kind = Ground, UnitId =  }",
+      "actorPickable": false
+    },
+    {
+      "cell": [
+        88,
+        5
+      ],
+      "source": [
+        1427,
+        67
+      ],
+      "spriteLocal": [
+        110,
+        -210
+      ],
+      "actorOpaque": true,
+      "pick": "TacticalHit { Cell = BoardCell { X = 89, Y = 4 }, Kind = Ground, UnitId =  }",
+      "actorPickable": false
+    },
+    {
+      "cell": [
+        88,
+        5
+      ],
+      "source": [
+        1435,
+        78
+      ],
+      "spriteLocal": [
+        190,
+        -100
+      ],
+      "actorOpaque": false,
+      "pick": "TacticalHit { Cell = BoardCell { X = 89, Y = 4 }, Kind = Ground, UnitId =  }",
+      "actorPickable": false
+    },
+    {
+      "cell": [
+        89,
+        6
+      ],
+      "source": [
+        1416,
+        59
+      ],
+      "spriteLocal": [
+        -160,
+        -449.99994
+      ],
+      "actorOpaque": false,
+      "pick": "TacticalHit { Cell = BoardCell { X = 88, Y = 3 }, Kind = Ground, UnitId =  }",
+      "actorPickable": false
+    },
+    {
+      "cell": [
+        89,
+        6
+      ],
+      "source": [
+        1431,
+        66
+      ],
+      "spriteLocal": [
+        -10,
+        -379.99994
+      ],
+      "actorOpaque": true,
+      "pick": "TacticalHit { Cell = BoardCell { X = 89, Y = 6 }, Kind = Unit, UnitId = 14 }",
+      "actorPickable": true
+    },
+    {
+      "cell": [
+        89,
+        6
+      ],
+      "source": [
+        1427,
+        67
+      ],
+      "spriteLocal": [
+        -50,
+        -369.99994
+      ],
+      "actorOpaque": true,
+      "pick": "TacticalHit { Cell = BoardCell { X = 89, Y = 4 }, Kind = Ground, UnitId =  }",
+      "actorPickable": false
+    },
+    {
+      "cell": [
+        89,
+        6
+      ],
+      "source": [
+        1435,
+        78
+      ],
+      "spriteLocal": [
+        30,
+        -259.99994
+      ],
+      "actorOpaque": true,
+      "pick": "TacticalHit { Cell = BoardCell { X = 89, Y = 4 }, Kind = Ground, UnitId =  }",
+      "actorPickable": false
+    }
+  ],
+  "candidate": true,
+  "intentionallyReplacedSamples": 111,
+  "stateUnchanged": true,
+  "issues": 0,
+  "front": false,
+  "roadUnionCount": 1103,
+  "roadRegions": [
+    {
+      "id": "continuous-source-visible-opening-and-immediate-front",
+      "count": 1097,
+      "covered": 0
+    },
+    {
+      "id": "right-inner-leg-source-road-edge",
+      "count": 50,
+      "covered": 0
+    },
+    {
+      "id": "below-left-arch-stone-source-ground",
+      "count": 12,
+      "covered": 0
+    }
+  ],
+  "ownershipSamples": 5419,
+  "ownershipMismatch": 0,
+  "gateTarget": "TacticalHit { Cell = BoardCell { X = 83, Y = 11 }, Kind = Object, UnitId =  }",
+  "approach": "TacticalHit { Cell = BoardCell { X = 82, Y = 11 }, Kind = Ground, UnitId =  }",
+  "lookoutFixedSamples": [
+    {
+      "source": [
+        1416,
+        59
+      ],
+      "formalCovered": false
+    },
+    {
+      "source": [
+        1431,
+        66
+      ],
+      "formalCovered": false
+    },
+    {
+      "source": [
+        1427,
+        67
+      ],
+      "formalCovered": true
+    },
+    {
+      "source": [
+        1435,
+        78
+      ],
+      "formalCovered": true
+    }
+  ],
+  "witnesses": [
+    {
+      "source": [
+        1348,
+        121
+      ],
+      "actorOpaque": true,
+      "actorPickable": false
+    },
+    {
+      "source": [
+        1349,
+        122
+      ],
+      "actorOpaque": true,
+      "actorPickable": false
+    }
+  ]
+}
