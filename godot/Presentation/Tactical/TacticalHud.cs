@@ -159,7 +159,8 @@ public partial class TacticalHud : Control
             Place(portraitTray, 0, 1, 0, 1, 14, -126, 274, -8);
         }
         var actionCount = mainActions?.Key == "target" ? forecast is null ? 2 : 0 : mainActions?.Rows.Count(row => row.Key != "cancel") ?? 0;
-        var actionSlots = Math.Max(2, Math.Min(4, actionCount));
+        const int maximumActionSlots = 4;
+        var actionSlots = Math.Max(2, Math.Min(maximumActionSlots, actionCount));
         if (actionCount > 0 && !preserveActions)
         {
             var actionTray = TacticalHudStyle.CommandTray();
@@ -331,7 +332,7 @@ public partial class TacticalHud : Control
             GridContainer? commandGrid = null;
             if (section == mainActions && section.Key != "target")
             {
-                commandGrid = new GridContainer { Name = "Orders", Columns = Math.Max(1, Math.Min(4, section.Rows.Count(row => row.Key != "cancel"))), SizeFlagsHorizontal = SizeFlags.ShrinkBegin };
+                commandGrid = new GridContainer { Name = "Orders", Columns = Math.Max(1, Math.Min(maximumActionSlots, section.Rows.Count(row => row.Key != "cancel"))), SizeFlagsHorizontal = SizeFlags.ShrinkBegin };
                 rows.AddChild(commandGrid);
             }
             foreach (var row in section.Rows)
@@ -392,7 +393,7 @@ public partial class TacticalHud : Control
         }
         var hint = Label(projection.Hint, 13, TacticalHudStyle.Gold);
         hint.Name = "SelectionHint";
-        hint.Visible = ShowHint && mainActions is not null;
+        hint.Visible = ShowHint && projection.Hint.Length > 0;
         hint.TooltipText = projection.Hint;
         hint.MouseFilter = MouseFilterEnum.Pass;
         hint.MaxLinesVisible = forecast is null ? -1 : 2;
@@ -406,15 +407,25 @@ public partial class TacticalHud : Control
         }
         else
         {
+            var hintSlots = mainActions is null ? maximumActionSlots : actionSlots;
+            if (mainActions is null && hint.Visible)
+            {
+                var instructionTray = TacticalHudStyle.CommandTray();
+                instructionTray.Name = "InstructionTray";
+                AddChild(instructionTray);
+                Place(instructionTray, 0, 1, 0, 1, 278, -50, 278 + hintSlots * 106 + 28, -8);
+            }
             AddChild(hint);
-            Place(hint, 0, 1, 0, 1, 292, -32, 292 + actionSlots * 106, -10);
+            Place(hint, 0, 1, 0, 1, 292, -32, 292 + hintSlots * 106, -10);
             // Native wrapping owns the text height. Grow only its existing tray upward,
             // leaving all command hit targets and the bottom margin intact.
             void FitInstruction()
             {
-                if (generation != renderedGeneration || !hint.IsInsideTree() || mainActions is null
-                    || FindChild("OrderTray", false, false) is not Control tray
-                    || FindChild(mainActions.Key, false, false) is not Control actions)
+                if (generation != renderedGeneration || !hint.IsInsideTree()
+                    || FindChild(mainActions is null ? "InstructionTray" : "OrderTray", false, false) is not Control tray)
+                    return;
+                var actions = mainActions is null ? null : FindChild(mainActions.Key, false, false) as Control;
+                if (mainActions is not null && actions is null)
                     return;
                 var lines = hint.GetLineCount();
                 var textHeight = Enumerable.Range(0, lines).Sum(hint.GetLineHeight)
@@ -423,9 +434,12 @@ public partial class TacticalHud : Control
                 var extra = Math.Max(0, textHeight - 22) + bottomInset;
                 hint.OffsetBottom = -10 - bottomInset;
                 hint.OffsetTop = -32 - extra;
-                tray.OffsetTop = -126 - extra;
-                actions.OffsetTop = -113 - extra;
-                actions.OffsetBottom = -35 - extra;
+                tray.OffsetTop = actions is null ? hint.OffsetTop - 10 : -126 - extra;
+                if (actions is not null)
+                {
+                    actions.OffsetTop = -113 - extra;
+                    actions.OffsetBottom = -35 - extra;
+                }
             }
             hint.MinimumSizeChanged += FitInstruction;
             hint.Resized += FitInstruction;
