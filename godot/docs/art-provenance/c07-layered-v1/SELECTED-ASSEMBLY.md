@@ -15,11 +15,11 @@ The initial merge retained the barracks object's five-instance order, then the n
 
 ## What this is and is not
 
-At this checkpoint:39independent instances,6independently owned building/gate sites and3248depth entries. The3248includes the existing276-strip barracks body and178-strip granary body plus188-strip council hall and188-surface southeast stone gate plus22-surface independent wooden leaf and174-surface southwest stone gate with20-surface independent left leaf and305-surface six-component granary shed plus164-strip bales and20-surface post enclosure plus192-strip southern supply main body and223-surface southern cloth/posts plus245key-cargo supports and56granary courtyard masonry supports plus39independent timber supports and128central-core sprite strips plus387low-platform surfaces and96rear-white-planter strips; it is not a performance pass. The6sites are **not the total interactive sites of C07**. Remaining canonical sites are not restored: generic fallbacks where bound, otherwise absent bodies. Walls, other foundations, yard/stock, gates and scenery remain incomplete.
+Current counts and per-instance support/site owners are generated directly from the live resources in [selected-current-status.json](selected-current-status.json). Historical counts in batch reports are not current inventory. At the northwest integration checkpoint the assembly advanced61→63instances,7→8site owners and5056→5454depth entries. These are not completion percentages or a global performance pass; remaining canonical sites, foundations, walls/yard and scenery remain incomplete.
 
 Official `c01-07.json` is unchanged (55painted groups/108parts), and selected assembly remains `runtimeReady=false`. Neither clean-ground visibility nor default placeholders prove full foundation/route/art correctness. Do not bind it to normal campaign entry until selected/full-scene responsibility, material/contact integration, input/cue/camera and measured performance acceptance are complete. C06/C07 real gameplay remains separately paused; all present checks are pure static/display-clone tests.
 
-Next closed components must join this assembly while preserving previous actual-role/material/site tests. The northern rejected lookout geometry and absent leaves remain rejected/incomplete, not implicitly selected by consolidation.
+Next closed components must join this assembly while preserving previous actual-role/material/site tests. The old failed northern studies remain historical failures. The northwest gate now uses its separately verified final stone and leaf surfaces; the northeast lookout/leaf remain unresolved and unselected.
 
 Council hall integration: [selected-council-audit](selected-council-audit/README.md), exact reviewed asset/placement transfer with fresh three-role directions and two wrong-depth negatives.
 
@@ -44,3 +44,8 @@ Central landmark core only: [central-landmark-core-audit](central-landmark-core-
 Central low outer platform/steps: [central-platform-audit](central-platform-audit/README.md). Horizontal carrying planes use local row depth; each vertical step retains its physical lower foot. Planters/benches/corner post remain separate and absent. Geometry candidate only; flat slab material not final art.
 
 Rear east white planter: [central-white-planter-audit](central-white-planter-audit/README.md). Original leaf ownership repaired with a smaller, independently ground-standing new-design stone container; original illegal foot not mechanically copied. Front wooden box/stone plinth is a different owner and remains absent.
+
+
+## Northwest gate selected integration
+
+[Northwest formal study](northwest-formal-structure-study/README.md) documents the source registration, continuous1468-point opening, actual Torren roles, platform replacement ownership, independent inset leaf, targeted negatives and exact-pixel zero-contribution pruning. Only the final386-support stone and12-support leaf resources join this assembly. One stone-owned site at11,11; leaf has no site. No new runtime renderer or command path, and official C07 remains unchanged.

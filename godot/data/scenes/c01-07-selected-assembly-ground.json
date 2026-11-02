@@ -773,6 +773,33 @@
       "selectionCell": null,
       "ownsMapStructureBody": false,
       "pointer": "pass-through"
+    },
+    {
+      "id": "northwest-gate-stone",
+      "assetId": "northwest-gate-stone-surface-v1",
+      "contact": [
+        0,
+        0
+      ],
+      "scale": 1,
+      "selectionCell": [
+        11,
+        11
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "northwest-gate-leaf",
+      "assetId": "northwest-gate-leaf-surface-v1",
+      "contact": [
+        9.5625,
+        5.8125
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
     }
   ]
 }

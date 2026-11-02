@@ -16,7 +16,7 @@ public partial class FormalNorthwestPreview : Node2D
             var before = EcmaJson.Stringify(state);
             var variant = OS.GetEnvironment("NW_VARIANT");
             if (variant.Length == 0) variant = "stone";
-            var scene = AuthoredScene.Load(variant == "baseline" ? "res://data/scenes/c01-07-selected-assembly.json" : $"res://northwest-{variant}-scene.json");
+            var scene = AuthoredScene.Load((variant == "baseline" || variant == "selected-northwest") ? "res://data/scenes/c01-07-selected-assembly.json" : $"res://northwest-{variant}-scene.json");
             var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
             var board = new BoardView { AnimationsEnabled = false };
             AddChild(board);
@@ -33,7 +33,7 @@ public partial class FormalNorthwestPreview : Node2D
             board.Scale = Vector2.One * zoom;
             var overlay = new CanvasLayer(); AddChild(overlay);
             overlay.AddChild(new ColorRect { Color = new Color("#181818"), Size = new Vector2(1180, 72) });
-            overlay.AddChild(new Label { Text = $"C07 NORTHWEST STATIC MATERIAL STUDY — {variant}\nFormal loader; fixed Torren back pose; leaf={(variant.EndsWith("leaf") ? "new narrow design" : "absent")}; not gameplay or selected scene", Position = new Vector2(12, 12) });
+            overlay.AddChild(new Label { Text = $"C07 NORTHWEST STATIC MATERIAL STUDY — {variant}\nFormal loader; fixed Torren back pose; leaf={((variant == "selected-northwest" || variant.EndsWith("leaf")) ? "new narrow design" : "absent")}; {(variant == "selected-northwest" ? "selected candidate, official unchanged" : "unselected candidate")}; no gameplay", Position = new Vector2(12, 12) });
             void Layout() => board.Position = GetViewportRect().Size / 2 + (fullScene ? new Vector2(0, 36) : Vector2.Zero)
                 - board.Projection.CellContact(fullScene ? new(48, 32) : new(10, 7)) * zoom;
             GetViewport().SizeChanged += Layout;

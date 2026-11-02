@@ -19,7 +19,11 @@ public partial class NorthwestLeafProbe : Node
             if (negative is not ("" or "background" or "foreground")) throw new InvalidOperationException("Unknown leaf negative variant.");
             var pruned = OS.GetEnvironment("NW_PRUNED") == "1";
             if (pruned && negative.Length != 0) throw new InvalidOperationException("Pruned positive cannot silently reuse an unpruned negative scene.");
-            var scene = AuthoredScene.Load(negative.Length == 0 ? (pruned ? "res://northwest-platform-pruned-leaf-scene.json" : "res://northwest-platform-leaf-scene.json") : $"res://leaf-{negative}-scene.json");
+            var selected = OS.GetEnvironment("NW_SELECTED") == "1";
+            if (selected && negative.Length != 0) throw new InvalidOperationException("Selected scene cannot reuse an external negative variant.");
+            var gateInstance = selected ? "northwest-gate-stone" : "northwest-gate-study";
+            var leafInstance = selected ? "northwest-gate-leaf" : "northwest-leaf-study";
+            var scene = AuthoredScene.Load(selected ? "res://data/scenes/c01-07-selected-assembly.json" : negative.Length == 0 ? (pruned ? "res://northwest-platform-pruned-leaf-scene.json" : "res://northwest-platform-leaf-scene.json") : $"res://leaf-{negative}-scene.json");
             var loadClock = System.Diagnostics.Stopwatch.StartNew();
             var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
             var board = new BoardView { AnimationsEnabled = false };
@@ -43,7 +47,7 @@ public partial class NorthwestLeafProbe : Node
                 int id = unit["id"]!.GetValue<int>();
                 var actor = board.GetNode<CanvasGroup>($"CanonicalProjection/Unit_{id}");
                 var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
-                var leaves = ground!.DepthEntries.Where(d => d.Node.Name.ToString().StartsWith("northwest-leaf-study__", StringComparison.Ordinal)).ToArray();
+                var leaves = ground!.DepthEntries.Where(d => d.Node.Name.ToString().StartsWith(leafInstance + "__", StringComparison.Ordinal)).ToArray();
                 var rows = new JsonArray();
                 for (float py = 94.25f; py < 137; py++)
                     for (float px = 153.25f; px < 165; px++)
@@ -71,9 +75,9 @@ public partial class NorthwestLeafProbe : Node
             var output = new JsonObject { ["scope"] = "Detached real Torren display poses only; hiding leaf is a render-only ownership control, never a game command.", ["poses"] = results, ["stateUnchanged"] = digest == EcmaJson.Stringify(state), ["issues"] = board.RenderingIssueCount, ["negative"] = negative,
                 ["coldConfigureIncludingSceneRenderingMilliseconds"] = groundLoadMilliseconds,
                 ["totalDepthEntries"] = ground!.DepthEntries.Count,
-                ["gateDepthEntries"] = ground.DepthEntries.Count(d => d.Node.Name.ToString().StartsWith("northwest-gate-study__", StringComparison.Ordinal)),
-                ["leafDepthEntries"] = ground.DepthEntries.Count(d => d.Node.Name.ToString().StartsWith("northwest-leaf-study__", StringComparison.Ordinal)) };
-            File.WriteAllText(ProjectSettings.GlobalizePath(negative.Length == 0 ? (pruned ? "res://northwest-leaf-pruned-poses.json" : "res://northwest-leaf-actual-poses.json") : $"res://northwest-leaf-{negative}-negative-result.json"), output.ToJsonString(new() { WriteIndented = true }));
+                ["gateDepthEntries"] = ground.DepthEntries.Count(d => d.Node.Name.ToString().StartsWith(gateInstance + "__", StringComparison.Ordinal)),
+                ["leafDepthEntries"] = ground.DepthEntries.Count(d => d.Node.Name.ToString().StartsWith(leafInstance + "__", StringComparison.Ordinal)) };
+            File.WriteAllText(ProjectSettings.GlobalizePath(selected ? "res://northwest-selected-leaf-poses.json" : negative.Length == 0 ? (pruned ? "res://northwest-leaf-pruned-poses.json" : "res://northwest-leaf-actual-poses.json") : $"res://northwest-leaf-{negative}-negative-result.json"), output.ToJsonString(new() { WriteIndented = true }));
             foreach (var pose in results)
             {
                 var rows = pose!["witnesses"]!.AsArray();

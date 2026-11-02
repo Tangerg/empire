@@ -42,7 +42,7 @@ First optimization is same-material, same-depth, same-blend slice-local triangle
 
 ## Explicit unfinished quality
 
-Northern lookout architecture/voids and leaves; remaining scene responsibility; ground/building sharpness mismatch; dense roof/grain detail; flat gate wood/hinges; weak contact shadows; all-scene performance; and authorized real C07 flow remain unfinished. The selected local candidates are useful engineering evidence, not a claim of final top-tier art or whole-level completion.
+Northeast lookout architecture/voids and leaf (northwest final local geometry is now selected); remaining scene responsibility; ground/building sharpness mismatch; dense roof/grain detail; flat gate wood/hinges; weak contact shadows; all-scene performance; and authorized real C07 flow remain unfinished. The selected local candidates are useful engineering evidence, not a claim of final top-tier art or whole-level completion.
 
 ## Second formal-loader slice
 The seven-member barracks front canopy now follows the same compiler and explicit contact owner; no canopy-specific runtime path. Original triangle→slab clip→affine UV order differs from the fence exporter and is preserved. One source roof UV edge is deliberately inset0.2% to remove an alpha239 material defect. See [canopy-surface-audit](canopy-surface-audit/README.md) for original-failure, repaired equivalence, actual-role controls and GPU differences. Official scene binding remains blocked by incomplete scene responsibility.

@@ -1,5 +1,7 @@
 # C07 layered reconstruction — bounded integration status (2026-11-01)
 
+**Current inventory:** use the generated [selected-current-status.json](selected-current-status.json) and [SELECTED-ASSEMBLY.md](SELECTED-ASSEMBLY.md). The entries below are chronological historical checkpoints, not current counts. The final northwest stone/leaf have joined the selected candidate; northeast remains unresolved. Official scene/gameplay boundaries are unchanged.
+
 ## Current production boundary
 Production `c01-07.json` still uses the original painted ground:55groups/108standing parts,0standalone placements. All new material/geometry here is **unbound static engineering candidate**, not completed C07 gameplay, full-level acceptance, or performant production integration. C06/C07 real-play permission remains pending; no commands/saves/carryover have been advanced by these studies.
 

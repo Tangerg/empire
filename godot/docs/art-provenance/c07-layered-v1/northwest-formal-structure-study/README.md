@@ -61,3 +61,15 @@ Native default1.25 before/after world frame matches exactly:1180×688 region,0 d
 Whole-layout120-frame sample:2688→2672 draw calls;9213→9154 scene nodes;298046→297462 primitives. Compared with the less-detailed current selected fallback baseline2477 calls, the final added cost is195 calls(+7.87%), not an equal-quality regression metric. No FPS/global performance acceptance follows. No further architecture/precision optimization is included.
 
 This closes the bounded unselected gate study. Official C07 and selected assembly are still unchanged at this checkpoint. Any future selection must reference these sole final exported stone/leaf surfaces, not rebuild a second renderer or substitute old failed lookout data.
+
+## Joined the sole selected assembly
+
+The final stone and leaf now live in data/scenes/c01-07-northwest-gate-{stone,leaf}-surface.json and are referenced only by the existing selected catalog/layout. These runtime resources own the chosen geometry/UV/contact; external variants are frozen audit projections, not another advancing scene. Exact reviewed-resource SHA equality is recorded in selected-integration.json.
+
+Current derived status advances61→63instances,7→8sites,5056→5454ground depth entries. The canonical16-site native inventory confirms the northwest fallback node is suppressed. Door94,132 targets canonical11,11; approach200,184 remains Ground12,11. The site centre itself remains Ground by the existing authored pointer contract, not a failed anchor move. Original barracks/granary/council targets and pass-through roofs remain correct. Repeated RenderState does not accumulate entries or sites.
+
+Final selected checks: full assembly/static responsibility inventory; four stone front/back poses; independent leaf254 rear/152 front actual-alpha/Pick controls;1468continuous road samples; original lookout hole/post witnesses; unique station ownership. All initial engine snapshots remain unchanged. Production Rebuild and external probe build each0warnings/errors; indexed metadata154UIDs. No action/AI/save writer was invoked.
+
+Actual selected default frame is selected-northwest-default125.png; world area equals reviewed candidate exactly. The first selected screenshot had a stale diagnostic suffix claiming unselected; it is retained as STALE-LABEL and not used for user-facing scope. Corrected label explicitly says selected candidate/official unchanged. selected-whole-layout065.png shows the full incomplete layout, including untouched generic placeholders and missing wall/yard responsibilities, not a final scene-quality claim.
+
+Officialc01-07.json remains SHA5bd8cac7e2263dcffaf23b88c38b25515575678c3085a227e4a1f58f61abcd88; six paused-file hashes unchanged. Northeast lookout/leaf, other scene responsibilities, overall material/contact integration, global performance and separately authorized gameplay remain incomplete. This northwest gate is closed for this bounded batch; no further local material micro-iteration is scheduled.

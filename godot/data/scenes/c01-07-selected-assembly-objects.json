@@ -15098,6 +15098,50 @@
       ],
       "surfaceGeometryPath": "res://data/scenes/c01-07-left-courtyard-soil-surface.json",
       "contactShadowRadiiPixels": null
+    },
+    "northwest-gate-stone-surface-v1": {
+      "resourcePath": "res://assets/native/c07-layered-v1/northwest-gate-v1-stone-candidate.png",
+      "pixelSize": [
+        1326,
+        1186
+      ],
+      "anchorPixels": [
+        0,
+        0
+      ],
+      "contactShadowRadiiPixels": null,
+      "surfaceGeometryPath": "res://data/scenes/c01-07-northwest-gate-stone-surface.json",
+      "pointerPolygonPixels": [
+        [
+          86,
+          112
+        ],
+        [
+          101,
+          118
+        ],
+        [
+          101,
+          148
+        ],
+        [
+          86,
+          142
+        ]
+      ]
+    },
+    "northwest-gate-leaf-surface-v1": {
+      "resourcePath": "res://assets/native/c07-layered-v1/southeast-gate-v1-candidate.png",
+      "pixelSize": [
+        1326,
+        1186
+      ],
+      "anchorPixels": [
+        0,
+        0
+      ],
+      "contactShadowRadiiPixels": null,
+      "surfaceGeometryPath": "res://data/scenes/c01-07-northwest-gate-leaf-surface.json"
     }
   }
 }
