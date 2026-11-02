@@ -1,0 +1,862 @@
+{
+  "ready": true,
+  "scope": "Bounded south-front bearing group only, source PNG/terrain/current platform and existing planter actual foot samples. No GUI/engine/action/production writes.",
+  "originalCropBoundsExclusive": [
+    720,
+    482,
+    817,
+    533
+  ],
+  "minimumNextCoherentGroup": {
+    "members": [
+      "Left foreground wood-rimmed planted container and its gray stone enclosure/base",
+      "Independent central low stone corner column with its own projecting plinth",
+      "Right foreground planted container gray stone enclosure/base"
+    ],
+    "coordination": "Close their continuous southern bearing relationship together with existing platform edge; do not enlarge the platform into an arbitrary solid region to hide owner gaps. They may be separate members of one coherent assembly. Hidden joins must be new design.",
+    "notMandatoryInThisBatch": [
+      "Exact leaf duplication",
+      "Ornamental small finial on low column",
+      "Separate orange wood seat/brace to the right, unless choosing to restore its own ground/depth contract; do not borrow its feet for planter"
+    ]
+  },
+  "frozenThreeMaterials": [
+    {
+      "source": [
+        744,
+        514
+      ],
+      "rgb": [
+        73,
+        74,
+        80
+      ],
+      "material": "left planter gray stone front base; interior/lower face, NOT lowest foot",
+      "certainty": "visible material, not complete foundation",
+      "canonicalCell": [
+        46,
+        32
+      ],
+      "terrain": "#",
+      "selectedPlatformMembers": []
+    },
+    {
+      "source": [
+        782,
+        516
+      ],
+      "rgb": [
+        75,
+        74,
+        67
+      ],
+      "material": "right planter gray lower stone/contact band, NOT right wooden bench foot",
+      "certainty": "visible material, not complete foundation",
+      "canonicalCell": [
+        48,
+        32
+      ],
+      "terrain": "#",
+      "selectedPlatformMembers": []
+    },
+    {
+      "source": [
+        767,
+        519
+      ],
+      "rgb": [
+        221,
+        194,
+        182
+      ],
+      "material": "central low-column pale plinth face; NOT lowest foot",
+      "certainty": "visible material, not complete foundation",
+      "canonicalCell": [
+        47,
+        32
+      ],
+      "terrain": "#",
+      "selectedPlatformMembers": []
+    }
+  ],
+  "visibleFeetAndBands": {
+    "leftPlanter": {
+      "nearCornerApproximateBand": [
+        [
+          748,
+          517
+        ],
+        [
+          750,
+          519
+        ]
+      ],
+      "recommendedBoundedPreviewContact": [
+        749,
+        518
+      ],
+      "contactStatus": "New registration reference near observed corner; 1-2px stone/shadow mix. Not certified exact original lowest foot.",
+      "leftSideVisibleLowerBand": [
+        [
+          736,
+          511
+        ],
+        [
+          736,
+          513
+        ]
+      ],
+      "towardNearCornerBand": [
+        [
+          744,
+          515
+        ],
+        [
+          744,
+          518
+        ]
+      ],
+      "rightSide": "Pale stone face turns upward toward approx755511..756513, then central plinth obscures connection; complete right/rear foot NOT certified.",
+      "materialSamples": [
+        {
+          "source": [
+            733,
+            507
+          ],
+          "rgb": [
+            61,
+            58,
+            65
+          ],
+          "material": "left enclosure lower stone/end area",
+          "certainty": "visible material, not complete foundation",
+          "canonicalCell": [
+            45,
+            31
+          ],
+          "terrain": "#",
+          "selectedPlatformMembers": []
+        },
+        {
+          "source": [
+            740,
+            508
+          ],
+          "rgb": [
+            121,
+            122,
+            132
+          ],
+          "material": "left gray wall",
+          "certainty": "visible material, not complete foundation",
+          "canonicalCell": [
+            46,
+            31
+          ],
+          "terrain": "#",
+          "selectedPlatformMembers": []
+        },
+        {
+          "source": [
+            747,
+            515
+          ],
+          "rgb": [
+            101,
+            97,
+            98
+          ],
+          "material": "left near-gray base",
+          "certainty": "visible material, not complete foundation",
+          "canonicalCell": [
+            46,
+            32
+          ],
+          "terrain": "#",
+          "selectedPlatformMembers": []
+        }
+      ]
+    },
+    "centerColumn": {
+      "faceAndBaseSamples": [
+        {
+          "source": [
+            757,
+            517
+          ],
+          "rgb": [
+            90,
+            86,
+            90
+          ],
+          "material": "low-column plinth left lower side",
+          "certainty": "visible material, not complete foundation",
+          "canonicalCell": [
+            47,
+            32
+          ],
+          "terrain": "#",
+          "selectedPlatformMembers": []
+        },
+        {
+          "source": [
+            767,
+            519
+          ],
+          "rgb": [
+            221,
+            194,
+            182
+          ],
+          "material": "pale near-plinth face",
+          "certainty": "visible material, not complete foundation",
+          "canonicalCell": [
+            47,
+            32
+          ],
+          "terrain": "#",
+          "selectedPlatformMembers": []
+        },
+        {
+          "source": [
+            767,
+            521
+          ],
+          "rgb": [
+            125,
+            112,
+            105
+          ],
+          "material": "gray near-plinth lower band",
+          "certainty": "visible material, not complete foundation",
+          "canonicalCell": [
+            47,
+            32
+          ],
+          "terrain": "#",
+          "selectedPlatformMembers": []
+        }
+      ],
+      "nearFootBand": [
+        [
+          766,
+          522
+        ],
+        [
+          768,
+          523
+        ]
+      ],
+      "groundNegative": {
+        "source": [
+          767,
+          525
+        ],
+        "rgb": [
+          240,
+          219,
+          200
+        ],
+        "material": "paving below plinth",
+        "certainty": "visible floor",
+        "canonicalCell": [
+          47,
+          32
+        ],
+        "terrain": "#",
+        "selectedPlatformMembers": []
+      },
+      "hiddenRear": "Not observed, new design required."
+    },
+    "rightPlanter": {
+      "nearStoneLowerBand": [
+        [
+          782,
+          516
+        ],
+        [
+          786,
+          518
+        ]
+      ],
+      "recommendedBoundedPreviewContact": [
+        786,
+        518
+      ],
+      "contactStatus": "New design reference near visible lower stone; exact near-right stone corner is occluded by adjacent wood framing. Do not call this fully certified original foot.",
+      "leftSide": "Visible gray wall starts near775510 and reaches781515; inner/left ground join with central plinth is hidden/overlapped, not certified.",
+      "excludedWoodFootSamples": [
+        {
+          "source": [
+            790,
+            518
+          ],
+          "rgb": [
+            106,
+            65,
+            26
+          ],
+          "material": "dark wood near vertical brace/seat support, not planter stone",
+          "certainty": "visible material, not complete foundation",
+          "canonicalCell": [
+            49,
+            32
+          ],
+          "terrain": "#",
+          "selectedPlatformMembers": []
+        },
+        {
+          "source": [
+            802,
+            510
+          ],
+          "rgb": [
+            80,
+            48,
+            12
+          ],
+          "material": "dark wood outer support, not planter stone",
+          "certainty": "visible material, not complete foundation",
+          "canonicalCell": [
+            50,
+            31
+          ],
+          "terrain": "#",
+          "selectedPlatformMembers": []
+        }
+      ],
+      "stoneSamples": [
+        {
+          "source": [
+            780,
+            512
+          ],
+          "rgb": [
+            91,
+            87,
+            89
+          ],
+          "material": "right gray stone side",
+          "certainty": "visible material, not complete foundation",
+          "canonicalCell": [
+            48,
+            32
+          ],
+          "terrain": "#",
+          "selectedPlatformMembers": []
+        },
+        {
+          "source": [
+            782,
+            516
+          ],
+          "rgb": [
+            75,
+            74,
+            67
+          ],
+          "material": "right lower stone/contact band",
+          "certainty": "visible material, not complete foundation",
+          "canonicalCell": [
+            48,
+            32
+          ],
+          "terrain": "#",
+          "selectedPlatformMembers": []
+        },
+        {
+          "source": [
+            786,
+            515
+          ],
+          "rgb": [
+            97,
+            89,
+            89
+          ],
+          "material": "right gray stone face",
+          "certainty": "visible material, not complete foundation",
+          "canonicalCell": [
+            49,
+            32
+          ],
+          "terrain": "#",
+          "selectedPlatformMembers": []
+        }
+      ]
+    }
+  },
+  "currentPlatformRelation": {
+    "groundSupportLine": [
+      [
+        714,
+        491
+      ],
+      [
+        767,
+        518
+      ],
+      [
+        824,
+        491
+      ]
+    ],
+    "atOriginalWitnessX": [
+      {
+        "x": 744,
+        "supportY": 506.2830188679245,
+        "sourceMaterialY": 514
+      },
+      {
+        "x": 767,
+        "supportY": 518,
+        "sourceMaterialY": 519
+      },
+      {
+        "x": 782,
+        "supportY": 510.89473684210526,
+        "sourceMaterialY": 516
+      }
+    ],
+    "allThreeSourceMaterialsOutsideAllCurrentMembers": true,
+    "plainSharedAssetTrial": [
+      {
+        "id": "left",
+        "newDesignPreviewContactNotAccepted": [
+          749,
+          518
+        ],
+        "scale": 0.032,
+        "sourceTextureAnchor": [
+          640,
+          1056
+        ],
+        "actualFootPixelCount": 816,
+        "actualFootPixelsProjectedOnPlatformCount": 132,
+        "firstLastProjectedHits": [
+          {
+            "texture": [
+              934,
+              919
+            ],
+            "mappedSource": [
+              758.408,
+              513.616
+            ],
+            "platformMembers": [
+              "step-2-riser-0"
+            ]
+          },
+          {
+            "texture": [
+              1065,
+              845
+            ],
+            "mappedSource": [
+              762.6,
+              511.248
+            ],
+            "platformMembers": [
+              "step-2-tread-0"
+            ]
+          }
+        ],
+        "threeActualFootWitnesses": [
+          {
+            "label": "left",
+            "texture": [
+              250,
+              807
+            ],
+            "rgba": [
+              67,
+              57,
+              55,
+              129
+            ],
+            "mappedSource": [
+              736.52,
+              510.032
+            ],
+            "platformMembers": []
+          },
+          {
+            "label": "front",
+            "texture": [
+              640,
+              1056
+            ],
+            "rgba": [
+              60,
+              47,
+              39,
+              130
+            ],
+            "mappedSource": [
+              749.0,
+              518.0
+            ],
+            "platformMembers": []
+          },
+          {
+            "label": "right",
+            "texture": [
+              1065,
+              845
+            ],
+            "rgba": [
+              77,
+              56,
+              36,
+              139
+            ],
+            "mappedSource": [
+              762.6,
+              511.248
+            ],
+            "platformMembers": [
+              "step-2-tread-0"
+            ]
+          }
+        ],
+        "status": "NOT accepted as wholly independent ground-standing registration. One true side foot projects onto current second tread, while near/other side feet remain off-platform. This is a bearing/appearance conflict, not hidden 3D volume proof."
+      },
+      {
+        "id": "right",
+        "newDesignPreviewContactNotAccepted": [
+          786,
+          518
+        ],
+        "scale": 0.032,
+        "sourceTextureAnchor": [
+          640,
+          1056
+        ],
+        "actualFootPixelCount": 816,
+        "actualFootPixelsProjectedOnPlatformCount": 116,
+        "firstLastProjectedHits": [
+          {
+            "texture": [
+              250,
+              807
+            ],
+            "mappedSource": [
+              773.52,
+              510.032
+            ],
+            "platformMembers": [
+              "step-2-tread-1"
+            ]
+          },
+          {
+            "texture": [
+              365,
+              905
+            ],
+            "mappedSource": [
+              777.2,
+              513.168
+            ],
+            "platformMembers": [
+              "step-2-riser-1"
+            ]
+          }
+        ],
+        "threeActualFootWitnesses": [
+          {
+            "label": "left",
+            "texture": [
+              250,
+              807
+            ],
+            "rgba": [
+              67,
+              57,
+              55,
+              129
+            ],
+            "mappedSource": [
+              773.52,
+              510.032
+            ],
+            "platformMembers": [
+              "step-2-tread-1"
+            ]
+          },
+          {
+            "label": "front",
+            "texture": [
+              640,
+              1056
+            ],
+            "rgba": [
+              60,
+              47,
+              39,
+              130
+            ],
+            "mappedSource": [
+              786.0,
+              518.0
+            ],
+            "platformMembers": []
+          },
+          {
+            "label": "right",
+            "texture": [
+              1065,
+              845
+            ],
+            "rgba": [
+              77,
+              56,
+              36,
+              139
+            ],
+            "mappedSource": [
+              799.6,
+              511.248
+            ],
+            "platformMembers": []
+          }
+        ],
+        "status": "NOT accepted as wholly independent ground-standing registration. One true side foot projects onto current second tread, while near/other side feet remain off-platform. This is a bearing/appearance conflict, not hidden 3D volume proof."
+      }
+    ],
+    "requiredBoundary": "Source-near contacts alone do not prove whole container ground contact. Check the complete fixed actual stone foot contour and full stone body against intended ground support; coordinate with platform instead of shrinking only to satisfy pixels. Projected body overlap is not automatically solid-volume penetration."
+  },
+  "joint50CellPartialEvidence": {
+    "leftPlanter": [
+      [
+        45,
+        31
+      ],
+      [
+        46,
+        31
+      ],
+      [
+        46,
+        32
+      ]
+    ],
+    "centerPlinth": [
+      [
+        47,
+        32
+      ]
+    ],
+    "rightPlanterStone": [
+      [
+        48,
+        32
+      ],
+      [
+        49,
+        32
+      ]
+    ],
+    "status": "Cells containing the listed visible lower-structure material/bands only; NOT complete cell allocation or certified hidden footprint. Other cells remain assigned by evidence, not bbox."
+  },
+  "closestLegalRoadCells": [
+    {
+      "cell": [
+        45,
+        32
+      ],
+      "sourceContact": [
+        728,
+        520
+      ],
+      "terrain": "p"
+    },
+    {
+      "cell": [
+        51,
+        32
+      ],
+      "sourceContact": [
+        824,
+        520
+      ],
+      "terrain": "p"
+    },
+    {
+      "cell": [
+        46,
+        33
+      ],
+      "sourceContact": [
+        744,
+        536
+      ],
+      "terrain": "p"
+    },
+    {
+      "cell": [
+        47,
+        33
+      ],
+      "sourceContact": [
+        760,
+        536
+      ],
+      "terrain": "p"
+    },
+    {
+      "cell": [
+        48,
+        33
+      ],
+      "sourceContact": [
+        776,
+        536
+      ],
+      "terrain": "p"
+    },
+    {
+      "cell": [
+        49,
+        33
+      ],
+      "sourceContact": [
+        792,
+        536
+      ],
+      "terrain": "p"
+    },
+    {
+      "cell": [
+        50,
+        33
+      ],
+      "sourceContact": [
+        808,
+        536
+      ],
+      "terrain": "p"
+    }
+  ],
+  "floorNegatives": [
+    {
+      "source": [
+        736,
+        517
+      ],
+      "rgb": [
+        252,
+        226,
+        183
+      ],
+      "material": "paving below left side",
+      "certainty": "visible material, not complete foundation",
+      "canonicalCell": [
+        46,
+        32
+      ],
+      "terrain": "#",
+      "selectedPlatformMembers": []
+    },
+    {
+      "source": [
+        744,
+        522
+      ],
+      "rgb": [
+        230,
+        200,
+        174
+      ],
+      "material": "paving in front of left base",
+      "certainty": "visible material, not complete foundation",
+      "canonicalCell": [
+        46,
+        32
+      ],
+      "terrain": "#",
+      "selectedPlatformMembers": []
+    },
+    {
+      "source": [
+        750,
+        520
+      ],
+      "rgb": [
+        240,
+        204,
+        164
+      ],
+      "material": "paving below near-left corner",
+      "certainty": "visible material, not complete foundation",
+      "canonicalCell": [
+        46,
+        32
+      ],
+      "terrain": "#",
+      "selectedPlatformMembers": []
+    },
+    {
+      "source": [
+        767,
+        525
+      ],
+      "rgb": [
+        240,
+        219,
+        200
+      ],
+      "material": "paving in front of central plinth",
+      "certainty": "visible material, not complete foundation",
+      "canonicalCell": [
+        47,
+        32
+      ],
+      "terrain": "#",
+      "selectedPlatformMembers": []
+    },
+    {
+      "source": [
+        782,
+        520
+      ],
+      "rgb": [
+        246,
+        218,
+        159
+      ],
+      "material": "paving in front of right stone",
+      "certainty": "visible material, not complete foundation",
+      "canonicalCell": [
+        48,
+        32
+      ],
+      "terrain": "#",
+      "selectedPlatformMembers": []
+    },
+    {
+      "source": [
+        792,
+        523
+      ],
+      "rgb": [
+        241,
+        208,
+        169
+      ],
+      "material": "paving in front of wood framing",
+      "certainty": "visible material, not complete foundation",
+      "canonicalCell": [
+        49,
+        32
+      ],
+      "terrain": "#",
+      "selectedPlatformMembers": []
+    }
+  ],
+  "limitations": [
+    "Some true source paving negatives lie in blocked cells; those centers/areas must not be filled merely to increase coverage.",
+    "No complete original hidden foundation polygons inferred.",
+    "No source-near shared-asset fit is approved here; .032 trial exposes a tread-bearing conflict.",
+    "No new real-role scan or native verification in this task."
+  ]
+}

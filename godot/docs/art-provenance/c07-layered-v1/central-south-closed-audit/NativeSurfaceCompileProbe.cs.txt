@@ -1,0 +1,8 @@
+using Godot;
+using Empire.Presentation;
+public partial class NativeSurfaceCompileProbe:Node {
+ public override void _Ready(){try{
+ var path=OS.GetEnvironment("SURFACE_DOCUMENT");var texturePath=OS.GetEnvironment("SURFACE_TEXTURE");if(path.Length==0||texturePath.Length==0)throw new Exception("Exact document and texture required");
+ var document=PresentationJson.Load<SceneSurfaceDocument>(path);var texture=GD.Load<Texture2D>(texturePath);_ = CompiledSceneSurface.Compile(document,texture,path);GD.Print($"FORMAL_SURFACE_COMPILE_COMPLETE supports={document.Supports.Length} members={document.Members.Length}");GetTree().Quit();
+ }catch(Exception ex){GD.PushError(ex.ToString());GetTree().Quit(1);}}
+}

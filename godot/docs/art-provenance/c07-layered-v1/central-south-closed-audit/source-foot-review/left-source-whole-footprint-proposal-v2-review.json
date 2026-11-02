@@ -1,0 +1,411 @@
+{
+  "ready": true,
+  "scope": "One bounded whole-left-planter replacement ground proposal, not the earlier narrow joining edge. Static source+math only.",
+  "proposal": [
+    [
+      733,
+      509
+    ],
+    [
+      749,
+      518
+    ],
+    [
+      758,
+      514
+    ],
+    [
+      743,
+      507
+    ]
+  ],
+  "newDesignRightAndRear": [
+    [
+      758,
+      514
+    ],
+    [
+      743,
+      507
+    ]
+  ],
+  "sixPixelStoneBodyFrontFaces": [
+    {
+      "id": "stone-left",
+      "polygon": [
+        [
+          733,
+          503
+        ],
+        [
+          749,
+          512
+        ],
+        [
+          749,
+          518
+        ],
+        [
+          733,
+          509
+        ]
+      ]
+    },
+    {
+      "id": "stone-right",
+      "polygon": [
+        [
+          749,
+          512
+        ],
+        [
+          758,
+          508
+        ],
+        [
+          758,
+          514
+        ],
+        [
+          749,
+          518
+        ]
+      ]
+    }
+  ],
+  "frozenStoneMaterialBearing": [
+    {
+      "sourcePoint": [
+        740,
+        508
+      ],
+      "faceOwners": [
+        "stone-left"
+      ]
+    },
+    {
+      "sourcePoint": [
+        744,
+        514
+      ],
+      "faceOwners": [
+        "stone-left"
+      ]
+    },
+    {
+      "sourcePoint": [
+        736,
+        512
+      ],
+      "faceOwners": []
+    }
+  ],
+  "sourceLandmarkStatus": [
+    {
+      "point": [
+        733,
+        509
+      ],
+      "rgb": [
+        102,
+        100,
+        107
+      ],
+      "classification": "visible lower gray band, exact stone/shadow contact uncertain"
+    },
+    {
+      "point": [
+        749,
+        517
+      ],
+      "rgb": [
+        91,
+        71,
+        57
+      ],
+      "classification": "dark near-corner contact band"
+    },
+    {
+      "point": [
+        749,
+        518
+      ],
+      "rgb": [
+        98,
+        78,
+        57
+      ],
+      "classification": "dark near-corner contact band"
+    },
+    {
+      "point": [
+        749,
+        519
+      ],
+      "rgb": [
+        226,
+        196,
+        167
+      ],
+      "classification": "paving immediately below near corner"
+    },
+    {
+      "point": [
+        758,
+        513
+      ],
+      "rgb": [
+        200,
+        182,
+        161
+      ],
+      "classification": "pale central low-column plinth upper-left material, NOT certified left-planter right foot"
+    },
+    {
+      "point": [
+        758,
+        514
+      ],
+      "rgb": [
+        223,
+        202,
+        177
+      ],
+      "classification": "same adjacent central plinth pale face"
+    }
+  ],
+  "sourceOriginalFeetConclusion": "Near749517..518 is supported. Left733509 is a lower-edge band, not exact isolated corner; right758513 is another owner/hidden join, so all three must not be called original planter feet.",
+  "terrain": {
+    "positiveAreaCells": [
+      {
+        "cell": [
+          45,
+          31
+        ],
+        "terrain": "#",
+        "area": 3.431250000023283
+      },
+      {
+        "cell": [
+          46,
+          31
+        ],
+        "terrain": "#",
+        "area": 54.66874999998254
+      },
+      {
+        "cell": [
+          47,
+          31
+        ],
+        "terrain": "#",
+        "area": 0.6857142857043073
+      },
+      {
+        "cell": [
+          46,
+          32
+        ],
+        "terrain": "#",
+        "area": 48.0
+      },
+      {
+        "cell": [
+          47,
+          32
+        ],
+        "terrain": "#",
+        "area": 15.714285714289872
+      }
+    ],
+    "allBlocked": true
+  },
+  "walk": {
+    "testedSegments": 82950,
+    "intersectingSegments": 0,
+    "minimumDistance": 2.987664719323688,
+    "closest": {
+      "fromCell": [
+        45,
+        32
+      ],
+      "toCell": [
+        44,
+        32
+      ],
+      "west": true,
+      "frame": 3,
+      "soleFramePixel": [
+        34,
+        553
+      ],
+      "segment": [
+        [
+          743.384608,
+          518.2692316
+        ],
+        [
+          727.384608,
+          518.2692316
+        ]
+      ],
+      "kind": "moving-start",
+      "point": [
+        743.384608,
+        518.2692316
+      ],
+      "nearestPoint": [
+        744.849344208902,
+        515.6652561175074
+      ],
+      "baseEdge": [
+        [
+          733,
+          509
+        ],
+        [
+          749,
+          518
+        ]
+      ],
+      "parameter": 0.7405840130563781
+    },
+    "firstViolations": []
+  },
+  "platformActualSupport": {
+    "testedSegments": 2,
+    "intersectingSegments": 0,
+    "minimumDistance": 0.5211740453328016,
+    "closest": {
+      "supportSegment": 0,
+      "segment": [
+        [
+          714.0,
+          491.0
+        ],
+        [
+          767.0,
+          518.0
+        ]
+      ],
+      "kind": "fixed-edge-end",
+      "point": [
+        758.0,
+        514.0
+      ],
+      "nearestPoint": [
+        758.236574335783,
+        513.5356133408706
+      ],
+      "baseEdge": [
+        [
+          749,
+          518
+        ],
+        [
+          758,
+          514
+        ]
+      ],
+      "parameter": 0.8346523459581685
+    },
+    "firstViolations": []
+  },
+  "platformSupportCrossings": [],
+  "newRightPointInFrontOfPlatformBy": 0.5849056603773306,
+  "relations": {
+    "newCentralPlinth": {
+      "testedSegments": 4,
+      "intersectingSegments": 0,
+      "minimumDistance": 8.459462157844316,
+      "closest": {
+        "edgeIndex": 1,
+        "segment": [
+          [
+            749.0,
+            518.0
+          ],
+          [
+            758.0,
+            514.0
+          ]
+        ],
+        "kind": "moving-end",
+        "point": [
+          758.0,
+          514.0
+        ],
+        "nearestPoint": [
+          762.75,
+          521.0
+        ],
+        "baseEdge": [
+          [
+            762.75,
+            521.0
+          ],
+          [
+            767.75,
+            524.0
+          ]
+        ],
+        "parameter": 0.0
+      },
+      "firstViolations": [],
+      "otherVerticesInside": 0,
+      "groundDomainsDisjoint": true
+    },
+    "newRightPlanter": {
+      "testedSegments": 4,
+      "intersectingSegments": 0,
+      "minimumDistance": 14.661494603211489,
+      "closest": {
+        "edgeIndex": 1,
+        "segment": [
+          [
+            749.0,
+            518.0
+          ],
+          [
+            758.0,
+            514.0
+          ]
+        ],
+        "kind": "moving-end",
+        "point": [
+          758.0,
+          514.0
+        ],
+        "nearestPoint": [
+          772.52,
+          516.032
+        ],
+        "baseEdge": [
+          [
+            772.52,
+            516.032
+          ],
+          [
+            785,
+            513
+          ]
+        ],
+        "parameter": 0.0
+      },
+      "firstViolations": [],
+      "otherVerticesInside": 0,
+      "groundDomainsDisjoint": true
+    }
+  },
+  "decision": "Updated right758514 and rear743507 are explicit new design. Evaluate full results; original right758513 source label remains withdrawn. A geometric pass is not native body/depth acceptance.",
+  "boundedAdjustmentConstraint": {
+    "rightX": 758,
+    "platformGroundFrontY": 513.4150943396227,
+    "requirement": "Any independently ground-standing right closure atx758 must stay in front of this true support boundary, with the entire connecting edge checked. This is a boundary, not an approved point or invented tolerance."
+  },
+  "limitations": [
+    "Only local front support crossing is proven; no hidden full platform volume inferred from bbox.",
+    "Zero boots is not acceptance of wrong material ownership or partly stair-bearing object.",
+    "No production changes, GUI/engine/actions, or pixel edits."
+  ]
+}

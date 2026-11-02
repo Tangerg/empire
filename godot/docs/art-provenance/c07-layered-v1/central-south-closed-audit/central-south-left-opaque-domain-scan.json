@@ -1,0 +1,55 @@
+{
+  "scope": "Conservative raster mask of all opaque source UV polygons, actual raw texture; no alpha changes and no actorPick threshold claim. Runtime compile remains authoritative.",
+  "parts": [
+    {
+      "part": "stone-top",
+      "minimumAlpha": 252,
+      "sampledTexels": 1441
+    },
+    {
+      "part": "stone-left",
+      "minimumAlpha": 252,
+      "sampledTexels": 19811
+    },
+    {
+      "part": "stone-right",
+      "minimumAlpha": 252,
+      "sampledTexels": 15181
+    },
+    {
+      "part": "wood-left",
+      "minimumAlpha": 252,
+      "sampledTexels": 59236
+    },
+    {
+      "part": "wood-right",
+      "minimumAlpha": 251,
+      "sampledTexels": 81776
+    },
+    {
+      "part": "soil",
+      "minimumAlpha": 253,
+      "sampledTexels": 121
+    },
+    {
+      "part": "rim-0",
+      "minimumAlpha": 252,
+      "sampledTexels": 3056
+    },
+    {
+      "part": "rim-1",
+      "minimumAlpha": 252,
+      "sampledTexels": 3056
+    },
+    {
+      "part": "rim-2",
+      "minimumAlpha": 252,
+      "sampledTexels": 3056
+    },
+    {
+      "part": "rim-3",
+      "minimumAlpha": 252,
+      "sampledTexels": 3056
+    }
+  ]
+}

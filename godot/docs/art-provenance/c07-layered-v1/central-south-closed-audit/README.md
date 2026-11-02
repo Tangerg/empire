@@ -1,0 +1,32 @@
+# Selected southern central bearing group — geometry closed, final art unaccepted
+
+2026-11-02. Three members added to the one selected assembly: left complete stone/wood/foliage native-UV reconstruction, right existing planter material instance, independent low pier. **47 instances / 6 sites / 3,752 depth entries**. Production official C07 remains unchanged, `runtimeReady=false`; no C06/C07 action/AI/turn/save tests.
+
+## Responsibility, not centre-filling
+- Prior moved/shrunken shared left planter lost true stone740508/744514. It was NOT accepted as closing the group. The new whole base `[(733,509),(749,518),(758,514),(743,507)]` now owns those two actual stone faces through the formal renderer. Left733509 is a mixed lower-edge band; near749517–518 is evidenced; right/back corners are **NEW design**, not recovered hidden feet. Prior758513 attribution to left planter was withdrawn: that source pixel belongs to the adjacent original low-column plinth.
+- New complete base is6px high; wood container7px above it, foliage roots actually on its soil. Original gray-boundary736512 is not forced into a solid wall. Whole base positive area lies only on blocked cells, 82,950 sampled real Torren shoe-edge swept segments0intersection, minimum2.9877px; actual platform-front trace separation0.5212px. New pier/right planter separated8.4595/14.6615px. These are bounded appearance/frame/corridor checks, not all units/all map movement.
+- Right planter is explicit forward independent-ground new design; source782516 becomes wood, not stone. Its own stone base has816 measured feet and tested shoe clearance. Central low pier owns its separate ground base; prior0.0124816px² real intersection removed by+0.75x, not by bbox tolerance. It is lower than initial tall candidate. Original finial/right external bench absent; not required to close this bearing group.
+- Fifty sourceblocked centres:28 currently have formal material. **Not a56%foundation completion score.** Empty centres include true paving and require classification, not arbitrary solid fill. Rear-east planted-bed original leaf gap remains UNRESOLVED; failed rear candidates not selected.
+
+## One runtime owner; carrying surfaces versus standing sides
+Existing formal AssembledGround/SceneSurface APIs are unchanged. One compiled material/geometry feeds Draw/Pick/bounds/depth. New JSON surfaces are byteexact copies of the tested formal resource. Previous44 instances/catalog entries and official scene remain byte/structure unchanged.
+
+Soil incorrectly using whole-container front support swallowed28 of47 actual foliage-overlap pixels. Reusing the existing horizontal carrying-plane owner fixes this; physical sides keep their own feet. Back wooden rim initially borrowed the front foot and covered4 real leaf pixels; rear/side rim support now derives from its corresponding authored wooden edge and structural continuation, not a global front. Root/leaf position and raw alpha did not change to hide the issue. Current soil47 and rear-rim4/8 overlaps all correctly ordered.
+
+## Offline export facts and failures retained
+- Initial stone UV(260,850) included alpha0; wood-left edge includedalpha240. Actual material domains were moved inward, not threshold-relaxed. Full domain scan min251–253 for10 opaque members. This is material mapping change, not unchanged-original-UV or actorPick-threshold claim.
+- One tiny triangulation sliver from a fixed integer column cut could not be triangulated by the formal runtime. Rim source now explicitly authors column cuts omitting cuts within.25sourcepx of a rim vertex, with full ordered extent. No polygon/material was discarded and runtime guard unchanged. Partition / representative local-support sampling changes are explicit; no blanket bitwise-depth-equivalence claim. Default exporter reproduces old west pier JSON exactly; reverse cuts rejected by its ordered-coverage assertion.
+- A diagnostic attempt to access internal CompiledSceneSurface from the external assembly failed C# visibility; it was withdrawn (.cs.txt). No runtime API widened for tests. Fresh final production/probe builds0warnings/errors; earlier failed build is NOT a passing result.
+
+## Concentrated actual checks
+- Fresh production build + external probe build pass.
+- Formal front/side actor controls: left current59front +149/79side pixels, right20/345front, pier121front; all remain visible and actual Unit Pick. No true rear role is claimed where there is no actual overlap.
+- Formal soil/rim/root pair ownership and original true stone face ownership pass. Prior ground registration and material witnesses preserved independently of totalalpha.
+- Selected47-instance structure/site uniqueness and existing barracks/granary/council target/ground pointer contracts pass. Existing core and platform regression pass, including their own meaningful back/front overlaps.
+- **Effective negative controls:** old soil reaches intended carrying-plane assertion with28wrong leaf pixels; late pier support reaches intended actual-front visibility assertion; left+10px registration reaches intended original-stone-owner assertion; old whole-sprite left walking layouts hit real fixed walk soles; old pier foot intersects actual left footprint; original-right closure758513 crosses actual platform front. Initialization failures above are not counted as these semantic negatives.
+- Six paused C06 files retain originalSHA; source terrain/rules/officialscene unchanged. Headless only CreateState/display clones/math; GUI images are static native renderer captures, never gameplay victory evidence.
+
+## Art/performance boundary and evidence
+`central-south-selected-final.png` is the actual selected static composition. Source/reference and previous failure images retained. Hard platform/stone edges, texture density and missing contact shadows remain visual debts; this is geometry acceptance only. 3,752 depth entries remains a measured count, NOT a performance pass. The one selected scene is still incomplete; whole-city art, remaining walls/buildings, rear bed, full foundation responsibility and performance require later closure.
+
+Reproduction uses the archived source/exports in the external `c07-static-preview` project and existing Godot tools; archive is intentionally ignored by Godot and excluded from production compile. Runtime current surfaces live only in `godot/data/scenes/c01-07-central-south-*-surface.json` and the selected catalog/ground.
