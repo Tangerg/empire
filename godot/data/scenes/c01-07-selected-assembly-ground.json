@@ -520,6 +520,30 @@
       "pointer": "pass-through"
     },
     {
+      "id": "central-west-bearing",
+      "assetId": "central-west-bearing",
+      "contact": [
+        42.5,
+        29.75
+      ],
+      "scale": 1.0,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "central-west-corner-pier",
+      "assetId": "central-west-corner-pier",
+      "contact": [
+        42.5,
+        29.25
+      ],
+      "scale": 1.0,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
       "id": "central-west-wood-planter",
       "assetId": "central-front-wood-planter-v1",
       "contact": [
@@ -527,6 +551,18 @@
         30.6875
       ],
       "scale": 0.032,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "central-west-white-planter",
+      "assetId": "central-east-white-planter-v2",
+      "contact": [
+        43.5,
+        29.5625
+      ],
+      "scale": 0.036,
       "selectionCell": null,
       "ownsMapStructureBody": false,
       "pointer": "pass-through"

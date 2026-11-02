@@ -1,4 +1,8 @@
-# Central continuity checkpoint — unfinished static study
+# Central continuity — selected ground-flush closure
+
+Current status: the zero-rise connection, separate rear white container and low corner pier are now in the unique selected assembly,44instances/6sites/3535depth entries. Production official C07 is unchanged; runtimeReady=false. Root accepted this as geometry only; flat stone, contact shadows and full-scene performance remain unresolved.
+
+## Historical checkpoint before selection
 
 This is a recoverable analysis/candidate checkpoint, not selection or production integration. Selected remains41instances/3412depth entries; official C07 stays unchanged and runtimeReady=false. No gameplay or save advancement.
 
@@ -25,3 +29,15 @@ Stone connector lies entirely in6blocked cells, including old706490. The closest
 Current formal rendering:179connection/wood overlaps0wrong,32connection/pier0wrong,9pier/wood0wrong,49white/wood0wrong. White/pier alpha has0overlap: no claim of a successful overlapping control.73actual front-Torren overlaps remain correctly visible. Original raised version fails6identical wood-foot points. Fixed stone materials688466/696472, pier685481 and connector706490 have their own real owners.
 
 Still needed before selecting: final visual acceptance of the ground-flush composition, relevant negative controls, fresh final selected regression/build, then integration into the SAME selected definition. No competing advancing scene is introduced. Surface snapshots/generators are offline candidate provenance only. Material sharpness/flatstone/contact shading and full-scene rendering performance remain unresolved.
+
+## Selected closure after checkpoint
+
+Same selected assembly now owns the two exported surfaces and three new placements. Shared white texture unchanged; prior41placements/catalog entries and six true paused saves unchanged. Generators and old candidates are frozen provenance, not advancing runtime facts.
+
+Selected wood, connection/assembly, central core, platform, east white/east wood, overall selected pointer/site regression all pass. Fresh production build:0warnings/0errors. Final native image central-west-bearing-selected-final-front.png is a static display clone, not gameplay.
+
+Pair controls remain179connection/wood,32connection/pier,9pier/wood,49white/wood with0wrong; zero white/pier alpha overlap is explicitly not an overlapping pass. Ground footprints of pier and white are separated7.4908px; pier/wood1.9242px. The physical ground-flush plane has NO elevated support requirement and NO risers;179wood pixels/73actual front-role pixels remain correct. Old706490 now has its explicit stone owner, not a statistical reassignment.
+
+Meaningful negatives: restoring the rejected raised version fails6wood-foot points; reversing the zero-rise shared-Z declaration order fails the same actual-base assertion; moving the white container loses its fixed real stone-owner witnesses; forcing corner supports forward fails actual pair ordering. Intended assertion text and final reports retained. No renderer threshold or special offset introduced.
+
+Next continuous responsibilities: rear planted-bed/seat structure (real foliage/actor witness), then south-front bases. This is not complete50-cell foundation validation or final-art approval.

@@ -10075,6 +10075,32 @@
           ]
         }
       ]
+    },
+    "central-west-bearing": {
+      "resourcePath": "res://assets/native/c07-layered-v1/central-landmark-core-v1-candidate.png",
+      "pixelSize": [
+        1024,
+        1536
+      ],
+      "anchorPixels": [
+        0,
+        0
+      ],
+      "surfaceGeometryPath": "res://data/scenes/c01-07-central-west-bearing-flush-surface.json",
+      "contactShadowRadiiPixels": null
+    },
+    "central-west-corner-pier": {
+      "resourcePath": "res://assets/native/c07-layered-v1/central-landmark-core-v1-candidate.png",
+      "pixelSize": [
+        1024,
+        1536
+      ],
+      "anchorPixels": [
+        0,
+        0
+      ],
+      "surfaceGeometryPath": "res://data/scenes/c01-07-central-west-corner-pier-surface.json",
+      "contactShadowRadiiPixels": null
     }
   }
 }
