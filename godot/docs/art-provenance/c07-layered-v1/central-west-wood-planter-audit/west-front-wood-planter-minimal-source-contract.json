@@ -1,0 +1,207 @@
+{
+  "ready": true,
+  "scope": "Only west foreground wood planter plus visible stone support. Read-only PNG/terrain/actual static Torren alpha. No engine, GUI, battle action, save, production edit or new art. Parent accepted these visible source feet as approximate registration targets, not hidden feet or a new pixel tolerance.",
+  "source": {
+    "path": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/scenes/luojia.png",
+    "sha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980"
+  },
+  "nextObject": "west-front-wood-planter",
+  "exclude": [
+    "rear west white container and tall plant",
+    "separate low stone corner post with bright cap near683475",
+    "rear bench and planting strip",
+    "outer-platform stair surfaces"
+  ],
+  "visibleFootTargetsApprox": [
+    [
+      691,
+      483
+    ],
+    [
+      706,
+      491
+    ],
+    [
+      717,
+      485
+    ]
+  ],
+  "footEvidenceBoundary": "These are the visible front/side stone-support branches. Dark mixed contact pixels one row below are not an extra support extension. Hidden rear closure remains new design. Existing east object feet cannot be mirrored or transplanted as original west facts.",
+  "materialWitnesses": [
+    {
+      "source": [
+        708,
+        478
+      ],
+      "rgb": [
+        203,
+        123,
+        64
+      ],
+      "material": "Exposed foreground orange wooden box face",
+      "cell": [
+        44,
+        29
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        706,
+        468
+      ],
+      "rgb": [
+        110,
+        149,
+        37
+      ],
+      "material": "Foreground small green foliage above this wooden box",
+      "cell": [
+        44,
+        29
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        700,
+        486
+      ],
+      "rgb": [
+        126,
+        123,
+        130
+      ],
+      "material": "Foreground stone support gray face interior",
+      "cell": [
+        43,
+        30
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        706,
+        490
+      ],
+      "rgb": [
+        33,
+        35,
+        43
+      ],
+      "material": "Dark front stone-support lower-edge material; not rear white container foot",
+      "cell": [
+        44,
+        30
+      ],
+      "terrain": "#"
+    }
+  ],
+  "actualTorrenFrontWitness": {
+    "asset": "res://assets/painted-units-v1/torren-stage01-v2.png",
+    "frameIndex": 0,
+    "frameRegion": [
+      0,
+      0,
+      557,
+      725
+    ],
+    "frameAnchor": [
+      269,
+      565
+    ],
+    "scale": 0.0961538,
+    "cell": [
+      43,
+      32
+    ],
+    "terrain": "p",
+    "foot": [
+      696,
+      520
+    ],
+    "facing": "east",
+    "points": [
+      {
+        "source": [
+          700,
+          486
+        ],
+        "framePixel": [
+          310,
+          211
+        ],
+        "alpha": 253
+      },
+      {
+        "source": [
+          706,
+          490
+        ],
+        "framePixel": [
+          373,
+          252
+        ],
+        "alpha": 250
+      }
+    ],
+    "expectation": "Actor is in front of the separate foreground stone support and should remain visible. This is a front control, not evidence of old missing back-side occlusion.",
+    "nativeStatus": "Parent will perform detached original-state probe; reviewer did not run it."
+  },
+  "actualTorrenBackSearch": {
+    "status": "No viable static Torren opaque bbox overlap in bounded nearest back-side legal cells. No back control invented.",
+    "sourceObjectConservativeBbox": [
+      690,
+      459,
+      720,
+      493
+    ],
+    "frameAlphaThreshold": 200,
+    "frameOpaqueBboxExclusiveRightBottom": [
+      136,
+      195,
+      440,
+      564
+    ],
+    "legalCellBoundsInclusive": {
+      "x": [
+        40,
+        46
+      ],
+      "y": [
+        25,
+        33
+      ]
+    },
+    "onlyBackFootSourceYAtMost": 490,
+    "testedPoses": 46,
+    "broadPhaseCandidates": [],
+    "method": "Intersect actual idle0 opaque bounding rectangle in source space, both horizontal mirrors, with conservative source box. Zero broad-phase candidates means no alpha overlap in this bounded set; not all characters/animations."
+  },
+  "sameOrientationReuse": {
+    "possible": "Existing east wood/stone material may be reused for an independent new-design west instance. Original source shows the same left gray side / right warm face orientation, so no mechanical mirror is justified.",
+    "difference": "West visible spans left691->front706->right717 are15/11. Existing east instance actual front foot lies about15.6/17.0 from its side feet. Uniform scale/translation alone cannot exactly match all three original west targets. Registration mismatch must be disclosed as new design; do not move source witnesses to fit.",
+    "parentChecks": "Parent will check actual candidate stone hull against platform and real shoe corridors."
+  },
+  "remainingCentralBrief": {
+    "selected": [
+      "central-landmark-core",
+      "central-platform",
+      "central-east-white-planter",
+      "central-front-wood-planter"
+    ],
+    "next": "West front wood planter restores a real non-platform stone support at700486 outside current platform x>=714.",
+    "deferredPendingIndependentSourceContract": [
+      "West rear white container; near-front base is obscured",
+      "West low stone corner post, separate from white container",
+      "Rear planted strips/bench bases; may affect back-side actors",
+      "South-front planter bases protruding beyond the current platform support line"
+    ],
+    "notImmediateMandatoryDetail": [
+      "Exact bench slats and upholstery-free decorative trim",
+      "One-for-one leaf shape duplication",
+      "Front low ornamental corner-column ornament before structural bearing is restored"
+    ],
+    "warning": "22/50 source-cell centers with current material, as reported by parent loader, is only a coverage hint. Neither empty centers require indiscriminate filling nor upper alpha certifies foundation."
+  }
+}

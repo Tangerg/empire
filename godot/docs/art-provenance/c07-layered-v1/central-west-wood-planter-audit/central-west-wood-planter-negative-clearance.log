@@ -1,0 +1,6 @@
+FRONT_WOOD_STONE_SEPARATION False
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/c07-static-preview/verify-central-front-wood-planter-placement.py", line 15, in <module>
+    (p/os.environ.get('C07_WOOD_PLACEMENT_OUTPUT','central-front-wood-planter-placement.json')).write_text(json.dumps(r,indent=2)+'\n');print('FRONT_WOOD_STONE_SEPARATION',r['passed']);assert r['passed'],'Front wood planter complete stone body must separate from white planter and platform'
+                                                                                                                                                                                                ~^^^^^^^^^^
+AssertionError: Front wood planter complete stone body must separate from white planter and platform
