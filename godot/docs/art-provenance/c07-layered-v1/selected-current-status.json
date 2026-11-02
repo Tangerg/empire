@@ -1,0 +1,1055 @@
+{
+  "scope": "Generated current selected-resource projection, not collision or placement authority; counts are not completion percentages",
+  "inputsSha256": {
+    "docs/art-provenance/luojia-geometry.json": "d486f4c7bc7c8f274d2747d4280912bdfd9421c571157447fcf589ae3a4b8176",
+    "data/grayflag-campaign-levels.json": "e226041272be12ea1686be7297953f332606002908ce44fa8d15028c0435ed42",
+    "data/scenes/c01-07-selected-assembly.json": "5d0f48f9e6312e9adab201eb1e59fb564fd108f085b02f4733d93b9c17531151",
+    "data/scenes/c01-07.json": "5bd8cac7e2263dcffaf23b88c38b25515575678c3085a227e4a1f58f61abcd88",
+    "data/scenes/c01-07-selected-assembly-ground.json": "a2a84225554e7eee73c65a55a9bed85cf277423aa9a9125bbd71f9ac6959f640",
+    "data/scenes/c01-07-selected-assembly-objects.json": "2641de21eb1c8447c0e9c378f599bee6418c970f972bc448b62a2d31bc7289e5",
+    "data/scenes/c01-07-canopy-surface.json": "f1984898f6781a4829c1fde831c60a90259bb51d42e59a1bfab4cac330c43147",
+    "data/scenes/c01-07-fence-surface.json": "7a1d436ce81435fe80190611f2aa13952578d1171b524186a9e254391fa18250",
+    "data/scenes/c01-07-granary-canopy-surface.json": "255d8ea2b86e220d93235d5605d8d260798e7de1046ae88de603f4ec714ccfd2",
+    "data/scenes/c01-07-granary-bin-surface.json": "8082c46e81a47e6f68db85a5648f0cc6c7b219a5b0663185992c44c00658acd6",
+    "data/scenes/c01-07-granary-door-stock-rear-surface.json": "50cfea4e7aaf67f470cdb557a61d295ddbdd1a8aec8456a9023d25db98d2c3e5",
+    "data/scenes/c01-07-granary-door-stock-left-surface.json": "dd60ba14deefc7604ec5a8d89b2c2ca9ccb755fdeb4efb5e44fe5652ec65a6ba",
+    "data/scenes/c01-07-granary-door-stock-right-surface.json": "d806db595d45aefd7ec276d7032e868c18e0287fa05a9b7db7d6f3c78d852439",
+    "data/scenes/c01-07-southeast-stone-surface.json": "103fe335523ebe495f0e949380fc3b74bcc72ef0206a23153c3b86342a1cd287",
+    "data/scenes/c01-07-southeast-leaf-surface.json": "89336ca125cbf6167c7b98abbd352cde9672e5f263a0129ff6b6e0d2829fb11a",
+    "data/scenes/c01-07-southwest-stone-surface.json": "3bbe223825df4749b3b2742678f141380e546a57ef2d96c6cec800248fab93df",
+    "data/scenes/c01-07-southwest-leaf-surface.json": "dffec70159f56ecba117c87a888dff6729c1f8fd10f8edd0cb76281778120854",
+    "data/scenes/c01-07-granary-shed-roof-surface.json": "6e215ac243230eebb9b3b026525650e289ad890224b830864600bea81b062640",
+    "data/scenes/c01-07-granary-shed-fascia-surface.json": "4a641f9159a81b8d1fa752bc08f888a1dab3913020ed293915734c969a17eea1",
+    "data/scenes/c01-07-granary-shed-leftpost-surface.json": "a60ad154ed6c1b7cce227bb4429e9395653d05ed69d5373f13ca1336b93a55a7",
+    "data/scenes/c01-07-granary-shed-nearpost-surface.json": "ba8976e698ddf24141d4a7e3f9c9aed5609868b80b5ffe4ed66d03b6e9bcb3ef",
+    "data/scenes/c01-07-granary-shed-rightpost-surface.json": "4fbefe1d564791c21c1b267d188bcc4a5e4d45ee43c7d58e32f075507fae9fc0",
+    "data/scenes/c01-07-granary-shed-rearpost-surface.json": "e86ea97908ce132aa1f4c522ccffe915f5aa2ce6fc9f1438b83856427757c5ac",
+    "data/scenes/c01-07-granary-column-box-surface.json": "10474f02823b77b84891dfca35cf30f3fe055a8776580646dd7b873a19d7cd9b",
+    "data/scenes/c01-07-southern-supply-canopy-cloth-surface.json": "f4a29564fea8197384fcf0cbf508d5f513b20a8047f84415a913eb02d89f0e1c",
+    "data/scenes/c01-07-southern-supply-canopy-west-post-surface.json": "baeb0f261308a33642fd8e3ef0bc38714901904578db2d37fa63266728a80ef2",
+    "data/scenes/c01-07-southern-supply-canopy-front-post-surface.json": "bee1cfd7572756b63b15387630784141133ea34140ca78e8552bca75070b478e",
+    "data/scenes/c01-07-southern-supply-canopy-right-post-surface.json": "badf9fa633e90d8c60fba37721d5ca98109babaeaeb90b39ee785b5b95121751",
+    "data/scenes/c01-07-southern-supply-canopy-rear-post-surface.json": "8a3da74173ad0c07148a6f8538100f4c85194420308f76c56e8676b5b6962b41",
+    "data/scenes/c01-07-southern-supply-stock-middle-crate-surface.json": "f3a549e95db62fa30910c07777ae519824ba1d9b5a2b8d17c493c7b253a21809",
+    "data/scenes/c01-07-southern-supply-stock-east-crate-surface.json": "0df4820e5fae8f4653de406681b87f17aadd679570d7fb72b55d23788f6c9dc5",
+    "data/scenes/c01-07-granary-courtyard-wall-main-surface.json": "571a5ef5c83f0d20ba8401cc9d5694f974aef0814887e5439b1c56666f1c1857",
+    "data/scenes/c01-07-granary-courtyard-wall-terminal-pier-surface.json": "f8cd528e609527f46a28407ffe288625a424939dc2907bc607f9937c62c3642e",
+    "data/scenes/c01-07-granary-courtyard-timber-left-surface.json": "f6239ab298faa4bc0959f55eda013bcf5f9a9864ba66654ea90bbe16fa85828b",
+    "data/scenes/c01-07-central-platform-surface.json": "b04afe73556a9174d815ed9157d59bb204160f71f70bdf8bd79cf7c16080207b",
+    "data/scenes/c01-07-central-west-bearing-flush-surface.json": "543e26feed2af336af4c12d0af92920f7b53aac2845b307d2e4cdd1471dd178d",
+    "data/scenes/c01-07-central-west-corner-pier-surface.json": "42040aa9a120058f5b7c5422fd8551873fd8981e46bcd714a68208983cb50045",
+    "data/scenes/c01-07-central-south-left-surface.json": "9d4a67bffbef4c8250e0efd858eb4717516c3fe7698871437b4b1fe5fc3b950b",
+    "data/scenes/c01-07-central-south-low-pier-surface.json": "f46d05c18d2958e4d1009ad17f32b4cf3b6be967594f3da19e4f69aea7518486",
+    "data/scenes/c01-07-central-rear-west-group-surface.json": "ceafdfc2f2b7423f8e43a4310b21c0820d05c1e980e7a16c9cc48e8e9f56e236",
+    "data/scenes/c01-07-right-garden-timber-merged-surface.json": "0c27a495b4e58acb3ed001fc09f7f9161e84deaec09f67d2cf26cfa4fb679d14",
+    "data/scenes/c01-07-right-garden-soil-surface.json": "ac3778c5f0d912d5389282e4b6a24881fa15f52ca7fd3690e8da63f5b0b06f2f"
+  },
+  "officialSceneSelected": false,
+  "actualPlayStatus": "C06/C07 paused; no new actual play in this matrix",
+  "selectedInstances": 55,
+  "selectedAssets": 50,
+  "supportEntries": 4524,
+  "selectedSites": 7,
+  "canonicalSites": 16,
+  "instances": [
+    {
+      "id": "north-blue-wooden-stand",
+      "assetId": "blue-roof-wooden-stand-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#blue-roof-wooden-stand-v1/groundFrontPixels",
+      "footKind": "registered whole-sprite foot",
+      "supports": 1,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "militia-barracks-core",
+      "assetId": "militia-barracks-core-v2",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#militia-barracks-core-v2/depthStrips",
+      "footKind": "registered sprite-strip feet",
+      "supports": 276,
+      "selectionCell": [
+        65,
+        14
+      ],
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "barracks-front-cargo",
+      "assetId": "barracks-front-cargo-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#barracks-front-cargo-v1/depthStrips",
+      "footKind": "registered sprite-strip feet",
+      "supports": 26,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "barracks-front-canopy",
+      "assetId": "barracks-front-canopy-surface",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-canopy-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 54,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "training-fence",
+      "assetId": "training-fence",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-fence-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 45,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "granary-main",
+      "assetId": "granary-main-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#granary-main-v1/depthStrips",
+      "footKind": "registered sprite-strip feet",
+      "supports": 178,
+      "selectionCell": [
+        35,
+        14
+      ],
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "granary-cloth-canopy",
+      "assetId": "granary-canopy-surface",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-granary-canopy-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 125,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "granary-low-bin",
+      "assetId": "granary-bin-surface",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-granary-bin-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 33,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "granary-door-stock-rear",
+      "assetId": "granary-door-stock-rear-surface",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-granary-door-stock-rear-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 20,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "granary-door-stock-left",
+      "assetId": "granary-door-stock-left-surface",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-granary-door-stock-left-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 22,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "granary-door-stock-right",
+      "assetId": "granary-door-stock-right-surface",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-granary-door-stock-right-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 21,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "council-hall-main",
+      "assetId": "council-hall-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#council-hall-v1/depthStrips",
+      "footKind": "registered sprite-strip feet",
+      "supports": 188,
+      "selectionCell": [
+        25,
+        47
+      ],
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "southeast-gate-stone",
+      "assetId": "southeast-gate-stone-surface-v2",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-southeast-stone-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 188,
+      "selectionCell": [
+        84,
+        57
+      ],
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "southeast-gate-leaf",
+      "assetId": "southeast-gate-leaf-surface-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-southeast-leaf-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 22,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "southwest-gate-stone",
+      "assetId": "southwest-gate-stone-surface-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-southwest-stone-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 174,
+      "selectionCell": [
+        15,
+        51
+      ],
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "southwest-gate-leaf",
+      "assetId": "southwest-gate-leaf-surface-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-southwest-leaf-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 20,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "granary-shed-roof",
+      "assetId": "granary-shed-roof-surface-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-granary-shed-roof-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 131,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "granary-shed-fascia",
+      "assetId": "granary-shed-fascia-surface-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-granary-shed-fascia-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 133,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "granary-shed-leftpost",
+      "assetId": "granary-shed-leftpost-surface-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-granary-shed-leftpost-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 13,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "granary-shed-nearpost",
+      "assetId": "granary-shed-nearpost-surface-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-granary-shed-nearpost-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 20,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "granary-shed-rightpost",
+      "assetId": "granary-shed-rightpost-surface-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-granary-shed-rightpost-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 4,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "granary-shed-rearpost",
+      "assetId": "granary-shed-rearpost-surface-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-granary-shed-rearpost-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 4,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "granary-large-grain",
+      "assetId": "granary-large-grain-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#granary-large-grain-v1/depthStrips",
+      "footKind": "registered sprite-strip feet",
+      "supports": 164,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "granary-column-box",
+      "assetId": "granary-column-box-surface-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-granary-column-box-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 20,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "southern-supply-main",
+      "assetId": "southern-supply-main-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#southern-supply-main-v1/depthStrips",
+      "footKind": "registered sprite-strip feet",
+      "supports": 192,
+      "selectionCell": [
+        70,
+        50
+      ],
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "southern-supply-canopy-cloth",
+      "assetId": "southern-supply-canopy-cloth",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-southern-supply-canopy-cloth-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 145,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "southern-supply-canopy-west-post",
+      "assetId": "southern-supply-canopy-west-post",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-southern-supply-canopy-west-post-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 19,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "southern-supply-canopy-front-post",
+      "assetId": "southern-supply-canopy-front-post",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-southern-supply-canopy-front-post-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 35,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "southern-supply-canopy-right-post",
+      "assetId": "southern-supply-canopy-right-post",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-southern-supply-canopy-right-post-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 18,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "southern-supply-canopy-rear-post",
+      "assetId": "southern-supply-canopy-rear-post",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-southern-supply-canopy-rear-post-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 6,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "southern-supply-stock-middle-crate",
+      "assetId": "southern-supply-stock-middle-crate",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-southern-supply-stock-middle-crate-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 42,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "southern-supply-stock-east-crate",
+      "assetId": "southern-supply-stock-east-crate",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-southern-supply-stock-east-crate-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 39,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "southern-supply-right-bales",
+      "assetId": "granary-large-grain-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#granary-large-grain-v1/depthStrips",
+      "footKind": "registered sprite-strip feet",
+      "supports": 164,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "granary-courtyard-wall-main",
+      "assetId": "granary-courtyard-wall-main",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-granary-courtyard-wall-main-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 46,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "granary-courtyard-wall-terminal-pier",
+      "assetId": "granary-courtyard-wall-terminal-pier",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-granary-courtyard-wall-terminal-pier-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 10,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "granary-courtyard-timber-left",
+      "assetId": "granary-courtyard-timber-left",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-granary-courtyard-timber-left-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 39,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "central-platform",
+      "assetId": "central-platform",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-central-platform-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 387,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "central-landmark-core",
+      "assetId": "central-landmark-core-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#central-landmark-core-v1/depthStrips",
+      "footKind": "registered sprite-strip feet",
+      "supports": 128,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "central-east-white-planter",
+      "assetId": "central-east-white-planter-v2",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#central-east-white-planter-v2/depthStrips",
+      "footKind": "registered sprite-strip feet",
+      "supports": 96,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "central-front-wood-planter",
+      "assetId": "central-front-wood-planter-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#central-front-wood-planter-v1/depthStrips",
+      "footKind": "registered sprite-strip feet",
+      "supports": 82,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "central-west-bearing",
+      "assetId": "central-west-bearing",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-central-west-bearing-flush-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 17,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "central-west-corner-pier",
+      "assetId": "central-west-corner-pier",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-central-west-corner-pier-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 10,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "central-west-wood-planter",
+      "assetId": "central-front-wood-planter-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#central-front-wood-planter-v1/depthStrips",
+      "footKind": "registered sprite-strip feet",
+      "supports": 82,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "central-west-white-planter",
+      "assetId": "central-east-white-planter-v2",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#central-east-white-planter-v2/depthStrips",
+      "footKind": "registered sprite-strip feet",
+      "supports": 96,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "central-south-left-planter",
+      "assetId": "central-south-left-reconstructed",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-central-south-left-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 124,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "central-south-right-planter",
+      "assetId": "central-front-wood-planter-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#central-front-wood-planter-v1/depthStrips",
+      "footKind": "registered sprite-strip feet",
+      "supports": 82,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "central-south-low-pier",
+      "assetId": "central-south-low-pier",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-central-south-low-pier-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 11,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "central-rear-west-group",
+      "assetId": "central-rear-west-group",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-central-rear-west-group-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 130,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "west-inner-house-main",
+      "assetId": "west-inner-house-v2",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#west-inner-house-v2/depthStrips",
+      "footKind": "registered sprite-strip feet",
+      "supports": 172,
+      "selectionCell": [
+        33,
+        30
+      ],
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "west-inner-blue-house-main",
+      "assetId": "west-inner-blue-house-v1",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#west-inner-blue-house-v1/depthStrips",
+      "footKind": "registered sprite-strip feet",
+      "supports": 144,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "west-inner-right-garden-stone",
+      "assetId": "west-inner-right-garden-stone-v2",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#west-inner-right-garden-stone-v2/depthStrips",
+      "footKind": "registered sprite-strip feet",
+      "supports": 192,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "right-garden-timber",
+      "assetId": "right-garden-timber",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-right-garden-timber-merged-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 115,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "right-garden-soil",
+      "assetId": "right-garden-soil",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-right-garden-soil-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 17,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "right-garden-vine-near",
+      "assetId": "right-garden-vine",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#right-garden-vine/groundFrontPixels",
+      "footKind": "registered whole-sprite foot",
+      "supports": 1,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "right-garden-vine-far",
+      "assetId": "right-garden-vine",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#right-garden-vine/groundFrontPixels",
+      "footKind": "registered whole-sprite foot",
+      "supports": 1,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    }
+  ],
+  "sites": [
+    {
+      "id": "granary",
+      "cell": [
+        35,
+        14
+      ],
+      "approach": [
+        36,
+        14
+      ],
+      "selectedSiteOwners": [
+        "granary-main"
+      ],
+      "status": "selected local body; yard/complete foundation still requires separate closure"
+    },
+    {
+      "id": "militia-barracks",
+      "cell": [
+        65,
+        14
+      ],
+      "approach": [
+        66,
+        14
+      ],
+      "selectedSiteOwners": [
+        "militia-barracks-core"
+      ],
+      "status": "selected local body; yard/complete foundation still requires separate closure"
+    },
+    {
+      "id": "council-hall",
+      "cell": [
+        25,
+        47
+      ],
+      "approach": [
+        25,
+        48
+      ],
+      "selectedSiteOwners": [
+        "council-hall-main"
+      ],
+      "status": "selected local body; yard/complete foundation still requires separate closure"
+    },
+    {
+      "id": "southern-supply",
+      "cell": [
+        70,
+        50
+      ],
+      "approach": [
+        70,
+        51
+      ],
+      "selectedSiteOwners": [
+        "southern-supply-main"
+      ],
+      "status": "selected local body; yard/complete foundation still requires separate closure"
+    },
+    {
+      "id": "west-north-house",
+      "cell": [
+        6,
+        23
+      ],
+      "approach": [
+        6,
+        24
+      ],
+      "selectedSiteOwners": [],
+      "status": "not migrated; native fallback inventory must remain explicit"
+    },
+    {
+      "id": "west-middle-house",
+      "cell": [
+        18,
+        24
+      ],
+      "approach": [
+        19,
+        24
+      ],
+      "selectedSiteOwners": [],
+      "status": "not migrated; native fallback inventory must remain explicit"
+    },
+    {
+      "id": "west-inner-house",
+      "cell": [
+        33,
+        30
+      ],
+      "approach": [
+        34,
+        30
+      ],
+      "selectedSiteOwners": [
+        "west-inner-house-main"
+      ],
+      "status": "selected local body; yard/complete foundation still requires separate closure"
+    },
+    {
+      "id": "west-south-house",
+      "cell": [
+        39,
+        47
+      ],
+      "approach": [
+        39,
+        48
+      ],
+      "selectedSiteOwners": [],
+      "status": "not migrated; native fallback inventory must remain explicit"
+    },
+    {
+      "id": "east-north-house",
+      "cell": [
+        86,
+        24
+      ],
+      "approach": [
+        86,
+        25
+      ],
+      "selectedSiteOwners": [],
+      "status": "not migrated; native fallback inventory must remain explicit"
+    },
+    {
+      "id": "east-inner-house",
+      "cell": [
+        68,
+        32
+      ],
+      "approach": [
+        67,
+        32
+      ],
+      "selectedSiteOwners": [],
+      "status": "not migrated; native fallback inventory must remain explicit"
+    },
+    {
+      "id": "east-middle-house",
+      "cell": [
+        86,
+        38
+      ],
+      "approach": [
+        85,
+        38
+      ],
+      "selectedSiteOwners": [],
+      "status": "not migrated; native fallback inventory must remain explicit"
+    },
+    {
+      "id": "east-south-house",
+      "cell": [
+        54,
+        50
+      ],
+      "approach": [
+        54,
+        51
+      ],
+      "selectedSiteOwners": [],
+      "status": "not migrated; native fallback inventory must remain explicit"
+    },
+    {
+      "id": "northwest-gate",
+      "cell": [
+        11,
+        11
+      ],
+      "approach": [
+        12,
+        11
+      ],
+      "selectedSiteOwners": [],
+      "status": "not migrated; native fallback inventory must remain explicit"
+    },
+    {
+      "id": "northeast-gate",
+      "cell": [
+        83,
+        11
+      ],
+      "approach": [
+        82,
+        11
+      ],
+      "selectedSiteOwners": [],
+      "status": "not migrated; native fallback inventory must remain explicit"
+    },
+    {
+      "id": "southwest-gate",
+      "cell": [
+        15,
+        51
+      ],
+      "approach": [
+        16,
+        51
+      ],
+      "selectedSiteOwners": [
+        "southwest-gate-stone"
+      ],
+      "status": "selected local body; yard/complete foundation still requires separate closure"
+    },
+    {
+      "id": "southeast-gate",
+      "cell": [
+        84,
+        57
+      ],
+      "approach": [
+        85,
+        57
+      ],
+      "selectedSiteOwners": [
+        "southeast-gate-stone"
+      ],
+      "status": "selected local body; yard/complete foundation still requires separate closure"
+    }
+  ],
+  "foundations": [
+    {
+      "id": "joint-granary-foundation",
+      "auditedBlockedCells": 54,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#joint-granary-foundation",
+      "selectedRelatedBody": "granary-main",
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "militia-hall-foundation",
+      "auditedBlockedCells": 62,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#militia-hall-foundation",
+      "selectedRelatedBody": "militia-barracks-core",
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "council-hall-foundation",
+      "auditedBlockedCells": 56,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#council-hall-foundation",
+      "selectedRelatedBody": "council-hall-main",
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "southern-supply-foundation",
+      "auditedBlockedCells": 60,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#southern-supply-foundation",
+      "selectedRelatedBody": "southern-supply-main",
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "west-north-house-foundation",
+      "auditedBlockedCells": 31,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#west-north-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "west-middle-house-foundation",
+      "auditedBlockedCells": 26,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#west-middle-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "west-inner-house-foundation",
+      "auditedBlockedCells": 35,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#west-inner-house-foundation",
+      "selectedRelatedBody": "west-inner-house-main",
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "west-south-house-foundation",
+      "auditedBlockedCells": 36,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#west-south-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "east-north-house-foundation",
+      "auditedBlockedCells": 43,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#east-north-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "east-inner-house-foundation",
+      "auditedBlockedCells": 36,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#east-inner-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "east-middle-house-foundation",
+      "auditedBlockedCells": 39,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#east-middle-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "east-south-house-foundation",
+      "auditedBlockedCells": 34,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#east-south-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "northwest-back-house-foundation",
+      "auditedBlockedCells": 27,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#northwest-back-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "north-central-house-foundation",
+      "auditedBlockedCells": 26,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#north-central-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "north-edge-left-house-foundation",
+      "auditedBlockedCells": 17,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#north-edge-left-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "north-edge-right-house-foundation",
+      "auditedBlockedCells": 14,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#north-edge-right-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "west-edge-upper-house-foundation",
+      "auditedBlockedCells": 20,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#west-edge-upper-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "west-edge-lower-house-foundation",
+      "auditedBlockedCells": 40,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#west-edge-lower-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "west-inner-blue-house-foundation",
+      "auditedBlockedCells": 27,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#west-inner-blue-house-foundation",
+      "selectedRelatedBody": "west-inner-blue-house-main",
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "west-inner-back-house-foundation",
+      "auditedBlockedCells": 19,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#west-inner-back-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "west-south-back-house-foundation",
+      "auditedBlockedCells": 35,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#west-south-back-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "west-south-back-wing-foundation",
+      "auditedBlockedCells": 24,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#west-south-back-wing-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "southwest-wall-house-foundation",
+      "auditedBlockedCells": 42,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#southwest-wall-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "southeast-wall-house-foundation",
+      "auditedBlockedCells": 35,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#southeast-wall-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "east-south-back-blue-house-foundation",
+      "auditedBlockedCells": 38,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#east-south-back-blue-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "east-south-back-house-foundation",
+      "auditedBlockedCells": 31,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#east-south-back-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "east-back-blue-house-foundation",
+      "auditedBlockedCells": 43,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#east-back-blue-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    },
+    {
+      "id": "east-edge-blue-house-foundation",
+      "auditedBlockedCells": 35,
+      "sourceOwner": "docs/art-provenance/luojia-geometry.json#east-edge-blue-house-foundation",
+      "selectedRelatedBody": null,
+      "wholeFoundationClosed": false
+    }
+  ],
+  "knownUnselectedFailures": [
+    "west-inner left courtyard stone: rule-priority geometric study, art rejected",
+    "central rear-east planted/seat group: natural structure unresolved",
+    "northwest and northeast lookouts: solid/void and structural shape unresolved"
+  ],
+  "finalArtStatus": "not accepted; materials, ground/object integration and contact shadows require bounded whole-neighbourhood passes"
+}
