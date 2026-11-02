@@ -15072,6 +15072,32 @@
       ],
       "surfaceGeometryPath": "res://data/scenes/c01-07-west-inner-left-garden-stone-surface.json",
       "contactShadowRadiiPixels": null
+    },
+    "left-courtyard-open-frame": {
+      "resourcePath": "res://assets/native/c07-layered-v1/training-fence-v2-rejected.png",
+      "pixelSize": [
+        1187,
+        1325
+      ],
+      "anchorPixels": [
+        0,
+        0
+      ],
+      "surfaceGeometryPath": "res://data/scenes/c01-07-left-courtyard-frame-merged-surface.json",
+      "contactShadowRadiiPixels": null
+    },
+    "left-courtyard-soil": {
+      "resourcePath": "res://assets/native/c07-layered-v1/central-front-wood-planter-v1-candidate.png",
+      "pixelSize": [
+        1312,
+        1199
+      ],
+      "anchorPixels": [
+        0,
+        0
+      ],
+      "surfaceGeometryPath": "res://data/scenes/c01-07-left-courtyard-soil-surface.json",
+      "contactShadowRadiiPixels": null
     }
   }
 }

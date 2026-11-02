@@ -5,8 +5,8 @@
     "data/grayflag-campaign-levels.json": "e226041272be12ea1686be7297953f332606002908ce44fa8d15028c0435ed42",
     "data/scenes/c01-07-selected-assembly.json": "5d0f48f9e6312e9adab201eb1e59fb564fd108f085b02f4733d93b9c17531151",
     "data/scenes/c01-07.json": "5bd8cac7e2263dcffaf23b88c38b25515575678c3085a227e4a1f58f61abcd88",
-    "data/scenes/c01-07-selected-assembly-ground.json": "1c12ded2bfbab981bd1245ab1fef64b34ce5814dabfcd9f14b2f2c5d6497f2c6",
-    "data/scenes/c01-07-selected-assembly-objects.json": "311acf29b645cd39c69fe6ac42a8f97591f9bb65271c3b5b2d9ef28008d672eb",
+    "data/scenes/c01-07-selected-assembly-ground.json": "de667a61986c2159fa8832fab3bacb483014a5b3adb859cbfc12c61d085b3c35",
+    "data/scenes/c01-07-selected-assembly-objects.json": "3686fd5e161cde4a3d543810844a3112b829ec5f8a80093faf29674bc37515e8",
     "data/scenes/c01-07-canopy-surface.json": "f1984898f6781a4829c1fde831c60a90259bb51d42e59a1bfab4cac330c43147",
     "data/scenes/c01-07-fence-surface.json": "7a1d436ce81435fe80190611f2aa13952578d1171b524186a9e254391fa18250",
     "data/scenes/c01-07-granary-canopy-surface.json": "255d8ea2b86e220d93235d5605d8d260798e7de1046ae88de603f4ec714ccfd2",
@@ -43,13 +43,15 @@
     "data/scenes/c01-07-central-rear-west-group-surface.json": "ceafdfc2f2b7423f8e43a4310b21c0820d05c1e980e7a16c9cc48e8e9f56e236",
     "data/scenes/c01-07-right-garden-timber-merged-surface.json": "0c27a495b4e58acb3ed001fc09f7f9161e84deaec09f67d2cf26cfa4fb679d14",
     "data/scenes/c01-07-right-garden-soil-surface.json": "ac3778c5f0d912d5389282e4b6a24881fa15f52ca7fd3690e8da63f5b0b06f2f",
-    "data/scenes/c01-07-west-inner-left-garden-stone-surface.json": "b75a554cfa7b6eb3621d0ed3bfb2e7bb7453712b366821e41d22bca4d8efdcc4"
+    "data/scenes/c01-07-west-inner-left-garden-stone-surface.json": "b75a554cfa7b6eb3621d0ed3bfb2e7bb7453712b366821e41d22bca4d8efdcc4",
+    "data/scenes/c01-07-left-courtyard-frame-merged-surface.json": "b329736b0bfa285232ca685d6f22148cef7e0d28102c7e5ec94dcd59d46a6c94",
+    "data/scenes/c01-07-left-courtyard-soil-surface.json": "886ef75f1455ac31c4c62aa926c7bc3b0d0c1a485adda8e5d8b506373011d5a4"
   },
   "officialSceneSelected": false,
   "actualPlayStatus": "C06/C07 paused; no new actual play in this matrix",
-  "selectedInstances": 57,
-  "selectedAssets": 52,
-  "supportEntries": 4842,
+  "selectedInstances": 61,
+  "selectedAssets": 54,
+  "supportEntries": 5056,
   "selectedSites": 7,
   "canonicalSites": 16,
   "instances": [
@@ -643,6 +645,46 @@
       "supports": 146,
       "selectionCell": null,
       "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "left-courtyard-open-frame",
+      "assetId": "left-courtyard-open-frame",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-left-courtyard-frame-merged-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 204,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "left-courtyard-soil",
+      "assetId": "left-courtyard-soil",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-left-courtyard-soil-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 8,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "left-courtyard-left-vine",
+      "assetId": "right-garden-vine",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#right-garden-vine/groundFrontPixels",
+      "footKind": "registered whole-sprite foot",
+      "supports": 1,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "left-courtyard-near-vine",
+      "assetId": "right-garden-vine",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-selected-assembly-objects.json#right-garden-vine/groundFrontPixels",
+      "footKind": "registered whole-sprite foot",
+      "supports": 1,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
     }
   ],
   "sites": [
@@ -1068,7 +1110,7 @@
     }
   ],
   "knownUnselectedFailures": [
-    "west-inner left courtyard: selected warm-masonry baseline, trellis/rooted garden and block art incomplete",
+    "west-inner left courtyard: selected masonry/open trellis/rooted plants; full block shadows and ground/material integration incomplete",
     "central rear-east planted/seat group: natural structure unresolved",
     "northwest and northeast lookouts: solid/void and structural shape unresolved"
   ],

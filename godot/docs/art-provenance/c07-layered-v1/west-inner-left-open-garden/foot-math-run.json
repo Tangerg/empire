@@ -1,0 +1,196 @@
+{
+  "whole": {
+    "nonBlocked": [],
+    "blue": 4.4274145954496245,
+    "blueDisjoint": true,
+    "rear": 28.70653627660433,
+    "rearDisjoint": true,
+    "wallMinimum": 7.155417527999301,
+    "wallDisjoint": true,
+    "walkMinimum": 13.038000406677149,
+    "walkClear": true
+  },
+  "posts": {
+    "left": {
+      "nonBlocked": [],
+      "blue": 43.44951092935338,
+      "blueDisjoint": true,
+      "rear": 46.599656651095565,
+      "rearDisjoint": true,
+      "wallMinimum": 7.602631123499285,
+      "wallDisjoint": true,
+      "walkMinimum": 13.752947559272622,
+      "walkClear": true
+    },
+    "near": {
+      "nonBlocked": [],
+      "blue": 33.25327051584551,
+      "blueDisjoint": true,
+      "rear": 57.068478383429856,
+      "rearDisjoint": true,
+      "wallMinimum": 7.602631123499285,
+      "wallDisjoint": true,
+      "walkMinimum": 14.015420584773858,
+      "walkClear": true
+    },
+    "right": {
+      "nonBlocked": [],
+      "blue": 4.123105625617661,
+      "blueDisjoint": true,
+      "rear": 52.7288794210535,
+      "rearDisjoint": true,
+      "wallMinimum": 12.041594578792296,
+      "wallDisjoint": true,
+      "walkMinimum": 14.815391999999974,
+      "walkClear": true
+    },
+    "rear-new-hidden": {
+      "nonBlocked": [],
+      "blue": 10.987720418721985,
+      "blueDisjoint": true,
+      "rear": 26.735953788858932,
+      "rearDisjoint": true,
+      "wallMinimum": 35.329874044496705,
+      "wallDisjoint": true,
+      "walkMinimum": 37.355472111306995,
+      "walkClear": true
+    }
+  },
+  "roots": {
+    "left-vine": {
+      "nonBlocked": [],
+      "blue": 40.0552867921327,
+      "blueDisjoint": true,
+      "rear": 44.99751104227878,
+      "rearDisjoint": true,
+      "wallMinimum": 10.026528811109065,
+      "wallDisjoint": true,
+      "walkMinimum": 16.03050101550489,
+      "walkClear": true
+    },
+    "near-vine": {
+      "nonBlocked": [],
+      "blue": 33.77173374288031,
+      "blueDisjoint": true,
+      "rear": 53.66857017845735,
+      "rearDisjoint": true,
+      "wallMinimum": 9.57931521560908,
+      "wallDisjoint": true,
+      "walkMinimum": 15.888247087899543,
+      "walkClear": true
+    }
+  },
+  "rootInsideSoil": [
+    true,
+    true
+  ],
+  "walkCount": 20650,
+  "legal": 30,
+  "edges": 80,
+  "sourcePoints": [
+    {
+      "id": "near-post-visible-wood",
+      "source": [
+        393,
+        465
+      ],
+      "rgb": [
+        195,
+        126,
+        63
+      ],
+      "meaning": "wood positive; lower end occluded by stone cap, not foot"
+    },
+    {
+      "id": "near-post-low-visible-wood",
+      "source": [
+        393,
+        472
+      ],
+      "rgb": [
+        190,
+        136,
+        77
+      ],
+      "meaning": "wood positive; not certified ground contact"
+    },
+    {
+      "id": "left-post-visible-rod",
+      "source": [
+        368,
+        458
+      ],
+      "rgb": [
+        97,
+        79,
+        62
+      ],
+      "meaning": "dark timber segment; possible pale endpoint below is unclassified, not certified foot"
+    },
+    {
+      "id": "right-post-visible-rod",
+      "source": [
+        427,
+        455
+      ],
+      "rgb": [
+        171,
+        128,
+        77
+      ],
+      "meaning": "timber segment beside house; lower part hidden by vegetation/stone"
+    },
+    {
+      "id": "near-left-beam",
+      "source": [
+        382,
+        453
+      ],
+      "rgb": [
+        169,
+        115,
+        68
+      ],
+      "meaning": "timber beam positive"
+    },
+    {
+      "id": "near-right-beam",
+      "source": [
+        410,
+        451
+      ],
+      "rgb": [
+        110,
+        62,
+        9
+      ],
+      "meaning": "timber beam positive"
+    },
+    {
+      "id": "left-open-bay",
+      "source": [
+        377,
+        460
+      ],
+      "rgb": [
+        18,
+        18,
+        13
+      ],
+      "meaning": "not timber: dark open bay/background vegetation; negative for wood owner only"
+    },
+    {
+      "id": "left-low-open-bay",
+      "source": [
+        381,
+        466
+      ],
+      "rgb": [
+        79,
+        58,
+        33
+      ],
+      "meaning": "not timber: green/grey background beneath frame; negative for wood owner only"
+    }
+  ]
+}

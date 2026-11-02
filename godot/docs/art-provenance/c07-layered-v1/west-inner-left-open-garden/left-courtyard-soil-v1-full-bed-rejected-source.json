@@ -1,0 +1,58 @@
+{
+  "textureResourcePath": "res://assets/native/c07-layered-v1/central-front-wood-planter-v1-candidate.png",
+  "supportMode": "horizontal-plane",
+  "supportLine": [
+    [
+      366,
+      473
+    ],
+    [
+      420,
+      473
+    ]
+  ],
+  "members": [
+    {
+      "id": "left-courtyard-zero-height-soil",
+      "polygon": [
+        [
+          366,
+          473
+        ],
+        [
+          393,
+          486.5
+        ],
+        [
+          420,
+          473
+        ],
+        [
+          393,
+          459.5
+        ]
+      ],
+      "uv": [
+        [
+          610,
+          620
+        ],
+        [
+          620,
+          620
+        ],
+        [
+          620,
+          630
+        ],
+        [
+          610,
+          630
+        ]
+      ],
+      "tint": "c7b8a2",
+      "coverage": "opaque"
+    }
+  ],
+  "scope": "NEW zero-height soil bed, physical plane independent from frame and each actual root; no new traversal or height."
+}

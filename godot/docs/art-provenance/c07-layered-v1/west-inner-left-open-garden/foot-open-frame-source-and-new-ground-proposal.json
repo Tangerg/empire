@@ -1,0 +1,3891 @@
+{
+  "ready": true,
+  "scope": "One bounded connected open timber/vine courtyard group. All ground proposals explicitly NEW; no engine, movement, GUI, new interaction or production writes.",
+  "inputs": {
+    "/workspace/scratch/84c9fe948755/empire-c01/godot/data/grayflag-campaign-levels.json": "e226041272be12ea1686be7297953f332606002908ce44fa8d15028c0435ed42",
+    "/workspace/scratch/84c9fe948755/c07-readonly-review/blue-house-foot-study/blue-v2-whole-new-base-and-orange-separation.json": "fa52124ed6d97f67f7f7da1d2d88a757fefb941b8ab37fb00499c639f681bff0",
+    "/workspace/scratch/84c9fe948755/c07-readonly-review/west-inner-rear-house-review/rear-house-v1-whole-base-result.json": "077371c6876741be530b54ab82d8fb50a4e390ffb35625095700965beece0429",
+    "/workspace/scratch/84c9fe948755/c07-static-preview/left-garden-stone-new-layout.json": "3068fc2667b9231534f1c49ec6b17103489d3dab39af1bf22f6f62539117c980",
+    "/workspace/scratch/84c9fe948755/c07-static-preview/central-east-planter-review/rear-white-planter-new-base-walk-corridor.json": "9a497fd961bbfd00911b85e1f7403304720c9157cad4c864103c045c16dba7d7",
+    "/workspace/scratch/84c9fe948755/c07-readonly-review/right-garden-source-study/rooted-vine-foot-review/two-rooted-vine-foot-review.json": "47f7a7f4673bdecbff202a9d3c1ff02b350c44bb9c0cc027962fc92b2d2a61d1",
+    "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/scenes/luojia.png": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980"
+  },
+  "sourceEvidence": {
+    "crop": [
+      350,
+      420,
+      434,
+      494
+    ],
+    "pixelWitnesses": [
+      {
+        "id": "near-post-visible-wood",
+        "source": [
+          393,
+          465
+        ],
+        "rgb": [
+          195,
+          126,
+          63
+        ],
+        "meaning": "wood positive; lower end occluded by stone cap, not foot"
+      },
+      {
+        "id": "near-post-low-visible-wood",
+        "source": [
+          393,
+          472
+        ],
+        "rgb": [
+          190,
+          136,
+          77
+        ],
+        "meaning": "wood positive; not certified ground contact"
+      },
+      {
+        "id": "left-post-visible-rod",
+        "source": [
+          368,
+          458
+        ],
+        "rgb": [
+          97,
+          79,
+          62
+        ],
+        "meaning": "dark timber segment; possible pale endpoint below is unclassified, not certified foot"
+      },
+      {
+        "id": "right-post-visible-rod",
+        "source": [
+          427,
+          455
+        ],
+        "rgb": [
+          171,
+          128,
+          77
+        ],
+        "meaning": "timber segment beside house; lower part hidden by vegetation/stone"
+      },
+      {
+        "id": "near-left-beam",
+        "source": [
+          382,
+          453
+        ],
+        "rgb": [
+          169,
+          115,
+          68
+        ],
+        "meaning": "timber beam positive"
+      },
+      {
+        "id": "near-right-beam",
+        "source": [
+          410,
+          451
+        ],
+        "rgb": [
+          110,
+          62,
+          9
+        ],
+        "meaning": "timber beam positive"
+      },
+      {
+        "id": "left-open-bay",
+        "source": [
+          377,
+          460
+        ],
+        "rgb": [
+          18,
+          18,
+          13
+        ],
+        "meaning": "not timber: dark open bay/background vegetation; negative for wood owner only"
+      },
+      {
+        "id": "left-low-open-bay",
+        "source": [
+          383,
+          463
+        ],
+        "rgb": [
+          13,
+          17,
+          13
+        ],
+        "meaning": "not timber: dark open bay below frame and left of near post; negative for wood owner only"
+      }
+    ],
+    "approximatelyVisibleUpperBeamTopology": {
+      "nearLeft": [
+        [
+          365,
+          445
+        ],
+        [
+          393,
+          460
+        ]
+      ],
+      "nearRight": [
+        [
+          393,
+          460
+        ],
+        [
+          427,
+          443
+        ]
+      ],
+      "backSegments": "Intermittent wood beside blue/rear house and leaves around y430..442; no continuous rear frame or foot certified."
+    },
+    "feetStatus": "Three visible rod/beam regions are clear; near wood disappears at y474..475 behind stone cap. Left/right lower ends are mixed or hidden. No complete original post footing, vine ground-root or original closed timber foundation is certified.",
+    "exclude": [
+      "selected blue and rear house masonry",
+      "near/front stone enclosure",
+      "independent pots outside return wall",
+      "far trees and far rear perimeter wall"
+    ],
+    "holesAreOwnerSpecific": "Wood-negative points may contain plants, stone or house background. Do not turn them into guaranteed whole-group transparent holes.",
+    "withdrawnPreliminaryNegative": {
+      "source": [
+        381,
+        466
+      ],
+      "rgb": [
+        79,
+        58,
+        33
+      ],
+      "status": "Withdrawn before contract freeze: brown mixed material is insufficient for wood-negative certification. The initial math-run.json includes this preliminary label and is not the final source contract. Final second wood-negative is383463, RGB13,17,13, visibly within open bay."
+    }
+  },
+  "newDesign": {
+    "openFrameGroundEnvelope": [
+      [
+        362,
+        473
+      ],
+      [
+        393,
+        488.5
+      ],
+      [
+        424,
+        473
+      ],
+      [
+        393,
+        457.5
+      ]
+    ],
+    "meaning": "Envelope for four discrete posts and a zero-height planted soil bed, NOT a solid building foundation or new collision rule. Both axes use slope +/-0.5; edges31x15.5, projected overallwidth62 anddepth31.",
+    "posts": [
+      {
+        "id": "left",
+        "groundCenter": [
+          362,
+          473
+        ],
+        "height": 29,
+        "visibleTopDesign": [
+          362,
+          444
+        ],
+        "physicalFoot": [
+          [
+            361.0,
+            472.0
+          ],
+          [
+            363.0,
+            473.0
+          ],
+          [
+            363.8,
+            472.0
+          ],
+          [
+            361.8,
+            471.0
+          ]
+        ]
+      },
+      {
+        "id": "near",
+        "groundCenter": [
+          393,
+          488.5
+        ],
+        "height": 29,
+        "visibleTopDesign": [
+          393,
+          459.5
+        ],
+        "physicalFoot": [
+          [
+            392.0,
+            487.5
+          ],
+          [
+            394.0,
+            488.5
+          ],
+          [
+            394.8,
+            487.5
+          ],
+          [
+            392.8,
+            486.5
+          ]
+        ]
+      },
+      {
+        "id": "right",
+        "groundCenter": [
+          424,
+          473
+        ],
+        "height": 29,
+        "visibleTopDesign": [
+          424,
+          444
+        ],
+        "physicalFoot": [
+          [
+            423.0,
+            472.0
+          ],
+          [
+            425.0,
+            473.0
+          ],
+          [
+            425.8,
+            472.0
+          ],
+          [
+            423.8,
+            471.0
+          ]
+        ]
+      },
+      {
+        "id": "rear-new-hidden",
+        "groundCenter": [
+          393,
+          457.5
+        ],
+        "height": 29,
+        "visibleTopDesign": [
+          393,
+          428.5
+        ],
+        "physicalFoot": [
+          [
+            392.0,
+            456.5
+          ],
+          [
+            394.0,
+            457.5
+          ],
+          [
+            394.8,
+            456.5
+          ],
+          [
+            392.8,
+            455.5
+          ]
+        ]
+      }
+    ],
+    "soilPlane": [
+      [
+        366,
+        473
+      ],
+      [
+        393,
+        486.5
+      ],
+      [
+        420,
+        473
+      ],
+      [
+        393,
+        459.5
+      ]
+    ],
+    "roots": [
+      {
+        "id": "left-vine",
+        "anchorPixels": [
+          565,
+          1486
+        ],
+        "groundFrontPixels": [
+          570,
+          1486
+        ],
+        "contact": [
+          369,
+          473
+        ],
+        "scale": 0.02,
+        "actualGroundFront": [
+          369.1,
+          473
+        ],
+        "physicalFoot": [
+          [
+            367.9,
+            472.68
+          ],
+          [
+            367.92,
+            472.7
+          ],
+          [
+            367.94,
+            472.7
+          ],
+          [
+            367.96,
+            472.7
+          ],
+          [
+            367.98,
+            472.7
+          ],
+          [
+            368.0,
+            472.7
+          ],
+          [
+            368.02,
+            472.7
+          ],
+          [
+            368.04,
+            472.72
+          ],
+          [
+            368.06,
+            472.72
+          ],
+          [
+            368.08,
+            472.72
+          ],
+          [
+            368.1,
+            472.72
+          ],
+          [
+            368.12,
+            472.72
+          ],
+          [
+            368.14,
+            472.7
+          ],
+          [
+            368.16,
+            472.7
+          ],
+          [
+            368.18,
+            472.7
+          ],
+          [
+            368.2,
+            472.7
+          ],
+          [
+            368.22,
+            472.7
+          ],
+          [
+            368.24,
+            472.88
+          ],
+          [
+            368.26,
+            472.9
+          ],
+          [
+            368.28,
+            472.92
+          ],
+          [
+            368.3,
+            472.94
+          ],
+          [
+            368.32,
+            472.94
+          ],
+          [
+            368.34,
+            472.94
+          ],
+          [
+            368.36,
+            472.94
+          ],
+          [
+            368.38,
+            472.94
+          ],
+          [
+            368.4,
+            472.94
+          ],
+          [
+            368.42,
+            472.94
+          ],
+          [
+            368.44,
+            472.94
+          ],
+          [
+            368.46,
+            472.94
+          ],
+          [
+            368.48,
+            472.94
+          ],
+          [
+            368.5,
+            472.92
+          ],
+          [
+            368.52,
+            472.92
+          ],
+          [
+            368.54,
+            472.92
+          ],
+          [
+            368.56,
+            472.9
+          ],
+          [
+            368.58,
+            472.9
+          ],
+          [
+            368.6,
+            472.9
+          ],
+          [
+            368.62,
+            472.88
+          ],
+          [
+            368.64,
+            472.88
+          ],
+          [
+            368.66,
+            472.84
+          ],
+          [
+            368.68,
+            472.82
+          ],
+          [
+            368.7,
+            472.84
+          ],
+          [
+            368.72,
+            472.86
+          ],
+          [
+            368.74,
+            472.88
+          ],
+          [
+            368.76,
+            472.9
+          ],
+          [
+            368.78,
+            472.9
+          ],
+          [
+            368.8,
+            472.92
+          ],
+          [
+            368.82,
+            472.92
+          ],
+          [
+            368.84,
+            472.92
+          ],
+          [
+            368.86,
+            472.94
+          ],
+          [
+            368.88,
+            472.96
+          ],
+          [
+            368.9,
+            472.96
+          ],
+          [
+            368.92,
+            472.96
+          ],
+          [
+            368.94,
+            472.98
+          ],
+          [
+            368.96,
+            472.98
+          ],
+          [
+            368.98,
+            472.98
+          ],
+          [
+            369.0,
+            472.98
+          ],
+          [
+            369.02,
+            472.98
+          ],
+          [
+            369.04,
+            473.0
+          ],
+          [
+            369.06,
+            473.0
+          ],
+          [
+            369.08,
+            473.0
+          ],
+          [
+            369.1,
+            473.0
+          ],
+          [
+            369.12,
+            473.0
+          ],
+          [
+            369.14,
+            473.0
+          ],
+          [
+            369.16,
+            473.0
+          ],
+          [
+            369.18,
+            473.0
+          ],
+          [
+            369.2,
+            473.0
+          ],
+          [
+            369.22,
+            473.0
+          ],
+          [
+            369.24,
+            473.0
+          ],
+          [
+            369.26,
+            473.0
+          ],
+          [
+            369.28,
+            472.98
+          ],
+          [
+            369.3,
+            472.96
+          ],
+          [
+            369.32,
+            472.96
+          ],
+          [
+            369.34,
+            472.98
+          ],
+          [
+            369.36,
+            472.86
+          ],
+          [
+            369.16,
+            472.48
+          ],
+          [
+            368.26,
+            472.48
+          ]
+        ],
+        "allRootVerticesInsideSoil": true
+      },
+      {
+        "id": "near-vine",
+        "anchorPixels": [
+          565,
+          1486
+        ],
+        "groundFrontPixels": [
+          570,
+          1486
+        ],
+        "contact": [
+          390,
+          484
+        ],
+        "scale": 0.02,
+        "actualGroundFront": [
+          390.1,
+          484
+        ],
+        "physicalFoot": [
+          [
+            388.9,
+            483.68
+          ],
+          [
+            388.92,
+            483.7
+          ],
+          [
+            388.94,
+            483.7
+          ],
+          [
+            388.96,
+            483.7
+          ],
+          [
+            388.98,
+            483.7
+          ],
+          [
+            389.0,
+            483.7
+          ],
+          [
+            389.02,
+            483.7
+          ],
+          [
+            389.04,
+            483.72
+          ],
+          [
+            389.06,
+            483.72
+          ],
+          [
+            389.08,
+            483.72
+          ],
+          [
+            389.1,
+            483.72
+          ],
+          [
+            389.12,
+            483.72
+          ],
+          [
+            389.14,
+            483.7
+          ],
+          [
+            389.16,
+            483.7
+          ],
+          [
+            389.18,
+            483.7
+          ],
+          [
+            389.2,
+            483.7
+          ],
+          [
+            389.22,
+            483.7
+          ],
+          [
+            389.24,
+            483.88
+          ],
+          [
+            389.26,
+            483.9
+          ],
+          [
+            389.28,
+            483.92
+          ],
+          [
+            389.3,
+            483.94
+          ],
+          [
+            389.32,
+            483.94
+          ],
+          [
+            389.34,
+            483.94
+          ],
+          [
+            389.36,
+            483.94
+          ],
+          [
+            389.38,
+            483.94
+          ],
+          [
+            389.4,
+            483.94
+          ],
+          [
+            389.42,
+            483.94
+          ],
+          [
+            389.44,
+            483.94
+          ],
+          [
+            389.46,
+            483.94
+          ],
+          [
+            389.48,
+            483.94
+          ],
+          [
+            389.5,
+            483.92
+          ],
+          [
+            389.52,
+            483.92
+          ],
+          [
+            389.54,
+            483.92
+          ],
+          [
+            389.56,
+            483.9
+          ],
+          [
+            389.58,
+            483.9
+          ],
+          [
+            389.6,
+            483.9
+          ],
+          [
+            389.62,
+            483.88
+          ],
+          [
+            389.64,
+            483.88
+          ],
+          [
+            389.66,
+            483.84
+          ],
+          [
+            389.68,
+            483.82
+          ],
+          [
+            389.7,
+            483.84
+          ],
+          [
+            389.72,
+            483.86
+          ],
+          [
+            389.74,
+            483.88
+          ],
+          [
+            389.76,
+            483.9
+          ],
+          [
+            389.78,
+            483.9
+          ],
+          [
+            389.8,
+            483.92
+          ],
+          [
+            389.82,
+            483.92
+          ],
+          [
+            389.84,
+            483.92
+          ],
+          [
+            389.86,
+            483.94
+          ],
+          [
+            389.88,
+            483.96
+          ],
+          [
+            389.9,
+            483.96
+          ],
+          [
+            389.92,
+            483.96
+          ],
+          [
+            389.94,
+            483.98
+          ],
+          [
+            389.96,
+            483.98
+          ],
+          [
+            389.98,
+            483.98
+          ],
+          [
+            390.0,
+            483.98
+          ],
+          [
+            390.02,
+            483.98
+          ],
+          [
+            390.04,
+            484.0
+          ],
+          [
+            390.06,
+            484.0
+          ],
+          [
+            390.08,
+            484.0
+          ],
+          [
+            390.1,
+            484.0
+          ],
+          [
+            390.12,
+            484.0
+          ],
+          [
+            390.14,
+            484.0
+          ],
+          [
+            390.16,
+            484.0
+          ],
+          [
+            390.18,
+            484.0
+          ],
+          [
+            390.2,
+            484.0
+          ],
+          [
+            390.22,
+            484.0
+          ],
+          [
+            390.24,
+            484.0
+          ],
+          [
+            390.26,
+            484.0
+          ],
+          [
+            390.28,
+            483.98
+          ],
+          [
+            390.3,
+            483.96
+          ],
+          [
+            390.32,
+            483.96
+          ],
+          [
+            390.34,
+            483.98
+          ],
+          [
+            390.36,
+            483.86
+          ],
+          [
+            390.16,
+            483.48
+          ],
+          [
+            389.26,
+            483.48
+          ]
+        ],
+        "allRootVerticesInsideSoil": true
+      }
+    ],
+    "rootReuseMeaning": "Two registrations reuse the existing right-garden vine actual 74-point woody lower contour plus its explicit NEW small rear closure. Registration anchor5651486 remains separate from real wood groundFront5701486. This is NEW placement, not restoration of an invisible original root.",
+    "heightMeaning": "29px uniform new post height keeps near head around393459.5 and side heads362444/424444. Original feet remain unproved; height is design, not a recovered measurement."
+  },
+  "wholeEnvelopeCheck": {
+    "canonicalCells": [
+      {
+        "cell": [
+          23,
+          28
+        ],
+        "terrain": "#",
+        "positiveArea": 4.0
+      },
+      {
+        "cell": [
+          24,
+          28
+        ],
+        "terrain": "#",
+        "positiveArea": 71.5
+      },
+      {
+        "cell": [
+          25,
+          28
+        ],
+        "terrain": "#",
+        "positiveArea": 9.0
+      },
+      {
+        "cell": [
+          22,
+          29
+        ],
+        "terrain": "#",
+        "positiveArea": 18.0
+      },
+      {
+        "cell": [
+          23,
+          29
+        ],
+        "terrain": "#",
+        "positiveArea": 204.0
+      },
+      {
+        "cell": [
+          24,
+          29
+        ],
+        "terrain": "#",
+        "positiveArea": 256.0
+      },
+      {
+        "cell": [
+          25,
+          29
+        ],
+        "terrain": "#",
+        "positiveArea": 222.0
+      },
+      {
+        "cell": [
+          26,
+          29
+        ],
+        "terrain": "#",
+        "positiveArea": 32.0
+      },
+      {
+        "cell": [
+          23,
+          30
+        ],
+        "terrain": "#",
+        "positiveArea": 16.0
+      },
+      {
+        "cell": [
+          24,
+          30
+        ],
+        "terrain": "#",
+        "positiveArea": 103.5
+      },
+      {
+        "cell": [
+          25,
+          30
+        ],
+        "terrain": "#",
+        "positiveArea": 25.0
+      }
+    ],
+    "nonBlockedPositiveArea": [],
+    "blue": {
+      "boundary": {
+        "testedSegments": 887,
+        "intersectingSegments": 0,
+        "minimumDistance": 4.4274145954496245,
+        "closestWitness": {
+          "actor": {
+            "otherBoundaryEdge": 310
+          },
+          "actorSweep": [
+            [
+              421.3,
+              466.7
+            ],
+            [
+              421.40000000000003,
+              466.7
+            ]
+          ],
+          "kind": "actor-start",
+          "point": [
+            421.3,
+            466.7
+          ],
+          "nearestPoint": [
+            419.32,
+            470.66
+          ],
+          "baseEdgeIndex": 2,
+          "baseEdge": [
+            [
+              424,
+              473
+            ],
+            [
+              393,
+              457.5
+            ]
+          ],
+          "parameter": 0.15096774193548373
+        },
+        "firstViolations": []
+      },
+      "verticesInsideOther": [],
+      "otherVerticesInside": [],
+      "disjoint": true
+    },
+    "rearHouse": {
+      "boundary": {
+        "testedSegments": 760,
+        "intersectingSegments": 0,
+        "minimumDistance": 28.70653627660433,
+        "closestWitness": {
+          "actor": {
+            "otherBoundaryEdge": 332
+          },
+          "point": [
+            393.0,
+            457.5
+          ],
+          "nearestPoint": [
+            384.765,
+            430.0
+          ],
+          "kind": "fixed-boundary-sample"
+        },
+        "firstViolations": []
+      },
+      "verticesInsideOther": [],
+      "otherVerticesInside": [],
+      "disjoint": true
+    },
+    "stoneWallComponents": {
+      "west-long": {
+        "boundary": {
+          "testedSegments": 4,
+          "intersectingSegments": 0,
+          "minimumDistance": 7.810249675906654,
+          "closestWitness": {
+            "actor": {
+              "otherBoundaryEdge": 1
+            },
+            "point": [
+              362,
+              473
+            ],
+            "nearestPoint": [
+              356.0,
+              478.0
+            ],
+            "kind": "fixed-boundary-sample"
+          },
+          "firstViolations": []
+        },
+        "verticesInsideOther": [],
+        "otherVerticesInside": [],
+        "disjoint": true
+      },
+      "middle": {
+        "boundary": {
+          "testedSegments": 4,
+          "intersectingSegments": 0,
+          "minimumDistance": 7.155417527999301,
+          "closestWitness": {
+            "actor": {
+              "otherBoundaryEdge": 2
+            },
+            "point": [
+              362,
+              473
+            ],
+            "nearestPoint": [
+              358.8,
+              479.4
+            ],
+            "kind": "fixed-boundary-sample"
+          },
+          "firstViolations": []
+        },
+        "verticesInsideOther": [],
+        "otherVerticesInside": [],
+        "disjoint": true
+      },
+      "near-long": {
+        "boundary": {
+          "testedSegments": 4,
+          "intersectingSegments": 0,
+          "minimumDistance": 7.155417527999301,
+          "closestWitness": {
+            "actor": {
+              "otherBoundaryEdge": 2
+            },
+            "point": [
+              393.0,
+              488.5
+            ],
+            "nearestPoint": [
+              389.8,
+              494.9
+            ],
+            "kind": "fixed-boundary-sample"
+          },
+          "firstViolations": []
+        },
+        "verticesInsideOther": [],
+        "otherVerticesInside": [],
+        "disjoint": true
+      },
+      "near": {
+        "boundary": {
+          "testedSegments": 4,
+          "intersectingSegments": 0,
+          "minimumDistance": 9.838699100999074,
+          "closestWitness": {
+            "actor": {
+              "otherBoundaryEdge": 3
+            },
+            "point": [
+              393.0,
+              488.5
+            ],
+            "nearestPoint": [
+              397.4,
+              497.3
+            ],
+            "kind": "fixed-boundary-sample"
+          },
+          "firstViolations": []
+        },
+        "verticesInsideOther": [],
+        "otherVerticesInside": [],
+        "disjoint": true
+      },
+      "east-return": {
+        "boundary": {
+          "testedSegments": 4,
+          "intersectingSegments": 0,
+          "minimumDistance": 11.62755348299888,
+          "closestWitness": {
+            "actor": {
+              "otherBoundaryEdge": 2
+            },
+            "actorSweep": [
+              [
+                426,
+                485
+              ],
+              [
+                400,
+                498
+              ]
+            ],
+            "kind": "actor-start",
+            "point": [
+              426,
+              485
+            ],
+            "nearestPoint": [
+              420.8,
+              474.6
+            ],
+            "baseEdgeIndex": 1,
+            "baseEdge": [
+              [
+                393,
+                488.5
+              ],
+              [
+                424,
+                473
+              ]
+            ],
+            "parameter": 0.896774193548387
+          },
+          "firstViolations": []
+        },
+        "verticesInsideOther": [],
+        "otherVerticesInside": [],
+        "disjoint": true
+      }
+    },
+    "walk": {
+      "boundary": {
+        "testedSegments": 20650,
+        "intersectingSegments": 0,
+        "minimumDistance": 13.038000406677149,
+        "closestWitness": {
+          "actor": {
+            "fromCell": [
+              21,
+              30
+            ],
+            "toCell": [
+              20,
+              30
+            ],
+            "west": true,
+            "frame": 3,
+            "soleFramePixel": [
+              34,
+              553
+            ]
+          },
+          "actorSweep": [
+            [
+              359.384608,
+              486.2692316
+            ],
+            [
+              343.384608,
+              486.2692316
+            ]
+          ],
+          "kind": "actor-start",
+          "point": [
+            359.384608,
+            486.2692316
+          ],
+          "nearestPoint": [
+            365.21537904,
+            474.60768952
+          ],
+          "baseEdgeIndex": 0,
+          "baseEdge": [
+            [
+              362,
+              473
+            ],
+            [
+              393,
+              488.5
+            ]
+          ],
+          "parameter": 0.10372190451612956
+        },
+        "firstViolations": []
+      },
+      "endpointInsideCount": 0,
+      "endpointInsideExamples": [],
+      "clear": true
+    }
+  },
+  "finitePostChecks": {
+    "left": {
+      "canonicalCells": [
+        {
+          "cell": [
+            22,
+            29
+          ],
+          "terrain": "#",
+          "positiveArea": 2.7999999999883585
+        }
+      ],
+      "nonBlockedPositiveArea": [],
+      "blue": {
+        "boundary": {
+          "testedSegments": 887,
+          "intersectingSegments": 0,
+          "minimumDistance": 43.44951092935338,
+          "closestWitness": {
+            "actor": {
+              "otherBoundaryEdge": 29
+            },
+            "point": [
+              363.8,
+              472.0
+            ],
+            "nearestPoint": [
+              393.3,
+              440.1
+            ],
+            "kind": "fixed-boundary-sample"
+          },
+          "firstViolations": []
+        },
+        "verticesInsideOther": [],
+        "otherVerticesInside": [],
+        "disjoint": true
+      },
+      "rearHouse": {
+        "boundary": {
+          "testedSegments": 760,
+          "intersectingSegments": 0,
+          "minimumDistance": 46.599656651095565,
+          "closestWitness": {
+            "actor": {
+              "otherBoundaryEdge": 320
+            },
+            "actorSweep": [
+              [
+                383.65999999999997,
+                429.83000000000004
+              ],
+              [
+                383.74499999999995,
+                429.83000000000004
+              ]
+            ],
+            "kind": "actor-start",
+            "point": [
+              383.65999999999997,
+              429.83000000000004
+            ],
+            "nearestPoint": [
+              362.82,
+              471.51
+            ],
+            "baseEdgeIndex": 2,
+            "baseEdge": [
+              [
+                363.8,
+                472.0
+              ],
+              [
+                361.8,
+                471.0
+              ]
+            ],
+            "parameter": 0.4900000000000091
+          },
+          "firstViolations": []
+        },
+        "verticesInsideOther": [],
+        "otherVerticesInside": [],
+        "disjoint": true
+      },
+      "stoneWallComponents": {
+        "west-long": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 7.810249675906654,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 1
+              },
+              "point": [
+                361.0,
+                472.0
+              ],
+              "nearestPoint": [
+                356.0,
+                478.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "middle": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 7.602631123499285,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 2
+              },
+              "point": [
+                361.0,
+                472.0
+              ],
+              "nearestPoint": [
+                357.6,
+                478.8
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "near-long": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 7.615773105863909,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 2
+              },
+              "point": [
+                363.0,
+                473.0
+              ],
+              "nearestPoint": [
+                360.0,
+                480.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "near": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 39.6232255123179,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 0
+              },
+              "point": [
+                363.0,
+                473.0
+              ],
+              "nearestPoint": [
+                392.0,
+                500.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "east-return": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 44.56949629511197,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 2
+              },
+              "point": [
+                363.8,
+                472.0
+              ],
+              "nearestPoint": [
+                400.0,
+                498.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        }
+      },
+      "walk": {
+        "boundary": {
+          "testedSegments": 20650,
+          "intersectingSegments": 0,
+          "minimumDistance": 13.752947559272622,
+          "closestWitness": {
+            "actor": {
+              "fromCell": [
+                21,
+                30
+              ],
+              "toCell": [
+                20,
+                30
+              ],
+              "west": true,
+              "frame": 3,
+              "soleFramePixel": [
+                34,
+                553
+              ]
+            },
+            "point": [
+              363.0,
+              473.0
+            ],
+            "nearestPoint": [
+              359.384608,
+              486.2692316
+            ],
+            "kind": "fixed-boundary-sample"
+          },
+          "firstViolations": []
+        },
+        "endpointInsideCount": 0,
+        "endpointInsideExamples": [],
+        "clear": true
+      }
+    },
+    "near": {
+      "canonicalCells": [
+        {
+          "cell": [
+            24,
+            30
+          ],
+          "terrain": "#",
+          "positiveArea": 2.8000000000029104
+        }
+      ],
+      "nonBlockedPositiveArea": [],
+      "blue": {
+        "boundary": {
+          "testedSegments": 887,
+          "intersectingSegments": 0,
+          "minimumDistance": 33.25327051584551,
+          "closestWitness": {
+            "actor": {
+              "otherBoundaryEdge": 271
+            },
+            "point": [
+              394.8,
+              487.5
+            ],
+            "nearestPoint": [
+              417.5,
+              463.2
+            ],
+            "kind": "fixed-boundary-sample"
+          },
+          "firstViolations": []
+        },
+        "verticesInsideOther": [],
+        "otherVerticesInside": [],
+        "disjoint": true
+      },
+      "rearHouse": {
+        "boundary": {
+          "testedSegments": 760,
+          "intersectingSegments": 0,
+          "minimumDistance": 57.068478383429856,
+          "closestWitness": {
+            "actor": {
+              "otherBoundaryEdge": 332
+            },
+            "point": [
+              392.8,
+              486.5
+            ],
+            "nearestPoint": [
+              384.765,
+              430.0
+            ],
+            "kind": "fixed-boundary-sample"
+          },
+          "firstViolations": []
+        },
+        "verticesInsideOther": [],
+        "otherVerticesInside": [],
+        "disjoint": true
+      },
+      "stoneWallComponents": {
+        "west-long": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 37.23237838226293,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 1
+              },
+              "point": [
+                392.0,
+                487.5
+              ],
+              "nearestPoint": [
+                356.0,
+                478.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "middle": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 32.86715685908959,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 1
+              },
+              "point": [
+                392.0,
+                487.5
+              ],
+              "nearestPoint": [
+                360.0,
+                480.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "near-long": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 7.602631123499285,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 2
+              },
+              "point": [
+                392.0,
+                487.5
+              ],
+              "nearestPoint": [
+                388.6,
+                494.3
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "near": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 9.394147114027968,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 2
+              },
+              "point": [
+                394.0,
+                488.5
+              ],
+              "nearestPoint": [
+                398.0,
+                497.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "east-return": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 11.236102527122116,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 2
+              },
+              "point": [
+                394.0,
+                488.5
+              ],
+              "nearestPoint": [
+                400.0,
+                498.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        }
+      },
+      "walk": {
+        "boundary": {
+          "testedSegments": 20650,
+          "intersectingSegments": 0,
+          "minimumDistance": 14.015420584773858,
+          "closestWitness": {
+            "actor": {
+              "fromCell": [
+                23,
+                31
+              ],
+              "toCell": [
+                22,
+                31
+              ],
+              "west": true,
+              "frame": 3,
+              "soleFramePixel": [
+                34,
+                553
+              ]
+            },
+            "point": [
+              394.0,
+              488.5
+            ],
+            "nearestPoint": [
+              391.384608,
+              502.2692316
+            ],
+            "kind": "fixed-boundary-sample"
+          },
+          "firstViolations": []
+        },
+        "endpointInsideCount": 0,
+        "endpointInsideExamples": [],
+        "clear": true
+      }
+    },
+    "right": {
+      "canonicalCells": [
+        {
+          "cell": [
+            26,
+            29
+          ],
+          "terrain": "#",
+          "positiveArea": 2.7999999999883585
+        }
+      ],
+      "nonBlockedPositiveArea": [],
+      "blue": {
+        "boundary": {
+          "testedSegments": 887,
+          "intersectingSegments": 0,
+          "minimumDistance": 4.123105625617661,
+          "closestWitness": {
+            "actor": {
+              "otherBoundaryEdge": 324
+            },
+            "point": [
+              423.8,
+              471.0
+            ],
+            "nearestPoint": [
+              422.8,
+              467.0
+            ],
+            "kind": "fixed-boundary-sample"
+          },
+          "firstViolations": []
+        },
+        "verticesInsideOther": [],
+        "otherVerticesInside": [],
+        "disjoint": true
+      },
+      "rearHouse": {
+        "boundary": {
+          "testedSegments": 760,
+          "intersectingSegments": 0,
+          "minimumDistance": 52.7288794210535,
+          "closestWitness": {
+            "actor": {
+              "otherBoundaryEdge": 552
+            },
+            "point": [
+              423.8,
+              471.0
+            ],
+            "nearestPoint": [
+              403.465,
+              422.35
+            ],
+            "kind": "fixed-boundary-sample"
+          },
+          "firstViolations": []
+        },
+        "verticesInsideOther": [],
+        "otherVerticesInside": [],
+        "disjoint": true
+      },
+      "stoneWallComponents": {
+        "west-long": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 67.26812023536856,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 1
+              },
+              "point": [
+                423.0,
+                472.0
+              ],
+              "nearestPoint": [
+                356.0,
+                478.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "middle": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 63.50590523722971,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 1
+              },
+              "point": [
+                423.0,
+                472.0
+              ],
+              "nearestPoint": [
+                360.0,
+                480.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "near-long": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 37.48332962798263,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 1
+              },
+              "point": [
+                423.0,
+                472.0
+              ],
+              "nearestPoint": [
+                396.0,
+                498.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "near": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 33.83784863137726,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 1
+              },
+              "point": [
+                423.0,
+                472.0
+              ],
+              "nearestPoint": [
+                404.0,
+                500.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "east-return": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 12.041594578792296,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 1
+              },
+              "point": [
+                425.0,
+                473.0
+              ],
+              "nearestPoint": [
+                426.0,
+                485.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        }
+      },
+      "walk": {
+        "boundary": {
+          "testedSegments": 20650,
+          "intersectingSegments": 0,
+          "minimumDistance": 14.815391999999974,
+          "closestWitness": {
+            "actor": {
+              "fromCell": [
+                28,
+                29
+              ],
+              "toCell": [
+                28,
+                30
+              ],
+              "west": false,
+              "frame": 3,
+              "soleFramePixel": [
+                34,
+                553
+              ]
+            },
+            "point": [
+              425.8,
+              472.0
+            ],
+            "nearestPoint": [
+              440.615392,
+              472.0
+            ],
+            "kind": "fixed-boundary-sample"
+          },
+          "firstViolations": []
+        },
+        "endpointInsideCount": 0,
+        "endpointInsideExamples": [],
+        "clear": true
+      }
+    },
+    "rear-new-hidden": {
+      "canonicalCells": [
+        {
+          "cell": [
+            24,
+            28
+          ],
+          "terrain": "#",
+          "positiveArea": 2.8000000000029104
+        }
+      ],
+      "nonBlockedPositiveArea": [],
+      "blue": {
+        "boundary": {
+          "testedSegments": 887,
+          "intersectingSegments": 0,
+          "minimumDistance": 10.987720418721985,
+          "closestWitness": {
+            "actor": {
+              "otherBoundaryEdge": 116
+            },
+            "point": [
+              394.8,
+              456.5
+            ],
+            "nearestPoint": [
+              402.0,
+              448.2
+            ],
+            "kind": "fixed-boundary-sample"
+          },
+          "firstViolations": []
+        },
+        "verticesInsideOther": [],
+        "otherVerticesInside": [],
+        "disjoint": true
+      },
+      "rearHouse": {
+        "boundary": {
+          "testedSegments": 760,
+          "intersectingSegments": 0,
+          "minimumDistance": 26.735953788858932,
+          "closestWitness": {
+            "actor": {
+              "otherBoundaryEdge": 332
+            },
+            "point": [
+              392.8,
+              455.5
+            ],
+            "nearestPoint": [
+              384.765,
+              430.0
+            ],
+            "kind": "fixed-boundary-sample"
+          },
+          "firstViolations": []
+        },
+        "verticesInsideOther": [],
+        "otherVerticesInside": [],
+        "disjoint": true
+      },
+      "stoneWallComponents": {
+        "west-long": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 41.93149174546501,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 1
+              },
+              "point": [
+                392.0,
+                456.5
+              ],
+              "nearestPoint": [
+                356.0,
+                478.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "middle": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 39.702015062210634,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 1
+              },
+              "point": [
+                392.0,
+                456.5
+              ],
+              "nearestPoint": [
+                360.0,
+                480.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "near-long": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 35.329874044496705,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 2
+              },
+              "point": [
+                392.0,
+                456.5
+              ],
+              "nearestPoint": [
+                376.2,
+                488.1
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "near": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 39.702015062210634,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 2
+              },
+              "point": [
+                394.0,
+                457.5
+              ],
+              "nearestPoint": [
+                398.0,
+                497.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "east-return": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 38.90758280849634,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 2
+              },
+              "point": [
+                394.0,
+                457.5
+              ],
+              "nearestPoint": [
+                411.4,
+                492.3
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        }
+      },
+      "walk": {
+        "boundary": {
+          "testedSegments": 20650,
+          "intersectingSegments": 0,
+          "minimumDistance": 37.355472111306995,
+          "closestWitness": {
+            "actor": {
+              "fromCell": [
+                21,
+                26
+              ],
+              "toCell": [
+                21,
+                27
+              ],
+              "west": true,
+              "frame": 3,
+              "soleFramePixel": [
+                35,
+                555
+              ]
+            },
+            "point": [
+              392.0,
+              456.5
+            ],
+            "nearestPoint": [
+              359.2884542,
+              438.4615392
+            ],
+            "kind": "fixed-boundary-sample"
+          },
+          "firstViolations": []
+        },
+        "endpointInsideCount": 0,
+        "endpointInsideExamples": [],
+        "clear": true
+      }
+    }
+  },
+  "actualReusedRootChecks": {
+    "left-vine": {
+      "canonicalCells": [
+        {
+          "cell": [
+            22,
+            29
+          ],
+          "terrain": "#",
+          "positiveArea": 0.004577777799568139
+        },
+        {
+          "cell": [
+            23,
+            29
+          ],
+          "terrain": "#",
+          "positiveArea": 0.5164222221355885
+        }
+      ],
+      "nonBlockedPositiveArea": [],
+      "blue": {
+        "boundary": {
+          "testedSegments": 887,
+          "intersectingSegments": 0,
+          "minimumDistance": 40.0552867921327,
+          "closestWitness": {
+            "actor": {
+              "otherBoundaryEdge": 63
+            },
+            "actorSweep": [
+              [
+                396.6,
+                443.3
+              ],
+              [
+                396.7,
+                443.3
+              ]
+            ],
+            "kind": "actor-start",
+            "point": [
+              396.6,
+              443.3
+            ],
+            "nearestPoint": [
+              369.16,
+              472.48
+            ],
+            "baseEdgeIndex": 73,
+            "baseEdge": [
+              [
+                369.36,
+                472.86
+              ],
+              [
+                369.16,
+                472.48
+              ]
+            ],
+            "parameter": 1.0
+          },
+          "firstViolations": []
+        },
+        "verticesInsideOther": [],
+        "otherVerticesInside": [],
+        "disjoint": true
+      },
+      "rearHouse": {
+        "boundary": {
+          "testedSegments": 760,
+          "intersectingSegments": 0,
+          "minimumDistance": 44.99751104227878,
+          "closestWitness": {
+            "actor": {
+              "otherBoundaryEdge": 324
+            },
+            "actorSweep": [
+              [
+                384.0,
+                430.0
+              ],
+              [
+                384.085,
+                430.0
+              ]
+            ],
+            "kind": "actor-start",
+            "point": [
+              384.0,
+              430.0
+            ],
+            "nearestPoint": [
+              369.16,
+              472.48
+            ],
+            "baseEdgeIndex": 73,
+            "baseEdge": [
+              [
+                369.36,
+                472.86
+              ],
+              [
+                369.16,
+                472.48
+              ]
+            ],
+            "parameter": 1.0
+          },
+          "firstViolations": []
+        },
+        "verticesInsideOther": [],
+        "otherVerticesInside": [],
+        "disjoint": true
+      },
+      "stoneWallComponents": {
+        "west-long": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 13.035045070884848,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 1
+              },
+              "point": [
+                367.9,
+                472.68
+              ],
+              "nearestPoint": [
+                356.0,
+                478.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "middle": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 10.769976787347295,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 1
+              },
+              "point": [
+                367.9,
+                472.68
+              ],
+              "nearestPoint": [
+                360.0,
+                480.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "near-long": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 10.026528811109065,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 2
+              },
+              "actorSweep": [
+                [
+                  396,
+                  498
+                ],
+                [
+                  360,
+                  480
+                ]
+              ],
+              "kind": "base-edge-end",
+              "point": [
+                368.3,
+                472.94
+              ],
+              "nearestPoint": [
+                363.81600000000003,
+                481.908
+              ],
+              "baseEdgeIndex": 19,
+              "baseEdge": [
+                [
+                  368.28,
+                  472.92
+                ],
+                [
+                  368.3,
+                  472.94
+                ]
+              ],
+              "parameter": 0.8939999999999998
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "near": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 35.26408938282683,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 0
+              },
+              "point": [
+                369.34,
+                472.98
+              ],
+              "nearestPoint": [
+                392.0,
+                500.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "east-return": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 39.57317273103081,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 2
+              },
+              "point": [
+                369.34,
+                472.98
+              ],
+              "nearestPoint": [
+                400.0,
+                498.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        }
+      },
+      "walk": {
+        "boundary": {
+          "testedSegments": 20650,
+          "intersectingSegments": 0,
+          "minimumDistance": 16.03050101550489,
+          "closestWitness": {
+            "actor": {
+              "fromCell": [
+                21,
+                30
+              ],
+              "toCell": [
+                20,
+                30
+              ],
+              "west": true,
+              "frame": 3,
+              "soleFramePixel": [
+                34,
+                553
+              ]
+            },
+            "actorSweep": [
+              [
+                359.384608,
+                486.2692316
+              ],
+              [
+                343.384608,
+                486.2692316
+              ]
+            ],
+            "kind": "actor-start",
+            "point": [
+              359.384608,
+              486.2692316
+            ],
+            "nearestPoint": [
+              367.92,
+              472.7
+            ],
+            "baseEdgeIndex": 0,
+            "baseEdge": [
+              [
+                367.9,
+                472.68
+              ],
+              [
+                367.92,
+                472.7
+              ]
+            ],
+            "parameter": 1.0
+          },
+          "firstViolations": []
+        },
+        "endpointInsideCount": 0,
+        "endpointInsideExamples": [],
+        "clear": true
+      }
+    },
+    "near-vine": {
+      "canonicalCells": [
+        {
+          "cell": [
+            24,
+            30
+          ],
+          "terrain": "#",
+          "positiveArea": 0.5209999999788124
+        }
+      ],
+      "nonBlockedPositiveArea": [],
+      "blue": {
+        "boundary": {
+          "testedSegments": 887,
+          "intersectingSegments": 0,
+          "minimumDistance": 33.77173374288031,
+          "closestWitness": {
+            "actor": {
+              "otherBoundaryEdge": 255
+            },
+            "actorSweep": [
+              [
+                415.8,
+                461.5
+              ],
+              [
+                415.90000000000003,
+                461.6
+              ]
+            ],
+            "kind": "actor-start",
+            "point": [
+              415.8,
+              461.5
+            ],
+            "nearestPoint": [
+              390.16,
+              483.48
+            ],
+            "baseEdgeIndex": 73,
+            "baseEdge": [
+              [
+                390.36,
+                483.86
+              ],
+              [
+                390.16,
+                483.48
+              ]
+            ],
+            "parameter": 1.0
+          },
+          "firstViolations": []
+        },
+        "verticesInsideOther": [],
+        "otherVerticesInside": [],
+        "disjoint": true
+      },
+      "rearHouse": {
+        "boundary": {
+          "testedSegments": 760,
+          "intersectingSegments": 0,
+          "minimumDistance": 53.66857017845735,
+          "closestWitness": {
+            "actor": {
+              "otherBoundaryEdge": 333
+            },
+            "actorSweep": [
+              [
+                384.765,
+                430.0
+              ],
+              [
+                384.84999999999997,
+                429.915
+              ]
+            ],
+            "kind": "actor-start",
+            "point": [
+              384.765,
+              430.0
+            ],
+            "nearestPoint": [
+              389.26,
+              483.48
+            ],
+            "baseEdgeIndex": 74,
+            "baseEdge": [
+              [
+                390.16,
+                483.48
+              ],
+              [
+                389.26,
+                483.48
+              ]
+            ],
+            "parameter": 1.0
+          },
+          "firstViolations": []
+        },
+        "verticesInsideOther": [],
+        "otherVerticesInside": [],
+        "disjoint": true
+      },
+      "stoneWallComponents": {
+        "west-long": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 33.38670993074937,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 1
+              },
+              "point": [
+                388.9,
+                483.68
+              ],
+              "nearestPoint": [
+                356.0,
+                478.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "middle": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 29.133355453843603,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 1
+              },
+              "point": [
+                388.9,
+                483.68
+              ],
+              "nearestPoint": [
+                360.0,
+                480.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "near-long": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 9.57931521560908,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 2
+              },
+              "actorSweep": [
+                [
+                  396,
+                  498
+                ],
+                [
+                  360,
+                  480
+                ]
+              ],
+              "kind": "base-edge-end",
+              "point": [
+                389.3,
+                483.94
+              ],
+              "nearestPoint": [
+                385.016,
+                492.508
+              ],
+              "baseEdgeIndex": 19,
+              "baseEdge": [
+                [
+                  389.28,
+                  483.92
+                ],
+                [
+                  389.3,
+                  483.94
+                ]
+              ],
+              "parameter": 0.3051111111111109
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "near": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 15.071098168348604,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 3
+              },
+              "point": [
+                390.34,
+                483.98
+              ],
+              "nearestPoint": [
+                397.08,
+                497.46000000000004
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        },
+        "east-return": {
+          "boundary": {
+            "testedSegments": 4,
+            "intersectingSegments": 0,
+            "minimumDistance": 17.02574521129692,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 2
+              },
+              "point": [
+                390.34,
+                483.98
+              ],
+              "nearestPoint": [
+                400.0,
+                498.0
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "verticesInsideOther": [],
+          "otherVerticesInside": [],
+          "disjoint": true
+        }
+      },
+      "walk": {
+        "boundary": {
+          "testedSegments": 20650,
+          "intersectingSegments": 0,
+          "minimumDistance": 15.888247087899543,
+          "closestWitness": {
+            "actor": {
+              "fromCell": [
+                23,
+                31
+              ],
+              "toCell": [
+                22,
+                31
+              ],
+              "west": true,
+              "frame": 3,
+              "soleFramePixel": [
+                119,
+                515
+              ]
+            },
+            "actorSweep": [
+              [
+                383.211535,
+                498.6153872
+              ],
+              [
+                367.211535,
+                498.6153872
+              ]
+            ],
+            "kind": "actor-start",
+            "point": [
+              383.211535,
+              498.6153872
+            ],
+            "nearestPoint": [
+              389.3,
+              483.94
+            ],
+            "baseEdgeIndex": 19,
+            "baseEdge": [
+              [
+                389.28,
+                483.92
+              ],
+              [
+                389.3,
+                483.94
+              ]
+            ],
+            "parameter": 1.0
+          },
+          "firstViolations": []
+        },
+        "endpointInsideCount": 0,
+        "endpointInsideExamples": [],
+        "clear": true
+      }
+    }
+  },
+  "localWalkScope": {
+    "legalBoundsInclusive": {
+      "x": [
+        20,
+        28
+      ],
+      "y": [
+        26,
+        33
+      ]
+    },
+    "legalCells": [
+      [
+        20,
+        26
+      ],
+      [
+        21,
+        26
+      ],
+      [
+        21,
+        27
+      ],
+      [
+        28,
+        29
+      ],
+      [
+        20,
+        30
+      ],
+      [
+        21,
+        30
+      ],
+      [
+        28,
+        30
+      ],
+      [
+        20,
+        31
+      ],
+      [
+        21,
+        31
+      ],
+      [
+        22,
+        31
+      ],
+      [
+        23,
+        31
+      ],
+      [
+        28,
+        31
+      ],
+      [
+        20,
+        32
+      ],
+      [
+        21,
+        32
+      ],
+      [
+        22,
+        32
+      ],
+      [
+        23,
+        32
+      ],
+      [
+        24,
+        32
+      ],
+      [
+        25,
+        32
+      ],
+      [
+        26,
+        32
+      ],
+      [
+        27,
+        32
+      ],
+      [
+        28,
+        32
+      ],
+      [
+        20,
+        33
+      ],
+      [
+        21,
+        33
+      ],
+      [
+        22,
+        33
+      ],
+      [
+        23,
+        33
+      ],
+      [
+        24,
+        33
+      ],
+      [
+        25,
+        33
+      ],
+      [
+        26,
+        33
+      ],
+      [
+        27,
+        33
+      ],
+      [
+        28,
+        33
+      ]
+    ],
+    "directedEdges": [
+      [
+        [
+          20,
+          26
+        ],
+        [
+          21,
+          26
+        ]
+      ],
+      [
+        [
+          21,
+          26
+        ],
+        [
+          20,
+          26
+        ]
+      ],
+      [
+        [
+          21,
+          26
+        ],
+        [
+          21,
+          27
+        ]
+      ],
+      [
+        [
+          21,
+          27
+        ],
+        [
+          21,
+          26
+        ]
+      ],
+      [
+        [
+          28,
+          29
+        ],
+        [
+          28,
+          30
+        ]
+      ],
+      [
+        [
+          20,
+          30
+        ],
+        [
+          21,
+          30
+        ]
+      ],
+      [
+        [
+          20,
+          30
+        ],
+        [
+          20,
+          31
+        ]
+      ],
+      [
+        [
+          21,
+          30
+        ],
+        [
+          20,
+          30
+        ]
+      ],
+      [
+        [
+          21,
+          30
+        ],
+        [
+          21,
+          31
+        ]
+      ],
+      [
+        [
+          28,
+          30
+        ],
+        [
+          28,
+          29
+        ]
+      ],
+      [
+        [
+          28,
+          30
+        ],
+        [
+          28,
+          31
+        ]
+      ],
+      [
+        [
+          20,
+          31
+        ],
+        [
+          20,
+          30
+        ]
+      ],
+      [
+        [
+          20,
+          31
+        ],
+        [
+          21,
+          31
+        ]
+      ],
+      [
+        [
+          20,
+          31
+        ],
+        [
+          20,
+          32
+        ]
+      ],
+      [
+        [
+          21,
+          31
+        ],
+        [
+          21,
+          30
+        ]
+      ],
+      [
+        [
+          21,
+          31
+        ],
+        [
+          20,
+          31
+        ]
+      ],
+      [
+        [
+          21,
+          31
+        ],
+        [
+          22,
+          31
+        ]
+      ],
+      [
+        [
+          21,
+          31
+        ],
+        [
+          21,
+          32
+        ]
+      ],
+      [
+        [
+          22,
+          31
+        ],
+        [
+          21,
+          31
+        ]
+      ],
+      [
+        [
+          22,
+          31
+        ],
+        [
+          23,
+          31
+        ]
+      ],
+      [
+        [
+          22,
+          31
+        ],
+        [
+          22,
+          32
+        ]
+      ],
+      [
+        [
+          23,
+          31
+        ],
+        [
+          22,
+          31
+        ]
+      ],
+      [
+        [
+          23,
+          31
+        ],
+        [
+          23,
+          32
+        ]
+      ],
+      [
+        [
+          28,
+          31
+        ],
+        [
+          28,
+          30
+        ]
+      ],
+      [
+        [
+          28,
+          31
+        ],
+        [
+          28,
+          32
+        ]
+      ],
+      [
+        [
+          20,
+          32
+        ],
+        [
+          20,
+          31
+        ]
+      ],
+      [
+        [
+          20,
+          32
+        ],
+        [
+          21,
+          32
+        ]
+      ],
+      [
+        [
+          20,
+          32
+        ],
+        [
+          20,
+          33
+        ]
+      ],
+      [
+        [
+          21,
+          32
+        ],
+        [
+          21,
+          31
+        ]
+      ],
+      [
+        [
+          21,
+          32
+        ],
+        [
+          20,
+          32
+        ]
+      ],
+      [
+        [
+          21,
+          32
+        ],
+        [
+          22,
+          32
+        ]
+      ],
+      [
+        [
+          21,
+          32
+        ],
+        [
+          21,
+          33
+        ]
+      ],
+      [
+        [
+          22,
+          32
+        ],
+        [
+          22,
+          31
+        ]
+      ],
+      [
+        [
+          22,
+          32
+        ],
+        [
+          21,
+          32
+        ]
+      ],
+      [
+        [
+          22,
+          32
+        ],
+        [
+          23,
+          32
+        ]
+      ],
+      [
+        [
+          22,
+          32
+        ],
+        [
+          22,
+          33
+        ]
+      ],
+      [
+        [
+          23,
+          32
+        ],
+        [
+          23,
+          31
+        ]
+      ],
+      [
+        [
+          23,
+          32
+        ],
+        [
+          22,
+          32
+        ]
+      ],
+      [
+        [
+          23,
+          32
+        ],
+        [
+          24,
+          32
+        ]
+      ],
+      [
+        [
+          23,
+          32
+        ],
+        [
+          23,
+          33
+        ]
+      ],
+      [
+        [
+          24,
+          32
+        ],
+        [
+          23,
+          32
+        ]
+      ],
+      [
+        [
+          24,
+          32
+        ],
+        [
+          25,
+          32
+        ]
+      ],
+      [
+        [
+          24,
+          32
+        ],
+        [
+          24,
+          33
+        ]
+      ],
+      [
+        [
+          25,
+          32
+        ],
+        [
+          24,
+          32
+        ]
+      ],
+      [
+        [
+          25,
+          32
+        ],
+        [
+          26,
+          32
+        ]
+      ],
+      [
+        [
+          25,
+          32
+        ],
+        [
+          25,
+          33
+        ]
+      ],
+      [
+        [
+          26,
+          32
+        ],
+        [
+          25,
+          32
+        ]
+      ],
+      [
+        [
+          26,
+          32
+        ],
+        [
+          27,
+          32
+        ]
+      ],
+      [
+        [
+          26,
+          32
+        ],
+        [
+          26,
+          33
+        ]
+      ],
+      [
+        [
+          27,
+          32
+        ],
+        [
+          26,
+          32
+        ]
+      ],
+      [
+        [
+          27,
+          32
+        ],
+        [
+          28,
+          32
+        ]
+      ],
+      [
+        [
+          27,
+          32
+        ],
+        [
+          27,
+          33
+        ]
+      ],
+      [
+        [
+          28,
+          32
+        ],
+        [
+          28,
+          31
+        ]
+      ],
+      [
+        [
+          28,
+          32
+        ],
+        [
+          27,
+          32
+        ]
+      ],
+      [
+        [
+          28,
+          32
+        ],
+        [
+          28,
+          33
+        ]
+      ],
+      [
+        [
+          20,
+          33
+        ],
+        [
+          20,
+          32
+        ]
+      ],
+      [
+        [
+          20,
+          33
+        ],
+        [
+          21,
+          33
+        ]
+      ],
+      [
+        [
+          21,
+          33
+        ],
+        [
+          21,
+          32
+        ]
+      ],
+      [
+        [
+          21,
+          33
+        ],
+        [
+          20,
+          33
+        ]
+      ],
+      [
+        [
+          21,
+          33
+        ],
+        [
+          22,
+          33
+        ]
+      ],
+      [
+        [
+          22,
+          33
+        ],
+        [
+          22,
+          32
+        ]
+      ],
+      [
+        [
+          22,
+          33
+        ],
+        [
+          21,
+          33
+        ]
+      ],
+      [
+        [
+          22,
+          33
+        ],
+        [
+          23,
+          33
+        ]
+      ],
+      [
+        [
+          23,
+          33
+        ],
+        [
+          23,
+          32
+        ]
+      ],
+      [
+        [
+          23,
+          33
+        ],
+        [
+          22,
+          33
+        ]
+      ],
+      [
+        [
+          23,
+          33
+        ],
+        [
+          24,
+          33
+        ]
+      ],
+      [
+        [
+          24,
+          33
+        ],
+        [
+          24,
+          32
+        ]
+      ],
+      [
+        [
+          24,
+          33
+        ],
+        [
+          23,
+          33
+        ]
+      ],
+      [
+        [
+          24,
+          33
+        ],
+        [
+          25,
+          33
+        ]
+      ],
+      [
+        [
+          25,
+          33
+        ],
+        [
+          25,
+          32
+        ]
+      ],
+      [
+        [
+          25,
+          33
+        ],
+        [
+          24,
+          33
+        ]
+      ],
+      [
+        [
+          25,
+          33
+        ],
+        [
+          26,
+          33
+        ]
+      ],
+      [
+        [
+          26,
+          33
+        ],
+        [
+          26,
+          32
+        ]
+      ],
+      [
+        [
+          26,
+          33
+        ],
+        [
+          25,
+          33
+        ]
+      ],
+      [
+        [
+          26,
+          33
+        ],
+        [
+          27,
+          33
+        ]
+      ],
+      [
+        [
+          27,
+          33
+        ],
+        [
+          27,
+          32
+        ]
+      ],
+      [
+        [
+          27,
+          33
+        ],
+        [
+          26,
+          33
+        ]
+      ],
+      [
+        [
+          27,
+          33
+        ],
+        [
+          28,
+          33
+        ]
+      ],
+      [
+        [
+          28,
+          33
+        ],
+        [
+          28,
+          32
+        ]
+      ],
+      [
+        [
+          28,
+          33
+        ],
+        [
+          27,
+          33
+        ]
+      ]
+    ],
+    "testedContinuousSoleSegments": 20650,
+    "frozenSource": "/workspace/scratch/84c9fe948755/c07-static-preview/central-east-planter-review/rear-white-planter-new-base-walk-corridor.json",
+    "contract": "Same frozen real Torren walk-a/b soles. Horizontal follows move direction; vertical retains either prior facing. This is conservative static interpolation, not gameplay."
+  },
+  "ownerNarrowAlternativeReport": "owner-narrow-open-frame-proposal-check.json",
+  "limits": [
+    "Ground clearance alone does not certify eave overlap, wood/leaf depth rendering or visual fit. Parent native/visual review still required.",
+    "Original source cannot prove any exact root anchor or all four complete post feet here. New hidden geometry is clearly new design.",
+    "Do not extend this proposal toward the old west long wall, neighboring street or outside pots.",
+    "No blanket front496/503 assigned to all wood/leaves; each post/root/beam must retain its own actual physical or structural support."
+  ],
+  "selectionForNextStudy": {
+    "adoptedByOwner": "review proposal362473→393488.5→424473→393457.5,height29",
+    "ownerNarrowAlternative": "Not adopted; retained only as bounded comparison, not a replacement."
+  }
+}

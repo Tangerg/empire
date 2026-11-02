@@ -1,0 +1,163 @@
+{
+  "textureResourcePath": "res://assets/native/c07-layered-v1/central-front-wood-planter-v1-candidate.png",
+  "supportMode": "horizontal-plane",
+  "supportLine": [
+    [
+      365,
+      473
+    ],
+    [
+      394,
+      484
+    ]
+  ],
+  "members": [
+    {
+      "id": "zero-height-root-bed-left",
+      "polygon": [
+        [
+          365,
+          473
+        ],
+        [
+          366.2,
+          471.6
+        ],
+        [
+          369,
+          471
+        ],
+        [
+          371.8,
+          471.6
+        ],
+        [
+          373,
+          473
+        ],
+        [
+          371.8,
+          474.4
+        ],
+        [
+          369,
+          475
+        ],
+        [
+          366.2,
+          474.4
+        ]
+      ],
+      "uv": [
+        [
+          513.0,
+          589.5
+        ],
+        [
+          515.1,
+          584.95
+        ],
+        [
+          520.0,
+          583.0
+        ],
+        [
+          524.9,
+          584.95
+        ],
+        [
+          527.0,
+          589.5
+        ],
+        [
+          524.9,
+          594.05
+        ],
+        [
+          520.0,
+          596.0
+        ],
+        [
+          515.1,
+          594.05
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "zero-height-root-bed-near",
+      "polygon": [
+        [
+          386,
+          484
+        ],
+        [
+          387.2,
+          482.6
+        ],
+        [
+          390,
+          482
+        ],
+        [
+          392.8,
+          482.6
+        ],
+        [
+          394,
+          484
+        ],
+        [
+          392.8,
+          485.4
+        ],
+        [
+          390,
+          486
+        ],
+        [
+          387.2,
+          485.4
+        ]
+      ],
+      "uv": [
+        [
+          513.0,
+          589.5
+        ],
+        [
+          515.1,
+          584.95
+        ],
+        [
+          520.0,
+          583.0
+        ],
+        [
+          524.9,
+          584.95
+        ],
+        [
+          527.0,
+          589.5
+        ],
+        [
+          524.9,
+          594.05
+        ],
+        [
+          520.0,
+          596.0
+        ],
+        [
+          515.1,
+          594.05
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    }
+  ],
+  "scope": "Two explicit NEW zero-height root beds, not a full black soil floor or raised pot. Actual reused lower root contours must be contained in these finite planes."
+}

@@ -725,6 +725,54 @@
       "selectionCell": null,
       "ownsMapStructureBody": false,
       "pointer": "pass-through"
+    },
+    {
+      "id": "left-courtyard-open-frame",
+      "assetId": "left-courtyard-open-frame",
+      "contact": [
+        22.5,
+        26.25
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "left-courtyard-soil",
+      "assetId": "left-courtyard-soil",
+      "contact": [
+        22.8125,
+        29.4375
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "left-courtyard-left-vine",
+      "assetId": "right-garden-vine",
+      "contact": [
+        23.0625,
+        29.5625
+      ],
+      "scale": 0.02,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "left-courtyard-near-vine",
+      "assetId": "right-garden-vine",
+      "contact": [
+        24.375,
+        30.25
+      ],
+      "scale": 0.02,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
     }
   ]
 }
