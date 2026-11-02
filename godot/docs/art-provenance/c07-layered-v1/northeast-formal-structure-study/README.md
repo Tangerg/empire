@@ -53,3 +53,14 @@ Negative resources deliberately move support depth early/late, invade original r
 `whole-cost-{baseline63,candidate65}.png` are actual Godot PNG RGBA captures. Full-scene measurements use the same .65 camera and actual detached actor, with 60 warmup and 120 sample frames before capture. The current63 baseline has a generic NE fallback: it is NOT equal geometry/quality. Candidate65 adds219 depth entries,450 nodes and136 median draw calls (2672→2808, +5.1%). Software llvmpipe process medians approximately100→119ms are noisy diagnostic results, not user-hardware FPS or a global performance pass. The whole incomplete city still contains generic houses and unclosed material/yard responsibilities.
 
 The native selected migration has not yet been performed in this research checkpoint. Official scene remains unchanged; six paused C06 files retain their hashes.
+
+
+## Selected migration verified
+
+The two closed surfaces now live in `data/scenes/c01-07-northeast-gate-{stone,leaf}-surface.json`, referenced by the sole selected assembly. Runtime resources own the chosen geometry, support and UV; the external designs are frozen provenance. Migration SHA equality is recorded in `selected-integration.json`. The stone owns the one canonical gate site; the leaf has independent support and is pass-through, not another site.
+
+Initial-state selected inventory now verifies65 instances,9 unique site owners,5673 depth entries, and7 remaining generic fallback bodies among the16 canonical sites. The northeast fallback is suppressed. Existing barracks/granary/council/NW pointers and NE target/approach remain correct; repeated RenderState does not accumulate entries. The canonical generated status and its narrative entrypoint have been updated, rather than treating an obsolete55/63-instance inventory as current.
+
+Fresh production Rebuild and external build both pass with0 warnings/errors. Selected front/back stone, holes/wood,1103-road and independent leaf contracts pass using the formal loader. Direct Godot PNG RGBA selected-frame comparison is exactly0 changed world pixels against the reviewed65-instance prototype (only72px diagnostic caption excluded); the shared image oracle checks actual encoding/mode. This proves the migration preserves this frame, not universal all-view equivalence or overall art acceptance.
+
+Official `c01-07.json` remains SHA5bd8cac7e2263dcffaf23b88c38b25515575678c3085a227e4a1f58f61abcd88, runtimeReady=false selected remains a candidate, and all6 paused-file hashes remain unchanged. No gameplay commands or save writers. No additional single-gate embellishment is planned; remaining fallback housing, whole-area material/contact integration and global performance remain open.

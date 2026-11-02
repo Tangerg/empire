@@ -86,8 +86,7 @@ def report():
             "selectedSites": sum(bool(item["selectedSiteOwners"]) for item in sites), "canonicalSites": len(sites),
             "instances": instances, "sites": sites, "foundations": foundations,
             "knownUnselectedFailures": ["west-inner left courtyard: selected masonry/open trellis/rooted plants; full block shadows and ground/material integration incomplete",
-                                        "central rear-east planted/seat group: natural structure unresolved",
-                                        "northeast lookout: solid/void and structural shape unresolved"],
+                                        "central rear-east planted/seat group: natural structure unresolved"],
             "finalArtStatus": "not accepted; materials, ground/object integration and contact shadows require bounded whole-neighbourhood passes"}
 
 

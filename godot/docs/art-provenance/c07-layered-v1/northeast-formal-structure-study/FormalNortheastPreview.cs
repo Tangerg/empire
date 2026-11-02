@@ -17,8 +17,9 @@ public partial class FormalNortheastPreview : Node2D
             var candidate = OS.GetEnvironment("NE_INTERFACE") == "1";
             var leaf = OS.GetEnvironment("NE_LEAF") == "1";
             var fullScene = OS.GetEnvironment("NE_FULL_SCENE") == "1";
+            var selected = OS.GetEnvironment("NE_SELECTED") == "1";
             var costBaseline = OS.GetEnvironment("NE_COST_BASELINE") == "1";
-            var scene = AuthoredScene.Load(costBaseline ? "res://data/scenes/c01-07-selected-assembly.json" : leaf ? "res://northeast-leaf-scene.json" : candidate ? "res://northeast-interface-scene.json" : "res://northeast-baseline-scene.json");
+            var scene = AuthoredScene.Load((selected || costBaseline) ? "res://data/scenes/c01-07-selected-assembly.json" : leaf ? "res://northeast-leaf-scene.json" : candidate ? "res://northeast-interface-scene.json" : "res://northeast-baseline-scene.json");
             var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
             var board = new BoardView { AnimationsEnabled = false };
             AddChild(board);
@@ -35,7 +36,7 @@ public partial class FormalNortheastPreview : Node2D
             board.Scale = Vector2.One * zoom;
             var overlay = new CanvasLayer(); AddChild(overlay);
             overlay.AddChild(new ColorRect { Color = new Color("#181818"), Size = new Vector2(1180, 72) });
-            overlay.AddChild(new Label { Text = fullScene ? $"C07 FULL SELECTED STATIC COST STUDY — {(costBaseline ? "CURRENT63/FALLBACK NE" : "UNSELECTED65/NEW NE+LEAF")}\nSame static camera/actor; incomplete scene; no gameplay; official unchanged" : leaf ? "C07 NORTHEAST WHOLE GATE + INDEPENDENT LEFT LEAF — UNSELECTED\nStatic detached legal pose; new hidden joinery; original road contract; no gameplay" : candidate ? "C07 NORTHEAST NEW FRAME/FLOOR INTERFACE — UNSELECTED\nBounded new design, not pixel restoration; leaf absent; detached wolf rider; no gameplay" : "C07 NORTHEAST FROZEN FAILED BASELINE\nFormal loader; two lookout holes unresolved; detached wolf rider; unselected / no gameplay", Position = new Vector2(12, 12) });
+            overlay.AddChild(new Label { Text = fullScene ? $"C07 FULL SELECTED STATIC COST STUDY — {(selected ? "SELECTED65/NEW NE+LEAF" : costBaseline ? "CURRENT63/FALLBACK NE" : "UNSELECTED65/NEW NE+LEAF")}\nSame static camera/actor; incomplete scene; no gameplay; official unchanged" : leaf ? "C07 NORTHEAST WHOLE GATE + INDEPENDENT LEFT LEAF — UNSELECTED\nStatic detached legal pose; new hidden joinery; original road contract; no gameplay" : candidate ? "C07 NORTHEAST NEW FRAME/FLOOR INTERFACE — UNSELECTED\nBounded new design, not pixel restoration; leaf absent; detached wolf rider; no gameplay" : "C07 NORTHEAST FROZEN FAILED BASELINE\nFormal loader; two lookout holes unresolved; detached wolf rider; unselected / no gameplay", Position = new Vector2(12, 12) });
             void Layout() => board.Position = GetViewportRect().Size / 2 + (fullScene ? new Vector2(0,36) : Vector2.Zero) - board.Projection.CellContact(fullScene ? new(48,32) : new(85,7)) * zoom;
             GetViewport().SizeChanged += Layout;
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
@@ -45,6 +46,14 @@ public partial class FormalNortheastPreview : Node2D
             if (EcmaJson.Stringify(state) != before) throw new Exception("Static rendering changed state.");
             File.WriteAllText(ProjectSettings.GlobalizePath("res://preview-projection.json"), new JsonObject { ["position"] = new JsonArray(board.Position.X,board.Position.Y), ["scale"] = zoom }.ToJsonString());
             GD.Print("FORMAL_NORTHEAST_STATIC_READY issues=" + board.RenderingIssueCount);
+            if (OS.GetEnvironment("NE_SELECTED_CAPTURE") == "1")
+            {
+                await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
+                await ToSignal(RenderingServer.Singleton,RenderingServer.SignalName.FramePostDraw);
+                using var native=GetViewport().GetTexture().GetImage();
+                if(native.SavePng(ProjectSettings.GlobalizePath("res://whole-selected65.png"))!=Error.Ok)throw new Exception("Selected capture failed.");
+                GD.Print("NE_SELECTED_NATIVE_FRAME_COMPLETE");GetTree().Quit();return;
+            }
             if (OS.GetEnvironment("NE_MEASURE") == "1")
             {
                 for (int i=0;i<60;i++) await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);

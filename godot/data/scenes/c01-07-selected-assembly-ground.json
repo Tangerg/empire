@@ -800,6 +800,33 @@
       "selectionCell": null,
       "ownsMapStructureBody": false,
       "pointer": "pass-through"
+    },
+    {
+      "id": "northeast-gate-stone",
+      "assetId": "northeast-gate-stone-surface-v2",
+      "contact": [
+        78.75,
+        0.0
+      ],
+      "scale": 1,
+      "selectionCell": [
+        83,
+        11
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "northeast-gate-leaf",
+      "assetId": "northeast-gate-leaf-surface-v2",
+      "contact": [
+        84.6875,
+        5.875
+      ],
+      "scale": 1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
     }
   ]
 }

@@ -5,8 +5,8 @@
     "data/grayflag-campaign-levels.json": "e226041272be12ea1686be7297953f332606002908ce44fa8d15028c0435ed42",
     "data/scenes/c01-07-selected-assembly.json": "5d0f48f9e6312e9adab201eb1e59fb564fd108f085b02f4733d93b9c17531151",
     "data/scenes/c01-07.json": "5bd8cac7e2263dcffaf23b88c38b25515575678c3085a227e4a1f58f61abcd88",
-    "data/scenes/c01-07-selected-assembly-ground.json": "d1f6f128ed849fb530d72127df256c8105d6e3a0bf639c684092f1e1301d41d9",
-    "data/scenes/c01-07-selected-assembly-objects.json": "f869ac29c482aa9ef7ae758d48097d149ae2c9fa08a173b3c560caac6fcadc89",
+    "data/scenes/c01-07-selected-assembly-ground.json": "16ba6ce8244730d1ced2e15a72a4673fc480663050caf45ad5b7a49c51454602",
+    "data/scenes/c01-07-selected-assembly-objects.json": "2010778d634b0966958b795d31a9ec0b3b42a0a779ccfa763ca2b56a187706ef",
     "data/scenes/c01-07-canopy-surface.json": "f1984898f6781a4829c1fde831c60a90259bb51d42e59a1bfab4cac330c43147",
     "data/scenes/c01-07-fence-surface.json": "7a1d436ce81435fe80190611f2aa13952578d1171b524186a9e254391fa18250",
     "data/scenes/c01-07-granary-canopy-surface.json": "255d8ea2b86e220d93235d5605d8d260798e7de1046ae88de603f4ec714ccfd2",
@@ -47,14 +47,16 @@
     "data/scenes/c01-07-left-courtyard-frame-merged-surface.json": "b329736b0bfa285232ca685d6f22148cef7e0d28102c7e5ec94dcd59d46a6c94",
     "data/scenes/c01-07-left-courtyard-soil-surface.json": "886ef75f1455ac31c4c62aa926c7bc3b0d0c1a485adda8e5d8b506373011d5a4",
     "data/scenes/c01-07-northwest-gate-stone-surface.json": "519d11b52281ba44f031bf4baad789b834e3493954023fbf8268ef37aab5c597",
-    "data/scenes/c01-07-northwest-gate-leaf-surface.json": "701caca9ba60b9cb8a0254ac858a1008799080c0eaa835e26b7f904493118320"
+    "data/scenes/c01-07-northwest-gate-leaf-surface.json": "701caca9ba60b9cb8a0254ac858a1008799080c0eaa835e26b7f904493118320",
+    "data/scenes/c01-07-northeast-gate-stone-surface.json": "fd3d2bc87018aaf4868cd453089314d2126b17e91084f1cee8659682c3c659bd",
+    "data/scenes/c01-07-northeast-gate-leaf-surface.json": "611266293e2faba8c7ae463bd5a3a4f0bb9d66765f0c585937475e6b4ede9c35"
   },
   "officialSceneSelected": false,
   "actualPlayStatus": "C06/C07 paused; no new actual play in this matrix",
-  "selectedInstances": 63,
-  "selectedAssets": 56,
-  "supportEntries": 5454,
-  "selectedSites": 8,
+  "selectedInstances": 65,
+  "selectedAssets": 58,
+  "supportEntries": 5673,
+  "selectedSites": 9,
   "canonicalSites": 16,
   "instances": [
     {
@@ -710,6 +712,29 @@
       "supports": 12,
       "selectionCell": null,
       "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "northeast-gate-stone",
+      "assetId": "northeast-gate-stone-surface-v2",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-northeast-gate-stone-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 201,
+      "selectionCell": [
+        83,
+        11
+      ],
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
+    },
+    {
+      "id": "northeast-gate-leaf",
+      "assetId": "northeast-gate-leaf-surface-v2",
+      "placementOwner": "res://data/scenes/c01-07-selected-assembly-ground.json",
+      "footOwner": "res://data/scenes/c01-07-northeast-gate-leaf-surface.json",
+      "footKind": "compiled UV surface supports",
+      "supports": 18,
+      "selectionCell": null,
+      "status": "selected local geometry candidate; whole-area footprint and final art are not implied"
     }
   ],
   "sites": [
@@ -904,8 +929,10 @@
         82,
         11
       ],
-      "selectedSiteOwners": [],
-      "status": "not migrated; native fallback inventory must remain explicit"
+      "selectedSiteOwners": [
+        "northeast-gate-stone"
+      ],
+      "status": "selected local body; yard/complete foundation still requires separate closure"
     },
     {
       "id": "southwest-gate",
@@ -1138,8 +1165,7 @@
   ],
   "knownUnselectedFailures": [
     "west-inner left courtyard: selected masonry/open trellis/rooted plants; full block shadows and ground/material integration incomplete",
-    "central rear-east planted/seat group: natural structure unresolved",
-    "northeast lookout: solid/void and structural shape unresolved"
+    "central rear-east planted/seat group: natural structure unresolved"
   ],
   "finalArtStatus": "not accepted; materials, ground/object integration and contact shadows require bounded whole-neighbourhood passes"
 }

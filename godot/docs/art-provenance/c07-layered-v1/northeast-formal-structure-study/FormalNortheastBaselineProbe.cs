@@ -21,7 +21,8 @@ public partial class FormalNortheastBaselineProbe : Node
             var leaf = OS.GetEnvironment("NE_LEAF") == "1";
             if (leaf && (!candidate || negative.Length>0)) throw new Exception("Whole gate requires ordinary repaired interface.");
             if (negative is not ("" or "left-post" or "right-beam")) throw new Exception("Unknown static negative.");
-            var scene = AuthoredScene.Load(negative.Length > 0 ? $"res://northeast-negative-{negative}-scene.json" : leaf ? "res://northeast-leaf-scene.json" : candidate ? "res://northeast-interface-scene.json" : "res://northeast-baseline-scene.json");
+            var selected = OS.GetEnvironment("NE_SELECTED") == "1";
+            var scene = AuthoredScene.Load(selected ? "res://data/scenes/c01-07-selected-assembly.json" : negative.Length > 0 ? $"res://northeast-negative-{negative}-scene.json" : leaf ? "res://northeast-leaf-scene.json" : candidate ? "res://northeast-interface-scene.json" : "res://northeast-baseline-scene.json");
             var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
             var board = new BoardView { AnimationsEnabled = false };
             AddChild(board);
@@ -32,7 +33,7 @@ public partial class FormalNortheastBaselineProbe : Node
             var empty = state.DeepClone().AsObject();
             empty["units"] = new JsonArray();
             board.RenderState(empty);
-            var visuals = ground!.DepthEntries.Where(v => v.Node.Name.ToString().Contains("northeast-static-study"))
+            var visuals = ground!.DepthEntries.Where(v => v.Node.Name.ToString().Contains(selected ? "northeast-gate-stone" : "northeast-static-study"))
                 .Select(v => v.Visual!).ToArray();
             if (visuals.Length != (candidate ? 201 : 168)) throw new Exception("Frozen baseline support count changed.");
             bool Covers(Vector2 point) => visuals.Any(v => v.Covers(board.ToGlobal(point)));
@@ -135,7 +136,7 @@ public partial class FormalNortheastBaselineProbe : Node
                 ["ownershipMismatch"] = mismatch, ["gateTarget"] = target?.ToString(), ["approach"] = approach?.ToString(),
                 ["lookoutFixedSamples"] = lookout, ["witnesses"] = witnesses
             };
-            File.WriteAllText(ProjectSettings.GlobalizePath($"res://formal-{(leaf ? "whole-gate" : candidate ? "interface" : "baseline")}-{(front ? "front" : "back")}-result.json"), result.ToJsonString(new() { WriteIndented = true }));
+            File.WriteAllText(ProjectSettings.GlobalizePath($"res://{(selected ? "selected-" : "")}formal-{(leaf ? "whole-gate" : candidate ? "interface" : "baseline")}-{(front ? "front" : "back")}-result.json"), result.ToJsonString(new() { WriteIndented = true }));
             GD.Print(candidate ? "FORMAL_NORTHEAST_INTERFACE_CONTRACT_VERIFIED" : "FORMAL_NORTHEAST_FAILED_BASELINE_VERIFIED");
             GetTree().Quit();
         }

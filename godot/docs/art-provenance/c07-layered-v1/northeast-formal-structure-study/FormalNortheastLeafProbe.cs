@@ -18,7 +18,8 @@ public partial class FormalNortheastLeafProbe : Node
             var digest = EcmaJson.Stringify(state);
             var negative = OS.GetEnvironment("NE_LEAF_NEGATIVE");
             if (negative is not ("" or "late-depth" or "early-depth" or "road-invasion" or "flat-foot")) throw new Exception("Unknown leaf negative.");
-            var scene = AuthoredScene.Load(negative.Length == 0 ? "res://northeast-leaf-scene.json" : $"res://northeast-leaf-{negative}-scene.json");
+            var selected = OS.GetEnvironment("NE_SELECTED") == "1";
+            var scene = AuthoredScene.Load(selected ? "res://data/scenes/c01-07-selected-assembly.json" : negative.Length == 0 ? "res://northeast-leaf-scene.json" : $"res://northeast-leaf-{negative}-scene.json");
             var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
             var board = new BoardView { AnimationsEnabled = false };
             AddChild(board);
@@ -41,7 +42,7 @@ public partial class FormalNortheastLeafProbe : Node
                     var a=feet[segment];var b=feet[segment+1];var expected=a.Y+(b.Y-a.Y)*(front.X-a.X)/(b.X-a.X);
                     if(MathF.Abs(front.Y-expected)>0.00002f)throw new Exception("Exported leaf support deviates from its observed sloping foot.");
                 }
-            var leaf = ground!.DepthEntries.Where(v => v.Node.Name.ToString().Contains("northeast-leaf-study")).ToArray();
+            var leaf = ground!.DepthEntries.Where(v => v.Node.Name.ToString().Contains(selected ? "northeast-gate-leaf" : "northeast-leaf-study")).ToArray();
             if (leaf.Length == 0) throw new Exception("Missing independent leaf.");
             bool Covers(Vector2 point) => leaf.Any(v => v.Visual!.Covers(board.ToGlobal(point)));
             var union = new HashSet<Vector2>();
@@ -83,7 +84,7 @@ public partial class FormalNortheastLeafProbe : Node
             }
             if(digest!=EcmaJson.Stringify(state)||board.RenderingIssueCount!=0)throw new Exception("Static state/renderer changed.");
             var result=new JsonObject{["scope"]="Independent NE left leaf; static detached legal poses, no gameplay",["roadSamples"]=union.Count,["leafDepthEntries"]=leaf.Length,["witnesses"]=rows,["stateUnchanged"]=true};
-            File.WriteAllText(ProjectSettings.GlobalizePath("res://leaf-initial-witnesses.json"),result.ToJsonString(new(){WriteIndented=true}));
+            File.WriteAllText(ProjectSettings.GlobalizePath(selected ? "res://selected-leaf-witnesses.json" : "res://leaf-initial-witnesses.json"),result.ToJsonString(new(){WriteIndented=true}));
             GD.Print("NE_LEAF_INITIAL_STATIC_MEASUREMENT_COMPLETE");GetTree().Quit();
         }
         catch(Exception error){GD.PushError(error.ToString());GetTree().Quit(1);}
