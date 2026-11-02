@@ -1,0 +1,175 @@
+{
+  "schema": 1,
+  "supports": [
+    {
+      "id": "column-738",
+      "frontPixels": [
+        0.75,
+        8.924988
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "column-739",
+      "frontPixels": [
+        1.25,
+        9.174988
+      ],
+      "kind": "structural"
+    }
+  ],
+  "members": [
+    {
+      "id": "right-leg-738-0-0",
+      "supportId": "column-738",
+      "polygonPixels": [
+        [
+          1,
+          0.75
+        ],
+        [
+          1,
+          4.899994
+        ],
+        [
+          0.5,
+          8.799988
+        ],
+        [
+          0.5,
+          0.5
+        ]
+      ],
+      "uvPixels": [
+        [
+          640,
+          705
+        ],
+        [
+          640,
+          795
+        ],
+        [
+          630,
+          890
+        ],
+        [
+          630,
+          710
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "right-leg-738-3-0",
+      "supportId": "column-738",
+      "polygonPixels": [
+        [
+          1,
+          9.049988
+        ],
+        [
+          0.5,
+          8.799988
+        ],
+        [
+          1,
+          4.899994
+        ]
+      ],
+      "uvPixels": [
+        [
+          640,
+          885
+        ],
+        [
+          630,
+          890
+        ],
+        [
+          640,
+          795
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "right-leg-739-0-0",
+      "supportId": "column-739",
+      "polygonPixels": [
+        [
+          1.5,
+          1
+        ],
+        [
+          1,
+          4.899994
+        ],
+        [
+          1,
+          0.75
+        ]
+      ],
+      "uvPixels": [
+        [
+          650,
+          700
+        ],
+        [
+          640,
+          795
+        ],
+        [
+          640,
+          705
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "right-leg-739-3-0",
+      "supportId": "column-739",
+      "polygonPixels": [
+        [
+          1.5,
+          9.299988
+        ],
+        [
+          1,
+          9.049988
+        ],
+        [
+          1,
+          4.899994
+        ],
+        [
+          1.5,
+          1
+        ]
+      ],
+      "uvPixels": [
+        [
+          650,
+          880
+        ],
+        [
+          640,
+          885
+        ],
+        [
+          640,
+          795
+        ],
+        [
+          650,
+          700
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    }
+  ]
+}

@@ -1,0 +1,451 @@
+{
+  "schema": 1,
+  "supports": [
+    {
+      "id": "column-717",
+      "frontPixels": [
+        0.5,
+        8.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "column-718",
+      "frontPixels": [
+        1.5,
+        9.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "column-719",
+      "frontPixels": [
+        2.5,
+        10.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "column-720",
+      "frontPixels": [
+        3.5,
+        11.5
+      ],
+      "kind": "structural"
+    },
+    {
+      "id": "column-721",
+      "frontPixels": [
+        4.5,
+        12.5
+      ],
+      "kind": "structural"
+    }
+  ],
+  "members": [
+    {
+      "id": "seat-left-edge-717-0-0",
+      "supportId": "column-717",
+      "polygonPixels": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2.039978
+        ],
+        [
+          0,
+          1.2999878
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "uvPixels": [
+        [
+          406,
+          617
+        ],
+        [
+          406,
+          664.99945
+        ],
+        [
+          370,
+          660
+        ],
+        [
+          370,
+          600
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "seat-left-edge-717-3-0",
+      "supportId": "column-717",
+      "polygonPixels": [
+        [
+          1,
+          2.039978
+        ],
+        [
+          1,
+          2.2999878
+        ],
+        [
+          0,
+          1.2999878
+        ]
+      ],
+      "uvPixels": [
+        [
+          406.00134,
+          665.0002
+        ],
+        [
+          406,
+          677
+        ],
+        [
+          370,
+          660
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "seat-left-edge-718-0-0",
+      "supportId": "column-718",
+      "polygonPixels": [
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          2.7799988
+        ],
+        [
+          1,
+          2.039978
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "uvPixels": [
+        [
+          442,
+          634
+        ],
+        [
+          441.99966,
+          669.99994
+        ],
+        [
+          406,
+          664.99945
+        ],
+        [
+          406,
+          617
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "seat-left-edge-718-3-0",
+      "supportId": "column-718",
+      "polygonPixels": [
+        [
+          2,
+          2.7799988
+        ],
+        [
+          2,
+          3.2999878
+        ],
+        [
+          1,
+          2.2999878
+        ],
+        [
+          1,
+          2.039978
+        ]
+      ],
+      "uvPixels": [
+        [
+          442,
+          670.0003
+        ],
+        [
+          442,
+          694
+        ],
+        [
+          406,
+          677
+        ],
+        [
+          406.00134,
+          665.0002
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "seat-left-edge-719-0-0",
+      "supportId": "column-719",
+      "polygonPixels": [
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          3.519989
+        ],
+        [
+          2,
+          2.7799988
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "uvPixels": [
+        [
+          478,
+          651
+        ],
+        [
+          478,
+          674.9997
+        ],
+        [
+          441.99966,
+          669.99994
+        ],
+        [
+          442,
+          634
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "seat-left-edge-719-3-0",
+      "supportId": "column-719",
+      "polygonPixels": [
+        [
+          3,
+          3.519989
+        ],
+        [
+          3,
+          4.299988
+        ],
+        [
+          2,
+          3.2999878
+        ],
+        [
+          2,
+          2.7799988
+        ]
+      ],
+      "uvPixels": [
+        [
+          478.00034,
+          675.00006
+        ],
+        [
+          478,
+          711
+        ],
+        [
+          442,
+          694
+        ],
+        [
+          442,
+          670.0003
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "seat-left-edge-720-0-0",
+      "supportId": "column-720",
+      "polygonPixels": [
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          4.26001
+        ],
+        [
+          3,
+          3.519989
+        ],
+        [
+          3,
+          3
+        ]
+      ],
+      "uvPixels": [
+        [
+          514,
+          668
+        ],
+        [
+          513.99866,
+          679.9998
+        ],
+        [
+          478,
+          674.9997
+        ],
+        [
+          478,
+          651
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "seat-left-edge-720-3-0",
+      "supportId": "column-720",
+      "polygonPixels": [
+        [
+          4,
+          4.26001
+        ],
+        [
+          4,
+          5.299988
+        ],
+        [
+          3,
+          4.299988
+        ],
+        [
+          3,
+          3.519989
+        ]
+      ],
+      "uvPixels": [
+        [
+          514,
+          680.00055
+        ],
+        [
+          514,
+          728
+        ],
+        [
+          478,
+          711
+        ],
+        [
+          478.00034,
+          675.00006
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "seat-left-edge-721-0-0",
+      "supportId": "column-721",
+      "polygonPixels": [
+        [
+          5,
+          5
+        ],
+        [
+          4,
+          4.26001
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "uvPixels": [
+        [
+          550,
+          685
+        ],
+        [
+          513.99866,
+          679.9998
+        ],
+        [
+          514,
+          668
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "seat-left-edge-721-3-0",
+      "supportId": "column-721",
+      "polygonPixels": [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          6.299988
+        ],
+        [
+          4,
+          5.299988
+        ],
+        [
+          4,
+          4.26001
+        ]
+      ],
+      "uvPixels": [
+        [
+          550,
+          685
+        ],
+        [
+          550,
+          745
+        ],
+        [
+          514,
+          728
+        ],
+        [
+          514,
+          680.00055
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    }
+  ]
+}

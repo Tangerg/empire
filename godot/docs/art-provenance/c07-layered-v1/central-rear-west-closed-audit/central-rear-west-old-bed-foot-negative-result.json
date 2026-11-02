@@ -1,0 +1,1126 @@
+{
+  "ready": true,
+  "scope": "Final bounded static foot-domain audit of actual four finite2px wooden legs, not support points or a filled support hull. Fresh source JSON, no GUI/engine/action/save.",
+  "sourceFile": "c07-static-preview/central-rear-west-old-bed-foot-negative.json",
+  "sourceSha256": "e2205bb031b278ec06872167b115256c5941092240bf249ddd58a6f045bf04d9",
+  "domainResults": {
+    "left": {
+      "groundFootprint": [
+        [
+          721.0,
+          459.8
+        ],
+        [
+          722.0,
+          460.3
+        ],
+        [
+          723.0,
+          459.8
+        ],
+        [
+          722.0,
+          459.3
+        ]
+      ],
+      "positiveAreaCells": [
+        {
+          "cell": [
+            45,
+            28
+          ],
+          "terrain": "#",
+          "area": 1.0
+        }
+      ],
+      "allBlocked": true,
+      "walk": {
+        "testedSegments": 82950,
+        "intersectingSegments": 0,
+        "minimumDistance": 33.41277445437047,
+        "closest": {
+          "fromCell": [
+            42,
+            26
+          ],
+          "toCell": [
+            42,
+            27
+          ],
+          "west": true,
+          "frame": 3,
+          "soleFramePixel": [
+            35,
+            555
+          ],
+          "segment": [
+            [
+              695.2884542,
+              422.4615392
+            ],
+            [
+              695.2884542,
+              438.4615392
+            ]
+          ],
+          "kind": "moving-end",
+          "point": [
+            695.2884542,
+            438.4615392
+          ],
+          "nearestPoint": [
+            721.0,
+            459.8
+          ],
+          "baseEdge": [
+            [
+              721.0,
+              459.8
+            ],
+            [
+              722.0,
+              460.3
+            ]
+          ],
+          "parameter": 0.0
+        },
+        "firstViolations": []
+      },
+      "coreVisibleFootSamples": {
+        "count": 670,
+        "insideCount": 0,
+        "minimumDistance": 16.70456608984502,
+        "closest": {
+          "coreFoot": {
+            "texture": [
+              184,
+              1205
+            ],
+            "source": [
+              736.2165,
+              470.016
+            ],
+            "canonicalCell": [
+              46,
+              29
+            ]
+          },
+          "closestPoint": [
+            723.0,
+            459.8
+          ],
+          "domainEdge": [
+            [
+              722.0,
+              460.3
+            ],
+            [
+              723.0,
+              459.8
+            ]
+          ]
+        }
+      },
+      "platformActualMemberProjectedOverlaps": []
+    },
+    "right": {
+      "groundFootprint": [
+        [
+          738.5,
+          451.8
+        ],
+        [
+          739.5,
+          452.3
+        ],
+        [
+          740.5,
+          451.8
+        ],
+        [
+          739.5,
+          451.3
+        ]
+      ],
+      "positiveAreaCells": [
+        {
+          "cell": [
+            46,
+            28
+          ],
+          "terrain": "#",
+          "area": 1.0
+        }
+      ],
+      "allBlocked": true,
+      "walk": {
+        "testedSegments": 82950,
+        "intersectingSegments": 0,
+        "minimumDistance": 24.21613346797198,
+        "closest": {
+          "fromCell": [
+            48,
+            26
+          ],
+          "toCell": [
+            48,
+            27
+          ],
+          "west": false,
+          "frame": 3,
+          "soleFramePixel": [
+            35,
+            555
+          ],
+          "segment": [
+            [
+              760.7115458,
+              422.4615392
+            ],
+            [
+              760.7115458,
+              438.4615392
+            ]
+          ],
+          "kind": "moving-end",
+          "point": [
+            760.7115458,
+            438.4615392
+          ],
+          "nearestPoint": [
+            740.5,
+            451.8
+          ],
+          "baseEdge": [
+            [
+              739.5,
+              452.3
+            ],
+            [
+              740.5,
+              451.8
+            ]
+          ],
+          "parameter": 1.0
+        },
+        "firstViolations": []
+      },
+      "coreVisibleFootSamples": {
+        "count": 670,
+        "insideCount": 0,
+        "minimumDistance": 18.017714290386564,
+        "closest": {
+          "coreFoot": {
+            "texture": [
+              184,
+              1205
+            ],
+            "source": [
+              736.2165,
+              470.016
+            ],
+            "canonicalCell": [
+              46,
+              29
+            ]
+          },
+          "closestPoint": [
+            739.5,
+            452.3
+          ],
+          "domainEdge": [
+            [
+              738.5,
+              451.8
+            ],
+            [
+              739.5,
+              452.3
+            ]
+          ]
+        }
+      },
+      "platformActualMemberProjectedOverlaps": []
+    },
+    "rear-left": {
+      "groundFootprint": [
+        [
+          716.0,
+          454.8
+        ],
+        [
+          717.0,
+          455.3
+        ],
+        [
+          718.0,
+          454.8
+        ],
+        [
+          717.0,
+          454.3
+        ]
+      ],
+      "positiveAreaCells": [
+        {
+          "cell": [
+            44,
+            28
+          ],
+          "terrain": "#",
+          "area": 1.0
+        }
+      ],
+      "allBlocked": true,
+      "walk": {
+        "testedSegments": 82950,
+        "intersectingSegments": 0,
+        "minimumDistance": 26.380171165832728,
+        "closest": {
+          "fromCell": [
+            42,
+            26
+          ],
+          "toCell": [
+            42,
+            27
+          ],
+          "west": true,
+          "frame": 3,
+          "soleFramePixel": [
+            35,
+            555
+          ],
+          "segment": [
+            [
+              695.2884542,
+              422.4615392
+            ],
+            [
+              695.2884542,
+              438.4615392
+            ]
+          ],
+          "kind": "moving-end",
+          "point": [
+            695.2884542,
+            438.4615392
+          ],
+          "nearestPoint": [
+            716.0,
+            454.8
+          ],
+          "baseEdge": [
+            [
+              716.0,
+              454.8
+            ],
+            [
+              717.0,
+              455.3
+            ]
+          ],
+          "parameter": 0.0
+        },
+        "firstViolations": []
+      },
+      "coreVisibleFootSamples": {
+        "count": 670,
+        "insideCount": 0,
+        "minimumDistance": 23.73536450636476,
+        "closest": {
+          "coreFoot": {
+            "texture": [
+              184,
+              1205
+            ],
+            "source": [
+              736.2165,
+              470.016
+            ],
+            "canonicalCell": [
+              46,
+              29
+            ]
+          },
+          "closestPoint": [
+            718.0,
+            454.8
+          ],
+          "domainEdge": [
+            [
+              717.0,
+              455.3
+            ],
+            [
+              718.0,
+              454.8
+            ]
+          ]
+        }
+      },
+      "platformActualMemberProjectedOverlaps": []
+    },
+    "rear-right": {
+      "groundFootprint": [
+        [
+          734.0,
+          446.8
+        ],
+        [
+          735.0,
+          447.3
+        ],
+        [
+          736.0,
+          446.8
+        ],
+        [
+          735.0,
+          446.3
+        ]
+      ],
+      "positiveAreaCells": [
+        {
+          "cell": [
+            45,
+            27
+          ],
+          "terrain": "#",
+          "area": 1.0
+        }
+      ],
+      "allBlocked": true,
+      "walk": {
+        "testedSegments": 82950,
+        "intersectingSegments": 0,
+        "minimumDistance": 22.10769240000002,
+        "closest": {
+          "fromCell": [
+            44,
+            26
+          ],
+          "toCell": [
+            45,
+            26
+          ],
+          "west": false,
+          "frame": 1,
+          "soleFramePixel": [
+            317,
+            566
+          ],
+          "segment": [
+            [
+              719.0192274,
+              424.1923076
+            ],
+            [
+              735.0192274,
+              424.1923076
+            ]
+          ],
+          "kind": "fixed-edge-end",
+          "point": [
+            735.0,
+            446.3
+          ],
+          "nearestPoint": [
+            735.0,
+            424.1923076
+          ],
+          "baseEdge": [
+            [
+              736.0,
+              446.8
+            ],
+            [
+              735.0,
+              446.3
+            ]
+          ],
+          "parameter": 0.9987982875000014
+        },
+        "firstViolations": []
+      },
+      "coreVisibleFootSamples": {
+        "count": 670,
+        "insideCount": 0,
+        "minimumDistance": 22.748550025221395,
+        "closest": {
+          "coreFoot": {
+            "texture": [
+              184,
+              1205
+            ],
+            "source": [
+              736.2165,
+              470.016
+            ],
+            "canonicalCell": [
+              46,
+              29
+            ]
+          },
+          "closestPoint": [
+            735.0,
+            447.3
+          ],
+          "domainEdge": [
+            [
+              734.0,
+              446.8
+            ],
+            [
+              735.0,
+              447.3
+            ]
+          ]
+        }
+      },
+      "platformActualMemberProjectedOverlaps": []
+    },
+    "bed": {
+      "groundFootprint": [
+        [
+          735,
+          449
+        ],
+        [
+          744,
+          454
+        ],
+        [
+          750,
+          450
+        ],
+        [
+          741,
+          445
+        ]
+      ],
+      "positiveAreaCells": [
+        {
+          "cell": [
+            46,
+            27
+          ],
+          "terrain": "#",
+          "area": 14.85000000000582
+        },
+        {
+          "cell": [
+            45,
+            28
+          ],
+          "terrain": "#",
+          "area": 0.6111111111240461
+        },
+        {
+          "cell": [
+            46,
+            28
+          ],
+          "terrain": "#",
+          "area": 50.53888888887013
+        }
+      ],
+      "allBlocked": true,
+      "walk": {
+        "testedSegments": 82950,
+        "intersectingSegments": 0,
+        "minimumDistance": 15.733183422516937,
+        "closest": {
+          "fromCell": [
+            48,
+            26
+          ],
+          "toCell": [
+            48,
+            27
+          ],
+          "west": false,
+          "frame": 3,
+          "soleFramePixel": [
+            39,
+            559
+          ],
+          "segment": [
+            [
+              761.096161,
+              422.8461544
+            ],
+            [
+              761.096161,
+              438.8461544
+            ]
+          ],
+          "kind": "moving-end",
+          "point": [
+            761.096161,
+            438.8461544
+          ],
+          "nearestPoint": [
+            750.0,
+            450.0
+          ],
+          "baseEdge": [
+            [
+              744,
+              454
+            ],
+            [
+              750,
+              450
+            ]
+          ],
+          "parameter": 1.0
+        },
+        "firstViolations": []
+      },
+      "coreVisibleFootSamples": {
+        "count": 670,
+        "insideCount": 0,
+        "minimumDistance": 17.807165081786618,
+        "closest": {
+          "coreFoot": {
+            "texture": [
+              184,
+              1205
+            ],
+            "source": [
+              736.2165,
+              470.016
+            ],
+            "canonicalCell": [
+              46,
+              29
+            ]
+          },
+          "closestPoint": [
+            744.0,
+            454.0
+          ],
+          "domainEdge": [
+            [
+              735,
+              449
+            ],
+            [
+              744,
+              454
+            ]
+          ]
+        }
+      },
+      "platformActualMemberProjectedOverlaps": []
+    }
+  },
+  "finiteDomainPairRelations": {
+    "left__right": {
+      "testedSegments": 4,
+      "intersectingSegments": 0,
+      "minimumDistance": 17.44276354251241,
+      "closest": {
+        "edgeIndex": 1,
+        "segment": [
+          [
+            722.0,
+            460.3
+          ],
+          [
+            723.0,
+            459.8
+          ]
+        ],
+        "kind": "moving-end",
+        "point": [
+          723.0,
+          459.8
+        ],
+        "nearestPoint": [
+          738.5,
+          451.8
+        ],
+        "baseEdge": [
+          [
+            738.5,
+            451.8
+          ],
+          [
+            739.5,
+            452.3
+          ]
+        ],
+        "parameter": 0.0
+      },
+      "firstViolations": [],
+      "otherVerticesInside": 0,
+      "groundDomainsDisjoint": true
+    },
+    "left__rear-left": {
+      "testedSegments": 4,
+      "intersectingSegments": 0,
+      "minimumDistance": 5.830951894845301,
+      "closest": {
+        "edgeIndex": 0,
+        "segment": [
+          [
+            721.0,
+            459.8
+          ],
+          [
+            722.0,
+            460.3
+          ]
+        ],
+        "kind": "moving-start",
+        "point": [
+          721.0,
+          459.8
+        ],
+        "nearestPoint": [
+          718.0,
+          454.8
+        ],
+        "baseEdge": [
+          [
+            717.0,
+            455.3
+          ],
+          [
+            718.0,
+            454.8
+          ]
+        ],
+        "parameter": 1.0
+      },
+      "firstViolations": [],
+      "otherVerticesInside": 0,
+      "groundDomainsDisjoint": true
+    },
+    "left__rear-right": {
+      "testedSegments": 4,
+      "intersectingSegments": 0,
+      "minimumDistance": 17.029386365926403,
+      "closest": {
+        "edgeIndex": 1,
+        "segment": [
+          [
+            722.0,
+            460.3
+          ],
+          [
+            723.0,
+            459.8
+          ]
+        ],
+        "kind": "moving-end",
+        "point": [
+          723.0,
+          459.8
+        ],
+        "nearestPoint": [
+          734.0,
+          446.8
+        ],
+        "baseEdge": [
+          [
+            734.0,
+            446.8
+          ],
+          [
+            735.0,
+            447.3
+          ]
+        ],
+        "parameter": 0.0
+      },
+      "firstViolations": [],
+      "otherVerticesInside": 0,
+      "groundDomainsDisjoint": true
+    },
+    "left__bed": {
+      "testedSegments": 4,
+      "intersectingSegments": 0,
+      "minimumDistance": 16.14434885648846,
+      "closest": {
+        "edgeIndex": 1,
+        "segment": [
+          [
+            722.0,
+            460.3
+          ],
+          [
+            723.0,
+            459.8
+          ]
+        ],
+        "kind": "moving-end",
+        "point": [
+          723.0,
+          459.8
+        ],
+        "nearestPoint": [
+          735.0,
+          449.0
+        ],
+        "baseEdge": [
+          [
+            735,
+            449
+          ],
+          [
+            744,
+            454
+          ]
+        ],
+        "parameter": 0.0
+      },
+      "firstViolations": [],
+      "otherVerticesInside": 0,
+      "groundDomainsDisjoint": true
+    },
+    "right__rear-left": {
+      "testedSegments": 4,
+      "intersectingSegments": 0,
+      "minimumDistance": 20.71834935510066,
+      "closest": {
+        "edgeIndex": 0,
+        "segment": [
+          [
+            738.5,
+            451.8
+          ],
+          [
+            739.5,
+            452.3
+          ]
+        ],
+        "kind": "moving-start",
+        "point": [
+          738.5,
+          451.8
+        ],
+        "nearestPoint": [
+          718.0,
+          454.8
+        ],
+        "baseEdge": [
+          [
+            717.0,
+            455.3
+          ],
+          [
+            718.0,
+            454.8
+          ]
+        ],
+        "parameter": 1.0
+      },
+      "firstViolations": [],
+      "otherVerticesInside": 0,
+      "groundDomainsDisjoint": true
+    },
+    "right__rear-right": {
+      "testedSegments": 4,
+      "intersectingSegments": 0,
+      "minimumDistance": 5.5901699437494745,
+      "closest": {
+        "edgeIndex": 0,
+        "segment": [
+          [
+            738.5,
+            451.8
+          ],
+          [
+            739.5,
+            452.3
+          ]
+        ],
+        "kind": "moving-start",
+        "point": [
+          738.5,
+          451.8
+        ],
+        "nearestPoint": [
+          736.0,
+          446.8
+        ],
+        "baseEdge": [
+          [
+            735.0,
+            447.3
+          ],
+          [
+            736.0,
+            446.8
+          ]
+        ],
+        "parameter": 1.0
+      },
+      "firstViolations": [],
+      "otherVerticesInside": 0,
+      "groundDomainsDisjoint": true
+    },
+    "right__bed": {
+      "testedSegments": 4,
+      "intersectingSegments": 3,
+      "minimumDistance": 0.0,
+      "closest": {
+        "edgeIndex": 2,
+        "segment": [
+          [
+            740.5,
+            451.8
+          ],
+          [
+            739.5,
+            451.3
+          ]
+        ],
+        "kind": "moving-end",
+        "point": [
+          739.5,
+          451.3
+        ],
+        "nearestPoint": [
+          739.4150943396227,
+          451.45283018867923
+        ],
+        "baseEdge": [
+          [
+            735,
+            449
+          ],
+          [
+            744,
+            454
+          ]
+        ],
+        "parameter": 0.4905660377358496
+      },
+      "firstViolations": [
+        {
+          "edgeIndex": 1,
+          "segment": [
+            [
+              739.5,
+              452.3
+            ],
+            [
+              740.5,
+              451.8
+            ]
+          ]
+        },
+        {
+          "edgeIndex": 2,
+          "segment": [
+            [
+              740.5,
+              451.8
+            ],
+            [
+              739.5,
+              451.3
+            ]
+          ]
+        },
+        {
+          "edgeIndex": 3,
+          "segment": [
+            [
+              739.5,
+              451.3
+            ],
+            [
+              738.5,
+              451.8
+            ]
+          ]
+        }
+      ],
+      "otherVerticesInside": 0,
+      "groundDomainsDisjoint": false
+    },
+    "rear-left__rear-right": {
+      "testedSegments": 4,
+      "intersectingSegments": 0,
+      "minimumDistance": 17.88854381999832,
+      "closest": {
+        "edgeIndex": 1,
+        "segment": [
+          [
+            717.0,
+            455.3
+          ],
+          [
+            718.0,
+            454.8
+          ]
+        ],
+        "kind": "moving-end",
+        "point": [
+          718.0,
+          454.8
+        ],
+        "nearestPoint": [
+          734.0,
+          446.8
+        ],
+        "baseEdge": [
+          [
+            734.0,
+            446.8
+          ],
+          [
+            735.0,
+            447.3
+          ]
+        ],
+        "parameter": 0.0
+      },
+      "firstViolations": [],
+      "otherVerticesInside": 0,
+      "groundDomainsDisjoint": true
+    },
+    "rear-left__bed": {
+      "testedSegments": 4,
+      "intersectingSegments": 0,
+      "minimumDistance": 17.96218249545417,
+      "closest": {
+        "edgeIndex": 1,
+        "segment": [
+          [
+            717.0,
+            455.3
+          ],
+          [
+            718.0,
+            454.8
+          ]
+        ],
+        "kind": "moving-end",
+        "point": [
+          718.0,
+          454.8
+        ],
+        "nearestPoint": [
+          735.0,
+          449.0
+        ],
+        "baseEdge": [
+          [
+            735,
+            449
+          ],
+          [
+            744,
+            454
+          ]
+        ],
+        "parameter": 0.0
+      },
+      "firstViolations": [],
+      "otherVerticesInside": 0,
+      "groundDomainsDisjoint": true
+    },
+    "rear-right__bed": {
+      "testedSegments": 4,
+      "intersectingSegments": 0,
+      "minimumDistance": 1.2758104513180648,
+      "closest": {
+        "edgeIndex": 1,
+        "segment": [
+          [
+            735.0,
+            447.3
+          ],
+          [
+            736.0,
+            446.8
+          ]
+        ],
+        "kind": "moving-end",
+        "point": [
+          736.0,
+          446.8
+        ],
+        "nearestPoint": [
+          736.7076923076924,
+          447.8615384615385
+        ],
+        "baseEdge": [
+          [
+            741,
+            445
+          ],
+          [
+            735,
+            449
+          ]
+        ],
+        "parameter": 0.7153846153846163
+      },
+      "firstViolations": [],
+      "otherVerticesInside": 0,
+      "groundDomainsDisjoint": true
+    }
+  },
+  "roots": {
+    "declaredProjectedRoot": [
+      743.0,
+      443.0
+    ],
+    "declaredGroundRoot": [
+      743,
+      449
+    ],
+    "groundRootInsideBedFootprint": true,
+    "projectedRootInsideBedTop": true,
+    "projectedRootInsideActualSoil": true,
+    "actualSoilPolygon": [
+      [
+        741.88,
+        444.055
+      ],
+      [
+        745.0,
+        447.175
+      ],
+      [
+        748.9,
+        444.835
+      ],
+      [
+        744.22,
+        440.935
+      ]
+    ],
+    "heightDifference": 6.0,
+    "bedTopEqualsGroundShiftUp6": false,
+    "carrierAffineResidual": 4.0745362639427185e-10,
+    "inverseRootUv": [
+      650.0000000041588,
+      620.0000000024394
+    ],
+    "sampledUvPixel": [
+      650,
+      620
+    ],
+    "nativeAlphaAtRoot": 253,
+    "meaning": "Declared new root/carrier lands on the supported top; not original hidden botanical root certification."
+  },
+  "frozenSourceWoodEndsInsideActualFeet": {
+    "left": true,
+    "right": true
+  },
+  "limitations": [
+    "Core comparison uses670 visible feet only; hidden core base not globally certified and no bbox was used.",
+    "Platform comparison uses actual selected member geometry; absence of projected overlap does not invent a complete hidden platform foundation.",
+    "Fixed175 real Torren lower-support boot points, continuous324legal-edge sweep; no all-appearance or actual motion claim.",
+    "No visual acceptance of seat/backrest silhouette or native target/depth granted by math."
+  ],
+  "mathPassed": false
+}

@@ -1,0 +1,1516 @@
+{
+  "ready": true,
+  "scope": "Bounded closeout of all22 empty formal material centres against original PNG plus existing11 selected central support responsibilities. Static only; no GUI/engine/action/save, no new native validation.",
+  "queryFile": "central-selected-responsibility-result.json",
+  "querySha256": "a82073ae20671a95ffbda3c7bb503b8089e7e77ccf7137aedd662d86444a5421",
+  "selectedObjects": 47,
+  "centralSelectedObjects": 11,
+  "nativeCentreCount": {
+    "total": 50,
+    "withMaterial": 28,
+    "empty": 22,
+    "meaning": "NOT foundation completeness or percent accepted. Existing material may be foliage/body/top; empty original paving is not a gap."
+  },
+  "emptyCentreClassCounts": {
+    "paving": 9,
+    "wood-seat": 1,
+    "foliage": 3,
+    "wood-support": 1,
+    "stone-edge": 3,
+    "stone-support": 1,
+    "stone-outer-connection": 1,
+    "stone-tread": 1,
+    "ground-shadow-transition": 1,
+    "stone-shadow-transition": 1
+  },
+  "empty22SourceInspection": [
+    {
+      "cell": [
+        43,
+        27
+      ],
+      "point": [
+        696,
+        440
+      ],
+      "owners": [],
+      "originalRgb": [
+        232,
+        201,
+        168
+      ],
+      "classification": "paving",
+      "materialInterpretation": "clear original paving; no stone fill",
+      "currentResponsibility": "none",
+      "confidence": "high",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        44,
+        27
+      ],
+      "point": [
+        712,
+        440
+      ],
+      "owners": [],
+      "originalRgb": [
+        220,
+        186,
+        154
+      ],
+      "classification": "paving",
+      "materialInterpretation": "clear original paving above rear-west seat",
+      "currentResponsibility": "none",
+      "confidence": "high",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        45,
+        27
+      ],
+      "point": [
+        728,
+        440
+      ],
+      "owners": [],
+      "originalRgb": [
+        249,
+        176,
+        75
+      ],
+      "classification": "wood-seat",
+      "materialInterpretation": "rear-west orange wooden seat/ledge material",
+      "currentResponsibility": "MISSING rear-west planted-bed/seat group",
+      "confidence": "high",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        46,
+        27
+      ],
+      "point": [
+        744,
+        440
+      ],
+      "owners": [],
+      "originalRgb": [
+        38,
+        74,
+        18
+      ],
+      "classification": "foliage",
+      "materialInterpretation": "rear-west high planted foliage",
+      "currentResponsibility": "MISSING rear-west planted-bed/seat group",
+      "confidence": "high",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        42,
+        28
+      ],
+      "point": [
+        680,
+        456
+      ],
+      "owners": [],
+      "originalRgb": [
+        233,
+        202,
+        171
+      ],
+      "classification": "paving",
+      "materialInterpretation": "clear original paving left of west container",
+      "currentResponsibility": "none",
+      "confidence": "high",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        44,
+        28
+      ],
+      "point": [
+        712,
+        456
+      ],
+      "owners": [],
+      "originalRgb": [
+        34,
+        80,
+        38
+      ],
+      "classification": "foliage",
+      "materialInterpretation": "original west rear-white-container foliage fringe; not a foundation point",
+      "currentResponsibility": "central-west-white-planter, accepted new shape has different canopy",
+      "confidence": "high",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        45,
+        28
+      ],
+      "point": [
+        728,
+        456
+      ],
+      "owners": [],
+      "originalRgb": [
+        80,
+        56,
+        42
+      ],
+      "classification": "wood-support",
+      "materialInterpretation": "rear-west seat lower wood support/face; full true foot not certified here",
+      "currentResponsibility": "MISSING rear-west planted-bed/seat group",
+      "confidence": "high",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        46,
+        28
+      ],
+      "point": [
+        744,
+        456
+      ],
+      "owners": [],
+      "originalRgb": [
+        166,
+        148,
+        131
+      ],
+      "classification": "stone-edge",
+      "materialInterpretation": "original core plinth/stone lip edge, not full ground foot",
+      "currentResponsibility": "central-landmark-core; retained silhouette/material delta",
+      "confidence": "medium",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        49,
+        28
+      ],
+      "point": [
+        792,
+        456
+      ],
+      "owners": [],
+      "originalRgb": [
+        122,
+        84,
+        49
+      ],
+      "classification": "stone-edge",
+      "materialInterpretation": "original shaded core/base flank edge beside steps; not exact ground foot",
+      "currentResponsibility": "central-landmark-core; retained silhouette/material delta",
+      "confidence": "medium",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        50,
+        28
+      ],
+      "point": [
+        808,
+        456
+      ],
+      "owners": [],
+      "originalRgb": [
+        66,
+        59,
+        58
+      ],
+      "classification": "stone-support",
+      "materialInterpretation": "gray low stone/front support beneath rear-east wood seat",
+      "currentResponsibility": "MISSING rear-east planted-bed/seat group",
+      "confidence": "high",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        44,
+        29
+      ],
+      "point": [
+        712,
+        472
+      ],
+      "owners": [],
+      "originalRgb": [
+        75,
+        69,
+        12
+      ],
+      "classification": "foliage",
+      "materialInterpretation": "small plant fringe at original west front wood container mouth",
+      "currentResponsibility": "central-west-wood-planter; changed shape/registration, not ground support",
+      "confidence": "high",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        42,
+        30
+      ],
+      "point": [
+        680,
+        488
+      ],
+      "owners": [],
+      "originalRgb": [
+        229,
+        199,
+        169
+      ],
+      "classification": "paving",
+      "materialInterpretation": "original paving in front-left of west corner pier",
+      "currentResponsibility": "none",
+      "confidence": "high",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        51,
+        30
+      ],
+      "point": [
+        824,
+        488
+      ],
+      "owners": [],
+      "originalRgb": [
+        62,
+        51,
+        42
+      ],
+      "classification": "stone-edge",
+      "materialInterpretation": "original east-front wood-container lower-left stone face/contact edge",
+      "currentResponsibility": "central-front-wood-planter + platform interface; source edge residual remains",
+      "confidence": "high",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        43,
+        31
+      ],
+      "point": [
+        696,
+        504
+      ],
+      "owners": [],
+      "originalRgb": [
+        160,
+        128,
+        102
+      ],
+      "classification": "paving",
+      "materialInterpretation": "paving/tile joint, not missing support",
+      "currentResponsibility": "none",
+      "confidence": "high",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        44,
+        31
+      ],
+      "point": [
+        712,
+        504
+      ],
+      "owners": [],
+      "originalRgb": [
+        249,
+        209,
+        161
+      ],
+      "classification": "paving",
+      "materialInterpretation": "paving in front of original low outer border",
+      "currentResponsibility": "none",
+      "confidence": "high",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        45,
+        31
+      ],
+      "point": [
+        728,
+        504
+      ],
+      "owners": [],
+      "originalRgb": [
+        109,
+        106,
+        116
+      ],
+      "classification": "stone-outer-connection",
+      "materialInterpretation": "actual original gray outer low stone edging/near planter-base transition, NOT independently certified separate pillar",
+      "currentResponsibility": "central-platform to central-south-left-planter interface; real source edge residual",
+      "confidence": "high",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        50,
+        31
+      ],
+      "point": [
+        808,
+        504
+      ],
+      "owners": [],
+      "originalRgb": [
+        249,
+        214,
+        165
+      ],
+      "classification": "stone-tread",
+      "materialInterpretation": "original southeast outer-step light stone tread, not wood-seat foot and not ordinary flat road",
+      "currentResponsibility": "central-platform; changed outer-step profile, same cell partially has current front support",
+      "confidence": "high",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        51,
+        31
+      ],
+      "point": [
+        824,
+        504
+      ],
+      "owners": [],
+      "originalRgb": [
+        249,
+        208,
+        158
+      ],
+      "classification": "paving",
+      "materialInterpretation": "paving below/outside original outer step, not step top",
+      "currentResponsibility": "none",
+      "confidence": "high",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        46,
+        32
+      ],
+      "point": [
+        744,
+        520
+      ],
+      "owners": [],
+      "originalRgb": [
+        204,
+        176,
+        156
+      ],
+      "classification": "ground-shadow-transition",
+      "materialInterpretation": "paving/contact-shadow transition below original left planter stone; not certified solid stone foot",
+      "currentResponsibility": "central-south-left-planter boundary; do not forcefill mixed edge",
+      "confidence": "high",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        47,
+        32
+      ],
+      "point": [
+        760,
+        520
+      ],
+      "owners": [],
+      "originalRgb": [
+        95,
+        87,
+        77
+      ],
+      "classification": "stone-shadow-transition",
+      "materialInterpretation": "original low-column plinth lower-left contact/gray-shadow band; no clean complete foot at centre",
+      "currentResponsibility": "central-south-low-pier changed compact base; explicit soft-edge residual",
+      "confidence": "medium",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        48,
+        32
+      ],
+      "point": [
+        776,
+        520
+      ],
+      "owners": [],
+      "originalRgb": [
+        251,
+        227,
+        165
+      ],
+      "classification": "paving",
+      "materialInterpretation": "lit paving between original low plinth and right planter; not right planter foot",
+      "currentResponsibility": "none",
+      "confidence": "high",
+      "notWholeCellClaim": true
+    },
+    {
+      "cell": [
+        50,
+        32
+      ],
+      "point": [
+        808,
+        520
+      ],
+      "owners": [],
+      "originalRgb": [
+        239,
+        194,
+        141
+      ],
+      "classification": "paving",
+      "materialInterpretation": "clear paving in front of right wood seat/brace",
+      "currentResponsibility": "none",
+      "confidence": "high",
+      "notWholeCellClaim": true
+    }
+  ],
+  "current11PhysicalResponsibilityReferences": {
+    "central-platform": {
+      "file": "central-platform-source.json",
+      "kind": "explicit visible southern support trace; projected top is NOT full ground footprint",
+      "geometry": [
+        [
+          714,
+          491
+        ],
+        [
+          767,
+          518
+        ],
+        [
+          824,
+          491
+        ]
+      ],
+      "selectedInstance": {
+        "id": "central-platform",
+        "assetId": "central-platform",
+        "contact": [
+          44.625,
+          28.0
+        ],
+        "scale": 1.0,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      }
+    },
+    "central-landmark-core": {
+      "file": "central-landmark-footing-result.json/visibleFootSamples",
+      "kind": "670 measured visible stone feet; hidden envelope735453..803489 NOT certified full solid footprint",
+      "samples": 670,
+      "selectedInstance": {
+        "id": "central-landmark-core",
+        "assetId": "central-landmark-core-v1",
+        "contact": [
+          47.9375,
+          30.4375
+        ],
+        "scale": 0.0965,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      }
+    },
+    "central-east-white-planter": {
+      "file": "central-white-planter-actual-footing.json",
+      "kind": "569 actual stone feet + declared new hidden rear; not canopy alpha",
+      "contact": [
+        834,
+        480
+      ],
+      "selectedInstance": {
+        "id": "central-east-white-planter",
+        "assetId": "central-east-white-planter-v2",
+        "contact": [
+          52.125,
+          30.0
+        ],
+        "scale": 0.036,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      }
+    },
+    "central-front-wood-planter": {
+      "file": "central-front-wood-planter-actual-footing.json",
+      "kind": "816 actual stone feet + new hidden rear",
+      "contact": [
+        840.75,
+        496
+      ],
+      "selectedInstance": {
+        "id": "central-front-wood-planter",
+        "assetId": "central-front-wood-planter-v1",
+        "contact": [
+          52.546875,
+          31.0
+        ],
+        "scale": 0.04,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      }
+    },
+    "central-west-bearing": {
+      "file": "central-west-bearing-flush-source.json",
+      "kind": "actual zero-height ground plane; obsolete2px design rejected, NOT reinstated",
+      "geometry": [
+        [
+          685,
+          476
+        ],
+        [
+          699,
+          480
+        ],
+        [
+          714,
+          486
+        ],
+        [
+          714,
+          491
+        ],
+        [
+          706,
+          493
+        ],
+        [
+          699,
+          493
+        ],
+        [
+          685,
+          484
+        ],
+        [
+          680,
+          480
+        ]
+      ],
+      "selectedInstance": {
+        "id": "central-west-bearing",
+        "assetId": "central-west-bearing",
+        "contact": [
+          42.5,
+          29.75
+        ],
+        "scale": 1.0,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      }
+    },
+    "central-west-corner-pier": {
+      "file": "central-west-corner-pier-source.json",
+      "kind": "complete new base from7px top/riser; no borrowed white planter feet",
+      "geometry": [
+        [
+          680,
+          478
+        ],
+        [
+          685,
+          482
+        ],
+        [
+          690,
+          479
+        ],
+        [
+          685,
+          475
+        ]
+      ],
+      "selectedInstance": {
+        "id": "central-west-corner-pier",
+        "assetId": "central-west-corner-pier",
+        "contact": [
+          42.5,
+          29.25
+        ],
+        "scale": 1.0,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      }
+    },
+    "central-west-wood-planter": {
+      "file": "central-west-wood-planter-grounded-footing.json",
+      "kind": "816 actual visible stone feet + new hidden rear",
+      "contact": [
+        699.5,
+        491
+      ],
+      "selectedInstance": {
+        "id": "central-west-wood-planter",
+        "assetId": "central-front-wood-planter-v1",
+        "contact": [
+          43.71875,
+          30.6875
+        ],
+        "scale": 0.032,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      }
+    },
+    "central-west-white-planter": {
+      "file": "west-continuous-footing-review/white-and-low-base-proposal-static-review.json/whiteBaseHullWithAuthoredHiddenRear",
+      "kind": "569 actual feet translated to actual selected registration + authored rear",
+      "contact": [
+        696,
+        473
+      ],
+      "selectedInstance": {
+        "id": "central-west-white-planter",
+        "assetId": "central-east-white-planter-v2",
+        "contact": [
+          43.5,
+          29.5625
+        ],
+        "scale": 0.036,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      }
+    },
+    "central-south-left-planter": {
+      "file": "central-south-left-reconstructed-source.json/footprint",
+      "kind": "coherent whole NEW foundation with6px supported stone face; source right758513 wrongly assigned old plinth was withdrawn",
+      "geometry": [
+        [
+          733.0,
+          509.0
+        ],
+        [
+          749.0,
+          518.0
+        ],
+        [
+          758.0,
+          514.0
+        ],
+        [
+          743.0,
+          507.0
+        ]
+      ],
+      "selectedInstance": {
+        "id": "central-south-left-planter",
+        "assetId": "central-south-left-reconstructed",
+        "contact": [
+          45.75,
+          30.4375
+        ],
+        "scale": 1.0,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      }
+    },
+    "central-south-right-planter": {
+      "file": "central-south-right-planter-footing.json",
+      "kind": "816 actual stone feet + authored hidden rear, independent forward new design",
+      "contact": [
+        785,
+        524
+      ],
+      "selectedInstance": {
+        "id": "central-south-right-planter",
+        "assetId": "central-front-wood-planter-v1",
+        "contact": [
+          49.0625,
+          32.75
+        ],
+        "scale": 0.032,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      }
+    },
+    "central-south-low-pier": {
+      "file": "central-south-pier-source.json",
+      "kind": "complete base from plinth top+2px riser, shifted+0.75x; shortened shaft does not alter base",
+      "geometry": [
+        [
+          762.75,
+          521
+        ],
+        [
+          767.75,
+          524
+        ],
+        [
+          772.75,
+          521
+        ],
+        [
+          767.75,
+          519
+        ]
+      ],
+      "selectedInstance": {
+        "id": "central-south-low-pier",
+        "assetId": "central-south-low-pier",
+        "contact": [
+          47.625,
+          31.5625
+        ],
+        "scale": 1.0,
+        "selectionCell": null,
+        "ownsMapStructureBody": false,
+        "pointer": "pass-through"
+      }
+    }
+  },
+  "minimumRemainingNecessaryGroups": [
+    {
+      "priority": 1,
+      "id": "rear-east-planted-bed-seat-support",
+      "why": "Standing high foliage and low stone/seat bearing group absent. Frozen actual Torren p49,26 west source786419/786420 realalpha252 and old owners[] remain unresolved; failed candidate is NOT counted as fixed.",
+      "fixedEmptyCentre": [
+        808,
+        456
+      ],
+      "scope": "One coherent long planted stone surround + wood seat/material + actual supported base, not separate leaf props.",
+      "sourceContract": "central-rear-east-bed-review/rear-east-bed-seat-source-contract.json",
+      "status": "UNRESOLVED; prior attempted material/native candidate failures remain failures."
+    },
+    {
+      "priority": 2,
+      "id": "rear-west-planted-bed-seat-support",
+      "why": "Original standing foliage728/744 region and wood seat/support remain absent; no selected central object owns this whole group. This is a second actual structural group, not merely a decorative slat.",
+      "emptyCentres": [
+        [
+          728,
+          440
+        ],
+        [
+          744,
+          440
+        ],
+        [
+          728,
+          456
+        ]
+      ],
+      "scope": "One bounded planted enclosure + seat/support assembly. Original hidden base still to be mapped; do not allocate full northern blocked cells from foliage.",
+      "status": "Unimplemented source physical/standing responsibility; NOT yet a demonstrated real-role native picking/depth bug."
+    }
+  ],
+  "boundedExistingOwnerInterfaceDeltas": [
+    {
+      "point": [
+        728,
+        504
+      ],
+      "interpretation": "Original low outer stone edge between western border and south-left foundation. Not a newly discovered standalone pillar. Current platform support crosses same45,31 cell and reconstructed left footprint also occupies part; centre alone does not prove absent whole ground responsibility.",
+      "next": "If later closeout/visual review shows a disconnected bearing edge, assess this one bounded connection x712..734,y492..511 against actual feet. Do NOT automatically thicken platform or fill cell."
+    },
+    {
+      "point": [
+        824,
+        488
+      ],
+      "interpretation": "Original east wood-container left stone-edge residual after deliberate rightward independent-ground design. Current wood actualleftfoot825.15,486.04 and platform endpoint824491 are nearby; no full support failure established at this one empty centre.",
+      "next": "Keep explicit small interface delta; do not add isolated stone just to make centre material."
+    },
+    {
+      "point": [
+        808,
+        504
+      ],
+      "interpretation": "Real original outer tread omitted by changed platform profile. Selected platform actual support already traverses same50,31 cell; does not imply all496..511 pixels should be stone.",
+      "next": "Keep original-vs-new low-step geometry difference explicit. Not a third missing standing-object group from this audit alone."
+    },
+    {
+      "points": [
+        [
+          744,
+          456
+        ],
+        [
+          792,
+          456
+        ]
+      ],
+      "interpretation": "Original core/base body edge differs from selected new core. Actual core visible feet still referenced; do not invent missing foot hull from these upper material centres."
+    },
+    {
+      "points": [
+        [
+          712,
+          456
+        ],
+        [
+          712,
+          472
+        ]
+      ],
+      "interpretation": "Already selected west white/wood plants changed foliage shape. These are high foliage material differences, not unfilled ground foundations; no new actual-role counterexample established here."
+    },
+    {
+      "point": [
+        760,
+        520
+      ],
+      "interpretation": "Original wider low-plinth soft contact edge differs from new compact pillar; retain explicit residual, but pixel may mix stone and cast shadow. Do not certify a missing solid block from dark RGB."
+    }
+  ],
+  "deferredDecoration": [
+    {
+      "id": "original-south-right-wood-seat-brace",
+      "reason": "New right planter foundation is present; the omitted wood seating/brace structure has no demonstrated additional route/depth failure in this closeout. Keep visual debt; do not silently call it restored or use its original feet as planter feet."
+    },
+    {
+      "id": "leaf shapes,individual slats,small golden finial",
+      "reason": "Not separate foundation obligations; exact ornament replication not prerequisite for the two necessary remaining groups."
+    }
+  ],
+  "all50QueryRowsForTraceability": [
+    {
+      "cell": [
+        43,
+        27
+      ],
+      "point": [
+        696,
+        440
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        44,
+        27
+      ],
+      "point": [
+        712,
+        440
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        45,
+        27
+      ],
+      "point": [
+        728,
+        440
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        46,
+        27
+      ],
+      "point": [
+        744,
+        440
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        47,
+        27
+      ],
+      "point": [
+        760,
+        440
+      ],
+      "owners": [
+        "central-landmark-core__depth_53"
+      ]
+    },
+    {
+      "cell": [
+        42,
+        28
+      ],
+      "point": [
+        680,
+        456
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        43,
+        28
+      ],
+      "point": [
+        696,
+        456
+      ],
+      "owners": [
+        "central-west-white-planter__depth_50"
+      ]
+    },
+    {
+      "cell": [
+        44,
+        28
+      ],
+      "point": [
+        712,
+        456
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        45,
+        28
+      ],
+      "point": [
+        728,
+        456
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        46,
+        28
+      ],
+      "point": [
+        744,
+        456
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        47,
+        28
+      ],
+      "point": [
+        760,
+        456
+      ],
+      "owners": [
+        "central-platform__surface_8",
+        "central-landmark-core__depth_53"
+      ]
+    },
+    {
+      "cell": [
+        48,
+        28
+      ],
+      "point": [
+        776,
+        456
+      ],
+      "owners": [
+        "central-platform__surface_8",
+        "central-landmark-core__depth_74"
+      ]
+    },
+    {
+      "cell": [
+        49,
+        28
+      ],
+      "point": [
+        792,
+        456
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        50,
+        28
+      ],
+      "point": [
+        808,
+        456
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        42,
+        29
+      ],
+      "point": [
+        680,
+        472
+      ],
+      "owners": [
+        "central-west-corner-pier__surface_0"
+      ]
+    },
+    {
+      "cell": [
+        43,
+        29
+      ],
+      "point": [
+        696,
+        472
+      ],
+      "owners": [
+        "central-west-wood-planter__depth_33",
+        "central-west-white-planter__depth_50"
+      ]
+    },
+    {
+      "cell": [
+        44,
+        29
+      ],
+      "point": [
+        712,
+        472
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        45,
+        29
+      ],
+      "point": [
+        728,
+        472
+      ],
+      "owners": [
+        "central-platform__surface_24"
+      ]
+    },
+    {
+      "cell": [
+        46,
+        29
+      ],
+      "point": [
+        744,
+        472
+      ],
+      "owners": [
+        "central-platform__surface_24",
+        "central-landmark-core__depth_33"
+      ]
+    },
+    {
+      "cell": [
+        47,
+        29
+      ],
+      "point": [
+        760,
+        472
+      ],
+      "owners": [
+        "central-platform__surface_24",
+        "central-landmark-core__depth_53"
+      ]
+    },
+    {
+      "cell": [
+        48,
+        29
+      ],
+      "point": [
+        776,
+        472
+      ],
+      "owners": [
+        "central-platform__surface_24",
+        "central-landmark-core__depth_74"
+      ]
+    },
+    {
+      "cell": [
+        49,
+        29
+      ],
+      "point": [
+        792,
+        472
+      ],
+      "owners": [
+        "central-platform__surface_24",
+        "central-landmark-core__depth_95"
+      ]
+    },
+    {
+      "cell": [
+        50,
+        29
+      ],
+      "point": [
+        808,
+        472
+      ],
+      "owners": [
+        "central-platform__surface_24"
+      ]
+    },
+    {
+      "cell": [
+        51,
+        29
+      ],
+      "point": [
+        824,
+        472
+      ],
+      "owners": [
+        "central-east-white-planter__depth_32"
+      ]
+    },
+    {
+      "cell": [
+        52,
+        29
+      ],
+      "point": [
+        840,
+        472
+      ],
+      "owners": [
+        "central-east-white-planter__depth_60",
+        "central-front-wood-planter__depth_38"
+      ]
+    },
+    {
+      "cell": [
+        42,
+        30
+      ],
+      "point": [
+        680,
+        488
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        43,
+        30
+      ],
+      "point": [
+        696,
+        488
+      ],
+      "owners": [
+        "central-west-bearing__surface_12",
+        "central-west-wood-planter__depth_33"
+      ]
+    },
+    {
+      "cell": [
+        44,
+        30
+      ],
+      "point": [
+        712,
+        488
+      ],
+      "owners": [
+        "central-west-bearing__surface_12"
+      ]
+    },
+    {
+      "cell": [
+        45,
+        30
+      ],
+      "point": [
+        728,
+        488
+      ],
+      "owners": [
+        "central-platform__surface_183"
+      ]
+    },
+    {
+      "cell": [
+        46,
+        30
+      ],
+      "point": [
+        744,
+        488
+      ],
+      "owners": [
+        "central-platform__surface_40"
+      ]
+    },
+    {
+      "cell": [
+        47,
+        30
+      ],
+      "point": [
+        760,
+        488
+      ],
+      "owners": [
+        "central-platform__surface_40"
+      ]
+    },
+    {
+      "cell": [
+        48,
+        30
+      ],
+      "point": [
+        776,
+        488
+      ],
+      "owners": [
+        "central-platform__surface_40"
+      ]
+    },
+    {
+      "cell": [
+        49,
+        30
+      ],
+      "point": [
+        792,
+        488
+      ],
+      "owners": [
+        "central-platform__surface_40"
+      ]
+    },
+    {
+      "cell": [
+        50,
+        30
+      ],
+      "point": [
+        808,
+        488
+      ],
+      "owners": [
+        "central-platform__surface_263"
+      ]
+    },
+    {
+      "cell": [
+        51,
+        30
+      ],
+      "point": [
+        824,
+        488
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        52,
+        30
+      ],
+      "point": [
+        840,
+        488
+      ],
+      "owners": [
+        "central-front-wood-planter__depth_38"
+      ]
+    },
+    {
+      "cell": [
+        43,
+        31
+      ],
+      "point": [
+        696,
+        504
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        44,
+        31
+      ],
+      "point": [
+        712,
+        504
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        45,
+        31
+      ],
+      "point": [
+        728,
+        504
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        46,
+        31
+      ],
+      "point": [
+        744,
+        504
+      ],
+      "owners": [
+        "central-platform__surface_307",
+        "central-south-left-planter__surface_11",
+        "central-south-left-planter__surface_60"
+      ]
+    },
+    {
+      "cell": [
+        47,
+        31
+      ],
+      "point": [
+        760,
+        504
+      ],
+      "owners": [
+        "central-platform__surface_56"
+      ]
+    },
+    {
+      "cell": [
+        48,
+        31
+      ],
+      "point": [
+        776,
+        504
+      ],
+      "owners": [
+        "central-platform__surface_231"
+      ]
+    },
+    {
+      "cell": [
+        49,
+        31
+      ],
+      "point": [
+        792,
+        504
+      ],
+      "owners": [
+        "central-platform__surface_355",
+        "central-south-right-planter__depth_53"
+      ]
+    },
+    {
+      "cell": [
+        50,
+        31
+      ],
+      "point": [
+        808,
+        504
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        51,
+        31
+      ],
+      "point": [
+        824,
+        504
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        46,
+        32
+      ],
+      "point": [
+        744,
+        520
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        47,
+        32
+      ],
+      "point": [
+        760,
+        520
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        48,
+        32
+      ],
+      "point": [
+        776,
+        520
+      ],
+      "owners": []
+    },
+    {
+      "cell": [
+        49,
+        32
+      ],
+      "point": [
+        792,
+        520
+      ],
+      "owners": [
+        "central-south-right-planter__depth_53"
+      ]
+    },
+    {
+      "cell": [
+        50,
+        32
+      ],
+      "point": [
+        808,
+        520
+      ],
+      "owners": []
+    }
+  ],
+  "completionBoundary": "Central is NOT fully closed: two missing standing/support groups, plus explicit existing-owner shape/interface differences. No mandatory third new object is proven by these22 centres. No claim every blocked centre must carry material."
+}

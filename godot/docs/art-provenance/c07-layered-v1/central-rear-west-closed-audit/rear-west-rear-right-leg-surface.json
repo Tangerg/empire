@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "supports": [
+    {
+      "id": "column-734",
+      "frontPixels": [
+        0.5,
+        9.049988
+      ],
+      "kind": "structural"
+    }
+  ],
+  "members": [
+    {
+      "id": "rear-right-leg-734-0-0",
+      "supportId": "column-734",
+      "polygonPixels": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          8.799988
+        ],
+        [
+          0,
+          0.5
+        ]
+      ],
+      "uvPixels": [
+        [
+          650,
+          700
+        ],
+        [
+          630,
+          890
+        ],
+        [
+          630,
+          710
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    },
+    {
+      "id": "rear-right-leg-734-3-0",
+      "supportId": "column-734",
+      "polygonPixels": [
+        [
+          1,
+          9.299988
+        ],
+        [
+          0,
+          8.799988
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "uvPixels": [
+        [
+          650,
+          880
+        ],
+        [
+          630,
+          890
+        ],
+        [
+          650,
+          700
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    }
+  ]
+}

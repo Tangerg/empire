@@ -1,0 +1,1442 @@
+{
+  "ready": true,
+  "scope": "One bounded rear-west planted-bed/wood-seat original-source group. No GUI/engine/actions/save; no candidate construction. Source facts separated from hidden new design.",
+  "sourceCropBoundsExclusive": [
+    704,
+    409,
+    756,
+    469
+  ],
+  "visibleGroupExtentApproximate": [
+    715,
+    422,
+    750,
+    462
+  ],
+  "materialOwners": {
+    "foliage": "Rear-west tall planted foliage around738..749,423..443, adjacent to core. Do NOT include existing west-white planter dark canopy around704..720,444..463.",
+    "wood": "Orange/back dark wood seat/frame approximately716..742,435..460. Upright/support terminations distinct from gray stone planter surround.",
+    "stone": "Narrow pale rim and gray side at roughly743..748,444..454, adjoining core plinth. Lower original stone foot is not independently visible.",
+    "existingCoreBoundary": "At744456 and lower/right stone, source bed/core/plinth join is mixed. Existing core painted mask is not material-ownership evidence."
+  },
+  "woodVisibleSupportLandmarks": [
+    {
+      "id": "near-wood-end",
+      "points": [
+        {
+          "source": [
+            722,
+            459
+          ],
+          "rgb": [
+            80,
+            60,
+            37
+          ],
+          "material": "dark near wood end",
+          "confidence": "visible material interior",
+          "cell": [
+            45,
+            28
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            722,
+            460
+          ],
+          "rgb": [
+            52,
+            39,
+            27
+          ],
+          "material": "lowest dark wood/end pixel",
+          "confidence": "visible end; below blends into gray stone/shadow",
+          "cell": [
+            45,
+            28
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            723,
+            459
+          ],
+          "rgb": [
+            50,
+            33,
+            21
+          ],
+          "material": "wood support interior",
+          "confidence": "visible material interior",
+          "cell": [
+            45,
+            28
+          ],
+          "terrain": "#"
+        }
+      ],
+      "contactBand": [
+        [
+          722,
+          459
+        ],
+        [
+          723,
+          460
+        ]
+      ],
+      "afterBand": [
+        {
+          "source": [
+            722,
+            461
+          ],
+          "rgb": [
+            88,
+            80,
+            75
+          ],
+          "material": "gray transition below wood",
+          "confidence": "visible material interior",
+          "cell": [
+            45,
+            28
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            723,
+            461
+          ],
+          "rgb": [
+            133,
+            125,
+            126
+          ],
+          "material": "gray stone/support plane below wood",
+          "confidence": "visible material interior",
+          "cell": [
+            45,
+            28
+          ],
+          "terrain": "#"
+        }
+      ],
+      "meaning": "A visible wooden member termination, not proof that it reaches world ground instead of a raised stone ledge. Do not borrow it as the planter stone foot."
+    },
+    {
+      "id": "right-wood-end",
+      "points": [
+        {
+          "source": [
+            739,
+            452
+          ],
+          "rgb": [
+            138,
+            91,
+            29
+          ],
+          "material": "right small wood support end",
+          "confidence": "visible material interior",
+          "cell": [
+            46,
+            28
+          ],
+          "terrain": "#"
+        },
+        {
+          "source": [
+            740,
+            452
+          ],
+          "rgb": [
+            174,
+            130,
+            65
+          ],
+          "material": "right wood support lower end",
+          "confidence": "visible material interior",
+          "cell": [
+            46,
+            28
+          ],
+          "terrain": "#"
+        }
+      ],
+      "contactBand": [
+        [
+          739,
+          452
+        ],
+        [
+          740,
+          453
+        ]
+      ],
+      "afterBand": [
+        {
+          "source": [
+            740,
+            454
+          ],
+          "rgb": [
+            252,
+            228,
+            178
+          ],
+          "material": "clear pale horizontal stone/floor beyond wood end",
+          "confidence": "visible material interior",
+          "cell": [
+            46,
+            28
+          ],
+          "terrain": "#"
+        }
+      ],
+      "meaning": "Visible wood-to-pale-stone contact; original floor elevation and complete hidden leg geometry unproved."
+    }
+  ],
+  "stoneFootStatus": {
+    "visibleWallWitnesses": [
+      {
+        "source": [
+          745,
+          450
+        ],
+        "rgb": [
+          128,
+          116,
+          120
+        ],
+        "material": "gray planter-side/stone enclosure face beside core",
+        "confidence": "visible material interior",
+        "cell": [
+          46,
+          28
+        ],
+        "terrain": "#"
+      },
+      {
+        "source": [
+          745,
+          452
+        ],
+        "rgb": [
+          126,
+          113,
+          108
+        ],
+        "material": "gray stone face lower band beside core",
+        "confidence": "visible material interior",
+        "cell": [
+          46,
+          28
+        ],
+        "terrain": "#"
+      }
+    ],
+    "completeGroundFootprint": null,
+    "uncertainty": "Actual bottom and rear/left hidden stone base are occluded by core plinth/front terrace and neighbouring canopy. Neither722460/740452 wood feet nor core front492 may substitute.",
+    "sameBaseConclusion": "One closely coupled planted-bed/seat composition is visible. Common entire ground slab is NOT source-certified. Shared/new foundation may be designed coherently but must be labeled new."
+  },
+  "positiveMaterialSamples": [
+    {
+      "source": [
+        728,
+        440
+      ],
+      "rgb": [
+        249,
+        176,
+        75
+      ],
+      "material": "orange wood seat/ledge face",
+      "confidence": "visible material interior",
+      "cell": [
+        45,
+        27
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        728,
+        456
+      ],
+      "rgb": [
+        80,
+        56,
+        42
+      ],
+      "material": "dark lower wood support/face",
+      "confidence": "visible material interior",
+      "cell": [
+        45,
+        28
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        744,
+        440
+      ],
+      "rgb": [
+        38,
+        74,
+        18
+      ],
+      "material": "rear-west dense green foliage",
+      "confidence": "visible material interior",
+      "cell": [
+        46,
+        27
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        744,
+        430
+      ],
+      "rgb": [
+        122,
+        162,
+        41
+      ],
+      "material": "rear-west green upper foliage",
+      "confidence": "visible material interior",
+      "cell": [
+        46,
+        26
+      ],
+      "terrain": "p"
+    }
+  ],
+  "negativeSpaceSamples": [
+    {
+      "source": [
+        724,
+        430
+      ],
+      "rgb": [
+        200,
+        170,
+        141
+      ],
+      "material": "original background paving above wood",
+      "confidence": "visible material interior",
+      "cell": [
+        45,
+        26
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        739,
+        420
+      ],
+      "rgb": [
+        247,
+        210,
+        169
+      ],
+      "material": "original paving above foliage",
+      "confidence": "visible material interior",
+      "cell": [
+        46,
+        26
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        738,
+        456
+      ],
+      "rgb": [
+        245,
+        215,
+        168
+      ],
+      "material": "pale horizontal stone/floor below wood; not a wood face",
+      "confidence": "visible material interior",
+      "cell": [
+        46,
+        28
+      ],
+      "terrain": "#"
+    }
+  ],
+  "holes": "No complete under-seat transparent aperture is certified: dark region includes wooden frame and shadow. Do not invent an X opening from darkness.",
+  "canonicalGroundBoundary": {
+    "visibleWoodContactsCells": [
+      [
+        45,
+        28
+      ],
+      [
+        46,
+        28
+      ]
+    ],
+    "terrain": "both#",
+    "nearestLegalNorth": [
+      [
+        45,
+        26
+      ],
+      [
+        46,
+        26
+      ],
+      [
+        47,
+        26
+      ],
+      [
+        48,
+        27
+      ]
+    ],
+    "sourceContactConvention": "16*cell+8; legal p. Original projected foliage/seat can extend into p pixels without certifying a ground conflict.",
+    "hiddenStoneCellAllocation": "Unassigned; never turn the whole screenshot bbox or northern50-cell responsibility row into solid foundation."
+  },
+  "boundedActualC07AppearanceScan": {
+    "kind": "Static idle0 alpha only, not native Pick/draw evidence",
+    "eligibleAppearances": [
+      {
+        "assetId": "torren-stage01",
+        "resourcePath": "res://assets/painted-units-v1/torren-stage01-v2.png",
+        "frame": 0,
+        "frameRegion": [
+          0,
+          0,
+          557,
+          725
+        ],
+        "anchor": [
+          269,
+          565
+        ],
+        "scale": 0.0961538,
+        "pixelDensity": 1,
+        "sourceAlphaOverlapCount": 0
+      },
+      {
+        "assetId": "laiya-stage01",
+        "resourcePath": "res://assets/painted-units-v1/laiya-stage01-v2.png",
+        "frame": 0,
+        "frameRegion": [
+          0,
+          0,
+          524,
+          725
+        ],
+        "anchor": [
+          273,
+          580
+        ],
+        "scale": 0.0977654,
+        "pixelDensity": 1,
+        "sourceAlphaOverlapCount": 0
+      },
+      {
+        "assetId": "mirelle-stage01",
+        "resourcePath": "res://assets/painted-units-v1/mirelle-stage01-v2.png",
+        "frame": 0,
+        "frameRegion": [
+          0,
+          0,
+          565,
+          725
+        ],
+        "anchor": [
+          258,
+          568
+        ],
+        "scale": 0.0806452,
+        "pixelDensity": 1,
+        "sourceAlphaOverlapCount": 0
+      },
+      {
+        "assetId": "bran-stage01",
+        "resourcePath": "res://assets/painted-units-v1/bran-stage01-clean-v3.png",
+        "frame": 0,
+        "frameRegion": [
+          0,
+          0,
+          563,
+          725
+        ],
+        "anchor": [
+          298,
+          577
+        ],
+        "scale": 0.0902062,
+        "pixelDensity": 1,
+        "sourceAlphaOverlapCount": 0
+      },
+      {
+        "assetId": "C01-FFV1-UNIT-ARCHER",
+        "resourcePath": "res://assets/painted-units-v1/unit-archer-v2.png",
+        "frame": 0,
+        "frameRegion": [
+          0,
+          0,
+          545,
+          724
+        ],
+        "anchor": [
+          251,
+          555
+        ],
+        "scale": 0.0843373,
+        "pixelDensity": 1,
+        "sourceAlphaOverlapCount": 0
+      },
+      {
+        "assetId": "C01-FFV1-UNIT-SWORDSMAN",
+        "resourcePath": "res://assets/painted-units-v1/unit-swordsman-gait-v3.png",
+        "frame": 0,
+        "frameRegion": [
+          0,
+          0,
+          543,
+          725
+        ],
+        "anchor": [
+          251,
+          569
+        ],
+        "scale": 0.0847458,
+        "pixelDensity": 1,
+        "sourceAlphaOverlapCount": 0
+      },
+      {
+        "assetId": "C01-FFV1-UNIT-BANNER-GUARD",
+        "resourcePath": "res://assets/painted-units-v1/unit-banner-guard-clean-v3.png",
+        "frame": 0,
+        "frameRegion": [
+          0,
+          0,
+          575,
+          725
+        ],
+        "anchor": [
+          250,
+          559
+        ],
+        "scale": 0.1014493,
+        "pixelDensity": 1,
+        "sourceAlphaOverlapCount": 0
+      },
+      {
+        "assetId": "C01-FFV1-UNIT-ENGINEER",
+        "resourcePath": "res://assets/painted-units-v1/unit-engineer-gait-v2.png",
+        "frame": 0,
+        "frameRegion": [
+          0,
+          0,
+          571,
+          725
+        ],
+        "anchor": [
+          288,
+          552
+        ],
+        "scale": 0.0886076,
+        "pixelDensity": 1,
+        "sourceAlphaOverlapCount": 0
+      },
+      {
+        "assetId": "C01-FFV1-UNIT-GRAVEKEEPER",
+        "resourcePath": "res://assets/painted-units-v1/unit-gravekeeper-gait-v2.png",
+        "frame": 0,
+        "frameRegion": [
+          0,
+          0,
+          558,
+          725
+        ],
+        "anchor": [
+          298,
+          553
+        ],
+        "scale": 0.0921053,
+        "pixelDensity": 1,
+        "sourceAlphaOverlapCount": 0
+      },
+      {
+        "assetId": "C01-FFV1-UNIT-BATTLE-MAGE",
+        "resourcePath": "res://assets/painted-units-v1/unit-battle-mage-clean-v3.png",
+        "frame": 0,
+        "frameRegion": [
+          0,
+          0,
+          527,
+          725
+        ],
+        "anchor": [
+          271,
+          558
+        ],
+        "scale": 0.0888325,
+        "pixelDensity": 1,
+        "sourceAlphaOverlapCount": 0
+      },
+      {
+        "assetId": "C01-FFV1-UNIT-LEGION-SHIELD",
+        "resourcePath": "res://assets/painted-units-v1/unit-legion-shield-gait-v2.png",
+        "frame": 0,
+        "frameRegion": [
+          0,
+          0,
+          528,
+          724
+        ],
+        "anchor": [
+          260,
+          552
+        ],
+        "scale": 0.1041667,
+        "pixelDensity": 1,
+        "sourceAlphaOverlapCount": 0
+      },
+      {
+        "assetId": "C01-FFV1-UNIT-WOLF-RIDER",
+        "resourcePath": "res://assets/painted-units-v1/unit-wolf-rider.png",
+        "frame": 0,
+        "frameRegion": [
+          0,
+          0,
+          511,
+          724
+        ],
+        "anchor": [
+          285,
+          568
+        ],
+        "scale": 0.1,
+        "pixelDensity": 1,
+        "sourceAlphaOverlapCount": 0
+      }
+    ],
+    "poses": 96,
+    "cells": [
+      [
+        45,
+        26
+      ],
+      [
+        46,
+        26
+      ],
+      [
+        47,
+        26
+      ],
+      [
+        48,
+        27
+      ]
+    ],
+    "facings": [
+      "east",
+      "west"
+    ],
+    "sourceLeafCandidateMask": {
+      "roiInclusive": [
+        734,
+        420,
+        750,
+        440
+      ],
+      "pixelCount": 187,
+      "criterion": "Manual original foliage ROI, then g>1.1r andg>1.25b solely to reject nonleaf pavement/core colours; independent of actor results. Not a complete foliage segmentation.",
+      "points": [
+        [
+          746,
+          426
+        ],
+        [
+          747,
+          426
+        ],
+        [
+          748,
+          426
+        ],
+        [
+          749,
+          426
+        ],
+        [
+          750,
+          426
+        ],
+        [
+          741,
+          427
+        ],
+        [
+          742,
+          427
+        ],
+        [
+          743,
+          427
+        ],
+        [
+          744,
+          427
+        ],
+        [
+          745,
+          427
+        ],
+        [
+          746,
+          427
+        ],
+        [
+          747,
+          427
+        ],
+        [
+          748,
+          427
+        ],
+        [
+          749,
+          427
+        ],
+        [
+          750,
+          427
+        ],
+        [
+          741,
+          428
+        ],
+        [
+          742,
+          428
+        ],
+        [
+          743,
+          428
+        ],
+        [
+          744,
+          428
+        ],
+        [
+          745,
+          428
+        ],
+        [
+          746,
+          428
+        ],
+        [
+          747,
+          428
+        ],
+        [
+          748,
+          428
+        ],
+        [
+          749,
+          428
+        ],
+        [
+          750,
+          428
+        ],
+        [
+          741,
+          429
+        ],
+        [
+          742,
+          429
+        ],
+        [
+          743,
+          429
+        ],
+        [
+          744,
+          429
+        ],
+        [
+          745,
+          429
+        ],
+        [
+          746,
+          429
+        ],
+        [
+          747,
+          429
+        ],
+        [
+          748,
+          429
+        ],
+        [
+          749,
+          429
+        ],
+        [
+          750,
+          429
+        ],
+        [
+          741,
+          430
+        ],
+        [
+          742,
+          430
+        ],
+        [
+          743,
+          430
+        ],
+        [
+          744,
+          430
+        ],
+        [
+          745,
+          430
+        ],
+        [
+          746,
+          430
+        ],
+        [
+          747,
+          430
+        ],
+        [
+          748,
+          430
+        ],
+        [
+          749,
+          430
+        ],
+        [
+          750,
+          430
+        ],
+        [
+          740,
+          431
+        ],
+        [
+          741,
+          431
+        ],
+        [
+          742,
+          431
+        ],
+        [
+          743,
+          431
+        ],
+        [
+          744,
+          431
+        ],
+        [
+          745,
+          431
+        ],
+        [
+          746,
+          431
+        ],
+        [
+          747,
+          431
+        ],
+        [
+          748,
+          431
+        ],
+        [
+          749,
+          431
+        ],
+        [
+          750,
+          431
+        ],
+        [
+          739,
+          432
+        ],
+        [
+          740,
+          432
+        ],
+        [
+          741,
+          432
+        ],
+        [
+          742,
+          432
+        ],
+        [
+          743,
+          432
+        ],
+        [
+          744,
+          432
+        ],
+        [
+          745,
+          432
+        ],
+        [
+          746,
+          432
+        ],
+        [
+          747,
+          432
+        ],
+        [
+          748,
+          432
+        ],
+        [
+          749,
+          432
+        ],
+        [
+          750,
+          432
+        ],
+        [
+          738,
+          433
+        ],
+        [
+          739,
+          433
+        ],
+        [
+          740,
+          433
+        ],
+        [
+          741,
+          433
+        ],
+        [
+          742,
+          433
+        ],
+        [
+          743,
+          433
+        ],
+        [
+          744,
+          433
+        ],
+        [
+          745,
+          433
+        ],
+        [
+          746,
+          433
+        ],
+        [
+          747,
+          433
+        ],
+        [
+          748,
+          433
+        ],
+        [
+          749,
+          433
+        ],
+        [
+          750,
+          433
+        ],
+        [
+          737,
+          434
+        ],
+        [
+          738,
+          434
+        ],
+        [
+          739,
+          434
+        ],
+        [
+          740,
+          434
+        ],
+        [
+          741,
+          434
+        ],
+        [
+          742,
+          434
+        ],
+        [
+          743,
+          434
+        ],
+        [
+          744,
+          434
+        ],
+        [
+          745,
+          434
+        ],
+        [
+          746,
+          434
+        ],
+        [
+          747,
+          434
+        ],
+        [
+          748,
+          434
+        ],
+        [
+          749,
+          434
+        ],
+        [
+          750,
+          434
+        ],
+        [
+          736,
+          435
+        ],
+        [
+          737,
+          435
+        ],
+        [
+          738,
+          435
+        ],
+        [
+          739,
+          435
+        ],
+        [
+          740,
+          435
+        ],
+        [
+          741,
+          435
+        ],
+        [
+          742,
+          435
+        ],
+        [
+          743,
+          435
+        ],
+        [
+          744,
+          435
+        ],
+        [
+          745,
+          435
+        ],
+        [
+          746,
+          435
+        ],
+        [
+          747,
+          435
+        ],
+        [
+          748,
+          435
+        ],
+        [
+          749,
+          435
+        ],
+        [
+          750,
+          435
+        ],
+        [
+          736,
+          436
+        ],
+        [
+          737,
+          436
+        ],
+        [
+          738,
+          436
+        ],
+        [
+          739,
+          436
+        ],
+        [
+          740,
+          436
+        ],
+        [
+          741,
+          436
+        ],
+        [
+          742,
+          436
+        ],
+        [
+          743,
+          436
+        ],
+        [
+          744,
+          436
+        ],
+        [
+          745,
+          436
+        ],
+        [
+          746,
+          436
+        ],
+        [
+          747,
+          436
+        ],
+        [
+          748,
+          436
+        ],
+        [
+          749,
+          436
+        ],
+        [
+          750,
+          436
+        ],
+        [
+          735,
+          437
+        ],
+        [
+          736,
+          437
+        ],
+        [
+          737,
+          437
+        ],
+        [
+          738,
+          437
+        ],
+        [
+          739,
+          437
+        ],
+        [
+          740,
+          437
+        ],
+        [
+          741,
+          437
+        ],
+        [
+          742,
+          437
+        ],
+        [
+          743,
+          437
+        ],
+        [
+          744,
+          437
+        ],
+        [
+          745,
+          437
+        ],
+        [
+          746,
+          437
+        ],
+        [
+          747,
+          437
+        ],
+        [
+          748,
+          437
+        ],
+        [
+          749,
+          437
+        ],
+        [
+          750,
+          437
+        ],
+        [
+          735,
+          438
+        ],
+        [
+          736,
+          438
+        ],
+        [
+          737,
+          438
+        ],
+        [
+          738,
+          438
+        ],
+        [
+          739,
+          438
+        ],
+        [
+          740,
+          438
+        ],
+        [
+          741,
+          438
+        ],
+        [
+          742,
+          438
+        ],
+        [
+          743,
+          438
+        ],
+        [
+          744,
+          438
+        ],
+        [
+          745,
+          438
+        ],
+        [
+          746,
+          438
+        ],
+        [
+          747,
+          438
+        ],
+        [
+          748,
+          438
+        ],
+        [
+          749,
+          438
+        ],
+        [
+          750,
+          438
+        ],
+        [
+          735,
+          439
+        ],
+        [
+          736,
+          439
+        ],
+        [
+          737,
+          439
+        ],
+        [
+          738,
+          439
+        ],
+        [
+          739,
+          439
+        ],
+        [
+          740,
+          439
+        ],
+        [
+          741,
+          439
+        ],
+        [
+          742,
+          439
+        ],
+        [
+          743,
+          439
+        ],
+        [
+          744,
+          439
+        ],
+        [
+          745,
+          439
+        ],
+        [
+          746,
+          439
+        ],
+        [
+          747,
+          439
+        ],
+        [
+          748,
+          439
+        ],
+        [
+          749,
+          439
+        ],
+        [
+          750,
+          439
+        ],
+        [
+          736,
+          440
+        ],
+        [
+          737,
+          440
+        ],
+        [
+          738,
+          440
+        ],
+        [
+          739,
+          440
+        ],
+        [
+          740,
+          440
+        ],
+        [
+          741,
+          440
+        ],
+        [
+          742,
+          440
+        ],
+        [
+          743,
+          440
+        ],
+        [
+          744,
+          440
+        ],
+        [
+          745,
+          440
+        ],
+        [
+          746,
+          440
+        ],
+        [
+          747,
+          440
+        ],
+        [
+          748,
+          440
+        ],
+        [
+          749,
+          440
+        ]
+      ]
+    },
+    "excludeBelowFoot": true,
+    "opaqueThreshold": 200,
+    "hits": [],
+    "conclusion": "No valid back-side overlap found in this bounded set. Therefore this group is NOT claimed as a second proven current-role old-depth bug. Hidden-foot responsibility/scene restoration remains the justification. No all-frames/all-positions claim."
+  },
+  "minimumCandidateContract": {
+    "include": [
+      "A single coherent planted enclosure with explicit new hidden stone foundation",
+      "Wood frame/seat as distinct supported material members, preserving visible wood-end witnesses",
+      "One attached foliage mass, not per-leaf objects"
+    ],
+    "preferReuse": [
+      "central-front-wood-planter-v1-candidate.png already-selected wood texture and foliage material",
+      "central-landmark-core-v1-candidate.png already-selected warm/gray stone material",
+      "Existing native material-geometry pipeline; no new bitmap generation required for this review"
+    ],
+    "mustKeepSeparate": [
+      "Existing west-white canopy and its696473 ground root",
+      "Core column/plinth and its measured feet",
+      "All original wooden support ends versus stone-planter foundation"
+    ],
+    "doNotClaim": [
+      "Whole original stone foot recovered",
+      "Shared slab source-certified",
+      "Native character occlusion regression reproduced here"
+    ]
+  },
+  "recommendedPriority": "After unresolved rear-east fixed two-point bug, restore this bounded structural group only if closing the central scene responsibility; do not search indefinitely for a nonexistent role witness or expand to new decorations."
+}

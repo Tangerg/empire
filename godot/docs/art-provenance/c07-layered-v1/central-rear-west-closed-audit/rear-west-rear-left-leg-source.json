@@ -1,0 +1,60 @@
+{
+  "textureResourcePath": "res://assets/native/c07-layered-v1/central-front-wood-planter-v1-candidate.png",
+  "supportLine": [
+    [
+      716,
+      454.8
+    ],
+    [
+      717,
+      455.3
+    ]
+  ],
+  "members": [
+    {
+      "id": "rear-left-leg",
+      "polygon": [
+        [
+          716.0,
+          446.5
+        ],
+        [
+          717.0,
+          447.0
+        ],
+        [
+          717.0,
+          455.3
+        ],
+        [
+          716.0,
+          454.8
+        ]
+      ],
+      "uv": [
+        [
+          630,
+          710
+        ],
+        [
+          650,
+          700
+        ],
+        [
+          650,
+          880
+        ],
+        [
+          630,
+          890
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    }
+  ],
+  "columnCuts": [
+    716,
+    717
+  ]
+}

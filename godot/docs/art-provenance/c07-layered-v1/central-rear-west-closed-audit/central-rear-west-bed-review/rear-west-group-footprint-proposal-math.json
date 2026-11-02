@@ -1,0 +1,624 @@
+{
+  "ready": true,
+  "scope": "One bounded rear-west whole-group static footprint evaluation. No engine/GUI/action/save. Wood seat height8 does not change supplied ground foot domains.",
+  "sourceInputs": {
+    "woodFrontFeet": [
+      [
+        722,
+        460
+      ],
+      [
+        740,
+        452
+      ]
+    ],
+    "newWoodBackFeet": [
+      [
+        717,
+        455
+      ],
+      [
+        735,
+        447
+      ]
+    ],
+    "stoneHiddenFullGroundProposal": [
+      [
+        735,
+        449
+      ],
+      [
+        744,
+        454
+      ],
+      [
+        750,
+        450
+      ],
+      [
+        741,
+        445
+      ]
+    ],
+    "flowerRoot": [
+      743,
+      449
+    ]
+  },
+  "domainResults": {
+    "woodFourSupportHull": {
+      "polygon": [
+        [
+          722,
+          460
+        ],
+        [
+          740,
+          452
+        ],
+        [
+          735,
+          447
+        ],
+        [
+          717,
+          455
+        ]
+      ],
+      "terrain": [
+        {
+          "cell": [
+            45,
+            27
+          ],
+          "terrain": "#",
+          "positiveArea": 1.625
+        },
+        {
+          "cell": [
+            44,
+            28
+          ],
+          "terrain": "#",
+          "positiveArea": 6.5
+        },
+        {
+          "cell": [
+            45,
+            28
+          ],
+          "terrain": "#",
+          "positiveArea": 110.31944444443798
+        },
+        {
+          "cell": [
+            46,
+            28
+          ],
+          "terrain": "#",
+          "positiveArea": 11.555555555562023
+        }
+      ],
+      "allPositiveAreaBlocked": true,
+      "walk": {
+        "testedSegments": 82950,
+        "intersectingSegments": 0,
+        "minimumDistance": 22.807692400000008,
+        "closest": {
+          "fromCell": [
+            44,
+            26
+          ],
+          "toCell": [
+            45,
+            26
+          ],
+          "west": false,
+          "frame": 1,
+          "soleFramePixel": [
+            317,
+            566
+          ],
+          "segment": [
+            [
+              719.0192274,
+              424.1923076
+            ],
+            [
+              735.0192274,
+              424.1923076
+            ]
+          ],
+          "kind": "fixed-edge-end",
+          "point": [
+            735.0,
+            447.0
+          ],
+          "nearestPoint": [
+            735.0,
+            424.1923076
+          ],
+          "baseEdge": [
+            [
+              740,
+              452
+            ],
+            [
+              735,
+              447
+            ]
+          ],
+          "parameter": 0.9987982875000014
+        },
+        "firstViolations": []
+      },
+      "coreVisibleFeet": {
+        "count": 670,
+        "insideCount": 0,
+        "minimumDistance": 14.926603973629343,
+        "closest": {
+          "coreFoot": {
+            "texture": [
+              184,
+              1205
+            ],
+            "source": [
+              736.2165,
+              470.016
+            ],
+            "canonicalCell": [
+              46,
+              29
+            ]
+          },
+          "nearestPoint": [
+            730.1542319587629,
+            456.3758969072165
+          ],
+          "proposalEdge": [
+            [
+              722,
+              460
+            ],
+            [
+              740,
+              452
+            ]
+          ]
+        },
+        "hiddenCoreGroundVolume": "Uncertified; no envelope used."
+      },
+      "selectedPlatformProjectedMemberOverlaps": [],
+      "platformScope": "Actual member geometric polygons only. No invented closed ground hull from top surface or bbox. No projected overlap means not currently placed visibly atop an existing tread here; hidden rear-volume separation remains uncertified."
+    },
+    "stoneBedOriginalProposal": {
+      "polygon": [
+        [
+          735,
+          449
+        ],
+        [
+          744,
+          454
+        ],
+        [
+          750,
+          450
+        ],
+        [
+          741,
+          445
+        ]
+      ],
+      "terrain": [
+        {
+          "cell": [
+            46,
+            27
+          ],
+          "terrain": "#",
+          "positiveArea": 14.85000000000582
+        },
+        {
+          "cell": [
+            45,
+            28
+          ],
+          "terrain": "#",
+          "positiveArea": 0.6111111111240461
+        },
+        {
+          "cell": [
+            46,
+            28
+          ],
+          "terrain": "#",
+          "positiveArea": 50.53888888887013
+        }
+      ],
+      "allPositiveAreaBlocked": true,
+      "walk": {
+        "testedSegments": 82950,
+        "intersectingSegments": 0,
+        "minimumDistance": 15.733183422516937,
+        "closest": {
+          "fromCell": [
+            48,
+            26
+          ],
+          "toCell": [
+            48,
+            27
+          ],
+          "west": false,
+          "frame": 3,
+          "soleFramePixel": [
+            39,
+            559
+          ],
+          "segment": [
+            [
+              761.096161,
+              422.8461544
+            ],
+            [
+              761.096161,
+              438.8461544
+            ]
+          ],
+          "kind": "moving-end",
+          "point": [
+            761.096161,
+            438.8461544
+          ],
+          "nearestPoint": [
+            750.0,
+            450.0
+          ],
+          "baseEdge": [
+            [
+              744,
+              454
+            ],
+            [
+              750,
+              450
+            ]
+          ],
+          "parameter": 1.0
+        },
+        "firstViolations": []
+      },
+      "coreVisibleFeet": {
+        "count": 670,
+        "insideCount": 0,
+        "minimumDistance": 17.807165081786618,
+        "closest": {
+          "coreFoot": {
+            "texture": [
+              184,
+              1205
+            ],
+            "source": [
+              736.2165,
+              470.016
+            ],
+            "canonicalCell": [
+              46,
+              29
+            ]
+          },
+          "nearestPoint": [
+            744.0,
+            454.0
+          ],
+          "proposalEdge": [
+            [
+              735,
+              449
+            ],
+            [
+              744,
+              454
+            ]
+          ]
+        },
+        "hiddenCoreGroundVolume": "Uncertified; no envelope used."
+      },
+      "selectedPlatformProjectedMemberOverlaps": [],
+      "platformScope": "Actual member geometric polygons only. No invented closed ground hull from top surface or bbox. No projected overlap means not currently placed visibly atop an existing tread here; hidden rear-volume separation remains uncertified."
+    },
+    "stoneBedBoundedAlternative": {
+      "polygon": [
+        [
+          741,
+          450
+        ],
+        [
+          745,
+          454
+        ],
+        [
+          750,
+          451
+        ],
+        [
+          744,
+          446
+        ]
+      ],
+      "terrain": [
+        {
+          "cell": [
+            46,
+            27
+          ],
+          "terrain": "#",
+          "positiveArea": 3.900000000023283
+        },
+        {
+          "cell": [
+            46,
+            28
+          ],
+          "terrain": "#",
+          "positiveArea": 31.599999999976717
+        }
+      ],
+      "allPositiveAreaBlocked": true,
+      "walk": {
+        "testedSegments": 82950,
+        "intersectingSegments": 0,
+        "minimumDistance": 16.45724010296264,
+        "closest": {
+          "fromCell": [
+            48,
+            26
+          ],
+          "toCell": [
+            48,
+            27
+          ],
+          "west": false,
+          "frame": 3,
+          "soleFramePixel": [
+            39,
+            559
+          ],
+          "segment": [
+            [
+              761.096161,
+              422.8461544
+            ],
+            [
+              761.096161,
+              438.8461544
+            ]
+          ],
+          "kind": "moving-end",
+          "point": [
+            761.096161,
+            438.8461544
+          ],
+          "nearestPoint": [
+            750.0,
+            451.0
+          ],
+          "baseEdge": [
+            [
+              745,
+              454
+            ],
+            [
+              750,
+              451
+            ]
+          ],
+          "parameter": 1.0
+        },
+        "firstViolations": []
+      },
+      "coreVisibleFeet": {
+        "count": 670,
+        "insideCount": 0,
+        "minimumDistance": 18.266420783777008,
+        "closest": {
+          "coreFoot": {
+            "texture": [
+              184,
+              1205
+            ],
+            "source": [
+              736.2165,
+              470.016
+            ],
+            "canonicalCell": [
+              46,
+              29
+            ]
+          },
+          "nearestPoint": [
+            745.0,
+            454.0
+          ],
+          "proposalEdge": [
+            [
+              741,
+              450
+            ],
+            [
+              745,
+              454
+            ]
+          ]
+        },
+        "hiddenCoreGroundVolume": "Uncertified; no envelope used."
+      },
+      "selectedPlatformProjectedMemberOverlaps": [],
+      "platformScope": "Actual member geometric polygons only. No invented closed ground hull from top surface or bbox. No projected overlap means not currently placed visibly atop an existing tread here; hidden rear-volume separation remains uncertified."
+    }
+  },
+  "woodSupportHullVersusStone": {
+    "testedSegments": 4,
+    "intersectingSegments": 1,
+    "minimumDistance": 0.0,
+    "closest": {
+      "edgeIndex": 0,
+      "segment": [
+        [
+          722.0,
+          460.0
+        ],
+        [
+          740.0,
+          452.0
+        ]
+      ],
+      "kind": "moving-end",
+      "point": [
+        740.0,
+        452.0
+      ],
+      "nearestPoint": [
+        740.0943396226415,
+        451.8301886792453
+      ],
+      "baseEdge": [
+        [
+          735,
+          449
+        ],
+        [
+          744,
+          454
+        ]
+      ],
+      "parameter": 0.5660377358490566
+    },
+    "firstViolations": [
+      {
+        "edgeIndex": 1,
+        "segment": [
+          [
+            740.0,
+            452.0
+          ],
+          [
+            735.0,
+            447.0
+          ]
+        ]
+      }
+    ],
+    "otherVerticesInside": 1,
+    "groundDomainsDisjoint": false,
+    "supportHullIntersectionPolygon": [
+      [
+        739.5,
+        451.5
+      ],
+      [
+        736.2,
+        448.2
+      ],
+      [
+        735.0,
+        449.0
+      ]
+    ],
+    "supportHullIntersectionArea": 3.3000000000174623,
+    "fourBenchFootPointsInsideStone": [],
+    "meaning": "The bench quadrilateral is only a hull of four proposed supports unless a continuous plinth is explicitly intended. Positive hull area intersection is NOT itself proof solid legs collide. No finite leg footprint widths were supplied.",
+    "minimumPointSupportClearance": 0.1942571724714694,
+    "closestPointSupport": {
+      "woodSupportPoint": [
+        740,
+        452
+      ],
+      "stoneEdge": [
+        [
+          735,
+          449
+        ],
+        [
+          744,
+          454
+        ]
+      ],
+      "nearestPoint": [
+        740.0943396226415,
+        451.8301886792453
+      ]
+    }
+  },
+  "boundedIndependentAlternative": {
+    "newStoneGroundPolygon": [
+      [
+        741,
+        450
+      ],
+      [
+        745,
+        454
+      ],
+      [
+        750,
+        451
+      ],
+      [
+        744,
+        446
+      ]
+    ],
+    "flowerRootStillInside": true,
+    "woodRelation": {
+      "testedSegments": 4,
+      "intersectingSegments": 0,
+      "minimumDistance": 2.1213203435596424,
+      "closest": {
+        "edgeIndex": 0,
+        "segment": [
+          [
+            722.0,
+            460.0
+          ],
+          [
+            740.0,
+            452.0
+          ]
+        ],
+        "kind": "moving-end",
+        "point": [
+          740.0,
+          452.0
+        ],
+        "nearestPoint": [
+          741.5,
+          450.5
+        ],
+        "baseEdge": [
+          [
+            741,
+            450
+          ],
+          [
+            745,
+            454
+          ]
+        ],
+        "parameter": 0.125
+      },
+      "firstViolations": [],
+      "otherVerticesInside": 0,
+      "groundDomainsDisjoint": true
+    },
+    "reason": "Source-certified gray wall is only around743..748; original left reach735 was already hidden NEW DESIGN. A compact right-hand bed startingx741 preserves the fixed743449 root and visible-side neighbourhood without placing its foundation within the seat support hull. This does not claim original unseen foot restoration.",
+    "status": "One conditional geometric suggestion only, not native/visual acceptance. If a deliberately shared foundation is intended, its ownership must be explicit instead; do not call two overlapping solid bases disjoint."
+  },
+  "limitations": [
+    "Core670 visible stone feet are not its full hidden base.",
+    "Actual platform support/material extent is not a bbox-derived foundation.",
+    "Original front wood contact bands do not certify four square leg widths or original floor elevation.",
+    "Need actual finite foot geometry before claiming0.194px point clearance is enough for the original candidate."
+  ]
+}
