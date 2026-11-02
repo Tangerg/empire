@@ -1,0 +1,38 @@
+{
+  "scope": "Read-only source/asset mathematical counterexample; NO engine action or animation execution",
+  "basis": "BoardView.Animation.cs AnimateMove retains sprite X mirror when projected vertical delta is zero; segment0 uses walk-a throughout",
+  "frame": 1,
+  "frameLocalPoint": [
+    338,
+    564
+  ],
+  "rgba": [
+    20,
+    9,
+    2,
+    248
+  ],
+  "frameAnchor": [
+    244,
+    564
+  ],
+  "scale": 0.0961538,
+  "segment": [
+    [
+      24,
+      15
+    ],
+    [
+      24,
+      16
+    ]
+  ],
+  "fraction": 0.25,
+  "mirrored": true,
+  "sourceWorldPoint": [
+    382.9615428,
+    252.0
+  ],
+  "candidate": "d555830047ccbd732b98bef41d4a26f6424fdea4",
+  "conclusion": "Point inside current terminal-pier inferred physical base. Standing-only success does not close path."
+}
