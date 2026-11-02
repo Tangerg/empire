@@ -1,0 +1,463 @@
+{
+  "ready": true,
+  "scope": "One bounded rear-east central planted-bed/seat assembly only. Original PNG/JSON and actual frame0 alpha; no engine, GUI, battle or save. No candidate authoring.",
+  "sourcePath": "empire-c01/godot/assets/native/scenes/luojia.png",
+  "sourceSha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+  "cropSourceBoundsExclusive": [
+    778,
+    410,
+    840,
+    476
+  ],
+  "priorityBackWitnesses": [
+    {
+      "source": [
+        786,
+        419
+      ],
+      "rgb": [
+        107,
+        107,
+        38
+      ],
+      "material": "rear-east planted strip tall foliage",
+      "certainty": "visible material interior",
+      "canonicalCell": [
+        49,
+        26
+      ],
+      "terrain": "p",
+      "actor": {
+        "assetId": "torren-stage01",
+        "frame": 0,
+        "west": true,
+        "cell": [
+          49,
+          26
+        ],
+        "sourceContact": [
+          792,
+          424
+        ],
+        "frameRegion": [
+          0,
+          0,
+          557,
+          725
+        ],
+        "anchor": [
+          269,
+          565
+        ],
+        "scale": 0.0961538,
+        "texturePixel": [
+          331,
+          512
+        ],
+        "rgba": [
+          68,
+          47,
+          32,
+          252
+        ]
+      },
+      "oldPaintedPolygonOwners": []
+    },
+    {
+      "source": [
+        786,
+        420
+      ],
+      "rgb": [
+        83,
+        94,
+        22
+      ],
+      "material": "rear-east planted strip tall foliage",
+      "certainty": "visible material interior",
+      "canonicalCell": [
+        49,
+        26
+      ],
+      "terrain": "p",
+      "actor": {
+        "assetId": "torren-stage01",
+        "frame": 0,
+        "west": true,
+        "cell": [
+          49,
+          26
+        ],
+        "sourceContact": [
+          792,
+          424
+        ],
+        "frameRegion": [
+          0,
+          0,
+          557,
+          725
+        ],
+        "anchor": [
+          269,
+          565
+        ],
+        "scale": 0.0961538,
+        "texturePixel": [
+          331,
+          523
+        ],
+        "rgba": [
+          54,
+          37,
+          25,
+          252
+        ]
+      },
+      "oldPaintedPolygonOwners": []
+    }
+  ],
+  "ownerConclusion": {
+    "foliage": "Dense original long planted strip x783..816 approximately, highest crown around793415; two frozen samples are this foliage, not a market canopy post.",
+    "bed": "Visible pale/gray stone rim and side wall, left end around786440..798454. Its left/back continuation is behind central core/foliage.",
+    "seat": "Orange wooden horizontal sitting/ledge surface approximately800445..824455; below it lies continuous gray stone support/low face, not a visible open space under separate wooden legs.",
+    "sameFoundation": "Source proves adjacency and a visually continuous low stone front under bed end and seat. It does NOT prove one complete hidden shared ground slab. Best treated as one coherent multi-material assembly with explicitly authored hidden closure, not each leaf/seat ornament separately.",
+    "excluded": [
+      "Central landmark core left of this assembly; its foot is not this bed foot.",
+      "Independent eastern white planter/foliage at right around827+; its stone cannot certify this rear bed right foot.",
+      "Market canopy supports far above; no canopy pole is part of this assembly."
+    ]
+  },
+  "boundedVisibleGeometry": {
+    "proposedStudyBoundsNotFootprint": [
+      783,
+      415,
+      826,
+      469
+    ],
+    "crownApproximate": [
+      783,
+      415,
+      817,
+      445
+    ],
+    "visibleRimAndStoneEndApproximate": [
+      785,
+      438,
+      799,
+      456
+    ],
+    "visibleWoodSeatApproximatePolygon": [
+      [
+        800,
+        445
+      ],
+      [
+        811,
+        444
+      ],
+      [
+        824,
+        451
+      ],
+      [
+        823,
+        456
+      ]
+    ],
+    "woodPolygonStatus": "Rough visible-face localization only, not final executable geometry; some rim/trim pixels mix at edge.",
+    "frontStoneLowerEdgeBands": [
+      {
+        "x": 795,
+        "solidFaceY": 452,
+        "mixedEdgeY": [
+          453,
+          454
+        ],
+        "clearFloorY": 455
+      },
+      {
+        "x": 799,
+        "solidFaceY": 454,
+        "mixedEdgeY": [
+          455,
+          456
+        ],
+        "clearFloorY": 457
+      },
+      {
+        "x": 803,
+        "solidFaceY": 456,
+        "mixedEdgeY": [
+          457,
+          458
+        ],
+        "clearFloorY": 459
+      },
+      {
+        "x": 807,
+        "solidFaceY": 458,
+        "mixedEdgeY": [
+          459,
+          460
+        ],
+        "clearFloorY": 461
+      },
+      {
+        "x": 811,
+        "solidFaceY": 460,
+        "mixedEdgeY": [
+          461,
+          462
+        ],
+        "clearFloorY": 463
+      },
+      {
+        "x": 815,
+        "solidFaceY": 463,
+        "mixedEdgeY": [
+          464,
+          465
+        ],
+        "clearFloorY": null
+      },
+      {
+        "x": 819,
+        "solidFaceY": 466,
+        "mixedEdgeY": [
+          467,
+          468
+        ],
+        "clearFloorY": 469
+      }
+    ],
+    "lowerEdgeLimit": "Approximate original visible material-to-floor edge, not a certified complete support polygon. Far-right footprint blends with shadow and foreground white-planter foliage; no true right/rear hidden foot is assigned.",
+    "supportOrderingEvidence": "The frozen actor foot424 is behind visibly planted/stone enclosure down to440..460. Its two foliage overlaps support a missing-foreground static candidate independent of exact hidden rear-foot reconstruction. Native draw/pick verification remains parent-owned."
+  },
+  "positiveMaterialSamples": [
+    {
+      "source": [
+        790,
+        444
+      ],
+      "rgb": [
+        110,
+        97,
+        89
+      ],
+      "material": "left bed stone side",
+      "certainty": "visible material interior",
+      "canonicalCell": [
+        49,
+        27
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        795,
+        452
+      ],
+      "rgb": [
+        139,
+        122,
+        121
+      ],
+      "material": "left bed lower gray stone",
+      "certainty": "visible material interior",
+      "canonicalCell": [
+        49,
+        28
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        808,
+        448
+      ],
+      "rgb": [
+        222,
+        156,
+        78
+      ],
+      "material": "orange wood sitting/ledge face",
+      "certainty": "visible material interior",
+      "canonicalCell": [
+        50,
+        28
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        815,
+        459
+      ],
+      "rgb": [
+        92,
+        87,
+        91
+      ],
+      "material": "gray stone support/front face below wood, not its ground foot",
+      "certainty": "visible material interior",
+      "canonicalCell": [
+        50,
+        28
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        811,
+        460
+      ],
+      "rgb": [
+        141,
+        129,
+        125
+      ],
+      "material": "lower gray stone face",
+      "certainty": "visible material interior",
+      "canonicalCell": [
+        50,
+        28
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        819,
+        466
+      ],
+      "rgb": [
+        115,
+        108,
+        113
+      ],
+      "material": "right-lower gray stone band",
+      "certainty": "visible material interior",
+      "canonicalCell": [
+        51,
+        29
+      ],
+      "terrain": "#"
+    }
+  ],
+  "negativeMaterialSamples": [
+    {
+      "source": [
+        812,
+        420
+      ],
+      "rgb": [
+        201,
+        172,
+        151
+      ],
+      "material": "background pavement above assembly",
+      "certainty": "visible material interior",
+      "canonicalCell": [
+        50,
+        26
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        820,
+        432
+      ],
+      "rgb": [
+        215,
+        180,
+        142
+      ],
+      "material": "background pavement right of high foliage",
+      "certainty": "visible material interior",
+      "canonicalCell": [
+        51,
+        27
+      ],
+      "terrain": "p"
+    },
+    {
+      "source": [
+        803,
+        460
+      ],
+      "rgb": [
+        236,
+        194,
+        155
+      ],
+      "material": "foreground paving below low stone edge",
+      "certainty": "visible material interior",
+      "canonicalCell": [
+        50,
+        28
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        807,
+        462
+      ],
+      "rgb": [
+        239,
+        199,
+        163
+      ],
+      "material": "foreground paving below low stone edge",
+      "certainty": "visible material interior",
+      "canonicalCell": [
+        50,
+        28
+      ],
+      "terrain": "#"
+    },
+    {
+      "source": [
+        811,
+        464
+      ],
+      "rgb": [
+        239,
+        199,
+        161
+      ],
+      "material": "foreground paving below low stone edge",
+      "certainty": "visible material interior",
+      "canonicalCell": [
+        50,
+        29
+      ],
+      "terrain": "#"
+    }
+  ],
+  "minimumNextClosedStructure": {
+    "include": [
+      "One long planted stone surround with its visible left/near end and continuous low front stone support",
+      "Wood seat/ledge as separate material face on/adjacent to that support",
+      "Unified high foliage silhouette attached to planted enclosure, not disconnected leaf sprites"
+    ],
+    "mustDeclareNewDesign": [
+      "Hidden rear/left base behind core and foliage",
+      "Right end connection where original foreground white-planter foliage occludes the base",
+      "Whether seat and bed share one physical foundation; original visible front continuity alone does not certify this"
+    ],
+    "doNot": [
+      "Do not use responsibility50-cells polygon as this object footprint",
+      "Do not fill the below-edge paving samples, even when canonical cell is blocked",
+      "Do not adopt unrelated white-planter feet or core foot492 as this assembly depth",
+      "Do not claim the original bench has individually visible wooden feet; none are resolved in this crop"
+    ]
+  },
+  "notPerformed": [
+    "No new front-pose search",
+    "No exact executable full foundation polygon",
+    "No native visual/picking proof",
+    "No asset fitting or production edits"
+  ]
+}
