@@ -358,12 +358,14 @@ public sealed partial class GrayFlagSession
             var commander = state["commanders"]!.AsArray().OfType<JsonObject>().FirstOrDefault(value => S(value, "id") == S(inspect, "commanderId"));
             if (commander is not null)
             {
-                var commanderState = TacticalModifiers.CommanderUnit(state, commander) is null
-                    ? "ui.hud.commander_absent"
-                    : TacticalModifiers.ActiveCommanderFor(RuleGrid(state), state, inspect) is null
-                        ? "ui.hud.commander_out_of_range"
-                        : "ui.hud.commander_active";
-                rows.Add(new("commander", text.Format("ui.hud.commander", S(commander, "id"), text.Format(commanderState))));
+                var leader = TacticalModifiers.CommanderUnit(state, commander);
+                var commanderLabel = leader is null
+                    ? text.Format("ui.hud.commander_absent")
+                    : text.Format("ui.hud.commander", Name(leader), text.Format(
+                        TacticalModifiers.ActiveCommanderFor(RuleGrid(state), state, inspect) is null
+                            ? "ui.hud.commander_out_of_range"
+                            : "ui.hud.commander_active"));
+                rows.Add(new("commander", commanderLabel));
             }
             var inspectionState = B(inspect, "done") ? "ui.hud.acted"
                 : selected is null || N(selected, "id") != N(inspect, "id") ? "ui.hud.unit_inspected"
