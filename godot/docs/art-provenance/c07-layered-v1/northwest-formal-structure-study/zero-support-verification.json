@@ -1,0 +1,14 @@
+{
+  "removedWholeSupports": 29,
+  "remainingGeometryUvSupportOrderExact": true,
+  "negativeControls": [
+    {
+      "name": "remove-material",
+      "expectedFailure": "nonzero material must remain"
+    },
+    {
+      "name": "ignore-pointer-cue",
+      "expectedFailure": "conservative pointer intersection must remain"
+    }
+  ]
+}

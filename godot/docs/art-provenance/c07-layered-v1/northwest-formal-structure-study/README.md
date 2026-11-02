@@ -49,3 +49,15 @@ Performance is measured, not accepted globally. Same1180x760 camera, one actual 
 - Read-only audit identifies29 entirely transparent native supports with zero alpha across every UV rectangle including a2-texel halo. No pruning has yet been adopted in this checkpoint.
 
 Selected/official scene remain unchanged. Geometry/candidate visual evidence does not certify fullC07 gameplay, global art consistency, or full campaign performance.
+
+## Bounded zero-contribution removal
+
+The offline pruning candidate removes29 **whole** native-alpha supports, leaving386 stone supports/633 members, plus12 independent leaf supports. Every removed UV rectangle including a2-texel halo is exactly alpha0, not merely below an opacity threshold. All other polygons,UVs,contacts and relative order remain exact. The formal renderer explicitly uses Linear filtering without repeat; Godot documents that this samples the nearest four pixels, not mip levels ([official CanvasItem reference](https://docs.godotengine.org/en/stable/classes/class_canvasitem.html#enum-canvasitem-texturefilter)). This is not a global filter change or a proposed runtime cache.
+
+Because IntersectsPointer intentionally uses conservative geometry, pruning also retains any support whose geometry bounds overlap the target-pointer bounds. The29 removed supports are disjoint from that target, preserving cue placement semantics as well as material/Pick. Two offline negative controls reject removal of nonzero material and disregard of this pointer contract.
+
+Native default1.25 before/after world frame matches exactly:1180×688 region,0 differing pixels and0 maximum channel difference; only the72px diagnostic variant title is excluded. Actual screenshot whole-gate-pruned-default125.png. Fresh formal continuous1468-road/site/left-back check and independent leaf254 rear/152 front checks pass after pruning; six paused files unchanged.
+
+Whole-layout120-frame sample:2688→2672 draw calls;9213→9154 scene nodes;298046→297462 primitives. Compared with the less-detailed current selected fallback baseline2477 calls, the final added cost is195 calls(+7.87%), not an equal-quality regression metric. No FPS/global performance acceptance follows. No further architecture/precision optimization is included.
+
+This closes the bounded unselected gate study. Official C07 and selected assembly are still unchanged at this checkpoint. Any future selection must reference these sole final exported stone/leaf surfaces, not rebuild a second renderer or substitute old failed lookout data.

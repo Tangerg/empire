@@ -17,7 +17,9 @@ public partial class NorthwestLeafProbe : Node
             var digest = EcmaJson.Stringify(state);
             var negative = OS.GetEnvironment("NW_LEAF_NEGATIVE");
             if (negative is not ("" or "background" or "foreground")) throw new InvalidOperationException("Unknown leaf negative variant.");
-            var scene = AuthoredScene.Load(negative.Length == 0 ? "res://northwest-platform-leaf-scene.json" : $"res://leaf-{negative}-scene.json");
+            var pruned = OS.GetEnvironment("NW_PRUNED") == "1";
+            if (pruned && negative.Length != 0) throw new InvalidOperationException("Pruned positive cannot silently reuse an unpruned negative scene.");
+            var scene = AuthoredScene.Load(negative.Length == 0 ? (pruned ? "res://northwest-platform-pruned-leaf-scene.json" : "res://northwest-platform-leaf-scene.json") : $"res://leaf-{negative}-scene.json");
             var loadClock = System.Diagnostics.Stopwatch.StartNew();
             var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
             var board = new BoardView { AnimationsEnabled = false };
@@ -71,7 +73,7 @@ public partial class NorthwestLeafProbe : Node
                 ["totalDepthEntries"] = ground!.DepthEntries.Count,
                 ["gateDepthEntries"] = ground.DepthEntries.Count(d => d.Node.Name.ToString().StartsWith("northwest-gate-study__", StringComparison.Ordinal)),
                 ["leafDepthEntries"] = ground.DepthEntries.Count(d => d.Node.Name.ToString().StartsWith("northwest-leaf-study__", StringComparison.Ordinal)) };
-            File.WriteAllText(ProjectSettings.GlobalizePath(negative.Length == 0 ? "res://northwest-leaf-actual-poses.json" : $"res://northwest-leaf-{negative}-negative-result.json"), output.ToJsonString(new() { WriteIndented = true }));
+            File.WriteAllText(ProjectSettings.GlobalizePath(negative.Length == 0 ? (pruned ? "res://northwest-leaf-pruned-poses.json" : "res://northwest-leaf-actual-poses.json") : $"res://northwest-leaf-{negative}-negative-result.json"), output.ToJsonString(new() { WriteIndented = true }));
             foreach (var pose in results)
             {
                 var rows = pose!["witnesses"]!.AsArray();
