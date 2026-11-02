@@ -1,0 +1,253 @@
+{
+  "ready": true,
+  "scope": "Latest strict-axis NEW garden base only. Earlier [-2,-8] draft deliberately not evaluated. No GUI/engine/action or production change.",
+  "declaredWholeBase": [
+    [
+      550,
+      450
+    ],
+    [
+      582,
+      434
+    ],
+    [
+      574,
+      430
+    ],
+    [
+      542,
+      446
+    ]
+  ],
+  "frontMiddleFoot": [
+    563,
+    443.5
+  ],
+  "backOffset": [
+    -8,
+    -4
+  ],
+  "postHeight": 28,
+  "newDesignNotSourceReconstruction": true,
+  "area": 256.0,
+  "positiveAreaCells": [
+    {
+      "cell": [
+        35,
+        26
+      ],
+      "terrain": "#",
+      "area": 7.0
+    },
+    {
+      "cell": [
+        36,
+        26
+      ],
+      "terrain": "#",
+      "area": 1.0
+    },
+    {
+      "cell": [
+        33,
+        27
+      ],
+      "terrain": "#",
+      "area": 2.0
+    },
+    {
+      "cell": [
+        34,
+        27
+      ],
+      "terrain": "#",
+      "area": 102.0
+    },
+    {
+      "cell": [
+        35,
+        27
+      ],
+      "terrain": "#",
+      "area": 119.0
+    },
+    {
+      "cell": [
+        36,
+        27
+      ],
+      "terrain": "#",
+      "area": 17.0
+    },
+    {
+      "cell": [
+        34,
+        28
+      ],
+      "terrain": "#",
+      "area": 8.0
+    }
+  ],
+  "nonBlockedPositiveAreaCells": [],
+  "walkBoundary": {
+    "testedSegments": 26950,
+    "intersectingSegments": 0,
+    "minimumDistance": 18.615392000000043,
+    "closestWitness": {
+      "actor": {
+        "fromCell": [
+          38,
+          26
+        ],
+        "toCell": [
+          38,
+          27
+        ],
+        "west": false,
+        "frame": 3,
+        "soleFramePixel": [
+          34,
+          553
+        ]
+      },
+      "point": [
+        582,
+        434
+      ],
+      "nearestPoint": [
+        600.615392,
+        434.0
+      ],
+      "kind": "fixed-boundary-sample"
+    },
+    "firstViolations": []
+  },
+  "walkEndpointInsideCount": 0,
+  "relations": {
+    "orange": {
+      "boundary": {
+        "testedSegments": 795,
+        "intersectingSegments": 0,
+        "minimumDistance": 0.420380779769934,
+        "closestWitness": {
+          "actor": {
+            "otherBoundaryEdge": 788
+          },
+          "actorSweep": [
+            [
+              551.6800000000001,
+              440.69
+            ],
+            [
+              551.79,
+              440.58
+            ]
+          ],
+          "kind": "actor-start",
+          "point": [
+            551.6800000000001,
+            440.69
+          ],
+          "nearestPoint": [
+            551.868,
+            441.066
+          ],
+          "baseEdgeIndex": 2,
+          "baseEdge": [
+            [
+              574,
+              430
+            ],
+            [
+              542,
+              446
+            ]
+          ],
+          "parameter": 0.6916249999999984
+        },
+        "firstViolations": []
+      },
+      "gardenVerticesInsideOther": [],
+      "otherVerticesInsideGarden": [],
+      "disjointDeclaredGroundDomains": true
+    },
+    "blue": {
+      "boundary": {
+        "testedSegments": 887,
+        "intersectingSegments": 0,
+        "minimumDistance": 63.42184166357832,
+        "closestWitness": {
+          "actor": {
+            "otherBoundaryEdge": 884
+          },
+          "point": [
+            542,
+            446
+          ],
+          "nearestPoint": [
+            478.8,
+            451.3
+          ],
+          "kind": "fixed-boundary-sample"
+        },
+        "firstViolations": []
+      },
+      "gardenVerticesInsideOther": [],
+      "otherVerticesInsideGarden": [],
+      "disjointDeclaredGroundDomains": true
+    },
+    "stoneWall": {
+      "boundary": {
+        "testedSegments": 1276,
+        "intersectingSegments": 0,
+        "minimumDistance": 2.9525041574907114,
+        "closestWitness": {
+          "actor": {
+            "otherBoundaryEdge": 1273
+          },
+          "actorSweep": [
+            [
+              579.266,
+              438.668
+            ],
+            [
+              564.902,
+              448.244
+            ]
+          ],
+          "kind": "actor-start",
+          "point": [
+            579.266,
+            438.668
+          ],
+          "nearestPoint": [
+            577.9456,
+            436.0272
+          ],
+          "baseEdgeIndex": 0,
+          "baseEdge": [
+            [
+              550,
+              450
+            ],
+            [
+              582,
+              434
+            ]
+          ],
+          "parameter": 0.873299999999999
+        },
+        "firstViolations": []
+      },
+      "gardenVerticesInsideOther": [],
+      "otherVerticesInsideGarden": [],
+      "disjointDeclaredGroundDomains": true
+    }
+  },
+  "criticalScopeLimit": "The four vertices are treated as the OUTER complete physical domain for this mathematical result. If actual posts are centered on these vertices and have finite foot width extending outside it, those physical diamonds are not included here and must be checked from the final geometry; point-foot/base-centreline reasoning cannot certify them.",
+  "otherLimits": [
+    "The fixed28height frame intentionally differs from the original higher irregular wood canopy; no claim of original highest wood544390 reproduction.",
+    "Only frozen Torren walk support contours and inherited local canonical legal edges, not actual movement or all appearances.",
+    "House and wall rear domains are the same previously frozen NEW designs, not original hidden archaeological facts."
+  ]
+}

@@ -1,0 +1,2282 @@
+{
+  "ready": true,
+  "scope": "One bounded connected right-courtyard material/support study, not a collection of individual pots. Source image and existing JSON/static real actor alpha only. No GUI/engine/action/state or production edit.",
+  "sourceImage": "res://assets/native/scenes/luojia.png",
+  "sourceSha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+  "groupConclusion": {
+    "priority": "Next connected courtyard boundary/support group after the two houses, primarily restoring readable blocked garden and foreground occlusion over the orange hidden right completion. No demonstrated current-role backside fault found in this bounded two-appearance scan.",
+    "minimalGroup": "Open timber trellis with attached garden foliage, the continuous low front stone enclosure and its thickened end/intermediate piers; separate local support surfaces within one connected group. Not a solid new roof/shed.",
+    "exclude": [
+      "Orange house roof/facade and its hidden short side completion",
+      "Standalone conifer pot in front of the orange wall near534449",
+      "Separate between-houses door pot487467..501478",
+      "Paving to the right/below the actual stone boundary"
+    ],
+    "sourceApproximateVisibleMaterialExtent": [
+      538,
+      390,
+      585,
+      464
+    ],
+    "woodAndFoliageExtentApproximate": [
+      544,
+      390,
+      584,
+      445
+    ],
+    "notAnExactAlphaMaskOrFloor": true
+  },
+  "observedSupports": {
+    "timberVisibleSegments": [
+      {
+        "approxLine": [
+          [
+            549,
+            427
+          ],
+          [
+            549,
+            443
+          ]
+        ],
+        "meaning": "near upright visible above low wall; base hidden"
+      },
+      {
+        "approxLine": [
+          [
+            563,
+            415
+          ],
+          [
+            563,
+            439
+          ]
+        ],
+        "meaning": "middle upright visible segment; true lower root hidden"
+      },
+      {
+        "approxLine": [
+          [
+            582,
+            413
+          ],
+          [
+            582,
+            430
+          ]
+        ],
+        "meaning": "far upright visible segment; true ground contact hidden"
+      }
+    ],
+    "timberGroundFeetCertified": false,
+    "stoneVisibleNearFootBands": [
+      {
+        "approxRange": [
+          [
+            539,
+            461
+          ],
+          [
+            545,
+            464
+          ]
+        ],
+        "owner": "near thickened pier; stone-to-shadow/green contact mixed ±1–2px"
+      },
+      {
+        "approxRange": [
+          [
+            547,
+            462
+          ],
+          [
+            556,
+            457
+          ]
+        ],
+        "owner": "low foreground stone-wall bottom band; not whole building base"
+      },
+      {
+        "approxRange": [
+          [
+            563,
+            454
+          ],
+          [
+            570,
+            450
+          ]
+        ],
+        "owner": "middle stone-pier/low-wall transition; mixed contact"
+      },
+      {
+        "approxRange": [
+          [
+            579,
+            444
+          ],
+          [
+            585,
+            439
+          ]
+        ],
+        "owner": "far stone return/end; source material small and some grass mixing"
+      }
+    ],
+    "hiddenParts": "Garden rear closure, exact buried timber feet and rear stone thickness need an explicit NEW common base design. Do not copy coarse blocked polygons as solid floor or invent foot points from upper wood/leaf."
+  },
+  "sourceMaterialWitnesses": [
+    {
+      "source": [
+        550,
+        441
+      ],
+      "RGB": [
+        168,
+        122,
+        79
+      ],
+      "material": "garden near timber upright; lower ground foot hidden by stone wall",
+      "cell": [
+        34,
+        27
+      ],
+      "terrain": "#",
+      "legacy55PartOwners": [
+        {
+          "id": "west-inner-house/facade",
+          "groundFront": [
+            520,
+            474
+          ]
+        }
+      ],
+      "currentTwoHouseAlpha": {
+        "orange": 252,
+        "blue": 0
+      }
+    },
+    {
+      "source": [
+        563,
+        437
+      ],
+      "RGB": [
+        142,
+        103,
+        42
+      ],
+      "material": "middle timber upright lower visible segment; not ground foot",
+      "cell": [
+        35,
+        27
+      ],
+      "terrain": "#",
+      "legacy55PartOwners": [
+        {
+          "id": "west-inner-house/facade",
+          "groundFront": [
+            520,
+            474
+          ]
+        }
+      ],
+      "currentTwoHouseAlpha": {
+        "orange": 0,
+        "blue": 0
+      }
+    },
+    {
+      "source": [
+        581,
+        420
+      ],
+      "RGB": [
+        216,
+        162,
+        82
+      ],
+      "material": "right timber upright/beam joint; not ground foot",
+      "cell": [
+        36,
+        26
+      ],
+      "terrain": "#",
+      "legacy55PartOwners": [],
+      "currentTwoHouseAlpha": {
+        "orange": 0,
+        "blue": 0
+      }
+    },
+    {
+      "source": [
+        579,
+        438
+      ],
+      "RGB": [
+        223,
+        182,
+        146
+      ],
+      "material": "right stone pier face",
+      "cell": [
+        36,
+        27
+      ],
+      "terrain": "#",
+      "legacy55PartOwners": [],
+      "currentTwoHouseAlpha": {
+        "orange": 0,
+        "blue": 0
+      }
+    },
+    {
+      "source": [
+        554,
+        453
+      ],
+      "RGB": [
+        239,
+        204,
+        168
+      ],
+      "material": "front low stone wall face",
+      "cell": [
+        34,
+        28
+      ],
+      "terrain": "#",
+      "legacy55PartOwners": [
+        {
+          "id": "west-inner-house/facade",
+          "groundFront": [
+            520,
+            474
+          ]
+        }
+      ],
+      "currentTwoHouseAlpha": {
+        "orange": 0,
+        "blue": 0
+      }
+    },
+    {
+      "source": [
+        555,
+        453
+      ],
+      "RGB": [
+        231,
+        196,
+        158
+      ],
+      "material": "front low stone wall face",
+      "cell": [
+        34,
+        28
+      ],
+      "terrain": "#",
+      "legacy55PartOwners": [
+        {
+          "id": "west-inner-house/facade",
+          "groundFront": [
+            520,
+            474
+          ]
+        }
+      ],
+      "currentTwoHouseAlpha": {
+        "orange": 0,
+        "blue": 0
+      }
+    },
+    {
+      "source": [
+        540,
+        461
+      ],
+      "RGB": [
+        171,
+        170,
+        159
+      ],
+      "material": "near end pier low grey stone",
+      "cell": [
+        33,
+        28
+      ],
+      "terrain": "#",
+      "legacy55PartOwners": [
+        {
+          "id": "west-inner-house/facade",
+          "groundFront": [
+            520,
+            474
+          ]
+        }
+      ],
+      "currentTwoHouseAlpha": {
+        "orange": 0,
+        "blue": 0
+      }
+    },
+    {
+      "source": [
+        541,
+        463
+      ],
+      "RGB": [
+        174,
+        181,
+        143
+      ],
+      "material": "near end pier stone/green ground mixed edge",
+      "cell": [
+        33,
+        28
+      ],
+      "terrain": "#",
+      "legacy55PartOwners": [
+        {
+          "id": "west-inner-house/facade",
+          "groundFront": [
+            520,
+            474
+          ]
+        }
+      ],
+      "currentTwoHouseAlpha": {
+        "orange": 0,
+        "blue": 0
+      }
+    },
+    {
+      "source": [
+        550,
+        459
+      ],
+      "RGB": [
+        243,
+        206,
+        168
+      ],
+      "material": "low wall solid face near bottom",
+      "cell": [
+        34,
+        28
+      ],
+      "terrain": "#",
+      "legacy55PartOwners": [],
+      "currentTwoHouseAlpha": {
+        "orange": 0,
+        "blue": 0
+      }
+    },
+    {
+      "source": [
+        550,
+        461
+      ],
+      "RGB": [
+        195,
+        154,
+        112
+      ],
+      "material": "low wall/paving mixed bottom band",
+      "cell": [
+        34,
+        28
+      ],
+      "terrain": "#",
+      "legacy55PartOwners": [],
+      "currentTwoHouseAlpha": {
+        "orange": 0,
+        "blue": 0
+      }
+    },
+    {
+      "source": [
+        556,
+        457
+      ],
+      "RGB": [
+        177,
+        145,
+        102
+      ],
+      "material": "stone-wall bottom/shadow mixed edge",
+      "cell": [
+        34,
+        28
+      ],
+      "terrain": "#",
+      "legacy55PartOwners": [],
+      "currentTwoHouseAlpha": {
+        "orange": 0,
+        "blue": 0
+      }
+    },
+    {
+      "source": [
+        562,
+        454
+      ],
+      "RGB": [
+        244,
+        203,
+        159
+      ],
+      "material": "low wall stone near contact",
+      "cell": [
+        35,
+        28
+      ],
+      "terrain": "#",
+      "legacy55PartOwners": [],
+      "currentTwoHouseAlpha": {
+        "orange": 0,
+        "blue": 0
+      }
+    },
+    {
+      "source": [
+        568,
+        449
+      ],
+      "RGB": [
+        203,
+        167,
+        134
+      ],
+      "material": "middle pier low stone/shadow boundary",
+      "cell": [
+        35,
+        28
+      ],
+      "terrain": "#",
+      "legacy55PartOwners": [],
+      "currentTwoHouseAlpha": {
+        "orange": 0,
+        "blue": 0
+      }
+    },
+    {
+      "source": [
+        582,
+        440
+      ],
+      "RGB": [
+        223,
+        174,
+        130
+      ],
+      "material": "far pier/low-wall stone near bottom",
+      "cell": [
+        36,
+        27
+      ],
+      "terrain": "#",
+      "legacy55PartOwners": [],
+      "currentTwoHouseAlpha": {
+        "orange": 0,
+        "blue": 0
+      }
+    },
+    {
+      "source": [
+        600,
+        424
+      ],
+      "RGB": [
+        218,
+        184,
+        149
+      ],
+      "material": "original visible paving in coarse side-garden blocked responsibility",
+      "cell": [
+        37,
+        26
+      ],
+      "terrain": "#",
+      "legacy55PartOwners": [],
+      "currentTwoHouseAlpha": {
+        "orange": 0,
+        "blue": 0
+      }
+    },
+    {
+      "source": [
+        600,
+        440
+      ],
+      "RGB": [
+        223,
+        199,
+        138
+      ],
+      "material": "original visible paving in coarse side-garden blocked responsibility",
+      "cell": [
+        37,
+        27
+      ],
+      "terrain": "#",
+      "legacy55PartOwners": [],
+      "currentTwoHouseAlpha": {
+        "orange": 0,
+        "blue": 0
+      }
+    },
+    {
+      "source": [
+        600,
+        456
+      ],
+      "RGB": [
+        239,
+        202,
+        168
+      ],
+      "material": "original visible paving in coarse side-garden blocked responsibility",
+      "cell": [
+        37,
+        28
+      ],
+      "terrain": "#",
+      "legacy55PartOwners": [],
+      "currentTwoHouseAlpha": {
+        "orange": 0,
+        "blue": 0
+      }
+    },
+    {
+      "source": [
+        552,
+        488
+      ],
+      "RGB": [
+        241,
+        226,
+        199
+      ],
+      "material": "canonical approach34,30 unobstructed paving",
+      "cell": [
+        34,
+        30
+      ],
+      "terrain": "p",
+      "legacy55PartOwners": [],
+      "currentTwoHouseAlpha": {
+        "orange": 0,
+        "blue": 0
+      }
+    },
+    {
+      "source": [
+        568,
+        488
+      ],
+      "RGB": [
+        133,
+        163,
+        25
+      ],
+      "material": "legal front paving35,30",
+      "cell": [
+        35,
+        30
+      ],
+      "terrain": "p",
+      "legacy55PartOwners": [],
+      "currentTwoHouseAlpha": {
+        "orange": 0,
+        "blue": 0
+      }
+    },
+    {
+      "source": [
+        584,
+        472
+      ],
+      "RGB": [
+        238,
+        204,
+        164
+      ],
+      "material": "legal near-east paving36,29",
+      "cell": [
+        36,
+        29
+      ],
+      "terrain": "p",
+      "legacy55PartOwners": [],
+      "currentTwoHouseAlpha": {
+        "orange": 0,
+        "blue": 0
+      }
+    }
+  ],
+  "siteAndApproach": {
+    "site": [
+      33,
+      30
+    ],
+    "siteCenter": [
+      536,
+      488
+    ],
+    "approach": [
+      34,
+      30
+    ],
+    "approachCenter": [
+      552,
+      488
+    ],
+    "preserve": "The garden is decoration/blocking material, not a new capturable target or a substitute house entrance. Keep canonical empty site/approach paving and their actual actor corridor. Any target extension requires separate original site-owner reasoning."
+  },
+  "coarseResponsibilities": {
+    "groups": [
+      {
+        "id": "west-inner-east-wall",
+        "polygonPixels": [
+          [
+            548,
+            461
+          ],
+          [
+            583,
+            443
+          ],
+          [
+            589,
+            453
+          ],
+          [
+            552,
+            475
+          ]
+        ],
+        "blockedCells": [
+          [
+            35,
+            27
+          ],
+          [
+            36,
+            27
+          ],
+          [
+            34,
+            28
+          ],
+          [
+            35,
+            28
+          ],
+          [
+            36,
+            28
+          ],
+          [
+            34,
+            29
+          ],
+          [
+            35,
+            29
+          ]
+        ]
+      },
+      {
+        "id": "west-inner-side-garden",
+        "polygonPixels": [
+          [
+            550,
+            448
+          ],
+          [
+            578,
+            461
+          ],
+          [
+            598,
+            448
+          ],
+          [
+            590,
+            419
+          ],
+          [
+            570,
+            408
+          ],
+          [
+            550,
+            419
+          ]
+        ],
+        "blockedCells": [
+          [
+            34,
+            25
+          ],
+          [
+            35,
+            25
+          ],
+          [
+            36,
+            25
+          ],
+          [
+            34,
+            26
+          ],
+          [
+            35,
+            26
+          ],
+          [
+            36,
+            26
+          ],
+          [
+            37,
+            26
+          ],
+          [
+            34,
+            27
+          ],
+          [
+            35,
+            27
+          ],
+          [
+            36,
+            27
+          ],
+          [
+            37,
+            27
+          ],
+          [
+            34,
+            28
+          ],
+          [
+            35,
+            28
+          ],
+          [
+            36,
+            28
+          ],
+          [
+            37,
+            28
+          ]
+        ]
+      }
+    ],
+    "unionBlockedCells": [
+      [
+        34,
+        25
+      ],
+      [
+        35,
+        25
+      ],
+      [
+        36,
+        25
+      ],
+      [
+        34,
+        26
+      ],
+      [
+        35,
+        26
+      ],
+      [
+        36,
+        26
+      ],
+      [
+        37,
+        26
+      ],
+      [
+        34,
+        27
+      ],
+      [
+        35,
+        27
+      ],
+      [
+        36,
+        27
+      ],
+      [
+        37,
+        27
+      ],
+      [
+        34,
+        28
+      ],
+      [
+        35,
+        28
+      ],
+      [
+        36,
+        28
+      ],
+      [
+        37,
+        28
+      ],
+      [
+        34,
+        29
+      ],
+      [
+        35,
+        29
+      ]
+    ],
+    "count": 17,
+    "warning": "17 cells are legacy responsibility coverage, not a certified continuous garden foundation. Original x600,y424/440/456 are visibly paving even though the coarse side-garden ownership maps them to blocked37,26..28; this is a retained source/rule inconsistency, not proof those centres must be filled by a large box."
+  },
+  "boundedCurrentRoleAlphaReview": {
+    "roles": [
+      "torren-stage01",
+      "C01-FFV1-UNIT-WOLF-RIDER"
+    ],
+    "frame": 0,
+    "legalPoses": [
+      [
+        37,
+        25
+      ],
+      [
+        38,
+        25
+      ],
+      [
+        38,
+        26
+      ],
+      [
+        38,
+        27
+      ],
+      [
+        38,
+        28
+      ],
+      [
+        36,
+        29
+      ],
+      [
+        37,
+        29
+      ],
+      [
+        35,
+        30
+      ],
+      [
+        34,
+        30
+      ],
+      [
+        33,
+        30
+      ]
+    ],
+    "facings": [
+      "east",
+      "west"
+    ],
+    "materialROIs": {
+      "near-post": [
+        549,
+        429,
+        552,
+        444
+      ],
+      "middle-post": [
+        562,
+        407,
+        565,
+        440
+      ],
+      "right-post": [
+        580,
+        410,
+        583,
+        431
+      ],
+      "far-beam": [
+        574,
+        402,
+        582,
+        410
+      ],
+      "mid-leaf": [
+        551,
+        433,
+        560,
+        440
+      ],
+      "right-leaf": [
+        571,
+        421,
+        578,
+        430
+      ],
+      "front-wall": [
+        548,
+        450,
+        556,
+        459
+      ],
+      "middle-wall": [
+        560,
+        444,
+        566,
+        452
+      ],
+      "right-pier": [
+        573,
+        436,
+        580,
+        446
+      ]
+    },
+    "sourceYMustNotExceedActorFootY": true,
+    "poseCount": 40,
+    "results": [
+      {
+        "asset": "torren-stage01",
+        "frame": 0,
+        "scale": 0.0961538,
+        "anchor": [
+          269,
+          565
+        ],
+        "cell": [
+          37,
+          25
+        ],
+        "terrain": "p",
+        "west": false,
+        "contact": [
+          600,
+          408
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "torren-stage01",
+        "frame": 0,
+        "scale": 0.0961538,
+        "anchor": [
+          269,
+          565
+        ],
+        "cell": [
+          37,
+          25
+        ],
+        "terrain": "p",
+        "west": true,
+        "contact": [
+          600,
+          408
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "torren-stage01",
+        "frame": 0,
+        "scale": 0.0961538,
+        "anchor": [
+          269,
+          565
+        ],
+        "cell": [
+          38,
+          25
+        ],
+        "terrain": "p",
+        "west": false,
+        "contact": [
+          616,
+          408
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "torren-stage01",
+        "frame": 0,
+        "scale": 0.0961538,
+        "anchor": [
+          269,
+          565
+        ],
+        "cell": [
+          38,
+          25
+        ],
+        "terrain": "p",
+        "west": true,
+        "contact": [
+          616,
+          408
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "torren-stage01",
+        "frame": 0,
+        "scale": 0.0961538,
+        "anchor": [
+          269,
+          565
+        ],
+        "cell": [
+          38,
+          26
+        ],
+        "terrain": "p",
+        "west": false,
+        "contact": [
+          616,
+          424
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "torren-stage01",
+        "frame": 0,
+        "scale": 0.0961538,
+        "anchor": [
+          269,
+          565
+        ],
+        "cell": [
+          38,
+          26
+        ],
+        "terrain": "p",
+        "west": true,
+        "contact": [
+          616,
+          424
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "torren-stage01",
+        "frame": 0,
+        "scale": 0.0961538,
+        "anchor": [
+          269,
+          565
+        ],
+        "cell": [
+          38,
+          27
+        ],
+        "terrain": "p",
+        "west": false,
+        "contact": [
+          616,
+          440
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "torren-stage01",
+        "frame": 0,
+        "scale": 0.0961538,
+        "anchor": [
+          269,
+          565
+        ],
+        "cell": [
+          38,
+          27
+        ],
+        "terrain": "p",
+        "west": true,
+        "contact": [
+          616,
+          440
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "torren-stage01",
+        "frame": 0,
+        "scale": 0.0961538,
+        "anchor": [
+          269,
+          565
+        ],
+        "cell": [
+          38,
+          28
+        ],
+        "terrain": "p",
+        "west": false,
+        "contact": [
+          616,
+          456
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "torren-stage01",
+        "frame": 0,
+        "scale": 0.0961538,
+        "anchor": [
+          269,
+          565
+        ],
+        "cell": [
+          38,
+          28
+        ],
+        "terrain": "p",
+        "west": true,
+        "contact": [
+          616,
+          456
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "torren-stage01",
+        "frame": 0,
+        "scale": 0.0961538,
+        "anchor": [
+          269,
+          565
+        ],
+        "cell": [
+          36,
+          29
+        ],
+        "terrain": "p",
+        "west": false,
+        "contact": [
+          584,
+          472
+        ],
+        "intersections": [
+          {
+            "materialROI": "right-pier",
+            "count": 1,
+            "samples": [
+              {
+                "source": [
+                  579,
+                  445
+                ],
+                "framePixel": [
+                  216,
+                  284
+                ],
+                "alpha": 251
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "asset": "torren-stage01",
+        "frame": 0,
+        "scale": 0.0961538,
+        "anchor": [
+          269,
+          565
+        ],
+        "cell": [
+          36,
+          29
+        ],
+        "terrain": "p",
+        "west": true,
+        "contact": [
+          584,
+          472
+        ],
+        "intersections": [
+          {
+            "materialROI": "right-pier",
+            "count": 30,
+            "samples": [
+              {
+                "source": [
+                  578,
+                  438
+                ],
+                "framePixel": [
+                  331,
+                  211
+                ],
+                "alpha": 244
+              },
+              {
+                "source": [
+                  579,
+                  438
+                ],
+                "framePixel": [
+                  321,
+                  211
+                ],
+                "alpha": 253
+              },
+              {
+                "source": [
+                  577,
+                  439
+                ],
+                "framePixel": [
+                  341,
+                  221
+                ],
+                "alpha": 242
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "asset": "torren-stage01",
+        "frame": 0,
+        "scale": 0.0961538,
+        "anchor": [
+          269,
+          565
+        ],
+        "cell": [
+          37,
+          29
+        ],
+        "terrain": "p",
+        "west": false,
+        "contact": [
+          600,
+          472
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "torren-stage01",
+        "frame": 0,
+        "scale": 0.0961538,
+        "anchor": [
+          269,
+          565
+        ],
+        "cell": [
+          37,
+          29
+        ],
+        "terrain": "p",
+        "west": true,
+        "contact": [
+          600,
+          472
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "torren-stage01",
+        "frame": 0,
+        "scale": 0.0961538,
+        "anchor": [
+          269,
+          565
+        ],
+        "cell": [
+          35,
+          30
+        ],
+        "terrain": "p",
+        "west": false,
+        "contact": [
+          568,
+          488
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "torren-stage01",
+        "frame": 0,
+        "scale": 0.0961538,
+        "anchor": [
+          269,
+          565
+        ],
+        "cell": [
+          35,
+          30
+        ],
+        "terrain": "p",
+        "west": true,
+        "contact": [
+          568,
+          488
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "torren-stage01",
+        "frame": 0,
+        "scale": 0.0961538,
+        "anchor": [
+          269,
+          565
+        ],
+        "cell": [
+          34,
+          30
+        ],
+        "terrain": "p",
+        "west": false,
+        "contact": [
+          552,
+          488
+        ],
+        "intersections": [
+          {
+            "materialROI": "front-wall",
+            "count": 28,
+            "samples": [
+              {
+                "source": [
+                  554,
+                  453
+                ],
+                "framePixel": [
+                  289,
+                  200
+                ],
+                "alpha": 252
+              },
+              {
+                "source": [
+                  555,
+                  453
+                ],
+                "framePixel": [
+                  300,
+                  200
+                ],
+                "alpha": 251
+              },
+              {
+                "source": [
+                  552,
+                  454
+                ],
+                "framePixel": [
+                  269,
+                  211
+                ],
+                "alpha": 247
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "asset": "torren-stage01",
+        "frame": 0,
+        "scale": 0.0961538,
+        "anchor": [
+          269,
+          565
+        ],
+        "cell": [
+          34,
+          30
+        ],
+        "terrain": "p",
+        "west": true,
+        "contact": [
+          552,
+          488
+        ],
+        "intersections": [
+          {
+            "materialROI": "front-wall",
+            "count": 34,
+            "samples": [
+              {
+                "source": [
+                  548,
+                  453
+                ],
+                "framePixel": [
+                  310,
+                  200
+                ],
+                "alpha": 207
+              },
+              {
+                "source": [
+                  549,
+                  453
+                ],
+                "framePixel": [
+                  300,
+                  200
+                ],
+                "alpha": 251
+              },
+              {
+                "source": [
+                  550,
+                  453
+                ],
+                "framePixel": [
+                  289,
+                  200
+                ],
+                "alpha": 252
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "asset": "torren-stage01",
+        "frame": 0,
+        "scale": 0.0961538,
+        "anchor": [
+          269,
+          565
+        ],
+        "cell": [
+          33,
+          30
+        ],
+        "terrain": "v",
+        "west": false,
+        "contact": [
+          536,
+          488
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "torren-stage01",
+        "frame": 0,
+        "scale": 0.0961538,
+        "anchor": [
+          269,
+          565
+        ],
+        "cell": [
+          33,
+          30
+        ],
+        "terrain": "v",
+        "west": true,
+        "contact": [
+          536,
+          488
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "C01-FFV1-UNIT-WOLF-RIDER",
+        "frame": 0,
+        "scale": 0.1,
+        "anchor": [
+          285,
+          568
+        ],
+        "cell": [
+          37,
+          25
+        ],
+        "terrain": "p",
+        "west": false,
+        "contact": [
+          600,
+          408
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "C01-FFV1-UNIT-WOLF-RIDER",
+        "frame": 0,
+        "scale": 0.1,
+        "anchor": [
+          285,
+          568
+        ],
+        "cell": [
+          37,
+          25
+        ],
+        "terrain": "p",
+        "west": true,
+        "contact": [
+          600,
+          408
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "C01-FFV1-UNIT-WOLF-RIDER",
+        "frame": 0,
+        "scale": 0.1,
+        "anchor": [
+          285,
+          568
+        ],
+        "cell": [
+          38,
+          25
+        ],
+        "terrain": "p",
+        "west": false,
+        "contact": [
+          616,
+          408
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "C01-FFV1-UNIT-WOLF-RIDER",
+        "frame": 0,
+        "scale": 0.1,
+        "anchor": [
+          285,
+          568
+        ],
+        "cell": [
+          38,
+          25
+        ],
+        "terrain": "p",
+        "west": true,
+        "contact": [
+          616,
+          408
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "C01-FFV1-UNIT-WOLF-RIDER",
+        "frame": 0,
+        "scale": 0.1,
+        "anchor": [
+          285,
+          568
+        ],
+        "cell": [
+          38,
+          26
+        ],
+        "terrain": "p",
+        "west": false,
+        "contact": [
+          616,
+          424
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "C01-FFV1-UNIT-WOLF-RIDER",
+        "frame": 0,
+        "scale": 0.1,
+        "anchor": [
+          285,
+          568
+        ],
+        "cell": [
+          38,
+          26
+        ],
+        "terrain": "p",
+        "west": true,
+        "contact": [
+          616,
+          424
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "C01-FFV1-UNIT-WOLF-RIDER",
+        "frame": 0,
+        "scale": 0.1,
+        "anchor": [
+          285,
+          568
+        ],
+        "cell": [
+          38,
+          27
+        ],
+        "terrain": "p",
+        "west": false,
+        "contact": [
+          616,
+          440
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "C01-FFV1-UNIT-WOLF-RIDER",
+        "frame": 0,
+        "scale": 0.1,
+        "anchor": [
+          285,
+          568
+        ],
+        "cell": [
+          38,
+          27
+        ],
+        "terrain": "p",
+        "west": true,
+        "contact": [
+          616,
+          440
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "C01-FFV1-UNIT-WOLF-RIDER",
+        "frame": 0,
+        "scale": 0.1,
+        "anchor": [
+          285,
+          568
+        ],
+        "cell": [
+          38,
+          28
+        ],
+        "terrain": "p",
+        "west": false,
+        "contact": [
+          616,
+          456
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "C01-FFV1-UNIT-WOLF-RIDER",
+        "frame": 0,
+        "scale": 0.1,
+        "anchor": [
+          285,
+          568
+        ],
+        "cell": [
+          38,
+          28
+        ],
+        "terrain": "p",
+        "west": true,
+        "contact": [
+          616,
+          456
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "C01-FFV1-UNIT-WOLF-RIDER",
+        "frame": 0,
+        "scale": 0.1,
+        "anchor": [
+          285,
+          568
+        ],
+        "cell": [
+          36,
+          29
+        ],
+        "terrain": "p",
+        "west": false,
+        "contact": [
+          584,
+          472
+        ],
+        "intersections": [
+          {
+            "materialROI": "right-pier",
+            "count": 35,
+            "samples": [
+              {
+                "source": [
+                  579,
+                  436
+                ],
+                "framePixel": [
+                  235,
+                  208
+                ],
+                "alpha": 252
+              },
+              {
+                "source": [
+                  579,
+                  437
+                ],
+                "framePixel": [
+                  235,
+                  218
+                ],
+                "alpha": 252
+              },
+              {
+                "source": [
+                  578,
+                  438
+                ],
+                "framePixel": [
+                  225,
+                  228
+                ],
+                "alpha": 240
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "asset": "C01-FFV1-UNIT-WOLF-RIDER",
+        "frame": 0,
+        "scale": 0.1,
+        "anchor": [
+          285,
+          568
+        ],
+        "cell": [
+          36,
+          29
+        ],
+        "terrain": "p",
+        "west": true,
+        "contact": [
+          584,
+          472
+        ],
+        "intersections": [
+          {
+            "materialROI": "right-pier",
+            "count": 11,
+            "samples": [
+              {
+                "source": [
+                  573,
+                  441
+                ],
+                "framePixel": [
+                  395,
+                  258
+                ],
+                "alpha": 251
+              },
+              {
+                "source": [
+                  573,
+                  442
+                ],
+                "framePixel": [
+                  395,
+                  268
+                ],
+                "alpha": 251
+              },
+              {
+                "source": [
+                  574,
+                  442
+                ],
+                "framePixel": [
+                  385,
+                  268
+                ],
+                "alpha": 251
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "asset": "C01-FFV1-UNIT-WOLF-RIDER",
+        "frame": 0,
+        "scale": 0.1,
+        "anchor": [
+          285,
+          568
+        ],
+        "cell": [
+          37,
+          29
+        ],
+        "terrain": "p",
+        "west": false,
+        "contact": [
+          600,
+          472
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "C01-FFV1-UNIT-WOLF-RIDER",
+        "frame": 0,
+        "scale": 0.1,
+        "anchor": [
+          285,
+          568
+        ],
+        "cell": [
+          37,
+          29
+        ],
+        "terrain": "p",
+        "west": true,
+        "contact": [
+          600,
+          472
+        ],
+        "intersections": []
+      },
+      {
+        "asset": "C01-FFV1-UNIT-WOLF-RIDER",
+        "frame": 0,
+        "scale": 0.1,
+        "anchor": [
+          285,
+          568
+        ],
+        "cell": [
+          35,
+          30
+        ],
+        "terrain": "p",
+        "west": false,
+        "contact": [
+          568,
+          488
+        ],
+        "intersections": [
+          {
+            "materialROI": "middle-wall",
+            "count": 8,
+            "samples": [
+              {
+                "source": [
+                  564,
+                  449
+                ],
+                "framePixel": [
+                  245,
+                  178
+                ],
+                "alpha": 253
+              },
+              {
+                "source": [
+                  565,
+                  449
+                ],
+                "framePixel": [
+                  255,
+                  178
+                ],
+                "alpha": 252
+              },
+              {
+                "source": [
+                  563,
+                  450
+                ],
+                "framePixel": [
+                  235,
+                  188
+                ],
+                "alpha": 250
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "asset": "C01-FFV1-UNIT-WOLF-RIDER",
+        "frame": 0,
+        "scale": 0.1,
+        "anchor": [
+          285,
+          568
+        ],
+        "cell": [
+          35,
+          30
+        ],
+        "terrain": "p",
+        "west": true,
+        "contact": [
+          568,
+          488
+        ],
+        "intersections": [
+          {
+            "materialROI": "front-wall",
+            "count": 8,
+            "samples": [
+              {
+                "source": [
+                  552,
+                  455
+                ],
+                "framePixel": [
+                  445,
+                  238
+                ],
+                "alpha": 244
+              },
+              {
+                "source": [
+                  553,
+                  455
+                ],
+                "framePixel": [
+                  435,
+                  238
+                ],
+                "alpha": 245
+              },
+              {
+                "source": [
+                  553,
+                  456
+                ],
+                "framePixel": [
+                  435,
+                  248
+                ],
+                "alpha": 251
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "asset": "C01-FFV1-UNIT-WOLF-RIDER",
+        "frame": 0,
+        "scale": 0.1,
+        "anchor": [
+          285,
+          568
+        ],
+        "cell": [
+          34,
+          30
+        ],
+        "terrain": "p",
+        "west": false,
+        "contact": [
+          552,
+          488
+        ],
+        "intersections": [
+          {
+            "materialROI": "front-wall",
+            "count": 58,
+            "samples": [
+              {
+                "source": [
+                  548,
+                  450
+                ],
+                "framePixel": [
+                  245,
+                  188
+                ],
+                "alpha": 252
+              },
+              {
+                "source": [
+                  549,
+                  450
+                ],
+                "framePixel": [
+                  255,
+                  188
+                ],
+                "alpha": 253
+              },
+              {
+                "source": [
+                  550,
+                  450
+                ],
+                "framePixel": [
+                  265,
+                  188
+                ],
+                "alpha": 253
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "asset": "C01-FFV1-UNIT-WOLF-RIDER",
+        "frame": 0,
+        "scale": 0.1,
+        "anchor": [
+          285,
+          568
+        ],
+        "cell": [
+          34,
+          30
+        ],
+        "terrain": "p",
+        "west": true,
+        "contact": [
+          552,
+          488
+        ],
+        "intersections": [
+          {
+            "materialROI": "front-wall",
+            "count": 49,
+            "samples": [
+              {
+                "source": [
+                  551,
+                  450
+                ],
+                "framePixel": [
+                  295,
+                  188
+                ],
+                "alpha": 251
+              },
+              {
+                "source": [
+                  552,
+                  450
+                ],
+                "framePixel": [
+                  285,
+                  188
+                ],
+                "alpha": 252
+              },
+              {
+                "source": [
+                  553,
+                  450
+                ],
+                "framePixel": [
+                  275,
+                  188
+                ],
+                "alpha": 253
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "asset": "C01-FFV1-UNIT-WOLF-RIDER",
+        "frame": 0,
+        "scale": 0.1,
+        "anchor": [
+          285,
+          568
+        ],
+        "cell": [
+          33,
+          30
+        ],
+        "terrain": "v",
+        "west": false,
+        "contact": [
+          536,
+          488
+        ],
+        "intersections": [
+          {
+            "materialROI": "front-wall",
+            "count": 11,
+            "samples": [
+              {
+                "source": [
+                  551,
+                  455
+                ],
+                "framePixel": [
+                  435,
+                  238
+                ],
+                "alpha": 245
+              },
+              {
+                "source": [
+                  552,
+                  455
+                ],
+                "framePixel": [
+                  445,
+                  238
+                ],
+                "alpha": 244
+              },
+              {
+                "source": [
+                  548,
+                  456
+                ],
+                "framePixel": [
+                  405,
+                  248
+                ],
+                "alpha": 249
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "asset": "C01-FFV1-UNIT-WOLF-RIDER",
+        "frame": 0,
+        "scale": 0.1,
+        "anchor": [
+          285,
+          568
+        ],
+        "cell": [
+          33,
+          30
+        ],
+        "terrain": "v",
+        "west": true,
+        "contact": [
+          536,
+          488
+        ],
+        "intersections": []
+      }
+    ],
+    "backFinding": "No actor alpha intersects the reviewed wood/leaf/back material ROIs for the five legal upper/east positions37,25/38,25/38,26/38,27/38,28. Do not call this an exhaustive all-role/all-pose proof.",
+    "frontControls": [
+      {
+        "asset": "torren-stage01",
+        "cell": [
+          34,
+          30
+        ],
+        "west": false,
+        "points": [
+          [
+            554,
+            453
+          ],
+          [
+            555,
+            453
+          ]
+        ],
+        "framePixels": [
+          [
+            289,
+            200
+          ],
+          [
+            300,
+            200
+          ]
+        ],
+        "alpha": [
+          252,
+          251
+        ],
+        "expected": "Actor in front of local wall foot, remains visible/clickable; not a hidden-foot assertion."
+      },
+      {
+        "asset": "torren-stage01",
+        "cell": [
+          36,
+          29
+        ],
+        "west": true,
+        "points": [
+          [
+            578,
+            438
+          ],
+          [
+            579,
+            438
+          ]
+        ],
+        "framePixels": [
+          [
+            331,
+            211
+          ],
+          [
+            321,
+            211
+          ]
+        ],
+        "alpha": [
+          244,
+          253
+        ],
+        "expected": "Actor in front of far stone pier; remains visible/clickable."
+      }
+    ]
+  },
+  "nextSmallestRebuildContract": [
+    "One connected garden enclosure group with separate timber, foliage and stone surfaces sharing an explicitly designed safe ground domain.",
+    "Use source near-wall/near-pier visible bottom bands to set local depth; do not inherit house groundFront520474 for all wood/stone.",
+    "Restore near timber at550441 in front of the orange candidate hidden-right base. That source pixel currently has orange material alpha, but is original garden wood; neighbour ownership is intentional, not a reason to expand the house.",
+    "Retain the legal front role controls and site/approach negative paving. For a future hidden-base proposal, reuse fixed Torren walk contours; do not assume the coarse17cell mask is a physical footprint.",
+    "No further per-pot or leaf search required for this source review."
+  ],
+  "crops": {
+    "right-garden-original-grid.png": {
+      "sourceBox": [
+        530,
+        380,
+        615,
+        485
+      ],
+      "scale": 10
+    },
+    "right-garden-original-clean-crop.png": {
+      "sourceBox": [
+        530,
+        380,
+        615,
+        485
+      ],
+      "scale": 6
+    }
+  }
+}

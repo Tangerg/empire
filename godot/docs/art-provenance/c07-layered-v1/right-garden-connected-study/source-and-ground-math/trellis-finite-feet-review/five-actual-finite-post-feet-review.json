@@ -1,0 +1,1458 @@
+{
+  "ready": true,
+  "scope": "Five actual finite front/side foot polygons read from source members plus explicitly provided NEW rear diamond corner. No centre-only inference; no production/GUI/engine/state changes.",
+  "sources": [
+    {
+      "path": "/workspace/scratch/84c9fe948755/c07-static-preview/right-garden-timber-front-source.json",
+      "sha256": "eeddb748ce47e98aa5f2aaede3c4ea961b2c11e2b38f8d20a9922f80e8cadd01"
+    },
+    {
+      "path": "/workspace/scratch/84c9fe948755/c07-static-preview/right-garden-timber-back-source.json",
+      "sha256": "8d4ecb10834d9e122304494c5966d60d6c8cc9fe1c2d8f6175126c9226558583"
+    }
+  ],
+  "centres": {
+    "front-post-0": [
+      550,
+      450
+    ],
+    "front-post-1": [
+      563,
+      443.5
+    ],
+    "front-post-2": [
+      582,
+      434
+    ],
+    "back-post-0": [
+      542,
+      446
+    ],
+    "back-post-1": [
+      574,
+      430
+    ]
+  },
+  "hiddenRearOffset": [
+    -0.2,
+    -2
+  ],
+  "finiteFeet": {
+    "front-post-0": {
+      "footPolygon": [
+        [
+          549,
+          449
+        ],
+        [
+          551,
+          450
+        ],
+        [
+          551.8,
+          449
+        ],
+        [
+          549.8,
+          448
+        ]
+      ],
+      "positiveAreaCells": [
+        {
+          "cell": [
+            34,
+            28
+          ],
+          "terrain": "#",
+          "area": 2.8000000000029104
+        }
+      ],
+      "walk": {
+        "testedSegments": 26950,
+        "intersectingSegments": 0,
+        "minimumDistance": 26.854120446741586,
+        "closestWitness": {
+          "actor": {
+            "fromCell": [
+              36,
+              29
+            ],
+            "toCell": [
+              37,
+              29
+            ],
+            "west": false,
+            "frame": 3,
+            "soleFramePixel": [
+              34,
+              553
+            ]
+          },
+          "point": [
+            551,
+            450
+          ],
+          "nearestPoint": [
+            568.615392,
+            470.2692316
+          ],
+          "kind": "fixed-boundary-sample"
+        },
+        "firstViolations": []
+      },
+      "walkEndpointsInside": 0,
+      "relations": {
+        "orange": {
+          "boundary": {
+            "testedSegments": 795,
+            "intersectingSegments": 0,
+            "minimumDistance": 6.313826098333699,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 749
+              },
+              "point": [
+                549.8,
+                448.0
+              ],
+              "nearestPoint": [
+                547.5,
+                442.12
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "postVerticesInsideOther": [],
+          "otherVerticesInsidePost": [],
+          "intersectionArea": 0,
+          "intersectionPolygon": [],
+          "disjoint": true
+        },
+        "blue": {
+          "boundary": {
+            "testedSegments": 887,
+            "intersectingSegments": 0,
+            "minimumDistance": 70.23766795673102,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 884
+              },
+              "point": [
+                549,
+                449
+              ],
+              "nearestPoint": [
+                478.8,
+                451.3
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "postVerticesInsideOther": [],
+          "otherVerticesInsidePost": [],
+          "intersectionArea": 0,
+          "intersectionPolygon": [],
+          "disjoint": true
+        },
+        "stoneWall": {
+          "boundary": {
+            "testedSegments": 1276,
+            "intersectingSegments": 0,
+            "minimumDistance": 3.3718496554332753,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 1274
+              },
+              "point": [
+                551,
+                450
+              ],
+              "nearestPoint": [
+                552.2151132991709,
+                453.1452932723394
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "postVerticesInsideOther": [],
+          "otherVerticesInsidePost": [],
+          "intersectionArea": 0,
+          "intersectionPolygon": [],
+          "disjoint": true
+        }
+      }
+    },
+    "front-post-1": {
+      "footPolygon": [
+        [
+          562,
+          442.5
+        ],
+        [
+          564,
+          443.5
+        ],
+        [
+          564.8,
+          442.5
+        ],
+        [
+          562.8,
+          441.5
+        ]
+      ],
+      "positiveAreaCells": [
+        {
+          "cell": [
+            35,
+            27
+          ],
+          "terrain": "#",
+          "area": 2.8000000000029104
+        }
+      ],
+      "walk": {
+        "testedSegments": 26950,
+        "intersectingSegments": 0,
+        "minimumDistance": 26.41715280763897,
+        "closestWitness": {
+          "actor": {
+            "fromCell": [
+              36,
+              29
+            ],
+            "toCell": [
+              37,
+              29
+            ],
+            "west": false,
+            "frame": 3,
+            "soleFramePixel": [
+              119,
+              515
+            ]
+          },
+          "point": [
+            564.0,
+            443.5
+          ],
+          "nearestPoint": [
+            576.788465,
+            466.6153872
+          ],
+          "kind": "fixed-boundary-sample"
+        },
+        "firstViolations": []
+      },
+      "walkEndpointsInside": 0,
+      "relations": {
+        "orange": {
+          "boundary": {
+            "testedSegments": 795,
+            "intersectingSegments": 0,
+            "minimumDistance": 10.025736880648706,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 792
+              },
+              "point": [
+                562.0,
+                442.5
+              ],
+              "nearestPoint": [
+                552.23,
+                440.25
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "postVerticesInsideOther": [],
+          "otherVerticesInsidePost": [],
+          "intersectionArea": 0,
+          "intersectionPolygon": [],
+          "disjoint": true
+        },
+        "blue": {
+          "boundary": {
+            "testedSegments": 887,
+            "intersectingSegments": 0,
+            "minimumDistance": 83.66409026577651,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 884
+              },
+              "point": [
+                562.0,
+                442.5
+              ],
+              "nearestPoint": [
+                478.8,
+                451.3
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "postVerticesInsideOther": [],
+          "otherVerticesInsidePost": [],
+          "intersectionArea": 0,
+          "intersectionPolygon": [],
+          "disjoint": true
+        },
+        "stoneWall": {
+          "boundary": {
+            "testedSegments": 1276,
+            "intersectingSegments": 0,
+            "minimumDistance": 4.447586173333935,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 1273
+              },
+              "point": [
+                564.0,
+                443.5
+              ],
+              "nearestPoint": [
+                566.467076923077,
+                447.2006153846154
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "postVerticesInsideOther": [],
+          "otherVerticesInsidePost": [],
+          "intersectionArea": 0,
+          "intersectionPolygon": [],
+          "disjoint": true
+        }
+      }
+    },
+    "front-post-2": {
+      "footPolygon": [
+        [
+          581,
+          433
+        ],
+        [
+          583,
+          434
+        ],
+        [
+          583.8,
+          433
+        ],
+        [
+          581.8,
+          432
+        ]
+      ],
+      "positiveAreaCells": [
+        {
+          "cell": [
+            36,
+            27
+          ],
+          "terrain": "#",
+          "area": 2.8000000000029104
+        }
+      ],
+      "walk": {
+        "testedSegments": 26950,
+        "intersectingSegments": 0,
+        "minimumDistance": 16.815392000000088,
+        "closestWitness": {
+          "actor": {
+            "fromCell": [
+              38,
+              26
+            ],
+            "toCell": [
+              38,
+              27
+            ],
+            "west": false,
+            "frame": 3,
+            "soleFramePixel": [
+              34,
+              553
+            ]
+          },
+          "point": [
+            583.8,
+            433.0
+          ],
+          "nearestPoint": [
+            600.615392,
+            433.0
+          ],
+          "kind": "fixed-boundary-sample"
+        },
+        "firstViolations": []
+      },
+      "walkEndpointsInside": 0,
+      "relations": {
+        "orange": {
+          "boundary": {
+            "testedSegments": 795,
+            "intersectingSegments": 0,
+            "minimumDistance": 29.66943545131924,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 792
+              },
+              "point": [
+                581,
+                433
+              ],
+              "nearestPoint": [
+                552.23,
+                440.25
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "postVerticesInsideOther": [],
+          "otherVerticesInsidePost": [],
+          "intersectionArea": 0,
+          "intersectionPolygon": [],
+          "disjoint": true
+        },
+        "blue": {
+          "boundary": {
+            "testedSegments": 887,
+            "intersectingSegments": 0,
+            "minimumDistance": 103.82547856860569,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 884
+              },
+              "point": [
+                581,
+                433
+              ],
+              "nearestPoint": [
+                478.8,
+                451.3
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "postVerticesInsideOther": [],
+          "otherVerticesInsidePost": [],
+          "intersectionArea": 0,
+          "intersectionPolygon": [],
+          "disjoint": true
+        },
+        "stoneWall": {
+          "boundary": {
+            "testedSegments": 1276,
+            "intersectingSegments": 0,
+            "minimumDistance": 5.687660032262782,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 1272
+              },
+              "point": [
+                583,
+                434
+              ],
+              "nearestPoint": [
+                580.9862838145388,
+                439.3192503012183
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "postVerticesInsideOther": [],
+          "otherVerticesInsidePost": [],
+          "intersectionArea": 0,
+          "intersectionPolygon": [],
+          "disjoint": true
+        }
+      }
+    },
+    "back-post-0": {
+      "footPolygon": [
+        [
+          541,
+          445
+        ],
+        [
+          543,
+          446
+        ],
+        [
+          543.8,
+          445
+        ],
+        [
+          541.8,
+          444
+        ]
+      ],
+      "positiveAreaCells": [
+        {
+          "cell": [
+            33,
+            27
+          ],
+          "terrain": "#",
+          "area": 2.8000000000029104
+        }
+      ],
+      "walk": {
+        "testedSegments": 26950,
+        "intersectingSegments": 0,
+        "minimumDistance": 35.28659674392113,
+        "closestWitness": {
+          "actor": {
+            "fromCell": [
+              36,
+              29
+            ],
+            "toCell": [
+              37,
+              29
+            ],
+            "west": false,
+            "frame": 3,
+            "soleFramePixel": [
+              34,
+              553
+            ]
+          },
+          "point": [
+            543,
+            446
+          ],
+          "nearestPoint": [
+            568.615392,
+            470.2692316
+          ],
+          "kind": "fixed-boundary-sample"
+        },
+        "firstViolations": []
+      },
+      "walkEndpointsInside": 0,
+      "relations": {
+        "orange": {
+          "boundary": {
+            "testedSegments": 795,
+            "intersectingSegments": 0,
+            "minimumDistance": 0.009999999999990905,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 698
+              },
+              "point": [
+                541.8,
+                444.0
+              ],
+              "nearestPoint": [
+                541.8,
+                443.99
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "postVerticesInsideOther": [],
+          "otherVerticesInsidePost": [],
+          "intersectionArea": 0,
+          "intersectionPolygon": [],
+          "disjoint": true
+        },
+        "blue": {
+          "boundary": {
+            "testedSegments": 887,
+            "intersectingSegments": 0,
+            "minimumDistance": 62.518237339195665,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 884
+              },
+              "point": [
+                541,
+                445
+              ],
+              "nearestPoint": [
+                478.8,
+                451.3
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "postVerticesInsideOther": [],
+          "otherVerticesInsidePost": [],
+          "intersectionArea": 0,
+          "intersectionPolygon": [],
+          "disjoint": true
+        },
+        "stoneWall": {
+          "boundary": {
+            "testedSegments": 1276,
+            "intersectingSegments": 0,
+            "minimumDistance": 9.986047132117244,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 1274
+              },
+              "point": [
+                543,
+                446
+              ],
+              "nearestPoint": [
+                546.5986713277177,
+                455.31507928038883
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "postVerticesInsideOther": [],
+          "otherVerticesInsidePost": [],
+          "intersectionArea": 0,
+          "intersectionPolygon": [],
+          "disjoint": true
+        }
+      }
+    },
+    "back-post-1": {
+      "footPolygon": [
+        [
+          573,
+          429
+        ],
+        [
+          575,
+          430
+        ],
+        [
+          575.8,
+          429
+        ],
+        [
+          573.8,
+          428
+        ]
+      ],
+      "positiveAreaCells": [
+        {
+          "cell": [
+            35,
+            26
+          ],
+          "terrain": "#",
+          "area": 2.7999999999883585
+        }
+      ],
+      "walk": {
+        "testedSegments": 26950,
+        "intersectingSegments": 0,
+        "minimumDistance": 23.92937018839139,
+        "closestWitness": {
+          "actor": {
+            "fromCell": [
+              37,
+              25
+            ],
+            "toCell": [
+              38,
+              25
+            ],
+            "west": false,
+            "frame": 3,
+            "soleFramePixel": [
+              42,
+              561
+            ]
+          },
+          "actorSweep": [
+            [
+              585.3846224,
+              407.038462
+            ],
+            [
+              601.3846224,
+              407.038462
+            ]
+          ],
+          "kind": "actor-start",
+          "point": [
+            585.3846224,
+            407.038462
+          ],
+          "nearestPoint": [
+            574.68308272,
+            428.44154136000003
+          ],
+          "baseEdgeIndex": 2,
+          "baseEdge": [
+            [
+              575.8,
+              429
+            ],
+            [
+              573.8,
+              428
+            ]
+          ],
+          "parameter": 0.5584586399999807
+        },
+        "firstViolations": []
+      },
+      "walkEndpointsInside": 0,
+      "relations": {
+        "orange": {
+          "boundary": {
+            "testedSegments": 795,
+            "intersectingSegments": 0,
+            "minimumDistance": 23.621079568893528,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 792
+              },
+              "point": [
+                573,
+                429
+              ],
+              "nearestPoint": [
+                552.23,
+                440.25
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "postVerticesInsideOther": [],
+          "otherVerticesInsidePost": [],
+          "intersectionArea": 0,
+          "intersectionPolygon": [],
+          "disjoint": true
+        },
+        "blue": {
+          "boundary": {
+            "testedSegments": 887,
+            "intersectingSegments": 0,
+            "minimumDistance": 96.80356398397736,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 884
+              },
+              "point": [
+                573,
+                429
+              ],
+              "nearestPoint": [
+                478.8,
+                451.3
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "postVerticesInsideOther": [],
+          "otherVerticesInsidePost": [],
+          "intersectionArea": 0,
+          "intersectionPolygon": [],
+          "disjoint": true
+        },
+        "stoneWall": {
+          "boundary": {
+            "testedSegments": 1276,
+            "intersectingSegments": 0,
+            "minimumDistance": 9.660899544038319,
+            "closestWitness": {
+              "actor": {
+                "otherBoundaryEdge": 1272
+              },
+              "point": [
+                575,
+                430
+              ],
+              "nearestPoint": [
+                579.266,
+                438.668
+              ],
+              "kind": "fixed-boundary-sample"
+            },
+            "firstViolations": []
+          },
+          "postVerticesInsideOther": [],
+          "otherVerticesInsidePost": [],
+          "intersectionArea": 0,
+          "intersectionPolygon": [],
+          "disjoint": true
+        }
+      }
+    }
+  },
+  "backLeftSinglePostProposals": {
+    "forward1": {
+      "translation": [
+        0,
+        1
+      ],
+      "centre": [
+        542,
+        447
+      ],
+      "result": {
+        "footPolygon": [
+          [
+            541.0,
+            446.0
+          ],
+          [
+            543.0,
+            447.0
+          ],
+          [
+            543.8,
+            446.0
+          ],
+          [
+            541.8,
+            445.0
+          ]
+        ],
+        "positiveAreaCells": [
+          {
+            "cell": [
+              33,
+              27
+            ],
+            "terrain": "#",
+            "area": 2.8000000000029104
+          }
+        ],
+        "walk": {
+          "testedSegments": 26950,
+          "intersectingSegments": 0,
+          "minimumDistance": 34.60643649045804,
+          "closestWitness": {
+            "actor": {
+              "fromCell": [
+                36,
+                29
+              ],
+              "toCell": [
+                37,
+                29
+              ],
+              "west": false,
+              "frame": 3,
+              "soleFramePixel": [
+                34,
+                553
+              ]
+            },
+            "point": [
+              543.0,
+              447.0
+            ],
+            "nearestPoint": [
+              568.615392,
+              470.2692316
+            ],
+            "kind": "fixed-boundary-sample"
+          },
+          "firstViolations": []
+        },
+        "walkEndpointsInside": 0,
+        "relations": {
+          "orange": {
+            "boundary": {
+              "testedSegments": 795,
+              "intersectingSegments": 0,
+              "minimumDistance": 0.9314504817756367,
+              "closestWitness": {
+                "actor": {
+                  "otherBoundaryEdge": 695
+                },
+                "point": [
+                  541.8,
+                  445.0
+                ],
+                "nearestPoint": [
+                  541.56,
+                  444.09999999999997
+                ],
+                "kind": "fixed-boundary-sample"
+              },
+              "firstViolations": []
+            },
+            "postVerticesInsideOther": [],
+            "otherVerticesInsidePost": [],
+            "intersectionArea": 0,
+            "intersectionPolygon": [],
+            "disjoint": true
+          },
+          "blue": {
+            "boundary": {
+              "testedSegments": 887,
+              "intersectingSegments": 0,
+              "minimumDistance": 62.425395473316776,
+              "closestWitness": {
+                "actor": {
+                  "otherBoundaryEdge": 884
+                },
+                "point": [
+                  541.0,
+                  446.0
+                ],
+                "nearestPoint": [
+                  478.8,
+                  451.3
+                ],
+                "kind": "fixed-boundary-sample"
+              },
+              "firstViolations": []
+            },
+            "postVerticesInsideOther": [],
+            "otherVerticesInsidePost": [],
+            "intersectionArea": 0,
+            "intersectionPolygon": [],
+            "disjoint": true
+          },
+          "stoneWall": {
+            "boundary": {
+              "testedSegments": 1276,
+              "intersectingSegments": 0,
+              "minimumDistance": 9.053237667356264,
+              "closestWitness": {
+                "actor": {
+                  "otherBoundaryEdge": 1274
+                },
+                "point": [
+                  543.0,
+                  447.0
+                ],
+                "nearestPoint": [
+                  546.2625148254855,
+                  455.4449457828411
+                ],
+                "kind": "fixed-boundary-sample"
+              },
+              "firstViolations": []
+            },
+            "postVerticesInsideOther": [],
+            "otherVerticesInsidePost": [],
+            "intersectionArea": 0,
+            "intersectionPolygon": [],
+            "disjoint": true
+          }
+        }
+      }
+    },
+    "forward1p25": {
+      "translation": [
+        0,
+        1.25
+      ],
+      "centre": [
+        542.0,
+        447.25
+      ],
+      "result": {
+        "footPolygon": [
+          [
+            541.0,
+            446.25
+          ],
+          [
+            543.0,
+            447.25
+          ],
+          [
+            543.8,
+            446.25
+          ],
+          [
+            541.8,
+            445.25
+          ]
+        ],
+        "positiveAreaCells": [
+          {
+            "cell": [
+              33,
+              27
+            ],
+            "terrain": "#",
+            "area": 2.8000000000029104
+          }
+        ],
+        "walk": {
+          "testedSegments": 26950,
+          "intersectingSegments": 0,
+          "minimumDistance": 34.43883463138823,
+          "closestWitness": {
+            "actor": {
+              "fromCell": [
+                36,
+                29
+              ],
+              "toCell": [
+                37,
+                29
+              ],
+              "west": false,
+              "frame": 3,
+              "soleFramePixel": [
+                34,
+                553
+              ]
+            },
+            "point": [
+              543.0,
+              447.25
+            ],
+            "nearestPoint": [
+              568.615392,
+              470.2692316
+            ],
+            "kind": "fixed-boundary-sample"
+          },
+          "firstViolations": []
+        },
+        "walkEndpointsInside": 0,
+        "relations": {
+          "orange": {
+            "boundary": {
+              "testedSegments": 795,
+              "intersectingSegments": 0,
+              "minimumDistance": 1.1747765745026084,
+              "closestWitness": {
+                "actor": {
+                  "otherBoundaryEdge": 695
+                },
+                "point": [
+                  541.8,
+                  445.25
+                ],
+                "nearestPoint": [
+                  541.56,
+                  444.09999999999997
+                ],
+                "kind": "fixed-boundary-sample"
+              },
+              "firstViolations": []
+            },
+            "postVerticesInsideOther": [],
+            "otherVerticesInsidePost": [],
+            "intersectionArea": 0,
+            "intersectionPolygon": [],
+            "disjoint": true
+          },
+          "blue": {
+            "boundary": {
+              "testedSegments": 887,
+              "intersectingSegments": 0,
+              "minimumDistance": 62.40466729340041,
+              "closestWitness": {
+                "actor": {
+                  "otherBoundaryEdge": 884
+                },
+                "point": [
+                  541.0,
+                  446.25
+                ],
+                "nearestPoint": [
+                  478.8,
+                  451.3
+                ],
+                "kind": "fixed-boundary-sample"
+              },
+              "firstViolations": []
+            },
+            "postVerticesInsideOther": [],
+            "otherVerticesInsidePost": [],
+            "intersectionArea": 0,
+            "intersectionPolygon": [],
+            "disjoint": true
+          },
+          "stoneWall": {
+            "boundary": {
+              "testedSegments": 1276,
+              "intersectingSegments": 0,
+              "minimumDistance": 8.820035301165982,
+              "closestWitness": {
+                "actor": {
+                  "otherBoundaryEdge": 1274
+                },
+                "point": [
+                  543.0,
+                  447.25
+                ],
+                "nearestPoint": [
+                  546.1784756999274,
+                  455.47741240845414
+                ],
+                "kind": "fixed-boundary-sample"
+              },
+              "firstViolations": []
+            },
+            "postVerticesInsideOther": [],
+            "otherVerticesInsidePost": [],
+            "intersectionArea": 0,
+            "intersectionPolygon": [],
+            "disjoint": true
+          }
+        }
+      }
+    },
+    "sameCrossAxis1": {
+      "translation": [
+        1,
+        0.5
+      ],
+      "centre": [
+        543.0,
+        446.5
+      ],
+      "result": {
+        "footPolygon": [
+          [
+            542.0,
+            445.5
+          ],
+          [
+            544.0,
+            446.5
+          ],
+          [
+            544.8,
+            445.5
+          ],
+          [
+            542.8,
+            444.5
+          ]
+        ],
+        "positiveAreaCells": [
+          {
+            "cell": [
+              33,
+              27
+            ],
+            "terrain": "#",
+            "area": 2.2399999999906868
+          },
+          {
+            "cell": [
+              34,
+              27
+            ],
+            "terrain": "#",
+            "area": 0.5600000000122236
+          }
+        ],
+        "walk": {
+          "testedSegments": 26950,
+          "intersectingSegments": 0,
+          "minimumDistance": 34.2183268756394,
+          "closestWitness": {
+            "actor": {
+              "fromCell": [
+                36,
+                29
+              ],
+              "toCell": [
+                37,
+                29
+              ],
+              "west": false,
+              "frame": 3,
+              "soleFramePixel": [
+                34,
+                553
+              ]
+            },
+            "point": [
+              544.0,
+              446.5
+            ],
+            "nearestPoint": [
+              568.615392,
+              470.2692316
+            ],
+            "kind": "fixed-boundary-sample"
+          },
+          "firstViolations": []
+        },
+        "walkEndpointsInside": 0,
+        "relations": {
+          "orange": {
+            "boundary": {
+              "testedSegments": 795,
+              "intersectingSegments": 0,
+              "minimumDistance": 0.7716216689544343,
+              "closestWitness": {
+                "actor": {
+                  "otherBoundaryEdge": 704
+                },
+                "point": [
+                  542.8,
+                  444.5
+                ],
+                "nearestPoint": [
+                  542.55,
+                  443.77
+                ],
+                "kind": "fixed-boundary-sample"
+              },
+              "firstViolations": []
+            },
+            "postVerticesInsideOther": [],
+            "otherVerticesInsidePost": [],
+            "intersectionArea": 0,
+            "intersectionPolygon": [],
+            "disjoint": true
+          },
+          "blue": {
+            "boundary": {
+              "testedSegments": 887,
+              "intersectingSegments": 0,
+              "minimumDistance": 63.465581223211046,
+              "closestWitness": {
+                "actor": {
+                  "otherBoundaryEdge": 884
+                },
+                "point": [
+                  542.0,
+                  445.5
+                ],
+                "nearestPoint": [
+                  478.8,
+                  451.3
+                ],
+                "kind": "fixed-boundary-sample"
+              },
+              "firstViolations": []
+            },
+            "postVerticesInsideOther": [],
+            "otherVerticesInsidePost": [],
+            "intersectionArea": 0,
+            "intersectionPolygon": [],
+            "disjoint": true
+          },
+          "stoneWall": {
+            "boundary": {
+              "testedSegments": 1276,
+              "intersectingSegments": 0,
+              "minimumDistance": 9.159272447531752,
+              "closestWitness": {
+                "actor": {
+                  "otherBoundaryEdge": 1274
+                },
+                "point": [
+                  544.0,
+                  446.5
+                ],
+                "nearestPoint": [
+                  547.3007265741494,
+                  455.04385602938265
+                ],
+                "kind": "fixed-boundary-sample"
+              },
+              "firstViolations": []
+            },
+            "postVerticesInsideOther": [],
+            "otherVerticesInsidePost": [],
+            "intersectionArea": 0,
+            "intersectionPolygon": [],
+            "disjoint": true
+          }
+        }
+      }
+    },
+    "sameCrossAxis1p5": {
+      "translation": [
+        1.5,
+        0.75
+      ],
+      "centre": [
+        543.5,
+        446.75
+      ],
+      "result": {
+        "footPolygon": [
+          [
+            542.5,
+            445.75
+          ],
+          [
+            544.5,
+            446.75
+          ],
+          [
+            545.3,
+            445.75
+          ],
+          [
+            543.3,
+            444.75
+          ]
+        ],
+        "positiveAreaCells": [
+          {
+            "cell": [
+              33,
+              27
+            ],
+            "terrain": "#",
+            "area": 1.5399999999935972
+          },
+          {
+            "cell": [
+              34,
+              27
+            ],
+            "terrain": "#",
+            "area": 1.2600000000093132
+          }
+        ],
+        "walk": {
+          "testedSegments": 26950,
+          "intersectingSegments": 0,
+          "minimumDistance": 33.685403164695906,
+          "closestWitness": {
+            "actor": {
+              "fromCell": [
+                36,
+                29
+              ],
+              "toCell": [
+                37,
+                29
+              ],
+              "west": false,
+              "frame": 3,
+              "soleFramePixel": [
+                34,
+                553
+              ]
+            },
+            "point": [
+              544.5,
+              446.75
+            ],
+            "nearestPoint": [
+              568.615392,
+              470.2692316
+            ],
+            "kind": "fixed-boundary-sample"
+          },
+          "firstViolations": []
+        },
+        "walkEndpointsInside": 0,
+        "relations": {
+          "orange": {
+            "boundary": {
+              "testedSegments": 795,
+              "intersectingSegments": 0,
+              "minimumDistance": 1.1681181447097015,
+              "closestWitness": {
+                "actor": {
+                  "otherBoundaryEdge": 707
+                },
+                "point": [
+                  543.3,
+                  444.75
+                ],
+                "nearestPoint": [
+                  542.88,
+                  443.65999999999997
+                ],
+                "kind": "fixed-boundary-sample"
+              },
+              "firstViolations": []
+            },
+            "postVerticesInsideOther": [],
+            "otherVerticesInsidePost": [],
+            "intersectionArea": 0,
+            "intersectionPolygon": [],
+            "disjoint": true
+          },
+          "blue": {
+            "boundary": {
+              "testedSegments": 887,
+              "intersectingSegments": 0,
+              "minimumDistance": 63.94132075583049,
+              "closestWitness": {
+                "actor": {
+                  "otherBoundaryEdge": 884
+                },
+                "point": [
+                  542.5,
+                  445.75
+                ],
+                "nearestPoint": [
+                  478.8,
+                  451.3
+                ],
+                "kind": "fixed-boundary-sample"
+              },
+              "firstViolations": []
+            },
+            "postVerticesInsideOther": [],
+            "otherVerticesInsidePost": [],
+            "intersectionArea": 0,
+            "intersectionPolygon": [],
+            "disjoint": true
+          },
+          "stoneWall": {
+            "boundary": {
+              "testedSegments": 1276,
+              "intersectingSegments": 0,
+              "minimumDistance": 8.745885105239008,
+              "closestWitness": {
+                "actor": {
+                  "otherBoundaryEdge": 1274
+                },
+                "point": [
+                  544.5,
+                  446.75
+                ],
+                "nearestPoint": [
+                  547.6517541973652,
+                  454.90824440387956
+                ],
+                "kind": "fixed-boundary-sample"
+              },
+              "firstViolations": []
+            },
+            "postVerticesInsideOther": [],
+            "otherVerticesInsidePost": [],
+            "intersectionArea": 0,
+            "intersectionPolygon": [],
+            "disjoint": true
+          }
+        }
+      }
+    }
+  },
+  "backLeftVerticalSeparationThreshold": {
+    "x": 541.8,
+    "orangeFrontY": 443.99,
+    "postRearY": 444.0,
+    "requiredPositiveYToTouch": -0.009999999999990905
+  },
+  "correctionScope": "Only the back-left post and the actual attached beam endpoint geometry/support need follow a chosen translation. Other four posts and whole trellis are not moved. Geometry changes here are proposals only.",
+  "limits": [
+    "The rear corner is explicitly NEW design; no source hidden-foot claim.",
+    "Exact vertical touch threshold is for frozen finite diamond and current new orange base; touching remains non-disjoint.",
+    "All support contours are the existing frozen Torren walk-a/b subset; no actual battle motion or all-role guarantee.",
+    "Changing one post may change beam axis/length; final finite members and support lines must match the selected new geometry."
+  ]
+}
