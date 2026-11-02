@@ -1,0 +1,227 @@
+{
+  "scope": "Isolated 0a3f407c instrumentation, unchanged geometry; timings include diagnostic overhead; not FPS",
+  "compiledAssets": 36,
+  "compileMs": 19185.4837,
+  "opaqueValidationMs": 18898.342925,
+  "instanceMs": 95.8191,
+  "materialCaptureAndDetectMs": 88.6177,
+  "textureLoadMs": 581.5157,
+  "assets": [
+    {
+      "asset": "central-platform",
+      "totalMs": 2451.2431,
+      "memberMs": 2443.9516,
+      "opaqueValidationMs": 2424.825075
+    },
+    {
+      "asset": "granary-column-box-surface-v1",
+      "totalMs": 1935.5001,
+      "memberMs": 1935.3793,
+      "opaqueValidationMs": 1930.476544
+    },
+    {
+      "asset": "barracks-front-canopy-surface",
+      "totalMs": 1784.9422,
+      "memberMs": 1784.5948,
+      "opaqueValidationMs": 1776.119011
+    },
+    {
+      "asset": "southern-supply-canopy-cloth",
+      "totalMs": 1338.2203,
+      "memberMs": 1333.9556,
+      "opaqueValidationMs": 1306.676013
+    },
+    {
+      "asset": "granary-bin-surface",
+      "totalMs": 1273.4805,
+      "memberMs": 1272.4797,
+      "opaqueValidationMs": 1267.132741
+    },
+    {
+      "asset": "granary-canopy-surface",
+      "totalMs": 1273.9079,
+      "memberMs": 1265.177,
+      "opaqueValidationMs": 1236.9348
+    },
+    {
+      "asset": "granary-door-stock-right-surface",
+      "totalMs": 1146.0399,
+      "memberMs": 1145.9288,
+      "opaqueValidationMs": 1142.151226
+    },
+    {
+      "asset": "granary-door-stock-rear-surface",
+      "totalMs": 1139.631,
+      "memberMs": 1139.394,
+      "opaqueValidationMs": 1137.296287
+    },
+    {
+      "asset": "central-rear-west-group",
+      "totalMs": 1067.0461,
+      "memberMs": 1066.1129,
+      "opaqueValidationMs": 1058.744699
+    },
+    {
+      "asset": "central-south-left-reconstructed",
+      "totalMs": 961.2826,
+      "memberMs": 959.9449,
+      "opaqueValidationMs": 948.257201
+    },
+    {
+      "asset": "granary-door-stock-left-surface",
+      "totalMs": 819.4856,
+      "memberMs": 819.1964,
+      "opaqueValidationMs": 816.470736
+    },
+    {
+      "asset": "granary-courtyard-wall-main",
+      "totalMs": 777.1127,
+      "memberMs": 775.1894,
+      "opaqueValidationMs": 750.64675
+    },
+    {
+      "asset": "southern-supply-stock-middle-crate",
+      "totalMs": 586.9892,
+      "memberMs": 585.121,
+      "opaqueValidationMs": 565.505056
+    },
+    {
+      "asset": "central-south-low-pier",
+      "totalMs": 495.253,
+      "memberMs": 495.0938,
+      "opaqueValidationMs": 491.732755
+    },
+    {
+      "asset": "southern-supply-stock-east-crate",
+      "totalMs": 504.2241,
+      "memberMs": 502.6095,
+      "opaqueValidationMs": 485.501298
+    },
+    {
+      "asset": "granary-courtyard-wall-terminal-pier",
+      "totalMs": 399.6443,
+      "memberMs": 399.3833,
+      "opaqueValidationMs": 388.136159
+    },
+    {
+      "asset": "central-west-corner-pier",
+      "totalMs": 233.246,
+      "memberMs": 233.1525,
+      "opaqueValidationMs": 231.700978
+    },
+    {
+      "asset": "granary-shed-fascia-surface-v1",
+      "totalMs": 209.9551,
+      "memberMs": 206.5216,
+      "opaqueValidationMs": 192.023752
+    },
+    {
+      "asset": "training-fence",
+      "totalMs": 182.6356,
+      "memberMs": 182.3852,
+      "opaqueValidationMs": 177.922413
+    },
+    {
+      "asset": "granary-courtyard-timber-left",
+      "totalMs": 165.9858,
+      "memberMs": 165.4662,
+      "opaqueValidationMs": 159.689535
+    },
+    {
+      "asset": "right-garden-timber",
+      "totalMs": 140.3858,
+      "memberMs": 138.9661,
+      "opaqueValidationMs": 133.161865
+    },
+    {
+      "asset": "southern-supply-canopy-front-post",
+      "totalMs": 53.739,
+      "memberMs": 53.5613,
+      "opaqueValidationMs": 51.665995
+    },
+    {
+      "asset": "central-west-bearing",
+      "totalMs": 39.0251,
+      "memberMs": 38.9269,
+      "opaqueValidationMs": 38.178751
+    },
+    {
+      "asset": "southern-supply-canopy-west-post",
+      "totalMs": 35.9119,
+      "memberMs": 35.8145,
+      "opaqueValidationMs": 33.051228
+    },
+    {
+      "asset": "granary-shed-nearpost-surface-v1",
+      "totalMs": 28.2383,
+      "memberMs": 27.8657,
+      "opaqueValidationMs": 27.272336
+    },
+    {
+      "asset": "southern-supply-canopy-right-post",
+      "totalMs": 27.2558,
+      "memberMs": 27.1422,
+      "opaqueValidationMs": 26.215105
+    },
+    {
+      "asset": "southwest-gate-leaf-surface-v1",
+      "totalMs": 25.5907,
+      "memberMs": 25.2308,
+      "opaqueValidationMs": 23.633245
+    },
+    {
+      "asset": "granary-shed-leftpost-surface-v1",
+      "totalMs": 22.6043,
+      "memberMs": 22.5518,
+      "opaqueValidationMs": 22.15029
+    },
+    {
+      "asset": "southeast-gate-leaf-surface-v1",
+      "totalMs": 20.191,
+      "memberMs": 20.0237,
+      "opaqueValidationMs": 18.921433
+    },
+    {
+      "asset": "granary-shed-rearpost-surface-v1",
+      "totalMs": 12.8481,
+      "memberMs": 12.8176,
+      "opaqueValidationMs": 12.613429
+    },
+    {
+      "asset": "southern-supply-canopy-rear-post",
+      "totalMs": 12.6614,
+      "memberMs": 12.6145,
+      "opaqueValidationMs": 11.461263
+    },
+    {
+      "asset": "granary-shed-rightpost-surface-v1",
+      "totalMs": 10.9673,
+      "memberMs": 10.9432,
+      "opaqueValidationMs": 10.753456
+    },
+    {
+      "asset": "right-garden-soil",
+      "totalMs": 1.5922,
+      "memberMs": 1.5553,
+      "opaqueValidationMs": 1.3215
+    },
+    {
+      "asset": "southeast-gate-stone-surface-v2",
+      "totalMs": 3.6671,
+      "memberMs": 2.255,
+      "opaqueValidationMs": 0.0
+    },
+    {
+      "asset": "southwest-gate-stone-surface-v1",
+      "totalMs": 2.8328,
+      "memberMs": 1.7047,
+      "opaqueValidationMs": 0.0
+    },
+    {
+      "asset": "granary-shed-roof-surface-v1",
+      "totalMs": 2.1478,
+      "memberMs": 1.5722,
+      "opaqueValidationMs": 0.0
+    }
+  ]
+}

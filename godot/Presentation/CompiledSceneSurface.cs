@@ -9,6 +9,7 @@ namespace Empire.Presentation;
 /// <summary>Single compiled geometry consumed by drawing, material coverage and support depth.</summary>
 internal sealed class CompiledSceneSurface
 {
+    private const float OpaqueMaterialThreshold = .96f;
     private sealed record Primitive(Vector2[] Polygon, Vector2[] Uv, Color Tint, bool NativeAlpha,
         Vector2 A, Vector2 B, Vector2 C, Vector2 Ua, Vector2 Ub, Vector2 Uc)
     {
@@ -33,6 +34,7 @@ internal sealed class CompiledSceneSurface
     internal sealed class Material : IDisposable
     {
         private readonly Image _pixels;
+        private int[]? _nonOpaquePrefix;
         internal Texture2D Texture { get; }
         internal bool IsOpaque { get; }
         internal int Width => _pixels.GetWidth();
@@ -44,7 +46,42 @@ internal sealed class CompiledSceneSurface
             IsOpaque = _pixels.DetectAlpha() == Image.AlphaMode.None;
         }
         internal float Alpha(int x, int y) => _pixels.GetPixel(x, y).A;
-        public void Dispose() => _pixels.Dispose();
+        internal bool ContainsOnlyOpaqueTexels(Rect2 bounds)
+        {
+            // A conservative rectangle certificate skips triangle/texel intersection work
+            // only when every texel could pass the original material assertion. The index
+            // is a projection of this immutable pixel snapshot, shared by all its members.
+            var width = Width;
+            var height = Height;
+            var stride = checked(width + 1);
+            if (_nonOpaquePrefix is null)
+            {
+                var prefix = new int[checked(stride * (height + 1))];
+                for (var y = 0; y < height; y++)
+                {
+                    var row = 0;
+                    for (var x = 0; x < width; x++)
+                    {
+                        if (Alpha(x, y) < OpaqueMaterialThreshold)
+                            row++;
+                        prefix[(y + 1) * stride + x + 1] = prefix[y * stride + x + 1] + row;
+                    }
+                }
+                _nonOpaquePrefix = prefix;
+            }
+            var left = (int)bounds.Position.X;
+            var top = (int)bounds.Position.Y;
+            var right = (int)bounds.End.X + 1;
+            var bottom = (int)bounds.End.Y + 1;
+            var count = _nonOpaquePrefix[bottom * stride + right] - _nonOpaquePrefix[top * stride + right]
+                - _nonOpaquePrefix[bottom * stride + left] + _nonOpaquePrefix[top * stride + left];
+            return count == 0;
+        }
+        public void Dispose()
+        {
+            _pixels.Dispose();
+            _nonOpaquePrefix = null;
+        }
     }
 
     internal sealed class Materials : IDisposable
@@ -149,12 +186,14 @@ internal sealed class CompiledSceneSurface
     {
         void Check(Vector2 point)
         {
-            if (material.Alpha((int)point.X, (int)point.Y) < .96f)
+            if (material.Alpha((int)point.X, (int)point.Y) < OpaqueMaterialThreshold)
                 throw new InvalidOperationException($"Opaque surface material includes transparency: {identity} at texel ({(int)point.X}, {(int)point.Y}), alpha={material.Alpha((int)point.X, (int)point.Y)}.");
         }
         foreach (var point in uv)
             Check(point);
         var bounds = StandingVisual.BoundsOf(uv);
+        if (material.ContainsOnlyOpaqueTexels(bounds))
+            return;
         for (var y = (int)bounds.Position.Y; y <= (int)bounds.End.Y; y++)
             for (var x = (int)bounds.Position.X; x <= (int)bounds.End.X; x++)
             {

@@ -1,0 +1,102 @@
+diff --git a/godot/Presentation/AssembledGroundDocument.cs b/godot/Presentation/AssembledGroundDocument.cs
+index ff35e043..2a35dede 100644
+--- a/godot/Presentation/AssembledGroundDocument.cs
++++ b/godot/Presentation/AssembledGroundDocument.cs
+@@ -24,6 +24,7 @@ public sealed class AssembledGroundDocument : RegisteredGroundDocument
+     {
+         if (scene.LevelId != LevelId)
+             throw new InvalidOperationException("Assembled ground and scene level identities differ.");
++        var profileLoad = System.Diagnostics.Stopwatch.StartNew();
+         var catalog = PresentationJson.Load<SceneObjectCatalog>(ObjectCatalogPath);
+         var ground = ResourceLoader.Load<Texture2D>(ResourcePath)
+             ?? throw new MissingArtResourceException(ResourcePath, "Missing assembled ground texture.");
+@@ -31,6 +32,7 @@ public sealed class AssembledGroundDocument : RegisteredGroundDocument
+         foreach (var (id, asset) in catalog.Objects)
+             textures.Add(id, ResourceLoader.Load<Texture2D>(asset.ResourcePath)
+                 ?? throw new MissingArtResourceException(asset.ResourcePath, $"Missing independent scene object: {id}."));
++        GD.Print($"PROFILE_GROUND_TEXTURES {profileLoad.Elapsed.TotalMilliseconds:R}");
+         return AssembledGroundView.Create(this, ground, catalog, textures, registeredMap, rules.Content, rules.Shadows);
+     };
+ }
+diff --git a/godot/Presentation/AssembledGroundView.cs b/godot/Presentation/AssembledGroundView.cs
+index 151ddb44..ed7b64d9 100644
+--- a/godot/Presentation/AssembledGroundView.cs
++++ b/godot/Presentation/AssembledGroundView.cs
+@@ -31,6 +31,7 @@ public partial class AssembledGroundView : BoardGroundView
+     public static AssembledGroundView Create(AssembledGroundDocument document, Texture2D ground,
+         SceneObjectCatalog catalog, IReadOnlyDictionary<string, Texture2D> textures, JsonObject map, ReadOnlyContent content, ShadowCache? shadows = null)
+     {
++        var profileCreate = System.Diagnostics.Stopwatch.StartNew();
+         var width = map["width"]!.GetValue<int>();
+         var height = map["height"]!.GetValue<int>();
+         var tiles = map["tiles"]!.AsArray();
+@@ -192,6 +193,7 @@ public partial class AssembledGroundView : BoardGroundView
+                     view._objects.Add((sprite, contact * BoardProjection.TileSize, instance.Pointer != "pass-through", selection, asset.PointerPolygon));
+                 }
+             }
++            GD.Print($"PROFILE_GROUND_CREATE {profileCreate.Elapsed.TotalMilliseconds:R}");
+             view._sites = sites.AsReadOnly();
+             return view;
+         }
+diff --git a/godot/Presentation/CompiledSceneSurface.cs b/godot/Presentation/CompiledSceneSurface.cs
+index 98a8dfee..3bcec666 100644
+--- a/godot/Presentation/CompiledSceneSurface.cs
++++ b/godot/Presentation/CompiledSceneSurface.cs
+@@ -39,9 +39,11 @@ internal sealed class CompiledSceneSurface
+         internal int Height => _pixels.GetHeight();
+         internal Material(Texture2D texture)
+         {
++            var profile = System.Diagnostics.Stopwatch.StartNew();
+             Texture = texture;
+             _pixels = texture.GetImage() ?? throw new InvalidOperationException("Surface texture cannot supply native pixels.");
+             IsOpaque = _pixels.DetectAlpha() == Image.AlphaMode.None;
++            GD.Print($"PROFILE_MATERIAL {texture.ResourcePath} {profile.Elapsed.TotalMilliseconds:R}");
+         }
+         internal float Alpha(int x, int y) => _pixels.GetPixel(x, y).A;
+         public void Dispose() => _pixels.Dispose();
+@@ -72,6 +74,7 @@ internal sealed class CompiledSceneSurface
+ 
+     internal static CompiledSceneSurface Compile(SceneSurfaceDocument document, Material material, string identity)
+     {
++        var profileCompile = System.Diagnostics.Stopwatch.StartNew(); long profileAlphaTicks = 0;
+         if (document.Schema != 1 || document.Supports is not { Length: > 0 } || document.Members is not { Length: > 0 })
+             throw new InvalidOperationException($"Invalid authored surface document: {identity}.");
+         var supports = new Dictionary<string, Vector2>(StringComparer.Ordinal);
+@@ -116,11 +119,12 @@ internal sealed class CompiledSceneSurface
+                 if (!primitiveKeys.Add(key))
+                     throw new InvalidOperationException($"Duplicate surface primitive: {identity}/{member.Id}.");
+                 if (member.Coverage == "opaque" && !material.IsOpaque)
+-                    ValidateOpaque(material, texels, identity + "/" + member.Id);
++                    { var tick = System.Diagnostics.Stopwatch.GetTimestamp(); ValidateOpaque(material, texels, identity + "/" + member.Id); profileAlphaTicks += System.Diagnostics.Stopwatch.GetTimestamp() - tick; }
+                 triangles.Add((member.SupportId, new Primitive(points, texels, tint, member.Coverage == "native-alpha",
+                     points[0], points[1], points[2], texels[0], texels[1], texels[2])));
+             }
+         }
++        var profileMembersMs = profileCompile.Elapsed.TotalMilliseconds;
+         var slices = new List<Slice>();
+         foreach (var (supportId, support) in supports)
+         {
+@@ -135,6 +139,7 @@ internal sealed class CompiledSceneSurface
+                 throw new InvalidOperationException($"Physical surface contact lies outside its owned geometry: {identity}/{supportId}.");
+             slices.Add(new(support, owned));
+         }
++        GD.Print($"PROFILE_COMPILE {identity} totalMs={profileCompile.Elapsed.TotalMilliseconds:R} membersMs={profileMembersMs:R} alphaMs={profileAlphaTicks * 1000.0 / System.Diagnostics.Stopwatch.Frequency:R} supports={supports.Count} members={document.Members.Length}");
+         return new(material.Texture, slices.ToArray());
+     }
+ 
+@@ -245,6 +250,7 @@ internal sealed class CompiledSceneSurface
+     internal Instance Instantiate(Node owner, string identity, float scale,
+         Vector2 anchor, bool pointer, Vector2[]? pointerPolygon, Sprite2D sampler)
+     {
++        var profileInstance = System.Diagnostics.Stopwatch.StartNew();
+         var pieces = new (Node2D Node, StandingVisual Visual)[_slices.Length];
+         var draws = new Polygon2D[_slices.Length];
+         for (var index = 0; index < _slices.Length; index++)
+@@ -264,6 +270,7 @@ internal sealed class CompiledSceneSurface
+             draws[index] = draw;
+             pieces[index] = (node, new SurfaceVisual(node, slice, anchor, sampler, pointer, pointerPolygon));
+         }
++        GD.Print($"PROFILE_INSTANCE {identity} {profileInstance.Elapsed.TotalMilliseconds:R}");
+         return new Instance(this, anchor, pieces, draws);
+     }
+ 

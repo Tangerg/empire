@@ -1,0 +1,104 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+PROFILE_GROUND_TEXTURES 581.5157
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/blue-roof-wooden-stand-v1.png 4.8998
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/militia-barracks-core-v2-candidate.png 2.7298
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/barracks-front-cargo-v1-candidate.png 3.3535
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/granary-main-v1-candidate.png 2.6347
+PROFILE_MATERIAL res://assets/native/c04-layered-v1/supply-canopy.png 2.8914
+PROFILE_COMPILE granary-canopy-surface totalMs=1273.9079 membersMs=1265.177 alphaMs=1236.9348 supports=125 members=474
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/granary-grain-bin-v1-candidate.png 7.5016
+PROFILE_COMPILE granary-bin-surface totalMs=1273.4805 membersMs=1272.4797 alphaMs=1267.132741 supports=33 members=201
+PROFILE_COMPILE granary-door-stock-rear-surface totalMs=1139.631 membersMs=1139.394 alphaMs=1137.296287 supports=20 members=61
+PROFILE_COMPILE granary-door-stock-left-surface totalMs=819.4856 membersMs=819.1964 alphaMs=816.470736 supports=22 members=68
+PROFILE_COMPILE granary-door-stock-right-surface totalMs=1146.0399 membersMs=1145.9288 alphaMs=1142.151226 supports=21 members=66
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/training-fence-v2-rejected.png 3.1614
+PROFILE_COMPILE training-fence totalMs=182.6356 membersMs=182.3852 alphaMs=177.922413 supports=45 members=144
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/barracks-front-lean-to-v2-candidate.png 3.835
+PROFILE_COMPILE barracks-front-canopy-surface totalMs=1784.9422 membersMs=1784.5948 alphaMs=1776.119011 supports=54 members=193
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/council-hall-v1-candidate.png 3.7231
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/southeast-gate-v2-stone-candidate.png 4.0958
+PROFILE_COMPILE southeast-gate-stone-surface-v2 totalMs=3.6671 membersMs=2.255 alphaMs=0 supports=188 members=188
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/southeast-gate-v1-candidate.png 5.1873
+PROFILE_COMPILE southeast-gate-leaf-surface-v1 totalMs=20.191 membersMs=20.0237 alphaMs=18.921433 supports=22 members=118
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/southwest-gate-v1-stone-candidate.png 3.3969
+PROFILE_COMPILE southwest-gate-stone-surface-v1 totalMs=2.8328 membersMs=1.7047 alphaMs=0 supports=174 members=174
+PROFILE_COMPILE southwest-gate-leaf-surface-v1 totalMs=25.5907 membersMs=25.2308 alphaMs=23.633245 supports=20 members=93
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/orange-clay-tile-material-v1.png 5.7662
+PROFILE_COMPILE granary-shed-roof-surface-v1 totalMs=2.1478 membersMs=1.5722 alphaMs=0 supports=131 members=156
+PROFILE_COMPILE granary-shed-fascia-surface-v1 totalMs=209.9551 membersMs=206.5216 alphaMs=192.023752 supports=133 members=534
+PROFILE_COMPILE granary-shed-leftpost-surface-v1 totalMs=22.6043 membersMs=22.5518 alphaMs=22.15029 supports=13 members=30
+PROFILE_COMPILE granary-shed-nearpost-surface-v1 totalMs=28.2383 membersMs=27.8657 alphaMs=27.272336 supports=20 members=45
+PROFILE_COMPILE granary-shed-rightpost-surface-v1 totalMs=10.9673 membersMs=10.9432 alphaMs=10.753456 supports=4 members=10
+PROFILE_COMPILE granary-shed-rearpost-surface-v1 totalMs=12.8481 membersMs=12.8176 alphaMs=12.613429 supports=4 members=10
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/granary-large-grain-v1-candidate.png 2.8367
+PROFILE_COMPILE granary-column-box-surface-v1 totalMs=1935.5001 membersMs=1935.3793 alphaMs=1930.476544 supports=20 members=62
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/southern-supply-main-v1-candidate.png 4.9202
+PROFILE_COMPILE southern-supply-canopy-cloth totalMs=1338.2203 membersMs=1333.9556 alphaMs=1306.676013 supports=145 members=772
+PROFILE_COMPILE southern-supply-canopy-west-post totalMs=35.9119 membersMs=35.8145 alphaMs=33.051228 supports=19 members=56
+PROFILE_COMPILE southern-supply-canopy-front-post totalMs=53.739 membersMs=53.5613 alphaMs=51.665995 supports=35 members=92
+PROFILE_COMPILE southern-supply-canopy-right-post totalMs=27.2558 membersMs=27.1422 alphaMs=26.215105 supports=18 members=50
+PROFILE_COMPILE southern-supply-canopy-rear-post totalMs=12.6614 membersMs=12.6145 alphaMs=11.461263 supports=6 members=20
+PROFILE_COMPILE southern-supply-stock-middle-crate totalMs=586.9892 membersMs=585.121 alphaMs=565.505056 supports=42 members=726
+PROFILE_COMPILE southern-supply-stock-east-crate totalMs=504.2241 membersMs=502.6095 alphaMs=485.501298 supports=39 members=673
+PROFILE_COMPILE granary-courtyard-wall-main totalMs=777.1127 membersMs=775.1894 alphaMs=750.64675 supports=46 members=1045
+PROFILE_COMPILE granary-courtyard-wall-terminal-pier totalMs=399.6443 membersMs=399.3833 alphaMs=388.136159 supports=10 members=254
+PROFILE_COMPILE granary-courtyard-timber-left totalMs=165.9858 membersMs=165.4662 alphaMs=159.689535 supports=39 members=349
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/central-landmark-core-v1-candidate.png 3.2081
+PROFILE_COMPILE central-platform totalMs=2451.2431 membersMs=2443.9516 alphaMs=2424.825075 supports=387 members=918
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/central-east-white-planter-v2-candidate.png 8.2206
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/central-front-wood-planter-v1-candidate.png 3.1108
+PROFILE_COMPILE central-west-bearing totalMs=39.0251 membersMs=38.9269 alphaMs=38.178751 supports=17 members=54
+PROFILE_COMPILE central-west-corner-pier totalMs=233.246 membersMs=233.1525 alphaMs=231.700978 supports=10 members=40
+PROFILE_COMPILE central-south-left-reconstructed totalMs=961.2826 membersMs=959.9449 alphaMs=948.257201 supports=124 members=366
+PROFILE_COMPILE central-south-low-pier totalMs=495.253 membersMs=495.0938 alphaMs=491.732755 supports=11 members=122
+PROFILE_COMPILE central-rear-west-group totalMs=1067.0461 membersMs=1066.1129 alphaMs=1058.744699 supports=130 members=342
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/west-inner-house-v2-candidate.png 3.3369
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/west-inner-blue-house-v1-candidate.png 3.8034
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/west-inner-right-garden-stone-v2-candidate.png 2.63
+PROFILE_COMPILE right-garden-timber totalMs=140.3858 membersMs=138.9661 alphaMs=133.161865 supports=115 members=510
+PROFILE_COMPILE right-garden-soil totalMs=1.5922 membersMs=1.5553 alphaMs=1.3215 supports=17 members=34
+PROFILE_MATERIAL res://assets/native/c07-layered-v1/west-inner-garden-vine-v1-candidate.png 3.3745
+PROFILE_INSTANCE barracks-front-canopy 12.8267
+PROFILE_INSTANCE training-fence 1.3543
+PROFILE_INSTANCE granary-cloth-canopy 14.7876
+PROFILE_INSTANCE granary-low-bin 1.5927
+PROFILE_INSTANCE granary-door-stock-rear 1.113
+PROFILE_INSTANCE granary-door-stock-left 0.3411
+PROFILE_INSTANCE granary-door-stock-right 0.2952
+PROFILE_INSTANCE southeast-gate-stone 3.6729
+PROFILE_INSTANCE southeast-gate-leaf 0.4559
+PROFILE_INSTANCE southwest-gate-stone 2.9286
+PROFILE_INSTANCE southwest-gate-leaf 1.0171
+PROFILE_INSTANCE granary-shed-roof 2.2961
+PROFILE_INSTANCE granary-shed-fascia 4.0862
+PROFILE_INSTANCE granary-shed-leftpost 0.2945
+PROFILE_INSTANCE granary-shed-nearpost 0.5717
+PROFILE_INSTANCE granary-shed-rightpost 0.0486
+PROFILE_INSTANCE granary-shed-rearpost 0.0821
+PROFILE_INSTANCE granary-column-box 0.5147
+PROFILE_INSTANCE southern-supply-canopy-cloth 6.5544
+PROFILE_INSTANCE southern-supply-canopy-west-post 2.3866
+PROFILE_INSTANCE southern-supply-canopy-front-post 1.7061
+PROFILE_INSTANCE southern-supply-canopy-right-post 0.9733
+PROFILE_INSTANCE southern-supply-canopy-rear-post 0.2793
+PROFILE_INSTANCE southern-supply-stock-middle-crate 3.7422
+PROFILE_INSTANCE southern-supply-stock-east-crate 4.2386
+PROFILE_INSTANCE granary-courtyard-wall-main 6.9286
+PROFILE_INSTANCE granary-courtyard-wall-terminal-pier 0.6334
+PROFILE_INSTANCE granary-courtyard-timber-left 2.9581
+PROFILE_INSTANCE central-platform 7.8303
+PROFILE_INSTANCE central-west-bearing 0.3461
+PROFILE_INSTANCE central-west-corner-pier 0.1731
+PROFILE_INSTANCE central-south-left-planter 2.0852
+PROFILE_INSTANCE central-south-low-pier 0.4359
+PROFILE_INSTANCE central-rear-west-group 3.0625
+PROFILE_INSTANCE right-garden-timber 2.9037
+PROFILE_INSTANCE right-garden-soil 0.3027
+PROFILE_GROUND_CREATE 19807.8718
+FULL_SCENE_FRAME_SAMPLE_COMPLETE selected

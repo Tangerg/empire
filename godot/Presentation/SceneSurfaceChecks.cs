@@ -20,11 +20,48 @@ public partial class SceneSurfaceChecks : Node
         {
             Check();
             CheckDrawGrouping();
+            CheckOpaqueCertificates();
             GD.Print($"SCENE_SURFACE_CHECKS_OK {_assertions} assertions");
             GetTree().Quit();
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
     }
+    private void CheckOpaqueCertificates()
+    {
+        using var image = Image.CreateEmpty(8, 8, false, Image.Format.Rgba8);
+        image.Fill(Colors.White);
+        image.SetPixel(7, 7, Colors.Transparent);
+        image.SetPixel(3, 3, new Color(1, 1, 1, 244 / 255f));
+        image.SetPixel(4, 3, new Color(1, 1, 1, 245 / 255f));
+        using var texture = ImageTexture.CreateFromImage(image);
+        using var material = new CompiledSceneSurface.Material(texture);
+        Require(material.ContainsOnlyOpaqueTexels(new Rect2(0, 0, 2, 2)), "Opaque rectangle must pass despite unrelated transparent pixels.");
+        Require(!material.ContainsOnlyOpaqueTexels(new Rect2(2, 2, 2, 2)), "Internal low-alpha texel must prevent rectangle certification.");
+        Require(!material.ContainsOnlyOpaqueTexels(new Rect2(3, 3, 0, 0)), "Degenerate UV point below original threshold must fail certificate.");
+        Require(material.ContainsOnlyOpaqueTexels(new Rect2(4, 3, 0, 0)), "Original 245/255 threshold boundary must pass without raising opacity requirements.");
+        Require(!material.ContainsOnlyOpaqueTexels(new Rect2(0, 0, 7, 7)), "Last row and column are included, not omitted by a half-open prefix query.");
+        Require(!material.ContainsOnlyOpaqueTexels(new Rect2(2.9f, 2.9f, .2f, .2f)), "Fractional UV bounds must include the same endpoint texels as exact validation.");
+        var allRectanglesAgree = true;
+        for (var top = 0; top < 8; top++)
+            for (var left = 0; left < 8; left++)
+                for (var bottom = top; bottom < 8; bottom++)
+                    for (var right = left; right < 8; right++)
+                    {
+                        var expected = true;
+                        for (var y = top; y <= bottom; y++)
+                            for (var x = left; x <= right; x++)
+                                expected &= material.Alpha(x, y) >= .96f;
+                        allRectanglesAgree &= material.ContainsOnlyOpaqueTexels(new Rect2(left, top, right - left, bottom - top)) == expected;
+                    }
+        Require(allRectanglesAgree, "Every closed rectangle certificate must equal direct immutable-pixel inspection.");
+        using var delayedMaterial = new CompiledSceneSurface.Material(texture);
+        image.Fill(Colors.White);
+        texture.Update(image);
+        Require(delayedMaterial.Alpha(3, 3) < .96f && !delayedMaterial.ContainsOnlyOpaqueTexels(new Rect2(3, 3, 0, 0)),
+            "First lazy certificate after a source update must still derive from the original material snapshot.");
+        Require(!material.ContainsOnlyOpaqueTexels(new Rect2(3, 3, 0, 0)), "Compiled material certificate must remain tied to its captured pixels, not later source changes.");
+    }
+
     private void CheckDrawGrouping()
     {
         using var image = Image.CreateEmpty(8, 8, false, Image.Format.Rgba8);
@@ -251,6 +288,21 @@ public partial class SceneSurfaceChecks : Node
             { rejected = true; }
             Require(rejected, "Transparent holes and the original 239-alpha threshold negative must retain exhaustive validation.");
         }
+        using var outsideImage = Image.CreateEmpty(8, 8, false, Image.Format.Rgba8);
+        outsideImage.Fill(Colors.White);
+        outsideImage.SetPixel(7, 7, Colors.Transparent);
+        using var outsideTexture = ImageTexture.CreateFromImage(outsideImage);
+        Require(CompiledSceneSurface.Compile(Document(Member("outside-hole", "foot", "opaque",
+            [[0, 0], [7, 0], [0, 7]])), outsideTexture, "outside-hole") is not null,
+            "A bad texel inside the bounding rectangle but outside the triangle must trigger exact fallback, not rejection.");
+        outsideImage.SetPixel(2, 2, new Color(1, 1, 1, 244 / 255f));
+        using var interiorTexture = ImageTexture.CreateFromImage(outsideImage);
+        var interiorRejected = false;
+        try { CompiledSceneSurface.Compile(Document(Member("interior-hole", "foot", "opaque",
+            [[0, 0], [7, 0], [0, 7]])), interiorTexture, "interior-hole"); }
+        catch (InvalidOperationException error) when (error.Message.Contains("Opaque surface material includes transparency", StringComparison.Ordinal))
+        { interiorRejected = true; }
+        Require(interiorRejected, "Opaque vertices cannot conceal an interior low-alpha texel through the rectangle fast path.");
         sampler.Free();
     }
 }

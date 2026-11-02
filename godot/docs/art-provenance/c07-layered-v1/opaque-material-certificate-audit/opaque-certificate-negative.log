@@ -1,0 +1,13 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+ERROR: System.InvalidOperationException: Expected surface rejection: Opaque surface material includes transparency
+   at Empire.Presentation.SceneSurfaceChecks.<Check>g__Reject|5_2(SceneSurfaceDocument document, String expected, <>c__DisplayClass5_0&) in /workspace/scratch/84c9fe948755/empire-ground-profile/godot/Presentation/SceneSurfaceChecks.cs:line 178
+   at Empire.Presentation.SceneSurfaceChecks.Check() in /workspace/scratch/84c9fe948755/empire-ground-profile/godot/Presentation/SceneSurfaceChecks.cs:line 181
+   at Empire.Presentation.SceneSurfaceChecks._Ready() in /workspace/scratch/84c9fe948755/empire-ground-profile/godot/Presentation/SceneSurfaceChecks.cs:line 21
+   at: void Empire.Presentation.SceneSurfaceChecks._Ready() (res://Presentation/SceneSurfaceChecks.cs:21)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void Empire.Presentation.SceneSurfaceChecks._Ready() (/workspace/scratch/84c9fe948755/empire-ground-profile/godot/Presentation/SceneSurfaceChecks.cs:21)
+       [2] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [3] bool Empire.Presentation.SceneSurfaceChecks.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/empire-ground-profile/godot/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/Empire.Presentation.SceneSurfaceChecks_ScriptMethods.generated.cs:80)
+       [4] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)

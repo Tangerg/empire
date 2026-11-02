@@ -1,0 +1,1724 @@
+{
+  "variant": "selected",
+  "scope": "Entire current selected assembly / explicitly unselected left stone variant, complete initial-state roster without actions; fixed fit-map camera;10sec warmup\u002B20sec sample;llvmpipe and shared cloud CPU, NOT user hardware FPS or whole-scene acceptance",
+  "stateUnchanged": true,
+  "buildMs": 6210.9653,
+  "buildPhases": {
+    "initialEngineStateMs": 300.3789,
+    "sceneAndRenderingLoadedMs": 372.086,
+    "boardConfiguredMs": 447.2191,
+    "groundConfiguredMs": 3233.1956,
+    "dynamicConfiguredMs": 3237.7864,
+    "initialRenderStateMs": 6201.794
+  },
+  "viewport": [
+    1180,
+    812
+  ],
+  "entries": 4524,
+  "sceneScale": 0.73046875,
+  "renderIssues": 0,
+  "initialUnits": 23,
+  "spriteNodes": 2412,
+  "totalBoardNodes": 7459,
+  "polygonNodes": 2722,
+  "triangles": 24316,
+  "patches": 145245,
+  "partitions": 463,
+  "samples": [
+    {
+      "elapsed": 10.045833333333348,
+      "delta": 0.08125,
+      "processMs": 88.874,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 10.12708333333335,
+      "delta": 0.08125,
+      "processMs": 88.874,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 10.20826733333335,
+      "delta": 0.08118400000000031,
+      "processMs": 88.874,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 10.28951733333335,
+      "delta": 0.08125,
+      "processMs": 88.874,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 10.370767333333351,
+      "delta": 0.08125,
+      "processMs": 88.874,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 10.452017333333352,
+      "delta": 0.08125,
+      "processMs": 88.874,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 10.533498814814834,
+      "delta": 0.08148148148148149,
+      "processMs": 92.36999999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 10.628063666666685,
+      "delta": 0.09456485185185186,
+      "processMs": 92.36999999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 10.732387666666686,
+      "delta": 0.104324,
+      "processMs": 92.36999999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 10.816567666666685,
+      "delta": 0.08418,
+      "processMs": 92.36999999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 10.900000000000018,
+      "delta": 0.08343233333333284,
+      "processMs": 92.36999999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 10.995319666666685,
+      "delta": 0.09531966666666715,
+      "processMs": 92.36999999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 11.090985666666684,
+      "delta": 0.095666,
+      "processMs": 92.36999999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 11.182652333333351,
+      "delta": 0.09166666666666666,
+      "processMs": 92.36999999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 11.271324333333352,
+      "delta": 0.088672,
+      "processMs": 92.36999999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 11.352641333333352,
+      "delta": 0.081317,
+      "processMs": 92.36999999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 11.429968333333353,
+      "delta": 0.077327,
+      "processMs": 92.36999999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 11.504626333333352,
+      "delta": 0.074658,
+      "processMs": 103.676,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 11.584594333333351,
+      "delta": 0.079968,
+      "processMs": 103.676,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 11.66094033333335,
+      "delta": 0.076346,
+      "processMs": 103.676,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 11.738718111111128,
+      "delta": 0.07777777777777778,
+      "processMs": 103.676,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 11.815384777777794,
+      "delta": 0.07666666666666666,
+      "processMs": 103.676,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 11.88909033333335,
+      "delta": 0.07370555555555555,
+      "processMs": 103.676,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 11.965280809523826,
+      "delta": 0.07619047619047618,
+      "processMs": 103.676,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 12.041947476190492,
+      "delta": 0.07666666666666666,
+      "processMs": 103.676,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 12.118614142857158,
+      "delta": 0.07666666666666666,
+      "processMs": 103.676,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 12.195280809523824,
+      "delta": 0.07666666666666666,
+      "processMs": 103.676,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 12.27194747619049,
+      "delta": 0.07666666666666666,
+      "processMs": 103.676,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 12.34833636507938,
+      "delta": 0.07638888888888888,
+      "processMs": 103.676,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 12.424725253968269,
+      "delta": 0.07638888888888888,
+      "processMs": 103.676,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 12.500599333333348,
+      "delta": 0.07587407936507942,
+      "processMs": 80.92,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 12.576988222222237,
+      "delta": 0.07638888888888888,
+      "processMs": 80.92,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 12.653377111111126,
+      "delta": 0.07638888888888888,
+      "processMs": 80.92,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 12.729766000000016,
+      "delta": 0.07638888888888888,
+      "processMs": 80.92,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 12.806154888888905,
+      "delta": 0.07638888888888888,
+      "processMs": 80.92,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 12.882543777777794,
+      "delta": 0.07638888888888888,
+      "processMs": 80.92,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 12.958932666666684,
+      "delta": 0.07638888888888888,
+      "processMs": 80.92,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 13.035321555555573,
+      "delta": 0.07638888888888888,
+      "processMs": 80.92,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 13.111710444444462,
+      "delta": 0.07638888888888888,
+      "processMs": 80.92,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 13.188377111111128,
+      "delta": 0.07666666666666666,
+      "processMs": 80.92,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 13.265043777777795,
+      "delta": 0.07666666666666666,
+      "processMs": 80.92,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 13.34171044444446,
+      "delta": 0.07666666666666666,
+      "processMs": 80.92,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 13.418377111111127,
+      "delta": 0.07666666666666666,
+      "processMs": 80.92,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 13.495043777777793,
+      "delta": 0.07666666666666666,
+      "processMs": 85.973,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 13.583878666666681,
+      "delta": 0.088834888888889,
+      "processMs": 85.973,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 13.670682666666682,
+      "delta": 0.086804,
+      "processMs": 85.973,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 13.755912666666681,
+      "delta": 0.08523,
+      "processMs": 85.973,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 13.839246000000015,
+      "delta": 0.08333333333333333,
+      "processMs": 85.973,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 13.92257933333335,
+      "delta": 0.08333333333333333,
+      "processMs": 85.973,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 14.00151133333335,
+      "delta": 0.078932,
+      "processMs": 85.973,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 14.08000133333335,
+      "delta": 0.07849,
+      "processMs": 85.973,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 14.159024333333349,
+      "delta": 0.079023,
+      "processMs": 85.973,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 14.23815033333335,
+      "delta": 0.079126,
+      "processMs": 85.973,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 14.318678333333349,
+      "delta": 0.080528,
+      "processMs": 85.973,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 14.39675033333335,
+      "delta": 0.078072,
+      "processMs": 85.973,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 14.47653833333335,
+      "delta": 0.079788,
+      "processMs": 85.973,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 14.55653833333335,
+      "delta": 0.08,
+      "processMs": 93.69800000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 14.638089666666684,
+      "delta": 0.08155133333333334,
+      "processMs": 93.69800000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 14.718089666666684,
+      "delta": 0.08,
+      "processMs": 93.69800000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 14.797719296296313,
+      "delta": 0.07962962962962963,
+      "processMs": 93.69800000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 14.877719296296313,
+      "delta": 0.08,
+      "processMs": 93.69800000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 15.000000000000016,
+      "delta": 0.12228070370370304,
+      "processMs": 93.69800000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 15.088457000000016,
+      "delta": 0.08845700000000065,
+      "processMs": 93.69800000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 15.18061133333335,
+      "delta": 0.09215433333333334,
+      "processMs": 93.69800000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 15.26721433333335,
+      "delta": 0.086603,
+      "processMs": 93.69800000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 15.360547666666683,
+      "delta": 0.09333333333333332,
+      "processMs": 93.69800000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 15.45310233333335,
+      "delta": 0.09255466666666669,
+      "processMs": 93.69800000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 15.522959000000016,
+      "delta": 0.06985666666666666,
+      "processMs": 116.271,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 15.60629233333335,
+      "delta": 0.08333333333333333,
+      "processMs": 116.271,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 15.675504000000016,
+      "delta": 0.06921166666666667,
+      "processMs": 116.271,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 15.753281777777794,
+      "delta": 0.07777777777777778,
+      "processMs": 116.271,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 15.833333333333348,
+      "delta": 0.08005155555555489,
+      "processMs": 116.271,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 15.911111111111126,
+      "delta": 0.07777777777777778,
+      "processMs": 116.271,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 15.988888888888903,
+      "delta": 0.07777777777777778,
+      "processMs": 116.271,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 16.06666666666668,
+      "delta": 0.07777777777777778,
+      "processMs": 116.271,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 16.147841666666682,
+      "delta": 0.08117500000000068,
+      "processMs": 116.271,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 16.232935666666684,
+      "delta": 0.085094,
+      "processMs": 116.271,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 16.310937666666685,
+      "delta": 0.078002,
+      "processMs": 116.271,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 16.38927100000002,
+      "delta": 0.07833333333333334,
+      "processMs": 116.271,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 16.468437666666684,
+      "delta": 0.07916666666666666,
+      "processMs": 116.271,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 16.549515666666686,
+      "delta": 0.081078,
+      "processMs": 84.905,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 16.62868233333335,
+      "delta": 0.07916666666666666,
+      "processMs": 84.905,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 16.710658666666685,
+      "delta": 0.08197633333333335,
+      "processMs": 84.905,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 16.78982533333335,
+      "delta": 0.07916666666666666,
+      "processMs": 84.905,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 16.86982533333335,
+      "delta": 0.08,
+      "processMs": 84.905,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 16.95225266666668,
+      "delta": 0.08242733333333332,
+      "processMs": 84.905,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 17.032555696969712,
+      "delta": 0.0803030303030303,
+      "processMs": 84.905,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 17.11255569696971,
+      "delta": 0.08,
+      "processMs": 84.905,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 17.19255569696971,
+      "delta": 0.08,
+      "processMs": 84.905,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 17.272555696969707,
+      "delta": 0.08,
+      "processMs": 84.905,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 17.352555696969706,
+      "delta": 0.08,
+      "processMs": 84.905,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 17.430450333333344,
+      "delta": 0.07789463636363635,
+      "processMs": 84.905,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 17.509754333333344,
+      "delta": 0.079304,
+      "processMs": 83.761,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 17.589754333333342,
+      "delta": 0.08,
+      "processMs": 83.761,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 17.670057363636374,
+      "delta": 0.0803030303030303,
+      "processMs": 83.761,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 17.751718666666676,
+      "delta": 0.08166130303030303,
+      "processMs": 83.761,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 17.833333333333343,
+      "delta": 0.08161466666666589,
+      "processMs": 83.761,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 17.913636363636375,
+      "delta": 0.0803030303030303,
+      "processMs": 83.761,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 17.993939393939407,
+      "delta": 0.0803030303030303,
+      "processMs": 83.761,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 18.07424242424244,
+      "delta": 0.0803030303030303,
+      "processMs": 83.761,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 18.16095166666668,
+      "delta": 0.08670924242424319,
+      "processMs": 83.761,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 18.25291966666668,
+      "delta": 0.091968,
+      "processMs": 83.761,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 18.336253000000013,
+      "delta": 0.08333333333333333,
+      "processMs": 83.761,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 18.419586333333346,
+      "delta": 0.08333333333333333,
+      "processMs": 83.761,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 18.502919666666678,
+      "delta": 0.08333333333333333,
+      "processMs": 91.839,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 18.58625300000001,
+      "delta": 0.08333333333333333,
+      "processMs": 91.839,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 18.664924333333342,
+      "delta": 0.07867133333333336,
+      "processMs": 91.839,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 18.74415033333334,
+      "delta": 0.079226,
+      "processMs": 91.839,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 18.821651333333342,
+      "delta": 0.077501,
+      "processMs": 91.839,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 18.896888333333344,
+      "delta": 0.075237,
+      "processMs": 91.839,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 18.97605500000001,
+      "delta": 0.07916666666666666,
+      "processMs": 91.839,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 19.053151333333343,
+      "delta": 0.07709633333333334,
+      "processMs": 91.839,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 19.123915333333343,
+      "delta": 0.070764,
+      "processMs": 91.839,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 19.197042333333343,
+      "delta": 0.073127,
+      "processMs": 91.839,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 19.272042333333342,
+      "delta": 0.075,
+      "processMs": 91.839,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 19.350736666666677,
+      "delta": 0.07869433333333334,
+      "processMs": 91.839,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 19.427403333333345,
+      "delta": 0.07666666666666666,
+      "processMs": 91.839,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 19.505745666666677,
+      "delta": 0.07834233333333333,
+      "processMs": 89.05399999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 19.582058666666676,
+      "delta": 0.076313,
+      "processMs": 89.05399999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 19.661300666666676,
+      "delta": 0.079242,
+      "processMs": 89.05399999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 19.738735666666678,
+      "delta": 0.077435,
+      "processMs": 89.05399999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 19.82237066666668,
+      "delta": 0.083635,
+      "processMs": 89.05399999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 19.90560066666668,
+      "delta": 0.08323,
+      "processMs": 89.05399999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 19.983333333333345,
+      "delta": 0.0777326666666658,
+      "processMs": 89.05399999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 20.06250000000001,
+      "delta": 0.07916666666666666,
+      "processMs": 89.05399999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 20.141666666666676,
+      "delta": 0.07916666666666666,
+      "processMs": 89.05399999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 20.221296296296305,
+      "delta": 0.07962962962962963,
+      "processMs": 89.05399999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 20.300000000000008,
+      "delta": 0.07870370370370369,
+      "processMs": 89.05399999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 20.388243666666675,
+      "delta": 0.08824366666666755,
+      "processMs": 89.05399999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 20.471577000000007,
+      "delta": 0.08333333333333333,
+      "processMs": 89.05399999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 20.55491033333334,
+      "delta": 0.08333333333333333,
+      "processMs": 91.27000000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 20.678942000000006,
+      "delta": 0.12403166666666668,
+      "processMs": 91.27000000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 20.766666666666673,
+      "delta": 0.08772466666666578,
+      "processMs": 91.27000000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 20.861111111111118,
+      "delta": 0.09444444444444444,
+      "processMs": 91.27000000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 20.949257333333343,
+      "delta": 0.0881462222222231,
+      "processMs": 91.27000000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 21.024219333333342,
+      "delta": 0.074962,
+      "processMs": 91.27000000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 21.110886000000008,
+      "delta": 0.08666666666666667,
+      "processMs": 91.27000000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 21.18526533333334,
+      "delta": 0.07437933333333334,
+      "processMs": 91.27000000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 21.270979619047626,
+      "delta": 0.08571428571428572,
+      "processMs": 91.27000000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 21.356396285714293,
+      "delta": 0.08541666666666667,
+      "processMs": 91.27000000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 21.44158147089948,
+      "delta": 0.08518518518518518,
+      "processMs": 91.27000000000001,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 21.53333333333334,
+      "delta": 0.09175186243386152,
+      "processMs": 120.76,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 21.618518518518524,
+      "delta": 0.08518518518518518,
+      "processMs": 120.76,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 21.70072433333334,
+      "delta": 0.08220581481481572,
+      "processMs": 120.76,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 21.77614033333334,
+      "delta": 0.075416,
+      "processMs": 120.76,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 21.859473666666673,
+      "delta": 0.08333333333333333,
+      "processMs": 120.76,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 21.94023633333334,
+      "delta": 0.08076266666666666,
+      "processMs": 120.76,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 22.01770633333334,
+      "delta": 0.07747,
+      "processMs": 120.76,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 22.09284833333334,
+      "delta": 0.075142,
+      "processMs": 120.76,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 22.16878133333334,
+      "delta": 0.075933,
+      "processMs": 120.76,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 22.250000000000004,
+      "delta": 0.08121866666666575,
+      "processMs": 120.76,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 22.328571428571433,
+      "delta": 0.07857142857142857,
+      "processMs": 120.76,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 22.41538366666667,
+      "delta": 0.08681223809523902,
+      "processMs": 120.76,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 22.50351966666667,
+      "delta": 0.088136,
+      "processMs": 99.96,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 22.58944966666667,
+      "delta": 0.08593,
+      "processMs": 99.96,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 22.714095000000004,
+      "delta": 0.12464533333333333,
+      "processMs": 99.96,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 22.812943333333337,
+      "delta": 0.09884833333333333,
+      "processMs": 99.96,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 22.898581333333336,
+      "delta": 0.085638,
+      "processMs": 99.96,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 22.985199333333338,
+      "delta": 0.086618,
+      "processMs": 99.96,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 23.07275733333334,
+      "delta": 0.087558,
+      "processMs": 99.96,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 23.15920533333334,
+      "delta": 0.086448,
+      "processMs": 99.96,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 23.250872000000005,
+      "delta": 0.09166666666666666,
+      "processMs": 99.96,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 23.338587333333336,
+      "delta": 0.08771533333333334,
+      "processMs": 99.96,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 23.415018333333336,
+      "delta": 0.076431,
+      "processMs": 99.96,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 23.491543333333336,
+      "delta": 0.076525,
+      "processMs": 116.154,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 23.57487666666667,
+      "delta": 0.08333333333333333,
+      "processMs": 116.154,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 23.649040333333335,
+      "delta": 0.07416366666666667,
+      "processMs": 116.154,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 23.726586333333337,
+      "delta": 0.077546,
+      "processMs": 116.154,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 23.800214333333336,
+      "delta": 0.073628,
+      "processMs": 116.154,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 23.876007333333337,
+      "delta": 0.075793,
+      "processMs": 116.154,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 23.951097333333337,
+      "delta": 0.07509,
+      "processMs": 116.154,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 24.027218333333337,
+      "delta": 0.076121,
+      "processMs": 116.154,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 24.104491060606065,
+      "delta": 0.07727272727272727,
+      "processMs": 116.154,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 24.175433333333338,
+      "delta": 0.07094227272727273,
+      "processMs": 116.154,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 24.248574333333337,
+      "delta": 0.073141,
+      "processMs": 116.154,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 24.322420333333337,
+      "delta": 0.073846,
+      "processMs": 116.154,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 24.397053333333336,
+      "delta": 0.074633,
+      "processMs": 116.154,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 24.469071333333336,
+      "delta": 0.072018,
+      "processMs": 116.154,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 24.544071333333335,
+      "delta": 0.075,
+      "processMs": 84.199,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 24.619071333333334,
+      "delta": 0.075,
+      "processMs": 84.199,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 24.694071333333333,
+      "delta": 0.075,
+      "processMs": 84.199,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 24.769071333333333,
+      "delta": 0.075,
+      "processMs": 84.199,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 24.845060666666665,
+      "delta": 0.07598933333333334,
+      "processMs": 84.199,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 24.923087666666664,
+      "delta": 0.078027,
+      "processMs": 84.199,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 24.999707666666662,
+      "delta": 0.07662,
+      "processMs": 84.199,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 25.076437666666664,
+      "delta": 0.07673,
+      "processMs": 84.199,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 25.153752666666662,
+      "delta": 0.077315,
+      "processMs": 84.199,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 25.23005466666666,
+      "delta": 0.076302,
+      "processMs": 84.199,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 25.305812242424235,
+      "delta": 0.07575757575757576,
+      "processMs": 84.199,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 25.38156981818181,
+      "delta": 0.07575757575757576,
+      "processMs": 84.199,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 25.457327393939384,
+      "delta": 0.07575757575757576,
+      "processMs": 84.199,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 25.538647666666655,
+      "delta": 0.08132027272727271,
+      "processMs": 85.367,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 25.624377666666657,
+      "delta": 0.08573,
+      "processMs": 85.367,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 25.710188666666657,
+      "delta": 0.085811,
+      "processMs": 85.367,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 25.790744222222212,
+      "delta": 0.08055555555555555,
+      "processMs": 85.367,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 25.866666666666656,
+      "delta": 0.07592244444444345,
+      "processMs": 85.367,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 25.946666666666655,
+      "delta": 0.08,
+      "processMs": 85.367,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 26.026666666666653,
+      "delta": 0.08,
+      "processMs": 85.367,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 26.10666666666665,
+      "delta": 0.08,
+      "processMs": 85.367,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 26.184869333333317,
+      "delta": 0.07820266666666767,
+      "processMs": 85.367,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 26.264869333333316,
+      "delta": 0.08,
+      "processMs": 85.367,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 26.342483333333316,
+      "delta": 0.077614,
+      "processMs": 85.367,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 26.419688333333315,
+      "delta": 0.077205,
+      "processMs": 85.367,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 26.495986333333317,
+      "delta": 0.076298,
+      "processMs": 85.658,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 26.575152999999982,
+      "delta": 0.07916666666666666,
+      "processMs": 85.658,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 26.654436666666648,
+      "delta": 0.07928366666666667,
+      "processMs": 85.658,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 26.73753266666665,
+      "delta": 0.083096,
+      "processMs": 85.658,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 26.82065266666665,
+      "delta": 0.08312,
+      "processMs": 85.658,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 26.901208222222206,
+      "delta": 0.08055555555555555,
+      "processMs": 85.658,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 26.99752066666665,
+      "delta": 0.09631244444444446,
+      "processMs": 85.658,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 27.07966466666665,
+      "delta": 0.082144,
+      "processMs": 85.658,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 27.16646466666665,
+      "delta": 0.0868,
+      "processMs": 85.658,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 27.27901199999998,
+      "delta": 0.11254733333333333,
+      "processMs": 85.658,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 27.366666666666646,
+      "delta": 0.0876546666666656,
+      "processMs": 85.658,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 27.43698799999998,
+      "delta": 0.0703213333333344,
+      "processMs": 85.658,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 27.52799999999998,
+      "delta": 0.091012,
+      "processMs": 104.022,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 27.611333333333313,
+      "delta": 0.08333333333333333,
+      "processMs": 104.022,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 27.694666666666645,
+      "delta": 0.08333333333333333,
+      "processMs": 104.022,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 27.777999999999977,
+      "delta": 0.08333333333333333,
+      "processMs": 104.022,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 27.872119666666645,
+      "delta": 0.09411966666666667,
+      "processMs": 104.022,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 27.967614666666645,
+      "delta": 0.095495,
+      "processMs": 104.022,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 28.094234666666644,
+      "delta": 0.12662,
+      "processMs": 104.022,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 28.194234666666645,
+      "delta": 0.1,
+      "processMs": 104.022,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 28.288070333333312,
+      "delta": 0.09383566666666666,
+      "processMs": 104.022,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 28.370841333333313,
+      "delta": 0.082771,
+      "processMs": 104.022,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 28.468385333333313,
+      "delta": 0.097544,
+      "processMs": 104.022,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 28.554840333333313,
+      "delta": 0.086455,
+      "processMs": 126.476,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 28.639324333333313,
+      "delta": 0.084484,
+      "processMs": 126.476,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 28.722252333333312,
+      "delta": 0.082928,
+      "processMs": 126.476,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 28.806608333333312,
+      "delta": 0.084356,
+      "processMs": 126.476,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 28.890723333333312,
+      "delta": 0.084115,
+      "processMs": 126.476,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 28.976437619047598,
+      "delta": 0.08571428571428572,
+      "processMs": 126.476,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 29.061555333333313,
+      "delta": 0.08511771428571428,
+      "processMs": 126.476,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 29.149999999999977,
+      "delta": 0.08844466666666558,
+      "processMs": 126.476,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 29.235714285714263,
+      "delta": 0.08571428571428572,
+      "processMs": 126.476,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 29.323981666666644,
+      "delta": 0.08826738095238204,
+      "processMs": 126.476,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 29.430440666666644,
+      "delta": 0.106459,
+      "processMs": 126.476,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 29.547857999999977,
+      "delta": 0.11741733333333333,
+      "processMs": 108.89699999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 29.64265733333331,
+      "delta": 0.09479933333333333,
+      "processMs": 108.89699999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 29.73593333333331,
+      "delta": 0.093276,
+      "processMs": 108.89699999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 29.820671333333312,
+      "delta": 0.084738,
+      "processMs": 108.89699999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    },
+    {
+      "elapsed": 29.917893555555533,
+      "delta": 0.09722222222222221,
+      "processMs": 108.89699999999999,
+      "drawCalls": 2298,
+      "nodes": 7464
+    }
+  ]
+}
