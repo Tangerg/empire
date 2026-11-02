@@ -1,0 +1,22 @@
+[
+  {
+    "case": "filled-hole",
+    "requiredAssertion": "Open garden trellis must retain explicit real holes without material",
+    "matched": true
+  },
+  {
+    "case": "early-wood",
+    "requiredAssertion": "Independent garden wood must cover its fixed material points before the orange house when overlapping",
+    "matched": true
+  },
+  {
+    "case": "stone-shift",
+    "requiredAssertion": "Fixed garden stone material must remain behind actual front actor and permit UnitPick",
+    "matched": true
+  },
+  {
+    "case": "late-soil",
+    "requiredAssertion": "Actual opaque rooted stem must remain in front of its ground-level soil and retain pass-through semantics",
+    "matched": true
+  }
+]
