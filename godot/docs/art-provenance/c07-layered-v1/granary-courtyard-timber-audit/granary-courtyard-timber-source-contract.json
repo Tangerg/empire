@@ -1,0 +1,202 @@
+{
+  "scope": "Manual inspection of original visible wood boundaries; measured ranges not assertion tolerance",
+  "source": "empire-c01/godot/assets/native/scenes/luojia.png",
+  "sha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+  "posts": [
+    {
+      "name": "left",
+      "capRange": [
+        291,
+        181,
+        292,
+        184
+      ],
+      "shaftX": [
+        289,
+        293
+      ],
+      "visibleWoodFoot": [
+        291,
+        208
+      ],
+      "contactEdgeY": 209,
+      "groundMixY": 210
+    },
+    {
+      "name": "middle",
+      "capRange": [
+        309,
+        192,
+        311,
+        195
+      ],
+      "shaftX": [
+        307,
+        311
+      ],
+      "visibleWoodFoot": [
+        309,
+        219
+      ],
+      "groundMixY": 220
+    },
+    {
+      "name": "right",
+      "capRange": [
+        324,
+        194,
+        326,
+        197
+      ],
+      "shaftX": [
+        323,
+        326
+      ],
+      "visibleWoodFoot": [
+        325,
+        223
+      ],
+      "mixedEdgeY": 224,
+      "grassY": [
+        225,
+        226
+      ],
+      "hiddenFoot": "not source-certified; candidate half-pixel completion"
+    }
+  ],
+  "beamVisibleInternalEndpoints": [
+    [
+      [
+        292,
+        190
+      ],
+      [
+        305,
+        197
+      ]
+    ],
+    [
+      [
+        311,
+        201
+      ],
+      [
+        323,
+        205
+      ]
+    ],
+    [
+      [
+        293,
+        205
+      ],
+      [
+        306,
+        214
+      ]
+    ],
+    [
+      [
+        312,
+        216
+      ],
+      [
+        323,
+        221
+      ]
+    ]
+  ],
+  "beamThicknessApprox": [
+    2,
+    3
+  ],
+  "holes": [
+    {
+      "pixel": [
+        296,
+        196
+      ],
+      "rgba": [
+        246,
+        206,
+        160
+      ]
+    },
+    {
+      "pixel": [
+        319,
+        207
+      ],
+      "rgba": [
+        246,
+        213,
+        161
+      ]
+    },
+    {
+      "pixel": [
+        313,
+        204
+      ],
+      "rgba": [
+        208,
+        174,
+        130
+      ]
+    }
+  ],
+  "redWoodWitness": {
+    "sample": [
+      314.5,
+      212.5
+    ],
+    "neighbors": [
+      {
+        "pixel": [
+          314,
+          212
+        ],
+        "rgba": [
+          65,
+          48,
+          33
+        ]
+      },
+      {
+        "pixel": [
+          315,
+          212
+        ],
+        "rgba": [
+          94,
+          62,
+          43
+        ]
+      },
+      {
+        "pixel": [
+          314,
+          213
+        ],
+        "rgba": [
+          52,
+          34,
+          18
+        ]
+      },
+      {
+        "pixel": [
+          315,
+          213
+        ],
+        "rgba": [
+          52,
+          28,
+          19
+        ]
+      }
+    ]
+  },
+  "front265": "painted mask range, NOT physical wood foot",
+  "newDesign": "Subpixel hidden foot completion, immediate beam-post joints and continuous narrow diagonals; source-informed not pixel-identical restoration"
+}

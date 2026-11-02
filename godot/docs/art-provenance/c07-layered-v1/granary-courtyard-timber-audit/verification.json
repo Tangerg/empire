@@ -1,0 +1,25 @@
+{
+  "pureStatic": true,
+  "sourceHoleSamples": 3,
+  "sourceWoodSamples": 1,
+  "actualRoleCases": 12,
+  "materialOverlapCases": 8,
+  "explicitDisjointCases": 4,
+  "materialOverlapPixels": 345,
+  "wrongDepthPixels": 0,
+  "rearRole": "not covered",
+  "targetedNegativeControls": [
+    "late265 exact front-depth assertion",
+    "filled-hole exact material assertion"
+  ],
+  "walkFootBoundDirectedEdges": 146,
+  "walkFootBoundSoleSegments": 37800,
+  "wallRegression": "pass",
+  "productionBuild": "0 warnings0errors",
+  "pausedSaveHashesUnchanged": 6,
+  "selectedInstances": 36,
+  "selectedSites": 6,
+  "selectedDepthEntries": 2637,
+  "art": "geometry candidate only; final art pending",
+  "performance": "not passed"
+}

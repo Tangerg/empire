@@ -1,0 +1,21 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+ERROR: System.InvalidOperationException: Standing material polygon is degenerate: granary-courtyard-timber-left/bay-1-brace-311-3-0.
+   at Empire.Presentation.StandingVisual.ValidatePolygon(Vector2[] points, String identity) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/StandingVisual.cs:line 41
+   at Empire.Presentation.CompiledSceneSurface.Compile(SceneSurfaceDocument document, Material material, String identity) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/CompiledSceneSurface.cs:line 100
+   at Empire.Presentation.AssembledGroundView.Create(AssembledGroundDocument document, Texture2D ground, SceneObjectCatalog catalog, IReadOnlyDictionary`2 textures, JsonObject map, ReadOnlyContent content, ShadowCache shadows) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/AssembledGroundView.cs:line 74
+   at Empire.Presentation.AssembledGroundDocument.<>c__DisplayClass8_0.<Factory>b__0(BoardGroundRules rules, AuthoredScene scene) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/AssembledGroundDocument.cs:line 34
+   at GranaryCourtyardTimberProbe.<>c__DisplayClass0_0.<_Ready>b__1(BoardGroundRules rules, AuthoredScene scene) in /workspace/scratch/84c9fe948755/c07-static-preview/GranaryCourtyardTimberProbe.cs:line 9
+   at Empire.Presentation.BoardView.ConfigureGround(BoardGroundFactory createGround) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:line 84
+   at GranaryCourtyardTimberProbe._Ready() in /workspace/scratch/84c9fe948755/c07-static-preview/GranaryCourtyardTimberProbe.cs:line 9
+   at: void GranaryCourtyardTimberProbe+<_Ready>d__0.MoveNext() (res://GranaryCourtyardTimberProbe.cs:9)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void GranaryCourtyardTimberProbe+<_Ready>d__0.MoveNext() (/workspace/scratch/84c9fe948755/c07-static-preview/GranaryCourtyardTimberProbe.cs:9)
+       [2] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+       [3] void GranaryCourtyardTimberProbe._Ready()
+       [4] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [5] bool GranaryCourtyardTimberProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-static-preview/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/GranaryCourtyardTimberProbe_ScriptMethods.generated.cs:38)
+       [6] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
