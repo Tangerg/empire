@@ -1,0 +1,56 @@
+{
+  "textureResourcePath": "res://central-rear-east-bed-material.png",
+  "supportLine": [
+    [
+      790,
+      454.0
+    ],
+    [
+      819,
+      469.0
+    ]
+  ],
+  "members": [
+    {
+      "id": "front-stone",
+      "polygon": [
+        [
+          790.0,
+          440.0
+        ],
+        [
+          819.0,
+          455.0
+        ],
+        [
+          819.0,
+          469.0
+        ],
+        [
+          790.0,
+          454.0
+        ]
+      ],
+      "uv": [
+        [
+          415,
+          560
+        ],
+        [
+          580,
+          650
+        ],
+        [
+          580,
+          770
+        ],
+        [
+          415,
+          680
+        ]
+      ],
+      "tint": "ffffff",
+      "coverage": "opaque"
+    }
+  ]
+}

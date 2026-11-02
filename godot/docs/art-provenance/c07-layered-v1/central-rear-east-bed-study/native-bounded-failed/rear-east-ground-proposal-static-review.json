@@ -1,0 +1,201 @@
+{
+  "ready": true,
+  "scope": "Only proposed rear-east bed/bench physical ground footprint. Read-only static mathematics; no engine/GUI/save/actions. Rear hidden edge is NEW DESIGN.",
+  "proposalGroundFootprint": [
+    [
+      782,
+      448
+    ],
+    [
+      790,
+      454
+    ],
+    [
+      819,
+      469
+    ],
+    [
+      811,
+      463
+    ]
+  ],
+  "positiveAreaCellIntersections": [
+    {
+      "cell": [
+        48,
+        28
+      ],
+      "terrain": "#",
+      "intersectionArea": 0.4655172413913533
+    },
+    {
+      "cell": [
+        49,
+        28
+      ],
+      "terrain": "#",
+      "intersectionArea": 25.60344827582594
+    },
+    {
+      "cell": [
+        50,
+        28
+      ],
+      "terrain": "#",
+      "intersectionArea": 20.431034482782707
+    },
+    {
+      "cell": [
+        50,
+        29
+      ],
+      "terrain": "#",
+      "intersectionArea": 6.452586206927663
+    },
+    {
+      "cell": [
+        51,
+        29
+      ],
+      "terrain": "#",
+      "intersectionArea": 1.0474137931014411
+    }
+  ],
+  "allPositiveAreaBlocked": true,
+  "walkCorridor": {
+    "testedSegments": 82950,
+    "intersectingSegments": 0,
+    "minimumDistance": 6.3294370261812665,
+    "closest": {
+      "fromCell": [
+        51,
+        27
+      ],
+      "toCell": [
+        51,
+        28
+      ],
+      "west": false,
+      "frame": 3,
+      "soleFramePixel": [
+        42,
+        561
+      ],
+      "segment": [
+        [
+          809.3846224,
+          439.038462
+        ],
+        [
+          809.3846224,
+          455.038462
+        ]
+      ],
+      "kind": "moving-end",
+      "point": [
+        809.3846224,
+        455.038462
+      ],
+      "nearestPoint": [
+        806.4767339666041,
+        460.6603796378987
+      ],
+      "baseEdge": [
+        [
+          811,
+          463
+        ],
+        [
+          782,
+          448
+        ]
+      ],
+      "parameter": 0.15597469080675416
+    },
+    "firstViolations": []
+  },
+  "easternWhitePlanterGroundRelation": {
+    "testedSegments": 4,
+    "intersectingSegments": 0,
+    "minimumDistance": 5.661606839051966,
+    "closest": {
+      "proposalEdge": 1,
+      "segment": [
+        [
+          790.0,
+          454.0
+        ],
+        [
+          819.0,
+          469.0
+        ]
+      ],
+      "kind": "moving-end",
+      "point": [
+        819.0,
+        469.0
+      ],
+      "nearestPoint": [
+        823.164,
+        472.836
+      ],
+      "baseEdge": [
+        [
+          823.164,
+          472.836
+        ],
+        [
+          834,
+          467
+        ]
+      ],
+      "parameter": 0.0
+    },
+    "firstViolations": [],
+    "whiteVerticesInsideProposal": 0,
+    "groundDomainsDisjoint": true
+  },
+  "coreVisibleFootSampleRelation": {
+    "count": 670,
+    "insideProposalCount": 0,
+    "insideProposalSamples": [],
+    "minimumDistance": 9.532550829614499,
+    "closest": {
+      "coreFoot": {
+        "texture": [
+          853,
+          1208
+        ],
+        "source": [
+          800.775,
+          470.3055
+        ],
+        "canonicalCell": [
+          50,
+          29
+        ]
+      },
+      "proposalEdge": [
+        [
+          790,
+          454
+        ],
+        [
+          819,
+          469
+        ]
+      ],
+      "nearestPoint": [
+        805.154472326454,
+        461.8385201688555
+      ]
+    },
+    "hiddenCoreGroundVolume": "NOT CERTIFIED: visible lower front/side samples do not prove a complete hidden rear footprint. No envelope-based intersection or global separation claim.",
+    "sourceFile": "central-landmark-footing-result.json/visibleFootSamples"
+  },
+  "limitations": [
+    "Core conservative envelope735453..803489 was deliberately NOT used as physical body.",
+    "This does not certify upper stone-body/interior volume separation or visual depth; projected material overlap is not itself ground interpenetration.",
+    "Same175 frozen Torren front-support lower-edge points,2frames,actual possible facings,324legal edges; not all appearances or live motion."
+  ]
+}
