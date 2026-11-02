@@ -1,0 +1,884 @@
+{
+  "ready": true,
+  "scope": "Bounded original-blue-house stone texel / frozen real Torren shoe contour sweep. Original visual pixel material is checked independently; terrain p alone is not used as a defect. No GUI, engine or save.",
+  "inputs": {
+    "frozenBoots": "/workspace/scratch/84c9fe948755/c07-static-preview/central-east-planter-review/rear-white-planter-new-base-walk-corridor.json",
+    "frozenBootsSha256": "9a497fd961bbfd00911b85e1f7403304720c9157cad4c864103c045c16dba7d7",
+    "source": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/scenes/luojia.png",
+    "sourceSha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+    "actor": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/painted-units-v1/torren-stage01-v2.png",
+    "actorSha256": "c89c3b4a061791e3c632563ed893c800e525fc712fd4830c7f3b68b73b2f3b36"
+  },
+  "animationSource": "godot/Presentation/BoardView.Animation.cs:197-221; walk-a/b chosen per segment parity, nonzero projected X changes facing, vertical retains it, actor stays at linearly interpolated contact with no whole-body bob.",
+  "sourceContactTransform": "16*cell+8 plus signed(framePixel-frameAnchor)*.0961538",
+  "legalCellBoundsInclusive": {
+    "x": [
+      27,
+      30
+    ],
+    "y": [
+      28,
+      31
+    ]
+  },
+  "legalCells": [
+    [
+      28,
+      29
+    ],
+    [
+      29,
+      29
+    ],
+    [
+      28,
+      30
+    ],
+    [
+      29,
+      30
+    ],
+    [
+      30,
+      30
+    ],
+    [
+      28,
+      31
+    ],
+    [
+      29,
+      31
+    ],
+    [
+      30,
+      31
+    ]
+  ],
+  "directedEdges": [
+    [
+      [
+        28,
+        29
+      ],
+      [
+        29,
+        29
+      ]
+    ],
+    [
+      [
+        28,
+        29
+      ],
+      [
+        28,
+        30
+      ]
+    ],
+    [
+      [
+        29,
+        29
+      ],
+      [
+        28,
+        29
+      ]
+    ],
+    [
+      [
+        29,
+        29
+      ],
+      [
+        29,
+        30
+      ]
+    ],
+    [
+      [
+        28,
+        30
+      ],
+      [
+        28,
+        29
+      ]
+    ],
+    [
+      [
+        28,
+        30
+      ],
+      [
+        29,
+        30
+      ]
+    ],
+    [
+      [
+        28,
+        30
+      ],
+      [
+        28,
+        31
+      ]
+    ],
+    [
+      [
+        29,
+        30
+      ],
+      [
+        29,
+        29
+      ]
+    ],
+    [
+      [
+        29,
+        30
+      ],
+      [
+        28,
+        30
+      ]
+    ],
+    [
+      [
+        29,
+        30
+      ],
+      [
+        30,
+        30
+      ]
+    ],
+    [
+      [
+        29,
+        30
+      ],
+      [
+        29,
+        31
+      ]
+    ],
+    [
+      [
+        30,
+        30
+      ],
+      [
+        29,
+        30
+      ]
+    ],
+    [
+      [
+        30,
+        30
+      ],
+      [
+        30,
+        31
+      ]
+    ],
+    [
+      [
+        28,
+        31
+      ],
+      [
+        28,
+        30
+      ]
+    ],
+    [
+      [
+        28,
+        31
+      ],
+      [
+        29,
+        31
+      ]
+    ],
+    [
+      [
+        29,
+        31
+      ],
+      [
+        29,
+        30
+      ]
+    ],
+    [
+      [
+        29,
+        31
+      ],
+      [
+        28,
+        31
+      ]
+    ],
+    [
+      [
+        29,
+        31
+      ],
+      [
+        30,
+        31
+      ]
+    ],
+    [
+      [
+        30,
+        31
+      ],
+      [
+        30,
+        30
+      ]
+    ],
+    [
+      [
+        30,
+        31
+      ],
+      [
+        29,
+        31
+      ]
+    ]
+  ],
+  "testedSoleSegments": 5250,
+  "stoneTexelResults": [
+    {
+      "originalPixel": [
+        450,
+        484
+      ],
+      "materialConfidence": "visually identified stone body/threshold material",
+      "RGB": [
+        201,
+        176,
+        144
+      ],
+      "pixelDomain": [
+        [
+          450,
+          484
+        ],
+        [
+          451,
+          485
+        ]
+      ],
+      "piecewisePixelConvention": "Unit source texel cell [x,x+1) × [y,y+1). Only the four frozen source texels; 452,487 is a lower mixed edge, while the fixed counterexamples use the stronger 451,486 and470,475 material. No filled bbox or hidden foot inference.",
+      "intersectingSoleSegments": 22,
+      "examples": [
+        {
+          "from": [
+            28,
+            29
+          ],
+          "to": [
+            28,
+            30
+          ],
+          "west": true,
+          "frame": 1,
+          "framePixel": [
+            297,
+            554
+          ],
+          "tInterval": [
+            0.8100961250000012,
+            0.8725961250000012
+          ],
+          "t": 0.8413461250000012,
+          "sourcePoint": [
+            450.9038486,
+            484.5
+          ]
+        },
+        {
+          "from": [
+            28,
+            29
+          ],
+          "to": [
+            28,
+            30
+          ],
+          "west": true,
+          "frame": 1,
+          "framePixel": [
+            298,
+            555
+          ],
+          "tInterval": [
+            0.8040865124999996,
+            0.8665865124999996
+          ],
+          "t": 0.8353365124999996,
+          "sourcePoint": [
+            450.8076948,
+            484.5
+          ]
+        },
+        {
+          "from": [
+            28,
+            29
+          ],
+          "to": [
+            28,
+            30
+          ],
+          "west": true,
+          "frame": 1,
+          "framePixel": [
+            299,
+            555
+          ],
+          "tInterval": [
+            0.8040865124999996,
+            0.8665865124999996
+          ],
+          "t": 0.8353365124999996,
+          "sourcePoint": [
+            450.711541,
+            484.5
+          ]
+        }
+      ]
+    },
+    {
+      "originalPixel": [
+        451,
+        486
+      ],
+      "materialConfidence": "visually identified stone body/threshold material",
+      "RGB": [
+        178,
+        157,
+        138
+      ],
+      "pixelDomain": [
+        [
+          451,
+          486
+        ],
+        [
+          452,
+          487
+        ]
+      ],
+      "piecewisePixelConvention": "Unit source texel cell [x,x+1) × [y,y+1). Only the four frozen source texels; 452,487 is a lower mixed edge, while the fixed counterexamples use the stronger 451,486 and470,475 material. No filled bbox or hidden foot inference.",
+      "intersectingSoleSegments": 69,
+      "examples": [
+        {
+          "from": [
+            28,
+            29
+          ],
+          "to": [
+            28,
+            30
+          ],
+          "west": true,
+          "frame": 1,
+          "framePixel": [
+            290,
+            547
+          ],
+          "tInterval": [
+            0.9771634125000013,
+            1.0
+          ],
+          "t": 0.9885817062500006,
+          "sourcePoint": [
+            451.5769252,
+            486.18269269999996
+          ]
+        },
+        {
+          "from": [
+            28,
+            29
+          ],
+          "to": [
+            28,
+            30
+          ],
+          "west": true,
+          "frame": 1,
+          "framePixel": [
+            291,
+            548
+          ],
+          "tInterval": [
+            0.9711537999999997,
+            1.0
+          ],
+          "t": 0.9855768999999999,
+          "sourcePoint": [
+            451.4807714,
+            486.23076960000003
+          ]
+        },
+        {
+          "from": [
+            28,
+            29
+          ],
+          "to": [
+            28,
+            30
+          ],
+          "west": true,
+          "frame": 1,
+          "framePixel": [
+            292,
+            549
+          ],
+          "tInterval": [
+            0.9651441875000017,
+            1.0
+          ],
+          "t": 0.9825720937500009,
+          "sourcePoint": [
+            451.3846176,
+            486.2788465
+          ]
+        }
+      ]
+    },
+    {
+      "originalPixel": [
+        452,
+        487
+      ],
+      "materialConfidence": "lower stone/shadow mixed edge; not needed for the hard counterexample",
+      "RGB": [
+        187,
+        172,
+        145
+      ],
+      "pixelDomain": [
+        [
+          452,
+          487
+        ],
+        [
+          453,
+          488
+        ]
+      ],
+      "piecewisePixelConvention": "Unit source texel cell [x,x+1) × [y,y+1). Only the four frozen source texels; 452,487 is a lower mixed edge, while the fixed counterexamples use the stronger 451,486 and470,475 material. No filled bbox or hidden foot inference.",
+      "intersectingSoleSegments": 97,
+      "examples": [
+        {
+          "from": [
+            28,
+            30
+          ],
+          "to": [
+            29,
+            30
+          ],
+          "west": false,
+          "frame": 3,
+          "framePixel": [
+            42,
+            561
+          ],
+          "tInterval": [
+            0.6634610999999992,
+            0.7259610999999992
+          ],
+          "t": 0.6947110999999992,
+          "sourcePoint": [
+            452.5,
+            487.038462
+          ]
+        },
+        {
+          "from": [
+            28,
+            30
+          ],
+          "to": [
+            29,
+            30
+          ],
+          "west": false,
+          "frame": 3,
+          "framePixel": [
+            43,
+            561
+          ],
+          "tInterval": [
+            0.6574514875000013,
+            0.7199514875000013
+          ],
+          "t": 0.6887014875000013,
+          "sourcePoint": [
+            452.5,
+            487.038462
+          ]
+        },
+        {
+          "from": [
+            28,
+            30
+          ],
+          "to": [
+            29,
+            30
+          ],
+          "west": false,
+          "frame": 3,
+          "framePixel": [
+            44,
+            561
+          ],
+          "tInterval": [
+            0.6514418749999997,
+            0.7139418749999997
+          ],
+          "t": 0.6826918749999997,
+          "sourcePoint": [
+            452.5,
+            487.038462
+          ]
+        }
+      ]
+    },
+    {
+      "originalPixel": [
+        470,
+        475
+      ],
+      "materialConfidence": "visually identified stone body/threshold material",
+      "RGB": [
+        245,
+        215,
+        182
+      ],
+      "pixelDomain": [
+        [
+          470,
+          475
+        ],
+        [
+          471,
+          476
+        ]
+      ],
+      "piecewisePixelConvention": "Unit source texel cell [x,x+1) × [y,y+1). Only the four frozen source texels; 452,487 is a lower mixed edge, while the fixed counterexamples use the stronger 451,486 and470,475 material. No filled bbox or hidden foot inference.",
+      "intersectingSoleSegments": 22,
+      "examples": [
+        {
+          "from": [
+            28,
+            29
+          ],
+          "to": [
+            28,
+            30
+          ],
+          "west": true,
+          "frame": 3,
+          "framePixel": [
+            38,
+            558
+          ],
+          "tInterval": [
+            0.2656249624999987,
+            0.3281249624999987
+          ],
+          "t": 0.2968749624999987,
+          "sourcePoint": [
+            470.9999928,
+            475.5
+          ]
+        },
+        {
+          "from": [
+            28,
+            29
+          ],
+          "to": [
+            28,
+            30
+          ],
+          "west": true,
+          "frame": 3,
+          "framePixel": [
+            39,
+            559
+          ],
+          "tInterval": [
+            0.2596153500000007,
+            0.3221153500000007
+          ],
+          "t": 0.2908653500000007,
+          "sourcePoint": [
+            470.903839,
+            475.5
+          ]
+        },
+        {
+          "from": [
+            28,
+            29
+          ],
+          "to": [
+            28,
+            30
+          ],
+          "west": true,
+          "frame": 3,
+          "framePixel": [
+            40,
+            559
+          ],
+          "tInterval": [
+            0.2596153500000007,
+            0.3221153500000007
+          ],
+          "t": 0.2908653500000007,
+          "sourcePoint": [
+            470.8076852,
+            475.5
+          ]
+        }
+      ]
+    }
+  ],
+  "fixedReproducibleWitnesses": [
+    {
+      "id": "blue-left-stone-east-walk-b",
+      "frame": 3,
+      "pixel": [
+        108,
+        552
+      ],
+      "from": [
+        28,
+        30
+      ],
+      "to": [
+        29,
+        30
+      ],
+      "west": false,
+      "targetAxis": 0,
+      "targetValue": 451.5,
+      "stonePixel": [
+        451,
+        486
+      ],
+      "canonicalPathAllowingPhase": [
+        [
+          28,
+          29
+        ],
+        [
+          28,
+          30
+        ],
+        [
+          29,
+          30
+        ]
+      ],
+      "segmentIndex": 1,
+      "frameName": "walk-b",
+      "anchor": [
+        194,
+        571
+      ],
+      "region": [
+        1711,
+        0,
+        458,
+        725
+      ],
+      "scale": 0.0961538,
+      "sheetPixel": [
+        1819,
+        552
+      ],
+      "actorAlpha": 255,
+      "sourceStoneRGB": [
+        178,
+        157,
+        138
+      ],
+      "t": 0.2355766750000008,
+      "sourcePoint": [
+        451.5,
+        486.1730778
+      ],
+      "pathTerrain": [
+        "p",
+        "p",
+        "p"
+      ],
+      "meaning": "Static real-sole texel overlap on a canonical legal adjacent path with possible frame parity/facing. Not an executed or accepted battle move, and not a complete hidden ground-volume proof."
+    },
+    {
+      "id": "blue-left-stone-west-walk-a",
+      "frame": 1,
+      "pixel": [
+        367,
+        552
+      ],
+      "from": [
+        29,
+        30
+      ],
+      "to": [
+        28,
+        30
+      ],
+      "west": true,
+      "targetAxis": 0,
+      "targetValue": 451.5,
+      "stonePixel": [
+        451,
+        486
+      ],
+      "canonicalPathAllowingPhase": [
+        [
+          29,
+          30
+        ],
+        [
+          28,
+          30
+        ]
+      ],
+      "segmentIndex": 0,
+      "frameName": "walk-a",
+      "anchor": [
+        244,
+        564
+      ],
+      "region": [
+        557,
+        0,
+        513,
+        725
+      ],
+      "scale": 0.0961538,
+      "sheetPixel": [
+        924,
+        552
+      ],
+      "actorAlpha": 248,
+      "sourceStoneRGB": [
+        178,
+        157,
+        138
+      ],
+      "t": 0.5420676624999992,
+      "sourcePoint": [
+        451.5,
+        486.8461544
+      ],
+      "pathTerrain": [
+        "p",
+        "p"
+      ],
+      "meaning": "Static real-sole texel overlap on a canonical legal adjacent path with possible frame parity/facing. Not an executed or accepted battle move, and not a complete hidden ground-volume proof."
+    },
+    {
+      "id": "blue-right-threshold-south-retained-west-walk-b",
+      "frame": 3,
+      "pixel": [
+        40,
+        559
+      ],
+      "from": [
+        28,
+        29
+      ],
+      "to": [
+        28,
+        30
+      ],
+      "west": true,
+      "targetAxis": 1,
+      "targetValue": 475.5,
+      "stonePixel": [
+        470,
+        475
+      ],
+      "canonicalPathAllowingPhase": [
+        [
+          29,
+          29
+        ],
+        [
+          28,
+          29
+        ],
+        [
+          28,
+          30
+        ]
+      ],
+      "segmentIndex": 1,
+      "frameName": "walk-b",
+      "anchor": [
+        194,
+        571
+      ],
+      "region": [
+        1711,
+        0,
+        458,
+        725
+      ],
+      "scale": 0.0961538,
+      "sheetPixel": [
+        1751,
+        559
+      ],
+      "actorAlpha": 247,
+      "sourceStoneRGB": [
+        245,
+        215,
+        182
+      ],
+      "t": 0.2908653500000007,
+      "sourcePoint": [
+        470.8076852,
+        475.5
+      ],
+      "pathTerrain": [
+        "p",
+        "p",
+        "p"
+      ],
+      "meaning": "Static real-sole texel overlap on a canonical legal adjacent path with possible frame parity/facing. Not an executed or accepted battle move, and not a complete hidden ground-volume proof."
+    }
+  ],
+  "conclusion": "Confirmed static actual shoe silhouette/solid-source-stone overlap for both original blue door jamb and right threshold. This is stronger than a nonblocked-cell assertion; later blue replacement may prioritize legal foot corridors rather than restore these conflicting old pixels. No full physical foundation or in-game action is certified.",
+  "limits": [
+    "Four frozen original material texels only; 452,487 is a mixed lower edge and is not needed for the two hard material counterexamples. Not an invented complete footprint.",
+    "Frozen front-support boot contour subset, not all shoes, poses, or units.",
+    "Linear texel-domain overlap is static geometry; native draw/pick and actual accepted movement were not run.",
+    "Canonical local paths prove direction/frame parity is possible in the renderer; no claim about current unit position, reachability, occupants, turn budget or saved battle state."
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "scope": "Static official-loader only. No action. Discovery witnesses frozen before negative controls.",
+  "positivePassed": true,
+  "negativeControls": [
+    {
+      "name": "early-depth",
+      "stage": "formal material + actual actor alpha + fixed Pick assertion",
+      "targetExceptionMatched": true,
+      "fixedWitnesses": [
+        {
+          "source": [
+            453.5,
+            361.5
+          ],
+          "actorOpaque": true,
+          "materialOwners": 1,
+          "foreground": false,
+          "unitPicked": true,
+          "passed": false
+        },
+        {
+          "source": [
+            458.5,
+            452.5
+          ],
+          "actorOpaque": true,
+          "materialOwners": 1,
+          "foreground": false,
+          "unitPicked": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "shift-registration",
+      "stage": "formal material + actual actor alpha + fixed Pick assertion",
+      "targetExceptionMatched": true,
+      "fixedWitnesses": [
+        {
+          "source": [
+            453.5,
+            361.5
+          ],
+          "actorOpaque": true,
+          "materialOwners": 0,
+          "foreground": false,
+          "unitPicked": true,
+          "passed": false
+        },
+        {
+          "source": [
+            458.5,
+            452.5
+          ],
+          "actorOpaque": true,
+          "materialOwners": 0,
+          "foreground": false,
+          "unitPicked": true,
+          "passed": false
+        }
+      ]
+    }
+  ],
+  "invalidInitialFixture": "Placement initially omitted required selectionCell/ownsMapStructureBody/pointer; failed deserialization before rendering. Preserved log; not a negative semantic pass.",
+  "pending": "Full hidden base, continuous foot corridor, paired roof/wall ownership, unique selected adoption."
+}

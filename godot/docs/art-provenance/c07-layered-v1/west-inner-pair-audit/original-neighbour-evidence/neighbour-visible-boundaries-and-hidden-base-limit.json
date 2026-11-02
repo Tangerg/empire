@@ -1,0 +1,3673 @@
+{
+  "ready": true,
+  "scope": "One bounded original-source neighbour investigation. No candidate mutation, no engine/GUI/actual state. Existing source/registration contracts preserved.",
+  "source": "/workspace/scratch/84c9fe948755/empire-c01/godot/assets/native/scenes/luojia.png",
+  "sourceSha256": "91a27541be932b4b3cefeb4453e06505666e057e035a920711d25489f36e4980",
+  "candidateRegistration": "/workspace/scratch/84c9fe948755/c07-static-preview/west-inner-house-v2-registration.json",
+  "conclusion": {
+    "provenGroundFootInterpenetration": false,
+    "physicalSeparationCertified": false,
+    "reason": "Candidate feet overlap projected blue facade/lintel and garden upright/foliage, not any observed neighbour ground-contact chain. They lie behind visible neighbour foreground feet in source-Y. This supports ordinary foreground occlusion but cannot establish unobserved rear volumes do not overlap.",
+    "notAClaimThatJustBeingBehindMakesTheDesignPhysicallyValid": true
+  },
+  "leftBlueBand": {
+    "candidateFootCount": 113,
+    "candidateFootEndpoints": [
+      [
+        465,
+        433.98
+      ],
+      [
+        477.32,
+        445.86
+      ]
+    ],
+    "originalMaterialWitnesses": [
+      {
+        "source": [
+          465,
+          434
+        ],
+        "RGB": [
+          246,
+          221,
+          180
+        ],
+        "material": "blue-house front light plaster",
+        "status": "visible material, not ground foot",
+        "cell": [
+          29,
+          27
+        ],
+        "terrain": "#"
+      },
+      {
+        "source": [
+          468,
+          437
+        ],
+        "RGB": [
+          193,
+          122,
+          59
+        ],
+        "material": "blue-house door upper timber lintel",
+        "status": "visible material, not ground foot",
+        "cell": [
+          29,
+          27
+        ],
+        "terrain": "#"
+      },
+      {
+        "source": [
+          471,
+          440
+        ],
+        "RGB": [
+          203,
+          163,
+          107
+        ],
+        "material": "blue-house lintel/jamb transition",
+        "status": "mixed structural edge, not ground foot",
+        "cell": [
+          29,
+          27
+        ],
+        "terrain": "#"
+      },
+      {
+        "source": [
+          474,
+          443
+        ],
+        "RGB": [
+          249,
+          221,
+          158
+        ],
+        "material": "blue-house yellow front plaster",
+        "status": "visible material, not ground foot",
+        "cell": [
+          29,
+          27
+        ],
+        "terrain": "#"
+      },
+      {
+        "source": [
+          477,
+          445
+        ],
+        "RGB": [
+          244,
+          220,
+          144
+        ],
+        "material": "blue-house yellow front plaster near vegetation",
+        "status": "visible material, not ground foot",
+        "cell": [
+          29,
+          27
+        ],
+        "terrain": "#"
+      }
+    ],
+    "actualBlueDoorLocalContacts": [
+      {
+        "source": [
+          450,
+          484
+        ],
+        "RGB": [
+          201,
+          176,
+          144
+        ],
+        "material": "blue door left jamb stone plinth face",
+        "status": "visible stone body close to contact; not an outer whole-building corner",
+        "cell": [
+          28,
+          30
+        ],
+        "terrain": "p"
+      },
+      {
+        "source": [
+          451,
+          486
+        ],
+        "RGB": [
+          178,
+          157,
+          138
+        ],
+        "material": "blue door left jamb stone plinth face",
+        "status": "visible low stone; edge continues lower",
+        "cell": [
+          28,
+          30
+        ],
+        "terrain": "p"
+      },
+      {
+        "source": [
+          452,
+          487
+        ],
+        "RGB": [
+          187,
+          172,
+          145
+        ],
+        "material": "blue door left jamb stone plinth lower mixed edge",
+        "status": "visible stone/shadow contact band",
+        "cell": [
+          28,
+          30
+        ],
+        "terrain": "p"
+      },
+      {
+        "source": [
+          451,
+          489
+        ],
+        "RGB": [
+          161,
+          127,
+          90
+        ],
+        "material": "paving/shadow below left jamb stone",
+        "status": "mixed contact/ground, not certified solid stone",
+        "cell": [
+          28,
+          30
+        ],
+        "terrain": "p"
+      },
+      {
+        "source": [
+          458,
+          480
+        ],
+        "RGB": [
+          231,
+          191,
+          155
+        ],
+        "material": "door threshold near edge / warm stone",
+        "status": "local threshold band, not whole outer foundation",
+        "cell": [
+          28,
+          30
+        ],
+        "terrain": "p"
+      },
+      {
+        "source": [
+          465,
+          478
+        ],
+        "RGB": [
+          182,
+          142,
+          105
+        ],
+        "material": "threshold shadow/lower mixed edge",
+        "status": "local contact transition",
+        "cell": [
+          29,
+          29
+        ],
+        "terrain": "p"
+      },
+      {
+        "source": [
+          470,
+          475
+        ],
+        "RGB": [
+          245,
+          215,
+          182
+        ],
+        "material": "right threshold/frame light stone",
+        "status": "visible local stone body",
+        "cell": [
+          29,
+          29
+        ],
+        "terrain": "p"
+      },
+      {
+        "source": [
+          473,
+          477
+        ],
+        "RGB": [
+          202,
+          179,
+          142
+        ],
+        "material": "right jamb/ground contact mixture",
+        "status": "mixed edge, not exact outer corner",
+        "cell": [
+          29,
+          29
+        ],
+        "terrain": "p"
+      }
+    ],
+    "contactBandsApproximate": {
+      "leftJambStoneBody": [
+        [
+          448,
+          482
+        ],
+        [
+          455,
+          487
+        ]
+      ],
+      "leftJambMixedGroundEdgeY": [
+        487,
+        489
+      ],
+      "thresholdNearEdge": [
+        [
+          455,
+          482
+        ],
+        [
+          470,
+          476
+        ]
+      ],
+      "rightJambMixedGroundEdge": [
+        [
+          472,
+          475
+        ],
+        [
+          475,
+          478
+        ]
+      ]
+    },
+    "relativeDepthObservation": "At overlapping blue-front x465..474, the original low local threshold/jamb is about y475..480, whereas candidate hidden-left foot is y434..445: behind, not a crossing of the observed front foot. These are local contacts, not a closed blue footprint.",
+    "visibleVerticalJunction": {
+      "approximateSourceBand": [
+        481,
+        421,
+        485,
+        450
+      ],
+      "confidence": "moderate for visible projected adjacency; no exact straight party-wall footprint certified",
+      "occlusion": "Ivy interrupts the junction around y424..445, pot/plant interrupts lower y450..474. The original image does not expose the full common wall bottom or blue rear-right corner."
+    },
+    "coarseAuditMismatch": "blue-house responsibility polygon ends near y468 but real visible door-jamb stone extends to y487; polygon cannot serve as complete physical footprint.",
+    "legalCellCaution": "Some original local blue step/jamb material is in p(28,30) and p(29,29). This is original image/rule interleaving only, not a demonstrated walking defect without actual shoe overlap."
+  },
+  "rightGardenBand": {
+    "candidateFootCount": 21,
+    "candidateFootEndpoints": [
+      [
+        550.03,
+        441.24
+      ],
+      [
+        552.23,
+        440.25
+      ]
+    ],
+    "originalMaterialWitnesses": [
+      {
+        "source": [
+          550,
+          441
+        ],
+        "RGB": [
+          168,
+          122,
+          79
+        ],
+        "material": "brown garden trellis upright near foreground stone-wall top",
+        "status": "wood material; actual ground foot hidden by wall",
+        "cell": [
+          34,
+          27
+        ],
+        "terrain": "#"
+      },
+      {
+        "source": [
+          551,
+          441
+        ],
+        "RGB": [
+          127,
+          81,
+          37
+        ],
+        "material": "dark brown garden trellis upright",
+        "status": "wood material; actual ground foot hidden by wall",
+        "cell": [
+          34,
+          27
+        ],
+        "terrain": "#"
+      },
+      {
+        "source": [
+          552,
+          440
+        ],
+        "RGB": [
+          165,
+          136,
+          67
+        ],
+        "material": "wood/green vegetation mixture",
+        "status": "mixed material, not ground foot",
+        "cell": [
+          34,
+          27
+        ],
+        "terrain": "#"
+      }
+    ],
+    "actualForegroundStoneWitnesses": [
+      {
+        "source": [
+          540,
+          461
+        ],
+        "RGB": [
+          171,
+          170,
+          159
+        ],
+        "material": "left foreground courtyard pier low grey stone",
+        "status": "visible stone body",
+        "cell": [
+          33,
+          28
+        ],
+        "terrain": "#"
+      },
+      {
+        "source": [
+          541,
+          463
+        ],
+        "RGB": [
+          174,
+          181,
+          143
+        ],
+        "material": "green-grey shadow at pier bottom",
+        "status": "mixed ground transition, not certified stone interior",
+        "cell": [
+          33,
+          28
+        ],
+        "terrain": "#"
+      },
+      {
+        "source": [
+          547,
+          461
+        ],
+        "RGB": [
+          199,
+          173,
+          141
+        ],
+        "material": "near courtyard low-wall foot transition",
+        "status": "approximate foot band",
+        "cell": [
+          34,
+          28
+        ],
+        "terrain": "#"
+      },
+      {
+        "source": [
+          550,
+          459
+        ],
+        "RGB": [
+          243,
+          206,
+          168
+        ],
+        "material": "low courtyard wall face near bottom",
+        "status": "visible stone face",
+        "cell": [
+          34,
+          28
+        ],
+        "terrain": "#"
+      },
+      {
+        "source": [
+          550,
+          461
+        ],
+        "RGB": [
+          195,
+          154,
+          112
+        ],
+        "material": "low-wall-to-paving warm shadow",
+        "status": "mixed foot band",
+        "cell": [
+          34,
+          28
+        ],
+        "terrain": "#"
+      },
+      {
+        "source": [
+          556,
+          457
+        ],
+        "RGB": [
+          177,
+          145,
+          102
+        ],
+        "material": "low-wall bottom/shadow transition",
+        "status": "approximate foot band",
+        "cell": [
+          34,
+          28
+        ],
+        "terrain": "#"
+      },
+      {
+        "source": [
+          562,
+          454
+        ],
+        "RGB": [
+          244,
+          203,
+          159
+        ],
+        "material": "low wall near right pier base",
+        "status": "stone/material close to contact; whole hidden base unknown",
+        "cell": [
+          35,
+          28
+        ],
+        "terrain": "#"
+      }
+    ],
+    "nearStoneFootApproximateBand": [
+      [
+        547,
+        462
+      ],
+      [
+        550,
+        460
+      ],
+      [
+        556,
+        457
+      ],
+      [
+        563,
+        454
+      ]
+    ],
+    "uncertaintyPixels": [
+      1,
+      2
+    ],
+    "relativeDepthObservation": "Candidate feet at y440..441 lie about18..21px behind the front low wall foot at similar x. Garden wood upright continues into/behind that stone wall; the wood ground foot is not exposed.",
+    "unproved": "No complete trellis base or hidden rear face of low wall is certified. Candidate right gable completion extends into an originally garden-occluded area; not a source-certified orange footprint."
+  },
+  "minimalCombinedBoundaryRecommendation": [
+    "Keep the blue house, orange house, garden trellis, and low courtyard wall separate material/depth owners.",
+    "Original visible orange/blue adjacency around x481..485 is the shared visual seam to preserve. The orange short left gable/rear closure remains a new concealed design; do not require the 113 points to become visible or move either building to the coarse polygon.",
+    "For a later blue replacement, fit the actually visible door-frame/threshold contacts around y475..489 rather than old groundFront437469. Establish a mutually consistent hidden side/party-wall design explicitly; source cannot certify it.",
+    "Keep the front courtyard wall in front of candidate right hidden base using its actual low foot band, and keep trellis wood separate. Do not inherit old garden groundFront as a complete foundation or bake garden pixels into the house.",
+    "Before selecting the combined group, check the visible seam and native depth of the future blue/wall owners; this source-only review does not approve a complete shared 3D ground-footprint."
+  ],
+  "all134BandSampleOriginalRGB": [
+    {
+      "asset": [
+        300,
+        861
+      ],
+      "source": [
+        465.0,
+        433.97999999999996
+      ],
+      "candidateAlpha": 254,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        465,
+        433
+      ],
+      "originalRGB": [
+        245,
+        209,
+        165
+      ]
+    },
+    {
+      "asset": [
+        301,
+        862
+      ],
+      "source": [
+        465.11,
+        434.09
+      ],
+      "candidateAlpha": 253,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        465,
+        434
+      ],
+      "originalRGB": [
+        246,
+        221,
+        180
+      ]
+    },
+    {
+      "asset": [
+        302,
+        863
+      ],
+      "source": [
+        465.22,
+        434.2
+      ],
+      "candidateAlpha": 254,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        465,
+        434
+      ],
+      "originalRGB": [
+        246,
+        221,
+        180
+      ]
+    },
+    {
+      "asset": [
+        303,
+        864
+      ],
+      "source": [
+        465.33,
+        434.31
+      ],
+      "candidateAlpha": 252,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        465,
+        434
+      ],
+      "originalRGB": [
+        246,
+        221,
+        180
+      ]
+    },
+    {
+      "asset": [
+        304,
+        865
+      ],
+      "source": [
+        465.44,
+        434.41999999999996
+      ],
+      "candidateAlpha": 254,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        465,
+        434
+      ],
+      "originalRGB": [
+        246,
+        221,
+        180
+      ]
+    },
+    {
+      "asset": [
+        305,
+        866
+      ],
+      "source": [
+        465.55,
+        434.53
+      ],
+      "candidateAlpha": 252,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        465,
+        434
+      ],
+      "originalRGB": [
+        246,
+        221,
+        180
+      ]
+    },
+    {
+      "asset": [
+        306,
+        867
+      ],
+      "source": [
+        465.66,
+        434.64
+      ],
+      "candidateAlpha": 254,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        465,
+        434
+      ],
+      "originalRGB": [
+        246,
+        221,
+        180
+      ]
+    },
+    {
+      "asset": [
+        307,
+        868
+      ],
+      "source": [
+        465.77,
+        434.75
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        465,
+        434
+      ],
+      "originalRGB": [
+        246,
+        221,
+        180
+      ]
+    },
+    {
+      "asset": [
+        308,
+        869
+      ],
+      "source": [
+        465.88,
+        434.86
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        465,
+        434
+      ],
+      "originalRGB": [
+        246,
+        221,
+        180
+      ]
+    },
+    {
+      "asset": [
+        309,
+        870
+      ],
+      "source": [
+        465.99,
+        434.96999999999997
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        465,
+        434
+      ],
+      "originalRGB": [
+        246,
+        221,
+        180
+      ]
+    },
+    {
+      "asset": [
+        310,
+        871
+      ],
+      "source": [
+        466.1,
+        435.08
+      ],
+      "candidateAlpha": 251,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        466,
+        435
+      ],
+      "originalRGB": [
+        251,
+        227,
+        184
+      ]
+    },
+    {
+      "asset": [
+        311,
+        871
+      ],
+      "source": [
+        466.21,
+        435.08
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        466,
+        435
+      ],
+      "originalRGB": [
+        251,
+        227,
+        184
+      ]
+    },
+    {
+      "asset": [
+        312,
+        872
+      ],
+      "source": [
+        466.32,
+        435.19
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        466,
+        435
+      ],
+      "originalRGB": [
+        251,
+        227,
+        184
+      ]
+    },
+    {
+      "asset": [
+        313,
+        873
+      ],
+      "source": [
+        466.43,
+        435.29999999999995
+      ],
+      "candidateAlpha": 254,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        466,
+        435
+      ],
+      "originalRGB": [
+        251,
+        227,
+        184
+      ]
+    },
+    {
+      "asset": [
+        314,
+        874
+      ],
+      "source": [
+        466.54,
+        435.40999999999997
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        466,
+        435
+      ],
+      "originalRGB": [
+        251,
+        227,
+        184
+      ]
+    },
+    {
+      "asset": [
+        315,
+        875
+      ],
+      "source": [
+        466.65,
+        435.52
+      ],
+      "candidateAlpha": 253,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        466,
+        435
+      ],
+      "originalRGB": [
+        251,
+        227,
+        184
+      ]
+    },
+    {
+      "asset": [
+        316,
+        876
+      ],
+      "source": [
+        466.76,
+        435.63
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        466,
+        435
+      ],
+      "originalRGB": [
+        251,
+        227,
+        184
+      ]
+    },
+    {
+      "asset": [
+        317,
+        877
+      ],
+      "source": [
+        466.87,
+        435.74
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        466,
+        435
+      ],
+      "originalRGB": [
+        251,
+        227,
+        184
+      ]
+    },
+    {
+      "asset": [
+        318,
+        878
+      ],
+      "source": [
+        466.98,
+        435.84999999999997
+      ],
+      "candidateAlpha": 254,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        466,
+        435
+      ],
+      "originalRGB": [
+        251,
+        227,
+        184
+      ]
+    },
+    {
+      "asset": [
+        319,
+        879
+      ],
+      "source": [
+        467.09000000000003,
+        435.96
+      ],
+      "candidateAlpha": 247,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        467,
+        435
+      ],
+      "originalRGB": [
+        220,
+        173,
+        127
+      ]
+    },
+    {
+      "asset": [
+        320,
+        879
+      ],
+      "source": [
+        467.2,
+        435.96
+      ],
+      "candidateAlpha": 254,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        467,
+        435
+      ],
+      "originalRGB": [
+        220,
+        173,
+        127
+      ]
+    },
+    {
+      "asset": [
+        321,
+        880
+      ],
+      "source": [
+        467.31,
+        436.07
+      ],
+      "candidateAlpha": 251,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        467,
+        436
+      ],
+      "originalRGB": [
+        199,
+        145,
+        90
+      ]
+    },
+    {
+      "asset": [
+        322,
+        881
+      ],
+      "source": [
+        467.42,
+        436.17999999999995
+      ],
+      "candidateAlpha": 254,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        467,
+        436
+      ],
+      "originalRGB": [
+        199,
+        145,
+        90
+      ]
+    },
+    {
+      "asset": [
+        323,
+        882
+      ],
+      "source": [
+        467.53,
+        436.28999999999996
+      ],
+      "candidateAlpha": 254,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        467,
+        436
+      ],
+      "originalRGB": [
+        199,
+        145,
+        90
+      ]
+    },
+    {
+      "asset": [
+        324,
+        883
+      ],
+      "source": [
+        467.64,
+        436.4
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        467,
+        436
+      ],
+      "originalRGB": [
+        199,
+        145,
+        90
+      ]
+    },
+    {
+      "asset": [
+        325,
+        884
+      ],
+      "source": [
+        467.75,
+        436.51
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        467,
+        436
+      ],
+      "originalRGB": [
+        199,
+        145,
+        90
+      ]
+    },
+    {
+      "asset": [
+        326,
+        885
+      ],
+      "source": [
+        467.86,
+        436.62
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        467,
+        436
+      ],
+      "originalRGB": [
+        199,
+        145,
+        90
+      ]
+    },
+    {
+      "asset": [
+        327,
+        886
+      ],
+      "source": [
+        467.97,
+        436.72999999999996
+      ],
+      "candidateAlpha": 254,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        467,
+        436
+      ],
+      "originalRGB": [
+        199,
+        145,
+        90
+      ]
+    },
+    {
+      "asset": [
+        328,
+        887
+      ],
+      "source": [
+        468.08,
+        436.84
+      ],
+      "candidateAlpha": 244,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        468,
+        436
+      ],
+      "originalRGB": [
+        176,
+        107,
+        53
+      ]
+    },
+    {
+      "asset": [
+        329,
+        887
+      ],
+      "source": [
+        468.19,
+        436.84
+      ],
+      "candidateAlpha": 252,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        468,
+        436
+      ],
+      "originalRGB": [
+        176,
+        107,
+        53
+      ]
+    },
+    {
+      "asset": [
+        330,
+        888
+      ],
+      "source": [
+        468.3,
+        436.95
+      ],
+      "candidateAlpha": 253,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        468,
+        436
+      ],
+      "originalRGB": [
+        176,
+        107,
+        53
+      ]
+    },
+    {
+      "asset": [
+        331,
+        889
+      ],
+      "source": [
+        468.41,
+        437.06
+      ],
+      "candidateAlpha": 246,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        468,
+        437
+      ],
+      "originalRGB": [
+        193,
+        122,
+        59
+      ]
+    },
+    {
+      "asset": [
+        332,
+        889
+      ],
+      "source": [
+        468.52,
+        437.06
+      ],
+      "candidateAlpha": 244,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        468,
+        437
+      ],
+      "originalRGB": [
+        193,
+        122,
+        59
+      ]
+    },
+    {
+      "asset": [
+        333,
+        889
+      ],
+      "source": [
+        468.63,
+        437.06
+      ],
+      "candidateAlpha": 246,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        468,
+        437
+      ],
+      "originalRGB": [
+        193,
+        122,
+        59
+      ]
+    },
+    {
+      "asset": [
+        334,
+        889
+      ],
+      "source": [
+        468.74,
+        437.06
+      ],
+      "candidateAlpha": 249,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        468,
+        437
+      ],
+      "originalRGB": [
+        193,
+        122,
+        59
+      ]
+    },
+    {
+      "asset": [
+        335,
+        890
+      ],
+      "source": [
+        468.85,
+        437.16999999999996
+      ],
+      "candidateAlpha": 244,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        468,
+        437
+      ],
+      "originalRGB": [
+        193,
+        122,
+        59
+      ]
+    },
+    {
+      "asset": [
+        336,
+        891
+      ],
+      "source": [
+        468.96,
+        437.28
+      ],
+      "candidateAlpha": 244,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        468,
+        437
+      ],
+      "originalRGB": [
+        193,
+        122,
+        59
+      ]
+    },
+    {
+      "asset": [
+        337,
+        891
+      ],
+      "source": [
+        469.07,
+        437.28
+      ],
+      "candidateAlpha": 246,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        469,
+        437
+      ],
+      "originalRGB": [
+        194,
+        126,
+        63
+      ]
+    },
+    {
+      "asset": [
+        338,
+        892
+      ],
+      "source": [
+        469.18,
+        437.39
+      ],
+      "candidateAlpha": 245,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        469,
+        437
+      ],
+      "originalRGB": [
+        194,
+        126,
+        63
+      ]
+    },
+    {
+      "asset": [
+        339,
+        893
+      ],
+      "source": [
+        469.29,
+        437.5
+      ],
+      "candidateAlpha": 252,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        469,
+        437
+      ],
+      "originalRGB": [
+        194,
+        126,
+        63
+      ]
+    },
+    {
+      "asset": [
+        340,
+        896
+      ],
+      "source": [
+        469.4,
+        437.83
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        469,
+        437
+      ],
+      "originalRGB": [
+        194,
+        126,
+        63
+      ]
+    },
+    {
+      "asset": [
+        341,
+        898
+      ],
+      "source": [
+        469.51,
+        438.04999999999995
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        469,
+        438
+      ],
+      "originalRGB": [
+        196,
+        124,
+        59
+      ]
+    },
+    {
+      "asset": [
+        342,
+        900
+      ],
+      "source": [
+        469.62,
+        438.27
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        469,
+        438
+      ],
+      "originalRGB": [
+        196,
+        124,
+        59
+      ]
+    },
+    {
+      "asset": [
+        343,
+        901
+      ],
+      "source": [
+        469.73,
+        438.38
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        469,
+        438
+      ],
+      "originalRGB": [
+        196,
+        124,
+        59
+      ]
+    },
+    {
+      "asset": [
+        344,
+        902
+      ],
+      "source": [
+        469.84000000000003,
+        438.49
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        469,
+        438
+      ],
+      "originalRGB": [
+        196,
+        124,
+        59
+      ]
+    },
+    {
+      "asset": [
+        345,
+        903
+      ],
+      "source": [
+        469.95,
+        438.59999999999997
+      ],
+      "candidateAlpha": 254,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        469,
+        438
+      ],
+      "originalRGB": [
+        196,
+        124,
+        59
+      ]
+    },
+    {
+      "asset": [
+        346,
+        904
+      ],
+      "source": [
+        470.06,
+        438.71
+      ],
+      "candidateAlpha": 244,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        470,
+        438
+      ],
+      "originalRGB": [
+        205,
+        139,
+        70
+      ]
+    },
+    {
+      "asset": [
+        347,
+        904
+      ],
+      "source": [
+        470.17,
+        438.71
+      ],
+      "candidateAlpha": 248,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        470,
+        438
+      ],
+      "originalRGB": [
+        205,
+        139,
+        70
+      ]
+    },
+    {
+      "asset": [
+        348,
+        905
+      ],
+      "source": [
+        470.28,
+        438.82
+      ],
+      "candidateAlpha": 246,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        470,
+        438
+      ],
+      "originalRGB": [
+        205,
+        139,
+        70
+      ]
+    },
+    {
+      "asset": [
+        349,
+        906
+      ],
+      "source": [
+        470.39,
+        438.92999999999995
+      ],
+      "candidateAlpha": 248,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        470,
+        438
+      ],
+      "originalRGB": [
+        205,
+        139,
+        70
+      ]
+    },
+    {
+      "asset": [
+        350,
+        907
+      ],
+      "source": [
+        470.5,
+        439.03999999999996
+      ],
+      "candidateAlpha": 247,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        470,
+        439
+      ],
+      "originalRGB": [
+        186,
+        123,
+        64
+      ]
+    },
+    {
+      "asset": [
+        351,
+        908
+      ],
+      "source": [
+        470.61,
+        439.15
+      ],
+      "candidateAlpha": 246,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        470,
+        439
+      ],
+      "originalRGB": [
+        186,
+        123,
+        64
+      ]
+    },
+    {
+      "asset": [
+        352,
+        909
+      ],
+      "source": [
+        470.72,
+        439.26
+      ],
+      "candidateAlpha": 247,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        470,
+        439
+      ],
+      "originalRGB": [
+        186,
+        123,
+        64
+      ]
+    },
+    {
+      "asset": [
+        353,
+        910
+      ],
+      "source": [
+        470.83,
+        439.37
+      ],
+      "candidateAlpha": 248,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        470,
+        439
+      ],
+      "originalRGB": [
+        186,
+        123,
+        64
+      ]
+    },
+    {
+      "asset": [
+        354,
+        911
+      ],
+      "source": [
+        470.94,
+        439.47999999999996
+      ],
+      "candidateAlpha": 251,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        470,
+        439
+      ],
+      "originalRGB": [
+        186,
+        123,
+        64
+      ]
+    },
+    {
+      "asset": [
+        355,
+        912
+      ],
+      "source": [
+        471.05,
+        439.59
+      ],
+      "candidateAlpha": 251,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        471,
+        439
+      ],
+      "originalRGB": [
+        164,
+        113,
+        52
+      ]
+    },
+    {
+      "asset": [
+        356,
+        913
+      ],
+      "source": [
+        471.16,
+        439.7
+      ],
+      "candidateAlpha": 251,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        471,
+        439
+      ],
+      "originalRGB": [
+        164,
+        113,
+        52
+      ]
+    },
+    {
+      "asset": [
+        357,
+        914
+      ],
+      "source": [
+        471.27,
+        439.81
+      ],
+      "candidateAlpha": 251,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        471,
+        439
+      ],
+      "originalRGB": [
+        164,
+        113,
+        52
+      ]
+    },
+    {
+      "asset": [
+        358,
+        915
+      ],
+      "source": [
+        471.38,
+        439.91999999999996
+      ],
+      "candidateAlpha": 250,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        471,
+        439
+      ],
+      "originalRGB": [
+        164,
+        113,
+        52
+      ]
+    },
+    {
+      "asset": [
+        359,
+        916
+      ],
+      "source": [
+        471.49,
+        440.03
+      ],
+      "candidateAlpha": 252,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        471,
+        440
+      ],
+      "originalRGB": [
+        203,
+        163,
+        107
+      ]
+    },
+    {
+      "asset": [
+        360,
+        917
+      ],
+      "source": [
+        471.6,
+        440.14
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        471,
+        440
+      ],
+      "originalRGB": [
+        203,
+        163,
+        107
+      ]
+    },
+    {
+      "asset": [
+        361,
+        918
+      ],
+      "source": [
+        471.71,
+        440.25
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        471,
+        440
+      ],
+      "originalRGB": [
+        203,
+        163,
+        107
+      ]
+    },
+    {
+      "asset": [
+        362,
+        919
+      ],
+      "source": [
+        471.82,
+        440.36
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        471,
+        440
+      ],
+      "originalRGB": [
+        203,
+        163,
+        107
+      ]
+    },
+    {
+      "asset": [
+        363,
+        920
+      ],
+      "source": [
+        471.93,
+        440.46999999999997
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        471,
+        440
+      ],
+      "originalRGB": [
+        203,
+        163,
+        107
+      ]
+    },
+    {
+      "asset": [
+        364,
+        921
+      ],
+      "source": [
+        472.04,
+        440.58
+      ],
+      "candidateAlpha": 251,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        472,
+        440
+      ],
+      "originalRGB": [
+        252,
+        225,
+        168
+      ]
+    },
+    {
+      "asset": [
+        365,
+        922
+      ],
+      "source": [
+        472.15,
+        440.69
+      ],
+      "candidateAlpha": 254,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        472,
+        440
+      ],
+      "originalRGB": [
+        252,
+        225,
+        168
+      ]
+    },
+    {
+      "asset": [
+        366,
+        923
+      ],
+      "source": [
+        472.26,
+        440.79999999999995
+      ],
+      "candidateAlpha": 254,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        472,
+        440
+      ],
+      "originalRGB": [
+        252,
+        225,
+        168
+      ]
+    },
+    {
+      "asset": [
+        367,
+        924
+      ],
+      "source": [
+        472.37,
+        440.90999999999997
+      ],
+      "candidateAlpha": 254,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        472,
+        440
+      ],
+      "originalRGB": [
+        252,
+        225,
+        168
+      ]
+    },
+    {
+      "asset": [
+        368,
+        925
+      ],
+      "source": [
+        472.48,
+        441.02
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        472,
+        441
+      ],
+      "originalRGB": [
+        252,
+        230,
+        178
+      ]
+    },
+    {
+      "asset": [
+        369,
+        926
+      ],
+      "source": [
+        472.59000000000003,
+        441.13
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        472,
+        441
+      ],
+      "originalRGB": [
+        252,
+        230,
+        178
+      ]
+    },
+    {
+      "asset": [
+        370,
+        927
+      ],
+      "source": [
+        472.7,
+        441.24
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        472,
+        441
+      ],
+      "originalRGB": [
+        252,
+        230,
+        178
+      ]
+    },
+    {
+      "asset": [
+        371,
+        928
+      ],
+      "source": [
+        472.81,
+        441.34999999999997
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        472,
+        441
+      ],
+      "originalRGB": [
+        252,
+        230,
+        178
+      ]
+    },
+    {
+      "asset": [
+        372,
+        929
+      ],
+      "source": [
+        472.92,
+        441.46
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        472,
+        441
+      ],
+      "originalRGB": [
+        252,
+        230,
+        178
+      ]
+    },
+    {
+      "asset": [
+        373,
+        930
+      ],
+      "source": [
+        473.03,
+        441.57
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        473,
+        441
+      ],
+      "originalRGB": [
+        241,
+        211,
+        168
+      ]
+    },
+    {
+      "asset": [
+        374,
+        931
+      ],
+      "source": [
+        473.14,
+        441.67999999999995
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        473,
+        441
+      ],
+      "originalRGB": [
+        241,
+        211,
+        168
+      ]
+    },
+    {
+      "asset": [
+        375,
+        932
+      ],
+      "source": [
+        473.25,
+        441.78999999999996
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        473,
+        441
+      ],
+      "originalRGB": [
+        241,
+        211,
+        168
+      ]
+    },
+    {
+      "asset": [
+        376,
+        933
+      ],
+      "source": [
+        473.36,
+        441.9
+      ],
+      "candidateAlpha": 251,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        473,
+        441
+      ],
+      "originalRGB": [
+        241,
+        211,
+        168
+      ]
+    },
+    {
+      "asset": [
+        377,
+        934
+      ],
+      "source": [
+        473.47,
+        442.01
+      ],
+      "candidateAlpha": 248,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        473,
+        442
+      ],
+      "originalRGB": [
+        246,
+        216,
+        166
+      ]
+    },
+    {
+      "asset": [
+        378,
+        934
+      ],
+      "source": [
+        473.58,
+        442.01
+      ],
+      "candidateAlpha": 250,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        473,
+        442
+      ],
+      "originalRGB": [
+        246,
+        216,
+        166
+      ]
+    },
+    {
+      "asset": [
+        379,
+        935
+      ],
+      "source": [
+        473.69,
+        442.12
+      ],
+      "candidateAlpha": 253,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        473,
+        442
+      ],
+      "originalRGB": [
+        246,
+        216,
+        166
+      ]
+    },
+    {
+      "asset": [
+        380,
+        936
+      ],
+      "source": [
+        473.8,
+        442.22999999999996
+      ],
+      "candidateAlpha": 254,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        473,
+        442
+      ],
+      "originalRGB": [
+        246,
+        216,
+        166
+      ]
+    },
+    {
+      "asset": [
+        381,
+        937
+      ],
+      "source": [
+        473.91,
+        442.34
+      ],
+      "candidateAlpha": 250,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        473,
+        442
+      ],
+      "originalRGB": [
+        246,
+        216,
+        166
+      ]
+    },
+    {
+      "asset": [
+        382,
+        937
+      ],
+      "source": [
+        474.02,
+        442.34
+      ],
+      "candidateAlpha": 247,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        474,
+        442
+      ],
+      "originalRGB": [
+        248,
+        222,
+        164
+      ]
+    },
+    {
+      "asset": [
+        383,
+        938
+      ],
+      "source": [
+        474.13,
+        442.45
+      ],
+      "candidateAlpha": 253,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        474,
+        442
+      ],
+      "originalRGB": [
+        248,
+        222,
+        164
+      ]
+    },
+    {
+      "asset": [
+        384,
+        938
+      ],
+      "source": [
+        474.24,
+        442.45
+      ],
+      "candidateAlpha": 244,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        474,
+        442
+      ],
+      "originalRGB": [
+        248,
+        222,
+        164
+      ]
+    },
+    {
+      "asset": [
+        385,
+        939
+      ],
+      "source": [
+        474.35,
+        442.56
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        474,
+        442
+      ],
+      "originalRGB": [
+        248,
+        222,
+        164
+      ]
+    },
+    {
+      "asset": [
+        386,
+        939
+      ],
+      "source": [
+        474.46,
+        442.56
+      ],
+      "candidateAlpha": 249,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        474,
+        442
+      ],
+      "originalRGB": [
+        248,
+        222,
+        164
+      ]
+    },
+    {
+      "asset": [
+        387,
+        940
+      ],
+      "source": [
+        474.57,
+        442.66999999999996
+      ],
+      "candidateAlpha": 249,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        474,
+        442
+      ],
+      "originalRGB": [
+        248,
+        222,
+        164
+      ]
+    },
+    {
+      "asset": [
+        388,
+        944
+      ],
+      "source": [
+        474.68,
+        443.11
+      ],
+      "candidateAlpha": 252,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        474,
+        443
+      ],
+      "originalRGB": [
+        249,
+        221,
+        158
+      ]
+    },
+    {
+      "asset": [
+        389,
+        946
+      ],
+      "source": [
+        474.79,
+        443.33
+      ],
+      "candidateAlpha": 249,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        474,
+        443
+      ],
+      "originalRGB": [
+        249,
+        221,
+        158
+      ]
+    },
+    {
+      "asset": [
+        390,
+        947
+      ],
+      "source": [
+        474.9,
+        443.44
+      ],
+      "candidateAlpha": 253,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        474,
+        443
+      ],
+      "originalRGB": [
+        249,
+        221,
+        158
+      ]
+    },
+    {
+      "asset": [
+        391,
+        949
+      ],
+      "source": [
+        475.01,
+        443.65999999999997
+      ],
+      "candidateAlpha": 254,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        475,
+        443
+      ],
+      "originalRGB": [
+        244,
+        215,
+        154
+      ]
+    },
+    {
+      "asset": [
+        392,
+        950
+      ],
+      "source": [
+        475.12,
+        443.77
+      ],
+      "candidateAlpha": 253,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        475,
+        443
+      ],
+      "originalRGB": [
+        244,
+        215,
+        154
+      ]
+    },
+    {
+      "asset": [
+        393,
+        951
+      ],
+      "source": [
+        475.23,
+        443.88
+      ],
+      "candidateAlpha": 251,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        475,
+        443
+      ],
+      "originalRGB": [
+        244,
+        215,
+        154
+      ]
+    },
+    {
+      "asset": [
+        394,
+        952
+      ],
+      "source": [
+        475.34000000000003,
+        443.99
+      ],
+      "candidateAlpha": 244,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        475,
+        443
+      ],
+      "originalRGB": [
+        244,
+        215,
+        154
+      ]
+    },
+    {
+      "asset": [
+        395,
+        953
+      ],
+      "source": [
+        475.45,
+        444.09999999999997
+      ],
+      "candidateAlpha": 246,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        475,
+        444
+      ],
+      "originalRGB": [
+        246,
+        218,
+        143
+      ]
+    },
+    {
+      "asset": [
+        396,
+        954
+      ],
+      "source": [
+        475.56,
+        444.21
+      ],
+      "candidateAlpha": 244,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        475,
+        444
+      ],
+      "originalRGB": [
+        246,
+        218,
+        143
+      ]
+    },
+    {
+      "asset": [
+        397,
+        954
+      ],
+      "source": [
+        475.67,
+        444.21
+      ],
+      "candidateAlpha": 248,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        475,
+        444
+      ],
+      "originalRGB": [
+        246,
+        218,
+        143
+      ]
+    },
+    {
+      "asset": [
+        398,
+        956
+      ],
+      "source": [
+        475.78,
+        444.42999999999995
+      ],
+      "candidateAlpha": 244,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        475,
+        444
+      ],
+      "originalRGB": [
+        246,
+        218,
+        143
+      ]
+    },
+    {
+      "asset": [
+        399,
+        956
+      ],
+      "source": [
+        475.89,
+        444.42999999999995
+      ],
+      "candidateAlpha": 249,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        475,
+        444
+      ],
+      "originalRGB": [
+        246,
+        218,
+        143
+      ]
+    },
+    {
+      "asset": [
+        400,
+        957
+      ],
+      "source": [
+        476.0,
+        444.53999999999996
+      ],
+      "candidateAlpha": 248,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        476,
+        444
+      ],
+      "originalRGB": [
+        247,
+        223,
+        148
+      ]
+    },
+    {
+      "asset": [
+        401,
+        958
+      ],
+      "source": [
+        476.11,
+        444.65
+      ],
+      "candidateAlpha": 251,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        476,
+        444
+      ],
+      "originalRGB": [
+        247,
+        223,
+        148
+      ]
+    },
+    {
+      "asset": [
+        402,
+        959
+      ],
+      "source": [
+        476.22,
+        444.76
+      ],
+      "candidateAlpha": 252,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        476,
+        444
+      ],
+      "originalRGB": [
+        247,
+        223,
+        148
+      ]
+    },
+    {
+      "asset": [
+        403,
+        960
+      ],
+      "source": [
+        476.33,
+        444.87
+      ],
+      "candidateAlpha": 253,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        476,
+        444
+      ],
+      "originalRGB": [
+        247,
+        223,
+        148
+      ]
+    },
+    {
+      "asset": [
+        404,
+        961
+      ],
+      "source": [
+        476.44,
+        444.97999999999996
+      ],
+      "candidateAlpha": 251,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        476,
+        444
+      ],
+      "originalRGB": [
+        247,
+        223,
+        148
+      ]
+    },
+    {
+      "asset": [
+        405,
+        962
+      ],
+      "source": [
+        476.55,
+        445.09
+      ],
+      "candidateAlpha": 254,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        476,
+        445
+      ],
+      "originalRGB": [
+        245,
+        214,
+        130
+      ]
+    },
+    {
+      "asset": [
+        406,
+        963
+      ],
+      "source": [
+        476.66,
+        445.2
+      ],
+      "candidateAlpha": 254,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        476,
+        445
+      ],
+      "originalRGB": [
+        245,
+        214,
+        130
+      ]
+    },
+    {
+      "asset": [
+        407,
+        964
+      ],
+      "source": [
+        476.77,
+        445.31
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        476,
+        445
+      ],
+      "originalRGB": [
+        245,
+        214,
+        130
+      ]
+    },
+    {
+      "asset": [
+        408,
+        965
+      ],
+      "source": [
+        476.88,
+        445.41999999999996
+      ],
+      "candidateAlpha": 253,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        476,
+        445
+      ],
+      "originalRGB": [
+        245,
+        214,
+        130
+      ]
+    },
+    {
+      "asset": [
+        409,
+        966
+      ],
+      "source": [
+        476.99,
+        445.53
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        476,
+        445
+      ],
+      "originalRGB": [
+        245,
+        214,
+        130
+      ]
+    },
+    {
+      "asset": [
+        410,
+        967
+      ],
+      "source": [
+        477.1,
+        445.64
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        477,
+        445
+      ],
+      "originalRGB": [
+        244,
+        220,
+        144
+      ]
+    },
+    {
+      "asset": [
+        411,
+        968
+      ],
+      "source": [
+        477.21,
+        445.75
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        477,
+        445
+      ],
+      "originalRGB": [
+        244,
+        220,
+        144
+      ]
+    },
+    {
+      "asset": [
+        412,
+        969
+      ],
+      "source": [
+        477.32,
+        445.86
+      ],
+      "candidateAlpha": 252,
+      "coarseBands": [
+        "west-inner-blue-house-foundation"
+      ],
+      "sourceFloorPixel": [
+        477,
+        445
+      ],
+      "originalRGB": [
+        244,
+        220,
+        144
+      ]
+    },
+    {
+      "asset": [
+        1073,
+        927
+      ],
+      "source": [
+        550.03,
+        441.24
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        550,
+        441
+      ],
+      "originalRGB": [
+        168,
+        122,
+        79
+      ]
+    },
+    {
+      "asset": [
+        1074,
+        927
+      ],
+      "source": [
+        550.14,
+        441.24
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        550,
+        441
+      ],
+      "originalRGB": [
+        168,
+        122,
+        79
+      ]
+    },
+    {
+      "asset": [
+        1075,
+        927
+      ],
+      "source": [
+        550.25,
+        441.24
+      ],
+      "candidateAlpha": 247,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        550,
+        441
+      ],
+      "originalRGB": [
+        168,
+        122,
+        79
+      ]
+    },
+    {
+      "asset": [
+        1076,
+        926
+      ],
+      "source": [
+        550.36,
+        441.13
+      ],
+      "candidateAlpha": 252,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        550,
+        441
+      ],
+      "originalRGB": [
+        168,
+        122,
+        79
+      ]
+    },
+    {
+      "asset": [
+        1077,
+        926
+      ],
+      "source": [
+        550.47,
+        441.13
+      ],
+      "candidateAlpha": 255,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        550,
+        441
+      ],
+      "originalRGB": [
+        168,
+        122,
+        79
+      ]
+    },
+    {
+      "asset": [
+        1078,
+        926
+      ],
+      "source": [
+        550.58,
+        441.13
+      ],
+      "candidateAlpha": 245,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        550,
+        441
+      ],
+      "originalRGB": [
+        168,
+        122,
+        79
+      ]
+    },
+    {
+      "asset": [
+        1079,
+        925
+      ],
+      "source": [
+        550.69,
+        441.02
+      ],
+      "candidateAlpha": 252,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        550,
+        441
+      ],
+      "originalRGB": [
+        168,
+        122,
+        79
+      ]
+    },
+    {
+      "asset": [
+        1080,
+        925
+      ],
+      "source": [
+        550.8,
+        441.02
+      ],
+      "candidateAlpha": 253,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        550,
+        441
+      ],
+      "originalRGB": [
+        168,
+        122,
+        79
+      ]
+    },
+    {
+      "asset": [
+        1081,
+        924
+      ],
+      "source": [
+        550.91,
+        440.90999999999997
+      ],
+      "candidateAlpha": 247,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        550,
+        440
+      ],
+      "originalRGB": [
+        196,
+        152,
+        106
+      ]
+    },
+    {
+      "asset": [
+        1082,
+        924
+      ],
+      "source": [
+        551.02,
+        440.90999999999997
+      ],
+      "candidateAlpha": 254,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        551,
+        440
+      ],
+      "originalRGB": [
+        140,
+        93,
+        41
+      ]
+    },
+    {
+      "asset": [
+        1083,
+        924
+      ],
+      "source": [
+        551.13,
+        440.90999999999997
+      ],
+      "candidateAlpha": 244,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        551,
+        440
+      ],
+      "originalRGB": [
+        140,
+        93,
+        41
+      ]
+    },
+    {
+      "asset": [
+        1084,
+        923
+      ],
+      "source": [
+        551.24,
+        440.79999999999995
+      ],
+      "candidateAlpha": 247,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        551,
+        440
+      ],
+      "originalRGB": [
+        140,
+        93,
+        41
+      ]
+    },
+    {
+      "asset": [
+        1085,
+        923
+      ],
+      "source": [
+        551.35,
+        440.79999999999995
+      ],
+      "candidateAlpha": 247,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        551,
+        440
+      ],
+      "originalRGB": [
+        140,
+        93,
+        41
+      ]
+    },
+    {
+      "asset": [
+        1086,
+        921
+      ],
+      "source": [
+        551.46,
+        440.58
+      ],
+      "candidateAlpha": 246,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        551,
+        440
+      ],
+      "originalRGB": [
+        140,
+        93,
+        41
+      ]
+    },
+    {
+      "asset": [
+        1087,
+        922
+      ],
+      "source": [
+        551.57,
+        440.69
+      ],
+      "candidateAlpha": 250,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        551,
+        440
+      ],
+      "originalRGB": [
+        140,
+        93,
+        41
+      ]
+    },
+    {
+      "asset": [
+        1088,
+        922
+      ],
+      "source": [
+        551.6800000000001,
+        440.69
+      ],
+      "candidateAlpha": 244,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        551,
+        440
+      ],
+      "originalRGB": [
+        140,
+        93,
+        41
+      ]
+    },
+    {
+      "asset": [
+        1089,
+        921
+      ],
+      "source": [
+        551.79,
+        440.58
+      ],
+      "candidateAlpha": 246,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        551,
+        440
+      ],
+      "originalRGB": [
+        140,
+        93,
+        41
+      ]
+    },
+    {
+      "asset": [
+        1090,
+        921
+      ],
+      "source": [
+        551.9,
+        440.58
+      ],
+      "candidateAlpha": 244,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        551,
+        440
+      ],
+      "originalRGB": [
+        140,
+        93,
+        41
+      ]
+    },
+    {
+      "asset": [
+        1091,
+        920
+      ],
+      "source": [
+        552.01,
+        440.46999999999997
+      ],
+      "candidateAlpha": 244,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        552,
+        440
+      ],
+      "originalRGB": [
+        165,
+        136,
+        67
+      ]
+    },
+    {
+      "asset": [
+        1092,
+        919
+      ],
+      "source": [
+        552.12,
+        440.36
+      ],
+      "candidateAlpha": 246,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        552,
+        440
+      ],
+      "originalRGB": [
+        165,
+        136,
+        67
+      ]
+    },
+    {
+      "asset": [
+        1093,
+        918
+      ],
+      "source": [
+        552.23,
+        440.25
+      ],
+      "candidateAlpha": 245,
+      "coarseBands": [
+        "west-inner-side-garden"
+      ],
+      "sourceFloorPixel": [
+        552,
+        440
+      ],
+      "originalRGB": [
+        165,
+        136,
+        67
+      ]
+    }
+  ],
+  "crops": {
+    "blue-seam-grid.png": {
+      "sourceBox": [
+        438,
+        395,
+        501,
+        481
+      ],
+      "scale": 12
+    },
+    "right-courtyard-grid.png": {
+      "sourceBox": [
+        528,
+        390,
+        595,
+        478
+      ],
+      "scale": 11
+    },
+    "blue-body-grid.png": {
+      "sourceBox": [
+        392,
+        380,
+        491,
+        482
+      ],
+      "scale": 8
+    },
+    "blue-door-ground-grid.png": {
+      "sourceBox": [
+        437,
+        462,
+        488,
+        491
+      ],
+      "scale": 18
+    },
+    "right-front-wall-ground-grid.png": {
+      "sourceBox": [
+        536,
+        433,
+        594,
+        471
+      ],
+      "scale": 15
+    }
+  },
+  "stoppingBoundary": "No source-certified foot-crossing found; hidden common volumes remain unknown. No further pose search or registration search performed."
+}

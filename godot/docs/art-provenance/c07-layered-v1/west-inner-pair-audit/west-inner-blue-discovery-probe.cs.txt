@@ -1,0 +1,19 @@
+using Godot;
+using Empire.Presentation;
+using Empire.Presentation.Tactical;
+using Empire.Core.Engine;
+using Empire.Core.Determinism;
+using System.Text.Json.Nodes;
+public partial class WestInnerBlueProbe:Node {
+ public override async void _Ready(){try{
+ var e=new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));var l=PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>().Single(v=>v["id"]!.GetValue<string>()=="c01-07");var s=e.CreateState(l);var digest=EcmaJson.Stringify(s);var path=OS.GetEnvironment("C07_BLUE_SCENE");if(path.Length==0)path="res://west-inner-pair-study.json";var sc=AuthoredScene.Load(path);var r=BoardSceneRendering.Load(sc,l,s["map"]!.AsObject());var b=new BoardView{AnimationsEnabled=false};AddChild(b);b.Configure(new(AssetCatalog.Load(),EnvironmentCatalog.Load(),e.Grids.Get("square4"),e.Catalog,r.Plane),l,sc);BoardGroundView? ground=null;b.ConfigureGround((rules,scene)=>ground=r.Ground(rules,scene));b.ConfigureDynamicState();var reports=new JsonArray();
+ foreach(var (x,y,back) in new[]{(28,24,true),(28,30,false)}){
+ if(l["terrain"]![y]!.GetValue<string>()[x]!='p')throw new Exception("Static pose must be legal paving");var u=s["units"]!.AsArray().OfType<JsonObject>().Single(v=>v["key"]!.GetValue<string>()=="campaign-torren").DeepClone().AsObject();u["x"]=x;u["y"]=y;u["facing"]="east";int id=u["id"]!.GetValue<int>();var shown=s.DeepClone().AsObject();shown["units"]=new JsonArray(u);b.RenderState(shown);await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);var actor=b.GetNode<CanvasGroup>($"CanonicalProjection/Unit_{id}");var sprite=actor.GetNode<Sprite2D>("AuthoredSprite");var entries=ground!.DepthEntries.Where(d=>d.Visual is not null && d.Node.Name.ToString().Contains("west-inner-blue-house-main")).ToArray();var witnesses=new JsonArray();int materialOverlap=0;
+ for(int py=y*16-55;py<=y*16+10;py++)for(int px=x*16-25;px<=x*16+45;px++){
+ var p=new Vector2(px+.5f,py+.5f);if(!sprite.IsPixelOpaque(sprite.ToLocal(p)))continue;var owners=entries.Where(v=>v.Visual!.GlobalBounds.HasPoint(p)&&v.Visual.Covers(p)).ToArray();if(owners.Length==0)continue;materialOverlap++;bool foreground=owners.Any(v=>v.Node.ZIndex>actor.ZIndex);bool picked=b.Pick(p)==TacticalHit.Unit(new(x,y),id);if(foreground==back&&picked!=back&&witnesses.Count<8)witnesses.Add(new JsonObject{{"source",new JsonArray(p.X,p.Y)},{"foreground",foreground},{"unitPicked",picked},{"owners",new JsonArray(owners.Select(v=>(JsonNode)JsonValue.Create(v.Node.Name.ToString())!).ToArray())}});
+ }
+ reports.Add(new JsonObject{{"pose",new JsonArray(x,y)},{"expectedBack",back},{"materialOverlapPixels",materialOverlap},{"validWitnesses",witnesses}});
+ }
+ var report=new JsonObject{{"scope","Initial CreateState + independent display clones only; no action, AI, turn or save. Actual C07 Torren alpha, formal assembled loader and Pick."},{"scene",path},{"poses",reports},{"issues",b.RenderingIssueCount},{"stateUnchanged",digest==EcmaJson.Stringify(s)}};var output=OS.GetEnvironment("C07_BLUE_OUTPUT");if(output.Length==0)output="res://west-inner-blue-v1-probe-result.json";File.WriteAllText(ProjectSettings.GlobalizePath(output),report.ToJsonString());if(reports.Any(v=>v!["validWitnesses"]!.AsArray().Count==0))throw new Exception("Actual blue-house front/back material witness absent");if(digest!=EcmaJson.Stringify(s)||b.RenderingIssueCount!=0)throw new Exception("Static state/render changed");GD.Print("WEST_INNER_BLUE_STATIC_COMPLETE");GetTree().Quit();
+ }catch(Exception ex){GD.PushError(ex.ToString());GetTree().Quit(1);}}
+}

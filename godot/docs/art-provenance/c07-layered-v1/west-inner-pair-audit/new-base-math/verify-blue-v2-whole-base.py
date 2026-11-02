@@ -1,0 +1,38 @@
+from pathlib import Path
+import json,math,ast,hashlib
+import numpy as np
+from PIL import Image
+out=Path(__file__).resolve().parent;root=out.parents[1];repo=root/'empire-c01'
+v1=json.loads((out/'blue-registration-frozen-input.json').read_text());bluepath=root/'c07-static-preview/west-inner-blue-v2-registration.json';blue=json.loads(bluepath.read_text());orangepath=root/'c07-static-preview/west-inner-house-v2-registration.json';orange=json.loads(orangepath.read_text());previous=json.loads((out/'blue-initial-foot-math.json').read_text());level=next(v for v in json.loads((repo/'godot/data/grayflag-campaign-levels.json').read_text()) if v['id']=='c01-07');frozen=json.loads((root/'c07-static-preview/central-east-planter-review/rear-white-planter-new-base-walk-corridor.json').read_text())
+oldscript=root/'c07-readonly-review/west-inner-house-source-study/candidate-v2-foot-math/verify-visible-foot-and-walk.py';m=ast.parse(oldscript.read_text());exec(compile(ast.Module(body=[n for n in m.body if isinstance(n,ast.FunctionDef) and n.name in ['inside','cc','ptseg','scan']],type_ignores=[]),str(oldscript),'exec'))
+mathscript=root/'c07-static-preview/central-rear-west-bed-review/verify-rear-west-actual-four-leg-footing.py';m=ast.parse(mathscript.read_text());exec(compile(ast.Module(body=[n for n in m.body if isinstance(n,ast.FunctionDef) and n.name in ['cross','area','intersection']],type_ignores=[]),str(mathscript),'exec'))
+def world(d,p):return (np.array(p)*d['scale']+d['worldOrigin']).tolist()
+def model(d,corner):
+ line=[world(d,p) for p in d['candidateVisibleStoneFoot']];L=np.array(line[0]);R=np.array(line[-1]);F=np.array(world(d,corner));H=L+R-F
+ return {'left':L.tolist(),'frontAxisCornerAsset':corner,'frontAxisCorner':F.tolist(),'right':R.tolist(),'hiddenRearNewDesign':H.tolist(),'polygon':line+[H.tolist()]}
+bm=model(blue,[467,1318]);om=model(orange,[521,1068]);argmax=max(orange['candidateVisibleStoneFoot'],key=lambda p:p[1]);wrong=model(orange,argmax)
+assert blue['candidateVisibleStoneFoot']==v1['candidateVisibleStoneFoot'];assert blue['scale']==v1['scale'];assert np.allclose(np.array(blue['worldOrigin'])-v1['worldOrigin'],[0,-3])
+def floor_cells(poly):
+ a=np.min(poly,axis=0);b=np.max(poly,axis=0);rows=[]
+ for y in range(math.floor(a[1]/16),math.floor(b[1]/16)+1):
+  for x in range(math.floor(a[0]/16),math.floor(b[0]/16)+1):
+   v=intersection(poly,[[x*16,y*16],[x*16+16,y*16],[x*16+16,y*16+16],[x*16,y*16+16]])
+   s=area(v)
+   if s>1e-8:rows.append({'cell':[x,y],'terrain':level['terrain'][y][x],'positiveAreaSourceSquarePixels':s})
+ return {'totalArea':area(poly),'cells':rows,'nonBlockedPositiveAreaCells':[v for v in rows if v['terrain']!='#']}
+bluecells=floor_cells(bm['polygon']);orangecells=floor_cells(om['polygon'])
+foot=np.array(bm['polygon']+[bm['polygon'][0]]);OA=np.array(om['polygon']);OB=np.roll(OA,-1,axis=0);relation=scan(OA,OB,[{'orangeBaseBoundaryEdge':i} for i in range(len(OA))]);blueInsideOrange=[i for i,p in enumerate(bm['polygon']) if inside(p,om['polygon'])];orangeInsideBlue=[i for i,p in enumerate(om['polygon']) if inside(p,bm['polygon'])]
+# Full base: cached exact front-line continuous scan plus independently scan hidden closing edges; test all endpoints against bounded base.
+legal=previous['legalCells'];edges=previous['directedEdges'];aa=[];bb=[];meta=[]
+for a,b in edges:
+ for west in ([False,True] if a[0]==b[0] else [b[0]<a[0]]):
+  for f in frozen['frames']:
+   for v in f['sole']:
+    off=[(v[0]-f['anchor'][0])*frozen['scale']*(-1 if west else 1),(v[1]-f['anchor'][1])*frozen['scale']];aa.append([16*a[k]+8+off[k] for k in range(2)]);bb.append([16*b[k]+8+off[k] for k in range(2)]);meta.append({'fromCell':a,'toCell':b,'west':west,'frame':f['index'],'soleFramePixel':v})
+A=np.array(aa);B=np.array(bb);foot=np.array([bm['right'],bm['hiddenRearNewDesign'],bm['left']]);hiddenwalk=scan(A,B,meta);poly=bm['polygon'];lo=np.min(poly,axis=0);hi=np.max(poly,axis=0);ids=np.flatnonzero((np.all(A>=lo,axis=1)&np.all(A<=hi,axis=1))|(np.all(B>=lo,axis=1)&np.all(B<=hi,axis=1)));insideIds=[int(i) for i in ids if inside(A[i],poly) or inside(B[i],poly)]
+# Source fixed native witnesses are not changed. This is only alpha resampling after uniform north shift.
+im=Image.open(repo/'godot/assets/native/c07-layered-v1/west-inner-blue-house-v1-candidate.png').convert('RGBA');witnesses=[]
+for p in [[453.5,361.5],[458.5,452.5]]:
+ q=[math.floor((p[k]-blue['worldOrigin'][k])/blue['scale']) for k in range(2)];witnesses.append({'source':p,'assetPixel':q,'alpha':im.getpixel(tuple(q))[3]})
+report={'ready':True,'scope':'Explicit NEW whole base designs from observed candidate wall-axis front corners, with actual visible foot polylines. Not original hidden foundations or a 3D architectural reconstruction. No engine/GUI/state/production change.','inputs':{'blue':str(bluepath),'blueSha256':hashlib.sha256(bluepath.read_bytes()).hexdigest(),'orange':str(orangepath),'orangeSha256':hashlib.sha256(orangepath.read_bytes()).hexdigest(),'initialReport':str(out/'blue-initial-foot-math.json')},'same886SamplesAndUniformScale':True,'registrationDelta':[0,-3],'blueNewClosedBase':bm,'orangeNewClosedBase':om,'orangeArgmaxCorrection':{'argmaxPoint':argmax,'belongsTo':'protruding doorway step, not the two principal wall axes','incorrectAsWallAxisHiddenCorner':wrong['hiddenRearNewDesign'],'adoptedWallAxisCorner':[521,1068],'meaning':'The hidden corner is a new design using visually identified wall axes, not blindly the maximum Y texel.'},'blueWholeBaseCanonicalCoverage':bluecells,'orangeWholeBaseCanonicalCoverage':orangecells,'wholeBaseMutualRelation':{'boundaryScan':relation,'blueVerticesInsideOrange':blueInsideOrange,'orangeVerticesInsideBlue':orangeInsideBlue,'disjointNewDesignedDomains':relation['intersectingSoleSegments']==0 and not blueInsideOrange and not orangeInsideBlue},'fullBlueWalk':{'testedSegments':len(A),'frontBoundaryScan':previous['results']['candidateShiftNorth3']['walkVsOpenVisibleFoot'],'hiddenBoundaryScan':hiddenwalk,'endpointInsideCount':len(insideIds),'endpointInsideExamples':[meta[i] for i in insideIds[:3]],'minimumBoundaryDistance':min(previous['results']['candidateShiftNorth3']['walkVsOpenVisibleFoot']['minimumDistance'],hiddenwalk['minimumDistance']),'noSegmentOrEndpointInsideDesignedBlueBase':not insideIds and hiddenwalk['intersectingSoleSegments']==0 and previous['results']['candidateShiftNorth3']['walkVsOpenVisibleFoot']['intersectingSoleSegments']==0},'unchangedBlueNativeSourcePointsAlphaOnly':witnesses,'limits':['This proves only these two explicitly proposed new ground domains are disjoint. Original blue/Orange hidden bases remain uncertified.','Projected eaves may overlap even when ground domains do not. Roof height and full 3D solid clearance are not reconstructed by this floor math; existing per-strip supports and native same-camera pair view remain the roof/occlusion checks.','Candidate front axis corner is an opaque outline reference; nearby stone interior was separately inspected. No arbitrary bounding box or original responsibility polygon used as solid floor.','Only frozen Torren front-support walk contours and legal local edges; no actual gameplay test, all-role shoe guarantee, or canonical state edit.']}
+(out/'blue-v2-whole-new-base-and-orange-separation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps({'ready':True,'blueAxes':{k:v for k,v in bm.items() if k!='polygon'},'orangeAxes':{k:v for k,v in om.items() if k!='polygon'},'blueArea':bluecells,'orangeNonBlocked':orangecells['nonBlockedPositiveAreaCells'],'mutual':report['wholeBaseMutualRelation'],'fullBlueWalk':report['fullBlueWalk'],'sourceAlpha':witnesses},ensure_ascii=False,indent=2))

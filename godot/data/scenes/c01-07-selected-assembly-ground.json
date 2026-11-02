@@ -614,6 +614,33 @@
       "selectionCell": null,
       "ownsMapStructureBody": false,
       "pointer": "pass-through"
+    },
+    {
+      "id": "west-inner-house-main",
+      "assetId": "west-inner-house-v2",
+      "contact": [
+        31.8125,
+        28.375
+      ],
+      "scale": 0.11,
+      "selectionCell": [
+        33,
+        30
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "west-inner-blue-house-main",
+      "assetId": "west-inner-blue-house-v1",
+      "contact": [
+        26.375,
+        29.1875
+      ],
+      "scale": 0.1,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
     }
   ]
 }
