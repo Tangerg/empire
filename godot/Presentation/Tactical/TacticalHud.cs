@@ -63,6 +63,8 @@ public partial class TacticalHud : Control
         var focused = detailPopup?.GuiGetFocusOwner() ?? GetViewport()?.GuiGetFocusOwner();
         var focusKey = focused?.GetMeta("hud_key", "").AsString();
         var scrollPosition = detailScroll?.ScrollVertical ?? 0;
+        var preserveVisibleFocus = focused is not null && detailScroll is not null
+            && detailScroll.IsAncestorOf(focused) && detailScroll.GetGlobalRect().Encloses(focused.GetGlobalRect());
         current = projection;
         var renderedGeneration = ++generation;
         submitted = false;
@@ -107,6 +109,7 @@ public partial class TacticalHud : Control
             detailScroll = new ScrollContainer
             {
                 Name = "DetailScroll",
+                FollowFocus = true,
                 HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
                 CustomMinimumSize = new Vector2(328, 300)
             };
@@ -434,7 +437,13 @@ public partial class TacticalHud : Control
         {
             if (GodotObject.IsInstanceValid(this) && generation == renderedGeneration && IsInsideTree()
                 && GodotObject.IsInstanceValid(mountedScroll) && mountedScroll.IsInsideTree())
+            {
                 mountedScroll.ScrollVertical = scrollPosition;
+                // Restoring the old reading offset must not undo native focus-following
+                // when refreshed content before the focused control changes height.
+                if (preserveVisibleFocus && detailPopup?.GuiGetFocusOwner() is { } restoredFocus && mountedScroll.IsAncestorOf(restoredFocus))
+                    mountedScroll.EnsureControlVisible(restoredFocus);
+            }
         }).CallDeferred();
 
         void RestoreFocus(Button button, string key)
