@@ -9,6 +9,19 @@ public override void _Ready(){try{
 var e=new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));var l=PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>().Single(x=>x["id"]!.GetValue<string>()=="c01-07");var s=e.CreateState(l);var digest=EcmaJson.Stringify(s);bool candidate=true;bool behind=OS.GetEnvironment("C07_GATE_BACK_DEPTH")=="1";bool oldMaterial=false;bool roofFit=false;var variant=OS.GetEnvironment("NW_VARIANT");if(variant.Length==0)variant="stone";var sc=AuthoredScene.Load($"res://northwest-{variant}-scene.json");var r=BoardSceneRendering.Load(sc,l,s["map"]!.AsObject());var b=new BoardView{AnimationsEnabled=false};AddChild(b);b.Configure(new(AssetCatalog.Load(),EnvironmentCatalog.Load(),e.Grids.Get("square4"),e.Catalog,r.Plane),l,sc);BoardGroundView? ground=null;b.ConfigureGround((rules,scene)=>ground=r.Ground(rules,scene));b.ConfigureDynamicState();
 var empty=s.DeepClone().AsObject();empty["units"]=new JsonArray();b.RenderState(empty);
 var gateEntries=ground!.DepthEntries.Where(d=>d.Node.Name.ToString().StartsWith("northwest-gate-study__")).Select(d=>(d.Visual!,d.Visual!.GlobalBounds)).ToArray();
+if (variant.StartsWith("platform", StringComparison.Ordinal))
+{
+    var joint = b.ToGlobal(new Vector2(96, 85.3f));
+    var surface = PresentationJson.Load<JsonObject>($"res://northwest-{variant}-surface.json");
+    var supportIds = surface["supports"]!.AsArray().Select(v => v!["id"]!.GetValue<string>()).ToArray();
+    bool OwnerCovers(string prefix) => supportIds.Select((id, index) => (id, index))
+        .Where(v => v.id.StartsWith(prefix, StringComparison.Ordinal))
+        .Any(v => ground.DepthEntries.Any(d => d.Node.Name.ToString() == $"northwest-gate-study__surface_{v.index}" && d.Visual is not null && d.Visual.Covers(joint)));
+    bool oldBaseCovers = OwnerCovers("base-");
+    bool newCapCovers = OwnerCovers("mount-platform-");
+    if (oldBaseCovers || !newCapCovers)
+        throw new InvalidOperationException("Tower cap replacement must have exactly its new surface owner at the retained overlap witness.");
+}
 bool GateCovers(Vector2 p){var global=b.ToGlobal(p);return gateEntries.Any(d=>d.Item2.HasPoint(global)&&d.Item1.Covers(global));}
 bool InsideInclusive(Vector2 p,Vector2[] poly){
 for(int i=0;i<poly.Length;i++){var a=poly[i];var d=poly[(i+1)%poly.Length]-a;var q=p-a;if(MathF.Abs(d.Cross(q))<0.001f&&q.Dot(d)>=0&&q.Dot(d)<=d.LengthSquared())return true;}

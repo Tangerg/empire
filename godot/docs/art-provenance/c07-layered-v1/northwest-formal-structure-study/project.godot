@@ -1,0 +1,9 @@
+config_version=5
+[application]
+config/name="C07 READONLY canonical initial renderer fixture"
+run/main_scene="res://CityPreview.tscn"
+config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
+[rendering]
+renderer/rendering_method="gl_compatibility"
+[dotnet]
+project/assembly_name="Probe"

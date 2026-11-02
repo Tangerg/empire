@@ -116,24 +116,24 @@
       ],
       "uv": [
         [
-          625,
-          375
+          637,
+          382
         ],
         [
-          690,
-          348
+          699,
+          360
         ],
         [
-          732,
-          373
+          723,
+          376
         ],
         [
-          667,
-          400
+          661,
+          399
         ]
       ],
       "tint": "ffffff",
-      "coverage": "native-alpha"
+      "coverage": "opaque"
     },
     {
       "id": "cap-left-thickness",
@@ -219,5 +219,6 @@
     }
   ],
   "scope": "Bounded new tower-cap design; 3.5 source-pixel vertical thickness; retains lower tower/ground support and untouched lookout material/holes; geometry not pixel restoration",
-  "supportScope": "Same existing tower structural front=164; endpoint extended from115 to116 solely to span new 0.5px cap overhang, not a new physical ground foot"
+  "supportScope": "Same existing tower structural front=164; endpoint extended from115 to116 solely to span new 0.5px cap overhang, not a new physical ground foot",
+  "materialCorrection": "Top source inset to verified existing stone face; previous UV crossed transparent silhouette. World geometry/support unchanged."
 }

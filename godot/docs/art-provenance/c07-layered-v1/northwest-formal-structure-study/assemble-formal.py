@@ -7,7 +7,7 @@ def transform(v,scale,t):return [f(f(v[i])*scale+t[i]) for i in range(2)]
 def merge(mount):
  result={'schema':1,'supports':[],'members':[]}
  for name in ['base','lookout','jamb-0','jamb-1',mount]:
-  surface=load(root/f'{name}-surface.json')
+  surface=load(root/('platform-base-surface.json' if name=='base' and mount=='mount-platform' else f'{name}-surface.json'))
   if name in ['base','lookout']:
    source=load(root/('northwest-lookout-base.json' if name=='base' else 'northwest-lookout-section.json'));sc=f(source['scale']);t=list(map(f,source['translation']))
   else:
