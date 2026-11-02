@@ -1,0 +1,61 @@
+{
+  "scope": "Same selected assembly, fixed camera, complete initial roster only; ABBA old1c6c0435/new935b94b9, actual DLL hashes per run; shared llvmpipe; no user-hardware FPS claim",
+  "rows": [
+    {
+      "run": "A1",
+      "drawCalls": [
+        3361
+      ],
+      "medianFrameMs": 88.09523809523809,
+      "medianProcessMs": 100.062,
+      "buildMs": 21032.8628,
+      "entries": 4524,
+      "nodes": 7459,
+      "differentPixels": 0,
+      "maxChannelDifference": 0,
+      "stateUnchanged": true
+    },
+    {
+      "run": "B1",
+      "drawCalls": [
+        2298
+      ],
+      "medianFrameMs": 81.98072222222223,
+      "medianProcessMs": 102.35,
+      "buildMs": 21283.8077,
+      "entries": 4524,
+      "nodes": 7459,
+      "differentPixels": 0,
+      "maxChannelDifference": 0,
+      "stateUnchanged": true
+    },
+    {
+      "run": "B2",
+      "drawCalls": [
+        2298
+      ],
+      "medianFrameMs": 83.33333333333333,
+      "medianProcessMs": 114.177,
+      "buildMs": 22871.2176,
+      "entries": 4524,
+      "nodes": 7459,
+      "differentPixels": 0,
+      "maxChannelDifference": 0,
+      "stateUnchanged": true
+    },
+    {
+      "run": "A2",
+      "drawCalls": [
+        3361
+      ],
+      "medianFrameMs": 89.86850000000001,
+      "medianProcessMs": 117.326,
+      "buildMs": 21243.0384,
+      "entries": 4524,
+      "nodes": 7459,
+      "differentPixels": 0,
+      "maxChannelDifference": 0,
+      "stateUnchanged": true
+    }
+  ]
+}
