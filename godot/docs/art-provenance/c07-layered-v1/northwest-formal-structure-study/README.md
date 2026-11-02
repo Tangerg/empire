@@ -73,3 +73,12 @@ Final selected checks: full assembly/static responsibility inventory; four stone
 Actual selected default frame is selected-northwest-default125.png; world area equals reviewed candidate exactly. The first selected screenshot had a stale diagnostic suffix claiming unselected; it is retained as STALE-LABEL and not used for user-facing scope. Corrected label explicitly says selected candidate/official unchanged. selected-whole-layout065.png shows the full incomplete layout, including untouched generic placeholders and missing wall/yard responsibilities, not a final scene-quality claim.
 
 Officialc01-07.json remains SHA5bd8cac7e2263dcffaf23b88c38b25515575678c3085a227e4a1f58f61abcd88; six paused-file hashes unchanged. Northeast lookout/leaf, other scene responsibilities, overall material/contact integration, global performance and separately authorized gameplay remain incomplete. This northwest gate is closed for this bounded batch; no further local material micro-iteration is scheduled.
+
+
+## 2026-11-02 numerical screenshot provenance correction
+
+The earlier CUA captures named `whole-gate-leaf-joinery-default125.png`, `whole-gate-pruned-default125.png` and `selected-northwest-default125.png` contain JPEG RGB bytes despite their suffix. Their decoded zero-difference comparisons cannot establish lossless GPU equivalence. They remain human visual references only; the earlier numerical-oracle attribution is withdrawn.
+
+The same three static default-camera variants were recaptured directly with Godot viewport GetImage/SavePng (PNG RGBA). `native-lossless-framebuffer-equivalence.json` records actual byte hashes and two comparisons: empty-support pruning and selected integration each have zero changed world pixels, excluding only the 72-pixel diagnostic caption. `verify-lossless-frames.py` now checks signature and decoded RGBA through the shared native image oracle, and rejects the old JPEG fixture explicitly. This supplements, rather than replaces or silently relabels, the historical captures. No gameplay actions were invoked.
+
+The bounded historical audit in the adjacent northeast study confirms six earlier performance/equivalence evidence groups already used genuine Godot PNG RGBA and retain their zero-difference results. Their timing and draw-count conclusions are not withdrawn.

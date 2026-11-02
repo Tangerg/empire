@@ -1,0 +1,45 @@
+{
+  "scope": "Direct Godot viewport GetImage/SavePng, PNG signature+RGBA validated. Static1.25same-camera C07 fixture; not gameplay. Only72px caption excluded. Supersedes previous CUA JPEG-based numerical claim.",
+  "pairs": [
+    {
+      "contract": "pruned-empty-supports",
+      "inputs": [
+        {
+          "path": "native-lossless-platform-leaf.png",
+          "format": "PNG",
+          "mode": "RGBA",
+          "sha256": "22fb94f7e80998897a6b783bee3617443a4ee3e0ac3fe756f97c3eb4742d6f28"
+        },
+        {
+          "path": "native-lossless-platform-pruned-leaf.png",
+          "format": "PNG",
+          "mode": "RGBA",
+          "sha256": "a320c02b828a41f992005e2f602c87b8139311a418bd7e880efb463225c5cc3d"
+        }
+      ],
+      "worldChangedPixels": 0,
+      "maxChannelDelta": 0,
+      "excludedCaptionHeight": 72
+    },
+    {
+      "contract": "selected-integration",
+      "inputs": [
+        {
+          "path": "native-lossless-platform-pruned-leaf.png",
+          "format": "PNG",
+          "mode": "RGBA",
+          "sha256": "a320c02b828a41f992005e2f602c87b8139311a418bd7e880efb463225c5cc3d"
+        },
+        {
+          "path": "native-lossless-selected-northwest.png",
+          "format": "PNG",
+          "mode": "RGBA",
+          "sha256": "3a66709a64532672083ad363e3515028e188096bc96f72c8b0b4bd08b8bea01e"
+        }
+      ],
+      "worldChangedPixels": 0,
+      "maxChannelDelta": 0,
+      "excludedCaptionHeight": 72
+    }
+  ]
+}

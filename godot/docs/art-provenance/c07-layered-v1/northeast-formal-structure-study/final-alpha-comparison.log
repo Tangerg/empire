@@ -1,0 +1,34 @@
+{
+  "scope": "Native Godot transparent viewport, duplicates actual compiled draw-node projection with its transforms/order; not gameplay, alternative geometry, or performance scene. PNG magic and RGBA validated.",
+  "inputs": [
+    {
+      "path": "gpu-alpha-baseline.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "sha256": "c6697d2950f08a46eb6d5f2c924ac48515056be600029a5243dc66be705d9e09"
+    },
+    {
+      "path": "gpu-alpha-interface.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "sha256": "2c6ac40becc98145e3e9781a9a546c1950819b4ee4fb69771e6c09c4460ee500"
+    }
+  ],
+  "outsideAlphaChangedPixels": 1,
+  "outsideMaxAlphaDelta": 1,
+  "outsideBecameZeroAlpha": 0,
+  "outsideNewNonzeroAlpha": 0,
+  "outsideOpaqueToBelowHalf": 0,
+  "outsideMaxRgbDelta": 1,
+  "alphaWitnesses": [
+    {
+      "pixel": [
+        696,
+        475
+      ],
+      "before": 44,
+      "after": 43
+    }
+  ],
+  "rasterHaloClientPixels": 2
+}

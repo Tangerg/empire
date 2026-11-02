@@ -1,4 +1,6 @@
 {
   "sameBaselineDifferentProbeDllChangedPixels": 0,
-  "maxChannelDelta": 0
+  "maxChannelDelta": 0,
+  "supersededAsGpuEvidence": true,
+  "correction": "Inputs were CUA JPEG RGB bytes despite historical .png filenames. Values describe decoded lossy screenshots only, not native GPU or RGBA differences. Use native lossless results instead."
 }

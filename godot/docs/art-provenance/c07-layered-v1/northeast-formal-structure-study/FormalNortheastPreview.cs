@@ -58,6 +58,8 @@ public partial class FormalNortheastPreview : Node2D
                 }
                 await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
                 await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
+                using var mainPixels = GetViewport().GetTexture().GetImage();
+                mainPixels.SavePng(ProjectSettings.GlobalizePath($"res://gpu-main-{(candidate ? "interface" : "baseline")}.png"));
                 using var pixels = isolated.GetTexture().GetImage();
                 pixels.SavePng(ProjectSettings.GlobalizePath($"res://gpu-alpha-{(candidate ? "interface" : "baseline")}.png"));
                 GD.Print($"NE_ISOLATED_GPU_ALPHA_CAPTURE_COMPLETE pieces={pieces.Length}");

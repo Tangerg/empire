@@ -1,0 +1,22 @@
+{
+  "scope": "Direct Godot GetViewport Texture Image SavePng, checked PNG magic and RGBA; same native2.5 camera.72px caption excluded; explicit replacement-domain2px raster halo.",
+  "inputs": [
+    {
+      "path": "gpu-main-baseline.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "sha256": "47c83a30cc76b081319fe1ffdc48fabd125d16e20321070d5650dbc4de8e0388"
+    },
+    {
+      "path": "gpu-main-interface.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "sha256": "2333e4c967dea317be15d8d0e88ec40dc6a8d409dc1ceeb8caec7d35d85cfcf4"
+    }
+  ],
+  "changedPixels": 3868,
+  "outsideDomainChangedPixels": 19,
+  "outsideMaxChannelDelta": 1,
+  "outsideNewZeroAlphaPixels": 0,
+  "rasterHaloClientPixels": 2
+}

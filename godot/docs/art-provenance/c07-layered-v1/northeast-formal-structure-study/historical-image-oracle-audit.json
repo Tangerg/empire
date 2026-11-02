@@ -1,0 +1,273 @@
+{
+  "scope": "Eight named high-value groups only. Header/mode/hash and direct decoded comparison; no gameplay, performance rerun, or generalized withdrawal.",
+  "groups": [
+    {
+      "group": "depth-first",
+      "inputs": [
+        {
+          "path": "depth-draw-batch-checkpoint/full-scene-cost-selected-1.json.png",
+          "actualFormat": "PNG",
+          "mode": "RGBA",
+          "magic": "89504e470d0a1a0a",
+          "sha256": "bfa599ccc7dc31d21682540785adb84570be6fc250f233436051998dc1be29aa",
+          "nativeLosslessEligible": true
+        },
+        {
+          "path": "depth-draw-batch-checkpoint/full-scene-cost-batched-selected-1.json.png",
+          "actualFormat": "PNG",
+          "mode": "RGBA",
+          "magic": "89504e470d0a1a0a",
+          "sha256": "bfa599ccc7dc31d21682540785adb84570be6fc250f233436051998dc1be29aa",
+          "nativeLosslessEligible": true
+        }
+      ],
+      "excludedCaptionHeight": 0,
+      "decodedComparisonsToFirst": [
+        {
+          "changedPixels": 0,
+          "maxChannelDelta": 0
+        }
+      ],
+      "conclusion": "Existing lossless evidence retained"
+    },
+    {
+      "group": "depth-abba",
+      "inputs": [
+        {
+          "path": "depth-draw-batch-checkpoint/depth-abba-A1.json.png",
+          "actualFormat": "PNG",
+          "mode": "RGBA",
+          "magic": "89504e470d0a1a0a",
+          "sha256": "bfa599ccc7dc31d21682540785adb84570be6fc250f233436051998dc1be29aa",
+          "nativeLosslessEligible": true
+        },
+        {
+          "path": "depth-draw-batch-checkpoint/depth-abba-B1.json.png",
+          "actualFormat": "PNG",
+          "mode": "RGBA",
+          "magic": "89504e470d0a1a0a",
+          "sha256": "bfa599ccc7dc31d21682540785adb84570be6fc250f233436051998dc1be29aa",
+          "nativeLosslessEligible": true
+        },
+        {
+          "path": "depth-draw-batch-checkpoint/depth-abba-B2.json.png",
+          "actualFormat": "PNG",
+          "mode": "RGBA",
+          "magic": "89504e470d0a1a0a",
+          "sha256": "bfa599ccc7dc31d21682540785adb84570be6fc250f233436051998dc1be29aa",
+          "nativeLosslessEligible": true
+        },
+        {
+          "path": "depth-draw-batch-checkpoint/depth-abba-A2.json.png",
+          "actualFormat": "PNG",
+          "mode": "RGBA",
+          "magic": "89504e470d0a1a0a",
+          "sha256": "bfa599ccc7dc31d21682540785adb84570be6fc250f233436051998dc1be29aa",
+          "nativeLosslessEligible": true
+        }
+      ],
+      "excludedCaptionHeight": 0,
+      "decodedComparisonsToFirst": [
+        {
+          "changedPixels": 0,
+          "maxChannelDelta": 0
+        },
+        {
+          "changedPixels": 0,
+          "maxChannelDelta": 0
+        },
+        {
+          "changedPixels": 0,
+          "maxChannelDelta": 0
+        }
+      ],
+      "conclusion": "Existing lossless evidence retained"
+    },
+    {
+      "group": "depth-gpu",
+      "inputs": [
+        {
+          "path": "depth-draw-batch-checkpoint/gpu/surface-order-before.png",
+          "actualFormat": "PNG",
+          "mode": "RGBA",
+          "magic": "89504e470d0a1a0a",
+          "sha256": "ccd2938a37c157c3ef201510e2b36ff2ab6746df9f434d5de3ddf4c6e88acfc5",
+          "nativeLosslessEligible": true
+        },
+        {
+          "path": "depth-draw-batch-checkpoint/gpu/surface-order-after.png",
+          "actualFormat": "PNG",
+          "mode": "RGBA",
+          "magic": "89504e470d0a1a0a",
+          "sha256": "ccd2938a37c157c3ef201510e2b36ff2ab6746df9f434d5de3ddf4c6e88acfc5",
+          "nativeLosslessEligible": true
+        }
+      ],
+      "excludedCaptionHeight": 0,
+      "decodedComparisonsToFirst": [
+        {
+          "changedPixels": 0,
+          "maxChannelDelta": 0
+        }
+      ],
+      "conclusion": "Existing lossless evidence retained"
+    },
+    {
+      "group": "blend-half-pixel",
+      "inputs": [
+        {
+          "path": "surface-batching-audit/surface-blend-unbatched-z2-s0.5.png",
+          "actualFormat": "PNG",
+          "mode": "RGBA",
+          "magic": "89504e470d0a1a0a",
+          "sha256": "0b000f3d9f530e92f2f12218b5a6fb983fc7d81a98959a7f509b2bf3862709ae",
+          "nativeLosslessEligible": true
+        },
+        {
+          "path": "surface-batching-audit/surface-blend-batched-z2-s0.5.png",
+          "actualFormat": "PNG",
+          "mode": "RGBA",
+          "magic": "89504e470d0a1a0a",
+          "sha256": "0b000f3d9f530e92f2f12218b5a6fb983fc7d81a98959a7f509b2bf3862709ae",
+          "nativeLosslessEligible": true
+        }
+      ],
+      "excludedCaptionHeight": 0,
+      "decodedComparisonsToFirst": [
+        {
+          "changedPixels": 0,
+          "maxChannelDelta": 0
+        }
+      ],
+      "conclusion": "Existing lossless evidence retained"
+    },
+    {
+      "group": "formal-fence-batching",
+      "inputs": [
+        {
+          "path": "production-surface-audit/formal-fence-after-60-12.png",
+          "actualFormat": "PNG",
+          "mode": "RGBA",
+          "magic": "89504e470d0a1a0a",
+          "sha256": "47931cdbe1ff95dd52272bce3c21859288bd62b32318f064d9e10705a52a9d99",
+          "nativeLosslessEligible": true
+        },
+        {
+          "path": "surface-batching-audit/surface-batch-real-60-12.png",
+          "actualFormat": "PNG",
+          "mode": "RGBA",
+          "magic": "89504e470d0a1a0a",
+          "sha256": "47931cdbe1ff95dd52272bce3c21859288bd62b32318f064d9e10705a52a9d99",
+          "nativeLosslessEligible": true
+        }
+      ],
+      "excludedCaptionHeight": 0,
+      "decodedComparisonsToFirst": [
+        {
+          "changedPixels": 0,
+          "maxChannelDelta": 0
+        }
+      ],
+      "conclusion": "Existing lossless evidence retained"
+    },
+    {
+      "group": "opaque-certificate",
+      "inputs": [
+        {
+          "path": "opaque-material-certificate-audit/depth-draw-build-phases.json.png",
+          "actualFormat": "PNG",
+          "mode": "RGBA",
+          "magic": "89504e470d0a1a0a",
+          "sha256": "bfa599ccc7dc31d21682540785adb84570be6fc250f233436051998dc1be29aa",
+          "nativeLosslessEligible": true
+        },
+        {
+          "path": "opaque-material-certificate-audit/opaque-certificate-native-first.json.png",
+          "actualFormat": "PNG",
+          "mode": "RGBA",
+          "magic": "89504e470d0a1a0a",
+          "sha256": "bfa599ccc7dc31d21682540785adb84570be6fc250f233436051998dc1be29aa",
+          "nativeLosslessEligible": true
+        },
+        {
+          "path": "opaque-material-certificate-audit/opaque-certificate-native-second.json.png",
+          "actualFormat": "PNG",
+          "mode": "RGBA",
+          "magic": "89504e470d0a1a0a",
+          "sha256": "bfa599ccc7dc31d21682540785adb84570be6fc250f233436051998dc1be29aa",
+          "nativeLosslessEligible": true
+        }
+      ],
+      "excludedCaptionHeight": 0,
+      "decodedComparisonsToFirst": [
+        {
+          "changedPixels": 0,
+          "maxChannelDelta": 0
+        },
+        {
+          "changedPixels": 0,
+          "maxChannelDelta": 0
+        }
+      ],
+      "conclusion": "Existing lossless evidence retained"
+    },
+    {
+      "group": "nw-old-pruning",
+      "inputs": [
+        {
+          "path": "northwest-formal-structure-study/whole-gate-leaf-joinery-default125.png",
+          "actualFormat": "JPEG",
+          "mode": "RGB",
+          "magic": "ffd8ffe000104a46",
+          "sha256": "c5c62a0cd5b046b85ef459f5a950a3c18e4f0c100e22214479214561c6d46ac6",
+          "nativeLosslessEligible": false
+        },
+        {
+          "path": "northwest-formal-structure-study/whole-gate-pruned-default125.png",
+          "actualFormat": "JPEG",
+          "mode": "RGB",
+          "magic": "ffd8ffe000104a46",
+          "sha256": "72801517c3906b49d430e5bc2b894c83e094337887db6de0d31de8aca7a7e6f7",
+          "nativeLosslessEligible": false
+        }
+      ],
+      "excludedCaptionHeight": 72,
+      "decodedComparisonsToFirst": [
+        {
+          "changedPixels": 0,
+          "maxChannelDelta": 0
+        }
+      ],
+      "conclusion": "Lossy decoded screenshot equality only; superseded by new native-lossless NW captures"
+    },
+    {
+      "group": "nw-old-selected",
+      "inputs": [
+        {
+          "path": "northwest-formal-structure-study/whole-gate-pruned-default125.png",
+          "actualFormat": "JPEG",
+          "mode": "RGB",
+          "magic": "ffd8ffe000104a46",
+          "sha256": "72801517c3906b49d430e5bc2b894c83e094337887db6de0d31de8aca7a7e6f7",
+          "nativeLosslessEligible": false
+        },
+        {
+          "path": "northwest-formal-structure-study/selected-northwest-default125.png",
+          "actualFormat": "JPEG",
+          "mode": "RGB",
+          "magic": "ffd8ffe000104a46",
+          "sha256": "9e58b8a368188897107f6d27910062999c5b3269782e58f81866d5613dd31a85",
+          "nativeLosslessEligible": false
+        }
+      ],
+      "excludedCaptionHeight": 72,
+      "decodedComparisonsToFirst": [
+        {
+          "changedPixels": 0,
+          "maxChannelDelta": 0
+        }
+      ],
+      "conclusion": "Lossy decoded screenshot equality only; superseded by new native-lossless NW captures"
+    }
+  ]
+}

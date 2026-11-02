@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/c07-northeast-formal/compare-interface-gpu.py", line 14, in <module>
+    a,ai=rgba_png(args.baseline);b,bi=rgba_png(args.candidate)
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/84c9fe948755/c07-northeast-formal/compare-interface-gpu.py", line 12, in rgba_png
+    if image.format!='PNG' or image.mode!='RGBA': raise ValueError('NOT_LOSSLESS_RGBA_PNG: wrong decoded format/mode: '+str(path))
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: NOT_LOSSLESS_RGBA_PNG: wrong decoded format/mode: c07-northeast-formal/synthetic-RGB-negative.png

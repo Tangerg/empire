@@ -1,0 +1,66 @@
+[
+  {
+    "path": "formal-failed-baseline-1180.png",
+    "actualFormat": "JPEG",
+    "mode": "RGB",
+    "magic": "ffd8ffe000104a46",
+    "numericalPixelOracleEligible": false,
+    "lossyQuantizationTables": 2
+  },
+  {
+    "path": "baseline-same-dll-A-1180.png",
+    "actualFormat": "JPEG",
+    "mode": "RGB",
+    "magic": "ffd8ffe000104a46",
+    "numericalPixelOracleEligible": false,
+    "lossyQuantizationTables": 2
+  },
+  {
+    "path": "interface-v2-1180.png",
+    "actualFormat": "JPEG",
+    "mode": "RGB",
+    "magic": "ffd8ffe000104a46",
+    "numericalPixelOracleEligible": false,
+    "lossyQuantizationTables": 2
+  },
+  {
+    "path": "interface-affine-1180.png",
+    "actualFormat": "JPEG",
+    "mode": "RGB",
+    "magic": "ffd8ffe000104a46",
+    "numericalPixelOracleEligible": false,
+    "lossyQuantizationTables": 2
+  },
+  {
+    "path": "gpu-main-baseline.png",
+    "actualFormat": "PNG",
+    "mode": "RGBA",
+    "magic": "89504e470d0a1a0a",
+    "numericalPixelOracleEligible": true,
+    "lossyQuantizationTables": 0
+  },
+  {
+    "path": "gpu-main-interface.png",
+    "actualFormat": "PNG",
+    "mode": "RGBA",
+    "magic": "89504e470d0a1a0a",
+    "numericalPixelOracleEligible": true,
+    "lossyQuantizationTables": 0
+  },
+  {
+    "path": "gpu-alpha-baseline.png",
+    "actualFormat": "PNG",
+    "mode": "RGBA",
+    "magic": "89504e470d0a1a0a",
+    "numericalPixelOracleEligible": true,
+    "lossyQuantizationTables": 0
+  },
+  {
+    "path": "gpu-alpha-interface.png",
+    "actualFormat": "PNG",
+    "mode": "RGBA",
+    "magic": "89504e470d0a1a0a",
+    "numericalPixelOracleEligible": true,
+    "lossyQuantizationTables": 0
+  }
+]

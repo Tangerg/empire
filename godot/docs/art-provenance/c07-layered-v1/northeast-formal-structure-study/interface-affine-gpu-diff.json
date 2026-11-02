@@ -43,5 +43,7 @@
     "2": 1023,
     "5": 634,
     "20": 72
-  }
+  },
+  "supersededAsGpuEvidence": true,
+  "correction": "Inputs were CUA JPEG RGB bytes despite historical .png filenames. Values describe decoded lossy screenshots only, not native GPU or RGBA differences. Use native lossless results instead."
 }

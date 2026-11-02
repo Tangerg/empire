@@ -36,5 +36,8 @@
     ]
   ],
   "rasterHaloClientPixels": 2,
-  "roofAndArchOutsideDomain": "FAILED"
+  "roofAndArchOutsideDomain": "FAILED",
+  "supersededAsGpuEvidence": true,
+  "correction": "Inputs were CUA JPEG RGB bytes despite historical .png filenames. Values describe decoded lossy screenshots only, not native GPU or RGBA differences. Use native lossless results instead.",
+  "outsideDecodedJpegMaxChannelDelta": 43
 }

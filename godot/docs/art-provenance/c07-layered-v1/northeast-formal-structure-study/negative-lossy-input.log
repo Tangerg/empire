@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/c07-northeast-formal/compare-interface-gpu.py", line 14, in <module>
+    a,ai=rgba_png(args.baseline);b,bi=rgba_png(args.candidate)
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/84c9fe948755/c07-northeast-formal/compare-interface-gpu.py", line 10, in rgba_png
+    if data[:8]!=b'\x89PNG\r\n\x1a\n': raise ValueError('NOT_LOSSLESS_RGBA_PNG: wrong file magic: '+str(path))
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: NOT_LOSSLESS_RGBA_PNG: wrong file magic: c07-northeast-formal/formal-failed-baseline-1180.png

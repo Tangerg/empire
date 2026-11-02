@@ -43,6 +43,17 @@ public partial class FormalNorthwestPreview : Node2D
             Layout();
             if (EcmaJson.Stringify(state) != before) throw new Exception("Static rendering changed state.");
             GD.Print("FORMAL_NORTHWEST_STATIC_READY issues=" + board.RenderingIssueCount);
+            if (OS.GetEnvironment("NW_LOSSLESS_CAPTURE") == "1")
+            {
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
+                using var pixels = GetViewport().GetTexture().GetImage();
+                if (pixels.SavePng(ProjectSettings.GlobalizePath($"res://native-lossless-{variant}.png")) != Error.Ok)
+                    throw new Exception("Native lossless capture failed.");
+                GD.Print("NORTHWEST_LOSSLESS_FRAME_COMPLETE " + variant);
+                GetTree().Quit();
+                return;
+            }
             if (OS.GetEnvironment("NW_MEASURE") == "1")
             {
                 for (var i = 0; i < 60; i++) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);

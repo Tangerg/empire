@@ -7,5 +7,7 @@
     760
   ],
   "differentPixels": 0,
-  "maxChannelDifference": 0
+  "maxChannelDifference": 0,
+  "sourceEncodingCorrection": "Original CUA files were JPEG RGB despite .png suffix. Previous zero decoded comparison was not an original lossless framebuffer assertion.",
+  "supersededBy": "native-lossless-framebuffer-equivalence.json: direct Godot PNG RGBA, magic+mode validated, same two world comparisons zero."
 }

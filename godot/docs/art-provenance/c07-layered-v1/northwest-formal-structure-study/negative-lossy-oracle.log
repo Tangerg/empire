@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/c07-northwest-formal/verify-lossless-frames.py", line 13, in <module>
+    read(args.check_input)
+  File "/workspace/scratch/84c9fe948755/c07-northwest-formal/verify-lossless-frames.py", line 8, in read
+    if raw[:8]!=b'\x89PNG\r\n\x1a\n':raise ValueError('NOT_LOSSLESS_RGBA_PNG: wrong file magic: '+str(path))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: NOT_LOSSLESS_RGBA_PNG: wrong file magic: c07-northwest-formal/whole-gate-pruned-default125.png
