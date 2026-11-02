@@ -1,0 +1,76 @@
+{
+  "scope": "Unselected frozen failed NE v2 through formal loader; detached real wolf-rider poses. No gameplay commands or save writers. Two lookout holes deliberately remain failed.",
+  "stateUnchanged": true,
+  "issues": 0,
+  "front": true,
+  "roadUnionCount": 1103,
+  "roadRegions": [
+    {
+      "id": "continuous-source-visible-opening-and-immediate-front",
+      "count": 1097,
+      "covered": 0
+    },
+    {
+      "id": "right-inner-leg-source-road-edge",
+      "count": 50,
+      "covered": 0
+    },
+    {
+      "id": "below-left-arch-stone-source-ground",
+      "count": 12,
+      "covered": 0
+    }
+  ],
+  "ownershipSamples": 5530,
+  "ownershipMismatch": 0,
+  "gateTarget": "TacticalHit { Cell = BoardCell { X = 83, Y = 11 }, Kind = Object, UnitId =  }",
+  "approach": "TacticalHit { Cell = BoardCell { X = 82, Y = 11 }, Kind = Ground, UnitId =  }",
+  "lookoutFixedSamples": [
+    {
+      "source": [
+        1416,
+        59
+      ],
+      "formalCovered": true
+    },
+    {
+      "source": [
+        1431,
+        66
+      ],
+      "formalCovered": true
+    },
+    {
+      "source": [
+        1427,
+        67
+      ],
+      "formalCovered": true
+    },
+    {
+      "source": [
+        1435,
+        78
+      ],
+      "formalCovered": true
+    }
+  ],
+  "witnesses": [
+    {
+      "source": [
+        1348,
+        121
+      ],
+      "actorOpaque": true,
+      "actorPickable": true
+    },
+    {
+      "source": [
+        1349,
+        122
+      ],
+      "actorOpaque": true,
+      "actorPickable": true
+    }
+  ]
+}

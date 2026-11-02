@@ -1,0 +1,170 @@
+{
+  "scope": "Read-only input ownership audit. NE remains unselected; existing v2 stone is a failed candidate, not production geometry. No engine commands, rendering, state load/write, or gameplay.",
+  "inputs": [
+    {
+      "path": "c07-static-preview/northeast-gate-v1-sections.json",
+      "sha256": "2237f24bf30d50a6c78fb41baeb01995c112038874d98c2ffb82149ee21d3ba3"
+    },
+    {
+      "path": "empire-c01/godot/assets/native/c07-layered-v1/northeast-gate-v2-stone-candidate.png",
+      "sha256": "721e8062712a6826c8e7a227307dc33004f3b8efdf14a1bd9950edbaef16d29e"
+    },
+    {
+      "path": "c07-static-preview/northeast-gate-original-road-regions.json",
+      "sha256": "6f4758cb9be2a7a2bf17ed87a768bf5bcc2b960b585ba94b0dde556f4c9ad68e"
+    },
+    {
+      "path": "empire-c01/godot/data/scenes/c01-07.json",
+      "sha256": "5bd8cac7e2263dcffaf23b88c38b25515575678c3085a227e4a1f58f61abcd88"
+    },
+    {
+      "path": "empire-c01/godot/data/scenes/c01-07-selected-assembly-ground.json",
+      "sha256": "d1f6f128ed849fb530d72127df256c8105d6e3a0bf639c684092f1e1301d41d9"
+    }
+  ],
+  "registration": {
+    "scale": 0.14537444933920696,
+    "translation": [
+      1265.398678414097,
+      -0.8876651982378121
+    ]
+  },
+  "assetSize": [
+    1331,
+    1181
+  ],
+  "sections": [
+    "left-blue-tower-and-arch-leg",
+    "arch-over-open-mouth",
+    "right-lookout-and-leg"
+  ],
+  "roadFrozenCount": 1103,
+  "witnesses": [
+    {
+      "id": "left-hole-unresolved",
+      "source": [
+        1416,
+        59
+      ],
+      "uv": [
+        1035.9545454545453,
+        411.9545454545452
+      ],
+      "nearestPixel": [
+        1036,
+        412
+      ],
+      "rgba": [
+        61,
+        38,
+        19,
+        66
+      ]
+    },
+    {
+      "id": "right-hole-beam-unresolved",
+      "source": [
+        1431,
+        66
+      ],
+      "uv": [
+        1139.1363636363635,
+        460.1060606060604
+      ],
+      "nearestPixel": [
+        1139,
+        460
+      ],
+      "rgba": [
+        53,
+        22,
+        2,
+        249
+      ]
+    },
+    {
+      "id": "front-post-positive",
+      "source": [
+        1427,
+        67
+      ],
+      "uv": [
+        1111.621212121212,
+        466.98484848484827
+      ],
+      "nearestPixel": [
+        1112,
+        467
+      ],
+      "rgba": [
+        0,
+        0,
+        0,
+        253
+      ]
+    },
+    {
+      "id": "lower-platform-frame-positive",
+      "source": [
+        1435,
+        78
+      ],
+      "uv": [
+        1166.651515151515,
+        542.651515151515
+      ],
+      "nearestPixel": [
+        1167,
+        543
+      ],
+      "rgba": [
+        202,
+        120,
+        43,
+        254
+      ]
+    }
+  ],
+  "negativeScope": "Raw nearest RGBA only; not formal Draw/Pick or endpoint acceptance. Left hole and right lower-beam hole are separate failures.",
+  "designCandidate": {
+    "kind": "continuous beam cross-section, not point erasure or pixel restoration",
+    "assetPolygon": [
+      [
+        1130,
+        470
+      ],
+      [
+        1185,
+        480
+      ],
+      [
+        1185,
+        495
+      ],
+      [
+        1130,
+        485
+      ]
+    ],
+    "sourcePolygon": [
+      [
+        1429.671806167401,
+        67.43832599118946
+      ],
+      [
+        1437.6674008810573,
+        68.89207048458152
+      ],
+      [
+        1437.6674008810573,
+        71.07268722466964
+      ],
+      [
+        1429.671806167401,
+        69.61894273127756
+      ]
+    ],
+    "unverified": "Back lower endpoint may overlap dark floor rather than wood; must resolve owner before constructing. Do not apply as accepted geometry.",
+    "status": "RETRACTED AS EXECUTABLE CUT: lower back corner lies in beam/floor contact shadow; old opaque shared boundary cannot be alpha-separated."
+  }
+}

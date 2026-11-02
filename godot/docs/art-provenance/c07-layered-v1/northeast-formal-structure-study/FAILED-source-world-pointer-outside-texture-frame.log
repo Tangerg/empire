@@ -1,0 +1,22 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+ERROR: System.InvalidOperationException: Ground-front contact outside frame: northeast-static-study pointer
+   at Empire.Presentation.SpriteGroundContact.Read(Double[] value, Single width, Single height, String identity) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/AssetCatalog.cs:line 401
+   at Empire.Presentation.AssembledGroundView.<>c__DisplayClass18_0.<Create>b__1(Double[] point) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/AssembledGroundView.cs:line 70
+   at System.Linq.Enumerable.SelectArrayIterator`2.Fill(ReadOnlySpan`1 source, Span`1 destination, Func`2 func)
+   at System.Linq.Enumerable.SelectArrayIterator`2.ToArray()
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Empire.Presentation.AssembledGroundView.Create(AssembledGroundDocument document, Texture2D ground, SceneObjectCatalog catalog, IReadOnlyDictionary`2 textures, JsonObject map, ReadOnlyContent content, ShadowCache shadows) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/AssembledGroundView.cs:line 70
+   at Empire.Presentation.AssembledGroundDocument.<>c__DisplayClass8_0.<Factory>b__0(BoardGroundRules rules, AuthoredScene scene) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/AssembledGroundDocument.cs:line 34
+   at FormalNortheastBaselineProbe.<>c__DisplayClass0_0.<_Ready>b__1(BoardGroundRules rules, AuthoredScene scene) in /workspace/scratch/84c9fe948755/c07-northeast-formal/FormalNortheastBaselineProbe.cs:line 12
+   at Empire.Presentation.BoardView.ConfigureGround(BoardGroundFactory createGround) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:line 84
+   at FormalNortheastBaselineProbe._Ready() in /workspace/scratch/84c9fe948755/c07-northeast-formal/FormalNortheastBaselineProbe.cs:line 12
+   at: void FormalNortheastBaselineProbe._Ready() (res://FormalNortheastBaselineProbe.cs:12)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void FormalNortheastBaselineProbe._Ready() (/workspace/scratch/84c9fe948755/c07-northeast-formal/FormalNortheastBaselineProbe.cs:12)
+       [2] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [3] bool FormalNortheastBaselineProbe.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-northeast-formal/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/FormalNortheastBaselineProbe_ScriptMethods.generated.cs:38)
+       [4] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)

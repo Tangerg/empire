@@ -1,0 +1,8 @@
+config_version=5
+[application]
+config/name="C07 NE static structure audit"
+config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
+[rendering]
+renderer/rendering_method="gl_compatibility"
+[dotnet]
+project/assembly_name="Probe"
