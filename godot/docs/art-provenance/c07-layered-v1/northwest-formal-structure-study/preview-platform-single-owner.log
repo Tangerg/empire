@@ -1,0 +1,25 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+ERROR: System.InvalidOperationException: Standing material polygon is degenerate: northwest-gate-study/base-left-lookout-and-pier-arch-connected-facade-376-1.
+   at Empire.Presentation.StandingVisual.ValidatePolygon(Vector2[] points, String identity) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/StandingVisual.cs:line 41
+   at Empire.Presentation.CompiledSceneSurface.Compile(SceneSurfaceDocument document, Material material, String identity) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/CompiledSceneSurface.cs:line 137
+   at Empire.Presentation.AssembledGroundView.Create(AssembledGroundDocument document, Texture2D ground, SceneObjectCatalog catalog, IReadOnlyDictionary`2 textures, JsonObject map, ReadOnlyContent content, ShadowCache shadows) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/AssembledGroundView.cs:line 76
+   at Empire.Presentation.AssembledGroundDocument.<>c__DisplayClass8_0.<Factory>b__0(BoardGroundRules rules, AuthoredScene scene) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/AssembledGroundDocument.cs:line 34
+   at Empire.Presentation.BoardView.ConfigureGround(BoardGroundFactory createGround) in /workspace/scratch/84c9fe948755/empire-c01/godot/Presentation/BoardView.cs:line 84
+   at FormalNorthwestPreview._Ready() in /workspace/scratch/84c9fe948755/c07-northwest-formal/FormalNorthwestPreview.cs:line 24
+   at: void FormalNorthwestPreview+<_Ready>d__0.MoveNext() (res://FormalNorthwestPreview.cs:24)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void FormalNorthwestPreview+<_Ready>d__0.MoveNext() (/workspace/scratch/84c9fe948755/c07-northwest-formal/FormalNorthwestPreview.cs:24)
+       [2] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+       [3] void FormalNorthwestPreview._Ready()
+       [4] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [5] bool Godot.CanvasItem.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/CanvasItem.cs:1792)
+       [6] bool Godot.Node2D.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node2D.cs:557)
+       [7] bool FormalNorthwestPreview.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/c07-northwest-formal/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/FormalNorthwestPreview_ScriptMethods.generated.cs:38)
+       [8] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
