@@ -1,5 +1,6 @@
 #nullable enable
 using System;
+using System.Linq;
 using Godot;
 
 namespace Empire.Presentation;
@@ -18,11 +19,96 @@ public partial class SceneSurfaceChecks : Node
         try
         {
             Check();
+            CheckDrawGrouping();
             GD.Print($"SCENE_SURFACE_CHECKS_OK {_assertions} assertions");
             GetTree().Quit();
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
     }
+    private void CheckDrawGrouping()
+    {
+        using var image = Image.CreateEmpty(8, 8, false, Image.Format.Rgba8);
+        image.Fill(new Color(1, 1, 1, .5f));
+        using var texture = ImageTexture.CreateFromImage(image);
+        var document = new SceneSurfaceDocument
+        {
+            Schema = 1,
+            Supports = [
+                new() { Id = "a", FrontPixels = [2, 5], Kind = "structural" },
+                new() { Id = "b", FrontPixels = [3, 6], Kind = "structural" },
+                new() { Id = "c", FrontPixels = [4, 7], Kind = "structural" }],
+            Members = Enumerable.Range(0, 3).Select(index => new SceneSurfaceMember
+            {
+                Id = "piece" + index,
+                SupportId = new[] { "a", "b", "c" }[index],
+                Coverage = "native-alpha",
+                Tint = new[] { "#ff0000", "#0000ff", "#00ff00" }[index],
+                PolygonPixels = [[index, index % 2], [index + 4, index % 2], [index, index % 2 + 4]],
+                UvPixels = [[1, 1], [5, 1], [1, 5]]
+            }).ToArray()
+        };
+        var compiled = CompiledSceneSurface.Compile(document, texture, "draw-group-fixture");
+        var sampler = new Sprite2D { Texture = texture, Centered = false, Visible = false };
+        AddChild(sampler);
+        var instance = compiled.Instantiate(this, "draw-group", 1, Vector2.Zero, true, null, sampler);
+        var pieces = instance.Pieces;
+        var draws = pieces.Select(piece => piece.Node.GetChild<Polygon2D>(0)).ToArray();
+        foreach (var piece in pieces)
+        {
+            piece.Node.ZAsRelative = false;
+            piece.Node.ZIndex = 10;
+        }
+        void Split(string reason)
+        {
+            instance.ApplyDrawOrder();
+            Require(draws.All(draw => draw.Visible && draw.Polygons.Count == 1), reason);
+        }
+        void Merged(string reason)
+        {
+            instance.ApplyDrawOrder();
+            Require(draws[0].Visible && draws[0].Polygons.Count == 3 && !draws[1].Visible && !draws[2].Visible, reason);
+        }
+        Merged("Consecutive equal draw depths must share their draw projection, not their supports.");
+        Require(pieces.Count == 3 && pieces.All(piece => piece.Node.Visible)
+            && pieces.Select((piece, index) => piece.Visual.FrontOffset(piece.Node) == new Vector2(index + 2, index + 5)).All(value => value),
+            "Draw grouping must retain every separate physical support and visible pick owner.");
+        Require(draws[0].VertexColors[0] == Colors.Red && draws[0].VertexColors[3] == Colors.Blue
+            && draws[0].VertexColors[6] == Color.FromHtml("#00ff00"), "Draw grouping must preserve translucent primitive order and independent colors.");
+        Merged("Repeating an unchanged grouping must not append geometry.");
+        pieces[1].Node.ZIndex = 11;
+        Split("Different actual depth must split and restore each original primitive.");
+        pieces[1].Node.ZIndex = 10;
+        Merged("Returning to equal depth must regroup from original primitives.");
+        pieces[1].Node.Position = Vector2.One;
+        Split("Different node transforms must remain separate.");
+        pieces[1].Node.Position = Vector2.Zero;
+        using var material = new CanvasItemMaterial();
+        draws[1].Material = material;
+        Split("Different materials must remain separate.");
+        draws[1].Material = null;
+        var shadow = new Node2D();
+        pieces[1].Node.AddChild(shadow);
+        Split("Extra children, including shadow geometry, must prevent cross-node drawing groups.");
+        shadow.Free();
+        Merged("Removing a child barrier must restore grouping without accumulating triangles.");
+        var barrier = new Node2D();
+        AddChild(barrier);
+        MoveChild(barrier, pieces[1].Node.GetIndex());
+        instance.ApplyDrawOrder();
+        Require(draws[0].Visible && draws[0].Polygons.Count == 1 && draws[1].Visible
+            && draws[1].Polygons.Count == 2 && !draws[2].Visible,
+            "A real intervening sibling must be a barrier even when absent from the filtered surface list.");
+        barrier.Free();
+        Merged("Restoring actual sibling adjacency must preserve original draw order.");
+        foreach (var (piece, index) in pieces.Select((piece, index) => (piece, index)))
+            Require(piece.Visual.Covers(new Vector2(index + .25f, index % 2 + .25f))
+                && piece.Visual.ContainsPointer(new Vector2(index + .25f, index % 2 + .25f)),
+                "Hidden redundant draw children must not erase physical alpha or pointer coverage.");
+        foreach (var piece in pieces)
+            piece.Node.Free();
+        sampler.Free();
+    }
+
     private void Check()
     {
         using var image = Image.CreateEmpty(8, 8, false, Image.Format.Rgba8);
@@ -80,7 +166,7 @@ public partial class SceneSurfaceChecks : Node
         var native = CompiledSceneSurface.Compile(Document(Member("native", "foot", "native-alpha", [[1, 1], [5, 1], [1, 1]])), texture, "fixture");
         var sampler = new Sprite2D { Texture = texture, Centered = false, Visible = false };
         AddChild(sampler);
-        foreach (var (node, visual) in native.Instantiate(this, "instance", 2, Vector2.Zero, true, null, sampler))
+        foreach (var (node, visual) in native.Instantiate(this, "instance", 2, Vector2.Zero, true, null, sampler).Pieces)
         {
             node.Position = new Vector2(20, 20);
             Require(!visual.Covers(node.ToGlobal(new Vector2(2.1f, .1f))), "Native-alpha mapped line must expose its real hole.");
@@ -99,7 +185,7 @@ public partial class SceneSurfaceChecks : Node
             PolygonPixels = [[1, 1], [5, 1], [1, 5]],
             UvPixels = [[1, 3], [5, 3], [1, 3]]
         }), texture, "batched-fixture");
-        foreach (var (node, _) in layered.Instantiate(this, "batched", 1, Vector2.Zero, false, null, sampler))
+        foreach (var (node, _) in layered.Instantiate(this, "batched", 1, Vector2.Zero, false, null, sampler).Pieces)
         {
             Require(node.GetChildCount() == 1, "One shared support must not create one draw node per triangle.");
             var draw = node.GetChild<Polygon2D>(0);
@@ -114,7 +200,7 @@ public partial class SceneSurfaceChecks : Node
         // Its interior samples remain in the last texel; do not inset source geometry/UV to satisfy validation.
         var edge = CompiledSceneSurface.Compile(Document(Member("canvas-edge", "foot", "native-alpha",
             [[0, 0], [8, 0], [0, 8]])), texture, "canvas-edge-fixture");
-        foreach (var (node, visual) in edge.Instantiate(this, "canvas-edge", 1, Vector2.Zero, true, null, sampler))
+        foreach (var (node, visual) in edge.Instantiate(this, "canvas-edge", 1, Vector2.Zero, true, null, sampler).Pieces)
         {
             var draw = node.GetChild<Polygon2D>(0);
             Require(draw.UV.Contains(new Vector2(8, 0)) && draw.UV.Contains(new Vector2(0, 8)),

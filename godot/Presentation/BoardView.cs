@@ -585,6 +585,7 @@ public partial class BoardView : Node2D
             entry.Node.ZIndex = Projection.LayerAtDepth(StandingDepth(entry),
                 entry.Layer == 0 ? BoardDepthLayer.Surface : BoardDepthLayer.Standing);
         }
+        _terrain?.ApplyDrawOrder();
     }
 
     private void ReplaceChild(ref Node2D? previous, Node2D? next)

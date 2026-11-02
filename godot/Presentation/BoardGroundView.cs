@@ -31,5 +31,7 @@ public abstract partial class BoardGroundView : Node2D
     public bool OwnsMapStructureBody(Coord cell) => Sites.Any(site => site.Cell == cell && site.OwnsMapStructureBody);
     public abstract void ConfigureAuthoredGround(Node2D authoredGround);
     public abstract Node2D DetachAuthoredGround();
+    /// <summary>Refresh draw-only projections after the board assigns actual standing depths.</summary>
+    public virtual void ApplyDrawOrder() { }
     public abstract void Render(BoardProjection projection, string[] tiles, int[] elevation, Vector2I size);
 }

@@ -171,39 +171,120 @@ internal sealed class CompiledSceneSurface
             }
     }
 
-    internal IEnumerable<(Node2D Node, StandingVisual Visual)> Instantiate(Node owner, string identity, float scale,
+    internal sealed class Instance
+    {
+        private readonly Slice[] _slices;
+        private readonly Vector2 _anchor;
+        private readonly Polygon2D[] _draw;
+        private readonly int[] _leaders;
+        private readonly int[] _nextLeaders;
+        internal IReadOnlyList<(Node2D Node, StandingVisual Visual)> Pieces { get; }
+
+        internal Instance(CompiledSceneSurface source, Vector2 anchor,
+            (Node2D Node, StandingVisual Visual)[] pieces, Polygon2D[] draw)
+        {
+            _slices = source._slices;
+            _anchor = anchor;
+            Pieces = pieces;
+            _draw = draw;
+            _leaders = Enumerable.Range(0, _slices.Length).ToArray();
+            _nextLeaders = new int[_slices.Length];
+        }
+
+        // Physical pieces and their pick/alpha geometry stay separate. Only the drawing
+        // projection combines true consecutive siblings at the already assigned depth.
+        internal void ApplyDrawOrder()
+        {
+            bool changed = false;
+            for (var index = 0; index < Pieces.Count; index++)
+            {
+                var leader = index > 0 && CanJoin(index - 1, index) ? _nextLeaders[index - 1] : index;
+                _nextLeaders[index] = leader;
+                changed |= leader != _leaders[index];
+            }
+            if (!changed)
+                return;
+            for (var index = 0; index < Pieces.Count; index++)
+            {
+                _draw[index].Visible = _nextLeaders[index] == index;
+                if (_nextLeaders[index] != index)
+                    continue;
+                var end = index + 1;
+                while (end < Pieces.Count && _nextLeaders[end] == index)
+                    end++;
+                SetGeometry(_draw[index], _slices.Skip(index).Take(end - index).SelectMany(slice => slice.Primitives), _anchor);
+            }
+            Array.Copy(_nextLeaders, _leaders, _leaders.Length);
+        }
+
+        private bool CanJoin(int previous, int current)
+        {
+            var left = Pieces[previous].Node;
+            var right = Pieces[current].Node;
+            var a = _draw[previous];
+            var b = _draw[current];
+            // Additional children (including contact shadows) are ordering barriers.
+            // Child visibility belongs to this draw projection, never to physical coverage.
+            return left.Visible && right.Visible
+                && !left.ZAsRelative && !right.ZAsRelative && left.ZIndex == right.ZIndex
+                && left.GetParent() == right.GetParent() && right.GetIndex() == left.GetIndex() + 1
+                && left.GetChildCount() == 1 && right.GetChildCount() == 1
+                && a.GetChildCount() == 0 && b.GetChildCount() == 0
+                && left.Transform == right.Transform && left.Modulate == right.Modulate
+                && left.SelfModulate == right.SelfModulate
+                && a.Transform == b.Transform && a.Offset == b.Offset
+                && a.Texture == b.Texture && a.Material == b.Material && !a.UseParentMaterial && !b.UseParentMaterial
+                && a.TextureFilter == b.TextureFilter && a.TextureRepeat == b.TextureRepeat
+                && a.Color == b.Color && a.Modulate == b.Modulate && a.SelfModulate == b.SelfModulate
+                && a.ZIndex == 0 && b.ZIndex == 0 && a.ZAsRelative && b.ZAsRelative
+                && !a.ShowBehindParent && !b.ShowBehindParent && !a.Antialiased && !b.Antialiased
+                && !a.InvertEnabled && !b.InvertEnabled;
+        }
+    }
+
+    internal Instance Instantiate(Node owner, string identity, float scale,
         Vector2 anchor, bool pointer, Vector2[]? pointerPolygon, Sprite2D sampler)
     {
+        var pieces = new (Node2D Node, StandingVisual Visual)[_slices.Length];
+        var draws = new Polygon2D[_slices.Length];
         for (var index = 0; index < _slices.Length; index++)
         {
             var slice = _slices[index];
             var node = new Node2D { Name = $"{identity}__surface_{index}", Scale = Vector2.One * scale };
             owner.AddChild(node);
-            var vertices = new List<Vector2>();
-            var uv = new List<Vector2>();
-            var colors = new List<Color>();
-            var polygons = new Godot.Collections.Array();
-            foreach (var primitive in slice.Primitives)
+            var draw = new Polygon2D
             {
-                // Keep independent vertices and original primitive order: UV seams and alpha overlap are material facts.
-                polygons.Add(Enumerable.Range(vertices.Count, primitive.Polygon.Length).ToArray());
-                vertices.AddRange(primitive.Polygon.Select(p => p - anchor));
-                uv.AddRange(primitive.Uv);
-                colors.AddRange(Enumerable.Repeat(primitive.Tint, primitive.Polygon.Length));
-            }
-            node.AddChild(new Polygon2D
-            {
-                Polygon = vertices.ToArray(),
-                Polygons = polygons,
-                UV = uv.ToArray(),
-                VertexColors = colors.ToArray(),
                 Texture = _texture,
                 Color = Colors.White,
                 TextureFilter = CanvasItem.TextureFilterEnum.Linear,
                 TextureRepeat = CanvasItem.TextureRepeatEnum.Disabled
-            });
-            yield return (node, new SurfaceVisual(node, slice, anchor, sampler, pointer, pointerPolygon));
+            };
+            SetGeometry(draw, slice.Primitives, anchor);
+            node.AddChild(draw);
+            draws[index] = draw;
+            pieces[index] = (node, new SurfaceVisual(node, slice, anchor, sampler, pointer, pointerPolygon));
         }
+        return new Instance(this, anchor, pieces, draws);
+    }
+
+    private static void SetGeometry(Polygon2D draw, IEnumerable<Primitive> primitives, Vector2 anchor)
+    {
+        var vertices = new List<Vector2>();
+        var uv = new List<Vector2>();
+        var colors = new List<Color>();
+        var polygons = new Godot.Collections.Array();
+        foreach (var primitive in primitives)
+        {
+            // Independent vertices retain source primitive order, UV seams and alpha overlap.
+            polygons.Add(Enumerable.Range(vertices.Count, primitive.Polygon.Length).ToArray());
+            vertices.AddRange(primitive.Polygon.Select(point => point - anchor));
+            uv.AddRange(primitive.Uv);
+            colors.AddRange(Enumerable.Repeat(primitive.Tint, primitive.Polygon.Length));
+        }
+        draw.Polygon = vertices.ToArray();
+        draw.Polygons = polygons;
+        draw.UV = uv.ToArray();
+        draw.VertexColors = colors.ToArray();
     }
 
     private sealed class SurfaceVisual(Node2D node, Slice slice, Vector2 anchor, Sprite2D sampler,

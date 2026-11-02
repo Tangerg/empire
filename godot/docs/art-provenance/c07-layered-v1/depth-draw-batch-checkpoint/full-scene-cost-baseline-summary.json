@@ -1,0 +1,129 @@
+{
+  "scope": "Alternating same1180x812 fit-map camera, all23initialunits,10s warmup+20s samples; screenshots AFTER samples, no commands/AI/save. Software renderer shared cloud diagnostic, not hardware acceptance.",
+  "runs": [
+    {
+      "variant": "left-candidate",
+      "scope": "Entire current selected assembly / explicitly unselected left stone variant, complete initial-state roster without actions; fixed fit-map camera;10sec warmup+20sec sample;llvmpipe and shared cloud CPU, NOT user hardware FPS or whole-scene acceptance",
+      "stateUnchanged": true,
+      "buildMs": 24373.6579,
+      "viewport": [
+        1180,
+        812
+      ],
+      "entries": 4670,
+      "sceneScale": 0.73046875,
+      "renderIssues": 0,
+      "initialUnits": 23,
+      "spriteNodes": 2413,
+      "totalBoardNodes": 7752,
+      "polygonNodes": 2868,
+      "triangles": 24316,
+      "patches": 145245,
+      "partitions": 463,
+      "file": "full-scene-cost-left-candidate-1.json",
+      "samples": 223,
+      "medianFrameMs": 86.078,
+      "p95FrameMs": 111.815,
+      "medianProcessMs": 94.722,
+      "drawCalls": [
+        3507
+      ],
+      "totalNodes": [
+        7757
+      ]
+    },
+    {
+      "variant": "left-candidate",
+      "scope": "Entire current selected assembly / explicitly unselected left stone variant, complete initial-state roster without actions; fixed fit-map camera;10sec warmup+20sec sample;llvmpipe and shared cloud CPU, NOT user hardware FPS or whole-scene acceptance",
+      "stateUnchanged": true,
+      "buildMs": 26407.7488,
+      "viewport": [
+        1180,
+        812
+      ],
+      "entries": 4670,
+      "sceneScale": 0.73046875,
+      "renderIssues": 0,
+      "initialUnits": 23,
+      "spriteNodes": 2413,
+      "totalBoardNodes": 7752,
+      "polygonNodes": 2868,
+      "triangles": 24316,
+      "patches": 145245,
+      "partitions": 463,
+      "file": "full-scene-cost-left-candidate-2.json",
+      "samples": 197,
+      "medianFrameMs": 97.71099999999734,
+      "p95FrameMs": 133.33333333333334,
+      "medianProcessMs": 132.001,
+      "drawCalls": [
+        3507
+      ],
+      "totalNodes": [
+        7757
+      ]
+    },
+    {
+      "variant": "selected",
+      "scope": "Entire current selected assembly / explicitly unselected left stone variant, complete initial-state roster without actions; fixed fit-map camera;10sec warmup+20sec sample;llvmpipe and shared cloud CPU, NOT user hardware FPS or whole-scene acceptance",
+      "stateUnchanged": true,
+      "buildMs": 20624.6107,
+      "viewport": [
+        1180,
+        812
+      ],
+      "entries": 4524,
+      "sceneScale": 0.73046875,
+      "renderIssues": 0,
+      "initialUnits": 23,
+      "spriteNodes": 2412,
+      "totalBoardNodes": 7459,
+      "polygonNodes": 2722,
+      "triangles": 24316,
+      "patches": 145245,
+      "partitions": 463,
+      "file": "full-scene-cost-selected-1.json",
+      "samples": 234,
+      "medianFrameMs": 83.33333333333333,
+      "p95FrameMs": 100.0,
+      "medianProcessMs": 96.187,
+      "drawCalls": [
+        3361
+      ],
+      "totalNodes": [
+        7464
+      ]
+    },
+    {
+      "variant": "selected",
+      "scope": "Entire current selected assembly / explicitly unselected left stone variant, complete initial-state roster without actions; fixed fit-map camera;10sec warmup+20sec sample;llvmpipe and shared cloud CPU, NOT user hardware FPS or whole-scene acceptance",
+      "stateUnchanged": true,
+      "buildMs": 19924.2302,
+      "viewport": [
+        1180,
+        812
+      ],
+      "entries": 4524,
+      "sceneScale": 0.73046875,
+      "renderIssues": 0,
+      "initialUnits": 23,
+      "spriteNodes": 2412,
+      "totalBoardNodes": 7459,
+      "polygonNodes": 2722,
+      "triangles": 24316,
+      "patches": 145245,
+      "partitions": 463,
+      "file": "full-scene-cost-selected-2.json",
+      "samples": 229,
+      "medianFrameMs": 84.84848484848484,
+      "p95FrameMs": 103.5787777777778,
+      "medianProcessMs": 97.708,
+      "drawCalls": [
+        3361
+      ],
+      "totalNodes": [
+        7464
+      ]
+    }
+  ]
+}

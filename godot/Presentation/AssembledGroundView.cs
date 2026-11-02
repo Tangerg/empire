@@ -22,6 +22,7 @@ public partial class AssembledGroundView : BoardGroundView
     private readonly List<(Sprite2D Sprite, Vector2 Contact, bool Pointer, Coord? Selection, Vector2[]? PointerPolygon)> _objects = new();
     private readonly List<(Node2D Node, Vector2 Contact, StandingVisual Visual, Coord? Selection)> _surfaces = new();
     private readonly List<TerrainDepthEntry> _depthEntries = new();
+    private readonly List<CompiledSceneSurface.Instance> _surfaceInstances = new();
     private IReadOnlyList<GroundSite> _sites = Array.Empty<GroundSite>();
     public override IReadOnlyList<string> Diagnostics => Array.Empty<string>();
     public override IReadOnlyList<TerrainDepthEntry> DepthEntries => _depthEntries;
@@ -156,8 +157,10 @@ public partial class AssembledGroundView : BoardGroundView
                         samplers.Add(instance.AssetId, sampler);
                     }
                     var firstSurface = true;
-                    foreach (var (node, visual) in surfaces.Instantiate(view, instance.Id, instance.Scale, asset.Anchor,
-                        instance.Pointer != "pass-through", asset.PointerPolygon, sampler))
+                    var surfaceInstance = surfaces.Instantiate(view, instance.Id, instance.Scale, asset.Anchor,
+                        instance.Pointer != "pass-through", asset.PointerPolygon, sampler);
+                    view._surfaceInstances.Add(surfaceInstance);
+                    foreach (var (node, visual) in surfaceInstance.Pieces)
                     {
                         if (firstSurface && asset.ShadowRadii != Vector2.Zero)
                             node.AddChild(BoardLighting.CreateGroundContact(asset.ShadowRadii, shadows));
@@ -209,6 +212,12 @@ public partial class AssembledGroundView : BoardGroundView
         _authored = null;
         return authored;
     }
+    public override void ApplyDrawOrder()
+    {
+        foreach (var instance in _surfaceInstances)
+            instance.ApplyDrawOrder();
+    }
+
     public override void Render(BoardProjection projection, string[] tiles, int[] elevation, Vector2I size)
     {
         if (_registeredMap["width"]!.GetValue<int>() != size.X || _registeredMap["height"]!.GetValue<int>() != size.Y
