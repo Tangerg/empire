@@ -1,0 +1,198 @@
+{
+  "physicalFeetExact": true,
+  "runtimeSupportArraysExact": true,
+  "supportEntries": 146,
+  "oldMaterialTriangles": 4918,
+  "newMaterialTriangles": 5906,
+  "currentSurfaceSha256": "b75a554cfa7b6eb3621d0ed3bfb2e7bb7453712b366821e41d22bca4d8efdcc4",
+  "finiteFeet": [
+    {
+      "id": "west-long",
+      "foot": [
+        [
+          300,
+          454
+        ],
+        [
+          352,
+          480
+        ],
+        [
+          356,
+          478
+        ],
+        [
+          304,
+          452
+        ]
+      ],
+      "support": [
+        [
+          300,
+          454.0
+        ],
+        [
+          304,
+          456.0
+        ],
+        [
+          352,
+          480.0
+        ],
+        [
+          356,
+          478.0
+        ]
+      ]
+    },
+    {
+      "id": "middle",
+      "foot": [
+        [
+          352,
+          480
+        ],
+        [
+          356,
+          482
+        ],
+        [
+          360,
+          480
+        ],
+        [
+          356,
+          478
+        ]
+      ],
+      "support": [
+        [
+          352,
+          480
+        ],
+        [
+          356,
+          482
+        ],
+        [
+          360,
+          480
+        ]
+      ]
+    },
+    {
+      "id": "near-long",
+      "foot": [
+        [
+          356,
+          482
+        ],
+        [
+          392,
+          500
+        ],
+        [
+          396,
+          498
+        ],
+        [
+          360,
+          480
+        ]
+      ],
+      "support": [
+        [
+          356,
+          482.0
+        ],
+        [
+          360,
+          484.0
+        ],
+        [
+          392,
+          500.0
+        ],
+        [
+          396,
+          498.0
+        ]
+      ]
+    },
+    {
+      "id": "near",
+      "foot": [
+        [
+          392,
+          500
+        ],
+        [
+          398,
+          503
+        ],
+        [
+          404,
+          500
+        ],
+        [
+          398,
+          497
+        ]
+      ],
+      "support": [
+        [
+          392,
+          500
+        ],
+        [
+          398,
+          503
+        ],
+        [
+          404,
+          500
+        ]
+      ]
+    },
+    {
+      "id": "east-return",
+      "foot": [
+        [
+          404,
+          500
+        ],
+        [
+          430,
+          487
+        ],
+        [
+          426,
+          485
+        ],
+        [
+          400,
+          498
+        ]
+      ],
+      "support": [
+        [
+          400,
+          498.0
+        ],
+        [
+          404,
+          500.0
+        ],
+        [
+          426,
+          489.0
+        ],
+        [
+          430,
+          487.0
+        ]
+      ]
+    }
+  ],
+  "scope": "Same local physical support owners and Node count; material triangles changed. No claim of equal GPU pixels or final scene performance."
+}

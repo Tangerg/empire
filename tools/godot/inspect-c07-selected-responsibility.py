@@ -85,7 +85,7 @@ def report():
             "selectedInstances": len(instances), "selectedAssets": len(catalog), "supportEntries": sum(item["supports"] for item in instances),
             "selectedSites": sum(bool(item["selectedSiteOwners"]) for item in sites), "canonicalSites": len(sites),
             "instances": instances, "sites": sites, "foundations": foundations,
-            "knownUnselectedFailures": ["west-inner left courtyard stone: rule-priority geometric study, art rejected",
+            "knownUnselectedFailures": ["west-inner left courtyard: selected warm-masonry baseline, trellis/rooted garden and block art incomplete",
                                         "central rear-east planted/seat group: natural structure unresolved",
                                         "northwest and northeast lookouts: solid/void and structural shape unresolved"],
             "finalArtStatus": "not accepted; materials, ground/object integration and contact shadows require bounded whole-neighbourhood passes"}
