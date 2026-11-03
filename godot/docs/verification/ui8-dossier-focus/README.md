@@ -1,5 +1,9 @@
 # Dossier keyboard visibility — 2026-11-02
 
+This report records the original presentation-only change. The later
+[post-order focus repair](../../UI-DOSSIER-RETURN-20261103.md) extends the same
+scene with isolated real-session operations and additional close-lifetime checks.
+
 ## Proven defect and minimal repair
 
 In the actual C01 turn-1 application, select Laiya, open **兵种与能力**, expand the ability description, then press Tab twice. Before the fix, focus moved to **阵形** below the visible scroll area; only manually scrolling revealed its gold outline. `before-tab-hidden-1180.png` and `before-scrolled-bottom-1180.png` preserve that failure. `after-tab-visible-1180.png` shows the same 1180×812 window/character: the focused disclosure is now automatically visible. No font, artwork, window layout, rules, or gameplay action changed.

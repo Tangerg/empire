@@ -116,7 +116,9 @@ public partial class TacticalHud : Control
                 detailOpeningStamp = null;
                 Callable.From(() =>
                 {
-                    if (GodotObject.IsInstanceValid(this) && IsInsideTree() && generation == closingGeneration && current?.Stamp == openingStamp
+                    if (GodotObject.IsInstanceValid(this) && IsInsideTree() && generation == closingGeneration && !DossierVisible
+                        && current is { } live && openingStamp is { } opened && live.Stamp.Binding == opened.Binding
+                        && live.Stamp.Revision >= opened.Revision
                         && openerName is not null && FindChild(openerName, true, false) is Button opener && opener.IsVisibleInTree())
                         opener.GrabFocus();
                 }).CallDeferred();
