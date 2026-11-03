@@ -526,6 +526,14 @@ Full campaign/all-level replay remains the integration gate.
 
 ## Native Godot relocation ownership
 
+Native attack-position previews have one spatial owner:
+`BattleCombat.PreviewAttack` clones the complete state once, uses `BattleRelocation`
+and `UnitDisposition` to project the attacker's destination/facing, then reuses
+the existing combat plan builder. HUD, tactical selection and AI consume this
+same query. This does not simulate a movement path or mutate the live battle;
+execution, stored cast origins and parting-shot geometry keep their existing
+contracts. See [the reproduced placement defect and scope](../godot/docs/COMBAT-PLACEMENT-PREVIEW-20261103.md).
+
 `Empire.Core.Tactics.BattleRelocation` is the native owner of unit placement and
 capture invalidation. `MoveUnit` validates an on-field occupant's origin and
 destination before clearing origin tile capture and changing position/unit

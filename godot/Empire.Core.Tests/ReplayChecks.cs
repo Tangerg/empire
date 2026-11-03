@@ -31,7 +31,7 @@ internal static class ReplayChecks
             if (battle.Snapshot()["phase"]!.GetValue<string>() != "over")
                 throw new Exception($"{level["id"]}: battle exceeded the explicit 4096-action safety bound.");
             VerifyPersistence(engine, level, battle, recorder.Replay(battle.Snapshot()));
-            Console.WriteLine($"  {level["id"]}: {count} legal native actions, conclusion {battle.Snapshot()["conclusion"]}, exact save/replay round trip (independent level, not carried-state campaign victory).");
+            Console.WriteLine($"  {level["id"]}: {count} legal native actions, state {battle.StateHash}, conclusion {battle.Snapshot()["conclusion"]}, exact save/replay round trip (independent level, not carried-state campaign victory).");
         }
     }
 

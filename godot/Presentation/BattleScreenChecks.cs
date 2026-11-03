@@ -24,6 +24,7 @@ public partial class BattleScreenChecks : Node
     {
         try
         {
+            CheckMovedAttackForecast();
             CheckContextualKeyRepeat();
             CheckUndoKeyRepeat();
             Check();
@@ -42,6 +43,96 @@ public partial class BattleScreenChecks : Node
         {
             GD.PushError(error.ToString());
             GetTree().Quit(1);
+        }
+    }
+
+    private void CheckMovedAttackForecast()
+    {
+        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<string>() == "c01-11");
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var text = GodotTextCatalog.LoadSimplifiedChinese();
+        var presentation = BattleTextChecks.Session(engine, text);
+        var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+        var before = session.Snapshot();
+        var original = EcmaJson.Stringify(before);
+        var actor = before["units"]!.AsArray().OfType<JsonObject>().Single(unit => unit["key"]?.GetValue<string>() == "campaign-tasha");
+        var defender = before["units"]!.AsArray().OfType<JsonObject>().Single(unit => unit["key"]?.GetValue<string>() == "west-ghost");
+        var actorId = actor["id"]!.GetValue<int>();
+        var defenderId = defender["id"]!.GetValue<int>();
+        var target = TacticalHit.Unit(new(6, 10), defenderId);
+        var path = new[] { new BoardCell(4, 8), new BoardCell(4, 9), new BoardCell(4, 10) };
+        var screen = new BattleScreen();
+        AddChild(screen);
+        try
+        {
+            screen.Board.AnimationsEnabled = false;
+            screen.BindSession(new(text, presentation.Battle, PortraitCatalogResources.Load(), session,
+                new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)),
+                level, AuthoredScene.Load("res://data/scenes/c01-11.json"));
+            screen.SelectHit(TacticalHit.Unit(path[0], actorId));
+            screen.SelectHit(TacticalHit.Ground(path[^1]));
+            Require(screen.Selection is { Kind: TacticalSelectionKind.Destination } destination && destination.Path.SequenceEqual(path),
+                "The unchanged c01-11 opening must preview Tasha's legal path from (4,8) to (4,10).");
+            // A singleton command button commits immediately; selecting the enemy arms the native forecast first.
+            screen.SelectHit(target);
+            Require(screen.Selection is { Kind: TacticalSelectionKind.Target, Weapon: "c01.satchel-charge" } preview
+                && preview.Path.SequenceEqual(path) && preview.PreviewTarget == target
+                && session.Revision == 0 && session.ActionLog.Count == 0 && session.Events.Count == 0
+                && EcmaJson.Stringify(session.Snapshot()) == original,
+                "Arming the actual moved attack must retain its path and target without changing the battle.");
+            var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+            var forecast = hud.Projection!.Sections.Single(section => section.Key == "forecast");
+            var strike = forecast.Rows.Single(row => row.Key == "strike");
+            var counter = forecast.Rows.Single(row => row.Key == "counter");
+            Require(Descendants(hud).OfType<Label>().Any(label => label.Text == strike.Label)
+                && Descendants(hud).OfType<Label>().Any(label => label.Text == counter.Label),
+                "The mounted native forecast must display both projected damage rows before confirmation.");
+
+            screen.SelectHit(target);
+            var settled = session.GetSnapshot();
+            Require(session.Revision == 1 && session.ActionLog.Count == 1 && settled.Transition is not null
+                && screen.DisplayedRevision == session.Revision && !screen.IsPresenting,
+                "One target confirmation must commit exactly one real command and settle its presentation.");
+            var receipt = settled.Transition!;
+            var action = receipt.Action;
+            Require(action.GetProperty("kind").GetString() == "command" && action.GetProperty("unit").GetInt32() == actorId
+                && action.GetProperty("path").EnumerateArray().Select(cell => new BoardCell(cell.GetProperty("x").GetInt32(), cell.GetProperty("y").GetInt32())).SequenceEqual(path)
+                && action.GetProperty("command").GetProperty("weapon").GetString() == "c01.satchel-charge"
+                && action.GetProperty("command").GetProperty("target").GetProperty("x").GetInt32() == target.Cell.X
+                && action.GetProperty("command").GetProperty("target").GetProperty("y").GetInt32() == target.Cell.Y,
+                "The native preview and dispatched command must describe the same actor, path, weapon and target.");
+            var attackEvent = receipt.Events.Single(value => value.GetProperty("type").GetString() == "attack"
+                && value.GetProperty("attacker").GetInt32() == actorId && value.GetProperty("defender").GetInt32() == defenderId);
+            var counterEvent = receipt.Events.Single(value => value.GetProperty("type").GetString() == "counter"
+                && value.GetProperty("attacker").GetInt32() == defenderId && value.GetProperty("defender").GetInt32() == actorId);
+            var settledActor = settled.State.GetProperty("units").EnumerateArray().Single(unit => unit.GetProperty("id").GetInt32() == actorId);
+            var settledDefender = settled.State.GetProperty("units").EnumerateArray().Single(unit => unit.GetProperty("id").GetInt32() == defenderId);
+            var actualStrike = attackEvent.GetProperty("damage").GetDouble();
+            var actualCounter = counterEvent.GetProperty("damage").GetDouble();
+            var actorHp = settledActor.GetProperty("hp").GetDouble();
+            var defenderHp = settledDefender.GetProperty("hp").GetDouble();
+            var expectedStrike = text.Format("ui.hud.strike", actualStrike, defender["hp"]!.GetValue<double>(), defenderHp);
+            var expectedCounter = text.Format("ui.hud.counter", EcmaJson.Stringify(JsonValue.Create(actualCounter)), actor["hp"]!.GetValue<double>(), actorHp);
+            var failures = new List<string>();
+            if (strike.Label != expectedStrike)
+                failures.Add($"Moved attack preview '{strike.Label}' differs from committed receipt '{expectedStrike}'.");
+            if (counter.Label != expectedCounter)
+                failures.Add($"Moved counter preview '{counter.Label}' differs from committed receipt '{expectedCounter}'.");
+            if (strike.Gauge?.Value != defenderHp)
+                failures.Add($"Moved attack forecast HP {strike.Gauge?.Value} differs from committed defender HP {defenderHp}.");
+            if (counter.Gauge?.Value != actorHp)
+                failures.Add($"Moved counter forecast HP {counter.Gauge?.Value} differs from committed actor HP {actorHp}.");
+            Require(settledActor.GetProperty("x").GetInt32() == path[^1].X && settledActor.GetProperty("y").GetInt32() == path[^1].Y
+                && settledActor.GetProperty("done").GetBoolean() && settledActor.GetProperty("facing").GetString() == "east",
+                "The actual moved attack must finish at the chosen cell facing its target.");
+            GD.Print($"MOVED_ATTACK_FORECAST c01-11 Tasha {actorId}: preview={strike.Label}; {counter.Label}; receipt={actualStrike}/{actualCounter}; final HP={defenderHp}/{actorHp}; revision={session.Revision}");
+            Require(failures.Count == 0, string.Join("\n", failures));
+        }
+        finally
+        {
+            RemoveChild(screen);
+            screen.Free();
         }
     }
 

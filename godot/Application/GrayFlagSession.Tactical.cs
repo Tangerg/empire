@@ -123,7 +123,7 @@ public sealed partial class GrayFlagSession
 
         public TacticalAttack Attack(int unit, BoardCell target, BoardCell from, string weapon) => Read(() =>
         {
-            var plan = session.engine.Combat.Forecast(state, RequireVisible(unit), Coord(target), Coord(from), weapon);
+            var plan = session.engine.Combat.PreviewAttack(state, Integer(RequireVisible(unit), "id"), Coord(from), Coord(target), weapon);
             var index = session.engine.Space.Board(state).IndexOf(Coord(from));
             var terrainId = Text(state["map"]!["tiles"]![index], "terrain");
             var definition = session.engine.Catalog.Definition("terrains", terrainId)

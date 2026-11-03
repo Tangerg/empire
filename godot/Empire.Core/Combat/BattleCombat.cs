@@ -107,6 +107,18 @@ public sealed partial class BattleCombat : ILifecycleEffects
     }
     public IReadOnlyList<Coord> Coverage(JsonObject state, Coord from, Coord aimedAt, string area) =>
         AreaShapes.Coverage(Board(state), from, aimedAt, area);
+    /// <summary>
+    /// Projects an attack from a hypothetical placement in one detached battlefield.
+    /// Preserves current HP, statuses and resources; does not simulate the movement path or parting shots.
+    /// </summary>
+    public CombatPlan PreviewAttack(JsonObject state, int attackerId, Coord destination, Coord target, string weapon)
+    {
+        var projected = state.DeepClone().AsObject();
+        var attacker = new BattleRelocation(projected).MoveUnit(attackerId, destination);
+        var grid = Forecasts.Grid(projected);
+        UnitDisposition.Face(grid, attacker, grid.Toward(destination, target));
+        return Forecast(projected, attacker, target, destination, weapon);
+    }
     public CombatPlan Forecast(JsonObject state, JsonObject attacker, Coord target, Coord? from = null, string? weapon = null)
     {
         var origin = from ?? TacticalQueries.Position(attacker);

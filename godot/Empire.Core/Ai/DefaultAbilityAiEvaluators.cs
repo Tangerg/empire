@@ -43,7 +43,7 @@ public static class DefaultAbilityAiEvaluators
         var foe = UnitAt(turn.State, target);
         if (foe is not null && !AreEnemies(turn.State, Integer(foe, "owner"), Integer(context.Unit, "owner")))
             return null;
-        var plan = turn.Rules.Combat.Forecast(turn.State, context.Unit, target, context.At, weapon);
+        var plan = turn.Rules.Combat.PreviewAttack(turn.State, Integer(context.Unit, "id"), context.At, target, weapon);
         var mission = turn.Agenda.Mission;
         if (foe is null)
         {

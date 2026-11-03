@@ -208,7 +208,7 @@ public sealed partial class GrayFlagSession
         {
             var target = targetHit.Cell;
             var defender = forecastUnit;
-            var plan = engine.Combat.Forecast(state, selected, new(target.X, target.Y), new(from.X, from.Y), weapon);
+            var plan = engine.Combat.PreviewAttack(state, N(selected, "id"), new(from.X, from.Y), new(target.X, target.Y), weapon);
             if (targetHit.Kind == TacticalHitKind.Object && plan.PrimaryStructure is { } structureForecast)
             {
                 var structure = state["structures"]!.AsArray().OfType<JsonObject>()
