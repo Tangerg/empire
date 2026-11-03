@@ -52,6 +52,7 @@ public partial class CampaignNavigationChecks : Node
                 ("battle window minimum follows committed view and lifecycle", CheckBattleWindowMinimum),
                 ("root notice leaves with its view", CheckNoticeViewTransition),
                 ("startup resume, battle restart, camp and Continue", CheckBattleCampMenu),
+                ("held end-turn key across real AI playback", CheckEndTurnKeyRepeat),
                 ("story/choice return, rebind and unmount", () => { CheckNarrativeNavigation(); return Task.CompletedTask; }),
                 ("overwrite cancellation, stale dialog and confirmation", () => { CheckOverwrite(); return Task.CompletedTask; }),
                 ("overwrite dialog unmount", () => { CheckUnmountedOverwrite(); return Task.CompletedTask; }),
@@ -259,6 +260,102 @@ public partial class CampaignNavigationChecks : Node
             window.MinSize = originalMinimum;
             window.Size = originalSize;
         }
+    }
+
+    private async Task CheckEndTurnKeyRepeat()
+    {
+        WriteFixture(battleNodeState);
+        var game = MountGame();
+        Press(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
+        Press(Button(View<CampaignStagingScreen>(game), "StartBattle"));
+        var screen = View<BattleScreen>(game);
+        var session = Campaign(game).Battle!;
+        var saved = File.ReadAllText(automaticPath);
+        var savedStamp = Stamp(automaticPath);
+        var originalPlayer = session.Snapshot()["currentPlayer"]!.GetValue<int>();
+        var originalTurn = session.Snapshot()["turn"]!.GetValue<int>();
+        game.ProcessMode = ProcessModeEnum.Inherit;
+        await Layout();
+        Require(!session.IsComputerTurn && !screen.IsInputBlocked && session.Revision == 0,
+            "Held end-turn fixture starts in the unchanged playable C01 opening through real campaign navigation.");
+
+        void SendKey(bool pressed = true, bool echo = false)
+        {
+            using var input = new InputEventKey { Keycode = Key.E, Pressed = pressed, Echo = echo };
+            GetViewport().PushInput(input);
+        }
+        async Task AwaitHumanTurn()
+        {
+            var deadline = Time.GetTicksMsec() + 120_000;
+            var handoffRevision = session.Revision;
+            var sawComputerPresentation = false;
+            var sawSettledHandoffPending = false;
+            while (session.IsComputerTurn || screen.IsInputBlocked)
+            {
+                Require(Time.GetTicksMsec() < deadline,
+                    "Real C01 AI playback did not return control within 120 seconds.");
+                Require(ReferenceEquals(View<Control>(game), screen),
+                    "The opening AI cycle unexpectedly ended the battle instead of returning a playable human turn.");
+                sawComputerPresentation |= session.Revision > handoffRevision && session.IsComputerTurn && screen.IsPresenting;
+                sawSettledHandoffPending |= !session.IsComputerTurn && !screen.IsPresenting && screen.IsInputBlocked;
+                var revision = session.Revision;
+                SendKey(echo: true);
+                Require(session.Revision == revision, "Held E cannot commit while AI playback or its final handoff is busy.");
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            }
+            Require(sawComputerPresentation && sawSettledHandoffPending,
+                "The regression must traverse actual computer animation, computer actions and the settled but still busy human handoff.");
+            Require(session.Snapshot()["phase"]!.GetValue<string>() == "playing"
+                && session.Snapshot()["currentPlayer"]!.GetValue<int>() == originalPlayer,
+                "The real AI cycle must return to the original human player in a continuing battle.");
+        }
+
+        SendKey();
+        Require(session.Revision == 1 && session.IsComputerTurn && screen.IsInputBlocked
+            && session.ActionLog.Single()["kind"]!.GetValue<string>() == "endTurn" && !session.CanUndo,
+            "A fresh E hands off exactly once and starts real presentation, without an undo checkpoint.");
+        SendKey();
+        Require(session.Revision == 1, "A fresh E pressed during busy cannot queue another turn handoff.");
+        await AwaitHumanTurn();
+        var returned = session.Snapshot();
+        var revisionAfterAi = session.Revision;
+        var digestAfterAi = Digest(returned);
+        var eventsAfterAi = EcmaJson.Stringify(new JsonArray(session.Events.Select(value => (JsonNode)value.DeepClone()).ToArray()));
+        var actionsAfterAi = EcmaJson.Stringify(new JsonArray(session.ActionLog.Select(value => (JsonNode)value.DeepClone()).ToArray()));
+        var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+        var projection = hud.Projection;
+        var messages = screen.RecentMessages.ToArray();
+        Require(revisionAfterAi > 2 && returned["turn"]!.GetValue<int>() > originalTurn && !session.CanUndo,
+            "Actual computer orders and turn handoff completed before testing the still-held key.");
+        GD.Print($"Held E reached the next playable human turn: turn {returned["turn"]}, revision {revisionAfterAi}.");
+        foreach (var route in new[] { "viewport", "window", "unhandled" })
+            for (var repeat = 0; repeat < 3; repeat++)
+            {
+                using var input = new InputEventKey { Keycode = Key.E, Pressed = true, Echo = true };
+                if (route == "viewport")
+                    GetViewport().PushInput(input);
+                else if (route == "window")
+                    screen._Input(input);
+                else
+                    screen._UnhandledKeyInput(input);
+                Require(session.Revision == revisionAfterAi && Digest(session.Snapshot()) == digestAfterAi
+                    && EcmaJson.Stringify(new JsonArray(session.Events.Select(value => (JsonNode)value.DeepClone()).ToArray())) == eventsAfterAi
+                    && EcmaJson.Stringify(new JsonArray(session.ActionLog.Select(value => (JsonNode)value.DeepClone()).ToArray())) == actionsAfterAi
+                    && ReferenceEquals(hud.Projection, projection) && screen.RecentMessages.SequenceEqual(messages),
+                    $"Held E after AI must preserve the next human turn through {route}: revision {session.Revision}, expected {revisionAfterAi}.");
+            }
+        SendKey(pressed: false);
+        Require(session.Revision == revisionAfterAi, "Releasing E cannot hand off the next human turn.");
+        SendKey();
+        Require(session.Revision == revisionAfterAi + 1 && session.IsComputerTurn,
+            "Releasing and pressing E again still deliberately ends the next human turn.");
+        await AwaitHumanTurn();
+        Require(session.Snapshot()["turn"]!.GetValue<int>() > returned["turn"]!.GetValue<int>(),
+            "A second distinct E press completes a second real AI cycle without locking the shortcut.");
+        Require(File.ReadAllText(automaticPath) == saved && Stamp(automaticPath) == savedStamp,
+            "End-turn input and AI playback leave the clean campaign autosave unchanged.");
+        CheckManualUnchanged();
+        Retire(game);
     }
 
     private async Task CheckBattleCampMenu()

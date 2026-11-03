@@ -219,7 +219,7 @@ public partial class BattleScreen
             Key.A => "a",
             Key.C => "c",
             Key.D => "d",
-            Key.E => "e",
+            Key.E when !key.Echo => "e",
             Key.H => "h",
             Key.S => "s",
             Key.U when !key.Echo => "u",
