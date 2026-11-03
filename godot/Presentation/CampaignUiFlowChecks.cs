@@ -184,13 +184,39 @@ public partial class CampaignUiFlowChecks : Node
         await Layout();
         Check(saves == 2, "Unmount and remount cannot revive a queued application action.");
         BindSession();
+        var exits = 0;
+        screen.BindApplicationActions(onExit: () => exits++);
+        Press("ui.battle.camp");
+        await Layout();
+        var retiredPrompt = (ConfirmationDialog)screen.FindChild("CampConfirmation", true, false);
+        screen.BindApplicationActions(onExit: () => exits += 100);
+        retiredPrompt.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
+        await Layout();
+        Check(exits == 0, "Rebinding application actions invalidates an open Camp confirmation.");
+        Press("ui.battle.camp");
+        await Layout();
+        retiredPrompt = (ConfirmationDialog)screen.FindChild("CampConfirmation", true, false);
+        retiredPrompt.GetOkButton().EmitSignal(Godot.Button.SignalName.Pressed);
+        BindSession();
+        await Layout();
+        Check(exits == 0, "Replacing the session cancels a confirmed but still deferred Camp callback.");
         screen.BindApplicationActions(onExit: () => RemoveChild(screen));
+        GetWindow().Size = new Vector2I(640, 360);
+        await Layout();
         popup.PopupCentered();
         await Layout();
         Press("ui.battle.camp");
         Check(screen.IsInsideTree(), "Popup Pressed dispatch retains its Window until the signal finishes.");
         await Layout();
-        Check(!screen.IsInsideTree(), "Deferred popup exit still invokes its existing navigation callback.");
+        var campPrompt = (ConfirmationDialog)screen.FindChild("CampConfirmation", true, false);
+        Check(screen.IsInsideTree() && campPrompt.Visible, "Deferred popup exit opens confirmation without invoking navigation.");
+        Check(campPrompt.Size.X <= GetWindow().Size.X && campPrompt.Size.Y <= GetWindow().Size.Y
+            && campPrompt.GetLabel().GetGlobalRect().End.Y <= campPrompt.GetOkButton().GetGlobalRect().Position.Y,
+            "The complete Camp warning and separate confirmation controls fit the 640 by 360 native window.");
+        campPrompt.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
+        Check(screen.IsInsideTree(), "Camp confirmation retains its native Window through signal dispatch.");
+        await Layout();
+        Check(!screen.IsInsideTree(), "Confirmed deferred popup exit invokes its existing navigation callback.");
         if (screen.IsInsideTree())
             RemoveChild(screen);
         screen.QueueFree();

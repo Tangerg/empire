@@ -630,7 +630,11 @@ public partial class CameraIntegrationChecks : Node
             Require(screen.SelectedUnitId is null, "Presentation start canceled the pre-existing pointer gesture");
             exit.EmitSignal(Button.SignalName.Pressed);
             await Layout();
-            Require(exits == 1, "Settled camp exit invokes once through the current mounted binding");
+            var campPrompt = (ConfirmationDialog)screen.FindChild("CampConfirmation", true, false);
+            Require(exits == 0 && campPrompt.Visible, "Settled camp exit requests confirmation before invoking navigation.");
+            campPrompt.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
+            await Layout();
+            Require(exits == 1, "Confirmed camp exit invokes once through the current mounted binding");
             Bind(new GrayFlagSession(new(engine, presentation, new JsonArray()), level));
             exit.EmitSignal(Button.SignalName.Pressed);
             await Layout();

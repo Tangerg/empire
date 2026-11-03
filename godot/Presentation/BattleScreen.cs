@@ -57,6 +57,7 @@ public partial class BattleScreen : Control
     private HBoxContainer _globalOrders = null!;
     private GridContainer _applicationActions = null!;
     private PopupPanel _systemMenu = null!;
+    private Button _systemMenuButton = null!;
     private AcceptDialog _battleLogDialog = null!;
     private RichTextLabel _battleLogText = null!;
     private Label _battleLogHint = null!;
@@ -64,6 +65,7 @@ public partial class BattleScreen : Control
     private int _battleLogOpeningBinding = -1;
     private long _toastGeneration;
     private ConfirmationDialog _restartConfirmation = null!;
+    private ConfirmationDialog? _campConfirmation;
     private Action? _restart;
     private Action? _restartRequest;
     private bool _built;
@@ -214,6 +216,7 @@ public partial class BattleScreen : Control
         _restart = null;
         _restartRequest = null;
         _restartConfirmation.Hide();
+        DismissCampConfirmation();
         _battleLogDialog.Hide();
         _systemMenu.Hide();
         _pointerBoundaryGeneration++;
@@ -268,17 +271,18 @@ public partial class BattleScreen : Control
         Clear(_applicationActions);
         _restartRequest = null;
         _restartConfirmation.Hide();
+        DismissCampConfirmation();
         var generation = ++_bindingGeneration;
         var session = _session;
         var pending = false;
         bool Current() => GodotObject.IsInstanceValid(this) && _bound && IsInsideTree() && generation == _bindingGeneration && ReferenceEquals(session, _session);
-        _restart = onRestart is null ? null : () => { if (Current() && !IsInputBlocked) onRestart(); };
+        _restart = onRestart is null ? null : () => { if (Current() && !IsInputBlocked && _campConfirmation is null) onRestart(); };
         void AddAction(string text, Action callback, bool requireIdle = false, bool destructive = false, string shortcut = "")
         {
             Button button = null!;
             button = Button(text, () =>
             {
-                if (pending || !button.IsInsideTree() || !Current() || (requireIdle && IsInputBlocked))
+                if (pending || _campConfirmation is not null || !button.IsInsideTree() || !Current() || (requireIdle && IsInputBlocked))
                     return;
                 pending = true;
                 _systemMenu.Hide();
@@ -321,8 +325,38 @@ public partial class BattleScreen : Control
                 _restartConfirmation.GetCancelButton().GrabFocus();
             }, true, true);
         if (onExit is not null)
-            AddAction(_text.Format("ui.battle.camp"), onExit, true, true);
+            AddAction(_text.Format("ui.battle.camp"), () =>
+            {
+                _restartRequest = null;
+                _restartConfirmation.Hide();
+                var dialog = new ConfirmationDialog
+                {
+                    Name = "CampConfirmation",
+                    Title = _text.Format("ui.battle.camp_title"),
+                    DialogText = _text.Format("ui.battle.camp_warning"),
+                    CancelButtonText = _text.Format("ui.common.cancel")
+                };
+                CampaignUiStyle.ConfigureDialog(dialog, _text.Format("ui.battle.camp_confirm"));
+                _campConfirmation = dialog;
+                CampaignUiStyle.OpenConfirmation(this, dialog,
+                    () => Current() && !IsInputBlocked && (_campConfirmation is null || ReferenceEquals(_campConfirmation, dialog)), onExit,
+                    () =>
+                    {
+                        if (ReferenceEquals(_campConfirmation, dialog))
+                            _campConfirmation = null;
+                    }, _systemMenuButton);
+            }, true, true);
         RefreshApplicationActions();
+    }
+
+    private void DismissCampConfirmation()
+    {
+        if (_campConfirmation is not { } dialog)
+            return;
+        _campConfirmation = null;
+        dialog.Hide();
+        RemoveChild(dialog);
+        dialog.QueueFree();
     }
 
     private void RefreshApplicationActions()
@@ -678,6 +712,7 @@ public partial class BattleScreen : Control
             _systemMenu.PopupCentered();
             closeSystem.GrabFocus();
         });
+        _systemMenuButton = system;
         system.Name = "SystemMenuButton";
         system.CustomMinimumSize = new Vector2(72, 38);
         heading.AddChild(system);

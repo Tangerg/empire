@@ -121,6 +121,64 @@ public static class CampaignUiStyle
             confirmation.GetCancelButton().GrabFocus();
     }
 
+    public static void OpenConfirmation(Control owner, ConfirmationDialog dialog, Func<bool> current,
+        Action confirmed, Action dismissed, Control? focusAfterCancel = null)
+    {
+        var handled = false;
+        var released = false;
+        void Release()
+        {
+            if (released)
+                return;
+            released = true;
+            dismissed();
+            if (GodotObject.IsInstanceValid(dialog))
+            {
+                dialog.Hide();
+                dialog.QueueFree();
+            }
+        }
+        void Cancel()
+        {
+            if (handled)
+                return;
+            handled = true;
+            Release();
+            Callable.From(() =>
+            {
+                if (GodotObject.IsInstanceValid(owner) && owner.IsInsideTree() && current()
+                    && GodotObject.IsInstanceValid(focusAfterCancel) && focusAfterCancel!.IsInsideTree()
+                    && focusAfterCancel.IsVisibleInTree() && focusAfterCancel.CanProcess())
+                    focusAfterCancel.GrabFocus();
+            }).CallDeferred();
+        }
+        dialog.Confirmed += () =>
+        {
+            if (handled || !dialog.IsInsideTree() || !current())
+                return;
+            handled = true;
+            dialog.Hide();
+            // Confirming may unmount the owning screen. Finish native Window input dispatch first.
+            Callable.From(() =>
+            {
+                var canCommit = GodotObject.IsInstanceValid(owner) && owner.IsInsideTree()
+                    && GodotObject.IsInstanceValid(dialog) && dialog.IsInsideTree() && !released && current();
+                Release();
+                if (canCommit)
+                    confirmed();
+            }).CallDeferred();
+        };
+        dialog.Canceled += Cancel;
+        dialog.CloseRequested += Cancel;
+        dialog.TreeExiting += () =>
+        {
+            handled = true;
+            Release();
+        };
+        owner.AddChild(dialog);
+        OpenDialog(dialog);
+    }
+
     public static void InitialFocus(Button button)
     {
         var pending = true;

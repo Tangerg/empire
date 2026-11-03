@@ -13,6 +13,7 @@ public partial class BattleResultScreen : Control
     private bool handled;
     private BoxContainer actions = null!;
     private CampaignShell? shell;
+    private ConfirmationDialog? campConfirmation;
     public System.Collections.Generic.IReadOnlyList<string> RenderingDiagnostics => shell?.RenderingDiagnostics ?? Array.Empty<string>();
     public override void _ExitTree()
     {
@@ -28,7 +29,30 @@ public partial class BattleResultScreen : Control
         if (victory)
             ActionButton(actions, "Settle", text.Format("ui.result.settle"), settle);
         ActionButton(actions, "Retry", text.Format("ui.result.retry"), retry);
-        ActionButton(actions, "Exit", text.Format("ui.result.camp"), exit);
+        Button exitButton = null!;
+        exitButton = ActionButton(actions, "Exit", text.Format("ui.result.camp"), exit,
+            commit => RequestCampExit(text, commit, exitButton));
+    }
+
+    private void RequestCampExit(GameText text, Action commit, Button button)
+    {
+        var token = generation;
+        var dialog = new ConfirmationDialog
+        {
+            Name = "CampConfirmation",
+            Title = text.Format("ui.battle.camp_title"),
+            DialogText = text.Format("ui.battle.camp_warning"),
+            CancelButtonText = text.Format("ui.common.cancel")
+        };
+        CampaignUiStyle.ConfigureDialog(dialog, text.Format("ui.battle.camp_confirm"));
+        campConfirmation = dialog;
+        CampaignUiStyle.OpenConfirmation(this, dialog,
+            () => !handled && token == generation && IsInsideTree() && (campConfirmation is null || ReferenceEquals(campConfirmation, dialog)), commit,
+            () =>
+            {
+                if (ReferenceEquals(campConfirmation, dialog))
+                    campConfirmation = null;
+            }, button);
     }
 
     private VBoxContainer Begin(CampaignShellView? shellView = null, Action? onExit = null, string readingHint = "")
@@ -116,23 +140,35 @@ public partial class BattleResultScreen : Control
         column.AddChild(label);
     }
 
-    private void ActionButton(BoxContainer column, string name, string text, Action action)
+    private Button ActionButton(BoxContainer column, string name, string text, Action action, Action<Action>? request = null)
     {
         var token = generation;
         var button = new Button { Name = name, Text = text, SizeFlagsHorizontal = SizeFlags.ExpandFill, CustomMinimumSize = new Vector2(0, 48) };
-        button.Pressed += () =>
+        bool Current() => !handled && token == generation && IsInsideTree()
+            && GodotObject.IsInstanceValid(button) && button.IsInsideTree() && campConfirmation is null;
+        void Commit()
         {
-            if (handled || token != generation || !IsInsideTree() || !button.IsInsideTree())
+            if (!Current())
                 return;
             handled = true;
             foreach (var child in column.GetChildren())
                 if (child is Button control)
                     control.Disabled = true;
             action();
+        }
+        button.Pressed += () =>
+        {
+            if (!Current())
+                return;
+            if (request is null)
+                Commit();
+            else
+                request(Commit);
         };
         column.AddChild(button);
         if (name is "Settle" or "Proceed" or "Retry")
             CampaignUiStyle.InitialFocus(button);
+        return button;
     }
 
     public void ShowResult(string outcome, CampaignBattleSummary summary, Action proceed, CampaignShellView? shellView = null, Action? onExit = null)

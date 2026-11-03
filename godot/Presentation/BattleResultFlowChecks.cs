@@ -38,13 +38,13 @@ public partial class BattleResultFlowChecks : Node
         }
         catch (Exception error) { GD.PushError("Result-flow safety guard: " + error); GetTree().Quit(1); return; }
         Check("isolated clean prebattle autosave", CheckPrebattleAutosave);
-        Check("completion one-shot navigation", CheckCompletionButtons);
+        await Check("completion one-shot navigation", CheckCompletionButtons);
         Check("result summary and invalid outcomes", CheckSummary);
-        Check("stale rebind and unmount callbacks", CheckStaleButtons);
+        await Check("stale rebind and unmount callbacks", CheckStaleButtons);
         Check("historical battle save remains rejected", CheckHistoricalBattleSaveRejected);
         foreach (var outcome in new[] { "victory", "defeat", "draw" })
             foreach (var action in outcome == "victory" ? new[] { "Settle", "Retry", "Exit" } : new[] { "Retry", "Exit" })
-                Check($"game {outcome}/{action}", () => CheckGameFlow(outcome, action));
+                await Check($"game {outcome}/{action}", () => CheckGameFlow(outcome, action));
         try
         {
             await CheckBusySaveLoad();
@@ -64,7 +64,7 @@ public partial class BattleResultFlowChecks : Node
         }
     }
 
-    private void CheckCompletionButtons()
+    private async Task CheckCompletionButtons()
     {
         foreach (var victory in new[] { true, false })
             foreach (var first in victory ? new[] { "Settle", "Retry", "Exit" } : new[] { "Retry", "Exit" })
@@ -74,11 +74,26 @@ public partial class BattleResultFlowChecks : Node
                 var calls = new List<string>();
                 screen.ShowCompletion(messages, victory ? "胜利" : "战败", "Fixture reason", victory,
                     () => calls.Add("Settle"), () => calls.Add("Retry"), () => calls.Add("Exit"));
-                var buttons = Buttons(screen).ToDictionary(button => button.Name.ToString());
+                var buttons = CompletionButtons(screen).ToDictionary(button => button.Name.ToString());
                 Require(buttons.Keys.Order().SequenceEqual((victory ? new[] { "Exit", "Retry", "Settle" } : new[] { "Exit", "Retry" }).Order()), "Completion button family differs by outcome.");
                 Require(Labels(screen).Contains("Fixture reason"), "Completion reason is missing.");
                 Require(!Descendants(screen).OfType<GridContainer>().Any() && !buttons.ContainsKey("Proceed"), "Completion eagerly displays the settlement summary.");
                 Press(buttons[first]);
+                if (first == "Exit")
+                {
+                    var confirmation = CampConfirmation(screen);
+                    await Layout();
+                    Require(confirmation.Visible && calls.Count == 0, "Camp request navigates before confirmation.");
+                    Require(confirmation.GetCancelButton().HasFocus() && !confirmation.GetOkButton().HasFocus(),
+                        "Camp confirmation must initially focus safe Cancel.");
+                    foreach (var button in buttons.Values)
+                        Press(button);
+                    Require(calls.Count == 0, "A sibling completion action bypassed the pending Camp confirmation.");
+                    Press(confirmation.GetOkButton());
+                    confirmation.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
+                    Require(calls.Count == 0, "Camp navigation must wait until native dialog dispatch completes.");
+                    await Layout();
+                }
                 foreach (var button in buttons.Values)
                 {
                     Press(button);
@@ -101,7 +116,7 @@ public partial class BattleResultFlowChecks : Node
             settled++;
             screen.ShowResult("victory", Summary, () => proceeded++);
         }, () => throw new Exception("Unexpected retry"), () => throw new Exception("Unexpected exit"));
-        var old = Buttons(screen).ToArray();
+        var old = CompletionButtons(screen).ToArray();
         Require(!Labels(screen).Contains(Summary.Title), "Summary title appeared before explicit settle.");
         Press(old.Single(button => button.Name == "Settle"));
         Require(settled == 1 && Labels(screen).Contains(Summary.Title), "Explicit settle did not show the victory summary.");
@@ -129,10 +144,16 @@ public partial class BattleResultFlowChecks : Node
         }
         var alternate = new GameText(key => "Alternate: " + messages.Format(key), System.Globalization.CultureInfo.InvariantCulture);
         screen.ShowCompletion(alternate, "Heading", "Reason", true, () => { }, () => { }, () => { });
-        var translated = Buttons(screen).ToDictionary(button => button.Name.ToString(), button => button.Text);
+        var translated = CompletionButtons(screen).ToDictionary(button => button.Name.ToString(), button => button.Text);
         Require(translated["Settle"] == alternate.Format("ui.result.settle") &&
             translated["Retry"] == alternate.Format("ui.result.retry") && translated["Exit"] == alternate.Format("ui.result.camp"),
             "Completion buttons ignored the injected wording catalog.");
+        Press(CompletionButtons(screen).Single(button => button.Name == "Exit"));
+        var confirmation = CampConfirmation(screen);
+        Require(confirmation.Title == alternate.Format("ui.battle.camp_title") &&
+            confirmation.DialogText == alternate.Format("ui.battle.camp_warning") &&
+            confirmation.GetOkButton().Text == alternate.Format("ui.battle.camp_confirm"),
+            "Completion Camp confirmation ignored the injected wording catalog.");
         var alternateSummary = new CampaignBattleSummary(alternate, Summary.Title, Summary.Chapter, Summary.Outcome,
             Summary.Turns, Summary.AlliesRemaining, Summary.EnemiesRemaining, Summary.Fallen, Summary.Signals, Summary.StrikeCount);
         screen.ShowResult("victory", alternateSummary, () => { });
@@ -143,7 +164,7 @@ public partial class BattleResultFlowChecks : Node
         Retire(screen);
     }
 
-    private void CheckStaleButtons()
+    private async Task CheckStaleButtons()
     {
         var screen = new BattleResultScreen();
         AddChild(screen);
@@ -152,16 +173,22 @@ public partial class BattleResultFlowChecks : Node
         void BindOld() => screen.ShowCompletion(messages, "Old", "Old reason", true,
             () => oldCalls++, () => oldCalls++, () => oldCalls++);
         BindOld();
-        var old = Buttons(screen).ToArray();
+        var old = CompletionButtons(screen).ToArray();
+        Press(old.Single(button => button.Name == "Exit"));
+        var oldConfirmation = CampConfirmation(screen);
+        await Layout();
+        Require(oldConfirmation.Visible, "Stale-confirmation fixture did not open Camp.");
         screen.ShowCompletion(messages, "New", "New reason", false, () => newCalls++, () => newCalls++, () => newCalls++);
+        oldConfirmation.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
         foreach (var button in old)
             Press(button);
+        await Layout();
         Require(oldCalls == 0 && newCalls == 0, "Old callback survived a completion rebind.");
-        Press(Buttons(screen).Single(button => button.Name == "Retry"));
+        Press(CompletionButtons(screen).Single(button => button.Name == "Retry"));
         Require(newCalls == 1, "New binding did not get its own one-shot action.");
 
         BindOld();
-        var removed = Buttons(screen).Single(button => button.Name == "Exit");
+        var removed = CompletionButtons(screen).Single(button => button.Name == "Exit");
         var originalParent = removed.GetParent();
         originalParent.RemoveChild(removed);
         Press(removed);
@@ -169,18 +196,46 @@ public partial class BattleResultFlowChecks : Node
         removed.QueueFree();
 
         BindOld();
-        old = Buttons(screen).ToArray();
+        old = CompletionButtons(screen).ToArray();
+        Press(old.Single(button => button.Name == "Exit"));
+        oldConfirmation = CampConfirmation(screen);
+        await Layout();
         RemoveChild(screen);
+        oldConfirmation.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
         foreach (var button in old)
             Press(button);
         Require(oldCalls == 0, "Unmounted completion callback navigated.");
         AddChild(screen);
+        oldConfirmation.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
         foreach (var button in old)
             Press(button);
+        await Layout();
         Require(oldCalls == 0, "Reattachment revived a pre-unmount completion binding.");
         BindOld();
-        Press(Buttons(screen).Single(button => button.Name == "Exit"));
+        Press(CompletionButtons(screen).Single(button => button.Name == "Exit"));
+        await Layout();
+        Press(CampConfirmation(screen).GetOkButton());
+        Require(oldCalls == 0, "Rebound Camp action ran inside native confirmation dispatch.");
+        await Layout();
         Require(oldCalls == 1, "Explicitly rebound screen did not navigate after remount.");
+
+        BindOld();
+        Press(CompletionButtons(screen).Single(button => button.Name == "Exit"));
+        await Layout();
+        Press(CampConfirmation(screen).GetOkButton());
+        screen.ShowCompletion(messages, "Replacement", "Replacement reason", false,
+            () => newCalls++, () => newCalls++, () => newCalls++);
+        await Layout();
+        Require(oldCalls == 1 && newCalls == 1, "A queued Camp confirmation navigated after its completion was rebound.");
+
+        BindOld();
+        Press(CompletionButtons(screen).Single(button => button.Name == "Exit"));
+        await Layout();
+        Press(CampConfirmation(screen).GetOkButton());
+        RemoveChild(screen);
+        AddChild(screen);
+        await Layout();
+        Require(oldCalls == 1 && newCalls == 1, "A queued Camp confirmation survived unmount and remount.");
 
         screen.ShowResult("victory", Summary, () => newCalls++);
         var oldProceed = Buttons(screen).Single();
@@ -195,7 +250,7 @@ public partial class BattleResultFlowChecks : Node
         Retire(screen);
     }
 
-    private void CheckGameFlow(string outcome, string first)
+    private async Task CheckGameFlow(string outcome, string first)
     {
         var game = new GrayFlagGame { ProcessMode = ProcessModeEnum.Disabled };
         AddChild(game);
@@ -209,6 +264,7 @@ public partial class BattleResultFlowChecks : Node
         }
         campaign.BeginBattle();
         var document = campaign.Save();
+        var opening = StateDigest.Hash(campaign.Battle!.Snapshot());
         // All three outcomes are terminal UI fixtures, not native gameplay or route-parity claims.
         var terminal = campaign.Battle!.Snapshot();
         var conclusion = outcome == "draw" ? BattleConclusion.TurnLimitReached()
@@ -233,13 +289,71 @@ public partial class BattleResultFlowChecks : Node
         var pending = StateDigest.Hash(campaign.Snapshot());
         game._Process(0);
         var completion = Field<Control>(game, "view") as BattleResultScreen ?? throw new Exception("Game did not show a completion screen.");
-        var buttons = Buttons(completion).ToDictionary(button => button.Name.ToString());
+        // Native Esc must reach the terminal UI while the fixture's simulation remains stopped.
+        completion.ProcessMode = ProcessModeEnum.Always;
+        var buttons = CompletionButtons(completion).ToDictionary(button => button.Name.ToString());
         Require(buttons.ContainsKey("Settle") == (outcome == "victory"), "Game offers settlement for a non-victory or omits victory settlement.");
         Require(!buttons.ContainsKey("Proceed") && !Descendants(completion).OfType<GridContainer>().Any(), "Game skips explicit completion and shows summary immediately.");
         Require(campaign.Battle is not null && StateDigest.Hash(campaign.Snapshot()) == pending, "Merely showing completion mutates the campaign.");
         game._Process(1);
         Require(ReferenceEquals(Field<Control>(game, "view"), completion), "Repeated process creates duplicate completion views.");
+        var pendingSession = campaign.Battle;
+        var pendingSave = StableSave(campaign.Save());
+        var savePaths = SavePaths();
+        var saveFiles = savePaths.Select(SaveFileState).ToArray();
+        void RequirePending(string action)
+        {
+            Require(ReferenceEquals(Field<GrayFlagCampaign>(game, "campaign"), campaign) &&
+                ReferenceEquals(campaign.Battle, pendingSession) && ReferenceEquals(Field<GrayFlagSession>(game, "session"), pendingSession) &&
+                ReferenceEquals(Field<Control>(game, "view"), completion) && StableSave(campaign.Save()) == pendingSave,
+                $"{action} changed the campaign, terminal session, event history, or completion view.");
+            Require(savePaths.Select(SaveFileState).SequenceEqual(saveFiles), $"{action} changed an existing manual or automatic save.");
+        }
+        foreach (var dismissal in new[] { "Cancel", "Escape", "Close" })
+        {
+            Press(buttons["Exit"]);
+            Press(buttons["Exit"]);
+            var confirmation = CampConfirmation(completion);
+            RequirePending("Requesting Camp");
+            await Layout();
+            Require(confirmation.Visible && confirmation.GetCancelButton().HasFocus() && !confirmation.GetOkButton().HasFocus(),
+                "Every terminal Camp request must show a confirmation with safe Cancel focused.");
+            foreach (var button in buttons.Values)
+                Press(button);
+            RequirePending("A sibling action during Camp confirmation");
+            switch (dismissal)
+            {
+                case "Cancel":
+                    Press(confirmation.GetCancelButton());
+                    break;
+                case "Escape":
+                    GetViewport().PushInput(new InputEventKey { Keycode = Key.Escape, Pressed = true });
+                    break;
+                case "Close":
+                    confirmation.EmitSignal(Window.SignalName.CloseRequested);
+                    break;
+            }
+            Require(!confirmation.Visible && buttons.Values.All(button => !button.Disabled),
+                $"{dismissal} did not dismiss Camp confirmation and restore completion actions.");
+            confirmation.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
+            await Layout();
+            Require(!Descendants(completion).OfType<ConfirmationDialog>().Any(dialog => dialog.Visible),
+                $"{dismissal} left a visible Camp confirmation after native dispatch.");
+            RequirePending($"{dismissal} followed by a late confirmation");
+        }
         Press(buttons[first]);
+        if (first == "Exit")
+        {
+            var confirmation = CampConfirmation(completion);
+            await Layout();
+            Require(confirmation.Visible && confirmation.GetCancelButton().HasFocus(), "Canceled Camp request could not be reopened.");
+            Press(confirmation.GetOkButton());
+            confirmation.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
+            foreach (var button in buttons.Values)
+                Press(button);
+            RequirePending("Confirming Camp before native dialog dispatch completes");
+            await Layout();
+        }
         if (first == "Settle")
         {
             Require(campaign.Battle is null && !campaign.HasPendingBattle, "Explicit settlement did not commit and close the pending battle.");
@@ -257,16 +371,20 @@ public partial class BattleResultFlowChecks : Node
         }
         else
         {
-            Require(campaign.Battle?.Snapshot()["phase"]?.GetValue<string>() == "playing" && StateDigest.Hash(campaign.Snapshot()) == pending,
+            Require(campaign.Battle?.Snapshot()["phase"]?.GetValue<string>() == "playing" &&
+                StateDigest.Hash(campaign.Battle.Snapshot()) == opening && StateDigest.Hash(campaign.Snapshot()) == pending,
                 "Retry/exit must restore the opening without completing the campaign battle.");
             Require(campaign.AtCamp == (first == "Exit"), "Retry/exit camp state differs.");
             Require(first == "Exit" ? Field<Control>(game, "view") is CampaignStagingScreen : Field<Control>(game, "view") is BattleScreen,
                 "Retry/exit navigated to the wrong screen.");
             var next = Field<Control>(game, "view");
             var battle = campaign.Battle;
-            foreach (var button in buttons.Values)
-                Press(button);
+            if (first == "Retry")
+                foreach (var button in buttons.Values)
+                    Press(button);
+            await Layout();
             Require(ReferenceEquals(Field<Control>(game, "view"), next) && ReferenceEquals(campaign.Battle, battle), "A stale completion button restarted or exited the replacement battle.");
+            Require(savePaths.Select(SaveFileState).SequenceEqual(saveFiles), "Retry/confirmed Camp changed existing manual or automatic saves.");
         }
         Retire(game);
     }
@@ -307,10 +425,7 @@ public partial class BattleResultFlowChecks : Node
         var game = new GrayFlagGame();
         SetField(game, "screen", screen);
         SetField(game, "session", session);
-        var savePaths = typeof(GrayFlagGame).GetFields(BindingFlags.Static | BindingFlags.NonPublic)
-            .Where(field => field.IsLiteral && field.FieldType == typeof(string))
-            .Select(field => field.GetRawConstantValue() as string).Where(value => value?.StartsWith("user://", StringComparison.Ordinal) == true)
-            .SelectMany(value => new[] { ProjectSettings.GlobalizePath(value!), ProjectSettings.GlobalizePath(value!) + ".tmp" }).ToArray();
+        var savePaths = SavePaths();
         var stamps = savePaths.Select(FileStamp).ToArray();
         var feedback = Field<Label>(screen, "_feedback").Text;
         var messages = screen.RecentMessages.ToArray();
@@ -513,6 +628,14 @@ public partial class BattleResultFlowChecks : Node
         }
         catch (Exception error) { failures.Add(name + ": " + error); }
     }
+    private async Task Check(string name, Func<Task> test)
+    {
+        try
+        {
+            await test();
+        }
+        catch (Exception error) { failures.Add(name + ": " + error); }
+    }
     private void Require(bool condition, string message)
     {
         assertions++;
@@ -524,6 +647,16 @@ public partial class BattleResultFlowChecks : Node
         var file = new System.IO.FileInfo(path);
         return file.Exists ? $"{file.Length}:{file.LastWriteTimeUtc.Ticks}" : "<absent>";
     }
+    private static string[] SavePaths() => typeof(GrayFlagGame).GetFields(BindingFlags.Static | BindingFlags.NonPublic)
+        .Where(field => field.IsLiteral && field.FieldType == typeof(string))
+        .Select(field => field.GetRawConstantValue() as string).Where(value => value?.StartsWith("user://", StringComparison.Ordinal) == true)
+        .SelectMany(value => new[] { ProjectSettings.GlobalizePath(value!), ProjectSettings.GlobalizePath(value!) + ".tmp" }).ToArray();
+    private static string SaveFileState(string path) => FileStamp(path) + ":" +
+        (System.IO.File.Exists(path) ? System.IO.File.ReadAllText(path) : "");
+    private static ConfirmationDialog CampConfirmation(Node root) => Descendants(root).OfType<ConfirmationDialog>()
+        .Single(dialog => dialog.Name == "CampConfirmation" && !dialog.IsQueuedForDeletion() && dialog.Visible);
+    private static IEnumerable<Button> CompletionButtons(Node root) => Buttons(root)
+        .Where(button => button.Name == "Settle" || button.Name == "Retry" || button.Name == "Exit");
     private static void Press(Button button) => button.EmitSignal(Button.SignalName.Pressed);
     private static IEnumerable<Node> Descendants(Node root)
     {

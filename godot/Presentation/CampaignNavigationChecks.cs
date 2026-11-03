@@ -239,6 +239,8 @@ public partial class CampaignNavigationChecks : Node
                     "Battle resize escaped the minimum or changed gameplay.");
                 Press(Buttons(View<BattleScreen>(game)).Single(button => button.Text == "战役营地"));
                 await Layout();
+                CampPrompt(game).EmitSignal(ConfirmationDialog.SignalName.Confirmed);
+                await Layout();
                 Require(window.MinSize == inherited, "Leaving battle for camp retained the battle minimum.");
                 Press(Button(View<Control>(game), "StartBattle"));
                 RemoveChild(game);
@@ -297,15 +299,73 @@ public partial class CampaignNavigationChecks : Node
         dialog.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
         Press(restart);
         Require(ReferenceEquals(campaign.Battle, restarted), "Stale restart dialog/button replaced the new session.");
+        nextScreen.Board.AnimationsEnabled = false;
+        var openingDigest = Digest(restarted!.Snapshot());
+        TacticalSceneInputChecks.Move(nextScreen, restarted);
+        var playedDigest = Digest(restarted.Snapshot());
+        var playedEvents = EcmaJson.Stringify(new JsonArray(restarted.Events.Select(value => (JsonNode)value.DeepClone()).ToArray()));
+        Require(playedDigest != openingDigest && restarted.Events.Count > 0, "Camp fixture commits a real move before requesting exit.");
         Press(Buttons(nextScreen).Single(button => button.Text == "重新开始"));
         await Layout();
         var staleDialog = Descendants(nextScreen).OfType<ConfirmationDialog>().Single();
-        Press(Buttons(nextScreen).Single(button => button.Text == "战役营地"));
+        staleDialog.GetCancelButton().EmitSignal(Godot.Button.SignalName.Pressed);
+        await Layout();
+        var campEntry = Buttons(nextScreen).Single(button => button.Text == "战役营地");
+        void Preserved(string context)
+        {
+            Require(ReferenceEquals(campaign.Battle, restarted) && ReferenceEquals(View<Control>(game), nextScreen)
+                && Digest(restarted.Snapshot()) == playedDigest
+                && EcmaJson.Stringify(new JsonArray(restarted.Events.Select(value => (JsonNode)value.DeepClone()).ToArray())) == playedEvents,
+                context);
+            Require(File.ReadAllText(automaticPath) == saved && Stamp(automaticPath) == stamp,
+                "Camp confirmation and cancellation do not write the clean campaign slot.");
+            CheckManualUnchanged();
+        }
+        game.ProcessMode = ProcessModeEnum.Inherit;
+        foreach (var dismiss in new[] { "cancel", "close", "escape" })
+        {
+            Press(Button(nextScreen, "SystemMenuButton"));
+            await Layout();
+            Press(campEntry);
+            Press(campEntry);
+            await Layout();
+            Preserved("Camp must request confirmation without discarding the real played battle.");
+            var prompt = CampPrompt(nextScreen);
+            Require(prompt.Visible && prompt.GetCancelButton().HasFocus() && !prompt.GetOkButton().HasFocus(),
+                "Camp confirmation opens on Cancel rather than the destructive action.");
+            Require(prompt.DialogText.Contains("重新开始", StringComparison.Ordinal),
+                "Camp confirmation explains that returning restarts this battle.");
+            if (dismiss == "escape")
+            {
+                GetViewport().PushInput(new InputEventKey { Pressed = true, Keycode = Key.Escape });
+                GetViewport().PushInput(new InputEventKey { Pressed = false, Keycode = Key.Escape });
+            }
+            else if (dismiss == "close")
+                prompt.EmitSignal(Window.SignalName.CloseRequested);
+            else
+                prompt.GetCancelButton().EmitSignal(Godot.Button.SignalName.Pressed);
+            Require(!prompt.Visible, $"{dismiss}: native dismissal must close the prompt before any late confirmation.");
+            prompt.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
+            await Layout();
+            Preserved($"{dismiss}: dismissal invalidates even a late confirmation without losing played state or events.");
+            Require(Button(nextScreen, "SystemMenuButton").HasFocus(),
+                "Cancel returns focus to the visible system entry, not the hidden Camp button.");
+        }
+        Press(Button(nextScreen, "SystemMenuButton"));
+        await Layout();
+        Press(campEntry);
+        await Layout();
+        var approved = CampPrompt(nextScreen);
+        approved.GetOkButton().EmitSignal(Godot.Button.SignalName.Pressed);
+        approved.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
+        Preserved("Confirm finishes native dialog dispatch before retiring the battle screen.");
         await Layout();
         var camp = View<CampaignStagingScreen>(game);
         var pending = State(game);
         var opening = campaign.Battle;
-        Require(campaign.AtCamp && campaign.HasPendingBattle && opening is not null, "Battle exit failed to retain the request at camp.");
+        Require(campaign.AtCamp && campaign.HasPendingBattle && opening is not null
+            && Digest(opening.Snapshot()) == openingDigest && opening.Events.Count == 0,
+            "Confirmed camp exit retains the request and intentionally resets exactly to the opening without events.");
         if (GodotObject.IsInstanceValid(staleDialog))
         {
             Require(!staleDialog.IsInsideTree(), "Retired restart confirmation must no longer receive native input.");
@@ -989,6 +1049,8 @@ public partial class CampaignNavigationChecks : Node
             Layered();
             Press(Buttons(View<BattleScreen>(game)).Single(button => button.Text == "战役营地"));
             await Layout();
+            CampPrompt(game).EmitSignal(ConfirmationDialog.SignalName.Confirmed);
+            await Layout();
             Require(Campaign(game).AtCamp, "Redstone exit did not return to the normal camp.");
             Press(Button(View<CampaignStagingScreen>(game), "CampaignExit"));
             Press(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
@@ -1193,6 +1255,9 @@ public partial class CampaignNavigationChecks : Node
         Require(saved.ContainsKey("state") && saved.ContainsKey("savedAt") && !saved.ContainsKey("request") && !saved.ContainsKey("battle") && !saved.ContainsKey("events") && !saved.ContainsKey("atCamp"), "Autosave is not the canonical campaign-only envelope.");
         Require(Digest(CampaignSave.Load(saved, definition)["state"]!.AsObject()) == State(game) && saved["state"]!["pendingBattle"] is null, "Autosave does not represent the exact clean canonical campaign state.");
     }
+    private static ConfirmationDialog CampPrompt(Node owner) => Descendants(owner).OfType<ConfirmationDialog>()
+        .Single(dialog => dialog.Name == "CampConfirmation" && dialog.IsInsideTree());
+
     private static void DismissNotices(GrayFlagGame game)
     {
         foreach (var dialog in Descendants(game).OfType<AcceptDialog>().ToArray())
