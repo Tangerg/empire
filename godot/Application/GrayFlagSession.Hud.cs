@@ -251,6 +251,37 @@ public sealed partial class GrayFlagSession
                             D(selected, "hp"),
                             exchange.AttackerHpAfter),
                         Gauge: new(exchange.AttackerHpAfter, D(Definition("units", S(selected, "type")), "maxHp"))));
+                    rows.Add(new("forecast-scope", text.Format("ui.hud.forecast_scope")));
+                    var hitEffects = new List<(string Phase, string Source, string Target, WeaponHitEffectDescription Description)>();
+                    void DescribeEffects(string phase, int sourceId, int targetId, IReadOnlyList<JsonObject> definitions)
+                    {
+                        if (!visible.Contains(sourceId) || !visible.Contains(targetId))
+                            return;
+                        var sourceName = Name(TacticalQueries.RequireUnit(state, sourceId));
+                        var targetName = Name(TacticalQueries.RequireUnit(state, targetId));
+                        hitEffects.AddRange(definitions.Select(definition =>
+                            (phase, sourceName, targetName, hitEffectText.Describe(EcmaJson.ToElement(definition)))));
+                    }
+                    foreach (var hit in plan.UnitHits)
+                        DescribeEffects("attack", plan.Attacker, hit.Target, hit.Effects);
+                    DescribeEffects("counter", exchange.Defender, plan.Attacker, plan.CounterEffects);
+                    if (plan.SupportAttack is { } extra)
+                        DescribeEffects("support", extra.Attacker, extra.Target, extra.Effects);
+                    foreach (var group in hitEffects.GroupBy(effect => effect.Phase))
+                    {
+                        var descriptions = group.ToArray();
+                        var prominent = descriptions.OrderByDescending(effect => effect.Description.Emphasis).First();
+                        var summary = text.Format("ui.hud.hit_effect." + group.Key, prominent.Description.Compact);
+                        if (descriptions.Length > 1)
+                            summary = text.Format("ui.hud.hit_effect.more", summary, descriptions.Length - 1);
+                        var details = descriptions.Select(effect => text.Format("ui.hud.hit_effect.detail", effect.Source, effect.Target,
+                            text.Format("ui.hud.hit_effect." + effect.Phase, effect.Description.Detail))).ToArray();
+                        rows.Add(new("hit-effect-" + group.Key, summary,
+                            Hint: text.Format("ui.hud.hit_effect.condition") + "\n" + string.Join("\n", details)));
+                        rows.AddRange(details.Select((detail, index) => new TacticalHudRow($"hit-effect-detail:{group.Key}:{index}", detail)));
+                    }
+                    if (hitEffects.Count > 0)
+                        rows.Add(new("hit-effect-condition", text.Format("ui.hud.hit_effect.condition")));
                     rows.Add(new("damage-type",
                         text.Format("ui.hud.damage_chain",
                             contentText.Name(ContentTextKind.DamageType, exchange.Strike.DamageType),
@@ -265,7 +296,9 @@ public sealed partial class GrayFlagSession
                     if (exchange.Counter is { } counter)
                         rows.AddRange(counter.Modifiers.Select((modifier, index) => new TacticalHudRow($"counter-mod:{index}",
                             text.Format("ui.hud.counter_modifier", ModifierLabel(modifier)))));
-                    bool Detail(TacticalHudRow row) => row.Key is "damage-type" or "mitigation" || row.Key.StartsWith("strike-mod:", StringComparison.Ordinal) || row.Key.StartsWith("counter-mod:", StringComparison.Ordinal);
+                    bool Detail(TacticalHudRow row) => row.Key is "damage-type" or "mitigation" or "hit-effect-condition"
+                        || row.Key.StartsWith("strike-mod:", StringComparison.Ordinal) || row.Key.StartsWith("counter-mod:", StringComparison.Ordinal)
+                        || row.Key.StartsWith("hit-effect-detail:", StringComparison.Ordinal);
                     Section("forecast", text.Format("ui.hud.forecast"), rows.Where(row => !Detail(row)));
                     Section("forecast-details", text.Format("ui.hud.forecast_details"), rows.Where(Detail));
                 }

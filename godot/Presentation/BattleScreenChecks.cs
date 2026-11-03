@@ -24,6 +24,8 @@ public partial class BattleScreenChecks : Node
     {
         try
         {
+            CheckCollisionAftermathDisclosure();
+            HitEffectProjectionChecks.Check();
             CheckMovedAttackForecast();
             CheckContextualKeyRepeat();
             CheckUndoKeyRepeat();
@@ -43,6 +45,77 @@ public partial class BattleScreenChecks : Node
         {
             GD.PushError(error.ToString());
             GetTree().Quit(1);
+        }
+    }
+
+    private void CheckCollisionAftermathDisclosure()
+    {
+        var fixture = PresentationJson.Load<JsonObject>("res://tests/native/c01-14-collision-forecast.json");
+        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<string>() == fixture["levelId"]!.GetValue<string>());
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var battle = engine.CreateBattle(level);
+        Require(battle.StateHash == fixture["initialStateHash"]!.GetValue<string>(),
+            "The collision witness starts from the unchanged shipped c01-14 level and content.");
+        foreach (var action in fixture["prefix"]!.AsArray().OfType<JsonObject>())
+            battle.Dispatch(action);
+        Require(battle.StateHash == fixture["beforeStateHash"]!.GetValue<string>(),
+            "The legal recorded command prefix reaches the original collision witness exactly.");
+        var text = GodotTextCatalog.LoadSimplifiedChinese();
+        var presentation = BattleTextChecks.Session(engine, text);
+        var session = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(battle.Snapshot()));
+        var original = EcmaJson.Stringify(session.Snapshot());
+        var path = new[] { new BoardCell(7, 7), new BoardCell(7, 8), new BoardCell(8, 8) };
+        var target = TacticalHit.Unit(new(9, 8), 12);
+        var screen = new BattleScreen();
+        AddChild(screen);
+        try
+        {
+            screen.Board.AnimationsEnabled = false;
+            screen.BindSession(new(text, presentation.Battle, PortraitCatalogResources.Load(), session,
+                new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)),
+                level, AuthoredScene.Load("res://data/scenes/c01-14.json"));
+            screen.SelectHit(TacticalHit.Unit(path[0], 2));
+            screen.SelectHit(target);
+            Require(screen.Selection is { Kind: TacticalSelectionKind.Target, Weapon: "c01.border-blade" } preview
+                && preview.Path.SequenceEqual(path) && preview.PreviewTarget == target
+                && session.Revision == 0 && session.ActionLog.Count == 0 && session.Events.Count == 0
+                && EcmaJson.Stringify(session.Snapshot()) == original,
+                "The real Torren target preview preserves the exact path and original battle without dispatching.");
+            var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+            var forecast = hud.Projection!.Sections.Single(section => section.Key == "forecast");
+            var counter = forecast.Rows.Single(row => row.Key == "counter");
+            var labels = Descendants(hud).OfType<Label>().Where(label => label.IsVisibleInTree()).Select(label => label.Text).ToArray();
+            Require(counter.Gauge?.Value == 70 && counter.Label == text.Format("ui.hud.counter", "28", 98, 70)
+                && labels.Contains(counter.Label),
+                "The mounted forecast retains the canonical 28 direct counter damage and 70 direct-hit HP.");
+            var disclosed = labels.Any(label => label.Contains("反击", StringComparison.Ordinal)
+                && label.Contains("10", StringComparison.Ordinal)
+                && (label.Contains("碰撞", StringComparison.Ordinal) || label.Contains("受阻", StringComparison.Ordinal)));
+
+            screen.SelectHit(target);
+            var settled = session.GetSnapshot();
+            Require(session.Revision == 1 && session.ActionLog.Count == 1 && settled.Transition is not null
+                && screen.DisplayedRevision == 1 && !screen.IsPresenting
+                && EcmaJson.DeepEquals(session.ActionLog.Single(), fixture["action"])
+                && StateDigest.Hash(session.Snapshot()) == fixture["afterStateHash"]!.GetValue<string>(),
+                "One target confirmation commits exactly the original action and settles the original resulting state.");
+            var events = new JsonArray(session.Events.Select(value => (JsonNode)value.DeepClone()).ToArray());
+            Require(EcmaJson.Sha256(events) == fixture["eventsSha256"]!.GetValue<string>()
+                && session.Events.Single(value => value["type"]!.GetValue<string>() == "counter")["damage"]!.GetValue<double>() == 28
+                && session.Events.Single(value => value["type"]!.GetValue<string>() == "forcedMove")["collided"]!.GetValue<bool>()
+                && session.Events.Single(value => value["type"]!.GetValue<string>() == "collisionDamage")["amount"]!.GetValue<double>() == 10
+                && settled.State.GetProperty("units").EnumerateArray().Single(unit => unit.GetProperty("id").GetInt32() == 2)
+                    .GetProperty("hp").GetDouble() == 60,
+                "The unchanged receipt adds 10 collision damage after the 28 counter and leaves Torren at 60 HP.");
+            GD.Print($"COLLISION_FORECAST c01-14 Torren: preview={counter.Label}; gauge={counter.Gauge?.Value}; receipt counter=28 collision=10 final HP=60; disclosed={disclosed}");
+            Require(disclosed,
+                "Before confirmation, a visible mounted forecast label must disclose the counter's conditional 10 collision damage, not only the 70 direct-hit HP.");
+        }
+        finally
+        {
+            RemoveChild(screen);
+            screen.Free();
         }
     }
 

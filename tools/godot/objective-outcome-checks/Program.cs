@@ -475,6 +475,7 @@ contentMetadata["abilities"]!["attack"]!["name"] = "test.content.weapon";
 contentMetadata["directions"]!["square4"]!.AsObject().Clear();
 var firstContentText = new ContentText(firstCatalog, contentDocument);
 var secondContentText = new ContentText(secondCatalog, contentDocument);
+WeaponHitEffectTextChecks.Run(firstCatalog, firstContentText, contentEngine.Combat.HitEffects, messages, Check);
 Check(firstContentText.AbilityName("attack") == "Attack"
     && firstContentText.WeaponBonus("soldier_sword", "first") == "First bonus"
     && firstContentText.DirectionName("square4", "north") == firstCatalog.Format("content.directions.square4.north"),

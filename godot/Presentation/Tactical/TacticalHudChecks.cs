@@ -754,6 +754,13 @@ public partial class TacticalHudChecks : Node
             new TacticalHudRow("collateral", "范围攻击还将波及 2 个单位、1 个结构"),
             new TacticalHudRow("recipient-dies", "主击目标预计阵亡"),
             new TacticalHudRow("attacker-dies", "攻击者预计阵亡") };
+        var notices = new[] {
+            new TacticalHudRow("forecast-scope", "HP 仅计主击/反击；移动、援护与附效另计"),
+            new TacticalHudRow("hit-effect-attack", "另 15 项，详解 · 主击附效：" + string.Concat(Enumerable.Repeat("很长的状态名称", 12)), Hint: "完整附效不会因摘要长度而丢失"),
+            new TacticalHudRow("hit-effect-counter", "反击附效：尝试击退 1 格 · 受阻伤害 10"),
+            new TacticalHudRow("hit-effect-support", "另 8 项，详解 · 援护附效：尝试施加迟缓 2 回合") };
+        var effectDetails = Enumerable.Range(0, 24).Select(index => new TacticalHudRow("hit-effect-detail:attack:" + index,
+            $"北丘边境弓手 → 军团皇家盾卫：主击附效 {index}，命中且受击单位仍在场时尝试生效")).ToArray();
         foreach (var width in new[] { 960, 1180 })
         {
             host.Size = new Vector2(width, 640);
@@ -764,8 +771,8 @@ public partial class TacticalHudChecks : Node
                 new TacticalHudSection("forecast", "战斗预测", new[] {
                     new TacticalHudRow("attacker", "北丘边境弓手"), new TacticalHudRow("recipient", "军团皇家盾卫"),
                     new TacticalHudRow("counter", "反击 20 · 28 → 8", Gauge: new(8, 80)),
-                    new TacticalHudRow("strike", "主击 36 · HP 80 → 44", Gauge: new(44, 80)) }.Concat(warningRows).ToArray()),
-                new TacticalHudSection("forecast-details", "计算详情", new[] { new TacticalHudRow("damage-type", "穿刺 → 重甲"), new TacticalHudRow("mitigation", "减伤 20%") }),
+                    new TacticalHudRow("strike", "主击 36 · HP 80 → 44", Gauge: new(44, 80)) }.Concat(warningRows).Concat(notices).ToArray()),
+                new TacticalHudSection("forecast-details", "计算详情", new[] { new TacticalHudRow("damage-type", "穿刺 → 重甲"), new TacticalHudRow("mitigation", "减伤 20%") }.Concat(effectDetails).ToArray()),
                 new TacticalHudSection("target", "选择目标", new[] { new TacticalHudRow("cancel", "取消 Esc", Intent: new(stamp, TacticalHudIntentKind.Back)) })
             }));
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
@@ -775,6 +782,15 @@ public partial class TacticalHudChecks : Node
             Require(effects.GetChildCount() == warningRows.Length && effects.GetChildren().OfType<Label>().All(label =>
                 label.IsVisibleInTree() && plate.GetGlobalRect().Encloses(label.GetGlobalRect())),
                 "Interception, reaction, support, collateral and death facts are actually visible inside the forecast plate, not tooltip-only.");
+            foreach (var notice in notices)
+            {
+                var label = (Label)hud.FindChild(notice.Key, true, false);
+                Require(label.IsVisibleInTree() && plate.GetGlobalRect().Encloses(label.GetGlobalRect()) && label.GetVisibleLineCount() == 1,
+                    "Scope and each phase's effect summary stay visible and bounded even with repeated effects and long names.");
+            }
+            var counterNotice = (Label)hud.FindChild("hit-effect-counter", true, false);
+            Require(counterNotice.GetThemeFont("font").GetStringSize(counterNotice.Text, fontSize: counterNotice.GetThemeFontSize("font_size")).X <= counterNotice.Size.X,
+                "The real counter's conditional 10 collision damage fits without ellipsis before confirmation.");
             Require(plate.GlobalPosition.Y >= 320 && plate.GetGlobalRect().End.Y <= host.Size.Y,
                 "Even the fullest forecast remains in the lower safe half at both widths.");
             var hint = (Label)hud.FindChild("SelectionHint", true, false);
@@ -787,7 +803,14 @@ public partial class TacticalHudChecks : Node
             var calculation = (VBoxContainer)hud.FindChild("forecast-details", true, false);
             Require(popup.Visible && calculation.GetNode<VBoxContainer>("Content").Visible,
                 "Direct forecast details opens the current calculation already expanded.");
-            popup.Hide();
+            Require(calculation.GetNode<VBoxContainer>("Content").GetChildCount() == effectDetails.Length + 2
+                && calculation.Size.Y > popup.Size.Y,
+                "All ordered effect details remain in the scrollable dossier even when the compact plate is bounded.");
+            ((Button)hud.FindChild("DossierClose", true, false)).EmitSignal(Button.SignalName.Pressed);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Require(!popup.Visible && ReferenceEquals(GetViewport().GuiGetFocusOwner(), detail),
+                "Closing effect details returns focus to the unchanged forecast entry.");
         }
         RemoveChild(host);
         host.Free();

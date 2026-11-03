@@ -10,5 +10,6 @@ public sealed record PlannedSupportAttack(int Attacker, int Target, string Weapo
     double HpBefore, double HpAfter, bool Killed, IReadOnlyList<JsonObject> Effects);
 public sealed record CombatPlan(int Attacker, string Weapon, Coord From, Coord AimedAt, string Area,
     IReadOnlyList<Coord> AffectedCells, CombatForecast? PrimaryUnit, StructureCombatForecast? PrimaryStructure,
-    IReadOnlyList<PlannedUnitHit> UnitHits, IReadOnlyList<PlannedStructureHit> StructureHits, PlannedSupportAttack? SupportAttack);
+    IReadOnlyList<PlannedUnitHit> UnitHits, IReadOnlyList<PlannedStructureHit> StructureHits, PlannedSupportAttack? SupportAttack,
+    IReadOnlyList<JsonObject> CounterEffects);
 public sealed record ForcedMovementResult(Coord From, Coord To, IReadOnlyList<Coord> Path, bool Killed);

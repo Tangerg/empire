@@ -10,7 +10,7 @@ public sealed record SessionTextRules(BattleEngine Engine, GameText Messages, IR
 
 /// <summary>The presentation collaborators consumed by a session; none owns gameplay state.</summary>
 public sealed record SessionPresentationText(GameText Messages, ActionRefusalText Refusals,
-    BattleText Battle, ContentText Content, CombatModifierText Modifiers, BattleEventText Events,
+    BattleText Battle, ContentText Content, CombatModifierText Modifiers, WeaponHitEffectText HitEffects, BattleEventText Events,
     IReadOnlyDictionary<string, string> IdentityNameKeys)
 {
     public BattleUnitNames UnitNames(string levelId, JsonArray rosterBindings) =>
@@ -30,7 +30,9 @@ public sealed record SessionPresentationText(GameText Messages, ActionRefusalTex
                 engine.Resources.Adapters, engine.Grids), contentTextJson));
         var modifiers = CombatModifierText.CreateDefault(new(text, content));
         modifiers.ValidateCoverage(engine.Combat.ModifierKinds);
-        return new(text, ActionRefusalText.CreateDefault(new(text, content)).Seal(), battle, content, modifiers.Seal(),
+        var hitEffects = WeaponHitEffectText.CreateDefault(new(text, content));
+        hitEffects.ValidateCoverage(engine.Combat.HitEffects.Keys());
+        return new(text, ActionRefusalText.CreateDefault(new(text, content)).Seal(), battle, content, modifiers.Seal(), hitEffects.Seal(),
             BattleEventText.CreateDefault(new(text, battle)), rules.IdentityNameKeys.ToFrozenDictionary(StringComparer.Ordinal));
     }
 }

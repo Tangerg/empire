@@ -170,7 +170,10 @@ public sealed partial class BattleCombat : ILifecycleEffects
         }
         var support = primary is not null && primaryTarget is not null && !primary.DefenderDies
             ? PlanSupport(state, attacker, origin, primaryTarget, primary.DefenderHpAfter) : null;
-        return new(StateJson.Integer(attacker, "id"), id, origin, target, area, cells, primary, structure, hits.AsReadOnly(), structures.AsReadOnly(), support);
+        var counterEffects = primary?.Counter is { } counter
+            ? StateJson.Objects(content.Get("weapons", counter.Weapon)["hitEffects"], "hitEffects").ToArray()
+            : Array.Empty<JsonObject>();
+        return new(StateJson.Integer(attacker, "id"), id, origin, target, area, cells, primary, structure, hits.AsReadOnly(), structures.AsReadOnly(), support, counterEffects);
     }
     private PlannedSupportAttack? PlanSupport(JsonObject state, JsonObject attacker, Coord at, JsonObject defender, double hp)
     {

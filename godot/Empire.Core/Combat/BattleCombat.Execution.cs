@@ -93,8 +93,7 @@ public sealed partial class BattleCombat
         if (plan.PrimaryUnit?.Counter is { } counter && TacticalQueries.UnitById(state, plan.PrimaryUnit.Defender) is { } defender)
         {
             Forecasts.ConsumeWeapon(state, defender, counter.Weapon, emit);
-            var outcome = Land(state, defender, plan.Attacker, counter.Damage,
-                StateJson.Objects(content.Get("weapons", counter.Weapon)["hitEffects"], "hitEffects").ToArray(),
+            var outcome = Land(state, defender, plan.Attacker, counter.Damage, plan.CounterEffects,
                 blow => StrikeEvent("counter", StateJson.Integer(defender, "id"), plan.Attacker, counter.Weapon, blow), emit);
             ChangeMomentum(defender, outcome.Killed ? 10 : 5, emit);
         }
@@ -253,7 +252,7 @@ public sealed partial class BattleCombat
             ["path"] = TacticalQueries.PathJson(path),
             ["collided"] = collided
         });
-        var collision = Math.Max(0, StateJson.Round(collisionDamage));
+        var collision = CollisionDamageAmount(collisionDamage);
         var impact = collided && collision > 0 ? Damage.Resolve(state, unitId, collision, false,
             blow => new JsonObject
             {
@@ -265,4 +264,7 @@ public sealed partial class BattleCombat
             }, emit) : null;
         return new(from, to, path.AsReadOnly(), impact?.Killed ?? false);
     }
+
+    /// <summary>Configured collision damage before the health owner caps loss to remaining HP.</summary>
+    public static double CollisionDamageAmount(double configured) => Math.Max(0, StateJson.Round(configured));
 }

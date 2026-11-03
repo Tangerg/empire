@@ -334,7 +334,8 @@ public partial class TacticalHud : Control
                 var effects = new GridContainer { Name = "ForecastEffects", Columns = 2, SizeFlagsHorizontal = SizeFlags.ExpandFill };
                 effects.AddThemeConstantOverride("h_separation", 12);
                 effects.AddThemeConstantOverride("v_separation", 3);
-                foreach (var row in section.Rows.Where(row => row.Key is not ("attacker" or "recipient" or "strike" or "counter")))
+                foreach (var row in section.Rows.Where(row => row.Key is not ("attacker" or "recipient" or "strike" or "counter" or "forecast-scope")
+                    && !row.Key.StartsWith("hit-effect-", StringComparison.Ordinal)))
                 {
                     var effect = Label(row.Label, 12, row.Key is "recipient-dies" or "attacker-dies" ? new Color("#e5a08b") : TacticalHudStyle.Gold);
                     effect.Name = row.Key;
@@ -345,6 +346,15 @@ public partial class TacticalHud : Control
                     group.AddChild(effects);
                 else
                     effects.Free();
+                foreach (var row in section.Rows.Where(row => row.Key == "forecast-scope" || row.Key.StartsWith("hit-effect-", StringComparison.Ordinal)))
+                {
+                    var notice = Label(row.Label, row.Key == "forecast-scope" ? 11 : 12, TacticalHudStyle.Gold);
+                    notice.Name = row.Key;
+                    notice.TooltipText = row.Hint.Length > 0 ? row.Hint : row.Label;
+                    notice.MaxLinesVisible = 1;
+                    notice.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
+                    group.AddChild(notice);
+                }
             }
             GridContainer? commandGrid = null;
             if (section == mainActions && section.Key != "target")

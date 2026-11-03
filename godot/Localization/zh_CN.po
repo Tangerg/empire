@@ -3673,3 +3673,67 @@ msgstr "↑↓ / PgUp / PgDn 翻阅 · Home / End 首尾 · Tab 切换 · Esc �
 
 msgid "error.battle.window_too_small"
 msgstr "当前屏幕可用区域不足以完整显示战斗窗口（至少 960×640，另需系统边框空间）。请调低系统缩放或移到更大的屏幕后重试；当前进度未改变。"
+
+# {0}: localized status name; {1}: authored base duration in turns.
+msgid "combat.hit_effect.add_status.compact"
+msgstr "施加{0} · {1} 回合"
+
+# {0}: localized status name; {1}: authored base duration, not final remaining duration.
+msgid "combat.hit_effect.add_status.detail"
+msgstr "命中且受击单位仍在场时，施加{0}，基础持续 {1} 回合；已有状态按其叠加规则结算。"
+
+# {0}: localized status name.
+msgid "combat.hit_effect.remove_status.compact"
+msgstr "移除{0}"
+
+# {0}: localized status name; absence is not a promised status removal.
+msgid "combat.hit_effect.remove_status.detail"
+msgstr "命中且受击单位仍在场时，移除{0}；未持有该状态时不产生移除效果。"
+
+msgid "combat.hit_effect.forced_move.push"
+msgstr "击退"
+
+msgid "combat.hit_effect.forced_move.pull"
+msgstr "拉近"
+
+# {0}: localized push/pull; {1}: configured distance, not a predicted destination.
+msgid "combat.hit_effect.forced_move.compact"
+msgstr "尝试{0} {1} 格"
+
+# {0}: localized push/pull; {1}: configured distance.
+msgid "combat.hit_effect.forced_move.detail"
+msgstr "命中且受击单位仍在场时，尝试{0} {1} 格。"
+
+# {0}: localized push/pull; {1}: configured distance; {2}: canonical rounded collision request.
+msgid "combat.hit_effect.forced_move.collision_compact"
+msgstr "尝试{0} {1} 格 · 受阻伤害 {2}"
+
+# {0}: localized push/pull; {1}: configured distance; {2}: canonical collision request, capped by remaining HP on execution.
+msgid "combat.hit_effect.forced_move.collision_detail"
+msgstr "命中且受击单位仍在场时，尝试{0} {1} 格；若位移受阻，额外受到至多 {2} 点碰撞伤害。"
+
+msgid "ui.hud.forecast_scope"
+msgstr "HP 仅计主击/反击；移动、援护与附效另计"
+
+# {0}: one compact effect description for the primary attack and visible collateral.
+msgid "ui.hud.hit_effect.attack"
+msgstr "主击附效：{0}"
+
+# {0}: one compact effect description for the planned counter.
+msgid "ui.hud.hit_effect.counter"
+msgstr "反击附效：{0}"
+
+# {0}: one compact effect description for the planned support attack.
+msgid "ui.hud.hit_effect.support"
+msgstr "援护附效：{0}"
+
+# {0}: selected compact description; {1}: remaining visible effect entries retained in details.
+msgid "ui.hud.hit_effect.more"
+msgstr "另 {1} 项，详解 · {0}"
+
+# {0}: visible source unit name; {1}: visible recipient unit name; {2}: complete conditional effect description.
+msgid "ui.hud.hit_effect.detail"
+msgstr "{0} → {1}：{2}"
+
+msgid "ui.hud.hit_effect.condition"
+msgstr "命中且受击单位仍在场时尝试生效；位移受阻才产生碰撞伤害。"
