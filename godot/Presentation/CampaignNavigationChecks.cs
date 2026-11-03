@@ -58,6 +58,7 @@ public partial class CampaignNavigationChecks : Node
                 ("story/choice return, rebind and unmount", () => { CheckNarrativeNavigation(); return Task.CompletedTask; }),
                 ("overwrite cancellation, stale dialog and confirmation", () => { CheckOverwrite(); return Task.CompletedTask; }),
                 ("overwrite dialog unmount", () => { CheckUnmountedOverwrite(); return Task.CompletedTask; }),
+                ("native overwrite and restart confirmation input", CheckNativeNavigationConfirmations),
                 ("invalid save notice and explicit replacement", () => { CheckInvalidSave(); return Task.CompletedTask; }),
                 ("ending active/completed/failed UI fixtures", () => { CheckEndingFixtures(); return Task.CompletedTask; }),
                 ("story, choice, ending and staging write failures", () => { CheckWriteFailures(); return Task.CompletedTask; }),
@@ -654,6 +655,145 @@ public partial class CampaignNavigationChecks : Node
         Press(Button(freshMenu, "ContinueCampaign"));
         Require(ReferenceEquals(View<Control>(game), story) && State(game) == state, "Handled overwrite dialog or old Continue navigated again.");
         Retire(game);
+    }
+
+    private async Task CheckNativeNavigationConfirmations()
+    {
+        var caseFailures = new List<string>();
+        foreach (var route in new[] { "overwrite", "restart" })
+            foreach (var response in new[] { "cancel", "escape", "confirm" })
+            {
+                WriteFixture(battleNodeState);
+                var saved = File.ReadAllText(automaticPath);
+                var stamp = Stamp(automaticPath);
+                var game = MountGame();
+                try
+                {
+                    game.ProcessMode = ProcessModeEnum.Inherit;
+                    GrayFlagSession? played = null;
+                    string? playedState = null;
+                    string? playedEvents = null;
+                    string? openingState = null;
+                    Control original;
+                    ConfirmationDialog prompt;
+                    if (route == "restart")
+                    {
+                        Press(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
+                        Press(Button(View<CampaignStagingScreen>(game), "StartBattle"));
+                        var battle = View<BattleScreen>(game);
+                        battle.Board.AnimationsEnabled = false;
+                        played = Campaign(game).Battle!;
+                        openingState = Digest(played.Snapshot());
+                        TacticalSceneInputChecks.Move(battle, played);
+                        playedState = Digest(played.Snapshot());
+                        playedEvents = EcmaJson.Stringify(new JsonArray(played.Events.Select(value => (JsonNode)value.DeepClone()).ToArray()));
+                        Require(playedState != openingState && played.Events.Count > 0,
+                            "Native restart confirmation must protect an actually played battle.");
+                        saved = File.ReadAllText(automaticPath);
+                        stamp = Stamp(automaticPath);
+                        Press(Button(battle, "SystemMenuButton"));
+                        await Layout();
+                        Press(Buttons(battle).Single(button => button.Text == "重新开始"));
+                        await Layout();
+                        original = battle;
+                        prompt = Descendants(battle).OfType<ConfirmationDialog>().Single();
+                    }
+                    else
+                    {
+                        original = View<CampaignMenuScreen>(game);
+                        Press(Button(original, "NewCampaign"));
+                        await Layout();
+                        prompt = Descendants(original).OfType<ConfirmationDialog>().Single();
+                    }
+                    var campaign = Campaign(game);
+                    var campaignState = State(game);
+                    Require(prompt.Visible && prompt.GetCancelButton().HasFocus(),
+                        $"{route}: native confirmation must open with Cancel focused.");
+                    var confirmations = 0;
+                    var cancellations = 0;
+                    prompt.Confirmed += () => confirmations++;
+                    prompt.Canceled += () => cancellations++;
+                    if (response == "confirm")
+                        prompt.GetOkButton().GrabFocus();
+                    // Route real key press/release through the root viewport and its modal Window,
+                    // rather than emitting dialog signals or calling application callbacks.
+                    var key = response == "escape" ? Key.Escape : Key.Enter;
+                    using (var down = new InputEventKey { Pressed = true, Keycode = key })
+                        GetViewport().PushInput(down);
+                    using (var up = new InputEventKey { Pressed = false, Keycode = key })
+                        GetViewport().PushInput(up);
+                    await Layout();
+                    Require(confirmations == (response == "confirm" ? 1 : 0)
+                        && cancellations == (response == "confirm" ? 0 : 1),
+                        $"{route}/{response}: native input must deliver exactly one intended dialog response.");
+                    if (response != "confirm")
+                    {
+                        Require(ReferenceEquals(Campaign(game), campaign) && State(game) == campaignState,
+                            $"{route}/{response}: cancellation changed canonical campaign state.");
+                        Require(File.ReadAllText(automaticPath) == saved && Stamp(automaticPath) == stamp,
+                            $"{route}/{response}: cancellation changed the autosave.");
+                        Require(route == "overwrite" ? View<Control>(game) is CampaignMenuScreen : ReferenceEquals(View<Control>(game), original),
+                            $"{route}/{response}: cancellation navigated away from its original screen.");
+                        if (played is not null)
+                            Require(ReferenceEquals(campaign.Battle, played) && Digest(played.Snapshot()) == playedState
+                                && EcmaJson.Stringify(new JsonArray(played.Events.Select(value => (JsonNode)value.DeepClone()).ToArray())) == playedEvents,
+                                $"{response}: restart cancellation discarded actual battle progress or events.");
+                    }
+                    else if (route == "overwrite")
+                    {
+                        Require(View<Control>(game) is StoryScreen story && story.BeatIndex == 0
+                            && !ReferenceEquals(Campaign(game), campaign) && !File.Exists(automaticPath)
+                            && Campaign(game).Node()["id"]!.GetValue<string>() == definition["start"]!.GetValue<string>(),
+                            "Native overwrite confirmation must replace only the campaign slot and open the first story beat once.");
+                    }
+                    else
+                    {
+                        Require(View<Control>(game) is BattleScreen && !ReferenceEquals(View<Control>(game), original)
+                            && ReferenceEquals(Campaign(game), campaign) && State(game) == campaignState
+                            && !ReferenceEquals(campaign.Battle, played) && Digest(campaign.Battle!.Snapshot()) == openingState
+                            && campaign.Battle.Events.Count == 0 && File.ReadAllText(automaticPath) == saved && Stamp(automaticPath) == stamp,
+                            "Native restart confirmation must replace the played session once with its exact opening and preserve both save slots.");
+                    }
+                    var settledView = View<Control>(game);
+                    var settledCampaign = Campaign(game);
+                    var settledBattle = settledCampaign.Battle;
+                    var settledCampaignState = Digest(settledCampaign.Snapshot());
+                    var settledAtCamp = settledCampaign.AtCamp;
+                    var settledBattleState = settledBattle is null ? null : Digest(settledBattle.Snapshot());
+                    var settledEvents = settledBattle is null ? null
+                        : EcmaJson.Stringify(new JsonArray(settledBattle.Events.Select(value => (JsonNode)value.DeepClone()).ToArray()));
+                    await Layout();
+                    Require(ReferenceEquals(View<Control>(game), settledView),
+                        $"{route}/{response}: native input replaced the view again after settling.");
+                    Require(ReferenceEquals(Campaign(game), settledCampaign)
+                        && Digest(settledCampaign.Snapshot()) == settledCampaignState && settledCampaign.AtCamp == settledAtCamp,
+                        $"{route}/{response}: native input changed the canonical campaign or camp location after settling.");
+                    Require(ReferenceEquals(settledCampaign.Battle, settledBattle),
+                        $"{route}/{response}: native input replaced the battle session again after settling.");
+                    if (settledBattle is not null)
+                    {
+                        Require(Digest(settledBattle.Snapshot()) == settledBattleState,
+                            $"{route}/{response}: battle state changed after settling.");
+                        Require(EcmaJson.Stringify(new JsonArray(settledBattle.Events.Select(value => (JsonNode)value.DeepClone()).ToArray())) == settledEvents,
+                            $"{route}/{response}: battle events changed after settling.");
+                    }
+                    Require(!Descendants(game).OfType<ConfirmationDialog>().Any(dialog => dialog.Visible),
+                        $"{route}/{response}: confirmation remained visible after its response.");
+                    CheckManualUnchanged();
+                    GD.Print($"Native navigation confirmation passed: {route}/{response}");
+                }
+                catch (Exception error)
+                {
+                    caseFailures.Add($"{route}/{response}: {error}");
+                }
+                finally
+                {
+                    Retire(game);
+                    await Layout();
+                }
+            }
+        if (caseFailures.Count > 0)
+            throw new InvalidOperationException(string.Join("\n", caseFailures));
     }
 
     private void CheckUnmountedOverwrite()

@@ -71,12 +71,12 @@ public sealed class BattlefieldGestures : IDisposable
         return false;
     }
 
-    public bool PointerUp(long id, int button, CameraPoint at)
+    public bool PointerUp(long id, int button, CameraPoint at, bool allowClick = true)
     {
         if (disposed || gesture is null || gesture.Id != id || gesture.Button != button)
             return false;
         var prevented = MoveGesture(id, at);
-        var click = gesture is { Dragging: false, Button: 0 };
+        var click = allowClick && gesture is { Dragging: false, Button: 0 };
         gesture = null;
         var point = project(at);
         if (point is null)

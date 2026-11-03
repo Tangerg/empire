@@ -113,6 +113,23 @@ public partial class CameraChecks : Node
         gestures.Cancel();
         gestures.PointerUp(1, 0, new(400, 300));
         Require(clicks == 1, "Focus-loss/cancel prevents stranded click");
+        gestures.PointerDown(1, 0, new(400, 300));
+        var beforeMismatch = camera.Position;
+        gestures.PointerUp(2, 0, new(380, 300), allowClick: false);
+        gestures.PointerUp(1, 1, new(380, 300), allowClick: false);
+        Require(gestures.ActivePointerId == 1 && !gestures.IsDragging && camera.Position == beforeMismatch,
+            "A suppressed release with the wrong pointer or button cannot move or release the active gesture.");
+        gestures.PointerUp(1, 0, new(404, 300), allowClick: false);
+        Require(clicks == 1 && gestures.ActivePointerId is null,
+            "A matching HUD-owned short release suppresses its click and releases capture.");
+        gestures.PointerDown(1, 0, new(400, 300));
+        gestures.PointerMove(1, new(390, 300));
+        var beforeFinalDelta = camera.Position;
+        gestures.PointerUp(1, 0, new(380, 300), allowClick: false);
+        Require(clicks == 1 && gestures.ActivePointerId is null,
+            "A HUD-owned drag release ends capture without emitting a click.");
+        Near(ToVector(camera.Position), ToVector(beforeFinalDelta) + new Vector2(8, 0),
+            "Suppressing a click preserves the final drag delta at the current camera zoom.");
         gestures.Wheel(-123, true, false);
         gestures.Wheel(-1, false, true);
         camera.ApplyPendingZoom();

@@ -169,6 +169,7 @@ public partial class TacticalHudChecks : Node
         var map = (Control)screen.FindChild("MapArea", true, false);
         var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        await CheckShortHudBoundary(screen, session, map, hud);
         var boardToMap = map.GetGlobalTransformWithCanvas().AffineInverse() * screen.Board.GetGlobalTransformWithCanvas();
         var inside = session.GetTacticalQueries(0).InteractiveCells
             .Select(cell => boardToMap * screen.Board.Projection.CellCenter(new(cell.X, cell.Y)))
@@ -221,6 +222,108 @@ public partial class TacticalHudChecks : Node
         Require(!HasTile(), "Middle-button boundary release clears hover through the same captured gesture policy.");
         RemoveChild(screen);
         screen.Free();
+    }
+
+    private async System.Threading.Tasks.Task CheckShortHudBoundary(BattleScreen screen, GrayFlagSession session, Control map, TacticalHud hud)
+    {
+        var windowSize = GetWindow().Size;
+        GetWindow().Size = new Vector2I(1180, 812);
+        var viewport = GetViewport();
+        viewport.NotifyMouseEntered();
+        void Motion(Vector2 at) => viewport.PushInput(new InputEventMouseMotion { Position = at, GlobalPosition = at }, true);
+        void Button(Vector2 at, bool down) => viewport.PushInput(new InputEventMouseButton
+        {
+            ButtonIndex = MouseButton.Left,
+            Pressed = down,
+            Position = at,
+            GlobalPosition = at
+        }, true);
+        async System.Threading.Tasks.Task PinSite()
+        {
+            screen.SelectHit(TacticalHit.Object(new(38, 23)));
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        }
+        (Vector2 Map, Vector2 Hud) Crossing()
+        {
+            var bounds = map.GetGlobalRect();
+            var boardTransform = screen.Board.GetGlobalTransformWithCanvas().AffineInverse();
+            foreach (var panel in hud.GetChildren().OfType<Control>().Where(value => value.IsVisibleInTree()
+                && value.MouseFilter == Control.MouseFilterEnum.Stop))
+            {
+                var rect = panel.GetGlobalRect();
+                foreach (var vertical in new[] { false, true })
+                    foreach (var far in new[] { false, true })
+                    {
+                        var length = vertical ? rect.Size.Y : rect.Size.X;
+                        for (var offset = 8f; offset < length - 8; offset += 8)
+                        {
+                            var edge = vertical
+                                ? new Vector2(far ? rect.End.X : rect.Position.X, rect.Position.Y + offset)
+                                : new Vector2(rect.Position.X + offset, far ? rect.End.Y : rect.Position.Y);
+                            var inward = (vertical ? Vector2.Right : Vector2.Down) * (far ? -1 : 1);
+                            var from = edge - inward * 2;
+                            var to = edge + inward * 2;
+                            if (!bounds.HasPoint(from) || !bounds.HasPoint(to)
+                                || screen.Board.Pick(boardTransform * from) is not { Kind: TacticalHitKind.Ground } start
+                                || screen.Board.Pick(boardTransform * to) is not { Kind: TacticalHitKind.Ground } end
+                                || !session.GetTacticalQueries(0).InteractiveCells.Contains(start.Cell)
+                                || !session.GetTacticalQueries(0).InteractiveCells.Contains(end.Cell))
+                                continue;
+                            Motion(to);
+                            var hovered = viewport.GuiGetHoveredControl();
+                            if (hovered is null || !hud.IsAncestorOf(hovered))
+                                continue;
+                            Motion(from);
+                            if (viewport.GuiGetHoveredControl() == map)
+                                return (from, to);
+                        }
+                    }
+            }
+            throw new InvalidOperationException("No real painted HUD edge overlaps interactive Redstone ground for the short-crossing fixture.");
+        }
+
+        var before = EcmaJson.Stringify(session.Snapshot());
+        await PinSite();
+        var crossing = Crossing();
+        Button(crossing.Map, true);
+        Button(crossing.Map, false);
+        Require(screen.Selection?.Kind == TacticalSelectionKind.Idle,
+            "A normal native map click still closes the pinned site through actual battlefield input.");
+
+        await PinSite();
+        crossing = Crossing();
+        var world = map.GetNode<Node2D>("World");
+        var cameraBefore = world.Position;
+        Button(crossing.Map, true);
+        Motion(crossing.Hud + (crossing.Hud - crossing.Map).Normalized() * 20);
+        Motion(crossing.Hud);
+        Button(crossing.Hud, false);
+        Require(screen.Selection?.Kind == TacticalSelectionKind.Site && world.Position != cameraBefore,
+            "A real drag can pan across an overlapping HUD surface and release without activating the hidden battlefield.");
+
+        await PinSite();
+        crossing = Crossing();
+        var selected = screen.Selection;
+        Button(crossing.Map, true);
+        Motion(crossing.Hud);
+        Require(viewport.GuiGetHoveredControl() is { } capturedOwner && hud.IsAncestorOf(capturedOwner),
+            "Native hover ownership reaches the HUD even while the board captures pointer motion.");
+        Button(crossing.Hud, false);
+        Require(screen.Selection == selected && session.Revision == 0 && session.Events.Count == 0
+            && EcmaJson.Stringify(session.Snapshot()) == before,
+            $"A four-pixel native map-to-painted-HUD release must preserve the pinned site, not click the ground behind the HUD; got {screen.Selection?.Kind}.");
+        Motion(crossing.Map);
+        Button(crossing.Map, true);
+        Button(crossing.Hud, false);
+        Require(screen.Selection == selected && session.Revision == 0,
+            "A release delivered without an intervening motion also respects current native HUD ownership.");
+        Motion(crossing.Map);
+        Button(crossing.Map, true);
+        Button(crossing.Map, false);
+        Require(screen.Selection?.Kind == TacticalSelectionKind.Idle,
+            "A canceled HUD-boundary click releases capture so the next ordinary map click still works.");
+        GetWindow().Size = windowSize;
     }
 
     private void CheckObjectiveChecklist()

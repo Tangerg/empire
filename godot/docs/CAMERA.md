@@ -61,6 +61,16 @@ not whether a callback fired. The screen owns platform input routing and capture
 including continuing an active drag across panel boundaries and canceling on focus
 loss, rebind, presentation lock, and unmount. Disposal is terminal.
 
+For captured mouse releases, Godot's native hovered Control owns whether the
+release can become a battlefield click. A release over another Control ends
+capture and still applies the final drag delta, but passes `allowClick: false`
+to the gesture. The screen clears its cached map pointer at that boundary so
+later camera movement cannot revive hover behind the HUD. No parallel HUD hit
+rectangles are maintained. Godot 4.6 updates native hover before `_Input` for
+[both mouse motion and button events](https://github.com/godotengine/godot/blob/4.6/scene/main/viewport.cpp#L3237-L3259),
+including captured input. Touch retains its existing matching-pointer policy;
+mouse hover is not used to infer touch ownership.
+
 No new inertia, edge panning, mouse-anchor zoom, fitted view, auto-follow selection,
 or direct multitouch semantics are introduced. Source browser smooth scrolling has
 no authored duration; this helper supplies exact clamped target geometry only.
@@ -83,6 +93,17 @@ project outputs. It checks the actual Godot world scale,
 projection/inverse, inset edges, resize/zoom behavior, pointer-to-field mapping,
 and AI focus without advancing canonical state. These are automated semantic and
 native transform checks, not desktop usability or screenshot evidence.
+
+`TacticalHudChecks` exercises native viewport mouse input on the formal Redstone
+battle: normal map clicks, long drags across painted HUD, a four-pixel map-to-HUD
+release below the drag threshold, release without an intermediate motion, and
+the next normal click after capture ends. It verifies native hover while capture
+is held, pinned site selection and unchanged canonical battle state/events.
+`CameraChecks` separately protects click suppression, matching pointer/button
+ownership and the final drag delta. `CameraIntegrationChecks` retains the
+outside-map, focus/cancel, rebind and touch controls.
+All three scenes run in `tools/godot/verify-native.sh`, including native process
+exit and teardown checks.
 
 Add `--verify-guard` to compile a temporary threshold mutant (`> 6` instead of
 `>= 6`) and prove the live source vectors reject it. The checkout is not mutated.

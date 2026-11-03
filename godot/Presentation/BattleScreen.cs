@@ -196,7 +196,15 @@ public partial class BattleScreen : Control
                 else if (mouse.Canceled)
                     _gestures.Cancel(0);
                 else if (!mouse.Pressed && SourceButton(mouse.ButtonIndex) is { } button)
-                    _gestures.PointerUp(0, button, TrackPointer(ViewportToMap(mouse.Position)));
+                {
+                    // Godot updates native hover before _Input, including captured
+                    // releases. Capture ends the gesture but cannot click through UI.
+                    var hovered = GetViewport().GuiGetHoveredControl();
+                    var allowClick = hovered is null || hovered == _mapArea;
+                    _gestures.PointerUp(0, button, TrackPointer(ViewportToMap(mouse.Position)), allowClick);
+                    if (!allowClick)
+                        _pointerMapPosition = null;
+                }
                 GetViewport().SetInputAsHandled();
                 break;
             case InputEventScreenDrag drag when _gestures.ActivePointerId == drag.Index + 1:
