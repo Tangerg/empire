@@ -76,8 +76,38 @@ An independent copied-DLL verifier replayed all 3,379 historical commands and
 receipt, before/after digest, event, final state, save and exported replay is
 unchanged. Native save/load and replay verification also pass. This took 97.319
 seconds; the baseline files remain byte-identical. These are independent battles,
-not a carried-state campaign completion. Full aggregate results are recorded
-after the final verification run.
+not a carried-state campaign completion.
+
+### Final gate verification after environment restarts
+
+Two full `verify-native.sh` attempts were interrupted by host restarts. Neither
+is counted as a completed aggregate run. The second attempt completed formatting,
+metadata/static-map validation, builds, all 13 core groups, sixteen fresh AI
+replays, presentation contract suites, resource import and the first nine native
+scenes. Advancing to the next invocation under the original strict shell script
+confirmed those earlier process exits. WhiteRiver had printed a pass but its
+teardown was unconfirmed, so it was rerun rather than accepted from that line.
+
+The remaining fourteen native scenes then ran serially using the original
+`run_scene` function and commands, with separate atomic exit records and the
+same strict error/leak checks. All fourteen exited zero, including the complete
+HUD, battle result flow, campaign navigation, campaign UI and lighting/scenery
+lifetime checks. Repository commit, clean tree, script checksum and both compiled
+assembly checksums were checked before every stage. No timeout or assertion was
+relaxed. All original required gate stages are therefore verified across the
+preserved prefix and continuation; a single uninterrupted aggregate exit zero
+has not been observed for this change.
+
+The sixteen fresh AI runs total 3,425 actions. Every level's action count and
+final state digest match the preceding published version. This comparison is
+limited to those counts and final digests; the separate fixed-command verifier
+above compares complete ordered receipts and events.
+
+The final assembly built at commit `d8f0502e1` was independently copied and checked
+again against the original 3,379 commands and 9,648 events. All sixteen levels,
+every receipt/hash/event, final state/save/exported replay and save/load checks
+remain identical, in 98.063 seconds with zero AI calls. Its SHA-256 is
+`c8dd593cf3cfa618e73280ede862b7ad13cd6bbd3002861c739516f83c91b9f1`.
 
 Native layout follows Godot's [container ownership](https://docs.godotengine.org/en/stable/tutorials/ui/gui_containers.html)
 and [explicit scene dependencies](https://docs.godotengine.org/en/stable/tutorials/best_practices/scene_organization.html):
