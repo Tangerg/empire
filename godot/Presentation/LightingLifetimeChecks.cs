@@ -21,6 +21,7 @@ public partial class LightingLifetimeChecks : Node
     {
         try
         {
+            await UnboundScreenOwnership();
             if (OS.GetCmdlineUserArgs().Contains("--construction-only", StringComparer.Ordinal))
             {
                 FailedTerrainConstruction();
@@ -40,6 +41,49 @@ public partial class LightingLifetimeChecks : Node
             GetTree().Quit();
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
+    }
+
+    private async Task UnboundScreenOwnership()
+    {
+        var probe = new Node();
+        try
+        {
+            Require(NativeNodeChecks.OrphanIds().Contains(probe.GetInstanceId()),
+                "Unbound ownership checks require active native debug orphan tracking.");
+        }
+        finally { probe.Free(); }
+        foreach (var mounted in new[] { false, true })
+            foreach (var queued in new[] { false, true })
+            {
+                var before = NativeNodeChecks.OrphanIds();
+                var screen = new BattleScreen();
+                var board = screen.Board;
+                board.AnimationsEnabled = false;
+                try
+                {
+                    if (mounted)
+                        AddChild(screen);
+                    if (queued)
+                    {
+                        screen.QueueFree();
+                        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                    }
+                    else
+                        screen.Free();
+                    var remaining = NativeNodeChecks.OrphanIds().Where(id => !before.Contains(id)).ToArray();
+                    Require(!GodotObject.IsInstanceValid(screen) && !GodotObject.IsInstanceValid(board) && remaining.Length == 0,
+                        $"Unbound BattleScreen teardown must release its own nodes (mounted={mounted}, queued={queued}); {remaining.Length} orphan nodes remain.");
+                }
+                finally
+                {
+                    if (GodotObject.IsInstanceValid(screen))
+                        screen.Free();
+                    foreach (var id in NativeNodeChecks.OrphanIds().Where(id => !before.Contains(id)).ToArray())
+                        if (GodotObject.InstanceFromId(id) is Node node && node.GetParent() is null)
+                            node.Free();
+                }
+            }
     }
 
     private void StandaloneOwners()
@@ -218,7 +262,18 @@ public partial class LightingLifetimeChecks : Node
             screen.ConfigureDynamicState();
         }
         var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+        var originalBoard = screen.Board;
         Bind(session);
+        Require(ReferenceEquals(screen.Board, originalBoard) && !screen.Board.AdvanceAnimationsAutomatically,
+            "Binding must preserve the preconfigured board instance and its playback policy.");
+        if (cycle == 1)
+        {
+            RemoveChild(screen);
+            AddChild(screen);
+            Bind(session);
+            Require(ReferenceEquals(screen.Board, originalBoard) && screen.DisplayedRevision == session.Revision,
+                "Remount and rebind must reuse the owned board and restore the actual session projection.");
+        }
         // Exercise the separate unshared field-light owners on one actual screen.
         if (cycle == 0)
             screen.ConfigureGround(TerrainView.Factory(WorldMaterialsManifest.Load()));

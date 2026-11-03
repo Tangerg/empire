@@ -1,5 +1,7 @@
 #nullable enable
 using System;
+using System.Collections.Generic;
+using System.Text.Json;
 using Empire.Presentation.Tactical;
 using System.Linq;
 using System.Text.Json.Nodes;
@@ -8,7 +10,7 @@ using Godot;
 
 namespace Empire.Presentation;
 
-/// <summary>Real native resources plus canonical campaign states; no fabricated authored scenery.</summary>
+/// <summary>Native resources and canonical campaign states, plus explicitly isolated failure fixtures.</summary>
 public partial class DynamicStateChecks : Node
 {
     private int assertions;
@@ -45,6 +47,11 @@ public partial class DynamicStateChecks : Node
         var assets = AssetCatalog.Load();
         var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         var engine = new BattleEngine(packs);
+        if (OS.GetCmdlineUserArgs().Contains("--failure-ownership-only", StringComparer.Ordinal))
+        {
+            CheckFailureOwnership(assets, engine, PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json"));
+            return;
+        }
         CheckCatalogBinding(assets, packs);
         CheckPaintedOccluders(packs);
         PaintedPickingChecks.CheckAdmission(Require);
@@ -126,6 +133,149 @@ public partial class DynamicStateChecks : Node
         var gauge = DynamicStateView.CreateGauge(0, 0);
         Require(gauge.GetMeta("ratio").AsDouble() == 1, "Zero maximum must match the source's whole gauge");
         gauge.Free();
+        CheckFailureOwnership(assets, engine, levels);
+    }
+
+    private void CheckFailureOwnership(AssetCatalog assets, BattleEngine engine, JsonArray levels)
+    {
+        // These are failure-injection fixtures, not campaign completion or real death-flow coverage.
+        // The orphan API is debug-only: prove it observes a detached node before trusting empty deltas.
+        var probe = new Node();
+        var probeId = probe.GetInstanceId();
+        try
+        {
+            Require(NativeNodeChecks.OrphanIds().Contains(probeId), "Failure ownership checks require a working debug orphan-node API.");
+        }
+        finally { probe.Free(); }
+        Require(!NativeNodeChecks.OrphanIds().Contains(probeId), "Free must synchronously remove the orphan probe.");
+
+        var level = levels.OfType<JsonObject>().Single(item => item["id"]!.GetValue<string>() == "c01-03");
+        var state = engine.CreateState(level);
+        var map = state["map"]!.AsObject();
+        var width = map["width"]!.GetValue<int>();
+        var cells = Enumerable.Range(0, map["tiles"]!.AsArray().Count)
+            .Select(index => new Empire.Core.Geometry.Coord(index % width, index / width)).ToHashSet();
+        var scene = AuthoredScene.Load("res://data/scenes/c01-03.json");
+        var rendering = BoardSceneRendering.Load(scene, level, map);
+        var projection = new BoardProjection(engine.Grids.Get("square4"), rendering.Plane, map, cells);
+        var structureType = state["structures"]![0]!["type"]!.GetValue<string>();
+        var structureArt = assets.ResolveStructure(structureType, StructureVisualState.Captured)
+            ?? throw new InvalidOperationException("Failure fixture requires the campaign's authored structure.");
+        var topics = new HashSet<string>(StringComparer.Ordinal)
+        {
+            structureArt.Asset.TopicId, "C01-BPROP-AFTERMATH-2", "C01-BPROP-AFTERMATH-3", "C01-BPROP-EVIDENCE-1"
+        };
+        const string missingPath = "res://assets/failure-fixture-deliberately-missing.png";
+        Require(!ResourceLoader.Exists(missingPath), "Failure fixture texture must not exist.");
+        var manifest = PresentationJson.Load<JsonObject>("res://data/selected-assets.json");
+        var originalManifest = manifest.ToJsonString();
+        var missingManifest = (JsonObject)manifest.DeepClone();
+        foreach (var record in missingManifest["assets"]!.AsArray().OfType<JsonObject>())
+            if (topics.Contains(record["topicId"]!.GetValue<string>()))
+                record["resourcePath"] = missingPath;
+        var missingAssets = new AssetCatalog(missingManifest.Deserialize<AssetManifest>(
+            new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase })!,
+            PresentationJson.Load<ArtBindings>("res://data/art-bindings.json"));
+        Require(manifest.ToJsonString() == originalManifest, "Failure fixtures must leave the source manifest unchanged.");
+        var missingView = new DynamicStateView(new(missingAssets, engine.Catalog, null));
+        var realView = new DynamicStateView(new(assets, engine.Catalog, null));
+        var failures = new List<string>();
+        var markerState = (JsonObject)state.DeepClone();
+        markerState["structures"]!.AsArray().Clear();
+        markerState["markers"] = new JsonArray(new[] { "fallen_corpse", "transport_wreck", "routed" }
+            .Select((kind, index) => (JsonNode)new JsonObject
+            {
+                ["id"] = index + 1,
+                ["kind"] = kind,
+                ["owner"] = 1,
+                ["at"] = new JsonObject { ["x"] = 4, ["y"] = 4 }
+            }).ToArray());
+        var markerBefore = markerState.ToJsonString();
+        var structureBefore = state.ToJsonString();
+        for (var cycle = 0; cycle < 3; cycle++)
+        {
+            CheckFailureCase($"missing marker fallback cycle {cycle}", () =>
+            {
+                var result = missingView.Create(markerState, projection);
+                try
+                {
+                    Require(result.Markers == 3 && result.Structures == 0 && result.Diagnostics.Count == 3,
+                        "Every missing marker image must retain its documented fallback and diagnostic.");
+                    Require(result.Root.GetChildren().OfType<Node2D>().All(node =>
+                        node.HasNode("RuleDerivedMarker") && !node.HasNode("AuthoredMarker")),
+                        "Missing marker textures must produce only source rule-derived drawings.");
+                    Require(result.Diagnostics.All(message => message.Contains($"Missing imported texture: {missingPath}", StringComparison.Ordinal)),
+                        "Marker fallback diagnostics must preserve the missing resource error.");
+                    Require(markerState.ToJsonString() == markerBefore, "Marker fallback must not mutate its supplied fixture.");
+                }
+                finally { result.Root.Free(); }
+            }, failures);
+            CheckFailureCase($"missing structure texture cycle {cycle}", () =>
+            {
+                RequireFailure<MissingArtResourceException>(() => missingView.Create(state, projection).Root.Free(),
+                    "Missing structure textures must propagate the original resource error.",
+                    error => error.Resource == missingPath && error.Message == $"Missing imported texture: {missingPath}");
+                Require(state.ToJsonString() == structureBefore, "Structure failure must not mutate canonical state.");
+            }, failures);
+        }
+
+        var badMarker = (JsonObject)markerState.DeepClone();
+        badMarker["markers"]![0]!["id"] = "invalid-marker-id";
+        CheckFailureCase("marker metadata failure after sprite creation", () =>
+            RequireFailure<FormatException>(() => realView.Create(badMarker, projection).Root.Free(),
+                "Invalid marker IDs must retain their numeric conversion failure."), failures);
+        var unitType = state["units"]![0]!["type"]!.GetValue<string>();
+        foreach (var direction in new[] { new Vector2(float.NaN, 0), new Vector2(0, float.PositiveInfinity), new Vector2(float.NegativeInfinity, 0) })
+            CheckFailureCase($"non-finite facing {direction}", () =>
+                RequireFailure<InvalidOperationException>(() => realView.CreateUnitBadges(unitType, 50, false, 0, 100, direction).Free(),
+                    "Invalid directions must retain the finite-facing error.", error => error.Message == "Facing vector must be finite."), failures);
+        var duplicatePlayers = (JsonObject)state.DeepClone();
+        duplicatePlayers["players"]!.AsArray().Add(duplicatePlayers["players"]![0]!.DeepClone());
+        CheckFailureCase("duplicate player IDs", () =>
+            RequireFailure<ArgumentException>(() => realView.Create(duplicatePlayers, projection).Root.Free(),
+                "Duplicate player IDs must retain their dictionary admission error."), failures);
+        var malformedPlayers = (JsonObject)state.DeepClone();
+        malformedPlayers["players"] = new JsonObject();
+        CheckFailureCase("non-array players", () =>
+            RequireFailure<InvalidOperationException>(() => realView.Create(malformedPlayers, projection).Root.Free(),
+                "Malformed players must retain their JSON shape error."), failures);
+        Require(failures.Count == 0, "Failure ownership regressions:\n" + string.Join("\n", failures));
+    }
+
+    private void CheckFailureCase(string name, Action action, List<string> failures)
+    {
+        var before = NativeNodeChecks.OrphanIds();
+        try
+        {
+            action();
+        }
+        catch (Exception error) { failures.Add($"{name}: {error}"); }
+        finally
+        {
+            var leaked = NativeNodeChecks.OrphanIds().Except(before).ToArray();
+            // Record the failure before cleanup: this protects later cases, not the production owner.
+            if (leaked.Length != 0)
+                failures.Add($"{name}: leaked {leaked.Length} orphan node(s): {string.Join(", ", leaked)}.");
+            else
+                assertions++;
+            foreach (var id in leaked)
+                if (GodotObject.IsInstanceIdValid(id) && GodotObject.InstanceFromId(id) is Node node)
+                    node.Free();
+        }
+    }
+
+    private void RequireFailure<T>(Action action, string message, Func<T, bool>? matches = null) where T : Exception
+    {
+        try
+        {
+            action();
+        }
+        catch (T error)
+        {
+            Require(error.GetType() == typeof(T) && (matches is null || matches(error)), message);
+            return;
+        }
+        throw new InvalidOperationException(message);
     }
 
     private void CheckPaintedOccluders(JsonArray basePacks)

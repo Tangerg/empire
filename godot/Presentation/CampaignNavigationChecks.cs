@@ -212,23 +212,19 @@ public partial class CampaignNavigationChecks : Node
                 var prepare = typeof(GrayFlagGame).GetMethod("PrepareMounted", BindingFlags.NonPublic | BindingFlags.Instance)!
                     .MakeGenericMethod(typeof(BattleScreen));
                 var propagated = false;
+                var orphans = NativeNodeChecks.OrphanIds();
                 var unconfigured = new BattleScreen();
-                // This deliberate pre-BindSession fault has not transferred these eager nodes
-                // into the screen tree; the fixture owns their cleanup.
-                var unownedBoard = unconfigured.Board;
-                var unownedOverlay = Field<BoardOverlay>(unconfigured, "_overlay");
+                var preparedBoard = unconfigured.Board;
                 try
                 {
                     prepare.Invoke(game, new object[] { unconfigured, (Action<BattleScreen>)(_ => throw new InvalidOperationException("intentional preparation fixture")) });
                 }
                 catch (TargetInvocationException error) when (error.InnerException is InvalidOperationException) { propagated = true; }
-                finally
-                {
-                    unownedBoard.Free();
-                    unownedOverlay.Free();
-                }
                 Require(propagated && game.GetChildCount() == children && window.MinSize == inherited && window.Size == beforeSize,
                     "Failed hidden battle preparation altered the current window or leaked a view.");
+                Require(!GodotObject.IsInstanceValid(unconfigured) && !GodotObject.IsInstanceValid(preparedBoard)
+                    && !NativeNodeChecks.OrphanIds().Except(orphans).Any(),
+                    "Failed hidden battle preparation must release the screen and all of its owned nodes.");
                 Press(Button(View<Control>(game), "StartBattle"));
                 await Layout();
                 var expected = new Vector2I(Math.Max(inherited.X, 960), Math.Max(inherited.Y, 640));

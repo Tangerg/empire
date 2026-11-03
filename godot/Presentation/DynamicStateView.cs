@@ -40,39 +40,43 @@ public sealed class DynamicStateView
     {
         var definition = content.Definition("units", type)
             ?? throw new InvalidOperationException($"Unit badges reference absent definition {type}.");
+        if (directionVector is { } candidate && !candidate.IsFinite())
+            throw new InvalidOperationException("Facing vector must be finite.");
         var result = new Node2D { Name = "Badges" };
-        if (directionVector is { } direction)
+        try
         {
-            if (!direction.IsFinite())
-                throw new InvalidOperationException("Facing vector must be finite.");
-            var angle = Math.Atan2(direction.Y, direction.X);
-            var facing = Svg(direction == Vector2.Zero
-                ? $"<circle cx=\"16\" cy=\"29.5\" r=\"1.5\" fill=\"{Ink}\" opacity=\"0.8\"/>"
-                : $"<g transform=\"translate({F(16 + Math.Cos(angle) * 11)} {F(29.5 + Math.Sin(angle) * 2.25)}) rotate({F(angle * 180 / Math.PI)})\"><path d=\"M2.1 0 -1.8 -1.9 -1.8 1.9z\" fill=\"#efe6d0\" stroke=\"{Ink}\" stroke-width=\"0.55\" stroke-linejoin=\"round\" opacity=\"0.62\"/></g>", "FacingPip", new Rect2(0, 0, 32, 36));
-            facing.SetMeta("direction", direction);
-            result.AddChild(facing);
+            if (directionVector is { } direction)
+            {
+                var angle = Math.Atan2(direction.Y, direction.X);
+                var facing = Svg(direction == Vector2.Zero
+                    ? $"<circle cx=\"16\" cy=\"29.5\" r=\"1.5\" fill=\"{Ink}\" opacity=\"0.8\"/>"
+                    : $"<g transform=\"translate({F(16 + Math.Cos(angle) * 11)} {F(29.5 + Math.Sin(angle) * 2.25)}) rotate({F(angle * 180 / Math.PI)})\"><path d=\"M2.1 0 -1.8 -1.9 -1.8 1.9z\" fill=\"#efe6d0\" stroke=\"{Ink}\" stroke-width=\"0.55\" stroke-linejoin=\"round\" opacity=\"0.62\"/></g>", "FacingPip", new Rect2(0, 0, 32, 36));
+                facing.SetMeta("direction", direction);
+                result.AddChild(facing);
+            }
+            var maximum = Number(definition, "maxHp");
+            if (maximum > 0 && hp < maximum)
+                result.AddChild(CreateGauge(hp, maximum));
+            if (capture > 0)
+            {
+                var ratio = Math.Min(1, capture / captureThreshold);
+                var gauge = Svg($"<circle cx=\"27\" cy=\"6\" r=\"4.4\" fill=\"{Ink}\" opacity=\"0.6\"/><circle cx=\"27\" cy=\"6\" r=\"3.2\" fill=\"none\" stroke=\"#e4b84f\" stroke-width=\"2\" stroke-dasharray=\"{F(ratio * 20.1)} 20.1\" transform=\"rotate(-90 27 6)\"/>", "CaptureGauge");
+                gauge.SetMeta("ratio", ratio);
+                result.AddChild(gauge);
+            }
+            if (done)
+                result.AddChild(Svg($"<circle cx=\"26\" cy=\"24\" r=\"4.5\" fill=\"{Ink}\" opacity=\"0.85\"/><path d=\"M23.5 24 L25.3 25.8 L28.6 22.2\" fill=\"none\" stroke=\"#c4cbb7\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "DoneIndicator"));
+            return result;
         }
-        var maximum = Number(definition, "maxHp");
-        if (maximum > 0 && hp < maximum)
-            result.AddChild(CreateGauge(hp, maximum));
-        if (capture > 0)
-        {
-            var ratio = Math.Min(1, capture / captureThreshold);
-            var gauge = Svg($"<circle cx=\"27\" cy=\"6\" r=\"4.4\" fill=\"{Ink}\" opacity=\"0.6\"/><circle cx=\"27\" cy=\"6\" r=\"3.2\" fill=\"none\" stroke=\"#e4b84f\" stroke-width=\"2\" stroke-dasharray=\"{F(ratio * 20.1)} 20.1\" transform=\"rotate(-90 27 6)\"/>", "CaptureGauge");
-            gauge.SetMeta("ratio", ratio);
-            result.AddChild(gauge);
-        }
-        if (done)
-            result.AddChild(Svg($"<circle cx=\"26\" cy=\"24\" r=\"4.5\" fill=\"{Ink}\" opacity=\"0.85\"/><path d=\"M23.5 24 L25.3 25.8 L28.6 22.2\" fill=\"none\" stroke=\"#c4cbb7\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>", "DoneIndicator"));
-        return result;
+        catch { result.Free(); throw; }
     }
 
     public DynamicStateProjection Create(JsonObject state, BoardProjection projection)
     {
-        var root = new Node2D { Name = "DynamicState" };
+        var colors = state["players"]!.AsArray().OfType<JsonObject>().ToDictionary(player => Number(player, "id"), player => Text(player, "color"));
         var standing = new List<DynamicStanding>();
         var diagnostics = new List<string>();
-        var colors = state["players"]!.AsArray().OfType<JsonObject>().ToDictionary(player => Number(player, "id"), player => Text(player, "color"));
+        var root = new Node2D { Name = "DynamicState" };
         var structureCount = 0;
         var markerCount = 0;
         try
@@ -84,7 +88,9 @@ public sealed class DynamicStateView
                 var definition = content.Definition("structures", type)
                     ?? throw new InvalidOperationException($"Live structure {id} references absent definition {type}.");
                 colors.TryGetValue(Number(structure, "owner"), out var color);
-                var node = new Node2D { Name = $"Structure_{structureCount}", Position = Contact(structure, projection) };
+                var position = Contact(structure, projection);
+                var node = new Node2D { Name = $"Structure_{structureCount}", Position = position };
+                root.AddChild(node);
                 var hp = Number(structure, "hp");
                 var maximum = Number(definition, "maxHp");
                 var disabled = structure["disabled"]!.GetValue<bool>();
@@ -131,7 +137,6 @@ public sealed class DynamicStateView
                 node.SetMeta("disabled", disabled);
                 node.SetMeta("visual_state", frame);
                 node.SetMeta("rule_derived", asset is null);
-                root.AddChild(node);
                 standing.Add(new(node, surface ? 0 : 3, structureCount++,
                     surface || groundSprite is null ? null : new SpriteStandingVisual(groundSprite),
                     new Coord((int)Number(structure, "x"), (int)Number(structure, "y")), surface ? groundSprite : null));
@@ -140,23 +145,26 @@ public sealed class DynamicStateView
             {
                 var kind = Text(marker, "kind");
                 colors.TryGetValue(Number(marker, "owner"), out var color);
-                var node = new Node2D { Name = $"Marker_{markerCount}", Position = Contact(marker["at"]!.AsObject(), projection), ZIndex = -1 };
+                var position = Contact(marker["at"]!.AsObject(), projection);
+                var node = new Node2D { Name = $"Marker_{markerCount}", Position = position, ZIndex = -1 };
+                root.AddChild(node);
                 var topic = kind.Contains("corpse", StringComparison.Ordinal) || marker["fallenUnit"] is not null
                     ? "C01-BPROP-AFTERMATH-2" : kind.Contains("transport", StringComparison.Ordinal)
                         ? "C01-BPROP-AFTERMATH-3" : "C01-BPROP-EVIDENCE-1";
                 try
                 {
                     var asset = assets.ResolveTopic(topic);
+                    var texture = assets.CreateFrameTexture(asset, 0);
                     var sprite = new Sprite2D
                     {
                         Modulate = new Color(1, 1, 1, markerOpacity),
                         Name = "AuthoredMarker",
-                        Texture = assets.CreateFrameTexture(asset, 0),
+                        Texture = texture,
                         Scale = Vector2.One * (48f / Math.Max(asset.FrameWidth, asset.FrameHeight) / asset.PixelDensity),
                         TextureFilter = CanvasItem.TextureFilterEnum.Linear,
                     };
-                    sprite.SetMeta("topic_id", topic);
                     node.AddChild(sprite);
+                    sprite.SetMeta("topic_id", topic);
                 }
                 catch (MissingArtResourceException error)
                 {
@@ -165,7 +173,6 @@ public sealed class DynamicStateView
                 }
                 node.SetMeta("marker_id", (int)Number(marker, "id"));
                 node.SetMeta("marker_kind", kind);
-                root.AddChild(node);
                 standing.Add(new(node, 0, markerCount));
                 markerCount++;
             }
@@ -228,7 +235,8 @@ public sealed class DynamicStateView
         Sprite2D sprite;
         if (cache is not null)
         {
-            sprite = new Sprite2D { Texture = cache.SvgSource(source, 2) };
+            var texture = cache.SvgSource(source, 2);
+            sprite = new Sprite2D { Texture = texture };
         }
         else
         {

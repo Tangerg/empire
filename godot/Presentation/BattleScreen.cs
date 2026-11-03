@@ -28,9 +28,9 @@ public partial class BattleScreen : Control
     private BattleSnapshot? _snapshot;
     private JsonObject? _state;
     private readonly BoardView _board = new() { Name = "Board" };
-    private readonly BoardOverlay _overlay = new() { Name = "LegalTargets", ZIndex = 3000 };
-    private Control _mapArea = null!;
-    private Node2D _world = null!;
+    private BoardOverlay _overlay = null!;
+    private readonly Control _mapArea;
+    private readonly Node2D _world;
     private BattlefieldCamera? _camera;
     private BattlefieldGestures? _gestures;
     // Only actual map input establishes pointer ownership. Keyboard focus clears it.
@@ -75,6 +75,23 @@ public partial class BattleScreen : Control
     private int _bindingGeneration;
     private long _presentedRevision = -1;
     public bool IsPresenting => _presenting;
+
+    public BattleScreen()
+    {
+        // Board is configurable before BindSession and must already belong to this screen
+        // if preparing its external dependencies fails before the interface is built.
+        _mapArea = new Control
+        {
+            Name = "MapArea",
+            ClipContents = true,
+            MouseFilter = MouseFilterEnum.Stop
+        };
+        _mapArea.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        AddChild(_mapArea);
+        _world = new Node2D { Name = "World" };
+        _mapArea.AddChild(_world);
+        _world.AddChild(_board);
+    }
 
     public override void _EnterTree()
     {
@@ -576,17 +593,8 @@ public partial class BattleScreen : Control
         };
         background.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         AddChild(background);
-        _mapArea = new Control
-        {
-            Name = "MapArea",
-            ClipContents = true,
-            MouseFilter = MouseFilterEnum.Stop
-        };
-        _mapArea.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        AddChild(_mapArea);
-        _world = new Node2D { Name = "World" };
-        _mapArea.AddChild(_world);
-        _world.AddChild(_board);
+        MoveChild(background, 0);
+        _overlay = new BoardOverlay { Name = "LegalTargets", ZIndex = 3000 };
         _world.AddChild(_overlay);
         _mapArea.GuiInput += MapInput;
         _mapArea.Resized += ResizeCamera;
