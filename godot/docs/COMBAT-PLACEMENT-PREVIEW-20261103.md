@@ -84,3 +84,24 @@ were 140.99 versus 254.91 ms under concurrent verification load. Those wall-cloc
 observations are not a stable performance ratio. The repair keeps the simpler,
 complete state boundary rather than introducing an unmeasured cache or partial
 state projection.
+
+The fresh sixteen-level AI-driven replay gate also passed. Eleven final digests
+and action counts stayed identical. With the same deterministic aggression 0.58,
+the changed independent battles were:
+
+- C01-08: 174 → 144 actions; team 1 win → team 2 win.
+- C01-11: 201 → 268 actions; team 1 win → turn limit.
+- C01-13: 198 → 195 actions; team 1 still won, with a different final state.
+- C01-14: 220 → 339 actions; team 1 win → turn limit.
+- C01-16: 485 → 378 actions; turn limit → team 2 win.
+
+Both sides use the automatic driver in these checks. Changed outcomes document
+the effect of corrected scoring, not improved difficulty, human play balance, or
+campaign completion. Fixed historical commands still reproduce exactly as above.
+
+Final serial `verify-native.sh` passed with exit 0 on 2026-11-03, 16:48:34–17:27:03
+UTC (38 minutes 29 seconds). It includes formatting/metadata/static contracts,
+zero-warning/error builds, twelve core groups, sixteen full-level save/replays,
+and all twenty-three native scenes. The unchanged 120-second AI-turn guard passed
+again inside this aggregate. No leaked-object, unhandled-exception or native error
+diagnostics were present. GUI and export acceptance remain separate.
