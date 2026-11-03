@@ -372,37 +372,12 @@ public partial class BoardView : Node2D
             {
                 if (visibleUnitIds is not null && !visibleUnitIds.Contains(unit.Id))
                     continue;
-                try
-                {
-                    var asset = assets.ResolveUnit(unit.Type, unit.Key);
-                    var sprite = assets.CreateSprite(asset);
-                    var actor = new CanvasGroup { Name = $"Unit_{unit.Id}", Position = CellContact(unit.X, unit.Y) };
-                    sprite.Name = "AuthoredSprite";
-                    // Actor mirroring is around the canonical foot, not the sheet's center.
-                    if (Projection.FacingVector(unit.Facing).X < 0)
-                        sprite.Scale = new Vector2(-sprite.Scale.X, sprite.Scale.Y);
-                    sprite.AddChild(SpriteShadows.CreateFigure(sprite, snapshot.Colors[unit.Owner], _shadows));
-                    actor.AddChild(sprite);
-                    if (_dynamicState is not null)
-                        actor.AddChild(_dynamicState.CreateUnitBadges(unit.Type, unit.Hp, unit.Done,
-                            snapshot.CaptureProgress[unit.Y * _mapSize.X + unit.X], snapshot.CaptureThreshold,
-                            Projection.FacingVector(unit.Facing)));
-                    actor.SetMeta("unit_id", unit.Id);
-                    actor.SetMeta("logical_contact", LogicalContact(unit.X, unit.Y));
-                    if (unit.Key is not null)
-                        actor.SetMeta("actor_key", unit.Key);
-                    actor.SetMeta("unit_type", unit.Type);
-                    actor.SetMeta("owner", unit.Owner);
-                    actor.SetMeta("hp", unit.Hp);
-                    actor.SetMeta("done", unit.Done);
-                    staging.AddChild(actor);
-                    entries.Add(new StandingEntry(actor, LogicalContact(unit.X, unit.Y), 9, unit.Id, new SpriteStandingVisual(sprite), new Coord(unit.X, unit.Y), unit.Id));
-                    renderedUnits++;
-                }
-                catch (MissingArtResourceException error)
-                {
-                    diagnostics.Add($"Unit {unit.Id} ({unit.Key ?? unit.Type}): {error.Message}");
-                }
+                var entry = CreateUnitVisual(unit, snapshot, diagnostics);
+                if (entry is null)
+                    continue;
+                staging.AddChild(entry.Node);
+                entries.Add(entry);
+                renderedUnits++;
             }
             foreach (var layer in _dynamicState is null ? new[] { "structures", "markers" } : Array.Empty<string>())
                 if (canonicalState[layer] is JsonArray { Count: > 0 })
@@ -427,6 +402,41 @@ public partial class BoardView : Node2D
         RenderedMarkerCount = renderedMarkers;
         RenderedCoverPropCount = renderedCover;
         _diagnostics = diagnostics.Distinct(StringComparer.Ordinal).ToList().AsReadOnly();
+    }
+
+    private StandingEntry? CreateUnitVisual(UnitProjection unit, BattleRenderSnapshot snapshot, List<string> diagnostics)
+    {
+        try
+        {
+            var asset = _assets!.ResolveUnit(unit.Type, unit.Key);
+            var sprite = _assets.CreateSprite(asset);
+            var actor = new CanvasGroup { Name = $"Unit_{unit.Id}", Position = CellContact(unit.X, unit.Y) };
+            sprite.Name = "AuthoredSprite";
+            // Mirroring and shadows share the canonical foot, not the sheet center.
+            if (Projection.FacingVector(unit.Facing).X < 0)
+                sprite.Scale = new Vector2(-sprite.Scale.X, sprite.Scale.Y);
+            sprite.AddChild(SpriteShadows.CreateFigure(sprite, snapshot.Colors[unit.Owner], _shadows));
+            actor.AddChild(sprite);
+            if (_dynamicState is not null)
+                actor.AddChild(_dynamicState.CreateUnitBadges(unit.Type, unit.Hp, unit.Done,
+                    snapshot.CaptureProgress[unit.Y * _mapSize.X + unit.X], snapshot.CaptureThreshold,
+                    Projection.FacingVector(unit.Facing)));
+            actor.SetMeta("unit_id", unit.Id);
+            actor.SetMeta("logical_contact", LogicalContact(unit.X, unit.Y));
+            if (unit.Key is not null)
+                actor.SetMeta("actor_key", unit.Key);
+            actor.SetMeta("unit_type", unit.Type);
+            actor.SetMeta("owner", unit.Owner);
+            actor.SetMeta("hp", unit.Hp);
+            actor.SetMeta("done", unit.Done);
+            return new StandingEntry(actor, LogicalContact(unit.X, unit.Y), 9, unit.Id,
+                new SpriteStandingVisual(sprite), new Coord(unit.X, unit.Y), unit.Id);
+        }
+        catch (MissingArtResourceException error)
+        {
+            diagnostics.Add($"Unit {unit.Id} ({unit.Key ?? unit.Type}): {error.Message}");
+            return null;
+        }
     }
 
     /// <summary>Decoration emphasis projects the controller's selection; it owns no targeting state.</summary>

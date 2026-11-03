@@ -30,6 +30,7 @@ public partial class AnimationChecks : Node
             packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
             initial = new Empire.Core.Engine.BattleEngine(packs).CreateState(level);
             initialBytes = initial.ToJsonString();
+            await CheckRecordedDisplacement();
             CheckAssets();
             CheckTransitionOwnership();
             await CheckClock();
@@ -323,8 +324,11 @@ public partial class AnimationChecks : Node
         var did = Int(target, "id");
         after["units"]!.AsArray().RemoveAt(0);
         var task = board.PresentTransitionAsync(Transition(before, after, IdleAction(), [Strike("attack", aid, did)]));
+        Require(board.GetNodeOrNull("BattleEffects/Hit") is null && Frame(Actor(board, aid)) == 2,
+            "An attacker alive at this point in the receipt still winds up even if it dies later in the transaction.");
+        await Tick(board, 0.151);
         Require(board.GetNodeOrNull("BattleEffects/Hit") is not null,
-            "Source skips wind-up when the acting unit was killed later in the committed transaction, but still paints its emitted hit");
+            "The original hit follows that attacker's wind-up before final settlement removes it.");
         await Drain(board, task);
 
         before = Copy();
@@ -409,7 +413,7 @@ public partial class AnimationChecks : Node
         var after = Copy();
         var unit = before["units"]![0]!.AsObject();
         var id = Int(unit, "id");
-        var kinds = new[] { "move", "castBegan", "castResolved", "castCancelled", "forcedMove", "collisionDamage", "statusTick",
+        var kinds = new[] { "move", "castBegan", "castResolved", "castCancelled", "statusTick",
             "unitWithdrawn", "unitEmbarked", "unitDisembarked", "unitRouted", "unitSurrendered", "unitSpawned", "unitRevived", "structureDamaged", "structureDestroyed", "structureRepaired", "structureDisabled", "structureEnabled" };
         foreach (var kind in kinds)
         {

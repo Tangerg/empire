@@ -14,7 +14,7 @@ namespace Empire.Presentation;
 
 public partial class BoardView
 {
-    private sealed record Playback(BattlePresentationTransition Transition, JsonObject Before, JsonObject After,
+    private sealed record Playback(BattlePresentationTransition Transition, JsonObject After,
         IReadOnlySet<int>? AfterVisible, PresentationTimeline Clock, Node2D Effects);
     private Playback? _playback;
     private bool _exiting;
@@ -71,7 +71,7 @@ public partial class BoardView
         RenderState(before, transition.BeforeVisibleUnitIds);
         var effects = new Node2D { Name = "BattleEffects", ZIndex = 2500 };
         AddChild(effects);
-        var playback = new Playback(transition, before, after, afterVisible,
+        var playback = new Playback(transition, after, afterVisible,
             new PresentationTimeline { MotionEnabled = AnimationsEnabled }, effects);
         _playback = playback;
         _cueLayer!.Visible = false;
@@ -81,7 +81,7 @@ public partial class BoardView
             // presenters, including before a parting shot. The move event is not
             // a second march. Only an accepted receipt reaches this adapter.
             if (Text(action, "kind") == "command" && action["path"] is JsonArray path && path.Count > 1)
-                if (!await AnimateMove(playback, Integer(action, "unit"), path))
+                if (!await AnimatePath(playback, Integer(action, "unit"), path, true))
                     return false;
             for (var index = 0; index < events.Length; index++)
             {
@@ -121,7 +121,7 @@ public partial class BoardView
                     var defender = Integer(item, "defender");
                     if (!WasVisible(playback, defender))
                         return true;
-                    var at = Text(item, "type") == "partingShot" ? Coordinate(item["at"]!) : ImpactOn(playback, defender);
+                    var at = Text(item, "type") == "partingShot" ? CellCentre(Coordinate(item["at"]!)) : ImpactOn(defender);
                     return await PlayStrike(playback, item, at, Text(item, "type") != "areaAttack", "killed");
                 }
             case "attackStructure":
@@ -130,28 +130,53 @@ public partial class BoardView
                     if (!WasVisible(playback, Integer(item, "attacker")))
                         return true;
                     var structure = Objects(playback.After, "structures").FirstOrDefault(value => Text(value, "id") == Text(item, "structure"));
-                    return await PlayStrike(playback, item, structure is null ? null : Coordinate(structure),
+                    return await PlayStrike(playback, item, structure is null ? null : CellCentre(Coordinate(structure)),
                         Text(item, "type") == "attackStructure", "destroyed");
                 }
             case "death":
                 return await AnimateDeath(playback, Integer(item, "unit"));
+            case "forcedMove":
+                {
+                    var id = Integer(item, "unit");
+                    if (!BattleEventVisibility.UnitWasAndIsVisible(id, playback.Transition.BeforeVisibleUnitIds, playback.AfterVisible)
+                        || DrawnUnit(id) is not { } actor)
+                        return true;
+                    if (Text(item, "mode") == "teleport")
+                    {
+                        var to = Coordinate(item["to"]!);
+                        var destination = LogicalContact(to.X, to.Y);
+                        PrepareAnimatedPath(actor, new[] { destination });
+                        PlaceAnimatedActor(actor, destination);
+                        return true;
+                    }
+                    return await AnimatePath(playback, id, item["path"]!.AsArray(), false);
+                }
+            case "collisionDamage":
+                {
+                    var id = Integer(item, "unit");
+                    return !BattleEventVisibility.UnitWasAndIsVisible(id, playback.Transition.BeforeVisibleUnitIds, playback.AfterVisible)
+                        || ImpactOn(id) is not { } at
+                        || await AnimateImpact(playback, at, Number(item["amount"], "collision amount"), false, item["killed"]!.GetValue<bool>(), null);
+                }
             case "heal":
                 {
                     var target = Integer(item, "target");
                     var unit = FindUnit(playback.After, target);
-                    return unit is null || !WasVisible(playback, target)
-                        || await AnimateImpact(playback, Coordinate(unit), Number(item["amount"], "heal amount"), true, false, _assets!.ResolveHealEffect()?.TopicId);
+                    return unit is null || !WasVisible(playback, target) || ImpactOn(target) is not { } at
+                        || await AnimateImpact(playback, at, Number(item["amount"], "heal amount"), true, false, _assets!.ResolveHealEffect()?.TopicId);
                 }
             case "regen":
                 {
                     var id = Integer(item, "unit");
                     var unit = FindUnit(playback.After, id);
-                    return unit is null || DrawnUnit(id) is null
+                    return unit is null || ImpactOn(id) is not { } at
                         || !BattleEventVisibility.UnitWasAndIsVisible(id, playback.Transition.BeforeVisibleUnitIds, playback.AfterVisible)
-                        || await AnimateImpact(playback, Coordinate(unit), Number(item["amount"], "regen amount"), true, false, _assets!.ResolveHealEffect()?.TopicId);
+                        || await AnimateImpact(playback, at, Number(item["amount"], "regen amount"), true, false, _assets!.ResolveHealEffect()?.TopicId);
                 }
             case "recruit":
-                Repaint(playback);
+                // A HUD refresh cannot settle unrelated actors ahead of later events.
+                PresentRecruit(playback, item);
+                PresentationRepaintRequested?.Invoke();
                 return await AnimateSpawn(playback, Integer(item, "unit"));
             case "capture":
                 // Source capture refreshes map ownership, not the entire actor set.
@@ -164,23 +189,23 @@ public partial class BoardView
                     var player = Objects(playback.After, "players").FirstOrDefault(value => Integer(value, "id") == Integer(item, "player"));
                     if (player is null)
                         return true;
-                    Repaint(playback);
+                    PresentationRepaintRequested?.Invoke();
                     return await Announce(playback, description, Color.FromHtml(Text(player, "color")));
                 }
             case "gameOver":
                 return await playback.Clock.WaitAsync(220);
             default:
                 // The source registry deliberately leaves these events without an
-                // animation, including casts, forcedMove and non-death departures.
+                // animation, including casts and non-death departures.
                 return true;
         }
     }
 
-    private async Task<bool> PlayStrike(Playback playback, JsonObject item, Vector2I? at, bool windup, string fatalField)
+    private async Task<bool> PlayStrike(Playback playback, JsonObject item, Vector2? at, bool windup, string fatalField)
     {
-        var attacker = FindUnit(playback.After, Integer(item, "attacker"));
-        if (windup && attacker is not null && WasVisible(playback, Integer(item, "attacker")))
-            if (!await AnimateStrike(playback, attacker, at ?? Coordinate(attacker)))
+        var attacker = Integer(item, "attacker");
+        if (windup && WasVisible(playback, attacker) && DrawnUnit(attacker) is { } actor)
+            if (!await AnimateStrike(playback, actor, at ?? Projection.Project(actor.GetMeta("logical_contact").AsVector2())))
                 return false;
         if (at is null)
             return true;
@@ -189,31 +214,23 @@ public partial class BoardView
             item[fatalField]!.GetValue<bool>(), effect?.TopicId);
     }
 
-    private async Task<bool> AnimateMove(Playback playback, int id, JsonArray path)
+    private async Task<bool> AnimatePath(Playback playback, int id, JsonArray path, bool walking)
     {
         var actor = DrawnUnit(id);
-        var unit = FindUnit(playback.Before, id);
-        if (actor is null || unit is null || !WasVisible(playback, id))
+        if (actor is null || path.Count < 2 || !WasVisible(playback, id))
             return true;
-        var asset = UnitAsset(unit);
+        var asset = UnitAsset(actor);
         var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
-        var movingEntry = _standing.Single(entry => entry.Node == actor);
-        var frontOffset = StandingDepth(movingEntry) - Projection.Depth(movingEntry.Contact);
-        var pathDepths = path.Select(point => Projection.Depth(LogicalContact(Coordinate(point!).X, Coordinate(point!).Y)) + frontOffset).ToArray();
-        var firstDepth = (int)Math.Floor(pathDepths.Min());
-        var lastDepth = (int)Math.Ceiling(pathDepths.Max());
-        Projection.PrepareDepthPartitions(_standing.Where(entry => entry.Layer != 0)
-            .Select(entry => StandingDepth(entry)),
-            Enumerable.Range(firstDepth, lastDepth - firstDepth + 1).Select(depth => (float)depth));
         var walk = new[] { AssetCatalog.FrameIndex(asset, "walk-a"), AssetCatalog.FrameIndex(asset, "walk-b") };
         // Presentation pace only: one support phase per travelled cell. The committed
         // receipt still owns the path, destination and event order. A single tween
         // preserves progress across cell boundaries instead of losing frame overshoot.
-        var duration = playback.Transition.IsComputerAction ? 110.0 : 160.0;
+        var duration = walking ? playback.Transition.IsComputerAction ? 110.0 : 160.0 : 120.0;
         var contacts = path.Select(point => Coordinate(point!))
             .Select(point => LogicalContact(point.X, point.Y)).ToArray();
+        PrepareAnimatedPath(actor, contacts);
         var steps = contacts.Length - 1;
-        SetFrame(sprite, asset, walk[0]);
+        SetFrame(sprite, asset, walking ? walk[0] : AssetCatalog.FrameIndex(asset, "idle"));
         if (!await playback.Clock.TweenAsync(duration * steps, t =>
         {
             var distance = t * steps;
@@ -225,30 +242,43 @@ public partial class BoardView
             if (visualDirection != 0)
                 Face(sprite, visualDirection < 0);
             var logical = start.Lerp(end, fraction);
-            actor.SetMeta("logical_contact", logical);
             // Keep the actor's support plane and its composited contact shadow on
             // the road. The drawn walk poses provide the gait, not a whole-body hop.
-            actor.Position = Projection.Project(logical);
-            SetFrame(sprite, asset, walk[segment % walk.Length]);
-            SortAnimatedStanding();
+            PlaceAnimatedActor(actor, logical);
+            SetFrame(sprite, asset, walking ? walk[segment % walk.Length] : AssetCatalog.FrameIndex(asset, "idle"));
         }))
             return false;
         SetFrame(sprite, asset, AssetCatalog.FrameIndex(asset, "idle"));
         return true;
     }
 
-    private async Task<bool> AnimateStrike(Playback playback, JsonObject attacker, Vector2I target)
+    private void PlaceAnimatedActor(Node2D actor, Vector2 logical)
     {
-        var actor = DrawnUnit(Integer(attacker, "id"));
-        if (actor is null)
-            return true;
-        var asset = UnitAsset(attacker);
+        actor.SetMeta("logical_contact", logical);
+        actor.Position = Projection.Project(logical);
+        SortAnimatedStanding();
+    }
+
+    private void PrepareAnimatedPath(Node2D actor, IReadOnlyList<Vector2> contacts)
+    {
+        var entries = CurrentStanding().ToArray();
+        var movingEntry = entries.Single(entry => entry.Node == actor);
+        var frontOffset = StandingDepth(movingEntry) - Projection.Depth(movingEntry.Contact);
+        var depths = contacts.Select(contact => Projection.Depth(contact) + frontOffset).ToArray();
+        var first = (int)Math.Floor(depths.Min());
+        var last = (int)Math.Ceiling(depths.Max());
+        Projection.PrepareDepthPartitions(entries.Where(entry => entry.Layer != 0).Select(StandingDepth),
+            Enumerable.Range(first, last - first + 1).Select(depth => (float)depth));
+    }
+
+    private async Task<bool> AnimateStrike(Playback playback, Node2D actor, Vector2 target)
+    {
+        var asset = UnitAsset(actor);
         var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
-        var at = Coordinate(attacker);
-        var direction = (CellContact(target.X, target.Y) - CellContact(at.X, at.Y)).Normalized();
+        var anchor = Projection.Project(actor.GetMeta("logical_contact").AsVector2());
+        var direction = (target - anchor).Normalized();
         if (direction.X != 0)
             Face(sprite, direction.X < 0);
-        var anchor = CellContact(at.X, at.Y);
         actor.Position = anchor;
         SetFrame(sprite, asset, AssetCatalog.FrameIndex(asset, asset.Category == "mission-unit" ? "carry-or-work" : "attack"));
         if (!await playback.Clock.TweenAsync(150, t =>
@@ -263,9 +293,9 @@ public partial class BoardView
         return true;
     }
 
-    private async Task<bool> AnimateImpact(Playback playback, Vector2I at, double amount, bool healing, bool fatal, string? topic)
+    private async Task<bool> AnimateImpact(Playback playback, Vector2 at, double amount, bool healing, bool fatal, string? topic)
     {
-        var effect = new Node2D { Name = healing ? "Heal" : "Hit", Position = CellCentre(at) };
+        var effect = new Node2D { Name = healing ? "Heal" : "Hit", Position = at };
         playback.Effects.AddChild(effect);
         RuntimeAsset? art = topic is null ? null : _assets!.ResolveEffect(topic);
         Sprite2D? sprite = art is null ? null : _assets!.CreateSpriteAtFrame(art, 0);
@@ -391,10 +421,33 @@ public partial class BoardView
         finally { RemoveEffect(banner); }
     }
 
-    private void Repaint(Playback playback)
+    private void PresentRecruit(Playback playback, JsonObject item)
     {
-        RenderState(playback.After, playback.AfterVisible);
-        PresentationRepaintRequested?.Invoke();
+        var id = Integer(item, "unit");
+        if (DrawnUnit(id) is not null)
+            return;
+        var snapshot = ReadProjection(playback.After);
+        var unit = snapshot.Units.SingleOrDefault(unit => unit.Id == id);
+        if (unit is null)
+            return;
+        ProjectionUnitCount++;
+        if (playback.AfterVisible is not null && !playback.AfterVisible.Contains(id))
+            return;
+        var at = Coordinate(item["at"]!);
+        var diagnostics = _diagnostics.ToList();
+        var entry = CreateUnitVisual(unit with
+        {
+            X = at.X,
+            Y = at.Y
+        }, snapshot, diagnostics);
+        _diagnostics = diagnostics.Distinct(StringComparer.Ordinal).ToList().AsReadOnly();
+        if (entry is null)
+            return;
+        _projection!.AddChild(entry.Node);
+        _standing.Add(entry);
+        RenderedUnitCount++;
+        PrepareAnimatedPath(entry.Node, new[] { entry.Contact });
+        SortAnimatedStanding();
     }
 
     private void RefreshCapturedSites(Playback playback)
@@ -417,7 +470,8 @@ public partial class BoardView
         }
     }
 
-    private RuntimeAsset UnitAsset(JsonObject unit) => _assets!.ResolveUnit(Text(unit, "type"), unit["key"]?.GetValue<string>());
+    private RuntimeAsset UnitAsset(Node2D actor) => _assets!.ResolveUnit(actor.GetMeta("unit_type").AsString(),
+        actor.HasMeta("actor_key") ? actor.GetMeta("actor_key").AsString() : null);
     private Node2D? DrawnUnit(int id) => _projection?.GetNodeOrNull<Node2D>($"Unit_{id}");
     private static bool WasVisible(Playback playback, int id) => playback.Transition.BeforeVisibleUnitIds?.Contains(id) ?? true;
     private static JsonObject? FindUnit(JsonObject state, int id) => Objects(state, "units").FirstOrDefault(unit => Integer(unit, "id") == id);
@@ -426,11 +480,8 @@ public partial class BoardView
         ?? throw new InvalidOperationException("Presentation transition requires JSON objects.");
     private static Vector2I Coordinate(JsonNode value) => new(Integer(value["x"], "x"), Integer(value["y"], "y"));
     private Vector2 CellCentre(Vector2I at) => Projection.CellCenter(new Empire.Core.Geometry.Coord(at.X, at.Y));
-    private static Vector2I? ImpactOn(Playback playback, int id)
-    {
-        var unit = FindUnit(playback.After, id) ?? FindUnit(playback.Before, id);
-        return unit is null ? null : Coordinate(unit);
-    }
+    private Vector2? ImpactOn(int id) => DrawnUnit(id) is { } actor
+        ? Projection.Project(actor.GetMeta("logical_contact").AsVector2()) : null;
     private static double Ease(double t) => t < 0.5 ? 2 * t * t : 1 - 2 * (1 - t) * (1 - t);
     private static void Face(Sprite2D sprite, bool left) => sprite.Scale = new Vector2(Mathf.Abs(sprite.Scale.X) * (left ? -1 : 1), sprite.Scale.Y);
     private void SetFrame(Sprite2D sprite, RuntimeAsset asset, int index)
@@ -444,8 +495,10 @@ public partial class BoardView
         var frame = Math.Max(0, (int)Math.Floor(milliseconds * asset.FramesPerSecond!.Value / 1000));
         return asset.Loop ? frame % asset.FrameCount : Math.Min(frame, asset.FrameCount - 1);
     }
-    private void SortAnimatedStanding() => OrderStanding(_standing.Where(entry => GodotObject.IsInstanceValid(entry.Node) && !entry.Node.IsQueuedForDeletion())
-        .Select(entry => entry.Node.HasMeta("logical_contact") ? entry with { Contact = entry.Node.GetMeta("logical_contact").AsVector2() } : entry).ToList());
+    private IEnumerable<StandingEntry> CurrentStanding() => _standing
+        .Where(entry => GodotObject.IsInstanceValid(entry.Node) && !entry.Node.IsQueuedForDeletion())
+        .Select(entry => entry.Node.HasMeta("logical_contact") ? entry with { Contact = entry.Node.GetMeta("logical_contact").AsVector2() } : entry);
+    private void SortAnimatedStanding() => OrderStanding(CurrentStanding().ToList());
     private static void SwellActor(Node2D actor, Vector2 contact, float scale)
     {
         actor.Scale = Vector2.One * scale;

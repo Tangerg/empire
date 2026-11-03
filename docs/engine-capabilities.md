@@ -693,3 +693,5 @@ The native c01-03 routes disable rather than deal scripted damage. One once-only
 scenario rule frees oathbound units on disabled OR destroyed state. It does not
 add a victory condition or reverse liberation on repair. See
 [the native contract and asset limitation](../godot/docs/STRUCTURE-LIFECYCLE.md).
+
+Native ordered combat feedback ownership and formal displacement regressions: [displacement feedback](../godot/docs/DISPLACEMENT-FEEDBACK-20261103.md).

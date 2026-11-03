@@ -24,9 +24,9 @@ waiters and, while mounted, settles immediately at `After`. Exit cancels without
 redrawing disposed nodes; reattachment permits a fresh binding. Cancellation,
 replacement, errors and repeated refreshes cannot advance the battle a second time.
 
-`PresentationRepaintRequested` marks the source recruit/turn announcement repaint
-points. The board has already shown committed state; the screen refreshes its
-header/resources there. `AnimationsEnabled = false` implements reduced-motion
+`PresentationRepaintRequested` marks recruit/turn announcement HUD refresh
+points. The screen refreshes committed header/resources there without settling
+actors ahead of the remaining events. `AnimationsEnabled = false` implements reduced-motion
 settling without asynchronous delays.
 
 ## Source contracts retained
@@ -53,7 +53,7 @@ presentation only, not canonical path costs, rules, receipts or event ordering. 
 frame. Attack is the declared attack frame, or `carry-or-work` for mission sheets.
 These are roles in a four-frame sheet, not four directional views or attack frames.
 
-Supported source presenters:
+Supported native presenters (including the explicit recovery and displacement refinements):
 
 | Event | Consumed fields | Presentation |
 | --- | --- | --- |
@@ -62,30 +62,46 @@ Supported source presenters:
 | areaAttack | defender, weapon, damage, killed | Impact without another wind-up |
 | attackStructure | attacker, structure, weapon, damage, destroyed | Wind-up and structure impact |
 | areaAttackStructure | structure, weapon, damage, destroyed | Structure impact without wind-up |
+| forcedMove | unit, mode, from, to, path | Ordered ground slide; teleport changes contact without interpolating a route |
+| collisionDamage | unit, amount, killed | One generic impact for the emitted actual collision damage |
+| regen | unit, amount | Existing healing effect at the current visible contact |
 | death | unit | 220 ms fade and 35% shrink about cell center, then remove ghost |
 | heal | target, amount | Heal strip and number rising 16 pixels over 500 ms |
-| recruit | unit | Repaint, then 240 ms fade/scale from 0.6 to 1 |
+| recruit | unit, at | Add only the new actor, then 240 ms fade/scale from 0.6 to 1 |
 | capture | captured | Refresh site ownership when completed |
-| turnStart | player, turn | Repaint, 220 ms entrance, 420 ms hold, 220 ms exit |
+| turnStart | player, turn | Refresh HUD, 220 ms entrance, 420 ms hold, 220 ms exit |
 | gameOver | none | 220 ms beat before the application result modal |
 
-Wind-up uses independent `sign(dx)` and `sign(dy)` with a 7-pixel sine lunge, not
-a normalized diagonal. Hit effects last 420 ms; their number rises 14 pixels and
+Wind-up follows the normalized projected direction with a 7-pixel sine lunge. Hit effects last 420 ms; their number rises 14 pixels and
 fades quadratically. Fatal hits add a 40 ms beat before the next presenter.
 Effects use cell center; actors retain the canonical cell-foot contact. Moving
 actors participate in the existing standing-depth ordering.
 
-The source's lookup distinctions are intentional:
+## Ordered contact ownership
 
-- Wind-up looks up the attacker in committed state. If a later counter or effect
-  killed it in the same transaction, no wind-up is played for that attacker.
-- A unit impact uses the committed defender position, otherwise the last-seen
-  position from `Before`. A before-state drawing can survive temporarily as a
-  death ghost, but it is not a living canonical unit.
-- A structure impact uses committed structure state only. Ordinary destruction
-  retains its disabled, zero-HP structure, so its location remains available.
-  An actually removed structure receives no invented last-seen impact. A direct
-  striker still poses toward its own cell in this case, matching the source.
+The native refinement in [Displacement feedback](DISPLACEMENT-FEEDBACK-20261103.md)
+corrects historical final-snapshot lookups. Each existing actor's `logical_contact`
+is its one presentation-position owner. It starts in `Before`, follows the
+committed command path once, then follows ordered `forcedMove` paths. Unit
+impacts and strike anchors read that current contact, including a later-dead
+attacker's still-present ghost. A future displacement or death cannot retroactively
+move or suppress an earlier attack.
+
+Push/pull slides use the existing cancelable timeline at 120 ms per emitted path
+segment, with the idle pose rather than a walk cycle. Teleport moves directly to
+its emitted destination and preserves facing. No pathfinding, health mutation or
+additional game event is performed. Collision impacts use the actual emitted
+amount and the existing generic burst; the following death owns its one fade.
+Current actor contacts drive both standing order and terrain depth partitions,
+including contacts retained from earlier movement and teleport destinations.
+
+Turn announcements refresh committed HUD facts but leave actors in timeline
+order. Recruitment adds only its new actor at the emitted `at`, through the same
+constructor used by full projection. It does not settle other actors early.
+Final completion or cancellation remains the sole full `After` settlement.
+Structure impacts retain the existing committed-structure lookup: normal
+zero-HP destruction retains the object, while an actually absent structure gets
+no fabricated impact.
 
 ## Original assets, not generated replacements
 
@@ -115,7 +131,7 @@ injected through `CANDIDATE_01_HEAL_FX`, exported from the source presentation A
 ## Explicit boundaries
 
 - Source default presenters do not animate castBegan/resolved/cancelled,
-  forcedMove, collisionDamage, statusTick, regen, unitWithdrawn, unitEmbarked,
+  statusTick, unitWithdrawn, unitEmbarked,
   unitDisembarked, unitRouted, unitSurrendered, unitSpawned, unitRevived,
   structureDamaged/repaired/destroyed or arbitrary scenario signals. They settle
   without invented effects. A resolved cast's subsequent ordinary combat events
@@ -123,10 +139,14 @@ injected through `CANDIDATE_01_HEAL_FX`, exported from the source presentation A
 - Before-visible unit IDs gate ghosts and unit impact locations. Post-action
   visibility is supplied by the application for the settled/spawned projection.
   The renderer never computes fog. Structure attacks by hidden attackers are not
-  animated, rather than revealing their locations through effects.
+  animated, rather than revealing their locations through effects. New recovery,
+  displacement and collision feedback conservatively require visibility at both
+  boundaries. New recruits absent from explicit before-visibility therefore do
+  not disclose later displacement/collision feedback before final settlement.
 - Unlike the source's pre-dispatch march, a refused native command has no visual
-  march: only a committed receipt is presented. Accepted-action visual ordering
-  is unchanged, and the renderer cannot display an uncommitted rule transition.
+  march: only a committed receipt is presented. The renderer cannot display an
+  uncommitted rule transition; ordered displacement and collision presentation
+  deliberately improve the earlier source behavior.
 - This does not port camera follow/panning, sound, new status/cast/departure FX,
   arbitrary presenter plugins, or missing authored scenery. Godot's current UI
   font is retained; source CSS font weight/letter spacing is not claimed pixel-identical.
@@ -136,10 +156,10 @@ injected through `CANDIDATE_01_HEAL_FX`, exported from the source presentation A
 
 ## Verification
 
-Run `bash tools/godot/animation-checks/run.sh` from the repository. The dedicated
-native scene currently passes 177 assertions, including original numeric FX
-frames, exact key times, source lookup edge cases, death ghosts, visibility,
-reduced motion, immutable transition ownership and cancellation/reattachment.
-Existing DynamicStateChecks (100 assertions) and real-session BattleScreenChecks
-also pass after this adapter. The presentation project builds with no warnings
-or errors against the current core assembly.
+`AnimationChecks` is now a required scene in `bash tools/godot/verify-native.sh`.
+Its original resource/timing/lifecycle checks are retained, with the two formerly
+unhandled displacement events replaced by real campaign receipt regressions.
+The dedicated `bash tools/godot/animation-checks/run.sh` remains useful for a
+focused run. The new report distinguishes actual command witnesses, explicit
+projection-boundary fixtures and final verification outcomes. Headless checks
+are not GPU visual or export acceptance.
