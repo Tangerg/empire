@@ -1,5 +1,9 @@
 # One turn handoff per fresh E press — 2026-11-03
 
+Implementation update: the [contextual repeat repair](UI-CONTEXTUAL-KEY-REPEAT-20261103.md)
+moves repeat policy into the tactical controller while preserving this behavior.
+The native-mapping implementation below records the original repair.
+
 ## Confirmed failure
 
 The native campaign navigation suite opened the unchanged C01 battle through

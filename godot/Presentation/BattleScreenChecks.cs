@@ -24,6 +24,7 @@ public partial class BattleScreenChecks : Node
     {
         try
         {
+            CheckContextualKeyRepeat();
             CheckUndoKeyRepeat();
             Check();
             CheckPresentationTransitions();
@@ -375,6 +376,185 @@ public partial class BattleScreenChecks : Node
             "The sole turn button must commit through the real session and refresh current player.");
         screen.QueueFree();
     }
+    private void CheckContextualKeyRepeat()
+    {
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var text = GodotTextCatalog.LoadSimplifiedChinese();
+        var presentation = BattleTextChecks.Session(engine, text);
+        var level = BattleTextChecks.OpeningLevel();
+        var attackLevel = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json")
+            .OfType<JsonObject>().Single(value => value["id"]!.GetValue<string>() == "c01-08");
+        var failures = new List<string>();
+        BattleScreen Mount(GrayFlagSession session, JsonObject battleLevel)
+        {
+            var screen = new BattleScreen();
+            AddChild(screen);
+            screen.Board.AnimationsEnabled = false;
+            screen.BindSession(new(text, presentation.Battle, PortraitCatalogResources.Load(), session,
+                new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)),
+                battleLevel, AuthoredScene.Load($"res://data/scenes/{battleLevel["id"]!.GetValue<string>()}.json"));
+            GetViewport().GuiReleaseFocus();
+            return screen;
+        }
+        void KeyEvent(Key key, bool pressed = true, bool echo = false)
+        {
+            using var input = new InputEventKey { Keycode = key, PhysicalKeycode = key, Pressed = pressed, Echo = echo };
+            GetViewport().PushInput(input, true);
+        }
+        (TacticalUnit Actor, TacticalHit Target) Attack(ITacticalSelectionQueries queries)
+        {
+            foreach (var id in queries.Actors())
+            {
+                var actor = queries.Unit(id)!;
+                foreach (var at in queries.MoveStops(id))
+                    foreach (var command in queries.CommandsAt(id, at).Where(command => command.Weapon is not null && command.Hostile))
+                        foreach (var target in command.TargetSubjects)
+                            if (target is { Kind: TacticalTargetKind.Unit, UnitId: { } targetId }
+                                && queries.Unit(targetId) is not null && queries.AreEnemies(id, targetId))
+                                return (actor, TacticalHit.Unit(target.Cell, targetId));
+            }
+            throw new InvalidOperationException("The unchanged C01-08 opening needs a real reachable enemy for the held-confirmation probe.");
+        }
+        void FocusTarget(ITacticalSelectionQueries queries, BoardCell start, BoardCell target)
+        {
+            var previous = new Dictionary<BoardCell, BoardCell> { [start] = start };
+            var queue = new Queue<BoardCell>();
+            queue.Enqueue(start);
+            while (queue.TryDequeue(out var cell) && !previous.ContainsKey(target))
+                foreach (var next in queries.DirectionSteps(cell).Where(queries.InteractiveCells.Contains))
+                    if (previous.TryAdd(next, cell))
+                        queue.Enqueue(next);
+            Require(previous.ContainsKey(target), "The real enemy must be reachable by the board's canonical keyboard cursor.");
+            var route = new Stack<BoardCell>();
+            for (var cell = target; cell != start; cell = previous[cell])
+                route.Push(cell);
+            var from = start;
+            foreach (var cell in route)
+            {
+                var key = cell.X > from.X ? Key.Right : cell.X < from.X ? Key.Left : cell.Y > from.Y ? Key.Down : Key.Up;
+                KeyEvent(key);
+                KeyEvent(key, false);
+                from = cell;
+            }
+        }
+
+        foreach (var confirmation in new[] { Key.Enter, Key.KpEnter })
+        {
+            var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), attackLevel);
+            var screen = Mount(session, attackLevel);
+            var stage = "setup";
+            try
+            {
+                var queries = session.GetTacticalQueries(0);
+                var attack = Attack(queries);
+                var before = EcmaJson.Stringify(session.Snapshot());
+                screen.SelectHit(TacticalHit.Unit(attack.Actor.At, attack.Actor.Id));
+                FocusTarget(queries, attack.Actor.At, attack.Target.Cell);
+                Require(GetViewport().GuiGetFocusOwner() is null && screen.Selection?.Kind == TacticalSelectionKind.Unit
+                    && session.Revision == 0 && session.Events.Count == 0,
+                    "Native arrows focus the real enemy without a native button taking ownership or issuing an order.");
+                KeyEvent(confirmation);
+                var preview = screen.Selection;
+                Require(preview is { Kind: TacticalSelectionKind.Target } && preview.PreviewTarget == attack.Target
+                    && session.Revision == 0 && session.Events.Count == 0 && EcmaJson.Stringify(session.Snapshot()) == before,
+                    $"The first fresh {confirmation} press must arm an actual legal attack without committing it.");
+                stage = "held confirmation";
+                for (var repeat = 0; repeat < 3; repeat++)
+                    KeyEvent(confirmation, echo: true);
+                var unchanged = session.Revision == 0 && session.Events.Count == 0 && session.ActionLog.Count == 0
+                    && EcmaJson.Stringify(session.Snapshot()) == before && screen.Selection == preview;
+                GD.Print($"KEY_REPEAT_PROBE {confirmation}: level=c01-08, actor={attack.Actor.Id}, target={attack.Target.UnitId}, revision={session.Revision}, selection={screen.Selection?.Kind}, unchanged={unchanged}");
+                if (!unchanged)
+                {
+                    failures.Add($"Held {confirmation} crossed attack preview into a command: revision {session.Revision}, expected 0.");
+                    KeyEvent(confirmation, false);
+                    continue;
+                }
+                stage = "fresh confirmation";
+                KeyEvent(confirmation, false);
+                KeyEvent(confirmation);
+                KeyEvent(confirmation, false);
+                var action = session.ActionLog.Single();
+                Require(session.Revision == 1 && session.Events.Count > 0 && action["kind"]!.GetValue<string>() == "command"
+                    && action["unit"]!.GetValue<int>() == attack.Actor.Id
+                    && action["command"]!["ability"]!.GetValue<string>() == "attack"
+                    && action["command"]!["weapon"]!.GetValue<string>() == preview!.Weapon
+                    && action["command"]!["target"]!["x"]!.GetValue<int>() == attack.Target.Cell.X
+                    && action["command"]!["target"]!["y"]!.GetValue<int>() == attack.Target.Cell.Y,
+                    $"Releasing and freshly pressing {confirmation} still commits exactly one canonical attack.");
+            }
+            catch (Exception error)
+            {
+                failures.Add($"{confirmation} probe {stage} failed: {error.Message}");
+            }
+            finally
+            {
+                RemoveChild(screen);
+                screen.Free();
+            }
+        }
+
+        var movementSession = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+        var movementScreen = Mount(movementSession, level);
+        var movementStage = "setup";
+        try
+        {
+            var queries = movementSession.GetTacticalQueries(0);
+            var actor = queries.Actors().Select(id => queries.Unit(id)!).First(unit =>
+            {
+                var stops = queries.MoveStops(unit.Id);
+                return new[] { new BoardCell(unit.At.X, unit.At.Y - 1), new BoardCell(unit.At.X, unit.At.Y - 2) }
+                    .All(at => queries.InteractiveCells.Contains(at) && stops.Contains(at) && queries.UnitAt(at) is null);
+            });
+            var destination = new BoardCell(actor.At.X, actor.At.Y - 2);
+            var before = EcmaJson.Stringify(movementSession.Snapshot());
+            movementScreen.SelectHit(TacticalHit.Unit(actor.At, actor.Id));
+            KeyEvent(Key.W);
+            KeyEvent(Key.W, echo: true);
+            Require(movementScreen.Selection?.Kind == TacticalSelectionKind.Unit && movementSession.Revision == 0,
+                "A fresh W and a held W repeat remain ordinary cursor navigation before a destination is selected.");
+            KeyEvent(Key.Enter);
+            KeyEvent(Key.Enter, false);
+            var preview = movementScreen.Selection;
+            Require(preview is { Kind: TacticalSelectionKind.Destination } && preview.Destination == destination
+                && movementSession.Revision == 0 && movementSession.Events.Count == 0
+                && EcmaJson.Stringify(movementSession.Snapshot()) == before,
+                "Fresh Enter chooses the real reachable destination while W remains held, without moving the actor.");
+            movementStage = "held navigation after destination selection";
+            KeyEvent(Key.W, echo: true);
+            var unchanged = movementSession.Revision == 0 && movementSession.Events.Count == 0 && movementSession.ActionLog.Count == 0
+                && EcmaJson.Stringify(movementSession.Snapshot()) == before && movementScreen.Selection == preview;
+            GD.Print($"KEY_REPEAT_PROBE W: actor={actor.Id}, destination={destination}, revision={movementSession.Revision}, selection={movementScreen.Selection?.Kind}, unchanged={unchanged}");
+            if (!unchanged)
+                failures.Add($"Held navigation W became Wait after destination selection: revision {movementSession.Revision}, expected 0.");
+            KeyEvent(Key.W, false);
+            if (unchanged)
+            {
+                movementStage = "fresh Wait command";
+                KeyEvent(Key.W);
+                KeyEvent(Key.W, false);
+                var action = movementSession.ActionLog.Single();
+                var moved = movementSession.Snapshot()["units"]!.AsArray().OfType<JsonObject>()
+                    .Single(unit => unit["id"]!.GetValue<int>() == actor.Id);
+                Require(movementSession.Revision == 1 && action["kind"]!.GetValue<string>() == "command"
+                    && action["command"]!["ability"]!.GetValue<string>() == "wait"
+                    && moved["x"]!.GetValue<int>() == destination.X && moved["y"]!.GetValue<int>() == destination.Y
+                    && moved["done"]!.GetValue<bool>(),
+                    "A new physical W press still commits exactly one move-and-wait at the previewed destination.");
+            }
+        }
+        catch (Exception error)
+        {
+            failures.Add($"W probe {movementStage} failed: {error.Message}");
+        }
+        finally
+        {
+            RemoveChild(movementScreen);
+            movementScreen.Free();
+        }
+        Require(failures.Count == 0, string.Join("\n", failures));
+    }
+
     private void CheckUndoKeyRepeat()
     {
         var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));

@@ -18,7 +18,7 @@ using Path = System.IO.Path;
 
 namespace Empire.Presentation;
 
-/// <summary>Real scene callbacks against generated, isolated saves. Terminal states are UI fixtures, not victorious routes.</summary>
+/// <summary>Real scene callbacks against isolated saves, with synthetic terminal fixtures and one legally played opening victory.</summary>
 public partial class CampaignNavigationChecks : Node
 {
     private readonly List<string> failures = new();
@@ -63,6 +63,7 @@ public partial class CampaignNavigationChecks : Node
                 ("ending active/completed/failed UI fixtures", () => { CheckEndingFixtures(); return Task.CompletedTask; }),
                 ("story, choice, ending and staging write failures", () => { CheckWriteFailures(); return Task.CompletedTask; }),
                 ("victory settlement UI fixture and autosave", () => { CheckVictorySettlement(); return Task.CompletedTask; }),
+                ("played victory confirmation, playback and carried continuation", CheckPlayedVictoryConfirmation),
                 ("read/delete failure preserves menu", () => { CheckReadDeleteFailure(); return Task.CompletedTask; }),
                 ("manual load admission and view activation are atomic", () => { CheckManualLoadAdmission(); return Task.CompletedTask; }),
                 ("formal Redstone entry, carried-roster fixture, resume and settlement", CheckFormalRedstone),
@@ -928,6 +929,199 @@ public partial class CampaignNavigationChecks : Node
                 Require(Directory.Exists(automaticPath) && !Directory.EnumerateFiles(userData, ".grayflag-campaign-autosave.json.*.tmp").Any(), "Failed atomic write removed the obstruction or leaked temporary data.");
             }
             finally { Directory.Delete(automaticPath); File.WriteAllText(automaticPath, previous); Retire(game); }
+        }
+    }
+
+    private async Task CheckPlayedVictoryConfirmation()
+    {
+        var originalManual = File.ReadAllBytes(manualPath);
+        var originalStamp = File.GetLastWriteTimeUtc(manualPath);
+        var game = MountGame();
+        try
+        {
+            var engine = Field<BattleEngine>(game, "engine");
+            var driver = Campaign(game);
+            while (driver.Node()["type"]!.GetValue<string>() != "battle")
+            {
+                if (driver.Node()["type"]!.GetValue<string>() == "choice")
+                    driver.Choose("steady-advance");
+                else
+                    driver.Advance();
+            }
+            WriteFixture(driver.Snapshot());
+            driver.BeginBattle();
+            JsonObject? checkpoint = null;
+            JsonObject? terminalOrder = null;
+            var terminalComputer = false;
+            var orders = 0;
+            // Derive a real checkpoint through admitted orders, never by editing a terminal snapshot.
+            while (driver.Battle!.Snapshot()["phase"]!.GetValue<string>() != "over")
+            {
+                Require(orders++ < 512, "The unchanged opening did not reach a genuine conclusion within the legal-driver bound.");
+                var battle = driver.Battle!;
+                checkpoint = driver.Save();
+                terminalComputer = battle.IsComputerTurn;
+                terminalOrder = engine.Ai.ChooseAction(battle.Snapshot());
+                if (terminalComputer)
+                    Require(battle.AdvanceComputerStep() is { Committed: true }, "The actual opponent refused its generated order.");
+                else
+                    Require(battle.Dispatch(EcmaJson.ToElement(terminalOrder), battle.Revision).Accepted,
+                        "The deterministic test-player policy generated an illegal order.");
+                Require(EcmaJson.DeepEquals(battle.ActionLog.Last(), terminalOrder), "The legal driver committed a different order than the recorded policy choice.");
+            }
+            Require(driver.BattleSummary().Outcome == "victory" && !terminalComputer
+                && terminalOrder?["command"]?["ability"]?.GetValue<string>() == "attack" && checkpoint is not null,
+                "The opening route must produce a real victory with a final human attack for this input check.");
+            SaveFile.WriteDocument(manualPath, checkpoint!);
+            var manual = File.ReadAllBytes(manualPath);
+            var loadedStamp = Stamp(manualPath);
+            var automatic = File.ReadAllBytes(automaticPath);
+            var automaticStamp = Stamp(automaticPath);
+            void ManualUnchanged() => Require(File.ReadAllBytes(manualPath).SequenceEqual(manual)
+                && Stamp(manualPath) == loadedStamp && !File.Exists(manualPath + ".tmp"),
+                "Playing, settling, or continuing the genuine victory changed the manual checkpoint slot.");
+            void KeyEvent(Key key, bool pressed = true, bool echo = false)
+            {
+                using var input = new InputEventKey { Keycode = key, PhysicalKeycode = key, Pressed = pressed, Echo = echo };
+                GetViewport().PushInput(input, true);
+            }
+            game.ProcessMode = ProcessModeEnum.Inherit;
+            KeyEvent(Key.F9);
+            KeyEvent(Key.F9, false);
+            await Layout();
+            var campaign = Campaign(game);
+            var session = campaign.Battle!;
+            var screen = View<BattleScreen>(game);
+            Require(!ReferenceEquals(campaign, driver) && session.Revision == 0 && !session.IsComputerTurn
+                && EcmaJson.DeepEquals(session.Snapshot(), checkpoint!["battle"]!["state"]),
+                "Actual F9 must admit the played pre-victory checkpoint and activate a fresh human battle screen.");
+            Require(screen.Board.AnimationsEnabled && screen.Board.AdvanceAnimationsAutomatically,
+                "The terminal input check requires normal automatic presentation.");
+            var before = session.Snapshot();
+            var beforeEvents = EcmaJson.Stringify(new JsonArray(session.Events.Select(value => (JsonNode)value.DeepClone()).ToArray()));
+            var campaignBefore = campaign.Snapshot();
+            var queries = session.GetTacticalQueries(0);
+            var actor = queries.Unit(terminalOrder!["unit"]!.GetValue<int>())!;
+            var target = terminalOrder["command"]!["target"]!;
+            var targetCell = new BoardCell(target["x"]!.GetValue<int>(), target["y"]!.GetValue<int>());
+            var enemy = queries.UnitAt(targetCell)!;
+            screen.SelectHit(TacticalHit.Unit(actor.At, actor.Id));
+            var previous = new Dictionary<BoardCell, BoardCell> { [actor.At] = actor.At };
+            var queue = new Queue<BoardCell>();
+            queue.Enqueue(actor.At);
+            while (queue.TryDequeue(out var cell) && !previous.ContainsKey(targetCell))
+                foreach (var next in queries.DirectionSteps(cell).Where(queries.InteractiveCells.Contains))
+                    if (previous.TryAdd(next, cell))
+                        queue.Enqueue(next);
+            Require(previous.ContainsKey(targetCell), "The final enemy must be reachable by the canonical keyboard cursor.");
+            var route = new Stack<BoardCell>();
+            for (var cell = targetCell; cell != actor.At; cell = previous[cell])
+                route.Push(cell);
+            var from = actor.At;
+            foreach (var cell in route)
+            {
+                var key = cell.X > from.X ? Key.Right : cell.X < from.X ? Key.Left : cell.Y > from.Y ? Key.Down : Key.Up;
+                KeyEvent(key);
+                KeyEvent(key, false);
+                from = cell;
+            }
+            KeyEvent(Key.Enter);
+            var preview = screen.Selection;
+            Require(preview is { Kind: TacticalSelectionKind.Target }
+                && preview.PreviewTarget == TacticalHit.Unit(targetCell, enemy.Id) && session.Revision == 0,
+                "First Enter must preview the genuine final attack without committing it.");
+            for (var repeat = 0; repeat < 3; repeat++)
+                KeyEvent(Key.Enter, echo: true);
+            await Layout();
+            Require(ReferenceEquals(View<Control>(game), screen) && screen.Selection == preview
+                && session.Revision == 0 && session.ActionLog.Count == 0
+                && EcmaJson.DeepEquals(session.Snapshot(), before) && EcmaJson.DeepEquals(campaign.Snapshot(), campaignBefore)
+                && EcmaJson.Stringify(new JsonArray(session.Events.Select(value => (JsonNode)value.DeepClone()).ToArray())) == beforeEvents,
+                "Held Enter must not win the battle, change the campaign, or leave its final-attack preview.");
+            ManualUnchanged();
+            var presented = new List<int>();
+            var presentedOnBattle = true;
+            screen.Board.EventPresented += (transition, index) =>
+            {
+                presented.Add(index);
+                presentedOnBattle &= ReferenceEquals(View<Control>(game), screen) && screen.IsPresenting;
+            };
+            KeyEvent(Key.Enter, false);
+            KeyEvent(Key.Enter);
+            KeyEvent(Key.Enter, false);
+            var receipt = session.GetSnapshot().Transition!;
+            Require(session.Revision == 1 && session.ActionLog.Count == 1 && screen.IsPresenting
+                && session.Snapshot()["phase"]!.GetValue<string>() == "over" && campaign.BattleSummary().Outcome == "victory",
+                "A released, fresh Enter must commit one real victory and begin its terminal playback.");
+            var action = receipt.Action;
+            var command = action.GetProperty("command");
+            Require(action.GetProperty("kind").GetString() == "command"
+                && action.GetProperty("unit").GetInt32() == actor.Id && preview!.UnitId == actor.Id
+                && command.GetProperty("ability").GetString() == "attack" && preview.Ability == "attack"
+                && command.GetProperty("weapon").GetString() == preview.Weapon
+                && command.GetProperty("target").GetProperty("x").GetInt32() == targetCell.X
+                && command.GetProperty("target").GetProperty("y").GetInt32() == targetCell.Y
+                && action.GetProperty("path").EnumerateArray()
+                    .Select(cell => new BoardCell(cell.GetProperty("x").GetInt32(), cell.GetProperty("y").GetInt32()))
+                    .SequenceEqual(preview.Path),
+                "The final native order must use the exact actor, command, weapon, target, and path shown by its preview.");
+            var reference = new GrayFlagCampaign(new(engine, Field<SessionPresentationText>(game, "presentationText")),
+                definition, Field<JsonArray>(game, "levels"));
+            reference.Load(checkpoint);
+            Require(reference.Battle!.Dispatch(receipt.Action, reference.Battle.Revision).Accepted
+                && EcmaJson.DeepEquals(reference.Battle.Snapshot(), session.Snapshot())
+                && EcmaJson.DeepEquals(new JsonArray(reference.Battle.Events.Select(value => (JsonNode)value.DeepClone()).ToArray()),
+                    new JsonArray(session.Events.Select(value => (JsonNode)value.DeepClone()).ToArray())),
+                "The native final command must match canonical execution of the actual UI-issued order, including its event history.");
+            var deadline = Time.GetTicksMsec() + 30_000;
+            while (ReferenceEquals(View<Control>(game), screen))
+            {
+                Require(Time.GetTicksMsec() < deadline, "Automatic terminal playback did not reach the completion screen.");
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            }
+            var completion = View<BattleResultScreen>(game);
+            Require(presentedOnBattle && presented.SequenceEqual(Enumerable.Range(0, receipt.Events.Count))
+                && receipt.Events.Last().GetProperty("type").GetString() == "gameOver",
+                "Completion must wait for every real terminal event, including the final game-over event.");
+            Require(ReferenceEquals(campaign.Battle, session) && EcmaJson.DeepEquals(campaign.Snapshot(), campaignBefore)
+                && File.ReadAllBytes(automaticPath).SequenceEqual(automatic) && Stamp(automaticPath) == automaticStamp,
+                "Showing a played victory must leave its campaign and clean autosave unchanged until explicit settlement.");
+            reference.FinishBattle();
+            var settle = Button(completion, "Settle");
+            Press(settle);
+            var summary = View<BattleResultScreen>(game);
+            Press(settle);
+            Require(!ReferenceEquals(summary, completion) && ReferenceEquals(View<Control>(game), summary)
+                && !campaign.HasPendingBattle && EcmaJson.DeepEquals(campaign.Snapshot(), reference.Snapshot())
+                && campaign.Snapshot()["battleHistory"]!.AsArray().Count == campaignBefore["battleHistory"]!.AsArray().Count + 1,
+                "Settlement must commit the genuine result and carried roster exactly once.");
+            AssertSaved(game);
+            var proceed = Button(summary, "Proceed");
+            Press(proceed);
+            Press(proceed);
+            Require(View<Control>(game) is StoryScreen && campaign.Node()["id"]!.GetValue<string>() == "aftermath-01"
+                && EcmaJson.DeepEquals(campaign.Snapshot(), reference.Snapshot()), "Summary continuation must show the actual aftermath without settling again.");
+            foreach (var node in new[] { "aftermath-01", "brief-02" })
+            {
+                Require(campaign.Node()["id"]!.GetValue<string>() == node, "Played victory skipped an authored bridge-approach story.");
+                CompleteStory(game);
+                reference.Advance();
+                Require(EcmaJson.DeepEquals(campaign.Snapshot(), reference.Snapshot()), "Story continuation changed the carried canonical campaign.");
+            }
+            Press(Button(View<StoryScreen>(game), "Choice_accept-truce"));
+            reference.Choose("accept-truce");
+            Require(View<Control>(game) is CampaignStagingScreen && campaign.Node()["id"]!.GetValue<string>() == "battle-02"
+                && !campaign.HasPendingBattle && EcmaJson.DeepEquals(campaign.Snapshot(), reference.Snapshot()),
+                "The actual bridge choice must reach second-battle staging with the exact carried roster and history.");
+            AssertSaved(game);
+            ManualUnchanged();
+            GD.Print($"Played victory confirmation flow: {orders} legal derivation orders; native final action {receipt.Action.GetRawText()}; terminal {Digest(session.Snapshot())}; aftermath and battle-02 staging passed. Human terminal playback, not AI-terminal pause coverage.");
+        }
+        finally
+        {
+            Retire(game);
+            File.WriteAllBytes(manualPath, originalManual);
+            File.SetLastWriteTimeUtc(manualPath, originalStamp);
         }
     }
 

@@ -483,7 +483,7 @@ public sealed class TacticalSelectionController
         ? TacticalHit.Unit(at, unit.Id)
         : queries.IsSite(at) || queries.CanOpenRecruitment(at) ? TacticalHit.Object(at) : TacticalHit.Ground(at);
 
-    public TacticalInputResult Key(TacticalStamp expected, string key)
+    public TacticalInputResult Key(TacticalStamp expected, string key, bool repeat = false)
     {
         var k = key.ToLowerInvariant();
         if (k == "escape")
@@ -491,6 +491,17 @@ public sealed class TacticalSelectionController
         var guard = Guard(expected, true);
         if (guard != TacticalInputStatus.Ready)
             return Result(guard);
+        var command = k switch
+        {
+            "a" => "attack",
+            "c" => "capture",
+            "h" => "heal",
+            "w" => "wait",
+            _ => null
+        };
+        if (repeat && (k is "e" or "u" or "enter"
+            || command is not null && Selection.Kind == TacticalSelectionKind.Destination))
+            return Result(TacticalInputStatus.Ignored);
         if (k == "e")
             return Action(new JsonObject { ["kind"] = "endTurn" });
         if (k == "u")
@@ -500,14 +511,6 @@ public sealed class TacticalSelectionController
             {
                 PreventDefault = true
             };
-        var command = k switch
-        {
-            "a" => "attack",
-            "c" => "capture",
-            "h" => "heal",
-            "w" => "wait",
-            _ => null
-        };
         if (command is not null && Selection.Kind == TacticalSelectionKind.Destination)
             return ChooseCommand(expected, command);
         var direction = k switch

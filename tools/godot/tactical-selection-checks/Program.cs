@@ -140,32 +140,53 @@ controller.Bind(fixture);
 var stamp = controller.Stamp;
 Check(controller.Click(stamp with { Binding = 99 }, fixture.SourceHit(new(0, 0))).Status == TacticalInputStatus.StaleBinding, "stale binding");
 Check(controller.Click(stamp with { Revision = 99 }, fixture.SourceHit(new(0, 0))).Status == TacticalInputStatus.StaleRevision, "stale revision");
+Check(controller.Key(stamp with
+{
+    Binding = 99
+}, "enter", repeat: true).Status == TacticalInputStatus.StaleBinding
+    && controller.Key(stamp with
+    {
+        Revision = 99
+    }, "w", repeat: true).Status == TacticalInputStatus.StaleRevision,
+    "repeated input respects binding and revision admission before repeat policy");
 controller.SetBusy(true);
 Check(controller.Click(stamp, fixture.SourceHit(new(0, 0))).Status == TacticalInputStatus.Busy, "busy click");
 Check(controller.Key(stamp, "Escape").Status == TacticalInputStatus.Busy, "busy escape");
+Check(controller.Key(stamp, "enter", repeat: true).Status == TacticalInputStatus.Busy, "repeated confirmation respects busy guard");
 Check(controller.Overlay().Move.Count == 0, "busy overlays");
 controller.SetBusy(false);
 fixture.HumanTurn = false;
 fixture.HumanInput = false;
 Check(controller.Key(stamp, "e").Status == TacticalInputStatus.NotHuman, "AI end turn");
+Check(controller.Key(stamp, "e", repeat: true).Status == TacticalInputStatus.NotHuman, "repeated end turn respects human guard");
 Check(controller.Back(stamp).Status == TacticalInputStatus.Ready, "AI escape precedence");
 fixture.HumanTurn = true;
 fixture.HumanInput = true;
 fixture.Phase = "over";
 Check(controller.Click(stamp, fixture.SourceHit(new(0, 0))).Status == TacticalInputStatus.Terminal, "terminal click");
+Check(controller.Key(stamp, "enter", repeat: true).Status == TacticalInputStatus.Terminal, "repeated confirmation respects terminal guard");
 fixture.Phase = "playing";
 controller.Bind(fixture);
 controller.Click(stamp, fixture.SourceHit(new(0, 0)));
 controller.Click(stamp, fixture.SourceHit(new(2, 0)));
+var heldDestination = controller.Selection;
+var heldCursor = controller.CursorHit;
+foreach (var repeated in new[] { "a", "c", "h", "w", "enter", "e", "u" })
+{
+    var ignored = controller.Key(stamp, repeated, repeat: true);
+    Check(ignored.Status == TacticalInputStatus.Ignored && ignored.Request is null
+        && controller.Selection == heldDestination && controller.CursorHit == heldCursor,
+        "held contextual command preserves destination and cannot fall through into navigation: " + repeated);
+}
 var wait = controller.Key(stamp, "w");
 Check(wait.Request?.Action?.GetProperty("command").GetProperty("ability").GetString() == "wait", "command before WASD");
 Check(controller.Cursor is null, "command does not move cursor");
 controller.CompleteDispatch(stamp, fixture);
-controller.Key(stamp, " ");
+controller.Key(stamp, " ", repeat: true);
 Equal(controller.Selection.UnitId, fixture.Actors()[0], "cycle source actor order");
 controller.Hover(stamp, fixture.SourceHit(new(0, 0)));
 fixture.StepsOverride = new[] { new BoardCell(1, 1), new BoardCell(1, 0) };
-controller.Key(stamp, "d");
+controller.Key(stamp, "d", repeat: true);
 Equal(controller.Cursor, new BoardCell(1, 1), "configured direction strict tie");
 fixture.StepsOverride = null;
 controller.Bind(fixture);
@@ -189,6 +210,12 @@ Equal(controller.Overlay().Attack.Count, 0, "engagement not ability ID");
 var previewHit = TacticalHit.Ground(new(0, 0));
 controller.Hover(stamp, previewHit);
 Equal(controller.Selection.PreviewTarget, previewHit, "valid target hover owns the explicit preview");
+var heldTarget = controller.Selection;
+var heldConfirmation = controller.Key(stamp, "enter", repeat: true);
+Check(heldConfirmation.Status == TacticalInputStatus.Ignored && heldConfirmation.Request is null
+    && controller.Selection == heldTarget && controller.CursorHit == previewHit,
+    "held confirmation cannot spend the displayed target preview");
+Check(controller.Key(stamp, "enter").Request is not null, "fresh confirmation still emits the displayed legal target command");
 controller.Hover(stamp, TacticalHit.Ground(new(2, 0)));
 Equal(controller.Selection.PreviewTarget, previewHit, "ordinary ground traversal preserves preview for HUD inspection");
 Equal(controller.CursorHit, TacticalHit.Ground(new(2, 0)), "activation cursor remains the actual ground, never a preview alias");

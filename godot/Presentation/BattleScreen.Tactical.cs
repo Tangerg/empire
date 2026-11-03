@@ -219,17 +219,18 @@ public partial class BattleScreen
             Key.A => "a",
             Key.C => "c",
             Key.D => "d",
-            Key.E when !key.Echo => "e",
+            Key.E => "e",
             Key.H => "h",
             Key.S => "s",
-            Key.U when !key.Echo => "u",
+            Key.U => "u",
             Key.W => "w",
             _ => null,
         };
         if (sourceKey is null)
             return;
-        var result = _tactical.Key(_tactical.Stamp, sourceKey);
-        HandleTactical(result);
+        var result = _tactical.Key(_tactical.Stamp, sourceKey, key.Echo);
+        if (!(key.Echo && result.Status == TacticalInputStatus.Ignored))
+            HandleTactical(result);
         // A key routed to the board cannot also activate a native control.
         GetViewport().SetInputAsHandled();
     }
