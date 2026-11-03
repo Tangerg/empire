@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Collections.Frozen;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core.Determinism;
@@ -16,6 +17,8 @@ public sealed class BattleLogContext
     private readonly Func<string, string> unitTypeName;
     private readonly Func<int, string> playerName;
     private readonly JsonElement before;
+    private readonly FrozenSet<int>? beforeVisible;
+    private readonly FrozenSet<int>? afterVisible;
     private readonly Dictionary<int, (string Type, int Owner)> created = new();
     public JsonElement State
     {
@@ -30,16 +33,21 @@ public sealed class BattleLogContext
         get;
     }
 
-    public BattleLogContext(BattleLogNames names, JsonElement before, JsonElement after)
+    public BattleLogContext(BattleLogNames names, JsonElement before, JsonElement after,
+        IReadOnlySet<int>? beforeVisible = null, IReadOnlySet<int>? afterVisible = null)
     {
         State = after.Clone();
         this.before = before.Clone();
+        this.beforeVisible = beforeVisible?.ToFrozenSet();
+        this.afterVisible = afterVisible?.ToFrozenSet();
         unitName = names.Unit;
         unitTypeName = names.UnitType;
         CareerName = names.Career;
         ResourceName = names.Resource;
         playerName = names.Player;
     }
+
+    public bool CanObserveUnit(int id) => BattleEventVisibility.UnitWasAndIsVisible(id, beforeVisible, afterVisible);
 
     internal void Observe(JsonElement value)
     {
@@ -95,6 +103,13 @@ public sealed class BattleLogContext
             double.TryParse(FeedbackJson.Text(id), NumberStyles.Float, CultureInfo.InvariantCulture, out var parsed) ? parsed : double.NaN;
         return kind == "player" ? PlayerName(numeric) : UnitName(numeric);
     }
+}
+
+/// <summary>Snapshot-bound feedback cannot reveal a unit hidden at either boundary. Null means unrestricted; empty means none.</summary>
+internal static class BattleEventVisibility
+{
+    internal static bool UnitWasAndIsVisible(int id, IReadOnlySet<int>? before, IReadOnlySet<int>? after) =>
+        (before?.Contains(id) ?? true) && (after?.Contains(id) ?? true);
 }
 
 internal static class FeedbackJson

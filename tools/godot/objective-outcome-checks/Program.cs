@@ -603,6 +603,26 @@ var resourceIndex = transientReceipt.Events.ToList().FindIndex(value => value["t
     && value["subject"]?["id"]?.GetValue<int>() == transientId);
 Check(resourceIndex > transientReceipt.Events.ToList().IndexOf(creation), "creation precedes its transient actor-bearing resource event");
 var eventText = BattleEventText.CreateDefault(new(firstCatalog, firstText));
+var recoveringId = attacker["id"]!.GetValue<int>();
+var recovery = EcmaJson.ToElement(new JsonObject { ["type"] = "regen", ["unit"] = recoveringId, ["amount"] = 5 });
+var observed = new HashSet<int> { recoveringId };
+var concealed = new HashSet<int>();
+foreach (var (beforeVisibility, afterVisibility, expectedVisible) in new (IReadOnlySet<int>?, IReadOnlySet<int>?, bool)[]
+{
+    (null, null, true), (observed, observed, true), (concealed, observed, false),
+    (observed, concealed, false), (concealed, concealed, false), (null, concealed, false), (concealed, null, false)
+})
+{
+    var recoveryContext = new BattleLogContext(logNames, EcmaJson.ToElement(contentState), EcmaJson.ToElement(contentState), beforeVisibility, afterVisibility);
+    var projected = eventText.DescribeAll(recoveryContext, new[] { recovery });
+    Check(projected.Count == 1 && projected[0] == (expectedVisible ? firstCatalog.Format("battle.event.regen", "Copper infantry", 5) : ""),
+        "recovery feedback uses the exact event amount and both visibility boundaries, retaining silent event slots");
+}
+var frozenVisibility = new BattleLogContext(logNames, EcmaJson.ToElement(contentState), EcmaJson.ToElement(contentState), observed, observed);
+observed.Clear();
+concealed.Add(recoveringId);
+Check(eventText.Describe(frozenVisibility, recovery) == firstCatalog.Format("battle.event.regen", "Copper infantry", 5),
+    "recovery context freezes visibility rather than borrowing mutable caller sets");
 BattleLogContext TransientContext() => new(logNames, EcmaJson.ToElement(transientBefore), EcmaJson.ToElement(transientAfter));
 var eventValues = transientReceipt.Events.Select(EcmaJson.ToElement).ToArray();
 var eventLines = eventText.DescribeAll(TransientContext(), eventValues);

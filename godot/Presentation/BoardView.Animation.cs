@@ -1,11 +1,13 @@
 #nullable enable
 using System;
+using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
+using Empire.Presentation.Feedback;
 using Godot;
 
 namespace Empire.Presentation;
@@ -63,12 +65,13 @@ public partial class BoardView
             return false;
         var before = ReadState(transition.Before);
         var after = ReadState(transition.After);
+        var afterVisible = afterVisibleUnitIds?.ToFrozenSet();
         var action = ReadState(transition.Action);
         var events = transition.Events.Select(ReadState).ToArray();
         RenderState(before, transition.BeforeVisibleUnitIds);
         var effects = new Node2D { Name = "BattleEffects", ZIndex = 2500 };
         AddChild(effects);
-        var playback = new Playback(transition, before, after, afterVisibleUnitIds,
+        var playback = new Playback(transition, before, after, afterVisible,
             new PresentationTimeline { MotionEnabled = AnimationsEnabled }, effects);
         _playback = playback;
         _cueLayer!.Visible = false;
@@ -100,7 +103,7 @@ public partial class BoardView
                 playback.Clock.Cancel();
                 RemoveEffect(effects);
                 if (!_exiting)
-                    RenderState(after, afterVisibleUnitIds);
+                    RenderState(after, afterVisible);
             }
         }
     }
@@ -138,6 +141,14 @@ public partial class BoardView
                     var unit = FindUnit(playback.After, target);
                     return unit is null || !WasVisible(playback, target)
                         || await AnimateImpact(playback, Coordinate(unit), Number(item["amount"], "heal amount"), true, false, _assets!.ResolveHealEffect()?.TopicId);
+                }
+            case "regen":
+                {
+                    var id = Integer(item, "unit");
+                    var unit = FindUnit(playback.After, id);
+                    return unit is null || DrawnUnit(id) is null
+                        || !BattleEventVisibility.UnitWasAndIsVisible(id, playback.Transition.BeforeVisibleUnitIds, playback.AfterVisible)
+                        || await AnimateImpact(playback, Coordinate(unit), Number(item["amount"], "regen amount"), true, false, _assets!.ResolveHealEffect()?.TopicId);
                 }
             case "recruit":
                 Repaint(playback);

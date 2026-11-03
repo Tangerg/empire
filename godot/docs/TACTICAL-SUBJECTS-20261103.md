@@ -94,4 +94,5 @@ legal commands and 9,648 ordered events without identity/formatting exceptions;
 every terminal digest matched the archived baseline. Empty descriptions were
 counted, not treated as defects. For example, owner-turn regeneration has no
 dedicated text/animation feedback; that separate presentation omission is not
-silently recast as an eligibility bug or included in this fix.
+silently recast as an eligibility bug or included in this fix. Its subsequent
+dedicated implementation is recorded in [owner-turn regeneration feedback](REGENERATION-FEEDBACK-20261103.md).

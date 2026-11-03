@@ -181,10 +181,14 @@ public sealed partial class GrayFlagSession
         actions.Add((JsonObject)command.DeepClone());
         events.AddRange(receipt.Events.Select(value => (JsonObject)value.DeepClone()));
         revision++;
-        var after = Empire.Core.Determinism.EcmaJson.ToElement(battle.Snapshot());
+        var afterState = battle.Snapshot();
+        var after = Empire.Core.Determinism.EcmaJson.ToElement(afterState);
+        var afterVisible = afterState["rules"]?["fog"]?.GetValue<bool>() == true
+            ? VisibleUnitIds(afterState, Viewer(afterState)) : null;
         var eventValues = receipt.Events.Select(Empire.Core.Determinism.EcmaJson.ToElement).ToArray();
         var logContext = new BattleLogContext(new BattleLogNames(unitNames.Name, contentText.UnitName, contentText.CareerName, contentText.ResourceName,
-            id => battleText.PlayerName(levelId: after.GetProperty("levelId").GetString()!, playerId: id)), EcmaJson.ToElement(receipt.Before), after);
+            id => battleText.PlayerName(levelId: after.GetProperty("levelId").GetString()!, playerId: id)),
+            EcmaJson.ToElement(receipt.Before), after, beforeVisible, afterVisible);
         transition = new BattlePresentationTransition(revision,
             Empire.Core.Determinism.EcmaJson.ToElement(receipt.Before),
             Empire.Core.Determinism.EcmaJson.ToElement(command),

@@ -503,6 +503,9 @@ disposition and the other unit fields have separate owners and scope.
   death, markers, passenger/commander/cast aftermath and ordered events.
 - Registered healing abilities and `BattleLifecycle` use `UnitHealth.Heal`.
   `TacticalCell.Heal` owns the battlefield's terrain/overlay healing read fact.
+  Owner-turn recovery feedback reads the emitted actual `regen` amount; text and
+  animation share the two-snapshot visibility policy, without writing health.
+  See [regeneration feedback](../godot/docs/REGENERATION-FEEDBACK-20261103.md).
 - `CareerRules` selects the new type and preflights `UnitHealth` before spending
   resources; the same owner applies the health-preserving type change.
 - `BattleUnitReturn` owns identity/reset/return events and uses

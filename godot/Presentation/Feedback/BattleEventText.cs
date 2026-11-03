@@ -71,7 +71,7 @@ public sealed class BattleEventText
         var battleText = rules.Battle;
         text.ValidateKeys(new[] { "battle.event.attack", "battle.event.counter", "battle.event.support", "battle.event.parting",
             "battle.event.area", "battle.event.structure", "battle.event.area_structure", "battle.event.target_killed",
-            "battle.event.ally_killed", "battle.event.structure_destroyed", "battle.event.structure_disabled", "battle.event.structure_enabled", "battle.event.heal", "battle.event.recruit",
+            "battle.event.ally_killed", "battle.event.structure_destroyed", "battle.event.structure_disabled", "battle.event.structure_enabled", "battle.event.heal", "battle.event.regen", "battle.event.recruit",
             "battle.event.forced_move", "battle.event.collision", "battle.event.capture", "battle.event.capture_progress", "battle.event.turn", "battle.event.resource",
             "battle.event.rank", "battle.event.career", "battle.event.facing", "battle.event.defeat",
             "ui.rank.recruit", "ui.rank.veteran", "ui.rank.elite" });
@@ -101,6 +101,8 @@ public sealed class BattleEventText
                 Number(value, "amount"), Number(value, "hpAfter"), Casualty(value)))
             .Register("death", (_, _) => "")
             .Register("heal", (context, value) => text.Format("battle.event.heal", context.UnitName(Id(value, "source")), context.UnitName(Id(value, "target")), Number(value, "amount")))
+            .Register("regen", (context, value) => context.CanObserveUnit(value.GetProperty("unit").GetInt32())
+                ? text.Format("battle.event.regen", context.UnitName(Id(value, "unit")), Number(value, "amount")) : "")
             .Register("recruit", (context, value) => text.Format("battle.event.recruit",
                 context.PlayerName(Id(value, "owner")), context.UnitName(Id(value, "unit"))))
             .Register("capture", (context, value) => value.GetProperty("captured").GetBoolean()

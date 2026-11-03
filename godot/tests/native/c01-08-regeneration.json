@@ -1,0 +1,357 @@
+{
+  "levelId": "c01-08",
+  "isComputerAction": true,
+  "initialStateHash": "aa114045",
+  "beforeStateHash": "7e386453",
+  "afterStateHash": "a8f9f653",
+  "eventsSha256": "87f7f56bebf362039840c60c692f157663cc0fdac932f00f758f2d218d6b7bfe",
+  "action": {
+    "kind": "endTurn"
+  },
+  "regeneration": [
+    {
+      "type": "regen",
+      "unit": 7,
+      "amount": 5
+    }
+  ],
+  "hiddenBoundary": {
+    "continuation": [
+      {
+        "kind": "endTurn"
+      },
+      {
+        "kind": "reaction",
+        "unit": 9,
+        "stance": "guard"
+      },
+      {
+        "kind": "command",
+        "unit": 7,
+        "path": [
+          {
+            "x": 10,
+            "y": 11
+          },
+          {
+            "x": 10,
+            "y": 10
+          },
+          {
+            "x": 11,
+            "y": 10
+          },
+          {
+            "x": 11,
+            "y": 9
+          }
+        ],
+        "command": {
+          "ability": "attack",
+          "weapon": "c01.guard-spear",
+          "target": {
+            "x": 12,
+            "y": 9
+          }
+        }
+      },
+      {
+        "kind": "command",
+        "unit": 9,
+        "path": [
+          {
+            "x": 12,
+            "y": 10
+          },
+          {
+            "x": 11,
+            "y": 10
+          }
+        ],
+        "command": {
+          "ability": "attack",
+          "weapon": "c01.ranger-bow",
+          "target": {
+            "x": 12,
+            "y": 9
+          }
+        }
+      },
+      {
+        "kind": "command",
+        "unit": 4,
+        "path": [
+          {
+            "x": 5,
+            "y": 4
+          },
+          {
+            "x": 5,
+            "y": 3
+          },
+          {
+            "x": 6,
+            "y": 3
+          }
+        ],
+        "command": {
+          "ability": "attack",
+          "weapon": "c01.oath-dispel",
+          "target": {
+            "x": 8,
+            "y": 3
+          }
+        }
+      },
+      {
+        "kind": "command",
+        "unit": 11,
+        "path": [
+          {
+            "x": 8,
+            "y": 4
+          }
+        ],
+        "command": {
+          "ability": "attack",
+          "weapon": "c01.guard-spear",
+          "target": {
+            "x": 8,
+            "y": 3
+          }
+        }
+      },
+      {
+        "kind": "command",
+        "unit": 2,
+        "path": [
+          {
+            "x": 5,
+            "y": 2
+          },
+          {
+            "x": 5,
+            "y": 3
+          }
+        ],
+        "command": {
+          "ability": "wait"
+        }
+      },
+      {
+        "kind": "command",
+        "unit": 12,
+        "path": [
+          {
+            "x": 8,
+            "y": 11
+          },
+          {
+            "x": 8,
+            "y": 10
+          },
+          {
+            "x": 9,
+            "y": 10
+          },
+          {
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "command": {
+          "ability": "wait"
+        }
+      },
+      {
+        "kind": "command",
+        "unit": 1,
+        "path": [
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 1,
+            "y": 1
+          },
+          {
+            "x": 2,
+            "y": 1
+          },
+          {
+            "x": 3,
+            "y": 1
+          },
+          {
+            "x": 3,
+            "y": 2
+          }
+        ],
+        "command": {
+          "ability": "wait"
+        }
+      },
+      {
+        "kind": "command",
+        "unit": 6,
+        "path": [
+          {
+            "x": 6,
+            "y": 7
+          },
+          {
+            "x": 6,
+            "y": 6
+          },
+          {
+            "x": 6,
+            "y": 5
+          },
+          {
+            "x": 6,
+            "y": 4
+          }
+        ],
+        "command": {
+          "ability": "wait"
+        }
+      },
+      {
+        "kind": "command",
+        "unit": 8,
+        "path": [
+          {
+            "x": 5,
+            "y": 7
+          },
+          {
+            "x": 5,
+            "y": 6
+          },
+          {
+            "x": 5,
+            "y": 5
+          },
+          {
+            "x": 5,
+            "y": 4
+          }
+        ],
+        "command": {
+          "ability": "wait"
+        }
+      },
+      {
+        "kind": "command",
+        "unit": 3,
+        "path": [
+          {
+            "x": 6,
+            "y": 10
+          },
+          {
+            "x": 6,
+            "y": 9
+          },
+          {
+            "x": 7,
+            "y": 9
+          },
+          {
+            "x": 8,
+            "y": 9
+          }
+        ],
+        "command": {
+          "ability": "wait"
+        }
+      },
+      {
+        "kind": "command",
+        "unit": 10,
+        "path": [
+          {
+            "x": 4,
+            "y": 10
+          },
+          {
+            "x": 4,
+            "y": 9
+          },
+          {
+            "x": 5,
+            "y": 9
+          },
+          {
+            "x": 6,
+            "y": 9
+          }
+        ],
+        "command": {
+          "ability": "wait"
+        }
+      }
+    ],
+    "beforeStateHash": "55344960",
+    "fogBeforeStateHash": "09bededd",
+    "fogAfterStateHash": "04e52ed8",
+    "action": {
+      "kind": "endTurn"
+    },
+    "unit": 13,
+    "amount": 20
+  },
+  "prefix": [
+    {"kind":"reaction","unit":4,"stance":"support"},
+    {"kind":"command","unit":7,"path":[{"x":8,"y":10},{"x":9,"y":10},{"x":10,"y":10},{"x":10,"y":11}],"command":{"ability":"capture"}},
+    {"kind":"command","unit":4,"path":[{"x":5,"y":7}],"command":{"ability":"capture"}},
+    {"kind":"command","unit":1,"path":[{"x":1,"y":7},{"x":1,"y":6},{"x":1,"y":5},{"x":1,"y":4},{"x":1,"y":3}],"command":{"ability":"capture"}},
+    {"kind":"command","unit":9,"path":[{"x":11,"y":11},{"x":11,"y":10},{"x":12,"y":10}],"command":{"ability":"attack","weapon":"c01.ranger-bow","target":{"x":12,"y":12}}},
+    {"kind":"command","unit":5,"path":[{"x":6,"y":6},{"x":6,"y":5},{"x":7,"y":5},{"x":8,"y":5},{"x":8,"y":4},{"x":8,"y":3}],"command":{"ability":"attack","weapon":"c01.ranger-bow","target":{"x":10,"y":2}}},
+    {"kind":"command","unit":12,"path":[{"x":6,"y":9},{"x":6,"y":10},{"x":6,"y":11},{"x":6,"y":12}],"command":{"ability":"wait"}},
+    {"kind":"command","unit":10,"path":[{"x":5,"y":10},{"x":5,"y":11},{"x":5,"y":12}],"command":{"ability":"wait"}},
+    {"kind":"command","unit":11,"path":[{"x":6,"y":8},{"x":6,"y":7},{"x":6,"y":6},{"x":7,"y":6}],"command":{"ability":"wait"}},
+    {"kind":"command","unit":2,"path":[{"x":3,"y":6},{"x":3,"y":5},{"x":3,"y":4},{"x":3,"y":3}],"command":{"ability":"wait"}},
+    {"kind":"command","unit":6,"path":[{"x":5,"y":8},{"x":6,"y":8},{"x":6,"y":9},{"x":6,"y":10}],"command":{"ability":"wait"}},
+    {"kind":"command","unit":3,"path":[{"x":3,"y":8},{"x":4,"y":8},{"x":4,"y":9},{"x":4,"y":10}],"command":{"ability":"wait"}},
+    {"kind":"command","unit":8,"path":[{"x":4,"y":8},{"x":5,"y":8},{"x":5,"y":9},{"x":5,"y":10}],"command":{"ability":"wait"}},
+    {"kind":"endTurn"},
+    {"kind":"tactic","commander":"enemy-command","tactic":"rally","target":{"x":19,"y":5}},
+    {"kind":"reaction","unit":17,"stance":"conserve"},
+    {"kind":"command","unit":21,"path":[{"x":16,"y":10},{"x":15,"y":10}],"command":{"ability":"capture"}},
+    {"kind":"command","unit":13,"path":[{"x":10,"y":2}],"command":{"ability":"capture"}},
+    {"kind":"command","unit":17,"path":[{"x":19,"y":8},{"x":19,"y":9},{"x":19,"y":10}],"command":{"ability":"capture"}},
+    {"kind":"command","unit":16,"path":[{"x":19,"y":5},{"x":18,"y":5},{"x":17,"y":5},{"x":17,"y":6},{"x":17,"y":7},{"x":16,"y":7},{"x":15,"y":7}],"command":{"ability":"capture"}},
+    {"kind":"command","unit":15,"path":[{"x":14,"y":2},{"x":15,"y":2},{"x":15,"y":3}],"command":{"ability":"capture"}},
+    {"kind":"command","unit":19,"path":[{"x":20,"y":11},{"x":20,"y":12}],"command":{"ability":"capture"}},
+    {"kind":"command","unit":18,"path":[{"x":8,"y":1},{"x":8,"y":2}],"command":{"ability":"attack","weapon":"c01.border-blade","target":{"x":8,"y":3}}},
+    {"kind":"command","unit":14,"path":[{"x":12,"y":3},{"x":11,"y":3},{"x":10,"y":3},{"x":9,"y":3}],"command":{"ability":"attack","weapon":"c01.border-blade","target":{"x":8,"y":3}}},
+    {"kind":"command","unit":20,"path":[{"x":12,"y":12},{"x":12,"y":11},{"x":11,"y":11},{"x":11,"y":10},{"x":10,"y":10}],"command":{"ability":"attack","weapon":"c01.wolf-spear","target":{"x":10,"y":11}}},
+    {"kind":"endTurn"},
+    {"kind":"tactic","commander":"laiya-command","tactic":"c01.gray-rally","target":{"x":2,"y":2}},
+    {"kind":"reaction","unit":4,"stance":"conserve"},
+    {"kind":"reaction","unit":10,"stance":"support"},
+    {"kind":"command","unit":9,"path":[{"x":12,"y":10}],"command":{"ability":"attack","weapon":"c01.ranger-bow","target":{"x":10,"y":10}}},
+    {"kind":"command","unit":7,"path":[{"x":10,"y":11}],"command":{"ability":"attack","weapon":"c01.guard-spear","target":{"x":10,"y":10}}},
+    {"kind":"command","unit":2,"path":[{"x":3,"y":3},{"x":3,"y":2},{"x":4,"y":2},{"x":5,"y":2}],"command":{"ability":"wait"}},
+    {"kind":"command","unit":11,"path":[{"x":7,"y":6},{"x":7,"y":5},{"x":8,"y":5},{"x":8,"y":4}],"command":{"ability":"wait"}},
+    {"kind":"command","unit":1,"path":[{"x":1,"y":3},{"x":1,"y":2}],"command":{"ability":"wait"}},
+    {"kind":"command","unit":4,"path":[{"x":5,"y":7},{"x":5,"y":6},{"x":5,"y":5},{"x":5,"y":4}],"command":{"ability":"wait"}},
+    {"kind":"command","unit":6,"path":[{"x":6,"y":10},{"x":6,"y":9},{"x":6,"y":8},{"x":6,"y":7}],"command":{"ability":"wait"}},
+    {"kind":"command","unit":8,"path":[{"x":5,"y":10},{"x":5,"y":9},{"x":5,"y":8},{"x":5,"y":7}],"command":{"ability":"wait"}},
+    {"kind":"command","unit":12,"path":[{"x":6,"y":12},{"x":7,"y":12},{"x":8,"y":12},{"x":8,"y":11}],"command":{"ability":"wait"}},
+    {"kind":"reaction","unit":10,"stance":"counter"},
+    {"kind":"command","unit":3,"path":[{"x":4,"y":10},{"x":5,"y":10},{"x":6,"y":10}],"command":{"ability":"wait"}},
+    {"kind":"command","unit":10,"path":[{"x":5,"y":12},{"x":5,"y":11},{"x":5,"y":10},{"x":4,"y":10}],"command":{"ability":"wait"}},
+    {"kind":"endTurn"},
+    {"kind":"command","unit":13,"path":[{"x":10,"y":2}],"command":{"ability":"capture"}},
+    {"kind":"command","unit":16,"path":[{"x":15,"y":7},{"x":15,"y":8},{"x":15,"y":9},{"x":14,"y":9},{"x":13,"y":9},{"x":12,"y":9}],"command":{"ability":"attack","weapon":"c01.wolf-spear","target":{"x":12,"y":10}}},
+    {"kind":"command","unit":14,"path":[{"x":9,"y":3},{"x":9,"y":4}],"command":{"ability":"attack","weapon":"c01.border-blade","target":{"x":8,"y":4}}},
+    {"kind":"command","unit":18,"path":[{"x":8,"y":2},{"x":8,"y":3}],"command":{"ability":"attack","weapon":"c01.border-blade","target":{"x":8,"y":4}}},
+    {"kind":"command","unit":21,"path":[{"x":15,"y":10},{"x":14,"y":10}],"command":{"ability":"wait"}},
+    {"kind":"command","unit":17,"path":[{"x":19,"y":10}],"command":{"ability":"wait"}},
+    {"kind":"command","unit":15,"path":[{"x":15,"y":3},{"x":15,"y":4},{"x":14,"y":4}],"command":{"ability":"wait"}},
+    {"kind":"command","unit":19,"path":[{"x":20,"y":12},{"x":19,"y":12},{"x":18,"y":12},{"x":17,"y":12}],"command":{"ability":"wait"}}
+  ]
+}

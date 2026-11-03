@@ -409,7 +409,7 @@ public partial class AnimationChecks : Node
         var after = Copy();
         var unit = before["units"]![0]!.AsObject();
         var id = Int(unit, "id");
-        var kinds = new[] { "move", "castBegan", "castResolved", "castCancelled", "forcedMove", "collisionDamage", "statusTick", "regen",
+        var kinds = new[] { "move", "castBegan", "castResolved", "castCancelled", "forcedMove", "collisionDamage", "statusTick",
             "unitWithdrawn", "unitEmbarked", "unitDisembarked", "unitRouted", "unitSurrendered", "unitSpawned", "unitRevived", "structureDamaged", "structureDestroyed", "structureRepaired", "structureDisabled", "structureEnabled" };
         foreach (var kind in kinds)
         {
