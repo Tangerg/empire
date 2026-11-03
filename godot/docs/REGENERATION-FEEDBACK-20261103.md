@@ -90,5 +90,49 @@ this environment has no installed `node_modules/vite-node/vite-node.mjs`. No new
 tools or packages were installed. This is not a passing comparison; the current
 required native aggregate does not depend on that historical oracle generator.
 
-Final aggregate results are recorded after the final gates. Native headless
-resource, control and lifetime checks are not GPU visual or export acceptance.
+## Final verification record
+
+Final code commit: `9c0f0fc931c045708e667b4e5bdf224f51b3ff17`.
+All required stages of `tools/godot/verify-native.sh` completed, with one
+explicit interruption rather than a claimed uninterrupted aggregate pass:
+
+- The original invocation started at 2026-11-03 20:43:09 UTC. Source selection,
+  formatting, metadata, four authored-map validators, both builds, the 13 core
+  contracts, 141 objective/outcome assertions, 76 external catalog ownership
+  assertions and editor import completed. The serial `set -e` script then
+  entered `NarrativeChecks`.
+- The environment restarted during that first native scene. Its partial output
+  and the missing aggregate exit record were retained; they are not a scene or
+  whole-run PASS.
+- From 20:55:33 to 21:25:45 UTC, all 24 native scenes were run against the same
+  unchanged source and binaries. The original `run_scene` body, arguments,
+  isolated save namespaces, timeout and teardown-error checks were retained.
+  Each scene has an explicit exit-zero record, including a complete rerun of
+  `NarrativeChecks`; the segment driver also exited zero. No native error,
+  leaked-resource, segmentation-fault or unhandled-exception gate was relaxed.
+- The unchanged core completed 16 independent native AI levels, 3,425 legal
+  actions and exact per-level save/replay round trips. These include losses and
+  turn limits, not a claim of a carried-state campaign victory. This does not
+  substitute for comparing a newly generated AI event stream with an older one.
+- The directly affected older `AnimationChecks` also passed 182 assertions and
+  normal shutdown. Builds had zero warnings/errors. Native diagnostics still
+  include pre-existing authoring notices and repeated mouse-entry warnings in
+  the UI test harness; no warning-free native run is claimed.
+
+The source script SHA-256 remained
+`2d9e032bf59a13805a3b9de841659f22d667baf0f2672b24115e8ea1ca4d5459`.
+Before and after the recovered scene checks, the Core DLL SHA-256 was
+`db00ea962cafb017db017fe59d30d29f2bbd3a680bfbab1d0d21e4fc576ac8fb`
+and the application DLL SHA-256 was
+`d9eca5206a21b59ae2702533e32614a2d890bc961a2b15a1f6b1d574666bbed8`.
+The only later change is this verification record. Engine sources, authored maps
+and artwork remain identical to the previously published `31e3c0d36` baseline.
+
+A separate optional comparison against 16 old fixed replay streams was stopped
+by the execution environment before its first level completed. Its isolated
+verifier compiled, but no replay PASS or mismatch was established. It was not
+retried after the denial. This and the unavailable historical TypeScript oracle
+above are distinct from the completed current native replay/save gate.
+
+Native headless resource, control and lifetime checks are not GPU visual or
+export acceptance. No new tool or package was installed for this batch.
