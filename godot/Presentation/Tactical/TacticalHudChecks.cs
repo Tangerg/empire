@@ -503,8 +503,10 @@ public partial class TacticalHudChecks : Node
         Require(cards.Count > 8, "The unchanged recruitment catalog exercises at least three native order rows.");
         var host = new Control { Theme = TacticalHudStyle.Create() };
         AddChild(host);
-        // This detached generic recruiting site tests layout, not selected campaign art coverage.
+        var assets = AssetCatalog.Load();
+        var art = TacticalHudArt.Load(assets, PortraitCatalogResources.Load());
         var hud = new TacticalHud();
+        hud.ConfigureArt(art);
         host.AddChild(hud);
         hud.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
         foreach (var width in new[] { 960, 1180 })
@@ -521,6 +523,10 @@ public partial class TacticalHudChecks : Node
             Require(buttons.Select(button => button.GetMeta("hud_key", "").AsString()).SequenceEqual(cards.Select(card => "recruit/" + card.Unit))
                 && buttons.Select(button => !button.Disabled).SequenceEqual(cards.Select(card => card.Affordable)),
                 "Recruitment preserves every canonical card, its order and its affordability.");
+            Require(buttons.Zip(cards).All(pair => pair.First.Icon is AtlasTexture icon
+                && icon.Atlas.ResourcePath == assets.ResolveUnit(pair.Second.Unit).ResourcePath
+                && icon.Region == assets.ResolveUnit(pair.Second.Unit).RegionAt(AssetCatalog.FrameIndex(assets.ResolveUnit(pair.Second.Unit), "idle"))),
+                "Every recruit card displays its own formally bound native idle frame, never a placeholder or another unit.");
             Require(tray.GetGlobalRect().Encloses(actions.GetGlobalRect()) && actions.GetGlobalRect().End.Y <= hint.GetGlobalRect().Position.Y,
                 "The complete recruitment grid and account row stay inside the tray and above the readable instruction.");
             Require(host.GetGlobalRect().Encloses(tray.GetGlobalRect()) && buttons.All(button => tray.GetGlobalRect().Encloses(button.GetGlobalRect()) && button.Size.Y >= 30)
@@ -570,6 +576,64 @@ public partial class TacticalHudChecks : Node
             "Recruitment layout does not change the battle or execute a purchase.");
         RemoveChild(host);
         host.Free();
+    }
+
+    private async System.Threading.Tasks.Task CheckRecruitedUnitArt()
+    {
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var presentation = BattleTextChecks.Session(engine, GodotTextCatalog.LoadSimplifiedChinese());
+        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<string>() == "c01-03");
+        var state = engine.CreateState(level);
+        var site = new BoardCell(0, 0);
+        state["map"]!["tiles"]![0] = "castle";
+        state["map"]!["owners"]![0] = state["currentPlayer"]!.DeepClone();
+        var player = state["players"]!.AsArray().OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<int>() == state["currentPlayer"]!.GetValue<int>());
+        player["resources"]!["funds"]!["current"] = 1000;
+        var assets = AssetCatalog.Load();
+        var hud = new TacticalHud { Size = new Vector2(960, 640), Theme = TacticalHudStyle.Create() };
+        hud.ConfigureArt(TacticalHudArt.Load(assets, PortraitCatalogResources.Load()));
+        AddChild(hud);
+        foreach (var card in engine.Recruitment.Cards(state, new(site.X, site.Y)))
+        {
+            var session = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(state));
+            var control = new TacticalSelectionController(session.GetTacticalQueries(0));
+            control.Click(control.Stamp, TacticalHit.Object(site));
+            var request = control.Recruit(control.Stamp, card.Unit).Request;
+            Require(request?.Action is not null && session.Dispatch(request.Action.Value, request.Stamp.Revision).Accepted
+                && session.Revision == 1, $"The real recruitment path commits {card.Unit} in the isolated funded fixture.");
+            var snapshot = session.Snapshot();
+            var expected = EcmaJson.Stringify(snapshot);
+            var unit = snapshot["units"]!.AsArray().OfType<JsonObject>()
+                .Single(value => value["type"]!.GetValue<string>() == card.Unit && value["x"]!.GetValue<int>() == site.X && value["y"]!.GetValue<int>() == site.Y);
+            var id = unit["id"]!.GetValue<int>();
+            var asset = assets.ResolveUnit(card.Unit);
+            foreach (var currentSession in new[] { session, GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), session.Save()) })
+            {
+                var inspection = new TacticalSelectionController(currentSession.GetTacticalQueries(0));
+                inspection.Click(inspection.Stamp, TacticalHit.Unit(site, id));
+                hud.Apply(currentSession.ProjectHud(inspection.Stamp, inspection.Selection, inspection.CursorHit, inspection.InspectId, false));
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                var portrait = (TextureRect)hud.FindChild("InspectedPortrait", true, false);
+                Require(hud.Projection!.Portrait?.UnitType == card.Unit && portrait.Texture is AtlasTexture frame
+                    && frame.Atlas.ResourcePath == asset.ResourcePath && frame.Region == asset.RegionAt(AssetCatalog.FrameIndex(asset, "idle")),
+                    $"Fresh and restored recruits show their own bound portrait: {card.Unit}.");
+                Require(EcmaJson.Stringify(currentSession.Snapshot()) == expected,
+                    "Inspection and portrait rendering cannot change a fresh or restored recruited unit.");
+            }
+            foreach (var role in asset.FrameOrder)
+            {
+                var sprite = assets.CreateSprite(asset, role);
+                Require(sprite.Texture is AtlasTexture frame && frame.Region == asset.RegionAt(AssetCatalog.FrameIndex(asset, role))
+                    && Mathf.IsEqualApprox(sprite.Scale.X, sprite.Scale.Y) && SpriteGroundContact.Offset(sprite).IsZeroApprox(),
+                    $"Recruited unit animation keeps its exact frame and registered ground contact: {card.Unit}/{role}.");
+                sprite.Free();
+            }
+        }
+        RemoveChild(hud);
+        hud.Free();
     }
 
     private async System.Threading.Tasks.Task CheckForecastFacts()
@@ -801,6 +865,7 @@ public partial class TacticalHudChecks : Node
             await CheckSitePointerBoundary();
             await CheckResponsiveLayout();
             await CheckRecruitmentLayout();
+            await CheckRecruitedUnitArt();
             await CheckForecastFacts();
             await CheckPointerCapture();
             await CheckDossierLifetime();

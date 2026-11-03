@@ -119,6 +119,19 @@ public partial class PresentationChecks : Node
         CheckDepthBands();
         ActorFrameRegionChecks.Run();
         var assets = AssetCatalog.Load();
+        var bindings = PresentationJson.Load<ArtBindings>("res://data/art-bindings.json");
+        foreach (var (unitType, binding) in bindings.Units)
+        {
+            var asset = assets.ResolveUnit(unitType);
+            Require(asset.TopicId == binding.TopicId, $"Declared unit art keeps its canonical identity: {unitType}.");
+            for (var index = 0; index < asset.FrameCount; index++)
+            {
+                var frame = assets.CreateFrameTexture(asset, index);
+                Require(frame.Atlas.ResourcePath == asset.ResourcePath && frame.Region == asset.RegionAt(index)
+                    && frame.GetSize() == asset.RegionAt(index).Size,
+                    $"Every declared unit and animation frame resolves to an actual selected native resource: {unitType}/{index}.");
+            }
+        }
         var generic = assets.ResolveUnit("c01.swordsman");
         var torren = assets.ResolveUnit("c01.swordsman", "campaign-torren");
         Require(torren.Identity == "torren-stage01", "Actor key must select Torren's own declared sheet.");

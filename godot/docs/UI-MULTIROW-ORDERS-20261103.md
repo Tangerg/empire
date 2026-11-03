@@ -29,12 +29,12 @@ across hint and projection refreshes. No second gameplay state owner is added.
 
 ## Verification boundaries
 
-The new geometry regression uses actual projected recruitment strings and the
-native theme, with art unbound. An exploratory art-bound run exposed a separate
-pre-existing catalog gap: `C01-UNIT-ASSASSIN` is not in the selected asset manifest.
-The generic nine-card recruitment catalog is therefore not claimed to be a fully
-art-integrated campaign feature. Resolve that coverage before enabling it on an
-authored campaign map; no substitute art or silent fallback is introduced here.
+The initial geometry regression used actual projected recruitment strings and
+the native theme, with art unbound. An exploratory art-bound run exposed a
+separate pre-existing catalog gap: `C01-UNIT-ASSASSIN` was absent from the selected
+asset manifest. The follow-up [native recruitment art repair](NATIVE-RECRUITMENT-ART-20261103.md)
+adds the five missing formal resources and runs this same regression with native
+art bound. Neither change enables a recruiting site on an authored campaign map.
 
 This workspace cannot start a local graphical display, so no new screenshot or
 manual visual acceptance is claimed. Headless bounds, native focus/input and
@@ -64,7 +64,7 @@ changed by this patch. The unrelated sources and the aggregate check were left
 intact. This is not a claim that the full native gate or unrelated TypeScript
 suite is green.
 
-## Final checks
+## Original tray-repair checks (commit 28cbc7bd)
 
 - `dotnet build godot/Empire.csproj`: zero warnings and errors.
 - `TacticalHudChecks`: 296 assertions.

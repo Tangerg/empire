@@ -2821,6 +2821,201 @@
       "resourcePath": "res://assets/oath-control-pad/node-destroyed.png",
       "sha256": "d9dd2de732ac5e22b9e434c43e2a3d4acd2c363cac79089902892ae910d21ad5",
       "preserveAuthoredPalette": true
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-ASSASSIN",
+      "topicId": "C01-UNIT-ASSASSIN",
+      "label": "刺客",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-assassin@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        45.58090185676392,
+        49.51724137931034
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-assassin@2x.png",
+      "sha256": "10b60d1cd9cc233a0d171129d5288b2d3d08f6bbade70bc45488a12009f56191",
+      "presentationScale": 0.62,
+      "groundFront": [
+        45.58090185676392,
+        49.51724137931034
+      ]
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-CLERIC",
+      "topicId": "C01-UNIT-CLERIC",
+      "label": "牧师",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-cleric@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        47.06681766704417,
+        51.23895809739525
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-cleric@2x.png",
+      "sha256": "6952ebefbfde04cea50e96fc79da9cacc2ed7321f25d350be855d6a91e855edb",
+      "presentationScale": 0.62,
+      "groundFront": [
+        47.06681766704417,
+        51.23895809739525
+      ]
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-MAGE",
+      "topicId": "C01-UNIT-MAGE",
+      "label": "法师",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-mage@2x.png",
+      "width": 416,
+      "height": 64,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 104,
+      "frameHeight": 64,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        46.582729805013926,
+        50.867966573816155
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 832,
+      "physicalHeight": 128,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-mage@2x.png",
+      "sha256": "c3f04e0b8c6bb1575d07a24fe9f980aa029e8191d4edc99779e2c42b4adbf323",
+      "presentationScale": 0.62,
+      "groundFront": [
+        46.582729805013926,
+        50.867966573816155
+      ]
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-TROLL",
+      "topicId": "C01-UNIT-TROLL",
+      "label": "巨魔",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-troll@2x.png",
+      "width": 512,
+      "height": 80,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 80,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        63.14715359828142,
+        64.36734693877551
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 1024,
+      "physicalHeight": 160,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-troll@2x.png",
+      "sha256": "522be60db1d4e826c8c85c8c538bb29a44a02bfbe9c8b1a6dee9bca5ca767b74",
+      "presentationScale": 0.62,
+      "groundFront": [
+        63.14715359828142,
+        64.36734693877551
+      ]
+    },
+    {
+      "assetId": "C01-FFV1-UNIT-ANCIENT-DRAGON",
+      "topicId": "C01-UNIT-ANCIENT-DRAGON",
+      "label": "古龙",
+      "category": "combat-unit",
+      "png": "runtime-approved-v5/combat-unit/unit-ancient-dragon@2x.png",
+      "width": 512,
+      "height": 88,
+      "runtimeReady": true,
+      "qualityTier": "approved-chunky-v5-export-verified",
+      "frameWidth": 128,
+      "frameHeight": 88,
+      "frames": 4,
+      "frameOrder": [
+        "idle",
+        "walk-a",
+        "attack",
+        "walk-b"
+      ],
+      "anchor": [
+        75.71914893617021,
+        71.49787234042553
+      ],
+      "footprint": [
+        2,
+        2
+      ],
+      "preserveAuthoredPalette": true,
+      "physicalWidth": 1024,
+      "physicalHeight": 176,
+      "pixelDensity": 2,
+      "resourcePath": "res://assets/runtime-approved-v5/combat-unit/unit-ancient-dragon@2x.png",
+      "sha256": "b1d8536421592d2f035bf1f54e3bf6139c22238551443faa0483809306205294",
+      "presentationScale": 0.62,
+      "groundFront": [
+        75.71914893617021,
+        71.49787234042553
+      ]
     }
   ]
 }
