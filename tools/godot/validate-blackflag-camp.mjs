@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
-import { dirname, resolve } from 'node:path';
+import { dirname, isAbsolute, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -60,6 +60,71 @@ function nonspatialFacts(level) {
       if (effect.type === 'setUnitDirective') delete effect.directive.waypoints;
   delete facts.extra.tacticalTheme;
   return facts;
+}
+
+function validateRegistration(document, level, pixelSize, label) {
+  assert.equal(document.levelId, level.id, `${label} level identity`);
+  assert.equal(document.levelSourceSha256, sha256(JSON.stringify(level)), `${label} canonical source checksum`);
+  assert.deepEqual(document.pixelSize, pixelSize, `${label} reviewed canvas`);
+  assert.equal(document.worldScale, 1.25, `${label} world scale`);
+  for (const [field, value] of Object.entries(physicalAudit.basis))
+    assert.deepEqual(document[field], value, `${label} ${field}`);
+}
+
+function validateImage(images, path, pixelSize) {
+  assert(Object.hasOwn(images, path), `loaded image resource ${path}`);
+  const bytes = Buffer.from(images[path]);
+  assert(bytes.length >= 24 && bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))
+    && bytes.toString('ascii', 12, 16) === 'IHDR', `PNG header ${path}`);
+  assert.deepEqual([bytes.readUInt32BE(16), bytes.readUInt32BE(20)], pixelSize, `PNG dimensions ${path}`);
+  return bytes;
+}
+
+function validatePresentation({ assembled, catalog, images, provenance, historical }, level) {
+  const groundPath = 'res://assets/native/c04-layered-v1/ground-candidate.png';
+  assert.equal(assembled.resourcePath, groundPath, 'formal independent ground resource');
+  assert.equal(assembled.objectCatalogPath, 'res://data/scenes/c01-04-layered-objects.json', 'formal object catalog');
+  const groundEvidence = provenance.files.find(record => `res://${record.file}` === groundPath);
+  assert(groundEvidence, 'reviewed ground byte provenance');
+  validateRegistration(assembled, level, groundEvidence.pixelSize, 'assembled');
+  validateImage(images, groundPath, assembled.pixelSize);
+  assert.equal(catalog.schema, 1, 'scene object catalog schema');
+  for (const asset of Object.values(catalog.objects)) validateImage(images, asset.resourcePath, asset.pixelSize);
+  // Provenance status strings describe old checkpoints. The scene selects production art;
+  // these records retain source-byte integrity, not a second admission decision.
+  for (const path of new Set([groundPath, ...Object.values(catalog.objects).map(asset => asset.resourcePath)])) {
+    if (!path.startsWith('res://assets/native/c04-layered-v1/')) continue;
+    const record = provenance.files.find(record => `res://${record.file}` === path);
+    assert(record, `reviewed independent image ${path}`);
+    const bytes = validateImage(images, path, record.pixelSize);
+    assert.equal(sha256(bytes), record.sha256, `independent image bytes ${path}`);
+  }
+  assert.equal(assembled.objects.length, 139, 'reviewed independent composition count');
+  assert.equal(new Set(assembled.objects.map(object => object.id)).size, assembled.objects.length, 'unique placement identities');
+  for (const object of assembled.objects) {
+    assert(typeof object.id === 'string' && object.id.length > 0, 'explicit placement identity');
+    assert(Object.hasOwn(catalog.objects, object.assetId), `registered object asset ${object.id}`);
+    assert(Array.isArray(object.contact) && object.contact.length === 2 && object.contact.every(Number.isFinite), `finite object contact ${object.id}`);
+    assert(Number.isFinite(object.scale) && object.scale > 0, `positive object scale ${object.id}`);
+    assert(['target', 'block', 'pass-through'].includes(object.pointer), `declared object pointer ${object.id}`);
+    assert.equal(typeof object.ownsMapStructureBody, 'boolean', `explicit body ownership ${object.id}`);
+    if (object.selectionCell === null) {
+      assert(!object.ownsMapStructureBody && object.pointer !== 'target', `non-site object cannot own or target a site ${object.id}`);
+      continue;
+    }
+    const site = sites.find(site => site[0] === object.id);
+    assert(site, `existing canonical site ${object.id}`);
+    assert.deepEqual(object.selectionCell, site[2], `canonical site cell ${object.id}`);
+    assert(object.ownsMapStructureBody && object.pointer === 'target', `owned site target ${object.id}`);
+  }
+  assert.deepEqual(assembled.objects.filter(object => object.selectionCell !== null).map(object => object.id).sort(),
+    sites.map(site => site[0]).sort(), 'exactly ten canonical site bodies');
+
+  // Preserve the old painting as an explicit historical oracle, never the formal renderer.
+  validateRegistration(historical, level, physicalAudit.pixelSize, 'historical');
+  assert.equal(historical.resourcePath, `res://${physicalAudit.sourceImage}`, 'historical painting resource');
+  const original = validateImage(images, historical.resourcePath, historical.pixelSize);
+  assert.equal(sha256(original), physicalAudit.sourceSha256, 'historical painting bytes');
 }
 
 function validate(data) {
@@ -157,12 +222,14 @@ function validate(data) {
   ], 'existing roster projection');
   assert.equal(scene.schemaVersion, 'environment-scene-v1.1');
   assert.equal(scene.levelId, level.id);
-  assert.deepEqual(scene.mapSize, [50, 30]);
+  assert.deepEqual(scene.mapSize, [50, 30], 'scene map size');
   assert.deepEqual(scene.openingFocus, [19, 19]);
-  assert.equal(typeof scene.runtimeReady, 'boolean');
-  assert.equal(scene.paintedGroundPath, 'res://data/scenes/c01-04-painted-ground.json');
+  assert.equal(scene.runtimeReady, true, 'formal assembled scene readiness');
+  assert.equal(scene.assembledGroundPath, 'res://data/scenes/c01-04-layered-ground.json', 'formal assembled scene binding');
+  assert(scene.paintedGroundPath == null, 'one formal ground renderer');
   for (const field of ['placements', 'framePlacements', 'zones']) assert.deepEqual(scene[field], [], `retired tile ${field}`);
   assert(!Object.hasOwn(scene, 'groundOutline'), 'outside terrain owns the irregular domain');
+  validatePresentation(data, level);
   return level;
 }
 
@@ -172,45 +239,99 @@ const data = {
   packs: readJson('godot/data/content-packs.json'),
   campaign: readJson('godot/data/grayflag-campaign.json'),
 };
+const resourceFile = path => {
+  assert(typeof path === 'string' && path.startsWith('res://'), 'project resource path');
+  const relative = path.slice(6);
+  assert(relative.length > 0 && !isAbsolute(relative) && !relative.includes('\\') && !relative.includes(':')
+    && !relative.split('/').includes('..'), 'project resource path');
+  return resolve(root, 'godot', relative);
+};
+const readResource = path => readFileSync(resourceFile(path));
+data.assembled = JSON.parse(readResource(data.scene.assembledGroundPath));
+data.catalog = JSON.parse(readResource(data.assembled.objectCatalogPath));
+data.historical = readJson('godot/data/scenes/c01-04-painted-ground.json');
+data.provenance = readJson('godot/docs/art-provenance/c04-layered-v1/manifest.json');
+data.images = Object.fromEntries([...new Set([
+  data.assembled.resourcePath, data.historical.resourcePath,
+  ...Object.values(data.catalog.objects).map(asset => asset.resourcePath),
+])].map(path => [path, readResource(path)]));
 const level = validate(data);
 const levelSha256 = sha256(JSON.stringify(level));
-if (data.scene.runtimeReady) {
-  const painted = readJson('godot/' + data.scene.paintedGroundPath.slice('res://'.length));
-  assert.equal(painted.levelId, level.id);
-  assert.equal(painted.levelSourceSha256, levelSha256, 'canonical ECMAScript JSON checksum');
-  assert.deepEqual(painted.pixelSize, [1660, 948]);
-  assert.equal(painted.worldScale, 1.25);
-  assert.deepEqual(painted.originPixels, [30, 24]);
-  assert.deepEqual(painted.cellXPixels, [32, 0]);
-  assert.deepEqual(painted.cellYPixels, [0, 30]);
-  const image = readFileSync(resolve(root, 'godot/' + painted.resourcePath.slice('res://'.length)));
-  assert.equal(sha256(image), '6f8c48c500dd26fc3a735b892d646bd9ec2f7e7de2e0cbef00f12d662af17926', 'registered painting');
-}
 
 if (process.argv.includes('--self-test')) {
+  assert.equal(resourceFile(data.scene.assembledGroundPath), resolve(root, 'godot/data/scenes/c01-04-layered-ground.json'));
+  const invalidPaths = ['res:///tmp/outside.json', 'res://../outside.json', 'res://C:/outside.json',
+    'res://..\\outside.json', 'res://', 'file:///tmp/outside.json'];
+  for (const path of invalidPaths) assert.throws(() => resourceFile(path), /project resource path/, path);
+  console.log(`PASS: ${invalidPaths.length} invalid project resource paths rejected before file access`);
   const mutations = [
-    ['map shape', (copy, c04) => c04.terrain[0] = c04.terrain[0].slice(1)],
-    ['foundation hole', (copy, c04) => c04.terrain[20] = c04.terrain[20].slice(0, 6) + '.' + c04.terrain[20].slice(7)],
-    ['solid rock hole', (copy, c04) => c04.terrain[17] = c04.terrain[17].slice(0, 38) + '.' + c04.terrain[17].slice(39)],
-    ['cart occupancy hole', (copy, c04) => c04.terrain[16] = c04.terrain[16].slice(0, 41) + '.' + c04.terrain[16].slice(42)],
-    ['spawn drift', (copy, c04) => c04.units[0].x++],
-    ['site ownership', (copy, c04) => c04.owners[0].owner = 1],
-    ['old retreat coordinate', (copy, c04) => c04.scenario.triggers[3].effects[0].directive.waypoints[0].x = 0],
-    ['battle evidence shortcut', (copy, c04) => c04.scenario.variables.evidence = 2],
-    ['actor stat change', (copy, c04) => c04.units[0].hp = 1],
-    ['staging effect change', copy => copy.campaign.nodes.find(node => node.id === 'choice-black-camp-plan').choices[1].effects[1].amount = 3],
-    ['stale scene size', copy => copy.scene.mapSize = [20, 14]],
+    ['map shape', (copy, c04) => c04.terrain[0] = c04.terrain[0].slice(1), /terrain row width/],
+    ['foundation hole', (copy, c04) => c04.terrain[20] = c04.terrain[20].slice(0, 6) + '.' + c04.terrain[20].slice(7), /foundation/],
+    ['solid rock hole', (copy, c04) => c04.terrain[17] = c04.terrain[17].slice(0, 38) + '.' + c04.terrain[17].slice(39), /ground footprint/],
+    ['cart occupancy hole', (copy, c04) => c04.terrain[16] = c04.terrain[16].slice(0, 41) + '.' + c04.terrain[16].slice(42), /occupied standing cell/],
+    ['spawn drift', (copy, c04) => c04.units[0].x++, /all 19 deployments/],
+    ['site ownership', (copy, c04) => c04.owners[0].owner = 1, /ownership/],
+    ['old retreat coordinate', (copy, c04) => c04.scenario.triggers[3].effects[0].directive.waypoints[0].x = 0, /retreat waypoint/],
+    ['battle evidence shortcut', (copy, c04) => c04.scenario.variables.evidence = 2, /fresh battle-local evidence/],
+    ['actor stat change', (copy, c04) => c04.units[0].hp = 1, /unchanged rules/],
+    ['staging effect change', copy => copy.campaign.nodes.find(node => node.id === 'choice-black-camp-plan').choices[1].effects[1].amount = 3, /campaign-only staging choice effects/],
+    ['stale scene size', copy => copy.scene.mapSize = [20, 14], /scene map size/],
+    ['missing assembled binding', copy => delete copy.scene.assembledGroundPath, /formal assembled scene binding/],
+    ['wrong assembled binding', copy => copy.scene.assembledGroundPath = 'res://data/scenes/c01-03-layered-ground.json', /formal assembled scene binding/],
+    ['competing painted binding', copy => copy.scene.paintedGroundPath = 'res://data/scenes/c01-04-painted-ground.json', /one formal ground renderer/],
+    ['disabled admission', copy => copy.scene.runtimeReady = false, /formal assembled scene readiness/],
+    ['wrong registered level', copy => copy.assembled.levelId = 'c01-03', /assembled level identity/],
+    ['stale registered digest', copy => copy.assembled.levelSourceSha256 = '0'.repeat(64), /assembled canonical source checksum/],
+    ['wrong canvas', copy => copy.assembled.pixelSize[0]++, /assembled reviewed canvas/],
+    ['wrong origin', copy => copy.assembled.originPixels[0]++, /assembled originPixels/],
+    ['wrong cell axes', copy => copy.assembled.cellXPixels[0]++, /assembled cellXPixels/],
+    ['rescaled map', copy => copy.assembled.worldScale = 1, /assembled world scale/],
+    ['historical ground substituted', copy => copy.assembled.resourcePath = copy.historical.resourcePath, /formal independent ground resource/],
+    ['wrong object catalog', copy => copy.assembled.objectCatalogPath = 'res://data/scenes/c01-03-layered-objects.json', /formal object catalog/],
+    ['duplicate placement identity', copy => copy.assembled.objects[1].id = copy.assembled.objects[0].id, /unique placement identities/],
+    ['unknown object asset', copy => copy.assembled.objects[0].assetId = 'absent-asset', /registered object asset/],
+    ['nonfinite object contact', copy => copy.assembled.objects[0].contact[0] = Infinity, /finite object contact/],
+    ['zero object scale', copy => copy.assembled.objects[0].scale = 0, /positive object scale/],
+    ['missing composition object', copy => copy.assembled.objects.pop(), /reviewed independent composition count/],
+    ['missing site binding', copy => {
+      Object.assign(copy.assembled.objects[0], { selectionCell: null, ownsMapStructureBody: false, pointer: 'pass-through' });
+    }, /exactly ten canonical site bodies/],
+    ['duplicate site cell', copy => copy.assembled.objects[1].selectionCell = [...copy.assembled.objects[0].selectionCell], /canonical site cell/],
+    ['lost site body', copy => copy.assembled.objects[0].ownsMapStructureBody = false, /owned site target/],
+    ['non-target site', copy => copy.assembled.objects[0].pointer = 'pass-through', /owned site target/],
+    ['unbound object texture', copy => copy.catalog.objects['prisoner-tent'].resourcePath = 'res://absent.png', /loaded image resource/],
+    ['wrong object canvas', copy => copy.catalog.objects['prisoner-tent'].pixelSize[0]++, /PNG dimensions/],
+    ['missing registered texture', copy => delete copy.images[copy.assembled.resourcePath], /loaded image resource/],
+    ['changed ground bytes', copy => {
+      const path = copy.assembled.resourcePath;
+      copy.images[path] = Buffer.from(copy.images[path]);
+      copy.images[path][copy.images[path].length - 1] ^= 1;
+    }, /independent image bytes/],
+    ['changed object bytes', copy => {
+      const path = copy.catalog.objects['prisoner-tent'].resourcePath;
+      copy.images[path] = Buffer.from(copy.images[path]);
+      copy.images[path][copy.images[path].length - 1] ^= 1;
+    }, /independent image bytes/],
+    ['historical stale digest', copy => copy.historical.levelSourceSha256 = '0'.repeat(64), /historical canonical source checksum/],
+    ['historical image changed', copy => {
+      const path = copy.historical.resourcePath;
+      copy.images[path] = Buffer.from(copy.images[path]);
+      copy.images[path][copy.images[path].length - 1] ^= 1;
+    }, /historical painting bytes/],
   ];
-  for (const [name, mutate] of mutations) {
-    const copy = structuredClone(data);
+  for (const [name, mutate, pattern] of mutations) {
+    const copy = structuredClone({ ...data, images: null });
+    copy.images = { ...data.images }; // Byte mutations copy only the image they change.
     mutate(copy, copy.levels.find(candidate => candidate.id === 'c01-04'));
-    assert.throws(() => validate(copy), undefined, `must reject ${name}`);
+    assert.throws(() => validate(copy), pattern, `must reject ${name}`);
   }
-  console.log(`PASS: ${mutations.length} deliberate author-data mutations rejected`);
+  validate(data);
+  console.log(`PASS: ${mutations.length} deliberate author-data and presentation mutations rejected`);
 }
 const characters = Object.assign({}, ...data.packs.map(pack => pack.terrainCharacters ?? {}));
 const terrains = new Map(data.packs.flatMap(pack => pack.terrains ?? []).map(terrain => [terrain.id, terrain]));
 const footCells = [...level.terrain.join('')].filter(symbol => terrains.get(characters[symbol]).cost.foot !== null).length;
 console.log(`PASS: C04 50x30, 1177 domain, ${footCells} connected foot cells, 37 house foundation cells, 19 spawns, 10 sites`);
 console.log(`C04 ECMAScript JSON SHA-256: ${levelSha256}`);
-console.log(data.scene.runtimeReady ? 'PASS: painting file and canonical registration binding' : 'PENDING: scene runtimeReady is false; painting admission is not claimed');
+console.log('PASS: formal assembled registration, 139 placements, ten site bodies, referenced PNG dimensions and C04 source bytes');
+console.log('PASS: historical painting integrity retained separately; native rendering, natural play and GUI acceptance are separate.');

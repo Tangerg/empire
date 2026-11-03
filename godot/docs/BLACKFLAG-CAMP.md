@@ -61,7 +61,7 @@ The six open field posts remain traversable at their interaction cells:
 A (21,12), B (24,15), C (28,18), north supply (27,8), west aid (14,18), and east
 watch (43,16). Their approaches are respectively (21,13), (24,16), (28,19),
 (27,9), (15,18), and (44,16). Open canopy floors are not closed house bodies.
-Each site has one canonical terrain function and one logical painted binding,
+Each site has one canonical terrain function and one logical visual binding,
 even when its material is split into roof, curtain and post pieces.
 
 Canonical terrain owns navigation, cover and opacity. Freshly authored material
@@ -147,9 +147,22 @@ and approaches, complete house/rock masks and furniture occupancy, connected fou
 scenario coordinates, unchanged nonspatial facts, campaign choice effects and
 scene binding. Its in-memory mutations prove the guard rejects real authoring
 errors. This is a static authoring check, not another pathfinding or mission
-implementation. When `runtimeReady` is true it also checks the registered image
-and canonical level checksum. False means binding admission is not claimed;
-true alone never means route, visual or balance acceptance.
+implementation. Formal C04 requires `runtimeReady` to remain true, exactly one
+assembled-ground binding, the canonical level checksum, unchanged affine
+registration, 139 unique placements and the ten existing site/body targets.
+The selected ground and object catalog own resource selection. Referenced PNG
+sizes and the C04 provenance source hashes are verified; old provenance status
+labels are chronological evidence, not a second production selector. The
+historical painting keeps its own integrity check and is never a renderer
+fallback. Readiness alone never means route, visual or balance acceptance.
+
+The 2026-11-03 static-gate correction retains all eleven original semantic
+mutations and adds 28 registration, composition, resource and historical-image
+mutations. All 39 must fail at their intended assertion; the original unmodified
+data is revalidated afterwards. Six malformed project-resource paths are also
+rejected before file access. The actual formal native scene passes 332
+assertions and clean process teardown. No map, artwork, placement, gameplay or
+saved-document data changed in this gate repair.
 
 The authored-map checkpoint passed the 11 deliberate static mutations and 335
 focused native assertions, including all ten site bindings, shelter mouths,

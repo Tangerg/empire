@@ -97,13 +97,16 @@ and application preparation failure without caller-owned cleanup.
 - Reed Village, White River and Luojia static semantic validators passed.
 
 The full `verify-native.sh` aggregate remains blocked at its formatting stage
-by 184 untouched files; none is a file changed here. The separately run Black
-Flag Camp static validator also fails because it still requires C04's former
+by 184 untouched files; none is a file changed here. At this checkpoint, the
+separately run Black Flag Camp static validator also failed because it still
+required C04's former
 `paintedGroundPath`, whereas the existing scene selects assembled ground. Both
-that validator and C04 scene are byte-identical to the starting commit. Neither
+that validator and C04 scene were byte-identical to the starting commit. Neither
 gate was weakened or changed. Revisit these existing gate contracts before
 claiming a green aggregate; preserve the accepted scene registration when doing
-so.
+so. The subsequent C04 static-gate correction is recorded in
+[NATIVE-VERIFICATION-GATES-20261103.md](NATIVE-VERIFICATION-GATES-20261103.md);
+it resolves the obsolete scene binding without changing the map or artwork.
 
 No GUI/visual acceptance, exported package or TypeScript-suite pass is claimed.
 The cloud environment still has no usable graphical display. Native headless
