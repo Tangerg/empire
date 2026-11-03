@@ -695,3 +695,12 @@ add a victory condition or reverse liberation on repair. See
 [the native contract and asset limitation](../godot/docs/STRUCTURE-LIFECYCLE.md).
 
 Native ordered combat feedback ownership and formal displacement regressions: [displacement feedback](../godot/docs/DISPLACEMENT-FEEDBACK-20261103.md).
+
+### Native nonweapon recipient inspection
+
+`GrayFlagSession.ProjectHud` projects visible admitted nonweapon unit targets'
+identity and current HP while the acting unit remains pinned. The existing
+selection controller owns the preview, and `BattleScreen` owns its map-to-HUD
+pointer handoff. This is recipient inspection, not another healing rule or
+predicted-effect owner. Formal C01-12 evidence and native boundaries are recorded
+in [`HEALING-TARGET-HUD-20261103.md`](../godot/docs/HEALING-TARGET-HUD-20261103.md).

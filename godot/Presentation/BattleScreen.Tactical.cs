@@ -177,13 +177,15 @@ public partial class BattleScreen
                 && _tactical.InteractiveCells.Contains(picked.Cell))
                 hit = picked;
         }
-        if (_tactical.CursorHit == hit && (hit is not null || _tactical.Selection.PreviewTarget is null))
-            return;
+        // The same pixel can establish a new preview after cancel/re-arm. Let the
+        // selection owner decide first, then suppress only an unchanged projection.
+        var previous = (_tactical.CursorHit, _tactical.Selection, _tactical.InspectId);
         if (hit is not null)
             _tactical.Hover(_tactical.Stamp, hit);
         else
             _tactical.Leave(_tactical.Stamp);
-        UpdateTactical();
+        if (previous != (_tactical.CursorHit, _tactical.Selection, _tactical.InspectId))
+            UpdateTactical();
     }
 
     public override void _UnhandledKeyInput(InputEvent input)

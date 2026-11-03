@@ -201,6 +201,17 @@ public sealed partial class GrayFlagSession
                     {
                         Icon = "ability:" + tactic.Id
                     })));
+        if (selection.Kind == TacticalSelectionKind.Target && selected is not null && selection.Weapon is null
+            && forecastHit is { } recipientUnitHit && forecastUnit is { } recipientUnit
+            && selection.TargetSubjects.Any(subject => subject.Accepts(recipientUnitHit)))
+        {
+            var maximum = D(Definition("units", S(recipientUnit, "type")), "maxHp");
+            Section("forecast", text.Format("ui.hud.choose_target"), new[]
+            {
+                new TacticalHudRow("recipient", Name(recipientUnit), UnitIcon: UnitIcon(recipientUnit)),
+                new("hp", text.Format("ui.hud.health", D(recipientUnit, "hp"), maximum), Gauge: new(D(recipientUnit, "hp"), maximum))
+            });
+        }
         if (selection.Kind == TacticalSelectionKind.Target && selected is not null
             && selection.Weapon is { } weapon && forecastHit is { } targetHit
             && (targetHit.Kind != TacticalHitKind.Unit || forecastUnit is not null)

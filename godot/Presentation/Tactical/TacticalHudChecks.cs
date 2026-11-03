@@ -983,6 +983,7 @@ public partial class TacticalHudChecks : Node
     {
         try
         {
+            await CheckHealingTarget();
             CheckInspectionOrder();
             CheckObjectiveChecklist();
             CheckPinnedUnit();
