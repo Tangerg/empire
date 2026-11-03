@@ -35,8 +35,14 @@ internal sealed class CompiledSceneSurface
     {
         private readonly Image _pixels;
         private int[]? _nonOpaquePrefix;
-        internal Texture2D Texture { get; }
-        internal bool IsOpaque { get; }
+        internal Texture2D Texture
+        {
+            get;
+        }
+        internal bool IsOpaque
+        {
+            get;
+        }
         internal int Width => _pixels.GetWidth();
         internal int Height => _pixels.GetHeight();
         internal Material(Texture2D texture)
@@ -217,7 +223,10 @@ internal sealed class CompiledSceneSurface
         private readonly Polygon2D[] _draw;
         private readonly int[] _leaders;
         private readonly int[] _nextLeaders;
-        internal IReadOnlyList<(Node2D Node, StandingVisual Visual)> Pieces { get; }
+        internal IReadOnlyList<(Node2D Node, StandingVisual Visual)> Pieces
+        {
+            get;
+        }
 
         internal Instance(CompiledSceneSurface source, Vector2 anchor,
             (Node2D Node, StandingVisual Visual)[] pieces, Polygon2D[] draw)

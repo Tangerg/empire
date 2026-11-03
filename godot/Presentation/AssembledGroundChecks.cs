@@ -305,30 +305,40 @@ public partial class AssembledGroundChecks : Node
         catalog.Objects["house"] = PointerAsset(null);
         textures["house"] = solidTexture;
         var solidSpriteRejected = false;
-        try { AssembledGroundView.Create(Document(Site(sites[0])), ground, catalog, textures, map, engine.Catalog).Free(); }
+        try
+        {
+            AssembledGroundView.Create(Document(Site(sites[0])), ground, catalog, textures, map, engine.Catalog).Free();
+        }
         catch (InvalidOperationException error) when (error.Message.Contains("must have transparency", StringComparison.Ordinal))
-        { solidSpriteRejected = true; }
+        {
+            solidSpriteRejected = true;
+        }
         Require(solidSpriteRejected && IsInstanceValid(solidTexture), "Full opaque sprite must still reject at the transparency contract without disposing borrowed material.");
         SceneObjectAsset SurfaceAsset(string coverage) => new()
         {
-            ResourcePath = "fixture-independent.png", PixelSize = [64, 96], AnchorPixels = [32, 88],
+            ResourcePath = "fixture-independent.png",
+            PixelSize = [64, 96],
+            AnchorPixels = [32, 88],
             ContactShadowRadiiPixels = null,
             SurfaceGeometryPath = $"res://data/scene-test-fixtures/{coverage}-material-surface.json"
         };
         var materialBoard = new BoardView { AnimationsEnabled = false };
         AddChild(materialBoard);
         using var nativeImage = Image.CreateEmpty(64, 96, false, Image.Format.Rgba8);
-        nativeImage.Fill(Colors.White); nativeImage.SetPixel(16, 40, Colors.Transparent);
+        nativeImage.Fill(Colors.White);
+        nativeImage.SetPixel(16, 40, Colors.Transparent);
         using var nativeTexture = ImageTexture.CreateFromImage(nativeImage);
         try
         {
             var binding = Document(Site(sites[0]));
             materialBoard.Configure(new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, binding.CreatePlane), level, scene);
-            var empty = state.DeepClone().AsObject(); empty["units"] = new JsonArray();
+            var empty = state.DeepClone().AsObject();
+            empty["units"] = new JsonArray();
             foreach (var coverage in new[] { "opaque", "native-alpha" })
             {
                 var material = coverage == "opaque" ? solidTexture : nativeTexture;
-                textures["house"] = material; catalog.Objects["house"] = SurfaceAsset(coverage);
+                textures["house"] = material;
+                catalog.Objects["house"] = SurfaceAsset(coverage);
                 AssembledGroundView? materialView = null;
                 GD.Print("RGB_SURFACE_MATERIAL_ACCEPTANCE_BEGIN " + coverage);
                 materialBoard.ConfigureGround((rules, _) => materialView = AssembledGroundView.Create(binding, ground, catalog, textures, map, rules.Content));
@@ -358,8 +368,10 @@ public partial class AssembledGroundChecks : Node
         }
         finally
         {
-            RemoveChild(materialBoard); materialBoard.Free();
-            textures["house"] = house; catalog.Objects["house"] = PointerAsset(null);
+            RemoveChild(materialBoard);
+            materialBoard.Free();
+            textures["house"] = house;
+            catalog.Objects["house"] = PointerAsset(null);
         }
         foreach (var invalidPolygon in new double[][][]
         {

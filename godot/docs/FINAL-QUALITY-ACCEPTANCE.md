@@ -21,6 +21,10 @@ custom presenter through both paths. Both construction paths passed through the 
 
 The official SDK whitespace formatter is configured in `.editorconfig` and exposed
 as `bash tools/godot/format-native.sh --check`; `verify-native.sh` calls it.
+Git-visible active game, Core, tests and tool sources remain checked. Documentation
+archives are excluded only with the indexed import boundary and evaluated project
+compile evidence; the selector has isolated failure and reinclusion controls.
+See [the gate repair evidence](NATIVE-VERIFICATION-GATES-20261103.md).
 Source UID/import companions are tracked; caches and the identified scratch probes
 are not release source. Formatting is not a substitute for the ownership review.
 

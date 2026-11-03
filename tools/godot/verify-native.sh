@@ -6,6 +6,7 @@ if [[ $# -ne 0 ]]; then
   printf "Usage: %s\n" "$0" >&2
   exit 2
 fi
+python3 tools/godot/select-native-format-sources-tests.py
 bash tools/godot/format-native.sh --check
 python3 tools/godot/check-source-metadata.py
 node tools/godot/validate-blackflag-camp.mjs --self-test

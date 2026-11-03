@@ -9,10 +9,11 @@ case "$mode" in
   --write) options=() ;;
   *) printf 'Usage: %s [--check|--write]\n' "$0" >&2; exit 2 ;;
 esac
-mapfile -d '' sources < <(git ls-files -z --cached --others --exclude-standard -- 'godot/*.cs' 'tools/godot/*.cs' | while IFS= read -r -d '' file; do [[ ! -f "$file" ]] || printf '%s\0' "$file"; done)
-if [[ "${#sources[@]}" == 0 ]]; then
-  printf 'No native source files found.\n' >&2
-  exit 1
-fi
+selection="$(mktemp "${TMPDIR:-/tmp}/empire-native-format-sources.XXXXXX")"
+trap 'rm -f "$selection"' EXIT
+# A failed selector must stop the gate; process substitution hides its exit status.
+timeout --signal=TERM --kill-after=15s "${EMPIRE_CHECK_TIMEOUT_SECONDS:-300}" \
+  python3 tools/godot/select-native-format-sources.py > "$selection"
+mapfile -d '' sources < "$selection"
 timeout --signal=TERM --kill-after=15s "${EMPIRE_CHECK_TIMEOUT_SECONDS:-300}" \
   "$DOTNET_ROOT/dotnet" format whitespace --folder . --include "${sources[@]}" "${options[@]}"

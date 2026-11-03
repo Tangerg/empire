@@ -28,14 +28,20 @@ public partial class SceneSurfaceDrawChecks : Node
                     new() { Id = "c", FrontPixels = [4, 7], Kind = "structural" }],
                 Members = Enumerable.Range(0, 3).Select(index => new SceneSurfaceMember
                 {
-                    Id = "part" + index, SupportId = new[] { "a", "b", "c" }[index],
-                    Coverage = "native-alpha", Tint = new[] { "#ff0000", "#0000ff", "#00ff00" }[index],
+                    Id = "part" + index,
+                    SupportId = new[] { "a", "b", "c" }[index],
+                    Coverage = "native-alpha",
+                    Tint = new[] { "#ff0000", "#0000ff", "#00ff00" }[index],
                     PolygonPixels = [[index, index % 2], [index + 4, index % 2], [index, index % 2 + 4]],
                     UvPixels = [[1, 1], [5, 1], [1, 5]]
                 }).ToArray()
             };
-            var viewport = new SubViewport { Size = new(256, 192), TransparentBg = true,
-                RenderTargetUpdateMode = SubViewport.UpdateMode.Always };
+            var viewport = new SubViewport
+            {
+                Size = new(256, 192),
+                TransparentBg = true,
+                RenderTargetUpdateMode = SubViewport.UpdateMode.Always
+            };
             AddChild(viewport);
             async System.Threading.Tasks.Task<byte[]> Capture(string name)
             {
@@ -51,9 +57,12 @@ public partial class SceneSurfaceDrawChecks : Node
                 viewport.AddChild(owner);
                 var sampler = new Sprite2D { Texture = texture, Centered = false, Visible = false };
                 owner.AddChild(sampler);
-                var source = new SceneSurfaceDocument { Schema = 1,
+                var source = new SceneSurfaceDocument
+                {
+                    Schema = 1,
                     Supports = reverse ? document.Supports.Reverse().ToArray() : document.Supports,
-                    Members = document.Members };
+                    Members = document.Members
+                };
                 var instance = CompiledSceneSurface.Compile(source, texture, "gpu-order")
                     .Instantiate(owner, "piece", 1, Vector2.Zero, true, null, sampler);
                 foreach (var piece in instance.Pieces)
@@ -64,8 +73,11 @@ public partial class SceneSurfaceDrawChecks : Node
                 if (barrier)
                 {
                     var intervening = new Node2D { ZAsRelative = false, ZIndex = 10 };
-                    intervening.AddChild(new Polygon2D { Polygon = [new(1, 0), new(5, 0), new(5, 4), new(1, 4)],
-                        Color = new Color(1, 1, 0, .5f) });
+                    intervening.AddChild(new Polygon2D
+                    {
+                        Polygon = [new(1, 0), new(5, 0), new(5, 4), new(1, 4)],
+                        Color = new Color(1, 1, 0, .5f)
+                    });
                     owner.AddChild(intervening);
                     owner.MoveChild(intervening, instance.Pieces[1].Node.GetIndex());
                 }
@@ -96,7 +108,9 @@ public partial class SceneSurfaceDrawChecks : Node
             File.WriteAllText(Path.Combine(output, "surface-draw-result.json"), JsonSerializer.Serialize(new
             {
                 scope = "Actual GPU static synthetic half-alpha material; no battle commands/AI/turns/saves",
-                exactRgba = true, repeatedExact = true, realSiblingBarrierExact = true,
+                exactRgba = true,
+                repeatedExact = true,
+                realSiblingBarrierExact = true,
                 reversedNegativeDifferentBytes = before.Zip(wrong).Count(pair => pair.First != pair.Second)
             }));
             GD.Print("SCENE_SURFACE_DRAW_CHECKS_OK");
