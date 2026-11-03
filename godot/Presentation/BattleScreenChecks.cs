@@ -387,10 +387,44 @@ public partial class BattleScreenChecks : Node
         screen.Board.AnimationsEnabled = false;
         screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
         void Keypress(Key key) => screen._UnhandledKeyInput(new InputEventKey { Pressed = true, Keycode = key });
+        void ModifiedKeys(params Key[] keys)
+        {
+            var before = EcmaJson.Stringify(session.Snapshot());
+            var revision = session.Revision;
+            var selection = screen.Selection;
+            var focus = GetViewport().GuiGetFocusOwner();
+            var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+            var projection = hud.Projection;
+            foreach (var modifier in new[] { "Control", "Alt", "Meta" })
+                foreach (var key in keys)
+                    foreach (var windowInput in new[] { true, false })
+                    {
+                        using var input = new InputEventKey
+                        {
+                            Pressed = true,
+                            Keycode = key,
+                            PhysicalKeycode = key,
+                            CtrlPressed = modifier == "Control",
+                            AltPressed = modifier == "Alt",
+                            MetaPressed = modifier == "Meta"
+                        };
+                        if (windowInput)
+                            screen._Input(input);
+                        else
+                            screen._UnhandledKeyInput(input);
+                        Require(session.Revision == revision && EcmaJson.Stringify(session.Snapshot()) == before
+                            && ReferenceEquals(screen.Selection, selection) && ReferenceEquals(hud.Projection, projection)
+                            && GetViewport().GuiGetFocusOwner() == focus,
+                            $"{modifier}+{key} must not become a bare battlefield shortcut or change focus through {(windowInput ? "window" : "unhandled")} input.");
+                    }
+        }
         var snapshot = session.GetSnapshot();
         var stableSameRevision = Buttons(screen).Single(button => button.Text == "结束回合");
         Keypress(Key.Space);
         Require(screen.SelectedUnitId == session.GetTacticalQueries(0).Actors()[0], "Space selects first source-ordered actor through native keyboard input.");
+        screen._Input(new InputEventKey { Pressed = true, Keycode = Key.Space, ShiftPressed = true });
+        Require(screen.SelectedUnitId == session.GetTacticalQueries(0).Actors()[1] && session.Revision == snapshot.Revision,
+            "Shift alone preserves existing actor cycling without committing a battle order.");
         var keyboardSelection = screen.Selection;
         var systemButton = (Button)screen.FindChild("SystemMenuButton", true, false);
         systemButton.GrabFocus();
@@ -426,10 +460,16 @@ public partial class BattleScreenChecks : Node
         screen.SelectHit(TacticalHit.Ground(destination));
         Require(session.Revision == snapshot.Revision && screen.Selection?.Kind == TacticalSelectionKind.Destination,
             "Busy release re-enables destination preview without spending the actor's turn.");
+        ModifiedKeys(Key.W, Key.E, Key.Enter, Key.Escape, Key.Space, Key.Left, Key.A, Key.C, Key.H, Key.S, Key.D);
         Keypress(Key.W);
         Require(session.Revision == snapshot.Revision + 1, "Explicit wait commits after busy release.");
         var undo = Buttons(screen).Single(button => button.Text == "撤销");
         Require(!undo.Disabled, "Real undo button becomes enabled after a reversible move.");
+        ModifiedKeys(Key.U, Key.E, Key.W, Key.Enter, Key.Space);
+        systemButton = (Button)screen.FindChild("SystemMenuButton", true, false);
+        systemButton.GrabFocus();
+        ModifiedKeys(Key.Escape, Key.Enter, Key.Space, Key.Right, Key.E);
+        systemButton.ReleaseFocus();
         undo.EmitSignal(Button.SignalName.Pressed);
         var undone = session.GetSnapshot();
         Require(session.Revision == undone.Revision && undone.Revision == snapshot.Revision + 2 && EcmaJson.DeepEquals(EcmaJson.Parse(undone.State.GetRawText()), EcmaJson.Parse(snapshot.State.GetRawText())), "Mounted undo restores exact canonical state and advances revision.");

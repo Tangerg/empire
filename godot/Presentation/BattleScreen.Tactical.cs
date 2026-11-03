@@ -188,7 +188,9 @@ public partial class BattleScreen
 
     public override void _UnhandledKeyInput(InputEvent input)
     {
-        if (input is not InputEventKey { Pressed: true } key || _tactical is null || !Current(_tactical.Stamp))
+        // Native UI and operating-system chords must not become bare battlefield orders.
+        if (input is not InputEventKey { Pressed: true, CtrlPressed: false, AltPressed: false, MetaPressed: false } key
+            || _tactical is null || !Current(_tactical.Stamp))
             return;
         // Tab belongs to native focus traversal; Space cycles actors only while
         // the board owns input. Focused controls keep native activation/navigation.
