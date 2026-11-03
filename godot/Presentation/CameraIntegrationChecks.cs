@@ -55,6 +55,7 @@ public partial class CameraIntegrationChecks : Node
             map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = Field(new Vector2(10.5f, 15.5f) * 32) });
             map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = Field(new Vector2(10.6f, 15.5f) * 32) });
             Require(initial.SnapshotReads == snapshotReads, "Pointer freshness checks must not construct battle snapshots.");
+            CheckHeldPointerProjection();
             await CheckOverlayViewport();
             CheckInitialAndGestures();
             CheckZoomAndResize();
@@ -120,6 +121,56 @@ public partial class CameraIntegrationChecks : Node
         }
         screen.Size = originalSize;
         await Layout();
+        Bind(new GrayFlagSession(new(engine, presentation, new JsonArray()), level));
+    }
+
+    private void CheckHeldPointerProjection()
+    {
+        var originalSize = screen.Size;
+        foreach (var button in new[] { MouseButton.Left, MouseButton.Middle })
+        {
+            var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+            Bind(session);
+            var before = session.GetSnapshot().State.GetRawText();
+            var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+            var start = BoardField(ActorPoint());
+            map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = start });
+            var hovered = hud.Projection;
+            Require(hovered!.Sections.Any(section => section.Key == "tile"), "Held-pointer fixture begins over a real actor pixel.");
+            GuiButton(button, true, start);
+            CapturedMove(start + new Vector2(2, 0));
+            screen._Input(new InputEventMouseButton
+            {
+                ButtonIndex = MouseButton.WheelUp,
+                Pressed = true,
+                CtrlPressed = true,
+                Position = Global(start + new Vector2(2, 0))
+            });
+            screen._Process(0);
+            Require(world.Scale.X > 1.25f, "The held wheel event must actually change camera zoom.");
+            Require(ReferenceEquals(hud.Projection, hovered),
+                "Held sub-threshold pointer suppresses hover reprojection even when wheel zoom changes the camera.");
+            CapturedMove(start + new Vector2(20, 0));
+            void NoHover(string context) => Require(!hud.Projection!.Sections.Any(section => section.Key == "tile")
+                && screen.Selection?.PreviewTarget is null, context);
+            NoHover("Dragging clears the cursor instead of immediately repicking the actor beneath the panning pointer.");
+            screen.Refresh();
+            NoHover("A snapshot refresh cannot restore pointer hover while the camera gesture remains held.");
+            CapturedMove(start + new Vector2(40, 0));
+            NoHover("Continued held pan keeps terrain and target hover suppressed.");
+            var resized = screen.Size + new Vector2(20, 10);
+            screen.Size = resized;
+            NoHover("Resize during a held camera gesture does not revive pointer hover.");
+            CapturedButton(button, false, start + new Vector2(40, 0));
+            NoHover("Releasing a drag does not turn it into a tactical click or a new hover event.");
+            Require(session.GetSnapshot().State.GetRawText() == before && session.Revision == 0 && screen.SelectedUnitId is null,
+                "The complete held pan/zoom/refresh/release sequence leaves battle state and selection unchanged.");
+            var fresh = BoardField(ActorPoint());
+            map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = fresh });
+            Require(hud.Projection!.Sections.FirstOrDefault(section => section.Key == "tile")?.Rows.First().Label == "10, 15",
+                "Fresh pointer motion after release resumes inspection from the current camera transform.");
+        }
+        screen.Size = originalSize;
         Bind(new GrayFlagSession(new(engine, presentation, new JsonArray()), level));
     }
 
@@ -250,6 +301,29 @@ public partial class CameraIntegrationChecks : Node
             await Layout();
             Require(((TacticalHud)screen.FindChild("TacticalHud", true, false)).Projection!.Sections.Any(section => section.Key == "forecast"),
                 $"A real visible enemy pixel must produce the current canonical forecast: point={world.Position + ActorPoint(enemyId, neighbor) * world.Scale}, hovered={viewport.GuiGetHoveredControl()?.Name}, size={screen.Size}, window={GetWindow().Size}, selection={screen.Selection?.Kind}, sections={string.Join(",", ((TacticalHud)screen.FindChild("TacticalHud", true, false)).Projection!.Sections.Select(section => section.Key))}.");
+        }
+        foreach (var button in new[] { MouseButton.Left, MouseButton.Middle })
+        {
+            await Arm();
+            var draggingHud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+            var start = BoardField(ActorPoint(enemyId, neighbor));
+            GuiButton(button, true, start);
+            CapturedMove(start + new Vector2(20, 0));
+            Require(screen.Selection?.Kind == TacticalSelectionKind.Target && screen.Selection.PreviewTarget is null
+                && !draggingHud.Projection!.Sections.Any(section => section.Key == "forecast"),
+                "Panning an armed attack clears its forecast without canceling the selected attack mode.");
+            screen.Refresh();
+            Require(screen.Selection?.PreviewTarget is null && !draggingHud.Projection!.Sections.Any(section => section.Key == "forecast"),
+                "Refreshing an armed attack during drag cannot revive the enemy preview under the held pointer.");
+            // Capture must still finish after crossing the overlapping HUD or the viewport boundary.
+            var tray = (Control)draggingHud.FindChild("OrderTray", false, false);
+            var release = button == MouseButton.Left ? tray.GetGlobalRect().GetCenter() : new Vector2(-30, -30);
+            Require(tray.MouseFilter == Control.MouseFilterEnum.Stop && (button != MouseButton.Left
+                || new Rect2(Vector2.Zero, map.Size).HasPoint(release)), "HUD release fixture lies on the real overlapping input-blocking order tray.");
+            CapturedMove(release);
+            CapturedButton(button, false, release);
+            Require(session.Revision == 0 && screen.Selection?.Kind == TacticalSelectionKind.Target && screen.Selection.PreviewTarget is null,
+                "HUD/outside release ends the camera drag without firing the selected attack.");
         }
         await Arm();
         var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);

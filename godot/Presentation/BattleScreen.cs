@@ -496,7 +496,7 @@ public partial class BattleScreen : Control
         _presentedRevision = next.Revision;
         _state = state;
         SynchronizeTactical(next);
-        if (_pointerMapPosition is { } pointer)
+        if (_gestures?.ActivePointerId is null && _pointerMapPosition is { } pointer)
             HoverField(ProjectMapPoint(pointer));
         _overlay.ShowPublicState(_board.Projection, _tactical!.InteractiveCells, _snapshot.VisibleCells, _snapshot.Incoming);
         UpdateHeader();
@@ -772,9 +772,9 @@ public partial class BattleScreen : Control
             return;
         _world.Scale = scale;
         _world.Position = position;
-        // The renderer remains the only hit owner after pan/zoom; a previous pixel
-        // result must not be reused at a different transform by Enter or the HUD.
-        if (_pointerMapPosition is { } pointer)
+        // Repick stationary pointers after camera changes, but a held gesture owns
+        // hover suppression while capture is active.
+        if (_gestures?.ActivePointerId is null && _pointerMapPosition is { } pointer)
             HoverField(ProjectMapPoint(pointer));
     }
 
