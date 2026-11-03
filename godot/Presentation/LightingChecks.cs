@@ -93,8 +93,36 @@ public partial class LightingChecks : Node
                 Require(assembled is not null && board.GetNodeOrNull<PaintedGroundView>("AuthoredScene/PaintedGround") is null
                     && board.GetNodeOrNull<TerrainView>("AuthoredScene/Terrain") is null,
                     "C01 must use independent registered objects, not baked occluders or a procedural lighting overlay.");
-                Require(assembled!.DepthEntries.All(entry => entry.Node.GetNodeOrNull<Sprite2D>("SourceStructureContact") is not null),
-                    "Every independent C01 object owns its local ground-contact shadow.");
+                var document = PresentationJson.Load<AssembledGroundDocument>(scene.AssembledGroundPath!);
+                var catalog = PresentationJson.Load<SceneObjectCatalog>(document.ObjectCatalogPath);
+                var expected = document.Objects.Where(instance => catalog.Objects[instance.AssetId].ContactShadowRadiiPixels is not null).ToArray();
+                var contacts = assembled!.GetChildren().OfType<Node2D>()
+                    .Where(node => node.Name.ToString().EndsWith("__ground_contact", StringComparison.Ordinal)).ToArray();
+                Require(expected.Length > 0 && contacts.Select(node => node.Name.ToString()).Order()
+                    .SequenceEqual(expected.Select(instance => instance.Id + "__ground_contact").Order()),
+                    "Every declared independent contact owns exactly one ground projection, regardless of standing strip count.");
+                Require(assembled.DepthEntries.All(entry => !entry.Node.HasNode("SourceStructureContact")
+                    && !contacts.Contains(entry.Node)),
+                    "Ground-contact shadows cannot become standing depth or picking owners.");
+                var baseFloor = assembled.GetNode<PaintedSurface>("RegisteredSurface");
+                foreach (var instance in expected)
+                {
+                    var contact = assembled.GetNode<Node2D>(instance.Id + "__ground_contact");
+                    var source = contact.GetNode<Sprite2D>("SourceStructureContact");
+                    var floor = contact.GetNode<PaintedSurface>("RegisteredSurface");
+                    var position = board.Projection.Project(new Vector2((float)instance.Contact[0], (float)instance.Contact[1]) * BoardProjection.TileSize);
+                    Require(contact.GetChildCount() == 2 && !source.Visible && floor.Visible
+                        && contact.GetIndex() > baseFloor.GetIndex(),
+                        "A hidden source owns the contact texture; its sole floor projection follows the base floor at equal depth.");
+                    Require(contact.GlobalPosition.IsEqualApprox(board.ToGlobal(position))
+                        && source.ToGlobal(source.Texture.GetSize() / 2).IsEqualApprox(contact.GlobalPosition)
+                        && source.Scale.IsEqualApprox(Vector2.One * instance.Scale / 2),
+                        "Authored contact centering and instance scale must be preserved exactly once.");
+                    Require(floor.GetChildren().OfType<Polygon2D>().All(polygon => polygon.Texture == source.Texture
+                        && !polygon.ZAsRelative && board.Projection.DepthPartitions.Any(partition =>
+                            polygon.ZIndex == board.Projection.LayerAtDepth(partition.StartDepth, BoardDepthLayer.Surface))),
+                        "Contact polygons borrow the source texture and use only the board's ground-top depth partitions.");
+                }
             }
             Require(shadow.GetMeta("composition_inputs").AsInt32() == 3 && sprite.SelfModulate.A == 0, "Figure must compose contact, ring and strip once, without a second original draw.");
             Require(shadow.GetMeta("source_texture").AsUInt64() == sprite.Texture.GetInstanceId(), "Integrated figure shadow sampled the wrong source frame.");

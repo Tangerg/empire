@@ -143,8 +143,8 @@ cannot distinguish multiline formatting from token changes.
   `1375167b7`; the archived contact-shadow-depth audit records why the renderer
   moved that shadow onto the ground. No assertion was skipped or weakened.
 - The 15 subsequent native stages did **not run** in this aggregate. This is not
-  a complete acceptance pass. The stale shadow-contract checks require a separate
-  cohesive correction against the floor projection's actual invariants.
+  a complete acceptance pass. The stale shadow-contract checks identified a separate
+  correction against the floor projection's actual invariants, recorded below.
 - Bash/Python syntax, Roslyn token equivalence, final diff review and
   `git diff --check` passed. Art, map, scene and provenance files have no diff.
 
@@ -155,3 +155,14 @@ The selector itself measured 161 seconds with the default 300-second bound.
 
 Actual graphical acceptance and GPU pixel checks require a graphical renderer;
 headless scene assertions do not substitute for them.
+
+## Subsequent assembled-ground contract repair
+
+The [separate test-contract repair](NATIVE-CONTACT-SHADOW-CONTRACTS-20261103.md)
+corrected the obsolete contact-shadow and material draw-grouping expectations,
+added 32 deliberate native negative controls, and brought LightingChecks into the
+aggregate. The complete aggregate then passed on 2026-11-03, exit zero, including
+all 22 native scenes. Runtime source, original maps and art remained unchanged.
+This later pass does not retroactively turn the failed checkpoint above into a
+successful run. Graphical/export acceptance and broader art completeness remain
+separate.

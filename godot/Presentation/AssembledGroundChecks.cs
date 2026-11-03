@@ -206,17 +206,25 @@ public partial class AssembledGroundChecks : Node
             Require(treeVisual.Covers(tree.ToGlobal(new Vector2(0, -35))) && !treeVisual.ContainsPointer(tree.ToGlobal(new Vector2(0, -35))),
                 "Perimeter tree alpha occludes visually while its explicit pass-through contract remains distinct.");
             var oldPoint = tree.GlobalPosition;
-            var oldShadow = tree.GetNode<Sprite2D>("SourceStructureContact");
-            Require(oldShadow.ShowBehindParent && oldShadow.Scale == Vector2.One / 2
-                && Mathf.IsEqualApprox(oldShadow.GetGlobalTransform().X.Length(), .25f)
-                && oldShadow.ToGlobal(oldShadow.Texture.GetSize() / 2).IsEqualApprox(tree.GlobalPosition),
-                "Contact shadow is centered on the authored foot and inherits instance scale exactly once.");
-            Bind(Document(sites.Select(Site).Append(Tree(8.5)).ToArray()));
+            CheckFixtureContacts(view, board.Projection, document);
+            var oldView = view;
+            var oldContact = view.GetNode<Node2D>("Tree__ground_contact");
+            var oldShadow = oldContact.GetNode<Sprite2D>("SourceStructureContact");
+            var oldFloor = oldContact.GetNode<PaintedSurface>("RegisteredSurface");
+            var movedDocument = Document(sites.Select(Site).Append(Tree(8.5)).ToArray());
+            Bind(movedDocument);
             var moved = view!.GetNode<Sprite2D>("Tree");
-            var movedShadow = moved.GetNode<Sprite2D>("SourceStructureContact");
-            Require(!oldShadow.IsInsideTree() && movedShadow.GetParent() == moved
-                && movedShadow.ToGlobal(movedShadow.Texture.GetSize() / 2).IsEqualApprox(moved.GlobalPosition),
-                "Moving/replacing an object removes its previous contact shadow with the old subtree.");
+            CheckFixtureContacts(view, board.Projection, movedDocument);
+            Require(IsInstanceValid(oldView) && IsInstanceValid(oldContact) && IsInstanceValid(oldShadow) && IsInstanceValid(oldFloor)
+                && oldView.GetParent() is null && oldView.IsQueuedForDeletion()
+                && !oldView.IsInsideTree() && !oldContact.IsInsideTree() && !oldShadow.IsInsideTree() && !oldFloor.IsInsideTree(),
+                "Replacing ground must immediately detach the old aggregate and queue its owned contacts for deletion.");
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Require(!IsInstanceValid(oldView) && !IsInstanceValid(oldContact) && !IsInstanceValid(oldShadow) && !IsInstanceValid(oldFloor),
+                "Frame cleanup must free replaced ground and its previous sibling contact, source and projected floor.");
+            CheckContactNegativeControls(board, view, board.Projection, movedDocument,
+                new Vector2I(map["width"]!.GetValue<int>(), map["height"]!.GetValue<int>()));
             Require(moved.GlobalPosition != oldPoint && moved.Texture == house
                 && view.GetNode<Sprite2D>("CleanGround").Texture == ground,
                 "Moving an independent instance changes only its placement, not ground pixels or resource identity.");
@@ -253,6 +261,7 @@ public partial class AssembledGroundChecks : Node
                 && !limitedVisual.ContainsPointer(limited.ToGlobal(new Vector2(0, -65)))
                 && limitedVisual.Covers(limited.ToGlobal(new Vector2(0, -65))),
                 "Pointer contour applied anchor/instance/parent scale twice or altered visual coverage.");
+            CheckFixtureContacts(view, board.Projection, document);
             Require(EcmaJson.Stringify(state) == before, "Pointer-only geometry changed canonical battle state.");
             board.Position = Vector2.Zero;
             board.Scale = Vector2.One;
@@ -281,11 +290,100 @@ public partial class AssembledGroundChecks : Node
             var stripDoor = firstStrip.ToGlobal(new Vector2(32, 76) - new Vector2(32, 88));
             Require(board.Pick(board.ToLocal(stripDoor)) == TacticalHit.Object(new(sites[0].X, sites[0].Y)),
                 "A partitioned independent site must still resolve to its original single canonical owner.");
-            Require(view.GetChildren().OfType<Sprite2D>().Count(sprite => sprite.HasNode("SourceStructureContact")) == 1,
-                "Depth strips must not duplicate the object's contact shadow.");
+            CheckFixtureContacts(view, board.Projection, Document(Site(sites[0])));
+            Require(view.GetChildren().OfType<Node2D>().Count(node => node.Name.ToString().EndsWith("__ground_contact", StringComparison.Ordinal)) == 1,
+                "Depth strips must share exactly one independent floor contact, never a standing-child shadow.");
             Require(EcmaJson.Stringify(state) == before, "Depth partitioning cannot create another gameplay writer.");
             catalog.Objects["house"] = PointerAsset(null);
-
+            var lifecycleDocument = Document(Site(sites[0]), Tree(8.5));
+            var tiles = map["tiles"]!.AsArray().Select(value => value!.GetValue<string>()).ToArray();
+            var heights = map["elevation"]!.AsArray().Select(value => value!.GetValue<int>()).ToArray();
+            var size = new Vector2I(map["width"]!.GetValue<int>(), map["height"]!.GetValue<int>());
+            var playable = Enumerable.Range(0, tiles.Length).Where(index => !engine.Catalog.Definition("terrains", tiles[index])!
+                .Value.GetProperty("tags").EnumerateArray().Any(tag => tag.GetString() == "outside"))
+                .Select(index => new Coord(index % size.X, index / size.X)).ToHashSet();
+            foreach (var cached in new[] { false, true })
+            {
+                using var cache = new ShadowCache();
+                var lifetime = AssembledGroundView.Create(lifecycleDocument, ground, catalog, textures, map, engine.Catalog, cached ? cache : null);
+                AddChild(lifetime);
+                var projection = new BoardProjection(engine.Grids.Get("square4"), lifecycleDocument.CreatePlane, map, playable);
+                var replacement = new BoardProjection(engine.Grids.Get("square4"), lifecycleDocument.CreatePlane, map, playable);
+                try
+                {
+                    lifetime.Render(projection, tiles, heights, size);
+                    CheckFixtureContacts(lifetime, projection, lifecycleDocument);
+                    var contacts = lifecycleDocument.Objects.Select(item => lifetime.GetNode<Node2D>(item.Id + "__ground_contact")).ToArray();
+                    var sources = contacts.Select(node => node.GetNode<Sprite2D>("SourceStructureContact")).ToArray();
+                    var floors = contacts.Select(node => node.GetNode<PaintedSurface>("RegisteredSurface")).ToArray();
+                    var shadowTextures = sources.Select(source => source.Texture).ToArray();
+                    void Retained(PaintedSurface[] expectedFloors, BoardProjection currentProjection)
+                    {
+                        Require(contacts.All(IsInstanceValid) && sources.All(IsInstanceValid) && shadowTextures.All(IsInstanceValid)
+                            && contacts.Select(node => node.GetNode<PaintedSurface>("RegisteredSurface")).SequenceEqual(expectedFloors)
+                            && contacts.Select(node => node.GetNode<Sprite2D>("SourceStructureContact")).SequenceEqual(sources)
+                            && sources.Select(source => source.Texture).SequenceEqual(shadowTextures),
+                            $"Contact lifecycle ({cached}): repeated render must retain sources, textures and current floors.");
+                        CheckFixtureContacts(lifetime, currentProjection, lifecycleDocument);
+                    }
+                    void RejectLifecycle(Action check, string expected)
+                    {
+                        var rejected = false;
+                        try
+                        {
+                            check();
+                        }
+                        catch (InvalidOperationException error) when (error.Message == expected) { rejected = true; }
+                        Require(rejected, "Contact lifecycle negative control failed: " + expected);
+                        GD.Print($"ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached={cached} {expected}");
+                    }
+                    void Replaced() => Require(floors.All(floor => !IsInstanceValid(floor)) && ProjectionSubscriptions(projection) == 0,
+                        "Projection replacement must free old floors and unsubscribe the old projection.");
+                    sources[0].Texture = house;
+                    try
+                    {
+                        RejectLifecycle(() => Retained(floors, projection),
+                            $"Contact lifecycle ({cached}): repeated render must retain sources, textures and current floors.");
+                    }
+                    finally { sources[0].Texture = shadowTextures[0]; }
+                    RejectLifecycle(Replaced, "Projection replacement must free old floors and unsubscribe the old projection.");
+                    for (var repeat = 0; repeat < 3; repeat++)
+                    {
+                        lifetime.Render(projection, tiles, heights, size);
+                        Retained(floors, projection);
+                    }
+                    Require(cached ? shadowTextures[0] == shadowTextures[1] : shadowTextures[0] != shadowTextures[1],
+                        "Equal radii borrow one cached texture, while uncached sources own independent textures.");
+                    lifetime.Render(replacement, tiles, heights, size);
+                    Replaced();
+                    var replacementFloors = contacts.Select(node => node.GetNode<PaintedSurface>("RegisteredSurface")).ToArray();
+                    Retained(replacementFloors, replacement);
+                    lifetime.Render(replacement, tiles, heights, size);
+                    Retained(replacementFloors, replacement);
+                    Require(ProjectionSubscriptions(replacement) == contacts.Length + 1,
+                        "Only the base floor and one floor per contact may subscribe to the projection.");
+                    void Unloaded() => Require(contacts.All(node => !IsInstanceValid(node)) && sources.All(source => !IsInstanceValid(source))
+                        && replacementFloors.All(floor => !IsInstanceValid(floor)) && ProjectionSubscriptions(replacement) == 0,
+                        "Unload must release contacts, sources, floors and all projection subscriptions.");
+                    RejectLifecycle(Unloaded, "Unload must release contacts, sources, floors and all projection subscriptions.");
+                    RemoveChild(lifetime);
+                    lifetime.Free();
+                    Unloaded();
+                    Require(shadowTextures.All(texture => IsInstanceValid(texture) == cached),
+                        "Unload releases uncached source-owned textures but preserves cache-owned textures.");
+                    cache.Dispose();
+                    Require(shadowTextures.All(texture => !IsInstanceValid(texture)), "Disposing the cache must release its retained contact texture.");
+                }
+                finally
+                {
+                    if (IsInstanceValid(lifetime))
+                    {
+                        RemoveChild(lifetime);
+                        lifetime.Free();
+                    }
+                }
+            }
+            Require(EcmaJson.Stringify(state) == before, "Contact lifecycle checks cannot mutate canonical battle state.");
         }
         finally { RemoveChild(board); board.Free(); }
         void Reject(AssembledGroundDocument invalid, string reason)
@@ -345,12 +443,9 @@ public partial class AssembledGroundChecks : Node
                 materialBoard.RenderState(empty);
                 Require(materialView!.DepthEntries.Count == 2 && materialView.Sites.Count == 1, "Two geometry surfaces must keep one canonical site.");
                 var entry = materialView.DepthEntries[0];
-                foreach (var surface in materialView.DepthEntries)
-                {
-                    var draw = surface.Node.GetChildren().OfType<Polygon2D>().Single();
-                    Require(draw.Texture == material && draw.Polygon.Length == 6 && draw.UV.Length == 6,
-                        "Draw must use the same compiled geometry and selected RGB/native-alpha material.");
-                }
+                var authoredMaterial = PresentationJson.Load<SceneSurfaceDocument>(catalog.Objects["house"].SurfaceGeometryPath!);
+                CheckFixtureMaterial(materialView, authoredMaterial, material);
+                CheckMaterialNegativeControls(materialView, authoredMaterial, material, house);
                 Vector2 Global(float x, float y) => entry.Node.ToGlobal(new Vector2(x, y) - new Vector2(32, 88));
                 var target = TacticalHit.Object(new(sites[0].X, sites[0].Y));
                 Require(entry.Visual!.Covers(Global(15.25f, 42.25f)) && materialBoard.Pick(materialBoard.ToLocal(Global(15.25f, 42.25f))) == target,
@@ -362,6 +457,13 @@ public partial class AssembledGroundChecks : Node
                 Require(entry.Visual.Covers(nativeHole) == (coverage == "opaque")
                     && (materialBoard.Pick(materialBoard.ToLocal(nativeHole)) == target) == (coverage == "opaque"),
                     "Native-alpha mapped hole must remain transparent while solid RGB material covers its polygon.");
+                var rightEntry = materialView.DepthEntries[1];
+                Require(rightEntry.Visual!.Covers(Global(45.25f, 42.25f)) && rightEntry.Visual.ContainsPointer(Global(45.25f, 42.25f))
+                    && !entry.Visual.Covers(Global(45.25f, 42.25f)) && !rightEntry.Visual.Covers(Global(15.25f, 42.25f))
+                    && materialBoard.Pick(materialBoard.ToLocal(Global(45.25f, 42.25f))) == target,
+                    "Batched drawing must preserve the right physical support and its separate pick coverage.");
+                materialBoard.RenderState(empty);
+                CheckFixtureMaterial(materialView, authoredMaterial, material);
                 Require(materialBoard.RenderingIssueCount == 0, "Material fixture must not hide rendering issues.");
             }
             Require(EcmaJson.Stringify(state) == before, "Material coverage cannot mutate gameplay state.");
@@ -422,4 +524,241 @@ public partial class AssembledGroundChecks : Node
         catch (JsonException) { rejectedOldPatches = true; }
         Require(rejectedOldPatches, "Assembled documents reject obsolete background-patch occluders rather than silently combining renderers.");
     }
+    private void CheckFixtureMaterial(AssembledGroundView view, SceneSurfaceDocument authored, Texture2D material)
+    {
+        var entries = view.DepthEntries.ToArray();
+        var anchor = new Vector2(32, 88);
+        Vector2 Point(double[] point) => new((float)point[0], (float)point[1]);
+        Require(entries.Length == authored.Supports.Length && entries.Select(entry => entry.Node).Distinct().Count() == entries.Length
+            && entries.All(entry => entry.Node.Visible && entry.SelectionCell == entries[0].SelectionCell),
+            "Material contract: drawing must retain every physical support and its canonical site.");
+        var expected = authored.Supports.SelectMany(support => authored.Members.Where(member => member.SupportId == support.Id))
+            .SelectMany(member => Geometry2D.TriangulatePolygon(member.PolygonPixels.Select(Point).ToArray()).Chunk(3)
+                .Select(indices => (Points: indices.Select(index => Point(member.PolygonPixels[index])).ToArray(),
+                    Uv: indices.Select(index => Point(member.UvPixels[index])).ToArray(), Tint: Color.FromHtml(member.Tint))))
+            .ToArray();
+        for (var index = 0; index < entries.Length; index++)
+            Require(entries[index].Visual!.FrontOffset(entries[index].Node).IsEqualApprox(Point(authored.Supports[index].FrontPixels) - anchor)
+                && !entries[index].Node.ZAsRelative && entries[index].Node.ZIndex == entries[0].Node.ZIndex,
+                "Material contract: each support must retain its own front at the assigned equal depth.");
+        var draws = entries.OrderBy(entry => entry.Node.GetIndex()).SelectMany(entry => entry.Node.GetChildren().OfType<Polygon2D>()).ToArray();
+        var visible = draws.Where(draw => draw.IsVisibleInTree()).ToArray();
+        var primitives = visible.SelectMany(draw => draw.Polygons.Select(indices => (Draw: draw, Indices: indices.AsInt32Array()))).ToArray();
+        Require(primitives.Length == expected.Length, "Material contract: visible primitives must cover the authored geometry exactly once.");
+        Require(draws.Length == entries.Length && draws[0].Visible && draws.Skip(1).All(draw => !draw.Visible),
+            "Material contract: adjacent equal-depth supports must share only their drawing projection.");
+        foreach (var draw in visible)
+        {
+            Require(draw.Texture == material && draw.Material is null && !draw.UseParentMaterial,
+                "Material contract: visible primitives must use the selected complete material.");
+            Require(draw.Color == Colors.White && draw.Modulate == Colors.White && draw.SelfModulate == Colors.White
+                && entries.All(entry => entry.Node.Modulate == Colors.White && entry.Node.SelfModulate == Colors.White),
+                "Material contract: authored tint must not be multiplied by another draw tint.");
+            Require(draw.Polygon.Length == draw.UV.Length && draw.Polygon.Length == draw.VertexColors.Length
+                && draw.Polygon.Length == expected.Sum(primitive => primitive.Points.Length),
+                "Material contract: independent primitive vertices must retain their UV and tint arrays.");
+        }
+        for (var primitive = 0; primitive < expected.Length; primitive++)
+        {
+            var (draw, indices) = primitives[primitive];
+            Require(indices.Length == 3 && indices.All(index => index >= 0 && index < draw.Polygon.Length),
+                "Material contract: each visible primitive must retain its triangle indices.");
+            for (var corner = 0; corner < indices.Length; corner++)
+            {
+                var index = indices[corner];
+                Require(draw.ToGlobal(draw.Polygon[index]).IsEqualApprox(entries[0].Node.ToGlobal(expected[primitive].Points[corner] - anchor)),
+                    "Material contract: visible primitive geometry and order must match the authored fixture.");
+                Require(draw.UV[index].IsEqualApprox(expected[primitive].Uv[corner]),
+                    "Material contract: visible primitive UVs must match the authored fixture.");
+                Require(draw.VertexColors[index] == expected[primitive].Tint,
+                    "Material contract: visible primitive tint must match the authored fixture.");
+            }
+        }
+    }
+
+    private void CheckMaterialNegativeControls(AssembledGroundView view, SceneSurfaceDocument authored, Texture2D material, Texture2D wrongMaterial)
+    {
+        var draw = view.DepthEntries.SelectMany(entry => entry.Node.GetChildren().OfType<Polygon2D>()).First(node => node.Visible);
+        void RejectMutation(Action mutate, Action restore, string expected)
+        {
+            var rejected = false;
+            try
+            {
+                mutate();
+                try
+                {
+                    CheckFixtureMaterial(view, authored, material);
+                }
+                catch (InvalidOperationException error) when (error.Message == "Material contract: " + expected) { rejected = true; }
+                Require(rejected, "Material negative control failed to detect: " + expected);
+                GD.Print("ASSEMBLED_MATERIAL_NEGATIVE_OK " + expected);
+            }
+            finally { restore(); }
+            CheckFixtureMaterial(view, authored, material);
+        }
+        RejectMutation(() => draw.Texture = wrongMaterial, () => draw.Texture = material,
+            "visible primitives must use the selected complete material.");
+        var uv = draw.UV;
+        var wrongUv = (Vector2[])uv.Clone();
+        wrongUv[0] += Vector2.Right;
+        RejectMutation(() => draw.UV = wrongUv, () => draw.UV = uv,
+            "visible primitive UVs must match the authored fixture.");
+        var polygons = draw.Polygons;
+        var missing = polygons.Duplicate();
+        missing.RemoveAt(missing.Count - 1);
+        RejectMutation(() => draw.Polygons = missing, () => draw.Polygons = polygons,
+            "visible primitives must cover the authored geometry exactly once.");
+        var duplicate = polygons.Duplicate();
+        duplicate.Add(polygons[0]);
+        RejectMutation(() => draw.Polygons = duplicate, () => draw.Polygons = polygons,
+            "visible primitives must cover the authored geometry exactly once.");
+        var follower = view.DepthEntries[1].Node.GetChildren().OfType<Polygon2D>().Single();
+        RejectMutation(() => follower.Visible = true, () => follower.Visible = false,
+            "visible primitives must cover the authored geometry exactly once.");
+        var reversed = polygons.Duplicate();
+        reversed[0] = polygons[1];
+        reversed[1] = polygons[0];
+        RejectMutation(() => draw.Polygons = reversed, () => draw.Polygons = polygons,
+            "visible primitive geometry and order must match the authored fixture.");
+        var colors = draw.VertexColors;
+        var wrongColors = (Color[])colors.Clone();
+        wrongColors[0] = Colors.Red;
+        RejectMutation(() => draw.VertexColors = wrongColors, () => draw.VertexColors = colors,
+            "visible primitive tint must match the authored fixture.");
+    }
+
+    private void CheckFixtureContacts(AssembledGroundView view, BoardProjection projection, AssembledGroundDocument document)
+    {
+        var contacts = view.GetChildren().OfType<Node2D>()
+            .Where(node => node.Name.ToString().EndsWith("__ground_contact", StringComparison.Ordinal)).ToArray();
+        Require(contacts.Length == document.Objects.Length, "Contact contract: exactly one sibling contact per object.");
+        var baseFloor = view.GetNode<PaintedSurface>("RegisteredSurface");
+        foreach (var placement in document.Objects)
+        {
+            var contact = contacts.SingleOrDefault(node => node.Name == placement.Id + "__ground_contact");
+            Require(contact is not null, "Contact contract: exactly one sibling contact per object.");
+            var sources = contact!.GetChildren().OfType<Sprite2D>().ToArray();
+            Require(sources.Length == 1 && sources[0].Name == "SourceStructureContact",
+                "Contact contract: exactly one source belongs to the sibling contact.");
+            var source = sources[0];
+            Require(!source.Visible, "Contact contract: source must remain hidden.");
+            var floors = contact.GetChildren().OfType<PaintedSurface>().ToArray();
+            Require(floors.Length == 1 && floors[0].Name == "RegisteredSurface" && contact.GetChildCount() == 2,
+                "Contact contract: exactly one projected floor belongs to the sibling contact.");
+            var floor = floors[0];
+            var expected = projection.Project(new Vector2((float)placement.Contact[0], (float)placement.Contact[1]) * BoardProjection.TileSize);
+            Require(contact.Position.IsEqualApprox(expected) && contact.Scale.IsEqualApprox(Vector2.One)
+                && floor.Position.IsEqualApprox(-expected) && floor.Scale.IsEqualApprox(Vector2.One),
+                "Contact contract: floor placement must follow the registered authored foot.");
+            Require(source.ShowBehindParent && !source.Centered && source.Scale.IsEqualApprox(Vector2.One * placement.Scale / 2)
+                && Mathf.IsEqualApprox(source.GetGlobalTransform().X.Length(), view.GetGlobalTransform().X.Length() * placement.Scale / 2)
+                && Mathf.IsEqualApprox(source.GetGlobalTransform().Y.Length(), view.GetGlobalTransform().Y.Length() * placement.Scale / 2),
+                "Contact contract: source density and instance scale must apply exactly once.");
+            Require(source.ToGlobal(source.Texture.GetSize() / 2).IsEqualApprox(view.ToGlobal(expected)),
+                "Contact contract: source texture must be centered on the authored foot.");
+            Require(contact.GetIndex() > baseFloor.GetIndex() && floor.Visible
+                && !view.DepthEntries.Any(entry => entry.Node == contact || contact.IsAncestorOf(entry.Node)),
+                "Contact contract: floor must follow base ground without standing or picking registration.");
+            var surfaceDepths = projection.DepthPartitions.Select(partition => projection.LayerAtDepth(partition.StartDepth, BoardDepthLayer.Surface)).ToHashSet();
+            Require(placement.SelectionCell is null || floor.GetChildren().OfType<Polygon2D>().Any(),
+                "Contact contract: a registered site must have visible projected floor geometry.");
+            foreach (var polygon in floor.GetChildren().OfType<Polygon2D>())
+            {
+                Require(!polygon.ZAsRelative && surfaceDepths.Contains(polygon.ZIndex),
+                    "Contact contract: projected polygons must use absolute floor depth, never standing depth.");
+                Require(polygon.Texture == source.Texture && polygon.Polygon.Length == polygon.UV.Length,
+                    "Contact contract: projected floor must borrow the complete source texture.");
+                for (var index = 0; index < polygon.Polygon.Length; index++)
+                    Require(polygon.ToGlobal(polygon.Polygon[index]).IsEqualApprox(source.ToGlobal(polygon.UV[index])),
+                        "Contact contract: projected floor UVs must preserve source placement and scale.");
+            }
+            Require(view.DepthEntries.All(entry => !entry.Node.HasNode("SourceStructureContact")),
+                "Contact contract: standing objects must not own a legacy contact source.");
+        }
+    }
+
+    private void CheckContactNegativeControls(BoardView board, AssembledGroundView view, BoardProjection projection, AssembledGroundDocument document, Vector2I mapSize)
+    {
+        var placement = document.Objects.First(item => item.SelectionCell is not null);
+        var contact = view.GetNode<Node2D>(placement.Id + "__ground_contact");
+        var source = contact.GetNode<Sprite2D>("SourceStructureContact");
+        var floor = contact.GetNode<PaintedSurface>("RegisteredSurface");
+        var standing = view.GetNode<Sprite2D>(placement.Id);
+        void RejectMutation(Action mutate, Action restore, string expected)
+        {
+            var rejected = false;
+            try
+            {
+                mutate();
+                try
+                {
+                    CheckFixtureContacts(view, projection, document);
+                }
+                catch (InvalidOperationException error) when (error.Message == "Contact contract: " + expected) { rejected = true; }
+                Require(rejected, "Contact negative control failed to detect: " + expected);
+                GD.Print("ASSEMBLED_CONTACT_NEGATIVE_OK " + expected);
+            }
+            finally { restore(); }
+            CheckFixtureContacts(view, projection, document);
+        }
+        RejectMutation(() => contact.RemoveChild(source), () => contact.AddChild(source),
+            "exactly one source belongs to the sibling contact.");
+        RejectMutation(() => source.Visible = true, () => source.Visible = false, "source must remain hidden.");
+        RejectMutation(() => contact.RemoveChild(floor), () => contact.AddChild(floor),
+            "exactly one projected floor belongs to the sibling contact.");
+        var duplicateFloor = PaintedSurface.Create(projection, source, contact.Position);
+        try
+        {
+            RejectMutation(() => contact.AddChild(duplicateFloor), () => contact.RemoveChild(duplicateFloor),
+                "exactly one projected floor belongs to the sibling contact.");
+        }
+        finally { duplicateFloor.Free(); }
+        var contactIndex = contact.GetIndex();
+        RejectMutation(() => view.RemoveChild(contact), () => { view.AddChild(contact); view.MoveChild(contact, contactIndex); },
+            "exactly one sibling contact per object.");
+        var duplicateContact = new Node2D { Name = "Extra__ground_contact" };
+        try
+        {
+            RejectMutation(() => view.AddChild(duplicateContact), () => view.RemoveChild(duplicateContact),
+                "exactly one sibling contact per object.");
+        }
+        finally { duplicateContact.Free(); }
+        var sourceScale = source.Scale;
+        RejectMutation(() => source.Scale *= .5f, () => source.Scale = sourceScale,
+            "source density and instance scale must apply exactly once.");
+        var position = contact.Position;
+        RejectMutation(() => contact.Position += Vector2.Right, () => contact.Position = position,
+            "floor placement must follow the registered authored foot.");
+        var sourcePosition = source.Position;
+        RejectMutation(() => source.Position += Vector2.Right, () => source.Position = sourcePosition,
+            "source texture must be centered on the authored foot.");
+        var polygon = floor.GetChildren().OfType<Polygon2D>().FirstOrDefault();
+        Require(polygon is not null, "The negative-control site must have a real projected floor polygon.");
+        var relative = polygon!.ZAsRelative;
+        RejectMutation(() => polygon.ZAsRelative = true, () => polygon.ZAsRelative = relative,
+            "projected polygons must use absolute floor depth, never standing depth.");
+        var depth = polygon.ZIndex;
+        RejectMutation(() => polygon.ZIndex = standing.ZIndex, () => polygon.ZIndex = depth,
+            "projected polygons must use absolute floor depth, never standing depth.");
+        RejectMutation(() => { contact.RemoveChild(source); standing.AddChild(source); },
+            () => { standing.RemoveChild(source); contact.AddChild(source); },
+            "exactly one source belongs to the sibling contact.");
+        var points = Enumerable.Range(0, mapSize.X).SelectMany(x => Enumerable.Range(0, mapSize.Y)
+            .Select(y => projection.CellContact(new Coord(x, y)))).ToArray();
+        var hits = points.Select(board.Pick).ToArray();
+        foreach (var node in view.GetChildren().OfType<Node2D>().Where(node => node.Name.ToString().EndsWith("__ground_contact", StringComparison.Ordinal)))
+            node.Visible = false;
+        Require(points.Select(board.Pick).SequenceEqual(hits), "Hiding contact floors must leave every canonical cell Pick unchanged.");
+        foreach (var node in view.GetChildren().OfType<Node2D>().Where(node => node.Name.ToString().EndsWith("__ground_contact", StringComparison.Ordinal)))
+            node.Visible = true;
+        CheckFixtureContacts(view, projection, document);
+    }
+
+    private static int ProjectionSubscriptions(BoardProjection projection)
+    {
+        var field = typeof(BoardProjection).GetField(nameof(BoardProjection.DepthPartitionsChanged),
+            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!;
+        return ((Delegate?)field.GetValue(projection))?.GetInvocationList().Length ?? 0;
+    }
+
 }

@@ -26,6 +26,15 @@ Headless checks establish source parameters, ownership, resource use, cache beha
 
 CSS `drop-shadow` uses its third length as Gaussian standard deviation, unlike `box-shadow` blur radius: [W3C Filter Effects 1, section 6.1](https://www.w3.org/TR/filter-effects-1/#funcdef-filter-drop-shadow). The original `board-surface.ts` contains a misleading half-radius comment; its actual SVG constants are preserved unchanged, independently of the CSS presets.
 
+## Current assembled contact gate
+
+The current `verify-native.sh` also runs `LightingChecks` against the checked-in
+lighting oracle. The formal assembled scene's document/catalog own the contact
+set: one hidden source and one independent ground projection per declared
+contact, not one shadow per standing strip. `AssembledGroundChecks` additionally
+covers real-node negative mutations, cached/uncached lifecycle and unchanged
+picking. See [the contract repair evidence](../../../godot/docs/NATIVE-CONTACT-SHADOW-CONTRACTS-20261103.md).
+
 ## Performance acceptance
 
 The recorded cold board composition took approximately 4.9 seconds in this cloud
