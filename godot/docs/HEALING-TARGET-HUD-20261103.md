@@ -83,7 +83,40 @@ The final focused Debug build passed with zero warnings/errors, and the complete
 `TacticalHudChecks` scene passed 437 assertions with native exit 0 and no strict
 error/leak diagnostics. Format write and source metadata checks passed. The three
 formal interaction regressions, exact healing receipt and privacy boundaries are
-included. Segmented aggregate verification is pending.
+included.
+
+The original `tools/godot/verify-native.sh` commands were run as separately
+recorded stages against code commit
+`f8584534516484e4adab46e4bcc243068c3693d4`, with an additional ExportRelease build.
+All **39 stages**, including **25 native scenes**, completed with exit 0 between
+22:54:42 and 23:31:26 UTC on 2026-11-03. The environment restarted during
+`CampaignNavigationChecks`; the previous 34 confirmed stage results and exact
+binary hashes were preserved. That incomplete stage's evidence was archived,
+the same command reran from its beginning, and the remaining four stages then
+completed. **This was not one uninterrupted aggregate invocation.**
+
+The completed gate includes source-selection negatives, formatting, metadata,
+four formal-map validators, 13 core contracts with 16 independent native AI
+battles (3425 legal actions) and exact save/replay round trips, 141 objective and
+outcome assertions, 76 catalog-ownership assertions, and all native UI, camera,
+map, animation, battle/campaign flow and resource-lifetime scenes. The existing
+844 animation assertions and attack-target pointer handoff regression still
+pass. The independent levels include losses and turn limits; they are not a
+carried-state campaign victory or fresh historical TypeScript AI parity proof.
+
+Debug and ExportRelease builds both completed with zero warnings/errors. Actual
+MSBuild ExportRelease evaluation includes all three changed production files
+among 108 compile items and excludes both HUD check sources. Every native
+process exited normally without the gate's error/leak diagnostics; existing
+warning-path and authored runtime-readiness notices remain.
+
+The tested Debug binary hashes, rechecked after the restart and at completion:
+
+- Empire.Core.dll: `aac13baaffc1d6f8ce1c61a0476241306ad4c6d957c8761c567714d01562c2fb`
+- Empire.dll: `fed3a395bb35248bc6df4efc1e73e17c3fce158bb0345f4b1112e60533f51efd`
+
+No engine, map or art source changed relative to the previously published
+`4eb564cf2` baseline. This final verification update changes documentation only.
 
 Headless native node/layout/resource checks are not GPU screenshot review or
 exported-executable acceptance. Existing authored runtime-readiness diagnostics
