@@ -55,8 +55,31 @@ Both defect guards failed on their original implementations in native Godot
 4.6.3.NET: the structure case had no forecast and revision 0; the formation case
 displayed different active/inactive labels for the same opening state.
 
-Final focused and aggregate results are recorded after verification. Headless
-mounted input, controls and state checks are not graphical/GPU or export acceptance.
+Verification of code commit `232ab7e10`:
+
+- Focused format/metadata checks, zero-warning build and complete native
+  `BattleScreenChecks`: normal exit 0, 2026-11-03 19:34:33–19:41:00 UTC.
+- Unmodified `tools/godot/verify-native.sh`, with the existing 900-second native
+  process budget and 1,200-second full-replay budget: **one uninterrupted run,
+  normal exit 0**, 19:41:26–20:17:22 UTC (35 minutes 56 seconds). It includes the
+  format selector's 30 boundary tests, formatting, source metadata, static map
+  contracts and negative controls, builds, 13 core groups, all 16 fresh AI battles
+  with save/replay checks, presentation/catalog contracts, editor import and all
+  23 native scenes. No timeout or assertion was relaxed.
+- The final Core assembly separately replayed the 3,379 archived commands and
+  9,648 ordered events across all 16 levels, with zero new AI calls. Every receipt,
+  state digest, complete final state, fixed-timestamp save and exported/native
+  replay matched; runtime 107.599 seconds. Executed assembly SHA-256:
+  `76c489ef2b225d2129c26428c9080f47e1feef5179ac3cc445870387874ca0f6`.
+- The 16 fresh AI runs made 3,425 actions. Their per-level action counts and final
+  digests match the previous version. This comparison did not compare fresh AI
+  event streams; exact ordered-event parity above uses the fixed old commands.
+
+An earlier environment restart interrupted a build before this verification;
+that attempt is not counted as passed. Existing authored-art readiness diagnostics
+and duplicate mouse-entry warnings in UI checks remain. There were no fatal
+errors or teardown/leak failures in the passing aggregate. Headless mounted input,
+controls and state checks are not graphical/GPU or export acceptance.
 
 ## Bounded related audit
 
