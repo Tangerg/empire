@@ -92,6 +92,21 @@ public partial class IdleGuidanceChecks : Node
                 Require(hud.GetChildren().Count(child => child.Name == "InstructionTray") == 1 && hud.FindChild("OrderTray", false, false) is null,
                     "Returning idle restores exactly one instruction tray and no stale action tray.");
                 hud.ShowHint = false;
+                hud.Apply(opening);
+                await Settle();
+                Require(!((Label)hud.FindChild("SelectionHint", true, false)).Visible && hud.FindChild("InstructionTray", false, false) is null,
+                    "Hiding unchanged guidance immediately removes its pointer-blocking backing; an equivalent projection cannot retain it.");
+                hud.ShowHint = true;
+                await Settle();
+                Require(((Label)hud.FindChild("SelectionHint", true, false)).IsVisibleInTree()
+                    && hud.GetChildren().Count(child => child.Name == "InstructionTray") == 1,
+                    "Showing guidance restores exactly one backing without requiring a new battle projection.");
+                var unchangedHint = hud.FindChild("SelectionHint", true, false);
+                hud.ShowHint = true;
+                hud.Apply(opening);
+                Require(ReferenceEquals(unchangedHint, hud.FindChild("SelectionHint", true, false)),
+                    "Repeated visibility and equivalent projections do not rebuild the HUD.");
+                hud.ShowHint = false;
                 hud.Apply(opening with
                 {
                     Hint = "Explicit hidden presentation fixture"

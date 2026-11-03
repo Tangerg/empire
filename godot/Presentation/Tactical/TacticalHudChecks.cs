@@ -730,6 +730,13 @@ public partial class TacticalHudChecks : Node
             hud.Apply(Projection());
             old.EmitSignal(BaseButton.SignalName.Pressed);
             Require(fired == 1, "Equivalent refresh does not rearm a submitted native row");
+            foreach (var visible in new[] { false, true, false, true })
+            {
+                hud.ShowHint = visible;
+                Require(ReferenceEquals(old, Button()), "Hint visibility preserves existing command controls.");
+                Button().EmitSignal(BaseButton.SignalName.Pressed);
+                Require(fired == 1, "Hint visibility must not rearm an already submitted order.");
+            }
             var mounted = Button();
             RemoveChild(hud);
             mounted.EmitSignal(BaseButton.SignalName.Pressed);

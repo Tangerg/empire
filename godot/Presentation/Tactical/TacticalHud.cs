@@ -44,14 +44,28 @@ public partial class TacticalHud : Control
     }
     public event Action<TacticalHudIntent>? IntentRequested;
     public TacticalHudProjection? Projection => current;
-    public bool ShowHint { get; set; } = true;
+    private bool showHint = true;
+    public bool ShowHint
+    {
+        get => showHint;
+        set
+        {
+            if (showHint == value)
+                return;
+            showHint = value;
+            if (current is { } projection)
+                Apply(projection, refresh: true);
+        }
+    }
     public event Action? DossierVisibilityChanged;
     public bool DossierVisible => GodotObject.IsInstanceValid(detailPopup) && detailPopup!.IsInsideTree() && detailPopup.Visible;
     public bool OwnsWindowFocus => DossierVisible && detailPopup!.HasFocus();
 
-    public void Apply(TacticalHudProjection projection)
+    public void Apply(TacticalHudProjection projection) => Apply(projection, refresh: false);
+
+    private void Apply(TacticalHudProjection projection, bool refresh)
     {
-        if (current is { } previous && Equivalent(previous, projection))
+        if (!refresh && current is { } previous && Equivalent(previous, projection))
             return;
         var oldActions = current?.Sections.FirstOrDefault(section => section.Key is "commands" or "deployment" or "recruit" or "tactics");
         var nextActions = projection.Sections.FirstOrDefault(section => section.Key is "commands" or "deployment" or "recruit" or "tactics");
@@ -67,7 +81,8 @@ public partial class TacticalHud : Control
             && detailScroll.IsAncestorOf(focused) && detailScroll.GetGlobalRect().Encloses(focused.GetGlobalRect());
         current = projection;
         var renderedGeneration = ++generation;
-        submitted = false;
+        if (!refresh)
+            submitted = false;
         foreach (var child in GetChildren())
         {
             if (retained.Contains(child))
