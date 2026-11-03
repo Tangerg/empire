@@ -197,7 +197,7 @@ public partial class GrayFlagGame : Node
 
     public override void _UnhandledKeyInput(InputEvent input)
     {
-        if (!IsInsideTree() || input is not InputEventKey { Pressed: true, Echo: false } key)
+        if (!IsInsideTree() || input is not InputEventKey { Pressed: true, Echo: false, CtrlPressed: false, AltPressed: false, MetaPressed: false } key)
             return;
         if (key.Keycode == Key.F5)
             Save();

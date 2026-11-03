@@ -53,6 +53,8 @@ public partial class CampaignNavigationChecks : Node
                 ("root notice leaves with its view", CheckNoticeViewTransition),
                 ("startup resume, battle restart, camp and Continue", CheckBattleCampMenu),
                 ("held end-turn key across real AI playback", CheckEndTurnKeyRepeat),
+                ("modified save shortcut preserves the manual slot", () => CheckModifiedApplicationShortcuts(Key.F5)),
+                ("modified load shortcut preserves unsaved battle progress", () => CheckModifiedApplicationShortcuts(Key.F9)),
                 ("story/choice return, rebind and unmount", () => { CheckNarrativeNavigation(); return Task.CompletedTask; }),
                 ("overwrite cancellation, stale dialog and confirmation", () => { CheckOverwrite(); return Task.CompletedTask; }),
                 ("overwrite dialog unmount", () => { CheckUnmountedOverwrite(); return Task.CompletedTask; }),
@@ -260,6 +262,96 @@ public partial class CampaignNavigationChecks : Node
             window.MinSize = originalMinimum;
             window.Size = originalSize;
         }
+    }
+
+    private async Task CheckModifiedApplicationShortcuts(Key key)
+    {
+        WriteFixture(battleNodeState);
+        var originalManual = File.ReadAllText(manualPath);
+        var originalStamp = File.GetLastWriteTimeUtc(manualPath);
+        var game = MountGame();
+        try
+        {
+            Press(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
+            Press(Button(View<CampaignStagingScreen>(game), "StartBattle"));
+            var campaign = Campaign(game);
+            var session = campaign.Battle!;
+            var screen = View<BattleScreen>(game);
+            screen.Board.AnimationsEnabled = false;
+            game.ProcessMode = ProcessModeEnum.Inherit;
+            await Layout();
+            using (var save = new InputEventKey { Keycode = Key.F5, Pressed = true })
+                GetViewport().PushInput(save);
+            var savedOpening = Digest(session.Snapshot());
+            var savedManual = File.ReadAllText(manualPath);
+            Require(Digest(EcmaJson.Parse(savedManual)!["battle"]!["state"]!.AsObject()) == savedOpening,
+                "Ordinary native F5 must save the actual opening battle before testing modified shortcuts.");
+            var savedStamp = Stamp(manualPath);
+            var savedAutomatic = File.ReadAllText(automaticPath);
+            var automaticStamp = Stamp(automaticPath);
+            TacticalSceneInputChecks.Move(screen, session);
+            var played = Digest(session.Snapshot());
+            var revision = session.Revision;
+            var messages = screen.RecentMessages.ToArray();
+            Require(revision == 1 && played != savedOpening && session.CanUndo && !screen.IsInputBlocked,
+                "Application shortcut fixture has a saved opening and a distinct, real unsaved move.");
+            void Unchanged(string context)
+            {
+                Require(File.ReadAllText(manualPath) == savedManual && Stamp(manualPath) == savedStamp,
+                    context + " overwrote the existing manual save.");
+                Require(ReferenceEquals(Campaign(game), campaign) && ReferenceEquals(campaign.Battle, session)
+                    && ReferenceEquals(View<Control>(game), screen) && session.Revision == revision
+                    && Digest(session.Snapshot()) == played && session.CanUndo && screen.RecentMessages.SequenceEqual(messages),
+                    context + " replaced or changed the unsaved battle.");
+                Require(File.ReadAllText(automaticPath) == savedAutomatic && Stamp(automaticPath) == automaticStamp,
+                    context + " changed the clean campaign autosave.");
+            }
+            foreach (var nativeRoute in new[] { true, false })
+                for (var modifiers = 1; modifiers < 8; modifiers++)
+                {
+                    using var chord = new InputEventKey
+                    {
+                        Keycode = key,
+                        Pressed = true,
+                        CtrlPressed = (modifiers & 1) != 0,
+                        AltPressed = (modifiers & 2) != 0,
+                        MetaPressed = (modifiers & 4) != 0
+                    };
+                    if (nativeRoute)
+                        GetViewport().PushInput(chord);
+                    else
+                        game._UnhandledKeyInput(chord);
+                    Unchanged($"Modified {key} ({modifiers}) through {(nativeRoute ? "viewport" : "application")} input");
+                }
+            foreach (var pressed in new[] { false, true })
+            {
+                using var ignored = new InputEventKey { Keycode = key, Pressed = pressed, Echo = pressed };
+                GetViewport().PushInput(ignored);
+                Unchanged($"Released or repeated {key}");
+            }
+            using (var fresh = new InputEventKey { Keycode = key, Pressed = true })
+                GetViewport().PushInput(fresh);
+            if (key == Key.F5)
+            {
+                Require(ReferenceEquals(Campaign(game), campaign) && Digest(session.Snapshot()) == played
+                    && File.ReadAllText(manualPath) != savedManual,
+                    "A fresh unmodified F5 must still save the real played battle without replacing it.");
+                using var load = new InputEventKey { Keycode = Key.F9, Pressed = true };
+                GetViewport().PushInput(load);
+            }
+            Require(!ReferenceEquals(Campaign(game), campaign) && View<Control>(game) is BattleScreen
+                && Digest(Campaign(game).Battle!.Snapshot()) == (key == Key.F5 ? played : savedOpening),
+                "The ordinary shortcut still restores exactly its intended manual save.");
+            Require(File.ReadAllText(automaticPath) == savedAutomatic && Stamp(automaticPath) == automaticStamp,
+                "Explicit manual save/load leaves the separate campaign autosave unchanged.");
+        }
+        finally
+        {
+            File.WriteAllText(manualPath, originalManual);
+            File.SetLastWriteTimeUtc(manualPath, originalStamp);
+            Retire(game);
+        }
+        await Layout();
     }
 
     private async Task CheckEndTurnKeyRepeat()
