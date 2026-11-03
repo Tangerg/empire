@@ -432,8 +432,9 @@ public partial class TacticalHud : Control
             }
             AddChild(hint);
             Place(hint, 0, 1, 0, 1, 292, -32, 292 + hintSlots * 106, -10);
-            // Native wrapping owns the text height. Grow only its existing tray upward,
-            // leaving all command hit targets and the bottom margin intact.
+            // Native minimum sizes own wrapped text and multi-row order height.
+            // Grow the existing tray upward without shrinking command targets.
+            var mountedActions = mainActions is null ? null : FindChild(mainActions.Key, false, false) as Control;
             void FitInstruction()
             {
                 if (generation != renderedGeneration || !hint.IsInsideTree()
@@ -449,12 +450,24 @@ public partial class TacticalHud : Control
                 var extra = Math.Max(0, textHeight - 22) + bottomInset;
                 hint.OffsetBottom = -10 - bottomInset;
                 hint.OffsetTop = -32 - extra;
-                tray.OffsetTop = actions is null ? hint.OffsetTop - 10 : -126 - extra;
-                if (actions is not null)
+                if (actions is null)
+                    tray.OffsetTop = hint.OffsetTop - 10;
+                else
                 {
-                    actions.OffsetTop = -113 - extra;
                     actions.OffsetBottom = -35 - extra;
+                    actions.OffsetTop = actions.OffsetBottom - Math.Max(78, actions.GetCombinedMinimumSize().Y);
+                    tray.OffsetTop = actions.OffsetTop - 13;
                 }
+            }
+            if (mountedActions is not null)
+            {
+                var fit = Callable.From(FitInstruction);
+                mountedActions.Connect(Control.SignalName.MinimumSizeChanged, fit);
+                hint.TreeExiting += () =>
+                {
+                    if (GodotObject.IsInstanceValid(mountedActions) && mountedActions.IsConnected(Control.SignalName.MinimumSizeChanged, fit))
+                        mountedActions.Disconnect(Control.SignalName.MinimumSizeChanged, fit);
+                };
             }
             hint.MinimumSizeChanged += FitInstruction;
             hint.Resized += FitInstruction;

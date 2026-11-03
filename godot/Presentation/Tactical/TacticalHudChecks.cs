@@ -482,6 +482,96 @@ public partial class TacticalHudChecks : Node
         host.Free();
     }
 
+    private async System.Threading.Tasks.Task CheckRecruitmentLayout()
+    {
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var presentation = BattleTextChecks.Session(engine, GodotTextCatalog.LoadSimplifiedChinese());
+        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<string>() == "c01-03");
+        var state = engine.CreateState(level);
+        var site = new BoardCell(0, 0);
+        state["map"]!["tiles"]![0] = "castle";
+        state["map"]!["owners"]![0] = state["currentPlayer"]!.DeepClone();
+        var session = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(state));
+        var before = EcmaJson.Stringify(session.Snapshot());
+        var projection = session.ProjectHud(new(0, 0), new()
+        {
+            Kind = TacticalSelectionKind.Recruit,
+            Destination = site
+        }, TacticalHit.Object(site), null, false);
+        var cards = engine.Recruitment.Cards(state, new(site.X, site.Y));
+        Require(cards.Count > 8, "The unchanged recruitment catalog exercises at least three native order rows.");
+        var host = new Control { Theme = TacticalHudStyle.Create() };
+        AddChild(host);
+        // This detached generic recruiting site tests layout, not selected campaign art coverage.
+        var hud = new TacticalHud();
+        host.AddChild(hud);
+        hud.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+        foreach (var width in new[] { 960, 1180 })
+        {
+            host.Size = new Vector2(width, 640);
+            hud.Apply(projection);
+            for (var frame = 0; frame < 6; frame++)
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            var orders = (GridContainer)hud.FindChild("Orders", true, false);
+            var tray = (Control)hud.FindChild("OrderTray", true, false);
+            var hint = (Label)hud.FindChild("SelectionHint", true, false);
+            var actions = (Control)hud.FindChild("recruit", false, false);
+            var buttons = orders.GetChildren().OfType<Button>().ToArray();
+            Require(buttons.Select(button => button.GetMeta("hud_key", "").AsString()).SequenceEqual(cards.Select(card => "recruit/" + card.Unit))
+                && buttons.Select(button => !button.Disabled).SequenceEqual(cards.Select(card => card.Affordable)),
+                "Recruitment preserves every canonical card, its order and its affordability.");
+            Require(tray.GetGlobalRect().Encloses(actions.GetGlobalRect()) && actions.GetGlobalRect().End.Y <= hint.GetGlobalRect().Position.Y,
+                "The complete recruitment grid and account row stay inside the tray and above the readable instruction.");
+            Require(host.GetGlobalRect().Encloses(tray.GetGlobalRect()) && buttons.All(button => tray.GetGlobalRect().Encloses(button.GetGlobalRect()) && button.Size.Y >= 30)
+                && hint.GetVisibleLineCount() == hint.GetLineCount(),
+                "Multi-row recruitment stays on screen without truncating guidance or shrinking its command targets.");
+            var initialTray = tray.GetGlobalRect();
+            var focused = buttons.First(button => !button.Disabled);
+            focused.GrabFocus();
+            for (var refresh = 0; refresh < 3; refresh++)
+            {
+                hud.ShowHint = refresh % 2 == 0;
+                hud.Apply(projection with
+                {
+                    Hint = projection.Hint + new string(' ', refresh + 1)
+                });
+                for (var frame = 0; frame < 4; frame++)
+                    await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                Require(ReferenceEquals(orders, hud.FindChild("Orders", true, false)) && focused.HasFocus()
+                    && tray.GetGlobalRect() == initialTray,
+                    "Hint and projection refresh retain recruitment buttons, keyboard focus and fitted geometry.");
+            }
+            var originalMinimum = buttons[0].CustomMinimumSize;
+            buttons[0].CustomMinimumSize = originalMinimum + new Vector2(0, 80);
+            for (var frame = 0; frame < 4; frame++)
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Require(tray.Size.Y > initialTray.Size.Y && tray.GetGlobalRect().Encloses(actions.GetGlobalRect())
+                && actions.GetGlobalRect().End.Y <= ((Label)hud.FindChild("SelectionHint", true, false)).GlobalPosition.Y,
+                "The current hint subscription refits retained actions after a native minimum-height change.");
+            buttons[0].CustomMinimumSize = originalMinimum;
+            for (var frame = 0; frame < 4; frame++)
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Require(tray.GetGlobalRect() == initialTray, "Native minimum-height contraction releases unused tray space.");
+            hud.ShowHint = true;
+            hud.Apply(new(projection.Stamp, "选择指令", new[]
+            {
+                new TacticalHudSection("commands", "指令", new[] { new TacticalHudRow("wait", "待机", Intent: new(projection.Stamp, TacticalHudIntentKind.Command, "wait")) })
+            }));
+            for (var frame = 0; frame < 4; frame++)
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            var compactTray = (Control)hud.FindChild("OrderTray", false, false);
+            var compactActions = (Control)hud.FindChild("commands", false, false);
+            Require(compactTray.Size.Y < initialTray.Size.Y && compactTray.GetGlobalRect().Encloses(compactActions.GetGlobalRect())
+                && compactActions.GetGlobalRect().End.Y <= ((Label)hud.FindChild("SelectionHint", true, false)).GlobalPosition.Y,
+                "Leaving a multi-row menu restores a compact single-order tray without stale extra height.");
+        }
+        Require(before == EcmaJson.Stringify(session.Snapshot()) && session.Revision == 0 && session.Events.Count == 0,
+            "Recruitment layout does not change the battle or execute a purchase.");
+        RemoveChild(host);
+        host.Free();
+    }
+
     private async System.Threading.Tasks.Task CheckForecastFacts()
     {
         var host = new Control { Size = new Vector2(960, 640), Theme = TacticalHudStyle.Create() };
@@ -710,6 +800,7 @@ public partial class TacticalHudChecks : Node
             CheckSiteInspection();
             await CheckSitePointerBoundary();
             await CheckResponsiveLayout();
+            await CheckRecruitmentLayout();
             await CheckForecastFacts();
             await CheckPointerCapture();
             await CheckDossierLifetime();
