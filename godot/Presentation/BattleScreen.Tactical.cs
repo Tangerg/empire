@@ -222,7 +222,7 @@ public partial class BattleScreen
             Key.E => "e",
             Key.H => "h",
             Key.S => "s",
-            Key.U => "u",
+            Key.U when !key.Echo => "u",
             Key.W => "w",
             _ => null,
         };

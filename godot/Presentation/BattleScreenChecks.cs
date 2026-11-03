@@ -24,6 +24,7 @@ public partial class BattleScreenChecks : Node
     {
         try
         {
+            CheckUndoKeyRepeat();
             Check();
             CheckPresentationTransitions();
             CheckInputContracts();
@@ -374,6 +375,88 @@ public partial class BattleScreenChecks : Node
             "The sole turn button must commit through the real session and refresh current player.");
         screen.QueueFree();
     }
+    private void CheckUndoKeyRepeat()
+    {
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var text = GodotTextCatalog.LoadSimplifiedChinese();
+        var presentation = BattleTextChecks.Session(engine, text);
+        var level = BattleTextChecks.OpeningLevel();
+        var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+        var screen = new BattleScreen();
+        AddChild(screen);
+        screen.Board.AnimationsEnabled = false;
+        var rules = new BattleScreenRules(text, presentation.Battle, PortraitCatalogResources.Load(), session,
+            new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric));
+        var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
+        screen.BindSession(rules, level, scene);
+        var original = EcmaJson.Stringify(session.Snapshot());
+        TacticalSceneInputChecks.Move(screen, session, 2);
+        var first = EcmaJson.Stringify(session.Snapshot());
+        var firstEvents = session.Events.Count;
+        TacticalSceneInputChecks.Move(screen, session, 3);
+        Require(session.Revision == 2 && session.CanUndo && EcmaJson.Stringify(session.Snapshot()) != first,
+            "The held-Undo fixture commits two distinct reversible orders through the actual battle screen.");
+        var second = EcmaJson.Stringify(session.Snapshot());
+        screen.SetApplicationBusy(true);
+        screen._Input(new InputEventKey { Keycode = Key.U, Pressed = true });
+        screen._Input(new InputEventKey { Keycode = Key.U, Pressed = true, Echo = true });
+        Require(session.Revision == 2 && EcmaJson.Stringify(session.Snapshot()) == second && session.CanUndo,
+            "Busy input cannot consume either available undo checkpoint.");
+        screen.SetApplicationBusy(false);
+        screen._Input(new InputEventKey { Keycode = Key.U, Pressed = true, Echo = true });
+        Require(session.Revision == 2 && EcmaJson.Stringify(session.Snapshot()) == second && session.CanUndo,
+            "A held U cannot turn into a new undo when the busy gate reopens.");
+        screen._Input(new InputEventKey { Keycode = Key.U, Pressed = true });
+        Require(session.Revision == 3 && EcmaJson.Stringify(session.Snapshot()) == first && session.Events.Count == firstEvents && session.CanUndo,
+            "One initial U press restores exactly the most recent checkpoint and leaves the older order undoable.");
+        var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+        var projection = hud.Projection;
+        var messages = screen.RecentMessages.ToArray();
+        foreach (var windowInput in new[] { true, false })
+            for (var repeat = 0; repeat < 3; repeat++)
+            {
+                using var input = new InputEventKey { Keycode = Key.U, Pressed = true, Echo = true };
+                if (windowInput)
+                    screen._Input(input);
+                else
+                    screen._UnhandledKeyInput(input);
+                Require(session.Revision == 3 && EcmaJson.Stringify(session.Snapshot()) == first && session.Events.Count == firstEvents
+                    && session.CanUndo && ReferenceEquals(hud.Projection, projection) && screen.RecentMessages.SequenceEqual(messages),
+                    $"Held U must not consume an older checkpoint through {(windowInput ? "window" : "unhandled")} input: revision {session.Revision}, expected 3.");
+            }
+        screen._Input(new InputEventKey { Keycode = Key.U, Pressed = false });
+        Require(session.Revision == 3 && session.CanUndo, "Releasing U cannot dispatch an undo.");
+        screen._Input(new InputEventKey { Keycode = Key.U, Pressed = true });
+        Require(session.Revision == 4 && EcmaJson.Stringify(session.Snapshot()) == original && !session.CanUndo,
+            "A second distinct U press still restores the older checkpoint exactly.");
+        screen._Input(new InputEventKey { Keycode = Key.U, Pressed = true, Echo = true });
+        screen._Input(new InputEventKey { Keycode = Key.U, Pressed = false });
+        screen._Input(new InputEventKey { Keycode = Key.U, Pressed = true });
+        Require(session.Revision == 4 && EcmaJson.Stringify(session.Snapshot()) == original,
+            "Repeats, releases and fresh presses remain harmless when the undo history is empty.");
+        var queries = session.GetTacticalQueries(0);
+        var origin = queries.Unit(2)!.At;
+        var stops = queries.MoveStops(2).ToHashSet();
+        var destination = queries.DirectionSteps(origin).First(at => stops.Contains(at) && queries.UnitAt(at) is null);
+        var arrow = destination.X > origin.X ? Key.Right : destination.X < origin.X ? Key.Left
+            : destination.Y > origin.Y ? Key.Down : Key.Up;
+        var letter = arrow == Key.Right ? Key.D : arrow == Key.Left ? Key.A : arrow == Key.Down ? Key.S : Key.W;
+        foreach (var navigation in new[] { arrow, letter })
+        {
+            screen.BindSession(rules, level, scene);
+            screen.SelectHit(TacticalHit.Unit(origin, 2));
+            Require(screen.Selection?.Kind == TacticalSelectionKind.Unit,
+                "Each held-navigation case begins with a fresh binding and ordinary unit selection.");
+            screen._Input(new InputEventKey { Keycode = navigation, Pressed = true, Echo = true });
+            screen._Input(new InputEventKey { Keycode = Key.Enter, Pressed = true });
+            Require(screen.Selection is { Kind: TacticalSelectionKind.Destination } selection && selection.Destination == destination
+                && session.Revision == 4 && EcmaJson.Stringify(session.Snapshot()) == original,
+                "Held arrows and WASD still move the cursor into an ordinary reversible destination preview.");
+        }
+        RemoveChild(screen);
+        screen.Free();
+    }
+
     private void CheckInputContracts()
     {
         var level = BattleTextChecks.OpeningLevel();

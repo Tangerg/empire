@@ -21,8 +21,10 @@ command. Both the window-level `_Input` route and the unhandled-key route share
 this boundary. Rejected chords are not marked handled, leaving native UI and
 platform processing available.
 
-Shift-only behavior, unmodified shortcuts, key-release handling, and autorepeat
-policy remain unchanged. The shared tactical selection controller and its source
+This modifier repair leaves Shift-only behavior, unmodified shortcuts,
+key-release handling, and autorepeat policy unchanged. The separate
+[Undo-repeat repair](UI-UNDO-KEY-REPEAT-20261103.md) subsequently limits U to fresh
+presses while preserving navigation repeats. The shared tactical selection controller and its source
 parity are untouched. This does not add or implement any operating-system
 shortcut, and native controls may still interpret their own input normally.
 
