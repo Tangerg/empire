@@ -1,5 +1,12 @@
 # Owner-turn regeneration feedback
 
+This records the recovery implementation at `9c0f0fc93`. The subsequent
+[ordered displacement refinement](DISPLACEMENT-FEEDBACK-20261103.md) retains its
+actual-amount and visibility contracts, but now leaves actors in event order
+through turn announcements and places recovery at their current displayed
+contacts. References below to the earlier settled-position repaint describe
+that earlier implementation, not the current animation policy.
+
 ## Reproduction and scope
 
 The unchanged C01-01 recorded action 99 is a human `endTurn`. Unit 12, a legion

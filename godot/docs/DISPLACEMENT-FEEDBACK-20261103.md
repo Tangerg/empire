@@ -97,6 +97,56 @@ intentional corrected contracts, rather than silently weakened.
 
 `AnimationChecks` is included in the required native aggregate. Its new partial
 test file retains the `*Checks.cs` naming boundary so the existing ExportRelease
-compile exclusion also excludes it. Final build, native, negative-control and
-aggregate outcomes are recorded after verification. Headless node/resource
-checks are not GPU visual or exported-game acceptance.
+compile exclusion also excludes it.
+
+## Final verification record
+
+Final code commit: `9b9f58e2bb58238cf4e7476f180474d96d46a41f`.
+
+- Focused native playback passed 844 assertions and normal shutdown, including
+  the five recorded cases and explicit projection boundaries. The original
+  implementation failed the real C01-06 impact-position guard before correction.
+- Two isolated compiling negative controls passed compilation and exited 1 at
+  the intended behavior guard: stale standing contacts broke terrain depth
+  protection during the recorded C01-06 case; restoring final-state repaint at
+  turn start broke `projection:turn-before-displacement`. The correct private
+  copy exited 0 with 844 assertions, and was restored after the experiments.
+  The stale-contact mutant fails before reaching the later synthetic multi-actor
+  witness, so no separate mutant execution of that later witness is claimed.
+  Product sources and shared build outputs were never mutated by these controls.
+- Every required `verify-native.sh` stage completed. The driver retained the
+  original stage commands and exact native `run_scene` body, fresh save
+  namespaces and strict normal-exit/teardown checks. It also compiled
+  `ExportRelease`, for **39 separately recorded exit-zero stages**, including
+  **25 native scenes**. No assertion, stage or teardown rejection was removed.
+- Verification started at 2026-11-03 21:55:01 UTC. An environment restart
+  interrupted `LuojiaChecks` after 24 stages had explicit exit-zero records.
+  Its partial log/status were retained; the unchanged stage was rerun from the
+  start and remaining stages continued. Completion was 22:35:10 UTC. This is
+  completed segmented verification, **not an uninterrupted aggregate run**.
+- The 13 core contracts passed, including 16 independent native AI levels,
+  3,425 legal actions and exact per-level replay/save round trips. These include
+  losses and turn limits; they do not prove carried-state campaign victory or
+  equality with a newly generated historical AI route.
+- Debug and ExportRelease builds completed with zero warnings/errors. MSBuild's
+  actual ExportRelease `Compile` items contain the production renderer and
+  exclude both animation test partials. Configuration compilation is not an
+  exported executable or platform acceptance test.
+- Native teardown checks reported no errors, leaked resources, segmentation
+  faults or unhandled exceptions. Existing authoring diagnostics and scripted
+  UI warning-path diagnostics remain visible; no warning-free native run is
+  claimed. Original engine, map and art source bytes are unchanged.
+
+The verified native script SHA-256 is
+`c2868857358e68daff3e31c1416def2a9cf6c69d8f8dd622a0fc06f7c03125c0`.
+The tested Core DLL SHA-256 is
+`2b8170db88d5965caa5c168ed8a30b7d4e303866c0e24119e4bb9259d1b8e5c5`,
+and the application DLL SHA-256 is
+`3a63fe2a1bd56e8103e5b061fe2a74cd4bdd87f3252cf80501e312b719734f73`.
+They remained identical across the environment restart and completion. Later
+changes only record these outcomes and annotate the earlier recovery report.
+
+No new dependency or tool was installed. Headless node/resource checks are not
+GPU visual or exported-game acceptance. The previously unavailable historical
+TypeScript oracle and stopped optional fixed-replay comparison were not rerun
+or claimed as new evidence for this batch.
