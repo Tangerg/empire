@@ -30,12 +30,12 @@ string UnitName(string id) => presentationText.Content.UnitName(id);
 BattleLogNames Names(JsonNode state) => new(unit => presentationText.Content.UnitName(unit.GetProperty("type").GetString()!), presentationText.Content.UnitName, presentationText.Content.CareerName,
     presentationText.Content.ResourceName, PlayerNames(state));
 Func<int, string> PlayerNames(JsonNode state) => player => battleText.PlayerName(Text(state["levelId"]), player);
-var presenters = BattleEventText.CreateDefault(new(text, battleText));
+var presenters = BattleEventText.CreateDefault(new(text, battleText, presentationText.Content));
 var expectedKeys = oracle["presenterKeys"]!.AsArray().Select(Text).ToList();
 var healingIndex = expectedKeys.IndexOf("heal");
 if (healingIndex < 0) throw new InvalidOperationException("Historical presenter registry has no healing boundary.");
-expectedKeys.Insert(healingIndex + 1, "regen");
-Check("registered presenter keys including native owner-turn recovery", Serialize(presenters.Keys()), Serialize(expectedKeys));
+expectedKeys.InsertRange(healingIndex + 1, new[] { "regen", "statusApplied", "statusRemoved" });
+Check("registered presenter keys including native recovery and status receipts", Serialize(presenters.Keys()), Serialize(expectedKeys));
 var priorCulture = CultureInfo.CurrentCulture;
 CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("fr-FR");
 foreach (var item in oracle["formatCases"]!.AsArray().OfType<JsonObject>())

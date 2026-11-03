@@ -33,6 +33,6 @@ public sealed record SessionPresentationText(GameText Messages, ActionRefusalTex
         var hitEffects = WeaponHitEffectText.CreateDefault(new(text, content));
         hitEffects.ValidateCoverage(engine.Combat.HitEffects.Keys());
         return new(text, ActionRefusalText.CreateDefault(new(text, content)).Seal(), battle, content, modifiers.Seal(), hitEffects.Seal(),
-            BattleEventText.CreateDefault(new(text, battle)), rules.IdentityNameKeys.ToFrozenDictionary(StringComparer.Ordinal));
+            BattleEventText.CreateDefault(new(text, battle, content)), rules.IdentityNameKeys.ToFrozenDictionary(StringComparer.Ordinal));
     }
 }

@@ -602,7 +602,7 @@ Check(creation["unitType"]!.GetValue<string>() == "soldier" && creation["owner"]
 var resourceIndex = transientReceipt.Events.ToList().FindIndex(value => value["type"]!.GetValue<string>() == "resourceChanged"
     && value["subject"]?["id"]?.GetValue<int>() == transientId);
 Check(resourceIndex > transientReceipt.Events.ToList().IndexOf(creation), "creation precedes its transient actor-bearing resource event");
-var eventText = BattleEventText.CreateDefault(new(firstCatalog, firstText));
+var eventText = BattleEventText.CreateDefault(new(firstCatalog, firstText, firstContentText));
 var recoveringId = attacker["id"]!.GetValue<int>();
 var recovery = EcmaJson.ToElement(new JsonObject { ["type"] = "regen", ["unit"] = recoveringId, ["amount"] = 5 });
 var observed = new HashSet<int> { recoveringId };
