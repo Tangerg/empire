@@ -378,8 +378,7 @@ public sealed partial class GrayFlagSession
             }
             if (inspect["formation"] is { } formationId)
             {
-                // Preserve source: holding is read from commandable, not inspected, options.
-                var holds = formations.Any(option => option.Current && option.Eligible);
+                var holds = engine.Progression.Formations.Active(state, inspect) is not null;
                 rows.Add(new("formation",
                     text.Format("ui.hud.formation",
                         contentText.Name(ContentTextKind.Formation, EcmaJson.ReadString(formationId)),

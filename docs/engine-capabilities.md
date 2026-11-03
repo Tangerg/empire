@@ -526,6 +526,12 @@ Full campaign/all-level replay remains the integration gate.
 
 ## Native Godot relocation ownership
 
+Native keyboard object focus consumes the selected command's canonical
+`TargetSubjects`; it does not re-derive attack subjects from capturable terrain.
+Inspection reads `FormationRules.Active` for the inspected unit, while command
+menus retain `FormationRules.Options`. Neither presentation read owns a battle
+transition. See [tactical subject regressions](../godot/docs/TACTICAL-SUBJECTS-20261103.md).
+
 Native attack-position previews have one spatial owner:
 `BattleCombat.PreviewAttack` clones the complete state once, uses `BattleRelocation`
 and `UnitDisposition` to project the attacker's destination/facing, then reuses

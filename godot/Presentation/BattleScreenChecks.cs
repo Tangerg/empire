@@ -24,6 +24,8 @@ public partial class BattleScreenChecks : Node
     {
         try
         {
+            CheckStructureKeyboardTarget();
+            CheckFormationInspection();
             CheckCollisionAftermathDisclosure();
             HitEffectProjectionChecks.Check();
             CheckMovedAttackForecast();
@@ -45,6 +47,154 @@ public partial class BattleScreenChecks : Node
         {
             GD.PushError(error.ToString());
             GetTree().Quit(1);
+        }
+    }
+
+    private void CheckStructureKeyboardTarget()
+    {
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var text = GodotTextCatalog.LoadSimplifiedChinese();
+        var presentation = BattleTextChecks.Session(engine, text);
+        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<string>() == "c01-09");
+        var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+        var original = EcmaJson.Stringify(session.Snapshot());
+        Require(StateDigest.Hash(session.Snapshot()) == "6fefe68e", "The keyboard witness uses the unchanged shipped C01-09 opening.");
+        var screen = new BattleScreen();
+        AddChild(screen);
+        try
+        {
+            screen.Board.AnimationsEnabled = false;
+            screen.BindSession(new(text, presentation.Battle, PortraitCatalogResources.Load(), session,
+                new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)),
+                level, AuthoredScene.Load("res://data/scenes/c01-09.json"));
+            GetViewport().GuiReleaseFocus();
+            void Press(Key key)
+            {
+                foreach (var pressed in new[] { true, false })
+                {
+                    using var input = new InputEventKey { Keycode = key, PhysicalKeycode = key, Pressed = pressed };
+                    GetViewport().PushInput(input, true);
+                }
+            }
+            for (var index = 0; index < 4; index++)
+                Press(Key.Space);
+            Require(screen.Selection is { Kind: TacticalSelectionKind.Unit, UnitId: 4 }, "Native actor cycling reaches Mirelle without pointer input.");
+            foreach (var key in new[] { Key.Up, Key.Up, Key.Enter, Key.A, Key.Right, Key.Right })
+                Press(key);
+            Require(screen.Selection is { Kind: TacticalSelectionKind.Target, Weapon: "c01.lantern-staff" } selection
+                && selection.Destination == new BoardCell(3, 6)
+                && selection.TargetSubjects.Any(target => target == TacticalTarget.Object(new(5, 6)))
+                && session.Revision == 0 && session.Events.Count == 0 && EcmaJson.Stringify(session.Snapshot()) == original,
+                "Keyboard navigation must reach an admitted structure target without advancing battle state.");
+            var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+            var strike = hud.Projection!.Sections.SingleOrDefault(section => section.Key == "forecast")?.Rows.Single(row => row.Key == "strike");
+            var expected = text.Format("ui.hud.strike", 22, 100, 78);
+            var shown = Descendants(hud).OfType<Label>().Any(label => label.IsVisibleInTree() && label.Text == expected);
+            var preview = screen.Selection!.PreviewTarget;
+            Press(Key.Enter);
+            GD.Print($"STRUCTURE_KEYBOARD c01-09: target={preview}; forecast={strike?.Label}; visible={shown}; revision={session.Revision}");
+            Require(preview == TacticalHit.Object(new(5, 6)) && strike?.Label == expected && strike.Gauge?.Value == 78 && shown
+                && session.Revision == 1 && session.ActionLog.Count == 1,
+                "The real keyboard path must show the same 22-damage structure forecast and commit once on Enter.");
+            var action = session.ActionLog.Single();
+            var pointerSession = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+            var pointer = new TacticalSelectionController(pointerSession.GetTacticalQueries(0));
+            pointer.Click(pointer.Stamp, TacticalHit.Unit(new(3, 8), 4));
+            pointer.Click(pointer.Stamp, TacticalHit.Ground(new(3, 6)));
+            pointer.ChooseCommand(pointer.Stamp, "attack:c01.lantern-staff");
+            var ground = pointer.Click(pointer.Stamp, TacticalHit.Ground(new(5, 6)));
+            Require(ground.Status == TacticalInputStatus.InvalidTarget && ground.Request is null,
+                "A pointer ground hit must not be promoted to a structure through an occluder.");
+            var request = pointer.Click(pointer.Stamp, TacticalHit.Object(new(5, 6))).Request!;
+            Require(EcmaJson.DeepEquals(action, EcmaJson.Parse(request.Action!.Value.GetRawText()))
+                && pointerSession.Dispatch(request.Action.Value, 0).Accepted
+                && EcmaJson.DeepEquals(session.Snapshot(), pointerSession.Snapshot())
+                && EcmaJson.DeepEquals(new JsonArray(session.Events.Select(value => (JsonNode)value.DeepClone()).ToArray()),
+                    new JsonArray(pointerSession.Events.Select(value => (JsonNode)value.DeepClone()).ToArray())),
+                "Keyboard and actual pointer subjects must produce identical commands, ordered events and final battle state.");
+            Require(session.Events.Single(value => value["type"]!.GetValue<string>() == "structureDamaged")["amount"]!.GetValue<double>() == 22
+                && session.Snapshot()["structures"]!.AsArray().OfType<JsonObject>().Single(value => value["id"]!.GetValue<string>() == "chain-west")["hp"]!.GetValue<double>() == 78,
+                "The real command damages the unchanged west chain by exactly 22 HP.");
+        }
+        finally
+        {
+            RemoveChild(screen);
+            screen.Free();
+        }
+    }
+
+    private void CheckFormationInspection()
+    {
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var text = GodotTextCatalog.LoadSimplifiedChinese();
+        var presentation = BattleTextChecks.Session(engine, text);
+        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<string>() == "c01-04");
+        var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+        Require(StateDigest.Hash(session.Snapshot()) == "c1005293", "Formation inspection starts from the unchanged shipped C01-04 opening.");
+        var screen = new BattleScreen();
+        AddChild(screen);
+        try
+        {
+            screen.Board.AnimationsEnabled = false;
+            screen.BindSession(new(text, presentation.Battle, PortraitCatalogResources.Load(), session,
+                new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)),
+                level, AuthoredScene.Load("res://data/scenes/c01-04.json"));
+            var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+            void Press(Key key)
+            {
+                foreach (var pressed in new[] { true, false })
+                {
+                    using var input = new InputEventKey { Keycode = key, PhysicalKeycode = key, Pressed = pressed };
+                    GetViewport().PushInput(input, true);
+                }
+            }
+            string Formation() => hud.Projection!.Sections.SelectMany(section => section.Rows).Single(row => row.Key == "formation").Label;
+            var hit = TacticalHit.Unit(new(17, 20), 1);
+            GetViewport().GuiReleaseFocus();
+            Press(Key.Space);
+            Require(screen.Selection?.UnitId == 1, "Native cycling selects Laiya and establishes the keyboard cursor.");
+            var selected = Formation();
+            Press(Key.Escape);
+            Press(Key.Right);
+            Press(Key.Left);
+            var inspected = Formation();
+            var state = session.Snapshot();
+            var unit = state["units"]!.AsArray().OfType<JsonObject>().Single(value => value["id"]!.GetValue<int>() == 1);
+            Require(screen.Selection?.Kind == TacticalSelectionKind.Idle && engine.Progression.Formations.Active(state, unit) is not null
+                && session.Revision == 0 && StateDigest.Hash(state) == "c1005293",
+                "Inspection cannot change Laiya's genuinely active defensive formation or opening state.");
+            GD.Print($"FORMATION_INSPECTION c01-04: selected={selected}; inspected={inspected}");
+            Require(inspected == selected && !inspected.Contains(text.Format("ui.hud.formation_inactive"), StringComparison.Ordinal),
+                "Inspecting the same active formation must not claim missing adjacent allies when no actor is selected.");
+            screen.SelectHit(hit);
+            screen.SelectHit(hit);
+            Press(Key.W);
+            Require(session.Revision == 1 && StateDigest.Hash(session.Snapshot()) == "69d77f60", "The unchanged explicit wait commits normally.");
+            screen.SelectHit(hit);
+            Require(Formation() == selected, "An acted unit's formation remains active and truthful even though it can no longer receive orders.");
+
+            session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+            screen.BindSession(new(text, presentation.Battle, PortraitCatalogResources.Load(), session,
+                new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)),
+                level, AuthoredScene.Load("res://data/scenes/c01-04.json"));
+            screen.SelectHit(hit);
+            screen.SelectHit(TacticalHit.Ground(new(17, 17)));
+            Press(Key.W);
+            screen.SelectHit(TacticalHit.Unit(new(17, 17), 1));
+            state = session.Snapshot();
+            unit = state["units"]!.AsArray().OfType<JsonObject>().Single(value => value["id"]!.GetValue<int>() == 1);
+            Require(session.Revision == 1 && StateDigest.Hash(state) == "20d93d97"
+                && engine.Progression.Formations.Active(state, unit) is null
+                && Formation() == text.Format("ui.hud.formation", presentation.Content.Name(ContentTextKind.Formation, EcmaJson.ReadString(unit["formation"])),
+                    text.Format("ui.hud.formation_inactive")),
+                "Moving away from allies genuinely breaks formation and must retain the inactive warning on inspection.");
+        }
+        finally
+        {
+            RemoveChild(screen);
+            screen.Free();
         }
     }
 

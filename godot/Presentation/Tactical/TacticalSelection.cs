@@ -481,7 +481,8 @@ public sealed class TacticalSelectionController
     // Keyboard navigation deliberately focuses canonical subjects. Pointer hits never use this path.
     private TacticalHit KeyboardFocus(BoardCell at) => queries.UnitAt(at) is { Visible: true } unit
         ? TacticalHit.Unit(at, unit.Id)
-        : queries.IsSite(at) || queries.CanOpenRecruitment(at) ? TacticalHit.Object(at) : TacticalHit.Ground(at);
+        : Selection.TargetSubjects.Any(target => target.Cell == at && target.Kind == TacticalTargetKind.Object)
+            || queries.IsSite(at) || queries.CanOpenRecruitment(at) ? TacticalHit.Object(at) : TacticalHit.Ground(at);
 
     public TacticalInputResult Key(TacticalStamp expected, string key, bool repeat = false)
     {

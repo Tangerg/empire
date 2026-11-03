@@ -4,6 +4,8 @@ Original audit: 2026-10-20. The findings and proposal below record the pre-migra
 
 Current boundary: `BattleScreen` explicitly consumes `ITacticalBattleSession`. `GetTacticalQueries` feeds the single `TacticalSelectionController`; `ProjectHud` supplies revision-stamped rows and intents; `Dispatch` and `Undo` commit through the same session. The obsolete flat action enumeration and test-only screen submission path have been removed. Detached snapshot/transition records live in `BattlePresentationModels.cs`. See `Presentation/README.md` for the current contract and executable native checks.
 
+Current subject ownership fixes are documented in [tactical subjects and formation inspection](TACTICAL-SUBJECTS-20261103.md): keyboard object targeting consumes admitted command subjects, and inspected formation activity comes from the formation rule owner rather than command-menu eligibility.
+
 ## Finding and smallest complete batch
 
 The native engine already executes the relevant actions. The missing vertical slice is the player's composition of an order and the facts needed to understand it. The pre-migration flat order adapter expanded every movement origin, command and target into complete actions. The pre-migration `BattleScreen` grouped these by a coarse role and then asks the player to confirm one of the actions at a target. That is not the original destination-first menu. It also discards rejected support options, most content descriptions, command keys/hints, and source interaction state.
