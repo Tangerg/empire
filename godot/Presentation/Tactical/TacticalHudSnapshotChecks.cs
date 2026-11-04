@@ -43,7 +43,11 @@ public partial class TacticalHudChecks
         var actor = queries.Actors().First();
         var origin = queries.Unit(actor)!.At;
         var unit = new TacticalSelection { Kind = TacticalSelectionKind.Unit, UnitId = actor };
-        var destination = unit with { Kind = TacticalSelectionKind.Destination, Destination = origin };
+        var destination = unit with
+        {
+            Kind = TacticalSelectionKind.Destination,
+            Destination = origin
+        };
         var cells = queries.InteractiveCells.OrderBy(cell => cell.Y).ThenBy(cell => cell.X).Take(8).ToArray();
         Require(cells.Length == 8, "The unchanged formal Redstone map provides distinct HUD read inputs.");
         TacticalHudProjection Hud(TacticalSelection selection, TacticalHit? hit = null, bool busy = false, long binding = 75) =>
@@ -55,7 +59,10 @@ public partial class TacticalHudChecks
             {
                 Rows = section.Rows.Select(row => row with
                 {
-                    Intent = row.Intent is { } intent ? intent with { Stamp = default } : null
+                    Intent = row.Intent is { } intent ? intent with
+                    {
+                        Stamp = default
+                    } : null
                 }).ToArray()
             }).ToArray()
         });
@@ -98,7 +105,10 @@ public partial class TacticalHudChecks
         var failure = new DomainInvariantException("test HUD query failure");
         onQuery = state => { state["turn"] = 999; throw failure; };
         Exception? caught = null;
-        try { Hud(destination); }
+        try
+        {
+            Hud(destination);
+        }
         catch (DomainInvariantException error) { caught = error; }
         finally { onQuery = null; }
         Require(ReferenceEquals(caught, failure), "A failed composed HUD query propagates its original exception.");
@@ -111,7 +121,10 @@ public partial class TacticalHudChecks
         var cold = new GrayFlagSession(rules, level);
         onQuery = state => { state["turn"] = 999; throw failure; };
         caught = null;
-        try { cold.ProjectHud(new(75, 0), destination, null, actor, false); }
+        try
+        {
+            cold.ProjectHud(new(75, 0), destination, null, actor, false);
+        }
         catch (DomainInvariantException error) { caught = error; }
         finally { onQuery = null; }
         Require(ReferenceEquals(caught, failure)
@@ -128,7 +141,10 @@ public partial class TacticalHudChecks
         caught = null;
         var staleQueries = 0;
         onQuery = _ => staleQueries++;
-        try { session.ProjectHud(oldStamp, destination, null, actor, false); }
+        try
+        {
+            session.ProjectHud(oldStamp, destination, null, actor, false);
+        }
         catch (DomainInvariantException error) { caught = error; }
         finally { onQuery = null; }
         Require(caught?.Message == "HUD projection belongs to a stale session revision." && staleQueries == 0,
@@ -144,7 +160,10 @@ public partial class TacticalHudChecks
             Require(session.Dispatch(face, session.Revision).Accepted, "The reentrant witness commits through the only battle writer.");
         };
         caught = null;
-        try { Hud(destination); }
+        try
+        {
+            Hud(destination);
+        }
         catch (DomainInvariantException error) { caught = error; }
         finally { onQuery = null; }
         Require(caught?.Message == "Battle changed during HUD projection.", "A callback changing revision cannot publish mixed-time HUD facts.");
