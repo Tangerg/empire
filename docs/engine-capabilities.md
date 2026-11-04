@@ -461,6 +461,13 @@ resume. Generic `CampaignSave` remains the structural codec. Authored roster err
 remain campaign invariants; only saved roster diagnostics become stored-document
 rejections. Neither admission path rewrites rejected progress.
 
+`GrayFlagSession.ProjectHud` privately reuses one detached battle read snapshot per
+session revision. Query collaborators borrow it read-only; no mutable snapshot is
+shared with widgets, public exports or tactical-selection query caches. A complete
+projection and final revision check publish the reusable read state. Exceptions or
+reentrant revision changes leave no partially projected state eligible for reuse.
+`Battle` remains the only battle writer; dispatch and undo revisions invalidate reads.
+
 Presentation receives immutable/detached query projections. `ActionRefusal` carries
 semantic rejection facts; `ActionRefusalText` and injected `GameText` own wording.
 The revision-bound tactical interactive-cell projection is authoritative for input

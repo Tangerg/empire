@@ -13,12 +13,19 @@ namespace Empire.Application;
 
 public sealed partial class GrayFlagSession
 {
+    private (long Revision, JsonObject State)? hudReadState;
+
     public TacticalHudProjection ProjectHud(TacticalStamp stamp, TacticalSelection selection, TacticalHit? cursorHit, int? inspectId, bool busy)
     {
         if (stamp.Revision != revision)
             throw new DomainInvariantException("HUD projection belongs to a stale session revision.");
         var cursor = cursorHit?.Cell;
-        var state = battle.Snapshot();
+        // Query collaborators borrow this detached revision read-only. Publish it only after
+        // a complete projection, so a failing query cannot leave a partially changed cache.
+        var cached = hudReadState;
+        hudReadState = null;
+        var state = cached is { } previous && previous.Revision == stamp.Revision
+            ? previous.State : battle.Snapshot();
         var sections = new List<TacticalHudSection>();
         var current = TacticalQueries.Player(state, N(state, "currentPlayer"));
         var human = S(current, "controller") == "human";
@@ -667,15 +674,17 @@ public sealed partial class GrayFlagSession
                 || !selection.TargetSubjects.Any(subject => subject.Accepts(cursorHit))
                 || cursorHit.Kind == TacticalHitKind.Unit && cursorUnit is null))
             selectionHint = text.Format("ui.hud.selection.preview_held");
-        if (stamp.Revision != revision)
-            throw new DomainInvariantException("Battle changed during HUD projection.");
-        return new(
+        var result = new TacticalHudProjection(
             stamp,
             selectionHint,
             System.Array.AsReadOnly(sections.ToArray()),
             inspect is null ? null : UnitIcon(inspect),
             busy,
             text.Format("ui.common.close") + "  Esc");
+        if (stamp.Revision != revision)
+            throw new DomainInvariantException("Battle changed during HUD projection.");
+        hudReadState = (stamp.Revision, state);
+        return result;
     }
 
     private string SelectionHint(TacticalSelectionKind kind, bool canRecruit) => kind switch

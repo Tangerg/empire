@@ -1336,6 +1336,7 @@ public partial class TacticalHudChecks : Node
     {
         try
         {
+            CheckHudSnapshotLifetime();
             await CheckSitePointerBoundary();
             await CheckTacticKeyboardContext();
             await CheckHealingTarget();
