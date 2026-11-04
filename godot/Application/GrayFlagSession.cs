@@ -27,6 +27,8 @@ public sealed partial class GrayFlagSession
     private readonly WeaponHitEffectText hitEffectText;
     private readonly Battle battle;
     private long revision;
+    private TurnStatus? turnStatus;
+    private sealed record TurnStatus(long Revision, bool ComputerTurn, bool Concluded);
     private BattlePresentationTransition? transition;
     private readonly BattleEventText eventText;
     private readonly List<JsonObject> actions = new();
@@ -42,7 +44,7 @@ public sealed partial class GrayFlagSession
         get; private set;
     }
     public long Revision => revision;
-    public bool CanUndo => undo.Count > 0 && !IsComputerTurn && battle.Snapshot()["phase"]?.GetValue<string>() != "over";
+    public bool CanUndo => undo.Count > 0 && !IsComputerTurn && !IsConcluded;
 
     public BattleDispatchResult Undo(long expectedRevision)
     {
@@ -105,14 +107,19 @@ public sealed partial class GrayFlagSession
     public JsonObject Save() => engine.SaveBattle(battle.Snapshot());
     public IReadOnlyList<JsonObject> Events => events.Select(value => (JsonObject)value.DeepClone()).ToArray();
 
-    public bool IsComputerTurn
+    public bool IsComputerTurn => ReadTurnStatus().ComputerTurn;
+    public bool IsConcluded => ReadTurnStatus().Concluded;
+
+    private TurnStatus ReadTurnStatus()
     {
-        get
-        {
-            var state = battle.Snapshot();
-            return state["phase"]!.GetValue<string>() is "playing" or "deployment" &&
-                TacticalQueries.Player(state, state["currentPlayer"]!.GetValue<int>())["controller"]!.GetValue<string>() == "ai";
-        }
+        // Commit and Undo advance revision; this detached projection never advances battle facts.
+        if (turnStatus?.Revision == revision)
+            return turnStatus;
+        var state = battle.Snapshot();
+        var phase = state["phase"]!.GetValue<string>();
+        var computer = phase is "playing" or "deployment" &&
+            TacticalQueries.Player(state, state["currentPlayer"]!.GetValue<int>())["controller"]!.GetValue<string>() == "ai";
+        return turnStatus = new(revision, computer, phase == "over");
     }
 
     public bool AdvanceComputer() => AdvanceComputerStep() is not null;

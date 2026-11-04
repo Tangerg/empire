@@ -50,6 +50,7 @@ public partial class CampaignNavigationChecks : Node
             foreach (var (name, test) in new (string, Func<Task>)[] {
                 ("fresh menu, local beats, choice and autosave", () => { CheckFreshStoryChoice(); return Task.CompletedTask; }),
                 ("menu cannot overwrite a played manual save", CheckMenuSaveAdmission),
+                ("idle polling after play, undo and load", CheckIdlePolling),
                 ("battle window minimum follows committed view and lifecycle", CheckBattleWindowMinimum),
                 ("root notice leaves with its view", CheckNoticeViewTransition),
                 ("startup resume, battle restart, camp and Continue", CheckBattleCampMenu),
@@ -960,6 +961,7 @@ public partial class CampaignNavigationChecks : Node
             {
                 Require(orders++ < 512, "The unchanged opening did not reach a genuine conclusion within the legal-driver bound.");
                 var battle = driver.Battle!;
+                Require(!battle.IsConcluded, "A running legal campaign battle cannot project a stale conclusion.");
                 checkpoint = driver.Save();
                 terminalComputer = battle.IsComputerTurn;
                 terminalOrder = engine.Ai.ChooseAction(battle.Snapshot());
@@ -969,6 +971,13 @@ public partial class CampaignNavigationChecks : Node
                     Require(battle.Dispatch(EcmaJson.ToElement(terminalOrder), battle.Revision).Accepted,
                         "The deterministic test-player policy generated an illegal order.");
                 Require(EcmaJson.DeepEquals(battle.ActionLog.Last(), terminalOrder), "The legal driver committed a different order than the recorded policy choice.");
+                var committed = battle.Snapshot();
+                var active = committed["phase"]!.GetValue<string>() is "playing" or "deployment";
+                var controller = committed["players"]!.AsArray().OfType<JsonObject>().Single(player =>
+                    player["id"]!.GetValue<int>() == committed["currentPlayer"]!.GetValue<int>())["controller"]!.GetValue<string>();
+                Require(battle.IsComputerTurn == (active && controller == "ai")
+                    && battle.IsConcluded == (committed["phase"]!.GetValue<string>() == "over"),
+                    "Every real order, including turn handoff and victory, must invalidate its session status projection.");
             }
             Require(driver.BattleSummary().Outcome == "victory" && !terminalComputer
                 && terminalOrder?["command"]?["ability"]?.GetValue<string>() == "attack" && checkpoint is not null,

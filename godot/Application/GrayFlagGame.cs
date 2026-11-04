@@ -132,7 +132,7 @@ public partial class GrayFlagGame : Node
             if (computerPacer.IsRunning || currentScreen.IsPresenting)
                 return;
         }
-        if (session.Snapshot()["phase"]!.GetValue<string>() == "over")
+        if (session.IsConcluded)
         {
             if (!resultOffered)
             {
