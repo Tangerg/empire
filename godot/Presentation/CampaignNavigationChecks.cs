@@ -51,6 +51,7 @@ public partial class CampaignNavigationChecks : Node
                 ("fresh menu, local beats, choice and autosave", () => { CheckFreshStoryChoice(); return Task.CompletedTask; }),
                 ("menu cannot overwrite a played manual save", CheckMenuSaveAdmission),
                 ("idle polling after play, undo and load", CheckIdlePolling),
+                ("native pointer refresh preserves unchanged HUD content", CheckPointerHudRetention),
                 ("battle window minimum follows committed view and lifecycle", CheckBattleWindowMinimum),
                 ("root notice leaves with its view", CheckNoticeViewTransition),
                 ("startup resume, battle restart, camp and Continue", CheckBattleCampMenu),

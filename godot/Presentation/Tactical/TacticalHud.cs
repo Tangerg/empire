@@ -14,6 +14,7 @@ public partial class TacticalHud : Control
     private bool submitted;
     private TacticalHudArt? art;
     private ScrollContainer? detailScroll;
+    private VBoxContainer? details;
     private PopupPanel? detailPopup;
     private Button? detailClose;
     private string? detailOpenerName;
@@ -71,7 +72,18 @@ public partial class TacticalHud : Control
         var nextActions = projection.Sections.FirstOrDefault(section => section.Key is "commands" or "deployment" or "recruit" or "tactics");
         var preserveActions = current is not null && current.Stamp == projection.Stamp && current.Busy == projection.Busy
             && oldActions is not null && nextActions is not null && SameSection(oldActions, nextActions);
+        // Compound forecasts and bottom instructions depend on more than their own section.
+        // Keep those rebuilt; unchanged sections must not reshape all their text on every hover.
+        var retainedSections = current is not null && current.Stamp == projection.Stamp && current.Busy == projection.Busy
+            ? projection.Sections.Where(section => section.Key is not ("forecast" or "target")
+                && (section.Key != "unit" || current.Portrait == projection.Portrait)
+                && current.Sections.Any(old => SameSection(old, section))).Select(section => section.Key).ToHashSet()
+            : new HashSet<string>();
         var retained = preserveActions ? GetChildren().Where(child => child.Name == oldActions!.Key || child.Name == "OrderTray").ToHashSet() : new HashSet<Node>();
+        foreach (var child in GetChildren())
+            if (retainedSections.Contains(child.Name) || retainedSections.Any(key => child.Name == key + "Plate")
+                || retainedSections.Contains("unit") && (child.Name == "PortraitTray" || child.Name == "PortraitMedallion"))
+                retained.Add(child);
         if (detailPopup is not null)
             retained.Add(detailPopup);
         var focused = detailPopup?.GuiGetFocusOwner() ?? GetViewport()?.GuiGetFocusOwner();
@@ -92,8 +104,6 @@ public partial class TacticalHud : Control
             child.QueueFree();
         }
         MouseFilter = MouseFilterEnum.Ignore;
-        var details = new VBoxContainer { Name = "Details", SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        details.AddThemeConstantOverride("separation", 10);
         if (detailPopup is null)
         {
             detailPopup = new PopupPanel { Name = "UnitDossier", Size = new Vector2I(360, 340) };
@@ -131,15 +141,19 @@ public partial class TacticalHud : Control
                 CustomMinimumSize = new Vector2(328, 300)
             };
             body.AddChild(detailScroll);
+            details = new VBoxContainer { Name = "Details", SizeFlagsHorizontal = SizeFlags.ExpandFill };
+            details.AddThemeConstantOverride("separation", 10);
+            detailScroll.AddChild(details);
         }
         detailClose!.Text = projection.CloseLabel;
-        foreach (var child in detailScroll!.GetChildren())
+        foreach (var child in details!.GetChildren())
         {
+            if (retainedSections.Contains(child.Name))
+                continue;
             ReleaseTextureReferences(child);
-            detailScroll.RemoveChild(child);
+            details.RemoveChild(child);
             child.QueueFree();
         }
-        detailScroll.AddChild(details);
         void WireDossier(Button button, string? expandedKey = null)
         {
             var popup = detailPopup;
@@ -168,7 +182,7 @@ public partial class TacticalHud : Control
         }
         var forecast = projection.Sections.FirstOrDefault(section => section.Key == "forecast");
         var mainActions = projection.Sections.FirstOrDefault(section => section.Key is "commands" or "target" or "deployment" or "recruit" or "tactics");
-        if (projection.Sections.Any(section => section.Key == "unit"))
+        if (!retainedSections.Contains("unit") && projection.Sections.Any(section => section.Key == "unit"))
         {
             var portraitTray = TacticalHudStyle.CommandTray();
             portraitTray.Name = "PortraitTray";
@@ -188,7 +202,7 @@ public partial class TacticalHud : Control
         var target = projection.Sections.FirstOrDefault(section => section.Key == "target");
         foreach (var section in projection.Sections.OrderBy(section => Priority(section.Key)))
         {
-            if (preserveActions && section.Key == nextActions!.Key)
+            if (retainedSections.Contains(section.Key))
                 continue;
             if (section.Key == "target" && forecast is not null)
                 continue;
@@ -251,7 +265,7 @@ public partial class TacticalHud : Control
                 var content = rows;
                 toggle.Toggled += open =>
                 {
-                    if (generation != renderedGeneration || !toggle.IsInsideTree())
+                    if (current is null || !IsInsideTree() || !toggle.IsInsideTree())
                         return;
                     if (open)
                         expanded.Add(section.Key);
@@ -406,6 +420,10 @@ public partial class TacticalHud : Control
                 }
             }
         }
+        var detailIndex = 0;
+        foreach (var section in projection.Sections.OrderBy(section => Priority(section.Key)))
+            if (details.GetNodeOrNull<Control>(section.Key) is { } group)
+                details.MoveChild(group, detailIndex++);
         if (projection.Sections.Any(section => section.Key is "unit-details" or "site" or "structure" or "stances" or "formations" or "roster"))
         {
             var dossierTitle = (projection.Sections.Any(section => section.Key == "unit")
@@ -487,18 +505,19 @@ public partial class TacticalHud : Control
             FitInstruction();
         }
         var mountedScroll = detailScroll;
-        Callable.From(() =>
-        {
-            if (GodotObject.IsInstanceValid(this) && generation == renderedGeneration && IsInsideTree()
-                && GodotObject.IsInstanceValid(mountedScroll) && mountedScroll.IsInsideTree())
+        if (IsInsideTree())
+            // Native container layout must finish before restoring a retained control's visibility.
+            GetTree().Connect(SceneTree.SignalName.ProcessFrame, Callable.From(() =>
             {
-                mountedScroll.ScrollVertical = scrollPosition;
-                // Restoring the old reading offset must not undo native focus-following
-                // when refreshed content before the focused control changes height.
-                if (preserveVisibleFocus && detailPopup?.GuiGetFocusOwner() is { } restoredFocus && mountedScroll.IsAncestorOf(restoredFocus))
-                    mountedScroll.EnsureControlVisible(restoredFocus);
-            }
-        }).CallDeferred();
+                if (GodotObject.IsInstanceValid(this) && generation == renderedGeneration && IsInsideTree()
+                    && GodotObject.IsInstanceValid(mountedScroll) && mountedScroll.IsInsideTree())
+                {
+                    mountedScroll.ScrollVertical = scrollPosition;
+                    // Preserve a deliberate reading offset unless focus was visible before the refresh.
+                    if (preserveVisibleFocus && detailPopup?.GuiGetFocusOwner() is { } restoredFocus && mountedScroll.IsAncestorOf(restoredFocus))
+                        mountedScroll.EnsureControlVisible(restoredFocus);
+                }
+            }), (uint)ConnectFlags.OneShot);
 
         void RestoreFocus(Button button, string key)
         {

@@ -992,6 +992,76 @@ public partial class TacticalHudChecks : Node
         button.Free();
     }
 
+    private async System.Threading.Tasks.Task CheckRetainedSectionLifetime()
+    {
+        var hud = new TacticalHud { Size = new Vector2(960, 640), Theme = TacticalHudStyle.Create() };
+        AddChild(hud);
+        try
+        {
+            var stamp = new TacticalStamp(29, 7);
+            TacticalHudProjection Frame(int tile, bool formation = false, bool enabled = true)
+            {
+                var sections = new List<TacticalHudSection> { new("unit-details", "Abilities", new[] { new TacticalHudRow("ability", "Guard") }) };
+                if (formation)
+                    sections.Add(new("formations", "Formation", new[] { new TacticalHudRow("line", "Line") }));
+                sections.Add(new("stances", "Stance", new[] { new TacticalHudRow("guard", "Guard", Enabled: enabled, Intent: new(stamp, TacticalHudIntentKind.Command, "guard")) }));
+                sections.Add(new("tile", "Terrain", new[] { new TacticalHudRow("at", "Tile " + tile) }));
+                return new(stamp, "Inspect", sections);
+            }
+            VBoxContainer Group(string key) => (VBoxContainer)hud.FindChild(key, true, false);
+            Button Toggle(string key) => Group(key).GetChildren().OfType<Button>().Single();
+            Button Guard() => Group("stances").FindChildren("*", "Button", true, false).OfType<Button>()
+                .Single(button => button.GetMeta("hud_key", "").AsString() == "stances/guard");
+            var fired = 0;
+            hud.IntentRequested += _ => fired++;
+            hud.Apply(Frame(1));
+            var abilities = Group("unit-details");
+            var disclosure = Toggle("unit-details");
+            var stance = Group("stances");
+            var action = Guard();
+            hud.Apply(Frame(2, formation: true));
+            Require(ReferenceEquals(abilities, Group("unit-details")) && ReferenceEquals(stance, Group("stances")) && ReferenceEquals(action, Guard()),
+                "Inserting a detail section keeps unchanged native subtrees mounted.");
+            Require(hud.FindChild("Details", true, false).GetChildren().Select(child => child.Name.ToString())
+                .SequenceEqual(new[] { "unit-details", "formations", "stances", "tile" }),
+                "Retained and inserted dossier sections follow the current projection order.");
+            disclosure.ButtonPressed = true;
+            Require(abilities.GetNode<Control>("Content").Visible, "Retained disclosure remains live after a different section changes.");
+            hud.Apply(Frame(3, formation: true, enabled: false));
+            action.EmitSignal(BaseButton.SignalName.Pressed);
+            Require(fired == 0 && Guard().Disabled && !ReferenceEquals(action, Guard()),
+                "Changed hidden action eligibility replaces its controls and rejects detached stale input.");
+            hud.Apply(Frame(4, formation: true) with
+            {
+                Busy = true
+            });
+            Require(Guard().Disabled, "Busy state invalidates retained detail actions as well as the primary strip.");
+            hud.Apply(Frame(5));
+            Require(hud.FindChild("formations", true, false) is null, "Removed sections do not linger in the persistent dossier body.");
+            abilities = Group("unit-details");
+            disclosure = Toggle("unit-details");
+            Require(disclosure.ButtonPressed && abilities.GetNode<Control>("Content").Visible,
+                "Changed facts preserve the user's disclosure state.");
+            RemoveChild(hud);
+            AddChild(hud);
+            disclosure.ButtonPressed = false;
+            Require(hud.Projection is null && abilities.GetNode<Control>("Content").Visible,
+                "Remount without a fresh Apply cannot reactivate an old disclosure callback.");
+            hud.Apply(Frame(6));
+            Require(!ReferenceEquals(abilities, Group("unit-details")) && Toggle("unit-details").ButtonPressed,
+                "A fresh projection rebuilds invalidated nodes without accepting stale disclosure changes.");
+            disclosure.EmitSignal(BaseButton.SignalName.Toggled, false);
+            hud.Apply(Frame(7));
+            Require(Toggle("unit-details").ButtonPressed, "Detached disclosures cannot alter the live expansion state.");
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        }
+        finally
+        {
+            RemoveChild(hud);
+            hud.Free();
+        }
+    }
+
     public override async void _Ready()
     {
         try
@@ -1010,6 +1080,7 @@ public partial class TacticalHudChecks : Node
             await CheckForecastFacts();
             await CheckPointerCapture();
             await CheckDossierLifetime();
+            await CheckRetainedSectionLifetime();
             await CheckOrderBadgeStates();
             var stamp = new TacticalStamp(17, 9);
             var hud = new TacticalHud();
