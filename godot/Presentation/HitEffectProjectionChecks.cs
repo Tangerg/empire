@@ -18,6 +18,10 @@ internal static class HitEffectProjectionChecks
     private const string AttackWeapon = "c01.satchel-charge";
     private const string CounterWeapon = "c01.forge-burst";
     private const string SupportWeapon = "c01.inquisitor-flame";
+    private enum FixtureTarget
+    {
+        Unit, Structure, UnitOnStructure
+    }
 
     private sealed record Fixture(BattleEngine Engine, GrayFlagSession Session, SessionPresentationText Presentation,
         TacticalStamp Stamp, TacticalSelection Selection, TacticalHit Target, CombatPlan Plan,
@@ -27,12 +31,24 @@ internal static class HitEffectProjectionChecks
     {
         CheckGroupedEffects(fog: false);
         CheckGroupedEffects(fog: true);
+        CheckGroupedEffects(fog: false, FixtureTarget.UnitOnStructure);
+        CheckGroupedEffects(fog: true, FixtureTarget.UnitOnStructure);
         CheckNoEffects();
+        foreach (var fog in new[] { false, true })
+            foreach (var effects in new[] { false, true })
+                CheckStructureEffects(fog, effects);
+        var concealed = CreateFixture(fog: true, withEffects: true, FixtureTarget.Structure, vision: 0);
+        Require(concealed.Plan.UnitHits.Count == 2 && concealed.Plan.UnitHits.All(hit => hit.Effects.Count == 4
+            && concealed.Session.GetTacticalQueries(51).Unit(hit.Target) is null),
+            "The all-concealed negative fixture retains real affected units and effects behind fog.");
+        Require(ProjectWithoutMutation(concealed).Sections.SelectMany(section => section.Rows)
+            .All(row => row.Key != "collateral" && !row.Key.StartsWith("hit-effect-", StringComparison.Ordinal)),
+            "No visible collateral means no zero/zero hint, hidden count, effect summary or conditional detail.");
     }
 
-    private static void CheckGroupedEffects(bool fog)
+    private static void CheckGroupedEffects(bool fog, FixtureTarget target = FixtureTarget.Unit)
     {
-        var fixture = CreateFixture(fog, withEffects: true);
+        var fixture = CreateFixture(fog, withEffects: true, target);
         var hud = ProjectWithoutMutation(fixture);
         var forecast = hud.Sections.Single(section => section.Key == "forecast");
         var details = hud.Sections.Single(section => section.Key == "forecast-details");
@@ -47,6 +63,9 @@ internal static class HitEffectProjectionChecks
 
         var visibleTargets = fixture.Plan.UnitHits.Select(hit => hit.Target)
             .Where(id => !fog || id != fixture.Concealed).ToArray();
+        Require(forecast.Rows.Single(row => row.Key == "collateral").Label
+                == fixture.Presentation.Messages.Format("ui.hud.collateral", visibleTargets.Length - 1, target == FixtureTarget.UnitOnStructure ? 1 : 0),
+            "Unit forecasts exclude their primary unit, count only visible collateral and retain a structure beneath the primary unit.");
         // Both collision effects have emphasis. The earlier one wins, not the larger amount;
         // ordinary effects retain their original place in the complete target-by-target detail.
         CheckPhase(fixture, forecast, details, "attack", fixture.Plan.Attacker, visibleTargets, AttackEffects(), prominent: 1);
@@ -69,6 +88,38 @@ internal static class HitEffectProjectionChecks
             Require(visibleTargets.Length == 2 && fixture.Plan.UnitHits.Single(hit => hit.Target == fixture.Concealed).Effects.Count == 4,
                 "The hidden-target guard must exercise real planned effects, not an absent or already-filtered combat hit.");
         }
+    }
+
+    private static void CheckStructureEffects(bool fog, bool withEffects)
+    {
+        var fixture = CreateFixture(fog, withEffects, FixtureTarget.Structure);
+        var hud = ProjectWithoutMutation(fixture);
+        var forecast = hud.Sections.Single(section => section.Key == "forecast");
+        var visibleTargets = fixture.Plan.UnitHits.Select(hit => hit.Target)
+            .Where(id => !fog || id != fixture.Concealed).ToArray();
+        Require(forecast.Rows.Single(row => row.Key == "collateral").Label
+                == fixture.Presentation.Messages.Format("ui.hud.collateral", visibleTargets.Length, 0),
+            "A structure forecast excludes only its primary structure and counts every visible collateral unit.");
+        Require(forecast.Rows.All(row => row.Key is not ("counter" or "support" or "hit-effect-counter" or "hit-effect-support")),
+            "A structure-only plan cannot invent a counter or support phase.");
+        if (withEffects)
+        {
+            var details = hud.Sections.Single(section => section.Key == "forecast-details");
+            CheckPhase(fixture, forecast, details, "attack", fixture.Plan.Attacker, visibleTargets, AttackEffects(), prominent: 1);
+            Require(details.Rows.Any(row => row.Key == "hit-effect-condition")
+                && forecast.Rows.Count(row => row.Key.StartsWith("hit-effect-", StringComparison.Ordinal)) == 1,
+                "Visible structure collateral receives one bounded attack summary and the unchanged conditional explanation.");
+            var hiddenName = Name(fixture, fixture.Concealed);
+            if (fog)
+                Require(hud.Sections.SelectMany(section => section.Rows)
+                    .Where(row => row.Key.StartsWith("hit-effect-", StringComparison.Ordinal))
+                    .All(row => !row.Label.Contains(hiddenName, StringComparison.Ordinal) && !row.Hint.Contains(hiddenName, StringComparison.Ordinal)),
+                    "Structure targeting cannot disclose hidden collateral names through effect summaries or details.");
+        }
+        else
+            Require(hud.Sections.All(section => section.Key != "forecast-details")
+                && forecast.Rows.All(row => !row.Key.StartsWith("hit-effect-", StringComparison.Ordinal)),
+                "A structure plan without effects retains its real collateral warning but invents no effect details.");
     }
 
     private static void CheckPhase(Fixture fixture, TacticalHudSection forecast, TacticalHudSection details,
@@ -122,7 +173,7 @@ internal static class HitEffectProjectionChecks
         return first;
     }
 
-    private static Fixture CreateFixture(bool fog, bool withEffects)
+    private static Fixture CreateFixture(bool fog, bool withEffects, FixtureTarget targetKind = FixtureTarget.Unit, int vision = 1)
     {
         // Deliberately synthetic: detached content lowers damage, limits sight, and supplies
         // effect combinations absent from the campaign. No shipped level or asset is changed.
@@ -136,7 +187,7 @@ internal static class HitEffectProjectionChecks
         })
         {
             Definition("units", unit)["weapons"] = new JsonArray(weapon);
-            Definition("units", unit)["vision"] = 1;
+            Definition("units", unit)["vision"] = vision;
             Definition("weapons", weapon)["power"] = 1;
         }
         Definition("weapons", AttackWeapon)["hitEffects"] = new JsonArray(withEffects ? AttackEffects().Cast<JsonNode>().ToArray() : []);
@@ -158,6 +209,20 @@ internal static class HitEffectProjectionChecks
             ["players"] = new JsonArray(Player(1), Player(2)),
             ["rules"] = new JsonObject { ["fog"] = fog, ["zoneOfControl"] = false, ["moraleEnabled"] = false, ["turnLimit"] = null },
         };
+        if (targetKind != FixtureTarget.Unit)
+            level["structures"] = new JsonArray(new JsonObject
+            {
+                ["id"] = "primary-structure",
+                ["type"] = "command_node",
+                ["owner"] = 2,
+                ["x"] = 2,
+                ["y"] = 1
+            });
+        if (targetKind == FixtureTarget.Structure)
+        {
+            level["units"]![1]!["x"] = 4;
+            level["units"]![1]!["y"] = 3;
+        }
         var presentation = SessionPresentationText.Compose(new(engine, GodotTextCatalog.LoadSimplifiedChinese(), new Dictionary<string, string>()),
             new JsonArray(level.DeepClone()), BattleTextJson(), Godot.FileAccess.GetFileAsString("res://data/grayflag-content-text.json"));
         var authored = EcmaJson.Stringify(level);
@@ -171,10 +236,10 @@ internal static class HitEffectProjectionChecks
         var concealed = Id("concealed");
         var queries = session.GetTacticalQueries(51);
         var origin = new BoardCell(1, 1);
-        var target = TacticalHit.Unit(new(2, 1), primary);
+        var target = targetKind == FixtureTarget.Structure ? TacticalHit.Object(new(2, 1)) : TacticalHit.Unit(new(2, 1), primary);
         var command = queries.CommandsAt(actor, origin).Single(option => option.Weapon == AttackWeapon);
-        Require(queries.MoveStops(actor).Contains(origin) && command.TargetSubjects.Contains(TacticalTarget.Unit(target.Cell, primary)),
-            "The synthetic forecast must be reachable through canonical movement and explicit unit-target command queries.");
+        Require(queries.MoveStops(actor).Contains(origin) && command.TargetSubjects.Any(subject => subject.Accepts(target)),
+            "The synthetic forecast must be reachable through canonical movement and explicit subject command queries.");
         var selection = new TacticalSelection
         {
             Kind = TacticalSelectionKind.Target,
@@ -187,14 +252,24 @@ internal static class HitEffectProjectionChecks
             TargetSubjects = command.TargetSubjects,
         };
         var plan = engine.Combat.PreviewAttack(state, actor, new(1, 1), new(2, 1), AttackWeapon);
-        Require(plan.PrimaryUnit is { Interceptor: null, Counter.Weapon: CounterWeapon }
+        if (targetKind == FixtureTarget.Structure)
+            Require(plan.PrimaryStructure?.Structure == "primary-structure" && plan.PrimaryUnit is null
+                && plan.SupportAttack is null && plan.CounterEffects.Count == 0
+                && plan.UnitHits.Count == 2 && plan.UnitHits.All(hit => !hit.Primary && !hit.Killed && hit.Effects.Count == (withEffects ? 4 : 0))
+                && plan.UnitHits.Select(hit => hit.Target).ToHashSet().SetEquals(new[] { collateral, concealed }),
+                "The synthetic structure has two genuine collateral recipients, without a primary unit, counter or support plan.");
+        else
+            Require(plan.PrimaryUnit is { Interceptor: null, Counter.Weapon: CounterWeapon }
             && plan.SupportAttack is { Weapon: SupportWeapon } support && support.Attacker == Id("supporter") && support.Target == primary
             && plan.UnitHits.Select(hit => hit.Target).ToHashSet().SetEquals(new[] { primary, collateral, concealed })
             && plan.UnitHits.Count == 3 && plan.UnitHits[0].Target == primary
             && plan.UnitHits.All(hit => !hit.Killed && hit.Effects.Count == (withEffects ? 4 : 0))
             && plan.CounterEffects.Count == (withEffects ? 2 : 0) && support.Effects.Count == (withEffects ? 2 : 0),
             "The fixture must produce three real area-hit recipients plus a surviving counter and support effect phase.");
-        Require(queries.Unit(primary) is not null && queries.Unit(collateral) is not null
+        if (targetKind == FixtureTarget.UnitOnStructure)
+            Require(plan.PrimaryStructure?.Structure == "primary-structure" && plan.StructureHits.Count == 1 && plan.StructureHits[0].Primary,
+                "The occupied structure is primary in the plan but collateral to the displayed unit card.");
+        Require((targetKind == FixtureTarget.Structure || queries.Unit(primary) is not null) && (queries.Unit(collateral) is not null) == (!fog || vision > 0)
             && (queries.Unit(concealed) is null) == fog && EcmaJson.Stringify(level) == authored,
             "Only the far collateral recipient is fog-hidden; fixture construction must preserve authored input.");
         return new(engine, session, presentation, queries.Stamp, selection, target, plan, primary, concealed, Id("supporter"));

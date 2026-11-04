@@ -220,6 +220,56 @@ public sealed partial class GrayFlagSession
             var target = targetHit.Cell;
             var defender = forecastUnit;
             var plan = engine.Combat.PreviewAttack(state, N(selected, "id"), new(from.X, from.Y), new(target.X, target.Y), weapon);
+            void AddCollateral(List<TacticalHudRow> rows)
+            {
+                var units = plan.UnitHits.Count(hit => visible.Contains(hit.Target)
+                    && (targetHit.Kind != TacticalHitKind.Unit || !hit.Primary));
+                var structures = plan.StructureHits.Count(hit => targetHit.Kind != TacticalHitKind.Object || !hit.Primary);
+                if (units + structures > 0)
+                    rows.Add(new("collateral", text.Format("ui.hud.collateral", units, structures)));
+            }
+            void AddHitEffects(List<TacticalHudRow> rows)
+            {
+                var hitEffects = new List<(string Phase, string Source, string Target, WeaponHitEffectDescription Description)>();
+                void DescribeEffects(string phase, int sourceId, int targetId, IReadOnlyList<JsonObject> definitions)
+                {
+                    if (!visible.Contains(sourceId) || !visible.Contains(targetId))
+                        return;
+                    var sourceName = Name(TacticalQueries.RequireUnit(state, sourceId));
+                    var targetName = Name(TacticalQueries.RequireUnit(state, targetId));
+                    hitEffects.AddRange(definitions.Select(definition =>
+                        (phase, sourceName, targetName, hitEffectText.Describe(EcmaJson.ToElement(definition)))));
+                }
+                foreach (var hit in plan.UnitHits)
+                    DescribeEffects("attack", plan.Attacker, hit.Target, hit.Effects);
+                if (plan.PrimaryUnit is { } exchange)
+                    DescribeEffects("counter", exchange.Defender, plan.Attacker, plan.CounterEffects);
+                if (plan.SupportAttack is { } extra)
+                    DescribeEffects("support", extra.Attacker, extra.Target, extra.Effects);
+                foreach (var group in hitEffects.GroupBy(effect => effect.Phase))
+                {
+                    var descriptions = group.ToArray();
+                    var prominent = descriptions.OrderByDescending(effect => effect.Description.Emphasis).First();
+                    var summary = text.Format("ui.hud.hit_effect." + group.Key, prominent.Description.Compact);
+                    if (descriptions.Length > 1)
+                        summary = text.Format("ui.hud.hit_effect.more", summary, descriptions.Length - 1);
+                    var details = descriptions.Select(effect => text.Format("ui.hud.hit_effect.detail", effect.Source, effect.Target,
+                        text.Format("ui.hud.hit_effect." + effect.Phase, effect.Description.Detail))).ToArray();
+                    rows.Add(new("hit-effect-" + group.Key, summary,
+                        Hint: text.Format("ui.hud.hit_effect.condition") + "\n" + string.Join("\n", details)));
+                    rows.AddRange(details.Select((detail, index) => new TacticalHudRow($"hit-effect-detail:{group.Key}:{index}", detail)));
+                }
+                if (hitEffects.Count > 0)
+                    rows.Add(new("hit-effect-condition", text.Format("ui.hud.hit_effect.condition")));
+            }
+            void Forecast(List<TacticalHudRow> rows)
+            {
+                bool Detail(TacticalHudRow row) => row.Key is "damage-type" or "mitigation" or "hit-effect-condition"
+                    || row.Key.StartsWith("strike-mod:", StringComparison.Ordinal) || row.Key.StartsWith("counter-mod:", StringComparison.Ordinal)
+                    || row.Key.StartsWith("hit-effect-detail:", StringComparison.Ordinal);
+                Section("forecast", text.Format("ui.hud.forecast"), rows.Where(row => !Detail(row)));
+                Section("forecast-details", text.Format("ui.hud.forecast_details"), rows.Where(Detail));
+            }
             if (targetHit.Kind == TacticalHitKind.Object && plan.PrimaryStructure is { } structureForecast)
             {
                 var structure = state["structures"]!.AsArray().OfType<JsonObject>()
@@ -231,9 +281,11 @@ public sealed partial class GrayFlagSession
                     new("strike", text.Format("ui.hud.strike", structureForecast.Damage, D(structure, "hp"), structureForecast.HpAfter),
                         Gauge: new(structureForecast.HpAfter, D(definition, "maxHp")))
                 };
+                AddCollateral(rows);
                 if (structureForecast.Destroyed)
                     rows.Add(new("structure-destroyed", text.Format("ui.hud.structure_destroyed")));
-                Section("forecast", text.Format("ui.hud.forecast"), rows);
+                AddHitEffects(rows);
+                Forecast(rows);
             }
             if (defender is not null)
             {
@@ -249,8 +301,7 @@ public sealed partial class GrayFlagSession
                         rows.Add(new("interceptor", text.Format("ui.hud.interception", Name(recipient))));
                     else if (exchange.Reaction is { } reaction)
                         rows.Add(new("reaction", text.Format("ui.hud.target_reaction", contentText.ReactionName(reaction.Stance))));
-                    if (plan.UnitHits.Count + plan.StructureHits.Count > 1)
-                        rows.Add(new("collateral", text.Format("ui.hud.collateral", plan.UnitHits.Count - 1, plan.StructureHits.Count)));
+                    AddCollateral(rows);
                     if (plan.SupportAttack is { } support)
                         rows.Add(new("support", text.Format("ui.hud.support_damage", support.Damage.Damage)));
                     rows.Add(new("strike",
@@ -263,36 +314,7 @@ public sealed partial class GrayFlagSession
                             exchange.AttackerHpAfter),
                         Gauge: new(exchange.AttackerHpAfter, D(Definition("units", S(selected, "type")), "maxHp"))));
                     rows.Add(new("forecast-scope", text.Format("ui.hud.forecast_scope")));
-                    var hitEffects = new List<(string Phase, string Source, string Target, WeaponHitEffectDescription Description)>();
-                    void DescribeEffects(string phase, int sourceId, int targetId, IReadOnlyList<JsonObject> definitions)
-                    {
-                        if (!visible.Contains(sourceId) || !visible.Contains(targetId))
-                            return;
-                        var sourceName = Name(TacticalQueries.RequireUnit(state, sourceId));
-                        var targetName = Name(TacticalQueries.RequireUnit(state, targetId));
-                        hitEffects.AddRange(definitions.Select(definition =>
-                            (phase, sourceName, targetName, hitEffectText.Describe(EcmaJson.ToElement(definition)))));
-                    }
-                    foreach (var hit in plan.UnitHits)
-                        DescribeEffects("attack", plan.Attacker, hit.Target, hit.Effects);
-                    DescribeEffects("counter", exchange.Defender, plan.Attacker, plan.CounterEffects);
-                    if (plan.SupportAttack is { } extra)
-                        DescribeEffects("support", extra.Attacker, extra.Target, extra.Effects);
-                    foreach (var group in hitEffects.GroupBy(effect => effect.Phase))
-                    {
-                        var descriptions = group.ToArray();
-                        var prominent = descriptions.OrderByDescending(effect => effect.Description.Emphasis).First();
-                        var summary = text.Format("ui.hud.hit_effect." + group.Key, prominent.Description.Compact);
-                        if (descriptions.Length > 1)
-                            summary = text.Format("ui.hud.hit_effect.more", summary, descriptions.Length - 1);
-                        var details = descriptions.Select(effect => text.Format("ui.hud.hit_effect.detail", effect.Source, effect.Target,
-                            text.Format("ui.hud.hit_effect." + effect.Phase, effect.Description.Detail))).ToArray();
-                        rows.Add(new("hit-effect-" + group.Key, summary,
-                            Hint: text.Format("ui.hud.hit_effect.condition") + "\n" + string.Join("\n", details)));
-                        rows.AddRange(details.Select((detail, index) => new TacticalHudRow($"hit-effect-detail:{group.Key}:{index}", detail)));
-                    }
-                    if (hitEffects.Count > 0)
-                        rows.Add(new("hit-effect-condition", text.Format("ui.hud.hit_effect.condition")));
+                    AddHitEffects(rows);
                     rows.Add(new("damage-type",
                         text.Format("ui.hud.damage_chain",
                             contentText.Name(ContentTextKind.DamageType, exchange.Strike.DamageType),
@@ -307,11 +329,7 @@ public sealed partial class GrayFlagSession
                     if (exchange.Counter is { } counter)
                         rows.AddRange(counter.Modifiers.Select((modifier, index) => new TacticalHudRow($"counter-mod:{index}",
                             text.Format("ui.hud.counter_modifier", ModifierLabel(modifier)))));
-                    bool Detail(TacticalHudRow row) => row.Key is "damage-type" or "mitigation" or "hit-effect-condition"
-                        || row.Key.StartsWith("strike-mod:", StringComparison.Ordinal) || row.Key.StartsWith("counter-mod:", StringComparison.Ordinal)
-                        || row.Key.StartsWith("hit-effect-detail:", StringComparison.Ordinal);
-                    Section("forecast", text.Format("ui.hud.forecast"), rows.Where(row => !Detail(row)));
-                    Section("forecast-details", text.Format("ui.hud.forecast_details"), rows.Where(Detail));
+                    Forecast(rows);
                 }
             }
         }

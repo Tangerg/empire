@@ -388,15 +388,6 @@ public partial class TacticalHud : Control
                     group.AddChild(effects);
                 else
                     effects.Free();
-                foreach (var row in section.Rows.Where(row => row.Key == "forecast-scope" || row.Key.StartsWith("hit-effect-", StringComparison.Ordinal)))
-                {
-                    var notice = Label(row.Label, row.Key == "forecast-scope" ? 11 : 12, TacticalHudStyle.Gold);
-                    notice.Name = row.Key;
-                    notice.TooltipText = row.Hint.Length > 0 ? row.Hint : row.Label;
-                    notice.MaxLinesVisible = 1;
-                    notice.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
-                    group.AddChild(notice);
-                }
             }
             GridContainer? commandGrid = null;
             if (section == mainActions && section.Key != "target")
@@ -406,7 +397,8 @@ public partial class TacticalHud : Control
             }
             foreach (var row in section.Rows)
             {
-                if (pairedForecast)
+                if (pairedForecast || section.Key == "forecast"
+                    && (row.Key == "forecast-scope" || row.Key.StartsWith("hit-effect-", StringComparison.Ordinal)))
                     continue;
                 if (section.Key == "unit" && row.Key is "selection" or "owner")
                     continue;
@@ -447,6 +439,16 @@ public partial class TacticalHud : Control
                             label.AddThemeColorOverride("font_color", new Color("#453921"));
                 }
             }
+            if (section.Key == "forecast")
+                foreach (var row in section.Rows.Where(row => row.Key == "forecast-scope" || row.Key.StartsWith("hit-effect-", StringComparison.Ordinal)))
+                {
+                    var notice = Label(row.Label, row.Key == "forecast-scope" ? 11 : 12, TacticalHudStyle.Gold);
+                    notice.Name = row.Key;
+                    notice.TooltipText = row.Hint.Length > 0 ? row.Hint : row.Label;
+                    notice.MaxLinesVisible = 1;
+                    notice.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
+                    group.AddChild(notice);
+                }
         }
         var detailIndex = 0;
         foreach (var section in projection.Sections.OrderBy(section => Priority(section.Key)))

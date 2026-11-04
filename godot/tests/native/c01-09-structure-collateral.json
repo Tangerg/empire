@@ -1,0 +1,1158 @@
+{
+  "levelId": "c01-09",
+  "initialStateHash": "6fefe68e",
+  "beforeStateHash": "2bc44d8c",
+  "afterStateHash": "d5c97410",
+  "eventsSha256": "25e367bb85084fadea362d4e8af737799820cda31b02fbe33b25a76a6a82a0dc",
+  "prefix": [
+    {
+      "kind": "reaction",
+      "unit": 10,
+      "stance": "support"
+    },
+    {
+      "kind": "command",
+      "unit": 6,
+      "path": [
+        {
+          "x": 4,
+          "y": 10
+        },
+        {
+          "x": 4,
+          "y": 9
+        },
+        {
+          "x": 4,
+          "y": 8
+        },
+        {
+          "x": 4,
+          "y": 7
+        },
+        {
+          "x": 4,
+          "y": 6
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.satchel-charge",
+        "target": {
+          "x": 5,
+          "y": 6
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 4,
+      "path": [
+        {
+          "x": 3,
+          "y": 8
+        },
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 4,
+          "y": 7
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.lantern-staff",
+        "target": {
+          "x": 5,
+          "y": 6
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 5,
+      "path": [
+        {
+          "x": 3,
+          "y": 12
+        },
+        {
+          "x": 3,
+          "y": 11
+        },
+        {
+          "x": 3,
+          "y": 10
+        },
+        {
+          "x": 3,
+          "y": 9
+        },
+        {
+          "x": 3,
+          "y": 8
+        },
+        {
+          "x": 4,
+          "y": 8
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.ranger-bow",
+        "target": {
+          "x": 7,
+          "y": 8
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 12,
+      "path": [
+        {
+          "x": 8,
+          "y": 12
+        },
+        {
+          "x": 8,
+          "y": 11
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.border-blade",
+        "target": {
+          "x": 9,
+          "y": 11
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 9,
+      "path": [
+        {
+          "x": 6,
+          "y": 13
+        },
+        {
+          "x": 6,
+          "y": 12
+        },
+        {
+          "x": 6,
+          "y": 11
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.ranger-bow",
+        "target": {
+          "x": 9,
+          "y": 11
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 2,
+      "path": [
+        {
+          "x": 2,
+          "y": 9
+        },
+        {
+          "x": 3,
+          "y": 9
+        },
+        {
+          "x": 4,
+          "y": 9
+        },
+        {
+          "x": 5,
+          "y": 9
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 7,
+      "path": [
+        {
+          "x": 5,
+          "y": 12
+        },
+        {
+          "x": 5,
+          "y": 11
+        },
+        {
+          "x": 5,
+          "y": 10
+        },
+        {
+          "x": 6,
+          "y": 10
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "reaction",
+      "unit": 10,
+      "stance": "counter"
+    },
+    {
+      "kind": "command",
+      "unit": 10,
+      "path": [
+        {
+          "x": 4,
+          "y": 12
+        },
+        {
+          "x": 5,
+          "y": 12
+        },
+        {
+          "x": 5,
+          "y": 11
+        },
+        {
+          "x": 5,
+          "y": 10
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 11,
+      "path": [
+        {
+          "x": 7,
+          "y": 13
+        },
+        {
+          "x": 7,
+          "y": 12
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 1,
+      "path": [
+        {
+          "x": 1,
+          "y": 10
+        },
+        {
+          "x": 1,
+          "y": 9
+        },
+        {
+          "x": 1,
+          "y": 8
+        },
+        {
+          "x": 2,
+          "y": 8
+        },
+        {
+          "x": 3,
+          "y": 8
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 3,
+      "path": [
+        {
+          "x": 2,
+          "y": 11
+        },
+        {
+          "x": 3,
+          "y": 11
+        },
+        {
+          "x": 3,
+          "y": 10
+        },
+        {
+          "x": 4,
+          "y": 10
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 8,
+      "path": [
+        {
+          "x": 1,
+          "y": 13
+        },
+        {
+          "x": 1,
+          "y": 12
+        },
+        {
+          "x": 1,
+          "y": 11
+        },
+        {
+          "x": 1,
+          "y": 10
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "tactic",
+      "commander": "enemy-command",
+      "tactic": "rally",
+      "target": {
+        "x": 7,
+        "y": 1
+      }
+    },
+    {
+      "kind": "reaction",
+      "unit": 13,
+      "stance": "conserve"
+    },
+    {
+      "kind": "command",
+      "unit": 13,
+      "path": [
+        {
+          "x": 7,
+          "y": 2
+        },
+        {
+          "x": 7,
+          "y": 3
+        },
+        {
+          "x": 7,
+          "y": 4
+        }
+      ],
+      "command": {
+        "ability": "capture"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 21,
+      "path": [
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.ranger-bow",
+        "target": {
+          "x": 4,
+          "y": 7
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 16,
+      "path": [
+        {
+          "x": 10,
+          "y": 10
+        },
+        {
+          "x": 9,
+          "y": 10
+        },
+        {
+          "x": 8,
+          "y": 10
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.ranger-bow",
+        "target": {
+          "x": 5,
+          "y": 10
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 22,
+      "path": [
+        {
+          "x": 12,
+          "y": 6
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 14,
+      "path": [
+        {
+          "x": 10,
+          "y": 4
+        },
+        {
+          "x": 10,
+          "y": 5
+        },
+        {
+          "x": 10,
+          "y": 6
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 19,
+      "path": [
+        {
+          "x": 16,
+          "y": 7
+        },
+        {
+          "x": 15,
+          "y": 7
+        },
+        {
+          "x": 14,
+          "y": 7
+        },
+        {
+          "x": 13,
+          "y": 7
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 20,
+      "path": [
+        {
+          "x": 14,
+          "y": 11
+        },
+        {
+          "x": 13,
+          "y": 11
+        },
+        {
+          "x": 12,
+          "y": 11
+        },
+        {
+          "x": 11,
+          "y": 11
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 15,
+      "path": [
+        {
+          "x": 12,
+          "y": 7
+        },
+        {
+          "x": 12,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 6
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 18,
+      "path": [
+        {
+          "x": 14,
+          "y": 3
+        },
+        {
+          "x": 14,
+          "y": 4
+        },
+        {
+          "x": 14,
+          "y": 5
+        },
+        {
+          "x": 14,
+          "y": 6
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "command",
+      "unit": 23,
+      "path": [
+        {
+          "x": 7,
+          "y": 6
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.dragon-breath",
+        "target": {
+          "x": 7,
+          "y": 8
+        }
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "tactic",
+      "commander": "laiya-command",
+      "tactic": "c01.gray-rally",
+      "target": {
+        "x": 4,
+        "y": 8
+      }
+    },
+    {
+      "kind": "reaction",
+      "unit": 4,
+      "stance": "support"
+    },
+    {
+      "kind": "reaction",
+      "unit": 10,
+      "stance": "support"
+    },
+    {
+      "kind": "command",
+      "unit": 2,
+      "path": [
+        {
+          "x": 5,
+          "y": 9
+        },
+        {
+          "x": 6,
+          "y": 9
+        },
+        {
+          "x": 7,
+          "y": 9
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.border-blade",
+        "target": {
+          "x": 7,
+          "y": 8
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 5,
+      "path": [
+        {
+          "x": 4,
+          "y": 8
+        },
+        {
+          "x": 5,
+          "y": 8
+        },
+        {
+          "x": 6,
+          "y": 8
+        },
+        {
+          "x": 7,
+          "y": 8
+        }
+      ],
+      "command": {
+        "ability": "capture"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 1,
+      "path": [
+        {
+          "x": 3,
+          "y": 8
+        },
+        {
+          "x": 3,
+          "y": 7
+        },
+        {
+          "x": 3,
+          "y": 6
+        },
+        {
+          "x": 3,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 5
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.gray-oath",
+        "target": {
+          "x": 5,
+          "y": 5
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 4,
+      "path": [
+        {
+          "x": 4,
+          "y": 7
+        },
+        {
+          "x": 4,
+          "y": 6
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 4,
+          "y": 4
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.lantern-staff",
+        "target": {
+          "x": 5,
+          "y": 5
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 12,
+      "path": [
+        {
+          "x": 8,
+          "y": 11
+        },
+        {
+          "x": 9,
+          "y": 11
+        },
+        {
+          "x": 9,
+          "y": 10
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.border-blade",
+        "target": {
+          "x": 8,
+          "y": 10
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 7,
+      "path": [
+        {
+          "x": 6,
+          "y": 10
+        },
+        {
+          "x": 7,
+          "y": 10
+        },
+        {
+          "x": 7,
+          "y": 9
+        },
+        {
+          "x": 8,
+          "y": 9
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.engineer-hammer",
+        "target": {
+          "x": 8,
+          "y": 10
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 6,
+      "path": [
+        {
+          "x": 4,
+          "y": 6
+        },
+        {
+          "x": 4,
+          "y": 5
+        },
+        {
+          "x": 5,
+          "y": 5
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 11,
+      "path": [
+        {
+          "x": 7,
+          "y": 12
+        },
+        {
+          "x": 8,
+          "y": 12
+        },
+        {
+          "x": 9,
+          "y": 12
+        },
+        {
+          "x": 9,
+          "y": 11
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 9,
+      "path": [
+        {
+          "x": 6,
+          "y": 11
+        },
+        {
+          "x": 6,
+          "y": 10
+        },
+        {
+          "x": 7,
+          "y": 10
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 3,
+      "path": [
+        {
+          "x": 4,
+          "y": 10
+        },
+        {
+          "x": 4,
+          "y": 9
+        },
+        {
+          "x": 4,
+          "y": 8
+        },
+        {
+          "x": 4,
+          "y": 7
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "reaction",
+      "unit": 10,
+      "stance": "counter"
+    },
+    {
+      "kind": "command",
+      "unit": 10,
+      "path": [
+        {
+          "x": 5,
+          "y": 10
+        },
+        {
+          "x": 5,
+          "y": 9
+        },
+        {
+          "x": 5,
+          "y": 8
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 8,
+      "path": [
+        {
+          "x": 1,
+          "y": 10
+        },
+        {
+          "x": 1,
+          "y": 9
+        },
+        {
+          "x": 1,
+          "y": 8
+        },
+        {
+          "x": 1,
+          "y": 7
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "command",
+      "unit": 14,
+      "path": [
+        {
+          "x": 10,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        },
+        {
+          "x": 12,
+          "y": 6
+        },
+        {
+          "x": 12,
+          "y": 7
+        }
+      ],
+      "command": {
+        "ability": "capture"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 13,
+      "path": [
+        {
+          "x": 7,
+          "y": 4
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.inquisitor-flame",
+        "target": {
+          "x": 7,
+          "y": 6
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 15,
+      "path": [
+        {
+          "x": 9,
+          "y": 6
+        },
+        {
+          "x": 9,
+          "y": 7
+        },
+        {
+          "x": 9,
+          "y": 8
+        },
+        {
+          "x": 8,
+          "y": 8
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.knight-charge",
+        "target": {
+          "x": 7,
+          "y": 8
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 20,
+      "path": [
+        {
+          "x": 11,
+          "y": 11
+        },
+        {
+          "x": 11,
+          "y": 12
+        },
+        {
+          "x": 10,
+          "y": 12
+        },
+        {
+          "x": 9,
+          "y": 12
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.border-blade",
+        "target": {
+          "x": 9,
+          "y": 11
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 22,
+      "path": [
+        {
+          "x": 12,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        },
+        {
+          "x": 10,
+          "y": 6
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 18,
+      "path": [
+        {
+          "x": 14,
+          "y": 6
+        },
+        {
+          "x": 13,
+          "y": 6
+        },
+        {
+          "x": 12,
+          "y": 6
+        },
+        {
+          "x": 11,
+          "y": 6
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 19,
+      "path": [
+        {
+          "x": 13,
+          "y": 7
+        },
+        {
+          "x": 13,
+          "y": 6
+        },
+        {
+          "x": 12,
+          "y": 6
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "command",
+      "unit": 23,
+      "path": [
+        {
+          "x": 7,
+          "y": 6
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.dragon-breath",
+        "target": {
+          "x": 9,
+          "y": 6
+        }
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "reaction",
+      "unit": 5,
+      "stance": "guard"
+    },
+    {
+      "kind": "reaction",
+      "unit": 10,
+      "stance": "support"
+    }
+  ],
+  "action": {
+    "kind": "command",
+    "unit": 7,
+    "path": [
+      {
+        "x": 8,
+        "y": 9
+      },
+      {
+        "x": 9,
+        "y": 9
+      },
+      {
+        "x": 10,
+        "y": 9
+      },
+      {
+        "x": 10,
+        "y": 8
+      },
+      {
+        "x": 10,
+        "y": 7
+      }
+    ],
+    "command": {
+      "ability": "attack",
+      "weapon": "c01.satchel-charge",
+      "target": {
+        "x": 9,
+        "y": 6
+      }
+    }
+  }
+}

@@ -24,6 +24,7 @@ public partial class BattleScreenChecks : Node
     {
         try
         {
+            CheckStructureCollateralDisclosure();
             CheckRecordedStatusFeedback();
             CheckStructureKeyboardTarget();
             CheckFormationInspection();

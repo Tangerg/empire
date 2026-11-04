@@ -825,6 +825,70 @@ public partial class TacticalHudChecks : Node
             Require(!popup.Visible && ReferenceEquals(GetViewport().GuiGetFocusOwner(), detail),
                 "Closing effect details returns focus to the unchanged forecast entry.");
         }
+        foreach (var width in new[] { 960, 1180 })
+        {
+            host.Size = new Vector2(width, 640);
+            var currentStamp = stamp with
+            {
+                Revision = width + 1
+            };
+            hud.Apply(new(currentStamp, "再点目标 / Enter 执行 · Esc 返回", new[]
+            {
+                new TacticalHudSection("forecast", "战斗预测", new[]
+                {
+                    new TacticalHudRow("exchange", "工兵 → 指挥节点"),
+                    new("strike", "主击 57 · HP 57 → 0", Gauge: new(0, 100)),
+                    new("collateral", "范围攻击还将波及 2 个单位、0 个结构"),
+                    new("structure-destroyed", "目标建筑或障碍将被摧毁。"),
+                    notices[1]
+                }),
+                new TacticalHudSection("forecast-details", "计算详情", effectDetails),
+                new TacticalHudSection("target", "选择目标", new[]
+                {
+                    new TacticalHudRow("cancel", "取消 Esc", Intent: new(currentStamp, TacticalHudIntentKind.Back))
+                })
+            }));
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            var plate = (Control)hud.FindChild("forecastPlate", true, false);
+            var notice = hud.FindChildren("*", "Label", true, false).OfType<Label>().Single(label => label.Text == notices[1].Label);
+            var cancel = hud.FindChildren("*", "Button", true, false).OfType<Button>()
+                .Single(button => button.GetMeta("hud_key", "").AsString() == "target/cancel");
+            var detail = (Button)hud.FindChild("ForecastDetailsButton", true, false);
+            GD.Print($"SYNTHETIC_STRUCTURE_FORECAST width={width}: effect lines={notice.GetVisibleLineCount()}, plate={plate.GetGlobalRect()}");
+            Require(notice.IsVisibleInTree() && notice.GetVisibleLineCount() == 1
+                && plate.GetGlobalRect().Encloses(notice.GetGlobalRect())
+                && plate.GlobalPosition.Y >= 320 && plate.GetGlobalRect().End.Y <= host.Size.Y
+                && cancel.IsVisibleInTree() && !cancel.Disabled && plate.GetGlobalRect().Encloses(cancel.GetGlobalRect())
+                && detail.IsVisibleInTree() && plate.GetGlobalRect().Encloses(detail.GetGlobalRect()),
+                "Synthetic long structure-effect summaries stay bounded, with current Cancel and details controls reachable at both widths.");
+            Require(notice.TooltipText == notices[1].Hint,
+                "A bounded structure effect summary retains its complete conditional tooltip.");
+            detail.EmitSignal(Button.SignalName.Pressed);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            var popup = (PopupPanel)hud.FindChild("UnitDossier", true, false);
+            var calculation = (VBoxContainer)hud.FindChild("forecast-details", true, false);
+            Require(popup.Visible && calculation.GetNode<VBoxContainer>("Content").Visible
+                && calculation.GetNode<VBoxContainer>("Content").GetChildCount() == effectDetails.Length
+                && calculation.Size.Y > popup.Size.Y,
+                "All structure collateral effect details remain available in the existing scrollable dossier.");
+            ((Button)hud.FindChild("DossierClose", true, false)).EmitSignal(Button.SignalName.Pressed);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Require(!popup.Visible && ReferenceEquals(GetViewport().GuiGetFocusOwner(), detail),
+                "Structure forecast details restore their current opener's keyboard focus.");
+            var canceled = 0;
+            void Cancel(TacticalHudIntent intent)
+            {
+                if (intent.Kind == TacticalHudIntentKind.Back && intent.Stamp == currentStamp)
+                    canceled++;
+            }
+            hud.IntentRequested += Cancel;
+            cancel.EmitSignal(Button.SignalName.Pressed);
+            hud.IntentRequested -= Cancel;
+            Require(canceled == 1, "The visible structure forecast Cancel control submits its current stamped intent once.");
+        }
         RemoveChild(host);
         host.Free();
     }
