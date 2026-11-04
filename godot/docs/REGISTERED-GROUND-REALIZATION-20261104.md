@@ -143,5 +143,33 @@ Each negative native process exited one; the positive process and mutation runne
 exited zero. Matching a successful negative-control log line was explicitly
 excluded. The production tree was never mutated, and copied source was restored.
 
-The complete aggregate is still pending at this document checkpoint. Do not treat
-the focused and mutation passes as a complete gate.
+## Complete gate scope, verified in recovered segments
+
+The supported command was started on
+`d56993f263a334c657e53a0aa110e76f26b3f6bc` at 23:14:27 UTC on 2026-11-04:
+`EMPIRE_CHECK_TIMEOUT_SECONDS=900 EMPIRE_REPLAY_TIMEOUT_SECONDS=1200 bash tools/godot/verify-native.sh`.
+An environment restart interrupted OathPadChecks. The original process was lost
+and has no final exit code; its incomplete log is retained. It is not recorded as
+a single uninterrupted successful aggregate.
+
+The original trace confirms successful completion of the source/process/format
+checks, four scene validators, two Debug builds, Core/replay suite, both boundary
+suites, strict editor import and NarrativeChecks. The remaining 29 native stages,
+starting with the unconfirmed OathPadChecks, ran with their original commands and
+fresh fixture data from 23:28:52 to 23:54:53 UTC. Every stage has a separately
+saved zero process-wrapper exit, raw log and start/end record. The resumed runner
+also exited zero. The original prefix and its interruption evidence were not
+replaced or rewritten.
+
+The combined original gate scope passed: 15 Core groups; all 16 formal levels and
+3,425 ordered action/event/receipt traces with exactly matching final state
+digests and save/replay round trips; both boundary suites; editor import; all 30
+native scenes. All 31 strict native logs are free of error, leak and abnormal-exit
+diagnostics. Their 40 warning headers exactly match the preceding complete gate.
+CampaignNavigationChecks completed 8,969 assertions with zero failed groups;
+its ending states are explicit UI fixtures, not carried-campaign victory proof.
+
+An ExportRelease configuration build then passed with zero warnings/errors.
+The verified Debug assembly hashes remained unchanged. This is a configuration
+build, not a packaged platform export or graphical acceptance. The final change
+after this verified source is documentation only.
