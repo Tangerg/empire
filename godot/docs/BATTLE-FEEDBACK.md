@@ -28,6 +28,30 @@ not a UI list of event names. Result projections show actual perspective survivo
 fallen identities, ordered signals and canonical outcome; presentation never decides
 victory or advances the campaign implicitly.
 
+## Scenario announcements
+
+Committed `scenarioSignal` events use the same event-description and playback path
+as other receipts. `BattleText.SignalName(state.levelId, event.signal)` alone owns
+their localized labels; presentation does not enumerate triggers, infer future
+warnings, or add mechanics. In White River, T4 announces pursuit reinforcements and
+T6 announces bridge damage. T6 remains a warning, not a bridge-collapse operation.
+
+All currently shipped campaign levels are fog-off, and their declared signals are
+public narrative discoveries, interactions or global notices. A signal has no actor,
+position or private audience payload. The presenter therefore displays only its
+committed authored label, without adding unit names or locations; actor-specific
+regeneration/status visibility policies remain unchanged. This is not a policy for
+future private signals: an extension needing private announcements must explicitly
+compose its presentation rather than infer a visibility rule from an identity string.
+
+A known `scenarioSignal` with missing or wrong-level metadata raises the existing
+localization error instead of leaking an ID or silently disappearing. Metadata
+composition validates every declared scenario-effect signal before play. An extension
+that emits undeclared signals directly can still fail during receipt formatting after
+the canonical action has committed; such a presentation failure does not roll back
+that action. Truly unknown event types remain silent. New binding or loading does not
+replay historical announcements; settled refreshes cannot publish them again.
+
 ## Attack preview ownership
 
 `TacticalSelectionController` owns an explicit `PreviewTarget` separately from its
@@ -76,7 +100,9 @@ blocked during an in-flight animation batch, like the source controller.
 ## Evidence and historical boundary
 
 Current acceptance is the native scene/selection contracts: `BattleScreenChecks`
-(receipt identities/order/lifetime), `CampaignUiFlowChecks` (long journal, keyboard,
+(receipt identities/order/lifetime), `ScenarioSignalFeedbackChecks` (real C06 native
+orders and AI, warning receipt/journal/load lifetime, declared-signal text boundaries),
+`CampaignUiFlowChecks` (long journal, keyboard,
 window bounds), `CameraIntegrationChecks` (actual viewport pointer transfer and stale
 boundaries), `TacticalHudChecks` (visible prediction facts and expanded details), and
 the pure `tactical-selection-checks` controller harness. See the UI checkpoint report
@@ -85,6 +111,6 @@ for executed results and GUI evidence; headless assertions are not visual accept
 The older `tools/godot/feedback-checks` source differential records the former
 TypeScript wording, payloads and identity fallback behavior. Its historical 1,320
 comparisons are provenance, not a current native PASS. Current localization and
-identity contracts intentionally diverge, including the newly explicit collision and
-forced-movement presenters. It is not part of `verify-native.sh`; do not weaken current
+identity contracts intentionally diverge, including explicit collision, forced-movement and
+scenario-signal presenters. It is not part of `verify-native.sh`; do not weaken current
 identity admission or remove native receipts merely to reproduce the old source text.

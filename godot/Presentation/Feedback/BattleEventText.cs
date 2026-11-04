@@ -122,6 +122,7 @@ public sealed class BattleEventText
             .Register("careerChanged", (context, value) => text.Format("battle.event.career", context.UnitName(Id(value, "unit")), context.CareerName(FeedbackJson.Text(value.GetProperty("to")))))
             .Register("facingChanged", (context, value) => text.Format("battle.event.facing", context.UnitName(Id(value, "unit"))))
             .Register("defeat", (context, value) => text.Format("battle.event.defeat", context.PlayerName(Id(value, "player"))))
+            .Register("scenarioSignal", (context, value) => battleText.SignalName(FeedbackJson.Text(context.State.GetProperty("levelId")), FeedbackJson.Text(value.GetProperty("signal"))))
             .Register("gameOver", (context, value) => battleText.DescribeConclusion(context.State, value.GetProperty("conclusion")))
             .Seal();
     }

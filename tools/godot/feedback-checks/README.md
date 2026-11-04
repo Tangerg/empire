@@ -4,7 +4,9 @@ This directory is retained as a forensic comparison with the original TypeScript
 feedback, **not current native acceptance**. The executable intentionally still
 compares literal source expectations and can report incompatibilities with current
 strict identities, localization and committed-event coverage. In particular, the
-native journal now names both participants and includes forced movement/collision.
+native journal now names both participants, includes forced movement/collision, and
+displays committed scenario announcements through their validated level-specific labels.
+The historical scenarioSignal silence described below no longer applies to native play.
 Do not interpret a historical count below as a newly executed PASS, or weaken the
 native contract to make this old oracle green. Current ownership and tests are in
 [`godot/docs/BATTLE-FEEDBACK.md`](../../../godot/docs/BATTLE-FEEDBACK.md).
