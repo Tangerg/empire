@@ -20,10 +20,11 @@ namespace Empire.Presentation;
 /// <summary>Native end-to-end UI binding checks using the real application session, never a demo session.</summary>
 public partial class BattleScreenChecks : Node
 {
-    public override void _Ready()
+    public override async void _Ready()
     {
         try
         {
+            await CheckCaptureProgressFeedback();
             CheckStructureCollateralDisclosure();
             CheckRecordedStatusFeedback();
             CheckStructureKeyboardTarget();

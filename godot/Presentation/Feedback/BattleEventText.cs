@@ -118,7 +118,7 @@ public sealed class BattleEventText
                 context.PlayerName(Id(value, "owner")), context.UnitName(Id(value, "unit"))))
             .Register("capture", (context, value) => value.GetProperty("captured").GetBoolean()
                 ? text.Format("battle.event.capture", context.PlayerName(Id(value, "player")), Number(value.GetProperty("at"), "x"), Number(value.GetProperty("at"), "y"))
-                : text.Format("battle.event.capture_progress"))
+                : text.Format("battle.event.capture_progress", Number(value.GetProperty("at"), "x"), Number(value.GetProperty("at"), "y"), Number(value, "progress")))
             .Register("turnStart", (context, value) => text.Format("battle.event.turn", Number(value, "turn"), context.PlayerName(Id(value, "player"))))
             .Register("resourceChanged", (context, value) => text.Format("battle.event.resource", context.HolderName(value.GetProperty("subject")),
                 context.ResourceName(FeedbackJson.Text(value.GetProperty("resource"))), Number(value, "amount") >= 0 ? "+" : "", Number(value, "amount"), Number(value, "current")))
