@@ -452,6 +452,14 @@ transaction commit/rollback; `UnitHealth` owns health invariants and
 uses explicitly composed `BattleStateRules` for initial and spawned unit admission.
 `CampaignRuntime` advances campaign state; application sessions own active-session
 revision and atomic view/save activation, not a second set of battle rules.
+`Validation.UnitContentValidation` owns unit-type and career content consistency;
+`BattleReferenceCheckRegistry.InUnit` supplies composed unit-seed rule references
+shared by level validation and `BattleEngine.UnitContentIssues`. The application
+`CampaignSaveAdmission` maps every persisted roster member to that unit contract,
+regardless of availability or current battle bindings, before manual or automatic
+resume. Generic `CampaignSave` remains the structural codec. Authored roster errors
+remain campaign invariants; only saved roster diagnostics become stored-document
+rejections. Neither admission path rewrites rejected progress.
 
 Presentation receives immutable/detached query projections. `ActionRefusal` carries
 semantic rejection facts; `ActionRefusalText` and injected `GameText` own wording.

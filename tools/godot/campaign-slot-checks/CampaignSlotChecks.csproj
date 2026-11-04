@@ -2,6 +2,7 @@
   <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><TreatWarningsAsErrors>true</TreatWarningsAsErrors></PropertyGroup>
   <ItemGroup><Compile Include="../../../godot/Localization/GameText.cs" Link="Localization/GameText.cs" />
     <ProjectReference Include="../../../godot/Empire.Core/Empire.Core.csproj" />
+    <Compile Include="../../../godot/Application/CampaignSaveAdmission.cs" Link="CampaignSaveAdmission.cs" />
     <Compile Include="../../../godot/Application/CampaignSlotStorage.cs" Link="CampaignSlotStorage.cs" />
     <Compile Include="../../../godot/Application/SaveFile.cs" Link="SaveFile.cs" />
     <Compile Include="../../../godot/Presentation/CampaignMenu.cs" Link="CampaignMenu.cs" />

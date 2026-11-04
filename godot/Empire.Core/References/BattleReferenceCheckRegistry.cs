@@ -17,6 +17,11 @@ public sealed record RuleReferenceCheck(string Id, string Subject,
     {
         get; init;
     }
+    /// <summary>References carried by a unit seed, also inspected when that seed appears in a level.</summary>
+    public Func<JsonObject, RuleReferenceRules, IEnumerable<RuleReference>>? InUnit
+    {
+        get; init;
+    }
     public Func<JsonObject, RuleReferenceRules, IEnumerable<RuleReference>>? InState
     {
         get; init;
@@ -30,8 +35,18 @@ public sealed class BattleReferenceCheckRegistry : KeyedRegistry<RuleReferenceCh
     protected override string KeyOf(RuleReferenceCheck entry) => entry.Id;
     public BattleReferenceCheckRegistry Clone() => CopyInto(new BattleReferenceCheckRegistry());
     public IReadOnlyList<string> ContentIssues(RuleReferenceRules rules) => Issues(rules, check => check.InContent?.Invoke(rules.Content));
-    public IReadOnlyList<string> LevelIssues(RuleReferenceRules rules, JsonObject level) => Issues(rules, check => check.InLevel?.Invoke(level, rules));
+    public IReadOnlyList<string> LevelIssues(RuleReferenceRules rules, JsonObject level) => Issues(rules, check => LevelReferences(check, rules, level));
+    public IReadOnlyList<string> UnitIssues(RuleReferenceRules rules, JsonObject unit) => Issues(rules, check => check.InUnit?.Invoke(unit, rules));
     public IReadOnlyList<string> StateIssues(RuleReferenceRules rules, JsonObject state) => Issues(rules, check => check.InState?.Invoke(state, rules));
+
+    private static IEnumerable<RuleReference>? LevelReferences(RuleReferenceCheck check, RuleReferenceRules rules, JsonObject level)
+    {
+        var references = check.InLevel?.Invoke(level, rules);
+        return check.InUnit is { } inUnit
+            ? (references ?? Enumerable.Empty<RuleReference>()).Concat(
+                StateJson.Objects(level["units"], "units").SelectMany(unit => inUnit(unit, rules)))
+            : references;
+    }
 
     private IReadOnlyList<string> Issues(RuleReferenceRules rules, Func<RuleReferenceCheck, IEnumerable<RuleReference>?> referencesOf)
     {

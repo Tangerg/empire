@@ -15,7 +15,7 @@ public static class CampaignSlotStorage
 {
     public const string PendingBattleRejection = "战役存档包含一场尚未接入恢复通道的进行中战斗";
 
-    public static LoadedCampaign Load(JsonObject definition, string path)
+    public static LoadedCampaign Load(Func<JsonObject, IReadOnlyList<string>> unitContentIssues, JsonObject definition, string path)
     {
         SaveFile.RequireAbsolutePath(path);
         string raw;
@@ -40,8 +40,7 @@ public static class CampaignSlotStorage
         catch (JsonException error) { return new(null, error.Message); }
         try
         {
-            var save = CampaignSave.Load(document, definition);
-            var state = save["state"]!.AsObject();
+            var state = CampaignSaveAdmission.Load(unitContentIssues, definition, document);
             return state["pendingBattle"] is not null
                 ? new(null, PendingBattleRejection)
                 : new((JsonObject)state.DeepClone(), null);

@@ -5,10 +5,11 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Application;
 using Empire.Core.Campaign;
+using Empire.Core.Engine;
 using Empire.Core.Determinism;
 using Empire.Presentation;
 
-if (args.Length != 3) throw new ArgumentException("Pass a frozen oracle, native presentation metadata and check-only catalog projection.");
+if (args.Length != 4) throw new ArgumentException("Pass a frozen oracle, native presentation metadata, check-only catalog projection and current content packs.");
 var oraclePath = Path.GetFullPath(args[0]);
 if (!oraclePath.StartsWith("/tmp/empire-campaign-slot.", StringComparison.Ordinal))
     throw new InvalidOperationException("Tests only run in a fresh /tmp/empire-campaign-slot.* directory.");
@@ -20,6 +21,7 @@ var metadata = oracle["metadata"]!.AsObject();
 var exported = EcmaJson.Parse(File.ReadAllText(args[1]))!.AsObject();
 var catalog = JsonSerializer.Deserialize<Dictionary<string, string>>(File.ReadAllText(args[2]))!;
 var messages = new GameText(key => catalog.GetValueOrDefault(key), CultureInfo.GetCultureInfo("zh-CN"));
+var engine = new BattleEngine(EcmaJson.Parse(File.ReadAllText(args[3]))!.AsArray());
 var definition = oracle["definition"]!.AsObject();
 var initial = oracle["initial"]!.AsObject();
 var pending = oracle["pending"]!.AsObject();
@@ -43,7 +45,7 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
     Exception? failure = null;
     try
     {
-        loaded = CampaignSlotStorage.Load(item["definition"]!.AsObject(), path);
+        loaded = CampaignSlotStorage.Load(engine.UnitContentIssues, item["definition"]!.AsObject(), path);
     }
     catch (Exception error) { failure = error; }
     if (expected["kind"]!.GetValue<string>() == "thrown")
@@ -89,7 +91,7 @@ foreach (var item in oracle["writeCases"]!.AsArray().OfType<JsonObject>())
         actual["savedAt"] = expected["save"]!["savedAt"]!.DeepClone();
         Same(actual, expected["save"], "Canonical saved envelope differs from executing original saveCampaignState");
         Check(!actual.ContainsKey("request") && !actual.ContainsKey("battle"), "Autosave must not be the full manual application document");
-        Same(CampaignSlotStorage.Load(definition, path).State, item["state"], "Fresh startup did not restore the clean campaign");
+        Same(CampaignSlotStorage.Load(engine.UnitContentIssues, definition, path).State, item["state"], "Fresh startup did not restore the clean campaign");
     }
     else if (blocked)
     {
@@ -105,7 +107,7 @@ foreach (var item in oracle["writeCases"]!.AsArray().OfType<JsonObject>())
 }
 var invalidEncodingPath = Slot("invalid-utf8.json");
 using (var encoded = new FileStream(invalidEncodingPath, FileMode.CreateNew)) encoded.Write(new byte[] { 0x7b, 0x22, 0xff, 0x22, 0x3a, 0x31, 0x7d });
-var invalidEncoding = CampaignSlotStorage.Load(definition, invalidEncodingPath);
+var invalidEncoding = CampaignSlotStorage.Load(engine.UnitContentIssues, definition, invalidEncodingPath);
 Check(invalidEncoding.State is null && invalidEncoding.Rejected is { Length: > 0 }, "Invalid native file encoding must be rejected, never silently repaired");
 Check(File.ReadAllBytes(invalidEncodingPath).Contains((byte)0xff), "Invalid encoding rejection changed stored bytes");
 var clean = CampaignSave.Create(definition, initial, "2026-10-20T00:00:00.000Z");
@@ -121,7 +123,7 @@ JsonObject Wrapper() => new()
 var legacyPath = Slot("checkpoint-e6-clean.json");
 NewFile(legacyPath, EcmaJson.Stringify(Wrapper()));
 var legacyRaw = File.ReadAllText(legacyPath);
-var legacy = CampaignSlotStorage.Load(definition, legacyPath);
+var legacy = CampaignSlotStorage.Load(engine.UnitContentIssues, definition, legacyPath);
 Check(legacy.State is null, "Obsolete application wrappers must not become campaign autosaves");
 Check(legacy.Rejected is { Length: > 0 }, "Obsolete application wrappers require an explicit rejection");
 Check(File.ReadAllText(legacyPath) == legacyRaw, "Legacy read must not migrate or rewrite user data");
@@ -131,7 +133,7 @@ var canonicalPath = Slot("canonical-definition-check.json");
 NewFile(canonicalPath, EcmaJson.Stringify(clean));
 try
 {
-    CampaignSlotStorage.Load(defectiveDefinition, canonicalPath);
+    CampaignSlotStorage.Load(engine.UnitContentIssues, defectiveDefinition, canonicalPath);
     throw new Exception("Canonical save masked a definition defect");
 }
 catch (CampaignInvariantException) { checks++; }
@@ -166,7 +168,7 @@ foreach (var mode in new[] { "request", "battle", "pending", "camp", "events", "
     var path = Slot($"legacy-{mode}.json");
     var text = EcmaJson.Stringify(document);
     NewFile(path, text);
-    var result = CampaignSlotStorage.Load(definition, path);
+    var result = CampaignSlotStorage.Load(engine.UnitContentIssues, definition, path);
     Check(result.State is null && result.Rejected is { Length: > 0 }, $"Legacy {mode} must not masquerade as campaign-only autosave");
     Check(File.ReadAllText(path) == text, "Rejected legacy/full manual save was changed");
 }
@@ -182,14 +184,14 @@ Check(File.ReadAllText(legacyPath) == legacyRaw, "Definition/state defect replac
 var manualPath = Slot("manual-application-save.json");
 NewFile(manualPath, "manual battle state must remain untouched");
 CampaignSlotStorage.Save(definition, initial, legacyPath);
-Same(CampaignSlotStorage.Load(definition, legacyPath).State, initial, "New writes must use the canonical campaign envelope");
+Same(CampaignSlotStorage.Load(engine.UnitContentIssues, definition, legacyPath).State, initial, "New writes must use the canonical campaign envelope");
 CampaignSlotStorage.ClearForNewCampaign(legacyPath);
 Check(!File.Exists(legacyPath), "Caller-confirmed New must clear only its explicit autosave slot");
 CampaignSlotStorage.ClearForNewCampaign(legacyPath);
 Check(File.ReadAllText(manualPath) == "manual battle state must remain untouched", "Autosave/New changed the manual slot");
 var invalidPath = Slot("unreadable-new-choice.json");
 NewFile(invalidPath, "not json");
-Check(CampaignSlotStorage.Load(definition, invalidPath).Rejected is not null && File.ReadAllText(invalidPath) == "not json", "Rejected load cannot clear the slot");
+Check(CampaignSlotStorage.Load(engine.UnitContentIssues, definition, invalidPath).Rejected is not null && File.ReadAllText(invalidPath) == "not json", "Rejected load cannot clear the slot");
 CampaignSlotStorage.ClearForNewCampaign(invalidPath);
 Check(!File.Exists(invalidPath), "Explicit new-campaign intent may clear an invalid slot");
 var undeletable = Slot("clear-failure");
@@ -206,12 +208,12 @@ Check(File.ReadAllText(Path.Combine(undeletable, "retained")) == "retained", "Fa
 var utf16 = (JsonObject)initial.DeepClone();
 utf16["variables"]!["boundary"] = "\ud800 saved \udfff";
 CampaignSlotStorage.Save(definition, utf16, legacyPath);
-Same(CampaignSlotStorage.Load(definition, legacyPath).State, utf16, "Storage bypassed the canonical UTF-16 boundary");
+Same(CampaignSlotStorage.Load(engine.UnitContentIssues, definition, legacyPath).State, utf16, "Storage bypassed the canonical UTF-16 boundary");
 foreach (var path in new[] { "relative.json", "user://autosave.json", "" })
 {
     try
     {
-        CampaignSlotStorage.Load(definition, path);
+        CampaignSlotStorage.Load(engine.UnitContentIssues, definition, path);
         throw new Exception("Relative/ambient path accepted");
     }
     catch (ArgumentException) { checks++; }
@@ -251,6 +253,70 @@ foreach (var item in oracle["menuCases"]!.AsArray().OfType<JsonObject>())
 var changedMetadata = (JsonObject)exported.DeepClone();
 changedMetadata["battleTotal"] = 27;
 Check(CampaignMenu.Create(messages, new(initial, null), EcmaJson.ToElement(changedMetadata)).Progress == "0/27", "Projection hardcodes the shipped battle count instead of metadata");
+var contentPath = Slot("content-admission.json");
+foreach (var field in new[] { "unitType", "career", "unlockedCareers", "learnedAbilities", "careerMastery", "careerMismatch", "negativeMastery" })
+{
+    var invalid = initial.DeepClone().AsObject();
+    var member = invalid["roster"]!["mirelle"]!.AsObject();
+    switch (field)
+    {
+        case "unitType":
+            member[field] = "unknown-content-unit";
+            break;
+        case "career":
+            member[field] = "unknown-content-career";
+            break;
+        case "unlockedCareers":
+            member[field] = new JsonArray("unknown-content-career");
+            break;
+        case "learnedAbilities":
+            member[field] = new JsonArray("unknown-content-ability");
+            break;
+        case "careerMastery":
+            member[field] = new JsonObject { ["unknown-content-career"] = 1 };
+            break;
+        case "careerMismatch":
+            member["career"] = "militia";
+            break;
+        case "negativeMastery":
+            member["careerMastery"] = new JsonObject { ["militia"] = -1 };
+            break;
+    }
+    SaveFile.WriteDocument(contentPath, CampaignSave.Create(definition, invalid));
+    var bytes = File.ReadAllBytes(contentPath);
+    var stamp = File.GetLastWriteTimeUtc(contentPath);
+    var rejected = CampaignSlotStorage.Load(engine.UnitContentIssues, definition, contentPath);
+    Check(rejected.State is null && rejected.Rejected is { Length: > 0 }, "Clean autosave admitted invalid roster " + field);
+    Check(File.ReadAllBytes(contentPath).SequenceEqual(bytes) && File.GetLastWriteTimeUtc(contentPath) == stamp,
+        "Content rejection rewrote the source slot: " + field);
+}
+var promoted = initial.DeepClone().AsObject();
+var promotedMember = promoted["roster"]!["laiya"]!.AsObject();
+promotedMember["unitType"] = "soldier";
+promotedMember["career"] = "militia";
+promotedMember["unlockedCareers"] = new JsonArray("ranger");
+promotedMember["careerMastery"] = new JsonObject { ["ranger"] = 2 };
+promotedMember["learnedAbilities"] = new JsonArray("wait");
+promotedMember["resources"] = new JsonObject { ["campaign-custom-account"] = new JsonObject { ["current"] = 2, ["capacity"] = 3 } };
+CampaignSlotStorage.Save(definition, promoted, contentPath);
+Same(CampaignSlotStorage.Load(engine.UnitContentIssues, definition, contentPath).State, promoted,
+    "Content admission rejected promoted units, other unlocked careers, or open resource accounts");
+var authoredContentDefect = definition.DeepClone().AsObject();
+authoredContentDefect["initial"]!["roster"]![0]!["unitType"] = "unknown-authored-unit";
+try
+{
+    CampaignSlotStorage.Load(engine.UnitContentIssues, authoredContentDefect, contentPath);
+    throw new Exception("Authored content defect became a successful load or stored-document rejection");
+}
+catch (CampaignInvariantException) { checks++; }
+var injectedDefect = new DomainInvariantException("unit content checker defect");
+try
+{
+    CampaignSlotStorage.Load(_ => throw injectedDefect, definition, contentPath);
+    throw new Exception("Unit content checker defect was swallowed");
+}
+catch (DomainInvariantException error) when (ReferenceEquals(error, injectedDefect)) { checks++; }
+
 var atomicPath = Slot("atomic-reader.json");
 CampaignSlotStorage.Save(definition, initial, atomicPath);
 var reading = true;
@@ -258,7 +324,7 @@ var reader = Task.Run(() =>
 {
     while (Volatile.Read(ref reading))
     {
-        var loaded = CampaignSlotStorage.Load(definition, atomicPath);
+        var loaded = CampaignSlotStorage.Load(engine.UnitContentIssues, definition, atomicPath);
         if (loaded.State is null || loaded.Rejected is not null)
             throw new Exception("Concurrent reader observed missing/partial autosave");
     }

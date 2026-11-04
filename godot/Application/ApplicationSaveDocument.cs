@@ -16,7 +16,7 @@ internal sealed record ApplicationSaveDocument(JsonObject CampaignState, Campaig
 {
     internal const int Schema = 4;
 
-    internal static ApplicationSaveDocument Read(JsonNode? input, JsonObject definition)
+    internal static ApplicationSaveDocument Read(Func<JsonObject, IReadOnlyList<string>> unitContentIssues, JsonObject definition, JsonNode? input)
     {
         if (input is not JsonObject document || document["schema"] is not JsonValue schema ||
             !schema.TryGetValue<int>(out var version) || version != Schema)
@@ -42,7 +42,7 @@ internal sealed record ApplicationSaveDocument(JsonObject CampaignState, Campaig
         else if (document["battleSourceSha256"] is not JsonValue source || !source.TryGetValue<string>(out sourceIdentity)
             || sourceIdentity.Length != 64 || sourceIdentity.Any(character => character is not (>= '0' and <= '9') and not (>= 'a' and <= 'f')))
             throw new StoredDocumentException("Saved battle initialization source identity is missing or invalid.");
-        var state = CampaignSave.Load(document["campaign"], definition)["state"]!.AsObject();
+        var state = CampaignSaveAdmission.Load(unitContentIssues, definition, document["campaign"]);
         var pending = state["pendingBattle"] is not null;
         if (pending != (location != CampaignLocation.Campaign) ||
             pending && state["status"]!.GetValue<string>() != "active")

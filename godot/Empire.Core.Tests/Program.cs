@@ -95,6 +95,7 @@ Check("detached committed state and events", () =>
     Equal("go", action["kind"]!.GetValue<string>());
 });
 Check("resource clamping and atomic costs", SupportChecks.Resources);
+Check("shared unit content admission", () => UnitContentChecks.Run(root));
 Check("live ownership admission and commander projection", () => ReplayChecks.OwnershipAdmission(root));
 Check("attack preview placement and committed outcomes", () => CombatPreviewChecks.Run(root));
 Check("counter effect ownership and collision disclosure", () => CounterEffectChecks.Run(root));

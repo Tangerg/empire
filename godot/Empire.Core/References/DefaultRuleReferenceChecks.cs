@@ -55,7 +55,7 @@ internal static class DefaultRuleReferenceChecks
         {
             InContent = content => content.Source.All("units").SelectMany(unit => Named(Values(unit["abilities"]), $"兵种 {Text(unit, "id")}"))
                 .Concat(content.Source.All("careers").SelectMany(career => Named(Values(career["masteryAbilities"]), $"职业 {Text(career, "id")}"))),
-            InLevel = (level, _) => LevelUnits(level).SelectMany(entry => Named(Values(entry.Unit["learnedAbilities"]), entry.By)),
+            InUnit = (unit, _) => Named(Values(unit["learnedAbilities"]), $"单位 {Text(unit["key"] ?? unit["unit"], "unit")}"),
             InState = (state, _) => StateUnits(state).SelectMany(entry => Named(Values(entry.Unit["learnedAbilities"]), entry.By)),
         })
         .Register(new("hitEffects", "命中效果", rules => rules.HitEffects.Keys())

@@ -253,7 +253,7 @@ public partial class GrayFlagGame : Node
         screen = null;
         session = null;
         resultOffered = false;
-        var loaded = CampaignSlotStorage.Load(definition, ProjectSettings.GlobalizePath(CampaignSavePath));
+        var loaded = CampaignSlotStorage.Load(engine.UnitContentIssues, definition, ProjectSettings.GlobalizePath(CampaignSavePath));
         if (loaded.Rejected is { } rejection)
             GD.PushWarning($"Campaign autosave rejected: {rejection}");
         var projection = CampaignMenu.Create(text, loaded, Empire.Core.Determinism.EcmaJson.ToElement(presentation));

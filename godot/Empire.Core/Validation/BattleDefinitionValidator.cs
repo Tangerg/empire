@@ -16,6 +16,7 @@ public sealed class BattleDefinitionValidator
         levels = rules.Levels;
     }
     public void ValidateContent() => content.Validate();
+    public IReadOnlyList<string> UnitContentIssues(JsonObject unit) => levels.UnitContentIssues(unit);
     public void ValidateLevel(JsonObject level)
     {
         var issues = levels.Issues(level);

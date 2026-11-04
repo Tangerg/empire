@@ -14,11 +14,11 @@ root, target = map(Path, sys.argv[1:])
 shutil.copytree(root / 'godot/Empire.Core', target / 'Core', ignore=shutil.ignore_patterns('bin', 'obj'))
 checks = target / 'checks'
 checks.mkdir()
-for source in ['godot/Application/CampaignSlotStorage.cs', 'godot/Application/SaveFile.cs', 'godot/Presentation/CampaignMenu.cs', 'godot/Localization/GameText.cs', 'tools/godot/campaign-slot-checks/Program.cs']:
+for source in ['godot/Application/CampaignSaveAdmission.cs', 'godot/Application/CampaignSlotStorage.cs', 'godot/Application/SaveFile.cs', 'godot/Presentation/CampaignMenu.cs', 'godot/Localization/GameText.cs', 'tools/godot/campaign-slot-checks/Program.cs']:
     shutil.copyfile(root / source, checks / Path(source).name)
 (checks / 'Checks.csproj').write_text('<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><TreatWarningsAsErrors>true</TreatWarningsAsErrors></PropertyGroup><ItemGroup><ProjectReference Include="../Core/Empire.Core.csproj" /></ItemGroup></Project>')
 PY
-timeout --signal=TERM --kill-after=15s "$timeout_seconds" dotnet run --project "$scratch/checks/Checks.csproj" -- "$scratch/oracle.json" "$PWD/godot/data/grayflag-staging.json" "$scratch/catalog.json"
+timeout --signal=TERM --kill-after=15s "$timeout_seconds" dotnet run --project "$scratch/checks/Checks.csproj" -- "$scratch/oracle.json" "$PWD/godot/data/grayflag-staging.json" "$scratch/catalog.json" "$PWD/godot/data/content-packs.json"
 if [[ " $* " == *" --verify-guard "* ]]; then
   cp -a "$scratch/checks" "$scratch/mutant"
   python3 - "$scratch/mutant/CampaignSlotStorage.cs" <<'PY'
@@ -33,7 +33,7 @@ PY
   # A new oracle pathname gives the mutant its own filesystem fixtures, never reuses previous files.
   mkdir "$scratch/mutant-input"
   cp "$scratch/oracle.json" "$scratch/mutant-input/oracle.json"
-  if timeout --signal=TERM --kill-after=15s "$timeout_seconds" dotnet run --project "$scratch/mutant/Checks.csproj" -- "$scratch/mutant-input/oracle.json" "$PWD/godot/data/grayflag-staging.json" "$scratch/catalog.json" >"$scratch/mutant.log" 2>&1; then
+  if timeout --signal=TERM --kill-after=15s "$timeout_seconds" dotnet run --project "$scratch/mutant/Checks.csproj" -- "$scratch/mutant-input/oracle.json" "$PWD/godot/data/grayflag-staging.json" "$scratch/catalog.json" "$PWD/godot/data/content-packs.json" >"$scratch/mutant.log" 2>&1; then
     echo 'ERROR: broad-catch mutant escaped detection.' >&2; exit 1
   fi
   grep -q 'definition defects must propagate' "$scratch/mutant.log"
@@ -58,6 +58,7 @@ for name in ['GameText.cs', 'GodotTextCatalog.cs', 'zh_CN.po']:
     shutil.copyfile(root / 'godot/Localization' / name, native / 'Localization' / name)
 for name in ['CampaignMenu.cs', 'CampaignMenuScreen.cs', 'CampaignMenuChecks.cs']:
     shutil.copyfile(root / 'godot/Presentation' / name, native / 'Presentation' / name)
+shutil.copyfile(root / 'godot/Application/CampaignSaveAdmission.cs', native / 'CampaignSaveAdmission.cs')
 shutil.copyfile(root / 'godot/Application/CampaignSlotStorage.cs', native / 'CampaignSlotStorage.cs')
 shutil.copyfile(root / 'godot/Application/SaveFile.cs', native / 'SaveFile.cs')
 shutil.copyfile(root / 'godot/Scenes/CampaignMenuChecks.tscn', native / 'Scenes/CampaignMenuChecks.tscn')

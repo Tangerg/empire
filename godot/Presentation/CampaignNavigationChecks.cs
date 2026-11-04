@@ -69,6 +69,7 @@ public partial class CampaignNavigationChecks : Node
                 ("played victory confirmation, playback and carried continuation", CheckPlayedVictoryConfirmation),
                 ("read/delete failure preserves menu", () => { CheckReadDeleteFailure(); return Task.CompletedTask; }),
                 ("manual load admission and view activation are atomic", () => { CheckManualLoadAdmission(); return Task.CompletedTask; }),
+                ("saved campaign content admission preserves live progress", CheckCampaignContentAdmission),
                 ("formal Redstone entry, carried-roster fixture, resume and settlement", CheckFormalRedstone),
             })
             {

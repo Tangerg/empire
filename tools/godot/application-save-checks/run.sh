@@ -15,7 +15,7 @@ import shutil, sys
 root, target = map(Path, sys.argv[1:])
 for directory in ['godot/Empire.Core', 'godot/Presentation/Feedback', 'tools/godot/application-save-checks']:
     shutil.copytree(root / directory, target / directory, ignore=shutil.ignore_patterns('bin', 'obj'))
-for source in ['godot/Application/GrayFlagCampaign.cs', 'godot/Application/ApplicationSaveDocument.cs',
+for source in ['godot/Application/CampaignSaveAdmission.cs', 'godot/Application/GrayFlagCampaign.cs', 'godot/Application/ApplicationSaveDocument.cs',
                'godot/Application/SaveFile.cs', 'godot/Application/CampaignSlotStorage.cs',
                'godot/Application/GrayFlagSession.cs', 'godot/Presentation/BattlePresentationModels.cs',
                'godot/Localization/GameText.cs', 'tools/godot/check-support/FixtureText.cs']:

@@ -48,6 +48,9 @@ public sealed partial class BattleEngine
         definitions.ValidateContent();
     }
 
+    /// <summary>Checks a unit seed's content references without placement, state creation, or lifecycle execution.</summary>
+    public IReadOnlyList<string> UnitContentIssues(JsonObject unit) => definitions.UnitContentIssues(unit);
+
     public JsonObject SaveBattle(JsonObject state, string? savedAt = null) => Persistence.Save(state, savedAt);
     public JsonObject LoadBattle(JsonNode? raw) => Persistence.Load(raw);
     public string SaveBattleJson(JsonObject state, string? savedAt = null) =>

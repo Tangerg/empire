@@ -45,7 +45,10 @@ public sealed class GrayFlagCampaign
             level => (JsonObject)level.DeepClone(), StringComparer.Ordinal);
         bridge = new CampaignBattleBridge(new CampaignBattleBridgeRules(id => this.levels.TryGetValue(id, out var level) ? (JsonObject)level.DeepClone()
             : throw new CampaignInvariantException($"Unknown campaign level {id}"), engine.Catalog, Empire.Core.Engine.LevelNormalizer.Normalize, GrayFlagCampaignPolicy.MarkerDispositions));
+        CampaignSaveAdmission.ValidateDefinition(engine.UnitContentIssues, this.definition);
         runtime = new CampaignRuntime(campaignRules, this.definition, initialState);
+        if (initialState is not null)
+            CampaignSaveAdmission.ValidateRuntimeState(engine.UnitContentIssues, runtime.Snapshot());
         if (runtime.Snapshot()["pendingBattle"] is not null)
             throw new CampaignActionException("A campaign-only resume cannot reconstruct a pending battle. Load the complete application save instead.");
     }
@@ -140,7 +143,7 @@ public sealed class GrayFlagCampaign
 
     public void Load(JsonNode? document)
     {
-        var saved = ApplicationSaveDocument.Read(document, definition);
+        var saved = ApplicationSaveDocument.Read(engine.UnitContentIssues, definition, document);
         var nextRuntime = new CampaignRuntime(campaignRules, definition, saved.CampaignState);
         PendingBattle? next = null;
         if (saved.Location != CampaignLocation.Campaign)
@@ -153,10 +156,6 @@ public sealed class GrayFlagCampaign
             catch (PendingBattleIdentityException error)
             {
                 throw new StoredDocumentException("Saved pending battle identity is invalid.", error);
-            }
-            catch (CampaignRosterContentException error)
-            {
-                throw new StoredDocumentException("Saved campaign roster references unknown content.", error);
             }
             request = GrayFlagCampaignPolicy.ApplyBattleContext(request, nextRuntime.Snapshot());
             var sourceIdentity = EcmaJson.Sha256(request["level"]);

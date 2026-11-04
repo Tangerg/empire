@@ -8,6 +8,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../../../godot/Empire.Core/Empire.Core.csproj" />
+    <Compile Include="../../../godot/Application/CampaignSaveAdmission.cs" Link="CampaignSaveAdmission.cs" />
     <Compile Include="../../../godot/Application/GrayFlagCampaign.cs" Link="GrayFlagCampaign.cs" />
     <Compile Include="../../../godot/Application/ApplicationSaveDocument.cs" Link="ApplicationSaveDocument.cs" />
     <Compile Include="../../../godot/Application/GrayFlagSession.cs" Link="GrayFlagSession.cs" />

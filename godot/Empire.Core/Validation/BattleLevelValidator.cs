@@ -22,6 +22,17 @@ public sealed class BattleLevelValidator
 
     public IReadOnlyList<string> Issues(JsonObject level) => new Inspection(rules, level).Run();
 
+    public IReadOnlyList<string> UnitContentIssues(JsonObject unit)
+    {
+        var type = StateJson.Text(unit["unit"], "level text");
+        var found = new List<string>();
+        if (UnitContentValidation.TypeIssue(rules.References.Content, type) is { } issue)
+            found.Add(issue);
+        found.AddRange(UnitContentValidation.CareerIssues(rules.References.Content, unit, type));
+        found.AddRange(rules.ReferenceChecks.UnitIssues(rules.References, unit));
+        return found.Distinct(StringComparer.Ordinal).ToArray();
+    }
+
     private sealed class Inspection
     {
         private readonly StateContent content;
@@ -239,8 +250,8 @@ public sealed class BattleLevelValidator
             {
                 var type = S(unit, "unit");
                 var owner = N(unit["owner"]);
-                if (!HasContent("units", type))
-                    Error($"未知兵种 \"{type}\"");
+                if (UnitContentValidation.TypeIssue(rules.Content, type) is { } typeIssue)
+                    Error(typeIssue);
                 if (!players.Contains(owner))
                     Error($"单位 {type}@{At(unit)} 的归属玩家 {F(owner)} 不存在");
                 if (unit.ContainsKey("rank") && RulePayloadReferences.Number(unit["rank"]) is not (0 or 1 or 2))
@@ -265,7 +276,8 @@ public sealed class BattleLevelValidator
                 foreach (var waypoint in Objects(unit["directive"]?["waypoints"]))
                     if (!InBounds(waypoint))
                         Error($"单位 {type} 的巡逻点越界：{At(waypoint)}");
-                CheckUnitCareer(unit, type);
+                foreach (var issue in UnitContentValidation.CareerIssues(rules.Content, unit, type))
+                    Error(issue);
                 if (map is null)
                     continue;
                 if (!InBounds(unit, false))
@@ -283,30 +295,6 @@ public sealed class BattleLevelValidator
                 var definition = content.TryGet("units", type);
                 if (definition is not null && terrain["cost"]?[S(definition, "movementClass")] is null)
                     Error($"Unit type \"{S(definition, "id")}\" cannot stand on terrain \"{S(terrain, "id")}\" at {At(unit)}.");
-            }
-        }
-
-        private void CheckUnitCareer(JsonObject unit, string type)
-        {
-            if (unit["career"] is { } careerNode)
-            {
-                var id = S(careerNode);
-                var career = content.TryGet("careers", id);
-                if (career is null)
-                    Error($"单位 {type} 使用未知职业 \"{id}\"");
-                else if (S(career, "unitType") != type)
-                    Error($"职业 {id} 与兵种 {type} 不匹配");
-            }
-            foreach (var career in Values(unit["unlockedCareers"]))
-                if (!HasContent("careers", S(career)))
-                    Error($"单位 {type} 解锁了未知职业 \"{S(career)}\"");
-            foreach (var pair in unit["careerMastery"] as JsonObject ?? new JsonObject())
-            {
-                if (!HasContent("careers", pair.Key))
-                    Error($"单位 {type} 记录了未知职业熟练度 \"{pair.Key}\"");
-                var mastery = RulePayloadReferences.Number(pair.Value);
-                if (!double.IsFinite(mastery) || mastery < 0)
-                    Error($"单位 {type} 的职业熟练度必须 >= 0");
             }
         }
 
