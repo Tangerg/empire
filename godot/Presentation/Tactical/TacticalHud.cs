@@ -70,10 +70,13 @@ public partial class TacticalHud : Control
             return;
         var oldActions = current?.Sections.FirstOrDefault(section => section.Key is "commands" or "deployment" or "recruit" or "tactics");
         var nextActions = projection.Sections.FirstOrDefault(section => section.Key is "commands" or "deployment" or "recruit" or "tactics");
+        var oldMainActions = current?.Sections.FirstOrDefault(section => section.Key is "commands" or "target" or "deployment" or "recruit" or "tactics");
+        var mainActions = projection.Sections.FirstOrDefault(section => section.Key is "commands" or "target" or "deployment" or "recruit" or "tactics");
+        var forecast = projection.Sections.FirstOrDefault(section => section.Key == "forecast");
         var preserveActions = current is not null && current.Stamp == projection.Stamp && current.Busy == projection.Busy
             && oldActions is not null && nextActions is not null && SameSection(oldActions, nextActions);
-        // Compound forecasts and bottom instructions depend on more than their own section.
-        // Keep those rebuilt; unchanged sections must not reshape all their text on every hover.
+        // Compound forecasts still rebuild; bottom instructions also require their layout composition to match.
+        // Unchanged sections must not reshape all their text on every hover.
         var retainedSections = current is not null && current.Stamp == projection.Stamp && current.Busy == projection.Busy
             ? projection.Sections.Where(section => section.Key is not ("forecast" or "target")
                 && (section.Key != "unit" || current.Portrait == projection.Portrait)
@@ -97,6 +100,18 @@ public partial class TacticalHud : Control
         if (hasDossier && current is not null && current.Stamp == projection.Stamp && current.Busy == projection.Busy
             && GetNodeOrNull<Button>("DossierButton") is { } dossierEntry)
             retained.Add(dossierEntry);
+        var mountedHint = GetNodeOrNull<Label>("SelectionHint");
+        var preserveInstruction = current is not null && current.Stamp == projection.Stamp && current.Busy == projection.Busy
+            && current.Hint == projection.Hint && forecast is null && current.Sections.All(section => section.Key != "forecast")
+            && mountedHint is not null && mountedHint.Visible == (ShowHint && projection.Hint.Length > 0)
+            && (oldMainActions is null && mainActions is null
+                || preserveActions && ReferenceEquals(oldMainActions, oldActions) && ReferenceEquals(mainActions, nextActions));
+        if (preserveInstruction)
+        {
+            retained.Add(mountedHint!);
+            if (mainActions is null && GetNodeOrNull<Control>("InstructionTray") is { } instructionBacking)
+                retained.Add(instructionBacking);
+        }
         var focused = detailPopup?.GuiGetFocusOwner() ?? GetViewport()?.GuiGetFocusOwner();
         var focusKey = focused?.GetMeta("hud_key", "").AsString();
         var scrollPosition = detailScroll?.ScrollVertical ?? 0;
@@ -194,8 +209,6 @@ public partial class TacticalHud : Control
                 }).CallDeferred();
             };
         }
-        var forecast = projection.Sections.FirstOrDefault(section => section.Key == "forecast");
-        var mainActions = projection.Sections.FirstOrDefault(section => section.Key is "commands" or "target" or "deployment" or "recruit" or "tactics");
         if (!retainedSections.Contains("unit") && projection.Sections.Any(section => section.Key == "unit"))
         {
             var portraitTray = TacticalHudStyle.CommandTray();
@@ -458,73 +471,84 @@ public partial class TacticalHud : Control
             MoveChild(dossier, -1);
             Place(dossier, 0, 1, 0, 1, 28, -34, projection.Portrait is null ? 148 : 264, -9);
         }
-        var hint = Label(projection.Hint, 13, TacticalHudStyle.Gold);
-        hint.Name = "SelectionHint";
-        hint.Visible = ShowHint && projection.Hint.Length > 0;
-        hint.TooltipText = projection.Hint;
-        hint.MouseFilter = MouseFilterEnum.Pass;
-        hint.MaxLinesVisible = forecast is null ? -1 : 2;
-        hint.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
-        hint.AddThemeColorOverride("font_shadow_color", new Color("#17120c"));
-        hint.AddThemeConstantOverride("shadow_outline_size", 2);
-        if (forecast is not null)
+        if (!preserveInstruction)
         {
-            var forecastGroup = (VBoxContainer)FindChild("forecast", true, false);
-            forecastGroup.AddChild(hint);
-        }
-        else
-        {
-            var hintSlots = mainActions is null ? maximumActionSlots : actionSlots;
-            if (mainActions is null && hint.Visible)
+            var hint = Label(projection.Hint, 13, TacticalHudStyle.Gold);
+            hint.Name = "SelectionHint";
+            hint.Visible = ShowHint && projection.Hint.Length > 0;
+            hint.TooltipText = projection.Hint;
+            hint.MouseFilter = MouseFilterEnum.Pass;
+            hint.MaxLinesVisible = forecast is null ? -1 : 2;
+            hint.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
+            hint.AddThemeColorOverride("font_shadow_color", new Color("#17120c"));
+            hint.AddThemeConstantOverride("shadow_outline_size", 2);
+            if (forecast is not null)
             {
-                var instructionTray = TacticalHudStyle.CommandTray();
-                instructionTray.Name = "InstructionTray";
-                AddChild(instructionTray);
-                Place(instructionTray, 0, 1, 0, 1, 278, -50, 278 + hintSlots * 106 + 28, -8);
+                var forecastGroup = (VBoxContainer)FindChild("forecast", true, false);
+                forecastGroup.AddChild(hint);
             }
-            AddChild(hint);
-            Place(hint, 0, 1, 0, 1, 292, -32, 292 + hintSlots * 106, -10);
-            // Native minimum sizes own wrapped text and multi-row order height.
-            // Grow the existing tray upward without shrinking command targets.
-            var mountedActions = mainActions is null ? null : FindChild(mainActions.Key, false, false) as Control;
-            void FitInstruction()
+            else
             {
-                if (generation != renderedGeneration || !hint.IsInsideTree()
-                    || FindChild(mainActions is null ? "InstructionTray" : "OrderTray", false, false) is not Control tray)
-                    return;
-                var actions = mainActions is null ? null : FindChild(mainActions.Key, false, false) as Control;
-                if (mainActions is not null && actions is null)
-                    return;
-                var lines = hint.GetLineCount();
-                var textHeight = Enumerable.Range(0, lines).Sum(hint.GetLineHeight)
-                    + Math.Max(0, lines - 1) * hint.GetThemeConstant("line_spacing");
-                var bottomInset = lines > 1 ? 6 : 0;
-                var extra = Math.Max(0, textHeight - 22) + bottomInset;
-                hint.OffsetBottom = -10 - bottomInset;
-                hint.OffsetTop = -32 - extra;
-                if (actions is null)
-                    tray.OffsetTop = hint.OffsetTop - 10;
-                else
+                var hintSlots = mainActions is null ? maximumActionSlots : actionSlots;
+                if (mainActions is null && hint.Visible)
                 {
-                    actions.OffsetBottom = -35 - extra;
-                    actions.OffsetTop = actions.OffsetBottom - Math.Max(78, actions.GetCombinedMinimumSize().Y);
-                    tray.OffsetTop = actions.OffsetTop - 13;
+                    var instructionTray = TacticalHudStyle.CommandTray();
+                    instructionTray.Name = "InstructionTray";
+                    AddChild(instructionTray);
+                    Place(instructionTray, 0, 1, 0, 1, 278, -50, 278 + hintSlots * 106 + 28, -8);
                 }
-            }
-            if (mountedActions is not null)
-            {
-                var fit = Callable.From(FitInstruction);
-                mountedActions.Connect(Control.SignalName.MinimumSizeChanged, fit);
-                hint.TreeExiting += () =>
+                AddChild(hint);
+                Place(hint, 0, 1, 0, 1, 292, -32, 292 + hintSlots * 106, -10);
+                // Native minimum sizes own wrapped text and multi-row order height.
+                // Grow the existing tray upward without shrinking command targets.
+                var mountedActions = mainActions is null ? null : GetNodeOrNull<Control>(mainActions.Key);
+                var trayKey = mainActions is null ? "InstructionTray" : "OrderTray";
+                var mountedTray = GetNodeOrNull<Control>(trayKey);
+                void FitInstruction()
                 {
-                    if (GodotObject.IsInstanceValid(mountedActions) && mountedActions.IsConnected(Control.SignalName.MinimumSizeChanged, fit))
-                        mountedActions.Disconnect(Control.SignalName.MinimumSizeChanged, fit);
-                };
+                    if (current is null || !IsInsideTree() || !GodotObject.IsInstanceValid(hint) || !hint.IsInsideTree()
+                        || !ReferenceEquals(GetNodeOrNull<Label>("SelectionHint"), hint)
+                        || !GodotObject.IsInstanceValid(mountedTray) || !mountedTray!.IsInsideTree()
+                        || !ReferenceEquals(GetNodeOrNull<Control>(trayKey), mountedTray)
+                        || mainActions is not null && (!GodotObject.IsInstanceValid(mountedActions) || !mountedActions!.IsInsideTree()
+                            || !ReferenceEquals(GetNodeOrNull<Control>(mainActions.Key), mountedActions)))
+                        return;
+                    var actions = mountedActions;
+                    var tray = mountedTray;
+                    var lines = hint.GetLineCount();
+                    var textHeight = Enumerable.Range(0, lines).Sum(hint.GetLineHeight)
+                        + Math.Max(0, lines - 1) * hint.GetThemeConstant("line_spacing");
+                    var bottomInset = lines > 1 ? 6 : 0;
+                    var extra = Math.Max(0, textHeight - 22) + bottomInset;
+                    hint.OffsetBottom = -10 - bottomInset;
+                    hint.OffsetTop = -32 - extra;
+                    if (actions is null)
+                        tray.OffsetTop = hint.OffsetTop - 10;
+                    else
+                    {
+                        actions.OffsetBottom = -35 - extra;
+                        actions.OffsetTop = actions.OffsetBottom - Math.Max(78, actions.GetCombinedMinimumSize().Y);
+                        tray.OffsetTop = actions.OffsetTop - 13;
+                    }
+                }
+                if (mountedActions is not null)
+                {
+                    var fit = Callable.From(FitInstruction);
+                    mountedActions.Connect(Control.SignalName.MinimumSizeChanged, fit);
+                    hint.TreeExiting += () =>
+                    {
+                        if (GodotObject.IsInstanceValid(mountedActions) && mountedActions.IsConnected(Control.SignalName.MinimumSizeChanged, fit))
+                            mountedActions.Disconnect(Control.SignalName.MinimumSizeChanged, fit);
+                    };
+                }
+                // Ellipsized labels can keep the same minimum size when font metrics change.
+                // Refit after the native theme cache has handled its notification.
+                hint.Connect(Control.SignalName.ThemeChanged, Callable.From(FitInstruction), (uint)ConnectFlags.Deferred);
+                hint.MinimumSizeChanged += FitInstruction;
+                hint.Resized += FitInstruction;
+                hint.Ready += FitInstruction;
+                FitInstruction();
             }
-            hint.MinimumSizeChanged += FitInstruction;
-            hint.Resized += FitInstruction;
-            hint.Ready += FitInstruction;
-            FitInstruction();
         }
         var mountedScroll = detailScroll;
         if (IsInsideTree())

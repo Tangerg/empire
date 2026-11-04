@@ -72,7 +72,8 @@ public partial class CampaignNavigationChecks
                 "The formal battle must offer distinct native-reachable ground cells while its actor stays selected.");
             await Layout();
             var before = Digest(session.Snapshot());
-            var names = new[] { "crownPlate", "objectivesPlate", "unit", "PortraitTray", "PortraitMedallion", "Details", "unit-details", "stances", "formations", "roster", "commands", "DossierButton" };
+            var names = new[] { "crownPlate", "objectivesPlate", "unit", "PortraitTray", "PortraitMedallion", "Details", "unit-details", "stances", "formations", "roster", "commands", "DossierButton", "SelectionHint" };
+            var selectedHint = hud.Projection!.Hint;
             var retained = names.Select(name => hud.FindChild(name, true, false)
                 ?? throw new InvalidOperationException("Missing formal HUD subtree: " + name)).ToArray();
             for (var sample = 0; sample < 3; sample++)
@@ -89,6 +90,7 @@ public partial class CampaignNavigationChecks
                     elapsed += timer.Elapsed.TotalMilliseconds;
                     Require(viewport.GuiGetHoveredControl() == map && screen.Selection?.UnitId == selected,
                         "Measured mouse motion must reach the actual map without losing the acting unit.");
+                    Require(hud.Projection!.Hint == selectedHint, "Measured terrain movement leaves the selected-unit instruction unchanged.");
                     Require(retained.All(node => GodotObject.IsInstanceValid(node) && node.IsInsideTree()
                         && ReferenceEquals(node, hud.FindChild(node.Name, true, false))),
                         "Pointer-only changes must retain unchanged native HUD sections, portraits and dossier controls instead of reshaping their text.");
@@ -167,6 +169,9 @@ public partial class CampaignNavigationChecks
             }
             Require(screen.Selection?.Kind == TacticalSelectionKind.Idle,
                 "Native Escape must return the selected actor to idle map inspection.");
+            var idleInstruction = hud.FindChild("SelectionHint", false, false);
+            var idleBacking = hud.FindChild("InstructionTray", false, false);
+            Require(idleInstruction is not null && idleBacking is not null, "Actual idle play mounts guidance with its own backing.");
             var recruitment = session.GetTacticalQueries(0);
             var canRecruit = recruitment.InteractiveCells.Any(recruitment.CanOpenRecruitment);
             var idleHint = GodotTextCatalog.LoadSimplifiedChinese().Format(canRecruit ? "ui.hud.selection.idle_recruit" : "ui.hud.selection.idle");
@@ -185,6 +190,9 @@ public partial class CampaignNavigationChecks
                     Require(viewport.GuiGetHoveredControl() == map && screen.Selection?.Kind == TacticalSelectionKind.Idle
                         && hud.Projection!.Hint == idleHint,
                         "Idle pointer motion must reach the real map and preserve the canonical recruitment guidance.");
+                    Require(ReferenceEquals(idleInstruction, hud.FindChild("SelectionHint", false, false))
+                        && ReferenceEquals(idleBacking, hud.FindChild("InstructionTray", false, false)),
+                        "Idle terrain motion must retain unchanged native instructions and their pointer backing.");
                     CheckTile(point.Cell, null);
                     await Layout();
                 }

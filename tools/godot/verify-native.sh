@@ -43,7 +43,7 @@ run_scene() {
   fi
 }
 export EMPIRE_NARRATIVE_EXPECTATIONS="$PWD/godot/tests/native/narrative.json"
-for scene in NarrativeChecks OathPadChecks DynamicStateChecks PaintedSurfaceChecks SceneSurfaceChecks AssembledGroundChecks PaintedSurfaceBroadPhaseChecks BlackFlagCampChecks ReedVillageChecks WhiteRiverChecks LuojiaChecks PresentationChecks AnimationChecks CameraChecks CameraIntegrationChecks TacticalHudChecks DossierFocusChecks BattleScreenChecks RegenerationFeedbackChecks BattleResultFlowChecks CampaignNavigationChecks CampaignUiFlowChecks LightingLifetimeChecks; do
+for scene in NarrativeChecks OathPadChecks DynamicStateChecks PaintedSurfaceChecks SceneSurfaceChecks AssembledGroundChecks PaintedSurfaceBroadPhaseChecks BlackFlagCampChecks ReedVillageChecks WhiteRiverChecks LuojiaChecks PresentationChecks AnimationChecks CameraChecks CameraIntegrationChecks TacticalHudChecks IdleGuidanceChecks DossierFocusChecks BattleScreenChecks RegenerationFeedbackChecks BattleResultFlowChecks CampaignNavigationChecks CampaignUiFlowChecks LightingLifetimeChecks; do
   run_scene "$scene"
 done
 run_scene LightingChecks -- "--lighting-oracle=$PWD/godot/tests/oracle/lighting.json"
