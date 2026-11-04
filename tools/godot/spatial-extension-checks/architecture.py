@@ -10,7 +10,7 @@ for folder in ['godot/Application', 'godot/Empire.Core/Ai', 'godot/Empire.Core/A
         if 'new BattleVision(' in text or '.Movement.' in text:
             failures.append(str(path.relative_to(root)) + ': bypasses composed space')
 text = (root / 'godot/Application/GrayFlagSession.Tactical.cs').read_text()
-if 'session.engine.Space.ThreatTiles(state, actor, session.engine.Space.ComputeMoveField(state, actor))' not in text:
+if 'session.engine.Space.ThreatTiles(state, actor, MovementField(unit))' not in text:
     failures.append('tactical threat query must forward the custom movement field, matching source GameSession.threatOf')
 session = (root / 'godot/Application/GrayFlagSession.cs').read_text()
 if 'engine.Space.IsUnitVisible(state, viewer, unit, seen)' not in session or 'VisibleUnitIds(state, viewer, seen)' not in session:

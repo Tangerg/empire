@@ -37,7 +37,7 @@ application = artifacts / 'application-bypass'
 shutil.copytree(root / 'godot/Application', application / 'godot/Application')
 shutil.copytree(root / 'godot/Empire.Core', application / 'godot/Empire.Core', ignore=shutil.ignore_patterns('bin', 'obj'))
 path = application / 'godot/Application/GrayFlagSession.Tactical.cs'
-text = path.read_text().replace('session.engine.Space.ThreatTiles(state, actor, session.engine.Space.ComputeMoveField(state, actor))', 'session.engine.Space.ThreatTiles(state, actor)')
+text = path.read_text().replace('session.engine.Space.ThreatTiles(state, actor, MovementField(unit))', 'session.engine.Space.ThreatTiles(state, actor)')
 path.write_text(text)
 run = subprocess.run([sys.executable, str(source / 'architecture.py'), str(application)], capture_output=True, text=True, timeout=300)
 if run.returncode == 0:

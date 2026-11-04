@@ -22,6 +22,8 @@ public sealed partial class GrayFlagSession
         private readonly IReadOnlySet<int> visible;
         private readonly bool canUndo;
         private readonly FrozenSet<BoardCell> interactiveCells;
+        // Fields belong to this detached revision, never to a later battle state.
+        private readonly Dictionary<int, MoveField> movementFields = new();
 
         public SelectionQueries(GrayFlagSession session, long binding)
         {
@@ -69,6 +71,16 @@ public sealed partial class GrayFlagSession
         private JsonObject RequireVisible(int id) => visible.Contains(id)
             ? TacticalQueries.RequireUnit(state, id)
             : throw new DomainInvariantException("Unit is not visible in this tactical snapshot.");
+        private MoveField MovementField(int unit)
+        {
+            var actor = RequireVisible(unit);
+            if (!movementFields.TryGetValue(unit, out var field))
+            {
+                field = session.engine.Space.ComputeMoveField(state, actor);
+                movementFields.Add(unit, field);
+            }
+            return field;
+        }
         private TacticalUnit? Project(JsonObject? unit) => unit is null || !visible.Contains(Integer(unit, "id"))
             ? null : new(Integer(unit, "id"), Cell(TacticalQueries.Position(unit)), session.engine.Turns.MayAct(state, unit), true);
         private bool IsHuman => Text(TacticalQueries.Player(state, Integer(state, "currentPlayer")), "controller") == "human";
@@ -94,16 +106,16 @@ public sealed partial class GrayFlagSession
             TacticalQueries.UnitAt(state, Coord(at)) is null && session.engine.Recruitment.Cards(state, Coord(at)).Count > 0);
         public IReadOnlyList<int> Actors() => Read(() => Freeze((Phase == "playing" ? session.engine.Turns.Actors(state) : [])
             .Where(unit => visible.Contains(Integer(unit, "id"))).Select(unit => Integer(unit, "id"))));
-        public IReadOnlyList<BoardCell> MoveStops(int unit) => Read(() => Indices(session.engine.Space.ComputeMoveField(state, RequireVisible(unit)).Stops));
+        public IReadOnlyList<BoardCell> MoveStops(int unit) => Read(() => Indices(MovementField(unit).Stops));
         public IReadOnlyList<BoardCell>? PathTo(int unit, BoardCell at) => Read(() =>
         {
-            var field = session.engine.Space.ComputeMoveField(state, RequireVisible(unit));
+            var field = MovementField(unit);
             return session.engine.Space.PathTo(field, state, Coord(at)) is { } path ? Cells(path) : null;
         });
         public IReadOnlyList<BoardCell> Threat(int unit) => Read(() =>
         {
             var actor = RequireVisible(unit);
-            return Indices(session.engine.Space.ThreatTiles(state, actor, session.engine.Space.ComputeMoveField(state, actor)));
+            return Indices(session.engine.Space.ThreatTiles(state, actor, MovementField(unit)));
         });
         public IReadOnlyList<BoardCell> ControlZone(int unit) => Read(() => Indices(session.engine.Space.HostileControlZone(state, RequireVisible(unit))));
         public IReadOnlyList<TacticalCommand> CommandsAt(int unit, BoardCell at) => Read(() => Freeze(

@@ -29,6 +29,7 @@ public partial class BattleScreenChecks : Node
             CheckFormationInspection();
             CheckCollisionAftermathDisclosure();
             HitEffectProjectionChecks.Check();
+            BattleScreenMovementQueryChecks.Check();
             CheckMovedAttackForecast();
             CheckContextualKeyRepeat();
             CheckUndoKeyRepeat();

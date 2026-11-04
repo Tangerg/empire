@@ -89,6 +89,8 @@ public partial class CampaignNavigationChecks
                     await Layout();
                 }
                 GD.Print($"POINTER_HUD sample={sample} cells={points.Count} allocated={allocated} ms={elapsed:F3}");
+                Require(allocated < points.Count * 2L * 1024 * 1024,
+                    "Repeated pointer previews must reuse the snapshot movement field instead of allocating a new traversal for every movement, path and threat query.");
             }
             var objectives = (VBoxContainer)hud.FindChild("objectives", true, false);
             var objectiveToggle = objectives.GetChildren().OfType<Button>().Single();
