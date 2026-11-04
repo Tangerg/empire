@@ -50,7 +50,20 @@ The existing engine-driven transient-creation contract also checks a real suppor
 
 ## Verification status
 
-Targeted and complete gate results are finalized after the implementation checkpoint. Headless native input, controls, resources and geometry are not rendered GUI, physical-device or exported-package acceptance. Existing authored `runtimeReady=false` diagnostics remain explicit.
+Code checkpoint: `1ac55217ef3ed5de42886cd6744db07147b3d9bb`.
+
+- Targeted arrival regression: **96 native assertions, exit 0**, repeated successfully in the full gate. The unchanged morale regression also passed **74 assertions**.
+- Three deliberately broken variants built successfully and were rejected at their intended guards: requiring both visibility boundaries for arrivals (exit 1); announcing hidden arrivals (exit 1); and using the wrong creation-time owner (contract exit 134). The negative runner matched all three expected failures. Original sources were restored before the full gate.
+- Objective/outcome contracts: **142 assertions, exit 0**, including the real transient creation/transfer/erasure case and the corrected semantic event-order guard. The earlier test-indexing failure remains recorded separately; it is not counted as a successful run.
+- The complete current native gate plus localization foundation and ExportRelease build passed **44 recorded stages**, including **29 project native scenes**. The uninterrupted driver ran **2026-11-04 12:14:37–12:55:47 UTC (41m10s)**; its final completion record was written at 12:55:48. Every stage retained its checkpoint, start and terminal exit 0. There were no interrupted stages.
+- Every project native scene and the editor import passed the error/leak/teardown scan. Unlike the preceding morale run, this import did not emit the intermittent editor-settings error. This verifies this run, not a repair to Godot. The supplemental driver checked import diagnostics explicitly; the repository import command itself was not changed.
+- Debug and ExportRelease built with zero warnings/errors. Formatting/source selection, **170 script UIDs**, all four authored-map validators and their negative controls passed. Existing authored `runtimeReady=false` diagnostics remain explicit. Warning messages and counts match the preceding gate after normalizing temporary data paths, including the deliberate malformed/unwritable-save diagnostics, missing-art diagnostic fixture, eight duplicate HUD mouse-enter notifications, one camera mouse-exit notification and ignored nested provenance project.
+- Core: **13 contracts**, all **16 independent formal levels** and **3,425 legal orders**, with exact strict save/replay round trips. Per-level action counts and state digests match the preceding baseline. These include losses and are not a carried-state campaign victory claim.
+- Localization: **46 source tests**, **18 formatter assertions**, **1,226** validated PO messages and exact native translation-resource equality.
+- Relevant integrations passed: animation 844; HUD 510; idle guidance 83; dossier focus 73; actual-session BattleScreen; regeneration; scenario announcements 337; morale 74; arrival 96; battle-result flow 371; campaign navigation **8,840 assertions, zero failed groups**; campaign UI 205; lighting lifetime 106; lighting 1,791; scenery 8,753.
+- The gate-script and Debug-binary SHA-256 checks matched at completion and during the final audit. The implementation checkpoint stayed clean throughout the aggregate. The subsequent commit only finalizes this verification report.
+
+Headless native input, controls, resources and geometry are **not rendered GUI, physical-device or exported-package acceptance**. No screenshot or visual acceptance claim is made.
 
 ```sh
 source tools/godot/env.sh
