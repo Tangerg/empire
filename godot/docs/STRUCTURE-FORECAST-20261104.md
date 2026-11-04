@@ -53,7 +53,7 @@ structure summaries now use the same one-line/ellipsis policy as unit summaries,
 with complete information kept in the existing scrollable details. No artwork,
 map, battle rule, save format or save meaning changes.
 
-## Verification checkpoint
+## Verification
 
 - Formal missing-collateral native RED: expected exit 1 at the disclosure check.
 - Full `BattleScreenChecks`: exit 0 after the projection change, including both
@@ -75,8 +75,27 @@ map, battle rule, save format or save meaning changes.
   structures even from unit cards. Their diagnostic names identify the fog and
   occupied-structure fixtures. The exact checked-in production source is restored
   after both tests; the Core tree is unchanged from the published baseline.
-- Canonical aggregate verification and final ExportRelease build remain pending
-  at this checkpoint.
+- The unmodified canonical `tools/godot/verify-native.sh` completed in one
+  uninterrupted run from 17:22:13 to 18:11:59 UTC (49m46s), exit 0, against source
+  checkpoint `e682f0c19deae8db923c4b298acf91020c54fb70`. All preparation checks,
+  both Debug builds, 14 Core groups, objective/catalog boundary checks, editor
+  import and all 30 native scenes passed. This includes the final combined
+  projection and layout changes, campaign/save failure paths and teardown checks.
+- All 16 shipped levels completed 3,425 legal commands. Their ordered
+  action/event/receipt SHA256 traces and final state digests exactly match the
+  previously published baseline. The original formal satchel receipt also passes
+  in the full native battle scene at both resolutions.
+- All 31 import/scene raw logs were retained and independently checked for native
+  errors, leaks, crashes and unhandled exceptions. The 30 warning headers match
+  the previous complete run after normalizing isolated save-directory names;
+  they are not new warnings introduced by this change. The gate and log audit do
+  not suppress diagnostics or accept a PASS line before process shutdown.
+- The final `ExportRelease` build exits 0 with zero warnings and errors. This is
+  a release configuration build, not an exported-package launch or GUI acceptance.
+
+Native control, geometry and resource checks above do not replace rendered
+visual review. No rendered GUI or packaged-export acceptance is claimed. The
+final documentation commit does not change the verified production/test source.
 
 The implementation follows [Godot scene organization](https://docs.godotengine.org/en/stable/tutorials/best_practices/scene_organization.html)
 by keeping domain facts in the injected session and native controls responsible
