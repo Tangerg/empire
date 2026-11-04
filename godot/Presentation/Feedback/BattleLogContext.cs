@@ -48,7 +48,8 @@ public sealed class BattleLogContext
     }
 
     public bool CanObserveUnit(int id) => BattleEventVisibility.UnitWasAndIsVisible(id, beforeVisible, afterVisible);
-    public bool CanObserveDeparture(int id) => BattleEventVisibility.UnitWasVisible(id, beforeVisible);
+    public bool CanObserveDeparture(int id) => BattleEventVisibility.IsVisible(id, beforeVisible);
+    public bool CanObserveArrival(int id) => BattleEventVisibility.IsVisible(id, afterVisible);
 
     internal void Observe(JsonElement value)
     {
@@ -106,13 +107,13 @@ public sealed class BattleLogContext
     }
 }
 
-/// <summary>Departures use prior visibility; continuing-unit effects require both boundaries. Null means unrestricted; empty means none.</summary>
+/// <summary>Departures use prior visibility, arrivals use final visibility, and continuing-unit effects require both. Null means unrestricted; empty means none.</summary>
 internal static class BattleEventVisibility
 {
-    internal static bool UnitWasVisible(int id, IReadOnlySet<int>? before) => before?.Contains(id) ?? true;
+    internal static bool IsVisible(int id, IReadOnlySet<int>? visible) => visible?.Contains(id) ?? true;
 
     internal static bool UnitWasAndIsVisible(int id, IReadOnlySet<int>? before, IReadOnlySet<int>? after) =>
-        UnitWasVisible(id, before) && UnitWasVisible(id, after);
+        IsVisible(id, before) && IsVisible(id, after);
 }
 
 internal static class FeedbackJson

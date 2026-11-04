@@ -74,7 +74,7 @@ public sealed class BattleEventText
             "battle.event.area", "battle.event.structure", "battle.event.area_structure", "battle.event.target_killed",
             "battle.event.ally_killed", "battle.event.structure_destroyed", "battle.event.structure_disabled", "battle.event.structure_enabled", "battle.event.heal", "battle.event.regen", "battle.event.status_applied", "battle.event.status_removed", "battle.event.recruit",
             "battle.event.forced_move", "battle.event.collision", "battle.event.capture", "battle.event.capture_progress", "battle.event.turn", "battle.event.resource",
-            "battle.event.rank", "battle.event.career", "battle.event.facing", "battle.event.defeat", "battle.event.unit_routed",
+            "battle.event.rank", "battle.event.career", "battle.event.facing", "battle.event.defeat", "battle.event.unit_routed", "battle.event.unit_spawned",
             "ui.rank.recruit", "ui.rank.veteran", "ui.rank.elite" });
         string Casualty(JsonElement value, string field = "killed", string key = "battle.event.target_killed") =>
             value.GetProperty(field).GetBoolean() ? text.Format(key) : "";
@@ -112,6 +112,8 @@ public sealed class BattleEventText
             .Register("statusRemoved", (context, value) => context.CanObserveUnit(value.GetProperty("unit").GetInt32())
                 ? text.Format("battle.event.status_removed", context.UnitName(Id(value, "unit")),
                     content.Name(ContentTextKind.Status, FeedbackJson.Text(value.GetProperty("status")))) : "")
+            .Register("unitSpawned", (context, value) => context.CanObserveArrival(value.GetProperty("unit").GetInt32())
+                ? text.Format("battle.event.unit_spawned", context.PlayerName(Id(value, "owner")), context.UnitName(Id(value, "unit"))) : "")
             .Register("recruit", (context, value) => text.Format("battle.event.recruit",
                 context.PlayerName(Id(value, "owner")), context.UnitName(Id(value, "unit"))))
             .Register("capture", (context, value) => value.GetProperty("captured").GetBoolean()

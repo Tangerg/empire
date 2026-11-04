@@ -136,6 +136,11 @@ injected through `CANDIDATE_01_HEAL_FX`, exported from the source presentation A
   structureDamaged/repaired/destroyed or arbitrary scenario signals. They settle
   without invented effects. A resolved cast's subsequent ordinary combat events
   already produce its real strike; animating castResolved again would duplicate it.
+- Text feedback is independent of those animation boundaries. Committed
+  `unitRouted` describes a before-visible departure; `unitSpawned` describes a
+  finally visible arrival using its event-time owner and creation identity. No
+  spawn coordinates are disclosed. The existing ordered journal and toast own
+  delivery and consecutive-message folding; neither event introduces new FX.
 - Before-visible unit IDs gate ghosts and unit impact locations. Post-action
   visibility is supplied by the application for the settled/spawned projection.
   The renderer never computes fog. Structure attacks by hidden attackers are not

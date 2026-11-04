@@ -594,6 +594,8 @@ var transientReceipt = transientBattle.Dispatch(new JsonObject { ["kind"] = "end
 var transientAfter = transientBattle.Snapshot();
 var creation = transientReceipt.Events.Single(value => value["type"]!.GetValue<string>() == "unitSpawned");
 var transientId = creation["unit"]!.GetValue<int>();
+var creationIndex = transientReceipt.Events.ToList().FindIndex(value => value["type"]!.GetValue<string>() == "unitSpawned"
+    && value["unit"]!.GetValue<int>() == transientId);
 Check(creation["unitType"]!.GetValue<string>() == "soldier" && creation["owner"]!.GetValue<int>() == 1
     && !transientBefore["units"]!.AsArray().OfType<JsonObject>().Any(unit => unit["id"]!.GetValue<int>() == transientId)
     && !transientAfter["units"]!.AsArray().OfType<JsonObject>().Any(unit => unit["id"]!.GetValue<int>() == transientId)
@@ -601,7 +603,7 @@ Check(creation["unitType"]!.GetValue<string>() == "soldier" && creation["owner"]
     "real creation event retains emission-time identity after same-action transfer, resource change and erasure");
 var resourceIndex = transientReceipt.Events.ToList().FindIndex(value => value["type"]!.GetValue<string>() == "resourceChanged"
     && value["subject"]?["id"]?.GetValue<int>() == transientId);
-Check(resourceIndex > transientReceipt.Events.ToList().IndexOf(creation), "creation precedes its transient actor-bearing resource event");
+Check(creationIndex >= 0 && resourceIndex > creationIndex, "creation precedes its transient actor-bearing resource event");
 var eventText = BattleEventText.CreateDefault(new(firstCatalog, firstText, firstContentText));
 var recoveringId = attacker["id"]!.GetValue<int>();
 var recovery = EcmaJson.ToElement(new JsonObject { ["type"] = "regen", ["unit"] = recoveringId, ["amount"] = 5 });
@@ -626,6 +628,9 @@ Check(eventText.Describe(frozenVisibility, recovery) == firstCatalog.Format("bat
 BattleLogContext TransientContext() => new(logNames, EcmaJson.ToElement(transientBefore), EcmaJson.ToElement(transientAfter));
 var eventValues = transientReceipt.Events.Select(EcmaJson.ToElement).ToArray();
 var eventLines = eventText.DescribeAll(TransientContext(), eventValues);
+Check(eventLines[creationIndex] == firstCatalog.Format("battle.event.unit_spawned",
+    firstText.PlayerName("test.objective-outcomes", 1), "Copper infantry"),
+    "arrival feedback retains its event-time owner and creation identity through same-action transfer and complete erasure");
 Check(eventLines[resourceIndex].Contains("Copper infantry", StringComparison.Ordinal)
     && eventLines[resourceIndex].Contains(firstContentText.ResourceName("momentum"), StringComparison.Ordinal),
     "ordered log projection names a valid transient actor from creation facts, not a guessed placeholder");
