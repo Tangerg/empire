@@ -299,6 +299,7 @@ public partial class DynamicStateChecks : Node
         ground.Render(projection, map["tiles"]!.AsArray().Select(tile => tile!.GetValue<string>()).ToArray(),
             map["elevation"]!.AsArray().Select(height => height!.GetValue<int>()).ToArray(),
             new Vector2I(width, map["height"]!.GetValue<int>()));
+        ground.ApplyDrawOrder();
         Require(ground.DepthEntries.Count == art.Occluders.Sum(item => item.Parts.Length), "Every painted foreground contour must share the standing depth pipeline.");
         foreach (var entry in ground.DepthEntries)
         {

@@ -178,19 +178,34 @@ public partial class PaintedSurfaceChecks : Node
         try
         {
             view.Render(projection, tiles, heights, new(width, height));
+            Require(!view.HasNode("RegisteredSurface"), "Painted floor must wait for final depth assignment.");
             projection.PrepareDepthPartitions(path.Select(cell => projection.Depth(projection.LogicalCellContact(cell))), []);
+            view.ApplyDrawOrder();
             var strips = view.GetNode<Node2D>("RegisteredSurface").GetChildren().OfType<Polygon2D>().ToArray();
             Require(strips.Length > 1, "Elevated pixels must participate in the shared depth partitions.");
             foreach (var strip in strips)
                 Require(strip.Polygon.Zip(strip.UV).All(pair => pair.First.IsEqualApprox(pair.Second * art.WorldScale)),
                     "Source pixels must stay at their registered screen coordinates without a second warp.");
+            view.ApplyDrawOrder();
+            Require(view.GetNode<Node2D>("RegisteredSurface").GetChildren().OfType<Polygon2D>().SequenceEqual(strips),
+                "Repeated painted draw completion must retain realized polygons.");
+            projection.PrepareDepthPartitions([15], []);
+            Require(strips.All(strip => !GodotObject.IsInstanceValid(strip)),
+                "Painted floor must still rebuild after a later depth change.");
+            var committedSurface = view.GetNode<Node2D>("RegisteredSurface");
             var changed = map.DeepClone().AsObject();
             changed["cliffs"] = new JsonArray();
             Reject(() => view.Render(new BoardProjection(new Square4Grid(), art.CreatePlane, changed, playable), tiles, heights, new(width, height)),
                 "Cliff registration drift must fail.");
+            view.ApplyDrawOrder();
+            Require(view.GetNode<Node2D>("RegisteredSurface") == committedSurface,
+                "Rejected cliff registration must not replace the prepared projection.");
             Reject(() => view.Render(new BoardProjection(new Square4Grid(), (size, min, max) =>
                 new BoardPlane(new(1, .05f), new(0, .75f), new(48, 64), new(320, 240)), map, playable), tiles, heights, new(width, height)),
                 "A different basis must not pass merely because origin and canvas match.");
+            view.ApplyDrawOrder();
+            Require(view.GetNode<Node2D>("RegisteredSurface") == committedSurface,
+                "Rejected plane registration must not replace the prepared projection.");
             GD.Print($"Registration guide: {guide}");
         }
         finally

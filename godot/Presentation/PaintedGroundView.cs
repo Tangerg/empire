@@ -17,7 +17,8 @@ public partial class PaintedGroundView : BoardGroundView
     private JsonObject _registeredMap = null!;
     private Texture2D _texture = null!;
     private PaintedSurface? _surface;
-    private BoardProjection? _projection;
+    private BoardProjection? _preparedProjection;
+    private BoardProjection? _surfaceProjection;
     public override IReadOnlyList<string> Diagnostics => Array.Empty<string>();
     private readonly List<(Polygon2D Node, Coord Cell, Vector2[] Pixels, Vector2 Front, Vector2[]? Pointer, Coord? Selection)> _standing = new();
     private readonly List<TerrainDepthEntry> _depthEntries = new();
@@ -171,6 +172,23 @@ public partial class PaintedGroundView : BoardGroundView
         return authored;
     }
 
+    public override void ApplyDrawOrder()
+    {
+        var projection = _preparedProjection
+            ?? throw new InvalidOperationException("Prepare painted ground before applying draw order.");
+        if (_surfaceProjection == projection)
+            return;
+        var surface = PaintedSurface.Create(projection, _texture, _document.WorldScale);
+        if (_surface is not null)
+        {
+            RemoveChild(_surface);
+            _surface.Free();
+        }
+        AddChild(surface);
+        _surface = surface;
+        _surfaceProjection = projection;
+    }
+
     public override void Render(BoardProjection projection, string[] tiles, int[] elevation, Vector2I size)
     {
         if (_registeredMap["width"]!.GetValue<int>() != size.X || _registeredMap["height"]!.GetValue<int>() != size.Y
@@ -181,18 +199,6 @@ public partial class PaintedGroundView : BoardGroundView
             elevation.Min(), elevation.Max());
         if (!projection.MatchesPlane(plane) || !projection.MatchesTerrainGeometry(_registeredMap))
             throw new InvalidOperationException("Painted surface and tactical projection use different registration.");
-        if (_projection != projection)
-        {
-            var surface = PaintedSurface.Create(projection, _texture, _document.WorldScale);
-            if (_surface is not null)
-            {
-                RemoveChild(_surface);
-                _surface.Free();
-            }
-            AddChild(surface);
-            _surface = surface;
-            _projection = projection;
-        }
         _depthEntries.Clear();
         foreach (var (node, cell, pixels, front, pointer, selection) in _standing)
         {
@@ -203,5 +209,6 @@ public partial class PaintedGroundView : BoardGroundView
             _depthEntries.Add(new(node, projection.LogicalCellContact(cell), 2,
                 new PolygonStandingVisual(node, front - anchor, pointer?.Select(point => point - anchor).ToArray()), selection));
         }
+        _preparedProjection = projection;
     }
 }

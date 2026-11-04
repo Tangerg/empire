@@ -52,6 +52,24 @@ Terrain heights, cliff edges and affine registration must match; changing them
 requires matching authored artwork. Playable-domain policy remains with the
 board's composed content and canonical projection.
 
+Registered ground preparation and drawing have separate completion points.
+`BoardGroundView.Render` validates the map and prepares `DepthEntries`; the board
+then computes final depth partitions and assigns standing depths before calling
+`ApplyDrawOrder`. `AssembledGroundView` and `PaintedGroundView` create their floor
+polygons only at that completion point, avoiding an initial mesh against incomplete
+depths. Direct ground callers must follow the same sequence, even when the final
+partition cuts are unchanged. `PaintedSurface.Create` itself remains eager for its
+standalone and dynamic-floor consumers, and later partition changes still update
+realized surfaces synchronously through the existing projection subscription.
+
+The prepared projection and the projection used by completed floors are distinct
+lifecycle facts. Repeating completion retains existing floors. Assembled replacement
+stages the entire base/contact set before changing committed floors, contact
+positions or sibling order; a failed factory frees all staged subscriptions and
+leaves the previous floors available for a later successful completion. Source
+textures keep their original cache/borrower ownership, and preparation without
+completion creates no additional floor subscriptions.
+
 An elevated painting must already depict the registered ramps, plateaus and cliff
 faces. This pipeline cannot recover hidden art from a flattened image, or turn
 arbitrarily painted stairs into walkable geometry. Existing flat painted scenes use

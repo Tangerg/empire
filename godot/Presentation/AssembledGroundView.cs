@@ -18,7 +18,8 @@ public partial class AssembledGroundView : BoardGroundView
     private Texture2D _ground = null!;
     private Node2D? _authored;
     private PaintedSurface? _surface;
-    private BoardProjection? _projection;
+    private BoardProjection? _preparedProjection;
+    private BoardProjection? _surfaceProjection;
     private readonly List<(Sprite2D Sprite, Vector2 Contact, bool Pointer, Coord? Selection, Vector2[]? PointerPolygon)> _objects = new();
     private readonly List<(Node2D Node, Vector2 Contact, StandingVisual Visual, Coord? Selection)> _surfaces = new();
     private readonly List<TerrainDepthEntry> _depthEntries = new();
@@ -226,6 +227,50 @@ public partial class AssembledGroundView : BoardGroundView
     }
     public override void ApplyDrawOrder()
     {
+        var projection = _preparedProjection
+            ?? throw new InvalidOperationException("Prepare assembled ground before applying draw order.");
+        if (_surfaceProjection != projection)
+        {
+            PaintedSurface? replacement = null;
+            var contacts = new List<(Node2D Node, PaintedSurface Floor, Vector2 Position)>();
+            try
+            {
+                replacement = PaintedSurface.Create(projection, _ground, _document.WorldScale);
+                replacement.TextureFilter = CanvasItem.TextureFilterEnum.Linear;
+                foreach (var (node, source, contact) in _contacts)
+                {
+                    var position = projection.Project(contact);
+                    contacts.Add((node, PaintedSurface.Create(projection, source, position), position));
+                }
+            }
+            catch
+            {
+                replacement?.Free();
+                foreach (var (_, floor, _) in contacts)
+                    floor.Free();
+                throw;
+            }
+            if (_surface is not null)
+            {
+                RemoveChild(_surface);
+                _surface.Free();
+            }
+            AddChild(replacement);
+            _surface = replacement;
+            foreach (var (node, floor, position) in contacts)
+            {
+                if (node.GetNodeOrNull<PaintedSurface>("RegisteredSurface") is { } old)
+                {
+                    node.RemoveChild(old);
+                    old.Free();
+                }
+                node.Position = position;
+                node.AddChild(floor);
+                // Equal surface depth must draw after the base floor, but before standing materials.
+                MoveChild(node, GetChildCount() - 1);
+            }
+            _surfaceProjection = projection;
+        }
         foreach (var instance in _surfaceInstances)
             instance.ApplyDrawOrder();
     }
@@ -239,35 +284,6 @@ public partial class AssembledGroundView : BoardGroundView
         var plane = _document.CreatePlane(new Vector2(size.X, size.Y) * BoardProjection.TileSize, elevation.Min(), elevation.Max());
         if (!projection.MatchesPlane(plane) || !projection.MatchesTerrainGeometry(_registeredMap))
             throw new InvalidOperationException("Assembled surface and tactical projection use different registration.");
-        if (_projection != projection)
-        {
-            var replacement = PaintedSurface.Create(projection, _ground, _document.WorldScale);
-            replacement.TextureFilter = CanvasItem.TextureFilterEnum.Linear;
-            if (_surface is not null)
-            {
-                RemoveChild(_surface);
-                _surface.Free();
-            }
-            AddChild(replacement);
-            _surface = replacement;
-            foreach (var (node, source, contact) in _contacts)
-            {
-                // Preserve source size/opacity and use the existing registered ground-top depth partitions.
-                // Rebuild only with a replacement projection; PaintedSurface observes partition changes itself.
-                var position = projection.Project(contact);
-                var floor = PaintedSurface.Create(projection, source, position);
-                if (node.GetNodeOrNull<PaintedSurface>("RegisteredSurface") is { } old)
-                {
-                    node.RemoveChild(old);
-                    old.Free();
-                }
-                node.Position = position;
-                node.AddChild(floor);
-                // Equal surface depth must draw after the base floor, but before standing materials.
-                MoveChild(node, GetChildCount() - 1);
-            }
-            _projection = projection;
-        }
         _depthEntries.Clear();
         foreach (var (node, contact, visual, selection) in _surfaces)
         {
@@ -279,5 +295,6 @@ public partial class AssembledGroundView : BoardGroundView
             sprite.Position = projection.Project(contact);
             _depthEntries.Add(new(sprite, contact, 2, new SpriteStandingVisual(sprite, pointer, pointerPolygon), selection));
         }
+        _preparedProjection = projection;
     }
 }

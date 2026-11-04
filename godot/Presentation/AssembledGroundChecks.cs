@@ -312,6 +312,23 @@ public partial class AssembledGroundChecks : Node
                 try
                 {
                     lifetime.Render(projection, tiles, heights, size);
+                    Require(!lifetime.HasNode("RegisteredSurface") && ProjectionSubscriptions(projection) == 0,
+                        "Prepared ground must not realize floor geometry before final depth assignment.");
+                    var invalidSource = lifetime.GetNode<Node2D>(lifecycleDocument.Objects[^1].Id + "__ground_contact")
+                        .GetNode<Sprite2D>("SourceStructureContact");
+                    invalidSource.RegionEnabled = true;
+                    try
+                    {
+                        RejectLifecycle(lifetime.ApplyDrawOrder,
+                            "Bounded surfaces require a complete, unflipped single-frame texture; sprite regions and cropped atlas frames are unsupported.");
+                        Require(!lifetime.HasNode("RegisteredSurface") && ProjectionSubscriptions(projection) == 0,
+                            "Failed first completion must release every staged floor and subscription.");
+                    }
+                    finally { invalidSource.RegionEnabled = false; }
+                    projection.PrepareDepthPartitions(cached ? new float[] { 23, 77, 145 } : Array.Empty<float>(), []);
+                    lifetime.ApplyDrawOrder();
+                    Require(lifetime.HasNode("RegisteredSurface") && ProjectionSubscriptions(projection) == lifecycleDocument.Objects.Length + 1,
+                        "Completed ground must realize exactly one base floor and one floor per contact.");
                     CheckFixtureContacts(lifetime, projection, lifecycleDocument);
                     var contacts = lifecycleDocument.Objects.Select(item => lifetime.GetNode<Node2D>(item.Id + "__ground_contact")).ToArray();
                     var sources = contacts.Select(node => node.GetNode<Sprite2D>("SourceStructureContact")).ToArray();
@@ -349,16 +366,50 @@ public partial class AssembledGroundChecks : Node
                     RejectLifecycle(Replaced, "Projection replacement must free old floors and unsubscribe the old projection.");
                     for (var repeat = 0; repeat < 3; repeat++)
                     {
+                        var polygons = floors.SelectMany(floor => floor.GetChildren().OfType<Polygon2D>()).ToArray();
                         lifetime.Render(projection, tiles, heights, size);
+                        lifetime.ApplyDrawOrder();
                         Retained(floors, projection);
+                        Require(floors.SelectMany(floor => floor.GetChildren().OfType<Polygon2D>()).SequenceEqual(polygons),
+                            "Repeated draw completion must retain already-realized floor polygons.");
                     }
                     Require(cached ? shadowTextures[0] == shadowTextures[1] : shadowTextures[0] != shadowTextures[1],
                         "Equal radii borrow one cached texture, while uncached sources own independent textures.");
+                    var oldPolygons = floors.SelectMany(floor => floor.GetChildren().OfType<Polygon2D>()).ToArray();
+                    projection.PrepareDepthPartitions([32, 100, 170], []);
+                    Require(oldPolygons.Length > 0 && oldPolygons.All(polygon => !IsInstanceValid(polygon)),
+                        "Realized floors must still rebuild synchronously when depth partitions change.");
+                    Retained(floors, projection);
                     lifetime.Render(replacement, tiles, heights, size);
+                    Require(ProjectionSubscriptions(replacement) == 0,
+                        "Preparing a replacement must not create premature floor subscriptions.");
+                    Retained(floors, projection);
+                    var committedBase = lifetime.GetNode<PaintedSurface>("RegisteredSurface");
+                    var committedOrder = lifetime.GetChildren().ToArray();
+                    var committedPositions = contacts.Select(node => node.Position).ToArray();
+                    // Reject the last contact after earlier replacement surfaces have been staged.
+                    sources[^1].RegionEnabled = true;
+                    try
+                    {
+                        RejectLifecycle(lifetime.ApplyDrawOrder,
+                            "Bounded surfaces require a complete, unflipped single-frame texture; sprite regions and cropped atlas frames are unsupported.");
+                        Require(ProjectionSubscriptions(replacement) == 0,
+                            "Failed floor completion must release every staged subscription.");
+                        Require(ProjectionSubscriptions(projection) == contacts.Length + 1,
+                            "Failed floor completion must retain every committed subscription.");
+                        Require(IsInstanceValid(committedBase) && lifetime.GetNode<PaintedSurface>("RegisteredSurface") == committedBase
+                            && lifetime.GetChildren().SequenceEqual(committedOrder) && contacts.Select(node => node.Position).SequenceEqual(committedPositions),
+                            "Failed floor completion must preserve the committed base, sibling order and contact positions.");
+                        Retained(floors, projection);
+                    }
+                    finally { sources[^1].RegionEnabled = false; }
+                    replacement.PrepareDepthPartitions([50, 130], []);
+                    lifetime.ApplyDrawOrder();
                     Replaced();
                     var replacementFloors = contacts.Select(node => node.GetNode<PaintedSurface>("RegisteredSurface")).ToArray();
                     Retained(replacementFloors, replacement);
                     lifetime.Render(replacement, tiles, heights, size);
+                    lifetime.ApplyDrawOrder();
                     Retained(replacementFloors, replacement);
                     Require(ProjectionSubscriptions(replacement) == contacts.Length + 1,
                         "Only the base floor and one floor per contact may subscribe to the projection.");
@@ -366,9 +417,15 @@ public partial class AssembledGroundChecks : Node
                         && replacementFloors.All(floor => !IsInstanceValid(floor)) && ProjectionSubscriptions(replacement) == 0,
                         "Unload must release contacts, sources, floors and all projection subscriptions.");
                     RejectLifecycle(Unloaded, "Unload must release contacts, sources, floors and all projection subscriptions.");
+                    var pending = new BoardProjection(engine.Grids.Get("square4"), lifecycleDocument.CreatePlane, map, playable);
+                    lifetime.Render(pending, tiles, heights, size);
+                    Require(ProjectionSubscriptions(pending) == 0,
+                        "An uncompleted replacement must not own floor subscriptions.");
                     RemoveChild(lifetime);
                     lifetime.Free();
                     Unloaded();
+                    Require(ProjectionSubscriptions(pending) == 0,
+                        "Unload before draw completion must not subscribe to the prepared projection.");
                     Require(shadowTextures.All(texture => IsInstanceValid(texture) == cached),
                         "Unload releases uncached source-owned textures but preserves cache-owned textures.");
                     cache.Dispose();

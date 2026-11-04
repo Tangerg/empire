@@ -56,6 +56,7 @@ public partial class PresentationChecks : Node
         var authored = new Node2D();
         view.ConfigureAuthoredGround(authored);
         view.Render(projection, tiles, new int[tiles.Length], new(16, 8));
+        view.ApplyDrawOrder();
         var sprite = view.GetNode<Sprite2D>("EnvironmentPainting");
         Require(sprite.Scale.X == sprite.Scale.Y && sprite.Texture.GetSize() == new Vector2(1672, 941),
             "The environment painting must retain its original aspect ratio, independently of grid registration.");
