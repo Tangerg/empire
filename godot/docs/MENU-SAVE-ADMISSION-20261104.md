@@ -49,16 +49,46 @@ The new campaign-navigation group includes:
 
 The targeted RED/GREEN runner temporarily selected the existing opening group
 and new admission group only. The committed runner retains every original group
-and adds this one; full validation results are recorded below once complete.
+and adds this one.
 
-## Validation status
+## Completed validation
 
-The original-code native RED failed only the new preservation group (exit 1).
-The targeted repair passed both selected groups, 91 assertions, exit 0. Review
-then strengthened the initial-story positive control to require creating an
-absent manual slot; the full current-native gates will also run that final version.
-No incomplete stage is counted as passed. This is native input/control/storage verification in
-headless Godot, not a physical keyboard, GPU visual or exported-binary acceptance.
+Code checkpoint: `7d852147e6d298b63ab7888642b68c3d9ea7109d`.
+
+- Original-code native RED: only the new preservation group failed, exit 1.
+- Targeted repair: both selected groups passed, 91 assertions, exit 0. Review
+  then strengthened the initial-story positive control to require creating an
+  absent manual slot; the complete navigation run below includes that final test.
+- All 39 stages completed with recorded exit 0, including the unchanged commands
+  from `tools/godot/verify-native.sh` and an additional ExportRelease build.
+- All 25 native scenes exited 0 with the existing strict error/leak/teardown scan
+  clean. Complete campaign navigation passed 7,987 assertions and every group,
+  including the new save admission, failed storage/admission, actual played first
+  victory, carried continuation, and formal Redstone resume flows.
+- Debug and ExportRelease builds: zero warnings/errors. Evaluated ExportRelease
+  compilation includes the application guard and excludes navigation-check files.
+- Thirteen core contracts passed, including all 16 independent formal levels:
+  3,425 legal native orders with exact save/replay round trips. These results
+  include losses and turn limits, not a claim of a carried-state campaign victory.
+- Objective/outcome: 141 assertions; catalog ownership: 76; camera integration:
+  313; HUD: 459; dossier focus: 73; battle-result flow: 371; campaign UI: 205;
+  lighting lifetime: 106; scenery/resource/lifecycle: 8,753.
+
+The full driver started at **2026-11-04 01:44:44 UTC** and completed at
+**02:22:41 UTC**, with final driver exit 0. The environment restarted afterward.
+Recovery verified all 39 terminal stage records, the final completion marker,
+exit code, unchanged script/binary digests, clean worktree and retained commit.
+No stage was interrupted or inferred to have passed; none needed repeating.
+
+An earlier preparatory editor import exited 0 but printed a Godot shutdown-time
+`EditorSettings` diagnostic for `export/android/android_sdk_path`. Its log was
+retained. The original import command ran again in the full driver and exited 0
+without that diagnostic. Existing authored `runtimeReady=false` diagnostics are
+also retained rather than waived or removed.
+
+This is native input/control/storage verification in headless Godot, not a
+physical keyboard/touchscreen, GPU visual or exported-executable acceptance.
+No artwork, save migration or rule change is part of this repair.
 
 ## Godot references
 
