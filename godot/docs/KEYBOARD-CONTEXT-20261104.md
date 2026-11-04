@@ -77,5 +77,31 @@ headlessly; this is not GPU visual acceptance or an exported-game run. Existing
 native pointer-notification warnings and source-authored readiness diagnostics
 remain.
 
-Full aggregate completion results will be recorded after normal stage exits
-have been verified.
+The original `tools/godot/verify-native.sh` commands were run as individually
+recorded stages against code commit
+`adc867a2705f24eb5cabe712585ffe9b9d02792b`, with an additional ExportRelease build.
+All **39 stages**, including **25 native scenes**, have confirmed exit 0 between
+**00:42:32 and 01:20:54 UTC on 2026-11-04**.
+
+The environment restarted during BattleScreenChecks. The 31 completed stage
+results and exact script/game/core binary hashes survived and were verified.
+The incomplete BattleScreen attempt was archived without a success result; its
+original command reran from the beginning, then the remaining stages completed.
+This is a verified segmented recovery, not an uninterrupted full-suite run. The
+resumed driver exited 0, final hashes matched, and every completed native stage
+passed the strict error/leak scan.
+
+- Source selection, formatting, resource metadata and all four map static
+  guards passed without weakening assertions or changing their commands.
+- Debug and ExportRelease builds passed with zero warnings/errors. The evaluated
+  ExportRelease list has 108 compilation items, including the selection
+  controller and excluding both affected HUD test partials.
+- All 13 core contracts passed. Sixteen independent formal levels completed
+  3,425 legal native actions with exact save/replay round trips. Loss and
+  turn-limit outcomes are included; this is not a carried-campaign victory claim.
+- Objective/outcome and external catalog ownership passed 141 and 76 assertions.
+- Full HUD (459), camera integration (313), animation timeline (844), battle,
+  campaign navigation, UI, lighting and scenery regression stages passed.
+
+No live GPU or exported-executable acceptance was performed. Existing native
+warnings and authored `runtimeReady=false` diagnostics remain visible.
