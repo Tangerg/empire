@@ -49,6 +49,7 @@ public partial class CampaignNavigationChecks : Node
             battleNodeState = runtime.Snapshot();
             foreach (var (name, test) in new (string, Func<Task>)[] {
                 ("fresh menu, local beats, choice and autosave", () => { CheckFreshStoryChoice(); return Task.CompletedTask; }),
+                ("menu cannot overwrite a played manual save", CheckMenuSaveAdmission),
                 ("battle window minimum follows committed view and lifecycle", CheckBattleWindowMinimum),
                 ("root notice leaves with its view", CheckNoticeViewTransition),
                 ("startup resume, battle restart, camp and Continue", CheckBattleCampMenu),

@@ -548,7 +548,8 @@ public partial class GrayFlagGame : Node
 
     private void Save()
     {
-        if (!IsInsideTree() || computerPacer.IsRunning || screen?.IsInputBlocked == true)
+        // The title projects saved progress; its hidden campaign is not an active game to save.
+        if (!IsInsideTree() || view is CampaignMenuScreen || computerPacer.IsRunning || screen?.IsInputBlocked == true)
             return;
         try
         {

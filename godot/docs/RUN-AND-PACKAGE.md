@@ -17,7 +17,9 @@ Continue when a valid campaign autosave exists. New requires confirmation before
 replacing an existing valid campaign. Ordinary final story beats, choices,
 prebattle entry, victory settlement and ending completion save the campaign-only
 slot automatically. F5/F9 (or battle Save/Load controls) use a separate full manual
-slot, including a pending battle. Exit to camp restarts that battle on reentry,
+slot, including a pending battle. F5 saves only after entering a campaign view;
+pressing it on the title menu leaves the manual slot unchanged. F9 remains available
+on the title menu to restore that slot. Exit to camp restarts that battle on reentry,
 while returning to the title and Continue uses the last clean autosave boundary.
 Invalid saves are reported and left intact; explicit New replaces only the
 autosave, never the manual slot. Preserve both files when migrating machines.
