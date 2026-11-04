@@ -48,7 +48,19 @@ A preliminary layout assertion expected the rule to wrap to two lines. Native me
 
 ## Verification status
 
-Targeted validation and the complete current native aggregate are recorded after the code checkpoint; completion requires real process exit codes and teardown checks. Headless native controls, translation resources and geometry are **not rendered GUI, device, or export-package visual acceptance**. No screenshot or visual acceptance claim is made.
+Code checkpoint: `9619f7cbe29af3ad3156ff64598b700a53c0b2bd`.
+
+- Targeted native morale regression: **74 assertions, exit 0**, including the actual journal/toast and both dossier sizes.
+- Three deliberately broken variants compiled successfully and exited 1 at the applicable guards: current morale replaced by the maximum; departure requiring after-visibility; and hidden departures always visible. The second runner originally expected the failure in native playback, but unchanged C06 has fog disabled and therefore unrestricted null visibility. Its later explicit visibility matrix correctly rejected the variant. The original runner mismatch/log was retained and classified, not represented as a successful runner invocation. No test or production guard was weakened; source was restored before the full gate.
+- Full current native gate plus localization foundation and ExportRelease build: **43 stage processes exited 0**, including **28 project native scenes**. The uninterrupted driver ran **2026-11-04 11:05:51–11:45:12 UTC (39m21s)**. Each stage retains its start, commit and terminal exit record. No interrupted stage was counted as successful.
+- All 28 project native scenes passed the error/leak/teardown scan. The aggregate's editor import exited 0 but printed `EditorSettings not instantiated yet when getting setting "export/android/android_sdk_path"` after editor initialization. This exact intermittent editor diagnostic predates this batch and is recorded in `MENU-SAVE-ADMISSION-20261104.md`. Its original log remains preserved. The **same import command** was run separately on the unchanged checkpoint at **11:46:43–11:46:50 UTC**, exited 0, and passed the error/leak scan. This is a clean supplementary import check, **not a claim that the original aggregate log was error-free or that Godot itself has been repaired**.
+- Debug and ExportRelease: zero build warnings/errors. Format/source-selection checks, 169 script UID companions, all four authored-map static validators and their negative cases passed. Existing authored `runtimeReady=false` diagnostics and eight pre-existing duplicate mouse-enter warnings in the HUD harness remain visible, unchanged from the previous gate.
+- Core: 13 contracts, all 16 formal independent levels and **3,425 legal orders**, with exact strict save/replay round trips. Level action counts and state digests match the previous baseline; the only core-log difference is elapsed time in a preview check. These are independent-level results, including losses, not a carried-state campaign victory claim.
+- Localization: **46 source tests**, 18 formatter assertions, **1,225** validated PO messages and exact native translation-resource equality.
+- Relevant integrations: animation 844; HUD 510; idle guidance 83; dossier focus 73; real-session BattleScreen; regeneration including hidden-boundary behavior; scenario announcements 337; battle-result flow 371; campaign navigation 8,977 with zero failed groups; campaign UI 205; lighting lifetime 106; lighting 1,791; scenery 8,753.
+- Gate scripts and Debug binary SHA-256 values matched at completion and after the supplementary import. The checkpoint's worktree remained clean throughout the aggregate and import recheck.
+
+Headless native controls, translation resources and geometry are **not rendered GUI, device, or export-package visual acceptance**. No screenshot or visual acceptance claim is made.
 
 Reproduction commands, using the existing authorized toolchain:
 
