@@ -52,8 +52,18 @@ The fixed implementation reaches all three native checkpoints with the expected
 42%, 84% and unchanged completion messages. An additional synthetic boundary
 uses a fractional event and identity resolvers that throw, proving that neither
 later map state nor a hidden participant's name supplies the partial message.
-The complete battle-scene process, deliberate negative controls, canonical full
-gate and release build remain pending at this implementation checkpoint.
+The complete `BattleScreenChecks` process exits 0, including every existing
+battle test and strict shutdown checks. Two deliberate production mutations
+compile successfully and exit 1 at their intended assertions: a fixed 42%
+percentage fails the real 84% checkpoint; resolving the capturing player
+identity fails the synthetic private-identity boundary. Both are restored to
+the exact committed production source before subsequent verification.
+
+An environment restart interrupted the first mutation build before any exit
+code was recorded. Its source and partial log were archived, production restored
+and verified against Git, and both original mutation commands rerun. That
+interrupted attempt is not counted as passing. The canonical full gate and
+release build remain pending at this verification checkpoint.
 
 ## Other measured work, unchanged
 
