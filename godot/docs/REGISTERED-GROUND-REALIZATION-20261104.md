@@ -135,5 +135,13 @@ PaintedSurfaceBroadPhaseChecks (8,129 exact reference comparisons),
 SceneSurfaceChecks (60), DynamicStateChecks (745) and PresentationChecks.
 Debug build and official whitespace formatting passed.
 
-Isolated mutation checks and the complete aggregate are still pending at this
-document checkpoint. Do not treat the focused passes as a complete gate.
+An isolated copy passed its positive control and detected all six independently
+built mutations at the exact terminating assertion: eager assembled or painted
+realization, leaking staged floors, discarding the old base before success,
+publishing completion before success, and rebuilding already completed floors.
+Each negative native process exited one; the positive process and mutation runner
+exited zero. Matching a successful negative-control log line was explicitly
+excluded. The production tree was never mutated, and copied source was restored.
+
+The complete aggregate is still pending at this document checkpoint. Do not treat
+the focused and mutation passes as a complete gate.
