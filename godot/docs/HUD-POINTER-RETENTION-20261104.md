@@ -97,8 +97,44 @@ for focus visibility after earlier content grows. The next-process-frame version
 passes its 73 assertions, including both window sizes, deliberate reading offsets,
 real-session adjustments, closure and unloading.
 
-Full gate results are recorded below after verification completes. No incomplete
-or interrupted process is counted as passing.
+Removing only the current-projection disclosure guard from the fixed implementation
+also fails, specifically at the remount-without-Apply assertion (native exit 1).
+The mutation was restored from the committed checkpoint before the full gate.
+
+## Completed verification
+
+Code checkpoint: `d3a8a5d27fca7b232d78cbe141d15debbfd62f7f`.
+
+All 39 stages completed in one uninterrupted run from 04:14:56 through 04:51:20
+UTC on 2026-11-04. Every stage recorded exit 0. The cohort includes all commands
+in `tools/godot/verify-native.sh` plus ExportRelease compilation. The documented
+process budgets were 900 seconds per native stage and 1,200 seconds for the
+sixteen-level replay suite. No checks, assertions or teardown scans were skipped.
+
+- Source selection negative controls, active-source whitespace, metadata and the
+  four authored-map static contracts passed. Metadata: 165 unique script UIDs;
+  4,190 intentionally unimported historical audit files remain outside delivery.
+- Debug and ExportRelease builds passed with zero warnings and zero errors.
+- All 13 core contracts passed, including 16 independent shipped levels with
+  3,425 legal native actions and exact save/replay round trips. This is not a
+  claim that one carried-state campaign was won from start to finish.
+- All 25 native scene processes exited 0, with no ERROR, leak, segmentation-fault
+  or unhandled-exception diagnostic in their logs.
+- Full campaign navigation passed 8,783 assertions with zero failed groups;
+  HUD 469, dossier focus 73, animation 844, result flow 371, campaign UI 205,
+  lifecycle 106, lighting contracts 1,791 and scenery/resource contracts 8,753
+  also passed. Existing native camera and battle integrations passed.
+- The final full-run pointer samples were 1,767.145, 1,779.571 and 1,724.366 ms
+  per 16 native changed-cell events. All measured sweeps retained the unchanged
+  controls and updated the changed terrain text.
+- The preceding idle-polling guard still measured exactly 153,600 managed bytes
+  per 600 callbacks in all twelve opening/played/undo/load samples.
+- Gate-script and compiled-binary checksums matched at completion, and the worktree
+  was clean at the tested code checkpoint. The verification update is docs-only.
+
+The original fonts, artwork, map, gameplay rules and save format are unchanged.
+GPU rendering, manual visual acceptance and a packaged desktop acceptance run
+remain separate from these headless checks.
 
 ## Godot references
 
