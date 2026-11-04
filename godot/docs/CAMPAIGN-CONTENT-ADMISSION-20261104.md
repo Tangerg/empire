@@ -50,10 +50,39 @@ and linked check projects; there is no old overload that can bypass admission.
 
 ## Verification
 
-Implementation and focused regressions are in progress. Final process exits,
-negative controls, full deterministic replay/save gate and export-build results
-will be recorded here before publication. No interrupted or incomplete run counts
-as passing.
+Verified implementation checkpoint: `6594cadeeb6eef7e4b83545a593641a4de6914f8`.
+The following publication commit changes only this report.
+
+- Debug build: exit 0, zero warnings/errors. Source metadata: 175 unique UIDs.
+- Shared unit-content core check: exit 0. Its first new fixture omitted the required
+  player color; that fixture was corrected, and the failed run is retained rather
+  than counted as passing. No production rule was changed to accommodate it.
+- Isolated autosave/menu boundary: 245 assertions, exit 0, including invalid content,
+  promotion/open-account positives and explicit authored/checker invariant cases.
+  The existing broad-catch mutation was correctly detected.
+- Complete native campaign navigation: 9020 assertions, zero failed groups, exit 0.
+- Separate copied-project native control: 167 assertions, exit 0. Bypassing stored
+  content admission failed at the real prologue F9 preservation assertion. Skipping
+  unavailable members failed at the fallen Torren admission assertion. Both mutants
+  exited 1 for their intended assertion, not a timeout or failed build. Production
+  sources and assemblies were never replaced with mutant implementations.
+- Complete canonical gate: one uninterrupted run from **2026-11-04 20:24:51 UTC** to
+  **21:09:15 UTC**, **44m24s**, exit **0**. This includes eight preparation checks,
+  both Debug builds, 15 core groups, two boundary suites, editor import and all
+  30 native scenes. All 31 import/native logs pass the strict error/leak/crash/
+  unhandled-exception boundary.
+- All 16 formal AI levels preserve the exact **3425** ordered action/event/receipt
+  traces and final state digests, including exact save/replay round trips. These
+  are independent levels, not a claim of completing the carried-state campaign.
+- Forty warning headers equal the previous gate's 30 plus exactly ten deliberate
+  malformed-roster refusals from the new regression. No baseline warning is removed
+  or hidden, and no additional unexplained warning is accepted.
+- ExportRelease build: exit 0, zero warnings/errors. The verified Debug assemblies
+  remain byte-identical after that separate configuration build.
+
+No GUI visual acceptance or packaged export was performed: this environment has
+no graphical display or installed export templates. The tests establish native
+input, state, file and scene/resource contracts, not rendered visual quality.
 
 The native regression covers real New → story → choice → battle → legal move,
 F9 refusals for all four application locations, exact live-owner/file preservation,
