@@ -48,6 +48,7 @@ public sealed class BattleLogContext
     }
 
     public bool CanObserveUnit(int id) => BattleEventVisibility.UnitWasAndIsVisible(id, beforeVisible, afterVisible);
+    public bool CanObserveDeparture(int id) => BattleEventVisibility.UnitWasVisible(id, beforeVisible);
 
     internal void Observe(JsonElement value)
     {
@@ -105,11 +106,13 @@ public sealed class BattleLogContext
     }
 }
 
-/// <summary>Snapshot-bound feedback cannot reveal a unit hidden at either boundary. Null means unrestricted; empty means none.</summary>
+/// <summary>Departures use prior visibility; continuing-unit effects require both boundaries. Null means unrestricted; empty means none.</summary>
 internal static class BattleEventVisibility
 {
+    internal static bool UnitWasVisible(int id, IReadOnlySet<int>? before) => before?.Contains(id) ?? true;
+
     internal static bool UnitWasAndIsVisible(int id, IReadOnlySet<int>? before, IReadOnlySet<int>? after) =>
-        (before?.Contains(id) ?? true) && (after?.Contains(id) ?? true);
+        UnitWasVisible(id, before) && UnitWasVisible(id, after);
 }
 
 internal static class FeedbackJson

@@ -335,6 +335,16 @@ public sealed partial class GrayFlagSession
                 new("armor",text.Format("ui.hud.armor", contentText.Name(ContentTextKind.ArmorClass,S(definition,"armorClass")))),
                 new("movement-type",text.Format("ui.hud.movement_type", contentText.Name(ContentTextKind.MovementProfile,S(definition,"movementClass")))),
                 new("value",text.Format("ui.hud.value", D(definition,"value"))) };
+            if (B(state["rules"]!.AsObject(), "moraleEnabled"))
+            {
+                var morale = inspect["morale"]!.AsObject();
+                rows.InsertRange(2, new[]
+                {
+                    new TacticalHudRow("morale", text.Format("ui.hud.morale", D(morale, "current"), D(morale, "maximum")),
+                        Gauge: new(D(morale, "current"), D(morale, "maximum"))),
+                    new("morale-rule", text.Format("ui.hud.morale_rule", Pct(D(morale, "resilience"))))
+                });
+            }
             if (!weapons.Any(value => B(value, "moveAndAttack")))
                 rows.Add(new("stationary", text.Format("ui.hud.stationary_attack")));
             rows.Add(new("capture",

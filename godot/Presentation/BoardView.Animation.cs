@@ -473,7 +473,7 @@ public partial class BoardView
     private RuntimeAsset UnitAsset(Node2D actor) => _assets!.ResolveUnit(actor.GetMeta("unit_type").AsString(),
         actor.HasMeta("actor_key") ? actor.GetMeta("actor_key").AsString() : null);
     private Node2D? DrawnUnit(int id) => _projection?.GetNodeOrNull<Node2D>($"Unit_{id}");
-    private static bool WasVisible(Playback playback, int id) => playback.Transition.BeforeVisibleUnitIds?.Contains(id) ?? true;
+    private static bool WasVisible(Playback playback, int id) => BattleEventVisibility.UnitWasVisible(id, playback.Transition.BeforeVisibleUnitIds);
     private static JsonObject? FindUnit(JsonObject state, int id) => Objects(state, "units").FirstOrDefault(unit => Integer(unit, "id") == id);
     private static IEnumerable<JsonObject> Objects(JsonObject state, string key) => ((JsonArray)state[key]!).OfType<JsonObject>();
     private static JsonObject ReadState(JsonElement value) => Empire.Core.Determinism.EcmaJson.Parse(value.GetRawText()) as JsonObject

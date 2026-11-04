@@ -74,7 +74,7 @@ public sealed class BattleEventText
             "battle.event.area", "battle.event.structure", "battle.event.area_structure", "battle.event.target_killed",
             "battle.event.ally_killed", "battle.event.structure_destroyed", "battle.event.structure_disabled", "battle.event.structure_enabled", "battle.event.heal", "battle.event.regen", "battle.event.status_applied", "battle.event.status_removed", "battle.event.recruit",
             "battle.event.forced_move", "battle.event.collision", "battle.event.capture", "battle.event.capture_progress", "battle.event.turn", "battle.event.resource",
-            "battle.event.rank", "battle.event.career", "battle.event.facing", "battle.event.defeat",
+            "battle.event.rank", "battle.event.career", "battle.event.facing", "battle.event.defeat", "battle.event.unit_routed",
             "ui.rank.recruit", "ui.rank.veteran", "ui.rank.elite" });
         string Casualty(JsonElement value, string field = "killed", string key = "battle.event.target_killed") =>
             value.GetProperty(field).GetBoolean() ? text.Format(key) : "";
@@ -101,6 +101,8 @@ public sealed class BattleEventText
             .Register("collisionDamage", (context, value) => text.Format("battle.event.collision", context.UnitName(Id(value, "unit")),
                 Number(value, "amount"), Number(value, "hpAfter"), Casualty(value)))
             .Register("death", (_, _) => "")
+            .Register("unitRouted", (context, value) => context.CanObserveDeparture(value.GetProperty("unit").GetInt32())
+                ? text.Format("battle.event.unit_routed", context.UnitName(Id(value, "unit"))) : "")
             .Register("heal", (context, value) => text.Format("battle.event.heal", context.UnitName(Id(value, "source")), context.UnitName(Id(value, "target")), Number(value, "amount")))
             .Register("regen", (context, value) => context.CanObserveUnit(value.GetProperty("unit").GetInt32())
                 ? text.Format("battle.event.regen", context.UnitName(Id(value, "unit")), Number(value, "amount")) : "")
