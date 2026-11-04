@@ -99,15 +99,36 @@ FPS, input-to-pixel latency, first-use loading or graphical acceptance.
   Cold initialization is printed separately and excluded from the warm claim.
 - The initial whitespace check failed on formatting in the new test file. The
   official formatter corrected only that file. The failure is retained, not
-  presented as a pass; final aggregate formatting verification remains required.
+  presented as a pass. The final aggregate formatting check passed.
 - An isolated copied project passes the green lifetime/allocation control, then
   detects all six independently built negative controls: clone each hover, ignore
   revision, retain a failed warm read, omit the final revision check, omit the
   stale-entry check, and publish a cold cache before successful projection. Each
   negative builds successfully and exits 1 at its intended assertion. Production
   files are never mutated; the copied source is restored afterward.
-- The complete aggregate, native campaign-pointer regression and ExportRelease
-  build are pending at this checkpoint.
+- The complete `tools/godot/verify-native.sh` aggregate passed continuously on
+  source checkpoint `2010d27bdd6c87dea87c74923b057ad760b5e9a3`, from
+  2026-11-04 21:49:26 to 22:35:52 UTC (46m26s), exit 0. All 15 Core groups,
+  all 16 formal levels / 3,425 exact ordered action-event-receipt traces and final
+  digests, 30 native scenes, formatting/static checks and editor import passed.
+  All 31 strict native logs were retained; 40 warning headers exactly match the
+  preceding full run, with no new warnings, errors, leak or crash diagnostics.
+- The same aggregate includes the real New → story choice → C01 battle pointer
+  route. Across all three samples, sixteen native mouse motions allocate
+  10,231,496 bytes versus 16,511,176 in the preceding full run, a **38.0%**
+  reduction. Retained controls, correct terrain facts, dossier pointer/keyboard
+  interaction and canonical state guards pass. Campaign navigation finishes
+  with 9,108 assertions and zero failed groups.
+- The native pointer sample times were 122.967–154.990 ms per sixteen motions,
+  versus 105.883–129.218 ms in the earlier aggregate. These separated host runs
+  do **not** demonstrate a native latency improvement; the claim is reduced
+  allocation. No frame-rate or input-to-pixel conclusion is drawn.
+- ExportRelease build: exit 0, zero warnings/errors. It did not change any
+  verified Debug assembly. This is compilation, not a packaged export.
+
+The final report update is documentation-only; no implementation changed after the
+complete aggregate. All earlier failed formatting and deliberate negative-control
+results are kept separately from the successful final run.
 
 The benchmark and verification artifacts are preserved in the task workspace as
 `empire-formal-hud-query-probe-20261104`, `empire-formal-hud-query-candidate-20261104`
