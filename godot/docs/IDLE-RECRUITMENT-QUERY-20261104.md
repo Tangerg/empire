@@ -70,8 +70,39 @@ the full new recruitment contract, both at exit 0. Its three idle sweeps allocat
 Both complete native scene entrypoints and the original hover implementation
 are restored before the implementation checkpoint.
 
-The complete native gate is recorded below once it finishes; this checkpoint
-text alone is not a full-gate claim.
+## Completed full verification
+
+Code checkpoint: `dae84481576a929853c96e168b248fc0a250fd81`.
+
+All 39 stages completed in one uninterrupted run from 06:24:22 to 07:06:00 UTC
+on 2026-11-04. Every stage and the overall runner exited 0. The run includes all
+commands in `tools/godot/verify-native.sh` plus ExportRelease compilation, with
+the supported 900-second per-native-stage and 1,200-second replay-suite budgets.
+The complete scene entrypoints, source tree, runner and tested binaries remained
+unchanged throughout; no assertion groups or teardown scans were omitted.
+
+- Source-selection negative controls, active-source formatting, 167 unique script
+  UIDs and all four authored-map static contracts passed. The 4,190 historical
+  audit files remain intentionally unimported and outside delivery.
+- Debug and ExportRelease compilation passed with zero warnings and errors.
+- All 13 core contracts passed, including 16 independent shipped levels, 3,425
+  legal native actions and exact save/replay round trips. This is not a claim of
+  a complete carried-state campaign victory.
+- All 25 native scenes passed. The full battle scene includes both the movement
+  field and recruitment contracts. HUD, dossier focus, result flow, campaign UI
+  and lighting lifetime passed their 469, 73, 371, 205 and 106 assertions;
+  complete campaign navigation passed 8,826 assertions and every group.
+  Animation, resource, formal-map and scenery suites also passed.
+- Strict native teardown scans found no ERROR, leaked-resource, segmentation-fault
+  or unhandled-exception diagnostics. Existing negative-fixture WARNING output
+  remains expected; this is not a claim of zero runtime warnings.
+
+In the complete navigation run, idle sweeps allocated 8,579,264, 8,584,088 and
+8,583,848 bytes, again about 88.8% below baseline. Selected-unit sweeps allocated
+16,572,744, 16,572,744 and 17,150,400 bytes and passed their existing budget.
+Idle CPU samples were 3,709.947, 2,234.209 and 1,857.374 ms, illustrating why the
+verified allocation improvement must not be presented as a wall-clock or FPS
+guarantee. Rendered visual and device acceptance remain separate.
 
 ## References
 
