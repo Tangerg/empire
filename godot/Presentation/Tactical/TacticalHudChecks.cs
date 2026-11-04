@@ -106,6 +106,12 @@ public partial class TacticalHudChecks : Node
             && Hud().Sections.Single(section => section.Key == "site").Title == site.Title,
             "Moving across units toward the HUD cannot replace a pinned site with incidental unit inspection.");
         control.Leave(control.Stamp);
+        var siteStep = control.Key(control.Stamp, "d");
+        Require(control.Selection.Kind == TacticalSelectionKind.Site && control.Selection.Destination == home
+            && control.Cursor == new BoardCell(39, 23) && siteStep.Reveal == control.Cursor && siteStep.CursorFocused
+            && siteStep.Request is null,
+            "A keyboard step resumes from the existing site coordinate, not an unrelated inspected actor or a fabricated origin.");
+        control.Leave(control.Stamp);
         var hudWidget = new TacticalHud();
         AddChild(hudWidget);
         hudWidget.IntentRequested += intent => control.Back(intent.Stamp);
@@ -191,6 +197,13 @@ public partial class TacticalHudChecks : Node
         Require(screen.Selection?.Kind == TacticalSelectionKind.Site
             && hud.Projection!.Sections.Single(section => section.Key == "tile").Rows.First().Label == "38, 23",
             "A native outside-map motion preserves only the pinned site, not an offscreen map projection.");
+        foreach (var pressed in new[] { true, false })
+            GetViewport().PushInput(new InputEventKey { Keycode = Key.D, PhysicalKeycode = Key.D, Pressed = pressed }, true);
+        GD.Print($"SITE_KEYBOARD_CONTEXT C01-03: selection={screen.Selection?.Kind}; selected={screen.Selection?.Destination}; revision={session.Revision}");
+        Require(screen.Selection is { Kind: TacticalSelectionKind.Site, Destination: { X: 38, Y: 23 } }
+            && session.Revision == 0 && session.Events.Count == 0,
+            "Keyboard navigation after leaving a pinned formal site must preserve its inspection instead of selecting an unrelated actor.");
+        Motion(outside);
         ((VBoxContainer)hud.FindChild("site", true, false)).GetChildren().OfType<Button>().Single().EmitSignal(BaseButton.SignalName.Pressed);
         Require(screen.Selection?.Kind == TacticalSelectionKind.Idle && !HasTile(),
             "Closing from the HUD cannot expose a fictitious offscreen hover tile.");
@@ -983,13 +996,14 @@ public partial class TacticalHudChecks : Node
     {
         try
         {
+            await CheckSitePointerBoundary();
+            await CheckTacticKeyboardContext();
             await CheckHealingTarget();
             CheckInspectionOrder();
             CheckObjectiveChecklist();
             CheckPinnedUnit();
             CheckPrimaryOrders();
             CheckSiteInspection();
-            await CheckSitePointerBoundary();
             await CheckResponsiveLayout();
             await CheckRecruitmentLayout();
             await CheckRecruitedUnitArt();

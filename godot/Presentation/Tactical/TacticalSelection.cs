@@ -524,7 +524,19 @@ public sealed class TacticalSelectionController
         };
         if (direction != (0, 0))
         {
-            var from = Cursor ?? (Selection.UnitId is { } id ? queries.Unit(id)?.At : null) ?? (InspectId is { } inspect ? queries.Unit(inspect)?.At : null);
+            var from = Cursor ?? (Selection.UnitId is { } id ? queries.Unit(id)?.At : null) ?? Selection.Destination;
+            // A composed order or site must survive pointer leave. Target-only
+            // orders have no actor anchor, so first focus an admitted field cell.
+            if (from is null && Selection.TargetSubjects.Count > 0)
+            {
+                var first = Selection.TargetSubjects.Select(subject => (BoardCell?)subject.Cell)
+                    .FirstOrDefault(cell => cell is { } at && InteractiveCells.Contains(at));
+                if (first is not { } initialTarget)
+                    return new TacticalInputResult(TacticalInputStatus.Ignored, PreventDefault: true);
+                Hover(expected, KeyboardFocus(initialTarget));
+                return new TacticalInputResult(TacticalInputStatus.Ready, PreventDefault: true, Reveal: initialTarget, CursorFocused: true);
+            }
+            from ??= InspectId is { } inspect ? queries.Unit(inspect)?.At : null;
             if (from is null)
                 return Cycle() with
                 {
