@@ -67,8 +67,16 @@ map, battle rule, save format or save meaning changes.
   setup failure is retained separately. The accepted RED/GREEN path establishes
   its destination with real keyboard input instead of changing production input.
 - Long structure-summary layout RED: expected exit 1, four visible lines at 960px.
-  Final layout, negative mutations and canonical aggregate verification remain
-  pending at this checkpoint.
+  The full fixed `TacticalHudChecks` exits 0 with 520 assertions. Both widths show
+  one summary line, a 388×213 plate at (278,419), accessible details and Cancel,
+  complete scrollable detail rows and focus restored to the current opener.
+- Two deliberate production mutations compile and fail at their intended native
+  checks (exit 1): counting concealed units, and globally excluding primary
+  structures even from unit cards. Their diagnostic names identify the fog and
+  occupied-structure fixtures. The exact checked-in production source is restored
+  after both tests; the Core tree is unchanged from the published baseline.
+- Canonical aggregate verification and final ExportRelease build remain pending
+  at this checkpoint.
 
 The implementation follows [Godot scene organization](https://docs.godotengine.org/en/stable/tutorials/best_practices/scene_organization.html)
 by keeping domain facts in the injected session and native controls responsible

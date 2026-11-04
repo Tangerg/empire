@@ -65,7 +65,7 @@ internal static class HitEffectProjectionChecks
             .Where(id => !fog || id != fixture.Concealed).ToArray();
         Require(forecast.Rows.Single(row => row.Key == "collateral").Label
                 == fixture.Presentation.Messages.Format("ui.hud.collateral", visibleTargets.Length - 1, target == FixtureTarget.UnitOnStructure ? 1 : 0),
-            "Unit forecasts exclude their primary unit, count only visible collateral and retain a structure beneath the primary unit.");
+            $"Unit forecasts exclude their primary unit, count only visible collateral and retain a structure beneath the primary unit: target={target}, fog={fog}.");
         // Both collision effects have emphasis. The earlier one wins, not the larger amount;
         // ordinary effects retain their original place in the complete target-by-target detail.
         CheckPhase(fixture, forecast, details, "attack", fixture.Plan.Attacker, visibleTargets, AttackEffects(), prominent: 1);
