@@ -90,5 +90,33 @@ leak diagnostics. The existing intentional missing-art warning-path probe and
 authored `runtimeReady=false` diagnostics remain. Format write and source
 metadata checks also exited 0.
 
-Full aggregate completion results will be recorded after normal stage exits
-have been verified.
+The original `tools/godot/verify-native.sh` commands ran as individually recorded
+stages against code commit `65c9b8b80d84af4e764f96ebd737dbce24c48d88`, with an
+additional ExportRelease build. All **39 stages**, including **25 native scenes**,
+completed normally with exit 0 from **2026-11-03 23:50:45 UTC** to
+**2026-11-04 00:23:53 UTC**. This run had no interrupted stage or restart. The
+original gate script and Debug game/core binary hashes were verified unchanged
+at completion; every native stage passed the strict error/leak scan.
+
+- Source selection, formatting, resource metadata and four authored-map static
+  guards passed without exclusions or relaxed assertions.
+- Debug and ExportRelease built with zero warnings/errors. MSBuild's evaluated
+  ExportRelease list has 108 compilation items: both changed production C# files
+  are included; the BattleScreen test partials are excluded.
+- All 13 core contracts passed. The 16 independent formal levels executed
+  **3,425 legal native actions** with exact save/replay round trips. Some outcomes
+  are losses or turn limits; this is not a carried-state campaign victory claim.
+- The objective/outcome and external catalog-ownership checks passed 141 and 76
+  assertions respectively.
+- BattleScreen's four exact status witnesses, the 437-assertion tactical HUD,
+  313-assertion camera integration, 844-assertion animation timeline and remaining
+  battle, campaign, lighting and scenery suites passed.
+- The affected historical feedback helper also compiled separately with zero
+  warnings/errors, using already-restored dependencies and without rebuilding
+  the gated binaries. Its legacy TypeScript oracle generator was not run, and
+  this does not claim a new historical source-oracle comparison.
+
+The full gate remains headless native/resource verification. Live GPU visual
+acceptance and execution of an exported game were not performed. Source-authored
+`runtimeReady=false` diagnostics are still present and are not waived by these
+results.
