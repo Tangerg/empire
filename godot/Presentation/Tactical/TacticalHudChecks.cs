@@ -905,6 +905,7 @@ public partial class TacticalHudChecks : Node
             viewport.NotifyMouseEntered();
             viewport.PushInput(new InputEventMouseMotion { Position = point, GlobalPosition = point }, true);
             viewport.PushInput(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = true, Position = point, GlobalPosition = point }, true);
+            hud.Apply(Frame("Terrain changes while the dossier pointer is held " + index));
             viewport.PushInput(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = false, Position = point, GlobalPosition = point }, true);
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
@@ -1062,6 +1063,211 @@ public partial class TacticalHudChecks : Node
         }
     }
 
+    private async System.Threading.Tasks.Task CheckTileTextRefresh()
+    {
+        var hud = new TacticalHud { Size = new Vector2(960, 640), Theme = TacticalHudStyle.Create() };
+        var assets = AssetCatalog.Load();
+        var portraits = PortraitCatalogResources.Load();
+        hud.ConfigureArt(TacticalHudArt.Load(assets, portraits));
+        AddChild(hud);
+        try
+        {
+            var stamp = new TacticalStamp(92, 3);
+            TacticalHudProjection Frame(string title, params TacticalHudRow[] rows) => new(stamp, "Inspect", new[]
+            {
+                new TacticalHudSection("unit-details", "Abilities", new[] { new TacticalHudRow("ability", "Guard") }),
+                new TacticalHudSection("tile", title, rows)
+            });
+            VBoxContainer Group() => (VBoxContainer)hud.FindChild("tile", true, false);
+            Button Toggle() => Group().GetChildren().OfType<Button>().Single();
+            Label[] Labels() => Group().GetNode<VBoxContainer>("Content").GetChildren().OfType<HBoxContainer>()
+                .Select(line => line.GetChildren().OfType<Label>().Single()).ToArray();
+            async System.Threading.Tasks.Task Layout()
+            {
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            }
+            var coordinate = new TacticalHudRow("coordinate", "1, 2", "First cell");
+            var defense = new TacticalHudRow("defense", "Defense 10");
+            hud.Apply(Frame("Road", coordinate, defense));
+            var group = Group();
+            var labels = Labels();
+            var toggle = Toggle();
+            ((Button)hud.FindChild("DossierButton", true, false)).EmitSignal(Button.SignalName.Pressed);
+            await Layout();
+            var popup = (PopupPanel)hud.FindChild("UnitDossier", true, false);
+            toggle.ButtonPressed = true;
+            toggle.GrabFocus();
+            await Layout();
+            coordinate = coordinate with
+            {
+                Label = "3, 4",
+                Hint = "Current cell"
+            };
+            defense = defense with
+            {
+                Label = "Defense 20",
+                Hint = "Current cover"
+            };
+            hud.Apply(Frame("Forest", coordinate, defense));
+            await Layout();
+            Require(ReferenceEquals(group, Group()) && labels.SequenceEqual(Labels()) && toggle.HasFocus(),
+                "Terrain text refresh keeps native row shaping, disclosure and keyboard focus alive.");
+            Require(Labels().Select(label => (label.Text, label.TooltipText)).SequenceEqual(new[]
+                { (coordinate.Label, coordinate.Hint), (defense.Label, defense.Hint) })
+                && group.GetNode<HBoxContainer>("Heading").GetChildren().OfType<Label>().Single().Text == "Forest",
+                "Retained terrain labels, tooltips and hidden heading use the current projection.");
+            foreach (var open in new[] { false, true })
+            {
+                toggle.ButtonPressed = open;
+                Require(toggle.Text == (open ? "−  " : "+  ") + "Forest" && group.GetNode<Control>("Content").Visible == open,
+                    "A retained disclosure cannot restore the terrain title captured at creation.");
+            }
+            var longDefense = defense with
+            {
+                Label = string.Join(" ", Enumerable.Repeat("Current terrain movement cost", 30))
+            };
+            hud.Apply(Frame("Forest", coordinate, longDefense));
+            await Layout();
+            var lineCount = labels[1].GetLineCount();
+            var textHeight = Enumerable.Range(0, lineCount).Sum(labels[1].GetLineHeight)
+                + Math.Max(0, lineCount - 1) * labels[1].GetThemeConstant("line_spacing");
+            Require(ReferenceEquals(group, Group()) && lineCount > 1 && labels[1].Size.Y >= textHeight,
+                "Long replacement terrain text reflows through native container sizing without replacing its row.");
+            var scroll = (ScrollContainer)hud.FindChild("DetailScroll", true, false);
+            toggle.ReleaseFocus();
+            scroll.ScrollVertical = (int)scroll.GetVScrollBar().MaxValue;
+            await Layout();
+            var manualScroll = scroll.ScrollVertical;
+            hud.Apply(Frame("Forest", coordinate with
+            {
+                Label = "4, 4"
+            }, longDefense));
+            await Layout();
+            Require(manualScroll > 0 && scroll.ScrollVertical == manualScroll,
+                "Updating a coordinate preserves the player's deliberate dossier reading offset.");
+            popup.Hide();
+            await Layout();
+            var variants = new[]
+            {
+                new[] { coordinate, defense, new TacticalHudRow("heal", "Recover 15") },
+                new[] { coordinate, defense with { Key = "cover" } },
+                new[] { defense, coordinate },
+                new[] { coordinate, defense with { Selected = true } },
+                new[] { coordinate, defense with { Enabled = false } },
+                new[] { coordinate, defense with { Icon = "weapon:c01.border-blade" } },
+                new[] { coordinate, defense with { UnitIcon = new("c01.mirelle", null, "#224466") } },
+                new[] { coordinate, defense with { Gauge = new(50, 100) } },
+                new[] { coordinate, defense with { Gauge = new(10, 100) } },
+                new[] { coordinate, defense with { Intent = new(stamp, TacticalHudIntentKind.Command, "wait") } }
+            };
+            var fired = 0;
+            hud.IntentRequested += _ => fired++;
+            foreach (var rows in variants)
+            {
+                var baseline = rows.Last().Gauge?.Value == 10 ? defense with
+                {
+                    Gauge = new(50, 100)
+                } : defense;
+                hud.Apply(Frame("Baseline shape", coordinate, baseline));
+                var prior = Group();
+                hud.Apply(Frame("Changed shape", rows));
+                Require(!ReferenceEquals(prior, Group()), "Changed terrain row order, key, style, media, gauge or intent rebuilds its native shape.");
+                var row = rows.Last();
+                if (row.Intent is not null)
+                {
+                    var action = Group().FindChildren("*", "Button", true, false).OfType<Button>()
+                        .Single(button => button.GetMeta("hud_key", "").AsString() == "tile/defense");
+                    action.EmitSignal(Button.SignalName.Pressed);
+                    Require(fired == 1, "A newly interactive terrain row uses the canonical guarded intent path.");
+                }
+                else
+                {
+                    Require(Labels().Select(label => label.Text).SequenceEqual(rows.Select(value => value.Label)),
+                        "Shape changes show every current row in projection order without obsolete labels.");
+                    if (row.Selected)
+                        Require(Labels().Last().GetThemeColor("font_color") == TacticalHudStyle.Gold, "Changed selection restyles the native row.");
+                    if (row.Icon is not null || row.UnitIcon is not null)
+                        Require(Group().FindChildren("*", "TextureRect", true, false).OfType<TextureRect>().Single().Texture is not null,
+                            "New terrain media resolves through the configured art owner.");
+                    if (row.Gauge is { } gauge)
+                    {
+                        var bar = Group().FindChildren("*", "ProgressBar", true, false).OfType<ProgressBar>().Single();
+                        Require(bar.Value == gauge.Value && bar.MaxValue == gauge.Maximum, "Changed gauge values cannot be stranded by text reuse.");
+                    }
+                }
+            }
+            hud.Apply(Frame("Road", coordinate, defense));
+            var removedToggle = Toggle();
+            hud.Apply(new(stamp, "Inspect", new[] { new TacticalHudSection("unit-details", "Abilities", Array.Empty<TacticalHudRow>()) }));
+            Require(hud.FindChild("tile", true, false) is null, "An absent terrain projection removes the old section.");
+            removedToggle.EmitSignal(Button.SignalName.Toggled, false);
+            hud.Apply(Frame("Reappeared", coordinate, defense));
+            Require(Toggle().ButtonPressed, "A detached terrain callback cannot change the live disclosure state.");
+            foreach (var frame in new[]
+            {
+                Frame("Revision", coordinate, defense) with { Stamp = new(92, 4) },
+                Frame("Binding", coordinate, defense) with { Stamp = new(93, 3) },
+                Frame("Busy", coordinate, defense) with { Busy = true }
+            })
+            {
+                hud.Apply(Frame("Baseline context", coordinate, defense));
+                var prior = Group();
+                hud.Apply(frame);
+                Require(!ReferenceEquals(prior, Group()) && Labels()[0].Text == coordinate.Label,
+                    "Revision, binding and busy changes retain their existing full invalidation boundary.");
+            }
+            var mediaFrame = Frame("Media", defense with
+            {
+                Icon = "weapon:c01.border-blade"
+            });
+            hud.Apply(mediaFrame);
+            var oldGroup = Group();
+            var oldTexture = Group().FindChildren("*", "TextureRect", true, false).OfType<TextureRect>().Single();
+            hud.ConfigureArt(TacticalHudArt.Load(assets, portraits));
+            hud.Apply(mediaFrame);
+            Require(!ReferenceEquals(oldGroup, Group()) && oldTexture.Texture is null
+                && Group().FindChildren("*", "TextureRect", true, false).OfType<TextureRect>().Single().Texture is not null,
+                "Art replacement rebuilds the terrain section after releasing old texture references.");
+            var titledEntry = (Button)hud.FindChild("DossierButton", true, false);
+            var titledFrame = Frame("Renamed terrain", coordinate, defense) with
+            {
+                Portrait = new("c01.mirelle", null, "#224466"),
+                Sections = new[] { new TacticalHudSection("unit-details", "Current abilities", Array.Empty<TacticalHudRow>()),
+                    new TacticalHudSection("tile", "Renamed terrain", new[] { coordinate, defense }) }
+            };
+            hud.Apply(titledFrame);
+            Require(ReferenceEquals(titledEntry, hud.FindChild("DossierButton", true, false))
+                && titledEntry.Text == "Current abilities" && titledEntry.OffsetRight == 264,
+                "A retained dossier opener updates its current title and portrait-dependent width.");
+            var staleToggle = Toggle();
+            var staleContent = Group().GetNode<Control>("Content");
+            var staleEntry = (Button)hud.FindChild("DossierButton", true, false);
+            RemoveChild(hud);
+            AddChild(hud);
+            staleToggle.ButtonPressed = false;
+            staleEntry.EmitSignal(Button.SignalName.Pressed);
+            await Layout();
+            Require(hud.Projection is null && staleContent.Visible && !popup.Visible,
+                "Remount without a fresh projection cannot reactivate retained terrain or dossier callbacks.");
+            hud.Apply(Frame("Remounted", coordinate, defense));
+            Require(!ReferenceEquals(staleToggle, Toggle()) && Toggle().ButtonPressed,
+                "Fresh Apply rebuilds remounted terrain controls without accepting stale expansion changes.");
+            var entry = (Button)hud.FindChild("DossierButton", true, false);
+            var onlyTile = new TacticalHudProjection(stamp, "Inspect", new[] { new TacticalHudSection("tile", "Ground", new[] { coordinate }) });
+            hud.Apply(onlyTile);
+            entry.EmitSignal(Button.SignalName.Pressed);
+            await Layout();
+            Require(hud.FindChild("DossierButton", true, false) is null && !popup.Visible,
+                "Removing inspectable details removes its opener and rejects its stale activation.");
+        }
+        finally
+        {
+            RemoveChild(hud);
+            hud.Free();
+        }
+    }
+
     public override async void _Ready()
     {
         try
@@ -1081,6 +1287,7 @@ public partial class TacticalHudChecks : Node
             await CheckPointerCapture();
             await CheckDossierLifetime();
             await CheckRetainedSectionLifetime();
+            await CheckTileTextRefresh();
             await CheckOrderBadgeStates();
             var stamp = new TacticalStamp(17, 9);
             var hud = new TacticalHud();

@@ -79,6 +79,14 @@ public partial class TacticalHud : Control
                 && (section.Key != "unit" || current.Portrait == projection.Portrait)
                 && current.Sections.Any(old => SameSection(old, section))).Select(section => section.Key).ToHashSet()
             : new HashSet<string>();
+        var nextTile = projection.Sections.FirstOrDefault(section => section.Key == "tile");
+        var tileGroup = details?.GetNodeOrNull<VBoxContainer>("tile");
+        var refreshTile = tileGroup is not null && current is not null && current.Stamp == projection.Stamp && current.Busy == projection.Busy
+            && nextTile is not null && current.Sections.FirstOrDefault(section => section.Key == "tile") is { } oldTile
+            && SameTextStructure(oldTile, nextTile);
+        if (refreshTile)
+            retainedSections.Add("tile");
+        var hasDossier = projection.Sections.Any(section => section.Key is "unit-details" or "site" or "structure" or "stances" or "formations" or "roster");
         var retained = preserveActions ? GetChildren().Where(child => child.Name == oldActions!.Key || child.Name == "OrderTray").ToHashSet() : new HashSet<Node>();
         foreach (var child in GetChildren())
             if (retainedSections.Contains(child.Name) || retainedSections.Any(key => child.Name == key + "Plate")
@@ -86,6 +94,9 @@ public partial class TacticalHud : Control
                 retained.Add(child);
         if (detailPopup is not null)
             retained.Add(detailPopup);
+        if (hasDossier && current is not null && current.Stamp == projection.Stamp && current.Busy == projection.Busy
+            && GetNodeOrNull<Button>("DossierButton") is { } dossierEntry)
+            retained.Add(dossierEntry);
         var focused = detailPopup?.GuiGetFocusOwner() ?? GetViewport()?.GuiGetFocusOwner();
         var focusKey = focused?.GetMeta("hud_key", "").AsString();
         var scrollPosition = detailScroll?.ScrollVertical ?? 0;
@@ -93,6 +104,8 @@ public partial class TacticalHud : Control
             && detailScroll.IsAncestorOf(focused) && detailScroll.GetGlobalRect().Encloses(focused.GetGlobalRect());
         current = projection;
         var renderedGeneration = ++generation;
+        if (refreshTile)
+            RefreshTileText(tileGroup!, nextTile!);
         if (!refresh)
             submitted = false;
         foreach (var child in GetChildren())
@@ -159,12 +172,13 @@ public partial class TacticalHud : Control
             var popup = detailPopup;
             button.Pressed += () =>
             {
-                if (generation != renderedGeneration || !IsInsideTree() || !button.IsInsideTree())
+                if (current is null || !IsInsideTree() || !button.IsInsideTree())
                     return;
-                var openingStamp = current?.Stamp;
+                var openingGeneration = generation;
+                var openingStamp = current.Stamp;
                 Callable.From(() =>
                 {
-                    if (!GodotObject.IsInstanceValid(this) || !IsInsideTree() || generation != renderedGeneration
+                    if (!GodotObject.IsInstanceValid(this) || !IsInsideTree() || generation != openingGeneration
                         || current?.Stamp != openingStamp || !GodotObject.IsInstanceValid(button) || !button.IsInsideTree()
                         || !GodotObject.IsInstanceValid(popup) || !popup.IsInsideTree() || popup.Visible)
                         return;
@@ -237,7 +251,7 @@ public partial class TacticalHud : Control
             {
                 header.Visible = false;
                 var summary = section.Key == "objectives" ? section.Rows.FirstOrDefault(row => row.Hint.Length > 0) : null;
-                var title = summary is null ? section.Title : summary.Label;
+                var title = DisclosureTitle(section);
                 var toggle = new Button
                 {
                     Text = (expanded.Contains(section.Key) ? "−  " : "+  ") + title,
@@ -272,7 +286,8 @@ public partial class TacticalHud : Control
                     else
                         expanded.Remove(section.Key);
                     content.Visible = open;
-                    toggle.Text = (open ? "−  " : "+  ") + title;
+                    var liveSection = current.Sections.Single(value => value.Key == section.Key);
+                    toggle.Text = (open ? "−  " : "+  ") + DisclosureTitle(liveSection);
                 };
             }
             if (section.Key == "forecast")
@@ -424,17 +439,24 @@ public partial class TacticalHud : Control
         foreach (var section in projection.Sections.OrderBy(section => Priority(section.Key)))
             if (details.GetNodeOrNull<Control>(section.Key) is { } group)
                 details.MoveChild(group, detailIndex++);
-        if (projection.Sections.Any(section => section.Key is "unit-details" or "site" or "structure" or "stances" or "formations" or "roster"))
+        if (hasDossier)
         {
             var dossierTitle = (projection.Sections.Any(section => section.Key == "unit")
                 ? projection.Sections.FirstOrDefault(section => section.Key == "unit-details")?.Title
                 : null)
                 ?? projection.Sections.FirstOrDefault(section => section.Key is "site" or "structure" or "unit-details" or "roster")?.Title ?? "";
-            var dossier = new Button { Name = "DossierButton", Text = dossierTitle };
-            CompactButton(dossier);
-            AddChild(dossier);
+            var dossier = GetNodeOrNull<Button>("DossierButton");
+            if (dossier is null)
+            {
+                dossier = new Button { Name = "DossierButton" };
+                CompactButton(dossier);
+                AddChild(dossier);
+                WireDossier(dossier);
+            }
+            dossier.Text = dossierTitle;
+            // Newly mounted portrait trays must remain behind a retained interactive opener.
+            MoveChild(dossier, -1);
             Place(dossier, 0, 1, 0, 1, 28, -34, projection.Portrait is null ? 148 : 264, -9);
-            WireDossier(dossier);
         }
         var hint = Label(projection.Hint, 13, TacticalHudStyle.Gold);
         hint.Name = "SelectionHint";
@@ -596,6 +618,39 @@ public partial class TacticalHud : Control
                 Action = null
             }
             && first.Intent.Action?.GetRawText() == other.Action?.GetRawText());
+
+    // The projection owns terrain facts; only the text changes within an unchanged native row shape.
+    private static void RefreshTileText(VBoxContainer group, TacticalHudSection section)
+    {
+        var heading = group.GetNode<HBoxContainer>("Heading").GetChildren().OfType<Label>().Single();
+        if (heading.Text != section.Title)
+            heading.Text = section.Title;
+        var disclosure = group.GetChildren().OfType<Button>().Single();
+        var title = (disclosure.ButtonPressed ? "−  " : "+  ") + section.Title;
+        if (disclosure.Text != title)
+            disclosure.Text = title;
+        var labels = group.GetNode<VBoxContainer>("Content").GetChildren().OfType<HBoxContainer>()
+            .Select(line => line.GetChildren().OfType<Label>().Single());
+        foreach (var (label, row) in labels.Zip(section.Rows))
+        {
+            if (label.Text != row.Label)
+                label.Text = row.Label;
+            if (label.TooltipText != row.Hint)
+                label.TooltipText = row.Hint;
+        }
+    }
+
+    private static string DisclosureTitle(TacticalHudSection section) => section.Key == "objectives"
+        ? section.Rows.FirstOrDefault(row => row.Hint.Length > 0)?.Label ?? section.Title : section.Title;
+
+    private static bool SameTextStructure(TacticalHudSection first, TacticalHudSection second) =>
+        first.Rows.Count == second.Rows.Count && first.Rows.Zip(second.Rows).All(pair =>
+            pair.First.Intent is null && pair.Second.Intent is null
+            && pair.First with
+            {
+                Label = pair.Second.Label,
+                Hint = pair.Second.Hint
+            } == pair.Second);
 
     private static bool SameSection(TacticalHudSection first, TacticalHudSection second) =>
         first.Key == second.Key && first.Title == second.Title && first.Rows.Count == second.Rows.Count

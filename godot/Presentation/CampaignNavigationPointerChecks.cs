@@ -72,7 +72,7 @@ public partial class CampaignNavigationChecks
                 "The formal battle must offer distinct native-reachable ground cells while its actor stays selected.");
             await Layout();
             var before = Digest(session.Snapshot());
-            var names = new[] { "crownPlate", "objectivesPlate", "unit", "PortraitTray", "PortraitMedallion", "Details", "unit-details", "stances", "formations", "roster", "commands" };
+            var names = new[] { "crownPlate", "objectivesPlate", "unit", "PortraitTray", "PortraitMedallion", "Details", "unit-details", "stances", "formations", "roster", "commands", "DossierButton" };
             var retained = names.Select(name => hud.FindChild(name, true, false)
                 ?? throw new InvalidOperationException("Missing formal HUD subtree: " + name)).ToArray();
             for (var sample = 0; sample < 3; sample++)
@@ -110,6 +110,8 @@ public partial class CampaignNavigationChecks
             await Layout();
             opener = (Button)hud.FindChild("DossierButton", true, false);
             var buttonPoint = opener.GetGlobalRect().GetCenter();
+            Require(viewport.GuiGetHoveredControl() == opener,
+                "A retained dossier opener stays above newly mounted portrait trays and receives native pointer input.");
             foreach (var pressed in new[] { true, false })
             {
                 using var input = new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = pressed, Position = buttonPoint, GlobalPosition = buttonPoint };
@@ -136,6 +138,21 @@ public partial class CampaignNavigationChecks
             await Layout();
             Require(!popup.Visible && ((Button)hud.FindChild("DossierButton", true, false)).HasFocus(),
                 "Closing the refreshed dossier must return focus to its live opener.");
+            var focusedOpener = (Button)hud.FindChild("DossierButton", true, false);
+            Motion(points[0].Pixel);
+            await Layout();
+            Require(GodotObject.IsInstanceValid(focusedOpener) && focusedOpener.IsInsideTree() && focusedOpener.HasFocus(),
+                "Moving the pointer over another terrain cell must preserve keyboard focus returned to the dossier opener.");
+            foreach (var pressed in new[] { true, false })
+            {
+                using var key = new InputEventKey { Keycode = Key.Space, PhysicalKeycode = Key.Space, Pressed = pressed };
+                viewport.PushInput(key, true);
+            }
+            await Layout();
+            Require(popup.Visible && screen.SelectedUnitId == selected,
+                "Space after pointer-only terrain inspection must reopen the focused dossier, not cycle the acting unit.");
+            Press((Button)hud.FindChild("DossierClose", true, false));
+            await Layout();
             for (var press = 0; press < 2; press++)
             {
                 foreach (var pressed in new[] { true, false })
