@@ -62,8 +62,29 @@ the exact committed production source before subsequent verification.
 An environment restart interrupted the first mutation build before any exit
 code was recorded. Its source and partial log were archived, production restored
 and verified against Git, and both original mutation commands rerun. That
-interrupted attempt is not counted as passing. The canonical full gate and
-release build remain pending at this verification checkpoint.
+interrupted attempt is not counted as passing.
+
+The subsequent, uninterrupted canonical `tools/godot/verify-native.sh` run at
+`e46cefcbe87f2bdf6880203b90a66f8b3a7a07cd` completed from 18:44:36 to 19:38:43 UTC:
+54m07s, exit 0. It used the existing 900-second native-process and 1200-second
+replay budgets, without removing or replacing any stage:
+
+- All eight preparation/format/metadata/map-contract checks and both Debug builds
+  passed, including 173 C# source UID companions.
+- All 14 core groups passed. All 16 formal levels' 3425 legal commands retained
+  exactly the prior ordered action/event/receipt trace hashes and final digests.
+- Objective/catalog boundary checks, editor import and all 30 native scenes passed.
+  The new capture checks and all previous BattleScreen checks passed together.
+- All 31 editor/native process logs were independently retained and audited: no
+  error, leak, crash or unhandled-exception diagnostic. The 30 expected warning
+  headers match the preceding complete gate exactly, rather than being hidden.
+- The final `ExportRelease` build exited 0 with zero warnings/errors. It did not
+  change the Debug assemblies exercised by the complete native gate.
+
+Only this report was updated after that verified source checkpoint. No campaign
+art, map, core rule, save schema, capture contribution or ownership transition was
+changed. Headless native controls and release compilation are not rendered GUI
+or exported-package acceptance; those remain separate.
 
 ## Other measured work, unchanged
 
