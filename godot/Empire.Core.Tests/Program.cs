@@ -100,6 +100,7 @@ Check("attack preview placement and committed outcomes", () => CombatPreviewChec
 Check("counter effect ownership and collision disclosure", () => CounterEffectChecks.Run(root));
 Check("structure lifecycle and redstone routes", () => StructureLifecycleChecks.Run(root));
 Check("escort mission and AI intent", () => EscortChecks.MissionAndIntent(root));
+Check("AI agenda readonly content and allocation", () => AiAgendaChecks.Run(root));
 if (selectedCheck == "three bridges native replay/save")
     Check("three bridges native replay/save", () => ReplayChecks.ThreeBridges(root));
 Check("shipped native full-level replay/save", () => ReplayChecks.ShippedLevels(root));

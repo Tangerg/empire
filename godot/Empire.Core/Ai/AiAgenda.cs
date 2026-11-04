@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core.Geometry;
 using Empire.Core.Lifecycle;
@@ -24,12 +25,13 @@ public sealed record AiAgenda(IReadOnlyList<CaptureTarget> CaptureTargets, IRead
         var owners = Array(map["owners"], "owners");
         for (var index = 0; index < tiles.Count; index++)
         {
-            var terrain = context.Content.Get("terrains", Text(tiles[index], "terrain"));
-            if (!IsTrue(terrain["capturable"]))
+            var terrain = context.Content.Read("terrains", Text(tiles[index], "terrain"));
+            if (!terrain.TryGetProperty("capturable", out var capturable) || !IsTrue(capturable))
                 continue;
             var at = context.Board.CoordOf(index);
             var owner = Integer(owners[index], "owner");
-            if (IsTrue(terrain["hq"]))
+            var hq = terrain.TryGetProperty("hq", out var headquarters) && IsTrue(headquarters);
+            if (hq)
             {
                 if (owner == context.Player)
                     myHqs.Add(at);
@@ -37,7 +39,16 @@ public sealed record AiAgenda(IReadOnlyList<CaptureTarget> CaptureTargets, IRead
                     enemyHqs.Add(at);
             }
             if (owner != context.Player)
-                targets.Add(new CaptureTarget(at, IsTrue(terrain["hq"]) ? 6 : Array(terrain["produces"], "produces").Count > 0 ? 3 : 2));
+            {
+                var weight = 6;
+                if (!hq)
+                {
+                    if (!terrain.TryGetProperty("produces", out var produces) || produces.ValueKind != JsonValueKind.Array)
+                        throw new DomainInvariantException("produces must be an array");
+                    weight = produces.GetArrayLength() > 0 ? 3 : 2;
+                }
+                targets.Add(new CaptureTarget(at, weight));
+            }
         }
         return new AiAgenda(targets, enemyHqs, myHqs, BuildMission(context));
     }

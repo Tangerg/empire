@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><TreatWarningsAsErrors>true</TreatWarningsAsErrors></PropertyGroup>
+  <ItemGroup><Reference Include="Empire.Core"><HintPath>$(EmpireCoreAssembly)</HintPath></Reference></ItemGroup>
+  <Target Name="RequireCoreAssembly" BeforeTargets="ResolveReferences"><Error Condition="!Exists('$(EmpireCoreAssembly)')" Text="Pass an explicit built Empire.Core assembly with -p:EmpireCoreAssembly=/absolute/path/Empire.Core.dll" /></Target>
+</Project>

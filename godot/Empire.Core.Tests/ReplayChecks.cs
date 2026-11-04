@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.Json.Nodes;
 using Empire.Core.Determinism;
 using Empire.Core.Engine;
@@ -21,16 +23,25 @@ internal static class ReplayChecks
             var battle = engine.CreateBattle(level);
             var recorder = engine.RecordBattle(battle.Snapshot());
             var count = 0;
+            using var trace = IncrementalHash.CreateHash(HashAlgorithmName.SHA256);
             while (count < 4096 && battle.Snapshot()["phase"]!.GetValue<string>() != "over")
             {
                 var action = engine.Ai.ChooseAction(battle.Snapshot(), 0.58);
-                battle.Dispatch(action);
+                var receipt = battle.Dispatch(action);
+                trace.AppendData(Encoding.UTF8.GetBytes(EcmaJson.Stringify(new JsonObject
+                {
+                    ["action"] = action.DeepClone(),
+                    ["events"] = new JsonArray(receipt.Events.Select(value => (JsonNode)value).ToArray()),
+                    ["stateHash"] = receipt.StateHash,
+                    ["handsOffTurn"] = receipt.HandsOffTurn,
+                }) + "\n"));
                 recorder.Record(action);
                 count++;
             }
             if (battle.Snapshot()["phase"]!.GetValue<string>() != "over")
                 throw new Exception($"{level["id"]}: battle exceeded the explicit 4096-action safety bound.");
             VerifyPersistence(engine, level, battle, recorder.Replay(battle.Snapshot()));
+            Console.WriteLine($"  AI_TRACE {level["id"]}: {count} steps, action/event/receipt SHA256 {Convert.ToHexString(trace.GetHashAndReset()).ToLowerInvariant()}");
             Console.WriteLine($"  {level["id"]}: {count} legal native actions, state {battle.StateHash}, conclusion {battle.Snapshot()["conclusion"]}, exact save/replay round trip (independent level, not carried-state campaign victory).");
         }
     }
