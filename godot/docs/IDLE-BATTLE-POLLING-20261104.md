@@ -36,6 +36,18 @@ The targeted GREEN run passes 94 assertions in its two selected groups. It is no
 
 ## Final verification
 
-The complete current `tools/godot/verify-native.sh` commands and an additional ExportRelease build are pending at the implementation checkpoint. Each stage will retain its actual exit code. Any interrupted stage must be rerun rather than counted as passed. The final report will record the completed results.
+Implementation checkpoint: `e33847e649c13054e2f134bce68cae46d602e58d`.
+
+All 39 stages of the current `tools/godot/verify-native.sh` commands plus an ExportRelease build completed with exit 0 on 2026-11-04 at 03:28:26 UTC. This was **segmented validation after an environment restart**, not a single uninterrupted run: the first nine completed stages retained their recorded exit codes, the unfinished core-replay log was archived, and that original command plus the remaining stages were then run to completion. No interrupted result was counted as passed.
+
+- Source-selection negative tests, formatting, source metadata (164 unique script UIDs), and all four authored-scene static validators passed.
+- Debug, core-test, and ExportRelease builds completed with zero warnings/errors.
+- All 13 core contract groups passed. All 16 shipped independent levels completed 3,425 legal native orders with exact save/replay round trips; this is not a carried-campaign victory claim.
+- Objective/outcome (141 assertions) and external catalog ownership (76 assertions) passed.
+- All 25 native scenes exited 0 and passed strict shutdown/error/leak checks. Animation (844), HUD (459), dossier focus (73), result flow (371), complete campaign navigation (8,578), and lighting lifetime (106) passed.
+- The full navigation run repeated all twelve allocation samples at exactly 153,600 bytes per 600 calls, including the real save/load flow. Its legal-order status comparisons and played-victory continuation passed. Sample times were 0.114–0.407 ms in this run, reported as callback timings only.
+- The aggregate script and final Debug binaries matched their recorded hashes. The implementation worktree was clean at completion. The final verification update changes only this report.
+
+Evidence is retained in `/tmp/empire-idle-polling-20261104`, including original baseline measurements, RED/GREEN and mutation exits, per-stage records, the archived interrupted core log, and final stage results.
 
 No new normal-play storage or campaign-navigation defect was established by this batch's independent read-only audit. An externally altered roster-content candidate remains unverified and is not included in this change. Manual GUI, physical-device performance, and exported executable acceptance remain separate.
