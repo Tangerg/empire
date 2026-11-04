@@ -16,9 +16,9 @@ MoveStops, PathTo and Threat during every overlay refresh. The source TypeScript
 GameSession already reuses fields per unit and state stamp, forwarding the same
 field to both path and threat policies (`packages/battle-engine/src/session.ts`).
 
-The new per-event allocation guard rejects the baseline implementation at native
+The new sweep allocation guard rejects the baseline implementation at native
 exit 1. With reuse, all three initial fixed sweeps allocate 16,572,744 bytes, a
-71.5% reduction. The guard allows 2 MiB per visited cell; it deliberately has room
+71.5% reduction. The guard allows an average of 2 MiB per visited cell; it deliberately has room
 above the measured fixed cost without admitting the original repeated traversal.
 The isolated real-flow runner passes 225 assertions and exits 0.
 
@@ -74,8 +74,38 @@ intended runtime assertions: removing reuse, omitting the field from ThreatTiles
 bypassing the composed PathTo, and dropping the post-read revision check. The
 updated static field-forwarding guard also rejects its bypass mutation.
 
-The full current native gate is recorded below once it completes; an
-implementation checkpoint is not a full-gate claim.
+## Completed full verification
+
+Code checkpoint: `0fa5a0b7167d3fd518ebd0cc883b7b9dc2a30053`.
+
+All 39 stages completed without interruption from 05:16:55 to 05:54:09 UTC.
+Every stage and the overall runner recorded exit 0. This includes every command
+in `tools/godot/verify-native.sh` plus ExportRelease compilation, using the
+supported 900-second native-stage and 1,200-second aggregate replay budgets.
+All full native entrypoints were restored before the checkpoint; no test groups
+were removed. The source tree, gate script and tested binaries stayed unchanged.
+
+- Source-selection negative controls, active-source formatting, 166 unique script
+  UIDs and four formal-map static contracts passed. The 4,190 archived audit files
+  remain intentionally unimported and outside delivery.
+- Debug and ExportRelease built with zero warnings and zero errors.
+- All 13 core contracts passed, including 16 independent shipped levels and 3,425
+  legal native actions with exact save/replay round trips. This is not a claim of
+  one complete carried-state campaign victory.
+- All 25 native scenes passed, including the full movement-query contract,
+  469 HUD assertions, 73 dossier focus assertions, 371 result-flow assertions,
+  all campaign navigation groups (8,657 assertions), 205 campaign UI assertions,
+  and 106 lighting lifetime assertions. Animation, map, resource and scenery
+  suites also remain enabled and pass.
+- Native teardown scans found no ERROR, leaked-resource, segmentation-fault or
+  unhandled-exception diagnostics. Expected negative-fixture WARNING output
+  remains classified by the existing tests; this is not a zero-warning claim.
+
+The complete navigation suite repeated the same allocation result three times:
+16,572,744 bytes per 16-cell sweep. Its CPU samples were 1,891.549, 2,193.139 and
+2,195.323 ms. Thus the verified gain is 71.5% less managed allocation, not a
+confirmed wall-clock or FPS improvement. Rendered visual/device acceptance is
+still separate from this headless native run.
 
 ## References
 
