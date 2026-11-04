@@ -103,10 +103,10 @@ else:
         result, calls = self.aggregate("clean")
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertIn(SUCCESS, result.stdout)
-        self.assertEqual(len(calls), 30)
+        self.assertEqual(len(calls), 31)
         self.assertIn("--editor", calls[0]["args"])
         scenes = calls[1:]
-        self.assertEqual(len({call["data"] for call in scenes}), 29)
+        self.assertEqual(len({call["data"] for call in scenes}), 30)
         self.assertTrue(all(Path(call["data"]).is_dir() for call in scenes))
         self.assertNotIn(calls[0]["data"], {call["data"] for call in scenes})
         self.assertEqual(scenes[-2]["args"][-2:],

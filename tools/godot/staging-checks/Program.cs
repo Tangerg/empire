@@ -33,6 +33,9 @@ CampaignStagingText Presentation(GameText text) => new(text,
     new BattleText(new(text, ObjectiveText.CreateDefault(text).Seal()), battleDocument), id => IdentityNames.Resolve(text, nameKeys, id));
 var presentation = Presentation(messages);
 JsonElement NativeLevel(JsonNode item) => EcmaJson.ToElement(levelById[Text(item["level"]!["id"])]);
+// These historical presentation fixtures supply their frozen opening ratios, not campaign preparation rules.
+IReadOnlyDictionary<string, double> FixtureHealth(JsonNode state) => state["roster"]!.AsObject()
+    .ToDictionary(entry => Text(entry.Value!["id"]), entry => entry.Value!["hpRatio"]!.GetValue<double>(), StringComparer.Ordinal);
 void Check(string name, JsonNode? actual, JsonNode? expected)
 {
     checks++;
@@ -44,7 +47,7 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
     var before = EcmaJson.Stringify(item);
     var digest = StateDigest.Hash(item["state"]!);
     var view = CampaignStaging.Create(presentation, portraits, EcmaJson.ToElement(item["state"]), EcmaJson.ToElement(item["node"]), NativeLevel(item),
-        EcmaJson.ToElement(fixtureMetadata), item["pending"]!.GetValue<bool>());
+        EcmaJson.ToElement(fixtureMetadata), item["pending"]!.GetValue<bool>(), FixtureHealth(item["state"]!));
     var actual = new JsonObject
     {
         ["campaignTitle"] = view.CampaignTitle,
@@ -62,7 +65,12 @@ foreach (var item in oracle["cases"]!.AsArray().OfType<JsonObject>())
         ["briefingSource"] = view.BriefingArt?.Source,
     };
     var expected = item["expected"]!.DeepClone();
-    // The native identity delta is limited to Torren and Elin; retain every other frozen assertion.
+    // Keep the historical copy guard, then assert the existing native minimum-window guidance explicitly.
+    var pending = item["pending"]!.GetValue<bool>();
+    var originalNote = pending ? "离开战场后将从本关开局重新开始。" : "进入战斗后自动保留关前存档。";
+    Check("historical staging action note", expected["actionNote"], JsonValue.Create(originalNote));
+    expected["actionNote"] = originalNote + "战斗窗口至少 960×640，会按需扩大。";
+    // The native identity delta is limited to Torren and Elin; retain other frozen assertions.
     for (var index = 0; index < view.Roster.Count; index++)
     {
         var unit = view.Roster[index];
@@ -97,7 +105,7 @@ var explicitBindings = fixtureMetadata.DeepClone();
 explicitBindings["portraits"] = new JsonObject { ["laiya"] = "fixture-card" };
 var explicitView = CampaignStaging.Create(presentation, renamedPortraits,
     EcmaJson.ToElement(oracle["cases"]![0]!["state"]), EcmaJson.ToElement(oracle["cases"]![0]!["node"]),
-    NativeLevel(oracle["cases"]![0]!), EcmaJson.ToElement(explicitBindings), false);
+    NativeLevel(oracle["cases"]![0]!), EcmaJson.ToElement(explicitBindings), false, FixtureHealth(oracle["cases"]![0]!["state"]!));
 Check("portrait IDs are explicit, not derived from identity names", JsonValue.Create(explicitView.Roster.Single(unit => unit.Id == "laiya").Portrait!.ResourcePath),
     JsonValue.Create(renamedPortraits.Resolve("fixture-card").ResourcePath));
 try
@@ -134,7 +142,7 @@ reordered["elin"]!["unitType"] = "c01.swordsman";
 reordered["torren"]!["disposition"] = "fallen";
 var changedBefore = EcmaJson.Stringify(changedState);
 var changedDigest = StateDigest.Hash(changedState);
-var changedView = CampaignStaging.Create(presentation, portraits, EcmaJson.ToElement(changedState), EcmaJson.ToElement(first["node"]), NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false);
+var changedView = CampaignStaging.Create(presentation, portraits, EcmaJson.ToElement(changedState), EcmaJson.ToElement(first["node"]), NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false, FixtureHealth(first["state"]!));
 Check("reordered people sharing a class retain distinct names", JsonSerializer.SerializeToNode(changedView.Roster.Select(unit => new { unit.Id, unit.Name }), serialization),
     JsonNode.Parse("[{\"id\":\"elin\",\"name\":\"艾琳\"},{\"id\":\"torren\",\"name\":\"托伦\"},{\"id\":\"laiya\",\"name\":\"莱娅\"}]"));
 Check("fallen member keeps status", JsonValue.Create(changedView.Roster.Single(unit => unit.Id == "torren").Status), JsonValue.Create(messages.Format("ui.staging.disposition.fallen")));
@@ -149,17 +157,30 @@ void Reject<TException>(Action action, string diagnostic) where TException : Inv
     catch (TException error) when (error.Message.Contains(diagnostic, StringComparison.Ordinal)) { checks++; return; }
     throw new Exception($"Expected {typeof(TException).Name}: {diagnostic}");
 }
+var openingHealth = new Dictionary<string, double>(FixtureHealth(first["state"]!), StringComparer.Ordinal) { ["torren"] = 0.37 };
+var preparedView = CampaignStaging.Create(presentation, portraits, EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(first["node"]),
+    NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false, openingHealth);
+Check("bound health comes from explicit opening projection", JsonValue.Create(preparedView.Roster.Single(unit => unit.Id == "torren").Status),
+    JsonValue.Create(messages.Format("ui.staging.available_status", 37, first["state"]!["roster"]!["torren"]!["rank"]!.GetValue<double>())));
+openingHealth.Remove("torren");
+try
+{
+    CampaignStaging.Create(presentation, portraits, EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(first["node"]),
+        NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false, openingHealth);
+    throw new Exception("Missing bound opening health silently accepted");
+}
+catch (KeyNotFoundException) { checks++; }
 var unknownState = first["state"]!.DeepClone();
 unknownState["roster"]!["torren"]!["id"] = "undeclared-person";
-Reject<InvalidOperationException>(() => CampaignStaging.Create(presentation, portraits, EcmaJson.ToElement(unknownState), EcmaJson.ToElement(first["node"]), NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false), "undeclared-person");
+Reject<InvalidOperationException>(() => CampaignStaging.Create(presentation, portraits, EcmaJson.ToElement(unknownState), EcmaJson.ToElement(first["node"]), NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false, FixtureHealth(first["state"]!)), "undeclared-person");
 var missingName = new GameText(key => key == nameKeys["elin"] ? null : catalog.GetValueOrDefault(key), CultureInfo.InvariantCulture);
-Reject<LocalizationException>(() => CampaignStaging.Create(Presentation(missingName), portraits, EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(first["node"]), NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false), nameKeys["elin"]);
+Reject<LocalizationException>(() => CampaignStaging.Create(Presentation(missingName), portraits, EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(first["node"]), NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false, FixtureHealth(first["state"]!)), nameKeys["elin"]);
 var contentText = EcmaJson.Parse(File.ReadAllText(Path.Combine(dataDirectory, "grayflag-content-text.json")))!;
 foreach (var (id, expectedName) in new[] { ("c01.swordsman", "边境剑士"), ("c01.archer", "边境弓手") })
     Check("generic class name unchanged", JsonValue.Create(messages.Format(Text(contentText["content"]!["units"]![id]!["name"]))), JsonValue.Create(expectedName));
 var alternate = new GameText(key => catalog.TryGetValue(key, out var value) ? value + " [fixture]" : null, CultureInfo.InvariantCulture);
 var alternateView = CampaignStaging.Create(Presentation(alternate), portraits, EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(first["node"]),
-    NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false);
+    NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false, FixtureHealth(first["state"]!));
 Check("identity names use injected locale", JsonValue.Create(alternateView.Roster.Single(unit => unit.Id == "torren").Name), JsonValue.Create("托伦 [fixture]"));
 Check("staging injects shared campaign wording", JsonValue.Create(alternateView.CampaignTitle),
     JsonValue.Create(messages.Format(Text(exported["titleKey"])) + " [fixture]"));
@@ -169,7 +190,7 @@ var node = first["node"]!.DeepClone().AsObject();
 node["level"] = "wrong";
 try
 {
-    CampaignStaging.Create(presentation, portraits, EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(node), NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false);
+    CampaignStaging.Create(presentation, portraits, EcmaJson.ToElement(first["state"]), EcmaJson.ToElement(node), NativeLevel(first), EcmaJson.ToElement(fixtureMetadata), false, FixtureHealth(first["state"]!));
     throw new Exception("Mismatched staging identity accepted");
 }
 catch (InvalidOperationException) { checks++; }

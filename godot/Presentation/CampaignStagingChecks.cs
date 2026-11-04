@@ -58,8 +58,11 @@ public partial class CampaignStagingChecks : Node
                 .ToDictionary(level => level["id"]!.GetValue<string>(), StringComparer.Ordinal);
             System.Text.Json.JsonElement NativeLevel(JsonNode fixture) =>
                 EcmaJson.ToElement(nativeLevels[fixture["level"]!["id"]!.GetValue<string>()]);
+            // Frozen presentation cases explicitly provide the historical opening ratios.
+            IReadOnlyDictionary<string, double> FixtureHealth(JsonNode fixture) => fixture["state"]!["roster"]!.AsObject()
+                .ToDictionary(entry => entry.Value!["id"]!.GetValue<string>(), entry => entry.Value!["hpRatio"]!.GetValue<double>(), StringComparer.Ordinal);
             CampaignStagingView View(bool pending) => CampaignStaging.Create(presentationText, missingPortraits, EcmaJson.ToElement(item["state"]),
-                EcmaJson.ToElement(item["node"]), NativeLevel(item), EcmaJson.ToElement(metadata), pending);
+                EcmaJson.ToElement(item["node"]), NativeLevel(item), EcmaJson.ToElement(metadata), pending, FixtureHealth(item));
             var assets = AssetCatalog.Load();
             var unitArt = TacticalHudArt.Load(assets, portraits);
             var view = View(false);
@@ -149,7 +152,7 @@ public partial class CampaignStagingChecks : Node
             foreach (var sourceCase in oracle["cases"]!.AsArray().OfType<JsonObject>())
             {
                 var live = CampaignStaging.Create(presentationText, portraits, EcmaJson.ToElement(sourceCase["state"]), EcmaJson.ToElement(sourceCase["node"]),
-                    NativeLevel(sourceCase), EcmaJson.ToElement(metadata), sourceCase["pending"]!.GetValue<bool>());
+                    NativeLevel(sourceCase), EcmaJson.ToElement(metadata), sourceCase["pending"]!.GetValue<bool>(), FixtureHealth(sourceCase));
                 screen.ShowStaging(live, unitArt, () => starts++, () => exits++);
                 Require(screen.RenderingDiagnostics.Count == 0, $"Real exported staging art is incomplete: {string.Join("; ", screen.RenderingDiagnostics)}");
                 foreach (var unit in live.Roster.Where(unit => unit.Portrait is not null))

@@ -1235,6 +1235,7 @@ public partial class CampaignNavigationChecks : Node
             && EcmaJson.ToElement(campaign.Snapshot()["relations"]!["cain"]!).GetDouble() == relation + 1,
             "Accepting the bridge truce did not reach second-level staging with its relation effect.");
         var roster = campaign.Snapshot()["roster"]!.DeepClone().AsObject();
+        var staging = View<CampaignStagingScreen>(game).Presented!;
         Press(Button(View<CampaignStagingScreen>(game), "StartBattle"));
         var battle = campaign.Battle!.Snapshot();
         Require(battle["levelId"]!.GetValue<string>() == "c01-02" && battle["units"]!.AsArray().Count == 20,
@@ -1249,6 +1250,9 @@ public partial class CampaignNavigationChecks : Node
             var type = persistent["unitType"]!.GetValue<string>();
             var maximum = engine.Catalog.Definition("units", type)!.Value.GetProperty("maxHp").GetDouble();
             var expectedHp = Math.Max(1, Math.Floor(maximum * EcmaJson.ToElement(persistent["hpRatio"]!).GetDouble() + .5));
+            var status = staging.Roster.Single(member => member.Id == binding["campaignUnit"]!.GetValue<string>()).Status;
+            Require(status == $"生命 {Math.Floor(EcmaJson.ToElement(unit["hp"]!).GetDouble() / maximum * 100 + .5)}% · 军衔 {unit["rank"]}",
+                "After a legally played victory, staging must describe the actual carried opening health and rank.");
             Require(unit["type"]!.GetValue<string>() == type && EcmaJson.ToElement(unit["hp"]!).GetDouble() == expectedHp
                 && EcmaJson.ToElement(unit["rank"]!).GetDouble() == EcmaJson.ToElement(persistent["rank"]!).GetDouble(),
                 "Formal bridge launch did not inherit roster type, health and rank.");
@@ -1517,6 +1521,10 @@ public partial class CampaignNavigationChecks : Node
                 CompleteStory(game);
             }
             Require(Campaign(game).Node()["id"]!.GetValue<string>() == "battle-03", "Redstone briefing did not lead to its actual staging node.");
+            var staging = View<CampaignStagingScreen>(game).Presented!;
+            Require(staging.Roster.Single(member => member.Id == "elin").Status == "阵亡"
+                && !Campaign(game).OpeningRosterHealth().ContainsKey("elin"),
+                "A fallen roster member must retain her disposition without a fabricated opening-health entry.");
             Press(Button(View<CampaignStagingScreen>(game), "StartBattle"));
             var campaign = Campaign(game);
             var engine = Field<BattleEngine>(game, "engine");
@@ -1533,6 +1541,9 @@ public partial class CampaignNavigationChecks : Node
                 var persistent = carried!["roster"]![key]!;
                 var unit = units.Single(value => value["key"]!.GetValue<string>() == "campaign-" + key);
                 var maximum = engine.Catalog.Definition("units", persistent["unitType"]!.GetValue<string>())!.Value.GetProperty("maxHp").GetDouble();
+                Require(staging.Roster.Single(member => member.Id == key).Status ==
+                    $"生命 {Math.Floor(unit["hp"]!.GetValue<double>() / maximum * 100 + .5)}% · 军衔 {unit["rank"]}",
+                    "Admitted historical survivors must show their actual opening health and rank.");
                 Require(unit["hp"]!.GetValue<double>() == Math.Max(1, Math.Floor(maximum * persistent["hpRatio"]!.GetValue<double>() + .5))
                     && EcmaJson.DeepEquals(unit["rank"], persistent["rank"])
                     && EcmaJson.DeepEquals(unit["rankProgress"], persistent["rankProgress"])

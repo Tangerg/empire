@@ -50,6 +50,28 @@ public sealed class GrayFlagCampaign
             throw new CampaignActionException("A campaign-only resume cannot reconstruct a pending battle. Load the complete application save instead.");
     }
 
+    public IReadOnlyDictionary<string, double> OpeningRosterHealth()
+    {
+        var request = pending?.Request ?? PrepareBattle().Request;
+        var opening = engine.CreateState(request["level"]!.AsObject());
+        var units = opening["units"]!.AsArray().OfType<JsonObject>().ToDictionary(unit => unit["key"]!.GetValue<string>(), StringComparer.Ordinal);
+        var health = new Dictionary<string, double>(StringComparer.Ordinal);
+        foreach (var binding in request["rosterBindings"]!.AsArray().OfType<JsonObject>())
+        {
+            var unit = units[binding["levelUnitKey"]!.GetValue<string>()];
+            var maximum = engine.Catalog.Definition("units", unit["type"]!.GetValue<string>())!.Value.GetProperty("maxHp").GetDouble();
+            health.Add(binding["campaignUnit"]!.GetValue<string>(), unit["hp"]!.GetValue<double>() / maximum);
+        }
+        return new System.Collections.ObjectModel.ReadOnlyDictionary<string, double>(health);
+    }
+
+    private (CampaignRuntime Runtime, JsonObject Request) PrepareBattle()
+    {
+        var nextRuntime = new CampaignRuntime(campaignRules, definition, runtime.Snapshot());
+        var request = GrayFlagCampaignPolicy.ApplyBattleContext(nextRuntime.BeginBattle(bridge), nextRuntime.Snapshot());
+        return (nextRuntime, request);
+    }
+
     public void BeginBattle()
     {
         if (pending is not null)
@@ -59,8 +81,7 @@ public sealed class GrayFlagCampaign
             RestartBattle();
             return;
         }
-        var nextRuntime = new CampaignRuntime(campaignRules, definition, runtime.Snapshot());
-        var request = GrayFlagCampaignPolicy.ApplyBattleContext(nextRuntime.BeginBattle(bridge), nextRuntime.Snapshot());
+        var (nextRuntime, request) = PrepareBattle();
         var next = new PendingBattle(request, new GrayFlagSession(new(engine, presentation, request["rosterBindings"]!.AsArray()), request["level"]!.AsObject()), false, EcmaJson.Sha256(request["level"]));
         runtime = nextRuntime;
         pending = next;

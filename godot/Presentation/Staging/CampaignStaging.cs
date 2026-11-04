@@ -150,7 +150,7 @@ public sealed record CampaignStagingText(GameText Messages, BattleText Battle, F
 public static class CampaignStaging
 {
     public static CampaignStagingView Create(CampaignStagingText presentationText, PortraitCatalog portraitCatalog, JsonElement state, JsonElement battleNode, JsonElement level,
-        JsonElement metadata, bool hasPendingRequest)
+        JsonElement metadata, bool hasPendingRequest, IReadOnlyDictionary<string, double> openingHealth)
     {
         var text = presentationText.Messages;
         if (metadata.GetProperty("schema").GetInt32() != 3)
@@ -179,10 +179,12 @@ public static class CampaignStaging
             var type = Text(unit.GetProperty("unitType"));
             var disposition = Text(unit.GetProperty("disposition"));
             var rank = unit.TryGetProperty("rank", out var rawRank) && rawRank.ValueKind != JsonValueKind.Null ? rawRank.GetDouble() : 0;
-            var status = disposition == "available"
-                ? text.Format("ui.staging.available_status", Math.Floor(unit.GetProperty("hpRatio").GetDouble() * 100 + 0.5), rank)
-                : text.Format($"ui.staging.disposition.{disposition}");
             var binding = bindings.FirstOrDefault(candidate => Text(candidate.GetProperty("campaignUnit")) == unitId);
+            var health = disposition == "available" && binding.ValueKind != JsonValueKind.Undefined
+                ? openingHealth[unitId] : unit.GetProperty("hpRatio").GetDouble();
+            var status = disposition == "available"
+                ? text.Format("ui.staging.available_status", Math.Floor(health * 100 + 0.5), rank)
+                : text.Format($"ui.staging.disposition.{disposition}");
             roster.Add(new CampaignStagingUnit(unitId, type, presentationText.IdentityName(unitId), status,
                 binding.ValueKind == JsonValueKind.Undefined ? null : Text(binding.GetProperty("levelUnitKey")),
                 portraits.TryGetProperty(unitId, out var portrait) ? Portrait(portraitCatalog.Resolve(Text(portrait))) : null));
