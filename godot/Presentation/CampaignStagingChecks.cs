@@ -115,7 +115,7 @@ public partial class CampaignStagingChecks : Node
             var newButton = NavigationButton(screen, "StartBattle");
             var newExit = NavigationButton(screen, "CampaignExit");
             Require(newButton.Text == "重新进入战斗 →", "Reentry must not be called resume or continue");
-            Require(Descendants(screen).OfType<Label>().Any(label => label.Text == "离开战场后将从本关开局重新开始。"), "Reentry must disclose restart semantics");
+            Require(Descendants(screen).OfType<Label>().Any(label => label.Text == "离开战场后将从本关开局重新开始。战斗窗口至少 960×640，会按需扩大。"), "Reentry must disclose restart semantics");
             var buttonParent = newButton.GetParent();
             buttonParent.RemoveChild(newButton);
             Require(screen.IsInsideTree() && !newButton.IsInsideTree(), "Detached-button regression must leave its screen mounted");

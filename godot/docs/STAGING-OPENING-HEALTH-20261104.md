@@ -26,4 +26,20 @@ Focused RED: build exit 0; corrected native reproduction exit 1 at the intended 
 
 The native-process harness initially hit its existing 15-second simulated clean-gate timeout under concurrent validation. An unchanged recheck passed all 10 tests; no timeout or diagnostic rule was relaxed.
 
-Full canonical gate, extra historical staging scene, ExportRelease and final publication are pending at this checkpoint. Logs and exit records are retained in the task workspace. Headless native input/text/resources/state verification is not a GUI/pixel or physical-device visual acceptance claim.
+Logs and exit records are retained in the task workspace. Headless native input/text/resources/state verification is not a GUI/pixel or physical-device visual acceptance claim.
+
+## Completed canonical run and later focused checks
+
+The actual `verify-native.sh` completed without interruption at code checkpoint `786565ce277ae21afe47c969373af23f01c61952`, from 14:20:50 to 15:13:53 UTC (53m03s), exit 0. It covered all 44 stages: wrapper/source/format/metadata and four scene validators, both Debug builds, core contracts and all sixteen formal independent battles, outcome/catalog boundaries, editor import and 30 native scenes. The 3,425 admitted orders and final replay digests exactly match the previous published baseline. All 31 Godot logs satisfy the strict diagnostic boundary. The 30 expected warning headers match the previous gate after normalizing temporary paths; warnings from deliberate invalid inputs and missing-art fixtures were not suppressed.
+
+Relevant actual results: campaign navigation 8,797 assertions with zero failed groups; opening health 154; tactical HUD 510; battle result 371; arrival feedback 96; UI flow 205; lighting lifetime 106; lighting contracts 1,791; scenery 8,753. The separate pure staging runner passed 731 comparisons across all 45 frozen views, plus the unchanged 1,226-message and narrative-reference checks.
+
+After this canonical run, the extra historical `CampaignStagingChecks` scene reproduced its stale short-note assertion as exit 1. Updating that assertion to the exact full current wording passed 155 assertions. This is a test expectation repair, not changed UI copy.
+
+A further opening-flow rerun completed all 154 behavior assertions but failed at native shutdown: nonexistent `changed` signal disconnection, StyleBoxFlat/AtlasTexture unsafe references, and process exit 139 (wrapper exit 1). This failed run remains failed and its log is preserved; the earlier complete gate does not erase it. Only the new test host was changed: the flow completes in a separate task, queues native teardown, checks the game/screens/boards and absence of newly orphaned nodes **before** managed collection, releases explicitly owned input events, yields after the completed async flow, and drains managed finalizers while Godot remains alive. It does not manually dispose shared imported textures or alter production resource ownership.
+
+Three independent fresh-user-data reruns then passed all 160 assertions each, with actual native exit 0 and no rejected diagnostic. This establishes the tested host cleanup behavior, not a claim to have discovered or fixed a production application lifetime bug. The canonical run predates these two test-only refinements; production sources are unchanged from the fully tested checkpoint. The targeted historical scene and repeated opening scene checks are additional runs, not a second complete canonical run.
+
+The final historical native rerun passed 155 assertions. ExportRelease build passed with zero warnings/errors; the complete active-source format check and metadata guard passed (171 unique script UIDs). The final production source diff against the fully tested checkpoint is empty: only the two test refinements and this record followed the canonical run. No artwork, map, rules, translations or save migration is involved.
+
+Publication uses the existing `feat/godot-grayflag-recovery-20261020` branch in `Tangerg/empire`, by ordinary fast-forward only. The repository workflow triggers on main pushes/PRs/manual dispatch; this feature-branch push is not evidence of a hosted CI run. Remote identity and commit verification are separate from local test results.

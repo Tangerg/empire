@@ -22,90 +22,107 @@ public partial class StagingOpeningChecks : Node
     {
         try
         {
-            var root = System.Environment.GetEnvironmentVariable("XDG_DATA_HOME") ?? "";
-            var temporary = Path.GetFullPath(Path.GetTempPath());
-            Require(Path.IsPathFullyQualified(root) && Path.GetFullPath(root).StartsWith(temporary + "empire-", StringComparison.Ordinal),
-                "Staging checks require an explicit generated temporary user-data namespace.");
-            var data = Path.GetFullPath(ProjectSettings.GlobalizePath("user://"));
-            Require(data.StartsWith(Path.GetFullPath(root) + Path.DirectorySeparatorChar, StringComparison.Ordinal), "Godot must use the isolated namespace.");
-            for (var directory = new System.IO.DirectoryInfo(data); directory is not null && directory.FullName != temporary.TrimEnd(Path.DirectorySeparatorChar); directory = directory.Parent)
-                Require(!directory.Exists || (directory.Attributes & System.IO.FileAttributes.ReparsePoint) == 0, "Fixture data cannot traverse a symlink.");
-            Require(!Directory.Exists(data) || Directory.EnumerateFileSystemEntries(data).All(entry => Path.GetFileName(entry) is "logs" or "shader_cache"), "Refusing existing player saves.");
-            GetWindow().Size = new(1280, 720);
-            var mismatches = new List<string>();
-            foreach (var choice in new[] { "rush-north-hill", "steady-advance" })
-            {
-                var automatic = Path.Combine(data, "grayflag-campaign-autosave.json");
-                if (File.Exists(automatic))
-                    File.Delete(automatic);
-                var manual = Path.Combine(data, "grayflag-campaign-save.json");
-                if (File.Exists(manual))
-                    File.Delete(manual);
-                var game = new GrayFlagGame();
-                AddChild(game);
-                try
-                {
-                    await Activate(Button(View<CampaignMenuScreen>(game), "NewCampaign"));
-                    while (Campaign(game).Node()["type"]!.GetValue<string>() == "story")
-                        await Activate(Button(View<StoryScreen>(game), "StoryPrimary"));
-                    await Activate(Button(View<StoryScreen>(game), "Choice_" + choice));
-                    CheckReadOnlyOpening(Campaign(game), automatic);
-                    var staging = View<CampaignStagingScreen>(game);
-                    var status = staging.Presented!.Roster.Single(unit => unit.Id == "torren").Status;
-                    Require(Descendants(staging).OfType<Label>().Any(label => label.Text == status), "The measured roster status must be mounted native text.");
-                    await Activate(Button(staging, "StartBattle"));
-                    var owner = Campaign(game);
-                    var state = owner.Battle!.Snapshot();
-                    var torren = state["units"]!.AsArray().OfType<JsonObject>().Single(unit => unit["key"]?.GetValue<string>() == "campaign-torren");
-                    var hp = torren["hp"]!.GetValue<double>();
-                    Require(hp == (choice == "rush-north-hill" ? 72 : 98), "The unchanged authored choice must retain its actual opening health.");
-                    var opening = StateDigest.Hash(state);
-                    CheckReadOnlyOpening(owner, automatic);
-                    await Activate(Button(View<BattleScreen>(game), "SystemMenuButton"));
-                    await Activate(Descendants(View<BattleScreen>(game)).OfType<Button>().Single(button => button.Text == "战役营地"));
-                    var confirmation = Descendants(game).OfType<ConfirmationDialog>().Single(dialog => dialog.Name == "CampConfirmation");
-                    await Layout();
-                    await Activate(confirmation.GetOkButton());
-                    var camp = View<CampaignStagingScreen>(game);
-                    var campStatus = camp.Presented!.Roster.Single(unit => unit.Id == "torren").Status;
-                    var expected = $"生命 {Math.Floor(hp / 98 * 100 + .5)}% · 军衔 0";
-                    GD.Print($"STAGING_OPENING choice={choice}; before=[{status}]; actualHp={hp}/98; camp=[{campStatus}]; opening={opening}");
-                    if (status != expected || campStatus != expected)
-                        mismatches.Add(choice);
-                    Require(owner.Snapshot()["roster"]!["torren"]!["hpRatio"]!.GetValue<double>() == 1,
-                        "Displaying the injury cannot modify persistent roster health.");
-                    CheckReadOnlyOpening(owner, automatic);
-                    Require(!File.Exists(manual), "Ordinary inspection cannot write the manual slot.");
-                    await KeyPress(Key.F5);
-                    Require(File.Exists(manual), "Explicit camp F5 must save the existing camp semantics.");
-                    await Activate(Descendants(game).OfType<AcceptDialog>().Single(dialog => dialog.Visible).GetOkButton());
-                    var saved = File.ReadAllBytes(manual);
-                    var savedAt = File.GetLastWriteTimeUtc(manual);
-                    await KeyPress(Key.F9);
-                    var restored = Campaign(game);
-                    Require(!ReferenceEquals(restored, owner) && restored.AtCamp, "Native F9 must restore the saved camp into a fresh campaign.");
-                    var restoredCamp = View<CampaignStagingScreen>(game);
-                    Require(restoredCamp.Presented!.Roster.Single(unit => unit.Id == "torren").Status == campStatus,
-                        "Restored camp must retain the same opening-health description.");
-                    CheckReadOnlyOpening(restored, automatic);
-                    await Activate(Descendants(game).OfType<AcceptDialog>().Single(dialog => dialog.Visible).GetOkButton());
-                    await Activate(Button(restoredCamp, "StartBattle"));
-                    Require(StateDigest.Hash(Campaign(game).Battle!.Snapshot()) == opening, "Camp reentry must preserve the exact authored opening.");
-                    Require(File.ReadAllBytes(manual).SequenceEqual(saved) && File.GetLastWriteTimeUtc(manual) == savedAt,
-                        "Preview, camp load and reentry cannot overwrite the explicit manual checkpoint.");
-                }
-                finally
-                {
-                    RemoveChild(game);
-                    game.Free();
-                    await Layout();
-                }
-            }
-            Require(mismatches.Count == 0, "Staging must describe the actual opening health: " + string.Join(", ", mismatches));
+            await CheckOpeningFlows();
+            // Release completed-flow UI wrappers while Godot is alive; native nodes are checked before collection.
+            await Layout();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+            await Layout();
             GD.Print($"Staging opening checks passed: {assertions} assertions; actual native New/story/choice/start/camp/save/load/reentry, not GUI visual acceptance.");
             GetTree().Quit();
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
+    }
+    private async Task CheckOpeningFlows()
+    {
+        var root = System.Environment.GetEnvironmentVariable("XDG_DATA_HOME") ?? "";
+        var temporary = Path.GetFullPath(Path.GetTempPath());
+        Require(Path.IsPathFullyQualified(root) && Path.GetFullPath(root).StartsWith(temporary + "empire-", StringComparison.Ordinal),
+            "Staging checks require an explicit generated temporary user-data namespace.");
+        var data = Path.GetFullPath(ProjectSettings.GlobalizePath("user://"));
+        Require(data.StartsWith(Path.GetFullPath(root) + Path.DirectorySeparatorChar, StringComparison.Ordinal), "Godot must use the isolated namespace.");
+        for (var directory = new System.IO.DirectoryInfo(data); directory is not null && directory.FullName != temporary.TrimEnd(Path.DirectorySeparatorChar); directory = directory.Parent)
+            Require(!directory.Exists || (directory.Attributes & System.IO.FileAttributes.ReparsePoint) == 0, "Fixture data cannot traverse a symlink.");
+        Require(!Directory.Exists(data) || Directory.EnumerateFileSystemEntries(data).All(entry => Path.GetFileName(entry) is "logs" or "shader_cache"), "Refusing existing player saves.");
+        GetWindow().Size = new(1280, 720);
+        var mismatches = new List<string>();
+        foreach (var choice in new[] { "rush-north-hill", "steady-advance" })
+        {
+            var automatic = Path.Combine(data, "grayflag-campaign-autosave.json");
+            if (File.Exists(automatic))
+                File.Delete(automatic);
+            var manual = Path.Combine(data, "grayflag-campaign-save.json");
+            if (File.Exists(manual))
+                File.Delete(manual);
+            var originalOrphans = NativeNodeChecks.OrphanIds();
+            var game = new GrayFlagGame();
+            AddChild(game);
+            try
+            {
+                await Activate(Button(View<CampaignMenuScreen>(game), "NewCampaign"));
+                while (Campaign(game).Node()["type"]!.GetValue<string>() == "story")
+                    await Activate(Button(View<StoryScreen>(game), "StoryPrimary"));
+                await Activate(Button(View<StoryScreen>(game), "Choice_" + choice));
+                CheckReadOnlyOpening(Campaign(game), automatic);
+                var staging = View<CampaignStagingScreen>(game);
+                var status = staging.Presented!.Roster.Single(unit => unit.Id == "torren").Status;
+                Require(Descendants(staging).OfType<Label>().Any(label => label.Text == status), "The measured roster status must be mounted native text.");
+                await Activate(Button(staging, "StartBattle"));
+                var owner = Campaign(game);
+                var state = owner.Battle!.Snapshot();
+                var torren = state["units"]!.AsArray().OfType<JsonObject>().Single(unit => unit["key"]?.GetValue<string>() == "campaign-torren");
+                var hp = torren["hp"]!.GetValue<double>();
+                Require(hp == (choice == "rush-north-hill" ? 72 : 98), "The unchanged authored choice must retain its actual opening health.");
+                var opening = StateDigest.Hash(state);
+                CheckReadOnlyOpening(owner, automatic);
+                await Activate(Button(View<BattleScreen>(game), "SystemMenuButton"));
+                await Activate(Descendants(View<BattleScreen>(game)).OfType<Button>().Single(button => button.Text == "战役营地"));
+                var confirmation = Descendants(game).OfType<ConfirmationDialog>().Single(dialog => dialog.Name == "CampConfirmation");
+                await Layout();
+                await Activate(confirmation.GetOkButton());
+                var camp = View<CampaignStagingScreen>(game);
+                var campStatus = camp.Presented!.Roster.Single(unit => unit.Id == "torren").Status;
+                var expected = $"生命 {Math.Floor(hp / 98 * 100 + .5)}% · 军衔 0";
+                GD.Print($"STAGING_OPENING choice={choice}; before=[{status}]; actualHp={hp}/98; camp=[{campStatus}]; opening={opening}");
+                if (status != expected || campStatus != expected)
+                    mismatches.Add(choice);
+                Require(owner.Snapshot()["roster"]!["torren"]!["hpRatio"]!.GetValue<double>() == 1,
+                    "Displaying the injury cannot modify persistent roster health.");
+                CheckReadOnlyOpening(owner, automatic);
+                Require(!File.Exists(manual), "Ordinary inspection cannot write the manual slot.");
+                await KeyPress(Key.F5);
+                Require(File.Exists(manual), "Explicit camp F5 must save the existing camp semantics.");
+                await Activate(Descendants(game).OfType<AcceptDialog>().Single(dialog => dialog.Visible).GetOkButton());
+                var saved = File.ReadAllBytes(manual);
+                var savedAt = File.GetLastWriteTimeUtc(manual);
+                await KeyPress(Key.F9);
+                var restored = Campaign(game);
+                Require(!ReferenceEquals(restored, owner) && restored.AtCamp, "Native F9 must restore the saved camp into a fresh campaign.");
+                var restoredCamp = View<CampaignStagingScreen>(game);
+                Require(restoredCamp.Presented!.Roster.Single(unit => unit.Id == "torren").Status == campStatus,
+                    "Restored camp must retain the same opening-health description.");
+                CheckReadOnlyOpening(restored, automatic);
+                await Activate(Descendants(game).OfType<AcceptDialog>().Single(dialog => dialog.Visible).GetOkButton());
+                await Activate(Button(restoredCamp, "StartBattle"));
+                Require(StateDigest.Hash(Campaign(game).Battle!.Snapshot()) == opening, "Camp reentry must preserve the exact authored opening.");
+                Require(File.ReadAllBytes(manual).SequenceEqual(saved) && File.GetLastWriteTimeUtc(manual) == savedAt,
+                    "Preview, camp load and reentry cannot overwrite the explicit manual checkpoint.");
+            }
+            finally
+            {
+                var screens = Descendants(game).OfType<BattleScreen>().ToArray();
+                var boards = screens.Select(screen => screen.Board).ToArray();
+                game.QueueFree();
+                await Layout();
+                Require(!GodotObject.IsInstanceValid(game), "The native game tree must be released before its fixture ends.");
+                Require(screens.All(screen => !GodotObject.IsInstanceValid(screen)) && boards.All(board => !GodotObject.IsInstanceValid(board)),
+                    "Queued teardown must release native battle screens and boards before managed collection.");
+                Require(NativeNodeChecks.OrphanIds().All(originalOrphans.Contains),
+                    "Staging flows must not leave orphan nodes for managed collection to clean up.");
+            }
+        }
+        Require(mismatches.Count == 0, "Staging must describe the actual opening health: " + string.Join(", ", mismatches));
     }
     private void CheckReadOnlyOpening(GrayFlagCampaign owner, string automatic)
     {
@@ -156,7 +173,10 @@ public partial class StagingOpeningChecks : Node
         Require(button.IsVisibleInTree() && !button.Disabled, "Native action must be visible and enabled.");
         button.GrabFocus();
         foreach (var pressed in new[] { true, false })
-            button.GetViewport().PushInput(new InputEventKey { Keycode = Key.Space, PhysicalKeycode = Key.Space, Pressed = pressed }, true);
+        {
+            using var input = new InputEventKey { Keycode = Key.Space, PhysicalKeycode = Key.Space, Pressed = pressed };
+            button.GetViewport().PushInput(input, true);
+        }
         await Layout();
     }
     private async Task Layout()
