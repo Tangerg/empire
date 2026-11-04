@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Empire.Presentation.Tactical;
+using Empire.Localization;
 using Godot;
 
 namespace Empire.Presentation;
@@ -43,6 +44,19 @@ public partial class CampaignNavigationChecks
                 using var input = new InputEventMouseMotion { Position = at, GlobalPosition = at };
                 viewport.PushInput(input, true);
             }
+            void CheckTile(BoardCell cell, int? inspect)
+            {
+                var projection = hud.Projection!;
+                var expected = session.ProjectHud(projection.Stamp, screen.Selection!, TacticalHit.Ground(cell), inspect, false)
+                    .Sections.Single(section => section.Key == "tile");
+                var actual = projection.Sections.SingleOrDefault(section => section.Key == "tile");
+                var labels = hud.FindChild("tile", true, false) is { } nativeTile
+                    ? nativeTile.FindChildren("*", "Label", true, false).OfType<Label>().Select(label => label.Text)
+                    : Array.Empty<string>();
+                Require(actual is not null && actual.Title == expected.Title && actual.Rows.SequenceEqual(expected.Rows)
+                    && expected.Rows.All(row => labels.Contains(row.Label)),
+                    "Every native pointer cell must refresh its canonical terrain facts and coordinate labels, including idle inspection.");
+            }
             foreach (var cell in queries.MoveStops(selected))
             {
                 var point = screen.Board.ToGlobal(screen.Board.Projection.CellCenter(new(cell.X, cell.Y)));
@@ -78,14 +92,7 @@ public partial class CampaignNavigationChecks
                     Require(retained.All(node => GodotObject.IsInstanceValid(node) && node.IsInsideTree()
                         && ReferenceEquals(node, hud.FindChild(node.Name, true, false))),
                         "Pointer-only changes must retain unchanged native HUD sections, portraits and dossier controls instead of reshaping their text.");
-                    var projection = hud.Projection!;
-                    var expected = session.ProjectHud(projection.Stamp, screen.Selection!, TacticalHit.Ground(point.Cell), selected, false)
-                        .Sections.Single(section => section.Key == "tile");
-                    var actual = projection.Sections.Single(section => section.Key == "tile");
-                    var labels = hud.FindChild("tile", true, false).FindChildren("*", "Label", true, false).OfType<Label>().Select(label => label.Text).ToArray();
-                    Require(actual.Title == expected.Title && actual.Rows.SequenceEqual(expected.Rows)
-                        && expected.Rows.All(row => labels.Contains(row.Label)),
-                        "Changed pointer terrain must immediately match the authoritative projection, even while unchanged sections stay mounted.");
+                    CheckTile(point.Cell, selected);
                     await Layout();
                 }
                 GD.Print($"POINTER_HUD sample={sample} cells={points.Count} allocated={allocated} ms={elapsed:F3}");
@@ -129,6 +136,45 @@ public partial class CampaignNavigationChecks
             await Layout();
             Require(!popup.Visible && ((Button)hud.FindChild("DossierButton", true, false)).HasFocus(),
                 "Closing the refreshed dossier must return focus to its live opener.");
+            for (var press = 0; press < 2; press++)
+            {
+                foreach (var pressed in new[] { true, false })
+                {
+                    using var key = new InputEventKey { Keycode = Key.Escape, PhysicalKeycode = Key.Escape, Pressed = pressed };
+                    viewport.PushInput(key, true);
+                }
+                await Layout();
+                if (press == 0)
+                    Require(viewport.GuiGetFocusOwner() is null && screen.Selection?.UnitId == selected,
+                        "The first Escape returns dossier-opener focus to the map without discarding the selected actor.");
+            }
+            Require(screen.Selection?.Kind == TacticalSelectionKind.Idle,
+                "Native Escape must return the selected actor to idle map inspection.");
+            var recruitment = session.GetTacticalQueries(0);
+            var canRecruit = recruitment.InteractiveCells.Any(recruitment.CanOpenRecruitment);
+            var idleHint = GodotTextCatalog.LoadSimplifiedChinese().Format(canRecruit ? "ui.hud.selection.idle_recruit" : "ui.hud.selection.idle");
+            for (var sample = 0; sample < 3; sample++)
+            {
+                long allocated = 0;
+                double elapsed = 0;
+                foreach (var point in points)
+                {
+                    var timer = System.Diagnostics.Stopwatch.StartNew();
+                    var start = GC.GetAllocatedBytesForCurrentThread();
+                    Motion(point.Pixel);
+                    allocated += GC.GetAllocatedBytesForCurrentThread() - start;
+                    timer.Stop();
+                    elapsed += timer.Elapsed.TotalMilliseconds;
+                    Require(viewport.GuiGetHoveredControl() == map && screen.Selection?.Kind == TacticalSelectionKind.Idle
+                        && hud.Projection!.Hint == idleHint,
+                        "Idle pointer motion must reach the real map and preserve the canonical recruitment guidance.");
+                    CheckTile(point.Cell, null);
+                    await Layout();
+                }
+                GD.Print($"POINTER_IDLE sample={sample} cells={points.Count} allocated={allocated} ms={elapsed:F3}");
+                Require(allocated < points.Count * 2L * 1024 * 1024,
+                    "Idle pointer inspection must not rescan recruitment across the unchanged battle map on every hover.");
+            }
             Require(Digest(session.Snapshot()) == before && session.Revision == 0,
                 "Pointer motion and retained dossier interactions must not mutate canonical battle state.");
         }

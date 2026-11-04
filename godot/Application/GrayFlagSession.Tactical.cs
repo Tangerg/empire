@@ -12,7 +12,19 @@ namespace Empire.Application;
 
 public sealed partial class GrayFlagSession
 {
+    private (long Revision, bool Available)? recruitmentAvailability;
+
     public ITacticalSelectionQueries GetTacticalQueries(long binding) => new SelectionQueries(this, binding);
+
+    private bool CanOpenAnyRecruitment(long binding)
+    {
+        if (recruitmentAvailability is { } cached && cached.Revision == revision)
+            return cached.Available;
+        var queries = GetTacticalQueries(binding);
+        var available = queries.InteractiveCells.Any(queries.CanOpenRecruitment);
+        recruitmentAvailability = (queries.Stamp.Revision, available);
+        return available;
+    }
 
     private sealed class SelectionQueries : ITacticalSelectionQueries
     {

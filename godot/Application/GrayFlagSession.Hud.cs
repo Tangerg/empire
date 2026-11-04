@@ -629,12 +629,8 @@ public sealed partial class GrayFlagSession
             var details = sections.FindIndex(section => section.Key is "unit" or "structure" or "tile");
             sections.Insert(details < 0 ? sections.Count : details, siteSection);
         }
-        if (stamp.Revision != revision)
-            throw new DomainInvariantException("Battle changed during HUD projection.");
-        var recruitmentQueries = human && selection.Kind == TacticalSelectionKind.Idle
-            ? GetTacticalQueries(stamp.Binding) : null;
-        var canOpenRecruitment = recruitmentQueries is not null
-            && recruitmentQueries.InteractiveCells.Any(recruitmentQueries.CanOpenRecruitment);
+        var canOpenRecruitment = human && selection.Kind == TacticalSelectionKind.Idle
+            && CanOpenAnyRecruitment(stamp.Binding);
         var selectionHint = S(state, "phase") == "over"
             ? text.Format("ui.hud.battle_over")
             : !human ? text.Format("ui.hud.computer_thinking") : SelectionHint(selection.Kind, canOpenRecruitment);
@@ -643,6 +639,8 @@ public sealed partial class GrayFlagSession
                 || !selection.TargetSubjects.Any(subject => subject.Accepts(cursorHit))
                 || cursorHit.Kind == TacticalHitKind.Unit && cursorUnit is null))
             selectionHint = text.Format("ui.hud.selection.preview_held");
+        if (stamp.Revision != revision)
+            throw new DomainInvariantException("Battle changed during HUD projection.");
         return new(
             stamp,
             selectionHint,
