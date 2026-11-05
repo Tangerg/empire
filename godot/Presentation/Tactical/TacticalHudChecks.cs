@@ -474,7 +474,6 @@ public partial class TacticalHudChecks : Node
         }
         finally
         {
-            GetViewport().NotifyMouseExited();
             RemoveChild(screen);
             screen.Free();
             GetWindow().Size = windowSize;
