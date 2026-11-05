@@ -606,6 +606,7 @@ public partial class BattleScreen : Control
         _world.AddChild(_overlay);
         _mapArea.GuiInput += MapInput;
         _mapArea.Resized += ResizeCamera;
+        VisibilityChanged += ResizeCamera;
         _mapArea.MouseExited += () =>
         {
             _pointerMapPosition = null;
@@ -806,7 +807,8 @@ public partial class BattleScreen : Control
 
     private void ResizeCamera()
     {
-        if (!_built || _camera is null)
+        // Hidden preparation has not committed its host window size yet.
+        if (!_built || _camera is null || (!_camera.HasViewport && !IsVisibleInTree()))
             return;
         // The world uses the full native viewport; HUD controls intercept only their painted surfaces.
         _camera.Resize(new(_mapArea.Size.X, _mapArea.Size.Y), new(16, 110, 16, 134));

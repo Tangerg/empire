@@ -386,9 +386,9 @@ public partial class GrayFlagGame : Node
         screen = prepared.Screen;
         session = prepared.Session;
         resultOffered = false;
-        view.ProcessMode = ProcessModeEnum.Inherit;
-        view.Visible = true;
         ApplyWindowMinimum();
+        view.Visible = true;
+        view.ProcessMode = ProcessModeEnum.Inherit;
     }
 
     private void ShowNode(string? battleLogMessage = null) => Activate(campaign, PrepareNode(campaign, battleLogMessage));

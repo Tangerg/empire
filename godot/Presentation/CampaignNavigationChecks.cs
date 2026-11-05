@@ -204,10 +204,15 @@ public partial class CampaignNavigationChecks : Node
         GrayFlagGame? game = null;
         try
         {
-            foreach (var inherited in new[] { Vector2I.Zero, new Vector2I(1000, 500) })
+            foreach (var (inherited, initialSize) in new[]
+            {
+                (Vector2I.Zero, new Vector2I(640, 480)),
+                (new Vector2I(1000, 500), new Vector2I(640, 480)),
+                (Vector2I.Zero, new Vector2I(1280, 720))
+            })
             {
                 window.MinSize = inherited;
-                window.Size = new(640, 480);
+                window.Size = initialSize;
                 WriteFixture(battleNodeState);
                 game = MountGame();
                 Require(window.MinSize == inherited, "Menu changed its host window minimum.");
@@ -232,7 +237,9 @@ public partial class CampaignNavigationChecks : Node
                     && !NativeNodeChecks.OrphanIds().Except(orphans).Any(),
                     "Failed hidden battle preparation must release the screen and all of its owned nodes.");
                 Press(Button(View<Control>(game), "StartBattle"));
+                CheckOpeningCamera(game, "Immediate battle activation");
                 await Layout();
+                CheckOpeningCamera(game, "Settled battle activation");
                 var expected = new Vector2I(Math.Max(inherited.X, 960), Math.Max(inherited.Y, 640));
                 Require(window.MinSize == expected && window.Size.X >= expected.X && window.Size.Y >= expected.Y,
                     "Committed battle did not preserve the larger host minimum and grow to a readable viewport.");
@@ -248,6 +255,7 @@ public partial class CampaignNavigationChecks : Node
                 await Layout();
                 Require(window.MinSize == inherited, "Leaving battle for camp retained the battle minimum.");
                 Press(Button(View<Control>(game), "StartBattle"));
+                CheckOpeningCamera(game, "Camp reentry");
                 RemoveChild(game);
                 Require(window.MinSize == inherited, "Unmount retained the battle minimum.");
                 AddChild(game);
@@ -264,6 +272,22 @@ public partial class CampaignNavigationChecks : Node
             window.MinSize = originalMinimum;
             window.Size = originalSize;
         }
+    }
+
+    private void CheckOpeningCamera(GrayFlagGame game, string context)
+    {
+        var screen = View<BattleScreen>(game);
+        var map = (Control)screen.FindChild("MapArea", true, false);
+        var world = map.GetNode<Node2D>("World");
+        var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
+        var opening = scene.OpeningFocus!;
+        var focus = screen.Board.Projection.CellCenter(new Coord(opening[0], opening[1]));
+        var expected = new BattlefieldCamera(new(screen.Board.FieldSize.X, screen.Board.FieldSize.Y),
+            new(74, 62, 74, 74), new(focus.X, focus.Y), frameInitialGround: true);
+        expected.Resize(new(map.Size.X, map.Size.Y), new(16, 110, 16, 134));
+        Require(world.Scale.IsEqualApprox(Vector2.One * (float)expected.Zoom)
+            && world.Position.DistanceTo(new Vector2((float)expected.FieldOrigin.X, (float)expected.FieldOrigin.Y)) < .01f,
+            $"{context} must frame authored focus using the committed viewport synchronously: map={map.Size}, actual={world.Position}, expected={expected.FieldOrigin}.");
     }
 
     private async Task CheckModifiedApplicationShortcuts(Key key)
