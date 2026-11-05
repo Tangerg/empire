@@ -36,6 +36,15 @@ location instead. Headless smoke checks use isolated temporary user data:
 bash tools/godot/verify-native.sh
 ```
 
+The aggregate gives each native scene up to 900 seconds, independent all-level
+replay up to 1200 seconds, and the normally paced carried campaign opening up to
+2400 seconds. Set `EMPIRE_CHECK_TIMEOUT_SECONDS`, `EMPIRE_REPLAY_TIMEOUT_SECONDS`,
+and `EMPIRE_CAMPAIGN_TIMEOUT_SECONDS` to override those separate bounds. A timeout
+or native shutdown diagnostic fails the gate. The played opening covers a genuine
+AI defeat and retry, two carried victories and the third battle's first round;
+it is not complete-campaign, graphical or packaged-export acceptance.
+
+
 On another desktop, install the official .NET 8 SDK and Godot 4.6.3 **.NET** editor.
 Open `godot/project.godot`, build its C# project and run the main scene. The source
 archive contains `godot` and `tools/godot`, but not the original TypeScript tree,

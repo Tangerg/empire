@@ -32,6 +32,8 @@ public partial class CampaignPlayedFlowChecks
             var campaign = Campaign(game);
             var session = campaign.Battle!;
             var screen = View<BattleScreen>(game);
+            Require(screen.Board.AnimationsEnabled && screen.Board.AdvanceAnimationsAutomatically,
+                "Carried battle acceptance requires normal automatic presentation on every new battlefield.");
             Require(session.Snapshot()["levelId"]!.GetValue<string>() == level && session.Revision == 0,
                 "Carried play must begin the expected untouched battle, not an independent fresh-level fixture.");
             CheckOpeningCarry(game, level == "c01-01" ? 430 : 460);
@@ -112,12 +114,23 @@ public partial class CampaignPlayedFlowChecks
             Require(EcmaJson.DeepEquals(campaign.Snapshot(), campaignBefore) && File.ReadAllBytes(automaticPath).SequenceEqual(automaticBefore)
                 && File.GetLastWriteTimeUtc(automaticPath) == automaticStamp,
                 "Winning the actual battle must not advance or autosave the campaign before explicit settlement.");
+            if (level == "c01-02")
+            {
+                var safe = terminal["scenario"]!["zones"]!["east-safety"]!.AsArray().OfType<JsonObject>().Select(TacticalQueries.Position).ToHashSet();
+                var civilians = terminal["units"]!.AsArray().OfType<JsonObject>()
+                    .Where(unit => unit["key"]?.GetValue<string>().StartsWith("refugee-", StringComparison.Ordinal) == true).ToArray();
+                Require(terminal["conclusion"]!["kind"]!.GetValue<string>() == "objectiveCompleted"
+                    && terminal["conclusion"]!["objective"]!.GetValue<string>() == "primary" && civilians.Length == 3
+                    && civilians.All(unit => Number(unit["hp"]!) > 0 && safe.Contains(TacticalQueries.Position(unit)))
+                    && terminal["units"]!.AsArray().OfType<JsonObject>().All(unit => unit["key"]?.GetValue<string>() != "unmarked-ballista")
+                    && terminal["players"]!.AsArray().OfType<JsonObject>().Any(player => player["id"]!.GetValue<int>() == 2 && player["alive"]!.GetValue<bool>()),
+                    "The carried second victory must complete the actual evacuation and ballista objective with enemies remaining, not take an elimination shortcut.");
+            }
             var reference = new GrayFlagCampaign(rules, definition, levels);
             reference.Load(campaign.Save());
             reference.FinishBattle();
             var settle = Button(View<BattleResultScreen>(game), "Settle");
-            settle.GrabFocus();
-            SendKey(Key.Enter);
+            NativePress(settle);
             settle.EmitSignal(Godot.Button.SignalName.Pressed);
             await Layout();
             Require(!campaign.HasPendingBattle && EcmaJson.DeepEquals(campaign.Snapshot(), reference.Snapshot()),
@@ -156,6 +169,8 @@ public partial class CampaignPlayedFlowChecks
         CheckOpeningCarry(game, 490);
         var third = Campaign(game).Battle!;
         var thirdScreen = View<BattleScreen>(game);
+        Require(thirdScreen.Board.AnimationsEnabled && thirdScreen.Board.AdvanceAnimationsAutomatically,
+            "The third-battle opening must also retain normal automatic presentation.");
         var thirdCampaign = Campaign(game).Snapshot();
         var thirdSlots = SaveSlots();
         var thirdOrders = 0;
@@ -182,7 +197,7 @@ public partial class CampaignPlayedFlowChecks
             "The carried third battle must remain live and playable after the first full round.");
         Require(EcmaJson.DeepEquals(Campaign(game).Snapshot(), thirdCampaign) && SaveSlots() == thirdSlots,
             "Playing the carried third-battle opening must not settle rewards or alter either save slot.");
-        GD.Print($"CARRIED_OPENING_OK battles played in this process={total} legal orders; third opening={thirdOrders} orders; third state={StateDigest.Hash(third.Snapshot())}; outcomes={string.Join(";", outcomes)}. No third victory, escort completion or full-campaign claim.");
+        GD.Print($"CARRIED_OPENING_OK battles played in this process={total} legal orders; third opening={thirdOrders} orders; third state={StateDigest.Hash(third.Snapshot())}; outcomes={string.Join(";", outcomes)}. No third-battle victory or full-campaign claim.");
     }
 
     private void CheckOpeningCarry(GrayFlagGame game, int funds)

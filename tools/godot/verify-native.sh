@@ -15,7 +15,7 @@ node tools/godot/validate-reed-village.mjs --self-test
 node tools/godot/validate-white-river.mjs --self-test
 node tools/godot/validate-luojia.mjs --self-test
 # Bound each native process; a stalled process is a failed gate, never a PASS.
-export EMPIRE_CHECK_TIMEOUT_SECONDS="${EMPIRE_CHECK_TIMEOUT_SECONDS:-300}"
+export EMPIRE_CHECK_TIMEOUT_SECONDS="${EMPIRE_CHECK_TIMEOUT_SECONDS:-900}"
 dotnet() { command timeout --signal=TERM --kill-after=15s "$EMPIRE_CHECK_TIMEOUT_SECONDS" "$DOTNET_ROOT/dotnet" "$@"; }
 export -f dotnet
 # No installation, publication or user-save mutation. Native checks use fixture sessions.
@@ -48,4 +48,6 @@ for scene in NarrativeChecks OathPadChecks DynamicStateChecks PaintedSurfaceChec
 done
 run_scene LightingChecks -- "--lighting-oracle=$PWD/godot/tests/oracle/lighting.json"
 run_scene SceneryChecks -- --scenery-oracle=res://tests/oracle/board-scenery.json.gz
+# This is a complete played opening, not a single fixture scene or accelerated replay.
+EMPIRE_CHECK_TIMEOUT_SECONDS="${EMPIRE_CAMPAIGN_TIMEOUT_SECONDS:-2400}" run_scene CampaignPlayedFlowChecks
 printf 'Current native contracts, replay/save determinism, and application flow passed. Manual GUI and export acceptance are separate.\n'

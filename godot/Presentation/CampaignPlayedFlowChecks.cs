@@ -141,8 +141,7 @@ public partial class CampaignPlayedFlowChecks : Node
         Require(completionCount == 1 && ReferenceEquals(View<Control>(game), completion) && SaveSlots() == slots,
             "Continued normal application frames must not repeat the result or save the defeat.");
         var retry = Button(completion, "Retry");
-        retry.GrabFocus();
-        SendKey(Key.Enter);
+        NativePress(retry);
         retry.EmitSignal(Godot.Button.SignalName.Pressed);
         await Layout();
         var restarted = Campaign(game).Battle!;
@@ -252,10 +251,21 @@ public partial class CampaignPlayedFlowChecks : Node
 
     private async Task Activate(Button button)
     {
+        NativePress(button);
+        await Layout();
+    }
+
+    private void NativePress(Button button)
+    {
         Require(button.IsInsideTree() && button.IsVisibleInTree() && !button.Disabled, "Native activation target must be reachable and enabled.");
         button.GrabFocus();
+        Require(button.HasFocus(), "The native button must own keyboard focus before activation.");
+        var activations = 0;
+        void Pressed() => activations++;
+        button.Pressed += Pressed;
         SendKey(Key.Enter);
-        await Layout();
+        button.Pressed -= Pressed;
+        Require(activations == 1, "One real Enter gesture must emit one native button activation before any synthetic duplicate probe.");
     }
 
     private void SendKey(Key key)
