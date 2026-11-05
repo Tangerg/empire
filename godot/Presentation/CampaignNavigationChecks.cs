@@ -53,6 +53,7 @@ public partial class CampaignNavigationChecks : Node
                 ("idle polling after play, undo and load", CheckIdlePolling),
                 ("native pointer refresh preserves unchanged HUD content", CheckPointerHudRetention),
                 ("popup dismissal owns its pointer gesture", CheckModalPointerIsolation),
+                ("native touch activation and dossier handoff", CheckNativeTouchActivation),
                 ("battle window minimum follows committed view and lifecycle", CheckBattleWindowMinimum),
                 ("root notice leaves with its view", CheckNoticeViewTransition),
                 ("startup resume, battle restart, camp and Continue", CheckBattleCampMenu),

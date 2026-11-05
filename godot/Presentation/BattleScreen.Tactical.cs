@@ -63,10 +63,23 @@ public partial class BattleScreen
         void Add(string name, string label, bool enabled, Action action)
         {
             Button button = null!;
+            var pending = false;
+            bool CanActivate() => GodotObject.IsInstanceValid(this) && !IsQueuedForDeletion()
+                && GodotObject.IsInstanceValid(button) && !button.IsQueuedForDeletion()
+                && button.IsInsideTree() && _globalOrders.IsAncestorOf(button) && !button.Disabled && Current(stamp);
             button = Button(label, () =>
             {
-                if (button.IsInsideTree() && !button.Disabled && Current(stamp))
-                    action();
+                if (pending || !CanActivate())
+                    return;
+                pending = true;
+                // Emulated mouse release precedes raw touch release. Keep its native
+                // control mounted until both events have left the viewport dispatch.
+                Callable.From(() =>
+                {
+                    pending = false;
+                    if (CanActivate())
+                        action();
+                }).CallDeferred();
             });
             button.Name = name;
             button.SizeFlagsHorizontal = SizeFlags.ExpandFill;

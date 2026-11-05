@@ -477,6 +477,7 @@ internal static class PaintedPickingChecks
                             "The native road click must preview the canonical road path, never the house entrance.");
                         var wait = Descendants(screen).OfType<Button>().Single(button => button.GetMeta("hud_key", "").AsString() == "commands/wait");
                         wait.EmitSignal(BaseButton.SignalName.Pressed);
+                        await host.ToSignal(host.GetTree(), SceneTree.SignalName.ProcessFrame);
                     }
                     require(session.Revision == 1 && session.GetTacticalQueries(0).Unit(moverId)!.At == destination,
                         "The actual pointer-selected road destination must permit and commit the real movement command.");
@@ -553,6 +554,7 @@ internal static class PaintedPickingChecks
                 && explicitAttack.TargetSubjects.Contains(TacticalTarget.Unit(new(50, 35), secondEnemy["id"]!.GetValue<int>())),
                 $"The actual mounted attack command must have two explicit legal Unit targets, preserving singleton auto-execution semantics: key={attackKey}, targets={string.Join(",", explicitAttack.TargetSubjects)}.");
             attackButton.EmitSignal(BaseButton.SignalName.Pressed);
+            await host.ToSignal(host.GetTree(), SceneTree.SignalName.ProcessFrame);
             require(screen.Selection?.Kind == TacticalSelectionKind.Target && session.Revision == 0,
                 $"The mounted multi-target command must enter genuine explicit entity-target mode: selection={screen.Selection?.Kind}, revision={session.Revision}, key={attackKey}.");
             Hover(hiddenPoint);

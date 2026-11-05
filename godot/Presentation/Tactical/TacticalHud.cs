@@ -12,6 +12,7 @@ public partial class TacticalHud : Control
     private TacticalHudProjection? current;
     private long generation;
     private bool submitted;
+    private Button? pendingOrder;
     private TacticalHudArt? art;
     private ScrollContainer? detailScroll;
     private VBoxContainer? details;
@@ -24,6 +25,7 @@ public partial class TacticalHud : Control
     {
         if (ReferenceEquals(art, value))
             return;
+        pendingOrder = null;
         ReleaseTextureReferences(this);
         art = value;
         current = null;
@@ -40,6 +42,7 @@ public partial class TacticalHud : Control
     public override void _ExitTree()
     {
         generation++;
+        pendingOrder = null;
         current = null;
         ReleaseTextureReferences(this);
     }
@@ -108,6 +111,7 @@ public partial class TacticalHud : Control
         if (detailPopup is not null)
             retained.Add(detailPopup);
         if (hasDossier && current is not null && current.Stamp == projection.Stamp && current.Busy == projection.Busy
+            && current.DossierSubject == projection.DossierSubject
             && GetNodeOrNull<Button>("DossierButton") is { } dossierEntry)
             retained.Add(dossierEntry);
         var mountedHint = GetNodeOrNull<Label>("SelectionHint");
@@ -201,13 +205,16 @@ public partial class TacticalHud : Control
             {
                 if (current is null || !IsInsideTree() || !button.IsInsideTree())
                     return;
-                var openingGeneration = generation;
+                // A map-hover refresh may remove ancillary terrain while this native click
+                // is pending. Bind the read request to its subject, not every render.
+                var openingSubject = current.DossierSubject;
                 var openingStamp = current.Stamp;
                 Callable.From(() =>
                 {
-                    if (!GodotObject.IsInstanceValid(this) || !IsInsideTree() || generation != openingGeneration
-                        || current?.Stamp != openingStamp || !GodotObject.IsInstanceValid(button) || !button.IsInsideTree()
-                        || !GodotObject.IsInstanceValid(popup) || !popup.IsInsideTree() || popup.Visible)
+                    if (!GodotObject.IsInstanceValid(this) || !IsInsideTree() || IsQueuedForDeletion()
+                        || current?.Stamp != openingStamp || current.DossierSubject != openingSubject
+                        || !GodotObject.IsInstanceValid(button) || button.IsQueuedForDeletion() || !button.IsInsideTree() || !IsAncestorOf(button)
+                        || !GodotObject.IsInstanceValid(popup) || popup.IsQueuedForDeletion() || !popup.IsInsideTree() || popup.Visible)
                         return;
                     if (expandedKey is not null && details.FindChild(expandedKey, true, false) is VBoxContainer section)
                     {
@@ -627,15 +634,28 @@ public partial class TacticalHud : Control
             }
             var key = sectionKey + "/" + row.Key;
             button.SetMeta("hud_key", key);
+            bool CanActivate() => GodotObject.IsInstanceValid(this) && !IsQueuedForDeletion() && IsInsideTree()
+                && GodotObject.IsInstanceValid(button) && !button.IsQueuedForDeletion() && button.IsInsideTree()
+                && IsAncestorOf(button) && !submitted && current is { Busy: false } live && !button.Disabled
+                && intent.Stamp == live.Stamp && live.Sections.FirstOrDefault(value => value.Key == sectionKey)?.Rows
+                    .Any(value => SameRow(value, row) && value.Enabled) == true;
             button.Pressed += () =>
             {
-                if (IsInsideTree() && button.IsInsideTree() && !submitted && current is { Busy: false } live && !button.Disabled
-                    && intent.Stamp == live.Stamp && live.Sections.FirstOrDefault(value => value.Key == sectionKey)?.Rows
-                        .Any(value => SameRow(value, row) && value.Enabled) == true)
+                if (pendingOrder is not null || !CanActivate())
+                    return;
+                pendingOrder = button;
+                // Publishing can rebuild this row. Finish native mouse/touch dispatch
+                // before letting its owner replace the control that handled the press.
+                Callable.From(() =>
                 {
+                    if (!ReferenceEquals(pendingOrder, button))
+                        return;
+                    pendingOrder = null;
+                    if (!CanActivate())
+                        return;
                     submitted = true;
                     IntentRequested?.Invoke(intent);
-                }
+                }).CallDeferred();
             };
             RestoreFocus(button, key);
             return button;
@@ -782,7 +802,7 @@ public partial class TacticalHud : Control
         && first.Rows.Zip(second.Rows).All(pair => SameRow(pair.First, pair.Second));
 
     private static bool Equivalent(TacticalHudProjection first, TacticalHudProjection second) =>
-        first.Stamp == second.Stamp && first.Hint == second.Hint && first.Busy == second.Busy && first.Portrait == second.Portrait && first.CloseLabel == second.CloseLabel
+        first.Stamp == second.Stamp && first.DossierSubject == second.DossierSubject && first.Hint == second.Hint && first.Busy == second.Busy && first.Portrait == second.Portrait && first.CloseLabel == second.CloseLabel
         && first.Sections.Count == second.Sections.Count && first.Sections.Zip(second.Sections).All(pair => SameSection(pair.First, pair.Second));
 
     private static void Place(Control control, float left, float top, float right, float bottom, float x1, float y1, float x2, float y2)

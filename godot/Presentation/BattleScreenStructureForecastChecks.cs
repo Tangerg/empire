@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Text.Json.Nodes;
+using System.Threading.Tasks;
 using Empire.Application;
 using Empire.Core.Determinism;
 using Empire.Core.Engine;
@@ -13,7 +14,7 @@ namespace Empire.Presentation;
 
 public partial class BattleScreenChecks
 {
-    private void CheckStructureCollateralDisclosure()
+    private async Task CheckStructureCollateralDisclosure()
     {
         var fixture = PresentationJson.Load<JsonObject>("res://tests/native/c01-09-structure-collateral.json");
         var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
@@ -73,6 +74,7 @@ public partial class BattleScreenChecks
                         .Single(value => value.GetMeta("hud_key", "").AsString() == "commands/" + order.Key);
                     Require(button.IsVisibleInTree() && !button.Disabled, "The original satchel order is available on the native HUD.");
                     button.EmitSignal(BaseButton.SignalName.Pressed);
+                    await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
                     Require(screen.Selection is { Kind: TacticalSelectionKind.Target, Weapon: "c01.satchel-charge" } target
                         && target.TargetSubjects.Count == 4 && session.Revision == 0,
                         "The actual command button enters target selection, without automatic dispatch.");

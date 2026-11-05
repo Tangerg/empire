@@ -134,6 +134,7 @@ public partial class BattleScreenChecks
             var button = Descendants(hud).OfType<Button>().Single(value => value.GetMeta("hud_key", "").AsString() == "commands/capture");
             Require(button.IsVisibleInTree() && !button.Disabled, "The real capture order is available on the native HUD.");
             button.EmitSignal(BaseButton.SignalName.Pressed);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             var after = session.Snapshot();
             var events = new JsonArray(session.Events.Select(value => (JsonNode)value.DeepClone()).ToArray());
             Require(session.Revision == 1 && !screen.IsPresenting && session.ActionLog.Count == 1

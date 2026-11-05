@@ -46,6 +46,7 @@ public partial class TacticalHudChecks
             var heal = ((GridContainer)hud.FindChild("Orders", true, false)).GetChildren().OfType<Button>()
                 .Single(button => button.GetMeta("hud_key", "").AsString() == "commands/heal");
             heal.EmitSignal(BaseButton.SignalName.Pressed);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             GetViewport().GuiReleaseFocus();
             foreach (var pressed in new[] { true, false })
             {
@@ -133,6 +134,7 @@ public partial class TacticalHudChecks
             Require(screen.Selection?.Kind == TacticalSelectionKind.Unit, "Return to the original actor before rearming the singleton target preview.");
             ((GridContainer)hud.FindChild("Orders", true, false)).GetChildren().OfType<Button>()
                 .Single(button => button.GetMeta("hud_key", "").AsString() == "commands/heal").EmitSignal(BaseButton.SignalName.Pressed);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             Require(screen.Selection?.Kind == TacticalSelectionKind.Target && session.Revision == 0, "Rearming from the actor only composes the order.");
             await HoverRecipient();
             Motion(Cancel().GetGlobalRect().GetCenter());

@@ -1,6 +1,7 @@
 #nullable enable
 using System.Globalization;
 using System.Text.Json.Nodes;
+using System.Threading.Tasks;
 using Empire.Application;
 using Empire.Core.Determinism;
 using Empire.Core.Engine;
@@ -15,7 +16,7 @@ namespace Empire.Presentation;
 /// <summary>Instance identity is presentation-only, including campaign reconstruction and detached casualty records.</summary>
 internal static class BattleIdentityChecks
 {
-    internal static void Check(Node owner)
+    internal static async Task Check(Node owner)
     {
         var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
         var levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json");
@@ -77,6 +78,7 @@ internal static class BattleIdentityChecks
                 {
                     Descendants(screen).OfType<Button>().Single(button =>
                         button.GetMeta("hud_key", "").AsString() == "stances/face:north").EmitSignal(Button.SignalName.Pressed);
+                    await owner.ToSignal(owner.GetTree(), SceneTree.SignalName.ProcessFrame);
                     var transition = session.GetSnapshot().Transition!;
                     Require(transition.Events.Any(value => value.GetProperty("type").GetString() == "facingChanged")
                         && transition.EventDescriptions.Contains(text.Format("battle.event.facing", expected))

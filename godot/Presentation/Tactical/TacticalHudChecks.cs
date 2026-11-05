@@ -36,6 +36,7 @@ public partial class TacticalHudChecks : Node
             var before = EcmaJson.Stringify(session.Snapshot());
             var hud = session.ProjectHud(new(0, 0), new(), TacticalHit.Object(at), null, false);
             var sections = hud.Sections.Select(section => section.Key).ToArray();
+            Require(hud.DossierSubject == TacticalHit.Object(at), "The projection owns the inspected structure identity independently of rendered text.");
             Require(Array.IndexOf(sections, "structure") < Array.IndexOf(sections, "tile"), "Structure inspection precedes passive ground details.");
             var rows = hud.Sections.Single(section => section.Key == "structure").Rows;
             Require(rows.Take(2).Select(row => row.Key).SequenceEqual(new[] { "hp", "owner" }), "Health and owner precede structure capabilities.");
@@ -53,6 +54,7 @@ public partial class TacticalHudChecks : Node
             Kind = TacticalSelectionKind.Recruit,
             Destination = site
         }, TacticalHit.Object(site), null, false);
+        Require(recruit.DossierSubject == TacticalHit.Object(site), "Recruitment retains its pinned site identity.");
         var keys = recruit.Sections.Select(section => section.Key).ToArray();
         Require(Array.IndexOf(keys, "recruit") < Array.IndexOf(keys, "tile"), "Recruitment actions precede passive site terrain details.");
         var cards = engine.Recruitment.Cards(initial.Snapshot(), new(site.X, site.Y));
@@ -73,7 +75,7 @@ public partial class TacticalHudChecks : Node
             "A producing but unowned site cannot promise a recruitment panel that the canonical query will not open.");
     }
 
-    private void CheckSiteInspection()
+    private async System.Threading.Tasks.Task CheckSiteInspection()
     {
         var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
         var text = GodotTextCatalog.LoadSimplifiedChinese();
@@ -118,6 +120,7 @@ public partial class TacticalHudChecks : Node
         hudWidget.Apply(Hud());
         var close = ((VBoxContainer)hudWidget.FindChild("site", true, false)).GetChildren().OfType<Button>().Single();
         close.EmitSignal(BaseButton.SignalName.Pressed);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         Require(control.Selection.Kind == TacticalSelectionKind.Idle && control.Overlay().Selected is null
             && Hud().Sections.All(section => section.Key != "site"),
             "The mounted close button clears selected site inspection after pointer leave.");
@@ -205,6 +208,7 @@ public partial class TacticalHudChecks : Node
             "Keyboard navigation after leaving a pinned formal site must preserve its inspection instead of selecting an unrelated actor.");
         Motion(outside);
         ((VBoxContainer)hud.FindChild("site", true, false)).GetChildren().OfType<Button>().Single().EmitSignal(BaseButton.SignalName.Pressed);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         Require(screen.Selection?.Kind == TacticalSelectionKind.Idle && !HasTile(),
             "Closing from the HUD cannot expose a fictitious offscreen hover tile.");
         Motion(inside);
@@ -622,7 +626,7 @@ public partial class TacticalHudChecks : Node
         }
     }
 
-    private void CheckPrimaryOrders()
+    private async System.Threading.Tasks.Task CheckPrimaryOrders()
     {
         var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
         var presentation = BattleTextChecks.Session(engine, GodotTextCatalog.LoadSimplifiedChinese());
@@ -655,6 +659,8 @@ public partial class TacticalHudChecks : Node
         var button = hud.FindChildren("*", "Button", true, false).OfType<Button>()
             .Single(value => value.GetMeta("hud_key", "").AsString() == "commands/" + wait.Key);
         button.EmitSignal(BaseButton.SignalName.Pressed);
+        Require(request is null, "Native primary activation waits until input dispatch completes.");
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         Require(request?.Action is not null && session.Revision == 0,
             "Only the explicit Wait button produces a request; projection does not mutate the session.");
         var dispatched = session.Dispatch(request!.Action!.Value, request.Stamp.Revision);
@@ -690,6 +696,11 @@ public partial class TacticalHudChecks : Node
         Require(hud.Sections.Single(section => section.Key == "unit").Title == session.UnitName(EcmaJson.ToElement(actor))
             && hud.Portrait?.UnitType == actor["type"]!.GetValue<string>(),
             "Hovering another unit cannot displace the acting unit's name, portrait and HP from the order tray.");
+        var actorHit = TacticalHit.Unit(new(actor["x"]!.GetValue<int>(), actor["y"]!.GetValue<int>()), selected);
+        Require(hud.DossierSubject == actorHit && session.ProjectHud(new(0, 0), selection, null, selected, false).DossierSubject == actorHit,
+            "Dossier identity remains the visible inspected actor when unrelated hover enters or leaves.");
+        Require(session.ProjectHud(new(0, 0), new(), null, int.MaxValue, false).DossierSubject is null,
+            "An unavailable inspection identifier cannot create a dossier subject without visible facts.");
         Require(before == EcmaJson.Stringify(session.Snapshot()), "Pinned identity is only a projection, never a battle mutation.");
     }
 
@@ -1130,6 +1141,7 @@ public partial class TacticalHudChecks : Node
             }
             hud.IntentRequested += Cancel;
             cancel.EmitSignal(Button.SignalName.Pressed);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             hud.IntentRequested -= Cancel;
             Require(canceled == 1, "The visible structure forecast Cancel control submits its current stamped intent once.");
         }
@@ -1163,8 +1175,11 @@ public partial class TacticalHudChecks : Node
         hud.Apply(Frame("草地"));
         Require(ReferenceEquals(button, hud.FindChild("Orders", true, false).GetChild(0)), "Hover detail changes retain the pressed command subtree without detaching it.");
         GetViewport().PushInput(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = false, Position = point, GlobalPosition = point }, true);
+        Require(fired == 0, "Native release does not publish while the viewport is dispatching input.");
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         Require(fired == 1, "Native pointer press/release across hover refresh submits the first click exactly once.");
         GetViewport().PushInput(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = false, Position = point, GlobalPosition = point }, true);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         Require(fired == 1, "A duplicate release cannot submit a second order.");
         RemoveChild(hud);
         hud.Free();
@@ -1176,21 +1191,54 @@ public partial class TacticalHudChecks : Node
         var hud = new TacticalHud { Size = new Vector2(960, 640) };
         AddChild(hud);
         var stamp = new TacticalStamp(80, 1);
-        TacticalHudProjection Frame(string terrain) => new(stamp, "查看单位", new[]
+        TacticalHudProjection Frame(string terrain, int unit = 1) => new(stamp, "查看单位", new[]
         {
             new TacticalHudSection("unit", "米蕾尔", new[] { new TacticalHudRow("hp", "生命 78 / 78") }),
             new TacticalHudSection("unit-details", "兵种与能力", new[] { new TacticalHudRow("ability", "治疗") }),
             new TacticalHudSection("tile", "地形", new[] { new TacticalHudRow("terrain", terrain) })
-        });
+        }, DossierSubject: TacticalHit.Unit(new(4, 17), unit));
         hud.Apply(Frame("道路"));
         var popup = (PopupPanel)hud.FindChild("UnitDossier", true, false);
         var scroll = hud.FindChild("DetailScroll", true, false);
         var staleEntry = (Button)hud.FindChild("DossierButton", true, false);
         staleEntry.EmitSignal(Button.SignalName.Pressed);
-        hud.Apply(Frame("同一战局版本的新检查对象"));
+        hud.Apply(Frame("道路", unit: 2));
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-        Require(!popup.Visible, "Deferred dossier opening cannot cross a newer HUD projection with the same battle stamp.");
+        Require(!popup.Visible, "Deferred dossier opening cannot switch to a visually identical different subject at the same battle stamp.");
+        var retainedEntry = (Button)hud.FindChild("DossierButton", true, false);
+        retainedEntry.EmitSignal(Button.SignalName.Pressed);
+        hud.Apply(Frame("无关悬停地形", unit: 2));
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        Require(popup.Visible && ReferenceEquals(retainedEntry, hud.FindChild("DossierButton", true, false)),
+            "Deferred dossier reading survives unrelated terrain changes for the same subject.");
+        popup.Hide();
+        retainedEntry.EmitSignal(Button.SignalName.Pressed);
+        hud.Apply(Frame("无关悬停地形", unit: 2) with
+        {
+            Stamp = new(80, 2)
+        });
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        Require(!popup.Visible, "A pending dossier cannot cross a canonical revision even for the same subject.");
+        foreach (var subjects in new[]
+        {
+            (TacticalHit.Object(new BoardCell(1, 1)), TacticalHit.Object(new BoardCell(2, 1))),
+            (TacticalHit.Unit(new BoardCell(4, 17), 2), TacticalHit.Object(new BoardCell(4, 17)))
+        })
+        {
+            hud.Apply(Frame("同样的资料") with
+            {
+                DossierSubject = subjects.Item1
+            });
+            ((Button)hud.FindChild("DossierButton", true, false)).EmitSignal(Button.SignalName.Pressed);
+            hud.Apply(Frame("同样的资料") with
+            {
+                DossierSubject = subjects.Item2
+            });
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Require(!popup.Visible, "Different site cells or subject kinds invalidate a pending read even when every displayed row matches.");
+        }
         var detachedEntry = (Button)hud.FindChild("DossierButton", true, false);
         detachedEntry.EmitSignal(Button.SignalName.Pressed);
         hud.RemoveChild(detachedEntry);
@@ -1487,6 +1535,7 @@ public partial class TacticalHudChecks : Node
                     var action = Group().FindChildren("*", "Button", true, false).OfType<Button>()
                         .Single(button => button.GetMeta("hud_key", "").AsString() == "tile/defense");
                     action.EmitSignal(Button.SignalName.Pressed);
+                    await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
                     Require(fired == 1, "A newly interactive terrain row uses the canonical guarded intent path.");
                 }
                 else
@@ -1576,6 +1625,79 @@ public partial class TacticalHudChecks : Node
         }
     }
 
+    private async System.Threading.Tasks.Task CheckDeferredOrderLifetime()
+    {
+        var hud = new TacticalHud();
+        AddChild(hud);
+        var stamp = new TacticalStamp(81, 2);
+        TacticalHudProjection Frame(string label = "Wait") => new(stamp, "", new[]
+        {
+            new TacticalHudSection("commands", "Orders", new[]
+            {
+                new TacticalHudRow("wait", label, Intent: new(stamp, TacticalHudIntentKind.Command, "wait")),
+                new TacticalHudRow("back", "Back", Intent: new(stamp, TacticalHudIntentKind.Back))
+            })
+        });
+        Button Order(string key = "wait") => hud.FindChildren("*", "Button", true, false).OfType<Button>()
+            .Single(button => button.GetMeta("hud_key", "").AsString() == "commands/" + key);
+        var fired = 0;
+        hud.IntentRequested += _ => fired++;
+        try
+        {
+            hud.Apply(Frame());
+            var retained = Order();
+            retained.EmitSignal(Button.SignalName.Pressed);
+            Order("back").EmitSignal(Button.SignalName.Pressed);
+            hud.Apply(Frame() with
+            {
+                Hint = "Updated instruction"
+            });
+            Require(fired == 0 && ReferenceEquals(retained, Order()), "A pending order survives an unrelated retained-row refresh without synchronous publication.");
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Require(fired == 1, "Only the first pending HUD order publishes after a retained-row refresh.");
+
+            hud.Apply(Frame("Retry"));
+            Order().EmitSignal(Button.SignalName.Pressed);
+            hud.Apply(Frame("Changed before dispatch"));
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Require(fired == 1, "Replacing a queued row rejects its old activation.");
+            Order().EmitSignal(Button.SignalName.Pressed);
+            hud.Apply(Frame("Busy") with
+            {
+                Busy = true
+            });
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Require(fired == 1, "A pending order cannot cross a busy projection.");
+
+            hud.Apply(Frame());
+            Order().EmitSignal(Button.SignalName.Pressed);
+            stamp = new TacticalStamp(82, 2);
+            hud.Apply(Frame());
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Require(fired == 1, "A pending order cannot cross a binding replacement at the same revision.");
+            Order().EmitSignal(Button.SignalName.Pressed);
+            RemoveChild(hud);
+            AddChild(hud);
+            hud.Apply(Frame());
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Require(fired == 1, "Unmount and remount reject a previously queued order.");
+            Order().EmitSignal(Button.SignalName.Pressed);
+            Order().Free();
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Require(fired == 1, "A freed native button cannot publish its pending intent.");
+
+            hud.Apply(Frame("Ready again"));
+            Order().EmitSignal(Button.SignalName.Pressed);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Require(fired == 2, "Rejected pending work does not leave current orders blocked.");
+        }
+        finally
+        {
+            RemoveChild(hud);
+            hud.Free();
+        }
+    }
+
     public override async void _Ready()
     {
         try
@@ -1588,8 +1710,8 @@ public partial class TacticalHudChecks : Node
             CheckInspectionOrder();
             CheckObjectiveChecklist();
             CheckPinnedUnit();
-            CheckPrimaryOrders();
-            CheckSiteInspection();
+            await CheckPrimaryOrders();
+            await CheckSiteInspection();
             await CheckResponsiveLayout();
             await CheckRecruitmentLayout();
             await CheckRecruitedUnitArt();
@@ -1600,6 +1722,7 @@ public partial class TacticalHudChecks : Node
             await CheckTileTextRefresh();
             await CheckUnitDetailsRowRetention();
             await CheckOrderBadgeStates();
+            await CheckDeferredOrderLifetime();
             var stamp = new TacticalStamp(17, 9);
             var hud = new TacticalHud();
             AddChild(hud);
@@ -1612,6 +1735,8 @@ public partial class TacticalHudChecks : Node
             Require(old.TooltipText == "原始提示", "Native reason tooltip");
             old.EmitSignal(BaseButton.SignalName.Pressed);
             old.EmitSignal(BaseButton.SignalName.Pressed);
+            Require(fired == 0, "Native activation is deferred beyond the signal stack.");
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             Require(fired == 1, "One-shot duplicate signal suppression");
             hud.Apply(Projection());
             old.EmitSignal(BaseButton.SignalName.Pressed);

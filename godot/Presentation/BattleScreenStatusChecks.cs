@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using System.Threading.Tasks;
 using Empire.Application;
 using Empire.Core.Determinism;
 using Empire.Core.Engine;
@@ -17,7 +18,7 @@ namespace Empire.Presentation;
 
 public partial class BattleScreenChecks
 {
-    private void CheckRecordedStatusFeedback()
+    private async Task CheckRecordedStatusFeedback()
     {
         var originalSize = GetWindow().Size;
         GetWindow().Size = new Vector2I(1180, 760);
@@ -57,12 +58,13 @@ public partial class BattleScreenChecks
                             screen.Board.EventPresented += (_, eventIndex) => completed.Add(eventIndex);
                             var action = actions[index];
                             var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
-                            void Press(string sectionKey, TacticalHudRow row)
+                            async Task Press(string sectionKey, TacticalHudRow row)
                             {
                                 var button = hud.FindChildren("*", "Button", true, false).OfType<Button>()
                                     .Single(value => value.GetMeta("hud_key", "").AsString() == sectionKey + "/" + row.Key);
                                 Require(button.IsVisibleInTree() && !button.Disabled, "The formal status witness uses an available native order control.");
                                 button.EmitSignal(BaseButton.SignalName.Pressed);
+                                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
                             }
                             BoardCell Cell(JsonNode value) => new(value["x"]!.GetValue<int>(), value["y"]!.GetValue<int>());
                             if (action["kind"]!.GetValue<string>() == "tactic")
@@ -70,7 +72,7 @@ public partial class BattleScreenChecks
                                 var key = action["commander"]!.GetValue<string>() + ":" + action["tactic"]!.GetValue<string>();
                                 var row = hud.Projection!.Sections.Single(section => section.Key == "tactics").Rows
                                     .Single(value => value.Intent?.Key == key);
-                                Press("tactics", row);
+                                await Press("tactics", row);
                                 Require(session.Revision == 0 && screen.Selection?.Kind == TacticalSelectionKind.Tactic,
                                     "Choosing the original rally only composes its target, without changing statuses.");
                                 screen.SelectHit(TacticalHit.Ground(Cell(action["target"]!)));
@@ -85,7 +87,7 @@ public partial class BattleScreenChecks
                                 var option = session.GetTacticalQueries(0).CommandsAt(id, Cell(path[^1]!)).Single(value => value.Weapon == weapon);
                                 var row = hud.Projection!.Sections.Single(section => section.Key == "commands").Rows
                                     .Single(value => value.Intent?.Key == option.Key);
-                                Press("commands", row);
+                                await Press("commands", row);
                                 if (screen.Selection?.Kind == TacticalSelectionKind.Target)
                                 {
                                     var at = Cell(action["command"]!["target"]!);

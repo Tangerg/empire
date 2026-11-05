@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Text.Json.Nodes;
+using System.Threading.Tasks;
 using Empire.Application;
 using Empire.Presentation.Feedback;
 using Empire.Localization;
@@ -26,8 +27,8 @@ public partial class BattleScreenChecks : Node
         try
         {
             await CheckCaptureProgressFeedback();
-            CheckStructureCollateralDisclosure();
-            CheckRecordedStatusFeedback();
+            await CheckStructureCollateralDisclosure();
+            await CheckRecordedStatusFeedback();
             CheckStructureInspectionQueries();
             CheckStructureKeyboardTarget();
             CheckFormationInspection();
@@ -38,14 +39,14 @@ public partial class BattleScreenChecks : Node
             CheckMovedAttackForecast();
             CheckContextualKeyRepeat();
             CheckUndoKeyRepeat();
-            Check();
+            await Check();
             CheckPresentationTransitions();
-            CheckInputContracts();
+            await CheckInputContracts();
             CheckCanonicalCellProjection();
-            CheckRegisteredReactions();
-            CheckLocalizedInteraction();
-            BattleIdentityChecks.Check(this);
-            CheckInjectedEventPresenter();
+            await CheckRegisteredReactions();
+            await CheckLocalizedInteraction();
+            await BattleIdentityChecks.Check(this);
+            await CheckInjectedEventPresenter();
             CheckEventReceiptDetails();
             GD.Print("Native BattleScreen real-session integration passed.");
             GetTree().Quit();
@@ -546,7 +547,7 @@ public partial class BattleScreenChecks : Node
         }
     }
 
-    private void CheckInjectedEventPresenter()
+    private async Task CheckInjectedEventPresenter()
     {
         var level = BattleTextChecks.OpeningLevel();
         level["rules"]!["baseResourceGrants"] = new JsonArray(new JsonObject
@@ -571,6 +572,7 @@ public partial class BattleScreenChecks : Node
             screen.Board.AnimationsEnabled = false;
             screen.BindSession(new(text, presentation.Battle, PortraitCatalogResources.Load(), session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
             Buttons(screen).Single(button => button.Name == "EndTurn").EmitSignal(Button.SignalName.Pressed);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             Require(session.GetSnapshot().Transition!.Events.Any(value => value.GetProperty("type").GetString() == "resourceChanged"),
                 "The real end-turn action must emit a resource event for the custom presenter.");
             Require(screen.RecentMessages.Contains(customLine),
@@ -712,7 +714,7 @@ public partial class BattleScreenChecks : Node
         public BattleDispatchResult Dispatch(System.Text.Json.JsonElement action, long expectedRevision) => inner.Dispatch(action, expectedRevision);
     }
 
-    private void Check()
+    private async Task Check()
     {
         Require(typeof(BattleScreen).GetMethod(nameof(BattleScreen.BindSession))!.GetParameters()[0].ParameterType == typeof(BattleScreenRules) && typeof(BattleScreenRules).GetProperty(nameof(BattleScreenRules.Session))!.PropertyType == typeof(ITacticalBattleSession),
             "BattleScreen must declare its complete consumer port rather than discover a hidden capability at runtime.");
@@ -764,6 +766,7 @@ public partial class BattleScreenChecks : Node
             "Earlier detached snapshots must remain immutable.");
         var turnButton = Buttons(screen).Single(button => button.Name == "EndTurn");
         turnButton.EmitSignal(Button.SignalName.Pressed);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         var nextTurn = session.GetSnapshot();
         Require(nextTurn.Revision == after.Revision + 1
             && nextTurn.State.GetProperty("currentPlayer").GetInt32() != after.State.GetProperty("currentPlayer").GetInt32()
@@ -1032,7 +1035,7 @@ public partial class BattleScreenChecks : Node
         screen.Free();
     }
 
-    private void CheckInputContracts()
+    private async Task CheckInputContracts()
     {
         var level = BattleTextChecks.OpeningLevel();
         var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
@@ -1133,6 +1136,7 @@ public partial class BattleScreenChecks : Node
         ModifiedKeys(Key.Escape, Key.Enter, Key.Space, Key.Right, Key.E);
         systemButton.ReleaseFocus();
         undo.EmitSignal(Button.SignalName.Pressed);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         var undone = session.GetSnapshot();
         Require(session.Revision == undone.Revision && undone.Revision == snapshot.Revision + 2 && EcmaJson.DeepEquals(EcmaJson.Parse(undone.State.GetRawText()), EcmaJson.Parse(snapshot.State.GetRawText())), "Mounted undo restores exact canonical state and advances revision.");
         Require(screen.Selection?.Kind == TacticalSelectionKind.Idle && screen.RecentMessages.Contains("已撤销上一步"), "Undo resets selection and appends the source cosmetic message.");
@@ -1141,6 +1145,7 @@ public partial class BattleScreenChecks : Node
         Require(ReferenceEquals(turn, Buttons(screen).Single(button => button.Text == "结束回合")),
             "A current-binding global control remains the same instance after another selection.");
         turn.EmitSignal(Button.SignalName.Pressed);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         Require(session.GetSnapshot().Revision == undone.Revision + 1, "Mounted global end-turn commits once after undo.");
 
         // Fixture: original campaign map and units with an explicit deployment zone, not naturally reached campaign state.
@@ -1160,16 +1165,19 @@ public partial class BattleScreenChecks : Node
             return Buttons(screen).Single(button => button.GetMeta("hud_key", "").AsString() == row.section.Key + "/" + row.row.Key);
         }
         RosterButton(roster[0]).EmitSignal(Button.SignalName.Pressed);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         RosterButton(roster[1]).EmitSignal(Button.SignalName.Pressed);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         Require(screen.SelectedUnitId == roster[1] && screen.Selection?.Kind == TacticalSelectionKind.DeploymentUnit && deployment.GetSnapshot().Revision == 0,
             "Two actual deployment roster clicks change the picked unit without dispatching a swap.");
         var confirm = Buttons(screen).Single(button => button.Text == "确认部署");
         confirm.EmitSignal(Button.SignalName.Pressed);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         Require(deployment.GetSnapshot().Revision == 1 && deployment.GetSnapshot().State.GetProperty("phase").GetString() == "playing", "Mounted deployment confirmation opens battle through session dispatch.");
         screen.QueueFree();
     }
 
-    private void CheckRegisteredReactions()
+    private async Task CheckRegisteredReactions()
     {
         var level = BattleTextChecks.OpeningLevel();
         var reactions = ReactionRegistry.Core();
@@ -1214,10 +1222,12 @@ public partial class BattleScreenChecks : Node
             "Mounted reaction controls retain resolved registry order and explicitly supplied names and hints.");
         var staleGuard = Reaction("guard");
         Reaction("plugin-dodge").EmitSignal(Button.SignalName.Pressed);
+        // Exercise the retired row after dispatch but before Godot frees queued nodes.
+        Callable.From(() => staleGuard.EmitSignal(Button.SignalName.Pressed)).CallDeferred();
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         Require(session.GetSnapshot().Revision == 1 && session.Snapshot()["units"]!.AsArray().OfType<JsonObject>()
             .Single(unit => unit["id"]!.GetValue<int>() == 2)["reaction"]!.GetValue<string>() == "plugin-dodge",
             "The actual HUD button must commit a registered reaction through the tactical session port.");
-        staleGuard.EmitSignal(Button.SignalName.Pressed);
         Require(session.GetSnapshot().Revision == 1, "Removed reaction controls cannot replay after a HUD dispatch.");
         screen.SelectHit(TacticalHit.Unit(origin, 2));
         var staleCustom = Reaction("plugin-dodge");
@@ -1225,6 +1235,7 @@ public partial class BattleScreenChecks : Node
         var guard = hud.Projection!.Sections.Single(section => section.Key == "stances").Rows.Single(row => row.Key == "reaction:guard").Intent!;
         Require(session.Dispatch(guard.Action!.Value, guard.Stamp.Revision).Accepted, "External revision fixture did not commit.");
         staleCustom.EmitSignal(Button.SignalName.Pressed);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         Require(session.GetSnapshot().Revision == 2 && screen.DisplayedRevision == 1 && screen.Selection?.Kind == TacticalSelectionKind.Unit
             && session.Snapshot()["units"]!.AsArray().OfType<JsonObject>()
             .Single(unit => unit["id"]!.GetValue<int>() == 2)["reaction"]!.GetValue<string>() == "guard",
@@ -1232,16 +1243,18 @@ public partial class BattleScreenChecks : Node
         screen.Refresh();
         screen.SelectHit(TacticalHit.Unit(origin, 2));
         Reaction("plugin-dodge").EmitSignal(Button.SignalName.Pressed);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         Require(session.Revision == 3, "Refreshing the stale view must restore the actual HUD action path.");
         screen.SelectHit(TacticalHit.Unit(origin, 2));
         var beforeUndo = Reaction("guard");
         Require(session.Undo(session.Revision).Accepted && session.Revision == 4, "External undo fixture did not advance revision.");
         beforeUndo.EmitSignal(Button.SignalName.Pressed);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         Require(session.Revision == 4 && screen.DisplayedRevision == 3, "Still-mounted HUD controls cannot use stale choices after undo.");
         screen.QueueFree();
     }
 
-    private void CheckLocalizedInteraction()
+    private async Task CheckLocalizedInteraction()
     {
         var sourceLevel = BattleTextChecks.OpeningLevel();
         var level = sourceLevel.DeepClone().AsObject();
@@ -1357,6 +1370,7 @@ public partial class BattleScreenChecks : Node
             var undo = Buttons(screen).Single(button => button.Name == "Undo");
             Require(undo.Text == replacements["ui.battle.undo"], "The mounted undo button uses injected wording.");
             undo.EmitSignal(Button.SignalName.Pressed);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             Require(EcmaJson.Stringify(session.Snapshot()) == initial && session.GetSnapshot().Revision == 2
                 && screen.RecentMessages.Contains(replacements["feedback.session.undone"]),
                 "The real localized undo restores the canonical state and formats its feedback independently.");
