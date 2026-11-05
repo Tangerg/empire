@@ -185,7 +185,7 @@ public sealed class TacticalSelectionController
         if (hit is { } candidate && !InteractiveCells.Contains(candidate.Cell))
             return Leave(expected);
         CursorHit = hit;
-        if (Selection.Kind == TacticalSelectionKind.Target && hit is not null && AcceptsTarget(Selection, hit))
+        if (Selection.Kind is TacticalSelectionKind.Target or TacticalSelectionKind.Tactic && hit is not null && AcceptsTarget(Selection, hit))
             Selection = Selection with
             {
                 PreviewTarget = hit

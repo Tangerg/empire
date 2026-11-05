@@ -742,3 +742,23 @@ valid control within the screen. Once entered, Godot owns traversal; dossier and
 system popups retain their own focus. This does not select actors or dispatch
 orders. Escape first returns focus to the map, then follows the existing Back
 operation on a subsequent press.
+
+### Native commander-tactic preview (2026-11-05)
+
+`Empire.Core.Orders.SupportOrders` owns commander availability, legal centers,
+resource costs, range, radius, ordered effects and eligible allied recipients.
+`PlanTactic` is a read-only projection of those facts. Query and commit share the
+same recipient selector and grid strategy; execution still selects recipients
+after its existing resource and tactic-use announcements. An eligible recipient
+is not a promise of a state change, and an ineffective tactic still costs its
+ordinary resources.
+
+`GrayFlagSession.Hud` projects that plan through the session's current visibility
+boundary and localized `PlannedEffectText` composition. Weapon hits and commander
+tactics share effect-payload interpretation, but retain their distinct conditional
+wording. The existing forecast panel and scrollable dossier render the projection;
+neither enumerates radius cells nor calculates who receives effects.
+`TacticalSelectionController` owns the preview target and retains it while reading
+the HUD. Only the live admitted hit may confirm an order. Window leave, cancellation,
+rebinding and command completion retain their existing reset semantics. This adds
+no map overlay, gameplay transition, persisted field or alternative effect writer.

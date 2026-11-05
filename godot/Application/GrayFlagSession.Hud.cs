@@ -3,6 +3,7 @@ using Empire.Core;
 using Empire.Core.Combat;
 using Empire.Core.Determinism;
 using Empire.Core.Geometry;
+using Empire.Core.Orders;
 using Empire.Core.Resources;
 using Empire.Core.Tactics;
 using Empire.Presentation;
@@ -89,6 +90,13 @@ public sealed partial class GrayFlagSession
         }
         string Amounts(JsonNode? amounts) => Costs((amounts as JsonArray ?? new()).OfType<JsonObject>()
             .Select(cost => new BattleResources.Cost(S(cost, "resource"), D(cost, "amount"))));
+        string TacticRange(TacticOption option) => option.TargetMode == "self"
+            ? text.Format("ui.hud.tactic.self") : text.Format("ui.hud.tactic.range", F(option.Range));
+        string TacticHint(TacticOption option) => string.Join("\n", new[]
+        {
+            Costs(option.Costs), TacticRange(option), text.Format("ui.hud.tactic.radius", F(option.Radius))
+        }.Concat(option.Effects.Select(effect => tacticEffectText.Describe(effect).Detail)));
+
         Section("crown",
             battleText.LevelTitle(S(state, "levelId")),
             new[] { new TacticalHudRow("turn",
@@ -204,10 +212,41 @@ public sealed partial class GrayFlagSession
                         contentText.Name(ContentTextKind.Tactic, tactic.Id),
                         TacticalHudIntentKind.Tactic,
                         $"{S(commander, "id")}:{tactic.Id}",
-                        hint: Costs(tactic.Costs)) with
+                        hint: TacticHint(tactic)) with
                     {
                         Icon = "ability:" + tactic.Id
                     })));
+        if (!busy && human && selection is { Kind: TacticalSelectionKind.Tactic, Commander: { } commanderId, Ability: { } tacticId }
+            && engine.Support.Tactics(state, commanderId).FirstOrDefault(option => option.Id == tacticId) is { } tactic)
+        {
+            var plan = engine.Support.PlanTactic(state, commanderId, tacticId,
+                forecastHit is { } center ? new Coord(center.Cell.X, center.Cell.Y) : null);
+            var effects = tactic.Effects.Select(tacticEffectText.Describe).ToArray();
+            var allies = plan?.AlliedUnitIds.Where(visible.Contains).Select(id => TacticalQueries.RequireUnit(state, id)).ToArray() ?? [];
+            var names = string.Join(" · ", allies.Select(Name));
+            Section("forecast", contentText.Name(ContentTextKind.Tactic, tactic.Id), new[]
+            {
+                new TacticalHudRow("tactic-area", text.Format("ui.hud.tactic.area_cost", F(tactic.Radius), Costs(tactic.Costs)), Hint: TacticHint(tactic)),
+                new TacticalHudRow("tactic-effects", string.Join(" · ", effects.Select(effect => effect.Compact)),
+                    Hint: string.Join("\n", effects.Select(effect => effect.Detail))),
+                new TacticalHudRow("tactic-allies", plan is null ? text.Format("ui.hud.tactic.choose_center")
+                    : text.Format("ui.hud.tactic.allies", plan.Target.X, plan.Target.Y, allies.Length), Hint: names)
+            });
+            var details = new List<TacticalHudRow>
+            {
+                new("tactic-range", TacticRange(tactic)),
+                new("tactic-radius", text.Format("ui.hud.tactic.radius", F(tactic.Radius))),
+                new("tactic-cost", Costs(tactic.Costs))
+            };
+            details.AddRange(effects.Select((effect, index) => new TacticalHudRow($"tactic-effect:{index}", effect.Detail)));
+            if (plan is not null)
+            {
+                details.Add(new("tactic-center", text.Format("ui.hud.tactic.allies", plan.Target.X, plan.Target.Y, allies.Length)));
+                details.AddRange(allies.Select(ally => new TacticalHudRow($"tactic-ally:{N(ally, "id")}", Name(ally), UnitIcon: UnitIcon(ally))));
+            }
+            details.Add(new("tactic-scope", text.Format("ui.hud.tactic.scope")));
+            Section("forecast-details", text.Format("ui.hud.tactic.details"), details);
+        }
         if (selection.Kind == TacticalSelectionKind.Target && selected is not null && selection.Weapon is null
             && forecastHit is { } recipientUnitHit && forecastUnit is { } recipientUnit
             && selection.TargetSubjects.Any(subject => subject.Accepts(recipientUnitHit)))
@@ -237,7 +276,7 @@ public sealed partial class GrayFlagSession
             }
             void AddHitEffects(List<TacticalHudRow> rows)
             {
-                var hitEffects = new List<(string Phase, string Source, string Target, WeaponHitEffectDescription Description)>();
+                var hitEffects = new List<(string Phase, string Source, string Target, PlannedEffectDescription Description)>();
                 void DescribeEffects(string phase, int sourceId, int targetId, IReadOnlyList<JsonObject> definitions)
                 {
                     if (!visible.Contains(sourceId) || !visible.Contains(targetId))
@@ -671,7 +710,7 @@ public sealed partial class GrayFlagSession
         var selectionHint = S(state, "phase") == "over"
             ? text.Format("ui.hud.battle_over")
             : !human ? text.Format("ui.hud.computer_thinking") : SelectionHint(selection.Kind, canOpenRecruitment);
-        if (human && S(state, "phase") == "playing" && selection.Kind == TacticalSelectionKind.Target
+        if (human && S(state, "phase") == "playing" && selection.Kind is TacticalSelectionKind.Target or TacticalSelectionKind.Tactic
             && selection.PreviewTarget is not null && (cursorHit is null
                 || !selection.TargetSubjects.Any(subject => subject.Accepts(cursorHit))
                 || cursorHit.Kind == TacticalHitKind.Unit && cursorUnit is null))

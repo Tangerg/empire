@@ -24,7 +24,8 @@ public sealed partial class GrayFlagSession
     private readonly ContentText contentText;
     private readonly BattleUnitNames unitNames;
     private readonly CombatModifierText modifierText;
-    private readonly WeaponHitEffectText hitEffectText;
+    private readonly PlannedEffectText hitEffectText;
+    private readonly PlannedEffectText tacticEffectText;
     private readonly Battle battle;
     private long revision;
     private TurnStatus? turnStatus;
@@ -74,6 +75,7 @@ public sealed partial class GrayFlagSession
         contentText = presentation.Content;
         modifierText = presentation.Modifiers;
         hitEffectText = presentation.HitEffects;
+        tacticEffectText = presentation.TacticEffects;
         eventText = presentation.Events;
         unitNames = presentation.UnitNames(level["id"]!.GetValue<string>(), rules.RosterBindings);
         battle = engine.CreateBattle(level);
@@ -92,6 +94,7 @@ public sealed partial class GrayFlagSession
         contentText = presentation.Content;
         modifierText = presentation.Modifiers;
         hitEffectText = presentation.HitEffects;
+        tacticEffectText = presentation.TacticEffects;
         eventText = presentation.Events;
     }
 

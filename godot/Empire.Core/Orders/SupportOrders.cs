@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core.Combat;
 using Empire.Core.Geometry;
@@ -7,7 +8,12 @@ using Empire.Core.Tactics;
 
 namespace Empire.Core.Orders;
 
-public sealed record TacticOption(string Id, IReadOnlyList<Coord> Targets, IReadOnlyList<BattleResources.Cost> Costs);
+public sealed record TacticOption(
+    string Id, IReadOnlyList<Coord> Targets, IReadOnlyList<BattleResources.Cost> Costs,
+    string TargetMode, double Range, double Radius, IReadOnlyList<JsonElement> Effects);
+
+/// <summary>Eligible allied recipients; planned effects need not change every recipient's status.</summary>
+public sealed record TacticPlan(TacticOption Tactic, Coord Target, IReadOnlyList<int> AlliedUnitIds);
 
 /// <summary>Commander orders and site capture, using shared account and effect writers.</summary>
 public sealed record SupportOrderRules(
@@ -70,10 +76,28 @@ public sealed class SupportOrders
                         if (Grid(state).Distance(Position(leader), new Coord(x, y)) <= StateJson.Number(tactic["range"], "range"))
                             targets.Add(new Coord(x, y));
             }
-            result.Add(new TacticOption(id, targets, BattleResources.CopyCosts(StateJson.Array(tactic["costs"], "costs"))));
+            result.Add(new TacticOption(id, targets.AsReadOnly(), BattleResources.CopyCosts(StateJson.Array(tactic["costs"], "costs")),
+                StateJson.Text(tactic, "target"), StateJson.Number(tactic["range"], "range"), StateJson.Number(tactic["radius"], "radius"),
+                Array.AsReadOnly(content.Read("tactics", id).GetProperty("effects").EnumerateArray().ToArray())));
         }
-        return result;
+        return result.AsReadOnly();
     }
+
+    public TacticPlan? PlanTactic(JsonObject state, string commanderId, string tacticId, Coord? requested)
+    {
+        var option = Tactics(state, commanderId).FirstOrDefault(candidate => candidate.Id == tacticId);
+        if (option is null)
+            return null;
+        var target = option.TargetMode == "self" ? option.Targets[0] : requested;
+        if (target is not { } at || !option.Targets.Contains(at))
+            return null;
+        return new TacticPlan(option, at, Array.AsReadOnly(AffectedUnits(state, StateJson.Integer(state, "currentPlayer"), at, option.Radius)
+            .Select(unit => StateJson.Integer(unit, "id")).ToArray()));
+    }
+
+    private JsonObject[] AffectedUnits(JsonObject state, int ownerId, Coord at, double radius) =>
+        Units(state).Where(unit => TacticalQueries.AreAllies(state, StateJson.Integer(unit, "owner"), ownerId)
+            && Grid(state).Distance(Position(unit), at) <= radius).ToArray();
 
     public void ExecuteTactic(JsonObject state, string commanderId, string tacticId, Coord? requested, Action<JsonObject> emit)
     {
@@ -115,8 +139,7 @@ public sealed class SupportOrders
             ["tactic"] = tacticId,
             ["target"] = new JsonObject { ["x"] = at.X, ["y"] = at.Y }
         });
-        var affected = Units(state).Where(unit => TacticalQueries.AreAllies(state, StateJson.Integer(unit, "owner"), ownerId)
-            && Grid(state).Distance(Position(unit), at) <= StateJson.Number(tactic["radius"], "radius")).ToArray();
+        var affected = AffectedUnits(state, ownerId, at, StateJson.Number(tactic["radius"], "radius"));
         foreach (var effect in StateJson.Objects(tactic["effects"], "effects"))
             foreach (var unit in affected)
             {

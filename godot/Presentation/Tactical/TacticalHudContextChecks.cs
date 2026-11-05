@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Empire.Application;
 using Empire.Core.Determinism;
 using Empire.Core.Engine;
+using Empire.Core.Geometry;
 using Empire.Localization;
 using Godot;
 
@@ -31,6 +32,7 @@ public partial class TacticalHudChecks
         var presentation = BattleTextChecks.Session(engine, text);
         var session = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(battle.Snapshot()));
         var original = EcmaJson.Stringify(session.Snapshot());
+        CheckTacticProjectionBoundaries(engine, presentation, session);
         var originalSize = GetWindow().Size;
         var screen = new BattleScreen();
         AddChild(screen);
@@ -69,6 +71,11 @@ public partial class TacticalHudChecks
             Button Rally() => hud.FindChildren("*", "Button", true, false).OfType<Button>()
                 .Single(button => button.GetMeta("hud_key", "").AsString() == "tactics/laiya-command:c01.gray-rally");
             await Layout();
+            var rally = engine.Support.Tactics(session.Snapshot(), "laiya-command").Single(option => option.Id == "c01.gray-rally");
+            Require(Rally().TooltipText.Contains(text.Format("ui.hud.tactic.range", rally.Range), StringComparison.Ordinal)
+                && Rally().TooltipText.Contains(text.Format("ui.hud.tactic.radius", rally.Radius), StringComparison.Ordinal)
+                && rally.Effects.All(effect => Rally().TooltipText.Contains(presentation.TacticEffects.Describe(effect).Detail, StringComparison.Ordinal)),
+                "The actual tactic button explains its canonical range, radius and ordered planned effects before selection.");
             var foundGround = false;
             foreach (var cell in session.GetTacticalQueries(0).InteractiveCells)
             {
@@ -153,6 +160,81 @@ public partial class TacticalHudChecks
             }
             Require(session.Revision == 0 && EcmaJson.Stringify(session.Snapshot()) == original,
                 "Keyboard reveal, cancel, re-arm and navigation never spend resources or advance the battle.");
+            var tacticCard = hud.Projection!.Sections.SingleOrDefault(section => section.Key == "forecast");
+            Require(tacticCard is not null && tacticCard.Rows.Any(row => row.Key == "tactic-area")
+                && tacticCard.Rows.Any(row => row.Key == "tactic-effects") && tacticCard.Rows.Any(row => row.Key == "tactic-allies"),
+                "A legal formal tactic target must disclose its area, planned effects and visible eligible allies before spending command points.");
+            var tacticDetails = hud.Projection.Sections.SingleOrDefault(section => section.Key == "forecast-details");
+            Require(tacticDetails is not null && tacticDetails.Rows.Any(row => row.Key == "tactic-effect:0")
+                && tacticDetails.Rows.Any(row => row.Key == "tactic-effect:1")
+                && tacticDetails.Rows.Any(row => row.Key.StartsWith("tactic-ally:", StringComparison.Ordinal)),
+                "The original gray-rally has ordered removal/addition details and named visible recipients, not a guaranteed-change claim.");
+            var plan = engine.Support.PlanTactic(session.Snapshot(), "laiya-command", "c01.gray-rally", new Coord(target.X, target.Y))!;
+            var eligible = plan.AlliedUnitIds.Where(id => queries.Unit(id) is { Visible: true }).ToArray();
+            Require(tacticDetails!.Rows.Where(row => row.Key.StartsWith("tactic-ally:", StringComparison.Ordinal)).Select(row => row.Key)
+                .SequenceEqual(eligible.Select(id => $"tactic-ally:{id}"))
+                && tacticDetails.Rows.Where(row => row.Key.StartsWith("tactic-effect:", StringComparison.Ordinal)).Select(row => row.Label)
+                    .SequenceEqual(plan.Tactic.Effects.Select(effect => presentation.TacticEffects.Describe(effect).Detail))
+                && tacticDetails.Rows.Single(row => row.Key == "tactic-center").Label == text.Format("ui.hud.tactic.allies", target.X, target.Y, eligible.Length),
+                "The target details are an ordered projection of the rule owner's plan and current visible eligible identities.");
+            Require(tacticDetails.Rows.Single(row => row.Key == "tactic-scope").Label == text.Format("ui.hud.tactic.scope")
+                && tacticDetails.Rows.Where(row => row.Key.StartsWith("tactic-effect:", StringComparison.Ordinal)).All(row => !row.Label.Contains("命中", StringComparison.Ordinal)),
+                "Tactic details explain no-op recipients and resource cost without borrowing weapon-hit conditions.");
+            foreach (var width in new[] { 960, 1180 })
+            {
+                GetWindow().Size = new Vector2I(width, 640);
+                screen.Size = new Vector2(width, 640);
+                await Layout();
+                var plate = (Control)hud.FindChild("forecastPlate", true, false);
+                var group = (VBoxContainer)hud.FindChild("forecast", true, false);
+                var labels = group.GetChildren().OfType<HBoxContainer>().SelectMany(row => row.GetChildren().OfType<Label>()).ToArray();
+                Require(tacticCard!.Rows.All(row => labels.Any(label => label.Text == row.Label))
+                    && labels.All(label => label.IsVisibleInTree() && plate.GetGlobalRect().Encloses(label.GetGlobalRect()))
+                    && plate.GetGlobalRect().End.Y <= screen.Size.Y && plate.GlobalPosition.Y >= 320,
+                    "Native tactic summary rows fit within the lower forecast plate at narrow and wide supported widths.");
+                Require(plate.GetGlobalRect().Encloses(((Control)hud.FindChild("SelectionHint", true, false)).GetGlobalRect())
+                    && plate.GetGlobalRect().Encloses(((Button)hud.FindChild("ForecastDetailsButton", true, false)).GetGlobalRect()),
+                    "Tactic details and confirmation guidance remain reachable with the full summary.");
+            }
+            GetWindow().Size = new Vector2I(1180, 812);
+            screen.Size = new Vector2(1180, 812);
+            await Layout();
+            var center = screen.Board.ToGlobal(screen.Board.Projection.CellCenter(new(target.X, target.Y)));
+            Vector2? mapPoint = null;
+            for (var y = -32; y <= 32 && mapPoint is null; y += 2)
+                for (var x = -32; x <= 32 && mapPoint is null; x += 2)
+                {
+                    var point = center + new Vector2(x, y);
+                    if (map.GetGlobalRect().HasPoint(point) && screen.Board.Pick(screen.Board.ToLocal(point)) is { } hit
+                        && hit.Cell == target && screen.Selection!.TargetSubjects.Any(subject => subject.Accepts(hit)))
+                    {
+                        Motion(point);
+                        if (viewport.GuiGetHoveredControl() == map)
+                            mapPoint = point;
+                    }
+                }
+            Require(mapPoint is not null, "The canonical rally target has a real unobstructed map hit for native pointer transfer.");
+            await Layout();
+            Require(screen.Selection?.PreviewTarget?.Cell == target, "Real map hover establishes the same tactic preview as keyboard navigation.");
+            var detailsButton = (Button)hud.FindChild("ForecastDetailsButton", true, false);
+            var detailsPoint = detailsButton.GetGlobalRect().GetCenter();
+            Motion(detailsPoint);
+            await Layout();
+            Require(GodotObject.IsInstanceValid(detailsButton) && detailsButton.IsInsideTree()
+                && screen.Selection?.PreviewTarget?.Cell == target && hud.Projection!.Sections.Any(section => section.Key == "forecast-details"),
+                "Moving from the real map to the tactic details button preserves its preview and mounted control.");
+            Click(detailsPoint);
+            await Layout();
+            var popup = (PopupPanel)hud.FindChild("UnitDossier", true, false);
+            var content = ((VBoxContainer)hud.FindChild("forecast-details", true, false)).GetNode<VBoxContainer>("Content");
+            Require(popup.Visible && content.Visible && content.GetChildCount() == tacticDetails.Rows.Count,
+                "A native click opens all current tactic details already expanded in the existing scrollable dossier.");
+            ((Button)hud.FindChild("DossierClose", true, false)).EmitSignal(BaseButton.SignalName.Pressed);
+            await Layout();
+            Require(!popup.Visible && ReferenceEquals(viewport.GuiGetFocusOwner(), detailsButton)
+                && session.Revision == 0 && session.Events.Count == 0 && EcmaJson.Stringify(session.Snapshot()) == original,
+                "Reading and closing tactic details returns focus without spending resources, logging events or changing battle state.");
+            viewport.GuiReleaseFocus();
             KeyPress(Key.Enter);
             Require(session.Revision == 1 && EcmaJson.DeepEquals(session.ActionLog.Single(), action)
                 && StateDigest.Hash(session.Snapshot()) == checkpoint["afterStateHash"]!.GetValue<string>()

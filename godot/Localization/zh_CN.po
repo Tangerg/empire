@@ -3761,3 +3761,40 @@ msgstr "{0} → {1}：{2}"
 
 msgid "ui.hud.hit_effect.condition"
 msgstr "命中且受击单位仍在场时尝试生效；位移受阻才产生碰撞伤害。"
+
+# Planned commander effects are not weapon-hit effects and must not imply a hit condition.
+msgid "tactic.effect.add_status.compact"
+msgstr "施加{0} · {1} 回合"
+
+msgid "tactic.effect.add_status.detail"
+msgstr "对范围内友军施加{0}，基础持续 {1} 回合；已有状态按其叠加规则结算。"
+
+msgid "tactic.effect.remove_status.compact"
+msgstr "移除{0}"
+
+msgid "tactic.effect.remove_status.detail"
+msgstr "移除范围内友军已有的{0}；未持有该状态时不产生移除效果。"
+
+msgid "ui.hud.tactic.self"
+msgstr "以指挥官自身为中心"
+
+msgid "ui.hud.tactic.range"
+msgstr "施放距离 {0} 格"
+
+msgid "ui.hud.tactic.radius"
+msgstr "作用半径 {0} 格"
+
+msgid "ui.hud.tactic.area_cost"
+msgstr "半径 {0} 格 · {1}"
+
+msgid "ui.hud.tactic.choose_center"
+msgstr "选择可用地格以查看范围内友军"
+
+msgid "ui.hud.tactic.allies"
+msgstr "中心 ({0}, {1}) · 范围内可见友军 {2}"
+
+msgid "ui.hud.tactic.scope"
+msgstr "名单仅列出范围内可见友军，不保证每个单位的状态都会改变；无实际收益也会消耗指挥点。"
+
+msgid "ui.hud.tactic.details"
+msgstr "战术详情"

@@ -641,7 +641,7 @@ public partial class BattleScreen : Control
                     return;
                 var hovered = GetViewport().GuiGetHoveredControl();
                 if (Current(expected) && _gestures?.ActivePointerId is null
-                    && _tactical.Selection.Kind == TacticalSelectionKind.Target
+                    && _tactical.Selection.Kind is TacticalSelectionKind.Target or TacticalSelectionKind.Tactic
                     && _tactical.Selection.PreviewTarget is not null && hovered is not null && _hud.IsAncestorOf(hovered))
                     return;
                 _gestures?.PointerLeave();
