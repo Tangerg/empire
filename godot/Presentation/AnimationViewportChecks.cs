@@ -113,19 +113,22 @@ public partial class AnimationChecks
         }
     }
 
+    private enum AnnouncementFraming { TopLeft, BottomRight, Opening }
+
     private async Task CheckViewportAnnouncements()
     {
         var nativeSize = GetWindow().Size;
         try
         {
             foreach (var size in new[] { new Vector2I(960, 640), new Vector2I(1180, 812) })
-                foreach (var topLeft in new[] { true, false })
-                    await CheckViewportAnnouncement(size, topLeft);
+                foreach (var framing in new[] { AnnouncementFraming.TopLeft, AnnouncementFraming.BottomRight })
+                    await CheckViewportAnnouncement(size, framing);
+            await CheckViewportAnnouncement(new Vector2I(960, 640), AnnouncementFraming.Opening);
         }
         finally { GetWindow().Size = nativeSize; }
     }
 
-    private async Task CheckViewportAnnouncement(Vector2I size, bool topLeft)
+    private async Task CheckViewportAnnouncement(Vector2I size, AnnouncementFraming framing)
     {
         GetWindow().Size = size;
         var campaignLevel = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json")
@@ -158,19 +161,22 @@ public partial class AnimationChecks
             Require(host.GetParent() == world.GetParent() && host.GetGlobalRect() == map.GetGlobalRect()
                 && host.MouseFilter == Control.MouseFilterEnum.Ignore && host.FocusMode == Control.FocusModeEnum.None,
                 "Screen owns a full-viewport, noninteractive feedback host independent of the camera world.");
-            // Exercise the same captured native gesture path as CameraIntegrationChecks.
-            var end = topLeft ? new Vector2(10000, 10000) : new Vector2(-10000, -10000);
-            using (var down = new InputEventMouseButton { ButtonIndex = MouseButton.Middle, Pressed = true, Position = new(400, 300) })
-                map.EmitSignal(Control.SignalName.GuiInput, down);
-            var globalEnd = map.GetGlobalTransformWithCanvas() * end;
-            using (var motion = new InputEventMouseMotion { Position = globalEnd, GlobalPosition = globalEnd })
-                screen._Input(motion);
-            using (var up = new InputEventMouseButton { ButtonIndex = MouseButton.Middle, Pressed = false, Position = globalEnd })
-                screen._Input(up);
-            var expectedOrigin = topLeft ? new Vector2(16, 110) + new Vector2(74, 62) * world.Scale
-                : (Vector2)size - new Vector2(16, 134) - (screen.Board.FieldSize + new Vector2(74, 74)) * world.Scale;
-            Require(world.Position.DistanceTo(expectedOrigin) < .002f && session.Revision == 0,
-                "C03 announcement regression starts at the actual opposite camera pan limits without changing the battle.");
+            if (framing != AnnouncementFraming.Opening)
+            {
+                // Exercise the same captured native gesture path as CameraIntegrationChecks.
+                var end = framing == AnnouncementFraming.TopLeft ? new Vector2(10000, 10000) : new Vector2(-10000, -10000);
+                using (var down = new InputEventMouseButton { ButtonIndex = MouseButton.Middle, Pressed = true, Position = new(400, 300) })
+                    map.EmitSignal(Control.SignalName.GuiInput, down);
+                var globalEnd = map.GetGlobalTransformWithCanvas() * end;
+                using (var motion = new InputEventMouseMotion { Position = globalEnd, GlobalPosition = globalEnd })
+                    screen._Input(motion);
+                using (var up = new InputEventMouseButton { ButtonIndex = MouseButton.Middle, Pressed = false, Position = globalEnd })
+                    screen._Input(up);
+                var expectedOrigin = framing == AnnouncementFraming.TopLeft ? new Vector2(16, 110) + new Vector2(74, 62) * world.Scale
+                    : (Vector2)size - new Vector2(16, 134) - (screen.Board.FieldSize + new Vector2(74, 74)) * world.Scale;
+                Require(world.Position.DistanceTo(expectedOrigin) < .002f && session.Revision == 0,
+                    "C03 announcement regression starts at the actual opposite camera pan limits without changing the battle.");
+            }
             var cameraBefore = world.Transform;
             var completed = new List<int>();
             screen.Board.EventPresented += (_, index) => completed.Add(index);
@@ -204,20 +210,23 @@ public partial class AnimationChecks
             cameraBefore = world.Transform;
             CheckAnnouncementRect(map, band, label);
             var overlay = world.GetNode<BoardOverlay>("LegalTargets");
-            var hoverPoint = session.GetTacticalQueries(0).InteractiveCells
-                .Select(cell => screen.Board.Projection.CellCenter(new(cell.X, cell.Y)))
-                .Where(point => screen.Board.Pick(point) is not null)
-                .Select(point => world.Transform * point)
-                .Where(point => new Rect2(Vector2.Zero, map.Size).HasPoint(point))
-                .OrderBy(point => Math.Abs(point.Y - map.Size.Y / 2) + Math.Abs(point.X - map.Size.X / 2) * .01f)
-                .First();
-            using (var motion = new InputEventMouseMotion { Position = hoverPoint })
-                map.EmitSignal(Control.SignalName.GuiInput, motion);
-            // Observe the actual rendered projection without adding a production test API.
-            var cursorProjection = (TacticalSelectionOverlay)typeof(BoardOverlay)
-                .GetField("_tactical", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(overlay)!;
-            Require(screen.IsInputBlocked && cursorProjection.Cursor is not null,
-                "Native busy-time mouse hover retains a real cursor ring while the announcement is held.");
+            if (framing == AnnouncementFraming.Opening)
+            {
+                var hoverPoint = session.GetTacticalQueries(0).InteractiveCells
+                    .Select(cell => screen.Board.Projection.CellCenter(new(cell.X, cell.Y)))
+                    .Where(point => screen.Board.Pick(point) is not null)
+                    .Select(point => world.Transform * point)
+                    .Where(point => new Rect2(Vector2.Zero, map.Size).HasPoint(point))
+                    .OrderBy(point => Math.Abs(point.Y - map.Size.Y / 2) + Math.Abs(point.X - map.Size.X / 2) * .01f)
+                    .First();
+                using (var motion = new InputEventMouseMotion { Position = hoverPoint })
+                    map.EmitSignal(Control.SignalName.GuiInput, motion);
+                // Observe the actual rendered projection without adding a production test API.
+                var cursorProjection = (TacticalSelectionOverlay)typeof(BoardOverlay)
+                    .GetField("_tactical", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(overlay)!;
+                Require(screen.IsInputBlocked && cursorProjection.Cursor is not null,
+                    "Native busy-time mouse hover retains a real cursor ring while the announcement is held.");
+            }
             Require(host.ZIndex > overlay.ZIndex
                 && overlay.GetChildren().OfType<BoardRangePlane>().All(plane => host.ZIndex > plane.ZIndex)
                 && host.ZIndex < screen.GetNode<Control>("TacticalHud").ZIndex,
@@ -257,6 +266,12 @@ public partial class AnimationChecks
                 && session.Revision == 1 && StateDigest.Hash(session.Snapshot()) == afterHash,
                 "Repeated refresh cannot replay the banner, duplicate the journal, or change canonical state.");
 
+            if (framing == AnnouncementFraming.Opening)
+            {
+                GD.Print($"TURN_BANNER_BUSY_HOVER size={size}; cursorPresent=true; aboveMapOverlay=true; belowHud=true; orderedOnce=true");
+                return;
+            }
+
             var rebound = new GrayFlagSession(new(engine, presentation, new JsonArray()), campaignLevel);
             Bind(rebound);
             EndTurnThroughViewport();
@@ -280,7 +295,7 @@ public partial class AnimationChecks
             Require(reattached.Revision == 1 && !screen.IsInputBlocked && host.GetChildCount() == 0
                 && reduced.EventDescriptions.Where(line => line.Length > 0).All(line => screen.RecentMessages.Contains(line)),
                 "Reattached reduced-motion screen commits and logs normally without a lingering viewport effect.");
-            GD.Print($"TURN_BANNER_VIEWPORT size={size}; corner={(topLeft ? "top-left" : "bottom-right")}; visible=true; resize=entrance,hold,exit; orderedOnce=true");
+            GD.Print($"TURN_BANNER_VIEWPORT size={size}; corner={framing}; visible=true; resize=entrance,hold,exit; orderedOnce=true");
         }
         finally
         {
