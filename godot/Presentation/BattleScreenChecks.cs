@@ -11,6 +11,7 @@ using Empire.Core.Composition;
 using Empire.Core.State;
 using Empire.Core.Determinism;
 using Empire.Core.Geometry;
+using Empire.Core.Tactics;
 using Empire.Presentation.Tactical;
 using System.Collections.Generic;
 using Godot;
@@ -27,6 +28,7 @@ public partial class BattleScreenChecks : Node
             await CheckCaptureProgressFeedback();
             CheckStructureCollateralDisclosure();
             CheckRecordedStatusFeedback();
+            CheckStructureInspectionQueries();
             CheckStructureKeyboardTarget();
             CheckFormationInspection();
             CheckCollisionAftermathDisclosure();
@@ -53,6 +55,80 @@ public partial class BattleScreenChecks : Node
             GD.PushError(error.ToString());
             GetTree().Quit(1);
         }
+    }
+
+    private void CheckStructureInspectionQueries()
+    {
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var text = GodotTextCatalog.LoadSimplifiedChinese();
+        var presentation = BattleTextChecks.Session(engine, text);
+        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<string>() == "c01-09");
+        var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+        var initialState = session.Snapshot();
+        var initial = EcmaJson.Stringify(initialState);
+        var queries = session.GetTacticalQueries(17);
+        var west = new BoardCell(5, 6);
+        var north = new BoardCell(7, 4);
+        Require(StateDigest.Hash(session.Snapshot()) == "6fefe68e"
+            && queries.HasStructure(west) && !queries.IsSite(west)
+            && queries.HasStructure(north) && queries.IsSite(north)
+            && !queries.HasStructure(new(-1, -1))
+            && !queries.HasStructure(queries.InteractiveCells.First(cell =>
+                !initialState["structures"]!.AsArray().OfType<JsonObject>().Any(value => TacticalQueries.Position(value) == new Coord(cell.X, cell.Y)))),
+            "Structure inspection queries must distinguish the real west object, north site and absent coordinates.");
+        var controller = new TacticalSelectionController(queries);
+        controller.Click(controller.Stamp, TacticalHit.Object(west));
+        controller.Leave(controller.Stamp);
+        var hud = session.ProjectHud(controller.Stamp, controller.Selection, controller.CursorHit, controller.InspectId, false);
+        Require(controller.Selection.Kind == TacticalSelectionKind.Structure
+            && hud.Sections.Single(section => section.Key == "structure").Rows.Any(row => row.Key == "close" && row.Intent?.Kind == TacticalHudIntentKind.Back)
+            && !hud.Sections.Any(section => section.Key is "site" or "recruit" or "unit")
+            && session.Revision == 0 && session.Events.Count == 0 && session.ActionLog.Count == 0
+            && EcmaJson.Stringify(session.Snapshot()) == initial,
+            "Pinned standalone inspection exposes current structure facts and cancel, never site/unit orders or gameplay changes.");
+
+        // Detached initial-state fixtures exercise inspection of existing damaged, disabled and ruined structures.
+        foreach (var (hp, disabled) in new[] { (50, false), (100, true), (0, false) })
+        {
+            var fixture = level.DeepClone().AsObject();
+            var source = fixture["structures"]!.AsArray().OfType<JsonObject>().Single(value => value["id"]!.GetValue<string>() == "chain-west");
+            source["hp"] = hp;
+            source["disabled"] = disabled;
+            var sample = new GrayFlagSession(new(engine, presentation, new JsonArray()), fixture);
+            var before = EcmaJson.Stringify(sample.Snapshot());
+            var read = sample.GetTacticalQueries(18);
+            var selection = new TacticalSelectionController(read);
+            selection.Click(selection.Stamp, TacticalHit.Object(west));
+            selection.Leave(selection.Stamp);
+            var projected = sample.ProjectHud(selection.Stamp, selection.Selection, null, null, false);
+            var facts = projected.Sections.Single(section => section.Key == "structure").Rows;
+            Require(read.HasStructure(west) && selection.Selection.Kind == TacticalSelectionKind.Structure
+                && facts.Single(row => row.Key == "hp").Gauge?.Value == hp
+                && facts.Any(row => row.Key == "disabled") == disabled
+                && (TacticalQueries.StructureAt(sample.Snapshot(), new(5, 6)) is not null) == (hp > 0)
+                && sample.Revision == 0 && sample.Events.Count == 0 && sample.ActionLog.Count == 0
+                && EcmaJson.Stringify(sample.Snapshot()) == before,
+                "Inspection presence must include existing ruins without changing live combat occupancy or structure state.");
+        }
+
+        var stamp = controller.Stamp;
+        var actor = queries.Unit(queries.Actors()[0])!;
+        var orders = new TacticalSelectionController(queries);
+        orders.Click(stamp, TacticalHit.Unit(actor.At, actor.Id));
+        var wait = orders.ChooseCommand(stamp, "wait").Request!;
+        Require(session.Dispatch(wait.Action!.Value, stamp.Revision).Accepted, "A real wait advances the fixture revision.");
+        var staleRejected = false;
+        try
+        {
+            queries.HasStructure(west);
+        }
+        catch (Empire.Core.DomainInvariantException) { staleRejected = true; }
+        Require(staleRejected, "Structure presence queries must reject their stale session revision.");
+        controller.CompleteDispatch(stamp, session.GetTacticalQueries(stamp.Binding));
+        Require(controller.Selection.Kind == TacticalSelectionKind.Idle && controller.CursorHit is null
+            && controller.Back(stamp).Status == TacticalInputStatus.StaleRevision,
+            "A completed command clears pinned structure selection; an old close callback cannot revive or change it.");
     }
 
     private void CheckStructureKeyboardTarget()
@@ -1372,6 +1448,7 @@ public partial class BattleScreenChecks : Node
         public TacticalUnit? UnitAt(BoardCell at) => inner.UnitAt(at);
         public bool AreEnemies(int firstUnit, int secondUnit) => inner.AreEnemies(firstUnit, secondUnit);
         public bool IsSite(BoardCell at) => inner.IsSite(at);
+        public bool HasStructure(BoardCell at) => inner.HasStructure(at);
         public bool CanOpenRecruitment(BoardCell at) => inner.CanOpenRecruitment(at);
         public bool IsEnemyOfViewer(int unit) => inner.IsEnemyOfViewer(unit);
         public IReadOnlyList<int> Actors() => inner.Actors();

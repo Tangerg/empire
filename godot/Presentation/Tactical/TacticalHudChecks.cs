@@ -237,6 +237,249 @@ public partial class TacticalHudChecks : Node
         screen.Free();
     }
 
+    private async System.Threading.Tasks.Task CheckStructurePointerInspection()
+    {
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var presentation = BattleTextChecks.Session(engine, GodotTextCatalog.LoadSimplifiedChinese());
+        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<string>() == "c01-09");
+        var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+        var snapshot = session.Snapshot();
+        var original = EcmaJson.Stringify(snapshot);
+        Require(StateDigest.Hash(snapshot) == "6fefe68e", "Structure inspection uses the unchanged formal C01-09 opening.");
+        var west = new BoardCell(5, 6);
+        var north = new BoardCell(7, 4);
+        var queries = session.GetTacticalQueries(0);
+        Require(snapshot["structures"]!.AsArray().OfType<JsonObject>().Any(value => value["id"]!.GetValue<string>() == "chain-west"
+                && value["x"]!.GetValue<int>() == west.X && value["y"]!.GetValue<int>() == west.Y)
+            && !queries.IsSite(west) && queries.IsSite(north),
+            "The native regression contrasts the real standalone chain-west with capturable chain-north, without changing either terrain.");
+        var windowSize = GetWindow().Size;
+        var screen = new BattleScreen();
+        AddChild(screen);
+        async System.Threading.Tasks.Task Settle()
+        {
+            for (var frame = 0; frame < 3; frame++)
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        }
+        void Motion(Vector2 at)
+        {
+            using var input = new InputEventMouseMotion { Position = at, GlobalPosition = at };
+            Input.ParseInputEvent(input);
+        }
+        void Click(Vector2 at)
+        {
+            foreach (var down in new[] { true, false })
+            {
+                using var input = new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = down, Position = at, GlobalPosition = at };
+                Input.ParseInputEvent(input);
+            }
+        }
+        void KeyPress(Key key)
+        {
+            foreach (var down in new[] { true, false })
+            {
+                using var input = new InputEventKey { Keycode = key, PhysicalKeycode = key, Pressed = down };
+                Input.ParseInputEvent(input);
+            }
+        }
+        void Unchanged(string step) => Require(session.Revision == 0 && session.Events.Count == 0 && session.ActionLog.Count == 0
+            && EcmaJson.Stringify(session.Snapshot()) == original,
+            "Native structure inspection cannot change state, revision, events or the action log: " + step);
+        try
+        {
+            GetWindow().Size = new Vector2I(1280, 812);
+            var scene = AuthoredScene.Load("res://data/scenes/c01-09.json");
+            var rendering = BoardSceneRendering.Load(scene, level, snapshot["map"]!.AsObject());
+            screen.BindSession(new(presentation.Messages, presentation.Battle, PortraitCatalogResources.Load(), session,
+                new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, rendering.Plane)), level, scene);
+            screen.ConfigureGround(rendering.Ground);
+            screen.ConfigureDynamicState();
+            screen.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.TopLeft);
+            screen.Size = new Vector2(1280, 812);
+            await Settle();
+            var map = (Control)screen.FindChild("MapArea", true, false);
+            var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+            var viewport = GetViewport();
+            viewport.NotifyMouseExited();
+            viewport.NotifyMouseEntered();
+            viewport.GuiReleaseFocus();
+            Button Dossier() => (Button)hud.FindChild("DossierButton", true, false);
+            TacticalHudSection Structure() => hud.Projection!.Sections.Single(section => section.Key == "structure");
+            async System.Threading.Tasks.Task<Vector2?> FindPixel(TacticalHit hit)
+            {
+                var origin = screen.Board.Projection.CellContact(new(hit.Cell.X, hit.Cell.Y));
+                for (var radius = 0; radius <= 120; radius += 3)
+                    for (var x = -radius; x <= radius; x += 3)
+                        foreach (var y in radius == 0 ? new[] { 0 } : new[] { -radius, radius })
+                        {
+                            var point = origin + new Vector2(x, y);
+                            if (screen.Board.Pick(point) != hit)
+                                continue;
+                            var global = screen.Board.GetGlobalTransformWithCanvas() * point;
+                            if (!map.GetGlobalRect().HasPoint(global))
+                                continue;
+                            Motion(global);
+                            await Settle();
+                            if (viewport.GuiGetHoveredControl() == map)
+                                return global;
+                        }
+                return null;
+            }
+            async System.Threading.Tasks.Task ClickMap(Vector2 at)
+            {
+                Motion(at);
+                await Settle();
+                Require(viewport.GuiGetHoveredControl() == map, "A native structure-flow click must reach the actual map, not overlapping HUD chrome.");
+                Click(at);
+                await Settle();
+            }
+            async System.Threading.Tasks.Task ClickControl(Button button)
+            {
+                var at = button.GetGlobalRect().GetCenter();
+                if (button.GetWindow() != GetWindow())
+                    at += new Vector2(button.GetWindow().Position.X, button.GetWindow().Position.Y);
+                Motion(at);
+                await Settle();
+                Require(button.GetViewport().GuiGetHoveredControl() == button,
+                    "Native structure-flow pointer must reach the actual control: " + button.Name);
+                Click(at);
+                await Settle();
+            }
+            async System.Threading.Tasks.Task TabTo(Button button)
+            {
+                var route = new System.Collections.Generic.List<string>();
+                var limit = screen.FindChildren("*", "Button", true, false).Count + 2;
+                for (var index = 0; index < limit && !button.HasFocus(); index++)
+                {
+                    KeyPress(Key.Tab);
+                    await Settle();
+                    route.Add(button.GetViewport().GuiGetFocusOwner()?.Name.ToString() ?? "none");
+                }
+                Require(button.HasFocus(), "Real native Tab must reach " + button.Name + "; focus route: " + string.Join(", ", route));
+            }
+
+            var westPixel = await FindPixel(TacticalHit.Object(west));
+            Require(westPixel is not null, "The unchanged chain-west has an opaque, native-reachable Object pixel.");
+            await ClickMap(westPixel!.Value);
+            var westSection = Structure();
+            void WestPinned(string step)
+            {
+                Require(screen.Selection is { Kind: TacticalSelectionKind.Structure, Destination: { X: 5, Y: 6 } }
+                    && hud.Projection!.Sections.SingleOrDefault(section => section.Key == "structure") is { } section
+                    && section.Title == westSection.Title && section.Rows.SequenceEqual(westSection.Rows)
+                    && hud.Projection.Sections.All(section => section.Key is not ("site" or "unit"))
+                    && hud.Projection.Sections.Single(section => section.Key == "tile").Rows.Single(row => row.Key == "coordinate").Label == "5, 6",
+                    "Standalone structure selection and current facts must stay pinned: " + step);
+                Unchanged(step);
+            }
+            WestPinned("opaque chain-west click");
+            Require(Dossier().Text == westSection.Title, "The selected structure owns its dossier entry label instead of the general roster.");
+            Motion(Dossier().GetGlobalRect().GetCenter());
+            await Settle();
+            Require(viewport.GuiGetHoveredControl() == Dossier(), "The real pointer reaches the structure dossier entry.");
+            WestPinned("map-to-dossier pointer handoff");
+            await ClickControl(Dossier());
+            Require(hud.DossierVisible && hud.FindChild("structure", true, false) is Control mounted && mounted.IsVisibleInTree(),
+                "Actual native dossier activation exposes the pinned standalone structure inside the window.");
+            WestPinned("opened dossier");
+            await ClickControl((Button)hud.FindChild("DossierClose", true, false));
+            Require(!hud.DossierVisible, "The actual dossier Close button dismisses its window.");
+            WestPinned("dossier dismissal preserves selection");
+            TacticalUnit? actor = null;
+            Vector2? actorPixel = null;
+            foreach (var id in queries.Actors())
+            {
+                var candidate = queries.Unit(id)!;
+                actorPixel = await FindPixel(TacticalHit.Unit(candidate.At, candidate.Id));
+                if (actorPixel is null)
+                    continue;
+                actor = candidate;
+                break;
+            }
+            Require(actor is not null && actorPixel is not null, "The unchanged C01-09 has a native-reachable friendly actor for incidental hover and explicit switching.");
+            WestPinned("real friendly-unit hover");
+            Vector2? groundPixel = null;
+            foreach (var cell in queries.InteractiveCells.OrderBy(cell => Math.Abs(cell.X - west.X) + Math.Abs(cell.Y - west.Y)))
+            {
+                var point = screen.Board.Projection.CellCenter(new(cell.X, cell.Y));
+                var global = screen.Board.GetGlobalTransformWithCanvas() * point;
+                if (cell == west || !map.GetGlobalRect().HasPoint(global) || screen.Board.Pick(point) != TacticalHit.Ground(cell))
+                    continue;
+                Motion(global);
+                await Settle();
+                if (viewport.GuiGetHoveredControl() != map)
+                    continue;
+                groundPixel = global;
+                break;
+            }
+            Require(groundPixel is not null, "The native structure flow includes a genuine painted Ground hover.");
+            WestPinned("real ground hover");
+            GetWindow().EmitSignal(Window.SignalName.MouseExited);
+            await Settle();
+            WestPinned("native window leave");
+            viewport.NotifyMouseEntered();
+            viewport.GuiReleaseFocus();
+            await TabTo(Dossier());
+            WestPinned("native Tab focus");
+            KeyPress(Key.Enter);
+            await Settle();
+            Require(hud.DossierVisible && ((Control)hud.FindChild("structure", true, false)).IsVisibleInTree(),
+                "Native Tab and Enter reopen the selected structure without selecting an actor or issuing an order.");
+            var closeSelection = hud.FindChildren("*", "Button", true, false).OfType<Button>()
+                .Single(button => button.GetMeta("hud_key", "").AsString() == "structure/close");
+            ((ScrollContainer)hud.FindChild("DetailScroll", true, false)).EnsureControlVisible(closeSelection);
+            await Settle();
+            await ClickControl(closeSelection);
+            Require(screen.Selection?.Kind == TacticalSelectionKind.Idle && hud.Projection!.Sections.All(section => section.Key != "structure"),
+                "The actual structure Close selection button clears its pinned subject after pointer leave.");
+            Unchanged("structure close selection");
+            if (hud.DossierVisible)
+                await ClickControl((Button)hud.FindChild("DossierClose", true, false));
+            await ClickMap(westPixel.Value);
+            Motion(Dossier().GetGlobalRect().GetCenter());
+            await Settle();
+            viewport.GuiReleaseFocus();
+            KeyPress(Key.Escape);
+            await Settle();
+            Require(screen.Selection?.Kind == TacticalSelectionKind.Idle && hud.Projection!.Sections.All(section => section.Key != "structure"),
+                "Native Escape clears standalone structure selection after HUD handoff.");
+            Unchanged("Escape cancellation");
+
+            var northPixel = await FindPixel(TacticalHit.Object(north));
+            Require(northPixel is not null, "The unchanged chain-north has an opaque, native-reachable Object pixel.");
+            await ClickMap(northPixel!.Value);
+            var northSection = Structure();
+            await ClickControl(Dossier());
+            Require(screen.Selection is { Kind: TacticalSelectionKind.Site, Destination: { X: 7, Y: 4 } }
+                && hud.DossierVisible && ((Control)hud.FindChild("structure", true, false)).IsVisibleInTree()
+                && Structure().Title == northSection.Title && Structure().Rows.SequenceEqual(northSection.Rows)
+                && hud.Projection!.Sections.Any(section => section.Key == "site"),
+                "The real capturable chain-north remains a Site and retains its structure information through the same native dossier route.");
+            Unchanged("capturable Site positive control");
+            await ClickControl((Button)hud.FindChild("DossierClose", true, false));
+            await ClickMap(westPixel.Value);
+            WestPinned("switching from Site to standalone Structure");
+            await ClickMap(actorPixel!.Value);
+            Motion(Dossier().GetGlobalRect().GetCenter());
+            await Settle();
+            Require(screen.Selection?.Kind == TacticalSelectionKind.Unit && screen.Selection.UnitId == actor!.Id
+                && hud.Projection!.Sections.Any(section => section.Key == "unit")
+                && hud.Projection.Sections.All(section => section.Key != "structure"),
+                "An explicit native friendly-unit click replaces structure inspection without retaining stale structure details.");
+            Unchanged("switching from Structure to Unit");
+            GD.Print("STRUCTURE_INSPECTION_NATIVE_OK C01-09 chain-west / chain-north; state=6fefe68e; actual mouse handoff, Tab, Enter, Close and Escape; no committed actions");
+        }
+        finally
+        {
+            GetViewport().NotifyMouseExited();
+            RemoveChild(screen);
+            screen.Free();
+            GetWindow().Size = windowSize;
+            await Settle();
+        }
+    }
+
     private async System.Threading.Tasks.Task CheckShortHudBoundary(BattleScreen screen, GrayFlagSession session, Control map, TacticalHud hud)
     {
         var windowSize = GetWindow().Size;
@@ -1338,6 +1581,7 @@ public partial class TacticalHudChecks : Node
         {
             CheckHudSnapshotLifetime();
             await CheckSitePointerBoundary();
+            await CheckStructurePointerInspection();
             await CheckTacticKeyboardContext();
             await CheckHealingTarget();
             CheckInspectionOrder();

@@ -10,7 +10,7 @@ namespace Empire.Presentation.Tactical;
 
 public enum TacticalSelectionKind
 {
-    Idle, Deploying, DeploymentUnit, Unit, Destination, Target, Tactic, Disembark, Recruit, Site
+    Idle, Deploying, DeploymentUnit, Unit, Destination, Target, Tactic, Disembark, Recruit, Site, Structure
 }
 public enum TacticalInputStatus
 {
@@ -190,7 +190,7 @@ public sealed class TacticalSelectionController
             {
                 PreviewTarget = hit
             };
-        if (Selection.Kind == TacticalSelectionKind.Site)
+        if (Selection.Kind is TacticalSelectionKind.Site or TacticalSelectionKind.Structure)
             return Result();
         var unit = HitUnit(hit);
         InspectId = unit?.Id ?? Selection.UnitId;
@@ -252,7 +252,9 @@ public sealed class TacticalSelectionController
             ? new TacticalSelection { Kind = TacticalSelectionKind.Recruit, Destination = hit.Cell }
             : queries.IsSite(hit.Cell)
                 ? new TacticalSelection { Kind = TacticalSelectionKind.Site, Destination = hit.Cell }
-                : Pick(TacticalSelectionKind.Idle);
+                : queries.HasStructure(hit.Cell)
+                    ? new TacticalSelection { Kind = TacticalSelectionKind.Structure, Destination = hit.Cell }
+                    : Pick(TacticalSelectionKind.Idle);
     }
 
     private TacticalSelection DeploymentAt(TacticalHit hit)
@@ -317,7 +319,7 @@ public sealed class TacticalSelectionController
                     // is the only available command. Only an explicit order commits.
                     Selection = new TacticalSelection { Kind = TacticalSelectionKind.Destination, UnitId = unit.Id, Destination = at, Path = Copy(path) };
                 }
-                else if (hit.Kind == TacticalHitKind.Object && (queries.IsSite(at) || queries.CanOpenRecruitment(at)))
+                else if (hit.Kind == TacticalHitKind.Object && (queries.IsSite(at) || queries.CanOpenRecruitment(at) || queries.HasStructure(at)))
                     Selection = Fresh(hit);
                 else
                     return Result(TacticalInputStatus.InvalidDestination);
@@ -482,7 +484,7 @@ public sealed class TacticalSelectionController
     private TacticalHit KeyboardFocus(BoardCell at) => queries.UnitAt(at) is { Visible: true } unit
         ? TacticalHit.Unit(at, unit.Id)
         : Selection.TargetSubjects.Any(target => target.Cell == at && target.Kind == TacticalTargetKind.Object)
-            || queries.IsSite(at) || queries.CanOpenRecruitment(at) ? TacticalHit.Object(at) : TacticalHit.Ground(at);
+            || queries.IsSite(at) || queries.CanOpenRecruitment(at) || queries.HasStructure(at) ? TacticalHit.Object(at) : TacticalHit.Ground(at);
 
     public TacticalInputResult Key(TacticalStamp expected, string key, bool repeat = false)
     {
@@ -525,7 +527,7 @@ public sealed class TacticalSelectionController
         if (direction != (0, 0))
         {
             var from = Cursor ?? (Selection.UnitId is { } id ? queries.Unit(id)?.At : null) ?? Selection.Destination;
-            // A composed order or site must survive pointer leave. Target-only
+            // A composed order or inspected object must survive pointer leave. Target-only
             // orders have no actor anchor, so first focus an admitted field cell.
             if (from is null && Selection.TargetSubjects.Count > 0)
             {
@@ -603,6 +605,7 @@ public sealed class TacticalSelectionController
                         }
                         break;
                     case TacticalSelectionKind.Site:
+                    case TacticalSelectionKind.Structure:
                         selected = selection.Destination;
                         break;
                     case TacticalSelectionKind.Deploying:

@@ -59,3 +59,13 @@ preview for readable HUD details, but does not authorize a command on that groun
 Cancel, leave and revision/binding transitions clear it. Native viewport interaction
 and current HUD projection are exercised in `CameraIntegrationChecks`, not inferred
 from the historical source trace.
+
+Standalone structure inspection is an explicit `Structure` selection owned by the
+controller. Only renderer `Object` hits or explicit keyboard focus can establish
+it. Ground and decoration-only objects cannot. Recruitment/site selection, real
+visible units, reachable movement previews and armed command subjects retain their
+existing priorities. Hover and pointer leave do not replace the chosen structure
+with unit inspection; Back, rebind and dispatch keep their existing reset rules.
+The typed fixtures cover these boundaries and three isolated negative controls.
+Current formal C01-09 mouse-to-dossier and adapter-lifetime checks are also part of
+`TacticalHudChecks` and `BattleScreenChecks` in the aggregate native gate.

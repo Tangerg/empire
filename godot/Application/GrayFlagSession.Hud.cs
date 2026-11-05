@@ -571,11 +571,11 @@ public sealed partial class GrayFlagSession
                     UnitIcon = new(card.Unit, null, S(current, "color"))
                 };
             })));
-        var inspectionCell = selection.Kind is TacticalSelectionKind.Site or TacticalSelectionKind.Recruit
+        var inspectionCell = selection.Kind is TacticalSelectionKind.Site or TacticalSelectionKind.Recruit or TacticalSelectionKind.Structure
             ? selection.Destination : cursor;
         if (inspectionCell is { } tile && engine.Space.Board(state).Contains(new(tile.X, tile.Y)))
         {
-            var structure = selection.Kind is TacticalSelectionKind.Site or TacticalSelectionKind.Recruit
+            var structure = selection.Kind is TacticalSelectionKind.Site or TacticalSelectionKind.Recruit or TacticalSelectionKind.Structure
                 || cursorHit?.Kind == TacticalHitKind.Object
                 ? state["structures"]!.AsArray().OfType<JsonObject>().FirstOrDefault(value => TacticalQueries.Position(value) == new Coord(tile.X, tile.Y))
                 : null;
@@ -598,6 +598,8 @@ public sealed partial class GrayFlagSession
                     facts.Add(new("cover", Cover(S(def, "cover"))));
                 if (!B(def, "targetable"))
                     facts.Add(new("targetable", text.Format("ui.hud.untargetable")));
+                if (selection.Kind == TacticalSelectionKind.Structure)
+                    facts.Add(Pick("close", text.Format("ui.hud.cancel_shortcut"), TacticalHudIntentKind.Back));
                 Section("structure", contentText.Name(ContentTextKind.Structure, S(def, "id")), facts);
             }
             var index = engine.Space.Board(state).IndexOf(new(tile.X, tile.Y));
@@ -699,6 +701,7 @@ public sealed partial class GrayFlagSession
         TacticalSelectionKind.Tactic => text.Format("ui.hud.selection.tactic"),
         TacticalSelectionKind.Recruit => text.Format("ui.hud.selection.recruit"),
         TacticalSelectionKind.Site => text.Format("ui.hud.selection.site"),
+        TacticalSelectionKind.Structure => text.Format("ui.hud.selection.structure"),
         _ => throw new ArgumentOutOfRangeException(nameof(kind)),
     };
 

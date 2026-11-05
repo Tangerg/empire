@@ -459,7 +459,10 @@ public partial class TacticalHud : Control
             var dossierTitle = (projection.Sections.Any(section => section.Key == "unit")
                 ? projection.Sections.FirstOrDefault(section => section.Key == "unit-details")?.Title
                 : null)
-                ?? projection.Sections.FirstOrDefault(section => section.Key is "site" or "structure" or "unit-details" or "roster")?.Title ?? "";
+                ?? projection.Sections.FirstOrDefault(section => section.Key == "site")?.Title
+                ?? projection.Sections.FirstOrDefault(section => section.Key == "structure")?.Title
+                ?? projection.Sections.FirstOrDefault(section => section.Key == "unit-details")?.Title
+                ?? projection.Sections.FirstOrDefault(section => section.Key == "roster")?.Title ?? "";
             var dossier = GetNodeOrNull<Button>("DossierButton");
             if (dossier is null)
             {

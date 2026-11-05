@@ -383,8 +383,79 @@ Check(controller.Click(stamp, TacticalHit.Unit(new(0, 0), 2)).Status == Tactical
     "Unit hit identity must match its canonical cell");
 fixture.Sites = new HashSet<BoardCell>();
 
+// Explicit structure inspection is selection state, never an inferred pointer hit or a command.
+var structureCell = new BoardCell(5, 1);
+fixture.Structures = new HashSet<BoardCell> { structureCell, new(2, 0), new(4, 0), new(0, 0) };
+controller.Bind(fixture);
+Check(controller.Click(stamp, TacticalHit.Ground(structureCell)).Request is null
+    && controller.Selection.Kind == TacticalSelectionKind.Idle, "Ground never promotes an unpicked structure into inspection");
+controller.Click(stamp, TacticalHit.Object(new(5, 0)));
+Check(controller.Selection.Kind == TacticalSelectionKind.Idle, "Decoration Object without a canonical structure cannot create an inspection");
+var inspectStructure = controller.Click(stamp, TacticalHit.Object(structureCell));
+Check(inspectStructure.Request is null && controller.Selection is { Kind: TacticalSelectionKind.Structure, UnitId: null }
+    && controller.Selection.Destination == structureCell && controller.InspectId is null,
+    "Standalone Object explicitly selects its structure without dispatch or concealed-unit inspection");
+controller.Hover(stamp, TacticalHit.Unit(new(3, 0), 2));
+Check(controller.InspectId is null && controller.Overlay().Selected == structureCell && controller.Overlay().Threat.Count == 0,
+    "Hovering an enemy cannot replace selected structure facts or overlay with enemy inspection");
+controller.Hover(stamp, TacticalHit.Ground(new(4, 1)));
+controller.Leave(stamp);
+Check(controller.Selection.Kind == TacticalSelectionKind.Structure && controller.Selection.Destination == structureCell
+    && controller.CursorHit is null && controller.InspectId is null && controller.Overlay().Selected == structureCell
+    && controller.Overlay().Threat.Count == 0, "Structure selection stays pinned across unit/ground hover and pointer leave");
+var structureStep = controller.Key(stamp, "arrowleft");
+Check(structureStep.Reveal == new BoardCell(4, 1) && controller.Selection.Kind == TacticalSelectionKind.Structure,
+    "Keyboard continues from the selected structure after pointer leave, not an unrelated actor");
+controller.Back(stamp);
+Check(controller.Selection.Kind == TacticalSelectionKind.Idle && controller.Overlay().Selected is null,
+    "Back clears the structure selection and ring");
+controller.Bind(fixture);
+controller.Hover(stamp, TacticalHit.Ground(new(4, 1)));
+controller.Key(stamp, "arrowright");
+Check(controller.CursorHit == TacticalHit.Object(structureCell) && controller.Key(stamp, "enter").Request is null
+    && controller.Selection.Kind == TacticalSelectionKind.Structure, "Explicit keyboard focus can inspect a known standalone structure");
+controller.Bind(fixture);
+controller.Hover(stamp, TacticalHit.Ground(new(1, 0)));
+controller.Key(stamp, "arrowleft");
+Check(controller.CursorHit == TacticalHit.Unit(new(0, 0), 1), "Keyboard prefers a visible unit over a same-cell structure");
+controller.Bind(fixture);
+controller.Click(stamp, TacticalHit.Object(new(2, 0)));
+Check(controller.Selection.Kind == TacticalSelectionKind.Recruit, "Recruitment keeps priority over structure inspection");
+fixture.Sites = new HashSet<BoardCell> { new(4, 0) };
+controller.Click(stamp, TacticalHit.Object(new(4, 0)));
+Check(controller.Selection.Kind == TacticalSelectionKind.Site, "Capturable site keeps priority over structure inspection");
+fixture.Sites = new HashSet<BoardCell>();
+controller.Bind(fixture);
+controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1));
+controller.Click(stamp, TacticalHit.Object(new(2, 0)));
+Check(controller.Selection.Kind == TacticalSelectionKind.Destination, "A reachable structure cell still opens the existing movement preview");
+controller.Click(stamp, TacticalHit.Object(structureCell));
+Check(controller.Selection.Kind == TacticalSelectionKind.Structure, "An unreachable structure can be inspected without an invalid move");
+var heldStructure = controller.Selection;
+controller.SetBusy(true);
+Check(controller.Click(stamp, TacticalHit.Object(new(4, 0))).Status == TacticalInputStatus.Busy
+    && controller.Selection == heldStructure, "Busy input cannot replace pinned structure selection");
+controller.SetBusy(false);
+Check(controller.Click(stamp with
+{
+    Binding = 99
+}, TacticalHit.Object(new(4, 0))).Status == TacticalInputStatus.StaleBinding
+    && controller.Selection == heldStructure, "Stale binding cannot replace pinned structure selection");
+fixture.InteractiveCells = defaultCells.Where(cell => cell != new BoardCell(4, 0)).ToFrozenSet();
+Check(controller.Click(stamp, TacticalHit.Object(new(4, 0))).Status == TacticalInputStatus.Ignored
+    && controller.Selection == heldStructure, "Outside structure clicks retain the current inspection");
+fixture.InteractiveCells = defaultCells;
+controller.CompleteDispatch(stamp, fixture);
+Check(controller.Selection.Kind == TacticalSelectionKind.Idle, "Same-revision refusal resets structure composition like other selections");
+controller.Click(stamp, TacticalHit.Object(structureCell));
+controller.Bind(fixture);
+Check(controller.Selection.Kind == TacticalSelectionKind.Idle && controller.CursorHit is null,
+    "Rebinding cannot revive a previous structure inspection");
+fixture.Structures = new HashSet<BoardCell>();
+
 void ArmTypedCommand(params TacticalTarget[] targets)
 {
+    fixture.Structures = targets.Where(target => target.Kind == TacticalTargetKind.Object).Select(target => target.Cell).ToHashSet();
     controller.Bind(fixture);
     fixture.CommandsOverride = null;
     controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1));
@@ -408,6 +479,11 @@ ArmTypedCommand(TacticalTarget.Object(new(3, 0)), TacticalTarget.Object(new(4, 0
 Check(controller.Click(stamp, TacticalHit.Ground(new(3, 0))).Request is null, "Ground cannot impersonate a structure target");
 ArmTypedCommand(TacticalTarget.Object(new(3, 0)), TacticalTarget.Object(new(4, 0)));
 Check(controller.Click(stamp, TacticalHit.Object(new(3, 0))).Request is not null, "explicit Object dispatches structure target");
+ArmTypedCommand(TacticalTarget.Object(new(3, 0)), TacticalTarget.Object(new(4, 0)));
+fixture.Structures = new HashSet<BoardCell> { new(3, 0), new(4, 0), structureCell };
+var composedStructureOrder = controller.Selection;
+Check(controller.Click(stamp, TacticalHit.Object(structureCell)).Status == TacticalInputStatus.InvalidTarget
+    && controller.Selection == composedStructureOrder, "An unadmitted structure click must preserve the armed order, not open inspection");
 ArmTypedCommand(TacticalTarget.AtCell(new(3, 0)), TacticalTarget.AtCell(new(4, 0)));
 Check(controller.Click(stamp, TacticalHit.Ground(new(3, 0))).Request is not null,
     "custom Cell target remains legal at a concealed occupant without becoming an entity selection");
@@ -586,6 +662,8 @@ sealed class Fixture : ITacticalSelectionQueries
     public bool IsEnemyOfViewer(int unit) => Data(unit).GetProperty("owner").GetInt32() != 1;
     public IReadOnlySet<BoardCell> Sites { get; set; } = new HashSet<BoardCell>();
     public bool IsSite(BoardCell at) => Sites.Contains(at);
+    public IReadOnlySet<BoardCell> Structures { get; set; } = new HashSet<BoardCell>();
+    public bool HasStructure(BoardCell at) => Structures.Contains(at);
     public bool CanOpenRecruitment(BoardCell at) => Cells(Root.GetProperty("recruits")).Contains(at);
     public IReadOnlyList<int> Actors() => Root.GetProperty("actors").EnumerateArray().Select(value => value.GetInt32()).ToArray();
     public IReadOnlyList<BoardCell> MoveStops(int unit) => StopsOverride ?? Cells(Data(unit).GetProperty("stops"));

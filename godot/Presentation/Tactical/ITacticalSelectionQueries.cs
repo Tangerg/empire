@@ -54,6 +54,8 @@ public interface ITacticalSelectionQueries
     bool AreEnemies(int firstUnit, int secondUnit);
     bool IsEnemyOfViewer(int unit);
     bool IsSite(BoardCell at);
+    /// <summary>Inspectable structure presence, including disabled structures and ruins; not attack legality.</summary>
+    bool HasStructure(BoardCell at);
     bool CanOpenRecruitment(BoardCell at);
     IReadOnlyList<int> Actors();
     IReadOnlyList<BoardCell> MoveStops(int unit);

@@ -719,3 +719,19 @@ selection controller owns the preview, and `BattleScreen` owns its map-to-HUD
 pointer handoff. This is recipient inspection, not another healing rule or
 predicted-effect owner. Formal C01-12 evidence and native boundaries are recorded
 in [`HEALING-TARGET-HUD-20261103.md`](../godot/docs/HEALING-TARGET-HUD-20261103.md).
+
+### Native standalone structure inspection (2026-11-05)
+
+`TacticalSelectionController` owns the selected structure coordinate independently
+of the transient cursor. `SelectionQueries.HasStructure` projects revision-bound
+canonical presence, including disabled structures and ruins; it does not replace
+combat target legality. Pointer inspection requires an actual `Object` hit, while
+explicit keyboard navigation may focus known structures. Visible unit, recruitment,
+site, reachable movement and armed-command priorities are retained.
+
+`GrayFlagSession.Hud` reads current HP, ownership and properties for that selected
+coordinate; the dossier does not cache a second inspection target. Hovering another
+unit or crossing into the HUD cannot change the selected subject. Closing the
+dossier preserves selection, while Back, rebinding and command completion use the
+controller's existing reset lifecycle. Map art, picking, structure availability,
+battle rules and persisted data are unchanged.

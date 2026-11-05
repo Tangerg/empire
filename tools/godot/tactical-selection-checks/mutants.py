@@ -9,6 +9,9 @@ root = Path(__file__).resolve().parents[3]
 source = root / 'godot/Presentation/Tactical'
 project = root / 'tools/godot/tactical-selection-checks/TacticalSelectionChecks.csproj'
 mutants = {
+    'structure-not-selected': ('? new TacticalSelection { Kind = TacticalSelectionKind.Structure, Destination = hit.Cell }', '? Pick(TacticalSelectionKind.Idle)'),
+    'structure-hover-changes-inspection': ('if (Selection.Kind is TacticalSelectionKind.Site or TacticalSelectionKind.Structure)', 'if (Selection.Kind == TacticalSelectionKind.Site)'),
+    'structure-keyboard-focus-dropped': ('|| queries.IsSite(at) || queries.CanOpenRecruitment(at) || queries.HasStructure(at) ? TacticalHit.Object(at)', '|| queries.IsSite(at) || queries.CanOpenRecruitment(at) ? TacticalHit.Object(at)'),
     'origin-orders-inaccessible': ('if (selected.Kind == TacticalSelectionKind.Unit)\n        {\n            at = actor.At;', 'if (selected.Kind == TacticalSelectionKind.Idle)\n        {\n            at = actor.At;'),
     'origin-singleton-auto-commits': ('if (selected.Kind == TacticalSelectionKind.Destination && option.Targets.Count == 1)', 'if (option.Targets.Count == 1)'),
     'acted-origin-admitted': ('queries.Unit(unit) is not { CanAct: true } actor', 'queries.Unit(unit) is not { } actor'),

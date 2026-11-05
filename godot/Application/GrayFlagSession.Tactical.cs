@@ -114,6 +114,8 @@ public sealed partial class GrayFlagSession
             return board.Contains(Coord(at)) && session.engine.Catalog.Definition("terrains",
                 EcmaJson.ReadString(state["map"]!["tiles"]![board.IndexOf(Coord(at))]))!.Value.GetProperty("capturable").GetBoolean();
         });
+        public bool HasStructure(BoardCell at) => Read(() => state["structures"]!.AsArray().OfType<JsonObject>()
+            .Any(structure => TacticalQueries.Position(structure) == Coord(at)));
         public bool CanOpenRecruitment(BoardCell at) => Read(() => HumanTurn &&
             TacticalQueries.UnitAt(state, Coord(at)) is null && session.engine.Recruitment.Cards(state, Coord(at)).Count > 0);
         public IReadOnlyList<int> Actors() => Read(() => Freeze((Phase == "playing" ? session.engine.Turns.Actors(state) : [])
