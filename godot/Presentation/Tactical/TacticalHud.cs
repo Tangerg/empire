@@ -9,12 +9,13 @@ namespace Empire.Presentation.Tactical;
 /// <summary>Native, keyboard-focusable controls over revision-bound immutable rows.</summary>
 public partial class TacticalHud : Control
 {
+    private static readonly Vector2I DossierSize = new(360, 420);
     private TacticalHudProjection? current;
     private long generation;
     private bool submitted;
     private Button? pendingOrder;
     private TacticalHudArt? art;
-    private ScrollContainer? detailScroll;
+    private ReadingScroll? detailScroll;
     private VBoxContainer? details;
     private PopupPanel? detailPopup;
     private Button? detailClose;
@@ -150,7 +151,7 @@ public partial class TacticalHud : Control
         MouseFilter = MouseFilterEnum.Ignore;
         if (detailPopup is null)
         {
-            detailPopup = new PopupPanel { Name = "UnitDossier", Size = new Vector2I(360, 340) };
+            detailPopup = new PopupPanel { Name = "UnitDossier", MinSize = DossierSize, WrapControls = false };
             detailPopup.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#30291e", 14, "#756344"));
             AddChild(detailPopup);
             detailPopup.VisibilityChanged += () => DossierVisibilityChanged?.Invoke();
@@ -177,19 +178,22 @@ public partial class TacticalHud : Control
                         opener.GrabFocus();
                 }).CallDeferred();
             };
-            detailScroll = new ScrollContainer
+            detailScroll = new ReadingScroll
             {
                 Name = "DetailScroll",
                 FollowFocus = true,
                 HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
-                CustomMinimumSize = new Vector2(328, 300)
+                CustomMinimumSize = new Vector2(328, 0),
+                SizeFlagsVertical = SizeFlags.ExpandFill
             };
             body.AddChild(detailScroll);
             details = new VBoxContainer { Name = "Details", SizeFlagsHorizontal = SizeFlags.ExpandFill };
             details.AddThemeConstantOverride("separation", 10);
             detailScroll.AddChild(details);
+            body.AddChild(detailScroll.CreateReadingHint(projection.ReadingHint));
         }
         detailClose!.Text = projection.CloseLabel;
+        detailScroll!.SetReadingHint(projection.ReadingHint);
         foreach (var child in details!.GetChildren())
         {
             if (retainedSections.Contains(child.Name))
@@ -223,7 +227,9 @@ public partial class TacticalHud : Control
                     }
                     detailOpenerName = button.Name;
                     detailOpeningStamp = openingStamp;
-                    popup.PopupCentered();
+                    // The window owns the reading viewport; wrapped text and disclosures
+                    // consume its available space instead of resizing it outside the screen.
+                    popup.PopupCentered(DossierSize);
                     detailClose!.GrabFocus();
                 }).CallDeferred();
             };
@@ -582,10 +588,12 @@ public partial class TacticalHud : Control
                 if (GodotObject.IsInstanceValid(this) && generation == renderedGeneration && IsInsideTree()
                     && GodotObject.IsInstanceValid(mountedScroll) && mountedScroll.IsInsideTree())
                 {
-                    mountedScroll.ScrollVertical = scrollPosition;
-                    // Preserve a deliberate reading offset unless focus was visible before the refresh.
+                    // Restore either visible focus or a deliberate reading offset. Writing the old
+                    // offset first leaves native child coordinates stale until the next layout.
                     if (preserveVisibleFocus && detailPopup?.GuiGetFocusOwner() is { } restoredFocus && mountedScroll.IsAncestorOf(restoredFocus))
                         mountedScroll.EnsureControlVisible(restoredFocus);
+                    else
+                        mountedScroll.ScrollVertical = scrollPosition;
                 }
             }), (uint)ConnectFlags.OneShot);
 
@@ -802,7 +810,7 @@ public partial class TacticalHud : Control
         && first.Rows.Zip(second.Rows).All(pair => SameRow(pair.First, pair.Second));
 
     private static bool Equivalent(TacticalHudProjection first, TacticalHudProjection second) =>
-        first.Stamp == second.Stamp && first.DossierSubject == second.DossierSubject && first.Hint == second.Hint && first.Busy == second.Busy && first.Portrait == second.Portrait && first.CloseLabel == second.CloseLabel
+        first.Stamp == second.Stamp && first.DossierSubject == second.DossierSubject && first.Hint == second.Hint && first.Busy == second.Busy && first.Portrait == second.Portrait && first.CloseLabel == second.CloseLabel && first.ReadingHint == second.ReadingHint
         && first.Sections.Count == second.Sections.Count && first.Sections.Zip(second.Sections).All(pair => SameSection(pair.First, pair.Second));
 
     private static void Place(Control control, float left, float top, float right, float bottom, float x1, float y1, float x2, float y2)

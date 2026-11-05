@@ -2,8 +2,8 @@ using Godot;
 
 namespace Empire.Presentation;
 
-/// <summary>Keyboard reading for campaign prose. Focused child actions retain their own key handling.</summary>
-public partial class CampaignScroll : ScrollContainer
+/// <summary>Keyboard reading for scrollable content. Focused child actions retain their own key handling.</summary>
+public partial class ReadingScroll : ScrollContainer
 {
     private Label? readingHint;
     private PanelContainer? hintSurface;
@@ -33,6 +33,13 @@ public partial class CampaignScroll : ScrollContainer
         hintSurface.AddChild(readingHint);
         return hintSurface;
     }
+    public void SetReadingHint(string text)
+    {
+        if (readingHint is null)
+            throw new InvalidOperationException("Create the reading hint before updating its text.");
+        readingHint.Text = text;
+        RefreshHint();
+    }
     public override void _Ready()
     {
         var bar = GetVScrollBar();
@@ -54,9 +61,17 @@ public partial class CampaignScroll : ScrollContainer
     {
         if (!IsInsideTree() || !IsInstanceValid(readingHint) || !IsInstanceValid(hintSurface))
             return;
+        if (!hintSurface!.IsInsideTree())
+            return;
+        if (GetParent() is not VBoxContainer layout || hintSurface.GetParent() != layout)
+            throw new InvalidOperationException("Reading content and its hint must share a vertical layout.");
         var hint = readingHint!;
-        var unreservedHeight = GetVScrollBar().Page + (hintSurface!.Visible ? hintSurface.Size.Y +
-            (hintSurface.GetParent() is BoxContainer parent ? parent.GetThemeConstant("separation") : 0) : 0);
+        var siblings = layout.GetChildren().OfType<Control>()
+            .Where(child => child.Visible && child != this && child != hintSurface).ToArray();
+        // The parent owns available space. Deriving it from the scrollbar page and
+        // current hint visibility feeds intermediate layout measurements back into visibility.
+        var unreservedHeight = Math.Max(0, layout.Size.Y - siblings.Sum(child => child.Size.Y)
+            - layout.GetThemeConstant("separation") * siblings.Length);
         var visible = hint.Text.Length > 0 && GetVScrollBar().MaxValue > unreservedHeight + 1;
         if (hint.Visible == visible)
             return;
@@ -74,7 +89,7 @@ public partial class CampaignScroll : ScrollContainer
                 EnsureControlVisible(focused);
         }).CallDeferred();
     }
-    public CampaignScroll()
+    public ReadingScroll()
     {
         FollowFocus = true;
         FocusMode = FocusModeEnum.All;

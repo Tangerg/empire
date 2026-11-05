@@ -99,7 +99,7 @@ public partial class CampaignShell : Control
         progress.AccessibilityName = view.ProgressLabel;
         header.AddChild(new Control { SizeFlagsHorizontal = SizeFlags.ExpandFill });
         header.AddChild(progress);
-        Scroll = new CampaignScroll
+        Scroll = new ReadingScroll
         {
             Name = "NarrativeScroll",
             HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
@@ -111,7 +111,7 @@ public partial class CampaignShell : Control
         Body = new VBoxContainer { Name = "NarrativeBody", SizeFlagsHorizontal = SizeFlags.ExpandFill };
         Body.AddThemeConstantOverride("separation", 18);
         margins.AddChild(Body);
-        column.AddChild(((CampaignScroll)Scroll).CreateReadingHint(view.ReadingHint));
+        column.AddChild(((ReadingScroll)Scroll).CreateReadingHint(view.ReadingHint));
         Footer = new HBoxContainer { Name = "CampaignFooter" };
         Footer.AddThemeConstantOverride("separation", 16);
         column.AddChild(Footer);

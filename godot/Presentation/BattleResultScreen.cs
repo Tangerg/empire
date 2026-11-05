@@ -104,7 +104,7 @@ public partial class BattleResultScreen : Control
         var layout = new VBoxContainer();
         layout.AddThemeConstantOverride("separation", 16);
         margin.AddChild(layout);
-        var scroll = new CampaignScroll
+        var scroll = new ReadingScroll
         {
             Name = "ResultScroll",
             HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,

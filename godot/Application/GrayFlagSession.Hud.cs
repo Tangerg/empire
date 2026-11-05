@@ -724,7 +724,8 @@ public sealed partial class GrayFlagSession
             text.Format("ui.common.close") + "  Esc",
             inspect is not null ? TacticalHit.Unit(new(N(inspect, "x"), N(inspect, "y")), N(inspect, "id"))
                 : inspectionCell is { } subjectCell && sections.Any(section => section.Key is "site" or "structure")
-                    ? TacticalHit.Object(subjectCell) : null);
+                    ? TacticalHit.Object(subjectCell) : null,
+            text.Format("ui.hud.dossier_reading_hint"));
         if (stamp.Revision != revision)
             throw new DomainInvariantException("Battle changed during HUD projection.");
         hudReadState = (stamp.Revision, state);

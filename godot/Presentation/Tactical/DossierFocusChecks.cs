@@ -41,7 +41,7 @@ public partial class DossierFocusChecks : Node
         var viewport = scroll.GetGlobalRect();
         var focused = expected.GetGlobalRect();
         Require(focused.Position.Y >= viewport.Position.Y && focused.End.Y <= viewport.End.Y,
-            context + ": focused control must remain inside the dossier's visible vertical viewport.");
+            context + $": focused control must remain inside the dossier's visible vertical viewport: scroll={viewport}, focused={focused}, offset={scroll.ScrollVertical}, max={scroll.GetVScrollBar().MaxValue}, page={scroll.GetVScrollBar().Page}.");
     }
 
     private async Task Check(Vector2I size)
@@ -77,6 +77,8 @@ public partial class DossierFocusChecks : Node
         Disclosure("unit-details").ButtonPressed = true;
         Disclosure("stances").ButtonPressed = true;
         await Settle();
+        await Tab(popup);
+        Require(scroll.HasFocus(), "The dossier exposes a continuous reading focus stop.");
         await Tab(popup);
         VisibleFocus(scroll, Disclosure("unit-details"), "First disclosure");
         await Tab(popup);
@@ -192,6 +194,125 @@ public partial class DossierFocusChecks : Node
         await Settle();
     }
 
+    private async Task CheckContinuousReading()
+    {
+        GetWindow().Size = new Vector2I(960, 640);
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var text = GodotTextCatalog.LoadSimplifiedChinese();
+        var presentation = BattleTextChecks.Session(engine, text);
+        var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), BattleTextChecks.OpeningLevel());
+        var unit = session.GetTacticalQueries(0).Unit(1)!;
+        var hud = new TacticalHud { Theme = TacticalHudStyle.Create() };
+        AddChild(hud);
+        hud.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+        var projection = session.ProjectHud(new(0, 0), new()
+        {
+            Kind = TacticalSelectionKind.Unit,
+            UnitId = unit.Id
+        },
+            TacticalHit.Unit(unit.At, unit.Id), null, false);
+        var state = EcmaJson.Stringify(session.Snapshot());
+        var intents = 0;
+        hud.IntentRequested += _ => intents++;
+        hud.Apply(projection);
+        await Settle();
+        var opener = (Button)hud.FindChild("DossierButton", true, false);
+        opener.GrabFocus();
+        async Task Press(Window window, Key code)
+        {
+            window.PushInput(new InputEventKey { Keycode = code, PhysicalKeycode = code, Pressed = true }, true);
+            window.PushInput(new InputEventKey { Keycode = code, PhysicalKeycode = code, Pressed = false }, true);
+            await Settle();
+        }
+        await Press(GetWindow(), Key.Enter);
+        var popup = (PopupPanel)hud.FindChild("UnitDossier", true, false);
+        var scroll = (ScrollContainer)hud.FindChild("DetailScroll", true, false);
+        Require(popup.Visible, "The actual opening commander's dossier opens by native keyboard.");
+        await Tab(popup);
+        Require(scroll.HasFocus(), "Tab reaches continuous dossier reading before skipping to section controls.");
+        await Tab(popup);
+        var disclosure = ((VBoxContainer)hud.FindChild("unit-details", true, false)).GetChildren().OfType<Button>().Single();
+        Require(disclosure.HasFocus(), "Tab still reaches the actual unit disclosure after the reading surface.");
+        await Press(popup, Key.Enter);
+        Require(disclosure.ButtonPressed, "Native Enter expands the real commander's read-only details.");
+        await Tab(popup, true);
+        Require(scroll.HasFocus(), "Reverse Tab returns to continuous reading without activating an order.");
+        await Press(popup, Key.Pagedown);
+        Require(scroll.HasFocus() && scroll.ScrollVertical > 0,
+            "PageDown advances within long actual unit details without jumping to another section.");
+        var labels = hud.FindChild("unit-details", true, false).FindChildren("*", "Label", true, false)
+            .OfType<Label>().Where(label => label.IsVisibleInTree()).ToArray();
+        Require(labels.Any(label => label.Text == "护甲 轻甲") && labels.Any(label => label.Text == "移动型 步行"),
+            "The actual commander's details include the formerly inaccessible armor and movement facts.");
+        var unread = labels.ToHashSet();
+        await Press(popup, Key.Home);
+        for (var step = 0; step < 64 && unread.Count > 0; step++)
+        {
+            unread.RemoveWhere(row => scroll.GetGlobalRect().Encloses(row.GetGlobalRect()));
+            await Press(popup, Key.Down);
+        }
+        Require(unread.Count == 0, "Continuous keyboard reading reveals every complete real unit detail, including the former blind gap.");
+        await Press(popup, Key.Home);
+        await Press(popup, Key.Pagedown);
+        var readingHint = (Label)hud.FindChild("ReadingHint", true, false);
+        Require(readingHint.Visible && readingHint.Text == text.Format("ui.hud.dossier_reading_hint"),
+            "The actual dossier exposes localized continuous reading instructions outside its scroll area.");
+        Require(!scroll.IsAncestorOf(readingHint) && popup.GetVisibleRect().Encloses(readingHint.GetGlobalRect()),
+            "The reading instructions remain inside the native popup and outside the scrolling text.");
+        Require(GetViewport().GetVisibleRect().Encloses(new Rect2(popup.Position, popup.Size)),
+            "The complete dossier including its close action fits the minimum supported battlefield viewport.");
+        var offset = scroll.ScrollVertical;
+        hud.Apply(projection with
+        {
+            ReadingHint = projection.ReadingHint + " · 阅读"
+        });
+        await Settle();
+        Require(scroll.HasFocus() && scroll.ScrollVertical == offset, "A HUD refresh preserves continuous reading focus and offset.");
+        Require(readingHint.Text == projection.ReadingHint + " · 阅读", "A same-stamp projection refresh updates existing reading instructions.");
+        await Press(popup, Key.End);
+        Require(scroll.ScrollVertical >= scroll.GetVScrollBar().MaxValue - scroll.GetVScrollBar().Page - 1,
+            "End reaches the final dossier section without a mouse.");
+        await Press(popup, Key.Home);
+        Require(scroll.ScrollVertical == 0, "Home returns to the beginning of the dossier.");
+        await Press(popup, Key.Down);
+        Require(scroll.ScrollVertical > 0 && scroll.HasFocus(), "Down reads a small increment rather than leaving the text.");
+        await Press(popup, Key.Up);
+        Require(scroll.ScrollVertical == 0 && scroll.HasFocus(), "Up reverses the reading increment.");
+        await Tab(popup);
+        Require(disclosure.HasFocus(), "Section controls remain reachable after continuous reading.");
+        await Press(popup, Key.Enter);
+        await Settle();
+        Require(!disclosure.ButtonPressed && !readingHint.Visible,
+            "Collapsing short content removes the now-unnecessary reading hint without scrolling a hidden section.");
+        foreach (var section in new[] { "roster", "formations", "roster", "formations", "tile" })
+        {
+            var toggle = ((VBoxContainer)hud.FindChild(section, true, false)).GetChildren().OfType<Button>().Single();
+            for (var step = 0; step < 32 && !toggle.HasFocus(); step++)
+                await Tab(popup);
+            Require(toggle.HasFocus(), "Native Tab reaches the actual disclosure: " + section);
+            await Press(popup, Key.Enter);
+            await Settle();
+            var hintVisible = readingHint.Visible;
+            for (var frame = 0; frame < 4; frame++)
+            {
+                await Settle();
+                Require(readingHint.Visible == hintVisible &&
+                    (scroll.GetVScrollBar().MaxValue <= scroll.GetVScrollBar().Page + 1 || readingHint.Visible),
+                    "Actual near-threshold content keeps stable, truthful reading guidance: " + section);
+                Require(GetViewport().GetVisibleRect().Encloses(new Rect2(popup.Position, popup.Size)),
+                    "Actual disclosure layout stays inside the supported viewport: " + section);
+            }
+        }
+        Require(intents == 0 && session.Revision == 0 && session.Events.Count == 0 && EcmaJson.Stringify(session.Snapshot()) == state,
+            "Reading actual campaign facts never changes canonical battle state or issues orders.");
+        popup.Hide();
+        await Settle();
+        Require(opener.HasFocus(), "Closing after keyboard reading returns focus to the current dossier entry.");
+        RemoveChild(hud);
+        hud.Free();
+        await Settle();
+    }
+
     private async Task CheckCloseBoundaries()
     {
         foreach (var boundary in new[] { "binding", "older-revision", "refresh", "hidden", "removed", "unloaded", "reopened" })
@@ -243,6 +364,8 @@ public partial class DossierFocusChecks : Node
                 Require(popup.Visible && ((Button)hud.FindChild("DossierClose", true, false)).HasFocus(),
                     "Reopening through the current entry safely supersedes pending close focus restoration.");
                 await Tab(popup);
+                Require(((ScrollContainer)hud.FindChild("DetailScroll", true, false)).HasFocus(), "Reopening retains the continuous reading focus stop.");
+                await Tab(popup);
                 var disclosure = ((VBoxContainer)hud.FindChild("roster", true, false)).GetChildren().OfType<Button>().Single();
                 Require(disclosure.HasFocus(), "The reopened dossier retains native keyboard navigation.");
             }
@@ -263,6 +386,7 @@ public partial class DossierFocusChecks : Node
     {
         try
         {
+            await CheckContinuousReading();
             await CheckCommittedOrder();
             await CheckCloseBoundaries();
             await Check(new Vector2I(960, 640));

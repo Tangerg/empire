@@ -6,7 +6,7 @@ namespace Empire.Presentation;
 public partial class CampaignMenuScreen : Control
 {
     private DispatchPanel? menuCard;
-    private CampaignScroll? menuScroll;
+    private ReadingScroll? menuScroll;
     public override void _Ready() => Resized += FitCard;
     private void FitCard()
     {
@@ -76,7 +76,7 @@ public partial class CampaignMenuScreen : Control
         AddChild(margin);
         foreach (var edge in new[] { "left", "right", "top", "bottom" })
             margin.AddThemeConstantOverride($"margin_{edge}", 36);
-        var scroll = menuScroll = new CampaignScroll { Name = "MenuScroll", HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
+        var scroll = menuScroll = new ReadingScroll { Name = "MenuScroll", HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
         var readingLayout = new VBoxContainer();
         margin.AddChild(readingLayout);
         scroll.SizeFlagsVertical = SizeFlags.ExpandFill;
