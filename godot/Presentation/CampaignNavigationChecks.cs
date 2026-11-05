@@ -52,6 +52,7 @@ public partial class CampaignNavigationChecks : Node
                 ("menu cannot overwrite a played manual save", CheckMenuSaveAdmission),
                 ("idle polling after play, undo and load", CheckIdlePolling),
                 ("native pointer refresh preserves unchanged HUD content", CheckPointerHudRetention),
+                ("popup dismissal owns its pointer gesture", CheckModalPointerIsolation),
                 ("battle window minimum follows committed view and lifecycle", CheckBattleWindowMinimum),
                 ("root notice leaves with its view", CheckNoticeViewTransition),
                 ("startup resume, battle restart, camp and Continue", CheckBattleCampMenu),

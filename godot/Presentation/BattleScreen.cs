@@ -184,6 +184,13 @@ public partial class BattleScreen : Control
 
     public override void _Input(InputEvent input)
     {
+        // Godot can send an outside-dismissal event to this window before hiding
+        // its popup. Consume it before either HUD controls or the map can act.
+        if (_built && HasVisibleWindow && input is InputEventMouse or InputEventScreenTouch or InputEventScreenDrag or InputEventGesture)
+        {
+            GetViewport().SetInputAsHandled();
+            return;
+        }
         // Source shortcuts are window-level, before focused controls consume Tab,
         // arrows or Space. The handled marker also prevents a second unhandled pass.
         if (input is InputEventKey)
@@ -469,6 +476,9 @@ public partial class BattleScreen : Control
     }
 
     private static bool VisibleWindow(Window window) => IsInstanceValid(window) && window.IsInsideTree() && window.Visible;
+
+    private bool HasVisibleWindow => _hud.DossierVisible || VisibleWindow(_systemMenu) || VisibleWindow(_battleLogDialog)
+        || VisibleWindow(_restartConfirmation) || (_campConfirmation is { } camp && VisibleWindow(camp));
 
     private void RefreshFeedbackVisibility()
     {
@@ -858,6 +868,8 @@ public partial class BattleScreen : Control
     private void MapInput(InputEvent input, CameraPoint? capturedMapPosition)
     {
         if (!_bound || !IsInsideTree() || _gestures is null || _camera is null)
+            return;
+        if (HasVisibleWindow)
             return;
         if (input is InputEventMouse mousePosition)
         {
