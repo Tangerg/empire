@@ -56,10 +56,21 @@ and [explicit scene dependencies](https://docs.godotengine.org/en/stable/tutoria
 - Added a permanent native route regression covering both touch timings, mouse,
   exact canonical choice/advance states, story paging, staging exit/Continue and
   entering the first battle without dispatching an order.
-- Focused widget/navigation tests and the complete aggregate are pending at this
-  checkpoint. A first supplemental menu test invocation omitted its required
-  frozen-oracle argument and was rejected at setup; it is not a product failure
-  or a passing check.
+- Focused native checks passed: menu 107, staging 157, narrative 3309, campaign UI
+  flow 209, settlement 397, and campaign navigation 9598 assertions. The three
+  native input routes reach the same initial battle digest `78e7c7b9` with no
+  battle orders. A first supplemental menu invocation omitted its frozen-oracle
+  argument and was rejected at setup; the corrected invocation passed without
+  changing the test or fixture.
+- The first complete aggregate exited 0 in 2359 seconds: 16 core groups, all 30
+  native scenes, and 16 formal levels with 3425 ordered commands matched the
+  baseline traces and final digests. Its independent warning audit failed on one
+  added viewport-enter warning: the new native route left the shared pointer
+  inside, then the existing pointer fixture notified entry again. The native
+  route now retires its pointer state on exit; no production change or warning
+  suppression was needed. The failed audit and original logs are retained.
+- Final verification of that test-lifetime correction is pending at this
+  checkpoint. The initial aggregate alone is not the completed publication gate.
 
 These are native headless interaction and lifecycle checks, not graphical visual
 acceptance. Previous isolated HUD Mono shutdown and morale signal diagnostics

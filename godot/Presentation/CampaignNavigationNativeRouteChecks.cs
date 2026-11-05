@@ -116,6 +116,8 @@ public partial class CampaignNavigationChecks
         }
         finally
         {
+            // Native input marks the pointer inside the shared viewport; retire that test-owned state too.
+            GetViewport().NotifyMouseExited();
             GetWindow().Size = originalSize;
         }
     }
