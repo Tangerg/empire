@@ -735,3 +735,10 @@ unit or crossing into the HUD cannot change the selected subject. Closing the
 dossier preserves selection, while Back, rebinding and command completion use the
 controller's existing reset lifecycle. Map art, picking, structure availability,
 battle rules and persisted data are unchanged.
+
+`BattleScreen` owns entry from map input into the HUD focus chain. When no
+control is focused, a fresh Tab or Shift+Tab asks Godot for the next or previous
+valid control within the screen. Once entered, Godot owns traversal; dossier and
+system popups retain their own focus. This does not select actors or dispatch
+orders. Escape first returns focus to the map, then follows the existing Back
+operation on a subsequent press.

@@ -194,10 +194,25 @@ public partial class BattleScreen
         if (input is not InputEventKey { Pressed: true, CtrlPressed: false, AltPressed: false, MetaPressed: false } key
             || _tactical is null || !Current(_tactical.Stamp))
             return;
-        // Tab belongs to native focus traversal; Space cycles actors only while
-        // the board owns input. Focused controls keep native activation/navigation.
-        if (_systemMenu.Visible || key.Keycode == Key.Tab)
+        // The application is mounted under a Node, so the viewport has no direct
+        // Control from which to start traversal after a map click clears focus.
+        if (_systemMenu.Visible)
             return;
+        if (key.Keycode == Key.Tab)
+        {
+            if (!key.Echo && !_hud.DossierVisible && GetViewport().GuiGetFocusOwner() is null)
+            {
+                var entry = key.ShiftPressed ? FindPrevValidFocus() : FindNextValidFocus();
+                if (entry is not null && IsAncestorOf(entry))
+                {
+                    entry.GrabFocus();
+                    GetViewport().SetInputAsHandled();
+                }
+            }
+            return;
+        }
+        // Space cycles actors only while the board owns input. Focused controls
+        // keep their native activation and navigation.
         if (GetViewport().GuiGetFocusOwner() is Button focused && IsAncestorOf(focused) && focused.IsVisibleInTree())
         {
             if (key.Keycode == Key.Escape)

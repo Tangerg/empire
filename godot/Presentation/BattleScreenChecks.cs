@@ -1095,11 +1095,15 @@ public partial class BattleScreenChecks : Node
         Require(!systemButton.HasFocus() && screen.Selection == keyboardSelection,
             "Escape returns native control focus to the map without discarding the pending selection.");
         Keypress(Key.Tab);
-        Require(screen.Selection == keyboardSelection, "Tab is reserved for native focus traversal, not actor cycling.");
+        Require(screen.Selection == keyboardSelection && GetViewport().GuiGetFocusOwner() is { } tabFocus && screen.IsAncestorOf(tabFocus),
+            "Tab establishes native HUD focus without cycling actors or discarding the selected subject.");
         Require(ReferenceEquals(stableSameRevision, Buttons(screen).Single(button => button.Text == "结束回合")) && !stableSameRevision.Disabled,
             "Same-revision selection refresh preserves the enabled global button and its native input capture.");
         Keypress(Key.Escape);
-        Require(screen.Selection?.Kind == TacticalSelectionKind.Idle, "Native Escape follows the source back operation.");
+        Require(GetViewport().GuiGetFocusOwner() is null && screen.Selection == keyboardSelection,
+            "The first Escape after Tab releases native control focus and preserves the selection.");
+        Keypress(Key.Escape);
+        Require(screen.Selection?.Kind == TacticalSelectionKind.Idle, "A second Escape follows the source back operation after focus returns to the map.");
         screen.SelectHit(TacticalHit.Unit(session.GetTacticalQueries(0).Unit(2)!.At, 2));
         var selected = screen.SelectedUnitId;
         var queries = session.GetTacticalQueries(0);

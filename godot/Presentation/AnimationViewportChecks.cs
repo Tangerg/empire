@@ -113,7 +113,10 @@ public partial class AnimationChecks
         }
     }
 
-    private enum AnnouncementFraming { TopLeft, BottomRight, Opening }
+    private enum AnnouncementFraming
+    {
+        TopLeft, BottomRight, Opening
+    }
 
     private async Task CheckViewportAnnouncements()
     {

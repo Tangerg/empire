@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Empire.Presentation.Tactical;
+using Empire.Core.Determinism;
 using Empire.Localization;
 using Godot;
 
@@ -202,7 +203,184 @@ public partial class CampaignNavigationChecks
             }
             Require(Digest(session.Snapshot()) == before && session.Revision == 0,
                 "Pointer motion and retained dossier interactions must not mutate canonical battle state.");
+            await CheckBattleTabEntry(game);
         }
         finally { Retire(game); }
+    }
+
+    private async Task CheckBattleTabEntry(Empire.Application.GrayFlagGame game)
+    {
+        var windowSize = GetWindow().Size;
+        try
+        {
+            GetWindow().Size = new Vector2I(1280, 812);
+            await Layout();
+            await Layout();
+            var screen = View<BattleScreen>(game);
+            var session = Campaign(game).Battle!;
+            var original = EcmaJson.Stringify(session.Snapshot());
+            var map = (Control)screen.FindChild("MapArea", true, false);
+            var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+            var viewport = GetViewport();
+            void Motion(Vector2 at)
+            {
+                using var input = new InputEventMouseMotion { Position = at, GlobalPosition = at };
+                Input.ParseInputEvent(input);
+            }
+            void Click(Vector2 at)
+            {
+                foreach (var down in new[] { true, false })
+                {
+                    using var input = new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = down, Position = at, GlobalPosition = at };
+                    Input.ParseInputEvent(input);
+                }
+            }
+            void KeyPress(Key key, bool shift = false, bool echo = false, int modifier = 0)
+            {
+                foreach (var down in new[] { true, false })
+                {
+                    using var input = new InputEventKey
+                    {
+                        Keycode = key,
+                        PhysicalKeycode = key,
+                        Pressed = down,
+                        ShiftPressed = shift,
+                        Echo = down && echo,
+                        CtrlPressed = modifier == 1,
+                        AltPressed = modifier == 2,
+                        MetaPressed = modifier == 3
+                    };
+                    Input.ParseInputEvent(input);
+                }
+            }
+            async Task ClickControl(Button button)
+            {
+                var at = button.GetGlobalRect().GetCenter();
+                if (button.GetWindow() != GetWindow())
+                    at += new Vector2(button.GetWindow().Position.X, button.GetWindow().Position.Y);
+                Motion(at);
+                await Layout();
+                Require(button.GetViewport().GuiGetHoveredControl() == button, "Production pointer reaches " + button.Name);
+                Click(at);
+                await Layout();
+            }
+            Vector2? actorPixel = null;
+            TacticalUnit? actor = null;
+            var queries = session.GetTacticalQueries(0);
+            foreach (var id in queries.Actors())
+            {
+                var candidate = queries.Unit(id)!;
+                var origin = screen.Board.Projection.CellContact(new(candidate.At.X, candidate.At.Y));
+                for (var radius = 0; radius <= 120 && actorPixel is null; radius += 3)
+                    for (var x = -radius; x <= radius && actorPixel is null; x += 3)
+                        foreach (var y in radius == 0 ? new[] { 0 } : new[] { -radius, radius })
+                        {
+                            var local = origin + new Vector2(x, y);
+                            if (screen.Board.Pick(local) != TacticalHit.Unit(candidate.At, candidate.Id))
+                                continue;
+                            var global = screen.Board.GetGlobalTransformWithCanvas() * local;
+                            if (!map.GetGlobalRect().HasPoint(global))
+                                continue;
+                            Motion(global);
+                            await Layout();
+                            if (viewport.GuiGetHoveredControl() == map)
+                            {
+                                actorPixel = global;
+                                actor = candidate;
+                                break;
+                            }
+                        }
+                if (actorPixel is not null)
+                    break;
+            }
+            Require(actorPixel is not null, "Actual production campaign opening has an opaque native-reachable actor pixel.");
+            async Task SelectActor()
+            {
+                Motion(actorPixel!.Value);
+                await Layout();
+                Require(viewport.GuiGetHoveredControl() == map, "Actual production actor click reaches the map.");
+                Click(actorPixel.Value);
+                await Layout();
+                Require(screen.Selection?.Kind == TacticalSelectionKind.Unit && screen.SelectedUnitId == actor!.Id,
+                    "Actual production map click selects its canonical actor.");
+                Require(viewport.GuiGetFocusOwner() is null, "Actual production map click naturally clears control focus, without a test focus reset.");
+            }
+            await SelectActor();
+            var selected = screen.Selection;
+            void Unchanged(string step) => Require(screen.Selection == selected && session.Revision == 0
+                && session.Events.Count == 0 && session.ActionLog.Count == 0 && EcmaJson.Stringify(session.Snapshot()) == original,
+                "Production keyboard inspection remains read-only: " + step);
+            GD.Print($"PRODUCTION_TAB_CONTEXT game={game.GetPath()} screen={screen.GetPath()} focus={viewport.GuiGetFocusOwner()?.Name} rootFocus={GetWindow().HasFocus()} state={StateDigest.Hash(session.Snapshot())}");
+            foreach (var modifier in new[] { 1, 2, 3 })
+            {
+                KeyPress(Key.Tab, modifier: modifier);
+                await Layout();
+                Require(viewport.GuiGetFocusOwner() is null, "Modified Tab cannot establish battlefield HUD focus.");
+                Unchanged("modified Tab");
+            }
+            KeyPress(Key.Tab, echo: true);
+            await Layout();
+            Require(viewport.GuiGetFocusOwner() is null, "Repeated Tab cannot start a new battlefield focus traversal.");
+            KeyPress(Key.Tab);
+            await Layout();
+            var forward = viewport.GuiGetFocusOwner();
+            Require(forward is not null && screen.IsAncestorOf(forward),
+                "Actual GrayFlagGame activated battle must enter native HUD focus on the first fresh Tab after a real map click.");
+            Unchanged("first forward Tab");
+            KeyPress(Key.Escape);
+            await Layout();
+            Require(viewport.GuiGetFocusOwner() is null && screen.Selection == selected,
+                "The first production Escape releases HUD focus without discarding selection.");
+            KeyPress(Key.Escape);
+            await Layout();
+            Require(screen.Selection?.Kind == TacticalSelectionKind.Idle,
+                "The second production Escape closes selection before the next independent map click.");
+            await SelectActor();
+            KeyPress(Key.Tab, shift: true);
+            await Layout();
+            var backward = viewport.GuiGetFocusOwner();
+            Require(backward is not null && screen.IsAncestorOf(backward) && backward != forward,
+                "Actual GrayFlagGame Shift+Tab starts native reverse traversal from the map.");
+            Unchanged("first reverse Tab");
+            var expectedNext = backward!.FindNextValidFocus();
+            KeyPress(Key.Tab);
+            await Layout();
+            Require(viewport.GuiGetFocusOwner() == expectedNext, "After entry, ordinary Tab follows the focused control's native traversal.");
+            var entry = (Button)hud.FindChild("DossierButton", true, false);
+            var route = new List<string>();
+            for (var i = 0; i < screen.FindChildren("*", "Button", true, false).Count + 2 && !entry.HasFocus(); i++)
+            {
+                KeyPress(Key.Tab);
+                await Layout();
+                route.Add(viewport.GuiGetFocusOwner()?.Name.ToString() ?? "none");
+            }
+            Require(entry.HasFocus(), "Production native Tab reaches DossierButton: " + string.Join(", ", route));
+            KeyPress(Key.Enter);
+            await Layout();
+            Require(hud.DossierVisible, "Production native Tab/Enter opens the selected actor dossier.");
+            var dossier = (PopupPanel)hud.FindChild("UnitDossier", true, false);
+            var rootFocus = viewport.GuiGetFocusOwner();
+            KeyPress(Key.Tab);
+            await Layout();
+            Require(dossier.GuiGetFocusOwner() is { } dossierFocus && dossier.IsAncestorOf(dossierFocus)
+                && viewport.GuiGetFocusOwner() == rootFocus, "An open dossier owns native Tab without the battlefield stealing its focus.");
+            await ClickControl((Button)hud.FindChild("DossierClose", true, false));
+            await ClickControl((Button)screen.FindChild("SystemMenuButton", true, false));
+            var system = (PopupPanel)screen.FindChild("SystemMenu", true, false);
+            rootFocus = viewport.GuiGetFocusOwner();
+            KeyPress(Key.Tab);
+            await Layout();
+            Require(system.Visible && system.GuiGetFocusOwner() is { } systemFocus && system.IsAncestorOf(systemFocus)
+                && viewport.GuiGetFocusOwner() == rootFocus, "An open system menu owns native Tab without the battlefield stealing its focus.");
+            system.Hide();
+            await Layout();
+            Unchanged("dossier and system Tab ownership");
+            GD.Print($"PRODUCTION_TAB_ENTRY_OK {assertions} assertions; forward={forward!.Name}; reverse={backward.Name}; real campaign menu/story/choice/staging/Activate path; no battle actions");
+        }
+        finally
+        {
+            GetWindow().Size = windowSize;
+            await Layout();
+        }
     }
 }

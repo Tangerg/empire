@@ -418,7 +418,6 @@ public partial class TacticalHudChecks : Node
             GetWindow().EmitSignal(Window.SignalName.MouseExited);
             await Settle();
             WestPinned("native window leave");
-            viewport.NotifyMouseEntered();
             var northPixel = await FindPixel(TacticalHit.Object(north));
             Require(northPixel is not null, "The unchanged chain-north has an opaque, native-reachable Object pixel.");
             await ClickMap(northPixel!.Value);
@@ -434,7 +433,7 @@ public partial class TacticalHudChecks : Node
             await ClickMap(westPixel.Value);
             WestPinned("switching from Site to standalone Structure");
             GD.Print("STRUCTURE_POINTER_INSPECTION_OK C01-09 chain-west / chain-north; actual mouse handoff, popup Close, hover and window leave; no committed actions");
-            viewport.GuiReleaseFocus();
+            Require(viewport.GuiGetFocusOwner() is null, "A real map click naturally releases HUD focus before keyboard inspection.");
             await TabTo(Dossier());
             WestPinned("native Tab focus");
             KeyPress(Key.Enter);
