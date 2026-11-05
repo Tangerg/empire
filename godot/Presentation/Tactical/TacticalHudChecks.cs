@@ -1598,6 +1598,7 @@ public partial class TacticalHudChecks : Node
             await CheckDossierLifetime();
             await CheckRetainedSectionLifetime();
             await CheckTileTextRefresh();
+            await CheckUnitDetailsRowRetention();
             await CheckOrderBadgeStates();
             var stamp = new TacticalStamp(17, 9);
             var hud = new TacticalHud();

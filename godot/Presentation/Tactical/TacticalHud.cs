@@ -89,6 +89,16 @@ public partial class TacticalHud : Control
             && SameTextStructure(oldTile, nextTile);
         if (refreshTile)
             retainedSections.Add("tile");
+        var oldUnitDetails = current?.Sections.FirstOrDefault(section => section.Key == "unit-details");
+        var nextUnitDetails = projection.Sections.FirstOrDefault(section => section.Key == "unit-details");
+        var unitDetailsGroup = details?.GetNodeOrNull<VBoxContainer>("unit-details");
+        var refreshUnitDetails = unitDetailsGroup is not null && current is not null
+            && current.Stamp == projection.Stamp && current.Busy == projection.Busy
+            && !retainedSections.Contains("unit-details")
+            && oldUnitDetails is not null && nextUnitDetails is not null
+            && CanRefreshReadOnlyRows(oldUnitDetails) && CanRefreshReadOnlyRows(nextUnitDetails);
+        if (refreshUnitDetails)
+            retainedSections.Add("unit-details");
         var hasDossier = projection.Sections.Any(section => section.Key is "unit-details" or "site" or "structure" or "stances" or "formations" or "roster");
         var retained = preserveActions ? GetChildren().Where(child => child.Name == oldActions!.Key || child.Name == "OrderTray").ToHashSet() : new HashSet<Node>();
         foreach (var child in GetChildren())
@@ -117,6 +127,8 @@ public partial class TacticalHud : Control
         var scrollPosition = detailScroll?.ScrollVertical ?? 0;
         var preserveVisibleFocus = focused is not null && detailScroll is not null
             && detailScroll.IsAncestorOf(focused) && detailScroll.GetGlobalRect().Encloses(focused.GetGlobalRect());
+        if (refreshUnitDetails)
+            RefreshUnitDetails(unitDetailsGroup!, oldUnitDetails!, nextUnitDetails!);
         current = projection;
         var renderedGeneration = ++generation;
         if (refreshTile)
@@ -666,6 +678,90 @@ public partial class TacticalHud : Control
                 label.Text = row.Label;
             if (label.TooltipText != row.Hint)
                 label.TooltipText = row.Hint;
+        }
+    }
+
+    private static bool CanRefreshReadOnlyRows(TacticalHudSection section) =>
+        section.Rows.All(row => row.Intent is null)
+        && section.Rows.Select(row => row.Key).Distinct(StringComparer.Ordinal).Count() == section.Rows.Count;
+
+    private void RefreshUnitDetails(VBoxContainer group, TacticalHudSection previous, TacticalHudSection next)
+    {
+        var heading = group.GetNode<HBoxContainer>("Heading").GetChildren().OfType<Label>().Single();
+        var disclosure = group.GetChildren().OfType<Button>().Single();
+        var content = group.GetNode<VBoxContainer>("Content");
+        var children = content.GetChildren();
+        var fragments = new Dictionary<string, (TacticalHudRow Row, HBoxContainer Line, Label Label, ProgressBar? Bar)>(StringComparer.Ordinal);
+        var index = 0;
+        // The previous immutable projection describes the mounted fragments; no independent row cache survives Apply.
+        foreach (var row in previous.Rows)
+        {
+            if (index >= children.Count || children[index++] is not HBoxContainer line
+                || line.GetChildren().OfType<Label>().ToArray() is not { Length: 1 } labels)
+                throw new InvalidOperationException("Unit-details row does not match its mounted read-only fragment.");
+            ProgressBar? bar = null;
+            if (row.Gauge is not null)
+            {
+                if (index >= children.Count || children[index++] is not ProgressBar gauge)
+                    throw new InvalidOperationException("Unit-details gauge does not match its mounted read-only fragment.");
+                bar = gauge;
+            }
+            fragments.Add(row.Key, (row, line, labels[0], bar));
+        }
+        if (index != children.Count)
+            throw new InvalidOperationException("Unit-details contains unexpected mounted row fragments.");
+
+        var position = 0;
+        foreach (var row in next.Rows)
+        {
+            if (fragments.Remove(row.Key, out var fragment)
+                && fragment.Row with
+                {
+                    Label = row.Label,
+                    Hint = row.Hint
+                } == row)
+            {
+                if (fragment.Label.Text != row.Label)
+                    fragment.Label.Text = row.Label;
+                if (fragment.Label.TooltipText != row.Hint)
+                    fragment.Label.TooltipText = row.Hint;
+                content.MoveChild(fragment.Line, position++);
+                if (fragment.Bar is not null)
+                    content.MoveChild(fragment.Bar, position++);
+            }
+            else
+            {
+                if (fragment.Line is not null)
+                    RemoveFragment(fragment.Line, fragment.Bar);
+                var start = content.GetChildCount();
+                AddReadOnly(content, row, row.Key == "hp" ? 16 : 14);
+                var line = content.GetChild(start);
+                var bar = row.Gauge is not null ? content.GetChild(start + 1) : null;
+                content.MoveChild(line, position++);
+                if (bar is not null)
+                    content.MoveChild(bar, position++);
+            }
+        }
+        foreach (var fragment in fragments.Values)
+            RemoveFragment(fragment.Line, fragment.Bar);
+
+        if (heading.Text != next.Title)
+            heading.Text = next.Title;
+        var title = (disclosure.ButtonPressed ? "−  " : "+  ") + DisclosureTitle(next);
+        if (disclosure.Text != title)
+            disclosure.Text = title;
+
+        void RemoveFragment(Node line, Node? bar)
+        {
+            ReleaseTextureReferences(line);
+            content.RemoveChild(line);
+            line.QueueFree();
+            if (bar is not null)
+            {
+                ReleaseTextureReferences(bar);
+                content.RemoveChild(bar);
+                bar.QueueFree();
+            }
         }
     }
 
