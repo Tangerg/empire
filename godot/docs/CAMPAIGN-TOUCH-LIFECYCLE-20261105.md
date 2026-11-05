@@ -69,8 +69,19 @@ and [explicit scene dependencies](https://docs.godotengine.org/en/stable/tutoria
   inside, then the existing pointer fixture notified entry again. The native
   route now retires its pointer state on exit; no production change or warning
   suppression was needed. The failed audit and original logs are retained.
-- Final verification of that test-lifetime correction is pending at this
-  checkpoint. The initial aggregate alone is not the completed publication gate.
+- The corrected navigation scene passed again with exactly the previous warning
+  multiset. A fresh complete aggregate on `8f368a94e` then passed from
+  11:44:50 to 12:28:33 UTC (2623 seconds): all 16 core groups, 30 native scenes,
+  and editor import passed their strict process/diagnostic gates. Navigation
+  reported 9634 assertions and no failed groups; its total includes assertions
+  within frame-wait loops, so it is not a fixed test-case count.
+- Independent final audit passed: all 16 formal levels and 3425 commands retain
+  identical ordered action/event/receipt traces and final digests; all 40 warning
+  headers exactly match the previous full gate. All 31 native/editor raw logs,
+  source commit and assembly hashes are retained. The additional pointer warning
+  is absent rather than filtered or reclassified.
+- `ExportRelease` application configuration compiled with zero warnings and
+  errors. This is configuration compilation, not platform-package acceptance.
 
 These are native headless interaction and lifecycle checks, not graphical visual
 acceptance. Previous isolated HUD Mono shutdown and morale signal diagnostics
