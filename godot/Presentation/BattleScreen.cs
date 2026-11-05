@@ -95,7 +95,7 @@ public partial class BattleScreen : Control
         _viewportFeedback = new Control
         {
             Name = "ViewportFeedback",
-            ZIndex = 2500,
+            ZIndex = 3999,
             MouseFilter = MouseFilterEnum.Ignore,
             FocusMode = FocusModeEnum.None
         };

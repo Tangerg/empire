@@ -2,12 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Empire.Application;
 using Empire.Core.Determinism;
 using Empire.Core.Engine;
 using Empire.Localization;
+using Empire.Presentation.Tactical;
 using Godot;
 
 namespace Empire.Presentation;
@@ -201,6 +203,25 @@ public partial class AnimationChecks
             await Tick(screen.Board, .1101);
             cameraBefore = world.Transform;
             CheckAnnouncementRect(map, band, label);
+            var overlay = world.GetNode<BoardOverlay>("LegalTargets");
+            var hoverPoint = session.GetTacticalQueries(0).InteractiveCells
+                .Select(cell => screen.Board.Projection.CellCenter(new(cell.X, cell.Y)))
+                .Where(point => screen.Board.Pick(point) is not null)
+                .Select(point => world.Transform * point)
+                .Where(point => new Rect2(Vector2.Zero, map.Size).HasPoint(point))
+                .OrderBy(point => Math.Abs(point.Y - map.Size.Y / 2) + Math.Abs(point.X - map.Size.X / 2) * .01f)
+                .First();
+            using (var motion = new InputEventMouseMotion { Position = hoverPoint })
+                map.EmitSignal(Control.SignalName.GuiInput, motion);
+            // Observe the actual rendered projection without adding a production test API.
+            var cursorProjection = (TacticalSelectionOverlay)typeof(BoardOverlay)
+                .GetField("_tactical", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(overlay)!;
+            Require(screen.IsInputBlocked && cursorProjection.Cursor is not null,
+                "Native busy-time mouse hover retains a real cursor ring while the announcement is held.");
+            Require(host.ZIndex > overlay.ZIndex
+                && overlay.GetChildren().OfType<BoardRangePlane>().All(plane => host.ZIndex > plane.ZIndex)
+                && host.ZIndex < screen.GetNode<Control>("TacticalHud").ZIndex,
+                "Viewport announcements draw above the busy cursor and absolute public-state range planes, below the HUD.");
             var heldRect = band.GetGlobalRect();
             foreach (var scale in new[] { .65f, 1.25f, 2.2f })
             {

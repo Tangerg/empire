@@ -26,7 +26,9 @@ replacement, errors and repeated refreshes cannot advance the battle a second ti
 
 `BattleScreen` owns a persistent full-size, noninteractive viewport-feedback
 `Control`, a sibling of the camera-transformed `World` inside the clipped map
-viewport. It passes that host explicitly to playback. Each playback owns one
+viewport. Its layer sits above map cursor/range overlays and below the HUD;
+read-only hover can still draw a cursor while playback is busy. The screen passes
+that host explicitly to playback. Each playback owns one
 world-effects root and one viewport-effects root, plus the only receipt clock.
 Cancellation clears and settles its own roots before resolving waiters, so a
 synchronous replacement cannot be removed or overwritten by old cleanup. The
@@ -189,7 +191,8 @@ are not GPU visual or export acceptance.
 `AnimationViewportChecks` extends that required scene with actual C03 end-turn
 receipts from native viewport E input at 960×640 and 1180×812, opposite camera
 pan limits, camera-transform invariance, and resizing during all three banner
-phases. It also checks ordered once-only journal delivery, cancellation in each
+phases. A native busy-time hover also checks the live cursor and confirms that
+the announcement layer is above the map overlay/range planes and below the HUD. It also checks ordered once-only journal delivery, cancellation in each
 phase, reentrant replacement, failure cleanup, rebind, unmount/reattach and
 reduced motion. These are native headless geometry and lifecycle guards, not
 GUI acceptance or a claim of pixel-identical desktop output. Control anchoring
