@@ -61,6 +61,19 @@ guidance, and the repository's native capability ownership notes.
   confirmation guidance inside the lower forecast panel. This is not pixel-based
   visual acceptance; this environment has no graphical display.
 
-Complete aggregate validation and publication are pending at this checkpoint.
+- Independent fresh-campaign native acceptance: 35 checks, strict exit 0 and
+  unchanged assembly hashes. Both tactics correctly disclose their differences at
+  legal center (4,17), list Laia, open/close details and cancel without changing
+  actor/resource facts. This probe does not commit a tactic.
+- The objective/outcome formatter harness passes 146 assertions, including separate
+  tactic wording, exact weapon-hit compatibility, missing-key admission and
+  weapon-only effect rejection.
+
+The first aggregate attempt (09:32:37–09:42:11 UTC) failed with exit 1 after all
+16 core groups and 16 level replays passed: its formatter test project still
+referenced the renamed source file. That project reference and all test type
+references are now migrated; the focused harness passes. The failed attempt is
+retained, not counted as a full pass. Complete aggregate validation and publication
+are pending at this checkpoint.
 The previously recorded isolated HUD and morale shutdown failures remain
 unexplained; this change neither modifies resource teardown nor claims to fix them.

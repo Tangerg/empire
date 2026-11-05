@@ -29,7 +29,8 @@ visible collision disclosure, after proving the actual 28/10/60 receipt.
   rounding and clamping. Both forced movement and the effect formatter use it.
   Actual loss is still capped by the health owner; the HUD does not simulate
   blocked movement, later status changes, departures or a full command.
-- `WeaponHitEffectText` is an open, injected presentation registry. It consumes
+- `WeaponHitEffectText` (now `PlannedEffectText`, shared with commander-tactic
+  descriptions) is an open, injected presentation registry. It consumes
   immutable definitions, localizes compact and detailed conditional descriptions,
   and validates coverage against the composed effect registry. No effect-kind
   switch or collision algorithm lives in a widget. New kinds need a formatter;

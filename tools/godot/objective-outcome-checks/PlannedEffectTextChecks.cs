@@ -7,12 +7,12 @@ using Empire.Core.Determinism;
 using Empire.Localization;
 using Empire.Presentation.Feedback;
 
-internal static class WeaponHitEffectTextChecks
+internal static class PlannedEffectTextChecks
 {
     internal static void Run(GameText text, ContentText content, WeaponHitEffectHandlerRegistry handlers,
         IReadOnlyDictionary<string, string> messages, Action<bool, string> check)
     {
-        void Check(bool condition, string label) => check(condition, "hit effect presentation: " + label);
+        void Check(bool condition, string label) => check(condition, "planned effect presentation: " + label);
         void Reject<T>(Action operation, string label) where T : Exception
         {
             try
@@ -23,7 +23,7 @@ internal static class WeaponHitEffectTextChecks
             Check(false, label);
         }
         JsonElement Effect(string json) => EcmaJson.ToElement(EcmaJson.Parse(json)!);
-        var formatters = WeaponHitEffectText.CreateDefault(new(text, content));
+        var formatters = PlannedEffectText.CreateWeaponHit(new(text, content));
         formatters.ValidateCoverage(handlers.Keys());
         Check(formatters.Keys().SequenceEqual(new[] { "addStatus", "removeStatus", "forcedMove" }),
             "default kinds match their canonical handler identities");
@@ -37,6 +37,25 @@ internal static class WeaponHitEffectTextChecks
         Check(remove.Compact == text.Format("combat.hit_effect.remove_status.compact", status)
             && remove.Detail == text.Format("combat.hit_effect.remove_status.detail", status) && !remove.Emphasis,
             "status removal stays conditional when the target may not carry it");
+
+        var tactics = PlannedEffectText.CreateTactic(new(text, content));
+        tactics.ValidateCoverage(Empire.Core.Orders.SupportOrders.SupportedTacticEffects);
+        Check(tactics.Keys().SequenceEqual(new[] { "addStatus", "removeStatus" }),
+            "tactic composition covers only supported tactic effects, not weapon-only effects");
+        var tacticAdd = tactics.Describe(Effect("""{"type":"addStatus","status":"poisoned","duration":3}"""));
+        var tacticRemove = tactics.Describe(Effect("""{"type":"removeStatus","status":"poisoned"}"""));
+        Check(tacticAdd.Compact == text.Format("tactic.effect.add_status.compact", status, 3)
+            && tacticAdd.Detail == text.Format("tactic.effect.add_status.detail", status, 3)
+            && tacticRemove.Compact == text.Format("tactic.effect.remove_status.compact", status)
+            && tacticRemove.Detail == text.Format("tactic.effect.remove_status.detail", status)
+            && tacticAdd.Detail != add.Detail && tacticRemove.Detail != remove.Detail,
+            "the same status payloads use tactic scope and duration without weapon-hit prerequisites");
+        Reject<LocalizationException>(() => tactics.Describe(Effect("""{"type":"forcedMove","mode":"push","distance":1}""")),
+            "weapon-only effects cannot silently enter tactic presentation");
+        var missingTactic = new GameText(key => key == "tactic.effect.add_status.detail"
+            ? null : messages.GetValueOrDefault(key), CultureInfo.InvariantCulture);
+        Reject<LocalizationException>(() => PlannedEffectText.CreateTactic(new(missingTactic, content)),
+            "missing tactic detail fails at composition rather than during targeting");
 
         foreach (var mode in new[] { "push", "pull" })
         {
@@ -96,16 +115,16 @@ internal static class WeaponHitEffectTextChecks
             "combat.hit_effect.forced_move.collision_detail" => alternate ? "If still present, {0} {1}; if blocked, up to {2}" : "On a surviving target, {0} {1}; obstruction may cost up to {2}",
             _ => messages.GetValueOrDefault(key),
         }, CultureInfo.InvariantCulture);
-        WeaponHitEffectFormatter CustomFormatter() => new(customKind, ["test.hit_effect.compact", "test.hit_effect.detail"],
+        PlannedEffectFormatter CustomFormatter() => new(customKind, ["test.hit_effect.compact", "test.hit_effect.detail"],
             (rules, effect) =>
             {
                 var reading = effect.GetProperty("nested").GetProperty("values")[0].GetInt32();
                 return new(rules.Messages.Format("test.hit_effect.compact", reading),
                     rules.Messages.Format("test.hit_effect.detail", reading), true);
             });
-        WeaponHitEffectText Extended(GameText catalog)
+        PlannedEffectText Extended(GameText catalog)
         {
-            var result = WeaponHitEffectText.CreateDefault(new(catalog, content)).Register(CustomFormatter());
+            var result = PlannedEffectText.CreateWeaponHit(new(catalog, content)).Register(CustomFormatter());
             result.ValidateCoverage(extendedHandlers.Keys());
             return result.Seal();
         }
@@ -119,8 +138,8 @@ internal static class WeaponHitEffectTextChecks
         var facts = EcmaJson.ToElement(mutable);
         mutable["nested"]!["values"]![0] = 99;
         var originalFacts = facts.GetRawText();
-        Check(first.Describe(facts) == new WeaponHitEffectDescription("Pulse 7", "Conditional pulse 7", true)
-            && second.Describe(facts) == new WeaponHitEffectDescription("Echo 7", "Conditional echo 7", true),
+        Check(first.Describe(facts) == new PlannedEffectDescription("Pulse 7", "Conditional pulse 7", true)
+            && second.Describe(facts) == new PlannedEffectDescription("Echo 7", "Conditional echo 7", true),
             "an external kind renders immutable nested facts through two injected catalogs");
         var collisionFacts = Effect("""{"type":"forcedMove","mode":"push","distance":1,"collisionDamage":10}""");
         Check(first.Describe(collisionFacts).Compact == "May Repel 1; collision request 10"
@@ -136,7 +155,7 @@ internal static class WeaponHitEffectTextChecks
             Describe = (_, _) => new("Changed", "Changed detail", false)
         });
         Check(!clone.IsSealed && first.IsSealed && clone.Keys().SequenceEqual(first.Keys())
-            && clone.Describe(facts) == new WeaponHitEffectDescription("Changed", "Changed detail", false)
+            && clone.Describe(facts) == new PlannedEffectDescription("Changed", "Changed detail", false)
             && first.Describe(facts).Compact == "Pulse 7", "replacement changes only the mutable clone and preserves key order");
         Reject<DomainInvariantException>(() => first.Register(CustomFormatter()), "sealed registry refuses registration");
         Reject<DomainInvariantException>(() => first.Replace(CustomFormatter()), "sealed registry refuses replacement");
@@ -154,7 +173,7 @@ internal static class WeaponHitEffectTextChecks
         Reject<LocalizationException>(() => empty.Describe(facts), "registered effects cannot silently omit their compact description");
         var missing = new GameText(key => key == "combat.hit_effect.forced_move.collision_detail"
             ? null : messages.GetValueOrDefault(key), CultureInfo.InvariantCulture);
-        Reject<LocalizationException>(() => WeaponHitEffectText.CreateDefault(new(missing, content)),
+        Reject<LocalizationException>(() => PlannedEffectText.CreateWeaponHit(new(missing, content)),
             "missing default localized detail fails at composition rather than during a battle");
     }
 }
