@@ -419,6 +419,21 @@ public partial class TacticalHudChecks : Node
             await Settle();
             WestPinned("native window leave");
             viewport.NotifyMouseEntered();
+            var northPixel = await FindPixel(TacticalHit.Object(north));
+            Require(northPixel is not null, "The unchanged chain-north has an opaque, native-reachable Object pixel.");
+            await ClickMap(northPixel!.Value);
+            var northSection = Structure();
+            await ClickControl(Dossier());
+            Require(screen.Selection is { Kind: TacticalSelectionKind.Site, Destination: { X: 7, Y: 4 } }
+                && hud.DossierVisible && ((Control)hud.FindChild("structure", true, false)).IsVisibleInTree()
+                && Structure().Title == northSection.Title && Structure().Rows.SequenceEqual(northSection.Rows)
+                && hud.Projection!.Sections.Any(section => section.Key == "site"),
+                "The real capturable chain-north remains a Site and retains its structure information through the same native dossier route.");
+            Unchanged("capturable Site positive control");
+            await ClickControl((Button)hud.FindChild("DossierClose", true, false));
+            await ClickMap(westPixel.Value);
+            WestPinned("switching from Site to standalone Structure");
+            GD.Print("STRUCTURE_POINTER_INSPECTION_OK C01-09 chain-west / chain-north; actual mouse handoff, popup Close, hover and window leave; no committed actions");
             viewport.GuiReleaseFocus();
             await TabTo(Dossier());
             WestPinned("native Tab focus");
@@ -446,20 +461,8 @@ public partial class TacticalHudChecks : Node
                 "Native Escape clears standalone structure selection after HUD handoff.");
             Unchanged("Escape cancellation");
 
-            var northPixel = await FindPixel(TacticalHit.Object(north));
-            Require(northPixel is not null, "The unchanged chain-north has an opaque, native-reachable Object pixel.");
-            await ClickMap(northPixel!.Value);
-            var northSection = Structure();
-            await ClickControl(Dossier());
-            Require(screen.Selection is { Kind: TacticalSelectionKind.Site, Destination: { X: 7, Y: 4 } }
-                && hud.DossierVisible && ((Control)hud.FindChild("structure", true, false)).IsVisibleInTree()
-                && Structure().Title == northSection.Title && Structure().Rows.SequenceEqual(northSection.Rows)
-                && hud.Projection!.Sections.Any(section => section.Key == "site"),
-                "The real capturable chain-north remains a Site and retains its structure information through the same native dossier route.");
-            Unchanged("capturable Site positive control");
-            await ClickControl((Button)hud.FindChild("DossierClose", true, false));
             await ClickMap(westPixel.Value);
-            WestPinned("switching from Site to standalone Structure");
+            WestPinned("reopening after Escape");
             await ClickMap(actorPixel!.Value);
             Motion(Dossier().GetGlobalRect().GetCenter());
             await Settle();

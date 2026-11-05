@@ -385,12 +385,31 @@ fixture.Sites = new HashSet<BoardCell>();
 
 // Explicit structure inspection is selection state, never an inferred pointer hit or a command.
 var structureCell = new BoardCell(5, 1);
-fixture.Structures = new HashSet<BoardCell> { structureCell, new(2, 0), new(4, 0), new(0, 0) };
+fixture.Structures = new HashSet<BoardCell> { structureCell, new(2, 0), new(4, 0), new(0, 0), new(3, 0) };
 controller.Bind(fixture);
 Check(controller.Click(stamp, TacticalHit.Ground(structureCell)).Request is null
     && controller.Selection.Kind == TacticalSelectionKind.Idle, "Ground never promotes an unpicked structure into inspection");
 controller.Click(stamp, TacticalHit.Object(new(5, 0)));
 Check(controller.Selection.Kind == TacticalSelectionKind.Idle, "Decoration Object without a canonical structure cannot create an inspection");
+foreach (var fromUnit in new[] { false, true })
+{
+    controller.Bind(fixture);
+    if (fromUnit)
+        controller.Click(stamp, TacticalHit.Unit(new(0, 0), 1));
+    var occupiedObject = controller.Click(stamp, TacticalHit.Object(new(3, 0)));
+    Check(occupiedObject.Request is null && controller.Selection is { Kind: TacticalSelectionKind.Structure, UnitId: null }
+        && controller.InspectId is null && controller.Overlay().Threat.Count == 0,
+        "Occupied Object selects only its structure from Idle or Unit, never the concealed enemy or an attack");
+}
+fixture.UnitsOverride = new[] { new TacticalUnit(1, new(0, 0), true, true), new TacticalUnit(2, new(3, 0), false, false) };
+controller.Bind(fixture);
+controller.Hover(stamp, TacticalHit.Ground(new(2, 0)));
+controller.Key(stamp, "arrowright");
+Check(controller.CursorHit == TacticalHit.Object(new(3, 0)) && controller.Key(stamp, "enter").Request is null
+    && controller.Selection is { Kind: TacticalSelectionKind.Structure, UnitId: null } && controller.InspectId is null,
+    "Keyboard may focus a known structure without revealing its hidden unit occupant");
+fixture.UnitsOverride = null;
+controller.Bind(fixture);
 var inspectStructure = controller.Click(stamp, TacticalHit.Object(structureCell));
 Check(inspectStructure.Request is null && controller.Selection is { Kind: TacticalSelectionKind.Structure, UnitId: null }
     && controller.Selection.Destination == structureCell && controller.InspectId is null,
