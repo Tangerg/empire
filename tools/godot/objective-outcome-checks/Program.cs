@@ -142,6 +142,7 @@ GameText Catalog(bool alternate)
         ["test.signal.found"] = alternate ? "Record located" : "Archive discovered",
         ["test.level.title"] = alternate ? "Alternate mission" : "Semantic objective fixture",
         ["test.level.description"] = alternate ? "Alternate briefing" : "Native semantic fixture briefing",
+        ["battle.conclusion.last_team_remaining"] = alternate ? "Only one team remains undefeated" : messages["battle.conclusion.last_team_remaining"],
         ["battle.conclusion.objective_completed"] = alternate ? "Goal reached by {0}: {1}" : "{0} completed {1}",
         ["test.content.unit"] = alternate ? "Silver infantry" : "Copper infantry",
         ["test.content.weapon"] = alternate ? "Silver sword" : "Copper sword",
@@ -605,6 +606,38 @@ var resourceIndex = transientReceipt.Events.ToList().FindIndex(value => value["t
     && value["subject"]?["id"]?.GetValue<int>() == transientId);
 Check(creationIndex >= 0 && resourceIndex > creationIndex, "creation precedes its transient actor-bearing resource event");
 var eventText = BattleEventText.CreateDefault(new(firstCatalog, firstText, firstContentText));
+foreach (var failedPlayer in new[] { 1, 2 })
+{
+    var criticalLevel = Copy(level);
+    var objectives = Player(criticalLevel, failedPlayer)["objectives"]!.AsArray();
+    var guarded = objectives[0]!.DeepClone();
+    objectives[0] = new JsonObject
+    {
+        ["id"] = "critical-stop",
+        ["type"] = "failOn",
+        ["condition"] = new JsonObject { ["type"] = "turnAtLeast", ["turn"] = 1 },
+        ["objective"] = guarded,
+    };
+    var criticalBattle = engine.CreateBattle(criticalLevel, 2048);
+    var criticalBefore = EcmaJson.ToElement(criticalBattle.Snapshot());
+    var criticalReceipt = criticalBattle.Dispatch(action);
+    var criticalState = criticalBattle.Snapshot();
+    var criticalConclusion = BattleConclusion.FromState(criticalState)!;
+    var criticalOver = criticalReceipt.Events.Single(value => value["type"]!.GetValue<string>() == "gameOver");
+    Check(criticalConclusion.Kind == "lastTeamRemaining" && criticalConclusion.Team == 3 - failedPlayer
+        && !Player(criticalState, failedPlayer)["alive"]!.GetValue<bool>()
+        && Player(criticalState, failedPlayer)["objectiveStates"]!["critical-stop"]!["status"]!.GetValue<string>() == "failed"
+        && criticalState["units"]!.AsArray().OfType<JsonObject>().Select(unit => unit["owner"]!.GetValue<int>()).Distinct().Count() == 2,
+        "a legal endTurn can defeat a critical objective while both teams retain units");
+    var criticalAfter = EcmaJson.ToElement(criticalState);
+    const string remainingTeam = "仅剩一个阵营未被击败";
+    Check(firstText.DescribeConclusion(criticalAfter) == remainingTeam
+        && eventText.Describe(new BattleLogContext(logNames, criticalBefore, criticalAfter), EcmaJson.ToElement(criticalOver)) == remainingTeam,
+        "last-team conclusion and gameOver describe undefeated teams, not player-relative annihilation");
+    Check(secondText.DescribeConclusion(criticalAfter) == "Only one team remains undefeated"
+        && StateDigest.Hash(criticalBattle.Snapshot()) == StateDigest.Hash(criticalState),
+        "last-team wording follows the injected catalog without changing terminal facts");
+}
 var recoveringId = attacker["id"]!.GetValue<int>();
 var recovery = EcmaJson.ToElement(new JsonObject { ["type"] = "regen", ["unit"] = recoveringId, ["amount"] = 5 });
 var observed = new HashSet<int> { recoveringId };

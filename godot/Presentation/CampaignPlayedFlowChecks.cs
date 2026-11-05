@@ -132,6 +132,10 @@ public partial class CampaignPlayedFlowChecks : Node
         Require(presentedOnBattle && presented.SequenceEqual(Enumerable.Range(0, transition.Events.Count))
             && transition.Events.Last().GetProperty("type").GetString() == "gameOver",
             "The result must wait for every terminal event, including gameOver, on the battle screen.");
+        Require(Descendants(completion).OfType<Label>().Any(label => label.Text == "仅剩一个阵营未被击败")
+            && transition.EventDescriptions.Last() == "仅剩一个阵营未被击败"
+            && campaign.BattleSummary().Summary.Outcome == "仅剩一个阵营未被击败",
+            "Real AI defeat must share neutral last-team wording across completion, gameOver feedback, and campaign summary.");
         Require(!Field<AiTurnPacer>(game, "computerPacer").IsRunning && completionCount == 1,
             "AI post-playback pacing must finish and create exactly one completion screen.");
         Require(!Descendants(completion).OfType<Button>().Any(button => button.Name.ToString() is "Settle" or "Proceed")

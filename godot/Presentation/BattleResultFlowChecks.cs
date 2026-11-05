@@ -313,6 +313,11 @@ public partial class BattleResultFlowChecks : Node
         var pending = StateDigest.Hash(campaign.Snapshot());
         game._Process(0);
         var completion = Field<Control>(game, "view") as BattleResultScreen ?? throw new Exception("Game did not show a completion screen.");
+        if (conclusion.Kind == "lastTeamRemaining")
+            Require(Labels(completion).Contains(messages.Format("battle.result." + outcome))
+                && Labels(completion).Contains("仅剩一个阵营未被击败")
+                && campaign.BattleSummary().Summary.Outcome == "仅剩一个阵营未被击败",
+                "Last-team results retain the perspective-specific heading but describe undefeated teams on both shared surfaces.");
         // Native Esc must reach the terminal UI while the fixture's simulation remains stopped.
         completion.ProcessMode = ProcessModeEnum.Always;
         var buttons = CompletionButtons(completion).ToDictionary(button => button.Name.ToString());
