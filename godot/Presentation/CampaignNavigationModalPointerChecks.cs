@@ -43,7 +43,8 @@ public partial class CampaignNavigationChecks
                         pixel = point;
                 }
             var at = pixel ?? throw new InvalidOperationException("Formal C01 modal fixture needs an opaque, selectable actor pixel.");
-            var state = EcmaJson.Stringify(session.Save());
+            var state = EcmaJson.Stringify(session.Snapshot());
+            var events = session.Events.Select(value => EcmaJson.Stringify(value)).ToArray();
             var transform = world.Transform;
 
             async Task SettleInput()
@@ -81,8 +82,10 @@ public partial class CampaignNavigationChecks
             }
             void Unchanged(string context)
             {
-                Require(session.Revision == 0 && EcmaJson.Stringify(session.Save()) == state && world.Transform == transform,
-                    context + " preserves canonical state, save/replay history and camera.");
+                Require(session.Revision == 0 && EcmaJson.Stringify(session.Snapshot()) == state
+                    && session.Events.Select(value => EcmaJson.Stringify(value)).SequenceEqual(events),
+                    context + " preserves the complete canonical state, revision and events.");
+                Require(world.Transform == transform, context + " preserves the camera transform.");
             }
             async Task SelectActor()
             {
