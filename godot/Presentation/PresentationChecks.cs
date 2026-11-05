@@ -11,8 +11,14 @@ namespace Empire.Presentation;
 /// <summary>Executable native-resource checks; run only through the dedicated test scene.</summary>
 public partial class PresentationChecks : Node
 {
+    private readonly Control viewportFeedback = new()
+    {
+        Size = new Vector2(1180, 812),
+        MouseFilter = Control.MouseFilterEnum.Ignore
+    };
     public override void _Ready()
     {
+        AddChild(viewportFeedback);
         try
         {
             CheckPaintedGround();
@@ -264,7 +270,7 @@ public partial class PresentationChecks : Node
             Empire.Core.Determinism.EcmaJson.ToElement(new JsonObject { ["kind"] = "capture" }),
             new[] { Empire.Core.Determinism.EcmaJson.ToElement(new JsonObject { ["type"] = "capture", ["captured"] = true }) },
             Empire.Core.Determinism.EcmaJson.ToElement(ownedVillage), false);
-        var capturePlayback = board.PresentTransitionAsync(captureTransition);
+        var capturePlayback = board.PresentTransitionAsync(viewportFeedback, captureTransition);
         Require(capturePlayback.IsCompletedSuccessfully && capturePlayback.Result,
             "Capture playback must update the owner banner without requesting a baked owner frame.");
         Require(board.GetNode<Node2D>($"CanonicalProjection/MapStructure_{villageIndex}").HasNode("OwnerBanner"),

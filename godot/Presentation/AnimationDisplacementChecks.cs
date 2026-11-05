@@ -159,7 +159,7 @@ public partial class AnimationChecks
         var checkedDepths = new HashSet<int>();
         try
         {
-            var task = board.PresentTransitionAsync(transition);
+            var task = board.PresentTransitionAsync(viewportFeedback, transition);
             for (var step = 0; !task.IsCompleted && step < 1000; step++)
             {
                 var eventIndex = completed.Count;
@@ -213,7 +213,7 @@ public partial class AnimationChecks
             var id = forced.value.GetProperty("unit").GetInt32();
             var to = forced.value.GetProperty("to");
             var final = board.Projection.CellContact(new(to.GetProperty("x").GetInt32(), to.GetProperty("y").GetInt32()));
-            var task = board.PresentTransitionAsync(transition);
+            var task = board.PresentTransitionAsync(viewportFeedback, transition);
             for (var step = 0; completed.Count < forced.index && step < 1000; step++)
                 await Tick(board, 0.01);
             await Tick(board, 0.05);
@@ -224,7 +224,7 @@ public partial class AnimationChecks
                 && !completed.Contains(forced.index), "Cancellation settles committed After without announcing an unfinished displacement.");
             completed.Clear();
             board.AnimationsEnabled = false;
-            task = board.PresentTransitionAsync(transition);
+            task = board.PresentTransitionAsync(viewportFeedback, transition);
             Require(task.IsCompleted && await task && completed.SequenceEqual(Enumerable.Range(0, transition.Events.Count))
                 && Actor(board, id).Position.IsEqualApprox(final) && board.GetNodeOrNull("BattleEffects") is null,
                 "Reduced motion retains the exact event sequence and final positions with no outstanding effect.");
@@ -336,7 +336,7 @@ public partial class AnimationChecks
         })
         {
             var transition = Transition(before, after, IdleAction(), new[] { forced, collision }, beforeVisible);
-            var task = board.PresentTransitionAsync(transition, afterVisible);
+            var task = board.PresentTransitionAsync(viewportFeedback, transition, afterVisible);
             var effects = new HashSet<ulong>();
             for (var step = 0; !task.IsCompleted && step < 100; step++)
             {
@@ -374,7 +374,7 @@ public partial class AnimationChecks
         board.EventPresented += Presented;
         try
         {
-            var task = board.PresentTransitionAsync(Transition(before, after, IdleAction(), events, beforeVisibleIds), afterVisibleIds);
+            var task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(), events, beforeVisibleIds), afterVisibleIds);
             await Drain(board, task);
             Require(observedBoundary && Actor(board, 1000).Position.IsEqualApprox(board.Projection.CellContact(new(3, 4))),
                 "Final settlement still projects the recruit's committed destination exactly once.");

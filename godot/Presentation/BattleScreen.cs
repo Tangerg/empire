@@ -31,6 +31,7 @@ public partial class BattleScreen : Control
     private BoardOverlay _overlay = null!;
     private readonly Control _mapArea;
     private readonly Node2D _world;
+    private readonly Control _viewportFeedback;
     private BattlefieldCamera? _camera;
     private BattlefieldGestures? _gestures;
     // Only actual map input establishes pointer ownership. Keyboard focus clears it.
@@ -91,6 +92,15 @@ public partial class BattleScreen : Control
         _world = new Node2D { Name = "World" };
         _mapArea.AddChild(_world);
         _world.AddChild(_board);
+        _viewportFeedback = new Control
+        {
+            Name = "ViewportFeedback",
+            ZIndex = 2500,
+            MouseFilter = MouseFilterEnum.Ignore,
+            FocusMode = FocusModeEnum.None
+        };
+        _mapArea.AddChild(_viewportFeedback);
+        _viewportFeedback.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
     }
 
     public override void _EnterTree()
@@ -506,7 +516,7 @@ public partial class BattleScreen : Control
         UpdateTactical();
         try
         {
-            var settled = await _board.PresentTransitionAsync(transition, next.VisibleUnitIds);
+            var settled = await _board.PresentTransitionAsync(_viewportFeedback, transition, next.VisibleUnitIds);
             if (generation != _presentationGeneration || _board.IsExiting || !IsInsideTree() || !ReferenceEquals(_session, session))
                 return;
             var current = session!.GetSnapshot();

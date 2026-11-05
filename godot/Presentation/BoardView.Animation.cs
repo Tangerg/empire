@@ -15,7 +15,7 @@ namespace Empire.Presentation;
 public partial class BoardView
 {
     private sealed record Playback(BattlePresentationTransition Transition, JsonObject After,
-        IReadOnlySet<int>? AfterVisible, PresentationTimeline Clock, Node2D Effects);
+        IReadOnlySet<int>? AfterVisible, PresentationTimeline Clock, Node2D Effects, Control ViewportEffects);
     private Playback? _playback;
     private bool _exiting;
 
@@ -49,20 +49,29 @@ public partial class BoardView
         if (playback is null)
             return;
         _playback = null;
-        playback.Clock.Cancel();
-        RemoveEffect(playback.Effects);
-        if (!_exiting)
-            RenderState(playback.After, playback.AfterVisible);
+        // Resolving a waiter may synchronously start another playback. Finish this
+        // playback's cleanup and settlement before handing control back to it.
+        try
+        {
+            RemoveEffect(playback.Effects);
+            RemoveEffect(playback.ViewportEffects);
+            if (!_exiting)
+                RenderState(playback.After, playback.AfterVisible);
+        }
+        finally { playback.Clock.Cancel(); }
     }
 
     /// <summary>Plays committed facts; it cannot dispatch, forecast, or edit canonical state.</summary>
-    public async Task<bool> PresentTransitionAsync(BattlePresentationTransition transition,
+    public async Task<bool> PresentTransitionAsync(Control viewportFeedback, BattlePresentationTransition transition,
         IReadOnlySet<int>? afterVisibleUnitIds = null)
     {
         if (IsPresenting)
             throw new InvalidOperationException("A battle transition is already being presented.");
         if (_exiting || !IsInsideTree())
             return false;
+        ArgumentNullException.ThrowIfNull(viewportFeedback);
+        if (!GodotObject.IsInstanceValid(viewportFeedback) || !viewportFeedback.IsInsideTree())
+            throw new InvalidOperationException("The viewport feedback host must be mounted for presentation.");
         var before = ReadState(transition.Before);
         var after = ReadState(transition.After);
         var afterVisible = afterVisibleUnitIds?.ToFrozenSet();
@@ -71,8 +80,16 @@ public partial class BoardView
         RenderState(before, transition.BeforeVisibleUnitIds);
         var effects = new Node2D { Name = "BattleEffects", ZIndex = 2500 };
         AddChild(effects);
+        var viewportEffects = new Control
+        {
+            Name = "ViewportEffects",
+            MouseFilter = Control.MouseFilterEnum.Ignore,
+            FocusMode = Control.FocusModeEnum.None
+        };
+        viewportFeedback.AddChild(viewportEffects);
+        viewportEffects.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
         var playback = new Playback(transition, after, afterVisible,
-            new PresentationTimeline { MotionEnabled = AnimationsEnabled }, effects);
+            new PresentationTimeline { MotionEnabled = AnimationsEnabled }, effects, viewportEffects);
         _playback = playback;
         _cueLayer!.Visible = false;
         try
@@ -102,6 +119,7 @@ public partial class BoardView
                 _playback = null;
                 playback.Clock.Cancel();
                 RemoveEffect(effects);
+                RemoveEffect(viewportEffects);
                 if (!_exiting)
                     RenderState(after, afterVisible);
             }
@@ -380,37 +398,67 @@ public partial class BoardView
 
     private async Task<bool> Announce(Playback playback, string message, Color color)
     {
-        var banner = new Node2D { Name = "TurnAnnouncement", Position = new Vector2(0, FieldSize.Y / 2 - 17) };
-        var band = new Node2D { Name = "Band" };
+        var banner = new Control
+        {
+            Name = "TurnAnnouncement",
+            MouseFilter = Control.MouseFilterEnum.Ignore
+        };
+        playback.ViewportEffects.AddChild(banner);
+        banner.SetAnchorAndOffset(Side.Left, 0, 0);
+        banner.SetAnchorAndOffset(Side.Right, 1, 0);
+        banner.SetAnchorAndOffset(Side.Bottom, 0.5f, 17);
+        banner.SetAnchorAndOffset(Side.Top, 0.5f, -17);
+        var band = new Control
+        {
+            Name = "Band",
+            MouseFilter = Control.MouseFilterEnum.Ignore,
+            Modulate = new Color(1, 1, 1, 0)
+        };
+        banner.AddChild(band);
+        band.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+        band.SetAnchorAndOffset(Side.Left, -0.3f, 0);
+        band.SetAnchorAndOffset(Side.Right, 0.7f, 0);
         var gradient = new Gradient
         {
             Offsets = new[] { 0f, 0.22f, 0.78f, 1f },
             Colors = new[] { new Color(color, 0), new Color(color, 0.88f), new Color(color, 0.88f), new Color(color, 0) }
         };
-        band.AddChild(new Sprite2D
+        var fill = new TextureRect
         {
-            Centered = false,
+            Name = "Fill",
+            MouseFilter = Control.MouseFilterEnum.Ignore,
+            TextureFilter = CanvasItem.TextureFilterEnum.Linear,
+            ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+            StretchMode = TextureRect.StretchModeEnum.Scale,
             Texture = new GradientTexture2D
             {
                 Gradient = gradient,
-                Width = (int)FieldSize.X,
+                Width = 256,
                 Height = 34,
                 FillFrom = Vector2.Zero,
                 FillTo = Vector2.Right
             }
-        });
+        };
+        band.AddChild(fill);
+        fill.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
         foreach (var (y, lineColor) in new[] { (0f, new Color(1, 1, 1, 0.4f)), (33f, new Color(0, 0, 0, 0.32f)) })
-            band.AddChild(new Line2D { Points = new[] { new Vector2(0, y), new Vector2(FieldSize.X, y) }, Width = 1, DefaultColor = lineColor });
-        var label = NumberLabel(message, Colors.White, new Color(0, 0, 0, 0.35f), 24, 15, FieldSize.X);
-        label.Position = new Vector2(0, label.Position.Y);
+        {
+            var line = new ColorRect { Color = lineColor, MouseFilter = Control.MouseFilterEnum.Ignore };
+            band.AddChild(line);
+            line.SetAnchorAndOffset(Side.Right, 1, 0);
+            line.OffsetTop = y;
+            line.OffsetBottom = y + 1;
+        }
+        var label = NumberLabel(message, Colors.White, new Color(0, 0, 0, 0.35f), 24, 15, 0);
         band.AddChild(label);
-        banner.AddChild(band);
-        playback.Effects.AddChild(banner);
+        label.SetAnchorAndOffset(Side.Right, 1, 0);
         try
         {
             if (!await playback.Clock.TweenAsync(220, t =>
             {
-                band.Position = new Vector2((float)(-FieldSize.X * 0.3 * (1 - Ease(t))), 0);
+                var offset = (float)(-0.3 * (1 - Ease(t)));
+                band.SetAnchorAndOffset(Side.Left, offset, 0);
+                band.SetAnchorAndOffset(Side.Right, 1 + offset, 0);
                 band.Modulate = new Color(1, 1, 1, (float)Ease(t));
             }))
                 return false;

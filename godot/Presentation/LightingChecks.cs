@@ -16,9 +16,15 @@ namespace Empire.Presentation;
 /// <summary>Headless source-contract and native-resource tests, not visual acceptance.</summary>
 public partial class LightingChecks : Node
 {
+    private readonly Control viewportFeedback = new()
+    {
+        Size = new Vector2(1180, 812),
+        MouseFilter = Control.MouseFilterEnum.Ignore
+    };
     private int _checks;
     public override async void _Ready()
     {
+        AddChild(viewportFeedback);
         try
         {
             var argument = OS.GetCmdlineUserArgs().Single(value => value.StartsWith("--lighting-oracle=", StringComparison.Ordinal));
@@ -151,7 +157,7 @@ public partial class LightingChecks : Node
             var from = new JsonObject { ["x"] = unit["x"]!.DeepClone(), ["y"] = unit["y"]!.DeepClone() };
             var to = new JsonObject { ["x"] = unit["x"]!.GetValue<int>() + 1, ["y"] = unit["y"]!.DeepClone() };
             var action = new JsonObject { ["kind"] = "command", ["unit"] = 2, ["path"] = new JsonArray(from, to), ["order"] = new JsonObject { ["type"] = "wait" } };
-            var task = board.PresentTransitionAsync(new(1, EcmaJson.ToElement(state), EcmaJson.ToElement(action), Array.Empty<System.Text.Json.JsonElement>(), EcmaJson.ToElement(state), false));
+            var task = board.PresentTransitionAsync(viewportFeedback, new(1, EcmaJson.ToElement(state), EcmaJson.ToElement(action), Array.Empty<System.Text.Json.JsonElement>(), EcmaJson.ToElement(state), false));
             var moving = board.GetNode<Sprite2D>("CanonicalProjection/Unit_2/AuthoredSprite");
             Require(moving.GetNode<SpriteShadows>("SourceSpriteShadows").GetMeta("source_texture").AsUInt64() == moving.Texture.GetInstanceId(), "Animation frame change left a stale silhouette.");
             Require(!ReferenceEquals(moving.GetNode<Sprite2D>("SourceSpriteShadows").Texture, cached), "Walk frame did not switch its cached silhouette.");

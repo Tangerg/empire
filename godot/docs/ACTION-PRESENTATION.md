@@ -18,11 +18,28 @@ commits. The screen consumes each new revision once, skips history on initial
 bind/load, and prevents input while a presentation is outstanding. The application
 also waits before advancing the AI or opening the result modal.
 
-`BoardView.PresentTransitionAsync(transition, afterVisibleUnitIds)` returns true
+`BoardView.PresentTransitionAsync(viewportFeedback, transition, afterVisibleUnitIds)` returns true
 on completion, false on cancellation. `CancelPresentation()` resolves pending
 waiters and, while mounted, settles immediately at `After`. Exit cancels without
 redrawing disposed nodes; reattachment permits a fresh binding. Cancellation,
 replacement, errors and repeated refreshes cannot advance the battle a second time.
+
+`BattleScreen` owns a persistent full-size, noninteractive viewport-feedback
+`Control`, a sibling of the camera-transformed `World` inside the clipped map
+viewport. It passes that host explicitly to playback. Each playback owns one
+world-effects root and one viewport-effects root, plus the only receipt clock.
+Cancellation clears and settles its own roots before resolving waiters, so a
+synchronous replacement cannot be removed or overwritten by old cleanup. The
+shared host and unrelated feedback are never cleared by playback.
+
+Turn announcements use anchored Controls in that viewport root, not field-size
+coordinates or camera transforms. Their full-width 34-pixel band is vertically
+centered in the map viewport, with the existing gradient, 24-pixel text baseline
+and 15-pixel font. Entrance travel is a normalized 30% viewport-width slide;
+resizing during entrance, hold or exit preserves its position and timing. World
+impacts, movement and other effects retain their original world geometry. The
+220/420/220 ms sequence remains part of the same playback: `EventPresented` is
+still the sole journal publication point, after the announcement completes.
 
 `PresentationRepaintRequested` marks recruit/turn announcement HUD refresh
 points. The screen refreshes committed header/resources there without settling
@@ -168,3 +185,12 @@ The dedicated `bash tools/godot/animation-checks/run.sh` remains useful for a
 focused run. The new report distinguishes actual command witnesses, explicit
 projection-boundary fixtures and final verification outcomes. Headless checks
 are not GPU visual or export acceptance.
+
+`AnimationViewportChecks` extends that required scene with actual C03 end-turn
+receipts from native viewport E input at 960×640 and 1180×812, opposite camera
+pan limits, camera-transform invariance, and resizing during all three banner
+phases. It also checks ordered once-only journal delivery, cancellation in each
+phase, reentrant replacement, failure cleanup, rebind, unmount/reattach and
+reduced motion. These are native headless geometry and lifecycle guards, not
+GUI acceptance or a claim of pixel-identical desktop output. Control anchoring
+and input behavior follow the [Godot 4.6 Control reference](https://docs.godotengine.org/en/4.6/classes/class_control.html).

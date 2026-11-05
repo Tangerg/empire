@@ -18,8 +18,14 @@ namespace Empire.Presentation;
 /// <summary>Committed owner-turn recovery through real sessions, mounted input and controlled native playback.</summary>
 public partial class RegenerationFeedbackChecks : Node
 {
+    private readonly Control viewportFeedback = new()
+    {
+        Size = new Vector2(1180, 812),
+        MouseFilter = Control.MouseFilterEnum.Ignore
+    };
     public override async void _Ready()
     {
+        AddChild(viewportFeedback);
         try
         {
             await CheckRecordedRecovery("c01-01-regeneration.json");
@@ -198,7 +204,7 @@ public partial class RegenerationFeedbackChecks : Node
                 "Explicit visibility-boundary fixtures must preserve event slots while hiding recovery prose outside both visible boundaries.");
             var transition = new BattlePresentationTransition(original.Revision, original.Before, original.Action, original.Events,
                 original.After, original.IsComputerAction, item.Before, descriptions);
-            var playback = board.PresentTransitionAsync(transition, item.After);
+            var playback = board.PresentTransitionAsync(viewportFeedback, transition, item.After);
             var floating = await ObserveRecovery(board);
             Require(await playback && floating.Count == (item.Expected ? 1 : 0),
                 "The exact same visibility policy must suppress hidden, newly revealed and newly concealed recovery effects.");
@@ -217,7 +223,7 @@ public partial class RegenerationFeedbackChecks : Node
             var descriptions = presentation.Events.DescribeAll(new BattleLogContext(names, original.Before, original.After, visible, afterAtEntry), original.Events);
             var transition = new BattlePresentationTransition(original.Revision, original.Before, original.Action, original.Events,
                 original.After, original.IsComputerAction, visible, descriptions);
-            var playback = board.PresentTransitionAsync(transition, afterAtEntry);
+            var playback = board.PresentTransitionAsync(viewportFeedback, transition, afterAtEntry);
             Require(!playback.IsCompleted && board.IsPresenting, "Visibility mutation must occur during a real asynchronous turn announcement.");
             if (initiallyVisible)
                 afterAtEntry.Clear();
@@ -233,7 +239,7 @@ public partial class RegenerationFeedbackChecks : Node
         afterDeparture["units"]!.AsArray().Remove(departed);
         var missingActor = new BattlePresentationTransition(original.Revision, original.Before, original.Action, original.Events,
             EcmaJson.ToElement(afterDeparture), original.IsComputerAction, EventDescriptions: original.EventDescriptions);
-        var missingPlayback = board.PresentTransitionAsync(missingActor);
+        var missingPlayback = board.PresentTransitionAsync(viewportFeedback, missingActor);
         Require((await ObserveRecovery(board)).Count == 0 && await missingPlayback,
             "An isolated after-action departure fixture cannot leave a recovery ghost at the old position.");
 
@@ -242,7 +248,7 @@ public partial class RegenerationFeedbackChecks : Node
         board.EventPresented += Completed;
         try
         {
-            var cancelled = board.PresentTransitionAsync(original);
+            var cancelled = board.PresentTransitionAsync(viewportFeedback, original);
             for (var tick = 0; board.GetNodeOrNull("BattleEffects/Heal") is null && board.IsPresenting && tick < 200; tick++)
             {
                 board.AdvancePresentation(0.05);
@@ -255,7 +261,7 @@ public partial class RegenerationFeedbackChecks : Node
                 "Cancellation resolves playback and cannot announce an unfinished recovery event.");
             completed.Clear();
             board.AnimationsEnabled = false;
-            var reduced = board.PresentTransitionAsync(original);
+            var reduced = board.PresentTransitionAsync(viewportFeedback, original);
             Require(reduced.IsCompleted && await reduced && completed.SequenceEqual(Enumerable.Range(0, original.Events.Count))
                 && board.GetNodeOrNull("BattleEffects") is null,
                 "Reduced motion completes the same event sequence synchronously, with no residual recovery effect.");
@@ -269,7 +275,7 @@ public partial class RegenerationFeedbackChecks : Node
         Require(fresh.Dispatch(EcmaJson.ToElement(new JsonObject { ["kind"] = "endTurn" }), 0).Accepted
             && fresh.Events.All(value => value["type"]!.GetValue<string>() != "regen"),
             "A real full-health opening refresh emits no recovery event.");
-        var fullHealth = board.PresentTransitionAsync(fresh.GetSnapshot().Transition!);
+        var fullHealth = board.PresentTransitionAsync(viewportFeedback, fresh.GetSnapshot().Transition!);
         Require((await ObserveRecovery(board)).Count == 0 && await fullHealth,
             "Feedback must not infer healing from a turn start or a terrain rate when no actual recovery occurred.");
         Require(StateDigest.Hash(session.Snapshot()) == StateDigest.Hash(EcmaJson.Parse(original.After.GetRawText())!.AsObject()),

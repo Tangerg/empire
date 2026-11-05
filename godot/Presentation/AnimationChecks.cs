@@ -13,6 +13,11 @@ namespace Empire.Presentation;
 /// <summary>Native resource and controllable-clock contracts from the source board/presenters.</summary>
 public partial class AnimationChecks : Node
 {
+    private readonly Control viewportFeedback = new()
+    {
+        Size = new Vector2(1180, 812),
+        MouseFilter = Control.MouseFilterEnum.Ignore
+    };
     private int assertions;
     private AssetCatalog assets = null!;
     private JsonObject initial = null!;
@@ -23,6 +28,7 @@ public partial class AnimationChecks : Node
 
     public override async void _Ready()
     {
+        AddChild(viewportFeedback);
         try
         {
             assets = AssetCatalog.Load();
@@ -40,9 +46,11 @@ public partial class AnimationChecks : Node
             await CheckSourceLookupBoundaries(board);
             await CheckHealAndSpawn(board);
             await CheckAnnouncements(board);
+            await CheckAnnouncementLifetime(board);
             await CheckUnhandledAndVisibility(board);
             await CheckCancellation(board);
             board.QueueFree();
+            await CheckViewportAnnouncements();
             GD.Print($"Animation presentation checks passed: {assertions} assertions.");
             GetTree().Quit();
         }
@@ -177,7 +185,7 @@ public partial class AnimationChecks : Node
         var action = new JsonObject { ["kind"] = "command", ["unit"] = id, ["path"] = path.DeepClone(), ["command"] = new JsonObject { ["ability"] = "wait" } };
         var transition = Transition(before, after, action, [new JsonObject { ["type"] = "move", ["unit"] = id, ["path"] = path }]);
         var input = transition.Before.GetRawText() + transition.After.GetRawText() + transition.Action.GetRawText();
-        var task = board.PresentTransitionAsync(transition);
+        var task = board.PresentTransitionAsync(viewportFeedback, transition);
         var actor = Actor(board, id);
         Require(board.IsPresenting && Frame(actor) == 1, "Movement immediately selects source walk-a");
         await Tick(board, 0.040);
@@ -199,7 +207,7 @@ public partial class AnimationChecks : Node
         {
             IsComputerAction = true
         };
-        task = board.PresentTransitionAsync(ai);
+        task = board.PresentTransitionAsync(viewportFeedback, ai);
         actor = Actor(board, id);
         await Tick(board, 0.055);
         Require(Mathf.IsEqualApprox(actor.Position.X, board.Projection.Project(board.Projection.LogicalCellContact(new(x, y)).Lerp(board.Projection.LogicalCellContact(new(x + 1, y)), .5f)).X), "AI uses 110 ms presentation cells without altering the committed path");
@@ -219,7 +227,7 @@ public partial class AnimationChecks : Node
         var did = Int(target, "id");
         var at = board.Projection.CellCenter(new(Int(target, "x"), Int(target, "y")));
         var attack = Strike("attack", aid, did);
-        var task = board.PresentTransitionAsync(Transition(before, after, IdleAction(), [attack]));
+        var task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(), [attack]));
         var actor = Actor(board, aid);
         var origin = actor.Position;
         Require(Frame(actor) == 2, "Strike selects the declared source attack frame");
@@ -244,7 +252,7 @@ public partial class AnimationChecks : Node
             var item = Strike(kind, aid, did);
             if (kind == "partingShot")
                 item["at"] = At(1, 2);
-            task = board.PresentTransitionAsync(Transition(before, after, IdleAction(), [item]));
+            task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(), [item]));
             if (kind != "areaAttack")
                 await Tick(board, 0.151);
             hit = board.GetNode<Node2D>("BattleEffects/Hit");
@@ -255,7 +263,7 @@ public partial class AnimationChecks : Node
 
         after["units"]!.AsArray().RemoveAt(after["units"]!.AsArray().Count - 1);
         attack["killed"] = true;
-        task = board.PresentTransitionAsync(Transition(before, after, IdleAction(), [attack,
+        task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(), [attack,
             new JsonObject { ["type"] = "death", ["unit"] = did, ["at"] = At(Int(target, "x"), Int(target, "y")) }]));
         Require(Actor(board, did) is not null, "Dead units retain only a before-state view ghost until departure playback");
         await Tick(board, 0.151);
@@ -281,7 +289,7 @@ public partial class AnimationChecks : Node
         var after = Copy();
         var target = before["units"]![0]!.AsObject();
         var id = Int(target, "id");
-        var task = board.PresentTransitionAsync(Transition(before, after, IdleAction(),
+        var task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(),
             [new JsonObject { ["type"] = "heal", ["source"] = id, ["target"] = id, ["amount"] = 20 }]));
         var heal = board.GetNode<Node2D>("BattleEffects/Heal");
         Require(heal.GetNode<Sprite2D>("Strip").GetMeta("topic_id").AsString() == "C01-FX-17"
@@ -301,7 +309,7 @@ public partial class AnimationChecks : Node
         var repaints = 0;
         void Repaint() => repaints++;
         board.PresentationRepaintRequested += Repaint;
-        task = board.PresentTransitionAsync(Transition(before, after, IdleAction(),
+        task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(),
             [new JsonObject { ["type"] = "recruit", ["unit"] = 1000, ["at"] = At(1, 1) }]));
         Require(repaints == 1 && board.ProjectionUnitCount == after["units"]!.AsArray().Count,
             "Recruit repaints committed board and requests header refresh before spawn animation");
@@ -323,7 +331,7 @@ public partial class AnimationChecks : Node
         var aid = Int(attacker, "id");
         var did = Int(target, "id");
         after["units"]!.AsArray().RemoveAt(0);
-        var task = board.PresentTransitionAsync(Transition(before, after, IdleAction(), [Strike("attack", aid, did)]));
+        var task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(), [Strike("attack", aid, did)]));
         Require(board.GetNodeOrNull("BattleEffects/Hit") is null && Frame(Actor(board, aid)) == 2,
             "An attacker alive at this point in the receipt still winds up even if it dies later in the transaction.");
         await Tick(board, 0.151);
@@ -357,14 +365,14 @@ public partial class AnimationChecks : Node
             ["damage"] = 100,
             ["destroyed"] = true
         };
-        task = board.PresentTransitionAsync(Transition(before, after, IdleAction(), [impact]));
+        task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(), [impact]));
         await Tick(board, 0.151);
         Require(board.GetNode<Node2D>("BattleEffects/Hit").Position == board.Projection.CellCenter(new(1, 2)),
             "Source destroyed structures remain in committed state and retain their impact coordinates");
         await Drain(board, task);
 
         after["structures"]!.AsArray().Clear();
-        task = board.PresentTransitionAsync(Transition(before, after, IdleAction(), [impact]));
+        task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(), [impact]));
         var actor = Actor(board, aid);
         var origin = actor.Position;
         await Tick(board, 0.075);
@@ -376,7 +384,7 @@ public partial class AnimationChecks : Node
 
         // A committed delayed cast already emits an ordinary attack; its marker
         // is not another hit or a second cast-start animation in the source.
-        task = board.PresentTransitionAsync(Transition(Copy(), Copy(), IdleAction(), [
+        task = board.PresentTransitionAsync(viewportFeedback, Transition(Copy(), Copy(), IdleAction(), [
             new JsonObject { ["type"] = "castResolved", ["unit"] = aid, ["weapon"] = "c01.border-blade", ["at"] = At(Int(target, "x"), Int(target, "y")) },
             Strike("attack", aid, did)]));
         Require(Frame(Actor(board, aid)) == 2 && board.GetNode<Node2D>("BattleEffects").GetChildCount() == 0,
@@ -393,15 +401,15 @@ public partial class AnimationChecks : Node
         var repaints = 0;
         void Repaint() => repaints++;
         board.PresentationRepaintRequested += Repaint;
-        var task = board.PresentTransitionAsync(Transition(Copy(), after, IdleAction(),
+        var task = board.PresentTransitionAsync(viewportFeedback, Transition(Copy(), after, IdleAction(),
             [new JsonObject { ["type"] = "turnStart", ["player"] = 1, ["turn"] = 3 }, new JsonObject { ["type"] = "gameOver", ["team"] = 1, ["reason"] = "fixture" }]));
-        Require(repaints == 1 && board.GetNode<Label>("BattleEffects/TurnAnnouncement/Band/Number").Text == "Localized announcement",
+        Require(repaints == 1 && viewportFeedback.GetNode<Label>("ViewportEffects/TurnAnnouncement/Band/Number").Text == "Localized announcement",
             "Turn banner displays the supplied localized receipt text and repaints the header before appearing");
         await Tick(board, 0.2201);
         await Tick(board, 0.4201);
-        Require(!task.IsCompleted && board.GetNodeOrNull("BattleEffects/TurnAnnouncement") is not null, "Turn banner has source 220 ms entrance and 420 ms hold");
+        Require(!task.IsCompleted && viewportFeedback.GetNodeOrNull("ViewportEffects/TurnAnnouncement") is not null, "Turn banner has source 220 ms entrance and 420 ms hold");
         await Tick(board, 0.2201);
-        Require(!task.IsCompleted && board.GetNodeOrNull("BattleEffects/TurnAnnouncement") is null, "Banner leaves in 220 ms before separate game-over beat");
+        Require(!task.IsCompleted && viewportFeedback.GetNodeOrNull("ViewportEffects/TurnAnnouncement") is null, "Banner leaves in 220 ms before separate game-over beat");
         await Tick(board, 0.2201);
         Require(await task, "Game-over beat is 220 ms, then caller may show its result modal");
         board.PresentationRepaintRequested -= Repaint;
@@ -417,18 +425,18 @@ public partial class AnimationChecks : Node
             "unitWithdrawn", "unitEmbarked", "unitDisembarked", "unitRouted", "unitSurrendered", "unitSpawned", "unitRevived", "structureDamaged", "structureDestroyed", "structureRepaired", "structureDisabled", "structureEnabled" };
         foreach (var kind in kinds)
         {
-            var task = board.PresentTransitionAsync(Transition(before, after, IdleAction(), [new JsonObject { ["type"] = kind }]));
+            var task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(), [new JsonObject { ["type"] = kind }]));
             Require(task.IsCompleted && await task && !board.IsPresenting && board.GetNodeOrNull("BattleEffects") is null,
                 $"Source-unhandled {kind} must not invent a visual event or delay");
         }
         var defender = before["units"]!.AsArray().Last()!.AsObject();
         var did = Int(defender, "id");
         var hidden = Transition(before, after, IdleAction(), [Strike("attack", id, did)], new HashSet<int> { id });
-        var hiddenTask = board.PresentTransitionAsync(hidden, new HashSet<int> { id });
+        var hiddenTask = board.PresentTransitionAsync(viewportFeedback, hidden, new HashSet<int> { id });
         Require(hiddenTask.IsCompleted && await hiddenTask && board.RenderedUnitCount == 1,
             "Before visibility gates impact positions and ghosts without new rule-side visibility inference");
         board.AnimationsEnabled = false;
-        var reduced = board.PresentTransitionAsync(Transition(before, after, IdleAction(), [Strike("attack", id, did)]));
+        var reduced = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(), [Strike("attack", id, did)]));
         Require(reduced.IsCompleted && await reduced && board.GetNodeOrNull("BattleEffects") is null,
             "Reduced-motion playback settles synchronously without residual effects");
         board.AnimationsEnabled = true;
@@ -444,14 +452,14 @@ public partial class AnimationChecks : Node
         var attack = Strike("attack", aid, did);
         attack["killed"] = true;
         var fatal = Transition(before, after, IdleAction(), [attack, new JsonObject { ["type"] = "death", ["unit"] = did, ["at"] = At(0, 0) }]);
-        var interrupted = board.PresentTransitionAsync(fatal);
+        var interrupted = board.PresentTransitionAsync(viewportFeedback, fatal);
         await Tick(board, 0.151);
         Require(board.GetNodeOrNull("BattleEffects/Hit") is not null, "Cancellation fixture interrupts a live FX strip");
         board.CancelPresentation();
         Require(!await interrupted && board.GetNodeOrNull("BattleEffects") is null
             && board.GetNodeOrNull($"CanonicalProjection/Unit_{did}") is null,
             "Cancelling mid-impact removes FX and ghost while leaving the committed death settled");
-        interrupted = board.PresentTransitionAsync(fatal);
+        interrupted = board.PresentTransitionAsync(viewportFeedback, fatal);
         await Tick(board, 0.151);
         await Tick(board, 0.421);
         await Tick(board, 0.041);
@@ -461,24 +469,24 @@ public partial class AnimationChecks : Node
             "Cancelling a partial death cannot leave a shrunken stale actor");
 
         var transition = Transition(Copy(), Copy(), IdleAction(), [new JsonObject { ["type"] = "gameOver", ["reason"] = "fixture", ["team"] = 1 }]);
-        var first = board.PresentTransitionAsync(transition);
+        var first = board.PresentTransitionAsync(viewportFeedback, transition);
         Require(!board.GetNode<Node2D>("CanonicalProjection/OccludedUnitCues").Visible, "Occlusion cues are suppressed throughout committed animation, not left at stale pre-move positions");
         try
         {
-            await board.PresentTransitionAsync(transition);
+            await board.PresentTransitionAsync(viewportFeedback, transition);
             throw new Exception("Concurrent playback accepted");
         }
         catch (InvalidOperationException) { Require(board.IsPresenting, "A second presentation cannot replace the active sequence"); }
         board.CancelPresentation();
         Require(!await first, "Explicit cancellation resolves the active presentation");
         Require(board.GetNode<Node2D>("CanonicalProjection/OccludedUnitCues").Visible, "Cancellation rebuilds settled cue projection from committed state");
-        var second = board.PresentTransitionAsync(transition);
+        var second = board.PresentTransitionAsync(viewportFeedback, transition);
         RemoveChild(board);
         Require(!await second && !board.IsPresenting, "ExitTree cancels without waiting for another process frame");
         AddChild(board);
         board.Configure(new(assets, EnvironmentCatalog.Load(), new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")), BoardPlane.Dimetric), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
         board.ConfigureDynamicState();
-        var reattached = board.PresentTransitionAsync(transition);
+        var reattached = board.PresentTransitionAsync(viewportFeedback, transition);
         Require(board.IsPresenting && !reattached.IsCompleted, "Explicit reattach and reconfigure restores the presentation lifecycle");
         await Tick(board, 0.221);
         Require(await reattached, "Reattached board can settle a new transition normally");

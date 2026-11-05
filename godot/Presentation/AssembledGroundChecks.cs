@@ -15,6 +15,11 @@ namespace Empire.Presentation;
 /// <summary>Detached independent-art fixtures exercise the actual board depth/pick pipeline, without changing campaign data.</summary>
 public partial class AssembledGroundChecks : Node
 {
+    private readonly Control viewportFeedback = new()
+    {
+        Size = new Vector2(1180, 812),
+        MouseFilter = Control.MouseFilterEnum.Ignore
+    };
     private int assertions;
     private void Require(bool condition, string message)
     {
@@ -24,6 +29,7 @@ public partial class AssembledGroundChecks : Node
     }
     public override async void _Ready()
     {
+        AddChild(viewportFeedback);
         try
         {
             await Check();
@@ -190,7 +196,7 @@ public partial class AssembledGroundChecks : Node
             var movement = new JsonObject { ["type"] = "move", ["unit"] = unitId, ["path"] = path };
             var transition = new BattlePresentationTransition(1, EcmaJson.ToElement(state), EcmaJson.ToElement(action),
                 [EcmaJson.ToElement(movement)], EcmaJson.ToElement(after), false);
-            var playback = board.PresentTransitionAsync(transition);
+            var playback = board.PresentTransitionAsync(viewportFeedback, transition);
             board.AdvancePresentation(.08);
             await Task.Yield();
             var movingNode = board.GetNode<Node2D>($"CanonicalProjection/Unit_{unitId}");

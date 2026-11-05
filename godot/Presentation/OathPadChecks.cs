@@ -16,11 +16,17 @@ namespace Empire.Presentation;
 /// <summary>Native floor-art registration, lifecycle and shared-depth regression fixture.</summary>
 public partial class OathPadChecks : Node
 {
+    private readonly Control viewportFeedback = new()
+    {
+        Size = new Vector2(1180, 812),
+        MouseFilter = Control.MouseFilterEnum.Ignore
+    };
     private int assertions;
     private string? captureDirectory;
 
     public override async void _Ready()
     {
+        AddChild(viewportFeedback);
         try
         {
             captureDirectory = OS.GetCmdlineUserArgs().SingleOrDefault(value => value.StartsWith("--capture-dir=", StringComparison.Ordinal))?["--capture-dir=".Length..];
@@ -311,7 +317,7 @@ public partial class OathPadChecks : Node
         var path = new JsonArray(At(target.Y - 1), At(target.Y), At(target.Y + 1));
         var action = new JsonObject { ["kind"] = "command", ["unit"] = id, ["path"] = path, ["command"] = new JsonObject { ["ability"] = "wait" } };
         var transition = new BattlePresentationTransition(1, EcmaJson.ToElement(before), EcmaJson.ToElement(action), [], EcmaJson.ToElement(after), false);
-        var task = board.PresentTransitionAsync(transition);
+        var task = board.PresentTransitionAsync(viewportFeedback, transition);
         var actor = board.GetNode<Node2D>($"CanonicalProjection/Unit_{id}");
         var pad = board.GetNode<Node2D>("CanonicalProjection/DynamicState/Structure_0");
         var origin = pad.Position;

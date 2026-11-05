@@ -13,8 +13,14 @@ namespace Empire.Presentation;
 
 public partial class PaintedSurfaceChecks : Node
 {
+    private readonly Control viewportFeedback = new()
+    {
+        Size = new Vector2(1180, 812),
+        MouseFilter = Control.MouseFilterEnum.Ignore
+    };
     public override async void _Ready()
     {
+        AddChild(viewportFeedback);
         try
         {
             CheckOpeningScene();
@@ -397,7 +403,7 @@ public partial class PaintedSurfaceChecks : Node
         var receipt = battle.Dispatch(action);
         var transition = new BattlePresentationTransition(1, EcmaJson.ToElement(receipt.Before), EcmaJson.ToElement(action),
             receipt.Events.Select(EcmaJson.ToElement).ToArray(), EcmaJson.ToElement(battle.Snapshot()), false);
-        var movement = board.PresentTransitionAsync(transition);
+        var movement = board.PresentTransitionAsync(viewportFeedback, transition);
         for (var tick = 0; tick < 30 && !movement.IsCompleted; tick++)
         {
             board.AdvancePresentation(.01);
