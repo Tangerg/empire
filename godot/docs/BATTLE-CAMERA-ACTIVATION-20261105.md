@@ -62,4 +62,39 @@ resize/gameplay stability, unmount/remount and free checks remain.
 the viewport. The world must clamp to the new edge before Show, preserve zoom and
 framing on Show, and remain pannable afterwards.
 
-Verification status will be completed after focused red/green and aggregate runs.
+## Verified result
+
+Production implementation: `ed02633c7de04bc8fbbb2e2205efdc0c3aeba9ab`.
+Final tested source: `09e446f5de4fbd7318d2cbcf795cc4492b3fd0d5`.
+
+- Normal-processing new-campaign probes completed with exit 0 at all three initial
+  sizes. At 640×480, initial entry now matches camp reentry at
+  `(-173.7631, -172.5418)`. The 960×640 and 1280×720 cases retain their baseline
+  framing. Same-stack and settled observations agree; all show 19 units and zero
+  rendering issues.
+- Isolated positive controls passed. Each independently restored regression exits
+  1 at its intended assertion: showing before window commitment, framing hidden
+  preparation, omitting visibility layout, and skipping all hidden resizes.
+  The production tree was never used for negative mutations.
+- The first narrowed navigation harness omitted its existing manual-slot sentinel
+  setup and failed. That attempt remains recorded; the corrected harness includes
+  the existing setup group and passes before testing the three activation mutants.
+  No production checks were removed or weakened.
+- The exact aggregate command completed uninterrupted from 2026-11-05 00:28:57 to
+  01:09:36 UTC (40 minutes 39 seconds), exit 0:
+  `EMPIRE_CHECK_TIMEOUT_SECONDS=900 EMPIRE_REPLAY_TIMEOUT_SECONDS=1200 bash -x tools/godot/verify-native.sh`.
+- Static validators, formatting, source metadata, builds, 15 core groups, both
+  boundary suites, editor import and all 30 native scenes passed. All 31 native
+  process logs are retained and pass the strict shutdown/diagnostic check. The
+  40 warning headers exactly match the preceding full gate.
+- All 16 formal AI workloads preserve the baseline's 3425 ordered legal commands,
+  action/event/receipt trace hashes and final state digests, including exact
+  save/replay round trips.
+- Final camera integration: 317 assertions. Campaign navigation: 9090 assertions,
+  zero failed groups. Frame-polling assertion totals may vary between runs.
+- ExportRelease configuration build also completed with zero warnings/errors.
+  This is not a packaged export. GUI, GPU rendering and desktop visual acceptance
+  remain separate and were not claimed.
+
+The final evidence-only commit changes this document, not the tested runtime,
+content, checks or build configuration.
