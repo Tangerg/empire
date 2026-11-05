@@ -73,7 +73,28 @@ The first aggregate attempt (09:32:37–09:42:11 UTC) failed with exit 1 after a
 16 core groups and 16 level replays passed: its formatter test project still
 referenced the renamed source file. That project reference and all test type
 references are now migrated; the focused harness passes. The failed attempt is
-retained, not counted as a full pass. Complete aggregate validation and publication
-are pending at this checkpoint.
+retained, not counted as a full pass.
+
+## Complete verification
+
+The corrected complete gate ran uninterrupted on `ed753c813` from 09:44:14 to
+10:24:14 UTC (2,400 seconds), strict exit 0:
+
+- Format-source selection, whitespace, source metadata and formal scene validators
+  passed; both Debug builds had zero warnings and errors.
+- All 16 core groups passed. The 16 independent formal level simulations executed
+  3,425 legal orders with exact save/replay round trips. Every ordered
+  action/event/receipt trace and final digest equals the preceding baseline. These
+  are independent level runs, not a carried-roster campaign victory claim.
+- Both contract harnesses, editor import and all 30 native scenes passed. All 31
+  native logs were retained and checked for process/shutdown diagnostics. The 40
+  existing warning headers exactly match the preceding complete gate.
+- HUD passed 1,079 assertions within this aggregate. Campaign navigation,
+  result flow, event feedback and lighting/resource lifetime also passed.
+- ExportRelease configuration compiled with zero warnings and errors. This is a
+  configuration build, not a packaged-platform or graphical acceptance claim.
+
+The final documentation-only commit records these outcomes without changing the
+verified source or assets. No user save, gameplay rule, map or artwork is changed.
 The previously recorded isolated HUD and morale shutdown failures remain
 unexplained; this change neither modifies resource teardown nor claims to fix them.
