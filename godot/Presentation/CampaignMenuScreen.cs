@@ -117,15 +117,13 @@ public partial class CampaignMenuScreen : Control
                 CampaignUiStyle.InitialFocus(button);
             if (note is not null)
                 row.AddChild(Text(note, 20));
-            button.Pressed += () =>
+            CampaignButtonActivation.Connect(this, button, () => !submitted && binding == generation, () =>
             {
-                if (submitted || binding != generation || !IsInsideTree() || !button.IsInsideTree())
-                    return;
                 submitted = true;
                 foreach (var current in buttons)
                     current.Disabled = true;
                 callback();
-            };
+            });
         }
     }
 

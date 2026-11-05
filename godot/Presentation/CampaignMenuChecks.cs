@@ -9,7 +9,7 @@ namespace Empire.Presentation;
 public partial class CampaignMenuChecks : Node
 {
     private int assertions;
-    public override void _Ready()
+    public override async void _Ready()
     {
         try
         {
@@ -63,36 +63,49 @@ public partial class CampaignMenuChecks : Node
                 var before = requested;
                 oldNew.EmitSignal(Godot.Button.SignalName.Pressed);
                 oldNew.EmitSignal(Godot.Button.SignalName.Pressed);
+                await Layout();
                 Require(requested == before + 1 && oldNew.Disabled, "New intent must be single-use while caller confirmation is pending");
                 Button(screen, "ContinueCampaign")?.EmitSignal(Godot.Button.SignalName.Pressed);
+                await Layout();
                 Require(continued == 0, "A second menu action must not escape the pending intent guard");
                 // Cancelling belongs to the caller; rebinding explicitly makes the menu interactive again.
                 screen.ShowMenu(view, () => continued++, () => requested++);
                 oldNew.EmitSignal(Godot.Button.SignalName.Pressed);
+                await Layout();
                 Require(requested == before + 1, "Rebound menu accepted a stale callback");
                 var fresh = Button(screen, "NewCampaign")!;
                 var row = fresh.GetParent();
                 row.RemoveChild(fresh);
                 fresh.EmitSignal(Godot.Button.SignalName.Pressed);
+                await Layout();
                 Require(requested == before + 1, "Detached menu button acted while its screen stayed mounted");
                 row.AddChild(fresh);
                 RemoveChild(screen);
                 fresh.EmitSignal(Godot.Button.SignalName.Pressed);
+                await Layout();
                 Require(requested == before + 1, "Unmounted menu acted on caller state");
                 AddChild(screen);
                 fresh.EmitSignal(Godot.Button.SignalName.Pressed);
+                await Layout();
                 Require(requested == before + 1, "Remount without an explicit new binding must not revive old callbacks");
             }
             var active = CampaignMenu.Create(messages, new(oracle["initial"]!.AsObject(), null), metadata);
             screen.ShowMenu(active, () => continued++, () => requested++);
+            Button(screen, "ContinueCampaign")!.EmitSignal(Godot.Button.SignalName.Pressed);
+            Require(continued == 0, "Native menu intent must wait until input dispatch completes");
+            screen.ShowMenu(active, () => continued++, () => requested++);
+            await Layout();
+            Require(continued == 0, "Rebinding must cancel queued menu intent");
             var continuation = Button(screen, "ContinueCampaign")!;
             continuation.EmitSignal(Godot.Button.SignalName.Pressed);
             continuation.EmitSignal(Godot.Button.SignalName.Pressed);
+            await Layout();
             Require(continued == 1 && continuation.Disabled, "Continue must signal exactly once per binding");
             var snapshot = EcmaJson.Stringify(oracle["initial"]);
             var awaiting = false;
             screen.ShowMenu(active, () => continued++, () => { awaiting = true; requested++; });
             Button(screen, "NewCampaign")!.EmitSignal(Godot.Button.SignalName.Pressed);
+            await Layout();
             Require(awaiting, "New must report intent to the caller rather than silently enter a campaign");
             Require(EcmaJson.Stringify(oracle["initial"]) == snapshot, "Menu intent must not mutate canonical campaign facts");
             Require(!Descendants(screen).OfType<ConfirmationDialog>().Any(), "Overwrite confirmation belongs to the application caller, not the menu renderer");
@@ -129,6 +142,12 @@ public partial class CampaignMenuChecks : Node
                 yield return descendant;
         }
     }
+    private async System.Threading.Tasks.Task Layout()
+    {
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+    }
+
     private void Require(bool value, string message)
     {
         assertions++;

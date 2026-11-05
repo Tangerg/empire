@@ -18,11 +18,11 @@ public partial class CampaignNavigationChecks
         var game = MountGame();
         try
         {
-            Press(Button(View<CampaignMenuScreen>(game), "NewCampaign"));
+            await Activate(Button(View<CampaignMenuScreen>(game), "NewCampaign"));
             while (Campaign(game).Node()["type"]!.GetValue<string>() == "story")
-                CompleteStory(game);
-            Press(Buttons(View<StoryScreen>(game)).First(button => button.Name.ToString().StartsWith("Choice_", StringComparison.Ordinal)));
-            Press(Button(View<CampaignStagingScreen>(game), "StartBattle"));
+                await CompleteStory(game);
+            await Activate(Buttons(View<StoryScreen>(game)).First(button => button.Name.ToString().StartsWith("Choice_", StringComparison.Ordinal)));
+            await Activate(Button(View<CampaignStagingScreen>(game), "StartBattle"));
             game.ProcessMode = ProcessModeEnum.Inherit;
             await Layout();
             var session = Campaign(game).Battle!;

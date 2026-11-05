@@ -76,13 +76,11 @@ public partial class CampaignShell : Control
         };
         exitButton = exit;
         exit.AccessibilityName = view.ExitLabel;
-        exit.Pressed += () =>
+        CampaignButtonActivation.Connect(this, exit, () => binding == generation, () =>
         {
-            if (binding != generation || !IsInsideTree() || !exit.IsInsideTree() || exit.Disabled)
-                return;
             exit.Disabled = true;
             onExit();
-        };
+        });
         headingContent.AddChild(exit);
         actions.Add(exit);
         var headings = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };

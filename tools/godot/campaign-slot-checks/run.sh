@@ -56,7 +56,7 @@ shutil.copyfile(root / 'godot/Presentation/Tactical/TacticalHudStyle.cs', native
 shutil.copyfile(root / 'godot/assets/native/hud/dispatch-board-v1.png', native / 'assets/native/hud/dispatch-board-v1.png')
 for name in ['GameText.cs', 'GodotTextCatalog.cs', 'zh_CN.po']:
     shutil.copyfile(root / 'godot/Localization' / name, native / 'Localization' / name)
-for name in ['CampaignMenu.cs', 'CampaignMenuScreen.cs', 'CampaignMenuChecks.cs']:
+for name in ['CampaignButtonActivation.cs', 'CampaignMenu.cs', 'CampaignMenuScreen.cs', 'CampaignMenuChecks.cs']:
     shutil.copyfile(root / 'godot/Presentation' / name, native / 'Presentation' / name)
 shutil.copyfile(root / 'godot/Application/CampaignSaveAdmission.cs', native / 'CampaignSaveAdmission.cs')
 shutil.copyfile(root / 'godot/Application/CampaignSlotStorage.cs', native / 'CampaignSlotStorage.cs')

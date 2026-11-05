@@ -762,3 +762,15 @@ neither enumerates radius cells nor calculates who receives effects.
 the HUD. Only the live admitted hit may confirm an order. Window leave, cancellation,
 rebinding and command completion retain their existing reset semantics. This adds
 no map overlay, gameplay transition, persisted field or alternative effect writer.
+
+### Native campaign-button publication (2026-11-05)
+
+`CampaignButtonActivation` owns when a native campaign button publishes its
+intent: after current input dispatch, if its original input target and owner are
+still live, bound and enabled. Leaving the tree invalidates already queued input,
+including a detach/re-add before dispatch completes. It has no campaign fact or
+business transition. Menu/story/staging/result owners retain their existing
+single-submission and binding guards; canonical rules and persistence still run
+through the application owner. The tactical HUD's revision/row admission remains
+separate. This prevents touch-emulated mouse dispatch from visiting a navigation
+control synchronously detached by its own `Pressed` callback.

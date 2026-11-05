@@ -59,13 +59,13 @@ public partial class NarrativeChecks : Node
             CheckGroup(CheckNativeProjections);
             CheckGroup(CheckLocalizationBoundary);
             await CheckAsyncGroup(CheckNativeWidgets);
-            CheckGroup(CheckNormalTransitions);
-            CheckGroup(CheckEndingTransitions);
-            CheckGroup(CheckLifecycle);
+            await CheckAsyncGroup(CheckNormalTransitions);
+            await CheckAsyncGroup(CheckEndingTransitions);
+            await CheckAsyncGroup(CheckLifecycle);
             await CheckAsyncGroup(CheckBeatFocus);
-            CheckGroup(CheckShellLifecycle);
+            await CheckAsyncGroup(CheckShellLifecycle);
             await CheckAsyncGroup(CheckLayout);
-            CheckGroup(CheckMissingArt);
+            await CheckAsyncGroup(CheckMissingArt);
             if (failures.Count != 0)
                 throw new AggregateException("Native narrative check groups failed.", failures);
             GD.Print($"Native narrative checks passed: {assertions} assertions, {documents.Stories.Count} documents / {documents.Stories.Sum(story => story.Beats.Count)} beats, {documents.Choices.Count} choices.");
@@ -86,7 +86,11 @@ public partial class NarrativeChecks : Node
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
     }
     private T Find<T>(string name) where T : Node => (T)(screen.FindChild(name, true, false) ?? throw new InvalidOperationException($"Missing widget {name}."));
-    private void Press(string name) => Find<Button>(name).EmitSignal(Button.SignalName.Pressed);
+    private async Task Press(string name)
+    {
+        Find<Button>(name).EmitSignal(Button.SignalName.Pressed);
+        await Layout();
+    }
 
     private JsonNode StoryProjection(StoryView view) =>
         JsonSerializer.SerializeToNode(new
@@ -315,7 +319,7 @@ public partial class NarrativeChecks : Node
             var finished = 0;
             screen.ShowStory(entry, documents.IdentityNameKeys, Context(item["state"]!.AsObject()), ending, () => advanced++, () => finished++, () => { });
             for (var beat = 0; beat < index; beat++)
-                Press("StoryPrimary");
+                await Press("StoryPrimary");
             await Layout();
             Equal(screen.BeatIndex, index, "Native cursor matches source visible beat");
             Equal(advanced + finished, 0, "Paging does not invoke canonical callbacks");
@@ -361,12 +365,12 @@ public partial class NarrativeChecks : Node
                     Equal(((Label)button.FindChild(name, true, false)).Text, Text(option!, property), "Native option " + property);
             }
             Require(screen.RenderingDiagnostics.Count == 0, "Choice chapter backdrop uses actual exported art");
-            Press("Choice_" + entry.Options[0].Id);
+            await Press("Choice_" + entry.Options[0].Id);
             Equal(selected, entry.Options[0].Id, "Choice dispatch preserves original ID");
         }
     }
 
-    private void CheckNormalTransitions()
+    private async Task CheckNormalTransitions()
     {
         foreach (var item in expectations["transitionCases"]!.AsArray().Select(value => value!.AsObject()).Where(value => Number(value, "initialBeat") == 0))
         {
@@ -387,7 +391,7 @@ public partial class NarrativeChecks : Node
             Bind();
             foreach (var expected in item["expected"]!.AsArray())
             {
-                Press("StoryPrimary");
+                await Press("StoryPrimary");
                 JsonEqual(runtime.Snapshot(), expected!["state"], "Normal callback owns canonical advancement exactly once");
                 JsonEqual(saved, expected["savedState"], "Only normal final beat callback persists");
                 if (Text(runtime.Node(), "type") == "story")
@@ -396,7 +400,7 @@ public partial class NarrativeChecks : Node
         }
     }
 
-    private void CheckEndingTransitions()
+    private async Task CheckEndingTransitions()
     {
         foreach (var item in expectations["transitionCases"]!.AsArray().Select(value => value!.AsObject()).Where(value => Number(value, "initialBeat") == 0))
         {
@@ -426,7 +430,7 @@ public partial class NarrativeChecks : Node
                 var expected = item["expected"]![index]!;
                 // There is deliberately no ending next-beat button; only finish can be dispatched.
                 if (operations[index]!.GetValue<string>() == "finish")
-                    Press("StoryPrimary");
+                    await Press("StoryPrimary");
                 Equal(screen.BeatIndex, 0, "Ending never pages normal local beats");
                 Equal(normal, 0, "Ending never calls normal advancement");
                 Equal(exits, Number(expected, "exitCount"), "Ending finish/exit contract matches source");
@@ -468,7 +472,7 @@ public partial class NarrativeChecks : Node
         Equal(exit.HasFocus(), true, "A newer explicit focus choice wins over deferred page restoration");
     }
 
-    private void CheckLifecycle()
+    private async Task CheckLifecycle()
     {
         var entry = documents.Stories.First(value => value.Beats.Count > 1);
         var context = new NarrativeContext(messages, portraits, metadata, 0, true);
@@ -476,38 +480,56 @@ public partial class NarrativeChecks : Node
         var exits = 0;
         void Bind() => screen.ShowStory(entry, documents.IdentityNameKeys, context, false, () => continuations++, () => throw new Exception("Unexpected finish"), () => exits++);
         Bind();
+        Find<Button>("StoryPrimary").EmitSignal(Button.SignalName.Pressed);
+        Equal(screen.BeatIndex, 0, "Local paging waits until native input dispatch completes");
+        Bind();
+        await Layout();
+        Equal(screen.BeatIndex, 0, "Rebinding cancels an already queued local page");
+        var queuedPage = Find<Button>("StoryPrimary");
+        queuedPage.EmitSignal(Button.SignalName.Pressed);
+        var pageParent = queuedPage.GetParent();
+        pageParent.RemoveChild(queuedPage);
+        pageParent.AddChild(queuedPage);
+        await Layout();
+        Equal(screen.BeatIndex, 0, "A queued page cannot survive its input target leaving the tree");
         var stalePage = Find<Button>("StoryPrimary");
         stalePage.EmitSignal(Button.SignalName.Pressed);
         stalePage.EmitSignal(Button.SignalName.Pressed);
+        await Layout();
         Equal(screen.BeatIndex, 1, "Double press on old local button cannot skip another beat");
         var staleBinding = Find<Button>("StoryPrimary");
         var staleExit = Find<Button>("CampaignExit");
         Bind();
         staleBinding.EmitSignal(Button.SignalName.Pressed);
         staleExit.EmitSignal(Button.SignalName.Pressed);
+        await Layout();
         Equal(screen.BeatIndex, 0, "Rebound callback is stale");
         Equal(exits, 0, "Rebound shell exit is stale");
         var detached = Find<Button>("StoryPrimary");
         RemoveChild(screen);
         detached.EmitSignal(Button.SignalName.Pressed);
+        await Layout();
         Equal(screen.BeatIndex, 0, "Unmounted callback cannot page");
         AddChild(screen);
         detached.EmitSignal(Button.SignalName.Pressed);
+        await Layout();
         Equal(screen.BeatIndex, 0, "Remounted old binding remains invalid until explicit bind");
         Bind();
         for (var index = 1; index < entry.Beats.Count; index++)
-            Press("StoryPrimary");
+            await Press("StoryPrimary");
         var final = Find<Button>("StoryPrimary");
         final.EmitSignal(Button.SignalName.Pressed);
         final.EmitSignal(Button.SignalName.Pressed);
-        Press("CampaignExit");
+        Find<Button>("CampaignExit").EmitSignal(Button.SignalName.Pressed);
+        await Layout();
         Equal(continuations, 1, "Double final-beat press invokes caller once");
         Equal(exits, 0, "Submitted story blocks competing exit");
         Bind();
         var back = Find<Button>("CampaignExit");
         back.EmitSignal(Button.SignalName.Pressed);
         back.EmitSignal(Button.SignalName.Pressed);
-        Press("StoryPrimary");
+        Find<Button>("StoryPrimary").EmitSignal(Button.SignalName.Pressed);
+        await Layout();
         Equal(exits, 1, "Double back invokes caller once");
         Equal(screen.BeatIndex, 0, "Exited binding cannot page");
         var choice = documents.Choices[0];
@@ -517,18 +539,21 @@ public partial class NarrativeChecks : Node
         var oldChoice = Find<Button>("Choice_" + choice.Options[0].Id);
         BindChoice();
         oldChoice.EmitSignal(Button.SignalName.Pressed);
+        await Layout();
         Equal(selected, 0, "Rebound choice callback cannot submit");
         var first = Find<Button>("Choice_" + choice.Options[0].Id);
         first.EmitSignal(Button.SignalName.Pressed);
         first.EmitSignal(Button.SignalName.Pressed);
         foreach (var option in choice.Options)
-            Press("Choice_" + option.Id);
+            Find<Button>("Choice_" + option.Id).EmitSignal(Button.SignalName.Pressed);
+        await Layout();
         Equal(selected, 1, "Exactly one choice can submit per binding");
         BindChoice();
         var detachedChoice = Find<Button>("Choice_" + choice.Options[0].Id);
         RemoveChild(screen);
         detachedChoice.EmitSignal(Button.SignalName.Pressed);
         AddChild(screen);
+        await Layout();
         Equal(selected, 1, "Unmounted choice callback cannot submit");
         Throws(() => NarrativeProjection.Choice(choice, new[] { "absent-choice" }, context), "Unknown canonical option is rejected");
         Throws(() => NarrativeProjection.Choice(choice, new[] { choice.Options[0].Id, choice.Options[0].Id }, context), "Duplicate canonical option is rejected");
@@ -537,7 +562,7 @@ public partial class NarrativeChecks : Node
         Equal(subset.Options[0].Number, $"0{choice.Options.Count}", "Filtering preserves source option number");
     }
 
-    private void CheckShellLifecycle()
+    private async Task CheckShellLifecycle()
     {
         var shell = new CampaignShell();
         AddChild(shell);
@@ -547,10 +572,12 @@ public partial class NarrativeChecks : Node
         var old = (Button)shell.FindChild("CampaignExit", true, false);
         shell.Show(view, () => exits++);
         old.EmitSignal(Button.SignalName.Pressed);
+        await Layout();
         Equal(exits, 0, "Reused shell rejects old exit callback");
         var current = (Button)shell.FindChild("CampaignExit", true, false);
         current.EmitSignal(Button.SignalName.Pressed);
         current.EmitSignal(Button.SignalName.Pressed);
+        await Layout();
         Equal(exits, 1, "Shell exit is a single submission even without immediate caller navigation");
         shell.Show(view, () => exits++);
         current = (Button)shell.FindChild("CampaignExit", true, false);
@@ -558,9 +585,11 @@ public partial class NarrativeChecks : Node
         current.EmitSignal(Button.SignalName.Pressed);
         AddChild(shell);
         current.EmitSignal(Button.SignalName.Pressed);
+        await Layout();
         Equal(exits, 1, "Unmounted and remounted shell cannot revive previous callbacks");
         shell.Show(view, () => exits++);
         ((Button)shell.FindChild("CampaignExit", true, false)).EmitSignal(Button.SignalName.Pressed);
+        await Layout();
         Equal(exits, 2, "Explicit shell rebind allows fresh navigation");
         RemoveChild(shell);
         shell.QueueFree();
@@ -583,7 +612,7 @@ public partial class NarrativeChecks : Node
         await Layout();
         Require(scroll.ScrollVertical > 0, "Long narrative is scrollable at narrow height");
         var offset = scroll.ScrollVertical;
-        Press("StoryPrimary");
+        await Press("StoryPrimary");
         await Layout();
         Equal(screen.BeatIndex, 1, "Scrolling does not alter local progression");
         Equal(scroll.ScrollVertical, offset, "Local beat rendering preserves existing scroll container offset");
@@ -609,7 +638,7 @@ public partial class NarrativeChecks : Node
         await Layout();
     }
 
-    private void CheckMissingArt()
+    private async Task CheckMissingArt()
     {
         var entry = documents.Stories.First(story => story.Beats.Any(beat => metadata.Portraits.ContainsKey(beat.Speaker)));
         var missing = new NarrativePresentationDocument
@@ -627,7 +656,7 @@ public partial class NarrativeChecks : Node
         screen.ShowStory(entry, documents.IdentityNameKeys, new(messages, missingPortraits, missing, 0, true), false, () => { }, () => { }, () => { });
         Require(screen.RenderingDiagnostics.Any(message => message.Contains("missing-narrative-art.png")), "Absent exported scene gets explicit diagnostic");
         for (var index = 0; index < entry.Beats.Count && screen.PresentedStory!.Portrait is null; index++)
-            Press("StoryPrimary");
+            await Press("StoryPrimary");
         Require(screen.RenderingDiagnostics.Any(message => message.Contains("portrait")), "Missing portrait export gets explicit diagnostic");
         Require(screen.FindChild("StoryPortrait", true, false) is null, "Missing portrait does not fabricate substitute art");
         Require(screen.FindChild("CampaignBackdrop", true, false) is null, "Missing scene does not silently use unrelated chapter art");

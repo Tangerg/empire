@@ -15,7 +15,7 @@ namespace Empire.Presentation;
 public partial class CampaignStagingChecks : Node
 {
     private int assertions;
-    public override void _Ready()
+    public override async void _Ready()
     {
         try
         {
@@ -98,19 +98,27 @@ public partial class CampaignStagingChecks : Node
                 "Missing staging art must retain precise diagnostics while showing only the localized failure notice");
             foreach (var unit in view.Roster.Where(unit => unit.Portrait is not null))
                 Require(screen.RenderingDiagnostics.Any(value => value.Contains($"portrait {unit.Id}", StringComparison.Ordinal)), "Missing authored portrait must be reported");
+            NavigationButton(screen, "StartBattle").EmitSignal(Button.SignalName.Pressed);
+            Require(starts == 0, "Native staging intent must wait until input dispatch completes");
+            screen.ShowStaging(view, unitArt, () => starts++, () => exits++);
+            await Layout();
+            Require(starts == 0 && exits == 0, "Rebinding must cancel queued staging intent");
             var oldButton = NavigationButton(screen, "StartBattle");
             var oldExit = NavigationButton(screen, "CampaignExit");
             Require(oldExit.AccessibilityName == view.ExitLabel, "Shared shell exit must retain the source accessible label");
             Require(oldButton.Text == view.StartLabel, "First entry label must match source");
             oldButton.EmitSignal(Button.SignalName.Pressed);
             oldButton.EmitSignal(Button.SignalName.Pressed);
+            await Layout();
             Require(starts == 1 && oldButton.Disabled && oldExit.Disabled, "Start callback must run once and disable sibling exit");
             oldExit.EmitSignal(Button.SignalName.Pressed);
+            await Layout();
             Require(exits == 0, "Shared-shell exit escaped a submitted Start action");
             var reentry = View(true);
             screen.ShowStaging(reentry, unitArt, () => starts++, () => exits++);
             oldButton.EmitSignal(Button.SignalName.Pressed);
             oldExit.EmitSignal(Button.SignalName.Pressed);
+            await Layout();
             Require(starts == 1 && exits == 0, "Stale Start/Exit callbacks after rebind must not navigate");
             var newButton = NavigationButton(screen, "StartBattle");
             var newExit = NavigationButton(screen, "CampaignExit");
@@ -120,20 +128,24 @@ public partial class CampaignStagingChecks : Node
             buttonParent.RemoveChild(newButton);
             Require(screen.IsInsideTree() && !newButton.IsInsideTree(), "Detached-button regression must leave its screen mounted");
             newButton.EmitSignal(Button.SignalName.Pressed);
+            await Layout();
             Require(starts == 1, "Detached Start button must not act on campaign state while its screen stays mounted");
             buttonParent.AddChild(newButton);
             var exitParent = newExit.GetParent();
             exitParent.RemoveChild(newExit);
             newExit.EmitSignal(Button.SignalName.Pressed);
+            await Layout();
             Require(exits == 0, "Detached shared-shell Exit must not navigate while its screen stays mounted");
             exitParent.AddChild(newExit);
             RemoveChild(screen);
             newButton.EmitSignal(Button.SignalName.Pressed);
             newExit.EmitSignal(Button.SignalName.Pressed);
+            await Layout();
             Require(starts == 1 && exits == 0, "Unmounted Start/Exit callbacks must not act on campaign state");
             AddChild(screen);
             newButton.EmitSignal(Button.SignalName.Pressed);
             newExit.EmitSignal(Button.SignalName.Pressed);
+            await Layout();
             Require(starts == 1 && exits == 0, "Remount alone must not revive stale Start/Exit callbacks");
             screen.ShowStaging(view, unitArt, () => starts++, () => exits++);
             var reboundStart = NavigationButton(screen, "StartBattle");
@@ -141,12 +153,15 @@ public partial class CampaignStagingChecks : Node
             reboundExit.EmitSignal(Button.SignalName.Pressed);
             reboundExit.EmitSignal(Button.SignalName.Pressed);
             reboundStart.EmitSignal(Button.SignalName.Pressed);
+            await Layout();
             Require(exits == 1 && starts == 1 && reboundExit.Disabled && reboundStart.Disabled, "Exit must be single-use and block sibling Start");
             screen.ShowStaging(view, unitArt, () => starts++, () => exits++);
             reboundExit.EmitSignal(Button.SignalName.Pressed);
             reboundStart.EmitSignal(Button.SignalName.Pressed);
+            await Layout();
             Require(exits == 1 && starts == 1, "A new staging binding revived previously submitted navigation");
             NavigationButton(screen, "StartBattle").EmitSignal(Button.SignalName.Pressed);
+            await Layout();
             Require(starts == 2 && exits == 1, "Remounted and explicitly rebound screen must accept one new action");
             metadata = FixtureMetadata();
             foreach (var sourceCase in oracle["cases"]!.AsArray().OfType<JsonObject>())
@@ -182,6 +197,12 @@ public partial class CampaignStagingChecks : Node
                 yield return descendant;
         }
     }
+    private async System.Threading.Tasks.Task Layout()
+    {
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+    }
+
     private void Require(bool condition, string message)
     {
         assertions++;

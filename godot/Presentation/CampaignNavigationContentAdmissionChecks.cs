@@ -31,12 +31,12 @@ public partial class CampaignNavigationChecks
             var text = presentation.Messages;
             GrayFlagCampaign New(JsonObject? state = null) => new(new(engine, presentation), definition, levels, state);
             var prologue = New().Save();
-            Press(Button(View<CampaignMenuScreen>(game), "NewCampaign"));
+            await Activate(Button(View<CampaignMenuScreen>(game), "NewCampaign"));
             while (Campaign(game).Node()["type"]!.GetValue<string>() == "story")
-                CompleteStory(game);
-            Press(Buttons(View<StoryScreen>(game)).First(button => button.Name.ToString().StartsWith("Choice_", StringComparison.Ordinal)));
+                await CompleteStory(game);
+            await Activate(Buttons(View<StoryScreen>(game)).First(button => button.Name.ToString().StartsWith("Choice_", StringComparison.Ordinal)));
             var staging = Campaign(game).Save();
-            Press(Button(View<CampaignStagingScreen>(game), "StartBattle"));
+            await Activate(Button(View<CampaignStagingScreen>(game), "StartBattle"));
             var owner = Campaign(game);
             var session = owner.Battle!;
             var screen = View<BattleScreen>(game);
@@ -138,7 +138,7 @@ public partial class CampaignNavigationChecks
             game = MountGame();
             Require(View<CampaignMenuScreen>(game).Presented is { CanContinue: true, RejectedNotice: null },
                 "A healthy clean campaign must still offer Continue after content admission.");
-            Press(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
+            await Activate(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
             Require(View<Control>(game) is CampaignStagingScreen && ContentAdmissionFacts(Campaign(game)) == StableContentDocument(staging),
                 "Healthy Continue must activate the exact clean campaign without advancing or opening its battle.");
             Require(File.ReadAllBytes(automaticPath).SequenceEqual(validAutomatic) && Stamp(automaticPath) == validAutomaticStamp

@@ -25,7 +25,7 @@ shutil.copyfile(root / 'godot/Presentation/Tactical/TacticalHudStyle.cs', target
 shutil.copyfile(root / 'godot/assets/native/hud/dispatch-board-v1.png', target / 'assets/native/hud/dispatch-board-v1.png')
 for name in ['GameText.cs', 'GodotTextCatalog.cs', 'zh_CN.po']:
     shutil.copyfile(root / 'godot/Localization' / name, target / 'Localization' / name)
-for name in ['NarrativeArt.cs', 'CharacterPortrait.cs', 'StoryScreen.cs', 'StoryModels.cs', 'NarrativeProjection.cs', 'CampaignShell.cs', 'NarrativeChecks.cs']:
+for name in ['CampaignButtonActivation.cs', 'NarrativeArt.cs', 'CharacterPortrait.cs', 'StoryScreen.cs', 'StoryModels.cs', 'NarrativeProjection.cs', 'CampaignShell.cs', 'NarrativeChecks.cs']:
     shutil.copyfile(root / 'godot/Presentation' / name, target / 'Presentation' / name)
 for name in ['PortraitCatalog.cs', 'PortraitCatalogResources.cs']:
     shutil.copyfile(root / 'godot/Presentation/Portraits' / name, target / 'Presentation' / name)

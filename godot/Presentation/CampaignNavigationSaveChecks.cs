@@ -56,18 +56,18 @@ public partial class CampaignNavigationChecks
         {
             ResetAutosave();
             game = MountGame();
-            Press(Button(View<CampaignMenuScreen>(game), "NewCampaign"));
+            await Activate(Button(View<CampaignMenuScreen>(game), "NewCampaign"));
             game.ProcessMode = ProcessModeEnum.Inherit;
             await Layout();
             // An absent slot prevents an inert story save from passing on an identical old prologue.
             File.Delete(manualPath);
             await RoundTrip("campaign", typeof(StoryScreen));
             while (Campaign(game).Node()["type"]!.GetValue<string>() == "story")
-                CompleteStory(game);
+                await CompleteStory(game);
             await RoundTrip("campaign", typeof(StoryScreen));
-            Press(Buttons(View<StoryScreen>(game)).First(button => button.Name.ToString().StartsWith("Choice_", StringComparison.Ordinal)));
+            await Activate(Buttons(View<StoryScreen>(game)).First(button => button.Name.ToString().StartsWith("Choice_", StringComparison.Ordinal)));
             await RoundTrip("campaign", typeof(CampaignStagingScreen));
-            Press(Button(View<CampaignStagingScreen>(game), "StartBattle"));
+            await Activate(Button(View<CampaignStagingScreen>(game), "StartBattle"));
             var session = Campaign(game).Battle!;
             var screen = View<BattleScreen>(game);
             screen.Board.AnimationsEnabled = false;

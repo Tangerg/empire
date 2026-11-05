@@ -48,7 +48,8 @@ public partial class CampaignNavigationChecks : Node
             }
             battleNodeState = runtime.Snapshot();
             foreach (var (name, test) in new (string, Func<Task>)[] {
-                ("fresh menu, local beats, choice and autosave", () => { CheckFreshStoryChoice(); return Task.CompletedTask; }),
+                ("fresh menu, local beats, choice and autosave", CheckFreshStoryChoice),
+                ("native campaign route", CheckNativeCampaignRoute),
                 ("menu cannot overwrite a played manual save", CheckMenuSaveAdmission),
                 ("idle polling after play, undo and load", CheckIdlePolling),
                 ("native pointer refresh preserves unchanged HUD content", CheckPointerHudRetention),
@@ -60,17 +61,17 @@ public partial class CampaignNavigationChecks : Node
                 ("held end-turn key across real AI playback", CheckEndTurnKeyRepeat),
                 ("modified save shortcut preserves the manual slot", () => CheckModifiedApplicationShortcuts(Key.F5)),
                 ("modified load shortcut preserves unsaved battle progress", () => CheckModifiedApplicationShortcuts(Key.F9)),
-                ("story/choice return, rebind and unmount", () => { CheckNarrativeNavigation(); return Task.CompletedTask; }),
-                ("overwrite cancellation, stale dialog and confirmation", () => { CheckOverwrite(); return Task.CompletedTask; }),
-                ("overwrite dialog unmount", () => { CheckUnmountedOverwrite(); return Task.CompletedTask; }),
+                ("story/choice return, rebind and unmount", CheckNarrativeNavigation),
+                ("overwrite cancellation, stale dialog and confirmation", CheckOverwrite),
+                ("overwrite dialog unmount", CheckUnmountedOverwrite),
                 ("native overwrite and restart confirmation input", CheckNativeNavigationConfirmations),
-                ("invalid save notice and explicit replacement", () => { CheckInvalidSave(); return Task.CompletedTask; }),
-                ("ending active/completed/failed UI fixtures", () => { CheckEndingFixtures(); return Task.CompletedTask; }),
-                ("story, choice, ending and staging write failures", () => { CheckWriteFailures(); return Task.CompletedTask; }),
-                ("victory settlement UI fixture and autosave", () => { CheckVictorySettlement(); return Task.CompletedTask; }),
+                ("invalid save notice and explicit replacement", CheckInvalidSave),
+                ("ending active/completed/failed UI fixtures", CheckEndingFixtures),
+                ("story, choice, ending and staging write failures", CheckWriteFailures),
+                ("victory settlement UI fixture and autosave", CheckVictorySettlement),
                 ("played victory confirmation, playback and carried continuation", CheckPlayedVictoryConfirmation),
-                ("read/delete failure preserves menu", () => { CheckReadDeleteFailure(); return Task.CompletedTask; }),
-                ("manual load admission and view activation are atomic", () => { CheckManualLoadAdmission(); return Task.CompletedTask; }),
+                ("read/delete failure preserves menu", CheckReadDeleteFailure),
+                ("manual load admission and view activation are atomic", CheckManualLoadAdmission),
                 ("saved campaign content admission preserves live progress", CheckCampaignContentAdmission),
                 ("formal Redstone entry, carried-roster fixture, resume and settlement", CheckFormalRedstone),
             })
@@ -134,7 +135,7 @@ public partial class CampaignNavigationChecks : Node
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
     }
 
-    private void CheckFreshStoryChoice()
+    private async Task CheckFreshStoryChoice()
     {
         var game = MountGame();
         var menu = View<CampaignMenuScreen>(game);
@@ -145,33 +146,39 @@ public partial class CampaignNavigationChecks : Node
         manualStamp = Stamp(manualPath);
         var start = Button(menu, "NewCampaign");
         Press(start);
-        Require(View<StoryScreen>(game).BeatIndex == 0 && !File.Exists(automaticPath), "New should open beat zero without an early autosave.");
         Press(start);
-        Require(View<StoryScreen>(game).BeatIndex == 0, "Stale New restarted the story.");
+        Require(ReferenceEquals(View<Control>(game), menu), "New must wait until native button dispatch completes.");
+        await Layout();
+        Require(View<StoryScreen>(game).BeatIndex == 0 && !File.Exists(automaticPath), "Repeated New should open beat zero exactly once without an early autosave.");
+        Require(!GodotObject.IsInstanceValid(start), "Retired New button remained alive after navigation settled.");
         while (Campaign(game).Node()["type"]!.GetValue<string>() == "story")
-            CompleteStory(game);
+            await CompleteStory(game);
         var choices = View<StoryScreen>(game);
         var options = Buttons(choices).Where(button => button.Name.ToString().StartsWith("Choice_", StringComparison.Ordinal)).ToArray();
         Require(options.Length > 1 && choices.PresentedChoice is not null, "Opening route did not reach its real choice menu.");
         var beforeChoice = State(game);
         var beforeSlot = File.ReadAllText(automaticPath);
         Press(options[0]);
+        foreach (var button in options)
+        {
+            Press(button);
+            Press(button);
+        }
+        Require(State(game) == beforeChoice, "Choice must not commit during native button dispatch.");
+        await Layout();
         Require(View<CampaignStagingScreen>(game).Presented is not null && State(game) != beforeChoice, "Choice did not enter staging through canonical runtime.");
         AssertSaved(game);
         Require(File.ReadAllText(automaticPath) != beforeSlot, "Choice failed to write its new campaign state.");
         var committed = State(game);
         var stamp = Stamp(automaticPath);
         var staging = View<Control>(game);
-        foreach (var button in options)
-        {
-            Press(button);
-            Press(button);
-        }
-        Require(State(game) == committed && Stamp(automaticPath) == stamp && ReferenceEquals(View<Control>(game), staging), "Stale choice callback changed campaign or navigation.");
+        Require(options.All(button => !GodotObject.IsInstanceValid(button)), "Retired choice buttons remained alive after navigation settled.");
+        await Layout();
+        Require(State(game) == committed && Stamp(automaticPath) == stamp && ReferenceEquals(View<Control>(game), staging), "Queued choice siblings changed campaign or navigation after the first commit.");
         Retire(game);
     }
 
-    private void CompleteStory(GrayFlagGame game)
+    private async Task CompleteStory(GrayFlagGame game)
     {
         var story = View<StoryScreen>(game);
         var state = State(game);
@@ -181,21 +188,28 @@ public partial class CampaignNavigationChecks : Node
             var old = Button(story, "StoryPrimary");
             var beat = story.BeatIndex;
             Press(old);
-            Require(ReferenceEquals(View<Control>(game), story) && story.BeatIndex == beat + 1, "Next beat replaced the campaign screen or skipped a local beat.");
-            Require(State(game) == state && Stamp(automaticPath) == slot, "Local paging advanced or persisted the canonical campaign early.");
             Press(old);
-            Require(story.BeatIndex == beat + 1, "A removed local-beat button advanced again.");
+            Require(story.BeatIndex == beat, "Local paging must wait until native button dispatch completes.");
+            await Layout();
+            Require(ReferenceEquals(View<Control>(game), story) && story.BeatIndex == beat + 1, "Repeated Next beat replaced the campaign screen or skipped a local beat.");
+            Require(State(game) == state && Stamp(automaticPath) == slot, "Local paging advanced or persisted the canonical campaign early.");
+            Require(!GodotObject.IsInstanceValid(old), "A removed local-beat button survived settled paging.");
         }
         var last = Button(story, "StoryPrimary");
+        var exit = Button(story, "CampaignExit");
         Press(last);
+        Press(last);
+        Press(exit);
+        Require(State(game) == state, "Last beat must wait until native button dispatch completes.");
+        await Layout();
         Require(State(game) != state && !ReferenceEquals(View<Control>(game), story), "Last beat failed to advance the campaign node.");
         AssertSaved(game);
         var next = View<Control>(game);
         var committed = State(game);
         var saved = Stamp(automaticPath);
-        Press(last);
-        Press(Button(story, "CampaignExit"));
-        Require(ReferenceEquals(View<Control>(game), next) && State(game) == committed && Stamp(automaticPath) == saved, "Old story continue/exit remained live after navigation.");
+        Require(!GodotObject.IsInstanceValid(last) && !GodotObject.IsInstanceValid(exit), "Retired story controls remained alive after navigation settled.");
+        await Layout();
+        Require(ReferenceEquals(View<Control>(game), next) && State(game) == committed && Stamp(automaticPath) == saved, "Queued story continue/exit remained live after navigation.");
     }
 
     private async Task CheckBattleWindowMinimum()
@@ -218,7 +232,7 @@ public partial class CampaignNavigationChecks : Node
                 WriteFixture(battleNodeState);
                 game = MountGame();
                 Require(window.MinSize == inherited, "Menu changed its host window minimum.");
-                Press(Button(View<Control>(game), "ContinueCampaign"));
+                await Activate(Button(View<Control>(game), "ContinueCampaign"));
                 Require(window.MinSize == inherited, "Staging imposed battle-only constraints.");
                 var beforeSize = window.Size;
                 var children = game.GetChildCount();
@@ -238,8 +252,8 @@ public partial class CampaignNavigationChecks : Node
                 Require(!GodotObject.IsInstanceValid(unconfigured) && !GodotObject.IsInstanceValid(preparedBoard)
                     && !NativeNodeChecks.OrphanIds().Except(orphans).Any(),
                     "Failed hidden battle preparation must release the screen and all of its owned nodes.");
-                Press(Button(View<Control>(game), "StartBattle"));
-                CheckOpeningCamera(game, "Immediate battle activation");
+                await ActivateAndObserve(Button(View<Control>(game), "StartBattle"),
+                    () => CheckOpeningCamera(game, "Immediate battle activation"));
                 await Layout();
                 CheckOpeningCamera(game, "Settled battle activation");
                 var expected = new Vector2I(Math.Max(inherited.X, 960), Math.Max(inherited.Y, 640));
@@ -256,8 +270,8 @@ public partial class CampaignNavigationChecks : Node
                 CampPrompt(game).EmitSignal(ConfirmationDialog.SignalName.Confirmed);
                 await Layout();
                 Require(window.MinSize == inherited, "Leaving battle for camp retained the battle minimum.");
-                Press(Button(View<Control>(game), "StartBattle"));
-                CheckOpeningCamera(game, "Camp reentry");
+                await ActivateAndObserve(Button(View<Control>(game), "StartBattle"),
+                    () => CheckOpeningCamera(game, "Camp reentry"));
                 RemoveChild(game);
                 Require(window.MinSize == inherited, "Unmount retained the battle minimum.");
                 AddChild(game);
@@ -302,8 +316,8 @@ public partial class CampaignNavigationChecks : Node
         var game = MountGame();
         try
         {
-            Press(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
-            Press(Button(View<CampaignStagingScreen>(game), "StartBattle"));
+            await Activate(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
+            await Activate(Button(View<CampaignStagingScreen>(game), "StartBattle"));
             var campaign = Campaign(game);
             var session = campaign.Battle!;
             var screen = View<BattleScreen>(game);
@@ -388,8 +402,8 @@ public partial class CampaignNavigationChecks : Node
     {
         WriteFixture(battleNodeState);
         var game = MountGame();
-        Press(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
-        Press(Button(View<CampaignStagingScreen>(game), "StartBattle"));
+        await Activate(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
+        await Activate(Button(View<CampaignStagingScreen>(game), "StartBattle"));
         var screen = View<BattleScreen>(game);
         var session = Campaign(game).Battle!;
         var saved = File.ReadAllText(automaticPath);
@@ -487,20 +501,21 @@ public partial class CampaignNavigationChecks : Node
         var game = MountGame();
         var menu = View<CampaignMenuScreen>(game);
         Require(menu.Presented!.CanContinue && File.ReadAllText(automaticPath) == savedBefore, "Startup did not offer the intact campaign slot.");
-        Press(Button(menu, "ContinueCampaign"));
+        await Activate(Button(menu, "ContinueCampaign"));
         var campaign = Campaign(game);
         var staging = View<CampaignStagingScreen>(game);
         Require(!campaign.HasPendingBattle && campaign.Battle is null && !campaign.AtCamp && State(game) == Digest(battleNodeState), "Startup Continue restored a pending battle instead of the clean campaign node.");
         var start = Button(staging, "StartBattle");
         Press(start);
+        Press(start);
+        await Layout();
         var battleScreen = View<BattleScreen>(game);
         var battle = campaign.Battle;
         Require(battle is not null && campaign.HasPendingBattle && campaign.Snapshot()["pendingBattle"] is not null, "Staging Start did not open a canonical battle request.");
         var saved = File.ReadAllText(automaticPath);
         var stamp = Stamp(automaticPath);
         Require(Digest(ReadSave()["state"]!.AsObject()) == Digest(battleNodeState) && ReadSave()["state"]!["pendingBattle"] is null, "Prebattle autosave captured pending gameplay.");
-        Press(start);
-        Require(ReferenceEquals(campaign.Battle, battle), "Stale staging Start restarted the live battle.");
+        Require(!GodotObject.IsInstanceValid(start) && ReferenceEquals(campaign.Battle, battle), "Repeated staging Start restarted the live battle or retained its retired button.");
         var restart = Buttons(battleScreen).Single(button => button.Text == "重新开始");
         Press(restart);
         await Layout();
@@ -596,18 +611,19 @@ public partial class CampaignNavigationChecks : Node
         Require(File.ReadAllText(automaticPath) == saved && Stamp(automaticPath) == stamp, "Restart/camp exit rewrote the clean campaign slot.");
         var exit = Button(camp, "CampaignExit");
         Press(exit);
-        var returnedMenu = View<CampaignMenuScreen>(game);
         Press(exit);
         Press(Button(camp, "StartBattle"));
-        Require(ReferenceEquals(View<Control>(game), returnedMenu), "Camp navigation remained live after returning to menu.");
-        Press(Button(returnedMenu, "ContinueCampaign"));
+        await Layout();
+        var returnedMenu = View<CampaignMenuScreen>(game);
+        Require(!GodotObject.IsInstanceValid(camp) && ReferenceEquals(campaign.Battle, opening), "Queued camp navigation remained live after returning to menu.");
+        await Activate(Button(returnedMenu, "ContinueCampaign"));
         Require(View<Control>(game) is CampaignStagingScreen && !Campaign(game).HasPendingBattle && Campaign(game).Battle is null && !Campaign(game).AtCamp,
             "Menu Continue retained the in-memory pending request instead of loading clean campaign state.");
         Require(State(game) == Digest(battleNodeState) && File.ReadAllText(automaticPath) == saved, "Menu Continue changed the clean saved campaign.");
         Retire(game);
     }
 
-    private void CheckNarrativeNavigation()
+    private async Task CheckNarrativeNavigation()
     {
         foreach (var target in new[] { "story", "choice" })
         {
@@ -616,54 +632,59 @@ public partial class CampaignNavigationChecks : Node
                 runtime.Advance();
             WriteFixture(runtime.Snapshot());
             var game = MountGame();
-            Press(Button(View<Control>(game), "ContinueCampaign"));
+            await Activate(Button(View<Control>(game), "ContinueCampaign"));
             var story = View<StoryScreen>(game);
             var state = State(game);
             var saved = File.ReadAllText(automaticPath);
             if (target == "story")
             {
                 Require(story.PresentedStory!.BeatCount > 1, "The cursor regression needs a real multi-beat story.");
-                Press(Button(story, "StoryPrimary"));
+                await Activate(Button(story, "StoryPrimary"));
                 Require(story.BeatIndex == 1, "Story fixture did not move its local cursor.");
             }
             var oldButtons = Buttons(story).ToArray();
             var exit = Button(story, "CampaignExit");
             Press(exit);
-            var menu = View<CampaignMenuScreen>(game);
             foreach (var button in oldButtons)
                 Press(button);
-            Require(ReferenceEquals(View<Control>(game), menu) && State(game) == state && File.ReadAllText(automaticPath) == saved, "Story/choice exit or stale siblings mutated canonical progress.");
-            Press(Button(menu, "ContinueCampaign"));
+            await Layout();
+            var menu = View<CampaignMenuScreen>(game);
+            Require(oldButtons.All(button => !GodotObject.IsInstanceValid(button)) && ReferenceEquals(View<Control>(game), menu) && State(game) == state && File.ReadAllText(automaticPath) == saved, "Story/choice exit or stale siblings mutated canonical progress.");
+            await Activate(Button(menu, "ContinueCampaign"));
             var resumed = View<StoryScreen>(game);
             Require(resumed.BeatIndex == 0 && State(game) == state, "Continue should resume the saved node at local beat zero.");
             var bound = Buttons(resumed).ToArray();
+            foreach (var button in bound)
+                Press(button);
             RemoveChild(game);
             try
             {
                 foreach (var button in bound)
                     Press(button);
+                await Layout();
                 Require(State(game) == state && File.ReadAllText(automaticPath) == saved, "Unmounted narrative callback changed the campaign or slot.");
                 AddChild(game);
                 foreach (var button in bound)
                     Press(button);
+                await Layout();
                 Require(ReferenceEquals(View<Control>(game), resumed) && State(game) == state, "Remount revived an obsolete narrative callback.");
             }
             finally { Retire(game); }
         }
     }
 
-    private void CheckOverwrite()
+    private async Task CheckOverwrite()
     {
         WriteFixture(battleNodeState);
         var game = MountGame();
         var menu = View<CampaignMenuScreen>(game);
         var original = File.ReadAllText(automaticPath);
         var stamp = Stamp(automaticPath);
-        Press(Button(menu, "NewCampaign"));
+        await Activate(Button(menu, "NewCampaign"));
         var dialog = Descendants(menu).OfType<ConfirmationDialog>().Single();
         Require(dialog.GetCancelButton().HasFocus() && !dialog.GetOkButton().HasFocus(), "Campaign replacement initially focuses Cancel, never the destructive action.");
         Require(dialog.Visible && ReferenceEquals(View<Control>(game), menu) && File.ReadAllText(automaticPath) == original, "Requesting overwrite modified the existing slot before approval.");
-        Press(Button(menu, "ContinueCampaign"));
+        await Activate(Button(menu, "ContinueCampaign"));
         Require(ReferenceEquals(View<Control>(game), menu), "Sibling Continue escaped the pending overwrite dialog.");
         dialog.EmitSignal(ConfirmationDialog.SignalName.Canceled);
         var rebound = View<CampaignMenuScreen>(game);
@@ -671,13 +692,13 @@ public partial class CampaignNavigationChecks : Node
         dialog.EmitSignal(Window.SignalName.CloseRequested);
         Require(!ReferenceEquals(rebound, menu) && ReferenceEquals(View<Control>(game), rebound) && File.ReadAllText(automaticPath) == original && Stamp(automaticPath) == stamp,
             "Cancelled overwrite or its stale callbacks cleared progress.");
-        Press(Button(rebound, "NewCampaign"));
+        await Activate(Button(rebound, "NewCampaign"));
         var closed = Descendants(rebound).OfType<ConfirmationDialog>().Single();
         closed.EmitSignal(Window.SignalName.CloseRequested);
         closed.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
         Require(View<Control>(game) is CampaignMenuScreen && File.ReadAllText(automaticPath) == original, "Closing overwrite failed to cancel it.");
         var freshMenu = View<CampaignMenuScreen>(game);
-        Press(Button(freshMenu, "NewCampaign"));
+        await Activate(Button(freshMenu, "NewCampaign"));
         var confirmed = Descendants(freshMenu).OfType<ConfirmationDialog>().Single();
         confirmed.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
         var story = View<StoryScreen>(game);
@@ -685,7 +706,7 @@ public partial class CampaignNavigationChecks : Node
         Require(!File.Exists(automaticPath) && Campaign(game).Node()["id"]!.GetValue<string>() == definition["start"]!.GetValue<string>(), "Confirmed New did not clear only autosave and start from the canonical opening.");
         confirmed.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
         confirmed.EmitSignal(ConfirmationDialog.SignalName.Canceled);
-        Press(Button(freshMenu, "ContinueCampaign"));
+        await Activate(Button(freshMenu, "ContinueCampaign"));
         Require(ReferenceEquals(View<Control>(game), story) && State(game) == state, "Handled overwrite dialog or old Continue navigated again.");
         Retire(game);
     }
@@ -711,8 +732,8 @@ public partial class CampaignNavigationChecks : Node
                     ConfirmationDialog prompt;
                     if (route == "restart")
                     {
-                        Press(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
-                        Press(Button(View<CampaignStagingScreen>(game), "StartBattle"));
+                        await Activate(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
+                        await Activate(Button(View<CampaignStagingScreen>(game), "StartBattle"));
                         var battle = View<BattleScreen>(game);
                         battle.Board.AnimationsEnabled = false;
                         played = Campaign(game).Battle!;
@@ -734,7 +755,7 @@ public partial class CampaignNavigationChecks : Node
                     else
                     {
                         original = View<CampaignMenuScreen>(game);
-                        Press(Button(original, "NewCampaign"));
+                        await Activate(Button(original, "NewCampaign"));
                         await Layout();
                         prompt = Descendants(original).OfType<ConfirmationDialog>().Single();
                     }
@@ -829,7 +850,7 @@ public partial class CampaignNavigationChecks : Node
             throw new InvalidOperationException(string.Join("\n", caseFailures));
     }
 
-    private void CheckUnmountedOverwrite()
+    private async Task CheckUnmountedOverwrite()
     {
         foreach (var confirmWhileUnmounted in new[] { true, false })
         {
@@ -837,7 +858,7 @@ public partial class CampaignNavigationChecks : Node
             var game = MountGame();
             var menu = View<CampaignMenuScreen>(game);
             var saved = File.ReadAllText(automaticPath);
-            Press(Button(menu, "NewCampaign"));
+            await Activate(Button(menu, "NewCampaign"));
             var dialog = Descendants(menu).OfType<ConfirmationDialog>().Single();
             RemoveChild(game);
             try
@@ -847,13 +868,14 @@ public partial class CampaignNavigationChecks : Node
                 Require(File.Exists(automaticPath) && File.ReadAllText(automaticPath) == saved && ReferenceEquals(View<Control>(game), menu), "Unmounted overwrite dialog cleared saved progress.");
                 AddChild(game);
                 dialog.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
+                await Layout();
                 Require(File.Exists(automaticPath) && File.ReadAllText(automaticPath) == saved && ReferenceEquals(View<Control>(game), menu), "Remount revived stale overwrite confirmation.");
             }
             finally { Retire(game); }
         }
     }
 
-    private void CheckInvalidSave()
+    private async Task CheckInvalidSave()
     {
         foreach (var rejected in new[] { "{not a campaign save", "{\"schema\":0}" })
         {
@@ -865,13 +887,13 @@ public partial class CampaignNavigationChecks : Node
             var notice = Field<GameText>(game, "text").Format("error.campaign.save_rejected");
             Require(!menu.Presented!.CanContinue && menu.Presented.RejectedNotice == notice && Labels(menu).Any(label => label == notice), "Malformed or unsupported slot did not produce a visible localized non-destructive notice.");
             Require(File.ReadAllText(automaticPath) == rejected && Stamp(automaticPath) == stamp, "Reading a malformed or unsupported save changed or deleted it.");
-            Press(Button(menu, "NewCampaign"));
+            await Activate(Button(menu, "NewCampaign"));
             Require(View<Control>(game) is StoryScreen && !File.Exists(automaticPath), "Explicit New did not replace the rejected slot.");
             Retire(game);
         }
     }
 
-    private void CheckEndingFixtures()
+    private async Task CheckEndingFixtures()
     {
         // This deliberately constructs valid terminal-screen fixtures. It does not assert that gameplay reached these nodes.
         foreach (var (node, status) in new[] { ("chapter-three-ending", "active"), ("chapter-three-ending", "completed"), ("campaign-failed", "active"), ("campaign-failed", "failed") })
@@ -881,7 +903,7 @@ public partial class CampaignNavigationChecks : Node
             fixture["status"] = status;
             WriteFixture(fixture);
             var game = MountGame();
-            Press(Button(View<Control>(game), "ContinueCampaign"));
+            await Activate(Button(View<Control>(game), "ContinueCampaign"));
             var story = View<StoryScreen>(game);
             var finish = Button(story, "StoryPrimary");
             var saved = File.ReadAllText(automaticPath);
@@ -889,6 +911,8 @@ public partial class CampaignNavigationChecks : Node
             var text = Field<GameText>(game, "text");
             Require(finish.Text == (status == "active" ? text.Format(NarrativePresentationDocument.Load(text, PortraitCatalogResources.Load()).CompletionLabelKey) : text.Format("ui.campaign.exit")), "Ending finish/return label does not reflect canonical status.");
             Press(finish);
+            Press(finish);
+            await Layout();
             if (status == "active")
             {
                 var terminal = View<StoryScreen>(game);
@@ -897,9 +921,8 @@ public partial class CampaignNavigationChecks : Node
                 AssertSaved(game);
                 var committed = State(game);
                 var after = File.ReadAllText(automaticPath);
-                Press(finish);
-                Require(State(game) == committed && ReferenceEquals(View<Control>(game), terminal), "Stale active ending finish exited or advanced twice.");
-                Press(Button(terminal, "StoryPrimary"));
+                Require(!GodotObject.IsInstanceValid(finish) && State(game) == committed && ReferenceEquals(View<Control>(game), terminal), "Repeated active ending finish exited or advanced twice, or retained its retired button.");
+                await Activate(Button(terminal, "StoryPrimary"));
                 Require(View<Control>(game) is CampaignMenuScreen && File.ReadAllText(automaticPath) == after, "Second finish must only exit completed/failed ending.");
             }
             else
@@ -908,7 +931,7 @@ public partial class CampaignNavigationChecks : Node
         }
     }
 
-    private void CheckWriteFailures()
+    private async Task CheckWriteFailures()
     {
         foreach (var target in new[] { "story", "choice", "ending", "battle" })
         {
@@ -930,7 +953,7 @@ public partial class CampaignNavigationChecks : Node
                 }
             WriteFixture(runtime.Snapshot());
             var game = MountGame();
-            Press(Button(View<Control>(game), "ContinueCampaign"));
+            await Activate(Button(View<Control>(game), "ContinueCampaign"));
             var before = State(game);
             var previous = File.ReadAllText(automaticPath);
             File.Delete(automaticPath);
@@ -941,13 +964,13 @@ public partial class CampaignNavigationChecks : Node
                 {
                     var story = View<StoryScreen>(game);
                     while (target != "ending" && !story.PresentedStory!.LastBeat)
-                        Press(Button(story, "StoryPrimary"));
-                    Press(Button(story, "StoryPrimary"));
+                        await Activate(Button(story, "StoryPrimary"));
+                    await Activate(Button(story, "StoryPrimary"));
                 }
                 else if (target == "choice")
-                    Press(Buttons(View<Control>(game)).First(button => button.Name.ToString().StartsWith("Choice_", StringComparison.Ordinal)));
+                    await Activate(Buttons(View<Control>(game)).First(button => button.Name.ToString().StartsWith("Choice_", StringComparison.Ordinal)));
                 else
-                    Press(Button(View<Control>(game), "StartBattle"));
+                    await Activate(Button(View<Control>(game), "StartBattle"));
                 Require(Descendants(game).OfType<AcceptDialog>().Any(dialog => dialog.DialogText.Contains("自动保存失败", StringComparison.Ordinal)), "Failed campaign write was not surfaced to the player.");
                 var notice = Descendants(game).OfType<AcceptDialog>().Single(dialog => dialog.DialogText.Contains("自动保存失败", StringComparison.Ordinal));
                 Require(notice.Theme is not null && notice.GetOkButton().Text == GodotTextCatalog.LoadSimplifiedChinese().Format("ui.common.close") && notice.DialogAutowrap, "Non-battle storage failure uses the shared localized, wrapping notice contract.");
@@ -1129,8 +1152,9 @@ public partial class CampaignNavigationChecks : Node
             reference.FinishBattle();
             var settle = Button(completion, "Settle");
             Press(settle);
-            var summary = View<BattleResultScreen>(game);
             Press(settle);
+            await Layout();
+            var summary = View<BattleResultScreen>(game);
             Require(!ReferenceEquals(summary, completion) && ReferenceEquals(View<Control>(game), summary)
                 && !campaign.HasPendingBattle && EcmaJson.DeepEquals(campaign.Snapshot(), reference.Snapshot())
                 && campaign.Snapshot()["battleHistory"]!.AsArray().Count == campaignBefore["battleHistory"]!.AsArray().Count + 1,
@@ -1139,16 +1163,17 @@ public partial class CampaignNavigationChecks : Node
             var proceed = Button(summary, "Proceed");
             Press(proceed);
             Press(proceed);
+            await Layout();
             Require(View<Control>(game) is StoryScreen && campaign.Node()["id"]!.GetValue<string>() == "aftermath-01"
                 && EcmaJson.DeepEquals(campaign.Snapshot(), reference.Snapshot()), "Summary continuation must show the actual aftermath without settling again.");
             foreach (var node in new[] { "aftermath-01", "brief-02" })
             {
                 Require(campaign.Node()["id"]!.GetValue<string>() == node, "Played victory skipped an authored bridge-approach story.");
-                CompleteStory(game);
+                await CompleteStory(game);
                 reference.Advance();
                 Require(EcmaJson.DeepEquals(campaign.Snapshot(), reference.Snapshot()), "Story continuation changed the carried canonical campaign.");
             }
-            Press(Button(View<StoryScreen>(game), "Choice_accept-truce"));
+            await Activate(Button(View<StoryScreen>(game), "Choice_accept-truce"));
             reference.Choose("accept-truce");
             Require(View<Control>(game) is CampaignStagingScreen && campaign.Node()["id"]!.GetValue<string>() == "battle-02"
                 && !campaign.HasPendingBattle && EcmaJson.DeepEquals(campaign.Snapshot(), reference.Snapshot()),
@@ -1165,15 +1190,15 @@ public partial class CampaignNavigationChecks : Node
         }
     }
 
-    private void CheckVictorySettlement()
+    private async Task CheckVictorySettlement()
     {
         // Explicit current-native terminal fixtures drive UI only, not a claimed victorious gameplay route.
         foreach (var action in new[] { "Proceed", "CampaignExit", "failed-write" })
         {
             WriteFixture(battleNodeState);
             var game = MountGame();
-            Press(Button(View<Control>(game), "ContinueCampaign"));
-            Press(Button(View<Control>(game), "StartBattle"));
+            await Activate(Button(View<Control>(game), "ContinueCampaign"));
+            await Activate(Button(View<Control>(game), "StartBattle"));
             var campaign = Campaign(game);
             var document = campaign.Save();
             var terminal = campaign.Battle!.Snapshot();
@@ -1203,14 +1228,15 @@ public partial class CampaignNavigationChecks : Node
             {
                 var settle = Button(completion, "Settle");
                 Press(settle);
+                Press(settle);
+                await Layout();
                 var summary = View<BattleResultScreen>(game);
                 Require(!ReferenceEquals(summary, completion) && !campaign.HasPendingBattle && campaign.Battle is null && State(game) != before,
                     "Victory UI fixture was not settled by the canonical campaign owner.");
                 var committed = State(game);
                 var actions = Buttons(summary).ToArray();
                 Require(actions.Any(button => button.Name == "Proceed") && actions.Any(button => button.Name == "CampaignExit"), "Settled summary must expose both aftermath and shared-shell menu exit.");
-                Press(settle);
-                Require(State(game) == committed && ReferenceEquals(View<Control>(game), summary), "Stale Settle committed twice.");
+                Require(!GodotObject.IsInstanceValid(settle) && State(game) == committed && ReferenceEquals(View<Control>(game), summary), "Repeated Settle committed twice or retained its retired button.");
                 if (action == "failed-write")
                 {
                     Require(Descendants(game).OfType<AcceptDialog>().Any(dialog => dialog.DialogText.Contains("自动保存失败", StringComparison.Ordinal)), "Failed settlement autosave was not reported.");
@@ -1221,17 +1247,18 @@ public partial class CampaignNavigationChecks : Node
                     AssertSaved(game);
                     var saved = File.ReadAllText(automaticPath);
                     Press(Button(summary, action));
-                    var next = View<Control>(game);
-                    Require(action == "Proceed" ? next is StoryScreen : next is CampaignMenuScreen, "Summary navigation reached the wrong destination.");
                     foreach (var button in actions)
                     {
                         Press(button);
                         Press(button);
                     }
-                    Require(ReferenceEquals(View<Control>(game), next) && State(game) == committed && File.ReadAllText(automaticPath) == saved, "Stale summary siblings navigated or rewrote committed progress.");
+                    await Layout();
+                    var next = View<Control>(game);
+                    Require(action == "Proceed" ? next is StoryScreen : next is CampaignMenuScreen, "Summary navigation reached the wrong destination.");
+                    Require(actions.All(button => !GodotObject.IsInstanceValid(button)) && ReferenceEquals(View<Control>(game), next) && State(game) == committed && File.ReadAllText(automaticPath) == saved, "Stale summary siblings navigated or rewrote committed progress.");
                     if (action == "Proceed")
                     {
-                        CheckFormalPaintedBattle(game);
+                        await CheckFormalPaintedBattle(game);
                         paintedCaptureGame = game;
                     }
                 }
@@ -1249,23 +1276,23 @@ public partial class CampaignNavigationChecks : Node
         }
     }
 
-    private void CheckFormalPaintedBattle(GrayFlagGame game)
+    private async Task CheckFormalPaintedBattle(GrayFlagGame game)
     {
         var campaign = Campaign(game);
         foreach (var node in new[] { "aftermath-01", "brief-02" })
         {
             Require(campaign.Node()["id"]!.GetValue<string>() == node, "First-level settlement skipped the authored bridge approach.");
-            CompleteStory(game);
+            await CompleteStory(game);
         }
         Require(campaign.Node()["id"]!.GetValue<string>() == "choice-bridge-truce", "Bridge approach did not expose its actual truce choice.");
         var relation = EcmaJson.ToElement(campaign.Snapshot()["relations"]!["cain"]!).GetDouble();
-        Press(Button(View<StoryScreen>(game), "Choice_accept-truce"));
+        await Activate(Button(View<StoryScreen>(game), "Choice_accept-truce"));
         Require(campaign.Node()["id"]!.GetValue<string>() == "battle-02"
             && EcmaJson.ToElement(campaign.Snapshot()["relations"]!["cain"]!).GetDouble() == relation + 1,
             "Accepting the bridge truce did not reach second-level staging with its relation effect.");
         var roster = campaign.Snapshot()["roster"]!.DeepClone().AsObject();
         var staging = View<CampaignStagingScreen>(game).Presented!;
-        Press(Button(View<CampaignStagingScreen>(game), "StartBattle"));
+        await Activate(Button(View<CampaignStagingScreen>(game), "StartBattle"));
         var battle = campaign.Battle!.Snapshot();
         Require(battle["levelId"]!.GetValue<string>() == "c01-02" && battle["units"]!.AsArray().Count == 20,
             "Formal second-level staging did not launch all twenty canonical actors.");
@@ -1543,18 +1570,18 @@ public partial class CampaignNavigationChecks : Node
         var game = MountGame();
         try
         {
-            Press(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
+            await Activate(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
             foreach (var node in new[] { "aftermath-02", "brief-03" })
             {
                 Require(Campaign(game).Node()["id"]!.GetValue<string>() == node, "Redstone entry skipped the formal story chain.");
-                CompleteStory(game);
+                await CompleteStory(game);
             }
             Require(Campaign(game).Node()["id"]!.GetValue<string>() == "battle-03", "Redstone briefing did not lead to its actual staging node.");
             var staging = View<CampaignStagingScreen>(game).Presented!;
             Require(staging.Roster.Single(member => member.Id == "elin").Status == "阵亡"
                 && !Campaign(game).OpeningRosterHealth().ContainsKey("elin"),
                 "A fallen roster member must retain her disposition without a fabricated opening-health entry.");
-            Press(Button(View<CampaignStagingScreen>(game), "StartBattle"));
+            await Activate(Button(View<CampaignStagingScreen>(game), "StartBattle"));
             var campaign = Campaign(game);
             var engine = Field<BattleEngine>(game, "engine");
             var opening = campaign.Battle!.Snapshot();
@@ -1622,9 +1649,9 @@ public partial class CampaignNavigationChecks : Node
             CampPrompt(game).EmitSignal(ConfirmationDialog.SignalName.Confirmed);
             await Layout();
             Require(Campaign(game).AtCamp, "Redstone exit did not return to the normal camp.");
-            Press(Button(View<CampaignStagingScreen>(game), "CampaignExit"));
-            Press(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
-            Press(Button(View<CampaignStagingScreen>(game), "StartBattle"));
+            await Activate(Button(View<CampaignStagingScreen>(game), "CampaignExit"));
+            await Activate(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
+            await Activate(Button(View<CampaignStagingScreen>(game), "StartBattle"));
             Require(Digest(Campaign(game).Battle!.Snapshot()) == Digest(opening), "Redstone Continue did not rebuild the same carried opening.");
             Layered();
 
@@ -1654,10 +1681,10 @@ public partial class CampaignNavigationChecks : Node
             SetField(game, "screen", null);
             SetField(game, "resultOffered", false);
             game._Process(0);
-            Press(Button(View<BattleResultScreen>(game), "Settle"));
+            await Activate(Button(View<BattleResultScreen>(game), "Settle"));
             Require(campaign.Snapshot()["roster"]!["elin"]!["disposition"]!.GetValue<string>() == "fallen",
                 "Redstone settlement revived a roster casualty absent from the battle.");
-            Press(Button(View<BattleResultScreen>(game), "Proceed"));
+            await Activate(Button(View<BattleResultScreen>(game), "Proceed"));
             Require(campaign.Node()["id"]!.GetValue<string>() == "aftermath-03" && View<Control>(game) is StoryScreen,
                 "Redstone settlement did not reach the formal aftermath.");
             AssertSaved(game);
@@ -1670,7 +1697,7 @@ public partial class CampaignNavigationChecks : Node
         }
     }
 
-    private void CheckReadDeleteFailure()
+    private async Task CheckReadDeleteFailure()
     {
         ResetAutosave();
         Directory.CreateDirectory(automaticPath);
@@ -1679,7 +1706,7 @@ public partial class CampaignNavigationChecks : Node
             var game = MountGame();
             var menu = View<CampaignMenuScreen>(game);
             Require(menu.Presented!.RejectedNotice is not null && !menu.Presented.CanContinue, "Unreadable slot must expose a rejection notice.");
-            Press(Button(menu, "NewCampaign"));
+            await Activate(Button(menu, "NewCampaign"));
             Require(View<Control>(game) is CampaignMenuScreen && Directory.Exists(automaticPath), "Failed New deletion entered a campaign or removed unreadable data.");
             Require(Descendants(game).OfType<AcceptDialog>().Any(dialog => dialog.DialogText.Contains("无法开始战役", StringComparison.Ordinal)), "Failed explicit New did not report the storage blocker.");
             Retire(game);
@@ -1687,14 +1714,14 @@ public partial class CampaignNavigationChecks : Node
         finally { Directory.Delete(automaticPath); }
     }
 
-    private void CheckManualLoadAdmission()
+    private async Task CheckManualLoadAdmission()
     {
         WriteFixture(battleNodeState);
         var originalManual = File.ReadAllText(manualPath);
         var originalStamp = File.GetLastWriteTimeUtc(manualPath);
         var game = MountGame();
-        Press(Button(View<Control>(game), "ContinueCampaign"));
-        Press(Button(View<Control>(game), "StartBattle"));
+        await Activate(Button(View<Control>(game), "ContinueCampaign"));
+        await Activate(Button(View<Control>(game), "StartBattle"));
         var activeCampaign = Campaign(game);
         var activeSession = activeCampaign.Battle ?? throw new InvalidOperationException("Manual admission fixture did not enter battle.");
         var battleBefore = Digest(activeSession.Snapshot());
@@ -1930,6 +1957,29 @@ public partial class CampaignNavigationChecks : Node
                 yield return descendant;
         }
     }
+    private async Task ActivateAndObserve(Button button, Action observe)
+    {
+        var observation = new TaskCompletionSource();
+        Press(button);
+        // Observe the committed view in the same deferred queue as activation, before a later layout frame can repair it.
+        Callable.From(() =>
+        {
+            try
+            {
+                observe();
+                observation.SetResult();
+            }
+            catch (Exception error) { observation.SetException(error); }
+        }).CallDeferred();
+        await observation.Task;
+    }
+
+    private async Task Activate(Button button)
+    {
+        Press(button);
+        await Layout();
+    }
+
     private static void Press(Button button) => button.EmitSignal(Godot.Button.SignalName.Pressed);
     private static void Retire(Node node)
     {

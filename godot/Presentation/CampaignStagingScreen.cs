@@ -153,15 +153,13 @@ public partial class CampaignStagingScreen : Control
         footer.AddChild(Text(view.ActionNote, 16, "#b8c6b6"));
         var button = new Button { Name = "StartBattle", Text = view.StartLabel, CustomMinimumSize = new Vector2(210, 48) };
         startButton = button;
-        button.Pressed += () =>
+        CampaignButtonActivation.Connect(this, button, () => !submitted && currentGeneration == generation, () =>
         {
-            if (submitted || currentGeneration != generation || !IsInsideTree() || !button.IsInsideTree())
-                return;
             submitted = true;
             button.Disabled = true;
             shell.DisableNavigation();
             startBattle();
-        };
+        });
         footer.AddChild(button);
         CampaignUiStyle.InitialFocus(button);
         ResizeLayout();

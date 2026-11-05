@@ -97,6 +97,8 @@ public partial class ReleaseDiagnostics : Node
         Require(menu.Presented is { CanContinue: false }, "Fresh package unexpectedly offered Continue.");
         Require(menu.RenderingDiagnostics.Count == 0, "Title art did not resolve: " + string.Join("; ", menu.RenderingDiagnostics));
         Press(Button(menu, "NewCampaign"));
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         var beats = 0;
         var choices = 0;
         while (View<Control>(game) is StoryScreen story && beats + choices < 128)
@@ -113,6 +115,7 @@ public partial class ReleaseDiagnostics : Node
                 beats++;
             }
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         }
         var staging = View<CampaignStagingScreen>(game);
         Require(beats > 0 && choices > 0 && staging.RenderingDiagnostics.Count == 0, "Authored story/choice/staging flow did not complete.");
@@ -121,6 +124,8 @@ public partial class ReleaseDiagnostics : Node
         Require(File.Exists(automatic) && !File.Exists(manual), "Campaign and manual save slots did not stay separate.");
         var cleanCampaignState = EcmaJson.Parse(File.ReadAllText(automatic))!["state"];
         Press(Button(staging, "StartBattle"));
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         // Entering battle intentionally rewrites the clean slot with a new savedAt.
         // Its canonical state must match; later manual operations must not touch its bytes.
         var cleanCampaignSave = File.ReadAllText(automatic);
@@ -176,9 +181,13 @@ public partial class ReleaseDiagnostics : Node
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         var camp = View<CampaignStagingScreen>(game);
         Press(Button(camp, "CampaignExit"));
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         var returnedMenu = View<CampaignMenuScreen>(game);
         Require(returnedMenu.Presented is { CanContinue: true }, "Returning from battle lost clean campaign continuation.");
         Press(Button(returnedMenu, "ContinueCampaign"));
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         _ = View<CampaignStagingScreen>(game);
         Require(File.ReadAllText(automatic) == cleanCampaignSave, "Manual battle lifecycle changed the separate clean campaign slot.");
     }

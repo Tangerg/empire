@@ -18,11 +18,11 @@ public partial class CampaignNavigationChecks
         try
         {
             // Start from a fresh title, not a synthetic battle snapshot.
-            Press(Button(View<CampaignMenuScreen>(game), "NewCampaign"));
+            await Activate(Button(View<CampaignMenuScreen>(game), "NewCampaign"));
             while (Campaign(game).Node()["type"]!.GetValue<string>() == "story")
-                CompleteStory(game);
-            Press(Buttons(View<StoryScreen>(game)).First(button => button.Name.ToString().StartsWith("Choice_", StringComparison.Ordinal)));
-            Press(Button(View<CampaignStagingScreen>(game), "StartBattle"));
+                await CompleteStory(game);
+            await Activate(Buttons(View<StoryScreen>(game)).First(button => button.Name.ToString().StartsWith("Choice_", StringComparison.Ordinal)));
+            await Activate(Button(View<CampaignStagingScreen>(game), "StartBattle"));
             await Layout();
             var session = Campaign(game).Battle!;
             var screen = View<BattleScreen>(game);

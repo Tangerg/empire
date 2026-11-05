@@ -156,7 +156,7 @@ public partial class BattleResultScreen : Control
                     control.Disabled = true;
             action();
         }
-        button.Pressed += () =>
+        CampaignButtonActivation.Connect(this, button, Current, () =>
         {
             if (!Current())
                 return;
@@ -164,7 +164,7 @@ public partial class BattleResultScreen : Control
                 Commit();
             else
                 request(Commit);
-        };
+        });
         column.AddChild(button);
         if (name is "Settle" or "Proceed" or "Retry")
             CampaignUiStyle.InitialFocus(button);

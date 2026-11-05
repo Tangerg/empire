@@ -258,12 +258,7 @@ public partial class StoryScreen : Control
             AutowrapMode = TextServer.AutowrapMode.WordSmart,
             CustomMinimumSize = new Vector2(160, 48)
         };
-        button.Pressed += () =>
-        {
-            if (submitted || binding != generation || !IsInsideTree() || !button.IsInsideTree())
-                return;
-            callback();
-        };
+        CampaignButtonActivation.Connect(this, button, () => !submitted && binding == generation, callback);
         buttons.Add(button);
         return button;
     }
