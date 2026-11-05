@@ -33,4 +33,18 @@ The Godot 4.6.3 source shows touch-to-mouse dispatch before the original touch e
 
 ## Verification
 
-Verification is in progress. Failed baseline evidence is retained; no interrupted or pending run is counted as passing.
+Implementation checkpoint: `ab5f12ae9f6040052f49c1c3998bff1e58c436c8`.
+
+- Test-first navigation on the original production implementation failed as intended: 9,335 assertions, one failed group at the quick dossier assertion, and four native `can_process` errors during the legal touch order sequence. An earlier test compilation error used a nonexistent read-model property; the test was corrected to inspect the authoritative snapshot before this baseline run.
+- Candidate navigation passed 9,348 assertions, with strict process exit 0. BattleScreen integration passed. The HUD suite passed 1,041 assertions on an unchanged bounded recheck and again inside the complete gate.
+- Eleven unchanged independent native probes passed 60 assertions with process and strict diagnostic exits all 0: eight modal dismissal combinations, unmodal touch End Turn, the mouse control, and quick dossier opening. Assembly and script hashes remained unchanged throughout those probes.
+- The original complete `verify-native.sh` command ran uninterrupted from **08:03:08 to 08:44:58 UTC**, 2,510 seconds, exit **0**. All 30 native scenes plus editor import passed strict log checks. All 15 core groups passed. All 16 formal levels' 3,425 commands retained exact ordered action/event/receipt traces and final state digests against the established baseline; save/replay checks passed. All 40 expected warning headers matched the previous complete gate.
+- ExportRelease configuration compiled with zero warnings/errors. This is a configuration build, not a packaged export or manual GUI acceptance.
+
+### Retained unresolved shutdown observation
+
+The first candidate HUD run completed its 1,041 assertions but then reported 50 unsafe RefCounted-reference diagnostics during Mono shutdown and exited with SIGSEGV (139). The strict gate correctly failed. One bounded rerun of the unchanged command and identical DLLs passed with exit 0 and no such diagnostics. The later uninterrupted complete gate also passed that scene cleanly.
+
+The first failure is retained, not counted as a pass or claimed fixed. The leaked objects included preexisting badge-test events/themes and art resources; that is not proof that the new activation callback caused the shutdown failure. No production resource-release change, forced garbage collection, log suppression, or retry loop was introduced. This remains an unresolved test-process shutdown reliability observation, separate from the reproducibly fixed native touch defects.
+
+The brief execution-transport disconnect during candidate navigation did not interrupt its process: its completed log and exit 0 were recovered before the full gate began. No interrupted run was reported as a complete pass.
