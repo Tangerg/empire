@@ -25,7 +25,8 @@ public partial class CampaignPlayedFlowChecks : Node
         try
         {
             RequireFreshData();
-            await CheckPlayedDefeatAndRetry();
+            var game = await CheckPlayedDefeatAndRetry();
+            await CheckCarriedOpening(game);
         }
         catch (Exception error)
         {
@@ -42,7 +43,7 @@ public partial class CampaignPlayedFlowChecks : Node
         GetTree().Quit(failed ? 1 : 0);
     }
 
-    private async Task CheckPlayedDefeatAndRetry()
+    private async Task<GrayFlagGame> CheckPlayedDefeatAndRetry()
     {
         var game = new GrayFlagGame();
         AddChild(game);
@@ -61,6 +62,7 @@ public partial class CampaignPlayedFlowChecks : Node
         var rules = new CampaignApplicationRules(engine, Field<SessionPresentationText>(game, "presentationText"));
         var opening = Campaign(game).Battle!.Snapshot();
         var campaignBefore = Campaign(game).Snapshot();
+        var originalRequest = Campaign(game).RequestSnapshot();
         var driver = new GrayFlagCampaign(rules, definition, levels);
         driver.Load(Campaign(game).Save());
         JsonObject? checkpoint = null;
@@ -96,7 +98,12 @@ public partial class CampaignPlayedFlowChecks : Node
         var presented = new List<int>();
         var presentedOnBattle = true;
         var completionCount = 0;
-        game.ChildEnteredTree += child => { if (child is BattleResultScreen) completionCount++; };
+        void Entered(Node child)
+        {
+            if (child is BattleResultScreen)
+                completionCount++;
+        }
+        game.ChildEnteredTree += Entered;
         screen.Board.EventPresented += (transition, index) =>
         {
             presented.Add(index);
@@ -132,15 +139,15 @@ public partial class CampaignPlayedFlowChecks : Node
         var restarted = Campaign(game).Battle!;
         Require(View<Control>(game) is BattleScreen && !ReferenceEquals(restarted, session)
             && restarted.Revision == 0 && restarted.ActionLog.Count == 0 && restarted.Events.Count == 0
-            && EcmaJson.DeepEquals(restarted.Snapshot(), opening) && EcmaJson.DeepEquals(campaign.Snapshot(), campaignBefore),
+            && EcmaJson.DeepEquals(restarted.Snapshot(), opening) && EcmaJson.DeepEquals(campaign.Snapshot(), campaignBefore)
+            && EcmaJson.DeepEquals(campaign.RequestSnapshot(), originalRequest),
             "Native Retry and its duplicate callback must restore the exact original battle once without advancing the campaign.");
         await Layout();
         Require(ReferenceEquals(Campaign(game).Battle, restarted) && completionCount == 1 && SaveSlots() == slots,
             "Retry must preserve both existing save slots and ignore stale terminal navigation.");
         GD.Print($"PLAYED_AI_DEFEAT_OK orders={orders}; terminal={StateDigest.Hash(expected)}; events={transition.Events.Count}; completions={completionCount}; retry={StateDigest.Hash(restarted.Snapshot())}; both slots unchanged");
-        RemoveChild(game);
-        game.QueueFree();
-        await Layout();
+        game.ChildEnteredTree -= Entered;
+        return game;
     }
 
     private void RequireFreshData()
