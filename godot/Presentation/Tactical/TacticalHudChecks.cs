@@ -1739,7 +1739,7 @@ public partial class TacticalHudChecks : Node
             {
                 ("actor", TacticalHudIntentKind.Command, unit, unit with { UnitId = 2 }),
                 ("destination", TacticalHudIntentKind.Command, destination, destination with { Destination = new(5, 5) }),
-                ("origin mode", TacticalHudIntentKind.Command, unit, destination),
+                ("selection mode", TacticalHudIntentKind.Command, unit, unit with { Kind = TacticalSelectionKind.Destination }),
                 ("recruitment site", TacticalHudIntentKind.Recruit, recruit, recruit with { Destination = new(5, 5) }),
                 ("carrier", TacticalHudIntentKind.Disembark, unit, unit with { UnitId = 2 }),
                 ("target ability", TacticalHudIntentKind.Back, target, target with { Ability = "heal" }),
