@@ -24,6 +24,7 @@ class NativeGateTests(unittest.TestCase):
         self.environment.update(EMPIRE_TOOLCHAIN_ROOT=str(self.root / "toolchain"),
                                 EMPIRE_CHECK_TIMEOUT_SECONDS="5",
                                 EMPIRE_REPLAY_TIMEOUT_SECONDS="5",
+                                EMPIRE_CAMPAIGN_TIMEOUT_SECONDS="7",
                                 TMPDIR=str(self.root / "temporary"),
                                 TRACE=str(self.root / "trace.jsonl"))
         (self.root / "temporary").mkdir()
@@ -42,7 +43,8 @@ class NativeGateTests(unittest.TestCase):
 import json, os, pathlib, sys
 args = sys.argv[1:]
 with open(os.environ["TRACE"], "a") as trace:
-    trace.write(json.dumps({"args": args, "data": os.environ.get("XDG_DATA_HOME")}) + "\n")
+    trace.write(json.dumps({"args": args, "data": os.environ.get("XDG_DATA_HOME"),
+                           "budget": os.environ.get("EMPIRE_CHECK_TIMEOUT_SECONDS")}) + "\n")
 editor = "--editor" in args
 mode = os.environ.get("SIMULATED_RESULT", "clean")
 if editor and mode == "import-error":
@@ -103,16 +105,32 @@ else:
         result, calls = self.aggregate("clean")
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertIn(SUCCESS, result.stdout)
-        self.assertEqual(len(calls), 31)
+        self.assertEqual(len(calls), 32)
         self.assertIn("--editor", calls[0]["args"])
         scenes = calls[1:]
-        self.assertEqual(len({call["data"] for call in scenes}), 30)
+        self.assertEqual(len({call["data"] for call in scenes}), 31)
         self.assertTrue(all(Path(call["data"]).is_dir() for call in scenes))
         self.assertNotIn(calls[0]["data"], {call["data"] for call in scenes})
-        self.assertEqual(scenes[-2]["args"][-2:],
+        by_scene = {next(arg for arg in call["args"] if arg.endswith(".tscn")): call for call in scenes}
+        self.assertEqual(len(by_scene), 31)
+        self.assertEqual(by_scene["res://Scenes/LightingChecks.tscn"]["args"][-2:],
                          ["--", f"--lighting-oracle={self.root}/godot/tests/oracle/lighting.json"])
-        self.assertEqual(scenes[-1]["args"][-2:],
+        self.assertEqual(by_scene["res://Scenes/SceneryChecks.tscn"]["args"][-2:],
                          ["--", "--scenery-oracle=res://tests/oracle/board-scenery.json.gz"])
+        campaign = by_scene["res://Scenes/CampaignPlayedFlowChecks.tscn"]
+        self.assertEqual(campaign["args"][-1], "res://Scenes/CampaignPlayedFlowChecks.tscn")
+        self.assertEqual(campaign["budget"], "7")
+        self.assertTrue(all(call["budget"] == "5" for call in calls if call is not campaign))
+
+    def test_default_campaign_budget_is_separate_from_individual_scenes(self):
+        self.environment.pop("EMPIRE_CHECK_TIMEOUT_SECONDS")
+        self.environment.pop("EMPIRE_CAMPAIGN_TIMEOUT_SECONDS")
+        result, calls = self.aggregate("clean")
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertEqual(len(calls), 32)
+        self.assertIn("res://Scenes/CampaignPlayedFlowChecks.tscn", calls[-1]["args"])
+        self.assertEqual(calls[-1]["budget"], "2400")
+        self.assertTrue(all(call["budget"] == "900" for call in calls[:-1]))
 
 
 class NativeProcessTests(unittest.TestCase):
