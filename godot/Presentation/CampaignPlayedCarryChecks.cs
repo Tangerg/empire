@@ -2,6 +2,9 @@
 using System.Text.Json.Nodes;
 using Empire.Application;
 using Empire.Core.Campaign;
+using Empire.Core.Ai;
+using Empire.Core.Geometry;
+using Empire.Core.Tactics;
 using Empire.Core.Determinism;
 using Empire.Core.Engine;
 using Empire.Presentation.Feedback;
@@ -62,7 +65,7 @@ public partial class CampaignPlayedFlowChecks
                 Require(step < 1024, "The current test-player policy did not conclude its carried battle within the legal-order bound.");
                 var revision = session.Revision;
                 var human = !session.IsComputerTurn;
-                var action = engine.Ai.ChooseAction(session.Snapshot(), human ? 0.58 : null);
+                var action = human ? ChoosePlayedOrder(engine, session.Snapshot()) : engine.Ai.ChooseAction(session.Snapshot());
                 if (human)
                 {
                     await Until(() => !screen.IsInputBlocked, "The carried player's previous order did not finish playback.");
@@ -101,6 +104,7 @@ public partial class CampaignPlayedFlowChecks
             await Until(() => View<Control>(game) is BattleResultScreen, "Played victory did not complete normal terminal presentation.");
             game.ChildEnteredTree -= Entered;
             var terminal = session.Snapshot();
+            GD.Print($"PLAYED_TERMINAL level={level}; legal orders={step}; outcome={campaign.BattleSummary().Outcome}; completion views={completionCount}; events={expectedEvents.Count}; presented={presentedEvents.Count}; turn={terminal["turn"]}; state={StateDigest.Hash(terminal)}; conclusion={EcmaJson.Stringify(terminal["conclusion"])}");
             Require(session.IsConcluded && campaign.BattleSummary().Outcome == "victory" && completionCount == 1,
                 "Continuous legal play must produce its own victory and exactly one completion, never a written terminal fixture.");
             Require(presentedOnBattle && presentedEvents.SequenceEqual(expectedEvents),
@@ -271,6 +275,91 @@ public partial class CampaignPlayedFlowChecks
             Require(++beats <= 40, "Authored continuation did not reach its next choice or battle.");
             await Activate(Button(View<StoryScreen>(game), "StoryPrimary"));
         }
+    }
+
+    private static JsonObject ChoosePlayedOrder(BattleEngine engine, JsonObject state)
+    {
+        if (state["levelId"]!.GetValue<string>() != "c01-02")
+            return engine.Ai.ChooseAction(state, 0.58);
+        var player = state["currentPlayer"]!.GetValue<int>();
+        var context = new AiTurnContext(engine.Ai.Planning, state, player, 0.58);
+        var actors = engine.Turns.Actors(state).Where(unit => engine.Turns.CanAct(state, unit)).ToArray();
+        var healing = new List<(JsonObject Action, double Risk, int Priority, double Amount)>();
+        foreach (var healer in actors.Where(unit => engine.Progression.Careers.UnitAbilityIds(unit).Contains("heal")))
+        {
+            var field = engine.Space.ComputeMoveField(state, healer);
+            foreach (var stop in field.Stops)
+            {
+                var at = context.Board.CoordOf(stop);
+                var path = field.TracePath(stop);
+                if (path is null)
+                    continue;
+                foreach (var option in engine.CommandsAt(state, healer, at).Where(option => option.Ability == "heal"))
+                    foreach (var target in option.Targets)
+                    {
+                        var ally = TacticalQueries.UnitAt(state, target)!;
+                        var amount = engine.HealAmount(ally);
+                        if (amount < 15)
+                            continue;
+                        var key = ally["key"]?.GetValue<string>() ?? "";
+                        var priority = key == "campaign-laiya" || key.StartsWith("refugee-", StringComparison.Ordinal) ? 2 : 1;
+                        healing.Add((new JsonObject
+                        {
+                            ["kind"] = "command",
+                            ["unit"] = healer["id"]!.DeepClone(),
+                            ["path"] = TacticalQueries.PathJson(path),
+                            ["command"] = new JsonObject { ["ability"] = "heal", ["target"] = TacticalQueries.CoordinateJson(target) }
+                        }, context.Threat.GetValueOrDefault(stop), priority, amount));
+                    }
+            }
+        }
+        if (healing.Count > 0)
+            return healing.OrderBy(candidate => candidate.Risk).ThenByDescending(candidate => candidate.Priority)
+                .ThenByDescending(candidate => candidate.Amount).First().Action;
+        var safeCells = state["scenario"]!["zones"]!["east-safety"]!.AsArray().OfType<JsonObject>().Select(TacticalQueries.Position).ToArray();
+        var bridge = state["scenario"]!["zones"]!["middle-bridge"]!.AsArray().OfType<JsonObject>().Select(TacticalQueries.Position).ToArray();
+        var entry = bridge.OrderBy(cell => cell.Y).ThenBy(cell => cell.X).First();
+        foreach (var civilian in actors.Where(unit => unit["key"]?.GetValue<string>().StartsWith("refugee-", StringComparison.Ordinal) == true))
+        {
+            var at = TacticalQueries.Position(civilian);
+            var arrived = safeCells.Contains(at);
+            var goals = at.Y < entry.Y ? new[] { entry } : safeCells;
+            return QueriedWait(engine, context, civilian, goals, arrived ? safeCells : null);
+        }
+        var proposed = engine.Ai.ChooseAction(state, 0.58);
+        if (proposed["kind"]!.GetValue<string>() != "command" || proposed["command"]!["ability"]!.GetValue<string>() != "wait")
+            return proposed;
+        // This test player uses the authored crossing instead of the old map's coordinates or a greedy river-bank approach.
+        var actor = TacticalQueries.RequireUnit(state, proposed["unit"]!.GetValue<int>());
+        var actorAt = TacticalQueries.Position(actor);
+        if (actorAt.Y < entry.Y)
+            return QueriedWait(engine, context, actor, new[] { entry });
+        if (actorAt.X < safeCells.Min(cell => cell.X))
+            return QueriedWait(engine, context, actor, safeCells);
+        return proposed;
+    }
+
+    private static JsonObject QueriedWait(BattleEngine engine, AiTurnContext context, JsonObject unit, IReadOnlyList<Coord> goals, IReadOnlyCollection<Coord>? admitted = null)
+    {
+        var field = engine.Space.ComputeMoveField(context.State, unit);
+        foreach (var stop in field.Stops.OrderBy(index =>
+            context.Board.NearestDistance(context.Board.CoordOf(index), goals) * 10 + context.Threat.GetValueOrDefault(index) * 4)
+            .ThenBy(index => field.Tiles[index].Cost))
+        {
+            var at = context.Board.CoordOf(stop);
+            var path = field.TracePath(stop);
+            if (path is null || admitted is not null && !admitted.Contains(at)
+                || !engine.CommandsAt(context.State, unit, at).Any(option => option.Ability == "wait"))
+                continue;
+            return new JsonObject
+            {
+                ["kind"] = "command",
+                ["unit"] = unit["id"]!.DeepClone(),
+                ["path"] = TacticalQueries.PathJson(path),
+                ["command"] = new JsonObject { ["ability"] = "wait" }
+            };
+        }
+        throw new InvalidOperationException("The live test-player actor has no legal queried wait destination.");
     }
 
     private static double Number(JsonNode value) => EcmaJson.ToElement(value).GetDouble();

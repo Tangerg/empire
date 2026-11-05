@@ -22,18 +22,25 @@ public partial class CampaignPlayedFlowChecks : Node
     public override async void _Ready()
     {
         var failed = false;
+        var deriveOnly = OS.GetCmdlineUserArgs().Contains("--derive-carried-route");
         try
         {
             RequireFreshData();
             var continuation = OS.GetCmdlineUserArgs().SingleOrDefault(argument => argument.StartsWith("--played-continuation=", StringComparison.Ordinal));
             var game = continuation is null ? await CheckPlayedDefeatAndRetry()
                 : await ResumePlayedContinuation(continuation["--played-continuation=".Length..]);
-            await CheckCarriedOpening(game);
+            if (deriveOnly)
+                CheckDerivedRoute(game);
+            else
+                await CheckCarriedOpening(game);
         }
         catch (Exception error)
         {
             failed = true;
             GD.PushError(error.ToString());
+            var game = GetChildren().OfType<GrayFlagGame>().SingleOrDefault();
+            if (game is not null)
+                PreserveDiagnostic(game);
         }
         foreach (var child in GetChildren())
         {
@@ -41,7 +48,7 @@ public partial class CampaignPlayedFlowChecks : Node
             child.QueueFree();
         }
         await Layout();
-        GD.Print($"Campaign played-flow checks {(failed ? "failed" : "passed")}: {assertions} assertions. Native headless behavior, not visual or complete-campaign acceptance.");
+        GD.Print(deriveOnly ? $"Campaign route derivation {(failed ? "failed" : "completed")}; no playback acceptance." : $"Campaign played-flow checks {(failed ? "failed" : "passed")}: {assertions} assertions. Native headless behavior, not visual or complete-campaign acceptance.");
         GetTree().Quit(failed ? 1 : 0);
     }
 
@@ -178,6 +185,38 @@ public partial class CampaignPlayedFlowChecks : Node
         Require(File.Exists(manualPath), "The resumed second battle must create its independent manual checkpoint through normal F5.");
         GD.Print("PLAYED_CONTINUATION_RESUMED actual prior first-victory autosave; this process does not repeat or claim to have replayed its earlier battle.");
         return game;
+    }
+
+    private void PreserveDiagnostic(GrayFlagGame game)
+    {
+        try
+        {
+            var path = Path.Combine(Path.GetDirectoryName(automaticPath)!, "played-flow-diagnostic.json");
+            SaveFile.WriteDocument(path, Campaign(game).Save());
+            GD.Print("Actual played state preserved: " + path);
+        }
+        catch (Exception error) { GD.PushError("Could not preserve the failed played-flow state: " + error); }
+    }
+
+    private void CheckDerivedRoute(GrayFlagGame game)
+    {
+        game.ProcessMode = ProcessModeEnum.Disabled;
+        var campaign = Campaign(game);
+        var engine = Field<BattleEngine>(game, "engine");
+        var session = campaign.Battle!;
+        var steps = 0;
+        while (!session.IsConcluded)
+        {
+            Require(++steps <= 1024, "The diagnostic test-player route did not conclude within its legal order bound.");
+            if (session.IsComputerTurn)
+                Require(session.AdvanceComputerStep() is { Committed: true }, "Diagnostic AI decision was not committed.");
+            else
+                Require(session.Dispatch(EcmaJson.ToElement(ChoosePlayedOrder(engine, session.Snapshot())), session.Revision).Accepted,
+                    "Diagnostic player query generated an illegal order.");
+        }
+        var state = session.Snapshot();
+        GD.Print($"DERIVED_ROUTE_RESULT orders={steps}; outcome={campaign.BattleSummary().Outcome}; state={StateDigest.Hash(state)}; conclusion={EcmaJson.Stringify(state["conclusion"])}; turn={state["turn"]}. Legal derivation only, not native playback acceptance.");
+        PreserveDiagnostic(game);
     }
 
     private void RequireFreshData()
