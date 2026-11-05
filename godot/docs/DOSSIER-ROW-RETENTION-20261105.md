@@ -118,17 +118,64 @@ code passed all 317 assertions without warnings/errors/leaks. Mutants and the
 temporary focused-only runner were removed before integration. Existing full HUD,
 dossier focus, input, lifetime, save/replay and campaign checks remain enabled.
 
-## Integration verification
+## Integration verification and retained failure evidence
 
-Focused integration passed: whitespace verification, metadata (178 unique script
-UIDs), Debug build and strict editor import; HUD 1,021 assertions and dossier
-focus 73 assertions. Every process exited 0. The eight existing HUD warning
-headers and their project origins match the preceding complete gate; there are
-no error/leak/crash diagnostics. The complete repository gate is pending at this
-code checkpoint. A focused PASS is not a complete-gate result.
+Code checkpoint: `d2513e9afe8e7e426d3b5c997d986e331dbc7a5f`.
+Focused integration passed whitespace, metadata, Debug build, strict editor
+import, HUD 1,021 assertions and dossier focus 73 assertions.
+
+The first complete-gate attempt ran from 03:57:02 to 04:27:28 UTC and **failed**.
+MoraleFeedbackChecks passed its 74 behavior assertions and the native process
+returned 0, but shutdown emitted `Disconnecting nonexistent signal 'changed' in
+'<Object#0>'`. The strict diagnostic wrapper correctly stopped the aggregate with
+exit 1. Its log and all 23 native-process logs up to that point remain preserved;
+the passing behavior line is not treated as a passing stage.
+
+A predeclared alternating cohort then ran four baseline and four exact-candidate
+MoraleFeedbackChecks processes, with fresh isolated user data and offline builds.
+All eight passed 74 assertions, native exit 0 and strict exit 0, with byte-identical
+logs. The failure did not reproduce. Repository history and Godot's managed
+shutdown implementation suggest a disposal-timing hypothesis, but these samples
+do not establish the offending resource or whether this change contributed.
+No production release logic, GC behavior, diagnostic filter or test assertion was
+changed to hide the error. An initial isolated build was blocked before any
+native run; the subsequent cohort used only the already installed SDK and
+existing cached packages, with package sources cleared.
+
+One bounded, unchanged-source canonical recheck was then run, with a stop-on-any-
+failure rule rather than retrying until success. `tools/godot/verify-native.sh`
+completed without interruption from **04:35:57 to 05:11:28 UTC** on 2026-11-05,
+**35m31s, exit 0**. This later passing run does not erase the first failure or
+prove its root cause fixed.
+
+- All source-selection negative controls, whitespace, source metadata and four
+  authored-map validators passed. Metadata: 178 unique script UIDs and 4,194
+  intentionally unimported historical audit files.
+- Both Debug builds passed with zero warnings/errors; all 15 core groups passed.
+  Sixteen independent formal battles completed 3,425 legal commands, with exact
+  baseline ordered action/event/receipt hashes, final digests and save/replay.
+- All 30 native scenes and editor import passed their strict process/diagnostic
+  boundary. All 31 complete logs were retained. Forty warning headers exactly
+  match the preceding complete gate; no error/leak/crash diagnostic occurred in
+  this recheck, including MoraleFeedbackChecks shutdown.
+- HUD passed 1,021 assertions, dossier focus 73, morale feedback 74, animation
+  967, campaign navigation 9,107 with zero failed groups, staging opening 160,
+  lighting lifetime 106, lighting contracts 1,791 and scenery/resource contracts
+  8,753. Navigation assertion totals include per-frame checks and are not a fixed
+  coverage metric; all original groups remained enabled.
+- ExportRelease configuration compilation subsequently passed with zero
+  warnings/errors. The verified Debug assembly hashes remained unchanged after
+  that build. This is not a packaged export acceptance run.
+
+The intermittent first shutdown diagnostic remains an unresolved observation,
+not a claimed production fix. If it recurs, its preserved evidence should guide
+resource-lifetime investigation rather than suppression or blind retries.
 
 Original artwork, maps, gameplay rules and save semantics are unchanged. Manual
-GUI rendering and a packaged desktop acceptance run remain separate.
+GUI rendering, physical-device latency and a packaged desktop acceptance run
+remain separate. Publication is ordinary fast-forward to the existing feature
+branch; its push does not imply hosted CI because the workflow triggers on main,
+pull requests or manual dispatch.
 
 ## Godot references
 
