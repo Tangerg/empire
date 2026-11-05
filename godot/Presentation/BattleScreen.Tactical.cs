@@ -120,6 +120,8 @@ public partial class BattleScreen
                 DispatchTactical(new(intent.Stamp, TacticalRequestKind.Action, action));
             return;
         }
+        if (intent.Context != _tactical.Selection.Context)
+            return;
         var result = intent.Kind switch
         {
             TacticalHudIntentKind.Command when intent.Key is { } key => _tactical.ChooseCommand(intent.Stamp, key),

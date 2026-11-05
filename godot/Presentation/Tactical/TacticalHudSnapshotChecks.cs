@@ -75,6 +75,9 @@ public partial class TacticalHudChecks
             Require(actual.Stamp == new TacticalStamp(binding, session.Revision)
                 && actual.Sections.SelectMany(section => section.Rows).All(row => row.Intent is null || row.Intent.Stamp == actual.Stamp),
                 "Reused state must not retain old binding/revision intent stamps.");
+            Require(actual.Sections.SelectMany(section => section.Rows).All(row => row.Intent is not { } intent
+                || (intent.Kind == TacticalHudIntentKind.Action ? intent.Context is null : intent.Context == selection.Context)),
+                "Noncanonical HUD intents bind the supplied selection; canonical actions retain their complete payload.");
         }
         var retained = Hud(destination);
         var retainedText = JsonSerializer.Serialize(retained);

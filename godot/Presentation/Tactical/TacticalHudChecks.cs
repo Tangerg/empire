@@ -1698,6 +1698,101 @@ public partial class TacticalHudChecks : Node
         }
     }
 
+    private async System.Threading.Tasks.Task CheckDeferredSelectionContext()
+    {
+        var hud = new TacticalHud();
+        AddChild(hud);
+        var stamp = new TacticalStamp(83, 2);
+        var unit = new TacticalSelection { Kind = TacticalSelectionKind.Unit, UnitId = 1 };
+        var destination = unit with
+        {
+            Kind = TacticalSelectionKind.Destination,
+            Destination = new(4, 5)
+        };
+        var target = destination with
+        {
+            Kind = TacticalSelectionKind.Target,
+            Ability = "attack",
+            Weapon = "sword"
+        };
+        var tactic = new TacticalSelection { Kind = TacticalSelectionKind.Tactic, Commander = "laiya", Ability = "rally" };
+        var recruit = new TacticalSelection { Kind = TacticalSelectionKind.Recruit, Destination = new(4, 5) };
+        var disembark = unit with
+        {
+            Kind = TacticalSelectionKind.Disembark,
+            Passenger = 2
+        };
+        TacticalHudProjection Frame(TacticalSelection selection, TacticalHudIntentKind kind) => new(stamp, "", new[]
+        {
+            new TacticalHudSection("commands", "Orders", new[]
+            {
+                new TacticalHudRow("order", "Order", Intent: new(stamp, kind, "same-key", Context: selection.Context))
+            })
+        });
+        Button Order() => hud.FindChildren("*", "Button", true, false).OfType<Button>()
+            .Single(button => button.GetMeta("hud_key", "").AsString() == "commands/order");
+        var fired = new List<TacticalHudIntent>();
+        hud.IntentRequested += fired.Add;
+        try
+        {
+            foreach (var (name, kind, previous, next) in new[]
+            {
+                ("actor", TacticalHudIntentKind.Command, unit, unit with { UnitId = 2 }),
+                ("destination", TacticalHudIntentKind.Command, destination, destination with { Destination = new(5, 5) }),
+                ("origin mode", TacticalHudIntentKind.Command, unit, destination),
+                ("recruitment site", TacticalHudIntentKind.Recruit, recruit, recruit with { Destination = new(5, 5) }),
+                ("carrier", TacticalHudIntentKind.Disembark, unit, unit with { UnitId = 2 }),
+                ("target ability", TacticalHudIntentKind.Back, target, target with { Ability = "heal" }),
+                ("target weapon", TacticalHudIntentKind.Back, target, target with { Weapon = "bow" }),
+                ("tactic commander", TacticalHudIntentKind.Back, tactic, tactic with { Commander = "torren" }),
+                ("tactic identity", TacticalHudIntentKind.Back, tactic, tactic with { Ability = "charge" }),
+                ("passenger", TacticalHudIntentKind.Back, disembark, disembark with { Passenger = 3 })
+            })
+            {
+                hud.Apply(Frame(previous, kind));
+                var old = Order();
+                var count = fired.Count;
+                old.EmitSignal(Button.SignalName.Pressed);
+                hud.Apply(Frame(next, kind));
+                Require(!ReferenceEquals(old, Order()) && !old.IsInsideTree(),
+                    "An identical row with changed " + name + " must retire its previous native activation target.");
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                Require(fired.Count == count, "A deferred order cannot cross changed " + name + " context.");
+                Order().EmitSignal(Button.SignalName.Pressed);
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                Require(fired.Count == count + 1 && fired[^1].Context == next.Context,
+                    "A deliberate current order remains available with its exact " + name + " context.");
+            }
+            var composed = target with
+            {
+                Path = new[] { new BoardCell(3, 5), new BoardCell(4, 5) },
+                TargetSubjects = new[] { TacticalTarget.AtCell(new(6, 5)) }
+            };
+            hud.Apply(Frame(composed, TacticalHudIntentKind.Back));
+            var retained = Order();
+            var before = fired.Count;
+            retained.EmitSignal(Button.SignalName.Pressed);
+            var hovered = composed with
+            {
+                PreviewTarget = TacticalHit.Ground(new(6, 5)),
+                Path = composed.Path.ToArray(),
+                TargetSubjects = composed.TargetSubjects.ToArray()
+            };
+            hud.Apply(Frame(hovered, TacticalHudIntentKind.Back) with
+            {
+                Hint = "Pointer moved"
+            });
+            Require(ReferenceEquals(retained, Order()), "Transient preview and equivalent derived collections retain the same command context.");
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Require(fired.Count == before + 1, "Hover-only refresh permits its original queued order exactly once.");
+        }
+        finally
+        {
+            RemoveChild(hud);
+            hud.Free();
+        }
+    }
+
     public override async void _Ready()
     {
         try
@@ -1723,6 +1818,7 @@ public partial class TacticalHudChecks : Node
             await CheckUnitDetailsRowRetention();
             await CheckOrderBadgeStates();
             await CheckDeferredOrderLifetime();
+            await CheckDeferredSelectionContext();
             var stamp = new TacticalStamp(17, 9);
             var hud = new TacticalHud();
             AddChild(hud);

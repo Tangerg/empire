@@ -24,9 +24,14 @@ public sealed record TacticalRequest(TacticalStamp Stamp, TacticalRequestKind Ki
 public sealed record TacticalInputResult(TacticalInputStatus Status, TacticalRequest? Request = null,
     bool PreventDefault = false, BoardCell? Reveal = null, bool Center = false, bool CursorFocused = false);
 
+public sealed record TacticalSelectionContext(TacticalSelectionKind Kind, int? UnitId, BoardCell? Destination,
+    string? Ability, string? Weapon, string? Commander, int? Passenger);
+
 /// <summary>Only composition facts, never a mutable rule snapshot.</summary>
 public sealed record TacticalSelection
 {
+    // Deferred controls bind the order being composed, not transient hover or inspection.
+    public TacticalSelectionContext Context => new(Kind, UnitId, Destination, Ability, Weapon, Commander, Passenger);
     public TacticalSelectionKind Kind
     {
         get; init;

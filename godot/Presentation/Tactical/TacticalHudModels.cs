@@ -9,7 +9,7 @@ public enum TacticalHudIntentKind
     Command, Tactic, Recruit, DeployPick, Disembark, Back, Action
 }
 public sealed record TacticalHudIntent(TacticalStamp Stamp, TacticalHudIntentKind Kind, string? Key = null,
-    int? Unit = null, JsonElement? Action = null);
+    int? Unit = null, JsonElement? Action = null, TacticalSelectionContext? Context = null);
 public sealed record TacticalHudRow(string Key, string Label, string Hint = "", bool Enabled = true,
     bool Selected = false, TacticalHudIntent? Intent = null, string? Icon = null, TacticalHudPortrait? UnitIcon = null, TacticalHudGauge? Gauge = null);
 public sealed record TacticalHudSection(string Key, string Title, IReadOnlyList<TacticalHudRow> Rows);

@@ -60,7 +60,7 @@ public sealed partial class GrayFlagSession
             string hint = "",
             bool enabled = true,
             bool active = false) =>
-            new(key, label, hint, enabled, active, new(stamp, kind, argument, unit));
+            new(key, label, hint, enabled, active, new(stamp, kind, argument, unit, Context: selection.Context));
         TacticalHudRow Action(string key, string label, JsonObject action, string hint = "", bool enabled = true, bool active = false) =>
             new(key, label, hint, enabled, active, new(stamp, TacticalHudIntentKind.Action, Action: EcmaJson.ToElement(action)));
         TacticalHudPortrait UnitIcon(JsonObject unit)

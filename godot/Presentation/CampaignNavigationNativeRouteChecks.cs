@@ -2,6 +2,7 @@
 using Empire.Application;
 using Empire.Core.Campaign;
 using Empire.Core.Determinism;
+using Empire.Presentation.Tactical;
 using Godot;
 
 namespace Empire.Presentation;
@@ -152,6 +153,8 @@ public partial class CampaignNavigationChecks
                         && session.Revision == 0 && session.ActionLog.Count == 0,
                         mode + " Start Battle enters the original first battle once without dispatching an order.");
                     GD.Print($"NATIVE_CAMPAIGN_ROUTE_OK mode={mode}; beats={beats}; initial battle={StateDigest.Hash(session.Snapshot())}; no battle actions");
+                    if (mode == "keyboard")
+                        await CheckNativeQueuedOrderContext(game);
                 }
                 finally
                 {
@@ -166,5 +169,103 @@ public partial class CampaignNavigationChecks
             GetViewport().NotifyMouseExited();
             GetWindow().Size = originalSize;
         }
+    }
+
+    private async Task CheckNativeQueuedOrderContext(GrayFlagGame game)
+    {
+        var screen = View<BattleScreen>(game);
+        var session = Campaign(game).Battle!;
+        var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+        var before = session.Snapshot();
+        var beforeText = EcmaJson.Stringify(before);
+        var slot = System.IO.File.ReadAllText(automaticPath);
+        var slotStamp = Stamp(automaticPath);
+        var units = before["units"]!.AsArray().OfType<System.Text.Json.Nodes.JsonObject>();
+        var first = units.Single(unit => unit["key"]!.GetValue<string>() == "campaign-laiya")["id"]!.GetValue<int>();
+        var second = units.Single(unit => unit["key"]!.GetValue<string>() == "campaign-torren")["id"]!.GetValue<int>();
+        Button WaitOrder() => Buttons(hud).Single(button => button.GetMeta("hud_key", "").AsString() == "commands/wait");
+        void SendKey(Key code)
+        {
+            foreach (var pressed in new[] { true, false })
+            {
+                using var input = new InputEventKey { Keycode = code, PhysicalKeycode = code, Pressed = pressed };
+                GetViewport().PushInput(input, true);
+            }
+        }
+        async Task Settle()
+        {
+            for (var frame = 0; frame < 8; frame++)
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            var deadline = Time.GetTicksMsec() + 15000;
+            while (screen.IsInputBlocked)
+            {
+                Require(Time.GetTicksMsec() < deadline, "The native wait order must finish its real presentation.");
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            }
+        }
+        async Task FocusWait()
+        {
+            var button = WaitOrder();
+            for (var step = 0; step < 64 && !button.HasFocus(); step++)
+            {
+                SendKey(Key.Tab);
+                await Settle();
+            }
+            Require(button.HasFocus(), "Native Tab must reach the current actor's Wait without injected focus.");
+        }
+        void Unchanged(string message) => Require(session.ActionLog.Count == 0 && session.Events.Count == 0
+            && EcmaJson.Stringify(session.Snapshot()) == beforeText, message);
+
+        SendKey(Key.Space);
+        await Settle();
+        Require(screen.SelectedUnitId == first, "The formal keyboard cycle starts with Laiya.");
+        await FocusWait();
+        foreach (var code in new[] { Key.Enter, Key.Escape, Key.Space })
+            SendKey(code);
+        Require(screen.SelectedUnitId == second, "The same native input batch selects Torren before deferred order dispatch.");
+        await Settle();
+        Unchanged("Laiya's queued Wait must not spend Torren's action after native selection changes.");
+        await FocusWait();
+        SendKey(Key.Enter);
+        await Settle();
+        Require(session.ActionLog.Count == 1 && session.ActionLog.Single()["unit"]!.GetValue<int>() == second
+            && session.ActionLog.Single()["command"]!["ability"]!.GetValue<string>() == "wait",
+            "A new explicit Wait still acts on Torren exactly once after rejecting the stale order.");
+        SendKey(Key.U);
+        await Settle();
+        Unchanged("Undo of the explicit current order restores the untouched formal opening.");
+
+        SendKey(Key.Space);
+        SendKey(Key.Enter);
+        await Settle();
+        var origin = screen.Selection!.Destination!.Value;
+        Require(screen.SelectedUnitId == first && screen.Selection.Kind == TacticalSelectionKind.Destination,
+            "Native Enter composes Laiya's reversible origin destination.");
+        var queries = session.GetTacticalQueries(97);
+        var directions = new[] { (Key.Right, 1, 0), (Key.Down, 0, 1), (Key.Left, -1, 0), (Key.Up, 0, -1) };
+        var direction = directions.First(value => queries.MoveStops(first).Contains(new(origin.X + value.Item2, origin.Y + value.Item3)));
+        var next = new BoardCell(origin.X + direction.Item2, origin.Y + direction.Item3);
+        await FocusWait();
+        foreach (var code in new[] { Key.Enter, Key.Escape, direction.Item1, Key.Enter })
+            SendKey(code);
+        Require(screen.SelectedUnitId == first && screen.Selection?.Destination == next,
+            "The same native input batch changes only the composed destination before the queued order executes.");
+        await Settle();
+        Unchanged("An origin Wait cannot silently become a move-and-wait at the newly composed destination.");
+        await FocusWait();
+        SendKey(Key.Enter);
+        await Settle();
+        var action = session.ActionLog.Single();
+        Require(action["unit"]!.GetValue<int>() == first && action["command"]!["ability"]!.GetValue<string>() == "wait"
+            && action["path"]!.AsArray()[^1]!["x"]!.GetValue<int>() == next.X
+            && action["path"]!.AsArray()[^1]!["y"]!.GetValue<int>() == next.Y,
+            "A new explicit order follows the current canonical destination exactly once.");
+        SendKey(Key.U);
+        await Settle();
+        Unchanged("Undo of the explicit destination order restores the exact opening.");
+        Require(System.IO.File.ReadAllText(automaticPath) == slot && Stamp(automaticPath) == slotStamp,
+            "Queued, rejected, explicit and undone battle orders preserve the campaign checkpoint.");
+        CheckManualUnchanged();
+        GD.Print("NATIVE_QUEUED_ORDER_CONTEXT_OK actor and destination changes reject old intent; current orders and undo remain usable");
     }
 }
