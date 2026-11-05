@@ -279,6 +279,8 @@ public partial class CampaignNavigationChecks : Node
         var screen = View<BattleScreen>(game);
         var map = (Control)screen.FindChild("MapArea", true, false);
         var world = map.GetNode<Node2D>("World");
+        Require(map.Size.IsEqualApprox(screen.GetViewportRect().Size),
+            context + " must expose the committed viewport size before input is enabled.");
         var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
         var opening = scene.OpeningFocus!;
         var focus = screen.Board.Projection.CellCenter(new Coord(opening[0], opening[1]));
