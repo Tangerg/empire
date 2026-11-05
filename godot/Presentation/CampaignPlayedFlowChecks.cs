@@ -25,7 +25,9 @@ public partial class CampaignPlayedFlowChecks : Node
         try
         {
             RequireFreshData();
-            var game = await CheckPlayedDefeatAndRetry();
+            var continuation = OS.GetCmdlineUserArgs().SingleOrDefault(argument => argument.StartsWith("--played-continuation=", StringComparison.Ordinal));
+            var game = continuation is null ? await CheckPlayedDefeatAndRetry()
+                : await ResumePlayedContinuation(continuation["--played-continuation=".Length..]);
             await CheckCarriedOpening(game);
         }
         catch (Exception error)
@@ -147,6 +149,34 @@ public partial class CampaignPlayedFlowChecks : Node
             "Retry must preserve both existing save slots and ignore stale terminal navigation.");
         GD.Print($"PLAYED_AI_DEFEAT_OK orders={orders}; terminal={StateDigest.Hash(expected)}; events={transition.Events.Count}; completions={completionCount}; retry={StateDigest.Hash(restarted.Snapshot())}; both slots unchanged");
         game.ChildEnteredTree -= Entered;
+        return game;
+    }
+
+    private async Task<GrayFlagGame> ResumePlayedContinuation(string source)
+    {
+        Require(Path.IsPathFullyQualified(source) && File.Exists(source), "Continuation needs an existing absolute played autosave path.");
+        var temporary = Path.GetFullPath(Path.GetTempPath()).TrimEnd(Path.DirectorySeparatorChar);
+        var full = Path.GetFullPath(source);
+        var relative = Path.GetRelativePath(temporary, full);
+        Require(!Path.IsPathFullyQualified(relative) && relative.Split(Path.DirectorySeparatorChar)[0].StartsWith("empire-", StringComparison.Ordinal)
+            && Path.GetFileName(full) == "grayflag-campaign-autosave.json" && (File.GetAttributes(full) & FileAttributes.ReparsePoint) == 0,
+            "Continuation only accepts a preserved native autosave inside generated temporary evidence.");
+        for (var directory = new FileInfo(full).Directory; directory is not null && directory.FullName != temporary; directory = directory.Parent)
+            Require((directory.Attributes & FileAttributes.ReparsePoint) == 0, "Refusing symlinked continuation ancestors.");
+        File.WriteAllBytes(automaticPath, File.ReadAllBytes(full));
+        var game = new GrayFlagGame();
+        AddChild(game);
+        await Activate(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
+        Require(Campaign(game).Node()["id"]!.GetValue<string>() == "aftermath-01"
+            && Campaign(game).Snapshot()["battleHistory"]!.AsArray().Count == 1,
+            "This bounded continuation must resume a settled first victory, not an invented terminal battle or another campaign stage.");
+        await CompleteStories(game);
+        await Activate(Button(View<StoryScreen>(game), "Choice_accept-truce"));
+        await Activate(Button(View<CampaignStagingScreen>(game), "StartBattle"));
+        SendKey(Key.F5);
+        await Layout();
+        Require(File.Exists(manualPath), "The resumed second battle must create its independent manual checkpoint through normal F5.");
+        GD.Print("PLAYED_CONTINUATION_RESUMED actual prior first-victory autosave; this process does not repeat or claim to have replayed its earlier battle.");
         return game;
     }
 

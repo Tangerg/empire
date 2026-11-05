@@ -22,7 +22,9 @@ public partial class CampaignPlayedFlowChecks
         var rules = new CampaignApplicationRules(engine, Field<SessionPresentationText>(game, "presentationText"));
         var outcomes = new List<string>();
         var total = 0;
-        foreach (var level in new[] { "c01-01", "c01-02" })
+        var first = Campaign(game).Battle!.Snapshot()["levelId"]!.GetValue<string>();
+        Require(first is "c01-01" or "c01-02", "Carried play starts only at the first battle or its verified second-battle continuation.");
+        foreach (var level in new[] { "c01-01", "c01-02" }.SkipWhile(level => level != first))
         {
             var campaign = Campaign(game);
             var session = campaign.Battle!;
@@ -117,8 +119,8 @@ public partial class CampaignPlayedFlowChecks
             Require(!campaign.HasPendingBattle && EcmaJson.DeepEquals(campaign.Snapshot(), reference.Snapshot()),
                 "Actual Settle must project the real outcome, roster, resources, growth and history exactly once through the campaign owner.");
             var settled = campaign.Snapshot();
-            Require(settled["resources"]!["supplies"]!.GetValue<int>() == (level == "c01-01" ? 6 : 7)
-                && settled["resources"]!["treasury"]!.GetValue<int>() == 5
+            Require(Number(settled["resources"]!["supplies"]!) == (level == "c01-01" ? 6 : 7)
+                && Number(settled["resources"]!["treasury"]!) == 5
                 && settled["battleHistory"]!.AsArray().Count == (level == "c01-01" ? 1 : 2),
                 "Consecutive victories must earn the authored supply reward once without replacing treasury or history.");
             CheckPlayedRoster(engine, request, settled, terminal);
@@ -130,7 +132,7 @@ public partial class CampaignPlayedFlowChecks
                 await Activate(Button(View<StoryScreen>(game), "Choice_accept-truce"));
                 var state = campaign.Snapshot();
                 Require(state["flags"]!.AsArray().Any(flag => flag!.GetValue<string>() == "accepted_bridge_truce")
-                    && state["relations"]!["cain"]!.GetValue<int>() == 1,
+                    && Number(state["relations"]!["cain"]!) == 1,
                     "The bridge choice must carry its authored flag and relationship into the second battle.");
             }
             else
@@ -176,7 +178,7 @@ public partial class CampaignPlayedFlowChecks
             "The carried third battle must remain live and playable after the first full round.");
         Require(EcmaJson.DeepEquals(Campaign(game).Snapshot(), thirdCampaign) && SaveSlots() == thirdSlots,
             "Playing the carried third-battle opening must not settle rewards or alter either save slot.");
-        GD.Print($"CARRIED_OPENING_OK first two battles={total} legal orders; third opening={thirdOrders} orders; third state={StateDigest.Hash(third.Snapshot())}; outcomes={string.Join(";", outcomes)}. No third victory, escort completion or full-campaign claim.");
+        GD.Print($"CARRIED_OPENING_OK battles played in this process={total} legal orders; third opening={thirdOrders} orders; third state={StateDigest.Hash(third.Snapshot())}; outcomes={string.Join(";", outcomes)}. No third victory, escort completion or full-campaign claim.");
     }
 
     private void CheckOpeningCarry(GrayFlagGame game, int funds)
@@ -270,6 +272,8 @@ public partial class CampaignPlayedFlowChecks
             await Activate(Button(View<StoryScreen>(game), "StoryPrimary"));
         }
     }
+
+    private static double Number(JsonNode value) => EcmaJson.ToElement(value).GetDouble();
 
     private async Task Until(Func<bool> condition, string failure)
     {
