@@ -354,6 +354,8 @@ public partial class NarrativeChecks : Node
             string? selected = null;
             screen.ShowChoice(entry, entry.Options.Select(option => option.Id).ToArray(), Context(item["state"]!.AsObject()), id => selected = id, () => { });
             await Layout();
+            Require(Find<Button>("Choice_" + entry.Options[0].Id).HasFocus() && selected is null,
+                "Each authored choice admits keyboard focus without choosing or committing an option.");
             Equal(Find<Label>("ChoiceEyebrow").Text, Text(expected, "eyebrow"), "Native choice eyebrow");
             Equal(Find<Label>("ChoicePrompt").Text, Text(expected, "prompt"), "Native choice prompt");
             Equal(Find<Label>("ChoiceContext").Text, Text(expected, "context"), "Native choice context");
@@ -470,6 +472,24 @@ public partial class NarrativeChecks : Node
         exit.GrabFocus();
         await Layout();
         Equal(exit.HasFocus(), true, "A newer explicit focus choice wins over deferred page restoration");
+        var choice = documents.Choices.First(value => value.Options.Count > 1);
+        void BindChoice(IReadOnlyCollection<string> options) => screen.ShowChoice(choice, options, context, _ => { }, () => { });
+        var available = choice.Options.Select(option => option.Id).ToArray();
+        BindChoice(available);
+        var staleChoice = Find<Button>("Choice_" + available[0]);
+        BindChoice(available);
+        await Layout();
+        Require(!IsInstanceValid(staleChoice) && Find<Button>("Choice_" + available[0]).HasFocus(),
+            "Choice rebinding cancels the retired option's deferred focus and admits the current option.");
+        BindChoice(available);
+        exit = Find<Button>("CampaignExit");
+        exit.GrabFocus();
+        await Layout();
+        Require(exit.HasFocus(), "Deferred choice focus cannot steal a newer explicit focus selection.");
+        BindChoice(available.Skip(1).ToArray());
+        await Layout();
+        Require(Find<Button>("Choice_" + available[1]).HasFocus(),
+            "Choice focus belongs to the first available option, not an omitted authored option.");
     }
 
     private async Task CheckLifecycle()

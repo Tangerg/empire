@@ -105,6 +105,8 @@ public partial class StoryScreen : Control
         }
         body.AddChild(CampaignShell.Text(view.Note, 16, "#c7b8a3", "ChoiceNote"));
         ResizeLayout();
+        if (buttons.Count > 0)
+            CampaignUiStyle.InitialFocus(buttons[0]);
     }
 
     private void RenderStory()

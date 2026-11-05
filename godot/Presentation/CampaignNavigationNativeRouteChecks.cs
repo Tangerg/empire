@@ -16,7 +16,7 @@ public partial class CampaignNavigationChecks
             "Campaign route regression uses the shipped native touch-to-mouse policy.");
         try
         {
-            foreach (var mode in new[] { "quick-touch", "split-touch", "mouse" })
+            foreach (var mode in new[] { "quick-touch", "split-touch", "mouse", "keyboard" })
             {
                 ResetAutosave();
                 var game = MountGame();
@@ -28,10 +28,31 @@ public partial class CampaignNavigationChecks
                         for (var frame = 0; frame < 8; frame++)
                             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
                     }
+                    async Task KeyPress(Key code, bool reverse = false)
+                    {
+                        foreach (var pressed in new[] { true, false })
+                        {
+                            using var input = new InputEventKey { Keycode = code, PhysicalKeycode = code, Pressed = pressed, ShiftPressed = reverse };
+                            GetViewport().PushInput(input, true);
+                        }
+                        await Settle();
+                    }
                     async Task Activate(Button button)
                     {
                         Require(button.IsInsideTree() && button.IsVisibleInTree() && !button.Disabled,
                             mode + " targets an enabled visible native campaign button.");
+                        if (mode == "keyboard")
+                        {
+                            Require(GetViewport().GuiGetFocusOwner() is not null,
+                                "The actual campaign view must admit keyboard focus without test-injected GrabFocus.");
+                            for (var step = 0; step < 64 && !button.HasFocus(); step++)
+                                await KeyPress(Key.Tab);
+                            Require(button.HasFocus(), "Natural Tab traversal must reach " + button.Name);
+                            Require(GetViewport().GetVisibleRect().HasPoint(button.GetGlobalRect().GetCenter()),
+                                "Native focus must reveal the keyboard action inside the viewport.");
+                            await KeyPress(Key.Enter);
+                            return;
+                        }
                         var at = button.GetGlobalRect().GetCenter();
                         Require(GetViewport().GetVisibleRect().HasPoint(at),
                             mode + " campaign action is reachable inside the actual viewport.");
@@ -84,9 +105,34 @@ public partial class CampaignNavigationChecks
                         Require(++beats <= 40, "The unchanged opening story must reach its authored choice.");
                     }
                     var choices = View<StoryScreen>(game);
+                    if (mode == "keyboard")
+                    {
+                        var options = choices.PresentedChoice!.Options;
+                        var first = Button(choices, "Choice_" + options[0].Id);
+                        Require(options.Count > 1 && first.HasFocus(),
+                            "Normal story completion must focus the first available choice without committing it.");
+                        var choiceState = State(game);
+                        var choiceSlot = System.IO.File.ReadAllText(automaticPath);
+                        var choiceStamp = Stamp(automaticPath);
+                        await KeyPress(Key.Tab);
+                        Require(Button(choices, "Choice_" + options[1].Id).HasFocus(),
+                            "Native Tab reaches the other authored choice.");
+                        await KeyPress(Key.Tab, true);
+                        Require(first.HasFocus() && State(game) == choiceState
+                            && System.IO.File.ReadAllText(automaticPath) == choiceSlot && Stamp(automaticPath) == choiceStamp,
+                            "Forward and reverse choice focus cannot select or save an option.");
+                        await KeyPress(Key.Escape);
+                        Require(View<CampaignMenuScreen>(game).Presented?.CanContinue == true,
+                            "Keyboard exit preserves the unchosen campaign checkpoint.");
+                        await Activate(Button(View<CampaignMenuScreen>(game), "ContinueCampaign"));
+                        choices = View<StoryScreen>(game);
+                        Require(State(game) == choiceState && Button(choices, "Choice_" + options[0].Id).HasFocus(),
+                            "Natural Continue restores the same unchosen state and usable choice focus.");
+                    }
+                    var choiceId = mode == "keyboard" ? choices.PresentedChoice!.Options.Last().Id : "rush-north-hill";
                     var expectedChoice = new CampaignRuntime(CampaignRules.Create(), definition, Campaign(game).Snapshot());
-                    expectedChoice.Choose("rush-north-hill");
-                    await Activate(Button(choices, "Choice_rush-north-hill"));
+                    expectedChoice.Choose(choiceId);
+                    await Activate(Button(choices, "Choice_" + choiceId));
                     Require(View<CampaignStagingScreen>(game).Presented is not null
                         && EcmaJson.Stringify(Campaign(game).Snapshot()) == EcmaJson.Stringify(expectedChoice.Snapshot()),
                         mode + " route choice commits the exact canonical consequences once.");
