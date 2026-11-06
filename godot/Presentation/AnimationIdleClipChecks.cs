@@ -328,6 +328,7 @@ public partial class AnimationChecks
         manifest.ActorClips["fixture.legal-strike"] = new()
         {
             Unit = "milliseconds",
+            ReleaseMs = 64,
             Frames = ClipFixtureFrames()
         };
         foreach (var unit in new[] { units.Single(unit => Int(unit, "id") == aid), bystander })
@@ -462,6 +463,7 @@ public partial class AnimationChecks
             manifest.ActorClips[ClipFixtureId] = new()
             {
                 Unit = "milliseconds",
+                ReleaseMs = 64,
                 AppearanceId = "fixture.strike-offset-contact",
                 Frames = new[] { new ActorClipFrameRecord { Frame = "attack", Span = 128 } }
             };

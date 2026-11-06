@@ -27,8 +27,15 @@ public sealed class ActorClip
         get;
     }
     public double Length => ends[^1];
+    public double? ReleaseMs
+    {
+        get;
+    }
 
-    internal ActorClip(RuntimeAsset asset, string unit, IReadOnlyList<ActorClipFrameRecord> sequence)
+    public double RequireRelease() => ReleaseMs
+        ?? throw new InvalidOperationException($"Actor clip has no declared release: {Asset.Identity}.");
+
+    internal ActorClip(RuntimeAsset asset, string unit, IReadOnlyList<ActorClipFrameRecord> sequence, double? releaseMs)
     {
         if (asset.Category is not ("combat-unit" or "mission-unit") || sequence.Count == 0)
             throw new InvalidOperationException("Actor clips require an actor sheet and at least one frame.");
@@ -53,6 +60,10 @@ public sealed class ActorClip
             position += frame.Span;
             ends[index] = position;
         }
+        if (releaseMs is { } release
+            && (Unit != ActorClipUnit.Milliseconds || !double.IsFinite(release) || release < 0 || release > Length))
+            throw new InvalidOperationException($"Actor clip has invalid release: {asset.Identity}.");
+        ReleaseMs = releaseMs;
     }
 
     public int FrameAt(double offset)

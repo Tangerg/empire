@@ -93,23 +93,74 @@ detaches the sequence and action mapping from caller-owned mutable input.
 Missing actions are explicit errors, never generic-art or fabricated-action
 fallbacks. Catalog geometry can be inspected without an action selection, but rendered actors must explicitly declare an `idle` clip.
 
-`BoardView` selects the `attack` clip for the existing strike event. The sum of
-its authored frame durations owns that strike's length; the same
-`PresentationTimeline` drives both frame sampling and the existing seven-pixel
-lunge. Frames change only when their sampled index changes. Catalog frame
+`BoardView` resolves the weapon's explicitly selected actor action for each
+existing primary strike. The sum of authored frame spans owns that actor's action
+length; the same `PresentationTimeline` drives frame sampling, motion and the
+released impact. Frames change only when their sampled index changes. Catalog frame
 application updates the entire sheet geometry while preserving horizontal
-facing, then the board synchronizes shadows and standing depth. Normal completion
-restores the bound idle appearance before impact; cancellation/error retains the
+facing, then the board synchronizes shadows and standing depth. At its own clip end the actor
+restores the bound idle appearance, even if the impact is still playing; cancellation/error retains the
 existing committed-After settlement instead of writing to a retired actor.
 
 The two finite attack profiles, `static.attack` and `static.work`, each retain one
-trusted pose for exactly 150 ms. This first slice introduces no new sprite pixels
+trusted pose for exactly 150 ms, with an explicit release at 75 ms. This first slice introduces no new sprite pixels
 or accepted multi-frame character artwork. Multi-frame/cross-sheet checks use
 trusted sheets as explicitly synthetic infrastructure fixtures. It does not add
 new animated artwork, hit, death, celebration, or a separate magic/caster action contract.
 Those remain unfinished; FX identity is not an action classifier. In particular,
 `castResolved` must not repeat the following attack's wind-up, and area victims
 must not each start another caster animation.
+
+## Explicit weapon release and recovery
+
+`art-bindings.json.CANDIDATE_01_WEAPON_ACTION` explicitly selects an actor action
+ID and motion (`stationary` or `lunge`) per weapon. All 38 weapons used by the
+39 bound unit types are declared. The policy is immutable after admission;
+missing policies/actions and unknown motion values fail explicitly. FX remains
+independent: a weapon without a themed FX binding intentionally uses the existing
+generic impact. FX identity, damage type, range and actor class never classify an
+action or movement policy at runtime.
+
+The selected `ActorClip` alone owns `releaseMs`; a releasing consumer requires
+it. The marker is optional for non-releasing clips, but when present it requires
+milliseconds and a finite offset in `[0, Length]`. It is not duplicated in the
+weapon record. Frame spans, release offset and action length all come from that
+single admitted clip. Idle and movement clips retain no release marker.
+
+One composite receipt tween samples elapsed time for the actor and impact.
+The impact begins once at the release, sampling its actual age `elapsed -
+releaseMs`, including a tick that jumps across release or the whole action.
+Recovery and impact run together; the presenter finishes at the maximum of actor
+length and release plus impact duration. The existing 40 ms fatal beat follows
+both. Shared `ImpactVisual` creation/sampling/cleanup is also used by standalone
+area impacts, regeneration and healing; it owns no clock. An impossible numeric
+impact interval fails explicitly rather than silently becoming instantaneous.
+
+Stationary actors may face the target but keep their position and logical
+contact. Lunge motion approaches seven units at release, then returns to the
+anchor by clip end using sine approach/cosine recovery. The existing trusted
+150 ms clips release at 75 ms: their original body trajectory is preserved, but
+impact now intentionally starts at the forward peak instead of waiting for the
+body to return. Frame/shadow/contact application and terrain cuts retain their
+existing owners. The actor rejoins idle at its own end, and an impact is removed
+at its own end even if the other part continues. Cancellation and exceptions
+settle `After`; no cleanup writes back to a retired actor. Reduced motion settles
+the same composition synchronously once.
+
+This complete primary-strike slice covers `attack`, `counter`, `supportAttack`,
+`partingShot` and `attackStructure`. It preserves the parting-shot location,
+current contacts and later-dead ghosts. An absent structure still permits the
+action but creates no invented impact. Area victim events remain impact-only,
+and `castResolved` remains a marker, so neither repeats a primary action.
+
+This does **not** yet represent every area/cast activation. An empty aimed cell
+can emit only area hits or no hits; structure-primary attacks can emit unit area
+hits before their primary structure event. A later complete slice needs an
+explicit combat-owned resolution/group start fact, not a guessed grouping by
+attacker/weapon/first victim. Healing has an explicit source but no weapon and
+needs its own ability action binding; regeneration has no caster. New casting
+art, charge gestures, hit reactions, death and celebration remain separate work.
+No unaccepted candidate image is shipped by this contract change.
 
 ## Distance-sampled movement clips
 
@@ -183,10 +234,10 @@ Supported native presenters (including the explicit recovery and displacement re
 
 | Event | Consumed fields | Presentation |
 | --- | --- | --- |
-| attack, counter, supportAttack | attacker, defender, weapon, damage, killed | Finite actor clip (currently 150 ms), then impact |
-| partingShot | same plus at | Wind-up, impact at explicit departure cell |
+| attack, counter, supportAttack | attacker, defender, weapon, damage, killed | Weapon-selected actor action; impact at authored release, recovery overlaps |
+| partingShot | same plus at | Weapon-selected action; release impact at explicit departure cell |
 | areaAttack | defender, weapon, damage, killed | Impact without another wind-up |
-| attackStructure | attacker, structure, weapon, damage, destroyed | Wind-up and structure impact |
+| attackStructure | attacker, structure, weapon, damage, destroyed | Weapon-selected action and released structure impact |
 | areaAttackStructure | structure, weapon, damage, destroyed | Structure impact without wind-up |
 | forcedMove | unit, mode, from, to, path | Ordered ground slide; teleport changes contact without interpolating a route |
 | collisionDamage | unit, amount, killed | One generic impact for the emitted actual collision damage |
@@ -198,7 +249,7 @@ Supported native presenters (including the explicit recovery and displacement re
 | turnStart | player, turn | Refresh HUD, 220 ms entrance, 420 ms hold, 220 ms exit |
 | gameOver | none | 220 ms beat before the application result modal |
 
-Wind-up follows the normalized projected direction with a 7-pixel sine lunge. Hit effects last 420 ms; their number rises 14 pixels and
+A declared lunge follows the normalized projected direction with a 7-pixel release-aligned approach/recovery; stationary policies do not translate the actor. Hit effects last 420 ms; their number rises 14 pixels and
 fades quadratically. Fatal hits add a 40 ms beat before the next presenter.
 Effects use cell center; actors retain the canonical cell-foot contact. Moving
 actors participate in the existing standing-depth ordering.

@@ -56,6 +56,12 @@ public sealed record RuntimeAsset(
     public Vector2 GroundFrontAt(int index) => FrameAnchors is { } anchors ? anchors[index] : GroundFront;
 }
 
+public enum ActorMotion
+{
+    Stationary, Lunge
+}
+public sealed record WeaponAction(string Action, ActorMotion Motion);
+
 public sealed class AssetCatalog
 {
     private readonly Dictionary<string, RuntimeAsset> _topics = new(StringComparer.Ordinal);
@@ -67,6 +73,7 @@ public sealed class AssetCatalog
     private readonly Dictionary<string, MapStructureArtBinding> _mapStructures;
     private readonly Dictionary<string, StructureArtBinding> _structures;
     private readonly Dictionary<string, string> _weaponEffects;
+    private readonly IReadOnlyDictionary<string, WeaponAction> _weaponActions;
     private readonly string? _healEffect;
     private readonly RasterResources _rasters = new();
 
@@ -83,6 +90,23 @@ public sealed class AssetCatalog
         _mapStructures = new(bindings.MapStructures, StringComparer.Ordinal);
         _structures = new(bindings.Structures, StringComparer.Ordinal);
         _weaponEffects = new(bindings.WeaponEffects, StringComparer.Ordinal);
+        if (bindings.WeaponActions is null)
+            throw new InvalidOperationException("Weapon action policies are absent.");
+        var actions = new Dictionary<string, WeaponAction>(StringComparer.Ordinal);
+        foreach (var (weapon, policy) in bindings.WeaponActions)
+        {
+            if (string.IsNullOrWhiteSpace(weapon) || weapon != weapon.Trim() || policy is null
+                || string.IsNullOrWhiteSpace(policy.Action) || policy.Action != policy.Action.Trim())
+                throw new InvalidOperationException($"Invalid weapon action policy: {weapon}.");
+            var motion = policy.Motion switch
+            {
+                "stationary" => ActorMotion.Stationary,
+                "lunge" => ActorMotion.Lunge,
+                _ => throw new InvalidOperationException($"Unknown weapon action motion: {weapon}/{policy.Motion}.")
+            };
+            actions.Add(weapon, new(policy.Action, motion));
+        }
+        _weaponActions = actions.ToFrozenDictionary(StringComparer.Ordinal);
         _healEffect = bindings.HealEffect;
 
         foreach (var record in manifest.Assets.Where(item => item.Id is null))
@@ -170,7 +194,7 @@ public sealed class AssetCatalog
                 || definition is null || definition.Frames is null)
                 throw new InvalidOperationException($"Invalid actor action clip binding: {asset.Identity}/{action}/{id}.");
             var sheet = definition.AppearanceId is null ? asset : ResolveBinding(binding.TopicId, definition.AppearanceId);
-            clips.Add(action, new ActorClip(sheet, definition.Unit, definition.Frames));
+            clips.Add(action, new ActorClip(sheet, definition.Unit, definition.Frames, definition.ReleaseMs));
         }
         return new(asset, clips.ToFrozenDictionary(StringComparer.Ordinal));
     }
@@ -186,6 +210,9 @@ public sealed class AssetCatalog
         _ = FrameIndex(asset, frame.Frame);
         return (asset, frame.Frame, binding.Depth);
     }
+
+    public WeaponAction ResolveWeaponAction(string weapon) => _weaponActions.TryGetValue(weapon, out var action) ? action
+        : throw new InvalidOperationException($"Weapon has no declared actor action: {weapon}.");
 
     public RuntimeAsset? ResolveWeaponEffect(string weapon) =>
         _weaponEffects.TryGetValue(weapon, out var topic) ? ResolveEffect(topic) : null;

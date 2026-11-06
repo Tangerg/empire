@@ -37,6 +37,7 @@ public partial class AnimationChecks : Node
             initial = new Empire.Core.Engine.BattleEngine(packs).CreateState(level);
             initialBytes = initial.ToJsonString();
             CheckActorClipDefinitions();
+            CheckReleaseDefinitions();
             await CheckRecordedDisplacement();
             CheckAssets();
             CheckTransitionOwnership();
@@ -44,6 +45,7 @@ public partial class AnimationChecks : Node
             await CheckActorClipPlayback();
             await CheckIdleClipPlayback();
             await CheckMovementClipPlayback();
+            await CheckReleasePlayback();
             var board = NewBoard();
             await CheckMovement(board);
             await CheckStrikeAndDeath(board);
@@ -239,12 +241,13 @@ public partial class AnimationChecks : Node
         var direction = (board.Projection.CellContact(new(Int(target, "x"), Int(target, "y")))
             - board.Projection.CellContact(new(Int(attacker, "x"), Int(attacker, "y")))).Normalized();
         Require(actor.Position.IsEqualApprox(origin + direction * 7), "Strike has source 150 ms sine lunge of seven pixels");
-        await Tick(board, 0.076);
         var hit = board.GetNode<Node2D>("BattleEffects/Hit");
-        Require(hit.Position == at && Frame(actor) == 0 && actor.Position == origin, "Impact follows wind-up and actor returns idle/origin");
+        Require(hit.Position == at && Frame(actor) == 2, "Impact starts at the explicit forward release while the actor still owns recovery.");
         Require(hit.GetNode<Label>("Number").Text == "-12", "Damage number comes directly from emitted damage");
         var numberY = hit.GetNode<Label>("Number").Position.Y;
-        await Tick(board, 0.210);
+        await Tick(board, 0.076);
+        Require(Frame(actor) == 0 && actor.Position == origin, "The actor returns idle/origin at its own clip end while impact continues.");
+        await Tick(board, 0.134);
         Require(hit.GetNode<Sprite2D>("Strip").GetMeta("frame").AsInt32() == 2, "Hit plays original numeric FX frames at twelve fps");
         Require(Mathf.IsEqualApprox(hit.GetNode<Label>("Number").Position.Y, numberY - 7)
             && Mathf.IsEqualApprox(hit.GetNode<Label>("Number").Modulate.A, 0.75f), "Damage number follows source 14 px rise and quadratic fade");

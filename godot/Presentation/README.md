@@ -178,3 +178,8 @@ Movement clips sample the same committed path progress that places actors; no se
 clock or distance accumulator is introduced. The shipped `legacy.move` preserves
 the previous two support poses, not new walking artwork. Full pose/contact depth
 coverage is prepared once per path through the existing standing geometry owner.
+
+Weapon action policies explicitly choose action and stationary/lunge motion, while
+the chosen timed clip owns its release marker. One receipt tween samples actor
+recovery and released impact together, retaining overshoot and independent visual
+lifetimes. The existing static poses remain unchanged; no new candidate art ships.

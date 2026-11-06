@@ -458,6 +458,7 @@ public partial class AnimationChecks
         manifest.ActorClips["fixture.legal-distance-strike"] = new()
         {
             Unit = "milliseconds",
+            ReleaseMs = 64,
             Frames = ClipFixtureFrames()
         };
         var binding = key is not null && bindings.Actors.TryGetValue(key, out var named) ? named.UnitArt : bindings.Units[type];

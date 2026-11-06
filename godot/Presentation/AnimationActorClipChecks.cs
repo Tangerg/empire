@@ -232,19 +232,19 @@ public partial class AnimationChecks
                 Require(actor.Position.IsEqualApprox(origin + direction * 7)
                     && actor.GetMeta("logical_contact").AsVector2() == logical
                     && SpriteGroundContact.Offset(sprite).IsEqualApprox(Vector2.Zero),
-                    "The clip's own midpoint drives the original seven-pixel lunge without changing logical contact.");
+                    "The clip's authored release drives the seven-pixel lunge peak without changing logical contact.");
                 await Tick(board, .040);
                 CheckClipSprite(sprite, clip.Asset, 3, facing);
                 CheckClipShadow(sprite);
-                Require(board.GetNodeOrNull("BattleEffects/Hit") is null && !task.IsCompleted,
-                    "An advance crossing a frame boundary samples the current pose without skipping to impact.");
+                Require(board.GetNodeOrNull("BattleEffects/Hit") is not null && !task.IsCompleted,
+                    "The authored release starts impact while the finite clip samples its remaining recovery poses.");
                 await Tick(board, .025);
                 CheckClipSprite(sprite, idle, 0, facing);
                 CheckClipShadow(sprite);
                 Require(actor.Position == origin && actor.GetMeta("logical_contact").AsVector2() == logical
                     && board.GetNode<Node2D>("BattleEffects/Hit").Position == destination
                     && board.GetNode<Label>("BattleEffects/Hit/Number").Text == "-12" && completed.Count == 0,
-                    "Clip completion restores the original sheet, geometry, filter and shadow before the unchanged impact.");
+                    "Clip completion restores the original sheet, geometry, filter and shadow while the released impact continues.");
                 await Tick(board, .421);
                 Require(completed.SequenceEqual(new[] { 0 }) && Frame(actor) == 1
                     && board.GetNodeOrNull("BattleEffects/Hit") is null,
@@ -374,6 +374,7 @@ public partial class AnimationChecks
         manifest.ActorClips[ClipFixtureId] = new()
         {
             Unit = "milliseconds",
+            ReleaseMs = 64,
             AppearanceId = "fixture.offset-contact",
             Frames = new[] { new ActorClipFrameRecord { Frame = "attack", Span = 128 } }
         };
@@ -398,7 +399,7 @@ public partial class AnimationChecks
         await Tick(board, .129);
         Require(Frame(Actor(board, aid)) == 0
             && SpriteGroundContact.Offset(Actor(board, aid).GetNode<Sprite2D>("AuthoredSprite")).IsEqualApprox(Vector2.Zero),
-            "An offset-contact clip restores the bound idle contact before impact.");
+            "An offset-contact clip restores the bound idle contact while its released impact continues.");
         CheckActorDepthCuts(board);
         await Drain(board, task);
     }
@@ -450,13 +451,14 @@ public partial class AnimationChecks
                 selected.Category == "mission-unit" ? "carry-or-work" : "attack"),
                 "Board playback resolves the named actor action or mission work pose from its actual binding.");
             await Tick(board, .129);
-            Require(board.GetNodeOrNull("BattleEffects/Hit") is null && !task.IsCompleted,
-                "Named and mission bindings retain their own 150 ms duration instead of borrowing a generic clip.");
+            Require(board.GetNodeOrNull("BattleEffects/Hit") is not null && !task.IsCompleted
+                && Frame(Actor(board, aid)) == clip.FrameAt(129),
+                "Named and mission bindings retain their own 150 ms action and explicit release instead of borrowing a generic clip.");
             await Tick(board, .022);
             CheckClipSprite(sprite, selected, 0, facing);
             CheckClipShadow(sprite);
             Require(board.GetNodeOrNull("BattleEffects/Hit") is not null,
-                "Named and mission clips restore their selected idle sheet before impact.");
+                "Named and mission clips restore their selected idle sheet while their released impact continues.");
             await Drain(board, task);
         }
     }
@@ -482,6 +484,7 @@ public partial class AnimationChecks
         manifest.ActorClips["fixture.legal"] = new()
         {
             Unit = "milliseconds",
+            ReleaseMs = 64,
             Frames = ClipFixtureFrames()
         };
         bindings.Units[type].ActionClips["attack"] = "fixture.legal";
@@ -512,11 +515,11 @@ public partial class AnimationChecks
                 Require(Frame(Actor(board, id)) == 2 && board.GetNodeOrNull("BattleEffects/Hit") is null,
                     "The real receipt samples the second authored actor pose before impact.");
                 await Tick(board, .064);
-                Require(Frame(Actor(board, id)) == 3 && board.GetNodeOrNull("BattleEffects/Hit") is null,
-                    "The real receipt samples the final finite pose rather than using a fixed 150 ms attack frame.");
+                Require(Frame(Actor(board, id)) == 3 && board.GetNodeOrNull("BattleEffects/Hit") is not null,
+                    "The real receipt samples the final recovery pose alongside its released impact.");
                 await Tick(board, .032);
                 Require(Frame(Actor(board, id)) == 0 && board.GetNode<Label>("BattleEffects/Hit/Number").Text == "-" + attack["damage"]!.ToJsonString(),
-                    "Real receipt impact follows the clip duration with its emitted damage unchanged.");
+                    "The real receipt's released impact outlives its actor clip with emitted damage unchanged.");
                 await Drain(board, task);
                 Require(completed.SequenceEqual(Enumerable.Range(0, receipt.Events.Count)) && battle.StateHash == hash
                     && StateDigest.Hash(after) == hash && source == transition.Before.GetRawText() + transition.After.GetRawText()
@@ -545,6 +548,7 @@ public partial class AnimationChecks
         manifest.ActorClips[ClipFixtureId] = new()
         {
             Unit = "milliseconds",
+            ReleaseMs = 64,
             AppearanceId = "torren-stage01",
             Frames = ClipFixtureFrames()
         };

@@ -23,6 +23,10 @@ public sealed class AssetManifest
 public sealed class ActorClipRecord
 {
     public string Unit { get; init; } = "";
+    public double? ReleaseMs
+    {
+        get; init;
+    }
     public string? AppearanceId
     {
         get; init;
@@ -160,8 +164,16 @@ public sealed class MapStructureArtBinding
     }
 }
 
+public sealed class WeaponActionRecord
+{
+    public string Action { get; init; } = "";
+    public string Motion { get; init; } = "";
+}
+
 public sealed class ArtBindings
 {
+    [JsonPropertyName("CANDIDATE_01_WEAPON_ACTION")]
+    public Dictionary<string, WeaponActionRecord> WeaponActions { get; init; } = new();
     [JsonPropertyName("CANDIDATE_01_UNIT_ART")]
     public Dictionary<string, UnitArtBinding> Units { get; init; } = new();
     [JsonPropertyName("CANDIDATE_01_ACTOR_ART")]

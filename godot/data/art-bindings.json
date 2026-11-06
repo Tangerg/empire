@@ -570,5 +570,159 @@
       "characterTopicId": "C01-CHAR-TORREN-01"
     }
   },
-  "CANDIDATE_01_HEAL_FX": "C01-FX-17"
+  "CANDIDATE_01_HEAL_FX": "C01-FX-17",
+  "CANDIDATE_01_WEAPON_ACTION": {
+    "archer_bow": {
+      "action": "attack",
+      "motion": "stationary"
+    },
+    "ballista_bolt": {
+      "action": "attack",
+      "motion": "stationary"
+    },
+    "c01.ballista": {
+      "action": "attack",
+      "motion": "stationary"
+    },
+    "c01.border-blade": {
+      "action": "attack",
+      "motion": "lunge"
+    },
+    "c01.civilian-tool": {
+      "action": "attack",
+      "motion": "lunge"
+    },
+    "c01.colossus-sweep": {
+      "action": "attack",
+      "motion": "lunge"
+    },
+    "c01.dragon-breath": {
+      "action": "attack",
+      "motion": "stationary"
+    },
+    "c01.engineer-hammer": {
+      "action": "attack",
+      "motion": "lunge"
+    },
+    "c01.forge-burst": {
+      "action": "attack",
+      "motion": "stationary"
+    },
+    "c01.ghost-touch": {
+      "action": "attack",
+      "motion": "stationary"
+    },
+    "c01.golem-slam": {
+      "action": "attack",
+      "motion": "lunge"
+    },
+    "c01.gray-oath": {
+      "action": "attack",
+      "motion": "lunge"
+    },
+    "c01.guard-spear": {
+      "action": "attack",
+      "motion": "lunge"
+    },
+    "c01.inquisitor-flame": {
+      "action": "attack",
+      "motion": "stationary"
+    },
+    "c01.knight-charge": {
+      "action": "attack",
+      "motion": "lunge"
+    },
+    "c01.knight-lance": {
+      "action": "attack",
+      "motion": "lunge"
+    },
+    "c01.lantern-staff": {
+      "action": "attack",
+      "motion": "stationary"
+    },
+    "c01.legion-spear": {
+      "action": "attack",
+      "motion": "lunge"
+    },
+    "c01.longbow": {
+      "action": "attack",
+      "motion": "stationary"
+    },
+    "c01.oath-bolt": {
+      "action": "attack",
+      "motion": "stationary"
+    },
+    "c01.oath-dispel": {
+      "action": "attack",
+      "motion": "stationary"
+    },
+    "c01.ranger-bow": {
+      "action": "attack",
+      "motion": "stationary"
+    },
+    "c01.rune-hammer": {
+      "action": "attack",
+      "motion": "lunge"
+    },
+    "c01.satchel-charge": {
+      "action": "attack",
+      "motion": "stationary"
+    },
+    "c01.undead-blade": {
+      "action": "attack",
+      "motion": "lunge"
+    },
+    "c01.wolf-spear": {
+      "action": "attack",
+      "motion": "lunge"
+    },
+    "cleric_staff": {
+      "action": "attack",
+      "motion": "stationary"
+    },
+    "dragon_breath": {
+      "action": "attack",
+      "motion": "stationary"
+    },
+    "heroic_breakthrough": {
+      "action": "attack",
+      "motion": "lunge"
+    },
+    "knight_charge": {
+      "action": "attack",
+      "motion": "lunge"
+    },
+    "knight_sword": {
+      "action": "attack",
+      "motion": "lunge"
+    },
+    "mage_bolt": {
+      "action": "attack",
+      "motion": "stationary"
+    },
+    "mage_meteor": {
+      "action": "attack",
+      "motion": "stationary"
+    },
+    "mage_overcharge": {
+      "action": "attack",
+      "motion": "stationary"
+    },
+    "ogre_club": {
+      "action": "attack",
+      "motion": "lunge"
+    },
+    "rogue_blades": {
+      "action": "attack",
+      "motion": "lunge"
+    },
+    "soldier_javelin": {
+      "action": "attack",
+      "motion": "stationary"
+    },
+    "soldier_sword": {
+      "action": "attack",
+      "motion": "lunge"
+    }
+  }
 }
