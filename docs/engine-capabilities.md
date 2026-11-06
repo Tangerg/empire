@@ -525,6 +525,11 @@ disposition and the other unit fields have separate owners and scope.
   the explicit death event starts a terminal clip/removal. Clip bindings and the
   existing receipt timeline own visual sampling, not health or a second death
   state. All current hit/death bindings explicitly reuse static trusted art.
+  `BattleConclusion` owns the winning team; native `gameOver` presentation selects
+  only its visible surviving After actors for concurrent `celebrate` clips on the
+  existing receipt clock. The full receipt remains the result-window gate. Current
+  celebration bindings hold trusted idle art for the old 220 ms terminal beat;
+  they are static placeholders, not newly accepted artwork.
 - Registered healing abilities and `BattleLifecycle` use `UnitHealth.Heal`.
   `TacticalCell.Heal` owns the battlefield's terrain/overlay healing read fact.
   Owner-turn recovery feedback reads the emitted actual `regen` amount; text and

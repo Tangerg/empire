@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
+using Empire.Core.Lifecycle;
 using Empire.Presentation.Feedback;
 using Godot;
 
@@ -250,7 +251,7 @@ public partial class BoardView
                     return await Announce(playback, description, Color.FromHtml(Text(player, "color")));
                 }
             case "gameOver":
-                return await playback.Clock.WaitAsync(220);
+                return await AnimateCelebration(playback, BattleConclusion.Parse(item["conclusion"]));
             default:
                 // The source registry deliberately leaves these events without an
                 // animation, including casts and non-death departures.
@@ -502,6 +503,41 @@ public partial class BoardView
         RemoveEffect(actor);
         RenderedUnitCount--;
         return true;
+    }
+
+    private Task<bool> AnimateCelebration(Playback playback, BattleConclusion conclusion)
+    {
+        var winners = Objects(playback.After, "players")
+            .Where(player => conclusion.Team is { } team && Integer(player, "team") == team)
+            .Select(player => Integer(player, "id")).ToHashSet();
+        var actors = new List<(Node2D Actor, ActorActionVisual Pose)>();
+        foreach (var unit in Objects(playback.After, "units"))
+        {
+            var id = Integer(unit, "id");
+            if (Number(unit["hp"], "unit hp") <= 0 || !winners.Contains(Integer(unit, "owner"))
+                || !BattleEventVisibility.UnitWasAndIsVisible(id, playback.Transition.BeforeVisibleUnitIds, playback.AfterVisible)
+                || DrawnUnit(id) is not { } actor)
+                continue;
+            actors.Add((actor, PrepareActorPose(actor, "celebrate")));
+        }
+        // One terminal event starts the visible winning cohort together. The
+        // existing result beat overlaps the clips rather than delaying each actor.
+        var duration = Math.Max(220, actors.Select(item => item.Pose.Clip.Length).DefaultIfEmpty(0).Max());
+        return playback.Clock.TweenAsync(duration, t =>
+        {
+            var elapsed = t * duration;
+            for (var index = actors.Count - 1; index >= 0; index--)
+            {
+                var (actor, pose) = actors[index];
+                if (elapsed < pose.Clip.Length)
+                    pose.Sample(elapsed);
+                else
+                {
+                    ResumeIdle(actor);
+                    actors.RemoveAt(index);
+                }
+            }
+        });
     }
 
     private async Task<bool> AnimateSpawn(Playback playback, int id)

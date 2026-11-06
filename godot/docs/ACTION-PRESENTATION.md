@@ -105,9 +105,9 @@ existing committed-After settlement instead of writing to a retired actor.
 The two finite attack profiles, `static.attack` and `static.work`, each retain one
 trusted pose for exactly 150 ms, with an explicit release at 75 ms. This first slice introduces no new sprite pixels
 or accepted multi-frame character artwork. Multi-frame/cross-sheet checks use
-trusted sheets as explicitly synthetic infrastructure fixtures. It does not add
-new animated artwork, hit reactions, death, or celebration. Main attack activation is specified below.
-Those remain unfinished; FX identity is not an action classifier. In particular,
+trusted sheets as explicitly synthetic infrastructure fixtures. Recipient reactions
+and celebration are specified below; their new artwork remains unfinished. Main
+attack activation follows. FX identity is not an action classifier. In particular,
 `castResolved` must not repeat the following attack's wind-up, and area victims
 must not each start another caster animation.
 
@@ -280,6 +280,37 @@ waiters cannot return old actors to idle. Reduced motion settles synchronously.
 The screen/application still await the complete receipt before AI or results;
 no separate result-completion flag or death registry is introduced.
 
+## Winning-team celebration clips
+
+Only the ordered `gameOver` event starts the explicit `celebrate` action.
+`BattleConclusion` remains the owner of winning-team semantics; presentation parses
+its committed event value rather than evaluating objectives or treating the local
+player as the winner. Neutral conclusions select no celebration art. The eligible
+cohort is drawn actors still in committed `After.units` with positive HP, whose
+After owner belongs to the winning team, and who were and remain visible. A
+surviving ally is still on the winning team even if its owner previously failed a
+critical objective; no second player-victory policy is introduced. Transported,
+withdrawn, routed, dead and newly visible actors are not materialized from stale
+Before drawings to celebrate. Filtering happens before clip lookup.
+
+The current 40 unit/actor maps explicitly bind `static.celebrate`: one trusted idle
+image held for 220 ms, not completed celebration artwork. This preserves the old
+terminal beat and original visuals until independently accepted art replaces the
+binding. Multi-frame clips use the same `PrepareActorPose` and geometry owner as
+other finite actions. All eligible actors start together without moving their
+logical contacts or changing facing. One group tween on the existing receipt
+clock lasts the greater of 220 ms and the longest declared clip; each actor
+returns to idle at its own endpoint. Durations are never summed per actor or
+appended to a second result timer.
+
+The screen and application retain their existing full-receipt result gate.
+`gameOver` publishes once only after the group completes; repeated refresh and
+loading a terminal save do not start historical actions. Cancellation, rebind,
+exit and errors settle through the same After cleanup, and reduced motion
+completes synchronously. No gameplay, event, save, reward or result-state owner is
+added. Native tests with distinct trusted fixture poses validate timing and
+lifecycle; they are not visual acceptance of new artwork.
+
 ## Distance-sampled movement clips
 
 Every moving unit/actor explicitly selects `move` in its existing action map.
@@ -367,7 +398,7 @@ Supported native presenters (including the explicit recovery and displacement re
 | recruit | unit, at | Add only the new actor, then 240 ms fade/scale from 0.6 to 1 |
 | capture | captured | Refresh site ownership when completed |
 | turnStart | player, turn | Refresh HUD, 220 ms entrance, 420 ms hold, 220 ms exit |
-| gameOver | none | 220 ms beat before the application result modal |
+| gameOver | visible surviving winning-team actors | concurrent explicit celebrate clips, overlapping the 220 ms result beat; neutral outcomes retain only the beat |
 
 A declared lunge follows the normalized projected direction with a 7-pixel release-aligned approach/recovery; stationary policies do not translate the actor. Hit effects last 420 ms; their number rises 14 pixels and
 fades quadratically. Fatal hits add a 40 ms beat before the next presenter.

@@ -194,3 +194,10 @@ death events. Explicit static bindings retain trusted idle art until replacement
 artwork is accepted. The same receipt timeline awaits source, reaction, effect
 and terminal removal; no independent death or result owner is added. See
 [ACTION-PRESENTATION.md](../docs/ACTION-PRESENTATION.md#recipient-hit-and-terminal-death-clips).
+
+Winning-team `celebrate` clips start only from the committed `gameOver` event.
+The existing receipt clock samples the visible surviving cohort concurrently,
+and its longest clip overlaps the original 220 ms result beat. Current bindings
+are explicitly static old-art placeholders; neither accepted new celebration art
+nor a second result/reward owner is implied. See
+[ACTION-PRESENTATION.md](../docs/ACTION-PRESENTATION.md#winning-team-celebration-clips).

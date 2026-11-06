@@ -307,7 +307,7 @@ public partial class AnimationChecks
                     ["path"] = new JsonArray(At(12, 16), At(11, 17))
                 };
                 task = board.PresentTransitionAsync(viewportFeedback,
-                    Transition(before, after, IdleAction(), [forced, new JsonObject { ["type"] = "gameOver" }]));
+                    Transition(before, after, IdleAction(), [forced, new JsonObject { ["type"] = "gameOver", ["conclusion"] = Empire.Core.Lifecycle.BattleConclusion.LastTeamRemaining(1).ToJson() }]));
                 if (mode == "push")
                     await Tick(board, .06);
                 var actor = Actor(board, id);

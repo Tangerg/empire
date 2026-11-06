@@ -269,7 +269,7 @@ public partial class AnimationChecks
         try
         {
             var task = board.PresentTransitionAsync(viewportFeedback, Transition(state, after, IdleAction(),
-                [ReactionDeathEvent(did), new JsonObject { ["type"] = "gameOver", ["reason"] = "fixture", ["team"] = 1 }]));
+                [ReactionDeathEvent(did), new JsonObject { ["type"] = "gameOver", ["conclusion"] = Empire.Core.Lifecycle.BattleConclusion.LastTeamRemaining(1).ToJson() }]));
             await Tick(board, .255);
             Require(!task.IsCompleted && published.Count == 0,
                 "Final result feedback cannot bypass the dying actor's authored clip.");

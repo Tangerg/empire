@@ -40,6 +40,7 @@ public partial class AnimationChecks : Node
             CheckReleaseDefinitions();
             CheckHealingDefinitions();
             await CheckClock();
+            await CheckCelebrationClips();
             await CheckReactionClips();
             await CheckActivationDepthOwnership();
             await CheckActivationPlayback();
@@ -441,7 +442,7 @@ public partial class AnimationChecks : Node
         void Repaint() => repaints++;
         board.PresentationRepaintRequested += Repaint;
         var task = board.PresentTransitionAsync(viewportFeedback, Transition(Copy(), after, IdleAction(),
-            [new JsonObject { ["type"] = "turnStart", ["player"] = 1, ["turn"] = 3 }, new JsonObject { ["type"] = "gameOver", ["team"] = 1, ["reason"] = "fixture" }]));
+            [new JsonObject { ["type"] = "turnStart", ["player"] = 1, ["turn"] = 3 }, new JsonObject { ["type"] = "gameOver", ["conclusion"] = Empire.Core.Lifecycle.BattleConclusion.LastTeamRemaining(1).ToJson() }]));
         Require(repaints == 1 && viewportFeedback.GetNode<Label>("ViewportEffects/TurnAnnouncement/Band/Number").Text == "Localized announcement",
             "Turn banner displays the supplied localized receipt text and repaints the header before appearing");
         await Tick(board, 0.2201);
@@ -509,7 +510,7 @@ public partial class AnimationChecks : Node
         Require(!await interrupted && board.GetNodeOrNull($"CanonicalProjection/Unit_{did}") is null,
             "Cancelling a partial death cannot leave a shrunken stale actor");
 
-        var transition = Transition(Copy(), Copy(), IdleAction(), [new JsonObject { ["type"] = "gameOver", ["reason"] = "fixture", ["team"] = 1 }]);
+        var transition = Transition(Copy(), Copy(), IdleAction(), [new JsonObject { ["type"] = "gameOver", ["conclusion"] = Empire.Core.Lifecycle.BattleConclusion.LastTeamRemaining(1).ToJson() }]);
         var first = board.PresentTransitionAsync(viewportFeedback, transition);
         Require(!board.GetNode<Node2D>("CanonicalProjection/OccludedUnitCues").Visible, "Occlusion cues are suppressed throughout committed animation, not left at stale pre-move positions");
         try
