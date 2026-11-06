@@ -148,6 +148,10 @@ public partial class BoardView
     {
         switch (Text(item, "type"))
         {
+            case "facingChanged":
+                if (WasVisible(playback, Integer(item, "unit")) && DrawnUnit(Integer(item, "unit")) is { } turning)
+                    Face(turning.GetNode<Sprite2D>("AuthoredSprite"), FacesLeft(Projection.FacingVector(Text(item, "to"))));
+                return true;
             case "attackActivated":
                 return await BeginAttack(playback, item);
             case "attackCompleted":
@@ -161,7 +165,7 @@ public partial class BoardView
                     var defender = Integer(item, "defender");
                     if (!WasVisible(playback, defender))
                         return true;
-                    var at = Text(item, "type") == "partingShot" ? CellCentre(Coordinate(item["at"]!)) : ImpactOn(defender);
+                    var at = Text(item, "type") == "partingShot" ? LogicalContact(Coordinate(item["at"]!)) : ContactOn(defender);
                     return await PlayStrike(playback, item, at, Text(item, "type") is "counter" or "supportAttack" or "partingShot", "killed", DrawnUnit(defender));
                 }
             case "attackStructure":
@@ -170,7 +174,7 @@ public partial class BoardView
                     if (!WasVisible(playback, Integer(item, "attacker")))
                         return true;
                     var structure = Objects(playback.After, "structures").FirstOrDefault(value => Text(value, "id") == Text(item, "structure"));
-                    return await PlayStrike(playback, item, structure is null ? null : CellCentre(Coordinate(structure)), false, "destroyed");
+                    return await PlayStrike(playback, item, structure is null ? null : LogicalContact(Coordinate(structure)), false, "destroyed");
                 }
             case "death":
                 if (playback.Attack is { } dying && dying.Attacker == Integer(item, "unit") && !await dying.Recovery)
@@ -214,14 +218,14 @@ public partial class BoardView
                 {
                     var target = Integer(item, "target");
                     var unit = FindUnit(playback.After, target);
-                    if (unit is null || !WasVisible(playback, target) || ImpactOn(target) is not { } at)
+                    if (unit is null || !WasVisible(playback, target) || ContactOn(target) is not { } at)
                         return true;
                     var source = Integer(item, "source");
                     var amount = Number(item["amount"], "heal amount");
                     var topic = _assets!.ResolveHealEffect()?.TopicId;
                     return WasVisible(playback, source) && DrawnUnit(source) is { } actor
                         ? await AnimateActorAction(playback, actor, _assets.ResolveAbilityAction("heal"), at, amount, true, false, topic)
-                        : await AnimateImpact(playback, at, amount, true, false, topic);
+                        : await AnimateImpact(playback, Projection.Project(at), amount, true, false, topic);
                 }
             case "regen":
                 {
@@ -270,7 +274,7 @@ public partial class BoardView
         if (WasVisible(playback, id) && DrawnUnit(id) is { } actor)
         {
             var aim = Coordinate(item["at"]!);
-            var visual = PrepareActorAction(actor, _assets!.ResolveWeaponAction(weapon), Projection.Project(LogicalContact(aim.X, aim.Y)));
+            var visual = PrepareActorAction(actor, _assets!.ResolveWeaponAction(weapon), LogicalContact(aim.X, aim.Y));
             release = visual.Clip.RequireRelease();
             visual.Sample(0);
             recovery = playback.Clock.TweenAsync(visual.Clip.Length, t => visual.Sample(t * visual.Clip.Length));
@@ -292,18 +296,18 @@ public partial class BoardView
         return complete;
     }
 
-    private async Task<bool> PlayStrike(Playback playback, JsonObject item, Vector2? at, bool windup, string fatalField, Node2D? recipient = null)
+    private async Task<bool> PlayStrike(Playback playback, JsonObject item, Vector2? contact, bool windup, string fatalField, Node2D? recipient = null)
     {
         var attacker = Integer(item, "attacker");
         var weapon = Text(item, "weapon");
         var amount = Number(item["damage"], "damage");
         var fatal = item[fatalField]!.GetValue<bool>();
-        var topic = at is null ? null : _assets!.ResolveWeaponEffect(weapon)?.TopicId;
+        var topic = contact is null ? null : _assets!.ResolveWeaponEffect(weapon)?.TopicId;
         if (windup && WasVisible(playback, attacker) && DrawnUnit(attacker) is { } actor)
-            return await AnimateActorAction(playback, actor, _assets!.ResolveWeaponAction(weapon), at, amount, false, fatal, topic, recipient);
+            return await AnimateActorAction(playback, actor, _assets!.ResolveWeaponAction(weapon), contact, amount, false, fatal, topic, recipient);
         if (recipient is not null && playback.Attack is { } active && DrawnUnit(active.Attacker) == recipient && !await active.Recovery)
             return false;
-        return at is null || await AnimateImpact(playback, at.Value, amount, false, fatal, topic, recipient);
+        return contact is null || await AnimateImpact(playback, Projection.Project(contact.Value), amount, false, fatal, topic, recipient);
     }
 
     private async Task<bool> AnimateUnitDamage(Playback playback, int id, Vector2 at, double amount, bool fatal, string? topic)
@@ -329,8 +333,11 @@ public partial class BoardView
         var duration = walking ? playback.Transition.IsComputerAction ? 110.0 : 160.0 : 120.0;
         var contacts = path.Select(point => Coordinate(point!))
             .Select(point => LogicalContact(point.X, point.Y)).ToArray();
-        PrepareAnimatedPath(actor, contacts, clip);
         var steps = contacts.Length - 1;
+        var facings = Enumerable.Range(0, steps)
+            .Select(index => FacesLeft(Projection.FacingVector(contacts[index], contacts[index + 1]))).ToArray();
+        Face(sprite, facings[0]);
+        PrepareAnimatedPath(actor, contacts, clip);
         var frame = clip?.FrameAt(0) ?? AssetCatalog.FrameIndex(asset, "idle");
         SetFrame(sprite, clip?.Asset ?? asset, frame);
         SortAnimatedStanding();
@@ -341,10 +348,8 @@ public partial class BoardView
             var fraction = (float)(distance - segment);
             var start = contacts[segment];
             var end = contacts[segment + 1];
-            var visualDirection = Projection.Project(end).X - Projection.Project(start).X;
-            var facingChanged = visualDirection != 0 && (sprite.Scale.X < 0) != (visualDirection < 0);
-            if (visualDirection != 0)
-                Face(sprite, visualDirection < 0);
+            var facingChanged = (sprite.Scale.X < 0) != facings[segment];
+            Face(sprite, facings[segment]);
             var logical = start.Lerp(end, fraction);
             // Keep the actor's support plane and its composited contact shadow on
             // the road. The drawn walk poses provide the gait, not a whole-body hop.
@@ -407,11 +412,15 @@ public partial class BoardView
         });
     }
 
-    private ActorActionVisual PrepareActorAction(Node2D actor, ActorAction policy, Vector2? target)
+    private ActorActionVisual PrepareActorAction(Node2D actor, ActorAction policy, Vector2? targetContact)
     {
-        var anchor = Projection.Project(actor.GetMeta("logical_contact").AsVector2());
-        var direction = ((target ?? anchor) - anchor).Normalized();
-        var pose = PrepareActorPose(actor, policy.Action, direction.X == 0 ? null : direction.X < 0);
+        var contact = actor.GetMeta("logical_contact").AsVector2();
+        var anchor = Projection.Project(contact);
+        var direction = (Projection.Project(targetContact ?? contact) - anchor).Normalized();
+        var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
+        var restingLeft = sprite.Scale.X < 0;
+        var pose = PrepareActorPose(actor, policy.Action,
+            targetContact is { } aim ? FacesLeft(Projection.FacingVector(contact, aim)) : null);
         var clip = pose.Clip;
         var release = clip.RequireRelease();
         actor.Position = anchor;
@@ -423,6 +432,9 @@ public partial class BoardView
                 if (elapsed >= clip.Length)
                 {
                     actor.Position = anchor;
+                    // Reactions and delayed casts aim without changing canonical facing.
+                    // Only normal recovery restores this temporary pose; cancellation settles After.
+                    Face(sprite, restingLeft);
                     ResumeIdle(actor);
                     actorFinished = true;
                 }
@@ -441,13 +453,13 @@ public partial class BoardView
     }
 
     private async Task<bool> AnimateActorAction(Playback playback, Node2D actor, ActorAction policy,
-        Vector2? target, double amount, bool healing, bool fatal, string? topic, Node2D? recipient = null)
+        Vector2? targetContact, double amount, bool healing, bool fatal, string? topic, Node2D? recipient = null)
     {
-        var visual = PrepareActorAction(actor, policy, target);
+        var visual = PrepareActorAction(actor, policy, targetContact);
         var clip = visual.Clip;
         var release = clip.RequireRelease();
-        var impactEnd = target is null ? 0 : release + ImpactDuration(healing);
-        if (target is not null && (!double.IsFinite(impactEnd) || impactEnd <= release))
+        var impactEnd = targetContact is null ? 0 : release + ImpactDuration(healing);
+        if (targetContact is not null && (!double.IsFinite(impactEnd) || impactEnd <= release))
             throw new InvalidOperationException($"Actor release cannot represent the following impact: {clip.Asset.Identity}.");
         visual.Sample(0);
         var recovery = playback.Clock.TweenAsync(clip.Length, t => visual.Sample(t * clip.Length));
@@ -458,13 +470,13 @@ public partial class BoardView
         // A single drawing cannot own both an outgoing pose and a reaction.
         if (recipient == actor && !await recovery)
             return false;
-        var impact = target is { } at ? AnimateImpact(playback, at, amount, healing, false, topic, recipient) : Task.FromResult(true);
+        var impact = targetContact is { } at ? AnimateImpact(playback, Projection.Project(at), amount, healing, false, topic, recipient) : Task.FromResult(true);
         // Fail or cancel as soon as either branch does; a broken recipient must
         // not leave input waiting for an unrelated, potentially very long clip.
         var completed = await Task.WhenAny(recovery, impact);
         if (!await completed || !await (ReferenceEquals(completed, recovery) ? impact : recovery))
             return false;
-        return target is null || !fatal || await playback.Clock.WaitAsync(40);
+        return targetContact is null || !fatal || await playback.Clock.WaitAsync(40);
     }
 
     private void PrepareActorClip(Node2D actor, Sprite2D sprite, ActorClip clip)
@@ -690,9 +702,10 @@ public partial class BoardView
     private static JsonObject ReadState(JsonElement value) => Empire.Core.Determinism.EcmaJson.Parse(value.GetRawText()) as JsonObject
         ?? throw new InvalidOperationException("Presentation transition requires JSON objects.");
     private static Vector2I Coordinate(JsonNode value) => new(Integer(value["x"], "x"), Integer(value["y"], "y"));
-    private Vector2 CellCentre(Vector2I at) => Projection.CellCenter(new Empire.Core.Geometry.Coord(at.X, at.Y));
-    private Vector2? ImpactOn(int id) => DrawnUnit(id) is { } actor
-        ? Projection.Project(actor.GetMeta("logical_contact").AsVector2()) : null;
+    private Vector2 LogicalContact(Vector2I at) => LogicalContact(at.X, at.Y);
+    private Vector2? ContactOn(int id) => DrawnUnit(id) is { } actor ? actor.GetMeta("logical_contact").AsVector2() : null;
+    private Vector2? ImpactOn(int id) => ContactOn(id) is { } contact ? Projection.Project(contact) : null;
+    private static bool FacesLeft(Vector2 direction) => direction.X < 0;
     private static double Ease(double t) => t < 0.5 ? 2 * t * t : 1 - 2 * (1 - t) * (1 - t);
     private static void Face(Sprite2D sprite, bool left) => sprite.Scale = new Vector2(Mathf.Abs(sprite.Scale.X) * (left ? -1 : 1), sprite.Scale.Y);
     private void SetFrame(Sprite2D sprite, RuntimeAsset asset, int index)

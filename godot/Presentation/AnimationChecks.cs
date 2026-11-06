@@ -36,6 +36,7 @@ public partial class AnimationChecks : Node
             packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
             initial = new Empire.Core.Engine.BattleEngine(packs).CreateState(level);
             initialBytes = initial.ToJsonString();
+            await CheckFacingPlayback();
             CheckActorClipDefinitions();
             CheckReleaseDefinitions();
             CheckHealingDefinitions();

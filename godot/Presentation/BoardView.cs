@@ -424,7 +424,7 @@ public partial class BoardView : Node2D
             var actor = new CanvasGroup { Name = $"Unit_{unit.Id}", Position = CellContact(unit.X, unit.Y) };
             sprite.Name = "AuthoredSprite";
             // Mirroring and shadows share the canonical foot, not the sheet center.
-            if (Projection.FacingVector(unit.Facing).X < 0)
+            if (FacesLeft(Projection.FacingVector(unit.Facing)))
                 sprite.Scale = new Vector2(-sprite.Scale.X, sprite.Scale.Y);
             sprite.AddChild(SpriteShadows.CreateFigure(sprite, snapshot.Colors[unit.Owner], _shadows));
             actor.AddChild(sprite);

@@ -183,7 +183,9 @@ public partial class AnimationChecks
                     var a = board.Projection.LogicalCellContact(new(Int(start, "x"), Int(start, "y")));
                     var b = board.Projection.LogicalCellContact(new(Int(end, "x"), Int(end, "y")));
                     var logical = a.Lerp(b, (float)(distance - segment));
-                    var facing = board.Projection.Project(b).X < board.Projection.Project(a).X ? -1 : 1;
+                    var direction = new Empire.Core.Geometry.Square4Grid().Toward(
+                        new(Int(start, "x"), Int(start, "y")), new(Int(end, "x"), Int(end, "y")));
+                    var facing = board.Projection.FacingVector(direction).X < 0 ? -1 : 1;
                     CheckClipSprite(sprite, clip.Asset, frame, facing);
                     CheckClipShadow(sprite);
                     Require(actor.GetMeta("logical_contact").AsVector2().IsEqualApprox(logical)

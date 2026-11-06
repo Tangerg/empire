@@ -219,6 +219,7 @@ public partial class AnimationChecks
                 var destination = board.Projection.CellContact(new(1, 3));
                 var direction = (destination - origin).Normalized();
                 var facing = direction.X < 0 ? -1 : 1;
+                var restingFacing = board.Projection.FacingVector(attacker["facing"]!.GetValue<string>()).X < 0 ? -1 : 1;
                 var clip = catalog.ResolveUnitClip("c01.swordsman", "attack", ActorClipUnit.Milliseconds);
                 var idle = catalog.ResolveUnit("c01.swordsman");
                 CheckClipSprite(sprite, clip.Asset, 1, facing);
@@ -239,7 +240,7 @@ public partial class AnimationChecks
                 Require(board.GetNodeOrNull("BattleEffects/Hit") is not null && !task.IsCompleted,
                     "The authored release starts impact while the finite clip samples its remaining recovery poses.");
                 await Tick(board, .025);
-                CheckClipSprite(sprite, idle, 0, facing);
+                CheckClipSprite(sprite, idle, 0, restingFacing);
                 CheckClipShadow(sprite);
                 Require(actor.Position == origin && actor.GetMeta("logical_contact").AsVector2() == logical
                     && board.GetNode<Node2D>("BattleEffects/Hit").Position == destination
@@ -445,6 +446,7 @@ public partial class AnimationChecks
                 Transition(before, (JsonObject)before.DeepClone(), IdleAction(), ScopedClipAttack(Strike("attack", aid, did), At(3, 3), At(1, 3))));
             var sprite = Actor(board, aid).GetNode<Sprite2D>("AuthoredSprite");
             var facing = sprite.Scale.X < 0 ? -1 : 1;
+            var restingFacing = board.Projection.FacingVector(unit["facing"]!.GetValue<string>()).X < 0 ? -1 : 1;
             CheckClipSprite(sprite, selected, clip.FrameAt(0), facing);
             CheckClipShadow(sprite);
             Require(Frame(Actor(board, aid)) == AssetCatalog.FrameIndex(selected,
@@ -455,7 +457,7 @@ public partial class AnimationChecks
                 && Frame(Actor(board, aid)) == clip.FrameAt(129),
                 "Named and mission bindings retain their own 150 ms action and explicit release instead of borrowing a generic clip.");
             await Tick(board, .022);
-            CheckClipSprite(sprite, selected, 0, facing);
+            CheckClipSprite(sprite, selected, 0, restingFacing);
             CheckClipShadow(sprite);
             Require(board.GetNodeOrNull("BattleEffects/Hit") is not null,
                 "Named and mission clips restore their selected idle sheet while their released impact continues.");

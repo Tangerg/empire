@@ -1,0 +1,357 @@
+{
+  "scope": "Original-art native C04 action 91 facing correctness, not candidate-art or smooth-animation acceptance",
+  "baselineCommit": "8d19916951565237eeeeb23e1fab53c4090df1e5",
+  "beforeHash": "0116c88bcaf4b0ac08d5b7bf2c41e2755c2a8259213444edf07e4b34e5d63a84",
+  "afterHash": "3a828e23dff19066d1facbdd12b99b8056b0bb9e9d17c37b3bb9bab2e28c6a5e",
+  "eventsSha256": "45e9e44a59c57619fb070c4a684b6091645eee8e335f4b6cac612a45bde182a0",
+  "action": {
+    "kind": "command",
+    "unit": 9,
+    "path": [
+      {
+        "x": 25,
+        "y": 16
+      },
+      {
+        "x": 25,
+        "y": 17
+      }
+    ],
+    "command": {
+      "ability": "attack",
+      "weapon": "c01.lantern-staff",
+      "target": {
+        "x": 25,
+        "y": 15
+      }
+    }
+  },
+  "events": [
+    {
+      "type": "facingChanged",
+      "unit": 9,
+      "from": "west",
+      "to": "south"
+    },
+    {
+      "type": "move",
+      "unit": 9,
+      "path": [
+        {
+          "x": 25,
+          "y": 16
+        },
+        {
+          "x": 25,
+          "y": 17
+        }
+      ]
+    },
+    {
+      "type": "facingChanged",
+      "unit": 9,
+      "from": "south",
+      "to": "north"
+    },
+    {
+      "type": "attackActivated",
+      "attacker": 9,
+      "weapon": "c01.lantern-staff",
+      "from": {
+        "x": 25,
+        "y": 17
+      },
+      "at": {
+        "x": 25,
+        "y": 15
+      }
+    },
+    {
+      "type": "attack",
+      "attacker": 9,
+      "defender": 12,
+      "weapon": "c01.lantern-staff",
+      "damage": 23,
+      "killed": false
+    },
+    {
+      "type": "rankProgressChanged",
+      "unit": 9,
+      "amount": 23,
+      "current": 150
+    },
+    {
+      "type": "attackCompleted",
+      "attacker": 9,
+      "weapon": "c01.lantern-staff"
+    }
+  ],
+  "sameActionEventsAndStates": true,
+  "original": {
+    "processExit": 0,
+    "trace": [
+      {
+        "stage": "refresh_started",
+        "event": null,
+        "timelineMs": 0,
+        "frame": 1,
+        "facing": "left"
+      },
+      {
+        "stage": "process_frame",
+        "event": null,
+        "timelineMs": 133.39833333333306,
+        "frame": 1,
+        "facing": "left"
+      },
+      {
+        "stage": "EventPresented",
+        "event": "facingChanged",
+        "timelineMs": 160,
+        "frame": 0,
+        "facing": "left"
+      },
+      {
+        "stage": "EventPresented",
+        "event": "move",
+        "timelineMs": 160,
+        "frame": 0,
+        "facing": "left"
+      },
+      {
+        "stage": "EventPresented",
+        "event": "facingChanged",
+        "timelineMs": 160,
+        "frame": 0,
+        "facing": "left"
+      },
+      {
+        "stage": "EventPresented",
+        "event": "attackActivated",
+        "timelineMs": 235,
+        "frame": 2,
+        "facing": "left"
+      },
+      {
+        "stage": "impact_started",
+        "event": null,
+        "timelineMs": 235,
+        "frame": 2,
+        "facing": "left"
+      },
+      {
+        "stage": "process_frame",
+        "event": null,
+        "timelineMs": 237.14833333333016,
+        "frame": 2,
+        "facing": "left"
+      },
+      {
+        "stage": "process_frame",
+        "event": null,
+        "timelineMs": 383.4679999999999,
+        "frame": 0,
+        "facing": "left"
+      },
+      {
+        "stage": "process_frame",
+        "event": null,
+        "timelineMs": 478.4409999999999,
+        "frame": 0,
+        "facing": "left"
+      },
+      {
+        "stage": "process_frame",
+        "event": null,
+        "timelineMs": 556.2139999999998,
+        "frame": 0,
+        "facing": "left"
+      },
+      {
+        "stage": "process_frame",
+        "event": null,
+        "timelineMs": 620.4816666666635,
+        "frame": 0,
+        "facing": "left"
+      },
+      {
+        "stage": "EventPresented",
+        "event": "attack",
+        "timelineMs": 655,
+        "frame": 0,
+        "facing": "left"
+      },
+      {
+        "stage": "EventPresented",
+        "event": "rankProgressChanged",
+        "timelineMs": 655,
+        "frame": 0,
+        "facing": "left"
+      },
+      {
+        "stage": "EventPresented",
+        "event": "attackCompleted",
+        "timelineMs": 655,
+        "frame": 0,
+        "facing": "left"
+      },
+      {
+        "stage": "process_frame",
+        "event": null,
+        "timelineMs": 703.8149999999969,
+        "frame": 0,
+        "facing": "right"
+      },
+      {
+        "stage": "settled",
+        "event": null,
+        "timelineMs": 703.8149999999969,
+        "frame": 0,
+        "facing": "right"
+      }
+    ]
+  },
+  "fixedSerial": {
+    "processExit": 0,
+    "trace": [
+      {
+        "stage": "refresh_started",
+        "event": null,
+        "timelineMs": 0,
+        "frame": 1,
+        "facing": "right"
+      },
+      {
+        "stage": "process_frame",
+        "event": null,
+        "timelineMs": 138.4293333333333,
+        "frame": 1,
+        "facing": "right"
+      },
+      {
+        "stage": "EventPresented",
+        "event": "facingChanged",
+        "timelineMs": 160,
+        "frame": 0,
+        "facing": "right"
+      },
+      {
+        "stage": "EventPresented",
+        "event": "move",
+        "timelineMs": 160,
+        "frame": 0,
+        "facing": "right"
+      },
+      {
+        "stage": "EventPresented",
+        "event": "facingChanged",
+        "timelineMs": 160,
+        "frame": 0,
+        "facing": "right"
+      },
+      {
+        "stage": "process_frame",
+        "event": null,
+        "timelineMs": 196.5233333333333,
+        "frame": 2,
+        "facing": "right"
+      },
+      {
+        "stage": "EventPresented",
+        "event": "attackActivated",
+        "timelineMs": 235,
+        "frame": 2,
+        "facing": "right"
+      },
+      {
+        "stage": "impact_started",
+        "event": null,
+        "timelineMs": 235,
+        "frame": 2,
+        "facing": "right"
+      },
+      {
+        "stage": "process_frame",
+        "event": null,
+        "timelineMs": 341.748333333333,
+        "frame": 0,
+        "facing": "right"
+      },
+      {
+        "stage": "process_frame",
+        "event": null,
+        "timelineMs": 458.4149999999997,
+        "frame": 0,
+        "facing": "right"
+      },
+      {
+        "stage": "process_frame",
+        "event": null,
+        "timelineMs": 516.2819999999999,
+        "frame": 0,
+        "facing": "right"
+      },
+      {
+        "stage": "process_frame",
+        "event": null,
+        "timelineMs": 574.3569999999999,
+        "frame": 0,
+        "facing": "right"
+      },
+      {
+        "stage": "process_frame",
+        "event": null,
+        "timelineMs": 637.5609999999999,
+        "frame": 0,
+        "facing": "right"
+      },
+      {
+        "stage": "EventPresented",
+        "event": "attack",
+        "timelineMs": 655,
+        "frame": 0,
+        "facing": "right"
+      },
+      {
+        "stage": "EventPresented",
+        "event": "rankProgressChanged",
+        "timelineMs": 655,
+        "frame": 0,
+        "facing": "right"
+      },
+      {
+        "stage": "EventPresented",
+        "event": "attackCompleted",
+        "timelineMs": 655,
+        "frame": 0,
+        "facing": "right"
+      },
+      {
+        "stage": "process_frame",
+        "event": null,
+        "timelineMs": 698.672111111111,
+        "frame": 0,
+        "facing": "right"
+      },
+      {
+        "stage": "settled",
+        "event": null,
+        "timelineMs": 698.672111111111,
+        "frame": 0,
+        "facing": "right"
+      }
+    ]
+  },
+  "firstFixedFailure": {
+    "processExit": 1,
+    "reason": "Review harness exceeded its unchanged 30-second wall-clock bound while a separate heavy headless suite was also running. Exact cause not proven.",
+    "lastTimelineMs": 216.66666666666714,
+    "sourceTraceSha256": "0b79e2fad12c70db5db1ec7e826d776049da03b5cd51ba9b18d7c14a377cd07c"
+  },
+  "boundaries": [
+    "Standalone lawful level witness, not inherited campaign playthrough",
+    "Automatic native clock and actual BattleScreen/HUD; no manual time stepping",
+    "Software-rendered llvmpipe; unavailable audio; no FPS or smooth visual acceptance claim",
+    "Unaccepted candidate art was not bound or published"
+  ]
+}

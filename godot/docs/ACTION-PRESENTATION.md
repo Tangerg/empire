@@ -431,6 +431,37 @@ Structure impacts retain the existing committed-structure lookup: normal
 zero-HP destruction retains the object, while an actually absent structure gets
 no fabricated impact.
 
+## Facing during playback
+
+Canonical facing belongs to `UnitDisposition` and the composed tactical grid.
+`BoardProjection.FacingVector` projects that grid direction; the sprite mirrors
+only for negative projected X. Zero horizontal projection consistently uses the
+unmirrored pose, both during playback and after settlement. No direction-name
+list or raw target-X comparison substitutes for `ITacticalGrid.Toward`.
+
+Ordered `facingChanged` receipts update the existing visible actor at their event
+boundary. Command paths still run before their receipts; each path segment asks
+the composed grid for its facing, including the initial displayed movement frame.
+Push/pull use the same path rule; teleport preserves the prior facing.
+
+Outgoing action poses aim through the grid using current logical contacts. Their
+continuous projected lunge vector remains separate from tactical facing. Reactions
+and due delayed casts need not change canonical facing, so their temporary mirror
+returns to the captured pre-action mirror at normal clip completion, before idle
+resumes. The source can recover while its released impact is still playing.
+Cancellation, errors, rebinding and exit keep their existing settlement ownership;
+a retired action never writes back a captured mirror after cancellation.
+
+Mirroring stays in the existing foot-relative scale transform, inherited by the
+composited figure/shadow. It does not change the authored crop, anchor, logical
+contact or world rules. In particular, changing `Sprite2D.FlipH` would flip only
+texture geometry and is not interchangeable with this transform contract.
+`AnimationFacingChecks` covers the zero-X C04 failure shape, both mirrors,
+square4 diagonal quantization, composed hex directions, ordered turns, recovery,
+forced movement, later hits, cancellation, rebinding, hidden actors and reduced
+motion. The original-art C04 native witness and acceptance limits are recorded in
+[Facing consistency verification](FACING-CONSISTENCY-20261106.md).
+
 ## Original assets, not generated replacements
 
 The current export has 39 actor sheets (29 combat, 3 mission and 7 hero

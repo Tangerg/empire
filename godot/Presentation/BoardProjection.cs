@@ -286,6 +286,15 @@ public sealed class BoardProjection
         return GroundPlane(new Vector2((float)(target.X - origin.X), (float)(target.Y - origin.Y)));
     }
 
+    public Vector2 FacingVector(Vector2 logicalFrom, Vector2 logicalTo)
+    {
+        RequireFinite(logicalFrom);
+        RequireFinite(logicalTo);
+        var from = _grid.CellAt(new TilePoint(logicalFrom.X / TileSize, logicalFrom.Y / TileSize));
+        var to = _grid.CellAt(new TilePoint(logicalTo.X / TileSize, logicalTo.Y / TileSize));
+        return FacingVector(_grid.Toward(from, to));
+    }
+
     public float Depth(Vector2 logicalPixel)
     {
         RequireFinite(logicalPixel);
