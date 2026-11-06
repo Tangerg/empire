@@ -60,6 +60,36 @@ catalog owns its new hash; the fixture does not duplicate hashes. Historical
 TypeScript portrait bytes and the frozen oracle remain untouched. Current native
 build/behavioral/visual verification is separate from authoring this migration.
 
+## Bell tower choice wording (2026-11-06)
+
+The `joint-control-with-cain` option now promises only that Cain enters as a
+temporary ally, rather than his entire legion. The shipped-playable campaign
+description explicitly says that he becomes friendly
+(`docs/story-candidates/candidate-01/PLAYABLE-CAMPAIGN.md`, choice consequences).
+`GrayFlagCampaignPolicy` implements that scope by changing `imperial-cain` only.
+The older story draft describes limited squad cooperation, not an opening
+conversion of every imperial unit. Neither allegiance rules nor story outcomes
+change. Both the document expectation and the rendered choice expectation use
+the corrected native PO wording; the historical TypeScript evidence is untouched.
+
+A genuine carried C12 run reached its two-of-three mechanism victory on turn 7:
+63 native player orders, 122 total orders and 391 canonical events matched the
+legal reference. Settlement reached C13 with 12 victories, 17 supplies and
+790 battle funds; an independent automatic restart reconstructed that opening
+without overwriting the manual slot. This is headless input/state/lifecycle
+acceptance, not graphical acceptance or C13 combat coverage.
+
+The reference also records Cain leaving the battlefield. He is not campaign
+roster-bound; this does not establish permanent story death or justify inventing
+a revival rule. The unconditional aftermath still needs narrative-intent review
+if combat departure is meant to change its dialogue.
+
+The standalone narrative runner now includes `ReadingScroll`, the existing
+production dependency of `CampaignShell`. Its prior omission caused CS0246
+before the tests could run. The corrected reviewed choice expectations reject
+the former legion promise in both projection and native-widget groups, with
+independent identity checks still running and clean assertion-failure teardown.
+
 ## Verification
 
 Run `bash tools/godot/narrative-checks/run.sh --verify-guard` for the focused
