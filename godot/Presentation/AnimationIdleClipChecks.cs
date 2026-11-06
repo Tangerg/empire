@@ -185,8 +185,8 @@ public partial class AnimationChecks
             "Changing reduced motion resets eligible idlers without changing an existing finite receipt's pose.");
         board.AnimationsEnabled = true;
         await Tick(board, .060);
-        Require(Frame(attacker) == 3 && Frame(Actor(board, did)) == 2,
-            "Only the acting unit is excluded from idle sampling while its finite clip owns it.");
+        Require(Frame(attacker) == 3 && Frame(Actor(board, did)) == 0,
+            "After release, source recovery and the recipient's explicit static hit both exclude their own idle sampling.");
         await Tick(board, .028);
         var idle = catalog.ResolveUnitClip("c01.swordsman", "idle", ActorClipUnit.Milliseconds);
         CheckClipSprite(sprite, idle.Asset, idle.FrameAt(0), sprite.Scale.X < 0 ? -1 : 1);
@@ -242,7 +242,7 @@ public partial class AnimationChecks
             Transition(state, afterDeath, IdleAction(), [new JsonObject { ["type"] = "death", ["unit"] = aid, ["at"] = At(Int(dying, "x"), Int(dying, "y")) }]));
         await Tick(board, .05);
         Require(Frame(Actor(board, aid)) == 0 && Actor(board, aid).SelfModulate.A < 1 && Frame(Actor(board, did)) == 2,
-            "Death owns the canonical base pose and fade while an unrelated actor continues its idle clip.");
+            "Death owns its declared static pose and fade while an unrelated actor continues its idle clip.");
         await Drain(board, death);
         await Tick(board, .05);
         Require(board.GetNodeOrNull($"CanonicalProjection/Unit_{aid}") is null,

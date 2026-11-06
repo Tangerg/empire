@@ -127,11 +127,12 @@ milliseconds and a finite offset in `[0, Length]`. It is not duplicated in the
 weapon record. Frame spans, release offset and action length all come from that
 single admitted clip. Idle and movement clips retain no release marker.
 
-For reactive strikes and healing, one composite receipt tween samples elapsed time for the actor and impact.
-The impact begins once at the release, sampling its actual age `elapsed -
-releaseMs`, including a tick that jumps across release or the whole action.
-Recovery and impact run together; the presenter finishes at the maximum of actor
-length and release plus impact duration. The existing 40 ms fatal beat follows
+For reactive strikes and healing, one receipt timeline samples elapsed time for the actor and impact.
+The impact begins once at the release boundary, including a tick that jumps
+across release or the whole action. Source recovery and recipient presentation
+are awaited together on the same receipt timeline.
+Recovery and impact run together; the presenter finishes after source recovery
+and the complete released recipient presentation (including its hit clip). The existing 40 ms fatal beat follows
 both. Shared `ImpactVisual` creation/sampling/cleanup is also used by standalone
 area impacts, regeneration and source-hidden healing; it owns no clock. An impossible numeric
 impact interval fails explicitly rather than silently becoming instantaneous.
@@ -195,7 +196,7 @@ The formal C01-09 witness uses its unchanged 58-order prefix and structure-prima
 satchel charge, including the unit collateral that precedes the structure hit.
 Synthetic lawful fixtures additionally exercise delayed empty targets, counters,
 support and cancellation. This contract does not supply newly animated artwork,
-charge gestures, hit reactions, death or celebration art. No unaccepted candidate
+charge gestures, hit-reaction, death or celebration artwork. No unaccepted candidate
 image is shipped.
 
 ## Healing source and recipient
@@ -233,6 +234,51 @@ unit 4 heals unit 6 for 27 HP. Initial/before/after state and ordered event hash
 are preserved, with one publication per event. Controllable-clock checks cover
 release, overshoot, source/recipient identity, recovery/impact retirement,
 visibility and cancellation. They do not replace dynamic visual art acceptance.
+
+## Recipient hit and terminal death clips
+
+`BattleDamage.Resolve` remains the only owner of applied damage and unit death.
+The presenter consumes its committed reports: positive `damage` in attack, area,
+counter, support and parting events, and positive `amount` in collision/status
+reports start the recipient's explicit `hit` action. Healing, zero damage and
+structure impacts do not select a hit pose. Neither a `killed` flag, an HP value,
+a corpse marker nor absence from the final snapshot starts death. Only the
+ordered `death` event starts the explicit `death` clip. Transport passengers have
+no drawn pre-transition actor and receive no invented death presentation.
+
+All current unit/actor action maps explicitly bind `static.hit` (150 ms) and
+`static.death` (220 ms), both using their existing trusted idle image. The former
+is an authored static hold within the existing 420 ms impact; the latter retains
+the previous normalized fade and 35% shrink. These are declared placeholders,
+not newly completed reaction artwork. A multi-frame death samples its declared
+length with that same fade/shrink and never returns to idle. Its single removal
+path retires standing geometry and the node once; a duplicate death cannot find
+or remove it again. Future artwork still requires independent visual acceptance.
+
+`PrepareActorPose` shares immutable clip resolution, finite depth preparation,
+frame/contact geometry, shadows and facing preservation with outgoing actions.
+It does not require attack release metadata, infer a motion policy or create a
+clock. Positive hits suspend only the recipient's idle membership. The hit and
+impact sample the receipt timeline together, finish independently, and hold the
+event until the longer one finishes. A surviving reaction restores idle only at
+its own endpoint. A reactive source's release starts its recipient reaction;
+source recovery, reaction and impact must all finish before the event publishes.
+A fault or cancellation in either branch terminates promptly rather than waiting
+for an unrelated long recovery.
+If the same drawing is still the outgoing source, recovery ends before it can
+acquire a hit pose. This is pose serialization, not a second gameplay decision.
+
+Area reports remain in their domain order. The renderer does not invent a
+simultaneous group or infer a source from a recipient. Existing pre-action
+visibility gates strikes and death; collision and the new status damage use the
+conservative before-and-after gate for continuing-unit effects. A prior-visible
+terminal death remains independent of whether its damage effect was visible. Hidden recipients are filtered
+before action-art lookup. Status damage uses the committed amount and existing
+generic impact, without guessing a status-themed FX or a fatal pause. Cancellation,
+rebind, exit and errors use the existing committed-After settlement; cancelled
+waiters cannot return old actors to idle. Reduced motion settles synchronously.
+The screen/application still await the complete receipt before AI or results;
+no separate result-completion flag or death registry is introduced.
 
 ## Distance-sampled movement clips
 
@@ -313,9 +359,10 @@ Supported native presenters (including the explicit recovery and displacement re
 | partingShot | same plus at | Weapon-selected action; release impact at explicit departure cell |
 | attackStructure, areaAttackStructure | attacker, structure, weapon, damage, destroyed | Recipient structure impact without another wind-up |
 | forcedMove | unit, mode, from, to, path | Ordered ground slide; teleport changes contact without interpolating a route |
-| collisionDamage | unit, amount, killed | One generic impact for the emitted actual collision damage |
+| collisionDamage | unit, amount, killed | Positive recipient hit clip with generic impact; retain both-boundary visibility |
+| statusTick | unit, amount | Positive recipient hit clip with generic impact; both-boundary visibility |
 | regen | unit, amount | Existing healing effect at the current visible contact |
-| death | unit | 220 ms fade and 35% shrink about cell center, then remove ghost |
+| death | unit | Bound terminal clip with normalized fade/shrink, then remove ghost once |
 | heal | source, target, amount | Ability-selected source action; released heal strip and 500 ms recipient number |
 | recruit | unit, at | Add only the new actor, then 240 ms fade/scale from 0.6 to 1 |
 | capture | captured | Refresh site ownership when completed |
@@ -381,7 +428,7 @@ injected through `CANDIDATE_01_HEAL_FX`, exported from the source presentation A
 ## Explicit boundaries
 
 - Source default presenters do not animate castBegan/resolved/cancelled,
-  statusTick, unitWithdrawn, unitEmbarked,
+  unitWithdrawn, unitEmbarked,
   unitDisembarked, unitRouted, unitSurrendered, unitSpawned, unitRevived,
   structureDamaged/repaired/destroyed or arbitrary scenario signals. They settle
   without invented effects. A resolved cast's subsequent ordinary combat events

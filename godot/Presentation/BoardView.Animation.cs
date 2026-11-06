@@ -161,7 +161,7 @@ public partial class BoardView
                     if (!WasVisible(playback, defender))
                         return true;
                     var at = Text(item, "type") == "partingShot" ? CellCentre(Coordinate(item["at"]!)) : ImpactOn(defender);
-                    return await PlayStrike(playback, item, at, Text(item, "type") is "counter" or "supportAttack" or "partingShot", "killed");
+                    return await PlayStrike(playback, item, at, Text(item, "type") is "counter" or "supportAttack" or "partingShot", "killed", DrawnUnit(defender));
                 }
             case "attackStructure":
             case "areaAttackStructure":
@@ -200,7 +200,14 @@ public partial class BoardView
                     var id = Integer(item, "unit");
                     return !BattleEventVisibility.UnitWasAndIsVisible(id, playback.Transition.BeforeVisibleUnitIds, playback.AfterVisible)
                         || ImpactOn(id) is not { } at
-                        || await AnimateImpact(playback, at, Number(item["amount"], "collision amount"), false, item["killed"]!.GetValue<bool>(), null);
+                        || await AnimateUnitDamage(playback, id, at, Number(item["amount"], "collision amount"), item["killed"]!.GetValue<bool>(), null);
+                }
+            case "statusTick":
+                {
+                    var id = Integer(item, "unit");
+                    return !BattleEventVisibility.UnitWasAndIsVisible(id, playback.Transition.BeforeVisibleUnitIds, playback.AfterVisible)
+                        || ImpactOn(id) is not { } at
+                        || await AnimateUnitDamage(playback, id, at, Number(item["amount"], "status amount"), false, null);
                 }
             case "heal":
                 {
@@ -284,7 +291,7 @@ public partial class BoardView
         return complete;
     }
 
-    private async Task<bool> PlayStrike(Playback playback, JsonObject item, Vector2? at, bool windup, string fatalField)
+    private async Task<bool> PlayStrike(Playback playback, JsonObject item, Vector2? at, bool windup, string fatalField, Node2D? recipient = null)
     {
         var attacker = Integer(item, "attacker");
         var weapon = Text(item, "weapon");
@@ -292,8 +299,17 @@ public partial class BoardView
         var fatal = item[fatalField]!.GetValue<bool>();
         var topic = at is null ? null : _assets!.ResolveWeaponEffect(weapon)?.TopicId;
         if (windup && WasVisible(playback, attacker) && DrawnUnit(attacker) is { } actor)
-            return await AnimateActorAction(playback, actor, _assets!.ResolveWeaponAction(weapon), at, amount, false, fatal, topic);
-        return at is null || await AnimateImpact(playback, at.Value, amount, false, fatal, topic);
+            return await AnimateActorAction(playback, actor, _assets!.ResolveWeaponAction(weapon), at, amount, false, fatal, topic, recipient);
+        if (recipient is not null && playback.Attack is { } active && DrawnUnit(active.Attacker) == recipient && !await active.Recovery)
+            return false;
+        return at is null || await AnimateImpact(playback, at.Value, amount, false, fatal, topic, recipient);
+    }
+
+    private async Task<bool> AnimateUnitDamage(Playback playback, int id, Vector2 at, double amount, bool fatal, string? topic)
+    {
+        if (playback.Attack is { } active && active.Attacker == id && !await active.Recovery)
+            return false;
+        return await AnimateImpact(playback, at, amount, false, fatal, topic, DrawnUnit(id));
     }
 
     private async Task<bool> AnimatePath(Playback playback, int id, JsonArray path, bool walking)
@@ -367,21 +383,37 @@ public partial class BoardView
 
     private sealed record ActorActionVisual(ActorClip Clip, Action<double> Sample);
 
-    private ActorActionVisual PrepareActorAction(Node2D actor, ActorAction policy, Vector2? target)
+    private ActorActionVisual PrepareActorPose(Node2D actor, string action, bool? faceLeft = null)
     {
-        var clip = _assets!.ResolveUnitClip(actor.GetMeta("unit_type").AsString(), policy.Action, ActorClipUnit.Milliseconds,
+        var clip = _assets!.ResolveUnitClip(actor.GetMeta("unit_type").AsString(), action, ActorClipUnit.Milliseconds,
             actor.HasMeta("actor_key") ? actor.GetMeta("actor_key").AsString() : null);
-        var release = clip.RequireRelease();
         SuspendIdle(actor);
         var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
-        var anchor = Projection.Project(actor.GetMeta("logical_contact").AsVector2());
-        var direction = ((target ?? anchor) - anchor).Normalized();
-        if (direction.X != 0)
-            Face(sprite, direction.X < 0);
-        actor.Position = anchor;
+        if (faceLeft is { } left)
+            Face(sprite, left);
         PrepareActorClip(actor, sprite, clip);
         var frame = clip.FrameAt(0);
         SetFrame(sprite, clip.Asset, frame);
+        SortAnimatedStanding();
+        return new(clip, elapsed =>
+        {
+            var nextFrame = clip.FrameAt(elapsed);
+            if (nextFrame == frame)
+                return;
+            SetFrame(sprite, clip.Asset, nextFrame);
+            frame = nextFrame;
+            SortAnimatedStanding();
+        });
+    }
+
+    private ActorActionVisual PrepareActorAction(Node2D actor, ActorAction policy, Vector2? target)
+    {
+        var anchor = Projection.Project(actor.GetMeta("logical_contact").AsVector2());
+        var direction = ((target ?? anchor) - anchor).Normalized();
+        var pose = PrepareActorPose(actor, policy.Action, direction.X == 0 ? null : direction.X < 0);
+        var clip = pose.Clip;
+        var release = clip.RequireRelease();
+        actor.Position = anchor;
         var actorFinished = false;
         void Sample(double elapsed)
         {
@@ -395,12 +427,7 @@ public partial class BoardView
                 }
                 else
                 {
-                    var nextFrame = clip.FrameAt(elapsed);
-                    if (nextFrame != frame)
-                    {
-                        SetFrame(sprite, clip.Asset, nextFrame);
-                        frame = nextFrame;
-                    }
+                    pose.Sample(elapsed);
                     var travel = policy.Motion == ActorMotion.Stationary ? 0 : elapsed < release
                         ? Math.Sin(elapsed / release * (Math.PI / 2))
                         : Math.Cos((elapsed - release) / (clip.Length - release) * (Math.PI / 2));
@@ -413,7 +440,7 @@ public partial class BoardView
     }
 
     private async Task<bool> AnimateActorAction(Playback playback, Node2D actor, ActorAction policy,
-        Vector2? target, double amount, bool healing, bool fatal, string? topic)
+        Vector2? target, double amount, bool healing, bool fatal, string? topic, Node2D? recipient = null)
     {
         var visual = PrepareActorAction(actor, policy, target);
         var clip = visual.Clip;
@@ -421,31 +448,21 @@ public partial class BoardView
         var impactEnd = target is null ? 0 : release + ImpactDuration(healing);
         if (target is not null && (!double.IsFinite(impactEnd) || impactEnd <= release))
             throw new InvalidOperationException($"Actor release cannot represent the following impact: {clip.Asset.Identity}.");
-        ImpactVisual? impact = null;
-        var duration = Math.Max(clip.Length, impactEnd);
-        void Sample(double elapsed)
-        {
-            visual.Sample(elapsed);
-            if (target is not { } at || elapsed < release)
-                return;
-            impact ??= CreateImpactVisual(playback, at, amount, healing, topic);
-            if (elapsed < impactEnd)
-                impact.Sample((elapsed - release) / ImpactDuration(healing));
-            else
-                RemoveEffect(impact.Node);
-        }
-        try
-        {
-            // One elapsed sample owns both release and recovery, including coarse-tick overshoot.
-            Sample(0);
-            if (!await playback.Clock.TweenAsync(duration, t => Sample(t * duration)))
-                return false;
-        }
-        finally
-        {
-            if (impact is not null)
-                RemoveEffect(impact.Node);
-        }
+        visual.Sample(0);
+        var recovery = playback.Clock.TweenAsync(clip.Length, t => visual.Sample(t * clip.Length));
+        if (!await playback.Clock.WaitAsync(release))
+            return false;
+        if (recovery.IsFaulted)
+            await recovery;
+        // A single drawing cannot own both an outgoing pose and a reaction.
+        if (recipient == actor && !await recovery)
+            return false;
+        var impact = target is { } at ? AnimateImpact(playback, at, amount, healing, false, topic, recipient) : Task.FromResult(true);
+        // Fail or cancel as soon as either branch does; a broken recipient must
+        // not leave input waiting for an unrelated, potentially very long clip.
+        var completed = await Task.WhenAny(recovery, impact);
+        if (!await completed || !await (ReferenceEquals(completed, recovery) ? impact : recovery))
+            return false;
         return target is null || !fatal || await playback.Clock.WaitAsync(40);
     }
 
@@ -471,10 +488,11 @@ public partial class BoardView
         var actor = DrawnUnit(id);
         if (actor is null || !WasVisible(playback, id))
             return true;
-        SuspendIdle(actor);
+        var visual = PrepareActorPose(actor, "death");
         var at = actor.Position;
-        if (!await playback.Clock.TweenAsync(220, t =>
+        if (!await playback.Clock.TweenAsync(visual.Clip.Length, t =>
         {
+            visual.Sample(t * visual.Clip.Length);
             actor.SelfModulate = new Color(1, 1, 1, (float)(1 - t));
             SwellActor(actor, at, (float)(1 - 0.35 * t));
         }))

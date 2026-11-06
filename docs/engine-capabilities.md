@@ -521,6 +521,10 @@ disposition and the other unit fields have separate owners and scope.
 
 - `BattleDamage` asks `UnitHealth.Damage` for the numerical transition, then owns
   death, markers, passenger/commander/cast aftermath and ordered events.
+  Native actor hit clips consume positive committed unit damage reports; only
+  the explicit death event starts a terminal clip/removal. Clip bindings and the
+  existing receipt timeline own visual sampling, not health or a second death
+  state. All current hit/death bindings explicitly reuse static trusted art.
 - Registered healing abilities and `BattleLifecycle` use `UnitHealth.Heal`.
   `TacticalCell.Heal` owns the battlefield's terrain/overlay healing read fact.
   Owner-turn recovery feedback reads the emitted actual `regen` amount; text and

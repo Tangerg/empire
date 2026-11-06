@@ -43,6 +43,24 @@
           "span": 1
         }
       ]
+    },
+    "static.hit": {
+      "unit": "milliseconds",
+      "frames": [
+        {
+          "frame": "idle",
+          "span": 150
+        }
+      ]
+    },
+    "static.death": {
+      "unit": "milliseconds",
+      "frames": [
+        {
+          "frame": "idle",
+          "span": 220
+        }
+      ]
     }
   },
   "assets": [

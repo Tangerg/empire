@@ -40,6 +40,7 @@ public partial class AnimationChecks : Node
             CheckReleaseDefinitions();
             CheckHealingDefinitions();
             await CheckClock();
+            await CheckReactionClips();
             await CheckActivationDepthOwnership();
             await CheckActivationPlayback();
             await CheckActivationLegalReceipt();
@@ -459,7 +460,7 @@ public partial class AnimationChecks : Node
         var after = Copy();
         var unit = before["units"]![0]!.AsObject();
         var id = Int(unit, "id");
-        var kinds = new[] { "move", "castBegan", "castResolved", "castCancelled", "statusTick",
+        var kinds = new[] { "move", "castBegan", "castResolved", "castCancelled",
             "unitWithdrawn", "unitEmbarked", "unitDisembarked", "unitRouted", "unitSurrendered", "unitSpawned", "unitRevived", "structureDamaged", "structureDestroyed", "structureRepaired", "structureDisabled", "structureEnabled" };
         foreach (var kind in kinds)
         {

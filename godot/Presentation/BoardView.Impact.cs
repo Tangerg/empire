@@ -59,12 +59,34 @@ public partial class BoardView
         catch { RemoveEffect(effect); throw; }
     }
 
-    private async Task<bool> AnimateImpact(Playback playback, Vector2 at, double amount, bool healing, bool fatal, string? topic)
+    private async Task<bool> AnimateImpact(Playback playback, Vector2 at, double amount, bool healing, bool fatal, string? topic,
+        Node2D? recipient = null)
     {
+        var reaction = !healing && amount > 0 && recipient is not null ? PrepareActorPose(recipient, "hit") : null;
         var impact = CreateImpactVisual(playback, at, amount, healing, topic);
+        var impactDuration = ImpactDuration(healing);
+        var duration = Math.Max(impactDuration, reaction?.Clip.Length ?? 0);
+        var reactionComplete = false;
+        void Sample(double elapsed)
+        {
+            if (elapsed < impactDuration)
+                impact.Sample(elapsed / impactDuration);
+            else
+                RemoveEffect(impact.Node);
+            if (reaction is null || reactionComplete)
+                return;
+            if (elapsed < reaction.Clip.Length)
+                reaction.Sample(elapsed);
+            else
+            {
+                ResumeIdle(recipient!);
+                reactionComplete = true;
+            }
+        }
         try
         {
-            if (!await playback.Clock.TweenAsync(ImpactDuration(healing), impact.Sample))
+            Sample(0);
+            if (!await playback.Clock.TweenAsync(duration, t => Sample(t * duration)))
                 return false;
         }
         finally { RemoveEffect(impact.Node); }

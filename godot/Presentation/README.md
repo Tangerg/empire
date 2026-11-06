@@ -185,6 +185,12 @@ the previous two support poses, not new walking artwork. Full pose/contact depth
 coverage is prepared once per path through the existing standing geometry owner.
 
 Weapon action policies explicitly choose action and stationary/lunge motion, while
-the chosen timed clip owns its release marker. One receipt tween samples actor
+the chosen timed clip owns its release marker. One receipt timeline samples actor
 recovery and released impact together, retaining overshoot and independent visual
 lifetimes. The existing static poses remain unchanged; no new candidate art ships.
+
+Recipient `hit` and terminal `death` clips are driven only by committed damage and
+death events. Explicit static bindings retain trusted idle art until replacement
+artwork is accepted. The same receipt timeline awaits source, reaction, effect
+and terminal removal; no independent death or result owner is added. See
+[ACTION-PRESENTATION.md](../docs/ACTION-PRESENTATION.md#recipient-hit-and-terminal-death-clips).
