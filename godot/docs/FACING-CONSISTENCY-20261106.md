@@ -51,14 +51,22 @@ wall times are not a performance comparison or a claim of smooth visual acceptan
 
 ## Verification status
 
-Current targeted/aggregate outcomes will be recorded after completion.
+The final focused `AnimationChecks` run passed **2,920 assertions** and the
+strict native process/diagnostic boundary returned **0**. The unchanged original
+`bash tools/godot/verify-native.sh` then completed uninterrupted in
+**3266 seconds**, exit **0**, against implementation commit
+`23a4e544e21b3e351f67c267c587a66a85673a51`. All 31 native scenes, both builds,
+format/metadata/static-map checks, core contracts, 16-level replay/save,
+objective/catalog checks and the final played campaign flow completed. All 16
+AI action/event/receipt digests are identical to the preceding `8d1991695`
+checkpoint. The final verification commit changes reports only.
 Controlled negatives already compile successfully and are rejected at the intended
 new assertion: restore the entire old production playback, omit recovery mirror
 restoration, ignore the ordered facing receipt, omit initial path facing, or
 replace grid quantization with the raw target vector. Fixed sources are restored
 after each negative; no mutant is part of the implementation. The
-original headless pass with pre-fix expectations correctly failed the obsolete
-assertion that a temporary aim should persist after recovery. That assertion now
+original headless pass with pre-fix expectations stopped at the obsolete
+expectation that a temporary aim should persist after recovery. That assertion now
 requires restoration to the canonical pre-action mirror, without weakening crop,
 anchor, scale, shadow, contact or depth checks. The first new-suite run also
 caught a fixture setup error: the hex guard queried `Projection` immediately

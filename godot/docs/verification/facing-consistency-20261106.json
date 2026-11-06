@@ -353,5 +353,81 @@
     "Automatic native clock and actual BattleScreen/HUD; no manual time stepping",
     "Software-rendered llvmpipe; unavailable audio; no FPS or smooth visual acceptance claim",
     "Unaccepted candidate art was not bound or published"
-  ]
+  ],
+  "verification": {
+    "implementationCommit": "23a4e544e21b3e351f67c267c587a66a85673a51",
+    "command": "bash tools/godot/verify-native.sh",
+    "aggregateExit": 0,
+    "startedUtc": "2026-11-06T21:44:18+00:00",
+    "finishedUtc": "2026-11-06T22:38:44+00:00",
+    "elapsedSeconds": 3266.0,
+    "uninterruptedOriginalGate": true,
+    "nativeScenes": [
+      "NarrativeChecks",
+      "OathPadChecks",
+      "DynamicStateChecks",
+      "PaintedSurfaceChecks",
+      "SceneSurfaceChecks",
+      "AssembledGroundChecks",
+      "PaintedSurfaceBroadPhaseChecks",
+      "BlackFlagCampChecks",
+      "ReedVillageChecks",
+      "WhiteRiverChecks",
+      "LuojiaChecks",
+      "PresentationChecks",
+      "AnimationChecks",
+      "CameraChecks",
+      "CameraIntegrationChecks",
+      "TacticalHudChecks",
+      "IdleGuidanceChecks",
+      "DossierFocusChecks",
+      "BattleScreenChecks",
+      "RegenerationFeedbackChecks",
+      "ScenarioSignalFeedbackChecks",
+      "MoraleFeedbackChecks",
+      "ReinforcementFeedbackChecks",
+      "BattleResultFlowChecks",
+      "CampaignNavigationChecks",
+      "StagingOpeningChecks",
+      "CampaignUiFlowChecks",
+      "LightingLifetimeChecks",
+      "LightingChecks",
+      "SceneryChecks",
+      "CampaignPlayedFlowChecks"
+    ],
+    "targetedAnimationAssertions": 2920,
+    "targetedAnimationExit": 0,
+    "sameSixteenLevelActionEventReceiptDigests": true,
+    "negativeControls": [
+      {
+        "mutation": "original-old-playback",
+        "buildExit": 0,
+        "gateExit": 1
+      },
+      {
+        "mutation": "missing-recovery",
+        "buildExit": 0,
+        "gateExit": 1,
+        "expectedFailingCheck": "CheckTemporaryFacing"
+      },
+      {
+        "mutation": "ignored-receipt",
+        "buildExit": 0,
+        "gateExit": 1,
+        "expectedFailingCheck": "CheckOrderedFacing"
+      },
+      {
+        "mutation": "missing-first-path-face",
+        "buildExit": 0,
+        "gateExit": 1,
+        "expectedFailingCheck": "CheckPathFacing"
+      },
+      {
+        "mutation": "raw-target-direction",
+        "buildExit": 0,
+        "gateExit": 1,
+        "expectedFailingCheck": "CheckTemporaryFacing"
+      }
+    ]
+  }
 }
