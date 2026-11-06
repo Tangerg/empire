@@ -205,7 +205,7 @@ public partial class MoraleFeedbackChecks : Node
                         clip.Size -= new Vector2(scroll.GetVScrollBar().Size.X, 0);
                     Require(ruleLabel.GetLineCount() > 0 && ruleLabel.Size.Y >= ruleLabel.GetMinimumSize().Y
                         && clip.Encloses(ruleLabel.GetGlobalRect()) && clip.Encloses(valueLabel.GetGlobalRect()) && clip.Encloses(bar.GetGlobalRect()),
-                        "Morale labels and gauge fit the real scroll clipping area at both supported widths, with enough native text height.");
+                        $"Morale labels and gauge fit the real scroll clipping area at both supported widths, with enough native text height: window={size}, unit={id}, clip={clip}, rule={ruleLabel.GetGlobalRect()}, minimum={ruleLabel.GetMinimumSize()}, value={valueLabel.GetGlobalRect()}, gauge={bar.GetGlobalRect()}, scroll={scroll.GetGlobalRect()}, scrollbar={scroll.GetVScrollBar().GetGlobalRect()}, offset={scroll.ScrollVertical}.");
                     GD.Print($"MORALE_DOSSIER size={size} unit={id} text={valueLabel.Text} rule={ruleLabel.Text} lines={ruleLabel.GetLineCount()} hash={StateDigest.Hash(session.Snapshot())}");
                     popup.Hide();
                     await Layout();

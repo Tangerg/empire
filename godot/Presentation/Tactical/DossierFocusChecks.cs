@@ -248,13 +248,17 @@ public partial class DossierFocusChecks : Node
         await Press(popup, Key.Home);
         for (var step = 0; step < 64 && unread.Count > 0; step++)
         {
-            unread.RemoveWhere(row => scroll.GetGlobalRect().Encloses(row.GetGlobalRect()));
+            var readable = scroll.GetGlobalRect();
+            if (scroll.GetVScrollBar().IsVisibleInTree())
+                readable.Size -= new Vector2(scroll.GetVScrollBar().Size.X, 0);
+            unread.RemoveWhere(row => readable.Encloses(row.GetGlobalRect()));
             await Press(popup, Key.Down);
         }
         Require(unread.Count == 0, "Continuous keyboard reading reveals every complete real unit detail, including the former blind gap.");
         await Press(popup, Key.Home);
         await Press(popup, Key.Pagedown);
         var readingHint = (Label)hud.FindChild("ReadingHint", true, false);
+        Require(scroll.GetVScrollBar().Size.X >= 10, "The dossier retains a usable scroll thumb without covering its text.");
         Require(readingHint.Visible && readingHint.Text == text.Format("ui.hud.dossier_reading_hint"),
             "The actual dossier exposes localized continuous reading instructions outside its scroll area.");
         Require(!scroll.IsAncestorOf(readingHint) && popup.GetVisibleRect().Encloses(readingHint.GetGlobalRect()),

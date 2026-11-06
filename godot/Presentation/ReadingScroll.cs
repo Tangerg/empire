@@ -43,7 +43,11 @@ public partial class ReadingScroll : ScrollContainer
     public override void _Ready()
     {
         var bar = GetVScrollBar();
-        bar.CustomMinimumSize = new Vector2(10, 0);
+        // Native ScrollContainer reserves the bar's theme minimum, not CustomMinimumSize.
+        var track = (StyleBox)bar.GetThemeStylebox("scroll").Duplicate();
+        track.ContentMarginLeft = Math.Max(5, track.GetMargin(Side.Left));
+        track.ContentMarginRight = Math.Max(5, track.GetMargin(Side.Right));
+        bar.AddThemeStyleboxOverride("scroll", track);
         foreach (var state in new[] { "grabber", "grabber_highlight", "grabber_pressed" })
             bar.AddThemeStyleboxOverride(state, new StyleBoxFlat
             {
