@@ -48,13 +48,16 @@ public partial class StoryScreen : Control
     }
 
     public void ShowStory(StoryEntry entry, IReadOnlyDictionary<string, string> identityNameKeys, NarrativeContext narrative,
-        bool isEnding, Action onContinue, Action onFinish, Action onExit)
+        bool isEnding, Action onContinue, Action onFinish, Action onExit, int initialBeatIndex = 0)
     {
         ArgumentNullException.ThrowIfNull(onContinue);
         ArgumentNullException.ThrowIfNull(onFinish);
         ArgumentNullException.ThrowIfNull(onExit);
-        var first = NarrativeProjection.Story(entry, identityNameKeys, narrative, 0, isEnding);
+        var first = NarrativeProjection.Story(entry, identityNameKeys, narrative, initialBeatIndex, isEnding);
+        if (initialBeatIndex >= entry.Beats.Count)
+            throw new ArgumentOutOfRangeException(nameof(initialBeatIndex));
         Reset(entry.Id, first.Shell, onExit);
+        BeatIndex = initialBeatIndex;
         story = entry;
         speakers = identityNameKeys;
         context = narrative;
@@ -197,15 +200,9 @@ public partial class StoryScreen : Control
 
     private void AdvanceLocalBeat()
     {
-        // The source ending is intentionally not paged: its first beat exposes finish immediately.
-        if (ending)
-        {
-            Submit(finishStory);
-            return;
-        }
         if (PresentedStory!.LastBeat)
         {
-            Submit(continueStory);
+            Submit(ending ? finishStory : continueStory);
             return;
         }
         BeatIndex++;

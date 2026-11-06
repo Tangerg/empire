@@ -97,8 +97,9 @@ public static class NarrativeProjection
         return new StoryView(CampaignShellView.Create(context, story.Chapter, story.Scene),
             text.Format(story.KickerKey), text.Format(story.DateKey), text.Format(story.LocationKey), text.Format(story.TitleKey), text.Format(story.SummaryKey), mission,
             IdentityNames.Resolve(text, identityNameKeys, beat.Speaker), text.Format(beat.TextKey), context.Presentation.Portraits.TryGetValue(beat.Speaker, out var portraitId) ? context.PortraitCatalog.Resolve(portraitId) : null, beatIndex, story.Beats.Count,
-            text.Format(ending ? context.CampaignActive ? context.Presentation.CompletionLabelKey : "ui.campaign.exit"
-                : lastBeat ? "ui.story.continue" : "ui.story.next_beat"), ending,
+            text.Format(!lastBeat ? "ui.story.next_beat"
+                : ending ? context.CampaignActive ? context.Presentation.CompletionLabelKey : "ui.campaign.exit"
+                : "ui.story.continue"), ending,
             text.Format("ui.story.objective"), text.Format("ui.story.danger"), text.Format("ui.story.lesson"));
     }
 

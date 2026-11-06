@@ -4,10 +4,10 @@
 
 `StoryScreen` owns only a local beat cursor and the lifetime of its controls. It never reads or mutates a campaign runtime, performs a save, or synthesizes a battle outcome. The application supplies `NarrativeContext` (the explicit `GameText` service, authored metadata, completed battle count, active status) and callbacks:
 
-- `ShowStory(story, identityNameKeys, context, isEnding, onContinue, onFinish, onExit)`.
+- `ShowStory(story, identityNameKeys, context, isEnding, onContinue, onFinish, onExit, initialBeatIndex = 0)`.
 - `ShowChoice(choice, availableOptionIds, context, onChoose, onExit)`.
 
-Normal primary actions advance one local beat. Only the last normal beat invokes `onContinue`. Ending primary actions invoke `onFinish` immediately. That callback, not the screen, decides whether to advance/save/rebind or exit. Menu navigation is always `onExit`. Choice IDs are passed unchanged to the caller, in source presentation order, restricted to the canonical available option IDs.
+Every pre-final primary action advances one local beat without calling the application. Only the last normal beat invokes `onContinue`; only the last ending beat invokes `onFinish`. That callback, not the screen, decides whether to advance/save/rebind or exit. Menu navigation is always `onExit`. Choice IDs are passed unchanged to the caller, in source presentation order, restricted to the canonical available option IDs.
 
 `NarrativeProjection` is a detached read model. `CampaignShell` renders its supplied title, chapter heading, segmented progress, actual backdrop, menu button and scroll body. Its display methods are reusable by staging/results without gaining campaign authority. The native `grayflag-story.json` schema 3 owns story/choice structure, shared `identityNameKeys` for narrative roles and named campaign people, speaker IDs and manually authored semantic beat IDs. It contains message references, not prose. `grayflag-staging.json` schema 3 owns shared `titleKey`, `completionLabelKey`, chapter title references, scene artwork and identity-to-portrait-ID bindings. `portrait-catalog.json` alone owns current portrait resource paths and hashes; a shared injected `PortraitCatalog` resolves them for story, staging and HUD. Level entries no longer repeat chapter titles. `zh_CN.po` alone owns narrative wording and the shared shell labels. No story/choice/scene identifiers are duplicated in production C#.
 
@@ -21,14 +21,26 @@ The original `story.ts` mixes the prologue's world date, `断冠纪第 318 年`,
 
 `tests/native/narrative.json` explicitly owns all 35 current expected dates. Projections and actual widgets compare directly with that reviewed native fixture, without a C# date override. Its [migration contract](../tests/native/narrative.md) records the precise intentional departures from the unchanged historical oracle, including formal mission wording and the existing native portrait-source ownership.
 
-## The ending quirk is intentionally preserved
+## Ending reading contract
 
-The original `packages/game-ui/src/ui/campaign-game.ts` has two distinct contracts:
+The native design intentionally departs from the historical TypeScript controller's
+first-beat-only ending. All four existing chapter-three ending beats are readable
+in order. Before the final beat, the primary action is `下一段 →` for active,
+completed and failed campaign states; it changes only the local cursor.
 
-1. `nextBeat()` returns immediately for an ending. The four-beat chapter-three ending enters at local beat zero, and normal navigation never exposes its remaining three beats.
-2. `finishCampaign()` on an active ending calls the canonical `runtime.advance()`, persists and renders the same ending. It does not exit or increment the local beat. A later finish when status is no longer active exits without another save or transition. The declared outcome may be `completed` **or** `failed`.
+At the last beat, an active ending invokes `onFinish`. The application advances
+and saves the declared canonical outcome, then explicitly rebinds the same
+ending with its last `initialBeatIndex`. This retains the text just read rather
+than forcing a reread. Its next final action returns to the menu without another
+transition or save. A completed/failed ending opened afresh is also readable in
+order, and its final action only exits. The single-beat failure ending retains
+its immediate final action and declared failed outcome.
 
-`renderStory()` shows the adapter's completion label for any active ending, including the failed-ending fixture; once not active, it says `返回主菜单`. Native presentation preserves that label behavior rather than inventing a victory or silently repairing the source story flow. The two ending documents have five beats in the data. Testing all five as controlled render fixtures is not a claim that a normal playthrough can page through them. Changing this behavior requires an explicit source/design decision, not a renderer fix.
+Fresh Continue, F9 load and exit/re-entry start at beat zero. The cursor handoff
+belongs only to the same active ending's completion, not to campaign persistence.
+There are no new save fields, rewards, authored beats or PO wording changes.
+The final active label remains the existing completion label, including for the
+failure ending; terminal final actions use `返回主菜单`.
 
 ## Text, images and controls
 
@@ -52,15 +64,15 @@ The test creates a fresh `/tmp/empire-narrative.*` project and isolates XDG data
 
 The complete fixture migrated from observations originally produced by `StoryCampaignController`, its adapter/runtime and save helpers preserves:
 
-- 35 documents / 91 ordinary-mode beat render fixtures, plus all five ending beats under active/completed/failed status: 106 source story projections total.
+- 35 documents / 91 ordinary-mode beat render fixtures, plus all five ending beats under active/completed/failed status: 106 native story projections total.
 - All 11 source-rendered choice menus.
-- 48 original transition fixtures, including the deliberately unreachable nonzero ending cursors that characterize the source quirk.
+- 48 transition fixtures, including 15 reviewed ending sequences starting at every declared cursor under active/completed/failed status.
 - 11 actual DOM lifetime fixtures, with three unmounted/remounted cases explicitly marked as native safety differences.
 - Four supplemental native inputs: real runtime retreat history gives nonzero progress, a valid zero-battle definition, an unknown speaker rejection, and a known speaker with no portrait. The unknown-speaker fallback is an intentional breaking correction; its old display expectation was removed, not silently normalized.
 
-Native checks compare complete story projections against the current native fixture, without date, prose or portrait exclusions, and explicitly assert unknown-speaker rejection. Native widgets exercise every ordinary-mode beat fixture and each reachable beat-zero ending/status fixture. An explicit coverage assertion retains the existing `reinforcement-deadline` widget case. All 91 beat speaker projections use the shared identity owner in an independent check group; group failures are collected so prose failures do not hide identity checks or vice versa. Canonical normal and ending callback sequences use the existing C# `CampaignRuntime` and `CampaignSave`; no battles or victories are fabricated.
+Native checks compare complete story projections against the current native fixture, without date, prose or portrait exclusions, and explicitly assert unknown-speaker rejection. Native widgets exercise every ordinary-mode beat fixture and every ending beat/status fixture. An explicit coverage assertion retains the existing `reinforcement-deadline` widget case. All 91 beat speaker projections use the shared identity owner in an independent check group; group failures are collected so prose failures do not hide identity checks or vice versa. Canonical normal and ending callback sequences use the existing C# `CampaignRuntime` and `CampaignSave`; no battles or victories are fabricated.
 
-Negative controls change only temporary expected prose, an expected speaker name, and the production projection's next-beat key. Each must fail its corresponding check, and the prose/speaker controls also prove the independent group still runs. Historical source-side ending paging mutation was separately rejected by the original oracle.
+Negative controls change only temporary expected prose, an expected speaker name, and the production projection's next-beat key. Each must fail its corresponding check, and the prose/speaker controls also prove the independent group still runs. The historical source-side ending paging mutation was separately rejected by the original oracle; that frozen browser contract is not the current native ending contract.
 
 The completed narrative-only checkpoint passed its native widget/projection checks and wrong-navigation-key negative control. That checkpoint covered 452 catalog messages and 415 content references, before the subsequent menu/staging/refusal additions; it is not merged-game acceptance. Parser and authoring checks reject malformed, duplicate, missing, empty, fuzzy and obsolete data. Two independent in-memory catalogs change actual native widget wording without changing authoring identities or state. These test catalogs are not additional shipped languages.
 

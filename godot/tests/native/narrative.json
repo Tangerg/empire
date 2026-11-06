@@ -18123,8 +18123,8 @@
           false,
           false
         ],
-        "primaryLabel": "完成前三章",
-        "primaryAction": "finish"
+        "primaryLabel": "下一段 →",
+        "primaryAction": "nextBeat"
       }
     },
     {
@@ -18285,8 +18285,8 @@
           false,
           false
         ],
-        "primaryLabel": "完成前三章",
-        "primaryAction": "finish"
+        "primaryLabel": "下一段 →",
+        "primaryAction": "nextBeat"
       }
     },
     {
@@ -18447,8 +18447,8 @@
           true,
           false
         ],
-        "primaryLabel": "完成前三章",
-        "primaryAction": "finish"
+        "primaryLabel": "下一段 →",
+        "primaryAction": "nextBeat"
       }
     },
     {
@@ -18771,8 +18771,8 @@
           false,
           false
         ],
-        "primaryLabel": "返回主菜单",
-        "primaryAction": "finish"
+        "primaryLabel": "下一段 →",
+        "primaryAction": "nextBeat"
       }
     },
     {
@@ -18933,8 +18933,8 @@
           false,
           false
         ],
-        "primaryLabel": "返回主菜单",
-        "primaryAction": "finish"
+        "primaryLabel": "下一段 →",
+        "primaryAction": "nextBeat"
       }
     },
     {
@@ -19095,8 +19095,8 @@
           true,
           false
         ],
-        "primaryLabel": "返回主菜单",
-        "primaryAction": "finish"
+        "primaryLabel": "下一段 →",
+        "primaryAction": "nextBeat"
       }
     },
     {
@@ -19419,8 +19419,8 @@
           false,
           false
         ],
-        "primaryLabel": "返回主菜单",
-        "primaryAction": "finish"
+        "primaryLabel": "下一段 →",
+        "primaryAction": "nextBeat"
       }
     },
     {
@@ -19581,8 +19581,8 @@
           false,
           false
         ],
-        "primaryLabel": "返回主菜单",
-        "primaryAction": "finish"
+        "primaryLabel": "下一段 →",
+        "primaryAction": "nextBeat"
       }
     },
     {
@@ -19743,8 +19743,8 @@
           true,
           false
         ],
-        "primaryLabel": "返回主菜单",
-        "primaryAction": "finish"
+        "primaryLabel": "下一段 →",
+        "primaryAction": "nextBeat"
       }
     },
     {
@@ -43092,16 +43092,293 @@
       },
       "initialBeat": 0,
       "operations": [
-        "nextBeat",
-        "finish",
-        "nextBeat",
-        "finish"
+        "primary",
+        "primary",
+        "primary",
+        "primary",
+        "primary"
       ],
       "expected": [
         {
           "nodeId": "chapter-three-ending",
           "status": "active",
-          "beatIndex": 0,
+          "beatIndex": 1,
+          "exitCount": 0,
+          "disposed": false,
+          "state": {
+            "definitionId": "candidate-01-gray-banner-chapters-1-3",
+            "definitionVersion": 1,
+            "currentNode": "chapter-three-ending",
+            "status": "active",
+            "flags": [],
+            "variables": {
+              "victories": 0,
+              "boldness": 0,
+              "restraint": 0,
+              "institutions": 0,
+              "authority": 0,
+              "evidence": 0,
+              "witnesses": 0,
+              "crown_fragments": 0
+            },
+            "resources": {
+              "supplies": 5,
+              "treasury": 5
+            },
+            "relations": {
+              "cain": 0,
+              "mirelle": 0,
+              "tasha": 0,
+              "refugees": 0,
+              "silverwood": 0,
+              "mountain-forge": 0,
+              "named-dead": 0
+            },
+            "features": [],
+            "roster": {
+              "laiya": {
+                "id": "laiya",
+                "unitType": "c01.laiya",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "commander"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "torren": {
+                "id": "torren",
+                "unitType": "c01.swordsman",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "retinue",
+                  "infantry"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "elin": {
+                "id": "elin",
+                "unitType": "c01.archer",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "retinue",
+                  "ranged"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "mirelle": {
+                "id": "mirelle",
+                "unitType": "c01.mirelle",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "support"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "bran": {
+                "id": "bran",
+                "unitType": "c01.bran",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "scout"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "tasha": {
+                "id": "tasha",
+                "unitType": "c01.tasha",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "engineer"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "ivra": {
+                "id": "ivra",
+                "unitType": "c01.ivra",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "dragon"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              }
+            },
+            "completedNodes": [],
+            "battleHistory": [],
+            "pendingBattle": null,
+            "battleSequence": 0
+          },
+          "savedState": null,
+          "primaryLabel": "下一段 →",
+          "primaryAction": "nextBeat"
+        },
+        {
+          "nodeId": "chapter-three-ending",
+          "status": "active",
+          "beatIndex": 2,
+          "exitCount": 0,
+          "disposed": false,
+          "state": {
+            "definitionId": "candidate-01-gray-banner-chapters-1-3",
+            "definitionVersion": 1,
+            "currentNode": "chapter-three-ending",
+            "status": "active",
+            "flags": [],
+            "variables": {
+              "victories": 0,
+              "boldness": 0,
+              "restraint": 0,
+              "institutions": 0,
+              "authority": 0,
+              "evidence": 0,
+              "witnesses": 0,
+              "crown_fragments": 0
+            },
+            "resources": {
+              "supplies": 5,
+              "treasury": 5
+            },
+            "relations": {
+              "cain": 0,
+              "mirelle": 0,
+              "tasha": 0,
+              "refugees": 0,
+              "silverwood": 0,
+              "mountain-forge": 0,
+              "named-dead": 0
+            },
+            "features": [],
+            "roster": {
+              "laiya": {
+                "id": "laiya",
+                "unitType": "c01.laiya",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "commander"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "torren": {
+                "id": "torren",
+                "unitType": "c01.swordsman",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "retinue",
+                  "infantry"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "elin": {
+                "id": "elin",
+                "unitType": "c01.archer",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "retinue",
+                  "ranged"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "mirelle": {
+                "id": "mirelle",
+                "unitType": "c01.mirelle",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "support"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "bran": {
+                "id": "bran",
+                "unitType": "c01.bran",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "scout"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "tasha": {
+                "id": "tasha",
+                "unitType": "c01.tasha",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "engineer"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "ivra": {
+                "id": "ivra",
+                "unitType": "c01.ivra",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "dragon"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              }
+            },
+            "completedNodes": [],
+            "battleHistory": [],
+            "pendingBattle": null,
+            "battleSequence": 0
+          },
+          "savedState": null,
+          "primaryLabel": "下一段 →",
+          "primaryAction": "nextBeat"
+        },
+        {
+          "nodeId": "chapter-three-ending",
+          "status": "active",
+          "beatIndex": 3,
           "exitCount": 0,
           "disposed": false,
           "state": {
@@ -43239,7 +43516,7 @@
         {
           "nodeId": "chapter-three-ending",
           "status": "completed",
-          "beatIndex": 0,
+          "beatIndex": 3,
           "exitCount": 0,
           "disposed": false,
           "state": {
@@ -43508,276 +43785,7 @@
         {
           "nodeId": "chapter-three-ending",
           "status": "completed",
-          "beatIndex": 0,
-          "exitCount": 0,
-          "disposed": false,
-          "state": {
-            "definitionId": "candidate-01-gray-banner-chapters-1-3",
-            "definitionVersion": 1,
-            "currentNode": "chapter-three-ending",
-            "status": "completed",
-            "flags": [],
-            "variables": {
-              "victories": 0,
-              "boldness": 0,
-              "restraint": 0,
-              "institutions": 0,
-              "authority": 0,
-              "evidence": 0,
-              "witnesses": 0,
-              "crown_fragments": 0
-            },
-            "resources": {
-              "supplies": 5,
-              "treasury": 5
-            },
-            "relations": {
-              "cain": 0,
-              "mirelle": 0,
-              "tasha": 0,
-              "refugees": 0,
-              "silverwood": 0,
-              "mountain-forge": 0,
-              "named-dead": 0
-            },
-            "features": [],
-            "roster": {
-              "laiya": {
-                "id": "laiya",
-                "unitType": "c01.laiya",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "commander"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "torren": {
-                "id": "torren",
-                "unitType": "c01.swordsman",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "infantry"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "elin": {
-                "id": "elin",
-                "unitType": "c01.archer",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "ranged"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "mirelle": {
-                "id": "mirelle",
-                "unitType": "c01.mirelle",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "support"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "bran": {
-                "id": "bran",
-                "unitType": "c01.bran",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "scout"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "tasha": {
-                "id": "tasha",
-                "unitType": "c01.tasha",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "engineer"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "ivra": {
-                "id": "ivra",
-                "unitType": "c01.ivra",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "dragon"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              }
-            },
-            "completedNodes": [
-              "chapter-three-ending"
-            ],
-            "battleHistory": [],
-            "pendingBattle": null,
-            "battleSequence": 0
-          },
-          "savedState": {
-            "definitionId": "candidate-01-gray-banner-chapters-1-3",
-            "definitionVersion": 1,
-            "currentNode": "chapter-three-ending",
-            "status": "completed",
-            "flags": [],
-            "variables": {
-              "victories": 0,
-              "boldness": 0,
-              "restraint": 0,
-              "institutions": 0,
-              "authority": 0,
-              "evidence": 0,
-              "witnesses": 0,
-              "crown_fragments": 0
-            },
-            "resources": {
-              "supplies": 5,
-              "treasury": 5
-            },
-            "relations": {
-              "cain": 0,
-              "mirelle": 0,
-              "tasha": 0,
-              "refugees": 0,
-              "silverwood": 0,
-              "mountain-forge": 0,
-              "named-dead": 0
-            },
-            "features": [],
-            "roster": {
-              "laiya": {
-                "id": "laiya",
-                "unitType": "c01.laiya",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "commander"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "torren": {
-                "id": "torren",
-                "unitType": "c01.swordsman",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "infantry"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "elin": {
-                "id": "elin",
-                "unitType": "c01.archer",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "ranged"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "mirelle": {
-                "id": "mirelle",
-                "unitType": "c01.mirelle",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "support"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "bran": {
-                "id": "bran",
-                "unitType": "c01.bran",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "scout"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "tasha": {
-                "id": "tasha",
-                "unitType": "c01.tasha",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "engineer"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "ivra": {
-                "id": "ivra",
-                "unitType": "c01.ivra",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "dragon"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              }
-            },
-            "completedNodes": [
-              "chapter-three-ending"
-            ],
-            "battleHistory": [],
-            "pendingBattle": null,
-            "battleSequence": 0
-          },
-          "primaryLabel": "返回主菜单",
-          "primaryAction": "finish"
-        },
-        {
-          "nodeId": "chapter-three-ending",
-          "status": "completed",
-          "beatIndex": 0,
+          "beatIndex": 3,
           "exitCount": 1,
           "disposed": true,
           "state": {
@@ -44178,16 +44186,154 @@
       },
       "initialBeat": 1,
       "operations": [
-        "nextBeat",
-        "finish",
-        "nextBeat",
-        "finish"
+        "primary",
+        "primary",
+        "primary",
+        "primary"
       ],
       "expected": [
         {
           "nodeId": "chapter-three-ending",
           "status": "active",
-          "beatIndex": 1,
+          "beatIndex": 2,
+          "exitCount": 0,
+          "disposed": false,
+          "state": {
+            "definitionId": "candidate-01-gray-banner-chapters-1-3",
+            "definitionVersion": 1,
+            "currentNode": "chapter-three-ending",
+            "status": "active",
+            "flags": [],
+            "variables": {
+              "victories": 0,
+              "boldness": 0,
+              "restraint": 0,
+              "institutions": 0,
+              "authority": 0,
+              "evidence": 0,
+              "witnesses": 0,
+              "crown_fragments": 0
+            },
+            "resources": {
+              "supplies": 5,
+              "treasury": 5
+            },
+            "relations": {
+              "cain": 0,
+              "mirelle": 0,
+              "tasha": 0,
+              "refugees": 0,
+              "silverwood": 0,
+              "mountain-forge": 0,
+              "named-dead": 0
+            },
+            "features": [],
+            "roster": {
+              "laiya": {
+                "id": "laiya",
+                "unitType": "c01.laiya",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "commander"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "torren": {
+                "id": "torren",
+                "unitType": "c01.swordsman",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "retinue",
+                  "infantry"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "elin": {
+                "id": "elin",
+                "unitType": "c01.archer",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "retinue",
+                  "ranged"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "mirelle": {
+                "id": "mirelle",
+                "unitType": "c01.mirelle",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "support"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "bran": {
+                "id": "bran",
+                "unitType": "c01.bran",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "scout"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "tasha": {
+                "id": "tasha",
+                "unitType": "c01.tasha",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "engineer"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "ivra": {
+                "id": "ivra",
+                "unitType": "c01.ivra",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "dragon"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              }
+            },
+            "completedNodes": [],
+            "battleHistory": [],
+            "pendingBattle": null,
+            "battleSequence": 0
+          },
+          "savedState": null,
+          "primaryLabel": "下一段 →",
+          "primaryAction": "nextBeat"
+        },
+        {
+          "nodeId": "chapter-three-ending",
+          "status": "active",
+          "beatIndex": 3,
           "exitCount": 0,
           "disposed": false,
           "state": {
@@ -44325,7 +44471,7 @@
         {
           "nodeId": "chapter-three-ending",
           "status": "completed",
-          "beatIndex": 1,
+          "beatIndex": 3,
           "exitCount": 0,
           "disposed": false,
           "state": {
@@ -44594,276 +44740,7 @@
         {
           "nodeId": "chapter-three-ending",
           "status": "completed",
-          "beatIndex": 1,
-          "exitCount": 0,
-          "disposed": false,
-          "state": {
-            "definitionId": "candidate-01-gray-banner-chapters-1-3",
-            "definitionVersion": 1,
-            "currentNode": "chapter-three-ending",
-            "status": "completed",
-            "flags": [],
-            "variables": {
-              "victories": 0,
-              "boldness": 0,
-              "restraint": 0,
-              "institutions": 0,
-              "authority": 0,
-              "evidence": 0,
-              "witnesses": 0,
-              "crown_fragments": 0
-            },
-            "resources": {
-              "supplies": 5,
-              "treasury": 5
-            },
-            "relations": {
-              "cain": 0,
-              "mirelle": 0,
-              "tasha": 0,
-              "refugees": 0,
-              "silverwood": 0,
-              "mountain-forge": 0,
-              "named-dead": 0
-            },
-            "features": [],
-            "roster": {
-              "laiya": {
-                "id": "laiya",
-                "unitType": "c01.laiya",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "commander"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "torren": {
-                "id": "torren",
-                "unitType": "c01.swordsman",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "infantry"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "elin": {
-                "id": "elin",
-                "unitType": "c01.archer",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "ranged"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "mirelle": {
-                "id": "mirelle",
-                "unitType": "c01.mirelle",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "support"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "bran": {
-                "id": "bran",
-                "unitType": "c01.bran",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "scout"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "tasha": {
-                "id": "tasha",
-                "unitType": "c01.tasha",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "engineer"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "ivra": {
-                "id": "ivra",
-                "unitType": "c01.ivra",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "dragon"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              }
-            },
-            "completedNodes": [
-              "chapter-three-ending"
-            ],
-            "battleHistory": [],
-            "pendingBattle": null,
-            "battleSequence": 0
-          },
-          "savedState": {
-            "definitionId": "candidate-01-gray-banner-chapters-1-3",
-            "definitionVersion": 1,
-            "currentNode": "chapter-three-ending",
-            "status": "completed",
-            "flags": [],
-            "variables": {
-              "victories": 0,
-              "boldness": 0,
-              "restraint": 0,
-              "institutions": 0,
-              "authority": 0,
-              "evidence": 0,
-              "witnesses": 0,
-              "crown_fragments": 0
-            },
-            "resources": {
-              "supplies": 5,
-              "treasury": 5
-            },
-            "relations": {
-              "cain": 0,
-              "mirelle": 0,
-              "tasha": 0,
-              "refugees": 0,
-              "silverwood": 0,
-              "mountain-forge": 0,
-              "named-dead": 0
-            },
-            "features": [],
-            "roster": {
-              "laiya": {
-                "id": "laiya",
-                "unitType": "c01.laiya",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "commander"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "torren": {
-                "id": "torren",
-                "unitType": "c01.swordsman",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "infantry"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "elin": {
-                "id": "elin",
-                "unitType": "c01.archer",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "ranged"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "mirelle": {
-                "id": "mirelle",
-                "unitType": "c01.mirelle",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "support"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "bran": {
-                "id": "bran",
-                "unitType": "c01.bran",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "scout"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "tasha": {
-                "id": "tasha",
-                "unitType": "c01.tasha",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "engineer"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "ivra": {
-                "id": "ivra",
-                "unitType": "c01.ivra",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "dragon"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              }
-            },
-            "completedNodes": [
-              "chapter-three-ending"
-            ],
-            "battleHistory": [],
-            "pendingBattle": null,
-            "battleSequence": 0
-          },
-          "primaryLabel": "返回主菜单",
-          "primaryAction": "finish"
-        },
-        {
-          "nodeId": "chapter-three-ending",
-          "status": "completed",
-          "beatIndex": 1,
+          "beatIndex": 3,
           "exitCount": 1,
           "disposed": true,
           "state": {
@@ -45264,16 +45141,15 @@
       },
       "initialBeat": 2,
       "operations": [
-        "nextBeat",
-        "finish",
-        "nextBeat",
-        "finish"
+        "primary",
+        "primary",
+        "primary"
       ],
       "expected": [
         {
           "nodeId": "chapter-three-ending",
           "status": "active",
-          "beatIndex": 2,
+          "beatIndex": 3,
           "exitCount": 0,
           "disposed": false,
           "state": {
@@ -45411,7 +45287,7 @@
         {
           "nodeId": "chapter-three-ending",
           "status": "completed",
-          "beatIndex": 2,
+          "beatIndex": 3,
           "exitCount": 0,
           "disposed": false,
           "state": {
@@ -45680,276 +45556,7 @@
         {
           "nodeId": "chapter-three-ending",
           "status": "completed",
-          "beatIndex": 2,
-          "exitCount": 0,
-          "disposed": false,
-          "state": {
-            "definitionId": "candidate-01-gray-banner-chapters-1-3",
-            "definitionVersion": 1,
-            "currentNode": "chapter-three-ending",
-            "status": "completed",
-            "flags": [],
-            "variables": {
-              "victories": 0,
-              "boldness": 0,
-              "restraint": 0,
-              "institutions": 0,
-              "authority": 0,
-              "evidence": 0,
-              "witnesses": 0,
-              "crown_fragments": 0
-            },
-            "resources": {
-              "supplies": 5,
-              "treasury": 5
-            },
-            "relations": {
-              "cain": 0,
-              "mirelle": 0,
-              "tasha": 0,
-              "refugees": 0,
-              "silverwood": 0,
-              "mountain-forge": 0,
-              "named-dead": 0
-            },
-            "features": [],
-            "roster": {
-              "laiya": {
-                "id": "laiya",
-                "unitType": "c01.laiya",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "commander"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "torren": {
-                "id": "torren",
-                "unitType": "c01.swordsman",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "infantry"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "elin": {
-                "id": "elin",
-                "unitType": "c01.archer",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "ranged"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "mirelle": {
-                "id": "mirelle",
-                "unitType": "c01.mirelle",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "support"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "bran": {
-                "id": "bran",
-                "unitType": "c01.bran",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "scout"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "tasha": {
-                "id": "tasha",
-                "unitType": "c01.tasha",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "engineer"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "ivra": {
-                "id": "ivra",
-                "unitType": "c01.ivra",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "dragon"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              }
-            },
-            "completedNodes": [
-              "chapter-three-ending"
-            ],
-            "battleHistory": [],
-            "pendingBattle": null,
-            "battleSequence": 0
-          },
-          "savedState": {
-            "definitionId": "candidate-01-gray-banner-chapters-1-3",
-            "definitionVersion": 1,
-            "currentNode": "chapter-three-ending",
-            "status": "completed",
-            "flags": [],
-            "variables": {
-              "victories": 0,
-              "boldness": 0,
-              "restraint": 0,
-              "institutions": 0,
-              "authority": 0,
-              "evidence": 0,
-              "witnesses": 0,
-              "crown_fragments": 0
-            },
-            "resources": {
-              "supplies": 5,
-              "treasury": 5
-            },
-            "relations": {
-              "cain": 0,
-              "mirelle": 0,
-              "tasha": 0,
-              "refugees": 0,
-              "silverwood": 0,
-              "mountain-forge": 0,
-              "named-dead": 0
-            },
-            "features": [],
-            "roster": {
-              "laiya": {
-                "id": "laiya",
-                "unitType": "c01.laiya",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "commander"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "torren": {
-                "id": "torren",
-                "unitType": "c01.swordsman",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "infantry"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "elin": {
-                "id": "elin",
-                "unitType": "c01.archer",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "ranged"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "mirelle": {
-                "id": "mirelle",
-                "unitType": "c01.mirelle",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "support"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "bran": {
-                "id": "bran",
-                "unitType": "c01.bran",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "scout"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "tasha": {
-                "id": "tasha",
-                "unitType": "c01.tasha",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "engineer"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "ivra": {
-                "id": "ivra",
-                "unitType": "c01.ivra",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "dragon"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              }
-            },
-            "completedNodes": [
-              "chapter-three-ending"
-            ],
-            "battleHistory": [],
-            "pendingBattle": null,
-            "battleSequence": 0
-          },
-          "primaryLabel": "返回主菜单",
-          "primaryAction": "finish"
-        },
-        {
-          "nodeId": "chapter-three-ending",
-          "status": "completed",
-          "beatIndex": 2,
+          "beatIndex": 3,
           "exitCount": 1,
           "disposed": true,
           "state": {
@@ -46350,419 +45957,10 @@
       },
       "initialBeat": 3,
       "operations": [
-        "nextBeat",
-        "finish",
-        "nextBeat",
-        "finish"
+        "primary",
+        "primary"
       ],
       "expected": [
-        {
-          "nodeId": "chapter-three-ending",
-          "status": "active",
-          "beatIndex": 3,
-          "exitCount": 0,
-          "disposed": false,
-          "state": {
-            "definitionId": "candidate-01-gray-banner-chapters-1-3",
-            "definitionVersion": 1,
-            "currentNode": "chapter-three-ending",
-            "status": "active",
-            "flags": [],
-            "variables": {
-              "victories": 0,
-              "boldness": 0,
-              "restraint": 0,
-              "institutions": 0,
-              "authority": 0,
-              "evidence": 0,
-              "witnesses": 0,
-              "crown_fragments": 0
-            },
-            "resources": {
-              "supplies": 5,
-              "treasury": 5
-            },
-            "relations": {
-              "cain": 0,
-              "mirelle": 0,
-              "tasha": 0,
-              "refugees": 0,
-              "silverwood": 0,
-              "mountain-forge": 0,
-              "named-dead": 0
-            },
-            "features": [],
-            "roster": {
-              "laiya": {
-                "id": "laiya",
-                "unitType": "c01.laiya",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "commander"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "torren": {
-                "id": "torren",
-                "unitType": "c01.swordsman",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "infantry"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "elin": {
-                "id": "elin",
-                "unitType": "c01.archer",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "ranged"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "mirelle": {
-                "id": "mirelle",
-                "unitType": "c01.mirelle",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "support"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "bran": {
-                "id": "bran",
-                "unitType": "c01.bran",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "scout"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "tasha": {
-                "id": "tasha",
-                "unitType": "c01.tasha",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "engineer"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "ivra": {
-                "id": "ivra",
-                "unitType": "c01.ivra",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "dragon"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              }
-            },
-            "completedNodes": [],
-            "battleHistory": [],
-            "pendingBattle": null,
-            "battleSequence": 0
-          },
-          "savedState": null,
-          "primaryLabel": "完成前三章",
-          "primaryAction": "finish"
-        },
-        {
-          "nodeId": "chapter-three-ending",
-          "status": "completed",
-          "beatIndex": 3,
-          "exitCount": 0,
-          "disposed": false,
-          "state": {
-            "definitionId": "candidate-01-gray-banner-chapters-1-3",
-            "definitionVersion": 1,
-            "currentNode": "chapter-three-ending",
-            "status": "completed",
-            "flags": [],
-            "variables": {
-              "victories": 0,
-              "boldness": 0,
-              "restraint": 0,
-              "institutions": 0,
-              "authority": 0,
-              "evidence": 0,
-              "witnesses": 0,
-              "crown_fragments": 0
-            },
-            "resources": {
-              "supplies": 5,
-              "treasury": 5
-            },
-            "relations": {
-              "cain": 0,
-              "mirelle": 0,
-              "tasha": 0,
-              "refugees": 0,
-              "silverwood": 0,
-              "mountain-forge": 0,
-              "named-dead": 0
-            },
-            "features": [],
-            "roster": {
-              "laiya": {
-                "id": "laiya",
-                "unitType": "c01.laiya",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "commander"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "torren": {
-                "id": "torren",
-                "unitType": "c01.swordsman",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "infantry"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "elin": {
-                "id": "elin",
-                "unitType": "c01.archer",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "ranged"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "mirelle": {
-                "id": "mirelle",
-                "unitType": "c01.mirelle",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "support"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "bran": {
-                "id": "bran",
-                "unitType": "c01.bran",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "scout"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "tasha": {
-                "id": "tasha",
-                "unitType": "c01.tasha",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "engineer"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "ivra": {
-                "id": "ivra",
-                "unitType": "c01.ivra",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "dragon"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              }
-            },
-            "completedNodes": [
-              "chapter-three-ending"
-            ],
-            "battleHistory": [],
-            "pendingBattle": null,
-            "battleSequence": 0
-          },
-          "savedState": {
-            "definitionId": "candidate-01-gray-banner-chapters-1-3",
-            "definitionVersion": 1,
-            "currentNode": "chapter-three-ending",
-            "status": "completed",
-            "flags": [],
-            "variables": {
-              "victories": 0,
-              "boldness": 0,
-              "restraint": 0,
-              "institutions": 0,
-              "authority": 0,
-              "evidence": 0,
-              "witnesses": 0,
-              "crown_fragments": 0
-            },
-            "resources": {
-              "supplies": 5,
-              "treasury": 5
-            },
-            "relations": {
-              "cain": 0,
-              "mirelle": 0,
-              "tasha": 0,
-              "refugees": 0,
-              "silverwood": 0,
-              "mountain-forge": 0,
-              "named-dead": 0
-            },
-            "features": [],
-            "roster": {
-              "laiya": {
-                "id": "laiya",
-                "unitType": "c01.laiya",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "commander"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "torren": {
-                "id": "torren",
-                "unitType": "c01.swordsman",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "infantry"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "elin": {
-                "id": "elin",
-                "unitType": "c01.archer",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "ranged"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "mirelle": {
-                "id": "mirelle",
-                "unitType": "c01.mirelle",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "support"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "bran": {
-                "id": "bran",
-                "unitType": "c01.bran",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "scout"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "tasha": {
-                "id": "tasha",
-                "unitType": "c01.tasha",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "engineer"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "ivra": {
-                "id": "ivra",
-                "unitType": "c01.ivra",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "dragon"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              }
-            },
-            "completedNodes": [
-              "chapter-three-ending"
-            ],
-            "battleHistory": [],
-            "pendingBattle": null,
-            "battleSequence": 0
-          },
-          "primaryLabel": "返回主菜单",
-          "primaryAction": "finish"
-        },
         {
           "nodeId": "chapter-three-ending",
           "status": "completed",
@@ -47436,14 +46634,292 @@
       },
       "initialBeat": 0,
       "operations": [
-        "nextBeat",
-        "finish"
+        "primary",
+        "primary",
+        "primary",
+        "primary"
       ],
       "expected": [
         {
           "nodeId": "chapter-three-ending",
           "status": "completed",
-          "beatIndex": 0,
+          "beatIndex": 1,
+          "exitCount": 0,
+          "disposed": false,
+          "state": {
+            "definitionId": "candidate-01-gray-banner-chapters-1-3",
+            "definitionVersion": 1,
+            "currentNode": "chapter-three-ending",
+            "status": "completed",
+            "flags": [],
+            "variables": {
+              "victories": 0,
+              "boldness": 0,
+              "restraint": 0,
+              "institutions": 0,
+              "authority": 0,
+              "evidence": 0,
+              "witnesses": 0,
+              "crown_fragments": 0
+            },
+            "resources": {
+              "supplies": 5,
+              "treasury": 5
+            },
+            "relations": {
+              "cain": 0,
+              "mirelle": 0,
+              "tasha": 0,
+              "refugees": 0,
+              "silverwood": 0,
+              "mountain-forge": 0,
+              "named-dead": 0
+            },
+            "features": [],
+            "roster": {
+              "laiya": {
+                "id": "laiya",
+                "unitType": "c01.laiya",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "commander"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "torren": {
+                "id": "torren",
+                "unitType": "c01.swordsman",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "retinue",
+                  "infantry"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "elin": {
+                "id": "elin",
+                "unitType": "c01.archer",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "retinue",
+                  "ranged"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "mirelle": {
+                "id": "mirelle",
+                "unitType": "c01.mirelle",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "support"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "bran": {
+                "id": "bran",
+                "unitType": "c01.bran",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "scout"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "tasha": {
+                "id": "tasha",
+                "unitType": "c01.tasha",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "engineer"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "ivra": {
+                "id": "ivra",
+                "unitType": "c01.ivra",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "dragon"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              }
+            },
+            "completedNodes": [],
+            "battleHistory": [],
+            "pendingBattle": null,
+            "battleSequence": 0
+          },
+          "savedState": null,
+          "primaryLabel": "下一段 →",
+          "primaryAction": "nextBeat"
+        },
+        {
+          "nodeId": "chapter-three-ending",
+          "status": "completed",
+          "beatIndex": 2,
+          "exitCount": 0,
+          "disposed": false,
+          "state": {
+            "definitionId": "candidate-01-gray-banner-chapters-1-3",
+            "definitionVersion": 1,
+            "currentNode": "chapter-three-ending",
+            "status": "completed",
+            "flags": [],
+            "variables": {
+              "victories": 0,
+              "boldness": 0,
+              "restraint": 0,
+              "institutions": 0,
+              "authority": 0,
+              "evidence": 0,
+              "witnesses": 0,
+              "crown_fragments": 0
+            },
+            "resources": {
+              "supplies": 5,
+              "treasury": 5
+            },
+            "relations": {
+              "cain": 0,
+              "mirelle": 0,
+              "tasha": 0,
+              "refugees": 0,
+              "silverwood": 0,
+              "mountain-forge": 0,
+              "named-dead": 0
+            },
+            "features": [],
+            "roster": {
+              "laiya": {
+                "id": "laiya",
+                "unitType": "c01.laiya",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "commander"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "torren": {
+                "id": "torren",
+                "unitType": "c01.swordsman",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "retinue",
+                  "infantry"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "elin": {
+                "id": "elin",
+                "unitType": "c01.archer",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "retinue",
+                  "ranged"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "mirelle": {
+                "id": "mirelle",
+                "unitType": "c01.mirelle",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "support"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "bran": {
+                "id": "bran",
+                "unitType": "c01.bran",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "scout"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "tasha": {
+                "id": "tasha",
+                "unitType": "c01.tasha",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "engineer"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "ivra": {
+                "id": "ivra",
+                "unitType": "c01.ivra",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "dragon"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              }
+            },
+            "completedNodes": [],
+            "battleHistory": [],
+            "pendingBattle": null,
+            "battleSequence": 0
+          },
+          "savedState": null,
+          "primaryLabel": "下一段 →",
+          "primaryAction": "nextBeat"
+        },
+        {
+          "nodeId": "chapter-three-ending",
+          "status": "completed",
+          "beatIndex": 3,
           "exitCount": 0,
           "disposed": false,
           "state": {
@@ -47581,7 +47057,7 @@
         {
           "nodeId": "chapter-three-ending",
           "status": "completed",
-          "beatIndex": 0,
+          "beatIndex": 3,
           "exitCount": 1,
           "disposed": true,
           "state": {
@@ -47851,14 +47327,153 @@
       },
       "initialBeat": 1,
       "operations": [
-        "nextBeat",
-        "finish"
+        "primary",
+        "primary",
+        "primary"
       ],
       "expected": [
         {
           "nodeId": "chapter-three-ending",
           "status": "completed",
-          "beatIndex": 1,
+          "beatIndex": 2,
+          "exitCount": 0,
+          "disposed": false,
+          "state": {
+            "definitionId": "candidate-01-gray-banner-chapters-1-3",
+            "definitionVersion": 1,
+            "currentNode": "chapter-three-ending",
+            "status": "completed",
+            "flags": [],
+            "variables": {
+              "victories": 0,
+              "boldness": 0,
+              "restraint": 0,
+              "institutions": 0,
+              "authority": 0,
+              "evidence": 0,
+              "witnesses": 0,
+              "crown_fragments": 0
+            },
+            "resources": {
+              "supplies": 5,
+              "treasury": 5
+            },
+            "relations": {
+              "cain": 0,
+              "mirelle": 0,
+              "tasha": 0,
+              "refugees": 0,
+              "silverwood": 0,
+              "mountain-forge": 0,
+              "named-dead": 0
+            },
+            "features": [],
+            "roster": {
+              "laiya": {
+                "id": "laiya",
+                "unitType": "c01.laiya",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "commander"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "torren": {
+                "id": "torren",
+                "unitType": "c01.swordsman",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "retinue",
+                  "infantry"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "elin": {
+                "id": "elin",
+                "unitType": "c01.archer",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "retinue",
+                  "ranged"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "mirelle": {
+                "id": "mirelle",
+                "unitType": "c01.mirelle",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "support"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "bran": {
+                "id": "bran",
+                "unitType": "c01.bran",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "scout"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "tasha": {
+                "id": "tasha",
+                "unitType": "c01.tasha",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "engineer"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "ivra": {
+                "id": "ivra",
+                "unitType": "c01.ivra",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "dragon"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              }
+            },
+            "completedNodes": [],
+            "battleHistory": [],
+            "pendingBattle": null,
+            "battleSequence": 0
+          },
+          "savedState": null,
+          "primaryLabel": "下一段 →",
+          "primaryAction": "nextBeat"
+        },
+        {
+          "nodeId": "chapter-three-ending",
+          "status": "completed",
+          "beatIndex": 3,
           "exitCount": 0,
           "disposed": false,
           "state": {
@@ -47996,7 +47611,7 @@
         {
           "nodeId": "chapter-three-ending",
           "status": "completed",
-          "beatIndex": 1,
+          "beatIndex": 3,
           "exitCount": 1,
           "disposed": true,
           "state": {
@@ -48266,14 +47881,14 @@
       },
       "initialBeat": 2,
       "operations": [
-        "nextBeat",
-        "finish"
+        "primary",
+        "primary"
       ],
       "expected": [
         {
           "nodeId": "chapter-three-ending",
           "status": "completed",
-          "beatIndex": 2,
+          "beatIndex": 3,
           "exitCount": 0,
           "disposed": false,
           "state": {
@@ -48411,7 +48026,7 @@
         {
           "nodeId": "chapter-three-ending",
           "status": "completed",
-          "beatIndex": 2,
+          "beatIndex": 3,
           "exitCount": 1,
           "disposed": true,
           "state": {
@@ -48681,148 +48296,9 @@
       },
       "initialBeat": 3,
       "operations": [
-        "nextBeat",
-        "finish"
+        "primary"
       ],
       "expected": [
-        {
-          "nodeId": "chapter-three-ending",
-          "status": "completed",
-          "beatIndex": 3,
-          "exitCount": 0,
-          "disposed": false,
-          "state": {
-            "definitionId": "candidate-01-gray-banner-chapters-1-3",
-            "definitionVersion": 1,
-            "currentNode": "chapter-three-ending",
-            "status": "completed",
-            "flags": [],
-            "variables": {
-              "victories": 0,
-              "boldness": 0,
-              "restraint": 0,
-              "institutions": 0,
-              "authority": 0,
-              "evidence": 0,
-              "witnesses": 0,
-              "crown_fragments": 0
-            },
-            "resources": {
-              "supplies": 5,
-              "treasury": 5
-            },
-            "relations": {
-              "cain": 0,
-              "mirelle": 0,
-              "tasha": 0,
-              "refugees": 0,
-              "silverwood": 0,
-              "mountain-forge": 0,
-              "named-dead": 0
-            },
-            "features": [],
-            "roster": {
-              "laiya": {
-                "id": "laiya",
-                "unitType": "c01.laiya",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "commander"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "torren": {
-                "id": "torren",
-                "unitType": "c01.swordsman",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "infantry"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "elin": {
-                "id": "elin",
-                "unitType": "c01.archer",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "ranged"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "mirelle": {
-                "id": "mirelle",
-                "unitType": "c01.mirelle",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "support"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "bran": {
-                "id": "bran",
-                "unitType": "c01.bran",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "scout"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "tasha": {
-                "id": "tasha",
-                "unitType": "c01.tasha",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "engineer"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "ivra": {
-                "id": "ivra",
-                "unitType": "c01.ivra",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "dragon"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              }
-            },
-            "completedNodes": [],
-            "battleHistory": [],
-            "pendingBattle": null,
-            "battleSequence": 0
-          },
-          "savedState": null,
-          "primaryLabel": "返回主菜单",
-          "primaryAction": "finish"
-        },
         {
           "nodeId": "chapter-three-ending",
           "status": "completed",
@@ -49096,14 +48572,292 @@
       },
       "initialBeat": 0,
       "operations": [
-        "nextBeat",
-        "finish"
+        "primary",
+        "primary",
+        "primary",
+        "primary"
       ],
       "expected": [
         {
           "nodeId": "chapter-three-ending",
           "status": "failed",
-          "beatIndex": 0,
+          "beatIndex": 1,
+          "exitCount": 0,
+          "disposed": false,
+          "state": {
+            "definitionId": "candidate-01-gray-banner-chapters-1-3",
+            "definitionVersion": 1,
+            "currentNode": "chapter-three-ending",
+            "status": "failed",
+            "flags": [],
+            "variables": {
+              "victories": 0,
+              "boldness": 0,
+              "restraint": 0,
+              "institutions": 0,
+              "authority": 0,
+              "evidence": 0,
+              "witnesses": 0,
+              "crown_fragments": 0
+            },
+            "resources": {
+              "supplies": 5,
+              "treasury": 5
+            },
+            "relations": {
+              "cain": 0,
+              "mirelle": 0,
+              "tasha": 0,
+              "refugees": 0,
+              "silverwood": 0,
+              "mountain-forge": 0,
+              "named-dead": 0
+            },
+            "features": [],
+            "roster": {
+              "laiya": {
+                "id": "laiya",
+                "unitType": "c01.laiya",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "commander"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "torren": {
+                "id": "torren",
+                "unitType": "c01.swordsman",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "retinue",
+                  "infantry"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "elin": {
+                "id": "elin",
+                "unitType": "c01.archer",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "retinue",
+                  "ranged"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "mirelle": {
+                "id": "mirelle",
+                "unitType": "c01.mirelle",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "support"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "bran": {
+                "id": "bran",
+                "unitType": "c01.bran",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "scout"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "tasha": {
+                "id": "tasha",
+                "unitType": "c01.tasha",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "engineer"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "ivra": {
+                "id": "ivra",
+                "unitType": "c01.ivra",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "dragon"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              }
+            },
+            "completedNodes": [],
+            "battleHistory": [],
+            "pendingBattle": null,
+            "battleSequence": 0
+          },
+          "savedState": null,
+          "primaryLabel": "下一段 →",
+          "primaryAction": "nextBeat"
+        },
+        {
+          "nodeId": "chapter-three-ending",
+          "status": "failed",
+          "beatIndex": 2,
+          "exitCount": 0,
+          "disposed": false,
+          "state": {
+            "definitionId": "candidate-01-gray-banner-chapters-1-3",
+            "definitionVersion": 1,
+            "currentNode": "chapter-three-ending",
+            "status": "failed",
+            "flags": [],
+            "variables": {
+              "victories": 0,
+              "boldness": 0,
+              "restraint": 0,
+              "institutions": 0,
+              "authority": 0,
+              "evidence": 0,
+              "witnesses": 0,
+              "crown_fragments": 0
+            },
+            "resources": {
+              "supplies": 5,
+              "treasury": 5
+            },
+            "relations": {
+              "cain": 0,
+              "mirelle": 0,
+              "tasha": 0,
+              "refugees": 0,
+              "silverwood": 0,
+              "mountain-forge": 0,
+              "named-dead": 0
+            },
+            "features": [],
+            "roster": {
+              "laiya": {
+                "id": "laiya",
+                "unitType": "c01.laiya",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "commander"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "torren": {
+                "id": "torren",
+                "unitType": "c01.swordsman",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "retinue",
+                  "infantry"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "elin": {
+                "id": "elin",
+                "unitType": "c01.archer",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "retinue",
+                  "ranged"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "mirelle": {
+                "id": "mirelle",
+                "unitType": "c01.mirelle",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "support"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "bran": {
+                "id": "bran",
+                "unitType": "c01.bran",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "scout"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "tasha": {
+                "id": "tasha",
+                "unitType": "c01.tasha",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "engineer"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "ivra": {
+                "id": "ivra",
+                "unitType": "c01.ivra",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "dragon"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              }
+            },
+            "completedNodes": [],
+            "battleHistory": [],
+            "pendingBattle": null,
+            "battleSequence": 0
+          },
+          "savedState": null,
+          "primaryLabel": "下一段 →",
+          "primaryAction": "nextBeat"
+        },
+        {
+          "nodeId": "chapter-three-ending",
+          "status": "failed",
+          "beatIndex": 3,
           "exitCount": 0,
           "disposed": false,
           "state": {
@@ -49241,7 +48995,7 @@
         {
           "nodeId": "chapter-three-ending",
           "status": "failed",
-          "beatIndex": 0,
+          "beatIndex": 3,
           "exitCount": 1,
           "disposed": true,
           "state": {
@@ -49511,14 +49265,153 @@
       },
       "initialBeat": 1,
       "operations": [
-        "nextBeat",
-        "finish"
+        "primary",
+        "primary",
+        "primary"
       ],
       "expected": [
         {
           "nodeId": "chapter-three-ending",
           "status": "failed",
-          "beatIndex": 1,
+          "beatIndex": 2,
+          "exitCount": 0,
+          "disposed": false,
+          "state": {
+            "definitionId": "candidate-01-gray-banner-chapters-1-3",
+            "definitionVersion": 1,
+            "currentNode": "chapter-three-ending",
+            "status": "failed",
+            "flags": [],
+            "variables": {
+              "victories": 0,
+              "boldness": 0,
+              "restraint": 0,
+              "institutions": 0,
+              "authority": 0,
+              "evidence": 0,
+              "witnesses": 0,
+              "crown_fragments": 0
+            },
+            "resources": {
+              "supplies": 5,
+              "treasury": 5
+            },
+            "relations": {
+              "cain": 0,
+              "mirelle": 0,
+              "tasha": 0,
+              "refugees": 0,
+              "silverwood": 0,
+              "mountain-forge": 0,
+              "named-dead": 0
+            },
+            "features": [],
+            "roster": {
+              "laiya": {
+                "id": "laiya",
+                "unitType": "c01.laiya",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "commander"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "torren": {
+                "id": "torren",
+                "unitType": "c01.swordsman",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "retinue",
+                  "infantry"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "elin": {
+                "id": "elin",
+                "unitType": "c01.archer",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "retinue",
+                  "ranged"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "mirelle": {
+                "id": "mirelle",
+                "unitType": "c01.mirelle",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "support"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "bran": {
+                "id": "bran",
+                "unitType": "c01.bran",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "scout"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "tasha": {
+                "id": "tasha",
+                "unitType": "c01.tasha",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "engineer"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              },
+              "ivra": {
+                "id": "ivra",
+                "unitType": "c01.ivra",
+                "owner": 1,
+                "rank": 0,
+                "tags": [
+                  "hero",
+                  "dragon"
+                ],
+                "disposition": "available",
+                "hpRatio": 1,
+                "moraleRatio": 1
+              }
+            },
+            "completedNodes": [],
+            "battleHistory": [],
+            "pendingBattle": null,
+            "battleSequence": 0
+          },
+          "savedState": null,
+          "primaryLabel": "下一段 →",
+          "primaryAction": "nextBeat"
+        },
+        {
+          "nodeId": "chapter-three-ending",
+          "status": "failed",
+          "beatIndex": 3,
           "exitCount": 0,
           "disposed": false,
           "state": {
@@ -49656,7 +49549,7 @@
         {
           "nodeId": "chapter-three-ending",
           "status": "failed",
-          "beatIndex": 1,
+          "beatIndex": 3,
           "exitCount": 1,
           "disposed": true,
           "state": {
@@ -49926,14 +49819,14 @@
       },
       "initialBeat": 2,
       "operations": [
-        "nextBeat",
-        "finish"
+        "primary",
+        "primary"
       ],
       "expected": [
         {
           "nodeId": "chapter-three-ending",
           "status": "failed",
-          "beatIndex": 2,
+          "beatIndex": 3,
           "exitCount": 0,
           "disposed": false,
           "state": {
@@ -50071,7 +49964,7 @@
         {
           "nodeId": "chapter-three-ending",
           "status": "failed",
-          "beatIndex": 2,
+          "beatIndex": 3,
           "exitCount": 1,
           "disposed": true,
           "state": {
@@ -50341,148 +50234,9 @@
       },
       "initialBeat": 3,
       "operations": [
-        "nextBeat",
-        "finish"
+        "primary"
       ],
       "expected": [
-        {
-          "nodeId": "chapter-three-ending",
-          "status": "failed",
-          "beatIndex": 3,
-          "exitCount": 0,
-          "disposed": false,
-          "state": {
-            "definitionId": "candidate-01-gray-banner-chapters-1-3",
-            "definitionVersion": 1,
-            "currentNode": "chapter-three-ending",
-            "status": "failed",
-            "flags": [],
-            "variables": {
-              "victories": 0,
-              "boldness": 0,
-              "restraint": 0,
-              "institutions": 0,
-              "authority": 0,
-              "evidence": 0,
-              "witnesses": 0,
-              "crown_fragments": 0
-            },
-            "resources": {
-              "supplies": 5,
-              "treasury": 5
-            },
-            "relations": {
-              "cain": 0,
-              "mirelle": 0,
-              "tasha": 0,
-              "refugees": 0,
-              "silverwood": 0,
-              "mountain-forge": 0,
-              "named-dead": 0
-            },
-            "features": [],
-            "roster": {
-              "laiya": {
-                "id": "laiya",
-                "unitType": "c01.laiya",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "commander"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "torren": {
-                "id": "torren",
-                "unitType": "c01.swordsman",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "infantry"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "elin": {
-                "id": "elin",
-                "unitType": "c01.archer",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "ranged"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "mirelle": {
-                "id": "mirelle",
-                "unitType": "c01.mirelle",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "support"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "bran": {
-                "id": "bran",
-                "unitType": "c01.bran",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "scout"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "tasha": {
-                "id": "tasha",
-                "unitType": "c01.tasha",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "engineer"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "ivra": {
-                "id": "ivra",
-                "unitType": "c01.ivra",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "dragon"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              }
-            },
-            "completedNodes": [],
-            "battleHistory": [],
-            "pendingBattle": null,
-            "battleSequence": 0
-          },
-          "savedState": null,
-          "primaryLabel": "返回主菜单",
-          "primaryAction": "finish"
-        },
         {
           "nodeId": "chapter-three-ending",
           "status": "failed",
@@ -50756,419 +50510,10 @@
       },
       "initialBeat": 0,
       "operations": [
-        "nextBeat",
-        "finish",
-        "nextBeat",
-        "finish"
+        "primary",
+        "primary"
       ],
       "expected": [
-        {
-          "nodeId": "campaign-failed",
-          "status": "active",
-          "beatIndex": 0,
-          "exitCount": 0,
-          "disposed": false,
-          "state": {
-            "definitionId": "candidate-01-gray-banner-chapters-1-3",
-            "definitionVersion": 1,
-            "currentNode": "campaign-failed",
-            "status": "active",
-            "flags": [],
-            "variables": {
-              "victories": 0,
-              "boldness": 0,
-              "restraint": 0,
-              "institutions": 0,
-              "authority": 0,
-              "evidence": 0,
-              "witnesses": 0,
-              "crown_fragments": 0
-            },
-            "resources": {
-              "supplies": 5,
-              "treasury": 5
-            },
-            "relations": {
-              "cain": 0,
-              "mirelle": 0,
-              "tasha": 0,
-              "refugees": 0,
-              "silverwood": 0,
-              "mountain-forge": 0,
-              "named-dead": 0
-            },
-            "features": [],
-            "roster": {
-              "laiya": {
-                "id": "laiya",
-                "unitType": "c01.laiya",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "commander"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "torren": {
-                "id": "torren",
-                "unitType": "c01.swordsman",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "infantry"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "elin": {
-                "id": "elin",
-                "unitType": "c01.archer",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "ranged"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "mirelle": {
-                "id": "mirelle",
-                "unitType": "c01.mirelle",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "support"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "bran": {
-                "id": "bran",
-                "unitType": "c01.bran",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "scout"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "tasha": {
-                "id": "tasha",
-                "unitType": "c01.tasha",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "engineer"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "ivra": {
-                "id": "ivra",
-                "unitType": "c01.ivra",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "dragon"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              }
-            },
-            "completedNodes": [],
-            "battleHistory": [],
-            "pendingBattle": null,
-            "battleSequence": 0
-          },
-          "savedState": null,
-          "primaryLabel": "完成前三章",
-          "primaryAction": "finish"
-        },
-        {
-          "nodeId": "campaign-failed",
-          "status": "failed",
-          "beatIndex": 0,
-          "exitCount": 0,
-          "disposed": false,
-          "state": {
-            "definitionId": "candidate-01-gray-banner-chapters-1-3",
-            "definitionVersion": 1,
-            "currentNode": "campaign-failed",
-            "status": "failed",
-            "flags": [],
-            "variables": {
-              "victories": 0,
-              "boldness": 0,
-              "restraint": 0,
-              "institutions": 0,
-              "authority": 0,
-              "evidence": 0,
-              "witnesses": 0,
-              "crown_fragments": 0
-            },
-            "resources": {
-              "supplies": 5,
-              "treasury": 5
-            },
-            "relations": {
-              "cain": 0,
-              "mirelle": 0,
-              "tasha": 0,
-              "refugees": 0,
-              "silverwood": 0,
-              "mountain-forge": 0,
-              "named-dead": 0
-            },
-            "features": [],
-            "roster": {
-              "laiya": {
-                "id": "laiya",
-                "unitType": "c01.laiya",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "commander"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "torren": {
-                "id": "torren",
-                "unitType": "c01.swordsman",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "infantry"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "elin": {
-                "id": "elin",
-                "unitType": "c01.archer",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "ranged"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "mirelle": {
-                "id": "mirelle",
-                "unitType": "c01.mirelle",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "support"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "bran": {
-                "id": "bran",
-                "unitType": "c01.bran",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "scout"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "tasha": {
-                "id": "tasha",
-                "unitType": "c01.tasha",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "engineer"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "ivra": {
-                "id": "ivra",
-                "unitType": "c01.ivra",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "dragon"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              }
-            },
-            "completedNodes": [
-              "campaign-failed"
-            ],
-            "battleHistory": [],
-            "pendingBattle": null,
-            "battleSequence": 0
-          },
-          "savedState": {
-            "definitionId": "candidate-01-gray-banner-chapters-1-3",
-            "definitionVersion": 1,
-            "currentNode": "campaign-failed",
-            "status": "failed",
-            "flags": [],
-            "variables": {
-              "victories": 0,
-              "boldness": 0,
-              "restraint": 0,
-              "institutions": 0,
-              "authority": 0,
-              "evidence": 0,
-              "witnesses": 0,
-              "crown_fragments": 0
-            },
-            "resources": {
-              "supplies": 5,
-              "treasury": 5
-            },
-            "relations": {
-              "cain": 0,
-              "mirelle": 0,
-              "tasha": 0,
-              "refugees": 0,
-              "silverwood": 0,
-              "mountain-forge": 0,
-              "named-dead": 0
-            },
-            "features": [],
-            "roster": {
-              "laiya": {
-                "id": "laiya",
-                "unitType": "c01.laiya",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "commander"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "torren": {
-                "id": "torren",
-                "unitType": "c01.swordsman",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "infantry"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "elin": {
-                "id": "elin",
-                "unitType": "c01.archer",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "ranged"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "mirelle": {
-                "id": "mirelle",
-                "unitType": "c01.mirelle",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "support"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "bran": {
-                "id": "bran",
-                "unitType": "c01.bran",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "scout"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "tasha": {
-                "id": "tasha",
-                "unitType": "c01.tasha",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "engineer"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "ivra": {
-                "id": "ivra",
-                "unitType": "c01.ivra",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "dragon"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              }
-            },
-            "completedNodes": [
-              "campaign-failed"
-            ],
-            "battleHistory": [],
-            "pendingBattle": null,
-            "battleSequence": 0
-          },
-          "primaryLabel": "返回主菜单",
-          "primaryAction": "finish"
-        },
         {
           "nodeId": "campaign-failed",
           "status": "failed",
@@ -51842,148 +51187,9 @@
       },
       "initialBeat": 0,
       "operations": [
-        "nextBeat",
-        "finish"
+        "primary"
       ],
       "expected": [
-        {
-          "nodeId": "campaign-failed",
-          "status": "completed",
-          "beatIndex": 0,
-          "exitCount": 0,
-          "disposed": false,
-          "state": {
-            "definitionId": "candidate-01-gray-banner-chapters-1-3",
-            "definitionVersion": 1,
-            "currentNode": "campaign-failed",
-            "status": "completed",
-            "flags": [],
-            "variables": {
-              "victories": 0,
-              "boldness": 0,
-              "restraint": 0,
-              "institutions": 0,
-              "authority": 0,
-              "evidence": 0,
-              "witnesses": 0,
-              "crown_fragments": 0
-            },
-            "resources": {
-              "supplies": 5,
-              "treasury": 5
-            },
-            "relations": {
-              "cain": 0,
-              "mirelle": 0,
-              "tasha": 0,
-              "refugees": 0,
-              "silverwood": 0,
-              "mountain-forge": 0,
-              "named-dead": 0
-            },
-            "features": [],
-            "roster": {
-              "laiya": {
-                "id": "laiya",
-                "unitType": "c01.laiya",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "commander"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "torren": {
-                "id": "torren",
-                "unitType": "c01.swordsman",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "infantry"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "elin": {
-                "id": "elin",
-                "unitType": "c01.archer",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "ranged"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "mirelle": {
-                "id": "mirelle",
-                "unitType": "c01.mirelle",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "support"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "bran": {
-                "id": "bran",
-                "unitType": "c01.bran",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "scout"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "tasha": {
-                "id": "tasha",
-                "unitType": "c01.tasha",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "engineer"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "ivra": {
-                "id": "ivra",
-                "unitType": "c01.ivra",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "dragon"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              }
-            },
-            "completedNodes": [],
-            "battleHistory": [],
-            "pendingBattle": null,
-            "battleSequence": 0
-          },
-          "savedState": null,
-          "primaryLabel": "返回主菜单",
-          "primaryAction": "finish"
-        },
         {
           "nodeId": "campaign-failed",
           "status": "completed",
@@ -52257,148 +51463,9 @@
       },
       "initialBeat": 0,
       "operations": [
-        "nextBeat",
-        "finish"
+        "primary"
       ],
       "expected": [
-        {
-          "nodeId": "campaign-failed",
-          "status": "failed",
-          "beatIndex": 0,
-          "exitCount": 0,
-          "disposed": false,
-          "state": {
-            "definitionId": "candidate-01-gray-banner-chapters-1-3",
-            "definitionVersion": 1,
-            "currentNode": "campaign-failed",
-            "status": "failed",
-            "flags": [],
-            "variables": {
-              "victories": 0,
-              "boldness": 0,
-              "restraint": 0,
-              "institutions": 0,
-              "authority": 0,
-              "evidence": 0,
-              "witnesses": 0,
-              "crown_fragments": 0
-            },
-            "resources": {
-              "supplies": 5,
-              "treasury": 5
-            },
-            "relations": {
-              "cain": 0,
-              "mirelle": 0,
-              "tasha": 0,
-              "refugees": 0,
-              "silverwood": 0,
-              "mountain-forge": 0,
-              "named-dead": 0
-            },
-            "features": [],
-            "roster": {
-              "laiya": {
-                "id": "laiya",
-                "unitType": "c01.laiya",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "commander"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "torren": {
-                "id": "torren",
-                "unitType": "c01.swordsman",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "infantry"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "elin": {
-                "id": "elin",
-                "unitType": "c01.archer",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "retinue",
-                  "ranged"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "mirelle": {
-                "id": "mirelle",
-                "unitType": "c01.mirelle",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "support"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "bran": {
-                "id": "bran",
-                "unitType": "c01.bran",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "scout"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "tasha": {
-                "id": "tasha",
-                "unitType": "c01.tasha",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "engineer"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              },
-              "ivra": {
-                "id": "ivra",
-                "unitType": "c01.ivra",
-                "owner": 1,
-                "rank": 0,
-                "tags": [
-                  "hero",
-                  "dragon"
-                ],
-                "disposition": "available",
-                "hpRatio": 1,
-                "moraleRatio": 1
-              }
-            },
-            "completedNodes": [],
-            "battleHistory": [],
-            "pendingBattle": null,
-            "battleSequence": 0
-          },
-          "savedState": null,
-          "primaryLabel": "返回主菜单",
-          "primaryAction": "finish"
-        },
         {
           "nodeId": "campaign-failed",
           "status": "failed",

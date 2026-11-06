@@ -328,7 +328,7 @@ public partial class GrayFlagGame : Node
         });
     }
 
-    private void AdvanceCampaign(Action transition)
+    private void AdvanceCampaign(Action transition, int storyBeatIndex = 0)
     {
         try
         {
@@ -337,12 +337,12 @@ public partial class GrayFlagGame : Node
         catch (CampaignActionException error)
         {
             GD.PushWarning(error.ToString());
-            ShowNode();
+            ShowNode(storyBeatIndex: storyBeatIndex);
             Notify(text.Format("error.campaign.action_failed"));
             return;
         }
         var saved = TryPersistCampaign();
-        ShowNode();
+        ShowNode(storyBeatIndex: storyBeatIndex);
         if (!saved)
             Notify(text.Format("error.campaign.continuation_save_failed"));
     }
@@ -391,9 +391,9 @@ public partial class GrayFlagGame : Node
         view.ProcessMode = ProcessModeEnum.Inherit;
     }
 
-    private void ShowNode(string? battleLogMessage = null) => Activate(campaign, PrepareNode(campaign, battleLogMessage));
+    private void ShowNode(string? battleLogMessage = null, int storyBeatIndex = 0) => Activate(campaign, PrepareNode(campaign, battleLogMessage, storyBeatIndex));
 
-    private PreparedCampaignView PrepareNode(GrayFlagCampaign owner, string? battleLogMessage = null)
+    private PreparedCampaignView PrepareNode(GrayFlagCampaign owner, string? battleLogMessage = null, int storyBeatIndex = 0)
     {
         var node = owner.Node();
         var type = node["type"]!.GetValue<string>();
@@ -430,14 +430,14 @@ public partial class GrayFlagGame : Node
                         if (!Current())
                             return;
                         if (owner.Snapshot()["status"]!.GetValue<string>() == "active")
-                            AdvanceCampaign(owner.Advance);
+                            AdvanceCampaign(owner.Advance, next.BeatIndex);
                         else
                             ShowMenu();
                     }, () =>
                     {
                         if (Current())
                             ShowMenu();
-                    });
+                    }, initialBeatIndex: storyBeatIndex);
         });
         return new(story);
     }

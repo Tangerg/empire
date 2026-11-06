@@ -1,5 +1,14 @@
 # GreyFlag source-to-native feature inventory
 
+## Ending reading update, 2026-11-06
+
+The [current ending contract](NARRATIVE.md#ending-reading-contract) supersedes
+the historical first-beat-only parity notes below. Native endings page through
+all authored beats; only the final beat can finish or return. Completion retains
+the final local cursor, while fresh Continue/load starts at zero. Campaign
+outcomes, save fields and story wording are unchanged. This is an intentional
+native reading-design change, not graphical or packaged-release acceptance.
+
 ## Current acceptance overlay, 2026-10-21
 
 The detailed rows below retain their historical audit timing; this overlay supersedes their pending implementation and GUI statuses where stated. The actual plugin composition root, injected policies, custom engine/save/replay lifecycle and source-admitted inert metadata are implemented and verified at `50b99ff3`. The frozen native aggregate and all 16 independent battles (2,983 actions) passed. See `extension-checkpoint-validation.json` for exact trees and limits; mixed-NaN ordering and structural hardening remain explicit compatibility boundaries.

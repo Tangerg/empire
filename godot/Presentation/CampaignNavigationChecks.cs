@@ -895,8 +895,8 @@ public partial class CampaignNavigationChecks : Node
 
     private async Task CheckEndingFixtures()
     {
-        // This deliberately constructs valid terminal-screen fixtures. It does not assert that gameplay reached these nodes.
-        foreach (var (node, status) in new[] { ("chapter-three-ending", "active"), ("chapter-three-ending", "completed"), ("campaign-failed", "active"), ("campaign-failed", "failed") })
+        // Explicit UI fixtures, not evidence that gameplay reached these outcomes.
+        foreach (var (node, status) in new[] { ("chapter-three-ending", "active"), ("chapter-three-ending", "completed"), ("chapter-three-ending", "failed"), ("campaign-failed", "active"), ("campaign-failed", "failed") })
         {
             var fixture = new CampaignRuntime(CampaignRules.Create(), definition).Snapshot();
             fixture["currentNode"] = node;
@@ -905,11 +905,57 @@ public partial class CampaignNavigationChecks : Node
             var game = MountGame();
             await Activate(Button(View<Control>(game), "ContinueCampaign"));
             var story = View<StoryScreen>(game);
-            var finish = Button(story, "StoryPrimary");
             var saved = File.ReadAllText(automaticPath);
-            Require(story.BeatIndex == 0 && story.PresentedStory!.Ending, "Ending must render beat zero with finish, not page the multi-beat document.");
+            var savedStamp = Stamp(automaticPath);
+            var initial = State(game);
             var text = Field<GameText>(game, "text");
-            Require(finish.Text == (status == "active" ? text.Format(NarrativePresentationDocument.Load(text, PortraitCatalogResources.Load()).CompletionLabelKey) : text.Format("ui.campaign.exit")), "Ending finish/return label does not reflect canonical status.");
+            Require(story.BeatIndex == 0 && story.PresentedStory!.Ending, "Fresh Continue starts endings at beat zero.");
+            if (node == "chapter-three-ending")
+            {
+                await Activate(Button(story, "StoryPrimary"));
+                Require(story.BeatIndex == 1 && State(game) == initial, "First ending press pages without completing.");
+                await Activate(Button(story, "CampaignExit"));
+                Require(View<Control>(game) is CampaignMenuScreen && File.ReadAllText(automaticPath) == saved && Stamp(automaticPath) == savedStamp,
+                    "Exit during ending reading cannot save or reward.");
+                await Activate(Button(View<Control>(game), "ContinueCampaign"));
+                story = View<StoryScreen>(game);
+                Require(story.BeatIndex == 0, "Exit and Continue reset the local ending cursor.");
+                var originalManual = File.ReadAllText(manualPath);
+                var originalStamp = File.GetLastWriteTimeUtc(manualPath);
+                try
+                {
+                    SaveFile.WriteDocument(manualPath, Campaign(game).Save());
+                    await Activate(Button(story, "StoryPrimary"));
+                    game._UnhandledKeyInput(new InputEventKey { Pressed = true, Keycode = Key.F9 });
+                    await Layout();
+                    story = View<StoryScreen>(game);
+                    Require(story.BeatIndex == 0 && State(game) == initial, "F9 reload starts the ending at zero without advancing state.");
+                    DismissNotices(game);
+                    await Layout();
+                }
+                finally
+                {
+                    File.WriteAllText(manualPath, originalManual);
+                    File.SetLastWriteTimeUtc(manualPath, originalStamp);
+                }
+            }
+            var lastBeat = node == "chapter-three-ending" ? 3 : 0;
+            for (var beat = 0; beat < lastBeat; beat++)
+            {
+                var page = Button(story, "StoryPrimary");
+                Require(page.Text == text.Format("ui.story.next_beat"), "Pre-final ending action must invite the next beat, not completion.");
+                page.GrabFocus();
+                Press(page);
+                Press(page);
+                await Layout();
+                Require(ReferenceEquals(View<Control>(game), story) && story.BeatIndex == beat + 1 && Button(story, "StoryPrimary").HasFocus(),
+                    "Ending double activation advances exactly one local beat and retains keyboard focus.");
+                Require(State(game) == initial && File.ReadAllText(automaticPath) == saved && Stamp(automaticPath) == savedStamp,
+                    "Reading an ending changed canonical state or autosave bytes/timestamp.");
+            }
+            var finish = Button(story, "StoryPrimary");
+            Require(finish.Text == (status == "active" ? text.Format(NarrativePresentationDocument.Load(text, PortraitCatalogResources.Load()).CompletionLabelKey) : text.Format("ui.campaign.exit")),
+                "Only the final ending action reflects completion/return status.");
             Press(finish);
             Press(finish);
             await Layout();
@@ -917,16 +963,23 @@ public partial class CampaignNavigationChecks : Node
             {
                 var terminal = View<StoryScreen>(game);
                 var expected = node == "campaign-failed" ? "failed" : "completed";
-                Require(Campaign(game).Snapshot()["status"]!.GetValue<string>() == expected && terminal.BeatIndex == 0 && !ReferenceEquals(terminal, story), "First active finish did not advance, persist and rerender the same ending at beat zero.");
+                Require(Campaign(game).Snapshot()["status"]!.GetValue<string>() == expected && terminal.BeatIndex == lastBeat && !ReferenceEquals(terminal, story),
+                    "Active final finish must commit and retain the last ending beat without forced rereading.");
                 AssertSaved(game);
-                var committed = State(game);
                 var after = File.ReadAllText(automaticPath);
-                Require(!GodotObject.IsInstanceValid(finish) && State(game) == committed && ReferenceEquals(View<Control>(game), terminal), "Repeated active ending finish exited or advanced twice, or retained its retired button.");
+                var afterStamp = Stamp(automaticPath);
+                Require(!GodotObject.IsInstanceValid(finish) && ReferenceEquals(View<Control>(game), terminal),
+                    "Repeated active finish must retire its old control without exiting the new binding.");
+                Require(Button(terminal, "StoryPrimary").Text == text.Format("ui.campaign.exit"), "Completed ending offers return at its final beat.");
                 await Activate(Button(terminal, "StoryPrimary"));
-                Require(View<Control>(game) is CampaignMenuScreen && File.ReadAllText(automaticPath) == after, "Second finish must only exit completed/failed ending.");
+                Require(View<Control>(game) is CampaignMenuScreen && File.ReadAllText(automaticPath) == after && Stamp(automaticPath) == afterStamp,
+                    "Terminal finish exits without another save.");
             }
             else
-                Require(View<Control>(game) is CampaignMenuScreen && File.ReadAllText(automaticPath) == saved, "Terminal ending exit mutated saved campaign progress.");
+                Require(View<Control>(game) is CampaignMenuScreen && File.ReadAllText(automaticPath) == saved && Stamp(automaticPath) == savedStamp,
+                    "Reading and exiting a terminal ending cannot mutate saved progress.");
+            await Activate(Button(View<Control>(game), "ContinueCampaign"));
+            Require(View<StoryScreen>(game).BeatIndex == 0, "A fresh terminal Continue starts reading at zero, not the prior completion cursor.");
             Retire(game);
         }
     }
@@ -963,7 +1016,7 @@ public partial class CampaignNavigationChecks : Node
                 if (target is "story" or "ending")
                 {
                     var story = View<StoryScreen>(game);
-                    while (target != "ending" && !story.PresentedStory!.LastBeat)
+                    while (!story.PresentedStory!.LastBeat)
                         await Activate(Button(story, "StoryPrimary"));
                     await Activate(Button(story, "StoryPrimary"));
                 }
@@ -981,6 +1034,17 @@ public partial class CampaignNavigationChecks : Node
                     "Failed prebattle write opened a battle or changed the campaign.");
                 else
                     Require(State(game) != before, "Failed post-transition autosave lost the current in-memory progress.");
+                if (target == "ending")
+                {
+                    var ending = View<StoryScreen>(game);
+                    Require(ending.PresentedStory!.LastBeat && ending.BeatIndex == 3
+                        && Campaign(game).Snapshot()["status"]!.GetValue<string>() == "completed",
+                        "Ending save failure retains the completed in-memory outcome and final reading cursor.");
+                    await Layout();
+                    await Activate(Button(ending, "StoryPrimary"));
+                    Require(View<Control>(game) is CampaignMenuScreen && !Descendants(game).OfType<AcceptDialog>().Any(),
+                        "Completed ending return must not retry a failed save or offer completion again.");
+                }
                 Require(Directory.Exists(automaticPath) && !Directory.EnumerateFiles(userData, ".grayflag-campaign-autosave.json.*.tmp").Any(), "Failed atomic write removed the obstruction or leaked temporary data.");
             }
             finally { Directory.Delete(automaticPath); File.WriteAllText(automaticPath, previous); Retire(game); }
@@ -1917,7 +1981,7 @@ public partial class CampaignNavigationChecks : Node
             var notice = game.GetChildren().OfType<AcceptDialog>().Single();
             var shade = game.GetChildren().OfType<CanvasLayer>().Single();
             Require(notice.Visible && shade.Visible, "Root notice and its shade must be open before changing views.");
-            object?[] args = transition == "SetView" ? [new Control()] : [null];
+            object?[] args = transition == "SetView" ? [new Control()] : [null, 0];
             typeof(GrayFlagGame).GetMethod(transition, BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(game, args);
             Require(!notice.Visible && !notice.IsInsideTree() && !shade.Visible,
                 "Both direct and prepared view transitions immediately dismiss outgoing root notices.");

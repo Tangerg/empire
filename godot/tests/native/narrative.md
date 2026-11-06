@@ -90,6 +90,36 @@ before the tests could run. The corrected reviewed choice expectations reject
 the former legion promise in both projection and native-widget groups, with
 independent identity checks still running and clean assertion-failure teardown.
 
+## Ending pagination decision (2026-11-06)
+
+Native endings now present every existing beat in order. This intentional design
+change replaces the inherited first-beat-only browser behavior; the frozen
+TypeScript oracle remains unchanged. The four-beat chapter-three ending's nine
+pre-final render expectations (three cursors times active/completed/failed)
+change exactly their primary label and action to `下一段 →` and `nextBeat`.
+All narrative text, identities, dates, artwork, final labels and source documents
+remain unchanged. All 106 render cases are now exercised as native widgets,
+including the nine previously excluded nonzero ending fixtures.
+
+All 15 ending transition cases retain their initial states and cursors. Their
+operations are real primary presses: advance locally to the final beat, finish
+once if active, then exit. The 40 inherited operations become 38 real primary
+presses: inert `nextBeat` probes are removed and sequential paging is covered. Expected pre-final canonical state remains unchanged
+and saved state remains null. The existing canonical completion/failure snapshots
+are retained; the same-ending completion rebind keeps its final cursor. Terminal
+fixtures exit without a save or transition. Case counts remain 106 story renders,
+11 choices, 48 transitions, 11 historical lifetime cases and four edge projections.
+These are reviewed checked-in expectations, not values captured from production.
+
+Native lifecycle and keyboard-focus checks run for both normal stories and the
+multi-beat ending, retaining stale-button, duplicate activation, deferred paging,
+rebind, detach/remount and competing-exit guards. Application navigation fixtures
+cover active/completed/failed endings, local reading with unchanged save bytes
+and timestamps, last-beat completion handoff, immediate single-beat failure,
+fresh Continue, exit/re-entry and F9 cursor reset. Ending write-failure checks
+now reach the actual last beat before testing persistence failure. These fixtures
+are not a claim of a genuinely played campaign victory or graphical acceptance.
+
 ## Verification
 
 Run `bash tools/godot/narrative-checks/run.sh --verify-guard` for the focused

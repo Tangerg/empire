@@ -114,7 +114,7 @@ public partial class NarrativeChecks : Node
             view.Narration,
             beatDots = view.ActiveDots,
             view.PrimaryLabel,
-            primaryAction = view.Ending ? "finish" : "nextBeat",
+            primaryAction = view.Ending && view.LastBeat ? "finish" : "nextBeat",
         }, jsonOptions)!;
 
     private void CheckStoryProjection(StoryView view, JsonObject expected, string name)
@@ -310,9 +310,6 @@ public partial class NarrativeChecks : Node
         {
             var ending = Flag(item, "ending");
             var index = Number(item, "beatIndex");
-            // Source-only projections at nonzero ending indices characterize its quirk; ordinary navigation never reaches them.
-            if (ending && index != 0)
-                continue;
             var entry = Story(Text(item, "presentationId"));
             var expected = item["expected"]!;
             var advanced = 0;
@@ -404,7 +401,7 @@ public partial class NarrativeChecks : Node
 
     private async Task CheckEndingTransitions()
     {
-        foreach (var item in expectations["transitionCases"]!.AsArray().Select(value => value!.AsObject()).Where(value => Number(value, "initialBeat") == 0))
+        foreach (var item in expectations["transitionCases"]!.AsArray().Select(value => value!.AsObject()))
         {
             var definition = expectations["definition"]!.AsObject();
             var runtime = new CampaignRuntime(CampaignRules.Create(), definition, item["initialState"]!.AsObject());
@@ -413,173 +410,193 @@ public partial class NarrativeChecks : Node
             JsonObject? saved = null;
             var exits = 0;
             var normal = 0;
-            void Bind() => screen.ShowStory(Story(Text(runtime.Node(), "presentation")), documents.IdentityNameKeys, Context(runtime.Snapshot()), true,
+            void Bind(int initialBeatIndex) => screen.ShowStory(Story(Text(runtime.Node(), "presentation")), documents.IdentityNameKeys, Context(runtime.Snapshot()), true,
                 () => normal++, () =>
                 {
                     if (Text(runtime.Snapshot(), "status") == "active")
                     {
+                        var completedBeat = screen.BeatIndex;
                         runtime.Advance();
                         saved = CampaignSave.Load(CampaignSave.Create(definition, runtime.Snapshot()), definition)["state"]!.AsObject();
-                        Bind();
+                        Bind(completedBeat);
                     }
                     else
                         exits++;
-                }, () => exits++);
-            Bind();
+                }, () => exits++, initialBeatIndex: initialBeatIndex);
+            Bind(Number(item, "initialBeat"));
             var operations = item["operations"]!.AsArray();
             for (var index = 0; index < operations.Count; index++)
             {
                 var expected = item["expected"]![index]!;
-                // There is deliberately no ending next-beat button; only finish can be dispatched.
-                if (operations[index]!.GetValue<string>() == "finish")
-                    await Press("StoryPrimary");
-                Equal(screen.BeatIndex, 0, "Ending never pages normal local beats");
-                Equal(normal, 0, "Ending never calls normal advancement");
-                Equal(exits, Number(expected, "exitCount"), "Ending finish/exit contract matches source");
-                JsonEqual(runtime.Snapshot(), expected["state"], "Ending canonical outcome matches source, including failed");
-                JsonEqual(saved, expected["savedState"], "Ending persistence occurs only in active finish callback");
-                Equal(Find<Button>("StoryPrimary").Text, Text(expected, "primaryLabel"), "Ending finish label follows caller status");
+                Equal(operations[index]!.GetValue<string>(), "primary", "Ending fixture exercises the actual primary action");
+                await Press("StoryPrimary");
+                Equal(screen.BeatIndex, Number(expected, "beatIndex"), "Ending advances its local cursor before finishing");
+                Equal(normal, 0, "Ending never calls ordinary story continuation");
+                Equal(exits, Number(expected, "exitCount"), "Only a terminal final action exits");
+                JsonEqual(runtime.Snapshot(), expected["state"], "Ending pages preserve canonical state; active final commits the declared outcome");
+                JsonEqual(saved, expected["savedState"], "Only active final finish persists");
+                Equal(Find<Button>("StoryPrimary").Text, Text(expected, "primaryLabel"), "Ending label follows cursor and caller status");
             }
         }
     }
 
     private async Task CheckBeatFocus()
     {
-        var entry = documents.Stories.First(value => value.Beats.Count > 1);
-        var context = new NarrativeContext(messages, portraits, metadata, 0, true);
-        void Bind() => screen.ShowStory(entry, documents.IdentityNameKeys, context, false, () => { }, () => { }, () => { });
-        Bind();
-        await Layout();
-        var primary = Find<Button>("StoryPrimary");
-        primary.GrabFocus();
-        primary.EmitSignal(Button.SignalName.Pressed);
-        await Layout();
-        Equal(Find<Button>("StoryPrimary").HasFocus(), true, "Keyboard focus follows the same local story action after paging");
-        Bind();
-        await Layout();
-        Find<Button>("StoryPrimary").GrabFocus();
-        Find<Button>("StoryPrimary").EmitSignal(Button.SignalName.Pressed);
-        Bind();
-        var exit = Find<Button>("CampaignExit");
-        exit.GrabFocus();
-        await Layout();
-        Equal(exit.HasFocus(), true, "A deferred page focus cannot steal focus after rebinding");
-        Bind();
-        await Layout();
-        Find<Button>("StoryPrimary").GrabFocus();
-        Find<Button>("StoryPrimary").EmitSignal(Button.SignalName.Pressed);
-        exit = Find<Button>("CampaignExit");
-        exit.GrabFocus();
-        await Layout();
-        Equal(exit.HasFocus(), true, "A newer explicit focus choice wins over deferred page restoration");
-        var choice = documents.Choices.First(value => value.Options.Count > 1);
-        void BindChoice(IReadOnlyCollection<string> options) => screen.ShowChoice(choice, options, context, _ => { }, () => { });
-        var available = choice.Options.Select(option => option.Id).ToArray();
-        BindChoice(available);
-        var staleChoice = Find<Button>("Choice_" + available[0]);
-        BindChoice(available);
-        await Layout();
-        Require(!IsInstanceValid(staleChoice) && Find<Button>("Choice_" + available[0]).HasFocus(),
-            "Choice rebinding cancels the retired option's deferred focus and admits the current option.");
-        BindChoice(available);
-        exit = Find<Button>("CampaignExit");
-        exit.GrabFocus();
-        await Layout();
-        Require(exit.HasFocus(), "Deferred choice focus cannot steal a newer explicit focus selection.");
-        BindChoice(available.Skip(1).ToArray());
-        await Layout();
-        Require(Find<Button>("Choice_" + available[1]).HasFocus(),
-            "Choice focus belongs to the first available option, not an omitted authored option.");
+        foreach (var isEnding in new[] { false, true })
+        {
+            var entry = isEnding ? Story("c01/chapter-three-ending") : documents.Stories.First(value => value.Beats.Count > 1);
+            var context = new NarrativeContext(messages, portraits, metadata, 0, true);
+            void Bind() => screen.ShowStory(entry, documents.IdentityNameKeys, context, isEnding, () => { }, () => { }, () => { });
+            Bind();
+            await Layout();
+            var primary = Find<Button>("StoryPrimary");
+            primary.GrabFocus();
+            primary.EmitSignal(Button.SignalName.Pressed);
+            await Layout();
+            Equal(Find<Button>("StoryPrimary").HasFocus(), true, "Keyboard focus follows the same local story action after paging");
+            Bind();
+            await Layout();
+            Find<Button>("StoryPrimary").GrabFocus();
+            Find<Button>("StoryPrimary").EmitSignal(Button.SignalName.Pressed);
+            Bind();
+            var exit = Find<Button>("CampaignExit");
+            exit.GrabFocus();
+            await Layout();
+            Equal(exit.HasFocus(), true, "A deferred page focus cannot steal focus after rebinding");
+            Bind();
+            await Layout();
+            Find<Button>("StoryPrimary").GrabFocus();
+            Find<Button>("StoryPrimary").EmitSignal(Button.SignalName.Pressed);
+            exit = Find<Button>("CampaignExit");
+            exit.GrabFocus();
+            await Layout();
+            Equal(exit.HasFocus(), true, "A newer explicit focus choice wins over deferred page restoration");
+            var choice = documents.Choices.First(value => value.Options.Count > 1);
+            void BindChoice(IReadOnlyCollection<string> options) => screen.ShowChoice(choice, options, context, _ => { }, () => { });
+            var available = choice.Options.Select(option => option.Id).ToArray();
+            BindChoice(available);
+            var staleChoice = Find<Button>("Choice_" + available[0]);
+            BindChoice(available);
+            await Layout();
+            Require(!IsInstanceValid(staleChoice) && Find<Button>("Choice_" + available[0]).HasFocus(),
+                "Choice rebinding cancels the retired option's deferred focus and admits the current option.");
+            BindChoice(available);
+            exit = Find<Button>("CampaignExit");
+            exit.GrabFocus();
+            await Layout();
+            Require(exit.HasFocus(), "Deferred choice focus cannot steal a newer explicit focus selection.");
+            BindChoice(available.Skip(1).ToArray());
+            await Layout();
+            Require(Find<Button>("Choice_" + available[1]).HasFocus(),
+                "Choice focus belongs to the first available option, not an omitted authored option.");
+        }
     }
 
     private async Task CheckLifecycle()
     {
-        var entry = documents.Stories.First(value => value.Beats.Count > 1);
-        var context = new NarrativeContext(messages, portraits, metadata, 0, true);
-        var continuations = 0;
-        var exits = 0;
-        void Bind() => screen.ShowStory(entry, documents.IdentityNameKeys, context, false, () => continuations++, () => throw new Exception("Unexpected finish"), () => exits++);
-        Bind();
-        Find<Button>("StoryPrimary").EmitSignal(Button.SignalName.Pressed);
-        Equal(screen.BeatIndex, 0, "Local paging waits until native input dispatch completes");
-        Bind();
-        await Layout();
-        Equal(screen.BeatIndex, 0, "Rebinding cancels an already queued local page");
-        var queuedPage = Find<Button>("StoryPrimary");
-        queuedPage.EmitSignal(Button.SignalName.Pressed);
-        var pageParent = queuedPage.GetParent();
-        pageParent.RemoveChild(queuedPage);
-        pageParent.AddChild(queuedPage);
-        await Layout();
-        Equal(screen.BeatIndex, 0, "A queued page cannot survive its input target leaving the tree");
-        var stalePage = Find<Button>("StoryPrimary");
-        stalePage.EmitSignal(Button.SignalName.Pressed);
-        stalePage.EmitSignal(Button.SignalName.Pressed);
-        await Layout();
-        Equal(screen.BeatIndex, 1, "Double press on old local button cannot skip another beat");
-        var staleBinding = Find<Button>("StoryPrimary");
-        var staleExit = Find<Button>("CampaignExit");
-        Bind();
-        staleBinding.EmitSignal(Button.SignalName.Pressed);
-        staleExit.EmitSignal(Button.SignalName.Pressed);
-        await Layout();
-        Equal(screen.BeatIndex, 0, "Rebound callback is stale");
-        Equal(exits, 0, "Rebound shell exit is stale");
-        var detached = Find<Button>("StoryPrimary");
-        RemoveChild(screen);
-        detached.EmitSignal(Button.SignalName.Pressed);
-        await Layout();
-        Equal(screen.BeatIndex, 0, "Unmounted callback cannot page");
-        AddChild(screen);
-        detached.EmitSignal(Button.SignalName.Pressed);
-        await Layout();
-        Equal(screen.BeatIndex, 0, "Remounted old binding remains invalid until explicit bind");
-        Bind();
-        for (var index = 1; index < entry.Beats.Count; index++)
-            await Press("StoryPrimary");
-        var final = Find<Button>("StoryPrimary");
-        final.EmitSignal(Button.SignalName.Pressed);
-        final.EmitSignal(Button.SignalName.Pressed);
-        Find<Button>("CampaignExit").EmitSignal(Button.SignalName.Pressed);
-        await Layout();
-        Equal(continuations, 1, "Double final-beat press invokes caller once");
-        Equal(exits, 0, "Submitted story blocks competing exit");
-        Bind();
-        var back = Find<Button>("CampaignExit");
-        back.EmitSignal(Button.SignalName.Pressed);
-        back.EmitSignal(Button.SignalName.Pressed);
-        Find<Button>("StoryPrimary").EmitSignal(Button.SignalName.Pressed);
-        await Layout();
-        Equal(exits, 1, "Double back invokes caller once");
-        Equal(screen.BeatIndex, 0, "Exited binding cannot page");
-        var choice = documents.Choices[0];
-        var selected = 0;
-        void BindChoice() => screen.ShowChoice(choice, choice.Options.Select(value => value.Id).ToArray(), context, _ => selected++, () => exits++);
-        BindChoice();
-        var oldChoice = Find<Button>("Choice_" + choice.Options[0].Id);
-        BindChoice();
-        oldChoice.EmitSignal(Button.SignalName.Pressed);
-        await Layout();
-        Equal(selected, 0, "Rebound choice callback cannot submit");
-        var first = Find<Button>("Choice_" + choice.Options[0].Id);
-        first.EmitSignal(Button.SignalName.Pressed);
-        first.EmitSignal(Button.SignalName.Pressed);
-        foreach (var option in choice.Options)
-            Find<Button>("Choice_" + option.Id).EmitSignal(Button.SignalName.Pressed);
-        await Layout();
-        Equal(selected, 1, "Exactly one choice can submit per binding");
-        BindChoice();
-        var detachedChoice = Find<Button>("Choice_" + choice.Options[0].Id);
-        RemoveChild(screen);
-        detachedChoice.EmitSignal(Button.SignalName.Pressed);
-        AddChild(screen);
-        await Layout();
-        Equal(selected, 1, "Unmounted choice callback cannot submit");
-        Throws(() => NarrativeProjection.Choice(choice, new[] { "absent-choice" }, context), "Unknown canonical option is rejected");
-        Throws(() => NarrativeProjection.Choice(choice, new[] { choice.Options[0].Id, choice.Options[0].Id }, context), "Duplicate canonical option is rejected");
-        var subset = NarrativeProjection.Choice(choice, new[] { choice.Options[^1].Id }, context);
-        Equal(subset.Options.Count, 1, "Only canonical available options are presented");
-        Equal(subset.Options[0].Number, $"0{choice.Options.Count}", "Filtering preserves source option number");
+        foreach (var isEnding in new[] { false, true })
+        {
+            var entry = isEnding ? Story("c01/chapter-three-ending") : documents.Stories.First(value => value.Beats.Count > 1);
+            var context = new NarrativeContext(messages, portraits, metadata, 0, true);
+            var continuations = 0;
+            var exits = 0;
+            void Bind() => screen.ShowStory(entry, documents.IdentityNameKeys, context, isEnding, () => { Require(!isEnding, "Ending cannot invoke ordinary continuation"); continuations++; }, () => { Require(isEnding, "Ordinary story cannot invoke finish"); continuations++; }, () => exits++);
+            Bind();
+            var original = Find<Button>("StoryPrimary");
+            foreach (var invalidCursor in new[] { -1, entry.Beats.Count })
+            {
+                var rejected = false;
+                try
+                {
+                    screen.ShowStory(entry, documents.IdentityNameKeys, context, isEnding,
+                        () => continuations++, () => continuations++, () => exits++, initialBeatIndex: invalidCursor);
+                }
+                catch (ArgumentOutOfRangeException) { rejected = true; }
+                Require(rejected && screen.BeatIndex == 0 && ReferenceEquals(original, Find<Button>("StoryPrimary"))
+                    && continuations == 0 && exits == 0,
+                    "Invalid initial cursor is rejected before replacing the existing reading binding.");
+            }
+            Find<Button>("StoryPrimary").EmitSignal(Button.SignalName.Pressed);
+            Equal(screen.BeatIndex, 0, "Local paging waits until native input dispatch completes");
+            Bind();
+            await Layout();
+            Equal(screen.BeatIndex, 0, "Rebinding cancels an already queued local page");
+            var queuedPage = Find<Button>("StoryPrimary");
+            queuedPage.EmitSignal(Button.SignalName.Pressed);
+            var pageParent = queuedPage.GetParent();
+            pageParent.RemoveChild(queuedPage);
+            pageParent.AddChild(queuedPage);
+            await Layout();
+            Equal(screen.BeatIndex, 0, "A queued page cannot survive its input target leaving the tree");
+            var stalePage = Find<Button>("StoryPrimary");
+            stalePage.EmitSignal(Button.SignalName.Pressed);
+            stalePage.EmitSignal(Button.SignalName.Pressed);
+            await Layout();
+            Equal(screen.BeatIndex, 1, "Double press on old local button cannot skip another beat");
+            var staleBinding = Find<Button>("StoryPrimary");
+            var staleExit = Find<Button>("CampaignExit");
+            Bind();
+            staleBinding.EmitSignal(Button.SignalName.Pressed);
+            staleExit.EmitSignal(Button.SignalName.Pressed);
+            await Layout();
+            Equal(screen.BeatIndex, 0, "Rebound callback is stale");
+            Equal(exits, 0, "Rebound shell exit is stale");
+            var detached = Find<Button>("StoryPrimary");
+            RemoveChild(screen);
+            detached.EmitSignal(Button.SignalName.Pressed);
+            await Layout();
+            Equal(screen.BeatIndex, 0, "Unmounted callback cannot page");
+            AddChild(screen);
+            detached.EmitSignal(Button.SignalName.Pressed);
+            await Layout();
+            Equal(screen.BeatIndex, 0, "Remounted old binding remains invalid until explicit bind");
+            Bind();
+            for (var index = 1; index < entry.Beats.Count; index++)
+                await Press("StoryPrimary");
+            var final = Find<Button>("StoryPrimary");
+            final.EmitSignal(Button.SignalName.Pressed);
+            final.EmitSignal(Button.SignalName.Pressed);
+            Find<Button>("CampaignExit").EmitSignal(Button.SignalName.Pressed);
+            await Layout();
+            Equal(continuations, 1, "Double final-beat press invokes caller once");
+            Equal(exits, 0, "Submitted story blocks competing exit");
+            Bind();
+            var back = Find<Button>("CampaignExit");
+            back.EmitSignal(Button.SignalName.Pressed);
+            back.EmitSignal(Button.SignalName.Pressed);
+            Find<Button>("StoryPrimary").EmitSignal(Button.SignalName.Pressed);
+            await Layout();
+            Equal(exits, 1, "Double back invokes caller once");
+            Equal(screen.BeatIndex, 0, "Exited binding cannot page");
+            var choice = documents.Choices[0];
+            var selected = 0;
+            void BindChoice() => screen.ShowChoice(choice, choice.Options.Select(value => value.Id).ToArray(), context, _ => selected++, () => exits++);
+            BindChoice();
+            var oldChoice = Find<Button>("Choice_" + choice.Options[0].Id);
+            BindChoice();
+            oldChoice.EmitSignal(Button.SignalName.Pressed);
+            await Layout();
+            Equal(selected, 0, "Rebound choice callback cannot submit");
+            var first = Find<Button>("Choice_" + choice.Options[0].Id);
+            first.EmitSignal(Button.SignalName.Pressed);
+            first.EmitSignal(Button.SignalName.Pressed);
+            foreach (var option in choice.Options)
+                Find<Button>("Choice_" + option.Id).EmitSignal(Button.SignalName.Pressed);
+            await Layout();
+            Equal(selected, 1, "Exactly one choice can submit per binding");
+            BindChoice();
+            var detachedChoice = Find<Button>("Choice_" + choice.Options[0].Id);
+            RemoveChild(screen);
+            detachedChoice.EmitSignal(Button.SignalName.Pressed);
+            AddChild(screen);
+            await Layout();
+            Equal(selected, 1, "Unmounted choice callback cannot submit");
+            Throws(() => NarrativeProjection.Choice(choice, new[] { "absent-choice" }, context), "Unknown canonical option is rejected");
+            Throws(() => NarrativeProjection.Choice(choice, new[] { choice.Options[0].Id, choice.Options[0].Id }, context), "Duplicate canonical option is rejected");
+            var subset = NarrativeProjection.Choice(choice, new[] { choice.Options[^1].Id }, context);
+            Equal(subset.Options.Count, 1, "Only canonical available options are presented");
+            Equal(subset.Options[0].Number, $"0{choice.Options.Count}", "Filtering preserves source option number");
+        }
     }
 
     private async Task CheckShellLifecycle()
