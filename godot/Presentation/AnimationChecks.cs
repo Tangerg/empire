@@ -38,6 +38,8 @@ public partial class AnimationChecks : Node
             initialBytes = initial.ToJsonString();
             CheckActorClipDefinitions();
             CheckReleaseDefinitions();
+            CheckHealingDefinitions();
+            await CheckHealingLegalReceipt();
             await CheckRecordedDisplacement();
             CheckAssets();
             CheckTransitionOwnership();
@@ -46,6 +48,7 @@ public partial class AnimationChecks : Node
             await CheckIdleClipPlayback();
             await CheckMovementClipPlayback();
             await CheckReleasePlayback();
+            await CheckHealingPlayback();
             var board = NewBoard();
             await CheckMovement(board);
             await CheckStrikeAndDeath(board);
@@ -298,6 +301,9 @@ public partial class AnimationChecks : Node
         var id = Int(target, "id");
         var task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(),
             [new JsonObject { ["type"] = "heal", ["source"] = id, ["target"] = id, ["amount"] = 20 }]));
+        Require(Frame(Actor(board, id)) == 2 && board.GetNodeOrNull("BattleEffects/Heal") is null,
+            "Synthetic self-identity healing starts its explicit source action once; this is not a legal self-heal rule.");
+        await Tick(board, .075);
         var heal = board.GetNode<Node2D>("BattleEffects/Heal");
         Require(heal.GetNode<Sprite2D>("Strip").GetMeta("topic_id").AsString() == "C01-FX-17"
             && heal.GetNode<Label>("Number").Text == "+20", "Heal uses the original source topic and emitted amount");
@@ -305,7 +311,7 @@ public partial class AnimationChecks : Node
         await Tick(board, 0.250);
         Require(heal.GetNode<Label>("Number").Position == origin + new Vector2(0, -8), "Heal rises sixteen pixels over 500 ms");
         await Tick(board, 0.251);
-        Require(await task, "Heal completes without a synthetic attack wind-up");
+        Require(await task, "Healing completes after the released 500 ms recipient effect and overlapping source recovery.");
 
         var spawned = (JsonObject)target.DeepClone();
         spawned["id"] = 1000;

@@ -189,8 +189,14 @@ public partial class BoardView
                 {
                     var target = Integer(item, "target");
                     var unit = FindUnit(playback.After, target);
-                    return unit is null || !WasVisible(playback, target) || ImpactOn(target) is not { } at
-                        || await AnimateImpact(playback, at, Number(item["amount"], "heal amount"), true, false, _assets!.ResolveHealEffect()?.TopicId);
+                    if (unit is null || !WasVisible(playback, target) || ImpactOn(target) is not { } at)
+                        return true;
+                    var source = Integer(item, "source");
+                    var amount = Number(item["amount"], "heal amount");
+                    var topic = _assets!.ResolveHealEffect()?.TopicId;
+                    return WasVisible(playback, source) && DrawnUnit(source) is { } actor
+                        ? await AnimateActorAction(playback, actor, _assets.ResolveAbilityAction("heal"), at, amount, true, false, topic)
+                        : await AnimateImpact(playback, at, amount, true, false, topic);
                 }
             case "regen":
                 {
@@ -234,10 +240,10 @@ public partial class BoardView
         var weapon = Text(item, "weapon");
         var amount = Number(item["damage"], "damage");
         var fatal = item[fatalField]!.GetValue<bool>();
+        var topic = at is null ? null : _assets!.ResolveWeaponEffect(weapon)?.TopicId;
         if (windup && WasVisible(playback, attacker) && DrawnUnit(attacker) is { } actor)
-            return await AnimateWeaponAction(playback, actor, weapon, at, amount, fatal);
-        return at is null || await AnimateImpact(playback, at.Value, amount, false, fatal,
-            _assets!.ResolveWeaponEffect(weapon)?.TopicId);
+            return await AnimateActorAction(playback, actor, _assets!.ResolveWeaponAction(weapon), at, amount, false, fatal, topic);
+        return at is null || await AnimateImpact(playback, at.Value, amount, false, fatal, topic);
     }
 
     private async Task<bool> AnimatePath(Playback playback, int id, JsonArray path, bool walking)
@@ -310,14 +316,13 @@ public partial class BoardView
             Enumerable.Range(first, last - first + 1).Select(depth => (float)depth));
     }
 
-    private async Task<bool> AnimateWeaponAction(Playback playback, Node2D actor, string weapon,
-        Vector2? target, double amount, bool fatal)
+    private async Task<bool> AnimateActorAction(Playback playback, Node2D actor, ActorAction policy,
+        Vector2? target, double amount, bool healing, bool fatal, string? topic)
     {
-        var policy = _assets!.ResolveWeaponAction(weapon);
-        var clip = _assets.ResolveUnitClip(actor.GetMeta("unit_type").AsString(), policy.Action, ActorClipUnit.Milliseconds,
+        var clip = _assets!.ResolveUnitClip(actor.GetMeta("unit_type").AsString(), policy.Action, ActorClipUnit.Milliseconds,
             actor.HasMeta("actor_key") ? actor.GetMeta("actor_key").AsString() : null);
         var release = clip.RequireRelease();
-        var impactEnd = target is null ? 0 : release + ImpactDuration(false);
+        var impactEnd = target is null ? 0 : release + ImpactDuration(healing);
         if (target is not null && (!double.IsFinite(impactEnd) || impactEnd <= release))
             throw new InvalidOperationException($"Actor release cannot represent the following impact: {clip.Asset.Identity}.");
         SuspendIdle(actor);
@@ -360,9 +365,9 @@ public partial class BoardView
             }
             if (target is not { } at || elapsed < release)
                 return;
-            impact ??= CreateImpactVisual(playback, at, amount, false, _assets.ResolveWeaponEffect(weapon)?.TopicId);
+            impact ??= CreateImpactVisual(playback, at, amount, healing, topic);
             if (elapsed < impactEnd)
-                impact.Sample((elapsed - release) / ImpactDuration(false));
+                impact.Sample((elapsed - release) / ImpactDuration(healing));
             else
                 RemoveEffect(impact.Node);
         }

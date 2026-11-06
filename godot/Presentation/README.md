@@ -42,6 +42,11 @@ connects the screen to a real application session.
   enumeration, direct test-only submission API, local damage calculation or
   UI-only turn transition is used by the application.
 
+Healing consumes the committed event's explicit source, recipient and amount.
+Its ability action is declared independently of weapon/FX bindings and shares
+clip-owned release, recovery and impact timing with weapon actions. The current
+healer pose is explicitly reused trusted art, not a completed new animation.
+
 ## Resource contracts
 
 - `selected-assets.json` owns physical paths and density. `AtlasTexture` regions

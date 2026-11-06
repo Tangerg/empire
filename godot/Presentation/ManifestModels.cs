@@ -164,7 +164,7 @@ public sealed class MapStructureArtBinding
     }
 }
 
-public sealed class WeaponActionRecord
+public sealed class ActorActionRecord
 {
     public string Action { get; init; } = "";
     public string Motion { get; init; } = "";
@@ -172,8 +172,10 @@ public sealed class WeaponActionRecord
 
 public sealed class ArtBindings
 {
+    [JsonPropertyName("CANDIDATE_01_ABILITY_ACTION")]
+    public Dictionary<string, ActorActionRecord> AbilityActions { get; init; } = new();
     [JsonPropertyName("CANDIDATE_01_WEAPON_ACTION")]
-    public Dictionary<string, WeaponActionRecord> WeaponActions { get; init; } = new();
+    public Dictionary<string, ActorActionRecord> WeaponActions { get; init; } = new();
     [JsonPropertyName("CANDIDATE_01_UNIT_ART")]
     public Dictionary<string, UnitArtBinding> Units { get; init; } = new();
     [JsonPropertyName("CANDIDATE_01_ACTOR_ART")]

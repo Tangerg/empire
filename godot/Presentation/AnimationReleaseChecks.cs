@@ -292,11 +292,14 @@ public partial class AnimationChecks
 
         var healing = board.PresentTransitionAsync(viewportFeedback, Transition(state, state, IdleAction(),
             [new JsonObject { ["type"] = "heal", ["source"] = aid, ["target"] = did, ["amount"] = 20 }]));
-        Require(Frame(Actor(board, aid)) == 0 && board.GetNode<Label>("BattleEffects/Heal/Number").Text == "+20",
-            "Healing keeps its existing immediate recipient effect without inventing a new source actor action.");
-        await Tick(board, .250);
+        Require(Frame(Actor(board, aid)) == 1 && board.GetNodeOrNull("BattleEffects/Heal") is null,
+            "The explicit heal ability selects its source clip without inventing an attack event or changing the recipient yet.");
+        await Tick(board, .064);
+        Require(Frame(Actor(board, aid)) == 2 && board.GetNode<Label>("BattleEffects/Heal/Number").Text == "+20",
+            "Healing releases its original emitted amount at the source clip's declared marker.");
+        await Tick(board, .186);
         Require(Frame(Actor(board, aid)) == 0 && board.GetNodeOrNull("BattleEffects/Hit") is null,
-            "A healing source remains idle throughout recipient recovery feedback.");
+            "The healing source rejoins idle while recipient recovery feedback continues, without creating a harmful impact.");
         await Drain(board, healing);
     }
 

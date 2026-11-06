@@ -106,7 +106,7 @@ The two finite attack profiles, `static.attack` and `static.work`, each retain o
 trusted pose for exactly 150 ms, with an explicit release at 75 ms. This first slice introduces no new sprite pixels
 or accepted multi-frame character artwork. Multi-frame/cross-sheet checks use
 trusted sheets as explicitly synthetic infrastructure fixtures. It does not add
-new animated artwork, hit, death, celebration, or a separate magic/caster action contract.
+new animated artwork, hit reactions, death, celebration, or a complete area/cast activation contract.
 Those remain unfinished; FX identity is not an action classifier. In particular,
 `castResolved` must not repeat the following attack's wind-up, and area victims
 must not each start another caster animation.
@@ -133,7 +133,7 @@ releaseMs`, including a tick that jumps across release or the whole action.
 Recovery and impact run together; the presenter finishes at the maximum of actor
 length and release plus impact duration. The existing 40 ms fatal beat follows
 both. Shared `ImpactVisual` creation/sampling/cleanup is also used by standalone
-area impacts, regeneration and healing; it owns no clock. An impossible numeric
+area impacts, regeneration and source-hidden healing; it owns no clock. An impossible numeric
 impact interval fails explicitly rather than silently becoming instantaneous.
 
 Stationary actors may face the target but keep their position and logical
@@ -157,10 +157,46 @@ This does **not** yet represent every area/cast activation. An empty aimed cell
 can emit only area hits or no hits; structure-primary attacks can emit unit area
 hits before their primary structure event. A later complete slice needs an
 explicit combat-owned resolution/group start fact, not a guessed grouping by
-attacker/weapon/first victim. Healing has an explicit source but no weapon and
-needs its own ability action binding; regeneration has no caster. New casting
-art, charge gestures, hit reactions, death and celebration remain separate work.
+attacker/weapon/first victim. Healing has its own explicit source ability binding
+below; regeneration has no caster. New casting art, charge gestures, hit reactions,
+death and celebration remain separate work.
 No unaccepted candidate image is shipped by this contract change.
+
+## Healing source and recipient
+
+`DefaultAbilities.Heal` remains the sole healing rule owner. Its committed `heal`
+event supplies `source`, `target` and the actual `amount`; the presenter neither
+queries healing rules nor invents a weapon or another event. The explicit
+`CANDIDATE_01_ABILITY_ACTION.heal` policy selects the existing `attack` pose and
+`stationary` motion. This deliberately reuses trusted art rather than falling
+back to a pose or claiming a newly authored healing animation. The four shipped
+healer types (`cleric`, `c01.mirelle`, `c01.gravekeeper`, `c01.druid`) resolve that
+action through their normal type/actor art bindings.
+
+Ability and weapon declarations share immutable `ActorAction` admission, but
+retain separate lookup domains. `ActorClip` still exclusively owns release.
+`AnimateActorAction` is the same composition for damage and healing: source
+recovery and the recipient's existing 500 ms healing effect sample one receipt
+clock. The shipped static pose releases at 75 ms, restores idle at 150 ms, and
+finishes recipient feedback at 575 ms. The recipient keeps its emitted amount,
+current drawn contact, original effect strip, number rise and fade. No extra
+`attack` or `heal` receipt is produced.
+
+The existing recipient gate is preserved: it must remain in `After`, have been
+visible before the receipt and have a drawn contact. Only an independently
+visible, drawn source may start an actor action. A hidden or absent source does
+not trigger action/art lookup or expose its position; its visible recipient
+retains immediate target-only healing feedback. Hidden/missing recipients do
+not expose an otherwise visible source action. `regen` remains source-free,
+target-only feedback. Canonical heal targeting excludes self; synthetic
+source-equals-target presenter checks protect lifecycle robustness, not a new
+self-heal rule.
+
+The unchanged formal C01-12 healing witness replays its 94-order prefix before
+unit 4 heals unit 6 for 27 HP. Initial/before/after state and ordered event hashes
+are preserved, with one publication per event. Controllable-clock checks cover
+release, overshoot, source/recipient identity, recovery/impact retirement,
+visibility and cancellation. They do not replace dynamic visual art acceptance.
 
 ## Distance-sampled movement clips
 
