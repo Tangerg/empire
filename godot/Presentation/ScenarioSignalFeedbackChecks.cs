@@ -153,12 +153,12 @@ public partial class ScenarioSignalFeedbackChecks : Node
                     Require(!journal.BbcodeEnabled, "The journal renders authored descriptions as plain text.");
                     dialog.Hide();
                     GD.Print($"SCENARIO_SIGNAL turn={session.Snapshot()["turn"]} revision={session.Revision} id={id} description={transition.EventDescriptions[index]} journal={shown} hash={StateDigest.Hash(session.Snapshot())} events={EcmaJson.Sha256(new JsonArray(session.Events.Select(value => (JsonNode)value.DeepClone()).ToArray()))}");
-                    var expectedHash = seen.Count == 1 ? "789b6864" : "6b0ac5f1";
-                    var expectedEvents = seen.Count == 1 ? "e395d3f0b5b5f8328b2551cea06bc37d81e0cc92333cd45354f42ccc1b30e45b"
-                        : "da1044200ef95d53f6731eb7d8981d3e72e0f78d93c94f6bbf015c4c7b52f59c";
+                    var expectedHash = seen.Count == 1 ? "50ded0d0" : "9edccbb1";
+                    var expectedEvents = seen.Count == 1 ? "ca903dea6f5a22882a213693b7bff1d59d496acdc0d4b289b30edacc5bb6674f"
+                        : "851f9e5c794948c43ac07a9a80a4e02c76beec2d186ab85530325e0b0230b528";
                     Require(StateDigest.Hash(session.Snapshot()) == expectedHash
                         && EcmaJson.Sha256(new JsonArray(session.Events.Select(value => (JsonNode)value.DeepClone()).ToArray())) == expectedEvents,
-                        "The signal feedback must preserve the original native state and ordered canonical events exactly.");
+                        "The signal feedback must preserve the current native state and ordered canonical events exactly.");
                     Require(transition.Before.GetProperty("map").GetRawText() == transition.After.GetProperty("map").GetRawText()
                         && transition.Before.GetProperty("structures").GetRawText() == transition.After.GetProperty("structures").GetRawText(),
                         "Neither warning may invent terrain or structure damage.");

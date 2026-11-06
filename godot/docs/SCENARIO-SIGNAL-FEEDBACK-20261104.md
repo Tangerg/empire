@@ -126,3 +126,21 @@ aggregate; its scene/script UID are indexed. No historical source-parity suite w
 substituted for the current native gate.
 
 No remote CI pass or visual acceptance is inferred from local headless results.
+
+## Explicit attack contract revision, 2026-11-06
+
+The table above preserves the original pre-activation evidence. Main attack
+activation/completion now contribute explicit facts and ordinary event counts
+under replay schema 4. The same 61 legal C06 actions, including 51 default-AI
+choices and five player retreats, reproduce the earlier state and cumulative
+event bytes after validating and removing only those two new fact/count kinds.
+T4 has 11 new pairs; T6 has 26. No other field, command or original event changes.
+The live native test retains exact, unfiltered current hashes:
+
+| Boundary | State hash | SHA-256 of complete cumulative event list |
+| --- | --- | --- |
+| T4 / revision 33 | 50ded0d0 | ca903dea6f5a22882a213693b7bff1d59d496acdc0d4b289b30edacc5bb6674f |
+| T6 / revision 61 | 9edccbb1 | 851f9e5c794948c43ac07a9a80a4e02c76beec2d186ab85530325e0b0230b528 |
+
+This is an intentional receipt contract delta, not a relaxed state/hash assertion
+or a change to warning timing, retreat strategy, map damage or player feedback.
