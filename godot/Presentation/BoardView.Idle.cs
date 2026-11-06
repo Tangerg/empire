@@ -49,7 +49,7 @@ public partial class BoardView
     {
         var actor = entry.Node;
         var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
-        var clip = _assets!.ResolveUnitClip(actor.GetMeta("unit_type").AsString(), "idle",
+        var clip = _assets!.ResolveUnitClip(actor.GetMeta("unit_type").AsString(), "idle", ActorClipUnit.Milliseconds,
             actor.HasMeta("actor_key") ? actor.GetMeta("actor_key").AsString() : null);
         var idle = new IdleActor(sprite, clip, ActorClipDepths(entry, sprite, clip));
         SetFrame(sprite, clip.Asset, idle.Frame);
@@ -99,9 +99,9 @@ public partial class BoardView
         var changed = false;
         foreach (var idle in _idleActors.Values)
         {
-            var step = milliseconds % idle.Clip.DurationMs;
-            var remaining = idle.Clip.DurationMs - idle.PhaseMs;
-            idle.PhaseMs = (step >= remaining ? step - remaining : idle.PhaseMs + step) % idle.Clip.DurationMs;
+            var step = milliseconds % idle.Clip.Length;
+            var remaining = idle.Clip.Length - idle.PhaseMs;
+            idle.PhaseMs = (step >= remaining ? step - remaining : idle.PhaseMs + step) % idle.Clip.Length;
             changed |= ApplyIdleFrame(idle, idle.Clip.FrameAt(idle.PhaseMs));
         }
         FinishIdleFrameChanges(changed);

@@ -22,6 +22,7 @@ public sealed class AssetManifest
 
 public sealed class ActorClipRecord
 {
+    public string Unit { get; init; } = "";
     public string? AppearanceId
     {
         get; init;
@@ -32,7 +33,7 @@ public sealed class ActorClipRecord
 public sealed class ActorClipFrameRecord
 {
     public string Frame { get; init; } = "";
-    public double DurationMs
+    public double Span
     {
         get; init;
     }

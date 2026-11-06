@@ -54,8 +54,9 @@ connects the screen to a real application session.
   reported, never substituted with a generic actor.
 - Every sheet uses its declared frame order. Idle, walk-a, attack, walk-b are not
   assumed to be sequential animation frames. The preview renders idle only.
-- Finite actor clips explicitly map named poses to frame durations and may use
-  a same-topic alternate sheet. The existing receipt clock alone samples them;
+- Actor clips explicitly map named poses to spans in milliseconds or path cells and may use
+  a same-topic alternate sheet. BoardView advances eligible idle, while the sole
+  receipt clock supplies finite action progress;
   see [action presentation](../docs/ACTION-PRESENTATION.md#finite-actor-clips).
   Current shipped attack clips retain the trusted single pose, not new animation art.
 - Authored topic placements mirror around their foot. Environment atlas placements
@@ -172,3 +173,8 @@ Persistent actor idle uses explicit clip bindings and the BoardView tick without
 occupying receipt completion. Its render-owned phases, finite-action handoff,
 visibility, reduced-motion and geometry lifecycle are documented in
 [`ACTION-PRESENTATION.md`](../docs/ACTION-PRESENTATION.md#persistent-idle-playback).
+
+Movement clips sample the same committed path progress that places actors; no second
+clock or distance accumulator is introduced. The shipped `legacy.move` preserves
+the previous two support poses, not new walking artwork. Full pose/contact depth
+coverage is prepared once per path through the existing standing geometry owner.

@@ -43,6 +43,7 @@ public partial class AnimationChecks : Node
             await CheckClock();
             await CheckActorClipPlayback();
             await CheckIdleClipPlayback();
+            await CheckMovementClipPlayback();
             var board = NewBoard();
             await CheckMovement(board);
             await CheckStrikeAndDeath(board);

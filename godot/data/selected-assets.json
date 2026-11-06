@@ -6,23 +6,39 @@
       "frames": [
         {
           "frame": "attack",
-          "durationMs": 150
+          "span": 150
         }
-      ]
+      ],
+      "unit": "milliseconds"
     },
     "static.work": {
       "frames": [
         {
           "frame": "carry-or-work",
-          "durationMs": 150
+          "span": 150
         }
-      ]
+      ],
+      "unit": "milliseconds"
     },
     "static.idle": {
       "frames": [
         {
           "frame": "idle",
-          "durationMs": 1000
+          "span": 1000
+        }
+      ],
+      "unit": "milliseconds"
+    },
+    "legacy.move": {
+      "unit": "cells",
+      "frames": [
+        {
+          "frame": "walk-a",
+          "span": 1
+        },
+        {
+          "frame": "walk-b",
+          "span": 1
         }
       ]
     }

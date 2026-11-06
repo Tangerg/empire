@@ -240,8 +240,9 @@ public partial class PaintedSurfaceChecks : Node
             {
                 ["fixture.idle"] = new()
                 {
+                    Unit = "milliseconds",
                     AppearanceId = "cliff-cue-poses",
-                    Frames = [new() { Frame = "tall", DurationMs = 1000 }, new() { Frame = "short", DurationMs = 1000 }]
+                    Frames = [new() { Frame = "tall", Span = 1000 }, new() { Frame = "short", Span = 1000 }]
                 }
             },
             Assets = [new AssetRecord { TopicId = "cliff-cue-actor", Category = "combat-unit",

@@ -25,10 +25,10 @@ public partial class AnimationChecks
 
         var (manifest, bindings) = ActorClipFixture();
         var catalog = new AssetCatalog(manifest, bindings);
-        var clip = catalog.ResolveUnitClip("c01.swordsman", "attack");
+        var clip = catalog.ResolveUnitClip("c01.swordsman", "attack", ActorClipUnit.Milliseconds);
         var selected = catalog.ResolveUnit("c01.swordsman");
         Require(clip.Asset.Identity == "torren-stage01" && selected.Identity != clip.Asset.Identity
-            && clip.Asset.TopicId == selected.TopicId && clip.DurationMs == 128,
+            && clip.Asset.TopicId == selected.TopicId && clip.Length == 128,
             "An explicit alternate clip sheet preserves the selected actor's canonical topic and owns the sum of its durations.");
         foreach (var (time, frame) in new (double, int)[]
         {
@@ -44,12 +44,12 @@ public partial class AnimationChecks
             catch (ArgumentOutOfRangeException) { assertions++; continue; }
             throw new InvalidOperationException("Invalid actor clip sample time was accepted.");
         }
-        var named = catalog.ResolveUnitClip("c01.swordsman", "attack", "campaign-torren");
-        Require(named.Asset.Identity == "torren-stage01" && named.DurationMs == 150 && named.FrameAt(32) == 2,
+        var named = catalog.ResolveUnitClip("c01.swordsman", "attack", ActorClipUnit.Milliseconds, "campaign-torren");
+        Require(named.Asset.Identity == "torren-stage01" && named.Length == 150 && named.FrameAt(32) == 2,
             "Actor-key selection owns its action map instead of inheriting the generic unit's alternate clip.");
-        Throws(() => catalog.ResolveUnitClip("c01.archer", "attack", "campaign-torren"),
+        Throws(() => catalog.ResolveUnitClip("c01.archer", "attack", ActorClipUnit.Milliseconds, "campaign-torren"),
             "Actor-key clip resolution must enforce the expected canonical unit type.");
-        Throws(() => catalog.ResolveUnitClip("c01.swordsman", "undeclared"),
+        Throws(() => catalog.ResolveUnitClip("c01.swordsman", "undeclared", ActorClipUnit.Milliseconds),
             "Missing action clips fail instead of inventing a static or generic fallback.");
 
         var originalRegion = clip.Asset.RegionAt(1);
@@ -57,7 +57,7 @@ public partial class AnimationChecks
         manifest.ActorClips[ClipFixtureId].Frames[0] = new()
         {
             Frame = "idle",
-            DurationMs = 999
+            Span = 999
         };
         var alternate = manifest.Assets.Single(record => record.Id == "torren-stage01");
         alternate.FrameOrder![1] = "changed-after-admission";
@@ -68,11 +68,11 @@ public partial class AnimationChecks
         bindings.Units.Clear();
         bindings.Actors.Clear();
         manifest.ActorClips.Clear();
-        Require(clip.DurationMs == 128 && clip.FrameAt(0) == 1 && clip.FrameAt(32) == 2
+        Require(clip.Length == 128 && clip.FrameAt(0) == 1 && clip.FrameAt(32) == 2
             && clip.Asset.RegionAt(1) == originalRegion && clip.Asset.AnchorAt(1) == originalAnchor
             && clip.Asset.FrameOrder[1] == "walk-a"
-            && catalog.ResolveUnitClip("c01.swordsman", "attack").DurationMs == 128
-            && catalog.ResolveUnitClip("c01.swordsman", "attack", "campaign-torren").DurationMs == 150,
+            && catalog.ResolveUnitClip("c01.swordsman", "attack", ActorClipUnit.Milliseconds).Length == 128
+            && catalog.ResolveUnitClip("c01.swordsman", "attack", ActorClipUnit.Milliseconds, "campaign-torren").Length == 150,
             "Admitted clips detach caller-owned frame arrays, geometry, definitions and both unit/actor action maps.");
 
         void Reject(Action<AssetManifest, ArtBindings> edit, string reason)
@@ -84,6 +84,7 @@ public partial class AnimationChecks
         void RejectFrames(ActorClipFrameRecord[] frames, string reason) => Reject((m, _) =>
             m.ActorClips[ClipFixtureId] = new()
             {
+                Unit = "milliseconds",
                 Frames = frames
             }, reason);
         Reject((m, _) => m.ActorClips.Remove(ClipFixtureId), "Unknown bound clip identities fail during catalog admission.");
@@ -91,22 +92,27 @@ public partial class AnimationChecks
         RejectFrames(null!, "Null clip frame arrays fail explicitly.");
         RejectFrames(Array.Empty<ActorClipFrameRecord>(), "An empty clip cannot become a zero-duration fallback.");
         RejectFrames(new ActorClipFrameRecord[] { null! }, "Null frame records fail explicitly.");
-        RejectFrames(new[] { new ActorClipFrameRecord { Frame = "missing", DurationMs = 1 } }, "Unknown frame roles fail before playback.");
+        RejectFrames(new[] { new ActorClipFrameRecord { Frame = "missing", Span = 1 } }, "Unknown frame roles fail before playback.");
         foreach (var invalid in new[] { 0, -1, double.NaN, double.PositiveInfinity, double.NegativeInfinity })
-            RejectFrames(new[] { new ActorClipFrameRecord { Frame = "attack", DurationMs = invalid } },
+            RejectFrames(new[] { new ActorClipFrameRecord { Frame = "attack", Span = invalid } },
                 "Actor frame durations must be finite and strictly positive.");
         RejectFrames(new[]
         {
-            new ActorClipFrameRecord { Frame = "attack", DurationMs = double.MaxValue },
-            new ActorClipFrameRecord { Frame = "idle", DurationMs = double.MaxValue }
+            new ActorClipFrameRecord { Frame = "attack", Span = double.MaxValue },
+            new ActorClipFrameRecord { Frame = "idle", Span = double.MaxValue }
         }, "Overflowing total clip durations fail during admission.");
         RejectFrames(new[]
         {
-            new ActorClipFrameRecord { Frame = "attack", DurationMs = 1e20 },
-            new ActorClipFrameRecord { Frame = "idle", DurationMs = 1 }
+            new ActorClipFrameRecord { Frame = "attack", Span = 1e20 },
+            new ActorClipFrameRecord { Frame = "idle", Span = 1 }
         }, "Every frame must advance representable cumulative time.");
         foreach (var appearance in new[] { "absent-appearance", "laiya-stage01" })
-            Reject((m, _) => m.ActorClips[ClipFixtureId] = new() { AppearanceId = appearance, Frames = ClipFixtureFrames() },
+            Reject((m, _) => m.ActorClips[ClipFixtureId] = new()
+            {
+                Unit = "milliseconds",
+                AppearanceId = appearance,
+                Frames = ClipFixtureFrames()
+            },
                 "Alternate clip sheets must exist and belong to the bound actor's canonical topic.");
         Reject((m, _) => m.Assets.Single(record => record.Id == "torren-stage01").FrameRegions![1][2] = 100000,
             "An alternate clip cannot bypass physical frame-region bounds.");
@@ -120,6 +126,7 @@ public partial class AnimationChecks
         {
             m.ActorClips[ClipFixtureId] = new()
             {
+                Unit = "milliseconds",
                 Frames = ClipFixtureFrames()
             };
             b.Units["c01.swordsman"] = new()
@@ -134,24 +141,24 @@ public partial class AnimationChecks
         var (idleManifest, idleBindings) = ActorClipFixture();
         idleBindings.Actors["campaign-torren"].UnitArt.ActionClips.Clear();
         var missingOverride = new AssetCatalog(idleManifest, idleBindings);
-        Require(missingOverride.ResolveUnitClip("c01.swordsman", "attack").DurationMs == 128,
+        Require(missingOverride.ResolveUnitClip("c01.swordsman", "attack", ActorClipUnit.Milliseconds).Length == 128,
             "The generic action remains available in the missing-override fixture.");
-        Throws(() => missingOverride.ResolveUnitClip("c01.swordsman", "attack", "campaign-torren"),
+        Throws(() => missingOverride.ResolveUnitClip("c01.swordsman", "attack", ActorClipUnit.Milliseconds, "campaign-torren"),
             "Named actors without an action cannot fall back to the generic action map.");
         idleBindings.Units["c01.swordsman"].ActionClips.Clear();
         var idleOnly = new AssetCatalog(idleManifest, idleBindings);
         Require(idleOnly.ResolveUnit("c01.swordsman").TopicId == "C01-UNIT-SWORDSMAN",
             "Catalog geometry can be inspected without selecting an actor action.");
-        Throws(() => idleOnly.ResolveUnitClip("c01.swordsman", "attack"), "Idle-only actors cannot silently acquire an attack clip.");
+        Throws(() => idleOnly.ResolveUnitClip("c01.swordsman", "attack", ActorClipUnit.Milliseconds), "Idle-only actors cannot silently acquire an attack clip.");
         CheckActorClipFrameApplication(catalog, selected, clip.Asset);
     }
 
     private void CheckStaticActorClip(string type, string? key)
     {
         var asset = assets.ResolveUnit(type, key);
-        var clip = assets.ResolveUnitClip(type, "attack", key);
+        var clip = assets.ResolveUnitClip(type, "attack", ActorClipUnit.Milliseconds, key);
         var frame = AssetCatalog.FrameIndex(asset, asset.Category == "mission-unit" ? "carry-or-work" : "attack");
-        Require(clip.Asset == asset && clip.DurationMs == 150 && clip.FrameAt(0) == frame && clip.FrameAt(150) == frame,
+        Require(clip.Asset == asset && clip.Length == 150 && clip.FrameAt(0) == frame && clip.FrameAt(150) == frame,
             "Shipped combat and mission bindings preserve their existing selected one-pose, 150 ms strike.");
     }
 
@@ -212,7 +219,7 @@ public partial class AnimationChecks
                 var destination = board.Projection.CellContact(new(1, 3));
                 var direction = (destination - origin).Normalized();
                 var facing = direction.X < 0 ? -1 : 1;
-                var clip = catalog.ResolveUnitClip("c01.swordsman", "attack");
+                var clip = catalog.ResolveUnitClip("c01.swordsman", "attack", ActorClipUnit.Milliseconds);
                 var idle = catalog.ResolveUnit("c01.swordsman");
                 CheckClipSprite(sprite, clip.Asset, 1, facing);
                 CheckClipShadow(sprite);
@@ -366,8 +373,9 @@ public partial class AnimationChecks
         });
         manifest.ActorClips[ClipFixtureId] = new()
         {
+            Unit = "milliseconds",
             AppearanceId = "fixture.offset-contact",
-            Frames = new[] { new ActorClipFrameRecord { Frame = "attack", DurationMs = 128 } }
+            Frames = new[] { new ActorClipFrameRecord { Frame = "attack", Span = 128 } }
         };
         var catalog = new AssetCatalog(manifest, bindings);
         ConfigureDepth(catalog);
@@ -431,7 +439,7 @@ public partial class AnimationChecks
             else
                 unit["key"] = key;
             var selected = catalog.ResolveUnit(type, key);
-            var clip = catalog.ResolveUnitClip(type, "attack", key);
+            var clip = catalog.ResolveUnitClip(type, "attack", ActorClipUnit.Milliseconds, key);
             var task = board.PresentTransitionAsync(viewportFeedback,
                 Transition(before, (JsonObject)before.DeepClone(), IdleAction(), [Strike("attack", aid, did)]));
             var sprite = Actor(board, aid).GetNode<Sprite2D>("AuthoredSprite");
@@ -473,6 +481,7 @@ public partial class AnimationChecks
         var (manifest, bindings) = ActorClipFixture();
         manifest.ActorClips["fixture.legal"] = new()
         {
+            Unit = "milliseconds",
             Frames = ClipFixtureFrames()
         };
         bindings.Units[type].ActionClips["attack"] = "fixture.legal";
@@ -521,9 +530,9 @@ public partial class AnimationChecks
 
     private static ActorClipFrameRecord[] ClipFixtureFrames() => new[]
     {
-        new ActorClipFrameRecord { Frame = "walk-a", DurationMs = 32 },
-        new ActorClipFrameRecord { Frame = "attack", DurationMs = 64 },
-        new ActorClipFrameRecord { Frame = "walk-b", DurationMs = 32 }
+        new ActorClipFrameRecord { Frame = "walk-a", Span = 32 },
+        new ActorClipFrameRecord { Frame = "attack", Span = 64 },
+        new ActorClipFrameRecord { Frame = "walk-b", Span = 32 }
     };
 
     private static (AssetManifest Manifest, ArtBindings Bindings) ActorClipFixture()
@@ -535,6 +544,7 @@ public partial class AnimationChecks
             new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase })!;
         manifest.ActorClips[ClipFixtureId] = new()
         {
+            Unit = "milliseconds",
             AppearanceId = "torren-stage01",
             Frames = ClipFixtureFrames()
         };

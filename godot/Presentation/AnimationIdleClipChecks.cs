@@ -20,12 +20,13 @@ public partial class AnimationChecks
         // Synthetic timing infrastructure over existing trusted pixels, not authored idle animation.
         manifest.ActorClips[IdleFixtureId] = new()
         {
+            Unit = "milliseconds",
             AppearanceId = "torren-stage01",
             Frames = new[]
             {
-                new ActorClipFrameRecord { Frame = "walk-a", DurationMs = 40 },
-                new ActorClipFrameRecord { Frame = "attack", DurationMs = 60 },
-                new ActorClipFrameRecord { Frame = "walk-b", DurationMs = 100 }
+                new ActorClipFrameRecord { Frame = "walk-a", Span = 40 },
+                new ActorClipFrameRecord { Frame = "attack", Span = 60 },
+                new ActorClipFrameRecord { Frame = "walk-b", Span = 100 }
             }
         };
         bindings.Units["c01.swordsman"].ActionClips["idle"] = IdleFixtureId;
@@ -49,10 +50,10 @@ public partial class AnimationChecks
         foreach (var (type, key) in shipped.Units.Keys.Select(type => (type, (string?)null))
             .Concat(shipped.Actors.Select(pair => (pair.Value.ExpectedUnitType, (string?)pair.Key))))
         {
-            var clip = assets.ResolveUnitClip(type, "idle", key);
+            var clip = assets.ResolveUnitClip(type, "idle", ActorClipUnit.Milliseconds, key);
             var asset = assets.ResolveUnit(type, key);
             Require(clip.Asset == asset && clip.FrameAt(0) == AssetCatalog.FrameIndex(asset, "idle")
-                && clip.FrameAt(clip.DurationMs - .001) == clip.FrameAt(0),
+                && clip.FrameAt(clip.Length - .001) == clip.FrameAt(0),
                 "Shipped idle declarations preserve the selected existing static idle picture.");
         }
         var (manifest, bindings) = IdleClipFixture();
@@ -68,7 +69,7 @@ public partial class AnimationChecks
             board.RenderState(state);
             var actor = Actor(board, ids[0]);
             var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
-            var clip = catalog.ResolveUnitClip("c01.swordsman", "idle");
+            var clip = catalog.ResolveUnitClip("c01.swordsman", "idle", ActorClipUnit.Milliseconds);
             CheckClipSprite(sprite, clip.Asset, 1, sprite.Scale.X < 0 ? -1 : 1);
             CheckClipShadow(sprite);
             var texture = sprite.Texture!.GetInstanceId();
@@ -148,8 +149,9 @@ public partial class AnimationChecks
         var (manifest, bindings) = IdleClipFixture();
         manifest.ActorClips[IdleFixtureId] = new()
         {
+            Unit = "milliseconds",
             AppearanceId = "torren-stage01",
-            Frames = [new() { Frame = "walk-a", DurationMs = 8e307 }, new() { Frame = "walk-b", DurationMs = 8e307 }]
+            Frames = [new() { Frame = "walk-a", Span = 8e307 }, new() { Frame = "walk-b", Span = 8e307 }]
         };
         var board = NewActorClipBoard(new AssetCatalog(manifest, bindings));
         try
@@ -183,7 +185,7 @@ public partial class AnimationChecks
         Require(Frame(attacker) == 3 && Frame(Actor(board, did)) == 2,
             "Only the acting unit is excluded from idle sampling while its finite clip owns it.");
         await Tick(board, .028);
-        var idle = catalog.ResolveUnitClip("c01.swordsman", "idle");
+        var idle = catalog.ResolveUnitClip("c01.swordsman", "idle", ActorClipUnit.Milliseconds);
         CheckClipSprite(sprite, idle.Asset, idle.FrameAt(0), sprite.Scale.X < 0 ? -1 : 1);
         CheckClipShadow(sprite);
         Require(board.GetNodeOrNull("BattleEffects/Hit") is not null && !task.IsCompleted,
@@ -320,10 +322,12 @@ public partial class AnimationChecks
         var (manifest, bindings) = IdleClipFixture();
         manifest.ActorClips["fixture.legal-idle"] = new()
         {
+            Unit = "milliseconds",
             Frames = manifest.ActorClips[IdleFixtureId].Frames
         };
         manifest.ActorClips["fixture.legal-strike"] = new()
         {
+            Unit = "milliseconds",
             Frames = ClipFixtureFrames()
         };
         foreach (var unit in new[] { units.Single(unit => Int(unit, "id") == aid), bystander })
@@ -435,8 +439,9 @@ public partial class AnimationChecks
             });
             manifest.ActorClips[IdleFixtureId] = new()
             {
+                Unit = "milliseconds",
                 AppearanceId = "fixture.idle-offset-contact",
-                Frames = new[] { new ActorClipFrameRecord { Frame = "idle", DurationMs = 200 } }
+                Frames = new[] { new ActorClipFrameRecord { Frame = "idle", Span = 200 } }
             };
             manifest.Assets.Add(new AssetRecord
             {
@@ -456,8 +461,9 @@ public partial class AnimationChecks
             });
             manifest.ActorClips[ClipFixtureId] = new()
             {
+                Unit = "milliseconds",
                 AppearanceId = "fixture.strike-offset-contact",
-                Frames = new[] { new ActorClipFrameRecord { Frame = "attack", DurationMs = 128 } }
+                Frames = new[] { new ActorClipFrameRecord { Frame = "attack", Span = 128 } }
             };
             ConfigureDepth(new AssetCatalog(manifest, bindings));
             board.RenderState(before);

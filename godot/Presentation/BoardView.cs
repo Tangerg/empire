@@ -416,7 +416,7 @@ public partial class BoardView : Node2D
         try
         {
             var asset = _assets!.ResolveUnit(unit.Type, unit.Key);
-            var idle = _assets.ResolveUnitClip(unit.Type, "idle", unit.Key);
+            var idle = _assets.ResolveUnitClip(unit.Type, "idle", ActorClipUnit.Milliseconds, unit.Key);
             foreach (var frame in idle.FrameIndices.Distinct())
                 _ = _assets.CreateFrameTexture(idle.Asset, frame);
             var sprite = _assets.CreateSprite(asset);

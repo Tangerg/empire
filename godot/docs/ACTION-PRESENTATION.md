@@ -65,8 +65,8 @@ The accepted command's supplied path plays once, before event presenters; the
 `move` event does not repeat it. Native visual refinement (2026-10-27) deliberately departs from the historical
 85/65 ms source movement: each cell now takes 160 ms for the player or 110 ms
 for AI. One continuous path tween preserves frame overshoot across cell boundaries,
-with linear ground-plane travel and no whole-actor/shadow hop. The declared
-`walk-a`/`walk-b` support phases alternate per travelled cell, independent of AI
+with linear ground-plane travel and no whole-actor/shadow hop. The explicit `legacy.move` clip retains the declared
+`walk-a`/`walk-b` support phases alternating per travelled cell, independent of AI
 pace; a one-cell move intentionally needs only one support phase. This changes
 presentation only, not canonical path costs, rules, receipts or event ordering. Shipped idle retains the declared single idle
 frame. The shipped finite attack clips retain the declared attack pose, or `carry-or-work` for mission sheets.
@@ -75,16 +75,19 @@ These are roles in a four-frame sheet, not four directional views or attack fram
 ## Finite actor clips
 
 `selected-assets.json.actorClips` owns named finite sequences of `{ frame,
-durationMs }`, with an optional `appearanceId` for a separate action sheet.
+span }`, an explicit `unit` (`milliseconds` or `cells`), and an optional
+`appearanceId` for a separate action sheet.
 `art-bindings.json` explicitly maps each unit/actor appearance's `actionClips`
 to those definitions. `AssetCatalog` compiles each effective binding once into
-an immutable `ActorClip`: one resolved sheet, frame indices and cumulative times.
+an immutable `ActorClip`: one resolved sheet, sampling unit, frame indices and
+cumulative interval ends. `ResolveUnitClip` requires the consumer's expected
+unit and rejects a mismatch instead of converting or guessing.
 An alternate sheet must share the binding's canonical topic and footprint. Its
 physical crop, density, scale, contact and filter remain owned by the existing
 asset record, not by another animation geometry table.
 
-`FrameAt` samples finite elapsed milliseconds and holds the last frame after the
-duration. Empty sequences, unknown roles/clip IDs, nonpositive/nonfinite durations,
+`FrameAt` samples a finite nonnegative offset in the declared unit and holds the
+last frame after `Length`. Empty sequences, unknown units/roles/clip IDs, nonpositive/nonfinite spans,
 overflow and wrong-topic/missing alternate sheets are rejected. The catalog
 detaches the sequence and action mapping from caller-owned mutable input.
 Missing actions are explicit errors, never generic-art or fabricated-action
@@ -99,7 +102,7 @@ facing, then the board synchronizes shadows and standing depth. Normal completio
 restores the bound idle appearance before impact; cancellation/error retains the
 existing committed-After settlement instead of writing to a retired actor.
 
-The two current profiles, `static.attack` and `static.work`, each retain one
+The two finite attack profiles, `static.attack` and `static.work`, each retain one
 trusted pose for exactly 150 ms. This first slice introduces no new sprite pixels
 or accepted multi-frame character artwork. Multi-frame/cross-sheet checks use
 trusted sheets as explicitly synthetic infrastructure fixtures. It does not add
@@ -107,6 +110,36 @@ new animated artwork, hit, death, celebration, or a separate magic/caster action
 Those remain unfinished; FX identity is not an action classifier. In particular,
 `castResolved` must not repeat the following attack's wind-up, and area victims
 must not each start another caster animation.
+
+## Distance-sampled movement clips
+
+Every moving unit/actor explicitly selects `move` in its existing action map.
+The current `legacy.move` uses cells with `walk-a` and `walk-b` spans of one each,
+retaining the previous pictures and cadence. These are old support poses, not
+newly authored or visually accepted walking animation.
+
+The existing single path tween owns progress. `cells` means continuous progress
+through the committed path's cell-to-cell segments: one full segment is one
+cell, regardless of terrain movement cost or camera projection. The renderer
+samples `FrameAt(travelledCells % Length)` from that same progress. Arbitrary
+positive sub-cell spans and longer sequences need no extra clock; turns and
+large frame steps preserve the phase. Player/AI pacing still uses 160/110 ms per
+path segment, so equal travelled distance yields the same pose at either speed.
+The committed path and game rules remain unchanged.
+
+Before playback, path preparation samples all clip contacts through the existing
+`ActorClipDepths`/`StandingVisual` geometry owner and prepares the full depth sweep
+for every path contact and pose, including canonical base geometry and all other
+idle actors. A changed frame is applied before placing/sorting the actor, with
+initial depth updated before awaiting a tick. Facing changes synchronize shadows
+even when the sampled frame does not change. Normal completion returns to idle;
+error, cancellation, rebind, exit, visibility and reduced motion retain the
+existing receipt contract. Forced slides/teleports do not request movement clips
+or turn displacement into walking. No presentation phase is persisted.
+
+The manifest interval field was renamed from `durationMs` to `span` and every
+existing timed definition now explicitly declares `milliseconds`. This is an
+atomic content/API change, not a save migration or compatibility fallback.
 
 ## Persistent idle playback
 

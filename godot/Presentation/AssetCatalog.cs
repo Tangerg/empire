@@ -135,11 +135,14 @@ public sealed class AssetCatalog
 
     public RuntimeAsset ResolveUnit(string unitType, string? actorKey = null) => ResolveUnitArt(unitType, actorKey).Asset;
 
-    public ActorClip ResolveUnitClip(string unitType, string action, string? actorKey = null)
+    public ActorClip ResolveUnitClip(string unitType, string action, ActorClipUnit expectedUnit, string? actorKey = null)
     {
         var art = ResolveUnitArt(unitType, actorKey);
-        return art.Clips.TryGetValue(action, out var clip) ? clip
-            : throw new InvalidOperationException($"Actor art has no declared '{action}' clip: {art.Asset.Identity}.");
+        if (!art.Clips.TryGetValue(action, out var clip))
+            throw new InvalidOperationException($"Actor art has no declared '{action}' clip: {art.Asset.Identity}.");
+        if (clip.Unit != expectedUnit)
+            throw new InvalidOperationException($"Actor clip {art.Asset.Identity}/{action} uses {clip.Unit}, expected {expectedUnit}.");
+        return clip;
     }
 
     private UnitArt ResolveUnitArt(string unitType, string? actorKey)
@@ -167,7 +170,7 @@ public sealed class AssetCatalog
                 || definition is null || definition.Frames is null)
                 throw new InvalidOperationException($"Invalid actor action clip binding: {asset.Identity}/{action}/{id}.");
             var sheet = definition.AppearanceId is null ? asset : ResolveBinding(binding.TopicId, definition.AppearanceId);
-            clips.Add(action, new ActorClip(sheet, definition.Frames));
+            clips.Add(action, new ActorClip(sheet, definition.Unit, definition.Frames));
         }
         return new(asset, clips.ToFrozenDictionary(StringComparer.Ordinal));
     }

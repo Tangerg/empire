@@ -249,16 +249,19 @@ public partial class BoardView
         SuspendIdle(actor);
         var asset = UnitAsset(actor);
         var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
-        var walk = new[] { AssetCatalog.FrameIndex(asset, "walk-a"), AssetCatalog.FrameIndex(asset, "walk-b") };
-        // Presentation pace only: one support phase per travelled cell. The committed
+        var clip = walking ? _assets!.ResolveUnitClip(actor.GetMeta("unit_type").AsString(), "move", ActorClipUnit.Cells,
+            actor.HasMeta("actor_key") ? actor.GetMeta("actor_key").AsString() : null) : null;
+        // Presentation pace only: one duration per travelled cell. The committed
         // receipt still owns the path, destination and event order. A single tween
         // preserves progress across cell boundaries instead of losing frame overshoot.
         var duration = walking ? playback.Transition.IsComputerAction ? 110.0 : 160.0 : 120.0;
         var contacts = path.Select(point => Coordinate(point!))
             .Select(point => LogicalContact(point.X, point.Y)).ToArray();
-        PrepareAnimatedPath(actor, contacts);
+        PrepareAnimatedPath(actor, contacts, clip);
         var steps = contacts.Length - 1;
-        SetFrame(sprite, asset, walking ? walk[0] : AssetCatalog.FrameIndex(asset, "idle"));
+        var frame = clip?.FrameAt(0) ?? AssetCatalog.FrameIndex(asset, "idle");
+        SetFrame(sprite, clip?.Asset ?? asset, frame);
+        SortAnimatedStanding();
         if (!await playback.Clock.TweenAsync(duration * steps, t =>
         {
             var distance = t * steps;
@@ -267,13 +270,19 @@ public partial class BoardView
             var start = contacts[segment];
             var end = contacts[segment + 1];
             var visualDirection = Projection.Project(end).X - Projection.Project(start).X;
+            var facingChanged = visualDirection != 0 && (sprite.Scale.X < 0) != (visualDirection < 0);
             if (visualDirection != 0)
                 Face(sprite, visualDirection < 0);
             var logical = start.Lerp(end, fraction);
             // Keep the actor's support plane and its composited contact shadow on
             // the road. The drawn walk poses provide the gait, not a whole-body hop.
+            var nextFrame = clip?.FrameAt(distance % clip.Length) ?? frame;
+            if (nextFrame != frame || facingChanged)
+            {
+                SetFrame(sprite, clip?.Asset ?? asset, nextFrame);
+                frame = nextFrame;
+            }
             PlaceAnimatedActor(actor, logical);
-            SetFrame(sprite, asset, walking ? walk[segment % walk.Length] : AssetCatalog.FrameIndex(asset, "idle"));
         }))
             return false;
         ResumeIdle(actor);
@@ -287,12 +296,15 @@ public partial class BoardView
         SortAnimatedStanding();
     }
 
-    private void PrepareAnimatedPath(Node2D actor, IReadOnlyList<Vector2> contacts)
+    private void PrepareAnimatedPath(Node2D actor, IReadOnlyList<Vector2> contacts, ActorClip? clip = null)
     {
         var entries = CurrentStanding().ToArray();
         var movingEntry = entries.Single(entry => entry.Node == actor);
-        var frontOffset = StandingDepth(movingEntry) - Projection.Depth(movingEntry.Contact);
-        var depths = contacts.Select(contact => Projection.Depth(contact) + frontOffset).ToArray();
+        var originDepth = Projection.Depth(movingEntry.Contact);
+        var poseDepths = clip is null ? new[] { StandingDepth(movingEntry) }
+            : ActorClipDepths(movingEntry, actor.GetNode<Sprite2D>("AuthoredSprite"), clip);
+        var offsets = poseDepths.Select(depth => depth - originDepth).ToArray();
+        var depths = contacts.SelectMany(contact => offsets.Select(offset => Projection.Depth(contact) + offset)).ToArray();
         var first = (int)Math.Floor(depths.Min());
         var last = (int)Math.Ceiling(depths.Max());
         PrepareStandingPartitions(entries,
@@ -302,7 +314,7 @@ public partial class BoardView
     private async Task<bool> AnimateStrike(Playback playback, Node2D actor, Vector2 target)
     {
         SuspendIdle(actor);
-        var clip = _assets!.ResolveUnitClip(actor.GetMeta("unit_type").AsString(), "attack",
+        var clip = _assets!.ResolveUnitClip(actor.GetMeta("unit_type").AsString(), "attack", ActorClipUnit.Milliseconds,
             actor.HasMeta("actor_key") ? actor.GetMeta("actor_key").AsString() : null);
         var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
         var anchor = Projection.Project(actor.GetMeta("logical_contact").AsVector2());
@@ -314,9 +326,9 @@ public partial class BoardView
         var frame = clip.FrameAt(0);
         SetFrame(sprite, clip.Asset, frame);
         SortAnimatedStanding();
-        if (!await playback.Clock.TweenAsync(clip.DurationMs, t =>
+        if (!await playback.Clock.TweenAsync(clip.Length, t =>
         {
-            var nextFrame = clip.FrameAt(t * clip.DurationMs);
+            var nextFrame = clip.FrameAt(t * clip.Length);
             if (nextFrame != frame)
             {
                 SetFrame(sprite, clip.Asset, nextFrame);
