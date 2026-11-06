@@ -236,21 +236,41 @@ public partial class PaintedSurfaceChecks : Node
         {
             Schema = 2,
             LogicalTileSize = 32,
+            ActorClips = new()
+            {
+                ["fixture.idle"] = new()
+                {
+                    AppearanceId = "cliff-cue-poses",
+                    Frames = [new() { Frame = "tall", DurationMs = 1000 }, new() { Frame = "short", DurationMs = 1000 }]
+                }
+            },
             Assets = [new AssetRecord { TopicId = "cliff-cue-actor", Category = "combat-unit",
                 ResourcePath = actorTexture.ResourcePath, Width = 16, Height = 32,
                 PhysicalWidth = 16, PhysicalHeight = 32, PixelDensity = 1,
-                Anchor = [8, 32], GroundFront = [8, 32], Footprint = [1, 1], FrameOrder = ["idle"] }]
+                Anchor = [8, 32], GroundFront = [8, 32], Footprint = [1, 1], FrameOrder = ["idle"] },
+                new AssetRecord { Id = "cliff-cue-poses", TopicId = "cliff-cue-actor",
+                    ResourcePath = actorTexture.ResourcePath, PhysicalWidth = 16, PhysicalHeight = 32,
+                    PixelDensity = 1, Frames = 2, FrameOrder = ["tall", "short"],
+                    FrameRegions = [[0, 0, 16, 32], [0, 16, 16, 16]], FrameAnchors = [[8, 32], [8, 16]] }]
         }, new ArtBindings
         {
             Units = new()
             {
                 ["c01.laiya"] = new()
                 {
-                    TopicId = "cliff-cue-actor"
+                    TopicId = "cliff-cue-actor",
+                    ActionClips = new()
+                    {
+                        ["idle"] = "fixture.idle"
+                    }
                 },
                 ["c01.swordsman"] = new()
                 {
-                    TopicId = "cliff-cue-actor"
+                    TopicId = "cliff-cue-actor",
+                    ActionClips = new()
+                    {
+                        ["idle"] = "fixture.idle"
+                    }
                 }
             }
         });
@@ -290,7 +310,7 @@ public partial class PaintedSurfaceChecks : Node
         level["structures"] = new JsonArray();
         var state = engine.CreateState(level);
         var fixtureMap = state["map"]!.AsObject();
-        var board = new BoardView();
+        var board = new BoardView { AdvanceAnimationsAutomatically = false };
         AddChild(board);
         try
         {
@@ -335,6 +355,27 @@ public partial class PaintedSurfaceChecks : Node
                 "The cue must relocate clear of every projected cliff while retaining its own visible unit target.");
             Require(board.Projection.Pick(point) is { Cell: null } && board.Pick(point) is null,
                 "The original cliff face remains a blocker after the occluded actor obtains a cue.");
+            var firstCenter = board.ToLocal(cue.ToGlobal(Vector2.Zero));
+            var previousCueLayer = cue.GetParent();
+            board.AdvancePresentation(1.001);
+            var changedCue = board.GetNode<Polygon2D>($"CanonicalProjection/OccludedUnitCues/UnitCue_{id}");
+            var changedCenter = board.ToLocal(changedCue.ToGlobal(Vector2.Zero));
+            var changedPolygon = changedCue.Polygon.Select(pixel => board.ToLocal(changedCue.ToGlobal(pixel))).ToArray();
+            Require(sprite.GetMeta("frame").AsInt32() == 1 && sprite.GetRect().Size.Y == 16
+                && changedCenter != firstCenter && previousCueLayer.IsQueuedForDeletion() && !cue.IsInsideTree()
+                && faces.All(polygon => Geometry2D.IntersectPolygons(polygon, changedPolygon).Count == 0)
+                && board.Pick(changedCenter) == TacticalHit.Unit(new(3, 4), id),
+                "A changed idle silhouette relocates its live clickable cue clear of cliffs and retires the stale marker.");
+            board.Hide();
+            board.AnimationsEnabled = false;
+            board.Show();
+            var stableCue = board.GetNodeOrNull<Polygon2D>($"CanonicalProjection/OccludedUnitCues/UnitCue_{id}");
+            Require(stableCue is not null, "Resetting idle while the board is hidden retains the cue when shown again.");
+            Require(sprite.GetMeta("frame").AsInt32() == 0
+                && board.ToLocal(stableCue!.ToGlobal(Vector2.Zero)) == firstCenter
+                && board.Pick(firstCenter) == TacticalHit.Unit(new(3, 4), id)
+                && board.GetNode<Node2D>("CanonicalProjection").GetChildren().Count(node => node.Name == "OccludedUnitCues") == 1,
+                "Reduced motion restores the first-pose cue without duplicating overlays or losing its unit target.");
         }
         finally
         {

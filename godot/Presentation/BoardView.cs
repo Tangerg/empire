@@ -225,9 +225,12 @@ public partial class BoardView : Node2D
             throw;
         }
 
+        _idleActors.Clear();
         ReplaceChild(ref _projection, null);
         _unitCues.Clear();
         _cueLayer = null;
+        _occlusionColors = null;
+        _projectionDiagnostics = Array.Empty<string>();
         ReplaceChild(ref _scenery, staging);
         _shadows.Dispose();
         _shadows = shadows;
@@ -282,6 +285,7 @@ public partial class BoardView : Node2D
         }
         var staging = new Node2D { Name = "CanonicalProjection" };
         var entries = new List<StandingEntry>(_authoredStanding);
+        var idleActors = new Dictionary<Node2D, IdleActor>();
         var diagnostics = new List<string>(_sceneDiagnostics);
         var renderedUnits = 0;
         var renderedStructures = 0;
@@ -377,13 +381,13 @@ public partial class BoardView : Node2D
                     continue;
                 staging.AddChild(entry.Node);
                 entries.Add(entry);
+                idleActors.Add(entry.Node, CreateIdleActor(entry));
                 renderedUnits++;
             }
             foreach (var layer in _dynamicState is null ? new[] { "structures", "markers" } : Array.Empty<string>())
                 if (canonicalState[layer] is JsonArray { Count: > 0 })
                     diagnostics.Add($"Canonical '{layer}' is present but dynamic presentation content is not configured.");
-            Projection.PrepareDepthPartitions(entries.Where(entry => entry.Layer != 0)
-                .Select(entry => StandingDepth(entry)), Array.Empty<float>());
+            PrepareStandingPartitions(entries, Array.Empty<float>(), idleActors.Values);
             OrderStanding(entries);
         }
         catch
@@ -393,15 +397,18 @@ public partial class BoardView : Node2D
         }
 
         ReplaceChild(ref _projection, staging);
+        _idleActors = idleActors;
         _standing.Clear();
         _standing.AddRange(entries);
-        diagnostics.AddRange(RebuildOcclusionCues(snapshot.Colors));
+        _cueLayer = null;
+        _occlusionColors = snapshot.Colors;
+        _projectionDiagnostics = diagnostics.ToArray();
+        RefreshOcclusionCues();
         ProjectionUnitCount = snapshot.Units.Count;
         RenderedUnitCount = renderedUnits;
         RenderedStructureCount = renderedStructures;
         RenderedMarkerCount = renderedMarkers;
         RenderedCoverPropCount = renderedCover;
-        _diagnostics = diagnostics.Distinct(StringComparer.Ordinal).ToList().AsReadOnly();
     }
 
     private StandingEntry? CreateUnitVisual(UnitProjection unit, BattleRenderSnapshot snapshot, List<string> diagnostics)
@@ -409,6 +416,9 @@ public partial class BoardView : Node2D
         try
         {
             var asset = _assets!.ResolveUnit(unit.Type, unit.Key);
+            var idle = _assets.ResolveUnitClip(unit.Type, "idle", unit.Key);
+            foreach (var frame in idle.FrameIndices.Distinct())
+                _ = _assets.CreateFrameTexture(idle.Asset, frame);
             var sprite = _assets.CreateSprite(asset);
             var actor = new CanvasGroup { Name = $"Unit_{unit.Id}", Position = CellContact(unit.X, unit.Y) };
             sprite.Name = "AuthoredSprite";

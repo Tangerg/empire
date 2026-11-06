@@ -13,6 +13,18 @@ public partial class BoardView
     private const float CueRadius = 10;
     private readonly List<(Polygon2D Marker, Coord Cell, int UnitId)> _unitCues = new();
     private Node2D? _cueLayer;
+    private IReadOnlyDictionary<int, Color>? _occlusionColors;
+    private IReadOnlyList<string> _projectionDiagnostics = Array.Empty<string>();
+
+    private void RefreshOcclusionCues()
+    {
+        if (_projection is null || _occlusionColors is null)
+            return;
+        if (_cueLayer is not null)
+            RemoveEffect(_cueLayer);
+        _diagnostics = _projectionDiagnostics.Concat(RebuildOcclusionCues(_occlusionColors))
+            .Distinct(StringComparer.Ordinal).ToList().AsReadOnly();
+    }
 
     private IReadOnlyList<string> RebuildOcclusionCues(IReadOnlyDictionary<int, Color> colors)
     {

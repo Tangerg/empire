@@ -42,6 +42,7 @@ public partial class AnimationChecks : Node
             CheckTransitionOwnership();
             await CheckClock();
             await CheckActorClipPlayback();
+            await CheckIdleClipPlayback();
             var board = NewBoard();
             await CheckMovement(board);
             await CheckStrikeAndDeath(board);

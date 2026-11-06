@@ -15,15 +15,16 @@ public abstract class StandingVisual(Node2D node)
     {
         get;
     }
-    // Projection preparation may run beneath a hidden screen; only visibility owned inside the board belongs to its geometry.
+    // Projection preparation may run while its owner is hidden. Only descendants'
+    // authored visibility changes the stored geometry, not the owner's screen state.
     internal static bool IsVisibleWithin(CanvasItem node, CanvasItem root)
     {
         for (Node? current = node; current is not null; current = current.GetParent())
         {
-            if (current is CanvasItem item && !item.Visible)
-                return false;
             if (current == root)
                 return true;
+            if (current is CanvasItem item && !item.Visible)
+                return false;
         }
         throw new InvalidOperationException("Projected visual is outside its visibility owner.");
     }

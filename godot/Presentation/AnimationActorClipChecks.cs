@@ -141,7 +141,7 @@ public partial class AnimationChecks
         idleBindings.Units["c01.swordsman"].ActionClips.Clear();
         var idleOnly = new AssetCatalog(idleManifest, idleBindings);
         Require(idleOnly.ResolveUnit("c01.swordsman").TopicId == "C01-UNIT-SWORDSMAN",
-            "Idle-only geometry fixtures do not require invented actions.");
+            "Catalog geometry can be inspected without selecting an actor action.");
         Throws(() => idleOnly.ResolveUnitClip("c01.swordsman", "attack"), "Idle-only actors cannot silently acquire an attack clip.");
         CheckActorClipFrameApplication(catalog, selected, clip.Asset);
     }
@@ -285,7 +285,7 @@ public partial class AnimationChecks
             }
             finally { board.EventPresented -= Presented; }
             await CheckActorSpecificClipPlayback(board, catalog, before, aid, did);
-            bindings.Units["c01.swordsman"].ActionClips.Clear();
+            bindings.Units["c01.swordsman"].ActionClips.Remove("attack");
             ConfigureActorClipBoard(board, new AssetCatalog(manifest, bindings));
             var failed = board.PresentTransitionAsync(viewportFeedback,
                 Transition(before, after, IdleAction(), [Strike("attack", aid, did)]));

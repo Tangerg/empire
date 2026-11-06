@@ -167,3 +167,8 @@ Named HUD portraits use validated square head-and-shoulder regions in
 original full images. The HUD art owner caches its AtlasTextures and never crops
 the source files or changes map animation frames. See
 `docs/hud/native-hud-20261026.md` for layout, focus and verification contracts.
+
+Persistent actor idle uses explicit clip bindings and the BoardView tick without
+occupying receipt completion. Its render-owned phases, finite-action handoff,
+visibility, reduced-motion and geometry lifecycle are documented in
+[`ACTION-PRESENTATION.md`](../docs/ACTION-PRESENTATION.md#persistent-idle-playback).

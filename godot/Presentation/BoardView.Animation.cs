@@ -22,7 +22,6 @@ public partial class BoardView
     public bool IsPresenting => _playback is not null;
     internal bool IsExiting => _exiting;
     internal object? PresentationIdentity => _playback;
-    public bool AnimationsEnabled { get; set; } = true;
     public event Action? PresentationRepaintRequested;
     public event Action<BattlePresentationTransition, int>? EventPresented;
     internal bool AdvanceAnimationsAutomatically { get; set; } = true;
@@ -35,11 +34,19 @@ public partial class BoardView
             AdvancePresentation(delta);
     }
 
-    internal void AdvancePresentation(double seconds) => _playback?.Clock.Advance(seconds);
+    internal void AdvancePresentation(double seconds)
+    {
+        var milliseconds = seconds * 1000;
+        if (!double.IsFinite(milliseconds) || seconds < 0)
+            throw new ArgumentOutOfRangeException(nameof(seconds));
+        AdvanceIdle(milliseconds);
+        _playback?.Clock.Advance(seconds);
+    }
 
     public override void _ExitTree()
     {
         _exiting = true;
+        _idleActors.Clear();
         CancelPresentation();
     }
 
@@ -161,10 +168,12 @@ public partial class BoardView
                         return true;
                     if (Text(item, "mode") == "teleport")
                     {
+                        SuspendIdle(actor);
                         var to = Coordinate(item["to"]!);
                         var destination = LogicalContact(to.X, to.Y);
                         PrepareAnimatedPath(actor, new[] { destination });
                         PlaceAnimatedActor(actor, destination);
+                        ResumeIdle(actor);
                         return true;
                     }
                     return await AnimatePath(playback, id, item["path"]!.AsArray(), false);
@@ -237,6 +246,7 @@ public partial class BoardView
         var actor = DrawnUnit(id);
         if (actor is null || path.Count < 2 || !WasVisible(playback, id))
             return true;
+        SuspendIdle(actor);
         var asset = UnitAsset(actor);
         var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
         var walk = new[] { AssetCatalog.FrameIndex(asset, "walk-a"), AssetCatalog.FrameIndex(asset, "walk-b") };
@@ -266,7 +276,7 @@ public partial class BoardView
             SetFrame(sprite, asset, walking ? walk[segment % walk.Length] : AssetCatalog.FrameIndex(asset, "idle"));
         }))
             return false;
-        SetFrame(sprite, asset, AssetCatalog.FrameIndex(asset, "idle"));
+        ResumeIdle(actor);
         return true;
     }
 
@@ -285,13 +295,13 @@ public partial class BoardView
         var depths = contacts.Select(contact => Projection.Depth(contact) + frontOffset).ToArray();
         var first = (int)Math.Floor(depths.Min());
         var last = (int)Math.Ceiling(depths.Max());
-        Projection.PrepareDepthPartitions(entries.Where(entry => entry.Layer != 0).Select(StandingDepth),
+        PrepareStandingPartitions(entries,
             Enumerable.Range(first, last - first + 1).Select(depth => (float)depth));
     }
 
     private async Task<bool> AnimateStrike(Playback playback, Node2D actor, Vector2 target)
     {
-        var asset = UnitAsset(actor);
+        SuspendIdle(actor);
         var clip = _assets!.ResolveUnitClip(actor.GetMeta("unit_type").AsString(), "attack",
             actor.HasMeta("actor_key") ? actor.GetMeta("actor_key").AsString() : null);
         var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
@@ -316,7 +326,7 @@ public partial class BoardView
             SortAnimatedStanding();
         }))
             return false;
-        SetFrame(sprite, asset, AssetCatalog.FrameIndex(asset, "idle"));
+        ResumeIdle(actor);
         actor.Position = anchor;
         SortAnimatedStanding();
         return true;
@@ -326,16 +336,10 @@ public partial class BoardView
     {
         var entries = CurrentStanding().ToArray();
         var moving = entries.Single(entry => entry.Node == actor);
-        var depths = new HashSet<float> { StandingDepth(moving) };
         // Sample through the existing geometry owner before any frame is drawn:
         // alternate contacts need terrain cuts as well as a new actor Z index.
-        foreach (var frame in clip.FrameIndices.Distinct())
-        {
-            _assets!.ApplyFrame(sprite, clip.Asset, frame);
-            depths.Add(StandingDepth(moving));
-        }
-        Projection.PrepareDepthPartitions(entries.Where(entry => entry.Layer != 0 && entry.Node != actor)
-            .Select(StandingDepth), depths);
+        var depths = ActorClipDepths(moving, sprite, clip);
+        PrepareStandingPartitions(entries.Where(entry => entry.Node != actor), depths);
     }
 
     private async Task<bool> AnimateImpact(Playback playback, Vector2 at, double amount, bool healing, bool fatal, string? topic)
@@ -392,6 +396,7 @@ public partial class BoardView
         var actor = DrawnUnit(id);
         if (actor is null || !WasVisible(playback, id))
             return true;
+        SuspendIdle(actor);
         var at = actor.Position;
         if (!await playback.Clock.TweenAsync(220, t =>
         {
@@ -410,6 +415,7 @@ public partial class BoardView
         var actor = DrawnUnit(id);
         if (actor is null)
             return true;
+        SuspendIdle(actor);
         var at = actor.Position;
         if (!await playback.Clock.TweenAsync(240, t =>
         {
@@ -419,6 +425,7 @@ public partial class BoardView
             return false;
         actor.Modulate = Colors.White;
         SwellActor(actor, at, 1);
+        ResumeIdle(actor);
         return true;
     }
 

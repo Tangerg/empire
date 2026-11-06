@@ -68,7 +68,7 @@ for AI. One continuous path tween preserves frame overshoot across cell boundari
 with linear ground-plane travel and no whole-actor/shadow hop. The declared
 `walk-a`/`walk-b` support phases alternate per travelled cell, independent of AI
 pace; a one-cell move intentionally needs only one support phase. This changes
-presentation only, not canonical path costs, rules, receipts or event ordering. Idle is the declared single idle
+presentation only, not canonical path costs, rules, receipts or event ordering. Shipped idle retains the declared single idle
 frame. The shipped finite attack clips retain the declared attack pose, or `carry-or-work` for mission sheets.
 These are roles in a four-frame sheet, not four directional views or attack frames.
 
@@ -88,7 +88,7 @@ duration. Empty sequences, unknown roles/clip IDs, nonpositive/nonfinite duratio
 overflow and wrong-topic/missing alternate sheets are rejected. The catalog
 detaches the sequence and action mapping from caller-owned mutable input.
 Missing actions are explicit errors, never generic-art or fabricated-action
-fallbacks. Idle-only geometry fixtures may declare no finite actions.
+fallbacks. Catalog geometry can be inspected without an action selection, but rendered actors must explicitly declare an `idle` clip.
 
 `BoardView` selects the `attack` clip for the existing strike event. The sum of
 its authored frame durations owns that strike's length; the same
@@ -103,15 +103,48 @@ The two current profiles, `static.attack` and `static.work`, each retain one
 trusted pose for exactly 150 ms. This first slice introduces no new sprite pixels
 or accepted multi-frame character artwork. Multi-frame/cross-sheet checks use
 trusted sheets as explicitly synthetic infrastructure fixtures. It does not add
-looping idle, hit, death, celebration, or a separate magic/caster action contract.
+new animated artwork, hit, death, celebration, or a separate magic/caster action contract.
 Those remain unfinished; FX identity is not an action classifier. In particular,
 `castResolved` must not repeat the following attack's wind-up, and area victims
 must not each start another caster animation.
 
-Future ambient idle must be nonblocking BoardView-owned visual state tied to the
-current projection, never an endless receipt-clock waiter. It must yield frame
-ownership to finite actions and be discarded on render/rebind/exit. No ambient
-clock, global animation controller or second completion authority is added here.
+## Persistent idle playback
+
+Every rendered unit/actor binding explicitly selects `idle`. The shipped
+`static.idle` holds the existing trusted idle pose for a 1000 ms cycle; it is not
+new animated artwork. Multi-frame idle is exercised only by clearly synthetic
+fixtures over already trusted images.
+
+`BoardView.AdvancePresentation` is the only advancement entry point: first it
+advances eligible idle phases modulo their clip durations, then the finite
+receipt clock. Idle membership, phase and cached geometry belong to the current
+render projection, not the battle or save. Idle has no task, waiter, event
+publication or input gate. Only changed poses apply frames, synchronize shadows,
+re-sort and refresh active occlusion cues; an unchanged pose replaces nothing.
+
+Finite movement, teleport, strike, spawn and death remove their actor's idle
+registration and restore the canonical base pose before taking exclusive visual
+ownership. Other actors keep idling. A successfully completed surviving action
+returns to its declared first idle pose without consuming that tick's overshoot.
+Receipt completion/cancellation still settles the committed snapshot exactly
+once. Depth preparation always includes all remaining idle-frame contacts,
+because terrain partition preparation replaces rather than appends its cuts.
+The depths are sampled through the existing frame/contact owner at registration,
+never rebuilt on every idle tick.
+
+Successful `RenderState` replaces registrations atomically and starts phases at
+zero. Rebind and exit discard them. Bare reattachment cannot restart retired or
+partly played actors: a fresh render/bind is required. Hidden boards and hidden
+ancestors freeze idle with no catch-up; they do not stop finite receipt completion.
+Turning reduced motion on immediately restores eligible actors to their first
+idle pose and resets their phase. Existing finite receipts retain their original
+motion setting and ownership; the setting applies to the next receipt as before.
+
+Occlusion cues use the current silhouette and geometry. A changed idle tick
+refreshes them once outside finite playback, preserving the existing fog filter
+and current pointer/depth owner. Colors and non-cue diagnostics remain detached
+projection data. No second animation node clock, global controller or completion
+authority is added.
 
 Supported native presenters (including the explicit recovery and displacement refinements):
 
