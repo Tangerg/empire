@@ -121,7 +121,7 @@ public partial class AnimationChecks
 
     private async Task CheckReleaseBoundaries(BoardView board, AssetCatalog catalog, JsonObject state, int aid, int did)
     {
-        var transition = Transition(state, state, IdleAction(), [Strike("attack", aid, did)]);
+        var transition = Transition(state, state, IdleAction(), ScopedClipAttack(Strike("attack", aid, did), At(12, 16), At(13, 16)));
         var completed = new List<int>();
         void Presented(BattlePresentationTransition _, int index) => completed.Add(index);
         board.EventPresented += Presented;
@@ -129,6 +129,7 @@ public partial class AnimationChecks
         {
             foreach (var milliseconds in new[] { 63.999, 64, 64.001 })
             {
+                completed.Clear();
                 var task = board.PresentTransitionAsync(viewportFeedback, transition);
                 var actor = Actor(board, aid);
                 var origin = actor.Position;
@@ -136,16 +137,17 @@ public partial class AnimationChecks
                 var direction = (board.Projection.CellContact(new(13, 16)) - origin).Normalized();
                 await Tick(board, milliseconds / 1000);
                 Require((board.GetNodeOrNull("BattleEffects/Hit") is not null) == (milliseconds >= 64)
-                    && completed.Count == 0 && !task.IsCompleted,
+                    && completed.SequenceEqual(milliseconds >= 64 ? new[] { 0 } : Array.Empty<int>()) && !task.IsCompleted,
                     "Impact is absent immediately before release and present at and immediately after the exact release instant.");
                 Require(actor.Position.IsEqualApprox(origin + direction * 7)
                     && actor.GetMeta("logical_contact").AsVector2() == contact && Frame(actor) == 2,
                     "The lunge peaks at the clip's release while the actor retains its canonical logical contact.");
                 CheckClipShadow(actor.GetNode<Sprite2D>("AuthoredSprite"));
                 board.CancelPresentation();
-                Require(!await task, "An unfinished release boundary witness cancels without publication.");
+                Require(!await task, "An unfinished release boundary witness cancels before impact completion.");
             }
 
+            completed.Clear();
             var playing = board.PresentTransitionAsync(viewportFeedback, transition);
             await Tick(board, .064);
             var hit = board.GetNode<Node2D>("BattleEffects/Hit");
@@ -168,7 +170,7 @@ public partial class AnimationChecks
             await Tick(board, .146);
             CheckReleaseImpactSample(hit, numberOrigin, 210);
             await Tick(board, .211);
-            Require(await playing && completed.SequenceEqual(new[] { 0 }) && board.GetNodeOrNull("BattleEffects") is null,
+            Require(await playing && completed.SequenceEqual(new[] { 0, 1, 2 }) && board.GetNodeOrNull("BattleEffects") is null,
                 "The receipt completes once at release plus impact duration, without appending another actor duration.");
 
             completed.Clear();
@@ -176,12 +178,12 @@ public partial class AnimationChecks
             await Tick(board, .300);
             CheckSettledClipActor(board, aid, catalog.ResolveUnit("c01.swordsman"), board.Projection.CellContact(new(12, 16)));
             CheckReleaseImpactSample(board.GetNode<Node2D>("BattleEffects/Hit"), numberOrigin, 236);
-            Require(completed.Count == 0, "A coarse step crossing both release and clip completion keeps the impact's true elapsed overshoot.");
+            Require(completed.SequenceEqual(new[] { 0 }), "A coarse step crossing both release and clip completion keeps the impact's true elapsed overshoot.");
             await Drain(board, playing);
             completed.Clear();
             playing = board.PresentTransitionAsync(viewportFeedback, transition);
             await Tick(board, .700);
-            Require(playing.IsCompleted && await playing && completed.SequenceEqual(new[] { 0 })
+            Require(playing.IsCompleted && await playing && completed.SequenceEqual(new[] { 0, 1, 2 })
                 && board.GetNodeOrNull("BattleEffects") is null && viewportFeedback.GetNodeOrNull("ViewportEffects") is null,
                 "One coarse tick across the whole composite action completes immediately without deferred hit playback.");
         }
@@ -209,7 +211,7 @@ public partial class AnimationChecks
         })
         {
             var item = ReleaseStrike("attack", aid, did, weapon);
-            var task = board.PresentTransitionAsync(viewportFeedback, Transition(state, state, IdleAction(), [item]));
+            var task = board.PresentTransitionAsync(viewportFeedback, Transition(state, state, IdleAction(), ScopedClipAttack(item, At(12, 16), At(13, 16))));
             var actor = Actor(board, aid);
             var origin = actor.Position;
             var logical = actor.GetMeta("logical_contact").AsVector2();
@@ -261,7 +263,8 @@ public partial class AnimationChecks
                 item["destroyed"] = false;
                 target = board.Projection.CellCenter(new(Int(structure, "x"), Int(structure, "y")));
             }
-            var task = board.PresentTransitionAsync(viewportFeedback, Transition(before, before, IdleAction(), [item]));
+            var task = board.PresentTransitionAsync(viewportFeedback, Transition(before, before, IdleAction(),
+                kind == "attackStructure" ? ScopedClipAttack(item, At(12, 16), At(13, 17)) : [item]));
             Require(Frame(Actor(board, aid)) == 3 && board.GetNodeOrNull("BattleEffects/Hit") is null,
                 $"{kind} selects its weapon's explicit actor action before release.");
             await Tick(board, .032);
@@ -319,28 +322,31 @@ public partial class AnimationChecks
         board.EventPresented += Presented;
         try
         {
-            var task = board.PresentTransitionAsync(viewportFeedback, Transition(state, state, IdleAction(), [item]));
+            var task = board.PresentTransitionAsync(viewportFeedback, Transition(state, state, IdleAction(), ScopedClipAttack(item, At(12, 16), At(13, 16))));
             await Tick(board, .300);
             Require(Frame(Actor(board, aid)) == 3 && board.GetNodeOrNull("BattleEffects/Hit") is not null,
                 "A long recovery remains active after release while its impact advances independently.");
             await Tick(board, .185);
             Require(Frame(Actor(board, aid)) == 3 && board.GetNodeOrNull("BattleEffects/Hit") is null
-                && completed.Count == 0 && !task.IsCompleted,
+                && completed.SequenceEqual(new[] { 0 }) && !task.IsCompleted,
                 "The impact retires at release plus 420 ms even when the actor is still recovering.");
-            await Tick(board, .156);
-            CheckSettledClipActor(board, aid, catalog.ResolveUnit("c01.swordsman"), board.Projection.CellContact(new(12, 16)));
-            Require(!task.IsCompleted && completed.Count == 0, "The fatal beat starts only after both actor recovery and impact have ended.");
-            await Tick(board, .039);
-            Require(!task.IsCompleted && completed.Count == 0, "Fatal impact keeps the existing full forty-millisecond final beat.");
+            await Tick(board, .038);
+            Require(!task.IsCompleted && completed.SequenceEqual(new[] { 0 }),
+                "Fatal impact keeps its full forty-millisecond final beat while the source recovers independently.");
             await Tick(board, .002);
-            Require(await task && completed.SequenceEqual(new[] { 0 }), "Long recovery publishes once after its final fatal beat.");
+            Require(!task.IsCompleted && completed.SequenceEqual(new[] { 0, 1 }) && Frame(Actor(board, aid)) == 3,
+                "The fatal impact publishes after its own beat without ending the longer actor recovery.");
+            await Tick(board, .116);
+            CheckSettledClipActor(board, aid, catalog.ResolveUnit("c01.swordsman"), board.Projection.CellContact(new(12, 16)));
+            Require(await task && completed.SequenceEqual(new[] { 0, 1, 2 }),
+                "Main attack completion waits for the long recovery without appending another fatal beat.");
         }
         finally { board.EventPresented -= Presented; RemoveChild(board); board.Free(); }
     }
 
     private async Task CheckReleaseLifetime(BoardView board, AssetCatalog catalog, JsonObject state, int aid, int did)
     {
-        var transition = Transition(state, state, IdleAction(), [Strike("attack", aid, did)]);
+        var transition = Transition(state, state, IdleAction(), ScopedClipAttack(Strike("attack", aid, did), At(12, 16), At(13, 16)));
         var completed = new List<int>();
         void Presented(BattlePresentationTransition _, int index) => completed.Add(index);
         board.EventPresented += Presented;
@@ -348,16 +354,18 @@ public partial class AnimationChecks
         {
             foreach (var milliseconds in new[] { 32, 96, 300 })
             {
+                completed.Clear();
                 var task = board.PresentTransitionAsync(viewportFeedback, transition);
                 await Tick(board, milliseconds / 1000.0);
                 board.CancelPresentation();
-                Require(!await task && completed.Count == 0 && !board.IsPresenting
+                Require(!await task && completed.SequenceEqual(milliseconds >= 64 ? new[] { 0 } : Array.Empty<int>()) && !board.IsPresenting
                     && board.GetNodeOrNull("BattleEffects") is null && viewportFeedback.GetNodeOrNull("ViewportEffects") is null,
-                    "Cancellation before release, during overlapping recovery, or during impact alone removes every owned effect without publication.");
+                    "Cancellation before release, during overlapping recovery, or during impact alone removes every owned effect without publishing the unfinished impact or completion.");
                 await Tick(board, 1);
                 CheckSettledClipActor(board, aid, catalog.ResolveUnit("c01.swordsman"), board.Projection.CellContact(new(12, 16)));
             }
 
+            completed.Clear();
             var old = board.PresentTransitionAsync(viewportFeedback, transition);
             await Tick(board, .096);
             Task<bool>? replacement = null;
@@ -365,7 +373,7 @@ public partial class AnimationChecks
             {
                 Require(!await old, "The replaced release sequence reports cancellation.");
                 replacement = board.PresentTransitionAsync(viewportFeedback,
-                    Transition(state, state, IdleAction(), [ReleaseStrike("attack", aid, did, ReleaseCastWeapon)]));
+                    Transition(state, state, IdleAction(), ScopedClipAttack(ReleaseStrike("attack", aid, did, ReleaseCastWeapon), At(12, 16), At(13, 16))));
             }
             var replacing = ReplaceAfterCancellation();
             board.CancelPresentation();
@@ -383,11 +391,12 @@ public partial class AnimationChecks
             ConfigureActorClipBoard(board, assets);
             board.RenderState(state);
             await Tick(board, 1);
-            Require(!await old && completed.Count == 0 && !board.IsPresenting && board.GetNodeOrNull("BattleEffects") is null,
+            Require(!await old && completed.SequenceEqual(new[] { 0 }) && !board.IsPresenting && board.GetNodeOrNull("BattleEffects") is null,
                 "Rebinding during overlapping action and impact retires both halves without stale publication.");
             CheckSettledClipActor(board, aid, assets.ResolveUnit("c01.swordsman"), board.Projection.CellContact(new(12, 16)));
             ConfigureActorClipBoard(board, catalog);
 
+            completed.Clear();
             old = board.PresentTransitionAsync(viewportFeedback, transition);
             await Tick(board, .096);
             RemoveChild(board);
@@ -397,28 +406,37 @@ public partial class AnimationChecks
             ConfigureActorClipBoard(board, catalog);
             board.RenderState(state);
             await Tick(board, 1);
-            Require(completed.Count == 0 && board.GetNodeOrNull("BattleEffects") is null, "Reattachment cannot resurrect retired release callbacks.");
+            Require(completed.SequenceEqual(new[] { 0 }) && board.GetNodeOrNull("BattleEffects") is null, "Reattachment cannot resurrect retired release callbacks.");
 
+            completed.Clear();
             board.AnimationsEnabled = false;
             var reduced = board.PresentTransitionAsync(viewportFeedback, transition);
-            Require(reduced.IsCompleted && await reduced && completed.SequenceEqual(new[] { 0 }) && !board.IsPresenting
+            Require(reduced.IsCompleted && await reduced && completed.SequenceEqual(new[] { 0, 1, 2 }) && !board.IsPresenting
                 && board.GetNodeOrNull("BattleEffects") is null && viewportFeedback.GetNodeOrNull("ViewportEffects") is null,
                 "Reduced motion settles the composite sequence synchronously with one receipt and no retained effect.");
             board.AnimationsEnabled = true;
             completed.Clear();
             var visible = new HashSet<int> { did };
-            var hidden = Transition(state, state, IdleAction(), [Strike("attack", aid, did)], visible);
+            var hidden = Transition(state, state, IdleAction(), ScopedClipAttack(Strike("attack", aid, did), At(12, 16), At(13, 16)), visible);
             var playing = board.PresentTransitionAsync(viewportFeedback, hidden, visible);
             Require(board.GetNodeOrNull($"CanonicalProjection/Unit_{aid}") is null && board.GetNodeOrNull("BattleEffects/Hit") is not null,
                 "A fog-hidden attacker acquires no action and introduces no release delay to its visible recipient's impact.");
             await Drain(board, playing);
             completed.Clear();
             visible = new HashSet<int> { aid };
-            hidden = Transition(state, state, IdleAction(), [Strike("attack", aid, did)], visible);
+            hidden = Transition(state, state, IdleAction(), ScopedClipAttack(Strike("attack", aid, did), At(12, 16), At(13, 16)), visible);
             playing = board.PresentTransitionAsync(viewportFeedback, hidden, visible);
-            Require(playing.IsCompleted && await playing && completed.SequenceEqual(new[] { 0 })
-                && Frame(Actor(board, aid)) == 0 && board.GetNodeOrNull("BattleEffects") is null,
-                "A hidden recipient suppresses the whole strike without exposing an otherwise visible attacker's action.");
+            Require(!playing.IsCompleted && completed.Count == 0
+                && Frame(Actor(board, aid)) == 1 && board.GetNodeOrNull("BattleEffects/Hit") is null,
+                "A visible attacker begins its explicit activation even when the recipient is hidden.");
+            await Tick(board, .064);
+            Require(completed.SequenceEqual(new[] { 0, 1 }) && !playing.IsCompleted
+                && Frame(Actor(board, aid)) == 2 && board.GetNodeOrNull("BattleEffects/Hit") is null,
+                "A hidden recipient suppresses impact only; the visible source retains its independent recovery.");
+            await Drain(board, playing);
+            Require(completed.SequenceEqual(new[] { 0, 1, 2 }) && Frame(Actor(board, aid)) == 0
+                && board.GetNodeOrNull("BattleEffects") is null,
+                "The explicit completion settles the source without exposing hidden recipient feedback.");
         }
         finally { board.EventPresented -= Presented; }
     }
@@ -447,7 +465,7 @@ public partial class AnimationChecks
             try
             {
                 var playing = board.PresentTransitionAsync(viewportFeedback,
-                    Transition(state, state, IdleAction(), [Strike("attack", aid, did)]));
+                    Transition(state, state, IdleAction(), ScopedClipAttack(Strike("attack", aid, did), At(12, 16), At(13, 16))));
                 var origin = board.Projection.CellContact(new(12, 16));
                 var direction = (board.Projection.CellContact(new(13, 16)) - origin).Normalized();
                 if (huge)
@@ -459,7 +477,7 @@ public partial class AnimationChecks
                         && Frame(actor) == 2 && board.GetNodeOrNull("BattleEffects/Hit") is null && !playing.IsCompleted,
                         "An admitted huge finite recovery normalizes elapsed time before trigonometry and retires its already-ended impact.");
                     await Tick(board, 1e303);
-                    Require(board.GetNode<Node2D>("BattleEffects").GetChildCount() == 0 && completed == 0,
+                    Require(board.GetNode<Node2D>("BattleEffects").GetChildCount() == 0 && completed == 2,
                         "Later samples of a huge recovery cannot recreate an impact that already retired.");
                     board.CancelPresentation();
                     Require(!await playing && !board.IsPresenting && board.GetNodeOrNull("BattleEffects") is null
@@ -478,7 +496,7 @@ public partial class AnimationChecks
                     Require(board.GetNodeOrNull("BattleEffects/Hit") is not null && !playing.IsCompleted,
                         "Both endpoint release policies restore idle at clip end while retaining the correctly timed impact.");
                     await Drain(board, playing);
-                    Require(completed == 1, "Endpoint release markers publish the event exactly once.");
+                    Require(completed == 3, "Endpoint release markers publish activation, impact and completion exactly once each.");
                 }
             }
             finally { board.EventPresented -= Presented; RemoveChild(board); board.Free(); }
@@ -521,7 +539,7 @@ public partial class AnimationChecks
                 };
             ConfigureActorClipBoard(board, new AssetCatalog(manifest, bindings));
             var failed = board.PresentTransitionAsync(viewportFeedback,
-                Transition(state, state, IdleAction(), [ReleaseStrike("attack", aid, did, ReleaseCastWeapon)]));
+                Transition(state, state, IdleAction(), ScopedClipAttack(ReleaseStrike("attack", aid, did, ReleaseCastWeapon), At(12, 16), At(13, 16))));
             if (failure == "resource")
             {
                 Require(!failed.IsCompleted && Frame(Actor(board, aid)) == 3,

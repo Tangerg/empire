@@ -24,7 +24,7 @@ dotnet build godot/Empire.Core.Tests --disable-build-servers -m:1 -p:UseSharedCo
 # Sixteen serial native AI battles and full replay each need a separate aggregate budget.
 EMPIRE_CHECK_TIMEOUT_SECONDS="${EMPIRE_REPLAY_TIMEOUT_SECONDS:-1200}" \
   dotnet godot/Empire.Core.Tests/bin/Debug/net8.0/Empire.Core.Tests.dll godot/tests/oracle
-# Native battle/replay schema 3 rejects obsolete prose-bearing and partial-digest inputs.
+# Native battle schema 3 / replay schema 4 reject obsolete prose-bearing, partial-digest and pre-activation replay inputs.
 # Historical suites remain development evidence, not an implicit current-schema gate.
 bash tools/godot/objective-outcome-checks/run.sh
 bash tools/godot/catalog-boundary-checks/run.sh

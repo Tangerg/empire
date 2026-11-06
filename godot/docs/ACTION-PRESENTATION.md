@@ -106,7 +106,7 @@ The two finite attack profiles, `static.attack` and `static.work`, each retain o
 trusted pose for exactly 150 ms, with an explicit release at 75 ms. This first slice introduces no new sprite pixels
 or accepted multi-frame character artwork. Multi-frame/cross-sheet checks use
 trusted sheets as explicitly synthetic infrastructure fixtures. It does not add
-new animated artwork, hit reactions, death, celebration, or a complete area/cast activation contract.
+new animated artwork, hit reactions, death, or celebration. Main attack activation is specified below.
 Those remain unfinished; FX identity is not an action classifier. In particular,
 `castResolved` must not repeat the following attack's wind-up, and area victims
 must not each start another caster animation.
@@ -127,7 +127,7 @@ milliseconds and a finite offset in `[0, Length]`. It is not duplicated in the
 weapon record. Frame spans, release offset and action length all come from that
 single admitted clip. Idle and movement clips retain no release marker.
 
-One composite receipt tween samples elapsed time for the actor and impact.
+For reactive strikes and healing, one composite receipt tween samples elapsed time for the actor and impact.
 The impact begins once at the release, sampling its actual age `elapsed -
 releaseMs`, including a tick that jumps across release or the whole action.
 Recovery and impact run together; the presenter finishes at the maximum of actor
@@ -147,20 +147,56 @@ at its own end even if the other part continues. Cancellation and exceptions
 settle `After`; no cleanup writes back to a retired actor. Reduced motion settles
 the same composition synchronously once.
 
-This complete primary-strike slice covers `attack`, `counter`, `supportAttack`,
-`partingShot` and `attackStructure`. It preserves the parting-shot location,
-current contacts and later-dead ghosts. An absent structure still permits the
-action but creates no invented impact. Area victim events remain impact-only,
-and `castResolved` remains a marker, so neither repeats a primary action.
+## Main attack activation and independent impacts
 
-This does **not** yet represent every area/cast activation. An empty aimed cell
-can emit only area hits or no hits; structure-primary attacks can emit unit area
-hits before their primary structure event. A later complete slice needs an
-explicit combat-owned resolution/group start fact, not a guessed grouping by
-attacker/weapon/first victim. Healing has its own explicit source ability binding
-below; regeneration has no caster. New casting art, charge gestures, hit reactions,
-death and celebration remain separate work.
-No unaccepted candidate image is shipped by this contract change.
+`BattleCombat.ExecutePlan` owns one `attackActivated` / `attackCompleted` pair
+per successfully consumed main attack. The activation records the attacker,
+weapon, executed origin and aimed cell directly from `CombatPlan`; it never
+selects a first victim. The completion follows primary unit/structure effects
+and their death events, before attacker rewards, counter and support strikes.
+Delayed declarations/cancellations emit no activation. A due, valid delayed
+attack still activates when its aimed cell has become empty. `castResolved`
+remains a separate lifecycle marker.
+
+`BoardView` starts the weapon-selected action at activation and yields at that
+clip's release. Main `attack`, `areaAttack`, `attackStructure` and
+`areaAttackStructure` events independently present only their existing recipient
+impact. Recovery continues on the same receipt timeline; completion waits for
+it before a later action can take over. The main victim's fatal beat follows
+its impact, not the source's recovery. A source death or forced movement inside
+the scope first waits for recovery so no later sample writes to a retired or
+relocated actor. Counter, support and parting shots remain independent composite
+actions. No victim count, weapon identity comparison or delayed-cast marker
+creates an implicit scope.
+
+`PresentationTimeline` advances pending completion boundaries chronologically.
+A coarse frame that crosses release starts the impact at the exact boundary and
+samples the remaining elapsed time, rather than adding frame-dependent latency.
+The receipt owns each active actor's finite depth requirements as geometry
+projections, not a second timer. The existing board partition preparation unions
+those requirements with idle/standing contacts. One actor returning to idle must
+not discard another actor's remaining displacement path. Ending the path, death,
+settlement, cancellation and rebinding retire the corresponding projections.
+Logical contacts, shadows and standing-depth geometry retain their existing owners.
+Hidden sources create no action or source timing; visible recipients retain their
+own impact. A visible source can act with no visible recipient. Reduced motion,
+cancellation, rebinding and tree exit use the existing settle/cleanup path.
+Malformed explicit scopes fail rather than guessing; a standalone victim event
+is still a valid target-only projection and does not invent a source action.
+
+These two domain facts intentionally increment `scenario.eventCounts`, which is
+part of the full-state digest. Action replay schema **4** identifies the changed
+receipt/state contract and explicitly rejects schema 3 replay documents. Battle
+snapshot schema **3** and application schema **4** are unchanged: existing admitted
+saves retain their stored counts and can continue under the new rules. There is
+no field stripping, digest exclusion or replay migration in production.
+
+The formal C01-09 witness uses its unchanged 58-order prefix and structure-primary
+satchel charge, including the unit collateral that precedes the structure hit.
+Synthetic lawful fixtures additionally exercise delayed empty targets, counters,
+support and cancellation. This contract does not supply newly animated artwork,
+charge gestures, hit reactions, death or celebration art. No unaccepted candidate
+image is shipped.
 
 ## Healing source and recipient
 
@@ -270,16 +306,17 @@ Supported native presenters (including the explicit recovery and displacement re
 
 | Event | Consumed fields | Presentation |
 | --- | --- | --- |
-| attack, counter, supportAttack | attacker, defender, weapon, damage, killed | Weapon-selected actor action; impact at authored release, recovery overlaps |
+| attackActivated | attacker, weapon, at | One weapon-selected source action; yield at clip release |
+| attackCompleted | attacker, weapon | Finish that source recovery before later actions |
+| counter, supportAttack | attacker, defender, weapon, damage, killed | Independent weapon-selected action and released impact |
+| attack, areaAttack | defender, weapon, damage, killed | Recipient impact; never infer another source action |
 | partingShot | same plus at | Weapon-selected action; release impact at explicit departure cell |
-| areaAttack | defender, weapon, damage, killed | Impact without another wind-up |
-| attackStructure | attacker, structure, weapon, damage, destroyed | Weapon-selected action and released structure impact |
-| areaAttackStructure | structure, weapon, damage, destroyed | Structure impact without wind-up |
+| attackStructure, areaAttackStructure | attacker, structure, weapon, damage, destroyed | Recipient structure impact without another wind-up |
 | forcedMove | unit, mode, from, to, path | Ordered ground slide; teleport changes contact without interpolating a route |
 | collisionDamage | unit, amount, killed | One generic impact for the emitted actual collision damage |
 | regen | unit, amount | Existing healing effect at the current visible contact |
 | death | unit | 220 ms fade and 35% shrink about cell center, then remove ghost |
-| heal | target, amount | Heal strip and number rising 16 pixels over 500 ms |
+| heal | source, target, amount | Ability-selected source action; released heal strip and 500 ms recipient number |
 | recruit | unit, at | Add only the new actor, then 240 ms fade/scale from 0.6 to 1 |
 | capture | captured | Refresh site ownership when completed |
 | turnStart | player, turn | Refresh HUD, 220 ms entrance, 420 ms hold, 220 ms exit |

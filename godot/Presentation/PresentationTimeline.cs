@@ -20,13 +20,18 @@ internal sealed class PresentationTimeline
     {
         if (cancelled)
             return Task.FromResult(false);
+        if (!double.IsFinite(milliseconds))
+            throw new ArgumentOutOfRangeException(nameof(milliseconds));
         if (!MotionEnabled || milliseconds <= 0)
         {
             step(1);
             return Task.FromResult(true);
         }
+        var duration = milliseconds / 1000;
+        if (!double.IsFinite(time + duration) || time + duration <= time)
+            throw new InvalidOperationException("Tween duration cannot advance the current presentation time.");
         var completion = new TaskCompletionSource<bool>();
-        waiting.Add(new Tween(time, milliseconds / 1000, step, completion));
+        waiting.Add(new Tween(time, duration, step, completion));
         return completion.Task;
     }
 
@@ -36,12 +41,32 @@ internal sealed class PresentationTimeline
     {
         if (!double.IsFinite(seconds) || seconds < 0)
             throw new ArgumentOutOfRangeException(nameof(seconds));
-        time += seconds;
+        var target = time + seconds;
+        if (!double.IsFinite(target))
+            throw new ArgumentOutOfRangeException(nameof(seconds));
+        // A completed waiter can enqueue the next phase. Its origin is the exact
+        // completion boundary, not the end of a coarse frame that crossed it.
+        while (waiting.Count > 0)
+        {
+            var boundary = double.PositiveInfinity;
+            foreach (var tween in waiting)
+                boundary = Math.Min(boundary, tween.Started + tween.Duration);
+            if (boundary > target)
+                break;
+            time = boundary;
+            Sample();
+        }
+        time = target;
+        Sample();
+    }
+
+    private void Sample()
+    {
         foreach (var tween in waiting.ToArray())
         {
             if (!waiting.Contains(tween))
                 continue;
-            var progress = Math.Min(1, (time - tween.Started) / tween.Duration);
+            var progress = time >= tween.Started + tween.Duration ? 1 : (time - tween.Started) / tween.Duration;
             try
             {
                 tween.Step(progress);

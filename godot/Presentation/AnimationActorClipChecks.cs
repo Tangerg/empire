@@ -204,7 +204,7 @@ public partial class AnimationChecks
             var aid = Int(attacker, "id");
             var did = Int(defender, "id");
             var after = (JsonObject)before.DeepClone();
-            var transition = Transition(before, after, IdleAction(), [Strike("attack", aid, did), Strike("supportAttack", aid, did)]);
+            var transition = Transition(before, after, IdleAction(), [.. ScopedClipAttack(Strike("attack", aid, did), At(3, 3), At(1, 3)), Strike("supportAttack", aid, did)]);
             var unchanged = before.ToJsonString() + after.ToJsonString();
             var completed = new List<int>();
             void Presented(BattlePresentationTransition _, int index) => completed.Add(index);
@@ -243,14 +243,14 @@ public partial class AnimationChecks
                 CheckClipShadow(sprite);
                 Require(actor.Position == origin && actor.GetMeta("logical_contact").AsVector2() == logical
                     && board.GetNode<Node2D>("BattleEffects/Hit").Position == destination
-                    && board.GetNode<Label>("BattleEffects/Hit/Number").Text == "-12" && completed.Count == 0,
+                    && board.GetNode<Label>("BattleEffects/Hit/Number").Text == "-12" && completed.SequenceEqual(new[] { 0 }),
                     "Clip completion restores the original sheet, geometry, filter and shadow while the released impact continues.");
                 await Tick(board, .421);
-                Require(completed.SequenceEqual(new[] { 0 }) && Frame(actor) == 1
-                    && board.GetNodeOrNull("BattleEffects/Hit") is null,
-                    "The first impact publishes once before the following event starts its own finite clip.");
+                Require(completed.SequenceEqual(new[] { 0, 1, 2 }) && Frame(actor) == 2
+                    && board.GetNodeOrNull("BattleEffects/Hit") is not null,
+                    "A coarse tick publishes the completed main scope and carries overshoot into the following support action and release.");
                 await Drain(board, task);
-                Require(completed.SequenceEqual(new[] { 0, 1 }) && !board.IsPresenting
+                Require(completed.SequenceEqual(new[] { 0, 1, 2, 3 }) && !board.IsPresenting
                     && viewportFeedback.GetNodeOrNull("ViewportEffects") is null
                     && before.ToJsonString() + after.ToJsonString() == unchanged,
                     "Clip playback preserves receipt order and immutable battle facts and releases both effect roots.");
@@ -275,27 +275,27 @@ public partial class AnimationChecks
                 ConfigureActorClipBoard(board, catalog);
                 board.AnimationsEnabled = false;
                 task = board.PresentTransitionAsync(viewportFeedback, transition);
-                Require(task.IsCompleted && await task && completed.SequenceEqual(new[] { 0, 1 })
+                Require(task.IsCompleted && await task && completed.SequenceEqual(new[] { 0, 1, 2, 3 })
                     && board.GetNodeOrNull("BattleEffects") is null,
                     "Reduced motion settles alternate-sheet clips synchronously and preserves event order.");
                 CheckSettledClipActor(board, aid, idle, origin);
                 board.AnimationsEnabled = true;
                 completed.Clear();
                 var visible = new HashSet<int> { did };
-                var hidden = Transition(before, after, IdleAction(), [Strike("attack", aid, did)], visible);
+                var hidden = Transition(before, after, IdleAction(), ScopedClipAttack(Strike("attack", aid, did), At(3, 3), At(1, 3)), visible);
                 task = board.PresentTransitionAsync(viewportFeedback, hidden, visible);
                 Require(board.GetNodeOrNull($"CanonicalProjection/Unit_{aid}") is null
                     && board.GetNodeOrNull("BattleEffects/Hit") is not null,
                     "A hidden attacker never appears or starts its clip; the already-visible recipient retains its impact.");
                 await Drain(board, task);
-                Require(completed.SequenceEqual(new[] { 0 }), "Skipping a hidden actor clip does not duplicate or drop the event.");
+                Require(completed.SequenceEqual(new[] { 0, 1, 2 }), "Skipping a hidden actor clip does not duplicate or drop the event.");
             }
             finally { board.EventPresented -= Presented; }
             await CheckActorSpecificClipPlayback(board, catalog, before, aid, did);
             bindings.Units["c01.swordsman"].ActionClips.Remove("attack");
             ConfigureActorClipBoard(board, new AssetCatalog(manifest, bindings));
             var failed = board.PresentTransitionAsync(viewportFeedback,
-                Transition(before, after, IdleAction(), [Strike("attack", aid, did)]));
+                Transition(before, after, IdleAction(), ScopedClipAttack(Strike("attack", aid, did), At(3, 3), At(1, 3))));
             try
             {
                 await failed;
@@ -381,7 +381,7 @@ public partial class AnimationChecks
         var catalog = new AssetCatalog(manifest, bindings);
         ConfigureDepth(catalog);
         var task = board.PresentTransitionAsync(viewportFeedback,
-            Transition(before, (JsonObject)before.DeepClone(), IdleAction(), [Strike("attack", aid, did)]));
+            Transition(before, (JsonObject)before.DeepClone(), IdleAction(), ScopedClipAttack(Strike("attack", aid, did), At(1, 3), At(6, 3))));
         if (task.IsFaulted)
             await task;
         var currentActor = Actor(board, aid);
@@ -442,7 +442,7 @@ public partial class AnimationChecks
             var selected = catalog.ResolveUnit(type, key);
             var clip = catalog.ResolveUnitClip(type, "attack", ActorClipUnit.Milliseconds, key);
             var task = board.PresentTransitionAsync(viewportFeedback,
-                Transition(before, (JsonObject)before.DeepClone(), IdleAction(), [Strike("attack", aid, did)]));
+                Transition(before, (JsonObject)before.DeepClone(), IdleAction(), ScopedClipAttack(Strike("attack", aid, did), At(3, 3), At(1, 3))));
             var sprite = Actor(board, aid).GetNode<Sprite2D>("AuthoredSprite");
             var facing = sprite.Scale.X < 0 ? -1 : 1;
             CheckClipSprite(sprite, selected, clip.FrameAt(0), facing);
@@ -530,6 +530,25 @@ public partial class AnimationChecks
         }
         finally { RemoveChild(board); board.Free(); }
     }
+
+    private static JsonObject[] ScopedClipAttack(JsonObject impact, JsonObject from, JsonObject aim) =>
+    [
+        new JsonObject
+        {
+            ["type"] = "attackActivated",
+            ["attacker"] = Int(impact, "attacker"),
+            ["weapon"] = impact["weapon"]!.GetValue<string>(),
+            ["from"] = from,
+            ["at"] = aim
+        },
+        impact,
+        new JsonObject
+        {
+            ["type"] = "attackCompleted",
+            ["attacker"] = Int(impact, "attacker"),
+            ["weapon"] = impact["weapon"]!.GetValue<string>()
+        }
+    ];
 
     private static ActorClipFrameRecord[] ClipFixtureFrames() => new[]
     {

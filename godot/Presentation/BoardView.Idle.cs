@@ -67,10 +67,11 @@ public partial class BoardView
         return depths.ToArray();
     }
 
-    private void PrepareStandingPartitions(IEnumerable<StandingEntry> entries, IEnumerable<float> transientDepths,
-        IEnumerable<IdleActor>? idleActors = null) => Projection.PrepareDepthPartitions(
+    private void PrepareStandingPartitions(IEnumerable<StandingEntry> entries,
+        IEnumerable<IdleActor>? idleActors = null, bool includeFinite = true) => Projection.PrepareDepthPartitions(
             entries.Where(entry => entry.Layer != 0).Select(StandingDepth),
-            transientDepths.Concat((idleActors ?? _idleActors.Values).SelectMany(idle => idle.Depths)));
+            (idleActors ?? _idleActors.Values).SelectMany(idle => idle.Depths).Concat(
+                includeFinite && _playback is { } playback ? playback.ActorDepths.Values.SelectMany(depths => depths) : Array.Empty<float>()));
 
     private void SuspendIdle(Node2D actor)
     {
@@ -83,12 +84,13 @@ public partial class BoardView
 
     private void ResumeIdle(Node2D actor)
     {
+        _playback?.ActorDepths.Remove(actor);
         var asset = UnitAsset(actor);
         SetFrame(actor.GetNode<Sprite2D>("AuthoredSprite"), asset, AssetCatalog.FrameIndex(asset, "idle"));
         var entries = CurrentStanding().ToArray();
         var entry = entries.Single(value => value.Node == actor);
         _idleActors.Add(actor, CreateIdleActor(entry));
-        PrepareStandingPartitions(entries, Array.Empty<float>());
+        PrepareStandingPartitions(entries);
         SortAnimatedStanding();
     }
 

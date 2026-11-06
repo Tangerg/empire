@@ -14,8 +14,16 @@ namespace Empire.Presentation;
 
 public partial class BoardView
 {
+    private sealed record AttackPlayback(int Attacker, string Weapon, Task<bool> Recovery);
     private sealed record Playback(BattlePresentationTransition Transition, JsonObject After,
-        IReadOnlySet<int>? AfterVisible, PresentationTimeline Clock, Node2D Effects, Control ViewportEffects);
+        IReadOnlySet<int>? AfterVisible, PresentationTimeline Clock, Node2D Effects, Control ViewportEffects)
+    {
+        internal AttackPlayback? Attack
+        {
+            get; set;
+        }
+        internal Dictionary<Node2D, float[]> ActorDepths { get; } = new();
+    }
     private Playback? _playback;
     private bool _exiting;
 
@@ -117,6 +125,8 @@ public partial class BoardView
                     return false;
                 EventPresented?.Invoke(transition, index);
             }
+            if (playback.Attack is not null)
+                throw new InvalidOperationException("Main attack activation has no completion boundary.");
             return true;
         }
         finally
@@ -137,6 +147,10 @@ public partial class BoardView
     {
         switch (Text(item, "type"))
         {
+            case "attackActivated":
+                return await BeginAttack(playback, item);
+            case "attackCompleted":
+                return await CompleteAttack(playback, item);
             case "attack":
             case "counter":
             case "supportAttack":
@@ -147,7 +161,7 @@ public partial class BoardView
                     if (!WasVisible(playback, defender))
                         return true;
                     var at = Text(item, "type") == "partingShot" ? CellCentre(Coordinate(item["at"]!)) : ImpactOn(defender);
-                    return await PlayStrike(playback, item, at, Text(item, "type") != "areaAttack", "killed");
+                    return await PlayStrike(playback, item, at, Text(item, "type") is "counter" or "supportAttack" or "partingShot", "killed");
                 }
             case "attackStructure":
             case "areaAttackStructure":
@@ -155,14 +169,17 @@ public partial class BoardView
                     if (!WasVisible(playback, Integer(item, "attacker")))
                         return true;
                     var structure = Objects(playback.After, "structures").FirstOrDefault(value => Text(value, "id") == Text(item, "structure"));
-                    return await PlayStrike(playback, item, structure is null ? null : CellCentre(Coordinate(structure)),
-                        Text(item, "type") == "attackStructure", "destroyed");
+                    return await PlayStrike(playback, item, structure is null ? null : CellCentre(Coordinate(structure)), false, "destroyed");
                 }
             case "death":
+                if (playback.Attack is { } dying && dying.Attacker == Integer(item, "unit") && !await dying.Recovery)
+                    return false;
                 return await AnimateDeath(playback, Integer(item, "unit"));
             case "forcedMove":
                 {
                     var id = Integer(item, "unit");
+                    if (playback.Attack is { } displaced && displaced.Attacker == id && !await displaced.Recovery)
+                        return false;
                     if (!BattleEventVisibility.UnitWasAndIsVisible(id, playback.Transition.BeforeVisibleUnitIds, playback.AfterVisible)
                         || DrawnUnit(id) is not { } actor)
                         return true;
@@ -232,6 +249,39 @@ public partial class BoardView
                 // animation, including casts and non-death departures.
                 return true;
         }
+    }
+
+    private async Task<bool> BeginAttack(Playback playback, JsonObject item)
+    {
+        if (playback.Attack is not null)
+            throw new InvalidOperationException("Main attack activations cannot overlap.");
+        var id = Integer(item, "attacker");
+        var weapon = Text(item, "weapon");
+        var recovery = Task.FromResult(true);
+        var release = 0.0;
+        if (WasVisible(playback, id) && DrawnUnit(id) is { } actor)
+        {
+            var aim = Coordinate(item["at"]!);
+            var visual = PrepareActorAction(actor, _assets!.ResolveWeaponAction(weapon), Projection.Project(LogicalContact(aim.X, aim.Y)));
+            release = visual.Clip.RequireRelease();
+            visual.Sample(0);
+            recovery = playback.Clock.TweenAsync(visual.Clip.Length, t => visual.Sample(t * visual.Clip.Length));
+        }
+        playback.Attack = new(id, weapon, recovery);
+        if (!await playback.Clock.WaitAsync(release))
+            return false;
+        if (recovery.IsFaulted)
+            await recovery;
+        return true;
+    }
+
+    private static async Task<bool> CompleteAttack(Playback playback, JsonObject item)
+    {
+        if (playback.Attack is not { } attack || attack.Attacker != Integer(item, "attacker") || attack.Weapon != Text(item, "weapon"))
+            throw new InvalidOperationException("Main attack completion does not match its activation.");
+        var complete = await attack.Recovery;
+        playback.Attack = null;
+        return complete;
     }
 
     private async Task<bool> PlayStrike(Playback playback, JsonObject item, Vector2? at, bool windup, string fatalField)
@@ -312,19 +362,16 @@ public partial class BoardView
         var depths = contacts.SelectMany(contact => offsets.Select(offset => Projection.Depth(contact) + offset)).ToArray();
         var first = (int)Math.Floor(depths.Min());
         var last = (int)Math.Ceiling(depths.Max());
-        PrepareStandingPartitions(entries,
-            Enumerable.Range(first, last - first + 1).Select(depth => (float)depth));
+        PrepareFiniteActorDepths(actor, Enumerable.Range(first, last - first + 1).Select(depth => (float)depth));
     }
 
-    private async Task<bool> AnimateActorAction(Playback playback, Node2D actor, ActorAction policy,
-        Vector2? target, double amount, bool healing, bool fatal, string? topic)
+    private sealed record ActorActionVisual(ActorClip Clip, Action<double> Sample);
+
+    private ActorActionVisual PrepareActorAction(Node2D actor, ActorAction policy, Vector2? target)
     {
         var clip = _assets!.ResolveUnitClip(actor.GetMeta("unit_type").AsString(), policy.Action, ActorClipUnit.Milliseconds,
             actor.HasMeta("actor_key") ? actor.GetMeta("actor_key").AsString() : null);
         var release = clip.RequireRelease();
-        var impactEnd = target is null ? 0 : release + ImpactDuration(healing);
-        if (target is not null && (!double.IsFinite(impactEnd) || impactEnd <= release))
-            throw new InvalidOperationException($"Actor release cannot represent the following impact: {clip.Asset.Identity}.");
         SuspendIdle(actor);
         var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
         var anchor = Projection.Project(actor.GetMeta("logical_contact").AsVector2());
@@ -336,8 +383,6 @@ public partial class BoardView
         var frame = clip.FrameAt(0);
         SetFrame(sprite, clip.Asset, frame);
         var actorFinished = false;
-        ImpactVisual? impact = null;
-        var duration = Math.Max(clip.Length, impactEnd);
         void Sample(double elapsed)
         {
             if (!actorFinished)
@@ -363,6 +408,24 @@ public partial class BoardView
                     SortAnimatedStanding();
                 }
             }
+        }
+        return new(clip, Sample);
+    }
+
+    private async Task<bool> AnimateActorAction(Playback playback, Node2D actor, ActorAction policy,
+        Vector2? target, double amount, bool healing, bool fatal, string? topic)
+    {
+        var visual = PrepareActorAction(actor, policy, target);
+        var clip = visual.Clip;
+        var release = clip.RequireRelease();
+        var impactEnd = target is null ? 0 : release + ImpactDuration(healing);
+        if (target is not null && (!double.IsFinite(impactEnd) || impactEnd <= release))
+            throw new InvalidOperationException($"Actor release cannot represent the following impact: {clip.Asset.Identity}.");
+        ImpactVisual? impact = null;
+        var duration = Math.Max(clip.Length, impactEnd);
+        void Sample(double elapsed)
+        {
+            visual.Sample(elapsed);
             if (target is not { } at || elapsed < release)
                 return;
             impact ??= CreateImpactVisual(playback, at, amount, healing, topic);
@@ -393,7 +456,14 @@ public partial class BoardView
         // Sample through the existing geometry owner before any frame is drawn:
         // alternate contacts need terrain cuts as well as a new actor Z index.
         var depths = ActorClipDepths(moving, sprite, clip);
-        PrepareStandingPartitions(entries.Where(entry => entry.Node != actor), depths);
+        PrepareFiniteActorDepths(actor, depths);
+    }
+
+    private void PrepareFiniteActorDepths(Node2D actor, IEnumerable<float> depths)
+    {
+        var playback = _playback ?? throw new InvalidOperationException("Finite actor geometry requires active playback.");
+        playback.ActorDepths[actor] = depths.ToArray();
+        PrepareStandingPartitions(CurrentStanding());
     }
 
     private async Task<bool> AnimateDeath(Playback playback, int id)
@@ -409,6 +479,7 @@ public partial class BoardView
             SwellActor(actor, at, (float)(1 - 0.35 * t));
         }))
             return false;
+        playback.ActorDepths.Remove(actor);
         _standing.RemoveAll(entry => entry.Node == actor);
         RemoveEffect(actor);
         RenderedUnitCount--;

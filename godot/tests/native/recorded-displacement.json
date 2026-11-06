@@ -134,7 +134,7 @@
       {"kind":"endTurn"},
       {"kind":"command","unit":22,"path":[{"x":25,"y":23},{"x":24,"y":23},{"x":24,"y":22},{"x":24,"y":21},{"x":24,"y":20},{"x":25,"y":20}],"command":{"ability":"attack","weapon":"c01.knight-charge","target":{"x":25,"y":21}}}
     ],
-    "checkpoints": [{"index":5,"beforeStateHash":"5826b001","afterStateHash":"472f2431","eventsSha256":"f8e69f0241b527fbaf479882b3d0d347b169d6e2ff7d0b1469e8bcc19ff67a48"},{"index":129,"beforeStateHash":"abced4bd","afterStateHash":"5efe5a44","eventsSha256":"801a1635f172bc44207820be80d54ecfe45f3e185fff33822452d59c4ad05f2e"}]
+    "checkpoints": [{"index":5,"beforeStateHash":"7e0b3a03","afterStateHash":"f4c676f3","eventsSha256":"edf228058c1b13ef1ab0ce254b10ca1211bb8c44cc3627d35a24198695119c20"},{"index":129,"beforeStateHash":"09584959","afterStateHash":"aa2be972","eventsSha256":"ec1fec196f94307bc00ae412f0eeaf2b569468283166b9b41a3e8e2290b8ff3d"}]
   },
   {
     "levelId": "c01-01",
@@ -186,7 +186,7 @@
       {"kind":"tactic","commander":"enemy-command","tactic":"rally","target":{"x":11,"y":20}},
       {"kind":"command","unit":11,"path":[{"x":21,"y":21},{"x":21,"y":20},{"x":21,"y":19},{"x":21,"y":18},{"x":21,"y":17},{"x":22,"y":17},{"x":23,"y":17}],"command":{"ability":"attack","weapon":"c01.knight-charge","target":{"x":23,"y":16}}}
     ],
-    "checkpoints": [{"index":44,"beforeStateHash":"80abbae3","afterStateHash":"3f7e36e1","eventsSha256":"3f84354a99d937bd25e02b754884a2179550f6c6efec41534aec12cdad34c12b"}]
+    "checkpoints": [{"index":44,"beforeStateHash":"6ba9c1e5","afterStateHash":"7b2e055f","eventsSha256":"5c167859e4862f91cfc646418c122f53876a09ff133b4d9fba3d03b6eea552c9"}]
   },
   {
     "levelId": "c01-10",
@@ -242,7 +242,7 @@
       {"kind":"command","unit":17,"path":[{"x":15,"y":5}],"command":{"ability":"attack","weapon":"c01.legion-spear","target":{"x":14,"y":5}}},
       {"kind":"command","unit":19,"path":[{"x":13,"y":11},{"x":13,"y":10},{"x":13,"y":9}],"command":{"ability":"attack","weapon":"c01.knight-charge","target":{"x":12,"y":9}}}
     ],
-    "checkpoints": [{"index":48,"beforeStateHash":"857ff527","afterStateHash":"b4cc627e","eventsSha256":"b47c7190a2b2d99cd2f507a3193536e0ff30581a911e5a25838682022e067f38"}]
+    "checkpoints": [{"index":48,"beforeStateHash":"d3fa3817","afterStateHash":"518efb38","eventsSha256":"decc2b824c80eeedcd19ffc266bbce3aeead47aef0539d11263c5ac373373018"}]
   },
   {
     "levelId": "c01-14",
@@ -308,6 +308,6 @@
       {"kind":"command","unit":4,"path":[{"x":4,"y":4},{"x":4,"y":5}],"command":{"ability":"attack","weapon":"c01.lantern-staff","target":{"x":6,"y":5}}},
       {"kind":"command","unit":1,"path":[{"x":3,"y":4},{"x":4,"y":4},{"x":4,"y":5},{"x":5,"y":5}],"command":{"ability":"attack","weapon":"c01.gray-oath","target":{"x":6,"y":5}}}
     ],
-    "checkpoints": [{"index":58,"beforeStateHash":"bad63086","afterStateHash":"c2fd1c27","eventsSha256":"c47b8877737550d353ee0a01237ce5fd6083de06b1bc6021ea4be796c63cb988"}]
+    "checkpoints": [{"index":58,"beforeStateHash":"1fc73c28","afterStateHash":"60fee9f7","eventsSha256":"c20e94a13e3089397908d7760d11259d2652097cb115055a0cbc91bb0ce84833"}]
   }
 ]

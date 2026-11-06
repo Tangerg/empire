@@ -200,3 +200,14 @@ Creation events continue to own emission-time type and owner facts, including
 units created and erased within one committed action. The shipped spawn effects
 create generic units. This change neither adds personal identity facts to creation
 events nor claims support for transient named spawns that lack those facts.
+
+## Main attack receipt revision
+
+Replay schema 4 adds combat-owned `attackActivated` / `attackCompleted` facts.
+Their ordinary scenario event counts participate in the existing all-field
+digest; historical action replay schema 3 is explicitly refused, not migrated or
+normalized by production. Battle snapshot schema 3 remains unchanged, as does
+application envelope schema 4. An admitted existing snapshot keeps its stored
+counts and can continue; it need not pretend that its earlier attacks emitted
+new facts. See [Action presentation](ACTION-PRESENTATION.md) for exact ownership
+and the controlled historical comparison boundary.

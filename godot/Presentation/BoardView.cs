@@ -387,7 +387,7 @@ public partial class BoardView : Node2D
             foreach (var layer in _dynamicState is null ? new[] { "structures", "markers" } : Array.Empty<string>())
                 if (canonicalState[layer] is JsonArray { Count: > 0 })
                     diagnostics.Add($"Canonical '{layer}' is present but dynamic presentation content is not configured.");
-            PrepareStandingPartitions(entries, Array.Empty<float>(), idleActors.Values);
+            PrepareStandingPartitions(entries, idleActors.Values, includeFinite: false);
             OrderStanding(entries);
         }
         catch
@@ -397,6 +397,7 @@ public partial class BoardView : Node2D
         }
 
         ReplaceChild(ref _projection, staging);
+        _playback?.ActorDepths.Clear();
         _idleActors = idleActors;
         _standing.Clear();
         _standing.AddRange(entries);

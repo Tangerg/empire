@@ -39,11 +39,14 @@ public partial class AnimationChecks : Node
             CheckActorClipDefinitions();
             CheckReleaseDefinitions();
             CheckHealingDefinitions();
+            await CheckClock();
+            await CheckActivationDepthOwnership();
+            await CheckActivationPlayback();
+            await CheckActivationLegalReceipt();
             await CheckHealingLegalReceipt();
             await CheckRecordedDisplacement();
             CheckAssets();
             CheckTransitionOwnership();
-            await CheckClock();
             await CheckActorClipPlayback();
             await CheckIdleClipPlayback();
             await CheckMovementClipPlayback();
@@ -138,6 +141,28 @@ public partial class AnimationChecks : Node
         Require(progress == 0.25 && !tween.IsCompleted, "Timeline begins at its own play time");
         clock.Advance(0.075);
         Require(await tween && progress == 1 && clock.PendingCount == 0, "Timeline completes exactly once at its duration");
+        var chained = new PresentationTimeline();
+        var recovery = chained.TweenAsync(150, t => progress = t);
+        var impactProgress = -1.0;
+        async Task<bool> ReleasedImpact()
+        {
+            if (!await chained.WaitAsync(75))
+                return false;
+            return await chained.TweenAsync(420, t => impactProgress = t);
+        }
+        var impact = ReleasedImpact();
+        chained.Advance(.285);
+        Require(await recovery && progress == 1 && Math.Abs(impactProgress - .5) < 1e-9 && !impact.IsCompleted,
+            "A coarse frame preserves release overshoot and independent source recovery on one timeline.");
+        chained.Advance(.210);
+        Require(await impact && impactProgress == 1 && chained.PendingCount == 0,
+            "Chained impact completes at release plus duration, without adding frame-dependent latency.");
+        var distant = new PresentationTimeline();
+        var farRelease = distant.WaitAsync(1e20);
+        distant.Advance(1e17);
+        Require(await farRelease, "An admitted finite long interval can finish without overflowing.");
+        Throws(() => distant.WaitAsync(420), "A following interval must advance representable time rather than vanish.");
+        Require(distant.PendingCount == 0, "Refused unrepresentable intervals cannot leave a hanging waiter.");
         var a = clock.WaitAsync(20);
         var b = clock.WaitAsync(50);
         clock.Cancel();
@@ -236,7 +261,7 @@ public partial class AnimationChecks : Node
         var did = Int(target, "id");
         var at = board.Projection.CellCenter(new(Int(target, "x"), Int(target, "y")));
         var attack = Strike("attack", aid, did);
-        var task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(), [attack]));
+        var task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(), MainAttackScope(attacker, target, "c01.border-blade", attack)));
         var actor = Actor(board, aid);
         var origin = actor.Position;
         Require(Frame(actor) == 2, "Strike selects the declared source attack frame");
@@ -273,15 +298,15 @@ public partial class AnimationChecks : Node
 
         after["units"]!.AsArray().RemoveAt(after["units"]!.AsArray().Count - 1);
         attack["killed"] = true;
-        task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(), [attack,
-            new JsonObject { ["type"] = "death", ["unit"] = did, ["at"] = At(Int(target, "x"), Int(target, "y")) }]));
+        task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(), MainAttackScope(attacker, target, "c01.border-blade", attack,
+            new JsonObject { ["type"] = "death", ["unit"] = did, ["at"] = At(Int(target, "x"), Int(target, "y")) })));
         Require(Actor(board, did) is not null, "Dead units retain only a before-state view ghost until departure playback");
-        await Tick(board, 0.151);
+        await Tick(board, 0.075);
         Require(board.GetNode<Node2D>("BattleEffects/Hit").Position == at, "Fatal hit lands on last-seen position despite absence from After");
-        await Tick(board, 0.421);
+        await Tick(board, 0.420);
         Require(board.GetNodeOrNull("BattleEffects/Hit") is null && Actor(board, did) is CanvasGroup && Actor(board, did).SelfModulate.A == 1,
             "Fatal hit has a forty-millisecond beat before death");
-        await Tick(board, 0.041);
+        await Tick(board, 0.040);
         await Tick(board, 0.110);
         var ghost = Actor(board, did);
         Require(ghost is CanvasGroup && Mathf.IsEqualApprox(ghost.SelfModulate.A, 0.5f) && Mathf.IsEqualApprox(ghost.Scale.X, 0.825f),
@@ -344,7 +369,7 @@ public partial class AnimationChecks : Node
         var aid = Int(attacker, "id");
         var did = Int(target, "id");
         after["units"]!.AsArray().RemoveAt(0);
-        var task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(), [Strike("attack", aid, did)]));
+        var task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(), MainAttackScope(attacker, target, "c01.border-blade", Strike("attack", aid, did))));
         Require(board.GetNodeOrNull("BattleEffects/Hit") is null && Frame(Actor(board, aid)) == 2,
             "An attacker alive at this point in the receipt still winds up even if it dies later in the transaction.");
         await Tick(board, 0.151);
@@ -378,19 +403,19 @@ public partial class AnimationChecks : Node
             ["damage"] = 100,
             ["destroyed"] = true
         };
-        task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(), [impact]));
+        task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(), MainAttackScope(attacker, structure, "c01.border-blade", impact)));
         await Tick(board, 0.151);
         Require(board.GetNode<Node2D>("BattleEffects/Hit").Position == board.Projection.CellCenter(new(1, 2)),
             "Source destroyed structures remain in committed state and retain their impact coordinates");
         await Drain(board, task);
 
         after["structures"]!.AsArray().Clear();
-        task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(), [impact]));
+        task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(), MainAttackScope(attacker, structure, "c01.border-blade", impact)));
         var actor = Actor(board, aid);
         var origin = actor.Position;
         await Tick(board, 0.075);
-        Require(Frame(actor) == 2 && actor.Position == origin,
-            "An actually absent structure gives source wind-up toward self, not an invented last-seen structure location");
+        Require(Frame(actor) == 2 && actor.Position.DistanceTo(origin) > 6.9f,
+            "Explicit aim owns source motion even when a removed structure has no drawable impact target");
         await Tick(board, 0.076);
         Require(task.IsCompleted && await task && board.GetNodeOrNull("BattleEffects/Hit") is null,
             "Source absent-structure impact is skipped instead of fabricating an explosion");
@@ -399,7 +424,7 @@ public partial class AnimationChecks : Node
         // is not another hit or a second cast-start animation in the source.
         task = board.PresentTransitionAsync(viewportFeedback, Transition(Copy(), Copy(), IdleAction(), [
             new JsonObject { ["type"] = "castResolved", ["unit"] = aid, ["weapon"] = "c01.border-blade", ["at"] = At(Int(target, "x"), Int(target, "y")) },
-            Strike("attack", aid, did)]));
+            .. MainAttackScope(attacker, target, "c01.border-blade", Strike("attack", aid, did))]));
         Require(Frame(Actor(board, aid)) == 2 && board.GetNode<Node2D>("BattleEffects").GetChildCount() == 0,
             "castResolved does not produce a duplicate impact before the actual attack presenter");
         await Tick(board, 0.151);
@@ -464,7 +489,9 @@ public partial class AnimationChecks : Node
         after["units"]!.AsArray().RemoveAt(after["units"]!.AsArray().Count - 1);
         var attack = Strike("attack", aid, did);
         attack["killed"] = true;
-        var fatal = Transition(before, after, IdleAction(), [attack, new JsonObject { ["type"] = "death", ["unit"] = did, ["at"] = At(0, 0) }]);
+        var fatal = Transition(before, after, IdleAction(), MainAttackScope(before["units"]![0]!.AsObject(),
+            before["units"]!.AsArray().Last()!.AsObject(), "c01.border-blade", attack,
+            new JsonObject { ["type"] = "death", ["unit"] = did, ["at"] = At(0, 0) }));
         var interrupted = board.PresentTransitionAsync(viewportFeedback, fatal);
         await Tick(board, 0.151);
         Require(board.GetNodeOrNull("BattleEffects/Hit") is not null, "Cancellation fixture interrupts a live FX strip");
@@ -522,6 +549,16 @@ public partial class AnimationChecks : Node
         Require(task.IsCompleted && await task, "Playback must reach its final state under a bounded deterministic clock");
     }
     private JsonObject Copy() => (JsonObject)initial.DeepClone();
+    private static JsonObject[] MainAttackScope(JsonObject actor, JsonObject aimed, string weapon, params JsonObject[] body) =>
+    [
+        new JsonObject
+        {
+            ["type"] = "attackActivated", ["attacker"] = Int(actor, "id"), ["weapon"] = weapon,
+            ["from"] = At(Int(actor, "x"), Int(actor, "y")), ["at"] = At(Int(aimed, "x"), Int(aimed, "y"))
+        },
+        .. body,
+        new JsonObject { ["type"] = "attackCompleted", ["attacker"] = Int(actor, "id"), ["weapon"] = weapon }
+    ];
     private static JsonObject At(int x, int y) => new() { ["x"] = x, ["y"] = y };
     private static JsonObject IdleAction() => new() { ["kind"] = "endTurn" };
     private static JsonObject Strike(string kind, int attacker, int defender) => new()

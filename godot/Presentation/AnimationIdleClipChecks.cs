@@ -170,7 +170,10 @@ public partial class AnimationChecks
 
     private async Task CheckIdleFiniteOwnership(BoardView board, AssetCatalog catalog, JsonObject state, int aid, int did)
     {
-        var transition = Transition(state, (JsonObject)state.DeepClone(), IdleAction(), [Strike("attack", aid, did)]);
+        var actingUnit = state["units"]!.AsArray().OfType<JsonObject>().Single(unit => Int(unit, "id") == aid);
+        var aimedUnit = state["units"]!.AsArray().OfType<JsonObject>().Single(unit => Int(unit, "id") == did);
+        var transition = Transition(state, (JsonObject)state.DeepClone(), IdleAction(),
+            MainAttackScope(actingUnit, aimedUnit, "c01.border-blade", Strike("attack", aid, did)));
         var task = board.PresentTransitionAsync(viewportFeedback, transition);
         await Tick(board, .041);
         var attacker = Actor(board, aid);
@@ -206,11 +209,12 @@ public partial class AnimationChecks
         Task<bool>? replacement = null;
         void Replace(BattlePresentationTransition receipt, int index)
         {
-            if (!ReferenceEquals(receipt, transition))
+            if (!ReferenceEquals(receipt, transition) || index != 2)
                 return;
             board.CancelPresentation();
             replacement = board.PresentTransitionAsync(viewportFeedback,
-                Transition(state, (JsonObject)state.DeepClone(), IdleAction(), [Strike("attack", did, aid)]));
+                Transition(state, (JsonObject)state.DeepClone(), IdleAction(),
+                    MainAttackScope(aimedUnit, actingUnit, "c01.border-blade", Strike("attack", did, aid))));
         }
         board.EventPresented += Replace;
         try
@@ -219,7 +223,7 @@ public partial class AnimationChecks
             await Tick(board, .129);
             await Tick(board, .421);
             Require(replacement is not null && board.IsPresenting,
-                "An event callback can replace playback without the retired sequence clearing new idle ownership.");
+                "The main attack completion callback can replace playback without the retired sequence clearing new idle ownership.");
             await task;
             await Tick(board, .05);
             Require(Frame(Actor(board, aid)) == 2 && Frame(Actor(board, did)) == 2,
@@ -264,7 +268,10 @@ public partial class AnimationChecks
 
     private async Task CheckIdleRetirement(BoardView board, AssetCatalog catalog, JsonObject state, int aid, int did)
     {
-        var transition = Transition(state, (JsonObject)state.DeepClone(), IdleAction(), [Strike("attack", aid, did)]);
+        var actingUnit = state["units"]!.AsArray().OfType<JsonObject>().Single(unit => Int(unit, "id") == aid);
+        var aimedUnit = state["units"]!.AsArray().OfType<JsonObject>().Single(unit => Int(unit, "id") == did);
+        var transition = Transition(state, (JsonObject)state.DeepClone(), IdleAction(),
+            MainAttackScope(actingUnit, aimedUnit, "c01.border-blade", Strike("attack", aid, did)));
         var task = board.PresentTransitionAsync(viewportFeedback, transition);
         await Tick(board, .05);
         ConfigureActorClipBoard(board, assets);
@@ -478,7 +485,8 @@ public partial class AnimationChecks
             }
             CheckRetained();
             var attack = board.PresentTransitionAsync(viewportFeedback,
-                Transition(before, (JsonObject)before.DeepClone(), IdleAction(), [Strike("attack", aid, did)]));
+                Transition(before, (JsonObject)before.DeepClone(), IdleAction(),
+                    MainAttackScope(units[0], units[1], "c01.border-blade", Strike("attack", aid, did))));
             CheckRetained();
             await Tick(board, .05);
             CheckRetained();
@@ -516,7 +524,8 @@ public partial class AnimationChecks
             afterDeath["units"]!.AsArray().RemoveAt(0);
             var attackThenDeath = board.PresentTransitionAsync(viewportFeedback,
                 Transition(before, afterDeath, IdleAction(),
-                    [Strike("attack", aid, did), new JsonObject { ["type"] = "death", ["unit"] = aid, ["at"] = At(1, 3) }]));
+                    MainAttackScope(units[0], units[1], "c01.border-blade",
+                        Strike("attack", aid, did), new JsonObject { ["type"] = "death", ["unit"] = aid, ["at"] = At(1, 3) })));
             var dyingActor = Actor(board, aid);
             var baseDepth = board.Projection.Depth(dyingActor.GetMeta("logical_contact").AsVector2());
             var baseCut = (int)Math.Floor(baseDepth) + 1;

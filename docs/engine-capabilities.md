@@ -500,9 +500,14 @@ Scenario effect handlers declare their emitted signal identities; `BattleTextDoc
 validates corresponding presentation bindings without interpreting effect kinds.
 
 `StateDigest` covers every serialized field, including controller identity. Native
-battle save and replay schema 3 make this all-field hash contract explicit; display
-text lives outside state instead of relying on digest exclusions. The application
-envelope remains schema 3 and admits only its current nested battle format.
+battle save schema 3 makes this all-field hash contract explicit; display text
+lives outside state instead of relying on digest exclusions. Replay schema 4
+adds explicit main-attack activation/completion facts and their event counts.
+`BattleCombat.ExecutePlan` alone originates those boundaries; the native board
+projects one source action and independent victim impacts. Existing snapshot
+counts remain valid when continuing a save. The application envelope is schema 4
+and admits only its current nested battle format. See
+`godot/docs/ACTION-PRESENTATION.md` for timing, cancellation and visibility.
 
 ## Native Godot health ownership
 

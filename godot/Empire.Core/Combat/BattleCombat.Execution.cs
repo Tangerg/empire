@@ -53,6 +53,14 @@ public sealed partial class BattleCombat
     {
         var attacker = TacticalQueries.RequireUnit(state, plan.Attacker);
         Forecasts.ConsumeWeapon(state, attacker, plan.Weapon, emit);
+        emit(new JsonObject
+        {
+            ["type"] = "attackActivated",
+            ["attacker"] = plan.Attacker,
+            ["weapon"] = plan.Weapon,
+            ["from"] = TacticalQueries.CoordinateJson(plan.From),
+            ["at"] = TacticalQueries.CoordinateJson(plan.AimedAt)
+        });
         if (plan.PrimaryUnit?.Reaction is { } reaction)
         {
             var reactor = TacticalQueries.UnitById(state, reaction.Unit);
@@ -89,6 +97,12 @@ public sealed partial class BattleCombat
             var amount = DamageStructure(state, hit.Target, hit.Forecast.RawDamage, emit);
             Effects.AwardCombatProgress(attacker, amount, hit.Forecast.Destroyed, emit);
         }
+        emit(new JsonObject
+        {
+            ["type"] = "attackCompleted",
+            ["attacker"] = plan.Attacker,
+            ["weapon"] = plan.Weapon
+        });
         ChangeMomentum(attacker, unitKilled || plan.StructureHits.Any(hit => hit.Forecast.Destroyed) ? 10 : 5, emit);
         if (plan.PrimaryUnit?.Counter is { } counter && TacticalQueries.UnitById(state, plan.PrimaryUnit.Defender) is { } defender)
         {

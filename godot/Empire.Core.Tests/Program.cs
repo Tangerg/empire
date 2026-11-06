@@ -100,6 +100,7 @@ Check("shared unit content admission", () => UnitContentChecks.Run(root));
 Check("live ownership admission and commander projection", () => ReplayChecks.OwnershipAdmission(root));
 Check("attack preview placement and committed outcomes", () => CombatPreviewChecks.Run(root));
 Check("counter effect ownership and collision disclosure", () => CounterEffectChecks.Run(root));
+Check("explicit main attack activation and completion", () => AttackActivationChecks.Run(root));
 Check("structure lifecycle and redstone routes", () => StructureLifecycleChecks.Run(root));
 Check("escort mission and AI intent", () => EscortChecks.MissionAndIntent(root));
 Check("AI agenda readonly content and allocation", () => AiAgendaChecks.Run(root));
