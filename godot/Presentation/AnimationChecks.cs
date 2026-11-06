@@ -36,10 +36,12 @@ public partial class AnimationChecks : Node
             packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
             initial = new Empire.Core.Engine.BattleEngine(packs).CreateState(level);
             initialBytes = initial.ToJsonString();
+            CheckActorClipDefinitions();
             await CheckRecordedDisplacement();
             CheckAssets();
             CheckTransitionOwnership();
             await CheckClock();
+            await CheckActorClipPlayback();
             var board = NewBoard();
             await CheckMovement(board);
             await CheckStrikeAndDeath(board);

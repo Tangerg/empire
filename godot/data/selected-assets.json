@@ -1,6 +1,24 @@
 {
   "schema": 2,
   "logicalTileSize": 32,
+  "actorClips": {
+    "static.attack": {
+      "frames": [
+        {
+          "frame": "attack",
+          "durationMs": 150
+        }
+      ]
+    },
+    "static.work": {
+      "frames": [
+        {
+          "frame": "carry-or-work",
+          "durationMs": 150
+        }
+      ]
+    }
+  },
   "assets": [
     {
       "assetId": "C01-FFV1-UNIT-ARCHER",

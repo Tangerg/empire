@@ -1,6 +1,7 @@
 #nullable enable
 using System;
 using System.Collections.Generic;
+using System.Collections.Frozen;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Godot;
@@ -59,8 +60,10 @@ public sealed class AssetCatalog
 {
     private readonly Dictionary<string, RuntimeAsset> _topics = new(StringComparer.Ordinal);
     private readonly Dictionary<string, RuntimeAsset> _variants = new(StringComparer.Ordinal);
-    private readonly Dictionary<string, UnitArtBinding> _units;
-    private readonly Dictionary<string, ActorArtBinding> _actors;
+    private sealed record UnitArt(RuntimeAsset Asset, IReadOnlyDictionary<string, ActorClip> Clips);
+    private sealed record ActorArt(string ExpectedUnitType, UnitArt Art);
+    private readonly Dictionary<string, UnitArt> _units;
+    private readonly Dictionary<string, ActorArt> _actors;
     private readonly Dictionary<string, MapStructureArtBinding> _mapStructures;
     private readonly Dictionary<string, StructureArtBinding> _structures;
     private readonly Dictionary<string, string> _weaponEffects;
@@ -77,8 +80,6 @@ public sealed class AssetCatalog
         if (manifest.Schema != 2 || manifest.LogicalTileSize <= 0)
             throw new InvalidOperationException("Unsupported selected-assets schema or logical tile size.");
         LogicalTileSize = manifest.LogicalTileSize;
-        _units = new(bindings.Units, StringComparer.Ordinal);
-        _actors = new(bindings.Actors, StringComparer.Ordinal);
         _mapStructures = new(bindings.MapStructures, StringComparer.Ordinal);
         _structures = new(bindings.Structures, StringComparer.Ordinal);
         _weaponEffects = new(bindings.WeaponEffects, StringComparer.Ordinal);
@@ -111,12 +112,15 @@ public sealed class AssetCatalog
                 _ = FrameIndex(ResolveTopic(frame.TopicId), frame.Frame);
             }
         }
-        foreach (var (key, actor) in _actors)
+        _units = bindings.Units.ToDictionary(item => item.Key, item => ReadUnitArt(item.Value, manifest.ActorClips), StringComparer.Ordinal);
+        _actors = new(StringComparer.Ordinal);
+        foreach (var (key, actor) in bindings.Actors)
         {
             if (string.IsNullOrWhiteSpace(key) || key != key.Trim()
                 || !_units.TryGetValue(actor.ExpectedUnitType, out var generic)
-                || generic.TopicId != actor.UnitArt.TopicId || actor.UnitArt.AppearanceId is null)
+                || generic.Asset.TopicId != actor.UnitArt.TopicId || actor.UnitArt.AppearanceId is null)
                 throw new InvalidOperationException($"Invalid actor-key art binding: {key}");
+            _actors.Add(key, new(actor.ExpectedUnitType, ReadUnitArt(actor.UnitArt, manifest.ActorClips)));
         }
     }
 
@@ -129,18 +133,43 @@ public sealed class AssetCatalog
         _topics.TryGetValue(topicId, out var asset) ? asset
             : throw new MissingArtResourceException(topicId, $"Topic not included in selected-assets.json: {topicId}");
 
-    public RuntimeAsset ResolveUnit(string unitType, string? actorKey = null)
+    public RuntimeAsset ResolveUnit(string unitType, string? actorKey = null) => ResolveUnitArt(unitType, actorKey).Asset;
+
+    public ActorClip ResolveUnitClip(string unitType, string action, string? actorKey = null)
     {
-        UnitArtBinding binding;
+        var art = ResolveUnitArt(unitType, actorKey);
+        return art.Clips.TryGetValue(action, out var clip) ? clip
+            : throw new InvalidOperationException($"Actor art has no declared '{action}' clip: {art.Asset.Identity}.");
+    }
+
+    private UnitArt ResolveUnitArt(string unitType, string? actorKey)
+    {
         if (actorKey is not null && _actors.TryGetValue(actorKey, out var actor))
         {
             if (actor.ExpectedUnitType != unitType)
                 throw new InvalidOperationException($"Actor {actorKey} expected {actor.ExpectedUnitType}, received {unitType}.");
-            binding = actor.UnitArt;
+            return actor.Art;
         }
-        else if (!_units.TryGetValue(unitType, out binding!))
-            throw new MissingArtResourceException(unitType, $"Unit art binding is absent: {unitType}");
-        return ResolveBinding(binding.TopicId, binding.AppearanceId);
+        return _units.TryGetValue(unitType, out var art) ? art
+            : throw new MissingArtResourceException(unitType, $"Unit art binding is absent: {unitType}");
+    }
+
+    private UnitArt ReadUnitArt(UnitArtBinding binding, IReadOnlyDictionary<string, ActorClipRecord> definitions)
+    {
+        if (binding is null || binding.ActionClips is null || definitions is null)
+            throw new InvalidOperationException("Unit art or clip bindings are absent.");
+        var asset = ResolveBinding(binding.TopicId, binding.AppearanceId);
+        var clips = new Dictionary<string, ActorClip>(StringComparer.Ordinal);
+        foreach (var (action, id) in binding.ActionClips)
+        {
+            if (string.IsNullOrWhiteSpace(action) || action != action.Trim()
+                || string.IsNullOrWhiteSpace(id) || id != id.Trim() || !definitions.TryGetValue(id, out var definition)
+                || definition is null || definition.Frames is null)
+                throw new InvalidOperationException($"Invalid actor action clip binding: {asset.Identity}/{action}/{id}.");
+            var sheet = definition.AppearanceId is null ? asset : ResolveBinding(binding.TopicId, definition.AppearanceId);
+            clips.Add(action, new ActorClip(sheet, definition.Frames));
+        }
+        return new(asset, clips.ToFrozenDictionary(StringComparer.Ordinal));
     }
 
     public bool HasMapStructureBinding(string terrainId) => _mapStructures.ContainsKey(terrainId);
@@ -187,22 +216,28 @@ public sealed class AssetCatalog
 
     public Sprite2D CreateSpriteAtFrame(RuntimeAsset asset, int frameIndex)
     {
-        var sprite = RasterResources.Sprite(CreateFrameTexture(asset, frameIndex),
-            asset.AnchorAt(frameIndex), asset.PixelDensity, asset.PresentationScale);
-        sprite.TextureFilter = asset.TextureFilter;
-        SpriteGroundContact.Attach(sprite, asset.GroundFrontAt(frameIndex) * asset.PixelDensity);
-        sprite.SetMeta("art_identity", asset.Identity);
-        sprite.SetMeta("topic_id", asset.TopicId);
-        if (asset.Footprint is { } footprint)
-            sprite.SetMeta("visual_footprint", footprint);
-        return sprite;
+        var sprite = new Sprite2D { Centered = false };
+        try
+        {
+            ApplyFrame(sprite, asset, frameIndex);
+            return sprite;
+        }
+        catch { sprite.Free(); throw; }
     }
 
     public void ApplyFrame(Sprite2D sprite, RuntimeAsset asset, int frameIndex)
     {
         sprite.Texture = CreateFrameTexture(asset, frameIndex);
         sprite.Offset = -asset.AnchorAt(frameIndex) * asset.PixelDensity;
+        sprite.Scale = new Vector2(sprite.Scale.X < 0 ? -1 : 1, 1) * (asset.PresentationScale / asset.PixelDensity);
+        sprite.TextureFilter = asset.TextureFilter;
         SpriteGroundContact.Attach(sprite, asset.GroundFrontAt(frameIndex) * asset.PixelDensity);
+        sprite.SetMeta("art_identity", asset.Identity);
+        sprite.SetMeta("topic_id", asset.TopicId);
+        if (asset.Footprint is { } footprint)
+            sprite.SetMeta("visual_footprint", footprint);
+        else if (sprite.HasMeta("visual_footprint"))
+            sprite.RemoveMeta("visual_footprint");
     }
 
     public static int FrameIndex(RuntimeAsset asset, string frameRole)

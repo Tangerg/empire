@@ -69,14 +69,55 @@ with linear ground-plane travel and no whole-actor/shadow hop. The declared
 `walk-a`/`walk-b` support phases alternate per travelled cell, independent of AI
 pace; a one-cell move intentionally needs only one support phase. This changes
 presentation only, not canonical path costs, rules, receipts or event ordering. Idle is the declared single idle
-frame. Attack is the declared attack frame, or `carry-or-work` for mission sheets.
+frame. The shipped finite attack clips retain the declared attack pose, or `carry-or-work` for mission sheets.
 These are roles in a four-frame sheet, not four directional views or attack frames.
+
+## Finite actor clips
+
+`selected-assets.json.actorClips` owns named finite sequences of `{ frame,
+durationMs }`, with an optional `appearanceId` for a separate action sheet.
+`art-bindings.json` explicitly maps each unit/actor appearance's `actionClips`
+to those definitions. `AssetCatalog` compiles each effective binding once into
+an immutable `ActorClip`: one resolved sheet, frame indices and cumulative times.
+An alternate sheet must share the binding's canonical topic and footprint. Its
+physical crop, density, scale, contact and filter remain owned by the existing
+asset record, not by another animation geometry table.
+
+`FrameAt` samples finite elapsed milliseconds and holds the last frame after the
+duration. Empty sequences, unknown roles/clip IDs, nonpositive/nonfinite durations,
+overflow and wrong-topic/missing alternate sheets are rejected. The catalog
+detaches the sequence and action mapping from caller-owned mutable input.
+Missing actions are explicit errors, never generic-art or fabricated-action
+fallbacks. Idle-only geometry fixtures may declare no finite actions.
+
+`BoardView` selects the `attack` clip for the existing strike event. The sum of
+its authored frame durations owns that strike's length; the same
+`PresentationTimeline` drives both frame sampling and the existing seven-pixel
+lunge. Frames change only when their sampled index changes. Catalog frame
+application updates the entire sheet geometry while preserving horizontal
+facing, then the board synchronizes shadows and standing depth. Normal completion
+restores the bound idle appearance before impact; cancellation/error retains the
+existing committed-After settlement instead of writing to a retired actor.
+
+The two current profiles, `static.attack` and `static.work`, each retain one
+trusted pose for exactly 150 ms. This first slice introduces no new sprite pixels
+or accepted multi-frame character artwork. Multi-frame/cross-sheet checks use
+trusted sheets as explicitly synthetic infrastructure fixtures. It does not add
+looping idle, hit, death, celebration, or a separate magic/caster action contract.
+Those remain unfinished; FX identity is not an action classifier. In particular,
+`castResolved` must not repeat the following attack's wind-up, and area victims
+must not each start another caster animation.
+
+Future ambient idle must be nonblocking BoardView-owned visual state tied to the
+current projection, never an endless receipt-clock waiter. It must yield frame
+ownership to finite actions and be discarded on render/rebind/exit. No ambient
+clock, global animation controller or second completion authority is added here.
 
 Supported native presenters (including the explicit recovery and displacement refinements):
 
 | Event | Consumed fields | Presentation |
 | --- | --- | --- |
-| attack, counter, supportAttack | attacker, defender, weapon, damage, killed | 150 ms wind-up, then impact |
+| attack, counter, supportAttack | attacker, defender, weapon, damage, killed | Finite actor clip (currently 150 ms), then impact |
 | partingShot | same plus at | Wind-up, impact at explicit departure cell |
 | areaAttack | defender, weapon, damage, killed | Impact without another wind-up |
 | attackStructure | attacker, structure, weapon, damage, destroyed | Wind-up and structure impact |
@@ -124,8 +165,8 @@ no fabricated impact.
 
 ## Original assets, not generated replacements
 
-The current export has 34 actor sheets (24 combat, 3 mission and 7 hero
-appearances), containing 136 actor frames. All roles, physical crops, density,
+The current export has 39 actor sheets (29 combat, 3 mission and 7 hero
+appearances), containing 156 actor frames. All roles, physical crops, density,
 authored anchors and palettes remain unchanged.
 
 The nine needed original FX topics are exported:

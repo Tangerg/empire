@@ -292,15 +292,26 @@ public partial class BoardView
     private async Task<bool> AnimateStrike(Playback playback, Node2D actor, Vector2 target)
     {
         var asset = UnitAsset(actor);
+        var clip = _assets!.ResolveUnitClip(actor.GetMeta("unit_type").AsString(), "attack",
+            actor.HasMeta("actor_key") ? actor.GetMeta("actor_key").AsString() : null);
         var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
         var anchor = Projection.Project(actor.GetMeta("logical_contact").AsVector2());
         var direction = (target - anchor).Normalized();
         if (direction.X != 0)
             Face(sprite, direction.X < 0);
         actor.Position = anchor;
-        SetFrame(sprite, asset, AssetCatalog.FrameIndex(asset, asset.Category == "mission-unit" ? "carry-or-work" : "attack"));
-        if (!await playback.Clock.TweenAsync(150, t =>
+        PrepareActorClip(actor, sprite, clip);
+        var frame = clip.FrameAt(0);
+        SetFrame(sprite, clip.Asset, frame);
+        SortAnimatedStanding();
+        if (!await playback.Clock.TweenAsync(clip.DurationMs, t =>
         {
+            var nextFrame = clip.FrameAt(t * clip.DurationMs);
+            if (nextFrame != frame)
+            {
+                SetFrame(sprite, clip.Asset, nextFrame);
+                frame = nextFrame;
+            }
             actor.Position = anchor + direction * (float)(Math.Sin(Math.PI * t) * 7);
             SortAnimatedStanding();
         }))
@@ -309,6 +320,22 @@ public partial class BoardView
         actor.Position = anchor;
         SortAnimatedStanding();
         return true;
+    }
+
+    private void PrepareActorClip(Node2D actor, Sprite2D sprite, ActorClip clip)
+    {
+        var entries = CurrentStanding().ToArray();
+        var moving = entries.Single(entry => entry.Node == actor);
+        var depths = new HashSet<float> { StandingDepth(moving) };
+        // Sample through the existing geometry owner before any frame is drawn:
+        // alternate contacts need terrain cuts as well as a new actor Z index.
+        foreach (var frame in clip.FrameIndices.Distinct())
+        {
+            _assets!.ApplyFrame(sprite, clip.Asset, frame);
+            depths.Add(StandingDepth(moving));
+        }
+        Projection.PrepareDepthPartitions(entries.Where(entry => entry.Layer != 0 && entry.Node != actor)
+            .Select(StandingDepth), depths);
     }
 
     private async Task<bool> AnimateImpact(Playback playback, Vector2 at, double amount, bool healing, bool fatal, string? topic)
@@ -320,7 +347,6 @@ public partial class BoardView
         if (sprite is not null)
         {
             sprite.Name = "Strip";
-            sprite.Scale = Vector2.One / art!.PixelDensity;
             sprite.SetMeta("frame", 0);
             effect.AddChild(sprite);
         }

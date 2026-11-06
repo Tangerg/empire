@@ -17,6 +17,25 @@ public sealed class AssetManifest
         get; init;
     }
     public List<AssetRecord> Assets { get; init; } = new();
+    public Dictionary<string, ActorClipRecord> ActorClips { get; init; } = new();
+}
+
+public sealed class ActorClipRecord
+{
+    public string? AppearanceId
+    {
+        get; init;
+    }
+    public ActorClipFrameRecord[] Frames { get; init; } = Array.Empty<ActorClipFrameRecord>();
+}
+
+public sealed class ActorClipFrameRecord
+{
+    public string Frame { get; init; } = "";
+    public double DurationMs
+    {
+        get; init;
+    }
 }
 
 public sealed class AssetRecord
@@ -118,6 +137,7 @@ public sealed class AssetRecord
 public sealed class UnitArtBinding
 {
     public string TopicId { get; init; } = "";
+    public Dictionary<string, string> ActionClips { get; init; } = new();
     public string? AppearanceId
     {
         get; init;

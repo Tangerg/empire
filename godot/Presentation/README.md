@@ -54,6 +54,10 @@ connects the screen to a real application session.
   reported, never substituted with a generic actor.
 - Every sheet uses its declared frame order. Idle, walk-a, attack, walk-b are not
   assumed to be sequential animation frames. The preview renders idle only.
+- Finite actor clips explicitly map named poses to frame durations and may use
+  a same-topic alternate sheet. The existing receipt clock alone samples them;
+  see [action presentation](../docs/ACTION-PRESENTATION.md#finite-actor-clips).
+  Current shipped attack clips retain the trusted single pose, not new animation art.
 - Authored topic placements mirror around their foot. Environment atlas placements
   mirror within their original frame, matching the TypeScript placement contract.
 - Units use the original cell contact `(16,31)`; authored placements use
