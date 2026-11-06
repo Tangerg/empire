@@ -19,15 +19,19 @@ No battle rules, command transitions, maps, artwork, campaign progress or save s
 
 ## Verification
 
-Before the aggregate gate:
+Validated production source: `b38ad78555f39fa5592d1ca7f6dd1606c61823af`.
 
 - Actual carried C08 native route, 960×640 and 1180×760: all 21 Laiya detail rows fully reachable through keyboard reading; PageDown/Home/End and disclosure navigation work; nine actual expansion/collapse transitions remain stable and show instructions whenever content overflows; popup and close control remain in bounds. 121 checks, strict native exit 0, 2026-11-06 00:11:59–00:12:20 UTC. The reading proof excludes the actual scrollbar width. Complete normalized application state is unchanged by reading.
 - `DossierFocusChecks`: 143 assertions, strict exit 0. Covers actual opening-session details, continuous reading, updated hint projection, boundary layouts, action focus after growing text, deliberate offscreen reading, resize, real stance/facing commands, close/reopen, revision/binding changes and teardown.
 - `CampaignUiFlowChecks`: 209 assertions, strict exit 0, including long/short menu and result reading, action visibility, native navigation and lifecycle boundaries.
 - `TacticalHudChecks`: 1163 assertions, strict exit 0. Its eight existing mouse-enter notification warnings remain visible in the log.
 - `MoraleFeedbackChecks`: 74 assertions, strict exit 0 after the track-width repair, including real C05 civilian/commander dossier clipping at 1280×720 and 960×640.
-- The first aggregate on `326b664da` stopped at the preserved morale-clipping assertion, exit 1, after 22 successful native processes. Its 16 core groups and all 3425 legal actions had exact baseline traces and terminal state hashes, but the failed aggregate is not counted as acceptance. The corrected candidate requires a new full gate.
-- Independent source review and `git diff --check` found no blocking defects. Full repository gate is pending at this checkpoint; no publication is claimed here.
+- The first aggregate on `326b664da` stopped at the preserved morale-clipping assertion, exit 1, after 22 successful native processes. Its 16 core groups and all 3425 legal actions had exact baseline traces and terminal state hashes, but the failed aggregate is not counted as acceptance. The corrected candidate received the new full run below.
+- `bash tools/godot/verify-native.sh`: one uninterrupted run, 2026-11-06 00:14:06–01:05:04 UTC, **3058 seconds, exit 0**. Format/source/map checks, main/core builds, all 16 core groups, objective/catalog contracts, editor import and 31 native scenes pass. All 32 native process diagnostic boundaries pass; 40 existing warning headers exactly match the preceding successful gate, with no additions.
+- All 16 formal levels' 3425 legal actions preserve the ordered action/event/receipt SHA-256 traces and complete terminal state hashes. These are independent replay fixtures, not newly played carried campaign chapters.
+- The aggregate's real continuous route retains normal AI defeat and Retry with both save slots unchanged, first victory after 156 legal orders, second escort victory after 259, then 21 legal orders in the third opening. Casualties, growth, resources, outcome/state digests, single result views and carried progress match the baseline. No victory or state was injected.
+- `dotnet build godot/Empire.csproj -c ExportRelease --disable-build-servers -m:1 -p:UseSharedCompilation=false`: exit 0, zero warnings/errors. This is compilation, not a packaged export.
+- Independent source review and `git diff --check` found no blocking defects. Temporary diagnostic printing was removed; failure messages retain useful geometry.
 
 ## Limits and guidance
 
