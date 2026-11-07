@@ -76,11 +76,12 @@ These are roles in a four-frame sheet, not four directional views or attack fram
 
 `selected-assets.json.actorClips` owns named finite sequences of `{ frame,
 span }`, an explicit `unit` (`milliseconds` or `cells`), and an optional
-`appearanceId` for a separate action sheet.
+`appearanceId` for a separate action sheet. Death actions additionally declare
+their explicit `death` presentation policy, described below.
 `art-bindings.json` explicitly maps each unit/actor appearance's `actionClips`
 to those definitions. `AssetCatalog` compiles each effective binding once into
 an immutable `ActorClip`: one resolved sheet, sampling unit, frame indices and
-cumulative interval ends. `ResolveUnitClip` requires the consumer's expected
+cumulative interval ends, plus any declared release or death policy. `ResolveUnitClip` requires the consumer's expected
 unit and rejects a mismatch instead of converting or guessing.
 An alternate sheet must share the binding's canonical topic and footprint. Its
 physical crop, density, scale, contact and filter remain owned by the existing
@@ -249,11 +250,35 @@ no drawn pre-transition actor and receive no invented death presentation.
 All current unit/actor action maps explicitly bind `static.hit` (150 ms) and
 `static.death` (220 ms), both using their existing trusted idle image. The former
 is an authored static hold within the existing 420 ms impact; the latter retains
-the previous normalized fade and 35% shrink. These are declared placeholders,
-not newly completed reaction artwork. A multi-frame death samples its declared
-length with that same fade/shrink and never returns to idle. Its single removal
-path retires standing geometry and the node once; a duplicate death cannot find
-or remove it again. Future artwork still requires independent visual acceptance.
+the previous normalized fade and 35% shrink through its explicit
+`death: { "mode": "during-clip" }` policy. These are declared placeholders,
+not newly completed reaction artwork. The frame spans own the entire duration of
+this mode, so it forbids a separate `fadeMs` value.
+
+An accepted future action sheet may instead declare
+`death: { "mode": "after-clip", "fadeMs": 120 }`. The example fade duration is
+not an accepted artwork timing: it must be reviewed with that sheet. In this mode
+all authored frames play before opacity changes. The last frame then holds during
+the explicit terminal fade, preserving the starting tint, root position and scale;
+there is no shrink or idle restoration. Frame spans remain the sole owner of
+collapse duration, and `fadeMs` owns only the subsequent fade. Both stages use the
+existing receipt clock, including accumulated overshoot across their boundary.
+
+Every bound death action must declare one of these policies; other actions must
+not carry it. Death clips require milliseconds and forbid attack release metadata.
+Unknown modes, missing/nonpositive/nonfinite terminal fades and a total duration
+that overflows or cannot advance are rejected during catalog admission. The
+catalog detaches the policy along with the frame sequence from mutable input.
+Neither asset identity nor frame count selects a policy.
+
+Both modes share the existing single removal path, which retires standing geometry
+and the node once; a duplicate death cannot find or remove it again. Cancellation,
+rebind and exit during either stage settle the committed state without publishing
+an unfinished event. Hidden deaths are filtered before art lookup, reduced motion
+settles synchronously, and results remain behind completion of the entire receipt,
+including the terminal fade. No separate death registry or completion flag is
+introduced. No new artwork ships with this policy change. Synthetic frame checks
+prove sampling and lifecycle contracts, not real-time visual acceptance.
 
 `PrepareActorPose` shares immutable clip resolution, finite depth preparation,
 frame/contact geometry, shadows and facing preservation with outgoing actions.

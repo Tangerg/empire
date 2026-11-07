@@ -20,6 +20,10 @@ public partial class AnimationChecks
     private static ActorClipRecord ReactionClip(double length, bool death = false) => new()
     {
         Unit = "milliseconds",
+        Death = death ? new()
+        {
+            Mode = "during-clip"
+        } : null,
         // Timing fixtures use three existing trusted poses, not newly accepted reaction artwork.
         AppearanceId = "torren-stage01",
         Frames = new[]

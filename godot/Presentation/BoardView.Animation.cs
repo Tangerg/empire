@@ -502,14 +502,30 @@ public partial class BoardView
         if (actor is null || !WasVisible(playback, id))
             return true;
         var visual = PrepareActorPose(actor, "death");
-        var at = actor.Position;
-        if (!await playback.Clock.TweenAsync(visual.Clip.Length, t =>
+        var death = visual.Clip.RequireDeath();
+        switch (death.Mode)
         {
-            visual.Sample(t * visual.Clip.Length);
-            actor.SelfModulate = new Color(1, 1, 1, (float)(1 - t));
-            SwellActor(actor, at, (float)(1 - 0.35 * t));
-        }))
-            return false;
+            case ActorDeathMode.DuringClip:
+                var at = actor.Position;
+                if (!await playback.Clock.TweenAsync(visual.Clip.Length, t =>
+                {
+                    visual.Sample(t * visual.Clip.Length);
+                    actor.SelfModulate = new Color(1, 1, 1, (float)(1 - t));
+                    SwellActor(actor, at, (float)(1 - 0.35 * t));
+                }))
+                    return false;
+                break;
+            case ActorDeathMode.AfterClip:
+                var modulation = actor.SelfModulate;
+                if (!await playback.Clock.TweenAsync(visual.Clip.Length, t => visual.Sample(t * visual.Clip.Length)))
+                    return false;
+                if (!await playback.Clock.TweenAsync(death.TerminalFadeMs, t => actor.SelfModulate =
+                    new Color(modulation.R, modulation.G, modulation.B, modulation.A * (float)(1 - t))))
+                    return false;
+                break;
+            default:
+                throw new InvalidOperationException($"Unknown actor death presentation: {death.Mode}.");
+        }
         playback.ActorDepths.Remove(actor);
         _standing.RemoveAll(entry => entry.Node == actor);
         RemoveEffect(actor);

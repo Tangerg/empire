@@ -43,6 +43,7 @@ public partial class AnimationChecks : Node
             await CheckClock();
             await CheckCelebrationClips();
             await CheckReactionClips();
+            await CheckDeathPolicies();
             await CheckActivationDepthOwnership();
             await CheckActivationPlayback();
             await CheckActivationLegalReceipt();

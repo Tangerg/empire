@@ -23,6 +23,10 @@ public sealed class AssetManifest
 public sealed class ActorClipRecord
 {
     public string Unit { get; init; } = "";
+    public ActorDeathRecord? Death
+    {
+        get; init;
+    }
     public double? ReleaseMs
     {
         get; init;
@@ -32,6 +36,15 @@ public sealed class ActorClipRecord
         get; init;
     }
     public ActorClipFrameRecord[] Frames { get; init; } = Array.Empty<ActorClipFrameRecord>();
+}
+
+public sealed class ActorDeathRecord
+{
+    public string Mode { get; init; } = "";
+    public double? FadeMs
+    {
+        get; init;
+    }
 }
 
 public sealed class ActorClipFrameRecord

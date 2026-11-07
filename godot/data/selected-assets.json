@@ -64,6 +64,9 @@
     },
     "static.death": {
       "unit": "milliseconds",
+      "death": {
+        "mode": "during-clip"
+      },
       "frames": [
         {
           "frame": "idle",
