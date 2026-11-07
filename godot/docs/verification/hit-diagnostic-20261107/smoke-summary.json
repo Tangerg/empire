@@ -1,0 +1,103 @@
+{
+  "scope": "New C04 timing-marker experiment. Sampled intervals are not screen exposure durations. Headless excludes rendering and capture cost.",
+  "runs": [
+    {
+      "run": "final-source-fixed",
+      "mode": "fixed60",
+      "displayDriver": "headless",
+      "candidate": true,
+      "target": 12,
+      "targetType": "c01.swordsman",
+      "processSamples": 40,
+      "deltaMinMs": 16.666666666666668,
+      "deltaMedianMs": 16.666666666666668,
+      "deltaMaxMs": 16.666666666666668,
+      "presentationElapsedMs": 666.6666666666671,
+      "wallElapsedMs": 2818.612,
+      "sampledFrameRuns": [
+        {
+          "frame": 0,
+          "firstSampleMs": 0,
+          "lastSampleMs": 233.33333333333331,
+          "samples": 15
+        },
+        {
+          "frame": 1,
+          "firstSampleMs": 249.99999999999997,
+          "lastSampleMs": 283.3333333333333,
+          "samples": 3
+        },
+        {
+          "frame": 2,
+          "firstSampleMs": 300,
+          "lastSampleMs": 333.3333333333333,
+          "samples": 3
+        },
+        {
+          "frame": 3,
+          "firstSampleMs": 350,
+          "lastSampleMs": 383.3333333333333,
+          "samples": 3
+        },
+        {
+          "frame": 0,
+          "firstSampleMs": 399.99999999999994,
+          "lastSampleMs": 666.6666666666671,
+          "samples": 17
+        }
+      ],
+      "postDrawSamples": 0,
+      "captures": 0,
+      "receiptHashesAndOrderMatch": true
+    },
+    {
+      "run": "fresh-checkout-fixed",
+      "mode": "fixed60",
+      "displayDriver": "headless",
+      "candidate": true,
+      "target": 12,
+      "targetType": "c01.swordsman",
+      "processSamples": 40,
+      "deltaMinMs": 16.666666666666668,
+      "deltaMedianMs": 16.666666666666668,
+      "deltaMaxMs": 16.666666666666668,
+      "presentationElapsedMs": 666.6666666666671,
+      "wallElapsedMs": 1695.091,
+      "sampledFrameRuns": [
+        {
+          "frame": 0,
+          "firstSampleMs": 0,
+          "lastSampleMs": 233.33333333333331,
+          "samples": 15
+        },
+        {
+          "frame": 1,
+          "firstSampleMs": 249.99999999999997,
+          "lastSampleMs": 283.3333333333333,
+          "samples": 3
+        },
+        {
+          "frame": 2,
+          "firstSampleMs": 300,
+          "lastSampleMs": 333.3333333333333,
+          "samples": 3
+        },
+        {
+          "frame": 3,
+          "firstSampleMs": 350,
+          "lastSampleMs": 383.3333333333333,
+          "samples": 3
+        },
+        {
+          "frame": 0,
+          "firstSampleMs": 399.99999999999994,
+          "lastSampleMs": 666.6666666666671,
+          "samples": 17
+        }
+      ],
+      "postDrawSamples": 0,
+      "captures": 0,
+      "receiptHashesAndOrderMatch": true
+    }
+  ]
+}
