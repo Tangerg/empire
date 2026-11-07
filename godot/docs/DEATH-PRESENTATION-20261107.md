@@ -64,8 +64,29 @@ constant durations.
 A deliberate production mutation restored opacity loss during the falling phase.
 It compiled successfully, then failed at the new 31.999 ms opacity/pose assertion
 with native exit 1. The unmodified production source was restored byte-for-byte.
-The required full native gate is recorded in the final verification update; no
-uninterrupted full-gate success is claimed before that run completes.
+The required unchanged `bash tools/godot/verify-native.sh` first stopped after
+1,637 seconds at `BattleScreenChecks`: native exit was 0, but two Godot
+`Handle is not initialized` errors arose in `SwapGCHandleForType` while loading
+HUD formation icons. The strict diagnostic gate correctly returned 1 despite the
+scene's final pass line. Its remaining stages were not run in that attempt.
+
+One unchanged, isolated rerun of that scene passed the strict gate. One complete
+rerun of the original aggregate command then completed uninterrupted in
+**3041 seconds**, exit **0**, against implementation commit
+`e8f29b8671fc81c17bb92eb91f4725f7039b162c`. All 31 native scenes, both builds,
+format/metadata/static-map checks, core contracts, objective/catalog checks and
+16-level save/replay completed. The final animation suite passed **3,111
+assertions**, including the second declared-duration fixture. All 16 AI
+action/event/receipt digests match the preceding `a497afdb` checkpoint.
+The final played-flow gate completed natural AI defeat/retry, both save-slot
+checks, C01 and C02 victories and the inherited C03 opening. It does not claim
+another complete campaign playthrough.
+
+No production code changed between those runs. The first HUD resource-handle
+failure remains unexplained, not fixed or erased by the later passes. Raw failure
+and success logs are retained separately; the checked-in verification record
+includes their hashes and outcomes. The final verification commit changes reports
+only.
 
 ## Acceptance boundary
 
