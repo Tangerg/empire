@@ -46,3 +46,22 @@ Formatting now also passes. Adjacent verification JSON and a compressed raw-log
 archive preserve these outcomes, including initial failed harness attempts.
 The unchanged full native gate is running against 68793104; no completed result
 is claimed yet. These report-only changes do not alter the tested code.
+
+## Completed full gate
+
+The uninterrupted original `bash tools/godot/verify-native.sh` completed on
+68793104dfa2cca1992fe5bc4d89136af8f54378 with exit **0** in **1,990 seconds**.
+Both builds, formatter, metadata/static checks, core/objective/catalog contracts,
+all 16 save/replay traces and all 31 native scenes passed. Fresh action/event/
+receipt hashes and step counts match the published baseline for all 16 levels.
+The final played-flow check passed 20,363 assertions, covering natural AI defeat
+and retry, both save slots, C01/C02 victories and inherited C03 opening. This does
+not establish a third-battle victory or complete-campaign acceptance.
+
+The adjacent JSON and compressed archive now retain the final aggregate log,
+exit/elapsed/commit records, exact trace comparison and focused/fault-control
+logs with SHA-256 hashes. Earlier pending checkpoints are superseded by this
+completed run. Changes since the tested commit contain documentation/evidence
+only. Performance has not been freshly measured; visual, audio and export
+acceptance remain separate, as do the unexplained historical HUD resource-handle
+failure and first profiling timeout.

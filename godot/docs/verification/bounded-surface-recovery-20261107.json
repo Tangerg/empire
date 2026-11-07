@@ -38,12 +38,50 @@
   "initialFailedAttempts": "Whitespace errors and a test-local variable shadowing compile error corrected before focused pass. Incorrect negative-control scene-path attempt retained separately; reported controls use correct Scenes path.",
   "independentReview": "No introduced correctness defect found by code inspection; native mounting failures are outside preparation atomicity and predate change.",
   "fullAggregate": {
-    "status": "pending",
-    "testedCommit": "68793104dfa2cca1992fe5bc4d89136af8f54378"
+    "status": "passed",
+    "testedCommit": "68793104dfa2cca1992fe5bc4d89136af8f54378",
+    "exit": 0,
+    "elapsedSeconds": 1990,
+    "uninterruptedOriginalGate": true,
+    "nativeScenes": [
+      "NarrativeChecks",
+      "OathPadChecks",
+      "DynamicStateChecks",
+      "PaintedSurfaceChecks",
+      "SceneSurfaceChecks",
+      "AssembledGroundChecks",
+      "PaintedSurfaceBroadPhaseChecks",
+      "BlackFlagCampChecks",
+      "ReedVillageChecks",
+      "WhiteRiverChecks",
+      "LuojiaChecks",
+      "PresentationChecks",
+      "AnimationChecks",
+      "CameraChecks",
+      "CameraIntegrationChecks",
+      "TacticalHudChecks",
+      "IdleGuidanceChecks",
+      "DossierFocusChecks",
+      "BattleScreenChecks",
+      "RegenerationFeedbackChecks",
+      "ScenarioSignalFeedbackChecks",
+      "MoraleFeedbackChecks",
+      "ReinforcementFeedbackChecks",
+      "BattleResultFlowChecks",
+      "CampaignNavigationChecks",
+      "StagingOpeningChecks",
+      "CampaignUiFlowChecks",
+      "LightingLifetimeChecks",
+      "LightingChecks",
+      "SceneryChecks",
+      "CampaignPlayedFlowChecks"
+    ],
+    "playedFlowAssertions": 20363,
+    "testedRuntimeUnchangedAtReport": true
   },
   "archive": {
     "file": "bounded-surface-recovery-20261107.logs.tar.gz",
-    "sha256": "7e9697c03b842012d7358305e932b65a46bff92c410f00f0eb2d153ed9fd182b",
+    "sha256": "3000cb59d7d10acd263fdab58347309c652efc79fc2714f3b6d3c5317037c556",
     "membersSha256": {
       "focused/build-guards-corrected.log": "63414f2cbc47299e178f312aaa909af30264067824c7b8878f38710e1ba5f281",
       "focused/AssembledGroundChecks.log": "a55a322b9831639b8c844e59f865a26a446b0ee31a206ac473bdbfec53c98cb2",
@@ -89,7 +127,13 @@
       "negative-restored/build.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
       "negative-restored/gate.log": "7f518bb345b6a0824e15c7c12619526db6d0b12beb138c524aa4fac082da705f",
       "negative-restored/gate.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
-      "negative-restored/build.log": "dc526782cdf57c4bbf533a79b22c7399a7e7c73ff125fbaeb72ce2e7b510c39c"
+      "negative-restored/build.log": "dc526782cdf57c4bbf533a79b22c7399a7e7c73ff125fbaeb72ce2e7b510c39c",
+      "aggregate/full-gate.commit": "ea78047f6df50acd3100656660024740145166ad8f7ed1b5259aa8fe2e2c7cfc",
+      "aggregate/full-gate.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "aggregate/full-gate.started": "7aa7b6acdf8e1703cc153886cc7ac0e889ddd05c5e78ca59451976bb97b36a98",
+      "aggregate/full-gate.seconds": "2ab513b1608dd3d214980f32cdf095ca53e81eec6fc4ded522b7a1541fafc99a",
+      "aggregate/full-gate.log": "e1c29f5fca419fd2c9b72d69116dae46fd3098dd98ae010313dc242de0c1c574",
+      "replay-digest-comparison.json": "408d39c742f3a47ef47282d06a8c743df2eb71ac5d2f6f40c1a317492399de09"
     }
   },
   "boundaries": [
@@ -98,5 +142,92 @@
     "No new artwork or production animation binding",
     "Headless validation is not continuous visuals/audio/export/full-campaign acceptance",
     "Historical intermittent HUD resource-handle failure and profiling timeout remain unexplained"
-  ]
+  ],
+  "freshAiTraces": {
+    "baseline": "godot/docs/verification/death-presentation-20261107.json",
+    "count": 16,
+    "allMatch": true,
+    "aiTraces": [
+      {
+        "level": "c01-01",
+        "steps": 156,
+        "actionEventReceiptSha256": "20e90377ee316e831d17e4f9d165536500d4ae379850f198d91d930e0e771d17"
+      },
+      {
+        "level": "c01-02",
+        "steps": 421,
+        "actionEventReceiptSha256": "b026ba1db2b0495a4bb65d5e1c1e1bb4632b540e0a7aa84067c132b9cb0632b0"
+      },
+      {
+        "level": "c01-03",
+        "steps": 116,
+        "actionEventReceiptSha256": "a5fdff17e2ebc198717a60473be0a4805df9cfdda9ce38ff938dbda010c7deed"
+      },
+      {
+        "level": "c01-04",
+        "steps": 234,
+        "actionEventReceiptSha256": "156730525210e393732c2d8fe808d92d4f8675b23d2e1fc5c5c68346948b574b"
+      },
+      {
+        "level": "c01-05",
+        "steps": 169,
+        "actionEventReceiptSha256": "f4b44a6002f6bd3975beedd69c0ba9e7b23700b684af9e84c754de7efda837a5"
+      },
+      {
+        "level": "c01-06",
+        "steps": 130,
+        "actionEventReceiptSha256": "f39bbdadabffe8cd697676b84a754364d9340300c7ab4b336eac91618d119c05"
+      },
+      {
+        "level": "c01-07",
+        "steps": 311,
+        "actionEventReceiptSha256": "c6b3bf04f0718633bfd105f839673dba774a89ecbd978cfd0fff72c364ad42f5"
+      },
+      {
+        "level": "c01-08",
+        "steps": 144,
+        "actionEventReceiptSha256": "3ce380648ae32e8b965d335b9087b96d99299228b18e51ff417822be583d1c74"
+      },
+      {
+        "level": "c01-09",
+        "steps": 59,
+        "actionEventReceiptSha256": "2b24e3c596b908c53bc573605bec49e9cc67a63446ffcef962de8d835698bab0"
+      },
+      {
+        "level": "c01-10",
+        "steps": 152,
+        "actionEventReceiptSha256": "a89c48de6ac386d7617e286b59814409bcc12dac8279e9c663eba17b29e9dd54"
+      },
+      {
+        "level": "c01-11",
+        "steps": 268,
+        "actionEventReceiptSha256": "5748ce7fded062055db6d4a1bfe97eca579f2fdb7464026b8d9d7d0f380f0768"
+      },
+      {
+        "level": "c01-12",
+        "steps": 117,
+        "actionEventReceiptSha256": "ae9d694bfc75071f38b4ea1d9db302d59722ad9798b397a4a9249a04df8a3eac"
+      },
+      {
+        "level": "c01-13",
+        "steps": 195,
+        "actionEventReceiptSha256": "430328e385ec68bcab97a3ea45bb7a89e7a17d2a2f28f5af06cfd385a1d3bd26"
+      },
+      {
+        "level": "c01-14",
+        "steps": 339,
+        "actionEventReceiptSha256": "7ce296acd0b85ca773728562b95067548a7d39fa9f88b2bb4cadd313dbcc4c06"
+      },
+      {
+        "level": "c01-15",
+        "steps": 236,
+        "actionEventReceiptSha256": "ee680bb1836eb2f8e8528587d5d7c7ae1f5f1856dff4bbb94ee96097392b4d42"
+      },
+      {
+        "level": "c01-16",
+        "steps": 378,
+        "actionEventReceiptSha256": "b61226395df40354816d29650a2bdaac13e7d546adb51f903fd98fab41824d08"
+      }
+    ]
+  }
 }
