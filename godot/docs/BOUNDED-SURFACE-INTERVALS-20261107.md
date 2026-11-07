@@ -35,3 +35,14 @@ Independent code inspection found no introduced correctness defect. Initial
 whitespace and a test-local variable shadowing error were corrected before the
 successful build/run. Deliberate fault controls and the full native gate remain
 pending; these focused results are not a full-suite or performance claim.
+
+## Deliberate-fault checkpoint
+
+Both independent copied-project defects compiled cleanly and were rejected.
+Ignoring the end endpoint failed the exact full-clip oracle; publishing cache
+entries before all preparation succeeded failed the recovery guard. Correct
+source was restored in the copy, rebuilt and passed all 26,452 oracle assertions.
+Formatting now also passes. Adjacent verification JSON and a compressed raw-log
+archive preserve these outcomes, including initial failed harness attempts.
+The unchanged full native gate is running against 68793104; no completed result
+is claimed yet. These report-only changes do not alter the tested code.

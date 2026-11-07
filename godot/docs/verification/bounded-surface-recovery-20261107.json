@@ -1,0 +1,102 @@
+{
+  "scope": "Second reconstruction of bounded interval cache, with remote checkpoints",
+  "baselineCommit": "1d5cbd0a4f0adc84ce71d9fbe05ae8775197bf2a",
+  "implementationCommit": "79b6e1c236de04c9b5436d0c50874f1198cd51cd",
+  "guardCommit": "68793104dfa2cca1992fe5bc4d89136af8f54378",
+  "focused": {
+    "build-guards-corrected": 0,
+    "format-final": 0,
+    "import": 0,
+    "PaintedSurfaceBroadPhaseChecks": 0,
+    "PaintedSurfaceChecks": 0,
+    "AssembledGroundChecks": 0
+  },
+  "oracleAssertions": 26452,
+  "assembledGroundAssertions": 18032,
+  "negativeControls": {
+    "negative-endpoint": {
+      "build": 0,
+      "process": 1,
+      "gate": 1
+    },
+    "negative-publication": {
+      "build": 0,
+      "process": 1,
+      "gate": 1
+    },
+    "negative-restored": {
+      "build": 0,
+      "process": 0,
+      "gate": 0
+    }
+  },
+  "negativeControlReasons": {
+    "negative-endpoint": "Start-only cache lookup ignores endpoint; exact oracle rejects strip count mismatch. Full keys and test harness unchanged.",
+    "negative-publication": "Premature publication while preserving old-cache lookup; failure guard rejects partial successful-cache replacement.",
+    "negative-restored": "Correct copied source restored and exact oracle passed."
+  },
+  "initialFailedAttempts": "Whitespace errors and a test-local variable shadowing compile error corrected before focused pass. Incorrect negative-control scene-path attempt retained separately; reported controls use correct Scenes path.",
+  "independentReview": "No introduced correctness defect found by code inspection; native mounting failures are outside preparation atomicity and predate change.",
+  "fullAggregate": {
+    "status": "pending",
+    "testedCommit": "68793104dfa2cca1992fe5bc4d89136af8f54378"
+  },
+  "archive": {
+    "file": "bounded-surface-recovery-20261107.logs.tar.gz",
+    "sha256": "7e9697c03b842012d7358305e932b65a46bff92c410f00f0eb2d153ed9fd182b",
+    "membersSha256": {
+      "focused/build-guards-corrected.log": "63414f2cbc47299e178f312aaa909af30264067824c7b8878f38710e1ba5f281",
+      "focused/AssembledGroundChecks.log": "a55a322b9831639b8c844e59f865a26a446b0ee31a206ac473bdbfec53c98cb2",
+      "focused/PaintedSurfaceBroadPhaseChecks.log": "7f518bb345b6a0824e15c7c12619526db6d0b12beb138c524aa4fac082da705f",
+      "focused/format.log": "c39019c1279585587f882baef8b7b8a25988243182916a4143a84d046cce62d8",
+      "focused/build-guards.exit": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "focused/format-initial.log": "c39019c1279585587f882baef8b7b8a25988243182916a4143a84d046cce62d8",
+      "focused/import-native.log": "f71d472154aa806927d755b18d6156b26498b1c88eeec81479976ef76a428534",
+      "focused/AssembledGroundChecks.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "focused/build.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "focused/format-final.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "focused/import.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "focused/format-final.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "focused/PaintedSurfaceChecks-native.log": "d15943a76875130edd12ef3b6a2f56b8eef208384b2478e431f9d744d6af84f9",
+      "focused/PaintedSurfaceBroadPhaseChecks.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "focused/PaintedSurfaceBroadPhaseChecks-native.log": "7f518bb345b6a0824e15c7c12619526db6d0b12beb138c524aa4fac082da705f",
+      "focused/AssembledGroundChecks-native.log": "a55a322b9831639b8c844e59f865a26a446b0ee31a206ac473bdbfec53c98cb2",
+      "focused/build-guards.log": "b0703295157395cd06bf412cfa9321d7bbd09b9429508a66b11f41dc72fb02d5",
+      "focused/import.log": "f71d472154aa806927d755b18d6156b26498b1c88eeec81479976ef76a428534",
+      "focused/build-guards-corrected.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "focused/PaintedSurfaceChecks.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "focused/build.log": "8b07a2d473c9f3464fc32760bbc3b56bf515189be64723b9f2f32f2729278959",
+      "focused/PaintedSurfaceChecks.log": "d15943a76875130edd12ef3b6a2f56b8eef208384b2478e431f9d744d6af84f9",
+      "focused/format.exit": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+      "negative-endpoint/incorrect-scene-path-gate.log": "693ef38a47bfb7843083389d88ff086263ee3911542fe16002cb1e2f199b432d",
+      "negative-endpoint/process.exit": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "negative-endpoint/scene.log": "a992c5ec4287ed4f96f8fbfba6ea2a6710a1da4bb58cc2cbb3e0f0e68f1bc77b",
+      "negative-endpoint/build.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "negative-endpoint/PaintedSurface-mutant.cs": "4a9d1b5f2a4fe295cada6d8ac94493c862d6ef6ae24f46f0e3d56cd4b0cf32a7",
+      "negative-endpoint/incorrect-scene-path.log": "c867187ceae72c8cbaa5293fb7d2f691d2386b5199c09f4db0e29ad6d86e4fa6",
+      "negative-endpoint/gate.log": "14b32c4d8679fa15ab8c22cd39945232671e52f0dc4b7ee9aadc79ad872967c1",
+      "negative-endpoint/gate.exit": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "negative-endpoint/build.log": "806f5f37c6dd92f1358452a6ecfe7fbe085f01d47c028ef6cdee62efb634334d",
+      "negative-publication/process.exit": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "negative-publication/scene.log": "6f6c0b181d0493972ad629d5e00ed29690ec04c1ba327e9b39054445805f9921",
+      "negative-publication/build.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "negative-publication/PaintedSurface-mutant.cs": "698fa8c607437b0cbbc670dcbbf352731c294096d8bf7373f6d802b1fed45924",
+      "negative-publication/gate.log": "11132bde9e9f33e3acf22698e32d0d2d6d35272ae06d206a88c6a5047b589280",
+      "negative-publication/gate.exit": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "negative-publication/build.log": "ceec285baf59277af6a1e5d0c58d2ce7dcbda5881b3320bde60beec9a8e8f73c",
+      "negative-restored/process.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "negative-restored/scene.log": "7f518bb345b6a0824e15c7c12619526db6d0b12beb138c524aa4fac082da705f",
+      "negative-restored/build.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "negative-restored/gate.log": "7f518bb345b6a0824e15c7c12619526db6d0b12beb138c524aa4fac082da705f",
+      "negative-restored/gate.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "negative-restored/build.log": "dc526782cdf57c4bbf533a79b22c7399a7e7c73ff125fbaeb72ce2e7b510c39c"
+    }
+  },
+  "boundaries": [
+    "Lost earlier commits and raw evidence not claimed restored",
+    "No fresh performance remeasurement or FPS claim",
+    "No new artwork or production animation binding",
+    "Headless validation is not continuous visuals/audio/export/full-campaign acceptance",
+    "Historical intermittent HUD resource-handle failure and profiling timeout remain unexplained"
+  ]
+}
