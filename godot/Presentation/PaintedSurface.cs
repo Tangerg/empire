@@ -15,6 +15,8 @@ internal partial class PaintedSurface : Node2D
     private Vector2[]? _bounds;
     private Image? _hitImage;
     private readonly List<Polygon2D> _polygons = new();
+    private sealed record Geometry(Vector2[] Points, int[][] Indices, Vector2[] Uv);
+    private Dictionary<(int Start, int End), Geometry> _intervalGeometry = new();
 
     internal static PaintedSurface Create(BoardProjection projection, Texture2D borrowedTexture, float worldScale)
     {
@@ -68,20 +70,28 @@ internal partial class PaintedSurface : Node2D
     private void Rebuild()
     {
         var replacements = new List<Polygon2D>();
+        var nextGeometry = new Dictionary<(int Start, int End), Geometry>();
         Rect2? clipBounds = _bounds is null ? null : StandingVisual.BoundsOf(_bounds);
         try
         {
             foreach (var strip in _projection.DepthPartitions)
-                Add(strip.StartDepth, strip.Patches.Select(patch => patch.Vertices));
+            {
+                var key = (strip.StartDepth, strip.EndDepthExclusive);
+                if (_bounds is null || !_intervalGeometry.TryGetValue(key, out var geometry))
+                    geometry = Prepare(strip.Patches.Select(patch => patch.Vertices));
+                if (_bounds is not null)
+                    nextGeometry.Add(key, geometry);
+                Add(strip.StartDepth, geometry);
+            }
             // Local floor decals cover registered ground tops, not vertical cliff faces.
             if (_bounds is null)
                 foreach (var group in _projection.Faces.SelectMany(_projection.FacePatches).GroupBy(patch => patch.Depth))
-                    Add(group.Key, group.Select(patch => patch.Vertices));
+                    Add(group.Key, Prepare(group.Select(patch => patch.Vertices)));
 
-            void Add(int depth, IEnumerable<IReadOnlyList<BoardSurfaceVertex>> patches)
+            Geometry Prepare(IEnumerable<IReadOnlyList<BoardSurfaceVertex>> patches)
             {
                 var points = new List<Vector2>();
-                var indices = new Godot.Collections.Array();
+                var indices = new List<int[]>();
                 foreach (var patch in patches)
                 {
                     if (clipBounds is { } bounds && !MayOverlap(patch, bounds))
@@ -95,17 +105,25 @@ internal partial class PaintedSurface : Node2D
                         points.AddRange(piece);
                     }
                 }
-                if (points.Count == 0)
-                    return;
                 var boardToTexture = _textureToBoard.AffineInverse();
+                return new Geometry(points.ToArray(), indices.ToArray(), points.Select(point => boardToTexture * point).ToArray());
+            }
+
+            void Add(int depth, Geometry geometry)
+            {
+                if (geometry.Points.Length == 0)
+                    return;
+                using var indices = new Godot.Collections.Array();
+                foreach (var piece in geometry.Indices)
+                    indices.Add(piece);
                 var polygon = new Polygon2D
                 {
                     Name = $"PaintedStrip_{replacements.Count}",
                     ZAsRelative = false,
                     Texture = _texture,
-                    Polygon = points.ToArray(),
+                    Polygon = geometry.Points,
                     Polygons = indices,
-                    UV = points.Select(point => boardToTexture * point).ToArray(),
+                    UV = geometry.Uv,
                     ZIndex = _projection.LayerAtDepth(depth, BoardDepthLayer.Surface)
                 };
                 replacements.Add(polygon);
@@ -117,6 +135,9 @@ internal partial class PaintedSurface : Node2D
                 polygon.Free();
             throw;
         }
+        // The projection owns intervals. Only a fully prepared version may replace
+        // the last successful geometry, including intervals that clipped to nothing.
+        _intervalGeometry = nextGeometry;
         Clear();
         foreach (var polygon in replacements)
         {
