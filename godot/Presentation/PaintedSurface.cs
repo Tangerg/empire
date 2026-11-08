@@ -78,7 +78,9 @@ internal partial class PaintedSurface : Node2D
             {
                 var key = (strip.StartDepth, strip.EndDepthExclusive);
                 if (_bounds is null || !_intervalGeometry.TryGetValue(key, out var geometry))
-                    geometry = Prepare(strip.Patches.Select(patch => patch.Vertices));
+                    geometry = Prepare(strip.Patches
+                        .Where(patch => clipBounds is not { } bounds || MayOverlap(patch.ProjectedBounds, bounds))
+                        .Select(patch => patch.Vertices));
                 if (_bounds is not null)
                     nextGeometry.Add(key, geometry);
                 Add(strip.StartDepth, geometry);
@@ -94,8 +96,6 @@ internal partial class PaintedSurface : Node2D
                 var indices = new List<int[]>();
                 foreach (var patch in patches)
                 {
-                    if (clipBounds is { } bounds && !MayOverlap(patch, bounds))
-                        continue;
                     var projected = patch.Select(vertex => vertex.Projected).ToArray();
                     var clipped = _bounds is null ? new[] { projected }
                         : Geometry2D.IntersectPolygons(projected, _bounds).ToArray();
@@ -148,19 +148,9 @@ internal partial class PaintedSurface : Node2D
 
     // Reject only wholly separated bounds. Touching edges still reach the exact native
     // clipper, preserving its geometry, ordering and boundary behavior.
-    private static bool MayOverlap(IReadOnlyList<BoardSurfaceVertex> patch, Rect2 bounds)
-    {
-        var min = new Vector2(float.PositiveInfinity, float.PositiveInfinity);
-        var max = new Vector2(float.NegativeInfinity, float.NegativeInfinity);
-        for (var i = 0; i < patch.Count; i++)
-        {
-            var point = patch[i].Projected;
-            min = min.Min(point);
-            max = max.Max(point);
-        }
-        return !(max.X < bounds.Position.X || max.Y < bounds.Position.Y
-            || min.X > bounds.End.X || min.Y > bounds.End.Y);
-    }
+    private static bool MayOverlap((Vector2 Minimum, Vector2 Maximum) patch, Rect2 bounds) =>
+        !(patch.Maximum.X < bounds.Position.X || patch.Maximum.Y < bounds.Position.Y
+            || patch.Minimum.X > bounds.End.X || patch.Minimum.Y > bounds.End.Y);
 
     internal IEnumerable<Vector2[]> PointerPolygons(CanvasItem visibilityRoot)
     {

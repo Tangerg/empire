@@ -1,0 +1,23 @@
+{
+  "baselineCommit": "0e7861b26139399512b83fabda1c6b4479f272b7",
+  "candidateSourceSha256": {
+    "BoardProjection.cs": "9577166a3a1238cbed367ab8c93b35e9e5fe2549528fd8c93a693723d76508ab",
+    "PaintedSurface.cs": "062e44516713cc33ff6a9bda5f806278ba79b3007dfb45606a79f83c23879c48",
+    "PaintedSurfaceBroadPhaseChecks.cs": "49266b09bf9c92a499fdfc30f914b922041353ad32f04bfe6d2b0ed6d47e2ebf"
+  },
+  "checks": {
+    "build": "passed, zero warnings/errors",
+    "exactOracle": 28251,
+    "assembledGround": 18032,
+    "animation": 3111,
+    "paintedSurface": "passed",
+    "format": "passed",
+    "sourceMetadata": "passed",
+    "negativeStaleCopy": "rejected, exit 1",
+    "negativeShrunkenBroadPhase": "rejected, exit 1",
+    "restoredOracle": "passed",
+    "fullAggregate": "pending",
+    "graphicalAcceptance": "not run, no working display"
+  },
+  "evidenceSha256": "ea39338868a853a6b3b750b486967075a95e15b58ea78532d15a7ca41e8d4e16"
+}

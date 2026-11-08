@@ -29,7 +29,34 @@ public sealed record BoardFacePatch(int Depth, IReadOnlyList<BoardSurfaceVertex>
 public readonly record struct BoardSurfaceVertex(Vector2 Logical, Vector2 Projected, Vector3 SourceWeights);
 
 public sealed record BoardSurfacePatch(int Depth, BoardSurfaceTriangle Source,
-    IReadOnlyList<BoardSurfaceVertex> Vertices);
+    IReadOnlyList<BoardSurfaceVertex> Vertices)
+{
+    private IReadOnlyList<BoardSurfaceVertex> _vertices = Vertices;
+    public IReadOnlyList<BoardSurfaceVertex> Vertices
+    {
+        get => _vertices;
+        init
+        {
+            _vertices = value;
+            ProjectedBounds = Bounds(value);
+        }
+    }
+
+    // Preserve exact extrema: reconstructing Maximum from Rect2.Position + Size can round an edge.
+    internal (Vector2 Minimum, Vector2 Maximum) ProjectedBounds { get; private set; } = Bounds(Vertices);
+
+    private static (Vector2 Minimum, Vector2 Maximum) Bounds(IReadOnlyList<BoardSurfaceVertex> vertices)
+    {
+        var minimum = new Vector2(float.PositiveInfinity, float.PositiveInfinity);
+        var maximum = new Vector2(float.NegativeInfinity, float.NegativeInfinity);
+        for (var index = 0; index < vertices.Count; index++)
+        {
+            minimum = minimum.Min(vertices[index].Projected);
+            maximum = maximum.Max(vertices[index].Projected);
+        }
+        return (minimum, maximum);
+    }
+}
 
 public sealed record BoardDepthPartition(int StartDepth, int EndDepthExclusive,
     IReadOnlyList<BoardSurfacePatch> Patches);

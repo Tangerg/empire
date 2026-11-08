@@ -21,6 +21,7 @@ public partial class PaintedSurfaceBroadPhaseChecks : Node2D
     {
         try
         {
+            CheckPatchBounds();
             using var image = Image.CreateEmpty(8, 8, false, Image.Format.Rgba8);
             for (var y = 0; y < 8; y++)
                 for (var x = 0; x < 8; x++)
@@ -117,6 +118,44 @@ public partial class PaintedSurfaceBroadPhaseChecks : Node2D
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
     }
 
+    private void CheckPatchBounds()
+    {
+        var projection = Projection(false);
+        var source = projection.DepthPatches[0];
+        var witness = new CountingVertices(source.Vertices);
+        var cached = source with
+        {
+            Vertices = witness
+        };
+        var reads = witness.Reads;
+        for (var index = 0; index < 100; index++)
+            Require(cached.ProjectedBounds == source.ProjectedBounds, "Repeated bound readers retain the same extrema.");
+        Require(reads > 0 && witness.Reads == reads, "Surface readers must not rescan the shared patch vertices.");
+        foreach (var cuts in new float[][] { [], [23, 77, 105], [23, 55, 78, 105], [] })
+        {
+            projection.PrepareDepthPartitions(cuts, []);
+            foreach (var patch in projection.DepthPatches)
+            {
+                var points = patch.Vertices.Select(vertex => vertex.Projected).ToArray();
+                Require(patch.ProjectedBounds.Minimum == new Vector2(points.Min(point => point.X), points.Min(point => point.Y))
+                    && patch.ProjectedBounds.Maximum == new Vector2(points.Max(point => point.X), points.Max(point => point.Y)),
+                    "Projection patch bounds must retain the exact current clipped extrema.");
+                var moved = patch with
+                {
+                    Vertices = patch.Vertices.Select(vertex => vertex with { Projected = vertex.Projected + new Vector2(500, -300) }).ToArray()
+                };
+                Require(moved.ProjectedBounds.Minimum == patch.ProjectedBounds.Minimum + new Vector2(500, -300)
+                    && moved.ProjectedBounds.Maximum == patch.ProjectedBounds.Maximum + new Vector2(500, -300),
+                    "Replacing a patch's vertices must replace its bounds, not copy stale cached extrema.");
+                Require((patch with
+                {
+                    Depth = patch.Depth + 1
+                }).ProjectedBounds == patch.ProjectedBounds,
+                    "A depth-only record copy preserves the same exact screen-space bounds.");
+            }
+        }
+    }
+
     private static Dictionary<(int, int), object> Cache(PaintedSurface surface)
     {
         var field = typeof(PaintedSurface).GetField("_intervalGeometry", BindingFlags.Instance | BindingFlags.NonPublic)
@@ -141,11 +180,31 @@ public partial class PaintedSurfaceBroadPhaseChecks : Node2D
         }
     }
 
-    private sealed class FailingVertices : IReadOnlyList<BoardSurfaceVertex>
+    private sealed class CountingVertices(IReadOnlyList<BoardSurfaceVertex> source) : IReadOnlyList<BoardSurfaceVertex>
+    {
+        internal int Reads
+        {
+            get; private set;
+        }
+        public int Count => source.Count;
+        public BoardSurfaceVertex this[int index]
+        {
+            get
+            {
+                Reads++;
+                return source[index];
+            }
+        }
+        public IEnumerator<BoardSurfaceVertex> GetEnumerator() => source.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+    }
+
+    private sealed class FailingVertices(IReadOnlyList<BoardSurfaceVertex> source) : IReadOnlyList<BoardSurfaceVertex>
     {
         internal const string Message = "Injected interval geometry preparation failure.";
-        public int Count => throw new InvalidOperationException(Message);
-        public BoardSurfaceVertex this[int index] => throw new InvalidOperationException(Message);
+        // Bounds are valid; fail only when later geometry preparation enumerates this patch.
+        public int Count => source.Count;
+        public BoardSurfaceVertex this[int index] => source[index];
         public IEnumerator<BoardSurfaceVertex> GetEnumerator() => throw new InvalidOperationException(Message);
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
@@ -172,7 +231,7 @@ public partial class PaintedSurfaceBroadPhaseChecks : Node2D
             var last = corrupted[^1];
             corrupted[^1] = last with
             {
-                Patches = [last.Patches[0] with { Vertices = new FailingVertices() }]
+                Patches = [last.Patches[0] with { Vertices = new FailingVertices(last.Patches[0].Vertices) }]
             };
             partitionsProperty.SetValue(projection, corrupted);
         };
