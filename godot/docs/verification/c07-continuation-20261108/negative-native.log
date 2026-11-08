@@ -1,0 +1,15 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+C07 source-binding checks passed: same-size published geometry rejection, immutable request identity, schema4 break and legal terrain-mutation round trip.
+C07 unchanged-opening route feasibility: 15 movement/capture orders, T9 victory; opposing sides only hand off, no teleports or actor/stat edits.
+ERROR: System.InvalidOperationException: C07 enemy order 14 must be chosen by the unchanged normal AI, not replaced with a handoff.
+   at Empire.Presentation.LuojiaChecks.Require(Boolean condition, String message) in /workspace/scratch/84c9fe948755/empire-surface-recovery-20261107/hit-polish-20261108/godot/Presentation/LuojiaChecks.cs:line 647
+   at Empire.Presentation.LuojiaChecks.CheckNormalAiContinuation(BattleEngine engine, JsonArray levels) in /workspace/scratch/84c9fe948755/empire-surface-recovery-20261107/hit-polish-20261108/godot/Presentation/LuojiaContinuationChecks.cs:line 41
+   at Empire.Presentation.LuojiaChecks._Ready() in /workspace/scratch/84c9fe948755/empire-surface-recovery-20261107/hit-polish-20261108/godot/Presentation/LuojiaChecks.cs:line 40
+   at: void Empire.Presentation.LuojiaChecks._Ready() (res://Presentation/LuojiaChecks.cs:40)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void Empire.Presentation.LuojiaChecks._Ready() (/workspace/scratch/84c9fe948755/empire-surface-recovery-20261107/hit-polish-20261108/godot/Presentation/LuojiaChecks.cs:40)
+       [2] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [3] bool Empire.Presentation.LuojiaChecks.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/empire-surface-recovery-20261107/hit-polish-20261108/godot/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/Empire.Presentation.LuojiaChecks_ScriptMethods.generated.cs:50)
+       [4] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
