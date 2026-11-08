@@ -37,6 +37,7 @@ public partial class LuojiaChecks : Node
             CheckSaveAdmission(engine, levels);
             CheckSourceBinding(engine, levels);
             CheckOpeningCaptureRoutes(engine, level);
+            CheckNormalAiContinuation(engine, levels);
             CheckPainting(engine, level, audit);
             ExportGuiFixtures(engine, levels);
             GD.Print($"Native Luojia passed {assertions} assertions: sixteen sites, authored rendering/picking, route geometry, sequential control objectives, deadline and strict save admission. Detached probes are not normal-AI balance acceptance.");

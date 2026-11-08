@@ -1,0 +1,5795 @@
+{
+  "scope": "Detached campaign starts at brief-07 with no C01-C06 victories. All C07 orders are legal; every enemy order is the unchanged normal AI. This is headless model/projection evidence, not GUI or balance acceptance.",
+  "playerPolicy": "Normal queried AI attacks/healing; remaining friendly waiters advance in two groups to the authored control objectives. No production AI modification.",
+  "initialStateHash": "378ff3e0",
+  "finalStateHash": "ce680ba7",
+  "eventsSha256": "6408777b0fc56c4fd2bdd3248c9fa420225d57914e952d2e6b707d845d8241fb",
+  "eventCount": 699,
+  "terminalTurn": 12,
+  "c08OpeningHash": "d9e1ef40",
+  "actions": [
+    {
+      "kind": "command",
+      "unit": 9,
+      "path": [
+        {
+          "x": 30,
+          "y": 30
+        },
+        {
+          "x": 31,
+          "y": 30
+        },
+        {
+          "x": 32,
+          "y": 30
+        },
+        {
+          "x": 33,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "capture"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 1,
+      "path": [
+        {
+          "x": 48,
+          "y": 35
+        },
+        {
+          "x": 48,
+          "y": 34
+        },
+        {
+          "x": 48,
+          "y": 33
+        },
+        {
+          "x": 47,
+          "y": 33
+        },
+        {
+          "x": 46,
+          "y": 33
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 2,
+      "path": [
+        {
+          "x": 40,
+          "y": 25
+        },
+        {
+          "x": 41,
+          "y": 25
+        },
+        {
+          "x": 41,
+          "y": 24
+        },
+        {
+          "x": 41,
+          "y": 23
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 3,
+      "path": [
+        {
+          "x": 51,
+          "y": 33
+        },
+        {
+          "x": 50,
+          "y": 33
+        },
+        {
+          "x": 49,
+          "y": 33
+        },
+        {
+          "x": 48,
+          "y": 33
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 4,
+      "path": [
+        {
+          "x": 45,
+          "y": 35
+        },
+        {
+          "x": 45,
+          "y": 34
+        },
+        {
+          "x": 45,
+          "y": 33
+        },
+        {
+          "x": 45,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 5,
+      "path": [
+        {
+          "x": 56,
+          "y": 27
+        },
+        {
+          "x": 56,
+          "y": 26
+        },
+        {
+          "x": 57,
+          "y": 26
+        },
+        {
+          "x": 57,
+          "y": 25
+        },
+        {
+          "x": 58,
+          "y": 25
+        },
+        {
+          "x": 59,
+          "y": 25
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 6,
+      "path": [
+        {
+          "x": 39,
+          "y": 30
+        },
+        {
+          "x": 39,
+          "y": 29
+        },
+        {
+          "x": 39,
+          "y": 28
+        },
+        {
+          "x": 39,
+          "y": 27
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 7,
+      "path": [
+        {
+          "x": 60,
+          "y": 24
+        },
+        {
+          "x": 60,
+          "y": 23
+        },
+        {
+          "x": 60,
+          "y": 22
+        },
+        {
+          "x": 60,
+          "y": 21
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 8,
+      "path": [
+        {
+          "x": 48,
+          "y": 40
+        },
+        {
+          "x": 48,
+          "y": 39
+        },
+        {
+          "x": 48,
+          "y": 38
+        },
+        {
+          "x": 48,
+          "y": 37
+        },
+        {
+          "x": 48,
+          "y": 36
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 10,
+      "path": [
+        {
+          "x": 63,
+          "y": 33
+        },
+        {
+          "x": 63,
+          "y": 32
+        },
+        {
+          "x": 63,
+          "y": 31
+        },
+        {
+          "x": 63,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 11,
+      "path": [
+        {
+          "x": 51,
+          "y": 37
+        },
+        {
+          "x": 51,
+          "y": 36
+        },
+        {
+          "x": 51,
+          "y": 35
+        },
+        {
+          "x": 51,
+          "y": 34
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 12,
+      "path": [
+        {
+          "x": 49,
+          "y": 17
+        },
+        {
+          "x": 49,
+          "y": 16
+        },
+        {
+          "x": 49,
+          "y": 15
+        },
+        {
+          "x": 48,
+          "y": 15
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 13,
+      "path": [
+        {
+          "x": 48,
+          "y": 48
+        },
+        {
+          "x": 48,
+          "y": 47
+        },
+        {
+          "x": 48,
+          "y": 46
+        },
+        {
+          "x": 48,
+          "y": 45
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "command",
+      "unit": 21,
+      "path": [
+        {
+          "x": 48,
+          "y": 7
+        },
+        {
+          "x": 47,
+          "y": 7
+        },
+        {
+          "x": 47,
+          "y": 8
+        },
+        {
+          "x": 47,
+          "y": 9
+        },
+        {
+          "x": 47,
+          "y": 10
+        },
+        {
+          "x": 47,
+          "y": 11
+        },
+        {
+          "x": 47,
+          "y": 12
+        },
+        {
+          "x": 47,
+          "y": 13
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 19,
+      "path": [
+        {
+          "x": 72,
+          "y": 34
+        },
+        {
+          "x": 72,
+          "y": 33
+        },
+        {
+          "x": 72,
+          "y": 32
+        },
+        {
+          "x": 71,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 15,
+      "path": [
+        {
+          "x": 21,
+          "y": 30
+        },
+        {
+          "x": 21,
+          "y": 31
+        },
+        {
+          "x": 22,
+          "y": 31
+        },
+        {
+          "x": 23,
+          "y": 31
+        },
+        {
+          "x": 23,
+          "y": 32
+        },
+        {
+          "x": 24,
+          "y": 32
+        },
+        {
+          "x": 25,
+          "y": 32
+        },
+        {
+          "x": 26,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 14,
+      "path": [
+        {
+          "x": 26,
+          "y": 18
+        },
+        {
+          "x": 27,
+          "y": 18
+        },
+        {
+          "x": 27,
+          "y": 19
+        },
+        {
+          "x": 28,
+          "y": 19
+        },
+        {
+          "x": 29,
+          "y": 19
+        },
+        {
+          "x": 30,
+          "y": 19
+        },
+        {
+          "x": 31,
+          "y": 19
+        },
+        {
+          "x": 32,
+          "y": 19
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 16,
+      "path": [
+        {
+          "x": 21,
+          "y": 34
+        },
+        {
+          "x": 21,
+          "y": 33
+        },
+        {
+          "x": 21,
+          "y": 32
+        },
+        {
+          "x": 21,
+          "y": 31
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 23,
+      "path": [
+        {
+          "x": 75,
+          "y": 18
+        },
+        {
+          "x": 74,
+          "y": 18
+        },
+        {
+          "x": 73,
+          "y": 18
+        },
+        {
+          "x": 72,
+          "y": 18
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 17,
+      "path": [
+        {
+          "x": 73,
+          "y": 14
+        },
+        {
+          "x": 72,
+          "y": 14
+        },
+        {
+          "x": 71,
+          "y": 14
+        },
+        {
+          "x": 70,
+          "y": 14
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 18,
+      "path": [
+        {
+          "x": 79,
+          "y": 35
+        },
+        {
+          "x": 79,
+          "y": 34
+        },
+        {
+          "x": 79,
+          "y": 33
+        },
+        {
+          "x": 79,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 22,
+      "path": [
+        {
+          "x": 78,
+          "y": 38
+        },
+        {
+          "x": 78,
+          "y": 37
+        },
+        {
+          "x": 78,
+          "y": 36
+        },
+        {
+          "x": 78,
+          "y": 35
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 20,
+      "path": [
+        {
+          "x": 17,
+          "y": 39
+        },
+        {
+          "x": 18,
+          "y": 39
+        },
+        {
+          "x": 19,
+          "y": 39
+        },
+        {
+          "x": 20,
+          "y": 39
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "tactic",
+      "commander": "laiya-command",
+      "tactic": "c01.gray-rally",
+      "target": {
+        "x": 47,
+        "y": 32
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 12,
+      "path": [
+        {
+          "x": 48,
+          "y": 15
+        },
+        {
+          "x": 48,
+          "y": 14
+        },
+        {
+          "x": 47,
+          "y": 14
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.guard-spear",
+        "target": {
+          "x": 47,
+          "y": 13
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 1,
+      "path": [
+        {
+          "x": 46,
+          "y": 33
+        },
+        {
+          "x": 45,
+          "y": 33
+        },
+        {
+          "x": 45,
+          "y": 32
+        },
+        {
+          "x": 44,
+          "y": 32
+        },
+        {
+          "x": 43,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 2,
+      "path": [
+        {
+          "x": 41,
+          "y": 23
+        },
+        {
+          "x": 41,
+          "y": 22
+        },
+        {
+          "x": 40,
+          "y": 22
+        },
+        {
+          "x": 39,
+          "y": 22
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 3,
+      "path": [
+        {
+          "x": 48,
+          "y": 33
+        },
+        {
+          "x": 47,
+          "y": 33
+        },
+        {
+          "x": 46,
+          "y": 33
+        },
+        {
+          "x": 45,
+          "y": 33
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "reaction",
+      "unit": 4,
+      "stance": "support"
+    },
+    {
+      "kind": "command",
+      "unit": 4,
+      "path": [
+        {
+          "x": 45,
+          "y": 32
+        },
+        {
+          "x": 44,
+          "y": 32
+        },
+        {
+          "x": 43,
+          "y": 32
+        },
+        {
+          "x": 42,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 5,
+      "path": [
+        {
+          "x": 59,
+          "y": 25
+        },
+        {
+          "x": 59,
+          "y": 24
+        },
+        {
+          "x": 59,
+          "y": 23
+        },
+        {
+          "x": 59,
+          "y": 22
+        },
+        {
+          "x": 60,
+          "y": 22
+        },
+        {
+          "x": 61,
+          "y": 22
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 6,
+      "path": [
+        {
+          "x": 39,
+          "y": 27
+        },
+        {
+          "x": 39,
+          "y": 26
+        },
+        {
+          "x": 39,
+          "y": 25
+        },
+        {
+          "x": 40,
+          "y": 25
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 7,
+      "path": [
+        {
+          "x": 60,
+          "y": 21
+        },
+        {
+          "x": 61,
+          "y": 21
+        },
+        {
+          "x": 62,
+          "y": 21
+        },
+        {
+          "x": 63,
+          "y": 21
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 8,
+      "path": [
+        {
+          "x": 48,
+          "y": 36
+        },
+        {
+          "x": 48,
+          "y": 35
+        },
+        {
+          "x": 48,
+          "y": 34
+        },
+        {
+          "x": 48,
+          "y": 33
+        },
+        {
+          "x": 47,
+          "y": 33
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 9,
+      "path": [
+        {
+          "x": 33,
+          "y": 30
+        },
+        {
+          "x": 34,
+          "y": 30
+        },
+        {
+          "x": 35,
+          "y": 30
+        },
+        {
+          "x": 36,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 10,
+      "path": [
+        {
+          "x": 63,
+          "y": 30
+        },
+        {
+          "x": 63,
+          "y": 29
+        },
+        {
+          "x": 62,
+          "y": 29
+        },
+        {
+          "x": 61,
+          "y": 29
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 11,
+      "path": [
+        {
+          "x": 51,
+          "y": 34
+        },
+        {
+          "x": 51,
+          "y": 33
+        },
+        {
+          "x": 50,
+          "y": 33
+        },
+        {
+          "x": 49,
+          "y": 33
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 13,
+      "path": [
+        {
+          "x": 48,
+          "y": 45
+        },
+        {
+          "x": 48,
+          "y": 44
+        },
+        {
+          "x": 48,
+          "y": 43
+        },
+        {
+          "x": 48,
+          "y": 42
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "command",
+      "unit": 19,
+      "path": [
+        {
+          "x": 71,
+          "y": 32
+        },
+        {
+          "x": 70,
+          "y": 32
+        },
+        {
+          "x": 69,
+          "y": 32
+        },
+        {
+          "x": 68,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "capture"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 21,
+      "path": [
+        {
+          "x": 47,
+          "y": 13
+        },
+        {
+          "x": 48,
+          "y": 13
+        },
+        {
+          "x": 48,
+          "y": 14
+        },
+        {
+          "x": 48,
+          "y": 15
+        },
+        {
+          "x": 47,
+          "y": 15
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.wolf-spear",
+        "target": {
+          "x": 47,
+          "y": 14
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 15,
+      "path": [
+        {
+          "x": 26,
+          "y": 32
+        },
+        {
+          "x": 27,
+          "y": 32
+        },
+        {
+          "x": 28,
+          "y": 32
+        },
+        {
+          "x": 28,
+          "y": 31
+        },
+        {
+          "x": 28,
+          "y": 30
+        },
+        {
+          "x": 29,
+          "y": 30
+        },
+        {
+          "x": 30,
+          "y": 30
+        },
+        {
+          "x": 31,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 14,
+      "path": [
+        {
+          "x": 32,
+          "y": 19
+        },
+        {
+          "x": 33,
+          "y": 19
+        },
+        {
+          "x": 34,
+          "y": 19
+        },
+        {
+          "x": 35,
+          "y": 19
+        },
+        {
+          "x": 36,
+          "y": 19
+        },
+        {
+          "x": 37,
+          "y": 19
+        },
+        {
+          "x": 38,
+          "y": 19
+        },
+        {
+          "x": 39,
+          "y": 19
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 17,
+      "path": [
+        {
+          "x": 70,
+          "y": 14
+        },
+        {
+          "x": 69,
+          "y": 14
+        },
+        {
+          "x": 68,
+          "y": 14
+        },
+        {
+          "x": 67,
+          "y": 14
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 23,
+      "path": [
+        {
+          "x": 72,
+          "y": 18
+        },
+        {
+          "x": 71,
+          "y": 18
+        },
+        {
+          "x": 70,
+          "y": 18
+        },
+        {
+          "x": 69,
+          "y": 18
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 16,
+      "path": [
+        {
+          "x": 21,
+          "y": 31
+        },
+        {
+          "x": 22,
+          "y": 31
+        },
+        {
+          "x": 23,
+          "y": 31
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 18,
+      "path": [
+        {
+          "x": 79,
+          "y": 32
+        },
+        {
+          "x": 78,
+          "y": 32
+        },
+        {
+          "x": 77,
+          "y": 32
+        },
+        {
+          "x": 76,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 22,
+      "path": [
+        {
+          "x": 78,
+          "y": 35
+        },
+        {
+          "x": 78,
+          "y": 34
+        },
+        {
+          "x": 78,
+          "y": 33
+        },
+        {
+          "x": 78,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 20,
+      "path": [
+        {
+          "x": 20,
+          "y": 39
+        },
+        {
+          "x": 21,
+          "y": 39
+        },
+        {
+          "x": 22,
+          "y": 39
+        },
+        {
+          "x": 23,
+          "y": 39
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "command",
+      "unit": 2,
+      "path": [
+        {
+          "x": 39,
+          "y": 22
+        },
+        {
+          "x": 39,
+          "y": 21
+        },
+        {
+          "x": 39,
+          "y": 20
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.border-blade",
+        "target": {
+          "x": 39,
+          "y": 19
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 12,
+      "path": [
+        {
+          "x": 47,
+          "y": 14
+        },
+        {
+          "x": 46,
+          "y": 14
+        },
+        {
+          "x": 46,
+          "y": 15
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.guard-spear",
+        "target": {
+          "x": 47,
+          "y": 15
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 1,
+      "path": [
+        {
+          "x": 43,
+          "y": 32
+        },
+        {
+          "x": 42,
+          "y": 32
+        },
+        {
+          "x": 42,
+          "y": 31
+        },
+        {
+          "x": 41,
+          "y": 31
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "reaction",
+      "unit": 4,
+      "stance": "conserve"
+    },
+    {
+      "kind": "command",
+      "unit": 3,
+      "path": [
+        {
+          "x": 45,
+          "y": 33
+        },
+        {
+          "x": 45,
+          "y": 32
+        },
+        {
+          "x": 44,
+          "y": 32
+        },
+        {
+          "x": 43,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "reaction",
+      "unit": 4,
+      "stance": "support"
+    },
+    {
+      "kind": "command",
+      "unit": 4,
+      "path": [
+        {
+          "x": 42,
+          "y": 32
+        },
+        {
+          "x": 42,
+          "y": 31
+        },
+        {
+          "x": 41,
+          "y": 31
+        },
+        {
+          "x": 41,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 5,
+      "path": [
+        {
+          "x": 61,
+          "y": 22
+        },
+        {
+          "x": 61,
+          "y": 21
+        },
+        {
+          "x": 62,
+          "y": 21
+        },
+        {
+          "x": 63,
+          "y": 21
+        },
+        {
+          "x": 64,
+          "y": 21
+        },
+        {
+          "x": 65,
+          "y": 21
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 6,
+      "path": [
+        {
+          "x": 40,
+          "y": 25
+        },
+        {
+          "x": 41,
+          "y": 25
+        },
+        {
+          "x": 41,
+          "y": 24
+        },
+        {
+          "x": 41,
+          "y": 23
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 7,
+      "path": [
+        {
+          "x": 63,
+          "y": 21
+        },
+        {
+          "x": 64,
+          "y": 21
+        },
+        {
+          "x": 65,
+          "y": 21
+        },
+        {
+          "x": 66,
+          "y": 21
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 8,
+      "path": [
+        {
+          "x": 47,
+          "y": 33
+        },
+        {
+          "x": 46,
+          "y": 33
+        },
+        {
+          "x": 45,
+          "y": 33
+        },
+        {
+          "x": 45,
+          "y": 32
+        },
+        {
+          "x": 44,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 9,
+      "path": [
+        {
+          "x": 36,
+          "y": 30
+        },
+        {
+          "x": 36,
+          "y": 29
+        },
+        {
+          "x": 37,
+          "y": 29
+        },
+        {
+          "x": 38,
+          "y": 29
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 10,
+      "path": [
+        {
+          "x": 61,
+          "y": 29
+        },
+        {
+          "x": 61,
+          "y": 28
+        },
+        {
+          "x": 61,
+          "y": 27
+        },
+        {
+          "x": 61,
+          "y": 26
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 11,
+      "path": [
+        {
+          "x": 49,
+          "y": 33
+        },
+        {
+          "x": 48,
+          "y": 33
+        },
+        {
+          "x": 47,
+          "y": 33
+        },
+        {
+          "x": 46,
+          "y": 33
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 13,
+      "path": [
+        {
+          "x": 48,
+          "y": 42
+        },
+        {
+          "x": 48,
+          "y": 41
+        },
+        {
+          "x": 48,
+          "y": 40
+        },
+        {
+          "x": 48,
+          "y": 39
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "reaction",
+      "unit": 21,
+      "stance": "guard"
+    },
+    {
+      "kind": "command",
+      "unit": 15,
+      "path": [
+        {
+          "x": 31,
+          "y": 30
+        },
+        {
+          "x": 32,
+          "y": 30
+        },
+        {
+          "x": 33,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "capture"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 17,
+      "path": [
+        {
+          "x": 67,
+          "y": 14
+        },
+        {
+          "x": 66,
+          "y": 14
+        },
+        {
+          "x": 65,
+          "y": 14
+        }
+      ],
+      "command": {
+        "ability": "capture"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 21,
+      "path": [
+        {
+          "x": 47,
+          "y": 15
+        },
+        {
+          "x": 47,
+          "y": 14
+        },
+        {
+          "x": 46,
+          "y": 14
+        },
+        {
+          "x": 45,
+          "y": 14
+        },
+        {
+          "x": 45,
+          "y": 15
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.wolf-spear",
+        "target": {
+          "x": 46,
+          "y": 15
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 14,
+      "path": [
+        {
+          "x": 39,
+          "y": 19
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.wolf-spear",
+        "target": {
+          "x": 39,
+          "y": 20
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 23,
+      "path": [
+        {
+          "x": 69,
+          "y": 18
+        },
+        {
+          "x": 69,
+          "y": 17
+        },
+        {
+          "x": 68,
+          "y": 17
+        },
+        {
+          "x": 67,
+          "y": 17
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 19,
+      "path": [
+        {
+          "x": 68,
+          "y": 32
+        },
+        {
+          "x": 67,
+          "y": 32
+        },
+        {
+          "x": 66,
+          "y": 32
+        },
+        {
+          "x": 65,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 16,
+      "path": [
+        {
+          "x": 23,
+          "y": 31
+        },
+        {
+          "x": 23,
+          "y": 32
+        },
+        {
+          "x": 24,
+          "y": 32
+        },
+        {
+          "x": 25,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 18,
+      "path": [
+        {
+          "x": 76,
+          "y": 32
+        },
+        {
+          "x": 75,
+          "y": 32
+        },
+        {
+          "x": 74,
+          "y": 32
+        },
+        {
+          "x": 74,
+          "y": 31
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 22,
+      "path": [
+        {
+          "x": 78,
+          "y": 32
+        },
+        {
+          "x": 77,
+          "y": 32
+        },
+        {
+          "x": 76,
+          "y": 32
+        },
+        {
+          "x": 75,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 20,
+      "path": [
+        {
+          "x": 23,
+          "y": 39
+        },
+        {
+          "x": 23,
+          "y": 38
+        },
+        {
+          "x": 24,
+          "y": 38
+        },
+        {
+          "x": 25,
+          "y": 38
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "tactic",
+      "commander": "laiya-command",
+      "tactic": "c01.gray-rally",
+      "target": {
+        "x": 42,
+        "y": 31
+      }
+    },
+    {
+      "kind": "reaction",
+      "unit": 2,
+      "stance": "guard"
+    },
+    {
+      "kind": "command",
+      "unit": 2,
+      "path": [
+        {
+          "x": 39,
+          "y": 20
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.border-blade",
+        "target": {
+          "x": 39,
+          "y": 19
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 12,
+      "path": [
+        {
+          "x": 46,
+          "y": 15
+        },
+        {
+          "x": 46,
+          "y": 14
+        },
+        {
+          "x": 45,
+          "y": 14
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.guard-spear",
+        "target": {
+          "x": 45,
+          "y": 15
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 1,
+      "path": [
+        {
+          "x": 41,
+          "y": 31
+        },
+        {
+          "x": 41,
+          "y": 30
+        },
+        {
+          "x": 41,
+          "y": 29
+        },
+        {
+          "x": 41,
+          "y": 28
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "reaction",
+      "unit": 4,
+      "stance": "conserve"
+    },
+    {
+      "kind": "command",
+      "unit": 3,
+      "path": [
+        {
+          "x": 43,
+          "y": 32
+        },
+        {
+          "x": 42,
+          "y": 32
+        },
+        {
+          "x": 42,
+          "y": 31
+        },
+        {
+          "x": 41,
+          "y": 31
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "reaction",
+      "unit": 4,
+      "stance": "support"
+    },
+    {
+      "kind": "command",
+      "unit": 4,
+      "path": [
+        {
+          "x": 41,
+          "y": 30
+        },
+        {
+          "x": 41,
+          "y": 29
+        },
+        {
+          "x": 41,
+          "y": 28
+        },
+        {
+          "x": 41,
+          "y": 27
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 5,
+      "path": [
+        {
+          "x": 65,
+          "y": 21
+        },
+        {
+          "x": 66,
+          "y": 21
+        },
+        {
+          "x": 67,
+          "y": 21
+        },
+        {
+          "x": 68,
+          "y": 21
+        },
+        {
+          "x": 68,
+          "y": 20
+        },
+        {
+          "x": 69,
+          "y": 20
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 6,
+      "path": [
+        {
+          "x": 41,
+          "y": 23
+        },
+        {
+          "x": 41,
+          "y": 22
+        },
+        {
+          "x": 40,
+          "y": 22
+        },
+        {
+          "x": 39,
+          "y": 22
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 7,
+      "path": [
+        {
+          "x": 66,
+          "y": 21
+        },
+        {
+          "x": 67,
+          "y": 21
+        },
+        {
+          "x": 68,
+          "y": 21
+        },
+        {
+          "x": 68,
+          "y": 20
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 8,
+      "path": [
+        {
+          "x": 44,
+          "y": 32
+        },
+        {
+          "x": 43,
+          "y": 32
+        },
+        {
+          "x": 42,
+          "y": 32
+        },
+        {
+          "x": 42,
+          "y": 31
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 9,
+      "path": [
+        {
+          "x": 38,
+          "y": 29
+        },
+        {
+          "x": 38,
+          "y": 28
+        },
+        {
+          "x": 38,
+          "y": 27
+        },
+        {
+          "x": 38,
+          "y": 26
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 10,
+      "path": [
+        {
+          "x": 61,
+          "y": 26
+        },
+        {
+          "x": 61,
+          "y": 25
+        },
+        {
+          "x": 61,
+          "y": 24
+        },
+        {
+          "x": 61,
+          "y": 23
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 11,
+      "path": [
+        {
+          "x": 46,
+          "y": 33
+        },
+        {
+          "x": 45,
+          "y": 33
+        },
+        {
+          "x": 45,
+          "y": 32
+        },
+        {
+          "x": 44,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 13,
+      "path": [
+        {
+          "x": 48,
+          "y": 39
+        },
+        {
+          "x": 48,
+          "y": 38
+        },
+        {
+          "x": 48,
+          "y": 37
+        },
+        {
+          "x": 48,
+          "y": 36
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "reaction",
+      "unit": 14,
+      "stance": "guard"
+    },
+    {
+      "kind": "command",
+      "unit": 23,
+      "path": [
+        {
+          "x": 67,
+          "y": 17
+        },
+        {
+          "x": 68,
+          "y": 17
+        },
+        {
+          "x": 69,
+          "y": 17
+        },
+        {
+          "x": 69,
+          "y": 18
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.oath-bolt",
+        "target": {
+          "x": 69,
+          "y": 20
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 21,
+      "path": [
+        {
+          "x": 45,
+          "y": 15
+        },
+        {
+          "x": 44,
+          "y": 15
+        },
+        {
+          "x": 44,
+          "y": 14
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.wolf-spear",
+        "target": {
+          "x": 45,
+          "y": 14
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 14,
+      "path": [
+        {
+          "x": 39,
+          "y": 19
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.wolf-spear",
+        "target": {
+          "x": 39,
+          "y": 20
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 15,
+      "path": [
+        {
+          "x": 33,
+          "y": 30
+        },
+        {
+          "x": 34,
+          "y": 30
+        },
+        {
+          "x": 35,
+          "y": 30
+        },
+        {
+          "x": 36,
+          "y": 30
+        },
+        {
+          "x": 37,
+          "y": 30
+        },
+        {
+          "x": 38,
+          "y": 30
+        },
+        {
+          "x": 39,
+          "y": 30
+        },
+        {
+          "x": 39,
+          "y": 31
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 17,
+      "path": [
+        {
+          "x": 65,
+          "y": 14
+        },
+        {
+          "x": 66,
+          "y": 14
+        },
+        {
+          "x": 67,
+          "y": 14
+        },
+        {
+          "x": 68,
+          "y": 14
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 19,
+      "path": [
+        {
+          "x": 65,
+          "y": 32
+        },
+        {
+          "x": 65,
+          "y": 31
+        },
+        {
+          "x": 65,
+          "y": 30
+        },
+        {
+          "x": 64,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 18,
+      "path": [
+        {
+          "x": 74,
+          "y": 31
+        },
+        {
+          "x": 74,
+          "y": 30
+        },
+        {
+          "x": 74,
+          "y": 29
+        },
+        {
+          "x": 74,
+          "y": 28
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 16,
+      "path": [
+        {
+          "x": 25,
+          "y": 32
+        },
+        {
+          "x": 26,
+          "y": 32
+        },
+        {
+          "x": 27,
+          "y": 32
+        },
+        {
+          "x": 28,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 22,
+      "path": [
+        {
+          "x": 75,
+          "y": 32
+        },
+        {
+          "x": 74,
+          "y": 32
+        },
+        {
+          "x": 74,
+          "y": 31
+        },
+        {
+          "x": 74,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 20,
+      "path": [
+        {
+          "x": 25,
+          "y": 38
+        },
+        {
+          "x": 25,
+          "y": 37
+        },
+        {
+          "x": 25,
+          "y": 36
+        },
+        {
+          "x": 25,
+          "y": 35
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "command",
+      "unit": 5,
+      "path": [
+        {
+          "x": 69,
+          "y": 20
+        },
+        {
+          "x": 70,
+          "y": 20
+        },
+        {
+          "x": 70,
+          "y": 19
+        },
+        {
+          "x": 70,
+          "y": 18
+        },
+        {
+          "x": 70,
+          "y": 17
+        },
+        {
+          "x": 70,
+          "y": 16
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.ranger-bow",
+        "target": {
+          "x": 69,
+          "y": 18
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 6,
+      "path": [
+        {
+          "x": 39,
+          "y": 22
+        },
+        {
+          "x": 39,
+          "y": 21
+        },
+        {
+          "x": 39,
+          "y": 20
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.guard-spear",
+        "target": {
+          "x": 39,
+          "y": 19
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 8,
+      "path": [
+        {
+          "x": 42,
+          "y": 31
+        },
+        {
+          "x": 41,
+          "y": 31
+        },
+        {
+          "x": 41,
+          "y": 30
+        },
+        {
+          "x": 40,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.satchel-charge",
+        "target": {
+          "x": 39,
+          "y": 31
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 3,
+      "path": [
+        {
+          "x": 41,
+          "y": 31
+        },
+        {
+          "x": 41,
+          "y": 30
+        },
+        {
+          "x": 41,
+          "y": 29
+        },
+        {
+          "x": 40,
+          "y": 29
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.ranger-bow",
+        "target": {
+          "x": 39,
+          "y": 31
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 1,
+      "path": [
+        {
+          "x": 41,
+          "y": 28
+        },
+        {
+          "x": 41,
+          "y": 27
+        },
+        {
+          "x": 41,
+          "y": 26
+        },
+        {
+          "x": 41,
+          "y": 25
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "reaction",
+      "unit": 4,
+      "stance": "conserve"
+    },
+    {
+      "kind": "command",
+      "unit": 4,
+      "path": [
+        {
+          "x": 41,
+          "y": 27
+        },
+        {
+          "x": 41,
+          "y": 26
+        },
+        {
+          "x": 41,
+          "y": 25
+        },
+        {
+          "x": 41,
+          "y": 24
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 7,
+      "path": [
+        {
+          "x": 68,
+          "y": 20
+        },
+        {
+          "x": 69,
+          "y": 20
+        },
+        {
+          "x": 70,
+          "y": 20
+        },
+        {
+          "x": 70,
+          "y": 19
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 9,
+      "path": [
+        {
+          "x": 38,
+          "y": 26
+        },
+        {
+          "x": 38,
+          "y": 25
+        },
+        {
+          "x": 39,
+          "y": 25
+        },
+        {
+          "x": 40,
+          "y": 25
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 10,
+      "path": [
+        {
+          "x": 61,
+          "y": 23
+        },
+        {
+          "x": 61,
+          "y": 22
+        },
+        {
+          "x": 61,
+          "y": 21
+        },
+        {
+          "x": 62,
+          "y": 21
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 11,
+      "path": [
+        {
+          "x": 44,
+          "y": 32
+        },
+        {
+          "x": 43,
+          "y": 32
+        },
+        {
+          "x": 42,
+          "y": 32
+        },
+        {
+          "x": 42,
+          "y": 31
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 13,
+      "path": [
+        {
+          "x": 48,
+          "y": 36
+        },
+        {
+          "x": 48,
+          "y": 35
+        },
+        {
+          "x": 48,
+          "y": 34
+        },
+        {
+          "x": 48,
+          "y": 33
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "reaction",
+      "unit": 15,
+      "stance": "guard"
+    },
+    {
+      "kind": "reaction",
+      "unit": 23,
+      "stance": "guard"
+    },
+    {
+      "kind": "command",
+      "unit": 17,
+      "path": [
+        {
+          "x": 68,
+          "y": 14
+        },
+        {
+          "x": 69,
+          "y": 14
+        },
+        {
+          "x": 70,
+          "y": 14
+        },
+        {
+          "x": 70,
+          "y": 15
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.border-blade",
+        "target": {
+          "x": 70,
+          "y": 16
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 23,
+      "path": [
+        {
+          "x": 69,
+          "y": 18
+        },
+        {
+          "x": 70,
+          "y": 18
+        },
+        {
+          "x": 71,
+          "y": 18
+        },
+        {
+          "x": 71,
+          "y": 19
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.oath-bolt",
+        "target": {
+          "x": 70,
+          "y": 19
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 15,
+      "path": [
+        {
+          "x": 39,
+          "y": 31
+        },
+        {
+          "x": 39,
+          "y": 30
+        },
+        {
+          "x": 38,
+          "y": 30
+        },
+        {
+          "x": 37,
+          "y": 30
+        },
+        {
+          "x": 36,
+          "y": 30
+        },
+        {
+          "x": 35,
+          "y": 30
+        },
+        {
+          "x": 34,
+          "y": 30
+        },
+        {
+          "x": 33,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 21,
+      "path": [
+        {
+          "x": 44,
+          "y": 14
+        },
+        {
+          "x": 44,
+          "y": 15
+        },
+        {
+          "x": 43,
+          "y": 15
+        },
+        {
+          "x": 42,
+          "y": 15
+        },
+        {
+          "x": 41,
+          "y": 15
+        },
+        {
+          "x": 40,
+          "y": 15
+        },
+        {
+          "x": 39,
+          "y": 15
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 19,
+      "path": [
+        {
+          "x": 64,
+          "y": 30
+        },
+        {
+          "x": 63,
+          "y": 30
+        },
+        {
+          "x": 63,
+          "y": 29
+        },
+        {
+          "x": 62,
+          "y": 29
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 16,
+      "path": [
+        {
+          "x": 28,
+          "y": 32
+        },
+        {
+          "x": 28,
+          "y": 31
+        },
+        {
+          "x": 28,
+          "y": 30
+        },
+        {
+          "x": 29,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 18,
+      "path": [
+        {
+          "x": 74,
+          "y": 28
+        },
+        {
+          "x": 74,
+          "y": 29
+        },
+        {
+          "x": 73,
+          "y": 29
+        },
+        {
+          "x": 72,
+          "y": 29
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 22,
+      "path": [
+        {
+          "x": 74,
+          "y": 30
+        },
+        {
+          "x": 73,
+          "y": 30
+        },
+        {
+          "x": 72,
+          "y": 30
+        },
+        {
+          "x": 71,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 20,
+      "path": [
+        {
+          "x": 25,
+          "y": 35
+        },
+        {
+          "x": 25,
+          "y": 34
+        },
+        {
+          "x": 25,
+          "y": 33
+        },
+        {
+          "x": 25,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "tactic",
+      "commander": "laiya-command",
+      "tactic": "c01.gray-rally",
+      "target": {
+        "x": 40,
+        "y": 24
+      }
+    },
+    {
+      "kind": "reaction",
+      "unit": 4,
+      "stance": "support"
+    },
+    {
+      "kind": "command",
+      "unit": 7,
+      "path": [
+        {
+          "x": 70,
+          "y": 19
+        },
+        {
+          "x": 70,
+          "y": 18
+        },
+        {
+          "x": 71,
+          "y": 18
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.guard-spear",
+        "target": {
+          "x": 71,
+          "y": 19
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 1,
+      "path": [
+        {
+          "x": 41,
+          "y": 25
+        },
+        {
+          "x": 41,
+          "y": 24
+        },
+        {
+          "x": 41,
+          "y": 23
+        },
+        {
+          "x": 41,
+          "y": 22
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "reaction",
+      "unit": 4,
+      "stance": "conserve"
+    },
+    {
+      "kind": "command",
+      "unit": 3,
+      "path": [
+        {
+          "x": 40,
+          "y": 29
+        },
+        {
+          "x": 40,
+          "y": 28
+        },
+        {
+          "x": 40,
+          "y": 27
+        },
+        {
+          "x": 40,
+          "y": 26
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 4,
+      "path": [
+        {
+          "x": 41,
+          "y": 24
+        },
+        {
+          "x": 41,
+          "y": 23
+        },
+        {
+          "x": 41,
+          "y": 22
+        },
+        {
+          "x": 40,
+          "y": 22
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 6,
+      "path": [
+        {
+          "x": 39,
+          "y": 20
+        },
+        {
+          "x": 39,
+          "y": 19
+        },
+        {
+          "x": 39,
+          "y": 18
+        },
+        {
+          "x": 39,
+          "y": 17
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 8,
+      "path": [
+        {
+          "x": 40,
+          "y": 30
+        },
+        {
+          "x": 40,
+          "y": 29
+        },
+        {
+          "x": 40,
+          "y": 28
+        },
+        {
+          "x": 40,
+          "y": 27
+        },
+        {
+          "x": 41,
+          "y": 27
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 9,
+      "path": [
+        {
+          "x": 40,
+          "y": 25
+        },
+        {
+          "x": 41,
+          "y": 25
+        },
+        {
+          "x": 41,
+          "y": 24
+        },
+        {
+          "x": 41,
+          "y": 23
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 10,
+      "path": [
+        {
+          "x": 62,
+          "y": 21
+        },
+        {
+          "x": 63,
+          "y": 21
+        },
+        {
+          "x": 64,
+          "y": 21
+        },
+        {
+          "x": 65,
+          "y": 21
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 11,
+      "path": [
+        {
+          "x": 42,
+          "y": 31
+        },
+        {
+          "x": 41,
+          "y": 31
+        },
+        {
+          "x": 41,
+          "y": 30
+        },
+        {
+          "x": 41,
+          "y": 29
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 13,
+      "path": [
+        {
+          "x": 48,
+          "y": 33
+        },
+        {
+          "x": 47,
+          "y": 33
+        },
+        {
+          "x": 46,
+          "y": 33
+        },
+        {
+          "x": 45,
+          "y": 33
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "command",
+      "unit": 21,
+      "path": [
+        {
+          "x": 39,
+          "y": 15
+        },
+        {
+          "x": 39,
+          "y": 14
+        },
+        {
+          "x": 38,
+          "y": 14
+        },
+        {
+          "x": 37,
+          "y": 14
+        },
+        {
+          "x": 36,
+          "y": 14
+        },
+        {
+          "x": 35,
+          "y": 14
+        }
+      ],
+      "command": {
+        "ability": "capture"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 17,
+      "path": [
+        {
+          "x": 70,
+          "y": 15
+        },
+        {
+          "x": 71,
+          "y": 15
+        },
+        {
+          "x": 71,
+          "y": 16
+        },
+        {
+          "x": 71,
+          "y": 17
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.border-blade",
+        "target": {
+          "x": 71,
+          "y": 18
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 15,
+      "path": [
+        {
+          "x": 33,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 16,
+      "path": [
+        {
+          "x": 29,
+          "y": 30
+        },
+        {
+          "x": 30,
+          "y": 30
+        },
+        {
+          "x": 31,
+          "y": 30
+        },
+        {
+          "x": 32,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 19,
+      "path": [
+        {
+          "x": 62,
+          "y": 29
+        },
+        {
+          "x": 63,
+          "y": 29
+        },
+        {
+          "x": 63,
+          "y": 30
+        },
+        {
+          "x": 64,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 18,
+      "path": [
+        {
+          "x": 72,
+          "y": 29
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 22,
+      "path": [
+        {
+          "x": 71,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 20,
+      "path": [
+        {
+          "x": 25,
+          "y": 32
+        },
+        {
+          "x": 26,
+          "y": 32
+        },
+        {
+          "x": 27,
+          "y": 32
+        },
+        {
+          "x": 28,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "reaction",
+      "unit": 4,
+      "stance": "support"
+    },
+    {
+      "kind": "command",
+      "unit": 1,
+      "path": [
+        {
+          "x": 41,
+          "y": 22
+        },
+        {
+          "x": 40,
+          "y": 22
+        },
+        {
+          "x": 39,
+          "y": 22
+        },
+        {
+          "x": 39,
+          "y": 21
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "reaction",
+      "unit": 4,
+      "stance": "conserve"
+    },
+    {
+      "kind": "command",
+      "unit": 3,
+      "path": [
+        {
+          "x": 40,
+          "y": 26
+        },
+        {
+          "x": 41,
+          "y": 26
+        },
+        {
+          "x": 42,
+          "y": 26
+        },
+        {
+          "x": 43,
+          "y": 26
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 4,
+      "path": [
+        {
+          "x": 40,
+          "y": 22
+        },
+        {
+          "x": 39,
+          "y": 22
+        },
+        {
+          "x": 39,
+          "y": 21
+        },
+        {
+          "x": 39,
+          "y": 20
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 6,
+      "path": [
+        {
+          "x": 39,
+          "y": 17
+        },
+        {
+          "x": 39,
+          "y": 16
+        },
+        {
+          "x": 39,
+          "y": 15
+        },
+        {
+          "x": 39,
+          "y": 14
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 7,
+      "path": [
+        {
+          "x": 71,
+          "y": 18
+        },
+        {
+          "x": 70,
+          "y": 18
+        },
+        {
+          "x": 70,
+          "y": 17
+        },
+        {
+          "x": 70,
+          "y": 16
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 8,
+      "path": [
+        {
+          "x": 41,
+          "y": 27
+        },
+        {
+          "x": 41,
+          "y": 26
+        },
+        {
+          "x": 41,
+          "y": 25
+        },
+        {
+          "x": 41,
+          "y": 24
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 9,
+      "path": [
+        {
+          "x": 41,
+          "y": 23
+        },
+        {
+          "x": 41,
+          "y": 22
+        },
+        {
+          "x": 40,
+          "y": 22
+        },
+        {
+          "x": 39,
+          "y": 22
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 10,
+      "path": [
+        {
+          "x": 65,
+          "y": 21
+        },
+        {
+          "x": 66,
+          "y": 21
+        },
+        {
+          "x": 67,
+          "y": 21
+        },
+        {
+          "x": 68,
+          "y": 21
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 11,
+      "path": [
+        {
+          "x": 41,
+          "y": 29
+        },
+        {
+          "x": 41,
+          "y": 28
+        },
+        {
+          "x": 41,
+          "y": 27
+        },
+        {
+          "x": 41,
+          "y": 26
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 13,
+      "path": [
+        {
+          "x": 45,
+          "y": 33
+        },
+        {
+          "x": 45,
+          "y": 32
+        },
+        {
+          "x": 44,
+          "y": 32
+        },
+        {
+          "x": 43,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "reaction",
+      "unit": 15,
+      "stance": "counter"
+    },
+    {
+      "kind": "command",
+      "unit": 21,
+      "path": [
+        {
+          "x": 35,
+          "y": 14
+        }
+      ],
+      "command": {
+        "ability": "capture"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 17,
+      "path": [
+        {
+          "x": 71,
+          "y": 17
+        },
+        {
+          "x": 70,
+          "y": 17
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.border-blade",
+        "target": {
+          "x": 70,
+          "y": 16
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 15,
+      "path": [
+        {
+          "x": 33,
+          "y": 30
+        },
+        {
+          "x": 34,
+          "y": 30
+        },
+        {
+          "x": 35,
+          "y": 30
+        },
+        {
+          "x": 36,
+          "y": 30
+        },
+        {
+          "x": 37,
+          "y": 30
+        },
+        {
+          "x": 38,
+          "y": 30
+        },
+        {
+          "x": 39,
+          "y": 30
+        },
+        {
+          "x": 39,
+          "y": 31
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 16,
+      "path": [
+        {
+          "x": 32,
+          "y": 30
+        },
+        {
+          "x": 33,
+          "y": 30
+        },
+        {
+          "x": 34,
+          "y": 30
+        },
+        {
+          "x": 35,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 18,
+      "path": [
+        {
+          "x": 72,
+          "y": 29
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 22,
+      "path": [
+        {
+          "x": 71,
+          "y": 30
+        },
+        {
+          "x": 71,
+          "y": 31
+        },
+        {
+          "x": 70,
+          "y": 31
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 20,
+      "path": [
+        {
+          "x": 28,
+          "y": 32
+        },
+        {
+          "x": 29,
+          "y": 32
+        },
+        {
+          "x": 30,
+          "y": 32
+        },
+        {
+          "x": 31,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 19,
+      "path": [
+        {
+          "x": 64,
+          "y": 30
+        },
+        {
+          "x": 65,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "tactic",
+      "commander": "laiya-command",
+      "tactic": "c01.gray-rally",
+      "target": {
+        "x": 39,
+        "y": 20
+      }
+    },
+    {
+      "kind": "reaction",
+      "unit": 4,
+      "stance": "support"
+    },
+    {
+      "kind": "command",
+      "unit": 6,
+      "path": [
+        {
+          "x": 39,
+          "y": 14
+        },
+        {
+          "x": 38,
+          "y": 14
+        },
+        {
+          "x": 37,
+          "y": 14
+        },
+        {
+          "x": 36,
+          "y": 14
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.guard-spear",
+        "target": {
+          "x": 35,
+          "y": 14
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 1,
+      "path": [
+        {
+          "x": 39,
+          "y": 21
+        },
+        {
+          "x": 39,
+          "y": 20
+        },
+        {
+          "x": 39,
+          "y": 19
+        },
+        {
+          "x": 39,
+          "y": 18
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "reaction",
+      "unit": 4,
+      "stance": "conserve"
+    },
+    {
+      "kind": "command",
+      "unit": 3,
+      "path": [
+        {
+          "x": 43,
+          "y": 26
+        },
+        {
+          "x": 44,
+          "y": 26
+        },
+        {
+          "x": 45,
+          "y": 26
+        },
+        {
+          "x": 46,
+          "y": 26
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 4,
+      "path": [
+        {
+          "x": 39,
+          "y": 20
+        },
+        {
+          "x": 39,
+          "y": 19
+        },
+        {
+          "x": 39,
+          "y": 18
+        },
+        {
+          "x": 39,
+          "y": 17
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 7,
+      "path": [
+        {
+          "x": 70,
+          "y": 16
+        },
+        {
+          "x": 70,
+          "y": 15
+        },
+        {
+          "x": 70,
+          "y": 14
+        },
+        {
+          "x": 69,
+          "y": 14
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 10,
+      "path": [
+        {
+          "x": 68,
+          "y": 21
+        },
+        {
+          "x": 68,
+          "y": 20
+        },
+        {
+          "x": 69,
+          "y": 20
+        },
+        {
+          "x": 70,
+          "y": 20
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.ranger-bow",
+        "target": {
+          "x": 70,
+          "y": 17
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 8,
+      "path": [
+        {
+          "x": 41,
+          "y": 24
+        },
+        {
+          "x": 41,
+          "y": 23
+        },
+        {
+          "x": 41,
+          "y": 22
+        },
+        {
+          "x": 40,
+          "y": 22
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 9,
+      "path": [
+        {
+          "x": 39,
+          "y": 22
+        },
+        {
+          "x": 39,
+          "y": 21
+        },
+        {
+          "x": 39,
+          "y": 20
+        },
+        {
+          "x": 39,
+          "y": 19
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 11,
+      "path": [
+        {
+          "x": 41,
+          "y": 26
+        },
+        {
+          "x": 42,
+          "y": 26
+        },
+        {
+          "x": 43,
+          "y": 26
+        },
+        {
+          "x": 44,
+          "y": 26
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 13,
+      "path": [
+        {
+          "x": 43,
+          "y": 32
+        },
+        {
+          "x": 42,
+          "y": 32
+        },
+        {
+          "x": 42,
+          "y": 31
+        },
+        {
+          "x": 41,
+          "y": 31
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "command",
+      "unit": 17,
+      "path": [
+        {
+          "x": 70,
+          "y": 17
+        },
+        {
+          "x": 70,
+          "y": 18
+        },
+        {
+          "x": 70,
+          "y": 19
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.border-blade",
+        "target": {
+          "x": 70,
+          "y": 20
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 15,
+      "path": [
+        {
+          "x": 39,
+          "y": 31
+        },
+        {
+          "x": 40,
+          "y": 31
+        },
+        {
+          "x": 40,
+          "y": 32
+        },
+        {
+          "x": 41,
+          "y": 32
+        },
+        {
+          "x": 42,
+          "y": 32
+        },
+        {
+          "x": 42,
+          "y": 31
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.wolf-spear",
+        "target": {
+          "x": 41,
+          "y": 31
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 16,
+      "path": [
+        {
+          "x": 35,
+          "y": 30
+        },
+        {
+          "x": 36,
+          "y": 30
+        },
+        {
+          "x": 37,
+          "y": 30
+        },
+        {
+          "x": 38,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 20,
+      "path": [
+        {
+          "x": 31,
+          "y": 32
+        },
+        {
+          "x": 31,
+          "y": 31
+        },
+        {
+          "x": 32,
+          "y": 31
+        },
+        {
+          "x": 33,
+          "y": 31
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 18,
+      "path": [
+        {
+          "x": 72,
+          "y": 29
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 22,
+      "path": [
+        {
+          "x": 70,
+          "y": 31
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 19,
+      "path": [
+        {
+          "x": 65,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "reaction",
+      "unit": 4,
+      "stance": "support"
+    },
+    {
+      "kind": "command",
+      "unit": 6,
+      "path": [
+        {
+          "x": 36,
+          "y": 14
+        },
+        {
+          "x": 35,
+          "y": 14
+        }
+      ],
+      "command": {
+        "ability": "capture"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 3,
+      "path": [
+        {
+          "x": 46,
+          "y": 26
+        },
+        {
+          "x": 47,
+          "y": 26
+        },
+        {
+          "x": 48,
+          "y": 26
+        },
+        {
+          "x": 49,
+          "y": 26
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 7,
+      "path": [
+        {
+          "x": 69,
+          "y": 14
+        },
+        {
+          "x": 68,
+          "y": 14
+        },
+        {
+          "x": 67,
+          "y": 14
+        },
+        {
+          "x": 66,
+          "y": 14
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 13,
+      "path": [
+        {
+          "x": 41,
+          "y": 31
+        },
+        {
+          "x": 41,
+          "y": 32
+        },
+        {
+          "x": 42,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.border-blade",
+        "target": {
+          "x": 42,
+          "y": 31
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 10,
+      "path": [
+        {
+          "x": 70,
+          "y": 20
+        },
+        {
+          "x": 69,
+          "y": 20
+        },
+        {
+          "x": 68,
+          "y": 20
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.ranger-bow",
+        "target": {
+          "x": 70,
+          "y": 19
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 11,
+      "path": [
+        {
+          "x": 44,
+          "y": 26
+        },
+        {
+          "x": 45,
+          "y": 26
+        },
+        {
+          "x": 46,
+          "y": 26
+        },
+        {
+          "x": 47,
+          "y": 26
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 8,
+      "path": [
+        {
+          "x": 40,
+          "y": 22
+        },
+        {
+          "x": 41,
+          "y": 22
+        },
+        {
+          "x": 41,
+          "y": 23
+        },
+        {
+          "x": 41,
+          "y": 24
+        },
+        {
+          "x": 41,
+          "y": 25
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 1,
+      "path": [
+        {
+          "x": 39,
+          "y": 18
+        },
+        {
+          "x": 39,
+          "y": 19
+        },
+        {
+          "x": 39,
+          "y": 20
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "reaction",
+      "unit": 4,
+      "stance": "conserve"
+    },
+    {
+      "kind": "command",
+      "unit": 9,
+      "path": [
+        {
+          "x": 39,
+          "y": 19
+        },
+        {
+          "x": 39,
+          "y": 20
+        },
+        {
+          "x": 39,
+          "y": 21
+        },
+        {
+          "x": 39,
+          "y": 22
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 4,
+      "path": [
+        {
+          "x": 39,
+          "y": 17
+        },
+        {
+          "x": 39,
+          "y": 18
+        },
+        {
+          "x": 39,
+          "y": 19
+        },
+        {
+          "x": 38,
+          "y": 19
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "reaction",
+      "unit": 17,
+      "stance": "guard"
+    },
+    {
+      "kind": "command",
+      "unit": 17,
+      "path": [
+        {
+          "x": 70,
+          "y": 19
+        },
+        {
+          "x": 70,
+          "y": 20
+        },
+        {
+          "x": 69,
+          "y": 20
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.border-blade",
+        "target": {
+          "x": 68,
+          "y": 20
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 16,
+      "path": [
+        {
+          "x": 38,
+          "y": 30
+        },
+        {
+          "x": 39,
+          "y": 30
+        },
+        {
+          "x": 39,
+          "y": 31
+        },
+        {
+          "x": 39,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 20,
+      "path": [
+        {
+          "x": 33,
+          "y": 31
+        },
+        {
+          "x": 34,
+          "y": 31
+        },
+        {
+          "x": 35,
+          "y": 31
+        },
+        {
+          "x": 36,
+          "y": 31
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 22,
+      "path": [
+        {
+          "x": 70,
+          "y": 31
+        },
+        {
+          "x": 70,
+          "y": 32
+        },
+        {
+          "x": 69,
+          "y": 32
+        },
+        {
+          "x": 68,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 18,
+      "path": [
+        {
+          "x": 72,
+          "y": 29
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 19,
+      "path": [
+        {
+          "x": 65,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "tactic",
+      "commander": "laiya-command",
+      "tactic": "c01.gray-rally",
+      "target": {
+        "x": 39,
+        "y": 20
+      }
+    },
+    {
+      "kind": "reaction",
+      "unit": 10,
+      "stance": "guard"
+    },
+    {
+      "kind": "command",
+      "unit": 7,
+      "path": [
+        {
+          "x": 66,
+          "y": 14
+        },
+        {
+          "x": 65,
+          "y": 14
+        }
+      ],
+      "command": {
+        "ability": "capture"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 3,
+      "path": [
+        {
+          "x": 49,
+          "y": 26
+        },
+        {
+          "x": 50,
+          "y": 26
+        },
+        {
+          "x": 51,
+          "y": 26
+        },
+        {
+          "x": 52,
+          "y": 26
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 10,
+      "path": [
+        {
+          "x": 68,
+          "y": 20
+        },
+        {
+          "x": 69,
+          "y": 20
+        },
+        {
+          "x": 70,
+          "y": 20
+        },
+        {
+          "x": 70,
+          "y": 19
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 13,
+      "path": [
+        {
+          "x": 42,
+          "y": 32
+        },
+        {
+          "x": 41,
+          "y": 32
+        },
+        {
+          "x": 40,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.border-blade",
+        "target": {
+          "x": 39,
+          "y": 32
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 11,
+      "path": [
+        {
+          "x": 47,
+          "y": 26
+        },
+        {
+          "x": 48,
+          "y": 26
+        },
+        {
+          "x": 49,
+          "y": 26
+        },
+        {
+          "x": 50,
+          "y": 26
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 8,
+      "path": [
+        {
+          "x": 41,
+          "y": 25
+        },
+        {
+          "x": 41,
+          "y": 26
+        },
+        {
+          "x": 41,
+          "y": 27
+        },
+        {
+          "x": 41,
+          "y": 28
+        },
+        {
+          "x": 41,
+          "y": 29
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 1,
+      "path": [
+        {
+          "x": 39,
+          "y": 20
+        },
+        {
+          "x": 39,
+          "y": 21
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 9,
+      "path": [
+        {
+          "x": 39,
+          "y": 22
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 4,
+      "path": [
+        {
+          "x": 38,
+          "y": 19
+        },
+        {
+          "x": 39,
+          "y": 19
+        },
+        {
+          "x": 39,
+          "y": 20
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 6,
+      "path": [
+        {
+          "x": 35,
+          "y": 14
+        },
+        {
+          "x": 36,
+          "y": 14
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "command",
+      "unit": 20,
+      "path": [
+        {
+          "x": 36,
+          "y": 31
+        },
+        {
+          "x": 37,
+          "y": 31
+        },
+        {
+          "x": 37,
+          "y": 32
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.ranger-bow",
+        "target": {
+          "x": 40,
+          "y": 32
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 16,
+      "path": [
+        {
+          "x": 39,
+          "y": 32
+        },
+        {
+          "x": 39,
+          "y": 31
+        },
+        {
+          "x": 39,
+          "y": 30
+        },
+        {
+          "x": 39,
+          "y": 29
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 18,
+      "path": [
+        {
+          "x": 72,
+          "y": 29
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 22,
+      "path": [
+        {
+          "x": 68,
+          "y": 32
+        },
+        {
+          "x": 69,
+          "y": 32
+        },
+        {
+          "x": 70,
+          "y": 32
+        },
+        {
+          "x": 70,
+          "y": 31
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 19,
+      "path": [
+        {
+          "x": 65,
+          "y": 30
+        },
+        {
+          "x": 64,
+          "y": 30
+        },
+        {
+          "x": 63,
+          "y": 30
+        },
+        {
+          "x": 63,
+          "y": 29
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "reaction",
+      "unit": 4,
+      "stance": "support"
+    },
+    {
+      "kind": "command",
+      "unit": 7,
+      "path": [
+        {
+          "x": 65,
+          "y": 14
+        }
+      ],
+      "command": {
+        "ability": "capture"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 8,
+      "path": [
+        {
+          "x": 41,
+          "y": 29
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.satchel-charge",
+        "target": {
+          "x": 39,
+          "y": 29
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 3,
+      "path": [
+        {
+          "x": 52,
+          "y": 26
+        },
+        {
+          "x": 53,
+          "y": 26
+        },
+        {
+          "x": 54,
+          "y": 26
+        },
+        {
+          "x": 55,
+          "y": 26
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 10,
+      "path": [
+        {
+          "x": 70,
+          "y": 19
+        },
+        {
+          "x": 70,
+          "y": 18
+        },
+        {
+          "x": 70,
+          "y": 17
+        },
+        {
+          "x": 70,
+          "y": 16
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 11,
+      "path": [
+        {
+          "x": 50,
+          "y": 26
+        },
+        {
+          "x": 51,
+          "y": 26
+        },
+        {
+          "x": 52,
+          "y": 26
+        },
+        {
+          "x": 53,
+          "y": 26
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 1,
+      "path": [
+        {
+          "x": 39,
+          "y": 21
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 9,
+      "path": [
+        {
+          "x": 39,
+          "y": 22
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 4,
+      "path": [
+        {
+          "x": 39,
+          "y": 20
+        },
+        {
+          "x": 39,
+          "y": 21
+        },
+        {
+          "x": 39,
+          "y": 22
+        },
+        {
+          "x": 40,
+          "y": 22
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 6,
+      "path": [
+        {
+          "x": 36,
+          "y": 14
+        },
+        {
+          "x": 37,
+          "y": 14
+        },
+        {
+          "x": 38,
+          "y": 14
+        },
+        {
+          "x": 39,
+          "y": 14
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "reaction",
+      "unit": 16,
+      "stance": "guard"
+    },
+    {
+      "kind": "command",
+      "unit": 16,
+      "path": [
+        {
+          "x": 39,
+          "y": 29
+        },
+        {
+          "x": 40,
+          "y": 29
+        },
+        {
+          "x": 40,
+          "y": 30
+        },
+        {
+          "x": 41,
+          "y": 30
+        }
+      ],
+      "command": {
+        "ability": "attack",
+        "weapon": "c01.border-blade",
+        "target": {
+          "x": 41,
+          "y": 29
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 20,
+      "path": [
+        {
+          "x": 37,
+          "y": 32
+        },
+        {
+          "x": 37,
+          "y": 31
+        },
+        {
+          "x": 38,
+          "y": 31
+        },
+        {
+          "x": 39,
+          "y": 31
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 19,
+      "path": [
+        {
+          "x": 63,
+          "y": 29
+        },
+        {
+          "x": 62,
+          "y": 29
+        },
+        {
+          "x": 61,
+          "y": 29
+        },
+        {
+          "x": 60,
+          "y": 29
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 18,
+      "path": [
+        {
+          "x": 72,
+          "y": 29
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 22,
+      "path": [
+        {
+          "x": 70,
+          "y": 31
+        }
+      ],
+      "command": {
+        "ability": "wait"
+      }
+    },
+    {
+      "kind": "endTurn"
+    },
+    {
+      "kind": "tactic",
+      "commander": "laiya-command",
+      "tactic": "c01.gray-rally",
+      "target": {
+        "x": 39,
+        "y": 21
+      }
+    },
+    {
+      "kind": "command",
+      "unit": 7,
+      "path": [
+        {
+          "x": 65,
+          "y": 14
+        }
+      ],
+      "command": {
+        "ability": "capture"
+      }
+    }
+  ],
+  "stateHashes": [
+    "a33be11a",
+    "344be243",
+    "600d55ad",
+    "2ff4b2e4",
+    "dcb3c7f0",
+    "3b8644db",
+    "b5956c14",
+    "81764dd2",
+    "360ff4b6",
+    "78a34c27",
+    "179952f1",
+    "b6427160",
+    "6b6a2310",
+    "49430c0b",
+    "8e006c92",
+    "82a8732d",
+    "8a4c2bdb",
+    "e0e960fc",
+    "465e345e",
+    "8a8387d9",
+    "a1664b8b",
+    "57f6cb37",
+    "15a07ec3",
+    "3befbd78",
+    "50fc0b0d",
+    "0ebc8a88",
+    "ba17b67f",
+    "77064a17",
+    "ec05c0bd",
+    "b4ec8200",
+    "f9d631e0",
+    "77b5d12c",
+    "b2d23d68",
+    "6aaa536c",
+    "c9d4ba5a",
+    "af025659",
+    "128eeeae",
+    "1cec36cb",
+    "c5a64e90",
+    "c9084579",
+    "35470fa9",
+    "c9f7e8bb",
+    "51b63c3c",
+    "0c92e846",
+    "e646d536",
+    "f6453270",
+    "34181ba2",
+    "f86c78b5",
+    "338be41c",
+    "a1e1b547",
+    "82b210b6",
+    "214139ce",
+    "ccf623c2",
+    "da372782",
+    "79545b3b",
+    "8b438398",
+    "7ca6eb1c",
+    "74ddf50f",
+    "793fdb9b",
+    "ca1ad102",
+    "8e2d2fa6",
+    "1a0d6c17",
+    "2d0befdb",
+    "41e0cc6d",
+    "437fb3c3",
+    "f26e62b6",
+    "d8a0702e",
+    "852ef862",
+    "dc53bb68",
+    "2eb31153",
+    "a126b877",
+    "c403c2e6",
+    "1a487a73",
+    "c840ab80",
+    "086d9e5f",
+    "c2eb649c",
+    "a09832c1",
+    "82409ca1",
+    "51fe8138",
+    "6a209ec9",
+    "0ab685ca",
+    "2370fede",
+    "461871fa",
+    "d38e4c5c",
+    "5c6494e6",
+    "6831a0c1",
+    "71b3f4ee",
+    "2e5d8903",
+    "efdef0d7",
+    "51a3bb00",
+    "dd862d3f",
+    "a7135b79",
+    "0c19f05f",
+    "adb43f6f",
+    "73258196",
+    "cee40ea3",
+    "38bc1d59",
+    "b73d6820",
+    "309db480",
+    "8a2d7e56",
+    "bec51899",
+    "9b5247aa",
+    "2026fc2a",
+    "a9a9d39c",
+    "f1e421f3",
+    "09b26213",
+    "e4b82db0",
+    "0281c42c",
+    "28c26e20",
+    "f9d6ff29",
+    "e7194361",
+    "14cc6035",
+    "ddeec9b8",
+    "4baf69a8",
+    "9ed77679",
+    "cc19c47a",
+    "f44da0c9",
+    "b74cf8f6",
+    "5aef1b37",
+    "9e9ffe0f",
+    "9b442639",
+    "8999b032",
+    "4700efaf",
+    "0ef47f28",
+    "0d5b15ca",
+    "16a647bb",
+    "5079fa3c",
+    "ea6b2ef8",
+    "11501b78",
+    "a7a07b0c",
+    "fe891719",
+    "16079555",
+    "7b8d27e8",
+    "4acf8777",
+    "1f60d95e",
+    "e538592f",
+    "85bbbdd8",
+    "080e4bf9",
+    "a54d0cc0",
+    "cf136801",
+    "6e5a6377",
+    "33c32a09",
+    "6dac99fb",
+    "82eff4fb",
+    "55688a23",
+    "e0bd68ec",
+    "66b39390",
+    "110e6d72",
+    "196c2f59",
+    "b344e43f",
+    "96fb7bea",
+    "ceab8399",
+    "ebaa22e7",
+    "11714c1e",
+    "cfe09af9",
+    "aaf43dda",
+    "2601c312",
+    "925f579e",
+    "e3f2da3b",
+    "04392e0b",
+    "86e6d382",
+    "fc2fadcf",
+    "c13d7946",
+    "3c7dbd29",
+    "3113d3b9",
+    "4ff5745c",
+    "2d2dde31",
+    "04b18a8c",
+    "b7d9f1e1",
+    "c44d4aea",
+    "f357402b",
+    "9573447f",
+    "1e6613a4",
+    "7f07b24a",
+    "13031dba",
+    "7e9c648f",
+    "144d89a0",
+    "5d08e378",
+    "1f9642e4",
+    "a34a2200",
+    "c55a80ab",
+    "25493a1b",
+    "c6a00ae0",
+    "e2de8733",
+    "0b884b0f",
+    "3187b596",
+    "bcc19475",
+    "20c1379f",
+    "4df308f0",
+    "ac238986",
+    "3ffaa988",
+    "6112d16f",
+    "d26245c3",
+    "b2aa520f",
+    "fe1aadd3",
+    "f47736d8",
+    "491b5c25",
+    "60f837b2",
+    "6cdc17b1",
+    "9d64b2a0",
+    "e5a3f8ad",
+    "13d07408",
+    "8417ff14",
+    "31402257",
+    "f680342a",
+    "9ec8eb1d",
+    "f72153e4",
+    "ceaf291c",
+    "73b15f30",
+    "77099940",
+    "5b6a5931",
+    "50f4c4b3",
+    "9c7bc4ff",
+    "e8190ae8",
+    "ad519ba8",
+    "a7b0da5d",
+    "629254d5",
+    "3fe96fb5",
+    "3f4439f1",
+    "22543450",
+    "ea7bc96c",
+    "0d7baa91",
+    "660b6116",
+    "df0b3d62",
+    "d66b3a91",
+    "9883d149",
+    "42c65c68",
+    "2042841f",
+    "ff1b01c9",
+    "653ab304",
+    "bfbd092a",
+    "90e09d16",
+    "3f006fed",
+    "b7f9f320",
+    "fd9b0ba4",
+    "861e1e2b",
+    "004d34d2",
+    "3b16b2b2",
+    "6ec84db5",
+    "24e66206",
+    "886e0d76",
+    "ecf10625",
+    "b52b4416",
+    "18100b57",
+    "b3c8efe0",
+    "e158784a",
+    "0c5f4ed9",
+    "9e0cd190",
+    "c65965f1",
+    "cb46ef8e",
+    "074cd955",
+    "4c2e4ef4",
+    "3f3ec677",
+    "31179101",
+    "5de9dfa3",
+    "d7a23749",
+    "b8827efc",
+    "45ee5965",
+    "90c06180",
+    "d3584223",
+    "cef390bb",
+    "5808164c",
+    "ce680ba7"
+  ]
+}

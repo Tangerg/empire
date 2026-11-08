@@ -1,0 +1,66 @@
+using System.Text.Json.Nodes;
+using Empire.Core.Engine;
+using Empire.Core.Geometry;
+using Empire.Core.Tactics;
+using Empire.Core.Determinism;
+
+var root = Path.GetFullPath(args[0]);
+var packs = JsonNode.Parse(File.ReadAllText(Path.Combine(root,"data/content-packs.json")))!.AsArray();
+var level = JsonNode.Parse(File.ReadAllText(Path.Combine(root,"data/grayflag-campaign-levels.json")))!.AsArray().OfType<JsonObject>().Single(x=>x["id"]!.GetValue<string>()=="c01-07");
+if(args.Length>2) level=JsonNode.Parse(File.ReadAllText(args[2]))!.AsObject();
+var engine = new BattleEngine(packs);
+var battle = engine.CreateBattle(level);
+var width = level["width"]!.GetValue<int>();
+var zones = level["scenario"]!["zones"]!.AsArray().OfType<JsonObject>().ToDictionary(x=>x["id"]!.GetValue<string>(),x=>TacticalQueries.Position(x["cells"]![0]!.AsObject()));
+var assignments = level["units"]!.AsArray().OfType<JsonObject>().Where(u=>u["owner"]!.GetValue<int>()==1).Select(u=>(Key:u["key"]!.GetValue<string>(),Zone:u["x"]!.GetValue<int>()<=49?"granary":"militia-barracks")).ToArray();
+var actions = new JsonArray();
+var hashes = new JsonArray();
+int previousTurn = 0;
+while (actions.Count < 1024)
+{
+ var state = battle.Snapshot();
+ if(state["phase"]!.GetValue<string>()!="playing")break;
+ var turn=state["turn"]!.GetValue<int>();
+ if(turn!=previousTurn){Console.WriteLine($"TURN {turn}, hash {battle.StateHash}");previousTurn=turn;}
+ JsonObject? chosen=null;
+ if(state["currentPlayer"]!.GetValue<int>()==1)
+ {
+  var proposed=engine.Ai.ChooseAction(state,0.58);
+  if(proposed["kind"]!.GetValue<string>()!="command" || proposed["command"]!["ability"]!.GetValue<string>()!="wait")chosen=proposed;
+  if(chosen is null)
+  {
+  foreach(var assignment in assignments)
+  {
+   var target=zones[assignment.Zone];
+   if(state["players"]![0]!["objectiveStates"]?[assignment.Zone]?["status"]?.GetValue<string>()=="completed")continue;
+   var actor=state["units"]!.AsArray().OfType<JsonObject>().SingleOrDefault(u=>u["key"]?.GetValue<string>()==assignment.Key);
+   if(actor is null || !engine.Turns.CanAct(state,actor))continue;
+   var field=engine.Space.ComputeMoveField(state,actor);
+   var distances=new Dictionary<Coord,int>{{target,0}};
+   var queue=new Queue<Coord>();queue.Enqueue(target);
+   var battlefield=new MovementRules(new(engine.Catalog,engine.Grids)).Battlefield(state);
+   while(queue.Count>0){var cell=queue.Dequeue();foreach(var next in engine.Space.Board(state).Neighbours(cell))if(battlefield.Cell(next).Admits("foot")&&!distances.ContainsKey(next)){distances[next]=distances[cell]+1;queue.Enqueue(next);}}
+   var origin=TacticalQueries.Position(actor);
+   var stops=field.Stops.Select(i=>new Coord(i%width,i/width)).Where(distances.ContainsKey).OrderBy(c=>distances[c]).ThenBy(c=>c.Y).ThenBy(c=>c.X).ToArray();
+   if(stops.Length==0)continue;
+   var best=stops[0];
+   if(best!=target && (!distances.ContainsKey(origin)||distances[best]>=distances[origin]))continue;
+   var path=engine.Space.PathTo(field,state,best);
+   if(path is null)continue;
+   var ability=best==target ? "capture":"wait";
+   if(!engine.CommandsAt(state,actor,best).Any(o=>o.Ability==ability))continue;
+   chosen=new JsonObject{{"kind","command"},{"unit",actor["id"]!.DeepClone()},{"path",TacticalQueries.PathJson(path)},{"command",new JsonObject{{"ability",ability}}}};
+   Console.WriteLine($"OBJECTIVE {turn} {assignment.Key} {origin} -> {best} {ability}");
+   break;
+  }
+  }
+ }
+ chosen??=state["currentPlayer"]!.GetValue<int>()==1?engine.Ai.ChooseAction(state,0.58):engine.Ai.ChooseAction(state);
+ battle.Dispatch(chosen);
+ actions.Add(chosen.DeepClone());hashes.Add(battle.StateHash);
+}
+var final=battle.Snapshot();
+Console.WriteLine($"TERMINAL steps={actions.Count}, turn={final["turn"]}, phase={final["phase"]}, conclusion={final["conclusion"]}, hash={battle.StateHash}");
+File.WriteAllText(Path.Combine(args[1],"actions.json"),actions.ToJsonString());
+File.WriteAllText(Path.Combine(args[1],"hashes.json"),hashes.ToJsonString());
+File.WriteAllText(Path.Combine(args[1],"terminal.json"),final.ToJsonString());
