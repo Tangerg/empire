@@ -16,8 +16,106 @@
     "negativeStaleCopy": "rejected, exit 1",
     "negativeShrunkenBroadPhase": "rejected, exit 1",
     "restoredOracle": "passed",
-    "fullAggregate": "pending",
+    "fullAggregate": "passed",
     "graphicalAcceptance": "not run, no working display"
   },
-  "evidenceSha256": "ea39338868a853a6b3b750b486967075a95e15b58ea78532d15a7ca41e8d4e16"
+  "evidenceSha256": "ea39338868a853a6b3b750b486967075a95e15b58ea78532d15a7ca41e8d4e16",
+  "fullAggregate": {
+    "testedCommit": "37978970122f07564dd74f93e3b63863a7553f7c",
+    "exit": 0,
+    "elapsedSeconds": 1982,
+    "uninterruptedOriginalGate": true,
+    "nativeSceneCount": 31,
+    "aiReplayComparison": {
+      "count": 16,
+      "allMatch": true,
+      "baseline": "godot/docs/verification/bounded-surface-recovery-20261107.json",
+      "aiTraces": [
+        {
+          "level": "c01-01",
+          "steps": 156,
+          "actionEventReceiptSha256": "20e90377ee316e831d17e4f9d165536500d4ae379850f198d91d930e0e771d17"
+        },
+        {
+          "level": "c01-02",
+          "steps": 421,
+          "actionEventReceiptSha256": "b026ba1db2b0495a4bb65d5e1c1e1bb4632b540e0a7aa84067c132b9cb0632b0"
+        },
+        {
+          "level": "c01-03",
+          "steps": 116,
+          "actionEventReceiptSha256": "a5fdff17e2ebc198717a60473be0a4805df9cfdda9ce38ff938dbda010c7deed"
+        },
+        {
+          "level": "c01-04",
+          "steps": 234,
+          "actionEventReceiptSha256": "156730525210e393732c2d8fe808d92d4f8675b23d2e1fc5c5c68346948b574b"
+        },
+        {
+          "level": "c01-05",
+          "steps": 169,
+          "actionEventReceiptSha256": "f4b44a6002f6bd3975beedd69c0ba9e7b23700b684af9e84c754de7efda837a5"
+        },
+        {
+          "level": "c01-06",
+          "steps": 130,
+          "actionEventReceiptSha256": "f39bbdadabffe8cd697676b84a754364d9340300c7ab4b336eac91618d119c05"
+        },
+        {
+          "level": "c01-07",
+          "steps": 311,
+          "actionEventReceiptSha256": "c6b3bf04f0718633bfd105f839673dba774a89ecbd978cfd0fff72c364ad42f5"
+        },
+        {
+          "level": "c01-08",
+          "steps": 144,
+          "actionEventReceiptSha256": "3ce380648ae32e8b965d335b9087b96d99299228b18e51ff417822be583d1c74"
+        },
+        {
+          "level": "c01-09",
+          "steps": 59,
+          "actionEventReceiptSha256": "2b24e3c596b908c53bc573605bec49e9cc67a63446ffcef962de8d835698bab0"
+        },
+        {
+          "level": "c01-10",
+          "steps": 152,
+          "actionEventReceiptSha256": "a89c48de6ac386d7617e286b59814409bcc12dac8279e9c663eba17b29e9dd54"
+        },
+        {
+          "level": "c01-11",
+          "steps": 268,
+          "actionEventReceiptSha256": "5748ce7fded062055db6d4a1bfe97eca579f2fdb7464026b8d9d7d0f380f0768"
+        },
+        {
+          "level": "c01-12",
+          "steps": 117,
+          "actionEventReceiptSha256": "ae9d694bfc75071f38b4ea1d9db302d59722ad9798b397a4a9249a04df8a3eac"
+        },
+        {
+          "level": "c01-13",
+          "steps": 195,
+          "actionEventReceiptSha256": "430328e385ec68bcab97a3ea45bb7a89e7a17d2a2f28f5af06cfd385a1d3bd26"
+        },
+        {
+          "level": "c01-14",
+          "steps": 339,
+          "actionEventReceiptSha256": "7ce296acd0b85ca773728562b95067548a7d39fa9f88b2bb4cadd313dbcc4c06"
+        },
+        {
+          "level": "c01-15",
+          "steps": 236,
+          "actionEventReceiptSha256": "ee680bb1836eb2f8e8528587d5d7c7ae1f5f1856dff4bbb94ee96097392b4d42"
+        },
+        {
+          "level": "c01-16",
+          "steps": 378,
+          "actionEventReceiptSha256": "b61226395df40354816d29650a2bdaac13e7d546adb51f903fd98fab41824d08"
+        }
+      ]
+    },
+    "campaignPlayedAssertions": 20226,
+    "campaignBoundary": "C01/C02 victories and inherited C03 opening only; no C07/C08 or complete-campaign claim",
+    "archive": "aggregate.tar.gz",
+    "archiveSha256": "18a312a6e12acdcbbf2134ed683bfcc615fb11f9b653270dc7e354b91e84ba7f"
+  }
 }

@@ -59,8 +59,7 @@ atomic cache/node preservation and recovery.
 
 Independent inspection found no correctness defect. Deliberate stale-record-copy
 and shrunken-broad-phase controls, final restored oracle and the full unchanged
-native aggregate are recorded in the adjacent verification files. Until a final
-aggregate exit is recorded, this remains a focused checkpoint, not a full pass.
+native aggregate are recorded in the adjacent verification files. The final aggregate completion below supersedes the initial focused checkpoint.
 
 No graphical display is available. The attempted syscall diagnosis itself was
 rejected by the environment (`ptrace: Operation not permitted`); it was not
@@ -74,3 +73,19 @@ hashes, build/runtime logs, negative-control results and retained scripts. The
 existing `tools/godot/hit-diagnostic/` tool still documents the fixture and its
 limits. The detailed exploration logs support where to investigate; only the
 uninstrumented serial comparison is used for the timing claim above.
+
+## Completed full aggregate
+
+The unmodified `bash tools/godot/verify-native.sh` completed uninterrupted on
+`37978970122f07564dd74f93e3b63863a7553f7c`: exit **0**, **1,982 seconds**.
+Both builds, formatting and metadata/static checks, core/external contracts,
+all 16 save/replay traces and all 31 native scenes passed. Every fresh AI
+step count and action/event/receipt digest matches the published baseline.
+
+The final played-flow check passed **20,226 assertions**: natural AI defeat and
+retry, both save slots, C01/C02 victories and inherited C03 opening. This is not
+C07/C08 progression, a complete campaign, GUI, audio or export acceptance.
+The full log, source commit, exit/elapsed records and exact replay comparison
+are retained in `aggregate.tar.gz`, with its SHA-256 in `verification.json`.
+The completion commit changes only documentation/evidence; tested code remains
+unchanged. The headless timing and missing-marker limitations above still apply.
