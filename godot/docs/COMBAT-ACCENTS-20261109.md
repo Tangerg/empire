@@ -38,11 +38,11 @@ its root cause, erase the failure, or constitute a passing full gate.
 The aggregate stopped at that scene; subsequent aggregate stages were not run.
 The separate final BattleScreen run covers that named scene only. Retained logs:
 
-- [Failed full gate](verification/combat-accents-20261109/full-native-failed.log)
-- [Passing baseline HUD](verification/combat-accents-20261109/baseline-hud-passed.log)
-- [Passing final HUD rerun](verification/combat-accents-20261109/final-hud-rerun-passed.log)
-- [Passing final battle screen](verification/combat-accents-20261109/final-battle-screen-passed.log)
-- [Passing final build](verification/combat-accents-20261109/final-build-passed.log)
+- [Failed full gate](verification/combat-accents-20261109/full-native-failed.txt)
+- [Passing baseline HUD](verification/combat-accents-20261109/baseline-hud-passed.txt)
+- [Passing final HUD rerun](verification/combat-accents-20261109/final-hud-rerun-passed.txt)
+- [Passing final battle screen](verification/combat-accents-20261109/final-battle-screen-passed.txt)
+- [Passing final build](verification/combat-accents-20261109/final-build-passed.txt)
 
 No real-display or exported-package visual acceptance was performed. This
 environment has no display server. Actual readability at gameplay zoom, terrain

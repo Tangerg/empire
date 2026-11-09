@@ -1,0 +1,1059 @@
+...........
+----------------------------------------------------------------------
+Ran 11 tests in 3.866s
+
+OK
+..............................
+----------------------------------------------------------------------
+Ran 30 tests in 43.433s
+
+OK
+Godot source metadata: 200 unique script UIDs; indexed resource companions present; 4196 intentionally unimported audit files.
+PASS: 6 invalid project resource paths rejected before file access
+PASS: 39 deliberate author-data and presentation mutations rejected
+PASS: C04 50x30, 1177 domain, 1083 connected foot cells, 37 house foundation cells, 19 spawns, 10 sites
+C04 ECMAScript JSON SHA-256: 722fa679315205c2917c236c192613827abc1394ac22b494001c716c10407014
+PASS: formal assembled registration, 139 placements, ten site bodies, referenced PNG dimensions and C04 source bytes
+PASS: historical painting integrity retained separately; native rendering, natural play and GUI acceptance are separate.
+PASS: 6 focused semantic mutations rejected
+PASS: C05 50x32, 7 village + 5 outpost sites; 1044 connected foot cells, 178 walls (103 cottage cells), 256 river cells, 7 actual plank cells
+PASS: retired nonspatial mission parity, painting bytes and canonical registration 69f0b09cbe9d5daae16e4f36a063b3168af38146a5a7a0b6607c19b2be3656ab
+Production movement, picking, threat, objective timing and save admission require ReedVillageChecks; natural play and GUI acceptance are separate.
+PASS: 7 semantic mutations rejected
+PASS: C06 50x32, 5 villages + 5 outposts; 1134 connected foot cells, 166 walls, 213 water, 40 actual deck cells
+PASS: retired mission parity, image bytes and canonical registration 5563bc87705ce5b5b8dd4ab6032ba5b2c23c6de17e61a48c27661d7c34da717e
+Static routes do not establish movement costs, escort balance or normal-AI gameplay. WhiteRiverChecks and GUI acceptance are separate.
+PASS: 14 semantic negative controls
+PASS: C07 96x64; 16 canonical sites, 3798 foot cells (one reviewed isolated nook), 2281 reviewed solid cells. Native movement and normal-AI/GUI gates remain separate.
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Empire.Core -> /workspace/scratch/84c9fe948755/empire-combat-effects-20261109/godot/Empire.Core/bin/Debug/net8.0/Empire.Core.dll
+  Empire -> /workspace/scratch/84c9fe948755/empire-combat-effects-20261109/godot/.godot/mono/temp/bin/Debug/Empire.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:19.46
+  Determining projects to restore...
+  Restored /workspace/scratch/84c9fe948755/empire-combat-effects-20261109/godot/Empire.Core.Tests/Empire.Core.Tests.csproj (in 135 ms).
+  1 of 2 projects are up-to-date for restore.
+  Empire.Core -> /workspace/scratch/84c9fe948755/empire-combat-effects-20261109/godot/Empire.Core/bin/Debug/net8.0/Empire.Core.dll
+  Empire.Core.Tests -> /workspace/scratch/84c9fe948755/empire-combat-effects-20261109/godot/Empire.Core.Tests/bin/Debug/net8.0/Empire.Core.Tests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:03.91
+PASS all-field UTF-16 and numeric digest vectors
+PASS independent RNG streams
+PASS three tactical grids
+PASS tile art floating products
+PASS transaction rollback
+PASS detached committed state and events
+PASS resource clamping and atomic costs
+PASS tactic planning and committed recipients
+PASS shared unit content admission
+PASS live ownership admission and commander projection
+  Unchanged campaign: 16 levels, 197 unit attacks, 24 structure attacks; receipts and final HP verified in 5.768s.
+  Scope: no delayed casts or parting shots; 0 separately emitted collision effects accounted for after the forecast exchange.
+  Synthetic placement contracts: entering/leaving actor formation and aura, moving commander/support neighbour, counter flanking/facing, structure aura.
+PASS attack preview placement and committed outcomes
+PASS counter effect ownership and collision disclosure
+  Activation contract: immediate unit/structure/area, deaths, counter/support, delayed occupied/empty, cancelled/refused, and 58-action C01-09 witness.
+PASS explicit main attack activation and completion
+  Every initial P1 actor can enter the node: identical closure/victory/release, save/load, undo and exact replay.
+  Node destruction, shield death and HQ capture are genuine commands; casualties never revive and Laiya failure wins priority.
+  T15 support: both initial engineers and actual T4 reinforcement, neutral site, absent/left/dead/wrong tags/wrong owner, late arrival, once-only, T18/T19.
+  South village capture/undo/replay and next-own-turn recovery/income/save-resume preserved (bounded state fixtures, not an assault playthrough).
+  Full-HP enable, idempotence, invalid IDs/numbers, destroyed no-op, real transaction rollback, and old ruleset rejection.
+PASS structure lifecycle and redstone routes
+  Arrived escort choice: {"kind":"command","unit":1,"path":[{"x":3,"y":1}],"command":{"ability":"wait"}}
+  Same-cell position: mission=2160, tactical=207.02399999999997; four abilities observed.
+  Armed escort choice: {"kind":"command","unit":1,"path":[{"x":3,"y":1}],"command":{"ability":"attack","weapon":"c01.border-blade","target":{"x":3,"y":2}}}
+  Escort intent: arrived hold, last arrival completion/release, legal internal/external movement, generic revival, existing-content armed attack.
+PASS escort mission and AI intent
+  Synthetic agenda contracts: optional flags, exact failures/short circuits, ordered ownership/advisors and isolated catalogs.
+  c01-01-step-0: 1080 tiles, 344524 agenda bytes/query; exact action, state and save preserved.
+  c01-01-step-5: 1080 tiles, 344524 agenda bytes/query; exact action, state and save preserved.
+  c01-03-step-1: 5252 tiles, 1601772 agenda bytes/query; exact action, state and save preserved.
+  c01-03-step-5: 5252 tiles, 1601772 agenda bytes/query; exact action, state and save preserved.
+  c01-07-step-0: 6144 tiles, 1875428 agenda bytes/query; exact action, state and save preserved.
+  c01-07-step-5: 6144 tiles, 1875428 agenda bytes/query; exact action, state and save preserved.
+PASS AI agenda readonly content and allocation
+  AI_TRACE c01-01: 156 steps, action/event/receipt SHA256 20e90377ee316e831d17e4f9d165536500d4ae379850f198d91d930e0e771d17
+  c01-01: 156 legal native actions, state 023d6038, conclusion {
+  "kind": "lastTeamRemaining",
+  "team": 1
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-02: 421 steps, action/event/receipt SHA256 b026ba1db2b0495a4bb65d5e1c1e1bb4632b540e0a7aa84067c132b9cb0632b0
+  c01-02: 421 legal native actions, state fabf68f6, conclusion {
+  "kind": "objectiveCompleted",
+  "team": 1,
+  "player": 1,
+  "objective": "primary"
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-03: 116 steps, action/event/receipt SHA256 a5fdff17e2ebc198717a60473be0a4805df9cfdda9ce38ff938dbda010c7deed
+  c01-03: 116 legal native actions, state 5a797158, conclusion {
+  "kind": "objectiveCompleted",
+  "team": 1,
+  "player": 1,
+  "objective": "primary"
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-04: 234 steps, action/event/receipt SHA256 156730525210e393732c2d8fe808d92d4f8675b23d2e1fc5c5c68346948b574b
+  c01-04: 234 legal native actions, state 3bac9b2c, conclusion {
+  "kind": "lastTeamRemaining",
+  "team": 1
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-05: 169 steps, action/event/receipt SHA256 f4b44a6002f6bd3975beedd69c0ba9e7b23700b684af9e84c754de7efda837a5
+  c01-05: 169 legal native actions, state 3edbfcd6, conclusion {
+  "kind": "objectiveCompleted",
+  "team": 1,
+  "player": 1,
+  "objective": "primary"
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-06: 130 steps, action/event/receipt SHA256 f39bbdadabffe8cd697676b84a754364d9340300c7ab4b336eac91618d119c05
+  c01-06: 130 legal native actions, state aa2be972, conclusion {
+  "kind": "lastTeamRemaining",
+  "team": 2
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-07: 311 steps, action/event/receipt SHA256 c6b3bf04f0718633bfd105f839673dba774a89ecbd978cfd0fff72c364ad42f5
+  c01-07: 311 legal native actions, state c00727ea, conclusion {
+  "kind": "turnLimitReached",
+  "team": null
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-08: 144 steps, action/event/receipt SHA256 3ce380648ae32e8b965d335b9087b96d99299228b18e51ff417822be583d1c74
+  c01-08: 144 legal native actions, state b07e7d6f, conclusion {
+  "kind": "lastTeamRemaining",
+  "team": 2
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-09: 59 steps, action/event/receipt SHA256 2b24e3c596b908c53bc573605bec49e9cc67a63446ffcef962de8d835698bab0
+  c01-09: 59 legal native actions, state f9976dae, conclusion {
+  "kind": "objectiveCompleted",
+  "team": 1,
+  "player": 1,
+  "objective": "primary"
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-10: 152 steps, action/event/receipt SHA256 a89c48de6ac386d7617e286b59814409bcc12dac8279e9c663eba17b29e9dd54
+  c01-10: 152 legal native actions, state ed497e6d, conclusion {
+  "kind": "lastTeamRemaining",
+  "team": 2
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-11: 268 steps, action/event/receipt SHA256 5748ce7fded062055db6d4a1bfe97eca579f2fdb7464026b8d9d7d0f380f0768
+  c01-11: 268 legal native actions, state eb5f52ab, conclusion {
+  "kind": "turnLimitReached",
+  "team": null
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-12: 117 steps, action/event/receipt SHA256 ae9d694bfc75071f38b4ea1d9db302d59722ad9798b397a4a9249a04df8a3eac
+  c01-12: 117 legal native actions, state b584edad, conclusion {
+  "kind": "objectiveCompleted",
+  "team": 1,
+  "player": 1,
+  "objective": "primary"
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-13: 195 steps, action/event/receipt SHA256 430328e385ec68bcab97a3ea45bb7a89e7a17d2a2f28f5af06cfd385a1d3bd26
+  c01-13: 195 legal native actions, state 6d3ef4c4, conclusion {
+  "kind": "lastTeamRemaining",
+  "team": 1
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-14: 339 steps, action/event/receipt SHA256 7ce296acd0b85ca773728562b95067548a7d39fa9f88b2bb4cadd313dbcc4c06
+  c01-14: 339 legal native actions, state 40ec9aab, conclusion {
+  "kind": "turnLimitReached",
+  "team": null
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-15: 236 steps, action/event/receipt SHA256 ee680bb1836eb2f8e8528587d5d7c7ae1f5f1856dff4bbb94ee96097392b4d42
+  c01-15: 236 legal native actions, state 9efcf077, conclusion {
+  "kind": "lastTeamRemaining",
+  "team": 2
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-16: 378 steps, action/event/receipt SHA256 b61226395df40354816d29650a2bdaac13e7d546adb51f903fd98fab41824d08
+  c01-16: 378 legal native actions, state 5e0c3b77, conclusion {
+  "kind": "lastTeamRemaining",
+  "team": 2
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+PASS shipped native full-level replay/save
+17 passed; 0 failed
+Objective/outcome evidence: /tmp/empire-objective-outcome.yEGV1Pkz
+PASS PO source guard: 1240 unique nonempty zh_CN messages; no fuzzy or obsolete entries.
+  Determining projects to restore...
+  Restored /workspace/scratch/84c9fe948755/empire-combat-effects-20261109/tools/godot/objective-outcome-checks/ObjectiveOutcomeChecks.csproj (in 133 ms).
+  1 of 2 projects are up-to-date for restore.
+  Empire.Core -> /workspace/scratch/84c9fe948755/empire-combat-effects-20261109/godot/Empire.Core/bin/Debug/net8.0/Empire.Core.dll
+  ObjectiveOutcomeChecks -> /workspace/scratch/84c9fe948755/empire-combat-effects-20261109/tools/godot/objective-outcome-checks/bin/Debug/net8.0/ObjectiveOutcomeChecks.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:08.41
+Objective/outcome native contract checks passed: 152 assertions.
+  Determining projects to restore...
+  Restored /workspace/scratch/84c9fe948755/empire-combat-effects-20261109/tools/godot/catalog-boundary-checks/CatalogBoundaryChecks.csproj (in 117 ms).
+  1 of 2 projects are up-to-date for restore.
+  Empire.Core -> /workspace/scratch/84c9fe948755/empire-combat-effects-20261109/godot/Empire.Core/bin/Debug/net8.0/Empire.Core.dll
+  CatalogBoundaryChecks -> /workspace/scratch/84c9fe948755/empire-combat-effects-20261109/tools/godot/catalog-boundary-checks/bin/Debug/net8.0/CatalogBoundaryChecks.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:03.56
+PASS 76 external ProjectReference catalog ownership assertions
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+WARNING: Detected another project.godot at res://docs/art-provenance/c07-layered-v1/northwest-formal-structure-study. The folder will be ignored.
+     at: _should_skip_directory (editor/file_system/editor_file_system.cpp:3469)
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Narrative group passed: CheckIdentityProjections
+Narrative group passed: CheckPortraitBindings
+Narrative group passed: CheckNativeProjections
+Narrative group passed: CheckLocalizationBoundary
+Narrative group passed: CheckNativeWidgets
+Narrative group passed: CheckNormalTransitions
+Narrative group passed: CheckEndingTransitions
+Narrative group passed: CheckLifecycle
+Narrative group passed: CheckBeatFocus
+Narrative group passed: CheckShellLifecycle
+Narrative group passed: CheckLayout
+Narrative group passed: CheckMissingArt
+Native narrative checks passed: 3743 assertions, 35 documents / 91 beats, 11 choices.
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Oath pad native checks passed: 123 assertions.
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Dynamic state presentation checks passed: 745 assertions.
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Native opening registration, entrances, two-hill traversal, actor feet and rush HP policy passed.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Registration guide: /tmp/empire-painted-elevation-registration-guide.svg
+Painted elevated surface registration, depth and picking passed.
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+SCENE_SURFACE_CHECKS_OK 60 assertions
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+ASSEMBLED_CONTACT_NEGATIVE_OK exactly one source belongs to the sibling contact.
+ASSEMBLED_CONTACT_NEGATIVE_OK source must remain hidden.
+ASSEMBLED_CONTACT_NEGATIVE_OK exactly one projected floor belongs to the sibling contact.
+ASSEMBLED_CONTACT_NEGATIVE_OK exactly one projected floor belongs to the sibling contact.
+ASSEMBLED_CONTACT_NEGATIVE_OK exactly one sibling contact per object.
+ASSEMBLED_CONTACT_NEGATIVE_OK exactly one sibling contact per object.
+ASSEMBLED_CONTACT_NEGATIVE_OK source density and instance scale must apply exactly once.
+ASSEMBLED_CONTACT_NEGATIVE_OK floor placement must follow the registered authored foot.
+ASSEMBLED_CONTACT_NEGATIVE_OK source texture must be centered on the authored foot.
+ASSEMBLED_CONTACT_NEGATIVE_OK projected polygons must use absolute floor depth, never standing depth.
+ASSEMBLED_CONTACT_NEGATIVE_OK projected polygons must use absolute floor depth, never standing depth.
+ASSEMBLED_CONTACT_NEGATIVE_OK exactly one source belongs to the sibling contact.
+ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached=False Bounded surfaces require a complete, unflipped single-frame texture; sprite regions and cropped atlas frames are unsupported.
+ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached=False Contact lifecycle (False): repeated render must retain sources, textures and current floors.
+ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached=False Projection replacement must free old floors and unsubscribe the old projection.
+ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached=False Bounded surfaces require a complete, unflipped single-frame texture; sprite regions and cropped atlas frames are unsupported.
+ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached=False Unload must release contacts, sources, floors and all projection subscriptions.
+ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached=True Bounded surfaces require a complete, unflipped single-frame texture; sprite regions and cropped atlas frames are unsupported.
+ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached=True Contact lifecycle (True): repeated render must retain sources, textures and current floors.
+ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached=True Projection replacement must free old floors and unsubscribe the old projection.
+ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached=True Bounded surfaces require a complete, unflipped single-frame texture; sprite regions and cropped atlas frames are unsupported.
+ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached=True Unload must release contacts, sources, floors and all projection subscriptions.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+RGB_SURFACE_MATERIAL_ACCEPTANCE_BEGIN opaque
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitives must use the selected complete material.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitive UVs must match the authored fixture.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitives must cover the authored geometry exactly once.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitives must cover the authored geometry exactly once.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitives must cover the authored geometry exactly once.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitive geometry and order must match the authored fixture.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitive tint must match the authored fixture.
+RGB_SURFACE_MATERIAL_ACCEPTANCE_BEGIN native-alpha
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitives must use the selected complete material.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitive UVs must match the authored fixture.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitives must cover the authored geometry exactly once.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitives must cover the authored geometry exactly once.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitives must cover the authored geometry exactly once.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitive geometry and order must match the authored fixture.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitive tint must match the authored fixture.
+ASSEMBLED_GROUND_CHECKS_OK 18032 assertions
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+PAINTED_SURFACE_BROAD_PHASE_OK 28251 exact geometry/UV/depth/pointer assertions against full-clip reference
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+C04 layered scene probes are geometry fixtures, not natural-route gameplay.
+C04 physical obstacles: 94 canonical wall cells; counts derive from the authored level, including boulders.
+Native BlackFlagCamp passed 332 assertions: registration, ten sites, material picking, foundations, staging, save admission and detached legal-command mission probes. Natural route play and GUI acceptance are separate.
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+C05 timing fixtures: no AI actions; T4 one-shot wave, three/two-civilian T8 completion, one-civilian/Laiya-absence T2 failure. This is not normal play.
+Native ReedVillage passed 1499 assertions: twelve sites, door/roof picking, physical foundations, bridge/water movement, opening civilian escape, T4/T8 no-AI timing and strict save admission. No-AI timing is not normal-play or GUI acceptance.
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+C06 unchanged-opening route feasibility: 27 legal escort move/wait orders, completion T7; no AI actions, teleportation, stat edits or map edits. This is route feasibility, not combat balance or GUI acceptance.
+C06 detached no-AI probes: four arrivals complete; zero/three remain pending to T14; T4 pursuit and T6 signal-only warning; absent Laiya fails. These are not normal-play acceptance.
+Native WhiteRiver passed 1759 assertions: ten captured/healing sites, door/roof picking, physical foundations, three crossings, escort commands, T4/T6/T14 no-AI timing and strict save admission. No-AI timing is not normal-play or GUI acceptance.
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+C07 source-binding checks passed: same-size published geometry rejection, immutable request identity, schema4 break and legal terrain-mutation round trip.
+C07 unchanged-opening route feasibility: 15 movement/capture orders, T9 victory; opposing sides only hand off, no teleports or actor/stat edits.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+C08_CONTINUATION_PROJECTION units=20; sourceReady=False; diagnostics=Authored scene is marked runtimeReady=false in the source document. | Environment catalog is marked runtimeReady=false in the source document. | No authored ground outline: canonical rectangular field is rendered; generic perimeter backdrop remains unmigrated.. Headless projection, not completed scene art or GUI acceptance.
+C08_BOTH_CHOICES_OK ledger=d9e1ef40; paid=ef5b44a4; no branch leakage.
+C07_NORMAL_AI_CONTINUATION_OK orders=263; computer=106; turn=12; events=699; terminal=ce680ba7; C08=d9e1ef40. Detached C07 start; no C01-C06, GUI or balance acceptance claim.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Native Luojia passed 33463 assertions: sixteen sites, authored rendering/picking, route geometry, sequential control objectives, deadline and strict save admission. Detached probes are not normal-AI balance acceptance.
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Explicit actor frame region contracts passed.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Authored scene projection: c01-01, 19 actors, 1 diagnostics.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Authored scene projection: c01-02, 20 actors, 1 diagnostics.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Authored scene projection: c01-03, 19 actors, 2 diagnostics.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Authored scene projection: c01-04, 19 actors, 1 diagnostics.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Authored scene projection: c01-05, 21 actors, 1 diagnostics.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Authored scene projection: c01-06, 21 actors, 1 diagnostics.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Authored scene projection: c01-07, 23 actors, 1 diagnostics.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Authored scene projection: c01-08, 21 actors, 3 diagnostics.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Authored scene projection: c01-09, 23 actors, 4 diagnostics.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Authored scene projection: c01-10, 21 actors, 3 diagnostics.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Authored scene projection: c01-11, 21 actors, 3 diagnostics.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Authored scene projection: c01-12, 19 actors, 4 diagnostics.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Authored scene projection: c01-13, 24 actors, 3 diagnostics.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Authored scene projection: c01-14, 22 actors, 3 diagnostics.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Authored scene projection: c01-15, 22 actors, 4 diagnostics.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Authored scene projection: c01-16, 25 actors, 3 diagnostics.
+Terrain checks passed: authored scene renderers, opening hill access and connectivity, independent material river/bridge registration, raw diagonal occupancy, river width validation and junction topology.
+Presentation resource contracts passed.
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Animation facing checks passed, including the lawful C04 receipt.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Full C01 celebration receipt setup including rendering: 979.1 ms (synthetic event, no timing budget).
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Synthetic lawful poison reaction: unit 2, amount 6, hit128/effect420.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Healing C12: stationary source 4, release75, target6 +27, idle150, effect575; all recorded hashes unchanged.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+CHARGE_IMPACT actual=(665.60004, 627.2); target=(665.60004, 627.2); expected=(665.60004, 627.2)
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+COMBAT_TIMELINE c01-06:5: impacts=[4,9]; slides=[7]; exact ordered receipt preserved.
+COMBAT_TIMELINE projection:turn-before-displacement: impacts=[5,10]; slides=[8]; exact ordered receipt preserved.
+COMBAT_TIMELINE projection:recruit-before-displacement: impacts=[5,10]; slides=[8]; exact ordered receipt preserved.
+COMBAT_TIMELINE projection:recovery-around-displacement: impacts=[1,3]; slides=[2]; exact ordered receipt preserved.
+COMBAT_TIMELINE projection:two-slides-teleport-and-hit: impacts=[3]; slides=[0,1]; exact ordered receipt preserved.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+COMBAT_TIMELINE c01-06:129: impacts=[4,8]; slides=[]; exact ordered receipt preserved.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+COMBAT_TIMELINE c01-01:44: impacts=[4,7]; slides=[]; exact ordered receipt preserved.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+COMBAT_TIMELINE c01-10:48: impacts=[4,9]; slides=[7]; exact ordered receipt preserved.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+COMBAT_TIMELINE c01-14:58: impacts=[2,7,11,13]; slides=[]; exact ordered receipt preserved.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+ACTOR_CLIP_DEPTH actualOffset=(0, 1); expectedOffset=1; expectedCut=66; currentDepth=65; actualCut=66; terrain=[0,167]; cuts=[0,65,66,129,167]
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+TURN_BANNER_VIEWPORT size=(960, 640); corner=TopLeft; visible=true; resize=entrance,hold,exit; orderedOnce=true
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+TURN_BANNER_VIEWPORT size=(960, 640); corner=BottomRight; visible=true; resize=entrance,hold,exit; orderedOnce=true
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+TURN_BANNER_VIEWPORT size=(1180, 812); corner=TopLeft; visible=true; resize=entrance,hold,exit; orderedOnce=true
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+TURN_BANNER_VIEWPORT size=(1180, 812); corner=BottomRight; visible=true; resize=entrance,hold,exit; orderedOnce=true
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+TURN_BANNER_BUSY_HOVER size=(960, 640); cursorPresent=true; aboveMapOverlay=true; belowHud=true; orderedOnce=true
+Animation presentation checks passed: 3127 assertions.
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Native camera checks passed: 36 assertions.
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+WARNING: The Viewport was previously notified that the mouse has left its area. There is no need to notify it at this time.
+     at: notify_mouse_exited (scene/main/viewport.cpp:3602)
+     C# backtrace (most recent call first):
+         [0] void Godot.NativeCalls.godot_icall_0_3(nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:51)
+         [1] void Godot.Viewport.NotifyMouseExited() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1778)
+         [2] void Empire.Presentation.CameraIntegrationChecks+<>c__DisplayClass20_0+<<CheckForecastHandoff>g__Arm|3>d.MoveNext() (/workspace/scratch/84c9fe948755/empire-combat-effects-20261109/godot/Presentation/CameraIntegrationChecks.cs:315)
+         [3] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [4] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [5] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [6] void System.Threading.Tasks.Task.RunContinuations(object)
+         [7] bool System.Threading.Tasks.Task`1.TrySetResult(TResult)
+         [8] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetExistingTaskResult(System.Threading.Tasks.Task`1[TResult], TResult)
+         [9] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [10] void Empire.Presentation.CameraIntegrationChecks+<Layout>d__12.MoveNext() (/workspace/scratch/84c9fe948755/empire-combat-effects-20261109/godot/Presentation/CameraIntegrationChecks.cs:89)
+         [11] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [12] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [13] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Native camera screen integration passed: 317 assertions.
+tools/godot/native-process.sh: line 12:  4228 Segmentation fault      timeout --signal=TERM --kill-after=15s "${EMPIRE_CHECK_TIMEOUT_SECONDS:-300}" "$@" > "$log" 2>&1
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+HUD_READ_COLD bytes=14567968 snapshot=1423664
+HUD_READ_ALLOCATION kind=Idle sample=0 cells=8 bytes=1546240 snapshot=1423664
+HUD_READ_ALLOCATION kind=Idle sample=1 cells=8 bytes=1546240 snapshot=1423664
+HUD_READ_ALLOCATION kind=Idle sample=2 cells=8 bytes=1546240 snapshot=1423664
+HUD_READ_ALLOCATION kind=Unit sample=0 cells=8 bytes=4550016 snapshot=1423664
+HUD_READ_ALLOCATION kind=Unit sample=1 cells=8 bytes=4550016 snapshot=1423664
+HUD_READ_ALLOCATION kind=Unit sample=2 cells=8 bytes=4550016 snapshot=1423664
+HUD_READ_LIFETIME passed: formal alternating inputs, immutable outputs, snapshot isolation, refusal, exception recovery, face/undo/end-turn and reentrant revision rejection.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+SITE_KEYBOARD_CONTEXT C01-03: selection=Site; selected=BoardCell { X = 38, Y = 23 }; revision=0
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+STRUCTURE_POINTER_INSPECTION_OK C01-09 chain-west / chain-north; actual mouse handoff, popup Close, hover and window leave; no committed actions
+STRUCTURE_INSPECTION_NATIVE_OK C01-09 chain-west / chain-north; state=6fefe68e; actual mouse handoff, Tab, Enter, Close and Escape; no committed actions
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+TACTIC_KEYBOARD_CONTEXT after native HUD click + D: selection=Tactic; revision=0; tile=4, 13
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Healing target witness: actor=米蕾尔; target card=选择目标; state=c0ffdbae
+SYNTHETIC_STRUCTURE_FORECAST width=960: effect lines=1, plate=(278, 419), (388, 213)
+SYNTHETIC_STRUCTURE_FORECAST width=1180: effect lines=1, plate=(278, 419), (388, 213)
+WARNING: The Viewport was previously notified that the mouse is in its area. There is no need to notify it at this time.
+     at: notify_mouse_entered (scene/main/viewport.cpp:3594)
+     C# backtrace (most recent call first):
+         [0] void Godot.NativeCalls.godot_icall_0_3(nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:51)
+         [1] void Godot.Viewport.NotifyMouseEntered() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1766)
+         [2] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckPointerCapture>d__14.MoveNext() (/workspace/scratch/84c9fe948755/empire-combat-effects-20261109/godot/Presentation/Tactical/TacticalHudChecks.cs:1170)
+         [3] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [4] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [5] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: The Viewport was previously notified that the mouse is in its area. There is no need to notify it at this time.
+     at: notify_mouse_entered (scene/main/viewport.cpp:3594)
+     C# backtrace (most recent call first):
+         [0] void Godot.NativeCalls.godot_icall_0_3(nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:51)
+         [1] void Godot.Viewport.NotifyMouseEntered() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1766)
+         [2] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckDossierLifetime>d__15.MoveNext() (/workspace/scratch/84c9fe948755/empire-combat-effects-20261109/godot/Presentation/Tactical/TacticalHudChecks.cs:1261)
+         [3] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [4] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [5] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: The Viewport was previously notified that the mouse is in its area. There is no need to notify it at this time.
+     at: notify_mouse_entered (scene/main/viewport.cpp:3594)
+     C# backtrace (most recent call first):
+         [0] void Godot.NativeCalls.godot_icall_0_3(nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:51)
+         [1] void Godot.Viewport.NotifyMouseEntered() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1766)
+         [2] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckDossierLifetime>d__15.MoveNext() (/workspace/scratch/84c9fe948755/empire-combat-effects-20261109/godot/Presentation/Tactical/TacticalHudChecks.cs:1275)
+         [3] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [4] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [5] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: The Viewport was previously notified that the mouse is in its area. There is no need to notify it at this time.
+     at: notify_mouse_entered (scene/main/viewport.cpp:3594)
+     C# backtrace (most recent call first):
+         [0] void Godot.NativeCalls.godot_icall_0_3(nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:51)
+         [1] void Godot.Viewport.NotifyMouseEntered() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1766)
+         [2] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckDossierLifetime>d__15.MoveNext() (/workspace/scratch/84c9fe948755/empire-combat-effects-20261109/godot/Presentation/Tactical/TacticalHudChecks.cs:1261)
+         [3] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [4] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [5] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: The Viewport was previously notified that the mouse is in its area. There is no need to notify it at this time.
+     at: notify_mouse_entered (scene/main/viewport.cpp:3594)
+     C# backtrace (most recent call first):
+         [0] void Godot.NativeCalls.godot_icall_0_3(nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:51)
+         [1] void Godot.Viewport.NotifyMouseEntered() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1766)
+         [2] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckDossierLifetime>d__15.MoveNext() (/workspace/scratch/84c9fe948755/empire-combat-effects-20261109/godot/Presentation/Tactical/TacticalHudChecks.cs:1275)
+         [3] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [4] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [5] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: The Viewport was previously notified that the mouse is in its area. There is no need to notify it at this time.
+     at: notify_mouse_entered (scene/main/viewport.cpp:3594)
+     C# backtrace (most recent call first):
+         [0] void Godot.NativeCalls.godot_icall_0_3(nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:51)
+         [1] void Godot.Viewport.NotifyMouseEntered() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1766)
+         [2] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckDossierLifetime>d__15.MoveNext() (/workspace/scratch/84c9fe948755/empire-combat-effects-20261109/godot/Presentation/Tactical/TacticalHudChecks.cs:1261)
+         [3] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [4] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [5] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: The Viewport was previously notified that the mouse is in its area. There is no need to notify it at this time.
+     at: notify_mouse_entered (scene/main/viewport.cpp:3594)
+     C# backtrace (most recent call first):
+         [0] void Godot.NativeCalls.godot_icall_0_3(nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:51)
+         [1] void Godot.Viewport.NotifyMouseEntered() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1766)
+         [2] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckDossierLifetime>d__15.MoveNext() (/workspace/scratch/84c9fe948755/empire-combat-effects-20261109/godot/Presentation/Tactical/TacticalHudChecks.cs:1275)
+         [3] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [4] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [5] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+FORMAL_ROW_RETENTION_OK c01-01
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+FORMAL_ROW_RETENTION_OK c01-07
+WARNING: The Viewport was previously notified that the mouse is in its area. There is no need to notify it at this time.
+     at: notify_mouse_entered (scene/main/viewport.cpp:3594)
+     C# backtrace (most recent call first):
+         [0] void Godot.NativeCalls.godot_icall_0_3(nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:51)
+         [1] void Godot.Viewport.NotifyMouseEntered() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1766)
+         [2] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckOrderBadgeStates>d__16.MoveNext() (/workspace/scratch/84c9fe948755/empire-combat-effects-20261109/godot/Presentation/Tactical/TacticalHudChecks.cs:1305)
+         [3] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+         [4] System.Threading.Tasks.Task Empire.Presentation.Tactical.TacticalHudChecks.CheckOrderBadgeStates()
+         [5] void Empire.Presentation.Tactical.TacticalHudChecks+<_Ready>d__21.MoveNext() (/workspace/scratch/84c9fe948755/empire-combat-effects-20261109/godot/Presentation/Tactical/TacticalHudChecks.cs:1819)
+         [6] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [7] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [8] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [9] void System.Threading.Tasks.Task.RunContinuations(object)
+         [10] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [11] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckUnitDetailsRowRetention>d__25.MoveNext() (/workspace/scratch/84c9fe948755/empire-combat-effects-20261109/godot/Presentation/Tactical/TacticalHudRowRetentionChecks.cs:194)
+         [12] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [13] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [14] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [15] void System.Threading.Tasks.Task.RunContinuations(object)
+         [16] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [17] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckFormalUnitDetailsRetention>d__26.MoveNext() (/workspace/scratch/84c9fe948755/empire-combat-effects-20261109/godot/Presentation/Tactical/TacticalHudRowRetentionChecks.cs:289)
+         [18] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [19] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [20] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+TACTICAL_HUD_CHECKS_OK 1163 assertions (headless native controls, not visual acceptance)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371537111839067>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371537011175766>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371536843405261>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371536440752067>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371536340086739>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371536323309683>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371536306532567>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371536138762128>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371536121985556>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371536105208260>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: (res://assets/runtime/equipment/equip-swordsman.png):<CompressedTexture2D#-9223371534914024648>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: (res://assets/runtime/equipment/equip-banner-guard.png):<CompressedTexture2D#-9223371534544925874>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371533857060322>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371533840281697>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371533823504482>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371533219524612>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371533202747381>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371533185971251>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371532934313976>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371532917536141>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371532900759696>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371532682656155>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371532581992750>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371532414218211>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371532011565135>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371531910903052>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371531894125366>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371531877349578>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371531709577206>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371531692797868>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371531676020651>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371531072041690>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371531055264469>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371531038487775>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371530837159883>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371530820382666>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371530803605441>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371530333845701>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371530233181475>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371530065409878>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371529662757228>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371529562092499>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371529545314866>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371529528538066>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371529360767360>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371529343988629>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371529327211803>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371528723231546>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371528706454332>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371528689677115>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371528438018877>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371528421241550>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371528404464162>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<Theme#-9223371528169584808>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371527917924780>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: InputEventMouseMotion: button_mask=0, position=((20.0, 20.0)), relative=((0.0, 0.0)), velocity=((0.0, 0.0)), pressure=0.00, tilt=((0.0, 0.0)), pen_inverted=(false)
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: InputEventMouseMotion: button_mask=0, position=((149.0, 127.0)), relative=((0.0, 0.0)), velocity=((0.0, 0.0)), pressure=0.00, tilt=((0.0, 0.0)), pen_inverted=(false)
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: InputEventMouseButton: button_index=1, mods=none, pressed=true, canceled=false, position=((149.0, 127.0)), button_mask=0, double_click=false
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: InputEventMouseButton: button_index=1, mods=none, pressed=false, canceled=false, position=((149.0, 127.0)), button_mask=0, double_click=false
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: InputEventMouseMotion: button_mask=0, position=((20.0, 20.0)), relative=((0.0, 0.0)), velocity=((0.0, 0.0)), pressure=0.00, tilt=((0.0, 0.0)), pen_inverted=(false)
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: InputEventKey: keycode=32 (Space), mods=none, physical=false, location=unspecified, pressed=true, echo=false
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: InputEventKey: keycode=32 (Space), mods=none, physical=false, location=unspecified, pressed=false, echo=false
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: InputEventMouseButton: button_index=1, mods=none, pressed=true, canceled=false, position=((149.0, 127.0)), button_mask=0, double_click=false
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: InputEventMouseButton: button_index=1, mods=none, pressed=false, canceled=false, position=((149.0, 127.0)), button_mask=0, double_click=false
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: InputEventMouseMotion: button_mask=0, position=((20.0, 20.0)), relative=((0.0, 0.0)), velocity=((0.0, 0.0)), pressure=0.00, tilt=((0.0, 0.0)), pen_inverted=(false)
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371527246835595>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371527146173153>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371527129396636>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371527112619841>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371526777074009>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371526760297098>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371526743520776>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371526726743285>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371526609303348>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371526525416119>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371526307312422>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371526189871052>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371525988544674>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371525770443007>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371525669777824>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371525518783645>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371525300679177>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371525200017391>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371525049021699>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371524830917682>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371524730255069>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371524579259290>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371524361156265>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371524260491892>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371524109498716>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371523891393037>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371523790731102>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371523622957681>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371523404854029>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371523304189940>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371523136418415>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371522918315353>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371522817652374>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371522482106250>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371522381444821>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371522364667328>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371522347889958>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371522012346173>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371521995569642>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371521978790888>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371521962015058>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxFlat#-9223371521844573695>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371521760688070>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371521542583649>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371521374810910>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371521156706395>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371520988934663>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371520770832868>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371520619837062>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371520401732037>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371520233960105>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371520015857960>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371519864862491>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371519646756857>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371519495763298>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371519277660002>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371519126664601>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371518908561160>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371518740789653>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371518522683825>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371518371688972>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371518153586399>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371517985813746>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371517767709082>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371517616713725>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371517398610558>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371517230838489>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371517012733974>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371516861740544>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371516643637188>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371516475865265>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371516257759348>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371516106766900>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371515888660499>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371515737666280>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371515519563850>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371515368566852>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371515150464241>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371514982692853>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371514764587116>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371514613592697>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371514395490060>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371514227716197>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371514009614254>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371512919093704>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371512700991701>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371512382223330>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371512164119058>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371512013125272>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371511795020993>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371511644026336>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371511425922198>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<AtlasTexture#-9223371511274926412>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+ERROR: Leaked unsafe reference to object: ():<StyleBoxEmpty#-9223371511056822675>
+   at: finalize (modules/mono/csharp_script.cpp:177)
+Native process/diagnostic gate failed: TacticalHudChecks (exit 139); /tmp/empire-native-check-data.pLVwXa/native.log
