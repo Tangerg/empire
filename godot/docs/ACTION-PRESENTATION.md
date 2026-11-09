@@ -545,6 +545,27 @@ injected through `CANDIDATE_01_HEAL_FX`, exported from the source presentation A
 
 ## Verification
 
+### Clip-bound action accents
+
+`ActorActionAccent` adds a compact, tapered sweep to lunge actions and an outlined
+focus diamond to stationary actions (including healing). These are generic action
+accents, not weapon classifications or new sprite-sheet animation. They inherit
+the actor's standing depth and position, and sample the same clip clock as its
+pose. The declared release still owns the first hit. No new wait, projectile
+travel, camera shake, battle rule, random stream or duplicate cast event is added.
+
+Impacts use a short angular flash rather than the previous filled white circle.
+The flash clears within 118 ms; the existing effect strip and damage/healing
+number retain their own duration and values. Neither accent uses additive bloom,
+random particles or full-screen overlays. Clip completion, cancellation and
+disabled animations remove the accents through the existing projection lifetime.
+
+This is presentation polish of the trusted existing poses, not newly drawn actor
+animation. The release checks cover anticipation, release, recovery, cancellation,
+and disabled animations for both action motions. Real-display review of melee,
+ranged, healing, area attacks and overlapping terrain remains a separate visual
+acceptance gate; headless checks cannot establish visual quality.
+
 `AnimationChecks` is now a required scene in `bash tools/godot/verify-native.sh`.
 Its original resource/timing/lifecycle checks are retained, with the two formerly
 unhandled displacement events replaced by real campaign receipt regressions.

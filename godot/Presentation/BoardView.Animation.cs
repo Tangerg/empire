@@ -424,6 +424,9 @@ public partial class BoardView
         var clip = pose.Clip;
         var release = clip.RequireRelease();
         actor.Position = anchor;
+        var accent = new ActorActionAccent { Name = "ActionAccent", Position = new Vector2(0, -16), ZIndex = 1 };
+        accent.Configure(policy.Motion, direction);
+        actor.AddChild(accent);
         var actorFinished = false;
         void Sample(double elapsed)
         {
@@ -431,6 +434,7 @@ public partial class BoardView
             {
                 if (elapsed >= clip.Length)
                 {
+                    RemoveEffect(accent);
                     actor.Position = anchor;
                     // Reactions and delayed casts aim without changing canonical facing.
                     // Only normal recovery restores this temporary pose; cancellation settles After.
@@ -440,6 +444,7 @@ public partial class BoardView
                 }
                 else
                 {
+                    accent.Sample(elapsed, release, clip.Length);
                     pose.Sample(elapsed);
                     var travel = policy.Motion == ActorMotion.Stationary ? 0 : elapsed < release
                         ? Math.Sin(elapsed / release * (Math.PI / 2))

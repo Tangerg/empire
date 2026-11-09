@@ -107,6 +107,7 @@ public partial class AnimationChecks
         var did = Int(state["units"]![1]!.AsObject(), "id");
         try
         {
+            await CheckActionAccents(board, state, aid, did);
             await CheckReleaseBoundaries(board, catalog, state, aid, did);
             await CheckWeaponActionIndependence(board, catalog, state, aid, did);
             await CheckReleaseEventScope(board, state, aid, did);
@@ -117,6 +118,47 @@ public partial class AnimationChecks
         await CheckLongRecoveryRelease();
         await CheckReleaseEndpointsAndLargeTime();
         await CheckReleaseLegalReceipt();
+    }
+
+    private async Task CheckActionAccents(BoardView board, JsonObject state, int aid, int did)
+    {
+        foreach (var weapon in new[] { "c01.border-blade", ReleaseGenericWeapon })
+        {
+            var strike = ReleaseStrike("attack", aid, did, weapon);
+            var transition = Transition(state, state, IdleAction(), ScopedClipAttack(strike, At(12, 16), At(13, 16)));
+            var task = board.PresentTransitionAsync(viewportFeedback, transition);
+            var actor = Actor(board, aid);
+            var accent = actor.GetNode<ActorActionAccent>("ActionAccent");
+            Require(!accent.Visible, "Action accents start without a flash or a fabricated hit.");
+            await Tick(board, .032);
+            Require(accent.Visible && board.GetNodeOrNull("BattleEffects/Hit") is null,
+                "Both lunge and stationary accents charge on the clip clock before the release-owned hit.");
+            await Tick(board, .032);
+            var burst = board.GetNode<Polygon2D>("BattleEffects/Hit/Burst");
+            Require(accent.Visible && burst.Polygon.Length == 8 && burst.Modulate.A > .8f,
+                "Release combines the action accent with a compact angular impact instead of a filled circle.");
+            await Tick(board, .064);
+            Require(actor.GetNodeOrNull("ActionAccent") is null && !task.IsCompleted,
+                "The action accent ends with its own clip, not with the later damage-number lifetime.");
+            await Tick(board, .060);
+            Require(burst.Modulate.A == 0,
+                "The sharp strike clears early so the remaining damage number stays readable.");
+            await Drain(board, task);
+
+            task = board.PresentTransitionAsync(viewportFeedback, transition);
+            await Tick(board, .032);
+            board.CancelPresentation();
+            Require(!await task && Actor(board, aid).GetNodeOrNull("ActionAccent") is null,
+                "Cancelling during anticipation discards the accent with the old actor projection.");
+            board.AnimationsEnabled = false;
+            try
+            {
+                task = board.PresentTransitionAsync(viewportFeedback, transition);
+                Require(await task && Actor(board, aid).GetNodeOrNull("ActionAccent") is null,
+                    "Disabled animation adds no lingering action accents or extra waiting.");
+            }
+            finally { board.AnimationsEnabled = true; }
+        }
     }
 
     private async Task CheckReleaseBoundaries(BoardView board, AssetCatalog catalog, JsonObject state, int aid, int did)

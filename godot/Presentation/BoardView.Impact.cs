@@ -36,8 +36,10 @@ public partial class BoardView
                 burst = new Polygon2D
                 {
                     Name = "Burst",
-                    Color = new Color(1, 1, 1, 0.65f),
-                    Polygon = Enumerable.Range(0, 48).Select(index => Vector2.FromAngle(index * Mathf.Tau / 48) * 12).ToArray()
+                    Position = new Vector2(0, -12),
+                    Color = new Color("#fff0ce"),
+                    Polygon = Enumerable.Range(0, 8).Select(index =>
+                        Vector2.FromAngle(index * Mathf.Tau / 8 - Mathf.Pi / 4) * (index % 2 == 0 ? 15 : 3)).ToArray()
                 };
                 effect.AddChild(burst);
                 effect.MoveChild(burst, sprite is null ? 0 : 1);
@@ -51,8 +53,9 @@ public partial class BoardView
                 number.Modulate = new Color(1, 1, 1, (float)(1 - t * t));
                 if (burst is not null)
                 {
-                    burst.Scale = Vector2.One * (float)(1 + t * 0.83);
-                    burst.Modulate = new Color(1, 1, 1, (float)(0.8 * (1 - t)));
+                    var strike = Math.Min(1, t / .28);
+                    burst.Scale = Vector2.One * (float)(0.7 + strike * .65);
+                    burst.Modulate = new Color(1, 1, 1, (float)(0.9 * (1 - strike)));
                 }
             });
         }
