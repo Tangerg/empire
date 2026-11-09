@@ -33,7 +33,7 @@ resource-owning test flow from native shutdown for this reason.
 This establishes a stronger test-host exit contract. It is not evidence that all
 possible native shutdown crashes have been fixed.
 
-## Verification
+## Focused verification checkpoint
 
 - Unmodified repeats: 3/3 strict process gates passed, 1,163 assertions each.
 - Changed host: 4/4 strict process gates passed, 1,167 assertions each. Runs 2–4
@@ -53,3 +53,30 @@ Retained logs in [verification/hud-shutdown-20261109](verification/hud-shutdown-
 and `wrapper-tests.txt`. The unchanged input-event warning headers are retained,
 not suppressed. All success claims above include process exit and the existing
 strict error/leak diagnostic boundary, not just a printed assertion count.
+
+## Completed full native gate
+
+The unchanged `bash tools/godot/verify-native.sh` completed at
+`cfad08c20769f0b85af57a05cd5b02a2f6b30bdc` with **exit 0**. The
+[complete log](verification/hud-shutdown-20261109/full-native-passed.txt) preserves
+all stages and warning diagnostics. No assertion, timeout or diagnostic filter
+was weakened, and no stage was skipped.
+
+This run covers source/format/resource guards, both Debug builds, all 17 core
+groups and 16 independent save/replays, outcome/catalog contracts, editor import,
+all configured native scenes and the actual played opening. Notable results:
+
+- HUD: 1,167 assertions, followed by clean native shutdown.
+- Animation: 3,127 assertions; camera/screen integration: 317.
+- Campaign navigation: 9,772 assertions, zero failed groups.
+- Opening flow: 160; lighting lifetime: 106; lighting contracts: 1,791;
+  scenery/resource/lifecycle: 8,753.
+- Played-flow: 19,557 assertions. The first two battles consumed 415 legal orders
+  and carried their actual roster state into the third opening (21 more orders).
+  This is not third-battle victory or a complete-campaign playthrough.
+
+The original failed run and the three passing unmodified reproductions remain
+part of the record. A passing full run plus the enforced lifetime checks does not
+identify the precise native cause of the earlier intermittent exit 139. Production
+game code is unchanged by this investigation. Visual and packaged-game acceptance
+remain separate and unperformed.

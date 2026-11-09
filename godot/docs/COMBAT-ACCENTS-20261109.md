@@ -49,3 +49,7 @@ environment has no display server. Actual readability at gameplay zoom, terrain
 occlusion, melee/ranged/healing/area effect composition and perceived timing still
 need real rendered review. Headless timing and geometry checks are not visual
 acceptance.
+
+Later verification: after test-only HUD host lifecycle hardening, a new complete
+native gate passed at `cfad08c2`. See the [HUD shutdown investigation](HUD-SHUTDOWN-20261109.md#completed-full-native-gate).
+This does not erase the failed run above or supply missing visual acceptance.
