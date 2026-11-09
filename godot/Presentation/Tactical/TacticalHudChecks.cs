@@ -1793,232 +1793,229 @@ public partial class TacticalHudChecks : Node
         }
     }
 
-    public override async void _Ready()
+    private async System.Threading.Tasks.Task CheckHudFlow()
     {
+        CheckHudSnapshotLifetime();
+        await CheckSitePointerBoundary();
+        await CheckStructurePointerInspection();
+        await CheckTacticKeyboardContext();
+        await CheckHealingTarget();
+        CheckInspectionOrder();
+        CheckObjectiveChecklist();
+        CheckPinnedUnit();
+        await CheckPrimaryOrders();
+        await CheckSiteInspection();
+        await CheckResponsiveLayout();
+        await CheckRecruitmentLayout();
+        await CheckRecruitedUnitArt();
+        await CheckForecastFacts();
+        await CheckPointerCapture();
+        await CheckDossierLifetime();
+        await CheckRetainedSectionLifetime();
+        await CheckTileTextRefresh();
+        await CheckUnitDetailsRowRetention();
+        await CheckOrderBadgeStates();
+        await CheckDeferredOrderLifetime();
+        await CheckDeferredSelectionContext();
+        var stamp = new TacticalStamp(17, 9);
+        var hud = new TacticalHud();
+        AddChild(hud);
+        var fired = 0;
+        hud.IntentRequested += intent => { Require(intent.Stamp == stamp, "Exact stamp emitted"); fired++; };
+        TacticalHudProjection Projection(bool enabled = true) => new(stamp, "下一步", new[] { new TacticalHudSection("commands", "指令", new[] { new TacticalHudRow("wait", "待命", "原始提示", enabled, Intent: new(stamp, TacticalHudIntentKind.Command, "wait")) }) });
+        Button Button() => ((GridContainer)hud.FindChild("Orders", true, false)).GetChildren().OfType<Button>().Single();
+        hud.Apply(Projection());
+        var old = Button();
+        Require(old.TooltipText == "原始提示", "Native reason tooltip");
+        old.EmitSignal(BaseButton.SignalName.Pressed);
+        old.EmitSignal(BaseButton.SignalName.Pressed);
+        Require(fired == 0, "Native activation is deferred beyond the signal stack.");
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        Require(fired == 1, "One-shot duplicate signal suppression");
+        hud.Apply(Projection());
+        old.EmitSignal(BaseButton.SignalName.Pressed);
+        Require(fired == 1, "Equivalent refresh does not rearm a submitted native row");
+        foreach (var visible in new[] { false, true, false, true })
+        {
+            hud.ShowHint = visible;
+            Require(ReferenceEquals(old, Button()), "Hint visibility preserves existing command controls.");
+            Button().EmitSignal(BaseButton.SignalName.Pressed);
+            Require(fired == 1, "Hint visibility must not rearm an already submitted order.");
+        }
+        var mounted = Button();
+        RemoveChild(hud);
+        mounted.EmitSignal(BaseButton.SignalName.Pressed);
+        Require(fired == 1, "Detached widget inert");
+        AddChild(hud);
+        mounted.EmitSignal(BaseButton.SignalName.Pressed);
+        Require(fired == 1, "Remount without Apply inert");
+        hud.Apply(Projection(false));
+        var disabled = Button();
+        Require(disabled.Disabled, "Native disabled row");
+        disabled.EmitSignal(BaseButton.SignalName.Pressed);
+        Require(fired == 1, "Disabled emitted signal inert");
+        hud.Apply(Projection() with
+        {
+            Busy = true
+        });
+        var busy = Button();
+        busy.EmitSignal(BaseButton.SignalName.Pressed);
+        Require(busy.Disabled && fired == 1, "Busy projection cannot emit tactical input");
+        hud.Apply(Projection());
+        var detached = Button();
+        detached.GetParent().RemoveChild(detached);
+        detached.EmitSignal(BaseButton.SignalName.Pressed);
+        Require(fired == 1, "Detached child inert");
+        detached.QueueFree();
+        hud.Apply(Projection() with
+        {
+            Busy = true
+        });
+        hud.Apply(Projection());
+        Button().GrabFocus();
+        hud.Apply(Projection());
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        Require(Button().HasFocus(), "Stable row focus restored");
+        var portraits = PortraitCatalogResources.Load();
+        var metadata = PresentationJson.Load<TacticalHudArtDocument>("res://data/tactical-hud-art.json");
+        foreach (var image in metadata.Icons.Values.Concat(metadata.Portraits.Values.Where(value => value.PortraitId is not null).Select(value => portraits.Resolve(value.PortraitId!))))
+        {
+            var bytes = Godot.FileAccess.GetFileAsBytes(image.ResourcePath!);
+            Require(bytes.Length > 0 && Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(bytes)).ToLowerInvariant() == image.Sha256, "Original HUD resource hash: " + image.ResourcePath);
+        }
+        var assets = AssetCatalog.Load();
+        var explicitDocument = new TacticalHudArtDocument
+        {
+            Schema = 2,
+            Portraits = new() { ["c01.mirelle"] = new() { UnitType = "c01.mirelle", PortraitId = "explicit-card", PortraitRegion = new[] { 330, 40, 500, 500 } } }
+        };
+        var explicitCatalog = new PortraitCatalog(new Dictionary<string, PortraitAsset> { ["explicit-card"] = portraits.Portraits["mirelle"] });
+        var explicitArt = new TacticalHudArt(assets, explicitCatalog, explicitDocument);
+        Require(((AtlasTexture)explicitArt.Portrait(new("c01.mirelle", null, "#224466"))).Atlas.ResourcePath == explicitCatalog.Resolve("explicit-card").ResourcePath,
+            "HUD uses the injected shared catalog and explicit ID, not unit-name inference");
         try
         {
-            CheckHudSnapshotLifetime();
-            await CheckSitePointerBoundary();
-            await CheckStructurePointerInspection();
-            await CheckTacticKeyboardContext();
-            await CheckHealingTarget();
-            CheckInspectionOrder();
-            CheckObjectiveChecklist();
-            CheckPinnedUnit();
-            await CheckPrimaryOrders();
-            await CheckSiteInspection();
-            await CheckResponsiveLayout();
-            await CheckRecruitmentLayout();
-            await CheckRecruitedUnitArt();
-            await CheckForecastFacts();
-            await CheckPointerCapture();
-            await CheckDossierLifetime();
-            await CheckRetainedSectionLifetime();
-            await CheckTileTextRefresh();
-            await CheckUnitDetailsRowRetention();
-            await CheckOrderBadgeStates();
-            await CheckDeferredOrderLifetime();
-            await CheckDeferredSelectionContext();
-            var stamp = new TacticalStamp(17, 9);
-            var hud = new TacticalHud();
-            AddChild(hud);
-            var fired = 0;
-            hud.IntentRequested += intent => { Require(intent.Stamp == stamp, "Exact stamp emitted"); fired++; };
-            TacticalHudProjection Projection(bool enabled = true) => new(stamp, "下一步", new[] { new TacticalHudSection("commands", "指令", new[] { new TacticalHudRow("wait", "待命", "原始提示", enabled, Intent: new(stamp, TacticalHudIntentKind.Command, "wait")) }) });
-            Button Button() => ((GridContainer)hud.FindChild("Orders", true, false)).GetChildren().OfType<Button>().Single();
-            hud.Apply(Projection());
-            var old = Button();
-            Require(old.TooltipText == "原始提示", "Native reason tooltip");
-            old.EmitSignal(BaseButton.SignalName.Pressed);
-            old.EmitSignal(BaseButton.SignalName.Pressed);
-            Require(fired == 0, "Native activation is deferred beyond the signal stack.");
-            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-            Require(fired == 1, "One-shot duplicate signal suppression");
-            hud.Apply(Projection());
-            old.EmitSignal(BaseButton.SignalName.Pressed);
-            Require(fired == 1, "Equivalent refresh does not rearm a submitted native row");
-            foreach (var visible in new[] { false, true, false, true })
-            {
-                hud.ShowHint = visible;
-                Require(ReferenceEquals(old, Button()), "Hint visibility preserves existing command controls.");
-                Button().EmitSignal(BaseButton.SignalName.Pressed);
-                Require(fired == 1, "Hint visibility must not rearm an already submitted order.");
-            }
-            var mounted = Button();
-            RemoveChild(hud);
-            mounted.EmitSignal(BaseButton.SignalName.Pressed);
-            Require(fired == 1, "Detached widget inert");
-            AddChild(hud);
-            mounted.EmitSignal(BaseButton.SignalName.Pressed);
-            Require(fired == 1, "Remount without Apply inert");
-            hud.Apply(Projection(false));
-            var disabled = Button();
-            Require(disabled.Disabled, "Native disabled row");
-            disabled.EmitSignal(BaseButton.SignalName.Pressed);
-            Require(fired == 1, "Disabled emitted signal inert");
-            hud.Apply(Projection() with
-            {
-                Busy = true
-            });
-            var busy = Button();
-            busy.EmitSignal(BaseButton.SignalName.Pressed);
-            Require(busy.Disabled && fired == 1, "Busy projection cannot emit tactical input");
-            hud.Apply(Projection());
-            var detached = Button();
-            detached.GetParent().RemoveChild(detached);
-            detached.EmitSignal(BaseButton.SignalName.Pressed);
-            Require(fired == 1, "Detached child inert");
-            detached.QueueFree();
-            hud.Apply(Projection() with
-            {
-                Busy = true
-            });
-            hud.Apply(Projection());
-            Button().GrabFocus();
-            hud.Apply(Projection());
-            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-            Require(Button().HasFocus(), "Stable row focus restored");
-            var portraits = PortraitCatalogResources.Load();
-            var metadata = PresentationJson.Load<TacticalHudArtDocument>("res://data/tactical-hud-art.json");
-            foreach (var image in metadata.Icons.Values.Concat(metadata.Portraits.Values.Where(value => value.PortraitId is not null).Select(value => portraits.Resolve(value.PortraitId!))))
-            {
-                var bytes = Godot.FileAccess.GetFileAsBytes(image.ResourcePath!);
-                Require(bytes.Length > 0 && Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(bytes)).ToLowerInvariant() == image.Sha256, "Original HUD resource hash: " + image.ResourcePath);
-            }
-            var assets = AssetCatalog.Load();
-            var explicitDocument = new TacticalHudArtDocument
+            _ = new TacticalHudArt(assets, new PortraitCatalog(new Dictionary<string, PortraitAsset> { ["different-card"] = portraits.Portraits["mirelle"] }), explicitDocument);
+            throw new Exception("Unknown portrait silently fell back to a frame");
+        }
+        catch (InvalidOperationException error) when (error.Message.Contains("Unknown portrait ID", StringComparison.Ordinal)) { assertions++; }
+        try
+        {
+            System.Text.Json.JsonSerializer.Deserialize<TacticalPortraitBinding>("{\"unitType\":\"c01.mirelle\"}",
+                new System.Text.Json.JsonSerializerOptions { PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase });
+            throw new Exception("Omitted portrait ID silently became frame semantics");
+        }
+        catch (System.Text.Json.JsonException) { assertions++; }
+        foreach (var region in new int[]?[] { null, new[] { -1, 0, 100, 100 }, new[] { 0, 0, 100, 90 }, new[] { 0, 0, 10000, 10000 } })
+        {
+            var invalid = new TacticalHudArtDocument
             {
                 Schema = 2,
-                Portraits = new() { ["c01.mirelle"] = new() { UnitType = "c01.mirelle", PortraitId = "explicit-card", PortraitRegion = new[] { 330, 40, 500, 500 } } }
+                Portraits = new() { ["c01.mirelle"] = new() { UnitType = "c01.mirelle", PortraitId = "explicit-card", PortraitRegion = region } }
             };
-            var explicitCatalog = new PortraitCatalog(new Dictionary<string, PortraitAsset> { ["explicit-card"] = portraits.Portraits["mirelle"] });
-            var explicitArt = new TacticalHudArt(assets, explicitCatalog, explicitDocument);
-            Require(((AtlasTexture)explicitArt.Portrait(new("c01.mirelle", null, "#224466"))).Atlas.ResourcePath == explicitCatalog.Resolve("explicit-card").ResourcePath,
-                "HUD uses the injected shared catalog and explicit ID, not unit-name inference");
             try
             {
-                _ = new TacticalHudArt(assets, new PortraitCatalog(new Dictionary<string, PortraitAsset> { ["different-card"] = portraits.Portraits["mirelle"] }), explicitDocument);
-                throw new Exception("Unknown portrait silently fell back to a frame");
-            }
-            catch (InvalidOperationException error) when (error.Message.Contains("Unknown portrait ID", StringComparison.Ordinal)) { assertions++; }
-            try
-            {
-                System.Text.Json.JsonSerializer.Deserialize<TacticalPortraitBinding>("{\"unitType\":\"c01.mirelle\"}",
-                    new System.Text.Json.JsonSerializerOptions { PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase });
-                throw new Exception("Omitted portrait ID silently became frame semantics");
-            }
-            catch (System.Text.Json.JsonException) { assertions++; }
-            foreach (var region in new int[]?[] { null, new[] { -1, 0, 100, 100 }, new[] { 0, 0, 100, 90 }, new[] { 0, 0, 10000, 10000 } })
-            {
-                var invalid = new TacticalHudArtDocument
-                {
-                    Schema = 2,
-                    Portraits = new() { ["c01.mirelle"] = new() { UnitType = "c01.mirelle", PortraitId = "explicit-card", PortraitRegion = region } }
-                };
-                try
-                {
-                    _ = new TacticalHudArt(assets, explicitCatalog, invalid);
-                    throw new Exception("Invalid named portrait crop was accepted.");
-                }
-                catch (InvalidOperationException error) when (error.Message.Contains("in-bounds square", StringComparison.Ordinal)) { assertions++; }
-            }
-            try
-            {
-                _ = new TacticalHudArt(assets, explicitCatalog, new TacticalHudArtDocument
-                {
-                    Schema = 2,
-                    Portraits = new() { ["c01.swordsman"] = new() { UnitType = "c01.swordsman", PortraitId = null, PortraitRegion = new[] { 0, 0, 99999, 99999 } } }
-                });
-                throw new Exception("A generic frame accepted an out-of-bounds local crop.");
+                _ = new TacticalHudArt(assets, explicitCatalog, invalid);
+                throw new Exception("Invalid named portrait crop was accepted.");
             }
             catch (InvalidOperationException error) when (error.Message.Contains("in-bounds square", StringComparison.Ordinal)) { assertions++; }
-            var art = TacticalHudArt.Load(assets, portraits);
-            hud.ConfigureArt(art);
-            TextureRect MountedPortrait() => (TextureRect)hud.FindChild("InspectedPortrait", true, false);
-            foreach (var binding in metadata.Portraits.Values.Where(value => value.PortraitId is not null))
-            {
-                var namedPortrait = new TacticalHudPortrait(binding.UnitType, binding.ActorKey, "#224466");
-                var source = ResourceLoader.Load<Texture2D>(portraits.Resolve(binding.PortraitId!).ResourcePath!);
-                var crop = (AtlasTexture)art.Portrait(namedPortrait);
-                var region = binding.PortraitRegion!;
-                Require(crop.Atlas == source && crop.Region == new Rect2(region[0], region[1], region[2], region[3])
-                    && crop.GetSize() == new Vector2(region[2], region[3]) && art.Portrait(namedPortrait) == crop,
-                    "Every named HUD portrait uses its validated, cached head-and-shoulders crop without changing the narrative source: " + binding.PortraitId);
-                hud.Apply(new(stamp, "", new[] { new TacticalHudSection("unit", "角色", Array.Empty<TacticalHudRow>()) }, namedPortrait));
-                var mountedPortrait = MountedPortrait();
-                Require(mountedPortrait.Texture == crop && mountedPortrait.StretchMode == TextureRect.StretchModeEnum.KeepAspectCentered,
-                    "Every named HUD crop preserves square aspect in its medallion: " + binding.PortraitId);
-            }
-            var named = new TacticalHudPortrait("c01.swordsman", "campaign-torren", "#224466");
-            var portrait = art.Portrait(named);
-            var genericPortrait = new TacticalHudPortrait("c01.swordsman", null, "#224466");
-            var generic = art.Portrait(genericPortrait) as AtlasTexture;
-            var unit = assets.ResolveUnit(genericPortrait.UnitType, genericPortrait.ActorKey);
-            foreach (var (key, binding) in metadata.Portraits.Where(pair => pair.Value.PortraitId is null && pair.Value.PortraitRegion is not null))
-            {
-                var frameAsset = assets.ResolveUnit(binding.UnitType, binding.ActorKey);
-                var frame = assets.CreateFrameTexture(frameAsset, AssetCatalog.FrameIndex(frameAsset, "idle"));
-                var actual = art.Portrait(new(binding.UnitType, binding.ActorKey, "#224466"));
-                if (binding.PortraitRegion is not { } region)
-                    Require(actual == frame, "Null generic crop preserves its full idle frame: " + key);
-                else
-                    Require(actual is AtlasTexture cropped && cropped.Atlas == frame.Atlas && cropped.Atlas is not AtlasTexture
-                        && cropped.Region == new Rect2(frame.Region.Position + new Vector2(region[0], region[1]), new Vector2(region[2], region[3])),
-                        "Generic head crops remain frame-local and flatten onto the original sheet: " + key);
-            }
-            var wholeFrameArt = new TacticalHudArt(assets, portraits, new TacticalHudArtDocument
+        }
+        try
+        {
+            _ = new TacticalHudArt(assets, explicitCatalog, new TacticalHudArtDocument
             {
                 Schema = 2,
-                Portraits = new() { ["c01.swordsman"] = new() { UnitType = "c01.swordsman", PortraitId = null, PortraitRegion = null } }
+                Portraits = new() { ["c01.swordsman"] = new() { UnitType = "c01.swordsman", PortraitId = null, PortraitRegion = new[] { 0, 0, 99999, 99999 } } }
             });
-            Require(wholeFrameArt.Portrait(genericPortrait) == assets.CreateFrameTexture(unit, AssetCatalog.FrameIndex(unit, "idle")),
-                "Explicit null generic crop preserves the original idle texture.");
-            var shiftedManifest = PresentationJson.Load<JsonObject>("res://data/selected-assets.json");
-            var archerRecord = shiftedManifest["assets"]!.AsArray().OfType<JsonObject>().Single(value =>
-                value["topicId"]!.GetValue<string>() == "C01-UNIT-ARCHER" && value["id"] is null);
-            archerRecord["frameOrder"] = new JsonArray("walk-a", "idle", "attack", "walk-b");
-            var shiftedAssets = new AssetCatalog(System.Text.Json.JsonSerializer.Deserialize<AssetManifest>(shiftedManifest.ToJsonString(),
-                new System.Text.Json.JsonSerializerOptions { PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase })!,
-                PresentationJson.Load<ArtBindings>("res://data/art-bindings.json"));
-            var shiftedArt = new TacticalHudArt(shiftedAssets, portraits, metadata);
-            var shiftedCrop = (AtlasTexture)shiftedArt.Portrait(new("c01.archer", "elin", "#224466"));
-            var shiftedFrame = shiftedAssets.CreateFrameTexture(shiftedAssets.ResolveUnit("c01.archer"), 1);
-            Require(shiftedCrop.Region.Position == shiftedFrame.Region.Position + new Vector2(140, 140)
-                && shiftedCrop.Atlas == shiftedFrame.Atlas && shiftedCrop.Atlas is not AtlasTexture,
-                "Nonzero idle-region origin is applied once, without nested atlases.");
-            Require(generic!.Atlas.ResourcePath != ((AtlasTexture)portrait).Atlas.ResourcePath && art.UnitIcon(named) is AtlasTexture,
-                "Generic portraits and unit icons remain sprite frames, distinct from named head-and-shoulders portraits.");
-            hud.Apply(new(stamp, "", new[] { new TacticalHudSection("unit", "角色", Array.Empty<TacticalHudRow>()) }, genericPortrait));
-            var oldPortrait = MountedPortrait();
-            for (var index = 0; index < 100; index++)
-                hud.Apply(new(stamp, "", new[] { new TacticalHudSection("unit", "角色", Array.Empty<TacticalHudRow>()) }, named));
-            Require(oldPortrait.Texture is null && MountedPortrait().Texture == portrait && art.Portrait(named) == portrait,
-                "Repeated projections release old control references and reuse the art owner’s cached portrait resource.");
-            oldPortrait = MountedPortrait();
-            var replacement = TacticalHudArt.Load(assets, portraits);
-            hud.ConfigureArt(replacement);
-            Require(oldPortrait.Texture is null && GodotObject.IsInstanceValid(portrait) && GodotObject.IsInstanceValid(generic),
-                "Rebinding releases control references, not shared catalog textures or idle-frame atlases.");
-            hud.Apply(new(stamp, "", new[] { new TacticalHudSection("unit", "角色", Array.Empty<TacticalHudRow>()) }, named));
-            var lastPortrait = MountedPortrait();
-            RemoveChild(hud);
-            Require(lastPortrait.Texture is null && ((AtlasTexture)replacement.Portrait(named)).Atlas == ((AtlasTexture)portrait).Atlas && art.Portrait(genericPortrait) == generic,
-                "HUD teardown leaves shared named and generic resources usable by their owners.");
-            hud.QueueFree();
-            var missing = PresentationJson.Load<TacticalHudArtDocument>("res://data/tactical-hud-art.json");
-            var required = missing.SourceIconKeys[0];
-            missing.Icons.Remove(required);
-            var broken = new TacticalHudArt(assets, portraits, missing);
-            try
-            {
-                broken.Icon(required);
-                throw new Exception("Missing declared icon silently disappeared");
-            }
-            catch (MissingArtResourceException) { assertions++; }
-            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-            GD.Print($"TACTICAL_HUD_CHECKS_OK {assertions} assertions (headless native controls, not visual acceptance)");
-            GetTree().Quit();
+            throw new Exception("A generic frame accepted an out-of-bounds local crop.");
         }
-        catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
+        catch (InvalidOperationException error) when (error.Message.Contains("in-bounds square", StringComparison.Ordinal)) { assertions++; }
+        var art = TacticalHudArt.Load(assets, portraits);
+        hud.ConfigureArt(art);
+        TextureRect MountedPortrait() => (TextureRect)hud.FindChild("InspectedPortrait", true, false);
+        foreach (var binding in metadata.Portraits.Values.Where(value => value.PortraitId is not null))
+        {
+            var namedPortrait = new TacticalHudPortrait(binding.UnitType, binding.ActorKey, "#224466");
+            var source = ResourceLoader.Load<Texture2D>(portraits.Resolve(binding.PortraitId!).ResourcePath!);
+            var crop = (AtlasTexture)art.Portrait(namedPortrait);
+            var region = binding.PortraitRegion!;
+            Require(crop.Atlas == source && crop.Region == new Rect2(region[0], region[1], region[2], region[3])
+                && crop.GetSize() == new Vector2(region[2], region[3]) && art.Portrait(namedPortrait) == crop,
+                "Every named HUD portrait uses its validated, cached head-and-shoulders crop without changing the narrative source: " + binding.PortraitId);
+            hud.Apply(new(stamp, "", new[] { new TacticalHudSection("unit", "角色", Array.Empty<TacticalHudRow>()) }, namedPortrait));
+            var mountedPortrait = MountedPortrait();
+            Require(mountedPortrait.Texture == crop && mountedPortrait.StretchMode == TextureRect.StretchModeEnum.KeepAspectCentered,
+                "Every named HUD crop preserves square aspect in its medallion: " + binding.PortraitId);
+        }
+        var named = new TacticalHudPortrait("c01.swordsman", "campaign-torren", "#224466");
+        var portrait = art.Portrait(named);
+        var genericPortrait = new TacticalHudPortrait("c01.swordsman", null, "#224466");
+        var generic = art.Portrait(genericPortrait) as AtlasTexture;
+        var unit = assets.ResolveUnit(genericPortrait.UnitType, genericPortrait.ActorKey);
+        foreach (var (key, binding) in metadata.Portraits.Where(pair => pair.Value.PortraitId is null && pair.Value.PortraitRegion is not null))
+        {
+            var frameAsset = assets.ResolveUnit(binding.UnitType, binding.ActorKey);
+            var frame = assets.CreateFrameTexture(frameAsset, AssetCatalog.FrameIndex(frameAsset, "idle"));
+            var actual = art.Portrait(new(binding.UnitType, binding.ActorKey, "#224466"));
+            if (binding.PortraitRegion is not { } region)
+                Require(actual == frame, "Null generic crop preserves its full idle frame: " + key);
+            else
+                Require(actual is AtlasTexture cropped && cropped.Atlas == frame.Atlas && cropped.Atlas is not AtlasTexture
+                    && cropped.Region == new Rect2(frame.Region.Position + new Vector2(region[0], region[1]), new Vector2(region[2], region[3])),
+                    "Generic head crops remain frame-local and flatten onto the original sheet: " + key);
+        }
+        var wholeFrameArt = new TacticalHudArt(assets, portraits, new TacticalHudArtDocument
+        {
+            Schema = 2,
+            Portraits = new() { ["c01.swordsman"] = new() { UnitType = "c01.swordsman", PortraitId = null, PortraitRegion = null } }
+        });
+        Require(wholeFrameArt.Portrait(genericPortrait) == assets.CreateFrameTexture(unit, AssetCatalog.FrameIndex(unit, "idle")),
+            "Explicit null generic crop preserves the original idle texture.");
+        var shiftedManifest = PresentationJson.Load<JsonObject>("res://data/selected-assets.json");
+        var archerRecord = shiftedManifest["assets"]!.AsArray().OfType<JsonObject>().Single(value =>
+            value["topicId"]!.GetValue<string>() == "C01-UNIT-ARCHER" && value["id"] is null);
+        archerRecord["frameOrder"] = new JsonArray("walk-a", "idle", "attack", "walk-b");
+        var shiftedAssets = new AssetCatalog(System.Text.Json.JsonSerializer.Deserialize<AssetManifest>(shiftedManifest.ToJsonString(),
+            new System.Text.Json.JsonSerializerOptions { PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase })!,
+            PresentationJson.Load<ArtBindings>("res://data/art-bindings.json"));
+        var shiftedArt = new TacticalHudArt(shiftedAssets, portraits, metadata);
+        var shiftedCrop = (AtlasTexture)shiftedArt.Portrait(new("c01.archer", "elin", "#224466"));
+        var shiftedFrame = shiftedAssets.CreateFrameTexture(shiftedAssets.ResolveUnit("c01.archer"), 1);
+        Require(shiftedCrop.Region.Position == shiftedFrame.Region.Position + new Vector2(140, 140)
+            && shiftedCrop.Atlas == shiftedFrame.Atlas && shiftedCrop.Atlas is not AtlasTexture,
+            "Nonzero idle-region origin is applied once, without nested atlases.");
+        Require(generic!.Atlas.ResourcePath != ((AtlasTexture)portrait).Atlas.ResourcePath && art.UnitIcon(named) is AtlasTexture,
+            "Generic portraits and unit icons remain sprite frames, distinct from named head-and-shoulders portraits.");
+        hud.Apply(new(stamp, "", new[] { new TacticalHudSection("unit", "角色", Array.Empty<TacticalHudRow>()) }, genericPortrait));
+        var oldPortrait = MountedPortrait();
+        for (var index = 0; index < 100; index++)
+            hud.Apply(new(stamp, "", new[] { new TacticalHudSection("unit", "角色", Array.Empty<TacticalHudRow>()) }, named));
+        Require(oldPortrait.Texture is null && MountedPortrait().Texture == portrait && art.Portrait(named) == portrait,
+            "Repeated projections release old control references and reuse the art owner’s cached portrait resource.");
+        oldPortrait = MountedPortrait();
+        var replacement = TacticalHudArt.Load(assets, portraits);
+        hud.ConfigureArt(replacement);
+        Require(oldPortrait.Texture is null && GodotObject.IsInstanceValid(portrait) && GodotObject.IsInstanceValid(generic),
+            "Rebinding releases control references, not shared catalog textures or idle-frame atlases.");
+        hud.Apply(new(stamp, "", new[] { new TacticalHudSection("unit", "角色", Array.Empty<TacticalHudRow>()) }, named));
+        var lastPortrait = MountedPortrait();
+        RemoveChild(hud);
+        Require(lastPortrait.Texture is null && ((AtlasTexture)replacement.Portrait(named)).Atlas == ((AtlasTexture)portrait).Atlas && art.Portrait(genericPortrait) == generic,
+            "HUD teardown leaves shared named and generic resources usable by their owners.");
+        hud.QueueFree();
+        var missing = PresentationJson.Load<TacticalHudArtDocument>("res://data/tactical-hud-art.json");
+        var required = missing.SourceIconKeys[0];
+        missing.Icons.Remove(required);
+        var broken = new TacticalHudArt(assets, portraits, missing);
+        try
+        {
+            broken.Icon(required);
+            throw new Exception("Missing declared icon silently disappeared");
+        }
+        catch (MissingArtResourceException) { assertions++; }
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        Require(!GodotObject.IsInstanceValid(hud), "The final HUD must be destroyed before its resource-owning test scope completes.");
+        resourceOwners = new[] { new WeakReference(assets), new WeakReference(art), new WeakReference(replacement),
+            new WeakReference(shiftedArt), new WeakReference(explicitArt) };
     }
 }
