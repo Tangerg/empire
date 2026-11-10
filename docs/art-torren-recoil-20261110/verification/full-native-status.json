@@ -1,0 +1,38 @@
+{
+  "command": "bash tools/godot/verify-native.sh",
+  "exitCode": 0,
+  "sourceCommit": "7596ff4946ce4cff1eab9ac77077769aa1c84bd5",
+  "baselineCommit": "a75e8564a137b20b0eeb24161649f28e4ab389b9",
+  "assemblySha256": "5bffe4a649705590825152de10f2e3451c8b86e08d44ed41c0960382406f9030",
+  "fullLogSha256": "9dca6d1aa48d8a75a0b8289c193795b49af666ed039dabf07764e7f01a86b844",
+  "errorOrLeakDiagnostics": 0,
+  "animationAssertions": 3473,
+  "playedFlowAssertions": 20378,
+  "independentLevels": 16,
+  "independentLegalOrders": 3425,
+  "allIndependentReplayHashesUnchanged": true,
+  "playedOpeningMarkers": [
+    "PLAYED_AI_DEFEAT_OK orders=152; terminal=3dbb09d3; events=10; completions=1; retry=9dae091b; both slots unchanged",
+    "PLAYED_TERMINAL level=c01-01; legal orders=156; outcome=victory; completion views=1; events=524; presented=524; turn=9; state=c46d9172; conclusion={\"kind\":\"lastTeamRemaining\",\"team\":1}",
+    "CARRIED_VICTORY_OK level=c01-01; legal orders=156; events=524; terminal=c46d9172; campaign=17488f7b; next=battle-02",
+    "PLAYED_TERMINAL level=c01-02; legal orders=259; outcome=victory; completion views=1; events=584; presented=584; turn=13; state=5967317c; conclusion={\"kind\":\"objectiveCompleted\",\"team\":1,\"player\":1,\"objective\":\"primary\"}",
+    "CARRIED_VICTORY_OK level=c01-02; legal orders=259; events=584; terminal=5967317c; campaign=d152d095; next=battle-03",
+    "CARRIED_OPENING_OK battles played in this process=415 legal orders; third opening=21 orders; third state=d1103229; outcomes=c01-01:c46d9172:{\"kind\":\"lastTeamRemaining\",\"team\":1};c01-02:5967317c:{\"kind\":\"objectiveCompleted\",\"team\":1,\"player\":1,\"objective\":\"primary\"}. No third-battle victory or full-campaign claim."
+  ],
+  "normalizedWarningsMatchBaseline": true,
+  "warningCount": 41,
+  "manualGuiScope": "One lawful AI attack on Torren, all four recoil poses, idle restoration and counterattack; 71 full-viewport observations.",
+  "negativeControls": [
+    "One original RGBA channel changed in memory: extraction verifier rejected.",
+    "Peak span110 changed to109ms only in an isolated project-data copy: production recoil assertion rejected with exit1."
+  ],
+  "githubActionsRunsForSourceCommit": 0,
+  "githubStatusContextsForSourceCommit": 0,
+  "githubWorkflowTriggers": [
+    "push main",
+    "pull_request",
+    "workflow_dispatch"
+  ],
+  "exportAcceptance": "Not run.",
+  "completeCampaignAcceptance": "Not claimed."
+}

@@ -1,0 +1,10 @@
+repository output: exit 2
+Output must be outside the repository; audit evidence is read-only.
+existing output: exit 2
+Output must be a new or empty directory; refusing to overwrite a previous run.
+Preserved evidence hash check: exit 0
+source-campaign-save.json: OK
+candidate-001-before.json: OK
+candidate-001-after.json: OK
+candidate-001-receipt.json: OK
+derivation-actions.json: OK

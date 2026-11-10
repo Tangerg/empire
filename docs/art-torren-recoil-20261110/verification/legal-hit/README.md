@@ -73,7 +73,7 @@ The harness asserts all of the following:
 7. Every save field equals preserved evidence except the two official `savedAt` timestamps. The real-receipt evidence and complete two-action trace reproduce exactly.
 8. The original source save remains byte-identical.
 
-The script also refuses repository-local output and nonempty output directories. Both rejection paths were exercised with exit 2, followed by a successful checksum check of all preserved audit files. See `portable-run/guards.log`. No `bin`, `obj`, or `__pycache__` directory is present in this evidence package.
+The script also refuses repository-local output and nonempty output directories. Both rejection paths were exercised with exit 2, followed by a successful checksum check of all preserved audit files. See `portable-run/guards.txt`. No `bin`, `obj`, or `__pycache__` directory is present in this evidence package.
 
 ## Files
 
