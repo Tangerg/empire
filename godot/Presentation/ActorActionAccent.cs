@@ -11,6 +11,7 @@ public partial class ActorActionAccent : Node2D
     private float direction;
     private float strength;
     private float progress;
+    private bool recovering;
 
     public void Configure(ActorMotion actionMotion, Vector2 aim)
     {
@@ -20,11 +21,13 @@ public partial class ActorActionAccent : Node2D
 
     public void Sample(double elapsed, double release, double length)
     {
-        var charging = elapsed < release;
-        progress = (float)(charging ? elapsed / release : release == length ? 1 : (elapsed - release) / (length - release));
-        strength = charging ? progress * 0.65f : 1 - progress;
-        if (charging)
-            progress = 1 - progress;
+        recovering = elapsed >= release;
+        var phase = (float)(!recovering ? elapsed / release : release == length ? 1 : (elapsed - release) / (length - release));
+        strength = recovering ? 1 - phase : phase * 0.65f;
+        progress = recovering ? phase : 1 - phase;
+        Rotation = motion == ActorMotion.Lunge
+            ? direction + (recovering ? phase * .65f : (phase - 1) * .65f)
+            : 0;
         Visible = elapsed < length && strength > 0;
         QueueRedraw();
     }
@@ -37,18 +40,15 @@ public partial class ActorActionAccent : Node2D
         {
             // Motion determines the gesture, not the weapon's material or damage type.
             const int segments = 18;
-            var points = new Vector2[(segments + 1) * 2];
             var radius = 16 + progress * 5;
-            for (var i = 0; i <= segments; i++)
+            if (recovering)
             {
-                var t = (float)i / segments;
-                var angle = direction - 1.35f + t * 2.2f;
-                var edge = Vector2.FromAngle(angle);
-                points[i] = edge * radius;
-                points[points.Length - 1 - i] = edge * (radius - .35f - MathF.Sin(t * MathF.PI) * 4.15f);
+                var trail = new Color(light, strength * .35f);
+                DrawRibbon(radius - 3, -1.7f, 2.05f, 1.6f, trail);
+                DrawRibbon(radius - 6, -1.9f, 1.8f, .8f, trail);
             }
-            DrawColoredPolygon(points, light);
-            DrawArc(Vector2.Zero, radius + 1, direction - 1.35f, direction + 0.85f, segments + 1, ink, 1, true);
+            DrawRibbon(radius, -1.35f, 2.2f, 4.15f, light);
+            DrawArc(Vector2.Zero, radius + 1, -1.35f, .85f, segments + 1, ink, 1, true);
         }
         else
         {
@@ -60,5 +60,19 @@ public partial class ActorActionAccent : Node2D
             for (var side = -1; side <= 1; side += 2)
                 DrawLine(new Vector2(side * (radius + 3), 3), new Vector2(side * (radius + 3), -5 - progress * 5), light, 2, true);
         }
+    }
+
+    private void DrawRibbon(float radius, float start, float span, float width, Color color)
+    {
+        const int segments = 18;
+        var points = new Vector2[(segments + 1) * 2];
+        for (var i = 0; i <= segments; i++)
+        {
+            var t = (float)i / segments;
+            var edge = Vector2.FromAngle(start + t * span);
+            points[i] = edge * radius;
+            points[points.Length - 1 - i] = edge * (radius - .35f - MathF.Sin(t * MathF.PI) * width);
+        }
+        DrawColoredPolygon(points, color);
     }
 }

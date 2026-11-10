@@ -108,6 +108,7 @@ public partial class AnimationChecks
         try
         {
             await CheckActionAccents(board, state, aid, did);
+            await CheckActionSweep(board, state, aid, did);
             await CheckReleaseBoundaries(board, catalog, state, aid, did);
             await CheckWeaponActionIndependence(board, catalog, state, aid, did);
             await CheckReleaseEventScope(board, state, aid, did);
@@ -131,6 +132,8 @@ public partial class AnimationChecks
             var accent = actor.GetNode<ActorActionAccent>("ActionAccent");
             Require(!accent.Visible, "Action accents start without a flash or a fabricated hit.");
             await Tick(board, .032);
+            if (weapon == ReleaseGenericWeapon)
+                Require(Mathf.IsZeroApprox(accent.Rotation), "Stationary focus remains upright rather than inheriting the melee sweep.");
             Require(accent.Visible && board.GetNodeOrNull("BattleEffects/Hit") is null,
                 "Both lunge and stationary accents charge on the clip clock before the release-owned hit.");
             await Tick(board, .032);
@@ -158,6 +161,53 @@ public partial class AnimationChecks
                     "Disabled animation adds no lingering action accents or extra waiting.");
             }
             finally { board.AnimationsEnabled = true; }
+        }
+    }
+
+    private async Task CheckActionSweep(BoardView board, JsonObject state, int aid, int did)
+    {
+        foreach (var at in new[] { new Vector2I(13, 16), new Vector2I(11, 16), new Vector2I(12, 15),
+            new Vector2I(13, 17), new Vector2I(12, 16) })
+        {
+            var transition = Transition(state, state, IdleAction(),
+                ScopedClipAttack(Strike("attack", aid, did), At(12, 16), At(at.X, at.Y)));
+            var playing = board.PresentTransitionAsync(viewportFeedback, transition);
+            var actor = Actor(board, aid);
+            var accent = actor.GetNode<ActorActionAccent>("ActionAccent");
+            var contact = actor.GetMeta("logical_contact").AsVector2();
+            var direction = board.Projection.CellContact(new(at.X, at.Y)) - board.Projection.CellContact(new(12, 16));
+            var aim = direction.IsZeroApprox() ? 0 : direction.Angle();
+            Require(Mathf.IsEqualApprox(accent.Rotation, aim - .65f) && !accent.Visible,
+                "Lunge wind-up starts behind the projected aim without mirroring the accent twice or flashing early.");
+            await Tick(board, .032);
+            Require(Mathf.IsEqualApprox(accent.Rotation, aim - .325f) && accent.Visible,
+                "The lunge outline sweeps forward through anticipation instead of remaining a static ring.");
+            await Tick(board, .031999);
+            var beforeRelease = accent.Rotation;
+            Require(beforeRelease < aim && board.GetNodeOrNull("BattleEffects/Hit") is null,
+                "The sweep approaches aim immediately before release without producing a premature impact.");
+            await Tick(board, .000001);
+            var hit = board.GetNode<Node2D>("BattleEffects/Hit");
+            Require(Mathf.IsEqualApprox(accent.Rotation, aim) && accent.Visible,
+                "The sweep meets the projected aim at the same exact boundary that creates the impact.");
+            await Tick(board, .000001);
+            Require(accent.Rotation > aim && accent.Rotation - beforeRelease < .0001f
+                && ReferenceEquals(hit, board.GetNode<Node2D>("BattleEffects/Hit")),
+                "The sweep continues in the same direction through release, without snapping or restarting the impact.");
+            await Tick(board, .031999);
+            Require(Mathf.IsEqualApprox(accent.Rotation, aim + .325f)
+                && actor.GetMeta("logical_contact").AsVector2() == contact,
+                "Recovery follows through while the canonical contact and standing owner stay unchanged.");
+            var fineTransform = accent.Transform;
+            board.CancelPresentation();
+            Require(!await playing && Actor(board, aid).GetNodeOrNull("ActionAccent") is null,
+                "Recovery cancellation retires the complete sweep before the next action can start.");
+            playing = board.PresentTransitionAsync(viewportFeedback, transition);
+            await Tick(board, .096);
+            accent = Actor(board, aid).GetNode<ActorActionAccent>("ActionAccent");
+            Require(accent.Transform.IsEqualApprox(fineTransform) && accent.Visible,
+                "A coarse release-crossing tick gives the same sweep transform as subdivided samples.");
+            await Drain(board, playing);
         }
     }
 
@@ -518,6 +568,8 @@ public partial class AnimationChecks
                         && actor.Position.IsEqualApprox(origin + direction * (float)(7 * Math.Cos(Math.PI / 2 * .75)))
                         && Frame(actor) == 2 && board.GetNodeOrNull("BattleEffects/Hit") is null && !playing.IsCompleted,
                         "An admitted huge finite recovery normalizes elapsed time before trigonometry and retires its already-ended impact.");
+                    Require(float.IsFinite(actor.GetNode<ActorActionAccent>("ActionAccent").Rotation),
+                        "Huge finite recovery samples retain finite accent rotation without multiplying elapsed time first.");
                     await Tick(board, 1e303);
                     Require(board.GetNode<Node2D>("BattleEffects").GetChildCount() == 0 && completed == 2,
                         "Later samples of a huge recovery cannot recreate an impact that already retired.");
@@ -533,7 +585,12 @@ public partial class AnimationChecks
                     if (release == 0)
                         Require(Actor(board, aid).Position.IsEqualApprox(origin + direction * 7),
                             "A zero-release lunge begins recovery at its finite peak without dividing by zero.");
-                    await Tick(board, .128);
+                    var accent = Actor(board, aid).GetNode<ActorActionAccent>("ActionAccent");
+                    Require(float.IsFinite(accent.Rotation), "Endpoint release samples keep finite accent rotation.");
+                    await Tick(board, .064);
+                    Require(float.IsFinite(accent.Rotation) && accent.Visible,
+                        "Both zero-release recovery and clip-end-release anticipation retain finite visible sweeps.");
+                    await Tick(board, .064);
                     CheckSettledClipActor(board, aid, catalog.ResolveUnit("c01.swordsman"), origin);
                     Require(board.GetNodeOrNull("BattleEffects/Hit") is not null && !playing.IsCompleted,
                         "Both endpoint release policies restore idle at clip end while retaining the correctly timed impact.");
