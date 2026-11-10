@@ -1,0 +1,27 @@
+{
+  "command": "bash tools/godot/verify-native.sh",
+  "exitCode": 0,
+  "sourceCommit": "444e7e7cdedbba3ccc7a12b2d179e98d4ec81835",
+  "assemblySha256": "be82ae5f490f76686e306b152db5b8084b1eba5ed1b80b4d0f87267a85690ea5",
+  "fullLogSha256": "895440b5e4a89f0370cc520cf285ff3e1d71ec970298280aea6742a0f12dd025",
+  "errorOrLeakDiagnostics": 0,
+  "animationAssertions": 3279,
+  "campaignPlayedFlowAssertions": 20327,
+  "independentLevels": 16,
+  "legalIndependentReplayActions": 3425,
+  "unchangedIndependentReplayHashes": true,
+  "unchangedPlayedOpeningMarkers": [
+    "PLAYED_AI_DEFEAT_OK orders=152; terminal=3dbb09d3; events=10; completions=1; retry=9dae091b; both slots unchanged",
+    "PLAYED_TERMINAL level=c01-01; legal orders=156; outcome=victory; completion views=1; events=524; presented=524; turn=9; state=c46d9172; conclusion={\"kind\":\"lastTeamRemaining\",\"team\":1}",
+    "CARRIED_VICTORY_OK level=c01-01; legal orders=156; events=524; terminal=c46d9172; campaign=17488f7b; next=battle-02",
+    "PLAYED_TERMINAL level=c01-02; legal orders=259; outcome=victory; completion views=1; events=584; presented=584; turn=13; state=5967317c; conclusion={\"kind\":\"objectiveCompleted\",\"team\":1,\"player\":1,\"objective\":\"primary\"}",
+    "CARRIED_VICTORY_OK level=c01-02; legal orders=259; events=584; terminal=5967317c; campaign=d152d095; next=battle-03",
+    "CARRIED_OPENING_OK battles played in this process=415 legal orders; third opening=21 orders; third state=d1103229; outcomes=c01-01:c46d9172:{\"kind\":\"lastTeamRemaining\",\"team\":1};c01-02:5967317c:{\"kind\":\"objectiveCompleted\",\"team\":1,\"player\":1,\"objective\":\"primary\"}. No third-battle victory or full-campaign claim."
+  ],
+  "warningsMatchBaselineAfterTemporaryPathNormalization": true,
+  "warningCount": 41,
+  "baselineCommit": "742a308ba1faaf32b6e6f44298bfa85e9a12357c",
+  "manualGuiScope": "Only the Torren physical-attack slice captured in native-proof.json.",
+  "exportAcceptance": "Not run.",
+  "completeCampaignAcceptance": "Not claimed."
+}

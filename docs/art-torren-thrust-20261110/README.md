@@ -122,7 +122,23 @@ remain disclosed in `verification/native-session.txt`. Two preceding launches
 had shader-cache / XServer diagnostics and are not counted as clean acceptance;
 the final session used a fresh isolated desktop-side cache and configuration.
 
-At this checkpoint the full aggregate native gate is still running. The focused
-checks and actual captured action have passed; final aggregate results will be
-added after its process and teardown complete. This is one accepted authored
-physical-attack slice, not the remaining idle, magic, death or celebration work.
+The full aggregate `bash tools/godot/verify-native.sh` subsequently completed
+with exit 0 and no error/leak diagnostics. Its complete log and status are in
+`verification/full-native-passed.txt` and `verification/full-native-status.json`.
+The tested assembly hash matches the final real-render capture. Formatting,
+source metadata, both builds, all native scenes, save/replay contracts and the
+played opening passed, including the 3,279 animation assertions and 20,327
+played-flow assertions. The latter includes process-frame waiting checks and is
+not a deterministic count of unique gameplay scenarios.
+
+All 16 independent-level action/event/receipt hashes, covering 3,425 legal
+orders, exactly match baseline `742a308b`. The real played-flow result markers
+also match: C01 and C02 victories after 415 total legal orders, followed by 21
+orders in C03, plus the opponent-caused defeat/retry probe. This is not a C03
+victory or complete-campaign claim. All 41 warning lines match the baseline
+multiset after normalizing isolated temporary paths; they include intentional
+save-rejection probes and existing viewport/import warnings.
+
+This is one accepted authored physical-attack slice, not the remaining idle,
+magic, death or celebration work. Broader manual GUI and export acceptance are
+separate; only the Torren attack has the real-render evidence recorded here.
