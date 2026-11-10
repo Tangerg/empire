@@ -119,10 +119,31 @@ coverage, not the basis for the independent two-facing visual verdict.
 Each `native-*-lossless.mp4` decodes to RGB bytes exactly equal to every saved
 960×640 source PNG. Frame hashes, all raw actor traces, lossless videos,
 preview/release/result PNGs and diagnostic phase crops are retained. The
-readback capture uses fixed60 simulation and stride1; it can slow wall-clock
+readback capture uses fixed 60 FPS simulation and stride 1; it can slow wall-clock
 rendering. Original PNG alpha is not asserted by the RGB video comparison.
 All shots use implementation commit `c328a808`, Empire.dll SHA256
-`184194d4…fab315`, Core `5130e396…08db`. The full gate is using the identical
-post-commit build; its final result remains pending.
+`184194d4…fab315`, Core `5130e396…08db`. The full gate passed using these exact same DLL bytes, without metadata
+normalization or a build-identity exception.
 
 Exported-build performance and complete-campaign acceptance are not claimed.
+
+## Full native gate
+
+`bash tools/godot/verify-native.sh` completed with exit 0 and no error/leak
+diagnostics. It passed **5,091 animation assertions** and **21,783
+played-flow assertions**. The latter includes process-frame waits and is not a
+count of unique gameplay scenarios. Full output and status are retained in
+`verification/full-native-passed.txt` and `full-native-status.json`.
+
+All 16 independent-level action/event/receipt hashes covering 3,425 legal orders
+match baseline `36582c1e`. All six played-flow result markers also match:
+C01 and C02 victories after 415 legal orders, then 21 orders in C03, plus the
+opponent-caused defeat/retry probe. This is not C03 victory or full-campaign
+acceptance. All 41 warning lines match the baseline multiset after normalizing
+isolated temporary paths; these include intentional save-rejection probes and
+existing import/viewport warnings. No valid check was disabled or weakened.
+
+GitHub returned zero workflow runs and zero status contexts for implementation
+commit `c328a808`. Its workflow triggers on main pushes, pull requests
+and manual dispatch, not this feature-branch push. This is local native gate
+evidence, not a remote-CI pass. Export acceptance remains unperformed.

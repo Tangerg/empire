@@ -1,0 +1,15 @@
+{
+  "status": "PASS_NO_MUST_FIX",
+  "scope": "Read-only review of c328a808 implementation and 7025ad42 native evidence; no production build or modifications.",
+  "checked": [
+    "Semantic data diff contains only new asset/clip and c01.archer attack binding.",
+    "Existing other-role expectations remain intact.",
+    "Six source poses and 320/600/740 timing agree across data and tests.",
+    "Elin inheritance and shared friendly/enemy C01 archer scope are documented.",
+    "All three actor traces independently recomputed; false/false/true shot mirrors, fixed shot root/support, final presenting=false.",
+    "All three videos independently decoded again; every one of 45/74/74 RGB-frame hashes equals its proof.",
+    "Current Empire/Core assembly hashes, videos and legal input saves match recorded identities.",
+    "No projectile-flight, exported-performance or complete-campaign claim."
+  ],
+  "aggregateGateAtReview": "Still running; this review is not aggregate-gate acceptance."
+}

@@ -1,0 +1,44 @@
+{
+  "command": "bash tools/godot/verify-native.sh",
+  "exitCode": 0,
+  "sourceCommit": "c328a80836884ec15d1f055bf0beaa06970874e7",
+  "baselineCommit": "36582c1ec36d29e4c47ec6b7177a011b81ac95fe",
+  "assemblySha256": "184194d4c86b09ce93104db5bb5704bb5fc27efe86e174b9ad6ee6ef46fab315",
+  "coreAssemblySha256": "5130e39600fa68e9f4209534be28668bb510c64a4b7fabf31150d3f741b208db",
+  "nativeAndGateAssemblyIdentity": "Exact same SHA256 bytes for both Empire and Core; no metadata normalization.",
+  "fullLogSha256": "351122beafba20906e65e97d04f760c62c5dadab88882b2a5ad0b815d15bf433",
+  "errorOrLeakDiagnostics": 0,
+  "animationAssertions": 5091,
+  "playedFlowAssertions": 21783,
+  "independentLevels": 16,
+  "independentLegalOrders": 3425,
+  "allIndependentReplayHashesUnchanged": true,
+  "playedOpeningMarkers": [
+    "PLAYED_AI_DEFEAT_OK orders=152; terminal=3dbb09d3; events=10; completions=1; retry=9dae091b; both slots unchanged",
+    "PLAYED_TERMINAL level=c01-01; legal orders=156; outcome=victory; completion views=1; events=524; presented=524; turn=9; state=c46d9172; conclusion={\"kind\":\"lastTeamRemaining\",\"team\":1}",
+    "CARRIED_VICTORY_OK level=c01-01; legal orders=156; events=524; terminal=c46d9172; campaign=17488f7b; next=battle-02",
+    "PLAYED_TERMINAL level=c01-02; legal orders=259; outcome=victory; completion views=1; events=584; presented=584; turn=13; state=5967317c; conclusion={\"kind\":\"objectiveCompleted\",\"team\":1,\"player\":1,\"objective\":\"primary\"}",
+    "CARRIED_VICTORY_OK level=c01-02; legal orders=259; events=584; terminal=5967317c; campaign=d152d095; next=battle-03",
+    "CARRIED_OPENING_OK battles played in this process=415 legal orders; third opening=21 orders; third state=d1103229; outcomes=c01-01:c46d9172:{\"kind\":\"lastTeamRemaining\",\"team\":1};c01-02:5967317c:{\"kind\":\"objectiveCompleted\",\"team\":1,\"player\":1,\"objective\":\"primary\"}. No third-battle victory or full-campaign claim."
+  ],
+  "normalizedWarningsMatchBaseline": true,
+  "warningCount": 41,
+  "manualGuiScope": "Three lawful shots: stationary right: 45 observations; move-right: 74; true mirror-left: 74. Right and true left independently reviewed frame-by-frame and at native size; not continuous playback.",
+  "nativeVisibilityLimit": "No source occlusion in accepted two layouts. Target impact overlaps target. Other unit/scenery overlap arrangements not exhaustively accepted.",
+  "negativeControls": [
+    "In-memory original RGBA channel mutation rejected.",
+    "Release 320 changed to 319: authored release test exit1.",
+    "Attack binding changed to static.attack: authored binding test exit1.",
+    "Bow policy changed from stationary to lunge: stationary-source contract exit1."
+  ],
+  "githubActionsRunsForSourceCommit": 0,
+  "githubStatusContextsForSourceCommit": 0,
+  "githubWorkflowTriggers": [
+    "push main",
+    "pull_request",
+    "workflow_dispatch"
+  ],
+  "exportAcceptance": "Not run.",
+  "completeCampaignAcceptance": "Not claimed.",
+  "projectileFlight": "Not implemented or claimed; this is source character animation plus existing target impact."
+}
