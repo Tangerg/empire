@@ -68,6 +68,13 @@ public partial class AnimationChecks
             foreach (var (action, duration) in new[] { ("hit", 150), ("death", 220) })
             {
                 var clip = assets.ResolveUnitClip(type, action, ActorClipUnit.Milliseconds, key);
+                if (key == "campaign-torren" && action == "hit")
+                {
+                    Require(clip.Asset.Identity == "torren-recoil-v1" && clip.Length == 320
+                        && clip.FrameAt(0) == 0 && clip.FrameAt(319.999) == 3 && clip.ReleaseMs is null,
+                        "Torren's explicit authored recoil replaces only his static hit placeholder.");
+                    continue;
+                }
                 Require(clip.Length == duration && clip.FrameAt(0) == clip.FrameAt(duration - 1)
                     && clip.ReleaseMs is null, "Shipped hit chooses an explicit 150 ms static hold; death retains its original 220 ms static duration.");
             }

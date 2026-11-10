@@ -135,6 +135,28 @@
           "span": 220
         }
       ]
+    },
+    "torren.recoil": {
+      "unit": "milliseconds",
+      "appearanceId": "torren-recoil-v1",
+      "frames": [
+        {
+          "frame": "recoil-onset",
+          "span": 40
+        },
+        {
+          "frame": "recoil-peak",
+          "span": 110
+        },
+        {
+          "frame": "recoil-recover",
+          "span": 90
+        },
+        {
+          "frame": "recoil-ready",
+          "span": 80
+        }
+      ]
     }
   },
   "assets": [
@@ -3301,6 +3323,70 @@
         ]
       ],
       "qualityTier": "painted-breathe-v1-reviewed",
+      "textureFilter": "linear"
+    },
+    {
+      "id": "torren-recoil-v1",
+      "topicId": "C01-UNIT-SWORDSMAN",
+      "png": "painted-actions-v1/torren-recoil-v1.png",
+      "pixelDensity": 1,
+      "frames": 4,
+      "frameOrder": [
+        "recoil-onset",
+        "recoil-peak",
+        "recoil-recover",
+        "recoil-ready"
+      ],
+      "physicalWidth": 1559,
+      "physicalHeight": 509,
+      "resourcePath": "res://assets/painted-actions-v1/torren-recoil-v1.png",
+      "sha256": "469b95f4391c4e72cb3c83bfe9917bd766f3e031f35e38977f4c35fcaaca615c",
+      "presentationScale": 0.0738,
+      "frameRegions": [
+        [
+          0,
+          0,
+          387,
+          507
+        ],
+        [
+          387,
+          0,
+          397,
+          483
+        ],
+        [
+          784,
+          0,
+          392,
+          503
+        ],
+        [
+          1176,
+          0,
+          383,
+          509
+        ]
+      ],
+      "frameAnchors": [
+        [
+          193,
+          501
+        ],
+        [
+          202,
+          477
+        ],
+        [
+          199,
+          496
+        ],
+        [
+          196,
+          502
+        ]
+      ],
+      "qualityTier": "painted-recoil-v1-reviewed",
       "textureFilter": "linear"
     }
   ]

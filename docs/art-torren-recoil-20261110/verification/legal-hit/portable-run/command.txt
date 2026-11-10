@@ -1,0 +1,8 @@
+# Executed from the repository root on 2026-11-10; the actual build and probe ran from /tmp.
+repo="$PWD"
+(cd /tmp && "$repo/docs/art-torren-recoil-20261110/verification/legal-hit/derive.sh" \
+  --repo-root "$repo" \
+  --output /tmp/empire-torren-hit-portable-20261110)
+
+# Result: exit 0; scratch-only build; 0 warnings, 0 errors; all assertions passed.
+# Subsequent runs must choose a new or empty output directory.

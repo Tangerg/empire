@@ -105,7 +105,7 @@ existing committed-After settlement instead of writing to a retired actor.
 
 The two legacy finite attack profiles, `static.attack` and `static.work`, each retain one
 trusted pose for exactly 150 ms, with an explicit release at 75 ms. The initial infrastructure slice introduced no new sprite pixels
-or accepted multi-frame character artwork. The later `torren.thrust` action selects a separate six-pose sheet for `campaign-torren` only: 360 ms total, releasing at the full-extension frame boundary at 160 ms. Its original idle, movement and other actions remain unchanged. The admitted clip
+or accepted multi-frame character artwork. The later `torren.thrust` action selects a separate six-pose sheet for `campaign-torren` only: 360 ms total, releasing at the full-extension frame boundary at 160 ms. Its base appearance and movement remain unchanged; the separately reviewed breathing idle and recoil are described below. The admitted clip
 `showAccent` option defaults to true; this authored thrust sets it false because
 the old crescent obscured its arm and blade in real gameplay. This controls only
 accent creation, never impact, timing, motion or state transitions. Multi-frame/cross-sheet checks use
@@ -250,13 +250,21 @@ a corpse marker nor absence from the final snapshot starts death. Only the
 ordered `death` event starts the explicit `death` clip. Transport passengers have
 no drawn pre-transition actor and receive no invented death presentation.
 
-All current unit/actor action maps explicitly bind `static.hit` (150 ms) and
-`static.death` (220 ms), both using their existing trusted idle image. The former
-is an authored static hold within the existing 420 ms impact; the latter retains
+All maps except Torren's hit explicitly retain `static.hit` (150 ms); every death
+map retains `static.death` (220 ms). Both use the existing trusted idle image.
+The static hit is an authored hold within the existing 420 ms impact; static death retains
 the previous normalized fade and 35% shrink through its explicit
 `death: { "mode": "during-clip" }` policy. These are declared placeholders,
 not newly completed reaction artwork. The frame spans own the entire duration of
 this mode, so it forbids a separate `fadeMs` value.
+
+Torren alone selects `torren.recoil`: four independently painted hit poses with
+40/110/90/80 ms intervals (320 ms total). The reaction returns to his declared
+breathing idle at its endpoint, before the unchanged 420 ms impact completes.
+The existing receipt clock, grounded frame anchors and facing own playback; no
+new actor timer, root motion or combat rule is introduced. See the
+[Torren recoil review](../../docs/art-torren-recoil-20261110/README.md) for source,
+extraction and real-render acceptance.
 
 An accepted future action sheet may instead declare
 `death: { "mode": "after-clip", "fadeMs": 120 }`. The example fade duration is

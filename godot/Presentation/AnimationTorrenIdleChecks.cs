@@ -121,8 +121,9 @@ public partial class AnimationChecks
             MainAttackScope(attacker, state["units"]![0]!.AsObject(), "c01.border-blade", Strike("attack", Int(attacker, "id"), id))));
         await Tick(board, .08);
         sprite = Actor(board, id).GetNode<Sprite2D>("AuthoredSprite");
-        CheckClipSprite(sprite, original, 0, sprite.Scale.X < 0 ? -1 : 1);
-        await Tick(board, .151);
+        var recoil = assets.ResolveUnitClip("c01.swordsman", "hit", ActorClipUnit.Milliseconds, "campaign-torren");
+        CheckClipSprite(sprite, recoil.Asset, recoil.FrameAt(5), sprite.Scale.X < 0 ? -1 : 1);
+        await Tick(board, .316);
         CheckClipSprite(sprite, idle.Asset, 0, sprite.Scale.X < 0 ? -1 : 1);
         await Drain(board, hit);
 
