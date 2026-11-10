@@ -47,6 +47,7 @@ public partial class AnimationChecks : Node
             await CheckTorrenRecoilPlayback();
             await CheckArcherRecoilPlayback();
             await CheckTorrenFallPlayback();
+            await CheckArcherFallPlayback();
             await CheckTorrenCelebrationPlayback();
             CheckHealingDefinitions();
             await CheckClock();
@@ -269,7 +270,12 @@ public partial class AnimationChecks : Node
         var before = Copy();
         var after = Copy();
         var attacker = before["units"]![0]!.AsObject();
-        var target = before["units"]!.AsArray().Last()!.AsObject();
+        // This contract deliberately exercises the legacy static death policy.
+        var target = before["units"]!.AsArray().OfType<JsonObject>()
+            .Single(unit => unit["key"]?.GetValue<string>() == "south-sword");
+        var death = assets.ResolveUnitClip("c01.swordsman", "death", ActorClipUnit.Milliseconds, "south-sword");
+        Require(death.Length == 220 && death.RequireDeath().Mode == ActorDeathMode.DuringClip,
+            "The legacy death fixture selects an explicit actor that retains the static policy.");
         var aid = Int(attacker, "id");
         var did = Int(target, "id");
         var at = board.Projection.CellCenter(new(Int(target, "x"), Int(target, "y")));
@@ -309,7 +315,8 @@ public partial class AnimationChecks : Node
             await Drain(board, task);
         }
 
-        after["units"]!.AsArray().RemoveAt(after["units"]!.AsArray().Count - 1);
+        var removed = after["units"]!.AsArray().OfType<JsonObject>().Single(unit => Int(unit, "id") == did);
+        after["units"]!.AsArray().Remove(removed);
         attack["killed"] = true;
         task = board.PresentTransitionAsync(viewportFeedback, Transition(before, after, IdleAction(), MainAttackScope(attacker, target, "c01.border-blade", attack,
             new JsonObject { ["type"] = "death", ["unit"] = did, ["at"] = At(Int(target, "x"), Int(target, "y")) })));
@@ -521,7 +528,7 @@ public partial class AnimationChecks : Node
         await Tick(board, 0.05);
         board.CancelPresentation();
         Require(!await interrupted && board.GetNodeOrNull($"CanonicalProjection/Unit_{did}") is null,
-            "Cancelling a partial death cannot leave a shrunken stale actor");
+            "Cancelling a partial death cannot leave a stale death actor");
 
         var transition = Transition(Copy(), Copy(), IdleAction(), [new JsonObject { ["type"] = "gameOver", ["conclusion"] = Empire.Core.Lifecycle.BattleConclusion.LastTeamRemaining(1).ToJson() }]);
         var first = board.PresentTransitionAsync(viewportFeedback, transition);

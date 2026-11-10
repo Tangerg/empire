@@ -48,19 +48,22 @@ public partial class AnimationChecks
             foreach (var facing in new[] { "west", "east" })
             {
                 unit["facing"] = facing;
-                await CheckTorrenFallBoundaries(board, state, id, clip, facing == "west" ? -1 : 1);
+                await CheckAuthoredFallBoundaries(board, state, id, clip, facing == "west" ? -1 : 1);
             }
-            await CheckTorrenFallColor(board, state, id, clip);
-            await CheckTorrenFallScope(board, state, id);
-            await CheckTorrenFallResult(board, state, id);
-            await CheckTorrenFallLifetime(board, state, id);
-            await CheckTorrenFallVisibility(board, state, id);
+            await CheckAuthoredFallColor(board, state, id, clip);
+            await CheckAuthoredFallScope(board, state, id,
+                assets.ResolveUnitClip("c01.swordsman", "idle", ActorClipUnit.Milliseconds, "campaign-torren"),
+                assets.ResolveUnitClip("c01.swordsman", "hit", ActorClipUnit.Milliseconds, "campaign-torren"));
+            await CheckAuthoredFallResult(board, state, id);
+            await CheckAuthoredFallLifetime(board, state, id, assets.ResolveUnitClip("c01.swordsman", "idle", ActorClipUnit.Milliseconds, "campaign-torren"));
+            await CheckAuthoredFallVisibility(board, state, id, "c01.swordsman", "campaign-torren");
         }
         finally { RemoveChild(board); board.Free(); }
         GD.Print("Torren fall: six production poses, 620+160 ms phases, mirrors/contact, event ownership, result wait and lifecycle boundaries passed.");
     }
 
-    private async Task CheckTorrenFallBoundaries(BoardView board, JsonObject state, int id, ActorClip clip, int sign)
+    // Torren and C01 archer share these authored 620+160 ms acceptance boundaries.
+    private async Task CheckAuthoredFallBoundaries(BoardView board, JsonObject state, int id, ActorClip clip, int sign)
     {
         var after = WithoutDeathActor(state, id);
         var unchanged = state.ToJsonString();
@@ -95,7 +98,7 @@ public partial class AnimationChecks
                     CheckClipShadow(sprite);
                     Require(!task.IsCompleted && board.IsPresenting && published.Count == 0 && exits == 0
                         && actor.SelfModulate.IsEqualApprox(new Color(1, 1, 1, (float)alpha)),
-                        $"Torren's production fall/fade holds the expected pose and opacity without publication at {ms} ms.");
+                        $"The production fall/fade holds the expected pose and opacity without publication at {ms} ms.");
                     Require(actor.Position == origin && actor.Scale == Vector2.One && actor.Rotation == 0 && sprite.Rotation == 0
                         && actor.GetMeta("logical_contact").AsVector2() == contact && board.RenderedUnitCount == 2
                         && actor.GetNodeOrNull("ActionAccent") is null,
@@ -108,7 +111,7 @@ public partial class AnimationChecks
                     Require(task.IsCompleted && await task && !board.IsPresenting && exits == 1
                         && published.SequenceEqual(new[] { 0, 1 }) && counts.SequenceEqual(new[] { 1, 1 })
                         && board.RenderedUnitCount == 1 && board.GetNodeOrNull($"CanonicalProjection/Unit_{id}") is null,
-                        "Exact or coarse completion retires Torren once at 780 ms; duplicate death adds no wait or second removal.");
+                        "Exact or coarse completion retires the actor once at 780 ms; duplicate death adds no wait or second removal.");
                 Require(state.ToJsonString() == unchanged && board.GetNodeOrNull("BattleEffects") is null
                     && viewportFeedback.GetNodeOrNull("ViewportEffects") is null,
                     "Production death leaves canonical fixture data unchanged and removes transient layers at settlement.");
@@ -117,7 +120,7 @@ public partial class AnimationChecks
         finally { board.EventPresented -= Presented; }
     }
 
-    private async Task CheckTorrenFallColor(BoardView board, JsonObject state, int id, ActorClip clip)
+    private async Task CheckAuthoredFallColor(BoardView board, JsonObject state, int id, ActorClip clip)
     {
         var tint = new Color(.2f, .4f, .7f, .6f);
         var scale = new Vector2(.8f, 1.2f);
@@ -153,10 +156,8 @@ public partial class AnimationChecks
         finally { board.EventPresented -= Initialize; }
     }
 
-    private async Task CheckTorrenFallScope(BoardView board, JsonObject state, int id)
+    private async Task CheckAuthoredFallScope(BoardView board, JsonObject state, int id, ActorClip idle, ActorClip recoil)
     {
-        var idle = assets.ResolveUnitClip("c01.swordsman", "idle", ActorClipUnit.Milliseconds, "campaign-torren");
-        var recoil = assets.ResolveUnitClip("c01.swordsman", "hit", ActorClipUnit.Milliseconds, "campaign-torren");
         var source = state["units"]![1]!.AsObject();
         var target = state["units"]![0]!.AsObject();
         var strike = Strike("attack", Int(source, "id"), id);
@@ -185,7 +186,7 @@ public partial class AnimationChecks
         CheckSettledClipActor(board, id, idle.Asset, board.Projection.CellContact(new(12, 16)));
     }
 
-    private async Task CheckTorrenFallResult(BoardView board, JsonObject state, int id)
+    private async Task CheckAuthoredFallResult(BoardView board, JsonObject state, int id)
     {
         var published = new List<int>();
         void Presented(BattlePresentationTransition _, int index) => published.Add(index);
@@ -197,14 +198,14 @@ public partial class AnimationChecks
             await Tick(board, .620);
             Require(published.Count == 0 && !task.IsCompleted && board.IsPresenting
                 && Frame(Actor(board, id)) == 5 && Actor(board, id).SelfModulate.A == 1,
-                "Torren's ground-pose endpoint cannot release the death or game-over event before terminal fade.");
+                "The ground-pose endpoint cannot release the death or game-over event before terminal fade.");
             await Tick(board, .159);
             Require(published.Count == 0 && !task.IsCompleted && Frame(Actor(board, id)) == 5,
-                "The result remains gated throughout Torren's terminal fade.");
+                "The result remains gated throughout the terminal fade.");
             await Tick(board, .002);
             Require(published.SequenceEqual(new[] { 0 }) && !task.IsCompleted && board.IsPresenting
                 && board.GetNodeOrNull($"CanonicalProjection/Unit_{id}") is null,
-                "Only Torren's terminal retirement releases the result event's own presentation beat.");
+                "Only the terminal retirement releases the result event's own presentation beat.");
             await Tick(board, .218);
             Require(published.SequenceEqual(new[] { 0 }) && !task.IsCompleted,
                 "The original result beat still lasts 220 ms after death completes.");
@@ -215,9 +216,8 @@ public partial class AnimationChecks
         finally { board.EventPresented -= Presented; }
     }
 
-    private async Task CheckTorrenFallLifetime(BoardView board, JsonObject state, int id)
+    private async Task CheckAuthoredFallLifetime(BoardView board, JsonObject state, int id, ActorClip idle)
     {
-        var idle = assets.ResolveUnitClip("c01.swordsman", "idle", ActorClipUnit.Milliseconds, "campaign-torren");
         var after = WithoutDeathActor(state, id);
         var published = new List<int>();
         void Presented(BattlePresentationTransition _, int index) => published.Add(index);
@@ -233,13 +233,13 @@ public partial class AnimationChecks
                     await Tick(board, ms / 1000.0);
                     board.CancelPresentation();
                     Require(!await task && published.Count == 0 && !board.IsPresenting,
-                        "Cancellation during fall, phase boundary or fade cannot publish Torren's unfinished death.");
+                        "Cancellation during fall, phase boundary or fade cannot publish the unfinished death.");
                     if (!dead)
                         CheckSettledClipActor(board, id, idle.Asset, board.Projection.CellContact(new(12, 16)));
                     await Tick(board, 10);
                     Require(dead ? board.GetNodeOrNull($"CanonicalProjection/Unit_{id}") is null
                         : Actor(board, id).GetNode<Sprite2D>("AuthoredSprite").GetMeta("art_identity").AsString() == idle.Asset.Identity,
-                        "Retired fall callbacks cannot resurrect committed dead Torren or overwrite a living snapshot's breathing.");
+                        "Retired fall callbacks cannot resurrect committed dead actors or overwrite a living snapshot's breathing.");
                     Require(board.RenderedUnitCount == (dead ? 1 : 2) && board.GetNodeOrNull("BattleEffects") is null
                         && viewportFeedback.GetNodeOrNull("ViewportEffects") is null,
                         "Cancelled production death settles the exact committed actor count and removes both transient layers.");
@@ -261,7 +261,7 @@ public partial class AnimationChecks
                 await Tick(board, ms / 1000.0);
                 RemoveChild(board);
                 Require(!await exiting && published.Count == 0 && !board.IsPresenting,
-                    "Tree exit cancels Torren's falling and fading waiters without publishing a stale event.");
+                    "Tree exit cancels the actor's falling and fading waiters without publishing a stale event.");
                 AddChild(board);
                 ConfigureActorClipBoard(board, assets);
                 board.RenderState(state);
@@ -278,11 +278,11 @@ public partial class AnimationChecks
         finally { board.AnimationsEnabled = true; board.EventPresented -= Presented; }
     }
 
-    private async Task CheckTorrenFallVisibility(BoardView board, JsonObject state, int id)
+    private async Task CheckAuthoredFallVisibility(BoardView board, JsonObject state, int id, string type, string? key)
     {
         var manifest = PresentationJson.Load<AssetManifest>("res://data/selected-assets.json");
         var bindings = PresentationJson.Load<ArtBindings>("res://data/art-bindings.json");
-        bindings.Actors["campaign-torren"].UnitArt.ActionClips.Remove("death");
+        (key is null ? bindings.Units[type] : bindings.Actors[key].UnitArt).ActionClips.Remove("death");
         ConfigureActorClipBoard(board, new AssetCatalog(manifest, bindings));
         var visible = new HashSet<int> { Int(state["units"]![1]!.AsObject(), "id") };
         var published = new List<int>();
@@ -294,7 +294,7 @@ public partial class AnimationChecks
                 Transition(state, WithoutDeathActor(state, id), IdleAction(), [ReactionDeathEvent(id)], visible), visible);
             Require(task.IsCompleted && await task && published.SequenceEqual(new[] { 0 }) && !board.IsPresenting
                 && board.GetNodeOrNull($"CanonicalProjection/Unit_{id}") is null,
-                "Hidden Torren skips both death phases before resolving even a missing named death binding.");
+                "A hidden actor skips both death phases before resolving even a missing death binding.");
             published.Clear();
             var failed = board.PresentTransitionAsync(viewportFeedback,
                 Transition(state, WithoutDeathActor(state, id), IdleAction(), [ReactionDeathEvent(id)]));
@@ -307,7 +307,7 @@ public partial class AnimationChecks
             Require(rejected && published.Count == 0 && !board.IsPresenting && board.RenderedUnitCount == 1
                 && board.GetNodeOrNull($"CanonicalProjection/Unit_{id}") is null
                 && board.GetNodeOrNull("BattleEffects") is null && viewportFeedback.GetNodeOrNull("ViewportEffects") is null,
-                "Visible missing named death art fails explicitly, settles committed state and releases presentation resources.");
+                "Visible missing death art fails explicitly, settles committed state and releases presentation resources.");
         }
         finally { board.EventPresented -= Presented; ConfigureActorClipBoard(board, assets); }
     }

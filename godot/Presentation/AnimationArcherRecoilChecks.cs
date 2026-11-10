@@ -26,8 +26,8 @@ public partial class AnimationChecks
             && ReferenceEquals(assets.ResolveUnitClip("c01.archer", "hit", ActorClipUnit.Milliseconds, "campaign-elin"), clip)
             && bindings.Units["c01.archer"].ActionClips["idle"] == "archer.breathe"
             && bindings.Units["c01.archer"].ActionClips["attack"] == "archer.loose"
-            && bindings.Units["c01.archer"].ActionClips["death"] == "static.death",
-            "Elin inherits the generic recoil while the archer's base appearance, breathing, shot and static death retain their owners.");
+            && bindings.Units["c01.archer"].ActionClips["death"] == "archer.fall",
+            "Elin inherits the generic recoil while the archer's base appearance, breathing, shot and authored fall retain their owners.");
         foreach (var (type, key) in bindings.Units.Keys.Select(type => (type, (string?)null))
             .Concat(bindings.Actors.Select(pair => (pair.Value.ExpectedUnitType, (string?)pair.Key))))
         {
@@ -341,39 +341,49 @@ public partial class AnimationChecks
         try
         {
             var task = board.PresentTransitionAsync(viewportFeedback, Transition(state, after, IdleAction(), events));
-            await Tick(board, .075);
+            var elapsedSeconds = 0.0;
+            async Task AdvanceTo(double milliseconds)
+            {
+                var seconds = milliseconds / 1000;
+                await Tick(board, seconds - elapsedSeconds);
+                elapsedSeconds = seconds;
+            }
+            await AdvanceTo(75);
             var actor = Actor(board, did);
             var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
             CheckClipSprite(sprite, recoil.Asset, 0, 1);
-            await Tick(board, .320);
+            await AdvanceTo(395);
             CheckClipSprite(sprite, idle.Asset, 0, 1);
-            await Tick(board, .139999);
+            await AdvanceTo(534.999);
             CheckClipSprite(sprite, idle.Asset, 0, 1);
             Require(actor.SelfModulate == Colors.White && actor.Scale == Vector2.One
                 && published.SequenceEqual(new[] { 0 }),
                 "A fatal flag cannot begin archer death before the 420 ms impact and existing 40 ms fatal beat finish.");
-            await Tick(board, .000001);
+            await AdvanceTo(535);
             var death = assets.ResolveUnitClip("c01.archer", "death", ActorClipUnit.Milliseconds);
             CheckClipSprite(sprite, death.Asset, 0, 1);
-            Require(death.Asset == assets.ResolveUnit("c01.archer") && death.Length == 220
-                && death.RequireDeath().Mode == ActorDeathMode.DuringClip && death.RequireDeath().TerminalFadeMs == 0
+            Require(death.Asset.Identity == "archer-fall-v1" && death.Length == 620
+                && death.RequireDeath().Mode == ActorDeathMode.AfterClip && death.RequireDeath().TerminalFadeMs == 160
                 && actor.SelfModulate == Colors.White && actor.Scale == Vector2.One
                 && published.SequenceEqual(new[] { 0, 1 }) && !task.IsCompleted,
-                "At 535 ms only the ordered death event starts the unchanged 220 ms static fade/shrink policy.");
-            await Tick(board, .110);
-            CheckClipSprite(sprite, death.Asset, 0, 1);
-            Require(Mathf.IsEqualApprox(actor.SelfModulate.A, .5f)
-                && actor.Scale.IsEqualApprox(Vector2.One * .825f)
+                "At 535 ms only the ordered death event starts the authored fall after release, impact and fatal beat.");
+            await AdvanceTo(1155);
+            CheckClipSprite(sprite, death.Asset, 5, 1);
+            Require(actor.SelfModulate == Colors.White && actor.Scale == Vector2.One
                 && published.SequenceEqual(new[] { 0, 1 }) && !task.IsCompleted,
-                "Archer static death fades and shrinks during its own clip, with no authored-fall terminal fade.");
-            await Tick(board, .109999);
+                "The complete 620 ms fall remains opaque before its independent terminal fade.");
+            await AdvanceTo(1235);
+            Require(Mathf.IsEqualApprox(actor.SelfModulate.A, .5f) && actor.Scale == Vector2.One
+                && Frame(actor) == 5 && !task.IsCompleted,
+                "Terminal fade halves alpha without shrinking or replacing the grounded drawing.");
+            await AdvanceTo(1314.999);
             Require(!task.IsCompleted && board.GetNodeOrNull($"CanonicalProjection/Unit_{did}") is not null,
-                "The full static death interval remains visible until 754.999 ms.");
-            await Tick(board, .000001);
+                "The full authored death interval remains visible until 1314.999 ms.");
+            await AdvanceTo(1315);
             Require(task.IsCompleted && await task && board.GetNodeOrNull($"CanonicalProjection/Unit_{did}") is null
                 && published.SequenceEqual(Enumerable.Range(0, events.Length))
                 && state.ToJsonString() == beforeBytes && after.ToJsonString() == afterBytes,
-                "At 755 ms fatal recoil and static death settle once with no change to committed state.");
+                "At 1315 ms fatal recoil and authored death settle once with no change to committed state.");
             await Tick(board, 2);
             Require(board.GetNodeOrNull($"CanonicalProjection/Unit_{did}") is null,
                 "Breathing and recoil cannot resurrect a retired archer.");

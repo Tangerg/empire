@@ -203,9 +203,9 @@ public partial class AnimationChecks
         sprite = Actor(board, id).GetNode<Sprite2D>("AuthoredSprite");
         var fall = assets.ResolveUnitClip("c01.archer", "death", ActorClipUnit.Milliseconds);
         CheckClipSprite(sprite, fall.Asset, 0, sprite.Scale.X < 0 ? -1 : 1);
-        Require(Mathf.IsEqualApprox(Actor(board, id).SelfModulate.A, 1 - 50f / 220)
-            && Actor(board, id).Scale.IsEqualApprox(Vector2.One * (1 - .35f * 50 / 220)),
-            "Death replaces breathing with its unchanged static pose, fade and shrink policy.");
+        Require(Actor(board, id).SelfModulate == Colors.White
+            && Actor(board, id).Scale == Vector2.One,
+            "Death replaces breathing with an opaque authored fall without shrinking the root.");
         await Drain(board, death);
         await Tick(board, 2);
         Require(board.GetNodeOrNull($"CanonicalProjection/Unit_{id}") is null,

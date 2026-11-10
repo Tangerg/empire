@@ -337,6 +337,40 @@
           "span": 80
         }
       ]
+    },
+    "archer.fall": {
+      "unit": "milliseconds",
+      "appearanceId": "archer-fall-v1",
+      "death": {
+        "mode": "after-clip",
+        "fadeMs": 160
+      },
+      "frames": [
+        {
+          "frame": "fall-buckle",
+          "span": 60
+        },
+        {
+          "frame": "fall-kneel",
+          "span": 70
+        },
+        {
+          "frame": "fall-collapse",
+          "span": 90
+        },
+        {
+          "frame": "fall-contact",
+          "span": 110
+        },
+        {
+          "frame": "fall-settle",
+          "span": 110
+        },
+        {
+          "frame": "fall-still",
+          "span": 180
+        }
+      ]
     }
   },
   "assets": [
@@ -4039,6 +4073,92 @@
         ]
       ],
       "qualityTier": "painted-recoil-v1-reviewed",
+      "textureFilter": "linear"
+    },
+    {
+      "id": "archer-fall-v1",
+      "topicId": "C01-UNIT-ARCHER",
+      "png": "painted-actions-v1/archer-fall-v1.png",
+      "pixelDensity": 1,
+      "frames": 6,
+      "frameOrder": [
+        "fall-buckle",
+        "fall-kneel",
+        "fall-collapse",
+        "fall-contact",
+        "fall-settle",
+        "fall-still"
+      ],
+      "physicalWidth": 2111,
+      "physicalHeight": 429,
+      "resourcePath": "res://assets/painted-actions-v1/archer-fall-v1.png",
+      "sha256": "94e93bf371ab33943a3426a76ea49858273ca52a13d36b3331ba7e11e54dffb5",
+      "presentationScale": 0.096,
+      "frameRegions": [
+        [
+          0,
+          0,
+          261,
+          429
+        ],
+        [
+          261,
+          0,
+          296,
+          399
+        ],
+        [
+          557,
+          0,
+          292,
+          376
+        ],
+        [
+          849,
+          0,
+          365,
+          307
+        ],
+        [
+          1214,
+          0,
+          458,
+          256
+        ],
+        [
+          1672,
+          0,
+          439,
+          241
+        ]
+      ],
+      "frameAnchors": [
+        [
+          130,
+          411
+        ],
+        [
+          147,
+          374
+        ],
+        [
+          129,
+          348
+        ],
+        [
+          126,
+          284
+        ],
+        [
+          137,
+          233
+        ],
+        [
+          139,
+          219
+        ]
+      ],
+      "qualityTier": "painted-fall-v1-reviewed",
       "textureFilter": "linear"
     }
   ]

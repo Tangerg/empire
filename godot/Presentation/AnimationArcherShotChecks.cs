@@ -24,7 +24,7 @@ public partial class AnimationChecks
             && idle.Asset.Identity == "archer-breathe-v1",
             "Only the generic archer attack selects its authored 600 ms shot; its independently authored idle remains selected.");
         foreach (var (action, expected) in new[] { ("idle", "archer.breathe"), ("move", "legacy.move"),
-            ("hit", "archer.recoil"), ("death", "static.death"), ("celebrate", "static.celebrate") })
+            ("hit", "archer.recoil"), ("death", "archer.fall"), ("celebrate", "static.celebrate") })
             Require(bindings.Units["c01.archer"].ActionClips[action] == expected,
                 "Shooting does not replace the archer's other declared actions.");
         Require(!bindings.Actors.ContainsKey("campaign-elin")
