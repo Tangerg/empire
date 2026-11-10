@@ -71,8 +71,21 @@ Evidence is in `verification/melee-readability-20261110/`:
 - Native compilation passed with zero warnings/errors. The strict native
   AnimationChecks process exited 0 after all 3,178 assertions. Formatting,
   indexed source metadata and `git diff --check` passed.
-- Full `verify-native.sh` is running on the unchanged final source. Its outcome
-  is not yet claimed at this checkpoint.
+- Full `verify-native.sh` subsequently completed with aggregate exit **0** and
+  its final success marker. The 17 core groups, all 16 independent level replays
+  and all 31 native scenes passed. The 3,425 ordered action/event/receipt traces
+  match the previous complete gate exactly.
+- Normal automatic play retained the same defeat/retry and two carried victories:
+  415 legal orders, 1,108 once-presented victory-battle events and 21 orders into
+  the third opening. Outcome, roster and campaign lines match the prior gate.
+  The played-flow scene reported 20,359 assertions; frame polling makes this
+  count variable without changing the outcomes.
+- `full-native-passed.txt` and `full-native-status.json` retain the complete log,
+  actual UTC bounds, exit status and source/artifact hashes. The gate began with
+  the final two-file working diff, which was committed as `fe52afd4` during the
+  run; its bytes and the compiled assembly remained unchanged. No GitHub commit
+  statuses or PR-triggered workflow runs were returned for that implementation,
+  so no remote CI pass is inferred.
 
 This closes the lack of temporal pixels for this C01 long-sword example. It does
 not establish all-direction, counterattack, healing/ranged, moving-terrain
