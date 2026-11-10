@@ -27,7 +27,23 @@ that merely mentions the prefix within its message is not a script-error line.
 - The same actual native script then returned wrapper exit 1 while the child
   still exited 0. The original error and backtrace remain in the retained log.
 - Shell syntax and `git diff --check` pass.
-- Full `verify-native.sh` validation is pending at this checkpoint.
+- The first complete `verify-native.sh` attempt failed at
+  `PaintedSurfaceBroadPhaseChecks`: child exit 139, wrapper/aggregate exit 1.
+  Its native log contained only the engine banner, no completed assertion
+  marker. Later scenes were not run by that attempt. The failure is retained in
+  `full-native-first-failed.txt`, not counted as a pass.
+- A single bounded rerun of the same scene, unchanged DLLs and command passed
+  28,251 assertions with normal exit and the strict diagnostic gate. This does
+  not establish the crash's cause or a fix. A new complete gate is pending.
+- Before that failure, all 17 core groups and 16 independent level save/replays
+  passed. All 3,425 ordered action/event/receipt traces exactly match the prior
+  published full-gate log. Source guards, builds, import and the preceding six
+  native scenes passed, including 18,032 assembled-ground assertions.
+
+The focused recheck used these unchanged Debug assembly SHA-256 values:
+
+- `Empire.dll`: `aab4afa82b2ba29910d6e601044aa16f07c739e71cc1a8e4a3426bdcb7f40c47`
+- `Empire.Core.dll`: `6d7acdaa7b70bddf48b3cbb47f9224898628470c24531b5e1ec7f90427a09ccf`
 
 Evidence is in [the verification directory](verification/native-script-diagnostics-20261110/).
 `probe.gd.txt` is a non-imported copy of the diagnostic script, not game content.
