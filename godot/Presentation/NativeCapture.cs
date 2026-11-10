@@ -1,6 +1,7 @@
 #nullable enable
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using Godot;
@@ -20,6 +21,8 @@ public partial class NativeCapture : Node
     private bool _motionArmed;
     private bool _motionCapturing;
     private int _motionSequence;
+    private int? _idleCaptureFrames;
+    private int _idleCaptureStride = 1;
 
     public override async void _Ready()
     {
@@ -31,6 +34,11 @@ public partial class NativeCapture : Node
             _directory = argument["--capture-dir=".Length..];
             if (!Path.IsPathFullyQualified(_directory))
                 throw new InvalidOperationException("Capture directory must be absolute.");
+            _idleCaptureFrames = PositiveCaptureArgument("--capture-idle-frames");
+            var idleStride = PositiveCaptureArgument("--capture-idle-stride");
+            if (idleStride is not null && _idleCaptureFrames is null)
+                throw new InvalidOperationException("--capture-idle-stride requires --capture-idle-frames.");
+            _idleCaptureStride = idleStride ?? 1;
             Directory.CreateDirectory(_directory);
             var sceneArgument = OS.GetCmdlineUserArgs().SingleOrDefault(value => value.StartsWith("--capture-scene=", StringComparison.Ordinal));
             var scenePath = sceneArgument is null ? "res://Scenes/GrayFlagGame.tscn" : sceneArgument["--capture-scene=".Length..];
@@ -69,6 +77,19 @@ public partial class NativeCapture : Node
         }
     }
 
+    private static int? PositiveCaptureArgument(string name)
+    {
+        var argument = OS.GetCmdlineUserArgs().SingleOrDefault(candidate => candidate == name
+            || candidate.StartsWith(name + "=", StringComparison.Ordinal));
+        if (argument is null)
+            return null;
+        if (!argument.StartsWith(name + "=", StringComparison.Ordinal)
+            || !int.TryParse(argument[(name.Length + 1)..], NumberStyles.None, CultureInfo.InvariantCulture, out var value)
+            || value <= 0)
+            throw new InvalidOperationException($"{name} requires a positive integer: {name}=<count>.");
+        return value;
+    }
+
     public override void _Input(InputEvent input)
     {
         if (OS.GetCmdlineUserArgs().Contains("--journal-ui-fixture")
@@ -104,6 +125,14 @@ public partial class NativeCapture : Node
             Capture();
         if (input is InputEventKey { Pressed: true, Echo: false, Keycode: Key.F8 } && !_motionCapturing)
         {
+            if (_idleCaptureFrames is { } frames)
+            {
+                if (FindBoard(this) is { IsPresenting: false, ProjectionUnitCount: > 0 } board && board.IsVisibleInTree())
+                    CaptureMotion(board, frames, _idleCaptureStride);
+                else
+                    GD.Print("Native idle capture requires a visible settled board; press F8 again when ready.");
+                return;
+            }
             _motionArmed = !_motionArmed;
             GD.Print($"Native motion capture armed: {_motionArmed}; next committed transition only.");
         }
@@ -126,23 +155,36 @@ public partial class NativeCapture : Node
     }
 
     // Verification only: observe actual rendered frames, never advance the battle or its clock.
-    private async void CaptureMotion(BoardView board)
+    private async void CaptureMotion(BoardView board, int? frameLimit = null, int stride = 1)
     {
         _motionArmed = false;
         _motionCapturing = true;
-        var directory = Path.Combine(_directory, $"motion-{DateTime.UtcNow:yyyyMMdd-HHmmss}-{++_motionSequence:000}");
+        var mode = frameLimit is null ? "motion" : "idle";
+        var directory = Path.Combine(_directory, $"{mode}-{DateTime.UtcNow:yyyyMMdd-HHmmss}-{++_motionSequence:000}");
         var identity = board.PresentationIdentity;
         var started = Time.GetTicksMsec();
+        long observedFrames = 0;
         long bufferedBytes = 0;
         var frames = new List<(Image Image, string Trace)>();
         try
         {
+            var projection = board.GetNodeOrNull<Node2D>("CanonicalProjection");
             Directory.CreateDirectory(directory);
             while (true)
             {
                 await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
+                observedFrames++;
+                if (!GodotObject.IsInstanceValid(this) || !IsInsideTree()
+                    || !GodotObject.IsInstanceValid(board) || !board.IsInsideTree() || board.IsExiting
+                    || board.IsQueuedForDeletion() || !ReferenceEquals(FindBoard(this), board))
+                    throw new IOException("Motion capture aborted: the board was retired or replaced; no mixed sequence saved.");
+                if (frameLimit is not null && (board.IsPresenting || !board.IsVisibleInTree()
+                    || !ReferenceEquals(projection, board.GetNodeOrNull<Node2D>("CanonicalProjection"))))
+                    throw new IOException("Idle capture aborted: the board changed, became hidden or began a transition; no mixed sequence saved.");
                 if (board.PresentationIdentity is not null && !ReferenceEquals(identity, board.PresentationIdentity))
-                    break;
+                    throw new IOException("Motion capture aborted: another transition began before readback settled; no mixed sequence saved.");
+                if (observedFrames % stride != 0)
+                    continue;
                 var size = GetViewport().GetVisibleRect().Size;
                 var requiredBytes = (long)size.X * (long)size.Y * 4;
                 if (bufferedBytes + requiredBytes > 256L * 1024 * 1024)
@@ -157,6 +199,9 @@ public partial class NativeCapture : Node
                         return new
                         {
                             id = node.GetMeta("unit_id").AsInt32(),
+                            art = sprite.GetMeta("art_identity").AsString(),
+                            mirrored = sprite.Scale.X < 0,
+                            scale = new[] { sprite.Scale.X, sprite.Scale.Y },
                             position = new[] { node.Position.X, node.Position.Y },
                             supportPlane = node.HasMeta("logical_contact")
                                 ? new[] { board.Projection.Project(node.GetMeta("logical_contact").AsVector2()).X,
@@ -167,16 +212,18 @@ public partial class NativeCapture : Node
                     }).ToArray();
                 frames[^1] = (image, System.Text.Json.JsonSerializer.Serialize(new
                 {
+                    captureMode = mode,
+                    observedFrame = observedFrames,
+                    processFrame = Engine.GetProcessFrames(),
+                    captureStride = stride,
                     elapsedMs = Time.GetTicksMsec() - started,
                     presenting = board.IsPresenting,
                     actors
                 }));
-                if (!board.IsPresenting)
+                if (frameLimit is { } count ? frames.Count == count : !board.IsPresenting)
                     break;
             }
-            if (board.IsPresenting)
-                throw new IOException("Motion capture aborted: another transition began before readback settled; no mixed sequence saved.");
-            // Compress only after playback settles: PNG compression must not consume animation frames.
+            // Compress only after observation ends: PNG compression must not consume captured animation frames.
             for (var frame = 0; frame < frames.Count; frame++)
             {
                 var path = Path.Combine(directory, $"frame-{frame:000}.png");
@@ -184,7 +231,7 @@ public partial class NativeCapture : Node
                     throw new IOException($"Motion capture failed: {path}");
                 File.WriteAllText(Path.ChangeExtension(path, ".json"), frames[frame].Trace);
             }
-            GD.Print($"Native motion capture complete: {directory}. Readback may affect frame pacing; timestamps are observations, not a performance benchmark.");
+            GD.Print($"Native {mode} capture complete: {directory}; {frames.Count} saved frames over {observedFrames} rendered frames, stride {stride}. Readback may affect frame pacing; timestamps are observations, not a performance benchmark.");
         }
         catch (Exception error) { GD.PushError(error.ToString()); }
         finally { foreach (var frame in frames) frame.Image.Dispose(); _motionCapturing = false; }

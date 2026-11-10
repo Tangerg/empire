@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd /workspace/scratch/84c9fe948755/empire-work
+export DOTNET_ROOT="$PWD/../empire-tools/dotnet"
+export XDG_DATA_HOME=/tmp/empire-torren-idle-invalid-data
+export XDG_CONFIG_HOME=/tmp/empire-torren-idle-invalid-config
+export XDG_CACHE_HOME=/tmp/empire-torren-idle-invalid-cache
+mkdir -p "$XDG_DATA_HOME" "$XDG_CONFIG_HOME" "$XDG_CACHE_HOME"
+godot="$PWD/../empire-tools/godot/Godot_v4.6.3-stable_mono_linux_x86_64/Godot_v4.6.3-stable_mono_linux.x86_64"
+qa="$PWD/../empire-torren-idle-20261110"
+: > "$qa/invalid-options-summary.txt"
+check() {
+  local name="$1" expected="$2" status=0
+  shift 2
+  "$godot" --path godot --resolution 1180x812 --audio-driver Dummy res://Scenes/NativeCapture.tscn -- --capture-dir="$qa/invalid-options-output" "$@" > "$qa/invalid-$name.log" 2>&1 || status=$?
+  test "$status" = 1
+  grep -Fq "$expected" "$qa/invalid-$name.log"
+  printf '%s: rejected with exit %s and expected diagnostic\n' "$name" "$status" | tee -a "$qa/invalid-options-summary.txt"
+}
+check zero 'requires a positive integer' --capture-idle-frames=0
+check negative 'requires a positive integer' --capture-idle-frames=-1
+check text 'requires a positive integer' --capture-idle-frames=60x
+check overflow 'requires a positive integer' --capture-idle-frames=2147483648
+check missing 'requires a positive integer' --capture-idle-frames
+check duplicate 'more than one matching element' --capture-idle-frames=60 --capture-idle-frames=60
+check stride-only 'requires --capture-idle-frames' --capture-idle-stride=4
+printf 'All seven invalid capture options rejected.\n' | tee -a "$qa/invalid-options-summary.txt"

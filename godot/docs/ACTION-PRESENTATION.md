@@ -373,8 +373,13 @@ atomic content/API change, not a save migration or compatibility fallback.
 
 Every rendered unit/actor binding explicitly selects `idle`. The shipped
 `static.idle` holds the existing trusted idle pose for a 1000 ms cycle; it is not
-new animated artwork. Multi-frame idle is exercised only by clearly synthetic
-fixtures over already trusted images.
+new animated artwork. Torren now explicitly selects `torren.breathe`: four new
+painted pictures sampled as 0→1→2→3→2→1 over 1800 ms. Its alternate sheet keeps
+fixed support anchors and uses the existing idle owner, including finite-action
+suspension, resume and reduced motion. All other actors retain `static.idle`.
+See [the Torren idle review](../../docs/art-torren-idle-20261110/README.md) for
+source extraction, loop limits and real-render evidence. Synthetic multi-frame
+fixtures remain separate from these production-art checks.
 
 `BoardView.AdvancePresentation` is the only advancement entry point: first it
 advances eligible idle phases modulo their clip durations, then the finite

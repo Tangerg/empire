@@ -1,0 +1,18 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+Native viewport captured: /workspace/scratch/84c9fe948755/empire-work/../empire-torren-idle-20261110/native-interrupt/native-001.png (1180×812).
+Native frame observation before readback: 1.0 FPS, process 190.41 ms, draw calls 17, scene nodes 24.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+ERROR: System.IO.IOException: Motion capture aborted: the board was retired or replaced; no mixed sequence saved.
+   at Empire.Presentation.NativeCapture.CaptureMotion(BoardView board, Nullable`1 frameLimit, Int32 stride) in /workspace/scratch/84c9fe948755/empire-work/godot/Presentation/NativeCapture.cs:line 180
+   at: void Empire.Presentation.NativeCapture+<CaptureMotion>d__14.MoveNext() (res://Presentation/NativeCapture.cs:180)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void Empire.Presentation.NativeCapture+<CaptureMotion>d__14.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/NativeCapture.cs:180)
+       [2] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [3] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [4] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)

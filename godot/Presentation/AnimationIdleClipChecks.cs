@@ -52,6 +52,13 @@ public partial class AnimationChecks
         {
             var clip = assets.ResolveUnitClip(type, "idle", ActorClipUnit.Milliseconds, key);
             var asset = assets.ResolveUnit(type, key);
+            if (key == "campaign-torren")
+            {
+                Require(clip.Asset.Identity == "torren-breathe-v1" && clip.Asset.TopicId == asset.TopicId
+                    && clip.Asset.FrameCount == 4 && clip.Length == 1800 && clip.ReleaseMs is null,
+                    "Torren alone selects four authored breathing pictures in a six-interval idle cycle.");
+                continue;
+            }
             Require(clip.Asset == asset && clip.FrameAt(0) == AssetCatalog.FrameIndex(asset, "idle")
                 && clip.FrameAt(clip.Length - .001) == clip.FrameAt(0),
                 "Shipped idle declarations preserve the selected existing static idle picture.");

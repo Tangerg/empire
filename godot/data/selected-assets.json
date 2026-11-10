@@ -105,6 +105,36 @@
         }
       ],
       "showAccent": false
+    },
+    "torren.breathe": {
+      "unit": "milliseconds",
+      "appearanceId": "torren-breathe-v1",
+      "frames": [
+        {
+          "frame": "breath-low",
+          "span": 440
+        },
+        {
+          "frame": "inhale-low",
+          "span": 220
+        },
+        {
+          "frame": "inhale-high",
+          "span": 240
+        },
+        {
+          "frame": "breath-high",
+          "span": 440
+        },
+        {
+          "frame": "inhale-high",
+          "span": 240
+        },
+        {
+          "frame": "inhale-low",
+          "span": 220
+        }
+      ]
     }
   },
   "assets": [
@@ -3207,6 +3237,70 @@
         ]
       ],
       "qualityTier": "painted-thrust-v1-reviewed",
+      "textureFilter": "linear"
+    },
+    {
+      "id": "torren-breathe-v1",
+      "topicId": "C01-UNIT-SWORDSMAN",
+      "png": "painted-actions-v1/torren-breathe-v1.png",
+      "pixelDensity": 1,
+      "frames": 4,
+      "frameOrder": [
+        "breath-low",
+        "inhale-low",
+        "inhale-high",
+        "breath-high"
+      ],
+      "physicalWidth": 1231,
+      "physicalHeight": 415,
+      "resourcePath": "res://assets/painted-actions-v1/torren-breathe-v1.png",
+      "sha256": "164ba6e6a995442ac3fd7fe5f70fad3d97e3b7424b2e027ea2d9b4d4d1931795",
+      "presentationScale": 0.093,
+      "frameRegions": [
+        [
+          0,
+          0,
+          314,
+          399
+        ],
+        [
+          314,
+          0,
+          305,
+          402
+        ],
+        [
+          619,
+          0,
+          305,
+          412
+        ],
+        [
+          924,
+          0,
+          307,
+          415
+        ]
+      ],
+      "frameAnchors": [
+        [
+          146,
+          392
+        ],
+        [
+          144,
+          395
+        ],
+        [
+          146,
+          405
+        ],
+        [
+          148,
+          408
+        ]
+      ],
+      "qualityTier": "painted-breathe-v1-reviewed",
       "textureFilter": "linear"
     }
   ]

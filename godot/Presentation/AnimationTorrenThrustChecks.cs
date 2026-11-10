@@ -13,7 +13,7 @@ public partial class AnimationChecks
     private async Task CheckTorrenThrustPlayback()
     {
         var clip = assets.ResolveUnitClip("c01.swordsman", "attack", ActorClipUnit.Milliseconds, "campaign-torren");
-        var idle = assets.ResolveUnit("c01.swordsman", "campaign-torren");
+        var idle = assets.ResolveUnitClip("c01.swordsman", "idle", ActorClipUnit.Milliseconds, "campaign-torren");
         var starts = new[] { 0.0, 65, 115, 160, 225, 295 };
         var pixels = new HashSet<string>();
         for (var index = 0; index < starts.Length; index++)
@@ -72,10 +72,10 @@ public partial class AnimationChecks
                             "The impact begins at the authored full-extension release, never during anticipation.");
                     }
                     await Tick(board, .066);
-                    CheckClipSprite(sprite, idle, 0, sprite.Scale.X < 0 ? -1 : 1);
+                    CheckClipSprite(sprite, idle.Asset, idle.FrameAt(0), sprite.Scale.X < 0 ? -1 : 1);
                     CheckClipShadow(sprite);
                     Require(board.GetNodeOrNull("BattleEffects/Hit") is not null && !task.IsCompleted,
-                        "The actor restores its exact existing idle sheet while the released impact finishes.");
+                        "The actor restores its declared first idle pose while the released impact finishes.");
                     await Drain(board, task);
                     Require(observed.SequenceEqual(Enumerable.Range(0, transition.Events.Count))
                         && state.ToJsonString() == unchanged,
@@ -90,7 +90,7 @@ public partial class AnimationChecks
                     board.CancelPresentation();
                     Require(!await task && !board.IsPresenting, "Cancellation stops Torren during wind-up or recovery.");
                     var sprite = Actor(board, aid).GetNode<Sprite2D>("AuthoredSprite");
-                    CheckClipSprite(sprite, idle, 0, sprite.Scale.X < 0 ? -1 : 1);
+                    CheckClipSprite(sprite, idle.Asset, idle.FrameAt(0), sprite.Scale.X < 0 ? -1 : 1);
                     CheckClipShadow(sprite);
                 }
                 var skipped = board.PresentTransitionAsync(viewportFeedback, transition);

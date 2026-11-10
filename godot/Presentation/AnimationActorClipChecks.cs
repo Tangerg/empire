@@ -585,6 +585,7 @@ public partial class AnimationChecks
         // This fixture contrasts a generic alternate clip with an explicitly static named action.
         // Production Torren artwork and timing are exercised separately, without this override.
         bindings.Actors["campaign-torren"].UnitArt.ActionClips["attack"] = "static.attack";
+        bindings.Actors["campaign-torren"].UnitArt.ActionClips["idle"] = "static.idle";
         return (manifest, bindings);
     }
 
