@@ -55,7 +55,7 @@ anchors, uniform scale and declared timing; a one-channel mutation is rejected.
 The corrected complete native `AnimationChecks` run passes 6,669 assertions
 with strict process/diagnostic exit 0. Native build has zero warnings/errors;
 editor import, whitespace checks and 213 unique script UIDs also pass.
-The final-assembly legal witness independently replays 214 authorized game
+The final-assembly legal witness independently replays 214 legal game
 orders. Actual normal-UI victory output equals its complete expected save,
 excluding only the two savedAt timestamps. The accepted 100-frame native window
 contains both archers' six celebration poses, preceding enemy retirement and
@@ -69,9 +69,19 @@ Four isolated production-data mutations fail at the intended first assertion;
 the restored positive suite passes all 6,669 assertions. Data/resources/imports
 and frozen/staged DLL hashes remain byte-identical after the controls.
 
-The original full native gate remains in progress and is not represented as
-passed. Full campaign, standalone exports, other unfinished animations and
-real-time performance are outside this slice.
+The original, unchanged `tools/godot/verify-native.sh` completes with strict
+exit 0 and its terminal marker. All 45 stages pass, including 6,669 animation
+assertions and 22,496 played-flow assertions. Four builds report zero warnings
+and errors. All 16 AI traces (3,425 legal orders), six played-flow markers and
+41 existing expected warnings match the immediate accepted fall baseline.
+All three frozen and live DLL hashes match the tested source `6fa6f8aa`; later
+commits contain evidence only. The portable comparator and eight controls pass.
+Assertion totals include process-frame waits and are not unique scenario counts.
+See `verification/full-native/` for actual logs, completion records and review.
+
+This closes the shared C01 archer celebration slice. Full campaign, standalone
+exports, other unfinished animations and real-time performance remain outside
+this acceptance scope.
 
 The first focused run passed the new production cheer checks, then exposed an
 older full-C01 announcement fixture that assumed Torren's 900 ms salute was

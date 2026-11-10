@@ -57,3 +57,26 @@ still pending at the time of this review. No full-gate, export, full-campaign or
 real-time performance pass is inferred from this capture.
 
 No production edits, build, game test run or commit performed for this review.
+
+## Packaged-evidence verification
+
+Independently reran native/verify-native-evidence.py: PASS for the decoded100
+full RGB frames, eight mapped stills, every diagnostic-sheet crop tile,
+contiguous observations and expected actor lifecycles. All three isolated
+mutation controls passed by rejecting a bad RGB hash, repeated process frame
+and shifted cheer frame. Additionally compared every packaged proof PNG/RGB
+hash and JSONL record directly with the original accepted002 PNG/JSON files:
+all100 match; all eight mapped still files are byte-exact originals. The
+separate victory-result still was visually inspected and shows the victory
+screen; it is not falsely included among the100 motion observations.
+
+Reran legal/compare-native.py on legal/native/native-output.json and
+legal/ui-settled.json: complete documents match after removing only
+campaign.savedAt and battle.savedAt. Current HEAD and tested6fa6f8aa have the
+same Godot tree5023aa4d61b633c0d59c2e15e0e4057505fcf557 and tools tree
+afff6c24fcf143fdff3a5a4facf2f373d1ad3290. Independently hashed all three actual
+frozen DLLs and matched the proof's recorded values. The11 relevant native and
+negative-control log files are explicitly staged; no cache is included in
+that staged log list. No package issue found. Full aggregate gate remains
+pending at this addendum, and no aggregate success is inferred from these
+separate passing evidence checks.

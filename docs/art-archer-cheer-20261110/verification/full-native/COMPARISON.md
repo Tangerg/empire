@@ -1,9 +1,12 @@
-# Native gate comparison: prepared, aggregate pending
+# Native gate comparison: aggregate passed
 
-This package prepares read-only comparison of the cheer gate. It does not claim
-that the currently running gate has completed. No full-native.txt, final exit or
-finish record has been manufactured here. Archive the real completed records
-before running the default comparison. The parent owns the running process.
+The original unchanged `tools/godot/verify-native.sh` completed with exit 0 and
+its final success marker. This archive contains the exact real log, source,
+start, finish and exit records. Both archive-only and live-DLL comparisons pass.
+All 45 stages, 6,669 animation assertions and 22,496 played-flow assertions are
+present. All 16 AI traces (3,425 legal orders), six played-flow markers and 41
+expected warnings match the immediate accepted fall aggregate. Four builds
+report zero warnings/errors; no unexpected error/leak diagnostics occur.
 
 Tested source: `6fa6f8aa12cf4586967955c6898b6dd1409d16ad`.
 Tested Godot tree: `5023aa4d61b633c0d59c2e15e0e4057505fcf557`.
@@ -39,7 +42,7 @@ normalized; the actual expected UID213 has a separate check. Assertion totals
 include process-frame waits and are not unique scenario counts. AI order counts,
 digests, played outcomes and warning multiplicities are never normalized.
 
-From the repository root, after actual records are archived:
+From the repository root:
 
 ```sh
 python docs/art-archer-cheer-20261110/verification/full-native/compare-gate.py --output /tmp/cheer-gate-comparison.json

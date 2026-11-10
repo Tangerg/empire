@@ -1,0 +1,104 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Animation facing checks passed, including the lawful C04 receipt.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Torren thrust: six production poses, 160 ms release, 360 ms recovery, mirrors/cancellation/reduced motion passed.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Gravekeeper cast: synthetic production-art receipts, six poses, release300/recovery600, hit720/heal800, mirrors/lifetime/privacy passed.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Archer shot: synthetic production-art receipts, six poses, release320/recovery600, hit740, mirrors/lifetime/privacy passed.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Torren idle: four authored pictures, six intervals, 1800 ms loop, mirrors/contact and finite handoffs passed.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Archer idle: four authored pictures, six intervals, 2200 ms loop, mirrors/contact and finite handoffs passed.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Torren recoil: four production poses, 320 ms reaction, independent impact, mirrors/contact, idle/death handoffs and cancellation/reduced motion passed.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Archer recoil: four padded production poses, exact 320 ms reaction/420 ms impact, counter/area/death ordering, damage gates, mirrors/contact and lifetime passed.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Torren fall: six production poses, 620+160 ms phases, mirrors/contact, event ownership, result wait and lifecycle boundaries passed.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Archer fall: six padded production poses, shared Elin binding, 620+160 ms phases, mirrors/contact, retirement/result wait and lifecycle boundaries passed.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Torren salute: six production poses, 900 ms gate, winner eligibility, mirrors/contact, idle return and lifecycle boundaries passed.
+ERROR: System.InvalidOperationException: Shared C01 archers select six genuine cheering poses for 960 ms, without changing base appearance or declaring attack/death policy.
+   at Empire.Presentation.AnimationChecks.Require(Boolean condition, String message) in /workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationChecks.cs:line 630
+   at Empire.Presentation.AnimationChecks.CheckArcherCelebrationPlayback() in /workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationArcherCelebrationChecks.cs:line 21
+   at Empire.Presentation.AnimationChecks._Ready() in /workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationChecks.cs:line 52
+   at: void Empire.Presentation.AnimationChecks+<_Ready>d__78.MoveNext() (/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationChecks.cs:52)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void Empire.Presentation.AnimationChecks+<_Ready>d__78.MoveNext() (/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationChecks.cs:52)
+       [2] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [3] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [4] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [5] void System.Threading.Tasks.Task.RunContinuations(object)
+       [6] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [7] void Empire.Presentation.AnimationChecks+<CheckTorrenCelebrationPlayback>d__214.MoveNext() (/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationTorrenCelebrationChecks.cs:63)
+       [8] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [9] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [10] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [11] void System.Threading.Tasks.Task.RunContinuations(object)
+       [12] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [13] void Empire.Presentation.AnimationChecks+<CheckAuthoredCelebrationLifetime>d__218.MoveNext() (/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationTorrenCelebrationChecks.cs:282)
+       [14] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [16] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [17] void System.Threading.Tasks.Task.RunContinuations(object)
+       [18] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [19] void Empire.Presentation.AnimationChecks+<Tick>d__91.MoveNext() (/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationChecks.cs:594)
+       [20] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [21] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [22] void Godot.GodotSynchronizationContext.ExecutePendingContinuations() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GodotSynchronizationContext.cs:51)
+       [23] void Godot.GodotTaskScheduler.Activate() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GodotTaskScheduler.cs:76)
+       [24] void Godot.Bridge.ScriptManagerBridge.FrameCallback() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/ScriptManagerBridge.cs:84)
